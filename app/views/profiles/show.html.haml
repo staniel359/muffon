@@ -1,0 +1,7 @@
+- if current_profile?(@profile)
+	%h4= "Welcome, #{@profile.nickname}!"
+	= link_to 'Settings', settings_path
+	= link_to 'Log out', logout_path, method: :delete
+	= link_to 'Delete account', @profile, method: :delete
+- else
+	%h4= "#{@profile.nickname}'s page"

@@ -1,0 +1,2 @@
+module MuffonHelper
+end

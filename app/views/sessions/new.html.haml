@@ -1,0 +1,9 @@
+= render 'shared/flash_messages'
+%h4 Log in
+= form_for :session do |f|
+	= f.email_field :email, class: 'form-control', placeholder: 'Email:'
+	= f.password_field :password, class: 'form-control', placeholder: 'Password:'
+	= f.check_box :remember_me
+	= f.label :remember_me, 'Remember me'
+	%br
+	= f.submit 'Log in', class: 'btn btn-primary'

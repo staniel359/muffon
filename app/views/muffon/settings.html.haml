@@ -1,0 +1,8 @@
+= render 'shared/flash_messages'
+= form_for @profile do |f|
+	= f.text_field :nickname, class: 'form-control', placeholder: 'Nickname:'
+	= f.email_field :email, class: 'form-control', placeholder: 'Email:'
+	= f.password_field :password, class: 'form-control', placeholder: 'Password:'
+	= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
+
+	= f.submit 'Update profile', class: 'btn btn-primary'

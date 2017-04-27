@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  nickname: staniel
+  email: staniel359@gmail.com
+  password_digest: $2a$10$CGzSyyCIwJlOVxk2nwAChuiOTCuxTJl6Q9mnOXku7MGaQDzjJsOWa
+
+two:
+  id: 2
+  nickname: MyString
+  email: MyString
+  password_digest: MyString
+

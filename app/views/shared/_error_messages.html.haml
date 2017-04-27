@@ -1,0 +1,4 @@
+.alert#error_explanation{class: 'alert-danger'}
+	%ul
+		- @profile.errors.full_messages.each do |message|
+			%li= message
