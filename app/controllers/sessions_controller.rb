@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
 			if params[:session][:remember_me] == '1'
 				remember profile
 			end
-			redirect_to profile
+			redirect_to root_path
 		else
-			redirect_to login_path
+			respond_to :js
 			flash[:danger] = 'Invalid email or password.'
 		end
 	end

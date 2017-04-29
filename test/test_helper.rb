@@ -12,7 +12,7 @@ end
 class ActionDispatch::IntegrationTest
 	include SessionsHelper
 
-	def log_in_as(profile)
-		post login_path, params: {session: {email: profile.email, password: 'password', profile_id: profile.id}}
+	def log_in_as(profile, remember_me)
+		post login_path, params: {session: {email: profile.email, password: 'password', profile_id: profile.id, remember_me: remember_me}}
 	end
 end

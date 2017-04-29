@@ -1,0 +1,8 @@
+#sidebar
+	#side_up_icons
+		= link_to 'Home', root_path
+		= link_to 'My profile', current_profile
+		= link_to 'My library', library_path(current_profile)
+	#side_down_icons
+		= link_to 'Settings', settings_path
+		= link_to 'Log out', logout_path, method: :delete

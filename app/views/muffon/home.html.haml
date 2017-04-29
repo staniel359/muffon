@@ -1,0 +1,7 @@
+- if logged_in?
+	%h4 Home page
+- else
+	%h4 welcome
+	= link_to 'Sign up', signup_path
+	= link_to 'Log in', login_path
+	= link_to 'Sign up with Last.fm', '/auth/lastfm'

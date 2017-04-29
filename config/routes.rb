@@ -1,10 +1,17 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   
-  root 'muffon#welcome'
+  root 'muffon#home'
+  mount Sidekiq::Web, at: '/sidekiq'
 
+  get '/auth/lastfm/callback', to: 'profiles#new'
+  post '/auth/lastfm/callback', to: 'profiles#create'
   get '/signup', to: 'profiles#new'
   post '/signup', to: 'profiles#create'
-  resources :profiles, only: [:index, :show, :edit, :update, :destroy]
+
+  resources :profiles
+  get 'profiles/:id/library', to: 'profiles#library', as: 'library'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

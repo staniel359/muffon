@@ -5,6 +5,7 @@ one:
   nickname: staniel
   email: staniel359@gmail.com
   password_digest: $2a$10$CGzSyyCIwJlOVxk2nwAChuiOTCuxTJl6Q9mnOXku7MGaQDzjJsOWa
+  lastfm_id: cornwell_93
 
 two:
   id: 2

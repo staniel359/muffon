@@ -1,8 +1,6 @@
-= render 'shared/flash_messages'
-= form_for @profile do |f|
-	= f.text_field :nickname, class: 'form-control', placeholder: 'Nickname:'
-	= f.email_field :email, class: 'form-control', placeholder: 'Email:'
-	= f.password_field :password, class: 'form-control', placeholder: 'Password:'
-	= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
+#settings.panel.panel-default
+	#edit_form
+		%h4 Edit your profile
+		= render 'profiles/form'
 
-	= f.submit 'Update profile', class: 'btn btn-primary'
+	= link_to 'Delete account', @profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}

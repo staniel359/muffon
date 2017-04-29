@@ -1,9 +1,13 @@
-= render 'shared/flash_messages'
-%h4 Log in
-= form_for :session do |f|
-	= f.email_field :email, class: 'form-control', placeholder: 'Email:'
-	= f.password_field :password, class: 'form-control', placeholder: 'Password:'
-	= f.check_box :remember_me
-	= f.label :remember_me, 'Remember me'
-	%br
-	= f.submit 'Log in', class: 'btn btn-primary'
+#login_form.center.panel.panel-default
+	%h4 Log in
+	.profile_form
+		.flash_msg= render 'shared/flash_messages'
+		= form_for :session, remote: true do |f|
+			= f.email_field :email, class: 'form-control', placeholder: 'Email:', required: true
+			= f.password_field :password, class: 'form-control', placeholder: 'Password:', required: true
+			#profile_remember
+				= f.check_box :remember_me
+				= f.label :remember_me, 'Remember me'
+			= f.submit 'Log in', class: 'btn btn-primary btn-sm'
+		Don't have an account?
+		= link_to 'Sign up.', signup_path

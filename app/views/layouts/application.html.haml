@@ -7,4 +7,6 @@
 		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 	%body
-		= yield
+		= render 'layouts/upbar'
+		= render 'layouts/sidebar' if logged_in?
+		.container-fluid= yield

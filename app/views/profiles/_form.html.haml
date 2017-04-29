@@ -1,0 +1,36 @@
+.profile_form
+	.flash_msg
+	= form_for @profile, remote: true, multipart: true, authenticity_token: true do |f|
+		= f.hidden_field :lastfm_id
+		= f.hidden_field :remote_avatar_url
+		#form_avatar_info
+			#form_avatar
+				= image_tag @profile.avatar.url(:md), id: 'img_preview'
+				%br
+				= f.file_field :avatar, style: 'display:none', onchange: 'readURL(this);'
+				= f.label :avatar, 'Choose avatar', class: 'btn btn-primary btn-sm'
+			#form_info
+				= f.text_field :nickname, class: 'form-control', placeholder: 'Nickname:'
+				= f.text_field :name, class: 'form-control', placeholder: 'Name:'
+				= f.select :gender, %w{ Male Female }, {include_blank: 'Choose you gender:'}, class: 'form-control'
+				= f.text_field :country, class: 'form-control', placeholder: 'Country:'
+				= f.text_field :city, class: 'form-control', placeholder: 'City:'
+		#form_birthdate
+			= f.date_select :birthdate, {order: [:day, :month, :year], start_year: 1920}, {class: 'form-control'}
+		= f.email_field :email, class: 'form-control', placeholder: 'Email:'
+		= f.password_field :password, class: 'form-control', placeholder: 'Password:'
+		= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
+
+		= f.submit @button_text, class: 'btn btn-primary'
+
+:javascript
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				$('#img_preview').attr('src', e.target.result).width(110);
+				$('#profile_remote_avatar_url').remove();
+			};
+			reader.readAsDataURL(input.files[0]);
+		}
+	}

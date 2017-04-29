@@ -1,0 +1,21 @@
+%h4= "Recent Tracks (#{@profile.plays.count})"
+- @profile.plays.reverse.first(10).map do |t|
+	= image_tag t.profile_track.album.cover
+	= t.profile_track.track.title
+	= t.profile_track.track.artist.name
+	= t.profile_track.album.title
+	= t.created_at
+	= t.profile_track.loved
+	%br
+%br
+%h4= "New tracks (#{@profile.profile_tracks.count})"
+- @profile.profile_tracks.reverse.first(10).map do |t|
+	= image_tag t.album.cover
+	= t.track.title
+	= t.track.artist.name
+	= t.album.title
+	= t.created_at
+	= t.loved
+	%br
+
+- console

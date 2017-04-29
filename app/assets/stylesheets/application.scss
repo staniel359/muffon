@@ -1,2 +1,102 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html, body {
+	height: 100%;
+	background-color: #453a58;
+	color: white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+.container-fluid {
+	height: 100%;
+	padding: 45px 65px 0 15px;
+	margin: 0 0 0 50px;
+}
+
+.form-control {
+	margin-bottom: 10px;
+}
+
+#upbar {
+	width: 100%;
+	position: fixed;
+	margin-left: 65px;
+	height: 35px;
+	#logo {
+		text-align: center;
+		padding: 10px;
+		width: 110px;
+		height: 100%;
+		background-color: #261a33;
+		font-size: 25px;
+		line-height: 0.8;
+		letter-spacing: 1px;
+	}
+}
+
+#sidebar {
+	padding: 40px 0 0 0;
+	width: 50px;
+	background-color: #261a33;
+	height: 100%;
+	position: fixed;
+	#side_down_icons {
+		position: absolute;
+		bottom: 0;
+	}
+}
+
+.panel {
+	border-radius: 0px;
+	background-color: #261a33;
+	border: none;
+	padding: 20px;
+}
+
+.center {
+	margin: auto;
+}
+
+#signup_form, #login_form, #edit_form {
+	width: 400px;
+	h4 {
+		margin-bottom: 10px;
+	}
+}
+
+.profile_form {
+	text-align: right;
+	.alert {
+		margin-bottom: 10px;
+		text-align: left;
+	}
+	#form_birthdate, #form_avatar_info {
+		display: flex;
+	}
+	#form_avatar {
+		margin-right: 10px;
+		img {
+			margin-bottom: 10px;
+		}
+	}
+	#form_info {
+		width: 280px;
+	}
+	#profile_remember {
+		float: left;
+		label {
+			vertical-align: middle;
+		}
+	}
+}
+
+#profile_page {
+	#profile_avatar {
+		margin-top: -20px;
+		margin-left: -20px;
+	}
+}

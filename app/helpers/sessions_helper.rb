@@ -28,6 +28,7 @@ module SessionsHelper
 	def should_login
 		unless logged_in?
 			redirect_to login_path
+			flash[:warning] = 'Please log in to access this page.'
 		end
 	end
 	

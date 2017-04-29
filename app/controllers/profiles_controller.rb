@@ -10,17 +10,43 @@ class ProfilesController < ApplicationController
 
 	def new
 		@title = 'Sign up'
-		@profile = Profile.new
+		@button_text = 'Create an account'
+		if params[:token]
+			auth = request.env['omniauth.auth']['info']
+			@profile = Profile.find_by(lastfm_id: auth['nickname'])
+			if @profile
+				redirect_to login_path
+				flash[:warning] = "Looks like you've already signed in via your Last.fm account."
+			else
+				@profile = Profile.new(nickname: auth['nickname'], 
+									   name: auth['name'], 
+									   country: auth['country'], 
+									   gender: auth['gender'], 
+									   remote_avatar_url: auth['image'], 
+									   lastfm_id: auth['nickname'])
+			end
+		else
+			@profile = Profile.new
+		end
 	end
 
 	def create
-		@profile = Profile.create(profile_params)
-		if @profile.save
-			log_out
-			log_in @profile
-			redirect_to @profile
+		@profile = Profile.new(primary_params)
+		if @profile.valid?
+			@profile = Profile.create(profile_params)
+			if @profile.save
+				log_out
+				log_in @profile
+				remember @profile
+				redirect_to root_path
+				if @profile.lastfm_id.present?
+					GetTracksJob.perform_later(@profile)
+				end
+			else
+				respond_to :js
+			end
 		else
-			render 'new'
+			respond_to :js
 		end
 	end
 
@@ -33,11 +59,10 @@ class ProfilesController < ApplicationController
 		@profile = Profile.find_by(id: params[:id])
 		@profile.update(profile_params)
 		if @profile.save
-			redirect_to settings_path
+			respond_to :js
 			flash[:success] = 'Profile was updated.'
 		else
-			redirect_to settings_path
-			flash[:danger] = 'Something went wrong.'
+			respond_to :js
 		end
 	end
 
@@ -45,12 +70,21 @@ class ProfilesController < ApplicationController
 		@profile.destroy
 		redirect_to root_path
 	end
-		
+
+	def library
+		@profile = Profile.find_by(id: params[:id])
+		@title = "#{@profile.nickname}'s library"
+	end
+
 
 	private
 
+		def primary_params
+			params.require(:profile).permit(:lastfm_id, :nickname, :email, :password, :password_confirmation)
+		end
+
 		def profile_params
-			params.require(:profile).permit(:nickname, :email, :password, :password_confirmation)
+			params.require(:profile).permit(:lastfm_id, :nickname, :name, :country, :city, :birthdate, :gender, :avatar, :remote_avatar_url, :email, :password, :password_confirmation)
 		end
 
 		def correct_profile
