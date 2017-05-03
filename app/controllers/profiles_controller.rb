@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 	before_action :should_login, only: [:index, :update, :destroy]
-	before_action :set_profile, only: [:show, :update, :destroy]
+	before_action :set_profile, only: [:show, :update, :destroy, :library]
 	before_action :correct_profile, only: [:update, :destroy]
 
 	def index
@@ -51,12 +51,10 @@ class ProfilesController < ApplicationController
 	end
 
 	def show
-		@profile = Profile.find_by(id: params[:id])
 		@title = "#{@profile.nickname}'s profile"
 	end
 
 	def update
-		@profile = Profile.find_by(id: params[:id])
 		@profile.update(profile_params)
 		if @profile.save
 			respond_to :js
@@ -72,10 +70,14 @@ class ProfilesController < ApplicationController
 	end
 
 	def library
-		@profile = Profile.find_by(id: params[:id])
+		# GetTracksJob.perform_later(@profile)
 		@title = "#{@profile.nickname}'s library"
+		@top_artists = @profile.profile_artists.order(count: :desc).first(8)
+		@top_albums = @profile.profile_albums.order(count: :desc).first(8)
+		@top_tracks = @profile.profile_tracks.order(count: :desc).first(12)
+		@plays = @profile.plays.order(created_at: :desc).first(10)
+		@new_tracks = @profile.profile_tracks.order(created_at: :desc).first(5)
 	end
-
 
 	private
 

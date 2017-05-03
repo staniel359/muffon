@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
+* {
+	letter-spacing: 1px;
+}
+
 .container-fluid {
 	height: 100%;
 	padding: 45px 65px 0 15px;
@@ -37,6 +41,17 @@ h1, h2, h3, h4, h5, h6 {
 		letter-spacing: 1px;
 	}
 }
+
+.prog_bar {
+	margin-bottom: 10px;
+	.progress {
+		margin-bottom: 10px;
+	}
+	#job_status .job {
+		display: inline-block;
+	}
+}
+
 
 #sidebar {
 	padding: 40px 0 0 0;
@@ -98,5 +113,39 @@ h1, h2, h3, h4, h5, h6 {
 	#profile_avatar {
 		margin-top: -20px;
 		margin-left: -20px;
+	}
+}
+
+#profile_library {
+	width: 815px;
+	h3 {
+		margin-bottom: 10px;
+	}
+	.top_artist, .top_album {
+		text-align: center;
+		display: inline-block;
+		margin: 0 10px 10px 0;
+		width: 180px;
+		vertical-align: top;
+	}
+	.artist_image, .album_cover {
+		margin-bottom: 5px;
+		img {
+			width: 180px;
+		}
+	}
+	.artist_image img {
+		border-radius: 50%;
+	}
+	.top_track, .recent_track {
+		margin-bottom: 10px;
+	}
+	#recent_tracks, #new_loved_tracks {
+		width: 400px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	#recent_tracks {
+		margin-right: 10px;
 	}
 }

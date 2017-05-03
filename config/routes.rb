@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   root 'muffon#home'
   mount Sidekiq::Web, at: '/sidekiq'
+  mount ActionCable.server => '/cable'
 
   get '/auth/lastfm/callback', to: 'profiles#new'
   post '/auth/lastfm/callback', to: 'profiles#create'

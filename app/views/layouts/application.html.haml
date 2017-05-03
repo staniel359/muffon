@@ -6,7 +6,9 @@
 		= csrf_meta_tags
 		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+		= action_cable_meta_tag
 	%body
 		= render 'layouts/upbar'
 		= render 'layouts/sidebar' if logged_in?
+		-# = render 'layouts/progress_bar'
 		.container-fluid= yield

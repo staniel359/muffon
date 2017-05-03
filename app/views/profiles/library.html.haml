@@ -1,21 +1,66 @@
-%h4= "Recent Tracks (#{@profile.plays.count})"
-- @profile.plays.reverse.first(10).map do |t|
-	= image_tag t.profile_track.album.cover
-	= t.profile_track.track.title
-	= t.profile_track.track.artist.name
-	= t.profile_track.album.title
-	= t.created_at
-	= t.profile_track.loved
-	%br
-%br
-%h4= "New tracks (#{@profile.profile_tracks.count})"
-- @profile.profile_tracks.reverse.first(10).map do |t|
-	= image_tag t.album.cover
-	= t.track.title
-	= t.track.artist.name
-	= t.album.title
-	= t.created_at
-	= t.loved
-	%br
-
-- console
+#profile_library.center
+	.prog_bar.panel.panel-default#progress-bar{id: "#{@profile.id}", hidden: true}
+		.progress
+			#job-progress.progress-bar.progress-bar-striped.active
+		#job_status
+			.job#job_process
+			.job#job_count
+			of
+			.job#job_total
+	- if @profile.profile_tracks.any?
+		#top_artists.panel.panel-default
+			%h3 Top artists
+			- @top_artists.map do |t|
+				.top_artist
+					.artist_image= image_tag t.artist.image if t.artist.image.present?
+					%h4
+						%strong= t.artist.name
+					%h5= pluralize(t.count, 'play')
+		#top_albums.panel.panel-default
+			%h3 Top albums
+			- @top_albums.map do |t|
+				.top_album
+					.album_cover= image_tag t.album.cover, style:'width: 180px' if t.album.cover.present?
+					%h4
+						%strong= t.album.title
+					%h5
+						%strong= t.album.artist.name
+					%h5= pluralize(t.count, 'play')
+		#top_tracks.panel.panel-default
+			%h3 Top tracks
+			- @top_tracks.map do |t|
+				.top_track
+					.media-left= image_tag t.track.artist.image, style:'width: 50px' if t.track.artist.image.present?
+					.media-body
+						%h5
+							%strong= t.track.title
+						%h5= t.track.artist.name
+						%h5= pluralize(t.count, 'play')
+		#recent_tracks.panel.panel-default
+			%h3= "Recent tracks (#{@profile.plays.count})"
+			- @plays.map do |t|
+				.recent_track
+					.media-left= image_tag t.album.cover, style:'width: 50px' if t.album.cover.present?
+					.media-body
+						%h5
+							%strong= t.profile_track.track.title
+						%h5= t.profile_track.track.artist.name
+						%h5= t.album.title
+						-# %h5= t.created_at
+						-# = t.profile_track.loved
+		#new_loved_tracks
+			#loved_tracks.panel.panel-default
+				%h3 Loved tracks
+			#new_tracks.panel.panel-default
+				%h3= "New tracks (#{@profile.profile_tracks.count})"
+				- @new_tracks.map do |t|
+					.new_track
+						.media-left= image_tag t.track.artist.image, style:'width: 50px' if t.track.artist.image.present?
+						.media-body
+							%h5
+								%strong= t.track.title
+							%h5= t.track.artist.name
+							%h5= t.created_at
+							= t.loved
+	- else
+		Your library is empty.

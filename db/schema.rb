@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429180846) do
+ActiveRecord::Schema.define(version: 20170503090703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,16 @@ ActiveRecord::Schema.define(version: 20170429180846) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "plays", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "profile_track_id"
+    t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_plays_on_album_id"
     t.index ["profile_id"], name: "index_plays_on_profile_id"
     t.index ["profile_track_id"], name: "index_plays_on_profile_track_id"
   end
@@ -44,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170429180846) do
     t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count", default: 0
     t.index ["album_id"], name: "index_profile_albums_on_album_id"
     t.index ["profile_id"], name: "index_profile_albums_on_profile_id"
   end
@@ -53,6 +57,7 @@ ActiveRecord::Schema.define(version: 20170429180846) do
     t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count", default: 0
     t.index ["artist_id"], name: "index_profile_artists_on_artist_id"
     t.index ["profile_id"], name: "index_profile_artists_on_profile_id"
   end
@@ -60,11 +65,10 @@ ActiveRecord::Schema.define(version: 20170429180846) do
   create_table "profile_tracks", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "track_id"
-    t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "loved"
-    t.index ["album_id"], name: "index_profile_tracks_on_album_id"
+    t.integer "count", default: 0
     t.index ["profile_id"], name: "index_profile_tracks_on_profile_id"
     t.index ["track_id"], name: "index_profile_tracks_on_track_id"
   end
@@ -93,13 +97,13 @@ ActiveRecord::Schema.define(version: 20170429180846) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "plays", "albums"
   add_foreign_key "plays", "profile_tracks"
   add_foreign_key "plays", "profiles"
   add_foreign_key "profile_albums", "albums"
   add_foreign_key "profile_albums", "profiles"
   add_foreign_key "profile_artists", "artists"
   add_foreign_key "profile_artists", "profiles"
-  add_foreign_key "profile_tracks", "albums"
   add_foreign_key "profile_tracks", "profiles"
   add_foreign_key "profile_tracks", "tracks"
   add_foreign_key "tracks", "artists"
