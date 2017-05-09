@@ -1,0 +1,7 @@
+.profile_library.center
+	#profile_artist_plays_panel.panel.panel-default
+		.panel_header
+			= image_tag @artist.artist.image
+			%h3= "#{@artist.artist.name} plays in #{@profile.nickname}'s library"
+		%table.table.table-hover.table-condensed#profile_artist_plays
+			= render partial: 'profile_play', collection: @plays

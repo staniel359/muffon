@@ -1,0 +1,26 @@
+.profile_library.center
+	#profile_artist_info_panel.panel.panel-default
+		.panel_header
+			%h3= "#{@artist.artist.name} in #{@profile.nickname}'s library"
+		%hr
+		#profile_artist_info.panel_content
+			.media-left#prof_art_left
+				= render partial: 'profile_artist', locals: {profile_artist: @artist}
+			.media-body#prof_art_info
+				#prof_art_tr
+					%h4.panel_header_sm= link_to pluralize(@artist.profile_tracks.count, 'tracks'), library_artist_tracks_path(@profile)
+					%table.table.table-hover.table-condensed
+						= render partial: 'profile_track', collection: @tracks
+					= link_to 'View more...', library_artist_tracks_path(@profile) if @artist.profile_tracks.count > 5
+				%hr
+				#prof_art_alb
+					%h4.panel_header_sm= link_to "#{@artist.profile_albums.count} albums", library_artist_albums_path(@profile)
+					.panel_content
+						= render partial: 'profile_album', collection: @albums
+					= link_to 'View more...', library_artist_albums_path(@profile) if @artist.profile_albums.count > 3
+				%hr
+				#prof_art_pl
+					%h4.panel_header_sm= link_to pluralize(@artist.count, 'play'), library_artist_plays_path(@profile)
+					%table.table.table-hover.table-condensed
+						= render partial: 'profile_play', collection: @plays
+					= link_to 'View more...', library_artist_plays_path(@profile) if @artist.plays.count > 5

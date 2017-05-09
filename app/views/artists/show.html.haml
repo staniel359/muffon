@@ -1,0 +1,44 @@
+.artist_page.panel.panel-default.center
+	.media-left#artist_page_image
+		.artist_image= image_tag @artist['image'][2]['#text']
+	.media-body#artist_page_info
+		%h3= @artist['name']
+		#artist_page_info_tags
+			- @artist['tags']['tag'].map do |t|
+				.label.label-primary= t['name']
+		#artist_page_info_listens
+			%h5
+				= fa_icon 'user'
+				= @artist['stats']['listeners']
+			%h5
+				= fa_icon 'music'
+				= @artist['stats']['playcount']
+		%hr
+		%h5= @artist['bio']['summary'].html_safe
+	%hr
+	#artist_page_tracks
+		%h4.panel_header Top tracks:
+		%table.table.table-hover.table-condensed
+			- @tracks.map do |t|
+				%tr
+					%td
+						= t['name']
+						= t['listeners']
+	#artist_page_albums
+		%h4.panel_header Top albums:
+		- @albums.map do |a|
+			#artist_page_album.album
+				.album_cover= image_tag ((a['image'][2]['#text'] != '') ? a['image'][2]['#text'] : 'missing_album.png')
+				%h5
+					%strong= a['name']
+					%h5= "#{a['playcount']} plays"
+	%hr
+	#artist_page_similars
+		%h4.panel_header Similar artists:
+		.panel_content
+			- @artist['similar']['artist'].first(4).map do |a|
+				#artist_page_similar.artist
+					= link_to artist_path(a['name']) do
+						.artist_image= image_tag a['image'][2]['#text']
+						%h4
+							%strong= a['name']

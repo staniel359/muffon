@@ -6,8 +6,27 @@ App.tracks_import = App.cable.subscriptions.create "TracksImportChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-  	$("#progress-bar_#{data['profile_id']}").show()
-  	$('#job_process').html(data['process'])
-  	$('#job_total').html(data['total'])
-  	$('#job-progress').css("width", data['width']+'%')
-  	$('#job_count').html(data['count'])
+    $("#progress-bar_#{data['id']}").show()
+    if data['p'] is 1
+      $('#job_process').html('Importing listening history...')
+      $('#job_entity').html('tracks')
+    if data['p'] is 2
+      $('#job_process').html('Updating artists...')
+      $('#job_entity').html('artists')
+    if data['p'] is 3
+      $('#job_process').html('Updating albums...')
+      $('#job_entity').html('albums')
+    if data['p'] is 4
+      $('#job_process').html('Updating tracks...')
+      $('#job_entity').html('tracks')
+    if data['p'] is 5
+      $('#job_process').html('Importing loved tracks...')
+      $('#job_entity').html('tracks')
+    if data['p'] is 6
+      $('#job_process').html('Importing tags...')
+      $('#job_entity').html('tags')
+    $('#job_total').html(data['t'])
+    $('#job-progress').css("width", data['w']+'%')
+    $('#job_count').html(data['c'])
+    if data['close'] is 1
+      $("#progress-bar_#{data['id']}").remove()

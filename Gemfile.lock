@@ -18,6 +18,8 @@ GEM
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionpack-action_caching (1.2.0)
+      actionpack (>= 4.0.0, < 6)
     actionview (5.1.0)
       activesupport (= 5.1.0)
       builder (~> 3.1)
@@ -39,7 +41,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (8.0.0)
-    autoprefixer-rails (6.7.7.2)
+    autoprefixer-rails (7.0.1)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
@@ -66,9 +68,13 @@ GEM
     erubi (1.6.0)
     execjs (2.7.0)
     ffi (1.9.18)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
+    friendly_id (5.2.1)
+      activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    haml (5.0.0)
+    haml (5.0.1)
       temple (>= 0.8.0)
       tilt
     hashie (3.5.5)
@@ -114,8 +120,8 @@ GEM
       omniauth (~> 1.0)
     pg (0.20.0)
     puma (3.8.2)
-    rack (2.0.1)
-    rack-protection (1.5.3)
+    rack (2.0.2)
+    rack-protection (2.0.0)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -188,7 +194,7 @@ GEM
     tilt (2.0.7)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
-    turbolinks-source (5.0.1)
+    turbolinks-source (5.0.3)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -204,16 +210,20 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    will_paginate (3.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching
   bcrypt
   bootstrap-sass
   byebug
   carrierwave
   coffee-rails
+  font-awesome-rails
+  friendly_id
   haml
   jbuilder
   jquery-rails
@@ -236,6 +246,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier
   web-console
+  will_paginate
 
 BUNDLED WITH
    1.14.3

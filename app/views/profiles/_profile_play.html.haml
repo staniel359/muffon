@@ -1,0 +1,18 @@
+%tr
+	%td.profile_track
+		- unless params[:action] == 'album' || params[:action] == 'album_plays'
+			.media-left.track_cover= image_tag ((profile_play.album && profile_play.album.cover != '') ? profile_play.album.cover : 'missing_album.png')
+		.media-body
+			%h5.created_at= l profile_play.created_at, format: "%e %b %Y, %H:%M"
+			- if profile_play.profile_track.loved?
+				= fa_icon 'heart', style: 'color: red'
+			- else
+				= fa_icon 'heart-o'
+			%h5
+				%strong= profile_play.track.title
+			%br
+			- if params[:action] == 'library' || params[:action] == 'plays'
+				%h5= link_to "#{profile_play.track.artist.name}", library_artist_path(id: @profile.id, artist_id: profile_play.profile_artist.id)
+				%br
+			- if profile_play.album && !(params[:action] == 'album' || params[:action] == 'album_plays')
+				%h5= link_to "#{profile_play.album.title}", library_album_path(id: @profile.id, album_id: profile_play.profile_album.id)

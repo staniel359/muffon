@@ -1,0 +1,30 @@
+= message
+- if params[:artists_scope]
+	- if params[:artists_scope] == '7'
+		1 week
+	- if params[:artists_scope] == '30'
+		1 month
+	- if params[:artists_scope] == '90'
+		3 months
+	- if params[:artists_scope] == '180'
+		6 months
+	- if params[:artists_scope] == '365'
+		1 year
+	- if params[:artists_scope] == '0'
+		all time
+- elsif @profile.top_artists_scope
+	- if @profile.top_artists_scope == 7
+		1 week
+	- if @profile.top_artists_scope == 30
+		1 month
+	- if @profile.top_artists_scope == 90
+		3 months
+	- if @profile.top_artists_scope == 180
+		6 months
+	- if @profile.top_artists_scope == 365
+		1 year
+	- if @profile.top_artists_scope == 0
+		all time
+-else
+	all time
+.caret

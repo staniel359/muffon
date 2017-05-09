@@ -1,8 +1,14 @@
 #profile_page
-	.panel.panel-default
-		#profile_avatar= image_tag @profile.avatar.url(:md)
+	#profile_avatar= image_tag @profile.avatar.url(:md)
+	#profile_page_panel.center.panel.panel-default
 		#profile_info
 			%h4= @profile.nickname
 			= @profile.name
 			= @profile.city
 			= @profile.country
+		- unless current_profile?(@profile)
+			= "You have #{pluralize(@common_artists.count, 'artist')} in common:"
+			- @common_artists.first(5).map do |a|
+				= a.artist.name
+				= a.count
+			and others...

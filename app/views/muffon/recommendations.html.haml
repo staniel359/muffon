@@ -1,0 +1,32 @@
+#recommendations_page.center.panel.panel-default
+	%h3.panel_header= link_to "Your recommendations:", recommendations_path
+	- @recs.map do |r|
+		.recommendation#recommendation{id: r.id}
+			.media-left.recommendation_artist
+				= link_to artist_path(r.artist_name) do
+					.artist_image
+						= image_tag r.image if r.image
+						- artist = Artist.find_by(name: r.artist_name)
+						- if artist
+							- profile_artist = @profile.profile_artists.find_by(artist_id: artist.id)
+							- if profile_artist
+								.rec_plays
+									%h5
+										= link_to (fa_icon 'music'), library_artist_path(id: @profile.id, artist_id: profile_artist.id)
+					%h4
+						%strong= r.artist_name
+			.media-body
+				Because you've listened to:
+				%br
+				.recommendation_info
+					- r.artists.first(5).map do |a|
+						.recommendation_info_artist
+							.media-left.artist_image= image_tag Artist.find(a).image, style: 'width: 30px'
+							.media-body
+								%h5= link_to Artist.find(a).name, artist_path(Artist.find(a).name)
+								%h5
+									= @profile.profile_artists.find_by(artist_id: a).count
+									plays 
+					= "and #{pluralize((r.artists.length - 5), 'more artist')}..." if r.artists.length > 5
+			%br
+	= will_paginate @recs

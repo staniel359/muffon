@@ -1,0 +1,13 @@
+Order:
+- if @profile.library_artists_scope
+	- if @profile.library_artists_scope == 'count desc'
+		most played
+	- if @profile.library_artists_scope == 'count asc'
+		least played
+	- if @profile.library_artists_scope == 'created_at desc'
+		newest
+	- if @profile.library_artists_scope == 'created_at asc'
+		oldest
+- else
+	most played
+.caret

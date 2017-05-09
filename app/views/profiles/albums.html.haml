@@ -1,0 +1,7 @@
+.profile_library.center
+	#profile_albums_panel.panel.panel-default
+		.panel_header
+			%h3= "#{@profile.nickname}'s albums"
+		.panel_content
+			- @albums.map do |profile_album|
+				= render partial: 'profile_album', locals: {profile_album: profile_album}

@@ -1,0 +1,7 @@
+.profile_library.center
+	#profile_album_plays_panel.panel.panel-default
+		.panel_header
+			= image_tag @album.album.cover
+			%h3= "#{@album.album.artist.name} - #{@album.album.title} plays in #{@profile.nickname}'s library"
+		%table.table.table-hover.table-condensed
+			= render partial: 'profile_play', collection: @plays

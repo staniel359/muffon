@@ -1,6 +1,7 @@
 .profile_form
 	.flash_msg
 	= form_for @profile, remote: true, multipart: true, authenticity_token: true do |f|
+		-# - if params[:token]
 		= f.hidden_field :lastfm_id
 		= f.hidden_field :remote_avatar_url
 		#form_avatar_info
@@ -18,8 +19,9 @@
 		#form_birthdate
 			= f.date_select :birthdate, {order: [:day, :month, :year], start_year: 1920}, {class: 'form-control'}
 		= f.email_field :email, class: 'form-control', placeholder: 'Email:'
-		= f.password_field :password, class: 'form-control', placeholder: 'Password:'
-		= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
+		- if params[:action] == 'new' 
+			= f.password_field :password, class: 'form-control', placeholder: 'Password:'
+			= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
 
 		= f.submit @button_text, class: 'btn btn-primary'
 

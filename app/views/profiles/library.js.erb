@@ -1,0 +1,23 @@
+<% if params[:artists_scope] || params[:artists_default_scope] %>
+	<% if params[:artists_scope] %>
+		<% get_scoped_artists(params[:artists_scope].to_i) %>
+		$('#top_artists').html("<%= j render partial: 'profile_artist', collection: @top_artists %>")
+		$('#top_artists_scope').html("<%= j render partial: 'top_artists_scope', locals: {message: 'Show by a period:'} %>")
+	<% else %>
+		<% get_scoped_artists(params[:artists_default_scope].to_i) %>
+		$('#top_artists').html("<%= j render partial: 'profile_artist', collection: @top_artists %>")
+		$('#top_artists_default_scope').html("<%= j render partial: 'top_artists_scope', locals: {message: 'Default scope:'} %>")
+		$('#top_artists_scope').html("<%= j render partial: 'top_artists_scope', locals: {message: 'Show by a period:'} %>")
+	<% end %>
+<% elsif params[:albums_scope] || params[:albums_default_scope] %>
+	<% if params[:albums_scope] %>
+		<% get_scoped_albums(params[:albums_scope].to_i) %>
+		$('#top_albums').html("<%= j render partial: 'profile_album', collection: @top_albums %>")
+		$('#top_albums_scope').html("<%= j render partial: 'top_albums_scope', locals: {message: 'Show by a period:'} %>")
+	<% else %>
+		<% get_scoped_albums(params[:albums_default_scope].to_i) %>
+		$('#top_albums').html("<%= j render partial: 'profile_album', collection: @top_albums %>")
+		$('#top_albums_scope').html("<%= j render partial: 'top_albums_scope', locals: {message: 'Show by a period:'} %>")
+		$('#top_albums_default_scope').html("<%= j render partial: 'top_albums_scope', locals: {message: 'Default scope:'} %>")
+	<% end %>
+<% end %>

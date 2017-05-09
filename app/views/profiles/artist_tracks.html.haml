@@ -1,0 +1,7 @@
+.profile_library.center
+	#profile_artist_tracks_panel.panel.panel-default
+		.panel_header
+			= image_tag @artist.artist.image
+			%h3= "#{@artist.artist.name} tracks in #{@profile.nickname}'s library"
+		%table.table.table-hover.table-condensed#profile_artist_tracks
+			= render partial: 'profile_track', collection: @tracks

@@ -1,0 +1,14 @@
+.artist
+	- if params[:action] == 'artist'
+		= link_to(artist_path(profile_artist.artist.name)) do
+			.artist_image= image_tag profile_artist.artist.image if profile_artist.artist.image.present?
+			%h4
+				%strong= profile_artist.artist.name
+			%h5 on muffon
+	- else
+		= link_to(library_artist_path(id: @profile.id, artist_id: profile_artist.id)) do
+			.artist_image= image_tag profile_artist.artist.image if profile_artist.artist.image.present?
+			%h4
+				%strong= profile_artist.artist.name
+		= link_to(library_artist_plays_path(id: @profile.id, artist_id: profile_artist.id)) do
+			%h5= pluralize(profile_artist.count, 'play')

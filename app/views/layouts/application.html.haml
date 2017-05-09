@@ -10,5 +10,6 @@
 	%body
 		= render 'layouts/upbar'
 		= render 'layouts/sidebar' if logged_in?
-		-# = render 'layouts/progress_bar'
+		= render 'layouts/progress_bar' if logged_in?
 		.container-fluid= yield
+		-# = render 'layouts/player'

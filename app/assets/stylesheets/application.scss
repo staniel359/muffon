@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 html, body {
 	height: 100%;
@@ -11,8 +12,12 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
-* {
-	letter-spacing: 1px;
+hr {
+	margin: 10px 0;
+}
+
+a, a:hover {
+	color: white;
 }
 
 .container-fluid {
@@ -28,41 +33,81 @@ h1, h2, h3, h4, h5, h6 {
 #upbar {
 	width: 100%;
 	position: fixed;
-	margin-left: 65px;
+	margin-left: 145px;
 	height: 35px;
-	#logo {
-		text-align: center;
+	a {
+		vertical-align: top;
+	}
+	img {
+		margin: -10px 5px 0 -10px;
+		width: 35px;
+	}
+	.up {
+		display: inline-block;
+		vertical-align: top;
 		padding: 10px;
-		width: 110px;
 		height: 100%;
 		background-color: #261a33;
-		font-size: 25px;
+		min-width: 10px;
+		line-height: 1.3;
+		#up_link {
+			display: inline-block;
+			margin-left: 15px;
+			vertical-align: top;
+		}
+	}
+	#up_library img {
+		margin-right: -10px;
+	}
+	#logo {
+		text-align: center;		
 		line-height: 0.8;
 		letter-spacing: 1px;
+		font-size: 25px;
+		width: 110px;
+		margin-right: 6px;
 	}
 }
 
 .prog_bar {
-	margin-bottom: 10px;
+	position: fixed;
+	margin-left: 265px;
+	margin-top: 45px;
 	.progress {
 		margin-bottom: 10px;
+		// .progress-bar {
+		// 	background-color: #453a58;
+		// }
 	}
 	#job_status .job {
 		display: inline-block;
 	}
 }
 
-
 #sidebar {
-	padding: 40px 0 0 0;
+	padding: 40px 10px 0 10px;
 	width: 50px;
 	background-color: #261a33;
 	height: 100%;
 	position: fixed;
 	#side_down_icons {
 		position: absolute;
-		bottom: 0;
+		bottom: 5px;
 	}
+	i {
+		text-align: center;
+		font-size: 25px;
+		width: 30px;
+		margin-bottom: 10px;
+	}
+}
+
+#player {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100px;
+	background-color: #261a33;
 }
 
 .panel {
@@ -73,7 +118,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .center {
-	margin: auto;
+	margin-left: 200px;
+	width: 792px;
 }
 
 #signup_form, #login_form, #edit_form {
@@ -81,6 +127,10 @@ h1, h2, h3, h4, h5, h6 {
 	h4 {
 		margin-bottom: 10px;
 	}
+}
+
+.dropdown_btn:hover {
+	color: white;
 }
 
 .profile_form {
@@ -111,41 +161,168 @@ h1, h2, h3, h4, h5, h6 {
 
 #profile_page {
 	#profile_avatar {
-		margin-top: -20px;
-		margin-left: -20px;
+		position: fixed;
+		margin-left: 80px;
 	}
 }
 
-#profile_library {
-	width: 815px;
-	h3 {
-		margin-bottom: 10px;
+.created_at {
+	float: right;
+	margin-left: 15px;
+}
+
+#library_page .panel {
+	padding-bottom: 10px;
+}
+
+.table {
+	margin: 0;
+	tbody tr td {
+		border: none;
 	}
-	.top_artist, .top_album {
-		text-align: center;
+	tbody tr td:hover {
+		background-color: #1c1326;
+	}
+}
+
+.scopes {
+	display: inline-block;
+	float: right;
+	.dropdown {
 		display: inline-block;
-		margin: 0 10px 10px 0;
-		width: 180px;
-		vertical-align: top;
 	}
-	.artist_image, .album_cover {
-		margin-bottom: 5px;
-		img {
-			width: 180px;
+}
+
+.profile_library {
+	#top_albums_panel {
+		width: 458px;
+		display: inline-block;
+		margin-right: 10px;
+		.panel_content {
+			text-align: center;
 		}
 	}
-	.artist_image img {
-		border-radius: 50%;
+	#top_tracks_panel {
+		display: inline-block;
+		width: 320px;
+		vertical-align: top;
 	}
-	.top_track, .recent_track {
-		margin-bottom: 10px;
+	#profile_artist_info {
+		#prof_art_left {
+			padding: 0
+		}
+		#prof_art_info {
+			padding-left: 10px;
+		}
+		#profile_album {
+			width: 188px;
+		}
+	}
+	.profile_track {
+		h5 {
+			display: inline;
+		}
+	}
+	.track_cover img {
+		width: 50px;
 	}
 	#recent_tracks, #new_loved_tracks {
-		width: 400px;
+		width: 389px;
 		display: inline-block;
 		vertical-align: top;
 	}
-	#recent_tracks {
+	#new_loved_tracks {
 		margin-right: 10px;
+	}
+}
+
+.artist, .album {
+	text-align: center;
+	display: inline-block;
+	margin-bottom: 15px;
+	width: 190px;
+	vertical-align: top;
+}
+
+.artist_image, .album_cover {
+	margin-bottom: 5px;
+	img {
+		width: 170px;
+	}
+}
+.artist_image img {
+	position: relative;
+	z-index: 10;
+	border-radius: 50%;
+}
+
+.panel_header {
+	margin-bottom: 10px;
+	img {
+		width: 50px;
+		border-radius: 50%;
+		margin-right: 5px;
+	}
+	h3 {
+		display: inline;
+		vertical-align: middle;
+	}
+}
+
+.panel_header_sm {
+	margin-bottom: 5px;
+}
+
+.panel_content {
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.artist_page {
+	#artist_page_image {
+		padding-right: 20px;
+	}
+	#artist_page_tracks, #artist_page_albums {
+		display: table-cell;
+		vertical-align: top;
+	}
+	#artist_page_tracks {
+		width: 368px;
+	}
+	#artist_page_albums {
+		width: 384px;
+	}
+	#artist_page_info_tags {
+		margin-bottom: 10px;
+	}
+	#artist_page_info_listens h5 {
+		display: inline-block;
+	}
+}
+
+.recommendation {
+	display: inline-block;
+	vertical-align: top;
+	width: 374px;
+	.recommendation_artist {
+		text-align: center;
+	}
+	.recommendation_info_artist {
+		margin-bottom: 5px;
+	}
+	.rec_plays {
+		width: 87px;
+		height: 87px;
+		background-color: rebeccapurple;
+		margin-top: -87px;
+		margin-left: 84px;
+		background-color: #1d3475;
+		color: white;
+		position: relative;
+		h5 {
+			position: absolute;
+			bottom: 8px;
+			right: 8px;
+		}
 	}
 }
