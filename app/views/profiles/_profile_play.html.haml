@@ -1,7 +1,10 @@
 %tr
 	%td.profile_track
 		- unless params[:action] == 'album' || params[:action] == 'album_plays'
-			.media-left.track_cover= image_tag ((profile_play.album && profile_play.album.cover != '') ? profile_play.album.cover : 'missing_album.png')
+			- if profile_play.album && profile_play.album.cover
+				.media-left.track_cover= image_tag ((profile_play.album.cover != '') ? profile_play.album.cover : 'missing_album.png')
+			- else
+				.media-left.track_cover= image_tag 'missing_album.png'
 		.media-body
 			%h5.created_at= l profile_play.created_at, format: "%e %b %Y, %H:%M"
 			- if profile_play.profile_track.loved?

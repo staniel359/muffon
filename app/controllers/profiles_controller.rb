@@ -46,7 +46,6 @@ class ProfilesController < ApplicationController
 				redirect_to root_path
 				if @profile.lastfm_id.present?
 					GetTracksJob.perform_later(@profile.id)
-					GetRecommendationsJob.perform_later(@profile.id)
 				end
 			else
 				respond_to :js

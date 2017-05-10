@@ -71,9 +71,11 @@ a, a:hover {
 }
 
 .prog_bar {
+	z-index: 1000;
 	position: fixed;
 	margin-left: 265px;
 	margin-top: 45px;
+	width: 792px;
 	.progress {
 		margin-bottom: 10px;
 		// .progress-bar {
@@ -310,6 +312,7 @@ a, a:hover {
 }
 
 .recommendation {
+	min-height: 220px;
 	display: inline-block;
 	vertical-align: top;
 	width: 374px;
@@ -331,7 +334,7 @@ a, a:hover {
 	#rec_actions {
 		height: 170px;
 		width: 170px;
-		margin-top: -195px;
+		position: absolute;
 	}
 	.rec_action {
 		width: 85px;

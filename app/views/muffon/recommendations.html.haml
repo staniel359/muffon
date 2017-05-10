@@ -3,11 +3,6 @@
 	- @recs.map do |r|
 		.panel.panel-default.recommendation#recommendation{id: r.id}
 			.media-left.recommendation_artist
-				= link_to artist_path(r.artist_name) do
-					.artist_image
-						= image_tag r.image if r.image
-					%h4
-						%strong= r.artist_name
 				#rec_actions
 					#rec_delete.rec_action
 						= link_to (fa_icon 'times'), recommendations_path(delete: r.id), method: :patch, remote: true, class: 'rec_del_btn'
@@ -19,6 +14,11 @@
 						%h5
 							= fa_icon 'plus'
 							.caret
+				= link_to artist_path(r.artist_name) do
+					.artist_image
+						= image_tag r.image if r.image
+					%h4
+						%strong= r.artist_name
 			.media-body
 				%h5.rec_header Because you've listened to:
 				.recommendation_info

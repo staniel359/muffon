@@ -1,7 +1,10 @@
 .album
 	- if profile_album.album
 		= link_to(library_album_path(id: @profile.id, album_id: profile_album.id)) do
-			.album_cover= image_tag ((profile_album.album.cover != '') ? profile_album.album.cover : 'missing_album.png')
+			- if profile_album.album.cover
+				.album_cover= image_tag ((profile_album.album.cover != '') ? profile_album.album.cover : 'missing_album.png')
+			- else
+				.album_cover= image_tag 'missing_album.png'
 			%h4
 				%strong= profile_album.album.title
 		- if params[:action] == 'library' || params[:action] == 'albums' || params[:action] == 'album'
