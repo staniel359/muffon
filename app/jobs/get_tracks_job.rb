@@ -6,12 +6,12 @@ class GetTracksJob < ApplicationJob
 
   		# Total entries count
 
-  		recent_tracks_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['recenttracks']['@attr']['total'].to_i
-  		top_artists_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topartists']['@attr']['total'].to_i
-  		top_albums_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topalbums']['@attr']['total'].to_i
-  		top_tracks_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['toptracks']['@attr']['total'].to_i
-      loved_tracks_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['lovedtracks']['@attr']['total'].to_i
-      top_tags_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['toptags']['tag'].length
+  		recent_tracks_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['recenttracks']['@attr']['total'].to_i
+  		top_artists_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topartists']['@attr']['total'].to_i
+  		top_albums_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topalbums']['@attr']['total'].to_i
+  		top_tracks_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptracks']['@attr']['total'].to_i
+      loved_tracks_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['@attr']['total'].to_i
+      top_tags_total = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag'].length
 
   		entries_total = (recent_tracks_total + top_artists_total + top_albums_total + top_tracks_total + loved_tracks_total + top_tags_total).to_f
 
@@ -21,9 +21,9 @@ class GetTracksJob < ApplicationJob
     	ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: recent_tracks_total, p: 1, c: recent_tracks_counter }
     	@counter = 0
 
-    	recent_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&limit=200&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['recenttracks']['@attr']['totalPages'].to_i
+    	recent_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['recenttracks']['@attr']['totalPages'].to_i
   		recent_tracks_pages.downto(1) do |i|
-  			recent_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&extended=1&limit=200&page=#{i}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['recenttracks']['track']
+  			recent_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&extended=1&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['recenttracks']['track']
   			recent_tracks.reverse.map do |t|
   				artist = Artist.where('lower(name) = lower(?)', t['artist']['name']).first_or_create!(name: t['artist']['name'])
   				track = Track.where('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id).first_or_create!(title: t['name'], artist_id: artist.id)
@@ -54,9 +54,9 @@ class GetTracksJob < ApplicationJob
   		artists_counter = 0
   		ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: top_artists_total, p: 2, c: artists_counter }
 
-  		top_artists_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{profile.lastfm_id}&limit=200&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topartists']['@attr']['totalPages'].to_i
+  		top_artists_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topartists']['@attr']['totalPages'].to_i
   		1.upto(top_artists_pages) do |i|
-  			top_artists = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topartists']['artist']
+  			top_artists = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topartists']['artist']
   			
   			top_artists.map do |t|
   				artist = Artist.find_by('lower(name) = lower(?)', t['name'])
@@ -76,9 +76,9 @@ class GetTracksJob < ApplicationJob
   		albums_counter = 0
   		ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: top_albums_total, p: 3, c: albums_counter }
 
-  		top_albums_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=#{profile.lastfm_id}&limit=200&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topalbums']['@attr']['totalPages'].to_i
+  		top_albums_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topalbums']['@attr']['totalPages'].to_i
   		1.upto(top_albums_pages) do |i|
-  			top_albums = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topalbums']['album']
+  			top_albums = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topalbums']['album']
   			
   			top_albums.map do |t|
   				artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
@@ -101,9 +101,9 @@ class GetTracksJob < ApplicationJob
   		tracks_counter = 0
   		ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: top_tracks_total, p: 4, c: tracks_counter }
 
-  		top_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=#{profile.lastfm_id}&limit=200&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['toptracks']['@attr']['totalPages'].to_i
+  		top_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptracks']['@attr']['totalPages'].to_i
   		1.upto(top_tracks_pages) do |i|
-  			top_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['toptracks']['track']
+  			top_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptracks']['track']
   			top_tracks.map do |t|
   				artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
   				track = Track.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
@@ -122,9 +122,9 @@ class GetTracksJob < ApplicationJob
       loved_counter = 0
       ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: loved_tracks_total, p: 5, c: loved_counter }
 
-      loved_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['lovedtracks']['@attr']['totalPages'].to_i
+      loved_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['@attr']['totalPages'].to_i
       loved_tracks_pages.downto(1) do |i|
-        loved_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['lovedtracks']['track']
+        loved_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['track']
 
         loved_tracks.map do |t|
           artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
@@ -143,7 +143,7 @@ class GetTracksJob < ApplicationJob
       tag_counter = 0
       ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: top_tags_total, p: 6, c: tag_counter }
 
-      top_tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['toptags']['tag']
+      top_tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag']
 
       top_tags.map do |t|
         tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!

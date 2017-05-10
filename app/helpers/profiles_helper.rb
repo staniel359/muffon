@@ -23,9 +23,9 @@ module ProfilesHelper
 	end
 
 	def update_artists_images
-		top_artists_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{@profile.lastfm_id}&limit=200&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topartists']['@attr']['totalPages'].to_i
+		top_artists_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{@profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topartists']['@attr']['totalPages'].to_i
   		1.upto(top_artists_pages) do |i|
-  			top_artists = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{@profile.lastfm_id}&limit=200&page=#{i}&api_key=fb914bd85f85f89d750e93c8bfb70012&format=json").read)['topartists']['artist']
+  			top_artists = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=#{@profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['topartists']['artist']
   			
   			top_artists.map do |t|
   				artist = Artist.find_by('lower(name) = lower(?)', t['name'])
