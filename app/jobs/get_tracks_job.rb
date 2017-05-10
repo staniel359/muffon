@@ -30,7 +30,7 @@ class GetTracksJob < ApplicationJob
   				album = Album.where('lower(title) = lower(?) and artist_id = ?', t['album']['#text'], artist.id).first_or_create(title: t['album']['#text'], artist_id: artist.id)
           
   				profile_artist = ProfileArtist.where(artist_id: artist.id, profile: profile.id).first_or_create!(created_at: t['date']['#text'])
-          profile_album = ProfileAlbum.where(album_id: album.id, profile: profile.id).first_or_create(created_at: t['date']['#text'], profile_artist_id: profile_artist.id, artist.id) if album
+          profile_album = ProfileAlbum.where(album_id: album.id, profile: profile.id).first_or_create(created_at: t['date']['#text'], profile_artist_id: profile_artist.id, artist_id: artist.id) if album
   				profile_track = ProfileTrack.where(track_id: track.id, profile: profile.id).first_or_create!(created_at: t['date']['#text'], loved: t['loved'].to_i, profile_artist_id: profile_artist.id, artist_id: artist.id, profile_album_id: (profile_album ? profile_album.id : nil), album_id: (album ? album.id : nil))
 
   				Play.where(profile_id: profile.id, 
