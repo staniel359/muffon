@@ -83,7 +83,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_cable.url = "wss://muffon.endorphine.by/cable"  
+
+  config.action_cable.url = "wss://muffon.endorphine.by/cable" 
+  config.web_socket_server_url = "wss://muffon.endorphine.by/cable" 
+  config.action_cable.allowed_request_origins = [ 'https://muffon.endorphine.by' ]
+
   ENV["LASTFM_KEY"] = "2cd2a26588d785bcfd484f09720a2d57";
   ENV["LASTFM_SECRET"] = "e91c8b57bc68a66a6707711471b75e90";
 end
