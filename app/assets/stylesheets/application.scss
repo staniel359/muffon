@@ -4,7 +4,7 @@
 
 html, body {
 	height: 100%;
-	background-color: #453a58;
+	background-color: #392d50;
 	color: white;
 }
 
@@ -31,6 +31,7 @@ a, a:hover {
 }
 
 #upbar {
+	z-index: 1000;
 	width: 100%;
 	position: fixed;
 	margin-left: 145px;
@@ -292,11 +293,19 @@ a, a:hover {
 	#artist_page_albums {
 		width: 384px;
 	}
+	#artist_page_info_name {
+		margin-bottom: 5px;
+	}
 	#artist_page_info_tags {
 		margin-bottom: 10px;
 	}
-	#artist_page_info_listens h5 {
+	#artist_page_info_listens h4 {
 		display: inline-block;
+	}
+	.label {
+		font-size: 100%;
+		font-weight: inherit;
+		padding: 2px 6px;
 	}
 }
 
@@ -307,22 +316,71 @@ a, a:hover {
 	.recommendation_artist {
 		text-align: center;
 	}
-	.recommendation_info_artist {
+	.rec_header {
 		margin-bottom: 5px;
 	}
-	.rec_plays {
-		width: 87px;
-		height: 87px;
-		background-color: rebeccapurple;
-		margin-top: -87px;
-		margin-left: 84px;
-		background-color: #1d3475;
-		color: white;
-		position: relative;
-		h5 {
-			position: absolute;
-			bottom: 8px;
-			right: 8px;
+	.recommendation_info h5 {
+		font-size: 12px;
+	}
+	.recommendation_info_artist {
+		margin-bottom: 5px;
+		.artist_image, h5 {
+			display: inline;
 		}
 	}
+	#rec_actions {
+		height: 170px;
+		width: 170px;
+		margin-top: -195px;
+	}
+	.rec_action {
+		width: 85px;
+		height: 85px;
+		color: white;
+	}
+	#rec_plays {
+		position: relative;
+		margin-top: -85px;
+		margin-left: 85px;
+		background-color: #15389b;
+		text-align: right;
+		h5 {
+			top: 7px;
+			right: 7px;
+			position: absolute;
+		}
+	}
+	#rec_listened {
+		position: relative;
+		margin-left: 85px;
+		text-align: right;
+		h5 {
+			bottom: 0;
+			right: 0;
+			position: absolute;
+		}
+	}
+	.rec_del_btn {
+		width: 15px;
+		height: 15px;
+		text-align: center;
+		border-radius: 2px;
+		float: left;
+		&:hover {
+			background-color: red;
+		}
+		i {
+			vertical-align: top;
+		}
+	}
+}
+.rec_restore {
+	display: inline-block;
+	width: 374px;
+}
+
+#recommendations_page .panel {
+	background-color: #1c1326;
+	padding: 10px;
+	margin-bottom: 10px;
 }

@@ -1,0 +1,3 @@
+#rec_restore.rec_restore{id: params[:delete]}
+	Recommendation was deleted. 
+	= link_to 'Restore', recommendations_path(restore: params[:delete].to_i), method: :patch, remote: true

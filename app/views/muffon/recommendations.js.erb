@@ -1,0 +1,7 @@
+<% if params[:delete] %>
+	$("#recommendation_<%= params[:delete] %>").after("<%= j render 'rec_restore' %>")
+	$("#recommendation_<%= params[:delete] %>").hide()
+<% elsif params[:restore] %>
+	$("#recommendation_<%= params[:restore] %>").show()
+	$("#rec_restore_<%= params[:restore] %>").remove()
+<% end %>

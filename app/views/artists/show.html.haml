@@ -2,15 +2,15 @@
 	.media-left#artist_page_image
 		.artist_image= image_tag @artist['image'][2]['#text']
 	.media-body#artist_page_info
-		%h3= @artist['name']
+		%h3#artist_page_info_name= @artist['name']
 		#artist_page_info_tags
 			- @artist['tags']['tag'].map do |t|
 				.label.label-primary= t['name']
 		#artist_page_info_listens
-			%h5
+			%h4
 				= fa_icon 'user'
 				= @artist['stats']['listeners']
-			%h5
+			%h4
 				= fa_icon 'music'
 				= @artist['stats']['playcount']
 		%hr
@@ -22,6 +22,7 @@
 			- @tracks.map do |t|
 				%tr
 					%td
+						= link_to (fa_icon 'youtube-play'), "https://www.youtube.com/results?search_query=#{CGI.escape(@artist['name'])}+#{CGI.escape(t['name'])}", target: '_blank'
 						= t['name']
 						= t['listeners']
 	#artist_page_albums

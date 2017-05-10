@@ -8,13 +8,13 @@
 
 	- if params[:action] == 'artists'
 		.up#up_library
-			= link_to image_tag(@profile.avatar.url), @profile
+			= link_to image_tag(@profile.avatar.url(:md)), @profile
 			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 
 	- if params[:action] == 'artist'
 		.up#up_library
-			= link_to (image_tag @profile.avatar), library_path(@profile)
+			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag (@artist.artist.image)
@@ -22,7 +22,7 @@
 
 	- if params[:action] == 'artist_albums'
 		.up#up_library
-			= link_to (image_tag @profile.avatar), library_path(@profile)
+			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag (@artist.artist.image)
@@ -31,7 +31,7 @@
 
 	- if params[:action] == 'artist_plays'
 		.up#up_library
-			= link_to (image_tag @profile.avatar), library_path(@profile)
+			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag (@artist.artist.image)
@@ -40,7 +40,7 @@
 
 	- if params[:action] == 'artist_tracks'
 		.up#up_library
-			= link_to (image_tag @profile.avatar), library_path(@profile)
+			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag @artist.artist.image
@@ -50,13 +50,13 @@
 
 	- if params[:action] == 'albums'
 		.up#up_library
-			= link_to image_tag(@profile.avatar.url), @profile
+			= link_to image_tag(@profile.avatar.url(:md)), @profile
 			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
 		.up#up_albums= link_to 'albums', library_albums_path(@profile)
 
 	- if params[:action] == 'album'
 		.up#up_library
-			= link_to (image_tag @profile.avatar), library_path(@profile)
+			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag @album.album.artist.image
@@ -68,7 +68,7 @@
 
 	- if params[:action] == 'album_plays'
 		.up#up_library
-			= link_to (image_tag @profile.avatar), library_path(@profile)
+			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag @album.album.artist.image
@@ -90,3 +90,7 @@
 			= link_to image_tag(@profile.avatar.url(:md)), @profile
 			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
 		.up#up_tracks= link_to 'plays', library_plays_path(@profile)
+
+	- if params[:action] == 'recommendations'
+		.up#up_library
+			= link_to 'Recommendations', recommendations_path

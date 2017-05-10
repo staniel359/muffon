@@ -12,4 +12,5 @@ class Profile < ApplicationRecord
 	has_many :plays
 	has_many :loved_tracks
 	has_many :recommendations
+	has_many :listened_artists
 end
