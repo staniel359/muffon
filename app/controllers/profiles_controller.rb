@@ -106,7 +106,7 @@ class ProfilesController < ApplicationController
 		@new_tracks = @profile.profile_tracks.order(created_at: :desc).first(5)
 		@loved_tracks = @profile.loved_tracks.order(created_at: :desc).first(5)
 		@top_tags = @profile.profile_tags.order(count: :desc).first(10)
-		# update_artists_images		
+		# update_artists_images	
 	end
 
 	def artists

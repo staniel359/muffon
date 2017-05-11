@@ -20,7 +20,7 @@
 					%h4
 						%strong= r.artist_name
 			.media-body
-				%h5.rec_header Because you've listened to:
+				%h5.rec_header Similar to:
 				.recommendation_info
 					- r.artists.first(5).map do |a|
 						.recommendation_info_artist
@@ -29,4 +29,4 @@
 					= "and #{pluralize((r.artists.length - 5), 'more artist')}..." if r.artists.length > 5
 	= will_paginate @recs
 
--# - console
+- console

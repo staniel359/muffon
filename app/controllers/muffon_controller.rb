@@ -12,7 +12,7 @@ class MuffonController < ApplicationController
 	end
 
 	def recommendations
-		@recs = @profile.recommendations.order('array_length(artists, 1) desc').paginate(page: params[:page], per_page: 20, total_entries: 400)
+		@recs = @profile.recommendations.where(deleted: nil).order('array_length(artists, 1) desc').paginate(page: params[:page], per_page: 20, total_entries: 400)
 		@title = 'Recommendations'
 		if params[:delete] || params[:restore] || params[:listened]
 			if params[:delete]

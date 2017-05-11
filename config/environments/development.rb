@@ -53,6 +53,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_cable.url = "ws://localhost:3000/cable"
+  
   ENV["LASTFM_KEY"] = "146fa01985acd46b23f4e6c5f660f199";
   ENV["LASTFM_SECRET"] = "4608a06d1f929b77f2567d7645145270";
 end

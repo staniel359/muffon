@@ -146,7 +146,7 @@ class GetTracksJob < ApplicationJob
       top_tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag']
 
       top_tags.map do |t|
-        tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!
+        tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!(name: t['name'])
         ProfileTag.where(profile: profile_id, tag_id: tag.id).first_or_create!(count: t['count'])
 
         @counter += 1
@@ -155,7 +155,9 @@ class GetTracksJob < ApplicationJob
         ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 6, t: top_tags_total, c: tag_counter, w: width }
       end
 
-      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, close: 1 }
+      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 7}
+      rec_total = profile.profile_artists.count.to_f
+      rec_counter = 0
 
       profile.profile_artists.order(count: :desc).map do |a|
         similars = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=#{CGI.escape(a.artist.name)}&limit=50&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['similarartists']['artist']
@@ -164,7 +166,11 @@ class GetTracksJob < ApplicationJob
           rec.artists << a.artist_id
           rec.save!
         end
+        rec_counter += 1
+        width = (rec_counter / rec_total) * 100
+        ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 7, w: width }
       end
+      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, close: 1 }
 	  end
 
 end

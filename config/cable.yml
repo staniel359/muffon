@@ -7,4 +7,4 @@ test:
 
 production:
   adapter: redis
-  url: redis://192.168.2.119:6379/1
+  url: redis://localhost:6379/1
