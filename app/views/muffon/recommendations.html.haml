@@ -28,5 +28,3 @@
 							%h5= link_to Artist.find(a).name, library_artist_path(id: @profile, artist_id: @profile.profile_artists.find_by(artist_id: a))
 					= "and #{pluralize((r.artists.length - 5), 'more artist')}..." if r.artists.length > 5
 	= will_paginate @recs
-
-- console
