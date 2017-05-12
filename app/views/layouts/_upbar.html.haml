@@ -60,8 +60,8 @@
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag @album.album.artist.image
-			= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.album.artist.id)
-		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.album.artist.id)
+			= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.profile_artist_id)
+		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.profile_artist_id)
 		.up#up_album
 			= image_tag @album.album.cover
 			= link_to "#{@album.album.title}", library_album_path(@profile)
@@ -72,8 +72,8 @@
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)
 		.up#up_artist
 			= image_tag @album.album.artist.image
-			= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.album.artist.id)
-		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.album.artist.id)
+			= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.profile_artist_id)
+		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.profile_artist_id)
 		.up#up_album
 			= image_tag @album.album.cover
 			= link_to "#{@album.album.title}", library_album_path(@profile)

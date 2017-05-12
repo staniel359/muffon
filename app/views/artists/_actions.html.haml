@@ -1,0 +1,10 @@
+.artist_actions
+	- if params[:action] == 'recommendations' 
+		.rec_delete.artist_action
+			= link_to (fa_icon 'times'), recommendations_path(delete: a_id), method: :patch, remote: true, class: 'rec_del_btn', data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Delete'
+	- if artist = Artist.find_by(name: artist_name)
+		- if profile_artist = current_profile.profile_artists.find_by(artist_id: artist.id)
+			.artist_plays.artist_action
+				%h5= link_to (fa_icon 'music'), library_artist_path(id: current_profile.id, artist_id: profile_artist.id), data: {toggle: 'tooltip', placement: 'bottom'}, title: "In your library"
+	.artist_action.artist_listened#artist_listened{id: a_id}
+		= render partial: 'artists/listened', locals: {artist_name: artist_name, a_id: a_id}

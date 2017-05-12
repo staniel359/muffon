@@ -20,6 +20,19 @@ a, a:hover {
 	color: white;
 }
 
+input {
+	color: black;
+}
+
+.tooltip-inner {
+	white-space: nowrap;
+	max-width: none;
+}
+
+.label-primary {
+	background-color: #392d50;
+}
+
 .container-fluid {
 	height: 100%;
 	padding: 45px 65px 0 15px;
@@ -71,6 +84,12 @@ a, a:hover {
 }
 
 .prog_bar {
+	background-color: #261a33cc;
+	border-radius: 0px;
+	margin-bottom: 0px;
+	bottom: 20px;
+	border: none;
+	padding: 10px 15px;
 	z-index: 1000;
 	position: fixed;
 	margin-left: 265px;
@@ -113,7 +132,7 @@ a, a:hover {
 	background-color: #261a33;
 }
 
-.panel {
+.container-fluid .panel {
 	border-radius: 0px;
 	background-color: #261a33;
 	border: none;
@@ -309,6 +328,16 @@ a, a:hover {
 		font-weight: inherit;
 		padding: 2px 6px;
 	}
+	.artist_page_similar {
+		width: 170px;
+		margin: auto;
+	}
+}
+
+.rec_wrap {
+	display: inline-block;
+	margin-bottom: 10px;
+	position: relative;
 }
 
 .recommendation {
@@ -316,74 +345,131 @@ a, a:hover {
 	display: inline-block;
 	vertical-align: top;
 	width: 374px;
+	.recommendation_artist_tags {
+		text-align: center;
+	}
+	.recommendation_tags {
+		margin-bottom: 5px;
+		.label {
+			display: inline-block;
+			font-size: 13px;
+			margin-bottom: 3px;
+			font-weight: unset;
+			padding: 2px 5px;
+			max-width: 170px;
+			white-space: normal;
+		}
+	}
 	.recommendation_artist {
 		text-align: center;
+		padding-right: 0px;
+		margin-bottom: 10px;
+	}
+	.recommendation_similars {
+		padding-left: 15px;
 	}
 	.rec_header {
 		margin-bottom: 5px;
 	}
-	.recommendation_info h5 {
-		font-size: 12px;
+	.recommendation_similars_artists h5 {
+		font-size: 13px;
 	}
-	.recommendation_info_artist {
+	.recommendation_similars_artist {
 		margin-bottom: 5px;
 		.artist_image, h5 {
 			display: inline;
 		}
-	}
-	#rec_actions {
-		height: 170px;
-		width: 170px;
-		position: absolute;
-	}
-	.rec_action {
-		width: 85px;
-		height: 85px;
-		color: white;
-	}
-	#rec_plays {
-		position: relative;
-		margin-top: -85px;
-		margin-left: 85px;
-		background-color: #15389b;
-		text-align: right;
-		h5 {
-			top: 7px;
-			right: 7px;
-			position: absolute;
-		}
-	}
-	#rec_listened {
-		position: relative;
-		margin-left: 85px;
-		text-align: right;
-		h5 {
-			bottom: 0;
-			right: 0;
-			position: absolute;
-		}
-	}
-	.rec_del_btn {
-		width: 15px;
-		height: 15px;
-		text-align: center;
-		border-radius: 2px;
-		float: left;
-		&:hover {
-			background-color: red;
-		}
-		i {
-			vertical-align: top;
+		img {
+			width: 30px;
 		}
 	}
 }
 .rec_restore {
-	display: inline-block;
 	width: 374px;
+	position: absolute;
+	z-index: 100;
+	background-color: #1c1326cc;
+	text-align: center;
+	height: 100%;
+	h4 {
+		margin-top: 100px;
+	}
 }
 
-#recommendations_page .panel {
-	background-color: #1c1326;
-	padding: 10px;
-	margin-bottom: 10px;
+#recommendations_page {
+	.panel {
+		background-color: #1c1326;
+		margin-bottom: 0;
+		padding: 10px;
+	}
+	.panel_header .dropdown-menu {
+		padding: 10px;
+		width: 220px;
+		i {
+			color: gray;
+		}
+	}
+}
+
+.artist_actions {
+	height: 170px;
+	width: 170px;
+	position: absolute;
+}
+
+.artist_action {
+	width: 85px;
+	height: 85px;
+	color: white;
+}
+
+.rec_delete {
+	position: absolute;
+}
+
+.artist_plays {
+	position: relative;
+	left: 85px;
+	background-color: #392d50;
+	text-align: right;
+	h5 {
+		top: 7px;
+		right: 7px;
+		position: absolute;
+	}
+}
+.artist_listened {
+	position: absolute;
+	top: 85px;
+	left: 85px;
+	text-align: right;
+	.check_artist {
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		.btn {
+			padding: 0;
+		}
+	}
+	.artist_checked {
+		position: absolute;
+		bottom: 7px;
+		right: 7px;
+	}
+	.artist_listened_content {
+		height: 100%;
+	}
+}
+.rec_del_btn {
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	border-radius: 2px;
+	float: left;
+	&:hover {
+		background-color: red;
+	}
+	i {
+		vertical-align: top;
+	}
 }

@@ -147,7 +147,7 @@ class ProfilesController < ApplicationController
 
 	def album
 		@title = "#{@album.album.artist.name} - #{@album.album.title} in #{@profile.nickname}'s library"
-		@tracks = @album.profile_tracks.order(count: :desc)
+		@tracks = @profile.profile_tracks.where("'?' = any(profile_albums)", @album.id).order(count: :desc)
 		@plays = @album.plays.order(created_at: :desc).first(10)
 	end
 

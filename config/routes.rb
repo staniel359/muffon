@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 
   resources :artists, only: :show, constraints: { id: /.*/ }
 
+  post '/listened', to: 'muffon#create_listened_artist', as: 'add_listened'
+  delete '/listened', to: 'muffon#destroy_listened_artist', as: 'destroy_listened'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

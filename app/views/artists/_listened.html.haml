@@ -1,0 +1,13 @@
+- if current_profile.listened_to?(artist_name)
+	.artist_listened_content{style: 'background-color: #563c8a'}
+		%h5.artist_checked= link_to (fa_icon 'check'), destroy_listened_path(a_id: a_id, artist_name: artist_name), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Listened"
+- else
+	.artist_listened_content
+		.dropdown.check_artist
+			.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+				%h5
+					= fa_icon 'plus'
+					.caret
+			%ul.dropdown-menu.dropdown-menu-right
+				%li= link_to 'Mark as listened', add_listened_path(a_id: a_id, artist_name: artist_name), method: :post, remote: true
+				%li= link_to 'Listen later', '#', remote: true

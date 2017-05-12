@@ -13,4 +13,12 @@ class Profile < ApplicationRecord
 	has_many :loved_tracks
 	has_many :recommendations
 	has_many :listened_artists
+
+	def listened(artist)
+		self.listened_artists.find_by(artist_name: artist)
+	end
+
+	def listened_to?(artist)
+		self.listened(artist)
+	end
 end

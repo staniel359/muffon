@@ -1,6 +1,7 @@
 .artist_page.panel.panel-default.center
 	.media-left#artist_page_image
-		.artist_image= image_tag @artist['image'][2]['#text']
+		= render partial: 'artists/actions', locals: {artist_name: @artist['name'], a_id: 0}
+		.artist_image= image_tag ((@artist['image'][2]['#text'] != '') ? @artist['image'][2]['#text'] : 'missing_artist.png')
 	.media-body#artist_page_info
 		%h3#artist_page_info_name= @artist['name']
 		#artist_page_info_tags
@@ -24,7 +25,7 @@
 					%td
 						= link_to (fa_icon 'youtube-play'), "https://www.youtube.com/results?search_query=#{CGI.escape(@artist['name'])}+#{CGI.escape(t['name'])}", target: '_blank'
 						= t['name']
-						= t['listeners']
+						= t['playcount']
 	#artist_page_albums
 		%h4.panel_header Top albums:
 		- @albums.map do |a|
@@ -32,14 +33,18 @@
 				.album_cover= image_tag ((a['image'][2]['#text'] != '') ? a['image'][2]['#text'] : 'missing_album.png')
 				%h5
 					%strong= a['name']
-					%h5= "#{a['playcount']} plays"
+					%h5
+						= a['playcount']
+						plays
 	%hr
 	#artist_page_similars
 		%h4.panel_header Similar artists:
 		.panel_content
-			- @artist['similar']['artist'].first(4).map do |a|
-				#artist_page_similar.artist
-					= link_to artist_path(a['name']) do
-						.artist_image= image_tag a['image'][2]['#text']
-						%h4
-							%strong= a['name']
+			- @artist['similar']['artist'].first(4).each_with_index do |a, index|
+				.artist_page_similar_wrap.artist
+					.artist_page_similar#artist_page_similar{id: index + 1}
+						= render partial: 'actions', locals: {artist_name: a['name'], a_id: index + 1}
+						= link_to artist_path(a['name']) do
+							.artist_image= image_tag ((a['image'][2]['#text'] != '') ? a['image'][2]['#text'] : 'missing_artist.png')
+							%h4
+								%strong= a['name']

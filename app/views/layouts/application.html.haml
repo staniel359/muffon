@@ -13,3 +13,10 @@
 		= render 'layouts/progress_bar' if logged_in?
 		.container-fluid= yield
 		-# = render 'layouts/player'
+
+:javascript
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip({
+			trigger: 'hover'
+		})
+	})

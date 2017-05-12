@@ -9,7 +9,7 @@
 				= render partial: 'profile_album', locals: {profile_album: @album}
 			.media-body#prof_alb_info
 				#prof_alb_tr
-					%h4.panel_header_sm= pluralize(@album.profile_tracks.count, 'track')
+					%h4.panel_header_sm= pluralize(@tracks.count, 'track')
 					%table.table.table-hover.table-condensed
 						= render partial: 'profile_track', collection: @tracks
 				%hr

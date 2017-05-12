@@ -1,0 +1,1 @@
+$("#artist_listened_<%= params[:a_id] %>").html("<%= j render partial: 'artists/listened', locals: {artist_name: params[:artist_name], a_id: params[:a_id]}%>")

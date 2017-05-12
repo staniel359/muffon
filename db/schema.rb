@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510102817) do
+ActiveRecord::Schema.define(version: 20170510093935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20170510102817) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
   end
 
   create_table "listened_artists", force: :cascade do |t|
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170510102817) do
     t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["profile_id", "artist_name"], name: "index_listened_artists_on_profile_id_and_artist_name", unique: true
     t.index ["profile_id"], name: "index_listened_artists_on_profile_id"
   end
 
@@ -52,12 +53,12 @@ ActiveRecord::Schema.define(version: 20170510102817) do
     t.bigint "profile_id"
     t.bigint "profile_track_id"
     t.bigint "track_id"
+    t.bigint "profile_album_id"
     t.bigint "album_id"
+    t.bigint "profile_artist_id"
+    t.bigint "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "profile_album_id"
-    t.bigint "artist_id"
-    t.bigint "profile_artist_id"
     t.index ["album_id"], name: "index_plays_on_album_id"
     t.index ["artist_id"], name: "index_plays_on_artist_id"
     t.index ["profile_album_id"], name: "index_plays_on_profile_album_id"
@@ -70,11 +71,11 @@ ActiveRecord::Schema.define(version: 20170510102817) do
   create_table "profile_albums", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "count", default: 0
     t.bigint "profile_artist_id"
     t.bigint "artist_id"
+    t.integer "count", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_profile_albums_on_album_id"
     t.index ["artist_id"], name: "index_profile_albums_on_artist_id"
     t.index ["profile_artist_id"], name: "index_profile_albums_on_profile_artist_id"
@@ -84,9 +85,9 @@ ActiveRecord::Schema.define(version: 20170510102817) do
   create_table "profile_artists", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "artist_id"
+    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "count", default: 0
     t.index ["artist_id"], name: "index_profile_artists_on_artist_id"
     t.index ["profile_id"], name: "index_profile_artists_on_profile_id"
   end
@@ -104,17 +105,15 @@ ActiveRecord::Schema.define(version: 20170510102817) do
   create_table "profile_tracks", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "track_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "profile_artist_id"
+    t.bigint "artist_id"
+    t.integer "profile_albums", default: [], array: true
+    t.integer "albums", default: [], array: true
     t.integer "loved"
     t.integer "count", default: 0
-    t.bigint "profile_artist_id"
-    t.bigint "profile_album_id"
-    t.bigint "artist_id"
-    t.bigint "album_id"
-    t.index ["album_id"], name: "index_profile_tracks_on_album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_profile_tracks_on_artist_id"
-    t.index ["profile_album_id"], name: "index_profile_tracks_on_profile_album_id"
     t.index ["profile_artist_id"], name: "index_profile_tracks_on_profile_artist_id"
     t.index ["profile_id"], name: "index_profile_tracks_on_profile_id"
     t.index ["track_id"], name: "index_profile_tracks_on_track_id"
@@ -124,8 +123,6 @@ ActiveRecord::Schema.define(version: 20170510102817) do
     t.string "nickname"
     t.string "email"
     t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "name"
     t.string "country"
     t.string "city"
@@ -134,18 +131,22 @@ ActiveRecord::Schema.define(version: 20170510102817) do
     t.string "avatar"
     t.string "lastfm_id"
     t.string "library_artists_scope"
+    t.string "library_albums_scope"
     t.integer "top_artists_scope"
     t.integer "top_albums_scope"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recommendations", force: :cascade do |t|
     t.bigint "profile_id"
     t.string "artist_name"
-    t.string "artists", default: [], array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "profile_artists", default: [], array: true
+    t.integer "tags", default: [], array: true
     t.string "image"
     t.integer "deleted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_recommendations_on_profile_id"
   end
 
@@ -182,9 +183,7 @@ ActiveRecord::Schema.define(version: 20170510102817) do
   add_foreign_key "profile_artists", "profiles"
   add_foreign_key "profile_tags", "profiles"
   add_foreign_key "profile_tags", "tags"
-  add_foreign_key "profile_tracks", "albums"
   add_foreign_key "profile_tracks", "artists"
-  add_foreign_key "profile_tracks", "profile_albums"
   add_foreign_key "profile_tracks", "profile_artists"
   add_foreign_key "profile_tracks", "profiles"
   add_foreign_key "profile_tracks", "tracks"

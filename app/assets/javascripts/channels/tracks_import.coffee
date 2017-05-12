@@ -27,7 +27,9 @@ App.tracks_import = App.cable.subscriptions.create "TracksImportChannel",
       $('#job_entity').html('tags')
     if data['p'] is 7
       $('#job_process').html('Generating recommendations...')
-      $('#job_total').hide()
+      $('#job_total').remove()
+      $('#job_count').remove()
+      $('#job_entity').remove()
     $('#job_total').html(' of ' + data['t'])
     $('#job-progress').css("width", data['w']+'%')
     $('#job_count').html(data['c'])

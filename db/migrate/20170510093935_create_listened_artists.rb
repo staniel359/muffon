@@ -6,5 +6,6 @@ class CreateListenedArtists < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+    add_index :listened_artists, [:profile_id, :artist_name], unique: true
   end
 end

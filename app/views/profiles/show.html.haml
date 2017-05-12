@@ -11,4 +11,5 @@
 			- @common_artists.first(5).map do |a|
 				= a.artist.name
 				= a.count
-			and others...
+			- if @common_artists.count > 5
+				and others...
