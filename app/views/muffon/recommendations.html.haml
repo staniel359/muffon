@@ -14,10 +14,10 @@
 					= form_tag recommendations_path, method: :get do
 						= text_field_tag :tag, params[:tag], placeholder: 'Tag:', class: 'form-control'
 						= submit_tag 'Search', name: nil, style: 'display: none'
-				-# %li
-				-# 	= form_tag recommendations_path, method: :get do
-				-# 		= text_field_tag :date, params[:date], placeholder: 'Date in days:', class: 'form-control'
-				-# 		= submit_tag 'Search', name: nil, style: 'display: none'
+				%li
+					= form_tag recommendations_path, method: :get do
+						= text_field_tag :date, params[:date], placeholder: 'Date in days:', class: 'form-control'
+						= submit_tag 'Search', name: nil, style: 'display: none'
 	- if @recs
 		- @recs.map do |r|
 			.rec_wrap

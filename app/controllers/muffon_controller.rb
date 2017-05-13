@@ -29,9 +29,10 @@ class MuffonController < ApplicationController
 				@recs = @profile.recommendations.where("'?' = any(tags) and deleted is null", tag.id).order('array_length(profile_artists, 1) desc').paginate(page: params[:page], per_page: 20)
 			end
 		elsif params[:date]
-			artist_ids = @profile.plays.where('created_at > ?', Time.now-params[:date].to_i.days).select(:artist_id).group(:artist_id).order('count(*) desc').pluck(:artist_id)
-			@recs = artist_ids.map {|a| @profile.recommendations.where("'?' = any(tags) and deleted is null", a)} 
-			# @recs.paginate(page: params[:page], per_page: 20, total_entries: 400)
+			profile_artist_ids = @profile.plays.where('created_at > ?', Time.now-params[:date].to_i.days).select(:profile_artist_id).group(:profile_artist_id).order('count(*) desc').pluck(:profile_artist_id)
+			if !profile_artist_ids.empty?
+				@recs = @profile.recommendations.where('profile_artists && array[?]', profile_artist_ids).order('array_length(profile_artists, 1) desc').paginate(page: params[:page], per_page: 20)
+			end
 		else
 			@recs = @profile.recommendations.where(deleted: nil).order('array_length(profile_artists, 1) desc').paginate(page: params[:page], per_page: 20, total_entries: 400)
 		end
