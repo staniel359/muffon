@@ -1,7 +1,8 @@
-.profile_library.center
-	#profile_artist_plays_panel.panel.panel-default
-		.panel_header
-			= image_tag @artist.artist.image
-			%h3= "#{@artist.artist.name} plays in #{@profile.nickname}'s library"
-		%table.table.table-hover.table-condensed#profile_artist_plays
+.library_artist_plays_panel.panel.panel-default.profile_library.center
+	.panel_header
+		= image_tag @artist.artist.image
+		%h3= "#{@artist.artist.name} plays in #{@profile.nickname}'s library"
+	.library_artist_plays.panel_content
+		%table.table.table-hover.table-condensed
 			= render partial: 'profile_play', collection: @plays
+		= will_paginate @plays if @plays.count > 20

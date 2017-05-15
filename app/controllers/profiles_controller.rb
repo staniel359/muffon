@@ -110,12 +110,8 @@ class ProfilesController < ApplicationController
 	end
 
 	def artists
-		respond_to do |format|
-			format.html
-			format.js
-		end
 		@title = "#{@profile.nickname}'s artists"
-		@artists = @profile.profile_artists.order(@profile.library_artists_scope).first(20)
+		@artists = @profile.profile_artists.order(count: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def artist
@@ -127,22 +123,22 @@ class ProfilesController < ApplicationController
 
 	def artist_albums
 		@title = "#{@artist.artist.name} plays in #{@profile.nickname}'s library"
-		@albums = @artist.profile_albums.order(count: :desc)
+		@albums = @artist.profile_albums.order(count: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def artist_plays
 		@title = "#{@artist.artist.name} plays in #{@profile.nickname}'s library"
-		@plays = @artist.plays.order(created_at: :desc).first(20)
+		@plays = @artist.plays.order(created_at: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def artist_tracks
 		@title = "#{@artist.artist.name} tracks in #{@profile.nickname}'s library"
-		@tracks = @artist.profile_tracks.order(count: :desc).first(20)
+		@tracks = @artist.profile_tracks.order(count: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def albums
 		@title = "#{@profile.nickname}'s albums"
-		@albums = @profile.profile_albums.order(count: :desc).first(20)
+		@albums = @profile.profile_albums.order(count: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def album
@@ -153,17 +149,17 @@ class ProfilesController < ApplicationController
 
 	def album_plays
 		@title = "#{@album.album.artist.name} - #{@album.album.title} plays in #{@profile.nickname}'s library"
-		@plays = @album.plays.order(created_at: :desc).first(20)
+		@plays = @album.plays.order(created_at: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def tracks
 		@title = "#{@profile.nickname}'s tracks"
-		@tracks = @profile.profile_tracks.order(count: :desc).first(20)
+		@tracks = @profile.profile_tracks.order(count: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	def plays
 		@title = "#{@profile.nickname}'s plays"
-		@plays = @profile.plays.order(created_at: :desc).first(20)
+		@plays = @profile.plays.order(created_at: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
 	private

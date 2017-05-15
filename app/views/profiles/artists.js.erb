@@ -1,2 +1,2 @@
-$('#profile_artists').html("<%= j render partial: 'profile_artist', collection: @profile.profile_artists.order(params[:scope]).first(40) %>")
+$('#artists').html("<%= j render partial: 'profile_artist', collection: @profile.profile_artists.order(params[:scope]).first(20) %>")
 $('#artists_scope').html("<%= j render 'artists_scope' %>")

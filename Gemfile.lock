@@ -45,7 +45,7 @@ GEM
     airbrussh (1.2.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (8.0.0)
-    autoprefixer-rails (7.0.1)
+    autoprefixer-rails (7.1.0)
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)

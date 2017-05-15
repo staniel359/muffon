@@ -1,8 +1,7 @@
-.profile_library.center
-	#profile_artist_albums_panel.panel.panel-default
-		.panel_header
-			= image_tag @artist.artist.image
-			%h3= "#{@artist.artist.name} albums in #{@profile.nickname}'s library"
-		.panel_content
-			- @albums.map do |profile_album|
-				= render partial: 'profile_album', locals: {profile_album: profile_album}
+.library_artist_albums_panel.panel.panel-default.profile_library.center
+	.panel_header
+		= image_tag @artist.artist.image
+		%h3= "#{@artist.artist.name} albums in #{@profile.nickname}'s library"
+	.library_artist_albums.panel_wider_content
+		= render partial: 'profile_album', collection: @albums
+		= will_paginate @albums if @albums.count > 20

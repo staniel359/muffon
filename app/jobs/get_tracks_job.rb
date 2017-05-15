@@ -153,14 +153,16 @@ class GetTracksJob < ApplicationJob
 
       top_tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag']
 
-      top_tags.map do |t|
-        tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!(name: t['name'])
-        ProfileTag.where(profile: profile_id, tag_id: tag.id).first_or_create!(count: t['count'])
+      if top_tags.any?
+        top_tags.map do |t|
+          tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!(name: t['name'])
+          ProfileTag.where(profile: profile_id, tag_id: tag.id).first_or_create!(count: t['count'])
 
-        @counter += 1
-        tag_counter += 1
-        width = (@counter / entries_total * 100)
-        ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 6, t: top_tags_total, c: tag_counter, w: width }
+          @counter += 1
+          tag_counter += 1
+          width = (@counter / entries_total * 100)
+          ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 6, t: top_tags_total, c: tag_counter, w: width }
+        end
       end
 
       # Recommendations

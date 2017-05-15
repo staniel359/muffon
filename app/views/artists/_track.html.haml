@@ -1,0 +1,5 @@
+%tr
+	%td
+		= link_to (fa_icon 'youtube-play'), "https://www.youtube.com/results?search_query=#{CGI.escape(artist_name)}+#{CGI.escape(track['name'])}", target: '_blank'
+		= track['name']
+		= track['playcount']

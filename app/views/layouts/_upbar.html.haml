@@ -48,7 +48,7 @@
 		.up#up_tracks
 			= link_to 'tracks', library_artist_tracks_path(@profile)
 
-	- if params[:action] == 'albums'
+	- if params[:action] == 'albums' && params[:controller] == 'profiles'
 		.up#up_library
 			= link_to image_tag(@profile.avatar.url(:md)), @profile
 			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
@@ -79,7 +79,7 @@
 			= link_to "#{@album.album.title}", library_album_path(@profile)
 		.up#up_album_plays= link_to 'plays', library_album_plays_path(id: @profile, album_id: @album.id)
 
-	- if params[:action] == 'tracks'
+	- if params[:action] == 'tracks' && params[:controller] == 'profiles'
 		.up#up_library
 			= link_to image_tag(@profile.avatar.url(:md)), @profile
 			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)

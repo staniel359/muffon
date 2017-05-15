@@ -1,0 +1,7 @@
+.artist_page_album.album
+	.album_cover= image_tag ((album['image'][2]['#text'] != '') ? album['image'][2]['#text'] : 'missing_album.png')
+	%h5
+		%strong= album['name']
+		%h5
+			= album['playcount']
+			plays

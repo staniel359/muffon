@@ -8,14 +8,14 @@ Order:
 		newest
 	- if params[:scope] == 'created_at asc'
 		oldest
-- elsif @profile.library_artists_scope
-	- if @profile.library_artists_scope == 'count desc'
+- elsif @profile.library_albums_scope
+	- if @profile.library_albums_scope == 'count desc'
 		most played
-	- if @profile.library_artists_scope == 'count asc'
+	- if @profile.library_albums_scope == 'count asc'
 		least played
-	- if @profile.library_artists_scope == 'created_at desc'
+	- if @profile.library_albums_scope == 'created_at desc'
 		newest
-	- if @profile.library_artists_scope == 'created_at asc'
+	- if @profile.library_albums_scope == 'created_at asc'
 		oldest
 - else
 	most played
