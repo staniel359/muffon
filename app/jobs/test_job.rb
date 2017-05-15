@@ -29,8 +29,5 @@ class TestJob < ApplicationJob
  #      end
 	# end
 
-  def perform(profile_id)
-    
-  end
 
 end
