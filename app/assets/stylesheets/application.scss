@@ -385,22 +385,22 @@ input {
 	.panel_wider_content {
 		padding: 20px 10px;
 	}
-	.artist_page_image {
+	.artist_page_image, .artist_album_page_album_image {
 		padding-right: 0px;
 		img {
 			width: 190px;
 		}
 	}
-	.artist_page_info {
+	.artist_page_info, .artist_album_page_album_info {
 		padding-left: 20px;
 		hr {
 			margin: 10px 0;
 		}
 	}
-	.artist_page_info_name {
+	.artist_page_info_name, .artist_album_page_album_info_title {
 		margin-bottom: 5px;
 	}
-	.artist_page_info_tags {
+	.artist_page_info_tags, .artist_album_page_album_info_tags {
 		margin-bottom: 10px;
 	}
 	.label {

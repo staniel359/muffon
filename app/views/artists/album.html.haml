@@ -1,0 +1,33 @@
+.artist_page.artist_album_page.panel.panel-default.center
+	.artist_album_page_album.panel_content
+		.artist_album_page_album_image.media-left
+			.album_cover= image_tag (@album['image'][4]['#text'] != '' ? @album['image'][3]['#text'] : 'missing_album.png')
+		.artist_album_page_album_info.media-body
+			.artist_album_page_album_info_title
+				%h3= @album['name']
+				%h4= link_to @album['artist'], artist_path
+			.artist_album_page_album_info_tags
+				- @album['tags']['tag'].map do |t|
+					.label.label-primary= t['name']
+			%h4
+				= fa_icon 'user'
+				= @album['listeners']
+				= fa_icon 'music'
+				= @album['playcount']
+			%hr
+			- if @album['wiki']
+				%h5= @album['wiki']['summary'].html_safe 
+				%hr
+			- if @spotify_album_uri
+				%iframe.spotify_player{src: "https://open.spotify.com/embed?uri=#{@spotify_album_uri}", width:"400", height:"410", frameborder:"0", allowtransparency:"true"}
+			- elsif @tracks 
+				%table.table.table-hover.table-condensed
+					= render partial: 'track', collection: @tracks, locals: {artist_name: params[:id]}
+			-# %iframe{border: "0", width: "400px", height: "373px", src:"https://bandcamp.com/EmbeddedPlayer/album=#{4009021029}/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"}
+
+:javascript
+	$('.album_cover').click(function(){
+		$('.album_cover img').css('width', '300px')
+	});
+
+- console

@@ -54,7 +54,7 @@
 			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
 		.up#up_albums= link_to 'albums', library_albums_path(@profile)
 
-	- if params[:action] == 'album'
+	- if params[:action] == 'album' && params[:controller] == 'profiles'
 		.up#up_library
 			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
 		.up#up_artists= link_to 'artists', library_artists_path(@profile)

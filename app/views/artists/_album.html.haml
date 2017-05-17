@@ -1,7 +1,13 @@
 .artist_page_album.album
-	.album_cover= image_tag ((album['image'][2]['#text'] != '') ? album['image'][2]['#text'] : 'missing_album.png')
-	%h5
-		%strong= album['name']
+	- if params[:action] == 'show' || params[:action] == 'albums'
+		= link_to artist_album_path(album_id: album['name'].gsub("/", "_")) do
+			.album_cover= image_tag ((album['image'][2]['#text'] != '') ? album['image'][2]['#text'] : 'missing_album.png')
+			%h5
+				%strong= album['name']
+	- else
+		.album_cover= image_tag ((album['image'][2]['#text'] != '') ? album['image'][2]['#text'] : 'missing_album.png')
 		%h5
-			= album['playcount']
-			plays
+			%strong= album['name']
+	%h5
+		= album['playcount']
+		plays

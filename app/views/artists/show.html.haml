@@ -3,7 +3,7 @@
 		.media-left.artist_page_image
 			.artist_image
 				= render partial: 'artists/actions', locals: {artist_name: @artist['name'], a_id: 0}
-				= image_tag ((@artist['image'][3]['#text'] != '') ? @artist['image'][3]['#text'] : 'missing_artist.png')
+				#artist_image_main= image_tag ((@artist['image'][4]['#text'] != '') ? @artist['image'][3]['#text'] : 'missing_artist.png')
 		.media-body.artist_page_info
 			.artist_page_info_name
 				%h3= @artist['name']
@@ -26,7 +26,12 @@
 			.panel_header_sm
 				%h4= link_to 'Top tracks:', artist_tracks_path(id: @artist['name'])
 			%table.table.table-hover.table-condensed.artist_page_tracks
-				= render partial: 'track', collection: @tracks, locals: {artist_name: @artist['name']}
+				- @tracks.map do |t|
+					- if @spotify_tracks.find{|s| s['name'].downcase.start_with?(t['name'].downcase)}
+						%tr
+							%td
+								%iframe.spotify_player{src: "https://open.spotify.com/embed?uri=#{@spotify_tracks.find{|s| s['name'].downcase.start_with?(t['name'].downcase)}['uri']}", width:"350", height:"80", frameborder:"0", allowtransparency:"true"}
+					= render partial: 'track', locals: {track: t, artist_name: @artist['name']}
 			= link_to 'View more...', artist_tracks_path(id: @artist['name'])
 		.artist_page_albums_wrap.row
 			.panel_header_sm
@@ -50,3 +55,8 @@
 								%strong= a['name']
 		.view_more
 			%h5= link_to 'View more...', '#'
+
+:javascript
+	$('#artist_image_main').click(function(){
+		$('#artist_image_main img').css('width', '300px')
+	});

@@ -1,8 +1,7 @@
-.artist_albums_page.panel.panel-default.center
+.artist_page.artist_albums_page.panel.panel-default.center
 	.panel_header
 		%h3
 			= link_to @albums.first['artist']['name'], artist_path
 			albums
-	%hr
 	.artist_albums_page_albums.panel_wider_content
 		= render partial: 'album', collection: @albums
