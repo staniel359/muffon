@@ -15,5 +15,3 @@
 			%h5
 				= link_to 'Previous page', artist_tracks_path(page: params[:page].to_i-1) if params[:page] && params[:page].to_i > 1
 				= link_to 'Next page', artist_tracks_path(page: (params[:page] ? params[:page].to_i+1 : 2)) if params[:page].to_i < @total_pages.to_i && !@tracks.empty? && @tracks.count > 50
-
-- console

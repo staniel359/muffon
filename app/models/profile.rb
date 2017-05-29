@@ -16,7 +16,7 @@ class Profile < ApplicationRecord
 	has_many :bookmarks
 
 	def has_in_library(artist_id)
-		self.profile_artists.find(artist_id)
+		self.profile_artists.find_by(artist_id: artist_id)
 	end
 
 	def has_in_library?(artist_id)
