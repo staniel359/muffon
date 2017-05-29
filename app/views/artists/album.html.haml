@@ -18,9 +18,9 @@
 			- if @album['wiki']
 				%h5= @album['wiki']['summary'].html_safe 
 				%hr
-			- if @spotify_album_uri
-				%iframe.spotify_player{src: "https://open.spotify.com/embed?uri=#{@spotify_album_uri}", width:"400", height:"410", frameborder:"0", allowtransparency:"true"}
-			- elsif @tracks 
+			-# - if @spotify_album_uri
+			-# 	%iframe.spotify_player{src: "https://open.spotify.com/embed?uri=#{@spotify_album_uri}", width:"400", height:"410", frameborder:"0", allowtransparency:"true"}
+			- if @tracks 
 				%table.table.table-hover.table-condensed
 					= render partial: 'track', collection: @tracks, locals: {artist_name: params[:id]}
 			-# %iframe{border: "0", width: "400px", height: "373px", src:"https://bandcamp.com/EmbeddedPlayer/album=#{4009021029}/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/"}
@@ -29,5 +29,3 @@
 	$('.album_cover').click(function(){
 		$('.album_cover img').css('width', '300px')
 	});
-
-- console

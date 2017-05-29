@@ -5,6 +5,7 @@
 		%title= "muffon | #{@title}"
 		= csrf_meta_tags
 		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+		= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Noto Sans'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 		= action_cable_meta_tag
 	%body
@@ -20,3 +21,5 @@
 			trigger: 'hover'
 		})
 	})
+
+- console

@@ -48,15 +48,29 @@ class MuffonController < ApplicationController
 		end
 	end
 
-	def create_listened_artist
-		current_profile.listened_artists.build(artist_name: params[:artist_name]).save
-		current_profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: 1)
+	def bookmarks
+		@title = 'Bookmarks'
+		@bookmarks = current_profile.bookmarks
+	end
+
+
+	def listened
+		if params[:create]
+			current_profile.listened_artists.build(artist_name: params[:artist_name]).save
+			current_profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: 1)
+		elsif params[:destroy]
+			current_profile.listened_artists.find_by(artist_name: params[:artist_name]).destroy
+			current_profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: nil)
+		end
 		respond_to :js
 	end
 
-	def destroy_listened_artist
-		current_profile.listened_artists.find_by(artist_name: params[:artist_name]).destroy
-		current_profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: nil)
+	def bookmark
+		if params[:create]
+			current_profile.bookmarks.build(artist_name: params[:artist_name], is: params[:is], image: params[:image]).save
+		elsif params[:destroy]
+			current_profile.bookmarks.find_by(artist_name: params[:artist_name]).destroy
+		end
 		respond_to :js
 	end
 

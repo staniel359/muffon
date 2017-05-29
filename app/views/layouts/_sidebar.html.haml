@@ -4,6 +4,7 @@
 		= link_to (fa_icon 'user'), current_profile
 		= link_to (fa_icon 'music'), library_path(current_profile)
 		= link_to (fa_icon 'volume-up'), recommendations_path
+		= link_to (fa_icon 'bookmark'), bookmarks_path
 	#side_down_icons
 		= link_to (fa_icon 'cog'), settings_path
 		= link_to (fa_icon 'sign-out'), logout_path, method: :delete

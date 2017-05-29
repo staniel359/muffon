@@ -13,6 +13,15 @@ class Profile < ApplicationRecord
 	has_many :loved_tracks
 	has_many :recommendations
 	has_many :listened_artists
+	has_many :bookmarks
+
+	def has_in_library(artist_id)
+		self.profile_artists.find(artist_id)
+	end
+
+	def has_in_library?(artist_id)
+		self.has_in_library(artist_id)
+	end
 
 	def listened(artist)
 		self.listened_artists.find_by(artist_name: artist)
@@ -20,5 +29,13 @@ class Profile < ApplicationRecord
 
 	def listened_to?(artist)
 		self.listened(artist)
+	end
+
+	def bookmarked(artist)
+		self.bookmarks.find_by(artist_name: artist)
+	end
+
+	def bookmarked?(artist)
+		self.bookmarked(artist)
 	end
 end

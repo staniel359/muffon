@@ -1,0 +1,10 @@
+.bookmarks_page.center.panel.panel-default
+	.panel_header
+		%h3= link_to "Your bookmarks:", bookmarks_path
+	.bookmarks.panel_content
+		- @bookmarks.map do |b|
+			.bookmark
+				.artist_image= image_tag b.image
+				.artist_name= b.artist_name
+				= button_to bookmark_path(artist_name: b.artist_name, destroy: 1), method: :delete, remote: true, class: 'inv_btn' do
+					= fa_icon 'times'

@@ -1,0 +1,11 @@
+- if current_profile.bookmarked?(artist_name)
+	.artist_bookmark_content{style: 'background-color: #392d50'}
+		.artist_bookmarked
+			= button_to bookmark_path(artist_name: artist_name, image: image, destroy: 1, a_id: a_id), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Bookmarked", class: 'inv_btn' do
+				= fa_icon 'bookmark'
+- else
+	.artist_bookmark_content
+		.bookmark_artist
+			= button_to bookmark_path(is: 'artist', artist_name: artist_name, image: image, create: 1, a_id: a_id), method: :post, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Add to bookmarks", class: 'inv_btn' do
+				%h6= fa_icon 'plus'
+				= fa_icon 'bookmark'

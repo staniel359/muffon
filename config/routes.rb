@@ -35,8 +35,13 @@ Rails.application.routes.draw do
   get '/artists/:id/albums', to: 'artists#albums', as: 'artist_albums', constraints: { id: /[^\/]+/ }
   get '/artists/:id/albums/:album_id', to: 'artists#album', as: 'artist_album', constraints: { album_id: /[^\/]+/, id: /[^\/]+/ }
 
-  post '/listened', to: 'muffon#create_listened_artist', as: 'add_listened'
-  delete '/listened', to: 'muffon#destroy_listened_artist', as: 'destroy_listened'
+  post '/listened', to: 'muffon#listened'
+  delete '/listened', to: 'muffon#listened'
+
+  post '/bookmark', to: 'muffon#bookmark'
+  delete '/bookmark', to: 'muffon#bookmark'
+
+  get '/bookmarks', to: 'muffon#bookmarks', as: 'bookmarks'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

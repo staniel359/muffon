@@ -1,0 +1,2 @@
+$("#artist_bookmark_<%= params[:a_id] %>").html("<%= j render 'artists/bookmark', image: params[:image], artist_name: params[:artist_name], a_id: params[:a_id] %>")
+$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})

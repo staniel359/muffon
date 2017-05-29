@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510093935) do
+ActiveRecord::Schema.define(version: 20170521133151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20170510093935) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "bookmarks", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.string "artist_name"
+    t.string "track_title"
+    t.string "album_title"
+    t.string "image"
+    t.string "is"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_bookmarks_on_profile_id"
   end
 
   create_table "listened_artists", force: :cascade do |t|
@@ -165,6 +177,7 @@ ActiveRecord::Schema.define(version: 20170510093935) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "bookmarks", "profiles"
   add_foreign_key "listened_artists", "profiles"
   add_foreign_key "loved_tracks", "profiles"
   add_foreign_key "loved_tracks", "tracks"

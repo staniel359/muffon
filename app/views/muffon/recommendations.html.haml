@@ -25,7 +25,7 @@
 					.panel.panel-default.recommendation#recommendation{id: r.id}
 						.media-left.recommendation_artist_tags
 							.recommendation_artist
-								= render partial: 'artists/actions', locals: {a_id: r.id, artist_name: r.artist_name}
+								= render 'artists/actions', a_id: r.id, artist_name: r.artist_name, image: r.image
 								= link_to artist_path(r.artist_name) do
 									.artist_image
 										= image_tag ((r.image != '') ? r.image : 'missing_artist.png')

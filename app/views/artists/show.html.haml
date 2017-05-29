@@ -2,8 +2,8 @@
 	.artist_page_main.panel_content
 		.media-left.artist_page_image
 			.artist_image
-				= render partial: 'artists/actions', locals: {artist_name: @artist['name'], a_id: 0}
-				#artist_image_main= image_tag ((@artist['image'][4]['#text'] != '') ? @artist['image'][3]['#text'] : 'missing_artist.png')
+				= render 'actions', artist_name: @artist['name'], image: @artist_image, a_id: 0
+				#artist_image_main= image_tag ((@artist_image != '') ? @artist_image : 'missing_artist.png')
 		.media-body.artist_page_info
 			.artist_page_info_name
 				%h3= @artist['name']
@@ -27,18 +27,18 @@
 				%h4= link_to 'Top tracks:', artist_tracks_path(id: @artist['name'])
 			%table.table.table-hover.table-condensed.artist_page_tracks
 				- @tracks.map do |t|
-					- if @spotify_tracks.find{|s| s['name'].downcase.start_with?(t['name'].downcase)}
-						%tr
-							%td
-								%iframe.spotify_player{src: "https://open.spotify.com/embed?uri=#{@spotify_tracks.find{|s| s['name'].downcase.start_with?(t['name'].downcase)}['uri']}", width:"350", height:"80", frameborder:"0", allowtransparency:"true"}
+					-# - if @spotify_tracks.find{|s| s['name'].downcase.start_with?(t['name'].downcase)}
+					-# 	%tr
+					-# 		%td
+					-# 			%iframe.spotify_player{src: "https://open.spotify.com/embed?uri=#{@spotify_tracks.find{|s| s['name'].downcase.start_with?(t['name'].downcase)}['uri']}", width:"350", height:"80", frameborder:"0", allowtransparency:"true"}
 					= render partial: 'track', locals: {track: t, artist_name: @artist['name']}
-			= link_to 'View more...', artist_tracks_path(id: @artist['name'])
+			= link_to 'View more...', artist_tracks_path(id: @artist['name']) if @tracks.count > 10
 		.artist_page_albums_wrap.row
 			.panel_header_sm
 				%h4= link_to 'Top albums:', artist_albums_path(id: @artist['name'])
 			.artist_page_albums
 				= render partial: 'album', collection: @albums 
-			= link_to 'View more...', artist_albums_path(id: @artist['name'])
+			= link_to 'View more...', artist_albums_path(id: @artist['name']) if @albums.count > 4
 	%hr
 	.artist_page_similars_wrap.panel_content
 		.panel_header_sm
@@ -47,14 +47,14 @@
 			- @artist['similar']['artist'].first(4).each_with_index do |a, index|
 				.artist_page_similar_wrap.artist
 					.artist_page_similar#artist_page_similar{id: index + 1}
-						= render partial: 'actions', locals: {artist_name: a['name'], a_id: index + 1}
+						= render 'actions', artist_name: a['name'], a_id: index + 1, image: a['image'][2]['#text']
 						= link_to artist_path(a['name']) do
 							.artist_image
 								= image_tag ((a['image'][2]['#text'] != '') ? a['image'][2]['#text'] : 'missing_artist.png')
 							%h4
 								%strong= a['name']
 		.view_more
-			%h5= link_to 'View more...', '#'
+			%h5= link_to 'View more...', '#' if @artist['similar']['artist'].count > 4
 
 :javascript
 	$('#artist_image_main').click(function(){

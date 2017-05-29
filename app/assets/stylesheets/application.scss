@@ -2,6 +2,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
+* {
+	font-family: 'Noto Sans';
+}
+
 html, body {
 	height: 100%;
 	background-color: #392d50;
@@ -22,6 +26,12 @@ a, a:hover {
 
 input {
 	color: black;
+}
+
+.inv_btn {
+	background-color: transparent;
+	border: none;
+	padding: 0;
 }
 
 .tooltip-inner {
@@ -144,6 +154,10 @@ input {
 }
 
 .artist_actions {
+	h6 {
+		display: inline-block;
+		font-size: 10px;
+	}
 	width: 100%;
 	padding-top: 100%;
 	position: absolute;
@@ -178,11 +192,30 @@ input {
 		}
 		.artist_checked {
 			position: absolute;
-			bottom: 7px;
+			bottom: 5px;
 			right: 7px;
 		}
 		.artist_listened_content {
 			height: 100%;
+		}
+	}
+	.artist_bookmark {
+		top: 50%;
+		.artist_bookmark_content {
+			height: 100%;
+		}
+		.bookmark_artist {
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			.btn {
+				padding: 0;
+			}
+		}
+		.artist_bookmarked {
+			position: absolute;
+			bottom: 5px;
+			left: 7px;
 		}
 	}
 }
@@ -538,30 +571,17 @@ input {
 	}
 }
 
+// Bookmarks page
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.bookmark {
+	display: inline-block;
+	.artist_image {
+		display: inline-block;
+		img {
+			width: 100px;
+		}
+	}
+	.artist_name {
+		text-align: center;
+	}
+}
