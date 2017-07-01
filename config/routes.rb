@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   post '/bookmark', to: 'muffon#bookmark'
   delete '/bookmark', to: 'muffon#bookmark'
 
+  get '/refresh_listens', to: 'muffon#refresh_listens'
+
   get '/bookmarks', to: 'muffon#bookmarks', as: 'bookmarks'
 
   get '/login', to: 'sessions#new'

@@ -5,15 +5,15 @@ class Profile < ApplicationRecord
 	validates :password, length: {minimum: 6}, on: :update, allow_blank: true
 	has_secure_password
 	mount_uploader :avatar, AvatarUploader
-	has_many :profile_tracks
-	has_many :profile_artists
-	has_many :profile_albums
-	has_many :profile_tags
-	has_many :plays
-	has_many :loved_tracks
-	has_many :recommendations
-	has_many :listened_artists
-	has_many :bookmarks
+	has_many :profile_tracks, dependent: :destroy
+	has_many :profile_artists, dependent: :destroy
+	has_many :profile_albums, dependent: :destroy
+	has_many :profile_tags, dependent: :destroy
+	has_many :plays, dependent: :destroy
+	has_many :loved_tracks, dependent: :destroy
+	has_many :recommendations, dependent: :destroy
+	has_many :listened_artists, dependent: :destroy
+	has_many :bookmarks, dependent: :destroy
 
 	def has_in_library(artist_id)
 		self.profile_artists.find_by(artist_id: artist_id)

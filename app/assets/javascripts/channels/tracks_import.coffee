@@ -9,7 +9,7 @@ App.tracks_import = App.cable.subscriptions.create "TracksImportChannel",
     $("#progress-bar_#{data['id']}").show()
     if data['p'] is 1
       $('#job_process').html('Importing listening history...')
-      $('#job_entity').html('tracks')
+      $('#job_entity').html('plays')
     if data['p'] is 2
       $('#job_process').html('Updating artists...')
       $('#job_entity').html('artists')

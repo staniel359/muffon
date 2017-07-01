@@ -38,10 +38,10 @@ class MuffonController < ApplicationController
 		end
 		if params[:delete] || params[:restore]
 			if params[:delete]
-				rec = current_profile.recommendations.find_by(id: params[:delete])
+				rec = @profile.recommendations.find_by(id: params[:delete])
 				rec.update!(deleted: 1)
 			elsif params[:restore]
-				rec = current_profile.recommendations.find_by(id: params[:restore])
+				rec = @profile.recommendations.find_by(id: params[:restore])
 				rec.update!(deleted: nil)
 			end
 			respond_to :js
@@ -50,28 +50,32 @@ class MuffonController < ApplicationController
 
 	def bookmarks
 		@title = 'Bookmarks'
-		@bookmarks = current_profile.bookmarks
+		@bookmarks = @profile.bookmarks
 	end
 
 
 	def listened
 		if params[:create]
-			current_profile.listened_artists.build(artist_name: params[:artist_name]).save
-			current_profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: 1)
+			@profile.listened_artists.build(artist_name: params[:artist_name]).save
+			@profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: 1)
 		elsif params[:destroy]
-			current_profile.listened_artists.find_by(artist_name: params[:artist_name]).destroy
-			current_profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: nil)
+			@profile.listened_artists.find_by(artist_name: params[:artist_name]).destroy
+			@profile.recommendations.find_or_create_by(artist_name: params[:artist_name]).update(deleted: nil)
 		end
 		respond_to :js
 	end
 
 	def bookmark
 		if params[:create]
-			current_profile.bookmarks.build(artist_name: params[:artist_name], is: params[:is], image: params[:image]).save
+			@profile.bookmarks.build(artist_name: params[:artist_name], is: params[:is], image: params[:image]).save
 		elsif params[:destroy]
-			current_profile.bookmarks.find_by(artist_name: params[:artist_name]).destroy
+			@profile.bookmarks.find_by(artist_name: params[:artist_name]).destroy
 		end
 		respond_to :js
+	end
+
+	def refresh_listens
+		RefreshTracksJob.perform_now(@profile.id)
 	end
 
 	private

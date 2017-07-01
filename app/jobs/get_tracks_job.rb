@@ -25,13 +25,13 @@ class GetTracksJob < ApplicationJob
   		recent_tracks_pages.downto(1) do |i|
   			recent_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&extended=1&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['recenttracks']['track']
   			recent_tracks.reverse.map do |t|
-  				artist = Artist.where('lower(name) = lower(?)', t['artist']['name']).first_or_create!(name: t['artist']['name'])
+  				artist = Artist.where('lower(name) = lower(?)', t['artist']['name']).first_or_create!(name: t['artist']['name'], image: t['artist']['image'][3]['#text'])
   				track = Track.where('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id).first_or_create!(title: t['name'], artist_id: artist.id)
-  				album = Album.where('lower(title) = lower(?) and artist_id = ?', t['album']['#text'], artist.id).first_or_create(title: t['album']['#text'], artist_id: artist.id)
+  				album = Album.where('lower(title) = lower(?) and artist_id = ?', t['album']['#text'], artist.id).first_or_create(title: t['album']['#text'], artist_id: artist.id, cover: t['image'][3]['#text'])
           
-  				profile_artist = ProfileArtist.where(artist_id: artist.id, profile: profile.id).first_or_create!(created_at: t['date']['#text'])
-          profile_album = ProfileAlbum.where(album_id: album.id, profile: profile.id).first_or_create(created_at: t['date']['#text'], profile_artist_id: profile_artist.id, artist_id: artist.id) if album
-  				profile_track = ProfileTrack.where(track_id: track.id, profile: profile.id).first_or_create!(created_at: t['date']['#text'], loved: t['loved'].to_i, profile_artist_id: profile_artist.id, artist_id: artist.id)
+  				profile_artist = ProfileArtist.where(artist_id: artist.id, profile: profile.id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i))
+          profile_album = ProfileAlbum.where(album_id: album.id, profile: profile.id).first_or_create(created_at: Time.at(t['date']['uts'].to_i), profile_artist_id: profile_artist.id, artist_id: artist.id) if album
+  				profile_track = ProfileTrack.where(track_id: track.id, profile: profile.id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i), loved: t['loved'].to_i, profile_artist_id: profile_artist.id, artist_id: artist.id)
           if album && !profile_track.albums.include?(album.id)
             profile_track.albums << album.id
             profile_track.save
@@ -48,7 +48,7 @@ class GetTracksJob < ApplicationJob
                       profile_album_id: (profile_album ? profile_album.id : nil),
                       artist_id: artist.id,
                       profile_artist_id: profile_artist.id,
-                      created_at: t['date']['#text']).first_or_create!
+                      created_at: Time.at(t['date']['uts'].to_i)).first_or_create!
 
   				@counter += 1
           recent_tracks_counter += 1
@@ -68,7 +68,6 @@ class GetTracksJob < ApplicationJob
   			
   			top_artists.map do |t|
   				artist = Artist.find_by('lower(name) = lower(?)', t['name'])
-  				artist.update!(image: t['image'][3]['#text'])
   				profile_artist = ProfileArtist.find_by(artist_id: artist.id, profile: profile.id)
           profile_artist.update!(count: profile_artist.plays.count)
 
@@ -92,7 +91,6 @@ class GetTracksJob < ApplicationJob
   				artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
   				album = Album.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
           if album
-    				album.update!(cover: t['image'][3]['#text']) 
     				profile_album = ProfileAlbum.find_by(album_id: album.id, profile: profile.id)
             profile_album.update!(count: profile_album.plays.count)
           end
@@ -137,7 +135,7 @@ class GetTracksJob < ApplicationJob
         loved_tracks.map do |t|
           artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
           track = Track.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
-          LovedTrack.where(track_id: track.id, profile: profile_id).first_or_create!(created_at: t['date']['#text'])
+          LovedTrack.where(track_id: track.id, profile: profile_id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i))
 
           @counter += 1
           loved_counter += 1
@@ -155,7 +153,7 @@ class GetTracksJob < ApplicationJob
 
       if top_tags.any?
         top_tags.map do |t|
-          tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!(name: t['name'])
+          tag = Tag.where(name: t['name']).first_or_create!(name: t['name'].downcase)
           ProfileTag.where(profile: profile_id, tag_id: tag.id).first_or_create!(count: t['count'])
 
           @counter += 1
@@ -179,7 +177,7 @@ class GetTracksJob < ApplicationJob
           rec.save!
           tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=#{CGI.escape(rec.artist_name)}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag']
           tags.first(10).map do |t|
-            tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!(name: t['name'])
+            tag = Tag.where(name: t['name']).first_or_create!(name: t['name'].downcase)
             rec.tags << tag.id unless rec.tags.include?(tag.id)
             rec.save
           end
