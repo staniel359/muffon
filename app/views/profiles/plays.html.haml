@@ -1,7 +1,7 @@
-.library_plays_panel.panel.panel-default.profile_library.center
+#library_plays_panel.panel.panel-default.library_page.center
 	.panel_header_sm
 		%h3= "#{@profile.nickname}'s plays"
-	.library_plays.panel_content
+	#library_plays_panel_content.panel_content
 		%table.table.table-hover.table-condensed
 			= render partial: 'profile_play', collection: @plays
 		= will_paginate @plays if @plays.count > 20

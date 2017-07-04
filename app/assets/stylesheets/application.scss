@@ -326,12 +326,25 @@ label {
 	}
 }
 
-#profile_library {
+.library_page {
+	hr {
+		margin: 10px 0;
+	}
 	.created_at {
 		margin-left: 15px;
 	}
 	.eql {
 		width: 389px;
+	}
+	#library_artist, #library_album {
+		width: 190px;
+		margin-bottom: 10px;
+		.artist_image, .album_cover {
+			margin-bottom: 5px;
+			img {
+				width: 170px;
+			}
+		}
 	}
 	#library_top_albums_panel {
 		width: 458px;
@@ -342,7 +355,14 @@ label {
 	}
 	#library_new_loved_tracks {
 		margin-right: 10px;
-	}	
+	}
+	#library_artist_panel_left {
+		padding: 0
+	}
+	#library_artist_panel_albums_content {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
 }
 
 .profile_form {
@@ -363,21 +383,6 @@ label {
 	}
 	#profile_remember {
 		vertical-align: middle;
-	}
-}
-
-// Library artist page
-
-.library_artist_page {
-	hr {
-		margin: 10px 0;
-	}
-	#library_artist_panel_left {
-		padding: 0
-	}
-	#library_artist_panel_albums_content {
-		margin-left: -10px;
-		margin-right: -10px;
 	}
 }
 

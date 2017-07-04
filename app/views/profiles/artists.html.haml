@@ -1,4 +1,4 @@
-.library_artists_panel.panel.panel-default.profile_library.center
+#library_artists_panel.panel.panel-default.library_page.center
 	.panel_header_sm
 		%h3.panel_header_sm_body= "#{@profile.nickname}'s artists"
 		.scopes.inline.pull-right.panel_header_sm_body
@@ -10,6 +10,6 @@
 					%li= link_to 'Least played', change_artists_scope_path(scope: 'count asc'), remote: true
 					%li= link_to 'Newest', change_artists_scope_path(scope: 'created_at desc'), remote: true
 					%li= link_to 'Oldest', change_artists_scope_path(scope: 'created_at asc'), remote: true
-	.library_artists.panel_wider_content
+	#library_artists_panel_content.panel_wider_content
 		#artists= render partial: 'profile_artist', collection: @artists
 		= will_paginate @artists if @artists.count > 20

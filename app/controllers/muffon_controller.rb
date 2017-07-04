@@ -78,7 +78,7 @@ class MuffonController < ApplicationController
 	end
 
 	def refresh_listens
-		RefreshTracksJob.perform_now(@profile.id)
+		RefreshTracksJob.perform_later(@profile.id)
 	end
 
 	private

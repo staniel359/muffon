@@ -1,7 +1,7 @@
-.artist.inline.text_center
+#library_artist.inline.text_center.top_align
 	- if params[:action] == 'artist'
 		= link_to(artist_path(profile_artist.artist.name)) do
-			.artist_image
+			.artist_image.img_rnd
 				- if profile_artist.artist.image
 					= image_tag ((profile_artist.artist.image != '') ? profile_artist.artist.image : 'missing_artist.png')
 				- else
@@ -11,7 +11,7 @@
 			%h5 on muffon
 	- else
 		= link_to(library_artist_path(id: @profile.id, artist_id: profile_artist.id)) do
-			.artist_image
+			.artist_image.img_rnd
 				- if profile_artist.artist.image
 					= image_tag ((profile_artist.artist.image != '') ? profile_artist.artist.image : 'missing_artist.png')
 				- else
