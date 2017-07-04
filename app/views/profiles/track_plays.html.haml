@@ -1,0 +1,6 @@
+.library_artist_track_plays_panel.panel.panel-default.profile_library.center
+	= render 'panel_header'
+	.library_artist_track_plays.panel_content
+		%table.table.table-hover.table-condensed
+			= render partial: 'profile_play', collection: @plays
+		= will_paginate @plays if @plays.count > 20

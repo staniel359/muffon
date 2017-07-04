@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
 	has_many :profile_artists
+	has_many :loved_tracks
 
 	def in_library?(name, profile)
 		if artist = self.find_by(name: name)

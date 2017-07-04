@@ -1,13 +1,16 @@
 #login_form.center.panel.panel-default
-	%h4 Log in
-	.profile_form
-		.flash_msg= render 'shared/flash_messages'
-		= form_for :session, remote: true do |f|
-			= f.email_field :email, class: 'form-control', placeholder: 'Email:', required: true
-			= f.password_field :password, class: 'form-control', placeholder: 'Password:', required: true
-			#profile_remember
-				= f.check_box :remember_me
-				= f.label :remember_me, 'Remember me'
-			= f.submit 'Log in', class: 'btn btn-primary btn-sm'
-		Don't have an account?
-		= link_to 'Sign up.', signup_path
+	.panel_header_sm
+		%h3 Log in
+	.panel_content
+		.profile_form
+			.flash_msg= render 'shared/flash_messages'
+			= form_for :session, remote: true do |f|
+				= f.email_field :email, class: 'form-control', placeholder: 'Email:', required: true
+				= f.password_field :password, class: 'form-control', placeholder: 'Password:', required: true
+				.inline
+					#profile_remember.inline= f.check_box :remember_me
+					#profile_remember.inline= f.label :remember_me, 'Remember me'
+				.inline.pull-right= f.submit 'Log in', class: 'btn btn-primary btn-sm'
+		%h5 
+			Don't have an account?
+			= link_to 'Sign up.', signup_path

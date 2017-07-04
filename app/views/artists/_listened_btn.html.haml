@@ -8,6 +8,6 @@
 		.check_artist
 			= button_to listened_path(a_id: a_id, artist_name: artist_name, create: 1), remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Mark as listened", class: 'inv_btn' do
 				= fa_icon 'check'
-				%h6= fa_icon 'plus'
+				.plus_small.inline= fa_icon 'plus'
 
 				

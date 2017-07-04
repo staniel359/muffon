@@ -1,2 +1,5 @@
-$("#artist_bookmark_<%= params[:a_id] %>").html("<%= j render 'artists/bookmark', image: params[:image], artist_name: params[:artist_name], a_id: params[:a_id] %>")
+$("#artist_bookmark_<%= params[:a_id] %>").html("<%= j render 'artists/bookmark_btn', image: params[:image], artist_name: params[:artist_name], a_id: params[:a_id] %>")
+<% if params[:bookmark_id] %>
+	$('#bookmark_<%= params[:bookmark_id] %>').remove()
+<% end %>
 $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})

@@ -1,7 +1,7 @@
 .artist_page.artist_tracks_page.panel.panel-default.center
 	.panel_header
 		%h3
-			= link_to @artist_name, artist_path
+			= link_to @artist_name, artist_path(@artist_name.include?('/') ? CGI.escape(@artist_name) : @artist_name)
 			tracks
 	.artist_tracks_page_tracks.panel_content
 		%table.table.table-hover.table-condensed

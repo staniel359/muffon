@@ -1,0 +1,14 @@
+.playlists_page.center
+	#playlist_panel.panel.panel-default
+		.panel_header
+			%h3.panel_header_body= "#{@playlist.name}"	
+		.panel_content
+			%table.table.table-hover.table-condensed#playlist_tracks
+				- if @tracks.any?
+					= render partial: 'playlist_track', collection: @tracks
+				- else
+					#playlist_tracks_empty This playlist is empty.
+			#add_playlist_tracks_btn
+				= button_to profile_playlist_new_track_path, class: 'btn btn-sm btn-primary', method: :get, remote: true do
+					Add tracks
+			#track_search_results

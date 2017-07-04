@@ -23,7 +23,7 @@
 			= f.password_field :password, class: 'form-control', placeholder: 'Password:'
 			= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
 
-		= f.submit @button_text, class: 'btn btn-primary'
+		#form_submit.text_right= f.submit @button_text, class: 'btn btn-primary'
 
 :javascript
 	function readURL(input) {

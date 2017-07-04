@@ -14,6 +14,8 @@ class Profile < ApplicationRecord
 	has_many :recommendations, dependent: :destroy
 	has_many :listened_artists, dependent: :destroy
 	has_many :bookmarks, dependent: :destroy
+	has_many :playlists, dependent: :destroy
+	has_many :playlist_tracks, through: :playlists, dependent: :destroy
 
 	def has_in_library(artist_id)
 		self.profile_artists.find_by(artist_id: artist_id)

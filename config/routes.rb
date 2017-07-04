@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   get '/signup', to: 'profiles#new'
   post '/signup', to: 'profiles#create'
 
-  resources :profiles
+  resources :profiles do
+    resources :playlists
+    get '/profiles/:profile_id/playlists/:id/new_track', to: 'playlists#new_track', as: 'playlist_new_track'
+    post '/profiles/:profile_id/playlists/:id/add_track', to: 'playlists#add_track', as: 'playlist_add_track'
+    delete '/profiles/:profile_id/playlists/:id/delete_track/:track_id', to: 'playlists#delete_track', as: 'playlist_delete_track'
+  end
+  get '/search_track', to: 'playlists#search_track', as: 'playlist_search_track'
   get '/profiles/:id/library', to: 'profiles#library', as: 'library' 
   patch '/profiles/:id/library', to: 'profiles#library'
   get '/profiles/:id/library/artists', to: 'profiles#artists', as: 'library_artists'
@@ -25,6 +31,7 @@ Rails.application.routes.draw do
   get '/profiles/:id/library/albums/:album_id', to: 'profiles#album', as: 'library_album'
   get '/profiles/:id/library/albums/:album_id/plays', to: 'profiles#album_plays', as: 'library_album_plays'
   get '/profiles/:id/library/tracks', to: 'profiles#tracks', as: 'library_tracks'
+  get '/profiles/:id/library/tracks/:track_id/plays', to: 'profiles#track_plays', as: 'library_track_plays'
   get '/profiles/:id/library/plays', to: 'profiles#plays', as: 'library_plays'
   
   get '/recommendations', to: 'muffon#recommendations'
@@ -34,6 +41,7 @@ Rails.application.routes.draw do
   get '/artists/:id/tracks', to: 'artists#tracks', as: 'artist_tracks', constraints: { id: /[^\/]+/ }
   get '/artists/:id/albums', to: 'artists#albums', as: 'artist_albums', constraints: { id: /[^\/]+/ }
   get '/artists/:id/albums/:album_id', to: 'artists#album', as: 'artist_album', constraints: { album_id: /[^\/]+/, id: /[^\/]+/ }
+  get '/artists/:id/similar', to: 'artists#similar', as: 'artist_similar'
 
   post '/listened', to: 'muffon#listened'
   delete '/listened', to: 'muffon#listened'

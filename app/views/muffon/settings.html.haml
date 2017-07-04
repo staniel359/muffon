@@ -1,8 +1,11 @@
 #settings.panel.panel-default.center
-	#edit_form
-		%h4 Edit your profile
-		= render 'profiles/form'
+	.panel_header_sm
+		%h3 Settings
+	.panel_content
+		#edit_form
+			%h4 Edit your profile
+			= render 'profiles/form'
 
-	= link_to 'Delete account', @profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}
+		= link_to 'Delete account', @profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}
 
-	= button_to 'Refresh your listens', refresh_listens_path, method: :get, class: 'btn btn-primary', remote: true if current_profile.lastfm_id
+		= button_to 'Refresh your listens', refresh_listens_path, method: :get, class: 'btn btn-primary', remote: true if current_profile.lastfm_id

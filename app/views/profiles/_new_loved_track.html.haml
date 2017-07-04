@@ -1,0 +1,9 @@
+%tr
+	%td.profile_track
+		.media-left.track_cover.img_sm= image_tag new_loved_track.track.artist.image if new_loved_track.track.artist.image
+		.media-body
+			%h5.created_at.pull-right= l new_loved_track.created_at, format: "%e %b %Y, %H:%M"
+			%h5
+				= fa_icon 'heart', style: 'color: red' if new_loved_track.class == LovedTrack
+				%strong=  new_loved_track.track.title
+			%h5= link_to new_loved_track.track.artist.name, library_artist_path(artist_id: new_loved_track.profile_artist_id)

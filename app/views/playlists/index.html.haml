@@ -1,0 +1,14 @@
+.playlists_page.center
+	.playlists_panel.panel.panel-default
+		.panel_header
+			%h3.panel_header_body= "#{@profile.nickname}'s playlists"	
+		.panel_content
+			%table.table.table-hover.table-condensed#profile_playlists
+				- if @profile.playlists.any?
+					= render @playlists
+				- else
+					#profile_playlists_none You haven't created any playlists yet.
+			- if current_profile?(@profile)
+				#add_playlist_btn
+					= button_to new_profile_playlist_path, class: 'btn btn-primary', method: :get, remote: true do
+						Add playlist

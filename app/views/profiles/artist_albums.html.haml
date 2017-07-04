@@ -1,7 +1,5 @@
-.library_artist_albums_panel.panel.panel-default.profile_library.center
-	.panel_header
-		= image_tag @artist.artist.image
-		%h3= "#{@artist.artist.name} albums in #{@profile.nickname}'s library"
-	.library_artist_albums.panel_wider_content
+#library_artist_albums_panel.panel.panel-default.library_artist_page.center
+	= render 'panel_header'
+	#library_artist_albums_panel_content.panel_wider_content
 		= render partial: 'profile_album', collection: @albums
 		= will_paginate @albums if @albums.count > 20

@@ -1,96 +1,105 @@
 #upbar
 	.up#logo= link_to 'muffon', root_path
 
-	- if params[:action] == 'library'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), @profile
-			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
+	- if params[:controller] == 'muffon'
 
-	- if params[:action] == 'artists'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), @profile
-			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
+		- if params[:action] == 'recommendations'
+			.up#up_recs= link_to 'Recommendations', recommendations_path
 
-	- if params[:action] == 'artist'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
-		.up#up_artist
-			= image_tag (@artist.artist.image)
-			= link_to "#{@artist.artist.name}", library_artist_path(@profile)
+	- if params[:controller] == 'profiles'
 
-	- if params[:action] == 'artist_albums'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
-		.up#up_artist
-			= image_tag (@artist.artist.image)
-			= link_to "#{@artist.artist.name}", library_artist_path(@profile)
-		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(@profile)
+		- case params[:action]
 
-	- if params[:action] == 'artist_plays'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
-		.up#up_artist
-			= image_tag (@artist.artist.image)
-			= link_to "#{@artist.artist.name}", library_artist_path(@profile)
-		.up#up_artist_plays= link_to 'plays', library_artist_plays_path(@profile)
+		- when 'library', 'artists', 'albums', 'tracks', 'plays'
+			.up#up_library
+				= link_to image_tag(@profile.avatar.url(:md)), @profile
+				#up_link.inline= link_to "#{@profile.nickname}'s library", library_path(@profile)
+			- case params[:action]
+			- when 'artists'
+				.up#up_artists= link_to 'artists', library_artists_path(@profile)
+			- when 'albums'
+				.up#up_albums= link_to 'albums', library_albums_path(@profile)
+			- when 'tracks'
+				.up#up_tracks= link_to 'tracks', library_tracks_path(@profile)
+			- when 'plays'
+				.up#up_tracks= link_to 'plays', library_plays_path(@profile)
 
-	- if params[:action] == 'artist_tracks'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
-		.up#up_artist
-			= image_tag @artist.artist.image
-			= link_to "#{@artist.artist.name}", library_artist_path(@profile, artist_id: @artist.id)
-		.up#up_tracks
-			= link_to 'tracks', library_artist_tracks_path(@profile)
+		- when 'artist', 'artist_albums', 'artist_plays', 'artist_tracks', 'album', 'album_plays', 'track_plays'
+			.up#up_library
+				= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
+			.up#up_artists= link_to 'artists', library_artists_path(@profile)
 
-	- if params[:action] == 'albums' && params[:controller] == 'profiles'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), @profile
-			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
-		.up#up_albums= link_to 'albums', library_albums_path(@profile)
+			- case params[:action]
 
-	- if params[:action] == 'album' && params[:controller] == 'profiles'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
-		.up#up_artist
-			= image_tag @album.album.artist.image
-			= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.profile_artist_id)
-		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.profile_artist_id)
-		.up#up_album
-			= image_tag @album.album.cover
-			= link_to "#{@album.album.title}", library_album_path(@profile)
+			- when 'artist', 'artist_albums', 'artist_plays', 'artist_tracks'
+				.up#up_artist
+					= image_tag ((@artist.artist.image && @artist.artist.image != '') ? @artist.artist.image : 'missing_artist.png')
+					= link_to "#{@artist.artist.name}", library_artist_path(@profile)
+				- case params[:action]
+				- when 'artist_albums'
+					.up#up_artist_albums= link_to 'albums', library_artist_albums_path(@profile)
+				- when 'artist_plays'
+					.up#up_artist_plays= link_to 'plays', library_artist_plays_path(@profile)
+				- when 'artist_tracks'
+					.up#up_artist_tracks= link_to 'tracks', library_artist_tracks_path(@profile)
+			- when 'album', 'album_plays'
+				.up#up_artist
+					= image_tag ((@album.album.artist.image && @album.album.artist.image != '') ? @album.album.artist.image : 'missing_artist.png')
+					= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.profile_artist_id)
+				.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.profile_artist_id)
+				.up#up_album
+					= image_tag @album.album.cover
+					= link_to "#{@album.album.title}", library_album_path(@profile)
+				- case params[:action]
+				- when 'album_plays'
+					.up#up_album_plays= link_to 'plays', library_album_plays_path(id: @profile, album_id: @album.id)
+			
+			- when 'track_plays'
+				.up#up_artist
+					= image_tag @track.artist.image
+					= link_to "#{@track.artist.name}", library_artist_path(@profile, artist_id: @track.profile_artist_id)
+				.up#up_tracks= link_to 'tracks', library_artist_tracks_path(@profile, artist_id: @track.profile_artist)
+				.up#up_track= link_to @track.track.title, '#'
+				.up#up_track_plays= link_to 'plays', library_track_plays_path
 
-	- if params[:action] == 'album_plays'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), library_path(@profile)
-		.up#up_artists= link_to 'artists', library_artists_path(@profile)
-		.up#up_artist
-			= image_tag @album.album.artist.image
-			= link_to "#{@album.album.artist.name}", library_artist_path(@profile, artist_id: @album.profile_artist_id)
-		.up#up_artist_albums= link_to 'albums', library_artist_albums_path(id: @profile, artist_id: @album.profile_artist_id)
-		.up#up_album
-			= image_tag @album.album.cover
-			= link_to "#{@album.album.title}", library_album_path(@profile)
-		.up#up_album_plays= link_to 'plays', library_album_plays_path(id: @profile, album_id: @album.id)
+	- if params[:controller] == 'artists'
 
-	- if params[:action] == 'tracks' && params[:controller] == 'profiles'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), @profile
-			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
-		.up#up_tracks= link_to 'tracks', library_tracks_path(@profile)
+		- case params[:action]
+		- when 'show'
+			.up#up_artist
+				= image_tag ((@artist_image && @artist_image != '') ? @artist_image : 'missing_artist.png')
+				= link_to @artist['name'], artist_path
+		- when 'albums'
+			.up#up_artist
+				= image_tag ((@artist_image && @artist_image != '') ? @artist_image : 'missing_artist.png')
+				= link_to @artist_name, artist_path
+			.up#up_artist_albums= link_to 'albums', artist_albums_path
+		- when 'album'
+			.up#up_artist
+				= image_tag ((@artist_image && @artist_image != '') ? @artist_image : 'missing_artist.png')
+				= link_to @album['artist'], artist_path
+			.up#up_artist_albums= link_to 'albums', artist_albums_path
+			.up#up_artist_album
+				= image_tag (@album_cover != '' ? @album_cover : 'missing_album.png')
+				= link_to @album['name'], artist_album_path
+		- when 'tracks'
+			.up#up_artist
+				= image_tag ((@artist_image && @artist_image != '') ? @artist_image : 'missing_artist.png')
+				= link_to @artist_name, artist_path
+			.up#up_artist_tracks= link_to 'tracks', artist_tracks_path
+		- when 'similar'
+			.up#up_artist
+				= image_tag ((@artist_image && @artist_image != '') ? @artist_image : 'missing_artist.png')
+				= link_to @artist, artist_path
+			.up#up_artist_similar= link_to 'similar artists', artist_similar_path
 
-	- if params[:action] == 'plays'
-		.up#up_library
-			= link_to image_tag(@profile.avatar.url(:md)), @profile
-			#up_link= link_to "#{@profile.nickname}'s library", library_path(@profile)
-		.up#up_tracks= link_to 'plays', library_plays_path(@profile)
+	- if params[:controller] == 'playlists'
 
-	- if params[:action] == 'recommendations'
-		.up#up_library
-			= link_to 'Recommendations', recommendations_path
+		- case params[:action]
+		- when 'index', 'show'
+			.up#up_playlists
+				= link_to image_tag(@profile.avatar.url(:md)), @profile
+				#up_link.inline= link_to "#{@profile.nickname}'s playlists", profile_playlists_path(@profile)
+			- case params[:action]
+			- when 'show'
+				.up#up_playlist= link_to @playlist.name, profile_playlist_path

@@ -1,0 +1,9 @@
+<% if @search_results %> 
+	<% if @search_results.any? %>
+		$('#track_search_results').html("<%= j render partial: 'search_result', collection: @search_results, track: @search_result %>")
+	<% else %>
+		$('#track_search_results').html("Nothing was found.")
+	<% end %>
+<% else %>
+	$('#track_search_results').html("")
+<% end %>

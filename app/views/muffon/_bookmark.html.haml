@@ -1,0 +1,6 @@
+.bookmark#bookmark{id: b.id}
+	#bookmark_image.inline.img_sm.img_rnd= link_to image_tag(b.image), artist_path(b.artist_name)
+	%h4#bookmark_name.inline= link_to b.artist_name, artist_path(b.artist_name)
+	#bookmark_delete.inline
+		= button_to bookmark_path(bookmark_id: b.id, destroy: 1), method: :delete, remote: true, class: 'inv_btn' do
+			%h6 Delete

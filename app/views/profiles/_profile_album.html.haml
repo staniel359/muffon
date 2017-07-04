@@ -1,4 +1,4 @@
-.album
+.album.inline.text_center
 	- if profile_album.album
 		- if params[:action] == 'album'
 			= link_to(artist_album_path(id: profile_album.artist.name, album_id: profile_album.album.title)) do

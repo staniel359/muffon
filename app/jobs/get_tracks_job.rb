@@ -135,7 +135,9 @@ class GetTracksJob < ApplicationJob
         loved_tracks.map do |t|
           artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
           track = Track.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
-          LovedTrack.where(track_id: track.id, profile: profile_id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i))
+          profile_artist = profile.profile_artists.find(artist.id).id
+          profile_track = profile.profile_tracks.find(track.id).id
+          LovedTrack.where(track_id: track.id, profile: profile_id).first_or_create!(profile_track_id: profile_track.id, artist_id: artist_id, profile_artist_id: profile_artist.id, created_at: Time.at(t['date']['uts'].to_i))
 
           @counter += 1
           loved_counter += 1

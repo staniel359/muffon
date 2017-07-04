@@ -1,14 +1,5 @@
 .library_artist_album_plays_panel.panel.panel-default.profile_library.center
-	.panel_header
-		.library_artist_album_header.panel_header_body
-			.album_image.panel_header_image= image_tag @album.album.cover
-			.panel_header_text
-				%h4= link_to @album.album.title, library_album_path
-				%h5= link_to @album.album.artist.name, library_artist_path(artist_id: @album.profile_artist )
-		.library_artist_album_profile_header.panel_header_body.pull-right
-			.profile_image.panel_header_image= image_tag @profile.avatar.url
-			.panel_header_text
-				%h4= "#{@profile.nickname}'s library"
+	= render 'panel_header'
 	.library_artist_album_plays.panel_content
 		%table.table.table-hover.table-condensed
 			= render partial: 'profile_play', collection: @plays

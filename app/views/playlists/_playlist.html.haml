@@ -1,0 +1,7 @@
+%tr.playlist#playlist{id: playlist.id}
+	%td
+		%h4.inline= link_to playlist.name, profile_playlist_path(id: playlist)
+		= playlist.playlist_tracks.count
+		tracks
+		- if current_profile?(@profile)
+			= link_to 'delete', profile_playlist_path(id: playlist), method: :delete, remote: true 

@@ -1,6 +1,6 @@
-.artist_page_album.album
+.artist_page_album.inline.text_center.top_align
 	- if params[:action] == 'show' || params[:action] == 'albums'
-		= link_to artist_album_path(album_id: album['name'].gsub("/", "_")) do
+		= link_to artist_album_path(id: (params[:id].include?('/') ? CGI.escape(params[:id]) : params[:id]), album_id: (album['name'].include?('/') ? CGI.escape(album['name']) : album['name'])) do
 			.album_cover= image_tag ((album['image'][2]['#text'] != '') ? album['image'][2]['#text'] : 'missing_album.png')
 			%h5
 				%strong= album['name']
@@ -9,5 +9,5 @@
 		%h5
 			%strong= album['name']
 	%h5
-		= album['playcount']
-		plays
+		= fa_icon 'music'
+		= number_with_delimiter(album['playcount'])

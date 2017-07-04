@@ -1,9 +1,10 @@
 class ProfilesController < ApplicationController
 	before_action :should_login, only: [:index, :update, :destroy]
-	before_action :set_profile, only: [:show, :update, :update_artists, :destroy, :library, :artists, :artist, :artist_albums, :artist_plays, :artist_tracks, :albums, :album, :album_plays, :tracks, :plays]
+	before_action :set_profile, only: [:show, :update, :update_artists, :destroy, :library, :artists, :artist, :artist_albums, :artist_plays, :artist_tracks, :albums, :album, :album_plays, :tracks, :track_plays, :plays]
 	before_action :correct_profile, only: [:update, :destroy]
 	before_action :set_artist, only: [:artist, :artist_albums, :artist_plays, :artist_tracks]
 	before_action :set_album, only: [:album, :album_plays]
+	before_action :set_track, only: :track_plays
 
 	# caches_action :library, unless: -> { params[:artists_scope] || params[:albums_scope] || stale?(Profile.find_by(id: params[:id])) }
 
@@ -156,6 +157,11 @@ class ProfilesController < ApplicationController
 		@tracks = @profile.profile_tracks.order(count: :desc).paginate(page: params[:page], per_page: 20)
 	end
 
+	def track_plays
+		@title = "#{@track.artist.name} - #{@track.track.title} plays in #{@profile.nickname}'s library"
+		@plays = @track.plays.order(created_at: :desc).paginate(page: params[:page], per_page: 20)
+	end
+
 	def plays
 		@title = "#{@profile.nickname}'s plays"
 		@plays = @profile.plays.order(created_at: :desc).paginate(page: params[:page], per_page: 20)
@@ -188,10 +194,14 @@ class ProfilesController < ApplicationController
 		end
 
 		def set_artist
-			@artist = @profile.profile_artists.find_by(id: params[:artist_id])
+			@artist = @profile.profile_artists.find(params[:artist_id])
 		end
 
 		def set_album
-			@album = @profile.profile_albums.find_by(id: params[:album_id])
+			@album = @profile.profile_albums.find(params[:album_id])
+		end
+
+		def set_track
+			@track = @profile.profile_tracks.find(params[:track_id])
 		end
 end

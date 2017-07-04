@@ -53,7 +53,6 @@ class MuffonController < ApplicationController
 		@bookmarks = @profile.bookmarks
 	end
 
-
 	def listened
 		if params[:create]
 			@profile.listened_artists.build(artist_name: params[:artist_name]).save
@@ -69,7 +68,11 @@ class MuffonController < ApplicationController
 		if params[:create]
 			@profile.bookmarks.build(artist_name: params[:artist_name], is: params[:is], image: params[:image]).save
 		elsif params[:destroy]
-			@profile.bookmarks.find_by(artist_name: params[:artist_name]).destroy
+			if params[:artist_name]
+				@profile.bookmarks.find_by(artist_name: params[:artist_name]).destroy
+			elsif params[:bookmark_id]
+				@profile.bookmarks.find(params[:bookmark_id]).destroy
+			end
 		end
 		respond_to :js
 	end

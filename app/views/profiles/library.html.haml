@@ -1,10 +1,10 @@
-.library_page.profile_library.center
+.library_page#profile_library.center
 	- if @profile.profile_tracks.any?
-		.library_top_artists_panel.panel.panel-default
-			.panel_header
-				%h3= link_to 'Top artists', library_artists_path(@profile)
-				.scopes
-					.dropdown
+		#library_top_artists_panel.panel.panel-default
+			.panel_header_sm
+				%h3.panel_header_sm_body= link_to 'Top artists', library_artists_path(@profile)
+				.scopes.inline.pull-right.panel_header_sm_body
+					.dropdown.inline
 						.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 							#top_artists_scope= render partial: 'top_artists_scope', locals: {message: 'Show by a period:'}
 						%ul.dropdown-menu.dropdown-menu-right
@@ -15,7 +15,7 @@
 							%li= link_to '1 year', library_path(artists_scope: 365), remote: true
 							%li= link_to 'All time', library_path(artists_scope: 0), remote: true
 					- if current_profile?(@profile)
-						.dropdown
+						.dropdown.inline
 							.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 								#top_artists_default_scope= render partial: 'top_artists_scope', locals: {message: 'Default scope:'}
 							%ul.dropdown-menu.dropdown-menu-right
@@ -25,15 +25,14 @@
 								%li= link_to '6 months', library_path(artists_default_scope: 180), remote: true, method: :patch
 								%li= link_to '1 year', library_path(artists_default_scope: 365), remote: true, method: :patch
 								%li= link_to 'All time', library_path(artists_default_scope: 0), remote: true, method: :patch
-			.library_top_artists.panel_wider_content
+			#library_top_artists.panel_wider_content
 				#top_artists= render partial: 'profile_artist', collection: @top_artists
-				.view_more
-					%h5= link_to 'View more...', library_artists_path(@profile)
-		.library_top_albums_panel.panel.panel-default.inline
-			.panel_header
-				%h3= link_to 'Top albums', library_albums_path(@profile)
-				.scopes
-					.dropdown
+				.text_right= link_to 'View more...', library_artists_path(@profile)
+		#library_top_albums_panel.panel.panel-default.inline.top_align
+			.panel_header_sm
+				%h3.panel_header_sm_body= link_to 'Top albums', library_albums_path(@profile)
+				.scopes.inline.pull-right.panel_header_sm_body
+					.dropdown.inline
 						.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 							#top_albums_scope= render partial: 'top_albums_scope', locals: {message: 'Show by a period:'}
 						%ul.dropdown-menu.dropdown-menu-right
@@ -44,7 +43,7 @@
 							%li= link_to '1 year', library_path(albums_scope: 365), remote: true
 							%li= link_to 'All time', library_path(albums_scope: 0), remote: true
 					- if current_profile?(@profile)
-						.dropdown
+						.dropdown.inline
 							.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 								#top_albums_default_scope= render partial: 'top_albums_scope', locals: {message: 'Default scope:'}
 							%ul.dropdown-menu.dropdown-menu-right
@@ -54,69 +53,48 @@
 								%li= link_to '6 months', library_path(albums_default_scope: 180), remote: true
 								%li= link_to '1 year', library_path(albums_default_scope: 365), remote: true
 								%li= link_to 'All time', library_path(albums_default_scope: 0), remote: true
-			.library_top_albums.panel_wider_content
+			#library_top_albums.panel_wider_content.text_center
 				#top_albums= render partial: 'profile_album', collection: @top_albums
-				.view_more
-					%h5= link_to 'View more...', library_albums_path(@profile)
-		.library_top_tracks_panel.panel.panel-default.inline
-			.panel_header
+				.text_right= link_to 'View more...', library_albums_path(@profile)
+		#library_top_tracks_panel.panel.panel-default.inline.top_align
+			.panel_header_sm
 				%h3= link_to 'Top tracks', library_tracks_path(@profile)
-			.library_top_tracks.panel_content
+			#library_top_tracks.panel_content
 				%table.table.table-hover.table-condensed
 					= render partial: 'profile_track', collection: @top_tracks
-				.view_more
-					%h5= link_to 'View more...', library_tracks_path(@profile)
-		.library_new_loved_tracks.eql.inline
-			.library_loved_tracks_panel.panel.panel-default
-				.panel_header
+				.text_right= link_to 'View more...', library_tracks_path(@profile)
+		#library_new_loved_tracks.eql.inline.top_align
+			#library_loved_tracks_panel.panel.panel-default
+				.panel_header_sm
 					%h3
 						= fa_icon 'heart-o'
 						= "Loved tracks (#{@profile.loved_tracks.count})"
-				.library_loved_tracks.panel_content
+				#library_loved_tracks.panel_content
 					%table.table.table-hover.table-condensed
-						- @loved_tracks.map do |t|
-							%tr
-								%td.profile_track
-									.media-left.track_cover= image_tag t.track.artist.image if t.track.artist.image
-									.media-body
-										%h5.created_at= l t.created_at, format: "%e %b %Y, %H:%M"
-										= fa_icon 'heart', style: 'color: red'
-										%h5
-											%strong= t.track.title
-										%br
-										%h5= t.track.artist.name
-			.library_new_tracks_panel.panel.panel-default
-				.panel_header
+						= render partial: 'new_loved_track', collection: @loved_tracks
+			#library_new_tracks_panel.panel.panel-default
+				.panel_header_sm
 					%h3
 						= fa_icon 'plus'
 						= "New tracks (#{@profile.profile_tracks.count})"
-				.library_new_tracks.panel_content
+				#library_new_tracks.panel_content
 					%table.table.table-hover.table-condensed
-						- @new_tracks.map do |t|
-							%tr
-								%td.profile_track
-									.media-left.track_cover= image_tag t.track.artist.image if t.track.artist.image
-									.media-body
-										%h5.created_at= l t.created_at, format: "%e %b %Y, %H:%M"
-										%h5
-											%strong= t.track.title
-										%br
-										%h5= t.track.artist.name
-		.library_recent_tracks_panel.panel.panel-default.eql.inline
-			.panel_header
+						= render partial: 'new_loved_track', collection: @new_tracks
+		#library_recent_tracks_panel.panel.panel-default.eql.inline.top_align
+			.panel_header_sm
 				%h3
 					= fa_icon 'clock-o'
 					= link_to "Recent tracks (#{@profile.plays.count})", library_plays_path(@profile)
-			.library_recent_tracks.panel_content
+			#library_recent_tracks.panel_content
 				%table.table.table-hover.table-condensed
 					= render partial: 'profile_play', collection: @plays
-				= link_to "View more...", library_plays_path(@profile)
-		.library_profile_tags_panel.panel.panel-default
-			.panel_header
-				%h3
+				.text_right= link_to "View more...", library_plays_path(@profile)
+		#library_profile_tags_panel.panel.panel-default
+			.panel_header_sm
+				%h3.panel_header_sm_body
 					= fa_icon 'tags'
 					= "Tags (#{@profile.profile_tags.count})"
-			.library_profile_tags.panel_content
+			#library_profile_tags.panel_content
 				- @top_tags.map do |t|
 					= t.tag.name
 					= t.count

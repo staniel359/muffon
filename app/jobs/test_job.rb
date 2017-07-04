@@ -1,33 +1,21 @@
 class TestJob < ApplicationJob
   queue_as :default
 
- #  def perform(profile_id)
-	# 	i = 0
-	# 	1.upto(20) do |i|
-	# 		width = i * 5
-	# 		ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, c: i, w: width }
-	# 		i += 1
-	# 		sleep 0.5
-	# 	end
-	# end
+	def perform(profile_id)
+		profile = Profile.find(profile_id)
 
-	# def perform(profile_id)
-	# 	profile = Profile.find(profile_id)
-	# 	profile.profile_artists.order(count: :desc).map do |a|
- #        similars = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=#{CGI.escape(a.artist.name)}&limit=50&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['similarartists']['artist']
- #        similars.map do |s|
- #          rec = Recommendation.where(profile_id: profile_id, artist_name: s['name']).first_or_create!(image: s['image'][2]['#text'])
- #          rec.profile_artists << a.id unless rec.profile_artists.include?(a.id)
- #          rec.save!
- #          tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=#{CGI.escape(rec.artist_name)}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag']
- #          tags.first(10).map do |t|
- #            tag = Tag.where('lower(name) = lower(?)', t['name']).first_or_create!(name: t['name'])
- #            rec.tags << tag.id unless rec.tags.include?(tag.id)
- #            rec.save
- #          end
- #        end
- #      end
-	# end
+		loved_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['@attr']['totalPages'].to_i
+     	loved_tracks_pages.downto(1) do |i|
+        	loved_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['track']
+        	loved_tracks.each do |t|
+          		artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
+		        track = Track.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
+		        profile_artist = profile.profile_artists.find_by(artist_id: artist.id)
+		        profile_track = profile.profile_tracks.find_by(track_id: track.id)
+		        LovedTrack.where(track_id: track.id, profile_id: profile_id).first_or_create!(profile_track_id: profile_track.id, artist_id: artist.id, profile_artist_id: profile_artist.id, created_at: Time.at(t['date']['uts'].to_i))
+        	end
+      	end
+	end
 
 
 end

@@ -15,9 +15,10 @@ class RefreshTracksJob < ApplicationJob
 					track = Track.where('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id).first_or_create!(title: t['name'], artist_id: artist.id)
   					album = Album.where('lower(title) = lower(?) and artist_id = ?', t['album']['#text'], artist.id).first_or_create(title: t['album']['#text'], artist_id: artist.id, cover: t['image'][3]['#text'])
 
-  					profile_artist = ProfileArtist.where(artist_id: artist.id, profile: profile.id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i))
-          			profile_album = ProfileAlbum.where(album_id: album.id, profile: profile.id).first_or_create(created_at: Time.at(t['date']['uts'].to_i), profile_artist_id: profile_artist.id, artist_id: artist.id) if album
-  					profile_track = ProfileTrack.where(track_id: track.id, profile: profile.id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i), loved: t['loved'].to_i, profile_artist_id: profile_artist.id, artist_id: artist.id)
+  					profile_artist = ProfileArtist.where(artist_id: artist.id, profile_id: profile.id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i))
+          			profile_album = ProfileAlbum.where(album_id: album.id, profile_id: profile.id).first_or_create(created_at: Time.at(t['date']['uts'].to_i), profile_artist_id: profile_artist.id, artist_id: artist.id) if album
+  					profile_track = ProfileTrack.where(track_id: track.id, profile_id: profile.id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i), loved: t['loved'].to_i, profile_artist_id: profile_artist.id, artist_id: artist.id)
+  					
           			if album && !profile_track.albums.include?(album.id)
             			profile_track.albums << album.id
             			profile_track.save

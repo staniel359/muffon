@@ -1,7 +1,7 @@
-.recommendations_page.center.panel.panel-default
-	.panel_header
-		%h3= link_to 'Your recommendations:', recommendations_path
-		.dropdown.pull-right
+#recommendations_page.center.panel.panel-default
+	.panel_header_sm
+		%h3.panel_header_sm_body= link_to 'Your recommendations:', recommendations_path
+		.panel_header_sm_body.dropdown.pull-right
 			.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 				= fa_icon 'filter'
 				Filter by:
@@ -18,30 +18,28 @@
 					= form_tag recommendations_path, method: :get do
 						= text_field_tag :date, params[:date], placeholder: 'Date in days:', class: 'form-control'
 						= submit_tag 'Search', name: nil, style: 'display: none'
-	.recommendations.panel_content
+	#recommendations.panel_content
 		- if @recs
 			- @recs.map do |r|
-				.rec_wrap
-					.panel.panel-default.recommendation#recommendation{id: r.id}
-						.media-left.recommendation_artist_tags
-							.recommendation_artist
-								= render 'artists/actions', a_id: r.id, artist_name: r.artist_name, image: r.image
-								= link_to artist_path(r.artist_name) do
-									.artist_image
-										= image_tag ((r.image != '') ? r.image : 'missing_artist.png')
-									%h4
-										%strong= r.artist_name
-							.recommendation_tags
-								- r.tags.first(5).map do |t|
-									- tag = Tag.find(t).name
-									.label.label-primary= link_to tag, recommendations_path(tag: tag)
-						.media-body.recommendation_similars
-							%h5.rec_header Similar to:
-							.recommendation_similars_artists
-								- r.profile_artists.first(5).map do |a|
-									.recommendation_similars_artist
-										.artist_image= image_tag ((@profile.profile_artists.find(a).artist.image != '') ? @profile.profile_artists.find(a).artist.image : 'missing_artist.png')
-										%h5= link_to @profile.profile_artists.find(a).artist.name, library_artist_path(id: @profile, artist_id: a)
-								= link_to "and #{pluralize((r.profile_artists.length - 5), 'more artist')}...", '#' if r.profile_artists.length > 5
+				.recommendation.inline.top_align.panel.panel-default#recommendation{id: r.id}
+					#recommendation_artist_tags.text_center.media-left
+						#recommendation_artist
+							= render 'artists/actions', a_id: r.id, artist_name: r.artist_name, image: r.image
+							= link_to artist_path(r.artist_name) do
+								.artist_image.img_rnd= image_tag ((r.image != '') ? r.image : 'missing_artist.png')
+								%h4
+									%strong= r.artist_name
+						#recommendation_tags
+							- r.tags.first(5).map do |t|
+								- tag = Tag.find(t).name
+								.recommendation_tag.inline.label.label-primary= link_to tag, recommendations_path(tag: tag)
+					#recommendation_similars.media-body
+						%h5#rec_header Similar to:
+						#recommendation_similars_content
+							- r.profile_artists.first(5).map do |a|
+								.recommendation_similar_artist
+									.artist_image.img_rnd.media-left= image_tag ((@profile.profile_artists.find(a).artist.image != '') ? @profile.profile_artists.find(a).artist.image : 'missing_artist.png')
+									%h5.media-body= link_to @profile.profile_artists.find(a).artist.name, library_artist_path(id: @profile, artist_id: a)
+							= link_to "and #{pluralize((r.profile_artists.length - 5), 'more artist')}...", '#' if r.profile_artists.length > 5
 			%br
 			= will_paginate @recs if @recs.count > 20

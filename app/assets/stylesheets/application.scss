@@ -28,6 +28,10 @@ input {
 	color: black;
 }
 
+label {
+	margin: 0;
+}
+
 .inv_btn {
 	background-color: transparent;
 	border: none;
@@ -63,40 +67,34 @@ input {
 	background-color: #261a33;
 	border: none;
 	padding: 0px;
-	.panel_header {
-		padding: 20px 20px 5px 20px;
-		img {
-			width: 50px;
-			margin-right: 5px;
-		}
-		.profile_image img, .artist_image img {
-			border-radius: 50px;
-		}
-		h3 {
-			display: inline;
-			vertical-align: middle;
+	.panel_header, .panel_header_sm {
+		padding: 20px 20px 5px;
+		.media-left {
+			padding: 0;
 		}
 	}
 	.panel_header_body {
 		display: inline-block;
-		vertical-align: top;
-		.panel_header_image, .panel_header_text {
-			display: inline-block;
+		.img_rounded img {
+			border-radius: 50%;
 		}
 	}
-	.library_artist_album_header .panel_header_text {
-		vertical-align: top;
+	.panel_header_image img {
+		width: 50px;
 	}
-	.library_artist_album_profile_header .panel_header_text {
+	.panel_header_text {
 		vertical-align: middle;
 	}
 	.panel_content {
-		padding: 5px 20px 20px 20px;
+		padding: 5px 20px 20px;
 	}
 	.panel_wider_content {
-		padding: 5px 10px 20px 10px;
+		padding: 10px 10px 20px;
 	}
-	.panel_header_sm {
+	.panel_header_sm_body {
+		display: inline-block;
+	}
+	.panel_header_xs {
 		margin-bottom: 5px;
 	}
 }
@@ -122,42 +120,47 @@ input {
 	}
 }
 
-.artist_image, .album_cover {
-	margin-bottom: 5px;
-	img {
-		width: 170px;
-	}
+.pagination {
+	margin: 10px 0 0 0;
 }
-.artist_image img {
-	position: relative;
-	z-index: 10;
+
+.rotated {
+	transform: rotate(180deg);
+}
+
+.img_sm img {
+	width: 50px;
+}
+
+.img_rnd img {
 	border-radius: 50%;
 }
 
-.view_more {
+.inline {
+	display: inline-block;
+}
+
+.text_center {
+	text-align: center;
+}
+
+.text_right {
 	text-align: right;
 }
 
-.pagination {
-	margin: 10px 0 0 0;
+.top_align {
+	vertical-align: top;
+}
+
+.artist_image img {
+	position: relative;
+	z-index: 10;
 }
 
 
 // Partials
 
-.artist, .album {
-	text-align: center;
-	display: inline-block;
-	margin-bottom: 15px;
-	width: 190px;
-	vertical-align: top;
-}
-
 .artist_actions {
-	h6 {
-		display: inline-block;
-		font-size: 10px;
-	}
 	width: 100%;
 	padding-top: 100%;
 	position: absolute;
@@ -218,13 +221,15 @@ input {
 			left: 7px;
 		}
 	}
+	.plus_small {
+		font-size: 10px;
+	}
 }
 
 // Layouts
 
 #upbar {
 	z-index: 1000;
-	width: 100%;
 	position: fixed;
 	margin-left: 145px;
 	height: 35px;
@@ -244,13 +249,14 @@ input {
 		min-width: 10px;
 		line-height: 1.3;
 		#up_link {
-			display: inline-block;
 			margin-left: 15px;
 			vertical-align: top;
 		}
 	}
-	#up_library img {
-		margin-right: -10px;
+	#up_library, #up_playlists {
+		img {
+			margin-right: -10px;
+		}
 	}
 	#logo {
 		text-align: center;		
@@ -280,9 +286,6 @@ input {
 		// 	background-color: #453a58;
 		// }
 	}
-	#job_status .job {
-		display: inline-block;
-	}
 }
 
 #sidebar {
@@ -311,7 +314,6 @@ input {
 	background-color: #261a33;
 }
 
-
 // Profile pages
 
 #profile_page {
@@ -319,71 +321,33 @@ input {
 		position: fixed;
 		margin-left: 80px;
 	}
+	#profile_page_panel {
+		padding: 10px;
+	}
 }
 
-.profile_library {
-	.scopes {
-		display: inline-block;
-		float: right;
-		.dropdown {
-			display: inline-block;
-		}
-	}
+#profile_library {
 	.created_at {
-		float: right;
 		margin-left: 15px;
-	}
-	.inline {
-		display: inline-block;
-		vertical-align: top;
 	}
 	.eql {
 		width: 389px;
 	}
-	.library_top_albums {
-		text-align: center;
-	}
-	.library_top_albums_panel {
+	#library_top_albums_panel {
 		width: 458px;
 		margin-right: 10px;
 	}
-	.library_top_tracks_panel {
+	#library_top_tracks_panel {
 		width: 320px;
 	}
-	.library_new_loved_tracks {
+	#library_new_loved_tracks {
 		margin-right: 10px;
-	}
-	.library_artist_page_albums {
-		margin-left: -10px;
-		margin-right: -10px;
-	}
-	.library_artist_page_left {
-		padding: 0
-	}
-	.library_artist_page_right {
-		padding: 10px;
-	}
-	.library_artist_page_albums .album {
-		width: 184px;
-	}
-	.profile_track {
-		h5 {
-			display: inline;
-		}
-	}
-	.track_cover img {
-		width: 50px;
-	}
-	hr {
-		margin: 10px 0;
-	}
+	}	
 }
 
 .profile_form {
-	text-align: right;
 	.alert {
 		margin-bottom: 10px;
-		text-align: left;
 	}
 	#form_birthdate, #form_avatar_info {
 		display: flex;
@@ -398,89 +362,105 @@ input {
 		width: 280px;
 	}
 	#profile_remember {
-		float: left;
-		label {
-			vertical-align: middle;
-		}
+		vertical-align: middle;
 	}
 }
 
+// Library artist page
+
+.library_artist_page {
+	hr {
+		margin: 10px 0;
+	}
+	#library_artist_panel_left {
+		padding: 0
+	}
+	#library_artist_panel_albums_content {
+		margin-left: -10px;
+		margin-right: -10px;
+	}
+}
 
 // Artist pages
 
 .artist_page {
-	.artist_page_main .artist_image {
-		position: relative;
-	}
 	.panel_content {
 		padding: 20px;
 	}
 	.panel_wider_content {
 		padding: 20px 10px;
 	}
-	.artist_page_image, .artist_album_page_album_image {
-		padding-right: 0px;
+	#artist_page_image .artist_image {
+		position: relative;
 		img {
 			width: 190px;
 		}
 	}
-	.artist_page_info, .artist_album_page_album_info {
-		padding-left: 20px;
+	#artist_page_info, #artist_album_page_info {
+		padding-left: 10px;
 		hr {
 			margin: 10px 0;
 		}
 	}
-	.artist_page_info_name, .artist_album_page_album_info_title {
+	#artist_page_info_name, #artist_album_page_info_title {
 		margin-bottom: 5px;
 	}
-	.artist_page_info_tags, .artist_album_page_album_info_tags {
+	#artist_page_info_tags, #artist_album_page_info_tags {
 		margin-bottom: 10px;
 	}
-	.label {
+	.artist_page_info_tag, .artist_album_page_info_tag {
 		font-size: 100%;
 		font-weight: inherit;
 		padding: 2px 6px;
 	}
-	.artist_page_info_listens h4 {
-		display: inline-block;
+	#artist_page_tracks {
+		width: 364px;
 	}
-	.artist_page_music .row {
-		display: table-cell;
-		vertical-align: top;
-	}
-	.artist_page_tracks_wrap {
-		width: 368px;
-	}
-	.artist_page_albums_wrap {
+	#artist_page_albums {
 		width: 384px;
 	}
-	.artist_page_similars {
+	.artist_page_album {
+		margin-bottom: 10px;
+		width: 190px;
+		.album_cover {
+			margin-bottom: 5px;
+		}
+	}
+	#artist_page_similars {
 		margin-left: -10px;
 		margin-right: -10px;
 	}
-	.artist_page_similar_wrap {
-		margin-bottom: 0;
-	}
 	.artist_page_similar {
-		position: relative;
-		width: 170px;
-		margin: auto;
+		width: 190px;
 		img {
+			width: 170px;
 			margin-bottom: 5px;
 		}
+	}
+	.artist_page_similar_inner {
+		width: 170px;
+		position: relative;
+		margin: auto;
+	}
+	#artist_album_page_image img {
+		width: 220px;
+	}
+	.track_bar {
+		margin-top: 5px;
+		height: 5px;
+		background-color: #563c8a;
 	}
 }
 
 
 // Recommendations page
 
-.recommendations_page {
+#recommendations_page {
 	.panel {
 		background-color: #1c1326;
-		margin-bottom: 0;
-		padding: 10px;
+		padding: 15px;
 	}
-	.panel_header .dropdown-menu {
+	.panel_header_sm .dropdown-menu {
 		padding: 10px;
 		width: 220px;
 		i {
@@ -488,68 +468,52 @@ input {
 		}
 	}
 }
-
-.rec_wrap {
-	display: inline-block;
+.recommendation {
 	margin-bottom: 10px;
 	position: relative;
-}
-
-.recommendation {
-	min-height: 220px;
-	display: inline-block;
-	vertical-align: top;
 	width: 374px;
-	.recommendation_artist_tags {
-		text-align: center;
-	}
-	.recommendation_tags {
-		margin-bottom: 5px;
-		.label {
-			display: inline-block;
-			font-size: 13px;
-			margin-bottom: 3px;
-			font-weight: unset;
-			padding: 2px 5px;
-			max-width: 170px;
-			white-space: normal;
-		}
-	}
-	.recommendation_artist {
-		position: relative;
-		text-align: center;
-		padding-right: 0px;
+}
+#recommendation_artist {
+	position: relative;
+	padding-right: 0px;
+	margin-bottom: 5px;
+	.artist_image {
 		margin-bottom: 10px;
 	}
-	.recommendation_similars {
-		padding-left: 15px;
+}
+.recommendation_tag {
+	font-size: 13px;
+	margin-bottom: 3px;
+	font-weight: unset;
+	padding: 2px 5px;
+	max-width: 170px;
+	white-space: normal;
+}
+#rec_header {
+	margin-bottom: 5px;
+}
+#recommendation_similars {
+	padding-left: 10px;
+}
+#recommendation_similars_content h5 {
+	font-size: 13px;
+}
+.recommendation_similar_artist {
+	h5 {
+		vertical-align: middle;
 	}
-	.rec_header {
-		margin-bottom: 5px;
-	}
-	.recommendation_similars_artists h5 {
-		font-size: 13px;
-	}
-	.recommendation_similars_artist {
-		margin-bottom: 5px;
-		.artist_image, h5 {
-			display: inline;
-		}
-		img {
-			width: 30px;
-		}
+	margin-bottom: 5px;
+	img {
+		width: 30px;
 	}
 }
-
-.rec_delete {
+#rec_delete {
 	position: absolute;
 	top: 0;
-	.rec_del_btn {
+	#rec_del_btn {
 		width: 15px;
 		height: 15px;
-		text-align: center;
 		border-radius: 2px;
-		float: left;
 		&:hover {
 			background-color: red;
 		}
@@ -558,30 +522,81 @@ input {
 		}
 	}
 }
-
 .rec_restore {
 	width: 374px;
 	position: absolute;
 	z-index: 100;
 	background-color: #1c1326cc;
-	text-align: center;
 	height: 100%;
 	h4 {
 		margin-top: 100px;
 	}
+	margin-top: -10px;
+	margin-left: -10px;
 }
 
 // Bookmarks page
 
 .bookmark {
-	display: inline-block;
-	.artist_image {
-		display: inline-block;
-		img {
-			width: 100px;
-		}
-	}
-	.artist_name {
+	margin-bottom: 10px;
+	.bookmark_name {
 		text-align: center;
 	}
+}
+
+// Similar page
+
+.similar {
+	display: inline-block;
+	vertical-align: top;
+	width: 248px;
+	padding: 15px;
+	margin-bottom: 10px;
+	background-color: #1c1326;
+	.similar_image_name {
+		position: relative;
+	}
+	.similar_image {
+		margin-bottom: 10px;
+		img {
+			width: 100%;
+			border-radius: 50%;
+		}
+	}
+	.similar_name {
+		font-size: 20px;
+	}
+	.similar_info_body {
+		text-align: center;
+		margin-bottom: 5px;
+	}
+	.similar_stat {
+		display: inline-block;
+		font-size: 17px;
+	}
+	.similar_tag {
+		display: inline-block;
+		margin-bottom: 3px;
+		font-size: 100%;
+		font-weight: inherit;
+		padding: 2px 6px;
+	}
+}
+
+// Playlists page
+
+#profile_playlists {
+	margin-bottom: 5px;
+}
+
+#playlist_name {
+	margin: 0;
+}
+
+#playlist_form_name {
+	width: 400px;
+}
+
+#track_search_results {
+	margin-top: 10px;
 }

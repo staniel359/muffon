@@ -7,5 +7,5 @@
 	.artist_bookmark_content
 		.bookmark_artist
 			= button_to bookmark_path(is: 'artist', artist_name: artist_name, image: image, create: 1, a_id: a_id), method: :post, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Add to bookmarks", class: 'inv_btn' do
-				%h6= fa_icon 'plus'
+				.plus_small.inline= fa_icon 'plus'
 				= fa_icon 'bookmark'
