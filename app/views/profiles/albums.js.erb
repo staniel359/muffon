@@ -1,2 +1,2 @@
-$('#albums').html("<%= j render partial: 'profile_album', collection: @profile.profile_albums.order(params[:scope]).first(20) %>")
+$('#albums').html("<%= j render partial: 'profile_album', collection: @albums %>")
 $('#albums_scope').html("<%= j render 'albums_scope' %>")

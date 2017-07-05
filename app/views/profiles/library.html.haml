@@ -68,10 +68,10 @@
 				.panel_header_sm
 					%h3
 						= fa_icon 'heart-o'
-						= "Loved tracks (#{@profile.loved_tracks.count})"
+						= "Loved tracks (#{@profile.profile_tracks.where(loved: 1).count})"
 				#library_loved_tracks.panel_content
 					%table.table.table-hover.table-condensed
-						= render partial: 'new_loved_track', collection: @loved_tracks
+						= render partial: 'profile_track', collection: @loved_tracks
 			#library_new_tracks_panel.panel.panel-default
 				.panel_header_sm
 					%h3
@@ -79,7 +79,7 @@
 						= "New tracks (#{@profile.profile_tracks.count})"
 				#library_new_tracks.panel_content
 					%table.table.table-hover.table-condensed
-						= render partial: 'new_loved_track', collection: @new_tracks
+						= render partial: 'profile_track', collection: @new_tracks.first(5)
 		#library_recent_tracks_panel.panel.panel-default.eql.inline.top_align
 			.panel_header_sm
 				%h3
@@ -102,5 +102,3 @@
 		.panel.panel-default
 			.panel_content
 				%h4 Your library is empty.
-
-- console

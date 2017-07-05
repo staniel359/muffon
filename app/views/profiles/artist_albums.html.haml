@@ -2,4 +2,4 @@
 	= render 'panel_header'
 	#library_artist_albums_panel_content.panel_wider_content
 		= render partial: 'profile_album', collection: @albums
-		= will_paginate @albums if @albums.count > 20
+		= will_paginate @albums

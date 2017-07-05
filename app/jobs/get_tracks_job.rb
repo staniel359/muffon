@@ -123,33 +123,10 @@ class GetTracksJob < ApplicationJob
   			end
   		end
 
-      # Loved tracks
-
-      loved_counter = 0
-      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: loved_tracks_total, p: 5, c: loved_counter }
-
-      loved_tracks_pages = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['@attr']['totalPages'].to_i
-      loved_tracks_pages.downto(1) do |i|
-        loved_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['track']
-
-        loved_tracks.map do |t|
-          artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
-          track = Track.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
-          profile_artist = profile.profile_artists.find(artist.id).id
-          profile_track = profile.profile_tracks.find(track.id).id
-          LovedTrack.where(track_id: track.id, profile: profile_id).first_or_create!(profile_track_id: profile_track.id, artist_id: artist_id, profile_artist_id: profile_artist.id, created_at: Time.at(t['date']['uts'].to_i))
-
-          @counter += 1
-          loved_counter += 1
-          width = (@counter / entries_total * 100)
-          ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 5, t: loved_tracks_total, c: loved_counter, w: width }
-        end
-      end
-
       # Top tags
 
       tag_counter = 0
-      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: top_tags_total, p: 6, c: tag_counter }
+      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, t: top_tags_total, p: 5, c: tag_counter }
 
       top_tags = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.gettoptags&limit=1000&user=#{profile.lastfm_id}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['toptags']['tag']
 
@@ -161,13 +138,13 @@ class GetTracksJob < ApplicationJob
           @counter += 1
           tag_counter += 1
           width = (@counter / entries_total * 100)
-          ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 6, t: top_tags_total, c: tag_counter, w: width }
+          ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 5, t: top_tags_total, c: tag_counter, w: width }
         end
       end
 
       # Recommendations
 
-      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 7}
+      ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 6}
       rec_total = profile.profile_artists.count.to_f
       rec_counter = 0
 
@@ -186,7 +163,7 @@ class GetTracksJob < ApplicationJob
         end
         rec_counter += 1
         width = (rec_counter / rec_total) * 100
-        ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 7, w: width }
+        ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, p: 6, w: width }
       end
       ActionCable.server.broadcast "tracks_import_#{profile_id}", { id: profile_id, close: 1 }
 	  end

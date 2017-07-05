@@ -6,10 +6,10 @@
 				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 					#albums_scope= render 'albums_scope'
 				%ul.dropdown-menu.dropdown-menu-right
-					%li= link_to 'Most played', change_albums_scope_path(scope: 'count desc'), remote: true
-					%li= link_to 'Least played', change_albums_scope_path(scope: 'count asc'), remote: true
-					%li= link_to 'Newest', change_albums_scope_path(scope: 'created_at desc'), remote: true
-					%li= link_to 'Oldest', change_albums_scope_path(scope: 'created_at asc'), remote: true
+					%li= link_to 'Most played', change_albums_scope_path(scope: '1'), remote: true
+					%li= link_to 'Least played', change_albums_scope_path(scope: '2'), remote: true
+					%li= link_to 'Newest', change_albums_scope_path(scope: '3'), remote: true
+					%li= link_to 'Oldest', change_albums_scope_path(scope: '4'), remote: true
 	#library_albums_panel_content.panel_wider_content
 		#albums= render partial: 'profile_album', collection: @albums
-		= will_paginate @albums if @albums.count > 20
+		= will_paginate @albums

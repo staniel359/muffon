@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   post '/bookmark', to: 'muffon#bookmark'
   delete '/bookmark', to: 'muffon#bookmark'
 
-  get '/refresh_listens', to: 'muffon#refresh_listens'
+  get '/import_plays', to: 'muffon#import_plays'
 
   get '/bookmarks', to: 'muffon#bookmarks', as: 'bookmarks'
 

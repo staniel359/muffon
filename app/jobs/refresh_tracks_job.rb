@@ -6,11 +6,11 @@ class RefreshTracksJob < ApplicationJob
 
 	    recent_tracks_paging = true
 		i = 1
-		last_play = profile.plays.last
+
 		while recent_tracks_paging do
 			recent_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=#{profile.lastfm_id}&extended=1&limit=200&page=#{i}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['recenttracks']['track']
 			recent_tracks.each do |t|
-				if Time.at(t['date']['uts'].to_i).to_time > last_play.created_at.to_time
+				if Time.at(t['date']['uts'].to_i).to_time > time
 					artist = Artist.where('lower(name) = lower(?)', t['artist']['name']).first_or_create!(name: t['artist']['name'], image: t['artist']['image'][3]['#text'])
 					track = Track.where('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id).first_or_create!(title: t['name'], artist_id: artist.id)
   					album = Album.where('lower(title) = lower(?) and artist_id = ?', t['album']['#text'], artist.id).first_or_create(title: t['album']['#text'], artist_id: artist.id, cover: t['image'][3]['#text'])
@@ -53,23 +53,6 @@ class RefreshTracksJob < ApplicationJob
 				end
 			end
 			i += 1
-		end
-		
-		loved_tracks_paging = true
-		j = 1
-
-		while loved_tracks_paging do
-			loved_tracks = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=#{profile.lastfm_id}&limit=200&page=#{j}&api_key=#{ENV["LASTFM_KEY"]}&format=json").read)['lovedtracks']['track']
-			loved_tracks.each do |t|
-				if Time.at(t['date']['uts'].to_i).to_time > profile.loved_tracks.last.created_at.to_time
-          			artist = Artist.find_by('lower(name) = lower(?)', t['artist']['name'])
-          			track = Track.find_by('lower(title) = lower(?) and artist_id = ?', t['name'], artist.id)
-          			LovedTrack.where(track_id: track.id, profile: profile_id).first_or_create!(created_at: Time.at(t['date']['uts'].to_i))
-				else
-					loved_tracks_paging = false
-          		end
-        	end
-        	j += 1
 		end
 
 		new_artists = ProfileArtist.where('created_at > ?', profile.profile_artists.last.created_at)

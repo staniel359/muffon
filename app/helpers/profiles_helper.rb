@@ -2,19 +2,37 @@ module ProfilesHelper
 
 	def get_scoped_artists(scope)
 		if ((scope == 0) || (scope == nil))
-			@top_artists = @profile.profile_artists.order(count: :desc).first(8)
-		elsif
-			@scoped_plays = @profile.plays.where('created_at > ?', Time.now-scope.to_i.days)
-			@top_artists = @scoped_plays.group(:profile_artist_id).select(:profile_artist_id).order('count(*) desc').map {|a| profile_artist = ProfileArtist.find(a.profile_artist_id); profile_artist.count = @scoped_plays.where(profile_artist_id: profile_artist.id).count; profile_artist}.first(8)
+			@top_artists = @profile.profile_artists.joins(:plays).group('profile_artists.id').order('count(profile_artists.id) desc').limit(8)
+		else
+			@top_artists = @profile.profile_artists.joins(:plays).where('plays.created_at > ?', scope.to_i.days.ago).group('profile_artists.id').order('count(profile_artists.id) desc').limit(8)
+		end
+	end
+
+	def count_artist_plays(profile_artist)
+		if (params[:artists_scope] && params[:artists_scope] != '0')
+			profile_artist.plays.where('plays.created_at > ?', params[:artists_scope].to_i.days.ago).count
+		elsif (params[:artists_default_scope] && params[:artists_default_scope] != '0')
+			profile_artist.plays.where('plays.created_at > ?', params[:artists_default_scope].to_i.days.ago).count
+		else
+			profile_artist.plays.count
 		end
 	end
 
 	def get_scoped_albums(scope)
 		if ((scope == 0) || (scope == nil))
-			@top_albums = @profile.profile_albums.order(count: :desc).first(6)
-		elsif
-			@scoped_plays = @profile.plays.where('created_at > ? and album_id is not null', Time.now-scope.to_i.days)
-			@top_albums = @scoped_plays.group(:profile_album_id).select(:profile_album_id).order('count(*) desc').map {|a| profile_album = ProfileAlbum.find(a.profile_album_id); profile_album.count = @scoped_plays.where(profile_album_id: profile_album.id).count; profile_album}.first(6)
+			@top_albums = @profile.profile_albums.joins(:plays).group('profile_albums.id').order('count(profile_albums.id) desc').limit(4)
+		else
+			@top_albums = @profile.profile_albums.joins(:plays).where('plays.created_at > ?', scope.to_i.days.ago).group('profile_albums.id').order('count(profile_albums.id) desc').limit(4)
+		end
+	end
+
+	def count_album_plays(profile_album)
+		if (params[:albums_scope] && params[:albums_scope] != '0')
+			profile_album.plays.where('plays.created_at > ?', params[:albums_scope].to_i.days.ago).count
+		elsif (params[:albums_default_scope] && params[:albums_default_scope] != '0')
+			profile_album.plays.where('plays.created_at > ?', params[:albums_default_scope].to_i.days.ago).count
+		else
+			profile_album.plays.count
 		end
 	end
 

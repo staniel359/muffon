@@ -22,7 +22,7 @@
 			%hr
 			#library_artist_panel_plays
 				.panel_header_xs
-					%h4= link_to pluralize(@artist.count, 'play'), library_artist_plays_path(@profile)
+					%h4= link_to pluralize(@artist.plays.count, 'play'), library_artist_plays_path(@profile)
 				#library_artist_panel_plays_content
 					%table.table.table-hover.table-condensed
 						= render partial: 'profile_play', collection: @plays

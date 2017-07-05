@@ -1,6 +1,6 @@
 #library_artist.inline.text_center.top_align
 	- if params[:action] == 'artist'
-		= link_to(artist_path(profile_artist.artist.name)) do
+		= link_to artist_path(profile_artist.artist.name) do
 			.artist_image.img_rnd
 				- if profile_artist.artist.image
 					= image_tag ((profile_artist.artist.image != '') ? profile_artist.artist.image : 'missing_artist.png')
@@ -10,7 +10,7 @@
 				%strong= profile_artist.artist.name
 			%h5 on muffon
 	- else
-		= link_to(library_artist_path(id: @profile.id, artist_id: profile_artist.id)) do
+		= link_to library_artist_path(artist_id: profile_artist.id) do
 			.artist_image.img_rnd
 				- if profile_artist.artist.image
 					= image_tag ((profile_artist.artist.image != '') ? profile_artist.artist.image : 'missing_artist.png')
@@ -19,4 +19,4 @@
 			%h4
 				%strong= profile_artist.artist.name
 		= link_to(library_artist_plays_path(id: @profile.id, artist_id: profile_artist.id)) do
-			%h5= pluralize(profile_artist.count, 'play')
+			%h5= pluralize(count_artist_plays(profile_artist), 'play')

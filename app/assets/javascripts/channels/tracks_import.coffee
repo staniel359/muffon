@@ -20,12 +20,9 @@ App.tracks_import = App.cable.subscriptions.create "TracksImportChannel",
       $('#job_process').html('Updating tracks...')
       $('#job_entity').html('tracks')
     if data['p'] is 5
-      $('#job_process').html('Importing loved tracks...')
-      $('#job_entity').html('tracks')
-    if data['p'] is 6
       $('#job_process').html('Importing tags...')
       $('#job_entity').html('tags')
-    if data['p'] is 7
+    if data['p'] is 6
       $('#job_process').html('Generating recommendations...')
       $('#job_total').remove()
       $('#job_count').remove()

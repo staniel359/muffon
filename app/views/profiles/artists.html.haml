@@ -6,10 +6,10 @@
 				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
 					#artists_scope= render 'artists_scope'
 				%ul.dropdown-menu.dropdown-menu-right
-					%li= link_to 'Most played', change_artists_scope_path(scope: 'count desc'), remote: true
-					%li= link_to 'Least played', change_artists_scope_path(scope: 'count asc'), remote: true
-					%li= link_to 'Newest', change_artists_scope_path(scope: 'created_at desc'), remote: true
-					%li= link_to 'Oldest', change_artists_scope_path(scope: 'created_at asc'), remote: true
+					%li= link_to 'Most played', change_artists_scope_path(scope: '1'), remote: true
+					%li= link_to 'Least played', change_artists_scope_path(scope: '2'), remote: true
+					%li= link_to 'Newest', change_artists_scope_path(scope: '3'), remote: true
+					%li= link_to 'Oldest', change_artists_scope_path(scope: '4'), remote: true
 	#library_artists_panel_content.panel_wider_content
 		#artists= render partial: 'profile_artist', collection: @artists
-		= will_paginate @artists if @artists.count > 20
+		= will_paginate @artists

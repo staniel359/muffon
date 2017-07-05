@@ -5,5 +5,5 @@ class ProfileAlbum < ApplicationRecord
   belongs_to :artist
   has_many :profile_tracks, dependent: :destroy
   has_many :plays, dependent: :destroy
-  validates_presence_of :album_id
+  validates_presence_of :profile_id, :album_id, :profile_artist_id, :artist_id
 end

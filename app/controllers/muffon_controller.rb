@@ -77,8 +77,12 @@ class MuffonController < ApplicationController
 		respond_to :js
 	end
 
-	def refresh_listens
-		RefreshTracksJob.perform_later(@profile.id)
+	def import_plays
+		if params[:do] == 'import'
+			GetTracksJob.perform_later(@profile.id)
+		elsif params[:do] == 'refresh'
+			RefreshTracksJob.perform_later(@profile.id)
+		end
 	end
 
 	private

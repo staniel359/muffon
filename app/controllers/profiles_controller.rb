@@ -84,46 +84,59 @@ class ProfilesController < ApplicationController
 	end
 
 	def library
-		@title = "#{@profile.nickname}'s library"
-		if (params[:artists_scope] || params[:albums_scope])
-			if params[:artists_scope]
-				get_scoped_artists(params[:artists_scope].to_i)
-			elsif params[:albums_scope]
-				get_scoped_albums(params[:albums_scope].to_i)
-			end
-		elsif (params[:artists_default_scope] || params[:albums_default_scope])
-			if (params[:artists_default_scope] && current_profile?(@profile))
-				@profile.update!(top_artists_scope: params[:artists_default_scope].to_i)
-			elsif params[:albums_default_scope]
-				@profile.update!(top_albums_scope: params[:albums_default_scope].to_i)
-			end
+		if params[:artists_scope]
+			get_scoped_artists(params[:artists_scope].to_i)
+			respond_to :js
+		elsif params[:albums_scope]
+			get_scoped_albums(params[:albums_scope].to_i)
+			respond_to :js
+		elsif (params[:artists_default_scope] && current_profile?(@profile))
+			@profile.update!(top_artists_scope: params[:artists_default_scope].to_i)
+			respond_to :js
+		elsif params[:albums_default_scope]
+			@profile.update!(top_albums_scope: params[:albums_default_scope].to_i)
 			respond_to :js
 		else
+			@title = "#{@profile.nickname}'s library"
 			get_scoped_artists(@profile.top_artists_scope)
 			get_scoped_albums(@profile.top_albums_scope)
+			@top_tracks = @profile.profile_tracks.joins(:plays).group('profile_tracks.id').order('count(profile_tracks.id) desc').limit(8)
+			@plays = @profile.plays.order(created_at: :desc).first(9)
+			@new_tracks = @profile.profile_tracks.order(created_at: :desc).first(4)
+			@loved_tracks = @profile.profile_tracks.where(loved: 1).order(created_at: :desc).first(4)
+			@top_tags = @profile.profile_tags.order(count: :desc).first(10)
 		end
-		@top_tracks = @profile.profile_tracks.order(count: :desc).first(10)
-		@plays = @profile.plays.order(created_at: :desc).first(10)
-		@new_tracks = @profile.profile_tracks.order(created_at: :desc).first(5)
-		@loved_tracks = @profile.loved_tracks.order(created_at: :desc).first(5)
-		@top_tags = @profile.profile_tags.order(count: :desc).first(10)	
 	end
 
 	def artists
 		@title = "#{@profile.nickname}'s artists"
-		@artists = @profile.profile_artists.order(count: :desc).paginate(page: params[:page], per_page: 20)
+		if params[:scope]
+			if params[:scope] == '1'
+				order = 'count(profile_artists.id) desc'
+			elsif params[:scope] == '2'
+				order = 'count(profile_artists.id) asc'
+			elsif params[:scope] == '3'
+				order = 'created_at desc'
+			elsif params[:scope] == '4'
+				order = 'created_at asc'
+			end
+			@artists = @profile.profile_artists.joins(:plays).group('profile_artists.id').order(order).paginate(page: params[:page], per_page: 20)
+			respond_to :js
+		else
+			@artists = @profile.profile_artists.joins(:plays).group('profile_artists.id').order('count(profile_artists.id) desc').paginate(page: params[:page], per_page: 20)
+		end
 	end
 
 	def artist
 		@title = "#{@artist.artist.name} in #{@profile.nickname}'s library"
-		@tracks = @artist.profile_tracks.order(count: :desc).first(5)
-		@albums = @artist.profile_albums.order(count: :desc).first(3)
+		@tracks = @artist.profile_tracks.joins(:plays).group('profile_tracks.id').order('count(profile_tracks.id) desc').limit(5)
+		@albums = @artist.profile_albums.joins(:plays).group('profile_albums.id').order('count(profile_albums.id) desc').limit(3)
 		@plays = @artist.plays.order(created_at: :desc).first(5)
 	end
 
 	def artist_albums
 		@title = "#{@artist.artist.name} plays in #{@profile.nickname}'s library"
-		@albums = @artist.profile_albums.order(count: :desc).paginate(page: params[:page], per_page: 20)
+		@albums = @artist.profile_albums.joins(:plays).group('profile_albums.id').order('count(profile_albums.id) desc').paginate(page: params[:page], per_page: 20)
 	end
 
 	def artist_plays
@@ -133,17 +146,32 @@ class ProfilesController < ApplicationController
 
 	def artist_tracks
 		@title = "#{@artist.artist.name} tracks in #{@profile.nickname}'s library"
-		@tracks = @artist.profile_tracks.order(count: :desc).paginate(page: params[:page], per_page: 20)
+		@tracks = @artist.profile_tracks.joins(:plays).group('profile_tracks.id').order('count(profile_tracks.id) desc').paginate(page: params[:page], per_page: 20)
 	end
 
 	def albums
 		@title = "#{@profile.nickname}'s albums"
-		@albums = @profile.profile_albums.order(count: :desc).paginate(page: params[:page], per_page: 20)
+		if params[:scope]
+			if params[:scope] == '1'
+				order = 'count(profile_albums.id) desc'
+			elsif params[:scope] == '2'
+				order = 'count(profile_albums.id) asc'
+			elsif params[:scope] == '3'
+				order = 'created_at desc'
+			elsif params[:scope] == '4'
+				order = 'created_at asc'
+			end
+			@albums = @profile.profile_albums.joins(:plays).group('profile_albums.id').order(order).paginate(page: params[:page], per_page: 20)
+			respond_to :js
+		else
+			@albums = @profile.profile_albums.joins(:plays).group('profile_albums.id').order('count(profile_albums.id) desc').paginate(page: params[:page], per_page: 20)
+		end
 	end
 
 	def album
 		@title = "#{@album.album.artist.name} - #{@album.album.title} in #{@profile.nickname}'s library"
-		@tracks = @profile.profile_tracks.where("'?' = any(profile_albums)", @album.id).order(count: :desc)
+		@tracks = @profile.profile_tracks.where("'?' = any(profile_albums)", @album.id)
+		@tracks.joins(:plays).group('profile_tracks.id').order('count(profile_tracks.id) desc')
 		@plays = @album.plays.order(created_at: :desc).first(10)
 	end
 
@@ -154,7 +182,7 @@ class ProfilesController < ApplicationController
 
 	def tracks
 		@title = "#{@profile.nickname}'s tracks"
-		@tracks = @profile.profile_tracks.order(count: :desc).paginate(page: params[:page], per_page: 20)
+		@tracks = @profile.profile_tracks.joins(:plays).group('profile_tracks.id').order('count(profile_tracks.id) desc').paginate(page: params[:page], per_page: 20)
 	end
 
 	def track_plays

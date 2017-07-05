@@ -1,12 +1,12 @@
 Order:
 - if params[:scope]
-	- if params[:scope] == 'count desc'
+	- if params[:scope] == '1'
 		most played
-	- if params[:scope] == 'count asc'
+	- if params[:scope] == '2'
 		least played
-	- if params[:scope] == 'created_at desc'
+	- if params[:scope] == '3'
 		newest
-	- if params[:scope] == 'created_at asc'
+	- if params[:scope] == '4'
 		oldest
 - elsif @profile.library_albums_scope
 	- if @profile.library_albums_scope == 'count desc'
