@@ -11,18 +11,9 @@ App.tracks_import = App.cable.subscriptions.create "TracksImportChannel",
       $('#job_process').html('Importing listening history...')
       $('#job_entity').html('plays')
     if data['p'] is 2
-      $('#job_process').html('Updating artists...')
-      $('#job_entity').html('artists')
-    if data['p'] is 3
-      $('#job_process').html('Updating albums...')
-      $('#job_entity').html('albums')
-    if data['p'] is 4
-      $('#job_process').html('Updating tracks...')
-      $('#job_entity').html('tracks')
-    if data['p'] is 5
       $('#job_process').html('Importing tags...')
       $('#job_entity').html('tags')
-    if data['p'] is 6
+    if data['p'] is 3
       $('#job_process').html('Generating recommendations...')
       $('#job_total').remove()
       $('#job_count').remove()

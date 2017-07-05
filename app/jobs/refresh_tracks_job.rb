@@ -36,18 +36,6 @@ class RefreshTracksJob < ApplicationJob
                       	artist_id: artist.id,
                       	profile_artist_id: profile_artist.id,
                       	created_at: Time.at(t['date']['uts'].to_i))
-
-          			unless play.present?
-          				play.first_or_create!
-	          			profile_artist.count += 1
-	          			profile_artist.save
-	          			if profile_album
-		          			profile_album.count += 1
-		          			profile_album.save
-		          		end
-	          			profile_track.count += 1
-	          			profile_track.save
-	          		end
 	          	else
 	          		recent_tracks_paging = false
 				end
