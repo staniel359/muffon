@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703161502) do
+ActiveRecord::Schema.define(version: 20170708191656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20170703161502) do
     t.index ["profile_id"], name: "index_bookmarks_on_profile_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "listened_artists", force: :cascade do |t|
     t.bigint "profile_id"
     t.string "artist_name"
@@ -52,19 +59,14 @@ ActiveRecord::Schema.define(version: 20170703161502) do
     t.index ["profile_id"], name: "index_listened_artists_on_profile_id"
   end
 
-  create_table "loved_tracks", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
     t.bigint "profile_id"
-    t.bigint "track_id"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "profile_track_id"
-    t.bigint "artist_id"
-    t.bigint "profile_artist_id"
-    t.index ["artist_id"], name: "index_loved_tracks_on_artist_id"
-    t.index ["profile_artist_id"], name: "index_loved_tracks_on_profile_artist_id"
-    t.index ["profile_id"], name: "index_loved_tracks_on_profile_id"
-    t.index ["profile_track_id"], name: "index_loved_tracks_on_profile_track_id"
-    t.index ["track_id"], name: "index_loved_tracks_on_track_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["profile_id"], name: "index_messages_on_profile_id"
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
@@ -108,7 +110,6 @@ ActiveRecord::Schema.define(version: 20170703161502) do
     t.bigint "album_id"
     t.bigint "profile_artist_id"
     t.bigint "artist_id"
-    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_profile_albums_on_album_id"
@@ -120,7 +121,6 @@ ActiveRecord::Schema.define(version: 20170703161502) do
   create_table "profile_artists", force: :cascade do |t|
     t.bigint "profile_id"
     t.bigint "artist_id"
-    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_profile_artists_on_artist_id"
@@ -145,7 +145,6 @@ ActiveRecord::Schema.define(version: 20170703161502) do
     t.integer "profile_albums", default: [], array: true
     t.integer "albums", default: [], array: true
     t.integer "loved"
-    t.integer "count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_profile_tracks_on_artist_id"
@@ -165,12 +164,11 @@ ActiveRecord::Schema.define(version: 20170703161502) do
     t.string "gender"
     t.string "avatar"
     t.string "lastfm_id"
-    t.string "library_artists_scope"
-    t.string "library_albums_scope"
     t.integer "top_artists_scope"
     t.integer "top_albums_scope"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "top_tracks_scope"
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -202,11 +200,8 @@ ActiveRecord::Schema.define(version: 20170703161502) do
   add_foreign_key "albums", "artists"
   add_foreign_key "bookmarks", "profiles"
   add_foreign_key "listened_artists", "profiles"
-  add_foreign_key "loved_tracks", "artists"
-  add_foreign_key "loved_tracks", "profile_artists"
-  add_foreign_key "loved_tracks", "profile_tracks"
-  add_foreign_key "loved_tracks", "profiles"
-  add_foreign_key "loved_tracks", "tracks"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "profiles"
   add_foreign_key "playlist_tracks", "playlists"
   add_foreign_key "playlist_tracks", "profile_tracks"
   add_foreign_key "playlists", "profiles"

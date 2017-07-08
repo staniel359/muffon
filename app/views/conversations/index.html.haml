@@ -1,0 +1,10 @@
+#conversations.panel.panel-default.center
+	.panel_header_sm
+		%h3 Conversations
+	.panel_content
+		- if @conversations.any?
+			- @conversations.each do |c|
+				= "from #{c.sender.nickname} to #{c.recipient.nickname}"
+		- else
+			You have no conversations yet.
+- console

@@ -1,0 +1,16 @@
+%tr
+	%td
+		.profile_track
+			- unless params[:action] == 'artist' || params[:action] == 'artist_tracks' || params[:action] == 'album'
+				.media-left
+					.track_cover.img_sm= image_tag ((profile_track.track.artist.image && profile_track.track.artist.image != '') ? profile_track.track.artist.image : 'missing_artist.png')
+			.media-body
+				%h5
+					- if profile_track.loved?
+						= fa_icon 'heart', style: 'color:red'
+					- else
+						= fa_icon 'heart-o'
+					%strong= profile_track.track.title
+				- unless params[:action] == 'artist' || params[:action] == 'artist_tracks' || params[:action] == 'album'
+					%h5= link_to "#{profile_track.track.artist.name}", library_artist_path(id: @profile.id, artist_id: profile_track.profile_artist.id)
+				%h5= link_to pluralize(count_track_plays(profile_track), 'play'), library_track_plays_path(track_id: profile_track.id) 

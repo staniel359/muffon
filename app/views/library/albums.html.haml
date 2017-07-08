@@ -1,0 +1,15 @@
+#library_albums_panel.panel.panel-default.library_page.center
+	.panel_header_sm
+		%h3.panel_header_sm_body= "#{@profile.nickname}'s albums"
+		.scopes.inline.pull-right.panel_header_sm_body
+			.dropdown.inline
+				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+					#albums_scope= render 'sort_scope_label'
+				%ul.dropdown-menu.dropdown-menu-right
+					%li= link_to 'Most played', library_albums_scope_path(scope: '1'), remote: true
+					%li= link_to 'Least played', library_albums_scope_path(scope: '2'), remote: true
+					%li= link_to 'Newest', library_albums_scope_path(scope: '3'), remote: true
+					%li= link_to 'Oldest', library_albums_scope_path(scope: '4'), remote: true
+	#library_albums_panel_content.panel_wider_content
+		#albums= render partial: 'profile_album', collection: @albums
+		= will_paginate @albums

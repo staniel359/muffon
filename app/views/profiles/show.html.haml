@@ -1,5 +1,5 @@
 #profile_page
-	#profile_avatar= image_tag @profile.avatar.url(:md)
+	#profile_avatar.img_rnd= image_tag @profile.avatar.url(:md)
 	#profile_page_panel.center.panel.panel-default
 		#profile_info
 			%h4= @profile.nickname
@@ -11,10 +11,9 @@
 				= @profile.city
 				= @profile.country
 			%h5= "Listening since #{l @profile.plays.first.created_at, format: '%e %b %Y'}" if @profile.plays.any?
-			%h5
-				= link_to "#{@profile.plays.count} plays", library_plays_path
-				= link_to "#{@profile.profile_tracks.count} tracks", library_tracks_path
-				= link_to "#{@profile.profile_artists.count} artists", library_artists_path
+			%h4.inline= link_to "#{@profile.plays.count} plays", library_plays_path
+			%h4.inline= link_to "#{@profile.profile_tracks.count} tracks", library_tracks_path
+			%h4.inline= link_to "#{@profile.profile_artists.count} artists", library_artists_path
 		- unless current_profile?(@profile)
 			= "You have #{pluralize(@common_artists.count, 'artist')} in common:"
 			- @common_artists.first(5).map do |a|

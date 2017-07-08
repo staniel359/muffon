@@ -1,0 +1,70 @@
+#profile_library.library_page.center
+	- if @profile.profile_tracks.any?
+		#library_top_artists_panel.panel.panel-default
+			.panel_header_sm
+				%h3.panel_header_sm_body
+					= link_to 'Top artists', library_artists_path(@profile)
+				= render 'artists_time_scope'
+			#library_top_artists.panel_wider_content
+				#top_artists
+					= render partial: 'profile_artist', collection: @top_artists
+				.text_right
+					= link_to 'View more...', library_artists_path(@profile)
+		#library_top_albums_panel.panel.panel-default.inline.top_align
+			.panel_header_sm
+				%h3.panel_header_sm_body
+					= link_to 'Top albums', library_albums_path(@profile)
+				= render 'albums_time_scope'
+			#library_top_albums.panel_wider_content.text_center
+				#top_albums
+					= render partial: 'profile_album', collection: @top_albums
+				.text_right
+					= link_to 'View more...', library_albums_path(@profile)
+		#library_top_tracks_panel.panel.panel-default.inline.top_align
+			.panel_header_sm
+				%h3.panel_header_sm_body
+					= link_to 'Top tracks', library_tracks_path(@profile)
+				= render 'tracks_time_scope'
+			#library_top_tracks.panel_content
+				%table.table.table-hover.table-condensed#top_tracks
+					= render partial: 'profile_track', collection: @top_tracks
+				.text_right
+					= link_to 'View more...', library_tracks_path(@profile)
+		#library_new_loved_tracks.eql.inline.top_align
+			#library_loved_tracks_panel.panel.panel-default
+				%h3.panel_header_sm
+					= fa_icon 'heart-o'
+					= "Loved tracks (#{@profile.profile_tracks.where(loved: 1).count})"
+				#library_loved_tracks.panel_content
+					%table.table.table-hover.table-condensed
+						= render partial: 'profile_track', collection: @loved_tracks
+			#library_new_tracks_panel.panel.panel-default
+				%h3.panel_header_sm
+					= fa_icon 'plus'
+					= "New tracks (#{@profile.profile_tracks.count})"
+				#library_new_tracks.panel_content
+					%table.table.table-hover.table-condensed
+						= render partial: 'profile_track', collection: @new_tracks.first(5)
+		#library_recent_tracks_panel.panel.panel-default.eql.inline.top_align
+			%h3.panel_header_sm
+				= fa_icon 'clock-o'
+				= link_to "Recent tracks (#{@profile.plays.count})", library_plays_path(@profile)
+			#library_recent_tracks.panel_content
+				%table.table.table-hover.table-condensed
+					= render partial: 'profile_play', collection: @plays
+				.text_right
+					= link_to "View more...", library_plays_path(@profile)
+		#library_profile_tags_panel.panel.panel-default
+			.panel_header_sm
+				%h3.panel_header_sm_body
+					= fa_icon 'tags'
+					= "Tags (#{@profile.profile_tags.count})"
+			#library_profile_tags.panel_content
+				- @top_tags.map do |t|
+					= t.tag.name
+					= t.count
+	- else
+		.panel.panel-default
+			.panel_content
+				%h4 Your library is empty.
+

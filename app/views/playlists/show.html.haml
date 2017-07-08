@@ -9,6 +9,6 @@
 				- else
 					#playlist_tracks_empty This playlist is empty.
 			#add_playlist_tracks_btn
-				= button_to profile_playlist_new_track_path, class: 'btn btn-sm btn-primary', method: :get, remote: true do
+				= button_to new_profile_playlist_track_path(playlist_id: params[:id]), class: 'btn btn-sm btn-primary', method: :get, remote: true do
 					Add tracks
 			#track_search_results

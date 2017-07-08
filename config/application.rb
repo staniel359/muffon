@@ -14,6 +14,6 @@ module Muffon
     config.active_job.queue_adapter = :sidekiq
 
     config.time_zone = 'Minsk'
-	config.active_record.default_timezone = :local
+    config.active_record.default_timezone = :local
   end
 end

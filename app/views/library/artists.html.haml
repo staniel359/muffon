@@ -1,0 +1,15 @@
+#library_artists_panel.panel.panel-default.library_page.center
+	.panel_header_sm
+		%h3.panel_header_sm_body= "#{@profile.nickname}'s artists"
+		.scopes.inline.pull-right.panel_header_sm_body
+			.dropdown.inline
+				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+					#artists_scope= render 'sort_scope_label'
+				%ul.dropdown-menu.dropdown-menu-right
+					%li= link_to 'Most played', library_artists_scope_path(scope: '1'), remote: true
+					%li= link_to 'Least played', library_artists_scope_path(scope: '2'), remote: true
+					%li= link_to 'Newest', library_artists_scope_path(scope: '3'), remote: true
+					%li= link_to 'Oldest', library_artists_scope_path(scope: '4'), remote: true
+	#library_artists_panel_content.panel_wider_content
+		#artists= render partial: 'profile_artist', collection: @artists
+		= will_paginate @artists

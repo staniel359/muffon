@@ -1,11 +1,12 @@
 class Artist < ApplicationRecord
 	has_many :profile_artists
 	has_many :loved_tracks
-	validates_presence_of :name
+	validates :name, presence: true
 
 	def in_library?(name, profile)
-		if artist = self.find_by(name: name)
-			if profile_artist = @profile.profile_artists.find_by(artist_id: artist.id)
+		artist = self.find_by(name: name)
+		if artist
+			if profile.profile_artists.find_by(artist_id: artist.id)
 				true
 			end
 		end

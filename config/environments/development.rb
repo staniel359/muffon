@@ -52,12 +52,12 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = 'ws://localhost:3000/cable'
   
-  ENV["LASTFM_KEY"] = "146fa01985acd46b23f4e6c5f660f199";
-  ENV["LASTFM_SECRET"] = "4608a06d1f929b77f2567d7645145270";
-  ENV["DISCOGS_KEY"] = "lmqIHGxJzwqEFiLBLxwu";
-  ENV["DISCOGS_SECRET"] = "aPSJTqPRwVuzxxZkPOdsNWKmQIyVSpDs";
-  ENV["SOUNDCLOUD_KEY"] = "bbbf2c698cb8351905814f00bcf58118";
-  ENV["SOUNDCLOUD_SECRET"] = "1174ac08925b31d99b718d0b35c73dba";
+  ENV['LASTFM_KEY'] = '146fa01985acd46b23f4e6c5f660f199'
+  ENV['LASTFM_SECRET'] = '4608a06d1f929b77f2567d7645145270'
+  ENV['DISCOGS_KEY'] = 'lmqIHGxJzwqEFiLBLxwu'
+  ENV['DISCOGS_SECRET'] = 'aPSJTqPRwVuzxxZkPOdsNWKmQIyVSpDs'
+  ENV['SOUNDCLOUD_KEY'] = 'bbbf2c698cb8351905814f00bcf58118'
+  ENV['SOUNDCLOUD_SECRET'] = '1174ac08925b31d99b718d0b35c73dba'
 end

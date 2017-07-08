@@ -15,6 +15,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :library_albums_scope
       t.integer :top_artists_scope
       t.integer :top_albums_scope
+      t.integer :top_tracks_scope
 
       t.timestamps
     end

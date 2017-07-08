@@ -1,0 +1,18 @@
+#playlist_search_form
+	= form_tag profile_search_playlist_track_path(playlist_id: params[:playlist_id]), method: :get, remote: true do
+		#track_search_field= text_field_tag :title
+
+-# :javascript
+-# 	$('#track_search_field').change(function(e){
+-# 		$.ajax({
+-# 			method: 'GET',
+-# 			url: '/search_track',
+-# 			data: {query: e.target.value, profile_id: "#{current_profile.id}", id: "#{@playlist.id}"}
+-# 		})
+-# 	}),
+
+-# 	$('#track_search_field').on("keypress", function(e) {
+-# 		if (e.keyCode == 13) {
+-# 			return false;
+-# 		}
+-# 	});

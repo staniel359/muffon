@@ -1,0 +1,32 @@
+= message
+- if params[:tracks_scope]
+	- case params[:tracks_scope]
+	- when '7' 
+		1 week
+	- when '30'
+		1 month
+	- when '90' 
+		3 months
+	- when '180' 
+		6 months
+	- when '365'
+		1 year
+	- when '0'
+		all time
+- elsif @profile.top_tracks_scope
+	- case @profile.top_tracks_scope
+	- when 7
+		1 week
+	- when 30
+		1 month
+	- when 90
+		3 months
+	- when 180
+		6 months
+	- when 365
+		1 year
+	- when 0
+		all time
+- else
+	all time
+.caret

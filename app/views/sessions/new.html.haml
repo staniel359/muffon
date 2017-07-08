@@ -1,4 +1,4 @@
-#login_form.center.panel.panel-default
+#login_form.form_center.panel.panel-default
 	.panel_header_sm
 		%h3 Log in
 	.panel_content
@@ -11,6 +11,7 @@
 					#profile_remember.inline= f.check_box :remember_me
 					#profile_remember.inline= f.label :remember_me, 'Remember me'
 				.inline.pull-right= f.submit 'Log in', class: 'btn btn-primary btn-sm'
-		%h5 
+		%br
+		%h5.text_right 
 			Don't have an account?
 			= link_to 'Sign up.', signup_path

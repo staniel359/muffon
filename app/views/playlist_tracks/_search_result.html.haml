@@ -1,0 +1,7 @@
+.search_result#search_result{id: search_result.id}
+	.result_image.img_sm.img_rnd.media-left= image_tag ((search_result.image && search_result.image != '') ? search_result.image : 'missing_artist.png')
+	.media-body
+		%h5= search_result.title
+		%h5= search_result.artist_name
+		= button_to profile_playlist_tracks_path(current_profile.id, track_id: search_result.id, playlist_id: params[:playlist_id]), class: 'btn btn-sm btn-primary', method: :post, remote: true do
+			Add to playlist

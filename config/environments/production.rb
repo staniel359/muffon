@@ -47,7 +47,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -75,7 +75,7 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
@@ -83,11 +83,10 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_cable.url = 'wss://muffon.endorphine.by/cable' 
+  config.web_socket_server_url = 'wss://muffon.endorphine.by/cable' 
+  config.action_cable.allowed_request_origins = ['muffon.endorphine.by']
 
-  config.action_cable.url = "wss://muffon.endorphine.by/cable" 
-  config.web_socket_server_url = "wss://muffon.endorphine.by/cable" 
-  config.action_cable.allowed_request_origins = ["muffon.endorphine.by"]
-
-  ENV["LASTFM_KEY"] = "2cd2a26588d785bcfd484f09720a2d57";
-  ENV["LASTFM_SECRET"] = "e91c8b57bc68a66a6707711471b75e90";
+  ENV['LASTFM_KEY'] = '2cd2a26588d785bcfd484f09720a2d57'
+  ENV['LASTFM_SECRET'] = 'e91c8b57bc68a66a6707711471b75e90'
 end

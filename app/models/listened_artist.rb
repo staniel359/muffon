@@ -1,4 +1,4 @@
 class ListenedArtist < ApplicationRecord
   belongs_to :profile
-  validates_presence_of :profile_id, :artist_name
+  validates :profile_id, :artist_name, presence: true
 end

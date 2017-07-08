@@ -1,0 +1,22 @@
+#albums_time_scope.scopes.inline.pull-right.panel_header_sm_body
+	.dropdown.inline
+		.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+			#top_albums_scope= render partial: 'albums_time_scope_label', locals: {message: 'Show by a period:'}
+		%ul.dropdown-menu.dropdown-menu-right
+			%li= link_to '1 week', library_scope_path(albums_scope: 7), remote: true
+			%li= link_to '1 month', library_scope_path(albums_scope: 30), remote: true
+			%li= link_to '3 months', library_scope_path(albums_scope: 90), remote: true
+			%li= link_to '6 months', library_scope_path(albums_scope: 180), remote: true
+			%li= link_to '1 year', library_scope_path(albums_scope: 365), remote: true
+			%li= link_to 'All time', library_scope_path(albums_scope: 0), remote: true
+	- if current_profile?(@profile)
+		.dropdown.inline
+			.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+				#top_albums_default_scope= render partial: 'albums_time_scope_label', locals: {message: 'Default scope:'}
+			%ul.dropdown-menu.dropdown-menu-right
+				%li= link_to '1 week', library_default_scope_path(albums_default_scope: 7), remote: true
+				%li= link_to '1 month', library_default_scope_path(albums_default_scope: 30), remote: true
+				%li= link_to '3 months', library_default_scope_path(albums_default_scope: 90), remote: true
+				%li= link_to '6 months', library_default_scope_path(albums_default_scope: 180), remote: true
+				%li= link_to '1 year', library_default_scope_path(albums_default_scope: 365), remote: true
+				%li= link_to 'All time', library_default_scope_path(albums_default_scope: 0), remote: true

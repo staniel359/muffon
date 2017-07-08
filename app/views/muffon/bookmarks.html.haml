@@ -1,6 +1,6 @@
 .bookmarks_page.center.panel.panel-default
 	.panel_header
-		%h3= link_to "Your bookmarks:", bookmarks_path
+		%h3 Bookmarks
 	.bookmarks.panel_content
 		- @bookmarks.map do |b|
 			= render 'bookmark', b: b

@@ -1,7 +1,0 @@
-#library_tracks_panel.panel.panel-default.library_page.center
-	.panel_header_sm
-		%h3= "#{@profile.nickname}'s tracks"
-	#library_tracks_panel_content.panel_content
-		%table.table.table-hover.table-condensed
-			= render partial: 'profile_track', collection: @tracks
-		= will_paginate @tracks

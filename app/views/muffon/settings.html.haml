@@ -3,11 +3,16 @@
 		%h3 Settings
 	.panel_content
 		#edit_form
-			%h4 Edit your profile
+			%h4.settings_header_sm Edit your profile
 			= render 'profiles/form'
 
-		= link_to 'Delete account', @profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}
-		- if !@profile.plays.any?
-			= button_to 'Import you library', import_plays_path(do: 'import'), method: :get, class: 'btn btn-primary', remote: true if current_profile.lastfm_id
+		- if @profile.lastfm_id
+			- if !@profile.plays.any?
+				= button_to 'Import you library', import_plays_path(do: 'import'), method: :get, class: 'btn btn-primary', remote: true if current_profile.lastfm_id
+			- else
+				= button_to 'Refresh your listens', import_plays_path(do: 'refresh'), method: :get, class: 'btn btn-primary', remote: true if current_profile.lastfm_id
 		- else
-			= button_to 'Refresh your listens', import_plays_path(do: 'refresh'), method: :get, class: 'btn btn-primary', remote: true if current_profile.lastfm_id
+			= link_to 'Connect your Last.fm account', '/auth/lastfm', class: 'btn btn-danger'
+		%br
+		%br
+		= link_to 'Delete account', @profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'}

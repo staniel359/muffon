@@ -1,16 +1,27 @@
 #upbar
-	.up#logo= link_to 'muffon', root_path
+	%h3.up.text_center#logo= link_to 'muffon', root_path
 
 	- if params[:controller] == 'muffon'
 
 		- if params[:action] == 'recommendations'
 			.up#up_recs= link_to 'Recommendations', recommendations_path
+		- if params[:action] == 'bookmarks'
+			.up#up_bookmarks= link_to 'Bookmarks', bookmarks_path
 
 	- if params[:controller] == 'profiles'
 
 		- case params[:action]
+		- when 'index'
+			.up#up_index
+				= link_to 'Profiles', profiles_path
+		- when 'show'
+			.up#up_show
+				= link_to "#{@profile.nickname}'s profile", @profile
 
-		- when 'library', 'artists', 'albums', 'tracks', 'plays'
+	- if params[:controller] == 'library'
+
+		- case params[:action]
+		- when 'show', 'artists', 'albums', 'tracks', 'plays'
 			.up#up_library
 				= link_to image_tag(@profile.avatar.url(:md)), @profile
 				#up_link.inline= link_to "#{@profile.nickname}'s library", library_path(@profile)
@@ -30,7 +41,6 @@
 			.up#up_artists= link_to 'artists', library_artists_path(@profile)
 
 			- case params[:action]
-
 			- when 'artist', 'artist_albums', 'artist_plays', 'artist_tracks'
 				.up#up_artist
 					= image_tag ((@artist.artist.image && @artist.artist.image != '') ? @artist.artist.image : 'missing_artist.png')
@@ -53,7 +63,6 @@
 				- case params[:action]
 				- when 'album_plays'
 					.up#up_album_plays= link_to 'plays', library_album_plays_path(id: @profile, album_id: @album.id)
-			
 			- when 'track_plays'
 				.up#up_artist
 					= image_tag @track.artist.image
