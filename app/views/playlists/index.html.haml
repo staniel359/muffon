@@ -10,5 +10,5 @@
 					#profile_playlists_none You haven't created any playlists yet.
 			- if current_profile?(@profile)
 				#add_playlist_btn
-					= button_to new_profile_playlist_path, class: 'btn btn-primary', method: :get, remote: true do
+					= button_to new_playlist_path, class: 'btn btn-primary', method: :get, remote: true do
 						Add playlist

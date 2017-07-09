@@ -1,0 +1,6 @@
+.message.panel_white
+	.media-left.img_sm.img_rnd= link_to (image_tag message.profile.avatar), message.profile
+	.media-right
+		%h5= link_to message.profile.nickname, message.profile
+		%h4= message.content
+		%h6.text-muted= l message.created_at, format: "%e %b %Y, %H:%M"

@@ -1,5 +1,8 @@
 #profile_page
-	#profile_avatar.img_rnd= image_tag @profile.avatar.url(:md)
+	#profile_avatar.img_rnd
+		= image_tag @profile.avatar.url(:md)
+		- unless current_profile?(@profile)
+			%h5= link_to 'Write a message', new_message_path(to: @profile)
 	#profile_page_panel.center.panel.panel-default
 		#profile_info
 			%h4= @profile.nickname

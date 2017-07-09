@@ -1,9 +1,9 @@
 .profile_form
 	.flash_msg
 	= form_for @profile, remote: true, multipart: true, authenticity_token: true do |f|
-		-# - if params[:token]
-		= f.hidden_field :lastfm_id
-		= f.hidden_field :remote_avatar_url
+		- if params[:token]
+			= f.hidden_field :lastfm_id
+			= f.hidden_field :remote_avatar_url
 		#form_avatar_info
 			#form_avatar
 				= image_tag @profile.avatar.url(:md), id: 'img_preview'
@@ -23,7 +23,7 @@
 			= f.password_field :password, class: 'form-control', placeholder: 'Password:'
 			= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
 
-		#form_submit.text_right= f.submit @button_text, class: 'btn btn-primary'
+		.submit_btn.text_right= f.submit @button_text, class: 'btn btn-primary'
 
 :javascript
 	function readURL(input) {

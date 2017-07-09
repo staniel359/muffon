@@ -1,0 +1,9 @@
+#new_message_panel.panel.panel-default.center
+	.panel_header_sm
+		%h3= @title
+	.panel_content
+		= form_for @message do |f|
+			= f.text_area :content, class: 'form-control', placeholder: 'Enter your message:'
+			= f.hidden_field :profile_id, value: current_profile.id
+			= hidden_field_tag :to, @other_profile.id
+			.submit_btn.text_right= f.submit 'Send message', class: 'btn btn-primary'

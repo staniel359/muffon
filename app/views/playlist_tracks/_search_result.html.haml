@@ -3,5 +3,5 @@
 	.media-body
 		%h5= search_result.title
 		%h5= search_result.artist_name
-		= button_to profile_playlist_tracks_path(current_profile.id, track_id: search_result.id, playlist_id: params[:playlist_id]), class: 'btn btn-sm btn-primary', method: :post, remote: true do
+		= button_to playlist_tracks_path(current_profile.id, track_id: search_result.id, playlist_id: params[:playlist_id]), class: 'btn btn-sm btn-primary', method: :post, remote: true do
 			Add to playlist

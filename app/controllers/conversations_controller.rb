@@ -1,20 +1,27 @@
 class ConversationsController < ApplicationController
-  before_action :set_profile
 
   def index
     @title = 'Conversations'
-    @conversations = @profile.conversations
+    @conversations = current_profile.conversations.reorder('updated_at desc')
   end
 
-  # def show
-  # end
-
-  # def destroy
-  # end
+  def show
+    @conversation = Conversation.find_by(id: params[:id])
+    if @conversation
+      correct_profile
+      new_messages_from(@conversation).each { |m| m.update!(new: nil) }
+      @messages = @conversation.messages
+      @message = current_profile.messages.build
+      @other_profile = other_profile_of(@conversation)
+      @title = "Conversation with #{@other_profile.nickname}"
+    else
+      redirect_to root_path
+    end
+  end
 
   private
 
-     def set_profile
-      @profile = current_profile
-     end
+    def correct_profile
+      redirect_to root_path unless participates_in(@conversation)
+    end
 end

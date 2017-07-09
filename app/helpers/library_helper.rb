@@ -1,6 +1,6 @@
 module LibraryHelper
   def get_scoped_artists(scope)
-    if scope.zero? || scope.nil?
+    if scope.zero?
       @top_artists = @profile.profile_artists.joins(:plays).group('profile_artists.id').order('count(profile_artists.id) desc').limit(8)
     else
       @top_artists = @profile.profile_artists.joins(:plays).where('plays.created_at > ?', scope.to_i.days.ago).group('profile_artists.id').order('count(profile_artists.id) desc').limit(8)
@@ -32,7 +32,7 @@ module LibraryHelper
   end
 
   def get_scoped_albums(scope)
-    if scope.zero? || scope.nil?
+    if scope.zero?
       @top_albums = @profile.profile_albums.joins(:plays).group('profile_albums.id').order('count(profile_albums.id) desc').limit(4)
     else
       @top_albums = @profile.profile_albums.joins(:plays).where('plays.created_at > ?', scope.to_i.days.ago).group('profile_albums.id').order('count(profile_albums.id) desc').limit(4)
@@ -64,7 +64,7 @@ module LibraryHelper
   end
 
   def get_scoped_tracks(scope)
-    if scope.zero? || scope.nil?
+    if scope.zero?
       @top_tracks = @profile.profile_tracks.joins(:plays).group('profile_tracks.id').order('count(profile_tracks.id) desc').limit(8)
     else
       @top_tracks = @profile.profile_tracks.joins(:plays).where('plays.created_at > ?', scope.to_i.days.ago).group('profile_tracks.id').order('count(profile_tracks.id) desc').limit(8)

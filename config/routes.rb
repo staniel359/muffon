@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post '/signup', to: 'profiles#create'
 
   resources :profiles
-  resources :playlists, path: '/profile/:id/playlists'
-  resources :playlist_tracks, only: [:new, :create, :destroy], path: '/profile/:id/playlist_tracks'
+  resources :playlists, path: '/profile/:profile_id/playlists'
+  resources :playlist_tracks, only: [:new, :create, :destroy], path: '/profile/:profile_id/playlist_tracks'
   get '/playlist_tracks/search', to: 'playlist_tracks#search', as: 'search_playlist_tracks'
   scope '/profiles/:id/library' do
     get '/', to: 'library#show', as: 'library'

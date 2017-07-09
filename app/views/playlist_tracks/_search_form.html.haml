@@ -1,5 +1,5 @@
 #playlist_search_form
-	= form_tag profile_search_playlist_track_path(playlist_id: params[:playlist_id]), method: :get, remote: true do
+	= form_tag search_playlist_tracks_path(playlist_id: params[:playlist_id]), method: :get, remote: true do
 		#track_search_field= text_field_tag :title
 
 -# :javascript

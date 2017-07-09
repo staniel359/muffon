@@ -7,6 +7,8 @@
 			.up#up_recs= link_to 'Recommendations', recommendations_path
 		- if params[:action] == 'bookmarks'
 			.up#up_bookmarks= link_to 'Bookmarks', bookmarks_path
+		- if params[:action] == 'settings'
+			.up#up_settings= link_to 'Settings', settings_path
 
 	- if params[:controller] == 'profiles'
 
@@ -108,7 +110,17 @@
 		- when 'index', 'show'
 			.up#up_playlists
 				= link_to image_tag(@profile.avatar.url(:md)), @profile
-				#up_link.inline= link_to "#{@profile.nickname}'s playlists", profile_playlists_path(@profile)
+				#up_link.inline= link_to "#{@profile.nickname}'s playlists", playlists_path(@profile)
 			- case params[:action]
 			- when 'show'
-				.up#up_playlist= link_to @playlist.name, profile_playlist_path
+				.up#up_playlist= link_to @playlist.name, playlist_path
+
+	- if params[:controller] == 'conversations'
+
+		- case params[:action]
+		- when 'index', 'show'
+			.up#up_conversations
+				= link_to 'Conversations', conversations_path
+			- case params[:action]
+			- when 'show'
+				.up#up_conversation= link_to other_profile_of(@conversation).nickname, @conversation

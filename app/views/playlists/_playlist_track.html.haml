@@ -4,4 +4,4 @@
 		.media-body
 			%h5= playlist_track.profile_track.track.title
 			%h5= playlist_track.profile_track.artist.name
-			= link_to 'delete', profile_playlist_track_path(id: playlist_track.id), method: :delete, remote: true
+			= link_to 'delete', playlist_track_path(id: playlist_track.id), method: :delete, remote: true

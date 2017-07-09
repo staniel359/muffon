@@ -99,6 +99,17 @@ label {
 	}
 }
 
+.panel_white {
+	background-color: white;
+	border-radius: 5px;
+	color: black;
+	padding: 10px;
+	margin-bottom: 10px;
+	a, a:hover {
+		color: black;
+	}
+}
+
 .dropdown_btn:hover {
 	color: white;
 }
@@ -138,6 +149,10 @@ label {
 	width: 50px;
 }
 
+.img_xs img {
+	width: 30px;
+}
+
 .img_rnd img {
 	border-radius: 50%;
 }
@@ -163,6 +178,21 @@ label {
 	z-index: 10;
 }
 
+.new_square {
+	height: 14px;
+	min-width: 14px;
+	background-color: red;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-radius: 2px;
+	padding: 2px;
+	.new_square_text {
+		font-size: 10px;
+		font-weight: bold;
+		line-height: 1;
+	}
+}
 
 // Partials
 
@@ -308,6 +338,9 @@ label {
 		font-size: 25px;
 		width: 30px;
 		margin-bottom: 10px;
+	}
+	.side_icon {
+		position: relative;
 	}
 }
 
@@ -618,4 +651,40 @@ label {
 
 #track_search_results {
 	margin-top: 10px;
+}
+
+// Settings page
+
+#settings hr {
+	margin: 20px 0 15px;
+}
+
+#setting_panel_right {
+	margin-left: 15px;
+	width: 372px;
+}
+
+// Conversations page
+
+// #conversation_content {
+// 	width: 360px;
+// 	margin: auto;
+// }
+
+#conversation_form {
+	margin-bottom: 20px;
+}
+
+#conversation_with {
+	margin-bottom: 5px;
+}
+
+#conversation_last_msg {
+	.media-left {
+		padding: 0;
+	}
+}
+
+.message .media-left {
+	padding: 0;
 }

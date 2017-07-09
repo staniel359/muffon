@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708191656) do
+ActiveRecord::Schema.define(version: 20170709142846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170708191656) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "new"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["profile_id"], name: "index_messages_on_profile_id"
   end
@@ -164,11 +165,11 @@ ActiveRecord::Schema.define(version: 20170708191656) do
     t.string "gender"
     t.string "avatar"
     t.string "lastfm_id"
-    t.integer "top_artists_scope"
-    t.integer "top_albums_scope"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "top_tracks_scope"
+    t.integer "top_artists_scope", default: 0
+    t.integer "top_albums_scope", default: 0
+    t.integer "top_tracks_scope", default: 0
   end
 
   create_table "recommendations", force: :cascade do |t|

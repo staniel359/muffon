@@ -1,3 +1,3 @@
 #playlist_form
-	= form_for @playlist, url: profile_playlists_path, remote: true do |f|
+	= form_for @playlist, url: playlists_path, remote: true do |f|
 		#playlist_form_name.inline= f.text_field :name, required: true, placeholder: 'Enter the name of your playlist:', class: 'form-control'

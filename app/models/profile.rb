@@ -44,4 +44,12 @@ class Profile < ApplicationRecord
   def conversations
     Conversation.where('sender_id = ? or recipient_id = ?', id, id).order('created_at desc')
   end
+
+  def conversation_with(other_profile)
+    conversations.where('sender_id = ? or recipient_id = ?', other_profile.id, other_profile.id).first_or_create!(sender_id: id, recipient_id: other_profile.id)
+  end
+
+  def new_messages
+    conversations.map {|c| c.messages.where('new = ? and profile_id <> ?', 1, id)}.flatten
+  end
 end
