@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   get '/artists/:id/albums/:album_id', to: 'artists#album', as: 'artist_album', constraints: { album_id: /[^\/]+/, id: /[^\/]+/ }
   get '/artists/:id/similar', to: 'artists#similar', as: 'artist_similar'
 
+  get '/follow', to: 'relationships#create', as: 'follow'
+  get '/unfollow', to: 'relationships#destroy', as: 'unfollow'
+
   post '/listened', to: 'muffon#listened'
   delete '/listened', to: 'muffon#listened'
 

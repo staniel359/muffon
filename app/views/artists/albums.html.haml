@@ -1,4 +1,4 @@
-#artist_albums_page.artist_page.panel.panel-default.center
+#artist_albums_page.artist_page.panel.center
 	.panel_header
 		%h3
 			= link_to @albums.first['artist']['name'], artist_path(@albums.first['artist']['name'].include?('/') ? CGI.escape(@albums.first['artist']['name']) : @albums.first['artist']['name'])

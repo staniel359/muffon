@@ -1,6 +1,8 @@
-.bookmarks_page.center.panel.panel-default
+.bookmarks_page.center.panel
 	.panel_header
 		%h3 Bookmarks
 	.bookmarks.panel_content
-		- @bookmarks.map do |b|
-			= render 'bookmark', b: b
+		- if @bookmarks.any?
+			= render partial: 'bookmark', collection: @bookmarks
+		- else
+			You haven't made any bookmarks yet.

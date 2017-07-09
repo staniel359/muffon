@@ -11,14 +11,14 @@
 				.img_rounded= image_tag @track.artist.image
 		.panel_header_text.media-right
 			- if params[:action] == 'artist_plays' || params[:action] == 'artist_albums' || params[:action] == 'artist_tracks'
-				%h4= link_to @artist.artist.name, library_artist_path
+				%h3= link_to @artist.artist.name, library_artist_path
 			- elsif params[:action] == 'album'
-				%h4= link_to @album.album.artist.name, library_artist_path(artist_id: @album.profile_artist)
+				%h3= link_to @album.album.artist.name, library_artist_path(artist_id: @album.profile_artist)
 			- elsif params[:action] == 'album_plays'
-				%h4= link_to @album.album.title, library_album_path
+				%h3= link_to @album.album.title, library_album_path
 				%h5= link_to @album.album.artist.name, library_artist_path(artist_id: @album.profile_artist)
 			- elsif params[:action] == 'track_plays'
-				%h4= link_to @track.track.title, '#'
+				%h3= link_to @track.track.title, '#'
 				%h5= link_to @track.artist.name, library_artist_path(artist_id: @track.profile_artist)
 	.panel_header_body.panel_header_right.pull-right
 		.panel_header_text.media-left

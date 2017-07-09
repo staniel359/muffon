@@ -1,12 +1,14 @@
 %tr.conversation
 	%td
 		.media-left.img_sm.img_rnd= link_to (image_tag other_profile_of(conversation).avatar), other_profile_of(conversation)
-		.media-right
+		.media-body
 			= link_to conversation do
 				%h4#conversation_with= other_profile_of(conversation).nickname
 				#conversation_last_msg.panel_white
-					.media-left.img_xs.img_rnd= image_tag conversation.messages.last.profile.avatar if conversation.messages.last.profile.id == current_profile.id
-					.media-right
-						%h5= conversation.messages.last.profile.nickname if conversation.messages.last.profile.nickname == current_profile.nickname
+					- if conversation.messages.last.profile.id == current_profile.id
+						.media-left.img_xs.img_rnd= image_tag conversation.messages.last.profile.avatar
+					.media-body
+						- if conversation.messages.last.profile.nickname == current_profile.nickname
+							%h5= conversation.messages.last.profile.nickname
 						%h4= conversation.messages.last.content
 						%h6.text-muted= l conversation.messages.last.created_at, format: "%e %b %Y, %H:%M"

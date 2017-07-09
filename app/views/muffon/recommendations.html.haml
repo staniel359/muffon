@@ -1,4 +1,4 @@
-#recommendations_page.center.panel.panel-default
+#recommendations_page.center.panel
 	.panel_header_sm
 		%h3.panel_header_sm_body Recommendations
 		.panel_header_sm_body.dropdown.pull-right
@@ -21,7 +21,7 @@
 	#recommendations.panel_content
 		- if @recs
 			- @recs.map do |r|
-				.recommendation.inline.top_align.panel.panel-default#recommendation{id: r.id}
+				.recommendation.inline.top_align.panel#recommendation{id: r.id}
 					#recommendation_artist_tags.text_center.media-left
 						#recommendation_artist
 							= render 'artists/actions', a_id: r.id, artist_name: r.artist_name, image: r.image

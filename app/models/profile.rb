@@ -16,6 +16,10 @@ class Profile < ApplicationRecord
   has_many :playlists, dependent: :destroy
   has_many :playlist_tracks, through: :playlists, dependent: :destroy
   has_many :messages
+  has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship'
+  has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship'
+  has_many :followeds, through: :active_relationships
+  has_many :followers, through: :passive_relationships
 
   def has_in_library(artist_id)
     profile_artists.find_by(artist_id: artist_id)

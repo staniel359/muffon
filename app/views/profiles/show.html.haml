@@ -2,8 +2,10 @@
 	#profile_avatar.img_rnd
 		= image_tag @profile.avatar.url(:md)
 		- unless current_profile?(@profile)
-			%h5= link_to 'Write a message', new_message_path(to: @profile)
-	#profile_page_panel.center.panel.panel-default
+			%br
+			#follow_button{id: @profile.id}= render 'relationships/follow_button', profile: @profile
+			= link_to 'Write a message', new_message_path(to: @profile), class: 'btn btn-primary btn-sm'
+	#profile_page_panel.center.panel
 		#profile_info
 			%h4= @profile.nickname
 			%h5 
@@ -24,3 +26,5 @@
 				= a.count
 			- if @common_artists.count > 5
 				and others...
+
+- console

@@ -1,4 +1,4 @@
-.artist_page.artist_tracks_page.panel.panel-default.center
+.artist_page.artist_tracks_page.panel.center
 	.panel_header
 		%h3
 			= link_to @artist_name, artist_path(@artist_name.include?('/') ? CGI.escape(@artist_name) : @artist_name)

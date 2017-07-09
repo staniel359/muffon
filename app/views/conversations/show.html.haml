@@ -1,15 +1,17 @@
-#conversation.panel.panel-default.center
+#conversation.panel.center
 	- if @conversation
 		.panel_header_sm
 			%h3= @title
 		.panel_content
 			#conversation_content
 				#conversation_form
-					= form_for @message, remote: true do |f|
-						= f.text_area :content, class: 'form-control', placeholder: 'Enter your message:'
-						= f.hidden_field :profile_id, value: current_profile.id
-						= hidden_field_tag :conversation_id, @conversation.id
-						.submit_btn.text_right= f.submit 'Send message', class: 'btn btn-primary'
+					.media-left.img_sm.img_rnd= image_tag current_profile.avatar
+					.media-body
+						= form_for @message, remote: true do |f|
+							= f.text_area :content, class: 'form-control', placeholder: 'Enter your message:'
+							= f.hidden_field :profile_id, value: current_profile.id
+							= hidden_field_tag :conversation_id, @conversation.id
+							.submit_btn.text_right= f.submit 'Send message', class: 'btn btn-primary'
 				#messages= render @messages
 	- else
 		.panel_header_sm

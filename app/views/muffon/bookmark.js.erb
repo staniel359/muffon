@@ -2,4 +2,7 @@ $("#artist_bookmark_<%= params[:a_id] %>").html("<%= j render 'artists/bookmark_
 <% if params[:bookmark_id] %>
 	$('#bookmark_<%= params[:bookmark_id] %>').remove()
 <% end %>
+<% unless current_profile.bookmarks.any? %>
+	$('.bookmarks').html('You haven\'t made any bookmarks yet.')
+<% end %>
 $('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})

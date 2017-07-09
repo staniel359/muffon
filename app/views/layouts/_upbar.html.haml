@@ -123,4 +123,6 @@
 				= link_to 'Conversations', conversations_path
 			- case params[:action]
 			- when 'show'
-				.up#up_conversation= link_to other_profile_of(@conversation).nickname, @conversation
+				.up#up_conversation
+					= link_to image_tag(other_profile_of(@conversation).avatar)
+					= link_to other_profile_of(@conversation).nickname, @conversation

@@ -69,14 +69,14 @@ label {
 	padding: 0px;
 	.panel_header, .panel_header_sm {
 		padding: 20px 20px 5px;
-		.media-left {
-			padding: 0;
-		}
 	}
 	.panel_header_body {
 		display: inline-block;
 		.img_rounded img {
 			border-radius: 50%;
+		}
+		.media-left {
+			padding: 0;
 		}
 	}
 	.panel_header_image img {
@@ -335,7 +335,7 @@ label {
 	}
 	i {
 		text-align: center;
-		font-size: 25px;
+		font-size: 24px;
 		width: 30px;
 		margin-bottom: 10px;
 	}
@@ -677,14 +677,4 @@ label {
 
 #conversation_with {
 	margin-bottom: 5px;
-}
-
-#conversation_last_msg {
-	.media-left {
-		padding: 0;
-	}
-}
-
-.message .media-left {
-	padding: 0;
 }
