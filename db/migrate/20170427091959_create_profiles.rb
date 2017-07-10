@@ -13,6 +13,9 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :lastfm_id
       t.string :library_artists_scope
       t.string :library_albums_scope
+      t.integer :top_artists_scope, default: 0
+      t.integer :top_albums_scope, default: 0
+      t.integer :top_tracks_scope, default: 0
       t.timestamps
     end
   end

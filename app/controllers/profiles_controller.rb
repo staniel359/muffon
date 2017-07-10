@@ -46,7 +46,9 @@ class ProfilesController < ApplicationController
 
   def show
     @title = "#{@profile.nickname}'s profile"
-    get_common_artists unless current_profile?(@profile)
+    if logged_in? && !current_profile?(@profile)
+      get_common_artists
+    end
   end
 
   def update

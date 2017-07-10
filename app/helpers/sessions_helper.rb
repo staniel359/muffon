@@ -26,7 +26,17 @@ module SessionsHelper
 
   def should_login
     return if logged_in?
+    store_location
     redirect_to login_path
     flash[:warning] = 'Please log in to access this page.'
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
   end
 end

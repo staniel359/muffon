@@ -1,5 +1,5 @@
 class MuffonController < ApplicationController
-  before_action :should_login, only: :settings
+  before_action :should_login, only: [:settings, :notifications, :feed, :recommendations, :bookmarks]
   before_action :set_profile
 
   def home
@@ -109,6 +109,10 @@ class MuffonController < ApplicationController
 
   def contribute
     @title = 'Contribute'
+  end
+
+  def contact
+    @title = 'Contact'
   end
 
   private

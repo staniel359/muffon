@@ -1,7 +1,13 @@
 - if logged_in?
-	%h4 Home page
+	#help.panel.center
+		.panel_header_sm
+			%h3 muffon | Home
+		.panel_content
+			In progress.
 - else
-	%h4 welcome
-	= link_to 'Sign up', signup_path
-	= link_to 'Log in', login_path
-	= link_to 'Sign up with Last.fm', '/auth/lastfm'
+	.form_center.panel.text_center
+		%h3.panel_header muffon | Welcome
+		.panel_content
+			= link_to 'Log in', login_path, class: 'btn btn-primary'
+			= link_to 'Sign up', signup_path, class: 'btn btn-primary'
+			= link_to 'Sign up with Last.fm', '/auth/lastfm', class: 'btn btn-danger'

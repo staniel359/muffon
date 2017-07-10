@@ -1,7 +1,7 @@
 #profile_page
 	#profile_avatar.img_rnd
 		= image_tag @profile.avatar.url(:md)
-		- unless current_profile?(@profile)
+		- if logged_in? && !current_profile?(@profile)
 			%br
 			#follow_button{id: @profile.id}= render 'relationships/follow_button', profile: @profile
 			= link_to 'Write a message', new_message_path(to: @profile), class: 'btn btn-primary btn-sm'
@@ -19,12 +19,10 @@
 			%h4.inline= link_to "#{@profile.plays.count} plays", library_plays_path
 			%h4.inline= link_to "#{@profile.profile_tracks.count} tracks", library_tracks_path
 			%h4.inline= link_to "#{@profile.profile_artists.count} artists", library_artists_path
-		- unless current_profile?(@profile)
+		- if logged_in? && !current_profile?(@profile)
 			= "You have #{pluralize(@common_artists.count, 'artist')} in common:"
 			- @common_artists.first(5).map do |a|
 				= a.artist.name
 				= a.count
 			- if @common_artists.count > 5
 				and others...
-
-- console

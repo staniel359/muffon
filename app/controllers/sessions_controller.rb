@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if profile && profile.authenticate(params[:session][:password])
       log_in profile
       remember profile if params[:session][:remember_me] == '1'
-      redirect_to root_path
+      redirect_back_or root_path
     else
       respond_to :js
       flash[:danger] = 'Invalid email or password.'

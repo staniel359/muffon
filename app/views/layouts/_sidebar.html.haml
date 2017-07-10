@@ -9,7 +9,7 @@
 				- if current_profile.new_messages.any?
 					.new_square.text_center
 						.new_square_text= current_profile.new_messages.count 
-		= link_to (fa_icon 'user-plus'), '#', data: {toggle: 'tooltip', placement: 'right'}, title: 'Follows'
+		= link_to (fa_icon 'user-plus'), follows_path(current_profile), data: {toggle: 'tooltip', placement: 'right'}, title: 'Follows'
 		= link_to notifications_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Notifications' do
 			.side_icon
 				= fa_icon 'bell'

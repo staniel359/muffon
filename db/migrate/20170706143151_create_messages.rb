@@ -4,6 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.1]
       t.belongs_to :conversation, foreign_key: true
       t.belongs_to :profile, foreign_key: true
       t.text :content
+      t.integer :new
 
       t.timestamps
     end

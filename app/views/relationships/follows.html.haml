@@ -1,0 +1,12 @@
+#follows_page.panel.center
+	.panel_header_sm
+		%h3= @title
+	.panel_content
+		.follows_page_follows.inline
+			%h4.panel_header_xs= link_to "Followers (#{@followers.count})", followers_path
+			%table.table.table-hover
+				= render partial: 'profiles/profile', collection: @followers, profile: @follower
+		.follows_page_follows.inline
+			%h4.panel_header_xs= link_to "Following (#{@following.count})", following_path
+			%table.table.table-hover
+				= render partial: 'profiles/profile', collection: @following, profile: @followed

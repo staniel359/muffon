@@ -5,7 +5,7 @@
 			%h4.inline= link_to profile.nickname, profile
 			- if current_profile?(profile)
 				%h5.inline (that's you)
-			- unless current_profile?(profile)
+			- if logged_in? && !current_profile?(profile)
 				%br
 				.inline#follow_button{id: profile.id}= render 'relationships/follow_button', profile: profile
 				.inline= link_to 'Write a message', new_message_path(to: profile), class: 'btn btn-sm btn-primary'

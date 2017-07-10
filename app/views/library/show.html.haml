@@ -65,6 +65,9 @@
 					= t.count
 	- else
 		.panel
+			%h3.panel_header_sm= "#{@profile.nickname}' s library"
 			.panel_content
-				%h4 Your library is empty.
+				%h4
+					= current_profile?(@profile) ? 'Your' : "#{@profile.nickname}'s"
+					library is empty.
 

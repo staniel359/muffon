@@ -119,10 +119,6 @@ label {
 	margin: auto;
 }
 
-.profile_form {
-	width: 360px;
-}
-
 .settings_header_sm {
 	margin-bottom: 10px;
 }
@@ -413,6 +409,7 @@ label {
 }
 
 .profile_form {
+	width: 360px;
 	.alert {
 		margin-bottom: 10px;
 	}
@@ -677,4 +674,10 @@ label {
 
 #conversation_with {
 	margin-bottom: 5px;
+}
+
+// Follows page
+
+.follows_page_follows {
+	width: 374px;
 }

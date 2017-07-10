@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+  before_action :should_login
 
   def index
     @title = 'Conversations'
@@ -10,7 +11,7 @@ class ConversationsController < ApplicationController
     if @conversation
       correct_profile
       new_messages_from(@conversation).each { |m| m.update!(new: nil) }
-      @messages = @conversation.messages
+      @messages = @conversation.messages.order('created_at desc')
       @message = current_profile.messages.build
       @other_profile = other_profile_of(@conversation)
       @title = "Conversation with #{@other_profile.nickname}"

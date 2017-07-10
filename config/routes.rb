@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post '/signup', to: 'profiles#create'
 
   resources :profiles
-  resources :playlists, path: '/profile/:profile_id/playlists'
-  resources :playlist_tracks, only: [:new, :create, :destroy], path: '/profile/:profile_id/playlist_tracks'
+  resources :playlists, path: '/profiles/:profile_id/playlists'
+  resources :playlist_tracks, only: [:new, :create, :destroy], path: '/profiles/:profile_id/playlist_tracks'
   get '/playlist_tracks/search', to: 'playlist_tracks#search', as: 'search_playlist_tracks'
   scope '/profiles/:id/library' do
     get '/', to: 'library#show', as: 'library'
@@ -39,6 +39,11 @@ Rails.application.routes.draw do
   get '/artists/:id/albums/:album_id', to: 'artists#album', as: 'artist_album', constraints: { album_id: /[^\/]+/, id: /[^\/]+/ }
   get '/artists/:id/similar', to: 'artists#similar', as: 'artist_similar'
 
+  scope 'profiles/:id' do
+    get '/follows', to: 'relationships#follows', as: 'follows'
+    get '/followers', to: 'relationships#followers', as: 'followers'
+    get '/following', to: 'relationships#following', as: 'following'
+  end
   get '/follow', to: 'relationships#create', as: 'follow'
   get '/unfollow', to: 'relationships#destroy', as: 'unfollow'
 
@@ -71,6 +76,7 @@ Rails.application.routes.draw do
   get '/about', to: 'muffon#about'
   get '/help', to: 'muffon#help'
   get '/contribute', to: 'muffon#contribute'
+  get '/contact', to: 'muffon#contact'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
