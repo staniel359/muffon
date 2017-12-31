@@ -1,0 +1,19 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+- case params[:action]
+
+- when 'index', 'show'
+
+  .up
+    .media-right
+      = link_to 'Conversations', conversations_path
+  
+  - case params[:action]
+  
+  - when 'show'
+    .up
+      .media-left
+        = link_to image_tag(@other_member.avatar.url(:sm)), @other_member
+      .media-right
+        = link_to @other_member.nickname, @other_member

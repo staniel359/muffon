@@ -1,4 +1,0 @@
-$('#playlist_<%= params[:id]%>').remove()
-<% if !current_profile.playlists.any? %>
-	$('#profile_playlists').html("<div id='profile_playlists_none'>You haven't created any playlists yet.</div>")
-<% end %>

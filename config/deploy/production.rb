@@ -5,7 +5,7 @@
 
 set :stage, :production
 
-server "192.168.2.119", user: 'root', roles: %w[app db web]
+server "192.168.2.119", user: 'muffon', roles: %w[app db web]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
@@ -17,9 +17,9 @@ server "192.168.2.119", user: 'root', roles: %w[app db web]
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w[root@192.168.2.119]
-role :web, %w[root@192.168.2.119]
-role :db,  %w[root@192.168.2.119]
+role :app, %w[muffon@192.168.2.119]
+role :web, %w[muffon@192.168.2.119]
+role :db,  %w[muffon@192.168.2.119]
 
 # Configuration
 # =============

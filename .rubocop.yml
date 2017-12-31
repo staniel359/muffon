@@ -1,0 +1,18 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'test/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Documentation:
+  Enabled: false
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

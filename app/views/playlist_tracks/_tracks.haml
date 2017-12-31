@@ -1,0 +1,8 @@
+- if @tracks.any?
+
+  %h4 Tracks:
+
+  .separator.sep_10.sep_default
+
+  %table.table.table-hover.table-condensed
+    = render partial: 'track', collection: @tracks.first(5)

@@ -1,59 +1,72 @@
 class Profile < ApplicationRecord
   validates :nickname, :email, presence: true, uniqueness: true
-  validates :lastfm_id, uniqueness: true
+  validates :lastfm_id, uniqueness: true, allow_nil: true
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password, length: { minimum: 6 }, on: :update, allow_blank: true
+
   has_secure_password
+
   mount_uploader :avatar, AvatarUploader
+
   has_many :profile_tracks, dependent: :destroy
+  has_many :tracks, through: :profile_tracks
+  has_many :loved_tracks, lambda {
+    where(loved: 1).reorder(loved_at: :desc)
+  }, class_name: 'ProfileTrack'
+
   has_many :profile_artists, dependent: :destroy
+  has_many :artists, through: :profile_artists
+
   has_many :profile_albums, dependent: :destroy
+  has_many :albums, through: :profile_albums
+
   has_many :profile_tags, dependent: :destroy
+  has_many :tags, through: :profile_tags
+  has_many :taggings, dependent: :destroy
+
   has_many :plays, dependent: :destroy
+
   has_many :recommendations, dependent: :destroy
+
   has_many :listened_artists, dependent: :destroy
+
   has_many :bookmarks, dependent: :destroy
+
   has_many :playlists, dependent: :destroy
   has_many :playlist_tracks, through: :playlists, dependent: :destroy
+
   has_many :messages
-  has_many :active_relationships, foreign_key: 'follower_id', class_name: 'Relationship'
-  has_many :passive_relationships, foreign_key: 'followed_id', class_name: 'Relationship'
+  has_many :active_conversations,
+           foreign_key: 'sender_id',
+           class_name: 'Conversation'
+  has_many :passive_conversations,
+           foreign_key: 'recipient_id',
+           class_name: 'Conversation'
+
+  has_many :active_relationships,
+           foreign_key: 'follower_id',
+           class_name: 'Relationship'
+  has_many :passive_relationships,
+           foreign_key: 'followed_id',
+           class_name: 'Relationship'
   has_many :followeds, through: :active_relationships
   has_many :followers, through: :passive_relationships
 
-  def has_in_library(artist_id)
-    profile_artists.find_by(artist_id: artist_id)
-  end
+  has_many :own_groups, foreign_key: 'owner_id', class_name: 'Group'
+  has_many :memberships, foreign_key: 'member_id', dependent: :destroy
+  has_many :groups, through: :memberships
 
-  def has_in_library?(artist_id)
-    has_in_library(artist_id)
-  end
-
-  def listened(artist)
-    listened_artists.find_by(artist_name: artist)
-  end
-
-  def listened_to?(artist)
-    listened(artist)
-  end
-
-  def bookmarked(artist)
-    bookmarks.find_by(artist_name: artist)
-  end
-
-  def bookmarked?(artist)
-    bookmarked(artist)
-  end
-  
   def conversations
-    Conversation.where('sender_id = ? or recipient_id = ?', id, id).order('created_at desc')
+    active_conversations.or(passive_conversations)
   end
 
-  def conversation_with(other_profile)
-    conversations.where('sender_id = ? or recipient_id = ?', other_profile.id, other_profile.id).first_or_create!(sender_id: id, recipient_id: other_profile.id)
+  def conversation_with(profile_id)
+    conversations.where(
+      'sender_id = ? or recipient_id = ?', profile_id, profile_id
+    )
   end
 
-  def new_messages
-    conversations.map {|c| c.messages.where('new = ? and profile_id <> ?', 1, id)}.flatten
+  def new_conversation_with(profile_id)
+    conversation_with(profile_id).first_or_create(recipient_id: profile_id)
   end
 end

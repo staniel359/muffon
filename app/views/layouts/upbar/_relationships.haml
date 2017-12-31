@@ -1,0 +1,23 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+- case params[:action]
+
+- when 'contacts', 'followers', 'following'
+  .up
+    .media-left
+      = link_to image_tag(@profile.avatar.url(:sm)), profile_path
+    .media-right
+      = link_to "#{@profile.nickname}'s contacts", profile_contacts_path
+
+  - case params[:action]
+
+  - when 'followers'
+    .up
+      .media-right
+        = link_to 'Followers', profile_followers_path
+
+  - when 'following'
+    .up
+      .media-right
+        = link_to 'Following', profile_following_path

@@ -1,0 +1,23 @@
+#library_artists_panel.panel.library_page.center
+	.panel_header
+		%h3.inline= @title
+		.inline.pull-right
+			.dropdown
+				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+					#artists_scope
+						= render 'library/partials/order_label'
+				%ul.dropdown-menu.dropdown-menu-right
+					%li= link_to 'Most played', library_artists_path(order: '1', page: params[:page]), remote: true
+					%li= link_to 'Least played', library_artists_path(order: '2', page: params[:page]), remote: true
+					%li= link_to 'Newest', library_artists_path(order: '3', page: params[:page]), remote: true
+					%li= link_to 'Oldest', library_artists_path(order: '4', page: params[:page]), remote: true
+
+	.separator.sep_0.sep_light
+
+	#library_artists_panel_content.panel_content
+
+		#artists
+			= render 'library/partials/artists'
+
+		#artists_paginate.text_center.mg_top_10
+			= paginate @artists

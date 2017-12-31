@@ -1,0 +1,28 @@
+#contacts_page.panel.center
+	.panel_header
+		%h3
+			= @title
+
+	.separator.sep_0.sep_light
+
+	.panel_content
+
+		.contacts_page_contacts
+
+			%h4
+				= link_to "Followers (#{@followers.count})", profile_followers_path
+
+			.separator.sep_10.sep_default
+
+			%table.table.table-hover
+				= render partial: 'profiles/profile', collection: @followers, profile: @follower
+
+		.contacts_page_contacts
+
+			%h4
+				= link_to "Following (#{@following.count})", profile_following_path
+
+			.separator.sep_10.sep_default
+
+			%table.table.table-hover
+				= render partial: 'profiles/profile', collection: @following, profile: @followed

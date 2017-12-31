@@ -1,0 +1,12 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+.up
+  .media-right
+    New Message
+
+.up
+  = link_to image_tag(@recipient.avatar.url(:sm)), profile_path(@recipient.id)
+.up
+  .media-right
+    = link_to @recipient.nickname, profile_path(@recipient.id)

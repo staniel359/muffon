@@ -1,9 +1,9 @@
 # config valid only for current version of Capistrano
-lock "3.8.2"
+lock "3.10.0"
 
 set :application, 'muffon'
 set :repo_url, 'git@github.com:staniel359/muffon.git'
-set :user, 'apache'
+set :user, 'muffon'
 set :branch, :master
 
 # Default branch is :master
@@ -32,4 +32,4 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 1
+set :keep_releases, 5

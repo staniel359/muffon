@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 1
+  name: MyString
+  avatar: MyString
+  private: 1
+
+two:
+  owner_id: 1
+  name: MyString
+  avatar: MyString
+  private: 1

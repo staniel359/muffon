@@ -1,0 +1,7 @@
+$('#albums').html("<%= j render 'library/partials/albums' %>")
+$('#albums_paginate').html("<%= j paginate @albums %>")
+$('#albums_scope').html("<%= j render 'library/partials/order_label' %>")
+$('.dropdown.open .dropdown-toggle').dropdown('toggle')
+
+url = "<%= '?order=' + params[:order]%><%= '&page=' + params[:page] if params[:page] %>".replace('amp;', '')
+window.history.pushState({turbolinks: true, url: url}, '', url)

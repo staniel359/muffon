@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  include ProfilesHelper
-  include ArtistsHelper
-  include LibraryHelper
-  include ConversationsHelper
-
   protect_from_forgery with: :exception
   protect_from_forgery except: :show
+  before_action :set_redis
+
+private
+
+  def set_redis
+    @redis ||= Redis.new(url: 'redis://localhost:6379')
+  end
 end

@@ -1,8 +1,0 @@
-%tr
-	%td
-		= link_to (fa_icon 'youtube-play'), "https://www.youtube.com/results?search_query=#{CGI.escape(artist_name)}+#{CGI.escape(track['name'])}", target: '_blank'
-		= track['name']
-		= number_with_delimiter(track['playcount'])
-		- if track['playcount']
-			- width = (track['playcount'].to_f / @max_count * 100.0).to_s + '%'
-			.track_bar{style: "width: #{width}"}

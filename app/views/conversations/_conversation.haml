@@ -1,0 +1,20 @@
+- last_message = conversation.messages.last
+- last_message_author = last_message.profile
+- other_member = conversation.other_member(current_profile.id)
+
+%tr.conversation
+	%td
+		.media-left
+			= link_to other_member do
+				= image_tag other_member.avatar.url(:sm), class: 'img_rnd'
+		.media-body
+			= link_to conversation do
+				%h4#conversation_with.mg_btm_5= other_member.nickname
+				#conversation_last_msg.message_panel.mg_btm_10
+					- if last_message.profile_id == current_profile.id
+						.media-left= image_tag last_message_author.avatar.url(:sm), class: 'img_rnd'
+					.media-body
+						- if last_message.profile_id == current_profile.id
+							%h5= last_message_author.nickname
+						%h4= last_message.content
+						%h6.text-muted= l last_message.created_at, format: "%e %b %Y, %H:%M"

@@ -1,0 +1,20 @@
+.artist_page#artist_similar_page.panel.center
+  .panel_header
+    %h3
+      .media-left.mid_align
+        = image_tag @artist.artist_image, class: 'img_rnd img_50'
+      .media-right.mid_align
+        = link_to @artist.name, artist_path
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+
+    %h4 Similar artists:
+
+    .separator.sep_10.sep_default
+
+    = render partial: 'similar_artist', collection: @similar_artists
+  
+    .text_center.mg_top_10
+      = paginate @similar_artists

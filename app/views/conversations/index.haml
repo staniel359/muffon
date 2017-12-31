@@ -1,0 +1,12 @@
+#conversations.panel.center
+  .panel_header
+    %h3 Conversations
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+    - if @conversations.any?
+      %table.table.table-hover
+        = render @conversations
+    - else
+      You don't have any conversations yet.

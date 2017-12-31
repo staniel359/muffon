@@ -1,9 +1,0 @@
-#followers_page.panel.center
-	.panel_header_sm
-		%h3
-			= @title
-			= "(#{@followers.count})"
-	.panel_content
-		#followers_page_followers
-			%table.table.table-hover
-				= render partial: 'profiles/profile', collection: @followers, profile: @follower

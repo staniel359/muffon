@@ -1,0 +1,6 @@
+.up#logo= link_to 'muffon', root_path
+
+- if params[:action] == 'index'
+  .up
+    .media-right
+      = link_to 'Bookmarks', bookmarks_path

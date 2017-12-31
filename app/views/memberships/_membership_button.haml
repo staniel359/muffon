@@ -1,0 +1,8 @@
+- if current_profile.memberships.find_by(group_id: group_id).present?
+  = button_to leave_group_path(group_id: group_id), class: 'btn btn-default btn-sm', method: :destroy, remote: true do
+    = fa_icon 'sign-out'
+    Leave group
+- else
+  = button_to join_group_path(group_id: group_id), class: 'btn btn-primary btn-sm', method: :post, remote: true do
+    = fa_icon 'sign-in'
+    Join group

@@ -1,0 +1,25 @@
+%tr
+  %td{id: "track_#{loved_track.track.id}", class: ('list_playing_now_track' if playing_now_track&.id == loved_track.track.id)}
+    .media-left
+      .list_play_button.play_button
+        = render 'player/get_track_button', track: loved_track.track
+      = image_tag loved_track.artist.artist_image, class: 'img_sm img_50'
+    .media-body
+      .pull-right.mg_top_10
+        = button_to send_to_queue_path(track_ids: [loved_track.track.id]), class: 'btn btn-primary btn-sm play_btn', method: :get, remote: true do
+          = fa_icon 'arrow-right'
+      - if loved_track.loved_at.present?
+        .created_at.pull-right
+          %h5
+            = l loved_track.created_at, format: "%e %b %Y"
+          %h5.pull-right
+            = l loved_track.created_at, format: "%H:%M"
+      %h5
+        = fa_icon 'heart', style: 'color:red'
+        %strong
+          = link_to loved_track.track.title, library_artist_track_path(name: loved_track.artist.artist_name, title: loved_track.track.track_title)
+      - unless %w[artist artist_tracks artist_album].include?(params[:action])
+        %h5
+          = link_to loved_track.artist.name, library_artist_path(id: @profile.id, name: loved_track.artist.artist_name)
+        %h5
+          = link_to pluralize(loved_track.playcount, 'play'), library_artist_track_plays_path(name: loved_track.artist.artist_name, title: loved_track.track.track_title)

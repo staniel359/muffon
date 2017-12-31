@@ -1,0 +1,24 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+- case params[:action]
+
+- when 'index', 'show', 'new'
+
+  .up
+    .media-left
+      = link_to image_tag(@profile.avatar.url(:sm)), profile_path
+    .media-right
+      = link_to "#{@profile.nickname}'s playlists", playlists_path
+
+  - case params[:action]
+
+  - when 'show'
+    .up
+      .media-right
+        = link_to @playlist.name, playlist_path
+
+  - when 'new'
+    .up
+      .media-right
+        = link_to 'New', new_playlist_path

@@ -1,0 +1,5 @@
+- if @loved_tracks.any?
+  %table.table.table-hover.table-condensed
+    = render partial: 'library/partials/loved_track', collection: @loved_tracks
+- else
+  = (current_profile?(@profile) ? 'You don\'t have' : "#{@profile.nickname} doesn't have") + ' any loved tracks yet.'

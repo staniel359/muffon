@@ -1,0 +1,25 @@
+#playing_now{data: {turbolinks: {permanent: true}}, hidden: true}
+  .panel_content
+    = button_tag onclick: 'hidePlayingNow();', class: 'inv_btn pull-right' do
+      = fa_icon 'times'
+      Close
+
+    %h4 Playing now:
+
+    .separator.sep_10.sep_default
+
+    #playing_now_track
+      
+      = render 'player/playing_now_track'
+
+  %hr.sep_0
+
+  .panel_content
+
+    %h4 In queue:
+
+    .separator.sep_10.sep_default
+
+    #enqueued_tracks
+
+      = render 'player/enqueued_tracks'

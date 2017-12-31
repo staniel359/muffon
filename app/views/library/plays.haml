@@ -1,0 +1,11 @@
+#library_plays_panel.panel.library_page.center
+  %h3.panel_header
+    = @title
+
+  .separator.sep_0.sep_light
+
+  #library_plays_panel_content.panel_content
+
+    = render partial: 'library/partials/plays'
+    .mg_top_10.text_center
+      = paginate @plays

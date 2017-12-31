@@ -1,0 +1,20 @@
+.artist_actions
+
+	- if params[:controller] == 'recommendations'
+
+		.rec_delete.artist_action
+			= button_to delete_recommendation_path(artist_id: artist.id), method: :patch, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Delete', class: 'rec_del_btn' do
+				= fa_icon 'times'
+
+	- if artist.in_library?(current_profile)
+
+		.artist_plays.artist_action
+			%h5
+				= link_to library_artist_path(id: current_profile.id, name: artist.name), data: {toggle: 'tooltip', placement: 'bottom'}, title: "In your library" do
+					= fa_icon 'music'
+
+	.artist_bookmark.artist_action#artist_bookmark{id: artist.id}
+		= render 'artists/bookmark_btn', artist: artist
+
+	.artist_listened.artist_action#artist_listened{id: artist.id}
+		= render 'artists/listened_btn', artist: artist

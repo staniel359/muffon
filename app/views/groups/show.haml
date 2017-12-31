@@ -1,0 +1,50 @@
+#group_page.panel.center
+	.group_panel_header
+		.media-left
+
+			.mg_btm_10
+				= image_tag @group.avatar.url(:md), class: 'img_rnd'
+			
+		.media-right.full_width
+
+			- if current_profile?(@group.owner)
+				.pull-right
+					= button_to group_path, method: :delete, class: 'btn btn-default btn-sm' do
+						= fa_icon 'times'
+						Delete group
+			.membership_btn#membership_btn{id: @group.id}
+				= render partial: 'memberships/membership_button', locals: { group_id: @group.id }
+
+			%h3#group_name
+				= @group.name
+
+			%strong
+				#group_members_count{id: @group.id}
+					= "#{pluralize(@group.members.count, 'member')}"
+
+			.separator.sep_10.sep_default
+
+			.mg_btm_10
+				= @group.description
+
+	.separator.sep_0.sep_light
+
+	.panel_content
+
+		#group_content
+			Content
+
+		#group_people
+
+			%h4.mg_btm_5
+				Owner:
+
+			.separator.sep_10.sep_default
+
+			= render 'owner'
+
+			.separator.sep_20.sep_light
+
+			#group_members
+
+				= render 'members'

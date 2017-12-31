@@ -1,0 +1,23 @@
+- if enqueued_tracks.present?
+
+  %table.table.table-hover
+
+    - enqueued_tracks.map do |track|
+
+      %tr
+        %td
+          .media-left.mid_align
+            .play_button.no_padding
+              = button_to play_path(artist: track.artist.name, track: track.title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get do
+                = fa_icon 'play'
+            = image_tag track.artist.artist_image, class: 'img_rnd img_30'
+          .media-body.mid_align
+            %h5
+              %strong 
+                = link_to CGI.unescape(track.title), '#'
+            %h5
+              = link_to CGI.unescape(track.artist.name), artist_path(name: CGI.unescape(track.artist.name))
+
+- else
+
+  %h5 The queue is empty.

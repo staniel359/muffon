@@ -1,18 +1,28 @@
 class RelationshipsController < ApplicationController
-  before_action :set_profile, only: [:follows, :followers, :following]
+  before_action :set_profile, only: %i[contacts followers following]
 
   def create
-    current_profile.active_relationships.build(followed_id: params[:followed_id]).save!
-    respond_to :js
+    current_profile.active_relationships.new(
+      followed_id: params[:followed_id]
+    ).save
+
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
   def destroy
-    current_profile.active_relationships.find_by(followed_id: params[:followed_id]).destroy!
-    respond_to :js
+    current_profile.active_relationships.find_by(
+      followed_id: params[:followed_id]
+    ).destroy
+
+    respond_to do |format|
+      format.js { render layout: false }
+    end
   end
 
-  def follows
-    @title = "#{@profile.nickname}'s follows"
+  def contacts
+    @title = "#{@profile.nickname}'s contacts"
     @followers = @profile.followers
     @following = @profile.followeds
   end
@@ -27,9 +37,9 @@ class RelationshipsController < ApplicationController
     @following = @profile.followeds
   end
 
-  private
+private
 
-    def set_profile
-      @profile = Profile.find(params[:id])
-    end
+  def set_profile
+    @profile = Profile.find(params[:id])
+  end
 end

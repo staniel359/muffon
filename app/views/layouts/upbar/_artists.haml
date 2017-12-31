@@ -1,0 +1,37 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+- case params[:action]
+
+- when 'show', 'albums', 'album', 'tracks', 'similar_artists'
+  .up
+    .media-left
+      = image_tag @artist.artist_image
+    .media-right
+      = link_to @artist.name, artist_path
+
+  - case params[:action]
+
+  - when 'albums', 'album'
+    .up
+      .media-right
+        = link_to 'Albums', artist_albums_path
+
+    - case params[:action]
+
+    - when 'album'
+      .up
+        .media-left
+          = image_tag @album.album_cover
+        .media-right
+          = link_to @album.title, artist_album_path
+
+  - when 'tracks'
+    .up
+      .media-right
+        = link_to 'Tracks', artist_tracks_path
+
+  - when 'similar_artists'
+    .up
+      .media-right
+        = link_to 'Similar artists', artist_similar_artists_path

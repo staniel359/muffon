@@ -1,0 +1,15 @@
+#library_track_plays_panel.panel.library_page.center
+  = render 'library_artists/partials/panel_header'
+
+  .separator.sep_0.sep_light
+
+  #library_track_plays.panel_content
+    %h4
+      = "Plays (#{@track.playcount}):"
+
+    .separator.sep_10.sep_default
+
+    %table.table.table-hover
+      = render partial: 'library_artists/partials/play', collection: @plays
+    .text_center
+      = paginate @plays

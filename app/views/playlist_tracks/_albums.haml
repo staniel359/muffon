@@ -1,0 +1,8 @@
+- if @albums.any?
+
+  %h4 Albums:
+
+  .separator.sep_10.sep_default
+
+  %table.table.table-hover.table-condensed
+    = render partial: 'album', collection: @albums.first(5)

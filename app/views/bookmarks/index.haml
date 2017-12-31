@@ -1,0 +1,11 @@
+.bookmarks_page.center.panel
+  .panel_header
+    %h3 Bookmarks
+
+  .separator.sep_0.sep_light
+
+  .bookmarks.panel_content
+    - if @bookmarks.any?
+      = render partial: 'bookmark', collection: @bookmarks
+    - else
+      You haven't made any bookmarks yet.

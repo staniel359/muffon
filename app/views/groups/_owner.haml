@@ -1,0 +1,14 @@
+%table.table.table-hover
+  %tr
+    %td
+      .media-left.mid_align
+        = image_tag @group.owner.avatar.url(:xs), class: 'img_rnd'
+      .media-body.mid_align
+        %h5
+          = link_to @group.owner.nickname, profile_path(@group.owner.id)
+        - unless current_profile?(@group.owner)
+          .inline
+            #follow_button{id: @group.owner.id}
+              = render 'relationships/follow_button', profile: @group.owner
+          .inline
+            = link_to 'Message', new_message_path(to: @group.owner), class: 'btn btn-sm btn-primary'

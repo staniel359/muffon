@@ -1,49 +1,62 @@
 class PlaylistsController < ApplicationController
   before_action :set_profile
   before_action :correct_profile, except: :index
-  before_action :set_playlist, only: [:show, :destroy]
+  before_action :set_playlist, only: %i[show destroy]
+  before_action :set_playlists, only: %i[index create destroy]
 
   def index
-    @playlists = @profile.playlists
     @title = "#{@profile.nickname}'s playlists"
   end
 
-  def new
-    @playlist = @profile.playlists.build
-    respond_to :js
-  end
-
   def create
-    @playlist = @profile.playlists.build(playlist_params)
-    @playlist.save!
-    respond_to :js
+    @playlists.create(playlist_params)
+
+    respond_to do |format|
+      format.js { render 'index', layout: false }
+    end
+  rescue ActiveRecord::RecordNotUnique
+    flash.now[:danger] = 'You already have playlist with this name.'
+
+    respond_to do |format|
+      format.js { render 'playlist_flash', layout: false }
+    end
   end
 
   def show
-    @tracks = @playlist.playlist_tracks
-    @title = "#{@playlist.name} - #{@profile.nickname}'s playlists"
+    @title = "#{@profile.nickname}'s playlists - #{@playlist.name}"
+    @tracks = @playlist.playlist_tracks.includes(
+      :track, :artist, :album
+    ).page(params[:page]).per(10)
   end
 
   def destroy
-    @playlist.destroy!
-    respond_to :js
+    @playlist.destroy
+
+    respond_to do |format|
+      format.html { redirect_to playlists_path }
+      format.js { render 'index', layout: false }
+    end
   end
 
-  private
+private
 
-    def set_profile
-      @profile = Profile.find(params[:profile_id])
-    end
+  def set_profile
+    @profile ||= Profile.find(params[:id])
+  end
 
-    def set_playlist
-      @playlist = Playlist.find(params[:id])
-    end
+  def set_playlist
+    @playlist ||= Playlist.find_by_name(params[:playlist_name])
+  end
 
-    def playlist_params
-      params.require(:playlist).permit(:profile_id, :name)
-    end
+  def set_playlists
+    @playlists ||= @profile.playlists
+  end
 
-    def correct_profile
-      redirect_to root_path unless current_profile?(@profile)
-    end
+  def playlist_params
+    params.require(:playlist).permit(:profile_id, :name)
+  end
+
+  def correct_profile
+    redirect_to root_path unless current_profile?(@profile)
+  end
 end

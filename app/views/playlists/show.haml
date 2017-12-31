@@ -1,0 +1,58 @@
+#playlists_page.panel.panel_570.center
+  .panel_header
+    %h3.inline
+      = fa_icon 'list'
+      = @playlist.name
+    - if current_profile?(@profile)
+      .pull-right.btn-group
+        = button_tag class: 'btn btn-primary btn-sm inline', method: :get, remote: true, id: 'add_tracks_btn' do
+          = fa_icon 'plus'
+          Add tracks
+        = link_to edit_playlist_path, class: 'btn btn-primary btn-sm inline' do
+          = fa_icon 'pencil'
+          Edit
+        = link_to playlist_path, method: :delete, class: 'btn btn-default btn-sm inline' do
+          = fa_icon 'times'
+          Delete
+
+  .separator.sep_0.sep_light
+
+  #playlist_tracks_content.panel_content
+    #track_search_panel.panel_content_right
+      .mg_btm_10.pull-right
+        = button_tag id: 'close_search', class: 'btn btn-default btn-sm' do
+          Close
+          = fa_icon 'times'
+
+      %h4 Add tracks:
+
+      .separator.sep_10.sep_light
+
+      .mg_btm_10
+        = text_field_tag :query, nil, class: 'form-control', placeholder: 'Enter track, artist or album...'
+
+      #playlist_search_results
+
+    #playlist_tracks.playlist_tracks_wide
+      = render 'tracks'
+
+:javascript
+  $('#add_tracks_btn').click(function() {
+    $('#track_search_panel').show('slide', {direction: 'right'}, 400)
+    $('#playlist_tracks').animate({width:'412px'}, 400)
+  }),
+
+  $('#close_search').click(function() {
+    $('#track_search_panel').hide('slide', {direction: 'right'}, 400)
+    $('#playlist_tracks').animate({width:'752'}, 400)
+    $('input#query').val('')
+    $('#playlist_search_results').html('')
+  })
+
+  $('#query').keyup(function(e){
+    $.ajax({
+      method: 'GET',
+      url: "#{params[:playlist_name]}/search",
+      data: {q: e.target.value}
+    })
+  })

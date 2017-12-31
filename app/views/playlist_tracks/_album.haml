@@ -1,0 +1,19 @@
+%tr
+  %td
+    .search_entry
+      .media-left.mid_align
+        = image_tag album.album_cover, class: 'img_50'
+      .media-body.mid_align
+        %h4
+          = album.album_title
+        %h5.mg_btm_5
+          = album.artist_name
+        = button_to playlist_search_album_tracks_path(profile_album_id: album.id), class: 'btn btn-primary btn-sm', method: :get, remote: true do
+          = "Show tracks (#{album.profile_tracks.count})"
+          .caret
+    .inline
+      = button_to playlist_add_album_path(profile_album_id: album.id, album_id: album.album_id), class: 'btn btn-sm btn-primary', method: :post, remote: true do
+        = fa_icon 'plus'
+        Add
+
+    .search_album_tracks#search_album_tracks{id: album.id}

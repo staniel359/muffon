@@ -15,7 +15,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    "avatar_default.png"
+    "#{version_name}_avatar_default.png"
   end
 
   # Process files as they are uploaded:
@@ -27,7 +27,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :md do
-    process resize_to_fill: [110, 110]
+    process resize_to_fill: [120, 120]
   end
   version :sm do
     process resize_to_fill: [50, 50]
@@ -43,7 +43,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
+  # Avoid using model.id or version_name here,
+  # see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end

@@ -1,3 +1,0 @@
-#rec_restore.text_center.rec_restore{id: params[:delete]}
-	%h4 Recommendation was deleted.
-	%h5= link_to 'Restore', recommendations_path(restore: params[:delete].to_i), method: :patch, remote: true

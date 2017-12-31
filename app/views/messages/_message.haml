@@ -1,0 +1,12 @@
+%tr
+  %td.message
+    .media-left
+      = link_to message.profile do
+        = image_tag message.profile.avatar.url(:sm), class: 'img_rnd'
+    .media-body
+      %h6.text-muted.pull-right
+        = l message.created_at, format: "%e %b %Y, %H:%M"
+      %h5
+        = link_to message.profile.nickname, message.profile
+      %h4
+        = message.content

@@ -1,7 +1,0 @@
-%tr.playlist_track#playlist_track{id: playlist_track.id}
-	%td
-		.playlist_track_image.img_sm.img_rnd.media-left= image_tag ((playlist_track.profile_track.artist.image && playlist_track.profile_track.artist.image != '') ? playlist_track.profile_track.artist.image : 'missing_artist.png')
-		.media-body
-			%h5= playlist_track.profile_track.track.title
-			%h5= playlist_track.profile_track.artist.name
-			= link_to 'delete', playlist_track_path(id: playlist_track.id), method: :delete, remote: true

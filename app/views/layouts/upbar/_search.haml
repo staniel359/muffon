@@ -1,0 +1,47 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+- if params[:action] == 'search'
+  .up
+    .media-right
+      = link_to 'Search', search_path
+  - if params[:q].present?
+    .up
+      .media-right
+        = link_to params[:q], search_path(q: params[:q])
+
+- if params[:action] == 'artist'
+  .up
+    .media-right
+      = link_to 'Search', search_path
+  .up
+    .media-right
+      = link_to 'Artist', search_artist_path
+  - if params[:q].present?
+    .up
+      .media-right
+        = link_to params[:q], search_artist_path(q: params[:q])
+
+- if params[:action] == 'album'
+  .up
+    .media-right
+      = link_to 'Search', search_path
+  .up
+    .media-right
+      = link_to 'Album', search_album_path
+  - if params[:q].present?
+    .up
+      .media-right
+        = link_to params[:q], search_album_path(q: params[:q])
+
+- if params[:action] == 'track'
+  .up
+    .media-right
+      = link_to 'Search', search_path
+  .up
+    .media-right
+      = link_to 'Track', search_track_path
+  - if params[:q].present?
+    .up
+      .media-right
+        = link_to params[:q], search_track_path(q: params[:q])

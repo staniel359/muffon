@@ -1,0 +1,10 @@
+%table.table
+  - @tracks.map do |track|
+    %tr
+      %td
+        .inline
+          = track.title
+        .inline.pull-right
+          = button_to playlist_add_track_path(profile_track_id: track.id), class: 'btn btn-primary btn-sm', remote: true do
+            = fa_icon 'plus'
+            Add

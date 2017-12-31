@@ -1,0 +1,14 @@
+%tr
+  %td
+    .search_entry
+      .media-left.mid_align
+        = image_tag track.artist_image, class: 'img_rnd img_30'
+      .media-body.mid_align
+        %h5
+          %strong
+            = track.title
+        %h5
+          = track.artist_name
+    .inline
+      = button_to playlist_add_track_path(profile_track_id: track.id), class: 'btn btn-primary btn-sm', remote: true do
+        = fa_icon 'plus'

@@ -1,0 +1,18 @@
+.dropdown.inline
+  .btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+    = render 'library/scope_label', default_scope: @profile.top_artists_scope
+
+  %ul.dropdown-menu.dropdown-menu-right
+    %li= link_to '1 week', artists_scope_path(scope: 7), remote: true
+    %li= link_to '1 month', artists_scope_path(scope: 30), remote: true
+    %li= link_to '3 months', artists_scope_path(scope: 90), remote: true
+    %li= link_to '6 months', artists_scope_path(scope: 180), remote: true
+    %li= link_to '1 year', artists_scope_path(scope: 365), remote: true
+    %li= link_to 'All time', artists_scope_path(scope: 0), remote: true
+
+- if current_profile?(@profile)
+  #top_artists_default_scope.inline
+    - if params[:action] == 'artists_scope' && params[:scope].to_i != @profile.top_artists_scope
+      = button_to 'Save', artists_default_scope_path(scope: params[:scope], default: true), method: :patch, remote: true, class: 'btn btn-primary'
+    - if params[:default]
+      = button_tag 'Saved', class: 'btn btn-primary disabled'

@@ -1,0 +1,8 @@
+.artist.artist_170.mg_btm_20
+	= link_to library_artist_path(name: artist.artist.artist_name) do
+		= image_tag artist.artist.artist_image, class: 'img_rnd'
+		%h4
+			%strong
+				= artist.artist.name
+	%h5
+		= link_to pluralize(artist.playcount, 'play'), library_artist_plays_path(id: @profile.id, name: artist.artist.artist_name)

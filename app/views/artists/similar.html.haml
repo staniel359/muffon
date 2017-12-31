@@ -1,9 +1,0 @@
-.artist_page.artist_similar_page.panel.center
-	.panel_header
-		%h3
-			= link_to @artist, artist_path 
-			similar artists
-	.panel_content
-		- @artists.each_with_index do |a, index|
-			= render 'similar', artist: a, index: index
-		.view_more= link_to 'Next Page', artist_similar_path(page: (params[:page] ? params[:page].to_i + 1 : 2))

@@ -1,0 +1,17 @@
+#groups.panel.center
+  .panel_header
+    %h3.inline Groups
+    .inline.pull-right
+      = link_to 'Create a group', new_group_path, class: 'btn btn-primary'
+
+  .separator.sep_0.sep_light
+  
+  .panel_content
+
+    - if @groups.any?
+
+      %table.table.table-hover-table-condensed
+        = render @groups
+
+    - else
+      There are no groups yet.

@@ -1,0 +1,56 @@
+#artist_album_page.artist_page.panel.center
+  .panel_content
+
+    #artist_album_left.media-left.album_220
+      = image_tag @album.album_cover
+
+    #artist_album_right.media-right.full_width
+
+      #artist_album_title.mg_btm_10
+
+        %h3.mg_btm_5
+          = link_to @album.title, artist_album_path
+        %h4.mg_btm_5
+          = link_to @album.artist.name, artist_path
+        %h5
+          = @album.release_date
+
+      .separator.sep_10.sep_default
+
+      #artist_album_tags.mg_btm_5
+        - @album.album_tags.map do |tag|
+          = link_to tag.name, '#', class: 'btn btn-primary btn-sm tag mg_btm_5'
+
+      #artist_album_listens
+        %h4.inline
+          = fa_icon 'user'
+          = number_with_delimiter(@album['listeners'])
+        %h4.inline
+          = fa_icon 'music'
+          = number_with_delimiter(@album['playcount'])
+
+      - if @album.description.present?
+        .separator.sep_10.sep_default
+
+        #artist_album_wiki
+          %h5
+            = @album.description.truncate_words(100).html_safe
+            = link_to 'Read more...', '#', remote: true, onClick: 'showWiki()'
+
+      %hr.sep_10
+
+      %table.table.table-hover.table-condensed#artist_album_tracks
+        - @album.album_tracks.each_with_index do |track, index|
+          %tr
+            %td{id: "track_#{track.id}", class: ('list_playing_now_track' if playing_now_track&.id == track.id)}
+              .media-left.mid_align.list_play_button
+                = render 'player/get_track_button', track: track
+              .media-body.mid_align
+                %h5
+                  = "#{index + 1}."
+                  = track.title
+
+:javascript
+  function showWiki() {
+    $('#artist_album_page_info_wiki > h5').html("#{j @album.description&.html_safe}")
+  }

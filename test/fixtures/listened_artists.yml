@@ -2,8 +2,8 @@
 
 one:
   profile: one
-  artist_name: MyString
+  artist: one
 
 two:
   profile: two
-  artist_name: MyString
+  artist: two

@@ -1,0 +1,11 @@
+%tr
+  %td
+    .media-left.mid_align
+      = image_tag group.avatar.url(:sm), class: 'img_rnd'
+    .media-body.mid_align
+      #membership_btn.inline.mid_align.pull-right{id: group.id }
+        = render partial: 'memberships/membership_button', locals: { group_id: group.id }
+      %h4
+        = link_to group.name, group_path(group_id: group.id)
+      %h5#group_members_count{id: group.id}
+        = pluralize(group.members.count, 'member')

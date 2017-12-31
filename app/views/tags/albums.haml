@@ -1,0 +1,31 @@
+#library_tag_panel.panel.library_page.center
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+  
+  #library_tag_panel_content.panel_content
+    %h4
+      = "Albums (#{@tag.album_taggings_count}):"
+
+    .separator.sep_10.sep_default
+
+    - if @album_taggings.any?
+      %table.table.table-hover
+        - @album_taggings.map do |tagging|
+          %tr.library_tagging
+            %td
+              .media-left.img_sm
+                = image_tag tagging.album.album_cover, class: 'img_50'
+              .media-body.mid_align
+                = link_to artist_album_path(name: tagging.album.artist.name, title: tagging.album.title) do
+                  %h4
+                    = tagging.album.title
+                  %h5
+                    = tagging.album.artist.name
+                - if tagging.profile_album.present?
+                  = link_to 'in your library', library_artist_album_path(name: tagging.album.artist.name, title: tagging.album.title)
+      .text_center.mg_top_20
+        = paginate @album_taggings
+    - else
+      %h5
+        = (current_profile?(@profile) ? 'You haven\'t' : "#{@profile.nickname} hasn\'t") + ' tagged any albums with this tag.'

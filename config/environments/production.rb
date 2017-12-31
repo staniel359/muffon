@@ -35,9 +35,9 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Mount Action Cable outside main process or domain
-  # config.action_cable.mount_path = nil
-  # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.mount_path = nil
+  config.action_cable.url = 'wss://muffon.endorphine.by/cable'
+  config.action_cable.disable_request_forgery_protection = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -82,11 +82,11 @@ Rails.application.configure do
   end
 
   # Do not dump schema after migrations.
-  config.active_record.dump_schema_after_migration = false
-  config.action_cable.url = 'wss://muffon.endorphine.by/cable' 
-  config.web_socket_server_url = 'wss://muffon.endorphine.by/cable' 
-  config.action_cable.allowed_request_origins = ['muffon.endorphine.by']
+  config.active_record.dump_schema_after_migration = false  
 
   ENV['LASTFM_KEY'] = '2cd2a26588d785bcfd484f09720a2d57'
   ENV['LASTFM_SECRET'] = 'e91c8b57bc68a66a6707711471b75e90'
+  ENV['DISCOGS_KEY'] = 'lmqIHGxJzwqEFiLBLxwu'
+  ENV['DISCOGS_SECRET'] = 'aPSJTqPRwVuzxxZkPOdsNWKmQIyVSpDs'
+  ENV['VK_REMIXSID'] = '13cb0185b6eb7d4769bab317a85cb8189188e95032bd949174850'
 end

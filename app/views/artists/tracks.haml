@@ -1,0 +1,23 @@
+.artist_page.artist_tracks_page.panel.center
+	.panel_header
+		%h3
+			.media-left.mid_align
+				= image_tag @artist.artist_image, class: 'img_rnd img_50'
+			.media-right.mid_align
+				= link_to @artist.name, artist_path
+
+	.separator.sep_0.sep_light
+
+	.artist_tracks_page_tracks.panel_content
+
+		%h4 Tracks:
+
+		.separator.sep_10.sep_default
+
+		%table.table.table-hover.table-condensed
+			= render partial: 'track', collection: @tracks
+
+		.text_center.mg_top_10
+			.btn-group
+				= link_to_prev_page @tracks, '< Previous', class: 'btn btn-primary'
+				= link_to_next_page @tracks, 'Next >', class: 'btn btn-primary' unless @tracks.count < 20

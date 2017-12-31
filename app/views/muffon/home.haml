@@ -1,0 +1,29 @@
+- if logged_in?
+  #home.panel.center
+    .panel_header
+      %h3 muffon | Home
+
+    .separator.sep_0.sep_light
+
+    .panel_content
+      In progress.
+      %script{src: '//vk.com/js/api/openapi.js?151'}
+
+      <div id="vk_auth"></div>
+
+- else
+  .form_center.panel.text_center
+    %h3.panel_header muffon | Welcome
+
+    .separator.sep_0.sep_light
+
+    .panel_content
+      = link_to 'Log in', login_path, class: 'btn btn-primary'
+      = link_to 'Sign up', signup_path, class: 'btn btn-primary'
+      = link_to 'Sign up with Last.fm', '/auth/lastfm', class: 'btn btn-danger'
+
+:javascript
+  $(document).ready(function() {
+    VK.init({apiId: 6281874});
+    VK.Widgets.Auth("vk_auth", {"authUrl":"/"});
+  })

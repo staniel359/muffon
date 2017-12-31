@@ -1,0 +1,56 @@
+#settings.panel.center
+	.panel_header
+		%h3 Settings
+
+	.separator.sep_0.sep_light
+
+	.panel_content
+		#settings_panel_left.inline
+			#settings_edit_form
+				%h4 Edit profile
+
+				.separator.sep_10.sep_default
+
+				= render 'profiles/settings_form'
+			
+			.separator.sep_20.sep_light
+
+			#settings_password_form
+				%h4 Change password
+
+				.separator.sep_10.sep_default
+
+				= form_for current_profile, remote: true do |f|
+					= f.password_field :password, class: 'form-control', placeholder: 'Password:'
+					= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
+					.submit_btn.text_right= f.submit 'Change password', class: 'btn btn-primary'
+
+		#setting_panel_right.inline.top_align
+			#settings_privacy 
+				%h4 Privacy
+
+				.separator.sep_10.sep_default
+			
+			.separator.sep_20.sep_light
+
+			#settings_lastfm_sync
+				%h4 Synchronize with Last.fm
+
+				.separator.sep_10.sep_default
+
+				- if current_profile.lastfm_id.present?
+					- if current_profile.plays.any?
+						= link_to 'Refresh your listens', import_plays_path(do: 'refresh'), method: :get, class: 'btn btn-primary'
+					- else
+						= link_to 'Import you library', import_plays_path(do: 'import'), method: :get, class: 'btn btn-primary'
+				- else
+					= link_to 'Connect your Last.fm account', '/auth/lastfm', class: 'btn btn-danger'
+			
+			.separator.sep_20.sep_light
+
+			#settings_delete_account_btn
+				%h4 Delete account
+
+				.separator.sep_10.sep_default
+
+				= link_to 'Delete account', current_profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Warning! All data from your account will be destroyed. 	Proceed?'}

@@ -1,0 +1,14 @@
+%h4
+  Search results for
+  %strong= "\"#{params[:q]}\""
+%br
+
+= render 'artists'
+
+.separator.sep_20.sep_light
+
+= render 'albums'
+
+.separator.sep_20.sep_light
+
+= render 'tracks'

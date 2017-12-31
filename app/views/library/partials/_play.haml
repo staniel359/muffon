@@ -1,0 +1,27 @@
+%tr
+  %td{id: "track_#{play.track.id}", class: ('list_playing_now_track' if playing_now_track&.id == play.track.id)}
+    .media-left
+      .list_play_button.play_button
+        = render 'player/get_track_button', track: play.track
+      = image_tag (play.album.present? ? play.album.album_cover : 'missing_album.png'), class: 'img_50'
+    .media-body
+      .pull-right.mg_top_10
+        = button_to send_to_queue_path(track_ids: [play.track.id]), class: 'btn btn-primary btn-sm play_btn', method: :get, remote: true do
+          = fa_icon 'arrow-right'
+      .created_at.pull-right
+        %h5
+          = l play.created_at, format: "%e %b %Y"
+        %h5.pull-right
+          = l play.created_at, format: "%H:%M"
+      %h5
+        - if play.profile_track.loved?
+          = fa_icon 'heart', style: 'color: red'
+        - else
+          = fa_icon 'heart-o'
+        %strong
+          = link_to play.track.title, library_artist_track_path(name: play.artist.artist_name, title: play.track.track_title)
+      %h5
+        = link_to play.artist.name, library_artist_path(id: @profile.id, name: play.artist.artist_name)
+      - if play.album.present?
+        %h5
+          = link_to play.album.title, library_artist_album_path(id: @profile.id, name: play.artist.artist_name, title: play.album.album_title), class: 'text-muted'

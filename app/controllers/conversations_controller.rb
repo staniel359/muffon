@@ -1,28 +1,40 @@
 class ConversationsController < ApplicationController
+  include ConversationsHelper
   before_action :should_login
+  before_action :set_conversation, :check_conversation_access, only: :show
 
   def index
     @title = 'Conversations'
-    @conversations = current_profile.conversations.reorder('updated_at desc')
+    @conversations = current_profile.conversations.order('updated_at desc')
   end
 
   def show
-    @conversation = Conversation.find_by(id: params[:id])
-    if @conversation
-      correct_profile
-      new_messages_from(@conversation).each { |m| m.update!(new: nil) }
-      @messages = @conversation.messages.order('created_at desc')
-      @message = current_profile.messages.build
-      @other_profile = other_profile_of(@conversation)
-      @title = "Conversation with #{@other_profile.nickname}"
-    else
-      redirect_to root_path
-    end
+    read_new_messages
+
+    @messages = @conversation.messages.order('created_at desc')
+    @message = current_profile.messages.new
+    @other_member = @conversation.other_member(current_profile.id)
+    @title = "Conversation with #{@other_member.nickname}"
   end
 
-  private
+private
 
-    def correct_profile
-      redirect_to root_path unless participates_in(@conversation)
-    end
+  def set_conversation
+    @conversation = current_profile.conversations.find_by(id: params[:id])
+  end
+
+  def check_conversation_access
+    redirect_to root_path unless
+      @conversation.present? && @conversation.member?(current_profile.id)
+  end
+
+  def read_new_messages
+    new_messages.each { |m| m.update(new: nil) }
+    current_profile.new_messages.delete(@conversation.id.to_s)
+    current_profile.save
+  end
+
+  def new_messages
+    @conversation.other_member_messages(current_profile.id).where(new: 1)
+  end
 end

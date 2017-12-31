@@ -1,5 +1,0 @@
-<% if params[:delete] %>
-	$("#recommendation_<%= params[:delete] %>").prepend("<%= j render partial: 'rec_restore' %>")
-<% elsif params[:restore] %>
-	$("#rec_restore_<%= params[:restore] %>").remove()
-<% end %>

@@ -1,0 +1,11 @@
+.bookmark.media.mg_btm_10#bookmark{id: bookmark.artist.id}
+  #bookmark_image.media-left
+    = link_to artist_path(bookmark.artist.name) do
+      = image_tag bookmark.artist.image, class: 'img_rnd img_50'
+
+  %h4#bookmark_name.media-body
+    = link_to bookmark.artist.name, artist_path(bookmark.artist.name)
+
+    #bookmark_delete
+      = button_to bookmark_path(id: bookmark.id, artist_id: bookmark.artist.id), method: :delete, remote: true, class: 'inv_btn' do
+        %h6 Delete

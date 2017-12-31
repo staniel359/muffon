@@ -1,0 +1,106 @@
+#profile_page
+
+	#profile_page_panel.center.panel.panel_content
+
+		#profile_info_left.media-left
+
+			#profile_avatar.mg_btm_10
+				= image_tag @profile.avatar.url(:md), class: 'img_rnd'
+
+			- if logged_in? && !current_profile?(@profile)
+
+				#profile_actions.text-center
+
+					#follow_button.mg_btm_5{id: @profile.id}
+						= render 'relationships/follow_button', profile: @profile
+
+					= link_to 'Write a message', new_message_path(to: @profile), class: 'btn btn-primary btn-sm'
+
+		#profile_info_right.media-right.full_width
+
+			%h3
+				= @profile.nickname
+
+			.separator.sep_10.sep_light
+
+			%h5.inline
+				- if @profile.gender.present?
+
+					= fa_icon (@profile.gender == 'Male' ? 'male' : 'female')
+
+				= @profile.name
+
+			%h5.inline
+				= fa_icon 'globe' if @profile.country.present? || @profile.city.present?
+				= @profile.city
+				= @profile.country
+
+			- if @profile.plays.any?
+
+				%h5
+					Listening since
+					%strong
+						= l @profile.plays.last.created_at, format: '%e %b %Y'
+
+			%h4.mg_top_10
+				.inline
+					= link_to "#{@profile.plays.count} plays", library_plays_path
+				.inline
+					= link_to "#{@profile.profile_tracks.count} tracks", library_tracks_path
+				.inline
+					= link_to "#{@profile.profile_artists.count} artists", library_artists_path
+
+			- if logged_in? && !current_profile?(@profile)
+
+				.separator.sep_10.sep_default
+
+				#profile_common_artists
+
+					%h5
+						= "You have #{pluralize(@common_artists.count, 'artist')} in common:"
+
+					- @common_artists.first(5).map do |a|
+
+						= a.artist.name
+						= a.count
+
+					- if @common_artists.count > 5
+
+						and others...
+
+	#profile_library_plays.center
+
+		#profile_plays_panel.panel.inline.top_align
+
+			#profile_page_playing_now
+				= render 'playing_now_track'
+
+			%hr.sep_0
+
+			.panel_content
+
+				%h4 Recently played:
+
+				.separator.sep_10.sep_default
+				
+				= render 'library/partials/plays'
+
+		#profile_library_panel.panel.inline.top_align
+
+			.panel_content
+
+				%h4 Top artists:
+
+				.separator.sep_10.sep_default
+
+				= render 'library/partials/artists'
+
+			%hr.sep_0
+
+			.panel_content
+
+				%h4 Top albums:
+
+				.separator.sep_10.sep_default
+
+				= render 'library/partials/albums'

@@ -1,0 +1,42 @@
+#recommendations_page.center.panel
+  .panel_header
+    %h3.inline Recommendations
+    .btn.btn-primary.pull-right.inline{onclick: 'toggleFilter();'}
+      = fa_icon 'filter'
+      Filter
+
+  #recommendation_filter_panel{hidden: true}
+    .separator.sep_0.sep_light
+
+    #recommendation_filter_content
+      = form_tag recommendations_path, method: :get, remote: true do
+        .recommendation_filter.inline
+          %h4.mg_btm_5 Artist:
+          = text_field_tag :artist, params[:artist], placeholder: "Artist:", class: 'form-control'
+        .recommendation_filter.inline
+          %h4.mg_btm_5 Tag:
+          = text_field_tag :tag, params[:tag], placeholder: "Tag:", class: 'form-control'
+        .recommendation_filter.inline
+          %h4.mg_btm_5 Days:
+          = text_field_tag :days, params[:days], placeholder: "Days:", class: 'form-control'
+        = submit_tag 'Search', name: nil, style: 'display: none'
+
+  .separator.sep_0.sep_light
+
+  #recommendation_search_results.relative
+    .search_results_loading{hidden: true}
+      = fa_icon 'circle-o-notch spin 2x'
+
+    #recommendation_query
+      = render 'query'
+
+    #recommendations
+      = render 'recommendations'
+
+:javascript
+  function toggleFilter() {
+    $('#recommendation_filter_panel').slideToggle('100')
+  };
+  $('#recommendation_filter_content > form').submit(function() {
+    $('.search_results_loading').show()
+  });

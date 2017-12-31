@@ -2,14 +2,16 @@
 
 one:
   profile: one
-  artist_name: MyString
-  track_title: MyString
-  album_title: MyString
-  type: 
+  artist: one
+  album: one
+  track: one
+  image: MyString
+  is: MyString
 
 two:
   profile: two
-  artist_name: MyString
-  track_title: MyString
-  album_title: MyString
-  type: 
+  artist: two
+  album: two
+  track: two
+  image: MyString
+  is: MyString

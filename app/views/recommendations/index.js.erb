@@ -1,0 +1,13 @@
+$('#recommendation_query').html("<%= j render 'query' %>")
+$('#recommendations').html("<%= j render 'recommendations' %>")
+$('.search_results_loading').hide()
+$('#upbar').html("<%= j render 'layouts/upbar/recommendations' %>")
+
+<% if %i[artist tag days].any? { |key| params[key].present? } %>
+  url = "?<%= 'artist=' + params[:artist] if params[:artist].present? %>&<%= 'tag=' + params[:tag] if params[:tag].present? %>&<%= 'days=' + params[:days] if params[:days].present? %>".replace(/amp;/g, '')
+<% else %>
+  $('#recommendation_query').html("")
+  url = '?'
+<% end %>
+
+window.history.pushState({turbolinks: true, url: url}, '', url)

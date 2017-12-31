@@ -1,0 +1,63 @@
+.recommendation.panel#recommendation{id: recommendation.artist_id}
+
+  .panel_content_wide
+
+    #recommendation_left.inline.top_align
+
+      .artist.artist_170
+        = render 'artists/actions', artist: recommendation.artist
+        = image_tag recommendation.artist.artist_image, class: 'img_rnd'
+
+    #recommendation_center.inline.top_align
+
+      %h3#recommendation_artist_name
+        = link_to recommendation.artist.name, artist_path(recommendation.artist.name)
+
+      #recommendation_tags.mg_btm_5
+        - recommendation.recommendation_tags.first(5).map do |tag|
+
+          .recommendation_tag.inline
+            = link_to tag.name, recommendations_path(tag: tag.name), class: 'btn btn-primary btn-sm tag'
+
+      #recommendation_stats
+        %h4.inline
+          = fa_icon 'user'
+          = number_with_delimiter(recommendation.artist.listeners || 0)
+        %h4.inline
+          = fa_icon 'music'
+          = number_with_delimiter(recommendation.artist.playcount || 0)
+
+      .separator.sep_10.sep_default
+
+      #recommendation_description
+        
+        - if recommendation.artist.description.present?
+          = description = recommendation.artist.description.truncate_words(50).split('<a href="https://www.last.fm/music/')[0].html_safe
+          = link_to 'Read more...', '#', class: 'text-muted' if description.split.size == 50
+        - else
+          .text-muted No description available.
+
+    #recommendation_right.inline.top_align
+
+      %h5 Similar to:
+
+      .separator.sep_10.sep_default
+
+      %table.table.table-condensed#recommendation_similars
+        - recommendation.artists(params[:days], 5).map do |profile_artist|
+
+          %tr
+            %td.recommendation_similar_artist
+              .artist_image.media-left
+                = image_tag profile_artist.artist.artist_image, class: 'img_30 img_rnd'
+              .media-body.mid_align
+                %h5
+                  = link_to profile_artist.artist.name, library_artist_path(id: current_profile.id, name: profile_artist.artist.name)
+                %h5.text-muted
+                  - if params[:days].present?
+                    = "#{pluralize(profile_artist.days_playcount(params[:days]), 'play')}"
+                  - else
+                    = "#{pluralize(profile_artist.playcount, 'play')}"
+
+        - if recommendation.artists(params[:days], 5).length > 5
+          = link_to "and #{pluralize((artists.length - 5), 'more artist')}...", '#'

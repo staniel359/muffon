@@ -1,0 +1,16 @@
+#library_artist_albums_panel.panel.library_page.center
+  = render 'library_artists/partials/panel_header'
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+    %h4
+      = "Albums (#{@artist.profile_albums.count}):"
+
+    .separator.sep_10.sep_default
+
+    .panel_content_wide
+      = render partial: 'library_artists/partials/album', collection: @albums
+
+    .text_center
+      = paginate @albums

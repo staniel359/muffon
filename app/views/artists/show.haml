@@ -1,0 +1,112 @@
+#artist_page_panel.artist_page.panel.center
+
+	#artist_page_main.panel_content.panel_content_wide
+
+		#artist_page_image.media-left
+
+			.artist.artist_190
+				= render 'actions', artist: @artist
+				= image_tag @artist.artist_image, class: 'img_rnd'
+
+		.page_info.media-body.full_width
+
+			%h3.page_info_title.mg_btm_5
+
+				= @artist.name
+
+			#artist_page_info_tags.mg_btm_5
+
+				- @artist.artist_tags.first(5).map do |tag|
+					.inline
+						= link_to tag.name, '#', class: 'btn btn-primary btn-sm tag'
+
+				#artist_page_info_taggings
+
+					- if @taggings.any?
+						Your tags:
+						- @taggings.map do |tagging|
+							.inline
+								= link_to tagging.tag.name, '#', class: 'btn btn-primary btn-sm tag'
+
+			#artist_page_info_listens
+
+				%h4.inline
+					= fa_icon 'user'
+					= number_with_delimiter(@artist.listeners)
+				%h4.inline
+					= fa_icon 'music'
+					= number_with_delimiter(@artist.playcount)
+
+			.separator.sep_10.sep_default
+
+			%h5#artist_page_info_bio
+
+				- if @artist.description.present?
+					= @artist.description.truncate_words(100).split('<a href="https://www.last.fm/music/')[0].html_safe
+				- else
+					.text-muted
+						No description available.
+
+	%hr.sep_0
+
+	- if @artist.in_library?(current_profile)
+		.panel_content
+			In your library since
+			%strong
+				= l current_profile.profile_artists.find_by(artist_id: @artist.id).created_at, format: '%e %b %Y'
+
+		%hr.sep_0
+
+	#artist_page_music
+
+		#artist_page_tracks.inline.top_align.panel_content
+
+			%h4
+
+				= link_to 'Top tracks:', artist_tracks_path
+
+			.separator.sep_10.sep_default
+			
+			%table.table.table-hover.table-condensed#artist_page_tracks_content
+				= render partial: 'track', collection: @tracks
+
+			.text_right
+				= link_to 'View more...', artist_tracks_path, class: 'btn btn-primary btn-sm'
+
+		#artist_page_albums.inline.top_align.panel_content
+
+			%h4
+				= link_to 'Top albums:', artist_albums_path
+
+			.separator.sep_10.sep_default
+
+			#artist_page_albums_content.panel_content_wide
+				= render partial: 'album', collection: @albums
+
+			.text_right
+				= link_to 'View more...', artist_albums_path, class: 'btn btn-primary btn-sm'
+			
+	%hr.sep_0
+
+	#artist_page_similars.panel_content
+
+		%h4
+			= link_to 'Similar artists:', artist_similar_artists_path
+
+		.separator.sep_10.sep_default
+
+		#artist_page_similars_content.panel_content_wide
+
+			- @similars.map do |similar|
+
+				.artist.artist_170#artist_page_similar{id: similar.id}
+					= render 'actions', artist: similar
+					= link_to similar.artist_name do
+						.mg_btm_5
+							= image_tag similar.artist_image, class: 'img_rnd'
+						%h4
+							%strong
+								= similar.name
+
+		.text_right
+			= link_to 'View more...', artist_similar_artists_path, class: 'btn btn-primary btn-sm'

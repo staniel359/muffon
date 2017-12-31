@@ -1,2 +1,5 @@
-$('#albums').html("<%= j render partial: 'profile_album', collection: @albums %>")
-$('#albums_scope').html("<%= j render 'sort_scope_label' %>")
+$('#top_albums_scope').html("<%= j render 'library/albums_scope' %>")
+<% unless params[:default] %>
+  $('#top_albums').html("<%= j render 'library/partials/albums' %>")
+<% end %>
+$('.dropdown.open .dropdown-toggle').dropdown('toggle');

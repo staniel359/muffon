@@ -1,0 +1,100 @@
+#player{hidden: (true unless playing_now_track.present?), data: {turbolinks: {permanent: true}}}
+
+  .center.inline
+
+    #player_playing_now_track
+      = render 'player/playing_now_track_sm'
+
+    = audio_tag (playing_now_track.present? ? get_playing_now_track : ''), controls: true, id: 'audio', crossorigin: 'anonymous'
+
+    #player_panel
+
+      #player_play_button.text_center
+        .inline= fa_icon 'backward'
+        %h4.mg_top_5.inline
+          = button_tag class: 'inv_btn', id: 'player_play_btn', onclick: 'play();' do
+            = fa_icon 'play', id: 'player_play_btn_icon'
+        .inline= fa_icon 'forward'
+
+      #play_progress_bar
+
+        %input.inline{type: 'range', value: 0, max: 0}
+        %h5#player_time.inline
+          #player_current_time.inline
+            00:00
+          .inline /
+          #player_full_time.inline
+            00:00
+
+  #change_track_panel
+    #change_track_actions{hidden: true}
+
+  #playing_now_button
+    = button_tag onclick: 'showPlayingNow()', class: 'inv_btn' do
+      = fa_icon 'list 2x'
+
+:javascript
+
+  function play() {
+    audio = document.getElementById('audio');
+    if (audio.paused) {
+      audio.play()
+      $("#list_playing_now_button > i").removeClass('fa-play').addClass('fa-pause')
+      $('#player_play_btn > i').removeClass('fa-play').addClass('fa-pause')
+      // visualize()
+    } else {
+      audio.pause()
+      $("#list_playing_now_button > i").removeClass('fa-pause').addClass('fa-play')
+      $('#player_play_btn > i').removeClass('fa-pause').addClass('fa-play')
+    }
+  };
+
+  function visualize() {
+    audio = document.getElementById('audio');
+    var context = new AudioContext();
+    var src = context.createMediaElementSource(audio);
+    var analyser = context.createAnalyser();
+    var canvas = document.getElementById('canvas');
+    canvas.width = window.innerWidth - 90;
+    canvas.height = window.innerHeight - 100;
+    var ctx = canvas.getContext('2d');
+    src.connect(analyser);
+    analyser.connect(context.destination);
+    analyser.fftSize = 256;
+    var bufferLength = analyser.frequencyBinCount;
+    var dataArray = new Uint8Array(bufferLength);
+    var WIDTH = canvas.width;
+    var HEIGHT = canvas.height;
+    var barWidth = WIDTH / bufferLength;
+    var barHeight;
+    var x = 0;
+
+    function renderFrame() {
+      requestAnimationFrame(renderFrame);
+      x = 0;
+      analyser.getByteFrequencyData(dataArray);
+      ctx.fillStyle = '#392d50';
+      ctx.fillRect(0, 0, WIDTH, HEIGHT);
+
+      for (var i = 0; i < bufferLength; i++) {
+        barHeight = dataArray[i];
+        ctx.fillStyle = '#261a33';
+        ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+        x += barWidth + 1;
+      }
+    }
+
+    renderFrame();
+  }
+
+  $('audio').on('timeupdate', function(){
+    $('#player_current_time').html(new Date(Math.floor(this.currentTime) * 1000).toISOString().substr(14, 5))
+    $('#player_full_time').html(new Date(Math.floor(this.duration) * 1000).toISOString().substr(14, 5))
+    $('input[type="range"]').val(this.currentTime).attr('value', this.currentTime).attr('max', this.duration)
+  });
+
+  $('input[type="range"]').on('change', function() {
+    audio = document.getElementById('audio');
+    audio.currentTime = this.value
+    $('#player_current_time').html(new Date(Math.floor(this.value) * 1000).toISOString().substr(14, 5))
+  });

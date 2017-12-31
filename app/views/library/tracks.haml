@@ -1,0 +1,32 @@
+#library_tracks_panel.panel.library_page.center
+	.panel_header
+		- if params[:show] == 'loved'
+			%h3.inline
+				= "#{@profile.nickname}'s loved tracks"
+		- else
+			%h3.inline
+				= "#{@profile.nickname}'s tracks"
+			.inline.pull-right
+				.dropdown.inline
+					.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+						#tracks_scope
+							= render 'library/partials/order_label'
+					%ul.dropdown-menu.dropdown-menu-right
+						%li
+							= link_to 'Most played', library_tracks_path(order: '1', page: (params[:page] if params[:page])), remote: true
+						%li
+							= link_to 'Least played', library_tracks_path(order: '2', page: (params[:page] if params[:page])), remote: true
+						%li
+							= link_to 'Newest', library_tracks_path(order: '3', page: (params[:page] if params[:page])), remote: true
+						%li
+							= link_to 'Oldest', library_tracks_path(order: '4', page: (params[:page] if params[:page])), remote: true
+
+	.separator.sep_0.sep_light
+						
+	#library_tracks_panel_content.panel_content
+
+		#tracks
+			= render partial: "library/partials/#{params[:show] == 'loved' ? 'loved_tracks' : 'tracks'}"
+
+		#tracks_paginate.text_center.mg_top_20
+			= paginate (params[:show] == 'loved' ? @loved_tracks : @tracks)

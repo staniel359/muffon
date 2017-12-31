@@ -1,0 +1,9 @@
+- if @tracks.any?
+  %table.table.table-hover.table-condensed
+    = render partial: 'playlists/track', collection: @tracks
+
+  .text_center
+    = paginate @tracks
+- else
+  This playlist is empty.
+    

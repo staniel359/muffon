@@ -1,0 +1,5 @@
+- if @artists.any?
+  .panel_content_wide
+    = render partial: 'library/partials/artist', collection: @artists
+- else
+  = (current_profile?(@profile) ? "You haven't" : "#{@profile.nickname} hasn't") + ' listened to any artists during that period.'

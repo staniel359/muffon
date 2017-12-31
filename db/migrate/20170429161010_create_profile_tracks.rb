@@ -8,6 +8,8 @@ class CreateProfileTracks < ActiveRecord::Migration[5.1]
       t.integer :profile_albums, array: true, default: []
       t.integer :albums, array: true, default: []
       t.integer :loved
+      t.datetime :loved_at
+      t.integer :playcount, default: 0
 
       t.timestamps
     end

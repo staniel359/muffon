@@ -1,0 +1,6 @@
+$('.search_results').html("<%= j render 'artists' %>")
+$('#upbar').html("<%= j render 'layouts/upbar/search' %>")
+$('.search_results_loading').hide()
+
+url = "?q=<%= params[:q] %>"
+window.history.pushState({turbolinks: true, url: url}, '', url)

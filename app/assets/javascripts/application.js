@@ -13,6 +13,48 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  if ($("#playing_now").css("display") == 'block') {
+    $('.center').css('margin-left','80px')
+  }
+});
+
+$(document).on('turbolinks:load', function() {
+  if ($("#player").css("display") == 'block') {
+    $('#footer').css('height','185px')
+  }
+});
+
+function showPlayingNow() {
+  $('#playing_now').show('slide', {direction: 'right'}, 400)
+  $('.center').animate({'marginLeft':'80px'}, 400)
+};
+
+function hidePlayingNow() {
+  $('#playing_now').hide('slide', {direction: 'right'}, 500)
+  $('.center').animate({'marginLeft':'220px'}, 400)
+};
+
+function showSearch(){
+  $('#up_search').animate({left: '290px'});
+  $('#upbar').animate({left: '140px'});
+};
+
+function hideSearch(){
+  $('#up_search').animate({left: '-290px'});
+  $('#upbar').animate({left: '-140px'});
+};
+
+function toggleIcons(){
+  $('#side_up_down_icons').toggle();
+  $('#iconBtn').toggleClass('rotated');
+};
+
+function showLoading() {
+  $('#loading').show()
+};

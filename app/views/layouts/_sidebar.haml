@@ -1,0 +1,36 @@
+#sidebar.full_height
+	.up#up_search
+		= form_tag search_path, method: :get, class: 'full_height', onsubmit: 'showLoading();', remote: true do
+			= text_field_tag :q, nil, placeholder: 'Search...', class: 'full_height'
+
+	#side_up_icons
+		= fa_icon 'search', onClick: 'showSearch();'
+
+		.separator.sep_5.sep_light
+
+		= link_to (fa_icon 'user'), current_profile, data: {toggle: 'tooltip', placement: 'right'}, title: 'Profile' 
+		= link_to (fa_icon 'music'), library_path(current_profile), data: {toggle: 'tooltip', placement: 'right'}, title: 'Library'
+		= link_to conversations_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Conversations' do
+			.side_icon
+				= fa_icon 'comments'
+				- if current_profile.new_messages.any?
+					.new_square
+						.new_square_text
+							= current_profile.new_messages.values.flatten.count 
+		= link_to (fa_icon 'user-plus'), profile_contacts_path(current_profile.id), data: {toggle: 'tooltip', placement: 'right'}, title: 'Contacts'
+		= link_to notifications_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Notifications' do
+			.side_icon
+				= fa_icon 'bell'
+				-# .new_square.text_center
+				-# 	.new_square_text
+		= link_to (fa_icon 'newspaper-o'), feed_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Feed'
+		#side_up_down_icons{hidden: true}
+			= link_to (fa_icon 'users'), profile_groups_path(current_profile.id), data: {toggle: 'tooltip', placement: 'right'}, title: 'Groups'
+			= link_to (fa_icon 'play'), player_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Player'
+			= link_to (fa_icon 'list'), playlists_path(current_profile.id), data: {toggle: 'tooltip', placement: 'right'}, title: 'Playlists'
+			= link_to (fa_icon 'volume-up'), recommendations_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Recommendations'
+			= link_to (fa_icon 'bookmark'), bookmarks_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Bookmarks'
+		= fa_icon 'angle-down', onClick: 'toggleIcons();', id: 'iconBtn'
+	#side_down_icons.absolute
+		= link_to (fa_icon 'cog'), settings_path, data: {toggle: 'tooltip', placement: 'right'}, title: 'Settings'
+		= link_to (fa_icon 'sign-out'), logout_path, method: :delete, data: {toggle: 'tooltip', placement: 'right'}, title: 'Log out'

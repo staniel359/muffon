@@ -1,0 +1,76 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+.up
+  = link_to image_tag(@profile.avatar.url(:sm)), library_path
+.up
+  .media-right
+    = link_to 'Artists', library_artists_path
+
+- case params[:action]
+
+- when 'show', 'albums', 'plays', 'tracks'
+  .up
+    .media-left
+      = image_tag @artist.artist.artist_image
+    .media-right
+      = link_to @artist.artist.name, library_artist_path
+
+  - case params[:action]
+
+  - when 'albums'
+    .up
+      .media-right
+        = link_to 'Albums', library_artist_albums_path
+
+  - when 'plays'
+    .up
+      .media-right
+        = link_to 'Plays', library_artist_plays_path
+
+  - when 'tracks'
+    .up
+      .media-right
+        = link_to 'Tracks', library_artist_tracks_path
+
+- when 'album', 'album_plays'
+  .up
+    .media-left
+      = image_tag @album.artist.artist_image
+    .media-right
+      = link_to @album.artist.name, library_artist_path
+  .up
+    .media-right
+      = link_to 'Albums', library_artist_albums_path
+  .up
+    .media-left
+      = image_tag @album.album.album_cover
+    .media-right
+      = link_to @album.album.title, library_artist_album_path
+
+  - case params[:action]
+
+  - when 'album_plays'
+    .up
+      .media-right
+        = link_to 'Plays', library_artist_album_plays_path
+
+- when 'track', 'track_plays'
+  .up
+    .media-left
+      = image_tag @track.artist.artist_image
+    .media-right
+      = link_to @track.artist.name, library_artist_path
+  .up
+    .media-right
+      = link_to 'Tracks', library_artist_tracks_path
+  .up
+    .media-right
+      = link_to @track.track.title, library_artist_track_path
+
+  - case params[:action]
+
+  - when 'track_plays'
+    .up
+      .media-right
+        = link_to 'Plays', library_artist_track_plays_path

@@ -1,2 +1,5 @@
-$('#tracks').html("<%= j render partial: 'profile_track', collection: @tracks %>")
-$('#tracks_scope').html("<%= j render 'sort_scope_label' %>")
+$('#top_tracks_scope').html("<%= j render 'library/tracks_scope' %>")
+<% unless params[:default] %>
+  $('#top_tracks').html("<%= j render 'library/partials/tracks' %>")
+<% end %>
+$('.dropdown.open .dropdown-toggle').dropdown('toggle');
