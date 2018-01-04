@@ -26,7 +26,8 @@ $(document).on('turbolinks:load', function() {
 
 $(document).on('turbolinks:load', function() {
   if ($("#player").css("display") == 'block') {
-    $('#footer').css('height','185px')
+    $('#footer').css('height','205px')
+    $('#progress_bars').css('bottom','65px')
   }
 });
 

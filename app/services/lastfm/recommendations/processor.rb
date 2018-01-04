@@ -22,7 +22,7 @@ module Lastfm
       end
 
       def artist
-        Artist.where(
+        ::Artist.where(
           name: @args.similar_artist['name']
         ).first_or_initialize.tap { |h| artist_params(h) }
       end

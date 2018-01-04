@@ -15,9 +15,9 @@
 			= render "layouts/upbar/#{params[:controller]}" unless params[:controller] == 'sessions'
 		- if logged_in?
 			= render 'layouts/sidebar'
-			= render 'layouts/progress_bar'
 			= render 'player/playing_now'
 		.container-fluid
+			= render 'layouts/progress_bar'
 			%canvas#canvas{data: {turbolinks: {permanent: true}}}
 			= yield
 		= render 'player/player'
