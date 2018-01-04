@@ -1,6 +1,6 @@
 $('#recommendation_query').html("<%= j render 'query' %>")
 $('#recommendations').html("<%= j render 'recommendations' %>")
-$('.search_results_loading').hide()
+$('#loading').hide()
 $('#upbar').html("<%= j render 'layouts/upbar/recommendations' %>")
 
 <% if %i[artist tag days].any? { |key| params[key].present? } %>

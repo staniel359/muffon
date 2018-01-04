@@ -54,10 +54,8 @@
                 %h5
                   = link_to profile_artist.artist.name, library_artist_path(id: current_profile.id, name: profile_artist.artist.name)
                 %h5.text-muted
-                  - if params[:days].present?
-                    = "#{pluralize(profile_artist.days_playcount(params[:days]), 'play')}"
-                  - else
-                    = "#{pluralize(profile_artist.playcount, 'play')}"
+                  = "#{pluralize(profile_artist.playcount, 'play')}"
 
-        - if recommendation.profile_artists.length > 5
+      - if recommendation.profile_artists.length > 5
+        .text-right
           = link_to "and #{pluralize((recommendation.profile_artists.length - 5), 'more artist')}...", '#'

@@ -24,9 +24,6 @@
   .separator.sep_0.sep_light
 
   #recommendation_search_results.relative
-    .search_results_loading{hidden: true}
-      = fa_icon 'circle-o-notch spin 2x'
-
     #recommendation_query
       = render 'query'
 
@@ -38,5 +35,5 @@
     $('#recommendation_filter_panel').slideToggle('100')
   };
   $('#recommendation_filter_content > form').submit(function() {
-    $('.search_results_loading').show()
+    $('#loading').show()
   });

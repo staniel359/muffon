@@ -7,7 +7,7 @@
 default: &default
   adapter: postgresql
   encoding: utf8
-  pool: 50
+  pool: 75
   timeout: 5000
   database: muffon
   user: muffon
