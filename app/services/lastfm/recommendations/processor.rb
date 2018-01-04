@@ -10,8 +10,9 @@ module Lastfm
       def process_recommendation
         recommendation.tap do |h|
           h.profile_artists |= [@args.profile_artist_id]
-          h.tags |= tags
-        end.save
+          h.tags = tags
+          h.save
+        end
       end
 
       def recommendation

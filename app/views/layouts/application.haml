@@ -4,7 +4,7 @@
 		%title= "muffon | #{@title}"
 		= csrf_meta_tags
 		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-		= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Noto Sans'
+		= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Open Sans'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 		= action_cable_meta_tag
 
@@ -17,7 +17,7 @@
 			= render 'layouts/sidebar'
 			= render 'player/playing_now'
 		.container-fluid
-			= render 'layouts/progress_bar'
+			= render 'layouts/progress_bar' if logged_in?
 			%canvas#canvas{data: {turbolinks: {permanent: true}}}
 			= yield
 		= render 'player/player'

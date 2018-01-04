@@ -6,14 +6,14 @@ class Recommendation < ApplicationRecord
 
   default_scope { order('array_length(profile_artists, 1) desc') }
 
-  def recommendation_tags
-    Tag.where(id: tags)
-  end
-
   def artists(days, limit)
     Recommendations::RecommendationArtists.call(
       profile_artists: profile_artists,
       days: days, limit: limit
     )
+  end
+
+  def recommendation_tags
+    Tag.find(tags)
   end
 end

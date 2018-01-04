@@ -14,7 +14,7 @@
         = link_to recommendation.artist.name, artist_path(recommendation.artist.name)
 
       #recommendation_tags.mg_btm_5
-        - recommendation.recommendation_tags.first(5).map do |tag|
+        - recommendation.artist.artist_tags.map do |tag|
 
           .recommendation_tag.inline
             = link_to tag.name, recommendations_path(tag: tag.name), class: 'btn btn-primary btn-sm tag'

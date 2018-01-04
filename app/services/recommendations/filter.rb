@@ -7,31 +7,18 @@ module Recommendations
   private
 
     def process_recommendations
-      Kaminari.paginate_array(sorted_recommendations)
-    end
-
-    def sorted_recommendations
-      recommendations.sort_by do |rec|
-        rec.profile_artists.length
-      end.reverse
+      Kaminari.paginate_array(recommendations)
     end
 
     def recommendations
       filtered_recommendations.each do |rec|
         rec.profile_artists &= profile_artist_ids if scoped_artists?
-      end
+      end.sort_by { |r| r.profile_artists.length }.reverse
     end
 
     def filtered_recommendations
-      @profile.recommendations.where(
-        artist_query
-      ).where(
-        tag_query
-      ).where(
-        days_query
-      ).where(
-        deleted: nil
-      )
+      @profile.recommendations.where(artist_query)
+        .where(tag_query).where(days_query).where(deleted: nil)
     end
 
     def artist_query
@@ -42,8 +29,7 @@ module Recommendations
 
     def profile_artist_id
       @profile.profile_artists.joins(:artist).find_by(
-        'lower(artists.name) = lower(?)',
-        @args.params[:artist]
+        'lower(artists.name) = lower(?)', @args.params[:artist]
       )&.id.to_i
     end
 
@@ -55,8 +41,7 @@ module Recommendations
 
     def tag_id
       Tag.find_by(
-        'lower(name) = lower(?)',
-        @args.params[:tag]
+        'lower(name) = lower(?)', @args.params[:tag]
       )&.id.to_i
     end
 
@@ -68,8 +53,7 @@ module Recommendations
 
     def profile_artist_ids
       @profile_artist_ids ||= @profile.plays.where(
-        'created_at > ?',
-        @args.params[:days].to_i.days.ago
+        'created_at > ?', @args.params[:days].to_i.days.ago
       ).pluck(:profile_artist_id).uniq
     end
 

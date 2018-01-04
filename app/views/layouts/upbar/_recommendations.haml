@@ -8,17 +8,28 @@
 - if params[:artist].present?
   .up
     - artist = Artist.find_by('lower(name) = lower(?)', CGI.unescape(params[:artist]))
-    .media-left
-      = image_tag artist.artist_image, class: 'img_30'
-    .media-right
-      = link_to artist.name, recommendations_path(artist: artist.name)
+    - if artist.present?
+      .media-left
+        = image_tag artist.artist_image, class: 'img_30'
+      .media-right
+        = link_to artist.name, recommendations_path(artist: artist.name)
+    - else
+      .media-left
+        = image_tag 'missing_artist.png', class: 'img_30'
+      .media-right
+        = params[:artist]
 
 - if params[:tag].present?
   .up
     - tag = Tag.find_by_name(CGI.unescape(params[:tag]))
-    .media-right
-      = fa_icon 'tag'
-      = link_to tag.name, recommendations_path(tag: tag.name)
+    - if tag.present?
+      .media-right
+        = fa_icon 'tag'
+        = link_to tag.name, recommendations_path(tag: tag.name)
+    - else
+      .media-right
+        = fa_icon 'tag'
+        = params[:tag]
 
 - if params[:days].present?
   .up

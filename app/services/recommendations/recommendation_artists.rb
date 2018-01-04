@@ -17,12 +17,11 @@ module Recommendations
     end
 
     def scoped_artists
-      artists.joins(:plays).reorder(
-        'count(profile_artists.id) desc'
-      ).where(
-        'plays.created_at > ?',
-        @args.days.to_i.days.ago
-      ).group('profile_artists.id')
+      artists.joins(:plays).where(
+        'plays.created_at > ?', @args.days.to_i.days.ago
+      ).group('profile_artists.id').select(
+        'profile_artists.*, count(*) as playcount'
+      ).reorder('count(*) desc')
     end
   end
 end
