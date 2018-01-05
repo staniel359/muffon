@@ -11,8 +11,8 @@ module Recommendations
     end
 
     def artists
-      ProfileArtist.includes(:artist).find(
-        @args.profile_artists.first(@args.limit)
+      ProfileArtist.includes(:artist).where(
+        id: @args.profile_artists.first(@args.limit)
       )
     end
 
