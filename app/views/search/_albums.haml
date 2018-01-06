@@ -1,22 +1,36 @@
 - if params[:action] == 'album'
+
   %h4
     Search results for
     %strong= "\"#{params[:q]}\""
+
   %br
 
-%h4.search_header
+%h4
   %strong
-    = link_to 'Albums:', search_album_path(q: params[:q])
+    = link_to 'Albums:', search_albums_path(q: params[:q])
 
 .separator.sep_10.sep_default
 
-.panel_content_wide
-  - @albums.map do |album|
-    .album.album_170
-      = link_to artist_album_path(name: (album['artist'].include?('/') ? CGI.escape(album['artist']) : album['artist']), title: (album['name'].include?('/') ? CGI.escape(album['name']) : album['name'])) do
-        = image_tag (album['image'][2]['#text'].present? ? album['image'][2]['#text'] : 'missing_album.png')
-        %h4
-          %strong= album['name']
-        %h5= album['artist']
-.text_right
-  = link_to 'View more...', search_album_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+- if @albums.present?
+
+  .panel_content_wide
+
+    - @albums.map do |album|
+
+      .album.album_170.mg_btm_10
+        = link_to artist_album_path(name: album.artist.artist_name, title: album.album_title) do
+          = image_tag album.album_cover
+          %h4
+            %strong
+              = album.title
+          %h5
+            = album.artist.name
+
+  .text_right
+    = link_to 'View more...', search_albums_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+
+- else
+
+  %h5
+    Nothing was found.

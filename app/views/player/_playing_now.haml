@@ -16,6 +16,10 @@
 
   .panel_content
 
+    = button_to clear_queue_path, class: 'inv_btn pull-right', method: :delete, remote: true do
+      = fa_icon 'times'
+      Clear
+
     %h4 In queue:
 
     .separator.sep_10.sep_default

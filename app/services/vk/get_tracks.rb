@@ -11,13 +11,8 @@ module VK
     end
 
     def tracks
-      @tracks ||= page(
-        query_string(
-          artist_name, track_title
-        )
-      ).css('.audio_row').select do |track|
-        matched_track(track)
-      end
+      @tracks ||= page(query_string(artist_name, track_title))
+        .css('.audio_row').select { |track| matched_track(track) }
     end
 
     def page(query)

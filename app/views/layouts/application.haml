@@ -12,20 +12,13 @@
 		#loading{hidden: true}
 			= fa_icon 'circle-o-notch spin 2x'
 		#upbar
-			= render "layouts/upbar/#{params[:controller]}" unless params[:controller] == 'sessions'
+			= render "layouts/upbar/#{params[:controller]}"
 		- if logged_in?
 			= render 'layouts/sidebar'
 			= render 'player/playing_now'
 		.container-fluid
+			= render 'layouts/scroll_top_btn'
 			= render 'layouts/progress_bar' if logged_in?
-			%canvas#canvas{data: {turbolinks: {permanent: true}}}
 			= yield
 		= render 'player/player'
 		= render 'layouts/footer'
-
-:javascript
-	$(function() {
-	  $('[data-toggle="tooltip"]').tooltip({
-	    trigger: 'hover'
-	  })
-	});

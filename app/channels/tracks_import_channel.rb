@@ -1,6 +1,6 @@
 class TracksImportChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "tracks_import_#{current_user.id}"
+    stream_from "tracks_import_#{current_profile.id}"
   end
 
   def unsubscribed

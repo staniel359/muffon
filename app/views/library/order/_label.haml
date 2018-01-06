@@ -1,0 +1,14 @@
+= fa_icon 'sort-amount-desc'
+
+- if params[:order]
+	- if params[:order] == '1'
+		Most played
+	- if params[:order] == '2'
+		Least played
+	- if params[:order] == '3'
+		Newest
+	- if params[:order] == '4'
+		Oldest
+- else
+	Most played
+.caret

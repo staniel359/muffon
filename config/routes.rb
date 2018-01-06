@@ -18,12 +18,10 @@ Rails.application.routes.draw do
     scope 'library' do
       get '/', to: 'library#show', as: 'library'
 
-      get '/artists_scope', to: 'library#artists_scope', as: 'artists_scope'
-      patch '/artists_scope', to: 'library#artists_scope', as: 'artists_default_scope'
-      get '/albums_scope', to: 'library#albums_scope', as: 'albums_scope'
-      patch '/albums_scope', to: 'library#albums_scope', as: 'albums_default_scope'
-      get '/tracks_scope', to: 'library#tracks_scope', as: 'tracks_scope'
-      patch '/tracks_scope', to: 'library#tracks_scope', as: 'tracks_default_scope'
+      get 'search', to: 'library#search', as: 'library_search'
+
+      get '/library_scope', to: 'library#library_scope', as: 'library_scope'
+      patch '/library_default_scope', to: 'library#library_default_scope', as: 'library_default_scope'
 
       scope '/artists/:name', constraints: { name: /[^\/]+/ } do
         get '/', to: 'library_artists#show', as: 'library_artist'
@@ -35,6 +33,7 @@ Rails.application.routes.draw do
         get '/albums/:title/plays', to: 'library_artists#album_plays', as: 'library_artist_album_plays', constraints: { title: /[^\/]+/ }
         get '/plays', to: 'library_artists#plays', as: 'library_artist_plays'
       end
+      post '/artists/:artist_id', to: 'library_artists#create', as: 'create_library_artist'
 
       get '/artists', to: 'library#artists', as: 'library_artists'
       get '/albums', to: 'library#albums', as: 'library_albums'
@@ -42,24 +41,29 @@ Rails.application.routes.draw do
       get '/plays', to: 'library#plays', as: 'library_plays'
       
       scope '/tags' do
-        get '/', to: 'tags#index', as: 'library_tags'
-        get '/:name', to: 'tags#show', as: 'library_tag'
-        get '/:name/artists', to: 'tags#artists', as: 'library_artists_tag'
-        get '/:name/albums', to: 'tags#albums', as: 'library_albums_tag'
-        get '/:name/tracks', to: 'tags#tracks', as: 'library_tracks_tag'
+        get '/', to: 'library_tags#index', as: 'library_tags'
+        get '/:name', to: 'library_tags#show', as: 'library_tag'
+        get '/:name/artists', to: 'library_tags#artists', as: 'library_artists_tag'
+        get '/:name/albums', to: 'library_tags#albums', as: 'library_albums_tag'
+        get '/:name/tracks', to: 'library_tags#tracks', as: 'library_tracks_tag'
       end
     end
 
     resources :playlists, param: 'playlist_name'
+    get '/show_playlists', to: 'playlists#show_playlists', as: 'show_playlists'
+    post '/tracks/:track_id/add_track_to_playlists', to: 'playlist_tracks#add_track_to_playlists', as: 'add_track_to_playlists'
+
     scope '/playlists/:playlist_name' do
-      post '/tracks/:profile_track_id', to: 'playlist_tracks#add_track', as: 'playlist_add_track'
-      delete '/tracks/:playlist_track_id', to: 'playlist_tracks#delete_track', as: 'playlist_delete_track'
+      post '/tracks/:profile_track_id', to: 'playlist_tracks#add_profile_track', as: 'playlist_add_profile_track'
+      post '/tracks/:track_id', to: 'playlist_tracks#add_track', as: 'playlist_add_track'
+      delete '/tracks/:track_id', to: 'playlist_tracks#delete_track', as: 'playlist_delete_track'
 
-      post '/artists/:profile_artist_id', to: 'playlist_tracks#add_artist', as: 'playlist_add_artist'
-      delete '/artists/:playlist_artist_id', to: 'playlist_tracks#delete_artist', as: 'playlist_delete_artist'
+      post '/artists/:profile_artist_id', to: 'playlist_tracks#add_profile_artist', as: 'playlist_add_profile_artist'
+      delete '/artists/:artist_id', to: 'playlist_tracks#delete_artist', as: 'playlist_delete_artist'
 
-      post '/albums/:profile_album_id', to: 'playlist_tracks#add_album', as: 'playlist_add_album'
-      delete '/albums/:playlist_album_id', to: 'playlist_tracks#delete_album', as: 'playlist_delete_album'
+      post '/albums/:profile_album_id', to: 'playlist_tracks#add_profile_album', as: 'playlist_add_profile_album'
+      post '/albums/:album_id', to: 'playlist_tracks#add_album', as: 'playlist_add_album'
+      delete '/albums/:album_id', to: 'playlist_tracks#delete_album', as: 'playlist_delete_album'
 
       get '/search', to: 'playlist_tracks#search', as: 'playlist_search'
       get '/search/artists/:profile_artist_id/tracks', to: 'playlist_tracks#show_artist_tracks', as: 'playlist_search_artist_tracks'
@@ -77,11 +81,25 @@ Rails.application.routes.draw do
 
   scope '/artists/:name' do
     get '/', to: 'artists#show', as: 'artist', constraints: { name: /[^\/]+/ }
+    get '/images', to: 'artists#images', as: 'artist_images', constraints: { name: /[^\/]+/ }
     get '/tracks', to: 'artists#tracks', as: 'artist_tracks', constraints: { name: /[^\/]+/ }
     get '/albums', to: 'artists#albums', as: 'artist_albums', constraints: { name: /[^\/]+/ }
     get '/albums/:title', to: 'artists#album', as: 'artist_album', constraints: { name: /[^\/]+/, title: /[^\/]+/ }
+    get '/albums/:title/tags', to: 'artists#album_tags', as: 'artist_album_tags', constraints: { name: /[^\/]+/, title: /[^\/]+/ }
     get '/similar', to: 'artists#similar_artists', as: 'artist_similar_artists'
+    get '/wiki', to: 'artists#wiki', as: 'artist_wiki'
+    get '/tags', to: 'artists#tags', as: 'artist_tags'
+
+    get '/listeners', to: 'artists#listeners', as: 'artist_listeners'
+    get '/plays', to: 'artists#plays', as: 'artist_plays'
   end
+
+  resources :tags, only: %i[index show], param: :name
+  get '/tags/:name/artists', to: 'tags#artists', as: 'tag_artists'
+  get '/tags/:name/albums', to: 'tags#albums', as: 'tag_albums'
+  get '/tags/:name/tracks', to: 'tags#tracks', as: 'tag_tracks'
+
+  resources :labels, only: :show, param: :name
 
   resources :groups, param: :group_id
 
@@ -106,17 +124,18 @@ Rails.application.routes.draw do
   get '/player', to: 'muffon#player'
 
   get '/play', to: 'player#play'
-  get '/delete_playing_now', to: 'player#delete_playing_now'
+  get '/stop', to: 'player#stop'
+  get '/watch_on_youtube', to: 'player#watch_on_youtube'
   get '/send_to_queue', to: 'player#send_to_queue'
-  get '/delete_from_queue', to: 'player#delete_from_queue'
-  get '/clear_queue', to: 'player#clear_queue'
+  delete '/delete_from_queue', to: 'player#delete_from_queue'
+  delete '/clear_queue', to: 'player#clear_queue'
   patch '/confirm_track', to: 'player#confirm_track'
 
   scope '/search' do
     get '/', to: 'search#search', as: 'search'
-    get '/artist', to: 'search#artist', as: 'search_artist'
-    get '/album', to: 'search#album', as: 'search_album'
-    get '/track', to: 'search#track', as: 'search_track'
+    get '/artist', to: 'search#artists', as: 'search_artists'
+    get '/album', to: 'search#albums', as: 'search_albums'
+    get '/track', to: 'search#tracks', as: 'search_tracks'
   end
 
   get '/recommendations', to: 'recommendations#index'

@@ -1,0 +1,18 @@
+#artist_listeners_page.artist_page.panel.center
+  
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+
+    %h4 Listeners:
+
+    .separator.sep_10.sep_default
+
+    %table.table.table-hover
+
+      = render partial: 'listener', collection: @listeners
+
+    .text_center
+      = paginate @listeners

@@ -28,7 +28,7 @@ module Lastfm
 
       def process_artist(id)
         RecommendationArtistProcessorWorker.perform_async(
-          id, @profile.id
+          id, @profile.id, 'base'
         )
       end
 

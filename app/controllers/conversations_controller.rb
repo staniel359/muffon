@@ -11,10 +11,10 @@ class ConversationsController < ApplicationController
   def show
     read_new_messages
 
-    @messages = @conversation.messages.order('created_at desc')
+    @messages = @conversation.messages.order('created_at asc')
     @message = current_profile.messages.new
     @other_member = @conversation.other_member(current_profile.id)
-    @title = "Conversation with #{@other_member.nickname}"
+    @title = "Conversation with #{@other_member&.nickname || 'Deleted Profile'}"
   end
 
 private

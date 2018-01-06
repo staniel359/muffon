@@ -1,0 +1,48 @@
+#library_search_artists
+
+  %h4 Artists:
+
+  .separator.sep_10.sep_default
+
+  - if @artists.any?
+
+    .panel_content_wide
+      = render partial: 'library/partials/artist', collection: @artists.first(4)
+
+  - else
+
+    %h5 Nothing was found.
+
+%hr.sep_10
+
+#library_search_albums
+
+  %h4 Albums:
+
+  .separator.sep_10.sep_default
+
+  - if @albums.any?
+
+    .panel_content_wide
+      = render partial: 'library/partials/album', collection: @albums.first(4)
+
+  - else
+
+    %h5 Nothing was found.
+
+%hr.sep_10
+
+#library_search_tracks
+  
+  %h4 Tracks:
+
+  .separator.sep_10.sep_default
+
+  - if @tracks.any?
+
+    %table.table.table-hover.table-condensed
+      = render partial: 'library/partials/track', collection: @tracks.first(10)
+
+  - else
+
+    %h5 Nothing was found.

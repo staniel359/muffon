@@ -14,9 +14,9 @@ class SearchController < ApplicationController
     end
   end
 
-  def artist
+  def artists
     @title = 'Search for artist'
-    @artists = params[:q].present? ? search_for('artist', 20) : []
+    @artists = params[:q].present? ? search_for('artists', 20) : []
 
     respond_to do |format|
       format.html
@@ -24,9 +24,9 @@ class SearchController < ApplicationController
     end
   end
 
-  def album
+  def albums
     @title = 'Search for album'
-    @albums = params[:q].present? ? search_for('album', 20) : []
+    @albums = params[:q].present? ? search_for('albums', 20) : []
 
     respond_to do |format|
       format.html
@@ -34,9 +34,9 @@ class SearchController < ApplicationController
     end
   end
 
-  def track
+  def tracks
     @title = 'Search for track'
-    @tracks = params[:q].present? ? search_for('track', 50) : []
+    @tracks = params[:q].present? ? search_for('tracks', 50) : []
 
     respond_to do |format|
       format.html
@@ -47,20 +47,14 @@ class SearchController < ApplicationController
 private
 
   def search_on_lastfm
-    @artists = search_for('artist', 4)
-    @albums = search_for('album', 4)
-    @tracks = search_for('track', 10)
+    @artists = search_for('artists', 4)
+    @albums = search_for('albums', 5).first(4)
+    @tracks = search_for('tracks', 10)
   end
 
   def search_for(model, limit)
-    JSON.parse(
-      RestClient.get(
-        'http://ws.audioscrobbler.com/2.0/'\
-        "?method=#{model}.search&#{model}=#{CGI.escape(params[:q])}"\
-        "&limit=#{limit}&api_key=#{ENV['LASTFM_KEY']}&format=json"
-      )
-    )['results']["#{model}matches"][model.to_s].sort_by do |m|
-      m['listeners'].to_i
-    end.reverse
+    "Lastfm::Search::#{model.capitalize}".constantize.call(
+      q: params[:q], limit: limit
+    )
   end
 end

@@ -25,15 +25,3 @@
 
     .submit_btn.text_right
       = f.submit 'Create an account', class: 'btn btn-primary'
-
-:javascript
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#img_preview').attr('src', e.target.result).width(110);
-        $('#profile_remote_avatar_url').remove();
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }

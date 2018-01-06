@@ -13,7 +13,17 @@
   
   - when 'show'
     .up
-      .media-left
-        = link_to image_tag(@other_member.avatar.url(:sm)), @other_member
-      .media-right
-        = link_to @other_member.nickname, @other_member
+
+      - if @other_member.present?
+
+        .media-left
+          = link_to image_tag(@other_member.avatar.url(:sm)), @other_member
+        .media-right
+          = link_to @other_member.nickname, @other_member
+
+      - else
+
+        .media-left
+          = image_tag 'xs_avatar_default'
+        .media-right
+          Deleted profile

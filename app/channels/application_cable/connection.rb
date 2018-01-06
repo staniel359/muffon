@@ -1,16 +1,15 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :current_user
+    identified_by :current_profile
 
     def connect
-      self.current_user = find_verified_user
+      self.current_profile = profile
     end
 
-  protected
+  private
 
-    def find_verified_user
-      current_user = Profile.find_by(id: cookies.signed[:profile_id])
-      current_user ? current_user : reject_unauthorized_connection
+    def profile
+      @profile = Profile.find_by(id: cookies.signed[:profile_id])
     end
   end
 end

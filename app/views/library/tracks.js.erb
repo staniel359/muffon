@@ -1,7 +1,10 @@
-$('#tracks').html("<%= j render 'library/partials/tracks' %>")
+$('#top_tracks').html("<%= j render 'library/partials/tracks' %>")
 $('#tracks_paginate').html("<%= j paginate @tracks %>")
-$('#tracks_scope').html("<%= j render 'library/partials/order_label' %>")
+
+$('#top_tracks_scope').html("<%= j render 'library/scope/tracks' %>")
+$('#top_tracks_order').html("<%= j render 'library/order/tracks' %>")
+
 $('.dropdown.open .dropdown-toggle').dropdown('toggle')
 
-url = "<%= '?order=' + params[:order]%><%= '&page=' + params[:page] if params[:page] %>".replace('amp;', '')
+url = "<%= library_tracks_path(order: params[:order], page: params[:page], scope: params[:scope]) %>".replace('amp;', '')
 window.history.pushState({turbolinks: true, url: url}, '', url)

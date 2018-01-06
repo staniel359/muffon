@@ -1,18 +1,20 @@
+%h4 Playing now:
+
+.separator.sep_10.sep_default
+
 - if profile_playing_now_track.present?
 
-  .panel_content
+  .media-left.mid_align
+    = image_tag profile_playing_now_track.artist.artist_image, class: 'img_50 img_rnd'
 
-    %h4 Playing now:
+  .media-body.mid_align
 
-    .separator.sep_10.sep_default
+    %h4
+      %strong
+        = link_to profile_playing_now_track.title, '#'
+    %h5
+      = link_to profile_playing_now_track.artist.name, artist_path(name: profile_playing_now_track.artist.artist_name)
 
-    #profile_page_playing_now_track
-    
-      .media-left.mid_align
-        = image_tag profile_playing_now_track.artist.artist_image, class: 'img_50 img_rnd'
-      .media-body.mid_align
-        %h4
-          %strong
-            = profile_playing_now_track.title
-        %h5
-          = profile_playing_now_track.artist.name
+- else
+
+  Nothing is playing now.

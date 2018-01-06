@@ -1,15 +1,15 @@
 - if artist.bookmarked_by?(current_profile)
 
-  .artist_bookmark_content.full_height{style: 'background-color: #392d50'}
-    .artist_bookmarked.absolute
-      = button_to bookmark_path(id: current_profile.bookmarks.find_by(artist_id: artist.id), artist_id: artist.id), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Bookmarked", class: 'inv_btn' do
+  .full_height{style: 'background-color: #392d50'}
+    #unbookmark_artist_btn
+      = button_to bookmark_path(id: current_profile.bookmarks.find_by(artist_id: artist.id), artist_id: artist.id), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Bookmarked", class: 'inv_btn_no_hover' do
         = fa_icon 'bookmark'
 
 - else
 
-  .artist_bookmark_content.full_height
-    .bookmark_artist.absolute
-      = button_to bookmarks_path(is: 'artist', artist_id: artist.id), method: :post, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Add to bookmarks", class: 'inv_btn no_padding' do
-        .plus_small.inline
-          = fa_icon 'plus'
+  .full_height
+    #bookmark_artist_btn
+      = button_to bookmarks_path(is: 'artist', artist_id: artist.id), method: :post, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Add to bookmarks", class: 'inv_btn' do
         = fa_icon 'bookmark'
+        -# .plus_small.inline
+        -#   = fa_icon 'plus'

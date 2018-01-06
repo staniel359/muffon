@@ -1,37 +1,63 @@
 .up#logo
   = link_to 'muffon', root_path
 
-- case params[:action]
+- if params[:action].in?(%w[show albums album album_tags tracks similar_artists wiki tags listeners plays images])
 
-- when 'show', 'albums', 'album', 'tracks', 'similar_artists'
   .up
     .media-left
       = image_tag @artist.artist_image
     .media-right
       = link_to @artist.name, artist_path
 
-  - case params[:action]
+  - if params[:action].in?(%w[albums album album_tags])
 
-  - when 'albums', 'album'
     .up
       .media-right
         = link_to 'Albums', artist_albums_path
 
-    - case params[:action]
-
-    - when 'album'
+    - if params[:action].in?(%w[album album_tags])
       .up
         .media-left
           = image_tag @album.album_cover
         .media-right
           = link_to @album.title, artist_album_path
 
-  - when 'tracks'
+      - if params[:action] == 'album_tags'
+        .up
+          .media-right
+            = link_to 'Tags', artist_album_tags_path
+
+  - if params[:action] == 'tracks'
     .up
       .media-right
         = link_to 'Tracks', artist_tracks_path
 
-  - when 'similar_artists'
+  - if params[:action] == 'similar_artists'
     .up
       .media-right
         = link_to 'Similar artists', artist_similar_artists_path
+
+  - if params[:action] == 'wiki'
+    .up
+      .media-right
+        = link_to 'Wiki', artist_wiki_path
+
+  - if params[:action] == 'tags'
+    .up
+      .media-right
+        = link_to 'Tags', artist_tags_path
+
+  - if params[:action] == 'listeners'
+    .up
+      .media-right
+        = link_to 'Listeners', artist_listeners_path
+
+  - if params[:action] == 'plays'
+    .up
+      .media-right
+        = link_to 'Plays', artist_plays_path
+
+  - if params[:action] == 'images'
+    .up
+      .media-right
+        = link_to 'Images', artist_images_path

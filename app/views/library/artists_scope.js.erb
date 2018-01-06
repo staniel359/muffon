@@ -1,5 +1,0 @@
-$('#top_artists_scope').html("<%= j render 'library/artists_scope' %>")
-<% unless params[:default] %>
-  $('#top_artists').html("<%= j render 'library/partials/artists' %>")
-<% end %>
-$('.dropdown.open .dropdown-toggle').dropdown('toggle');

@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'actionpack-action_caching'
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'carrierwave'
@@ -18,12 +17,12 @@ gem 'jquery-ui-rails'
 gem 'listen'
 gem 'kaminari', github: 'kaminari'
 gem 'mini_magick'
+gem 'nokogiri'
 gem 'omniauth'
 gem 'omniauth-lastfm'
-gem 'pg'
+gem 'pg', '0.21'
 gem 'puma'
 gem 'rails'
-gem 'rails-controller-testing'
 gem 'redis'
 gem 'remotipart'
 gem 'rest-client'

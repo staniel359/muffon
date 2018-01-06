@@ -3,8 +3,8 @@
   .media-left.mid_align
     = image_tag playing_now_track.artist.artist_image, class: 'img_rnd img_30'
   .media-body.mid_align
-    .pull-right.mg_top_5
-      = button_to delete_playing_now_path, class: 'inv_btn', method: :get, remote: true do
+    .pull-right
+      = button_to stop_path, class: 'inv_btn', method: :get, remote: true do
         = fa_icon 'times'
     %h5
       = link_to CGI.unescape(playing_now_track.title), '#'

@@ -1,0 +1,21 @@
+#album_tags_page.artist_page.panel.center
+  .panel_header
+    %h3
+      .media-left.mid_align
+        = image_tag @album.album_cover, class: 'img_50'
+      .media-right.mid_align
+        %h4
+          = link_to @album.title, artist_album_path
+        %h5
+          = link_to @artist.name, artist_path
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+
+    %h4 Tags:
+
+    .separator.sep_10.sep_default
+
+    - @tags.map do |tag|
+      = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag'

@@ -1,5 +1,13 @@
 - if @albums.any?
+
   .panel_content_wide
     = render partial: 'library/partials/album', collection: @albums
+
+  - unless params[:action] == 'albums'
+    .text_right
+      = link_to 'View more...', library_albums_path(scope: params[:scope]), class: 'btn btn-primary btn-sm'
+
 - else
-  = (current_profile?(@profile) ? "You haven't" : "#{@profile.nickname} hasn't") + ' listened to any albums during that period.'
+
+  .text_left
+    = (current_profile?(@profile) ? "You haven't" : "#{@profile.nickname} hasn't") + ' listened to any albums during that period.'

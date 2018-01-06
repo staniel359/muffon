@@ -1,0 +1,10 @@
+.artist.artist_170.mg_btm_10
+  .mg_btm_5
+    = link_to artist_path(name: artist.artist_name) do
+      = image_tag artist.artist_image, class: 'img_rnd'
+      %h4
+        %strong
+          = artist.name
+  %h5.inline.mg_btm_5
+    = fa_icon 'user'
+    = number_with_delimiter(artist.listeners)

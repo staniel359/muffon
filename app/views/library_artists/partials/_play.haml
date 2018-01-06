@@ -1,19 +1,31 @@
 %tr
-  %td{id: "track_#{play.track.id}", class: ('list_playing_now_track' if playing_now_track&.id == play.track.id)}
+  %td{id: "track_#{play.track.id}", class: ('list_playing_now_track' if playing_now_track_id == play.track.id)}
+
     .media-left
-      .list_play_button{class: ('play_button' unless %w[album album_plays].include?(params[:action]))}
-        = render 'player/get_track_button', track: play.track
+
+      .list_play_button.no_padding{class: ('play_button' unless %w[album album_plays].include?(params[:action]))}
+
+        - if playing_now_track_id == play.track.id
+          = render 'player/list_play_button'
+        - else
+          = button_to play_path(artist: @artist.artist.artist_name, track: play.track.track_title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
+            = fa_icon 'play'
+
       - unless %w[album album_plays].include?(params[:action])
-        = image_tag (play.album.present? ? play.album.album_cover : 'missing_album.png'), class: 'img_50'
+        = image_tag (play.album.present? ? play.album.album_cover : 'missing_album.png'), class: 'img_30'
+
     .media-body.mid_align
-      .pull-right
-        = button_to send_to_queue_path(track_ids: [play.track.id]), class: 'btn btn-primary btn-sm play_btn', method: :get, remote: true do
-          = fa_icon 'arrow-right'
-      .created_at.pull-right
-        %h5
-          = l play.created_at, format: "%e %b %Y"
-        %h5.pull-right
-          = l play.created_at, format: "%H:%M"
+
+      .track_options
+
+        .created_at
+          %h6
+            = l play.created_at, format: "%e %b %Y"
+          %h6
+            = l play.created_at, format: "%H:%M"
+
+        = render 'shared/track_dropdown', track: play.track
+
       %h5
         - if play.profile_track.loved?
           = fa_icon 'heart', style: 'color: red'
@@ -21,6 +33,7 @@
           = fa_icon 'heart-o'
         %strong
           = link_to play.track.title, library_artist_track_path(title: play.track.track_title)
+
       - if play.album.present? && %w[album album_plays].exclude?(params[:action])
-        %h5
+        %h5.text-muted
           = link_to play.album.album_title, library_artist_album_path(id: @profile.id, name: play.artist.artist_name, title: play.album.album_title)

@@ -1,10 +1,15 @@
 - if @plays.any?
+
   %table.table.table-hover.table-condensed
     = render partial: 'library/partials/play', collection: @plays
+
+  -unless params[:action] == 'plays'
+    .text_right
+      = link_to "View more...", library_plays_path, class: 'btn btn-primary btn-sm'
+
 - else
-  .havent_listened
-    %h5
-      - if current_profile?(@profile)
-        = "You haven't listened to any tracks during that period."
-      - else
-        = "#{@profile.nickname} hasn't listened to any tracks during that period."
+
+  - if current_profile?(@profile)
+    = "You haven't listened to any tracks during that period."
+  - else
+    = "#{@profile.nickname} hasn't listened to any tracks during that period."

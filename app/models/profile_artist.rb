@@ -10,7 +10,7 @@ class ProfileArtist < ApplicationRecord
   has_many :playlist_tracks
   validates :profile_id, :artist_id, presence: true
 
-  default_scope { order(playcount: :desc) }
+  default_scope { order(playcount: :desc, id: :asc) }
 
   def recommendations
     profile.recommendations.where('? = any(profile_artists)', id)

@@ -1,0 +1,20 @@
+#tooltip_albums
+  - @common_albums.first(6).map do |a|
+
+    .tooltip_common_album
+      = link_to library_artist_album_path(name: a.artist.artist_name, title: a.album.album_title) do
+        .mg_btm_5
+          = image_tag a.album.album_cover, class: 'img_50'
+        %h5
+          %strong
+            = a.album.title
+      %h5
+        = link_to a.artist.name, library_artist_path(name: a.artist.artist_name)
+      %h5
+        = link_to library_artist_album_plays_path(name: a.artist.artist_name, title: a.album.album_title) do
+          = pluralize(a.playcount, 'play')
+
+  - if @common_albums.count > 6
+
+    .text_right
+      = button_tag "and #{@common_albums.count - 6} others...", class: 'btn btn-primary btn-sm'

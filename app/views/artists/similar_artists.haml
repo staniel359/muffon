@@ -1,10 +1,6 @@
 .artist_page#artist_similar_page.panel.center
-  .panel_header
-    %h3
-      .media-left.mid_align
-        = image_tag @artist.artist_image, class: 'img_rnd img_50'
-      .media-right.mid_align
-        = link_to @artist.name, artist_path
+  
+  = render 'panel_header'
 
   .separator.sep_0.sep_light
 

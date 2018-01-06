@@ -1,0 +1,20 @@
+%tr
+  %td{id: "track_#{track.id}", class: ('list_playing_now_track' if playing_now_track_id == track.id)}
+
+    .media-left.mid_align
+
+      .list_play_button.play_button.no_padding
+        - if playing_now_track_id == track.id
+          = render 'player/list_play_button'
+        - else
+          = button_to play_path(artist: track.artist.name, track: track.title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
+            = fa_icon 'play'
+      = image_tag track.artist.artist_image, class: 'img_30'
+
+    .media-body.mid_align
+
+      %h5
+        %strong
+          = track.title
+      %h5
+        = link_to track.artist.artist_name, artist_path(name: track.artist.artist_name)

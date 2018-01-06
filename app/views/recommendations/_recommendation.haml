@@ -17,7 +17,7 @@
         - recommendation.artist.artist_tags.map do |tag|
 
           .recommendation_tag.inline
-            = link_to tag.name, recommendations_path(tag: tag.name), class: 'btn btn-primary btn-sm tag'
+            = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag'
 
       #recommendation_stats
         %h4.inline
@@ -32,8 +32,10 @@
       #recommendation_description
         
         - if recommendation.artist.description.present?
-          = description = recommendation.artist.description.truncate_words(50).split('<a href="https://www.last.fm/music/')[0].html_safe
-          = link_to 'Read more...', '#', class: 'text-muted' if description.split.size == 50
+          - description = recommendation.artist.description.truncate_words(50).split('<a href="https://www.last.fm/music/')[0].html_safe
+          - if description.present?
+            = description
+            = link_to 'Read more...', artist_wiki_path(name: recommendation.artist.name), class: 'inv_btn_no_hover' if description.length > 50
         - else
           .text-muted No description available.
 

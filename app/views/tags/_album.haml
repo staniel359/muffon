@@ -1,0 +1,11 @@
+.album.album_170.mg_btm_20
+  = link_to artist_album_path(name: album.artist.artist_name, title: album.album_title) do
+    = image_tag album.album_cover
+    %h4
+      %strong
+        = album.title
+  %h5.mg_btm_5
+    = link_to album.artist.name, artist_path(name: album.artist.artist_name)
+  %h5
+    = fa_icon 'user'
+    = number_with_delimiter(album.listeners)

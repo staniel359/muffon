@@ -1,0 +1,10 @@
+<% if params[:collection] == 'artists' %>
+  $('#library_top_artists_scope').html("<%= j render 'library/scope/library_artists' %>")
+  $('#top_artists_scope').html("<%= j render 'library/scope/artists' %>")
+<% elsif params[:collection] == 'albums' %>
+  $('#library_top_albums_scope').html("<%= j render 'library/scope/library_albums' %>")
+  $('#top_albums_scope').html("<%= j render 'library/scope/albums' %>")
+<% elsif params[:collection] == 'tracks' %>
+  $('#library_top_tracks_scope').html("<%= j render 'library/scope/library_tracks' %>")
+  $('#top_tracks_scope').html("<%= j render 'library/scope/tracks' %>")
+<% end %>

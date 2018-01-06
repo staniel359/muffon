@@ -10,7 +10,7 @@ module Vk
   private
 
     def retrieve_track
-      return unless link.present?
+      return '' unless link.present?
 
       encoded_values = link.split('=')[1].split('#')
 
@@ -21,7 +21,7 @@ module Vk
     end
 
     def link
-      return nil unless @args.vk_id.present?
+      return unless @args.vk_id.present?
 
       @link ||= RestClient.post(
         'https://vk.com/al_audio.php',

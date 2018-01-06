@@ -1,0 +1,39 @@
+.tag_artist.text_center
+
+  #tag_artist_up.artist.artist_190
+    = render 'artists/actions', artist: artist
+    = link_to artist_path(artist.artist_name) do
+      .mg_btm_5
+        = image_tag artist.artist_image, class: 'img_rnd'
+      %h4.mg_btm_5
+        %strong
+          = artist.name
+
+  #tag_artist_down
+
+    #tag_artist_stats.mg_btm_10
+
+      %h5.inline
+        = fa_icon 'user'
+        = number_with_delimiter(artist.listeners)
+      %h5.inline
+        = fa_icon 'music'
+        = number_with_delimiter(artist.playcount)
+
+    #tag_artist_tags.mg_btm_5
+      - artist.artist_tags.first(5).each do |tag|
+        = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag mg_btm_5'
+
+  %hr.sep_10.sep_default
+
+  #tag_artist_bio
+    - if artist.description.present?
+      - description = artist.description.split('<a href')[0].truncate_words(50).gsub(URI.regexp, '<a href="\0" target="blank">\0</a>').html_safe
+      - if description.present?
+        = description
+      - else
+        .text-muted
+          No description.
+    - else
+      .text-muted
+        No description.

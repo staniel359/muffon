@@ -66,7 +66,7 @@ module Lastfm
 
       def tags
         @tags ||= tag_names.map do |tag_name|
-          Tag.where(name: tag_name.downcase).first_or_create.id
+          ::Tag.where(name: tag_name.downcase).first_or_create.id
         end
       end
 

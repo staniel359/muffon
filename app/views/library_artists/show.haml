@@ -72,8 +72,8 @@
 				.separator.sep_10.sep_default
 
 				%table.table.table-hover.table-condensed
-					= render partial: 'library_artists/partials/play', collection: @plays.first(5)
+					= render partial: 'library_artists/partials/play', collection: @plays.first(10)
 
-				- if @artist.playcount > 5
+				- if @artist.playcount > 10
 					.text_right
 						= link_to 'View more...', library_artist_plays_path, class: 'btn btn-primary btn-sm'

@@ -1,106 +1,163 @@
 #profile_page
 
-	#profile_page_panel.center.panel.panel_content
+  #profile_page_panel.center.panel
 
-		#profile_info_left.media-left
+    #profile_info_panel.panel_content
 
-			#profile_avatar.mg_btm_10
-				= image_tag @profile.avatar.url(:md), class: 'img_rnd'
+      #profile_info_left.media-left
 
-			- if logged_in? && !current_profile?(@profile)
+        #profile_avatar.mg_btm_10
+          = image_tag @profile.avatar.url(:md), class: 'img_rnd'
 
-				#profile_actions.text-center
+        - if logged_in? && !current_profile?(@profile)
 
-					#follow_button.mg_btm_5{id: @profile.id}
-						= render 'relationships/follow_button', profile: @profile
+          #profile_actions.text-center
 
-					= link_to 'Write a message', new_message_path(to: @profile), class: 'btn btn-primary btn-sm'
+            #follow_button.mg_btm_5{id: @profile.id}
+              = render 'relationships/follow_button', profile: @profile
 
-		#profile_info_right.media-right.full_width
+            = link_to 'Write a message', new_message_path(to: @profile), class: 'btn btn-primary btn-sm'
 
-			%h3
-				= @profile.nickname
+      #profile_info_right.media-right.full_width
 
-			.separator.sep_10.sep_light
+        %h3
+          = @profile.nickname
 
-			%h5.inline
-				- if @profile.gender.present?
+        .separator.sep_10.sep_light
 
-					= fa_icon (@profile.gender == 'Male' ? 'male' : 'female')
+        - if @profile.gender.present? || @profile.name.present? || @profile.country.present? || @profile.city.present?
 
-				= @profile.name
+          - if @profile.gender.present?
 
-			%h5.inline
-				= fa_icon 'globe' if @profile.country.present? || @profile.city.present?
-				= @profile.city
-				= @profile.country
+            %h5.inline
+              = fa_icon (@profile.gender == 'Male' ? 'male' : 'female')
 
-			- if @profile.plays.any?
+          - if @profile.name.present?
 
-				%h5
-					Listening since
-					%strong
-						= l @profile.plays.last.created_at, format: '%e %b %Y'
+            %h5.inline
+              = @profile.name
 
-			%h4.mg_top_10
-				.inline
-					= link_to "#{@profile.plays.count} plays", library_plays_path
-				.inline
-					= link_to "#{@profile.profile_tracks.count} tracks", library_tracks_path
-				.inline
-					= link_to "#{@profile.profile_artists.count} artists", library_artists_path
+          - if @profile.country.present? || @profile.city.present?
 
-			- if logged_in? && !current_profile?(@profile)
+            %h5.inline
+              = fa_icon 'globe' 
+              = @profile.city
+              = @profile.country
 
-				.separator.sep_10.sep_default
+        - else
 
-				#profile_common_artists
+          %h5.text-muted.mg_btm_5
 
-					%h5
-						= "You have #{pluralize(@common_artists.count, 'artist')} in common:"
+            No personal information provided.
 
-					- @common_artists.first(5).map do |a|
+        - if @profile.plays.any?
 
-						= a.artist.name
-						= a.count
+          %h5
+            Listening since
+            %strong
+              = l @profile.plays.last.created_at, format: '%e %b %Y'
 
-					- if @common_artists.count > 5
+          .mg_top_10.inline
 
-						and others...
+            .inline
+              = link_to library_plays_path, class: 'btn btn-sm btn-primary' do
+                %strong
+                  = @profile.plays.count
+                = 'play'.pluralize(@profile.plays.count)
 
-	#profile_library_plays.center
+            .inline
+              = link_to library_tracks_path, class: 'btn btn-sm btn-primary' do
+                %strong
+                  = @profile.tracks.count
+                = 'track'.pluralize(@profile.tracks.count)
 
-		#profile_plays_panel.panel.inline.top_align
+            .inline
+              = link_to library_artists_path, class: 'btn btn-sm btn-primary' do
+                %strong
+                  = @profile.artists.count
+                = 'artist'.pluralize(@profile.artists.count)
 
-			#profile_page_playing_now
-				= render 'playing_now_track'
+            .inline
+              = link_to library_path, class: 'btn btn-default btn-sm' do
+                = fa_icon 'music'
+                Go to Library
 
-			%hr.sep_0
+        - if logged_in? && !current_profile?(@profile)
 
-			.panel_content
+          .separator.sep_10.sep_default
+      
+          = render 'common'
 
-				%h4 Recently played:
+    %hr.sep_0
 
-				.separator.sep_10.sep_default
-				
-				= render 'library/partials/plays'
+    %ul.nav.nav-tabs.panel_content
+      %li.active
+        %a{href: '#home', data:{toggle: 'tab'}}
+          %h4
+            Home
+      %li
+        %a{href: '#tops', data:{toggle: 'tab'}}
+          %h4
+            Tops
 
-		#profile_library_panel.panel.inline.top_align
+    %hr.sep_0
 
-			.panel_content
+    .tab-content
 
-				%h4 Top artists:
+      #home.tab-pane.in.active
 
-				.separator.sep_10.sep_default
+        #profile_page_wall_panel.panel_content
 
-				= render 'library/partials/artists'
+          %h4
+            Wall:
 
-			%hr.sep_0
+          .separator.sep_10.sep_default
 
-			.panel_content
+          = current_profile?(@profile) ? "You don't" : "#{@profile.nickname} doesn't"
+          have any posts on the wall yet.
 
-				%h4 Top albums:
+        #profile_page_playing_now_plays_panel.panel_content
 
-				.separator.sep_10.sep_default
+          #profile_page_playing_now_track{id: @profile.id}
 
-				= render 'library/partials/albums'
+            = render 'playing_now_track'
+
+          %hr.sep_20
+
+          #profile_page_plays_panel
+
+            %h4
+              = link_to 'Recently played:', library_plays_path
+
+            .separator.sep_10.sep_default
+            
+            = render 'library/partials/plays'
+
+      #tops.tab-pane.panel_content
+
+        #profile_page_library_panel
+
+          %ul.nav.nav-tabs.mg_btm_20
+            %li.active
+              %a{href: '#artists', data:{toggle: 'tab'}}
+                %h4
+                  Top artists
+            %li
+              %a{href: '#albums', data:{toggle: 'tab'}}
+                %h4
+                  Top albums
+            %li
+              %a{href: '#tracks', data:{toggle: 'tab'}}
+                %h4
+                  Top tracks
+
+          .tab-content
+
+            #artists.tab-pane.in.active
+              = render 'library/partials/artists'
+
+            #albums.tab-pane
+              = render 'library/partials/albums'
+
+            #tracks.tab-pane
+              = render 'library/partials/tracks'

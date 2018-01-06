@@ -1,0 +1,3 @@
+$("iframe").hide().attr('src', '')
+$("#track_<%= params[:track_id] %> > iframe").show().attr('src', "<%= @link %>")
+$("#track_<%= params[:track_id] %> .media-body > iframe").show().attr('src', "<%= @link %>")

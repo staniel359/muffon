@@ -8,9 +8,7 @@ module Lastfm
     private
 
       def process_artist_similars
-        artist_similars[
-          (page.to_i - 1) * @args.limit.to_i, @args.limit.to_i
-        ]
+        artist_similars[(page.to_i - 1) * 15, 15]
       end
 
       def artist_similars

@@ -8,23 +8,33 @@ module Lastfm
     private
 
       def process_albums
-        albums.sort_by do |album|
+        albums.reject { |a| a['name'] == '(null)' }.sort_by do |album|
           album['playcount'].to_i
-        end.reverse
+        end.reverse.map { |a| process_album(a) }
       end
 
       def albums
-        JSON.parse(albums_json)['topalbums']['album']
+        JSON.parse(
+          RestClient.get(
+            'http://ws.audioscrobbler.com/2.0/'\
+            '?method=artist.gettopalbums'\
+            "&artist=#{query_name(@args.name)}"\
+            "&limit=#{@args.limit}&page=#{page}"\
+            "&api_key=#{ENV['LASTFM_KEY']}&format=json"
+          ).body
+        )['topalbums']['album']
       end
 
-      def albums_json
-        RestClient.get(
-          'http://ws.audioscrobbler.com/2.0/'\
-          '?method=artist.gettopalbums'\
-          "&artist=#{query_name(@args.name)}"\
-          "&limit=#{@args.limit}&page=#{page}"\
-          "&api_key=#{ENV['LASTFM_KEY']}&format=json"
-        ).body
+      def process_album(a)
+        ::Album.where(
+          title: a['name'],
+          artist_id: ::Artist.find_by(name: a['artist']['name'])
+        ).first_or_initialize.tap do |h|
+          h.playcount = a['playcount']
+          h.mbid = a['mbid']
+          h.cover = nil || a['image'][3]['#text']
+          h.save
+        end
       end
     end
   end

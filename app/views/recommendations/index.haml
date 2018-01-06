@@ -9,7 +9,7 @@
     .separator.sep_0.sep_light
 
     #recommendation_filter_content
-      = form_tag recommendations_path, method: :get, remote: true do
+      = form_tag recommendations_path, method: :get, remote: true, onsubmit: 'showLoading();' do
         .recommendation_filter.inline
           %h4.mg_btm_5 Artist:
           = text_field_tag :artist, params[:artist], placeholder: "Artist:", class: 'form-control'
@@ -29,11 +29,3 @@
 
     #recommendations
       = render 'recommendations'
-
-:javascript
-  function toggleFilter() {
-    $('#recommendation_filter_panel').slideToggle('100')
-  };
-  $('#recommendation_filter_content > form').submit(function() {
-    $('#loading').show()
-  });

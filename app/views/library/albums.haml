@@ -1,23 +1,32 @@
 #library_albums_panel.panel.library_page.center
-	.panel_header
-		%h3.inline= @title
-		.inline.pull-right
-			.dropdown
-				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
-					#albums_scope
-						= render 'library/partials/order_label'
-				%ul.dropdown-menu.dropdown-menu-right
-					%li= link_to 'Most played', library_albums_path(order: '1', page: (params[:page] if params[:page])), remote: true
-					%li= link_to 'Least played', library_albums_path(order: '2', page: (params[:page] if params[:page])), remote: true
-					%li= link_to 'Newest', library_albums_path(order: '3', page: (params[:page] if params[:page])), remote: true
-					%li= link_to 'Oldest', library_albums_path(order: '4', page: (params[:page] if params[:page])), remote: true
 
-	.separator.sep_0.sep_light
+  .panel_header
 
-	#library_albums_panel_content.panel_content
+    .media-left.mid_align
+      = image_tag @profile.avatar.url(:sm), class: 'img_rnd'
+    .media-right.mid_align
+      %h3
+        = link_to "#{@profile.nickname}'s library", library_path
 
-		#albums
-			= render 'library/partials/albums'
+  .separator.sep_0.sep_light
 
-		#albums_paginate.text_center.mg_top_10
-			= paginate @albums
+  #library_albums_panel_content.panel_content
+
+    .scope_order
+      #top_albums_order.pull-right.inline
+        = render 'library/order/albums'
+      #top_albums_scope.pull-right.inline
+        = render 'library/scope/albums'
+
+    %h4
+      Albums:
+
+    .separator.sep_10.sep_default
+
+    #top_albums
+      = render 'library/partials/albums'
+
+    %hr.sep_10
+
+    #albums_paginate.text_center
+      = paginate @albums

@@ -10,38 +10,38 @@
       .media-right
         = link_to params[:q], search_path(q: params[:q])
 
-- if params[:action] == 'artist'
+- if params[:action] == 'artists'
   .up
     .media-right
       = link_to 'Search', search_path
   .up
     .media-right
-      = link_to 'Artist', search_artist_path
+      = link_to 'Artist', search_artists_path
   - if params[:q].present?
     .up
       .media-right
-        = link_to params[:q], search_artist_path(q: params[:q])
+        = link_to params[:q], search_artists_path(q: params[:q])
 
-- if params[:action] == 'album'
+- if params[:action] == 'albums'
   .up
     .media-right
       = link_to 'Search', search_path
   .up
     .media-right
-      = link_to 'Album', search_album_path
+      = link_to 'Album', search_albums_path
   - if params[:q].present?
     .up
       .media-right
-        = link_to params[:q], search_album_path(q: params[:q])
+        = link_to params[:q], search_albums_path(q: params[:q])
 
-- if params[:action] == 'track'
+- if params[:action] == 'tracks'
   .up
     .media-right
       = link_to 'Search', search_path
   .up
     .media-right
-      = link_to 'Track', search_track_path
+      = link_to 'Track', search_tracks_path
   - if params[:q].present?
     .up
       .media-right
-        = link_to params[:q], search_track_path(q: params[:q])
+        = link_to params[:q], search_tracks_path(q: params[:q])

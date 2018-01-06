@@ -1,11 +1,20 @@
 %tr
-  %td{id: "track_#{track.track.id}", class: ('list_playing_now_track' if playing_now_track&.id == track.track.id)}
+  %td{id: "track_#{track.track.id}", class: ('list_playing_now_track' if playing_now_track_id == track.track.id)}
+
     .media-left.list_play_button
-      = render 'player/get_track_button', track: track.track
+
+      - if playing_now_track_id == track.track.id
+        = render 'player/list_play_button'
+      - else
+        = button_to play_path(artist: track.artist.artist_name, track: track.track.track_title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
+          = fa_icon 'play'
+
     .media-body
-      .pull-right
-        = button_to send_to_queue_path(track_ids: [track.track.id]), class: 'btn btn-primary btn-sm play_btn', method: :get, remote: true do
-          = fa_icon 'arrow-right'
+
+      .track_options
+
+        = render 'shared/track_dropdown', track: track.track
+
       %h5
         - if track.loved?
           = fa_icon 'heart', style: 'color:red'
@@ -13,5 +22,8 @@
           = fa_icon 'heart-o'
         %strong
           = link_to track.track.title, library_artist_track_path(title: track.track.track_title)
+
       %h5
         = link_to pluralize(track.playcount, 'play'), library_artist_track_plays_path(name: track.artist.artist_name, title: track.track.track_title)
+
+    %iframe.mg_top_10{frameborder:'0', width: 480, height: 270, hidden: true}

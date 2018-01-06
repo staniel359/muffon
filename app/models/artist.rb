@@ -3,12 +3,14 @@ class Artist < ApplicationRecord
   has_many :albums
   has_many :profile_artists
   has_many :profiles, through: :profile_artists
+  has_many :plays
   has_many :loved_tracks
   has_many :taggings, as: :model
   has_many :plays
   has_many :playlist_tracks
   has_many :listened_artists
   has_many :bookmarks
+
   validates :name, presence: true, uniqueness: true
 
   def in_library?(profile)
@@ -38,6 +40,18 @@ class Artist < ApplicationRecord
 
   def artist_name
     name.include?('/') ? CGI.escape(name) : name
+  end
+
+  def profile_taggings(profile_id)
+    taggings.where(profile_id: profile_id)
+  end
+
+  def artist_top_tracks
+    Track.find(top_tracks)
+  end
+
+  def artist_top_albums
+    Album.find(top_albums)
   end
 
   def similar_artists

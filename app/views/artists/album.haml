@@ -2,55 +2,82 @@
   .panel_content
 
     #artist_album_left.media-left.album_220
-      = image_tag @album.album_cover
+
+      .mg_btm_10
+        = image_tag @album.album_cover, style: 'cursor: pointer', onclick: "$('#cover_modal').modal()"
+
+      - if @album.bandcamp_link.present?
+
+        .pull-right
+          = link_to "https://#{@album.bandcamp_link}", target: '_blank' do
+            %h4
+              = fa_icon 'bandcamp', data: {toggle: 'tooltip', placement: 'top'}, title: 'On Bandcamp'
 
     #artist_album_right.media-right.full_width
 
       #artist_album_title.mg_btm_10
 
         %h3.mg_btm_5
-          = link_to @album.title, artist_album_path
+          = @album.title
         %h4.mg_btm_5
           = link_to @album.artist.name, artist_path
-        %h5
+        %h5.mg_btm_10
           = @album.release_date
+
+        - if @album.labels.present?
+          - @album.labels.map do |l|
+            - label_name = Label.find(l).name
+            %h5.inline
+              = link_to label_name, label_path(name: label_name), class: 'label label-default'
 
       .separator.sep_10.sep_default
 
-      #artist_album_tags.mg_btm_5
-        - @album.album_tags.map do |tag|
-          = link_to tag.name, '#', class: 'btn btn-primary btn-sm tag mg_btm_5'
+      - if @tags.present?
+
+        #artist_album_tags.mg_btm_5
+
+          = fa_icon 'tags'
+
+          - @tags.first(5).map do |tag|
+            = link_to tag.name, tag_path(tag.name), class: 'btn btn-primary btn-sm tag mg_btm_5'
+
+          - if @tags.length >= 5
+
+            .inline
+              = link_to 'More tags...', artist_album_tags_path, class: 'inv_btn_no_hover no_padding'
 
       #artist_album_listens
-        %h4.inline
+        %h4.inline.mg_right_10
           = fa_icon 'user'
           = number_with_delimiter(@album['listeners'])
         %h4.inline
-          = fa_icon 'music'
+          = fa_icon 'play'
           = number_with_delimiter(@album['playcount'])
 
       - if @album.description.present?
         .separator.sep_10.sep_default
 
         #artist_album_wiki
+          - description = @album.description.split('<a href')[0].html_safe
           %h5
-            = @album.description.truncate_words(100).html_safe
-            = link_to 'Read more...', '#', remote: true, onClick: 'showWiki()'
+            = description.truncate_words(50)
+
+            - if description.size >= 50
+            
+              = button_tag 'Read more...', id: 'show_album_wiki', class: 'inv_btn_no_hover no_padding text-muted'
 
       %hr.sep_10
 
       %table.table.table-hover.table-condensed#artist_album_tracks
         - @album.album_tracks.each_with_index do |track, index|
-          %tr
-            %td{id: "track_#{track.id}", class: ('list_playing_now_track' if playing_now_track&.id == track.id)}
-              .media-left.mid_align.list_play_button
-                = render 'player/get_track_button', track: track
-              .media-body.mid_align
-                %h5
-                  = "#{index + 1}."
-                  = track.title
+
+          = render 'album_track', track: track, index: index
+
+#cover_modal.modal
+  .modal-dialog.text_center
+    = image_tag @album.album_cover.gsub('/300x300', ''), style: 'max-width:600px'
 
 :javascript
-  function showWiki() {
-    $('#artist_album_page_info_wiki > h5').html("#{j @album.description&.html_safe}")
-  }
+  $('#show_album_wiki').click(function() {
+    $('#artist_album_wiki > h5').html("#{ j description }")
+  });

@@ -1,112 +1,154 @@
 #artist_page_panel.artist_page.panel.center
 
-	#artist_page_main.panel_content.panel_content_wide
+  #artist_page_main.panel_content.panel_content_wide
 
-		#artist_page_image.media-left
+    #artist_page_image.media-left
 
-			.artist.artist_190
-				= render 'actions', artist: @artist
-				= image_tag @artist.artist_image, class: 'img_rnd'
+      .artist.artist_190
+        = render 'actions', artist: @artist
+        = image_tag @artist.artist_image, class: 'img_rnd', style: 'cursor: pointer', onclick: "$('#image_modal').modal()"
 
-		.page_info.media-body.full_width
+    .page_info.media-body.full_width
 
-			%h3.page_info_title.mg_btm_5
+      %h3.page_info_title.mg_btm_10
 
-				= @artist.name
+        = @artist.name
 
-			#artist_page_info_tags.mg_btm_5
+      - if @tags.present?
 
-				- @artist.artist_tags.first(5).map do |tag|
-					.inline
-						= link_to tag.name, '#', class: 'btn btn-primary btn-sm tag'
+        #artist_page_info_tags.mg_btm_5
 
-				#artist_page_info_taggings
+          = fa_icon 'tags'
 
-					- if @taggings.any?
-						Your tags:
-						- @taggings.map do |tagging|
-							.inline
-								= link_to tagging.tag.name, '#', class: 'btn btn-primary btn-sm tag'
+          - @tags.first(5).map do |tag|
 
-			#artist_page_info_listens
+            .inline
+              = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag'
 
-				%h4.inline
-					= fa_icon 'user'
-					= number_with_delimiter(@artist.listeners)
-				%h4.inline
-					= fa_icon 'music'
-					= number_with_delimiter(@artist.playcount)
+          - if @tags.length >= 5
 
-			.separator.sep_10.sep_default
+            .inline
+              = link_to 'More tags...', artist_tags_path, class: 'inv_btn_no_hover'
 
-			%h5#artist_page_info_bio
+        - if @taggings.any?
 
-				- if @artist.description.present?
-					= @artist.description.truncate_words(100).split('<a href="https://www.last.fm/music/')[0].html_safe
-				- else
-					.text-muted
-						No description available.
+          #artist_page_info_taggings.mg_btm_5
 
-	%hr.sep_0
+            Your tags:
 
-	- if @artist.in_library?(current_profile)
-		.panel_content
-			In your library since
-			%strong
-				= l current_profile.profile_artists.find_by(artist_id: @artist.id).created_at, format: '%e %b %Y'
+            - @taggings.map do |tagging|
 
-		%hr.sep_0
+              .inline
+                = link_to tagging.tag.name, library_tag_path(id: current_profile.id, name: tagging.tag.name), class: 'btn btn-primary btn-sm tag'
 
-	#artist_page_music
+      #artist_page_info_listens
 
-		#artist_page_tracks.inline.top_align.panel_content
+        %h4.inline.mg_right_10{ data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Last.fm listeners' }
 
-			%h4
+          = fa_icon 'user'
+          = number_with_delimiter(@artist.listeners)
 
-				= link_to 'Top tracks:', artist_tracks_path
+        %h4.inline{ data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Last.fm plays' }
 
-			.separator.sep_10.sep_default
-			
-			%table.table.table-hover.table-condensed#artist_page_tracks_content
-				= render partial: 'track', collection: @tracks
+          = fa_icon 'play'
+          = number_with_delimiter(@artist.playcount)
 
-			.text_right
-				= link_to 'View more...', artist_tracks_path, class: 'btn btn-primary btn-sm'
+      .separator.sep_10.sep_default
 
-		#artist_page_albums.inline.top_align.panel_content
+      %h5#artist_page_info_bio
 
-			%h4
-				= link_to 'Top albums:', artist_albums_path
+        - if @description.present?
 
-			.separator.sep_10.sep_default
+          = @description.truncate_words(100).gsub(URI.regexp, '<a href="\0" target="blank">\0</a>').html_safe
 
-			#artist_page_albums_content.panel_content_wide
-				= render partial: 'album', collection: @albums
+          - if @description.truncate_words(100).length > 100
 
-			.text_right
-				= link_to 'View more...', artist_albums_path, class: 'btn btn-primary btn-sm'
-			
-	%hr.sep_0
+            = link_to 'Read More...', artist_wiki_path, class: 'text-muted'
 
-	#artist_page_similars.panel_content
+        - else
 
-		%h4
-			= link_to 'Similar artists:', artist_similar_artists_path
+          .text-muted
+            No description available.
 
-		.separator.sep_10.sep_default
+  %hr.sep_0
 
-		#artist_page_similars_content.panel_content_wide
+    .panel_content
 
-			- @similars.map do |similar|
+      .inline
+        = link_to artist_listeners_path do
+          Listeners:
+          = @artist.profiles.count
 
-				.artist.artist_170#artist_page_similar{id: similar.id}
-					= render 'actions', artist: similar
-					= link_to similar.artist_name do
-						.mg_btm_5
-							= image_tag similar.artist_image, class: 'img_rnd'
-						%h4
-							%strong
-								= similar.name
+      .inline
+        = link_to artist_plays_path do
+          Plays:
+          = @artist.plays.count
 
-		.text_right
-			= link_to 'View more...', artist_similar_artists_path, class: 'btn btn-primary btn-sm'
+  %hr.sep_0
+
+  - if @artist.in_library?(current_profile)
+    .panel_content
+      In your library since
+      %strong
+        = l current_profile.profile_artists.find_by(artist_id: @artist.id).created_at, format: '%e %b %Y'
+
+    %hr.sep_0
+
+  #artist_page_music
+
+    #artist_page_tracks.panel_content
+
+      %h4
+
+        = link_to 'Top tracks:', artist_tracks_path
+
+      .separator.sep_10.sep_default
+      
+      %table.table.table-hover.table-condensed#artist_page_tracks_content
+        = render partial: 'track', collection: @tracks
+
+      .text_right
+        = link_to 'View more...', artist_tracks_path, class: 'btn btn-primary btn-sm'
+
+    #artist_page_albums.panel_content
+
+      %h4
+        = link_to 'Top albums:', artist_albums_path
+
+      .separator.sep_10.sep_default
+
+      #artist_page_albums_content.panel_content_wide
+
+        = render partial: 'album', collection: @albums
+
+      .text_right
+        = link_to 'View more...', artist_albums_path, class: 'btn btn-primary btn-sm'
+      
+  %hr.sep_0
+
+  #artist_page_similars.panel_content
+
+    %h4
+      = link_to 'Similar artists:', artist_similar_artists_path
+
+    .separator.sep_10.sep_default
+
+    #artist_page_similars_content.panel_content_wide
+
+      - @similars.map do |similar|
+
+        .artist.artist_170.mg_btm_10#artist_page_similar{id: similar.id}
+          = render 'actions', artist: similar
+          = link_to similar.artist_name do
+            .mg_btm_5
+              = image_tag similar.artist_image, class: 'img_rnd'
+            %h4
+              %strong
+                = similar.name
+
+    .text_right
+      = link_to 'View more...', artist_similar_artists_path, class: 'btn btn-primary btn-sm'
+
+#image_modal.modal
+  .modal-dialog.text_center
+    = image_tag @artist.artist_image.gsub('/300x300', ''), style: 'max-width:600px'

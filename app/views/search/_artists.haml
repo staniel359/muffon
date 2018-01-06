@@ -1,24 +1,38 @@
 - if params[:action] == 'artist'
+
   %h4
     Search results for
     %strong= "\"#{params[:q]}\""
+
   %br
 
-%h4.search_header
+%h4
   %strong
-    = link_to 'Artists:', search_artist_path(q: params[:q])
+    = link_to 'Artists:', search_artists_path(q: params[:q])
 
 .separator.sep_10.sep_default
 
-.panel_content_wide
-  - @artists.map do |artist|
-    .artist.artist_170
-      = link_to artist_path(name: (artist['name'].include?('/') ? CGI.escape(artist['name']) : artist['name'])) do
-        = image_tag (artist['image'][2]['#text'].present? ? artist['image'][2]['#text'] : 'missing_artist.png'), class: 'img_rnd'
-        %h4
-          %strong= artist['name']
-      %h5
-        = fa_icon 'user'
-        = number_with_delimiter(artist['listeners'])
-.text_right
-  = link_to 'View more...', search_artist_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+- if @artists.present?
+
+  .panel_content_wide
+
+    - @artists.map do |artist|
+
+      .artist.artist_170.mg_btm_10
+        .mg_btm_5
+          = link_to artist_path(name: artist.artist_name) do
+            = image_tag artist.artist_image, class: 'img_rnd'
+            %h4
+              %strong
+                = artist.name
+        %h5
+          = fa_icon 'user'
+          = number_with_delimiter(artist.listeners)
+
+  .text_right
+    = link_to 'View more...', search_artists_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+
+- else
+
+  %h5
+    Nothing was found.

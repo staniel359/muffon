@@ -1,0 +1,35 @@
+.up#logo
+  = link_to 'muffon', root_path
+
+- case params[:action]
+
+- when 'index', 'show', 'artists', 'albums', 'tracks'
+  .up
+    .media-left
+      = link_to image_tag(@profile.avatar.url(:md)), profile_path
+    .media-right
+      = link_to "#{@profile.nickname}'s tags", library_tags_path
+
+  - case params[:action]
+
+  - when 'show', 'artists', 'albums', 'tracks'
+    .up
+      .media-right
+        = link_to (@tag.present? ? @tag.tag.name : params[:name]), library_tag_path(name: (@tag.present? ? @tag.tag.name : params[:name]))
+
+    - case params[:action]
+
+    - when 'artists'
+      .up
+        .media-right
+          = link_to 'Artists', library_artists_tag_path(name: @tag.tag.name)
+
+    - when 'albums'
+      .up
+        .media-right
+          = link_to 'Albums', library_albums_tag_path(name: @tag.tag.name)
+
+    - when 'tracks'
+      .up
+        .media-right
+          = link_to 'Tracks', library_tracks_tag_path(name: @tag.tag.name)

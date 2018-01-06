@@ -50,7 +50,7 @@ module Lastfm
       end
 
       def tag_id
-        @tag_id ||= Tag.where(
+        @tag_id ||= ::Tag.where(
           name: @args.tag['name'].downcase
         ).first_or_create.id
       end

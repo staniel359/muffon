@@ -15,6 +15,7 @@ module Library
         @profile.profile_albums.joins(:artist, :album).select(
           '*,
           profile_albums.id as id,
+          profile_albums.playcount as playcount,
           albums.id as album_id,
           artists.name as artist_name,
           albums.title as album_title'

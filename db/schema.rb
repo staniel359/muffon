@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171217130211) do
+ActiveRecord::Schema.define(version: 20180128104800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20171217130211) do
     t.string "role"
     t.integer "discogs_main_id"
     t.integer "discogs_ids", default: [], array: true
+    t.string "bandcamp_link"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["title"], name: "index_albums_on_title"
   end
@@ -53,7 +54,9 @@ ActiveRecord::Schema.define(version: 20171217130211) do
     t.integer "tags", default: [], array: true
     t.bigint "top_track_count"
     t.jsonb "official_releases", default: []
-    t.string "info_status", default: "none"
+    t.boolean "full", default: false
+    t.integer "top_tracks", default: [], array: true
+    t.integer "top_albums", default: [], array: true
     t.index ["name"], name: "index_artists_on_name"
   end
 
@@ -138,7 +141,7 @@ ActiveRecord::Schema.define(version: 20171217130211) do
     t.integer "track_id"
     t.integer "profile_album_id"
     t.integer "album_id"
-    t.index ["playlist_id", "profile_track_id"], name: "index_playlist_tracks_on_playlist_id_and_profile_track_id", unique: true
+    t.index ["playlist_id", "track_id"], name: "index_playlist_tracks_on_playlist_id_and_track_id", unique: true
     t.index ["playlist_id"], name: "index_playlist_tracks_on_playlist_id"
     t.index ["profile_track_id"], name: "index_playlist_tracks_on_profile_track_id"
   end
@@ -304,6 +307,9 @@ ActiveRecord::Schema.define(version: 20171217130211) do
     t.string "video_link"
     t.text "audio_link"
     t.string "vk_id"
+    t.bigint "playcount"
+    t.string "bandcamp_link"
+    t.bigint "listeners"
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
     t.index ["title"], name: "index_tracks_on_title"
   end

@@ -26,11 +26,17 @@ class ProfilesController < ApplicationController
     @title = "#{@profile.nickname}'s profile"
     @plays = @profile.plays.includes(
       :profile_track, :track, :artist, :album
-    ).first(10)
-    @artists = @profile.profile_artists.includes(:artist).first(6)
-    @albums = @profile.profile_albums.includes(:album, :artist).first(6)
+    ).first(8)
+    @artists = @profile.profile_artists.includes(:artist).first(8)
+    @albums = @profile.profile_albums.includes(:album, :artist).first(8)
+    @tracks = @profile.profile_tracks.includes(:track, :artist).first(8)
 
-    set_common_artists if logged_in? && !current_profile?(@profile)
+    if logged_in? && !current_profile?(@profile)
+      set_common_artists
+      set_common_albums
+      set_common_tracks
+      set_compatibility_level
+    end
   end
 
   def update
@@ -124,9 +130,60 @@ private
   end
 
   def set_common_artists
-    @common_artists = @profile.profile_artists.where(
-      artist_id: current_profile.profile_artist_ids &
-        @profile.profile_artist_ids
+    other_profile_artists = @profile.profile_artists.where(
+      artist_id: current_profile.artist_ids & @profile.artist_ids
     )
+    current_profile_artists = current_profile.profile_artists.where(
+      artist_id: current_profile.artist_ids & @profile.artist_ids
+    )
+    @common_artists = other_profile_artists.sort_by do |o|
+      my_count = current_profile_artists.find do |c|
+        o.artist_id == c.artist_id
+      end.playcount
+      min_count = [o.playcount, my_count].min.to_f
+      max_count = [o.playcount, my_count].max
+      (min_count / max_count) * (o.playcount + my_count)
+    end.reverse
+  end
+
+  def set_common_albums
+    other_profile_albums = @profile.profile_albums.where(
+      album_id: current_profile.album_ids & @profile.album_ids
+    )
+    current_profile_albums = current_profile.profile_albums.where(
+      album_id: current_profile.album_ids & @profile.album_ids
+    )
+    @common_albums = other_profile_albums.sort_by do |o|
+      my_count = current_profile_albums.find do |c|
+        o.album_id == c.album_id
+      end.playcount
+      min_count = [o.playcount, my_count].min.to_f
+      max_count = [o.playcount, my_count].max
+      (min_count / max_count) * (o.playcount + my_count)
+    end.reverse
+  end
+
+  def set_common_tracks
+    other_profile_tracks = @profile.profile_tracks.where(
+      track_id: current_profile.track_ids & @profile.track_ids
+    )
+    current_profile_tracks = current_profile.profile_tracks.where(
+      track_id: current_profile.track_ids & @profile.track_ids
+    )
+    @common_tracks = other_profile_tracks.sort_by do |o|
+      my_count = current_profile_tracks.find do |c|
+        o.track_id == c.track_id
+      end.playcount
+      min_count = [o.playcount, my_count].min.to_f
+      max_count = [o.playcount, my_count].max
+      (min_count / max_count) * (o.playcount + my_count)
+    end.reverse
+  end
+
+  def set_compatibility_level
+    artists_percentage = (@common_artists.count.to_f / ((@profile.profile_artists.count + current_profile.profile_artists.count) / 2)) * 100
+    albums_percentage = (@common_albums.count.to_f / ((@profile.profile_albums.count + current_profile.profile_albums.count) / 2)) * 100
+    tracks_percentage = (@common_tracks.count.to_f / ((@profile.profile_tracks.count + current_profile.profile_tracks.count) / 2)) * 100
+    @compatibility_level = (artists_percentage + albums_percentage + tracks_percentage).round
   end
 end

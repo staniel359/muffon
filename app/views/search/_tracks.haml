@@ -1,26 +1,37 @@
 - if params[:action] == 'track'
+
   %h4
     Search results for
     %strong= "\"#{params[:q]}\""
+
   %br
 
-%h4.search_header
+%h4
   %strong
-    = link_to 'Tracks:', search_track_path(q: params[:q])
+    = link_to 'Tracks:', search_tracks_path(q: params[:q])
 
 .separator.sep_10.sep_default
 
-%table.table.table-hover.table-condensed
-  %tbody
-    - @tracks.map do |track|
-      %tr
-        %td
-          .media-left.mid_align
-            = image_tag (track['image'][0]['#text'].present? ? track['image'][0]['#text'] : 'missing_artist.png'), class: 'img_30'
-          .media-body.mid_align
-            %strong
-              = link_to track['artist'], artist_path(name: (track['artist'].include?('/') ? CGI.escape(track['artist']) : track['artist']))
-            = ' - ' + track['name']
-            = number_with_delimiter(track['listeners'])
-.text_right
-  = link_to 'View more...', search_track_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+- if @tracks.present?
+
+  %table.table.table-hover.table-condensed
+    %tbody
+      - @tracks.map do |track|
+        %tr
+          %td
+            .media-left.mid_align
+              = image_tag track.artist.artist_image, class: 'img_30'
+            .media-body.mid_align
+              %h5
+                %strong
+                  = track.title
+              %h5
+                = link_to track.artist.name, artist_path(name: track.artist.artist_name)
+
+  .text_right
+    = link_to 'View more...', search_tracks_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+
+- else
+
+  %h5
+    Nothing was found.

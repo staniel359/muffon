@@ -1,7 +1,11 @@
 - if @new_tracks.any?
+
   %table.table.table-hover.table-condensed
     = render partial: 'library/partials/new_track', collection: @new_tracks
+
   .text_right
     = link_to 'View more...', library_tracks_path(order: 3), class: 'btn btn-primary btn-sm'
+
 - else
+
   = (current_profile?(@profile) ? "You haven't" : "#{@profile.nickname} hasn't") + ' listened to any tracks yet.'

@@ -4,7 +4,7 @@
       = @title
     - if current_profile?(@profile)
       .inline.pull-right
-        = button_tag class: 'btn btn-primary btn-sm inline', method: :get, remote: true, id: 'add_playlist_btn' do
+        = button_tag class: 'btn btn-primary btn-sm inline', method: :get, remote: true, id: 'add_playlist_btn', onclick: 'openPlaylistPanel();' do
           = fa_icon 'plus'
           Add playlist
 
@@ -16,34 +16,23 @@
       .panel_header_sm
 
         .pull-right
-          = button_tag id: 'close_playlist_form', class: 'btn btn-sm inv_btn' do
+          = button_tag id: 'close_playlist_form', class: 'btn btn-sm inv_btn', onclick: 'closePlaylistPanel();' do
             Close
             = fa_icon 'times'
 
         %h4 Add playlist:
 
-      .separator.sep_10.sep_light
+      .separator.sep_10.sep_default
 
       #playlist_flash_msgs
 
       #new_playlist_form
         = form_for Playlist.new, remote: true do |f|
           .mg_btm_10
-            = f.text_field :name, required: true, placeholder: 'Enter playlist name:', class: 'form-control'
+            = f.text_field :name, placeholder: 'Enter playlist name:', class: 'input_transp'
 
           .pull-right
             = f.submit 'Create playlist', class: 'btn btn-primary'
 
     #profile_playlists
       = render 'playlists'
-
-:javascript
-  $('#add_playlist_btn').click(function() {
-    $('#add_playlist_panel').show('slide', {direction: 'right'}, 400)
-    $('#profile_playlists').animate({width:'412px'}, 400)
-  }),
-
-  $('#close_playlist_form').click(function() {
-    $('#add_playlist_panel').hide('slide', {direction: 'right'}, 400)
-    $('#profile_playlists').animate({width:'752'}, 400)
-  })

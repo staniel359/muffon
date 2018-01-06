@@ -1,5 +1,0 @@
-$('#top_tracks_scope').html("<%= j render 'library/tracks_scope' %>")
-<% unless params[:default] %>
-  $('#top_tracks').html("<%= j render 'library/partials/tracks' %>")
-<% end %>
-$('.dropdown.open .dropdown-toggle').dropdown('toggle');

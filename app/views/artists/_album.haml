@@ -1,15 +1,20 @@
 .album.album_170.mg_btm_20
-	- if params[:action] == 'show' || params[:action] == 'albums'
-		= link_to artist_album_path(name: (params[:name].include?('/') ? CGI.escape(params[:name]) : params[:name]), title: (album['name'].include?('/') ? CGI.escape(album['name']) : album['name'])) do
-			= image_tag ((album['image'][2]['#text'] != '') ? album['image'][2]['#text'] : 'missing_album.png')
+
+	- if params[:action].in?(%w[show albums])
+
+		= link_to artist_album_path(name: @artist.artist_name, title: album.album_title) do
+			= image_tag album.album_cover
 			%h5
 				%strong
-					= album['name']
+					= album.title
+
 	- else
-		= image_tag (album['image'][2]['#text'].present? ? album['image'][2]['#text'] : 'missing_album.png')
+
+		= image_tag album.album_cover
 		%h5
 			%strong
-				= album['name']
+				= album.title
+
 	%h5
 		= fa_icon 'music'
-		= number_with_delimiter(album['playcount'])
+		= number_with_delimiter(album.playcount)

@@ -1,0 +1,18 @@
+#artist_wiki_page.artist_page.panel.center
+  
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+
+    %h4 Wiki:
+
+    .separator.sep_10.sep_default
+
+    %h5
+      - if @description.present?
+        = @description.gsub(URI.regexp, '<a href="\0" target="blank">\0</a>')
+      - else
+        .text-muted
+          No description.

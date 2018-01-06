@@ -1,12 +1,30 @@
 %tr
   %td.message
+
     .media-left
-      = link_to message.profile do
-        = image_tag message.profile.avatar.url(:sm), class: 'img_rnd'
+
+      - if message.profile.present?
+
+        = link_to message.profile do
+          = image_tag message.profile.avatar.url(:sm), class: 'img_rnd'
+
+      - else
+
+        = image_tag 'avatar_default', class: 'img_rnd img_50'
+
     .media-body
+
       %h6.text-muted.pull-right
         = l message.created_at, format: "%e %b %Y, %H:%M"
+
       %h5
-        = link_to message.profile.nickname, message.profile
+
+        - if message.profile.present?
+
+          = link_to message.profile.nickname, message.profile
+
+        - else
+
+          = 'Deleted Profile'
       %h4
         = message.content

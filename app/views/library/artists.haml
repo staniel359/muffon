@@ -1,23 +1,32 @@
 #library_artists_panel.panel.library_page.center
-	.panel_header
-		%h3.inline= @title
-		.inline.pull-right
-			.dropdown
-				.btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
-					#artists_scope
-						= render 'library/partials/order_label'
-				%ul.dropdown-menu.dropdown-menu-right
-					%li= link_to 'Most played', library_artists_path(order: '1', page: params[:page]), remote: true
-					%li= link_to 'Least played', library_artists_path(order: '2', page: params[:page]), remote: true
-					%li= link_to 'Newest', library_artists_path(order: '3', page: params[:page]), remote: true
-					%li= link_to 'Oldest', library_artists_path(order: '4', page: params[:page]), remote: true
 
-	.separator.sep_0.sep_light
+  .panel_header
 
-	#library_artists_panel_content.panel_content
+    .media-left.mid_align
+      = image_tag @profile.avatar.url(:sm), class: 'img_rnd'
+    .media-right.mid_align
+      %h3
+        = link_to "#{@profile.nickname}'s library", library_path
 
-		#artists
-			= render 'library/partials/artists'
+  .separator.sep_0.sep_light
 
-		#artists_paginate.text_center.mg_top_10
-			= paginate @artists
+  #library_artists_panel_content.panel_content
+
+    .scope_order
+      #top_artists_order.inline.pull-right
+        = render 'library/order/artists'
+      #top_artists_scope.inline.pull-right
+        = render 'library/scope/artists'
+
+    %h4
+      Artists:
+
+    .separator.sep_10.sep_default
+
+    #top_artists
+      = render 'library/partials/artists'
+
+    %hr.sep_10
+
+    #artists_paginate.text_center
+      = paginate @artists

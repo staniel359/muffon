@@ -1,5 +1,6 @@
 <% if @audio_link.present? %>
-  $('audio').attr('src', "<%= @audio_link %>").trigger('play')
+  $('audio').attr('src', "<%= @audio_link %>")
+  playAudio()
 
   <% if @previous_track.present?%>
     $("*#track_<%= @previous_track.id %>").removeClass('list_playing_now_track')
@@ -19,15 +20,15 @@
   $('#player_playing_now_track').html("<%= j render 'player/playing_now_track_sm' %>")
 
   $('#enqueued_tracks').html("<%= j render 'player/enqueued_tracks' %>")
-  $('#profile_page_playing_now').html("<%= j render 'profiles/playing_now_track'%>")
+  $("#profile_page_playing_now_track_<%= current_profile.id %>").html("<%= j render 'profiles/playing_now_track'%>")
 
   $('#change_track_actions').hide().html("<%= j render 'player/change_track' %>").show('slide', {direction:'left'}, 400)
+
+  showPlayer()
+
+  if ($("#playing_now").css("display") == 'block') {
+    $('.center').css('margin-left','80px')
+  }
+<% else %>
+  $('.play_btn > .fa-circle-o-notch').removeClass('fa-circle-o-notch fa-spin').addClass('fa-times')
 <% end %>
-
-$('#player').show('slide', {direction:'down'}, 400)
-$('#footer').animate({'height': '205px'}, 400)
-$('#progress_bars').animate({'bottom': '65px'}, 400)
-
-if ($("#playing_now").css("display") == 'block') {
-  $('.center').css('margin-left','80px')
-}

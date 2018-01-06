@@ -1,0 +1,12 @@
+.dropdown.inline.pull-right
+
+  .btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}}
+
+    = render 'library/order/label'
+
+  .dropdown-menu.dropdown-menu-right
+
+    = button_to 'Most played', library_artists_path(order: '1', page: params[:page], scope: params[:scope]), method: :get, remote: true
+    = button_to 'Least played', library_artists_path(order: '2', page: params[:page], scope: params[:scope]), method: :get, remote: true
+    = button_to 'Newest', library_artists_path(order: '3', page: params[:page], scope: params[:scope]), method: :get, remote: true
+    = button_to 'Oldest', library_artists_path(order: '4', page: params[:page], scope: params[:scope]), method: :get, remote: true

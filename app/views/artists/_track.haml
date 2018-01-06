@@ -1,15 +1,28 @@
-- t = Track.where(title: track['name'], artist_id: Artist.find_by(name: track['artist']['name']).id).first_or_create
-
 %tr
-  %td{id: "track_#{t.id}", class: ('list_playing_now_track' if playing_now_track&.id == t.id)}
+  %td{id: "track_#{track.id}", class: ('list_playing_now_track' if playing_now_track_id == track.id)}
+
     .media-left.mid_align
+
       .list_play_button
-        = render 'player/get_track_button', track: t
+        - if playing_now_track_id == track.id
+          = render 'player/list_play_button'
+        - else
+          = button_to play_path(artist: @artist.name, track: track.title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
+            = fa_icon 'play'
+
+
     .media-body.mid_align
+
+      .track_options
+
+        = render 'shared/track_dropdown', track: track
+
       %h5
         %strong
-          = track['name']
-      - if track['playcount'].present?
-        .inline.track_bar{style: "width: #{width_of(track) + 2}%"}
+          = track.title
+
+      - if track.playcount.present?
+
+        .inline.track_bar{style: "width: #{width_of(track)}%"}
         .inline.mid_align
-          = number_with_delimiter(track['playcount'])
+          = number_with_delimiter(track.playcount)

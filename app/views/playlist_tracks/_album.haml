@@ -1,19 +1,24 @@
 %tr
   %td
     .search_entry
+
       .media-left.mid_align
+
+        .playlist_add_button
+          = button_to playlist_add_profile_album_path(profile_album_id: album.id, album_id: album.album_id), class: 'btn btn-sm btn-primary playlist_add_btn', method: :post, remote: true do
+            = fa_icon 'angle-double-left 2x'
+
         = image_tag album.album_cover, class: 'img_50'
+
       .media-body.mid_align
+
         %h4
           = album.album_title
         %h5.mg_btm_5
           = album.artist_name
+
         = button_to playlist_search_album_tracks_path(profile_album_id: album.id), class: 'btn btn-primary btn-sm', method: :get, remote: true do
-          = "Show tracks (#{album.profile_tracks.count})"
+          = "Tracks (#{album.profile_tracks.count})"
           .caret
-    .inline
-      = button_to playlist_add_album_path(profile_album_id: album.id, album_id: album.album_id), class: 'btn btn-sm btn-primary', method: :post, remote: true do
-        = fa_icon 'plus'
-        Add
 
     .search_album_tracks#search_album_tracks{id: album.id}

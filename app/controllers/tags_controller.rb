@@ -1,60 +1,60 @@
 class TagsController < ApplicationController
-  before_action :set_profile
-  before_action :set_tags_page_title, only: :index
-  before_action :set_tag_page_title, except: :index
-  before_action :set_tag, except: :index
-  before_action :set_artist_taggings, only: %i[show artists]
-  before_action :set_album_taggings, only: %i[show albums]
-  before_action :set_track_taggings, only: %i[show tracks]
-
   def index
-    @tags = @profile.profile_tags.includes(:tag).page(params[:page])
+    @title = 'Tags'
   end
 
-  def show; end
+  def show
+    @title = "#{params[:name]} tag"
+    @artists = tag_media[:artists]
+    @albums = tag_media[:albums]
+    @tracks = tag_media[:tracks]
+  end
 
-  def artists; end
+  def artists
+    @title = "#{params[:name]} tag - Top artists"
+    @artists = Kaminari.paginate_array(
+      set_tag_artists, total_count: 1000
+    ).page(params[:page]).per(21)
+  end
 
-  def albums; end
+  def albums
+    @title = "#{params[:name]} tag - Top albums"
+    @albums = Kaminari.paginate_array(
+      set_tag_albums, total_count: 1000
+    ).page(params[:page]).per(20)
+  end
 
-  def tracks; end
+  def tracks
+    @title = "#{params[:name]} tag - Top tracks"
+    @tracks = Kaminari.paginate_array(
+      set_tag_tracks, total_count: 1000
+    ).page(params[:page]).per(50)
+  end
 
 private
 
-  def set_profile
-    @profile ||= Profile.find_by_id(params[:id])
+  def tag_media
+    @tag_media ||= Lastfm::Tag::Media.call(name: params[:name])
   end
 
-  def set_tag
-    @tag ||= @profile.profile_tags.joins(:tag).find_by(
-      'tags.name = ?', params[:name]
+  def set_tag_artists
+    Lastfm::Tag::Artists.call(
+      name: params[:name],
+      page: params[:page]
     )
   end
 
-  def set_artist_taggings
-    @artist_taggings ||= @tag.artist_taggings.includes(
-      :artist, :profile_artist
-    ).page(params[:page]).per(20)
+  def set_tag_albums
+    Lastfm::Tag::Albums.call(
+      name: params[:name],
+      page: params[:page]
+    )
   end
 
-  def set_album_taggings
-    @album_taggings ||= @tag.album_taggings.includes(
-      :album, :profile_album
-    ).page(params[:page]).per(20)
-  end
-
-  def set_track_taggings
-    @track_taggings ||= @tag.track_taggings.includes(
-      :track, :profile_track
-    ).page(params[:page]).per(20)
-  end
-
-  def set_tags_page_title
-    @title = "#{@profile.nickname}'s tags"
-  end
-
-  def set_tag_page_title
-    @title = "#{@profile.nickname}'s tags"\
-      " | #{@tag.present? ? @tag.tag.name : params[:name]}"
+  def set_tag_tracks
+    Lastfm::Tag::Tracks.call(
+      name: params[:name],
+      page: params[:page]
+    )
   end
 end

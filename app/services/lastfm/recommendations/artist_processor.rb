@@ -12,7 +12,7 @@ module Lastfm
           process_similar_artist(similar_artist)
         end
 
-        broadcast_current_count
+        broadcast_current_count unless @args.status == 'no_broadcast'
       end
 
       def similar_artists

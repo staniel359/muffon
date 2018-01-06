@@ -9,17 +9,19 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    @playlists.create(playlist_params)
+    playlist = @playlists.new(playlist_params)
 
-    respond_to do |format|
-      format.js { render 'index', layout: false }
+    if playlist.valid?
+      playlist.save
+      respond_to { |format| format.js { render 'index', layout: false } }
+    else
+      head :bad_request
     end
+
   rescue ActiveRecord::RecordNotUnique
     flash.now[:danger] = 'You already have playlist with this name.'
 
-    respond_to do |format|
-      format.js { render 'playlist_flash', layout: false }
-    end
+    respond_to { |format| format.js { render 'playlist_flash', layout: false } }
   end
 
   def show
@@ -36,6 +38,10 @@ class PlaylistsController < ApplicationController
       format.html { redirect_to playlists_path }
       format.js { render 'index', layout: false }
     end
+  end
+
+  def show_playlists
+    respond_to { |format| format.js { render layout: false } }
   end
 
 private

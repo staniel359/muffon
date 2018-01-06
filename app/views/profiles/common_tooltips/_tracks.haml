@@ -1,0 +1,30 @@
+.text_left
+
+  %table.table.table-hover.table-condensed
+
+    - @common_tracks.first(5).map do |t|
+
+      %tr
+        %td{id: "track_#{t.track.id}", class: ('list_playing_now_track' if playing_now_track_id == t.track.id)}
+          .media-left
+            .list_play_button.play_button.no_padding
+              - if playing_now_track_id == t.track.id
+                = render 'player/list_play_button'
+              - else
+                = button_to play_path(artist: t.artist.artist_name, track: t.track.track_title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
+                  = fa_icon 'play'
+            = image_tag t.artist.artist_image, class: 'img_30'
+          .media-body
+            %h5
+              %strong
+                = link_to t.track.title, library_artist_track_path(name: t.artist.artist_name, title: t.track.track_title)
+            %h5
+              = link_to t.artist.name, library_artist_path(name: t.artist.artist_name)
+            %h5
+              = link_to library_artist_track_plays_path(name: t.artist.artist_name, title: t.track.track_title) do
+                = pluralize(t.playcount, 'play')
+
+- if @common_tracks.count > 5
+
+  .text_right
+    = button_tag "and #{@common_tracks.count - 6} others...", class: 'btn btn-primary btn-sm'

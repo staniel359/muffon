@@ -1,0 +1,11 @@
+- if @tags.any?
+
+  = render partial: 'library/partials/tag', collection: @tags
+
+  .text_right
+    = link_to "View more...", library_tags_path, class: 'btn btn-primary btn-sm'
+
+- else
+
+  = current_profile?(@profile) ? 'You have' : "#{@profile.nickname} has"
+  no tags yet.

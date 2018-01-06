@@ -1,34 +1,9 @@
-#library_tags_panel.panel.library_page.center
+#about.panel.center
   .panel_header
-    %h3.inline= @title
+    %h3 muffon | Tags
 
   .separator.sep_0.sep_light
 
-  #library_tags_panel_content.panel_content
-    - if @tags.any?
-      %table.table.table-condensed
-        %thead
-          %tr
-            %th
-            %th Artists
-            %th Albums
-            %th Tracks
-        %tbody
-          - @tags.map do |tag|
-            %tr
-              %td
-                = link_to "#{tag.tag.name} (#{tag.taggings_count})", library_tag_path(name: tag.tag.name), class: 'btn btn-primary btn-sm'
-              %td
-                %h4= link_to tag.artist_taggings_count, library_artists_tag_path(name: tag.tag.name), class: 'mid_align' if tag.artist_taggings_count > 0
-              %td
-                %h4.mid_align
-                  = link_to tag.album_taggings_count, library_albums_tag_path(name: tag.tag.name), class: 'mid_align' if tag.album_taggings_count > 0
-              %td
-                %h4.mid_align
-                  = link_to tag.track_taggings_count, library_tracks_tag_path(name: tag.tag.name), class: 'mid_align' if tag.track_taggings_count > 0
-
-      .text_center.mg_top_20
-        = paginate @tags
-    - else
-      = current_profile?(@profile) ? 'You don\'t' : "#{@profile.nickname} doesn't"
-      have any tags yet.
+  .panel_content
+    %h5
+      In progress.

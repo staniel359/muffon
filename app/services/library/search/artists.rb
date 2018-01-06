@@ -15,6 +15,7 @@ module Library
         @profile.profile_artists.joins(:artist).select(
           '*,
           profile_artists.id as id,
+          profile_artists.playcount as playcount,
           artists.name as artist_name'
         ).where(
           'lower(artists.name) like :q',

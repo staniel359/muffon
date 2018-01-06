@@ -1,90 +1,45 @@
-#library_tag_panel.panel.library_page.center
-	= render 'panel_header'
+#about.panel.center
+  .panel_header
+    %h3
+      muffon
+      |
+      = fa_icon 'tag'
+      = params[:name]
 
-	.separator.sep_0.sep_light
+  .separator.sep_0.sep_light
 
-	- if @tag.present?
+  .panel_content
 
-		#library_tag_panel_content.panel_content.panel_content_wide
+    %h4 Top artists:
 
-			.library_tagging_panel
-				%h4
-					= link_to "Artists (#{@tag.artist_taggings_count}):", library_artists_tag_path
+    .separator.sep_10.sep_default
 
-				.separator.sep_10.sep_default
+    .panel_content_wide
+      = render partial: 'artist', collection: @artists
 
-				- if @artist_taggings.any?
-					%table.table.table-hover
-						- @artist_taggings.first(5).map do |tagging|
-							%tr.library_tagging
-								%td
-									.media-left
-										= image_tag tagging.artist.artist_image, class: 'img_50 img_rnd'
-									.media-body.mid_align
-										%h4
-											= link_to tagging.artist.name, artist_path(name: tagging.artist.name)
-										- if tagging.profile_artist.present?
-											= link_to 'in your library', library_artist_path(name: tagging.artist.name)
-					.text-right
-						= link_to 'View more...', library_artists_tag_path, class: 'btn btn-primary btn-sm'
-				- else
-					%h5
-						= "#{current_profile?(@profile) ? 'You haven\'t' : @profile.nickname + 'hasn\'t'} tagged any artists with this tag."
+    .text_right
+      = link_to 'View more...', tag_artists_path, class: 'btn btn-primary btn-sm'
 
-			.library_tagging_panel
-				%h4
-					= link_to "Albums (#{@tag.album_taggings_count}):", library_albums_tag_path
+    %hr.sep_10
 
-				.separator.sep_10.sep_default
+    %h4 Top albums:
 
-				- if @album_taggings.any?
-					%table.table.table-hover
-						- @album_taggings.first(5).map do |tagging|
-							%tr.library_tagging
-								%td
-									.media-left
-										= image_tag tagging.album.album_cover, class: 'img_50'
-									.media-body.mid_align
-										= link_to artist_album_path(name: tagging.album.artist.name, title: tagging.album.title) do
-											%h4
-												= tagging.album.title
-											%h5
-												= tagging.album.artist.name
-										- if tagging.profile_album.present?
-											= link_to 'in your library', library_artist_album_path(name: tagging.album.artist.name, title: tagging.album.title)
-					.text-right
-						= link_to 'View more...', library_albums_tag_path, class: 'btn btn-primary btn-sm'
-				- else
-					%h5
-						= "#{current_profile?(@profile) ? 'You haven\'t' : @profile.nickname + 'hasn\'t'} tagged any albums with this tag."
+    .separator.sep_10.sep_default
 
-			.library_tagging_panel
-				%h4
-					= link_to "Tracks (#{@tag.track_taggings_count}):", library_tracks_tag_path
+    .panel_content_wide
+      = render partial: 'album', collection: @albums
 
-				.separator.sep_10.sep_default
+    .text_right
+      = link_to 'View more...', tag_albums_path, class: 'btn btn-primary btn-sm'
 
-				- if @track_taggings.any?
-					%table.table.table-hover
-						- @track_taggings.first(5).map do |tagging|
-							%tr.library_tagging
-								%td
-									.media-left
-										= image_tag tagging.track.artist.artist_image, class: 'img_50'
-									.media-body.mid_align
-										= link_to '#' do
-											%h4= tagging.track.title
-											%h5= tagging.track.artist.name
-										- if tagging.profile_track.present?
-											= link_to 'in your library', library_artist_track_path(name: tagging.track.artist.name, title: tagging.track.title)
-					.text-right
-						= link_to 'View more...', library_tracks_tag_path, class: 'btn btn-primary btn-sm'
-				- else
-					%h5
-						= "#{current_profile?(@profile) ? 'You haven\'t' : @profile.nickname + 'hasn\'t'} tagged any tracks with this tag."
+    %hr.sep_10
 
-	- else
+    %h4 Top tracks:
 
-		.panel_content
-			%h4
-				= "#{current_profile?(@profile) ? 'You haven\'t' : @profile.nickname + 'hasn\'t'} tagged any albums with this tag."
+    .separator.sep_10.sep_default
+
+    %table.table.table-hover.table-condensed
+      = render partial: 'track', collection: @tracks
+
+    .text_right
+      = link_to 'View more...', tag_tracks_path, class: 'btn btn-primary btn-sm'

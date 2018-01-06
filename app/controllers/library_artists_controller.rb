@@ -13,6 +13,18 @@ class LibraryArtistsController < ApplicationController
     @title = "#{@artist.artist.name} in #{@profile.nickname}'s library"
   end
 
+  def create
+    @artist = Artist.find(params[:artist_id])
+    @profile_artist = @artist.profile_artists.create(
+      profile_id: params[:id]
+    )
+    RecommendationArtistProcessorWorker.perform_async(
+      @profile_artist.id, @profile.id, 'no_broadcast'
+    )
+
+    respond_to { |format| format.js { render layout: false } }
+  end
+
   def tracks
     @title = "#{@artist.artist.name} tracks "\
       "in #{@profile.nickname}'s library"
@@ -79,8 +91,12 @@ private
   end
 
   def set_album
-    @album = @profile.profile_albums.joins(:album).find_by(
-      'albums.title = ?', params[:title]
+    @album = @profile.profile_albums.joins(
+      :album, :artist
+    ).find_by(
+      'albums.title = ? and artists.name = ?',
+        CGI.unescape(params[:title]),
+        CGI.unescape(params[:name])
     )
   end
 
@@ -97,10 +113,12 @@ private
   end
 
   def set_track
-    @track = @profile.profile_tracks.joins(:track).includes(
-      :artist, :plays
-    ).find_by(
-      'tracks.title = ?', CGI.unescape(params[:title])
+    @track = @profile.profile_tracks.joins(
+      :track, :artist
+    ).includes(:plays).find_by(
+      'tracks.title = ? and artists.name = ?',
+        CGI.unescape(params[:title]),
+        CGI.unescape(params[:name])
     )
   end
 

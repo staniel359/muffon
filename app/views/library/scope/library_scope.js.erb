@@ -1,0 +1,12 @@
+<% if params[:collection] == 'artists' %>
+  $('#library_top_artists_scope').html("<%= j render 'library/scope/library_artists' %>")
+  $('#library_top_artists').html("<%= j render 'library/partials/artists' %>")
+<% elsif params[:collection] == 'albums' %>
+  $('#library_top_albums_scope').html("<%= j render 'library/scope/library_albums' %>")
+  $('#library_top_albums').html("<%= j render 'library/partials/albums' %>")
+<% elsif params[:collection] == 'tracks' %>
+  $('#library_top_tracks_scope').html("<%= j render 'library/scope/library_tracks' %>")
+  $('#library_top_tracks').html("<%= j render 'library/partials/tracks' %>")
+<% end %>
+
+$('.dropdown.open .dropdown-toggle').dropdown('toggle')

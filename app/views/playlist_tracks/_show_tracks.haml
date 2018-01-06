@@ -2,9 +2,8 @@
   - @tracks.map do |track|
     %tr
       %td
-        .inline
+        .media-left.mid_align
+          = button_to playlist_add_profile_track_path(profile_track_id: track.id), class: 'btn btn-primary btn-sm playlist_add_btn', remote: true do
+            = fa_icon 'angle-double-left 2x'
+        .media-body.mid_align
           = track.title
-        .inline.pull-right
-          = button_to playlist_add_track_path(profile_track_id: track.id), class: 'btn btn-primary btn-sm', remote: true do
-            = fa_icon 'plus'
-            Add

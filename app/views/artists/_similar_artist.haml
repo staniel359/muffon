@@ -22,9 +22,18 @@
 
 		#similar_tags.mg_btm_5
 			- similar_artist.artist_tags.first(5).each do |tag|
-				= link_to tag.name, '#', class: 'btn btn-primary btn-sm tag mg_btm_5'
+				= link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag mg_btm_5'
 
 	%hr.sep_10.sep_default
 
 	#similar_bio
-		= similar_artist.description&.html_safe&.truncate_words(50)
+		- if similar_artist.description.present?
+			- description = similar_artist.description.split('<a href="https://www.last.fm/music/')[0].truncate_words(50).gsub(URI.regexp, '<a href="\0" target="blank">\0</a>').html_safe
+			- if description.present?
+				= description
+			- else
+				.text-muted
+					No description.
+		- else
+			.text-muted
+				No description.

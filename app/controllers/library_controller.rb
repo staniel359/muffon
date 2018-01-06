@@ -1,52 +1,56 @@
 class LibraryController < ApplicationController
   before_action :set_profile
-  before_action :set_artists, only: %i[show artists_scope]
-  before_action :set_albums, only: %i[show albums_scope]
-  before_action :set_tracks, only: %i[show tracks_scope]
 
   def show
     @title = "#{@profile.nickname}'s library"
-    @loved_tracks = set_loved_tracks.first(4)
-    @new_tracks = @profile.profile_tracks.includes(
-      :track, :artist
-    ).reorder(created_at: :desc).first(5)
+    @artists = set_artists.first(8)
+    @albums = set_albums.first(4)
+    @tracks = set_tracks.first(8)
+    @loved_tracks = set_loved_tracks.first(5)
+    @new_tracks = set_new_tracks.first(5)
     @plays = set_plays.first(12)
-    @tags = @profile.profile_tags.includes(:tag).first(20)
+    @tags = set_tags.first(20)
   end
 
-  def artists_scope
-    if params[:default]
-      @profile.update(
-        top_artists_scope: params[:scope].to_i
-      )
-    end
+  def search
+    @artists = search_model('artist')
+    @albums = search_model('album')
+    @tracks = search_model('track')
 
     respond_to { |format| format.js { render layout: false } }
   end
 
-  def albums_scope
-    if params[:default]
-      @profile.update(
-        top_albums_scope: params[:scope].to_i
-      )
+  def library_scope
+    if params[:collection] == 'artists'
+      @artists = set_artists.first(8)
+    elsif params[:collection] == 'albums'
+      @albums = set_albums.first(4)
+    elsif params[:collection] == 'tracks'
+      @tracks = set_tracks.first(8)
     end
 
-    respond_to { |format| format.js { render layout: false } }
+    respond_to do |format|
+      format.js { render 'library/scope/library_scope', layout: false }
+    end
   end
 
-  def tracks_scope
-    if params[:default]
-      @profile.update(
-        top_tracks_scope: params[:scope].to_i
-      )
+  def library_default_scope
+    if params[:collection] == 'artists'
+      @profile.update(top_artists_scope: params[:scope].to_i)
+    elsif params[:collection] == 'albums'
+      @profile.update(top_albums_scope: params[:scope].to_i)
+    elsif params[:collection] == 'tracks'
+      @profile.update(top_tracks_scope: params[:scope].to_i)
     end
 
-    respond_to { |format| format.js { render layout: false } }
+    respond_to do |format|
+      format.js { render 'library/scope/library_default_scope', layout: false }
+    end
   end
 
   def artists
     @title = "#{@profile.nickname}'s artists"
-    @artists = ordered_model('artist').includes(:artist)
+    @artists = set_artists
 
     respond_to do |format|
       format.html
@@ -56,7 +60,7 @@ class LibraryController < ApplicationController
 
   def albums
     @title = "#{@profile.nickname}'s albums"
-    @albums = ordered_model('album').includes(:album, :artist)
+    @albums = set_albums
 
     respond_to do |format|
       format.html
@@ -66,8 +70,8 @@ class LibraryController < ApplicationController
 
   def tracks
     @title = "#{@profile.nickname}'s tracks"
-    @tracks = ordered_model('track').includes(:track, :artist)
-    @loved_tracks = set_loved_tracks.page(params[:page]).per(20)
+    @tracks = set_tracks
+    @loved_tracks = set_loved_tracks
 
     respond_to do |format|
       format.html
@@ -77,7 +81,7 @@ class LibraryController < ApplicationController
 
   def plays
     @title = "#{@profile.nickname}'s plays"
-    @plays = set_plays.page(params[:page]).per(20)
+    @plays = set_plays
   end
 
 private
@@ -87,38 +91,57 @@ private
   end
 
   def set_artists
-    @artists = scope_model('artist').includes(:artist).first(8)
+    process_collection('artists').includes(
+      :artist
+    ).page(params[:page]).per(20)
   end
 
-  def scope_model(model_name)
-    Library::Scope.call(
+  def process_collection(name)
+    Library::Collection.call(
       profile_id: @profile.id,
-      model_name: model_name,
-      days: params[:scope]
+      collection_name: name,
+      order: params[:order],
+      scope: params[:scope]
     )
   end
 
   def set_albums
-    @albums = scope_model('album').includes(:album, :artist).first(4)
+    process_collection('albums').includes(
+      :album, :artist
+    ).page(params[:page]).per(20)
   end
 
   def set_tracks
-    @tracks = scope_model('track').includes(:track, :artist).first(8)
+    process_collection('tracks').includes(
+      :track, :artist
+    ).page(params[:page]).per(20)
   end
 
   def set_loved_tracks
-    @profile.loved_tracks.includes(:track, :artist)
+    @profile.loved_tracks.includes(
+      :track, :artist
+    ).page(params[:page]).per(20)
+  end
+
+  def set_new_tracks
+    @profile.profile_tracks.includes(
+      :track, :artist
+    ).reorder(created_at: :desc)
   end
 
   def set_plays
-    @profile.plays.includes(:profile_track, :track, :artist, :album)
+    @profile.plays.includes(
+      :profile_track, :track, :artist, :album
+    ).page(params[:page]).per(20)
   end
 
-  def ordered_model(model_name)
-    Library::Order.call(
-      profile_id: @profile.id,
-      model_name: model_name,
-      order: params[:order]
-    ).page(params[:page]).per(20)
+  def set_tags
+    @profile.profile_tags.includes(:tag)
+  end
+
+  def search_model(model_name)
+    "Library::Search::#{model_name.capitalize}s".constantize.call(
+      profile_id: @profile.id, q: params[:q]
+    )
   end
 end

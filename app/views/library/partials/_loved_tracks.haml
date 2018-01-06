@@ -1,5 +1,12 @@
 - if @loved_tracks.any?
+
   %table.table.table-hover.table-condensed
     = render partial: 'library/partials/loved_track', collection: @loved_tracks
+
+  - unless params[:action] == 'tracks'
+    .text_right
+      = link_to 'View more...', library_tracks_path(show: 'loved'), class: 'btn btn-primary btn-sm'
+
 - else
+
   = (current_profile?(@profile) ? 'You don\'t have' : "#{@profile.nickname} doesn't have") + ' any loved tracks yet.'

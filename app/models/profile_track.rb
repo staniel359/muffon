@@ -13,7 +13,7 @@ class ProfileTrack < ApplicationRecord
             :artist_id,
             presence: true
 
-  default_scope { order(playcount: :desc) }
+  default_scope { order(playcount: :desc, id: :desc) }
 
   def artist_image
     image.present? ? image : 'missing_artist.png'

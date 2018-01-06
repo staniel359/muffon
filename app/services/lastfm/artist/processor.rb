@@ -15,53 +15,61 @@ module Lastfm
         ::Artist.where(name: @args.name).first_or_initialize
       end
 
-      def info
-        @info ||= Lastfm::Artist::Info.call(
-          name: @args.name
-        )
+      def lastfm_data
+        @lastfm_data ||= JSON.parse(
+          RestClient.get(
+            'http://ws.audioscrobbler.com/2.0/'\
+            '?method=artist.getinfo'\
+            "&artist=#{query_name(@args.name)}"\
+            "&api_key=#{ENV['LASTFM_KEY']}&format=json"
+          ).body
+        )['artist']
       end
 
       def process_params(h)
-        h.mbid = info['mbid']
-        h.image = nil || info['image'][3]['#text']
-        h.listeners = info['stats']['listeners']
-        h.playcount = info['stats']['playcount']
-        h.description = info['bio']['summary']
+        h.mbid = lastfm_data['mbid']
+        h.image = nil || lastfm_data['image'][3]['#text']
+        h.listeners = lastfm_data['stats']['listeners']
+        h.playcount = lastfm_data['stats']['playcount']
+        h.description = nil || lastfm_data['bio']['content']
         h.tags |= tags
-        # h.discogs_ids |= discogs_ids if @args.type == 'full'
-        h.info_status = @args.type
         h.similars = similars
+        if @args.full
+          h.top_tracks = top_tracks
+          h.top_albums = top_albums
+          h.top_track_count = h.artist_top_tracks.first.playcount
+          h.full = true
+        end
         h.save
       end
 
       def tags
-        info['tags']['tag'].map do |tag|
+        lastfm_data['tags']['tag'].map do |tag|
           ::Tag.where(
             name: tag['name'].downcase
           ).first_or_create.id
         end
       end
 
-      # def discogs_ids
-      #   Discogs::Artist::Ids.call(name: @args.name)
-      # end
-
       def similars
-        info['similar']['artist'].first(4).map do |artist|
-          ::Artist.where(
-            name: artist['name']
-          ).first_or_create(
-            image: artist['image'][3]['#text']
+        lastfm_data['similar']['artist'].first(4).map do |a|
+          ::Artist.where(name: a['name']).first_or_create(
+            image: nil || a['image'][3]['#text']
           ).id
         end
       end
 
-      # def artist_official_releases(artist_id)
-      #   Discogs::Artist::OfficialReleases.call(
-      #     discogs_ids: discogs_ids,
-      #     artist_id: artist_id
-      #   ).official_releases
-      # end
+      def top_tracks
+        Lastfm::Artist::Tracks.call(
+          name: @args.name, limit: 10
+        ).pluck(:id)
+      end
+
+      def top_albums
+        Lastfm::Artist::Albums.call(
+          name: @args.name, limit: 5
+        ).first(4).pluck(:id)
+      end
     end
   end
 end

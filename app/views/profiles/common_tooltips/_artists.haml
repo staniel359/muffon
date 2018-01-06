@@ -1,0 +1,18 @@
+#tooltip_artists
+  - @common_artists.first(6).map do |a|
+
+    .tooltip_common_artist
+      = link_to library_artist_path(name: a.artist.artist_name) do
+        .mg_btm_5
+          = image_tag a.artist.artist_image, class: 'img_rnd img_50'
+        %h5
+          %strong
+            = a.artist.name
+      %h5
+        = link_to library_artist_plays_path(name: a.artist.artist_name) do
+          = pluralize(a.playcount, 'play')
+
+  - if @common_artists.count > 6
+
+    .text_right
+      = button_tag "and #{@common_artists.count - 6} others...", class: 'btn btn-primary btn-sm'

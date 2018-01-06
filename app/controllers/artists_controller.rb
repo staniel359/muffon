@@ -1,113 +1,149 @@
 class ArtistsController < ApplicationController
   include ArtistsHelper
   before_action :set_artist
+  before_action :set_album, only: %i[album album_tags]
 
   def show
     @title = @artist.name
-    @taggings = artist_taggings
-    @tracks = artist_tracks(10)
-    @albums = artist_albums(4)
+    @tags = @artist.artist_tags
+    @taggings = @artist.profile_taggings(current_profile.id)
+    @description = @artist.description.split(
+      '<a href="https://www.last.fm/music/'
+    )[0]&.html_safe
+    @tracks = @artist.artist_top_tracks
+    @albums = @artist.artist_top_albums
     @similars = @artist.similar_artists
 
-    @artist.update(
-      top_track_count: @tracks.first['playcount'].to_i
-    )
+    ArtistUpdateJob.perform_later(@artist.name)
+  end
 
-    # ArtistUpdateJob.perform_later(artist_name)
+  def images
+    @title = "#{@artist.name} - Images"
+    @images = set_images
   end
 
   def tracks
     @title = "#{@artist.name} - Tracks"
-    @tracks = Kaminari.paginate_array(
-      artist_tracks(20).last(20), total_count: 10_000
-    ).page(params[:page]).per(20)
+    @tracks = paginate(set_tracks, 50, 10_000)
 
     redirect_to artist_tracks_path if @tracks.empty?
   end
 
   def albums
     @title = "#{@artist.name} - Albums"
-    @albums = Kaminari.paginate_array(
-      artist_albums(20), total_count: 1000
-    ).page(params[:page]).per(20)
+    @albums = paginate(set_albums, 20, 1000)
 
     redirect_to artist_albums_path if @albums.empty?
   end
 
   def album
-    @album = present_album&.full? ? present_album : new_album
     @title = "#{@album.artist.name} - #{@album.title}"
+    @tags = @album.album_tags
+  end
+
+  def album_tags
+    @title = "#{@album.artist.name} - #{@album.title}"
+    set_album_tags
+    @tags = @album.album_tags
   end
 
   def similar_artists
     @title = "#{@artist.name} - Similar artists"
-    @similar_artists = Kaminari.paginate_array(
-      artist_similars(15), total_count: 200
-    ).page(params[:page]).per(15)
+    @similar_artists = paginate(process_similars, 15, 200)
 
     redirect_to artist_similar_artists_path if @similar_artists.empty?
+  end
+
+  def wiki
+    @title = "#{@artist.name} - Wiki"
+    @description = @artist.description.split('<a href')[0]&.html_safe
+  end
+
+  def tags
+    @title = "#{@artist.name} - Tags"
+    set_artist_tags
+    @tags = @artist.artist_tags
+  end
+
+  def listeners
+    @title = "#{@artist.name} - Listeners"
+    @listeners = @artist.profiles.page(params[:page]).per(50)
+  end
+
+  def plays
+    @title = "#{@artist.name} - Plays"
+    @plays = @artist.plays.page(params[:page]).per(50)
   end
 
 private
 
   def set_artist
-    # @artist ||= Artist.find_by(name: params[:name])
-
-    # return @artist if @artist&.info_status == 'full'
-
-    @artist ||= process_artist(params[:name], 'full')
+    artist = Artist.find_by(name: params[:name])
+    @artist ||= artist&.full? ? artist : process_artist(params[:name], true)
   end
 
-  def process_artist(name, type)
-    Lastfm::Artist::Processor.call(
-      name: name, type: type
+  def process_artist(name, full)
+    Lastfm::Artist::Processor.call(name: name, full: full)
+  end
+
+  def paginate(collection, per, total)
+    Kaminari.paginate_array(
+      collection, total_count: total
+    ).page(params[:page]).per(per)
+  end
+
+  def set_images
+    Lastfm::Artist::Images.call(
+      name: params[:name], page: params[:page]
     )
   end
 
-  def artist_taggings
-    current_profile.taggings.where(
-      model_type: 'Artist',
-      model_id: @artist.id
-    )
-  end
-
-  def artist_tracks(limit)
+  def set_tracks
     Lastfm::Artist::Tracks.call(
-      name: params[:name],
-      page: params[:page], limit: limit
+      name: params[:name], page: params[:page], limit: 50
     )
   end
 
-  def artist_albums(limit)
+  def set_albums
     Lastfm::Artist::Albums.call(
-      name: params[:name],
-      page: params[:page], limit: limit
+      name: params[:name], page: params[:page], limit: 20
     )
   end
 
-  def present_album
-    @present_album ||= Album.find_by(
-      title: params[:title],
-      artist_id: @artist.id
+  def set_album
+    album = Album.find_by(
+      title: params[:title], artist_id: @artist.id
     )
+    @album = album&.full? ? album : process_album
   end
 
-  def new_album
+  def process_album
     Lastfm::Album::Processor.call(
-      artist_name: params[:name],
-      title: params[:title]
+      artist_name: params[:name], album_title: params[:title]
     )
   end
 
-  def artist_similars(limit)
-    Lastfm::Artist::SimilarArtists.call(
-      name: params[:name],
-      page: params[:page], limit: limit
-    ).map do |similar|
-      artist = Artist.where(name: similar['name']).first_or_create
-      next artist unless artist&.info_status == 'none'
-
-      process_artist(similar['name'], 'base')
+  def process_similars
+    artist_similars.map do |similar|
+      artist = Artist.find_by(name: similar['name'])
+      next artist if artist&.full?
+      process_artist(similar['name'], nil)
     end
+  end
+
+  def artist_similars
+    Lastfm::Artist::SimilarArtists.call(
+      name: params[:name], page: params[:page]
+    )
+  end
+
+  def set_artist_tags
+    @artist.tags = Lastfm::Artist::Tags.call(name: @artist.name)
+  end
+
+  def set_album_tags
+    @album.tags = Lastfm::Album::Tags.call(
+      artist_name: @artist.name, album_title: @album.title
+    )
   end
 end

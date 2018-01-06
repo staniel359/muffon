@@ -1,9 +1,7 @@
 class ArtistUpdateJob < ApplicationJob
   queue_as :default
 
-  def perform(artist_name)
-    Lastfm::Artist::Processor.call(
-      artist_name: artist_name, type: 'full'
-    )
+  def perform(name)
+    Lastfm::Artist::Processor.call(name: name, full: true)
   end
 end

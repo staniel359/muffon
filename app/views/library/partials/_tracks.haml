@@ -1,5 +1,12 @@
 - if @tracks.any?
+
   %table.table.table-hover.table-condensed
     = render partial: 'library/partials/track', collection: @tracks
+
+  - unless params[:action] == 'tracks'
+    .text_right
+      = link_to 'View more...', library_tracks_path(scope: params[:scope]), class: 'btn btn-primary btn-sm'
+
 - else
+
   = (current_profile?(@profile) ? "You haven't" : "#{@profile.nickname} hasn't") + ' listened to any tracks during that period.'

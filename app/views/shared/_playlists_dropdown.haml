@@ -1,0 +1,25 @@
+- playlists = current_profile.playlists
+
+- if playlists.present?
+
+  %h5
+    Select playlists:
+
+  = form_tag add_track_to_playlists_path(track_id: track_id), remote: true do
+
+    %table.table.table-hover.table-condensed
+      - playlists.map do |p|
+
+        %tr
+          %td
+            .mid_align.inline
+              = check_box_tag 'playlists_names[]', p.name
+            .mid_align.inline
+              = label_tag p.name
+
+    .text-right
+      = submit_tag 'Add', class: 'btn btn-primary'
+
+- else
+
+  %h5 You dont have any playlists yet.
