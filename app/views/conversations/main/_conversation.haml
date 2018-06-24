@@ -1,0 +1,55 @@
+%tr.conversation
+  %td
+    = link_to conversation do
+      .media-left
+        - if conversation.other_member(current_profile.id).present?
+
+          = image_tag conversation.other_member(current_profile.id).avatar.url(:sm), class: 'img_rnd'
+
+        - else
+
+          = image_tag 'avatar_default', class: 'img_rnd img_50'
+
+      .media-body
+
+        %h4#conversation_with
+
+          - if conversation.other_member(current_profile.id).present?
+
+            = conversation.other_member(current_profile.id).nickname
+
+          - else
+
+            Deleted Profile
+
+        %hr.sep_10
+
+        #conversation_last_msg.message_panel
+
+          - last_message = conversation.messages.last
+
+          - if last_message.profile_id == current_profile.id
+
+            .media-left
+              = image_tag last_message.profile.avatar.url(:sm), class: 'img_rnd'
+
+          .media-body
+
+            .text-muted.pull-right.text_right
+              %h6
+                = l last_message.created_at, format: "%e %b %Y"
+              %h6
+                = l last_message.created_at, format: "%H:%M"
+
+            - if last_message.profile_id == current_profile.id
+
+              %h5.mg_btm_5
+                = last_message.profile.nickname
+
+            %h4.mg_btm_5
+              = last_message.content
+
+            - if last_message.track_ids.present?
+
+              %i.fas.fa-music
+              Audio

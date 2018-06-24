@@ -1,0 +1,4 @@
+$("#artist_library_<%= params[:artist_id] %>").html(
+  "<%= j render 'artist_actions/library/show', artist: @artist %>"
+)
+$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})

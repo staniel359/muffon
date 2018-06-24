@@ -1,5 +1,5 @@
-Sidekiq.configure_server do |config|
-  config.server_middleware do |chain|
-    chain.add Sidekiq::Throttler, storage: :redis
-  end
+require 'sidekiq/web'
+
+Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
+  [user, password] == ["sidekiq", "sidekiq"]
 end

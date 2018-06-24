@@ -9,7 +9,7 @@ module ApplicationCable
   private
 
     def profile
-      @profile = Profile.find_by(id: cookies.signed[:profile_id])
+      Profile.find_by(id: cookies.signed[:profile_id])
     end
   end
 end

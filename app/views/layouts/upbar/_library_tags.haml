@@ -1,35 +1,37 @@
-.up#logo
-  = link_to 'muffon', root_path
+- if params[:action] == 'index'
 
-- case params[:action]
-
-- when 'index', 'show', 'artists', 'albums', 'tracks'
   .up
     .media-left
       = link_to image_tag(@profile.avatar.url(:md)), profile_path
     .media-right
-      = link_to "#{@profile.nickname}'s tags", library_tags_path
+      = link_to "#{@profile.nickname}", profile_path
 
-  - case params[:action]
+  .up
+    .media-right
+      %i.fas.fa-headphones
+      = link_to 'Library', library_path
 
-  - when 'show', 'artists', 'albums', 'tracks'
-    .up
-      .media-right
-        = link_to (@tag.present? ? @tag.tag.name : params[:name]), library_tag_path(name: (@tag.present? ? @tag.tag.name : params[:name]))
+  .up
+    .media-right
+      %i.fas.fa-tag
+      = link_to 'Tags', library_tags_path
 
-    - case params[:action]
+- elsif params[:action] == 'show'
 
-    - when 'artists'
-      .up
-        .media-right
-          = link_to 'Artists', library_artists_tag_path(name: @tag.tag.name)
+  .up
+    .media-left
+      = link_to image_tag(@profile.avatar.url(:md)), profile_path
 
-    - when 'albums'
-      .up
-        .media-right
-          = link_to 'Albums', library_albums_tag_path(name: @tag.tag.name)
+  .up
+    .media-right
+      %i.fas.fa-headphones
+      = link_to 'Library', library_path
 
-    - when 'tracks'
-      .up
-        .media-right
-          = link_to 'Tracks', library_tracks_tag_path(name: @tag.tag.name)
+  .up
+    .media-right
+      %i.fas.fa-tag
+      = link_to 'Tags', library_tags_path
+
+  .up
+    .media-right
+      = link_to params[:name], library_tag_path(name: params[:name])

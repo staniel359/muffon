@@ -1,0 +1,25 @@
+#library_tag_panel.panel.library_page.center
+  
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+
+  #library_tag_panel_content.panel_content
+
+    - if @artists.present?
+
+      %table.table.table-hover.table-condensed
+    
+        - @artists.map do |artist|
+
+          %tr
+            %td
+              = link_to library_artist_path(name: artist.artist_name) do
+                .media-left.mid_align
+                  = image_tag artist.artist_image, class: 'img_50 img_rnd'
+                .media-body.mid_align
+                  %h4
+                    = artist.name
+
+      .text_center.mg_top_10
+        = paginate @artists

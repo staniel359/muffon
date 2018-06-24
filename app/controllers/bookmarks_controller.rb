@@ -1,31 +1,48 @@
 class BookmarksController < ApplicationController
   def index
-    @title = 'Bookmarks'
-    @bookmarks = current_profile.bookmarks
+    should_login
+    @page_data = {
+      title:     title,
+      bookmarks: bookmarks
+    }
   end
 
   def create
-    @artist = Artist.find(params[:artist_id])
-
-    current_profile.bookmarks.create(
-      artist_id: params[:artist_id],
-      is: params[:is]
-    )
-
-    respond_to do |format|
-      format.js { render layout: false }
-    end
+    should_login
+    add_to_bookmarks
+    respond_with_js
   end
 
   def destroy
-    @artist = Artist.find(params[:artist_id])
+    should_login
+    delete_from_bookmarks
+    respond_with_js
+  end
 
+private
+
+  def title
+    t("bookmarks.#{params[:action]}")
+  end
+
+  def bookmarks
+    paginate(current_profile.bookmarks.created_desc, 20)
+  end
+
+  def add_to_bookmarks
+    current_profile.bookmarks.create(bookmark_attributes)
+  end
+
+  def bookmark_attributes
+    {
+      bookmarkable_type: params[:model_type],
+      bookmarkable_id:   params[:model_id]
+    }
+  end
+
+  def delete_from_bookmarks
     current_profile.bookmarks.find_by(
-      artist_id: params[:artist_id]
+      bookmark_attributes
     )&.destroy
-
-    respond_to do |format|
-      format.js { render layout: false }
-    end
   end
 end

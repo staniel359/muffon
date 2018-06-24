@@ -6,9 +6,14 @@
 
   .panel_content
 
-    %h4 Tags:
+    %h4
+      %i.fas.fa-tags
+      Tags:
 
     .separator.sep_10.sep_default
 
     - @tags.map do |tag|
-      = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag'
+      .inline
+        = link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
+          %strong
+            = tag.name

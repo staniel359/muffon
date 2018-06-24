@@ -1,40 +1,62 @@
 class ConversationsController < ApplicationController
-  include ConversationsHelper
-  before_action :should_login
-  before_action :set_conversation, :check_conversation_access, only: :show
-
   def index
-    @title = 'Conversations'
-    @conversations = current_profile.conversations.order('updated_at desc')
+    should_login
+    @page_data = {
+      title:         title,
+      conversations: conversations
+    }
   end
 
   def show
+    should_login
+    check_conversation_access
+    @page_data = {
+      title:        title,
+      conversation: conversation
+    }
     read_new_messages
-
-    @messages = @conversation.messages.order('created_at asc')
-    @message = current_profile.messages.new
-    @other_member = @conversation.other_member(current_profile.id)
-    @title = "Conversation with #{@other_member&.nickname || 'Deleted Profile'}"
   end
 
 private
 
-  def set_conversation
-    @conversation = current_profile.conversations.find_by(id: params[:id])
+  def title
+    t(
+      "conversations.#{params[:action]}",
+      other_profile: other_profile&.nickname || 'Deleted Profile'
+    )
+  end
+
+  def other_profile
+    conversation.other_member(current_profile.id)
+  end
+
+  def conversation
+    @conversation ||=
+      Conversation.find_by(id: params[:conversation_id])
+  end
+
+  def conversations
+    paginate(current_profile.conversations.updated_desc, 20)
   end
 
   def check_conversation_access
-    redirect_to root_path unless
-      @conversation.present? && @conversation.member?(current_profile.id)
+    redirect_to root_path unless can_access_conversation?
+  end
+
+  def can_access_conversation?
+    conversation&.member?(current_profile.id)
   end
 
   def read_new_messages
-    new_messages.each { |m| m.update(new: nil) }
-    current_profile.new_messages.delete(@conversation.id.to_s)
-    current_profile.save
+    new_messages.update_all(new: false)
+    @redis.decrby(
+      "#{current_profile.id}:new_messages", new_messages.count
+    )
   end
 
   def new_messages
-    @conversation.other_member_messages(current_profile.id).where(new: 1)
+    @new_messages ||= conversation.messages.to(
+      current_profile.id
+    ).new_messages
   end
 end

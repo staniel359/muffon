@@ -1,0 +1,8 @@
+.panel_content
+
+  %h4
+    Board:
+
+  .separator.sep_10.sep_default
+
+  #{current_profile?(@profile) ? "You don't" : "#{@profile.nickname} doesn't"} have any posts on the board yet.

@@ -12,7 +12,7 @@
                 = render 'player/list_play_button'
               - else
                 = button_to play_path(artist: t.artist.artist_name, track: t.track.track_title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
-                  = fa_icon 'play'
+                  %i.fas.fa-play
             = image_tag t.artist.artist_image, class: 'img_30'
           .media-body
             %h5

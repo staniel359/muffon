@@ -1,8 +1,12 @@
 #groups.panel.center
   .panel_header
-    %h3.inline Groups
+    %h3.inline  
+      %i.fas.fa-users
+      Groups
     .inline.pull-right
-      = link_to 'Create a group', new_group_path, class: 'btn btn-primary'
+      = link_to new_group_path, class: 'btn btn-primary' do
+        %i.fas.fa-plus
+        Create a group
 
   .separator.sep_0.sep_light
   

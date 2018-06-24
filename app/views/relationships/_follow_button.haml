@@ -1,4 +1,11 @@
 - if current_profile.active_relationships.find_by(followed_id: profile)
-	= button_to 'Unfollow', unfollow_path(followed_id: profile), class: 'btn btn-default btn-sm', method: :get, remote: true
+
+  = button_to unfollow_path(followed_id: profile), class: 'btn btn-default btn-sm', method: :get, remote: true do
+    %i.fas.fa-user-times
+    Unfollow
+
 - else
-	= button_to 'Follow', follow_path(followed_id: profile), class: 'btn btn-primary btn-sm', method: :get, remote: true
+
+  = button_to follow_path(followed_id: profile), class: 'btn btn-primary btn-sm', method: :get, remote: true do
+    %i.fas.fa-user-plus
+    Follow

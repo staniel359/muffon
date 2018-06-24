@@ -1,0 +1,48 @@
+#signup_form.form_center.panel.profile_form
+  .panel_content
+
+    .flash_msg
+      = render 'muffon/flash_messages'
+
+    = form_for @profile, url: signup_path, remote: true, multipart: true, authenticity_token: true do |f|
+
+      = f.hidden_field :lastfm_id
+      = f.hidden_field :remote_avatar_url
+
+      %h5
+        Main info:
+
+      .separator.sep_10.sep_default
+
+      .media
+
+        .mr-3
+          = image_tag @profile.avatar.url(:md), id: 'img_preview'
+          .mg_top_10.text-right
+            = f.file_field :avatar, style: 'display:none', onchange: 'readURL(this);'
+            = f.label :avatar, class: 'btn btn-primary btn-sm' do
+              %i.fas.fa-plus
+              Add avatar
+
+        .media-right
+          = f.text_field :nickname, class: 'input_transp w-100', placeholder: 'Nickname:'
+          = f.email_field :email, class: 'input_transp w-100', placeholder: 'Email:'
+          = f.password_field :password, class: 'input_transp w-100', placeholder: 'Password:'
+          = f.password_field :password_confirmation, class: 'input_transp w-100', placeholder: 'Confirm password:'
+
+      %hr.sep_20
+
+      %h5
+        Additional info:
+
+      .separator.sep_10.sep_default
+
+      = f.text_field :name, class: 'input_transp w-100', placeholder: 'Name:'
+      = f.select :gender, %w[Male Female], { include_blank: 'Gender:' }, class: 'input_transp w-100 custom-select'
+      .d-flex
+        = f.date_select :birthdate, order: [:day, :month, :year], start_year: 1900, end_year: Date.today.year
+      = f.country_select :country, class: 'input_transp w-100', include_blank: 'Country:', selected: 'Country:'
+      = f.text_field :city, class: 'input_transp w-100', placeholder: 'City:'
+
+      .d-flex.mg_top_10.justify-content-end
+        = f.submit 'Sign up', class: 'btn btn-primary'

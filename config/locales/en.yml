@@ -1,23 +1,114 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  muffon:
+    dashboard: Dashboard
+    notifications: Notifications
+    feed: Feed
+    player: Player
+    about: About
+    help: Help
+    contribute: Contribute
+    contact: Contact
+  sessions:
+    new: Log in
+    should_login: Please log in to access this page.
+    login_failed: Invalid email or password.
+  messages:
+    select_recipient: Please select profile.
+    recipient_not_found: Profile not found.
+  profiles:
+    index: Profiles
+    show: "%{profile}'s profile"
+    updated: Profile was updated.
+    contacts:
+      index: "%{profile}'s contacts"
+      followers: "%{profile}'s followers"
+      following: "%{profile}'s following"
+    groups:
+      index: "%{profile}'s groups"
+    library:
+      show: "%{profile}'s library"
+      albums:
+        index: "%{profile}'s albums"
+      artists:
+        index: "%{profile}'s artists"
+        show: "%{artist} | %{profile}'s artists"
+        albums:
+          index: "%{artist} albums | %{profile}'s library"
+          show: "%{artist} - %{album} | %{profile}'s albums"
+          tracks: "%{artist} - %{album} tracks | %{profile}'s albums"
+          plays: "%{artist} - %{album} plays | %{profile}'s albums"
+        plays:
+          index: "%{artist} plays | %{profile}'s library"
+        tracks:
+          index: "%{artist} tracks | %{profile}'s library"
+          show: "%{artist} - %{track} | %{profile}'s tracks"
+          albums: "%{artist} - %{track} albums | %{profile}'s tracks"
+          plays: "%{artist} - %{track} plays | %{profile}'s tracks"
+      loved_tracks:
+        index: "%{profile}'s loved tracks"
+      plays:
+        index: "%{profile}'s plays"
+      taggings:
+        index: "%{profile}'s taggings"
+        show: "%{tagging} | %{profile}'s taggings"
+        artists: "%{tagging} artists | %{profile}'s taggings"
+        albums: "%{tagging} albums| %{profile}'s taggings"
+        tracks: "%{tagging} tracks | %{profile}'s taggings"
+      tags:
+        index: "%{profile}'s tags"
+        show: "%{tag} | %{profile}'s tags"
+      tracks:
+        index: "%{profile}'s tracks"
+    playlists:
+      index: "%{profile}'s playlists"
+      show: "%{playlist} | %{profile}'s playlists"
+      edit: "%{playlist} - Edit | %{profile}'s playlists"
+      no_name: Please enter the name of your playlist.
+      already_present: You already have playlist with this name.
+  signup:
+    new: Sign up
+    lastfm_signed_up: Looks like you've already signed up via Last.fm.
+  groups:
+    index: Groups
+    new: Create a group
+    show: "%{group_name} | Groups"
+  conversations:
+    index: Conversations
+    show: Conversation with %{other_profile}
+  artists:
+    show: "%{artist}"
+    images: "%{artist} images"
+    similar_artists: "%{artist} similar artists"
+    wiki: "%{artist} wiki"
+    tags: "%{artist} tags"
+    listeners: "%{artist} listeners"
+    plays: "%{artist} plays"
+    albums:
+      index: "%{artist} albums"
+      show: "%{album} | %{artist} albums"
+      tags: "%{album} tags | %{artist} albums"
+      wiki: "%{album} wiki | %{artist} albums"
+    tracks:
+      index: "%{artist} tracks"
+  bookmarks:
+    index: Bookmarks
+  labels:
+    index: Labels
+    show: "%{label} | Labels"
+  playlists:
+    index: Playlists
+  recommendations:
+    index: Recommendations
+  search:
+    index: Search
+    artists: Artists | Search
+    albums: Albums | Search
+    tracks: Tracks | Search
+  settings:
+    index: Settings
+  tags:
+    index: Tags
+    show: "%{tag} | Tags"
+    artists: "%{tag} artists | Tag"
+    albums: "%{tag} albums | Tag"
+    tracks: "%{tag} tracks | Tag"

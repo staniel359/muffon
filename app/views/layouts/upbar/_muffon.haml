@@ -1,51 +1,47 @@
-.up#logo= link_to 'muffon', root_path
+.up
+  .media-right
+    - if params[:action] == 'home' && logged_in?
 
-- if params[:action] == 'home' && logged_in?
-  .up
-    .media-right
-      = link_to 'Home', root_path
+      = link_to root_path do
+        %i.fas.fa-home
+        Home page
 
-- if params[:action] == 'notifications'
-  .up
-    .media-right
-      = link_to 'Notifications', notifications_path
+    - elsif params[:action] == 'notifications'
 
-- if params[:action] == 'feed'
-  .up
-    .media-right
-      = link_to 'Feed', feed_path
+      = link_to notifications_path do
+        %i.fas.fa-bell
+        Notifications
 
-- if params[:action] == 'player'
-  .up
-    .media-right
+    - elsif params[:action] == 'feed'
+
+      = link_to feed_path do
+        %i.fas.fa-newspaper
+        Feed
+
+    - elsif params[:action] == 'player'
+
       = link_to 'Player', player_path
 
-- if params[:action] == 'recommendations'
-  .up
-    .media-right
+    - elsif params[:action] == 'recommendations'
+
       = link_to 'Recommendations', recommendations_path
 
-- if params[:action] == 'settings'
-  .up
-    .media-right
+    - elsif params[:action] == 'settings'
+
       = link_to 'Settings', settings_path
 
-- if params[:action] == 'about'
-  .up
-    .media-right
+    - elsif params[:action] == 'about'
+
       = link_to 'About', about_path
 
-- if params[:action] == 'help'
-  .up
-    .media-right
+    - elsif params[:action] == 'help'
+
       = link_to 'Help', help_path
 
-- if params[:action] == 'contact'
-  .up
-    .media-right
+    - elsif params[:action] == 'contact'
+
       = link_to 'Contact us', contact_path
 
-- if params[:action] == 'contribute'
-  .up
-    .media-right
+    - elsif params[:action] == 'contribute'
+
       = link_to 'Contribute', contribute_path

@@ -4,9 +4,13 @@
 
     #artist_page_image.media-left
 
-      .artist.artist_190
-        = render 'actions', artist: @artist
+      .artist.artist_190.mg_btm_10
+        = render 'actions', artist: @artist if logged_in?
         = image_tag @artist.artist_image, class: 'img_rnd', style: 'cursor: pointer', onclick: "$('#image_modal').modal()"
+
+      .pull-right
+        = link_to artist_images_path(name: @artist.artist_name), class: 'btn btn-primary btn-sm' do
+          More images...
 
     .page_info.media-body.full_width
 
@@ -18,19 +22,21 @@
 
         #artist_page_info_tags.mg_btm_5
 
-          = fa_icon 'tags'
+          %i.fas.fa-tags
 
           - @tags.first(5).map do |tag|
 
             .inline
-              = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag'
+              = link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
+                %strong
+                  = tag.name
 
           - if @tags.length >= 5
 
             .inline
-              = link_to 'More tags...', artist_tags_path, class: 'inv_btn_no_hover'
+              = link_to 'More tags...', artist_tags_path(name: @artist.artist_name), class: 'inv_btn_no_hover'
 
-        - if @taggings.any?
+        - if @taggings.present?
 
           #artist_page_info_taggings.mg_btm_5
 
@@ -39,58 +45,51 @@
             - @taggings.map do |tagging|
 
               .inline
-                = link_to tagging.tag.name, library_tag_path(id: current_profile.id, name: tagging.tag.name), class: 'btn btn-primary btn-sm tag'
+                = link_to library_tag_path(id: current_profile.id, name: tagging.tag.name), class: 'btn btn-primary btn-sm tag' do
+                  %strong
+                    = tagging.tag.name
 
       #artist_page_info_listens
 
         %h4.inline.mg_right_10{ data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Last.fm listeners' }
 
-          = fa_icon 'user'
+          %i.fas.fa-user
           = number_with_delimiter(@artist.listeners)
 
         %h4.inline{ data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Last.fm plays' }
 
-          = fa_icon 'play'
+          %i.fas.fa-play
           = number_with_delimiter(@artist.playcount)
 
       .separator.sep_10.sep_default
 
       %h5#artist_page_info_bio
 
-        - if @description.present?
-
-          = @description.truncate_words(100).gsub(URI.regexp, '<a href="\0" target="blank">\0</a>').html_safe
-
-          - if @description.truncate_words(100).length > 100
-
-            = link_to 'Read More...', artist_wiki_path, class: 'text-muted'
-
-        - else
-
-          .text-muted
-            No description available.
+        = render 'artists/description', artist: @artist, limit: 100
 
   %hr.sep_0
 
     .panel_content
 
       .inline
-        = link_to artist_listeners_path do
+        = link_to artist_listeners_path(name: @artist.artist_name) do
           Listeners:
           = @artist.profiles.count
 
       .inline
-        = link_to artist_plays_path do
+        = link_to artist_plays_path(name: @artist.artist_name) do
           Plays:
           = @artist.plays.count
 
   %hr.sep_0
 
-  - if @artist.in_library?(current_profile)
-    .panel_content
-      In your library since
-      %strong
-        = l current_profile.profile_artists.find_by(artist_id: @artist.id).created_at, format: '%e %b %Y'
+  - if logged_in?
+
+    - if @artist.in_library?(current_profile)
+      .panel_content
+        In your library since
+        %strong
+          = l current_profile.profile_artists.find_by(artist_id: @artist.id).created_at, format: '%e %b %Y'
 
     %hr.sep_0
 
@@ -99,21 +98,20 @@
     #artist_page_tracks.panel_content
 
       %h4
-
-        = link_to 'Top tracks:', artist_tracks_path
+        = link_to 'Top tracks:', artist_tracks_path(name: @artist.artist_name)
 
       .separator.sep_10.sep_default
       
       %table.table.table-hover.table-condensed#artist_page_tracks_content
         = render partial: 'track', collection: @tracks
 
-      .text_right
-        = link_to 'View more...', artist_tracks_path, class: 'btn btn-primary btn-sm'
+      .text_right.mg_top_10
+        = link_to 'View more...', artist_tracks_path(name: @artist.artist_name), class: 'btn btn-primary btn-sm'
 
     #artist_page_albums.panel_content
 
       %h4
-        = link_to 'Top albums:', artist_albums_path
+        = link_to 'Top albums:', artist_albums_path(name: @artist.artist_name)
 
       .separator.sep_10.sep_default
 
@@ -122,14 +120,14 @@
         = render partial: 'album', collection: @albums
 
       .text_right
-        = link_to 'View more...', artist_albums_path, class: 'btn btn-primary btn-sm'
+        = link_to 'View more...', artist_albums_path(name: @artist.artist_name), class: 'btn btn-primary btn-sm'
       
   %hr.sep_0
 
   #artist_page_similars.panel_content
 
     %h4
-      = link_to 'Similar artists:', artist_similar_artists_path
+      = link_to 'Similar artists:', artist_similar_artists_path(name: @artist.artist_name)
 
     .separator.sep_10.sep_default
 
@@ -137,18 +135,18 @@
 
       - @similars.map do |similar|
 
-        .artist.artist_170.mg_btm_10#artist_page_similar{id: similar.id}
-          = render 'actions', artist: similar
-          = link_to similar.artist_name do
+        .artist.artist_170#artist_page_similar{id: similar.id}
+          = render 'actions', artist: similar if logged_in?
+          = link_to artist_path(name: similar.artist_name) do
             .mg_btm_5
               = image_tag similar.artist_image, class: 'img_rnd'
             %h4
               %strong
                 = similar.name
 
-    .text_right
-      = link_to 'View more...', artist_similar_artists_path, class: 'btn btn-primary btn-sm'
+    .text_right.mg_top_10
+      = link_to 'View more...', artist_similar_artists_path(name: @artist.artist_name), class: 'btn btn-primary btn-sm'
 
 #image_modal.modal
   .modal-dialog.text_center
-    = image_tag @artist.artist_image.gsub('/300x300', ''), style: 'max-width:600px'
+    = image_tag @artist.artist_image.gsub('/300x300', '/600x600'), style: 'max-width:600px'

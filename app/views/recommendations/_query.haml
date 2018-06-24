@@ -11,19 +11,19 @@
             = link_to artist.name, library_artist_path(id: current_profile.id, name: artist.name)
         - else
           %h3
-            = fa_icon 'question'
+            %i.fas.fa-question
             = params[:artist]
 
     - if params.key?(:tag) && params[:tag].present?
       .inline.mid_align.recommendation_query_block
         %h3
-          = fa_icon 'tag'
+          %i.fas.fa-tag
           = link_to params[:tag].downcase, library_tag_path(id: current_profile.id, name: params[:tag].downcase)
 
     - if params.key?(:days) && params[:days].present?
       .inline.mid_align.recommendation_query_block
         %h3
-          = fa_icon 'calendar'
+          %i.far.fa-calendar
           = pluralize(params[:days], 'day')
 
   .separator.sep_0.sep_light

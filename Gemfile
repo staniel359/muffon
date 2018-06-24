@@ -6,37 +6,38 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt'
-gem 'bootstrap-sass'
+gem 'bootsnap', require: false
+gem 'bootstrap-datepicker-rails'
+gem 'bootstrap'
 gem 'carrierwave'
 gem 'coffee-rails'
-gem 'font-awesome-rails'
+gem 'country_select'
+gem 'flag-icons-rails'
 gem 'haml'
 gem 'jbuilder'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'listen'
 gem 'kaminari', github: 'kaminari'
 gem 'mini_magick'
 gem 'nokogiri'
 gem 'omniauth'
 gem 'omniauth-lastfm'
-gem 'pg', '0.21'
+gem 'pg'
 gem 'puma'
 gem 'rails'
 gem 'redis'
 gem 'remotipart'
 gem 'rest-client'
-gem 'sass-rails'
+gem 'rubocop', require: false
+gem 'sassc-rails'
 gem 'sidekiq'
-gem 'sidekiq-throttler'
 gem 'turbolinks'
 gem 'uglifier'
 
-group :development, :test do
-  gem 'byebug', platform: :mri
-end
+gem "backstage", :path => "/mnt/d/backstage"
 
 group :development do
+  gem 'byebug', platform: :mri
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'

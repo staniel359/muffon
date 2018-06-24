@@ -1,0 +1,26 @@
+#library_tracks_panel.panel.library_page.center
+
+  = render 'profiles/library/main/partials/panel_header'
+
+  .separator.sep_0.sep_light
+            
+  #library_tracks_panel_content.panel_content
+
+    .scope_order
+      #top_tracks_order.pull-right.inline
+        = render 'profiles/library/main/order/tracks'
+      #top_tracks_scope.pull-right.inline
+        = render 'profiles/library/main/scope/tracks'
+
+    %h4
+      = params[:show] == 'loved' ? 'Loved tracks:' : 'Tracks:'
+
+    .separator.sep_10.sep_default
+
+    #top_tracks
+      = render partial: "profiles/library/main/partials/#{params[:show] == 'loved' ? 'loved_tracks' : 'tracks'}"
+
+    %hr.sep_20
+
+    #tracks_paginate.text_center
+      = paginate (params[:show] == 'loved' ? @loved_tracks : @tracks)

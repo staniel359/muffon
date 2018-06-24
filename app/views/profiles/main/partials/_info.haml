@@ -1,0 +1,22 @@
+%h3
+  = @profile.nickname
+
+.separator.sep_10.sep_light
+
+- if @profile.gender.present? || @profile.name.present? || @profile.country.present? || @profile.city.present?
+
+  - if @profile.gender.present? || @profile.name.present?
+
+    %h5.mg_btm_5
+      %i.fas{class: "fa-#{@profile.gender&.downcase}"}
+      = @profile.name
+
+  %h5.mg_btm_10
+    = country_flag
+    = city_with_country
+
+- else
+
+  %h5.text-muted.mg_btm_5
+
+    No personal information provided.

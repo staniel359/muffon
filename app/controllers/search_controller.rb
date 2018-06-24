@@ -1,60 +1,76 @@
 class SearchController < ApplicationController
-  def search
-    @title = 'Search'
-
-    if params[:q].present?
-      search_on_lastfm
-    else
-      @artists = @albums = @tracks = []
-    end
-
-    respond_to do |format|
-      format.html
-      format.js { render layout: false }
-    end
+  def index
+    @page_data = {
+      title:       title,
+      search_data: search_data
+    }
+    respond_with_js_and_html
   end
 
   def artists
-    @title = 'Search for artist'
-    @artists = params[:q].present? ? search_for('artists', 20) : []
-
-    respond_to do |format|
-      format.html
-      format.js { render layout: false }
-    end
+    @page_data = {
+      title:   title,
+      artists: retrieve_artists
+    }
+    respond_with_js_and_html
   end
 
   def albums
-    @title = 'Search for album'
-    @albums = params[:q].present? ? search_for('albums', 20) : []
-
-    respond_to do |format|
-      format.html
-      format.js { render layout: false }
-    end
+    @page_data = {
+      title:   title,
+      albums:  retrieve_albums
+    }
+    respond_with_js_and_html
   end
 
   def tracks
-    @title = 'Search for track'
-    @tracks = params[:q].present? ? search_for('tracks', 50) : []
-
-    respond_to do |format|
-      format.html
-      format.js { render layout: false }
-    end
+    @page_data = {
+      title:   title,
+      tracks:  retrieve_tracks
+    }
+    respond_with_js_and_html
   end
 
 private
 
-  def search_on_lastfm
-    @artists = search_for('artists', 4)
-    @albums = search_for('albums', 5).first(4)
-    @tracks = search_for('tracks', 10)
+  def title
+    t("search.#{params[:action]}")
   end
 
-  def search_for(model, limit)
-    "Lastfm::Search::#{model.capitalize}".constantize.call(
-      q: params[:q], limit: limit
+  def search_data
+    LastFM::Search.call(params.slice(:q))
+  end
+
+  def retrieve_artists
+    artists_data = search_collection('artists', 20)
+    paginate(
+      paginate_array(
+        artists_data[:data], artists_data[:total_count]
+      )
+    )
+  end
+
+  def search_collection(collection, limit)
+    "LastFM::Search::#{collection.capitalize}".constantize.call(
+      params.slice(:q, :page).merge(limit: limit)
+    )
+  end
+
+  def retrieve_albums
+    albums_data = search_collection('albums', 20)
+    paginate(
+      paginate_array(
+        albums_data[:data], albums_data[:total_count]
+      )
+    )
+  end
+
+  def retrieve_tracks
+    tracks_data = search_collection('tracks', 20)
+    paginate(
+      paginate_array(
+        tracks_data[:data], tracks_data[:total_count]
+      )
     )
   end
 end

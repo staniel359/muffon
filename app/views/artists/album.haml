@@ -11,7 +11,7 @@
         .pull-right
           = link_to "https://#{@album.bandcamp_link}", target: '_blank' do
             %h4
-              = fa_icon 'bandcamp', data: {toggle: 'tooltip', placement: 'top'}, title: 'On Bandcamp'
+              %i.fab.fa-bandcamp{data: {toggle: 'tooltip', placement: 'top'}, title: 'On Bandcamp'}
 
     #artist_album_right.media-right.full_width
 
@@ -21,7 +21,7 @@
           = @album.title
         %h4.mg_btm_5
           = link_to @album.artist.name, artist_path
-        %h5.mg_btm_10
+        %h5.mg_btm_10.text-muted
           = @album.release_date
 
         - if @album.labels.present?
@@ -36,10 +36,13 @@
 
         #artist_album_tags.mg_btm_5
 
-          = fa_icon 'tags'
+          %i.fas.fa-tags
 
           - @tags.first(5).map do |tag|
-            = link_to tag.name, tag_path(tag.name), class: 'btn btn-primary btn-sm tag mg_btm_5'
+            .inline
+              = link_to tag_path(tag.name), class: 'btn btn-primary btn-sm tag mg_btm_5' do
+                %strong
+                  = tag.name
 
           - if @tags.length >= 5
 
@@ -48,23 +51,22 @@
 
       #artist_album_listens
         %h4.inline.mg_right_10
-          = fa_icon 'user'
+          %i.fas.fa-user
           = number_with_delimiter(@album['listeners'])
         %h4.inline
-          = fa_icon 'play'
+          %i.fas.fa-play
           = number_with_delimiter(@album['playcount'])
 
-      - if @album.description.present?
+      - if @album.album_description.present?
         .separator.sep_10.sep_default
 
         #artist_album_wiki
-          - description = @album.description.split('<a href')[0].html_safe
           %h5
-            = description.truncate_words(50)
+            = @album.truncated_description(50)
 
-            - if description.size >= 50
+            - if @album.album_description.split(' ').length >= 50
             
-              = button_tag 'Read more...', id: 'show_album_wiki', class: 'inv_btn_no_hover no_padding text-muted'
+              = link_to 'Read more...', artist_album_wiki_path, class: 'inv_btn_no_hover no_padding text-muted'
 
       %hr.sep_10
 
@@ -75,9 +77,4 @@
 
 #cover_modal.modal
   .modal-dialog.text_center
-    = image_tag @album.album_cover.gsub('/300x300', ''), style: 'max-width:600px'
-
-:javascript
-  $('#show_album_wiki').click(function() {
-    $('#artist_album_wiki > h5').html("#{ j description }")
-  });
+    = image_tag @album.album_cover.gsub('/300x300', '/600x600'), style: 'max-width:600px'

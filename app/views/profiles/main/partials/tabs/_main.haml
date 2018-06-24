@@ -1,0 +1,42 @@
+#profile_page_tabs
+  %ul.nav.nav-fill.panel_content
+    %li.nav-item
+      = link_to 'Home', '#home', class: 'nav-link active', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Board', '#board', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Plays', '#plays', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Tops', '#tops', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Groups', '#groups', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Playlists', '#playlists', class: 'nav-link', data: { toggle: 'tab' }
+
+  %hr.sep_0
+
+  .tab-content
+
+    #home.tab-pane.in.active
+
+      = render 'profiles/main/partials/tabs/home'
+
+    #board.tab-pane
+
+      = render 'profiles/main/partials/tabs/board'
+
+    #plays.tab-pane
+
+      = render 'profiles/main/partials/tabs/plays'
+
+    #tops.tab-pane
+
+      = render 'profiles/main/partials/tabs/tops'
+
+    #groups.tab-pane
+
+      = render 'profiles/main/partials/tabs/groups'
+
+    #playlists.tab-pane
+
+      = render 'profiles/main/partials/tabs/playlists'

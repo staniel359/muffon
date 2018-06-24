@@ -1,60 +1,81 @@
 class TagsController < ApplicationController
   def index
-    @title = 'Tags'
+    @page_data = {
+      title:    title
+    }
   end
 
   def show
-    @title = "#{params[:name]} tag"
-    @artists = tag_media[:artists]
-    @albums = tag_media[:albums]
-    @tracks = tag_media[:tracks]
+    @page_data = {
+      title: title,
+      tag_data: tag_data
+    }
   end
 
   def artists
-    @title = "#{params[:name]} tag - Top artists"
-    @artists = Kaminari.paginate_array(
-      set_tag_artists, total_count: 1000
-    ).page(params[:page]).per(21)
+    @page_data = {
+      title:   title,
+      artists: retrieve_artists
+    }
   end
 
   def albums
-    @title = "#{params[:name]} tag - Top albums"
-    @albums = Kaminari.paginate_array(
-      set_tag_albums, total_count: 1000
-    ).page(params[:page]).per(20)
+    @page_data = {
+      title:   title,
+      albums:  retrieve_albums
+    }
   end
 
   def tracks
-    @title = "#{params[:name]} tag - Top tracks"
-    @tracks = Kaminari.paginate_array(
-      set_tag_tracks, total_count: 1000
-    ).page(params[:page]).per(50)
+    @page_data = {
+      title:   title,
+      tracks:  retrieve_tracks
+    }
   end
 
 private
 
-  def tag_media
-    @tag_media ||= Lastfm::Tag::Media.call(name: params[:name])
-  end
-
-  def set_tag_artists
-    Lastfm::Tag::Artists.call(
-      name: params[:name],
-      page: params[:page]
+  def title
+    t(
+      "tags.#{params[:action]}",
+      tag: params[:tag_name]
     )
   end
 
-  def set_tag_albums
-    Lastfm::Tag::Albums.call(
-      name: params[:name],
-      page: params[:page]
+  def tag_data
+    LastFM::Tag.call(tag_name: params[:tag_name])
+  end
+
+  def retrieve_artists
+    artists_data = tag_collection('artists')
+    paginate(
+      paginate_array(
+        artists_data[:data], artists_data[:total_count]
+      )
     )
   end
 
-  def set_tag_tracks
-    Lastfm::Tag::Tracks.call(
-      name: params[:name],
-      page: params[:page]
+  def tag_collection(collection)
+    "LastFM::Tag::#{collection.capitalize}".constantize.call(
+      params.slice(:name, :page)
+    )
+  end
+
+  def retrieve_albums
+    albums_data = tag_collection('albums')
+    paginate(
+      paginate_array(
+        albums_data[:data], albums_data[:total_count]
+      )
+    )
+  end
+
+  def retrieve_tracks
+    tracks_data = tag_collection('tracks')
+    paginate(
+      paginate_array(
+        tracks_data[:data], tracks_data[:total_count]
+      )
     )
   end
 end

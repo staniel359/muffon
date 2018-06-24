@@ -6,7 +6,9 @@
 
   .panel_content
 
-    %h4 Images:
+    %h4
+      %i.fas.fa-images
+      Images:
 
     .separator.sep_10.sep_default
 
@@ -20,3 +22,8 @@
         #image_modal.modal{id: image.split('/').last}
           .modal-dialog.text_center
             = image_tag image.gsub('/avatar170s', ''), style: 'max-width:600px'
+
+    .text_center
+      .btn-group
+        = link_to_prev_page @images, '< Previous', class: 'btn btn-primary group_btn'
+        = link_to_next_page @images, 'Next >', class: 'btn btn-primary group_btn' unless @images.length < 40

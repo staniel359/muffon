@@ -1,0 +1,13 @@
+#library_tag_panel.panel.library_page.center
+
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+  
+  #library_tag_panel_content.panel_content
+    %h4
+      = "Albums (#{@tagging.album_taggings_count}):"
+
+    .separator.sep_10.sep_default
+
+    = render 'albums', taggings: @taggings

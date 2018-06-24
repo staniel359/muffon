@@ -1,0 +1,39 @@
+#profile_page_panel.center.panel
+
+  #profile_info_panel.panel_content.media
+
+    #profile_info_left.mr-3
+
+      #profile_avatar.mg_btm_10
+        = image_tag @profile.avatar.url(:md), class: 'img_rnd'
+
+      - if other_profile?(@profile)
+
+        #profile_actions.d-flex.flex-column.align-items-center
+
+          #follow_button.mg_btm_5{id: @profile.id}
+            = render 'relationships/follow_button', profile: @profile
+
+          = button_tag class: 'btn btn-primary btn-sm', onclick: "$('#profile_page_modal').modal();" do
+            %i.fas.fa-envelope
+            Message
+
+    #profile_info_right.media-right.w-100
+
+      = render 'profiles/main/partials/info'
+
+      - if @profile.plays.any?
+
+        = render 'profiles/main/partials/library'
+
+      - if other_profile?(@profile)
+
+        = render 'profiles/main/partials/common'
+
+  %hr.sep_0
+
+  = render 'profiles/main/partials/tabs/main'
+
+- if other_profile?(@profile)
+
+  = render 'profiles/main/modals/message'

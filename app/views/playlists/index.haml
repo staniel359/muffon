@@ -1,38 +1,30 @@
 #playlists_page.panel.panel_570.center
+
   .panel_header
-    %h3.inline
-      = @title
-    - if current_profile?(@profile)
-      .inline.pull-right
-        = button_tag class: 'btn btn-primary btn-sm inline', method: :get, remote: true, id: 'add_playlist_btn', onclick: 'openPlaylistPanel();' do
-          = fa_icon 'plus'
-          Add playlist
+
+    %h3.inline.panel_header_left
+      %i.fas.fa-list-ul
+      Playlists
+
+    .panel_header_right
+      .media-left
+        %h4
+          = link_to 'Your playlists', profile_playlists_path(id: current_profile.id)
+      .media-right
+        = image_tag current_profile.avatar.url(:sm), class: 'img_rnd img_30'
 
   .separator.sep_0.sep_light
 
-  #profile_playlists_content.panel_content
+  #playlists_content.panel_content
 
-    #add_playlist_panel.panel_content_right
-      .panel_header_sm
+    - if @playlists.any?
 
-        .pull-right
-          = button_tag id: 'close_playlist_form', class: 'btn btn-sm inv_btn', onclick: 'closePlaylistPanel();' do
-            Close
-            = fa_icon 'times'
+      %table.table.table-hover.table-condensed
+        = render @playlists
 
-        %h4 Add playlist:
+      .text_center
+        = paginate @playlists
 
-      .separator.sep_10.sep_default
+    - else
 
-      #playlist_flash_msgs
-
-      #new_playlist_form
-        = form_for Playlist.new, remote: true do |f|
-          .mg_btm_10
-            = f.text_field :name, placeholder: 'Enter playlist name:', class: 'input_transp'
-
-          .pull-right
-            = f.submit 'Create playlist', class: 'btn btn-primary'
-
-    #profile_playlists
-      = render 'playlists'
+      There are no playlists yet.

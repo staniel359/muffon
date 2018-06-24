@@ -1,0 +1,25 @@
+%ul.nav.nav-fill.panel_content
+  %li.nav-item.active
+    = link_to 'Artists', '#artists', class: 'nav-link active', data: { toggle: 'tab' }
+  %li.nav-item
+    = link_to 'Albums', '#albums', class: 'nav-link', data: { toggle: 'tab' }
+  %li.nav-item
+    = link_to 'Tracks', '#tracks', class: 'nav-link', data: { toggle: 'tab' }
+  %li.nav-item
+    = link_to 'Tags', '#tags', class: 'nav-link', data: { toggle: 'tab' }
+
+%hr.sep_0
+
+.tab-content.panel_content
+
+  #artists.tab-pane.active
+    = render 'profiles/library/main/partials/artists'
+
+  #albums.tab-pane
+    = render 'profiles/library/main/partials/albums'
+
+  #tracks.tab-pane
+    = render 'profiles/library/main/partials/tracks'
+
+  #tags.tab-pane
+    Top tags

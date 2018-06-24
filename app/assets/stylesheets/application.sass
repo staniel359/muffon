@@ -1,17 +1,12 @@
-@import "bootstrap-sprockets"
-@import "bootstrap"
-@import "font-awesome"
-
-$muffonLight: #4d377e
-$muffonDefault: #392d50
-$muffonDarkLight: #261a33
-$muffonDarkLightTransparent: rgba(38, 26, 51, 0.85)
-$muffonDark: #1c1326
-$boxShadow: 0 4px 4px 1px rgba(3, 3, 3, 0.4)
-$border: 1px solid $muffonDefault
+@import 'variables'
+@import 'pages'
+@import 'bootstrap'
+@import 'bootstrap-datepicker3'
+@import 'layouts'
+@import 'flag-icon'
 
 *
-  font-family: 'Open Sans'
+  font-family: Noto Sans
 
 html, body
   height: 100%
@@ -21,6 +16,18 @@ html, body
 
 h1, h2, h3, h4, h5, h6
   margin: 0
+h1
+  font-size: 36px
+h2
+  font-size: 30px
+h3
+  font-size: 24px
+h4
+  font-size: 18px
+h5
+  font-size: 14px
+h6
+  font-size: 12px
 
 a, a:hover, a:active, a:visited, a:focus
   color: white
@@ -28,6 +35,8 @@ a, a:hover, a:active, a:visited, a:focus
 
 input
   color: black
+input[type="checkbox"]
+  margin: 0
 
 label
   margin: 0
@@ -35,14 +44,21 @@ label
 canvas
   position: absolute
 
+.text-muted
+  color: #666777
+
 .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus
   background-color: $muffonDefault !important
   border: none
   color: white !important
+  outline: none !important
+  box-shadow: none !important
 .btn-default, .btn-default:hover, .btn-default:active, .btn-default:visited, .btn-default:focus
   background-color: $muffonLight !important
   border: none
   color: white !important
+  outline: none !important
+  box-shadow: none !important
 .btn-sm
   padding: 2px 10px
   font-size: 13px
@@ -60,6 +76,9 @@ canvas
   .play_btn, .playlist_add_btn
     opacity: 1
     transition: opacity 0.2s
+
+.group_btn, .group_btn:hover, .group_btn:active, .group_btn:visited, .group_btn:focus
+  border: $borderDarkLight
 
 .label-default, .label-default[href]:hover, .label-default[href]:focus
   background-color: $muffonDark
@@ -92,10 +111,6 @@ canvas
 .nav-tabs > li > a:hover, .nav-tabs > li > a:focus
   border-bottom: 2px solid $muffonDefault
 
-.nav-tabs > li
-  width: 33%
-  text-align: center
-
 .turbolinks-progress-bar
   height: 5px
   background-color: $muffonLight
@@ -108,10 +123,12 @@ canvas
 
 .inv_btn, .inv_btn_no_hover
   background-color: transparent
-  border: none
-  padding: 0
+  border: none  
+.inv_btn
   border-radius: 5px
-  padding: 5px
+  padding: 2px 5px
+.inv_btn_no_hover
+  padding: 0
 .inv_btn:hover
   background-color: $muffonDark
   color: white
@@ -121,9 +138,8 @@ canvas
   max-width: none
 
 .container-fluid
+  padding: 45px 15px 15px 65px
   min-height: 100%
-  padding: 45px 65px 30px 15px
-  margin: 0 0 0 50px
   position: relative
 
 .center
@@ -142,9 +158,14 @@ canvas
   padding: 5px
   li
     color: #333333
+  .button_to
+    padding: 3px
+    cursor: pointer
+  .button_to:hover
+    background-color: lightGrey
 
 .form_center
-  width: 400px
+  width: 500px
   margin: auto
 
 .rotated
@@ -164,8 +185,6 @@ canvas
   margin-top: 10px
 .mg_top_20
   margin-top: 20px
-.mg_right_5
-  margin-right: 5px
 .mg_right_10
   margin-right: 10px
 
@@ -225,13 +244,13 @@ hr
 
 .table
   margin: 0
-  margin-bottom: 10px
   thead tr th
     border: none
     border-bottom: 2px solid $muffonDefault
   tbody tr td
     border: none
     border-bottom: 1.5px solid $muffonDefault
+.table-hover
   tbody tr td:hover
     background-color: $muffonDark
 .media-body
@@ -268,12 +287,6 @@ hr
 .table_cell
   display: table-cell
 
-.text_left
-  text-align: left
-.text_center
-  text-align: center
-.text_right
-  text-align: right
 .top_align
   vertical-align: top
 .mid_align
@@ -283,8 +296,6 @@ hr
   width: 384px
   padding: 0 30px
 
-.full_width
-  width: 100%
 .full_height
   height: 100%
 
@@ -310,576 +321,11 @@ hr
     font-weight: bold
     line-height: 1
 
-.artist_actions
-  padding-top: 100%
-  position: absolute
-  width: 100%
-.artist_action
-  width: 50%
-  height: 50%
-  position: absolute
-  .inv_btn
-    color: rgba(255, 255, 255, 0.2)
-  .inv_btn:hover
-    background-color: transparent
-    color: white
-.rec_delete
-  text-align: center
-  float: left
-  top: 0
-.rec_del_btn
-  left: 0
-  width: 15px
-  height: 15px
-  border-radius: 2px
-  border: none
-  background-color: transparent
-  color: white
-  position: absolute
-  &:hover
-    background-color: red
-  i
-    left: 2px
-    position: absolute
-    top: 0
-
-.artist_library_sq
-  left: 50%
-  text-align: right
-  top: 0
-#artist_in_library_btn
-  top: 6px
-  right: 2px
-  position: absolute
-#add_artist_to_library_btn
-  top: 2px
-  right: 2px
-  position: absolute
-
-.artist_bookmark_sq
-  top: 50%
-#bookmark_artist_btn, #unbookmark_artist_btn
-  bottom: 2px
-  left: 2px
-  position: absolute
-
-.artist_listened_sq
-  top: 50%
-  left: 50%
-  text-align: right
-#check_artist_btn, #uncheck_artist_btn
-  bottom: 2px
-  right: 2px
-  position: absolute
-
-.plus_small
-  font-size: 10px
-
-// Layouts
-
-#up_search
-  width: 215px
-  margin-right: 6px
-  padding: 4px 8px
-  height: 35px
-  margin-left: -230px
-  z-index: -1
-  position: absolute
-  top: 0
-  form, input
-    font-size: 16px
-    background-color: $muffonDarkLight
-    border: none
-    color: white
-    line-height: 2
- 
-.up
-  display: inline-block
-  vertical-align: top
-  height: 100%
-  background-color: $muffonDarkLight
-  min-width: 10px
-  line-height: 1.2
-  box-shadow: $boxShadow
-#upbar
-  z-index: 2000
+.datepicker
   position: fixed
-  margin-left: 145px
-  height: 35px
-  a
-    vertical-align: top
-  img
-    width: 35px
-  .media-left
-    padding: 0
-  .media-right
-    padding: 10px
-    vertical-align: middle
-#logo
-  width: 130px
-  margin-right: 6px
-  text-align: center
-  padding: 10px
-  text-align: center
-  a
-    line-height: 0.6
-    font-size: 28px
-
-#scroll_top_btn
-  z-index: 1000
-  bottom: 15px
-  display: none
-
-#progress_bars
-  bottom: 15px
-  position: fixed
-  z-index: 100
-.prog_bar
-  background-color: $muffonDarkLightTransparent
-  margin-bottom: 0px
-  border: none
-  padding: 10px
-  width: 792px
-  box-shadow: $boxShadow
-  .progress-bar
-    background-color: $muffonLight
-  
-
-#sidebar
-  z-index: 1000
-  padding: 5px 10px
-  width: 50px
-  background-color: $muffonDarkLight
-  position: fixed
-  box-shadow: $boxShadow
-  #side_down_icons
-    bottom: 5px
-  i
-    text-align: center
-    font-size: 23px
-    width: 30px
-    margin: 5px 0
-  .fa-search
-    cursor: pointer
-.side_icon
-  position: relative
-
-audio
-  display: none
-input[type=range]
-  -webkit-appearance: none
-  width: 459px
-  display: inline-block
-  vertical-align: middle
-input[type=range]::-moz-focus-outer
-  border: 0
-input[type=range]:focus
-  outline: none
-
-input[type=range]::-webkit-slider-runnable-track
-  width: 100%
-  height: 4px
-  cursor: pointer
-  background: $muffonDark
-  -webkit-appearance: none
-input[type=range]::-moz-range-track
-  width: 100%
-  height: 4px
-  cursor: pointer
-  background: $muffonDark
-
-input[type=range]::-webkit-slider-thumb
-  height: 10px
-  width: 10px
-  border-radius: 5px
-  background: $muffonLight
-  cursor: pointer
-  -webkit-appearance: none
-  border: none
-  margin-top: -3px
-input[type=range]::-moz-range-thumb
-  height: 10px
-  width: 10px
-  border-radius: 5px
-  background: $muffonLight
-  cursor: pointer
-  border: none
-
-input[type=range]::-webkit-progress-value
   background-color: $muffonDefault
-  height: 4px
-input[type=range]::-moz-range-progress
-  background-color: $muffonDefault
-  height: 4px
+  table tr td span:hover, table tr td span.focused
+    background: $muffonLight
 
-.input_transp
-  background-color: $muffonDarkLight
-  border: none
-  border-bottom: $border
-  color: white
-  font-size: 20px
-  width: 100%
-  height: 35px
-  padding: 5px 0
-
-#player
-  z-index: 500
-  width: 100%
-  position: fixed
-  bottom: 0
-  height: 55px
-  background-color: $muffonDarkLightTransparent
-  box-shadow: 0 4px 4px 4px rgba(3, 3, 3, 0.4)
-  padding-left: 65px
-  #player_playing_now_track
-    position: relative
-    width: 222px
-    padding-left: 10px
-    display: table-cell
-    vertical-align: middle
-  #player_panel
-    position: relative
-    width: 570px
-    display: table-cell
-    vertical-align: middle
-    border-left: $border
-    border-right: $border
-    padding: 0 10px
-  #playing_now_button
-    margin: 15px
-    float: right
-    display: inline-block
-    i
-      font-size: 1.6em
-  #change_track_panel
-    display: inline-block
-    text-align: center
-    vertical-align: middle
-    margin-left: 10px
-#playing_now
-  height: 100%
-  width: 275px
-  background-color: $muffonDarkLightTransparent
-  position: fixed
-  right: 0
-  z-index: 400
-  box-shadow: $boxShadow
-#enqueued_tracks
-  height: 400px
-  overflow-y: scroll
-.list_playing_now_track
-  background-color: $muffonDark
-  .play_btn
-    opacity: 1
-    transition: opacity 0.2s
-#player_play_btn_icon
-  width: 20px
-  height: 20px
-
-#footer
-  height: 150px
-  background-color: $muffonDarkLight
-  padding: 20px 20px 20px 80px
-  position: relative
-
-#loading
-  background-color: $muffonDark+aa
-  position: fixed
-  width: 100%
-  height: 100%
-  text-align: center
-  z-index: 10
-  i
-    position: fixed
-    margin-top: 260px
-
-// Profile pages
-
-#profile_page_wall_panel
-  display: table-cell
-  vertical-align: top
-  width: 404px
-  border-right: $border
-#profile_page_playing_now_plays_panel
-  display: table-cell
-  vertical-align: top
-.profile_form, #settings_password_form
-  width: 360px
-  .form-control
-    margin-bottom: 5px
-#profile_remember
-  display: inline-block
-  width: 140px
-#form_birthdate, #form_avatar_info
-  display: flex
-#form_avatar
-  margin-right: 10px
-  label
-    width: 100%
-#form_info
-  width: 280px
-
-#percentage_wrap
-  display: inline-block
-  vertical-align: middle
-  width: 50px
-  height: 50px
-#percentage_circle_bg
-  fill: none
-  stroke: $muffonDefault
-  stroke-width: 3.5
-#percentage_circle
-  stroke: $muffonLight
-  fill: none
-  stroke-width: 3.5
-#percentage
-  fill: white
-  text-anchor: middle
-  font-size: 10px
-  font-weight: bold
-
-.popover-content
-  background-color: $muffonDark
-  box-shadow: $boxShadow
-  padding: 15px
-  text-align: center
-  width: 265px
-.popover
-  background-color: $muffonDark
-.popover.bottom > .arrow, .popover.bottom > .arrow::after
-  border-bottom-color: $muffonDark
-.tooltip_common_artist, .tooltip_common_album
-  display: inline-block
-  text-align: center
-  vertical-align: top
-  width: 75px
-  margin-bottom: 10px
-
-// Library pages
- 
-.track_options
-  float: right
-  margin-left: 5px
-  .created_at, .track_dropdown
-    display: inline-block
-    vertical-align: middle
-  .created_at
-    width: 75px
-  .track_actions_dropdown
-    left: 20px
-    top: -7px
-    color: black
-  .btn_group_first
-    border-radius: 3px 3px 0 0
-    border-bottom: 1px solid $muffonDarkLight
-  .btn_group_mid
-    border-bottom: 1px solid $muffonDarkLight
-    border-radius: 0
-  .btn_group_last
-    border-radius: 0 0 3px 3px
-  .playlists_dropdown
-    top: 61px
-    left: 45px
-    width: 150px
-    background-color: $muffonDarkLight
-    color: white
-    box-shadow: $boxShadow
-    padding: 10px
-    table
-      background-color: transparent
-#library_top_albums_panel, #library_new_loved_tracks
-  width: 405px
-  border-right: $border
-.scope_order .dropdown_btn
-  padding: 0 5px
-
-// Library artist pages
-
-.panel_right
-  padding-left: 20px
-#library_artist_panel
-  .artist_170
-    margin: 0 6px
-  .album_170, .album_170 img
-    width: 160px
-#library_artist_panel_left, #library_artist_album_left
-  padding-right: 20px
-#library_artist_panel_right, #library_artist_album_right
-  border-left: $border
-#library_artist_track_panel_left
-  width: 390px
-  padding: 0 20px 0 10px
-  display: table-cell
-#library_artist_track_panel_right
-  width: 382px
-  padding: 0 10px 0 20px
-  display: table-cell
-  border-left: $border
-
-// Tag pages
-
-.library_tagging_panel
-  display: inline-block
-  vertical-align: top
-  width: 234px
-  margin: 0 10px
-
-// Artist pages
-
-.page_info
-  padding-right: 10px
-#artist_page_tracks
-  display: table-cell
-  width: 388px
-  border-right: $border
-#artist_page_albums
-  display: table-cell
-  width: 404px
-.track_bar
-  margin-top: 5px
-  height: 5px
-  background-color: $muffonLight
-
-// Recommendations page
-
-.recommendation
-  margin-bottom: 10px
-  position: relative
-  background-color: $muffonDark
-  padding: 15px
-#recommendation_filter_content
-  padding: 20px 0
-.recommendation_filter
-  display: inline-block
-  width: 221px
-  margin: 0 20px
-#recommendation_center
-  width: 354px
-  padding-right: 10px
-#recommendation_right
-  width: 180px
-  padding-left: 10px
-  border-left: $border
-#recommendation_artist_name
-  font-size: 22px
-  margin-bottom: 7px
-.rec_restore
-  z-index: 50
-  background-color: $muffonDark+cc
-  margin: -15px 0 0 -15px
-  h4
-    margin: 90px 0 10px 0
-.recommendation_query_block
-  margin-right: 10px
-  max-width: 238px
-
-// Similar page
-
-.similar_artist
-  display: inline-block
-  vertical-align: top
-  margin-bottom: 10px
-  width: 248px
-  padding: 15px
-  background-color: $muffonDark
-
-// Tag page
-
-#tag_artists .panel_content_wide
-  margin: 0 -5px
-.tag_artist
-  display: inline-block
-  vertical-align: top
-  margin: 0 5px 20px
-  width: 241px
-  padding: 15px
-  background-color: $muffonDark
-  box-shadow: $boxShadow
-
-// Playlists page
-
-#playlist_name
-  margin: 0
-#playlist_form_name
-  width: 400px
-#track_search_results
-  margin-top: 10px
-.search_artist_tracks, .search_album_tracks
-  padding-left: 60px
-  .table
-    background-color: transparent
-.panel_content_right
-  display: none
-  position: absolute
-  width: 300px
-  border-left: $border
-  padding-left: 20px
-  left: 472px
-#playlist_search_results
-  height: 375px
-  overflow-y: scroll
-#add_playlist_panel
-  height: 460px
-.search_entry
-  display: inline-block
-  vertical-align: middle
-  .media-left
-    position: relative
-#playlist_page_btn_group
-  #add_tracks_btn
-    border-top-right-radius: 0
-    border-bottom-right-radius: 0
-    border-right: 1px solid $muffonDarkLight
-  #edit_playlist_btn
-    border-top-left-radius: 0
-    border-bottom-left-radius: 0
-.playlist_track_creds
-  display: inline-block
-  vertical-align: middle
-  width: 75%
-
-// Settings page
-
-#setting_panel_right
-  margin-left: 15px
-  width: 372px
-
-// Conversations page
-
-#conversation_messages
-  height: 420px
-  overflow-y: scroll
-
-// Contacts page
-
-.contacts_page_contacts
-  width: 374px
-  display: inline-block
-
-// Search page
-
-#search_results
-  position: relative
-  min-height: 70px
-
-// Group pages
-
-#group_name
-  margin: 0 10px 5px 0
-  display: inline-block
-  vertical-align: middle
-#group_content
-  display: inline-block
-  width: 538px
-  margin-right: 10px
-  vertical-align: top
-#group_people
-  padding-left: 10px
-  display: inline-block
-  width: 200px
-  vertical-align: top
-  border-left: $border
-.membership_btn
-  display: inline-block
-  vertical-align: middle
-  float: right
+.custom-select
+  padding: 0

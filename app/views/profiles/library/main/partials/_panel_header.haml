@@ -1,0 +1,17 @@
+.panel_header
+
+  .panel_header_left
+
+    %h3
+      %i.fas.fa-headphones
+      Library
+
+  .panel_header_right
+
+    .media-left.mid_align
+      %h4
+        = link_to @profile.nickname, profile_path
+    .media-right.mid_align
+      = image_tag @profile.avatar.url(:xs), class: 'img_rnd'
+
+.separator.sep_0.sep_light

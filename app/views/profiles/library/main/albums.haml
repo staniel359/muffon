@@ -1,0 +1,26 @@
+#library_albums_panel.panel.library_page.center
+
+  = render 'profiles/library/main/partials/panel_header'
+
+  .separator.sep_0.sep_light
+
+  #library_albums_panel_content.panel_content
+
+    .scope_order
+      #top_albums_order.pull-right.inline
+        = render 'profiles/library/main/order/albums'
+      #top_albums_scope.pull-right.inline
+        = render 'profiles/library/main/scope/albums'
+
+    %h4
+      Albums:
+
+    .separator.sep_10.sep_default
+
+    #top_albums
+      = render 'profiles/library/main/partials/albums'
+
+    %hr.sep_10
+
+    #albums_paginate.text_center
+      = paginate @albums

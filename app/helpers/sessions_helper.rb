@@ -1,5 +1,5 @@
 module SessionsHelper
-  def should_be_logged_out
+  def should_logout
     redirect_to root_path if logged_in?
   end
 
@@ -8,16 +8,28 @@ module SessionsHelper
   end
 
   def current_profile
-    profile_id = session[:profile_id] || cookies.signed[:profile_id]
+    return unless profile_id.present?
+
     @current_profile ||= Profile.find_by(id: profile_id)
+  end
+
+  def profile_id
+    return cookies.signed[:profile_id] if cookies.signed[:remember]
+
+    session[:profile_id]
+  end
+
+  def other_profile?(profile)
+    logged_in? && !current_profile?(profile)
   end
 
   def log_in(profile_id)
     session[:profile_id] = profile_id
+    cookies.permanent.signed[:profile_id] = profile_id
   end
 
-  def remember(profile_id)
-    cookies.permanent.signed[:profile_id] = profile_id
+  def remember_profile
+    cookies.permanent.signed[:remember] = true
   end
 
   def should_login
@@ -25,11 +37,13 @@ module SessionsHelper
 
     store_location
     redirect_to login_path
-    flash[:warning] = 'Please log in to access this page.'
+    flash[:warning] = t('sessions.should_login')
   end
 
   def store_location
-    session[:forwarding_url] = request.original_url if request.get?
+    return unless request.get?
+
+    session[:forwarding_url] = request.original_url
   end
 
   def current_profile?(profile)
@@ -39,5 +53,6 @@ module SessionsHelper
   def log_out
     session[:profile_id] = nil
     cookies.signed[:profile_id] = nil
+    cookies.signed[:remember] = nil
   end
 end

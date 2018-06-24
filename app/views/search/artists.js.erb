@@ -1,5 +1,5 @@
-$('.search_results').html("<%= j render 'artists' %>")
-$('#upbar').html("<%= j render 'layouts/upbar/search' %>")
+$('#search_results_content').html("<%= j render 'search/partials/artists' %>")
+$('#up_links').html("<%= j render 'layouts/upbar/search' %>")
 $('#loading').hide()
 
 url = "?q=<%= params[:q] %>"

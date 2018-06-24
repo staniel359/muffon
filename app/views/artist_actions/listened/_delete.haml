@@ -1,0 +1,3 @@
+#uncheck_artist.full_height
+  = button_to delete_from_listened_path(artist_id: artist.id), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Listened", class: 'inv_btn_no_hover check_artist_btn artist_action_btn' do
+    %i.fas.fa-check

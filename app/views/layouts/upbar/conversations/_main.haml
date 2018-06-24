@@ -1,0 +1,22 @@
+.up
+  .media-right
+    %i.fas.fa-comments
+    = link_to 'Conversations', conversations_path
+
+- if params[:action] == 'show'
+
+  .up
+
+    - if @recipient.present?
+
+      .media-left
+        = link_to image_tag(@recipient.avatar.url(:md)), profile_path(@recipient)
+      .media-right
+        = link_to @recipient.nickname, profile_path(@recipient)
+
+    - else
+
+      .media-left
+        = image_tag 'md_avatar_default'
+      .media-right.text-muted
+        Deleted profile

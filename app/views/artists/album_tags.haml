@@ -4,18 +4,23 @@
       .media-left.mid_align
         = image_tag @album.album_cover, class: 'img_50'
       .media-right.mid_align
-        %h4
+        %h3
           = link_to @album.title, artist_album_path
-        %h5
+        %h4
           = link_to @artist.name, artist_path
 
   .separator.sep_0.sep_light
 
   .panel_content
 
-    %h4 Tags:
+    %h4
+      %i.fas.fa-tags
+      Tags:
 
     .separator.sep_10.sep_default
 
     - @tags.map do |tag|
-      = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag'
+      .inline
+        = link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
+          %strong
+            = tag.name

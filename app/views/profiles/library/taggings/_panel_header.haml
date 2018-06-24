@@ -1,0 +1,13 @@
+.panel_header
+
+  .panel_header_left
+    %h3
+      %i.fas.fa-tags
+      = @tagging&.tag&.name || params[:name]
+
+  .panel_header_right
+    .media-left
+      %h4
+        = link_to "#{@profile.nickname} | Taggings", library_taggings_path
+    .media-right
+      = image_tag @profile.avatar.url(:xs), class: 'img_rnd'

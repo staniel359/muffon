@@ -1,0 +1,35 @@
+.panel_header
+
+  .panel_header_left
+
+    .media-left
+
+      - if %w[album album_plays].include?(params[:action])
+        = image_tag @album.album.album_cover, class: 'img_30'
+      - else
+        = image_tag @artist.artist.artist_image, class: 'img_rnd img_30'
+
+    .media-right
+
+      - if %w[album album_plays].include?(params[:action])
+        %h4
+          = @album.album.title
+        %h5
+          = @artist.artist.name
+      - elsif %w[track track_plays].include?(params[:action])
+        %h4
+          = @track.track.title
+        %h5
+          = @artist.artist.name
+      - else
+        %h4
+          = @artist.artist.name
+
+  .panel_header_right
+
+    .media-left
+      %h4
+        = link_to "#{@profile.nickname} | Artists", library_artists_path
+
+    .media-right
+      = image_tag @profile.avatar.url(:xs), class: 'img_rnd'

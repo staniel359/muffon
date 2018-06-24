@@ -6,12 +6,18 @@
 
   .artist_albums_page_albums.panel_content
 
-    %h4 Albums:
+    %h4
+      %i.fas.fa-dot-circle
+      Albums:
 
     .separator.sep_10.sep_default
 
     .panel_content_wide
       = render partial: 'album', collection: @albums
 
-    .text_center.mg_top_10
-      = paginate @albums
+  %hr.sep_0
+
+  .text_center.panel_content
+    .btn-group
+      = link_to_prev_page @albums, '< Previous', class: 'btn btn-primary group_btn'
+      = link_to_next_page @albums, 'Next >', class: 'btn btn-primary group_btn' unless @albums.length < 20

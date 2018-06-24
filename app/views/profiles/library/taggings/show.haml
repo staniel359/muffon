@@ -1,0 +1,44 @@
+#library_tagging_panel.panel.library_page.center
+
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+
+  - if @tagging.present?
+
+    #library_tagging_panel_content
+
+      .library_tagging_panel.panel_content.border_right
+        %h4
+          = link_to "Artists (#{@tagging.artist_taggings_count}):", library_artists_tagging_path
+
+        .separator.sep_10.sep_default
+
+        = render 'artists', taggings: @artist_taggings.first(5)
+
+      .library_tagging_panel.panel_content.border_right
+        %h4
+          = link_to "Albums (#{@tagging.album_taggings_count}):", library_albums_tagging_path
+
+        .separator.sep_10.sep_default
+
+        = render 'albums', taggings: @album_taggings.first(5)
+
+      .library_tagging_panel.panel_content
+        %h4
+          = link_to "Tracks (#{@tagging.track_taggings_count}):", library_tracks_tagging_path
+
+        .separator.sep_10.sep_default
+
+        = render 'tracks', taggings: @track_taggings.first(5)
+
+  - else
+
+    .panel_content
+      %h4
+        - if current_profile?(@profile)
+          You haven't
+        - else
+          = @profile.nickname
+          hasn't
+        tagged anything with this tag.

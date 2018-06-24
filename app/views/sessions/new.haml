@@ -1,24 +1,13 @@
 #login_form.form_center.panel
-	.panel_header
-		%h3 muffon | Log in
+  .panel_header
+    %h4 Log in
 
-	.separator.sep_0.sep_light
+  .separator.sep_0.sep_light
 
-	.panel_content
-		.profile_form
-			.flash_msg
-				= render 'shared/flash_messages'
-			= form_for :session, remote: true do |f|
-				= f.email_field :email, class: 'form-control', placeholder: 'Email:', required: true
-				= f.password_field :password, class: 'form-control', placeholder: 'Password:', required: true
-				#profile_remember
-					.media-left.mid_align
-						= f.check_box :remember_me
-					.media-body.mid_align
-						= f.label :remember_me, 'Remember me'
-				.inline.pull-right
-					= f.submit 'Log in', class: 'btn btn-primary'
-		%br
-		%h5.text_center
-			Don't have an account?
-			= link_to 'Sign up', signup_path, class: 'btn btn-primary btn-sm'
+  .panel_content
+
+    = render 'login_form'
+
+    %h6.mg_top_10.text-center
+      Don't have an account?
+      = link_to 'Sign up', signup_path

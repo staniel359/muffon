@@ -2,120 +2,169 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
+  mount Backstage::Engine, at: '/backstage'
   mount ActionCable.server => '/cable'
 
-  root 'muffon#home'
+  root 'muffon#root'
 
-  get 'auth/lastfm/callback', to: 'profiles#new'
-  post '/auth/lastfm/callback', to: 'profiles#create'
-  get '/signup', to: 'profiles#new'
-  post '/signup', to: 'profiles#create'
+  get '/auth/lastfm/callback', to: 'accounts#new'
 
-  resources :profiles
+  get '/signup', to: 'signup#new'
+  post '/signup', to: 'signup#create'
 
-  scope 'profiles/:id' do
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
-    scope 'library' do
-      get '/', to: 'library#show', as: 'library'
+  resources :profiles, except: %i[new create], param: 'profile_id',
+    controller: 'profiles/main'
+  namespace :profiles do
+    scope ':profile_id' do
+      resources :groups, only: :index
 
-      get 'search', to: 'library#search', as: 'library_search'
+      resources :playlists, param: 'playlist_name'
+      namespace :playlists do
+        scope ':playlist_name' do
+          resources :tracks, only: %i[create destroy]
+          get '/search', to: 'tracks#search'
+          resources :profile_tracks, only: :create
 
-      get '/library_scope', to: 'library#library_scope', as: 'library_scope'
-      patch '/library_default_scope', to: 'library#library_default_scope', as: 'library_default_scope'
+          resources :profile_artists, only: :create
+          get '/search/artists/:profile_artist_id/tracks',
+            to: 'profile_artists#show_tracks',
+            as: 'artist_show_tracks'
+          resources :artists, only: :destroy
 
-      scope '/artists/:name', constraints: { name: /[^\/]+/ } do
-        get '/', to: 'library_artists#show', as: 'library_artist'
-        get '/tracks', to: 'library_artists#tracks', as: 'library_artist_tracks'
-        get '/tracks/:title', to: 'library_artists#track', as: 'library_artist_track', constraints: { title: /[^\/]+/ }
-        get '/tracks/:title/plays', to: 'library_artists#track_plays', as: 'library_artist_track_plays', constraints: { title: /[^\/]+/ }
-        get '/albums', to: 'library_artists#albums', as: 'library_artist_albums'
-        get '/albums/:title', to: 'library_artists#album', as: 'library_artist_album', constraints: { title: /[^\/]+/ }
-        get '/albums/:title/plays', to: 'library_artists#album_plays', as: 'library_artist_album_plays', constraints: { title: /[^\/]+/ }
-        get '/plays', to: 'library_artists#plays', as: 'library_artist_plays'
+          resources :albums, only: %i[create destroy]
+          get '/search/albums/:profile_album_id/tracks',
+            to: 'profile_albums#show_tracks',
+            as: 'album_show_tracks'
+          resources :profile_albums, only: :create
+        end
       end
-      post '/artists/:artist_id', to: 'library_artists#create', as: 'create_library_artist'
 
-      get '/artists', to: 'library#artists', as: 'library_artists'
-      get '/albums', to: 'library#albums', as: 'library_albums'
-      get '/tracks', to: 'library#tracks', as: 'library_tracks'
-      get '/plays', to: 'library#plays', as: 'library_plays'
-      
-      scope '/tags' do
-        get '/', to: 'library_tags#index', as: 'library_tags'
-        get '/:name', to: 'library_tags#show', as: 'library_tag'
-        get '/:name/artists', to: 'library_tags#artists', as: 'library_artists_tag'
-        get '/:name/albums', to: 'library_tags#albums', as: 'library_albums_tag'
-        get '/:name/tracks', to: 'library_tags#tracks', as: 'library_tracks_tag'
+      namespace :library do
+        get '/', to: 'main#show'
+
+        get '/search', to: 'main#search'
+
+        get '/scope', to: 'main#scope'
+        patch '/default_scope', to: 'main#default_scope'
+
+        scope '/artists/:name' do
+          get '/', to: 'artists#show', as: 'artist'
+
+          scope '/tracks' do
+            get '/', to: 'artists#tracks', as: 'artist_tracks'
+            get '/:title', to: 'artists#track', as: 'artist_track'
+            get '/:title/plays', to: 'artists#track_plays', as: 'artist_track_plays'
+          end
+
+          scope '/albums' do
+            get '/', to: 'artists#albums', as: 'artist_albums'
+            get '/:title', to: 'artists#album', as: 'artist_album'
+            get '/:title/plays', to: 'artists#album_plays', as: 'artist_album_plays'
+          end
+
+          get '/plays', to: 'artists#plays', as: 'artist_plays'
+        end
+
+        get '/artists', to: 'main#artists'
+        get '/albums', to: 'main#albums'
+        get '/tracks', to: 'main#tracks'
+        get '/plays', to: 'main#plays'
+
+        scope '/tags' do
+          get '/', to: 'tags#index', as: 'tags'
+          get '/:tag_name', to: 'tags#show', as: 'tag'
+        end
+        
+        scope '/taggings' do
+          get '/', to: 'taggings#index', as: 'taggings'
+
+          scope '/:tagging_name' do
+            get '/', to: 'taggings#show', as: 'tagging'
+            get '/artists', to: 'taggings#artists', as: 'tagging_artists'
+            get '/albums', to: 'taggings#albums', as: 'tagging_albums'
+            get '/tracks', to: 'taggings#tracks', as: 'tagging_tracks'
+          end
+        end
+      end
+
+      resources :contacts, only: :index
+      scope 'contacts' do
+        get '/followers', to: 'contacts#followers', as: 'followers'
+        get '/following', to: 'contacts#following', as: 'following'
       end
     end
-
-    resources :playlists, param: 'playlist_name'
-    get '/show_playlists', to: 'playlists#show_playlists', as: 'show_playlists'
-    post '/tracks/:track_id/add_track_to_playlists', to: 'playlist_tracks#add_track_to_playlists', as: 'add_track_to_playlists'
-
-    scope '/playlists/:playlist_name' do
-      post '/tracks/:profile_track_id', to: 'playlist_tracks#add_profile_track', as: 'playlist_add_profile_track'
-      post '/tracks/:track_id', to: 'playlist_tracks#add_track', as: 'playlist_add_track'
-      delete '/tracks/:track_id', to: 'playlist_tracks#delete_track', as: 'playlist_delete_track'
-
-      post '/artists/:profile_artist_id', to: 'playlist_tracks#add_profile_artist', as: 'playlist_add_profile_artist'
-      delete '/artists/:artist_id', to: 'playlist_tracks#delete_artist', as: 'playlist_delete_artist'
-
-      post '/albums/:profile_album_id', to: 'playlist_tracks#add_profile_album', as: 'playlist_add_profile_album'
-      post '/albums/:album_id', to: 'playlist_tracks#add_album', as: 'playlist_add_album'
-      delete '/albums/:album_id', to: 'playlist_tracks#delete_album', as: 'playlist_delete_album'
-
-      get '/search', to: 'playlist_tracks#search', as: 'playlist_search'
-      get '/search/artists/:profile_artist_id/tracks', to: 'playlist_tracks#show_artist_tracks', as: 'playlist_search_artist_tracks'
-      get '/search/albums/:profile_album_id/tracks', to: 'playlist_tracks#show_album_tracks', as: 'playlist_search_album_tracks'
-    end
-
-    scope 'contacts' do
-      get '/', to: 'relationships#contacts', as: 'profile_contacts'
-      get '/followers', to: 'relationships#followers', as: 'profile_followers'
-      get '/following', to: 'relationships#following', as: 'profile_following'
-    end
-
-    get '/groups', to: 'groups#profile_groups', as: 'profile_groups'
   end
 
-  scope '/artists/:name' do
-    get '/', to: 'artists#show', as: 'artist', constraints: { name: /[^\/]+/ }
-    get '/images', to: 'artists#images', as: 'artist_images', constraints: { name: /[^\/]+/ }
-    get '/tracks', to: 'artists#tracks', as: 'artist_tracks', constraints: { name: /[^\/]+/ }
-    get '/albums', to: 'artists#albums', as: 'artist_albums', constraints: { name: /[^\/]+/ }
-    get '/albums/:title', to: 'artists#album', as: 'artist_album', constraints: { name: /[^\/]+/, title: /[^\/]+/ }
-    get '/albums/:title/tags', to: 'artists#album_tags', as: 'artist_album_tags', constraints: { name: /[^\/]+/, title: /[^\/]+/ }
+  get '/follow/:followed_id', to: 'relationships#follow', as: 'follow'
+  get '/unfollow/:followed_id', to: 'relationships#unfollow', as: 'unfollow'
+
+  scope '/tracks/:track_id' do
+    get '/message_modal',
+      to: 'track_actions#message_modal',
+      as: 'track_message_modal'
+    get '/playlists_modal',
+      to: 'track_actions#playlists_modal',
+      as: 'track_playlists_modal'
+    post '/add_to_playlists',
+      to: 'track_actions#add_to_playlists',
+      as: 'track_add_to_playlists'
+  end
+
+  scope '/artists/:artist_name' do
+    get '/', to: 'artists#show', as: 'artist'
+    get '/images', to: 'artists#images', as: 'artist_images'
+    get '/tracks', to: 'artists#tracks', as: 'artist_tracks'
+    get '/albums', to: 'artists#albums', as: 'artist_albums'
+    scope '/albums/:album_title' do
+      get '/', to: 'artists#album', as: 'artist_album'
+      get '/tags', to: 'artists#album_tags', as: 'artist_album_tags'
+      get '/wiki', to: 'artists#album_wiki', as: 'artist_album_wiki'
+    end
     get '/similar', to: 'artists#similar_artists', as: 'artist_similar_artists'
     get '/wiki', to: 'artists#wiki', as: 'artist_wiki'
     get '/tags', to: 'artists#tags', as: 'artist_tags'
-
     get '/listeners', to: 'artists#listeners', as: 'artist_listeners'
     get '/plays', to: 'artists#plays', as: 'artist_plays'
   end
 
-  resources :tags, only: %i[index show], param: :name
-  get '/tags/:name/artists', to: 'tags#artists', as: 'tag_artists'
-  get '/tags/:name/albums', to: 'tags#albums', as: 'tag_albums'
-  get '/tags/:name/tracks', to: 'tags#tracks', as: 'tag_tracks'
+  resources :tags, only: %i[index show], param: :tag_name
+  scope '/tags/:tag_name' do
+    get '/artists', to: 'tags#artists', as: 'tag_artists'
+    get '/albums', to: 'tags#albums', as: 'tag_albums'
+    get '/tracks', to: 'tags#tracks', as: 'tag_tracks'
+  end
 
-  resources :labels, only: :show, param: :name
+  resources :labels, only: :show, param: :label_name
+
+  resources :playlists, only: :index
 
   resources :groups, param: :group_id
+  namespace :groups do
+    scope '/:group_id' do
+      post '/join', to: 'memberships#create', as: 'join_group'
+      post '/leave', to: 'memberships#destroy', as: 'leave_group'
+    end
+  end
 
-  post '/join_group', to: 'memberships#join', as: 'join_group'
-  post '/leave_group', to: 'memberships#leave', as: 'leave_group'
+  get '/bookmarks', to: 'bookmarks#index', as: 'bookmarks'
 
-  get '/follow', to: 'relationships#create', as: 'follow'
-  get '/unfollow', to: 'relationships#destroy', as: 'unfollow'
+  namespace :artist_actions do
+    resources :bookmarks, only: %i[create destroy], param: :bookmark_id
+    resources :listened_artists, only: %i[create destroy],
+      param: :listened_artist_id
+    resources :library_artists, only: %i[create destroy],
+      param: :library_artist_id
+  end
 
-  resources :listened_artists, only: %i[create destroy]
-  resources :bookmarks, only: %i[index create destroy]
-
-  get '/import_plays', to: 'muffon#import_plays'
-
-  resources :conversations, only: [:index, :show, :destroy]
-  resources :messages, only: [:new, :create, :destroy]
+  resources :conversations, only: %i[index show destroy],
+    param: :conversation_id, controller: 'conversations/main'
+  namespace :conversations do
+    resources :messages, only: %i[new create destroy], param: :message_id
+  end
 
   get '/notifications', to: 'muffon#notifications'
 
@@ -132,10 +181,10 @@ Rails.application.routes.draw do
   patch '/confirm_track', to: 'player#confirm_track'
 
   scope '/search' do
-    get '/', to: 'search#search', as: 'search'
-    get '/artist', to: 'search#artists', as: 'search_artists'
-    get '/album', to: 'search#albums', as: 'search_albums'
-    get '/track', to: 'search#tracks', as: 'search_tracks'
+    get '/', to: 'search#index', as: 'search'
+    get '/artists', to: 'search#artists', as: 'search_artists'
+    get '/albums', to: 'search#albums', as: 'search_albums'
+    get '/tracks', to: 'search#tracks', as: 'search_tracks'
   end
 
   get '/recommendations', to: 'recommendations#index'
@@ -148,8 +197,4 @@ Rails.application.routes.draw do
   get '/help', to: 'muffon#help'
   get '/contribute', to: 'muffon#contribute'
   get '/contact', to: 'muffon#contact'
-
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
 end

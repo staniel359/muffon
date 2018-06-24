@@ -1,7 +1,0 @@
-$('.container-fluid').html("<%= j render 'search' %>")
-$('.search_results').html("<%= j render 'search_results' %>")
-$('#upbar').html("<%= j render 'layouts/upbar/search' %>")
-$('#loading').hide()
-
-url = "/search?q=<%= params[:q] %>"
-window.history.pushState({turbolinks: true, url: url}, '', url)

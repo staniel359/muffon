@@ -8,14 +8,13 @@
           = render 'player/list_play_button'
         - else
           = button_to play_path(artist: @artist.name, track: track.title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
-            = fa_icon 'play'
-
+            %i.fas.fa-play
 
     .media-body.mid_align
 
       .track_options
 
-        = render 'shared/track_dropdown', track: track
+        = render 'muffon/track_dropdown', track: track
 
       %h5
         %strong

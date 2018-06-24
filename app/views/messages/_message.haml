@@ -14,10 +14,13 @@
 
     .media-body
 
-      %h6.text-muted.pull-right
-        = l message.created_at, format: "%e %b %Y, %H:%M"
+      .text-muted.pull-right.text_right
+        %h6
+          = l message.created_at, format: "%e %b %Y"
+        %h6
+          = l message.created_at, format: "%H:%M"
 
-      %h5
+      %h5.mg_btm_5
 
         - if message.profile.present?
 
@@ -25,6 +28,20 @@
 
         - else
 
-          = 'Deleted Profile'
-      %h4
-        = message.content
+          .text-muted
+            Deleted Profile
+
+      - if message.content.present?
+
+        %h4.mg_btm_5
+          = message.content
+
+      - if message.track_ids.present?
+
+        %table.table.message_content.table-condensed
+
+          - message.track_ids.map do |track_id|
+
+            - track = Track.find_by(id: track_id)
+
+            = render 'messages/track', track: track

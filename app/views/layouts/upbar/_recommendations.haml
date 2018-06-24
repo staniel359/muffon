@@ -1,11 +1,9 @@
-.up#logo
-  = link_to 'muffon', root_path
-
 .up
   .media-right
     = link_to 'Recommendations', recommendations_path
 
 - if params[:artist].present?
+
   .up
     - artist = Artist.find_by('lower(name) = lower(?)', CGI.unescape(params[:artist]))
     - if artist.present?
@@ -20,18 +18,18 @@
         = params[:artist]
 
 - if params[:tag].present?
+
   .up
-    - tag = Tag.find_by_name(CGI.unescape(params[:tag]))
-    - if tag.present?
-      .media-right
-        = fa_icon 'tag'
+    .media-right
+      %i.fas.fa-tag
+      - tag = Tag.find_by_name(CGI.unescape(params[:tag]))
+      - if tag.present?
         = link_to tag.name, recommendations_path(tag: tag.name)
-    - else
-      .media-right
-        = fa_icon 'tag'
+      - else
         = params[:tag]
 
 - if params[:days].present?
+
   .up
     .media-right
       = link_to pluralize(params[:days], 'day'), recommendations_path(days: params[:days])

@@ -1,7 +1,0 @@
-$('#profile_playlists').html("<%= j render 'playlists' %>")
-$('#playlist_flash_msgs').html('')
-<% if params[:action] == 'create' %>
-  $('#add_playlist_panel').hide('slide', {direction: 'right'}, 400)
-  $("input#playlist_name").val('')
-  $('#profile_playlists').animate({width:'752'}, 400)
-<% end %>

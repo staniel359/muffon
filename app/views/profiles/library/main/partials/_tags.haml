@@ -1,0 +1,17 @@
+- if @tags.any?
+
+  - @tags.map do |tag|
+
+    .inline
+      = link_to profiles_library_tag_path(tag_name: Tag.find(tag[0]).name), class: 'btn btn-primary btn-sm tag' do
+        %strong
+          = Tag.find(tag[0]).name
+        = "(#{tag[1]})"
+
+  .text_right.mg_top_10
+    = link_to "View more...", profiles_library_tags_path, class: 'btn btn-primary btn-sm'
+
+- else
+
+  = current_profile?(@profile) ? 'You have' : "#{@profile.nickname} has"
+  no tags yet.

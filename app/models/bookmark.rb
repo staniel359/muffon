@@ -1,6 +1,6 @@
 class Bookmark < ApplicationRecord
   belongs_to :profile
-  belongs_to :artist, optional: true
-  belongs_to :album, optional: true
-  belongs_to :track, optional: true
+  belongs_to :bookmarkable, polymorphic: true, optional: true
+
+  validates :bookmarkable_type, :bookmarkable_id, presence: true
 end

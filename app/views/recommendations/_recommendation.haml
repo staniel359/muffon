@@ -21,10 +21,10 @@
 
       #recommendation_stats
         %h4.inline
-          = fa_icon 'user'
+          %i.fas.fa-user
           = number_with_delimiter(recommendation.artist.listeners || 0)
         %h4.inline
-          = fa_icon 'music'
+          %i.fas.fa-music
           = number_with_delimiter(recommendation.artist.playcount || 0)
 
       .separator.sep_10.sep_default

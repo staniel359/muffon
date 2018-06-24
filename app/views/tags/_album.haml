@@ -4,8 +4,8 @@
     %h4
       %strong
         = album.title
-  %h5.mg_btm_5
+  %h5
     = link_to album.artist.name, artist_path(name: album.artist.artist_name)
   %h5
-    = fa_icon 'user'
+    %i.fas.fa-user
     = number_with_delimiter(album.listeners)

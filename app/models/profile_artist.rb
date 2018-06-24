@@ -1,16 +1,16 @@
 class ProfileArtist < ApplicationRecord
   belongs_to :profile, counter_cache: :artists_count
-  belongs_to :artist
+  belongs_to :artist, counter_cache: :listeners_count
+
   has_many :profile_tracks, dependent: :destroy
   has_many :profile_albums, dependent: :destroy
   has_many :plays, dependent: :destroy
-  has_many :loved_tracks
+  has_many :loved_tracks, -> { where(loved: 1) }, class_name: 'ProfileTrack'
   has_many :taggings, as: :profile_model
   has_many :profile_tags, through: :artist_taggings
   has_many :playlist_tracks
-  validates :profile_id, :artist_id, presence: true
 
-  default_scope { order(playcount: :desc, id: :asc) }
+  validates :profile_id, :artist_id, presence: true
 
   def recommendations
     profile.recommendations.where('? = any(profile_artists)', id)

@@ -1,0 +1,16 @@
+- if current_profile.lastfm_id.present?
+
+  .d-flex.justify-content-between
+
+    .media
+
+      %i.fab.fa-lastfm-square.fa-2x.mr-2.align-self-center
+      .media-right.align-self-center
+        = link_to current_profile.lastfm_id, "https://last.fm/user/#{current_profile.lastfm_id}", target: '_blank'
+        (current)
+
+    -# = link_to 'Import you library', import_plays_path(do: 'import'), class: 'btn btn-primary', method: :get, remote: true
+
+- else
+
+  = link_to 'Connect your Last.fm account', '/auth/lastfm', class: 'btn btn-primary'

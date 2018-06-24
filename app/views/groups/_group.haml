@@ -1,8 +1,13 @@
 %tr
   %td
+
     .media-left.mid_align
-      = image_tag group.avatar.url(:sm), class: 'img_rnd'
+
+      = link_to group_path(group_id: group.id) do
+        = image_tag group.avatar.url(:sm), class: 'img_rnd'
+
     .media-body.mid_align
+
       #membership_btn.inline.mid_align.pull-right{id: group.id }
         = render partial: 'memberships/membership_button', locals: { group_id: group.id }
       %h4

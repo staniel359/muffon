@@ -1,0 +1,52 @@
+- if params[:action] == 'albums'
+
+  %hr.sep_0
+
+  .panel_content
+
+    %h4
+      Search results for
+      %strong
+        = "\"#{params[:q]}\""
+
+  %hr.sep_0
+
+.panel_content
+
+  %h4
+    %strong
+
+      - if params[:action] == 'albums'
+
+        Albums:
+
+      - else
+
+        = link_to 'Albums:', search_albums_path(q: params[:q])
+
+  .separator.sep_10.sep_default
+
+  - if @albums.present?
+
+    .panel_content_wide
+
+      - @albums.map do |album|
+
+        = render 'search/partials/album', album: album
+
+    - if params[:action] == 'index'
+
+      .text_right
+        = link_to 'View more...', search_albums_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+
+    - else
+
+      .text_center
+        .btn-group
+          = link_to_prev_page @albums, '< Previous', class: 'btn btn-primary group_btn'
+          = link_to_next_page @albums, 'Next >', class: 'btn btn-primary group_btn' unless @albums.length < 20
+
+  - else
+
+    %h5
+      Nothing was found.

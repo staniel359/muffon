@@ -1,0 +1,36 @@
+#message_modal.modal.fade
+  .modal-dialog
+    #message_modal_content.modal-content
+
+      .modal-header
+
+        %h4
+          Send track in message:
+
+      = form_for current_profile.messages.new, remote: true do |f|
+
+        .modal-body
+
+          #message_flash
+
+          .mg_btm_10
+            = text_field_tag :to, '', placeholder: 'Enter profile nickname...', class: 'form-control'
+          .mg_btm_10
+            = f.text_area :content, placeholder: 'Enter message', class: 'form-control'
+          = f.hidden_field :track_ids, value: params[:track_id], multiple: true
+
+        .modal-footer
+
+          .pull-right
+            = f.submit 'Send', class: 'btn btn-primary'
+
+          - track = Track.find_by(id: params[:track_id])
+
+          .media-left.mid_align
+            = image_tag track.artist.image, class: 'img_rnd img_30'
+
+          .media-body.mid_align
+            %h4
+              = track.title
+            %h5
+              = track.artist.name

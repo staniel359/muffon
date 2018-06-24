@@ -1,0 +1,4 @@
+$("#artist_bookmark_<%= params[:artist_id] %>").html(
+  "<%= j render 'artist_actions/bookmarks/delete', artist: @artist %>"
+)
+$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})

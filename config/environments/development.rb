@@ -13,18 +13,22 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp/caching-dev.txt').exist?
-    config.action_controller.perform_caching = false
-
-    config.cache_store = :memory_store
-    config.public_file_server.headers = {
-      'Cache-Control' => 'public, max-age=172800'
-    }
-  else
+  # Run rails dev:cache to toggle caching.
+  if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
+    config.public_file_server.headers = {
+      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+    }
+  else
+    config.action_controller.perform_caching = false
+
+    config.cache_store = :null_store
   end
+
+  # Store uploaded files on the local file system (see config/storage.yml for options)
+  config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -36,6 +40,9 @@ Rails.application.configure do
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
+
+  # Highlight code that triggered database queries in logs.
+  config.active_record.verbose_query_logs = true
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -51,15 +58,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  config.action_cable.url = 'ws://localhost:3000/cable'
-  
-  ENV['LASTFM_KEY'] = '146fa01985acd46b23f4e6c5f660f199'
-  ENV['LASTFM_SECRET'] = '4608a06d1f929b77f2567d7645145270'
-  ENV['DISCOGS_KEY'] = 'lmqIHGxJzwqEFiLBLxwu'
-  ENV['DISCOGS_SECRET'] = 'aPSJTqPRwVuzxxZkPOdsNWKmQIyVSpDs'
-  ENV['SOUNDCLOUD_KEY'] = 'bbbf2c698cb8351905814f00bcf58118'
-  ENV['SOUNDCLOUD_SECRET'] = '1174ac08925b31d99b718d0b35c73dba'
-  ENV['VK_REMIXSID'] = '6bd0f89a2f3fa36b0304f50134f801da2d09c6210ea21f12dc3c8'
-  ENV['YOUTUBE_KEY'] = 'AIzaSyB1Ry25PJdCobN4jLyNR9RYIaqSuffoH-M'
 end

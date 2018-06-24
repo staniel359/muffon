@@ -1,0 +1,10 @@
+$('#top_albums').html("<%= j render 'profiles/library/main/partials/albums' %>")
+$('#albums_paginate').html("<%= j paginate @albums %>")
+
+$('#top_albums_scope').html("<%= j render 'profiles/library/main/scope/albums' %>")
+$('#top_albums_order').html("<%= j render 'profiles/library/main/order/albums' %>")
+
+$('.dropdown.open .dropdown-toggle').dropdown('toggle')
+
+url = "<%= library_albums_path(order: params[:order], page: params[:page], scope: params[:scope]) %>".replace('amp;', '')
+window.history.pushState({turbolinks: true, url: url}, '', url)

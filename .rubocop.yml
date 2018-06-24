@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
   Exclude:
     - 'bin/**/*'
     - 'config/**/*'
@@ -7,6 +7,7 @@ AllCops:
     - 'test/**/*'
     - 'Gemfile'
     - 'Rakefile'
+    - 'spec/**/*'
 
 Documentation:
   Enabled: false
@@ -15,4 +16,7 @@ Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
 Style/FrozenStringLiteralComment:
+  Enabled: false
+
+EndOfLine:
   Enabled: false

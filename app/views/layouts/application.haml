@@ -1,24 +1,44 @@
 !!!
 %html
-	%head
-		%title= "muffon | #{@title}"
-		= csrf_meta_tags
-		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-		= stylesheet_link_tag 'application', '//fonts.googleapis.com/css?family=Open Sans'
-		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-		= action_cable_meta_tag
+  %head
+    %title
+      = page_title
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Noto Sans'
+    = stylesheet_link_tag 'application', 'https://use.fontawesome.com/releases/v5.0.6/css/all.css'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = action_cable_meta_tag
 
-	%body
-		#loading{hidden: true}
-			= fa_icon 'circle-o-notch spin 2x'
-		#upbar
-			= render "layouts/upbar/#{params[:controller]}"
-		- if logged_in?
-			= render 'layouts/sidebar'
-			= render 'player/playing_now'
-		.container-fluid
-			= render 'layouts/scroll_top_btn'
-			= render 'layouts/progress_bar' if logged_in?
-			= yield
-		= render 'player/player'
-		= render 'layouts/footer'
+  %body{style: ('background-color: #271b36' if welcome_page?) }
+
+    #loading{hidden: true}
+      %i.fas.fa-circle-notch.fa-spin.fa-2x
+
+    - unless welcome_page?
+
+      #upbar
+
+        = button_tag 'beta', class: 'btn btn-default btn-sm tag', id: 'beta_btn'
+        .up#logo
+          = link_to 'muffon', root_path
+
+        #up_links.inline
+          = render "layouts/upbar/#{params[:controller]}" unless params[:controller] == 'sessions'
+
+    - if logged_in?
+
+      = render 'layouts/sidebar'
+      = render 'player/playing_now'
+
+    .container-fluid
+
+      = render 'layouts/scroll_top_btn'
+      = render 'layouts/progress_bar' if logged_in?
+      = yield
+
+      #playlists_modal_wrap
+      #message_modal_wrap
+
+    = render 'player/player'
+    = render 'layouts/footer'

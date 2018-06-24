@@ -14,26 +14,21 @@
     #tag_artist_stats.mg_btm_10
 
       %h5.inline
-        = fa_icon 'user'
+        %i.fas.fa-user
         = number_with_delimiter(artist.listeners)
       %h5.inline
-        = fa_icon 'music'
+        %i.fas.fa-music
         = number_with_delimiter(artist.playcount)
 
     #tag_artist_tags.mg_btm_5
       - artist.artist_tags.first(5).each do |tag|
-        = link_to tag.name, tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag mg_btm_5'
+        .inline
+          = link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
+            %strong
+              = tag.name
 
   %hr.sep_10.sep_default
 
   #tag_artist_bio
-    - if artist.description.present?
-      - description = artist.description.split('<a href')[0].truncate_words(50).gsub(URI.regexp, '<a href="\0" target="blank">\0</a>').html_safe
-      - if description.present?
-        = description
-      - else
-        .text-muted
-          No description.
-    - else
-      .text-muted
-        No description.
+
+    = render 'artists/description', artist: artist, limit: 50

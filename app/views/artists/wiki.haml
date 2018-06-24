@@ -6,13 +6,18 @@
 
   .panel_content
 
-    %h4 Wiki:
+    %h4
+      %i.fas.fa-info-circle
+      Wiki:
 
     .separator.sep_10.sep_default
 
     %h5
-      - if @description.present?
-        = @description.gsub(URI.regexp, '<a href="\0" target="blank">\0</a>')
+      - if @artist.description.present?
+
+        = @artist.artist_description
+
       - else
+
         .text-muted
           No description.

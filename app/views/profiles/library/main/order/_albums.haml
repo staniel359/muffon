@@ -1,0 +1,12 @@
+.dropdown.inline.pull-right
+
+  .btn.dropdown_btn.dropdown-toggle{data: {toggle: 'dropdown'}} 
+
+    = render 'profiles/library/main/order/label'
+
+  .dropdown-menu.dropdown-menu-right
+
+    = button_to 'Most played', profiles_library_albums_path(order: '1', page: params[:page], scope: params[:scope]), remote: true, method: :get
+    = button_to 'Least played', profiles_library_albums_path(order: '2', page: params[:page], scope: params[:scope]), remote: true, method: :get
+    = button_to 'Newest', profiles_library_albums_path(order: '3', page: params[:page], scope: params[:scope]), remote: true, method: :get
+    = button_to 'Oldest', profiles_library_albums_path(order: '4', page: params[:page], scope: params[:scope]), remote: true, method: :get

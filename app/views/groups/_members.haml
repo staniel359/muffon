@@ -4,13 +4,16 @@
 .separator.sep_10.sep_default
 
 - if @group.members.any?
-  %table.table.table-hover
+
+  %table.table.table-hover.table-condensed
     - @group.members.map do |member|
       %tr
         %td
-          .media-left.mid_align
-            = image_tag member.avatar.url(:xs), class: 'img_rnd'
-          %h5.media-body.mid_align
-            = link_to member.nickname, profile_path(member.id)
+          = link_to profile_path(member.id) do
+            .media-left.mid_align
+              = image_tag member.avatar.url(:xs), class: 'img_rnd'
+            %h5.media-body.mid_align
+              = member.nickname
 - else
+
   There are no members in this group yet.

@@ -4,13 +4,34 @@
 
 		.rec_delete.artist_action
 			= button_to delete_recommendation_path(artist_id: artist.id), method: :patch, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Delete', class: 'rec_del_btn' do
-				= fa_icon 'times'
+				%i.fas.fa-times
 
 	.artist_library_sq.artist_action#artist_library{id: artist.id}
-		= render 'artists/library_btn', artist: artist
+
+		- if artist.id.in?(@library_artists_ids)
+
+			= render 'artist_actions/library/show', artist: artist
+
+		- else
+
+			= render 'artist_actions/library/add', artist: artist
 
 	.artist_bookmark_sq.artist_action#artist_bookmark{id: artist.id}
-		= render 'artists/bookmark_btn', artist: artist
+
+		- if artist.id.in?(@bookmarked_artists_ids)
+
+			= render 'artist_actions/bookmarks/delete', artist: artist
+
+		- else
+
+			= render 'artist_actions/bookmarks/add', artist: artist
 
 	.artist_listened_sq.artist_action#artist_listened{id: artist.id}
-		= render 'artists/listened_btn', artist: artist
+
+		- if artist.id.in?(@listened_artists_ids)
+
+			= render 'artist_actions/listened/delete', artist: artist
+
+		- else
+
+			= render 'artist_actions/listened/add', artist: artist

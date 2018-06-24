@@ -1,0 +1,8 @@
+.panel_content
+
+  %h4
+    = link_to "Plays (#{@profile.plays_count}):", profiles_library_plays_path
+
+  .separator.sep_10.sep_default
+  
+  = render 'profiles/library/main/partials/plays'

@@ -5,7 +5,7 @@
     #wrong_track
 
       %h6.mg_btm_5 Wrong track?
-      = button_to 'Next', play_path(position: (@track.vk_id.present? ? 0 : 1), artist: playing_now_track.artist.name, track: playing_now_track.title), class: 'btn btn-primary btn-sm tag mg_btm_0', data: {toggle: 'tooltip', placement: 'top'}, title: 'Wrong track', remote: true, method: :get
+      = button_to 'Next', play_path(position: (@track.vk_id.present? ? 0 : 1), artist: playing_now_track.artist.artist_name, track: playing_now_track.track_title), class: 'btn btn-primary btn-sm tag mg_btm_0', data: {toggle: 'tooltip', placement: 'top'}, title: 'Wrong track', remote: true, method: :get
 
   - else
 
@@ -13,7 +13,7 @@
 
       %h6.mg_btm_5 Right track?
       .inline
-        = button_to 'Yes', confirm_track_path(artist: playing_now_track.artist.name, track: playing_now_track.title), class: 'btn btn-default btn-sm tag mg_btm_0', remote: true, method: :patch
+        = button_to 'Yes', confirm_track_path(artist: playing_now_track.artist.artist_name, track: playing_now_track.track_title), class: 'btn btn-default btn-sm tag mg_btm_0', remote: true, method: :patch
       .inline
-        = button_to 'No', play_path(position: @redis.get("#{current_profile.id}:vk_track_position").to_i + 1, artist: playing_now_track.artist.name, track: playing_now_track.title), class: 'btn btn-primary btn-sm tag mg_btm_0', remote: true, method: :get
+        = button_to 'No', play_path(position: @redis.get("#{current_profile.id}:vk_track_position").to_i + 1, artist: playing_now_track.artist.artist_name, track: playing_now_track.track_title), class: 'btn btn-primary btn-sm tag mg_btm_0', remote: true, method: :get
 

@@ -1,0 +1,41 @@
+#following_page.panel.center
+  
+  .panel_header
+
+    .panel_header_left
+
+      %h3
+        %i.fas.fa-address-book
+        Contacts
+
+    .panel_header_right
+
+      .media-left
+        %h4
+          = link_to @profile.nickname, profile_path
+      .media-right
+        = link_to profile_path do
+          = image_tag @profile.avatar.url(:sm), class: 'img_rnd img_30'
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+
+    %h4
+      Following
+      = "(#{@following.count}):"
+
+    .separator.sep_10.sep_default
+
+    - if @following.any?
+
+      %table.table.table-hover
+        = render partial: 'profiles/profile', collection: @following, profile: @follower
+
+    - else
+
+      - if current_profile?(@profile)
+        You aren't
+      - else
+        = @profile.nickname + 'doesn\'t'
+      following anybody.

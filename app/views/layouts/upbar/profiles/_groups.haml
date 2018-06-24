@@ -1,0 +1,9 @@
+.up
+  .media-left
+    = link_to image_tag(@profile.avatar.url(:sm)), profile_path
+  .media-right
+    = link_to "#{@profile.nickname}", profile_path
+
+.up
+  .media-right
+    = link_to "Groups", profiles_groups_path

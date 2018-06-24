@@ -34,7 +34,9 @@ module Library
     def scoped_collection
       collection.where(
         'plays.created_at > ?', scope.days.ago
-      ).joins(:plays).group("profile_#{@args.collection_name}.id").select(
+      ).joins(:plays).group(
+        "profile_#{@args.collection_name}.id"
+      ).select(
         "profile_#{@args.collection_name}.*,
         count(*) as playcount"
       ).reorder(order)
@@ -55,9 +57,9 @@ module Library
     def order
       case @args.order
       when '1', nil
-        "count(*) desc, id desc"
+        'count(*) desc, id desc'
       when '2'
-        "count(*) asc, id asc"
+        'count(*) asc, id asc'
       when '3'
         'created_at desc, id desc'
       when '4'

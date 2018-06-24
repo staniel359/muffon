@@ -1,0 +1,54 @@
+- if params[:action] == 'tracks'
+
+  %hr.sep_0
+
+  .panel_content
+
+    %h4
+      Search results for
+      %strong
+        = "\"#{params[:q]}\""
+
+  %hr.sep_0
+
+.panel_content
+
+  %h4
+    %strong
+
+      - if params[:action] == 'tracks'
+
+        Tracks:
+
+      - else
+
+        = link_to 'Tracks:', search_tracks_path(q: params[:q])
+
+  .separator.sep_10.sep_default
+
+  - if @tracks.present?
+
+    %table.table.table-hover.table-condensed
+      %tbody
+
+        - @tracks.map do |track|
+
+          = render 'search/partials/track', track: track
+          
+
+    - if params[:action] == 'index'
+
+      .text_right.mg_top_10
+        = link_to 'View more...', search_tracks_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+
+    - else
+
+      .text_center.mg_top_10
+        .btn-group
+          = link_to_prev_page @tracks, '< Previous', class: 'btn btn-primary group_btn'
+          = link_to_next_page @tracks, 'Next >', class: 'btn btn-primary group_btn' unless @tracks.length < 20
+
+  - else
+
+    %h5
+      Nothing was found.

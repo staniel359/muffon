@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.10.0"
+lock "3.10.1"
 
 set :application, 'muffon'
 set :repo_url, 'git@github.com:staniel359/muffon.git'
@@ -32,6 +32,6 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-set :keep_releases, 2
+set :keep_releases, 5
 
 set :assets_roles, [:web, :app]

@@ -1,74 +1,76 @@
-module Lastfm
-  module Artist
-    class Tracks < Service
+module LastFM
+  class Artist
+    class Tracks < LastFM::Base
       def call
-        process_tracks
+        retrieve_tracks
       end
 
     private
 
+      def retrieve_tracks
+        {
+          total_count: total_count,
+          data:        process_tracks
+        }
+      end
+
       def process_tracks
-        tracks.first(@args.limit).map do |track|
-          process_track(track)
-        end.sort_by { |t| t.playcount }.reverse
+        matched_tracks.sort_by { |t| t[:lastfm_plays_count] }.reverse
       end
 
-      def tracks
-        tracks_array = []
-        tracks_page.css('tr[itemprop="track"]').map do |t|
-          tracks_array << {
-            'title' => t.css('.link-block-target').text
-          }
+      def matched_tracks
+        limited_tracks.map { |t| match_track(t) }
+      end
+
+      def limited_tracks
+        tracks_data[:web].first(@args.limit || 50)
+      end
+
+      def tracks_data
+        @tracks_data ||= process_tracks_data
+      end
+
+      def process_tracks_data
+        threads = []
+        data = %w[Web API].each_with_object({}) do |service, hash|
+          threads << Thread.new do
+            hash.merge!(service.downcase.to_sym => call_service(service))
+          end
         end
-        tracks_array
+        threads.each(&:join)
+        data
       end
 
-      def tracks_page
-        Nokogiri::HTML.parse(
-          RestClient.get(
-            "https://www.last.fm/music/#{query_name(@args.name)}"\
-            "/+tracks?date_preset=ALL&page=#{page}"
-          )
+      def call_service(service)
+        "LastFM::Artist::Tracks::#{service}".constantize.call(
+          artist_name: @args.artist_name
         )
       end
 
-      def lastfm_tracks
-        lastfm_tracks_hash = {}
-        lastfm_api_tracks.map do |t|
-          lastfm_tracks_hash.merge!(
-            t['name'].downcase => {
-              'listeners' => t['listeners'],
-              'playcount' => t['playcount'],
-              'mbid' => t['mbid']
-            }
-          )
-        end
-        lastfm_tracks_hash
+      def match_track(title)
+        matched_track = matched_track(title)
+        {
+          title:                  title,
+          artist:                 artist_data(matched_track),
+          lastfm_listeners_count: matched_track[:lastfm_listeners_count],
+          lastfm_plays_count:     matched_track[:lastfm_plays_count],
+          mbid:                   matched_track[:mbid]
+        }
       end
 
-      def lastfm_api_tracks
-        @lastfm_api_tracks ||= JSON.parse(
-          RestClient.get(
-            'http://ws.audioscrobbler.com/2.0/'\
-            '?method=artist.gettoptracks'\
-            "&artist=#{query_name(@args.name)}"\
-            "&api_key=#{ENV['LASTFM_KEY']}&format=json"
-          ).body
-        )['toptracks']['track']
+      def matched_track(title)
+        tracks_data[:api][:data].find { |t| t[:title].casecmp(title).zero? }
       end
 
-      def process_track(track)
-        Track.where(
-          title: track['title'],
-          artist_id: ::Artist.where(
-            name: @args.name
-          ).first_or_create.id
-        ).first_or_initialize.tap do |h|
-          h.listeners = lastfm_tracks[track['title'].downcase].try(:[], 'listeners')
-          h.playcount = lastfm_tracks[track['title'].downcase].try(:[], 'playcount')
-          h.mbid = lastfm_tracks[track['title'].downcase].try(:[], 'mbid')
-          h.save
-        end
+      def artist_data(track)
+        {
+          name: track[:artist][:name],
+          mbid: track[:artist][:mbid]
+        }
+      end
+
+      def total_count
+        tracks_data[:api][:total_count]
       end
     end
   end

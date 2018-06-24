@@ -1,0 +1,16 @@
+#library_artist_album_plays_panel.panel.library_page.center
+  = render 'library_artists/partials/panel_header'
+
+  .separator.sep_0.sep_light
+  
+  .panel_content
+    %h4
+      = "Plays (#{@album.playcount}):"
+
+    .separator.sep_10.sep_default
+
+    %table.table.table-hover.table-condensed
+      = render partial: 'library_artists/partials/play', collection: @plays
+
+    .text_center.mg_top_10
+      = paginate @plays

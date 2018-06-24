@@ -1,22 +1,25 @@
 #tag_tracks.panel.center
+
   .panel_header
-    %h3
-      muffon
-      |
-      = fa_icon 'tag'
+
+    %h3.panel_header_left
+      %i.fas.fa-tag
       = params[:name]
+
+    %h3.panel_header_right
+      = link_to 'Tags', tags_path
 
   .separator.sep_0.sep_light
 
   .panel_content
 
-    %h4 Top tracks:
+    %h4 Tracks:
 
     .separator.sep_10.sep_default
 
-    %table.table.table-hover
+    %table.table.table-hover.table-condensed
       - @tracks.map do |track|
         = render 'track', track: track
 
-    .text_center
+    .text_center.mg_top_10
       = paginate @tracks

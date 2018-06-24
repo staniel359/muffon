@@ -1,56 +1,49 @@
 #settings.panel.center
 	.panel_header
-		%h3 Settings
+		%h4 Settings
 
 	.separator.sep_0.sep_light
 
 	.panel_content
-		#settings_panel_left.inline
+		.d-flex
 			#settings_edit_form
-				%h4 Edit profile
+				%h5 Info
 
 				.separator.sep_10.sep_default
 
-				= render 'profiles/settings_form'
-			
-			.separator.sep_20.sep_light
+				= render 'profiles/main/settings_form'
 
 			#settings_password_form
-				%h4 Change password
+				%h5 Change password
 
 				.separator.sep_10.sep_default
 
 				= form_for current_profile, remote: true do |f|
-					= f.password_field :password, class: 'form-control', placeholder: 'Password:'
-					= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password:'
-					.submit_btn.text_right= f.submit 'Change password', class: 'btn btn-primary'
+					= f.password_field :password, class: 'input_transp w-100', placeholder: 'Password:'
+					= f.password_field :password_confirmation, class: 'input_transp w-100', placeholder: 'Confirm password:'
+					.mg_top_10.text-right
+						= f.submit 'Change password', class: 'btn btn-primary'
 
-		#setting_panel_right.inline.top_align
-			#settings_privacy 
-				%h4 Privacy
+		%hr.sep_20
 
-				.separator.sep_10.sep_default
-			
-			.separator.sep_20.sep_light
+			%h5 Privacy
 
-			#settings_lastfm_sync
-				%h4 Synchronize with Last.fm
+			.separator.sep_10.sep_default
 
-				.separator.sep_10.sep_default
+			Privacy settings
+		
+		%hr.sep_20
 
-				- if current_profile.lastfm_id.present?
-					- if current_profile.plays.any?
-						= link_to 'Refresh your listens', import_plays_path(do: 'refresh'), method: :get, class: 'btn btn-primary'
-					- else
-						= link_to 'Import you library', import_plays_path(do: 'import'), method: :get, class: 'btn btn-primary'
-				- else
-					= link_to 'Connect your Last.fm account', '/auth/lastfm', class: 'btn btn-danger'
-			
-			.separator.sep_20.sep_light
+		%h5 Connected accounts
 
-			#settings_delete_account_btn
-				%h4 Delete account
+		.separator.sep_10.sep_default
 
-				.separator.sep_10.sep_default
+		= render 'muffon/accounts/lastfm'
+		
+		%hr.sep_20
 
-				= link_to 'Delete account', current_profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Warning! All data from your account will be destroyed. 	Proceed?'}
+		%h5 Delete account
+
+		.separator.sep_10.sep_default
+
+		= link_to 'Delete account', current_profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Warning! All data from your account will be destroyed. 	Proceed?'}

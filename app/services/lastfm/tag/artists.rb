@@ -1,32 +1,62 @@
-module Lastfm
-  module Tag
-    class Artists < Service
+module LastFM
+  class Tag
+    class Artists < LastFM::Base
       def call
-        process_tag_artists
+        retrieve_artists_data
       end
 
     private
 
-      def process_tag_artists
-        artists_array.map { |a| process_artist(a) }
+      def retrieve_artists_data
+        return [] unless @args.tag_name.present?
+
+        {
+          data:        process_artists,
+          total_count: total_count
+        }
       end
 
-      def artists_array
-        Nokogiri::HTML.parse(
-          RestClient.get(
-            "https://www.last.fm/tag/#{query_name(@args.name)}"\
-            "/artists?page=#{@args.page || 1}"
-          )
-        ).css('.big-artist-list-wrap').css('.link-block-target')
+      def process_artists
+        artists_list.map { |a| process_artist(a) }
       end
 
-      def process_artist(a)
-        artist = ::Artist.find_by(name: a.text)
-        return artist if artist.present? && artist&.info_status == 'base'
+      def artists_list
+        parsed_artists_page.css('.big-artist-list-item')
+      end
 
-        Lastfm::Artist::Processor.call(
-          name: a.text, type: 'base'
-        )
+      def parsed_artists_page
+        @parsed_artists_page ||=
+          Nokogiri::HTML.parse(artists_page_response)
+      end
+
+      def artists_page_response
+        RestClient.get("#{tag_page_link}/artists?page=#{page}")
+      end
+
+      def process_artist(artist)
+        {
+          name:                   artist(artist),
+          image:                  image(artist),
+          lastfm_listeners_count: listeners(artist)
+        }
+      end
+
+      def artist(artist)
+        artist.css('.link-block-target').text
+      end
+
+      def image(artist)
+        artist.css('img').attr('src').value
+      end
+
+      def listeners(artist)
+        artist.css('.big-artist-list-listeners').text.scan(/\d/).join.to_i
+      end
+
+      def total_count
+        parsed_artists_page.css(
+          '.pagination-page'
+        ).last.text.strip.to_i * 21
       end
     end
   end

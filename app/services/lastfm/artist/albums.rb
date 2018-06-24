@@ -1,40 +1,67 @@
-module Lastfm
-  module Artist
-    class Albums < Service
+module LastFM
+  class Artist
+    class Albums < LastFM::Base
       def call
-        process_albums
+        retrieve_artist_albums
       end
 
     private
 
+      def retrieve_artist_albums
+        return {} unless parsed_albums_data.present?
+
+        {
+          total_count: total_count,
+          data:        process_albums
+        }
+      end
+
       def process_albums
-        albums.reject { |a| a['name'] == '(null)' }.sort_by do |album|
-          album['playcount'].to_i
-        end.reverse.map { |a| process_album(a) }
+        albums_sorted.map { |a| process_album(a) }
       end
 
-      def albums
-        JSON.parse(
-          RestClient.get(
-            'http://ws.audioscrobbler.com/2.0/'\
-            '?method=artist.gettopalbums'\
-            "&artist=#{query_name(@args.name)}"\
-            "&limit=#{@args.limit}&page=#{page}"\
-            "&api_key=#{ENV['LASTFM_KEY']}&format=json"
-          ).body
-        )['topalbums']['album']
+      def process_album(album)
+        {
+          title:              album['name'],
+          artist:             artist_data(album),
+          lastfm_plays_count: album['playcount'],
+          mbid:               album['mbid'],
+          cover:              album['image'][3]['#text']
+        }
       end
 
-      def process_album(a)
-        ::Album.where(
-          title: a['name'],
-          artist_id: ::Artist.find_by(name: a['artist']['name'])
-        ).first_or_initialize.tap do |h|
-          h.playcount = a['playcount']
-          h.mbid = a['mbid']
-          h.cover = nil || a['image'][3]['#text']
-          h.save
-        end
+      def albums_sorted
+        parsed_albums_data['album'].sort_by { |a| a['playcount'] }.reverse
+      end
+
+      def parsed_albums_data
+        @parsed_albums_data ||= JSON.parse(albums_response)['topalbums']
+      end
+
+      def albums_response
+        RestClient.get(api_link, params: request_params)
+      end
+
+      def request_params
+        {
+          method:  'artist.getTopAlbums',
+          artist:  @args.artist_name,
+          limit:   @args.limit,
+          page:    page,
+          api_key: api_key,
+          format:  'json'
+        }
+      end
+
+      def artist_data(album)
+        {
+          name: album['artist']['name'],
+          mbid: album['artist']['mbid']
+        }
+      end
+
+      def total_count
+        parsed_albums_data['@attr']['total'].to_i
       end
     end
   end

@@ -1,64 +1,62 @@
 module Recommendations
-  class Filter < Service
+  class Filter < Muffon::Base
     def call
-      process_recommendations
+      filter_recommendations
     end
 
   private
 
-    def process_recommendations
-      Kaminari.paginate_array(recommendations)
+    def filter_recommendations
+      @profile.recommendations.not_deleted.where(
+        queries
+      ).artists_count_desc
     end
 
-    def recommendations
-      filtered_recommendations.each do |rec|
-        rec.profile_artists &= profile_artist_ids if scoped_artists?
-      end.sort_by { |r| r.profile_artists.length }.reverse
+    def queries
+      queries_list.map { |q| send("#{q}_query") }.compact.join(' AND ')
     end
 
-    def filtered_recommendations
-      @profile.recommendations.where(artist_query)
-        .where(tag_query).where(days_query).where(deleted: nil)
+    def queries_list
+      %w[artist tag days]
     end
 
     def artist_query
-      return nil unless @args.params[:artist].present?
+      return unless @args.artist_name.present?
 
-      "#{profile_artist_id} = any(profile_artists)"
+      "#{profile_artist_id} = ANY(profile_artist_ids)"
     end
 
     def profile_artist_id
       @profile.profile_artists.joins(:artist).find_by(
-        'lower(artists.name) = lower(?)', @args.params[:artist]
+        'LOWER(artists.name) = ?', @args.artist_name.downcase
       )&.id.to_i
     end
 
     def tag_query
-      return nil unless @args.params[:tag].present?
+      return unless @args.tag_name.present?
 
-      "#{tag_id} = any(tags)"
+      "#{tag_id} = any(tag_ids)"
     end
 
     def tag_id
       Tag.find_by(
-        'lower(name) = lower(?)', @args.params[:tag]
+        'lower(name) = ?', @args.tag_name.downcase
       )&.id.to_i
     end
 
     def days_query
-      return nil unless @args.params[:days].present?
+      return unless @args.days.present?
 
-      "profile_artists && array#{profile_artist_ids}::integer[]"
+      'profile_artist_ids && '\
+        "ARRAY#{time_scoped_profile_artist_ids}::integer[]"
     end
 
-    def profile_artist_ids
-      @profile_artist_ids ||= @profile.plays.where(
-        'created_at > ?', @args.params[:days].to_i.days.ago
-      ).pluck(:profile_artist_id).uniq
-    end
-
-    def scoped_artists?
-      @args.params[:days].present? && profile_artist_ids.any?
+    def time_scoped_profile_artist_ids
+      @profile.plays.where(
+        'plays.created_at > ?', @args.days.days.ago
+      ).select(
+        :profile_artist_id
+      ).distinct.pluck(:profile_artist_id)
     end
   end
 end

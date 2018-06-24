@@ -1,0 +1,42 @@
+%tr
+  %td{id: "track_#{loved_track.track.id}", class: ('list_playing_now_track' if playing_now_track_id == loved_track.track.id)}
+
+    .media-left
+
+      .list_play_button.play_button
+        - if playing_now_track_id == loved_track.track.id
+          = render 'player/list_play_button'
+        - else
+          = button_to play_path(artist: loved_track.artist.artist_name, track: loved_track.track.track_title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get, onclick: 'loadTrack(this)' do
+            %i.fas.fa-play
+
+      = image_tag loved_track.artist.artist_image, class: 'img_sm img_50'
+
+    .media-body.mid_align
+
+      .track_options
+
+        - if loved_track.loved_at.present?
+
+          .created_at{data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Loved at'}
+            %h6
+              = l loved_track.loved_at, format: "%e %b %Y"
+            %h6
+              = l loved_track.loved_at, format: "%H:%M"
+
+        = render 'muffon/track_dropdown', track: loved_track.track
+
+      %h5
+        %i.fas.fa-heart{style: 'color:red'}
+        %strong
+          = link_to loved_track.track.title, profiles_library_artist_track_path(name: loved_track.artist.artist_name, title: loved_track.track.track_title)
+
+      - unless %w[artist artist_tracks artist_album].include?(params[:action])
+
+        %h5
+          = link_to loved_track.artist.name, profiles_library_artist_path(id: @profile.id, name: loved_track.artist.artist_name)
+
+        %h5
+          = link_to pluralize(loved_track.plays_count, 'play'), profiles_library_artist_track_plays_path(name: loved_track.artist.artist_name, title: loved_track.track.track_title)
+
+    %iframe.mg_top_10{frameborder:'0', width: 320, height: 180, hidden: true}

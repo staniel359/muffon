@@ -1,0 +1,137 @@
+#profile_library.library_page.panel.center
+
+  = render 'profiles/library/main/partials/panel_header'
+
+  .panel_content#library_actions_panel.text_right
+
+    #library_search_form{hidden: true}
+      = form_tag profiles_library_search_path, method: :get, remote: true, onsubmit: 'showLoading();' do
+        = text_field_tag :q, params[:q], placeholder: "Search in your library:", class: 'input_transp', id: 'library_search_input'
+        = submit_tag 'Search', name: nil, style: 'display: none'
+
+    #library_search_button
+      = button_tag class: 'btn btn-primary', onclick: 'showLibrarySearch();' do
+        %i.fas.fa-search
+        Search
+
+  %hr.sep_0
+
+  #library_search_results.panel_content{hidden: true}
+
+  #library_panel
+
+    - if @profile.profile_artists.any?
+
+      #library_top_artists_panel.panel_content
+
+        .scope_order
+          #library_top_artists_scope.pull-right.inline
+            = render 'profiles/library/main/scope/library_artists'
+
+        %h4.inline
+          = link_to 'Top artists:', profiles_library_artists_path
+
+        .separator.sep_default.sep_10
+
+        #library_top_artists
+          = render 'profiles/library/main/partials/artists'
+
+      %hr.sep_0
+
+      #library_top_albums_panel.panel_content.table_cell
+
+        .scope_order
+          #library_top_albums_scope.pull-right.inline
+            = render 'profiles/library/main/scope/library_albums'
+
+        %h4.inline
+          = link_to 'Top albums:', profiles_library_albums_path
+
+        .separator.sep_default.sep_10
+
+        #library_top_albums.text_center
+          = render 'profiles/library/main/partials/albums'
+
+      #library_top_tracks_panel.panel_content.table_cell
+
+        .scope_order
+          #library_top_tracks_scope.pull-right.inline
+            = render 'profiles/library/main/scope/library_tracks'
+
+        %h4.inline
+          = link_to 'Top tracks:', profiles_library_tracks_path
+
+        .separator.sep_default.sep_10
+
+        #library_top_tracks
+          = render partial: 'profiles/library/main/partials/tracks'
+
+      %hr.sep_0
+
+      #library_profile_tags_panel.panel_content
+
+        %h4.inline
+          = link_to "Top tags:", profiles_library_tags_path
+
+        .separator.sep_default.sep_10
+
+        #library_profile_tags
+          = render 'profiles/library/main/partials/tags'
+
+      %hr.sep_0
+
+      #library_new_loved_tracks.panel_content.table_cell
+
+        #library_loved_tracks_panel
+          %h4
+            %i.far.fa-heart
+            = link_to "Loved tracks (#{@profile.loved_tracks.count}):", profiles_library_tracks_path(show: 'loved')
+
+          .separator.sep_default.sep_10
+
+          #library_loved_tracks
+            = render 'profiles/library/main/partials/loved_tracks'
+
+        %hr.sep_20
+
+        #library_new_tracks_panel
+          %h4
+            %i.fas.fa-plus
+            = link_to "New tracks (#{@profile.tracks_count}):", profiles_library_tracks_path(order: 3)
+
+          .separator.sep_default.sep_10
+
+          #library_new_tracks
+            = render partial: 'profiles/library/main/partials/new_tracks'
+
+      #library_recent_tracks_panel.panel_content.table_cell
+
+        %h4
+          %i.fas.fa-play
+          = link_to "Plays (#{@profile.plays_count}):", profiles_library_plays_path
+
+        .separator.sep_default.sep_10
+
+        #library_recent_tracks
+          = render 'profiles/library/main/partials/plays'
+
+      %hr.sep_0
+
+      #library_profile_taggings_panel.panel_content
+
+        %h4.inline
+          %i.fas.fa-tags
+          = link_to "Taggings (#{@profile.tags_count}):", profiles_library_taggings_path
+
+        .separator.sep_default.sep_10
+
+        #library_profile_taggings
+          = render 'profiles/library/main/partials/taggings'
+
+    - else
+
+      .panel_content
+
+        %h4
+          = current_profile?(@profile) ? 'Your' : "#{@profile.nickname}'s"
+          library is empty.

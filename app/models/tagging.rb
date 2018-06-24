@@ -1,30 +1,17 @@
 class Tagging < ApplicationRecord
-  belongs_to :profile
-  belongs_to :tag
+  belongs_to :taggable,    polymorphic: true, optional: true
   belongs_to :profile_tag, counter_cache: :taggings_count
-  belongs_to :model, polymorphic: true
-  belongs_to :profile_model, polymorphic: true, optional: true
-  belongs_to :artist, foreign_key: 'model_id', optional: true
-  belongs_to :profile_artist, foreign_key: 'profile_model_id', optional: true
-  belongs_to :album, foreign_key: 'model_id', optional: true
-  belongs_to :profile_album, foreign_key: 'profile_model_id', optional: true
-  belongs_to :track, foreign_key: 'model_id', optional: true
-  belongs_to :profile_track, foreign_key: 'profile_model_id', optional: true
 
-  default_scope { order('created_at asc') }
+  validates :taggable_type, :taggable_id, presence: true
 
-  after_create_commit :increment_count
-  after_destroy_commit :decrement_count
+  after_create_commit :increment_profile_tag_counter
+  after_destroy_commit :decrement_profile_tag_counter
 
-  def increment_count
-    profile_tag.increment!(
-      "#{model_type.downcase}_taggings_count".to_sym
-    )
+  def increment_profile_tag_counter
+    profile_tag.increment!("#{taggable_type.downcase}_taggings_count")
   end
 
-  def decrement_count
-    profile_tag.decrement!(
-      "#{model_type.downcase}_taggings_count".to_sym
-    )
+  def decrement_profile_tag_counter
+    profile_tag.decrement!("#{taggable_type.downcase}_taggings_count")
   end
 end

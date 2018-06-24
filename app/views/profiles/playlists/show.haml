@@ -1,0 +1,68 @@
+#playlists_page.panel.panel_570.center
+
+  .panel_header
+
+    %h3.inline.panel_header_left
+      %i.fas.fa-list-ul
+      = @playlist.name
+
+    .panel_header_right
+
+      .media-left.mid_align
+        %h4
+          = link_to "#{@profile.nickname} | Playlists", profile_playlists_path(id: @profile.id)
+
+      .media-right.mid_align
+        = image_tag @profile.avatar.url(:xs), class: 'img_rnd'
+
+  .separator.sep_0.sep_light
+
+  #track_search_panel.panel_content_right.panel_content
+
+    .mg_btm_10.pull-right
+      = button_tag id: 'close_search', class: 'btn btn-sm inv_btn', onclick: 'closePlaylistSearch();' do
+        Close
+        %i.fas.fa-times
+
+    %h4 Add tracks:
+
+    .separator.sep_10.sep_default
+
+    .mg_btm_10
+      = form_tag playlist_search_path, method: :get, remote: true do
+        = text_field_tag :q, nil, class: 'input_transp', placeholder: 'Enter track, artist or album...'
+
+        = submit_tag 'Search', name: nil, style: 'display: none'
+
+    #playlist_search_results
+
+  #playlist_content
+
+    - if current_profile?(@profile)
+
+      #playlist_actions_panel.panel_content
+
+        .playlist_page_btn_group.pull-right
+          = button_tag class: 'btn btn-primary inline first_child', method: :get, remote: true, onclick: 'openPlaylistSearch();' do
+            %i.fas.fa-plus
+            Add tracks
+
+          = link_to edit_playlist_path, class: 'btn btn-primary inline last_child' do
+            %i.fas.fa-pencil-alt
+            Edit
+
+        .playlist_page_btn_group
+          .inline
+            = button_to play_path(artist: @playlist.tracks.first.artist.artist_name, track: @playlist.tracks.first.track_title, from: 'playlist', from_id: @playlist.id), class: 'btn btn-primary first_child', method: :get, remote: true do
+              %i.fas.fa-play
+              Play
+          = button_tag class: 'btn btn-primary last_child' do
+            %i.fas.fa-ellipsis-v
+
+      %hr.sep_0
+
+    #playlist_tracks_content.panel_content
+
+      #playlist_tracks
+
+        = render 'tracks'

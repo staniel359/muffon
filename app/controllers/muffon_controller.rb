@@ -1,42 +1,64 @@
 class MuffonController < ApplicationController
-  before_action :should_login, only: %i[
-    settings notifications feed recommendations bookmarks
-  ]
-
-  def home
-    @title = (logged_in? ? 'Home' : 'Welcome')
+  def root
+    redirect_to dashboard_path if logged_in?
   end
 
-  def settings
-    @title = 'Settings'
-    @button_text = 'Save changes'
+  def welcome; end
+
+  def dashboard
+    @page_data = {
+      title: title
+    }
   end
 
   def notifications
-    @title = 'Notifications'
+    should_login
+    @page_data = {
+      title: title
+    }
   end
 
   def feed
-    @title = 'Feed'
+    should_login
+    @page_data = {
+      title: title
+    }
   end
 
   def player
-    @title = 'Player'
+    should_login
+    @page_data = {
+      title: title
+    }
   end
 
   def about
-    @title = 'About'
+    @page_data = {
+      title: title
+    }
   end
 
   def help
-    @title = 'Help'
+    @page_data = {
+      title: title
+    }
   end
 
   def contribute
-    @title = 'Contribute'
+    @page_data = {
+      title: title
+    }
   end
 
   def contact
-    @title = 'Contact'
+    @page_data = {
+      title: title
+    }
+  end
+
+private
+
+  def title
+    t("muffon.#{params[:action]}")
   end
 end

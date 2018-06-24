@@ -1,36 +1,53 @@
-module Lastfm
-  module Tag
-    class Tracks < Service
+module LastFM
+  class Tag
+    class Tracks < LastFM::Base
       def call
-        process_tag_tracks
+        retrieve_tracks_data
       end
 
     private
 
-      def process_tag_tracks
-        tracks_array.map { |a| process_track(a) }
+      def retrieve_tracks_data
+        return unless @args.tag_name.present?
+
+        {
+          data:        process_tracks,
+          total_count: total_count
+        }
       end
 
-      def tracks_array
-        Nokogiri::HTML.parse(
-          RestClient.get(
-            "https://www.last.fm/tag/#{query_name(@args.name)}"\
-            "/tracks?page=#{@args.page || 1}"
-          )
-        ).css('.chartlist-name')
+      def process_tracks
+        tracks_list.map { |t| process_track(t) }
       end
 
-      def process_track(a)
-        ::Track.where(
-          title: a.css('.link-block-target').text,
-          artist_id: artist(a).id
-        ).first_or_create
+      def tracks_list
+        parsed_tracks_page.css('.chartlist-ellipsis-wrap')
       end
 
-      def artist(a)
-        ::Artist.where(
-          name: a.css('.chartlist-artists').css('a').text
-        ).first_or_create
+      def parsed_tracks_page
+        @parsed_tracks_page ||=
+          Nokogiri::HTML.parse(tracks_page_response)
+      end
+
+      def tracks_page_response
+        RestClient.get("#{tag_page_link}/tracks?page=#{page}")
+      end
+
+      def process_track(track)
+        {
+          title:  track.css('.link-block-target').text,
+          artist: { name: artist_name(track) }
+        }
+      end
+
+      def artist_name(track)
+        track.css('.chartlist-artists').css('a').text
+      end
+
+      def total_count
+        parsed_tracks_page.css(
+          '.pagination-page'
+        ).last.text.strip.to_i * 50
       end
     end
   end

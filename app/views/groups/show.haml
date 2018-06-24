@@ -1,50 +1,60 @@
 #group_page.panel.center
-	.group_panel_header
-		.media-left
+  .group_panel_header
+    .media-left
 
-			.mg_btm_10
-				= image_tag @group.avatar.url(:md), class: 'img_rnd'
-			
-		.media-right.full_width
+      .mg_btm_10
+        = image_tag @group.avatar.url(:md), class: 'img_rnd'
+      
+    .media-right.full_width
 
-			- if current_profile?(@group.owner)
-				.pull-right
-					= button_to group_path, method: :delete, class: 'btn btn-default btn-sm' do
-						= fa_icon 'times'
-						Delete group
-			.membership_btn#membership_btn{id: @group.id}
-				= render partial: 'memberships/membership_button', locals: { group_id: @group.id }
+      -# - if current_profile?(@group.owner)
+      -#  .pull-right
+      -#    = button_to group_path, method: :delete, class: 'btn btn-default btn-sm' do
+      -#      %i.fas.fa-times
+      -#      Delete group
+      .membership_btn#membership_btn{id: @group.id}
+        = render partial: 'memberships/membership_button', locals: { group_id: @group.id }
 
-			%h3#group_name
-				= @group.name
+      %h3#group_name
+        = @group.name
 
-			%strong
-				#group_members_count{id: @group.id}
-					= "#{pluralize(@group.members.count, 'member')}"
+      %strong
+        #group_members_count{id: @group.id}
+          = "#{pluralize(@group.members.count, 'member')}"
 
-			.separator.sep_10.sep_default
+      .separator.sep_10.sep_default
 
-			.mg_btm_10
-				= @group.description
+      .mg_btm_10
+        - if @group.description.present?
+          = @group.description
+        - else
+          .text-muted
+            No description available.
 
-	.separator.sep_0.sep_light
+  %hr.sep_0
 
-	.panel_content
+  .panel_content
 
-		#group_content
-			Content
+    #group_content
+      Content
 
-		#group_people
+    #group_people
 
-			%h4.mg_btm_5
-				Owner:
+      %h4.mg_btm_5
+        Owner:
 
-			.separator.sep_10.sep_default
+      .separator.sep_10.sep_default
 
-			= render 'owner'
+      %table.table.table-hover.table-condensed
+        %tr
+          %td
+            = link_to profile_path(@group.owner.id) do
+              .media-left.mid_align
+                = image_tag @group.owner.avatar.url(:xs), class: 'img_rnd'
+              .media-body.mid_align
+                %h5
+                  = @group.owner.nickname
 
-			.separator.sep_20.sep_light
+      #group_members
 
-			#group_members
-
-				= render 'members'
+        = render 'members'

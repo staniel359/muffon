@@ -1,32 +1,29 @@
-.up#logo
-  = link_to 'muffon', root_path
+.up
+  .media-right
+    %i.fas.fa-tag
+    = link_to 'Tags', tags_path
 
 .up
   .media-right
-    = link_to 'Tags', tags_path
+    = link_to params[:name], tag_path
 
-- case params[:action]
-- when 'show', 'artists', 'albums', 'tracks'
+- if params[:action] == 'artists'
 
   .up
     .media-right
-      = link_to params[:name]
+      %i.fas.fa-user
+      = link_to 'Artists', tag_artists_path
 
-  - case params[:action]
-  - when 'artists'
+- elsif params[:action] == 'albums'
 
-    .up
-      .media-right
-        = link_to 'Top artists', tag_artists_path
+  .up
+    .media-right
+      %i.fas.fa-dot-circle
+      = link_to 'Albums', tag_albums_path
 
-  - when 'albums'
+- elsif params[:action] == 'tracks'
 
-    .up
-      .media-right
-        = link_to 'Top albums', tag_albums_path
-
-  - when 'tracks'
-
-    .up
-      .media-right
-        = link_to 'Top tracks', tag_tracks_path
+  .up
+    .media-right
+      %i.fas.fa-music
+      = link_to 'Tracks', tag_tracks_path

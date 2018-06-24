@@ -12,13 +12,15 @@
 
       #player_play_button.text_center
 
-        .inline
-          = fa_icon 'backward'
+        .inline#player_previous_btn
+          = render 'player/previous_btn'
+
         %h4.mg_top_5.inline
           = button_tag class: 'inv_btn', id: 'player_play_btn', onclick: 'playAudio();' do
-            = fa_icon 'play', id: 'player_play_btn_icon'
-        .inline
-          = fa_icon 'forward'
+            %i.fas.fa-play#player_play_btn_icon
+
+        .inline#player_next_btn
+          = render 'player/next_btn'
 
       #play_progress_bar
 
@@ -35,4 +37,4 @@
 
   #playing_now_button
     = button_tag onclick: 'showPlayingNow()', class: 'inv_btn' do
-      = fa_icon 'list 2x'
+      %i.fas.fa-list-ul.fa-2x

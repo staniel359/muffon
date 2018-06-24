@@ -1,118 +1,106 @@
 class PlayerController < ApplicationController
-  before_action :set_track, :set_audio_link, only: %i[play confirm_track]
-
   def play
-    @previous_track = Track.find_by(
-      id: @redis.get("#{current_profile.id}:playing_now")
-    )
+    set_track_vk_ids
+    @page_data = {
+      audio_link: audio_link
+    }
+    set_playing_track_data if audio_link.present?
+    respond_with_js
+  end
 
-    if @audio_link.present?
-      send_track_to_redis
-      @redis.lrem("#{current_profile.id}:queue", 0, @track.id)
-    end
+  def play_next
+    delete_played_track_id
+    @page_data = {
+      audio_link: audio_link
+    }
+    set_playing_track_data if audio_link.present?
+    respond_with_js
+  end
 
-    respond_to { |format| format.js { render layout: false } }
+  def confirm_vk_track
+    track.update(vk_id: Player::VK.playing_now_id)
+    respond_with_js
   end
 
   def stop
-    @track = Track.find_by(
-      id: @redis.get("#{current_profile.id}:playing_now")
-    )
-    @redis.del("#{current_profile.id}:playing_now")
-    @redis.lrem("#{current_profile.id}:queue", 1, @track.id)
-
-    respond_to { |format| format.js { render layout: false } }
+    set_stopped_track_data
+    respond_with_js
   end
 
   def send_to_queue
-    @redis.rpush(
-      "#{current_profile.id}:queue", params[:track_ids]
-    )
-
-    respond_to { |format| format.js { render 'queue', layout: false } }
+    Player::Queue.add_tracks(current_profile.id, params[:track_ids])
+    respond_with_js
   end
 
   def delete_from_queue
-    @redis.lrem("#{current_profile.id}:queue", 0, params[:track_id])
-
-    respond_to { |format| format.js { render 'queue', layout: false } }
+    Player::Queue.delete_track(current_profile.id, track.id)
+    respond_with_js
   end
 
   def clear_queue
-    @redis.del("#{current_profile.id}:queue")
-
-    respond_to { |format| format.js { render 'queue', layout: false } }
-  end
-
-  def confirm_track
-    @track.update(
-      vk_id: @redis.get("#{current_profile.id}:playing_now_id")
-    )
-
-    respond_to { |format| format.js { render layout: false } }
+    Player::Queue.clear(current_profile.id)
+    respond_with_js
   end
 
   def watch_on_youtube
-    @link = "https://www.youtube.com/embed/#{youtube_id}?rel=0&autoplay=1"
-
-    respond_to { |format| format.js { render layout: false } }
+    @page_data = {
+      youtube_link: youtube_link
+    }
+    respond_with_js
   end
 
 private
 
-  def set_track
-    @track ||= Track.where(
-      title: params[:track],
-      artist_id: Artist.find_by(name: params[:artist]).id
-    ).first_or_create
+  def set_track_vk_ids
+    Player::VK.set_track_ids(current_profile.id, vk_track_ids)
   end
 
-  def set_audio_link
-    return nil unless vk_id.present? || @track.bandcamp_link.present?
-
-    @audio_link ||= @track.bandcamp_link || Vk::GetTrack.call(vk_id: vk_id)
+  def vk_track_ids
+    VK::Tracks.call(params.slice(:artist_name, :track_title))
   end
 
-  def send_track_to_redis
-    @redis.set(
-      "#{current_profile.id}:playing_now", @track.id
-    )
-    @redis.set(
-      "#{current_profile.id}:playing_now_id", vk_id
-    )
-    @redis.set(
-      "#{current_profile.id}:vk_track_position", params[:position].to_i
-    )
+  def audio_link
+    @audio_link ||= VK::Track.call(vk_id: vk_id)
   end
 
   def vk_id
-    return nil unless vk_tracks.present?
-    return @track.vk_id if track_set_as_right?
-
-    vk_tracks[params[:position].to_i].try(:[], 'data-full-id')
+    initial_vk_id || Player::VK.track_ids[0]
   end
 
-  def track_set_as_right?
-    @track.vk_id.present? && params[:position].nil?
+  def initial_vk_id
+    params[:action] == 'play' && track.vk_id
   end
 
-  def vk_tracks
-    @vk_tracks ||= VK::GetTracks.call(
-      artist: params[:artist],
-      track: params[:track]
+  def track
+    @track ||= Muffon::Processor::Track.call(
+      params.slice(:artist_name, :track_title)
     )
   end
 
-  def youtube_id
-    JSON.parse(youtube_response)['items'][0]['id']['videoId']
+  def set_playing_track_data
+    Player::PlayingNow.set(current_profile.id, track.id)
+    Player::VK.set_playing_now_id(current_profile.id, vk_id)
+    Player::Source.create(current_profile.id, source_with_id)
   end
 
-  def youtube_response
-    track = Track.find(params[:track_id])
-    RestClient.get(
-      'https://www.googleapis.com/youtube/v3/search?part=snippet'\
-      "&q=#{CGI.escape(track.artist.name) + '+' + CGI.escape(track.title)}"\
-      "&maxResults=10&key=#{ENV['YOUTUBE_KEY']}"
+  def source_with_id
+    "#{params[:source]}_#{params[:source_id]}"
+  end
+
+  def delete_played_track_id
+    Player::VK.delete_played_track_id(
+      current_profile.id, Player::VK.playing_now_id
     )
+  end
+
+  def set_stopped_track_data
+    Player::PlayingNow.delete(current_profile.id)
+    Player::VK.clear(current_profile.id)
+    Player::Source.delete(current_profile.id)
+    Player::Queue.delete_track(current_profile.id, track.id)
+  end
+
+  def youtube_link
+    YouTube::Link.call(params.slice(:artist_name, :track_title))
   end
 end

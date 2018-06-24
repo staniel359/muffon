@@ -3,7 +3,7 @@
     %h3
       muffon
       |
-      = fa_icon 'tag'
+      %i.fas.fa-tag
       = params[:name]
 
   .separator.sep_0.sep_light
@@ -41,5 +41,5 @@
     %table.table.table-hover.table-condensed
       = render partial: 'track', collection: @tracks
 
-    .text_right
+    .text_right.mg_top_10
       = link_to 'View more...', tag_tracks_path, class: 'btn btn-primary btn-sm'

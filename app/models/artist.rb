@@ -10,8 +10,13 @@ class Artist < ApplicationRecord
   has_many :playlist_tracks
   has_many :listened_artists
   has_many :bookmarks
+  has_many :taggings, as: :taggable
 
   validates :name, presence: true, uniqueness: true
+
+  def self.with(name:)
+    where('LOWER(name) = ?', name.downcase).first_or_initialize
+  end
 
   def in_library?(profile)
     ProfileArtist.find_by(
@@ -35,30 +40,22 @@ class Artist < ApplicationRecord
   end
 
   def artist_image
-    image.present? ? image : 'missing_artist.png'
+    image || 'missing_artist.png'
   end
 
-  def artist_name
-    name.include?('/') ? CGI.escape(name) : name
+  def top_tracks
+    Track.find(top_track_ids)
   end
 
-  def profile_taggings(profile_id)
-    taggings.where(profile_id: profile_id)
-  end
-
-  def artist_top_tracks
-    Track.find(top_tracks)
-  end
-
-  def artist_top_albums
-    Album.find(top_albums)
+  def top_albums
+    Album.find(top_album_ids)
   end
 
   def similar_artists
-    Artist.find(similars)
+    Artist.find(similar_artist_ids)
   end
 
-  def artist_tags
-    Tag.find(tags)
+  def tags
+    Tag.find(tag_ids)
   end
 end

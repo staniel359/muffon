@@ -6,7 +6,9 @@
 
 	.artist_tracks_page_tracks.panel_content
 
-		%h4 Tracks:
+		%h4
+			%i.fas.fa-music
+			Tracks:
 
 		.separator.sep_10.sep_default
 
@@ -15,6 +17,3 @@
 
 		.text_center.mg_top_10
 			= paginate @tracks
-			-# .btn-group
-			-# 	= link_to_prev_page @tracks, '< Previous', class: 'btn btn-primary'
-			-# 	= link_to_next_page @tracks, 'Next >', class: 'btn btn-primary' unless @tracks.count < 20
