@@ -1,8 +1,11 @@
 :verbose: false
-:concurrency: 50
+:concurrency: 25
 :pidfile: tmp/pids/sidekiq.pid
 :queues:
   - default
+  - lastfm_import
+  - artist_update
+  - artist_recommendations
 
 production:
   :concurrency: 50

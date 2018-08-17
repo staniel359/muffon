@@ -7,7 +7,6 @@ module Muffon
     def initialize(args)
       @args = OpenStruct.new(args)
       @profile = profile
-      @redis = Redis.new(url: 'redis://localhost:6379')
     end
 
   private
@@ -24,6 +23,28 @@ module Muffon
 
     def page
       @args.page || 1
+    end
+
+    def concurrent_loader
+      ActiveSupport::Dependencies.interlock.permit_concurrent_loads
+    end
+
+    def custom_artist_data
+      { name: @args.artist_name }
+    end
+
+    def custom_track_data
+      {
+        title:  @args.track_title,
+        artist: custom_artist_data
+      }
+    end
+
+    def custom_album_data
+      {
+        title:  @args.album_title,
+        artist: custom_artist_data
+      }
     end
   end
 end

@@ -1,0 +1,26 @@
+%h6
+  Listening since
+  %strong
+    = @profile.listening_since
+.d-inline-block.mb-1
+  = link_to profiles_library_plays_path, class: 'btn btn-sm btn-primary' do
+    %i.fas.fa-play.mr-1
+    %strong
+      = @profile.plays_count
+    = 'play'.pluralize(@profile.plays_count)
+.d-inline-block.mb-1
+  = link_to profiles_library_tracks_path, class: 'btn btn-sm btn-primary' do
+    %i.fas.fa-music.mr-1
+    %strong
+      = @profile.tracks_count
+    = 'track'.pluralize(@profile.tracks_count)
+.d-inline-block.mb-1
+  = link_to profiles_library_artists_path, class: 'btn btn-sm btn-primary' do
+    %i.fas.fa-user.mr-1
+    %strong
+      = @profile.artists_count
+    = 'artist'.pluralize(@profile.artists_count)
+.d-inline-block
+  = link_to profiles_library_path, class: 'btn btn-light btn-sm' do
+    %i.fas.fa-headphones.mr-1
+    Go to Library

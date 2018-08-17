@@ -4,7 +4,7 @@ module LastFM
     private
 
       def reset_counter(name)
-        @redis.set(
+        $redis.set(
           "#{@args.profile_id}:#{name}_current_count", 0
         )
       end
@@ -26,7 +26,7 @@ module LastFM
       end
 
       def set_total_count(name, count)
-        @redis.set(
+        $redis.set(
           "#{@args.profile_id}:#{name}_total_count", count
         )
       end
@@ -41,22 +41,22 @@ module LastFM
       end
 
       def get_total_count(name)
-        @redis.get(
+        $redis.get(
           "#{@args.profile_id}:#{name}_total_count"
         )
       end
 
       def increment_counter(name)
-        @redis.incr(
+        $redis.incr(
           "#{@args.profile_id}:#{name}_current_count"
         )
       end
 
       def delete_counter(name)
-        @redis.del(
+        $redis.del(
           "#{@args.profile_id}:#{name}_current_count"
         )
-        @redis.del(
+        $redis.del(
           "#{@args.profile_id}:#{name}_total_count"
         )
       end

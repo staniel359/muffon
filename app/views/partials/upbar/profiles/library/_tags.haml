@@ -1,0 +1,37 @@
+- if params[:action] == 'index'
+
+  .up
+    .media-left
+      = link_to image_tag(@profile.avatar.url(:md)), profile_path
+    .media-right
+      = link_to "#{@profile.nickname}", profile_path
+
+  .up
+    .media-right
+      %i.fas.fa-headphones
+      = link_to 'Library', library_path
+
+  .up
+    .media-right
+      %i.fas.fa-tag
+      = link_to 'Tags', library_tags_path
+
+- elsif params[:action] == 'show'
+
+  .up
+    .media-left
+      = link_to image_tag(@profile.avatar.url(:md)), profile_path
+
+  .up
+    .media-right
+      %i.fas.fa-headphones
+      = link_to 'Library', library_path
+
+  .up
+    .media-right
+      %i.fas.fa-tag
+      = link_to 'Tags', library_tags_path
+
+  .up
+    .media-right
+      = link_to params[:name], library_tag_path(name: params[:name])

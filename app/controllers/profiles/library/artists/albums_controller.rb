@@ -33,6 +33,13 @@ module Profiles
           }
         end
 
+        def show_tracks
+          @page_data = {
+            tracks: retrieve_tracks
+          }
+          respond_with_js
+        end
+
       private
 
         def title
@@ -63,7 +70,9 @@ module Profiles
         end
 
         def retrieve_tracks
-          album.tracks.includes(profile_track: :track).created_desc
+          album.tracks.includes(
+            profile_track: :track
+          ).plays_count_desc
         end
 
         def retrieve_plays

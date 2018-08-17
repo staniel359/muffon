@@ -20,7 +20,7 @@ module LastFM
           artists_data_hash.merge!(i.to_s => artist_data(a))
         end
       end
-      threads.each(&:join)
+      concurrent_loader { threads.each(&:join) }
       artists_data_hash
     end
 

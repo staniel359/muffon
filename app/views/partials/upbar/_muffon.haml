@@ -1,0 +1,14 @@
+.up.media.list-inline-item.align-items-center
+  .media-body.px-2
+    - if params[:action] == 'dashboard'
+      %i.fas.fa-home
+      = link_to dashboard_path do
+        Dashboard
+    - elsif params[:action] == 'about'
+      = link_to 'About', about_path
+    - elsif params[:action] == 'help'
+      = link_to 'Help', help_path
+    - elsif params[:action] == 'contact'
+      = link_to 'Contact us', contact_path
+    - elsif params[:action] == 'contribute'
+      = link_to 'Contribute', contribute_path

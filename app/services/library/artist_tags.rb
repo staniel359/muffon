@@ -9,7 +9,7 @@ module Library
     def retrieve_artist_tags
       sorted_tag_ids.transpose.yield_self do |a|
         [Tag.where(id: a[0]).pluck(:name), a[1]]
-      end.transpose
+      end.compact.transpose
     end
 
     def sorted_tag_ids

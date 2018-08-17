@@ -6,11 +6,13 @@ class ProfileArtist < ApplicationRecord
   has_many :profile_albums, dependent: :destroy
   has_many :plays, dependent: :destroy
   has_many :loved_tracks, -> { where(loved: 1) }, class_name: 'ProfileTrack'
-  has_many :taggings, as: :profile_model
+  has_many :taggings, as: :taggable
   has_many :profile_tags, through: :artist_taggings
   has_many :playlist_tracks
 
   validates :profile_id, :artist_id, presence: true
+
+  default_scope { includes(:artist) }
 
   def recommendations
     profile.recommendations.where('? = any(profile_artists)', id)

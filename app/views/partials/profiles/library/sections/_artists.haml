@@ -1,0 +1,21 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    %i.fas.fa-user.mx-1
+    Top artists:
+  #artists-scope.d-flex.align-items-center
+    .mr-2
+      = render 'partials/profiles/library/scope/library', collection: 'artists'
+    #artists-scope-save-btn
+      = render 'partials/profiles/library/scope/save_btn', collection: 'artists'
+
+.separator.default.mt-2.mb-3
+
+- if @artists.any?
+  .row
+    - @artists.each do |artist|
+      .col-6.col-sm-4.col-lg-3.mb-2
+        = render 'partials/profiles/library/instances/artist', artist: artist
+  .text-right
+    = link_to 'View more...', profiles_library_artists_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no artists.

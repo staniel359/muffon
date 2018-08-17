@@ -6,6 +6,8 @@ class LastFMDataImportChannel < ApplicationCable::Channel
 private
 
   def broadcast?
-    !current_profile&.lastfm_import_completed?
+    current_profile.present? &&
+      current_profile.lastfm_id.present? &&
+      !current_profile.lastfm_import_completed?
   end
 end

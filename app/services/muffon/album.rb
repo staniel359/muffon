@@ -46,7 +46,7 @@ module Muffon
           results_hash.merge!(key => service.call(service_args))
         end
       end
-      threads.each(&:join)
+      concurrent_loader { threads.each(&:join) }
       results_hash
     end
 

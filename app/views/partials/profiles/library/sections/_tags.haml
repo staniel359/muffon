@@ -1,0 +1,16 @@
+%h5
+  %i.fas.fa-tag.mx-1
+  Top tags:
+
+.separator.default.my-2
+
+- if @tags.any?
+  - @tags.each do |tag|
+    = link_to profiles_library_tag_path(tag_name: Tag.find(tag[0]).name), class: 'tag' do
+      %strong
+        = Tag.find(tag[0]).name
+      = "(#{tag[1]})"
+  .text-right
+    = link_to "View more...", profiles_library_tags_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no tags.

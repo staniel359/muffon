@@ -1,0 +1,49 @@
+#settings.panel.center
+  .panel_header
+    %h4 Settings
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+    .d-flex
+      #settings_edit_form
+        %h5 Info
+
+        .separator.sep_10.sep_default
+
+        = render 'partials/settings/form'
+
+      #settings_password_form
+        %h5 Change password
+
+        .separator.sep_10.sep_default
+
+        = form_for current_profile, remote: true do |f|
+          = f.password_field :password, class: 'input_transp w-100', placeholder: 'Password:'
+          = f.password_field :password_confirmation, class: 'input_transp w-100', placeholder: 'Confirm password:'
+          .mg_top_10.text-right
+            = f.submit 'Change password', class: 'btn btn-primary'
+
+    %hr.sep_20
+
+      %h5 Privacy
+
+      .separator.sep_10.sep_default
+
+      Privacy settings
+    
+    %hr.sep_20
+
+    %h5 Connected accounts
+
+    .separator.sep_10.sep_default
+
+    = render 'partials/settings/lastfm_connection'
+    
+    %hr.sep_20
+
+    %h5 Delete account
+
+    .separator.sep_10.sep_default
+
+    = link_to 'Delete account', current_profile, method: :delete, class: 'btn btn-danger', data: {confirm: 'Warning! All data from your account will be destroyed.  Proceed?'}

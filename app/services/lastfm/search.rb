@@ -19,7 +19,7 @@ module LastFM
           h.merge!(m.pluralize.to_sym => search_model(m))
         end
       end
-      threads.each(&:join)
+      concurrent_loader { threads.each(&:join) }
       search_data
     end
 

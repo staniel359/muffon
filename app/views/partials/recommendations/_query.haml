@@ -1,0 +1,29 @@
+- if %i[artist tag days].any? { |param| params.key?(param) }
+
+  .panel_content.panel_header
+    - if params.key?(:artist) && params[:artist].present?
+      - artist = Artist.find_by('lower(name) = lower(?)', params[:artist])
+      .d-inline.mid_align.recommendation_query_block
+        - if artist.present?
+          .media-left
+            = image_tag artist.image, class: 'img_rnd img_50'
+          %h3.media-right
+            = link_to artist.name, library_artist_path(id: current_profile.id, name: artist.name)
+        - else
+          %h3
+            %i.fas.fa-question
+            = params[:artist]
+
+    - if params.key?(:tag) && params[:tag].present?
+      .d-inline.mid_align.recommendation_query_block
+        %h3
+          %i.fas.fa-tag
+          = link_to params[:tag].downcase, library_tag_path(id: current_profile.id, name: params[:tag].downcase)
+
+    - if params.key?(:days) && params[:days].present?
+      .d-inline.mid_align.recommendation_query_block
+        %h3
+          %i.far.fa-calendar
+          = pluralize(params[:days], 'day')
+
+  .separator.sep_0.sep_light

@@ -1,77 +1,80 @@
 module Profiles
   module Library
     class ArtistsController < ApplicationController
+      before_action :set_profile
+      before_action :set_artist, except: :index
+      before_action :set_title, only: %i[index show]
+
       def index
-        @page_data = {
-          title:   title,
-          artists: paginate(artists, 20)
-        }
+        @pagy, @artists = pagy(artists)
+        respond_with_js_and_html
       end
 
       def show
-        @page_data = {
-          title:  title,
-          artist: artist,
-          tracks: tracks,
-          albums: albums,
-          plays:  plays
-        }
+        @tracks = tracks
+        @albums = albums
+        @plays = plays
       end
 
       def create
-        add_artist_to_library
+        @object = object
+        @profile_artist = add_artist_to_library
+        process_profile_artist_recommendations
+        respond_with_js
+      end
+
+      def show_tracks
+        @tracks = tracks
         respond_with_js
       end
 
     private
 
-      def title
-        t(
+      def set_artist
+        @artist = @profile.profile_artists.joins(
+          'JOIN "artists" ON "artists"."id" = "profile_artists"."artist_id"'
+        ).find_by(
+          'LOWER(artists.name) = ?', params[:artist_name]&.downcase
+        ).decorate
+      end
+
+      def set_title
+        @title = t(
           "profiles.library.artists.#{params[:action]}",
-          profile: profile.nickname,
-          artist:  artist.artist_name
+          profile: @profile.nickname,
+          artist:  @artist&.name
         )
-      end
-
-      def artist
-        @artist ||= profile_artists.find_by(
-          'LOWER(artists.name) = ?',
-          params[:artist_name].downcase
-        )
-      end
-
-      def profile_artists
-        profile.profile_artists.joins(:artist)
       end
 
       def artists
-        profile.profile_artists.includes(:artist).created_desc
+        ::Library::Collection.call(
+          profile_id:      @profile.id,
+          collection_name: 'artists',
+          scope:           params[:scope],
+          order:           params[:order]
+        )
       end
 
       def tracks
-        artist.profile_tracks.includes(:track).created_desc
+        @artist.profile_tracks.plays_count_desc.limit(5).decorate
       end
 
       def albums
-        artist.profile_albums.includes(:album).created_desc
+        @artist.profile_albums.plays_count_desc.limit(3).decorate
       end
 
       def plays
-        artist.plays.includes(
-          profile_track: :track,
-          profile_album: :album
-        ).created_desc
+        @artist.plays.created_desc.limit(10).decorate
       end
 
       def add_artist_to_library
-        @profile_artist = current_profile.profile_artists.create(
+        current_profile.profile_artists.where(
           artist_id: params[:artist_id]
-        )
-        process_profile_artist_recommendations
+        ).first_or_create
       end
 
       def process_profile_artist_recommendations
-        ArtistRecommendationsProcessorWorker.perform_async(
+        ::ArtistRecommendationsProcessorWorker.perform_async(
           @profile_artist.id, current_profile.id
         )
       end

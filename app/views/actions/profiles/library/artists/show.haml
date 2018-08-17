@@ -1,0 +1,74 @@
+.card
+	.card-body
+		= render 'partials/profiles/library/artists/panel_header'
+
+		.separator.default.my-3
+
+		.media
+			.mr-4.w-25.text-center
+				= link_to artist_path(@artist.name) do
+					.mb-2
+						= image_tag @artist.image, class: 'rounded-circle img-fluid'
+					%h5.mb-0
+						%strong
+							= @artist.name
+					%h6 on muffon
+
+				%hr.my-2
+
+				%h6.mb-0
+					In your library since
+				%h6
+					%strong
+						= @artist.created_at.strftime('%e %b %Y')
+
+				%hr.my-2
+
+				- if @artist.taggings.any?
+					.text-center
+						%h6.mb-1
+							Your tags:
+						- @artist.taggings.each do |tagging|
+							= link_to tagging.tag.name, profiles_library_tagging_path(tag_name: tagging.tag.name), class: 'tag'
+
+			.media-body
+
+				%h5
+					= "Tracks (#{@artist.tracks_count}):"
+
+				.separator.default.my-2
+
+				- if @tracks.any?
+					%table.table.table-hover.table-sm
+						= render partial: 'partials/profiles/library/instances/track', collection: @tracks
+					.text-right
+						= link_to 'View more...', profiles_library_artists_tracks_path, class: 'btn btn-primary btn-sm'
+				- else
+					There are no tracks.
+						
+				%hr.my-2
+
+				%h5
+					= "Albums (#{@artist.albums_count}):"
+
+				.separator.default.my-2
+
+				- if @albums.any?
+					.row
+						.col-4
+							= render partial: 'partials/profiles/library/instances/album', collection: @albums
+					.text-right
+						= link_to 'View more...', profiles_library_artists_albums_path, class: 'btn btn-primary btn-sm'
+
+				%hr.my-2
+
+				%h5
+					= "Plays (#{@artist.plays_count}):"
+
+				.separator.default.my-2
+
+				- if @plays.any?
+					%table.table.table-hover.table-sm
+						= render partial: 'partials/profiles/library/instances/play', collection: @plays
+					.text-right
+						= link_to 'View more...', profiles_library_artists_plays_path, class: 'btn btn-primary btn-sm'

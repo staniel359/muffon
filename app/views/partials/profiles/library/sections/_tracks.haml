@@ -1,0 +1,19 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    %i.fas.fa-music.mx-1
+    Top tracks:
+  #tracks-scope.d-flex.align-items-center
+    .mr-2
+      = render 'partials/profiles/library/scope/library', collection: 'tracks'
+    #tracks-scope-save-btn
+      = render 'partials/profiles/library/scope/save_btn', collection: 'tracks'
+
+.separator.default.my-2
+
+- if @tracks[:top].any?
+  %table.table.table-hover.table-sm
+    = render partial: 'partials/profiles/library/instances/track', collection: @tracks[:top]
+  .text-right
+    = link_to 'View more...', profiles_library_tracks_path(scope: params[:scope]), class: 'btn btn-primary btn-sm'
+- else
+  There are no tracks.

@@ -1,0 +1,56 @@
+.card
+  .card-body
+    %h5.text-center
+      %i.fas.fa-check.text-success
+      = t('registrations.success')
+    %small
+      %i.fas.fa-info-circle
+      = t('registrations.additional')
+
+    .separator.default.mt-3.mb-3
+
+    #registration-flash-msg
+
+    = form_for current_profile, url: registration_path, html: { class: 'row no-gutters align-items-center' }, remote: true, multipart: true, authenticity_token: true do |f|
+
+      = f.label 'Avatar:', class: 'col-3'
+      .col-9
+        .media.mb-2.align-items-end
+          .mr-2
+            = image_tag @profile.avatar.url(:md), id: 'profile-avatar-preview'
+          .media-body
+            = f.label :avatar, class: 'btn btn-primary btn-sm' do
+              %i.fas.fa-plus
+              Add avatar
+            = f.file_field :avatar, class: 'd-none'
+
+      = f.label :name, 'Name:', class: 'col-3 mb-2'
+      .col-9
+        = f.text_field :name, class: 'input-transp mb-2'
+
+      = f.label :gender, 'Gender:', class: 'col-3 mb-xs-2'
+      .col-9.d-flex.mb-2.btn-group.btn-group-toggle{ data: { toggle: 'buttons' } }
+        = f.label :gender_m, class: 'btn btn-primary btn-sm' do
+          = f.radio_button :gender, 'm', class: 'mr-0'
+          Male
+        = f.label :gender_f, class: 'btn btn-primary btn-sm' do
+          = f.radio_button :gender, 'f', class: 'mr-0'
+          Female
+        = f.label :gender_o, class: 'btn btn-primary btn-sm' do
+          = f.radio_button :gender, 'o', class: 'mr-0'
+          Other
+
+      = f.label :birthdate, 'Birth date:', class: 'col-3 mb-2'
+      .col-9
+        = f.date_field :birthdate, class: 'input-transp mb-2', value: Date.today, min: '1900-01-01'
+
+      = f.label :country, 'Country:', class: 'col-3 mb-2'
+      .col-9
+        = hidden_field_tag :countries_list, nil, data: { autocomplete_source: I18nData.countries.values }
+        = f.text_field :country, class: 'input-transp mb-2 p-0'
+
+      = f.label :city, 'City:', class: 'col-3 mb-3'
+      .col-9
+        = f.text_field :city, class: 'input-transp mb-3'
+
+      = f.submit 'Save', class: 'btn btn-light btn-block'

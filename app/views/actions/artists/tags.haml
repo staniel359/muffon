@@ -1,0 +1,18 @@
+.card
+  = render 'partials/artists/panel_header'
+
+  .separator.light
+
+  .card-body
+    %h5
+      %i.fas.fa-tags
+      Tags:
+
+    .separator.default.mt-2.mb-3
+
+    - @tags.each do |tag|
+      = link_to tag_path(tag_name: tag[:name]), class: 'tag mr-1' do
+        %strong
+          = tag[:name]
+        %small
+          = tag[:count]

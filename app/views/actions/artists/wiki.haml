@@ -1,0 +1,15 @@
+.card
+  = render 'partials/artists/panel_header'
+
+  .separator.light
+
+  .card-body
+    %h5
+      %i.fas.fa-info-circle
+      Wiki:
+
+    .separator.mt-2.mb-3.default
+
+    %h6
+      = @artist.description || 'No description.'
+          

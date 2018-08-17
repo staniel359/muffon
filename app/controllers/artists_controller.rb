@@ -1,21 +1,17 @@
 class ArtistsController < ApplicationController
-  def show
-    @page_data = {
-      title:           title,
-      top_tags:        artist.tags,
-      taggings:        retrieve_taggings,
-      top_tracks:      artist.top_tracks,
-      top_albums:      artist.top_albums,
-      similar_artists: artist.similar_artists
-    }
-  end
+  before_action :set_artist, :set_title
+
+  def show; end
 
   def images
-    @page_data = {
-      title:  title,
-      images: retrieve_images
-    }
+    @images = artist_images
   end
+
+  def tags
+    @tags = artist_tags
+  end
+
+  def wiki; end
 
   def similar_artists
     @page_data = {
@@ -24,64 +20,40 @@ class ArtistsController < ApplicationController
     }
   end
 
-  def wiki
-    @page_data = {
-      title: title,
-      wiki:  artist.description
-    }
-  end
-
-  def tags
-    @page_data = {
-      title: title,
-      tags:  retrieve_tags
-    }
-  end
-
   def listeners
-    @page_data = {
-      title:     title,
-      listeners: retrieve_listeners
-    }
+    @listeners = artist_listeners
   end
 
   def plays
-    @page_data = {
-      title: title,
-      plays: retrieve_plays
-    }
+    @plays = artist_plays
   end
 
 private
 
-  def title
-    t(
-      "artists.#{params[:action]}",
-      artist: artist.name
-    )
-  end
-
-  def artist
-    @artist ||= Muffon::Processor::Artist.call(
+  def set_artist
+    @artist = Muffon::Processor::Artist.call(
       params.slice(:artist_name)
+    ).decorate
+  end
+
+  def set_title
+    @title = t(
+      "artists.#{params[:action]}",
+      artist: @artist.name
     )
   end
 
-  def retrieve_taggings
-    return unless logged_in?
-
-    current_profile.artist_taggings(artist.id)
-  end
-
-  def retrieve_images
-    paginate_array(
-      images_data[:data],
-      images_data[:total_count]
+  def artist_images
+    paginate(
+      paginate_array(
+        images_data[:data],
+        images_data[:total_count]
+      ), 40
     )
   end
 
   def images_data
-    @images_data ||= Lastfm::Artist::Images.call(
+    @images_data ||= LastFM::Artist::Images.call(
       params.slice(:artist_name, :page)
     )
   end
@@ -96,7 +68,7 @@ private
     )
   end
 
-  def retrieve_tags
+  def artist_tags
     LastFM::Tags.call(
       params.slice(:artist_name).merge!(
         model_name: 'artist'
@@ -104,11 +76,11 @@ private
     )
   end
 
-  def retrieve_listeners
-    paginate(artist.profiles.created_desc, 50)
+  def artist_listeners
+    paginate(@artist.listeners.created_desc, 50)
   end
 
-  def retrieve_plays
-    paginate(artist.plays.created_desc, 50)
+  def artist_plays
+    paginate(@artist.plays.created_desc, 50)
   end
 end

@@ -1,24 +1,23 @@
 module Profiles
   class ContactsController < ApplicationController
-    def contacts
+    def index
       @page_data = {
         title:     title,
-        followers: profile.followers,
-        following: profile.followings
+        profile:   profile
       }
     end
 
     def followers
       @page_data = {
         title:     title,
-        followers: profile.followers
+        profile:   profile
       }
     end
 
     def following
       @page_data = {
         title:     title,
-        following: profile.followings
+        profile:   profile
       }
     end
 

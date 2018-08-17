@@ -1,0 +1,3 @@
+$('#membership_btn_<%= params[:group_id] %>').html("<%= j render partial: 'memberships/membership_button', locals: { group_id: params[:group_id] } %>")
+$('#group_members_count_<%= params[:group_id] %>').html("<%= j pluralize(@group.members.count, 'member') %>")
+$('#group_members').html("<%= j render 'groups/members' %>")

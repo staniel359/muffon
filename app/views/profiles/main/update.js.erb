@@ -1,5 +1,0 @@
-<% if @profile.valid? %>
-	$('.flash_msg').html("<%= j render 'muffon/flash_messages' %>")
-<% else %>
-	$('.flash_msg').html("<%= j render 'muffon/error_messages' %>")
-<% end %>

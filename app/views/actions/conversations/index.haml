@@ -1,0 +1,20 @@
+#conversations.panel.center
+
+  .panel_header
+
+    %h3 
+      %i.fas.fa-comments
+      Conversations
+
+  .separator.sep_0.sep_light
+
+  .panel_content
+
+    - if @page_data[:conversations].any?
+
+      %table.table
+        = render @page_data[:conversations]
+
+    - else
+
+      You don't have any conversations yet.

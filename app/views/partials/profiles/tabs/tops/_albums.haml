@@ -1,0 +1,9 @@
+- if @albums.any?
+  .row
+    - @albums.each do |album|
+      .col-6.col-sm-4.col-lg-3.mb-2
+        = render 'partials/profiles/library/instances/album', album: album
+  .text-right
+    = link_to 'View more...', profiles_library_albums_path(scope: params[:scope]), class: 'btn btn-primary btn-sm'
+- else
+  There are no albums.

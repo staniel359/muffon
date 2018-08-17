@@ -1,0 +1,13 @@
+%h5
+  %i.fas.fa-play.mx-1
+  = "Plays (#{@profile.plays_count}):"
+
+.separator.default.my-2
+
+- if @plays.any?
+  %table.table.table-hover.table-sm
+    = render partial: 'partials/profiles/library/instances/play', collection: @plays
+  .text-right
+    = link_to "View more...", profiles_library_plays_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no plays.

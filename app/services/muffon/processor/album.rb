@@ -8,18 +8,20 @@ module Muffon
     private
 
       def process_album
-        return {} unless valid_album?
-        return album if album.persisted?
+        return unless album_data.present?
 
         album.tap { album_attributes }
       end
 
-      def valid_album?
-        muffon_album_data.present?
+      def album_data
+        @album_data ||=
+          retrieve_album_data || @args.album || custom_album_data
       end
 
-      def muffon_album_data
-        @muffon_album_data ||= Muffon::Album.call(
+      def retrieve_album_data
+        return unless @args.full
+
+        Muffon::Album.call(
           artist_name: @args.artist_name,
           album_title: @args.album_title
         )
@@ -27,17 +29,9 @@ module Muffon
 
       def album
         @album ||= ::Album.with(
-          title:     album_title,
+          title:     album_data[:title],
           artist_id: artist_id
         )
-      end
-
-      def album_title
-        @args.album_title || album_data[:title]
-      end
-
-      def album_data
-        @album_data ||= @args.album || muffon_album_data
       end
 
       def artist_id
@@ -45,26 +39,23 @@ module Muffon
       end
 
       def artist
-        Muffon::Processor::Artist.call(
-          artist_name: @args.artist_name,
-          artist:      artist_data
-        )
+        Muffon::Processor::Artist.call(artist: artist_data)
       end
 
       def artist_data
-        album_data[:artist] unless @args.artist_name.present?
+        album_data[:artist] || custom_artist_data
       end
 
       def album_attributes
         base_attributes
         extra_attributes
-        album.save
+        album.save!
         ids_attributes
-        album.save
+        album.save!
       end
 
       def base_attributes
-        album.title                  = if_present(:title)
+        album.title                ||= if_present(:title)
         album.cover                  = if_present(:cover)
         album.lastfm_listeners_count = if_present(:lastfm_listeners_count)
         album.lastfm_plays_count     = if_present(:lastfm_plays_count)
@@ -83,9 +74,13 @@ module Muffon
       end
 
       def ids_attributes
-        album.track_ids |= track_ids
-        album.tag_ids   |= tag_ids
-        album.label_ids |= label_ids
+        album.track_ids = if_ids_any(:track_ids)
+        album.tag_ids   = if_ids_any(:tag_ids)
+        album.label_ids = if_ids_any(:label_ids)
+      end
+
+      def if_ids_any(array_method)
+        send(array_method).presence || album.send(array_method)
       end
 
       def track_ids

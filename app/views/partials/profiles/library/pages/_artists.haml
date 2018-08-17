@@ -1,0 +1,21 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    = "Artists (#{@profile.artists_count}):"
+  #artists-order-scope.d-flex
+    .mr-3
+      = render 'partials/profiles/library/order/artists'
+    = render 'partials/profiles/library/scope/artists'
+
+.separator.default.mt-2.mb-3
+
+- if @artists.any?
+  .row
+    - @artists.decorate.each do |artist|
+      .col-6.col-sm-4.col-lg-3.mb-2
+        = render 'partials/profiles/library/instances/artist', artist: artist
+
+  %hr.mt-2.mb-3
+
+  = pagy_nav_bootstrap(@pagy).html_safe
+- else
+  There are no artists.

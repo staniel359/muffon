@@ -1,331 +1,245 @@
-@import 'variables'
-@import 'pages'
+$muffonLight: #7a47c0
+$muffonDefault: #574078
+$muffonDarkLight: #3c2f50
+$muffonDark: #2f263e
+$boxShadow: 0 0px 2px 1px rgba(3, 3, 3, 0.4)
+
+$primary: $muffonDefault
+$light: $muffonLight
+
 @import 'bootstrap'
-@import 'bootstrap-datepicker3'
 @import 'layouts'
 @import 'flag-icon'
 
-*
-  font-family: Noto Sans
+// HTML
 
-html, body
-  height: 100%
+html
+  min-height: 100%
+body
+  min-height: 100vh
+body, hr
   background-color: $muffonDefault
-  color: white
-  line-height: 1
-
-h1, h2, h3, h4, h5, h6
+  margin-bottom: 180px
+hr
   margin: 0
-h1
-  font-size: 36px
-h2
-  font-size: 30px
-h3
-  font-size: 24px
-h4
-  font-size: 18px
-h5
-  font-size: 14px
-h6
-  font-size: 12px
-
+strong
+  font-weight: 600
 a, a:hover, a:active, a:visited, a:focus
   color: white
   outline: none
-
-input
-  color: black
-input[type="checkbox"]
-  margin: 0
-
+td
+  border-top: none !important
+  border-bottom: 1px solid $muffonDefault
+.table-hover td:hover
+  background-color: $muffonDark
 label
-  margin: 0
+  margin-bottom: 0
+select
+  box-shadow: none !important
+small
+  line-height: 1.2em
 
-canvas
-  position: absolute
+// Media
+
+@media (max-width: 767.98px)
+  #sidebar
+    width: 0px
+@media (max-width: 575.98px)
+  #profile-page-avatar
+    width: 85px
+
+// Flag icons
+
+.flag-icon
+  width: 18px
+
+// Bootstrap
+
+.row
+  margin: 0 -10px
+[class^=col-]
+  padding: 0 10px
+
+.card
+  background-color: $muffonDarkLight
+  color: white
+  border: none
+  box-shadow: $boxShadow
+
+.btn
+  border: none
+.btn:focus, .btn:active, .btn.active
+  outline: none !important
+  box-shadow: none !important
+
+.dropdown a
+  color: black
+.dropdown-toggle::after
+  display: none
+.dropdown-item
+  padding: 5px 15px
+
+.nav-fill .nav-link.active
+  border-bottom: 2px solid $muffonLight
+  background-color: transparent !important
+  border-radius: 0px
 
 .text-muted
-  color: #666777
+  color: #ffffff80 !important
+.text-danger
+  color: red !important
 
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus
-  background-color: $muffonDefault !important
-  border: none
-  color: white !important
-  outline: none !important
-  box-shadow: none !important
-.btn-default, .btn-default:hover, .btn-default:active, .btn-default:visited, .btn-default:focus
-  background-color: $muffonLight !important
-  border: none
-  color: white !important
-  outline: none !important
-  box-shadow: none !important
-.btn-sm
-  padding: 2px 10px
-  font-size: 13px
-.play_btn, .playlist_add_btn
-  border: none
-  width: 30px
-  height: 30px
-  padding: 0
-.play_button, .playlist_add_button
-  position: absolute
-  padding: 10px
-  .play_btn, .playlist_add_btn
-    opacity: 0
-.play_button:hover, .playlist_add_button:hover
-  .play_btn, .playlist_add_btn
-    opacity: 1
-    transition: opacity 0.2s
+// Pagy
 
-.group_btn, .group_btn:hover, .group_btn:active, .group_btn:visited, .group_btn:focus
-  border: $borderDarkLight
-
-.label-default, .label-default[href]:hover, .label-default[href]:focus
-  background-color: $muffonDark
-  font-size: 12px
-
-.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus
-  background-color: $muffonLight
-  border-color: $muffonDarkLightTransparent
-.pagination > li > a, .pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span, .pagination > li > span:hover, .pagination > li > span:focus
-  background-color: $muffonDefault
-  border-color: $muffonDarkLightTransparent
-  color: white
-.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus
-  background-color: $muffonDefault
-  border-color: $muffonDarkLightTransparent
-  color: white
 .pagination
-  margin: 0
+  margin-bottom: 0
+  justify-content: center !important
+.page-item.active .page-link
+  background-color: $muffonLight !important
+.page-link:not(:disabled):not(.disabled)
+  background-color: $muffonDefault
+.page-link
+  border: 1px solid $muffonDarkLight !important
+  color: white !important
+  box-shadow: none !important
 
-.nav-tabs
-  border: none
-.nav-tabs > li.active > a, .nav-tabs > li > a, .nav-tabs > li.active > a:hover, .nav-tabs > li > a:hover, .nav-tabs > li.active > a:focus, .nav-tabs > li > a:focus
-  color: white
-  background-color: transparent
-  border: none
-  outline: none
-  padding: 0 0 10px
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
-  border-bottom: 2px solid $muffonLight
-.nav-tabs > li > a:hover, .nav-tabs > li > a:focus
-  border-bottom: 2px solid $muffonDefault
+// Turbolinks
 
 .turbolinks-progress-bar
   height: 5px
   background-color: $muffonLight
 
+// jQuery UI Autocomplete
+
+.ui-autocomplete
+  position: absolute
+  list-style: none
+  background-color: white
+  padding: 0
+  max-height: 200px
+  overflow-y: scroll
+  .ui-menu-item
+    padding: 7px 12px
+    cursor: pointer
+  .ui-menu-item:hover
+    background-color: lightGrey
+.ui-helper-hidden-accessible
+  display: none
+
+// Custom
+
+.h0
+  @extend h1
+  font-size: 80px
+  a
+    text-decoration: none
+
 .tag
-  margin-bottom: 4px
+  @extend .btn, .btn-primary, .btn-sm
+  margin-bottom: 5px
+  padding: 5px 10px
+  line-height: 1em
+  font-weight: 600
+  font-size: 0.8rem
   max-width: 170px
   white-space: normal
-  padding: 0 6px
-
-.inv_btn, .inv_btn_no_hover
-  background-color: transparent
-  border: none  
-.inv_btn
-  border-radius: 5px
-  padding: 2px 5px
-.inv_btn_no_hover
-  padding: 0
-.inv_btn:hover
-  background-color: $muffonDark
-  color: white
-
-.tooltip-inner
-  white-space: nowrap
-  max-width: none
-
-.container-fluid
-  padding: 45px 15px 15px 65px
-  min-height: 100%
-  position: relative
-
-.center
-  margin-left: 220px
-  width: 792px
-
-.no_padding
-  padding: 0
-
-.dropdown
-  display: inline-block
-.dropdown_btn:hover
-  color: white
-.dropdown-menu
-  min-width: 0px
-  padding: 5px
-  li
-    color: #333333
-  .button_to
-    padding: 3px
-    cursor: pointer
-  .button_to:hover
-    background-color: lightGrey
-
-.form_center
-  width: 500px
-  margin: auto
-
-.rotated
-  transform: rotate(180deg)
-
-.mg_btm_0
-  margin-bottom: 0
-.mg_btm_5
-  margin-bottom: 5px
-.mg_btm_10
-  margin-bottom: 10px
-.mg_btm_20
-  margin-bottom: 20px
-.mg_top_5
-  margin-top: 5px
-.mg_top_10
-  margin-top: 10px
-.mg_top_20
-  margin-top: 20px
-.mg_right_10
-  margin-right: 10px
-
-.panel
-  border-radius: 0px
-  background-color: $muffonDarkLight
-  border: none
-  padding: 0
-  margin-bottom: 15px
-  box-shadow: $boxShadow
-  position: relative
-.panel_570
-  min-height: 570px
-.panel_header, .panel_content, .group_panel_header
-  padding: 20px
-.panel_header
-  .media-left
-    padding: 0
-    vertical-align: middle
-  .media-right
-    vertical-align: middle
-  .tag_name
-    padding-top: 10px
-.panel_header_left
-  display: inline-block
-  max-width: 500px
-.panel_header_right
-  display: inline-block
-  max-width: 500px
-  float: right
-.panel_content_wide
-  margin: 0 -10px
 
 .separator
   height: 2px
-.sep_light
-  background-color: $muffonLight
-.sep_default
-  background-color: $muffonDefault
-.sep_0
-  margin: 0
-.sep_5
-  margin: 5px 0
-.sep_10
-  margin: 10px 0
-.sep_20
-  margin: 20px 0
-hr
-  border-color: $muffonDefault
 
-.border_right
-  border-right: $border
-.border_left
-  border-left: $border
-.border_bottom
-  border-bottom: $border
+.default
+  background-color: $muffonDefault !important
+.light
+  background-color: $muffonLight !important
+.dark
+  background-color: $muffonDark !important
 
-.table
-  margin: 0
-  thead tr th
-    border: none
-    border-bottom: 2px solid $muffonDefault
-  tbody tr td
-    border: none
-    border-bottom: 1.5px solid $muffonDefault
-.table-hover
-  tbody tr td:hover
-    background-color: $muffonDark
-.media-body
-  overflow: visible
-
-.img_30
-  width: 30px
-.img_50
-  width: 50px
-.img_rnd
-  border-radius: 50%
-
-.artist, .album, .image
-  position: relative
-  margin-left: 10px
-  margin-right: 10px
-  text-align: center
-  vertical-align: top
-  display: inline-block
-  img
-    position: relative
-    margin-bottom: 5px
-.album_220, .album_220 img
-  width: 220px
-.artist_190, .artist_190 img
-  width: 190px
-.artist_170, .artist_170 img, .album_170, .album_170 img, .image_170, .image_170 img
-  width: 170px
-.album_160, .album_160 img
-  width: 160px
-
-.inline
-  display: inline-block
-.table_cell
-  display: table-cell
-
-.top_align
-  vertical-align: top
-.mid_align
-  vertical-align: middle
-
-.bottom_link
-  width: 384px
-  padding: 0 30px
-
-.full_height
-  height: 100%
-
-.absolute
-  position: absolute
-.relative
-  position: relative
-.fixed
-  position: fixed
-
-.new_square
-  height: 14px
-  min-width: 14px
-  background-color: red
-  right: 0
-  border-radius: 2px
-  padding: 2px
+.artist-actions
+  padding-top: 100%
+.action-btn
+  @extend .btn-transp
+  color: white
+  margin: 5px 10px
+  font-size: 13px
+[id^=artist-library-action]
   top: 0
-  position: absolute
-  text-align: center
-  .new_square_text
-    font-size: 10px
-    font-weight: bold
-    line-height: 1
+[id^=artist-library-action], [id^=artist-listened-action]
+  right: 0
+[id^=artist-bookmark-action], [id^=artist-listened-action]
+  top: 50%
 
-.datepicker
-  position: fixed
-  background-color: $muffonDefault
-  table tr td span:hover, table tr td span.focused
-    background: $muffonLight
-
-.custom-select
+.btn-transp
+  background-color: transparent
+  border: none
   padding: 0
+  cursor: pointer
+  outline: none !important
+
+.track-bar
+  height: 3px
+  background-color: $muffonLight
+
+.artist-image-clickable
+  cursor: pointer
+
+.img-sm
+  width: 50px
+.img-xs
+  width: 35px
+
+.bottom-0
+  bottom: 0
+.top-0
+  top: 0
+
+.input-transp
+  width: 100%
+  background-color: transparent
+  border: none
+  font-size: 20px
+  color: white
+  border-bottom: 1px solid $muffonDefault
+  box-shadow: none
+.input-transp:focus
+  border-bottom: 2px solid $muffonLight
+
+.z-10
+  z-index: 10
+.z-100
+  z-index: 100
+
+#signup-btns, #signup-form, #additional-form, #login-form
+  display: none
+
+.btn-lastfm
+  @extend .btn, .btn-danger
+  background-color: #ba0000
+
+.profile-page-left
+  width: 120px
+
+.list-play-btn-cover-wrap
+  .list-play-btn
+    transition: 0.2s
+    opacity: 0
+.list-play-btn-cover-wrap:hover
+  .list-play-btn
+    opacity: 1
+
+#library-search-form-wrap
+  display: none
+  top: 50px
+#library-search-form
+  background-color: $muffonDark+f4
+#library-search-results
+  max-height: 420px
+  overflow-y: scroll
+#library-scrollspy
+  top: 50px
+
+.anchor
+  position: relative
+  top: -50px
+
+.no-scroll
+  overflow: hidden

@@ -1,0 +1,8 @@
+- if current_profile?(@profile)
+  - if scope_changed?
+    = button_to profiles_library_scope_path(collection: collection, scope: params[:scope], default: true), method: :patch, remote: true, class: 'btn btn-sm btn-primary' do
+      Save
+  - if params[:default]
+    = button_tag class: 'btn btn-sm btn-primary disabled' do
+      %i.fas.fa-check
+      Saved

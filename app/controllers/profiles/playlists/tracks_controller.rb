@@ -1,11 +1,6 @@
 module Profiles
   module Playlists
     class TracksController < Profiles::PlaylistsController
-      def search
-        @page_data = search_data
-        respond_with_js
-      end
-
       def create
         check_correct_profile
         add_track_to_playlist(playlist)
@@ -32,12 +27,6 @@ module Profiles
 
     private
 
-      def search_data
-        Library::Search.call(
-          profile_id: current_profile.id, q: params[:q]
-        )
-      end
-
       def add_track_to_playlist(playlist)
         playlist.playlist_tracks.create(
           track_id:  track.id,
@@ -50,7 +39,7 @@ module Profiles
           if params[:track_id]
             find_track
           elsif params[:profile_track_id]
-            find_profile_track
+            find_profile_track&.track
           end
         end
       end
@@ -76,9 +65,7 @@ module Profiles
       end
 
       def playlists
-        current_profile.playlists.where(
-          id: params[:playlist_ids]
-        )
+        current_profile.playlists.where(id: params[:playlist_ids])
       end
     end
   end

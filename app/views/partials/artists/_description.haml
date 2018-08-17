@@ -1,0 +1,18 @@
+- if artist.description.present?
+
+  %h6
+    = artist.description.truncate_words(50)
+
+    - if artist.description.length > 50
+
+      = link_to 'Read More...', artists_wiki_path(artist_name: artist.name), class: 'text-muted'
+
+    - else
+
+      %h6.text-muted
+        No description available.
+
+- else
+
+  %h6.text-muted
+    No description available.

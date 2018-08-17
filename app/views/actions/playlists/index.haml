@@ -1,0 +1,30 @@
+#playlists_page.panel.panel_570.center
+
+  .panel_header
+
+    %h3.d-inline.panel_header_left
+      %i.fas.fa-list-ul
+      Playlists
+
+    .panel_header_right
+      .media-left
+        %h4
+          = link_to 'Your playlists', profile_playlists_path(id: current_profile.id)
+      .media-right
+        = image_tag current_profile.avatar.url(:sm), class: 'img_rnd img_30'
+
+  .separator.sep_0.sep_light
+
+  #playlists_content.panel_content
+
+    - if @playlists.any?
+
+      %table.table.table-hover.table-condensed
+        = render @playlists
+
+      .text_center
+        = paginate @playlists
+
+    - else
+
+      There are no playlists yet.

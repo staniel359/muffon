@@ -37,7 +37,7 @@ module Conversations
       conversation = current_profile.conversation_with(recipient.id)
       message.update(conversation_id: conversation.id)
       conversation.touch
-      redis.rpush("#{recipient.id}:new_messages", message.id)
+      $redis.rpush("#{recipient.id}:new_messages", message.id)
     end
   end
 end

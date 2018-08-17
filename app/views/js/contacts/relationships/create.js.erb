@@ -1,0 +1,3 @@
+$("*[id*=follow_button_<%= params[:following_id] %>]").each(function(){
+  $(this).html("<%= j render 'follow_button', profile: params[:following_id] %>")
+})

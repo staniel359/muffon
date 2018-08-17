@@ -1,0 +1,32 @@
+.nav-pills.flex-column.position-sticky.mr-4.d-none.d-sm-block#library-scrollspy
+  #library-search-btn
+    = button_tag class: 'btn btn-light w-100 text-left' do
+      %i.fas.fa-search.mr-1
+      Search
+
+  %hr.my-2
+
+  = link_to '#topartists', class: 'nav-link' do
+    %i.fas.fa-user.mr-1
+    Top artists
+  = link_to '#topalbums', class: 'nav-link' do
+    %i.fas.fa-dot-circle.mr-1
+    Top albums
+  = link_to '#toptracks', class: 'nav-link' do
+    %i.fas.fa-music.mr-1
+    Top tracks
+  = link_to '#toptags', class: 'nav-link' do
+    %i.fas.fa-tag.mr-1
+    Top tags
+  = link_to '#lovedtracks', class: 'nav-link' do
+    %i.fas.fa-heart.mr-1
+    Loved tracks
+  = link_to '#newtracks', class: 'nav-link' do
+    %i.fas.fa-plus.mr-1
+    New tracks
+  = link_to '#plays', class: 'nav-link' do
+    %i.fas.fa-play.mr-1
+    Plays
+  = link_to '#taggings', class: 'nav-link' do
+    %i.fas.fa-tags.mr-1
+    Taggings

@@ -1,0 +1,8 @@
+$('#login-form').html("<%= j render 'partials/sessions/login_card' %>");
+$('#login-form').prependTo($('#start-wrap'))
+$('#signup-form').hide("slide", {direction: 'left'}, 500, function() {
+  $('#signup-form').removeClass('d-block')
+})
+$('#login-form').show("slide", {direction: 'right'}, 500)
+$('.ui-effects-placeholder').first().hide();
+window.history.pushState(null , null, 'login')

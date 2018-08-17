@@ -1,0 +1,26 @@
+.media-body
+  %h4
+    = @profile.nickname
+
+  .separator.default.mt-2.mb-2
+
+  - if @profile.any_information?
+    %h6
+      %i.fas{ class: "fa-#{@profile.gender&.downcase}" }
+      = @profile.name_with_age
+    %h6
+      = @profile.country_flag
+      = @profile.country_with_city
+  - else
+    %h6.text-muted
+      No personal information provided.
+  %h6.d-inline-block.mr-1
+    = link_to profiles_followers_path do
+      %strong
+        = @profile.followers.count
+      = 'follower'.pluralize(@profile.followers.count)
+  %h6.d-inline-block
+    = link_to profiles_following_path do
+      %strong
+        = @profile.followings.count
+      following

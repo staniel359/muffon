@@ -20,3 +20,7 @@ Style/FrozenStringLiteralComment:
 
 EndOfLine:
   Enabled: false
+
+GlobalVars:
+  AllowedVariables:
+    - $redis

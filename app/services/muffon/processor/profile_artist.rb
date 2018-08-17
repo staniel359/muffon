@@ -8,9 +8,14 @@ module Muffon
     private
 
       def process_profile_artist
-        return unless artist_id.present?
-
         profile_artist.tap { profile_artist_attributes }
+      end
+
+      def profile_artist
+        @profile_artist ||= ::ProfileArtist.where(
+          profile_id: @args.profile_id,
+          artist_id:  artist_id
+        ).first_or_initialize
       end
 
       def artist_id
@@ -22,19 +27,12 @@ module Muffon
       end
 
       def artist_data
-        @args.artist
-      end
-
-      def profile_artist
-        @profile_artist ||= ::ProfileArtist.where(
-          profile_id: @args.profile_id,
-          artist_id:  artist_id
-        ).first_or_initialize
+        @args.artist || {}
       end
 
       def profile_artist_attributes
         profile_artist.created_at ||= @args.created_at
-        profile_artist.save
+        profile_artist.save!
       end
     end
   end

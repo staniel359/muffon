@@ -1,13 +1,11 @@
 class SettingsController < ApplicationController
   def index
-    @page_data = {
-      title: title
-    }
+    should_login
   end
 
 private
 
-  def title
-    t("settings.#{params[:action]}")
+  def set_title
+    @title = t("settings.#{params[:action]}")
   end
 end

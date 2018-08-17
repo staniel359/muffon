@@ -1,0 +1,11 @@
+- if current_profile.has_in_library?(artist.id)
+
+  .d-flex.align-items-end.flex-column.default.h-100
+    = link_to profiles_library_artist_path(profile_id: current_profile.id, artist_name: artist.name), data: {toggle: 'tooltip', placement: 'bottom'}, title: "Show in your library", class: 'action-btn' do
+      %i.fas.fa-music
+
+- else
+
+  .d-flex.align-items-end.flex-column.h-100
+    = button_to profiles_library_artists_path(profile_id: current_profile.id, artist_id: artist.id), data: {toggle: 'tooltip', placement: 'bottom'}, title: "Add to library", remote: true, class: 'action-btn' do
+      %i.fas.fa-music

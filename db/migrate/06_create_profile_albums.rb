@@ -4,6 +4,7 @@ class CreateProfileAlbums < ActiveRecord::Migration[5.1]
       t.belongs_to :profile,        foreign_key: true
       t.belongs_to :album,          foreign_key: true
       t.belongs_to :profile_artist, foreign_key: true
+      t.belongs_to :artist,         foreign_key: true
 
       t.integer :profile_track_ids, array: true, default: []
 

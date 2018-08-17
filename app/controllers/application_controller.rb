@@ -1,18 +1,23 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+  private_class_method :local_prefixes
   include SessionsHelper
-  ORDERS = %w[
-    plays_count_desc plays_count_asc
-    created_desc created_asc
-  ].freeze
+  include Pagy::Backend
+
+  def self.local_prefixes
+    [
+      "js/#{controller_path}",
+      "actions/#{controller_path}",
+      "partials/#{controller_path}",
+      "modals/#{controller_path}",
+      controller_path
+    ]
+  end
 
 private
 
-  def redis
-    @redis ||= Redis.new(url: 'redis://localhost:6379')
-  end
-
-  def profile
-    @profile ||= Profile.find_by(id: params[:profile_id])
+  def set_profile
+    @profile = Profile.find_by(id: params[:profile_id])&.decorate
   end
 
   def respond_with_js_and_html
@@ -24,14 +29,6 @@ private
 
   def respond_with_js
     respond_to { |format| format.js { render layout: false } }
-  end
-
-  def paginate_array(collection, total)
-    Kaminari.paginate_array(collection, total_count: total)
-  end
-
-  def paginate(collection, limit)
-    collection.page(params[:page]).per(limit)
   end
 
   def check_correct_profile

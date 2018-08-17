@@ -1,248 +1,78 @@
-@import 'variables'
-
-.alert-danger
-  background-color: $muffonLight
-  color: white
-  border: none
-  border-radius: 0
-
-#up_search
-  width: 215px
-  margin-right: 6px
-  padding: 4px 8px
-  height: 35px
-  margin-left: -230px
-  z-index: -1
-  position: absolute
-  top: 0
-  form, input
-    font-size: 16px
-    background-color: $muffonDarkLight
-    border: none
-    color: white
-    line-height: 2
- 
-.up
-  display: inline-block
-  vertical-align: top
-  height: 100%
-  background-color: $muffonDarkLight
-  min-width: 10px
-  line-height: 1.2
-  box-shadow: $boxShadow
-#upbar
-  z-index: 2000
-  position: fixed
-  margin-left: 145px
-  height: 35px
-  a
-    vertical-align: top
-  img
-    width: 35px
-  .media-left
-    padding: 0
-  .media-right
-    padding: 9px
-    vertical-align: middle
-#logo
-  width: 130px
-  margin-right: 6px
-  text-align: center
-  padding: 10px
-  text-align: center
-  a
-    line-height: 0.6
-    font-size: 28px
-#beta_btn
-  position: absolute
-  top: 0
-  left: 95px
-  font-size: 10px
-
-#scroll_top_btn
-  z-index: 1000
-  bottom: 15px
-  display: none
-
-#progress_bar
-  bottom: 15px
-  position: fixed
-  z-index: 100
-  display: none
-  background-color: $muffonDarkLightTransparent
-  border: none
-  padding: 10px
-  width: 792px
-  box-shadow: $boxShadow
-  .progress-bar
-    background-color: $muffonLight
-
 #sidebar
   z-index: 1000
-  padding: 5px 10px
   width: 50px
-  background-color: $muffonDarkLight
-  position: fixed
+  background-color: $muffonDarkLight+e6
+  transition: 0.3s
+  font-size: 16px
+  white-space: nowrap
+  overflow-x: hidden
   box-shadow: $boxShadow
-  #side_down_icons
-    bottom: 5px
+  td
+    border: none
+    padding: 0
   i
+    width: 50px
     text-align: center
-    font-size: 22px
-    width: 30px
-    margin: 7px 0
-  .fa-search
-    cursor: pointer
-.side_icon
-  position: relative
-
-audio
-  display: none
-input[type=range]
-  -webkit-appearance: none
-  width: 459px
-  display: inline-block
-  vertical-align: middle
-input[type=range]::-moz-focus-outer
-  border: 0
-input[type=range]:focus
-  outline: none
-
-input[type=range]::-webkit-slider-runnable-track
-  width: 100%
-  height: 4px
-  cursor: pointer
-  background: $muffonDark
-  -webkit-appearance: none
-input[type=range]::-moz-range-track
-  width: 100%
-  height: 4px
-  cursor: pointer
-  background: $muffonDark
-
-input[type=range]::-webkit-slider-thumb
-  height: 10px
-  width: 10px
-  border-radius: 5px
-  background: $muffonLight
-  cursor: pointer
-  -webkit-appearance: none
-  border: none
-  margin-top: -3px
-input[type=range]::-moz-range-thumb
-  height: 10px
-  width: 10px
-  border-radius: 5px
-  background: $muffonLight
-  cursor: pointer
-  border: none
-
-input[type=range]::-webkit-progress-value
-  background-color: $muffonDefault
-  height: 4px
-input[type=range]::-moz-range-progress
-  background-color: $muffonDefault
-  height: 4px
-
-.input_transp
-  background-color: transparent
-  border: none
-  border-bottom: $border
-  color: white
-  font-size: 15px
-  height: 35px
-
-#message_modal, #playlists_modal
-  text-align: left
-  .modal-dialog
-    margin-top: 75px
-    width: 450px
-  .modal-content
-    background-color: $muffonDarkLight
-  .modal-header
-    border-bottom: 1px solid $muffonDefault
-  .modal-body
-    max-height: 400px
-    overflow-y: scroll
-  .modal-footer
-    border-top: 1px solid $muffonDefault
-    text-align: left
-  .table
-    background-color: transparent
-    tbody tr td
-      cursor: pointer
-    tbody tr td:hover
-      background-color: transparent
-  #message_content
-    height: 150px
-
-#player
-  z-index: 500
-  width: 100%
-  position: fixed
-  bottom: 0
-  height: 50px
-  background-color: $muffonDarkLightTransparent
-  box-shadow: 0 4px 4px 4px rgba(3, 3, 3, 0.4)
-  padding-left: 65px
-  #player_playing_now_track
-    position: relative
-    width: 222px
-    padding-left: 10px
-    display: table-cell
-    vertical-align: middle
-  #player_panel
-    position: relative
-    width: 570px
-    display: table-cell
-    vertical-align: middle
-    border-left: $border
-    border-right: $border
-    padding: 0 10px
-  #playing_now_button
-    margin: 15px
-    float: right
-    display: inline-block
-    i
-      font-size: 1.6em
-  #change_track_panel
-    display: inline-block
-    text-align: center
-    vertical-align: middle
-    margin-left: 10px
-#playing_now
-  height: 100%
-  width: 275px
-  background-color: $muffonDarkLightTransparent
-  position: fixed
-  right: 0
-  z-index: 400
-  box-shadow: $boxShadow
-#enqueued_tracks
-  height: 400px
-  overflow-y: scroll
-.list_playing_now_track
-  background-color: $muffonDark
-  .play_btn
-    opacity: 1
-    transition: opacity 0.2s
-#player_play_btn_icon
-  width: 20px
-  height: 20px
-
-#footer
-  height: 150px
-  background-color: $muffonDarkLight
-  padding: 20px 20px 20px 80px
-  position: relative
+    font-size: 20px
+  a
+    text-decoration: none
+    display: block
+    padding: 7px 0
+#sidebar:hover
+  width: 240px
+#sidebar-search-input
+  @extend .input-transp
+  width: 170px
+  max-width: 100%
 
 #loading
-  background-color: $muffonDark+aa
-  position: fixed
-  width: 100%
-  height: 100%
-  text-align: center
+  display: none
+  color: white
+  background-color: $muffonDarkLight+aa
   z-index: 10
-  i
-    position: fixed
-    margin-top: 260px
+
+#progress-bar
+  bottom: 40px
+  display: none
+  background-color: $muffonDarkLight+aa
+  box-shadow: $boxShadow
+  .progress
+    height: 10px
+    border-radius: 5px
+  .progress-bar
+    background-color: $muffonLight
+    transition: 0.5s
+
+#footer
+  background-color: $muffonDarkLight
+  padding: 20px 20px 50px 80px
+  height: 180px
+
+#upbar
+  height: 35px
+  a
+    text-decoration: none
+  #logo
+    line-height: 1.1
+    letter-spacing: 0.03em
+  #beta-btn
+    @extend .tag
+    left: 100px
+    font-size: 11px !important
+    background-color: $muffonLight !important
+    padding: 3px 4px !important
+  .up
+    margin-right: 8px
+    background-color: $muffonDarkLight
+    box-shadow: $boxShadow
+    height: 100%
+    align-items: center !important
+    img
+      width: 35px
+    .media-body
+      padding: 10px
+
+#scroll-top-btn
+  background-color: $muffonDark+aa
+  bottom: 15px
+  display: none

@@ -10,7 +10,7 @@ module SessionsHelper
   def current_profile
     return unless profile_id.present?
 
-    @current_profile ||= Profile.find_by(id: profile_id)
+    @current_profile ||= Profile.find_by(id: profile_id)&.decorate
   end
 
   def profile_id

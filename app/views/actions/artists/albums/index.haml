@@ -1,0 +1,22 @@
+#artist_albums_page.artist_page.panel.center
+  
+  = render 'panel_header'
+
+  .separator.sep_0.sep_light
+
+  .artist_albums_page_albums.panel_content
+
+    %h4
+      %i.fas.fa-dot-circle
+      Albums:
+
+    .separator.sep_10.sep_default
+
+    .panel_content_wide
+      = render partial: 'album', collection: @albums
+
+  %hr.sep_0
+
+  .text_center.panel_content
+    .btn-group
+      = paginate @albums

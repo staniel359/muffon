@@ -1,0 +1,19 @@
+.row.no-gutters
+  .col-sm-10.offset-sm-1.col-md-8.offset-md-2.col-lg-6.offset-lg-3
+    .text-center.text-white.mb-4
+      .h0.mb-0
+        = link_to 'muffon', root_path
+      %h4
+        More than music.
+
+    #start-wrap
+      - if params[:lastfm_data].present?
+        #signup-form.d-block.px-3
+          = render 'partials/registrations/lastfm_signup_form'
+      - else
+        #signup-btns.d-block.px-3
+          = render 'partials/registrations/signup_btns_card'
+      #signup-btns.px-3
+      #signup-form.px-3
+      #additional-form.px-3
+      #login-form.px-3

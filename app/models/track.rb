@@ -10,6 +10,8 @@ class Track < ApplicationRecord
 
   validates :title, :artist_id, presence: true
 
+  default_scope { includes(:artist) }
+
   def self.with(title:, artist_id:)
     where(artist_id: artist_id).where(
       'LOWER(title) = ?', title.downcase

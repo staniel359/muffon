@@ -1,0 +1,25 @@
+.card
+  = render 'partials/artists/panel_header'
+
+  .separator.default
+
+  .card-body
+    %h5
+      %i.fas.fa-images
+      Images:
+
+    .separator.default.mt-2.mb-3
+
+    .row
+      - @images.each do |image|
+        .col-6.col-sm-4.col-md-3
+          .artist-image-clickable{data: {toggle: 'modal', target: "#image_modal_#{image.split('/').last}"}}
+            .mb-4
+              = image_tag image.gsub('/avatar170s', '/avatar300s'), class: 'img-fluid'
+
+          #image_modal.modal{id: image.split('/').last}
+            .modal-dialog.text_center
+              = image_tag image.gsub('/avatar170s', ''), class: 'img-fluid'
+
+    .text-center
+      = paginate @images

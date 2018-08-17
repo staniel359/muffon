@@ -1,84 +1,70 @@
 class ProfilesController < ApplicationController
+  before_action :set_profile, except: :index
+  before_action :set_title
+
   def index
     should_login
-    @page_data = {
-      title:    title,
-      profiles: profiles
-    }
+    @pagy, @profiles = pagy(Profile.all)
   end
 
   def show
-    @page_data = {
-      title:         title,
-      plays:         plays,
-      artists:       artists,
-      albums:        albums,
-      tracks:        tracks,
-      compatibility: compatibility
-    }
+    @plays = plays
+    @artists = artists
+    @albums = albums
+    @tracks = tracks
+    @compatibility = compatibility
+    @playing_now_track = playing_now_track
   end
 
   def update
     should_login
-    check_correct_profile
-    profile.update(profile_params)
+    current_profile.update(profile_params)
     flash.now[:success] = t('profiles.updated')
     respond_with_js
   end
 
   def destroy
     should_login
-    check_correct_profile
-    profile.destroy
+    current_profile.destroy
     redirect_to root_path
   end
 
 private
 
-  def title
-    t(
+  def set_title
+    @title = t(
       "profiles.#{params[:action]}",
-      profile: profile&.nickname
+      profile: @profile&.nickname
     )
-  end
-
-  def profiles
-    paginate(Profile.created_desc, 20)
   end
 
   def plays
-    profile.plays.includes(
-      profile_track:  :track,
-      profile_artist: :artist,
-      profile_album:  :album
-    ).created_desc
+    @profile.plays.created_desc.limit(10).decorate
   end
 
   def artists
-    profile.profile_artists.includes(
-      :artist
-    ).plays_count_desc.first(8)
+    @profile.profile_artists.plays_count_desc.limit(8).decorate
   end
 
   def albums
-    profile.profile_albums.includes(
-      :album, profile_artist: :artist
-    ).plays_count_desc.first(8)
+    @profile.profile_albums.plays_count_desc.limit(8).decorate
   end
 
   def tracks
-    profile.profile_tracks.includes(
-      :track, profile_artist: :artist
-    ).plays_count_desc.first(10)
+    @profile.profile_tracks.plays_count_desc.limit(10).decorate
   end
 
-  def process_compatibility
-    return unless other_profile?(profile)
+  def compatibility
+    return unless other_profile?(@profile)
 
     Muffon::Compatibility.call(
       current_profile_id: current_profile.id,
-      other_profile_id:   profile.id
+      other_profile_id:   @profile.id
     )
+  end
+
+  def playing_now_track
+    Track.find_by(id: Player::PlayingNow.get(@profile.id))
   end
 
   def primary_params

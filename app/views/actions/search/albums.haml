@@ -1,0 +1,17 @@
+#search.panel.center
+  .panel_header
+    %h3
+      %i.fas.fa-search
+      Search
+
+  .separator.sep_0.sep_light
+
+  .search_field.panel_content
+    = form_tag search_albums_path, method: :get, remote: true, onsubmit: 'showLoading();' do
+      = text_field_tag :q, nil, placeholder: 'Enter album title...', class: 'input_transp'
+
+  #search_results_content.position-relative
+
+    - if params[:q].present?
+
+      = render 'search/partials/albums'

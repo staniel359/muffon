@@ -1,0 +1,8 @@
+.panel_content
+  - if @page_data[:recommendations].any?
+    = render partial: 'recommendation', collection: @page_data[:recommendations]        
+    %br
+    .text-center
+      = paginate @page_data[:recommendations]
+  - else
+    There are no recommendations matching your request.

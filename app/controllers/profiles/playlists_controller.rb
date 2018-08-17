@@ -2,16 +2,21 @@ module Profiles
   class PlaylistsController < ApplicationController
     def index
       @page_data = {
-        title:     title,
-        playlists: playlists
+        title:        title,
+        profile:      profile,
+        playlists:    playlists,
+        new_playlist: new_playlist
       }
+      respond_with_js_and_html
     end
 
     def create
-      create_playlist
-      @page_data = {
-        playlists: playlists
-      }
+      check_correct_profile
+      if new_playlist.save
+        redirect_to new_playlist
+      else
+        respond_with_js
+      end
     end
 
     def show
@@ -43,7 +48,8 @@ module Profiles
       redirect_to profile_playlists_path(id: current_profile.id)
     end
 
-    def open_modal
+    def search_tracks
+      @page_data = search_tracks_data
       respond_with_js
     end
 
@@ -67,8 +73,8 @@ module Profiles
       paginate(profile.playlists.created_desc, 20)
     end
 
-    def create_playlist
-      current_profile.playlists.create(playlist_params)
+    def new_playlist
+      current_profile.playlists.new
     end
 
     def playlist_params
@@ -80,6 +86,12 @@ module Profiles
         playlist.playlist_tracks.includes(
           :track, :artist, :album
         ).created_desc, 20
+      )
+    end
+
+    def search_tracks_data
+      Library::Search.call(
+        profile_id: current_profile.id, q: params[:q]
       )
     end
   end

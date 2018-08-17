@@ -1,8 +1,0 @@
-.panel_content
-  - if @recommendations.any?
-    = render partial: 'recommendation', collection: @recommendations        
-    %br
-    .text-center
-      = paginate @recommendations
-  - else
-    There are no recommendations matching your request.

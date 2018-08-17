@@ -2,8 +2,9 @@ module Profiles
   class GroupsController < ApplicationController
     def index
       @page_data = {
-        title:  title,
-        groups: profile.groups
+        title:   title,
+        profile: profile,
+        groups:  groups
       }
     end
 
@@ -14,6 +15,10 @@ module Profiles
         "profiles.groups.#{params[:action]}",
         profile: profile.nickname
       )
+    end
+
+    def groups
+      paginate(profile.groups.members_count_desc, 20)
     end
   end
 end

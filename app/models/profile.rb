@@ -67,15 +67,15 @@ class Profile < ApplicationRecord
   end
 
   def new_messages
-    redis.lrange("#{id}:new_messages", 0, -1)
+    $redis.lrange("#{id}:new_messages", 0, -1)
   end
 
   def follow(profile_id)
-    active_relationships.create(followed_id: profile_id)
+    active_relationships.create(following_id: profile_id)
   end
 
   def unfollow(profile_id)
-    active_relationships.find_by(followed_id: profile_id)&.destroy
+    active_relationships.find_by(following_id: profile_id)&.destroy
   end
 
   def join_group(group_id)
@@ -84,12 +84,5 @@ class Profile < ApplicationRecord
 
   def leave_group(group_id)
     memberships.find_by(group_id: group_id)&.destroy
-  end
-
-  def artist_taggings(artist_id)
-    taggings.where(
-      taggable_type: 'Artist',
-      taggable_id: artist_id
-    )
   end
 end

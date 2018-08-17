@@ -32,13 +32,13 @@ module LastFM
 
       def process_tracks_data
         threads = []
-        data = %w[Web API].each_with_object({}) do |service, hash|
+        tracks_data_hash = %w[Web API].each_with_object({}) do |s, h|
           threads << Thread.new do
-            hash.merge!(service.downcase.to_sym => call_service(service))
+            h.merge!(s.downcase.to_sym => call_service(s))
           end
         end
-        threads.each(&:join)
-        data
+        concurrent_loader { threads.each(&:join) }
+        tracks_data_hash
       end
 
       def call_service(service)

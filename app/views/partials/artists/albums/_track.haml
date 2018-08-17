@@ -1,0 +1,27 @@
+%tr
+  %td{id: "track_#{track.id}", class: ('list_playing_now_track' if playing_now_track_id == track.id)}
+
+    .media-left.mid_align.list_play_button
+      - if playing_now_track_id == track.id
+        = render 'player/list_play_button'
+      - else
+        = render 'player/get_track_button', track: track
+
+    .media-body.mid_align
+
+      .track_options
+
+        = render 'muffon/track_dropdown', track: track
+
+      %h5
+        = "#{index + 1}."
+        %strong
+          = track.title
+
+      - if track.playcount.present?
+
+        .d-inline.track_bar{style: "width: #{width_of(track) + 2}%"}
+        .d-inline.mid_align
+          = number_with_delimiter(track.playcount)
+
+    %iframe.mg_top_10{frameborder:'0', width: 480, height: 270, hidden: true}

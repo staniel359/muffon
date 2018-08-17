@@ -1,0 +1,16 @@
+%h5
+  %i.fas.fa-tags.mx-1
+  = "Taggings (#{@profile.tags_count}):"
+
+.separator.default.my-2
+
+- if @taggings.any?
+  - @taggings.each do |tagging|
+    = link_to profiles_library_tagging_path(name: tagging.tag.name), class: 'tag' do
+      %strong
+        = tagging.tag.name
+      = "(#{tagging.taggings_count})"
+  .text-right
+    = link_to "View more...", profiles_library_taggings_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no taggings.

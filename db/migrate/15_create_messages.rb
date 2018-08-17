@@ -12,6 +12,6 @@ class CreateMessages < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :messages, :read
+    add_index :messages, :new
   end
 end

@@ -7,22 +7,22 @@ end
 
 gem 'bcrypt'
 gem 'bootsnap', require: false
-gem 'bootstrap-datepicker-rails'
 gem 'bootstrap'
 gem 'carrierwave'
-gem 'coffee-rails'
-gem 'country_select'
+gem 'draper'
 gem 'flag-icons-rails'
 gem 'haml'
+gem 'i18n_data'
 gem 'jbuilder'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'listen'
-gem 'kaminari', github: 'kaminari'
 gem 'mini_magick'
 gem 'nokogiri'
 gem 'omniauth'
 gem 'omniauth-lastfm'
 gem 'pg'
+gem 'pagy'
 gem 'puma'
 gem 'rails'
 gem 'redis'
@@ -33,8 +33,6 @@ gem 'sassc-rails'
 gem 'sidekiq'
 gem 'turbolinks'
 gem 'uglifier'
-
-gem "backstage", :path => "/mnt/d/backstage"
 
 group :development do
   gem 'byebug', platform: :mri

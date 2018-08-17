@@ -1,4 +1,10 @@
 class PlayerController < ApplicationController
+  def show
+    @page_data = {
+      title: title
+    }
+  end
+
   def play
     set_track_vk_ids
     @page_data = {
@@ -50,6 +56,10 @@ class PlayerController < ApplicationController
   end
 
 private
+
+  def title
+    t("player.#{params[:action]}")
+  end
 
   def set_track_vk_ids
     Player::VK.set_track_ids(current_profile.id, vk_track_ids)

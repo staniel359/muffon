@@ -4,5 +4,7 @@ $(document).on('ready turbolinks:load', function() {
 
 function goToConversationBottom() {
   messages = $('#conversation_messages')[0];
-  messages.scrollTop = messages.scrollHeight;
+  if (messages) {
+    messages.scrollTop = messages.scrollHeight;
+  }
 };

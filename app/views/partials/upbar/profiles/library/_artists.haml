@@ -1,0 +1,15 @@
+.up
+  = link_to @profile do
+    = image_tag @profile.avatar.url(:sm)
+
+.up.media
+  .media-body
+    %i.fas.fa-user
+    = link_to 'Artists', profiles_library_artists_path
+
+- if params[:action] == 'show'
+
+  .up.media
+    = image_tag @artist.image
+    .media-body
+      = link_to @artist.name, profiles_library_artist_path

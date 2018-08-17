@@ -2,199 +2,179 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   mount Sidekiq::Web, at: '/sidekiq'
-  mount Backstage::Engine, at: '/backstage'
   mount ActionCable.server => '/cable'
 
-  root 'muffon#root'
-
-  get '/auth/lastfm/callback', to: 'accounts#new'
-
-  get '/signup', to: 'signup#new'
-  post '/signup', to: 'signup#create'
-
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
+  root 'muffon#start'
+  scope module: 'muffon' do
+    get 'dashboard'
+    get 'welcome'
+    get 'about'
+    get 'help'
+    get 'contribute'
+    get 'contact'
+  end
+  scope module: 'connections' do
+    get '/auth/lastfm/callback', to: 'lastfm#new'
+    get '/lastfm_import', to: 'lastfm#import'
+  end
+  scope '/signup' do
+    get '/', to: 'registrations#show', as: 'show_registration'
+    get '/new', to: 'registrations#new', as: 'new_registration'
+    post '/', to: 'registrations#create', as: 'registration'
+    patch '/', to: 'registrations#update'
+  end
+  scope '/login' do
+    get '/', to: 'sessions#new', as: 'login'
+    post '/', to: 'sessions#create'
+  end
   delete '/logout', to: 'sessions#destroy'
-
-  resources :profiles, except: %i[new create], param: 'profile_id',
-    controller: 'profiles/main'
+  resources :profiles, only: %i[index show update destroy], param: 'profile_id'
   namespace :profiles do
-    scope ':profile_id' do
+    scope '/:profile_id' do
       resources :groups, only: :index
-
       resources :playlists, param: 'playlist_name'
       namespace :playlists do
+        get 'search_tracks'
+        namespace :tracks do
+          get 'add_to_playlists'
+        end
         scope ':playlist_name' do
-          resources :tracks, only: %i[create destroy]
-          get '/search', to: 'tracks#search'
-          resources :profile_tracks, only: :create
-
-          resources :profile_artists, only: :create
-          get '/search/artists/:profile_artist_id/tracks',
-            to: 'profile_artists#show_tracks',
-            as: 'artist_show_tracks'
-          resources :artists, only: :destroy
-
-          resources :albums, only: %i[create destroy]
-          get '/search/albums/:profile_album_id/tracks',
-            to: 'profile_albums#show_tracks',
-            as: 'album_show_tracks'
-          resources :profile_albums, only: :create
+          resources :tracks, only: %i[create destroy], param: 'track_id'
+          resources :artists, only: %i[create destroy], param: 'artist_id'
+          resources :albums, only: %i[create destroy], param: 'album_id'
         end
       end
-
+      get '/library', to: 'library#show'
       namespace :library do
-        get '/', to: 'main#show'
-
-        get '/search', to: 'main#search'
-
-        get '/scope', to: 'main#scope'
-        patch '/default_scope', to: 'main#default_scope'
-
-        scope '/artists/:name' do
-          get '/', to: 'artists#show', as: 'artist'
-
-          scope '/tracks' do
-            get '/', to: 'artists#tracks', as: 'artist_tracks'
-            get '/:title', to: 'artists#track', as: 'artist_track'
-            get '/:title/plays', to: 'artists#track_plays', as: 'artist_track_plays'
-          end
-
-          scope '/albums' do
-            get '/', to: 'artists#albums', as: 'artist_albums'
-            get '/:title', to: 'artists#album', as: 'artist_album'
-            get '/:title/plays', to: 'artists#album_plays', as: 'artist_album_plays'
-          end
-
-          get '/plays', to: 'artists#plays', as: 'artist_plays'
-        end
-
-        get '/artists', to: 'main#artists'
-        get '/albums', to: 'main#albums'
-        get '/tracks', to: 'main#tracks'
-        get '/plays', to: 'main#plays'
-
-        scope '/tags' do
-          get '/', to: 'tags#index', as: 'tags'
-          get '/:tag_name', to: 'tags#show', as: 'tag'
-        end
-        
-        scope '/taggings' do
-          get '/', to: 'taggings#index', as: 'taggings'
-
-          scope '/:tagging_name' do
-            get '/', to: 'taggings#show', as: 'tagging'
-            get '/artists', to: 'taggings#artists', as: 'tagging_artists'
-            get '/albums', to: 'taggings#albums', as: 'tagging_albums'
-            get '/tracks', to: 'taggings#tracks', as: 'tagging_tracks'
+        get 'scope'
+        patch 'scope'
+        resources :artists, only: %i[index show create], param: 'artist_name'
+        namespace :artists do
+          scope '/:artist_id' do
+            get 'show_tracks'
           end
         end
+        namespace :artists do
+          scope ':artist_name' do
+            resources :tracks, only: %i[index show], param: 'track_title'
+            namespace :tracks do
+              scope '/:track_title' do
+                get 'albums'
+                get 'plays'
+              end
+            end
+            resources :albums, only: %i[index show], param: 'album_title'
+            namespace :albums do
+              scope '/:album_title' do
+                get 'tracks'
+                get 'plays'
+                get 'show_tracks'
+              end
+            end
+            resources :plays, only: :index
+          end
+        end
+        resources :albums, only: :index
+        resources :tracks, only: :index
+        resources :loved_tracks, only: :index
+        resources :plays, only: :index
+        resources :tags, only: %i[index show], param: 'tag_name'
+        resources :taggings, only: %i[index show], param: 'tag_name'
+        namespace :taggings do
+          scope '/:tag_name' do
+            get 'artists'
+            get 'albums'
+            get 'tracks'
+          end
+        end
+        get '/search', to: 'search#index'
       end
-
       resources :contacts, only: :index
-      scope 'contacts' do
-        get '/followers', to: 'contacts#followers', as: 'followers'
-        get '/following', to: 'contacts#following', as: 'following'
+      scope module: 'contacts' do
+        get 'followers'
+        get 'following'
       end
     end
   end
-
-  get '/follow/:followed_id', to: 'relationships#follow', as: 'follow'
-  get '/unfollow/:followed_id', to: 'relationships#unfollow', as: 'unfollow'
-
-  scope '/tracks/:track_id' do
-    get '/message_modal',
-      to: 'track_actions#message_modal',
-      as: 'track_message_modal'
-    get '/playlists_modal',
-      to: 'track_actions#playlists_modal',
-      as: 'track_playlists_modal'
-    post '/add_to_playlists',
-      to: 'track_actions#add_to_playlists',
-      as: 'track_add_to_playlists'
+  scope module: 'contacts' do
+    post '/follow', to: 'relationships#create'
+    delete '/unfollow', to: 'relationships#destroy'
   end
-
-  scope '/artists/:artist_name' do
-    get '/', to: 'artists#show', as: 'artist'
-    get '/images', to: 'artists#images', as: 'artist_images'
-    get '/tracks', to: 'artists#tracks', as: 'artist_tracks'
-    get '/albums', to: 'artists#albums', as: 'artist_albums'
-    scope '/albums/:album_title' do
-      get '/', to: 'artists#album', as: 'artist_album'
-      get '/tags', to: 'artists#album_tags', as: 'artist_album_tags'
-      get '/wiki', to: 'artists#album_wiki', as: 'artist_album_wiki'
+  resources :tracks, only: %i[] do
+    get 'message_modal'
+    get 'playlists_modal'
+  end
+  resources :artists, only: :show, param: 'artist_name'
+  namespace :artists do
+    scope '/:artist_name' do
+      get 'images'
+      get 'similar_artists'
+      get 'wiki'
+      get 'tags'
+      get 'listeners'
+      get 'plays'
+      scope module: 'artists' do
+        resources :tracks, only: :index
+        resources :albums, only: %i[index show], param: 'album_title'
+        namespace :albums do
+          scope '/:album_title' do
+            get 'tags'
+            get 'wiki'
+          end
+        end
+      end
     end
-    get '/similar', to: 'artists#similar_artists', as: 'artist_similar_artists'
-    get '/wiki', to: 'artists#wiki', as: 'artist_wiki'
-    get '/tags', to: 'artists#tags', as: 'artist_tags'
-    get '/listeners', to: 'artists#listeners', as: 'artist_listeners'
-    get '/plays', to: 'artists#plays', as: 'artist_plays'
   end
-
-  resources :tags, only: %i[index show], param: :tag_name
-  scope '/tags/:tag_name' do
-    get '/artists', to: 'tags#artists', as: 'tag_artists'
-    get '/albums', to: 'tags#albums', as: 'tag_albums'
-    get '/tracks', to: 'tags#tracks', as: 'tag_tracks'
+  resources :tags, only: %i[index show], param: 'tag_name'
+  namespace :tags do
+    scope '/:tag_name' do
+      get 'artists'
+      get 'albums'
+      get 'tracks'
+    end
   end
-
-  resources :labels, only: :show, param: :label_name
-
+  resources :labels, only: %i[index show], param: 'label_name'
   resources :playlists, only: :index
-
-  resources :groups, param: :group_id
+  resources :groups
   namespace :groups do
     scope '/:group_id' do
-      post '/join', to: 'memberships#create', as: 'join_group'
-      post '/leave', to: 'memberships#destroy', as: 'leave_group'
+      post '/join', to: 'memberships#create'
+      delete '/leave', to: 'memberships#destroy'
     end
   end
-
-  get '/bookmarks', to: 'bookmarks#index', as: 'bookmarks'
-
-  namespace :artist_actions do
-    resources :bookmarks, only: %i[create destroy], param: :bookmark_id
-    resources :listened_artists, only: %i[create destroy],
-      param: :listened_artist_id
-    resources :library_artists, only: %i[create destroy],
-      param: :library_artist_id
+  resources :bookmarks, only: %i[index create destroy], param: 'model_type/:model_id'
+  resources :listened_artists, only: %i[create destroy], param: 'artist_id'
+  resources :conversations, only: %i[index show destroy], param: 'conversation_id'
+  scope module: 'conversations' do
+    resources :messages, only: :create, param: 'message_id'
+    namespace :messages do
+      get 'open_modal'
+    end
   end
-
-  resources :conversations, only: %i[index show destroy],
-    param: :conversation_id, controller: 'conversations/main'
-  namespace :conversations do
-    resources :messages, only: %i[new create destroy], param: :message_id
+  resources :settings, only: :index
+  resources :notifications, only: :index
+  get '/feed', to: 'feed#index'
+  get '/player', to: 'player#show'
+  namespace :player do
+    get 'play'
+    get 'play_next'
+    patch 'confirm_vk_track'
+    get 'stop'
+    get 'send_to_queue'
+    delete 'delete_from_queue'
+    delete 'clear_queue'
+    get 'watch_on_youtube'
   end
-
-  get '/notifications', to: 'muffon#notifications'
-
-  get '/feed', to: 'muffon#feed'
-
-  get '/player', to: 'muffon#player'
-
-  get '/play', to: 'player#play'
-  get '/stop', to: 'player#stop'
-  get '/watch_on_youtube', to: 'player#watch_on_youtube'
-  get '/send_to_queue', to: 'player#send_to_queue'
-  delete '/delete_from_queue', to: 'player#delete_from_queue'
-  delete '/clear_queue', to: 'player#clear_queue'
-  patch '/confirm_track', to: 'player#confirm_track'
-
-  scope '/search' do
-    get '/', to: 'search#index', as: 'search'
-    get '/artists', to: 'search#artists', as: 'search_artists'
-    get '/albums', to: 'search#albums', as: 'search_albums'
-    get '/tracks', to: 'search#tracks', as: 'search_tracks'
+  get '/search', to: 'search#index'
+  namespace :search do
+    get 'artists'
+    get 'albums'
+    get 'tracks'
   end
-
-  get '/recommendations', to: 'recommendations#index'
-  patch '/delete_recommendation', to: 'recommendations#delete'
-  patch '/restore_recommendation', to: 'recommendations#restore'
-
-  get '/settings', to: 'muffon#settings'
-
-  get '/about', to: 'muffon#about'
-  get '/help', to: 'muffon#help'
-  get '/contribute', to: 'muffon#contribute'
-  get '/contact', to: 'muffon#contact'
+  resources :recommendations, only: %i[index destroy], param: 'recommendation_id'
+  namespace :recommendations do
+    scope '/:recommendation_id' do
+      patch 'restore'
+    end
+  end
 end

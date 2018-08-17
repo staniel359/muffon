@@ -1,0 +1,16 @@
+- if @playing_now_track.present?
+  .card-body.media.align-items-center
+    .mr-3.profile-page-left.text-center
+      Now playing:
+    .media-body
+      .media.align-items-center
+        .mr-3
+          = image_tag @playing_now_track.image, class: 'img-sm rounded-circle'
+        .media-body
+          %h4
+            %strong
+              = link_to @playing_now_track.title, '#'
+          %h5
+            = link_to @playing_now_track.artist_name, artist_path(artist_name: @playing_now_track.artist_name)
+
+  %hr

@@ -1,0 +1,10 @@
+.artist.artist_170.mg_btm_10
+  = render 'artists/actions', artist: artist if logged_in?
+  = link_to artist_path(name: artist.artist_name) do
+    = image_tag artist.artist_image, class: 'img_rnd'
+    %h4
+      %strong
+        = artist.name
+  %h5.d-inline
+    %i.fas.fa-user
+    = number_with_delimiter(artist.listeners)

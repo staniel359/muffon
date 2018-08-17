@@ -1,0 +1,2 @@
+= form_for Playlist.new, url: playlists_path(track_id: params[:track_id]), method: :post, remote: true do |f|
+  = f.text_field :name, class: 'form-control', placeholder: 'Enter playlist name...'

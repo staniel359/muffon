@@ -1,0 +1,7 @@
+.list-play-btn.position-absolute
+  - if playing_now?(track.id)
+    = button_tag class: 'btn btn-primary btn-sm' do
+      %i.fas.fa-pause
+  - else
+    = button_to player_play_path(artist_name: track.artist_name, track_title: track.title), remote: true, class: 'btn btn-primary btn-sm', method: :get do
+      %i.fas.fa-play

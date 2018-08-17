@@ -1,0 +1,29 @@
+#settings_form.profile_form
+
+  .flash_msg
+
+  = form_for current_profile, remote: true, multipart: true, authenticity_token: true do |f|
+
+    .media
+
+      .mr-3
+        .mg_btm_10
+          = image_tag current_profile.avatar.url(:md), id: 'img_preview'
+        .mg_top_10.text-right
+          = f.file_field :avatar, style: 'display:none', onchange: 'readURL(this);'
+          = f.label :avatar, class: 'btn btn-primary btn-sm' do
+            %i.fas.fa-plus
+            Add avatar
+
+      .media-right
+        = f.text_field :nickname, placeholder: 'Nickname:', class: 'input_transp w-100'
+        = f.email_field :email, placeholder: 'Email:', class: 'input_transp w-100'
+        = f.text_field :name, placeholder: 'Name:', class: 'input_transp w-100'
+        = f.select :gender, %w[Male Female], { include_blank: 'Gender:' }, class: 'input_transp w-100 custom-select'
+        .d-flex
+          = f.date_select :birthdate, order: [:day, :month, :year], start_year: 1900, end_year: Date.today.year
+        = f.country_select :country, class: 'input_transp w-100', include_blank: 'Country:', selected: 'Country:'
+        = f.text_field :city, placeholder: 'City:', class: 'input_transp w-100'
+
+        .text-right.mg_top_10
+          = f.submit 'Save', class: 'btn btn-primary'

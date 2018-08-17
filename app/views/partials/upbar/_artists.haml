@@ -1,0 +1,43 @@
+.up.media
+  = image_tag @artist.image
+  .media-body
+    = link_to @artist.name, artist_path(artist_name: @artist.name)
+
+- if params[:action] == 'images'
+  .up.media
+    %i.fas.fa-images
+    .media-body
+      = link_to 'Images', artists_images_path(artist_name: @artist.name)
+
+- elsif params[:action] == 'tags'
+  .up.media
+    %i.fas.fa-tags
+    .media-right
+      = link_to 'Tags', artists_tags_path(artist_name: @artist.name)
+
+- elsif params[:action] == 'wiki'
+  .up.media
+    %i.fas.fa-info-circle
+    .media-right
+      = link_to 'Wiki', artists_wiki_path(artist_name: @artist.name)
+
+- elsif params[:action] == 'tracks'
+  .up.media
+    %i.fas.fa-music
+    .media-right
+      = link_to 'Tracks', artists_tracks_path(artist_name: @artist.name)
+
+- elsif params[:action] == 'listeners'
+  .up.media
+    .media-right
+      = link_to 'Listeners', artists_listeners_path(artist_name: @artist.name)
+
+- elsif params[:action] == 'plays'
+  .up.media
+    .media-right
+      = link_to 'Plays', artists_plays_path(artist_name: @artist.name)
+
+- elsif params[:action] == 'similar_artists'
+  .up.media
+    .media-right
+      = link_to 'Similar artists', artists_similar_artists_path(artist_name: @artist.name)

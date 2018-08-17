@@ -1,0 +1,15 @@
+#playlists_added.panel_content
+
+  #modal_track.mg_btm_10
+    = render 'muffon/modals/track', track: Track.find_by(id: params[:track_id])
+
+  %h5.mg_btm_10
+    has been added to playlists:
+
+  %h4
+    - @playlists.map do |playlist|
+
+      .d-inline.mg_btm_5
+        = link_to playlist_path(playlist_id: playlist.id), class: 'btn btn-primary btn-sm' do
+          %i.fas.fa-list-ul
+          = playlist.name

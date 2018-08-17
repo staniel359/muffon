@@ -1,66 +1,47 @@
-GIT
-  remote: https://github.com/kaminari/kaminari.git
-  revision: a43335cc31b765f2e5a9fb0d8694fa707a6593c6
-  specs:
-    kaminari (1.1.1)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.1.1)
-      kaminari-activerecord (= 1.1.1)
-      kaminari-core (= 1.1.1)
-    kaminari-actionview (1.1.1)
-      actionview
-      kaminari-core (= 1.1.1)
-    kaminari-activerecord (1.1.1)
-      activerecord
-      kaminari-core (= 1.1.1)
-    kaminari-core (1.1.1)
-
-PATH
-  remote: /mnt/d/backstage
-  specs:
-    backstage (0.1.0)
-      rails (~> 5)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.2.0)
-      actionpack (= 5.2.0)
+    actioncable (5.2.1)
+      actionpack (= 5.2.1)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailer (5.2.0)
-      actionpack (= 5.2.0)
-      actionview (= 5.2.0)
-      activejob (= 5.2.0)
+    actionmailer (5.2.1)
+      actionpack (= 5.2.1)
+      actionview (= 5.2.1)
+      activejob (= 5.2.1)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.2.0)
-      actionview (= 5.2.0)
-      activesupport (= 5.2.0)
+    actionpack (5.2.1)
+      actionview (= 5.2.1)
+      activesupport (= 5.2.1)
       rack (~> 2.0)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.2.0)
-      activesupport (= 5.2.0)
+    actionview (5.2.1)
+      activesupport (= 5.2.1)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.2.0)
-      activesupport (= 5.2.0)
+    activejob (5.2.1)
+      activesupport (= 5.2.1)
       globalid (>= 0.3.6)
-    activemodel (5.2.0)
-      activesupport (= 5.2.0)
-    activerecord (5.2.0)
-      activemodel (= 5.2.0)
-      activesupport (= 5.2.0)
+    activemodel (5.2.1)
+      activesupport (= 5.2.1)
+    activemodel-serializers-xml (1.0.2)
+      activemodel (> 5.x)
+      activesupport (> 5.x)
+      builder (~> 3.1)
+    activerecord (5.2.1)
+      activemodel (= 5.2.1)
+      activesupport (= 5.2.1)
       arel (>= 9.0)
-    activestorage (5.2.0)
-      actionpack (= 5.2.0)
-      activerecord (= 5.2.0)
+    activestorage (5.2.1)
+      actionpack (= 5.2.1)
+      activerecord (= 5.2.1)
       marcel (~> 0.3.1)
-    activesupport (5.2.0)
+    activesupport (5.2.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
@@ -69,18 +50,16 @@ GEM
       sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.0.0)
+    autoprefixer-rails (9.1.1)
       execjs
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
-    bootstrap (4.1.1)
+    bootstrap (4.1.3)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
-    bootstrap-datepicker-rails (1.8.0.1)
-      railties (>= 3.0)
     builder (3.2.3)
     byebug (10.0.2)
     capistrano (3.11.0)
@@ -102,26 +81,17 @@ GEM
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
     coderay (1.1.2)
-    coffee-rails (4.2.2)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.2)
-    countries (2.1.4)
-      i18n_data (~> 0.8.0)
-      money (~> 6.9)
-      sixarm_ruby_unaccent (~> 1.1)
-      unicode_utils (~> 1.4)
-    country_select (3.1.1)
-      countries (~> 2.0)
-      sort_alphabetical (~> 1.0)
     crass (1.0.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    draper (3.0.1)
+      actionpack (~> 5.0)
+      activemodel (~> 5.0)
+      activemodel-serializers-xml (~> 1.0)
+      activesupport (~> 5.0)
+      request_store (~> 1.0)
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
@@ -135,7 +105,7 @@ GEM
     hashie (3.5.7)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.0.1)
+    i18n (1.1.0)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
     jaro_winkler (1.5.1)
@@ -146,6 +116,8 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -158,16 +130,14 @@ GEM
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
-    mime-types (3.1)
+    mime-types (3.2.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
+    mime-types-data (3.2018.0812)
     mimemagic (0.3.2)
     mini_magick (4.8.0)
-    mini_mime (1.0.0)
+    mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
-    money (6.12.0)
-      i18n (>= 0.6.4, < 1.1)
     msgpack (1.2.4)
     multi_json (1.13.1)
     net-scp (1.2.1)
@@ -187,11 +157,12 @@ GEM
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
+    pagy (0.16.0)
     parallel (1.12.1)
     parser (2.5.1.2)
       ast (~> 2.4.0)
     pg (1.0.0)
-    popper_js (1.12.9)
+    popper_js (1.14.3)
     powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
@@ -204,42 +175,44 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (5.2.0)
-      actioncable (= 5.2.0)
-      actionmailer (= 5.2.0)
-      actionpack (= 5.2.0)
-      actionview (= 5.2.0)
-      activejob (= 5.2.0)
-      activemodel (= 5.2.0)
-      activerecord (= 5.2.0)
-      activestorage (= 5.2.0)
-      activesupport (= 5.2.0)
+    rails (5.2.1)
+      actioncable (= 5.2.1)
+      actionmailer (= 5.2.1)
+      actionpack (= 5.2.1)
+      actionview (= 5.2.1)
+      activejob (= 5.2.1)
+      activemodel (= 5.2.1)
+      activerecord (= 5.2.1)
+      activestorage (= 5.2.1)
+      activesupport (= 5.2.1)
       bundler (>= 1.3.0)
-      railties (= 5.2.0)
+      railties (= 5.2.1)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.4)
       loofah (~> 2.2, >= 2.2.2)
-    railties (5.2.0)
-      actionpack (= 5.2.0)
-      activesupport (= 5.2.0)
+    railties (5.2.1)
+      actionpack (= 5.2.1)
+      activesupport (= 5.2.1)
       method_source
       rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
+      thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    redis (4.0.1)
+    redis (4.0.2)
     remotipart (1.4.2)
+    request_store (1.4.1)
+      rack (>= 1.4)
     rest-client (2.0.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rubocop (0.58.1)
+    rubocop (0.58.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
@@ -247,7 +220,7 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    ruby-progressbar (1.9.0)
+    ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     sass (3.5.7)
       sass-listen (~> 4.0.0)
@@ -264,14 +237,10 @@ GEM
       sprockets (> 2.11)
       sprockets-rails
       tilt
-    sidekiq (5.1.3)
-      concurrent-ruby (~> 1.0)
-      connection_pool (~> 2.2, >= 2.2.0)
+    sidekiq (5.2.1)
+      connection_pool (~> 2.2, >= 2.2.2)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
-    sixarm_ruby_unaccent (1.2.0)
-    sort_alphabetical (1.1.0)
-      unicode_utils (>= 1.2.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -296,13 +265,12 @@ GEM
     turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.15)
+    uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
     unicode-display_width (1.4.0)
-    unicode_utils (1.4.0)
     web-console (3.6.2)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -316,29 +284,28 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  backstage!
   bcrypt
   bootsnap
   bootstrap
-  bootstrap-datepicker-rails
   byebug
   capistrano
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
   carrierwave
-  coffee-rails
-  country_select
+  draper
   flag-icons-rails
   haml
+  i18n_data
   jbuilder
   jquery-rails
-  kaminari!
+  jquery-ui-rails
   listen
   mini_magick
   nokogiri
   omniauth
   omniauth-lastfm
+  pagy
   pg
   pry
   pry-rails

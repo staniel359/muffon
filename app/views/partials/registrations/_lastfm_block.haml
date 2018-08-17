@@ -1,0 +1,9 @@
+.card.w-100.mb-3.dark
+  .card-body.media
+    .mr-3
+      = image_tag (params[:lastfm_data]['image'] || 'sm_avatar_default.png'), class: 'img-sm rounded-circle'
+    .media-body
+      %h5.mb-1
+        = link_to params[:lastfm_data]['nickname'], params[:lastfm_data]['url'], target: '_blank'
+      %h6
+        = params[:lastfm_data].as_json.values_at('name', 'country').join(', ')

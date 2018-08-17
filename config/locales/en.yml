@@ -1,17 +1,22 @@
 en:
   muffon:
+    welcome: Welcome
     dashboard: Dashboard
-    notifications: Notifications
-    feed: Feed
-    player: Player
     about: About
     help: Help
     contribute: Contribute
     contact: Contact
+  notifications:
+    index: Notifications
+  feed:
+    index: Feed
+  player:
+    show: Player
   sessions:
     new: Log in
     should_login: Please log in to access this page.
     login_failed: Invalid email or password.
+    signup: Don't have an account? Sign up
   messages:
     select_recipient: Please select profile.
     recipient_not_found: Profile not found.
@@ -65,9 +70,19 @@ en:
       edit: "%{playlist} - Edit | %{profile}'s playlists"
       no_name: Please enter the name of your playlist.
       already_present: You already have playlist with this name.
-  signup:
-    new: Sign up
+  registrations:
+    show: Sign up
     lastfm_signed_up: Looks like you've already signed up via Last.fm.
+    success: You have successfully signed up.
+    additional: Now you may want to provide some additional information about your profile. Those fields are optional, but it would be great if you identify yourself. You can change this data anytime on your Settings page.
+    login: Already have an account? Log in
+  connections:
+    lastfm:
+      what_next: What's next?
+      success: You have successfully signed up via Last.fm.
+      import_button_text: Import my library*
+      skip_button_text: Skip and go to dashboard
+      info: "*We'll import analyze your music collection to generate statistics and personal recommendations based on the music you listen. If you skip this step now, you can do it anytime on your Setting page."
   groups:
     index: Groups
     new: Create a group

@@ -1,0 +1,34 @@
+.tag_artist.text_center
+
+  #tag_artist_up.artist.artist_190
+    = render 'artists/actions', artist: artist
+    = link_to artist_path(artist.artist_name) do
+      .mg_btm_5
+        = image_tag artist.artist_image, class: 'img_rnd'
+      %h4.mg_btm_5
+        %strong
+          = artist.name
+
+  #tag_artist_down
+
+    #tag_artist_stats.mg_btm_10
+
+      %h5.d-inline
+        %i.fas.fa-user
+        = number_with_delimiter(artist.listeners)
+      %h5.d-inline
+        %i.fas.fa-music
+        = number_with_delimiter(artist.playcount)
+
+    #tag_artist_tags.mg_btm_5
+      - artist.artist_tags.first(5).each do |tag|
+        .d-inline
+          = link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
+            %strong
+              = tag.name
+
+  %hr.sep_10.sep_default
+
+  #tag_artist_bio
+
+    = render 'artists/description', artist: artist, limit: 50

@@ -1,0 +1,10 @@
+.container-fluid.position-fixed.top-0.z-100
+  .row.no-gutters
+    #upbar.d-flex.text-white.align-items-center.col-12.col-md-10.offset-md-1.col-lg-8.offset-lg-2
+      .position-absolute.top-0#beta-btn
+        beta
+      .up#logo.px-3
+        = link_to root_path do
+          %h3 muffon
+
+      = render "partials/upbar/#{params[:controller]}"

@@ -25,7 +25,8 @@ module LastFM
 
       def plays_page_data(page)
         LastFM::User::Plays.call(
-          lastfm_id: @profile.lastfm_id, page: page
+          lastfm_id: @profile.lastfm_id,
+          page:      page
         )
       end
 
@@ -51,7 +52,7 @@ module LastFM
       def process_play(play)
         Muffon::Processor::Play.call(
           profile_id: @args.profile_id,
-          play: play
+          play:       play
         )
       end
     end

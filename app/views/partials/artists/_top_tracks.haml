@@ -1,0 +1,10 @@
+%h4
+  = link_to 'Top tracks:', artists_tracks_path(artist_name: artist.name)
+
+.separator.default.mt-2.mb-3
+
+%table.table.table-hover.table-sm
+  = render partial: 'partials/artists/track', collection: artist.top_tracks
+
+.mt-2.text-right
+  = link_to 'View more...', artists_tracks_path(artist_name: artist.name), class: 'btn btn-primary btn-sm'

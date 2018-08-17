@@ -1,0 +1,27 @@
+.up.media.list-inline-item.align-items-center
+  .media-body
+    %i.fas.fa-dot-circle
+    .px-2
+      = link_to 'Albums', artists_albums_path(artist_name: @artist.name)
+
+- if params[:action].in?(%w[show tags wiki])
+
+  .up
+    .media-left
+      = image_tag @album.album_cover
+    .media-right
+      = link_to @album.title, artists_album_path(artist_name: @artist.name, album_title: @album.title)
+
+  - if params[:action] == 'tags'
+
+    .up
+      .media-right
+        %i.fas.fa-tags
+        = link_to 'Tags', artists_album_tags_path(artist_name: @artist.name, album_title: @album.title)
+
+  - if params[:action] == 'wiki'
+
+    .up
+      .media-right
+        %i.fas.fa-info-circle
+        = link_to 'Wiki', artists_album_wiki_path(artist_name: @artist.name, album_title: @album.title)

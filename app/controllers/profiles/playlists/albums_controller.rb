@@ -19,13 +19,6 @@ module Profiles
         respond_with_js
       end
 
-      def show_tracks
-        @page_data = {
-          tracks: tracks
-        }
-        respond_with_js
-      end
-
     private
 
       def add_album_to_playlist

@@ -1,9 +1,7 @@
 class SessionsController < ApplicationController
   def new
     should_logout
-    @page_data = {
-      title: title
-    }
+    respond_with_js_and_html
   end
 
   def create
@@ -18,8 +16,8 @@ class SessionsController < ApplicationController
 
 private
 
-  def title
-    t("sessions.#{params[:action]}")
+  def set_title
+    @title = t("sessions.#{params[:action]}")
   end
 
   def profile_can_log_in?

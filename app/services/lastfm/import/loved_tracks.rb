@@ -25,7 +25,8 @@ module LastFM
 
       def loved_tracks_page_data(page)
         LastFM::User::LovedTracks.call(
-          lastfm_id: @profile.lastfm_id, page: page
+          lastfm_id: @profile.lastfm_id,
+          page:      page
         )
       end
 
@@ -51,7 +52,7 @@ module LastFM
       def process_loved_track(track)
         Muffon::Processor::ProfileTrack.call(
           profile_id: @args.profile_id,
-          track: track
+          track:      track
         )
       end
     end

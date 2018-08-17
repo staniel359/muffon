@@ -1,0 +1,15 @@
+#search.panel.center
+	.panel_header
+		%h3
+			%i.fas.fa-search
+			Search
+
+	.separator.sep_0.sep_light
+
+	.search_field.panel_content
+		= form_tag search_path, method: :get, remote: true, onsubmit: 'showLoading();' do
+			= text_field_tag :q, params[:q], placeholder: 'Enter artist name, album title or track title...', class: 'input_transp'
+
+	#search_results_content.position-relative
+
+		= render 'search/partials/search_results'

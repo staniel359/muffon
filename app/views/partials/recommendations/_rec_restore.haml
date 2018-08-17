@@ -1,0 +1,3 @@
+#rec_restore.position-absolute.text_center.rec_restore.full_width.full_height{id: params[:artist_id]}
+	%h4 Recommendation was deleted.
+	%h5= button_to 'Restore', restore_recommendation_path(artist_id: params[:artist_id].to_i), method: :patch, remote: true, class: 'btn btn-primary'

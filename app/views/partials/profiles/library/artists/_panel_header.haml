@@ -1,0 +1,14 @@
+.d-flex.justify-content-between.align-items-center
+  .media.align-items-center
+    .mr-2
+      = image_tag @artist.image, class: 'rounded-circle img-sm'
+    .media-body
+      %h4
+        = @artist.name
+
+  .media.align-items-center
+    .mr-2
+      = image_tag @profile.avatar.url(:xs), class: 'rounded-circle'
+    .media-body
+      %h5
+        = link_to "#{@profile.nickname}'s artists", profiles_library_artists_path

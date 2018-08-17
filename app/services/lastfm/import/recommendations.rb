@@ -13,6 +13,7 @@ module LastFM
         broadcast_import_start('recommendations')
         import_recommendations
         delete_counter('recommendations')
+        @profile.update(lastfm_import_completed: true)
       end
 
       def total_count

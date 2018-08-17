@@ -1,0 +1,40 @@
+.separator.sep_10.sep_default
+
+#profile_compatibility.mg_btm_10
+
+  %h5.d-inline.mid_align
+    Your compatibility level with
+    %strong
+      = @page_data[:profile].nickname
+    is
+
+  %svg#percentage_wrap{viewbox: '0 0 36 36'}
+    %path#percentage_circle_bg{d: 'M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831'}
+    %path#percentage_circle{d: 'M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831', stroke: {dasharray: "#{@page_data[:compatibility_level]}, 100"}}
+    %text#percentage{x: '19', y: '22'}
+      = "#{@page_data[:compatibility_level]}%"
+
+%h5.mg_btm_10.d-inline
+  You have in common:
+
+#profile_page_btn_group
+
+  = button_tag class: 'btn btn-primary btn-sm first_child', data: {toggle: 'popover', trigger: 'focus', placement: 'bottom', html: true, content: "#{render 'partials/profiles/common_tooltips/artists'}"} do
+    %strong
+      = @page_data[:common_artists].count
+    = 'artist'.pluralize(@page_data[:common_artists].count)
+    .caret
+
+  = button_tag class: 'btn btn-primary btn-sm mid_child', data: {toggle: 'popover', trigger: 'focus', placement: 'bottom', html: true, content: "#{render 'partials/profiles/common_tooltips/albums'}"} do
+    %strong
+      = @page_data[:common_albums].count
+    = 'album'.pluralize(@page_data[:common_albums].count)
+    .caret
+
+  = button_tag class: 'btn btn-primary btn-sm last_child', data: {toggle: 'popover', trigger: 'focus', placement: 'bottom', html: true, content: "#{render 'partials/profiles/common_tooltips/tracks'}"} do
+    %strong
+      = @page_data[:common_tracks].count
+    = 'track'.pluralize(@page_data[:common_tracks].count)
+    .caret
+
+= button_tag 'View more...', class: 'btn btn-default btn-sm'

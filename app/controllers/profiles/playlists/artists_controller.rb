@@ -19,13 +19,6 @@ module Profiles
         respond_with_js
       end
 
-      def show_tracks
-        @page_data = {
-          tracks: tracks
-        }
-        respond_with_js
-      end
-
     private
 
       def add_artist_to_playlist
@@ -33,19 +26,9 @@ module Profiles
       end
 
       def tracks
-        if params[:artist_id]
-          artist_tracks
-        elsif params[:profile_artist_id]
-          profile_artist_tracks
-        end
-      end
-
-      def artist_tracks
-        Artist.find_by(id: params[:artist_id]).tracks
-      end
-
-      def profile_artist_tracks
-        ProfileArtist.find_by(id: params[:profile_artist_id]).tracks
+        ProfileArtist.find_by(
+          id: params[:profile_artist_id]
+        ).tracks
       end
 
       def add_track_to_playlist(track)

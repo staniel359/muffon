@@ -1,0 +1,19 @@
+%tr
+  %td.media#track{id: track.id, class: ('list_playing_now_track' if playing_now?(track.id))}
+    .mr-2
+      - if playing_now?(track.id)
+        = render 'partials/player/list_play_button'
+      - else
+        = button_to player_play_path(artist_name: @artist.name, track: track.title), remote: true, class: 'btn btn-primary btn-sm' do
+          %i.fas.fa-play
+
+    .media-body
+      .float-right.align-middle
+        = render 'partials/tracks/dropdown', track: track
+      %h6.mb-0
+        %strong
+          = track.title
+      - if track.lastfm_plays_count.present?
+        .d-flex.align-items-center
+          .mr-1.track-bar{ style: "width: #{width_of(track)}%" }
+          = number_with_delimiter(track.lastfm_plays_count)

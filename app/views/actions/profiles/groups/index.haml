@@ -1,0 +1,29 @@
+#profile_groups.panel.center
+  .panel_header
+
+    .panel_header_left
+
+      %h3
+        %i.fas.fa-users
+        Groups
+
+    .panel_header_right
+
+      .media-left
+        %h4
+          = link_to @page_data[:profile].nickname, profile_path
+      .media-right
+        = link_to profile_path do
+          = image_tag @page_data[:profile].avatar.url(:sm), class: 'img_rnd img_30'
+
+  .separator.sep_0.sep_light
+  
+  .panel_content
+
+    - if @page_data[:groups].any?
+
+      %table.table.table-hover-table-condensed
+        = render @page_data[:groups]
+          
+    - else
+      = (current_profile?(@page_data[:profile]) ? "You haven't" : "#{@page_data[:profile].nickname} hasn't") + ' joined any groups yet.'

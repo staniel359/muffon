@@ -1,68 +1,69 @@
 module PlayerHelper
-  def retrieve_playing_now_track
-    Vk::GetTrack.call(
-      vk_id: @redis.get("#{current_profile&.id}:playing_now_id")
-    )
-  end
-
-  def playing_now_track
-    return if playing_now_track_id.zero?
-
-    @playing_now_track ||= Track.find_by(
-      id: playing_now_track_id
-    )
+  def playing_now?(track_id)
+    track_id == playing_now_track_id
   end
 
   def playing_now_track_id
-    return 0 unless logged_in?
-
-    @redis.get("#{current_profile.id}:playing_now").to_i
+    Player::PlayingNow.get(current_profile&.id)
   end
 
-  def profile_playing_now_track
-    @profile_playing_now_track ||= Track.find_by(
-      id: @redis.get("#{@profile&.id || current_profile.id}:playing_now")
-    )
+  def playing_now_track
+    Track.find_by(id: playing_now_track_id)
+  end
+
+  def playing_now_track_link
+    VK::Track.call(vk_id: current_track_vk_id) || ''
   end
 
   def enqueued_tracks
-    @enqueued_tracks ||= Track.includes(:artist).find(
-      @redis.lrange(
-        "#{current_profile.id}:queue", 0, -1
-      ).uniq.map(&:to_i)
-    )
+    Player::Queue.tracks(current_profile.id)
   end
 
   def previous_track
-    return unless playing_now_track.present? && from_list.present?
-    return if (list_track_position - 1).negative?
+    return unless playing_now_track.present? && source.present?
+    return if previous_track_position.negative?
 
-    Track.find_by(id: list_tracks[list_track_position - 1])
+    Track.find_by(id: list_tracks[previous_track_position])
   end
 
   def next_track
-    return unless playing_now_track.present? && from_list.present?
+    return unless playing_now_track.present? && source.present?
+    return if next_track_position > source_tracks.length
 
-    Track.find_by(id: list_tracks[list_track_position + 1])
+    Track.find_by(id: list_tracks[next_track_position])
   end
 
-  def from_list
-    @redis.get("#{current_profile.id}:from")
+private
+
+  def current_track_vk_id
+    Player::VK.playing_now_id(current_profile.id)
   end
 
-  def list_track_position
-    list_tracks.find_index(playing_now_track.id)
+  def source
+    Player::Source.get(current_profile.id)
   end
 
-  def list_tracks
-    @list_tracks ||= list_model.find_by(id: list_model_id).track_ids
+  def previous_track_position
+    source_track_position - 1
   end
 
-  def list_model
-    from_list.split('_')[0].camelize.constantize
+  def source_track_position
+    source_tracks.find_index(playing_now_track.id)
   end
 
-  def list_model_id
-    from_list.split('_')[1]
+  def source_tracks
+    source_model.find_by(id: source_model_id).track_ids
+  end
+
+  def source_model
+    source.split('_')[0].camelize.constantize
+  end
+
+  def source_model_id
+    source.split('_')[1]
+  end
+
+  def next_track_position
+    source_track_position + 1
   end
 end

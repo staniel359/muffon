@@ -1,0 +1,26 @@
+.card
+  .card-body
+    %h4 Profiles
+
+    .separator.light.mt-2.mb-2
+
+    %table.table.table-hover
+      - @profiles.each do |profile|
+        %tr
+          %td.media.align-items-center
+            .mr-2
+              = link_to profile do
+                = image_tag profile.avatar.url(:sm), class: 'rounded-circle'
+            .media-body
+              %h5.d-inline
+                = link_to profile.nickname, profile
+              - if current_profile?(profile)
+                %small.d-inline (that's you)
+              - if logged_in? && !current_profile?(profile)
+                .mt-2
+                  .d-inline-block#follow_button{ id: profile.id }
+                    = render 'partials/contacts/relationships/follow_button', profile: profile
+                  .d-inline-block
+                    = button_to messages_open_modal_path(to: profile.nickname), class: 'btn btn-sm btn-primary', method: :get, remote: true do
+                      %i.fas.fa-envelope
+                      Write a message

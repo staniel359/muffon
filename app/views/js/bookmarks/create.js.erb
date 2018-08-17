@@ -1,0 +1,5 @@
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('hide')
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %>").html(
+  "<%= j render 'partials/actions/bookmarks', model: @object %>"
+)
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('show')

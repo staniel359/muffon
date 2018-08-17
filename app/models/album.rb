@@ -23,8 +23,4 @@ class Album < ApplicationRecord
   def tags
     Tag.where(id: tag_ids)
   end
-
-  def album_cover
-    cover || 'missing_album.png'
-  end
 end

@@ -1,0 +1,11 @@
+.d-flex.justify-content-between.align-items-center
+  #library-header-name
+    %h4
+      %i.fas.fa-headphones
+      Library
+  #library-header-profile.media
+    .mr-2
+      = image_tag @profile.avatar.url(:xs), class: 'rounded-circle'
+    .media-body
+      %h5
+        = link_to @profile.nickname, @profile

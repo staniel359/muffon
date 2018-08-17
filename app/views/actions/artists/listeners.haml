@@ -1,0 +1,29 @@
+.card
+  = render 'partials/artists/panel_header'
+
+  .separator.default
+
+  .card-body
+    %h5 Listeners:
+
+    .separator.mt-2.mb-2.default
+
+    %table.table.table-hover.table-sm
+      - @listeners.each do |listener|
+        %tr
+          %td.media.align-items-center
+            .mr-2
+              = link_to listener do
+                = image_tag listener.avatar.url(:sm), class: 'rounded-circle img-sm'
+            .media-body
+              %h5.d-inline-block
+                = link_to listener.nickname, listener
+              - if current_profile?(listener)
+                %h6.d-inline-block (that's you)
+              %h6
+                = listener.profile_artists.find_by(artist_id: @artist.id).plays_count
+                plays
+
+    .text-center
+      = paginate @listeners
+

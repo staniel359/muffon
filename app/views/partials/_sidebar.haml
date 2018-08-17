@@ -1,0 +1,79 @@
+#sidebar.h-100.position-fixed.fixed-top
+
+	%table.table.table-sm.text-white.mt-1.mb-0
+		%tr
+			%td.py-1
+				%i.fas.fa-search
+				= form_tag search_path, class: 'd-inline', method: :get, remote: true do
+					= text_field_tag :q, nil, placeholder: 'Search...', class: 'border-0', id: 'sidebar-search-input', autocomplete: 'off'
+
+	.separator.default.mt-1.mb-1
+
+	%table.table.table-sm.table-hover.text-white
+		%tr
+			%td
+				= link_to profile_path(current_profile) do
+					%i.fas.fa-user-circle
+					Profile
+		%tr
+			%td
+				= link_to profiles_library_path(current_profile) do
+					%i.fas.fa-music
+					Library
+		%tr
+			%td
+				= link_to conversations_path do
+					%i.fas.fa-comments
+					Conversations
+		%tr
+			%td
+				= link_to profiles_contacts_path(current_profile) do
+					%i.fas.fa-address-book
+					Contacts
+		%tr
+			%td
+				= link_to notifications_path do
+					%i.fas.fa-bell
+					Notifications
+		%tr
+			%td
+				= link_to feed_path do
+					%i.fas.fa-newspaper
+					Feed
+		%tr
+			%td
+				= link_to profiles_groups_path(current_profile) do
+					%i.fas.fa-users
+					Groups
+		%t
+			%td
+				= link_to player_path do
+					%i.fas.fa-play
+					Player
+		%tr
+			%td
+				= link_to profiles_playlists_path(current_profile) do
+					%i.fas.fa-list-alt
+					Playlists
+		%tr
+			%td
+				= link_to recommendations_path do
+					%i.fas.fa-volume-up
+					Recommendations
+		%tr
+			%td
+				= link_to bookmarks_path do
+					%i.fas.fa-bookmark
+					Bookmarks
+
+	%table.table-sm.table-hover.text-white.position-absolute.bottom-0.w-100.mb-2
+		%tr
+			%td
+				= link_to settings_path do
+					%i.fas.fa-cog
+					Settings
+		%tr
+			%td
+				= link_to logout_path, method: :delete do
+					%i.fas.fa-sign-out-alt
+					Log out

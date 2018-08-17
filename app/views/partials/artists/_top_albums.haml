@@ -1,0 +1,21 @@
+%h4
+  = link_to 'Top albums:', artists_albums_path(artist_name: artist.name)
+
+.separator.default.mt-2.mb-3
+
+.row
+  - artist.top_albums.each_with_index do |album, index|
+    .mb-3.text-center.col-6.col-sm-4.col-md-3.col-lg-6{class: ('d-sm-none d-md-block' if index == 3)}
+      .mb-1
+        = link_to artists_album_path(artist_name: artist.name, album_title: album.title) do
+          .mb-1
+            = image_tag album.cover, class: 'img-fluid'
+          %h5.mb-0
+            %strong
+              = album.title
+      %i.fas.fa-music
+      = number_with_delimiter(album.lastfm_plays_count)
+
+.text-right
+  = link_to 'View more...', artists_albums_path(artist_name: artist.name), class: 'btn btn-primary btn-sm'
+

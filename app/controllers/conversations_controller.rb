@@ -27,7 +27,7 @@ private
   end
 
   def other_profile
-    conversation.other_member(current_profile.id)
+    conversation&.other_member(current_profile.id)
   end
 
   def conversation
@@ -49,7 +49,11 @@ private
 
   def read_new_messages
     new_messages.update_all(new: false)
-    @redis.decrby(
+    update_new_messages_counter
+  end
+
+  def update_new_messages_counter
+    $redis.decrby(
       "#{current_profile.id}:new_messages", new_messages.count
     )
   end
