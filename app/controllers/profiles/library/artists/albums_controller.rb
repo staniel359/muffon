@@ -2,84 +2,59 @@ module Profiles
   module Library
     module Artists
       class AlbumsController < Profiles::Library::ArtistsController
+        before_action :set_profile, :set_artist
+        before_action :set_album, except: :index
+        before_action :set_title
+
         def index
-          @page_data = {
-            title:  title,
-            artist: artist,
-            albums: paginate(albums, 20)
-          }
+          @pagy, @albums = pagy(albums)
         end
 
         def show
-          @page_data = {
-            title:  title,
-            album:  album,
-            tracks: retrieve_tracks,
-            plays:  retrieve_plays
-          }
+          @tracks = album_tracks.limit(5).decorate
+          @plays = album_plays.limit(10).decorate
         end
 
         def tracks
-          @page_data = {
-            album:  album,
-            tracks: paginate(retrieve_tracks, 20)
-          }
+          @pagy, @tracks = pagy(album_tracks)
         end
 
         def plays
-          @page_data = {
-            album: album,
-            plays: paginate(retrieve_plays, 20)
-          }
-        end
-
-        def show_tracks
-          @page_data = {
-            tracks: retrieve_tracks
-          }
-          respond_with_js
+          @pagy, @plays = pagy(album_plays)
         end
 
       private
 
-        def title
-          t(
+        def set_title
+          @title = t(
             "profiles.library.artists.albums.#{params[:action]}",
-            profile: profile.nickname,
-            artist:  artist.artist_name,
-            album:   album.album_title
+            profile: @profile.nickname,
+            artist:  @artist.name,
+            album:   @album&.title
           )
         end
 
         def albums
-          artist.profile_albums.includes(:album).created_desc
+          @artist.profile_albums.plays_count_desc
         end
 
-        def album
-          @album ||= profile_albums.find_by(
+        def set_album
+          @album = @profile.profile_albums.joins(
+            'JOIN "albums" ON "albums"."id" = "profile_albums"."album_id"'
+          ).joins(
+            'JOIN "artists" ON "artists"."id" = "profile_albums"."artist_id"'
+          ).find_by(
             'LOWER(artists.name) = ? AND LOWER(albums.title) = ?',
-            params[:artist_name].downcase,
-            params[:album_title].downcase
-          )
+            params[:artist_name].downcase, params[:album_title].downcase
+          ).decorate
         end
 
-        def profile_albums
-          profile.profile_albums.joins(
-            :album, profile_artist: :artist
-          )
+        def album_tracks
+          @album.profile_tracks.plays_count_desc
         end
 
-        def retrieve_tracks
-          album.tracks.includes(
-            profile_track: :track
-          ).plays_count_desc
-        end
-
-        def retrieve_plays
-          album.plays.includes(
-            profile_track: :track,
-            profile_album: :album
-          ).created_desc
+        def album_plays
+          @album.plays.created_desc
         end
       end
     end

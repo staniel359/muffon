@@ -1,0 +1,13 @@
+%tr
+  %td.media.align-items-center
+    #playlist-add-track-btn.mr-2{ id: track.track_id }
+      = render 'partials/profiles/playlists/track/add_btn', track: track
+    .media-body.media
+      .mr-2
+        = image_tag track.image, class: 'rounded-circle img-xs'
+      .media-body.align-items-center
+        %h6.mb-0
+          %strong
+            = link_to track.title, profiles_library_artists_track_path(artist_name: track.artist_name, track_title: track.title)
+        .small.mb-0
+          = link_to track.artist_name, profiles_library_artist_path(artist_name: track.artist_name)

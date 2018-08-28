@@ -1,0 +1,17 @@
+#playlist-search-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title
+          Add tracks:
+      .modal-body
+        = form_tag profiles_playlists_search_path(playlist_id: @playlist.id, page: params[:page]), id: 'playlist-search-submit-form', method: :get, remote: true do
+          = label_tag :q, 'Search in your library:'
+          = text_field_tag :q, nil, class: 'input-transp', autocomplete: 'off', autofocus: true
+          .d-none
+            = submit_tag 'Search', name: nil
+
+        #playlist-search-results-placeholder
+          .d-flex.h-100.align-items-center.justify-content-center
+            %i.fas.fa-music.fa-5x.text-muted
+        #playlist-search-results.mt-3

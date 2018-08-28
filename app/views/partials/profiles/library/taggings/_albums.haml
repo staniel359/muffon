@@ -1,44 +1,23 @@
-- if taggings.present?
-
-  %table.table.table-hover
-
-    - taggings.map do |tagging|
-
+- if taggings.any?
+  %table.table.table-hover.table-sm
+    - taggings.each do |tagging|
+    - tagging = tagging.decorate
       %tr
-        %td
-
-          .media-left.mid_align
-            = image_tag tagging.album.album_cover, class: 'img_30'
-
-          .media-body.mid_align
-            %h4.d-inline
-              = link_to tagging.album.title, artist_album_path(name: tagging.album.artist.name, title: tagging.album.title)
-
-            - if tagging.profile_album.present?
-
-              %h5.d-inline
-                = link_to library_artist_album_path(name: tagging.album.artist.name, title: tagging.album.title) do
-                  %i.fas.fa-headphones{data: {toggle: 'tooltip', placement: 'top'}, title: 'In your library'}
-
-            %h5
-              = link_to tagging.album.artist.name, artist_path(name: tagging.album.artist.name)
+        %td.media.aling-items-center
+          .mr-2
+            = image_tag tagging.model_cover, class: 'img-sm'
+          .media-body
+            %h5.mb-0
+              = link_to tagging.model_title, artists_album_path(album_title: tagging.model_title, artist_name: tagging.model_artist_name)
+            %h6
+              = link_to tagging.model_artist_name, artist_path(tagging.model_artist_name)
 
   - if params[:action] == 'show'
-
-    .text-right.mg_top_10
-      = link_to 'View more...', library_albums_tagging_path, class: 'btn btn-primary btn-sm'
-
+    .text-right
+      = link_to 'View more...', profiles_library_taggings_albums_path, class: 'btn btn-primary btn-sm'
   - else
-
-    .text_center.mg_top_10
-      = paginate @album_taggings
-
+    .text_center
+      = pagination
 - else
-
-  %h5
-    - if current_profile?(@profile)
-      You haven't
-    - else
-      = @profile.nickname
-      hasn't
-    tagged any albums with this tag.
+  %h6
+    There are no taggings.

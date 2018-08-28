@@ -1,0 +1,5 @@
+$('#playlist-tracks').html("<%= j render 'partials/profiles/playlists/tracks' %>")
+$('#playlist-play-action').html("<%= j render 'partials/profiles/playlists/play_btn' %>")
+$("*#playlist-add-track-btn_<%= @track.track_id %>").html(
+  "<%= j render 'partials/profiles/playlists/track/add_btn', track: @track %>"
+)

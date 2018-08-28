@@ -1,0 +1,18 @@
+%tr
+  %td.media.align-items-center{ id: "track_#{track.track_id}" }
+    #love-btn.mr-2{ id: track.id }
+      = render 'partials/profiles/library/tracks/love_btn', profile_track: track
+    .mr-2
+      = render 'partials/player/list_play_btn', track: track.track.decorate
+    .media-body.d-flex.justify-content-between.align-items-center
+      #profile-track-data.w-100
+        %h6.mb-0
+          %strong
+            = link_to track.title, profiles_library_artists_track_path(artist_name: track.artist_name, track_title: track.title)
+        .track-bar-wrap
+          .track-bar{ style: "width: #{library_width_of(track) + 2}%" }
+          = link_to number_with_delimiter(track.plays_count), profiles_library_artists_tracks_plays_path(artist_name: track.artist_name, track_title: track.title)
+      #profile-track-options
+        = render 'partials/tracks/dropdown', track: track.track
+
+    %iframe.mt-2{ frameborder:'0', width: 576, height: 324, hidden: true }

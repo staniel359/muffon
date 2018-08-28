@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class ProfileTag < Muffon::Base
+    class ProfileTag < Muffon::Processor::Base
       def call
         process_profile_tag
       end

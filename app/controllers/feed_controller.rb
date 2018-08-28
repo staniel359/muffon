@@ -1,13 +1,11 @@
 class FeedController < ApplicationController
-  def index
-    @page_data = {
-      title: title
-    }
-  end
+  before_action :set_title
+
+  def index; end
 
 private
 
-  def title
-    t("feed.#{params[:action]}")
+  def set_title
+    @title = t("feed.#{params[:action]}")
   end
 end

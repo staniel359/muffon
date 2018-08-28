@@ -26,25 +26,7 @@ module Muffon
     end
 
     def concurrent_loader
-      ActiveSupport::Dependencies.interlock.permit_concurrent_loads
-    end
-
-    def custom_artist_data
-      { name: @args.artist_name }
-    end
-
-    def custom_track_data
-      {
-        title:  @args.track_title,
-        artist: custom_artist_data
-      }
-    end
-
-    def custom_album_data
-      {
-        title:  @args.album_title,
-        artist: custom_artist_data
-      }
+      ActiveSupport::Dependencies.interlock.permit_concurrent_loads { yield }
     end
   end
 end

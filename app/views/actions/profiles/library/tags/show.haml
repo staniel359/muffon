@@ -1,25 +1,25 @@
-#library_tag_panel.panel.library_page.center
-  
-  = render 'panel_header'
+.card
+  .card-body
+    = render 'partials/profiles/library/panel_header'
 
-  .separator.sep_0.sep_light
+    %h5.d-inline.mr-2
+      %i.fas.fa-tag
+      Tags:
+    .d-inline
+      = link_to tag_path(tag_name: @tag.name), class: 'tag' do
+        %strong
+          = @tag.name
 
-  #library_tag_panel_content.panel_content
+    .separator.default.my-2
 
     - if @artists.present?
-
-      %table.table.table-hover.table-condensed
-    
-        - @artists.map do |artist|
-
+      %table.table.table-hover.table-sm
+        - @artists.decorate.each do |artist|
           %tr
-            %td
-              = link_to library_artist_path(name: artist.artist_name) do
-                .media-left.mid_align
-                  = image_tag artist.artist_image, class: 'img_50 img_rnd'
-                .media-body.mid_align
-                  %h4
-                    = artist.name
-
-      .text_center.mg_top_10
-        = paginate @artists
+            %td.media.align-items-center
+              .mr-2
+                = image_tag artist.image, class: 'img-sm rounded-circle'
+              .media-body
+                %h5
+                  = link_to artist.name, profiles_library_artist_path(artist_name: artist.name)
+      = pagination

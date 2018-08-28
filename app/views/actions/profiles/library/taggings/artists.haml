@@ -1,13 +1,12 @@
-#library_tag_panel.panel.library_page.center
+.card
+  .card-body
+    = render 'partials/profiles/library/panel_header'
 
-  = render 'panel_header'
+    = render 'partials/profiles/library/taggings/panel_header'
 
-  .separator.sep_0.sep_light
+    %h5
+      = "Artists (#{@profile_tag.artist_taggings_count}):"
 
-  #library_tag_panel_content.panel_content
-    %h4
-      = "Artists (#{@tagging.artist_taggings_count}):"
+    .separator.default.my-2
 
-    .separator.sep_10.sep_default
-
-    = render 'artists', taggings: @taggings
+    = render 'partials/profiles/library/taggings/artists', taggings: @taggings

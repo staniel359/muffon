@@ -1,7 +1,14 @@
 module Conversations
   class MessagesController < ApplicationController
+    before_action :set_recipient
+    before_action :set_message, only: :create
+
     def create
-      send_message
+      if valid_message?
+        set_conversation
+        send_message
+        broadcast_to_recipient
+      end
       respond_with_js
     end
 
@@ -11,16 +18,12 @@ module Conversations
 
   private
 
-    def send_message
-      send_valid_message if valid_message?
+    def set_recipient
+      @recipient = Profile.find_by(id: params[:recipient_id])
     end
 
-    def valid_message?
-      message.sendable? && recipient.present?
-    end
-
-    def message
-      @message ||= current_profile.messages.new(message_params)
+    def set_message
+      @message = current_profile.messages.new(message_params).decorate
     end
 
     def message_params
@@ -29,15 +32,31 @@ module Conversations
       )
     end
 
-    def recipient
-      @recipient ||= Profile.find_by(nickname: params[:to])
+    def valid_message?
+      @message.sendable? && @recipient.present?
     end
 
-    def send_valid_message
-      conversation = current_profile.conversation_with(recipient.id)
-      message.update(conversation_id: conversation.id)
-      conversation.touch
-      $redis.rpush("#{recipient.id}:new_messages", message.id)
+    def set_conversation
+      @conversation = current_profile.conversation_with(@recipient.id)
+    end
+
+    def send_message
+      @message.update(conversation_id: @conversation.id)
+      @conversation.touch
+    end
+
+    def broadcast_to_recipient
+      ActionCable.server.broadcast(
+        "messaging_#{@recipient.id}",
+        m: rendered_message, c: @conversation.id
+      )
+    end
+
+    def rendered_message
+      ApplicationController.render(
+        partial: 'partials/conversations/messages/message',
+        locals: { message: @message, current_profile: @recipient }
+      )
     end
   end
 end

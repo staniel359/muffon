@@ -1,35 +1,27 @@
-.up
-  .media-right
+.up.media
+  .media-body
+    %i.fas.fa-volume-up
     = link_to 'Recommendations', recommendations_path
 
-- if params[:artist].present?
-
-  .up
-    - artist = Artist.find_by('lower(name) = lower(?)', CGI.unescape(params[:artist]))
-    - if artist.present?
-      .media-left
-        = image_tag artist.artist_image, class: 'img_30'
-      .media-right
-        = link_to artist.name, recommendations_path(artist: artist.name)
+- if params[:artist_name].present?
+  .up.media
+    - if @artist.present?
+      = image_tag @artist.image
+      .media-body
+        = link_to @artist.name, recommendations_path(params.as_json.slice('artist_name'))
     - else
-      .media-left
-        = image_tag 'missing_artist.png', class: 'img_30'
-      .media-right
-        = params[:artist]
+      .media-body
+        %i.fas.fa-question
+        = params[:artist_name]
 
-- if params[:tag].present?
-
-  .up
-    .media-right
+- if params[:tag_name].present?
+  .up.media
+    .media-body
       %i.fas.fa-tag
-      - tag = Tag.find_by_name(CGI.unescape(params[:tag]))
-      - if tag.present?
-        = link_to tag.name, recommendations_path(tag: tag.name)
-      - else
-        = params[:tag]
+      = link_to params[:tag_name], recommendations_path(params.as_json.slice('tag_name'))
 
 - if params[:days].present?
-
-  .up
-    .media-right
-      = link_to pluralize(params[:days], 'day'), recommendations_path(days: params[:days])
+  .up.media
+    .media-body
+      %i.far.fa-calendar
+      = link_to params[:days], recommendations_path(params.as_json.slice('days'))

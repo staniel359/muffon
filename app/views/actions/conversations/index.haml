@@ -1,20 +1,13 @@
-#conversations.panel.center
-
-  .panel_header
-
-    %h3 
+.card
+  .card-body
+    %h4
       %i.fas.fa-comments
       Conversations
 
-  .separator.sep_0.sep_light
+    .separator.default.my-3
 
-  .panel_content
-
-    - if @page_data[:conversations].any?
-
-      %table.table
-        = render @page_data[:conversations]
-
+    - if @conversations.any?
+      %table.table.table-hover
+        = render partial: 'partials/conversations/conversation', collection: @conversations
     - else
-
-      You don't have any conversations yet.
+      There are no conversations.

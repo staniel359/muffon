@@ -1,3 +1,17 @@
-.up
-  .media-right
+.up.media
+  .media-body
+    %i.fas.fa-bookmark
     = link_to 'Bookmarks', bookmarks_path
+
+- if params[:action] == 'artists'
+  .up.media
+    .media-body
+      = link_to 'Artists', bookmarks_artists_path
+- elsif params[:action] == 'albums'
+  .up.media
+    .media-body
+      = link_to 'Albums', bookmarks_albums_path
+- elsif params[:action] == 'tracks'
+  .up.media
+    .media-body
+      = link_to 'Tracks', bookmarks_tracks_path

@@ -2,7 +2,7 @@
   %td.media.align-items-center{ id: "track_#{loved_track.track_id}" }
     #love-btn.mr-2{ id: loved_track.id }
       = render 'partials/profiles/library/tracks/love_btn', profile_track: loved_track
-    .mr-2.list-play-btn-cover-wrap.position-relative.d-flex.justify-content-center.align-items-center
+    .mr-2.list-play-btn-cover-wrap
       = render 'partials/player/list_play_btn', track: loved_track.track.decorate
       = image_tag loved_track.image, class: 'img-sm'
     .media-body.d-flex.justify-content-between.align-items-center
@@ -12,16 +12,16 @@
             = link_to loved_track.title, profiles_library_artists_track_path(artist_name: loved_track.artist_name, track_title: loved_track.title)
         %h6.mb-0
           = link_to loved_track.artist_name, profiles_library_artist_path(profile_id: @profile.id, artist_name: loved_track.artist_name)
-        .d-flex.align-items-center
-          .mr-1.track-bar{ style: "width: #{library_width_of(loved_track) + 2}%" }
+        .track-bar-wrap
+          .track-bar{ style: "width: #{library_width_of(loved_track) + 2}%" }
           = link_to number_with_delimiter(loved_track.plays_count), profiles_library_artists_tracks_plays_path(artist_name: loved_track.artist_name, track_title: loved_track.title)
       #loved-track-options.d-flex.flex-row.align-items-center
         .d-none.d-sm-block
           .d-flex.flex-column.text-right.mr-2
             %small
-              = loved_track.created_at.strftime('%e %b %Y')
+              = loved_track.loved_at.strftime('%e %b %Y')
             %small
-              = loved_track.created_at.strftime('%H:%M')
+              = loved_track.loved_at.strftime('%H:%M')
         = render 'partials/tracks/dropdown', track: loved_track.track
 
     %iframe.mt-2{ frameborder:'0', width: 576, height: 324, hidden: true }

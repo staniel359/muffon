@@ -1,48 +1,50 @@
-#contacts_page.panel.center
-
-  .panel_header
-
-    .panel_header_left
-
-      %h3
+.card
+  .card-body
+    .d-flex.align-items-center.justify-content-between
+      %h4.mb-0
         %i.fas.fa-address-book
         Contacts
 
-    .panel_header_right
+      .media
+        .mr-2
+          = image_tag @profile.avatar.url(:xs), class: 'rounded-circle'
+        .media-body
+          %h5.mb-0
+            = link_to @profile.nickname, @profile
 
-      .media-left
-        %h4
-          = link_to @page_data[:profile].nickname, profile_path
-      .media-right
-        = link_to profile_path do
-          = image_tag @page_data[:profile].avatar.url(:sm), class: 'img_rnd img_30'
+    .separator.default.my-3
 
-  .separator.sep_0.sep_light
+    .row
+      .col-12.col-md-6
+        %h5
+          = "Followers (#{@profile.followers.count}):"
 
-  #contacts_page_followers.panel_content
+        .separator.default.my-2
 
-    %h4
-      = link_to "Followers (#{@page_data[:profile].followers.count})", profiles_followers_path
+        - if @followers.any? 
+          %table.table.table-hover
+            - @followers.each do |follower|
+              = render 'partials/profiles/profile', profile: follower
+          - if @followers.length > 5
+            .text-right
+              = link_to 'View more...', profiles_followers_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no followers.
 
-    .separator.sep_10.sep_default
+        %hr.my-3.d-md-none
 
-    - if @page_data[:profile].followers.any? 
-      %table.table.table-hover
-        - @page_data[:profile].followers.map do |follower|
-          = render partial: 'profiles/profile', profile: follower
-    - else
-      = (current_profile?(@page_data[:profile]) ? "You don't" : "#{@page_data[:profile].nickname} doesn't") + ' have any followers yet.'
+      .col-12.col-md-6
+        %h5
+          = "Following (#{@profile.followings.count}):"
 
-  #contacts_page_following.panel_content
+        .separator.default.my-2
 
-    %h4
-      = link_to "Following (#{@page_data[:profile].followings.count})", profiles_following_path
-
-    .separator.sep_10.sep_default
-
-    - if @page_data[:profile].followings.any? 
-      %table.table.table-hover
-        - @page_data[:profile].followings.map do |following|
-          = render partial: 'profiles/profile', profile: following
-    - else
-      = (current_profile?(@page_data[:profile]) ? "You aren't" : "#{@page_data[:profile].nickname} isn't") + ' following anybody.'
+        - if @followings.any? 
+          %table.table.table-hover
+            - @followings.each do |following|
+              = render 'partials/profiles/profile', profile: following
+          - if @followings.length > 5
+            .text-right
+              = link_to 'View more...', profiles_following_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no followed profiles.

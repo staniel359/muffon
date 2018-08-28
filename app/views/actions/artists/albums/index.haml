@@ -1,22 +1,18 @@
-#artist_albums_page.artist_page.panel.center
-  
-  = render 'panel_header'
+.card
+  .card-body
+    = render 'partials/artists/panel_header'
 
-  .separator.sep_0.sep_light
-
-  .artist_albums_page_albums.panel_content
-
-    %h4
+    %h5
       %i.fas.fa-dot-circle
       Albums:
 
-    .separator.sep_10.sep_default
+    .separator.default.my-2
 
-    .panel_content_wide
-      = render partial: 'album', collection: @albums
+    .row
+      - @albums.each do |album|
+        .mb-3.text-center.col-6.col-sm-4.col-md-3
+          = render 'partials/artists/album', album: album.decorate
 
-  %hr.sep_0
+    %hr.mb-3
 
-  .text_center.panel_content
-    .btn-group
-      = paginate @albums
+    = pagination

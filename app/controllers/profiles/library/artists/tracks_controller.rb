@@ -2,75 +2,61 @@ module Profiles
   module Library
     module Artists
       class TracksController < Profiles::Library::ArtistsController
+        before_action :set_profile, :set_artist
+        before_action :set_track, except: :index
+        before_action :set_title
+
         def index
-          @page_data = {
-            title:  title,
-            artist: artist,
-            tracks: paginate(tracks, 20)
-          }
+          @pagy, @tracks = pagy(tracks)
         end
 
         def show
-          @page_data = {
-            title:  title,
-            track:  track,
-            albums: retrieve_albums,
-            plays:  retrieve_plays
-          }
+          @albums = track_albums.limit(3).decorate
+          @plays = track_plays.limit(10).decorate
         end
 
         def albums
-          @page_data = {
-            track:  track,
-            albums: paginate(retrieve_albums, 20)
-          }
+          @pagy, @albums = pagy(track_albums)
         end
 
         def plays
-          @page_data = {
-            track: track,
-            plays: paginate(retrieve_plays, 20)
-          }
+          @pagy, @plays = pagy(track_plays)
         end
 
       private
 
-        def title
-          t(
+        def set_title
+          @title = t(
             "profiles.library.artists.tracks.#{params[:action]}",
-            profile: profile.nickname,
-            artist:  artist.artist_name,
-            track:   track.track_title
+            profile: @profile.nickname,
+            artist:  @artist.name,
+            track:   @track&.title
           )
+        end
+
+        def set_track
+          @track = @profile.profile_tracks.joins(
+            'JOIN "tracks" ON "tracks"."id" = "profile_tracks"."track_id"'
+          ).joins(
+            'JOIN "artists" ON "artists"."id" = "profile_tracks"."artist_id"'
+          ).find_by(
+            'LOWER(artists.name) = ? AND LOWER(tracks.title) = ?',
+            params[:artist_name].downcase, params[:track_title].downcase
+          ).decorate
         end
 
         def tracks
-          artist.profile_tracks.includes(:track).created_desc
-        end
-
-        def track
-          @track ||= profile_tracks.find_by(
-            'LOWER(artists.name) = ? AND LOWER(tracks.title) = ?',
-            params[:artist_name].downcase,
-            params[:track_title].downcase
-          )
-        end
-
-        def profile_tracks
-          profile.profile_tracks.joins(
-            :track, profile_artist: :artist
-          )
-        end
-
-        def retrieve_albums
-          track.albums.includes(profile_album: :album).created_desc
-        end
-
-        def retrieve_plays
-          track.plays.includes(
-            profile_track: :track,
-            profile_album: :album
+          @artist.profile_tracks.includes(
+            :artist, [track: :artist]
           ).created_desc
+        end
+
+        def track_albums
+          @track.profile_albums.created_desc
+        end
+
+        def track_plays
+          @track.plays.created_desc
         end
       end
     end

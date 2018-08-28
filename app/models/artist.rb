@@ -8,10 +8,11 @@ class Artist < ApplicationRecord
   has_many :listened_artists
   has_many :bookmarks, as: :bookmarkable
   has_many :taggings, as: :taggable
+  has_many :profile_tags, through: :taggings
 
   validates :name, presence: true, uniqueness: true
 
   def self.with(name:)
-    where('LOWER(name) = ?', name.downcase).first_or_initialize
+    where('LOWER(name) = ?', name.downcase)
   end
 end

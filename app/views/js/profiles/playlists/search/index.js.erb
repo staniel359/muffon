@@ -1,0 +1,9 @@
+<% if params[:q].present? %> 
+  $('#playlist-search-results-placeholder').hide();
+  $('#playlist-search-results').show().html(
+    "<%= j render 'partials/profiles/playlists/search/results' %>"
+  );
+<% else %>
+  $('#playlist-search-results').hide()
+  $('#playlist-search-results-placeholder').show();
+<% end %>

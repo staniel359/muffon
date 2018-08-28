@@ -2,7 +2,7 @@ module Profiles
   module Library
     class ArtistsController < ApplicationController
       before_action :set_profile
-      before_action :set_artist, except: :index
+      before_action :set_artist, except: %i[index create]
       before_action :set_title, only: %i[index show]
 
       def index
@@ -20,11 +20,6 @@ module Profiles
         @object = object
         @profile_artist = add_artist_to_library
         process_profile_artist_recommendations
-        respond_with_js
-      end
-
-      def show_tracks
-        @tracks = tracks
         respond_with_js
       end
 
@@ -52,19 +47,29 @@ module Profiles
           collection_name: 'artists',
           scope:           params[:scope],
           order:           params[:order]
-        )
+        ).includes(:artist)
       end
 
       def tracks
-        @artist.profile_tracks.plays_count_desc.limit(5).decorate
+        @artist.profile_tracks.includes(
+          :artist, [track: :artist]
+        ).plays_count_desc.limit(5).decorate
       end
 
       def albums
-        @artist.profile_albums.plays_count_desc.limit(3).decorate
+        @artist.profile_albums.includes(
+          :artist, :album
+        ).plays_count_desc.limit(3).decorate
       end
 
       def plays
-        @artist.plays.created_desc.limit(10).decorate
+        @artist.plays.created_desc.includes(
+          :artist, [track: :artist], :album, :profile_track
+        ).limit(10).decorate
+      end
+
+      def object
+        Artist.find_by(id: params[:artist_id])
       end
 
       def add_artist_to_library

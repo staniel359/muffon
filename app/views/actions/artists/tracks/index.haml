@@ -1,19 +1,13 @@
-.artist_page.artist_tracks_page.panel.center
-	
-	= render 'panel_header'
+.card
+	.card-body
+		= render 'partials/artists/panel_header'
 
-	.separator.sep_0.sep_light
-
-	.artist_tracks_page_tracks.panel_content
-
-		%h4
+		%h5
 			%i.fas.fa-music
 			Tracks:
 
-		.separator.sep_10.sep_default
+		.separator.default.my-2
 
-		%table.table.table-hover.table-condensed
-			= render partial: 'track', collection: @tracks
-
-		.text_center.mg_top_10
-			= paginate @tracks
+		%table.table.table-hover.table-sm
+			= render partial: 'partials/artists/track', collection: @tracks
+		= pagination

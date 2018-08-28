@@ -1,5 +1,4 @@
 %h5
-  %i.fas.fa-plus.mx-1
   = "New tracks (#{@profile.tracks_count}):"
 
 .separator.default.my-2
@@ -8,6 +7,6 @@
   %table.table.table-hover.table-sm
     = render partial: 'partials/profiles/library/instances/new_track', collection: @tracks[:new]
   .text-right
-    = link_to 'View more...', profiles_library_tracks_path(order: 3), class: 'btn btn-primary btn-sm'
+    = link_to 'View more...', profiles_library_tracks_path(order: 2), class: 'btn btn-primary btn-sm'
 - else
   There are no tracks.

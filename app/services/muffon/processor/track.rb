@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Track < Muffon::Base
+    class Track < Muffon::Processor::Base
       def call
         process_track
       end

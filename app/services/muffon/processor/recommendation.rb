@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Recommendation < Muffon::Base
+    class Recommendation < Muffon::Processor::Base
       def call
         process_recommendation
       end
@@ -9,7 +9,6 @@ module Muffon
 
       def process_recommendation
         recommendation.update(profile_artist_ids: profile_artist_ids)
-        ArtistUpdateWorker.perform_async(artist.name)
       end
 
       def recommendation
@@ -20,7 +19,7 @@ module Muffon
       end
 
       def artist
-        @artist ||= Muffon::Processor::Artist.call(artist: @args.artist)
+        @artist ||= update_artist(@args.artist)
       end
 
       def profile_artist_ids

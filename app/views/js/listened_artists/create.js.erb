@@ -1,5 +1,5 @@
 $("#<%= @object.class.to_s.downcase %>-listened-action_<%= @object.id %> .action-btn").tooltip('hide')
 $("#<%= @object.class.to_s.downcase %>-listened-action_<%= @object.id %>").html(
-  "<%= j render 'partials/actions/listened_artists', artist: @object %>"
+  "<%= j render 'partials/actions/listened_artists', artist: @object, listened: true %>"
 )
 $("#<%= @object.class.to_s.downcase %>-listened-action_<%= @object.id %> .action-btn").tooltip('show')

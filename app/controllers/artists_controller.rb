@@ -1,10 +1,10 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, :set_title
+  before_action :set_artist, :check_correct_artist, :set_title
 
   def show; end
 
   def images
-    @images = artist_images
+    @pagy, @images = artist_images
   end
 
   def tags
@@ -14,10 +14,7 @@ class ArtistsController < ApplicationController
   def wiki; end
 
   def similar_artists
-    @page_data = {
-      title:           title,
-      similar_artists: retrieve_similar_artists
-    }
+    @pagy, @similar_artists = artist_similar_artists
   end
 
   def listeners
@@ -32,23 +29,20 @@ private
 
   def set_artist
     @artist = Muffon::Processor::Artist.call(
-      params.slice(:artist_name)
-    ).decorate
+      params.slice(:artist_name).merge(full: true)
+    )&.decorate
   end
 
   def set_title
     @title = t(
       "artists.#{params[:action]}",
-      artist: @artist.name
+      artist: @artist&.name
     )
   end
 
   def artist_images
-    paginate(
-      paginate_array(
-        images_data[:data],
-        images_data[:total_count]
-      ), 40
+    pagy_dynamic_array(
+      images_data[:data], images_data[:total_count], 40
     )
   end
 
@@ -58,8 +52,14 @@ private
     )
   end
 
-  def retrieve_similar_artists
-    paginate_array(similar_artists_data, 200)
+  def artist_similar_artists
+    pagy_dynamic_array(processed_similar_artists, 200, 15)
+  end
+
+  def processed_similar_artists
+    Muffon::Processor::Artists.call(
+      artists: similar_artists_data
+    )
   end
 
   def similar_artists_data

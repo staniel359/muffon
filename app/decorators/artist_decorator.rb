@@ -2,7 +2,7 @@ class ArtistDecorator < Draper::Decorator
   delegate_all
 
   def image
-    object.image || 'missing_artist.png'
+    object.image.presence || 'missing_artist.png'
   end
 
   def top_tags
@@ -19,5 +19,9 @@ class ArtistDecorator < Draper::Decorator
 
   def similar_artists
     Artist.find(similar_artist_ids)
+  end
+
+  def tagged_by?(profile_id)
+    profile_tags.find_by(profile_id: profile_id).present?
   end
 end

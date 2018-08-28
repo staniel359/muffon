@@ -2,29 +2,24 @@ module Profiles
   module Library
     module Artists
       class PlaysController < Profiles::Library::ArtistsController
+        before_action :set_profile, :set_artist, :set_title
+
         def index
-          @page_data = {
-            title:  title,
-            artist: artist,
-            plays:  paginate(plays, 20)
-          }
+          @pagy, @plays = pagy(plays)
         end
 
       private
 
-        def title
-          t(
+        def set_title
+          @title = t(
             "profiles.library.artists.plays.#{params[:action]}",
-            profile: profile.nickname,
-            artist:  artist.artist_name
+            profile: @profile.nickname,
+            artist:  @artist.name
           )
         end
 
         def plays
-          artist.plays.includes(
-            profile_track: :track,
-            profile_album: :album
-          ).created_desc
+          @artist.plays.created_desc
         end
       end
     end

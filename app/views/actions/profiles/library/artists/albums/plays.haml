@@ -1,16 +1,15 @@
-#library_artist_album_plays_panel.panel.library_page.center
-  = render 'library_artists/partials/panel_header'
+.card
+  .card-body
+    = render 'partials/profiles/library/artists/albums/panel_header'
 
-  .separator.sep_0.sep_light
-  
-  .panel_content
-    %h4
-      = "Plays (#{@album.playcount}):"
+    %h5
+      = "Plays (#{@album.plays_count}):"
 
-    .separator.sep_10.sep_default
+    .separator.default.my-2
 
-    %table.table.table-hover.table-condensed
-      = render partial: 'library_artists/partials/play', collection: @plays
-
-    .text_center.mg_top_10
-      = paginate @plays
+    - if @plays.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'partials/profiles/library/instances/album/play', collection: @plays.decorate
+      = pagination
+    - else
+      There are no plays.

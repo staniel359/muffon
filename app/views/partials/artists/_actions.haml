@@ -1,15 +1,8 @@
 - if logged_in?
-
 	.position-absolute.artist-actions.w-100
-
 		.w-50.h-50.position-absolute#artist-library-action{id: artist.id}
-
-			= render 'partials/actions/library', artist: artist
-
+			= render 'partials/actions/library', artist: artist, in_library: artist.id.in?(@profile_artist_ids)
 		.w-50.h-50.position-absolute#artist-bookmark-action{id: artist.id}
-
-			= render 'partials/actions/bookmarks', model: artist
-
+			= render 'partials/actions/bookmarks', model: artist, bookmarked: artist.id.in?(@bookmarked_artist_ids)
 		.w-50.h-50.position-absolute#artist-listened-action{id: artist.id}
-
-			= render 'partials/actions/listened_artists', artist: artist
+			= render 'partials/actions/listened_artists', artist: artist, listened: artist.id.in?(@listened_artist_ids)

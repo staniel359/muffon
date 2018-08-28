@@ -2,8 +2,6 @@
   .card-body
     = render 'partials/profiles/library/panel_header'
 
-    %hr.mt-2.mb-3
-
     #library-main.media
       = render 'partials/profiles/library/scrollspy'
       .media-body.position-relative
@@ -31,6 +29,11 @@
 
         %hr.my-4
 
+        #plays.anchor
+        = render 'partials/profiles/library/sections/plays'
+
+        %hr.my-4
+
         #lovedtracks.anchor
         = render 'partials/profiles/library/sections/loved_tracks'
 
@@ -38,11 +41,6 @@
 
         #newtracks.anchor
         = render 'partials/profiles/library/sections/new_tracks'
-
-        %hr.my-4
-
-        #plays.anchor
-        = render 'partials/profiles/library/sections/plays'
 
         %hr.my-4
 

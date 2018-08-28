@@ -1,5 +1,5 @@
 $("#artist-listened-action_<%= @object.id %> .action-btn").tooltip('hide')
 $("#artist-listened-action_<%= @object.id %>").html(
-  "<%= j render 'partials/actions/listened_artists', artist: @object %>"
+  "<%= j render 'partials/actions/listened_artists', artist: @object, listened: false %>"
 )
 $("#artist-listened-action_<%= @object.id %> .action-btn").tooltip('show')

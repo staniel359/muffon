@@ -7,7 +7,7 @@ module LastFM
   private
 
     def retrieve_artists_data
-      return [] unless @args.artist_names.present?
+      return [] unless @args.artists.present?
 
       artists_data.sort.transpose[1]
     end
@@ -15,7 +15,7 @@ module LastFM
     def artists_data
       artists_data_hash = {}
       threads = []
-      @args.artist_names.each_with_index.each do |a, i|
+      @args.artists.each_with_index.each do |a, i|
         threads << Thread.new do
           artists_data_hash.merge!(i.to_s => artist_data(a))
         end

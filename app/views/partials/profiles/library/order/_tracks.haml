@@ -1,0 +1,8 @@
+.dropdown
+  = button_tag class: 'btn-transp dropdown-toggle text-white', data: { toggle: 'dropdown' } do
+    %i.fas.fa-sort-amount-down
+    = order_text
+  .dropdown-menu.dropdown-menu-right
+    - orders_hash.each do |order_value, order_name|
+      .dropdown-item
+        = button_to order_name, profiles_library_tracks_path(order: order_value, scope: params[:scope], page: params[:page]), class: 'btn-transp', method: :get, remote: true

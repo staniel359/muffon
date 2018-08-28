@@ -1,0 +1,13 @@
+- if @artist.top_tags.present?
+  .mb-1#tags-wrap
+    %i.fas.fa-tags
+    - @artist.top_tags.pluck(:name).each do |tag_name|
+      = link_to tag_name, tag_path(tag_name: tag_name), class: 'tag'
+    .d-inline-block
+      = link_to 'More tags...', artists_tags_path(artist_name: @artist.name)
+
+- if logged_in? && @artist.tagged_by?(current_profile.id)
+  .mb-1
+    Your tags:
+    - current_profile.artist_taggings(@artist.id).each do |tagging|
+      = link_to tagging.tag.name, profiles_library_tagging_path(profile_id: current_profile.id, tag_name: tagging.tag.name), class: 'tag'

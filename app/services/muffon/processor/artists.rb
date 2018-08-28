@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Artists < Muffon::Base
+    class Artists < Muffon::Processor::Base
       def call
         process_artists
       end

@@ -14,6 +14,6 @@ class PlayDecorator < Draper::Decorator
   end
 
   def album_cover
-    album&.decorate.cover
+    album&.decorate&.cover || 'missing_album.png'
   end
 end

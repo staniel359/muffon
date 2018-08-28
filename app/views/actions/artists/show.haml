@@ -4,8 +4,7 @@
       .col-12.col-sm-4.col-xl-3
         .mb-2.position-relative
           = render 'partials/artists/actions', artist: @artist
-          .artist-image-clickable{data: {toggle: 'modal', target: '#image-modal'}}
-            = image_tag @artist.image, class: 'img-fluid w-100 rounded-circle position-relative'
+          = image_tag @artist.image, class: 'img-fluid w-100 rounded-circle position-relative clickable', data: { toggle: 'modal', target: '#artist-image-modal' }
         .float-right
           = link_to artists_images_path(artist_name: @artist.name) do
             More images...
@@ -13,48 +12,33 @@
       .col-12.col-sm-8.col-xl-9
         %h3
           = @artist.name
-
-        - if @artist.top_tags.present?
-          .mb-1
-            %i.fas.fa-tags
-            - @artist.top_tags.map do |tag|
-              = link_to tag.name, tag_path(tag_name: tag.name), class: 'tag'
-            - if @artist.top_tags.length >= 5
-              .d-inline-block.ml-1
-                = link_to 'More tags...', artists_tags_path(artist_name: @artist.name), class: 'inv_btn_no_hover'
-
-        - if logged_in? && current_profile&.artist_taggings(@artist.id).present?
-          .mb-1
-            Your tags:
-            - current_profile.artist_taggings(@artist.id).map do |tagging|
-              = link_to tagging.tag.name, profiles_library_tagging_path(profile_id: current_profile.id, tag_name: tagging.tag.name), class: 'tag'
-
-        %h5.d-inline.mr-3{ data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Last.fm listeners' }
+        = render 'partials/artists/tags_taggings'
+        %h5.d-inline.mr-2{ data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Last.fm listeners' }
           %i.fas.fa-user
           = number_with_delimiter(@artist.lastfm_listeners_count)
-        %h5.d-inline{ data: {toggle: 'tooltip', placement: 'bottom'}, title: 'Last.fm plays' }
+        %h5.d-inline{ data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Last.fm plays' }
           %i.fas.fa-play
           = number_with_delimiter(@artist.lastfm_plays_count)
 
-        .separator.mt-2.mb-2.default
+        .separator.my-2.default
 
         = render 'partials/artists/description', artist: @artist
 
   %hr
 
-    .card-body
-      .d-inline
-        = link_to artists_listeners_path(artist_name: @artist.name) do
-          muffon listeners:
-          = @artist.listeners_count
-      .d-inline
-        = link_to artists_plays_path(artist_name: @artist.name) do
-          muffon plays:
-          = @artist.plays_count
+  .card-body
+    .d-inline
+      = link_to artists_listeners_path(artist_name: @artist.name) do
+        muffon listeners:
+        = @artist.listeners_count
+    .d-inline
+      = link_to artists_plays_path(artist_name: @artist.name) do
+        muffon plays:
+        = @artist.plays_count
 
   %hr 
 
-  - if logged_in? && current_profile&.has_in_library?(@artist.id)
+  - if logged_in? && @artist.in_library?(current_profile.id)
     .card-body
       In your library since
       %strong
@@ -64,17 +48,17 @@
 
   .card-body
     .row
-      #artist-top-tracks.col-12.col-lg-6
+      .col-12.col-lg-6
         = render 'partials/artists/top_tracks', artist: @artist
 
-      #artist-top-albums.col-12.col-lg-6
+      .col-12.col-lg-6
         = render 'partials/artists/top_albums', artist: @artist
       
   %hr
 
-  #artist-similar-artists.card-body
+  .card-body
     = render 'partials/artists/top_similar_artists', artist: @artist
 
-#image-modal.modal
+#artist-image-modal.modal
   .modal-dialog
     = image_tag @artist.image.gsub('/300x300', '/600x600'), class: 'img-fluid'

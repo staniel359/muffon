@@ -6,6 +6,7 @@ $boxShadow: 0 0px 2px 1px rgba(3, 3, 3, 0.4)
 
 $primary: $muffonDefault
 $light: $muffonLight
+$dark: $muffonDark
 
 @import 'bootstrap'
 @import 'layouts'
@@ -32,21 +33,30 @@ td
   border-bottom: 1px solid $muffonDefault
 .table-hover td:hover
   background-color: $muffonDark
+.table thead th
+  border: none
+  border-bottom: 1px solid $muffonDefault
+  font-weight: 500
+.table .table
+  background-color: transparent !important
 label
   margin-bottom: 0
 select
   box-shadow: none !important
-small
-  line-height: 1.2em
 
 // Media
 
+@media (min-width: 768px)
+  .similar-artist-card
+    text-align: center
 @media (max-width: 767.98px)
   #sidebar
     width: 0px
 @media (max-width: 575.98px)
   #profile-page-avatar
     width: 85px
+  .similar-artist-card, .recommendation-info
+    text-align: center
 
 // Flag icons
 
@@ -71,13 +81,24 @@ small
 .btn:focus, .btn:active, .btn.active
   outline: none !important
   box-shadow: none !important
+.btn-sm
+  padding: 3px 9px
+.btn.disabled
+  opacity: 1 !important
 
-.dropdown a
-  color: black
+.dropdown-menu
+  background-color: $muffonDefault !important
+  i
+    width: 15px
 .dropdown-toggle::after
   display: none
 .dropdown-item
   padding: 5px 15px
+  background-color: transparent !important
+  button, a
+    color: white !important
+.dropdown-divider
+  border-top: 1px solid $muffonDarkLight
 
 .nav-fill .nav-link.active
   border-bottom: 2px solid $muffonLight
@@ -89,7 +110,23 @@ small
 .text-danger
   color: red !important
 
-// Pagy
+.modal-dialog
+  margin: 75px auto
+.modal-content
+  color: white
+  background-color: $muffonDarkLight
+.modal-header
+  border-bottom: 1px solid $muffonDefault
+.modal-footer
+  border-top: 1px solid $muffonDefault
+
+.small
+  line-height: 1.2
+
+.badge
+  font-weight: 500 !important
+
+// Kaminari
 
 .pagination
   margin-bottom: 0
@@ -113,6 +150,7 @@ small
 
 .ui-autocomplete
   position: absolute
+  z-index: 100
   list-style: none
   background-color: white
   padding: 0
@@ -126,6 +164,11 @@ small
 .ui-helper-hidden-accessible
   display: none
 
+// Font Awesome
+
+.fa-circle-notch
+  line-height: 0.7 !important
+
 // Custom
 
 .h0
@@ -136,13 +179,20 @@ small
 
 .tag
   @extend .btn, .btn-primary, .btn-sm
-  margin-bottom: 5px
-  padding: 5px 10px
-  line-height: 1em
-  font-weight: 600
-  font-size: 0.8rem
+  margin: 0 5px 5px 0
+  padding: 4px 8px
+  font-size: 0.9 !important
   max-width: 170px
   white-space: normal
+  line-height: 1
+#tags-wrap .tag
+  margin-right: 1px
+
+.label
+  @extend .btn, .btn-dark, .btn-sm
+  background-color: $muffonDark !important
+  display: inline-block
+  line-height: 1.2
 
 .separator
   height: 2px
@@ -158,7 +208,6 @@ small
   padding-top: 100%
 .action-btn
   @extend .btn-transp
-  color: white
   margin: 5px 10px
   font-size: 13px
 [id^=artist-library-action]
@@ -170,17 +219,24 @@ small
 
 .btn-transp
   background-color: transparent
+  color: white
   border: none
   padding: 0
   cursor: pointer
   outline: none !important
 
+.track-bar-wrap
+  display: flex
+  align-items: center !important
+  a
+    line-height: 1
 .track-bar
+  margin-right: 5px
   height: 3px
   background-color: $muffonLight
 
-.artist-image-clickable
-  cursor: pointer
+.clickable
+  cursor: zoom-in
 
 .img-sm
   width: 50px
@@ -200,6 +256,7 @@ small
   color: white
   border-bottom: 1px solid $muffonDefault
   box-shadow: none
+  outline: none
 .input-transp:focus
   border-bottom: 2px solid $muffonLight
 
@@ -207,6 +264,10 @@ small
   z-index: 10
 .z-100
   z-index: 100
+.z-500
+  z-index: 500
+.z-1000
+  z-index: 1000
 
 #signup-btns, #signup-form, #additional-form, #login-form
   display: none
@@ -219,12 +280,21 @@ small
   width: 120px
 
 .list-play-btn-cover-wrap
+  display: flex
+  justify-content: center !important
+  align-items: center !important
+  position: relative
   .list-play-btn
+    position: absolute
     transition: 0.2s
     opacity: 0
 .list-play-btn-cover-wrap:hover
   .list-play-btn
     opacity: 1
+
+.btn-30
+  height: 30px
+  width: 30px
 
 #library-search-form-wrap
   display: none
@@ -241,5 +311,31 @@ small
   position: relative
   top: -50px
 
-.no-scroll
-  overflow: hidden
+#playlist-search-results-placeholder, #playlist-search-results
+  height: 320px
+#playlist-search-results
+  overflow-y: scroll
+  display: none
+
+.font-light
+  font-weight: 300
+
+#recommendations-filter-form
+  display: none
+
+[id^=recommendation-restore], [id^=bookmark-restore]
+  background-color: $muffonDark+e8
+[id^=bookmark-restore]
+  margin: -0.3rem
+
+.conversation a
+  text-decoration: none
+.new-conversation-circle
+  font-size: 12px
+.new-message-circle
+  font-size: 10px
+#conversation-messages
+  height: 360px
+  overflow-y: scroll
+.message
+  max-width: 75%

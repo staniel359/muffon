@@ -1,7 +1,7 @@
-%h4
-  = link_to 'Top tracks:', artists_tracks_path(artist_name: artist.name)
+%h5
+  Top tracks:
 
-.separator.default.mt-2.mb-3
+.separator.default.my-2
 
 %table.table.table-hover.table-sm
   = render partial: 'partials/artists/track', collection: artist.top_tracks

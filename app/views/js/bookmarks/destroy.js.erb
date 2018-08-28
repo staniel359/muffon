@@ -1,10 +1,10 @@
 $("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('hide')
 $("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %>").html(
-  "<%= j render 'partials/actions/bookmarks', model: @object %>"
+  "<%= j render 'partials/actions/bookmarks', model: @object, bookmarked: false %>"
 )
 $("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('show')
 
-$('#<%= @object.class.to_s.downcase %>-bookmark-<%= @object.id %>').remove();
-<% if current_profile.bookmarks.empty? %>
-  $('.bookmarks').html("You haven't made any bookmarks yet.");
-<% end %>
+$("#<%= @object.class.to_s.downcase %>-bookmark_<%= @object.id %>").prepend(
+  "<%= j render 'partials/bookmarks/restore' %>"
+)
+$("#<%= @object.class.to_s.downcase %>-bookmark_<%= @object.id %> button").tooltip('hide')

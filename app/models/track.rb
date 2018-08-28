@@ -10,15 +10,9 @@ class Track < ApplicationRecord
 
   validates :title, :artist_id, presence: true
 
-  default_scope { includes(:artist) }
-
   def self.with(title:, artist_id:)
     where(artist_id: artist_id).where(
       'LOWER(title) = ?', title.downcase
-    ).first_or_initialize(title: title)
-  end
-
-  def track_title
-    title.include?('/') ? CGI.escape(title) : title
+    )
   end
 end

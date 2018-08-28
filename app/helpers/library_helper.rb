@@ -16,7 +16,7 @@ module LibraryHelper
       '90'  => '3 months',
       '180' => '6 months',
       '365' => '1 year',
-      '0'   => 'All time' 
+      '0'   => 'All time'
     }
   end
 

@@ -1,21 +1,17 @@
 module Profiles
   module Playlists
-    class TracksController < Profiles::PlaylistsController
+    class TracksController < ApplicationController
+      before_action :set_playlist, :set_track, only: %i[create destroy]
+
       def create
-        check_correct_profile
-        add_track_to_playlist(playlist)
-        @page_data = {
-          tracks: playlist_tracks
-        }
+        add_track_to_playlist(@playlist)
+        set_playlist_tracks
         respond_with_js
       end
 
       def destroy
-        check_correct_profile
         delete_track_from_playlist
-        @page_data = {
-          tracks: playlist_tracks
-        }
+        set_playlist_tracks
         respond_with_js
       end
 
@@ -27,34 +23,36 @@ module Profiles
 
     private
 
-      def add_track_to_playlist(playlist)
-        playlist.playlist_tracks.create(
-          track_id:  track.id,
-          artist_id: track.artist_id
+      def set_playlist
+        @playlist = current_profile.playlists.find_by(
+          id: params[:playlist_id]
         )
       end
 
-      def track
-        @track ||= begin
-          if params[:track_id]
-            find_track
-          elsif params[:profile_track_id]
-            find_profile_track&.track
-          end
-        end
+      def set_track
+        @track = Track.find_by(id: params[:track_id])
       end
 
-      def find_track
-        Track.find_by(id: params[:track_id])
+      def add_track_to_playlist(playlist)
+        playlist.playlist_tracks.where(
+          track_id:  @track.id,
+          artist_id: @track.artist_id
+        ).first_or_create
       end
 
-      def find_profile_track
-        ProfileTrack.find_by(id: params[:profile_track_id])
+      def set_playlist_tracks
+        @tracks = paginate(playlist_tracks, 20)
+      end
+
+      def playlist_tracks
+        @playlist.playlist_tracks.includes(
+          :artist, [track: :artist]
+        ).created_asc
       end
 
       def delete_track_from_playlist
-        playlist.playlist_tracks.find_by(
-          track_id: params[:track_id]
+        @playlist.playlist_tracks.find_by(
+          track_id: @track.id
         )&.destroy
       end
 
@@ -65,7 +63,9 @@ module Profiles
       end
 
       def playlists
-        current_profile.playlists.where(id: params[:playlist_ids])
+        current_profile.playlists.where(
+          id: params[:playlist_ids]
+        )
       end
     end
   end

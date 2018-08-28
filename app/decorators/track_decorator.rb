@@ -6,6 +6,6 @@ class TrackDecorator < Draper::Decorator
   end
 
   def image
-    artist.image
+    artist.decorate.image
   end
 end

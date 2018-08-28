@@ -1,13 +1,20 @@
-#library_tags_panel.panel.library_page.center
-  
-  = render 'library/partials/panel_header'
+.card
+  .card-body
+    = render 'partials/profiles/library/panel_header'
 
-  .separator.sep_0.sep_light
+    %h5
+      %i.fas.fa-tag
+      Tags:
 
-  #library_tags_panel_content.panel_content
-
-    %h4 Tags:
-
-    .separator.sep_10.sep_default
+    .separator.default.my-2
     
-    = render 'library/partials/tags'
+    - if @tags.any?
+      .mb-2
+        - @tags.each do |tag|
+          = link_to profiles_library_tag_path(tag_name: tag[0]), class: 'tag' do
+            %strong
+              = tag[0]
+            %small
+              = "(#{tag[1]})"
+    - else
+      There are no tags.

@@ -1,4 +1,4 @@
-#sidebar.h-100.position-fixed.fixed-top
+#sidebar.h-100.position-fixed.fixed-top.z-1000
 
 	%table.table.table-sm.text-white.mt-1.mb-0
 		%tr
@@ -16,14 +16,49 @@
 					%i.fas.fa-user-circle
 					Profile
 		%tr
-			%td
-				= link_to profiles_library_path(current_profile) do
-					%i.fas.fa-music
-					Library
+			%td#sidebar-music-submenu-header
+				%i.fas.fa-caret-down.float-right
+				%i.fas.fa-music
+				Music
+		%tr
+			%td#sidebar-music-submenu.ml-3
+				%table.table.table-sm.table-hover.text-white.mb-0
+					%tr
+						%td
+							= link_to profiles_library_path(current_profile) do
+								%i.fas.fa-headphones
+								Library
+					%tr
+						%td
+							= link_to player_path do
+								%i.fas.fa-play
+								Player
+					%tr
+						%td
+							= link_to profiles_playlists_path(current_profile) do
+								%i.fas.fa-list-alt
+								Playlists
+					%tr
+						%td
+							= link_to recommendations_path do
+								%i.fas.fa-volume-up
+								Recommendations
+					%tr
+						%td
+							= link_to bookmarks_path do
+								%i.fas.fa-bookmark
+								Bookmarks
 		%tr
 			%td
 				= link_to conversations_path do
-					%i.fas.fa-comments
+					- new_conversations = current_profile.decorate.new_conversations
+					- if new_conversations.any?
+						#new-messages-counter.badge.badge-light.float-right.mr-3
+							%h6.mb-0
+								= new_conversations.length
+					%i.fas.fa-comments.position-relative
+						- if new_conversations.any?
+							%i.fas.fa-circle.text-light.position-absolute#new-message-circle
 					Conversations
 		%tr
 			%td
@@ -45,26 +80,6 @@
 				= link_to profiles_groups_path(current_profile) do
 					%i.fas.fa-users
 					Groups
-		%t
-			%td
-				= link_to player_path do
-					%i.fas.fa-play
-					Player
-		%tr
-			%td
-				= link_to profiles_playlists_path(current_profile) do
-					%i.fas.fa-list-alt
-					Playlists
-		%tr
-			%td
-				= link_to recommendations_path do
-					%i.fas.fa-volume-up
-					Recommendations
-		%tr
-			%td
-				= link_to bookmarks_path do
-					%i.fas.fa-bookmark
-					Bookmarks
 
 	%table.table-sm.table-hover.text-white.position-absolute.bottom-0.w-100.mb-2
 		%tr

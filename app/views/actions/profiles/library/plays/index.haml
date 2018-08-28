@@ -1,18 +1,17 @@
-#library_plays_panel.panel.library_page.center
-  
-  = render 'profiles/library/main/partials/panel_header'
+.card
+  .card-body
+    = render 'partials/profiles/library/panel_header'
 
-  .separator.sep_0.sep_light
+    .separator.default.mt-2.mb-3
 
-  #library_plays_panel_content.panel_content
+    %h5
+      = "Plays (#{@profile.plays_count}):"
 
-    %h4 Plays:
+    .separator.default.my-2
 
-    .separator.sep_10.sep_default
-
-    = render partial: 'profiles/library/main/partials/plays'
-
-    %hr.sep_20
-
-    .text_center
-      = paginate @plays
+    - if @plays.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'partials/profiles/library/instances/play', collection: @plays.decorate
+      = pagination
+    - else
+      There are no plays.

@@ -1,0 +1,9 @@
+.up.media
+  = image_tag @artist.image
+  .media-body
+    = link_to @artist.name, artist_path(artist_name: @artist.name)
+
+.up.media
+  .media-body
+    %i.fas.fa-music
+    = link_to 'Tracks', artists_tracks_path(artist_name: @artist.name)

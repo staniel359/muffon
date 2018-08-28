@@ -2,7 +2,8 @@ $(document).on('ready turbolinks:load', function() {
   $('#library-search-btn').click(function() {
     showLibrarySearch()
   })
-  enableLiveLibrarySearch()
+  enableLibraryLiveSearch()
+  enableLibraryScrollspy()
 });
 
 function showLibrarySearch() {
@@ -22,7 +23,7 @@ function hideLibrarySearch() {
   $('#library-search-results-wrap').html('')
 };
 
-function enableLiveLibrarySearch() {
+function enableLibraryLiveSearch() {
   var timeout = null;
   $('#library-search-form input').unbind('keyup').keyup(function(e) {
     clearTimeout(timeout);
@@ -36,3 +37,16 @@ function enableLiveLibrarySearch() {
     }, 400);
   })
 };
+
+function enableLibraryScrollspy() {
+  $('body').scrollspy({ target: '#library-scrollspy', offset: 100 })
+  $("#library-scrollspy a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 300);
+    }
+  });
+}

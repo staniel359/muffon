@@ -1,6 +1,6 @@
 $("#artist-library-action_<%= @object.id %> .action-btn").tooltip('hide')
 $("#artist-library-action_<%= @object.id %>").html(
-  "<%= j render 'partials/actions/library', artist: @object %>"
+  "<%= j render 'partials/actions/library', artist: @object, in_library: true %>"
 )
-$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})
 $("#artist-library-action_<%= @object.id %> .action-btn").tooltip('show')
+$('[data-toggle="tooltip"]').tooltip({trigger: 'hover'})

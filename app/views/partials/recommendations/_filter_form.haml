@@ -1,0 +1,17 @@
+= form_tag recommendations_path, id: 'recommendations-filter-submit-form', method: :get, remote: true do
+  .row
+    .col-12.col-md-4.mb-2.mb-md-0
+      %h6.mb-0
+        Artist:
+      = text_field_tag :artist_name, params[:artist_name], class: 'input-transp', autocomplete: 'off', data: { autocomplete_source: current_profile.profile_artists.includes(:artist).plays_count_desc.decorate.map(&:name) }
+    .col-12.col-md-4.mb-2.mb-md-0
+      %h6.mb-0
+        Tag:
+      = text_field_tag :tag_name, params[:tag_name], class: 'input-transp', autocomplete: 'off'
+    .col-12.col-md-4.mb-2.mb-md-0
+      %h6.mb-0
+        Days:
+      = text_field_tag :days, params[:days], class: 'input-transp', autocomplete: 'off'
+  = submit_tag 'Search', name: nil, class: 'd-none'
+
+%hr.my-3

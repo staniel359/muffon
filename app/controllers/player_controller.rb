@@ -1,9 +1,6 @@
 class PlayerController < ApplicationController
-  def show
-    @page_data = {
-      title: title
-    }
-  end
+  before_action :set_title, only: :show
+  def show; end
 
   def play
     set_track_vk_ids
@@ -57,8 +54,8 @@ class PlayerController < ApplicationController
 
 private
 
-  def title
-    t("player.#{params[:action]}")
+  def set_title
+    @title = t("player.#{params[:action]}")
   end
 
   def set_track_vk_ids

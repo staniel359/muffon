@@ -1,0 +1,21 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    = "Albums (#{@profile.albums_count}):"
+  #albums-order-scope.d-flex
+    .mr-3
+      = render 'partials/profiles/library/order/albums'
+    = render 'partials/profiles/library/scope/albums'
+
+.separator.default.my-2
+
+- if @albums.any?
+  .row
+    - @albums.decorate.each do |album|
+      .col-6.col-sm-4.col-lg-3.mb-3
+        = render 'partials/profiles/library/instances/album', album: album
+
+  %hr.mb-3
+
+  = pagination
+- else
+  There are no albums.

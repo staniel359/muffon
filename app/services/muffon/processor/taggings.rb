@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Taggings < Muffon::Base
+    class Taggings < Muffon::Processor::Base
       def call
         process_taggings
       end
@@ -18,12 +18,8 @@ module Muffon
       def profile_tag
         ::ProfileTag.where(
           profile_id: @args.profile_id,
-          tag_id:     tag.id
+          tag_id:     process_tag(@args.tag_name).id
         ).first_or_create
-      end
-
-      def tag
-        Muffon::Processor::Tag.call(tag_name: @args.tag_name)
       end
     end
   end

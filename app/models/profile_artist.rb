@@ -11,14 +11,4 @@ class ProfileArtist < ApplicationRecord
   has_many :playlist_tracks
 
   validates :profile_id, :artist_id, presence: true
-
-  default_scope { includes(:artist) }
-
-  def recommendations
-    profile.recommendations.where('? = any(profile_artists)', id)
-  end
-
-  def artist_image
-    image.present? ? image : 'missing_artist.png'
-  end
 end

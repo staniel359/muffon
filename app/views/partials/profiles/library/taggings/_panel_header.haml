@@ -1,13 +1,11 @@
-.panel_header
+%h5.mr-2.d-inline
+  %i.fas.fa-tags
+  Taggings:
 
-  .panel_header_left
-    %h3
-      %i.fas.fa-tags
-      = @tagging&.tag&.name || params[:name]
+- unless params[:action] == 'index'
+  .d-inline
+    = link_to profiles_library_tagging_path(tag_name: @profile_tag.tag.name), class: 'tag' do
+      %strong
+        = @profile_tag.tag.name
 
-  .panel_header_right
-    .media-left
-      %h4
-        = link_to "#{@profile.nickname} | Taggings", library_taggings_path
-    .media-right
-      = image_tag @profile.avatar.url(:xs), class: 'img_rnd'
+.separator.default.my-2

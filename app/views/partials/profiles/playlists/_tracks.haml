@@ -1,12 +1,13 @@
 - if @tracks.any?
-
-  %table.table.table-hover.table-condensed
-    = render partial: 'playlists/track', collection: @tracks
-
-  .text_center.mg_top_10
-    = paginate @tracks
-
+  %table.table.table-hover.table-sm
+    = render partial: 'partials/profiles/playlists/track', collection: @tracks.decorate
+  = paginate @tracks, params: profiles_playlists_pagination_params
 - else
-
-  This playlist is empty.
+  .my-5.d-flex.flex-column.justify-content-center.align-items-center
+    %h5
+      This playlist is empty.
+    - if current_profile.id == @playlist.profile_id
+      = button_tag class: 'btn btn-light', data: { toggle: 'modal', target: '#playlist-search-modal' } do
+        %i.fas.fa-plus
+        Add tracks
     

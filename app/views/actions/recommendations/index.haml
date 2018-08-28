@@ -1,31 +1,21 @@
-#recommendations_page.center.panel
-  .panel_header
-    %h3.d-inline Recommendations
-    .btn.btn-primary.pull-right.d-inline{onclick: 'toggleFilter();'}
-      %i.fas.fa-filter
-      Filter
+.card
+  .card-body
+    .d-flex.justify-content-between.align-items-center
+      %h4.mb-0
+        %i.fas.fa-volume-up
+        Recommendations
 
-  #recommendation_filter_panel{hidden: true}
-    .separator.sep_0.sep_light
+      = button_tag class: 'btn btn-primary', id: 'recommendations-filter-button' do
+        %i.fas.fa-filter
+        Filter
 
-    #recommendation_filter_content
-      = form_tag recommendations_path, method: :get, remote: true, onsubmit: 'showLoading();' do
-        .recommendation_filter.d-inline
-          %h4.mg_btm_5 Artist:
-          = text_field_tag :artist, params[:artist], placeholder: "Artist:", class: 'form-control'
-        .recommendation_filter.d-inline
-          %h4.mg_btm_5 Tag:
-          = text_field_tag :tag, params[:tag], placeholder: "Tag:", class: 'form-control'
-        .recommendation_filter.d-inline
-          %h4.mg_btm_5 Days:
-          = text_field_tag :days, params[:days], placeholder: "Days:", class: 'form-control'
-        = submit_tag 'Search', name: nil, style: 'display: none'
+    .separator.default.my-3
 
-  .separator.sep_0.sep_light
+    #recommendations-filter-form
+      = render 'partials/recommendations/filter_form'
 
-  #recommendation_search_results.position-relative
-    #recommendation_query
-      = render 'query'
+    #recommendation-query
+      = render 'partials/recommendations/query'
 
     #recommendations
-      = render 'recommendations'
+      = render 'partials/recommendations/recommendations'

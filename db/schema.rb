@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 22) do
+ActiveRecord::Schema.define(version: 24) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,15 +129,22 @@ ActiveRecord::Schema.define(version: 22) do
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
-    t.integer "album_ids", default: [], array: true
     t.bigint "playlist_id"
+    t.bigint "profile_track_id"
     t.bigint "track_id"
+    t.bigint "profile_artist_id"
     t.bigint "artist_id"
+    t.bigint "profile_album_id"
+    t.bigint "album_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_playlist_tracks_on_album_id"
     t.index ["artist_id"], name: "index_playlist_tracks_on_artist_id"
     t.index ["playlist_id", "track_id"], name: "index_playlist_tracks_on_playlist_id_and_track_id", unique: true
     t.index ["playlist_id"], name: "index_playlist_tracks_on_playlist_id"
+    t.index ["profile_album_id"], name: "index_playlist_tracks_on_profile_album_id"
+    t.index ["profile_artist_id"], name: "index_playlist_tracks_on_profile_artist_id"
+    t.index ["profile_track_id"], name: "index_playlist_tracks_on_profile_track_id"
     t.index ["track_id"], name: "index_playlist_tracks_on_track_id"
   end
 

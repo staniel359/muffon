@@ -1,4 +1,4 @@
-class CreateListenedArtists < ActiveRecord::Migration[5.1]
+class CreateListenedArtists < ActiveRecord::Migration[5.2]
   def change
     create_table :listened_artists do |t|
       t.belongs_to :profile, foreign_key: true

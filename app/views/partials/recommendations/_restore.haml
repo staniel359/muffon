@@ -1,0 +1,4 @@
+.position-absolute.w-100.h-100.d-flex.justify-content-center.align-items-center.z-10.flex-column#recommendation-restore{ id: params[:recommendation_id] }
+  %h5
+    Recommendation was deleted.
+  = button_to 'Restore', recommendations_restore_path(recommendation_id: params[:recommendation_id]), method: :patch, remote: true, class: 'btn btn-primary'

@@ -1,11 +1,8 @@
-- if current_profile.listened?(artist.id)
-
+- if listened
   .d-flex.flex-row-reverse.align-items-end.h-100.light
     = button_to listened_artist_path(artist_id: artist.id), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Listened", class: 'action-btn' do
       %i.fas.fa-check
-
 - else
-
   .d-flex.flex-row-reverse.align-items-end.h-100
     = button_to listened_artists_path(artist_id: artist.id), remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Mark as listened", class: 'action-btn' do
       %i.fas.fa-check

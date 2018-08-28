@@ -1,5 +1,4 @@
 #sidebar
-  z-index: 1000
   width: 50px
   background-color: $muffonDarkLight+e6
   transition: 0.3s
@@ -24,12 +23,24 @@
   @extend .input-transp
   width: 170px
   max-width: 100%
+#sidebar-music-submenu-header
+  padding: 7px 0 !important
+  cursor: pointer
+#sidebar-music-submenu table
+  margin-left: 25px
+  display: none
+#sidebar-music-submenu:hover
+  background-color: transparent
+
+#new-message-circle
+  font-size: 10px !important
+  left: 10px
+  top: 0
 
 #loading
   display: none
   color: white
   background-color: $muffonDarkLight+aa
-  z-index: 10
 
 #progress-bar
   bottom: 40px
@@ -57,10 +68,11 @@
     letter-spacing: 0.03em
   #beta-btn
     @extend .tag
-    left: 100px
+    left: 95px
     font-size: 11px !important
     background-color: $muffonLight !important
-    padding: 3px 4px !important
+    padding: 4px !important
+    line-height: 0.6 !important
   .up
     margin-right: 8px
     background-color: $muffonDarkLight
@@ -76,3 +88,4 @@
   background-color: $muffonDark+aa
   bottom: 15px
   display: none
+  width: 85px

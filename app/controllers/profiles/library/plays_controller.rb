@@ -1,29 +1,25 @@
 module Profiles
   module Library
     class PlaysController < ApplicationController
+      before_action :set_profile, :set_title
+
       def index
-        @page_data = {
-          title: title,
-          plays: paginate(plays, 20)
-        }
-        respond_with_js_and_html
+        @pagy, @plays = pagy(plays)
       end
 
     private
 
-      def title
-        t(
+      def set_title
+        @title = t(
           "profiles.library.plays.#{params[:action]}",
-          profile: profile.nickname
+          profile: @profile.nickname
         )
       end
 
-      def artists
-        profile.plays.includes(
-          profile_artist: :artist,
-          profile_track:  :track,
-          profile_album:  :album
-        ).created_desc
+      def plays
+        @profile.plays.created_desc.includes(
+          :artist, [track: :artist], :album, :profile_track
+        )
       end
     end
   end

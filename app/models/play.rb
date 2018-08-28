@@ -7,8 +7,6 @@ class Play < ApplicationRecord
   belongs_to :profile_album, optional: true, counter_cache: :plays_count
   belongs_to :album, optional: true, counter_cache: :plays_count
 
-  default_scope { includes(:artist, :album, :profile_track, :track) }
-
   validates :profile_id,
             :profile_track_id,
             :track_id,

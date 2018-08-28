@@ -1,11 +1,54 @@
-.bookmarks_page.center.panel
-  .panel_header
-    %h3 Bookmarks
+.card
+  .card-body
+    %h4 
+      %i.fas.fa-bookmark
+      Bookmarks
 
-  .separator.sep_0.sep_light
+    .separator.default.my-3
 
-  .bookmarks.panel_content
-    - if @page_data[:bookmarks].any?
-      = render partial: 'artist_bookmark', collection: @page_data[:bookmarks]
-    - else
-      You haven't made any bookmarks yet.
+    .row
+      .col-12.col-md-4
+        %h5
+          Artists:
+
+        .separator.default.my-2
+
+        - if @artist_bookmarks.any?
+          %table.table.table-hover.table-sm
+            = render partial: 'artist_bookmark', collection: @artist_bookmarks.decorate
+          .text-right
+            = link_to 'View more...', bookmarks_artists_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no bookmarks.
+
+        %hr.my-3.d-md-none
+
+      .col-12.col-md-4
+        %h5
+          Albums:
+
+        .separator.default.my-2
+
+        - if @album_bookmarks.any?
+          %table.table.table-hover.table-sm
+            = render partial: 'album_bookmark', collection: @album_bookmarks.decorate
+          .text-right
+            = link_to 'View more...', bookmarks_albums_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no bookmarks.
+
+        %hr.my-3.d-md-none
+
+      .col-12.col-md-4
+        %h5
+          Tracks:
+
+        .separator.default.my-2
+
+        - if @track_bookmarks.any?
+          %table.table.table-hover.table-sm
+            = render partial: 'track_bookmark', collection: @track_bookmarks.decorate
+          .text-right
+            = link_to 'View more...', bookmarks_tracks_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no bookmarks.

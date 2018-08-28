@@ -1,13 +1,12 @@
-#library_tag_panel.panel.library_page.center
+.card
+  .card-body
+    = render 'partials/profiles/library/panel_header'
 
-  = render 'panel_header'
+    = render 'partials/profiles/library/taggings/panel_header'
 
-  .separator.sep_0.sep_light
-  
-  #library_tag_panel_content.panel_content
-    %h4
-      = "Tracks (#{@tagging.track_taggings_count}):"
+    %h5
+      = "Tracks (#{@profile_tag.track_taggings_count}):"
 
-    .separator.sep_10.sep_default
+    .separator.default.my-2
 
-    = render 'tracks', taggings: @taggings
+    = render 'partials/profiles/library/taggings/tracks', taggings: @taggings

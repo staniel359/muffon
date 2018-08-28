@@ -1,7 +1,8 @@
-$('#conversation_messages > table').append("<%= j render @message %>")
-$('input[id="message_content"]').val('')
-$('#message_flash').html("<%= j render 'muffon/flash_messages' %>")
-<% if @message.present? %>
-  $('#message_modal_content').html("<%= j render 'muffon/modals/message/sent' %>")
+<% if @message.persisted? %>
+  $('#conversation-messages').append(
+    "<%= j render 'partials/conversations/messages/message', message: @message %>"
+  )
+  $('input[id="message_content"]').val('')
+  scrollToConversationBottom();
+  $('#message-modal .modal-content').html("<%= j render 'modals/messages/sent' %>");
 <% end %>
-goToConversationBottom();

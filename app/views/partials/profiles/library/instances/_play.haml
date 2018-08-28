@@ -2,7 +2,7 @@
   %td.media.align-items-center{ id: "track_#{play.track_id}" }
     #love-btn.mr-2{ id: play.profile_track_id }
       = render 'partials/profiles/library/tracks/love_btn', profile_track: play.profile_track
-    .mr-2.list-play-btn-cover-wrap.position-relative.d-flex.justify-content-center.align-items-center
+    .mr-2.list-play-btn-cover-wrap
       = render 'partials/player/list_play_btn', track: play.track.decorate
       = image_tag play.album_cover, class: 'img-sm'
     .media-body.d-flex.justify-content-between.align-items-center

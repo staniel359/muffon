@@ -20,7 +20,7 @@ module Recommendations
 
     def time_scoped_profile_artists
       profile_artists.joins(:plays).where(
-        'plays.created_at > ?', @args.days.days.ago
+        'plays.created_at > ?', @args.days.to_i.days.ago
       ).group('profile_artists.id').select(
         'profile_artists.*, COUNT(*) as plays_count'
       )

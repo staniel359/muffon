@@ -1,34 +1,27 @@
-.similar_artist.text_center
+.card.dark.mb-3.similar-artist-card
+	.card-body.row
+		.col-12.col-sm-4.col-md-12.mb-2
+			.position-relative
+				= render 'partials/artists/actions', artist: similar_artist
+				= link_to artist_path(similar_artist.name) do
+					= image_tag similar_artist.image, class: 'rounded-circle img-fluid position-relative w-100'
 
-	#similar_up.artist.artist_190
-		= render 'actions', artist: similar_artist
-		= link_to artist_path(similar_artist.artist_name) do
-			.mg_btm_5
-				= image_tag similar_artist.artist_image, class: 'img_rnd'
-			%h4.mg_btm_5
+		.col-12.col-sm-8.col-md-12
+			%h4.mb-1
 				%strong
-					= similar_artist.name
+					= link_to similar_artist.name, artist_path(similar_artist.name)
+			.mb-2
+				%h6.d-inline.mr-2
+					%i.fas.fa-user
+					= number_with_delimiter(similar_artist.lastfm_listeners_count)
+				%h6.d-inline
+					%i.fas.fa-music
+					= number_with_delimiter(similar_artist.lastfm_plays_count)
+			#tags-wrap
+				%i.fas.fa-tags
+				- similar_artist.top_tags.pluck(:name).each do |tag_name|
+					= link_to tag_name, tag_path(tag_name), class: 'tag'
 
-	#similar_down
+			.separator.default.my-2
 
-		#similar_stats.mg_btm_10
-
-			%h5.d-inline
-				%i.fas.fa-user
-				= number_with_delimiter(similar_artist.listeners)
-			%h5.d-inline
-				%i.fas.fa-music
-				= number_with_delimiter(similar_artist.playcount)
-
-		#similar_tags.mg_btm_5
-			- similar_artist.artist_tags.first(5).map do |tag|
-				.d-inline
-					= link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
-						%strong
-							= tag.name
-
-	%hr.sep_10.sep_default
-
-	#similar_bio
-
-		= render 'artists/description', artist: similar_artist, limit: 50
+			= render 'partials/artists/description', artist: similar_artist

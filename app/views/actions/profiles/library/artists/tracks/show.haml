@@ -1,27 +1,33 @@
-#library_artist_track_panel.panel.library_page.center
-  = render 'library_artists/partials/panel_header'
+.card
+  .card-body
+    = render 'partials/profiles/library/artists/tracks/panel_header'
 
-  .separator.sep_0.sep_light
+    %h5
+      = "Albums (#{@track.profile_album_ids.length}):"
 
-  .panel_content.panel_content_wide
-    #library_artist_track_panel_left
-      %h4
-        = "Albums (#{@track.profile_albums.count}):"
+    .separator.default.my-2
 
-      .separator.sep_10.sep_default
+    - if @albums.any?
+      .row
+        - @albums.each do |album|
+          .col-3
+            = render 'partials/profiles/library/instances/artist/album', album: album
+      .text-right
+        = link_to 'View more...', profiles_library_artists_tracks_albums_path, class: 'btn btn-primary btn-sm'
+    - else
+      There are no albums.
 
-      .albums_content.panel_content_wide
-        %table.table.table-hover
-          = render partial: 'library_artists/partials/album', collection: @albums.first(3)
+    %hr.my-3
 
-    #library_artist_track_panel_right
-      %h4
-        = link_to "Plays (#{@track.playcount}):", library_artist_track_plays_path
+    %h5
+      = "Plays (#{@track.plays_count}):"
 
-      .separator.sep_10.sep_default
+    .separator.default.my-2
 
-      #library_artist_track_plays
-        %table.table.table-hover.table-condensed
-          = render partial: 'library_artists/partials/play', collection: @plays.first(5)
-        .text-right.mg_top_10
-          = link_to 'View more...', library_artist_track_plays_path, class: 'btn btn-primary btn-sm' if @track.playcount > 5
+    - if @plays.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'partials/profiles/library/instances/artist/play', collection: @plays
+      .text-right
+        = link_to 'View more...', profiles_library_artists_tracks_plays_path, class: 'btn btn-primary btn-sm'
+    - else
+      There are no plays.

@@ -11,7 +11,7 @@ module Bandcamp
 
       {
         title:        title,
-        artist:       artist,
+        artist:       album_artist_data,
         link:         link,
         cover:        cover,
         release_date: release_date,
@@ -42,7 +42,11 @@ module Bandcamp
       RestClient.get(link)
     end
 
-    def artist
+    def album_artist_data
+      { name: artist_name }
+    end
+
+    def artist_name
       parsed_page.css('#name-section').css(
         'span[itemprop="byArtist"]'
       ).text.strip
@@ -61,7 +65,9 @@ module Bandcamp
     end
 
     def tracks
-      Bandcamp::Tracks.call(script: parsed_page.css('script'))
+      Bandcamp::Tracks.call(
+        script: parsed_page.css('script')
+      ).map { |t| t.merge(artist: album_artist_data) }
     end
   end
 end

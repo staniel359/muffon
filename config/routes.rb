@@ -32,28 +32,33 @@ Rails.application.routes.draw do
   namespace :profiles do
     scope '/:profile_id' do
       resources :groups, only: :index
-      resources :playlists, param: 'playlist_name'
       namespace :playlists do
-        get 'search_tracks'
+        get '/search', to: 'search#index'
+        namespace :search do
+          get 'show_artist_tracks'
+          get 'show_artist_albums'
+          get 'show_album_tracks'
+        end
+        scope ':playlist_id' do
+          resources :profile_tracks, only: %i[create destroy], param: 'profile_track_id'
+          resources :tracks, only: %i[create destroy], param: 'track_id'
+          resources :profile_albums, only: %i[create destroy], param: 'profile_album_id'
+          resources :albums, only: %i[create destroy], param: 'album_id'
+          resources :profile_artists, only: %i[create destroy], param: 'profile_artist_id'
+        end
+        namespace :profile_tracks do
+          get 'add_to_playlists'
+        end
         namespace :tracks do
           get 'add_to_playlists'
         end
-        scope ':playlist_name' do
-          resources :tracks, only: %i[create destroy], param: 'track_id'
-          resources :artists, only: %i[create destroy], param: 'artist_id'
-          resources :albums, only: %i[create destroy], param: 'album_id'
-        end
       end
+      resources :playlists, except: %i[new edit], param: 'playlist_name'
       get '/library', to: 'library#show'
       namespace :library do
         get 'scope'
         patch 'scope'
         resources :artists, only: %i[index show create], param: 'artist_name'
-        namespace :artists do
-          scope '/:artist_id' do
-            get 'show_tracks'
-          end
-        end
         namespace :artists do
           scope ':artist_name' do
             resources :tracks, only: %i[index show], param: 'track_title'
@@ -68,7 +73,6 @@ Rails.application.routes.draw do
               scope '/:album_title' do
                 get 'tracks'
                 get 'plays'
-                get 'show_tracks'
               end
             end
             resources :plays, only: :index
@@ -100,10 +104,6 @@ Rails.application.routes.draw do
     post '/follow', to: 'relationships#create'
     delete '/unfollow', to: 'relationships#destroy'
   end
-  resources :tracks, only: %i[] do
-    get 'message_modal'
-    get 'playlists_modal'
-  end
   resources :artists, only: :show, param: 'artist_name'
   namespace :artists do
     scope '/:artist_name' do
@@ -113,14 +113,12 @@ Rails.application.routes.draw do
       get 'tags'
       get 'listeners'
       get 'plays'
-      scope module: 'artists' do
-        resources :tracks, only: :index
-        resources :albums, only: %i[index show], param: 'album_title'
-        namespace :albums do
-          scope '/:album_title' do
-            get 'tags'
-            get 'wiki'
-          end
+      resources :tracks, only: :index
+      resources :albums, only: %i[index show], param: 'album_title'
+      namespace :albums do
+        scope '/:album_title' do
+          get 'tags'
+          get 'wiki'
         end
       end
     end
@@ -135,7 +133,7 @@ Rails.application.routes.draw do
   end
   resources :labels, only: %i[index show], param: 'label_name'
   resources :playlists, only: :index
-  resources :groups
+  resources :groups, except: %i[new edit], param: 'group_id'
   namespace :groups do
     scope '/:group_id' do
       post '/join', to: 'memberships#create'
@@ -143,9 +141,16 @@ Rails.application.routes.draw do
     end
   end
   resources :bookmarks, only: %i[index create destroy], param: 'model_type/:model_id'
+  namespace :bookmarks do
+    get 'artists'
+    get 'albums'
+    get 'tracks'
+  end
   resources :listened_artists, only: %i[create destroy], param: 'artist_id'
   resources :conversations, only: %i[index show destroy], param: 'conversation_id'
   scope module: 'conversations' do
+    get 'load_messages'
+    get 'read_messages'
     resources :messages, only: :create, param: 'message_id'
     namespace :messages do
       get 'open_modal'
@@ -177,4 +182,6 @@ Rails.application.routes.draw do
       patch 'restore'
     end
   end
+
+  match '*path', :to => 'application#not_found', via: :all
 end

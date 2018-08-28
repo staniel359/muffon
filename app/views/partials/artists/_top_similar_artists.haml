@@ -1,14 +1,14 @@
-%h4
-  = link_to 'Similar artists:', artists_similar_artists_path(artist_name: artist.name)
+%h5
+  Similar artists:
 
-.separator.default.mt2.mb-3
+.separator.default.my-2
 
 .row
-  - artist.similar_artists.each_with_index do |similar_artist, index|
-    .mb-2.text-center.col-6.col-sm-4.col-md-3{class: ('d-sm-none d-md-block' if index == 3)}
+  - artist.similar_artists.each do |similar_artist|
+    .mb-2.text-center.col-6.col-sm-4.col-md-3
       .position-relative
         .d-none.d-lg-block.d-xl-block
-          = render 'partials/artists/actions', artist: similar_artist
+          = render 'partials/artists/actions', artist: similar_artist.decorate
         = link_to artist_path(artist_name: similar_artist.name) do
           .mb-1
             = image_tag similar_artist.image, class: 'rounded-circle img-fluid position-relative'

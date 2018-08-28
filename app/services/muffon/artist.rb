@@ -31,40 +31,35 @@ module Muffon
 
     def call_service(scope)
       services_hash[scope].call(
-        artist_name: @args.artist_name,
-        limit: limits[scope]
+        artist_name: @args.artist_name
       )
     end
 
     def services_hash
       {
-        'base'       => LastFM::Artist,
-        'top_tracks' => LastFM::Artist::Tracks,
-        'top_albums' => LastFM::Artist::Albums
+        'base'       => ::LastFM::Artist,
+        'top_tracks' => ::LastFM::Artist::Tracks,
+        'top_albums' => ::LastFM::Artist::Albums
       }
     end
 
-    def limits
-      { 'top_tracks' => 10, 'top_albums' => 4 }
-    end
-
     def top_tracks_hash
-      return {} unless artist_data[:top_tracks][:data].present?
+      return {} unless artist_data[:top_tracks].present?
 
       {
-        top_tracks:            artist_data[:top_tracks][:data],
+        top_tracks:            artist_data[:top_tracks].first(10),
         top_track_plays_count: top_track_plays_count
       }
     end
 
     def top_track_plays_count
-      artist_data[:top_tracks][:data].first[:lastfm_plays_count]
+      artist_data[:top_tracks].first[:lastfm_plays_count]
     end
 
     def top_albums_hash
       return {} unless artist_data[:top_albums].present?
 
-      { top_albums: artist_data[:top_albums][:data] }
+      { top_albums: artist_data[:top_albums].first(4) }
     end
   end
 end

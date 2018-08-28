@@ -4,7 +4,9 @@ $(document).on('ready turbolinks:load', function() {
   $('iframe').attr('src', '')
   enableAvatarUploading()
   enableCountryNamesAutocomplete()
-  enableLibraryScrollspy()
+  $('#scroll-top-btn').click(function(e) {
+    $('html, body').animate({scrollTop: 0}, 300);
+  })
 });
 
 $(window).scroll(function() {
@@ -26,19 +28,16 @@ function enableScrollToTopButton() {
   } else {
     $('#scroll-top-btn').removeClass('position-absolute').addClass('position-fixed')
   }
-
-  $('#scroll-top-btn').click(function() {
-    $('html, body').animate({ scrollTop: 0 }, 300);
-    return true;
-  })
 };
 
 function enableAvatarUploading() {
-  $('#profile_avatar').change(function() {
+  $('#profile_avatar, #group_avatar').change(function() {
     if (this.files && this.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-        $('#profile-avatar-preview').attr('src', e.target.result).width(110);
+        $('#profile-avatar-preview, #group-avatar-preview').attr(
+          'src', e.target.result
+        ).width(110);
         $('#profile_remote_avatar_url').remove();
       };
       reader.readAsDataURL(this.files[0]);
@@ -51,16 +50,3 @@ function enableCountryNamesAutocomplete() {
     source: $('#countries_list').data('autocomplete-source')
   })
 };
-
-function enableLibraryScrollspy() {
-  $('body').scrollspy({ target: '#library-scrollspy', offset: 100 })
-  $("#library-scrollspy a").on('click', function(event) {
-    if (this.hash !== "") {
-      event.preventDefault();
-      var hash = this.hash;
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 300);
-    }
-  });
-}

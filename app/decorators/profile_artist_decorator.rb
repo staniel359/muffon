@@ -8,4 +8,8 @@ class ProfileArtistDecorator < Draper::Decorator
   def image
     artist.decorate.image
   end
+
+  def in_playlist?
+    profile_track_ids.length == playlist_track_ids.length
+  end
 end

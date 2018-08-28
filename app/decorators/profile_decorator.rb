@@ -49,18 +49,9 @@ class ProfileDecorator < Draper::Decorator
     ).includes(:tag)
   end
 
-  def present_in_library?(artist_id)
-    profile_artists.find_by(artist_id: artist_id).present?
-  end
-
-  def bookmarked?(model_type, model_id)
-    bookmarks.find_by(
-      bookmarkable_type: model_type.to_s.remove('Decorator'),
-      bookmarkable_id:   model_id
-    ).present?
-  end
-
-  def listened?(artist_id)
-    listened_artists.find_by(artist_id: artist_id).present?
+  def new_conversations
+    Message.where.not(profile_id: id).where(
+      conversation_id: conversations.pluck(:id), new: true
+    ).pluck(:conversation_id).uniq
   end
 end

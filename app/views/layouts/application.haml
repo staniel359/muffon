@@ -11,13 +11,14 @@
 
   %body
 
-    #loading.position-fixed.w-100.h-100.top-0
+    #loading.position-fixed.w-100.h-100.top-0.z-100
       .d-flex.align-items-center.justify-content-center.w-100.h-100
         %i.fas.fa-circle-notch.fa-spin.fa-2x.position-fixed
 
     - unless start_page?
 
-      = render 'partials/upbar'
+      #upbar-wrap
+        = render 'partials/upbar'
 
     - if logged_in?
 
@@ -31,8 +32,8 @@
           = yield
     = render 'partials/progress_bar' if logged_in?
 
-    #playlists_modal_wrap
-    #message_modal_wrap
+    #playlists-modal-wrap
+    #message-modal-wrap
 
     = render 'partials/player/player'
     = render 'partials/footer'

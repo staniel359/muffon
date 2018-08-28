@@ -86,10 +86,10 @@ en:
   groups:
     index: Groups
     new: Create a group
-    show: "%{group_name} | Groups"
+    show: "%{group} | Groups"
   conversations:
     index: Conversations
-    show: Conversation with %{other_profile}
+    show: Conversation with %{other_member}
   artists:
     show: "%{artist}"
     images: "%{artist} images"
@@ -107,6 +107,9 @@ en:
       index: "%{artist} tracks"
   bookmarks:
     index: Bookmarks
+    artists: Artist bookmarks
+    albums: Album bookmarks
+    tracks: Track bookmarks
   labels:
     index: Labels
     show: "%{label} | Labels"

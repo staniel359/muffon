@@ -1,4 +1,4 @@
-class CreateProfileTracks < ActiveRecord::Migration[5.1]
+class CreateProfileTracks < ActiveRecord::Migration[5.2]
   def change
     create_table :profile_tracks do |t|
       t.belongs_to :profile,        foreign_key: true

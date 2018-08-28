@@ -1,0 +1,8 @@
+.dropdown
+  = button_tag class: 'btn-transp dropdown-toggle text-white', data: { toggle: 'dropdown' } do
+    %i.far.fa-calendar-alt
+    = scope_text('tracks')
+  .dropdown-menu.dropdown-menu-right
+    - scopes_hash.each do |scope_value, scope_name|
+      .dropdown-item
+        = button_to scope_name, profiles_library_tracks_path(scope: scope_value, order: params[:order], page: params[:page]), class: 'btn-transp', method: :get, remote: true

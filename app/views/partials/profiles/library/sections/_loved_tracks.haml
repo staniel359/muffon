@@ -1,11 +1,10 @@
 %h5
-  %i.fas.fa-heart.mx-1
   = "Loved tracks (#{@profile.loved_tracks.count}):"
 
 .separator.default.my-2
 
 - if @tracks[:loved].any?
-  %table.table.table-hover.table-condensed
+  %table.table.table-hover.table-sm
     = render partial: 'partials/profiles/library/instances/loved_track', collection: @tracks[:loved]
   .text-right
     = link_to 'View more...', profiles_library_loved_tracks_path, class: 'btn btn-primary btn-sm'

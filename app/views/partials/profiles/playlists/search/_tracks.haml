@@ -1,0 +1,11 @@
+%hr.mt-1
+
+%table.table.table-sm
+  - @tracks.decorate.each do |track|
+    %tr
+      %td.media.align-items-center
+        .mr-2#playlist-add-track-btn{ id: track.track_id }
+          = render 'partials/profiles/playlists/track/add_btn', track: track
+        .media-body
+          %h6.mb-0
+            = link_to track.title, profiles_library_artists_track_path(artist_name: track.artist_name, track_title: track.title)

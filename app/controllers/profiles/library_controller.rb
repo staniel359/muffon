@@ -27,7 +27,9 @@ module Profiles
     end
 
     def artists
-      scoped_collection('artists').limit(8).decorate
+      scoped_collection('artists').includes(
+        :artist
+      ).limit(8).decorate
     end
 
     def scoped_collection(collection_name)
@@ -39,7 +41,9 @@ module Profiles
     end
 
     def albums
-      scoped_collection('albums').limit(8).decorate
+      scoped_collection('albums').includes(
+        :album, :artist
+      ).limit(8).decorate
     end
 
     def tracks
@@ -51,27 +55,40 @@ module Profiles
     end
 
     def top_tracks
-      scoped_collection('tracks').limit(10).decorate
+      scoped_collection('tracks').includes(
+        :artist, [track: :artist]
+      ).limit(10).decorate
     end
 
     def loved_tracks
-      @profile.profile_tracks.loved.created_desc.limit(5).decorate
+      @profile.profile_tracks.loved.loved_desc.includes(
+        :artist, [track: :artist]
+      ).limit(5).decorate
     end
 
     def new_tracks
-      @profile.profile_tracks.created_desc.limit(5).decorate
+      @profile.profile_tracks.created_desc.includes(
+        :artist, [track: :artist]
+      ).limit(5).decorate
     end
 
     def plays
-      @profile.plays.created_desc.limit(10).decorate
+      @profile.plays.created_desc.includes(
+        :artist, [track: :artist], :album, :profile_track
+      ).limit(10).decorate
     end
 
     def tags
-      ::Library::ArtistTags.call(profile_id: @profile.id)
+      ::Library::ArtistTags.call(
+        profile_id: @profile.id,
+        limit:      15
+      )
     end
 
     def taggings
-      @profile.profile_tags.includes(:tag).taggings_count_desc
+      @profile.profile_tags.includes(
+        :tag
+      ).taggings_count_desc.limit(15)
     end
 
     def change_default_scope

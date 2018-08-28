@@ -1,6 +1,5 @@
 .d-flex.justify-content-between.align-items-center
   %h5.mb-0
-    %i.fas.fa-dot-circle.mx-1
     Top albums:
   #albums-scope.d-flex.align-items-center
     .mr-2
@@ -8,7 +7,7 @@
     #albums-scope-save-btn
       = render 'partials/profiles/library/scope/save_btn', collection: 'albums'
 
-.separator.default.mt-2.mb-3
+.separator.default.my-2
 
 - if @albums.any?
   .row

@@ -1,11 +1,19 @@
-.up
+.up.media
   = link_to @profile do
     = image_tag @profile.avatar.url(:sm)
 
 .up.media
   .media-body
-    %i.fas.fa-user
-    = link_to 'Artists', profiles_library_artists_path
+    = link_to profiles_library_path do
+      %i.fas.fa-headphones
+      - if params[:action] == 'index'
+        Library
+
+.up.media
+  .media-body
+    = link_to profiles_library_artists_path do
+      %i.fas.fa-user
+      Artists
 
 - if params[:action] == 'show'
 

@@ -1,8 +1,0 @@
-<% if @tracks.any? || @artists.any? || @albums.any? %> 
-  $('#playlist_search_results').html("<%= j render 'search_results' %>")
-  $('#up_search > form > input').val('')
-<% elsif params[:q].present? %>
-  $('#playlist_search_results').html("Nothing was found.")
-<% else %>
-  $('#playlist_search_results').html('')
-<% end %>

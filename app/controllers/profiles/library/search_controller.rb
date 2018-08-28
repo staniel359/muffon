@@ -1,6 +1,8 @@
 module Profiles
   module Library
     class SearchController < ApplicationController
+      before_action :set_profile
+
       def index
         @artists = search_artists
         @albums = search_albums
@@ -9,8 +11,6 @@ module Profiles
       end
 
     private
-
-      def set_title; end
 
       def search_artists
         search_data[:artists].decorate

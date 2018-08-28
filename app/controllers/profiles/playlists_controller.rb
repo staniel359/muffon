@@ -1,98 +1,76 @@
 module Profiles
   class PlaylistsController < ApplicationController
+    before_action :set_profile
+    before_action :set_new_playlist, only: %i[index create]
+    before_action :set_playlist, :check_correct_profile,
+                  only: %i[show update destroy]
+    before_action :set_title
+
     def index
-      @page_data = {
-        title:        title,
-        profile:      profile,
-        playlists:    playlists,
-        new_playlist: new_playlist
-      }
-      respond_with_js_and_html
+      @playlists = paginate(playlists, 20)
     end
 
     def create
-      check_correct_profile
-      if new_playlist.save
-        redirect_to new_playlist
+      if @new_playlist.update(playlist_params)
+        redirect_to_playlist
       else
         respond_with_js
       end
     end
 
     def show
-      @page_data = {
-        title:    title,
-        playlist: playlist,
-        tracks:   playlist_tracks
-      }
-    end
-
-    def edit
-      check_correct_profile
-      @page_data = {
-        title:    title,
-        playlist: playlist
-      }
+      @tracks = paginate(playlist_tracks, 20)
     end
 
     def update
-      check_correct_profile
-      @page_data = {
-        playlist: playlist
-      }
+      if @playlist.update(playlist_params)
+        redirect_to @playlist
+      else
+        respond_with_js
+      end
     end
 
     def destroy
-      check_correct_profile
-      playlist&.destroy
-      redirect_to profile_playlists_path(id: current_profile.id)
-    end
-
-    def search_tracks
-      @page_data = search_tracks_data
-      respond_with_js
+      @playlist&.destroy
+      redirect_to profiles_playlists_path(current_profile)
     end
 
   private
 
-    def title
-      t(
-        "playlists.#{params[:action]}",
-        profile:  profile.nickname,
-        playlist: playlist&.name
+    def set_title
+      @title = t(
+        "profiles.playlists.#{params[:action]}",
+        profile:  @profile.nickname,
+        playlist: @playlist&.name
       )
     end
 
-    def playlist
-      @playlist ||= profile.playlists.find_by(
+    def set_playlist
+      @playlist = @profile.playlists.find_by(
         name: params[:playlist_name]
       )
     end
 
-    def playlists
-      paginate(profile.playlists.created_desc, 20)
+    def set_new_playlist
+      @new_playlist = current_profile.playlists.new
     end
 
-    def new_playlist
-      current_profile.playlists.new
+    def playlists
+      @profile.playlists.created_desc
     end
 
     def playlist_params
       params.require(:playlist).permit(:profile_id, :name)
     end
 
-    def playlist_tracks
-      paginate(
-        playlist.playlist_tracks.includes(
-          :track, :artist, :album
-        ).created_desc, 20
-      )
+    def redirect_to_playlist
+      redirect_to profiles_playlist_path(playlist_name: @new_playlist.name)
     end
 
-    def search_tracks_data
-      Library::Search.call(
-        profile_id: current_profile.id, q: params[:q]
-      )
+    def playlist_tracks
+      @playlist.playlist_tracks.includes(
+        :artist, [track: :artist], :album
+      ).created_asc
     end
   end
 end

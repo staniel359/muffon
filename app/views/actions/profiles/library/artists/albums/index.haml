@@ -1,16 +1,20 @@
-#library_artist_albums_panel.panel.library_page.center
-  = render 'library_artists/partials/panel_header'
+.card
+  .card-body
+    = render 'partials/profiles/library/artists/panel_header'
 
-  .separator.sep_0.sep_light
+    %h5
+      = "Albums (#{@artist.albums_count}):"
 
-  .panel_content
-    %h4
-      = "Albums (#{@artist.profile_albums.count}):"
+    .separator.default.my-2
 
-    .separator.sep_10.sep_default
+    - if @albums.any?
+      .row
+        - @albums.decorate.each do |album|
+          .col-6.col-sm-4.col-lg-3.mb-2
+            = render 'partials/profiles/library/instances/artist/album', album: album
 
-    .panel_content_wide
-      = render partial: 'library_artists/partials/album', collection: @albums
+      %hr.mb-3
 
-    .text_center.mg_top_10
-      = paginate @albums
+      = pagination
+    - else
+      There are no albums.

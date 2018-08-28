@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Albums < Muffon::Base
+    class Albums < Muffon::Processor::Base
       def call
         process_albums
       end
@@ -18,10 +18,7 @@ module Muffon
       end
 
       def process_album(album)
-        Muffon::Processor::Album.call(
-          artist_id: @args.artist_id,
-          album:     album
-        )
+        Muffon::Processor::Album.call(album: album)
       end
     end
   end

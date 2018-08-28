@@ -1,3 +1,3 @@
-$("*[id*=follow_button_<%= params[:following_id] %>]").each(function(){
-  $(this).html("<%= j render 'follow_button', profile: params[:following_id] %>")
-})
+$("*#follow-button_<%= params[:profile_id] %>").html(
+  "<%= j render 'partials/contacts/relationships/follow_button', profile_id: params[:profile_id] %>"
+)

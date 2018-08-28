@@ -1,4 +1,4 @@
-class CreatePlays < ActiveRecord::Migration[5.1]
+class CreatePlays < ActiveRecord::Migration[5.2]
   def change
     create_table :plays do |t|
       t.belongs_to :profile,        foreign_key: true

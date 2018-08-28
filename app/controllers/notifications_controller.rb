@@ -1,13 +1,11 @@
 class NotificationsController < ApplicationController
-  def index
-    @page_data = {
-      title: title
-    }
-  end
+  before_action :set_title
+
+  def index; end
 
 private
 
-  def title
-    t("notifications.#{params[:action]}")
+  def set_title
+    @title = t("notifications.#{params[:action]}")
   end
 end

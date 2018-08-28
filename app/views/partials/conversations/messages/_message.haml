@@ -1,47 +1,19 @@
-%tr
-  %td.message
+.message-wrap.mb-2.d-flex{ class: ('flex-row-reverse' if message.sent_from(current_profile.id)) }
+  .message.media#message{ id: message.id }
+    - if message.new && !message.sent_from(current_profile.id)
+      = hidden_field_tag :new_message_id, message.id
+    .mt-1{ class: ('order-2' if message.sent_from(current_profile.id)) }
+      = image_tag message.profile.avatar.url(:xs), class: 'rounded-circle'
+    .media-body.card.dark.px-3.py-2.mx-2
+      %h6
+        = message.content
 
-    .media-left
+      - if message.track_ids.any?
+        %table.table.table-sm
+          = render partial: 'partials/conversations/messages/track', collection: message.tracks
 
-      - if message.profile.present?
+      .small.text-muted
+        = message.created_at.strftime('%e %b %Y, %H:%M')
 
-        = link_to message.profile do
-          = image_tag message.profile.avatar.url(:sm), class: 'img_rnd'
-
-      - else
-
-        = image_tag 'avatar_default', class: 'img_rnd img_50'
-
-    .media-body
-
-      .text-muted.pull-right.text_right
-        %h6
-          = l message.created_at, format: "%e %b %Y"
-        %h6
-          = l message.created_at, format: "%H:%M"
-
-      %h5.mg_btm_5
-
-        - if message.profile.present?
-
-          = link_to message.profile.nickname, message.profile
-
-        - else
-
-          .text-muted
-            Deleted Profile
-
-      - if message.content.present?
-
-        %h4.mg_btm_5
-          = message.content
-
-      - if message.track_ids.present?
-
-        %table.table.message_content.table-condensed
-
-          - message.track_ids.map do |track_id|
-
-            - track = Track.find_by(id: track_id)
-
-            = render 'messages/track', track: track
+  .message-status
+    = render 'partials/conversations/messages/status', new: message.new

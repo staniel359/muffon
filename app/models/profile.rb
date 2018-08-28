@@ -53,6 +53,18 @@ class Profile < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  def artist_bookmarks
+    bookmarks.where(bookmarkable_type: 'Artist')
+  end
+
+  def album_bookmarks
+    bookmarks.where(bookmarkable_type: 'Album')
+  end
+
+  def track_bookmarks
+    bookmarks.where(bookmarkable_type: 'Track')
+  end
+
   def conversations
     Conversation.where(
       'sender_id = :self OR recipient_id = :self', self: id
@@ -71,7 +83,9 @@ class Profile < ApplicationRecord
   end
 
   def follow(profile_id)
-    active_relationships.create(following_id: profile_id)
+    active_relationships.where(
+      following_id: profile_id
+    ).first_or_create
   end
 
   def unfollow(profile_id)

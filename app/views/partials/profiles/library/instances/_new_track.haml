@@ -2,18 +2,18 @@
   %td.media.align-items-center{ id: "track_#{new_track.track_id}" }
     #love-btn.mr-2{ id: new_track.id }
       = render 'partials/profiles/library/tracks/love_btn', profile_track: new_track
-    .mr-2.list-play-btn-cover-wrap.position-relative.d-flex.justify-content-center.align-items-center
+    .mr-2.list-play-btn-cover-wrap
       = render 'partials/player/list_play_btn', track: new_track.track.decorate
       = image_tag new_track.image, class: 'img-sm'
     .media-body.d-flex.justify-content-between.align-items-center
-      #new-track-data
+      #new-track-data.flex-fill
         %h6.mb-0
           %strong
             = link_to new_track.title, profiles_library_artists_track_path(artist_name: new_track.artist_name, track_title: new_track.title)
         %h6.mb-0
           = link_to new_track.artist_name, profiles_library_artist_path(profile_id: @profile.id, artist_name: new_track.artist_name)
-        .d-flex.align-items-center
-          .mr-1.track-bar{ style: "width: #{library_width_of(new_track) + 2}%" }
+        .track-bar-wrap
+          .track-bar{ style: "width: #{library_width_of(new_track) + 2}%" }
           = link_to number_with_delimiter(new_track.plays_count), profiles_library_artists_tracks_plays_path(artist_name: new_track.artist_name, track_title: new_track.title)
       #new-track-options.d-flex.flex-row.align-items-center
         .d-none.d-sm-block

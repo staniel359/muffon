@@ -1,17 +1,10 @@
-.up
-  .media-right
+.up.media
+  .media-body
+    %i.fas.fa-users
     = link_to 'Groups', groups_path
 
-- if params[:action] == 'new'
-
-  .up
-    .media-right
-      = link_to 'New', new_group_path
-
-- elsif params[:action] == 'show'
-
-  .up
-    .media-left
-      = image_tag @group.avatar.url(:xs)
-    .media-right
-      = link_to @group.name, group_path
+- if params[:action] == 'show'
+  .up.media
+    = image_tag @group.avatar.url(:sm)
+    .media-body
+      = link_to @group.name, @group

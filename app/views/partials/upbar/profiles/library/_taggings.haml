@@ -1,58 +1,33 @@
-- if params[:action] == 'index'
+.up.media
+  = link_to @profile do
+    = image_tag @profile.avatar.url(:sm)
 
-  .up
-    .media-left
-      = link_to image_tag(@profile.avatar.url(:md)), profile_path
-    .media-right
-      = link_to "#{@profile.nickname}", profile_path
-
-  .up
-    .media-right
+.up.media
+  .media-body
+    = link_to profiles_library_path do
       %i.fas.fa-headphones
-      = link_to 'Library', library_path
+      - if params[:action] == 'index'
+        Library
 
-  .up
-    .media-right
+.up.media
+  .media-body
+    = link_to profiles_library_taggings_path do
       %i.fas.fa-tags
-      = link_to 'Taggings', library_taggings_path
+      - if params[:action].in?(%[index show])
+        Taggings
 
-- elsif params[:action].in?(%w[show artists albums tracks])
+- unless params[:action] == 'index'
+  .up.media
+    .media-body
+      = link_to profiles_library_tagging_path do
+        = @profile_tag.tag.name
 
-  .up
-    .media-left
-      = link_to image_tag(@profile.avatar.url(:md)), profile_path
-
-  .up
-    .media-right
-      %i.fas.fa-headphones
-      = link_to 'Library', library_path
-
-  .up
-    .media-right
-      %i.fas.fa-tags
-      = link_to 'Taggings', library_taggings_path
-
-  .up
-    .media-right
-      = link_to (@tagging.present? ? @tagging.tag.name : params[:name]), library_tagging_path(name: (@tagging.present? ? @tagging.tag.name : params[:name]))
-
-  - if params[:action] == 'artists'
-
-    .up
-      .media-right
-        %i.fas.fa-user
-        = link_to 'Artists', library_artists_tagging_path(name: @tagging.tag.name)
-
-  - elsif params[:action] == 'albums'
-
-    .up
-      .media-right
-        %i.fas.fa-dot-circle
-        = link_to 'Albums', library_albums_tagging_path(name: @tagging.tag.name)
-
-  - elsif params[:action] == 'tracks'
-
-    .up
-      .media-right
-        %i.fas.fa-music
-        = link_to 'Tracks', library_tracks_tagging_path(name: @tagging.tag.name)
+  - unless params[:action] == 'show'
+    .up.media
+      .media-body
+        - if params[:action] == 'artists'
+          = link_to 'Artists', profiles_library_taggings_artists_path
+        - elsif params[:action] == 'albums'
+          = link_to 'Albums', profiles_library_taggings_albums_path
+        - elsif params[:action] == 'tracks'
+          = link_to 'Tracks', profiles_library_taggings_tracks_path

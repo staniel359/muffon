@@ -1,4 +1,6 @@
 class MuffonController < ApplicationController
+  before_action :set_title
+
   def start
     redirect_to dashboard_path if logged_in?
   end

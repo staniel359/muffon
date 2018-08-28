@@ -32,7 +32,7 @@ module LastFM
       def request_params
         {
           method:  'artist.getSimilar',
-          artist:  @args.artist,
+          artist:  @args.artist_name,
           limit:   200,
           api_key: api_key,
           format:  'json'

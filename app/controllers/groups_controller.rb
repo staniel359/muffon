@@ -1,22 +1,20 @@
 class GroupsController < ApplicationController
+  before_action :set_title
+
   def index
-    @page_data = {
-      title:  title,
-      groups: groups
-    }
+    set_groups
   end
 
   def show
-    @page_data = {
-      title: title,
-      group: group
-    }
+    set_group
   end
 
   def create
-    group = Group.create(group_params)
+    group = current_profile.own_groups.create(group_params)
     redirect_to group
   end
+
+  def update; end
 
   def destroy
     group.delete
@@ -28,16 +26,16 @@ private
   def set_title
     @title = t(
       "groups.#{params[:action]}",
-      group: group&.name
+      group: @group&.name
     )
   end
 
-  def group
-    @group ||= Group.find_by(id: params[:group_id])
+  def set_group
+    @group = Group.find_by(id: params[:group_id])
   end
 
-  def groups
-    paginate(Group.members_count_desc, 20)
+  def set_groups
+    @groups = paginate(Group.members_count_desc, 20)
   end
 
   def group_params

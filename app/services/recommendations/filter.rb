@@ -7,17 +7,15 @@ module Recommendations
   private
 
     def filter_recommendations
-      @profile.recommendations.not_deleted.where(
-        queries
-      ).artists_count_desc
+      @profile.recommendations.not_deleted.joins(
+        'LEFT JOIN artists ON artists.id = recommendations.artist_id'
+      ).where(queries).includes(:artist).artists_count_desc
     end
 
     def queries
-      queries_list.map { |q| send("#{q}_query") }.compact.join(' AND ')
-    end
-
-    def queries_list
-      %w[artist tag days]
+      %w[artist tag days].map do |q|
+        send("#{q}_query")
+      end.compact.join(' AND ')
     end
 
     def artist_query
@@ -27,21 +25,23 @@ module Recommendations
     end
 
     def profile_artist_id
-      @profile.profile_artists.joins(:artist).find_by(
-        'LOWER(artists.name) = ?', @args.artist_name.downcase
+      @profile.profile_artists.find_by(
+        artist_id: artist_id
       )&.id.to_i
+    end
+
+    def artist_id
+      Artist.with(name: @args.artist_name).first&.id.to_i
     end
 
     def tag_query
       return unless @args.tag_name.present?
 
-      "#{tag_id} = any(tag_ids)"
+      "#{tag_id} = ANY(artists.tag_ids)"
     end
 
     def tag_id
-      Tag.find_by(
-        'lower(name) = ?', @args.tag_name.downcase
-      )&.id.to_i
+      Tag.with(name: @args.tag_name).first&.id.to_i
     end
 
     def days_query
@@ -53,10 +53,10 @@ module Recommendations
 
     def time_scoped_profile_artist_ids
       @profile.plays.where(
-        'plays.created_at > ?', @args.days.days.ago
-      ).select(
+        'plays.created_at > ?', @args.days.to_i.days.ago
+      ).select(:profile_artist_id).distinct.pluck(
         :profile_artist_id
-      ).distinct.pluck(:profile_artist_id)
+      )
     end
   end
 end

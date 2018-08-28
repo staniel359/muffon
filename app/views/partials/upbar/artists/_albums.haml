@@ -1,27 +1,34 @@
-.up.media.list-inline-item.align-items-center
+.up.media
+  = image_tag @artist.image
   .media-body
-    %i.fas.fa-dot-circle
-    .px-2
+    = link_to @artist.name, artist_path(artist_name: @artist.name)
+
+- if params[:action].in?(%w[index show])
+  .up.media
+    .media-body
+      %i.fas.fa-dot-circle
       = link_to 'Albums', artists_albums_path(artist_name: @artist.name)
+- else
+  .up.media
+    .media-body
+      = link_to artists_albums_path(artist_name: @artist.name) do
+        %i.fas.fa-dot-circle
 
-- if params[:action].in?(%w[show tags wiki])
-
-  .up
-    .media-left
-      = image_tag @album.album_cover
-    .media-right
-      = link_to @album.title, artists_album_path(artist_name: @artist.name, album_title: @album.title)
+- unless params[:action] == 'index'
+  .up.media
+    = image_tag @album.cover
+    .media-body
+      = link_to @album.title, artists_album_path
 
   - if params[:action] == 'tags'
-
-    .up
-      .media-right
+    .up.media
+      .media-body
         %i.fas.fa-tags
-        = link_to 'Tags', artists_album_tags_path(artist_name: @artist.name, album_title: @album.title)
+        = link_to 'Tags', artists_albums_tags_path
 
-  - if params[:action] == 'wiki'
+  - elsif params[:action] == 'wiki'
 
-    .up
-      .media-right
+    .up.media
+      .media-body
         %i.fas.fa-info-circle
-        = link_to 'Wiki', artists_album_wiki_path(artist_name: @artist.name, album_title: @album.title)
+        = link_to 'Wiki', artists_albums_wiki_path

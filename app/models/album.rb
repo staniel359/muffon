@@ -13,14 +13,6 @@ class Album < ApplicationRecord
   def self.with(title:, artist_id:)
     where(artist_id: artist_id).where(
       'LOWER(title) = ?', title.downcase
-    ).first_or_initialize(title: title)
-  end
-
-  def tracks
-    Track.where(id: track_ids)
-  end
-
-  def tags
-    Tag.where(id: tag_ids)
+    )
   end
 end

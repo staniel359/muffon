@@ -21,12 +21,16 @@ module Discogs
 
     def process_album_data
       {
-        artist_name:  album_page['artists_sort'],
         title:        album_page['title'],
+        artist:       album_artist_data,
         release_date: album_page['released'],
         labels:       labels,
         tracks:       tracks
       }
+    end
+
+    def album_artist_data
+      { name: album_page['artists_sort'] }
     end
 
     def labels
@@ -41,7 +45,7 @@ module Discogs
       {
         title:    track['title'],
         duration: duration(track),
-        artist:   artist(track)
+        artist:   artist_data(track)
       }
     end
 
@@ -49,7 +53,11 @@ module Discogs
       track['duration'].split(':').map(&:to_i).inject { |m, s| m * 60 + s }
     end
 
-    def artist(track)
+    def artist_data(track)
+      { name: track_artist_name(track) || album_page['artists_sort'] }
+    end
+
+    def track_artist_name(track)
       return unless track['artists'].present?
 
       track['artists'].map { |a| artists_string(a) }.join(' ')

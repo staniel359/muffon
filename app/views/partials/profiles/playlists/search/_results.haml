@@ -1,0 +1,32 @@
+- if [@tracks, @artists, @albums].any?(&:present?)
+
+  - if @tracks.present?
+    %h5
+      Tracks:
+
+    .separator.default.my-2
+
+    %table.table.table-hover.table-sm
+      = render partial: 'partials/profiles/playlists/search/track', collection: @tracks
+
+  - if @artists.present?
+    %h5
+      Artists:
+
+    .separator.default.my-2
+
+    %table.table.table-hover.table-sm
+      = render partial: 'partials/profiles/playlists/search/artist', collection: @artists
+
+  - if @albums.present?
+
+    %h5
+      Albums:
+
+    .separator.default.my-2
+
+    %table.table.table-hover.table-sm
+      = render partial: 'partials/profiles/playlists/search/album', collection: @albums
+
+- else
+  Nothing was found.

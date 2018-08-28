@@ -1,25 +1,29 @@
 module Profiles
   module Library
     class TracksController < ApplicationController
+      before_action :set_profile, :set_title
+
       def index
-        @page_data = {
-          title:  title,
-          tracks: paginate(tracks, 20)
-        }
+        @pagy, @tracks = pagy(tracks)
         respond_with_js_and_html
       end
 
     private
 
-      def title
-        t(
+      def set_title
+        @title = t(
           "profiles.library.tracks.#{params[:action]}",
-          profile: profile.nickname
+          profile: @profile.nickname
         )
       end
 
-      def artists
-        profile.profile_tracks.includes(:track).created_desc
+      def tracks
+        ::Library::Collection.call(
+          profile_id:      @profile.id,
+          collection_name: 'tracks',
+          scope:           params[:scope],
+          order:           params[:order]
+        ).includes(:artist, [track: :artist])
       end
     end
   end

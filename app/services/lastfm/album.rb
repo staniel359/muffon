@@ -19,7 +19,7 @@ module LastFM
     def base_attributes
       {
         title:                  parsed_album_data['name'],
-        artist:                 { name: parsed_album_data['artist'] },
+        artist:                 album_artist_data,
         cover:                  parsed_album_data['image'][3]['#text'].presence,
         lastfm_listeners_count: parsed_album_data['listeners'].to_i,
         lastfm_plays_count:     parsed_album_data['playcount'].to_i
@@ -36,12 +36,17 @@ module LastFM
 
     def request_params
       {
-        method:  'album.getInfo',
-        artist:  @args.artist_name,
-        album:   @args.album_title,
-        api_key: api_key,
-        format:  'json'
+        method:      'album.getInfo',
+        artist:      @args.artist_name,
+        album:       @args.album_title,
+        api_key:     api_key,
+        format:      'json',
+        autocorrect: 1
       }
+    end
+
+    def album_artist_data
+      { name: parsed_album_data['artist'] }
     end
 
     def extra_attributes
@@ -59,8 +64,16 @@ module LastFM
 
     def process_track(track)
       {
-        title: track['name'],
-        duration: track['duration'].to_i
+        title:    track['name'],
+        duration: track['duration'].to_i,
+        artist:   track_artist_data(track)
+      }
+    end
+
+    def track_artist_data(track)
+      {
+        name: track['artist']['name'],
+        mbid: track['artist']['mbid']
       }
     end
 

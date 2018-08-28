@@ -1,26 +1,16 @@
-#album_tags_page.artist_page.panel.center
-  .panel_header
-    %h3
-      .media-left.mid_align
-        = image_tag @album.album_cover, class: 'img_50'
-      .media-right.mid_align
-        %h3
-          = link_to @album.title, artist_album_path
-        %h4
-          = link_to @artist.name, artist_path
+.card
+  .card-body
+    = render 'partials/artists/albums/panel_header'
 
-  .separator.sep_0.sep_light
-
-  .panel_content
-
-    %h4
+    %h5
       %i.fas.fa-tags
       Tags:
 
-    .separator.sep_10.sep_default
+    .separator.default.my-2
 
-    - @tags.map do |tag|
-      .d-inline
-        = link_to tag_path(name: tag.name), class: 'btn btn-primary btn-sm tag' do
-          %strong
-            = tag.name
+    - @tags.each do |tag|
+      = link_to tag_path(tag_name: tag[:name]), class: 'tag' do
+        %strong
+          = tag[:name]
+        %small
+          = tag[:count]

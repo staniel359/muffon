@@ -50,9 +50,9 @@ module LastFM
       end
 
       def process_loved_track(track)
-        Muffon::Processor::ProfileTrack.call(
-          profile_id: @args.profile_id,
-          track:      track
+        Muffon::Processor::LovedTrack.call(
+          profile_id:  @args.profile_id,
+          loved_track: track
         )
       end
     end

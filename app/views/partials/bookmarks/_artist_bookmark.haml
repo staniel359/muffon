@@ -1,11 +1,11 @@
-.bookmark.media.mg_btm_10#bookmark{id: bookmark.bookmarkable.id}
-  #bookmark_image.media-left
-    = link_to artist_path(artist_name: bookmark.bookmarkable.name) do
-      = image_tag bookmark.bookmarkable.image, class: 'img_rnd img_50'
-
-  %h4#bookmark_name.media-body
-    = link_to bookmark.bookmarkable.name, artist_path(artist_name: bookmark.bookmarkable.name)
-
-    #bookmark_delete
-      = button_to bookmark_path(model_type: 'Artist', model_id: bookmark.bookmarkable.id), method: :delete, remote: true, class: 'inv_btn' do
-        %h6 Delete
+%tr
+  %td.media.align-items-center.position-relative#artist-bookmark{ id: artist_bookmark.bookmarkable.id }
+    .mr-2
+      = link_to artist_path(artist_bookmark.artist_name) do
+        = image_tag artist_bookmark.artist_image, class: 'img-sm rounded-circle'
+    .media-body.media.align-items-center.justify-content-between
+      %h5.mb-0
+        = link_to artist_bookmark.artist_name, artist_path(artist_bookmark.artist_name)
+      .mr-3
+        = button_to bookmark_path(model_type: 'Artist', model_id: artist_bookmark.bookmarkable.id), data: { toggle: 'tooltip', placement: 'top'}, title: 'Delete bookmark', method: :delete, remote: true, class: 'btn-transp' do
+          %i.fas.fa-times.small

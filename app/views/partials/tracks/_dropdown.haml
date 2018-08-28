@@ -13,10 +13,11 @@
         = button_tag class: 'btn-transp' do
           %i.fas.fa-comments.mr-1
           = link_to 'Send in message', track_message_modal_path(track_id: track.id), remote: true
-      .dropdown-item
-        = button_tag class: 'btn-transp' do
-          %i.fas.fa-list-alt.mr-1
-          = link_to 'Add to playlist', track_playlists_modal_path(track_id: track.id), remote: true
+      - unless params[:controller].downcase.include?('playlist')
+        .dropdown-item
+          = button_tag class: 'btn-transp' do
+            %i.fas.fa-list-alt.mr-1
+            = link_to 'Add to playlist', track_playlists_modal_path(track_id: track.id), remote: true
       .dropdown-item
         = button_tag class: 'btn-transp' do
           %i.fas.fa-arrow-right.mr-1
@@ -24,9 +25,9 @@
 
       - if params[:controller].downcase.include?('playlist')
         .dropdown-item
-          = button_tag class: 'btn-transp' do
+          = button_to profiles_playlists_track_path(playlist_id: @playlist.id, track_id: track.id), class: 'btn-transp', method: :delete, remote: true do
             %i.fas.fa-times.mr-1
-            = link_to 'Delete from playlist', profiles_playlists_track_path(track_id: track.id), remote: true
+            Delete from playlist
       - elsif params[:controller].downcase.include?('library')
         .dropdown-item
           = button_tag class: 'btn-transp' do

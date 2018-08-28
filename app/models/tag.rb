@@ -3,7 +3,7 @@ class Tag < ApplicationRecord
 
   validates :name, presence: true
 
-  def artists
-    Artist.where('? = ANY(tag_ids)', id)
+  def self.with(name:)
+    where('LOWER(name) = ?', name.downcase)
   end
 end

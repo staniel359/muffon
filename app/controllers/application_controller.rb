@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   private_class_method :local_prefixes
   include SessionsHelper
-  include Pagy::Backend
 
   def self.local_prefixes
     [
@@ -12,6 +11,11 @@ class ApplicationController < ActionController::Base
       "modals/#{controller_path}",
       controller_path
     ]
+  end
+
+  def not_found
+    @title = 'Not found'
+    render file: '/exceptions/not_found', status: :not_found
   end
 
 private
@@ -33,5 +37,20 @@ private
 
   def check_correct_profile
     redirect_to root_path unless current_profile?(@profile)
+  end
+
+  def paginate(collection, limit)
+    (
+      collection.page(params[:page]).per(limit).presence ||
+        collection.page(params[:page].to_i - 1).per(limit)
+    )
+  end
+
+  def check_correct_artist
+    not_found if @artist.nil?
+  end
+
+  def check_correct_album
+    not_found if @album.nil?
   end
 end

@@ -1,0 +1,10 @@
+$('#recommendation-query').html("<%= j render 'partials/recommendations/query' %>")
+$('#recommendations').html("<%= j render 'partials/recommendations/recommendations' %>")
+$('#loading').hide()
+$('#upbar-wrap').html("<%= j render 'partials/upbar' %>")
+$('[data-toggle="tooltip"]').tooltip()
+
+URL = "?<%= @query_params.to_query %>"
+formattedURL = URL.replace(/"/g, "'").replace(/&amp;/g, "&");
+window.history.pushState({turbolinks: true, url: formattedURL}, '', formattedURL)
+console.log(url)

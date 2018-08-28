@@ -1,16 +1,15 @@
-.artist_page#artist_similar_page.panel.center
-  
-  = render 'panel_header'
+.card
+  .card-body
+    = render 'partials/artists/panel_header'
 
-  .separator.sep_0.sep_light
+    %h5
+      Similar artists:
 
-  .panel_content
+    .separator.default.mt-2.mb-3
 
-    %h4 Similar artists:
+    .row
+      - @similar_artists.each do |similar_artist|
+        .col-12.col-md-6.col-lg-4
+          = render 'partials/artists/similar_artist', similar_artist: similar_artist.decorate
 
-    .separator.sep_10.sep_default
-
-    = render partial: 'similar_artist', collection: @similar_artists
-  
-    .text_center.mg_top_10
-      = paginate @similar_artists
+    = pagination

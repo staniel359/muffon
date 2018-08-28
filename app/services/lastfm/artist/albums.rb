@@ -10,28 +10,7 @@ module LastFM
       def retrieve_artist_albums
         return {} unless parsed_albums_data.present?
 
-        {
-          total_count: total_count,
-          data:        process_albums
-        }
-      end
-
-      def process_albums
         albums_sorted.map { |a| process_album(a) }
-      end
-
-      def process_album(album)
-        {
-          title:              album['name'],
-          artist:             artist_data(album),
-          lastfm_plays_count: album['playcount'],
-          mbid:               album['mbid'],
-          cover:              album['image'][3]['#text']
-        }
-      end
-
-      def albums_sorted
-        parsed_albums_data['album'].sort_by { |a| a['playcount'] }.reverse
       end
 
       def parsed_albums_data
@@ -46,10 +25,24 @@ module LastFM
         {
           method:  'artist.getTopAlbums',
           artist:  @args.artist_name,
-          limit:   @args.limit,
+          limit:   (@args.limit || 20),
           page:    page,
           api_key: api_key,
           format:  'json'
+        }
+      end
+
+      def albums_sorted
+        parsed_albums_data['album'].sort_by { |a| a['playcount'] }.reverse
+      end
+
+      def process_album(album)
+        {
+          title:              album['name'],
+          artist:             artist_data(album),
+          lastfm_plays_count: album['playcount'],
+          mbid:               album['mbid'],
+          cover:              album['image'][3]['#text']
         }
       end
 
@@ -58,10 +51,6 @@ module LastFM
           name: album['artist']['name'],
           mbid: album['artist']['mbid']
         }
-      end
-
-      def total_count
-        parsed_albums_data['@attr']['total'].to_i
       end
     end
   end

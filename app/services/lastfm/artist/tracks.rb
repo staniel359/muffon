@@ -8,69 +8,56 @@ module LastFM
     private
 
       def retrieve_tracks
+        return {} unless parsed_tracks_data.present?
+
+        sorted_tracks.last(50).map { |t| process_track(t) }
+      end
+
+      def parsed_tracks_data
+        @parsed_tracks_data ||= JSON.parse(tracks_response)['toptracks']
+      end
+
+      def tracks_response
+        RestClient.get(api_link, params: request_params)
+      end
+
+      def request_params
         {
-          total_count: total_count,
-          data:        process_tracks
+          method:  'artist.getTopTracks',
+          artist:  @args.artist_name,
+          api_key: api_key,
+          page:    page,
+          limit:   (@args.limit || 50),
+          format:  'json'
         }
       end
 
-      def process_tracks
-        matched_tracks.sort_by { |t| t[:lastfm_plays_count] }.reverse
+      def sorted_tracks
+        parsed_tracks_data['track'].sort_by do |t|
+          t['playcount'].to_i
+        end.reverse
       end
 
-      def matched_tracks
-        limited_tracks.map { |t| match_track(t) }
-      end
-
-      def limited_tracks
-        tracks_data[:web].first(@args.limit || 50)
-      end
-
-      def tracks_data
-        @tracks_data ||= process_tracks_data
-      end
-
-      def process_tracks_data
-        threads = []
-        tracks_data_hash = %w[Web API].each_with_object({}) do |s, h|
-          threads << Thread.new do
-            h.merge!(s.downcase.to_sym => call_service(s))
-          end
-        end
-        concurrent_loader { threads.each(&:join) }
-        tracks_data_hash
-      end
-
-      def call_service(service)
-        "LastFM::Artist::Tracks::#{service}".constantize.call(
-          artist_name: @args.artist_name
-        )
-      end
-
-      def match_track(title)
-        matched_track = matched_track(title)
+      def process_track(track)
         {
-          title:                  title,
-          artist:                 artist_data(matched_track),
-          lastfm_listeners_count: matched_track[:lastfm_listeners_count],
-          lastfm_plays_count:     matched_track[:lastfm_plays_count],
-          mbid:                   matched_track[:mbid]
+          title:                  track['name'],
+          lastfm_listeners_count: track['listeners'].to_i,
+          lastfm_plays_count:     track['playcount'].to_i,
+          mbid:                   track['mbid'],
+          artist:                 artist_data(track)
         }
-      end
-
-      def matched_track(title)
-        tracks_data[:api][:data].find { |t| t[:title].casecmp(title).zero? }
       end
 
       def artist_data(track)
         {
-          name: track[:artist][:name],
-          mbid: track[:artist][:mbid]
+          name:  track['artist']['name'],
+          mbid:  track['artist']['mbid'],
+          image: track['image'][3]['#text']
         }
       end
 
       def total_count
-        tracks_data[:api][:total_count]
+        parsed_tracks_data['@attr']['total'].to_i
       end
     end
   end

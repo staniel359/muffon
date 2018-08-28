@@ -11,10 +11,12 @@ class ProfileTrack < ApplicationRecord
 
   validates :profile_id, :track_id, :profile_artist_id, presence: true
 
-  default_scope { includes(:track, :artist) }
   scope :loved, -> { where(loved: true) }
+  scope :loved_desc, -> { order(loved_at: :desc) }
 
-  def albums
-    ProfileAlbum.where(id: profile_album_ids)
+  after_create_commit :increment_loved_tracks_count, if: :loved?
+
+  def increment_loved_tracks_count
+    profile.increment!(:loved_tracks_count)
   end
 end

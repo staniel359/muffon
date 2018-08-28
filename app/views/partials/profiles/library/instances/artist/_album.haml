@@ -1,0 +1,10 @@
+.text-center
+  = link_to profiles_library_artists_album_path(profile_id: @profile.id, artist_name: album.artist_name, album_title: album.title) do
+    .mb-1
+      = image_tag album.cover, class: 'img-fluid'
+    %h5.mb-0
+      %strong
+        = album.title
+  %h6
+    = link_to pluralize(album.plays_count, 'play'), profiles_library_artists_albums_plays_path(profile_id: @profile.id, artist_name: album.artist_name, album_title: album.title)
+        

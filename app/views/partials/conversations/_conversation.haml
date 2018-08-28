@@ -1,55 +1,41 @@
-%tr.conversation
-  %td
+%tr
+  %td.conversation
     = link_to conversation do
-      .media-left
-        - if conversation.other_member(current_profile.id).present?
+      .media
+        .mr-2.position-relative
+          - if conversation.id.in?(current_profile.decorate.new_conversations)
+            %i.fas.fa-circle.position-absolute.text-light.new-conversation-circle
+          - other_member = conversation.other_member(current_profile.id)
 
-          = image_tag conversation.other_member(current_profile.id).avatar.url(:sm), class: 'img_rnd'
-
-        - else
-
-          = image_tag 'avatar_default', class: 'img_rnd img_50'
-
-      .media-body
-
-        %h4#conversation_with
-
-          - if conversation.other_member(current_profile.id).present?
-
-            = conversation.other_member(current_profile.id).nickname
-
+          - if other_member.present?
+            = image_tag other_member.avatar.url(:sm), class: 'rounded-circle'
           - else
+            = image_tag 'sm_avatar_default.png', class: 'img-sm rounded-circle'
 
-            Deleted Profile
+        .media-body
+          %h5.mb-2
+            = other_member&.nickname || 'Deleted Profile'
 
-        %hr.sep_10
+          .media
+            - last_message = conversation.messages.last.decorate
 
-        #conversation_last_msg.message_panel
+            - if last_message.sent_from(current_profile.id)
+              .mr-2.mt-1
+                = image_tag last_message.profile.avatar.url(:xs), class: 'rounded-circle'
 
-          - last_message = conversation.messages.last
+            .media-body.d-flex.align-items-center.justify-content-between
+              .card.dark.p-2
 
-          - if last_message.profile_id == current_profile.id
+                - if last_message.sent_from(current_profile.id)
+                  %h6.mb-1.font-light
+                    = last_message.profile.nickname
 
-            .media-left
-              = image_tag last_message.profile.avatar.url(:sm), class: 'img_rnd'
+                %h6.mb-1
+                  = truncate(last_message.content, length: 30)
 
-          .media-body
+                - if last_message.track_ids.any?
+                  %i.fas.fa-music
+                  Audio
 
-            .text-muted.pull-right.text_right
-              %h6
-                = l last_message.created_at, format: "%e %b %Y"
-              %h6
-                = l last_message.created_at, format: "%H:%M"
-
-            - if last_message.profile_id == current_profile.id
-
-              %h5.mg_btm_5
-                = last_message.profile.nickname
-
-            %h4.mg_btm_5
-              = last_message.content
-
-            - if last_message.track_ids.present?
-
-              %i.fas.fa-music
-              Audio
+                .text-muted.small
+                  = last_message.created_at.strftime('%e %b %Y, %H:%M')

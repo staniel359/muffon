@@ -1,0 +1,17 @@
+.card
+  .card-body
+    = render 'partials/profiles/library/panel_header'
+
+    %h5
+      %i.fas-fa-heart
+      = "Loved tracks (#{@profile.loved_tracks_count}):"
+
+    .separator.default.my-2
+
+    - if @loved_tracks.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'partials/profiles/library/instances/loved_track', collection: @loved_tracks.decorate
+
+      = pagination
+    - else
+      There are no loved tracks.

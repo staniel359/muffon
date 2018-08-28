@@ -1,0 +1,15 @@
+.up.media
+  = link_to @profile do
+    = image_tag @profile.avatar.url(:sm)
+
+.up.media
+  .media-body
+    = link_to profiles_library_path do
+      %i.fas.fa-headphones
+      Library
+
+.up.media
+  .media-body
+    = link_to profiles_library_loved_tracks_path do
+      %i.fas.fa-heart
+      Loved tracks

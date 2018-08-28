@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Recommendations < Muffon::Base
+    class Recommendations < Muffon::Processor::Base
       def call
         process_artist_recommendations
       end

@@ -1,25 +1,25 @@
 module Profiles
   module Library
     class LovedTracksController < ApplicationController
+      before_action :set_profile, :set_title
+
       def index
-        @page_data = {
-          title:        title,
-          loved_tracks: paginate(loved_tracks, 20)
-        }
-        respond_with_js_and_html
+        @pagy, @loved_tracks = pagy(loved_tracks)
       end
 
     private
 
-      def title
-        t(
+      def set_title
+        @title = t(
           "profiles.library.loved_tracks.#{params[:action]}",
-          profile: profile.nickname
+          profile: @profile.nickname
         )
       end
 
-      def artists
-        profile.profile_loved_tracks.includes(:track).created_desc
+      def loved_tracks
+        @profile.profile_tracks.loved.includes(
+          :artist, [track: :artist]
+        ).loved_desc
       end
     end
   end

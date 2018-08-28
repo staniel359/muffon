@@ -1,68 +1,62 @@
 module Artists
   class AlbumsController < ApplicationController
+    before_action :set_artist, :check_correct_artist
+    before_action :set_album, :check_correct_album, except: :index
+    before_action :set_title
+
     def index
-      @page_data = {
-        title:  title,
-        albums: albums
-      }
+      @pagy, @albums = albums
     end
 
-    def show
-      @page_data = {
-        title: title,
-        album: album
-      }
-    end
+    def show; end
 
     def tags
-      @page_data = {
-        title: title,
-        album: album,
-        tags:  retrieve_tags
-      }
+      @tags = album_tags
     end
 
-    def wiki
-      @page_data = {
-        title: title,
-        album: album
-      }
-    end
+    def wiki; end
 
   private
 
-    def title
-      t(
-        "artists.albums.#{params[:action]}",
-        profile: profile.nickname,
-        artist:  artist.name,
-        album:   album&.title
+    def set_artist
+      @artist = Muffon::Processor::Artist.call(
+        params.slice(:artist_name)
       )
     end
 
-    def album
-      @album ||= Muffon::Processor::Album.call(
-        params.slice(:artist_name, :album_title)
+    def set_title
+      @title = t(
+        "artists.albums.#{params[:action]}",
+        artist:  @artist&.name,
+        album:   @album&.title
       )
+    end
+
+    def set_album
+      @album = Muffon::Processor::Album.call(
+        params.slice(:artist_name, :album_title)
+      )&.decorate
     end
 
     def albums
-      paginate(
-        paginate_array(
-          albums_data[:data],
-          albums_data[:total_count]
-        ), 20
+      pagy_dynamic_array(processed_albums, 400, 20)
+    end
+
+    def processed_albums
+      Muffon::Processor::Albums.call(
+        albums:    albums_data,
+        artist_id: @artist.id
       )
     end
 
     def albums_data
-      @albums_data ||= Lastfm::Artist::Albums.call(
-        params.slice(:artist_name, :page).merge!(limit: 20)
+      LastFM::Artist::Albums.call(
+        params.slice(:artist_name, :page)
       )
     end
 
-    def retrieve_tags
-      Lastfm::Tags.call(
+    def album_tags
+      LastFM::Tags.call(
         params.slice(:artist_name, :album_title).merge!(
           model_name: 'album'
         )

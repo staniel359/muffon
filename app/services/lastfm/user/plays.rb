@@ -67,7 +67,8 @@ module LastFM
         {
           title:  play['album']['#text'],
           mbid:   play['album']['mbid'].presence,
-          cover:  play['image'][3]['#text'].presence
+          cover:  play['image'][3]['#text'].presence,
+          artist: artist_data(play)
         }
       end
     end

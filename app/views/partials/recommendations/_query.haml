@@ -1,29 +1,27 @@
-- if %i[artist tag days].any? { |param| params.key?(param) }
-
-  .panel_content.panel_header
-    - if params.key?(:artist) && params[:artist].present?
-      - artist = Artist.find_by('lower(name) = lower(?)', params[:artist])
-      .d-inline.mid_align.recommendation_query_block
-        - if artist.present?
-          .media-left
-            = image_tag artist.image, class: 'img_rnd img_50'
-          %h3.media-right
-            = link_to artist.name, library_artist_path(id: current_profile.id, name: artist.name)
+- if %i[artist_name tag_name days].any? { |q| params[q].present? }
+  .d-flex.align-items-center
+    - if params[:artist_name].present?
+      .mr-4
+        - if @artist.present?
+          .media.align-items-center
+            .mr-2
+              = image_tag @artist.image, class: 'img-xs rounded-circle'
+            .media-body
+              %h5.mb-0
+                = link_to @artist.name, artist_path(@artist.name)
         - else
-          %h3
+          %h5.mb-0
             %i.fas.fa-question
-            = params[:artist]
+            = params[:artist_name]
 
-    - if params.key?(:tag) && params[:tag].present?
-      .d-inline.mid_align.recommendation_query_block
-        %h3
-          %i.fas.fa-tag
-          = link_to params[:tag].downcase, library_tag_path(id: current_profile.id, name: params[:tag].downcase)
+    - if params[:tag_name].present?
+      %h5.mr-4.mb-0
+        %i.fas.fa-tag
+        = link_to params[:tag_name], tag_path(params[:tag_name])
 
-    - if params.key?(:days) && params[:days].present?
-      .d-inline.mid_align.recommendation_query_block
-        %h3
-          %i.far.fa-calendar
-          = pluralize(params[:days], 'day')
+    - if params[:days].present?
+      %h5.mb-0
+        %i.far.fa-calendar
+        = pluralize(params[:days], 'day')
 
-  .separator.sep_0.sep_light
+  %hr.my-3

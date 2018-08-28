@@ -20,14 +20,10 @@ module Muffon
     end
 
     def base_data
-      {
-        title:                  lastfm_data[:title],
-        artist:                 lastfm_data[:artist],
-        lastfm_listeners_count: lastfm_data[:lastfm_listeners_count],
-        lastfm_plays_count:     lastfm_data[:lastfm_plays_count],
-        description:            lastfm_data[:description],
-        cover:                  cover
-      }
+      lastfm_data.slice(
+        :title, :artist, :lastfm_listeners_count,
+        :lastfm_plays_count, :description
+      ).merge!(cover: cover)
     end
 
     def cover
@@ -105,7 +101,7 @@ module Muffon
 
     def labels
       resources_data[:music_brainz][:labels] ||
-        resources_data[:discogs][:labels]
+        resources_data[:discogs][:labels] || []
     end
 
     def tags
