@@ -1,32 +1,28 @@
 class LabelsController < ApplicationController
   def index
-    @page_data = {
-      title:  title,
-      labels: labels
-    }
+    set_labels
+    set_title
   end
 
   def show
-    @page_data = {
-      title: title,
-      label: label
-    }
+    set_label
+    set_title
   end
 
 private
 
-  def title
-    t(
+  def set_title
+    @title = t(
       "labels.#{params[:action]}",
-      label: label&.name
+      label: @label&.name
     )
   end
 
-  def label
-    @label ||= Label.find_by(name: params[:name])
+  def set_label
+    @label = Label.with(name: params[:label_name]).first
   end
 
-  def labels
-    paginate(Label.all, 20)
+  def set_labels
+    @labels = paginate(Label.all, 20)
   end
 end

@@ -17,7 +17,9 @@ module LastFM
       end
 
       def process_tracks
-        tracks_list.map { |t| process_track(t) }
+        tracks_list.first(@args.limit || 50).map do |t|
+          process_track(t)
+        end
       end
 
       def tracks_list

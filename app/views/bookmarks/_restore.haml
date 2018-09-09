@@ -1,0 +1,4 @@
+.position-absolute.w-100.h-100.d-flex.justify-content-center.align-items-center.z-100#bookmark-restore{ id: "#{params[:model_type]}_#{params[:model_id]}" }
+  %h6.mr-2.mb-1
+    Bookmark was deleted.
+  = button_to 'Restore', bookmarks_path(model_type: params[:model_type], model_id: params[:model_id]), method: :post, remote: true, class: 'tag'

@@ -1,9 +1,12 @@
 class RecommendationsController < ApplicationController
   before_action :should_login, :set_title
-  before_action :set_query_params, :set_recommendations, :process_artists,
-                :set_artist, :set_profile_instances, only: :index
 
   def index
+    set_query_params
+    set_recommendations
+    set_artist
+    set_current_artist_ids
+    set_profile_instances
     respond_with_js_and_html
   end
 
@@ -37,12 +40,6 @@ private
     ).merge!(profile_id: current_profile.id)
   end
 
-  def process_artists
-    Muffon::Processor::Recommendations::Artists.call(
-      artists: @recommendations.decorate.map(&:artist_name)
-    )
-  end
-
   def set_artist
     return unless params[:artist_name].present?
 
@@ -53,29 +50,8 @@ private
     )&.decorate
   end
 
-  def set_profile_instances
-    set_profile_artist_ids
-    set_bookmarked_artist_ids
-    set_listened_artist_ids
-  end
-
-  def set_profile_artist_ids
-    @profile_artist_ids = current_profile.profile_artists.where(
-      artist_id: @recommendations.pluck(:artist_id)
-    ).pluck(:artist_id)
-  end
-
-  def set_bookmarked_artist_ids
-    @bookmarked_artist_ids = current_profile.bookmarks.where(
-      bookmarkable_type: 'Artist',
-      bookmarkable_id:   @recommendations.pluck(:artist_id)
-    ).pluck(:bookmarkable_id)
-  end
-
-  def set_listened_artist_ids
-    @listened_artist_ids = current_profile.listened_artists.where(
-      artist_id: @recommendations.pluck(:artist_id)
-    ).pluck(:artist_id)
+  def set_current_artist_ids
+    @current_artist_ids = @recommendations.pluck(:artist_id)
   end
 
   def set_query_params

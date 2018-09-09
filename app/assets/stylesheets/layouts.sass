@@ -6,6 +6,7 @@
   white-space: nowrap
   overflow-x: hidden
   box-shadow: $boxShadow
+.sidebar-menu
   td
     border: none
     padding: 0
@@ -18,11 +19,24 @@
     display: block
     padding: 7px 0
 #sidebar:hover
-  width: 240px
+  width: 250px !important
 #sidebar-search-input
   @extend .input-transp
-  width: 170px
-  max-width: 100%
+  width: 170px !important
+#sidebar-search-results-wrap
+  background-color: $muffonDark+e8
+  display: none
+  margin-top: -0.25em
+  width: 250px
+  white-space: normal
+#sidebar-search-results
+  display: none
+  height: 90%
+  overflow-y: scroll
+  a
+    text-decoration: none
+#sidebar-loading
+  display: none
 #sidebar-music-submenu-header
   padding: 7px 0 !important
   cursor: pointer
@@ -43,7 +57,7 @@
   background-color: $muffonDarkLight+aa
 
 #progress-bar
-  bottom: 40px
+  bottom: 75px
   display: none
   background-color: $muffonDarkLight+aa
   box-shadow: $boxShadow
@@ -57,7 +71,7 @@
 #footer
   background-color: $muffonDarkLight
   padding: 20px 20px 50px 80px
-  height: 180px
+  height: 220px
 
 #upbar
   height: 35px
@@ -68,7 +82,7 @@
     letter-spacing: 0.03em
   #beta-btn
     @extend .tag
-    left: 95px
+    left: 110px
     font-size: 11px !important
     background-color: $muffonLight !important
     padding: 4px !important
@@ -89,3 +103,31 @@
   bottom: 15px
   display: none
   width: 85px
+
+#playing-now-panel
+  display: none
+  right: 0
+  background-color: $muffonDarkLight+e6
+  box-shadow: $boxShadow
+  width: 280px
+#player-panel
+  display: none
+  background-color: $muffonDarkLight+e6
+  box-shadow: $boxShadow
+  height: 60px
+#audio-seekbar
+  height: 3px
+  background: $muffonDefault
+  cursor: pointer
+.ui-slider-handle
+  background: $muffonLight
+  height: 10px
+  width: 10px
+  position: absolute
+  border-radius: 50%
+  top: -4px
+  margin-left: -4px
+  cursor: pointer
+.ui-slider-range
+  height: 3px
+  background: $muffonLight

@@ -12,8 +12,9 @@ module Muffon
       end
 
       def recommendations
-        LastFM::Artist::Recommendations.call(
-          artist_name: profile_artist.artist.name
+        LastFM::Artist::SimilarArtists.call(
+          artist_name: profile_artist.artist.name,
+          limit:       50
         )
       end
 

@@ -1,0 +1,20 @@
+%h5
+  = link_to "Taggings (#{@profile.tags_count}):", profiles_library_taggings_path
+
+.separator.default.my-2
+
+- if @taggings.any?
+  .mb-2
+    - @taggings.each do |tagging|
+      = link_to profiles_library_tagging_path(tag_name: tagging.tag.name), class: 'tag' do
+        %strong.d-inline
+          = tagging.tag.name
+        .small.d-inline
+          = "(#{tagging.taggings_count})"
+
+  - if @profile.tags_count > 15
+    .text-right
+      = link_to "View more...", profiles_library_taggings_path, class: 'btn btn-primary btn-sm'
+
+- else
+  There are no taggings.

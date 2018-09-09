@@ -1,0 +1,22 @@
+<% if @new_profile.errors.any? %>
+  $('#registration-flash-msg').html(
+    "<%= j render 'shared/messages/errors', profile: @new_profile %>"
+  );
+<% else %>
+  $('#registration-flash-msg').html('');
+  <% if @new_profile.lastfm_id.present? %>
+    $('#additional-form').html("<%= j render 'lastfm_import' %>");
+  <% else %>
+    $('#additional-form').html("<%= j render 'additional_form' %>");
+  <% end %>
+  $('#signup-form').before($('#additional-form'))
+  $('#signup-form').hide("slide", { direction: 'left' }, 500, function() {
+    $('#signup-form').removeClass('d-block')
+  })
+  $('#additional-form').show("slide", { direction: 'right' }, 500);
+  <% if @new_profile.lastfm_id.present? %>
+    $('.ui-effects-placeholder').first().hide();
+  <% else %>
+    $('.ui-effects-placeholder').last().hide();
+  <% end %>
+<% end %>

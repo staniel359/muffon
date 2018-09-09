@@ -1,11 +1,11 @@
-$(document).on('ready turbolinks:load', () => {
+$(document).on('turbolinks:load', () => {
   scrollToConversationBottom();
   $('input#conversation_next_page').val(2)
-  $('#conversation-messages').unbind('scroll').scroll(() => {
-    loadNextPageMessages();
-  });
-  $('#conversation-messages').unbind('mouseenter').mouseenter(() => {
+  $('#conversation-messages').mouseenter(() => {
     readNewMessages();
+  });
+  $('#conversation-messages').scroll(() => {
+    loadNextPageMessages();
   });
 })
 
@@ -13,6 +13,23 @@ scrollToConversationBottom = () => {
   messages = $('#conversation-messages')[0];
   if (messages) {
     messages.scrollTop = messages.scrollHeight;
+  }
+}
+
+readNewMessages = () => {
+  messageIds = $('*#new_message_id').map((i, el) => {
+    return el.value
+  }).get()
+  if (messageIds.length > 0) {
+    $.ajax({
+      method: 'GET',
+      url: '/conversations/' + conversationId + '/read_messages',
+      data: {
+        message_ids: messageIds
+      }
+    }).done(() => {
+      $('*#new_message_id').remove()
+    })
   }
 }
 
@@ -28,33 +45,14 @@ loadNextPageMessages = () => {
     curOffset = firstMsg.offset().top - $('#conversation-messages').scrollTop()
     $.ajax({
       method: 'GET',
-      url: '/load_messages',
+      url: '/conversations/' + conversationId + '/load_messages',
       data: {
-        conversation_id: conversationId,
         profile_id: profileId,
         page: nextPage,
         offset: messagesCount
       }
     }).done(() => {
       $('#conversation-messages').scrollTop(firstMsg.offset().top - curOffset)
-    })
-  }
-}
-
-readNewMessages = () => {
-  messageIds = $('*#new_message_id').map((i, el) => {
-    return el.value
-  }).get()
-  if (messageIds.length > 0) {
-    $.ajax({
-      method: 'GET',
-      url: '/read_messages',
-      data: {
-        conversation_id: conversationId,
-        message_ids: messageIds
-      }
-    }).done(() => {
-      $('*#new_message_id').remove()
     })
   }
 }

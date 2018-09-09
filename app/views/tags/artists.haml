@@ -1,0 +1,24 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-tag
+      Tags
+
+    %hr.my-3
+
+    %h1.font-light.ml-4.mb-0
+      = params[:tag_name]
+
+    .separator.default.my-3
+
+    %h5
+      Artists:
+
+    .separator.default.my-2
+
+    - if @artists.any?
+      - @artists.each do |artist|
+        = render 'artist_card', artist: artist.decorate
+      = paginate @artists
+    - else
+      There are no artists.

@@ -1,0 +1,21 @@
+.card
+  .card-body
+    .media
+      = render 'left_block'
+      = render 'right_block'
+
+    %hr.my-3
+
+    .media
+      .media-body
+        - if @profile.plays.any?
+          = render 'library'
+        - if other_profile?(@profile)
+          = render 'common'
+
+    %hr.my-3
+
+    #profile-playing-now-track{ id: @profile.id }
+      = render 'playing_now_track'
+
+    = render 'tabs'

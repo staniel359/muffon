@@ -1,0 +1,11 @@
+%tr
+  %td.media.align-items-center.position-relative#artist-bookmark{ id: bookmark.bookmarkable.id }
+    .mr-2
+      = link_to artist_path(bookmark.artist_name) do
+        = image_tag bookmark.artist_image, class: 'img-sm rounded-circle'
+    .media-body.media.align-items-center.justify-content-between
+      %h5.mb-0
+        = link_to bookmark.artist_name, artist_path(bookmark.artist_name)
+      .mr-3
+        = button_to bookmark_path(model_type: 'Artist', model_id: bookmark.bookmarkable.id), data: { toggle: 'tooltip', placement: 'top'}, title: 'Delete bookmark', method: :delete, remote: true, class: 'btn-transp' do
+          %i.fas.fa-times.small

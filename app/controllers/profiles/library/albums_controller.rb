@@ -4,7 +4,7 @@ module Profiles
       before_action :set_profile, :set_title
 
       def index
-        @pagy, @albums = pagy(albums)
+        set_albums
         respond_with_js_and_html
       end
 
@@ -17,13 +17,17 @@ module Profiles
         )
       end
 
-      def albums
+      def set_albums
+        @albums = paginate(retrieve_albums, 24)
+      end
+
+      def retrieve_albums
         ::Library::Collection.call(
           profile_id:      @profile.id,
           collection_name: 'albums',
           scope:           params[:scope],
           order:           params[:order]
-        ).includes(:album, :artist)
+        ).associated
       end
     end
   end

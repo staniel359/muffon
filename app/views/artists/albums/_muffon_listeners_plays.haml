@@ -1,0 +1,8 @@
+.d-flex.align-items-center
+  = image_tag 'favicon.ico', class: 'icon-xs mr-2'
+  %h5.mb-0.mr-3
+    = link_to '#' do
+      = pluralize(number_with_delimiter(@album.listeners_count), 'listener')
+  %h5.mb-0
+    = link_to '#' do
+      = pluralize(number_with_delimiter(@album.plays_count), 'play')

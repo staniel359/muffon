@@ -7,6 +7,8 @@ module Library
   private
 
     def search_in_library
+      return {} unless @args.q.present?
+
       {
         artists: search_artists,
         albums:  search_albums,
@@ -21,7 +23,7 @@ module Library
         'JOIN "artists" ON "artists"."id" = "profile_artists"."artist_id"'
       ).where(
         'LOWER(artists.name) LIKE ?', "%#{@args.q.downcase}%"
-      ).limit(4)
+      ).plays_count_desc.limit(6)
     end
 
     def search_albums
@@ -32,8 +34,9 @@ module Library
       ).joins(
         'JOIN "artists" ON "artists"."id" = "profile_albums"."artist_id"'
       ).where(
-        'LOWER(albums.title) LIKE ?', "%#{@args.q.downcase}%"
-      ).limit(4)
+        'LOWER(albums.title) LIKE :q OR LOWER(artists.name) LIKE :q',
+        q: "%#{@args.q.downcase}%"
+      ).plays_count_desc.limit(6)
     end
 
     def search_tracks
@@ -44,8 +47,9 @@ module Library
       ).joins(
         'JOIN "artists" ON "artists"."id" = "profile_tracks"."artist_id"'
       ).where(
-        'LOWER(tracks.title) LIKE ?', "%#{@args.q.downcase}%"
-      ).limit(5)
+        'LOWER(tracks.title) LIKE :q OR LOWER(artists.name) LIKE :q',
+        q: "%#{@args.q.downcase}%"
+      ).plays_count_desc.limit(10)
     end
   end
 end

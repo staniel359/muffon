@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :should_login
+  before_action :set_conversation, except: :index
 
   def index
     set_conversations
@@ -7,23 +8,20 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    set_conversation
     check_conversation_access
     set_conversation_messages
     set_other_member
-    read_new_messages({profile_id: @other_member.id})
+    read_new_messages(profile_id: @other_member.id)
     set_title
   end
 
   def load_messages
-    set_conversation
     set_conversation_messages
     respond_with_js_and_json
   end
 
   def read_messages
-    set_conversation
-    read_new_messages({id: params[:message_ids]})
+    read_new_messages(id: params[:message_ids])
     set_other_member
     broadcast_to_other_member
     respond_with_js
@@ -85,7 +83,7 @@ private
 
   def rendered_message_status
     ApplicationController.render(
-      partial: 'partials/conversations/messages/status',
+      partial: 'messages/status',
       locals: { new: false }
     )
   end

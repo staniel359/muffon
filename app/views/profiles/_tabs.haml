@@ -1,0 +1,41 @@
+.d-sm-none
+  %ul.nav.nav-fill
+    %li.nav-item.active
+      = link_to 'Board', '#board', class: 'nav-link active', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Plays', '#plays', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Library', '#library', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Groups', '#groups', class: 'nav-link', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Playlists', '#playlists', class: 'nav-link', data: { toggle: 'tab' }
+  %hr.mb-2
+.media
+  .nav.flex-column.nav-pills.mr-3.d-none.d-sm-block.profile-page-left
+    = link_to '#board', class: 'nav-link active', data: { toggle: 'pill' } do
+      %i.fas.fa-edit.mr-1
+      Board
+    = link_to '#plays', class: 'nav-link', data: { toggle: 'pill' } do
+      %i.fas.fa-play.mr-1
+      Plays
+    = link_to '#library', class: 'nav-link', data: { toggle: 'pill' } do
+      %i.fas.fa-headphones.mr-1
+      Library
+    = link_to '#groups', class: 'nav-link', data: { toggle: 'pill' } do
+      %i.fas.fa-users.mr-1
+      Groups
+    = link_to '#playlists', class: 'nav-link', data: { toggle: 'pill' } do
+      %i.fas.fa-list-alt.mr-1
+      Playlists
+  .tab-content.media-body
+    #board.tab-pane.show.active
+      = render 'profiles/tabs/board'
+    #plays.tab-pane
+      = render 'profiles/tabs/plays'
+    #library.tab-pane
+      = render 'profiles/tabs/library'
+    #groups.tab-pane
+      = render 'profiles/tabs/groups'
+    #playlists.tab-pane
+      = render 'profiles/tabs/playlists'

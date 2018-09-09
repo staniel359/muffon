@@ -1,0 +1,16 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      %i.fas.fa-tag
+      Tags:
+
+    .separator.default.my-2
+
+    - @tags.each do |tag|
+      = link_to tag_path(tag_name: tag[:name]), class: 'tag' do
+        %strong.d-inline
+          = tag[:name]
+        .small.d-inline
+          = "(#{tag[:count]})"

@@ -1,0 +1,41 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    .row
+      .col-12.col-sm-4.col-md-3.text-center
+        = render 'info'
+      .col-12.col-sm-8.col-md-9
+        %h5
+          = link_to "Tracks (#{@album.profile_track_ids.length}):", profiles_library_artists_albums_tracks_path
+
+        .separator.default.my-2
+
+        - if @tracks.any?
+          %table.table.table-hover.table-sm
+            = render partial: 'track', collection: @tracks.limit(5).decorate
+
+          - if @album.profile_track_ids.length > 5
+            .text-right
+              = link_to 'View more...', profiles_library_artists_albums_tracks_path, class: 'btn btn-primary btn-sm'
+
+        - else
+          There are no tracks.
+
+        %hr.my-3
+
+        %h5
+          = link_to "Plays (#{@album.plays_count}):", profiles_library_artists_albums_plays_path
+
+        .separator.default.my-2
+
+        - if @plays.any?
+          %table.table.table-hover.table-sm
+            = render partial: 'play', collection: @plays.limit(10).decorate
+          
+          - if @album.plays_count > 10
+            .text-right
+              = link_to 'View more...', profiles_library_artists_albums_plays_path, class: 'btn btn-primary btn-sm'
+
+        - else
+          There are no plays.

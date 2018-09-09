@@ -1,0 +1,17 @@
+- if playing_now_track.present?
+  .media.align-items-center
+    .mr-2
+      = image_tag playing_now_track.artist_image, class: 'img-sm rounded-circle'
+    .media-body.d-flex.align-items-center.justify-content-between
+      #track-data.mr-2
+        %h5.mb-0
+          %strong
+            = link_to playing_now_track.title, '#'
+        %h6.mb-0
+          = link_to playing_now_track.artist_name, artist_path(artist_name: playing_now_track.artist_name)
+      #track-options
+        = button_to player_stop_path, class: 'btn-transp', method: :get, remote: true do
+          %i.fas.fa-times
+- else
+  %h6
+    Nothing is playing now.

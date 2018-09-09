@@ -1,0 +1,27 @@
+= render 'shared/messages/flash'
+
+- if current_profile.lastfm_id.present?
+
+  - if params[:lastfm_data].present?
+    = render 'connections/lastfm/account'
+
+  .d-flex.justify-content-between.align-items-center.flex-wrap
+    .media.align-items-center
+      %i.fab.fa-lastfm-square.fa-2x.mr-2{ data: { toggle: 'tooltip', placement: 'top'}, title: 'Last.fm' }
+      .media-body
+        %h5.mb-1
+          = link_to current_profile.lastfm_id, "https://last.fm/user/#{current_profile.lastfm_id}", target: '_blank'
+    #lastfm-connect-btns.d-flex
+      .mr-2
+        = button_to 'Import library*', lastfm_import_path, class: 'btn btn-primary', method: :get, remote: true
+      = button_to 'Disconnect', lastfm_disconnect_path, class: 'btn btn-danger', method: :patch, remote: true
+
+  %hr.my-2
+
+  .small
+    = t('connections.lastfm.info.first')
+- else
+  .text-center
+    = link_to '/auth/lastfm', class: 'btn btn-primary btn-lastfm' do
+      %i.fab.fa-lastfm
+      Connect Last.fm account

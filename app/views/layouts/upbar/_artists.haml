@@ -1,0 +1,45 @@
+- if @artist.present?
+  .up.media
+    = image_tag @artist.image
+    .media-body
+      = link_to @artist.name, artist_path
+
+  - if params[:action] == 'images'
+    .up.media
+      .media-body
+        %i.fas.fa-images
+        = link_to 'Images', artists_images_path
+  - elsif params[:action] == 'tags'
+    .up.media
+      .media-body
+        %i.fas.fa-tag
+        = link_to 'Tags', artists_tags_path
+  - elsif params[:action] == 'wiki'
+    .up.media
+      .media-body
+        %i.fas.fa-info-circle
+        = link_to 'Wiki', artists_wiki_path
+  - elsif params[:action] == 'tracks'
+    .up.media
+      %i.fas.fa-music
+      .media-right
+        = link_to 'Tracks', artists_tracks_path
+  - elsif params[:action] == 'similar_artists'
+    .up.media
+      .media-body
+        = link_to 'Similar artists', artists_similar_artists_path
+  - elsif params[:action] == 'listeners'
+    .up.media
+      .media-body
+        %i.fas.fa-user
+        = link_to 'Listeners', artists_listeners_path
+  - elsif params[:action] == 'plays'
+    .up.media
+      .media-body
+        %i.fas.fa-play
+        = link_to 'Plays', artists_plays_path
+
+- else
+  .up.media
+    .media-body
+      Not found

@@ -1,0 +1,14 @@
+%h5
+  = link_to "Loved tracks (#{@profile.loved_tracks_count}):", profiles_library_loved_tracks_path
+
+.separator.default.my-2
+
+- if @loved_tracks.any?
+  %table.table.table-hover.table-sm
+    = render partial: 'profiles/library/loved_tracks/loved_track', collection: @loved_tracks
+
+  - if @profile.loved_tracks_count > 10
+    .text-right
+      = link_to 'View more...', profiles_library_loved_tracks_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no loved tracks.

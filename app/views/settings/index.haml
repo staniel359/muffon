@@ -1,0 +1,45 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-cog
+      Settings
+
+    %hr.my-3
+
+    %h5
+      Primary information
+
+    .separator.default.my-2
+
+    #primary-settings
+      = render 'profiles/forms/primary'
+
+    %hr.my-3
+
+    %h5
+      Additional information
+
+    .separator.default.my-2
+
+    #additional-settings
+      = render 'profiles/forms/additional'
+
+    %hr.my-3
+
+    %h5
+      Connected accounts
+
+    .separator.default.my-2
+
+    #lastfm-connect
+      = render 'connections/lastfm/section'
+    
+    %hr.my-3
+
+    %h5
+      Delete account
+
+    .separator.default.my-2
+
+    = button_tag 'Delete account', data: { toggle: 'modal', target: '#destroy-profile-modal' }, class: 'btn btn-danger'
+    = render 'profiles/modals/destroy'

@@ -7,6 +7,8 @@ class Tagging < ApplicationRecord
   after_create_commit :increment_profile_tag_counter
   after_destroy_commit :decrement_profile_tag_counter
 
+  scope :associated, -> { includes(:taggable, [profile_tag: :tag]) }
+
   def increment_profile_tag_counter
     profile_tag.increment!("#{taggable_type.downcase}_taggings_count")
   end

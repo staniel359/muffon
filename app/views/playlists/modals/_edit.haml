@@ -1,0 +1,14 @@
+#edit-playlist-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title
+          Edit playlist
+      = form_for @playlist, url: profiles_playlist_path, method: :patch, remote: true do |f|
+        .modal-body.row
+          .col-2
+            = f.label :name, 'Name:'
+          .col-10
+            = f.text_field :name, class: 'input-transp', required: true, autocomplete: 'off', autofocus: true
+        .modal-footer
+          = f.submit 'Save', class: 'btn btn-light'

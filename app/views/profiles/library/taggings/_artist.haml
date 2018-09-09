@@ -1,0 +1,7 @@
+%tr
+  %td.media.align-items-center
+    .mr-2
+      = image_tag tagging.model_image, class: 'img-sm rounded-circle'
+    .media-body
+      %h5.mb-0
+        = link_to tagging.model_name, artist_path(tagging.model_name)

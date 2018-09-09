@@ -1,7 +1,7 @@
 class FeedController < ApplicationController
-  before_action :set_title
-
-  def index; end
+  def index
+    set_title
+  end
 
 private
 

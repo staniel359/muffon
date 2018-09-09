@@ -1,18 +1,13 @@
 module Artists
-  class TracksController < ApplicationController
-    before_action :set_artist, :set_title
+  class TracksController < ArtistsController
+    before_action :set_artist, :check_correct_artist
 
     def index
-      @pagy, @tracks = tracks
+      set_tracks
+      set_title
     end
 
   private
-
-    def set_artist
-      @artist = Muffon::Processor::Artist.call(
-        params.slice(:artist_name)
-      )
-    end
 
     def set_title
       @title = t(
@@ -21,19 +16,14 @@ module Artists
       )
     end
 
-    def tracks
-      pagy_dynamic_array(processed_tracks, 1000, 50)
+    def set_tracks
+      @tracks = paginate_array(processed_tracks, 1000, 50)
+
+      redirect_to artists_tracks_path if @tracks.empty?
     end
 
     def processed_tracks
       Muffon::Processor::Tracks.call(
-        tracks:    tracks_data,
-        artist_id: @artist.id
-      )
-    end
-
-    def tracks_data
-      LastFM::Artist::Tracks.call(
         params.slice(:artist_name, :page)
       )
     end

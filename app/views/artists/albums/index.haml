@@ -1,0 +1,21 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      %i.fas.fa-dot-circle
+      Albums:
+
+    .separator.default.my-2
+
+    .row
+      - @albums.each do |album|
+        .col-6.col-sm-4.col-md-3
+          = render 'artists/album', album: album.decorate
+    %nav
+      %ul.pagination
+        - if params[:page].to_i > 1
+          %li.page-item
+            = link_to_prev_page @albums, '< Prev', class: 'page-link'
+        %li.page-item
+          = link_to_next_page @albums, 'Next >', class: 'page-link'

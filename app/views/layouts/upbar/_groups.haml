@@ -1,0 +1,16 @@
+.up.media
+  .media-body
+    %i.fas.fa-users
+    = link_to 'Groups', groups_path
+
+- unless params[:action] == 'index'
+  .up.media
+    = image_tag @group.avatar.url(:sm)
+    .media-body
+      = link_to @group.name, @group
+
+  - if params[:action] == 'members'
+    .up.media
+      .media-body
+        %i.fas.fa-user
+        = link_to 'Members', groups_members_path

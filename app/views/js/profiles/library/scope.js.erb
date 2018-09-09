@@ -1,9 +1,0 @@
-<% unless params[:default] %>
-  $("#library-<%= params[:collection] %>-section").html(
-    "<%= j render 'partials/profiles/library/sections/' + params[:collection] %>"
-  );
-<% else %>
-  $("#<%= params[:collection] %>-scope-save-btn").html(
-    "<%= j render 'partials/profiles/library/scope/save_btn', collection: params[:collection] %>"
-  );
-<% end %>

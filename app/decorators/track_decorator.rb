@@ -5,7 +5,17 @@ class TrackDecorator < Draper::Decorator
     artist.name
   end
 
-  def image
+  def artist_image
     artist.decorate.image
+  end
+
+  def duration
+    return unless object.duration.present?
+
+    Time.at(object.duration).strftime('%M:%S')
+  end
+
+  def first_album
+    Album.find_by(id: album_ids.first).decorate
   end
 end

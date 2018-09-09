@@ -1,0 +1,6 @@
+#library-search-form-wrap.position-sticky.w-100.z-10
+  #library-search-form.card.position-absolute.px-3.py-2.w-100
+    = form_tag profiles_library_search_path, method: :get, remote: true, id: 'library-search-submit-form' do
+      = text_field_tag :q, params[:q], placeholder: "Search in your library:", class: 'input-transp', autocomplete: 'off'
+      = submit_tag 'Search', name: nil, class: 'd-none'
+    #library-search-results-wrap

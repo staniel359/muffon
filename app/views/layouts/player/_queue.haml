@@ -1,0 +1,23 @@
+- if enqueued_tracks.present?
+  %table.table.table-hover.table-sm
+    - enqueued_tracks.decorate.each do |track|
+      %tr
+        %td.media.align-items-center#track{ id: track.id }
+          .mr-2
+            .play_button.no_padding
+              = button_to play_path(artist: track.artist.name, track: track.title), remote: true, class: 'btn btn-primary btn-sm play_btn', method: :get do
+                %i.fas.fa-play
+            = image_tag track.artist.artist_image, class: 'img_rnd img_30'
+          .media-body.d-flex.align-items-center.justify-content-between
+            #track-data
+              %h5
+                %strong 
+                  = track.title
+              %h6
+                = link_to track.artist_name, artist_path(track.artist_name)
+            = button_to delete_from_queue_path(track_id: track.id), class: 'btn-transp', method: :delete, remote: true do
+              %i.fas.fa-times
+            
+- else
+  %h6
+    Queue is empty.

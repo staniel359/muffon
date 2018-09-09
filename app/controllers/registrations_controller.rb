@@ -1,20 +1,17 @@
-class RegistrationsController < ProfilesController
-  before_action :set_title
+class RegistrationsController < ApplicationController
+  before_action :set_new_profile, except: :update
 
-  def show
+  def index
     should_logout
-    @profile = new_profile
     respond_with_js_and_html
   end
 
-  def new
-    @profile = new_profile
+  def show
     respond_with_js
   end
 
   def create
-    @profile = new_profile
-    create_profile if @profile.update(primary_params)
+    create_profile if @new_profile.update(primary_params)
     respond_with_js
   end
 
@@ -28,22 +25,15 @@ class RegistrationsController < ProfilesController
 
 private
 
-  def set_title
-    @title = t("registrations.#{params[:action]}")
-  end
-
-  def new_profile
-    if params[:lastfm_data].present?
-      set_lastfm_profile
-    else
-      Profile.new
-    end
+  def set_new_profile
+    @new_profile =
+      params[:lastfm_data].present? ? set_lastfm_profile : Profile.new
   end
 
   def set_lastfm_profile
     if lastfm_profile.present?
       redirect_to login_path
-      flash[:warning] = t('registrations.lastfm_signed_up')
+      flash[:warning] = t('registrations.lastfm.fail')
     else
       Profile.new(lastfm_params)
     end
@@ -65,8 +55,26 @@ private
   end
 
   def create_profile
-    @profile.update(profile_params)
-    log_in(@profile.id)
+    @new_profile.update(profile_params)
+    log_in(@new_profile.id)
     remember_profile
+  end
+
+  def primary_params
+    params.require(:profile).permit(primary_params_list)
+  end
+
+  def primary_params_list
+    %i[password password_confirmation email lastfm_id nickname]
+  end
+
+  def profile_params
+    params.require(:profile).permit(
+      primary_params_list + profile_params_list
+    )
+  end
+
+  def profile_params_list
+    %i[avatar remote_avatar_url name gender country city birthdate]
   end
 end

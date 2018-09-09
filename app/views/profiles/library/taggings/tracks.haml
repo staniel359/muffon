@@ -1,0 +1,18 @@
+.card
+  .card-body
+    = render 'profiles/library/panel_header'
+
+    = render 'panel_header'
+
+    %h5
+      = "Tracks (#{@profile_tag.track_taggings_count}):"
+
+    .separator.default.my-2
+
+    - if @track_taggings.any?
+      %table.table.table-hover.table-sm.mb-2
+        - @track_taggings.decorate.each do |track|
+          = render 'track'
+      = paginate @track_taggings
+    - else
+      There are no taggings.

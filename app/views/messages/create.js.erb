@@ -1,0 +1,8 @@
+<% if @message.persisted? %>
+  $('#conversation-messages').append(
+    "<%= j render 'message', message: @message %>"
+  )
+  $('input[id="message_content"]').val('')
+  scrollToConversationBottom();
+  $('#message-modal .modal-content').html("<%= j render 'messages/modals/sent' %>");
+<% end %>

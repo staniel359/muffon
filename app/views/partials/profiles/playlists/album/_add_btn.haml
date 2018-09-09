@@ -1,6 +1,0 @@
-- if album.in_playlist?(params[:playlist_id])
-  = button_to profiles_playlists_profile_album_path(playlist_id: params[:playlist_id], profile_album_id: album.id, page: params[:page]), class: 'btn btn-light btn-sm btn-30', method: :delete, remote: true do
-    %i.fas.fa-check
-- else
-  = button_to profiles_playlists_profile_albums_path(playlist_id: params[:playlist_id], profile_album_id: album.id, page: params[:page]), class: 'btn btn-primary btn-sm btn-30', remote: true do
-    %i.fas.fa-plus

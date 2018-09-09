@@ -1,0 +1,11 @@
+.card
+  %ul.nav.nav-fill
+    %li.nav-item
+      = link_to 'Log in', '#login', class: 'nav-link active', data: { toggle: 'tab' }
+    %li.nav-item
+      = link_to 'Sign up', '#signup', class: 'nav-link', data: { toggle: 'tab' }
+  .card-body.tab-content
+    #login.tab-pane.in.active
+      = render 'sessions/login_form'
+    #signup.tab-pane
+      = render 'registrations/signup_btns'

@@ -1,0 +1,23 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    .d-flex.justify-content-between.align-items-center
+
+      #playlist-name-play-action.d-flex.align-items-center
+        %h1.font-light.ml-3.mr-3.mb-0
+          = @playlist.name
+        #playlist-play-action
+          = render 'play_btn'
+
+      #playlist-profile-actions
+        - if current_profile?(@profile)
+          = render 'dropdown'
+
+    .separator.default.my-2
+    
+    #playlist-tracks
+      = render 'tracks'
+
+= render 'playlists/modals/search'
+= render 'playlists/modals/edit'

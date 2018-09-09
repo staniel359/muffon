@@ -1,0 +1,15 @@
+%h5
+  = link_to "Artists (#{@profile_tag.artist_taggings_count}):", profiles_library_taggings_artists_path
+
+.separator.default.my-2
+
+- if @artist_taggings.any?
+  %table.table.table-hover.table-sm.mb-2
+    - @artist_taggings.limit(5).decorate.each do |artist|
+      = render 'artist', tagging: artist
+
+  - if @profile_tag.artist_taggings_count > 5
+    .text-right
+      = link_to 'View more...', profiles_library_taggings_artists_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no taggings.

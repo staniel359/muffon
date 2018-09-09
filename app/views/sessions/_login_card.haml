@@ -1,0 +1,11 @@
+.card
+  .card-body
+    %h4 Log in
+
+    .separator.default.mt-3.mb-3
+
+    = render 'login_form'
+
+    %h6.text-center.mt-2.mb-0
+      = link_to registrations_path, remote: true, class: 'btn btn-link text-white' do
+        = t('sessions.signup')

@@ -1,0 +1,14 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    .media
+      = render 'scrollspy'
+      .media-body
+        #followers.anchor
+        = render 'followers'
+
+        %hr.my-3
+
+        #following.anchor
+        = render 'following'

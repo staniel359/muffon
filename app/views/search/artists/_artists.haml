@@ -1,0 +1,30 @@
+- if params[:q].present?
+  %h5
+    Search results for
+    %strong
+      = "\"#{params[:q]}\""
+    \:
+
+  .separator.default.my-2
+
+  %h5
+    Artists:
+
+  .separator.default.my-2
+
+  - if @artists.any?
+    .row
+      - @artists.each do |artist|
+        .col-6.col-sm-4.col-md-3
+          = render 'artist', artist: artist.decorate
+    %nav
+      %ul.pagination
+        - if params[:page].to_i > 1
+          %li.page-item
+            = link_to_prev_page @artists, '< Prev', class: 'page-link'
+        - if @artists.length == 20
+          %li.page-item
+            = link_to_next_page @artists, 'Next >', class: 'page-link'
+  - else
+    %h6
+      Nothing was found.

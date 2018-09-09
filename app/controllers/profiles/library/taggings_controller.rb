@@ -2,30 +2,38 @@ module Profiles
   module Library
     class TaggingsController < ApplicationController
       before_action :set_profile
-      before_action :set_profile_tag, except: :index
-      before_action :set_title
+      before_action :set_profile_tag, :set_title, except: :index
 
       def index
-        @pagy, @profile_tags = pagy(profile_tags)
+        set_profile_tags
+        set_title
       end
 
       def show
-        @taggings = taggings
+        set_artist_taggings
+        set_album_taggings
+        set_track_taggings
       end
 
       def artists
-        @pagy, @taggings = pagy(artist_taggings)
+        set_artist_taggings
       end
 
       def albums
-        @pagy, @taggings = pagy(album_taggings)
+        set_album_taggings
       end
 
       def tracks
-        @pagy, @taggings = pagy(track_taggings)
+        set_track_taggings
       end
 
     private
+
+      def set_profile_tags
+        @profile_tags = paginate(
+          @profile.profile_tags.associated.taggings_count_desc, 20
+        )
+      end
 
       def set_title
         @title = t(
@@ -41,28 +49,22 @@ module Profiles
         )
       end
 
-      def profile_tags
-        @profile.profile_tags.includes(:tag).taggings_count_desc
+      def set_artist_taggings
+        @artist_taggings = paginate(
+          @profile_tag.artist_taggings.associated.created_desc, 20
+        )
       end
 
-      def taggings
-        {
-          artists: artist_taggings.first(5),
-          albums:  album_taggings.first(5),
-          tracks:  track_taggings.first(5)
-        }
+      def set_album_taggings
+        @album_taggings = paginate(
+          @profile_tag.album_taggings.associated.created_desc, 20
+        )
       end
 
-      def artist_taggings
-        @profile_tag.artist_taggings.includes(:taggable).created_desc
-      end
-
-      def album_taggings
-        @profile_tag.album_taggings.includes(:taggable).created_desc
-      end
-
-      def track_taggings
-        @profile_tag.track_taggings.includes(:taggable).created_desc
+      def set_track_taggings
+        @track_taggings = paginate(
+          @profile_tag.track_taggings.associated.created_desc, 20
+        )
       end
     end
   end

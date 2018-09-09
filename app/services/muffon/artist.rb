@@ -8,7 +8,8 @@ module Muffon
 
     def retrieve_artist_data
       [
-        artist_data[:base], top_tracks_hash, top_albums_hash
+        artist_data[:base], top_tracks_hash,
+        top_albums_hash, similar_artists_hash
       ].inject(:merge)
     end
 
@@ -26,40 +27,68 @@ module Muffon
     end
 
     def scopes_list
-      %w[base top_tracks top_albums]
+      %w[base top_tracks top_albums similar_artists]
     end
 
     def call_service(scope)
-      services_hash[scope].call(
-        artist_name: @args.artist_name
+      services_hash[scope].constantize.call(
+        artist_name: @args.artist_name,
+        limit:       limits[scope]
       )
     end
 
     def services_hash
       {
-        'base'       => ::LastFM::Artist,
-        'top_tracks' => ::LastFM::Artist::Tracks,
-        'top_albums' => ::LastFM::Artist::Albums
+        'base'            => '::LastFM::Artist',
+        'top_tracks'      => '::LastFM::Artist::Tracks',
+        'top_albums'      => '::LastFM::Artist::Albums',
+        'similar_artists' => '::LastFM::Artist::SimilarArtists'
+      }
+    end
+
+    def limits
+      {
+        'top_tracks'      => 10,
+        'top_albums'      => 6,
+        'similar_artists' => 6
       }
     end
 
     def top_tracks_hash
-      return {} unless artist_data[:top_tracks].present?
-
       {
-        top_tracks:            artist_data[:top_tracks].first(10),
+        top_tracks:            top_tracks_sorted,
         top_track_plays_count: top_track_plays_count
       }
     end
 
+    def top_tracks_sorted
+      return [] unless artist_data[:top_tracks].present?
+
+      artist_data[:top_tracks].sort_by do |t|
+        t[:lastfm_plays_count]
+      end.reverse
+    end
+
     def top_track_plays_count
+      return unless artist_data[:top_tracks].present?
+
       artist_data[:top_tracks].first[:lastfm_plays_count]
     end
 
     def top_albums_hash
-      return {} unless artist_data[:top_albums].present?
+      { top_albums: top_albums_sorted }
+    end
 
-      { top_albums: artist_data[:top_albums].first(4) }
+    def top_albums_sorted
+      return [] unless artist_data[:top_albums].present?
+
+      artist_data[:top_albums].sort_by do |a|
+        a[:lastfm_plays_count]
+      end.reverse
+    end
+
+    def similar_artists_hash
+      { similar_artists: artist_data[:similar_artists] }
     end
   end
 end

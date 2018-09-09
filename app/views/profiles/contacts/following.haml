@@ -1,0 +1,16 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      = "Following (#{@followings.total_count}):"
+
+    .separator.default.my-2
+
+    - if @followings.any? 
+      %table.table.table-hover
+        - @followings.each do |following|
+          = render 'profiles/profile', profile: following
+      = paginate @followings
+    - else
+      There are no followed profiles.

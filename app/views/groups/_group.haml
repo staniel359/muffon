@@ -1,0 +1,13 @@
+%tr
+  %td.media.align-items-center
+    .mr-2
+      = link_to group do
+        = image_tag group.avatar.url(:sm), class: 'rounded-circle'
+    .media-body.d-flex.align-items-center.justify-content-between
+      .group-info
+        %h5.mb-0
+          = link_to group.name, group
+        %h6.text-muted#group-members-count{ id: group.id }
+          = pluralize(group.members_count, 'member')
+      #membership-btn{ id: group.id }
+        = render 'memberships/membership_btn', group_id: group.id

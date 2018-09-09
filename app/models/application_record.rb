@@ -6,4 +6,5 @@ class ApplicationRecord < ActiveRecord::Base
   scope :updated_desc,     -> { reorder(updated_at: :desc, id: :desc) }
   scope :plays_count_desc, -> { reorder(plays_count: :desc, id: :desc) }
   scope :plays_count_asc,  -> { reorder(plays_count: :asc, id: :asc) }
+  scope :random,           -> { reorder(Arel.sql('random()')) }
 end

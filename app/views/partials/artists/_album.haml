@@ -1,9 +1,0 @@
-= link_to artists_album_path(artist_name: @artist.name, album_title: album.title) do
-  .mb-1
-    = image_tag album.cover, class: 'img-fluid'
-  %h5.mb-0
-    %strong
-      = album.title
-%small
-  %i.fas.fa-music
-  = number_with_delimiter(album.lastfm_plays_count)

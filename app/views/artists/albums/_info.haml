@@ -1,0 +1,21 @@
+.d-sm-flex.justify-content-sm-between
+  #album-title-main
+    %h4.mb-0
+      = @album.title
+    %h5.mb-1
+      = link_to @artist.name, @artist
+    %h6.mb-2.text-muted
+      = @album.release_date
+  #album-play-btn-main.d-none.d-sm-block
+    = button_to player_play_path, class: 'btn btn-light btn-sm', method: :get, remote: true do
+      %i.fas.fa-play.mr-1
+      Play album
+
+= render 'lastfm_listeners_plays'
+= render 'labels'
+= render 'tags'
+= render 'description'
+
+%hr.my-3
+
+= render 'muffon_listeners_plays'

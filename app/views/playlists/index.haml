@@ -1,0 +1,54 @@
+.card
+  .card-body
+    .d-flex.align-items-center.justify-content-between
+      %h4.mb-0
+        %i.fas.fa-list-ul
+        Playlists
+
+    %hr.my-3
+
+    .d-flex.justify-content-between
+      = link_to profiles_playlists_path(current_profile), class: 'btn btn-primary' do
+        %i.fas.fa-list-ul
+        Your playlists
+      = button_tag class: 'btn btn-primary', data: { toggle: 'modal', target: '#new-playlist-modal' } do
+        %i.fas.fa-plus
+        Create playlist
+
+    %hr.my-3
+
+    - if @playlists.any?
+      %table.table.table-hover
+        - @playlists.each do |playlist|
+          %tr
+            %td
+              .d-flex.justify-content-between.align-items-center
+                #playlist-data
+                  %h4.mb-0
+                    = link_to playlist.name, profiles_playlist_path(profile_id: playlist.profile_id, playlist_name: playlist.name)
+                  %h6.mb-0.text-muted
+                    = pluralize(playlist.tracks_count, 'track')
+                  .small.d-sm-none.mt-1
+                    = playlist.created_at.strftime('%e %b %Y, %H:%M')
+                #playlist-options.d-flex.flex-row.align-items-center
+                  .d-none.d-sm-block
+                    .d-flex.flex-column.text-right.mr-2
+                      .small
+                        = playlist.created_at.strftime('%e %b %Y')
+                      .small
+                        = playlist.created_at.strftime('%H:%M')
+
+              .separator.default.my-2
+
+              = link_to playlist.profile do
+                .media.align-items-center
+                  .mr-2
+                    = image_tag playlist.profile.avatar.url(:xs), class: 'rounded-circle'
+                  .media-body
+                    %h6
+                      = playlist.profile.nickname
+      = paginate @playlists
+    - else
+      There are no playlists yet.
+
+= render 'playlists/modals/new'

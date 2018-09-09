@@ -1,0 +1,21 @@
+.card
+  .card-body
+    = render 'profiles/library/panel_header'
+
+    = render 'panel_header'
+
+    .media
+      = render 'scrollspy'
+      .media-body
+        #artists.anchor
+        = render 'artists'
+
+        .my-3
+
+        #albums.anchor
+        = render 'albums'
+
+        .my-3
+
+        #tracks.anchor
+        = render 'tracks'

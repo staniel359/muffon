@@ -1,10 +1,6 @@
 module ApplicationHelper
-  def start_page?
-    params[:action] == 'start' && !logged_in?
-  end
-
   def page_title
-    current_page?(root_url) ? 'muffon' : "#{@title} | muffon"
+    start_page? ? 'muffon' : "#{@title} | muffon"
   end
 
   def profiles_playlists_pagination_params
@@ -16,6 +12,11 @@ module ApplicationHelper
   end
 
 private
+
+  def start_page?
+    params[:controller].in?(%w[registrations sessions]) ||
+      params[:action] == 'start'
+  end
 
   def ids_params
     %i[

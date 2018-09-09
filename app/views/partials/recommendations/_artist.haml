@@ -1,7 +1,0 @@
-.position-relative.mb-2
-  .position-absolute.z-10
-    = button_to recommendation_path(recommendation_id: recommendation.id), class: 'btn-transp', id: "recommendation-delete-btn_#{recommendation.id}", method: :delete, remote: true, data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Delete recommendation' do
-      %i.fas.fa-times
-  = render 'partials/artists/actions', artist: recommendation.artist
-  = link_to recommendation.artist_name do
-    = image_tag recommendation.artist_image, class: 'rounded-circle img-fluid position-relative w-100'

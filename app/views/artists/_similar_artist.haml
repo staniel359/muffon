@@ -1,0 +1,17 @@
+.card.dark.mb-3.similar-artist-card
+	.card-body.row
+		.col-12.col-sm-4.col-xl-3
+			.position-relative
+				= render 'actions', artist: similar_artist
+				= link_to artist_path(similar_artist.name) do
+					= image_tag similar_artist.image, class: 'rounded-circle img-fluid position-relative w-100 mb-2'
+
+		.col-12.col-sm-8.col-xl-9
+			%h4.mb-1
+				= link_to similar_artist.name, artist_path(similar_artist.name)
+			= render 'lastfm_listeners_plays', artist: similar_artist
+			= render 'tags', artist: similar_artist
+
+			.separator.default.my-2
+
+			= render 'description', artist: similar_artist

@@ -1,0 +1,45 @@
+.row
+  .col-4.col-sm-3
+    .mb-3
+      = image_tag @group.avatar.url(:lg), class: 'rounded-circle img-fluid w-100'
+    .d-flex.flex-column.align-items-center
+      #membership-btn{ id: @group.id }
+        = render 'memberships/membership_btn', group_id: @group.id
+
+      - if @group.owner?(current_profile.id)
+        .mt-2
+          = button_tag class: 'btn btn-primary btn-sm', data: { toggle: 'modal', target: '#edit-group-modal' } do
+            %i.fas.fa-edit
+            Edit
+        = render 'groups/modals/edit'
+
+  .col-8.col-sm-9
+    %h4.mb-1
+      = @group.name
+    %h6.text-muted#group-members-count{id: @group.id}
+      = pluralize(@group.members_count, 'member')
+
+    .separator.default.my-2
+
+    - if @group.description.present?
+      = @group.description
+    - else
+      .text-muted
+        No description available.
+
+    %hr.my-2
+
+    .media.align-items-center
+      .mr-2
+        = image_tag @group.owner.avatar.url(:xs), class: 'rounded-circle'
+      .media-body
+        %h6.mb-0
+          = link_to @group.owner.nickname, @group.owner
+        .small.mb-1
+          (creator)
+
+    .d-none.d-sm-block
+      = render 'members'
+
+  .col-12.d-sm-none
+    = render 'members'

@@ -1,0 +1,41 @@
+.card#conversation{ id: @conversation.id }
+	.card-body
+		.d-flex.align-items-center.justify-content-between
+			%h4.mb-0
+				%i.fas.fa-comments
+				Conversations
+
+			.media.align-items-center
+				- if @other_member.present?
+					.mr-2
+						= image_tag @other_member.avatar.url(:xs), class: 'rounded-circle'
+					.media-body
+						%h5.mb-1
+							= link_to @other_member.nickname, @other_member
+				- else
+					.mr-2
+						= image_tag 'xs_avatar_default', class: 'rounded-circle'
+					.media-body
+						%h5.text-muted
+							Deleted profile
+
+		.separator.default.my-3
+
+		= hidden_field_tag :conversation_id, @conversation.id
+		= hidden_field_tag :conversation_current_profile_id, current_profile.id
+		= hidden_field_tag :conversation_next_page, 2
+		#conversation-messages.pr-3.mb-3
+			= render partial: 'messages/message', collection: @messages.reverse
+
+		%hr.mb-3
+
+		.media.align-items-center
+			.mr-2
+				= image_tag current_profile.avatar.url(:sm), class: 'rounded-circle'
+			.media-body
+				- if @other_member.present?
+					= form_for current_profile.messages.new, remote: true do |f|
+						= f.text_field :content, class: 'input-transp', placeholder: 'Enter your message:', autocomplete: 'off'
+						= hidden_field_tag :recipient_id, @other_member.id
+				- else
+					You cannot have conversation with deleted profile.

@@ -1,0 +1,17 @@
+.card.mb-3
+  .card-body
+    = form_for current_profile, url: lastfm_update_path, method: :patch, remote: true do |f|
+      = f.hidden_field :nickname, value: params[:lastfm_data]['nickname']
+      = f.hidden_field :name, value: params[:lastfm_data]['name']
+      = f.hidden_field :country, value: params[:lastfm_data]['country']
+      = f.hidden_field :remote_avatar_url, value: params[:lastfm_data]['remote_avatar_url']
+      .media
+        .mr-2
+          = image_tag params[:lastfm_data]['remote_avatar_url'], class: 'img-sm rounded-circle'
+        .media-body.d-flex.justify-content-between.align-items-center
+          #lastfm-account-data
+            %h5
+              = params[:lastfm_data][:nickname]
+            %h6
+              = params[:lastfm_data].as_json.values_at('name', 'country').join(', ')
+          = f.submit 'Update profile', class: 'btn btn-light'

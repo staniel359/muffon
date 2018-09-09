@@ -1,0 +1,15 @@
+%h5
+  = link_to 'Top tracks:', artists_tracks_path(@artist.name)
+
+.separator.default.my-2
+
+- if @artist.top_track_ids.any?
+  %table.table.table-hover.table-sm
+    - @artist.top_tracks.each do |track|
+      = render 'track', track: track.decorate
+
+  - if @artist.top_track_ids.length >= 10
+    .mt-2.text-right
+      = link_to 'View more...', artists_tracks_path(@artist.name), class: 'btn btn-primary btn-sm'
+- else
+  There are no tracks.

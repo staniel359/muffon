@@ -1,0 +1,12 @@
+.d-flex.align-items-center.justify-content-between
+  %h4.mb-0
+    %i.fas.fa-list-ul
+    Playlists
+  .media
+    .mr-2
+      = image_tag @profile.avatar.url(:xs), class: 'rounded-circle'
+    .media-body
+      %h5
+        = link_to @profile.nickname, @profile
+
+%hr.my-3

@@ -1,0 +1,9 @@
+<% unless params[:default] %>
+  $("#library-<%= params[:collection] %>-section").html(
+    "<%= j render params[:collection] %>"
+  );
+<% else %>
+  $("#<%= params[:collection] %>-scope-save-btn").html(
+    "<%= j render 'save_scope_btn', collection: params[:collection] %>"
+  );
+<% end %>

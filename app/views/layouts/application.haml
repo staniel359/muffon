@@ -3,6 +3,7 @@
   %head
     %title
       = page_title
+    = favicon_link_tag
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag 'application', 'https://use.fontawesome.com/releases/v5.0.6/css/all.css'
@@ -18,22 +19,30 @@
     - unless start_page?
 
       #upbar-wrap
-        = render 'partials/upbar'
+        = render 'layouts/upbar'
 
     - if logged_in?
 
-      = render 'partials/sidebar'
-      = render 'partials/player/playing_now'
+      = render 'layouts/sidebar'
+      = render 'layouts/player/playing_now_panel'
 
-    .container-fluid.mt-5.pb-5.position-relative.h-100
-      = render 'partials/scroll_top_btn'
+    .container-fluid.py-5.position-relative.h-100
+      = render 'layouts/scroll_top_btn'
       .row.no-gutters
-        .col-12.col-md-10.offset-md-1.col-lg-8.offset-lg-2
+        .main-wrap
           = yield
-    = render 'partials/progress_bar' if logged_in?
+
+    - if logged_in?
+      .container-fluid.fixed-bottom.z-750
+        .row.no-gutters
+          .main-wrap
+            = render 'layouts/progress_bar'
 
     #playlists-modal-wrap
     #message-modal-wrap
 
-    = render 'partials/player/player'
-    = render 'partials/footer'
+    - if logged_in?
+      .container-fluid.fixed-bottom.z-750
+        = render 'layouts/player/player_panel'
+
+    = render 'layouts/footer'

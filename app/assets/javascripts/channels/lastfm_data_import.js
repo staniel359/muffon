@@ -11,7 +11,7 @@ App.tracks_import = App.cable.subscriptions.create("LastFMDataImportChannel", {
       processName = 'Importing loved tracks...'
       items = 'tracks'
     } else if (data['p'] == 3) {
-      processName = 'Importing tags...'
+      processName = 'Importing taggings...'
       items = 'tags'
     } else if (data['p'] == 4) {
       processName = 'Generating recommendations...'
@@ -24,6 +24,9 @@ App.tracks_import = App.cable.subscriptions.create("LastFMDataImportChannel", {
     if (total && count) {
       $("#job-progress").css("width", width + '%')
       $("#job-counter").html(count + ' of ' + total + ' ' + items)
+    } else {
+      $("#job-progress").css("width", '0%')
+      $("#job-counter").html('')
     }
 
     if (width == 100) {

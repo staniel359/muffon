@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery-ui/widgets/autocomplete
+//= require jquery-ui/widgets/slider
+//= require jquery-ui/effects/effect-slide
 //= require jquery_ujs
 //= require jquery.remotipart
 //= require popper

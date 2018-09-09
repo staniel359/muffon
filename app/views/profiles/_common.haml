@@ -1,0 +1,32 @@
+.d-flex.align-items-center
+  %h6.mb-1.mr-2
+    Your compatibility level with
+    %strong
+      = @profile.nickname
+    is
+
+  %svg#compatibility{ viewBox: '0 0 36 36' }
+    %path#compatibility-percent-background-circle{ d: 'M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831', 'stroke-dasharray': "100, 100" }
+    %path#compatibility-percent-circle{ d: 'M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831', 'stroke-dasharray': "#{@percent}, 100" }
+    %text#compatibility-text{ x: '18.5', y: '22.5' }
+      = "#{@percent}%"
+
+%h6
+  You have in common:
+
+= button_tag class: 'btn btn-primary btn-sm first_child', data: {toggle: 'popover', trigger: 'focus', placement: 'bottom', html: true, content: "#{render 'profiles/common_tooltips/artists'}"} do
+  %strong
+    = @common_artists.count
+  = 'artist'.pluralize(@common_artists.count)
+
+= button_tag class: 'btn btn-primary btn-sm mid_child', data: {toggle: 'popover', trigger: 'focus', placement: 'bottom', html: true, content: "#{render 'profiles/common_tooltips/albums'}"} do
+  %strong
+    = @common_albums.count
+  = 'album'.pluralize(@common_albums.count)
+
+= button_tag class: 'btn btn-primary btn-sm last_child', data: {toggle: 'popover', trigger: 'focus', placement: 'bottom', html: true, content: "#{render 'profiles/common_tooltips/tracks'}"} do
+  %strong
+    = @common_tracks.count
+  = 'track'.pluralize(@common_tracks.count)
+
+= button_tag 'View more...', class: 'btn btn-default btn-sm'

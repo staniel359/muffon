@@ -19,7 +19,13 @@ module Muffon
       end
 
       def artist
-        @artist ||= update_artist(@args.artist)
+        update_artist(
+          @args.artist.except(:tags).merge(tag_ids: tag_ids)
+        )
+      end
+
+      def tag_ids
+        @args.artist[:tags].map { |t| process_tag(t) }.pluck(:id)
       end
 
       def profile_artist_ids

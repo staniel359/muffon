@@ -1,0 +1,23 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    = link_to "Artists (#{@profile.artists_count}):", profiles_library_artists_path
+  #artists-scope.d-flex.align-items-center
+    .mr-2
+      = render 'library_scope', collection: 'artists'
+    #artists-scope-save-btn
+      = render 'save_scope_btn', collection: 'artists'
+
+.separator.default.my-2
+
+- if @artists.any?
+  .row
+    - @artists.each do |artist|
+      .col-6.col-sm-4
+        = render 'profiles/library/artists/artist', artist: artist
+
+  - if @profile.artists_count > 6
+    .text-right
+      = link_to 'View more...', profiles_library_artists_path, class: 'btn btn-primary btn-sm'
+
+- else
+  There are no artists.

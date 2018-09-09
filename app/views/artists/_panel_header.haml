@@ -1,0 +1,8 @@
+.media.align-items-center
+  .mr-2
+    = image_tag @artist.image, class: 'rounded-circle img-sm'
+  .media-body
+    %h4.mb-0
+      = link_to @artist.name, artist_path(@artist.name)
+
+%hr.my-3

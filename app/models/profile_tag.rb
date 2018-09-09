@@ -7,6 +7,7 @@ class ProfileTag < ApplicationRecord
   validates :profile_id, :tag_id, presence: true
 
   scope :taggings_count_desc, -> { order(taggings_count: :desc) }
+  scope :associated, -> { includes(:tag) }
 
   def artist_taggings
     taggings.where(taggable_type: 'Artist')

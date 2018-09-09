@@ -1,8 +1,8 @@
 module Profiles
   class GroupsController < ApplicationController
-    before_action :set_profile, :set_title
-
     def index
+      set_profile
+      set_title
       set_groups
     end
 

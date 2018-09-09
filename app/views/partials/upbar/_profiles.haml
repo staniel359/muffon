@@ -1,8 +1,0 @@
-.up.media
-  - if params[:action] == 'index'
-    .media-body
-      = link_to 'Profiles', profiles_path
-  - elsif params[:action] == 'show'
-    = image_tag @profile.avatar.url(:sm)
-    .media-body
-      = link_to "#{@profile.nickname}'s profile", @profile

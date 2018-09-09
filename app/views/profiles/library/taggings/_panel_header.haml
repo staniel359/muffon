@@ -1,0 +1,11 @@
+.d-flex.align-items-center
+  %h5.mr-3.mb-1
+    %i.fas.fa-tags
+    Taggings:
+
+  - unless params[:action] == 'index'
+    = link_to profiles_library_tagging_path(tag_name: @profile_tag.tag.name), class: 'btn btn-primary btn-sm' do
+      %strong
+        = @profile_tag.tag.name
+
+.separator.default.my-2

@@ -4,7 +4,7 @@ module Profiles
       before_action :set_profile, :set_title
 
       def index
-        @pagy, @plays = pagy(plays)
+        set_plays
       end
 
     private
@@ -16,9 +16,9 @@ module Profiles
         )
       end
 
-      def plays
-        @profile.plays.created_desc.includes(
-          :artist, [track: :artist], :album, :profile_track
+      def set_plays
+        @plays = paginate(
+          @profile.plays.associated.created_desc, 20
         )
       end
     end

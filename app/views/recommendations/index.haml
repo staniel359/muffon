@@ -1,0 +1,21 @@
+.card
+  .card-body
+    .d-flex.justify-content-between.align-items-center
+      %h4.mb-0
+        %i.fas.fa-volume-up
+        Recommendations
+
+      = button_tag class: 'btn btn-primary', id: 'recommendations-filter-button' do
+        %i.fas.fa-filter
+        Filter
+
+    .separator.default.my-3
+
+    #recommendations-filter-form
+      = render 'filter_form'
+
+    #recommendation-query
+      = render 'query'
+
+    #recommendations
+      = render 'recommendations'

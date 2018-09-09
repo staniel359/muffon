@@ -11,6 +11,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "#{version_name}_avatar_default.png"
   end
 
+  version :lg do
+    process resize_to_fill: [300, 300]
+  end
   version :md do
     process resize_to_fill: [120, 120]
   end

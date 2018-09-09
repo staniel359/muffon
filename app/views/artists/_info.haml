@@ -1,0 +1,21 @@
+.row#artist-info
+  .col-12.col-sm-4.col-xl-3
+    .mb-2.position-relative
+      = render 'actions', artist: @artist
+      = image_tag @artist.image.sub('300x300', '400x400'), class: 'img-fluid w-100 rounded-circle position-relative clickable', data: { toggle: 'modal', target: '#artist-image-modal' }
+    .float-right
+      = link_to 'More images...', artists_images_path(@artist.name), class: 'btn btn-link btn-sm text-white'
+
+  .col-12.col-sm-8.col-xl-9
+    %h3.mb-1
+      = @artist.name
+    = render 'lastfm_listeners_plays', artist: @artist
+    = render 'tags', artist: @artist
+
+    .separator.my-2.default
+
+    = render 'description', artist: @artist
+
+    %hr.my-3
+
+    = render 'muffon_listeners_plays'

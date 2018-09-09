@@ -16,10 +16,6 @@ class SessionsController < ApplicationController
 
 private
 
-  def set_title
-    @title = t("sessions.#{params[:action]}")
-  end
-
   def profile_can_log_in?
     profile&.authenticate(params[:session][:password])
   end

@@ -17,10 +17,7 @@ class ProfileTrackDecorator < Draper::Decorator
     ProfileAlbum.where(id: profile_album_ids)
   end
 
-  def in_playlist?(playlist_id)
-    PlaylistTrack.find_by(
-      playlist_id: playlist_id,
-      track_id:    track_id
-    )
+  def in_playlist?(track_ids)
+    id.in?(track_ids)
   end
 end

@@ -1,0 +1,5 @@
+.mb-2
+  = button_to 'Sign up', registration_path, class: 'btn btn-primary btn-block', method: :get, remote: true
+= link_to 'auth/lastfm', class: 'btn btn-lastfm btn-block' do
+  %i.fab.fa-lastfm
+  Sign up with Last.fm

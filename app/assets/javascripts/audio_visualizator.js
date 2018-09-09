@@ -1,5 +1,5 @@
 function visualizeAudio() {
-  audio = document.getElementById('audio');
+  audio = $('audio');
   audio.crossOrigin = 'anonymous'
   var context = new AudioContext();
   var src = context.createMediaElementSource(audio);

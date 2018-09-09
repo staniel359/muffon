@@ -1,0 +1,20 @@
+.card
+  .card-body
+    %h4 
+      %i.fas.fa-bookmark
+      Bookmarks
+
+    .separator.default.my-3
+
+    %h5
+      = "Artists (#{@artist_bookmarks.total_count}):"
+
+    .separator.default.my-2
+
+    - if @artist_bookmarks.any?
+      %table.table.table-hover.table-sm
+        - @artist_bookmarks.decorate.each do |artist|
+          = render 'artist', bookmark: artist
+      = paginate @artist_bookmarks
+    - else
+      There are no bookmarks.

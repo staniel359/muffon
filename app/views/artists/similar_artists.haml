@@ -1,0 +1,12 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      Similar artists:
+
+    .separator.default.my-2
+
+    - @similar_artists.each do |similar_artist|
+      = render 'similar_artist', similar_artist: similar_artist.decorate
+    = paginate @similar_artists

@@ -1,35 +1,46 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, :check_correct_artist, :set_title
+  before_action :set_artist, :check_correct_artist, :set_title,
+                except: :index
 
-  def show; end
+  def show
+    process_artist
+    check_correct_artist
+    set_title
+    set_current_artist_ids
+    set_profile_instances
+    set_taggings
+    set_profile_artist
+  end
 
   def images
-    @pagy, @images = artist_images
+    set_images
   end
 
   def tags
-    @tags = artist_tags
+    set_tags
   end
 
   def wiki; end
 
-  def similar_artists
-    @pagy, @similar_artists = artist_similar_artists
-  end
-
   def listeners
-    @listeners = artist_listeners
+    set_listeners
   end
 
   def plays
-    @plays = artist_plays
+    set_plays
+  end
+
+  def similar_artists
+    set_current_artist_ids
+    set_profile_instances
+    set_similar_artists
   end
 
 private
 
-  def set_artist
+  def process_artist
     @artist = Muffon::Processor::Artist.call(
-      params.slice(:artist_name).merge(full: true)
+      params.slice(:artist_name)
     )&.decorate
   end
 
@@ -40,8 +51,32 @@ private
     )
   end
 
-  def artist_images
-    pagy_dynamic_array(
+  def set_artist
+    find_artist || process_artist
+  end
+
+  def find_artist
+    @artist = Artist.with(
+      name: params[:artist_name]
+    ).first&.decorate
+  end
+
+  def set_current_artist_ids
+    @current_artist_ids = @artist.similar_artist_ids + [@artist.id]
+  end
+
+  def set_taggings
+    @taggings = current_profile.decorate.artist_taggings(@artist.id)
+  end
+
+  def set_profile_artist
+    @profile_artist = current_profile.profile_artists.find_by(
+      artist_id: @artist.id
+    )
+  end
+
+  def set_images
+    @images = paginate_array(
       images_data[:data], images_data[:total_count], 40
     )
   end
@@ -52,35 +87,33 @@ private
     )
   end
 
-  def artist_similar_artists
-    pagy_dynamic_array(processed_similar_artists, 200, 15)
+  def set_tags
+    @tags = LastFM::Tags.call(
+      params.slice(:artist_name).merge!(model_name: 'artist')
+    )
+  end
+
+  def set_listeners
+    @listeners = paginate(
+      @artist.listeners.created_desc, 20
+    )
+  end
+
+  def set_plays
+    @plays = paginate(
+      @artist.plays.associated.created_desc, 20
+    )
+  end
+
+  def set_similar_artists
+    @similar_artists = paginate_array(
+      processed_similar_artists, 200, 15
+    )
   end
 
   def processed_similar_artists
-    Muffon::Processor::Artists.call(
-      artists: similar_artists_data
-    )
-  end
-
-  def similar_artists_data
-    LastFM::Artist::SimilarArtists.call(
+    Muffon::Processor::SimilarArtists.call(
       params.slice(:artist_name, :page)
     )
-  end
-
-  def artist_tags
-    LastFM::Tags.call(
-      params.slice(:artist_name).merge!(
-        model_name: 'artist'
-      )
-    )
-  end
-
-  def artist_listeners
-    paginate(@artist.listeners.created_desc, 50)
-  end
-
-  def artist_plays
-    paginate(@artist.plays.created_desc, 50)
   end
 end

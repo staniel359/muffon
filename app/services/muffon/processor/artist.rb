@@ -8,7 +8,7 @@ module Muffon
     private
 
       def process_artist
-        return unless artist_data.present?
+        return unless artist_data[:name].present?
 
         artist.tap { |a| a.update(base_attributes) }.tap do |a|
           a.update(ids_attributes)
@@ -57,7 +57,7 @@ module Muffon
 
       def similar_artist_ids
         artist_data[:similar_artists].map do |a|
-          update_artist(a)
+          update_artist(a.except(:tags))
         end.pluck(:id)
       end
     end

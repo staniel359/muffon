@@ -1,0 +1,16 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-search
+      Search
+
+    %hr.my-3
+
+    = form_tag search_tracks_path, class: 'search-form', method: :get, remote: true do
+      = label_tag :q, 'Enter track or artist:'
+      = text_field_tag :q, params[:q], class: 'input-transp', autofocus: true, autocomplete: 'off'
+
+    .my-3
+
+    #search-results
+      = render 'tracks'

@@ -1,19 +1,20 @@
-$(document).on('ready turbolinks:load', function() {
+$(document).on('turbolinks:load', () => {
   $('[data-toggle="tooltip"]').tooltip();
   $('[data-toggle="popover"]').popover();
   $('iframe').attr('src', '')
   enableAvatarUploading()
   enableCountryNamesAutocomplete()
-  $('#scroll-top-btn').click(function(e) {
+  enableScrollspy()
+  $('#scroll-top-btn').click((e) => {
     $('html, body').animate({scrollTop: 0}, 300);
   })
 });
 
-$(window).scroll(function() {
+$(window).scroll(() => {
   enableScrollToTopButton();
 });
 
-function enableScrollToTopButton() {
+enableScrollToTopButton = () => {
   if (window.pageYOffset > 300) {
     $('#scroll-top-btn').fadeIn(200)
   } else {
@@ -30,7 +31,7 @@ function enableScrollToTopButton() {
   }
 };
 
-function enableAvatarUploading() {
+enableAvatarUploading = () => {
   $('#profile_avatar, #group_avatar').change(function() {
     if (this.files && this.files[0]) {
       var reader = new FileReader();
@@ -45,8 +46,21 @@ function enableAvatarUploading() {
   });
 };
 
-function enableCountryNamesAutocomplete() {
+enableCountryNamesAutocomplete = () => {
   $('#profile_country').autocomplete({
     source: $('#countries_list').data('autocomplete-source')
   })
+};
+
+enableScrollspy = () => {
+  $('body').scrollspy({ target: '.scrollspy', offset: 100 })
+  $(".scrollspy a").on('click', function(event) {
+    if (this.hash !== "") {
+      event.preventDefault();
+      var hash = this.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 300);
+    }
+  });
 };

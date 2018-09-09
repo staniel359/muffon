@@ -1,81 +1,87 @@
 class TagsController < ApplicationController
-  def index
-    @page_data = {
-      title:    title
-    }
-  end
+  before_action :set_title
+
+  def index; end
 
   def show
-    @page_data = {
-      title: title,
-      tag_data: tag_data
-    }
+    set_tag
+    set_tag_data
+    set_current_artist_ids
+    set_profile_instances
   end
 
   def artists
-    @page_data = {
-      title:   title,
-      artists: retrieve_artists
-    }
+    set_artists
+    set_profile_instances
+    set_current_artist_ids
   end
 
   def albums
-    @page_data = {
-      title:   title,
-      albums:  retrieve_albums
-    }
+    set_albums
   end
 
   def tracks
-    @page_data = {
-      title:   title,
-      tracks:  retrieve_tracks
-    }
+    set_tracks
   end
 
 private
 
-  def title
-    t(
+  def set_title
+    @title = t(
       "tags.#{params[:action]}",
       tag: params[:tag_name]
     )
   end
 
-  def tag_data
-    LastFM::Tag.call(tag_name: params[:tag_name])
-  end
-
-  def retrieve_artists
-    artists_data = tag_collection('artists')
-    paginate(
-      paginate_array(
-        artists_data[:data], artists_data[:total_count]
-      )
+  def set_tag
+    @tag = Muffon::Processor::Tag.call(
+      tag_name: params[:tag_name]
     )
   end
 
-  def tag_collection(collection)
-    "LastFM::Tag::#{collection.capitalize}".constantize.call(
-      params.slice(:name, :page)
+  def set_tag_data
+    @artists = @tag[:artists]
+    @albums  = @tag[:albums]
+    @tracks  = @tag[:tracks]
+  end
+
+  def set_current_artist_ids
+    @current_artist_ids = @artists.pluck(:id)
+  end
+
+  def set_artists
+    @artists = paginate_array(
+      artists_data[:data], artists_data[:total_count], 21
     )
   end
 
-  def retrieve_albums
-    albums_data = tag_collection('albums')
-    paginate(
-      paginate_array(
-        albums_data[:data], albums_data[:total_count]
-      )
+  def artists_data
+    @artists_data ||= Muffon::Processor::Tag::Artists.call(
+      params.slice(:tag_name, :page)
     )
   end
 
-  def retrieve_tracks
-    tracks_data = tag_collection('tracks')
-    paginate(
-      paginate_array(
-        tracks_data[:data], tracks_data[:total_count]
-      )
+  def set_albums
+    @albums = paginate_array(
+      albums_data[:data], albums_data[:total_count], 20
+    )
+  end
+
+  def albums_data
+    @albums_data ||= Muffon::Processor::Tag::Albums.call(
+      params.slice(:tag_name, :page)
+    )
+  end
+
+  def set_tracks
+    @tracks = paginate_array(
+      tracks_data[:data], tracks_data[:total_count], 50
+    )
+  end
+
+  def tracks_data
+    @tracks_data ||= Muffon::Processor::Tag::Tracks.call(
+      params.slice(:tag_name, :page)
     )
   end
 end

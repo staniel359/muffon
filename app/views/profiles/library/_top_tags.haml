@@ -1,0 +1,20 @@
+%h5
+  = link_to 'Top tags:', profiles_library_tags_path
+
+.separator.default.my-2
+
+- if @top_tags.any?
+  .mb-2
+    - @top_tags.each do |tag|
+      = link_to profiles_library_tag_path(tag_name: tag[0]), class: 'tag' do
+        %strong.d-inline
+          = tag[0]
+        .small.d-inline
+          = "(#{tag[1]})"
+
+  - if @top_tags.length >= 15
+    .text-right
+      = link_to "View more...", profiles_library_tags_path, class: 'btn btn-primary btn-sm'
+
+- else
+  There are no tags.

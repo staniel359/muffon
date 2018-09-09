@@ -1,0 +1,26 @@
+.card
+  .card-body
+    .d-flex.align-items-center.justify-content-between
+      %h4.mb-0
+        %i.fas.fa-users.mr-1
+        Groups
+
+    %hr.my-3
+
+    .d-flex.justify-content-between
+      = link_to profiles_groups_path(current_profile), class: 'btn btn-primary' do
+        %i.fas.fa-users
+        Your groups
+      = button_tag class: 'btn btn-primary', data: { toggle: 'modal', target: '#new-group-modal'} do
+        %i.fas.fa-plus
+        Create group
+
+    %hr.my-3
+
+    - if @groups.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'group', collection: @groups
+    - else
+      There are no groups.
+
+= render 'groups/modals/new'

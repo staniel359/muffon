@@ -1,0 +1,25 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-tag
+      Tags
+
+    %hr.my-3
+
+    %h1.font-light.ml-4.mb-0
+      = params[:tag_name]
+
+    .separator.default.my-3
+
+    %h5
+      Tracks:
+
+    .separator.default.my-2
+
+    - if @tracks.any?
+      %table.table.table-hover.table-sm
+        - @tracks.each do |track|
+          = render 'track', track: track.decorate
+      = paginate @tracks
+    - else
+      There are no tracks.

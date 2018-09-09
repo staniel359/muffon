@@ -1,0 +1,9 @@
+<% if current_profile.valid? %>
+  $("#<%= params[:form_type] %>-form-flash-msgs").html(
+    "<%= j render 'shared/messages/flash' %>"
+  );
+<% else %>
+  $("#<%= params[:form_type] %>-form-flash-msgs").html(
+    "<%= j render 'shared/messages/errors', profile: current_profile %>"
+  );
+<% end %>

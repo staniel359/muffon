@@ -1,0 +1,16 @@
+%h5
+  = link_to 'Top albums:', artists_albums_path(@artist.name)
+
+.separator.default.my-2
+
+- if @artist.top_album_ids.any?
+  .row
+    - @artist.top_albums.each do |album|
+      .col-6.col-lg-4
+        = render 'album', album: album.decorate
+
+  - if @artist.top_album_ids.length >= 6
+    .text-right
+      = link_to 'View more...', artists_albums_path(@artist.name), class: 'btn btn-primary btn-sm'
+- else
+  There are no albums.

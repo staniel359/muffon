@@ -10,7 +10,7 @@ module LastFM
       def retrieve_artist_albums
         return {} unless parsed_albums_data.present?
 
-        albums_sorted.map { |a| process_album(a) }
+        parsed_albums_data['album'].map { |a| process_album(a) }
       end
 
       def parsed_albums_data
@@ -30,10 +30,6 @@ module LastFM
           api_key: api_key,
           format:  'json'
         }
-      end
-
-      def albums_sorted
-        parsed_albums_data['album'].sort_by { |a| a['playcount'] }.reverse
       end
 
       def process_album(album)

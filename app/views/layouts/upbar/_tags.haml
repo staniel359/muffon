@@ -1,0 +1,25 @@
+.up.media
+  .media-body
+    %i.fas.fa-tag
+    = link_to 'Tags', tags_path
+
+- unless params[:action] == 'index'
+  .up.media
+    .media-body
+      = link_to params[:tag_name], tag_path
+
+  - if params[:action] == 'artists'
+    .up.media
+      .media-body
+        %i.fas.fa-user
+        = link_to 'Artists', tags_artists_path
+  - elsif params[:action] == 'albums'
+    .up.media
+      .media-body
+        %i.fas.fa-dot-circle
+        = link_to 'Albums', tags_albums_path
+  - elsif params[:action] == 'tracks'
+    .up.media
+      .media-body
+        %i.fas.fa-music
+        = link_to 'Tracks', tags_tracks_path

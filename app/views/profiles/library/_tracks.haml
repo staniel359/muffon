@@ -1,0 +1,21 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    = link_to "Tracks (#{@profile.tracks_count}):", profiles_library_tracks_path
+  #tracks-scope.d-flex.align-items-center
+    .mr-2
+      = render 'library_scope', collection: 'tracks'
+    #tracks-scope-save-btn
+      = render 'save_scope_btn', collection: 'tracks'
+
+.separator.default.my-2
+
+- if @tracks.any?
+  %table.table.table-hover.table-sm
+    = render partial: 'profiles/library/tracks/track', collection: @tracks
+
+  - if @profile.tracks_count > 10
+    .text-right
+      = link_to 'View more...', profiles_library_tracks_path, class: 'btn btn-primary btn-sm'
+
+- else
+  There are no tracks.

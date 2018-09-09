@@ -1,0 +1,66 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-tag
+      Tags
+
+    %hr.my-3
+
+    %h1.font-light.ml-4.mb-0
+      = params[:tag_name]
+
+    .separator.default.my-3
+
+    .media
+      = render 'scrollspy'
+      .media-body.position-relative
+        #artists.anchor
+        %h5
+          = link_to 'Artists:', tags_artists_path
+
+        .separator.default.my-2
+
+        - if @artists.any?
+          .row
+            - @artists.each do |artist|
+              .col-6.col-md-4
+                = render 'artist', artist: artist
+          .text-right
+            = link_to 'View more...', tags_artists_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no artists.
+
+        %hr.my-3
+
+        #albums.anchor
+        %h5
+          = link_to 'Albums:', tags_albums_path
+
+        .separator.default.my-2
+
+        - if @albums.any?
+          .row
+            - @albums.each do |album|
+              .col-6.col-md-4
+                = render 'album', album: album.decorate
+          .text-right
+            = link_to 'View more...', tags_albums_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no albums.
+
+        %hr.my-3
+
+        #tracks.anchor
+        %h5
+          = link_to 'Tracks:', tags_tracks_path
+
+        .separator.default.my-2
+
+        - if @tracks.any?
+          %table.table.table-hover.table-sm
+            - @tracks.each do |track|
+              = render 'track', track: track.decorate
+          .text-right
+            = link_to 'View more...', tags_tracks_path, class: 'btn btn-primary btn-sm'
+        - else
+          There are no tracks.

@@ -9,7 +9,12 @@ class ProfileArtistDecorator < Draper::Decorator
     artist.decorate.image
   end
 
-  def in_playlist?
-    profile_track_ids.length == playlist_track_ids.length
+  def in_playlist?(artist_ids)
+    profile_track_ids.length ==
+      artist_ids.select { |id| object.id == id }.length
+  end
+
+  def taggings
+    artist.taggings
   end
 end

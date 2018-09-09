@@ -1,0 +1,15 @@
+%h5
+  = link_to 'Artists:', search_artists_path(q: params[:q])
+
+.separator.default.my-2
+
+- if @artists.any?
+  .row
+    - @artists.each do |artist|
+      .col-6.col-sm-4
+        = render 'search/artists/artist', artist: artist.decorate
+  .text-right
+    = link_to 'View more...', search_artists_path(q: params[:q]), class: 'btn btn-primary btn-sm'
+- else
+  %h6
+    Nothing was found.

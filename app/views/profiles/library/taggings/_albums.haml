@@ -1,0 +1,15 @@
+%h5
+  = link_to "Albums (#{@profile_tag.album_taggings_count}):", profiles_library_taggings_albums_path
+
+.separator.default.my-2
+
+- if @album_taggings.any?
+  %table.table.table-hover.table-sm.mb-2
+    - @album_taggings.limit(5).decorate.each do |album|
+      = render 'album', tagging: album
+
+  - if @profile_tag.album_taggings_count > 5
+    .text-right
+      = link_to 'View more...', profiles_library_taggings_albums_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no taggings.

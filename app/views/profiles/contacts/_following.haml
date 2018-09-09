@@ -1,0 +1,14 @@
+%h5
+  = link_to "Following (#{@followings.total_count}):", profiles_following_path
+
+.separator.default.my-2
+
+- if @followings.any? 
+  %table.table.table-hover
+    - @followings.limit(10).each do |following|
+      = render 'profiles/profile', profile: following
+  - if @followings.total_count > 10
+    .text-right
+      = link_to 'View more...', profiles_following_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no followed profiles.

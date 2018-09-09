@@ -1,17 +1,6 @@
 class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
-  private_class_method :local_prefixes
   include SessionsHelper
-
-  def self.local_prefixes
-    [
-      "js/#{controller_path}",
-      "actions/#{controller_path}",
-      "partials/#{controller_path}",
-      "modals/#{controller_path}",
-      controller_path
-    ]
-  end
 
   def not_found
     @title = 'Not found'
@@ -46,11 +35,44 @@ private
     )
   end
 
+  def paginate_array(collection, total_count, per_page)
+    paginate(
+      Kaminari.paginate_array(
+        collection, total_count: total_count
+      ), per_page
+    )
+  end
+
   def check_correct_artist
     not_found if @artist.nil?
   end
 
   def check_correct_album
     not_found if @album.nil?
+  end
+
+  def set_profile_instances
+    set_profile_artist_ids
+    set_bookmarked_artist_ids
+    set_listened_artist_ids
+  end
+
+  def set_profile_artist_ids
+    @profile_artist_ids = current_profile.profile_artists.where(
+      artist_id: @current_artist_ids
+    ).pluck(:artist_id)
+  end
+
+  def set_bookmarked_artist_ids
+    @bookmarked_artist_ids = current_profile.bookmarks.where(
+      bookmarkable_type: 'Artist',
+      bookmarkable_id:   @current_artist_ids
+    ).pluck(:bookmarkable_id)
+  end
+
+  def set_listened_artist_ids
+    @listened_artist_ids = current_profile.listened_artists.where(
+      artist_id: @current_artist_ids
+    ).pluck(:artist_id)
   end
 end

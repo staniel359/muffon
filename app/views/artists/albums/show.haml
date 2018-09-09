@@ -1,0 +1,29 @@
+.card
+  .card-body.row
+    .col-12.col-sm-4
+      .mb-2.position-sticky.scrollspy
+        = image_tag @album.cover.sub('300x300', '400x400'), class: 'img-fluid clickable w-100', data: { toggle: 'modal', target: '#album-cover-modal' }
+
+        #album-title-left.text-center.mt-1
+          %h5.mb-0
+            = @album.title
+          %h6
+            = @album.artist_name
+
+        - if @album.bandcamp_link.present?
+          .text-right
+            = link_to @album.bandcamp_link, target: '_blank' do
+              %h4
+                %i.fab.fa-bandcamp{ data: { toggle: 'tooltip', placement: 'top' }, title: 'On Bandcamp' }
+
+    .col-12.col-sm-8
+      #album-info
+        = render 'info'
+
+      %hr.my-3
+
+      = render 'tracks'
+
+#album-cover-modal.modal.image-modal
+  .modal-dialog
+    = image_tag @album.cover.gsub('/300x300', '/600x600'), class: 'img-fluid'

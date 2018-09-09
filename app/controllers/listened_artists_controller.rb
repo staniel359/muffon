@@ -1,13 +1,13 @@
 class ListenedArtistsController < ApplicationController
+  before_action :set_object
+
   def create
-    @object = object
     add_listened_artist
     delete_artist_recommendation
     respond_with_js
   end
 
   def destroy
-    @object = object
     delete_listened_artist
     restore_artist_recommendation
     respond_with_js
@@ -15,8 +15,8 @@ class ListenedArtistsController < ApplicationController
 
 private
 
-  def object
-    Artist.find_by(id: params[:artist_id])
+  def set_object
+    @object = Artist.find_by(id: params[:artist_id])
   end
 
   def add_listened_artist

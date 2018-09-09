@@ -5,8 +5,11 @@ module Player
         $redis.get("#{profile_id}:source")
       end
 
-      def create(profile_id, source_with_id)
-        $redis.set("#{profile_id}:source", source_with_id)
+      def create(profile_id, source, source_id)
+        return unless source.present?
+
+        $redis.set("#{profile_id}:source", source)
+        $redis.set("#{profile_id}:source_id", source_id)
       end
 
       def delete(profile_id)

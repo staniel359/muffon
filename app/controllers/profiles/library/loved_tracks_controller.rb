@@ -4,7 +4,7 @@ module Profiles
       before_action :set_profile, :set_title
 
       def index
-        @pagy, @loved_tracks = pagy(loved_tracks)
+        set_loved_tracks
       end
 
     private
@@ -16,10 +16,10 @@ module Profiles
         )
       end
 
-      def loved_tracks
-        @profile.profile_tracks.loved.includes(
-          :artist, [track: :artist]
-        ).loved_desc
+      def set_loved_tracks
+        @loved_tracks = paginate(
+          @profile.profile_tracks.loved.associated.loved_desc, 20
+        )
       end
     end
   end

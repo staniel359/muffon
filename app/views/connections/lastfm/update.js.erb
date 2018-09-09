@@ -1,0 +1,11 @@
+$('#primary-settings').html(
+  "<%= j render 'profiles/forms/primary' %>"
+)
+$('#additional-settings').html(
+  "<%= j render 'profiles/forms/additional' %>"
+)
+$('#lastfm-connect').html(
+  "<%= j render 'settings/connections/lastfm/section' %>"
+)
+
+window.history.pushState(null , null, 'settings')

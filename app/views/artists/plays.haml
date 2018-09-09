@@ -1,0 +1,13 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      %i.fas.fa-play
+      Plays:
+
+    .separator.default.my-2
+
+    %table.table.table-hover
+      = render partial: 'play', collection: @plays.decorate
+    = paginate @plays

@@ -1,0 +1,42 @@
+- if params[:action].in?(%w[index show])
+  .up.media
+    = image_tag @artist.image
+    .media-body
+      = link_to @artist.name, artist_path
+
+  .up.media
+    .media-body
+      %i.fas.fa-dot-circle
+      = link_to 'Albums', artists_albums_path
+- else
+  .up.media
+    = link_to artist_path do
+      = image_tag @artist.image
+
+  .up.media
+    .media-body
+      = link_to artists_albums_path do
+        %i.fas.fa-dot-circle
+
+- unless params[:action] == 'index'
+
+  - if @album.present?
+    .up.media
+      = image_tag @album.cover
+      .media-body
+        = link_to @album.title, artists_album_path
+
+    - if params[:action] == 'tags'
+      .up.media
+        .media-body
+          %i.fas.fa-tag
+          = link_to 'Tags', artists_albums_tags_path
+    - elsif params[:action] == 'wiki'
+      .up.media
+        .media-body
+          %i.fas.fa-info-circle
+          = link_to 'Wiki', artists_albums_wiki_path
+  - else
+    .up.media
+      .media-body
+        Not found

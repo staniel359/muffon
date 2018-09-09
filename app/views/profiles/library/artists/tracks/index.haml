@@ -1,0 +1,15 @@
+.card
+  .card-body
+    = render 'profiles/library/artists/panel_header'
+
+    %h5
+      = "Tracks (#{@artist.tracks_count}):"
+
+    .separator.default.my-2
+
+    - if @tracks.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'profiles/library/artists/tracks/track', collection: @tracks.decorate
+      = paginate @tracks
+    - else
+      There are no tracks.

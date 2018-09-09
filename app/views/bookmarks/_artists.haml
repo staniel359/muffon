@@ -1,0 +1,15 @@
+%h5
+  = link_to "Artists (#{@artist_bookmarks.total_count}):", bookmarks_artists_path
+
+.separator.default.my-2
+
+- if @artist_bookmarks.any?
+  %table.table.table-hover.table-sm
+    - @artist_bookmarks.limit(10).decorate.each do |artist|
+      = render 'artist', bookmark: artist
+
+  - if @artist_bookmarks.total_count > 10
+    .text-right
+      = link_to 'View more...', bookmarks_artists_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no bookmarks.

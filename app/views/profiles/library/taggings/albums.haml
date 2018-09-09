@@ -1,0 +1,18 @@
+.card
+  .card-body
+    = render 'profiles/library/panel_header'
+
+    = render 'panel_header'
+
+    %h5
+      = "Albums (#{@profile_tag.album_taggings_count}):"
+
+    .separator.default.my-2
+
+    - if @album_taggings.any?
+      %table.table.table-hover.table-sm.mb-2
+        - @album_taggings.decorate.each do |album|
+          = render 'album'
+      = paginate @album_taggings
+    - else
+      There are no taggings.

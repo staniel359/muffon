@@ -1,21 +1,21 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlists
-
   def index
-    @page_data = {
-      title: title,
-      playlists: playlists
-    }
-    @title = 'Playlists'
+    set_title
+    set_playlists
+    set_new_playlist
   end
 
 private
 
-  def title
-    t("playlists.#{params[:action]}")
+  def set_title
+    @title = t("playlists.#{params[:action]}")
   end
 
-  def playlists
-    paginate(Playlist.created_desc, 20)
+  def set_playlists
+    @playlists = paginate(Playlist.associated.created_desc, 20)
+  end
+
+  def set_new_playlist
+    @new_playlist = current_profile.playlists.new
   end
 end

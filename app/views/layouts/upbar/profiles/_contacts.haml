@@ -1,0 +1,23 @@
+- if params[:action] == 'index'
+  .up.media
+    = image_tag @profile.avatar.url(:sm)
+    .media-body
+      = link_to @profile.nickname, @profile
+- else
+  .up.media
+    = link_to @profile do
+      = image_tag @profile.avatar.url(:sm)
+
+.up.media
+  .media-body
+    %i.fas.fa-address-book
+    = link_to "Contacts", profiles_contacts_path
+
+- if params[:action] == 'followers'
+  .up.media
+    .media-body
+      = link_to 'Followers', profiles_followers_path
+- elsif params[:action] == 'following'
+  .up.media
+    .media-body
+      = link_to 'Following', profiles_following_path

@@ -1,0 +1,7 @@
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('hide')
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %>").html(
+  "<%= j render 'artists/actions/bookmarks', model: @object, bookmarked: true %>"
+)
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('show')
+
+$("#bookmark-restore_<%= params[:model_type] %>_<%= params[:model_id] %>").remove()

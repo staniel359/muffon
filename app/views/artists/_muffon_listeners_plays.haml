@@ -1,0 +1,8 @@
+.d-flex.align-items-center
+  = image_tag 'favicon.ico', class: 'icon-xs mr-2'
+  %h5.mb-0.mr-3
+    = link_to artists_listeners_path(@artist.name) do
+      = pluralize(number_with_delimiter(@artist.listeners_count), 'listener')
+  %h5.mb-0
+    = link_to artists_plays_path(@artist.name) do
+      = pluralize(number_with_delimiter(@artist.plays_count), 'play')

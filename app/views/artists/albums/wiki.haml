@@ -1,0 +1,16 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      %i.fas.fa-info-circle
+      Wiki:
+
+    .separator.default.my-2
+
+    - if @album.description.present?
+      %h6
+        = @album.description
+    - else
+      .text-muted
+        No description.

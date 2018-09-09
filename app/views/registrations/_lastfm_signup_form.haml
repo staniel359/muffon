@@ -1,0 +1,70 @@
+.card
+  .card-body
+    %h4 Sign up
+
+    .separator.default.mt-3.mb-3
+
+    #registration-flash-msg
+
+    = form_for @new_profile, url: '/signup', remote: true, multipart: true, authenticity_token: true do |f|
+
+      = render 'lastfm_block'
+
+      = f.hidden_field :nickname
+      = f.hidden_field :name
+      = f.hidden_field :country
+      = f.hidden_field :lastfm_id
+      = f.hidden_field :remote_avatar_url
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :gender, 'Gender:'
+        .form-input-custom
+          .btn-group.btn-group-toggle{ data: { toggle: 'buttons' } }
+            = f.label :gender_m, class: 'btn btn-primary btn-sm' do
+              = f.radio_button :gender, 'm'
+              Male
+            = f.label :gender_f, class: 'btn btn-primary btn-sm' do
+              = f.radio_button :gender, 'f'
+              Female
+            = f.label :gender_o, class: 'btn btn-primary btn-sm' do
+              = f.radio_button :gender, 'o'
+              Other
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :birthdate, 'Birth date:'
+        .form-input-custom
+          = f.date_field :birthdate, class: 'input-transp', value: Date.today, min: '1900-01-01'
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :city, 'City:'
+        .form-input-custom
+          = f.text_field :city, class: 'input-transp'
+
+      %hr.my-2
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :email, 'Email:'
+        .form-input-custom
+          = f.email_field :email, class: 'input-transp', required: true
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :password, 'Password:'
+        .form-input-custom
+          = f.password_field :password, class: 'input-transp', required: true
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :password_confirmation, 'Confirm password:'
+        .form-input-custom
+          = f.password_field :password_confirmation, class: 'input-transp', required: true
+
+      = f.submit 'Sign up', class: 'btn btn-light btn-block'
+
+    %h6.text-center.mt-2.mb-0
+      = button_to login_path, method: :get, remote: true, class: 'btn btn-link text-white' do
+        = t('registrations.login')

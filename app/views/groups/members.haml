@@ -1,0 +1,23 @@
+.card
+  .card-body
+    .media.align-items-center
+      .mr-2
+        = image_tag @group.avatar.url(:sm), class: 'rounded-circle'
+      .media-body
+        %h4
+          = link_to @group.name, @group
+
+    %hr.my-3
+
+    %h5
+      %i.fas.fa-user
+      Members:
+
+    .separator.default.my-2
+
+    - if @members.any?
+      %table.table.table-hover
+        = render partial: 'profiles/profile', collection: @members
+      = paginate @members
+    - else
+      There are no members.

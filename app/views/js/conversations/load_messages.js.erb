@@ -1,8 +1,0 @@
-<% if @messages.any? %>
-  $('#conversation-messages').prepend(
-    "<%= j render partial: 'partials/conversations/messages/message', collection: @messages.reverse %>"
-  );
-  $('#conversation_next_page').val("<%= params[:page].to_i + 1 %>");
-<% else %>
-  $('#conversation_next_page').val('');
-<% end %>

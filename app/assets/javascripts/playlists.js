@@ -1,5 +1,5 @@
-$(document).on('ready turbolinks:load', function() {
-  $('#new-playlist-modal').on('shown.bs.modal', function() {
+$(document).on('turbolinks:load', () => {
+  $('#new-playlist-modal, #edit-playlist-modal').on('shown.bs.modal', function() {
     $('#new-playlist-modal input#playlist_name').val('');
     $(this).find('[autofocus]').focus();
   });
@@ -12,11 +12,21 @@ $(document).on('ready turbolinks:load', function() {
   enablePlaylistLiveSearch();
 });
 
-function enablePlaylistLiveSearch() {
+$(window).on('shown.bs.modal', () => {
+  selectPlaylists();
+});
+
+$(document).on('turbolinks:load ajaxComplete', () => {
+  $("div[id^='playlist-add']").click(function() {
+    $(this).find('i').removeClass('fa-plus').addClass('fa-circle-notch fa-spin')
+  })
+});
+
+enablePlaylistLiveSearch = () => {
   var timeout = null;
-  $('#playlist-search-modal input').unbind('keyup').keyup(function(e) {
+  $('#playlist-search-modal input').keyup((e) => {
     clearTimeout(timeout);
-    timeout = setTimeout(function() {
+    timeout = setTimeout(() => {
       lettersAndNumbers = e.which >= 48 && e.which <= 90
       numpad = e.which >= 96 && e.which <= 111
       punctuationMarks = e.which >= 186 && e.which <= 222
@@ -27,11 +37,7 @@ function enablePlaylistLiveSearch() {
   })
 };
 
-$(window).on('shown.bs.modal', function() {
-  selectPlaylists();
-});
-
-function selectPlaylists() {
+selectPlaylists = () => {
   $('.playlist_select').click(function() {
     var checkbox = $(this).children('input[type="checkbox"]')
     if (checkbox.prop('checked')) {
@@ -43,9 +49,3 @@ function selectPlaylists() {
     }
   });
 };
-
-$(document).on('ready turbolinks:load ajaxComplete', function() {
-  $("div[id^='playlist-add']").click(function() {
-    $(this).find('i').removeClass('fa-plus').addClass('fa-circle-notch fa-spin')
-  })
-});

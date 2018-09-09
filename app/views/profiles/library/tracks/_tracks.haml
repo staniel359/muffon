@@ -1,0 +1,16 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    = "Tracks (#{@profile.tracks_count}):"
+  #tracks-order-scope.d-flex
+    .mr-3
+      = render 'order'
+    = render 'scope'
+
+.separator.default.my-2
+
+- if @tracks.any?
+  %table.table.table-hover.table-sm
+    = render partial: 'track', collection: @tracks.decorate
+  = paginate @tracks
+- else
+  There are no tracks.

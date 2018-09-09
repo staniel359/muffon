@@ -1,0 +1,9 @@
+.separator.default.my-2
+
+- if @album.description.present?
+  %h6
+    = @album.description.truncate_words(50)
+    = link_to 'Read more...', artists_albums_wiki_path, class: 'text-muted'
+- else
+  .text-muted
+    No description.

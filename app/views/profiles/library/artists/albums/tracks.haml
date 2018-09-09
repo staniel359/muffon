@@ -1,0 +1,15 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      = "Tracks (#{@album.profile_track_ids.length}):"
+
+    .separator.default.my-2
+
+    - if @tracks.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'track', collection: @tracks.decorate
+      = paginate @tracks
+    - else
+      There are no tracks.

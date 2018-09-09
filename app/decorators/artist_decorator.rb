@@ -20,8 +20,4 @@ class ArtistDecorator < Draper::Decorator
   def similar_artists
     Artist.find(similar_artist_ids)
   end
-
-  def tagged_by?(profile_id)
-    profile_tags.find_by(profile_id: profile_id).present?
-  end
 end

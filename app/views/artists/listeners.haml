@@ -1,0 +1,15 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      %i.fas.fa-user
+      Listeners:
+
+    .separator.default.my-2
+
+    %table.table.table-hover.table-sm
+      - @listeners.each do |listener|
+        = render 'listener', listener: listener
+    = paginate @listeners
+

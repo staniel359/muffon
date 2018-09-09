@@ -4,11 +4,15 @@ module PlayerHelper
   end
 
   def playing_now_track_id
-    Player::PlayingNow.get(current_profile&.id)
+    Player::PlayingNow.get(current_profile&.id).to_i
   end
 
   def playing_now_track
-    Track.find_by(id: playing_now_track_id)
+    return unless playing_now_track_id.positive?
+
+    @playing_now_track ||= Track.find_by(
+      id: playing_now_track_id
+    ).decorate
   end
 
   def playing_now_track_link

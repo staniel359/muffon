@@ -1,0 +1,41 @@
+#library-search-results.mt-2.pr-3
+
+  - if [@artists, @albums, @tracks].any?(&:present?)
+
+    - if @artists.present?
+      %h5 Artists:
+
+      .separator.default.my-2
+
+      .row
+        - @artists.decorate.each do |artist|
+          .col-6.col-md-4
+            = render 'profiles/library/artists/artist', artist: artist
+
+      %hr.my-2
+
+    - if @albums.present?
+
+      %h5 Albums:
+
+      .separator.default.my-2
+
+      .row
+        - @albums.decorate.each do |album|
+          .col-6.col-md-4
+            = render 'profiles/library/albums/album', album: album
+
+      %hr.my-2
+
+    - if @tracks.present?
+        
+      %h5 Tracks:
+
+      .separator.default.my-2
+
+      %table.table.table-hover.table-sm
+        = render partial: 'profiles/library/tracks/track', collection: @tracks.decorate
+
+  - else
+    %h6
+      No results.

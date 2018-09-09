@@ -1,0 +1,58 @@
+- if @artists.any?
+  %h6
+    Artists:
+
+  .separator.default.my-1
+
+  %table.table.table-hover.table-sm
+    - @artists.each do |artist|
+      %tr
+        %td
+          = link_to artist_path(artist[:name]) do
+            .media.align-items-center
+              .mr-2
+                = image_tag (artist[:image] || 'missing_artist.png'), class: 'img-xs rounded-circle'
+              .media-body
+                %h6.mb-0
+                  = artist[:name]
+
+- if @albums.any?
+  %h6
+    Albums:
+
+  .separator.default.my-1
+
+  %table.table.table-hover.table-sm
+    - @albums.each do |album|
+      %tr
+        %td
+          = link_to artists_album_path(album_title: album[:title], artist_name: album[:artist][:name]) do
+            .media.align-items-center
+              .mr-2
+                = image_tag (album[:cover] || 'missing_album.png'), class: 'img-xs'
+              .media-body
+                %h6.mb-0
+                  = album[:title]
+                .small
+                  = album[:artist][:name]
+
+- if @tracks.any?
+  %h6
+    Tracks:
+
+  .separator.default.my-1
+
+  %table.table.table-hover.table-sm
+    - @tracks.each do |track|
+      %tr
+        %td
+          = link_to '#' do
+            .media.align-items-center
+              .mr-2
+                = image_tag (track[:artist][:image] || 'missing_artist.png'), class: 'img-xs'
+              .media-body
+                %h6.mb-0
+                  = track[:title]
+                .small
+                  = track[:artist][:name]
+

@@ -1,0 +1,20 @@
+.card
+  .card-body
+    %h4 
+      %i.fas.fa-bookmark
+      Bookmarks
+
+    .separator.default.my-3
+
+    %h5
+      = "Albums (#{@album_bookmarks.total_count}):"
+
+    .separator.default.my-2
+
+    - if @album_bookmarks.any?
+      %table.table.table-hover.table-sm
+        - @album_bookmarks.decorate.each do |album|
+          = render 'album', bookmark: album
+      = paginate @album_bookmarks
+    - else
+      There are no bookmarks.

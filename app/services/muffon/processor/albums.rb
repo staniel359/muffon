@@ -10,15 +10,19 @@ module Muffon
       def process_albums
         return [] unless albums_data.present?
 
-        albums_data.map { |a| process_album(a) }
+        albums_sorted.map { |t| update_album(t, artist.id) }
+      end
+
+      def albums_sorted
+        albums_data.sort_by { |a| a[:lastfm_plays_count] }.reverse
       end
 
       def albums_data
-        @args.albums
+        @albums_data ||= LastFM::Artist::Albums.call(@args)
       end
 
-      def process_album(album)
-        Muffon::Processor::Album.call(album: album)
+      def artist
+        ::Artist.with(name: @args.artist_name).first
       end
     end
   end

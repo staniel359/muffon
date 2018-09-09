@@ -1,0 +1,14 @@
+#destroy-profile-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4.mb-0
+          Delete account
+      = form_tag profile_path(profile_id: current_profile.id), method: :delete, remote: true do
+        .modal-body
+          #destroy-modal-flash-msg
+          = t('profiles.destroy.warning').html_safe
+          = text_field_tag :nickname, nil, class: 'input-transp', autocomplete: 'off'
+
+          .text-right.mt-3
+            = submit_tag 'Delete account', class: 'btn btn-danger'

@@ -1,0 +1,11 @@
+.card.dark.mb-3#recommendation{ id: recommendation.id }
+  .card-body
+    .row
+      .col-12.col-sm-4.col-lg-3
+        = render 'artist', recommendation: recommendation
+
+      .col-12.col-sm-8.col-lg-6.recommendation-info
+        = render 'artist_info', recommendation: recommendation
+
+      .col-12.col-sm-8.offset-sm-4.col-lg-3.offset-lg-0
+        = render 'similar', recommendation: recommendation

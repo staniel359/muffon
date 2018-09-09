@@ -1,0 +1,9 @@
+- if @artists.any?
+  .row
+    - @artists.each do |artist|
+      .col-6.col-sm-4.mb-2
+        = render 'profiles/library/artists/artist', artist: artist
+  .text-right
+    = link_to 'View more...', profiles_library_artists_path(scope: params[:scope]), class: 'btn btn-primary btn-sm'
+- else
+  There are no artists.

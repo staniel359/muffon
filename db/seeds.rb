@@ -12,14 +12,14 @@ Profile.create(
       lastfm_id: 'cornwell_93',
       password: '101010',
       password_confirmation: '101010',
-      email: 'test',
+      email: 'email@mail.com',
       nickname: 'staniel'
     },
     {
       lastfm_id: 'MrPolkovnik',
       password: '101010',
       password_confirmation: '101010',
-      email: 'test2',
+      email: 'email2@mail.com',
       nickname: 'polkovnik'
     }
   ]

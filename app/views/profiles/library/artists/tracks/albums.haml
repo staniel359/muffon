@@ -1,0 +1,18 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      = "Albums (#{@track.profile_album_ids.length}):"
+
+    .separator.default.my-2
+
+    - if @albums.any?
+      .row
+        - @albums.decorate.each do |album|
+          .col-6.col-sm-4.col-lg-3.mb-2
+            = render 'profiles/library/artists/albums/album', album: album
+
+      = paginate @albums
+    - else
+      There are no albums.

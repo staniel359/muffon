@@ -1,0 +1,26 @@
+#playing-now-panel.position-absolute.z-500.h-100.top-0.text-white.p-3.position-fixed{ data: { turbolinks: { permanent: true } } }
+  .d-flex.align-items-center.justify-content-between
+    %h5.mb-0
+      Playing now:
+    = button_tag class: 'btn-transp', id: 'hide-playing-now-panel-btn' do
+      %i.fas.fa-times
+      Close
+
+  .separator.default.my-2
+
+  #playing-now-panel-track
+    = render 'layouts/player/playing_now_panel_track'
+
+  %hr.my-3
+
+  .d-flex.align-items-center.justify-content-between
+    %h5.mb-0
+      Queue:
+    = button_to player_queue_clear_path, class: 'btn-transp', method: :delete, remote: true do
+      %i.fas.fa-times
+      Clear
+
+  .separator.default.my-2
+
+  #playing-now-panel-queue
+    = render 'layouts/player/queue'

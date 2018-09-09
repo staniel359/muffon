@@ -43,15 +43,21 @@ module VK
     end
 
     def matched_track?(track)
-      artist_names_match?(track) && track_titles_match?(track)
+      artist_names_match?(track) &&
+        track_titles_match?(track) &&
+        !remix?(track)
     end
 
     def artist_names_match?(track)
-      search_track_artist(track).casecmp(@args.artist_name).zero?
+      search_track_artist(track).casecmp(
+        @args.artist_name.gsub(' & ', ' and ')
+      ).zero?
     end
 
     def search_track_artist(track)
-      track.css('.audio_row__performers').text
+      track.css(
+        '.audio_row__performers'
+      ).text.gsub(' & ', ' and ')
     end
 
     def track_titles_match?(track)
@@ -59,7 +65,13 @@ module VK
     end
 
     def search_track_title(track)
-      track.css('.audio_row__title').text.strip
+      track.css('.audio_row__title_inner').text.strip
+    end
+
+    def remix?(track)
+      track.css(
+        '.audio_row__title_inner_subtitle'
+      ).text.downcase.include?('remix')
     end
   end
 end

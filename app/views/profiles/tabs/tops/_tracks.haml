@@ -1,0 +1,7 @@
+- if @tracks.any?
+  %table.table.table-hover.table-sm
+    = render partial: 'profiles/library/tracks/track', collection: @tracks
+  .text-right
+    = link_to 'View more...', profiles_library_tracks_path(scope: params[:scope]), class: 'btn btn-primary btn-sm'
+- else
+  There are no tracks.

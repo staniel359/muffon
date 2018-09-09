@@ -1,0 +1,31 @@
+#player-panel.p-3.py-sm-0.w-100{ class: ('d-block' if playing_now_track.present? ), data: { turbolinks: { permanent: true } } }
+  .row.no-gutters.h-100.align-items-center
+    .col-12.col-sm-4.col-md-4.offset-md-1.col-lg-3.offset-lg-2
+      #player-panel-track
+        = render 'layouts/player/player_panel_track'
+
+      %hr.my-2.d-sm-none
+
+    .col-10.col-sm-7.col-md-6.col-lg-5.d-flex.align-items-center
+      #player-panel-audio-panel.w-100
+        = audio_tag playing_now_track_link, controls: true, class: 'd-none'
+
+        .d-flex.align-items-center.justify-content-center.position-relative.mb-2
+          = render 'layouts/player/previous_btn'
+          .mx-3
+            = button_tag class: 'btn-transp', id: 'play-pause-btn' do
+              %h5.mb-0
+                %i.fas.fa-play
+                %i.fas.fa-pause.d-none
+          = render 'layouts/player/next_btn'
+          #audio-current-time.text-white.mb-0.position-absolute.right-0
+        
+        #audio-seekbar.position-relative
+
+      -# #change-track-panel
+
+    .col-2.col-sm-1.col-md-1.offset-lg-1
+      #queue-panel.text-right
+        = button_tag class: 'btn-transp', id: 'show-playing-now-panel-btn' do
+          %h4.mb-0
+            %i.fas.fa-list-ul

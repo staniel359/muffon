@@ -1,0 +1,6 @@
+- if @album.labels.any?
+  .d-flex.align-items-center.justify-content-center.justify-content-sm-start.mb-2
+    %i.fas.fa-dot-circle.mr-2
+    - @album.labels.pluck(:name).each do |label_name|
+      .mr-1
+        = link_to label_name, label_path(label_name: label_name), class: 'btn btn-dark btn-sm'

@@ -1,0 +1,28 @@
+#edit-group-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4.mb-0
+          Edit group
+      = form_for @group do |f|
+        .modal-body.media
+          .mr-3
+            .mb-1
+              = image_tag @group.avatar.url(:md), id: 'group-avatar-preview'
+            .text-center
+              = f.label :avatar, class: 'btn btn-primary btn-sm' do
+                %i.fas.fa-plus
+                Add avatar
+            = f.file_field :avatar, class: 'd-none'
+          .media-body
+            .mb-2
+              = f.label :name, 'Name:'
+              = f.text_field :name, required: true, class: 'input-transp'
+            = f.label :description, 'Description:'
+            = f.text_area :description, class: 'input-transp'
+            .text-right.mt-3
+              = f.submit 'Save', class: 'btn btn-primary'
+      .modal-footer.justify-content-start
+        = button_to group_path, class: 'btn btn-danger', method: :delete do
+          %i.fas.fa-times
+          Delete group

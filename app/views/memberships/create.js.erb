@@ -1,0 +1,5 @@
+$('#membership-btn_<%= @group.id %>').html(
+  "<%= j render 'memberships/membership_btn', group_id: @group.id %>")
+$('#group-members-count_<%= @group.id %>').html(
+  "<%= j pluralize(@group.members.count, 'member') %>"
+)

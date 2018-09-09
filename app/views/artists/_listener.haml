@@ -1,0 +1,14 @@
+%tr
+  %td.media.align-items-center
+    .mr-2
+      = link_to listener do
+        = image_tag listener.avatar.url(:sm), class: 'rounded-circle'
+    .media-body
+      .d-flex.align-items-center
+        %h5.mb-1
+          = link_to listener.nickname, listener
+        - if current_profile?(listener)
+          .small.ml-1 (that's you)
+      %h6
+        = link_to profiles_library_artists_plays_path(listener) do
+          = pluralize(listener.profile_artists.find_by(artist_id: @artist.id).plays_count, 'play')

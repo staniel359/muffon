@@ -46,7 +46,7 @@ class ProfileDecorator < Draper::Decorator
     taggings.where(
       taggable_type: 'Artist',
       taggable_id:   artist_id
-    ).includes(:tag)
+    ).associated
   end
 
   def new_conversations

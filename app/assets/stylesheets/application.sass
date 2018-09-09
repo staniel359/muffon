@@ -20,7 +20,7 @@ body
   min-height: 100vh
 body, hr
   background-color: $muffonDefault
-  margin-bottom: 180px
+  margin-bottom: 220px
 hr
   margin: 0
 strong
@@ -43,20 +43,29 @@ label
   margin-bottom: 0
 select
   box-shadow: none !important
+.container-fluid
+  padding: 0
 
 // Media
 
-@media (min-width: 768px)
-  .similar-artist-card
-    text-align: center
 @media (max-width: 767.98px)
   #sidebar
     width: 0px
+  #footer
+    padding-left: 30px
 @media (max-width: 575.98px)
   #profile-page-avatar
     width: 85px
-  .similar-artist-card, .recommendation-info
+  .similar-artist-card, .tag-artist-card, .recommendation-info, #artist-info, #album-info
     text-align: center
+  #profile-artist-data
+    text-align: left !important
+  #album-title-left
+    display: none !important
+  #player-panel
+    height: 120px
+  #footer
+    height: 280px
 
 // Flag icons
 
@@ -67,8 +76,10 @@ select
 
 .row
   margin: 0 -10px
-[class^=col-]
-  padding: 0 10px
+  [class^=col]
+    padding: 0 10px
+.no-gutters
+  margin: 0 !important
 
 .card
   background-color: $muffonDarkLight
@@ -82,36 +93,37 @@ select
   outline: none !important
   box-shadow: none !important
 .btn-sm
-  padding: 3px 9px
+  line-height: 1
+  padding: 7px 9px
 .btn.disabled
   opacity: 1 !important
 
-.dropdown-menu
-  background-color: $muffonDefault !important
-  i
-    width: 15px
 .dropdown-toggle::after
-  display: none
+  @extend .d-none
 .dropdown-item
   padding: 5px 15px
-  background-color: transparent !important
-  button, a
-    color: white !important
-.dropdown-divider
-  border-top: 1px solid $muffonDarkLight
+  i
+    @extend .icon-centered
+  .btn-transp, a
+    @extend .text-dark, .w-100, .text-left
+.dropdown-item:active
+  background-color: lightGray
+
+.icon-centered
+  @extend .text-center
+  width: 20px
 
 .nav-fill .nav-link.active
   border-bottom: 2px solid $muffonLight
   background-color: transparent !important
   border-radius: 0px
 
-.text-muted
-  color: #ffffff80 !important
-.text-danger
-  color: red !important
+.text-love
+  color: red
 
 .modal-dialog
   margin: 75px auto
+  pointer-events: all
 .modal-content
   color: white
   background-color: $muffonDarkLight
@@ -120,11 +132,11 @@ select
 .modal-footer
   border-top: 1px solid $muffonDefault
 
-.small
-  line-height: 1.2
-
 .badge
   font-weight: 500 !important
+
+.small
+  line-height: 1.2
 
 // Kaminari
 
@@ -171,6 +183,20 @@ select
 
 // Custom
 
+.main-wrap
+  @extend .col-12, .col-md-10, .offset-md-1, .col-lg-8, .offset-lg-2, .px-3
+.start-page-wrap
+  @extend .col-sm-10, .offset-sm-1, .col-md-8, .offset-md-2, .col-xl-6, .offset-xl-3, .p-0
+
+.form-field-custom
+  @extend .row, .align-items-center, .mb-3
+.form-label-custom
+  @extend .col-12, .col-md-3
+  padding: 0 10px
+.form-input-custom
+  @extend .col-12, .col-md-9
+  padding: 0 10px
+
 .h0
   @extend h1
   font-size: 80px
@@ -185,14 +211,6 @@ select
   max-width: 170px
   white-space: normal
   line-height: 1
-#tags-wrap .tag
-  margin-right: 1px
-
-.label
-  @extend .btn, .btn-dark, .btn-sm
-  background-color: $muffonDark !important
-  display: inline-block
-  line-height: 1.2
 
 .separator
   height: 2px
@@ -247,6 +265,8 @@ select
   bottom: 0
 .top-0
   top: 0
+.right-0
+  right: 0
 
 .input-transp
   width: 100%
@@ -260,12 +280,18 @@ select
 .input-transp:focus
   border-bottom: 2px solid $muffonLight
 
+.z-1
+  z-index: 1
 .z-10
   z-index: 10
 .z-100
   z-index: 100
+.z-250
+  z-index: 250
 .z-500
   z-index: 500
+.z-750
+  z-index: 750
 .z-1000
   z-index: 1000
 
@@ -276,21 +302,21 @@ select
   @extend .btn, .btn-danger
   background-color: #ba0000
 
-.profile-page-left
-  width: 120px
-
-.list-play-btn-cover-wrap
+.list-play-btn-wrap, .list-play-btn-cover-wrap
   display: flex
   justify-content: center !important
   align-items: center !important
+.list-play-btn-wrap
+  width: 35px
+  height: 35px
+.list-play-btn-cover-wrap
   position: relative
   .list-play-btn
     position: absolute
     transition: 0.2s
     opacity: 0
-.list-play-btn-cover-wrap:hover
-  .list-play-btn
-    opacity: 1
+.list-play-btn:hover, .list-play-btn.shown
+  opacity: 1
 
 .btn-30
   height: 30px
@@ -304,9 +330,9 @@ select
 #library-search-results
   max-height: 420px
   overflow-y: scroll
-#library-scrollspy
-  top: 50px
 
+.scrollspy
+  top: 50px
 .anchor
   position: relative
   top: -50px
@@ -339,3 +365,40 @@ select
   overflow-y: scroll
 .message
   max-width: 75%
+
+.icon-xs
+  max-width: 20px
+
+.image-modal
+  padding: 0
+  .modal-dialog
+    text-align: center
+    margin: 50px auto 0 auto
+
+#album-title-left
+  display: none
+
+.truncated
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+#player-panel-track-title
+  height: 20px
+.overflow-hidden
+  overflow: hidden
+
+#compatibility
+  width: 50px
+  #compatibility-percent-background-circle
+    fill: none
+    stroke: $muffonDefault
+    stroke-width: 3
+  #compatibility-percent-circle
+    fill: none
+    stroke: $muffonLight
+    stroke-width: 3
+    stroke-linecap: round
+  #compatibility-text
+    text-anchor: middle
+    fill: white
+    font-size: 12px

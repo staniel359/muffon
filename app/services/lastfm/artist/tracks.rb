@@ -10,11 +10,14 @@ module LastFM
       def retrieve_tracks
         return {} unless parsed_tracks_data.present?
 
-        sorted_tracks.last(50).map { |t| process_track(t) }
+        parsed_tracks_data['track'].last(50).map do |t|
+          process_track(t)
+        end
       end
 
       def parsed_tracks_data
-        @parsed_tracks_data ||= JSON.parse(tracks_response)['toptracks']
+        @parsed_tracks_data ||=
+          JSON.parse(tracks_response)['toptracks']
       end
 
       def tracks_response
@@ -30,12 +33,6 @@ module LastFM
           limit:   (@args.limit || 50),
           format:  'json'
         }
-      end
-
-      def sorted_tracks
-        parsed_tracks_data['track'].sort_by do |t|
-          t['playcount'].to_i
-        end.reverse
       end
 
       def process_track(track)

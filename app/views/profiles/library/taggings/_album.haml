@@ -1,0 +1,9 @@
+%tr
+  %td.media.aling-items-center
+    .mr-2
+      = image_tag tagging.model_cover, class: 'img-sm'
+    .media-body
+      %h5.mb-0
+        = link_to tagging.model_title, artists_album_path(album_title: tagging.model_title, artist_name: tagging.model_artist_name)
+      %h6
+        = link_to tagging.model_artist_name, artist_path(tagging.model_artist_name)

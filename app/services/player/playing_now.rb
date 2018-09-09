@@ -2,7 +2,7 @@ module Player
   class PlayingNow
     class << self
       def get(profile_id)
-        $redis.get("#{profile_id}:playing_now").to_i
+        $redis.get("#{profile_id}:playing_now")
       end
 
       def set(profile_id, track_id)

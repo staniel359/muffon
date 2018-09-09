@@ -3,16 +3,16 @@ module Profiles
     before_action :set_profile, :set_title
 
     def index
-      @followers = profile_followers.first(5)
-      @followings = profile_followings.first(5)
+      set_followers
+      set_followings
     end
 
     def followers
-      @followers = paginate(profile_followers, 20)
+      set_followers
     end
 
     def following
-      @followings = paginate(profile_followings, 20)
+      set_followings
     end
 
   private
@@ -24,12 +24,12 @@ module Profiles
       )
     end
 
-    def profile_followers
-      @profile.followers
+    def set_followers
+      @followers = paginate(@profile.followers, 20)
     end
 
-    def profile_followings
-      @profile.followings
+    def set_followings
+      @followings = paginate(@profile.followings, 20)
     end
   end
 end

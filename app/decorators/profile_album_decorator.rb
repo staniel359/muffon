@@ -17,7 +17,12 @@ class ProfileAlbumDecorator < Draper::Decorator
     ProfileTrack.where(id: profile_track_ids)
   end
 
-  def in_playlist?
-    profile_track_ids.length == playlist_track_ids.length
+  def in_playlist?(album_ids)
+    profile_track_ids.length ==
+      album_ids.select { |id| object.id == id }.length
+  end
+
+  def taggings
+    album.taggings
   end
 end

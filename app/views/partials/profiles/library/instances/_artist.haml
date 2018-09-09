@@ -1,9 +1,0 @@
-.text-center
-  = link_to profiles_library_artist_path(artist_name: artist.name) do
-    .mb-1
-      = image_tag artist.image, class: 'rounded-circle img-fluid'
-    %h5.mb-0
-      %strong
-        = artist.name
-  %h6
-    = link_to pluralize(artist.plays_count, 'play'), profiles_library_artists_plays_path(profile_id: @profile.id, artist_name: artist.name)

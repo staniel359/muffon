@@ -1,0 +1,60 @@
+#additional-form-flash-msgs
+
+= form_for current_profile, remote: true, multipart: true, authenticity_token: true do |f|
+  = hidden_field_tag :form_type, 'additional'
+  .form-field-custom
+    .form-label-custom
+      = f.label 'Avatar:'
+    .form-input-custom
+      .media.align-items-end
+        .mr-2
+          = image_tag current_profile.avatar.url(:md), id: 'profile-avatar-preview'
+        .media-body
+          = f.label :avatar, class: 'btn btn-primary btn-sm' do
+            %i.fas.fa-plus
+            Add avatar
+          .d-none
+            = f.file_field :avatar
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :name, 'Name:'
+    .form-input-custom
+      = f.text_field :name, class: 'input-transp'
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :gender, 'Gender:'
+    .form-input-custom
+      .btn-group.btn-group-toggle{ data: { toggle: 'buttons' } }
+        = f.label :gender_m, class: "btn btn-primary btn-sm #{('active' if current_profile.gender == 'mars')}" do
+          = f.radio_button :gender, 'm'
+          Male
+        = f.label :gender_f, class: "btn btn-primary btn-sm #{('active' if current_profile.gender == 'venus')}" do
+          = f.radio_button :gender, 'f'
+          Female
+        = f.label :gender_o, class: "btn btn-primary btn-sm #{('active' if current_profile.gender == 'transgender')}" do
+          = f.radio_button :gender, 'o'
+          Other
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :birthdate, 'Birth date:'
+    .form-input-custom
+      = f.date_field :birthdate, class: 'input-transp', value: Date.today, min: '1900-01-01'
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :country, 'Country:'
+    .form-input-custom
+      = hidden_field_tag :countries_list, nil, data: { autocomplete_source: I18nData.countries.values }
+      = f.text_field :country, class: 'input-transp'
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :city, 'City:'
+    .form-input-custom
+      = f.text_field :city, class: 'input-transp'
+
+  .text-right
+    = f.submit 'Save', class: 'btn btn-primary'

@@ -1,0 +1,10 @@
+.media.align-items-center
+  .mr-2
+    = image_tag @album.cover, class: 'img-sm'
+  .media-body
+    %h5.mb-0
+      = link_to @album.title, artists_album_path
+    %h6.mb-0
+      = link_to @artist.name, artist_path
+
+%hr.my-3

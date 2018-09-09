@@ -8,11 +8,9 @@ class Group < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
-  after_create_commit :enter_group
+  scope :members_count_desc, -> { order(members_count: :desc, id: :asc) }
 
-  scope :members_count_desc, -> { order(members_count: :desc) }
-
-  def enter_group
-    owner.memberships.create(group_id: id, role: 'admin')
+  def owner?(profile_id)
+    owner_id == profile_id
   end
 end

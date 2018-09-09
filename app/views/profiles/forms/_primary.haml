@@ -1,0 +1,30 @@
+#primary-form-flash-msgs
+
+= form_for current_profile, remote: true do |f|
+  = hidden_field_tag :form_type, 'primary'
+  .form-field-custom
+    .form-label-custom
+      = f.label :nickname, 'Nickname:'
+    .form-input-custom
+      = f.text_field :nickname, class: 'input-transp'
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :email, 'Email:'
+    .form-input-custom
+      = f.email_field :email, class: 'input-transp'
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :password, 'Password:'
+    .form-input-custom
+      = f.password_field :password, class: 'input-transp'
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :password_confirmation, 'Confirm password:'
+    .form-input-custom
+      = f.password_field :password_confirmation, class: 'input-transp'
+
+  .text-right
+    = f.submit 'Save', class: 'btn btn-primary'

@@ -8,16 +8,31 @@ module LastFM
     private
 
       def retrieve_artists_data
-        return [] unless @args.tag_name.present?
+        return {} unless @args.tag_name.present?
+        return {} unless artists_page_response.present?
 
         {
-          data:        process_artists,
+          data:        artists_data,
           total_count: total_count
         }
       end
 
-      def process_artists
-        artists_list.map { |a| process_artist(a) }
+      def artists_page_response
+        @artists_page_response ||= begin
+          RestClient.get("#{tag_page_link}/artists?page=#{page}")
+        rescue RestClient::NotFound
+          nil
+        end
+      end
+
+      def artists_data
+        LastFM::Artists.call(
+          artists: artist_names.first(@args.limit || 21)
+        )
+      end
+
+      def artist_names
+        artists_list.css('.link-block-target').map(&:text)
       end
 
       def artists_list
@@ -27,30 +42,6 @@ module LastFM
       def parsed_artists_page
         @parsed_artists_page ||=
           Nokogiri::HTML.parse(artists_page_response)
-      end
-
-      def artists_page_response
-        RestClient.get("#{tag_page_link}/artists?page=#{page}")
-      end
-
-      def process_artist(artist)
-        {
-          name:                   artist(artist),
-          image:                  image(artist),
-          lastfm_listeners_count: listeners(artist)
-        }
-      end
-
-      def artist(artist)
-        artist.css('.link-block-target').text
-      end
-
-      def image(artist)
-        artist.css('img').attr('src').value
-      end
-
-      def listeners(artist)
-        artist.css('.big-artist-list-listeners').text.scan(/\d/).join.to_i
       end
 
       def total_count

@@ -1,0 +1,15 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      = "Plays (#{@track.plays_count}):"
+
+    .separator.default.my-2
+
+    - if @plays.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'profiles/library/artists/plays/play', collection: @plays.decorate
+      = paginate @plays
+    - else
+      There are no plays.

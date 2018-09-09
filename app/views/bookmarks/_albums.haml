@@ -1,0 +1,15 @@
+%h5
+  = link_to "Albums (#{@album_bookmarks.total_count}):", bookmarks_albums_path
+
+.separator.default.my-2
+
+- if @album_bookmarks.any?
+  %table.table.table-hover.table-sm
+    - @album_bookmarks.limit(10).decorate.each do |album|
+      = render 'album', bookmark: 'album'
+
+  - if @album_bookmarks.total_count > 10
+    .text-right
+      = link_to 'View more...', bookmarks_albums_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no bookmarks.

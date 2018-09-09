@@ -39,8 +39,9 @@ module Profiles
 
       def find_playlist_track(track)
         @playlist.playlist_tracks.where(
-          track_id:  track.id,
-          artist_id: track.artist_id
+          profile_id: current_profile.id,
+          track_id:   track.id,
+          artist_id:  track.artist_id
         ).first_or_initialize
       end
 

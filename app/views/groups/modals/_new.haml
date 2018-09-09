@@ -1,0 +1,24 @@
+#new-group-modal.modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4.mb-0
+          Create a group
+      = form_for Group.new do |f|
+        .modal-body.media
+          .mr-3
+            .mb-1
+              = image_tag 'md_avatar_default.png', id: 'group-avatar-preview'
+            .text-center
+              = f.label :avatar, class: 'btn btn-primary btn-sm' do
+                %i.fas.fa-plus
+                Add avatar
+            = f.file_field :avatar, class: 'd-none'
+          .media-body
+            .mb-2
+              = f.label :name, 'Name:'
+              = f.text_field :name, required: true, class: 'input-transp'
+            = f.label :description, 'Description:'
+            = f.text_area :description, class: 'input-transp'
+            .mt-3.text-right
+              = f.submit 'Create', class: 'btn btn-primary'

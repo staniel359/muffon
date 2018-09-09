@@ -1,0 +1,10 @@
+.d-flex.align-items-center.justify-content-center.justify-content-sm-start.mb-2
+  = image_tag 'lastfm_icon.ico', class: 'icon-xs mr-2'
+  %h6.mb-0
+    %i.fas.fa-user.mr-2
+  %h5.mb-0.mr-3
+    = number_with_delimiter(@album.lastfm_listeners_count)
+  %h6.mb-0
+    %i.fas.fa-play.mr-2
+  %h5.mb-0
+    = number_with_delimiter(@album.lastfm_plays_count)

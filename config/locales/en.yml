@@ -13,7 +13,6 @@ en:
   player:
     show: Player
   sessions:
-    new: Log in
     should_login: Please log in to access this page.
     login_failed: Invalid email or password.
     signup: Don't have an account? Sign up
@@ -24,6 +23,9 @@ en:
     index: Profiles
     show: "%{profile}'s profile"
     updated: Profile was updated.
+    destroy:
+      warning: "<strong class='text-danger'>Warning!</strong> Your account and absolutely all data related to it will be completely <strong class='text-danger'>destroyed</strong> and never be restored. To confirm your intention please enter your nickname:"
+      wrong_nickname: Wrong nickname.
     contacts:
       index: "%{profile}'s contacts"
       followers: "%{profile}'s followers"
@@ -57,7 +59,7 @@ en:
         index: "%{profile}'s taggings"
         show: "%{tagging} | %{profile}'s taggings"
         artists: "%{tagging} artists | %{profile}'s taggings"
-        albums: "%{tagging} albums| %{profile}'s taggings"
+        albums: "%{tagging} albums | %{profile}'s taggings"
         tracks: "%{tagging} tracks | %{profile}'s taggings"
       tags:
         index: "%{profile}'s tags"
@@ -71,22 +73,27 @@ en:
       no_name: Please enter the name of your playlist.
       already_present: You already have playlist with this name.
   registrations:
-    show: Sign up
-    lastfm_signed_up: Looks like you've already signed up via Last.fm.
+    lastfm:
+      fail: Looks like you've already signed up via Last.fm.
+      success: You have successfully signed up via Last.fm.
     success: You have successfully signed up.
     additional: Now you may want to provide some additional information about your profile. Those fields are optional, but it would be great if you identify yourself. You can change this data anytime on your Settings page.
     login: Already have an account? Log in
   connections:
     lastfm:
       what_next: What's next?
-      success: You have successfully signed up via Last.fm.
+      success: Your Last.fm account was connected.
       import_button_text: Import my library*
       skip_button_text: Skip and go to dashboard
-      info: "*We'll import analyze your music collection to generate statistics and personal recommendations based on the music you listen. If you skip this step now, you can do it anytime on your Setting page."
+      info:
+        first: "*We'll import and analyze your music collection to generate statistics and personal recommendations based on the music you listen."
+        second: If you skip this step now, you can do it anytime on your Setting page.
+      disconnect: Your Last.fm account was disconnected.
   groups:
     index: Groups
     new: Create a group
     show: "%{group} | Groups"
+    members: "%{group} members | Groups"
   conversations:
     index: Conversations
     show: Conversation with %{other_member}
@@ -127,6 +134,6 @@ en:
   tags:
     index: Tags
     show: "%{tag} | Tags"
-    artists: "%{tag} artists | Tag"
-    albums: "%{tag} albums | Tag"
-    tracks: "%{tag} tracks | Tag"
+    artists: "%{tag} artists | Tags"
+    albums: "%{tag} albums | Tags"
+    tracks: "%{tag} tracks | Tags"

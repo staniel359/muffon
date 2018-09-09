@@ -1,0 +1,23 @@
+.card
+  .card-body
+    %h4 
+      %i.fas.fa-bookmark
+      Bookmarks
+
+    .separator.default.my-3
+
+    .media
+      = render 'scrollspy'
+      .media-body
+        #artists.anchor
+        = render 'bookmarks/artists'
+
+        %hr.my-3
+
+        #albums.anchor
+        = render 'bookmarks/albums'
+
+        %hr.my-3
+
+        #tracks.anchor
+        = render 'bookmarks/tracks'

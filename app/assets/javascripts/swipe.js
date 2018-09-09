@@ -4,12 +4,12 @@ document.addEventListener('touchmove', handleTouchMove, false);
 var xDown = null;
 var yDown = null;
 
-function handleTouchStart(evt) {
+handleTouchStart = (evt) => {
   xDown = evt.touches[0].clientX;
   yDown = evt.touches[0].clientY;
 };
 
-function handleTouchMove(evt) {
+handleTouchMove = (evt) => {
   if ( ! xDown || ! yDown ) {
     return;
   }
@@ -21,7 +21,7 @@ function handleTouchMove(evt) {
     if ( xDiff > 0 ) {
       $('#sidebar').css('width', '0px')
     } else {
-      $('#sidebar').css('width', '240px')
+      $('#sidebar').css('width', '250px')
     }
   }
   xDown = null;

@@ -1,27 +1,24 @@
 class Profile < ApplicationRecord
-  has_many :profile_tracks, dependent: :destroy
+  has_many :profile_tracks, dependent: :delete_all
   has_many :tracks, through: :profile_tracks
   has_many :loved_tracks, -> { where(loved: true) }, class_name: 'ProfileTrack'
 
-  has_many :profile_artists, dependent: :destroy
+  has_many :profile_artists, dependent: :delete_all
   has_many :artists, through: :profile_artists
 
-  has_many :profile_albums, dependent: :destroy
+  has_many :profile_albums, dependent: :delete_all
   has_many :albums, through: :profile_albums
 
-  has_many :profile_tags, dependent: :destroy
+  has_many :profile_tags, dependent: :delete_all
   has_many :taggings, through: :profile_tags
 
-  has_many :plays, dependent: :destroy
+  has_many :plays, dependent: :delete_all
+  has_many :recommendations, dependent: :delete_all
+  has_many :listened_artists, dependent: :delete_all
+  has_many :bookmarks, dependent: :delete_all
 
-  has_many :recommendations, dependent: :destroy
-
-  has_many :listened_artists, dependent: :destroy
-
-  has_many :bookmarks, dependent: :destroy
-
-  has_many :playlists, dependent: :destroy
-  has_many :playlist_tracks, through: :playlists
+  has_many :playlists, dependent: :delete_all
+  has_many :playlist_tracks, dependent: :delete_all
 
   has_many :messages
   has_many :active_conversations,
@@ -76,27 +73,5 @@ class Profile < ApplicationRecord
       'sender_id = :other OR recipient_id = :other',
       other: profile_id
     ).first_or_create(sender_id: id, recipient_id: profile_id)
-  end
-
-  def new_messages
-    $redis.lrange("#{id}:new_messages", 0, -1)
-  end
-
-  def follow(profile_id)
-    active_relationships.where(
-      following_id: profile_id
-    ).first_or_create
-  end
-
-  def unfollow(profile_id)
-    active_relationships.find_by(following_id: profile_id)&.destroy
-  end
-
-  def join_group(group_id)
-    memberships.create(group_id: group_id, role: 'member')
-  end
-
-  def leave_group(group_id)
-    memberships.find_by(group_id: group_id)&.destroy
   end
 end

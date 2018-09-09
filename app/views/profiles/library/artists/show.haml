@@ -1,0 +1,57 @@
+.card
+	.card-body
+		= render 'panel_header'
+
+		.row
+			.col-12.col-sm-4.col-lg-3
+				= render 'info'
+			.col-12.col-sm-8.col-lg-9
+				%h5
+					= link_to "Tracks (#{@artist.tracks_count}):", profiles_library_artists_tracks_path
+
+				.separator.default.my-2
+
+				- if @tracks.any?
+					%table.table.table-hover.table-sm
+						= render partial: 'profiles/library/artists/tracks/track', collection:  @tracks
+
+					- if @artist.tracks_count > 5
+						.text-right
+							= link_to 'View more...', profiles_library_artists_tracks_path, class: 'btn btn-primary btn-sm'
+
+				- else
+					There are no tracks.
+
+				%h5
+					= link_to "Albums (#{@artist.albums_count}):", profiles_library_artists_albums_path
+
+				.separator.default.my-2
+
+				- if @albums.any?
+					.row
+						- @albums.each do |album|
+							.col-4.mb-2
+								= render 'profiles/library/artists/albums/album', album: album
+
+					- if @artist.albums_count > 3
+						.text-right
+							= link_to 'View more...', profiles_library_artists_albums_path, class: 'btn btn-primary btn-sm'
+
+				- else
+					There are no albums.
+
+				%h5
+					= link_to "Plays (#{@artist.plays_count}):", profiles_library_artists_plays_path
+
+				.separator.default.my-2
+
+				- if @plays.any?
+					%table.table.table-hover.table-sm
+						= render partial: 'profiles/library/artists/plays/play', collection: @plays
+
+					- if @artist.plays_count > 10
+						.text-right
+							= link_to 'View more...', profiles_library_artists_plays_path, class: 'btn btn-primary btn-sm'
+
+				- else
+					There are no plays.

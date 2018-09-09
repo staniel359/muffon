@@ -7,77 +7,112 @@ module LastFM
   private
 
     def process_tag_data
+      return {} unless @args.tag_name.present?
+
       {
-        artists: process_artists,
-        albums:  process_albums,
-        tracks:  process_tracks
+        artists: artists_data,
+        albums:  albums_data,
+        tracks:  tracks_data
       }
     end
 
-    def process_artists
-      artists_list.map { |a| process_artist(a) }
+    def tag_data
+      threads = []
+      tag_data_hash = collections.each_with_object({}) do |c, h|
+        threads << Thread.new do
+          h.merge!(c => send("#{collection}_data"))
+        end
+      end
+      concurrent_loader { threads.each(&:join) }
+      tag_data_hash
+    end
+
+    def collections
+      %w[artists albums tracks]
+    end
+
+    def artists_data
+      artists_list.map { |a| artist_data(a) }
     end
 
     def artists_list
-      parsed_tag_page.css(
-        'div[data-selectable-range-options="top_artists"]'
-      ).css('.grid-items-item').first(4)
+      parsed_page('artists').css('.big-artist-list-item').first(6)
     end
 
-    def parsed_tag_page
-      @parsed_tag_page ||= Nokogiri::HTML.parse(tag_page)
+    def parsed_page(collection)
+      Nokogiri::HTML.parse(page_response(collection))
     end
 
-    def tag_page
-      RestClient.get(tag_page_link)
+    def page_response(collection)
+      RestClient.get("#{tag_page_link}/#{collection}")
+    rescue RestClient::NotFound
+      nil
     end
 
-    def process_artist(artist)
+    def artist_data(artist)
       {
-        name: artist.css('.link-block-target').text,
-        image: artist.css('img').attr('src').value,
-        lastfm_listeners_count: lastfm_listeners_count(artist)
+        name:                   artist.css('.link-block-target').text,
+        image:                  artist_image(artist),
+        lastfm_listeners_count: artist_lastfm_listeners_count(artist)
       }
     end
 
-    def lastfm_listeners_count(model)
-      model.css('.grid-items-item-aux-text').text.scan(/\d/).join.to_i
+    def artist_image(artist)
+      artist.css('img').attr('src').value.sub('avatar70s', '300x300')
     end
 
-    def process_albums
-      albums_list.map { |a| process_album(a) }
+    def artist_lastfm_listeners_count(artist)
+      artist.css(
+        '.big-artist-list-listeners'
+      ).text.scan(/\d/).join.to_i
+    end
+
+    def albums_data
+      albums_list.map { |a| album_data(a) }
     end
 
     def albums_list
-      parsed_tag_page.css(
-        'div[data-selectable-range-options="top_albums"]'
-      ).css('.grid-items-item').first(4)
+      parsed_page('albums').css('.album-grid-item').first(6)
     end
 
-    def process_album(album)
+    def album_data(album)
       {
-        title: album.css('.link-block-target').text,
-        artist: { name: album.css('.grid-items-item-aux-block').text },
-        cover: album.css('img').attr('src').value,
-        lastfm_listeners_count: lastfm_listeners_count(album)
+        title:                  album.css('.link-block-target').text,
+        artist:                 album_artist_data(album),
+        cover:                  album.css('img').attr('src').value,
+        lastfm_listeners_count: album_lastfm_listeners_count(album)
       }
     end
 
-    def process_tracks
-      tracks_list.map { |t| process_track(t) }
+    def album_artist_data(album)
+      { name: album.css('.album-grid-item-artist').text.strip }
+    end
+
+    def album_lastfm_listeners_count(album)
+      album.css(
+        '.album-grid-item-aux-text'
+      ).first.text.scan(/\d/).join.to_i
+    end
+
+    def tracks_data
+      tracks_list.map { |t| track_data(t) }
     end
 
     def tracks_list
-      parsed_tag_page.css(
-        'div[data-selectable-range-options="top_tracks"]'
-      ).css('tr[itemprop="track"]')
+      parsed_page('tracks').css(
+        '.chartlist-ellipsis-wrap'
+      ).first(10)
     end
 
-    def process_track(track)
+    def track_data(track)
       {
-        title: track.css('.link-block-target').text,
-        artist: { name: track.css('.chartlist-artists').css('a').text }
+        title:  track.css('.link-block-target').text,
+        artist: track_artist_data(track)
       }
+    end
+
+    def track_artist_data(track)
+      { name: track.css('.chartlist-artists').css('a').text }
     end
   end
 end

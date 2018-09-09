@@ -1,0 +1,11 @@
+.text-center.mb-4
+  .position-relative.mb-1
+    = render 'artists/actions', artist: artist
+    = link_to artist_path(artist_name: artist.name) do
+      = image_tag artist.image, class: 'rounded-circle img-fluid position-relative mb-1'
+      %h5.mb-1
+        %strong
+          = artist.name
+  .small
+    %i.fas.fa-user
+    = number_with_delimiter(artist.lastfm_listeners_count)

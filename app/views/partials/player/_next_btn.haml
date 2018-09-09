@@ -1,9 +1,0 @@
-- if next_track.present?
-
-  = button_to play_path(artist: next_track.artist.artist_name, track: next_track.track_title), class: 'inv_btn', method: :get, remote: true do
-    %i.fas.fa-forward
-
-- else
-
-  = button_tag class: 'inv_btn' do
-    %i.fas.fa-forward{style: 'color:gray'}

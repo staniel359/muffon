@@ -1,0 +1,20 @@
+.card
+  .card-body
+    %h4 
+      %i.fas.fa-bookmark
+      Bookmarks
+
+    .separator.default.my-3
+
+    %h5
+      = "Tracks (#{@track_bookmarks.total_count}):"
+
+    .separator.default.my-2
+
+    - if @track_bookmarks.any?
+      %table.table.table-hover.table-sm
+        - @track_bookmarks.decorate.each do |track|
+          = render 'track', bookmark: track
+      = paginate @track_bookmarks
+    - else
+      There are no bookmarks.

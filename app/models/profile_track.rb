@@ -5,14 +5,13 @@ class ProfileTrack < ApplicationRecord
   belongs_to :artist
 
   has_many :plays, dependent: :destroy
-  has_many :taggings, as: :profile_model
-  has_many :profile_tags, through: :track_taggings
   has_many :playlist_tracks, dependent: :destroy
 
   validates :profile_id, :track_id, :profile_artist_id, presence: true
 
   scope :loved, -> { where(loved: true) }
   scope :loved_desc, -> { order(loved_at: :desc) }
+  scope :associated, -> { includes(:artist, [track: :artist]) }
 
   after_create_commit :increment_loved_tracks_count, if: :loved?
 

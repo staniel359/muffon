@@ -4,16 +4,16 @@ class ProfilesController < ApplicationController
   before_action :set_title
 
   def index
-    @profiles = paginate(Profile.created_asc, 20)
+    set_profiles
   end
 
   def show
-    @plays = plays
-    @artists = artists
-    @albums = albums
-    @tracks = tracks
-    @compatibility = compatibility
-    @playing_now_track = playing_now_track
+    set_plays
+    set_artists
+    set_albums
+    set_tracks
+    set_common_data if other_profile?(@profile)
+    set_playing_now_track
   end
 
   def update
@@ -23,8 +23,13 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    current_profile.destroy
-    redirect_to root_path
+    if nicknames_match?
+      current_profile.destroy
+      redirect_to root_path
+    else
+      flash.now[:danger] = t('profiles.destroy.wrong_nickname')
+      respond_with_js
+    end
   end
 
 private
@@ -36,42 +41,53 @@ private
     )
   end
 
-  def plays
-    @profile.plays.includes(
+  def set_profiles
+    @profiles = paginate(Profile.created_asc, 20)
+  end
+
+  def set_plays
+    @plays = @profile.plays.includes(
       :artist, [track: :artist], :profile_track,
       :profile_album, :album
     ).created_desc.limit(10).decorate
   end
 
-  def artists
-    @profile.profile_artists.includes(
+  def set_artists
+    @artists = @profile.profile_artists.includes(
       :artist
-    ).plays_count_desc.limit(8).decorate
+    ).plays_count_desc.limit(6).decorate
   end
 
-  def albums
-    @profile.profile_albums.includes(
+  def set_albums
+    @albums = @profile.profile_albums.includes(
       :album, :artist
-    ).plays_count_desc.limit(8).decorate
+    ).plays_count_desc.limit(6).decorate
   end
 
-  def tracks
-    @profile.profile_tracks.includes(
+  def set_tracks
+    @tracks = @profile.profile_tracks.includes(
       :artist, [track: :artist]
     ).plays_count_desc.limit(10).decorate
   end
 
-  def compatibility
-    return unless other_profile?(@profile)
+  def set_common_data
+    @common_artists = compatibility[:artists]
+    @common_albums  = compatibility[:albums]
+    @common_tracks  = compatibility[:tracks]
+    @percent        = compatibility[:percent]
+  end
 
-    Muffon::Compatibility.call(
+  def compatibility
+    @compatibility ||= Muffon::Compatibility.call(
       current_profile_id: current_profile.id,
       other_profile_id:   @profile.id
     )
   end
 
-  def playing_now_track
-    Track.find_by(id: Player::PlayingNow.get(@profile.id))
+  def set_playing_now_track
+    @playing_now_track = Track.find_by(
+      id: Player::PlayingNow.get(@profile.id)
+    )&.decorate
   end
 
   def primary_params
@@ -79,10 +95,7 @@ private
   end
 
   def primary_params_list
-    %i[
-      password password_confirmation
-      email lastfm_id nickname
-    ]
+    %i[password password_confirmation email lastfm_id nickname]
   end
 
   def profile_params
@@ -92,9 +105,10 @@ private
   end
 
   def profile_params_list
-    %i[
-      avatar remote_avatar_url name
-      gender country city birthdate
-    ]
+    %i[avatar remote_avatar_url name gender country city birthdate]
+  end
+
+  def nicknames_match?
+    params[:nickname].casecmp(current_profile.nickname).zero?
   end
 end

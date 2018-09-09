@@ -1,0 +1,6 @@
+- if previous_track.present?
+  = button_to player_play_path(track_id: previous_track.id), class: 'btn-transp', method: :get, remote: true do
+    %i.fas.fa-backward
+- else
+  = button_tag class: 'btn-transp' do
+    %i.fas.fa-backward.text-muted

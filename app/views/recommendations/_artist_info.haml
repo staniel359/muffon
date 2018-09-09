@@ -1,0 +1,22 @@
+%h4.mb-2
+  = link_to recommendation.artist_name, artist_path(recommendation.artist_name)
+
+- recommendation_tags = recommendation.tags
+- if recommendation_tags.any?
+  .mb-0
+    %i.fas.fa-tags
+    - recommendation_tags.pluck(:name).each do |tag_name|
+      = link_to tag_path(tag_name: tag_name), class: 'tag' do
+        %strong
+          = tag_name
+
+%h6.d-inline.mr-1
+  %i.fas.fa-user
+  = number_with_delimiter(recommendation.artist.lastfm_listeners_count.to_i)
+%h6.d-inline
+  %i.fas.fa-music
+  = number_with_delimiter(recommendation.artist.lastfm_plays_count.to_i)
+
+.separator.default.my-2
+  
+= render 'artists/description', artist: recommendation.artist

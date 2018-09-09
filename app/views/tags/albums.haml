@@ -1,0 +1,26 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-tag
+      Tags
+
+    %hr.my-3
+
+    %h1.font-light.ml-4.mb-0
+      = params[:tag_name]
+
+    .separator.default.my-3
+
+    %h5
+      Albums:
+
+    .separator.default.my-2
+
+    - if @albums.any?
+      .row
+        - @albums.each do |album|
+          .col-6.col-sm-4.col-md-3
+            = render 'album', album: album.decorate
+      = paginate @albums
+    - else
+      There are no albums.

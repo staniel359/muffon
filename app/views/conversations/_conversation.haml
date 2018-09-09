@@ -1,0 +1,41 @@
+%tr
+  %td.conversation
+    = link_to conversation do
+      .media
+        .mr-2.position-relative
+          - if conversation.id.in?(current_profile.decorate.new_conversations)
+            %i.fas.fa-circle.position-absolute.text-light.new-conversation-circle
+          - other_member = conversation.other_member(current_profile.id)
+
+          - if other_member.present?
+            = image_tag other_member.avatar.url(:sm), class: 'rounded-circle'
+          - else
+            = image_tag 'sm_avatar_default.png', class: 'img-sm rounded-circle'
+
+        .media-body
+          %h5.mb-2
+            = other_member&.nickname || 'Deleted Profile'
+
+          .media
+            - last_message = conversation.messages.last.decorate
+
+            - if last_message.sent_from(current_profile.id)
+              .mr-2.mt-1
+                = image_tag last_message.profile.avatar.url(:xs), class: 'rounded-circle'
+
+            .media-body.d-flex.align-items-center.justify-content-between
+              .card.dark.p-2
+
+                - if last_message.sent_from(current_profile.id)
+                  %h6.mb-0
+                    = last_message.profile.nickname
+
+                %h6.mb-0
+                  = truncate(last_message.content, length: 30)
+
+                - if last_message.track_ids.any?
+                  %i.fas.fa-music
+                  Audio
+
+                .text-muted.small
+                  = last_message.created_at.strftime('%e %b %Y, %H:%M')

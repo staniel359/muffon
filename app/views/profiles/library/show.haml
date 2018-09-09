@@ -1,0 +1,43 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    #library-main.media
+      = render 'scrollspy'
+      .media-body.position-relative
+        = render 'profiles/library/search/form'
+        #artists.anchor
+        #library-artists-section
+          = render 'artists'
+
+        %hr.my-4
+
+        #albums.anchor
+        #library-albums-section
+          = render 'albums'
+
+        %hr.my-4
+
+        #tracks.anchor
+        #library-tracks-section
+          = render 'tracks'
+
+        %hr.my-4
+
+        #top-tags.anchor
+        = render 'top_tags'
+
+        %hr.my-4
+
+        #plays.anchor
+        = render 'plays'
+
+        %hr.my-4
+
+        #lovedtracks.anchor
+        = render 'loved_tracks'
+
+        %hr.my-4
+
+        #taggings.anchor
+        = render 'taggings'

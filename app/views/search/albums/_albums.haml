@@ -1,0 +1,30 @@
+- if params[:q].present?
+  %h5
+    Search results for
+    %strong
+      = "\"#{params[:q]}\""
+    \:
+
+  .separator.default.my-2
+
+  %h5
+    Albums:
+
+  .separator.default.my-2
+
+  - if @albums.any?
+    .row
+      - @albums.each do |album|
+        .col-6.col-sm-4.col-md-3
+          = render 'album', album: album.decorate
+    %nav
+      %ul.pagination
+        - if params[:page].to_i > 1
+          %li.page-item
+            = link_to_prev_page @albums, '< Prev', class: 'page-link'
+        - if @albums.length == 20
+          %li.page-item
+            = link_to_next_page @albums, 'Next >', class: 'page-link'
+  - else
+    %h6
+      Nothing was found.

@@ -1,0 +1,15 @@
+%h5
+  = link_to "Tracks (#{@profile_tag.track_taggings_count}):", profiles_library_taggings_tracks_path
+
+.separator.default.my-2
+
+- if @track_taggings.any?
+  %table.table.table-hover.table-sm.mb-2
+    - @track_taggings.limit(5).decorate.each do |track|
+      = render 'track', tagging: track
+
+  - if @profile_tag.track_taggings_count > 5
+    .text-right
+      = link_to 'View more...', profiles_library_taggings_tracks_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no taggings.

@@ -1,0 +1,24 @@
+%h5
+  = link_to 'Similar artists:', artists_similar_artists_path(@artist.name)
+
+.separator.default.my-2
+
+- if @artist.similar_artist_ids.any?
+  .row
+    - @artist.similar_artists.each do |similar_artist|
+      .col-6.col-lg-4
+        .position-relative.mb-3.text-center
+          = render 'actions', artist: similar_artist.decorate
+          = link_to artist_path(artist_name: similar_artist.name) do
+            .mb-1
+              = image_tag similar_artist.image, class: 'rounded-circle img-fluid position-relative'
+            %h5
+              %strong
+                = similar_artist.name
+
+  - if @artist.similar_artist_ids.length >= 6
+    .text-right
+      = link_to 'View more...', artists_similar_artists_path(@artist.name), class: 'btn btn-primary btn-sm'
+
+- else
+  There are no similar artists.

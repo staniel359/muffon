@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 24) do
+ActiveRecord::Schema.define(version: 22) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,6 +129,8 @@ ActiveRecord::Schema.define(version: 24) do
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
+    t.integer "album_ids", default: [], array: true
+    t.bigint "profile_id"
     t.bigint "playlist_id"
     t.bigint "profile_track_id"
     t.bigint "track_id"
@@ -144,6 +146,7 @@ ActiveRecord::Schema.define(version: 24) do
     t.index ["playlist_id"], name: "index_playlist_tracks_on_playlist_id"
     t.index ["profile_album_id"], name: "index_playlist_tracks_on_profile_album_id"
     t.index ["profile_artist_id"], name: "index_playlist_tracks_on_profile_artist_id"
+    t.index ["profile_id"], name: "index_playlist_tracks_on_profile_id"
     t.index ["profile_track_id"], name: "index_playlist_tracks_on_profile_track_id"
     t.index ["track_id"], name: "index_playlist_tracks_on_track_id"
   end
@@ -234,7 +237,7 @@ ActiveRecord::Schema.define(version: 24) do
     t.index ["track_id"], name: "index_profile_tracks_on_track_id"
   end
 
-  create_table "profiles", id: :serial, force: :cascade do |t|
+  create_table "profiles", force: :cascade do |t|
     t.string "nickname"
     t.string "email"
     t.string "password_digest"
@@ -324,8 +327,13 @@ ActiveRecord::Schema.define(version: 24) do
   add_foreign_key "memberships", "groups"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "profiles"
+  add_foreign_key "playlist_tracks", "albums"
   add_foreign_key "playlist_tracks", "artists"
   add_foreign_key "playlist_tracks", "playlists"
+  add_foreign_key "playlist_tracks", "profile_albums"
+  add_foreign_key "playlist_tracks", "profile_artists"
+  add_foreign_key "playlist_tracks", "profile_tracks"
+  add_foreign_key "playlist_tracks", "profiles"
   add_foreign_key "playlist_tracks", "tracks"
   add_foreign_key "playlists", "profiles"
   add_foreign_key "plays", "albums"

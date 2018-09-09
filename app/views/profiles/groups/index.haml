@@ -1,0 +1,34 @@
+.card
+  .card-body
+    .d-flex.align-items-center.justify-content-between
+      %h4.mb-0
+        %i.fas.fa-users.mr-1
+        Groups
+
+      .media.align-items-center
+        .mr-2
+          = image_tag @profile.avatar.url(:xs), class: 'rounded-circle'
+        .media-body
+          %h5.mb-1
+            = link_to @profile.nickname, @profile
+
+    %hr.my-3
+
+    .d-flex.justify-content-between
+      = link_to groups_path, class: 'btn btn-primary' do
+        %i.fas.fa-users
+        Groups on muffon
+      - if current_profile?(@profile)
+        = button_tag class: 'btn btn-primary', data: { toggle: 'modal', target: '#new-group-modal'} do
+          %i.fas.fa-plus
+          Create a group
+
+    %hr.my-3
+
+    - if @groups.any?
+      %table.table.table-hover.table-sm
+        = render partial: 'groups/group', collection: @groups
+    - else
+      There are no groups.
+
+= render 'groups/modals/new'

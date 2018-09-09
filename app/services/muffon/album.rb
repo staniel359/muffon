@@ -68,8 +68,8 @@ module Muffon
         release_date:  release_date,
         release_type:  resources_data[:music_brainz][:release_type],
         bandcamp_link: resources_data[:bandcamp][:link],
+        tags:          lastfm_data[:tags],
         labels:        labels,
-        tags:          tags,
         tracks:        tracks
       }
     end
@@ -102,10 +102,6 @@ module Muffon
     def labels
       resources_data[:music_brainz][:labels] ||
         resources_data[:discogs][:labels] || []
-    end
-
-    def tags
-      lastfm_data[:tags] | resources_data[:lastfm_page][:tags]
     end
 
     def tracks

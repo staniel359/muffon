@@ -1,0 +1,24 @@
+#login-flash-msg
+  = render 'shared/messages/flash'
+
+= form_for :session, url: login_path, remote: true do |f|
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :email, 'Email:'
+    .form-input-custom
+      = f.email_field :email, class: 'input-transp', required: true, autofocus: true
+
+  .form-field-custom
+    .form-label-custom
+      = f.label :password, 'Password:'
+    .form-input-custom
+      = f.password_field :password, class: 'input-transp', required: true
+
+  .media.mb-3
+    .mr-2
+      = f.check_box :remember_me
+    .media-body
+      = f.label :remember_me, 'Remember me'
+
+  = f.submit 'Log in', class: 'btn btn-light btn-block'

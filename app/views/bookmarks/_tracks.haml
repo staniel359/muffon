@@ -1,0 +1,15 @@
+%h5
+  = link_to "Tracks (#{@track_bookmarks.total_count}):", bookmarks_tracks_path
+
+.separator.default.my-2
+
+- if @track_bookmarks.any?
+  %table.table.table-hover.table-sm
+    - @track_bookmarks.limit(10).decorate.each do |track|
+      = render 'track', bookmark: track
+
+  - if @track_bookmarks.total_count > 10
+    .text-right
+      = link_to 'View more...', bookmarks_tracks_path, class: 'btn btn-primary btn-sm'
+- else
+  There are no bookmarks.

@@ -1,0 +1,6 @@
+- if profile_track.loved?
+  = button_tag class: 'btn-transp', data: { toggle: 'tooltip', placement: 'top' }, title: "Loved" do
+    %i.fas.fa-heart.text-love
+- else
+  = button_tag class: 'btn-transp', data: { toggle: 'tooltip', placement: 'top' }, title: "Love track" do
+    %i.far.fa-heart.text-white

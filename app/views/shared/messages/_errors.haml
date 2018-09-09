@@ -1,0 +1,4 @@
+.alert.alert-danger
+	- profile.errors.full_messages.each do |message|
+		= '! ' + message
+		%br

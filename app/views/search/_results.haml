@@ -1,0 +1,24 @@
+- if params[:q].present?
+  %h5
+    Search results for
+    %strong
+      = "\"#{params[:q]}\""
+    \:
+
+  .separator.default.my-2
+
+  .media
+    = render 'scrollspy'
+    .media-body
+      #artists.anchor
+      = render 'artists'
+
+      %hr.my-3
+
+      #albums.anchor
+      = render 'albums'
+
+      %hr.my-3
+
+      #tracks.anchor
+      = render 'tracks'

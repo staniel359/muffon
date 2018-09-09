@@ -2,14 +2,18 @@ module Player
   class VK
     class << self
       def set_track_ids(profile_id, track_ids)
-        $redis.set("#{profile_id}:vk_track_ids", track_ids)
+        if track_ids.any?
+          $redis.rpush("#{profile_id}:vk_track_ids", track_ids)
+        else
+          $redis.del("#{profile_id}:vk_track_ids")
+        end
       end
 
-      def track_ids(profile_id)
+      def get_track_ids(profile_id)
         $redis.lrange("#{profile_id}:vk_track_ids", 0, -1)
       end
 
-      def delete_played_track_id(profile_id, track_id)
+      def delete_wrong_track_id(profile_id, track_id)
         $redis.lrem("#{profile_id}:vk_track_ids", 0, track_id)
       end
 

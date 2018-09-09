@@ -1,0 +1,11 @@
+.text-center.mb-4
+  = link_to artists_album_path(artist_name: album.artist_name, album_title: album.title) do
+    = image_tag album.cover, class: 'img-fluid mb-1'
+    %h5.mb-0
+      %strong
+        = album.title
+  %h6.mb-1
+    = link_to album.artist_name, artist_path(artist_name: album.artist_name)
+  .small
+    %i.fas.fa-user
+    = number_with_delimiter(album.lastfm_listeners_count)

@@ -7,7 +7,9 @@ class MuffonController < ApplicationController
 
   def welcome; end
 
-  def dashboard; end
+  def dashboard
+    should_login
+  end
 
   def notifications
     should_login

@@ -3,24 +3,29 @@ module Profiles
     module Artists
       class AlbumsController < Profiles::Library::ArtistsController
         before_action :set_profile, :set_artist
-        before_action :set_album, except: :index
-        before_action :set_title
 
         def index
-          @pagy, @albums = pagy(albums)
+          set_albums
+          set_title
         end
 
         def show
-          @tracks = album_tracks.limit(5).decorate
-          @plays = album_plays.limit(10).decorate
+          set_album
+          set_title
+          set_album_tracks
+          set_album_plays
         end
 
         def tracks
-          @pagy, @tracks = pagy(album_tracks)
+          set_album
+          set_title
+          set_album_tracks
         end
 
         def plays
-          @pagy, @plays = pagy(album_plays)
+          set_album
+          set_title
+          set_album_plays
         end
 
       private
@@ -34,8 +39,10 @@ module Profiles
           )
         end
 
-        def albums
-          @artist.profile_albums.plays_count_desc
+        def set_albums
+          @albums = paginate(
+            @artist.profile_albums.associated.plays_count_desc, 20
+          )
         end
 
         def set_album
@@ -49,12 +56,16 @@ module Profiles
           ).decorate
         end
 
-        def album_tracks
-          @album.profile_tracks.plays_count_desc
+        def set_album_tracks
+          @tracks = paginate(
+            @album.profile_tracks.associated.plays_count_desc, 20
+          )
         end
 
-        def album_plays
-          @album.plays.created_desc
+        def set_album_plays
+          @plays = paginate(
+            @album.plays.associated.created_desc, 20
+          )
         end
       end
     end

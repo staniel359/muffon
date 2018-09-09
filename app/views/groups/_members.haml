@@ -1,0 +1,11 @@
+%hr.my-2
+
+%h6
+  = link_to 'Members:', groups_members_path
+
+- if @members.any?
+  .d-flex.flex-row.flex-wrap.align-items-center
+    - @members.each do |member|
+      .mr-2.mb-2
+        = link_to member do
+          = image_tag member.avatar.url(:xs), class: 'rounded-circle', data: { toggle: 'tooltip', placement: 'top' }, title: member.nickname

@@ -2,7 +2,7 @@ module Profiles
   module Playlists
     class ProfileTracksController < ApplicationController
       before_action :set_playlist, :set_track, :set_album,
-                    only: %i[create destroy]
+                    except: :add_to_playlists
 
       def create
         add_track_to_playlist(@playlist)
@@ -53,8 +53,9 @@ module Profiles
 
       def find_playlist_track(playlist)
         playlist.playlist_tracks.where(
-          track_id:  @track.track_id,
-          artist_id: @track.artist_id
+          profile_id: current_profile.id,
+          track_id:   @track.track_id,
+          artist_id:  @track.artist_id
         ).first_or_initialize
       end
 

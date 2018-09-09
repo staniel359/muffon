@@ -1,0 +1,8 @@
+- if current_profile.memberships.find_by(group_id: group_id).present?
+  = button_to groups_leave_path(group_id: group_id), class: 'btn btn-light', method: :delete, remote: true do
+    %i.fas.fa-sign-out-alt
+    Leave
+- else
+  = button_to groups_join_path(group_id: group_id), class: 'btn btn-primary', remote: true do
+    %i.fas.fa-sign-in-alt
+    Join

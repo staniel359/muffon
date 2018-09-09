@@ -1,0 +1,21 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      %i.fas.fa-images
+      Images:
+
+    .separator.default.my-2
+
+    .row
+      - @images.each do |image|
+        .col-6.col-sm-4.col-md-3
+          .clickable{ data: { toggle: 'modal', target: "#image_modal_#{image.split('/').last}" } }
+            .mb-4
+              = image_tag image.gsub('/avatar170s', '/avatar300s'), class: 'img-fluid'
+
+          #image_modal.modal.image-modal{id: image.split('/').last}
+            .modal-dialog
+              = image_tag image.gsub('/avatar170s', ''), class: 'img-fluid'
+    = paginate @images

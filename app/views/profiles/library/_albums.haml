@@ -1,0 +1,23 @@
+.d-flex.justify-content-between.align-items-center
+  %h5.mb-0
+    = link_to "Albums (#{@profile.albums_count}):", profiles_library_albums_path
+  #albums-scope.d-flex.align-items-center
+    .mr-2
+      = render 'library_scope', collection: 'albums'
+    #albums-scope-save-btn
+      = render 'save_scope_btn', collection: 'albums'
+
+.separator.default.my-2
+
+- if @albums.any?
+  .row
+    - @albums.each do |album|
+      .col-6.col-sm-4
+        = render 'profiles/library/albums/album', album: album
+
+  - if @profile.albums_count > 6
+    .text-right
+      = link_to 'View more...', profiles_library_albums_path, class: 'btn btn-primary btn-sm'
+
+- else
+  There are no albums.

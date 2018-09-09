@@ -1,0 +1,10 @@
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('hide')
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %>").html(
+  "<%= j render 'artists/actions/bookmarks', model: @object, bookmarked: false %>"
+)
+$("#<%= @object.class.to_s.downcase %>-bookmark-action_<%= @object.id %> .action-btn").tooltip('show')
+
+$("#<%= @object.class.to_s.downcase %>-bookmark_<%= @object.id %>").prepend(
+  "<%= j render 'restore' %>"
+)
+$("#<%= @object.class.to_s.downcase %>-bookmark_<%= @object.id %> button").tooltip('hide')

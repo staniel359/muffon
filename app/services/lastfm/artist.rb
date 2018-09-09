@@ -50,24 +50,8 @@ module LastFM
 
     def extra_data
       {
-        similar_artists: process_similar_artists,
         tags:            tags,
         description:     description
-      }
-    end
-
-    def process_similar_artists
-      similar_artists.map { |a| process_similar_artist(a) }
-    end
-
-    def similar_artists
-      parsed_artist_data['similar']['artist'].first(4)
-    end
-
-    def process_similar_artist(artist)
-      {
-        name:  artist['name'],
-        image: artist['image'][3]['#text']
       }
     end
 

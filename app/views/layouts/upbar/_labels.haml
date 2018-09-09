@@ -1,0 +1,8 @@
+.up.media
+  .media-body
+    Labels
+
+- unless params[:action] == 'index'
+  .up.media
+    .media-body
+      = link_to @label.name, label_path

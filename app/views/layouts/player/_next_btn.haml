@@ -1,0 +1,6 @@
+- if next_track.present?
+  = button_to play_path(next_track.id), class: 'btn-transp', method: :get, remote: true do
+    %i.fas.fa-forward
+- else
+  = button_tag class: 'btn-transp' do
+    %i.fas.fa-forward.text-muted

@@ -1,9 +1,0 @@
-.card
-  .card-body
-    %h4 Profiles
-
-    %hr.my-2
-
-    %table.table.table-hover
-      - @profiles.each do |profile|
-        = render 'partials/profiles/profile', profile: profile

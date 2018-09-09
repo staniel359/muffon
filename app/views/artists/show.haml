@@ -1,0 +1,30 @@
+.card
+  .card-body
+    = render 'info'
+
+    %hr.my-3
+
+    .media
+      = render 'scrollspy'
+      .media-body
+        #tracks.anchor
+        = render 'top_tracks'
+
+        %hr.my-3
+
+        #albums.anchor
+        = render 'top_albums'
+
+        %hr.my-3
+
+        #similar-artists.anchor
+        = render 'top_similar_artists'
+
+        %hr.my-3
+
+        #board.anchor
+        = render 'board'
+
+#artist-image-modal.modal.image-modal
+  .modal-dialog
+    = image_tag @artist.image.remove('/300x300'), class: 'img-fluid'

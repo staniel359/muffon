@@ -1,0 +1,21 @@
+.card
+  .card-body
+    = render 'artists/panel_header'
+
+    %h5
+      %i.fas.fa-music
+      Tracks:
+
+    .separator.default.my-2
+
+    %table.table.table-hover.table-sm
+      - @tracks.each do |track|
+        = render 'artists/track', track: track.decorate
+    %nav
+      %ul.pagination
+        - if params[:page].to_i > 1
+          %li.page-item
+            = link_to_prev_page @tracks, '< Prev', class: 'page-link'
+        - if @tracks.length == 50
+          %li.page-item
+            = link_to_next_page @tracks, 'Next >', class: 'page-link'

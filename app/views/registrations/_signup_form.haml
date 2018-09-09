@@ -1,0 +1,39 @@
+.card
+  .card-body
+    %h4 Sign up
+
+    .separator.default.my-3
+
+    #registration-flash-msg
+
+    = form_for @new_profile, url: '/signup', remote: true do |f|
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :nickname, 'Nickname:'
+        .form-input-custom
+          = f.text_field :nickname, class: 'input-transp', required: true
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :email, 'Email:'
+        .form-input-custom
+          = f.email_field :email, class: 'input-transp', required: true
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :password, 'Password:'
+        .form-input-custom
+          = f.password_field :password, class: 'input-transp', required: true
+
+      .form-field-custom
+        .form-label-custom
+          = f.label :password_confirmation, 'Confirm password:'
+        .form-input-custom
+          = f.password_field :password_confirmation, class: 'input-transp', required: true
+
+      = f.submit 'Sign up', class: 'btn btn-light btn-block'
+
+    %h6.text-center.mt-2.mb-0
+      = link_to login_path, remote: true, class: 'btn btn-link text-white' do
+        = t('registrations.login')

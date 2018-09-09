@@ -1,0 +1,11 @@
+.container-fluid.position-fixed.top-0.z-500
+  .row.no-gutters
+    .main-wrap
+      #upbar.d-flex.text-white.align-items-center
+        .position-absolute.top-0#beta-btn
+          beta
+        .up#logo.px-3
+          = link_to root_path do
+            %h3 muffon
+
+        = render "layouts/upbar/#{params[:controller]}"

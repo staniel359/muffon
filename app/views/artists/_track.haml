@@ -1,0 +1,36 @@
+%tr
+  %td.media.align-items-center#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
+    .mr-2
+
+      - if track.album_ids.any?
+        .list-play-btn-cover-wrap
+          = render 'shared/player/list_play_btn', track_id: track.id
+          = image_tag track.first_album.cover, class: 'img-xs'
+      - else
+        .list-play-btn-wrap
+          = render 'shared/player/list_play_btn', track_id: track.id
+
+    .media-body.d-flex.justify-content-between.align-items-center
+      #track-data.w-100.mr-2
+        %h6.mb-0.d-flex
+
+          %strong
+            = track.title
+
+        - if track.album_ids.any?
+          .small
+            = link_to track.first_album.title, artists_album_path(artist_name: @artist.name, album_title: track.first_album.title), class: 'text-muted'
+
+        - if track.lastfm_plays_count.to_i.positive?
+          .track-bar-wrap
+            .track-bar{ style: "width: #{width_of(track)}%" }
+            .small
+              = number_with_delimiter(track.lastfm_plays_count)
+
+      #track-options.d-flex.align-items-center
+        .mr-1
+          .small
+            = track.duration
+        = render 'shared/tracks/dropdown', track: track
+
+    %iframe.mg_top_10{ frameborder:'0', width: 480, height: 270, hidden: true }

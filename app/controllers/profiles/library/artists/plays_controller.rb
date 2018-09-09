@@ -2,10 +2,11 @@ module Profiles
   module Library
     module Artists
       class PlaysController < Profiles::Library::ArtistsController
-        before_action :set_profile, :set_artist, :set_title
+        before_action :set_profile, :set_artist
 
         def index
-          @pagy, @plays = pagy(plays)
+          set_plays
+          set_title
         end
 
       private
@@ -18,8 +19,10 @@ module Profiles
           )
         end
 
-        def plays
-          @artist.plays.created_desc
+        def set_plays
+          @plays = paginate(
+            @artist.plays.associated.created_desc, 20
+          )
         end
       end
     end

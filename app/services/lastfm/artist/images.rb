@@ -31,9 +31,11 @@ module LastFM
       end
 
       def total_count
-        parsed_images_page.css(
-          '.pagination-page'
-        ).last.text.strip.to_i * 40
+        (last_page || 1).to_i * 40
+      end
+
+      def last_page
+        parsed_images_page.css('.pagination-page').last&.text&.strip
       end
     end
   end

@@ -1,0 +1,12 @@
+.up.media
+  .media-body
+    - if params[:action] == 'dashboard'
+      = link_to 'Dashboard', dashboard_path
+    - elsif params[:action] == 'about'
+      = link_to 'About', about_path
+    - elsif params[:action] == 'help'
+      = link_to 'Help', help_path
+    - elsif params[:action] == 'contact'
+      = link_to 'Contact us', contact_path
+    - elsif params[:action] == 'contribute'
+      = link_to 'Contribute', contribute_path

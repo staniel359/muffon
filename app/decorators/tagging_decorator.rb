@@ -9,6 +9,10 @@ class TaggingDecorator < Draper::Decorator
     taggable.name
   end
 
+  def model_artist_image
+    taggable.decorate.artist_image
+  end
+
   def model_artist_name
     taggable.decorate.artist_name
   end
@@ -19,5 +23,9 @@ class TaggingDecorator < Draper::Decorator
 
   def model_title
     taggable.title
+  end
+
+  def tag_name
+    profile_tag.tag.name
   end
 end

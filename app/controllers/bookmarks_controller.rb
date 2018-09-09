@@ -2,33 +2,33 @@ class BookmarksController < ApplicationController
   before_action :should_login, :set_title
 
   def index
-    @artist_bookmarks = bookmarks('artist').limit(5)
-    @album_bookmarks = bookmarks('album').limit(5)
-    @track_bookmarks = bookmarks('track').limit(5)
+    set_artist_bookmarks
+    set_album_bookmarks
+    set_track_bookmarks
   end
 
   def create
-    @object = object
+    set_object
     add_to_bookmarks
     respond_with_js
   end
 
   def destroy
-    @object = object
+    set_object
     delete_from_bookmarks
     respond_with_js
   end
 
   def artists
-    @bookmarks = paginate(bookmarks('artist'), 20)
+    set_artist_bookmarks
   end
 
   def albums
-    @bookmarks = paginate(bookmarks('album'), 20)
+    set_album_bookmarks
   end
 
   def tracks
-    @bookmarks = paginate(bookmarks('track'), 20)
+    set_track_bookmarks
   end
 
 private
@@ -37,14 +37,26 @@ private
     @title = t("bookmarks.#{params[:action]}")
   end
 
-  def bookmarks(model_name)
-    current_profile.send(
-      "#{model_name}_bookmarks"
-    ).includes(:bookmarkable).created_asc
+  def set_artist_bookmarks
+    @artist_bookmarks = paginate(
+      current_profile.artist_bookmarks.associated.created_asc, 20
+    )
   end
 
-  def object
-    params[:model_type].constantize.find_by(
+  def set_album_bookmarks
+    @album_bookmarks = paginate(
+      current_profile.album_bookmarks.associated.created_asc, 20
+    )
+  end
+
+  def set_track_bookmarks
+    @track_bookmarks = paginate(
+      current_profile.track_bookmarks.associated.created_asc, 20
+    )
+  end
+
+  def set_object
+    @object = params[:model_type].constantize.find_by(
       id: params[:model_id]
     )
   end
