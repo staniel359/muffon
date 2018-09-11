@@ -4,9 +4,9 @@
       %i.fas.fa-ellipsis-v.text-white
   .dropdown-menu.dropdown-menu-right
     .dropdown-item
-      = button_tag class: 'btn-transp' do
+      = button_to player_watch_on_youtube_path(track_id: track.id), class: 'btn-transp', method: :get, remote: true do
         %i.fab.fa-youtube.mr-1
-        = link_to 'Watch on YouTube', player_watch_on_youtube_path(track_id: track.id), remote: true
+        Watch on YouTube
 
     - if logged_in?
       .dropdown-item

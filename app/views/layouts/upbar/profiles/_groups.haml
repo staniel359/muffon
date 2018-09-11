@@ -1,9 +1,11 @@
-.up.media
-  = image_tag @profile.avatar.url(:sm)
-  .media-body
-    = link_to @profile.nickname, @profile
+.up
+  = link_to @profile do
+    = image_tag @profile.avatar.url(:sm)
+    %h6
+      = @profile.nickname
 
-.up.media
-  .media-body
-    %i.fas.fa-users
-    = link_to "Groups", profiles_groups_path
+.up
+  = link_to profiles_groups_path do
+    %h6
+      %i.fas.fa-users
+      Groups

@@ -1,0 +1,17 @@
+.up
+  = link_to search_path do
+    %h6
+      %i.fas.fa-search
+      Search
+
+- if params[:q].present?
+  .up
+    = link_to search_path(q: params[:q]) do
+      %h6
+        = params[:q]
+
+.up
+  = link_to search_tracks_path do
+    %h6
+      %i.fas.fa-music
+      Tracks

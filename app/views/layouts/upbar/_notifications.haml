@@ -1,4 +1,5 @@
-.up.media
-  .media-body
-    %i.fas.fa-bell
-    = link_to 'Notifications', notifications_path
+.up
+  = link_to notifications_path do
+    %h6
+      %i.fas.fa-bell
+      Notifications

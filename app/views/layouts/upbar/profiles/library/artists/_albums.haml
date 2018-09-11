@@ -1,50 +1,48 @@
-.up.media
+.up
   = link_to @profile do
     = image_tag @profile.avatar.url(:sm)
 
-.up.media
-  .media-body
-    = link_to profiles_library_path do
-      %i.fas.fa-headphones
+.up
+  = link_to profiles_library_path do
+    %i.fas.fa-headphones
 
-.up.media
-  .media-body
-    = link_to profiles_library_artists_path do
-      %i.fas.fa-user
+.up
+  = link_to profiles_library_artists_path do
+    %i.fas.fa-user
 
-- if params[:action] == 'index'
-  .up.media
+.up
+  = link_to profiles_library_artist_path do
     = image_tag @artist.image
-    .media-body
-      = link_to @artist.name, profiles_library_artist_path
-- else
-  .up.media
-    = link_to profiles_library_artist_path do
-      = image_tag @artist.image
 
-.up.media
-  .media-body
-    = link_to profiles_library_artists_albums_path do
+    - if params[:action] == 'index'
+      %h6
+        = @artist.name
+
+.up
+  = link_to profiles_library_artists_albums_path do
+    %h6
       %i.fas.fa-dot-circle
+
       - unless params[:action].in?(%w[tracks plays])
         Albums
 
 - unless params[:action] == 'index'
-  .up.media
-    = image_tag @album.cover
-    .media-body
-      = link_to @album.title, profiles_library_artists_album_path
+  .up
+    = link_to profiles_library_artists_album_path do
+      = image_tag @album.cover
+      %h6
+        = @album.title
 
   - if params[:action] == 'tracks'
-    .up.media
-      .media-body
-        = link_to profiles_library_artists_albums_tracks_path do
+    .up
+      = link_to profiles_library_artists_albums_tracks_path do
+        %h6
           %i.fas.fa-music
           Tracks
 
   - elsif params[:action] == 'plays'
-    .up.media
-      .media-body
-        = link_to profiles_library_artists_albums_plays_path do
+    .up
+      = link_to profiles_library_artists_albums_plays_path do
+        %h6
           %i.fas.fa-play
           Plays

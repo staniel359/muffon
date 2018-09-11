@@ -4,12 +4,12 @@ document.addEventListener('touchmove', handleTouchMove, false);
 var xDown = null;
 var yDown = null;
 
-handleTouchStart = (evt) => {
+function handleTouchStart(evt) {
   xDown = evt.touches[0].clientX;
   yDown = evt.touches[0].clientY;
 };
 
-handleTouchMove = (evt) => {
+function handleTouchMove(evt) {
   if ( ! xDown || ! yDown ) {
     return;
   }

@@ -16,7 +16,17 @@ module Muffon
     end
 
     def artists
-      profile_artists.pluck(
+      other_profile.profile_artists.associated.where(
+        artist_id: artist_ids
+      ).decorate.sort_by { |a| artist_ids.index(a.artist_id) }
+    end
+
+    def other_profile
+      @other_profile ||= Profile.find_by(id: @args.other_profile_id)
+    end
+
+    def artist_ids
+      @artist_ids ||= profile_artists.pluck(
         :profile_id, :artist_id, :plays_count
       ).group_by { |a| a[1] }.sort_by do |a|
         a[1].transpose[2].sort.inject { |f, s| (f + s) * f.fdiv(s) }
@@ -33,12 +43,14 @@ module Muffon
       @current_profile ||= Profile.find_by(id: @args.current_profile_id)
     end
 
-    def other_profile
-      @other_profile ||= Profile.find_by(id: @args.other_profile_id)
+    def albums
+      other_profile.profile_albums.associated.where(
+        album_id: album_ids
+      ).decorate.sort_by { |a| album_ids.index(a.album_id) }
     end
 
-    def albums
-      profile_albums.pluck(
+    def album_ids
+      @album_ids ||= profile_albums.pluck(
         :profile_id, :album_id, :plays_count
       ).group_by { |a| a[1] }.sort_by do |a|
         a[1].transpose[2].sort.inject { |f, s| (f + s) * f.fdiv(s) }
@@ -52,7 +64,13 @@ module Muffon
     end
 
     def tracks
-      profile_tracks.pluck(
+      other_profile.profile_tracks.associated.where(
+        track_id: track_ids
+      ).decorate.sort_by { |a| track_ids.index(a.track_id) }
+    end
+
+    def track_ids
+      @track_ids ||= profile_tracks.pluck(
         :profile_id, :track_id, :plays_count
       ).group_by { |a| a[1] }.sort_by do |a|
         a[1].transpose[2].sort.inject { |f, s| (f + s) * f.fdiv(s) }
@@ -67,17 +85,14 @@ module Muffon
 
     def percent
       ([
-        artists_percentage,
-        albums_percentage,
-        tracks_percentage
+        artists_percentage, albums_percentage, tracks_percentage
       ].sum / 3).round
     end
 
     def artists_percentage
       (artists.length * 100).fdiv(
         (
-          other_profile.artists_count +
-            current_profile.artists_count
+          other_profile.artists_count + current_profile.artists_count
         ) / 2
       )
     end
@@ -85,8 +100,7 @@ module Muffon
     def albums_percentage
       (albums.length * 100).fdiv(
         (
-          other_profile.albums_count +
-            current_profile.albums_count
+          other_profile.albums_count + current_profile.albums_count
         ) / 2
       )
     end
@@ -94,8 +108,7 @@ module Muffon
     def tracks_percentage
       (tracks.length * 100).fdiv(
         (
-          other_profile.tracks_count +
-            current_profile.tracks_count
+          other_profile.tracks_count + current_profile.tracks_count
         ) / 2
       )
     end

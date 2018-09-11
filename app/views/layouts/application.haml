@@ -1,5 +1,5 @@
 !!!
-%html.position-relative
+%html
   %head
     %title
       = page_title
@@ -12,9 +12,9 @@
 
   %body
 
-    #loading.position-fixed.w-100.h-100.top-0.z-100
-      .d-flex.align-items-center.justify-content-center.w-100.h-100
-        %i.fas.fa-circle-notch.fa-spin.fa-2x.position-fixed
+    #loading
+      #loading-inner
+        %i.fas.fa-circle-notch.fa-spin.fa-2x
 
     - unless start_page?
 
@@ -26,23 +26,19 @@
       = render 'layouts/sidebar'
       = render 'layouts/player/playing_now_panel'
 
-    .container-fluid.py-5.position-relative.h-100
+    #main-container
       = render 'layouts/scroll_top_btn'
       .row.no-gutters
         .main-wrap
           = yield
 
     - if logged_in?
-      .container-fluid.fixed-bottom.z-750
-        .row.no-gutters
-          .main-wrap
-            = render 'layouts/progress_bar'
+      = render 'layouts/progress_bar'
 
     #playlists-modal-wrap
-    #message-modal-wrap
+    #new-message-modal-wrap
 
     - if logged_in?
-      .container-fluid.fixed-bottom.z-750
-        = render 'layouts/player/player_panel'
+      = render 'layouts/player/player_panel'
 
     = render 'layouts/footer'

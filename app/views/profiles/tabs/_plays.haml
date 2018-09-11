@@ -1,3 +1,8 @@
+%h5
+  = link_to 'Plays:', profiles_library_plays_path
+
+.separator.default.my-2
+
 - if @plays.any?
   %table.table.table-hover.table-sm
     = render partial: 'profiles/library/plays/play', collection: @plays

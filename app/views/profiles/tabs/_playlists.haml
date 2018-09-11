@@ -1,1 +1,9 @@
-There are no playlists.
+%h5
+  = link_to 'Playlists:', profiles_playlists_path
+
+.separator.default.my-2
+
+- if @profile.playlists.any?
+  = @profile.playlists
+- else
+  There are no playlists.

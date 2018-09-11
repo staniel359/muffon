@@ -71,10 +71,10 @@ private
   end
 
   def set_common_data
-    @common_artists = compatibility[:artists]
-    @common_albums  = compatibility[:albums]
-    @common_tracks  = compatibility[:tracks]
-    @percent        = compatibility[:percent]
+    @common_artists        = compatibility[:artists]
+    @common_albums         = compatibility[:albums]
+    @common_tracks         = compatibility[:tracks]
+    @compatibility_percent = compatibility[:percent]
   end
 
   def compatibility

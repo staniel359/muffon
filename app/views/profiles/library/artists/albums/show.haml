@@ -1,6 +1,6 @@
 .card
   .card-body
-    = render 'panel_header'
+    = render 'profiles/library/artists/panel_header'
 
     .row
       .col-12.col-sm-4.col-md-3.text-center
@@ -22,7 +22,7 @@
         - else
           There are no tracks.
 
-        %hr.my-3
+        .separator.my-2
 
         %h5
           = link_to "Plays (#{@album.plays_count}):", profiles_library_artists_albums_plays_path

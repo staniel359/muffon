@@ -1,8 +1,11 @@
-.up.media
-  .media-body
-    Labels
+.up
+  = link_to labels_path do
+    %h6
+      %i.fas.fa-dot-circle
+      Labels
 
 - unless params[:action] == 'index'
-  .up.media
-    .media-body
-      = link_to @label.name, label_path
+  .up
+    = link_to @label do
+      %h6
+        = @label.name

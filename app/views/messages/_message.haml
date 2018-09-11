@@ -5,7 +5,7 @@
     .mt-1{ class: ('order-2' if message.sent_from(current_profile.id)) }
       = image_tag message.profile.avatar.url(:xs), class: 'rounded-circle'
     .media-body.card.dark.px-3.py-2.mx-2
-      %h6
+      %h6.mb-1
         = message.content
 
       - if message.track_ids.any?

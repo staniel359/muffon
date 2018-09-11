@@ -1,15 +1,17 @@
-.up.media
-  .media-body
-    %i.fas.fa-comments
-    = link_to 'Conversations', conversations_path
+.up
+  = link_to conversations_path do
+    %h6
+      %i.fas.fa-comments
+      Conversations
 
 - if params[:action] == 'show'
-  .up.media
+  .up
     - if @other_member.present?
-      = image_tag @other_member.avatar.url(:sm)
-      .media-body
-        = link_to @other_member.nickname, @other_member
+      = link_to @other_member do
+        = image_tag @other_member.avatar.url(:sm)
+        %h6
+          = @other_member.nickname
     - else
       = image_tag 'sm_avatar_default.png'
-      .media-body.text-muted
+      %h6.text-muted
         Deleted profile

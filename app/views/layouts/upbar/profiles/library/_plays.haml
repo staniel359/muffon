@@ -1,15 +1,15 @@
-.up.media
+.up
   = link_to @profile do
     = image_tag @profile.avatar.url(:sm)
 
-.up.media
-  .media-body
-    = link_to profiles_library_path do
+.up
+  = link_to profiles_library_path do
+    %h6
       %i.fas.fa-headphones
       Library
 
-.up.media
-  .media-body
-    = link_to profiles_library_plays_path do
+.up
+  = link_to profiles_library_plays_path do
+    %h6
       %i.fas.fa-play
       Plays

@@ -1,1 +1,9 @@
-There are no groups.
+%h5
+  = link_to 'Groups:', profiles_groups_path
+
+.separator.default.my-2
+
+- if @profile.groups.any?
+  = @profile.groups
+- else
+  There are no groups.

@@ -1,4 +1,4 @@
-#message-modal.modal
+#new-message-modal.modal
   .modal-dialog
     .modal-content
       .modal-header
@@ -12,6 +12,6 @@
       .modal-body
         = form_for Message.new, url: messages_path, remote: true do |f|
           = hidden_field_tag :recipient_id, @recipient.id
-          = f.text_area :content, placeholder: 'Enter message...', class: 'input-transp', rows: 4
+          = f.text_area :content, placeholder: 'Enter message...', class: 'input-transp', rows: 4, autofocus: true
           .text-right.mt-2
             = f.submit 'Send', class: 'btn btn-primary'

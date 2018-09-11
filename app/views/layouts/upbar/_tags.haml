@@ -1,25 +1,30 @@
-.up.media
-  .media-body
-    %i.fas.fa-tag
-    = link_to 'Tags', tags_path
+.up
+  = link_to tags_path do
+    %h6
+      %i.fas.fa-tag
+      Tags
 
 - unless params[:action] == 'index'
-  .up.media
-    .media-body
-      = link_to params[:tag_name], tag_path
+  .up
+    = link_to tag_path do
+      %h6
+        = params[:tag_name]
 
   - if params[:action] == 'artists'
-    .up.media
-      .media-body
-        %i.fas.fa-user
-        = link_to 'Artists', tags_artists_path
+    .up
+      = link_to tags_artists_path do
+        %h6
+          %i.fas.fa-user
+          Artists
   - elsif params[:action] == 'albums'
-    .up.media
-      .media-body
-        %i.fas.fa-dot-circle
-        = link_to 'Albums', tags_albums_path
+    .up
+      = link_to tags_albums_path do
+        %h6
+          %i.fas.fa-dot-circle
+          Albums
   - elsif params[:action] == 'tracks'
-    .up.media
-      .media-body
-        %i.fas.fa-music
-        = link_to 'Tracks', tags_tracks_path
+    .up
+      = link_to tags_tracks_path do
+        %h6
+          %i.fas.fa-music
+          Tracks

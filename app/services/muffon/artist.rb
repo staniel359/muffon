@@ -55,10 +55,7 @@ module Muffon
     end
 
     def top_tracks_hash
-      {
-        top_tracks:            top_tracks_sorted,
-        top_track_plays_count: top_track_plays_count
-      }
+      { top_tracks: top_tracks_sorted }
     end
 
     def top_tracks_sorted
@@ -67,12 +64,6 @@ module Muffon
       artist_data[:top_tracks].sort_by do |t|
         t[:lastfm_plays_count]
       end.reverse
-    end
-
-    def top_track_plays_count
-      return unless artist_data[:top_tracks].present?
-
-      artist_data[:top_tracks].first[:lastfm_plays_count]
     end
 
     def top_albums_hash

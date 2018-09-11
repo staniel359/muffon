@@ -3,10 +3,10 @@ $('audio').attr('src', '');
 $("*#track_<%= params[:track_id] %>").removeClass('dark')
 $("#track_<%= params[:track_id] %> .list-play-btn").removeClass('shown')
 
-$("#track_<%= params[:track_id] %> #play-pause-btn").addClass('d-none')
-$("#track_<%= params[:track_id] %> #get-play-btn").removeClass('d-none')
-$("#track_<%= params[:track_id] %> #get-play-btn .fa-circle-notch").addClass('d-none')
-$("#track_<%= params[:track_id] %> #get-play-btn .fa-play").removeClass('d-none')
+$("#track_<%= params[:track_id] %> .play-pause-btn").addClass('d-none')
+$("#track_<%= params[:track_id] %> .get-play-btn").removeClass('d-none')
+$("#track_<%= params[:track_id] %> .get-play-btn .fa-circle-notch").addClass('d-none')
+$("#track_<%= params[:track_id] %> .get-play-btn .fa-play").removeClass('d-none')
 
 $("#profile-playing-now-track_<%= current_profile.id %>").html('')
 $("#playing-now-panel-track").html(

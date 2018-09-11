@@ -1,29 +1,31 @@
 %tr
-  %td.media.align-items-center#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
-    .mr-2.list-play-btn-wrap
-      = render 'shared/player/list_play_btn', track_id: track.id
-    .media-body.d-flex.justify-content-between.align-items-center
-      #track-data.w-100.mr-2
-        %h6.mb-0.d-flex
-          .mr-1
-            = "#{index + 1}."
-          %strong
-            = track.title
+  %td#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
+    .align-center
+      .mr-2.list-play-btn-wrap
+        = render 'shared/player/list_play_btn', track_id: track.id
+      .media-body.align-center.justify-content-between
+        #track-data.w-100
+          %h6.d-flex
+            .mr-1
+              = "#{index + 1}."
+            %strong
+              = track.title
 
-        - if track.artist_id != @artist.id
-          .small
-            = link_to track.artist_name, artist_path(track.artist_name)
-
-        - if track.lastfm_plays_count.to_i.positive?
-          .track-bar-wrap
-            .track-bar{ style: "width: #{width_of(track)}%" }
+          - if track.artist_id != @artist.id
             .small
-              = number_with_delimiter(track.lastfm_plays_count)
+              = link_to track.artist_name, artist_path(track.artist_name)
 
-      #track-options.d-flex.align-items-center
-        .mr-1
-          .small
-            = track.duration
-        = render 'shared/tracks/dropdown', track: track
+          - if track.lastfm_plays_count.to_i.positive?
+            .track-bar-wrap
+              .track-bar{ style: "width: #{width_of(track)}%" }
+              .small
+                = number_with_delimiter(track.lastfm_plays_count)
 
-    %iframe.mg_top_10{ frameborder:'0', width: 480, height: 270, hidden: true }
+        #track-options.align-center.ml-2
+          .mr-1
+            .small
+              = track.duration
+          = render 'shared/tracks/dropdown', track: track
+
+    .youtube-iframe
+      = render 'shared/tracks/youtube_iframe'

@@ -1,17 +1,24 @@
-.up.media
-  .media-body
-    %i.fas.fa-bookmark
-    = link_to 'Bookmarks', bookmarks_path
+.up
+  = link_to bookmarks_path do
+    %h6
+      %i.fas.fa-bookmark
+      Bookmarks
 
 - if params[:action] == 'artists'
-  .up.media
-    .media-body
-      = link_to 'Artists', bookmarks_artists_path
+  .up
+    = link_to bookmarks_artists_path do
+      %h6
+        %i.fas.fa-user
+        Artists
 - elsif params[:action] == 'albums'
-  .up.media
-    .media-body
-      = link_to 'Albums', bookmarks_albums_path
+  .up
+    = link_to bookmarks_albums_path do
+      %h6
+        %i.fas.fa-dot-circle
+        Albums
 - elsif params[:action] == 'tracks'
-  .up.media
-    .media-body
-      = link_to 'Tracks', bookmarks_tracks_path
+  .up
+    = link_to bookmarks_tracks_path do
+      %h6
+        %i.fas.fa-music
+        Tracks

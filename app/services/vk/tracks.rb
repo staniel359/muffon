@@ -61,11 +61,15 @@ module VK
     end
 
     def track_titles_match?(track)
-      search_track_title(track).casecmp?(@args.track_title)
+      search_track_title(track).casecmp(
+        @args.track_title.gsub(', ', ' ')
+      ).zero?
     end
 
     def search_track_title(track)
-      track.css('.audio_row__title_inner').text.strip
+      track.css(
+        '.audio_row__title_inner'
+      ).text.strip.gsub(', ', ' ')
     end
 
     def remix?(track)

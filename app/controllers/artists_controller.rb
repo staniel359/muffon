@@ -107,7 +107,7 @@ private
 
   def set_similar_artists
     @similar_artists = paginate_array(
-      processed_similar_artists, 200, 15
+      processed_similar_artists, 200, 10
     )
   end
 

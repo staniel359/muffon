@@ -1,6 +1,6 @@
 .card
 	.card-body
-		= render 'panel_header'
+		= render 'profiles/library/panel_header'
 
 		.row
 			.col-12.col-sm-4.col-lg-3
@@ -22,6 +22,8 @@
 				- else
 					There are no tracks.
 
+				.separator.my-2
+
 				%h5
 					= link_to "Albums (#{@artist.albums_count}):", profiles_library_artists_albums_path
 
@@ -39,6 +41,8 @@
 
 				- else
 					There are no albums.
+
+				.separator.my-2
 
 				%h5
 					= link_to "Plays (#{@artist.plays_count}):", profiles_library_artists_plays_path

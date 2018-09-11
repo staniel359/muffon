@@ -9,7 +9,7 @@ class ProfileTrackDecorator < Draper::Decorator
     track.title
   end
 
-  def image
+  def artist_image
     artist.decorate.image
   end
 

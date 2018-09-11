@@ -1,20 +1,17 @@
-#tooltip_albums
-  - @common_albums.first(6).map do |a|
-
-    .tooltip_common_album
-      = link_to library_artist_album_path(name: a.artist.artist_name, title: a.album.album_title) do
-        .mg_btm_5
-          = image_tag a.album.album_cover, class: 'img_50'
-        %h5
+- @common_albums.first(5).each do |album|
+  = link_to profiles_library_artists_album_path(artist_name: album.artist_name, album_title: album.title) do
+    .media.align-items-center.my-2
+      .mr-2
+        = image_tag album.cover, class: 'img-xs'
+      .media-body
+        %h6.mb-0
           %strong
-            = a.album.title
-      %h5
-        = link_to a.artist.name, library_artist_path(name: a.artist.artist_name)
-      %h5
-        = link_to library_artist_album_plays_path(name: a.artist.artist_name, title: a.album.album_title) do
-          = pluralize(a.playcount, 'play')
+            = album.title
+        .small
+          = album.artist_name
+        .small
+          = pluralize(album.plays_count, 'play')
 
-  - if @common_albums.count > 6
-
-    .text_right
-      = button_tag "and #{@common_albums.count - 6} others...", class: 'btn btn-primary btn-sm'
+- if @common_albums.count > 5
+  .text-right
+    = link_to "and #{@common_albums.count - 5} more...", '#'

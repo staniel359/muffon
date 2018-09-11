@@ -25,8 +25,8 @@ module Muffon
 
       def base_attributes
         artist_data.slice(
-          :name, :image, :description, :lastfm_listeners_count,
-          :lastfm_plays_count, :mbid, :top_track_plays_count
+          :name, :image, :description, :mbid,
+          :lastfm_listeners_count, :lastfm_plays_count
         )
       end
 

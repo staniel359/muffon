@@ -10,7 +10,6 @@ class CreateArtists < ActiveRecord::Migration[5.2]
       t.integer :lastfm_plays_count,     limit: 8, default: 0
       t.integer :listeners_count,        limit: 8, default: 0
       t.integer :plays_count,            limit: 8, default: 0
-      t.integer :top_track_plays_count,  limit: 8, default: 0
 
       t.integer :similar_artist_ids, array: true, default: []
       t.integer :tag_ids,            array: true, default: []

@@ -8,12 +8,12 @@ $(document).on('turbolinks:load', () => {
   $('.list-play-btn').click(function(){
     $(this).addClass('shown')
   });
-  $('.list-play-btn #get-play-btn').click(function(){
+  $('.list-play-btn .get-play-btn').click(function(){
     $(this).find('.fa-circle-notch').removeClass('d-none')
     $(this).find('.fa-play').addClass('d-none')
     $(this).find('.fa-times').addClass('d-none')
   });
-  $('*#play-pause-btn').click(() => {
+  $('.play-pause-btn').unbind('click').click(() => {
     playAudio()
   });
   $('audio').on('ended', () => {
@@ -27,7 +27,6 @@ showPlayerPanel = () => {
 };
 
 hidePlayerPanel = () => {
-  $('#player-panel').removeClass('d-block')
   $('#player-panel').hide('slide', { direction: 'down' }, 400)
 };
 
@@ -43,12 +42,12 @@ playAudio = () => {
   audio = $('audio')[0]
   if (audio.paused) {
     audio.play()
-    $("#play-pause-btn .fa-pause").removeClass('d-none')
-    $("#play-pause-btn .fa-play").addClass('d-none')
+    $(".play-pause-btn .fa-pause").removeClass('d-none')
+    $(".play-pause-btn .fa-play").addClass('d-none')
   } else {
     audio.pause()
-    $("#play-pause-btn .fa-play").removeClass('d-none')
-    $("#play-pause-btn .fa-pause").addClass('d-none')
+    $(".play-pause-btn .fa-play").removeClass('d-none')
+    $(".play-pause-btn .fa-pause").addClass('d-none')
   }
 };
 
@@ -75,7 +74,7 @@ enableAudioSeekbar = () => {
 };
 
 handleAudioEnd = () => {
-  $("#play-pause-btn .fa-play").removeClass('d-none')
-  $("#play-pause-btn .fa-pause").addClass('d-none')
+  $(".play-pause-btn .fa-play").removeClass('d-none')
+  $(".play-pause-btn .fa-pause").addClass('d-none')
   $('#audio-seekbar').slider('value', 0)
 };

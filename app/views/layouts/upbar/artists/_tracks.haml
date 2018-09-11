@@ -1,9 +1,11 @@
-.up.media
-  = image_tag @artist.image
-  .media-body
-    = link_to @artist.name, artist_path
+.up
+  = link_to artist_path do
+    = image_tag @artist.image
+    %h6
+      = @artist.name 
 
-.up.media
-  .media-body
-    %i.fas.fa-music
-    = link_to 'Tracks', artists_tracks_path
+.up
+  = link_to artists_tracks_path do
+    %h6
+      %i.fas.fa-music
+      Tracks

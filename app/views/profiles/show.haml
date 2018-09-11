@@ -8,12 +8,16 @@
 
     .media
       .media-body
+
         - if @profile.plays.any?
           = render 'library'
+
+          %hr.my-3
+
         - if other_profile?(@profile)
           = render 'common'
 
-    %hr.my-3
+          %hr.my-3
 
     #profile-playing-now-track{ id: @profile.id }
       = render 'playing_now_track'

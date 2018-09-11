@@ -1,27 +1,31 @@
-.up.media
-  .media-body
-    %i.fas.fa-volume-up
-    = link_to 'Recommendations', recommendations_path
+.up
+  = link_to recommendations_path do
+    %h6
+      %i.fas.fa-volume-up
+      Recommendations
 
 - if params[:artist_name].present?
-  .up.media
+  .up
     - if @artist.present?
-      = image_tag @artist.image
-      .media-body
-        = link_to @artist.name, recommendations_path(params.as_json.slice('artist_name'))
+      = link_to recommendations_path(params.as_json.slice('artist_name')) do
+        = image_tag @artist.image
+        %h6
+          = @artist.name
     - else
-      .media-body
+      %h6
         %i.fas.fa-question
         = params[:artist_name]
 
 - if params[:tag_name].present?
-  .up.media
-    .media-body
-      %i.fas.fa-tag
-      = link_to params[:tag_name], recommendations_path(params.as_json.slice('tag_name'))
+  .up
+    = link_to recommendations_path(params.as_json.slice('tag_name')) do
+      %h6
+        %i.fas.fa-tag
+        = params[:tag_name]
 
 - if params[:days].present?
-  .up.media
-    .media-body
-      %i.far.fa-calendar
-      = link_to params[:days], recommendations_path(params.as_json.slice('days'))
+  .up
+    = link_to recommendations_path(params.as_json.slice('days')) do
+      %h6
+        %i.far.fa-calendar
+        = params[:days]

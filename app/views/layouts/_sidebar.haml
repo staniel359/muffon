@@ -1,19 +1,20 @@
-#sidebar.h-100.position-fixed.fixed-top.z-1000
+#sidebar
 
-  %table.table.table-sm.text-white.mt-1.mb-0.sidebar-menu
+  %table.table-sm.sidebar-menu.my-1
     %tr
-      %td.py-1
-        %i.fas.fa-search
-        = form_tag search_path, class: 'd-inline', id: 'sidebar-search-form', method: :get do
-          = text_field_tag :q, nil, placeholder: 'Search...', class: 'border-0', id: 'sidebar-search-input', autocomplete: 'off'
+      %td
+        %h6.mb-0
+          %i.fas.fa-search
+          = form_tag search_path, id: 'sidebar-search-form', method: :get do
+            = text_field_tag :q, nil, placeholder: 'Search...', id: 'sidebar-search-input', autocomplete: 'off'
 
-  .separator.default.my-1
+  .separator.default
 
-  #sidebar-search-results-wrap.position-fixed.h-100.z-10.text-white
-    #sidebar-loading.text-center.mt-5
+  #sidebar-search-results-wrap
+    #sidebar-loading
       %i.fas.fa-circle-notch.fa-spin.fa-2x
-    #sidebar-search-results.p-2
-  %table.table.table-sm.table-hover.text-white.sidebar-menu
+    #sidebar-search-results
+  %table.table-sm.table-hover.sidebar-menu.mt-1
     %tr
       %td
         = link_to profile_path(current_profile) do
@@ -21,48 +22,51 @@
           Profile
     %tr
       %td#sidebar-music-submenu-header
-        %i.fas.fa-caret-down.float-right
-        %i.fas.fa-music
-        Music
+        %h6.mb-0
+          %i.fas.fa-music
+          Music
+          %i.fas.fa-caret-down.caret
+          %i.fas.fa-caret-up.d-none.caret
+
+  %table.table-sm.table-hover#sidebar-music-submenu
     %tr
-      %td#sidebar-music-submenu.ml-3
-        %table.table.table-sm.table-hover.text-white.mb-0.sidebar-menu
-          %tr
-            %td
-              = link_to profiles_library_path(current_profile) do
-                %i.fas.fa-headphones
-                Library
-          %tr
-            %td
-              = link_to player_path do
-                %i.fas.fa-play
-                Player
-          %tr
-            %td
-              = link_to profiles_playlists_path(current_profile) do
-                %i.fas.fa-list-alt
-                Playlists
-          %tr
-            %td
-              = link_to recommendations_path do
-                %i.fas.fa-volume-up
-                Recommendations
-          %tr
-            %td
-              = link_to bookmarks_path do
-                %i.fas.fa-bookmark
-                Bookmarks
+      %td
+        = link_to profiles_library_path(current_profile) do
+          %i.fas.fa-headphones
+          Library
+    %tr
+      %td
+        = link_to player_path do
+          %i.fas.fa-play
+          Player
+    %tr
+      %td
+        = link_to profiles_playlists_path(current_profile) do
+          %i.fas.fa-list-alt
+          Playlists
+    %tr
+      %td
+        = link_to recommendations_path do
+          %i.fas.fa-volume-up
+          Recommendations
+    %tr
+      %td
+        = link_to bookmarks_path do
+          %i.fas.fa-bookmark
+          Bookmarks
+
+  %table.table-sm.table-hover.sidebar-menu
     %tr
       %td
         = link_to conversations_path do
           - new_conversations = current_profile.decorate.new_conversations
           - if new_conversations.any?
-            #new-messages-counter.badge.badge-light.float-right.mr-3
+            #new-messages-counter
               %h6.mb-0
                 = new_conversations.length
           %i.fas.fa-comments.position-relative
             - if new_conversations.any?
-              %i.fas.fa-circle.text-light.position-absolute#new-message-circle
+              %i.fas.fa-circle#new-message-circle
           Conversations
     %tr
       %td
@@ -85,7 +89,7 @@
           %i.fas.fa-users
           Groups
 
-  %table.table-sm.table-hover.text-white.position-absolute.bottom-0.w-100.mb-2.sidebar-menu
+  %table.table-sm.table-hover#sidebar-bottom-menu
     %tr
       %td
         = link_to settings_path do

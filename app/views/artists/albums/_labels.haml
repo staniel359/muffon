@@ -1,5 +1,5 @@
 - if @album.labels.any?
-  .d-flex.align-items-center.justify-content-center.justify-content-sm-start.mb-2
+  .align-center.mb-2.mobile-centered
     %i.fas.fa-dot-circle.mr-2
     - @album.labels.pluck(:name).each do |label_name|
       .mr-1

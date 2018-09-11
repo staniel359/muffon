@@ -1,7 +1,8 @@
 - if @album.tag_ids.any?
-  %i.fas.fa-tag.mr-1
-  - @album.tags.first(5).pluck(:name).each do |tag_name|
-    = link_to tag_path(tag_name), class: 'tag' do
-      %strong
-        = tag_name
-  = link_to 'More tags...', artists_albums_tags_path, class: 'btn btn-sm btn-link text-white'
+  .mobile-centered
+    %i.fas.fa-tag.mr-2
+    - @album.tags.first(5).pluck(:name).each do |tag_name|
+      = link_to tag_path(tag_name), class: 'tag' do
+        %strong
+          = tag_name
+    = link_to 'More tags...', artists_albums_tags_path, class: 'btn btn-sm btn-link text-white'

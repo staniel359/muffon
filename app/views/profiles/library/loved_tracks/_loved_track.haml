@@ -4,7 +4,7 @@
       = render 'profiles/library/tracks/love_btn', profile_track: loved_track
     .mr-2.list-play-btn-cover-wrap
       = render 'shared/player/list_play_btn', track_id: loved_track.track_id
-      = image_tag loved_track.image, class: 'img-sm'
+      = image_tag loved_track.artist_image, class: 'img-sm'
     .media-body.d-flex.justify-content-between.align-items-center
       #loved-track-data
         %h6.mb-0

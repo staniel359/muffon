@@ -1,10 +1,11 @@
 .d-flex.justify-content-between.align-items-center
-  .media.align-items-center
-    .mr-2
-      = image_tag @artist.image, class: 'rounded-circle img-sm'
-    .media-body
-      %h4.mb-1
-        = @artist.name
+  = link_to profiles_library_artist_path do
+    .media.align-items-center
+      .mr-2
+        = image_tag @artist.image, class: 'rounded-circle img-sm'
+      .media-body
+        %h4.mb-1
+          = @artist.name
 
   .media.align-items-center
     .mr-2

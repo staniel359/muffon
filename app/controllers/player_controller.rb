@@ -33,6 +33,7 @@ class PlayerController < ApplicationController
   end
 
   def watch_on_youtube
+    set_track
     set_youtube_link
     respond_with_js
   end
@@ -64,7 +65,8 @@ private
   end
 
   def set_audio_link
-    @audio_link = VK::Track.call(vk_id: vk_id)
+    @audio_link =
+      @track.bandcamp_link || VK::Track.call(vk_id: vk_id)
   end
 
   def vk_id
@@ -101,7 +103,8 @@ private
 
   def set_youtube_link
     @youtube_link = YouTube::Link.call(
-      params.slice(:artist_name, :track_title)
+      artist_name: @track.artist_name,
+      track_title: @track.title
     )
   end
 end

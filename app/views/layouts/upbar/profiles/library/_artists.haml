@@ -1,23 +1,24 @@
-.up.media
+.up
   = link_to @profile do
     = image_tag @profile.avatar.url(:sm)
 
-.up.media
-  .media-body
-    = link_to profiles_library_path do
+.up
+  = link_to profiles_library_path do
+    %h6
       %i.fas.fa-headphones
+
       - if params[:action] == 'index'
         Library
 
-.up.media
-  .media-body
-    = link_to profiles_library_artists_path do
+.up
+  = link_to profiles_library_artists_path do
+    %h6
       %i.fas.fa-user
       Artists
 
 - if params[:action] == 'show'
-
-  .up.media
-    = image_tag @artist.image
-    .media-body
-      = link_to @artist.name, profiles_library_artist_path
+  .up
+    = link_to profiles_library_artist_path do
+      = image_tag @artist.image
+      %h6
+        = @artist.name

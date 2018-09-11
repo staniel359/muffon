@@ -1,4 +1,5 @@
 <% if @audio_link.present? %>
+  $('.youtube-iframe').html('')
   $('audio').attr('src', "<%= @audio_link %>")
 
   $("*#track_<%= @previous_track_id %>").removeClass('dark')
@@ -7,13 +8,13 @@
   $("#track_<%= @previous_track_id %> .list-play-btn").removeClass('shown')
   $("#track_<%= @track.id %> .list-play-btn").addClass('shown')
 
-  $("#track_<%= @previous_track_id %> #get-play-btn").removeClass('d-none')
-  $("#track_<%= @previous_track_id %> #get-play-btn .fa-play").removeClass('d-none')
-  $("#track_<%= @previous_track_id %> #get-play-btn .fa-circle-notch").addClass('d-none')
-  $("#track_<%= @previous_track_id %> #play-pause-btn").addClass('d-none')
+  $("#track_<%= @previous_track_id %> .get-play-btn").removeClass('d-none')
+  $("#track_<%= @previous_track_id %> .get-play-btn .fa-play").removeClass('d-none')
+  $("#track_<%= @previous_track_id %> .get-play-btn .fa-circle-notch").addClass('d-none')
+  $("#track_<%= @previous_track_id %> .play-pause-btn").addClass('d-none')
 
-  $("#track_<%= @track.id %> #play-pause-btn").removeClass('d-none')
-  $("#track_<%= @track.id %> #get-play-btn").addClass('d-none')
+  $("#track_<%= @track.id %> .play-pause-btn").removeClass('d-none')
+  $("#track_<%= @track.id %> .get-play-btn").addClass('d-none')
 
   $('#player-panel-track').html(
     "<%= j render 'layouts/player/player_panel_track' %>"
@@ -22,7 +23,7 @@
     "<%= j render 'layouts/player/playing_now_panel_track' %>"
   )
   $("#profile-playing-now-track_<%= current_profile.id %>").html(
-    "<%= j render 'layouts/profiles/playing_now_track' %>"
+    "<%= j render 'profiles/playing_now_track' %>"
   )
 
   playAudio();

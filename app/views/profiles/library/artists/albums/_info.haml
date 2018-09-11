@@ -1,26 +1,27 @@
-= link_to artists_album_path(@artist.name, @album.title) do
-  .mb-2
-    = image_tag @album.cover, class: 'img-fluid'
-  %h5.mb-0
-    %strong
-      = @album.title
+.scrollspy
+  = link_to artists_album_path(@artist.name, @album.title) do
+    .mb-2
+      = image_tag @album.cover, class: 'img-fluid'
+    %h5.mb-0
+      %strong
+        = @album.title
+    %h6.mb-0
+      = @artist.name
+    %h6 on muffon
+
+  %hr.my-2
+
   %h6.mb-0
-    = @artist.name
-  %h6 on muffon
+    In your library since
+  %h6
+    %strong
+      = @album.created_at.strftime('%e %b %Y')
 
-%hr.my-2
+  %hr.my-2
 
-%h6.mb-0
-  In your library since
-%h6
-  %strong
-    = @album.created_at.strftime('%e %b %Y')
-
-%hr.my-2
-
-- if @album.taggings.any?
-  .text-center
-    %h6.mb-1
-      Your tags:
-    - @album.taggings.each do |tagging|
-      = link_to tagging.tag.name, profiles_library_tagging_path(tag_name: tagging.tag.name), class: 'tag'
+  - if @album.taggings.any?
+    .text-center
+      %h6.mb-1
+        Your tags:
+      - @album.taggings.each do |tagging|
+        = link_to tagging.tag.name, profiles_library_tagging_path(tag_name: tagging.tag.name), class: 'tag'

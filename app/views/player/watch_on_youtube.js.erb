@@ -1,2 +1,5 @@
-$("iframe").hide().attr('src', '')
-$("#track_<%= params[:track_id] %> iframe").show().attr('src', "<%= @youtube_link %>")
+$('.youtube-iframe').html('')
+$("#track_<%= params[:track_id] %> .youtube-iframe").html(
+  "<%= j render 'shared/tracks/youtube_iframe' %>"
+)
+$("#track_<%= params[:track_id] %> .dropdown").dropdown('toggle')

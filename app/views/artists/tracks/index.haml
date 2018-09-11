@@ -8,7 +8,7 @@
 
     .separator.default.my-2
 
-    %table.table.table-hover.table-sm
+    %table.table-hover.table-sm
       - @tracks.each do |track|
         = render 'artists/track', track: track.decorate
     %nav

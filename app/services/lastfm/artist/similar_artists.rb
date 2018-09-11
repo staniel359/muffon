@@ -26,7 +26,7 @@ module LastFM
         {
           method:  'artist.getSimilar',
           artist:  @args.artist_name,
-          limit:   (@args.limit || 100),
+          limit:   (@args.limit || 200),
           api_key: api_key,
           format:  'json'
         }

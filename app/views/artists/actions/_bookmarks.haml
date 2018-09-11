@@ -1,8 +1,8 @@
 - if bookmarked
-  .d-flex.align-items-end.h-100.default
-    = button_to bookmark_path(model_type: model.class, model_id: model.id), method: :delete, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Bookmarked", class: 'action-btn' do
+  .bookmark-action-btn.default
+    = button_to bookmark_path(model_type: model.class, model_id: model.id), method: :delete, remote: true, data: { toggle: 'tooltip', placement: 'bottom' }, title: "Bookmarked", class: 'action-btn' do
       %i.fas.fa-bookmark
 - else
-  .d-flex.align-items-end.h-100
-    = button_to bookmarks_path(model_type: model.class, model_id: model.id), method: :post, remote: true, data: {toggle: 'tooltip', placement: 'bottom'}, title: "Add to bookmarks", class: 'action-btn' do
+  .bookmark-action-btn
+    = button_to bookmarks_path(model_type: model.class, model_id: model.id), method: :post, remote: true, data: { toggle: 'tooltip', placement: 'bottom' }, title: "Add to bookmarks", class: 'action-btn' do
       %i.fas.fa-bookmark

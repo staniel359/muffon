@@ -3,69 +3,60 @@ $muffonDefault: #574078
 $muffonDarkLight: #3c2f50
 $muffonDark: #2f263e
 $boxShadow: 0 0px 2px 1px rgba(3, 3, 3, 0.4)
+$borderDefault: 1px solid $muffonDefault
+$borderDarkLight: 1px solid $muffonDarkLight
 
 $primary: $muffonDefault
 $light: $muffonLight
 $dark: $muffonDark
 
 @import 'bootstrap'
-@import 'layouts'
 @import 'flag-icon'
 
 // HTML
 
 html
+  @extend .position-relative
   min-height: 100%
 body
   min-height: 100vh
+  margin-bottom: 210px
 body, hr
-  background-color: $muffonDefault
-  margin-bottom: 220px
+  @extend .default
 hr
-  margin: 0
+  @extend .m-0
 strong
   font-weight: 600
-a, a:hover, a:active, a:visited, a:focus
-  color: white
-  outline: none
+a
+  @extend .text-white, .no-outline
 td
-  border-top: none !important
-  border-bottom: 1px solid $muffonDefault
-.table-hover td:hover
-  background-color: $muffonDark
-.table thead th
-  border: none
-  border-bottom: 1px solid $muffonDefault
-  font-weight: 500
-.table .table
-  background-color: transparent !important
+  @extend .border-top-0
+  border-bottom: $borderDefault
 label
-  margin-bottom: 0
+  @extend .mb-0
 select
-  box-shadow: none !important
-.container-fluid
-  padding: 0
+  @extend .no-shadow
+table
+  @extend .table
+h1, h2, h3, h4, h5, h6
+  @extend .m-0
 
 // Media
 
 @media (max-width: 767.98px)
   #sidebar
-    width: 0px
+    width: 0px !important
   #footer
-    padding-left: 30px
+    padding-left: 30px !important
 @media (max-width: 575.98px)
-  #profile-page-avatar
-    width: 85px
-  .similar-artist-card, .tag-artist-card, .recommendation-info, #artist-info, #album-info
-    text-align: center
-  #profile-artist-data
-    text-align: left !important
+  body
+    margin-bottom: 270px
+  #player-panel
+    height: 120px !important
+  #footer
+    height: 270px !important
   #album-title-left
     display: none !important
-  #player-panel
-    height: 120px
-  #footer
-    height: 280px
 
 // Flag icons
 
@@ -74,24 +65,28 @@ select
 
 // Bootstrap
 
+.container-fluid
+  padding: 0
+
 .row
   margin: 0 -10px
   [class^=col]
     padding: 0 10px
 .no-gutters
-  margin: 0 !important
+  @extend .m-0
 
 .card
-  background-color: $muffonDarkLight
-  color: white
-  border: none
-  box-shadow: $boxShadow
+  @extend .dark-light, .text-white, .border-0, .with-shadow
+
+.table thead th
+  @extend .border-0
+  border-bottom: $borderDefault
+  font-weight: 500
+.table-hover td:hover
+  @extend .dark
 
 .btn
-  border: none
-.btn:focus, .btn:active, .btn.active
-  outline: none !important
-  box-shadow: none !important
+  @extend .border-0, .no-shadow
 .btn-sm
   line-height: 1
   padding: 7px 9px
@@ -114,8 +109,8 @@ select
   width: 20px
 
 .nav-fill .nav-link.active
+  @extend .transparent
   border-bottom: 2px solid $muffonLight
-  background-color: transparent !important
   border-radius: 0px
 
 .text-love
@@ -125,12 +120,11 @@ select
   margin: 75px auto
   pointer-events: all
 .modal-content
-  color: white
-  background-color: $muffonDarkLight
+  @extend .dark-light, .text-white
 .modal-header
-  border-bottom: 1px solid $muffonDefault
+  border-bottom: $borderDefault
 .modal-footer
-  border-top: 1px solid $muffonDefault
+  border-top: $borderDefault
 
 .badge
   font-weight: 500 !important
@@ -138,48 +132,189 @@ select
 .small
   line-height: 1.2
 
+.popover a
+  @extend .text-dark, .d-block, .w-100
+
 // Kaminari
 
 .pagination
-  margin-bottom: 0
-  justify-content: center !important
+  @extend .mb-0, .justify-content-center
 .page-item.active .page-link
-  background-color: $muffonLight !important
+  @extend .light
 .page-link:not(:disabled):not(.disabled)
-  background-color: $muffonDefault
+  @extend .default
 .page-link
-  border: 1px solid $muffonDarkLight !important
-  color: white !important
-  box-shadow: none !important
+  @extend .text-white, .no-shadow
+  border: $borderDarkLight
 
 // Turbolinks
 
 .turbolinks-progress-bar
+  @extend .light
   height: 5px
-  background-color: $muffonLight
 
 // jQuery UI Autocomplete
 
 .ui-autocomplete
-  position: absolute
-  z-index: 100
+  @extend .position-absolute, .z-100, .p-0, .white, .scrollable
   list-style: none
-  background-color: white
-  padding: 0
   max-height: 200px
-  overflow-y: scroll
   .ui-menu-item
+    @extend .cursor-pointer
     padding: 7px 12px
-    cursor: pointer
   .ui-menu-item:hover
     background-color: lightGrey
 .ui-helper-hidden-accessible
-  display: none
+  @extend .d-none
 
 // Font Awesome
 
 .fa-circle-notch
   line-height: 0.7 !important
+
+// Layouts
+
+#main-container
+  @extend .container-fluid, .py-5, .position-relative, .h-100
+#upbar-container
+  @extend .container-fluid, .fixed-top, .z-500
+#progress-bar-container
+  @extend .container-fluid, .fixed-bottom, .z-750
+
+#sidebar
+  @extend .h-100, .position-fixed, .fixed-top, .z-1000, .text-white, .with-shadow, .dark-light-transparent
+  width: 50px
+  transition: 0.3s
+  font-size: 16px
+  white-space: nowrap
+  overflow-x: hidden
+.sidebar-menu
+  @extend .mb-0
+  td
+    @extend .border-0, .p-0
+    padding: 7px 0
+  i
+    @extend .text-center
+    width: 50px
+    font-size: 20px
+  a, h6
+    @extend .d-flex, .align-items-center, .no-text-decoration, .w-100
+    height: 40px
+#sidebar:hover
+  width: 250px !important
+#sidebar-search-form
+  @extend .d-inline
+#sidebar-search-input
+  @extend .input-transp, .border-0
+  width: 180px !important
+#sidebar-search-results-wrap
+  @extend .position-fixed, .h-100, .z-10, .text-white
+  background-color: $muffonDark+e8
+  display: none
+  width: 250px
+  white-space: normal
+#sidebar-search-results
+  @extend .p-2, .scrollable
+  display: none
+  height: 90%
+#sidebar-loading
+  @extend .text-center, .mt-5
+  display: none
+#sidebar-music-submenu-header
+  @extend .position-relative, .cursor-pointer
+  .caret
+    @extend .position-absolute, .right-0
+#sidebar-music-submenu
+  @extend .sidebar-menu
+  margin-left: 25px
+  display: none
+#sidebar-music-submenu:hover
+  background-color: transparent
+#sidebar-bottom-menu
+  @extend .position-absolute, .bottom-0, .w-100, .mb-2, .sidebar-menu
+
+#new-messages-counter
+  @extend .badge, .badge-light, .float-right, .mr-3
+#new-message-circle
+  @extend .top-0, .position-absolute
+  font-size: 10px !important
+  left: 10px
+
+#loading
+  display: none
+#loading-inner
+  @extend .text-white, .position-fixed, .w-100, .h-100, .top-0, .z-100, .d-flex, .align-items-center, .justify-content-center, .dark-light-transparent
+  i
+    @extend .position-fixed
+
+#progress-bar
+  @extend .dark-light-transparent, .with-shadow
+  bottom: 75px
+  display: none
+  .progress
+    height: 10px
+    border-radius: 5px
+  .progress-bar
+    background-color: $muffonLight
+    transition: 0.5s
+
+#footer
+  @extend .dark-light, .w-100, .bottom-0, .position-absolute, .z-250
+  background-color: $muffonDarkLight
+  padding: 20px 20px 50px 80px
+  height: 210px
+
+#upbar
+  @extend .d-flex, .align-items-center, .text-white
+  height: 35px
+  #logo
+    @extend .px-3
+    line-height: 1.1
+    letter-spacing: 0.03em
+  #beta-btn
+    @extend .tag, .light, .position-absolute, .top-0
+    left: 110px
+    font-size: 11px !important
+    padding: 4px !important
+    line-height: 0.6 !important
+  .up
+    @extend .dark-light, .h-100, .mr-2, .with-shadow, .d-flex, .align-items-center
+    a
+      @extend .d-flex, .align-items-center, .w-100, .h-100, .no-text-decoration
+    img
+      @extend .img-xs
+    h6
+      @extend .mb-0, .mx-2
+
+#scroll-top-btn
+  background-color: $muffonDark+aa !important
+  bottom: 15px
+  display: none
+  width: 85px
+
+#playing-now-panel
+  @extend .dark-light-transparent, .with-shadow, .right-0
+  display: none
+  width: 280px
+#player-panel
+  @extend .dark-light-transparent, .with-shadow
+  display: none
+  height: 60px
+#player-panel.shown
+  display: block
+#audio-seekbar
+  @extend .default, .cursor-pointer
+  height: 3px
+.ui-slider-handle
+  @extend .light, .position-absolute, .cursor-pointer
+  height: 10px
+  width: 10px
+  border-radius: 50%
+  top: -4px
+  margin-left: -4px
+.ui-slider-range
+  @extend .light
+  height: 3px
 
 // Custom
 
@@ -200,8 +335,6 @@ select
 .h0
   @extend h1
   font-size: 80px
-  a
-    text-decoration: none
 
 .tag
   @extend .btn, .btn-primary, .btn-sm
@@ -211,47 +344,61 @@ select
   max-width: 170px
   white-space: normal
   line-height: 1
+  %strong, .small
+    @extend .d-inline
 
 .separator
+  @extend .default
   height: 2px
 
 .default
   background-color: $muffonDefault !important
 .light
   background-color: $muffonLight !important
+.dark-light
+  background-color: $muffonDarkLight !important
 .dark
   background-color: $muffonDark !important
+.transparent
+  background-color: transparent !important
+.white
+  background-color: white !important
+.dark-light-transparent
+  background-color: $muffonDarkLight+e6 !important
 
 .artist-actions
+  @extend .position-absolute, .w-100
   padding-top: 100%
+.artist-action
+  @extend .w-50, .h-50, .position-absolute, .align-items-end
+[id^=artist-library-action]
+  @extend .top-0
+[id^=artist-library-action], [id^=artist-listened-action]
+  @extend .right-0
+[id^=artist-bookmark-action], [id^=artist-listened-action]
+  top: 50%
+.library-action-btn, .bookmark-action-btn, .listened-action-btn
+  @extend .d-flex, .h-100
+.library-action-btn, .listened-action-btn
+  @extend .justify-content-end
+.bookmark-action-btn, .listened-action-btn
+  @extend .align-items-end
 .action-btn
   @extend .btn-transp
   margin: 5px 10px
   font-size: 13px
-[id^=artist-library-action]
-  top: 0
-[id^=artist-library-action], [id^=artist-listened-action]
-  right: 0
-[id^=artist-bookmark-action], [id^=artist-listened-action]
-  top: 50%
 
 .btn-transp
-  background-color: transparent
-  color: white
-  border: none
-  padding: 0
-  cursor: pointer
-  outline: none !important
+  @extend .transparent, .text-white, .border-0, .p-0, .no-outline, .cursor-pointer
 
 .track-bar-wrap
-  display: flex
-  align-items: center !important
+  @extend .d-flex, .align-items-center, .mt-1
   a
     line-height: 1
 .track-bar
+  @extend .light
   margin-right: 5px
   height: 3px
-  background-color: $muffonLight
 
 .clickable
   cursor: zoom-in
@@ -269,16 +416,11 @@ select
   right: 0
 
 .input-transp
-  width: 100%
-  background-color: transparent
-  border: none
+  @extend .w-100, .transparent, .border-0, .text-white, .no-shadow, .no-outline
   font-size: 20px
-  color: white
-  border-bottom: 1px solid $muffonDefault
-  box-shadow: none
-  outline: none
+  border-bottom: $borderDefault
 .input-transp:focus
-  border-bottom: 2px solid $muffonLight
+  border-bottom: 2px solid $muffonLight !important
 
 .z-1
   z-index: 1
@@ -303,16 +445,14 @@ select
   background-color: #ba0000
 
 .list-play-btn-wrap, .list-play-btn-cover-wrap
-  display: flex
-  justify-content: center !important
-  align-items: center !important
+  @extend .d-flex, .align-items-center, .justify-content-center
 .list-play-btn-wrap
   width: 35px
   height: 35px
 .list-play-btn-cover-wrap
-  position: relative
+  @extend .position-relative
   .list-play-btn
-    position: absolute
+    @extend .position-absolute
     transition: 0.2s
     opacity: 0
 .list-play-btn:hover, .list-play-btn.shown
@@ -326,21 +466,22 @@ select
   display: none
   top: 50px
 #library-search-form
-  background-color: $muffonDark+f4
+  background-color: $muffonDark+f4 !important
 #library-search-results
+  @extend .scrollable
   max-height: 420px
-  overflow-y: scroll
 
 .scrollspy
+  @extend .position-sticky
   top: 50px
 .anchor
-  position: relative
+  @extend .position-relative
   top: -50px
 
 #playlist-search-results-placeholder, #playlist-search-results
   height: 320px
 #playlist-search-results
-  overflow-y: scroll
+  @extend .scrollable
   display: none
 
 .font-light
@@ -354,15 +495,13 @@ select
 [id^=bookmark-restore]
   margin: -0.3rem
 
-.conversation a
-  text-decoration: none
 .new-conversation-circle
   font-size: 12px
 .new-message-circle
   font-size: 10px
 #conversation-messages
+  @extend .scrollable
   height: 360px
-  overflow-y: scroll
 .message
   max-width: 75%
 
@@ -370,20 +509,24 @@ select
   max-width: 20px
 
 .image-modal
-  padding: 0
+  @extend .p-0
   .modal-dialog
-    text-align: center
+    @extend .text-center
     margin: 50px auto 0 auto
 
+// Album page
+
+#album-play-btn-main
+  @extend .d-none, .d-sm-block, .position-absolute, .right-0
 #album-title-left
+  @extend .text-center, .mt-1
   display: none
 
 .truncated
+  @extend .overflow-hidden
   white-space: nowrap
-  overflow: hidden
   text-overflow: ellipsis
-#player-panel-track-title
-  height: 20px
+
 .overflow-hidden
   overflow: hidden
 
@@ -402,3 +545,26 @@ select
     text-anchor: middle
     fill: white
     font-size: 12px
+
+.with-shadow
+  box-shadow: $boxShadow
+.no-shadow
+  box-shadow: none !important
+.no-outline
+  outline: none !important
+.no-text-decoration
+  text-decoration: none
+
+.scrollable
+  overflow-y: scroll
+
+.cursor-pointer
+  cursor: pointer
+
+.align-center
+  @extend .d-flex, .align-items-center
+.mobile-centered
+  @extend .align-center, .flex-wrap, .text-center, .text-sm-left, .justify-content-center, .justify-content-sm-start
+
+.youtube-iframe
+  @extend .embed-responsive, .embed-responsive-16by9, .mt-2

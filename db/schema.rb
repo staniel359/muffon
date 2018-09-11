@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 22) do
+ActiveRecord::Schema.define(version: 2018_09_10_090641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 22) do
     t.bigint "lastfm_plays_count", default: 0
     t.bigint "listeners_count", default: 0
     t.bigint "plays_count", default: 0
-    t.bigint "top_track_plays_count", default: 0
     t.integer "similar_artist_ids", default: [], array: true
     t.integer "tag_ids", default: [], array: true
     t.integer "top_track_ids", default: [], array: true

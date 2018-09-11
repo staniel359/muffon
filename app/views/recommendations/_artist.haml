@@ -3,5 +3,5 @@
     = button_to recommendation_path(recommendation_id: recommendation.id), class: 'btn-transp', id: "recommendation-delete-btn_#{recommendation.id}", method: :delete, remote: true, data: { toggle: 'tooltip', placement: 'bottom' }, title: 'Delete recommendation' do
       %i.fas.fa-times
   = render 'artists/actions', artist: recommendation.artist
-  = link_to recommendation.artist_name do
+  = link_to artist_path(recommendation.artist_name) do
     = image_tag recommendation.artist_image, class: 'rounded-circle img-fluid position-relative w-100'

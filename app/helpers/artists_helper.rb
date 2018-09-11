@@ -6,6 +6,8 @@ module ArtistsHelper
 private
 
   def top_track_count
-    @top_track_count ||= @artist.top_track_plays_count
+    @top_track_count ||= @artist.tracks.order(
+      lastfm_plays_count: :desc
+    ).first.lastfm_plays_count
   end
 end

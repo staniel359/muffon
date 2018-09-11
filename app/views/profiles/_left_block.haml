@@ -1,9 +1,9 @@
-.mr-3
+.mr-3.text-center
   = image_tag @profile.avatar.url(:md), id: 'profile-page-avatar', class: 'rounded-circle'
   - if other_profile?(@profile)
     .mt-2
       #follow-button.mb-1{ id: @profile.id }
-        = render 'relationships/follow_btn', profile: @profile
-      = button_to new_message_path(to: @profile.nickname), class: 'btn btn-sm btn-primary', method: :get, remote: true do
+        = render 'relationships/follow_btn', profile_id: @profile.id
+      = button_to new_message_path(recipient_id: @profile.id), class: 'btn btn-sm btn-primary', method: :get, remote: true do
         %i.fas.fa-envelope
-        Write a message
+        Send message

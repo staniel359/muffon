@@ -1,34 +1,43 @@
-.up.media
+.up
   = link_to @profile do
     = image_tag @profile.avatar.url(:sm)
 
-.up.media
-  .media-body
-    = link_to profiles_library_path do
+.up
+  = link_to profiles_library_path do
+    %h6
       %i.fas.fa-headphones
+
       - if params[:action] == 'index'
         Library
 
-.up.media
-  .media-body
-    = link_to profiles_library_taggings_path do
+.up
+  = link_to profiles_library_taggings_path do
+    %h6
       %i.fas.fa-tags
+
       - if params[:action].in?(%[index show])
         Taggings
 
 - unless params[:action] == 'index'
-  .up.media
-    .media-body
-      = link_to profiles_library_tagging_path do
+  .up
+    = link_to profiles_library_tagging_path do
+      %h6
         = @profile_tag.tag.name
 
   - unless params[:action] == 'show'
-    .up.media
-      .media-body
-
-        - if params[:action] == 'artists'
-          = link_to 'Artists', profiles_library_taggings_artists_path
-        - elsif params[:action] == 'albums'
-          = link_to 'Albums', profiles_library_taggings_albums_path
-        - elsif params[:action] == 'tracks'
-          = link_to 'Tracks', profiles_library_taggings_tracks_path
+    .up
+      - if params[:action] == 'artists'
+        = link_to profiles_library_taggings_artists_path do
+          %h6
+            %i.fas.fa-user
+            Artists
+      - elsif params[:action] == 'albums'
+        = link_to profiles_library_taggings_albums_path do
+          %h6
+            %i.fas.fa-dot-circle
+            Albums
+      - elsif params[:action] == 'tracks'
+        = link_to profiles_library_taggings_tracks_path do
+          %h6
+            %i.fas.fa-music
+            Tracks

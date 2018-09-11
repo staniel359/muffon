@@ -1,8 +1,8 @@
 .list-play-btn{ class: ('shown' if playing_now?(track_id)) }
-  = button_to player_play_path(track_id: track_id, previous_track_id: @previous_track_id), remote: true, class: "btn btn-primary btn-sm btn-30 #{'d-none' if playing_now?(track_id)}", id: 'get-play-btn', method: :get do
+  = button_to player_play_path(track_id: track_id, previous_track_id: @previous_track_id), remote: true, class: "btn btn-primary btn-sm btn-30 get-play-btn #{'d-none' if playing_now?(track_id)}", method: :get do
     %i.fas.fa-play
     %i.fas.fa-circle-notch.fa-spin.d-none
     %i.fas.fa-times.d-none
-  = button_tag class: "btn btn-primary btn-sm btn-30 #{'d-none' unless playing_now?(track_id)}", id: 'play-pause-btn' do
+  = button_tag class: "btn btn-primary btn-sm btn-30 play-pause-btn #{'d-none' unless playing_now?(track_id)}" do
     %i.fas.fa-play
     %i.fas.fa-pause.d-none

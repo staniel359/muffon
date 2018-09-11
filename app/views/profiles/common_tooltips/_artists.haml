@@ -1,18 +1,15 @@
-#tooltip_artists
-  - @common_artists.first(6).map do |a|
-
-    .tooltip_common_artist
-      = link_to library_artist_path(name: a.artist.artist_name) do
-        .mg_btm_5
-          = image_tag a.artist.artist_image, class: 'img_rnd img_50'
-        %h5
+- @common_artists.first(5).each do |artist|
+  = link_to profiles_library_artist_path(artist_name: artist.name) do
+    .media.align-items-center.my-2
+      .mr-2
+        = image_tag artist.image, class: 'img-xs rounded-circle'
+      .media-body
+        %h6.mb-0
           %strong
-            = a.artist.name
-      %h5
-        = link_to library_artist_plays_path(name: a.artist.artist_name) do
-          = pluralize(a.playcount, 'play')
+            = artist.name
+        .small
+          = pluralize(artist.plays_count, 'play')
 
-  - if @common_artists.count > 6
-
-    .text_right
-      = button_tag "and #{@common_artists.count - 6} others...", class: 'btn btn-primary btn-sm'
+- if @common_artists.count > 5
+  .text-right
+    = link_to "and #{@common_artists.count - 5} more...", '#'
