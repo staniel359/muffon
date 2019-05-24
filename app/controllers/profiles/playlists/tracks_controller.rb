@@ -36,8 +36,8 @@ module Profiles
       def add_track_to_playlist(playlist)
         playlist.playlist_tracks.where(
           profile_id: current_profile.id,
-          track_id:   @track.id,
-          artist_id:  @track.artist_id
+          track_id: @track.id,
+          artist_id: @track.artist_id
         ).first_or_create
       end
 

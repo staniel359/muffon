@@ -7,6 +7,8 @@ module Library
   private
 
     def retrieve_artist_tags
+      return [] unless limited_tag_ids.any?
+
       limited_tag_ids.transpose.yield_self do |a|
         [Tag.find(a[0]).pluck(:name), a[1]]
       end.transpose

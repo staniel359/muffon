@@ -1,13 +1,21 @@
 module Bandcamp
   class Link < Muffon::Base
     def call
-      retrieve_link
+      album_data
     end
 
   private
 
-    def retrieve_link
-      actual_bandcamp_links.find { |l| matched_album(l) }.try(:[], :url)
+    def album_data
+      return {} unless album_link_data.present?
+
+      { album: album_data_hash }
+    end
+
+    def album_link_data
+      @album_link_data ||= actual_bandcamp_links.find do |l|
+        matched_album(l)
+      end
     end
 
     def actual_bandcamp_links
@@ -44,8 +52,8 @@ module Bandcamp
 
     def process_google_link(link)
       {
-        name:        link.css('.r').text,
-        url:         link.css('a').first['href'],
+        name: link.css('.r').text,
+        url: link.css('a').first['href'],
         description: link.css('.st').text.remove("\n")
       }
     end
@@ -68,6 +76,22 @@ module Bandcamp
 
     def full_album_title
       "#{@args.album_title.strip} - #{@args.artist_name.strip} - Bandcamp"
+    end
+
+    def album_data_hash
+      {
+        title: album_title,
+        artist: { name: artist_name },
+        link: album_link_data[:url]
+      }
+    end
+
+    def album_title
+      album_link_data[:name].split(' - ')[0]
+    end
+
+    def artist_name
+      album_link_data[:name].split(' - ')[1]
     end
   end
 end

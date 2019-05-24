@@ -33,23 +33,23 @@ module Muffon
     def call_service(scope)
       services_hash[scope].constantize.call(
         artist_name: @args.artist_name,
-        limit:       limits[scope]
+        limit: limits[scope]
       )
     end
 
     def services_hash
       {
-        'base'            => '::LastFM::Artist',
-        'top_tracks'      => '::LastFM::Artist::Tracks',
-        'top_albums'      => '::LastFM::Artist::Albums',
+        'base' => '::LastFM::Artist',
+        'top_tracks' => '::LastFM::Artist::Tracks',
+        'top_albums' => '::LastFM::Artist::Albums',
         'similar_artists' => '::LastFM::Artist::SimilarArtists'
       }
     end
 
     def limits
       {
-        'top_tracks'      => 10,
-        'top_albums'      => 6,
+        'top_tracks' => 10,
+        'top_albums' => 6,
         'similar_artists' => 6
       }
     end

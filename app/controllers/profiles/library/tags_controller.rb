@@ -26,7 +26,7 @@ module Profiles
         @title = t(
           "profiles.library.tags.#{params[:action]}",
           profile: @profile.nickname,
-          tag:     @tag&.name
+          tag: @tag&.name
         )
       end
 

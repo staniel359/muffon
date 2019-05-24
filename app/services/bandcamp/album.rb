@@ -1,22 +1,15 @@
 module Bandcamp
   class Album < Muffon::Base
     def call
-      process_album_data
+      album_data
     end
 
   private
 
-    def process_album_data
+    def album_data
       return {} unless link.present?
 
-      {
-        title:        title,
-        artist:       album_artist_data,
-        link:         link,
-        cover:        cover,
-        release_date: release_date,
-        tracks:       tracks
-      }
+      { album: album_data_hash }
     end
 
     def link
@@ -24,14 +17,27 @@ module Bandcamp
     end
 
     def retrieve_link
-      Bandcamp::Link.call(
-        album_title: @args.album_title,
-        artist_name: @args.artist_name
-      )
+      Bandcamp::Link.call(@args).dig(:album, :link)
+    end
+
+    def album_data_hash
+      {
+        title: title,
+        artist: { name: artist_name },
+        link: link,
+        cover: cover,
+        release_date: release_date,
+        description: description,
+        tracks: tracks
+      }
     end
 
     def title
-      parsed_page.css('#name-section').css('.trackTitle').text.strip
+      parsed_album_data['title']
+    end
+
+    def parsed_album_data
+      JSON.parse(parsed_page.to_s.match(/current: ({.+})/)[1])
     end
 
     def parsed_page
@@ -42,32 +48,37 @@ module Bandcamp
       RestClient.get(link)
     end
 
-    def album_artist_data
-      { name: artist_name }
-    end
-
     def artist_name
-      parsed_page.css('#name-section').css(
-        'span[itemprop="byArtist"]'
-      ).text.strip
+      parsed_page.to_s.match(/artist: \"(.+)\"/)[1]
     end
 
     def cover
-      parsed_page.css('.popupImage').first['href']
+      "https://f4.bcbits.com/img/a#{parsed_album_data['art_id']}_10.jpg"
     end
 
     def release_date
-      raw_release_date.insert(4, '-').insert(7, '-')
+      parsed_album_data['release_date'].to_time.strftime('%d-%m-%Y')
     end
 
-    def raw_release_date
-      parsed_page.css('meta[itemprop="datePublished"]')[0]['content']
+    def description
+      parsed_album_data['about']
     end
 
     def tracks
-      Bandcamp::Tracks.call(
-        script: parsed_page.css('script')
-      ).map { |t| t.merge(artist: album_artist_data) }
+      parsed_tracks.map { |t| process_track(t) }
+    end
+
+    def parsed_tracks
+      JSON.parse(parsed_page.to_s.match(/trackinfo: (\[.+\])/)[1])
+    end
+
+    def process_track(track)
+      {
+        title: track['title'],
+        artist: { name: artist_name },
+        duration: track['duration'].ceil,
+        link: track.dig('file', 'mp3-128')
+      }
     end
   end
 end

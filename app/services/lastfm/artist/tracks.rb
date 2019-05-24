@@ -2,59 +2,69 @@ module LastFM
   class Artist
     class Tracks < LastFM::Base
       def call
-        retrieve_tracks
+        tracks_data
       end
 
     private
 
-      def retrieve_tracks
-        return {} unless parsed_tracks_data.present?
+      def tracks_data
+        return empty_hash unless
+            @args.artist_name.present? && parsed_page.present?
 
-        parsed_tracks_data['track'].last(50).map do |t|
-          process_track(t)
-        end
+        tracks_data_hash
       end
 
-      def parsed_tracks_data
-        @parsed_tracks_data ||=
-          JSON.parse(tracks_response)['toptracks']
+      def parsed_page
+        @parsed_page ||= JSON.parse(tracks_response)['toptracks']
       end
 
       def tracks_response
-        RestClient.get(api_link, params: request_params)
+        RestClient.get(lastfm_api_link, params: request_params)
       end
 
       def request_params
         {
-          method:  'artist.getTopTracks',
-          artist:  @args.artist_name,
-          api_key: api_key,
-          page:    page,
-          limit:   (@args.limit || 50),
-          format:  'json'
+          method: 'artist.getTopTracks',
+          artist: @args.artist_name,
+          api_key: lastfm_api_key,
+          page: page,
+          limit: (@args.limit || 50),
+          format: 'json'
         }
       end
 
-      def process_track(track)
+      def empty_hash
         {
-          title:                  track['name'],
+          artist: {},
+          tracks: {},
+          total_count: 0
+        }
+      end
+
+      def tracks_data_hash
+        {
+          artist: { name: parsed_page['@attr']['artist'] },
+          tracks: format_tracks,
+          total_count: total_count
+        }
+      end
+
+      def format_tracks
+        parsed_page['track'].last(50).map { |t| format_track(t) }
+      end
+
+      def format_track(track)
+        {
+          title: track['name'],
+          artist: { name: track['artist']['name'] },
           lastfm_listeners_count: track['listeners'].to_i,
-          lastfm_plays_count:     track['playcount'].to_i,
-          mbid:                   track['mbid'],
-          artist:                 artist_data(track)
-        }
-      end
-
-      def artist_data(track)
-        {
-          name:  track['artist']['name'],
-          mbid:  track['artist']['mbid'],
-          image: track['image'][3]['#text']
+          lastfm_plays_count: track['playcount'].to_i,
+          mbid: track['mbid']
         }
       end
 
       def total_count
-        parsed_tracks_data['@attr']['total'].to_i
+        parsed_page['@attr']['total'].to_i
       end
     end
   end

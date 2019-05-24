@@ -14,7 +14,7 @@ module Muffon
       def recommendations
         LastFM::Artist::SimilarArtists.call(
           artist_name: profile_artist.artist.name,
-          limit:       50
+          limit: 50
         )
       end
 
@@ -24,9 +24,9 @@ module Muffon
 
       def process_artist(artist)
         Muffon::Processor::Recommendation.call(
-          profile_id:        @args.profile_id,
+          profile_id: @args.profile_id,
           profile_artist_id: @args.profile_artist_id,
-          artist:            artist
+          artist: artist
         )
       end
     end

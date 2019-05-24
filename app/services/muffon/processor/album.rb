@@ -34,7 +34,7 @@ module Muffon
       def ids_attributes
         {
           track_ids: track_ids,
-          tag_ids:   tag_ids,
+          tag_ids: tag_ids,
           label_ids: label_ids
         }
       end

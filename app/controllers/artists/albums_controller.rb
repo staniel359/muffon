@@ -40,7 +40,7 @@ module Artists
 
     def find_album
       @album = Album.with(
-        title:     params[:album_title],
+        title: params[:album_title],
         artist_id: @artist.id
       ).first&.decorate
     end
@@ -48,8 +48,8 @@ module Artists
     def set_title
       @title = t(
         "artists.albums.#{params[:action]}",
-        artist:  @artist&.name,
-        album:   @album&.title
+        artist: @artist&.name,
+        album: @album&.title
       )
     end
 

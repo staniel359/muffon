@@ -28,5 +28,9 @@ module Muffon
     def concurrent_loader
       ActiveSupport::Dependencies.interlock.permit_concurrent_loads { yield }
     end
+
+    def convert_to_seconds(time)
+      time.split(':').map(&:to_i).inject { |m, s| m * 60 + s }
+    end
   end
 end

@@ -2,50 +2,66 @@ module LastFM
   class Artist
     class Albums < LastFM::Base
       def call
-        retrieve_artist_albums
+        albums_data
       end
 
     private
 
-      def retrieve_artist_albums
-        return {} unless parsed_albums_data.present?
+      def albums_data
+        return {} unless parsed_page.present?
 
-        parsed_albums_data['album'].map { |a| process_album(a) }
+        { artist: artist_data_hash }
       end
 
-      def parsed_albums_data
-        @parsed_albums_data ||= JSON.parse(albums_response)['topalbums']
+      def parsed_page
+        @parsed_page ||= JSON.parse(albums_response)['topalbums']
       end
 
       def albums_response
-        RestClient.get(api_link, params: request_params)
+        RestClient.get(lastfm_api_link, params: request_params)
       end
 
       def request_params
         {
-          method:  'artist.getTopAlbums',
-          artist:  @args.artist_name,
-          limit:   (@args.limit || 20),
-          page:    page,
-          api_key: api_key,
-          format:  'json'
+          method: 'artist.getTopAlbums',
+          artist: @args.artist_name,
+          limit: 101,
+          api_key: lastfm_api_key,
+          format: 'json'
         }
       end
 
-      def process_album(album)
+      def artist_data_hash
         {
-          title:              album['name'],
-          artist:             artist_data(album),
+          name: parsed_page['@attr']['artist'],
+          albums: format_albums
+        }
+      end
+
+      def format_albums
+        albums_paginated.map { |a| format_album(a) }
+      end
+
+      def albums_paginated
+        albums_sorted[array_offset, array_limit] || []
+      end
+
+      def albums_sorted
+        parsed_page['album'].sort_by do |a|
+          a['playcount']
+        end.reverse.reject { |a| a['name'] == '(null)' }
+      end
+
+      def array_limit
+        @args.limit || 20
+      end
+
+      def format_album(album)
+        {
+          title: album['name'],
+          artist: { name: album['artist']['name'] },
           lastfm_plays_count: album['playcount'],
-          mbid:               album['mbid'],
-          cover:              album['image'][3]['#text']
-        }
-      end
-
-      def artist_data(album)
-        {
-          name: album['artist']['name'],
-          mbid: album['artist']['mbid']
+          cover: album['image'][3]['#text']
         }
       end
     end

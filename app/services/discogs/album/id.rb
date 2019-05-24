@@ -1,30 +1,22 @@
 module Discogs
   class Album
-    class PageData < Muffon::Base
+    class ID < Muffon::Base
       def call
-        retrieve_album_page
+        album_data
       end
 
     private
 
-      def retrieve_album_page
-        return {} unless album_id.present?
+      def album_data
+        return {} unless matched_album.present?
 
-        JSON.parse(album_page_response)
+        { album: album_data_hash }
       end
 
-      def album_page_response
-        RestClient.get(
-          "https://api.discogs.com/releases/#{album_id}"
-        )
-      end
-
-      def album_id
-        @album_id ||= retrieve_album_id
-      end
-
-      def retrieve_album_id
-        search_results.find { |r| album_titles_match?(r) }.try(:[], 'id')
+      def matched_album
+        @matched_album ||= search_results.find do |r|
+          album_titles_match?(r)
+        end
       end
 
       def search_results
@@ -40,11 +32,15 @@ module Discogs
 
       def request_params
         {
-          type:   'release',
-          q:      full_album_title,
-          key:    secrets[:discogs][:key],
+          type: 'release',
+          q: full_album_title,
+          key: secrets[:discogs][:key],
           secret: secrets[:discogs][:secret]
         }
+      end
+
+      def full_album_title
+        format_string("#{@args.artist_name} - #{@args.album_title}")
       end
 
       def format_string(string)
@@ -59,12 +55,16 @@ module Discogs
         format_string(release['title'])
       end
 
-      def full_album_title
-        format_string("#{@args.artist_name} - #{@args.album_title}")
-      end
-
       def various_album_title
         format_string("Various - #{@args.album_title}")
+      end
+
+      def album_data_hash
+        {
+          title: matched_album['title'].split(' - ')[1],
+          artist: { name: matched_album['title'].split(' - ')[0] },
+          id: matched_album['id']
+        }
       end
     end
   end

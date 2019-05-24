@@ -11,8 +11,8 @@ module LastFM
 
       {
         artists: artists_data,
-        albums:  albums_data,
-        tracks:  tracks_data
+        albums: albums_data,
+        tracks: tracks_data
       }
     end
 
@@ -51,8 +51,8 @@ module LastFM
 
     def artist_data(artist)
       {
-        name:                   artist.css('.link-block-target').text,
-        image:                  artist_image(artist),
+        name: artist.css('.link-block-target').text,
+        image: artist_image(artist),
         lastfm_listeners_count: artist_lastfm_listeners_count(artist)
       }
     end
@@ -77,9 +77,9 @@ module LastFM
 
     def album_data(album)
       {
-        title:                  album.css('.link-block-target').text,
-        artist:                 album_artist_data(album),
-        cover:                  album.css('img').attr('src').value,
+        title: album.css('.link-block-target').text,
+        artist: album_artist_data(album),
+        cover: album.css('img').attr('src').value,
         lastfm_listeners_count: album_lastfm_listeners_count(album)
       }
     end
@@ -99,14 +99,12 @@ module LastFM
     end
 
     def tracks_list
-      parsed_page('tracks').css(
-        '.chartlist-ellipsis-wrap'
-      ).first(10)
+      parsed_page('tracks').css('.chartlist-ellipsis-wrap').first(10)
     end
 
     def track_data(track)
       {
-        title:  track.css('.link-block-target').text,
+        title: track.css('.link-block-target').text,
         artist: track_artist_data(track)
       }
     end

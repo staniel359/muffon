@@ -49,7 +49,7 @@ private
 
   def lastfm_params
     lastfm_data.slice(:nickname, :name, :country).merge(
-      lastfm_id:         lastfm_data[:nickname],
+      lastfm_id: lastfm_data[:nickname],
       remote_avatar_url: lastfm_data[:image]
     )
   end

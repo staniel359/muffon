@@ -33,10 +33,10 @@ module Profiles
 
       def retrieve_artists
         ::Library::Collection.call(
-          profile_id:      @profile.id,
+          profile_id: @profile.id,
           collection_name: 'artists',
-          scope:           params[:scope],
-          order:           params[:order]
+          scope: params[:scope],
+          order: params[:order]
         ).associated
       end
 
@@ -44,7 +44,7 @@ module Profiles
         @title = t(
           "profiles.library.artists.#{params[:action]}",
           profile: @profile.nickname,
-          artist:  @artist&.name
+          artist: @artist&.name
         )
       end
 

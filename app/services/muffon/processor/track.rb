@@ -13,7 +13,7 @@ module Muffon
 
       def track
         @track ||= ::Track.with(
-          title:     track_data[:title],
+          title: track_data[:title],
           artist_id: artist_id
         )
       end
@@ -42,10 +42,10 @@ module Muffon
       end
 
       def base_attributes
-        track.title                ||= if_present(:title)
-        track.duration               = if_present(:duration)
+        track.title ||= if_present(:title)
+        track.duration = if_present(:duration)
         track.lastfm_listeners_count = if_present(:lastfm_listeners_count)
-        track.lastfm_plays_count     = if_present(:lastfm_plays_count)
+        track.lastfm_plays_count = if_present(:lastfm_plays_count)
       end
 
       def if_present(attribute)
@@ -53,7 +53,7 @@ module Muffon
       end
 
       def extra_attributes
-        track.mbid          = if_present(:mbid)
+        track.mbid = if_present(:mbid)
         track.bandcamp_link = if_present(:bandcamp_link)
       end
 
@@ -68,7 +68,7 @@ module Muffon
       def albums
         Muffon::Processor::Albums.call(
           artist_id: artist_id,
-          albums:    track_data[:albums]
+          albums: track_data[:albums]
         )
       end
     end

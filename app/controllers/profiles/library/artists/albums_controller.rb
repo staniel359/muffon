@@ -34,8 +34,8 @@ module Profiles
           @title = t(
             "profiles.library.artists.albums.#{params[:action]}",
             profile: @profile.nickname,
-            artist:  @artist.name,
-            album:   @album&.title
+            artist: @artist.name,
+            album: @album&.title
           )
         end
 

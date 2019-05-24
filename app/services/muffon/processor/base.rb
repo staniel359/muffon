@@ -15,7 +15,7 @@ module Muffon
 
       def init_track(track_data, artist_id = nil)
         ::Track.with(
-          title:     track_data[:title],
+          title: track_data[:title],
           artist_id: artist_id || update_artist(track_data[:artist]).id
         ).first_or_initialize
       end
@@ -28,7 +28,7 @@ module Muffon
 
       def init_album(album_data, artist_id = nil)
         ::Album.with(
-          title:     album_data[:title],
+          title: album_data[:title],
           artist_id: artist_id || update_artist(album_data[:artist])
         ).first_or_initialize
       end

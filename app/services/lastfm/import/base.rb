@@ -18,9 +18,9 @@ module LastFM
 
       def import_phases
         {
-          'plays' =>           1,
-          'loved_tracks' =>    2,
-          'tags' =>            3,
+          'plays' => 1,
+          'loved_tracks' => 2,
+          'tags' => 3,
           'recommendations' => 4
         }
       end

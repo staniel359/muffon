@@ -14,7 +14,7 @@ module Muffon
       def recommendation
         @recommendation ||= ::Recommendation.where(
           profile_id: @args.profile_id,
-          artist_id:  artist.id
+          artist_id: artist.id
         ).first_or_initialize
       end
 

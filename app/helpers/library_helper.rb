@@ -11,12 +11,12 @@ module LibraryHelper
 
   def scopes_hash
     {
-      '7'   => '1 week',
-      '30'  => '1 month',
-      '90'  => '3 months',
+      '7' => '1 week',
+      '30' => '1 month',
+      '90' => '3 months',
       '180' => '6 months',
       '365' => '1 year',
-      '0'   => 'All time'
+      '0' => 'All time'
     }
   end
 

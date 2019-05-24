@@ -35,7 +35,7 @@ module LastFM
 
       def process_artist(id)
         Muffon::Processor::Recommendations.call(
-          profile_id:        @args.profile_id,
+          profile_id: @args.profile_id,
           profile_artist_id: id
         )
       end

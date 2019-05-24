@@ -43,10 +43,10 @@ module Profiles
 
       def add_track_to_playlist(playlist)
         find_playlist_track(playlist).tap do |t|
-          t.profile_track_id   = @track.id
-          t.profile_artist_id  = @track.profile_artist_id
+          t.profile_track_id = @track.id
+          t.profile_artist_id = @track.profile_artist_id
           t.profile_album_id ||= @album&.id
-          t.album_id         ||= @album&.album_id
+          t.album_id ||= @album&.album_id
           t.save
         end
       end
@@ -54,8 +54,8 @@ module Profiles
       def find_playlist_track(playlist)
         playlist.playlist_tracks.where(
           profile_id: current_profile.id,
-          track_id:   @track.track_id,
-          artist_id:  @track.artist_id
+          track_id: @track.track_id,
+          artist_id: @track.artist_id
         ).first_or_initialize
       end
 

@@ -2,65 +2,63 @@ module LastFM
   class Album
     class PageData < LastFM::Base
       def call
-        retrieve_album_page_data
+        album_data
       end
 
     private
 
-      def retrieve_album_page_data
+      def album_data
+        return {} unless album_page_response.present?
+
+        { album: album_data_hash }
+      end
+
+      def album_page_response
+        @album_page_response ||= begin
+          RestClient.get(album_page_link)
+        rescue RestClient::NotFound
+          nil
+        end
+      end
+
+      def album_data_hash
         {
-          title:        title,
-          artist:       album_artist_data,
+          title: title,
+          artist: { name: artist_name },
           release_date: release_date,
-          tags:         tags,
-          tracks:       tracks
+          tags: tags,
+          tracks: tracks
         }
       end
 
       def title
-        raw_data.css('.header-title').text.strip
+        parsed_page.css('.header-title').text.strip
       end
 
-      def raw_data
-        @raw_data ||= Nokogiri::HTML.parse(album_page_response)
+      def parsed_page
+        @parsed_page ||= Nokogiri::HTML.parse(album_page_response)
       end
 
-      def album_page_response
-        RestClient.get(album_page_link)
-      rescue RestClient::NotFound
-        nil
-      end
-
-      def album_page_link
-        "#{artist_page_link}/#{CGI.escape(@args.album_title)}"
-      end
-
-      def album_artist_data
-        { name: album_artist_name }
-      end
-
-      def album_artist_name
-        raw_data.css(
+      def artist_name
+        parsed_page.css(
           '.header-title-column-ellipsis-wrap'
         ).css('span[itemprop="name"]').text
       end
 
       def release_date
-        release_date_text&.to_time&.strftime('%Y-%m-%d')
+        release_date_text&.to_time&.strftime('%d-%m-%Y')
       rescue ArgumentError
         release_date_text
       end
 
       def release_date_text
-        release_date_selector&.css('.metadata-display')&.text
-      end
-
-      def release_date_selector
-        raw_data.css('.metadata-item')[0]
+        parsed_page.css('.metadata-item')[0]&.css(
+          '.metadata-display'
+        )&.text
       end
 
       def tags
-        raw_data.css('.tag').map(&:text)
+        parsed_page.css('.tag').map(&:text)
       end
 
       def tracks
@@ -68,14 +66,14 @@ module LastFM
       end
 
       def tracks_list
-        raw_data.css('tr[itemprop="track"]')
+        parsed_page.css('tr[itemprop="track"]')
       end
 
       def process_track(track)
         {
-          title:    track_title(track),
+          title: track_title(track),
           duration: track_duration(track),
-          artist:   track_artist_data(track)
+          artist: track_artist_data(track)
         }
       end
 
@@ -86,13 +84,11 @@ module LastFM
       end
 
       def track_duration(track)
-        track.css(
-          '.chartlist-duration'
-        ).text.strip.split(':').map(&:to_i).inject { |m, s| m * 60 + s }
+        convert_to_seconds(track.css('.chartlist-duration').text.strip)
       end
 
       def track_artist_data(track)
-        { name: track_artist_name(track) || album_artist_name }
+        { name: track_artist_name(track) || artist_name }
       end
 
       def track_artist_name(track)

@@ -35,7 +35,7 @@ module Profiles
 
       def add_track_to_playlist(track)
         find_playlist_track(track).update(
-          profile_track_id:  track.id,
+          profile_track_id: track.id,
           profile_artist_id: track.profile_artist_id
         )
       end
@@ -43,8 +43,8 @@ module Profiles
       def find_playlist_track(track)
         @playlist.playlist_tracks.where(
           profile_id: current_profile.id,
-          track_id:   track.track_id,
-          artist_id:  track.artist_id
+          track_id: track.track_id,
+          artist_id: track.artist_id
         ).first_or_initialize
       end
 

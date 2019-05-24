@@ -20,16 +20,17 @@ module Muffon
         loop do
           page_taggings = taggings_of(model, page += 1)
           break if page_taggings.empty?
+
           page_taggings.each { |t| process_model_tagging(model, t) }
         end
       end
 
       def taggings_of(model, page)
         LastFM::User::Taggings.call(
-          lastfm_id:  @profile.lastfm_id,
-          tag_name:   @args.tag_name,
+          lastfm_id: @profile.lastfm_id,
+          tag_name: @args.tag_name,
           model_name: model,
-          page:       page
+          page: page
         )
       end
 
@@ -37,8 +38,8 @@ module Muffon
         Muffon::Processor::Taggings.call(
           profile_id: @args.profile_id,
           model_name: model,
-          tag_name:   @args.tag_name,
-          tagging:    tagging
+          tag_name: @args.tag_name,
+          tagging: tagging
         )
       end
     end

@@ -10,9 +10,9 @@ module Muffon
       def retrieve_album_tracks
         select_of_tracks.map do |track|
           {
-            title:         track[:title],
-            artist:        track[:artist],
-            duration:      track[:duration],
+            title: track[:title],
+            artist: track[:artist],
+            duration: track[:duration],
             bandcamp_link: track_bandcamp_link(track)
           }
         end

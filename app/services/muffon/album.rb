@@ -49,9 +49,9 @@ module Muffon
     def services_list
       {
         music_brainz: MusicBrainz::Album,
-        lastfm_page:  LastFM::Album::PageData,
-        discogs:      Discogs::Album,
-        bandcamp:     Bandcamp::Album
+        lastfm_page: LastFM::Album::PageData,
+        discogs: Discogs::Album,
+        bandcamp: Bandcamp::Album
       }
     end
 
@@ -59,18 +59,18 @@ module Muffon
       {
         album_title: lastfm_data[:title],
         artist_name: lastfm_data[:artist][:name],
-        mbid:        lastfm_data[:mbid]
+        mbid: lastfm_data[:mbid]
       }
     end
 
     def extra_data
       {
-        release_date:  release_date,
-        release_type:  resources_data[:music_brainz][:release_type],
+        release_date: release_date,
+        release_type: resources_data[:music_brainz][:release_type],
         bandcamp_link: resources_data[:bandcamp][:link],
-        tags:          lastfm_data[:tags],
-        labels:        labels,
-        tracks:        tracks
+        tags: lastfm_data[:tags],
+        labels: labels,
+        tracks: tracks
       }
     end
 
@@ -106,7 +106,7 @@ module Muffon
 
     def tracks
       Muffon::Album::Tracks.call(
-        lastfm_data:    lastfm_data,
+        lastfm_data: lastfm_data,
         resources_data: resources_data
       )
     end

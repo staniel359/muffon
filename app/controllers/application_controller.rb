@@ -66,7 +66,7 @@ private
   def set_bookmarked_artist_ids
     @bookmarked_artist_ids = current_profile.bookmarks.where(
       bookmarkable_type: 'Artist',
-      bookmarkable_id:   @current_artist_ids
+      bookmarkable_id: @current_artist_ids
     ).pluck(:bookmarkable_id)
   end
 

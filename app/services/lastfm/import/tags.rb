@@ -35,7 +35,7 @@ module LastFM
       def process_tag(tag)
         Muffon::Processor::ProfileTag.call(
           profile_id: @args.profile_id,
-          tag_name:   tag
+          tag_name: tag
         )
       end
     end

@@ -42,7 +42,7 @@ module Profiles
     def set_title
       @title = t(
         "profiles.playlists.#{params[:action]}",
-        profile:  @profile.nickname,
+        profile: @profile.nickname,
         playlist: @playlist&.name
       )
     end

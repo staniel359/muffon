@@ -2,55 +2,72 @@ module LastFM
   module User
     class LovedTracks < LastFM::Base
       def call
-        retrieve_loved_tracks_data
+        loved_tracks_data
       end
 
     private
 
-      def retrieve_loved_tracks_data
+      def loved_tracks_data
+        return empty_hash unless
+            @args.lastfm_id.present? && loved_tracks_response.present?
+
         {
-          tracks:      formatted_loved_tracks,
-          total_count: parsed_loved_tracks.dig('@attr', 'total').to_i,
-          pages_count: parsed_loved_tracks.dig('@attr', 'totalPages').to_i
+          user: { name: parsed_page['@attr']['user'] },
+          loved_tracks: format_tracks,
+          total_count: parsed_page['@attr']['total'].to_i,
+          pages_count: parsed_page['@attr']['totalPages'].to_i
         }
       end
 
-      def formatted_loved_tracks
-        parsed_loved_tracks['track'].map do |t|
-          {
-            title:    t['name'],
-            mbid:     t['mbid'],
-            loved_at: Time.at(t.dig('date', 'uts').to_i),
-            artist:   artist_data(t)
-          }
+      def loved_tracks_response
+        @loved_tracks_response ||= begin
+          RestClient.get(lastfm_api_link, params: request_params)
+        rescue RestClient::NotFound
+          nil
         end
       end
 
-      def parsed_loved_tracks
-        @parsed_loved_tracks ||=
-          JSON.parse(loved_tracks_response)['lovedtracks']
-      end
-
-      def loved_tracks_response
-        RestClient.get(api_link, params: request_params)
+      def empty_hash
+        {
+          user: { name: @args.lastfm_id },
+          loved_tracks: {},
+          total_count: 0,
+          pages_count: 0
+        }
       end
 
       def request_params
         {
-          method:  'user.getLovedTracks',
-          user:    @args.lastfm_id,
-          page:    page,
-          limit:   200,
-          api_key: api_key,
-          format:  'json'
+          method: 'user.getLovedTracks',
+          user: @args.lastfm_id,
+          page: page,
+          limit: 200,
+          api_key: lastfm_api_key,
+          format: 'json'
+        }
+      end
+
+      def format_tracks
+        parsed_page['track'].map { |t| format_track(t) }
+      end
+
+      def parsed_page
+        @parsed_page ||=
+          JSON.parse(loved_tracks_response)['lovedtracks']
+      end
+
+      def format_track(track)
+        {
+          title: track['name'],
+          artist: artist_data(track),
+          loved_at: Time.at(track['date']['uts'].to_i)
         }
       end
 
       def artist_data(track)
         {
-          name:  track.dig('artist', 'name'),
-          mbid:  track.dig('artist', 'mbid'),
-          image: track.dig('image', 3, '#text')
+          name: track['artist']['name'],
+          image: track['image'][3]['#text']
         }
       end
     end

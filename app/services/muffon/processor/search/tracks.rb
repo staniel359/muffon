@@ -12,7 +12,7 @@ module Muffon
           return {} unless tracks_data.present?
 
           {
-            data:        process_tracks_data,
+            data: process_tracks_data,
             total_count: tracks_data[:total_count]
           }
         end

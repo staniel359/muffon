@@ -15,7 +15,7 @@ module Profiles
           @title = t(
             "profiles.library.artists.plays.#{params[:action]}",
             profile: @profile.nickname,
-            artist:  @artist.name
+            artist: @artist.name
           )
         end
 

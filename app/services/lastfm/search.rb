@@ -36,8 +36,8 @@ module LastFM
     def limits
       {
         'artist' => 6,
-        'album'  => 6,
-        'track'  => 10
+        'album' => 6,
+        'track' => 10
       }
     end
   end

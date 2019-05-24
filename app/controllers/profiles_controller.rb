@@ -71,16 +71,16 @@ private
   end
 
   def set_common_data
-    @common_artists        = compatibility[:artists]
-    @common_albums         = compatibility[:albums]
-    @common_tracks         = compatibility[:tracks]
+    @common_artists = compatibility[:artists]
+    @common_albums = compatibility[:albums]
+    @common_tracks = compatibility[:tracks]
     @compatibility_percent = compatibility[:percent]
   end
 
   def compatibility
     @compatibility ||= Muffon::Compatibility.call(
       current_profile_id: current_profile.id,
-      other_profile_id:   @profile.id
+      other_profile_id: @profile.id
     )
   end
 

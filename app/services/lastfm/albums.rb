@@ -7,27 +7,26 @@ module LastFM
   private
 
     def retrieve_albums_data
-      return [] unless @args.albums.present?
+      return [] unless @args.album_titles.present?
 
       albums_data.sort.transpose[1]
     end
 
     def albums_data
-      albums_data_hash = {}
-      threads = []
-      @args.albums.each_with_index.each do |a, i|
+      albums_data_array = threads = []
+      @args.album_titles.each_with_index.each do |a, i|
         threads << Thread.new do
-          albums_data_hash.merge!(i.to_s => album_data(a))
+          albums_data_array << [i, album_data(a)]
         end
       end
       concurrent_loader { threads.each(&:join) }
-      albums_data_hash
+      albums_data_array
     end
 
-    def album_data(album_data)
+    def album_data(album)
       LastFM::Album.call(
-        artist_name: album_data[0],
-        album_title: album_data[1]
+        artist_name: album[0],
+        album_title: album[1]
       )
     end
   end

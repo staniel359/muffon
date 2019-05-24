@@ -17,26 +17,26 @@ module LastFM
     end
 
     def artist_response
-      RestClient.get(api_link, params: request_params).body
+      RestClient.get(lastfm_api_link, params: request_params).body
     end
 
     def request_params
       {
-        method:      'artist.getInfo',
-        artist:      @args.artist_name,
-        api_key:     api_key,
-        format:      'json',
+        method: 'artist.getInfo',
+        artist: @args.artist_name,
+        api_key: lastfm_api_key,
+        format: 'json',
         autocorrect: 1
       }
     end
 
     def base_data
       {
-        name:                   parsed_artist_data['name'],
-        mbid:                   parsed_artist_data['mbid'],
-        image:                  parsed_artist_data['image'][3]['#text'],
+        name: parsed_artist_data['name'],
+        mbid: parsed_artist_data['mbid'],
+        image: parsed_artist_data['image'][3]['#text'],
         lastfm_listeners_count: lastfm_listeners_count,
-        lastfm_plays_count:     lastfm_plays_count
+        lastfm_plays_count: lastfm_plays_count
       }
     end
 
@@ -50,8 +50,8 @@ module LastFM
 
     def extra_data
       {
-        tags:            tags,
-        description:     description
+        tags: tags,
+        description: description
       }
     end
 
@@ -61,7 +61,7 @@ module LastFM
 
     def description
       parsed_artist_data['bio']['content'].split(
-        '<a href="https://www.last.fm/music/'
+        %r{<a href="http(s?)://www.last.fm/music/}
       )[0]&.rstrip
     end
   end

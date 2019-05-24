@@ -16,7 +16,7 @@ class RecommendationDecorator < Draper::Decorator
   def profile_artists(days = nil)
     Recommendations::ProfileArtists.call(
       profile_artist_ids: profile_artist_ids,
-      days:               days
+      days: days
     ).decorate
   end
 

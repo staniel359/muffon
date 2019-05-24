@@ -23,10 +23,10 @@ module Profiles
 
       def retrieve_albums
         ::Library::Collection.call(
-          profile_id:      @profile.id,
+          profile_id: @profile.id,
           collection_name: 'albums',
-          scope:           params[:scope],
-          order:           params[:order]
+          scope: params[:scope],
+          order: params[:order]
         ).associated
       end
     end

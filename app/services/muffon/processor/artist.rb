@@ -32,9 +32,9 @@ module Muffon
 
       def ids_attributes
         {
-          top_track_ids:      top_track_ids,
-          top_album_ids:      top_album_ids,
-          tag_ids:            tag_ids,
+          top_track_ids: top_track_ids,
+          top_album_ids: top_album_ids,
+          tag_ids: tag_ids,
           similar_artist_ids: similar_artist_ids
         }
       end

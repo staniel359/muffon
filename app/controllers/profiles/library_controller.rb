@@ -39,9 +39,9 @@ module Profiles
 
     def scoped_collection(collection_name)
       ::Library::Collection.call(
-        profile_id:      @profile.id,
+        profile_id: @profile.id,
         collection_name: collection_name,
-        scope:           params[:scope]
+        scope: params[:scope]
       )
     end
 

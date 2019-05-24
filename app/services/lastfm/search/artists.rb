@@ -2,30 +2,27 @@ module LastFM
   class Search
     class Artists < LastFM::Base
       def call
-        search_artists
+        artists_data
       end
 
     private
 
-      def search_artists
+      def artists_data
+        return empty_hash unless @args.q.present?
+
         {
-          data:        process_artists,
+          query: @args.q,
+          artists: format_artists,
           total_count: total_count
         }
       end
 
-      def process_artists
-        return [] unless @args.q.present?
-
-        artists_sorted.map { |a| process_artist(a) }
+      def empty_hash
+        { query: @args.q, artists: {}, total_count: 0 }
       end
 
-      def process_artist(artist)
-        {
-          name:                   artist['name'],
-          image:                  artist['image'][3]['#text'].presence,
-          lastfm_listeners_count: artist['listeners'].to_i
-        }
+      def format_artists
+        artists_sorted.map { |a| format_artist(a) }
       end
 
       def artists_sorted
@@ -33,36 +30,38 @@ module LastFM
       end
 
       def artists
-        @args.artists || search_results || []
+        parsed_page['artistmatches']['artist'] || []
       end
 
-      def search_results
-        parsed_artists_data['artistmatches']['artist']
-      end
-
-      def parsed_artists_data
-        @parsed_artists_data ||= JSON.parse(artists_response)['results']
+      def parsed_page
+        @parsed_page ||= JSON.parse(artists_response)['results']
       end
 
       def artists_response
-        RestClient.get(api_link, params: request_params)
+        RestClient.get(lastfm_api_link, params: request_params)
       end
 
       def request_params
         {
-          method:  'artist.search',
-          artist:  @args.q,
-          limit:   @args.limit || 20,
-          page:    page,
-          api_key: api_key,
+          method: 'artist.search',
+          artist: @args.q,
+          limit: @args.limit || 20,
+          page: page,
+          api_key: lastfm_api_key,
           format: 'json'
         }
       end
 
-      def total_count
-        return 0 unless @args.q.present?
+      def format_artist(artist)
+        {
+          name: artist['name'],
+          image: artist['image'][3]['#text'].presence,
+          lastfm_listeners_count: artist['listeners'].to_i
+        }
+      end
 
-        parsed_artists_data['opensearch:totalResults'].to_i
+      def total_count
+        parsed_page['opensearch:totalResults'].to_i
       end
     end
   end

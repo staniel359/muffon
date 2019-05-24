@@ -6,6 +6,7 @@ module VK
     def call
       return unless @args.vk_id.present?
       return unless link.present?
+
       retrieve_track
     end
 
@@ -65,6 +66,7 @@ module VK
     def vk_s(first, second)
       l = first.length
       return first unless l.positive?
+
       o = vk_s_child(first, second)
       first = first.split('')
       (1...l).each do |a|
@@ -77,6 +79,7 @@ module VK
     def vk_s_child(first, second)
       l = first.length
       return [] unless l.positive?
+
       o = []
       (l - 1).downto(0).each do |a|
         second = (l * (a + 1) ^ second + a) % l

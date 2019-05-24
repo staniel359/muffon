@@ -40,9 +40,9 @@ module Profiles
       end
 
       def set_playlist_ids
-        @track_ids  = @playlist_tracks.pluck(:track_id)
+        @track_ids = @playlist_tracks.pluck(:track_id)
         @artist_ids = @playlist_tracks.pluck(:artist_id)
-        @album_ids  = @playlist_tracks.pluck(:album_id)
+        @album_ids = @playlist_tracks.pluck(:album_id)
       end
 
       def set_tracks
@@ -52,7 +52,7 @@ module Profiles
       def search_data
         @search_data ||= ::Library::Search.call(
           profile_id: current_profile.id,
-          q:          params[:q]
+          q: params[:q]
         )
       end
 

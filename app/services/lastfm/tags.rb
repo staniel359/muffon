@@ -20,12 +20,12 @@ module LastFM
 
     def request_params
       {
-        method:  "#{@args.model_name}.getTopTags",
-        artist:  @args.artist_name,
-        album:   @args.album_title,
-        track:   @args.track_title,
+        method: "#{@args.model_name}.getTopTags",
+        artist: @args.artist_name,
+        album: @args.album_title,
+        track: @args.track_title,
         api_key: api_key,
-        format:  'json'
+        format: 'json'
       }
     end
 

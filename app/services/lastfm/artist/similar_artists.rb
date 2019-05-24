@@ -2,50 +2,60 @@ module LastFM
   class Artist
     class SimilarArtists < LastFM::Base
       def call
-        retrieve_similar_artists_data
+        similar_artists_data
       end
 
     private
 
-      def retrieve_similar_artists_data
-        return [] unless parsed_artists_page.present?
+      def similar_artists_data
+        return {} unless parsed_page.present?
 
-        LastFM::Artists.call(artists: artists)
+        { artist: artist_data_hash }
       end
 
-      def parsed_artists_page
-        @parsed_artists_page ||=
+      def parsed_page
+        @parsed_page ||=
           JSON.parse(artists_page_response)['similarartists']
       end
 
       def artists_page_response
-        RestClient.get(api_link, params: request_params)
+        RestClient.get(lastfm_api_link, params: request_params)
       end
 
       def request_params
         {
-          method:  'artist.getSimilar',
-          artist:  @args.artist_name,
-          limit:   (@args.limit || 200),
-          api_key: api_key,
-          format:  'json'
+          method: 'artist.getSimilar',
+          artist: @args.artist_name,
+          limit: 200,
+          api_key: lastfm_api_key,
+          format: 'json'
         }
       end
 
-      def artists
-        artists_paginated.map { |a| a['name'] }
+      def artist_data_hash
+        {
+          name: parsed_page['@attr']['artist'],
+          similar_artists: format_artists || {}
+        }
+      end
+
+      def format_artists
+        artists_paginated.map { |a| format_artist(a) }
       end
 
       def artists_paginated
-        parsed_artists_page['artist'][offset, array_limit] || []
+        parsed_page['artist'][array_offset, array_limit] || []
       end
 
       def array_limit
         @args.limit || 10
-      end
+      end      
 
-      def offset
-        (page.to_i - 1) * array_limit
+      def format_artist(artist)
+        {
+          name: artist['name'],
+          image: artist['image'][3]['#text']
+        }
       end
     end
   end

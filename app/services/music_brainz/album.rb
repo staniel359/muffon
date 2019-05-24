@@ -8,15 +8,16 @@ module MusicBrainz
 
     def format_album_data
       return {} unless @args.mbid.present?
+      return {} unless album_response.present?
 
       {
-        title:        album_data['title'],
-        artist:       album_artist_data,
-        mbid:         album_data['id'],
+        title: album_data['title'],
+        artist: album_artist_data,
+        mbid: album_data['id'],
         release_date: album_data['date'],
         release_type: album_data['release-group']['primary-type'],
-        tracks:       tracks,
-        labels:       labels
+        tracks: tracks,
+        labels: labels
       }
     end
 
@@ -25,10 +26,14 @@ module MusicBrainz
     end
 
     def album_response
-      RestClient.get(
-        "http://musicbrainz.org/ws/2/release/#{@args.mbid}"\
-        '?inc=artist-credits+labels+recordings+release-groups&fmt=json'
-      )
+      @album_response ||= begin
+        RestClient.get(
+          "http://musicbrainz.org/ws/2/release/#{@args.mbid}"\
+          '?inc=artist-credits+labels+recordings+release-groups&fmt=json'
+        )
+      rescue RestClient::NotFound
+        nil
+      end
     end
 
     def album_artist_data
@@ -45,10 +50,10 @@ module MusicBrainz
 
     def process_track(track)
       {
-        title:    track['title'],
+        title: track['title'],
         duration: track['length']&.div(1000),
-        mbid:     track['id'],
-        artist:   track_artist_data(track)
+        mbid: track['id'],
+        artist: track_artist_data(track)
       }
     end
 

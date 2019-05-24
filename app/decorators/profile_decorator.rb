@@ -45,7 +45,7 @@ class ProfileDecorator < Draper::Decorator
   def artist_taggings(artist_id)
     taggings.where(
       taggable_type: 'Artist',
-      taggable_id:   artist_id
+      taggable_id: artist_id
     ).associated
   end
 

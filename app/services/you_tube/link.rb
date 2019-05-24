@@ -27,10 +27,10 @@ module YouTube
 
     def request_params
       {
-        part:       'snippet',
-        q:          query,
+        part: 'snippet',
+        q: query,
         maxResults: 10,
-        key:        secrets[:youtube][:key]
+        key: secrets[:youtube][:key]
       }
     end
 

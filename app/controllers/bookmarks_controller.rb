@@ -70,7 +70,7 @@ private
   def bookmark_attributes
     {
       bookmarkable_type: @object.class.to_s,
-      bookmarkable_id:   @object.id
+      bookmarkable_id: @object.id
     }
   end
 

@@ -7,7 +7,14 @@ module VK
   private
 
     def retrieve_tracks
-      matched_tracks.map { |t| t['data-full-id'] }
+      matched_tracks.map { |t| full_id(t) }
+    end
+
+    def full_id(track)
+      audio_data = JSON.parse(track['data-audio'])
+      first_ids = audio_data.values_at(1, 0)
+      last_ids = audio_data[13].split(%r{\/}).reject(&:empty?)[1..2]
+      (first_ids + last_ids).join('_')
     end
 
     def matched_tracks
@@ -55,9 +62,7 @@ module VK
     end
 
     def search_track_artist(track)
-      track.css(
-        '.audio_row__performers'
-      ).text.gsub(' & ', ' and ')
+      track.css('.audio_row__performers').text.gsub(' & ', ' and ')
     end
 
     def track_titles_match?(track)
@@ -67,9 +72,7 @@ module VK
     end
 
     def search_track_title(track)
-      track.css(
-        '.audio_row__title_inner'
-      ).text.strip.gsub(', ', ' ')
+      track.css('.audio_row__title_inner').text.strip.gsub(', ', ' ')
     end
 
     def remix?(track)

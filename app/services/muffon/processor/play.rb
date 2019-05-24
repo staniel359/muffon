@@ -14,14 +14,14 @@ module Muffon
 
       def play_attributes
         {
-          profile_id:        @args.profile_id,
+          profile_id: @args.profile_id,
           profile_artist_id: profile_artist.id,
-          artist_id:         profile_artist.artist_id,
-          profile_track_id:  profile_track.id,
-          track_id:          profile_track.track_id,
-          profile_album_id:  profile_album&.id,
-          album_id:          profile_album&.album_id,
-          created_at:        @args.play[:created_at]
+          artist_id: profile_artist.artist_id,
+          profile_track_id: profile_track.id,
+          track_id: profile_track.track_id,
+          profile_album_id: profile_album&.id,
+          album_id: profile_album&.album_id,
+          created_at: @args.play[:created_at]
         }
       end
 
@@ -33,7 +33,7 @@ module Muffon
       def init_profile_artist
         ::ProfileArtist.where(
           profile_id: @args.profile_id,
-          artist_id:  artist_id
+          artist_id: artist_id
         ).first_or_initialize
       end
 
@@ -59,7 +59,7 @@ module Muffon
 
       def artist_tags
         LastFM::Tags.call(
-          model_name:  'artist',
+          model_name: 'artist',
           artist_name: @args.play[:artist][:name]
         ).first(5)
       end
@@ -71,10 +71,10 @@ module Muffon
 
       def init_profile_track
         ::ProfileTrack.where(
-          profile_id:        @args.profile_id,
-          track_id:          track_id,
+          profile_id: @args.profile_id,
+          track_id: track_id,
           profile_artist_id: profile_artist.id,
-          artist_id:         artist_id
+          artist_id: artist_id
         ).first_or_initialize
       end
 
@@ -91,10 +91,10 @@ module Muffon
 
       def init_profile_album
         ::ProfileAlbum.where(
-          profile_id:        @args.profile_id,
-          album_id:          album_id,
+          profile_id: @args.profile_id,
+          album_id: album_id,
           profile_artist_id: profile_artist.id,
-          artist_id:         artist_id
+          artist_id: artist_id
         ).first_or_initialize
       end
 

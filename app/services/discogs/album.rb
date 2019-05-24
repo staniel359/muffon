@@ -1,60 +1,69 @@
 module Discogs
   class Album < Muffon::Base
     def call
-      process_albums_data
+      album_data
     end
 
   private
 
-    def process_albums_data
-      return {} unless album_page.present?
+    def album_data
+      return {} unless album_id.present?
 
-      process_album_data
+      { album: album_data_hash }
     end
 
-    def album_page
-      @album_page ||= Discogs::Album::PageData.call(
-        album_title: @args.album_title,
-        artist_name: @args.artist_name
-      )
+    def album_id
+      @album_id ||= Discogs::Album::ID.call(@args).dig(:album, :id)
     end
 
-    def process_album_data
+    def album_data_hash
       {
-        title:        album_page['title'],
-        artist:       album_artist_data,
-        release_date: album_page['released'],
-        labels:       labels,
-        tracks:       tracks
+        title: parsed_page['title'],
+        artist: { name: parsed_page['artists_sort'] },
+        release_date: release_date,
+        labels: labels,
+        tracks: tracks
       }
     end
 
-    def album_artist_data
-      { name: album_page['artists_sort'] }
+    def parsed_page
+      @parsed_page ||= JSON.parse(album_page_response)
+    end
+
+    def album_page_response
+      RestClient.get(
+        "https://api.discogs.com/releases/#{album_id}"
+      )
+    end
+
+    def release_date
+      parsed_page['released'].to_time.strftime('%d-%m-%Y')
     end
 
     def labels
-      album_page['labels'].uniq.map { |l| l['name'] }.uniq
+      parsed_page['labels'].map { |l| l['name'] }.uniq
     end
 
     def tracks
-      album_page['tracklist'].map { |t| process_track(t) }
+      only_tracks_no_headings.map { |t| process_track(t) }
+    end
+
+    def only_tracks_no_headings
+      parsed_page['tracklist'].reject do |t|
+        t['type_'] == 'heading'
+      end
     end
 
     def process_track(track)
       {
-        title:    track['title'],
-        duration: duration(track),
-        artist:   artist_data(track)
+        title: track['title'],
+        duration: convert_to_seconds(track['duration']),
+        artist: artist_data(track)
       }
     end
 
-    def duration(track)
-      track['duration'].split(':').map(&:to_i).inject { |m, s| m * 60 + s }
-    end
-
     def artist_data(track)
-      { name: track_artist_name(track) || album_page['artists_sort'] }
+      { name: track_artist_name(track) || parsed_page['artists_sort'] }
     end
 
     def track_artist_name(track)

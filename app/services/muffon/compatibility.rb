@@ -9,8 +9,8 @@ module Muffon
     def process_compatibility
       {
         artists: artists,
-        albums:  albums,
-        tracks:  tracks,
+        albums: albums,
+        tracks: tracks,
         percent: percent
       }
     end
@@ -26,11 +26,13 @@ module Muffon
     end
 
     def artist_ids
-      @artist_ids ||= profile_artists.pluck(
-        :profile_id, :artist_id, :plays_count
-      ).group_by { |a| a[1] }.sort_by do |a|
+      @artist_ids ||= artists_data.group_by { |a| a[1] }.sort_by do |a|
         a[1].transpose[2].sort.inject { |f, s| (f + s) * f.fdiv(s) }
       end.reverse.map(&:first)
+    end
+
+    def artists_data
+      profile_artists.pluck(:profile_id, :artist_id, :plays_count)
     end
 
     def profile_artists
@@ -50,11 +52,13 @@ module Muffon
     end
 
     def album_ids
-      @album_ids ||= profile_albums.pluck(
-        :profile_id, :album_id, :plays_count
-      ).group_by { |a| a[1] }.sort_by do |a|
+      @album_ids ||= albums_data.group_by { |a| a[1] }.sort_by do |a|
         a[1].transpose[2].sort.inject { |f, s| (f + s) * f.fdiv(s) }
       end.reverse.map(&:first)
+    end
+
+    def albums_data
+      profile_albums.pluck(:profile_id, :album_id, :plays_count)
     end
 
     def profile_albums
@@ -70,11 +74,13 @@ module Muffon
     end
 
     def track_ids
-      @track_ids ||= profile_tracks.pluck(
-        :profile_id, :track_id, :plays_count
-      ).group_by { |a| a[1] }.sort_by do |a|
+      @track_ids ||= tracks_data.group_by { |a| a[1] }.sort_by do |a|
         a[1].transpose[2].sort.inject { |f, s| (f + s) * f.fdiv(s) }
       end.reverse.map(&:first)
+    end
+
+    def tracks_data
+      profile_tracks.pluck(:profile_id, :track_id, :plays_count)
     end
 
     def profile_tracks

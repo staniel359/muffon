@@ -2,17 +2,18 @@ module LastFM
   class Tag
     class Artists < LastFM::Base
       def call
-        retrieve_artists_data
+        artists_data
       end
 
     private
 
-      def retrieve_artists_data
-        return {} unless @args.tag_name.present?
-        return {} unless artists_page_response.present?
+      def artists_data
+        return empty_hash unless
+            @args.tag_name.present? && artists_page_response.present?
 
         {
-          data:        artists_data,
+          tag: { name: tag_name },
+          artists: artists_data_hash,
           total_count: total_count
         }
       end
@@ -25,29 +26,32 @@ module LastFM
         end
       end
 
-      def artists_data
+      def empty_hash
+        { tag: { name: @args.tag_name }, artists: {}, total_count: 0}
+      end
+
+      def tag_name
+        parsed_page.css('.header-title a').text
+      end
+
+      def parsed_page
+        @parsed_page ||= Nokogiri::HTML.parse(artists_page_response)
+      end
+
+      def artists_data_hash
         LastFM::Artists.call(
-          artists: artist_names.first(@args.limit || 21)
-        )
+          artist_names: artist_names.first(@args.limit || 21)
+        )[:artists]
       end
 
       def artist_names
-        artists_list.css('.link-block-target').map(&:text)
-      end
-
-      def artists_list
-        parsed_artists_page.css('.big-artist-list-item')
-      end
-
-      def parsed_artists_page
-        @parsed_artists_page ||=
-          Nokogiri::HTML.parse(artists_page_response)
+        parsed_page.css('.big-artist-list-item').css(
+          '.link-block-target'
+        ).map(&:text)
       end
 
       def total_count
-        parsed_artists_page.css(
-          '.pagination-page'
-        ).last.text.strip.to_i * 21
+        parsed_page.css('.pagination-page').last.text.strip.to_i * 21
       end
     end
   end

@@ -11,8 +11,8 @@ module Library
 
       {
         artists: search_artists,
-        albums:  search_albums,
-        tracks:  search_tracks
+        albums: search_albums,
+        tracks: search_tracks
       }
     end
 
