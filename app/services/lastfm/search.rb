@@ -30,7 +30,7 @@ module LastFM
     def search_model(model)
       "LastFM::Search::#{model.capitalize}s".constantize.call(
         q: @args.q, limit: limits[model]
-      )[:data]
+      )[model.pluralize.to_sym]
     end
 
     def limits

@@ -19,15 +19,14 @@ module LastFM
       end
 
       def empty_hash
-        { tag: { name: @args.tag_name }, albums: {}, total_count: 0}
+        { tag: { name: @args.tag_name }, albums: {}, total_count: 0 }
       end
 
       def albums_page_response
-        @albums_page_response ||= begin
+        @albums_page_response ||=
           RestClient.get("#{tag_page_link}/albums?page=#{page}")
-        rescue RestClient::NotFound
-          nil
-        end
+      rescue RestClient::NotFound
+        nil
       end
 
       def tag_name
@@ -35,12 +34,13 @@ module LastFM
       end
 
       def parsed_page
-        @parsed_page ||= Nokogiri::HTML.parse(albums_page_response)
+        @parsed_page ||=
+          Nokogiri::HTML.parse(albums_page_response)
       end
 
       def albums_data_hash
         LastFM::Albums.call(
-          albums: albums_full_titles.first(@args.limit || 20)
+          album_titles: albums_full_titles.first(@args.limit || 20)
         )
       end
 
@@ -49,7 +49,9 @@ module LastFM
       end
 
       def album_titles
-        albums_list.css('.album-grid-item-artist').css('a').map(&:text)
+        albums_list.css(
+          '.album-grid-item-artist'
+        ).css('a').map(&:text)
       end
 
       def albums_list
@@ -57,11 +59,15 @@ module LastFM
       end
 
       def album_artists
-        albums_list.css('.album-grid-item-title').css('a').map(&:text)
+        albums_list.css(
+          '.album-grid-item-title'
+        ).css('a').map(&:text)
       end
 
       def total_count
-        parsed_page.css('.pagination-page').last.text.strip.to_i * 20
+        parsed_page.css(
+          '.pagination-page'
+        ).last.text.strip.to_i * 20
       end
     end
   end

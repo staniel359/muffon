@@ -27,9 +27,11 @@ gem 'rails'
 gem 'redis'
 gem 'remotipart'
 gem 'rest-client'
-gem 'rubocop', require: false
+gem 'rubocop', '0.65.0', require: false
+gem 'rubocop-rspec', '~>1.27.0', require: false
 gem 'sassc-rails'
 gem 'sidekiq'
+gem 'travis'
 gem 'turbolinks'
 gem 'uglifier'
 
@@ -44,6 +46,14 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

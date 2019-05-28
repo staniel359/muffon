@@ -1,3 +1,5 @@
+require: rubocop-rspec
+
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
@@ -7,7 +9,23 @@ AllCops:
     - 'test/**/*'
     - 'Gemfile'
     - 'Rakefile'
-    - 'spec/**/*'
+    - 'spec/support/**/*'
+    - 'spec/cassettes/**/*'
+    - 'spec/factories/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'node_modules/**/*'
+    - 'client/node_modules/**/*'
+    - 'db/**/*'
+    - 'engines/*/db/**/*'
+    - 'engines/*/bin/**/*'
+    - 'engines/*/Rakefile'
+    - 'engines/*/*.gemspec'
+    - 'views/**/*'
+    - 'vendor/**/*'
+    - 'bundle/**/*'
+    - '.irbrc'
+    - '.pryrc'
 
 Documentation:
   Enabled: false
@@ -24,3 +42,24 @@ EndOfLine:
 GlobalVars:
   AllowedVariables:
     - $redis
+
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Layout/SpaceInsideArrayPercentLiteral:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+inherit_mode:
+  merge:
+    - Exclude

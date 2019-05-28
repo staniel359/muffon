@@ -4,9 +4,7 @@ module Muffon
     private
 
       def init_artist(artist_data)
-        ::Artist.with(
-          name: artist_data[:name]
-        ).first_or_initialize
+        ::Artist.with_name(artist_data[:name]).first_or_initialize
       end
 
       def update_artist(artist_data)

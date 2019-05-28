@@ -8,9 +8,10 @@ module LastFM
     private
 
       def similar_artists_data
-        return {} unless parsed_page.present?
+        return empty_hash unless
+            [@args.artist_name, parsed_page].all?(&:present?)
 
-        { artist: artist_data_hash }
+        similar_artists_data_hash
       end
 
       def parsed_page
@@ -32,15 +33,35 @@ module LastFM
         }
       end
 
-      def artist_data_hash
+      def empty_hash
+        { artist: {}, artists: [] }
+      end
+
+      def similar_artists_data_hash
         {
-          name: parsed_page['@attr']['artist'],
-          similar_artists: format_artists || {}
+          artist: { name: parsed_page['@attr']['artist'] },
+          artists: artists_sorted || {}
         }
       end
 
-      def format_artists
-        artists_paginated.map { |a| format_artist(a) }
+      def artists_sorted
+        process_artists.sort_by { |a| a[0] }.transpose[1]
+      end
+
+      def process_artists
+        artists_data_array = []
+        threads = []
+        artist_names.each_with_index do |a, i|
+          threads << Thread.new do
+            artists_data_array << [i, artist_data(a)]
+          end
+        end
+        concurrent_loader { threads.each(&:join) }
+        artists_data_array
+      end
+
+      def artist_names
+        artists_paginated.map { |a| a['name'] }
       end
 
       def artists_paginated
@@ -49,13 +70,10 @@ module LastFM
 
       def array_limit
         @args.limit || 10
-      end      
+      end
 
-      def format_artist(artist)
-        {
-          name: artist['name'],
-          image: artist['image'][3]['#text']
-        }
+      def artist_data(artist)
+        LastFM::Artist.call(artist_name: artist)
       end
     end
   end

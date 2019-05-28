@@ -9,20 +9,11 @@ module Muffon
       private
 
         def process_tracks
-          return {} unless tracks_data.present?
-
-          {
-            data: process_tracks_data,
-            total_count: tracks_data[:total_count]
-          }
+          tracks_data[:tracks].map { |t| update_track(t) }
         end
 
         def tracks_data
-          @tracks_data ||= LastFM::Tag::Tracks.call(@args)
-        end
-
-        def process_tracks_data
-          tracks_data[:data].map { |t| update_track(t) }
+          LastFM::Tag::Tracks.call(@args)
         end
       end
     end

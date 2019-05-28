@@ -36,7 +36,7 @@ module LastFM
       def empty_hash
         {
           artist: {},
-          tracks: {},
+          tracks: [],
           total_count: 0
         }
       end

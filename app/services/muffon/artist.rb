@@ -18,6 +18,7 @@ module Muffon
     end
 
     def process_artist_data
+      services_hash.values # preload constants
       threads = []
       artist_data_hash = scopes_list.each_with_object({}) do |s, h|
         threads << Thread.new { h.merge!(s.to_sym => call_service(s)) }
@@ -27,11 +28,11 @@ module Muffon
     end
 
     def scopes_list
-      %w[base top_tracks top_albums similar_artists]
+      %i[base top_tracks top_albums similar_artists]
     end
 
     def call_service(scope)
-      services_hash[scope].constantize.call(
+      services_hash[scope].call(
         artist_name: @args.artist_name,
         limit: limits[scope]
       )
@@ -39,18 +40,18 @@ module Muffon
 
     def services_hash
       {
-        'base' => '::LastFM::Artist',
-        'top_tracks' => '::LastFM::Artist::Tracks',
-        'top_albums' => '::LastFM::Artist::Albums',
-        'similar_artists' => '::LastFM::Artist::SimilarArtists'
+        base: LastFM::Artist,
+        top_tracks: ::LastFM::Artist::Tracks,
+        top_albums: ::LastFM::Artist::Albums,
+        similar_artists: ::LastFM::Artist::SimilarArtists
       }
     end
 
     def limits
       {
-        'top_tracks' => 10,
-        'top_albums' => 6,
-        'similar_artists' => 6
+        top_tracks: 10,
+        top_albums: 6,
+        similar_artists: 6
       }
     end
 
@@ -61,7 +62,7 @@ module Muffon
     def top_tracks_sorted
       return [] unless artist_data[:top_tracks].present?
 
-      artist_data[:top_tracks].sort_by do |t|
+      artist_data[:top_tracks][:tracks].sort_by do |t|
         t[:lastfm_plays_count]
       end.reverse
     end
@@ -73,13 +74,13 @@ module Muffon
     def top_albums_sorted
       return [] unless artist_data[:top_albums].present?
 
-      artist_data[:top_albums].sort_by do |a|
+      artist_data[:top_albums][:albums].sort_by do |a|
         a[:lastfm_plays_count]
       end.reverse
     end
 
     def similar_artists_hash
-      { similar_artists: artist_data[:similar_artists] }
+      { similar_artists: artist_data[:similar_artists][:artists] }
     end
   end
 end

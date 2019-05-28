@@ -14,11 +14,10 @@ module LastFM
       end
 
       def album_page_response
-        @album_page_response ||= begin
+        @album_page_response ||=
           RestClient.get(album_page_link)
-        rescue RestClient::NotFound
-          nil
-        end
+      rescue RestClient::NotFound
+        nil
       end
 
       def album_data_hash

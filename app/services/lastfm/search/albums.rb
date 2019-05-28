@@ -26,7 +26,7 @@ module LastFM
       end
 
       def albums
-        parsed_page['albummatches']['album'] || [] 
+        parsed_page['albummatches']['album'] || []
       end
 
       def parsed_page

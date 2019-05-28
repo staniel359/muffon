@@ -19,17 +19,16 @@ module LastFM
       end
 
       def tracks_page_response
-        @tracks_page_response ||= begin
+        @tracks_page_response ||=
           RestClient.get(
             "#{tag_page_link}/tracks?page=#{page}"
           )
-        rescue RestClient::NotFound
-          nil
-        end
+      rescue RestClient::NotFound
+        nil
       end
 
       def empty_hash
-        { tag: { name: @args.tag_name }, tracks: {}, total_count: 0}
+        { tag: { name: @args.tag_name }, tracks: {}, total_count: 0 }
       end
 
       def tag_name

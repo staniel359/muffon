@@ -35,16 +35,15 @@ module VK
     end
 
     def vk_o(string)
-      result = []
       index2 = i = 0
-      string.split('').each do |s|
+      string.split('').each_with_object([]) do |s, result|
         if div_four(index2)
           (i = sym_index(s) + (i << 6)) && (index2 += 1)
           result << chr(i, shift(index2))
         else
           (i = sym_index(s)) && (index2 += 1)
         end
-      end && result.join
+      end.join
     end
 
     def div_four(num)

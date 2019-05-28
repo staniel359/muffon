@@ -1,0 +1,1279 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.last.fm/tag/dream+pop/albums?page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - www.last.fm
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - text/html; charset=utf-8
+      Vary:
+      - Accept-Encoding
+      - Cookie
+      - User-Agent
+      Content-Security-Policy-Report-Only:
+      - 'default-src https: ''unsafe-inline'' ''unsafe-eval'' wss: ;img-src https:
+        data: blob: ; font-src https: data:; form-action https: http://www.last.fm;
+        report-uri https://cbsi.report-uri.io/r/default/csp/enforce'
+      Content-Security-Policy:
+      - upgrade-insecure-requests;
+      X-Pjax-Url:
+      - https://www.last.fm/tag/dream+pop/albums?page=1
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Language:
+      - en
+      X-Served-By:
+      - ws343
+      Content-Encoding:
+      - gzip
+      Content-Length:
+      - '20764'
+      Expires:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Cache-Control:
+      - max-age=0, no-cache, no-store
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - csrftoken=aXkX02Jo2ABtfBqlxDPtLVbF79qpwDi9; expires=Thu, 28-May-2020 07:31:59
+        GMT; Max-Age=31449600; Path=/; secure
+      - not_first_visit=1; Path=/
+      - sessionid=.eJwNy00OwiAQBtC7zLqzgNYfuvYGdWFiDJnCh5DUagpojfHu-vbvQ1jdVD28xfrAkm6YS6b-TE6_ngwzHA-Dr5FP0Wr3vtKloYyc0322yVNPWkvbmc2OFZThDq3mcdwL620QD1HoJFBDVmqJtmYsNkqO_-gRpE6Fvj9ibytO:1hWFXb:1vKgdzv7H33x895yF75VIVQyhb4;
+        Domain=.last.fm; expires=Fri, 29-May-2020 07:31:59 GMT; httponly; Max-Age=31536000;
+        Path=/; secure
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Honeymoon&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Lana%20Del%20Rey&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '6810'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Honeymoon","artist":"Lana Del Rey","url":"https://www.last.fm/music/Lana+Del+Rey/Honeymoon","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/5856538e10f1ea08ed8ab71c32d1f237.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/5856538e10f1ea08ed8ab71c32d1f237.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/5856538e10f1ea08ed8ab71c32d1f237.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/5856538e10f1ea08ed8ab71c32d1f237.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/5856538e10f1ea08ed8ab71c32d1f237.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/5856538e10f1ea08ed8ab71c32d1f237.png","size":""}],"listeners":"262498","playcount":"12757083","tracks":{"track":[{"name":"Honeymoon","url":"https://www.last.fm/music/Lana+Del+Rey/_/Honeymoon","duration":"351","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Music
+        to Watch Boys To","url":"https://www.last.fm/music/Lana+Del+Rey/_/Music+to+Watch+Boys+To","duration":"291","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Terrence
+        Loves You","url":"https://www.last.fm/music/Lana+Del+Rey/_/Terrence+Loves+You","duration":"291","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"God
+        Knows I Tried","url":"https://www.last.fm/music/Lana+Del+Rey/_/God+Knows+I+Tried","duration":"281","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"High
+        by the Beach","url":"https://www.last.fm/music/Lana+Del+Rey/_/High+by+the+Beach","duration":"258","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Freak","url":"https://www.last.fm/music/Lana+Del+Rey/_/Freak","duration":"295","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Art
+        Deco","url":"https://www.last.fm/music/Lana+Del+Rey/_/Art+Deco","duration":"295","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Burnt
+        Norton (Interlude)","url":"https://www.last.fm/music/Lana+Del+Rey/_/Burnt+Norton+(Interlude)","duration":"82","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Religion","url":"https://www.last.fm/music/Lana+Del+Rey/_/Religion","duration":"323","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Salvatore","url":"https://www.last.fm/music/Lana+Del+Rey/_/Salvatore","duration":"281","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"The
+        Blackest Day","url":"https://www.last.fm/music/Lana+Del+Rey/_/The+Blackest+Day","duration":"366","@attr":{"rank":"11"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"24","url":"https://www.last.fm/music/Lana+Del+Rey/_/24","duration":"296","@attr":{"rank":"12"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Swan
+        Song","url":"https://www.last.fm/music/Lana+Del+Rey/_/Swan+Song","duration":"323","@attr":{"rank":"13"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Don''t
+        Let Me Be Misunderstood","url":"https://www.last.fm/music/Lana+Del+Rey/_/Don%27t+Let+Me+Be+Misunderstood","duration":"184","@attr":{"rank":"14"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}}]},"tags":{"tag":[{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"best of 2015","url":"https://www.last.fm/tag/best+of+2015"},{"name":"trip-hop","url":"https://www.last.fm/tag/trip-hop"},{"name":"trap","url":"https://www.last.fm/tag/trap"},{"name":"jazz","url":"https://www.last.fm/tag/jazz"}]},"wiki":{"published":"14
+        Jul 2015, 16:34","summary":"Honeymoon is the fourth studio album and third
+        major-label record by American singer Lana Del Rey. It was released on September
+        18, 2015, by UMG Recordings, and was produced by Del Rey alongside longtime
+        collaborators Rick Nowels and Kieron Menzies.\n\nUpon release, Honeymoon received
+        acclaim from music critics. The album debuted at number two on the US Billboard
+        200, selling 116,000 units in first week, and peaking at number one in Australia,
+        Greece and Ireland. <a href=\"http://www.last.fm/music/Lana+Del+Rey/Honeymoon\">Read
+        more on Last.fm</a>.","content":"Honeymoon is the fourth studio album and
+        third major-label record by American singer Lana Del Rey. It was released
+        on September 18, 2015, by UMG Recordings, and was produced by Del Rey alongside
+        longtime collaborators Rick Nowels and Kieron Menzies.\n\nUpon release, Honeymoon
+        received acclaim from music critics. The album debuted at number two on the
+        US Billboard 200, selling 116,000 units in first week, and peaking at number
+        one in Australia, Greece and Ireland. \"High by the Beach\" was released as
+        its lead single on August 10, 2015, and was followed by promotional singles
+        \"Terrence Loves You\", \"Honeymoon\", and \"Music to Watch Boys To\" in anticipation
+        of the parent record. <a href=\"http://www.last.fm/music/Lana+Del+Rey/Honeymoon\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Souvlaki&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Slowdive&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5677'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Souvlaki","artist":"Slowdive","mbid":"4939859c-ce2a-484b-872b-6d7ab9ff7260","url":"https://www.last.fm/music/Slowdive/Souvlaki","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/1863c131c717666e030c94880e1cce53.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/1863c131c717666e030c94880e1cce53.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/1863c131c717666e030c94880e1cce53.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/1863c131c717666e030c94880e1cce53.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/1863c131c717666e030c94880e1cce53.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/1863c131c717666e030c94880e1cce53.png","size":""}],"listeners":"404535","playcount":"13664072","tracks":{"track":[{"name":"Alison","url":"https://www.last.fm/music/Slowdive/_/Alison","duration":"231","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Machine
+        Gun","url":"https://www.last.fm/music/Slowdive/_/Machine+Gun","duration":"268","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"40
+        Days","url":"https://www.last.fm/music/Slowdive/_/40+Days","duration":"196","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Sing","url":"https://www.last.fm/music/Slowdive/_/Sing","duration":"288","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Here
+        She Comes","url":"https://www.last.fm/music/Slowdive/_/Here+She+Comes","duration":"139","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Souvlaki
+        Space Station","url":"https://www.last.fm/music/Slowdive/_/Souvlaki+Space+Station","duration":"359","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"When
+        the Sun Hits","url":"https://www.last.fm/music/Slowdive/_/When+the+Sun+Hits","duration":"288","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Altogether","url":"https://www.last.fm/music/Slowdive/_/Altogether","duration":"222","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Melon
+        Yellow","url":"https://www.last.fm/music/Slowdive/_/Melon+Yellow","duration":"234","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Dagger","url":"https://www.last.fm/music/Slowdive/_/Dagger","duration":"213","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}}]},"tags":{"tag":[{"name":"shoegaze","url":"https://www.last.fm/tag/shoegaze"},{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"1993","url":"https://www.last.fm/tag/1993"},{"name":"favorite
+        albums","url":"https://www.last.fm/tag/favorite+albums"},{"name":"favourite
+        albums","url":"https://www.last.fm/tag/favourite+albums"}]},"wiki":{"published":"22
+        Apr 2010, 10:18","summary":"Souvlaki is an album by the British dream pop/shoegazing
+        band Slowdive. It was released on May 17, 1993 in the UK and on February 8,
+        1994 in the U.S. Widely regarded as their best album, it benefits from synthesizer
+        contributions from co-producer Brian Eno on \"Sing\" (which he co-wrote) and
+        \"Here She Comes.\" The album''s U.S. release includes the previously unreleased
+        cover of \"Some Velvet Morning\" (written by Lee Hazlewood and Nancy Sinatra
+        in 1967) and three tracks from the band''s 1993 5 EP, comprising the four
+        U.S. release bonus tracks. <a href=\"http://www.last.fm/music/Slowdive/Souvlaki\">Read
+        more on Last.fm</a>.","content":"Souvlaki is an album by the British dream
+        pop/shoegazing band Slowdive. It was released on May 17, 1993 in the UK and
+        on February 8, 1994 in the U.S. Widely regarded as their best album, it benefits
+        from synthesizer contributions from co-producer Brian Eno on \"Sing\" (which
+        he co-wrote) and \"Here She Comes.\" The album''s U.S. release includes the
+        previously unreleased cover of \"Some Velvet Morning\" (written by Lee Hazlewood
+        and Nancy Sinatra in 1967) and three tracks from the band''s 1993 5 EP, comprising
+        the four U.S. release bonus tracks.\n\nAccording to interviews with the band,
+        the album was titled after an explicit skit on the first album by telephone
+        pranksters The Jerky Boys, containing the line: \"My wife loves that Greek
+        shit. She''ll suck your cock like souvlaki.\" <a href=\"http://www.last.fm/music/Slowdive/Souvlaki\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Paradise&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Lana%20Del%20Rey&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5426'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiUGFyYWRpc2UiLCJhcnRpc3QiOiJMYW5hIERlbCBSZXkiLCJtYmlkIjoiZDQ3ZjIwODAtOGMyYS00ZjIwLWI4MWYtOWRhZDdjMmM4NGZjIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9MYW5hK0RlbCtSZXkvUGFyYWRpc2UiLCJpbWFnZSI6W3siI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzM0cy9lZTFlNTk1ZGM5M2M0ODFhOTE3M2YyZmY1ZWEzMjM4NC5wbmciLCJzaXplIjoic21hbGwifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS82NHMvZWUxZTU5NWRjOTNjNDgxYTkxNzNmMmZmNWVhMzIzODQucG5nIiwic2l6ZSI6Im1lZGl1bSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzE3NHMvZWUxZTU5NWRjOTNjNDgxYTkxNzNmMmZmNWVhMzIzODQucG5nIiwic2l6ZSI6ImxhcmdlIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC9lZTFlNTk1ZGM5M2M0ODFhOTE3M2YyZmY1ZWEzMjM4NC5wbmciLCJzaXplIjoiZXh0cmFsYXJnZSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvZWUxZTU5NWRjOTNjNDgxYTkxNzNmMmZmNWVhMzIzODQucG5nIiwic2l6ZSI6Im1lZ2EifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwL2VlMWU1OTVkYzkzYzQ4MWE5MTczZjJmZjVlYTMyMzg0LnBuZyIsInNpemUiOiIifV0sImxpc3RlbmVycyI6IjE3NTkyNyIsInBsYXljb3VudCI6IjU2OTE0ODAiLCJ0cmFja3MiOnsidHJhY2siOlt7Im5hbWUiOiJSaWRlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9MYW5hK0RlbCtSZXkvXy9SaWRlIiwiZHVyYXRpb24iOiIyOTAiLCJAYXR0ciI6eyJyYW5rIjoiMSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJMYW5hIERlbCBSZXkiLCJtYmlkIjoiYjc1MzljMzItNTNlNy00OTA4LWJkYTMtODE0NDljMzY3ZGE2IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9MYW5hK0RlbCtSZXkifX0seyJuYW1lIjoiQW1lcmljYW4iLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleS9fL0FtZXJpY2FuIiwiZHVyYXRpb24iOiIyNDkiLCJAYXR0ciI6eyJyYW5rIjoiMiJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJMYW5hIERlbCBSZXkiLCJtYmlkIjoiYjc1MzljMzItNTNlNy00OTA4LWJkYTMtODE0NDljMzY3ZGE2IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9MYW5hK0RlbCtSZXkifX0seyJuYW1lIjoiQ29sYSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTGFuYStEZWwrUmV5L18vQ29sYSIsImR1cmF0aW9uIjoiMjYxIiwiQGF0dHIiOnsicmFuayI6IjMifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiTGFuYSBEZWwgUmV5IiwibWJpZCI6ImI3NTM5YzMyLTUzZTctNDkwOC1iZGEzLTgxNDQ5YzM2N2RhNiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTGFuYStEZWwrUmV5In19LHsibmFtZSI6IkJvZHkgRWxlY3RyaWMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleS9fL0JvZHkrRWxlY3RyaWMiLCJkdXJhdGlvbiI6IjIzMyIsIkBhdHRyIjp7InJhbmsiOiI0In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkxhbmEgRGVsIFJleSIsIm1iaWQiOiJiNzUzOWMzMi01M2U3LTQ5MDgtYmRhMy04MTQ0OWMzNjdkYTYiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleSJ9fSx7Im5hbWUiOiJCbHVlIFZlbHZldCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTGFuYStEZWwrUmV5L18vQmx1ZStWZWx2ZXQiLCJkdXJhdGlvbiI6IjE1OSIsIkBhdHRyIjp7InJhbmsiOiI1In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkxhbmEgRGVsIFJleSIsIm1iaWQiOiJiNzUzOWMzMi01M2U3LTQ5MDgtYmRhMy04MTQ0OWMzNjdkYTYiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleSJ9fSx7Im5hbWUiOiJHb2RzICYgTW9uc3RlcnMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleS9fL0dvZHMrJitNb25zdGVycyIsImR1cmF0aW9uIjoiMjM3IiwiQGF0dHIiOnsicmFuayI6IjYifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiTGFuYSBEZWwgUmV5IiwibWJpZCI6ImI3NTM5YzMyLTUzZTctNDkwOC1iZGEzLTgxNDQ5YzM2N2RhNiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTGFuYStEZWwrUmV5In19LHsibmFtZSI6IllheW8iLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleS9fL1lheW8iLCJkdXJhdGlvbiI6IjMyMSIsIkBhdHRyIjp7InJhbmsiOiI3In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkxhbmEgRGVsIFJleSIsIm1iaWQiOiJiNzUzOWMzMi01M2U3LTQ5MDgtYmRhMy04MTQ0OWMzNjdkYTYiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0xhbmErRGVsK1JleSJ9fSx7Im5hbWUiOiJCZWwgQWlyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9MYW5hK0RlbCtSZXkvXy9CZWwrQWlyIiwiZHVyYXRpb24iOiIyMzciLCJAYXR0ciI6eyJyYW5rIjoiOCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJMYW5hIERlbCBSZXkiLCJtYmlkIjoiYjc1MzljMzItNTNlNy00OTA4LWJkYTMtODE0NDljMzY3ZGE2IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9MYW5hK0RlbCtSZXkifX1dfSwidGFncyI6eyJ0YWciOlt7Im5hbWUiOiJkcmVhbSBwb3AiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9kcmVhbStwb3AifSx7Im5hbWUiOiJ0cmlwLWhvcCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL3RyaXAtaG9wIn0seyJuYW1lIjoiYmVzdCBvZiAyMDEyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvYmVzdCtvZisyMDEyIn0seyJuYW1lIjoiYWx0ZXJuYXRpdmUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9hbHRlcm5hdGl2ZSJ9LHsibmFtZSI6InRyaXAgaG9wIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvdHJpcCtob3AifV19LCJ3aWtpIjp7InB1Ymxpc2hlZCI6IjA0IEphbiAyMDEzLCAxMToyNyIsInN1bW1hcnkiOiJUaGUgc3VjY2VzcyBvZiBCb3JuIHRvIERpZeKAlGNvdXBsZWQgd2l0aCBhIGNvbnRyb3ZlcnNpYWwgU2F0dXJkYXkgTmlnaHQgTGl2ZSBhcHBlYXJhbmNlIGluIHdoaWNoIExhbmEgRGVsIFJleSBzZWVtZWQgdG8gYmUgaW4gdGhlIGdyaXAgb2Ygc2VyaW91cyBzdGFnZSBvZiBmcmlnaHTigJRoYXMgbGVkIG11c2ljIGZhbnMgdG8gcXVlc3Rpb24gd2hhdOKAmXMgcmVhbCBhbmQgd2hhdOKAmXMgY2FyZWZ1bGx5IGNhbGlicmF0ZWQgd2l0aCB0aGUgc2luZ2VyLCBoeXBlZCBhcyBhIOKAnGdhbmdzdGVyIE5hbmN5IFNpbmF0cmHigJ0gKHJlZHVuZGFudCwgYWN0dWFsbHkpLiBCdXQgdGhpcyBlaWdodC10cmFjayBFUCAocmVhbGx5IHdpdGggbmluZSB0cmFja3MsIGNvdW50aW5nIHdpdGggdGhlIGlUdW5lcyBleGNsdXNpdmUgYm9udXMgdHJhY2sg4oCcQnVybmluZyBEZXNpcmXigJ0pIHNob3VsZCBwdXQgcXVhbG1zIHJlZ2FyZGluZyBEZWwgUmV54oCZcyB0YWxlbnRzIHRvIHJlc3QuIDxhIGhyZWY9XCJodHRwOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTGFuYStEZWwrUmV5L1BhcmFkaXNlXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiIsImNvbnRlbnQiOiJUaGUgc3VjY2VzcyBvZiBCb3JuIHRvIERpZeKAlGNvdXBsZWQgd2l0aCBhIGNvbnRyb3ZlcnNpYWwgU2F0dXJkYXkgTmlnaHQgTGl2ZSBhcHBlYXJhbmNlIGluIHdoaWNoIExhbmEgRGVsIFJleSBzZWVtZWQgdG8gYmUgaW4gdGhlIGdyaXAgb2Ygc2VyaW91cyBzdGFnZSBvZiBmcmlnaHTigJRoYXMgbGVkIG11c2ljIGZhbnMgdG8gcXVlc3Rpb24gd2hhdOKAmXMgcmVhbCBhbmQgd2hhdOKAmXMgY2FyZWZ1bGx5IGNhbGlicmF0ZWQgd2l0aCB0aGUgc2luZ2VyLCBoeXBlZCBhcyBhIOKAnGdhbmdzdGVyIE5hbmN5IFNpbmF0cmHigJ0gKHJlZHVuZGFudCwgYWN0dWFsbHkpLiBCdXQgdGhpcyBlaWdodC10cmFjayBFUCAocmVhbGx5IHdpdGggbmluZSB0cmFja3MsIGNvdW50aW5nIHdpdGggdGhlIGlUdW5lcyBleGNsdXNpdmUgYm9udXMgdHJhY2sg4oCcQnVybmluZyBEZXNpcmXigJ0pIHNob3VsZCBwdXQgcXVhbG1zIHJlZ2FyZGluZyBEZWwgUmV54oCZcyB0YWxlbnRzIHRvIHJlc3QuIEZhY3QgaXQsIFBhcmFkaXNl4oCUbGlrZSBCb3JuIHRvIERpZeKAlGZlYXR1cmVzIGdvcmdlb3VzIG11c2ljIGxlZCBieSBhIHZvY2FsaXN0IHdobyBzb3VuZCBldmVuIG1vcmUgYXNzdXJlZCBhbmQgbW9yZSBpbiBjb21tYW5kIG9mIGhlciBtYXRlcmlhbC4gU2hlIGlzbuKAmXQgYWZyYWlkIHRvIGdldCBncmFwaGljLCBhbmQgaGVyIHN1bHRyeSBwb3NlcyBpbWJ1ZSB0aGUgdHVuZXMgd2l0aCBhIGRldGFjaGVkIHNleHVhbGl0eSB0aGF04oCZcyBiZWVuIGEgaGFsbG1hcmsgb2YgcG9wIHNpbmNlIG1hcmtldGVycyBsZWFybmVkIHRoYXQgdGVlbmFnZXJzIGJvdWdodCBtdXNpYy4gVGhlIG1lbG9kaWVzIHJvbGxpbmcgdGhyb3VnaCDigJxSaWRl4oCdLCDigJxBbWVyaWNhbuKAnSwgYW5kIOKAnENvbGHigJ0gYXJlIHN0cm9uZywgYW5kIHRoZSB2b2NhbCBhcnJhbmdlbWVudHMgYXMgaW5zcGlyZWQgYXMgd2hhdGV2ZXIgcGFzdCBwb3Atdm9jYWwgaGVyb2VzIHlvdSBzdXNwZWN0IERlbCBSZXkgYW5kIGhlciBwcm9kdWNlcnMgd2VyZSBkaWFsaW5nIHVwLiBIZXIgY292ZXIgb2Yg4oCcQmx1ZSBWZWx2ZXTigJ0gaXMgaW5zcGlyZWQuIDxhIGhyZWY9XCJodHRwOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTGFuYStEZWwrUmV5L1BhcmFkaXNlXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiBVc2VyLWNvbnRyaWJ1dGVkIHRleHQgaXMgYXZhaWxhYmxlIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEJ5LVNBIExpY2Vuc2U7IGFkZGl0aW9uYWwgdGVybXMgbWF5IGFwcGx5LiJ9fX0=
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Isn%27t%20Anything&api_key=146fa01985acd46b23f4e6c5f660f199&artist=My%20Bloody%20Valentine&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '7116'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Isn''t Anything","artist":"My Bloody Valentine","mbid":"b4640f48-b94f-4307-ae9e-4545261c08cf","url":"https://www.last.fm/music/My+Bloody+Valentine/Isn%27t+Anything","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/ae3d658e6a77d40a24dba212f1d65916.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/ae3d658e6a77d40a24dba212f1d65916.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/ae3d658e6a77d40a24dba212f1d65916.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/ae3d658e6a77d40a24dba212f1d65916.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/ae3d658e6a77d40a24dba212f1d65916.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/ae3d658e6a77d40a24dba212f1d65916.png","size":""}],"listeners":"274872","playcount":"6086986","tracks":{"track":[{"name":"Soft
+        as Snow (But Warm Inside)","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Soft+as+Snow+(But+Warm+Inside)","duration":"141","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"Lose
+        My Breath","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Lose+My+Breath","duration":"217","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"Cupid
+        Come","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Cupid+Come","duration":"269","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"(When
+        You Wake) You''re Still in a Dream","url":"https://www.last.fm/music/My+Bloody+Valentine/_/(When+You+Wake)+You%27re+Still+in+a+Dream","duration":"196","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"No
+        More Sorry","url":"https://www.last.fm/music/My+Bloody+Valentine/_/No+More+Sorry","duration":"168","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"All
+        I Need","url":"https://www.last.fm/music/My+Bloody+Valentine/_/All+I+Need","duration":"184","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"Feed
+        Me With Your Kiss","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Feed+Me+With+Your+Kiss","duration":"234","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"Sueisfine","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Sueisfine","duration":"132","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"Several
+        Girls Galore","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Several+Girls+Galore","duration":"141","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"You
+        Never Should","url":"https://www.last.fm/music/My+Bloody+Valentine/_/You+Never+Should","duration":"202","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"Nothing
+        Much to Lose","url":"https://www.last.fm/music/My+Bloody+Valentine/_/Nothing+Much+to+Lose","duration":"197","@attr":{"rank":"11"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}},{"name":"I
+        Can See It (But I Can''t Feel It)","url":"https://www.last.fm/music/My+Bloody+Valentine/_/I+Can+See+It+(But+I+Can%27t+Feel+It)","duration":"190","@attr":{"rank":"12"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"My
+        Bloody Valentine","mbid":"8ca01f46-53ac-4af2-8516-55a909c0905e","url":"https://www.last.fm/music/My+Bloody+Valentine"}}]},"tags":{"tag":[{"name":"shoegaze","url":"https://www.last.fm/tag/shoegaze"},{"name":"1988","url":"https://www.last.fm/tag/1988"},{"name":"noise
+        pop","url":"https://www.last.fm/tag/noise+pop"},{"name":"albums I own","url":"https://www.last.fm/tag/albums+I+own"},{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"}]},"wiki":{"published":"08
+        Jan 2013, 07:47","summary":"Isn''t Anything is the debut full-length studio
+        album by My Bloody Valentine, released in November 1988 on Creation Records.
+        After the band''s original vocalist Dave Conway left in 1987, to be replaced
+        by Bilinda Butcher, the band continued for a while in their previous noisy
+        indie-pop style before Kevin Shields returned to their avant-garde roots,
+        and began to explore the possibilities offered by the studio facilities available
+        after signing to Creation Records in 1988. <a href=\"http://www.last.fm/music/My+Bloody+Valentine/Isn%27t+Anything\">Read
+        more on Last.fm</a>.","content":"Isn''t Anything is the debut full-length
+        studio album by My Bloody Valentine, released in November 1988 on Creation
+        Records. After the band''s original vocalist Dave Conway left in 1987, to
+        be replaced by Bilinda Butcher, the band continued for a while in their previous
+        noisy indie-pop style before Kevin Shields returned to their avant-garde roots,
+        and began to explore the possibilities offered by the studio facilities available
+        after signing to Creation Records in 1988. The first fruits of this experimentation
+        was the single/EP \"You Made Me Realise\", released in July 1988, with Isn''t
+        Anything following later that year. Most of the album was recorded in a studio
+        in Wales. While recording the album over a period of two weeks, the band got
+        by on about two hours sleep a night. Bilinda Butcher described the effect
+        of this on her vocals: \"Often, when we do the vocals, it''s 7:30 in the morning:
+        I''ve usually fallen asleep and have to be woken up to sing. Maybe that''s
+        why it''s languorous. I''m usually trying to remember what I''ve been dreaming
+        about when I''m singing.\" <a href=\"http://www.last.fm/music/My+Bloody+Valentine/Isn%27t+Anything\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Loveless&api_key=146fa01985acd46b23f4e6c5f660f199&artist=My%20Bloody%20Valentine&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '7295'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiTG92ZWxlc3MiLCJhcnRpc3QiOiJNeSBCbG9vZHkgVmFsZW50aW5lIiwibWJpZCI6IjRjMmMwN2I5LTc5MmUtNDMwYS05MDJiLWM0ZDg3ODRkMGJjZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZS9Mb3ZlbGVzcyIsImltYWdlIjpbeyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzRzLzcxMTdjZjhhNzU3YzRmZGZhNGZjY2ZlZmQ0ODI2YTgzLnBuZyIsInNpemUiOiJzbWFsbCJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzY0cy83MTE3Y2Y4YTc1N2M0ZmRmYTRmY2NmZWZkNDgyNmE4My5wbmciLCJzaXplIjoibWVkaXVtIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMTc0cy83MTE3Y2Y4YTc1N2M0ZmRmYTRmY2NmZWZkNDgyNmE4My5wbmciLCJzaXplIjoibGFyZ2UifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzcxMTdjZjhhNzU3YzRmZGZhNGZjY2ZlZmQ0ODI2YTgzLnBuZyIsInNpemUiOiJleHRyYWxhcmdlIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC83MTE3Y2Y4YTc1N2M0ZmRmYTRmY2NmZWZkNDgyNmE4My5wbmciLCJzaXplIjoibWVnYSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvNzExN2NmOGE3NTdjNGZkZmE0ZmNjZmVmZDQ4MjZhODMucG5nIiwic2l6ZSI6IiJ9XSwibGlzdGVuZXJzIjoiNjg2Mzk4IiwicGxheWNvdW50IjoiMjMwMTY4MDUiLCJ0cmFja3MiOnsidHJhY2siOlt7Im5hbWUiOiJPbmx5IFNoYWxsb3ciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUvXy9Pbmx5K1NoYWxsb3ciLCJkdXJhdGlvbiI6IjI1NyIsIkBhdHRyIjp7InJhbmsiOiIxIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6Ik15IEJsb29keSBWYWxlbnRpbmUiLCJtYmlkIjoiOGNhMDFmNDYtNTNhYy00YWYyLTg1MTYtNTVhOTA5YzA5MDVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lIn19LHsibmFtZSI6Ikxvb21lciIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZS9fL0xvb21lciIsImR1cmF0aW9uIjoiMTU4IiwiQGF0dHIiOnsicmFuayI6IjIifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiTXkgQmxvb2R5IFZhbGVudGluZSIsIm1iaWQiOiI4Y2EwMWY0Ni01M2FjLTRhZjItODUxNi01NWE5MDljMDkwNWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUifX0seyJuYW1lIjoiVG91Y2hlZCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZS9fL1RvdWNoZWQiLCJkdXJhdGlvbiI6IjU2IiwiQGF0dHIiOnsicmFuayI6IjMifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiTXkgQmxvb2R5IFZhbGVudGluZSIsIm1iaWQiOiI4Y2EwMWY0Ni01M2FjLTRhZjItODUxNi01NWE5MDljMDkwNWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUifX0seyJuYW1lIjoiVG8gSGVyZSBLbm93cyBXaGVuIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lL18vVG8rSGVyZStLbm93cytXaGVuIiwiZHVyYXRpb24iOiIzMzEiLCJAYXR0ciI6eyJyYW5rIjoiNCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJNeSBCbG9vZHkgVmFsZW50aW5lIiwibWJpZCI6IjhjYTAxZjQ2LTUzYWMtNGFmMi04NTE2LTU1YTkwOWMwOTA1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZSJ9fSx7Im5hbWUiOiJXaGVuIFlvdSBTbGVlcCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZS9fL1doZW4rWW91K1NsZWVwIiwiZHVyYXRpb24iOiIyNTIiLCJAYXR0ciI6eyJyYW5rIjoiNSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJNeSBCbG9vZHkgVmFsZW50aW5lIiwibWJpZCI6IjhjYTAxZjQ2LTUzYWMtNGFmMi04NTE2LTU1YTkwOWMwOTA1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZSJ9fSx7Im5hbWUiOiJJIE9ubHkgU2FpZCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZS9fL0krT25seStTYWlkIiwiZHVyYXRpb24iOiIzMzQiLCJAYXR0ciI6eyJyYW5rIjoiNiJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJNeSBCbG9vZHkgVmFsZW50aW5lIiwibWJpZCI6IjhjYTAxZjQ2LTUzYWMtNGFmMi04NTE2LTU1YTkwOWMwOTA1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZSJ9fSx7Im5hbWUiOiJDb21lIGluIEFsb25lIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lL18vQ29tZStpbitBbG9uZSIsImR1cmF0aW9uIjoiMjM4IiwiQGF0dHIiOnsicmFuayI6IjcifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiTXkgQmxvb2R5IFZhbGVudGluZSIsIm1iaWQiOiI4Y2EwMWY0Ni01M2FjLTRhZjItODUxNi01NWE5MDljMDkwNWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUifX0seyJuYW1lIjoiU29tZXRpbWVzIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lL18vU29tZXRpbWVzIiwiZHVyYXRpb24iOiIzMTkiLCJAYXR0ciI6eyJyYW5rIjoiOCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJNeSBCbG9vZHkgVmFsZW50aW5lIiwibWJpZCI6IjhjYTAxZjQ2LTUzYWMtNGFmMi04NTE2LTU1YTkwOWMwOTA1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZSJ9fSx7Im5hbWUiOiJCbG93biBhIFdpc2giLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUvXy9CbG93bithK1dpc2giLCJkdXJhdGlvbiI6IjIxNiIsIkBhdHRyIjp7InJhbmsiOiI5In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6Ik15IEJsb29keSBWYWxlbnRpbmUiLCJtYmlkIjoiOGNhMDFmNDYtNTNhYy00YWYyLTg1MTYtNTVhOTA5YzA5MDVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lIn19LHsibmFtZSI6IldoYXQgWW91IFdhbnQiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUvXy9XaGF0K1lvdStXYW50IiwiZHVyYXRpb24iOiIzMzMiLCJAYXR0ciI6eyJyYW5rIjoiMTAifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiTXkgQmxvb2R5IFZhbGVudGluZSIsIm1iaWQiOiI4Y2EwMWY0Ni01M2FjLTRhZjItODUxNi01NWE5MDljMDkwNWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL015K0Jsb29keStWYWxlbnRpbmUifX0seyJuYW1lIjoiU29vbiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZS9fL1Nvb24iLCJkdXJhdGlvbiI6IjQyMSIsIkBhdHRyIjp7InJhbmsiOiIxMSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJNeSBCbG9vZHkgVmFsZW50aW5lIiwibWJpZCI6IjhjYTAxZjQ2LTUzYWMtNGFmMi04NTE2LTU1YTkwOWMwOTA1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvTXkrQmxvb2R5K1ZhbGVudGluZSJ9fV19LCJ0YWdzIjp7InRhZyI6W3sibmFtZSI6InNob2VnYXplIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvc2hvZWdhemUifSx7Im5hbWUiOiJmYXZvcml0ZSBhbGJ1bXMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9mYXZvcml0ZSthbGJ1bXMifSx7Im5hbWUiOiJhbGJ1bXMgSSBvd24iLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9hbGJ1bXMrSStvd24ifSx7Im5hbWUiOiI5MHMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy85MHMifSx7Im5hbWUiOiIxOTkxIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvMTk5MSJ9XX0sIndpa2kiOnsicHVibGlzaGVkIjoiMDcgQXVnIDIwMDgsIDE3OjUyIiwic3VtbWFyeSI6IkxvdmVsZXNzIGlzIHRoZSBzZWNvbmQgc3R1ZGlvIGFsYnVtIGJ5IElyaXNoIHJvY2sgYmFuZCBNeSBCbG9vZHkgVmFsZW50aW5lLCByZWxlYXNlZCBvbiA0IE5vdmVtYmVyIDE5OTEgYnkgQ3JlYXRpb24gUmVjb3Jkcy4gVGhlIGFsYnVtIHdhcyByZWNvcmRlZCBvdmVyIGEgdHdvLXllYXIgcGVyaW9kIGJldHdlZW4gMTk4OSBhbmQgMTk5MS4gVm9jYWxpc3QgYW5kIGd1aXRhcmlzdCBLZXZpbiBTaGllbGRzIGRvbWluYXRlZCB0aGUgYXJkdW91cyByZWNvcmRpbmcgcHJvY2VzczsgaW50ZW50IG9uIGFjaGlldmluZyBhIHBhcnRpY3VsYXIgc291bmQsIGhlIGV4cGVyaW1lbnRlZCB3aXRoIGd1aXRhciB0cmVtb2xvIHRlY2huaXF1ZXMgYW5kIHR1bmluZyBzeXN0ZW1zLCB1bm9ydGhvZG94IHByb2R1Y3Rpb24gbWV0aG9kcywgb2JzY3VyZWQgdm9jYWxzLCBhbmQgc2FtcGxlZCBwZXJjdXNzaW9uIGFuZCBmZWVkYmFjay4gPGEgaHJlZj1cImh0dHA6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lL0xvdmVsZXNzXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiIsImNvbnRlbnQiOiJMb3ZlbGVzcyBpcyB0aGUgc2Vjb25kIHN0dWRpbyBhbGJ1bSBieSBJcmlzaCByb2NrIGJhbmQgTXkgQmxvb2R5IFZhbGVudGluZSwgcmVsZWFzZWQgb24gNCBOb3ZlbWJlciAxOTkxIGJ5IENyZWF0aW9uIFJlY29yZHMuIFRoZSBhbGJ1bSB3YXMgcmVjb3JkZWQgb3ZlciBhIHR3by15ZWFyIHBlcmlvZCBiZXR3ZWVuIDE5ODkgYW5kIDE5OTEuIFZvY2FsaXN0IGFuZCBndWl0YXJpc3QgS2V2aW4gU2hpZWxkcyBkb21pbmF0ZWQgdGhlIGFyZHVvdXMgcmVjb3JkaW5nIHByb2Nlc3M7IGludGVudCBvbiBhY2hpZXZpbmcgYSBwYXJ0aWN1bGFyIHNvdW5kLCBoZSBleHBlcmltZW50ZWQgd2l0aCBndWl0YXIgdHJlbW9sbyB0ZWNobmlxdWVzIGFuZCB0dW5pbmcgc3lzdGVtcywgdW5vcnRob2RveCBwcm9kdWN0aW9uIG1ldGhvZHMsIG9ic2N1cmVkIHZvY2FscywgYW5kIHNhbXBsZWQgcGVyY3Vzc2lvbiBhbmQgZmVlZGJhY2suIFRoZSBncm91cCBjeWNsZWQgdGhyb3VnaCBuaW5ldGVlbiBzdHVkaW9zIGFuZCBhIGxhcmdlciBudW1iZXIgb2YgZW5naW5lZXJzIGR1cmluZyB0aGUgYWxidW0ncyB0d28teWVhciBjcmVhdGlvbiwgd2l0aCB0b3RhbCByZWNvcmRpbmcgY29zdHMgcnVtb3VyZWQgdG8gaGF2ZSByZWFjaGVkIMKjMjUwLDAwMC5cblxuV2hpbGUgTG92ZWxlc3MgZGlkIG5vdCBhY2hpZXZlIGdyZWF0IGNvbW1lcmNpYWwgc3VjY2VzcyB1cG9uIGl0cyByZWxlYXNlLCBpdCByZWNlaXZlZCBlbnRodXNpYXN0aWMgcmV2aWV3cyBmcm9tIGNyaXRpY3MsIHdobyBwcmFpc2VkIGl0cyBzb25pYyBpbm5vdmF0aW9ucyBhbmQgU2hpZWxkcydzIFwidmlydHVhbCByZWludmVudGlvbiBvZiB0aGUgZ3VpdGFyLlwiIEZvbGxvd2luZyB0aGUgcmVjb3JkJ3MgcmVsZWFzZSwgTXkgQmxvb2R5IFZhbGVudGluZSB3ZXJlIHJlbW92ZWQgZnJvbSB0aGVpciByZWNvcmQgbGFiZWwgQ3JlYXRpb24gUmVjb3JkcyBkdWUgdG8gdGhlIGRpZmZpY3VsdHkgYW5kIGV4cGVuc2Ugb2Ygd29ya2luZyB3aXRoIFNoaWVsZHMsIGEgZmFjdG9yIHRoYXQgd2FzIGFsbGVnZWQgdG8gaGF2ZSBjb250cmlidXRlZCB0byB0aGUgYmFua3J1cHRjeSBvZiB0aGUgbGFiZWwuIEluIHRoZSBzdWJzZXF1ZW50IHllYXJzLCB0aGUgZ3JvdXAgc3RydWdnbGVkIHRvIHJlY29yZCBhIGZvbGxvdy11cCBhbGJ1bSBhbmQgd291bGQgZXZlbnR1YWxseSBicmVhayB1cCBpbiAxOTk3LiBMb3ZlbGVzcyB3b3VsZCBiZSB0aGVpciBsYXN0IGZ1bGwtbGVuZ3RoIHJlbGVhc2UgZm9yIG92ZXIgdHdvIGRlY2FkZXMuXG5cblNpbmNlIGl0cyByZWxlYXNlLCBMb3ZlbGVzcyBoYXMgYmVlbiB3aWRlbHkgcHJvY2xhaW1lZCBieSBjcml0aWNzIGFzIGFtb25nIHRoZSBiZXN0IGFsYnVtcyBvZiB0aGUgMTk5MHMsIGFzIGEgbGFuZG1hcmsgd29yayBvZiB0aGUgc2hvZWdhemluZyBnZW5yZSwgYW5kIGFzIGEgc2lnbmlmaWNhbnQgaW5mbHVlbmNlIG9uIHZhcmlvdXMgc3Vic2VxdWVudCBhcnRpc3RzLiBUaGUgYWxidW0gd2FzIHJlaXNzdWVkIGFzIGEgdHdvLUNEIHNldCBvbiBTb255IGluIE1heSAyMDEyLCBjb250YWluaW5nIHJlbWFzdGVyZWQgZWRpdGlvbnMgb2YgdGhlIG9yaWdpbmFsIGRpZ2l0YWwgdGFwZSBhbmQgYSBwcmV2aW91c2x5IHVucmVsZWFzZWQgwr0taW5jaCBhbmFsb2d1ZSB0YXBlLiBUaGUgcmVpc3N1ZXMgcGxhY2VkIGluIHNldmVyYWwgaW50ZXJuYXRpb25hbCBjaGFydHMgYW5kIGluIEp1bHkgMjAxMywgTG92ZWxlc3Mgd2FzIGNlcnRpZmllZCBTaWx2ZXIgaW4gdGhlIFVuaXRlZCBLaW5nZG9tIGJ5IHRoZSBCcml0aXNoIFBob25vZ3JhcGhpYyBJbmR1c3RyeSAoQlBJKS4gPGEgaHJlZj1cImh0dHA6Ly93d3cubGFzdC5mbS9tdXNpYy9NeStCbG9vZHkrVmFsZW50aW5lL0xvdmVsZXNzXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiBVc2VyLWNvbnRyaWJ1dGVkIHRleHQgaXMgYXZhaWxhYmxlIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEJ5LVNBIExpY2Vuc2U7IGFkZGl0aW9uYWwgdGVybXMgbWF5IGFwcGx5LiJ9fX0=
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=The%20Book%20Of%20Secrets&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Loreena%20McKennitt&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '3740'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"The Book Of Secrets","artist":"Loreena McKennitt","mbid":"72825239-b2dd-30a3-884c-9e512b19675f","url":"https://www.last.fm/music/Loreena+McKennitt/The+Book+Of+Secrets","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/6ca9fc0cee3e603cd41f37fdcb7caf6c.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/6ca9fc0cee3e603cd41f37fdcb7caf6c.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/6ca9fc0cee3e603cd41f37fdcb7caf6c.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/6ca9fc0cee3e603cd41f37fdcb7caf6c.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/6ca9fc0cee3e603cd41f37fdcb7caf6c.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/6ca9fc0cee3e603cd41f37fdcb7caf6c.png","size":""}],"listeners":"176059","playcount":"2342607","tracks":{"track":[{"name":"Prologue","url":"https://www.last.fm/music/Loreena+McKennitt/_/Prologue","duration":"262","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"The
+        Mummers'' Dance","url":"https://www.last.fm/music/Loreena+McKennitt/_/The+Mummers%27+Dance","duration":"234","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"Skellig","url":"https://www.last.fm/music/Loreena+McKennitt/_/Skellig","duration":"367","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"Marco
+        Polo","url":"https://www.last.fm/music/Loreena+McKennitt/_/Marco+Polo","duration":"315","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"The
+        Highwayman","url":"https://www.last.fm/music/Loreena+McKennitt/_/The+Highwayman","duration":"619","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"La
+        Serenissima","url":"https://www.last.fm/music/Loreena+McKennitt/_/La+Serenissima","duration":"309","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"Night
+        Ride Across The Caucasus","url":"https://www.last.fm/music/Loreena+McKennitt/_/Night+Ride+Across+The+Caucasus","duration":"510","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}},{"name":"Dante''s
+        Prayer","url":"https://www.last.fm/music/Loreena+McKennitt/_/Dante%27s+Prayer","duration":"431","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Loreena
+        McKennitt","mbid":"c1e5344e-1bff-4727-9417-a4f55e41b5ff","url":"https://www.last.fm/music/Loreena+McKennitt"}}]},"tags":{"tag":[{"name":"celtic","url":"https://www.last.fm/tag/celtic"},{"name":"folk","url":"https://www.last.fm/tag/folk"},{"name":"new
+        age","url":"https://www.last.fm/tag/new+age"},{"name":"ethereal","url":"https://www.last.fm/tag/ethereal"},{"name":"female
+        vocalists","url":"https://www.last.fm/tag/female+vocalists"}]}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Born%20to%20Die%20-%20The%20Paradise%20Edition&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Lana%20Del%20Rey&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '10087'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Born to Die - The Paradise Edition","artist":"Lana
+        Del Rey","mbid":"d2ee5e04-e4f2-4c1e-92f1-89723aa51370","url":"https://www.last.fm/music/Lana+Del+Rey/Born+to+Die+-+The+Paradise+Edition","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/4ac08385fa211ba7e51025f43d453f6f.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/4ac08385fa211ba7e51025f43d453f6f.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/4ac08385fa211ba7e51025f43d453f6f.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/4ac08385fa211ba7e51025f43d453f6f.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/4ac08385fa211ba7e51025f43d453f6f.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/4ac08385fa211ba7e51025f43d453f6f.png","size":""}],"listeners":"625004","playcount":"27113251","tracks":{"track":[{"name":"Born
+        to Die","url":"https://www.last.fm/music/Lana+Del+Rey/_/Born+to+Die","duration":"286","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Off
+        to the Races","url":"https://www.last.fm/music/Lana+Del+Rey/_/Off+to+the+Races","duration":"301","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Blue
+        Jeans","url":"https://www.last.fm/music/Lana+Del+Rey/_/Blue+Jeans","duration":"209","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Video
+        Games","url":"https://www.last.fm/music/Lana+Del+Rey/_/Video+Games","duration":"281","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Diet
+        Mountain Dew","url":"https://www.last.fm/music/Lana+Del+Rey/_/Diet+Mountain+Dew","duration":"223","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"National
+        Anthem","url":"https://www.last.fm/music/Lana+Del+Rey/_/National+Anthem","duration":"231","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Dark
+        Paradise","url":"https://www.last.fm/music/Lana+Del+Rey/_/Dark+Paradise","duration":"243","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Radio","url":"https://www.last.fm/music/Lana+Del+Rey/_/Radio","duration":"215","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Carmen","url":"https://www.last.fm/music/Lana+Del+Rey/_/Carmen","duration":"249","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Million
+        Dollar Man","url":"https://www.last.fm/music/Lana+Del+Rey/_/Million+Dollar+Man","duration":"230","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Summertime
+        Sadness","url":"https://www.last.fm/music/Lana+Del+Rey/_/Summertime+Sadness","duration":"265","@attr":{"rank":"11"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"This
+        Is What Makes Us Girls","url":"https://www.last.fm/music/Lana+Del+Rey/_/This+Is+What+Makes+Us+Girls","duration":"238","@attr":{"rank":"12"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Without
+        You","url":"https://www.last.fm/music/Lana+Del+Rey/_/Without+You","duration":"229","@attr":{"rank":"13"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Lolita","url":"https://www.last.fm/music/Lana+Del+Rey/_/Lolita","duration":"220","@attr":{"rank":"14"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Lucky
+        Ones","url":"https://www.last.fm/music/Lana+Del+Rey/_/Lucky+Ones","duration":"227","@attr":{"rank":"15"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Ride","url":"https://www.last.fm/music/Lana+Del+Rey/_/Ride","duration":"290","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"American","url":"https://www.last.fm/music/Lana+Del+Rey/_/American","duration":"249","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Cola","url":"https://www.last.fm/music/Lana+Del+Rey/_/Cola","duration":"261","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Body
+        Electric","url":"https://www.last.fm/music/Lana+Del+Rey/_/Body+Electric","duration":"233","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Blue
+        Velvet","url":"https://www.last.fm/music/Lana+Del+Rey/_/Blue+Velvet","duration":"159","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Gods
+        & Monsters","url":"https://www.last.fm/music/Lana+Del+Rey/_/Gods+&+Monsters","duration":"237","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Yayo","url":"https://www.last.fm/music/Lana+Del+Rey/_/Yayo","duration":"321","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}},{"name":"Bel
+        Air","url":"https://www.last.fm/music/Lana+Del+Rey/_/Bel+Air","duration":"237","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Lana
+        Del Rey","mbid":"b7539c32-53e7-4908-bda3-81449c367da6","url":"https://www.last.fm/music/Lana+Del+Rey"}}]},"tags":{"tag":[{"name":"albums
+        I own","url":"https://www.last.fm/tag/albums+I+own"},{"name":"baroque pop","url":"https://www.last.fm/tag/baroque+pop"},{"name":"trip
+        hop","url":"https://www.last.fm/tag/trip+hop"},{"name":"dream pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"trip-hop","url":"https://www.last.fm/tag/trip-hop"}]},"wiki":{"published":"03
+        Jun 2014, 19:26","summary":"Born to Die: The Paradise Edition is the reissue
+        of American singer and songwriter Lana Del Rey''s second studio album Born
+        to Die (2012). It was released on November 9, 2012 by Interscope Records and
+        Polydor Records. Released ten months after the original, The Paradise Edition
+        features eight newly recorded tracks, which were simultaneously made available
+        on the standalone extended play Paradise (2012). Although having worked with
+        several producers for each record <a href=\"http://www.last.fm/music/Lana+Del+Rey/Born+to+Die+-+The+Paradise+Edition\">Read
+        more on Last.fm</a>.","content":"Born to Die: The Paradise Edition is the
+        reissue of American singer and songwriter Lana Del Rey''s second studio album
+        Born to Die (2012). It was released on November 9, 2012 by Interscope Records
+        and Polydor Records. Released ten months after the original, The Paradise
+        Edition features eight newly recorded tracks, which were simultaneously made
+        available on the standalone extended play Paradise (2012). Although having
+        worked with several producers for each record, Emile Haynie and Rick Nowels
+        are the only producers whose contributions are featured on both discs.\n\nThe
+        Paradise Edition performed moderately on international record charts in Europe,
+        where it charted separately from Born to Die and Paradise. While the project
+        was not directly supported by singles of its own, the tracks \"Ride\" and
+        \"Burning Desire\" were released from Paradise on September 25, 2012 and March
+        13, 2013, while \"Dark Paradise\" was serviced from Born to Die on March 1,
+        2013. A remix of the track \"Summertime Sadness\" from Born to Die, produced
+        by Cedric Gervais, was released independently from either project on July
+        11, 2013; it was later included on select reissues of The Paradise Edition
+        after experiencing success on record charts worldwide.  <a href=\"http://www.last.fm/music/Lana+Del+Rey/Born+to+Die+-+The+Paradise+Edition\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Just%20for%20a%20Day&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Slowdive&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5753'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Just for a Day","artist":"Slowdive","mbid":"a7db72e2-9f26-3bbb-98b2-bce8a27a7f93","url":"https://www.last.fm/music/Slowdive/Just+for+a+Day","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/26944bc9f30dded982cbc706bf28d2b9.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/26944bc9f30dded982cbc706bf28d2b9.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/26944bc9f30dded982cbc706bf28d2b9.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/26944bc9f30dded982cbc706bf28d2b9.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/26944bc9f30dded982cbc706bf28d2b9.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/26944bc9f30dded982cbc706bf28d2b9.png","size":""}],"listeners":"159154","playcount":"3232529","tracks":{"track":[{"name":"Spanish
+        Air","url":"https://www.last.fm/music/Slowdive/_/Spanish+Air","duration":"366","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Celia''s
+        Dream","url":"https://www.last.fm/music/Slowdive/_/Celia%27s+Dream","duration":"252","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Catch
+        the Breeze","url":"https://www.last.fm/music/Slowdive/_/Catch+the+Breeze","duration":"264","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Ballad
+        Of Sister Sue","url":"https://www.last.fm/music/Slowdive/_/Ballad+Of+Sister+Sue","duration":"274","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Erik''s
+        Song","url":"https://www.last.fm/music/Slowdive/_/Erik%27s+Song","duration":"267","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Waves","url":"https://www.last.fm/music/Slowdive/_/Waves","duration":"354","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Brighter","url":"https://www.last.fm/music/Slowdive/_/Brighter","duration":"231","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"The
+        Sadman","url":"https://www.last.fm/music/Slowdive/_/The+Sadman","duration":"287","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}},{"name":"Primal","url":"https://www.last.fm/music/Slowdive/_/Primal","duration":"329","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Slowdive","mbid":"a16371b9-7d36-497a-a9d4-42b0a0440c5e","url":"https://www.last.fm/music/Slowdive"}}]},"tags":{"tag":[{"name":"shoegaze","url":"https://www.last.fm/tag/shoegaze"},{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"1991","url":"https://www.last.fm/tag/1991"},{"name":"indie","url":"https://www.last.fm/tag/indie"},{"name":"90s","url":"https://www.last.fm/tag/90s"}]},"wiki":{"published":"26
+        Apr 2018, 18:29","summary":"Just for a Day is the debut studio album by the
+        English band Slowdive, released on 2 September 1991 by record label Creation.
+        Just for a Day was recorded at Courtyard Studios in Abingdon in the Thames
+        Valley, formerly known as Georgetown Studios. The album peaked at No. 3 in
+        the UK Indie Chart. Upon its release, copies of the album were labelled with
+        a sticker that read \"like a mind altering substance, without the risk\".
+        Just for a Day has been generally well received by critics. <a href=\"http://www.last.fm/music/Slowdive/Just+for+a+Day\">Read
+        more on Last.fm</a>.","content":"Just for a Day is the debut studio album
+        by the English band Slowdive, released on 2 September 1991 by record label
+        Creation. Just for a Day was recorded at Courtyard Studios in Abingdon in
+        the Thames Valley, formerly known as Georgetown Studios. The album peaked
+        at No. 3 in the UK Indie Chart. Upon its release, copies of the album were
+        labelled with a sticker that read \"like a mind altering substance, without
+        the risk\". Just for a Day has been generally well received by critics. Trouser
+        Press wrote that it was \"up and down in material, but the songs that are
+        solid are breathtaking, and those that aren''t are at least hypnotic and slowly
+        sensuous.\" Jon Ridge, reviewing the album for Lime Lizard magazine, thought
+        the album was premature, describing it as \"more a continuation, or aqueous
+        celebration rather, than an advancement over their rather spiffing previous
+        three EPs\". Pitchfork''s review of the album, while generally favourable,
+        wrote: \"There''s a lot less weight to it, and if anything in Slowdive''s
+        catalogue will seem dated, it''s the overgroomed production on these songs\".\n\nIn
+        1999, critic Ned Raggett ranked the album at number 17 on his list of \"The
+        Top 136 or So Albums of the Nineties\". <a href=\"http://www.last.fm/music/Slowdive/Just+for+a+Day\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=caTra&api_key=146fa01985acd46b23f4e6c5f660f199&artist=%E5%BF%97%E6%96%B9%E3%81%82%E3%81%8D%E3%81%93&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '3224'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiY2FUcmEiLCJhcnRpc3QiOiLlv5fmlrnjgYLjgY3jgZMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9jYVRyYSIsImltYWdlIjpbeyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzRzLzAxMjhkMDBiZjkyMjVhZmJiYzk5NDMzMjQ1ZWZlMTliLnBuZyIsInNpemUiOiJzbWFsbCJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzY0cy8wMTI4ZDAwYmY5MjI1YWZiYmM5OTQzMzI0NWVmZTE5Yi5wbmciLCJzaXplIjoibWVkaXVtIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMTc0cy8wMTI4ZDAwYmY5MjI1YWZiYmM5OTQzMzI0NWVmZTE5Yi5wbmciLCJzaXplIjoibGFyZ2UifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzAxMjhkMDBiZjkyMjVhZmJiYzk5NDMzMjQ1ZWZlMTliLnBuZyIsInNpemUiOiJleHRyYWxhcmdlIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC8wMTI4ZDAwYmY5MjI1YWZiYmM5OTQzMzI0NWVmZTE5Yi5wbmciLCJzaXplIjoibWVnYSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvMDEyOGQwMGJmOTIyNWFmYmJjOTk0MzMyNDVlZmUxOWIucG5nIiwic2l6ZSI6IiJ9XSwibGlzdGVuZXJzIjoiMjA5IiwicGxheWNvdW50IjoiODE1NCIsInRyYWNrcyI6eyJ0cmFjayI6W3sibmFtZSI6IuODkuODiOWei+W8j1BG6Kmm5aWP5L6LzrEiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFMyU4MyU5MiVFMyU4MyU4OCVFNSU5RSU4QiVFNSVCQyU4RlBGJUU4JUE5JUE2JUU1JUE1JThGJUU0JUJFJThCJUNFJUIxIiwiZHVyYXRpb24iOiIxOTEiLCJAYXR0ciI6eyJyYW5rIjoiMSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoi44Ko44Or44O844K344KiIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMvXy8lRTMlODIlQTglRTMlODMlQUIlRTMlODMlQkMlRTMlODIlQjclRTMlODIlQTIiLCJkdXJhdGlvbiI6IjI3MSIsIkBhdHRyIjp7InJhbmsiOiIyIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiLonrrml4vjga7mtpkiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFOCU5RSVCQSVFNiU5NyU4QiVFMyU4MSVBRSVFNiVCNiU5OSIsImR1cmF0aW9uIjoiMjU1IiwiQGF0dHIiOnsicmFuayI6IjMifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IuOCreOCquOCq+OCpOODiCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUUzJTgyJUFEJUUzJTgyJUFBJUUzJTgyJUFCJUUzJTgyJUE0JUUzJTgzJTg4IiwiZHVyYXRpb24iOiIyOTMiLCJAYXR0ciI6eyJyYW5rIjoiNCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoi6Kmm5oOzL+aDs+i1ty/otbfli5UiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFOCVBOSVBNiVFNiU4MyVCMyUyRiVFNiU4MyVCMyVFOCVCNSVCNyUyRiVFOCVCNSVCNyVFNSU4QiU5NSIsImR1cmF0aW9uIjoiMzM1IiwiQGF0dHIiOnsicmFuayI6IjUifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19XX0sInRhZ3MiOnsidGFnIjpbeyJuYW1lIjoiZXhwZXJpbWVudGFsIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvZXhwZXJpbWVudGFsIn0seyJuYW1lIjoiQXZhbnQtR2FyZGUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9BdmFudC1HYXJkZSJ9LHsibmFtZSI6ImFydCBwb3AiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9hcnQrcG9wIn0seyJuYW1lIjoiY29ubGFuZyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2NvbmxhbmcifSx7Im5hbWUiOiJzdGVhbXB1bmsiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9zdGVhbXB1bmsifV19fX0=
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Navigatoria&api_key=146fa01985acd46b23f4e6c5f660f199&artist=%E5%BF%97%E6%96%B9%E3%81%82%E3%81%8D%E3%81%93&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5403'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiTmF2aWdhdG9yaWEiLCJhcnRpc3QiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiNDQxNTdiYzAtNjFkYy00YWJlLWI1ZGEtNjlmNGNlOGEwZGEyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMvTmF2aWdhdG9yaWEiLCJpbWFnZSI6W3siI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzM0cy82ZGYwYTQxOTIzOWVjMDI0N2JlNzYwZjZkMGY3ZTUyMi5wbmciLCJzaXplIjoic21hbGwifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS82NHMvNmRmMGE0MTkyMzllYzAyNDdiZTc2MGY2ZDBmN2U1MjIucG5nIiwic2l6ZSI6Im1lZGl1bSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzE3NHMvNmRmMGE0MTkyMzllYzAyNDdiZTc2MGY2ZDBmN2U1MjIucG5nIiwic2l6ZSI6ImxhcmdlIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC82ZGYwYTQxOTIzOWVjMDI0N2JlNzYwZjZkMGY3ZTUyMi5wbmciLCJzaXplIjoiZXh0cmFsYXJnZSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvNmRmMGE0MTkyMzllYzAyNDdiZTc2MGY2ZDBmN2U1MjIucG5nIiwic2l6ZSI6Im1lZ2EifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzZkZjBhNDE5MjM5ZWMwMjQ3YmU3NjBmNmQwZjdlNTIyLnBuZyIsInNpemUiOiIifV0sImxpc3RlbmVycyI6IjQ0NzQiLCJwbGF5Y291bnQiOiI0MTc0OTEiLCJ0cmFja3MiOnsidHJhY2siOlt7Im5hbWUiOiJTaXJlbiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vU2lyZW4iLCJkdXJhdGlvbiI6IjEwMyIsIkBhdHRyIjp7InJhbmsiOiIxIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiJOYXZpZ2F0b3JpYSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vTmF2aWdhdG9yaWEiLCJkdXJhdGlvbiI6IjMyMiIsIkBhdHRyIjp7InJhbmsiOiIyIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiLnnaHmgYsiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFNyU5RCVBMSVFNiU4MSU4QiIsImR1cmF0aW9uIjoiMzM3IiwiQGF0dHIiOnsicmFuayI6IjMifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6Iuilv+miqOOBrui0iOOCiueJqSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUU4JUE1JUJGJUU5JUEyJUE4JUUzJTgxJUFFJUU4JUI0JTg4JUUzJTgyJThBJUU3JTg5JUE5IiwiZHVyYXRpb24iOiIyOTkiLCJAYXR0ciI6eyJyYW5rIjoiNCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoi6Iqx5biw6JGsIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMvXy8lRTglOEElQjElRTUlQjglQjAlRTglOTElQUMiLCJkdXJhdGlvbiI6IjI2NSIsIkBhdHRyIjp7InJhbmsiOiI1In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiJIT0xMT1ciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fL0hPTExPVyIsImR1cmF0aW9uIjoiMzA0IiwiQGF0dHIiOnsicmFuayI6IjYifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IuOCq+ODq+ODiuODtOOCoeODqyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUUzJTgyJUFCJUUzJTgzJUFCJUUzJTgzJThBJUUzJTgzJUI0JUUzJTgyJUExJUUzJTgzJUFCIiwiZHVyYXRpb24iOiIzMTgiLCJAYXR0ciI6eyJyYW5rIjoiNyJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoiU29ycmlzbyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vU29ycmlzbyIsImR1cmF0aW9uIjoiMTk2IiwiQGF0dHIiOnsicmFuayI6IjgifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IuepuuOBruiMnOOAgOepuuOBruiSvCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUU3JUE5JUJBJUUzJTgxJUFFJUU4JThDJTlDJUUzJTgwJTgwJUU3JUE5JUJBJUUzJTgxJUFFJUU4JTkyJUJDIiwiZHVyYXRpb24iOiIyNTgiLCJAYXR0ciI6eyJyYW5rIjoiOSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoiTGEgQ29yb2xsZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vTGErQ29yb2xsZSIsImR1cmF0aW9uIjoiMzAxIiwiQGF0dHIiOnsicmFuayI6IjEwIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiJNYWtlZGEg44CcUXVlZW4gb2YgU2hlYmHjgJwiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fL01ha2VkYSslRTMlODAlOUNRdWVlbitvZitTaGViYSVFMyU4MCU5QyIsImR1cmF0aW9uIjoiMzA1IiwiQGF0dHIiOnsicmFuayI6IjExIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fV19LCJ0YWdzIjp7InRhZyI6W3sibmFtZSI6ImV0aGVyZWFsIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvZXRoZXJlYWwifSx7Im5hbWUiOiJmb2xrIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvZm9sayJ9LHsibmFtZSI6ImRyZWFtIGZvbGsiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9kcmVhbStmb2xrIn0seyJuYW1lIjoid29ybGQgZnVzaW9uIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvd29ybGQrZnVzaW9uIn0seyJuYW1lIjoiZXhwZXJpbWVudGFsIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvZXhwZXJpbWVudGFsIn1dfX19
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Heaven%20or%20Las%20Vegas&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Cocteau%20Twins&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '8522'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiSGVhdmVuIG9yIExhcyBWZWdhcyIsImFydGlzdCI6IkNvY3RlYXUgVHdpbnMiLCJtYmlkIjoiYmExZDIyN2UtNDliMi0zMWU2LWIzYjktOWQ3ZDQ0NTE2YzNhIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9Db2N0ZWF1K1R3aW5zL0hlYXZlbitvcitMYXMrVmVnYXMiLCJpbWFnZSI6W3siI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzM0cy8xYWUzYTMwN2YyNDc0MzEyODA5YTQ4NjdiNTYxMzllZC5wbmciLCJzaXplIjoic21hbGwifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS82NHMvMWFlM2EzMDdmMjQ3NDMxMjgwOWE0ODY3YjU2MTM5ZWQucG5nIiwic2l6ZSI6Im1lZGl1bSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzE3NHMvMWFlM2EzMDdmMjQ3NDMxMjgwOWE0ODY3YjU2MTM5ZWQucG5nIiwic2l6ZSI6ImxhcmdlIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC8xYWUzYTMwN2YyNDc0MzEyODA5YTQ4NjdiNTYxMzllZC5wbmciLCJzaXplIjoiZXh0cmFsYXJnZSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvMWFlM2EzMDdmMjQ3NDMxMjgwOWE0ODY3YjU2MTM5ZWQucG5nIiwic2l6ZSI6Im1lZ2EifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzFhZTNhMzA3ZjI0NzQzMTI4MDlhNDg2N2I1NjEzOWVkLnBuZyIsInNpemUiOiIifV0sImxpc3RlbmVycyI6IjEyMTEyMCIsInBsYXljb3VudCI6IjM3Mjc2OTciLCJ0cmFja3MiOnsidHJhY2siOlt7Im5hbWUiOiJDaGVycnktQ29sb3VyZWQgRnVuayIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9fL0NoZXJyeS1Db2xvdXJlZCtGdW5rIiwiZHVyYXRpb24iOiIyNzMiLCJAYXR0ciI6eyJyYW5rIjoiMSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJDb2N0ZWF1IFR3aW5zIiwibWJpZCI6IjAwMGZjNzM0LWI3ZTEtNGEwMS05MmQxLWY1NDQyNjFiNDNmNSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucyJ9fSx7Im5hbWUiOiJQaXRjaCB0aGUgQmFieSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9fL1BpdGNoK3RoZStCYWJ5IiwiZHVyYXRpb24iOiIxOTciLCJAYXR0ciI6eyJyYW5rIjoiMiJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJDb2N0ZWF1IFR3aW5zIiwibWJpZCI6IjAwMGZjNzM0LWI3ZTEtNGEwMS05MmQxLWY1NDQyNjFiNDNmNSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucyJ9fSx7Im5hbWUiOiJJY2VibGluayBMdWNrIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9Db2N0ZWF1K1R3aW5zL18vSWNlYmxpbmsrTHVjayIsImR1cmF0aW9uIjoiMTk4IiwiQGF0dHIiOnsicmFuayI6IjMifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiQ29jdGVhdSBUd2lucyIsIm1iaWQiOiIwMDBmYzczNC1iN2UxLTRhMDEtOTJkMS1mNTQ0MjYxYjQzZjUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMifX0seyJuYW1lIjoiRmlmdHktRmlmdHkgQ2xvd24iLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMvXy9GaWZ0eS1GaWZ0eStDbG93biIsImR1cmF0aW9uIjoiMTk1IiwiQGF0dHIiOnsicmFuayI6IjQifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiQ29jdGVhdSBUd2lucyIsIm1iaWQiOiIwMDBmYzczNC1iN2UxLTRhMDEtOTJkMS1mNTQ0MjYxYjQzZjUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMifX0seyJuYW1lIjoiSGVhdmVuIG9yIExhcyBWZWdhcyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9fL0hlYXZlbitvcitMYXMrVmVnYXMiLCJkdXJhdGlvbiI6IjI5NiIsIkBhdHRyIjp7InJhbmsiOiI1In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkNvY3RlYXUgVHdpbnMiLCJtYmlkIjoiMDAwZmM3MzQtYjdlMS00YTAxLTkyZDEtZjU0NDI2MWI0M2Y1IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9Db2N0ZWF1K1R3aW5zIn19LHsibmFtZSI6IkkgV2VhciBZb3VyIFJpbmciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMvXy9JK1dlYXIrWW91citSaW5nIiwiZHVyYXRpb24iOiIyMjAiLCJAYXR0ciI6eyJyYW5rIjoiNiJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJDb2N0ZWF1IFR3aW5zIiwibWJpZCI6IjAwMGZjNzM0LWI3ZTEtNGEwMS05MmQxLWY1NDQyNjFiNDNmNSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucyJ9fSx7Im5hbWUiOiJGb3R6ZXBvbGl0aWMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMvXy9Gb3R6ZXBvbGl0aWMiLCJkdXJhdGlvbiI6IjIxMCIsIkBhdHRyIjp7InJhbmsiOiI3In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkNvY3RlYXUgVHdpbnMiLCJtYmlkIjoiMDAwZmM3MzQtYjdlMS00YTAxLTkyZDEtZjU0NDI2MWI0M2Y1IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9Db2N0ZWF1K1R3aW5zIn19LHsibmFtZSI6IldvbGYgaW4gdGhlIEJyZWFzdCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9fL1dvbGYraW4rdGhlK0JyZWFzdCIsImR1cmF0aW9uIjoiMjEyIiwiQGF0dHIiOnsicmFuayI6IjgifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiQ29jdGVhdSBUd2lucyIsIm1iaWQiOiIwMDBmYzczNC1iN2UxLTRhMDEtOTJkMS1mNTQ0MjYxYjQzZjUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMifX0seyJuYW1lIjoiUm9hZCwgUml2ZXIgYW5kIFJhaWwiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMvXy9Sb2FkLCtSaXZlcithbmQrUmFpbCIsImR1cmF0aW9uIjoiMjAxIiwiQGF0dHIiOnsicmFuayI6IjkifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiQ29jdGVhdSBUd2lucyIsIm1iaWQiOiIwMDBmYzczNC1iN2UxLTRhMDEtOTJkMS1mNTQ0MjYxYjQzZjUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0NvY3RlYXUrVHdpbnMifX0seyJuYW1lIjoiRnJvdS1Gcm91IEZveGVzIGluIE1pZHN1bW1lciBGaXJlcyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9fL0Zyb3UtRnJvdStGb3hlcytpbitNaWRzdW1tZXIrRmlyZXMiLCJkdXJhdGlvbiI6IjMzNyIsIkBhdHRyIjp7InJhbmsiOiIxMCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJDb2N0ZWF1IFR3aW5zIiwibWJpZCI6IjAwMGZjNzM0LWI3ZTEtNGEwMS05MmQxLWY1NDQyNjFiNDNmNSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucyJ9fV19LCJ0YWdzIjp7InRhZyI6W3sibmFtZSI6ImRyZWFtIHBvcCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2RyZWFtK3BvcCJ9LHsibmFtZSI6ImV0aGVyZWFsIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvZXRoZXJlYWwifSx7Im5hbWUiOiI0YWQiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy80YWQifSx7Im5hbWUiOiIxOTkwIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvMTk5MCJ9LHsibmFtZSI6ImZhdm91cml0ZSBhbGJ1bXMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9mYXZvdXJpdGUrYWxidW1zIn1dfSwid2lraSI6eyJwdWJsaXNoZWQiOiIzMCBBdWcgMjAwOCwgMDM6NDYiLCJzdW1tYXJ5IjoiSGVhdmVuIG9yIExhcyBWZWdhcyBpcyB0aGUgc2l4dGggYWxidW0gYnkgU2NvdHRpc2ggYmFuZCBDb2N0ZWF1IFR3aW5zLCB0aGVpciBsYXN0IGZvciB0aGUgbXVzaWMgbGFiZWwgNEFELiBJbiB0ZXJtcyBvZiBjaGFydCBwb3NpdGlvbnMsIGl0IHdhcyB0aGUgbW9zdCBzdWNjZXNzZnVsIENvY3RlYXUgVHdpbnMgYWxidW0sIHJlYWNoaW5nIE5vLiA3IGluIHRoZSBVSy5cblxuRGVzcGl0ZSA0QUQgcHJlc2lkZW50IEl2byBXYXR0cy1SdXNzZWxsIHByb2NsYWltaW5nIGl0IG9uZSBvZiB0aGUgYmVzdC1ldmVyIHJlbGVhc2VzIG9uIGhpcyBsYWJlbCwgaGUgcmVsZWFzZWQgdGhlIGdyb3VwIGZyb20gdGhlaXIgY29udHJhY3QgYXQgdGhlIGVuZCBvZiAxOTkwIGJlY2F1c2UgaGlzIHJlbGF0aW9uc2hpcCB3aXRoIHRoZSBiYW5kIGhhZCBzb3VyZWQuXG5cblRoZSBhbGJ1bSBpcyBub3Rld29ydGh5IGZvciB0aGUgbXVzaWNhbCBldm9sdXRpb24gdGhhdCB0aGUgYmFuZCBkaXNwbGF5ZWQgYXQgdGhlIHRpbWUuIDxhIGhyZWY9XCJodHRwOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9IZWF2ZW4rb3IrTGFzK1ZlZ2FzXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiIsImNvbnRlbnQiOiJIZWF2ZW4gb3IgTGFzIFZlZ2FzIGlzIHRoZSBzaXh0aCBhbGJ1bSBieSBTY290dGlzaCBiYW5kIENvY3RlYXUgVHdpbnMsIHRoZWlyIGxhc3QgZm9yIHRoZSBtdXNpYyBsYWJlbCA0QUQuIEluIHRlcm1zIG9mIGNoYXJ0IHBvc2l0aW9ucywgaXQgd2FzIHRoZSBtb3N0IHN1Y2Nlc3NmdWwgQ29jdGVhdSBUd2lucyBhbGJ1bSwgcmVhY2hpbmcgTm8uIDcgaW4gdGhlIFVLLlxuXG5EZXNwaXRlIDRBRCBwcmVzaWRlbnQgSXZvIFdhdHRzLVJ1c3NlbGwgcHJvY2xhaW1pbmcgaXQgb25lIG9mIHRoZSBiZXN0LWV2ZXIgcmVsZWFzZXMgb24gaGlzIGxhYmVsLCBoZSByZWxlYXNlZCB0aGUgZ3JvdXAgZnJvbSB0aGVpciBjb250cmFjdCBhdCB0aGUgZW5kIG9mIDE5OTAgYmVjYXVzZSBoaXMgcmVsYXRpb25zaGlwIHdpdGggdGhlIGJhbmQgaGFkIHNvdXJlZC5cblxuVGhlIGFsYnVtIGlzIG5vdGV3b3J0aHkgZm9yIHRoZSBtdXNpY2FsIGV2b2x1dGlvbiB0aGF0IHRoZSBiYW5kIGRpc3BsYXllZCBhdCB0aGUgdGltZS4gVGhlIGx5cmljcyBvZiB2b2NhbGlzdCBFbGl6YWJldGggRnJhc2VyIHdlcmUgbW9yZSBpbnRlbGxpZ2libGU7IG1hbnkgY29uY2VybmVkIGhlciBuZXdib3JuIGRhdWdodGVyIEx1Y3kgQmVsbGUuIFwiU3VkZGVubHkgSSBoYWQgY29uZmlkZW5jZSB3aGljaCBJJ2QgbmV2ZXIgZXZlciBoYWQgaW4gbXkgbGlmZSxcIiBGcmFzZXIgc2FpZCwgXCJ3aGljaCBJIGNvbnNlcXVlbnRseSBsb3N0IGFmdGVyIEkgaGFkIHRoZSBiYWJ5LCBiZWNhdXNlIGl0J3Mgc3VjaCBhIGZyaWdodGVuaW5nIGV4cGVyaWVuY2UgeW91IGxvc2UgaXQgYWdhaW4gYW5kIHlvdSBoYXZlIHRvIHN0YXJ0IG92ZXIgYWdhaW4uIEJ1dCBpdCBkb2VzIGNoYW5nZSB5b3UuXCIuXG5cbkd1aXRhcmlzdCBSb2JpbiBHdXRocmllIHdhcyBleHBlcmllbmNpbmcgcHJvYmxlbXMgd2l0aCBkcnVnIGFkZGljdGlvbi4gQXMgYSByZXN1bHQgb2YgaGlzIGRlY3JlYXNlZCB0aW1lIGluIHRoZSBzdHVkaW8sIGJhc3Npc3QgU2ltb24gUmF5bW9uZGUncyBwbGF5aW5nIHdhcyBtb3JlIGluIHRoZSBmb3JlZnJvbnQuXG5cblwiV2UndmUgaGFkIGl0IGluIHRoZSBiYWNrIG9mIG91ciBtaW5kIHRoYXQgd2Ugd2FudGVkIHRvIHBsYXkgbGl2ZSBhZ2FpbixcIiBzYWlkIEd1dGhyaWUgYXQgdGhlIHRpbWUgb2YgdGhlIGFsYnVtJ3MgcmVsZWFzZSwgXCJzbyB3ZSB0aG91Z2h0IHdlJ2QgbWFrZSBzb21lIG9mIHRoZSBwaWVjZXMgbW9yZSBsaWtlIHNvbmdzIHdlIGNvdWxkIGFjdHVhbGx5IHBsYXkgbGl2ZeKApiBXZSBsaWtlIGl0IGJldHRlciB0aGFuIGFsbCBvdXIgbGFzdCByZWNvcmRzLiBUaGF0J3Mgd2h5IHdlIGNvbnRpbnVlIHRvIG1ha2UgbW9yZSDigJMgYmVjYXVzZSBpZiB3ZSBtYWRlIHRoZSBwZXJmZWN0IHJlY29yZCB3ZSdkIHNpdCBiYWNrIGFuZCBzYXksICdXZSBjYW4ndCBkbyBhbnkgYmV0dGVyIHRoYW4gdGhhdC4nIFdlIHRoaW5rIGFsbCBvdXIgb3RoZXIgb25lcyBhcmUgZnVja2luZyBjcmFwLiBJJ20gc2xpZ2h0bHkgcHJvdWQgb2YgYSBjb3VwbGUgb2YgdHJhY2tzIG9uIGEgY291cGxlIG9mIHRoZW0sIGJ1dCBlc3NlbnRpYWxseSBJJ20gcmVhbGx5IGVtYmFycmFzc2VkIGFib3V0IHdoYXQgd2UndmUgZG9uZSBpbiB0aGUgcGFzdOKAplwiLlxuXG5UaGUgYWxidW0gaGFzIHJlY2VpdmVkIHBvc2l0aXZlIGNyaXRpY2FsIGFjY2xhaW0uIFwiSGVhdmVuIG9yIExhcyBWZWdhcyBpcyB0aGVpciBmaW5lc3QgaG91ciB5ZXQsXCIgZW50aHVzZWQgTWFydGluIEFzdG9uIGluIFEuIFwiVGVuIGV4cXVpc2l0ZSBtb21lbnRzIHRoYXQgbWFrZSBLYXRlIEJ1c2gg4oCTIHRoZWlyIG9ubHkgcG9zc2libGUgY29tcGFyaXNvbiDigJMgc291bmQgYXMgYWlyYm9ybmUgYXMgTW90w7ZyaGVhZC5cIiBUaGUgYWxidW0gc3Vic2VxdWVudGx5IGZlYXR1cmVkIGluIHRoZSBtYWdhemluZSdzIFwiYmVzdCBvZiB0aGUgeWVhclwiIHJvdW5kdXA6IFwiVGhlIENvY3RlYXVzIGNvbnRpbnVlIG9uIHRoZWlyIGluaW1pdGFibGUgY291cnNlLCBibGlzc2Z1bGx5IHJlZ2FyZGxlc3Mgb2Ygd2hhdCdzIGdvaW5nIG9uIGluIHRoZSB3b3JsZCBvdXRzaWRlIHRoZWlyIHN1cnJlYWwgcmVhbGl0eS5cIlxuXG5cIllvdSBtYXkgYmUgYWJsZSB0byBkaWcgb3V0IHNvbWUgb2YgdGhlIHdvcmRzLFwiIHdyb3RlIEFuZHJldyBQZXJyeSBpbiBTZWxlY3QsIFwieW91IG1heSBldmVuIGdldCB0byBoZWFyIHNvbWUgb2YgdGhlIHNvbmdzIGxpdmUsIGJ1dCBIZWF2ZW4gT3IgTGFzIFZlZ2FzIGlzIENvY3RlYXUgVHdpbnMgaW4gdGhlaXIgdXN1YWwsIHNwZWN0YWN1bGFyIGFuZCBlbmlnbWF0aWMgY29udGV4dC5cIlsxMF0gXCJJbiB0aW1lcyB3aGVuIGV2ZXJ5IG90aGVyIHBvcCBncm91cCBpcyBkcmFnZ2luZyBvbiBib2FyZCB3aGF0ZXZlciBjaGVtaWNhbHMsICc2MHMgdGVjaG5pcXVlcyBhbmQgaHlwbm8tcmh5dGhtcyB0aGV5IGNhbiBncmFiIGluIG9yZGVyIHRvIGFjaGlldmUgdGhlIGRlc2lyYWJsZSBibGlzc2VkLW91dCBjb25kaXRpb24sXCIgc2FpZCBSb2dlciBNb3J0b24gaW4gVm94LCBcIml0J3MgYSBnb29kIGpva2UgdGhhdCB0aGUgQ29jdGVhdXMgY2FuIGdldCB0aGVyZSB3aXRoIHN1Y2ggYXBwYXJlbnQgZWZmb3J0bGVzc25lc3MuXCInWzEzXVxuXG5JdCB3YXMgbGlzdGVkIGFzIHRoZSA5MHRoIGJlc3QgYWxidW0gb2YgdGhlIDE5OTBzIGJ5IFBpdGNoZm9yayBNZWRpYSwgd2hvIGNvbXBsaW1lbnRlZCBGcmFzZXIncyBtb3JlIGRpcmVjdCB2b2NhbHMgYW5kIHRoZSBhbGJ1bSdzIGNvbXBsZXggc29uZ3dyaXRpbmcuWzE0XSBUaGUgYWxidW0gd2FzIGFsc28gaW5jbHVkZWQgaW4gdGhlIDIwMDggZWRpdGlvbiBvZiAxMDAxIEFsYnVtcyBZb3UgTXVzdCBIZWFyIEJlZm9yZSBZb3UgRGllLFsxNV0gYW5kIGluIFRoZSBHdWFyZGlhbidzIG9ubGluZSBlZGl0aW9uIG9mIGEgc2ltaWxhciBsaXN0LlsxNl0gSXQgd2FzIGNvbnNpZGVyZWQgdGhlIGJhbmQncyBzdHJvbmdlc3Qgd29yayBzaW5jZSBUcmVhc3VyZSBieSBBbGxNdXNpYyByZXZpZXdlciBOZWQgUmFnZ2V0dCwgd2hvIGRlc2NyaWJlZCBpdCBhcyBcInNpbXBseSBmYW50YXN0aWNcIiBhbmQgc3VjY2Vzc2Z1bCBpbiBjcmVhdGluZyBcIm1vcmUgYWNjZXNzaWJpbGl0eVwiLlsyXVxuXG5IZWF2ZW4gb3IgTGFzIFZlZ2FzIHdhcyBuYW1lZCBieSBOTUUgYXMgdGhlIDI4dGggYmVzdCBhbGJ1bSBvZiAxOTkwLlsxN10gUmV0cm9zcGVjdGl2ZWx5LCBUaGUgT2JzZXJ2ZXIgbGlzdGVkIHRoZSBhbGJ1bSBhcyB0aGUgOTd0aCBncmVhdGVzdCBCcml0aXNoIGFsYnVtIGV2ZXIgbWFkZS5bMThdIDxhIGhyZWY9XCJodHRwOi8vd3d3Lmxhc3QuZm0vbXVzaWMvQ29jdGVhdStUd2lucy9IZWF2ZW4rb3IrTGFzK1ZlZ2FzXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiBVc2VyLWNvbnRyaWJ1dGVkIHRleHQgaXMgYXZhaWxhYmxlIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEJ5LVNBIExpY2Vuc2U7IGFkZGl0aW9uYWwgdGVybXMgbWF5IGFwcGx5LiJ9fX0=
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Visions&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Grimes&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '6451'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiVmlzaW9ucyIsImFydGlzdCI6IkdyaW1lcyIsIm1iaWQiOiJlMjU0MWE0Zi1jOTFlLTQxMmUtODM3Yi1jZTYzY2M4ZWE5NjAiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcy9WaXNpb25zIiwiaW1hZ2UiOlt7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zNHMvOTRjZmRiNWYzNmE3ZjkzNWI2ODM3ZjVmZTg4NDBlZDYucG5nIiwic2l6ZSI6InNtYWxsIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvNjRzLzk0Y2ZkYjVmMzZhN2Y5MzViNjgzN2Y1ZmU4ODQwZWQ2LnBuZyIsInNpemUiOiJtZWRpdW0ifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8xNzRzLzk0Y2ZkYjVmMzZhN2Y5MzViNjgzN2Y1ZmU4ODQwZWQ2LnBuZyIsInNpemUiOiJsYXJnZSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvOTRjZmRiNWYzNmE3ZjkzNWI2ODM3ZjVmZTg4NDBlZDYucG5nIiwic2l6ZSI6ImV4dHJhbGFyZ2UifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzk0Y2ZkYjVmMzZhN2Y5MzViNjgzN2Y1ZmU4ODQwZWQ2LnBuZyIsInNpemUiOiJtZWdhIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC85NGNmZGI1ZjM2YTdmOTM1YjY4MzdmNWZlODg0MGVkNi5wbmciLCJzaXplIjoiIn1dLCJsaXN0ZW5lcnMiOiI1ODQ2NDgiLCJwbGF5Y291bnQiOiIyNDM0NTIyMCIsInRyYWNrcyI6eyJ0cmFjayI6W3sibmFtZSI6IkluZmluaXRlIOKZoSBXaXRob3V0IEZ1bGZpbGxtZW50IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMvXy9JbmZpbml0ZSslRTIlOTklQTErV2l0aG91dCtGdWxmaWxsbWVudCIsImR1cmF0aW9uIjoiOTUiLCJAYXR0ciI6eyJyYW5rIjoiMSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJHcmltZXMiLCJtYmlkIjoiN2U1YTJhNTktNmQ5Zi00YTE3LWI3YzItZTFlZWRiN2JkMjIyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMifX0seyJuYW1lIjoiR2VuZXNpcyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vR2VuZXNpcyIsImR1cmF0aW9uIjoiMjU1IiwiQGF0dHIiOnsicmFuayI6IjIifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiR3JpbWVzIiwibWJpZCI6IjdlNWEyYTU5LTZkOWYtNGExNy1iN2MyLWUxZWVkYjdiZDIyMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzIn19LHsibmFtZSI6Ik9ibGl2aW9uIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMvXy9PYmxpdmlvbiIsImR1cmF0aW9uIjoiMjA0IiwiQGF0dHIiOnsicmFuayI6IjMifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiR3JpbWVzIiwibWJpZCI6IjdlNWEyYTU5LTZkOWYtNGExNy1iN2MyLWUxZWVkYjdiZDIyMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzIn19LHsibmFtZSI6IkVpZ2h0IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMvXy9FaWdodCIsImR1cmF0aW9uIjoiMTA3IiwiQGF0dHIiOnsicmFuayI6IjQifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiR3JpbWVzIiwibWJpZCI6IjdlNWEyYTU5LTZkOWYtNGExNy1iN2MyLWUxZWVkYjdiZDIyMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzIn19LHsibmFtZSI6IkNpcmN1bWFtYmllbnQiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcy9fL0NpcmN1bWFtYmllbnQiLCJkdXJhdGlvbiI6IjIyMyIsIkBhdHRyIjp7InJhbmsiOiI1In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkdyaW1lcyIsIm1iaWQiOiI3ZTVhMmE1OS02ZDlmLTRhMTctYjdjMi1lMWVlZGI3YmQyMjIiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcyJ9fSx7Im5hbWUiOiJWb3dlbHMgPSBTcGFjZSBhbmQgVGltZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vVm93ZWxzKz0rU3BhY2UrYW5kK1RpbWUiLCJkdXJhdGlvbiI6IjI2MSIsIkBhdHRyIjp7InJhbmsiOiI2In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkdyaW1lcyIsIm1iaWQiOiI3ZTVhMmE1OS02ZDlmLTRhMTctYjdjMi1lMWVlZGI3YmQyMjIiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcyJ9fSx7Im5hbWUiOiJWaXNpdGluZyBTdGF0dWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcy9fL1Zpc2l0aW5nK1N0YXR1ZSIsImR1cmF0aW9uIjoiMTE4IiwiQGF0dHIiOnsicmFuayI6IjcifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiR3JpbWVzIiwibWJpZCI6IjdlNWEyYTU5LTZkOWYtNGExNy1iN2MyLWUxZWVkYjdiZDIyMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzIn19LHsibmFtZSI6IkJlIGEgQm9keSAo5L6Y5a+CKSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vQmUrYStCb2R5KyglRTQlQkUlOTglRTUlQUYlODIpIiwiZHVyYXRpb24iOiIyNjAiLCJAYXR0ciI6eyJyYW5rIjoiOCJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJHcmltZXMiLCJtYmlkIjoiN2U1YTJhNTktNmQ5Zi00YTE3LWI3YzItZTFlZWRiN2JkMjIyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMifX0seyJuYW1lIjoiQ29sb3VyIG9mIE1vb25saWdodCAoQW50aW9jaHVzKSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vQ29sb3VyK29mK01vb25saWdodCsoQW50aW9jaHVzKSIsImR1cmF0aW9uIjoiMjM5IiwiQGF0dHIiOnsicmFuayI6IjkifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiR3JpbWVzIiwibWJpZCI6IjdlNWEyYTU5LTZkOWYtNGExNy1iN2MyLWUxZWVkYjdiZDIyMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzIn19LHsibmFtZSI6IlN5bXBob25pYSBJWCAoTXkgV2FpdCBJcyBVKSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vU3ltcGhvbmlhK0lYKyhNeStXYWl0K0lzK1UpIiwiZHVyYXRpb24iOiIyOTIiLCJAYXR0ciI6eyJyYW5rIjoiMTAifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiR3JpbWVzIiwibWJpZCI6IjdlNWEyYTU5LTZkOWYtNGExNy1iN2MyLWUxZWVkYjdiZDIyMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzIn19LHsibmFtZSI6Ik5pZ2h0bXVzaWMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcy9fL05pZ2h0bXVzaWMiLCJkdXJhdGlvbiI6IjM2MyIsIkBhdHRyIjp7InJhbmsiOiIxMSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJHcmltZXMiLCJtYmlkIjoiN2U1YTJhNTktNmQ5Zi00YTE3LWI3YzItZTFlZWRiN2JkMjIyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMifX0seyJuYW1lIjoiU2tpbiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vU2tpbiIsImR1cmF0aW9uIjoiMzY5IiwiQGF0dHIiOnsicmFuayI6IjEyIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IkdyaW1lcyIsIm1iaWQiOiI3ZTVhMmE1OS02ZDlmLTRhMTctYjdjMi1lMWVlZGI3YmQyMjIiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcyJ9fSx7Im5hbWUiOiJLbm93IHRoZSBXYXkgKG91dHJvKSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL18vS25vdyt0aGUrV2F5KyhvdXRybykiLCJkdXJhdGlvbiI6IjEwNSIsIkBhdHRyIjp7InJhbmsiOiIxMyJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJHcmltZXMiLCJtYmlkIjoiN2U1YTJhNTktNmQ5Zi00YTE3LWI3YzItZTFlZWRiN2JkMjIyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9HcmltZXMifX1dfSwidGFncyI6eyJ0YWciOlt7Im5hbWUiOiIyMDEyIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvMjAxMiJ9LHsibmFtZSI6ImRyZWFtIHBvcCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2RyZWFtK3BvcCJ9LHsibmFtZSI6ImJlc3Qgb2YgMjAxMiIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2Jlc3Qrb2YrMjAxMiJ9LHsibmFtZSI6ImFsYnVtcyBJIG93biIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2FsYnVtcytJK293biJ9LHsibmFtZSI6ImV4cGVyaW1lbnRhbCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2V4cGVyaW1lbnRhbCJ9XX0sIndpa2kiOnsicHVibGlzaGVkIjoiMDkgSnVsIDIwMTQsIDIzOjM3Iiwic3VtbWFyeSI6IlZpc2lvbnMgaXMgdGhlIHRoaXJkIHN0dWRpbyBhbGJ1bSBieSBDYW5hZGlhbiByZWNvcmRpbmcgYXJ0aXN0IEdyaW1lcywgcmVsZWFzZWQgb24gSmFudWFyeSAzMSwgMjAxMi4gSGVyIGZpcnN0IHNpbmNlIHNpZ25pbmcgd2l0aCA0QUQsIHRoZSBhbGJ1bSB3YXMgcmVjb3JkZWQgZW50aXJlbHkgb24gQXBwbGUncyBHYXJhZ2VCYW5kIGluIEdyaW1lcycgYXBhcnRtZW50IG92ZXIgYSB0aHJlZS13ZWVrIHBlcmlvZC4gSXQgd2FzIG1peGVkIGJ5IEdyaW1lcyBhbmQgaGVyIG1hbmFnZXIgU2ViYXN0aWFuIENvd2FuIGF0IHRoZWlyIExhIEJyaXF1ZSBTdHVkaW8gU3BhY2UuIFZpc2lvbnMgd2FzIHN0cmVhbWVkIG9uIHRoZSBOUFIgd2Vic2l0ZSBhIHdlZWsgYmVmb3JlIGl0IHdhcyByZWxlYXNlZCBpbiB0aGUgVW5pdGVkIFN0YXRlcy5cblxuSW4gTm92ZW1iZXIgMjAxMiwgd2l0aCB0aGUgYW5ub3VuY2VtZW50IHRoYXQgVmlzaW9ucyB3YXMgbmFtZWQgYWxidW0gb2YgdGhlIHllYXIgYnkgcmVjb3JkIHNob3BzIFJvdWdoIFRyYWRlIGFuZCBSZXNpZGVudCA8YSBocmVmPVwiaHR0cDovL3d3dy5sYXN0LmZtL211c2ljL0dyaW1lcy9WaXNpb25zXCI+UmVhZCBtb3JlIG9uIExhc3QuZm08L2E+LiIsImNvbnRlbnQiOiJWaXNpb25zIGlzIHRoZSB0aGlyZCBzdHVkaW8gYWxidW0gYnkgQ2FuYWRpYW4gcmVjb3JkaW5nIGFydGlzdCBHcmltZXMsIHJlbGVhc2VkIG9uIEphbnVhcnkgMzEsIDIwMTIuIEhlciBmaXJzdCBzaW5jZSBzaWduaW5nIHdpdGggNEFELCB0aGUgYWxidW0gd2FzIHJlY29yZGVkIGVudGlyZWx5IG9uIEFwcGxlJ3MgR2FyYWdlQmFuZCBpbiBHcmltZXMnIGFwYXJ0bWVudCBvdmVyIGEgdGhyZWUtd2VlayBwZXJpb2QuIEl0IHdhcyBtaXhlZCBieSBHcmltZXMgYW5kIGhlciBtYW5hZ2VyIFNlYmFzdGlhbiBDb3dhbiBhdCB0aGVpciBMYSBCcmlxdWUgU3R1ZGlvIFNwYWNlLiBWaXNpb25zIHdhcyBzdHJlYW1lZCBvbiB0aGUgTlBSIHdlYnNpdGUgYSB3ZWVrIGJlZm9yZSBpdCB3YXMgcmVsZWFzZWQgaW4gdGhlIFVuaXRlZCBTdGF0ZXMuXG5cbkluIE5vdmVtYmVyIDIwMTIsIHdpdGggdGhlIGFubm91bmNlbWVudCB0aGF0IFZpc2lvbnMgd2FzIG5hbWVkIGFsYnVtIG9mIHRoZSB5ZWFyIGJ5IHJlY29yZCBzaG9wcyBSb3VnaCBUcmFkZSBhbmQgUmVzaWRlbnQsIHR3byBleGNsdXNpdmUgYm9udXMgZGlzY3Mgd2VyZSBtYWRlIGF2YWlsYWJsZSB3aXRoIGFueSBwdXJjaGFzZSBvZiB0aGUgYWxidW0gaW4gZWFjaCBzaG9wLCBmZWF0dXJpbmcgcmVtaXhlcyBhbmQgcmFyZSB0cmFja3MuIDxhIGhyZWY9XCJodHRwOi8vd3d3Lmxhc3QuZm0vbXVzaWMvR3JpbWVzL1Zpc2lvbnNcIj5SZWFkIG1vcmUgb24gTGFzdC5mbTwvYT4uIFVzZXItY29udHJpYnV0ZWQgdGV4dCBpcyBhdmFpbGFibGUgdW5kZXIgdGhlIENyZWF0aXZlIENvbW1vbnMgQnktU0EgTGljZW5zZTsgYWRkaXRpb25hbCB0ZXJtcyBtYXkgYXBwbHkuIn19fQ==
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Treasure&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Cocteau%20Twins&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5276'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Treasure","artist":"Cocteau Twins","mbid":"bc6dee20-448c-387d-8eb4-a7cb737ae1b7","url":"https://www.last.fm/music/Cocteau+Twins/Treasure","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/053e1e2f458b6de9ea45455c2b8b53f3.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/053e1e2f458b6de9ea45455c2b8b53f3.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/053e1e2f458b6de9ea45455c2b8b53f3.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/053e1e2f458b6de9ea45455c2b8b53f3.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/053e1e2f458b6de9ea45455c2b8b53f3.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/053e1e2f458b6de9ea45455c2b8b53f3.png","size":""}],"listeners":"208905","playcount":"4592349","tracks":{"track":[{"name":"Ivo","url":"https://www.last.fm/music/Cocteau+Twins/_/Ivo","duration":"233","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Lorelei","url":"https://www.last.fm/music/Cocteau+Twins/_/Lorelei","duration":"222","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Beatrix","url":"https://www.last.fm/music/Cocteau+Twins/_/Beatrix","duration":"191","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Persephone","url":"https://www.last.fm/music/Cocteau+Twins/_/Persephone","duration":"264","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Pandora
+        (For Cindy)","url":"https://www.last.fm/music/Cocteau+Twins/_/Pandora+(For+Cindy)","duration":"331","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Amelia","url":"https://www.last.fm/music/Cocteau+Twins/_/Amelia","duration":"209","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Aloysius","url":"https://www.last.fm/music/Cocteau+Twins/_/Aloysius","duration":"206","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Cicely","url":"https://www.last.fm/music/Cocteau+Twins/_/Cicely","duration":"207","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Otterley","url":"https://www.last.fm/music/Cocteau+Twins/_/Otterley","duration":"239","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Donimo","url":"https://www.last.fm/music/Cocteau+Twins/_/Donimo","duration":"371","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}}]},"tags":{"tag":[{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"female vocalists","url":"https://www.last.fm/tag/female+vocalists"},{"name":"ethereal","url":"https://www.last.fm/tag/ethereal"},{"name":"alternative","url":"https://www.last.fm/tag/alternative"},{"name":"beautiful","url":"https://www.last.fm/tag/beautiful"}]},"wiki":{"published":"04
+        Sep 2008, 23:42","summary":"Treasure is the third studio album by Scottish
+        alternative rock band Cocteau Twins. It was released on 1 November 1984 by
+        4AD. With this album, the band settled on what would, from then on, be their
+        primary lineup: vocalist Elizabeth Fraser, guitarist Robin Guthrie and bass
+        guitarist Simon Raymonde. This new lineup also coincided with the development
+        of the ethereal[1] sound associated with the band''s music. <a href=\"http://www.last.fm/music/Cocteau+Twins/Treasure\">Read
+        more on Last.fm</a>.","content":"Treasure is the third studio album by Scottish
+        alternative rock band Cocteau Twins. It was released on 1 November 1984 by
+        4AD. With this album, the band settled on what would, from then on, be their
+        primary lineup: vocalist Elizabeth Fraser, guitarist Robin Guthrie and bass
+        guitarist Simon Raymonde. This new lineup also coincided with the development
+        of the ethereal[1] sound associated with the band''s music. <a href=\"http://www.last.fm/music/Cocteau+Twins/Treasure\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=So%20Tonight%20That%20I%20Might%20See&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Mazzy%20Star&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '4141'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"So Tonight That I Might See","artist":"Mazzy Star","mbid":"d9fa44a6-c79b-4b70-806b-af5eb748e8f8","url":"https://www.last.fm/music/Mazzy+Star/So+Tonight+That+I+Might+See","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/d59059ac1aa5468dc65effa00549ed47.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/d59059ac1aa5468dc65effa00549ed47.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/d59059ac1aa5468dc65effa00549ed47.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/d59059ac1aa5468dc65effa00549ed47.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/d59059ac1aa5468dc65effa00549ed47.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/d59059ac1aa5468dc65effa00549ed47.png","size":""}],"listeners":"563613","playcount":"7610522","tracks":{"track":[{"name":"Fade
+        Into You","url":"https://www.last.fm/music/Mazzy+Star/_/Fade+Into+You","duration":"296","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Bells
+        Ring","url":"https://www.last.fm/music/Mazzy+Star/_/Bells+Ring","duration":"272","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Mary
+        Of Silence","url":"https://www.last.fm/music/Mazzy+Star/_/Mary+Of+Silence","duration":"362","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Five
+        String Serenade","url":"https://www.last.fm/music/Mazzy+Star/_/Five+String+Serenade","duration":"264","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Blue
+        Light","url":"https://www.last.fm/music/Mazzy+Star/_/Blue+Light","duration":"310","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"She''s
+        My Baby","url":"https://www.last.fm/music/Mazzy+Star/_/She%27s+My+Baby","duration":"265","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Unreflected","url":"https://www.last.fm/music/Mazzy+Star/_/Unreflected","duration":"222","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Wasted","url":"https://www.last.fm/music/Mazzy+Star/_/Wasted","duration":"331","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"Into
+        Dust","url":"https://www.last.fm/music/Mazzy+Star/_/Into+Dust","duration":"337","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}},{"name":"So
+        Tonight That I Might See","url":"https://www.last.fm/music/Mazzy+Star/_/So+Tonight+That+I+Might+See","duration":"439","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Mazzy
+        Star","mbid":"c48d4327-8122-4286-af66-05e1ee6ac4d8","url":"https://www.last.fm/music/Mazzy+Star"}}]},"tags":{"tag":[{"name":"female
+        vocalists","url":"https://www.last.fm/tag/female+vocalists"},{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"alternative","url":"https://www.last.fm/tag/alternative"},{"name":"1993","url":"https://www.last.fm/tag/1993"},{"name":"90s","url":"https://www.last.fm/tag/90s"}]}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Bloom&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Beach%20House&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Nncoection:
+      - close
+      Content-Length:
+      - '5466'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Bloom","artist":"Beach House","mbid":"24c99b7d-b243-450d-8477-46dfd4a8bfa3","url":"https://www.last.fm/music/Beach+House/Bloom","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/63a3ea22de6c4c6b842c2a149b59e81f.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/63a3ea22de6c4c6b842c2a149b59e81f.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/63a3ea22de6c4c6b842c2a149b59e81f.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/63a3ea22de6c4c6b842c2a149b59e81f.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/63a3ea22de6c4c6b842c2a149b59e81f.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/63a3ea22de6c4c6b842c2a149b59e81f.png","size":""}],"listeners":"452444","playcount":"15399761","tracks":{"track":[{"name":"Myth","url":"https://www.last.fm/music/Beach+House/_/Myth","duration":"259","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Wild","url":"https://www.last.fm/music/Beach+House/_/Wild","duration":"298","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Lazuli","url":"https://www.last.fm/music/Beach+House/_/Lazuli","duration":"301","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Other
+        People","url":"https://www.last.fm/music/Beach+House/_/Other+People","duration":"265","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"The
+        Hours","url":"https://www.last.fm/music/Beach+House/_/The+Hours","duration":"252","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Troublemaker","url":"https://www.last.fm/music/Beach+House/_/Troublemaker","duration":"296","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"New
+        Year","url":"https://www.last.fm/music/Beach+House/_/New+Year","duration":"326","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Wishes","url":"https://www.last.fm/music/Beach+House/_/Wishes","duration":"287","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"On
+        the Sea","url":"https://www.last.fm/music/Beach+House/_/On+the+Sea","duration":"332","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Irene","url":"https://www.last.fm/music/Beach+House/_/Irene","duration":"400","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}}]},"tags":{"tag":[{"name":"2012","url":"https://www.last.fm/tag/2012"},{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"best of 2012","url":"https://www.last.fm/tag/best+of+2012"},{"name":"indie
+        pop","url":"https://www.last.fm/tag/indie+pop"},{"name":"albums I own","url":"https://www.last.fm/tag/albums+I+own"}]},"wiki":{"published":"17
+        May 2012, 22:02","summary":"Bloom is the fourth studio album by Baltimore-based
+        dream pop duo Beach House, which was released on May 15, 2012. The album debuted
+        at number seven on the Billboard 200, selling 41,000 copies in its first week.
+        The album was recorded at Sonic Ranch in Tornillo, Texas, and was co-produced
+        by Chris Coady (Yeah Yeah Yeahs, Blonde Redhead), who also produced the band''s
+        previous album Teen Dream. Beach House chose to record in west Texas after
+        being captivated by the area while resting there during a tour. <a href=\"http://www.last.fm/music/Beach+House/Bloom\">Read
+        more on Last.fm</a>.","content":"Bloom is the fourth studio album by Baltimore-based
+        dream pop duo Beach House, which was released on May 15, 2012. The album debuted
+        at number seven on the Billboard 200, selling 41,000 copies in its first week.
+        The album was recorded at Sonic Ranch in Tornillo, Texas, and was co-produced
+        by Chris Coady (Yeah Yeah Yeahs, Blonde Redhead), who also produced the band''s
+        previous album Teen Dream. Beach House chose to record in west Texas after
+        being captivated by the area while resting there during a tour. Bloom was
+        mixed at Electric Lady Studios in New York City. The album took seven weeks
+        to record.\n <a href=\"http://www.last.fm/music/Beach+House/Bloom\">Read more
+        on Last.fm</a>. User-contributed text is available under the Creative Commons
+        By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Sim&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Sandy%20Leah&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '1633'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Sim","artist":"Sandy Leah","url":"https://www.last.fm/music/Sandy+Leah/Sim","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/fe5cc8b991c96362703d9577e6963a03.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/fe5cc8b991c96362703d9577e6963a03.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/fe5cc8b991c96362703d9577e6963a03.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/fe5cc8b991c96362703d9577e6963a03.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/fe5cc8b991c96362703d9577e6963a03.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/fe5cc8b991c96362703d9577e6963a03.png","size":""}],"listeners":"8005","playcount":"663404","tracks":{"track":[]},"tags":{"tag":[{"name":"alternative","url":"https://www.last.fm/tag/alternative"},{"name":"pop","url":"https://www.last.fm/tag/pop"},{"name":"piano","url":"https://www.last.fm/tag/piano"},{"name":"folk","url":"https://www.last.fm/tag/folk"},{"name":"acoustic","url":"https://www.last.fm/tag/acoustic"}]},"wiki":{"published":"19
+        Oct 2013, 20:34","summary":"''''Sim'''' is the second solo album of the brazilian
+        singer Sandy Leah, released in june, 2013. <a href=\"http://www.last.fm/music/Sandy+Leah/Sim\">Read
+        more on Last.fm</a>.","content":"''''Sim'''' is the second solo album of the
+        brazilian singer Sandy Leah, released in june, 2013. <a href=\"http://www.last.fm/music/Sandy+Leah/Sim\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Victorialand&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Cocteau%20Twins&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '3963'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Victorialand","artist":"Cocteau Twins","mbid":"c53d6f73-a312-457a-bafd-2d38ec4d1cce","url":"https://www.last.fm/music/Cocteau+Twins/Victorialand","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/2a6683965f169985bdde9698dfc9cd05.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/2a6683965f169985bdde9698dfc9cd05.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/2a6683965f169985bdde9698dfc9cd05.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/2a6683965f169985bdde9698dfc9cd05.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/2a6683965f169985bdde9698dfc9cd05.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/2a6683965f169985bdde9698dfc9cd05.png","size":""}],"listeners":"81796","playcount":"1552941","tracks":{"track":[{"name":"Lazy
+        Calm","url":"https://www.last.fm/music/Cocteau+Twins/_/Lazy+Calm","duration":"396","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Fluffy
+        Tufts","url":"https://www.last.fm/music/Cocteau+Twins/_/Fluffy+Tufts","duration":"185","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Throughout
+        the Dark Months of April and May","url":"https://www.last.fm/music/Cocteau+Twins/_/Throughout+the+Dark+Months+of+April+and+May","duration":"185","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Whales
+        Tails","url":"https://www.last.fm/music/Cocteau+Twins/_/Whales+Tails","duration":"196","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Oomingmak","url":"https://www.last.fm/music/Cocteau+Twins/_/Oomingmak","duration":"162","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Little
+        Spacey","url":"https://www.last.fm/music/Cocteau+Twins/_/Little+Spacey","duration":"205","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"Feet-Like
+        Fins","url":"https://www.last.fm/music/Cocteau+Twins/_/Feet-Like+Fins","duration":"206","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"How
+        to Bring a Blush to the Snow","url":"https://www.last.fm/music/Cocteau+Twins/_/How+to+Bring+a+Blush+to+the+Snow","duration":"230","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}},{"name":"The
+        Thinner the Air","url":"https://www.last.fm/music/Cocteau+Twins/_/The+Thinner+the+Air","duration":"196","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Cocteau
+        Twins","mbid":"000fc734-b7e1-4a01-92d1-f544261b43f5","url":"https://www.last.fm/music/Cocteau+Twins"}}]},"tags":{"tag":[{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"ethereal","url":"https://www.last.fm/tag/ethereal"},{"name":"4ad","url":"https://www.last.fm/tag/4ad"},{"name":"80s","url":"https://www.last.fm/tag/80s"},{"name":"ambient","url":"https://www.last.fm/tag/ambient"}]}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Teen%20Dream&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Beach%20House&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5341'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: UTF-8
+      string: '{"album":{"name":"Teen Dream","artist":"Beach House","mbid":"44f67ad5-cdff-3036-80e9-bee67402ded0","url":"https://www.last.fm/music/Beach+House/Teen+Dream","image":[{"#text":"https://lastfm-img2.akamaized.net/i/u/34s/4b01019d722348568283d18bdcb990af.png","size":"small"},{"#text":"https://lastfm-img2.akamaized.net/i/u/64s/4b01019d722348568283d18bdcb990af.png","size":"medium"},{"#text":"https://lastfm-img2.akamaized.net/i/u/174s/4b01019d722348568283d18bdcb990af.png","size":"large"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/4b01019d722348568283d18bdcb990af.png","size":"extralarge"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/4b01019d722348568283d18bdcb990af.png","size":"mega"},{"#text":"https://lastfm-img2.akamaized.net/i/u/300x300/4b01019d722348568283d18bdcb990af.png","size":""}],"listeners":"725701","playcount":"22400124","tracks":{"track":[{"name":"Zebra","url":"https://www.last.fm/music/Beach+House/_/Zebra","duration":"287","@attr":{"rank":"1"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Silver
+        Soul","url":"https://www.last.fm/music/Beach+House/_/Silver+Soul","duration":"288","@attr":{"rank":"2"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Norway","url":"https://www.last.fm/music/Beach+House/_/Norway","duration":"234","@attr":{"rank":"3"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Walk
+        in the Park","url":"https://www.last.fm/music/Beach+House/_/Walk+in+the+Park","duration":"322","@attr":{"rank":"4"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Used
+        to Be","url":"https://www.last.fm/music/Beach+House/_/Used+to+Be","duration":"244","@attr":{"rank":"5"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Lover
+        of Mine","url":"https://www.last.fm/music/Beach+House/_/Lover+of+Mine","duration":"306","@attr":{"rank":"6"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Better
+        Times","url":"https://www.last.fm/music/Beach+House/_/Better+Times","duration":"263","@attr":{"rank":"7"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"10
+        Mile Stereo","url":"https://www.last.fm/music/Beach+House/_/10+Mile+Stereo","duration":"303","@attr":{"rank":"8"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Real
+        Love","url":"https://www.last.fm/music/Beach+House/_/Real+Love","duration":"320","@attr":{"rank":"9"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}},{"name":"Take
+        Care","url":"https://www.last.fm/music/Beach+House/_/Take+Care","duration":"348","@attr":{"rank":"10"},"streamable":{"#text":"0","fulltrack":"0"},"artist":{"name":"Beach
+        House","mbid":"d5cc67b8-1cc4-453b-96e8-44487acdebea","url":"https://www.last.fm/music/Beach+House"}}]},"tags":{"tag":[{"name":"2010","url":"https://www.last.fm/tag/2010"},{"name":"dream
+        pop","url":"https://www.last.fm/tag/dream+pop"},{"name":"best of 2010","url":"https://www.last.fm/tag/best+of+2010"},{"name":"albums
+        I own","url":"https://www.last.fm/tag/albums+I+own"},{"name":"favorite albums","url":"https://www.last.fm/tag/favorite+albums"}]},"wiki":{"published":"20
+        Apr 2010, 06:27","summary":"Recorded in upstate New York, in a converted church
+        called Dreamland with producer/engineer Chris Coady (who has worked with TV
+        on the Radio, Yeah Yeah Yeahs, Blonde Redhead, and a bunch of others) Teen
+        Dream is the third album from the Baltimore-based duo Beach House, and their
+        Sub Pop debut. Both the CD and LP formats of Teen Dream are packaged with
+        a companion DVD featuring a video for each song on the album, each by a different
+        director.\n\n <a href=\"http://www.last.fm/music/Beach+House/Teen+Dream\">Read
+        more on Last.fm</a>.","content":"Recorded in upstate New York, in a converted
+        church called Dreamland with producer/engineer Chris Coady (who has worked
+        with TV on the Radio, Yeah Yeah Yeahs, Blonde Redhead, and a bunch of others)
+        Teen Dream is the third album from the Baltimore-based duo Beach House, and
+        their Sub Pop debut. Both the CD and LP formats of Teen Dream are packaged
+        with a companion DVD featuring a video for each song on the album, each by
+        a different director.\n\n <a href=\"http://www.last.fm/music/Beach+House/Teen+Dream\">Read
+        more on Last.fm</a>. User-contributed text is available under the Creative
+        Commons By-SA License; additional terms may apply."}}}'
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Raka&api_key=146fa01985acd46b23f4e6c5f660f199&artist=%E5%BF%97%E6%96%B9%E3%81%82%E3%81%8D%E3%81%93&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '6039'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiUmFrYSIsImFydGlzdCI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIwMjg5Mjg2OS04OTU3LTQxYzYtODdiMC1iNDQ2MjI2ZDM4ZjEiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9SYWthIiwiaW1hZ2UiOlt7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zNHMvM2ZkYzgxZGMzNTQzMWU3YzI5MjQ1NDhiYjViZWQwNGEucG5nIiwic2l6ZSI6InNtYWxsIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvNjRzLzNmZGM4MWRjMzU0MzFlN2MyOTI0NTQ4YmI1YmVkMDRhLnBuZyIsInNpemUiOiJtZWRpdW0ifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8xNzRzLzNmZGM4MWRjMzU0MzFlN2MyOTI0NTQ4YmI1YmVkMDRhLnBuZyIsInNpemUiOiJsYXJnZSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvM2ZkYzgxZGMzNTQzMWU3YzI5MjQ1NDhiYjViZWQwNGEucG5nIiwic2l6ZSI6ImV4dHJhbGFyZ2UifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzNmZGM4MWRjMzU0MzFlN2MyOTI0NTQ4YmI1YmVkMDRhLnBuZyIsInNpemUiOiJtZWdhIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC8zZmRjODFkYzM1NDMxZTdjMjkyNDU0OGJiNWJlZDA0YS5wbmciLCJzaXplIjoiIn1dLCJsaXN0ZW5lcnMiOiI1MjQ5IiwicGxheWNvdW50IjoiNDk3NDQwIiwidHJhY2tzIjp7InRyYWNrIjpbeyJuYW1lIjoi5aSn5Zyw44Gu6byT5YuVIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMvXy8lRTUlQTQlQTclRTUlOUMlQjAlRTMlODElQUUlRTklQkMlOTMlRTUlOEIlOTUiLCJkdXJhdGlvbiI6Ijg0IiwiQGF0dHIiOnsicmFuayI6IjEifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IumHkeeSsOidlSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUU5JTg3JTkxJUU3JTkyJUIwJUU4JTlEJTk1IiwiZHVyYXRpb24iOiIyNjQiLCJAYXR0ciI6eyJyYW5rIjoiMiJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoi5pil5ZGK44GS772eUmFnZ2kgZGkgcHJpbWF2ZXJh772eIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMvXy8lRTYlOTglQTUlRTUlOTElOEElRTMlODElOTIlRUYlQkQlOUVSYWdnaStkaStwcmltYXZlcmElRUYlQkQlOUUiLCJkdXJhdGlvbiI6IjIwOCIsIkBhdHRyIjp7InJhbmsiOiIzIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiLjgb7jgbvjgo3jgbAiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFMyU4MSVCRSVFMyU4MSVCQiVFMyU4MiU4RCVFMyU4MSVCMCIsImR1cmF0aW9uIjoiMzI0IiwiQGF0dHIiOnsicmFuayI6IjQifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IuiSvOeip+OBruajriIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUU4JTkyJUJDJUU3JUEyJUE3JUUzJTgxJUFFJUU2JUEzJUFFIiwiZHVyYXRpb24iOiIyNjMiLCJAYXR0ciI6eyJyYW5rIjoiNSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX0seyJuYW1lIjoi6buO5piO772eQXVyb3Jh772eIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMvXy8lRTklQkIlOEUlRTYlOTglOEUlRUYlQkQlOUVBdXJvcmElRUYlQkQlOUUiLCJkdXJhdGlvbiI6IjI2OSIsIkBhdHRyIjp7InJhbmsiOiI2In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiLnpYjjgorvvZ7jg6Ljg7Pjg6njg6DvvZ4iLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFNyVBNSU4OCVFMyU4MiU4QSVFRiVCRCU5RSVFMyU4MyVBMiVFMyU4MyVCMyVFMyU4MyVBOSVFMyU4MyVBMCVFRiVCRCU5RSIsImR1cmF0aW9uIjoiMjE5IiwiQGF0dHIiOnsicmFuayI6IjcifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6Ikx1bmEgcGllbmEiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fL0x1bmErcGllbmEiLCJkdXJhdGlvbiI6IjI3OCIsIkBhdHRyIjp7InJhbmsiOiI4In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IuW/l+aWueOBguOBjeOBkyIsIm1iaWQiOiIzYzJmOWY1Yy03ZmVmLTQ0OGUtYmVmMy1mZjJjNTA2MDQ1MzciLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5MyJ9fSx7Im5hbWUiOiLjgYbjgZ/jgYvjgZ/jga7oirEiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljLyVFNSVCRiU5NyVFNiU5NiVCOSVFMyU4MSU4MiVFMyU4MSU4RCVFMyU4MSU5My9fLyVFMyU4MSU4NiVFMyU4MSU5RiVFMyU4MSU4QiVFMyU4MSU5RiVFMyU4MSVBRSVFOCU4QSVCMSIsImR1cmF0aW9uIjoiMjM1IiwiQGF0dHIiOnsicmFuayI6IjkifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IuaZtOOCjOOBmeOBjuOBn+epuuOBruS4i+OBpyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUU2JTk5JUI0JUUzJTgyJThDJUUzJTgxJTk5JUUzJTgxJThFJUUzJTgxJTlGJUU3JUE5JUJBJUUzJTgxJUFFJUU0JUI4JThCJUUzJTgxJUE3IiwiZHVyYXRpb24iOiIyMjkiLCJAYXR0ciI6eyJyYW5rIjoiMTAifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6IkFWRSBNQVJJQSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vQVZFK01BUklBIiwiZHVyYXRpb24iOiIyODkiLCJAYXR0ciI6eyJyYW5rIjoiMTEifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoi5b+X5pa544GC44GN44GTIiwibWJpZCI6IjNjMmY5ZjVjLTdmZWYtNDQ4ZS1iZWYzLWZmMmM1MDYwNDUzNyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzIn19LHsibmFtZSI6Iuiss+OBhuS4mO+9nkVYRUNfSEFSVkVTVEFTWUEvLu+9niIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvJUU1JUJGJTk3JUU2JTk2JUI5JUUzJTgxJTgyJUUzJTgxJThEJUUzJTgxJTkzL18vJUU4JUFDJUIzJUUzJTgxJTg2JUU0JUI4JTk4JUVGJUJEJTlFRVhFQ19IQVJWRVNUQVNZQSUyRi4lRUYlQkQlOUUiLCJkdXJhdGlvbiI6IjMyNSIsIkBhdHRyIjp7InJhbmsiOiIxMiJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiLlv5fmlrnjgYLjgY3jgZMiLCJtYmlkIjoiM2MyZjlmNWMtN2ZlZi00NDhlLWJlZjMtZmYyYzUwNjA0NTM3IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy8lRTUlQkYlOTclRTYlOTYlQjklRTMlODElODIlRTMlODElOEQlRTMlODElOTMifX1dfSwidGFncyI6eyJ0YWciOlt7Im5hbWUiOiJldGhlcmVhbCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2V0aGVyZWFsIn0seyJuYW1lIjoiZm9sayIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL2ZvbGsifSx7Im5hbWUiOiJ3b3JsZCIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vdGFnL3dvcmxkIn0seyJuYW1lIjoiaGVhdmVubHkgdm9pY2VzIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvaGVhdmVubHkrdm9pY2VzIn0seyJuYW1lIjoiR290aGljIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvR290aGljIn1dfX19
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+- request:
+    method: get
+    uri: http://ws.audioscrobbler.com/2.0/?album=Pygmalion&api_key=146fa01985acd46b23f4e6c5f660f199&artist=Slowdive&autocorrect=1&format=json&method=album.getInfo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin18.2.0 x86_64) ruby/2.5.3p105
+      Host:
+      - ws.audioscrobbler.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.15.1
+      Date:
+      - Thu, 30 May 2019 07:32:00 GMT
+      Content-Type:
+      - application/json
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5002'
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '86400'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhbGJ1bSI6eyJuYW1lIjoiUHlnbWFsaW9uIiwiYXJ0aXN0IjoiU2xvd2RpdmUiLCJtYmlkIjoiODVlNjdhMTQtZGU2MC00NWY3LWE1OGEtMTcxZjE2YjA5ZTVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZS9QeWdtYWxpb24iLCJpbWFnZSI6W3siI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzM0cy8xN2ViYjQzZjI4YWI0ODMxOGUyOTM3YmQ4OTE1Zjk2Yy5wbmciLCJzaXplIjoic21hbGwifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS82NHMvMTdlYmI0M2YyOGFiNDgzMThlMjkzN2JkODkxNWY5NmMucG5nIiwic2l6ZSI6Im1lZGl1bSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzE3NHMvMTdlYmI0M2YyOGFiNDgzMThlMjkzN2JkODkxNWY5NmMucG5nIiwic2l6ZSI6ImxhcmdlIn0seyIjdGV4dCI6Imh0dHBzOi8vbGFzdGZtLWltZzIuYWthbWFpemVkLm5ldC9pL3UvMzAweDMwMC8xN2ViYjQzZjI4YWI0ODMxOGUyOTM3YmQ4OTE1Zjk2Yy5wbmciLCJzaXplIjoiZXh0cmFsYXJnZSJ9LHsiI3RleHQiOiJodHRwczovL2xhc3RmbS1pbWcyLmFrYW1haXplZC5uZXQvaS91LzMwMHgzMDAvMTdlYmI0M2YyOGFiNDgzMThlMjkzN2JkODkxNWY5NmMucG5nIiwic2l6ZSI6Im1lZ2EifSx7IiN0ZXh0IjoiaHR0cHM6Ly9sYXN0Zm0taW1nMi5ha2FtYWl6ZWQubmV0L2kvdS8zMDB4MzAwLzE3ZWJiNDNmMjhhYjQ4MzE4ZTI5MzdiZDg5MTVmOTZjLnBuZyIsInNpemUiOiIifV0sImxpc3RlbmVycyI6IjE1Njc2NiIsInBsYXljb3VudCI6IjI3NjQ5OTgiLCJ0cmFja3MiOnsidHJhY2siOlt7Im5hbWUiOiJSdXR0aSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvU2xvd2RpdmUvXy9SdXR0aSIsImR1cmF0aW9uIjoiNjA1IiwiQGF0dHIiOnsicmFuayI6IjEifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiU2xvd2RpdmUiLCJtYmlkIjoiYTE2MzcxYjktN2QzNi00OTdhLWE5ZDQtNDJiMGEwNDQwYzVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZSJ9fSx7Im5hbWUiOiJDcmF6eSBGb3IgWW91IiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZS9fL0NyYXp5K0ZvcitZb3UiLCJkdXJhdGlvbiI6IjM2MSIsIkBhdHRyIjp7InJhbmsiOiIyIn0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IlNsb3dkaXZlIiwibWJpZCI6ImExNjM3MWI5LTdkMzYtNDk3YS1hOWQ0LTQyYjBhMDQ0MGM1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvU2xvd2RpdmUifX0seyJuYW1lIjoiTWlyYW5kYSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvU2xvd2RpdmUvXy9NaXJhbmRhIiwiZHVyYXRpb24iOiIyODkiLCJAYXR0ciI6eyJyYW5rIjoiMyJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJTbG93ZGl2ZSIsIm1iaWQiOiJhMTYzNzFiOS03ZDM2LTQ5N2EtYTlkNC00MmIwYTA0NDBjNWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL1Nsb3dkaXZlIn19LHsibmFtZSI6IlRyZWxsaXNhemUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL1Nsb3dkaXZlL18vVHJlbGxpc2F6ZSIsImR1cmF0aW9uIjoiMzc4IiwiQGF0dHIiOnsicmFuayI6IjQifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiU2xvd2RpdmUiLCJtYmlkIjoiYTE2MzcxYjktN2QzNi00OTdhLWE5ZDQtNDJiMGEwNDQwYzVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZSJ9fSx7Im5hbWUiOiJDZWxsbyIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvU2xvd2RpdmUvXy9DZWxsbyIsImR1cmF0aW9uIjoiMTAyIiwiQGF0dHIiOnsicmFuayI6IjUifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiU2xvd2RpdmUiLCJtYmlkIjoiYTE2MzcxYjktN2QzNi00OTdhLWE5ZDQtNDJiMGEwNDQwYzVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZSJ9fSx7Im5hbWUiOiJKJ3MgSGVhdmVuIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZS9fL0olMjdzK0hlYXZlbiIsImR1cmF0aW9uIjoiNDA3IiwiQGF0dHIiOnsicmFuayI6IjYifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiU2xvd2RpdmUiLCJtYmlkIjoiYTE2MzcxYjktN2QzNi00OTdhLWE5ZDQtNDJiMGEwNDQwYzVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZSJ9fSx7Im5hbWUiOiJWaXNpb25zIG9mIExhIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZS9fL1Zpc2lvbnMrb2YrTGEiLCJkdXJhdGlvbiI6IjEwOCIsIkBhdHRyIjp7InJhbmsiOiI3In0sInN0cmVhbWFibGUiOnsiI3RleHQiOiIwIiwiZnVsbHRyYWNrIjoiMCJ9LCJhcnRpc3QiOnsibmFtZSI6IlNsb3dkaXZlIiwibWJpZCI6ImExNjM3MWI5LTdkMzYtNDk3YS1hOWQ0LTQyYjBhMDQ0MGM1ZSIsInVybCI6Imh0dHBzOi8vd3d3Lmxhc3QuZm0vbXVzaWMvU2xvd2RpdmUifX0seyJuYW1lIjoiQmx1ZSBTa2llZCBBbicgQ2xlYXIiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL1Nsb3dkaXZlL18vQmx1ZStTa2llZCtBbiUyNytDbGVhciIsImR1cmF0aW9uIjoiNDEyIiwiQGF0dHIiOnsicmFuayI6IjgifSwic3RyZWFtYWJsZSI6eyIjdGV4dCI6IjAiLCJmdWxsdHJhY2siOiIwIn0sImFydGlzdCI6eyJuYW1lIjoiU2xvd2RpdmUiLCJtYmlkIjoiYTE2MzcxYjktN2QzNi00OTdhLWE5ZDQtNDJiMGEwNDQwYzVlIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZSJ9fSx7Im5hbWUiOiJBbGwgb2YgVXMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL1Nsb3dkaXZlL18vQWxsK29mK1VzIiwiZHVyYXRpb24iOiIyNDciLCJAYXR0ciI6eyJyYW5rIjoiOSJ9LCJzdHJlYW1hYmxlIjp7IiN0ZXh0IjoiMCIsImZ1bGx0cmFjayI6IjAifSwiYXJ0aXN0Ijp7Im5hbWUiOiJTbG93ZGl2ZSIsIm1iaWQiOiJhMTYzNzFiOS03ZDM2LTQ5N2EtYTlkNC00MmIwYTA0NDBjNWUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL211c2ljL1Nsb3dkaXZlIn19XX0sInRhZ3MiOnsidGFnIjpbeyJuYW1lIjoic2hvZWdhemUiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9zaG9lZ2F6ZSJ9LHsibmFtZSI6ImFtYmllbnQiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9hbWJpZW50In0seyJuYW1lIjoiZHJlYW0gcG9wIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvZHJlYW0rcG9wIn0seyJuYW1lIjoicG9zdC1yb2NrIiwidXJsIjoiaHR0cHM6Ly93d3cubGFzdC5mbS90YWcvcG9zdC1yb2NrIn0seyJuYW1lIjoiaHlwbm90aWMiLCJ1cmwiOiJodHRwczovL3d3dy5sYXN0LmZtL3RhZy9oeXBub3RpYyJ9XX0sIndpa2kiOnsicHVibGlzaGVkIjoiMDcgTWFyIDIwMDksIDE4OjExIiwic3VtbWFyeSI6IlB5Z21hbGlvbiBpcyBTbG93ZGl2ZSdzIHRoaXJkIGFsYnVtLCByZWxlYXNlZCBvbiBGZWJydWFyeSA2dGgsIDE5OTUuICBQeWdtYWxpb24gaXMgd2lkZWx5IHJlY29nbml6ZWQgYXMgYSBzZXZlcmUgZGVwYXJ0dXJlIGZyb20gdGhlIGJhbmQncyBwcmV2aW91cyB3b3JrLiAgVGhlIGFsYnVtIGhhcyBhIG11Y2ggbW9yZSBibGVhayBhbmQgZGFtYWdlZCBhcHByb2FjaCB0aGFuIEp1c3QgRm9yIGEgRGF5IG9yIFNvdXZsYWtpLiAgT24gdGhpcyBhbGJ1bSBTbG93ZGl2ZSB1c2VzIGEgd2lkZSBhcnJheSBvZiBkaWZmZXJlbnQgZWxlY3Ryb25pYyBlZmZlY3RzIGFuZCBhIGhlYXZpZXIgZm9jdXMgb24gY2xlYW4gZ3VpdGFyIHRvbmVzLiBUaGUgY292ZXIgaWxsdXN0cmF0aW9uIGZlYXR1cmVzIGltYWdlcnkgZnJvbSBSYWluZXIgV2VoaW5nZXIncyBncmFwaGljIG5vdGF0aW9uIGZvciBHecO2cmd5IExpZ2V0aSdzIHdvcmsgQXJ0aWt1bGF0aW9uICgxOTU4KS4gPGEgaHJlZj1cImh0dHA6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZS9QeWdtYWxpb25cIj5SZWFkIG1vcmUgb24gTGFzdC5mbTwvYT4uIiwiY29udGVudCI6IlB5Z21hbGlvbiBpcyBTbG93ZGl2ZSdzIHRoaXJkIGFsYnVtLCByZWxlYXNlZCBvbiBGZWJydWFyeSA2dGgsIDE5OTUuICBQeWdtYWxpb24gaXMgd2lkZWx5IHJlY29nbml6ZWQgYXMgYSBzZXZlcmUgZGVwYXJ0dXJlIGZyb20gdGhlIGJhbmQncyBwcmV2aW91cyB3b3JrLiAgVGhlIGFsYnVtIGhhcyBhIG11Y2ggbW9yZSBibGVhayBhbmQgZGFtYWdlZCBhcHByb2FjaCB0aGFuIEp1c3QgRm9yIGEgRGF5IG9yIFNvdXZsYWtpLiAgT24gdGhpcyBhbGJ1bSBTbG93ZGl2ZSB1c2VzIGEgd2lkZSBhcnJheSBvZiBkaWZmZXJlbnQgZWxlY3Ryb25pYyBlZmZlY3RzIGFuZCBhIGhlYXZpZXIgZm9jdXMgb24gY2xlYW4gZ3VpdGFyIHRvbmVzLiBUaGUgY292ZXIgaWxsdXN0cmF0aW9uIGZlYXR1cmVzIGltYWdlcnkgZnJvbSBSYWluZXIgV2VoaW5nZXIncyBncmFwaGljIG5vdGF0aW9uIGZvciBHecO2cmd5IExpZ2V0aSdzIHdvcmsgQXJ0aWt1bGF0aW9uICgxOTU4KS4gPGEgaHJlZj1cImh0dHA6Ly93d3cubGFzdC5mbS9tdXNpYy9TbG93ZGl2ZS9QeWdtYWxpb25cIj5SZWFkIG1vcmUgb24gTGFzdC5mbTwvYT4uIFVzZXItY29udHJpYnV0ZWQgdGV4dCBpcyBhdmFpbGFibGUgdW5kZXIgdGhlIENyZWF0aXZlIENvbW1vbnMgQnktU0EgTGljZW5zZTsgYWRkaXRpb25hbCB0ZXJtcyBtYXkgYXBwbHkuIn19fQ==
+    http_version: 
+  recorded_at: Thu, 30 May 2019 07:32:00 GMT
+recorded_with: VCR 5.0.0

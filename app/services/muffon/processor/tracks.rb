@@ -14,7 +14,9 @@ module Muffon
       end
 
       def tracks_sorted
-        tracks_data.sort_by { |t| t[:lastfm_plays_count] }.reverse
+        tracks_data[:tracks].sort_by do |t|
+          t[:lastfm_plays_count]
+        end.reverse
       end
 
       def tracks_data
@@ -22,7 +24,9 @@ module Muffon
       end
 
       def artist
-        ::Artist.with(name: @args.artist_name).first
+        @artist ||= ::Artist.with_name(
+          tracks_data[:artist][:name]
+        ).first_or_create(name: tracks_data[:artist][:name])
       end
     end
   end

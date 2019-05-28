@@ -8,7 +8,9 @@ module Muffon
     private
 
       def process_recommendation
-        recommendation.update(profile_artist_ids: profile_artist_ids)
+        recommendation.update(
+          profile_artist_ids: profile_artist_ids
+        )
       end
 
       def recommendation
@@ -29,7 +31,8 @@ module Muffon
       end
 
       def profile_artist_ids
-        recommendation.profile_artist_ids |= [@args.profile_artist_id]
+        recommendation.profile_artist_ids |=
+          [@args.profile_artist_id]
       end
     end
   end

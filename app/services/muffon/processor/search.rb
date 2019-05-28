@@ -8,7 +8,7 @@ module Muffon
     private
 
       def process_search_data
-        return {} unless search_data.present?
+        return empty_hash unless search_data.present?
 
         search_data.tap do |s|
           s[:artists] = s[:artists].map { |a| update_artist(a) }
@@ -19,6 +19,10 @@ module Muffon
 
       def search_data
         @search_data ||= LastFM::Search.call(@args)
+      end
+
+      def empty_hash
+        { artists: [], albums: [], tracks: [] }
       end
     end
   end

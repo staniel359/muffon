@@ -9,24 +9,17 @@ module Muffon
       private
 
         def process_artists
-          return {} unless artists_data.present?
-
-          {
-            data: process_artists_data,
-            total_count: artists_data[:total_count]
-          }
+          artists_data[:artists].map { |a| process_artist(a) }
         end
 
         def artists_data
-          @artists_data ||= LastFM::Tag::Artists.call(@args)
+          LastFM::Tag::Artists.call(@args)
         end
 
-        def process_artists_data
-          artists_data[:data].map do |a|
-            update_artist(
-              a.except(:tags).merge(tag_ids: tag_ids(a))
-            )
-          end
+        def process_artist(artist)
+          update_artist(
+            artist.except(:tags).merge(tag_ids: tag_ids(artist))
+          )
         end
 
         def tag_ids(artist)

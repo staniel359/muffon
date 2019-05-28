@@ -11,7 +11,7 @@ module LastFM
         return empty_hash unless @args.q.present?
 
         {
-          query: @args.q
+          query: @args.q,
           tracks: format_tracks,
           total_count: total_count
         }

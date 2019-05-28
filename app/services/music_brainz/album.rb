@@ -7,9 +7,13 @@ module MusicBrainz
   private
 
     def format_album_data
-      return {} unless @args.mbid.present?
-      return {} unless album_response.present?
+      return {} unless
+          @args.mbid.present? && album_response.present?
 
+      album_data_hash
+    end
+
+    def album_data_hash
       {
         title: album_data['title'],
         artist: album_artist_data,
@@ -26,14 +30,13 @@ module MusicBrainz
     end
 
     def album_response
-      @album_response ||= begin
+      @album_response ||=
         RestClient.get(
           "http://musicbrainz.org/ws/2/release/#{@args.mbid}"\
           '?inc=artist-credits+labels+recordings+release-groups&fmt=json'
         )
-      rescue RestClient::NotFound
-        nil
-      end
+    rescue RestClient::NotFound
+      nil
     end
 
     def album_artist_data

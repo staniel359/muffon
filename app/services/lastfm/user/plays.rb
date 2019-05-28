@@ -9,7 +9,8 @@ module LastFM
 
       def plays_data
         return empty_hash unless
-            @args.lastfm_id.present? && plays_response.present?
+            [@args.lastfm_id, plays_response].all?(&:present?)
+
         {
           user: { name: parsed_page['@attr']['user'] },
           plays: formatted_plays,
@@ -19,11 +20,10 @@ module LastFM
       end
 
       def plays_response
-        @plays_response ||= begin
+        @plays_response ||=
           RestClient.get(lastfm_api_link, params: request_params)
-        rescue RestClient::NotFound
-          nil
-        end
+      rescue RestClient::NotFound
+        nil
       end
 
       def request_params

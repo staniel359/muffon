@@ -13,7 +13,8 @@ module LastFM
     end
 
     def albums_data
-      albums_data_array = threads = []
+      albums_data_array = []
+      threads = []
       @args.album_titles.each_with_index.each do |a, i|
         threads << Thread.new do
           albums_data_array << [i, album_data(a)]

@@ -16,5 +16,10 @@ default: &default
 development:
   <<: *default
 
+test:
+  <<: *default
+  database: muffon_test
+  user: muffon_test
+
 production:
   <<: *default

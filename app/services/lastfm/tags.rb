@@ -15,7 +15,7 @@ module LastFM
     end
 
     def tags_response
-      RestClient.get(api_link, params: request_params)
+      RestClient.get(lastfm_api_link, params: request_params)
     end
 
     def request_params
@@ -24,7 +24,7 @@ module LastFM
         artist: @args.artist_name,
         album: @args.album_title,
         track: @args.track_title,
-        api_key: api_key,
+        api_key: lastfm_api_key,
         format: 'json'
       }
     end

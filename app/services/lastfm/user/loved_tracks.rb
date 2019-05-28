@@ -9,22 +9,16 @@ module LastFM
 
       def loved_tracks_data
         return empty_hash unless
-            @args.lastfm_id.present? && loved_tracks_response.present?
+            [@args.lastfm_id, loved_tracks_response].all?(&:present?)
 
-        {
-          user: { name: parsed_page['@attr']['user'] },
-          loved_tracks: format_tracks,
-          total_count: parsed_page['@attr']['total'].to_i,
-          pages_count: parsed_page['@attr']['totalPages'].to_i
-        }
+        loved_tracks_data_hash
       end
 
       def loved_tracks_response
-        @loved_tracks_response ||= begin
+        @loved_tracks_response ||=
           RestClient.get(lastfm_api_link, params: request_params)
-        rescue RestClient::NotFound
-          nil
-        end
+      rescue RestClient::NotFound
+        nil
       end
 
       def empty_hash
@@ -33,6 +27,15 @@ module LastFM
           loved_tracks: {},
           total_count: 0,
           pages_count: 0
+        }
+      end
+
+      def loved_tracks_data_hash
+        {
+          user: { name: parsed_page['@attr']['user'] },
+          loved_tracks: format_tracks,
+          total_count: parsed_page['@attr']['total'].to_i,
+          pages_count: parsed_page['@attr']['totalPages'].to_i
         }
       end
 

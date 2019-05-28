@@ -8,9 +8,10 @@ module LastFM
     private
 
       def albums_data
-        return {} unless parsed_page.present?
+        return empty_hash unless
+            @args.artist_name.present? && parsed_page.present?
 
-        { artist: artist_data_hash }
+        albums_data_hash
       end
 
       def parsed_page
@@ -31,9 +32,17 @@ module LastFM
         }
       end
 
-      def artist_data_hash
+      def empty_hash
         {
-          name: parsed_page['@attr']['artist'],
+          artist: {},
+          albums: [],
+          total_count: 0
+        }
+      end
+
+      def albums_data_hash
+        {
+          artist: { name: parsed_page['@attr']['artist'] },
           albums: format_albums
         }
       end
@@ -43,13 +52,17 @@ module LastFM
       end
 
       def albums_paginated
-        albums_sorted[array_offset, array_limit] || []
+        albums_null_rejected[array_offset, array_limit] || []
+      end
+
+      def albums_null_rejected
+        albums_sorted.reject { |a| a['name'] == '(null)' }
       end
 
       def albums_sorted
         parsed_page['album'].sort_by do |a|
           a['playcount']
-        end.reverse.reject { |a| a['name'] == '(null)' }
+        end.reverse
       end
 
       def array_limit

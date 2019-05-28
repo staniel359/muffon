@@ -2,6 +2,9 @@ module Muffon
   module Processor
     class Play < Muffon::Processor::Base
       def call
+        return unless
+            [@args.play, @profile].all?(&:present?)
+
         process_play
         connect_tracks_with_albums
       end

@@ -16,8 +16,10 @@ module LastFM
 
       def all_taggins_args?
         [
-          @args.lastfm_id, @args.model_name, @args.tag_name
-        ].all? { |a| a.present? }
+          @args.lastfm_id,
+          @args.model_name,
+          @args.tag_name
+        ].all?(&:present?)
       end
 
       def parsed_page

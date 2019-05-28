@@ -19,15 +19,18 @@ module LastFM
       end
 
       def artists_page_response
-        @artists_page_response ||= begin
+        @artists_page_response ||=
           RestClient.get("#{tag_page_link}/artists?page=#{page}")
-        rescue RestClient::NotFound
-          nil
-        end
+      rescue RestClient::NotFound
+        nil
       end
 
       def empty_hash
-        { tag: { name: @args.tag_name }, artists: {}, total_count: 0}
+        {
+          tag: { name: @args.tag_name },
+          artists: {},
+          total_count: 0
+        }
       end
 
       def tag_name
@@ -51,7 +54,9 @@ module LastFM
       end
 
       def total_count
-        parsed_page.css('.pagination-page').last.text.strip.to_i * 21
+        parsed_page.css(
+          '.pagination-page'
+        ).last.text.strip.to_i * 21
       end
     end
   end

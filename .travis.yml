@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.5.3
+services: postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c 'create user muffon_test with createdb;' -U postgres
+script:
+  - rake db:setup RAILS_ENV=test
+  - bundle exec rubocop
+  - bundle exec rspec

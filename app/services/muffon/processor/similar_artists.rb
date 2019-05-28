@@ -8,7 +8,8 @@ module Muffon
     private
 
       def process_artists
-        return [] unless artists_data.present?
+        return [] unless
+            [@args.artist_name, artists_data].all?(&:present?)
 
         artists_data.map do |a|
           update_artist(
@@ -18,7 +19,8 @@ module Muffon
       end
 
       def artists_data
-        LastFM::Artist::SimilarArtists.call(@args)
+        @artists_data ||=
+          LastFM::Artist::SimilarArtists.call(@args)[:artists]
       end
 
       def tag_ids(artist)
