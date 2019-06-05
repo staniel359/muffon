@@ -11,6 +11,11 @@ module ApplicationHelper
     }.merge(ids_params.map { |p| [p, nil] }.to_h)
   end
 
+  def can_delete_micropost?(micropost)
+    micropost.profile_id == current_profile.id ||
+      micropost.board_id == current_profile.id
+  end
+
 private
 
   def start_page?

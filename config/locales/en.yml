@@ -72,6 +72,8 @@ en:
       edit: "%{playlist} - Edit | %{profile}'s playlists"
       no_name: Please enter the name of your playlist.
       already_present: You already have playlist with this name.
+    board:
+      index: "%{profile}'s board"
   registrations:
     lastfm:
       fail: Looks like you've already signed up via Last.fm.

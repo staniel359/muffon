@@ -1,0 +1,12 @@
+.up
+  = link_to @profile do
+    = image_tag @profile.avatar.url(:sm)
+
+    %h6
+      = @profile.nickname
+
+.up
+  = link_to profiles_board_path do
+    %h6
+      %i.fas.fa-edit
+      Board

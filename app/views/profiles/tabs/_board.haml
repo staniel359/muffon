@@ -1,6 +1,10 @@
 %h5
-  Board:
+  = link_to 'Board:', profiles_board_path
 
 .separator.default.my-2
 
-There are no posts.
+= render 'profiles/microposts/form'
+
+.separator.default.my-2
+
+= render 'profiles/microposts/table'

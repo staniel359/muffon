@@ -1,0 +1,5 @@
+$('#microposts_board, #feed').prepend(
+  "<%= j render 'micropost', micropost: @micropost %>"
+)
+$('#new_micropost textarea').val('')
+$('#no_microposts_block, #no_feed_block').hide()

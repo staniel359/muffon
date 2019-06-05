@@ -41,6 +41,9 @@ class Profile < ApplicationRecord
   has_many :groups, through: :memberships
   has_many :own_groups, foreign_key: 'owner_id', class_name: 'Group'
 
+  has_many :microposts
+  has_many :board_microposts, class_name: 'Micropost', foreign_key: :board_id
+
   validates :nickname, :email, presence: true, uniqueness: true
   validates :nickname, length: { minimum: 1, maximum: 50 }
   validates :password, presence: true, length: { minimum: 6 }, on: :create

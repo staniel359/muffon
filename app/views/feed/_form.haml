@@ -1,0 +1,5 @@
+.text-right
+  = form_for Micropost.new, url: profiles_microposts_path(profile_id: current_profile.id), class: 'text-right', remote: true do |f|
+    = f.text_area :content, placeholder: 'Enter something to post...', class: 'input-transp mb-2', autofocus: true, rows: 2, required: true
+    = f.hidden_field :board_id, value: current_profile.id
+    = f.submit 'Post', class: 'btn btn-primary'

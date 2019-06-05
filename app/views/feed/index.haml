@@ -1,9 +1,9 @@
 .card
   .card-body
-    %h4
-      %i.fas.fa-newspaper
-      Feed
+    = render 'panel_header'
 
-    .separator.default.my-3
+    = render 'form'
 
-    In progress.
+    .separator.my-3
+
+    = render 'table'

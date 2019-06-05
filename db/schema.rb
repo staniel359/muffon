@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_10_090641) do
+ActiveRecord::Schema.define(version: 2019_06_04_142142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,6 +125,15 @@ ActiveRecord::Schema.define(version: 2018_09_10_090641) do
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["new"], name: "index_messages_on_new"
     t.index ["profile_id"], name: "index_messages_on_profile_id"
+  end
+
+  create_table "microposts", force: :cascade do |t|
+    t.bigint "profile_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "board_id"
+    t.index ["profile_id"], name: "index_microposts_on_profile_id"
   end
 
   create_table "playlist_tracks", force: :cascade do |t|
@@ -326,6 +335,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_090641) do
   add_foreign_key "memberships", "groups"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "profiles"
+  add_foreign_key "microposts", "profiles"
   add_foreign_key "playlist_tracks", "albums"
   add_foreign_key "playlist_tracks", "artists"
   add_foreign_key "playlist_tracks", "playlists"

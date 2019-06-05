@@ -14,6 +14,7 @@ class ProfilesController < ApplicationController
     set_tracks
     set_common_data if other_profile?(@profile)
     set_playing_now_track
+    set_microposts
   end
 
   def update
@@ -88,6 +89,10 @@ private
     @playing_now_track = Track.find_by(
       id: Player::PlayingNow.get(@profile.id)
     )&.decorate
+  end
+
+  def set_microposts
+    @microposts = @profile.board_microposts.created_desc
   end
 
   def primary_params

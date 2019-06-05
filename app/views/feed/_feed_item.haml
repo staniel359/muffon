@@ -1,0 +1,15 @@
+%tr#feed_item{ id: feed_item.id }
+  %td
+    .media
+      .mr-3
+        = image_tag feed_item.profile.avatar.url(:sm), class: 'rounded-circle'
+      .media-body
+        %h6
+          = link_to feed_item.profile.nickname, feed_item.profile
+        %h5
+          = feed_item.content
+        .small
+          = feed_item.created_at.strftime('%e %b %Y, %H:%M')
+      - if can_delete_micropost?(feed_item)
+        = button_to profiles_micropost_path(profile_id: current_profile.id, micropost_id: feed_item.id), method: :delete, class: 'btn btn-transp', remote: true do
+          %i.fas.fa-times

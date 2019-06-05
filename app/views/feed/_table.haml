@@ -1,0 +1,5 @@
+%table.table.text-white.mb-0#feed
+  - @feed_items.map do |f|
+    = render 'feed_item', feed_item: f
+#no_feed_block{ class: ('d-none' if @feed_items.any?) }
+  Your feed is empty.

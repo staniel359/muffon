@@ -1,0 +1,5 @@
+%table.table.text-white.mb-0#microposts_board
+  - @microposts.map do |m|
+    = render 'profiles/microposts/micropost', micropost: m
+#no_microposts_block{ class: ('d-none' if @microposts.any?) }
+  The board is empty.

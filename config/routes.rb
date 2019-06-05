@@ -106,6 +106,8 @@ Rails.application.routes.draw do
         get 'followers'
         get 'following'
       end
+      get '/board', to: 'microposts#index', as: :board
+      resources :microposts, only: %i[create destroy], param: 'micropost_id'
     end
   end
   post '/follow', to: 'relationships#create'
