@@ -1,0 +1,5 @@
+$('#comments_board').prepend(
+  "<%= j render 'comment', comment: @comment%>"
+)
+$('#new_comment textarea').val('')
+$('.no_comments_board').hide()

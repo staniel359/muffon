@@ -11,6 +11,7 @@ module Artists
       process_album
       check_correct_album
       set_title
+      comments
     end
 
     def tags
@@ -26,12 +27,22 @@ module Artists
       set_title
     end
 
+    def board
+      set_album
+      comments
+    end
+
   private
 
     def process_album
       @album = Muffon::Processor::Album.call(
         params.slice(:artist_name, :album_title)
       )&.decorate
+    end
+
+    def comments
+      @comments =
+        @album.comments.created_desc.includes(:profile)
     end
 
     def set_album

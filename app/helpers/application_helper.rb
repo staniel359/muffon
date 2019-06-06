@@ -16,6 +16,10 @@ module ApplicationHelper
       micropost.board_id == current_profile.id
   end
 
+  def can_delete_comment?(comment)
+    comment.profile_id == current_profile.id
+  end
+
 private
 
   def start_page?

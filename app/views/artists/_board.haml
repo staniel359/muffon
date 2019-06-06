@@ -1,7 +1,20 @@
 %h5
-  Board:
+  = link_to 'Board:', artists_board_path
 
   .separator.default.my-2
 
-  %h6
-    This board is empty.
+  .text-right
+    = form_for Comment.new, remote: true do |f|
+      = f.text_area :content, rows: 3, placeholder: 'Enter comment...', required: true, class: 'input-transp'
+      = f.hidden_field :commentable_type, value: 'Artist'
+      = f.hidden_field :commentable_id, value: @artist.id
+
+      = f.submit 'Post', class: 'btn btn-primary mt-2'
+
+  .separator.default.my-3
+
+  %table.table.text-white.mb-0#comments_board
+    - @comments.map do |c|
+      = render 'comments/comment', comment: c
+  .no_comments_board{ class: ('d-none' if @comments.any?) }
+    The board is empty.

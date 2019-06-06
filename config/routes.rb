@@ -112,12 +112,14 @@ Rails.application.routes.draw do
   end
   post '/follow', to: 'relationships#create'
   delete '/unfollow', to: 'relationships#destroy'
+  resources :comments, only: %i[create destroy], param: 'comment_id'
   namespace :artists do
     scope '/:artist_name', constraints: { artist_name: /.*/ } do
       namespace :albums do
         scope '/:album_title', constraints: { album_title: /.*/ } do
           get 'tags'
           get 'wiki'
+          get 'board'
         end
       end
       resources :albums, only: %i[index show], param: 'album_title',
@@ -128,6 +130,7 @@ Rails.application.routes.draw do
       get 'tags'
       get 'listeners'
       get 'plays'
+      get 'board'
       resources :tracks, only: :index
     end
   end

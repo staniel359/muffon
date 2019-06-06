@@ -114,6 +114,7 @@ en:
       wiki: "%{album} wiki | %{artist} albums"
     tracks:
       index: "%{artist} tracks"
+    board: "%{artist} board"
   bookmarks:
     index: Bookmarks
     artists: Artist bookmarks

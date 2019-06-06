@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_142142) do
+ActiveRecord::Schema.define(version: 2019_06_06_104413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 2019_06_04_142142) do
     t.datetime "updated_at", null: false
     t.index ["bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_bookmarkable_type_and_bookmarkable_id"
     t.index ["profile_id"], name: "index_bookmarks_on_profile_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.bigint "profile_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["profile_id"], name: "index_comments_on_profile_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -330,6 +341,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_142142) do
 
   add_foreign_key "albums", "artists"
   add_foreign_key "bookmarks", "profiles"
+  add_foreign_key "comments", "profiles"
   add_foreign_key "listened_artists", "artists"
   add_foreign_key "listened_artists", "profiles"
   add_foreign_key "memberships", "groups"

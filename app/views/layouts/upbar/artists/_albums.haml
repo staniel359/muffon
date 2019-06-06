@@ -35,6 +35,12 @@
           %h6
             %i.fas.fa-info-circle
             Wiki
+    - elsif params[:action] == 'board'
+      .up
+        = link_to artists_albums_board_path do
+          %h6
+            %i.fas.fa-edit
+            Board
 
   - else
     .up

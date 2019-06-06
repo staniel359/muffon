@@ -7,6 +7,7 @@ class Album < ApplicationRecord
   has_many :plays
   has_many :playlist_tracks
   has_many :taggings, as: :taggable
+  has_many :comments, as: :commentable
 
   validates :title, :artist_id, presence: true
 

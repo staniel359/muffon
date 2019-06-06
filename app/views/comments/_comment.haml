@@ -1,0 +1,14 @@
+%tr#comment{ id: comment.id }
+  %td.media
+    .mr-3
+      = image_tag comment.profile.avatar.url(:sm), class: 'rounded-circle'
+    .media-body
+      %h6.mb-1
+        = link_to comment.profile.nickname, comment.profile
+      %h5.mb-1
+        = comment.content
+      .small.mb-1
+        = comment.created_at
+    - if can_delete_comment?(comment)
+      = button_to comment_path(comment_id: comment.id), method: :delete, remote: true, class: 'btn btn-transp' do
+        %i.fas.fa-times

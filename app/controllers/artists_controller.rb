@@ -10,6 +10,7 @@ class ArtistsController < ApplicationController
     set_profile_instances
     set_taggings
     set_profile_artist
+    comments
   end
 
   def images
@@ -36,6 +37,10 @@ class ArtistsController < ApplicationController
     set_similar_artists
   end
 
+  def board
+    comments
+  end
+
 private
 
   def process_artist
@@ -56,8 +61,8 @@ private
   end
 
   def find_artist
-    @artist = Artist.with(
-      name: params[:artist_name]
+    @artist = Artist.with_name(
+      params[:artist_name]
     ).first&.decorate
   end
 
@@ -73,6 +78,10 @@ private
     @profile_artist = current_profile.profile_artists.find_by(
       artist_id: @artist.id
     )
+  end
+
+  def comments
+    @comments = @artist.comments.created_desc.includes(:profile)
   end
 
   def set_images
@@ -94,15 +103,11 @@ private
   end
 
   def set_listeners
-    @listeners = paginate(
-      @artist.listeners.created_desc, 20
-    )
+    @listeners = paginate(@artist.listeners.created_desc, 20)
   end
 
   def set_plays
-    @plays = paginate(
-      @artist.plays.associated.created_desc, 20
-    )
+    @plays = paginate(@artist.plays.associated.created_desc, 20)
   end
 
   def set_similar_artists

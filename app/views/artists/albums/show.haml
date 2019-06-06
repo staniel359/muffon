@@ -23,6 +23,8 @@
 
       = render 'tracks'
 
+      = render 'board'
+
 #album-cover-modal.modal.image-modal
   .modal-dialog
     = image_tag @album.cover.gsub('/300x300', '/600x600'), class: 'img-fluid'

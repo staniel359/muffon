@@ -40,6 +40,12 @@
       = link_to artists_similar_artists_path do
         %h6
           Similar artists
+  - elsif params[:action] == 'board'
+    .up
+      = link_to artists_board_path do
+        %h6
+          %i.fas.fa-edit
+          Board
 
 - else
   .up

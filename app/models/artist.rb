@@ -8,6 +8,7 @@ class Artist < ApplicationRecord
   has_many :listened_artists
   has_many :bookmarks, as: :bookmarkable
   has_many :taggings, as: :taggable
+  has_many :comments, as: :commentable
   has_many :profile_tags, through: :taggings
 
   validates :name, presence: true, uniqueness: true
