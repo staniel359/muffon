@@ -10,6 +10,8 @@ en:
     index: Notifications
   feed:
     index: Feed
+  radio:
+    show: Radio
   player:
     show: Player
   sessions:

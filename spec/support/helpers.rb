@@ -580,4 +580,26 @@ module Helpers
       }
     end
   end
+
+  class Radio
+    def self.sample_track
+      {:title=>"A Threaded Needle",
+       :artist=>{:name=>"Lotus Plaza"},
+       :lastfm_listeners_count=>15968,
+       :lastfm_plays_count=>68157,
+       :mbid=>"fe93d89a-35a2-4d17-b144-1df9bc55745a"}
+    end
+
+    def self.artist_image
+      'https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095'
+    end
+
+    def self.artist_track_data
+      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdjVoGun_G2p6P9QN4yS0guh_-DEpaNJyGVFeafm52NZPiiNiBBqfqBtukYMNJ7HiTu6HCcN06RRxl15A", :radio_artist=>{:name=>"Wild Nothing"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
+    end
+
+    def self.tag_track_data
+      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdjVoGun_G2p6P9QN4yS0guh_-DEpaNJyGVFeafm52NZPiiNiBBqfqBtukYMNJ7HiTu6HCcN06RRxl15A", :radio_tag=>{:name=>"Dream pop music"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
+    end
+  end
 end

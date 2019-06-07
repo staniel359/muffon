@@ -8,9 +8,10 @@ module LastFM
     private
 
       def images_data
-        return {} unless images_list.present?
+        return {} unless
+          @args.artist_name.present? && images_list.present?
 
-        { artist: artist_data_hash }
+        artist_data_hash
       end
 
       def images_list
@@ -31,7 +32,7 @@ module LastFM
 
       def artist_data_hash
         {
-          name: artist_name,
+          artist: { name: artist_name },
           images: images_list,
           total_count: (last_page || 1).to_i * 40
         }

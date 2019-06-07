@@ -1,0 +1,23 @@
+- if @track.present?
+  .mb-2
+    %i.fas.fa-play.mr-1.ml-2
+    = "Playing #{radio_name} radio"
+  #radio_track_actions
+    - if @track[:link].present?
+      = audio_tag @track[:link], controls: true, class: 'w-100 h-100 position-absolute', id: 'radio_audio'
+    - elsif @track[:youtube_link].present?
+      %iframe#radio_youtube_iframe{ frameborder: 0, src: @track[:youtube_link] }
+  #radio_track_info
+    %h5
+      = @track[:title]
+    %h6
+      = link_to artist_name, artist_path(artist_name: artist_name)
+    .small
+      = "#{@track[:lastfm_listeners_count]} listeners"
+    .small
+      = "#{@track[:lastfm_plays_count]} plays"
+  - unless @track[:youtube_link].present?
+    #radio_track_image
+      = image_tag artist_image, class: 'w-100'
+- else
+  = wrong_name

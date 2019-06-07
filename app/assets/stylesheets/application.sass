@@ -568,3 +568,26 @@ h1, h2, h3, h4, h5, h6
 
 .youtube-iframe
   @extend .embed-responsive, .embed-responsive-16by9, .mt-2
+
+// Radio
+
+#radio_container
+  height: 530px
+#radio_track_wrap
+  height: 482px
+#radio_track_info
+  @extend .position-absolute
+  bottom: 58px
+  left: 18px
+#radio_track_image img
+  max-height: 450px
+  object-fit: contain
+  background-color: black
+#radio_loader_wrap
+  background-color: $muffonDarkLight
+  opacity: 0.7
+#radio_youtube_iframe
+  @extend .position-absolute, .bottom-0, .w-100
+  height: 93%
+#radio_track_actions
+  @extend .position-absolute, .bottom-0, .w-100, .h-100

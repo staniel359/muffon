@@ -16,7 +16,7 @@ module VK
       encoded_values = link.split('=')[1].split('#')
       first = vk_o(encoded_values[0])
       second = vk_o(encoded_values[1]).split("\v")
-      vk_s(first, second[1].to_i ^ 223_233_444)
+      vk_s(first, second[1].to_i ^ 548_939_802)
     end
 
     def link

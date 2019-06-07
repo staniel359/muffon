@@ -1,0 +1,13 @@
+.d-flex
+  .btn-group.btn-group-toggle.mr-3{ data: { toggle: 'buttons' } }
+    = button_tag 'Artist', class: 'btn btn-primary active', id: 'radio_artist_select' do
+      = radio_button_tag :artist, ''
+      Artist
+    = button_tag :tag, class: 'btn btn-primary', id: 'radio_tag_select' do
+      = radio_button_tag :tag, ''
+      Tag
+
+  = form_tag play_radio_path, method: :get, remote: true, id: 'play_radio_form', class: 'w-100 mr-3' do
+    = text_field_tag :artist_name, '', class: 'input-transp', id: 'radio_artist_field', placeholder: 'Enter artist name:', autofocus: true
+    = text_field_tag :tag_name, '', class: 'input-transp d-none', id: 'radio_tag_field', placeholder: 'Enter tag name:', autofocus: true
+  = submit_tag 'Play radio', class: 'btn btn-primary', form: 'play_radio_form'

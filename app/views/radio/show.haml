@@ -1,0 +1,19 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    = render 'form'
+
+    %hr.my-2
+
+    #radio_container.position-relative
+
+      #radio_loader_wrap.position-absolute.w-100.h-100.z-100.d-none
+        #radio_loader.d-flex.h-100.align-items-center.justify-content-center
+          %i.fas.fa-circle-notch.fa-spin.fa-3x
+
+      #radio_track_wrap.position-relative.mb-3
+        #radio_track.h-100
+
+      #radio_next_track_btn.text-right.d-none
+        = button_to 'Next track >', play_radio_path, method: :get, remote: true, class: 'btn btn-primary'

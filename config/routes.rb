@@ -202,6 +202,8 @@ Rails.application.routes.draw do
       patch 'restore'
     end
   end
+  get '/radio', to: 'radio#show'
+  get '/play_radio', to: 'radio#play'
 
   match '*path', :to => 'application#not_found', via: :all
 end

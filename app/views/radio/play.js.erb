@@ -1,0 +1,8 @@
+$('#radio_track_wrap').html("<%= j render 'track', track: @track %>")
+$('#radio_loader_wrap').addClass('d-none')
+<% if @track.present? %>
+  $('#radio_next_track_btn').removeClass('d-none')
+<% else %>
+  $('#radio_next_track_btn').addClass('d-none')
+<% end %>
+$('#radio_audio')[0].play()
