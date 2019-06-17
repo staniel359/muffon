@@ -1,0 +1,27 @@
+.d-flex.dark{ style: 'height: 220px'}
+  #track_album_cover
+    = image_tag @track.album_cover, style: 'width: 220px'
+  #track_info_actions.w-100.position-relative
+    .pt-2.pl-3
+      #track_info.mb-2
+        %h4
+          = @track.title
+        %h6
+          = link_to @track.artist_name, artist_path(@track.artist_name)
+        %h6
+          - if @track.first_album.present?
+            = link_to @track.first_album.title, artists_album_path(artist_name: @track.artist_name, album_title: @track.first_album.title)
+      #track_stats.mb-3
+        .small
+          = "#{@track.lastfm_listeners_count} listeners"
+        .small
+          = "#{@track.lastfm_plays_count} plays"
+      #track_tags
+        - if @track.tags.present?
+          %i.fas.fa-tag.mr-1
+          - @track.tags.map do |tag|
+            = link_to tag, tag_path(tag), class: 'tag m-0'
+          - if @track.tags.length == 5
+            = link_to 'More tags...', artists_tracks_tags_path, class: 'btn btn-sm btn-link text-white'
+    - if @audio_link.present?
+      = audio_tag @audio_link, controls: true, class: 'w-100 position-absolute bottom-0 left-0'

@@ -10,14 +10,9 @@ RSpec.describe Muffon::Processor::Tracks do
           subject.call(artist_name: 'wild nothing', limit: 10)
         end
       }
-      let(:track) { tracks.first }
 
       it { expect { tracks }.to change(Artist, :count).by(1) }
       it { expect { tracks }.to change(Track, :count).by(10) }
-      it { expect(track.title).to eq('Chinatown') }
-      it { expect(track.artist.name).to eq('Wild Nothing') }
-      it { expect(track.lastfm_listeners_count).to eq(189_359) }
-      it { expect(track.lastfm_plays_count).to eq(1_096_361) }
     end
   end
 

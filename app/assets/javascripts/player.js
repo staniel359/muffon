@@ -39,7 +39,7 @@ hidePlayingNowPanel = () => {
 };
 
 playAudio = () => {
-  audio = $('audio')[0]
+  audio = $('#player-panel-audio-panel audio')[0]
   if (audio.paused) {
     audio.play()
     $(".play-pause-btn .fa-pause").removeClass('d-none')
@@ -52,7 +52,7 @@ playAudio = () => {
 };
 
 enableAudioSeekbar = () => {
-  audio = $('audio')[0]
+  audio = $('#player-panel-audio-panel audio')[0]
   $('#audio-seekbar').slider({
     range: 'min',
     value: 0,
@@ -62,7 +62,7 @@ enableAudioSeekbar = () => {
     },
     step: 0.0001
   });
-  $('audio').on('timeupdate', () => {
+  $('#player-panel-audio-panel audio').on('timeupdate', () => {
     $('#audio-seekbar').slider(
       'value', (100 / audio.duration * audio.currentTime)
     )

@@ -1,0 +1,14 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      Wiki:
+
+    .separator.my-2
+
+    - if @track.wiki.present?
+      = @track.wiki
+    - else
+      .text-muted
+        No description.

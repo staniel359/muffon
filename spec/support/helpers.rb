@@ -173,7 +173,7 @@ module Helpers
            :description=>
             "Nocturne is the second studio album by American dream pop act Wild Nothing, released on August 28, 2012 on Captured Tracks.\n\nThe success of Wild Nothing's debut allowed Jack Tatum to record in a full studio for its follow-up, a change of pace from Gemini's exclusive use of the laptop for recording. Working with producer Nicolas Vernhes, Tatum stated: “The biggest thing was just having a producer, having somebody extremely knowledgeable to work with. I mean, obviously I had a lot of nice equipment at my disposal for the first time, too ... But I never wanted to use any of that to pursue a wholly different sound to the first album; it was just nice to have somebody to bounce ideas off, to help me tweak things.” \"Shadow,\" the first song from Nocturne to be released, features a string section, something Tatum \"never\" could have done without a studio environment",
            :cover=>"https://lastfm-img2.akamaized.net/i/u/300x300/3601d7b9f23e43aea6f9fa002672c6eb.png",
-           :release_date=>"2012-08-28",
+           :release_date=>"01-01-2012",
            :release_type=>"Album",
            :bandcamp_link=>nil,
            :tags=>["2012", "dream pop", "best of 2012", "indie", "favorite albums"],
@@ -235,7 +235,7 @@ module Helpers
            "mbid"=>nil,
            "description"=>
             "Nocturne is the second studio album by American dream pop act Wild Nothing, released on August 28, 2012 on Captured Tracks.\n\nThe success of Wild Nothing's debut allowed Jack Tatum to record in a full studio for its follow-up, a change of pace from Gemini's exclusive use of the laptop for recording. Working with producer Nicolas Vernhes, Tatum stated: “The biggest thing was just having a producer, having somebody extremely knowledgeable to work with. I mean, obviously I had a lot of nice equipment at my disposal for the first time, too ... But I never wanted to use any of that to pursue a wholly different sound to the first album; it was just nice to have somebody to bounce ideas off, to help me tweak things.” \"Shadow,\" the first song from Nocturne to be released, features a string section, something Tatum \"never\" could have done without a studio environment",
-           "release_date"=>"2012-08-28",
+           "release_date"=>"01-01-2012",
            "format"=>nil,
            "bandcamp_link"=>nil,
            "lastfm_listeners_count"=>229379,
@@ -247,6 +247,35 @@ module Helpers
            "track_ids"=>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
            "official"=>false
           }
+      end
+    end
+
+    class Chinatown
+      def self.track_data
+        {:track => {:album=>{:artist=>{:name=>"Wild Nothing"}, :cover=>"https://lastfm-img2.akamaized.net/i/u/600x600/c60a738cd2244da9bc2b44b51d643602.png", :mbid=>"98174762-4674-4382-827f-db7248c4806c", :title=>"Gemini"}, :artist=>{:name=>"Wild Nothing"}, :duration=>199, :lastfm_listeners_count=>189944, :lastfm_plays_count=>1099980, :mbid=>"9a74b1e7-a7a9-46fc-8ad3-58306fdac86f", :tags=>["dream pop", "indie", "chillwave", "shoegaze", "electronica"], :title=>"Chinatown", :wiki=>nil}}
+      end
+
+      def self.muffon_track_data
+        {:track => {:album=>{:artist=>{:name=>"Wild Nothing"}, :cover=>"https://lastfm-img2.akamaized.net/i/u/600x600/c60a738cd2244da9bc2b44b51d643602.png", :mbid=>"98174762-4674-4382-827f-db7248c4806c", :title=>"Gemini"}, :artist=>{:name=>"Wild Nothing"}, :duration=>199, :lastfm_listeners_count=>189944, :lastfm_plays_count=>1099980, :mbid=>"9a74b1e7-a7a9-46fc-8ad3-58306fdac86f", :tags=>["dream pop", "indie", "chillwave", "shoegaze", "electronica"], :title=>"Chinatown", :vk_id=>"371745449_456491618_223d081ac8d84ebb17_b5faa65c1559a8b1b6", :wiki=>nil, :youtube_link=>"https://www.youtube.com/embed/j6tZLVoAQnM?rel=0"}}
+      end
+
+      def self.persisted_data
+        {"album_ids" => [1],
+          "artist_id" => 1,
+          "bandcamp_link" => nil,
+          "duration" => 199,
+          "id" => 1,
+          "lastfm_listeners_count" => 189944,
+          "lastfm_plays_count" => 1099980,
+          "listeners_count" => 0,
+          "mbid" => "9a74b1e7-a7a9-46fc-8ad3-58306fdac86f",
+          "plays_count" => 0,
+          "tag_ids" => [1, 2, 3, 4, 5],
+          "title" => "Chinatown",
+          "vk_id" => "371745449_456491618_223d081ac8d84ebb17_b5faa65c1559a8b1b6",
+          "vk_link" => nil,
+          "wiki" => nil,
+          "youtube_link" => 'https://www.youtube.com/embed/j6tZLVoAQnM?rel=0'}
       end
     end
   end
@@ -450,6 +479,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>2,
           "title"=>"Shadow",
@@ -464,6 +495,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>3,
           "title"=>"Live In Dreams",
@@ -478,6 +511,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>4,
           "title"=>"Summer Holiday",
@@ -492,6 +527,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>5,
           "title"=>"Nocturne",
@@ -506,6 +543,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>6,
           "title"=>"Paradise",
@@ -520,6 +559,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>7,
           "title"=>"Drifter",
@@ -534,6 +575,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>8,
           "title"=>"Midnight Song",
@@ -548,6 +591,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>9,
           "title"=>"Only Heather",
@@ -562,6 +607,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]},
          {"id"=>10,
           "title"=>"Disappear Always",
@@ -576,6 +623,8 @@ module Helpers
           "lastfm_plays_count"=>0,
           "listeners_count"=>0,
           "plays_count"=>0,
+          "tag_ids"=>[],
+          "wiki"=>nil,
           "album_ids"=>[]}]
       }
     end
@@ -595,11 +644,11 @@ module Helpers
     end
 
     def self.artist_track_data
-      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdjVoGun_G2p6P9QN4yS0guh_-DEpaNJyGVFeafm52NZPiiNiBBqfqBtukYMNJ7HiTu6HCcN06RRxl15A", :radio_artist=>{:name=>"Wild Nothing"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
+      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdilwNsX_M1pqJ9QN4yS0guh_-DEpaNJyGVFeafm52NZPiidiJBKfqBtukYMNJ7HjA6qDJedo6ERlj254", :radio_artist=>{:name=>"Wild Nothing"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
     end
 
     def self.tag_track_data
-      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdjVoGun_G2p6P9QN4yS0guh_-DEpaNJyGVFeafm52NZPiiNiBBqfqBtukYMNJ7HiTu6HCcN06RRxl15A", :radio_tag=>{:name=>"Dream pop music"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
+      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdilwNsX_M1pqJ9QN4yS0guh_-DEpaNJyGVFeafm52NZPiidiJBKfqBtukYMNJ7HjA6qDJedo6ERlj254", :radio_tag=>{:name=>"Dream pop music"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
     end
   end
 end

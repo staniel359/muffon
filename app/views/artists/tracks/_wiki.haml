@@ -1,0 +1,10 @@
+%h5
+  = link_to 'Wiki:', artists_tracks_wiki_path
+
+.separator.my-2
+
+- if @track.wiki.present?
+  = @track.wiki.truncate_words(75)
+  = link_to 'Read more...', artists_tracks_wiki_path, class: 'text-muted'
+- else
+  No description.

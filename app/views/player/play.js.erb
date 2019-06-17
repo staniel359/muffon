@@ -1,6 +1,6 @@
 <% if @audio_link.present? %>
   $('.youtube-iframe').html('')
-  $('audio').attr('src', "<%= @audio_link %>")
+  $('#player-panel-audio-panel audio').attr('src', "<%= @audio_link %>")
 
   $("*#track_<%= @previous_track_id %>").removeClass('dark')
   $("*#track_<%= @track.id %>").addClass('dark')

@@ -116,6 +116,11 @@ en:
       wiki: "%{album} wiki | %{artist} albums"
     tracks:
       index: "%{artist} tracks"
+      show: "%{track} | %{artist} tracks"
+      tags: "%{track} tags | %{artist} tracks"
+      wiki: "%{track} wiki | %{artist} tracks"
+      similar_tracks: "%{track} similar tracks | %{artist} tracks"
+      board: "%{track} board | %{artist} tracks"
     board: "%{artist} board"
   bookmarks:
     index: Bookmarks

@@ -124,6 +124,16 @@ Rails.application.routes.draw do
       end
       resources :albums, only: %i[index show], param: 'album_title',
         constraints: { album_title: /.*/ }
+      namespace :tracks do
+        scope '/:track_title', constraints: { track_title: /.*/ } do
+          get 'tags'
+          get 'wiki'
+          get 'similar_tracks'
+          get 'board'
+        end
+      end
+      resources :tracks, only: %i[index show], param: 'track_title',
+        constraints: { track_title: /.*/ }
       get 'images'
       get 'similar_artists'
       get 'wiki'
@@ -131,7 +141,6 @@ Rails.application.routes.draw do
       get 'listeners'
       get 'plays'
       get 'board'
-      resources :tracks, only: :index
     end
   end
   resources :artists, only: :show, param: 'artist_name',

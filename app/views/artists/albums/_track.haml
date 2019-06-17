@@ -1,5 +1,5 @@
 %tr
-  %td#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
+  %td.text-white#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
     .align-center
       .mr-2.list-play-btn-wrap
         = render 'shared/player/list_play_btn', track_id: track.id
@@ -9,7 +9,7 @@
             .mr-1
               = "#{index + 1}."
             %strong
-              = track.title
+              = link_to track.title, artists_track_path(track_title: track.title)
 
           - if track.artist_id != @artist.id
             .small
@@ -27,5 +27,5 @@
               = track.duration
           = render 'shared/tracks/dropdown', track: track
 
-    .youtube-iframe
+    .youtube-iframe.d-none
       = render 'shared/tracks/youtube_iframe'

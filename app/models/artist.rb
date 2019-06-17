@@ -13,5 +13,10 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  scope :with_name, ->(name) { where('LOWER(name) = ?', name.downcase) }
+  scope :with_name, lambda { |name|
+    where(
+      'LOWER(name) = ? or name = ?',
+      name.downcase, name
+    )
+  }
 end

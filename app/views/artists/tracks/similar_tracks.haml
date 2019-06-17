@@ -1,0 +1,24 @@
+.card
+  .card-body
+    = render 'panel_header'
+
+    %h5
+      Similar tracks:
+
+    .separator.my-2
+
+    - if @similar_tracks.present?
+      %table.table.text-white.table-hover.table-sm
+        - @similar_tracks.map do |track|
+          = render 'similar_track', track: track.decorate
+      %nav
+        %ul.pagination
+          - if params[:page].to_i > 1
+            %li.page-item
+              = link_to_prev_page @similar_tracks, '< Prev', class: 'page-link'
+          - if @similar_tracks.length == 25
+            %li.page-item
+              = link_to_next_page @similar_tracks, 'Next >', class: 'page-link'
+    - else
+      No similar tracks.
+      

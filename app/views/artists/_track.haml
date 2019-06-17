@@ -1,5 +1,5 @@
 %tr
-  %td.media.align-items-center#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
+  %td.media.align-items-center.text-white#track{ id: track.id, class: ('dark' if playing_now?(track.id)) }
     .mr-2
 
       - if track.album_ids.any?
@@ -15,7 +15,7 @@
         %h6.mb-0.d-flex
 
           %strong
-            = track.title
+            = link_to track.title, artists_track_path(track_title: track.title)
 
         - if track.album_ids.any?
           .small

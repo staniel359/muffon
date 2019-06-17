@@ -1,0 +1,11 @@
+.position-relative
+  %h5
+    Music video:
+
+  .separator.my-2
+
+  - if @track.youtube_link.present?
+    #track_page_video_container
+      %iframe.mt-1{ frameborder: 0, src: @track.youtube_link }
+  - else
+    No music video.

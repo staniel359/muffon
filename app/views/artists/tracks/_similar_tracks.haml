@@ -1,0 +1,13 @@
+%h5
+  = link_to 'Similar tracks:', artists_tracks_similar_tracks_path
+
+.separator.my-2
+
+- if @similar_tracks.present?
+  %table.table.text-white.table-hover.table-sm
+    - @similar_tracks.map do |track|
+      = render 'similar_track', track: track.decorate
+  .text-right
+    = link_to 'View more...', artists_tracks_similar_tracks_path, class: 'btn btn-primary btn-sm'
+- else
+  No similar tracks.

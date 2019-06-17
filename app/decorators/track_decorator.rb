@@ -16,6 +16,14 @@ class TrackDecorator < Draper::Decorator
   end
 
   def first_album
-    Album.find_by(id: album_ids.first).decorate
+    Album.find_by(id: album_ids.first)&.decorate
+  end
+
+  def album_cover
+    first_album&.cover || 'missing_album.png'
+  end
+
+  def tags
+    Tag.find(tag_ids).pluck(:name)
   end
 end

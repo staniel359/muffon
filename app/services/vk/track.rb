@@ -2,6 +2,7 @@ module VK
   class Track < Muffon::Base
     VK_STR = 'abcdefghijklmnopqrstuvwxyz'\
       'ABCDEFGHIJKLMN0PQRSTUVWXYZO123456789+/='.freeze
+    PAGE_ID = 223_233_444
 
     def call
       return unless @args.vk_id.present?
@@ -12,18 +13,16 @@ module VK
 
   private
 
-    def retrieve_track
-      encoded_values = link.split('=')[1].split('#')
-      first = vk_o(encoded_values[0])
-      second = vk_o(encoded_values[1]).split("\v")
-      vk_s(first, second[1].to_i ^ 548_939_802)
+    def link
+      @link ||=
+        page_response.body.delete('\\').split('"')[1]
     end
 
-    def link
-      @link ||= RestClient.post(
+    def page_response
+      RestClient.post(
         'https://vk.com/al_audio.php',
         request_params, cookies: { remixsid: remixsid }
-      ).body.delete('\\').split('"')[1]
+      )
     end
 
     def request_params
@@ -31,7 +30,20 @@ module VK
     end
 
     def remixsid
-      secrets[:vk][:remixsid][Rails.env.to_sym]
+      secrets.dig(:vk, :remixsid, Rails.env.to_sym)
+    end
+
+    # Methods below are Ruby implementation of VK's
+    # obfuscated JS script for audio links decryption
+    # and should NOT be modified.
+
+    def retrieve_track
+      extra_first, extra_second =
+        link.match(/=(.*)#(.*)/)[1, 2]
+      first = vk_o(extra_first)
+      second =
+        vk_o(extra_second).match(/\v(.*)/)[1].to_i ^ PAGE_ID
+      vk_s(first, second)
     end
 
     def vk_o(string)

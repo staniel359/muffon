@@ -9,7 +9,7 @@ module YouTube
     def retrieve_youtube_link
       return unless youtube_id.present?
 
-      "https://www.youtube.com/embed/#{youtube_id}?rel=0&autoplay=1"
+      "https://www.youtube.com/embed/#{youtube_id}?rel=0"
     end
 
     def youtube_id

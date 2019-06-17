@@ -1,11 +1,52 @@
 .up
   = link_to artist_path do
     = image_tag @artist.image
-    %h6
-      = @artist.name 
+
+    - if params[:action].in?(%w[index show])
+      %h6
+        = @artist.name
 
 .up
   = link_to artists_tracks_path do
     %h6
       %i.fas.fa-music
-      Tracks
+
+      - if params[:action].in?(%w[index show])
+        Tracks
+
+- unless params[:action] == 'index'
+
+  - if @track.present?
+    .up
+      = link_to artists_track_path do
+        %h6
+          = @track.title
+
+    - if params[:action] == 'tags'
+      .up
+        = link_to artists_tracks_tags_path do
+          %h6
+            %i.fas.fa-tag
+            Tags
+    - elsif params[:action] == 'wiki'
+      .up
+        = link_to artists_tracks_wiki_path do
+          %h6
+            %i.fas.fa-info-circle
+            Wiki
+    - elsif params[:action] == 'similar_tracks'
+      .up
+        = link_to artists_tracks_similar_tracks_path do
+          %h6
+            Similar tracks
+    - elsif params[:action] == 'board'
+      .up
+        = link_to artists_tracks_board_path do
+          %h6
+            %i.fas.fa-edit
+            Board
+
+  - else
+    .up
+      %h6
+        Not found

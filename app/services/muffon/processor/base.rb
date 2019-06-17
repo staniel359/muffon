@@ -20,14 +20,14 @@ module Muffon
 
       def update_track(track_data, artist_id = nil)
         init_track(track_data, artist_id).tap do |t|
-          t.update(track_data.except(:artist, :album))
+          t.update(track_data.except(:artist, :album, :tags))
         end
       end
 
       def init_album(album_data, artist_id = nil)
         ::Album.with(
           title: album_data[:title],
-          artist_id: artist_id || update_artist(album_data[:artist])
+          artist_id: artist_id || update_artist(album_data[:artist]).id
         ).first_or_initialize
       end
 

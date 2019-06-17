@@ -87,7 +87,8 @@ module Muffon
 
     def release_dates
       services_list.keys.map do |r|
-        resources_data[r][:release_date]
+        resources_data.dig(r, :release_date) ||
+          resources_data.dig(r, :album, :release_date)
       end.reject(&:blank?).uniq
     end
 

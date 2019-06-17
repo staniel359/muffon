@@ -42,7 +42,7 @@ module VK
     end
 
     def formatted_string(string)
-      CGI.escape(string.split(' ').uniq.join(' '))
+      string.split(' ').uniq.join(' ')
     end
 
     def remixsid

@@ -5,7 +5,7 @@
         = image_tag playing_now_track.artist_image, class: 'img-xs rounded-circle'
       .media-body.overflow-hidden
         %h6.mb-0.truncated.text-white#player-panel-track-title
-          = link_to playing_now_track.title, '#'
+          = link_to playing_now_track.title, artists_track_path(artist_name: playing_now_track.artist_name, track_title: playing_now_track.title)
         .small
           = link_to playing_now_track.artist_name, artist_path(artist_name: playing_now_track.artist_name)
     = button_to player_stop_path(track_id: playing_now_track.id), class: 'btn-transp', method: :get, remote: true do

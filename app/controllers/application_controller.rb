@@ -51,6 +51,10 @@ private
     not_found if @album.nil?
   end
 
+  def check_correct_track
+    not_found if @track.nil?
+  end
+
   def set_profile_instances
     set_profile_artist_ids
     set_bookmarked_artist_ids
