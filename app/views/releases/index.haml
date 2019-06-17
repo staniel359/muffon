@@ -1,0 +1,21 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-dot-circle.mr-1
+      Releases
+
+    .separator.my-3
+
+    .media
+
+      = render 'scrollspy'
+
+      .media-body
+
+        #new.anchor
+        = render 'new'
+
+        %hr.my-3
+
+        #upcoming.anchor
+        = render 'upcoming'

@@ -147,3 +147,7 @@ en:
     artists: "%{tag} artists | Tags"
     albums: "%{tag} albums | Tags"
     tracks: "%{tag} tracks | Tags"
+  releases:
+    index: Releases
+    new: New releases
+    upcoming: Upcoming releases

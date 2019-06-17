@@ -1,0 +1,16 @@
+.up
+  = link_to releases_path do
+    %h6
+      %i.fas.fa-dot-circle
+      Releases
+
+- if params[:action] == 'new'
+  .up
+    = link_to releases_new_path do
+      %h6
+        New
+- elsif params[:action] == 'upcoming'
+  .up
+    = link_to releases_upcoming_path do
+      %h6
+        Upcoming

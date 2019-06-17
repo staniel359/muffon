@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     post '/', to: 'sessions#create'
   end
   delete '/logout', to: 'sessions#destroy'
-  resources :profiles, only: %i[index show update destroy], param: 'profile_id'
+  resources :profiles, only: %i[index show update destroy],
+    param: 'profile_id'
   namespace :profiles do
     scope '/:profile_id' do
       resources :groups, only: :index
@@ -42,11 +43,16 @@ Rails.application.routes.draw do
           get 'show_album_tracks'
         end
         scope ':playlist_id' do
-          resources :profile_tracks, only: %i[create destroy], param: 'profile_track_id'
-          resources :tracks, only: %i[create destroy], param: 'track_id'
-          resources :profile_albums, only: %i[create destroy], param: 'profile_album_id'
-          resources :albums, only: %i[create destroy], param: 'album_id'
-          resources :profile_artists, only: %i[create destroy], param: 'profile_artist_id'
+          resources :profile_tracks, only: %i[create destroy],
+            param: 'profile_track_id'
+          resources :tracks, only: %i[create destroy],
+            param: 'track_id'
+          resources :profile_albums, only: %i[create destroy],
+            param: 'profile_album_id'
+          resources :albums, only: %i[create destroy],
+            param: 'album_id'
+          resources :profile_artists, only: %i[create destroy],
+            param: 'profile_artist_id'
         end
         namespace :profile_tracks do
           get 'add_to_playlists'
@@ -55,8 +61,8 @@ Rails.application.routes.draw do
           get 'add_to_playlists'
         end
       end
-      resources :playlists, except: %i[new edit], param: 'playlist_name',
-        constraints: { playlist_name: /.*/ }
+      resources :playlists, except: %i[new edit],
+        param: 'playlist_name', constraints: { playlist_name: /.*/ }
       get '/library', to: 'library#show'
       namespace :library do
         get 'scope'
@@ -75,15 +81,15 @@ Rails.application.routes.draw do
                 get 'plays'
               end
             end
-            resources :tracks, only: %i[index show], param: 'track_title',
-              constraints: { track_title: /.*/ }
-            resources :albums, only: %i[index show], param: 'album_title',
-              constraints: { album_title: /.*/ }
+            resources :tracks, only: %i[index show],
+              param: 'track_title', constraints: { track_title: /.*/ }
+            resources :albums, only: %i[index show],
+              param: 'album_title', constraints: { album_title: /.*/ }
             resources :plays, only: :index
           end
         end
-        resources :artists, only: %i[index show create], param: 'artist_name',
-          constraints: { artist_name: /.*/ }
+        resources :artists, only: %i[index show create],
+          param: 'artist_name', constraints: { artist_name: /.*/ }
         resources :albums, only: :index
         resources :tracks, only: :index
         resources :loved_tracks, only: :index
@@ -107,7 +113,8 @@ Rails.application.routes.draw do
         get 'following'
       end
       get '/board', to: 'microposts#index', as: :board
-      resources :microposts, only: %i[create destroy], param: 'micropost_id'
+      resources :microposts, only: %i[create destroy],
+        param: 'micropost_id'
     end
   end
   post '/follow', to: 'relationships#create'
@@ -167,14 +174,17 @@ Rails.application.routes.draw do
     post '/join', to: 'memberships#create', as: 'groups_join'
     delete '/leave', to: 'memberships#destroy', as: 'groups_leave'
   end
-  resources :bookmarks, only: %i[index create destroy], param: 'model_type/:model_id'
+  resources :bookmarks, only: %i[index create destroy],
+    param: 'model_type/:model_id'
   namespace :bookmarks do
     get 'artists'
     get 'albums'
     get 'tracks'
   end
-  resources :listened_artists, only: %i[create destroy], param: 'artist_id'
-  resources :conversations, only: %i[index show destroy], param: 'conversation_id'
+  resources :listened_artists, only: %i[create destroy],
+    param: 'artist_id'
+  resources :conversations, only: %i[index show destroy],
+    param: 'conversation_id'
   namespace :conversations do
     scope '/:conversation_id' do
       get 'load_messages'
@@ -205,7 +215,8 @@ Rails.application.routes.draw do
     resources :albums, only: :index
     resources :tracks, only: :index
   end
-  resources :recommendations, only: %i[index destroy], param: 'recommendation_id'
+  resources :recommendations, only: %i[index destroy],
+    param: 'recommendation_id'
   namespace :recommendations do
     scope '/:recommendation_id' do
       patch 'restore'
@@ -213,6 +224,12 @@ Rails.application.routes.draw do
   end
   get '/radio', to: 'radio#show'
   get '/play_radio', to: 'radio#play'
+
+  resources :releases, only: :index
+  namespace :releases do
+    get 'new'
+    get 'upcoming'
+  end
 
   match '*path', :to => 'application#not_found', via: :all
 end
