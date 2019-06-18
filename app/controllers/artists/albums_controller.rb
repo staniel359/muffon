@@ -29,6 +29,7 @@ module Artists
 
     def board
       set_album
+      check_correct_album
       comments
     end
 

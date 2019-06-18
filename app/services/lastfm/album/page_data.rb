@@ -45,7 +45,7 @@ module LastFM
       end
 
       def release_date
-        release_date_text&.to_time&.strftime('%d-%m-%Y')
+        release_date_text&.to_time&.strftime('%Y-%m-%d')
       rescue ArgumentError
         release_date_text
       end

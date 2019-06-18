@@ -9,8 +9,7 @@
     .separator.my-2
 
     - @tags.each do |tag|
-      = link_to tag_path(tag_name: tag[:name]), class: 'tag' do
-        %strong
-          = tag[:name]
+      = link_to tag_path(tag_name: tag[:name]), class: 'tag m-0 mr-1 mb-1' do
+        = tag[:name]
         .small
           = "(#{tag[:count]})"

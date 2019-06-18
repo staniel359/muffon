@@ -25,7 +25,9 @@ module Muffon
       end
 
       def music_brainz_tracks
-        resources_data[:music_brainz][:tracks].presence
+        resources_data.dig(
+          :music_brainz, :album, :tracks
+        ).presence
       end
 
       def resources_data
@@ -33,7 +35,9 @@ module Muffon
       end
 
       def lastfm_page_tracks
-        resources_data[:lastfm_page][:tracks].presence
+        resources_data.dig(
+          :lastfm_page, :album, :tracks
+        ).presence
       end
 
       def lastfm_data_tracks
@@ -45,11 +49,15 @@ module Muffon
       end
 
       def bandcamp_tracks
-        resources_data[:bandcamp][:tracks].presence
+        resources_data.dig(
+          :bandcamp, :album, :tracks
+        ).presence
       end
 
       def discogs_tracks
-        resources_data[:discogs][:tracks].presence
+        resources_data.dig(
+          :discogs, :album, :tracks
+        ).presence
       end
 
       def track_bandcamp_link(track)

@@ -20,7 +20,7 @@ module Discogs
       {
         title: parsed_page['title'],
         artist: { name: parsed_page['artists_sort'] },
-        release_date: release_date,
+        release_date: parsed_page['released'],
         labels: labels,
         tracks: tracks
       }
@@ -34,10 +34,6 @@ module Discogs
       RestClient.get(
         "https://api.discogs.com/releases/#{album_id}"
       )
-    end
-
-    def release_date
-      parsed_page['released'].to_time.strftime('%d-%m-%Y')
     end
 
     def labels

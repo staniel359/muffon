@@ -173,7 +173,7 @@ module Helpers
            :description=>
             "Nocturne is the second studio album by American dream pop act Wild Nothing, released on August 28, 2012 on Captured Tracks.\n\nThe success of Wild Nothing's debut allowed Jack Tatum to record in a full studio for its follow-up, a change of pace from Gemini's exclusive use of the laptop for recording. Working with producer Nicolas Vernhes, Tatum stated: “The biggest thing was just having a producer, having somebody extremely knowledgeable to work with. I mean, obviously I had a lot of nice equipment at my disposal for the first time, too ... But I never wanted to use any of that to pursue a wholly different sound to the first album; it was just nice to have somebody to bounce ideas off, to help me tweak things.” \"Shadow,\" the first song from Nocturne to be released, features a string section, something Tatum \"never\" could have done without a studio environment",
            :cover=>"https://lastfm-img2.akamaized.net/i/u/300x300/3601d7b9f23e43aea6f9fa002672c6eb.png",
-           :release_date=>"01-01-2012",
+           :release_date=>"2012-01-01",
            :release_type=>"Album",
            :bandcamp_link=>nil,
            :tags=>["2012", "dream pop", "best of 2012", "indie", "favorite albums"],
@@ -235,7 +235,7 @@ module Helpers
            "mbid"=>nil,
            "description"=>
             "Nocturne is the second studio album by American dream pop act Wild Nothing, released on August 28, 2012 on Captured Tracks.\n\nThe success of Wild Nothing's debut allowed Jack Tatum to record in a full studio for its follow-up, a change of pace from Gemini's exclusive use of the laptop for recording. Working with producer Nicolas Vernhes, Tatum stated: “The biggest thing was just having a producer, having somebody extremely knowledgeable to work with. I mean, obviously I had a lot of nice equipment at my disposal for the first time, too ... But I never wanted to use any of that to pursue a wholly different sound to the first album; it was just nice to have somebody to bounce ideas off, to help me tweak things.” \"Shadow,\" the first song from Nocturne to be released, features a string section, something Tatum \"never\" could have done without a studio environment",
-           "release_date"=>"01-01-2012",
+           "release_date"=>"2012-01-01",
            "format"=>nil,
            "bandcamp_link"=>nil,
            "lastfm_listeners_count"=>229379,
@@ -644,11 +644,11 @@ module Helpers
     end
 
     def self.artist_track_data
-      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdilwNsX_M1pqJ9QN4yS0guh_-DEpaNJyGVFeafm52NZPiidiJBKfqBtukYMNJ7HjA6qDJedo6ERlj254", :radio_artist=>{:name=>"Wild Nothing"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
+      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/b178c444c699.mp3?extra=E-LS21KVAaHRzY6QCni6TwKPgc5gRN3VSuDsFQQtyXlMPZuHvs6JyS1U6J-N_sQ442y5_IuCItVaXiiRXQJ6621tIdcZOonDEdB7rBdaT1LfqhZ-ZGIIJhg4i7q_kRdorlPIMTR8lXKXX9iAuxFml7GlTCk", :radio_artist=>{:name=>"Wild Nothing"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
     end
 
     def self.tag_track_data
-      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/565b2f285236.mp3?extra=raXzfDrWYFd7j_wADieskDXzhTDYOhLzqz_n6Sz3DOBZHkh3Ax1c3HoZTS0EeAGh9lXskxnQOICdilwNsX_M1pqJ9QN4yS0guh_-DEpaNJyGVFeafm52NZPiidiJBKfqBtukYMNJ7HjA6qDJedo6ERlj254", :radio_tag=>{:name=>"Dream pop music"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
+      {:track => {:artist=>{:image=>"https://lastfm-img2.akamaized.net/i/u/600x600/c097f2f6afd64ce1bf902decd73f6095", :name=>"Lotus Plaza"}, :lastfm_listeners_count=>15968, :lastfm_plays_count=>68157, :link=>"https://psv4.vkuseraudio.net/c536106/u9255834/audios/b178c444c699.mp3?extra=E-LS21KVAaHRzY6QCni6TwKPgc5gRN3VSuDsFQQtyXlMPZuHvs6JyS1U6J-N_sQ442y5_IuCItVaXiiRXQJ6621tIdcZOonDEdB7rBdaT1LfqhZ-ZGIIJhg4i7q_kRdorlPIMTR8lXKXX9iAuxFml7GlTCk", :radio_tag=>{:name=>"Dream pop music"}, :title=>"A Threaded Needle", :youtube_link=>nil}}
     end
   end
 end

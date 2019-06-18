@@ -10,7 +10,7 @@ module MusicBrainz
       return {} unless
           @args.mbid.present? && album_response.present?
 
-      album_data_hash
+      { album: album_data_hash }
     end
 
     def album_data_hash

@@ -16,7 +16,7 @@ module Muffon
       @lastfm_data ||= LastFM::Album.call(
         album_title: @args.album_title,
         artist_name: @args.artist_name
-      )
+      )[:album]
     end
 
     def base_data
@@ -27,7 +27,9 @@ module Muffon
     end
 
     def cover
-      lastfm_data[:cover] || resources_data[:bandcamp][:cover]
+      lastfm_data[:cover] || resources_data.dig(
+        :bandcamp, :album, :cover
+      )
     end
 
     def resources_data
@@ -58,7 +60,7 @@ module Muffon
     def service_args
       {
         album_title: lastfm_data[:title],
-        artist_name: lastfm_data[:artist][:name],
+        artist_name: lastfm_data.dig(:artist, :name),
         mbid: lastfm_data[:mbid]
       }
     end
@@ -66,8 +68,8 @@ module Muffon
     def extra_data
       {
         release_date: release_date,
-        release_type: resources_data[:music_brainz][:release_type],
-        bandcamp_link: resources_data[:bandcamp][:link],
+        release_type: release_type,
+        bandcamp_link: bandcamp_link,
         tags: lastfm_data[:tags],
         labels: labels,
         tracks: tracks
@@ -76,7 +78,8 @@ module Muffon
 
     def release_date
       return if release_dates.empty?
-      return release_dates.min unless only_year? && dates_with_min_year.any?
+      return release_dates.min unless
+          only_year? && dates_with_min_year.any?
 
       dates_with_min_year.min
     end
@@ -87,8 +90,7 @@ module Muffon
 
     def release_dates
       services_list.keys.map do |r|
-        resources_data.dig(r, :release_date) ||
-          resources_data.dig(r, :album, :release_date)
+        resources_data.dig(r, :album, :release_date)
       end.reject(&:blank?).uniq
     end
 
@@ -100,9 +102,17 @@ module Muffon
       date.length > 4 && date.start_with?(release_dates.min)
     end
 
+    def release_type
+      resources_data.dig(:music_brainz, :album, :release_type)
+    end
+
+    def bandcamp_link
+      resources_data.dig(:bandcamp, :album, :link)
+    end
+
     def labels
-      resources_data[:music_brainz][:labels] ||
-        resources_data[:discogs][:labels] || []
+      resources_data.dig(:music_brainz, :album, :labels) ||
+        resources_data.dig(:discogs, :album, :labels) || []
     end
 
     def tracks

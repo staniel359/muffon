@@ -1,7 +1,7 @@
 module LastFM
   class Album < LastFM::Base
     def call
-      album_data
+      { album: album_data }
     end
 
   private

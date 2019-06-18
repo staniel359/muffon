@@ -28,7 +28,7 @@ module LastFM
       LastFM::Album.call(
         artist_name: album[0],
         album_title: album[1]
-      )
+      )[:album]
     end
   end
 end
