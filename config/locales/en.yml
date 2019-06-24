@@ -151,3 +151,5 @@ en:
     index: Releases
     new: New releases
     upcoming: Upcoming releases
+  stats:
+    index: Stats

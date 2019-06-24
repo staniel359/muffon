@@ -1,7 +1,7 @@
 #sidebar
 
   %table.table-sm.sidebar-menu.my-1
-    %tr
+    %tr.text-white
       %td
         %h6.mb-0
           %i.fas.fa-search
@@ -20,7 +20,7 @@
         = link_to profile_path(current_profile) do
           %i.fas.fa-user-circle
           Profile
-    %tr
+    %tr.text-white
       %td#sidebar-music-submenu-header
         %h6.mb-0
           %i.fas.fa-music
@@ -59,6 +59,11 @@
         = link_to radio_path do
           %i.fas.fa-podcast
           Radio
+    %tr
+      %td
+        = link_to stats_path do
+          %i.fas.fa-chart-bar
+          Stats
 
   %table.table-sm.table-hover.sidebar-menu
     %tr

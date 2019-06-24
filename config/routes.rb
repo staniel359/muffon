@@ -231,5 +231,18 @@ Rails.application.routes.draw do
     get 'upcoming'
   end
 
+  resources :stats, only: :index
+  namespace :stats do
+    scope module: 'scopes' do
+      get 'plays_scope'
+      get 'artists_scope'
+      get 'tracks_scope'
+      get 'tags_scope'
+      get 'new_tracks_scope'
+      get 'new_artists_scope'
+      get 'tags_timeline_scope'
+    end
+  end
+
   match '*path', :to => 'application#not_found', via: :all
 end

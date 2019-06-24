@@ -82,6 +82,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (3.2.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
@@ -123,6 +124,8 @@ GEM
       net-http-pipeline
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (4.1.2)
+      activesupport (>= 4.2)
     haml (5.1.1)
       temple (>= 0.8.0)
       tilt
@@ -372,10 +375,12 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   carrierwave
+  chartkick
   database_cleaner
   draper
   factory_bot_rails
   flag-icons-rails
+  groupdate
   haml
   i18n_data
   jbuilder

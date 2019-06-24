@@ -1,0 +1,85 @@
+.card
+  .card-body
+    %h4
+      %i.fas.fa-chart-bar.mr-1
+      Stats
+
+    .separator.my-3
+
+    .media
+      = render 'scrollspy'
+      .media-body
+        #plays.anchor
+        %h5
+          Plays:
+        .separator.my-2
+        
+        = render 'plays_form'
+        #stats_plays_data
+          = plays_data
+
+        %hr.my-3
+
+        #top_artists.anchor
+        %h5
+          Top artists:
+        .separator.my-2
+
+        = render 'artists_form'
+        #stats_artists_data
+          = artists_data
+
+        %hr.my-3
+
+        #top_tracks.anchor
+        %h5
+          Top tracks:
+        .separator.my-2
+
+        = render 'tracks_form'
+        #stats_tracks_data
+          = tracks_data
+
+        %hr.my-3
+
+        #top_tags.anchor
+        %h5
+          Top tags:
+        .separator.my-2
+
+        = render 'tags_form'
+        #stats_tags_data
+          = tags_data
+
+        %hr.my-3
+
+        #new_tracks.anchor
+        %h5
+          New tracks:
+        .separator.my-2
+
+        = render 'new_tracks_form'
+        #stats_new_tracks_data
+          = new_tracks_data
+
+        %hr.my-3
+
+        #new_artists.anchor
+        %h5
+          New artists:
+        .separator.my-2
+
+        = render 'new_artists_form'
+        #stats_new_artists_data
+          = new_artists_data
+
+        %hr.my-3
+
+        #tags_timeline.anchor
+        %h5
+          Tags timeline:
+        .separator.my-2
+
+        = render 'tags_timeline_form'
+        #stats_tags_timeline_data
+          = tags_timeline_data

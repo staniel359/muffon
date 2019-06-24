@@ -1,0 +1,10 @@
+.mb-3
+  = form_tag stats_tracks_scope_path, method: :get, remote: true do
+    .input-group
+      .input-group-prepend
+        %span.input-group-text
+          Enter date:
+      = text_field_tag :year, '', class: 'form-control', placeholder: 'Year'
+      = text_field_tag :month, '', class: 'form-control', placeholder: 'Month'
+      = text_field_tag :day, '', class: 'form-control', placeholder: 'Day'
+    = submit_tag :tracks_form, class: 'd-none'
