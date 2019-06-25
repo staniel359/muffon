@@ -20,6 +20,10 @@ module ApplicationHelper
     comment.profile_id == current_profile.id
   end
 
+  def error_upbar_text
+    responses_texts[response.code]
+  end
+
 private
 
   def start_page?
@@ -33,5 +37,12 @@ private
       profile_artist_id artist_id
       profile_album_id album_id
     ]
+  end
+
+  def responses_texts
+    {
+      '404' => 'Not found',
+      '500' => 'Something\'s wrong'
+    }
   end
 end

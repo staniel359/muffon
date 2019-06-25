@@ -2,12 +2,29 @@ class ApplicationController < ActionController::Base
   skip_before_action :verify_authenticity_token
   include SessionsHelper
 
+  THIRD_PARTY_ERRORS = [
+    RestClient::InternalServerError,
+    RestClient::BadGateway,
+    RestClient::ServiceUnavailable,
+    RestClient::GatewayTimeout
+  ].freeze
+
+  rescue_from(*THIRD_PARTY_ERRORS) do
+    handle_third_party_error
+  end
+
   def not_found
     @title = 'Not found'
     render file: '/exceptions/not_found', status: :not_found
   end
 
 private
+
+  def handle_third_party_error
+    @title = 'Something\'s wrong'
+    render file: '/exceptions/third_party_error',
+           status: :internal_server_error
+  end
 
   def set_profile
     @profile = Profile.find_by(id: params[:profile_id])&.decorate
