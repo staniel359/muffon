@@ -153,3 +153,5 @@ en:
     upcoming: Upcoming releases
   stats:
     index: Stats
+  api:
+    index: API

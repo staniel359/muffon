@@ -18,6 +18,7 @@ RSpec.describe Muffon::Artist do
   describe 'no processing' do
     let(:no_data_hash) {
       {
+        image: nil,
         similar_artists: [],
         top_albums: [],
         top_tracks: []

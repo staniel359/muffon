@@ -7,7 +7,13 @@ module VK
   private
 
     def retrieve_tracks
+      return [] unless can_proceed?
+
       matched_tracks.map { |t| full_id(t) }
+    end
+
+    def can_proceed?
+      [@args.artist_name, @args.track_title].all?(&:present?)
     end
 
     def full_id(track)
@@ -31,7 +37,8 @@ module VK
 
     def search_page_response
       RestClient.get(
-        "https://vk.com/search?c[section]=audio&c[q]=#{query_string}",
+        'https://vk.com/search?c[section]=audio'\
+          "&c[q]=#{CGI.escape(query_string)}",
         cookies: { remixsid: remixsid }
       )
     end

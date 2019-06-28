@@ -21,8 +21,8 @@ RSpec.describe Muffon::Processor::SimilarArtists do
             'of the Gallery EP in 2012'
         )
       }
-      it { expect(similar_artist.lastfm_listeners_count).to eq(278_796) }
-      it { expect(similar_artist.lastfm_plays_count).to eq(4_732_209) }
+      it { expect(similar_artist.lastfm_listeners_count).to eq(280_105) }
+      it { expect(similar_artist.lastfm_plays_count).to eq(4_751_705) }
       it { expect(similar_artist.tag_ids.length).to eq(5) }
     end
   end

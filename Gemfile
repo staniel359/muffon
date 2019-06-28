@@ -12,6 +12,7 @@ gem 'carrierwave'
 gem 'chartkick'
 gem 'draper'
 gem 'flag-icons-rails'
+gem "graphql"
 gem 'groupdate'
 gem 'haml'
 gem 'i18n_data'
@@ -59,3 +60,5 @@ group :development, :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'graphiql-rails', group: :development

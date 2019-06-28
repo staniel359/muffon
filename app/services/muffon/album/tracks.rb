@@ -1,6 +1,6 @@
 module Muffon
   class Album
-    class Tracks < Muffon::Base
+    class Tracks < Muffon::Album
       def call
         retrieve_album_tracks
       end
@@ -30,8 +30,13 @@ module Muffon
         ).presence
       end
 
-      def resources_data
-        @args.resources_data
+      def lastfm_data
+        @lastfm_data ||=
+          @args.lastfm_data || retrieve_lastfm_data
+      end
+
+      def retrieve_lastfm_data
+        LastFM::Album.call(@args)[:album]
       end
 
       def lastfm_page_tracks
@@ -42,10 +47,6 @@ module Muffon
 
       def lastfm_data_tracks
         lastfm_data[:tracks].presence
-      end
-
-      def lastfm_data
-        @args.lastfm_data
       end
 
       def bandcamp_tracks

@@ -124,6 +124,10 @@ GEM
       net-http-pipeline
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.6)
     groupdate (4.1.2)
       activesupport (>= 4.2)
     haml (5.1.1)
@@ -380,6 +384,8 @@ DEPENDENCIES
   draper
   factory_bot_rails
   flag-icons-rails
+  graphiql-rails
+  graphql
   groupdate
   haml
   i18n_data

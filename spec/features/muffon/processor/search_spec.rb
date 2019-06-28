@@ -39,8 +39,6 @@ RSpec.describe Muffon::Processor::Search do
   end
 
   describe 'no processing' do
-    let(:empty_hash) { { artists: [], albums: [], tracks: [] } }
-
     context 'when no query given' do
       let(:results) {
         VCR.use_cassette 'muffon_processor_search_no_query' do
@@ -48,7 +46,11 @@ RSpec.describe Muffon::Processor::Search do
         end
       }
 
-      it { expect(results).to eq(empty_hash) }
+      it {
+        expect(results).to eq(
+          q: nil, artists: [], albums: [], tracks: []
+        )
+      }
     end
 
     context 'when no results' do
@@ -58,7 +60,11 @@ RSpec.describe Muffon::Processor::Search do
         end
       }
 
-      it { expect(results).to eq(empty_hash) }
+      it {
+        expect(results).to eq(
+          q: Helpers::RANDOM_STRING, artists: [], albums: [], tracks: []
+        )
+      }
     end
   end
 end

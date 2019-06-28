@@ -1,6 +1,11 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  if Rails.env.development?
+    mount GraphiQL::Rails::Engine,
+      at: "/graphiql", graphql_path: "/graphql"
+  end
+  post "/graphql", to: "graphql#execute"
   mount Sidekiq::Web, at: '/sidekiq'
   mount ActionCable.server => '/cable'
 
@@ -243,6 +248,8 @@ Rails.application.routes.draw do
       get 'tags_timeline_scope'
     end
   end
+
+  get '/api', to: 'api#index'
 
   match '*path', :to => 'application#not_found', via: :all
 end

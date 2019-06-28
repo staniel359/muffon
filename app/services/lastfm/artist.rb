@@ -34,7 +34,6 @@ module LastFM
       {
         name: parsed_artist_data['name'],
         mbid: parsed_artist_data['mbid'],
-        image: parsed_artist_data['image'][3]['#text'],
         lastfm_listeners_count: lastfm_listeners_count,
         lastfm_plays_count: lastfm_plays_count
       }

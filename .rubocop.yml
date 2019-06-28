@@ -26,6 +26,7 @@ AllCops:
     - 'bundle/**/*'
     - '.irbrc'
     - '.pryrc'
+    - 'app/controllers/graphql_controller.rb'
 
 Documentation:
   Enabled: false
