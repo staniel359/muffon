@@ -50,9 +50,7 @@ private
   end
 
   def set_artists
-    @artists = paginate_array(
-      artists_data[:data], artists_data[:total_count], 21
-    )
+    @artists = paginate_array(artists_data, 1000, 21)
   end
 
   def artists_data
@@ -62,9 +60,7 @@ private
   end
 
   def set_albums
-    @albums = paginate_array(
-      albums_data[:data], albums_data[:total_count], 20
-    )
+    @albums = paginate_array(albums_data, 1000, 20)
   end
 
   def albums_data
@@ -74,9 +70,7 @@ private
   end
 
   def set_tracks
-    @tracks = paginate_array(
-      tracks_data[:data], tracks_data[:total_count], 50
-    )
+    @tracks = paginate_array(tracks_data, 1000, 50)
   end
 
   def tracks_data

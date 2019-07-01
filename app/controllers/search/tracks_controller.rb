@@ -8,14 +8,12 @@ module Search
   private
 
     def set_tracks
-      @tracks = paginate_array(
-        tracks_data[:data], tracks_data[:total_count], 20
-      )
+      @tracks = paginate_array(tracks_data, 1000, 20)
     end
 
     def tracks_data
-      @tracks_data ||= Muffon::Processor::Search::Tracks.call(
-        params.slice(:q, :page)
+      @tracks_data ||= Muffon::Processor::Search::Model.call(
+        params.slice(:q, :page).merge(model: 'track')
       )
     end
   end

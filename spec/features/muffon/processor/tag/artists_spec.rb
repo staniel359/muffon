@@ -20,8 +20,8 @@ RSpec.describe Muffon::Processor::Tag::Artists do
         )
       }
       it { expect(artist.tag_ids.length).to eq(5) }
-      it { expect(artist.lastfm_listeners_count).to eq(142_578) }
-      it { expect(artist.lastfm_plays_count).to eq(5_937_405) }
+      it { expect(artist.lastfm_listeners_count).to eq(142_971) }
+      it { expect(artist.lastfm_plays_count).to eq(5_954_681) }
     end
   end
 

@@ -46,7 +46,7 @@
     - @tracks.each do |track|
       %tr
         %td
-          = link_to '#' do
+          = link_to artists_track_path(track_title: track[:title], artist_name: track[:artist][:name]) do
             .media.align-items-center
               .mr-2
                 = image_tag (track[:artist][:image] || 'missing_artist.png'), class: 'img-xs'

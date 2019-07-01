@@ -6,7 +6,7 @@
     - if @track[:link].present?
       = audio_tag @track[:link], controls: true, class: 'w-100 h-100 position-absolute', id: 'radio_audio'
     - elsif @track[:youtube_link].present?
-      %iframe#radio_youtube_iframe{ frameborder: 0, src: @track[:youtube_link] }
+      %iframe#radio_youtube_iframe{ frameborder: 0, src: "#{@track[:youtube_link]}&autoplay=1" }
   #radio_track_info
     %h5
       = @track[:title]

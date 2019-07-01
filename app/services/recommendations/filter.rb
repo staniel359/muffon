@@ -31,7 +31,7 @@ module Recommendations
     end
 
     def artist_id
-      Artist.with(name: @args.artist_name).first&.id.to_i
+      Artist.with_name(@args.artist_name).first&.id.to_i
     end
 
     def tag_query

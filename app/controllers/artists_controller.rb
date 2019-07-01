@@ -86,7 +86,7 @@ private
 
   def set_images
     @images = paginate_array(
-      images_data[:data], images_data[:total_count], 40
+      images_data[:images], images_data[:total_count], 40
     )
   end
 

@@ -11,7 +11,7 @@
           = render 'actions', artist: similar_artist.decorate
           = link_to artist_path(artist_name: similar_artist.name) do
             .mb-1
-              = image_tag similar_artist.image, class: 'rounded-circle img-fluid position-relative'
+              = image_tag similar_artist.decorate.image, class: 'rounded-circle img-fluid position-relative'
             %h5
               %strong
                 = similar_artist.name

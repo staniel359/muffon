@@ -20,6 +20,15 @@
       %table.table.table-hover.table-sm
         - @tracks.each do |track|
           = render 'track', track: track.decorate
-      = paginate @tracks
+
+      %nav
+        %ul.pagination
+          - if params[:page].to_i > 1
+            %li.page-item
+              = link_to_prev_page @tracks, '< Prev', class: 'page-link'
+          - if @tracks.length == 50
+            %li.page-item
+              = link_to_next_page @tracks, 'Next >', class: 'page-link'
+
     - else
       There are no tracks.

@@ -2,4 +2,4 @@ $('.youtube-iframe').html('').addClass('d-none')
 $("#track_<%= params[:track_id] %> .youtube-iframe").removeClass('d-none').html(
   "<%= j render 'shared/tracks/youtube_iframe' %>"
 )
-$("#track_<%= params[:track_id] %> .dropdown").dropdown('toggle')
+$("#track_<%= params[:track_id] %> .dropdown-menu").removeClass('show')

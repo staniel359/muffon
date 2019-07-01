@@ -10,7 +10,7 @@
 
     - @tags.each do |tag|
       = link_to tag_path(tag_name: tag[:name]), class: 'tag' do
-        %strong.d-inline
+        .d-inline
           = tag[:name]
         .small.d-inline
           = "(#{tag[:count]})"

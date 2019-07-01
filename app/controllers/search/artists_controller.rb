@@ -10,14 +10,12 @@ module Search
   private
 
     def set_artists
-      @artists = paginate_array(
-        artists_data[:data], artists_data[:total_count], 20
-      )
+      @artists = paginate_array(artists_data, 1000, 20)
     end
 
     def artists_data
-      @artists_data ||= Muffon::Processor::Search::Artists.call(
-        params.slice(:q, :page)
+      @artists_data ||= Muffon::Processor::Search::Model.call(
+        params.slice(:q, :page).merge(model: 'artist')
       )
     end
   end

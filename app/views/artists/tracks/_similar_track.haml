@@ -1,20 +1,22 @@
 %tr
-  %td.media.align-items-center{ id: "track_#{track.id}" }
-    .mr-2.ml-1.list-play-btn-cover-wrap
-      = render 'shared/player/list_play_btn', track_id: track.id
-      = image_tag track.artist_image, class: 'img-xs'
-    .media-body.d-flex.justify-content-between.align-items-center
-      #track-data.w-100.mr-2
-        %h6.mb-0
-          %strong
-            = link_to track.title, artists_track_path(artist_name: track.artist_name, track_title: track.title)
-        .mb-0
-          = link_to track.artist_name, artist_path(artist_name: track.artist_name)
+  %td.text-white{ id: "track_#{track.id}" }
+    .media.align-items-center
+      .mr-2.ml-1.list-play-btn-cover-wrap
+        = render 'shared/player/list_play_btn', track_id: track.id
+        = image_tag track.artist_image, class: 'img-xs'
+      .media-body.d-flex.justify-content-between.align-items-center
+        #track-data.w-100.mr-2
+          %h6.mb-0
+            %strong
+              = link_to track.title, artists_track_path(artist_name: track.artist_name, track_title: track.title)
+          .mb-0
+            = link_to track.artist_name, artist_path(artist_name: track.artist_name)
 
-      #track-options.d-flex.align-items-center
-        .mr-1
-          .small
-            = track.duration
-        = render 'shared/tracks/dropdown', track: track
+        #track-options.d-flex.align-items-center
+          .mr-1
+            .small
+              = track.duration
+          = render 'shared/tracks/dropdown', track: track
 
-    %iframe.mg_top_10{ frameborder:'0', width: 480, height: 270, hidden: true }
+    .youtube-iframe.d-none
+      = render 'shared/tracks/youtube_iframe'

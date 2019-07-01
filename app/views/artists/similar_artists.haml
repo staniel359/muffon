@@ -9,4 +9,12 @@
 
     - @similar_artists.each do |similar_artist|
       = render 'similar_artist', similar_artist: similar_artist.decorate
-    = paginate @similar_artists
+
+    %nav
+      %ul.pagination
+        - if params[:page].to_i > 1
+          %li.page-item
+            = link_to_prev_page @similar_artists, '< Prev', class: 'page-link'
+        - if @similar_artists.length == 10
+          %li.page-item
+            = link_to_next_page @similar_artists, 'Next >', class: 'page-link'

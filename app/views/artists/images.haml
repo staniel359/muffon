@@ -18,4 +18,12 @@
           #image_modal.modal.image-modal{id: image.split('/').last}
             .modal-dialog
               = image_tag image.gsub('/avatar170s', ''), class: 'img-fluid'
-    = paginate @images
+
+    %nav
+      %ul.pagination
+        - if params[:page].to_i > 1
+          %li.page-item
+            = link_to_prev_page @images, '< Prev', class: 'page-link'
+        - if @images.length == 40
+          %li.page-item
+            = link_to_next_page @images, 'Next >', class: 'page-link'

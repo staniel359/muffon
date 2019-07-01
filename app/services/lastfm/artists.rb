@@ -13,12 +13,12 @@ module LastFM
     end
 
     def artists_data_sorted
-      artist_data_service
+      artist_data_services
       artists_data.sort_by { |a| a[0] }.transpose[1]
     end
 
-    def artist_data_service
-      LastFM::Artist # Preload constant
+    def artist_data_services
+      [LastFM::Artist::Images, LastFM::Artist] # Preload constants
     end
 
     def artists_data
@@ -34,7 +34,7 @@ module LastFM
     end
 
     def artist_data(artist_name)
-      artist_data_service.call(artist_name: artist_name)
+      LastFM::Artist.call(artist_name: artist_name)
     end
   end
 end

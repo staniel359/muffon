@@ -13,6 +13,7 @@ module LastFM
     end
 
     def albums_data
+      album_data_service
       albums_data_array = []
       threads = []
       @args.album_titles.each_with_index.each do |a, i|
@@ -24,8 +25,12 @@ module LastFM
       albums_data_array
     end
 
+    def album_data_service
+      LastFM::Album # Preload constant
+    end
+
     def album_data(album)
-      LastFM::Album.call(
+      album_data_service.call(
         artist_name: album[0],
         album_title: album[1]
       )[:album]

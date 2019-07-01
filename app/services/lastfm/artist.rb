@@ -34,9 +34,16 @@ module LastFM
       {
         name: parsed_artist_data['name'],
         mbid: parsed_artist_data['mbid'],
+        image: image,
         lastfm_listeners_count: lastfm_listeners_count,
         lastfm_plays_count: lastfm_plays_count
       }
+    end
+
+    def image
+      LastFM::Artist::Images.call(@args).dig(
+        :images, 0
+      )&.sub('avatar170s', '600x600')
     end
 
     def lastfm_listeners_count

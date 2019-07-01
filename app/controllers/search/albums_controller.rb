@@ -8,14 +8,12 @@ module Search
   private
 
     def set_albums
-      @albums = paginate_array(
-        albums_data[:data], albums_data[:total_count], 20
-      )
+      @albums = paginate_array(albums_data, 1000, 20)
     end
 
     def albums_data
-      @albums_data ||= Muffon::Processor::Search::Albums.call(
-        params.slice(:q, :page)
+      @albums_data ||= Muffon::Processor::Search::Model.call(
+        params.slice(:q, :page).merge(model: 'album')
       )
     end
   end

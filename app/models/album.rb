@@ -13,7 +13,8 @@ class Album < ApplicationRecord
 
   def self.with(title:, artist_id:)
     where(artist_id: artist_id).where(
-      'LOWER(title) = ?', title.downcase
+      'title = ? or lower(title) = ?',
+      title, title.downcase
     )
   end
 end

@@ -8,7 +8,7 @@ module Muffon
 
     def retrieve_artist_data
       [
-        artist_data[:base], image, top_tracks_hash,
+        artist_data[:base], top_tracks_hash,
         top_albums_hash, similar_artists_hash
       ].inject(:merge)
     end
@@ -28,7 +28,7 @@ module Muffon
     end
 
     def scopes_list
-      %i[base image top_tracks top_albums similar_artists]
+      %i[base top_tracks top_albums similar_artists]
     end
 
     def call_service(scope)
@@ -41,10 +41,10 @@ module Muffon
     def services_hash
       {
         base: LastFM::Artist,
-        image: LastFM::Artist::Images,
         top_tracks: ::LastFM::Artist::Tracks,
         top_albums: ::LastFM::Artist::Albums,
-        similar_artists: ::LastFM::Artist::SimilarArtists
+        similar_artists: ::LastFM::Artist::SimilarArtists,
+        image: LastFM::Artist::Images
       }
     end
 
@@ -53,14 +53,6 @@ module Muffon
         top_tracks: 10,
         top_albums: 6,
         similar_artists: 6
-      }
-    end
-
-    def image
-      {
-        image: artist_data.dig(:image, :images, 0)&.sub(
-          'avatar170s', '600x600'
-        )
       }
     end
 

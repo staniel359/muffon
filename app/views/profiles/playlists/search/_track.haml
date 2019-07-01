@@ -4,7 +4,7 @@
       = render 'profiles/playlists/track/add_btn', track_id: track.id, in_playlist: track.decorate.in_playlist?(@track_ids)
     .media-body.media
       .mr-2
-        = image_tag track.image, class: 'rounded-circle img-xs'
+        = image_tag track.artist_image, class: 'rounded-circle img-xs'
       .media-body.align-items-center
         %h6.mb-0
           %strong

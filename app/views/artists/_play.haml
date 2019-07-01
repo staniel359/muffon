@@ -1,5 +1,5 @@
 %tr
-  %td.media
+  %td.media.text-white
     .mr-2
       = link_to play.profile do
         = image_tag play.profile.avatar.url(:sm), class: 'rounded-circle'
@@ -9,31 +9,33 @@
 
       %hr.my-2
 
-      .media.align-items-center{ id: "track_#{play.track_id}" }
-        #love-btn.mr-2{ id: play.profile_track_id }
-          - if play.profile_track.loved?
-            %i.fas.fa-heart.text-danger
-          - else
-            %i.far.fa-heart.text-white
-        .mr-2.list-play-btn-cover-wrap
-          = render 'shared/player/list_play_btn', track_id: play.track_id
-          = image_tag play.album_cover, class: 'img-xs'
-        .media-body.d-flex.justify-content-between.align-items-center
-          #play-data
-            %h6.mb-0
-              %strong
-                = link_to play.track_title, '#'
-            - if play.profile_album_id.present?
-              .small.mb-0
-                = link_to play.album_title, artists_album_path(album_title: play.album_title), class: 'text-muted'
-            .small.d-sm-none
-              = play.created_at.strftime('%e %b %Y, %H:%M')
-          #play-options.d-flex.flex-row.align-items-center
-            .d-none.d-sm-block
-              .d-flex.flex-column.text-right.mr-2
-                .small
-                  = play.created_at.strftime('%e %b %Y')
-                .small
-                  = play.created_at.strftime('%H:%M')
-            = render 'shared/tracks/dropdown', track: play.track
-      %iframe.mt-2{ frameborder:'0', width: 576, height: 324, hidden: true }
+      %div{ id: "track_#{play.track_id}" }
+        .media.align-items-center
+          #love-btn.mr-2{ id: play.profile_track_id }
+            - if play.profile_track.loved?
+              %i.fas.fa-heart.text-danger
+            - else
+              %i.far.fa-heart.text-white
+          .mr-2.list-play-btn-cover-wrap
+            = render 'shared/player/list_play_btn', track_id: play.track_id
+            = image_tag play.album_cover, class: 'img-xs'
+          .media-body.d-flex.justify-content-between.align-items-center
+            #play-data
+              %h6.mb-0
+                %strong
+                  = link_to play.track_title, '#'
+              - if play.profile_album_id.present?
+                .small.mb-0
+                  = link_to play.album_title, artists_album_path(album_title: play.album_title), class: 'text-muted'
+              .small.d-sm-none
+                = play.created_at.strftime('%e %b %Y, %H:%M')
+            #play-options.d-flex.flex-row.align-items-center
+              .d-none.d-sm-block
+                .d-flex.flex-column.text-right.mr-2
+                  .small
+                    = play.created_at.strftime('%e %b %Y')
+                  .small
+                    = play.created_at.strftime('%H:%M')
+              = render 'shared/tracks/dropdown', track: play.track
+        .youtube-iframe.d-none
+          = render 'shared/tracks/youtube_iframe'

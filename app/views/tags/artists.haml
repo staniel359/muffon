@@ -19,6 +19,15 @@
     - if @artists.any?
       - @artists.each do |artist|
         = render 'artist_card', artist: artist.decorate
-      = paginate @artists
+
+      %nav
+        %ul.pagination
+          - if params[:page].to_i > 1
+            %li.page-item
+              = link_to_prev_page @artists, '< Prev', class: 'page-link'
+          - if @artists.length == 21
+            %li.page-item
+              = link_to_next_page @artists, 'Next >', class: 'page-link'
+
     - else
       There are no artists.

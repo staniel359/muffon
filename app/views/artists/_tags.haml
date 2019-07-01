@@ -3,7 +3,6 @@
     %i.fas.fa-tag
     - artist.top_tags.pluck(:name).each do |tag_name|
       = link_to tag_path(tag_name: tag_name), class: 'tag' do
-        %strong
-          = tag_name
+        = tag_name
     .d-inline-block
       = link_to 'More tags...', artists_tags_path(artist.name), class: 'btn btn-sm btn-link text-white'
