@@ -4,7 +4,7 @@ class RecommendationsController < ApplicationController
   def index
     set_query_params
     set_recommendations
-    set_artist
+    set_artist if params[:artist_name].present?
     set_current_artist_ids
     set_profile_instances
     respond_with_js_and_html
@@ -41,8 +41,6 @@ private
   end
 
   def set_artist
-    return unless params[:artist_name].present?
-
     @artist = current_profile.profile_artists.joins(
       'JOIN "artists" ON "artists"."id" = "profile_artists"."artist_id"'
     ).find_by(

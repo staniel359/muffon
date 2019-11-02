@@ -19,8 +19,8 @@ module Muffon
       end
 
       def select_of_tracks
-        music_brainz_tracks || lastfm_page_tracks ||
-          lastfm_data_tracks || bandcamp_tracks ||
+        lastfm_data_tracks || lastfm_page_tracks ||
+          music_brainz_tracks || bandcamp_tracks ||
           discogs_tracks || []
       end
 

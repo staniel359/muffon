@@ -14,7 +14,7 @@ module Recommendations
 
     def profile_artists
       ProfileArtist.where(
-        id: @args.profile_artist_ids
+        id: @args.profile_artist_ids.first(5)
       ).includes(:artist).plays_count_desc
     end
 

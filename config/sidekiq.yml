@@ -1,5 +1,5 @@
 :verbose: false
-:concurrency: 25
+:concurrency: 50
 :pidfile: tmp/pids/sidekiq.pid
 :queues:
   - default

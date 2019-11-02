@@ -22,7 +22,7 @@ module LastFM
 
       def profile_artist_ids
         @profile_artist_ids ||= ProfileArtist.where(
-          profile_id: @args.profile_id
+          id: @profile.profile_artist_ids
         ).order(plays_count: :desc).pluck(:id)
       end
 
@@ -35,7 +35,6 @@ module LastFM
 
       def process_artist(id)
         Muffon::Processor::Recommendations.call(
-          profile_id: @args.profile_id,
           profile_artist_id: id
         )
       end

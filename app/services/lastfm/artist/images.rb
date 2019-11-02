@@ -16,8 +16,8 @@ module LastFM
 
       def images_list
         @images_list ||= parsed_page.css(
-          '.image-list-image'
-        ).map { |i| i['src'] }
+          '.image-list-item'
+        ).map { |i| i.css('img')[0]['src'] }
       end
 
       def parsed_page
