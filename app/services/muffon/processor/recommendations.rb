@@ -3,6 +3,8 @@ module Muffon
     class Recommendations < Muffon::Processor::Base
       def call
         process_artist_recommendations
+      rescue RestClient::BadGateway, RestClient::InternalServerError
+        retry
       end
 
     private

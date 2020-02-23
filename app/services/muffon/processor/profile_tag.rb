@@ -31,7 +31,7 @@ module Muffon
           tag_name: @args.tag_name,
           model_name: model,
           page: page
-        )
+        )[:taggings]
       end
 
       def process_model_tagging(model, tagging)

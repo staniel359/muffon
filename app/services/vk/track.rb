@@ -6,16 +6,15 @@ module VK
 
     def call
       return unless @args.vk_id.present?
-      return unless link.present?
+      return unless payload.present?
 
       retrieve_track
     end
 
   private
 
-    def link
-      @link ||=
-        page_response.body.delete('\\').split('"')[1]
+    def payload
+      @payload ||= page_response.body.delete('\\')
     end
 
     def page_response
@@ -39,7 +38,7 @@ module VK
 
     def retrieve_track
       extra_first, extra_second =
-        link.match(/=(.*)#(.*)/)[1, 2]
+        payload.match(/=(.*)#(\w*)/)[1, 2]
       first = vk_o(extra_first)
       second =
         vk_o(extra_second).match(/\v(.*)/)[1].to_i ^ PAGE_ID

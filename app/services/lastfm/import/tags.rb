@@ -22,7 +22,7 @@ module LastFM
       def tags
         @tags ||= LastFM::User::Tags.call(
           lastfm_id: @profile.lastfm_id
-        )
+        )[:tags]
       end
 
       def import_tags

@@ -46,7 +46,7 @@ module LastFM
       end
 
       def loved_tracks_from_page(page)
-        loved_tracks_page_data(page)[:tracks].reverse
+        loved_tracks_page_data(page)[:loved_tracks].reverse
       end
 
       def process_loved_track(track)

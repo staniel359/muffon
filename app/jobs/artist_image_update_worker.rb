@@ -9,6 +9,5 @@ class ArtistImageUpdateWorker
       artist_name: artist_name
     ).dig(:images, 0)
     artist.update(image: image)
-    puts image
   end
 end
