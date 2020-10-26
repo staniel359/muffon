@@ -1,0 +1,80 @@
+@media only screen and (max-width: 767px) {
+  .ui.container {
+    margin: 0 2em !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .ui.container {
+    width: 700px !important;
+  }
+}
+
+/*body {
+  background: #5e3ea2d6 !important;
+}*/
+
+.fixed {
+  position: fixed !important;
+}
+
+.mainContainer {
+  padding-top: 60px;
+}
+
+.ui.dimmer .content,
+.ui.dimmer img {
+  max-height: 100%;
+}
+
+.globalSearch > .content {
+  height: calc(100% - 100px);
+  width: 500px;
+  text-align: left;
+}
+.globalSearchResultsWrap {
+  height: calc(100% - 72px);
+  padding-top: 0 !important;
+}
+.globalSearchResultsWrap > div {
+  height: 100% !important;
+}
+.globalSearchTabWrap {
+  height: calc(100% - 54px);
+  overflow-y: scroll;
+  border: none !important;
+  padding: 0 !important;
+}
+.globalSearchTab {
+  height: 100%;
+}
+.globalSearchItemImage {
+  width: 50px !important;
+  height: 50px !important;
+}
+.globalSearchItemContent {
+  width: calc(100% - 50px) !important;
+  word-break: break-all;
+}
+
+.artistPageArtistName {
+  margin-bottom: 10px !important;
+}
+.artistPageLeftColumn {
+  height: 100%;
+  display: inline-block;
+  position: fixed;
+  width: 200px;
+}
+.artistPageRightColumn {
+  display: inline-block;
+  width: 480px;
+  float: right;
+}
+.artistLeftColumnName {
+  margin-top: 10px !important;
+}
+.artistDescription {
+  max-height: 175px;
+  overflow-y: scroll;
+}

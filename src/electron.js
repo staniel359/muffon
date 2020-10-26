@@ -11,9 +11,9 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true
     },
-    show: false
+    show: false,
+    autoHideMenuBar: true
   })
-  win.setMenu(null)
 
   const localhost = 'http://localhost:3000'
   const indexFile = `file://${path.join(__dirname, '../dist/index.html')}`
@@ -22,11 +22,13 @@ function createWindow () {
     win.loadURL(localhost)
     win.webContents.openDevTools()
   } else {
+    win.setMenu(null)
     win.loadURL(indexFile)
   }
 
   win.on('ready-to-show', () => {
     win.show()
+    win.setMinimumSize(800, 600)
   })
 }
 

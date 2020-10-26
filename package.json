@@ -17,7 +17,7 @@
     "start": "concurrently \"yarn webpack-start\" \"yarn wait-electron-start\"",
     "test": "jest",
     "format": "prettier . -w",
-    "lint": "eslint . --fix",
+    "lint": "eslint \"**/*.{js,jsx}\" --fix",
     "brush": "yarn format && yarn lint",
     "webpack-build": "webpack",
     "electron-build": "electron-builder --win",
@@ -25,27 +25,37 @@
     "package": "yarn webpack-build && yarn electron-build"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "electron-is-dev": "^1.2.0",
+    "mousetrap": "^1.6.5",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0"
+    "react-dom": "^16.14.0",
+    "react-router-dom": "^5.2.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.0",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^26.6.0",
     "babel-loader": "^8.1.0",
     "concurrently": "^5.3.0",
     "css-loader": "^5.0.0",
     "electron": "^10.1.3",
     "electron-builder": "^22.9.1",
-    "eslint": "^7.11.0",
+    "eslint": "^7.12.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-unused-imports": "^1.0.0",
+    "file-loader": "^6.1.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.0",
     "prettier": "^2.1.2",
@@ -75,6 +85,5 @@
       "src/electron.js"
     ]
   },
-  "postinstall": "electron-builder install-app-deps",
-  "proxy": "http://localhost:3001/"
+  "postinstall": "electron-builder install-app-deps"
 }
