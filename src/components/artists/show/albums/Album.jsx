@@ -1,18 +1,20 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 
-export default class Album extends React.PureComponent {
-  cover = this.props.album.covers.cropped_300
-  title = this.props.album.title
-  playsCount = this.props.album.plays_count.toLocaleString('eu')
+export default class Album extends React.Component {
+  format (number) {
+    return number.toLocaleString('eu')
+  }
 
   render () {
     return (
       <Card>
-        <Image src={this.cover} wrapped ui={false} />
+        <Image src={this.props.album.covers.cropped_300} wrapped ui={false} />
         <Card.Content textAlign="center">
-          <Card.Header>{this.title}</Card.Header>
-          <Card.Meta>{`${this.playsCount} plays`}</Card.Meta>
+          <Card.Header content={this.props.album.title} />
+          <Card.Meta
+            content={`${this.format(this.props.album.plays_count)} plays`}
+          />
         </Card.Content>
       </Card>
     )

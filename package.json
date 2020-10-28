@@ -28,7 +28,7 @@
     "axios": "^0.20.0",
     "electron-is-dev": "^1.2.0",
     "mousetrap": "^1.6.5",
-    "react": "^16.14.0",
+    "react": "^17.0.1",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "semantic-ui-css": "^2.4.1",

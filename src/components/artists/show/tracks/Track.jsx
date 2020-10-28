@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Icon, List } from 'semantic-ui-react'
+import { Button, List } from 'semantic-ui-react'
 
 export default class Track extends React.Component {
   constructor (props) {
@@ -7,28 +7,32 @@ export default class Track extends React.Component {
     this.state = {}
   }
 
-  title = this.props.track.title
-  playsCount = this.props.track.plays_count.toLocaleString('eu')
-  listenersCount = this.props.track.listeners_count.toLocaleString('eu')
-
   handleClick = () => {
     this.setState({ loading: !this.state.loading })
+  }
+
+  format (number) {
+    return number.toLocaleString('eu')
   }
 
   render () {
     return (
       <List.Item>
         <List.Icon verticalAlign="middle">
-          <Button onClick={this.handleClick} loading={this.state.loading} icon>
-            <Icon name="play" />
-          </Button>
+          <Button
+            onClick={this.handleClick}
+            loading={this.state.loading}
+            icon="play"
+          />
         </List.Icon>
 
         <List.Content>
-          <List.Header as="h4">{this.title}</List.Header>
+          <List.Header as="h4" content={this.props.track.title} />
           <List.Description>
-            <div>{`${this.playsCount} plays`}</div>
-            <div>{`${this.listenersCount} listeners`}</div>
+            <div>{`${this.format(this.props.track.plays_count)} plays`}</div>
+            <div>{`${this.format(
+              this.props.track.listeners_count
+            )} listeners`}</div>
           </List.Description>
         </List.Content>
       </List.Item>

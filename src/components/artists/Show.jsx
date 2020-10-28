@@ -1,149 +1,127 @@
 import React from 'react'
-import axios from 'axios'
-import PageData from './show/PageData'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import Info from './show/Info'
+import Image from './show/Image'
+import Tracks from './show/Tracks'
+import Albums from './show/Albums'
+import Similar from './show/Similar'
+import { Header, Transition, Dimmer, Loader } from 'semantic-ui-react'
+import ErrorData from '../partials/ErrorData'
 
 export class Show extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      loading: true,
+      windowScrolled: false
+    }
   }
 
   componentDidMount () {
-    this.getArtistInfo()
-  }
-
-  artistName = this.props.match.params.artistName
-
-  getArtistInfo () {
-    this.startLoader()
-    axios(this.artistLink())
-      .then(resp => this.handleSuccess(resp))
-      .catch(error => this.handleError(error))
-      .then(() => this.stopLoader())
-  }
-
-  startLoader () {
-    this.setState({ loading: true })
-  }
-
-  artistLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName}`
-    }
-  }
-
-  handleSuccess (resp) {
-    this.setArtistInfo(resp)
-    this.resetData()
-    this.getArtistImage()
-    this.getArtistTracks()
-    this.getArtistAlbums()
-  }
-
-  setArtistInfo (resp) {
-    this.setState({ info: resp.data.artist })
-  }
-
-  resetData () {
-    this.setState({
-      image: null,
-      tracks: null,
-      albums: null
-    })
-  }
-
-  getArtistImage () {
-    axios(this.artistImagesLink()).then(resp => this.setArtistImage(resp))
-  }
-
-  artistImagesLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/images`
-    }
-  }
-
-  setArtistImage (resp) {
-    this.setState({
-      image: resp.data.artist.images[0] || 'noImage'
-    })
-  }
-
-  getArtistTracks () {
-    axios(this.artistTracksLink()).then(resp => this.setArtistTracks(resp))
-  }
-
-  artistTracksLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/tracks`,
-      params: { limit: 10 }
-    }
-  }
-
-  setArtistTracks (resp) {
-    this.setState({
-      tracks: resp.data.artist.tracks
-    })
-  }
-
-  getArtistAlbums () {
-    axios(this.artistAlbumsLink()).then(resp => this.setArtistAlbums(resp))
-  }
-
-  artistAlbumsLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/albums`,
-      params: { limit: 4 }
-    }
-  }
-
-  setArtistAlbums (resp) {
-    this.setState({
-      albums: resp.data.artist.albums
-    })
-  }
-
-  handleError (error) {
-    this.setState({
-      error: error.message,
-      info: null
-    })
-  }
-
-  stopLoader () {
-    this.setState({ loading: false })
+    window.onscroll = () =>
+      this.setState({
+        windowScrolled: !!window.scrollY
+      })
   }
 
   loader () {
     return (
-      this.state.loading && (
-        <Dimmer className="fixed" active inverted>
-          <Loader inverted />
-        </Dimmer>
-      )
+      <Dimmer className="fixed" active inverted content={<Loader inverted />} />
     )
   }
 
-  pageDataOrError () {
-    return (this.state.info && this.pageData()) || this.state.error
+  leftColumn () {
+    return (
+      <div className="artistPageLeftColumn">
+        {this.state.artistName && (
+          <Image artistName={this.artistNameEncoded()} />
+        )}
+
+        {this.state.artistName && this.artistLeftColumnName()}
+      </div>
+    )
   }
 
-  pageData () {
-    const { info, image, tracks, albums } = this.state
-    return <PageData {...{ info, image, tracks, albums }} />
+  artistNameEncoded () {
+    return encodeURIComponent(this.state.artistName)
+  }
+
+  artistLeftColumnName () {
+    return (
+      <Transition
+        visible={this.state.windowScrolled}
+        transitionOnMount={false}
+        animation="fade"
+        duration={200}
+        mountOnShow={false}
+      >
+        <Header
+          size="medium"
+          textAlign="center"
+          className="artistPageLeftColumnName"
+          content={this.state.artistName}
+        />
+      </Transition>
+    )
+  }
+
+  rightColumn () {
+    return (
+      <div className="artistPageRightColumn">
+        <Info
+          artistName={this.props.match.params.artistName}
+          handleError={this.handleError}
+          stopLoader={this.stopLoader}
+          setArtistName={this.setArtistName}
+        />
+
+        {this.state.artistName && (
+          <Tracks artistName={this.artistNameEncoded()} />
+        )}
+
+        {this.state.artistName && (
+          <Albums artistName={this.artistNameEncoded()} />
+        )}
+
+        {this.state.artistName && (
+          <Similar artistName={this.artistNameEncoded()} />
+        )}
+      </div>
+    )
+  }
+
+  handleError = error => {
+    this.setState({ error: error })
+  }
+
+  stopLoader = () => {
+    this.setState({ loading: false })
+  }
+
+  setArtistName = name => {
+    this.setState({ artistName: name })
+  }
+
+  errorData () {
+    return this.state.error && <ErrorData error={this.state.error} />
+  }
+
+  data () {
+    return (
+      <React.Fragment>
+        {this.leftColumn()}
+
+        {this.rightColumn()}
+      </React.Fragment>
+    )
   }
 
   render () {
     return (
-      <div>
-        {this.loader()}
+      <React.Fragment>
+        {this.state.loading && this.loader()}
 
-        {this.pageDataOrError()}
-      </div>
+        {(this.state.error && this.errorData()) || this.data()}
+      </React.Fragment>
     )
   }
 }

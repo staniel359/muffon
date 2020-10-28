@@ -28,7 +28,7 @@
 }
 
 .globalSearch > .content {
-  height: calc(100% - 100px);
+  height: calc(100% - 80px);
   width: 500px;
   text-align: left;
 }
@@ -45,8 +45,8 @@
   border: none !important;
   padding: 0 !important;
 }
-.globalSearchTab {
-  height: 100%;
+.globalSearchTabPagination button {
+  margin: 0.5em !important;
 }
 .globalSearchItemImage {
   width: 50px !important;
@@ -55,6 +55,12 @@
 .globalSearchItemContent {
   width: calc(100% - 50px) !important;
   word-break: break-all;
+}
+.globalSearchItemIcon {
+  padding: 0 !important;
+}
+.globalSearchItemIcon button {
+  margin: 0 !important;
 }
 
 .artistPageArtistName {
@@ -71,10 +77,13 @@
   width: 480px;
   float: right;
 }
-.artistLeftColumnName {
+.artistPageLeftColumnName {
   margin-top: 10px !important;
 }
-.artistDescription {
+.artistPageDescription {
   max-height: 175px;
   overflow-y: scroll;
+}
+.artistPageSegment {
+  min-height: 100px;
 }

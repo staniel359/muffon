@@ -1,6 +1,9 @@
 import React from 'react'
-import axios from 'axios'
-import Tabs from './Tabs'
+import Artists from './tabs/Artists'
+import Albums from './tabs/Albums'
+import Tracks from './tabs/Tracks'
+import { Segment, Tab } from 'semantic-ui-react'
+import { v4 as uuid } from 'uuid'
 
 export default class Results extends React.Component {
   constructor (props) {
@@ -8,147 +11,69 @@ export default class Results extends React.Component {
     this.state = {}
   }
 
-  componentDidMount () {
-    this.search()
-  }
-
-  search () {
-    this.searchArtists()
-    this.searchAlbums()
-    this.searchTracks()
-  }
-
-  searchArtists () {
-    this.setState({ artistsLoaded: false })
-
-    axios(this.searchArtistsLink())
-      .then(resp => this.setArtistsSearchResults(resp))
-      .catch(error => this.handleArtistsError(error))
-      .then(() => this.setState({ artistsLoaded: true }))
-  }
-
-  searchArtistsLink () {
+  tabMenu () {
     return {
-      method: 'GET',
-      url: '/lastfm/search/artists',
-      params: {
-        query: this.props.query,
-        limit: 20
-      }
+      fluid: true,
+      pointing: true,
+      secondary: true
     }
   }
 
-  setArtistsSearchResults (resp) {
-    this.setState({
-      artists: resp.data.search.artists
-    })
+  tabPanes () {
+    return [
+      { menuItem: 'Artists', pane: this.artistsTab() },
+      { menuItem: 'Albums', pane: this.albumsTab() },
+      { menuItem: 'Tracks', pane: this.tracksTab() }
+    ]
   }
 
-  handleArtistsError (error) {
-    this.setState({
-      artistsError: this.errorCode(error),
-      artists: null
-    })
+  artistsTab () {
+    const { query, hideGlobalSearch } = this.props
+    const { encode } = this
+    return <Artists key={uuid()} {...{ query, hideGlobalSearch, encode }} />
   }
 
-  errorCode (error) {
-    return (error.response && error.response.status) || 500
+  encode = string => {
+    return encodeURIComponent(string)
   }
 
-  searchAlbums () {
-    this.setState({ albumsLoaded: false })
-
-    axios(this.searchAlbumsLink())
-      .then(resp => this.setAlbumsSearchResults(resp))
-      .catch(error => this.handleAlbumsError(error))
-      .then(() => this.setState({ albumsLoaded: true }))
-  }
-
-  searchAlbumsLink () {
-    return {
-      method: 'GET',
-      url: '/lastfm/search/albums',
-      params: {
-        query: this.props.query,
-        limit: 20
-      }
-    }
-  }
-
-  setAlbumsSearchResults (resp) {
-    this.setState({
-      albums: resp.data.search.albums
-    })
-  }
-
-  handleAlbumsError (error) {
-    this.setState({
-      albumsError: this.errorCode(error),
-      albums: null
-    })
-  }
-
-  searchTracks () {
-    this.setState({ tracksLoaded: false })
-
-    axios(this.searchTracksLink())
-      .then(resp => this.setTracksSearchResults(resp))
-      .catch(error => this.handleTracksError(error))
-      .then(() => this.setState({ tracksLoaded: true }))
-  }
-
-  searchTracksLink () {
-    return {
-      method: 'GET',
-      url: '/lastfm/search/tracks',
-      params: {
-        query: this.props.query,
-        limit: 50
-      }
-    }
-  }
-
-  setTracksSearchResults (resp) {
-    this.setState({
-      tracks: resp.data.search.tracks
-    })
-  }
-
-  handleTracksError (error) {
-    this.setState({
-      tracksError: this.errorCode(error),
-      tracks: null
-    })
-  }
-
-  searchResultsTabs () {
-    const {
-      artists,
-      artistsLoaded,
-      albums,
-      albumsLoaded,
-      tracks,
-      tracksLoaded,
-      hideGlobalSearch
-    } = this.state
-
+  albumsTab () {
+    const { query, hideGlobalSearch } = this.props
+    const { encode, scrollTabToTop } = this
     return (
-      <Tabs
-        {...{
-          artists,
-          artistsLoaded,
-          albums,
-          albumsLoaded,
-          tracks,
-          tracksLoaded,
-          hideGlobalSearch
-        }}
-        hideGlobalSearch={this.props.hideGlobalSearch}
+      <Albums
+        key={uuid()}
+        {...{ query, hideGlobalSearch, encode, scrollTabToTop }}
+      />
+    )
+  }
+
+  scrollTabToTop = () => {
+    document
+      .querySelectorAll('.globalSearchTabWrap')
+      .forEach(e => (e.scrollTop = 0))
+  }
+
+  tracksTab () {
+    const { query, hideGlobalSearch } = this.props
+    const { encode, scrollTabToTop } = this
+    return (
+      <Tracks
+        key={uuid()}
+        {...{ query, hideGlobalSearch, encode, scrollTabToTop }}
       />
     )
   }
 
   render () {
-    return this.searchResultsTabs()
+    return (
+      <Segment attached="bottom" className="globalSearchResultsWrap">
+        <Tab
+          menu={this.tabMenu()}
+          panes={this.tabPanes()}
+          renderActiveOnly={false}
+        />
+      </Segment>
+    )
   }
 }

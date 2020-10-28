@@ -1,7 +1,6 @@
 import React from 'react'
 import GlobalSearch from './global/Search'
 import Routes from './Routes'
-import { HashRouter as Router } from 'react-router-dom'
 import Mousetrap from 'mousetrap'
 import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
 
@@ -57,7 +56,11 @@ export default class App extends React.Component {
   }
 
   globalSearchDimmer () {
-    return <GlobalSearch hideGlobalSearch={this.hideGlobalSearch} />
+    return (
+      this.state.globalSearch && (
+        <GlobalSearch hideGlobalSearch={this.hideGlobalSearch} />
+      )
+    )
   }
 
   render () {
@@ -65,13 +68,11 @@ export default class App extends React.Component {
       <React.Fragment>
         {this.menu()}
 
-        <div className="ui container mainContainer">
-          <Router>
-            <Routes />
+        <Container className="mainContainer">
+          <Routes />
 
-            {this.state.globalSearch && this.globalSearchDimmer()}
-          </Router>
-        </div>
+          {this.globalSearchDimmer()}
+        </Container>
       </React.Fragment>
     )
   }

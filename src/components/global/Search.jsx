@@ -33,22 +33,16 @@ export default class Search extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
 
-    const query = this.input.current.inputRef.current.value
-    if (query) {
-      this.setState({ query: query })
+    const submitValue = this.input.current.inputRef.current.value
+    if (submitValue) {
+      this.setState({ query: submitValue })
     }
   }
 
   searchResults () {
-    return (
-      this.state.query && (
-        <Results
-          key={uuid()}
-          query={this.state.query}
-          hideGlobalSearch={this.props.hideGlobalSearch}
-        />
-      )
-    )
+    const { query } = this.state
+    const { hideGlobalSearch } = this.props
+    return query && <Results key={uuid()} {...{ query, hideGlobalSearch }} />
   }
 
   render () {
