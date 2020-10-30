@@ -4,6 +4,10 @@ import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 
 export default class Similar extends React.Component {
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextState !== this.state
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -13,6 +17,7 @@ export default class Similar extends React.Component {
   }
 
   limit = 4
+  artistNameEncoded = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getSimilar()
@@ -26,7 +31,7 @@ export default class Similar extends React.Component {
   similarLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.props.artistName}/similar`,
+      url: `/lastfm/artists/${this.artistNameEncoded}/similar`,
       params: {
         limit: this.limit,
         page: this.state.page
@@ -65,8 +70,8 @@ export default class Similar extends React.Component {
     )
   }
 
-  handlePageChange = (e, { activePage }) => {
-    this.props.scrollToSegmentTop('artistPageSimilarSegment')
+  handlePageChange = (_, { activePage }) => {
+    this.props.scrollToSegmentTop('similar')
     this.setState({ page: activePage }, this.getSimilar)
   }
 
@@ -76,7 +81,7 @@ export default class Similar extends React.Component {
         <Header as="h3" attached="top" content="Similar" />
         <Segment
           className="artistPageSegment"
-          id="artistPageSimilarSegment"
+          id="similar"
           loading={this.state.loading}
           attached
           content={this.state.similar && this.similarList()}

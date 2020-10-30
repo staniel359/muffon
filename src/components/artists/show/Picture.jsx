@@ -11,6 +11,8 @@ export default class Picture extends React.Component {
   defaultSrc =
     'https://lastfm.freetls.fastly.net/i/u/600x600/2a96cbd8b46e442fc41c2b86b821562f.png'
 
+  artistNameEncoded = encodeURIComponent(this.props.artistName)
+
   componentDidMount () {
     this.getImage()
   }
@@ -22,7 +24,7 @@ export default class Picture extends React.Component {
   imagesLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.props.artistName}/images`
+      url: `/lastfm/artists/${this.artistNameEncoded}/images`
     }
   }
 

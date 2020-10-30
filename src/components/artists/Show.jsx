@@ -4,25 +4,19 @@ import Picture from './show/Picture'
 import Tracks from './show/Tracks'
 import Albums from './show/Albums'
 import Similar from './show/Similar'
-import { Header, Transition, Dimmer, Loader, Menu } from 'semantic-ui-react'
+import { Header, Transition, Dimmer, Loader } from 'semantic-ui-react'
 import ErrorData from '../partials/ErrorData'
+import Scrollspy from './show/Scrollspy'
+import PageMenu from './show/PageMenu'
 
 export class Show extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       loading: true,
-      windowScrolled: false,
+      leftColumnArtistName: false,
       menuActiveItem: 'info'
     }
-  }
-
-  componentDidMount () {
-    window.onscroll = () => this.handleWindowScroll()
-  }
-
-  handleWindowScroll () {
-    this.setState({ windowScrolled: !!window.scrollY })
   }
 
   loader () {
@@ -46,85 +40,73 @@ export class Show extends React.Component {
   }
 
   leftColumn () {
+    return this.state.artistName && this.leftColumnData()
+  }
+
+  leftColumnData () {
     return (
-      this.state.artistName && (
-        <div className="artistPageLeftColumn">
-          <Picture artistName={this.artistNameEncoded()} />
+      <div className="artistPageLeftColumn">
+        <Picture artistName={this.state.artistName} />
 
-          {this.artistLeftColumnName()}
+        {this.leftColumnArtistName()}
 
-          {this.artistLeftColumnMenu()}
-        </div>
-      )
+        <PageMenu
+          menuActiveItem={this.state.menuActiveItem}
+          scrollToSegmentTop={this.scrollToSegmentTop}
+        />
+
+        {this.scrollspy()}
+      </div>
     )
   }
 
-  artistNameEncoded () {
-    return encodeURIComponent(this.state.artistName)
-  }
-
-  artistLeftColumnName () {
+  leftColumnArtistName () {
     return (
       <Transition
-        visible={this.state.windowScrolled}
+        visible={this.state.leftColumnArtistName}
         transitionOnMount={false}
         animation="fade"
         duration={200}
         mountOnShow={false}
       >
-        {this.artistLeftColumnNameHeader()}
+        <Header
+          size="medium"
+          textAlign="center"
+          className="artistPageLeftColumnName"
+          content={this.state.artistName}
+        />
       </Transition>
     )
   }
 
-  artistLeftColumnNameHeader () {
+  scrollToSegmentTop = segmentID => {
+    window.scrollTo(0, this.segmentTop(segmentID))
+  }
+
+  segmentTop = segmentID => {
+    return document.getElementById(segmentID).offsetTop - 107
+  }
+
+  scrollspy () {
     return (
-      <Header
-        size="medium"
-        textAlign="center"
-        className="artistPageLeftColumnName"
-        content={this.state.artistName}
+      <Scrollspy
+        toggleLeftColumnArtistName={this.toggleLeftColumnArtistName}
+        segmentTop={this.segmentTop}
+        setMenuActiveItem={this.setMenuActiveItem}
       />
     )
   }
 
-  artistLeftColumnMenu () {
-    return (
-      <Menu pointing secondary vertical className="w100">
-        <Menu.Item
-          name="info"
-          active={this.state.menuActiveItem === 'info'}
-          onClick={this.handleMenuItemClick}
-        />
-        <Menu.Item
-          name="tracks"
-          active={this.state.menuActiveItem === 'tracks'}
-          onClick={this.handleMenuItemClick}
-        />
-        <Menu.Item
-          name="albums"
-          active={this.state.menuActiveItem === 'albums'}
-          onClick={this.handleMenuItemClick}
-        />
-        <Menu.Item
-          name="similar"
-          active={this.state.menuActiveItem === 'similar'}
-          onClick={this.handleMenuItemClick}
-        />
-      </Menu>
-    )
+  toggleLeftColumnArtistName = bool => {
+    if (this.state.leftColumnArtistName !== bool) {
+      this.setState({ leftColumnArtistName: bool })
+    }
   }
 
-  handleMenuItemClick = (_, { name }) => {
-    this.setState({ menuActiveItem: name })
-    this.scrollToSegmentTop(this.segmentIDs[name])
-  }
-
-  segmentIDs = {
-    info: 'artistPageInfoSegment',
-    tracks: 'artistPageTracksSegment',
-    albums: 'artistPageAlbumsSegment',
-    similar: 'artistPageSimilarSegment'
+  setMenuActiveItem = item => {
+    if (this.state.menuActiveItem !== item) {
+      this.setState({ menuActiveItem: item })
+    }
   }
 
   rightColumn () {
@@ -137,34 +119,9 @@ export class Show extends React.Component {
           setArtistName={this.setArtistName}
         />
 
-        {this.state.artistName && (
-          <React.Fragment>
-            <Tracks
-              artistName={this.artistNameEncoded()}
-              scrollToSegmentTop={this.scrollToSegmentTop}
-            />
-
-            <Albums
-              artistName={this.artistNameEncoded()}
-              scrollToSegmentTop={this.scrollToSegmentTop}
-            />
-
-            <Similar
-              artistName={this.artistNameEncoded()}
-              scrollToSegmentTop={this.scrollToSegmentTop}
-            />
-          </React.Fragment>
-        )}
+        {this.state.artistName && this.rightColumnData()}
       </div>
     )
-  }
-
-  scrollToSegmentTop = segmentID => {
-    window.scrollTo(0, this.segmentTop(segmentID))
-  }
-
-  segmentTop (segmentID) {
-    return document.getElementById(segmentID).offsetTop - 107
   }
 
   handleError = error => {
@@ -177,6 +134,27 @@ export class Show extends React.Component {
 
   setArtistName = name => {
     this.setState({ artistName: name })
+  }
+
+  rightColumnData () {
+    return (
+      <React.Fragment>
+        <Tracks
+          artistName={this.state.artistName}
+          scrollToSegmentTop={this.scrollToSegmentTop}
+        />
+
+        <Albums
+          artistName={this.state.artistName}
+          scrollToSegmentTop={this.scrollToSegmentTop}
+        />
+
+        <Similar
+          artistName={this.state.artistName}
+          scrollToSegmentTop={this.scrollToSegmentTop}
+        />
+      </React.Fragment>
+    )
   }
 
   render () {

@@ -112,7 +112,7 @@ export default class Tracks extends React.Component {
     }
   }
 
-  handlePageButtonClick = (e, { content }) => {
+  handlePageButtonClick = (_, { content }) => {
     this.props.scrollTabToTop()
     this.setState({ page: this.newPage(content) }, this.search)
   }

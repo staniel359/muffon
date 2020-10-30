@@ -89,6 +89,9 @@ html {
 .artistPageLeftColumnName {
   margin-top: 10px !important;
 }
+.artistPageLeftColumnName.hidden {
+  display: block;
+}
 .artistPageDescription {
   max-height: 175px;
   overflow-y: scroll;

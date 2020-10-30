@@ -69,7 +69,7 @@ export default class Info extends React.Component {
 
   infoData () {
     return (
-      <Segment className="artistPageSegment" id="artistPageInfoSegment">
+      <Segment className="artistPageSegment" id="info">
         <Header
           size="huge"
           className="artistPageArtistName"

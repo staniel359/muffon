@@ -5,6 +5,10 @@ import { Grid, Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 
 export default class Albums extends React.Component {
+  shouldComponentUpdate (nextProps, nextState) {
+    return nextState !== this.state
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -14,6 +18,7 @@ export default class Albums extends React.Component {
   }
 
   limit = 4
+  artistNameEncoded = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getAlbums()
@@ -27,7 +32,7 @@ export default class Albums extends React.Component {
   albumsLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.props.artistName}/albums`,
+      url: `/lastfm/artists/${this.artistNameEncoded}/albums`,
       params: {
         limit: this.limit,
         page: this.state.page
@@ -70,8 +75,8 @@ export default class Albums extends React.Component {
     )
   }
 
-  handlePageChange = (e, { activePage }) => {
-    this.props.scrollToSegmentTop('artistPageAlbumsSegment')
+  handlePageChange = (_, { activePage }) => {
+    this.props.scrollToSegmentTop('albums')
     this.setState({ page: activePage }, this.getAlbums)
   }
 
@@ -81,7 +86,7 @@ export default class Albums extends React.Component {
         <Header as="h3" attached="top" content="Top albums" />
         <Segment
           className="artistPageSegment"
-          id="artistPageAlbumsSegment"
+          id="albums"
           loading={this.state.loading}
           attached
           content={this.state.albums && this.albumsList()}
