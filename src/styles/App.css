@@ -20,6 +20,9 @@ html {
 .fixed {
   position: fixed !important;
 }
+.w100 {
+  width: 100% !important;
+}
 
 .mainContainer {
   padding-top: 60px;
