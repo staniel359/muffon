@@ -1,15 +1,15 @@
 import React from 'react'
-import { Image as SemanticImage, Dimmer, Placeholder } from 'semantic-ui-react'
+import { Image, Dimmer, Placeholder } from 'semantic-ui-react'
 import axios from 'axios'
 
-export default class Image extends React.Component {
+export default class Picture extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
   }
 
-  defaultImageSrc =
-    'https://react.semantic-ui.com/images/wireframe/square-image.png'
+  defaultSrc =
+    'https://lastfm.freetls.fastly.net/i/u/600x600/2a96cbd8b46e442fc41c2b86b821562f.png'
 
   componentDidMount () {
     this.getImage()
@@ -27,39 +27,35 @@ export default class Image extends React.Component {
   }
 
   setImage (resp) {
-    this.setState({
-      image: resp.data.artist.images[0] || 'noImage'
-    })
+    const image = resp.data.artist.images[0] || 'noImage'
+    this.setState({ image: image })
   }
 
   imageData () {
-    if (this.state.image) {
-      if (this.imageMissing()) {
-        return this.imageDefault()
-      } else {
-        return this.artistImage()
-      }
-    } else {
-      return this.imagePlaceholder()
-    }
+    return (this.state.image && this.image()) || this.imagePlaceholder()
+  }
+
+  image () {
+    return (
+      <Image
+        src={this.imageSrc()}
+        className="artistPagePicture"
+        onClick={this.showDimmer}
+        rounded
+      />
+    )
+  }
+
+  imageSrc () {
+    return (this.imageMissing() && this.defaultSrc) || this.artistImage()
   }
 
   imageMissing () {
     return this.state.image === 'noImage'
   }
 
-  imageDefault () {
-    return <SemanticImage src={this.defaultImageSrc} />
-  }
-
   artistImage () {
-    return (
-      <SemanticImage
-        src={this.state.image.cropped_600}
-        onClick={this.showDimmer}
-        rounded
-      />
-    )
+    return this.state.image.cropped_600
   }
 
   showDimmer = () => {
@@ -70,13 +66,11 @@ export default class Image extends React.Component {
     return <Placeholder content={<Placeholder.Image square />} />
   }
 
-  imageDimmerData () {
-    if (this.state.image && !this.imageMissing()) {
-      return this.imageDimmer()
-    }
+  dimmerData () {
+    return this.state.image && !this.imageMissing() && this.dimmer()
   }
 
-  imageDimmer () {
+  dimmer () {
     return (
       <Dimmer
         active={this.state.dimmer}
@@ -92,7 +86,7 @@ export default class Image extends React.Component {
   }
 
   imageOriginal () {
-    return <SemanticImage src={this.state.image.original} rounded centered />
+    return <Image src={this.state.image.original} rounded centered />
   }
 
   render () {
@@ -100,7 +94,7 @@ export default class Image extends React.Component {
       <React.Fragment>
         {this.imageData()}
 
-        {this.imageDimmerData()}
+        {this.dimmerData()}
       </React.Fragment>
     )
   }

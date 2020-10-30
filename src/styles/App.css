@@ -109,3 +109,13 @@ html {
   width: 100%;
   text-align: center;
 }
+.artistPageAlbumCover {
+  padding-bottom: 100% !important;
+}
+.artistPageAlbumCover img {
+  position: absolute;
+}
+.artistPagePicture {
+  height: 200px;
+  width: 200px;
+}

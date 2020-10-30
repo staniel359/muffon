@@ -1,6 +1,6 @@
 import React from 'react'
 import Info from './show/Info'
-import Image from './show/Image'
+import Picture from './show/Picture'
 import Tracks from './show/Tracks'
 import Albums from './show/Albums'
 import Similar from './show/Similar'
@@ -49,7 +49,7 @@ export class Show extends React.Component {
     return (
       this.state.artistName && (
         <div className="artistPageLeftColumn">
-          <Image artistName={this.artistNameEncoded()} />
+          <Picture artistName={this.artistNameEncoded()} />
 
           {this.artistLeftColumnName()}
 
