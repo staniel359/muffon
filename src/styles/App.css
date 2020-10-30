@@ -93,6 +93,15 @@ html {
 .artistPageSegment {
   min-height: 100px;
 }
+.artistPageTrackCounter .inner {
+  display: inline-block;
+  vertical-align: middle;
+}
+.artistPageTrackCounter .trackLine {
+  background: #e0e1e2;
+  height: 5px;
+  margin-right: 0.5em;
+}
 .artistPagePaginationWrap {
   width: 100%;
   text-align: center;
