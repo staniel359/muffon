@@ -25,7 +25,7 @@ export default class App extends React.Component {
 
   menu () {
     return (
-      <Menu borderless className="fixed">
+      <Menu borderless className="fixed mainMenu">
         <Container>
           <Menu.Item>
             <Breadcrumb

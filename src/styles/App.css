@@ -13,6 +13,9 @@
 /*body {
   background: #5e3ea2d6 !important;
 }*/
+html {
+  scroll-behavior: smooth;
+}
 
 .fixed {
   position: fixed !important;
@@ -20,6 +23,9 @@
 
 .mainContainer {
   padding-top: 60px;
+}
+.mainMenu {
+  z-index: 1000 !important;
 }
 
 .ui.dimmer .content,
@@ -86,4 +92,8 @@
 }
 .artistPageSegment {
   min-height: 100px;
+}
+.artistPagePaginationWrap {
+  width: 100%;
+  text-align: center;
 }
