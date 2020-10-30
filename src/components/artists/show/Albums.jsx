@@ -1,13 +1,16 @@
 import React from 'react'
 import Album from './albums/Album'
 import { v4 as uuid } from 'uuid'
-import { Grid, Header, Segment } from 'semantic-ui-react'
+import { Grid, Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 
 export default class Albums extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      loading: true,
+      page: 1
+    }
   }
 
   limit = 4
@@ -17,19 +20,27 @@ export default class Albums extends React.Component {
   }
 
   getAlbums () {
-    axios(this.albumsLink()).then(resp => this.setAlbums(resp))
+    this.setState({ loading: true })
+    axios(this.albumsLink()).then(resp => this.setAlbumsData(resp))
   }
 
   albumsLink () {
     return {
       method: 'GET',
       url: `/lastfm/artists/${this.props.artistName}/albums`,
-      params: { limit: this.limit }
+      params: {
+        limit: this.limit,
+        page: this.state.page
+      }
     }
   }
 
-  setAlbums (resp) {
-    this.setState({ albums: resp.data.artist.albums })
+  setAlbumsData (resp) {
+    this.setState({
+      albums: resp.data.artist.albums,
+      totalPages: resp.data.artist.total_pages,
+      loading: false
+    })
   }
 
   albumsList () {
@@ -46,16 +57,52 @@ export default class Albums extends React.Component {
     )
   }
 
+  pagination() {
+    return (
+      <Pagination
+        defaultActivePage={this.state.page}
+        totalPages={this.state.totalPages}
+        firstItem={null}
+        lastItem={null}
+        siblingRange={0}
+        onPageChange={this.handlePageChange}
+      />
+    )
+  }
+
+  handlePageChange = (e, { activePage }) => {
+    this.scrollToSegmentTop()
+    this.setState(
+      { page: activePage },
+      this.getAlbums
+    )
+  }
+
+  scrollToSegmentTop () {
+    window.scrollTo(0, this.segmentTop())
+  }
+
+  segmentTop() {
+    return document.getElementById(
+      'artistPageAlbumsSegment'
+    ).offsetTop - 107
+  }
+
   render () {
     return (
       <React.Fragment>
-        <Header as="h4" attached="top" content="Top albums" />
+        <Header as="h3" attached="top" content="Top albums" />
         <Segment
           className="artistPageSegment"
-          loading={!this.state.albums}
-          attached="bottom"
+          id="artistPageAlbumsSegment"
+          loading={this.state.loading}
+          attached
           content={this.state.albums && this.albumsList()}
         />
+
+        <Segment className="artistPagePaginationWrap" attached="bottom">
+          {this.state.albums && this.pagination()}
+        </Segment>
       </React.Fragment>
     )
   }
