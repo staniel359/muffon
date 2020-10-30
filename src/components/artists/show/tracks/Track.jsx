@@ -1,11 +1,14 @@
 import React from 'react'
 import { Button, List, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class Track extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
   }
+
+  trackTitle = encodeURIComponent(this.props.track.title)
 
   listenersCount = this.props.track.listeners_count
   topTrackListenersCount = this.props.topTrackListenersCount
@@ -15,6 +18,10 @@ export default class Track extends React.Component {
 
   handleClick = () => {
     this.setState({ loading: !this.state.loading })
+  }
+
+  trackLink () {
+    return `/artists/${this.props.artistName}/tracks/${this.trackTitle}`
   }
 
   render () {
@@ -28,7 +35,7 @@ export default class Track extends React.Component {
           />
         </List.Icon>
 
-        <List.Content>
+        <List.Content as={Link} to={this.trackLink()}>
           <List.Header as="h4" content={this.props.track.title} />
           <List.Description>
             <div className="artistPageTrackCounter">

@@ -10,7 +10,7 @@ export default class Scrollspy extends React.Component {
     this.addScrollListener()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this.removeScrollListener()
   }
 

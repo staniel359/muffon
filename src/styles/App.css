@@ -28,7 +28,7 @@ html {
   padding-top: 60px;
 }
 .mainMenu {
-  z-index: 1000 !important;
+  z-index: 1500 !important;
 }
 
 .ui.dimmer .content,
@@ -36,6 +36,9 @@ html {
   max-height: 100%;
 }
 
+.globalSearch {
+  z-index: 2000 !important;
+}
 .globalSearch > .content {
   height: calc(100% - 80px);
   width: 500px;

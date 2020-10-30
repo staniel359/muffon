@@ -3,6 +3,7 @@ import Track from './tracks/Track'
 import { v4 as uuid } from 'uuid'
 import { List, Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
+import { HashRouter as Router } from 'react-router-dom'
 
 export default class Tracks extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -18,7 +19,7 @@ export default class Tracks extends React.Component {
   }
 
   limit = 10
-  artistNameEncoded = encodeURIComponent(this.props.artistName)
+  artistName = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getTracks()
@@ -32,7 +33,7 @@ export default class Tracks extends React.Component {
   tracksLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.artistNameEncoded}/tracks`,
+      url: `/lastfm/artists/${this.artistName}/tracks`,
       params: {
         limit: this.limit,
         page: this.state.page
@@ -51,17 +52,20 @@ export default class Tracks extends React.Component {
 
   tracksList () {
     return (
-      <List selection>
-        {this.state.tracks.map(track => {
-          return (
-            <Track
-              key={uuid()}
-              track={track}
-              topTrackListenersCount={this.state.topTrackListenersCount}
-            />
-          )
-        })}
-      </List>
+      <Router>
+        <List selection>
+          {this.state.tracks.map(track => {
+            return (
+              <Track
+                key={uuid()}
+                track={track}
+                artistName={this.artistName}
+                topTrackListenersCount={this.state.topTrackListenersCount}
+              />
+            )
+          })}
+        </List>
+      </Router>
     )
   }
 

@@ -1,6 +1,10 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './Home'
 import { Show as ArtistShow } from './artists/Show'
+import { Show as AlbumShow } from './artists/albums/Show'
+import { Show as TrackShow } from './artists/tracks/Show'
+import { Show as TagShow } from './tags/Show'
 import { v4 as uuid } from 'uuid'
 
 export default class Routes extends React.Component {
@@ -15,36 +19,56 @@ export default class Routes extends React.Component {
           <Route
             exact
             path="/artists/:artistName"
-            render={props => <ArtistShow {...props} key={uuid()} />}
+            render={props => (
+              <ArtistShow
+                {...props}
+                setNavSections={this.props.setNavSections}
+                key={uuid()}
+              />
+            )}
           />
           <Route
             path="/artists/:artistName/albums/:albumTitle"
-            component={AlbumShow}
+            render={props => (
+              <AlbumShow
+                {...props}
+                setNavSections={this.props.setNavSections}
+                key={uuid()}
+              />
+            )}
           />
           <Route
             path="/artists/:artistName/tracks/:trackTitle"
-            component={TrackShow}
+            render={props => (
+              <TrackShow
+                {...props}
+                setNavSections={this.props.setNavSections}
+                key={uuid()}
+              />
+            )}
           />
-          <Route path="/tags/:tagName" component={TagShow} />
-          <Route path="/" component={Home} />
+          <Route
+            path="/tags/:tagName"
+            render={props => (
+              <TagShow
+                {...props}
+                setNavSections={this.props.setNavSections}
+                key={uuid()}
+              />
+            )}
+          />
+          <Route
+            path="/"
+            render={props => (
+              <Home
+                {...props}
+                setNavSections={this.props.setNavSections}
+                key={uuid()}
+              />
+            )}
+          />
         </Switch>
       </Router>
     )
   }
-}
-
-function Home () {
-  return 'Home'
-}
-
-function AlbumShow () {
-  return 'album'
-}
-
-function TrackShow () {
-  return 'track'
-}
-
-function TagShow () {
-  return 'tag'
 }

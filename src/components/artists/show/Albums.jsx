@@ -3,6 +3,7 @@ import Album from './albums/Album'
 import { v4 as uuid } from 'uuid'
 import { Grid, Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
+import { HashRouter as Router } from 'react-router-dom'
 
 export default class Albums extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -18,7 +19,7 @@ export default class Albums extends React.Component {
   }
 
   limit = 4
-  artistNameEncoded = encodeURIComponent(this.props.artistName)
+  artistName = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getAlbums()
@@ -32,7 +33,7 @@ export default class Albums extends React.Component {
   albumsLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.artistNameEncoded}/albums`,
+      url: `/lastfm/artists/${this.artistName}/albums`,
       params: {
         limit: this.limit,
         page: this.state.page
@@ -50,15 +51,17 @@ export default class Albums extends React.Component {
 
   albumsList () {
     return (
-      <Grid>
-        {this.state.albums.map(album => {
-          return (
-            <Grid.Column width={8} key={uuid()}>
-              <Album album={album} />
-            </Grid.Column>
-          )
-        })}
-      </Grid>
+      <Router>
+        <Grid>
+          {this.state.albums.map(album => {
+            return (
+              <Grid.Column width={8} key={uuid()}>
+                <Album album={album} artistName={this.artistName} />
+              </Grid.Column>
+            )
+          })}
+        </Grid>
+      </Router>
     )
   }
 

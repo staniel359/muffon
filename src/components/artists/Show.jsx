@@ -8,6 +8,7 @@ import { Header, Transition, Dimmer, Loader } from 'semantic-ui-react'
 import ErrorData from '../partials/ErrorData'
 import Scrollspy from './show/Scrollspy'
 import PageMenu from './show/PageMenu'
+import { v4 as uuid } from 'uuid'
 
 export class Show extends React.Component {
   constructor (props) {
@@ -17,6 +18,23 @@ export class Show extends React.Component {
       leftColumnArtistName: false,
       menuActiveItem: 'info'
     }
+  }
+
+  artistName = this.props.match.params.artistName
+  navSections = [
+    {
+      key: uuid(),
+      content: 'Artists'
+    },
+    {
+      key: uuid(),
+      content: decodeURIComponent(this.artistName),
+      active: true
+    }
+  ]
+
+  componentDidMount () {
+    this.props.setNavSections(this.navSections)
   }
 
   loader () {
@@ -113,7 +131,7 @@ export class Show extends React.Component {
     return (
       <div className="artistPageRightColumn">
         <Info
-          artistName={this.props.match.params.artistName}
+          artistName={this.artistName}
           handleError={this.handleError}
           stopLoader={this.stopLoader}
           setArtistName={this.setArtistName}

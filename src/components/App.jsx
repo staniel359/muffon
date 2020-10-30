@@ -7,7 +7,9 @@ import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
 export default class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      navSections: []
+    }
   }
 
   componentDidMount () {
@@ -31,7 +33,7 @@ export default class App extends React.Component {
             <Breadcrumb
               size="large"
               icon="right angle"
-              sections={this.breadcrumbSections()}
+              sections={this.state.navSections}
             />
           </Menu.Item>
         </Container>
@@ -39,20 +41,8 @@ export default class App extends React.Component {
     )
   }
 
-  breadcrumbSections () {
-    return [
-      {
-        key: 'Artists',
-        content: 'Artists',
-        link: false
-      },
-      {
-        key: 'test',
-        content: 'test',
-        link: false,
-        active: true
-      }
-    ]
+  setNavSections = navSections => {
+    this.setState({ navSections: navSections })
   }
 
   globalSearchDimmer () {
@@ -69,7 +59,7 @@ export default class App extends React.Component {
         {this.menu()}
 
         <Container className="mainContainer">
-          <Routes />
+          <Routes setNavSections={this.setNavSections} />
 
           {this.globalSearchDimmer()}
         </Container>
