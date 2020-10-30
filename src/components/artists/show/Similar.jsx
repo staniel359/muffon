@@ -52,7 +52,7 @@ export default class Similar extends React.Component {
     )
   }
 
-  pagination() {
+  pagination () {
     return (
       <Pagination
         defaultActivePage={this.state.page}
@@ -66,21 +66,8 @@ export default class Similar extends React.Component {
   }
 
   handlePageChange = (e, { activePage }) => {
-    this.scrollToSegmentTop()
-    this.setState(
-      { page: activePage },
-      this.getSimilar
-    )
-  }
-
-  scrollToSegmentTop () {
-    window.scrollTo(0, this.segmentTop())
-  }
-
-  segmentTop() {
-    return document.getElementById(
-      'artistPageSimilarSegment'
-    ).offsetTop - 107
+    this.props.scrollToSegmentTop('artistPageSimilarSegment')
+    this.setState({ page: activePage }, this.getSimilar)
   }
 
   render () {

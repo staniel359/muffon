@@ -57,7 +57,7 @@ export default class Albums extends React.Component {
     )
   }
 
-  pagination() {
+  pagination () {
     return (
       <Pagination
         defaultActivePage={this.state.page}
@@ -71,21 +71,8 @@ export default class Albums extends React.Component {
   }
 
   handlePageChange = (e, { activePage }) => {
-    this.scrollToSegmentTop()
-    this.setState(
-      { page: activePage },
-      this.getAlbums
-    )
-  }
-
-  scrollToSegmentTop () {
-    window.scrollTo(0, this.segmentTop())
-  }
-
-  segmentTop() {
-    return document.getElementById(
-      'artistPageAlbumsSegment'
-    ).offsetTop - 107
+    this.props.scrollToSegmentTop('artistPageAlbumsSegment')
+    this.setState({ page: activePage }, this.getAlbums)
   }
 
   render () {

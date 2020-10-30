@@ -1,7 +1,7 @@
 import React from 'react'
 import Track from './tracks/Track'
 import { v4 as uuid } from 'uuid'
-import { List, Header, Segment, Button, Pagination } from 'semantic-ui-react'
+import { List, Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 
 export default class Tracks extends React.Component {
@@ -74,21 +74,8 @@ export default class Tracks extends React.Component {
   }
 
   handlePageChange = (_, { activePage }) => {
-    this.scrollToSegmentTop()
-    this.setState(
-      { page: activePage },
-      this.getTracks
-    )
-  }
-
-  scrollToSegmentTop () {
-    window.scrollTo(0, this.segmentTop())
-  }
-
-  segmentTop() {
-    return document.getElementById(
-      'artistPageTracksSegment'
-    ).offsetTop - 107
+    this.props.scrollToSegmentTop('artistPageTracksSegment')
+    this.setState({ page: activePage }, this.getTracks)
   }
 
   render () {

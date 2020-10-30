@@ -75,18 +75,35 @@ export class Show extends React.Component {
         />
 
         {this.state.artistName && (
-          <Tracks artistName={this.artistNameEncoded()} />
+          <Tracks
+            artistName={this.artistNameEncoded()}
+            scrollToSegmentTop={this.scrollToSegmentTop}
+          />
         )}
 
         {this.state.artistName && (
-          <Albums artistName={this.artistNameEncoded()} />
+          <Albums
+            artistName={this.artistNameEncoded()}
+            scrollToSegmentTop={this.scrollToSegmentTop}
+          />
         )}
 
         {this.state.artistName && (
-          <Similar artistName={this.artistNameEncoded()} />
+          <Similar
+            artistName={this.artistNameEncoded()}
+            scrollToSegmentTop={this.scrollToSegmentTop}
+          />
         )}
       </div>
     )
+  }
+
+  scrollToSegmentTop = segmentID => {
+    window.scrollTo(0, this.segmentTop(segmentID))
+  }
+
+  segmentTop(segmentID) {
+    return document.getElementById(segmentID).offsetTop - 107
   }
 
   handleError = error => {
