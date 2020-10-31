@@ -92,6 +92,7 @@ export class Show extends React.Component {
           textAlign="center"
           className="artistPageLeftColumnName"
           content={this.state.artistName}
+          inverted
         />
       </Transition>
     )

@@ -79,6 +79,7 @@ export default class Picture extends React.Component {
         onClick={this.hideDimmer}
         content={this.imageOriginal()}
         page
+        className="artistPagePictureDimmer"
       />
     )
   }

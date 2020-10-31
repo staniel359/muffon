@@ -10,11 +10,18 @@
   }
 }
 
-/*body {
-  background: #5e3ea2d6 !important;
-}*/
 html {
   scroll-behavior: smooth;
+}
+#background {
+  z-index: -1;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-image: url('../../dist/images/background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .fixed {
@@ -29,6 +36,7 @@ html {
 }
 .mainMenu {
   z-index: 1500 !important;
+  border: none !important;
 }
 
 .ui.dimmer .content,
@@ -124,4 +132,11 @@ html {
 .artistPagePicture {
   height: 200px;
   width: 200px;
+}
+.artistPagePictureDimmer {
+  z-index: 2000 !important;
+}
+.artistPageLeftColumnMenu {
+  width: 100% !important;
+  border-width: 0 2px 0 0 !important;
 }

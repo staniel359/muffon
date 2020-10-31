@@ -8,7 +8,14 @@ export default class PageMenu extends React.Component {
 
   render () {
     return (
-      <Menu pointing secondary vertical className="w100">
+      <Menu
+        pointing
+        secondary
+        vertical
+        inverted
+        className="artistPageLeftColumnMenu"
+        size="large"
+      >
         <Menu.Item
           name="info"
           active={this.props.menuActiveItem === 'info'}
