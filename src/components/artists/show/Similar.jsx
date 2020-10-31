@@ -77,7 +77,7 @@ export default class Similar extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
+      <div id="similar" className="artistPageSegmentWrap">
         <Header as="h3" attached="top" content="Similar" />
         <Segment
           className="artistPageSegment"
@@ -90,7 +90,7 @@ export default class Similar extends React.Component {
         <Segment className="artistPagePaginationWrap" attached="bottom">
           {this.state.similar && this.pagination()}
         </Segment>
-      </React.Fragment>
+      </div>
     )
   }
 }

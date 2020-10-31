@@ -140,3 +140,6 @@ html {
   width: 100% !important;
   border-width: 0 2px 0 0 !important;
 }
+.artistPageSegmentWrap {
+  margin-bottom: 20px;
+}

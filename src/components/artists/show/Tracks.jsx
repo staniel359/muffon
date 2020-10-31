@@ -89,12 +89,11 @@ export default class Tracks extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
+      <div id="tracks" className="artistPageSegmentWrap">
         <Header as="h3" attached="top" content="Top tracks" />
 
         <Segment
           className="artistPageSegment"
-          id="tracks"
           loading={this.state.loading}
           attached
           content={this.state.tracks && this.tracksList()}
@@ -103,7 +102,7 @@ export default class Tracks extends React.Component {
         <Segment attached="bottom" className="artistPagePaginationWrap">
           {this.state.tracks && this.pagination()}
         </Segment>
-      </React.Fragment>
+      </div>
     )
   }
 }

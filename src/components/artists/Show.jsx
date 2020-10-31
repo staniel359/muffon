@@ -103,7 +103,7 @@ export class Show extends React.Component {
   }
 
   segmentTop = segmentID => {
-    return document.getElementById(segmentID).offsetTop - 107
+    return document.getElementById(segmentID).offsetTop - 60
   }
 
   scrollspy () {

@@ -69,23 +69,25 @@ export default class Info extends React.Component {
 
   infoData () {
     return (
-      <Segment className="artistPageSegment" id="info">
-        <Header
-          size="huge"
-          className="artistPageArtistName"
-          content={this.state.info.name}
-        />
+      <div id="info" className="artistPageSegmentWrap">
+        <Segment className="artistPageSegment">
+          <Header
+            size="huge"
+            className="artistPageArtistName"
+            content={this.state.info.name}
+          />
 
-        {this.tags()}
+          {this.tags()}
 
-        {this.counters()}
+          {this.counters()}
 
-        <Divider />
+          <Divider />
 
-        <div className="artistPageDescription">
-          {this.state.info.description}
-        </div>
-      </Segment>
+          <div className="artistPageDescription">
+            {this.state.info.description}
+          </div>
+        </Segment>
+      </div>
     )
   }
 

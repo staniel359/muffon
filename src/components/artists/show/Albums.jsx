@@ -85,11 +85,10 @@ export default class Albums extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
+      <div id="albums" className="artistPageSegmentWrap">
         <Header as="h3" attached="top" content="Top albums" />
         <Segment
           className="artistPageSegment"
-          id="albums"
           loading={this.state.loading}
           attached
           content={this.state.albums && this.albumsList()}
@@ -98,7 +97,7 @@ export default class Albums extends React.Component {
         <Segment className="artistPagePaginationWrap" attached="bottom">
           {this.state.albums && this.pagination()}
         </Segment>
-      </React.Fragment>
+      </div>
     )
   }
 }
