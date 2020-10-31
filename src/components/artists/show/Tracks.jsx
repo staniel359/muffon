@@ -59,7 +59,7 @@ export default class Tracks extends React.Component {
               <Track
                 key={uuid()}
                 track={track}
-                artistName={this.artistName}
+                artistName={this.props.artistName}
                 topTrackListenersCount={this.state.topTrackListenersCount}
               />
             )

@@ -1,10 +1,10 @@
 import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './Home'
-import { Show as ArtistShow } from './artists/Show'
-import { Show as AlbumShow } from './artists/albums/Show'
-import { Show as TrackShow } from './artists/tracks/Show'
-import { Show as TagShow } from './tags/Show'
+import ArtistShow from './artists/Show'
+import AlbumShow from './artists/albums/Show'
+import TrackShow from './artists/tracks/Show'
+import TagShow from './tags/Show'
 import { v4 as uuid } from 'uuid'
 
 export default class Routes extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 
-export class Show extends React.Component {
+export default class Show extends React.Component {
   artistName = this.props.match.params.artistName
   trackTitle = this.props.match.params.trackTitle
 

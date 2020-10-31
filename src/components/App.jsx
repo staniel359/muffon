@@ -3,6 +3,7 @@ import GlobalSearch from './global/Search'
 import Routes from './Routes'
 import Mousetrap from 'mousetrap'
 import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
+import PlayerPanel from './global/player/Panel'
 
 export default class App extends React.Component {
   constructor (props) {
@@ -53,6 +54,10 @@ export default class App extends React.Component {
     )
   }
 
+  playerPanel () {
+    return <PlayerPanel />
+  }
+
   render () {
     return (
       <React.Fragment>
@@ -63,6 +68,8 @@ export default class App extends React.Component {
 
           {this.globalSearchDimmer()}
         </Container>
+
+        {this.playerPanel()}
       </React.Fragment>
     )
   }

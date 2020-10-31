@@ -36,7 +36,7 @@ export default class Info extends React.Component {
   tags () {
     return (
       <Router>
-        <Label.Group size="medium">
+        <Label.Group size="large">
           {this.state.info.tags.map(tag => (
             <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
           ))}

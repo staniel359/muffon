@@ -10,7 +10,7 @@ import Scrollspy from './show/Scrollspy'
 import PageMenu from './show/PageMenu'
 import { v4 as uuid } from 'uuid'
 
-export class Show extends React.Component {
+export default class Show extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

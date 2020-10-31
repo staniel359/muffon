@@ -1,5 +1,6 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
+import { Segment } from 'semantic-ui-react'
 
 export default class Home extends React.Component {
   navSections = [
@@ -14,6 +15,6 @@ export default class Home extends React.Component {
   }
 
   render () {
-    return <div>Home</div>
+    return <Segment>Home</Segment>
   }
 }

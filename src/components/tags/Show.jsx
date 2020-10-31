@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 
-export class Show extends React.Component {
+export default class Show extends React.Component {
   tagName = this.props.match.params.tagName
 
   navSections = [
