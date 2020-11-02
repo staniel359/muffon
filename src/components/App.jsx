@@ -1,29 +1,27 @@
 import React from 'react'
-import GlobalSearch from './global/Search'
 import Routes from './Routes'
+import Search from './global/Search'
+import PlayerPanel from './global/player/Panel'
 import Mousetrap from 'mousetrap'
 import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
-import PlayerPanel from './global/player/Panel'
 
 export default class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      navSections: []
-    }
+    this.state = {}
   }
 
   componentDidMount () {
-    Mousetrap.bind('ctrl+f', () => this.toggleGlobalSearch())
-    Mousetrap.bind('esc', () => this.hideGlobalSearch())
+    Mousetrap.bind('ctrl+f', this.toggleSearch)
+    Mousetrap.bind('esc', this.hideSearch)
   }
 
-  toggleGlobalSearch = () => {
-    this.setState({ globalSearch: !this.state.globalSearch })
+  toggleSearch = () => {
+    this.setState({ search: !this.state.search })
   }
 
-  hideGlobalSearch = () => {
-    this.setState({ globalSearch: false })
+  hideSearch = () => {
+    this.setState({ search: false })
   }
 
   menu () {
@@ -34,7 +32,7 @@ export default class App extends React.Component {
             <Breadcrumb
               size="large"
               icon="right angle"
-              sections={this.state.navSections}
+              sections={this.state.navSections || []}
             />
           </Menu.Item>
         </Container>
@@ -46,18 +44,6 @@ export default class App extends React.Component {
     this.setState({ navSections: navSections })
   }
 
-  globalSearchDimmer () {
-    return (
-      this.state.globalSearch && (
-        <GlobalSearch hideGlobalSearch={this.hideGlobalSearch} />
-      )
-    )
-  }
-
-  playerPanel () {
-    return <PlayerPanel />
-  }
-
   render () {
     return (
       <React.Fragment>
@@ -66,10 +52,10 @@ export default class App extends React.Component {
         <Container className="mainContainer">
           <Routes setNavSections={this.setNavSections} />
 
-          {this.globalSearchDimmer()}
+          {this.state.search && <Search hideSearch={this.hideSearch} />}
         </Container>
 
-        {this.playerPanel()}
+        <PlayerPanel />
       </React.Fragment>
     )
   }

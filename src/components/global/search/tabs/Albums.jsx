@@ -1,9 +1,10 @@
 import React from 'react'
-import { HashRouter as Router, Link } from 'react-router-dom'
-import { List, Image, Tab, Button } from 'semantic-ui-react'
+import { HashRouter as Router } from 'react-router-dom'
+import { List, Tab, Button } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import ErrorData from '../../../partials/ErrorData'
+import Album from './albums/Album'
 
 export default class Albums extends React.Component {
   constructor (props) {
@@ -13,9 +14,6 @@ export default class Albums extends React.Component {
       page: 1
     }
   }
-
-  coverDefault =
-    'https://lastfm.freetls.fastly.net/i/u/64s/c6f59c1e5e7240a4c0d427abd71f3dbb.png'
 
   limit = 20
 
@@ -58,52 +56,43 @@ export default class Albums extends React.Component {
   tabData () {
     return (
       <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="globalSearchTab"
-          content={this.albumsList()}
-        />
+        {this.albumsList()}
 
-        <div className="globalSearchTabPagination">
-          {this.previousPageAlbumsButton()}
-
-          {this.nextPageAlbumsButton()}
-        </div>
+        {this.pagination()}
       </Router>
     )
   }
 
   albumsList () {
-    return this.state.albums.map(album => this.albumItem(album))
-  }
-
-  albumItem (album) {
     return (
-      <List.Item
-        as={Link}
-        to={this.albumLink(album)}
-        key={uuid()}
-        onClick={this.props.hideGlobalSearch}
-      >
-        <Image src={this.cover(album)} className="globalSearchItemImage" />
-        <List.Content className="globalSearchItemContent">
-          <List.Header as="h4" content={album.title} />
-          <List.Description content={album.artist} />
-        </List.Content>
-      </List.Item>
+      <List
+        selection
+        size="medium"
+        verticalAlign="middle"
+        className="searchTab"
+        content={this.albumsData()}
+      />
     )
   }
 
-  albumLink (album) {
-    return `/artists/${this.props.encode(
-      album.artist
-    )}/albums/${this.props.encode(album.title)}`
+  albumsData () {
+    return this.state.albums.map(album => this.albumData(album))
   }
 
-  cover (album) {
-    return album.cover || this.coverDefault
+  albumData (album) {
+    return (
+      <Album key={uuid()} album={album} hideSearch={this.props.hideSearch} />
+    )
+  }
+
+  pagination () {
+    return (
+      <div className="searchTabPagination">
+        {this.previousPageAlbumsButton()}
+
+        {this.nextPageAlbumsButton()}
+      </div>
+    )
   }
 
   previousPageAlbumsButton () {
@@ -126,12 +115,13 @@ export default class Albums extends React.Component {
     this.setState({ page: this.newPage(content) }, this.search)
   }
 
-  newPage (content) {
+  newPage (action) {
     let currentPage = this.state.page
-    if (content === 'Next') {
-      return (currentPage += 1)
-    } else if (content === 'Previous') {
-      return (currentPage -= 1)
+    switch (action) {
+      case 'Next':
+        return (currentPage += 1)
+      case 'Previous':
+        return (currentPage -= 1)
     }
   }
 
@@ -159,9 +149,9 @@ export default class Albums extends React.Component {
   render () {
     return (
       <Tab.Pane
-        className="globalSearchTabWrap"
-        loading={this.props.active && this.state.loading}
+        className="searchTabWrap"
         active={this.props.active}
+        loading={this.props.active && this.state.loading}
         content={this.successData() || this.errorData()}
       />
     )

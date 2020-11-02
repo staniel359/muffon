@@ -13,59 +13,33 @@ export default class Routes extends React.Component {
   }
 
   render () {
+    const setNavSections = this.props.setNavSections
+    const key = uuid()
+    const extraProps = { setNavSections, key }
+
     return (
       <Router>
         <Switch>
           <Route
             exact
             path="/artists/:artistName"
-            render={props => (
-              <ArtistShow
-                {...props}
-                setNavSections={this.props.setNavSections}
-                key={uuid()}
-              />
-            )}
+            render={props => <ArtistShow {...props} {...extraProps} />}
           />
           <Route
             path="/artists/:artistName/albums/:albumTitle"
-            render={props => (
-              <AlbumShow
-                {...props}
-                setNavSections={this.props.setNavSections}
-                key={uuid()}
-              />
-            )}
+            render={props => <AlbumShow {...props} {...extraProps} />}
           />
           <Route
             path="/artists/:artistName/tracks/:trackTitle"
-            render={props => (
-              <TrackShow
-                {...props}
-                setNavSections={this.props.setNavSections}
-                key={uuid()}
-              />
-            )}
+            render={props => <TrackShow {...props} {...extraProps} />}
           />
           <Route
             path="/tags/:tagName"
-            render={props => (
-              <TagShow
-                {...props}
-                setNavSections={this.props.setNavSections}
-                key={uuid()}
-              />
-            )}
+            render={props => <TagShow {...props} {...extraProps} />}
           />
           <Route
             path="/"
-            render={props => (
-              <Home
-                {...props}
-                setNavSections={this.props.setNavSections}
-                key={uuid()}
-              />
-            )}
+            render={props => <Home {...props} {...extraProps} />}
           />
         </Switch>
       </Router>

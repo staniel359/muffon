@@ -5,14 +5,13 @@ import Timer from './controls/Timer'
 import { Grid } from 'semantic-ui-react'
 
 export default class Controls extends React.Component {
-  audioTimer () {
+  timerProps () {
     const { currentTime, duration } = this.props
-    const propsSet = { currentTime, duration }
 
-    return <Timer {...propsSet} />
+    return { currentTime, duration }
   }
 
-  mainControls () {
+  mainControlsProps () {
     const {
       audioStatus,
       shuffle,
@@ -21,7 +20,8 @@ export default class Controls extends React.Component {
       toggleAudio,
       toggleRepeat
     } = this.props
-    const propsSet = {
+
+    return {
       audioStatus,
       shuffle,
       repeat,
@@ -29,11 +29,9 @@ export default class Controls extends React.Component {
       toggleAudio,
       toggleRepeat
     }
-
-    return <MainControls {...propsSet} />
   }
 
-  extraControls () {
+  extraControlsProps () {
     const {
       stopAudio,
       muted,
@@ -41,27 +39,30 @@ export default class Controls extends React.Component {
       toggleMute,
       handleVolumeChange
     } = this.props
-    const propsSet = {
+
+    return {
       stopAudio,
       muted,
       currentVolume,
       toggleMute,
       handleVolumeChange
     }
-
-    return <ExtraControls {...propsSet} />
   }
 
   render () {
     return (
       <Grid columns="equal" verticalAlign="middle">
-        <Grid.Column textAlign="left">{this.audioTimer()}</Grid.Column>
-
-        <Grid.Column textAlign="center" width={8}>
-          {this.mainControls()}
+        <Grid.Column textAlign="left">
+          <Timer {...this.timerProps()} />
         </Grid.Column>
 
-        <Grid.Column textAlign="right">{this.extraControls()}</Grid.Column>
+        <Grid.Column textAlign="center" width={8}>
+          <MainControls {...this.mainControlsProps()} />
+        </Grid.Column>
+
+        <Grid.Column textAlign="right">
+          <ExtraControls {...this.extraControlsProps()} />
+        </Grid.Column>
       </Grid>
     )
   }

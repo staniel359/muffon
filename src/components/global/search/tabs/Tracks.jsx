@@ -1,9 +1,10 @@
 import React from 'react'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { List, Button, Tab } from 'semantic-ui-react'
-import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import ErrorData from '../../../partials/ErrorData'
+import { v4 as uuid } from 'uuid'
+import Track from './tracks/Track'
 
 export default class Tracks extends React.Component {
   constructor (props) {
@@ -55,46 +56,43 @@ export default class Tracks extends React.Component {
   tabData () {
     return (
       <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="globalSearchTab"
-          content={this.tracksList()}
-        />
+        {this.tracksList()}
 
-        <div className="globalSearchTabPagination">
-          {this.previousPageTracksButton()}
-
-          {this.nextPageTracksButton()}
-        </div>
+        {this.pagination()}
       </Router>
     )
   }
 
   tracksList () {
-    return this.state.tracks.map(track => this.trackItem(track))
-  }
-
-  trackItem (track) {
     return (
-      <List.Item as={Link} to={this.trackLink(track)} key={uuid()}>
-        <List.Icon className="globalSearchItemIcon" verticalAlign="middle">
-          <Button icon="play" />
-        </List.Icon>
-
-        <List.Content onClick={this.props.hideGlobalSearch}>
-          <List.Header as="h4" content={track.title} />
-          <List.Description content={track.artist} />
-        </List.Content>
-      </List.Item>
+      <List
+        selection
+        size="medium"
+        verticalAlign="middle"
+        className="searchTab"
+        content={this.tracksData()}
+      />
     )
   }
 
-  trackLink (track) {
-    return `/artists/${this.props.encode(
-      track.artist
-    )}/tracks/${this.props.encode(track.title)}`
+  tracksData () {
+    return this.state.tracks.map(track => this.trackData(track))
+  }
+
+  trackData (track) {
+    return (
+      <Track key={uuid()} track={track} hideSearch={this.props.hideSearch} />
+    )
+  }
+
+  pagination () {
+    return (
+      <div className="searchTabPagination">
+        {this.previousPageTracksButton()}
+
+        {this.nextPageTracksButton()}
+      </div>
+    )
   }
 
   previousPageTracksButton () {
@@ -117,12 +115,13 @@ export default class Tracks extends React.Component {
     this.setState({ page: this.newPage(content) }, this.search)
   }
 
-  newPage (content) {
+  newPage (action) {
     let currentPage = this.state.page
-    if (content === 'Next') {
-      return (currentPage += 1)
-    } else if (content === 'Previous') {
-      return (currentPage -= 1)
+    switch (action) {
+      case 'Next':
+        return (currentPage += 1)
+      case 'Previous':
+        return (currentPage -= 1)
     }
   }
 
@@ -150,7 +149,7 @@ export default class Tracks extends React.Component {
   render () {
     return (
       <Tab.Pane
-        className="globalSearchTabWrap"
+        className="searchTabWrap"
         active={this.props.active}
         loading={this.props.active && this.state.loading}
         content={this.successData() || this.errorData()}

@@ -18,7 +18,7 @@ class Audio extends React.Component {
     }
   }
 
-  containerPropsSet () {
+  containerProps () {
     const { repeat } = this.state
     const {
       handleLoadStart,
@@ -66,7 +66,7 @@ class Audio extends React.Component {
     this.props.pauseAudio()
   }
 
-  controlsPropsSet () {
+  controlsProps () {
     const duration = this.audio().duration
     const { currentTime, shuffle, repeat, muted, currentVolume } = this.state
     const { audioStatus, stopAudio } = this.props
@@ -132,7 +132,7 @@ class Audio extends React.Component {
     this.audio().muted = bool
   }
 
-  timeBarPropsSet () {
+  timeBarProps () {
     const duration = this.audio().duration
     const { percentLoaded, currentTime } = this.state
     const {
@@ -167,11 +167,11 @@ class Audio extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <Container {...this.containerPropsSet()} />
+        <Container {...this.containerProps()} />
 
-        {this.audio() && <Controls {...this.controlsPropsSet()} />}
+        {this.audio() && <Controls {...this.controlsProps()} />}
 
-        {this.audio() && <TimeBar {...this.timeBarPropsSet()} />}
+        {this.audio() && <TimeBar {...this.timeBarProps()} />}
       </React.Fragment>
     )
   }

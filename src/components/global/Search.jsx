@@ -1,32 +1,28 @@
 import React from 'react'
 import { Form, Input, Dimmer, Segment } from 'semantic-ui-react'
-import Results from './Search/Results'
+import Tabs from './Search/Tabs'
 import { v4 as uuid } from 'uuid'
 
 export default class Search extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
-    this.input = React.createRef()
   }
 
   componentDidMount () {
     this.input.current.focus()
   }
 
+  input = React.createRef()
+
   searchForm () {
     return (
-      <Segment attached={this.state.query && 'top'}>
-        <Form onSubmit={this.handleSubmit}>
-          <Input
-            size="large"
-            placeholder="Enter something..."
-            icon="search"
-            ref={this.input}
-            fluid
-          />
-        </Form>
-      </Segment>
+      <Segment
+        as={Form}
+        onSubmit={this.handleSubmit}
+        attached={this.state.query && 'top'}
+        content={this.searchInput()}
+      />
     )
   }
 
@@ -34,28 +30,40 @@ export default class Search extends React.Component {
     e.preventDefault()
 
     const submitValue = this.input.current.inputRef.current.value
-    if (submitValue) {
-      this.setState({ query: submitValue })
-    }
+    submitValue && this.setState({ query: submitValue })
   }
 
-  searchResults () {
+  searchInput () {
+    return (
+      <Input
+        size="large"
+        placeholder="Enter something..."
+        icon="search"
+        ref={this.input}
+        fluid
+      />
+    )
+  }
+
+  searchTabsProps () {
     const { query } = this.state
-    const { hideGlobalSearch } = this.props
-    return query && <Results key={uuid()} {...{ query, hideGlobalSearch }} />
+    const { hideSearch } = this.props
+    const key = uuid()
+
+    return { key, query, hideSearch }
   }
 
   render () {
     return (
       <Dimmer
-        className="globalSearch"
-        onClickOutside={this.props.hideGlobalSearch}
+        className="search"
+        onClickOutside={this.props.hideSearch}
         active
         page
       >
         {this.searchForm()}
 
-        {this.searchResults()}
+        {this.state.query && <Tabs {...this.searchTabsProps()} />}
       </Dimmer>
     )
   }

@@ -96,42 +96,42 @@ html {
   max-height: 100%;
 }
 
-.globalSearch {
+.search {
   z-index: 2000 !important;
 }
-.globalSearch > .content {
+.search > .content {
   height: calc(100% - 80px);
   width: 500px;
   text-align: left;
 }
-.globalSearchResultsWrap {
+.searchResultsWrap {
   height: calc(100% - 72px);
   padding-top: 0 !important;
 }
-.globalSearchResultsWrap > div {
+.searchResultsWrap > div {
   height: 100% !important;
 }
-.globalSearchTabWrap {
+.searchTabWrap {
   height: calc(100% - 54px);
   overflow-y: scroll;
   border: none !important;
   padding: 0 !important;
 }
-.globalSearchTabPagination button {
+.searchTabPagination button {
   margin: 0.5em !important;
 }
-.globalSearchItemImage {
+.searchItemImage {
   width: 50px !important;
   height: 50px !important;
 }
-.globalSearchItemContent {
+.searchItemContent {
   width: calc(100% - 50px) !important;
   word-break: break-all;
 }
-.globalSearchItemIcon {
+.searchItemIcon {
   padding: 0 !important;
 }
-.globalSearchItemIcon button {
+.searchItemIcon button {
   margin: 0 !important;
 }
 

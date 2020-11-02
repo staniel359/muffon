@@ -1,9 +1,10 @@
 import React from 'react'
-import { HashRouter as Router, Link } from 'react-router-dom'
-import { List, Image, Tab } from 'semantic-ui-react'
+import { HashRouter as Router } from 'react-router-dom'
+import { List, Tab } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import ErrorData from '../../../partials/ErrorData'
+import Artist from './artists/Artist'
 
 export default class Artists extends React.Component {
   constructor (props) {
@@ -51,43 +52,29 @@ export default class Artists extends React.Component {
   }
 
   tabData () {
+    return <Router>{this.tracksList()}</Router>
+  }
+
+  tracksList () {
     return (
-      <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="globalSearchTab"
-          content={this.artistsList()}
-        />
-      </Router>
+      <List
+        selection
+        size="medium"
+        verticalAlign="middle"
+        className="searchTab"
+        content={this.artistsData()}
+      />
     )
   }
 
-  artistsList () {
-    return this.state.artists.map(artist => this.artistItem(artist))
+  artistsData () {
+    return this.state.artists.map(artist => this.artistData(artist))
   }
 
-  artistItem (artist) {
-    const listenersCount = artist.listeners_count.toLocaleString('eu')
+  artistData (artist) {
     return (
-      <List.Item
-        as={Link}
-        to={this.artistLink(artist)}
-        key={uuid()}
-        onClick={this.props.hideGlobalSearch}
-      >
-        <Image src={artist.image} avatar className="globalSearchItemImage" />
-        <List.Content className="globalSearchItemContent">
-          <List.Header as="h4">{artist.name}</List.Header>
-          <List.Description>{`${listenersCount} listeners`}</List.Description>
-        </List.Content>
-      </List.Item>
+      <Artist key={uuid()} artist={artist} hideSearch={this.props.hideSearch} />
     )
-  }
-
-  artistLink (artist) {
-    return `/artists/${this.props.encode(artist.name)}`
   }
 
   successData () {
@@ -101,9 +88,9 @@ export default class Artists extends React.Component {
   render () {
     return (
       <Tab.Pane
-        className="globalSearchTabWrap"
-        loading={this.props.active && this.state.loading}
+        className="searchTabWrap"
         active={this.props.active}
+        loading={this.props.active && this.state.loading}
         content={this.successData() || this.errorData()}
       />
     )
