@@ -13,6 +13,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 #background {
   z-index: -1;
   position: fixed;

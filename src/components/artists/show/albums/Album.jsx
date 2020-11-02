@@ -15,21 +15,22 @@ export default class Album extends React.Component {
     return `/artists/${this.props.artistName}/albums/${this.albumTitle}`
   }
 
+  cover () {
+    return this.coverSrc || this.defaultCoverSrc
+  }
+
   render () {
     return (
-      <Card>
+      <Card as={Link} to={this.albumLink()}>
         <Image
-          src={this.coverSrc || this.defaultCoverSrc}
+          src={this.cover()}
           wrapped
           ui={false}
           className="artistPageAlbumCover"
         />
+
         <Card.Content textAlign="center">
-          <Card.Header
-            as={Link}
-            to={this.albumLink()}
-            content={this.props.album.title}
-          />
+          <Card.Header content={this.props.album.title} />
           <Card.Meta content={`${this.playsCount} plays`} />
         </Card.Content>
       </Card>

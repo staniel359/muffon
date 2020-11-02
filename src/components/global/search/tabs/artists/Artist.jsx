@@ -22,11 +22,10 @@ export default class Artist extends React.Component {
           avatar
           className="searchItemImage"
         />
+
         <List.Content className="searchItemContent">
-          <List.Header as="h4">{this.props.artist.name}</List.Header>
-          <List.Description>
-            {`${this.listenersCount} listeners`}
-          </List.Description>
+          <List.Header as="h4" content={this.props.artist.name} />
+          <List.Description content={`${this.listenersCount} listeners`} />
         </List.Content>
       </List.Item>
     )
