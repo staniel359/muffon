@@ -1,13 +1,9 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import {
-  pauseAudio,
-  unpauseAudio,
-  stopAudio
-} from '../../../redux/actions/main'
 import Container from './audio/Container'
 import Controls from './audio/Controls'
 import TimeBar from './audio/TimeBar'
+import { connect } from 'react-redux'
+import * as playerActions from '../../../redux/actions/player'
 
 class Audio extends React.Component {
   constructor (props) {
@@ -185,8 +181,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps, {
-  pauseAudio,
-  unpauseAudio,
-  stopAudio
-})(Audio)
+export default connect(mapStateToProps, playerActions)(Audio)

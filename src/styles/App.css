@@ -39,6 +39,7 @@ html {
   border: none !important;
 }
 .playerPanel {
+  z-index: 1500 !important;
   border: none !important;
 }
 .playerPanel.fullScreen {
@@ -58,7 +59,6 @@ html {
 #playerPanelAudio {
   width: 100%;
 }
-
 .playerPanelAudioWrap {
   position: relative;
   margin-top: 10px;
@@ -187,7 +187,7 @@ html {
   width: 200px;
 }
 .artistPagePictureDimmer {
-  z-index: 2000 !important;
+  z-index: 3000 !important;
 }
 .artistPageLeftColumnMenu {
   width: 100% !important;
