@@ -5,7 +5,9 @@ import {
   unpauseAudio,
   stopAudio
 } from '../../../redux/actions/main'
-import { Button, Popup, Grid } from 'semantic-ui-react'
+import Container from './audio/Container'
+import Controls from './audio/Controls'
+import TimeBar from './audio/TimeBar'
 
 class Audio extends React.Component {
   constructor (props) {
@@ -14,20 +16,28 @@ class Audio extends React.Component {
       percentLoaded: 0,
       currentTime: 0,
       currentVolume: 1,
-      muted: false
+      muted: false,
+      shuffle: false,
+      repeat: false
     }
   }
 
-  audioContainer () {
-    return (
-      <audio
-        autoPlay
-        id="playerPanelAudio"
-        onLoadStart={this.handleLoadStart}
-        onProgress={this.handleProgress}
-        onTimeUpdate={this.handleTimeUpdate}
-      />
-    )
+  containerPropsSet () {
+    const { repeat } = this.state
+    const {
+      handleLoadStart,
+      handleProgress,
+      handleTimeUpdate,
+      handleAudioEnd
+    } = this
+
+    return {
+      repeat,
+      handleLoadStart,
+      handleProgress,
+      handleTimeUpdate,
+      handleAudioEnd
+    }
   }
 
   handleLoadStart = () => {
@@ -55,130 +65,62 @@ class Audio extends React.Component {
     this.setState({ currentTime: this.audio().currentTime })
   }
 
-  audioControls () {
-    return (
-      <Grid columns={3} verticalAlign="middle">
-        <Grid.Column textAlign="left">{this.audioTimer()}</Grid.Column>
-
-        <Grid.Column textAlign="center">
-          <Button basic size="tiny" icon="backward" />
-
-          {this.toggleAudioButton()}
-
-          <Button basic size="tiny" icon="forward" />
-        </Grid.Column>
-
-        <Grid.Column textAlign="right">
-          {this.volumeButtonWithBar()}
-
-          {this.stopAudioButton()}
-        </Grid.Column>
-      </Grid>
-    )
+  handleAudioEnd = () => {
+    this.audio().currentTime = 0
+    this.props.pauseAudio()
   }
 
-  toggleAudioButton () {
-    return (
-      <Button
-        basic
-        onClick={this.toggleAudio}
-        icon={this.toggleAudioButtonIcon()}
-      />
-    )
+  controlsPropsSet () {
+    const duration = this.audio().duration
+    const { currentTime, shuffle, repeat, muted, currentVolume } = this.state
+    const { audioStatus, stopAudio } = this.props
+    const {
+      toggleShuffle,
+      toggleAudio,
+      toggleRepeat,
+      toggleMute,
+      handleVolumeChange
+    } = this
+
+    return {
+      duration,
+      currentTime,
+      shuffle,
+      repeat,
+      muted,
+      currentVolume,
+      audioStatus,
+      stopAudio,
+      toggleShuffle,
+      toggleAudio,
+      toggleRepeat,
+      toggleMute,
+      handleVolumeChange
+    }
+  }
+
+  toggleShuffle = () => {
+    this.setState({ shuffle: !this.state.shuffle })
   }
 
   toggleAudio = () => {
-    if (this.props.audioStatus === 'play') {
-      this.props.pauseAudio()
-    } else if (this.props.audioStatus === 'pause') {
-      this.props.unpauseAudio()
-    }
+    this.toggleAudioActions[this.props.audioStatus]()
   }
 
-  toggleAudioButtonIcon () {
-    return this.toggleAudioButtonIcons[this.props.audioStatus]
+  toggleAudioActions = {
+    play: this.props.pauseAudio,
+    pause: this.props.unpauseAudio
   }
 
-  toggleAudioButtonIcons = {
-    play: 'pause',
-    pause: 'play'
-  }
-
-  stopAudioButton () {
-    return (
-      <Button basic size="tiny" onClick={this.props.stopAudio} icon="times" />
-    )
-  }
-
-  volumeButtonWithBar () {
-    return (
-      <Popup
-        size="tiny"
-        position="top center"
-        on="hover"
-        positionFixed
-        hoverable
-        basic
-        trigger={this.volumeButton()}
-        content={this.volumeBar()}
-      />
-    )
-  }
-
-  volumeButton () {
-    return (
-      <Button basic onClick={this.toggleMute} icon={this.volumeButtonIcon()} />
-    )
+  toggleRepeat = () => {
+    this.setState({ repeat: !this.state.repeat })
   }
 
   toggleMute = () => {
-    this.setState({ muted: !this.state.muted })
-    this.audio().muted = !this.state.muted
-  }
+    const mutedValue = !this.state.muted
 
-  volumeButtonIcon () {
-    if (this.state.muted) {
-      return 'volume off'
-    } else {
-      if (this.state.currentVolume <= 0.5) {
-        return 'volume down'
-      } else {
-        return 'volume up'
-      }
-    }
-  }
-
-  volumeBar () {
-    return (
-      <input
-        type="range"
-        step="0.01"
-        max="1"
-        className="playerPanelBar"
-        style={this.volumeBarStyle()}
-        value={this.currentVolume()}
-        onChange={this.handleVolumeChange}
-      />
-    )
-  }
-
-  volumeBarStyle () {
-    return { backgroundImage: this.volumeBarBackground() }
-  }
-
-  volumeBarBackground () {
-    const percent = this.currentVolume() * 100
-    return `
-      -webkit-gradient(
-        linear, left top, right top,
-        color-stop(${percent}%, #804FB3),
-        color-stop(${percent}%, #B589D6)
-      )
-    `
-  }
-
-  currentVolume () {
-    return this.state.muted ? 0 : this.state.currentVolume
+    this.setState({ muted: mutedValue })
+    this.audio().muted = mutedValue
   }
 
   handleVolumeChange = e => {
@@ -186,7 +128,7 @@ class Audio extends React.Component {
 
     this.setState({ currentVolume: currentVolume })
     this.audio().volume = currentVolume
-    this.changeMute(e.target.value === '0')
+    this.changeMute(currentVolume === '0')
   }
 
   changeMute = bool => {
@@ -194,74 +136,23 @@ class Audio extends React.Component {
     this.audio().muted = bool
   }
 
-  audioTimer () {
-    return `${this.currentTime()} / ${this.duration()}`
-  }
+  timeBarPropsSet () {
+    const duration = this.audio().duration
+    const { percentLoaded, currentTime } = this.state
+    const {
+      handleAudioBarTimeChange,
+      handleAudioBarSelectStart,
+      handleAudioBarSelectEnd
+    } = this
 
-  currentTime () {
-    return this.formatSeconds(this.state.currentTime)
-  }
-
-  formatSeconds (seconds) {
-    return new Date(seconds * 1000).toISOString().substr(14, 5)
-  }
-
-  duration () {
-    return this.formatSeconds(this.audio().duration || 0)
-  }
-
-  audioBar () {
-    return (
-      <div className="playerPanelAudioWrap">
-        <div className="playerPanelBar playerPanelBackgroundBar" />
-
-        <div
-          className="playerPanelBar playerPanelLoaderBar"
-          style={this.audioLoaderStyle()}
-        />
-
-        {this.audioBarSlider()}
-      </div>
-    )
-  }
-
-  audioLoaderStyle () {
-    return { width: `${this.state.percentLoaded}%` }
-  }
-
-  audioBarSlider () {
-    return (
-      <input
-        type="range"
-        step="1"
-        max={this.audio().duration || 0}
-        value={this.state.currentTime}
-        className="playerPanelBar playerPanelAudioBar"
-        style={this.audioBarStyle()}
-        onChange={this.handleAudioBarTimeChange}
-        onMouseDown={this.handleAudioBarSelectStart}
-        onMouseUp={this.handleAudioBarSelectEnd}
-      />
-    )
-  }
-
-  audioBarStyle () {
-    return { backgroundImage: this.audioBarBackground() }
-  }
-
-  audioBarBackground () {
-    const percent = this.percentPlayed() || 0
-    return `
-      -webkit-gradient(
-        linear, left top, right top,
-        color-stop(${percent}%, #804FB3),
-        color-stop(${percent}%, transparent)
-      )
-    `
-  }
-
-  percentPlayed () {
-    return (this.audio().currentTime / this.audio().duration) * 100
+    return {
+      duration,
+      percentLoaded,
+      currentTime,
+      handleAudioBarTimeChange,
+      handleAudioBarSelectStart,
+      handleAudioBarSelectEnd
+    }
   }
 
   handleAudioBarTimeChange = e => {
@@ -274,22 +165,17 @@ class Audio extends React.Component {
 
   handleAudioBarSelectEnd = () => {
     this.audio().currentTime = this.state.currentTime
-
-    if (this.props.audioStatus === 'play') {
-      this.audio().play()
-    } else if (this.props.audioStatus === 'pause') {
-      this.audio().pause()
-    }
+    this.audio()[this.props.audioStatus]()
   }
 
   render () {
     return (
       <React.Fragment>
-        {this.audioContainer()}
+        <Container {...this.containerPropsSet()} />
 
-        {this.audio() && this.audioControls()}
+        {this.audio() && <Controls {...this.controlsPropsSet()} />}
 
-        {this.audio() && this.audioBar()}
+        {this.audio() && <TimeBar {...this.timeBarPropsSet()} />}
       </React.Fragment>
     )
   }
