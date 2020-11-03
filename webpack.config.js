@@ -12,7 +12,15 @@ module.exports = {
     port: 3000,
     watchContentBase: true
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+      styles: path.resolve(__dirname, 'src/styles'),
+      global: path.resolve(__dirname, 'src/components/global'),
+      partials: path.resolve(__dirname, 'src/components/partials')
+    }
+  },
   module: {
     rules: [
       {

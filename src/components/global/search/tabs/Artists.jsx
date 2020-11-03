@@ -3,7 +3,7 @@ import { HashRouter as Router } from 'react-router-dom'
 import { List, Tab } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import axios from 'axios'
-import ErrorData from '../../../partials/ErrorData'
+import ErrorData from 'partials/ErrorData'
 import Artist from './artists/Artist'
 
 export default class Artists extends React.Component {

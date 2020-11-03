@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import * as playerActions from '../../redux/actions/player'
+import * as playerActions from 'src/redux/actions/player'
 
 class PlayButton extends React.Component {
   constructor (props) {

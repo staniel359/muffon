@@ -1,11 +1,11 @@
 import React from 'react'
 import Routes from './Routes'
-import Search from './global/Search'
-import PlayerPanel from './global/player/Panel'
+import Search from 'global/Search'
+import PlayerPanel from 'global/player/Panel'
 import Mousetrap from 'mousetrap'
 import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
-import '../styles/App.sass'
+import 'styles/App.sass'
 
 export default class App extends React.Component {
   constructor (props) {

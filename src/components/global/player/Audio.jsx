@@ -3,7 +3,7 @@ import Container from './audio/Container'
 import Controls from './audio/Controls'
 import TimeBar from './audio/TimeBar'
 import { connect } from 'react-redux'
-import * as playerActions from '../../../redux/actions/player'
+import * as playerActions from 'src/redux/actions/player'
 
 class Audio extends React.Component {
   constructor (props) {

@@ -3,8 +3,8 @@ import { Container, Sidebar, Segment, List } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import Audio from './Audio'
 import { HashRouter as Router, Link } from 'react-router-dom'
-import Picture from '../../artists/show/Picture'
-import '../../../styles/global/Player.sass'
+import Picture from 'src/components/artists/show/Picture'
+import 'styles/global/Player.sass'
 
 class Panel extends React.Component {
   constructor (props) {

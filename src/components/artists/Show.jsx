@@ -6,15 +6,10 @@ import Albums from './show/Albums'
 import Similar from './show/Similar'
 import Scrollspy from './show/Scrollspy'
 import PageMenu from './show/PageMenu'
-import {
-  Header,
-  Transition,
-  Dimmer,
-  Loader
-} from 'semantic-ui-react'
-import ErrorData from '../partials/ErrorData'
+import { Header, Transition, Dimmer, Loader } from 'semantic-ui-react'
+import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
-import '../../styles/artists/Show.sass'
+import 'styles/artists/Show.sass'
 
 export default class Show extends React.Component {
   constructor (props) {

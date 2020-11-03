@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import PlayButton from '../../../global/PlayButton'
+import PlayButton from 'global/PlayButton'
 
 export default class Track extends React.Component {
   trackData () {

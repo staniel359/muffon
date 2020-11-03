@@ -2,7 +2,7 @@ import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
 import { List, Button, Tab } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from '../../../partials/ErrorData'
+import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
 import Track from './tracks/Track'
 
