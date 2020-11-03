@@ -1,3 +1,8 @@
+/* Global */
+
+html {
+  scroll-behavior: smooth;
+}
 @media only screen and (max-width: 767px) {
   .ui.container {
     margin: 0 2em !important;
@@ -9,11 +14,6 @@
     width: 700px !important;
   }
 }
-
-html {
-  scroll-behavior: smooth;
-}
-
 #background {
   z-index: -1;
   position: fixed;
@@ -25,12 +25,16 @@ html {
   background-size: cover;
 }
 
+/* Custom */
+
 .fixed {
   position: fixed !important;
 }
 .w100 {
   width: 100% !important;
 }
+
+/* Layout */
 
 .mainContainer {
   padding-top: 60px;
@@ -39,6 +43,9 @@ html {
   z-index: 1500 !important;
   border: none !important;
 }
+
+/* Player panel */
+
 .playerPanel {
   z-index: 1500 !important;
   border: none !important;
@@ -92,10 +99,14 @@ html {
   position: absolute;
 }
 
+/* Dimmer */
+
 .ui.dimmer .content,
 .ui.dimmer img {
   max-height: 100%;
 }
+
+/* Search */
 
 .search {
   z-index: 2000 !important;
@@ -135,6 +146,8 @@ html {
 .searchItemIcon button {
   margin: 0 !important;
 }
+
+/* Artist page */
 
 .artistPageArtistName {
   margin-bottom: 10px !important;
@@ -183,9 +196,12 @@ html {
 .artistPageAlbumCover img {
   position: absolute;
 }
-.artistPagePicture {
-  height: 200px;
-  width: 200px;
+.artistPageArtistPicture {
+  position: relative;
+  padding-bottom: 100% !important;
+}
+.artistPageArtistPicture img {
+  position: absolute !important;
 }
 .artistPagePictureDimmer {
   z-index: 3000 !important;

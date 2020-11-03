@@ -8,11 +8,6 @@ export default class Picture extends React.Component {
     this.state = {}
   }
 
-  defaultSrc =
-    'https://lastfm.freetls.fastly.net/i/u/600x600/2a96cbd8b46e442fc41c2b86b821562f.png'
-
-  artistNameEncoded = encodeURIComponent(this.props.artistName)
-
   componentDidMount () {
     this.getImage()
   }
@@ -24,32 +19,43 @@ export default class Picture extends React.Component {
   imagesLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.artistNameEncoded}/images`
+      url: `/lastfm/artists/${this.artistName}/images`
     }
   }
 
+  artistName = encodeURIComponent(this.props.artistName)
+
   setImage (resp) {
-    const image = resp.data.artist.images[0] || 'noImage'
-    this.setState({ image: image })
+    this.setState({ image: this.responseImage(resp) })
+  }
+
+  responseImage (resp) {
+    return resp.data.artist.images[0] || 'noImage'
   }
 
   imageData () {
-    return (this.state.image && this.image()) || this.imagePlaceholder()
+    return this.state.image ? this.image() : this.imagePlaceholder()
   }
 
   image () {
     return (
-      <Image
-        src={this.imageSrc()}
-        className="artistPagePicture"
-        onClick={this.showDimmer}
-        rounded
-      />
+      <div className="artistPageArtistPicture">
+        <Image
+          src={this.imageSrc()}
+          onClick={this.handleImageClick}
+          style={this.imageStyle()}
+          rounded
+        />
+      </div>
     )
   }
 
   imageSrc () {
-    return (this.imageMissing() && this.defaultSrc) || this.artistImage()
+    return this.imageIsPresent() ? this.artistImage() : this.defaultSrc
+  }
+
+  imageIsPresent () {
+    return this.state.image && !this.imageMissing()
   }
 
   imageMissing () {
@@ -60,8 +66,23 @@ export default class Picture extends React.Component {
     return this.state.image.cropped_600
   }
 
+  defaultSrc =
+    'https://lastfm.freetls.fastly.net/i/u/600x600/2a96cbd8b46e442fc41c2b86b821562f.png'
+
+  handleImageClick = () => {
+    this.imageIsClickable() && this.showDimmer()
+  }
+
+  imageIsClickable () {
+    return this.imageIsPresent() && this.props.dimmer
+  }
+
   showDimmer = () => {
     this.setState({ dimmer: true })
+  }
+
+  imageStyle () {
+    return this.imageIsClickable() ? { cursor: 'pointer' } : {}
   }
 
   imagePlaceholder () {
@@ -69,7 +90,7 @@ export default class Picture extends React.Component {
   }
 
   dimmerData () {
-    return this.state.image && !this.imageMissing() && this.dimmer()
+    return this.imageIsClickable() && this.dimmer()
   }
 
   dimmer () {
