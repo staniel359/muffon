@@ -14,8 +14,7 @@ export default class Routes extends React.Component {
 
   render () {
     const setNavSections = this.props.setNavSections
-    const key = uuid()
-    const extraProps = { setNavSections, key }
+    const extraProps = { setNavSections }
 
     return (
       <Router>
@@ -23,19 +22,27 @@ export default class Routes extends React.Component {
           <Route
             exact
             path="/artists/:artistName"
-            render={props => <ArtistShow {...props} {...extraProps} />}
+            render={props => (
+              <ArtistShow key={uuid()} {...props} {...extraProps} />
+            )}
           />
           <Route
             path="/artists/:artistName/albums/:albumTitle"
-            render={props => <AlbumShow {...props} {...extraProps} />}
+            render={props => (
+              <AlbumShow key={uuid()} {...props} {...extraProps} />
+            )}
           />
           <Route
             path="/artists/:artistName/tracks/:trackTitle"
-            render={props => <TrackShow {...props} {...extraProps} />}
+            render={props => (
+              <TrackShow key={uuid()} {...props} {...extraProps} />
+            )}
           />
           <Route
             path="/tags/:tagName"
-            render={props => <TagShow {...props} {...extraProps} />}
+            render={props => (
+              <TagShow key={uuid()} {...props} {...extraProps} />
+            )}
           />
           <Route
             path="/"
