@@ -213,3 +213,9 @@ html {
 .artistPageSegmentWrap {
   margin-bottom: 20px;
 }
+.artistPageSimilarCard {
+  box-shadow: none !important;
+}
+.artistPageSimilarName {
+  margin-top: 5px !important;
+}

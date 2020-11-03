@@ -1,7 +1,8 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { Header, Segment, Pagination } from 'semantic-ui-react'
+import { Header, Segment, Pagination, Grid } from 'semantic-ui-react'
 import axios from 'axios'
+import SimilarArtist from './similar/SimilarArtist'
 
 export default class Similar extends React.Component {
   shouldComponentUpdate (nextProps, nextState) {
@@ -17,7 +18,7 @@ export default class Similar extends React.Component {
   }
 
   limit = 4
-  artistNameEncoded = encodeURIComponent(this.props.artistName)
+  artistName = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getSimilar()
@@ -31,7 +32,7 @@ export default class Similar extends React.Component {
   similarLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.artistNameEncoded}/similar`,
+      url: `/lastfm/artists/${this.artistName}/similar`,
       params: {
         limit: this.limit,
         page: this.state.page
@@ -47,13 +48,21 @@ export default class Similar extends React.Component {
     })
   }
 
-  similarList () {
+  similarData () {
     return (
-      <div>
-        {this.state.similar.map(artist => {
-          return <div key={uuid()}>{artist}</div>
+      <Grid columns={4} textAlign="center">
+        {this.state.similar.map(artistName => {
+          return this.similarArtistData(artistName)
         })}
-      </div>
+      </Grid>
+    )
+  }
+
+  similarArtistData (artistName) {
+    return (
+      <Grid.Column key={uuid()}>
+        <SimilarArtist artistName={artistName} />
+      </Grid.Column>
     )
   }
 
@@ -79,12 +88,12 @@ export default class Similar extends React.Component {
     return (
       <div id="similar" className="artistPageSegmentWrap">
         <Header as="h3" attached="top" content="Similar" />
+
         <Segment
           className="artistPageSegment"
-          id="similar"
           loading={this.state.loading}
           attached
-          content={this.state.similar && this.similarList()}
+          content={this.state.similar && this.similarData()}
         />
 
         <Segment className="artistPagePaginationWrap" attached="bottom">
