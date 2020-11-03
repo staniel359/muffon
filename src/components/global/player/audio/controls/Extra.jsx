@@ -1,41 +1,75 @@
 import React from 'react'
-import { Button, Popup } from 'semantic-ui-react'
+import { Button, Popup, Header } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { stopAudio } from 'src/redux/actions/player'
 
-export default class Extra extends React.Component {
+class Extra extends React.PureComponent {
+  constructor (props) {
+    super(props)
+    this.state = {
+      volume: 100,
+      muted: false
+    }
+  }
+
+  controlsData () {
+    return (
+      <React.Fragment>
+        {this.volumeButtonWithBar()}
+
+        {this.stopAudioButton()}
+      </React.Fragment>
+    )
+  }
+
   volumeButtonWithBar () {
     return (
       <Popup
-        size="tiny"
+        trigger={this.volumeButton()}
+        className="playerPanelVolumePopup"
         position="top center"
         on="hover"
         positionFixed
         hoverable
         basic
-        trigger={this.volumeButton()}
-        content={this.volumeBar()}
-      />
+      >
+        {this.volumeBar()}
+
+        <Header
+          as="h4"
+          className="playerPanelVolumeValue"
+          content={this.currentVolume()}
+        />
+      </Popup>
     )
   }
 
   volumeButton () {
     return (
-      <Button
-        basic
-        onClick={this.props.toggleMute}
-        icon={this.volumeButtonIcon()}
-      />
+      <Button basic onClick={this.toggleMute} icon={this.volumeButtonIcon()} />
     )
   }
 
+  toggleMute = () => {
+    const mutedValue = !this.state.muted
+
+    this.setState({ muted: mutedValue })
+    this.audio.muted = mutedValue
+  }
+
+  audio = document.getElementById('playerPanelAudio')
+
   volumeButtonIcon () {
-    if (this.props.muted) {
+    const muted = this.state.muted
+    const volumeOff = this.state.volume === 0
+    const volumeLow = this.state.volume <= 50
+
+    if (muted || volumeOff) {
       return 'volume off'
+    } else if (volumeLow) {
+      return 'volume down'
     } else {
-      if (this.props.currentVolume <= 0.5) {
-        return 'volume down'
-      } else {
-        return 'volume up'
-      }
+      return 'volume up'
     }
   }
 
@@ -43,12 +77,12 @@ export default class Extra extends React.Component {
     return (
       <input
         type="range"
-        step="0.01"
-        max="1"
-        className="playerPanelBar"
+        step="1"
+        max="100"
+        className="playerPanelVolumeBar"
         style={this.volumeBarStyle()}
         value={this.currentVolume()}
-        onChange={this.props.handleVolumeChange}
+        onChange={this.handleVolumeChange}
       />
     )
   }
@@ -58,18 +92,27 @@ export default class Extra extends React.Component {
   }
 
   volumeBarBackground () {
-    const percent = this.currentVolume() * 100
     return `
       -webkit-gradient(
         linear, left top, right top,
-        color-stop(${percent}%, #804FB3),
-        color-stop(${percent}%, #B589D6)
+        color-stop(${this.currentVolume()}%, #804FB3),
+        color-stop(${this.currentVolume()}%, #B589D6)
       )
     `
   }
 
   currentVolume () {
-    return this.props.muted ? 0 : this.props.currentVolume
+    return this.state.muted ? 0 : this.state.volume
+  }
+
+  handleVolumeChange = e => {
+    const volume = parseInt(e.target.value)
+    const muted = volume === 0
+
+    this.setState({ volume: volume, muted: muted })
+
+    this.audio.volume = volume / 100
+    this.audio.muted = muted
   }
 
   stopAudioButton () {
@@ -79,12 +122,12 @@ export default class Extra extends React.Component {
   }
 
   render () {
-    return (
-      <React.Fragment>
-        {this.volumeButtonWithBar()}
-
-        {this.stopAudioButton()}
-      </React.Fragment>
-    )
+    return this.controlsData()
   }
 }
+
+const mapStateToProps = state => {
+  return state
+}
+
+export default connect(mapStateToProps, { stopAudio })(Extra)

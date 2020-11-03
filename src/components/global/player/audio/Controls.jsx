@@ -31,24 +31,6 @@ export default class Controls extends React.Component {
     }
   }
 
-  extraControlsProps () {
-    const {
-      stopAudio,
-      muted,
-      currentVolume,
-      toggleMute,
-      handleVolumeChange
-    } = this.props
-
-    return {
-      stopAudio,
-      muted,
-      currentVolume,
-      toggleMute,
-      handleVolumeChange
-    }
-  }
-
   render () {
     return (
       <Grid columns="equal" verticalAlign="middle">
@@ -61,7 +43,7 @@ export default class Controls extends React.Component {
         </Grid.Column>
 
         <Grid.Column textAlign="right">
-          <ExtraControls {...this.extraControlsProps()} />
+          <ExtraControls />
         </Grid.Column>
       </Grid>
     )

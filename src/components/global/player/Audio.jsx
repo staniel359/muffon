@@ -70,13 +70,7 @@ class Audio extends React.Component {
     const duration = this.audio().duration
     const { currentTime, shuffle, repeat, muted, currentVolume } = this.state
     const { audioStatus, stopAudio } = this.props
-    const {
-      toggleShuffle,
-      toggleAudio,
-      toggleRepeat,
-      toggleMute,
-      handleVolumeChange
-    } = this
+    const { toggleShuffle, toggleAudio, toggleRepeat } = this
 
     return {
       duration,
@@ -89,9 +83,7 @@ class Audio extends React.Component {
       stopAudio,
       toggleShuffle,
       toggleAudio,
-      toggleRepeat,
-      toggleMute,
-      handleVolumeChange
+      toggleRepeat
     }
   }
 
@@ -110,26 +102,6 @@ class Audio extends React.Component {
 
   toggleRepeat = () => {
     this.setState({ repeat: !this.state.repeat })
-  }
-
-  toggleMute = () => {
-    const mutedValue = !this.state.muted
-
-    this.setState({ muted: mutedValue })
-    this.audio().muted = mutedValue
-  }
-
-  handleVolumeChange = e => {
-    const currentVolume = e.target.value
-
-    this.setState({ currentVolume: currentVolume })
-    this.audio().volume = currentVolume
-    this.changeMute(currentVolume === '0')
-  }
-
-  changeMute = bool => {
-    this.setState({ muted: bool })
-    this.audio().muted = bool
   }
 
   timeBarProps () {

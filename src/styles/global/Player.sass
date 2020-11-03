@@ -24,7 +24,6 @@
   margin-top: 10px
 
 .playerPanelBar
-  @extend .w100
   -webkit-appearance: none
   background: transparent
   outline: none
@@ -40,15 +39,16 @@
     background: $muffonBase
 
 .playerPanelAudioBar
-  @extend .absolute
+  @extend .absolute, .w100
 
 .playerPanelBackgroundBar
   background: $semanticGray
-  @extend .absolute
+  @extend .absolute, .w100
 
 .playerPanelLoaderBar
   background: $muffonPale
   @extend .absolute
+
 .playerPanelTrackWrap
   a
     color: unset
@@ -63,3 +63,12 @@
   .contentWrap
     @extend .inlineBlock, .midAlign
     width: calc(100% - 50px)
+
+.playerPanelVolumePopup
+  .playerPanelVolumeBar
+    @extend .playerPanelBar, .inlineBlock, .midAlign
+    margin-right: 10px
+  .playerPanelVolumeValue
+    @extend .inlineBlock, .midAlign
+    margin: 0 !important
+
