@@ -1,7 +1,9 @@
 import React from 'react'
-import { Container, Sidebar, Segment } from 'semantic-ui-react'
+import { Container, Sidebar, Segment, List } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import Audio from './Audio'
+import { HashRouter as Router, Link } from 'react-router-dom'
+import Picture from '../../artists/show/Picture'
 
 class Panel extends React.Component {
   constructor (props) {
@@ -58,9 +60,29 @@ class Panel extends React.Component {
     return (
       <Container className="playerPanelContainer">
         <div className="playerPanelLeftColumn">
-          {this.state.playingNowTrack.title}
-          <br />
-          {this.state.playingNowTrack.artist}
+          <Router>
+            <List className="playerPanelTrackWrap">
+              <List.Item>
+                <div className="wrap imageWrap">
+                  <Picture artistName={this.state.playingNowTrack.artist} />
+                </div>
+
+                <List.Content className="wrap contentWrap">
+                  <List.Header as="h4">
+                    <Link to={this.trackLink()}>
+                      {this.state.playingNowTrack.title}
+                    </Link>
+                  </List.Header>
+
+                  <List.Description>
+                    <Link to={this.artistLink()}>
+                      {this.state.playingNowTrack.artist}
+                    </Link>
+                  </List.Description>
+                </List.Content>
+              </List.Item>
+            </List>
+          </Router>
         </div>
 
         <div className="playerPanelRightColumn">
@@ -68,6 +90,22 @@ class Panel extends React.Component {
         </div>
       </Container>
     )
+  }
+
+  trackLink () {
+    return `/artists/${this.artistName()}/tracks/${this.trackTitle()}`
+  }
+
+  artistName () {
+    return encodeURIComponent(this.state.playingNowTrack.artist)
+  }
+
+  trackTitle () {
+    return encodeURIComponent(this.state.playingNowTrack.title)
+  }
+
+  artistLink () {
+    return `/artists/${this.artistName()}`
   }
 
   render () {

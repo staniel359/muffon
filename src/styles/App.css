@@ -98,6 +98,29 @@ html {
   background: #b589d6;
   position: absolute;
 }
+.playerPanelTrackWrap a {
+  color: unset;
+}
+.playerPanelTrackWrap a:hover {
+  color: initial;
+}
+.playerPanelTrackWrap .wrap {
+  display: inline-block;
+  vertical-align: middle;
+}
+.playerPanelTrackWrap {
+  .imageWrap {
+    width: 40px;
+    margin-right: 10px;
+  }
+}
+.playerPanelTrackWrap img,
+.playerPanelTrackWrap .placeholder {
+  border-radius: 50% !important;
+}
+.playerPanelTrackWrap .contentWrap {
+  width: calc(100% - 50px);
+}
 
 /* Dimmer */
 

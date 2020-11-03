@@ -12,18 +12,27 @@ export default class Picture extends React.Component {
     this.getImage()
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.artistName !== prevProps.artistName) {
+      this.getImage()
+    }
+  }
+
   getImage () {
+    this.setState({ image: null })
     axios(this.imagesLink()).then(resp => this.setImage(resp))
   }
 
   imagesLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/images`
+      url: `/lastfm/artists/${this.artistName()}/images`
     }
   }
 
-  artistName = encodeURIComponent(this.props.artistName)
+  artistName () {
+    return encodeURIComponent(this.props.artistName)
+  }
 
   setImage (resp) {
     this.setState({ image: this.responseImage(resp) })
