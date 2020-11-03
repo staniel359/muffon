@@ -62,16 +62,6 @@ class Audio extends React.Component {
     this.props.pauseAudio()
   }
 
-  controlsProps () {
-    const duration = this.audio().duration
-    const { currentTime } = this.state
-
-    return {
-      duration,
-      currentTime
-    }
-  }
-
   timeBarProps () {
     const duration = this.audio().duration
     const { percentLoaded, currentTime } = this.state
@@ -109,7 +99,7 @@ class Audio extends React.Component {
       <React.Fragment>
         <Container {...this.containerProps()} />
 
-        {this.audio() && <Controls {...this.controlsProps()} />}
+        {this.audio() && <Controls />}
 
         {this.audio() && <TimeBar {...this.timeBarProps()} />}
       </React.Fragment>
