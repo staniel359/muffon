@@ -1,0 +1,64 @@
+@import '../Base.sass'
+
+.artistPageArtistName
+  margin-bottom: 10px !important
+
+.artistPageLeftColumn
+  @extend .fixed, .h100, .inlineBlock
+  width: 200px
+
+.artistPageRightColumn
+  @extend .inlineBlock
+  width: 480px
+  float: right
+
+.artistPageLeftColumnName
+  margin-top: 10px !important
+.artistPageLeftColumnName.hidden
+  display: block !important
+
+.artistPageDescription
+  max-height: 175px
+  overflow-y: scroll
+
+.artistPageSegment
+  min-height: 100px
+
+.artistPageTrackCounter
+  .inner
+    @extend .inlineBlock, .midAlign
+  .trackLine
+    background: $semanticGray
+    height: 4px
+    border-radius: 2px
+    margin-right: 0.5em
+
+.artistPagePaginationWrap
+  text-align: center
+
+.artistPageAlbumCover
+  padding-bottom: 100% !important
+  img
+    @extend .absolute
+
+.artistPageArtistPicture
+  @extend .relative
+  padding-bottom: 100% !important
+  img
+    @extend .absolute
+
+.artistPagePictureDimmer
+  z-index: 3000 !important
+
+.artistPageLeftColumnMenu
+  @extend .w100
+  border-width: 0 2px 0 0 !important
+
+.artistPageSegmentWrap
+  margin-bottom: 20px
+
+.artistPageSimilarCard
+  box-shadow: none !important
+
+.artistPageSimilarName
+  margin-top: 5px !important

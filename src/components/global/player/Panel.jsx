@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Audio from './Audio'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import Picture from '../../artists/show/Picture'
+import '../../../styles/global/Player.sass'
 
 class Panel extends React.Component {
   constructor (props) {
@@ -63,11 +64,11 @@ class Panel extends React.Component {
           <Router>
             <List className="playerPanelTrackWrap">
               <List.Item>
-                <div className="wrap imageWrap">
+                <div className="imageWrap">
                   <Picture artistName={this.state.playingNowTrack.artist} />
                 </div>
 
-                <List.Content className="wrap contentWrap">
+                <List.Content className="contentWrap">
                   <List.Header as="h4">
                     <Link to={this.trackLink()}>
                       {this.state.playingNowTrack.title}

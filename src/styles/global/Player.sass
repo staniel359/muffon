@@ -1,0 +1,65 @@
+@import '../Base.sass'
+
+.playerPanel
+  @extend .noBorder
+  z-index: 1500 !important
+
+.playerPanel.fullScreen
+  min-height: calc(100% - 40px) !important
+
+.playerPanelLeftColumn
+  @extend .inlineBlock, .midAlign
+  width: 200px
+  margin-right: 20px
+
+.playerPanelRightColumn
+  @extend .inlineBlock, .midAlign
+  width: 480px
+
+#playerPanelAudio
+  @extend .w100
+
+.playerPanelAudioWrap
+  @extend .relative
+  margin-top: 10px
+
+.playerPanelBar
+  @extend .w100
+  -webkit-appearance: none
+  background: transparent
+  outline: none
+  cursor: pointer
+  height: 4px
+  border-radius: 2px
+
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    height: 10px
+    width: 10px
+    border-radius: 5px
+    background: $muffonBase
+
+.playerPanelAudioBar
+  @extend .absolute
+
+.playerPanelBackgroundBar
+  background: $semanticGray
+  @extend .absolute
+
+.playerPanelLoaderBar
+  background: $muffonPale
+  @extend .absolute
+.playerPanelTrackWrap
+  a
+    color: unset
+    &:hover
+      color: initial
+  .imageWrap
+    @extend .inlineBlock, .midAlign
+    width: 40px
+    margin-right: 10px
+  img, .placeholder
+    border-radius: 50% !important
+  .contentWrap
+    @extend .inlineBlock, .midAlign
+    width: calc(100% - 50px)

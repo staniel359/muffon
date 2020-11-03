@@ -1,0 +1,30 @@
+@import './Base.sass'
+
+html
+  scroll-behavior: smooth
+
+@media only screen and (max-width: 767px)
+  .ui.container
+    margin: 0 2em !important
+@media only screen and (min-width: 768px)
+  .ui.container
+    width: 700px !important
+
+#background
+  @extend .fixed, .w100, .h100
+  z-index: -1
+  background-image: url('../../dist/images/background.jpg')
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+
+.mainContainer
+  padding-top: 60px
+
+.mainMenu
+  @extend .noBorder
+  z-index: 1500 !important
+
+.ui.dimmer
+  .content, img
+    max-height: 100%
