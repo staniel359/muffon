@@ -11,26 +11,6 @@ export default class Controls extends React.Component {
     return { currentTime, duration }
   }
 
-  mainControlsProps () {
-    const {
-      audioStatus,
-      shuffle,
-      repeat,
-      toggleShuffle,
-      toggleAudio,
-      toggleRepeat
-    } = this.props
-
-    return {
-      audioStatus,
-      shuffle,
-      repeat,
-      toggleShuffle,
-      toggleAudio,
-      toggleRepeat
-    }
-  }
-
   render () {
     return (
       <Grid columns="equal" verticalAlign="middle">
@@ -39,7 +19,7 @@ export default class Controls extends React.Component {
         </Grid.Column>
 
         <Grid.Column textAlign="center" width={8}>
-          <MainControls {...this.mainControlsProps()} />
+          <MainControls />
         </Grid.Column>
 
         <Grid.Column textAlign="right">
