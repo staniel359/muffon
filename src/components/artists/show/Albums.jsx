@@ -1,32 +1,27 @@
 import React from 'react'
-import Album from './albums/Album'
-import { v4 as uuid } from 'uuid'
-import { Grid, Header, Segment, Pagination } from 'semantic-ui-react'
+import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
-import { HashRouter as Router } from 'react-router-dom'
+import List from './albums/List'
 
-export default class Albums extends React.Component {
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextState !== this.state
-  }
-
+export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: true,
-      page: 1
-    }
+    this.state = { loading: true, page: 1 }
   }
-
-  limit = 4
-  artistName = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getAlbums()
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.page !== prevState.page) {
+      this.getAlbums()
+    }
+  }
+
   getAlbums () {
     this.setState({ loading: true })
+
     axios(this.albumsLink()).then(resp => this.setAlbumsData(resp))
   }
 
@@ -34,35 +29,26 @@ export default class Albums extends React.Component {
     return {
       method: 'GET',
       url: `/lastfm/artists/${this.artistName}/albums`,
-      params: {
-        limit: this.limit,
-        page: this.state.page
-      }
+      params: { limit: 4, page: this.state.page }
     }
   }
 
+  artistName = encodeURIComponent(this.props.artistName)
+
   setAlbumsData (resp) {
+    const data = resp.data.artist
     this.setState({
-      albums: resp.data.artist.albums,
-      totalPages: resp.data.artist.total_pages,
+      albums: data.albums,
+      totalPages: data.total_pages,
       loading: false
     })
   }
 
   albumsList () {
-    return (
-      <Router>
-        <Grid>
-          {this.state.albums.map(album => {
-            return (
-              <Grid.Column width={8} key={uuid()}>
-                <Album album={album} artistName={this.artistName} />
-              </Grid.Column>
-            )
-          })}
-        </Grid>
-      </Router>
-    )
+    const { albums } = this.state
+    const { artistName } = this.props
+
+    return <List {...{ albums, artistName }} />
   }
 
   pagination () {
@@ -70,33 +56,38 @@ export default class Albums extends React.Component {
       <Pagination
         defaultActivePage={this.state.page}
         totalPages={this.state.totalPages}
+        onPageChange={this.handlePageChange}
         firstItem={null}
         lastItem={null}
         siblingRange={0}
-        onPageChange={this.handlePageChange}
       />
     )
   }
 
   handlePageChange = (_, { activePage }) => {
     this.props.scrollToSegmentTop('albums')
-    this.setState({ page: activePage }, this.getAlbums)
+
+    this.setState({ page: activePage })
   }
 
   render () {
     return (
       <div id="albums" className="artistPageSegmentWrap">
-        <Header as="h3" attached="top" content="Top albums" />
-        <Segment
-          className="artistPageSegment"
-          loading={this.state.loading}
-          attached
-          content={this.state.albums && this.albumsList()}
-        />
+        <Segment.Group>
+          <Segment>
+            <Header as="h3" content="Top albums" />
+          </Segment>
 
-        <Segment className="artistPagePaginationWrap" attached="bottom">
-          {this.state.albums && this.pagination()}
-        </Segment>
+          <Segment
+            className="artistPageSegment"
+            loading={this.state.loading}
+            content={this.state.albums && this.albumsList()}
+          />
+
+          <Segment className="artistPagePaginationWrap">
+            {this.state.albums && this.pagination()}
+          </Segment>
+        </Segment.Group>
       </div>
     )
   }

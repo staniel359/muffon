@@ -130,14 +130,11 @@ export default class Show extends React.Component {
   }
 
   rightColumn () {
+    const { artistName, handleError, stopLoader, setArtistName } = this
+    const infoProps = { artistName, handleError, stopLoader, setArtistName }
     return (
       <div className="artistPageRightColumn">
-        <Info
-          artistName={this.artistName}
-          handleError={this.handleError}
-          stopLoader={this.stopLoader}
-          setArtistName={this.setArtistName}
-        />
+        <Info {...infoProps} />
 
         {this.state.artistName && this.rightColumnData()}
       </div>
