@@ -4,19 +4,6 @@ import { Link } from 'react-router-dom'
 import PlayButton from 'global/player/PlayButton'
 
 export default class Track extends React.Component {
-  trackData () {
-    return (
-      <List.Item>
-        <List.Icon verticalAlign="middle">{this.playButton()}</List.Icon>
-
-        <List.Content as={Link} to={this.trackLink()}>
-          <List.Header as="h4" content={this.props.track.title} />
-          <List.Description content={this.trackCounter()} />
-        </List.Content>
-      </List.Item>
-    )
-  }
-
   playButton () {
     return (
       <PlayButton
@@ -38,7 +25,7 @@ export default class Track extends React.Component {
       <div className="artistPageTrackCounter">
         <div
           className="inner trackLine"
-          style={{ width: this.trackListenersLineWidth }}
+          style={{ width: this.trackLineWidth }}
         />
         <div className="inner">
           <Icon name="user" />
@@ -49,12 +36,19 @@ export default class Track extends React.Component {
   }
 
   listenersCount = this.props.track.listeners_count
-  topTrackListenersCount = this.props.topTrackListenersCount
-  trackListenersLineWidth = `${
-    (this.listenersCount / this.topTrackListenersCount) * 70
-  }%`
+  topTrackCount = this.props.topTrackCount
+  trackLineWidth = `${(this.listenersCount / this.topTrackCount) * 70}%`
 
   render () {
-    return this.trackData()
+    return (
+      <List.Item>
+        <List.Icon verticalAlign="middle">{this.playButton()}</List.Icon>
+
+        <List.Content as={Link} to={this.trackLink()}>
+          <List.Header as="h4" content={this.props.track.title} />
+          <List.Description content={this.trackCounter()} />
+        </List.Content>
+      </List.Item>
+    )
   }
 }

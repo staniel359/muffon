@@ -1,32 +1,27 @@
 import React from 'react'
-import Track from './tracks/Track'
-import { v4 as uuid } from 'uuid'
-import { List, Header, Segment, Pagination } from 'semantic-ui-react'
+import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
-import { HashRouter as Router } from 'react-router-dom'
+import List from './tracks/List'
 
-export default class Tracks extends React.Component {
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextState !== this.state
-  }
-
+export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: true,
-      page: 1
-    }
+    this.state = { loading: true, page: 1 }
   }
-
-  limit = 10
-  artistName = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getTracks()
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.page !== prevState.page) {
+      this.getTracks()
+    }
+  }
+
   getTracks () {
     this.setState({ loading: true })
+
     axios(this.tracksLink()).then(resp => this.setTracksData(resp))
   }
 
@@ -34,39 +29,28 @@ export default class Tracks extends React.Component {
     return {
       method: 'GET',
       url: `/lastfm/artists/${this.artistName}/tracks`,
-      params: {
-        limit: this.limit,
-        page: this.state.page
-      }
+      params: { limit: 10, page: this.state.page }
     }
   }
 
+  artistName = encodeURIComponent(this.props.artistName)
+
   setTracksData (resp) {
+    const data = resp.data.artist
+
     this.setState({
-      tracks: resp.data.artist.tracks,
-      topTrackListenersCount: resp.data.artist.tracks[0].listeners_count,
-      totalPages: resp.data.artist.total_pages,
+      tracks: data.tracks,
+      topTrackCount: data.tracks[0].listeners_count,
+      totalPages: data.total_pages,
       loading: false
     })
   }
 
   tracksList () {
-    return (
-      <Router>
-        <List selection>
-          {this.state.tracks.map(track => {
-            return (
-              <Track
-                key={uuid()}
-                track={track}
-                artistName={this.props.artistName}
-                topTrackListenersCount={this.state.topTrackListenersCount}
-              />
-            )
-          })}
-        </List>
-      </Router>
-    )
+    const { tracks, topTrackCount } = this.state
+    const { artistName } = this.props
+
+    return <List {...{ tracks, topTrackCount, artistName }} />
   }
 
   pagination () {
@@ -74,34 +58,38 @@ export default class Tracks extends React.Component {
       <Pagination
         defaultActivePage={this.state.page}
         totalPages={this.state.totalPages}
+        onPageChange={this.handlePageChange}
         firstItem={null}
         lastItem={null}
         siblingRange={0}
-        onPageChange={this.handlePageChange}
       />
     )
   }
 
   handlePageChange = (_, { activePage }) => {
     this.props.scrollToSegmentTop('tracks')
-    this.setState({ page: activePage }, this.getTracks)
+
+    this.setState({ page: activePage })
   }
 
   render () {
     return (
       <div id="tracks" className="artistPageSegmentWrap">
-        <Header as="h3" attached="top" content="Top tracks" />
+        <Segment.Group>
+          <Segment>
+            <Header as="h3" content="Top tracks" />
+          </Segment>
 
-        <Segment
-          className="artistPageSegment"
-          loading={this.state.loading}
-          attached
-          content={this.state.tracks && this.tracksList()}
-        />
+          <Segment
+            className="artistPageSegment"
+            loading={this.state.loading}
+            content={this.state.tracks && this.tracksList()}
+          />
 
-        <Segment attached="bottom" className="artistPagePaginationWrap">
-          {this.state.tracks && this.pagination()}
-        </Segment>
+          <Segment className="artistPagePaginationWrap">
+            {this.state.tracks && this.pagination()}
+          </Segment>
+        </Segment.Group>
       </div>
     )
   }
