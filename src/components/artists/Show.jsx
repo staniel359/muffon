@@ -104,7 +104,7 @@ export default class Show extends React.Component {
   }
 
   segmentTop = segmentID => {
-    return document.getElementById(segmentID).offsetTop - 60
+    return document.getElementById(segmentID).offsetTop - 70
   }
 
   scrollspy () {
@@ -132,6 +132,7 @@ export default class Show extends React.Component {
   rightColumn () {
     const { artistName, handleError, stopLoader, setArtistName } = this
     const infoProps = { artistName, handleError, stopLoader, setArtistName }
+
     return (
       <div className="artistPageRightColumn">
         <Info {...infoProps} />

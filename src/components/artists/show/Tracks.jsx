@@ -74,23 +74,21 @@ export default class Tracks extends React.PureComponent {
 
   render () {
     return (
-      <div id="tracks" className="artistPageSegmentWrap">
-        <Segment.Group>
-          <Segment>
-            <Header as="h3" content="Top tracks" />
-          </Segment>
+      <Segment.Group id="tracks" className="artistPageSegmentWrap">
+        <Segment>
+          <Header as="h3" content="Top tracks" />
+        </Segment>
 
-          <Segment
-            className="artistPageSegment"
-            loading={this.state.loading}
-            content={this.state.tracks && this.tracksList()}
-          />
+        <Segment
+          className="artistPageSegment"
+          loading={this.state.loading}
+          content={this.state.tracks && this.tracksList()}
+        />
 
-          <Segment className="artistPagePaginationWrap">
-            {this.state.tracks && this.pagination()}
-          </Segment>
-        </Segment.Group>
-      </div>
+        <Segment className="artistPagePaginationWrap">
+          {this.state.tracks && this.pagination()}
+        </Segment>
+      </Segment.Group>
     )
   }
 }

@@ -71,23 +71,21 @@ export default class Similar extends React.PureComponent {
 
   render () {
     return (
-      <div id="similar" className="artistPageSegmentWrap">
-        <Segment.Group>
-          <Segment>
-            <Header as="h3" content="Similar" />
-          </Segment>
+      <Segment.Group id="similar" className="artistPageSegmentWrap">
+        <Segment>
+          <Header as="h3" content="Similar" />
+        </Segment>
 
-          <Segment
-            className="artistPageSegment"
-            loading={this.state.loading}
-            content={this.state.similar && this.similarList()}
-          />
+        <Segment
+          className="artistPageSegment"
+          loading={this.state.loading}
+          content={this.state.similar && this.similarList()}
+        />
 
-          <Segment className="artistPagePaginationWrap">
-            {this.state.similar && this.pagination()}
-          </Segment>
-        </Segment.Group>
-      </div>
+        <Segment className="artistPagePaginationWrap">
+          {this.state.similar && this.pagination()}
+        </Segment>
+      </Segment.Group>
     )
   }
 }

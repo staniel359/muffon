@@ -72,23 +72,21 @@ export default class Albums extends React.PureComponent {
 
   render () {
     return (
-      <div id="albums" className="artistPageSegmentWrap">
-        <Segment.Group>
-          <Segment>
-            <Header as="h3" content="Top albums" />
-          </Segment>
+      <Segment.Group id="albums" className="artistPageSegmentWrap">
+        <Segment>
+          <Header as="h3" content="Top albums" />
+        </Segment>
 
-          <Segment
-            className="artistPageSegment"
-            loading={this.state.loading}
-            content={this.state.albums && this.albumsList()}
-          />
+        <Segment
+          className="artistPageSegment"
+          loading={this.state.loading}
+          content={this.state.albums && this.albumsList()}
+        />
 
-          <Segment className="artistPagePaginationWrap">
-            {this.state.albums && this.pagination()}
-          </Segment>
-        </Segment.Group>
-      </div>
+        <Segment className="artistPagePaginationWrap">
+          {this.state.albums && this.pagination()}
+        </Segment>
+      </Segment.Group>
     )
   }
 }

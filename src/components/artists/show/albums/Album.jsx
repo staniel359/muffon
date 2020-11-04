@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Image, Icon, Loader } from 'semantic-ui-react'
+import { Card, Image, Icon, Loader, Header } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -35,21 +35,6 @@ export default class Album extends React.Component {
     return `/artists/${this.artistName}/albums/${this.albumTitle}`
   }
 
-  albumData () {
-    return (
-      <Card as={Link} to={this.albumPageLink()}>
-        <Image
-          src={this.cover()}
-          wrapped
-          ui={false}
-          className="artistPageAlbumCover"
-        />
-
-        {this.albumDataContent()}
-      </Card>
-    )
-  }
-
   cover () {
     return this.coverSrc || this.defaultCoverSrc
   }
@@ -57,18 +42,6 @@ export default class Album extends React.Component {
   coverSrc = this.props.album.covers.cropped_300
   defaultCoverSrc =
     'https://lastfm.freetls.fastly.net/i/u/300x300/c6f59c1e5e7240a4c0d427abd71f3dbb.png'
-
-  albumDataContent () {
-    return (
-      <Card.Content textAlign="center">
-        <Card.Header content={this.props.album.title} />
-        <Card.Description className="artistPageAlbumListeners">
-          <Icon name="user" />
-          {this.listenersData() || <Loader active inline size="mini" />}
-        </Card.Description>
-      </Card.Content>
-    )
-  }
 
   listenersData () {
     return (
@@ -78,6 +51,21 @@ export default class Album extends React.Component {
   }
 
   render () {
-    return this.albumData()
+    return (
+      <Card as={Link} to={this.albumPageLink()} className="artistPageAlbumCard">
+        <div className="artistPageAlbumCover">
+          <Image src={this.cover()} rounded />
+        </div>
+
+        <Header as="h3" content={this.props.album.title} />
+
+        <Card.Content>
+          <Card.Description>
+            <Icon name="user" />
+            {this.listenersData() || <Loader active inline size="mini" />}
+          </Card.Description>
+        </Card.Content>
+      </Card>
+    )
   }
 }

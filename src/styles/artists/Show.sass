@@ -1,5 +1,7 @@
 @import '../Base.sass'
 
+$imageBorder: 1px solid rgba(34, 36, 38, 0.1) !important
+
 .artistPageArtistName
   margin-bottom: 10px !important
 
@@ -21,8 +23,10 @@
   max-height: 175px
   overflow-y: scroll
 
-.artistPageSegment
-  min-height: 100px
+.artistPageSegmentWrap
+  margin-bottom: 20px !important
+  .artistPageSegment
+    min-height: 100px
 
 .artistPageTrackCounter
   .inner
@@ -36,16 +40,13 @@
 .artistPagePaginationWrap
   text-align: center
 
-.artistPageAlbumCover
+.artistPageImage
   padding-bottom: 100% !important
   img
     @extend .absolute
 
 .artistPageArtistPicture
-  @extend .relative
-  padding-bottom: 100% !important
-  img
-    @extend .absolute
+  @extend .relative, .artistPageImage
 
 .artistPagePictureDimmer
   z-index: 3000 !important
@@ -54,14 +55,24 @@
   @extend .w100
   border-width: 0 2px 0 0 !important
 
-.artistPageSegmentWrap
-  margin-bottom: 20px
+.artistPageCard
+  box-shadow: none !important
+  text-align: center
+  .header
+    margin: 5px 0 !important
+  .content
+    padding: 0 !important
+    border: none !important
+
+.artistPageAlbumCard
+  @extend .artistPageCard
+  .artistPageAlbumCover
+    @extend .artistPageImage
+    img
+      border: $imageBorder
 
 .artistPageSimilarCard
-  box-shadow: none !important
+  @extend .artistPageCard
+  .artistPageArtistPicture img
+    border: $imageBorder
 
-.artistPageSimilarName
-  margin-top: 5px !important
-
-.artistPageAlbumListeners
-  margin-top: 0 !important

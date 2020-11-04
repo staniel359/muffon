@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Popup, Header } from 'semantic-ui-react'
 import PlayerContext from 'contexts/PlayerContext'
 
-export default class Extra extends React.PureComponent {
+export default class Extra extends React.Component {
   static contextType = PlayerContext
 
   controlsData () {

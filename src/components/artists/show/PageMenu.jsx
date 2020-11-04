@@ -1,7 +1,7 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
 
-export default class PageMenu extends React.Component {
+export default class PageMenu extends React.PureComponent {
   handleMenuItemClick = (_, { name }) => {
     this.props.scrollToSegmentTop(name)
   }

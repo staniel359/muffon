@@ -4,7 +4,7 @@ import { Segment, Header, Label, Divider } from 'semantic-ui-react'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import axios from 'axios'
 
-export default class Info extends React.Component {
+export default class Info extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {}
@@ -69,7 +69,7 @@ export default class Info extends React.Component {
 
   infoData () {
     return (
-      <div id="info" className="artistPageSegmentWrap">
+      <Segment.Group id="info" className="artistPageSegmentWrap">
         <Segment className="artistPageSegment">
           <Header
             size="huge"
@@ -87,7 +87,7 @@ export default class Info extends React.Component {
             {this.state.info.description}
           </div>
         </Segment>
-      </div>
+      </Segment.Group>
     )
   }
 

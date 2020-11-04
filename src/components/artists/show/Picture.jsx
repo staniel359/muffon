@@ -2,7 +2,7 @@ import React from 'react'
 import { Image, Dimmer, Placeholder } from 'semantic-ui-react'
 import axios from 'axios'
 
-export default class Picture extends React.Component {
+export default class Picture extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {}
@@ -95,7 +95,9 @@ export default class Picture extends React.Component {
   }
 
   imagePlaceholder () {
-    return <Placeholder content={<Placeholder.Image square />} />
+    return (
+      <Placeholder className="rounded" content={<Placeholder.Image square />} />
+    )
   }
 
   dimmerData () {
