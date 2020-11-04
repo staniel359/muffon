@@ -34,18 +34,14 @@ export default class Scrollspy extends React.Component {
   }
 
   changeMenuActiveItem () {
-    this.menuActiveIfSegmentVisible('similar') ||
-      this.menuActiveIfSegmentVisible('albums') ||
-      this.menuActiveIfSegmentVisible('tracks') ||
-      this.menuActiveIfSegmentVisible('info')
-  }
-
-  menuActiveIfSegmentVisible (segmentID) {
-    if (this.isLowerThan(segmentID)) {
-      this.props.setMenuActiveItem(segmentID)
-      return true
-    } else {
-      return false
+    if (this.isLowerThan('similar')) {
+      this.props.setMenuActiveItem('similar')
+    } else if (this.isLowerThan('albums')) {
+      this.props.setMenuActiveItem('albums')
+    } else if (this.isLowerThan('tracks')) {
+      this.props.setMenuActiveItem('tracks')
+    } else if (this.isLowerThan('info')) {
+      this.props.setMenuActiveItem('info')
     }
   }
 
