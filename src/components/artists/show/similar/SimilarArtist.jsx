@@ -13,11 +13,11 @@ export default class SimilarArtist extends React.Component {
   render () {
     return (
       <Card as={Link} to={this.similarLink()} className="artistPageSimilarCard">
+        <div />
+
         <Picture artistName={this.props.artistName} />
 
-        <Header as="h4" className="artistPageSimilarName">
-          {this.props.artistName}
-        </Header>
+        <Header as="h4" content={this.props.artistName} />
       </Card>
     )
   }

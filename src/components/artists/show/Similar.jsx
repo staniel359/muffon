@@ -1,27 +1,22 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
-import { Header, Segment, Pagination, Grid } from 'semantic-ui-react'
+import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
-import SimilarArtist from './similar/SimilarArtist'
+import List from './similar/List'
 
-export default class Similar extends React.Component {
-  shouldComponentUpdate (nextProps, nextState) {
-    return nextState !== this.state
-  }
-
+export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: true,
-      page: 1
-    }
+    this.state = { loading: true, page: 1 }
   }
-
-  limit = 4
-  artistName = encodeURIComponent(this.props.artistName)
 
   componentDidMount () {
     this.getSimilar()
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (this.state.page !== prevState.page) {
+      this.getSimilar()
+    }
   }
 
   getSimilar () {
@@ -33,37 +28,26 @@ export default class Similar extends React.Component {
     return {
       method: 'GET',
       url: `/lastfm/artists/${this.artistName}/similar`,
-      params: {
-        limit: this.limit,
-        page: this.state.page
-      }
+      params: { limit: 4, page: this.state.page }
     }
   }
 
+  artistName = encodeURIComponent(this.props.artistName)
+
   setSimilarData (resp) {
+    const data = resp.data.artist
+
     this.setState({
-      similar: resp.data.artist.similar,
-      totalPages: resp.data.artist.total_pages,
+      similar: data.similar,
+      totalPages: data.total_pages,
       loading: false
     })
   }
 
-  similarData () {
-    return (
-      <Grid columns={4} textAlign="center">
-        {this.state.similar.map(artistName => {
-          return this.similarArtistData(artistName)
-        })}
-      </Grid>
-    )
-  }
+  similarList () {
+    const { similar } = this.state
 
-  similarArtistData (artistName) {
-    return (
-      <Grid.Column key={uuid()}>
-        <SimilarArtist artistName={artistName} />
-      </Grid.Column>
-    )
+    return <List {...{ similar }} />
   }
 
   pagination () {
@@ -71,34 +55,38 @@ export default class Similar extends React.Component {
       <Pagination
         defaultActivePage={this.state.page}
         totalPages={this.state.totalPages}
+        onPageChange={this.handlePageChange}
         firstItem={null}
         lastItem={null}
         siblingRange={0}
-        onPageChange={this.handlePageChange}
       />
     )
   }
 
   handlePageChange = (_, { activePage }) => {
     this.props.scrollToSegmentTop('similar')
-    this.setState({ page: activePage }, this.getSimilar)
+
+    this.setState({ page: activePage })
   }
 
   render () {
     return (
       <div id="similar" className="artistPageSegmentWrap">
-        <Header as="h3" attached="top" content="Similar" />
+        <Segment.Group>
+          <Segment>
+            <Header as="h3" content="Similar" />
+          </Segment>
 
-        <Segment
-          className="artistPageSegment"
-          loading={this.state.loading}
-          attached
-          content={this.state.similar && this.similarData()}
-        />
+          <Segment
+            className="artistPageSegment"
+            loading={this.state.loading}
+            content={this.state.similar && this.similarList()}
+          />
 
-        <Segment className="artistPagePaginationWrap" attached="bottom">
-          {this.state.similar && this.pagination()}
-        </Segment>
+          <Segment className="artistPagePaginationWrap">
+            {this.state.similar && this.pagination()}
+          </Segment>
+        </Segment.Group>
       </div>
     )
   }
