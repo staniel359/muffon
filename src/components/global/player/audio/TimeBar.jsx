@@ -1,8 +1,27 @@
 import React from 'react'
+import PlayerContext from 'contexts/PlayerContext'
 
 export default class TimeBar extends React.Component {
+  static contextType = PlayerContext
+
+  timeBarData () {
+    return (
+      <div className="playerPanelAudioWrap">
+        <div className="playerPanelBackgroundBar" />
+
+        <div className="playerPanelLoaderBar" style={this.loaderStyle()} />
+
+        {this.slider()}
+      </div>
+    )
+  }
+
   loaderStyle () {
-    return { width: `${this.props.percentLoaded}%` }
+    return { width: `${this.percentLoaded()}%` }
+  }
+
+  percentLoaded () {
+    return (this.context.secondsLoaded / this.context.duration) * 100 || 0
   }
 
   slider () {
@@ -10,13 +29,13 @@ export default class TimeBar extends React.Component {
       <input
         type="range"
         step="0.25"
-        max={this.props.duration || 0}
-        value={this.props.currentTime}
+        max={this.context.duration}
+        value={this.context.currentTime}
         className="playerPanelBar playerPanelAudioBar"
         style={this.sliderStyle()}
-        onChange={this.props.handleAudioBarTimeChange}
-        onMouseDown={this.props.handleAudioBarSelectStart}
-        onMouseUp={this.props.handleAudioBarSelectEnd}
+        onChange={this.context.changeTime}
+        onMouseDown={this.context.startTimeChange}
+        onMouseUp={this.context.endTimeChange}
       />
     )
   }
@@ -26,32 +45,20 @@ export default class TimeBar extends React.Component {
   }
 
   sliderBackground () {
-    const percent = this.percentPlayed() || 0
     return `
       -webkit-gradient(
         linear, left top, right top,
-        color-stop(${percent}%, #804FB3),
-        color-stop(${percent}%, transparent)
+        color-stop(${this.percentPlayed()}%, #804FB3),
+        color-stop(${this.percentPlayed()}%, transparent)
       )
     `
   }
 
   percentPlayed () {
-    return (this.props.currentTime / this.props.duration) * 100
+    return (this.context.currentTime / this.context.duration) * 100 || 0
   }
 
   render () {
-    return (
-      <div className="playerPanelAudioWrap">
-        <div className="playerPanelBar playerPanelBackgroundBar" />
-
-        <div
-          className="playerPanelBar playerPanelLoaderBar"
-          style={this.loaderStyle()}
-        />
-
-        {this.slider()}
-      </div>
-    )
+    return this.timeBarData()
   }
 }

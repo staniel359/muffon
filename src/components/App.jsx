@@ -2,6 +2,7 @@ import React from 'react'
 import Routes from './Routes'
 import Search from 'global/Search'
 import PlayerPanel from 'global/player/Panel'
+import PlayerProvider from 'contexts/PlayerProvider'
 import Mousetrap from 'mousetrap'
 import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
 import 'semantic-ui-css/semantic.min.css'
@@ -48,7 +49,7 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
+      <PlayerProvider>
         {this.menu()}
 
         <Container className="mainContainer">
@@ -58,7 +59,7 @@ export default class App extends React.Component {
         </Container>
 
         <PlayerPanel />
-      </React.Fragment>
+      </PlayerProvider>
     )
   }
 }

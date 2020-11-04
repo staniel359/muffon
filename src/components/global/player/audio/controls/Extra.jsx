@@ -1,16 +1,9 @@
 import React from 'react'
 import { Button, Popup, Header } from 'semantic-ui-react'
-import { connect } from 'react-redux'
-import { stopAudio } from 'src/redux/actions/player'
+import PlayerContext from 'contexts/PlayerContext'
 
-class Extra extends React.PureComponent {
-  constructor (props) {
-    super(props)
-    this.state = {
-      volume: 100,
-      muted: false
-    }
-  }
+export default class Extra extends React.PureComponent {
+  static contextType = PlayerContext
 
   controlsData () {
     return (
@@ -26,43 +19,31 @@ class Extra extends React.PureComponent {
     return (
       <Popup
         trigger={this.volumeButton()}
+        content={this.volumeButtonWithBarData()}
         className="playerPanelVolumePopup"
         position="top center"
         on="hover"
         positionFixed
         hoverable
         basic
-      >
-        {this.volumeBar()}
-
-        <Header
-          as="h4"
-          className="playerPanelVolumeValue"
-          content={this.currentVolume()}
-        />
-      </Popup>
+      />
     )
   }
 
   volumeButton () {
     return (
-      <Button basic onClick={this.toggleMute} icon={this.volumeButtonIcon()} />
+      <Button
+        basic
+        onClick={this.context.toggleMute}
+        icon={this.volumeButtonIcon()}
+      />
     )
   }
 
-  toggleMute = () => {
-    const mutedValue = !this.state.muted
-
-    this.setState({ muted: mutedValue })
-    this.audio.muted = mutedValue
-  }
-
-  audio = document.getElementById('playerPanelAudio')
-
   volumeButtonIcon () {
-    const muted = this.state.muted
-    const volumeOff = this.state.volume === 0
-    const volumeLow = this.state.volume <= 50
+    const muted = this.context.muted
+    const volumeOff = this.context.volume === 0
+    const volumeLow = this.context.volume <= 50
 
     if (muted || volumeOff) {
       return 'volume off'
@@ -71,6 +52,20 @@ class Extra extends React.PureComponent {
     } else {
       return 'volume up'
     }
+  }
+
+  volumeButtonWithBarData () {
+    return (
+      <React.Fragment>
+        {this.volumeBar()}
+
+        <Header
+          as="h4"
+          className="playerPanelVolumeValue"
+          content={this.currentVolume()}
+        />
+      </React.Fragment>
+    )
   }
 
   volumeBar () {
@@ -82,7 +77,7 @@ class Extra extends React.PureComponent {
         className="playerPanelVolumeBar"
         style={this.volumeBarStyle()}
         value={this.currentVolume()}
-        onChange={this.handleVolumeChange}
+        onChange={this.context.changeVolume}
       />
     )
   }
@@ -102,22 +97,12 @@ class Extra extends React.PureComponent {
   }
 
   currentVolume () {
-    return this.state.muted ? 0 : this.state.volume
-  }
-
-  handleVolumeChange = e => {
-    const volume = parseInt(e.target.value)
-    const muted = volume === 0
-
-    this.setState({ volume: volume, muted: muted })
-
-    this.audio.volume = volume / 100
-    this.audio.muted = muted
+    return this.context.muted ? 0 : this.context.volume
   }
 
   stopAudioButton () {
     return (
-      <Button basic size="tiny" onClick={this.props.stopAudio} icon="times" />
+      <Button basic size="tiny" onClick={this.context.stopAudio} icon="times" />
     )
   }
 
@@ -125,9 +110,3 @@ class Extra extends React.PureComponent {
     return this.controlsData()
   }
 }
-
-const mapStateToProps = state => {
-  return state
-}
-
-export default connect(mapStateToProps, { stopAudio })(Extra)
