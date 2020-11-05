@@ -8,11 +8,16 @@ export default class Track extends React.Component {
   static contextType = PlayerContext
 
   trackLink () {
-    return `/artists/${this.artistName}/tracks/${this.trackTitle}`
+    return `/artists/${this.artistName()}/tracks/${this.trackTitle()}`
   }
 
-  artistName = encodeURIComponent(this.context.playingNowTrack.artist)
-  trackTitle = encodeURIComponent(this.context.playingNowTrack.title)
+  artistName () {
+    return encodeURIComponent(this.context.playingNowTrack.artist)
+  }
+
+  trackTitle () {
+    return encodeURIComponent(this.context.playingNowTrack.title)
+  }
 
   artistLink () {
     return `/artists/${this.artistName}`
