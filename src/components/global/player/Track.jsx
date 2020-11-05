@@ -20,7 +20,7 @@ export default class Track extends React.Component {
   }
 
   artistLink () {
-    return `/artists/${this.artistName}`
+    return `/artists/${this.artistName()}`
   }
 
   render () {

@@ -28,22 +28,28 @@ export default class Tracks extends React.PureComponent {
   tracksLink () {
     return {
       method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/tracks`,
+      url: `/lastfm/artists/${this.artistName()}/tracks`,
       params: { limit: 10, page: this.state.page }
     }
   }
 
-  artistName = encodeURIComponent(this.props.artistName)
+  artistName () {
+    return encodeURIComponent(this.props.artistName)
+  }
 
   setTracksData (resp) {
     const data = resp.data.artist
 
     this.setState({
       tracks: data.tracks,
-      topTrackCount: data.tracks[0].listeners_count,
+      topTrackCount: this.topTrackCount(data),
       totalPages: data.total_pages,
       loading: false
     })
+  }
+
+  topTrackCount (data) {
+    return this.state.topTrackCount || data.tracks[0].listeners_count
   }
 
   tracksList () {
