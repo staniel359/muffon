@@ -1,5 +1,6 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
+import axios from 'axios'
 
 export default class PlayerProvider extends React.Component {
   constructor (props) {
@@ -27,7 +28,10 @@ export default class PlayerProvider extends React.Component {
       secondsLoaded: 0,
       changeTime: this.changeTime,
       startTimeChange: this.startTimeChange,
-      endTimeChange: this.endTimeChange
+      endTimeChange: this.endTimeChange,
+      trackIndex: 0,
+      getTrack: this.getTrack,
+      changeTrack: this.changeTrack
     }
   }
 
@@ -59,7 +63,10 @@ export default class PlayerProvider extends React.Component {
   stopAudio = () => {
     this.setState({
       playingNowTrack: null,
-      audioStatus: 'stop'
+      audioStatus: 'stop',
+      trackIndex: 0,
+      artistName: null,
+      trackTitle: null
     })
   }
 
@@ -155,6 +162,51 @@ export default class PlayerProvider extends React.Component {
   endTimeChange = () => {
     this.audio().currentTime = this.state.currentTime
     this.audio()[this.state.audioStatus]()
+  }
+
+  getTrack = (artistName, trackTitle) => {
+    const trackIndex = 0
+    const promise = this.getTrackData(artistName, trackTitle, trackIndex)
+
+    this.setState({
+      artistName: artistName,
+      trackTitle: trackTitle,
+      trackIndex: trackIndex
+    })
+
+    return promise
+  }
+
+  getTrackData (artistName, trackTitle, trackIndex) {
+    const queryString = `${artistName} ${trackTitle}`
+    const params = { query: queryString, index: trackIndex }
+    const trackLink = {
+      method: 'GET',
+      url: '/vk/track',
+      params: params
+    }
+
+    return axios(trackLink).then(resp => {
+      return this.handleSuccess(resp)
+    })
+  }
+
+  handleSuccess (resp) {
+    const track = resp.data.track
+
+    track && this.state.setPlayingNowTrack(track)
+
+    return resp
+  }
+
+  changeTrack = () => {
+    const newIndex = this.state.trackIndex + 1
+    const { artistName, trackTitle } = this.state
+    const promise = this.getTrackData(artistName, trackTitle, newIndex)
+
+    this.setState({ trackIndex: newIndex })
+
+    return promise
   }
 
   render () {

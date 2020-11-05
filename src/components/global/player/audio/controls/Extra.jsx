@@ -1,19 +1,10 @@
 import React from 'react'
 import { Button, Popup, Header } from 'semantic-ui-react'
 import PlayerContext from 'contexts/PlayerContext'
+import ChangeTrackButton from '../../buttons/ChangeTrack'
 
 export default class Extra extends React.Component {
   static contextType = PlayerContext
-
-  controlsData () {
-    return (
-      <React.Fragment>
-        {this.volumeButtonWithBar()}
-
-        {this.stopAudioButton()}
-      </React.Fragment>
-    )
-  }
 
   volumeButtonWithBar () {
     return (
@@ -102,11 +93,25 @@ export default class Extra extends React.Component {
 
   stopAudioButton () {
     return (
-      <Button basic size="tiny" onClick={this.context.stopAudio} icon="times" />
+      <Button
+        basic
+        compact
+        size="tiny"
+        onClick={this.context.stopAudio}
+        icon="times"
+      />
     )
   }
 
   render () {
-    return this.controlsData()
+    return (
+      <React.Fragment>
+        {this.volumeButtonWithBar()}
+
+        <ChangeTrackButton />
+
+        {this.stopAudioButton()}
+      </React.Fragment>
+    )
   }
 }

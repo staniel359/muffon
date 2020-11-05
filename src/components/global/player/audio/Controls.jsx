@@ -12,7 +12,7 @@ export default class Controls extends React.Component {
           <Timer />
         </Grid.Column>
 
-        <Grid.Column textAlign="center" width={8}>
+        <Grid.Column textAlign="center" width={7}>
           <MainControls />
         </Grid.Column>
 
