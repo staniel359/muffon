@@ -107,8 +107,9 @@ export default class PlayerProvider extends React.Component {
 
   handleVolumeChange = e => {
     const volume = Math.floor(e.target.volume * 100)
+    const muted = e.target.muted
 
-    this.setState({ volume: volume })
+    this.setState({ volume: volume, muted: muted })
   }
 
   toggleShuffle = () => {
