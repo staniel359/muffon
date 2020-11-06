@@ -1,11 +1,11 @@
 import React from 'react'
 import Info from './show/Info'
-import Picture from './show/Picture'
 import Tracks from './show/Tracks'
 import Albums from './show/Albums'
 import Similar from './show/Similar'
 import Scrollspy from './show/Scrollspy'
 import PageMenu from './show/PageMenu'
+import Picture from 'global/artists/Picture'
 import { Header, Transition, Dimmer, Loader } from 'semantic-ui-react'
 import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
@@ -65,7 +65,7 @@ export default class Show extends React.Component {
   leftColumnData () {
     return (
       <div className="artistPageLeftColumn">
-        <Picture artistName={this.state.artistName} dimmer />
+        <Picture artistName={this.state.artistName} dimmer slider />
 
         {this.leftColumnArtistName()}
 

@@ -52,10 +52,15 @@ export default class Album extends React.Component {
 
   render () {
     return (
-      <Card as={Link} to={this.albumPageLink()} className="artistPageAlbumCard">
-        <div className="artistPageAlbumCover">
-          <Image src={this.cover()} rounded />
-        </div>
+      <Card as={Link} to={this.albumPageLink()} className="artistPageCard">
+        <div />
+
+        <Image
+          rounded
+          wrapped
+          className="imageWrapBordered"
+          src={this.cover()}
+        />
 
         <Header as="h3" content={this.props.album.title} />
 

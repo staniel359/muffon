@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import { List } from 'semantic-ui-react'
-import Picture from 'src/components/artists/show/Picture'
+import Picture from 'global/artists/Picture'
 import PlayerContext from 'contexts/PlayerContext'
 
 export default class Track extends React.Component {
@@ -28,14 +28,14 @@ export default class Track extends React.Component {
       <Router>
         <List className="playerPanelTrackWrap">
           <List.Item>
-            <div className="imageWrap">
+            <div className="playerPanelTrackImage">
               <Picture
                 artistName={this.context.playingNowTrack.artist}
                 dimmer
               />
             </div>
 
-            <List.Content className="contentWrap">
+            <List.Content className="playerPanelTrackContent">
               <List.Header as="h4">
                 <Link to={this.trackLink()}>
                   {this.context.playingNowTrack.title}

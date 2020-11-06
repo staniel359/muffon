@@ -5,7 +5,6 @@ import PlayerPanel from 'global/player/Panel'
 import PlayerProvider from 'contexts/PlayerProvider'
 import Mousetrap from 'mousetrap'
 import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
 import 'styles/App.sass'
 
 export default class App extends React.Component {

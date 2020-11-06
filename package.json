@@ -32,9 +32,11 @@
     "react": "^17.0.1",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
+    "react-slick": "^0.27.13",
     "sass-loader": "^10.0.5",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
+    "slick-carousel": "^1.8.1",
     "uuid": "^8.3.1"
   },
   "devDependencies": {

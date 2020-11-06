@@ -1,7 +1,5 @@
 @import '../Base.sass'
 
-$imageBorder: 1px solid rgba(34, 36, 38, 0.1) !important
-
 .artistPageArtistName
   margin-bottom: 10px !important
 
@@ -40,14 +38,6 @@ $imageBorder: 1px solid rgba(34, 36, 38, 0.1) !important
 .artistPagePaginationWrap
   text-align: center
 
-.artistPageImage
-  padding-bottom: 100% !important
-  img
-    @extend .absolute
-
-.artistPageArtistPicture
-  @extend .relative, .artistPageImage
-
 .artistPagePictureDimmer
   z-index: 3000 !important
 
@@ -63,16 +53,3 @@ $imageBorder: 1px solid rgba(34, 36, 38, 0.1) !important
   .content
     padding: 0 !important
     border: none !important
-
-.artistPageAlbumCard
-  @extend .artistPageCard
-  .artistPageAlbumCover
-    @extend .artistPageImage
-    img
-      border: $imageBorder
-
-.artistPageSimilarCard
-  @extend .artistPageCard
-  .artistPageArtistPicture img
-    border: $imageBorder
-
