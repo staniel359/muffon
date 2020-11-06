@@ -29,14 +29,15 @@ export default class ChangeTrack extends React.Component {
   }
 
   render () {
+    const { children, ...rest } = this.props
     return (
       <Button
+        {...rest}
+        compact
         onClick={this.changeTrack}
         basic={!this.isDisabled()}
         disabled={this.isDisabled()}
         loading={this.state.loading}
-        compact
-        size="tiny"
         icon={this.icon()}
       />
     )

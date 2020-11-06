@@ -10,11 +10,11 @@ export default class Main extends React.Component {
       <React.Fragment>
         {this.shuffleButton()}
 
-        <Button basic size="tiny" icon="backward" />
+        <Button basic compact icon="backward" />
 
         {this.toggleAudioButton()}
 
-        <Button basic size="tiny" icon="forward" />
+        <Button basic compact icon="forward" />
 
         {this.repeatButton()}
       </React.Fragment>
@@ -25,7 +25,7 @@ export default class Main extends React.Component {
     return (
       <Button
         basic={!this.context.shuffle}
-        size="tiny"
+        compact
         icon="shuffle"
         onClick={this.context.toggleShuffle}
       />
@@ -46,7 +46,7 @@ export default class Main extends React.Component {
     return (
       <Button
         basic={!this.context.repeat}
-        size="tiny"
+        compact
         icon="redo alternate"
         onClick={this.context.toggleRepeat}
       />

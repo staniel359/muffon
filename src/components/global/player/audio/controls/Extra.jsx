@@ -9,14 +9,14 @@ export default class Extra extends React.Component {
   volumeButtonWithBar () {
     return (
       <Popup
+        basic
+        hoverable
+        positionFixed
+        on="hover"
+        position="top center"
+        className="playerPanelVolumePopup"
         trigger={this.volumeButton()}
         content={this.volumeButtonWithBarData()}
-        className="playerPanelVolumePopup"
-        position="top center"
-        on="hover"
-        positionFixed
-        hoverable
-        basic
       />
     )
   }
@@ -25,8 +25,9 @@ export default class Extra extends React.Component {
     return (
       <Button
         basic
-        onClick={this.context.toggleMute}
+        compact
         icon={this.volumeButtonIcon()}
+        onClick={this.context.toggleMute}
       />
     )
   }
@@ -91,14 +92,42 @@ export default class Extra extends React.Component {
     return this.context.muted ? 0 : this.context.volume
   }
 
+  changeTrackButtonWithPopup () {
+    return (
+      <Popup
+        inverted
+        positionFixed
+        on="hover"
+        position="top center"
+        content="Wrong track? Next"
+        className="playerPanelExtraPopup"
+        trigger={<ChangeTrackButton />}
+      />
+    )
+  }
+
+  stopAudioButtonWithPopup () {
+    return (
+      <Popup
+        inverted
+        positionFixed
+        on="hover"
+        position="top center"
+        content="Stop and close"
+        className="playerPanelExtraPopup"
+        trigger={this.stopAudioButton()}
+      />
+    )
+  }
+
   stopAudioButton () {
     return (
       <Button
         basic
         compact
-        size="tiny"
-        onClick={this.context.stopAudio}
+        size="mini"
         icon="times"
+        onClick={this.context.stopAudio}
       />
     )
   }
@@ -108,9 +137,9 @@ export default class Extra extends React.Component {
       <React.Fragment>
         {this.volumeButtonWithBar()}
 
-        <ChangeTrackButton />
+        {this.changeTrackButtonWithPopup()}
 
-        {this.stopAudioButton()}
+        {this.stopAudioButtonWithPopup()}
       </React.Fragment>
     )
   }
