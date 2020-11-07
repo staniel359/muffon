@@ -1,21 +1,38 @@
 @import '../Base.sass'
 
-.artistPageArtistName
-  margin-bottom: 10px !important
+// Left column
 
 .artistPageLeftColumn
   @extend .fixed, .h100, .inlineBlock
   width: 200px
+  .slick-slider
+    cursor: pointer
+    &:hover
+      .slick-arrow
+        opacity: 1
+    .slick-arrow
+      z-index: 1
+      opacity: 0
+
+.artistPageLeftColumnName
+  margin-top: 10px !important
+
+.artistPageLeftColumnName.hidden
+  display: block !important
+
+.artistPageLeftColumnMenu
+  @extend .w100
+  border-width: 0 2px 0 0 !important
+
+// Right column
 
 .artistPageRightColumn
   @extend .inlineBlock
   width: 480px
   float: right
 
-.artistPageLeftColumnName
-  margin-top: 10px !important
-.artistPageLeftColumnName.hidden
-  display: block !important
+.artistPageArtistName
+  margin-bottom: 10px !important
 
 .artistPageDescription
   max-height: 175px
@@ -38,13 +55,6 @@
 .artistPagePaginationWrap
   text-align: center
 
-.artistPagePictureDimmer
-  z-index: 3000 !important
-
-.artistPageLeftColumnMenu
-  @extend .w100
-  border-width: 0 2px 0 0 !important
-
 .artistPageCard
   box-shadow: none !important
   text-align: center
@@ -53,3 +63,34 @@
   .content
     padding: 0 !important
     border: none !important
+
+// Picture dimmer
+
+.artistPictureDimmer
+  z-index: 3000 !important
+  padding: 2em !important
+  .content
+    @extend .h100, .w100
+
+.artistPictureDimmerImageContainer
+  height: calc(100% - 100px)
+  padding-bottom: 2em
+  .slick-slider,
+  .slick-list,
+  .slick-track,
+  .slick-slide,
+  .slick-slide > div
+    @extend .h100
+
+.artistPictureDimmerImageWrap
+  @extend .h100
+  display: flex !important
+  align-items: center
+  justify-content: center
+  outline: none
+  img
+    max-height: 100%
+
+.artistPictureDimmerImagesContainer
+  .slick-slide
+    cursor: pointer

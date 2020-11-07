@@ -15,7 +15,7 @@ export default class SimilarArtist extends React.Component {
       <Card as={Link} to={this.similarLink()} className="artistPageCard">
         <div />
 
-        <Picture artistName={this.props.artistName} border />
+        <Picture artistName={this.props.artistName} border medium />
 
         <Header as="h4" content={this.props.artistName} />
       </Card>

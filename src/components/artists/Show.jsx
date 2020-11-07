@@ -65,7 +65,7 @@ export default class Show extends React.Component {
   leftColumnData () {
     return (
       <div className="artistPageLeftColumn">
-        <Picture artistName={this.state.artistName} dimmer slider />
+        <Picture artistName={this.state.artistName} dimmer />
 
         {this.leftColumnArtistName()}
 

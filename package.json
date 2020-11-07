@@ -12,7 +12,9 @@
   "main": "src/electron.js",
   "scripts": {
     "webpack-start": "webpack serve",
+    "ws": "yarn webpack-start",
     "electron-start": "electron .",
+    "es": "yarn electron-start",
     "wait-electron-start": "wait-on http://localhost:3000 && yarn electron-start",
     "start": "concurrently \"yarn webpack-start\" \"yarn wait-electron-start\"",
     "test": "jest",

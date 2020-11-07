@@ -3,6 +3,9 @@
 html
   scroll-behavior: smooth
 
+a
+  outline: none
+
 @media only screen and (max-width: 767px)
   .ui.container
     margin: 0 2em !important
@@ -26,25 +29,8 @@ html
 .mainContainer
   padding-top: 70px
 
-.ui.dimmer
-  .content, img
-    max-height: 100%
-
 .placeholder.rounded
   border-radius: 0.3125em
-
-.slick-slider
-  cursor: pointer
-  &:hover
-    .slick-arrow
-      opacity: 1
-  .slick-arrow
-    z-index: 1
-    opacity: 0
-  .slick-prev
-    left: 10px
-  .slick-next
-    right: 10px
 
 .imageWrap
   @extend .w100
@@ -57,3 +43,10 @@ html
   img
     border: 1px solid rgba(34, 36, 38, 0.1) !important
 
+.slick-slider
+  .slick-prev
+    left: 10px
+  .slick-next
+    right: 10px
+  .slick-arrow
+    z-index: 1

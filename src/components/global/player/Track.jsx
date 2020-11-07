@@ -29,10 +29,7 @@ export default class Track extends React.Component {
         <List className="playerPanelTrackWrap">
           <List.Item>
             <div className="playerPanelTrackImage">
-              <Picture
-                artistName={this.context.playingNowTrack.artist}
-                dimmer
-              />
+              <Picture artistName={this.context.playingNowTrack.artist} />
             </div>
 
             <List.Content className="playerPanelTrackContent">

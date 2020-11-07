@@ -39,7 +39,7 @@ export default class Album extends React.Component {
     return this.coverSrc || this.defaultCoverSrc
   }
 
-  coverSrc = this.props.album.covers.cropped_300
+  coverSrc = this.props.album.covers.medium
   defaultCoverSrc =
     'https://lastfm.freetls.fastly.net/i/u/300x300/c6f59c1e5e7240a4c0d427abd71f3dbb.png'
 

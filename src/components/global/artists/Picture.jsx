@@ -1,8 +1,9 @@
 import React from 'react'
-import { Image, Dimmer, Placeholder } from 'semantic-ui-react'
+import { Image, Placeholder } from 'semantic-ui-react'
 import axios from 'axios'
 import Slider from 'react-slick'
 import { v4 as uuid } from 'uuid'
+import PictureDimmer from './PictureDimmer'
 
 export default class Picture extends React.PureComponent {
   constructor (props) {
@@ -36,7 +37,7 @@ export default class Picture extends React.PureComponent {
 
   setImagesData (resp) {
     const imagesData = resp.data.artist.images
-    const images = this.props.slider ? imagesData : imagesData.slice(0, 1)
+    const images = this.props.dimmer ? imagesData : imagesData.slice(0, 1)
 
     this.setState({ images: images, loading: false })
   }
@@ -54,68 +55,57 @@ export default class Picture extends React.PureComponent {
   }
 
   imageData () {
+    return this.props.dimmer
+      ? this.dimmableImageData()
+      : this.artistImageBasic()
+  }
+
+  dimmableImageData () {
     return (
       <React.Fragment>
-        {this.props.slider ? this.sliderData() : this.artistImage()}
+        {this.sliderData()}
 
-        {this.props.dimmer && this.dimmerData()}
+        {this.dimmerData()}
       </React.Fragment>
     )
   }
 
   sliderData () {
     return (
-      <Slider {...this.sliderSettings}>
-        {this.state.images.map(image => {
-          return <div key={uuid()}>{this.artistImage(image)}</div>
-        })}
+      <Slider
+        accessibility={false}
+        afterChange={this.setImageIndex}
+        draggable={false}
+        infinite={false}
+        lazyLoad="ondemand"
+      >
+        {this.state.images.map(this.artistImageDimmable)}
       </Slider>
     )
-  }
-
-  sliderSettings = {
-    accessibility: false,
-    afterChange: index => this.setImageIndex(index),
-    draggable: false,
-    infinite: false,
-    lazyLoad: 'ondemand'
   }
 
   setImageIndex = index => {
     this.setState({ imageIndex: index })
   }
 
-  artistImage (image) {
-    const className = this.props.border ? 'imageWrapBordered' : 'imageWrap'
-    const src = this.imageLinks(image).medium
-    const style = this.props.dimmer && { cursor: 'pointer' }
-    const handler = this.props.dimmer && this.showDimmer
-
+  artistImageDimmable = image => {
     return (
       <Image
         rounded
         wrapped
-        className={className}
-        src={src}
-        style={style}
-        onClick={handler}
+        className="imageWrap"
+        key={uuid()}
+        src={image.large}
+        style={{ cursor: 'pointer' }}
+        onClick={this.showDimmer}
       />
     )
   }
 
-  imageLinks (image) {
-    const { images, imageIndex } = this.state
-    const imageData = image || images[imageIndex] || {}
-    const defaultLink =
-      'https://lastfm.freetls.fastly.net/i/u/600x600' +
-      '/2a96cbd8b46e442fc41c2b86b821562f.png'
+  artistImageBasic () {
+    const src = this.state.images[0].medium
 
-    return {
-      original: imageData.original,
-      medium: imageData.cropped_600,
-      small: imageData.cropped_300,
-      default: defaultLink
-    }
+    return <Image rounded wrapped className="imageWrapBordered" src={src} />
   }
 
   showDimmer = () => {
@@ -123,21 +113,11 @@ export default class Picture extends React.PureComponent {
   }
 
   dimmerData () {
-    return (
-      <Dimmer
-        page
-        className="artistPagePictureDimmer"
-        active={this.state.dimmer}
-        content={this.dimmerImage()}
-        onClick={this.hideDimmer}
-      />
-    )
-  }
+    const { dimmer, imageIndex, images } = this.state
+    const { hideDimmer } = this
+    const props = { dimmer, imageIndex, images, hideDimmer }
 
-  dimmerImage () {
-    const src = this.imageLinks().original
-
-    return <Image rounded centered src={src} />
+    return <PictureDimmer {...props} />
   }
 
   hideDimmer = () => {
@@ -145,7 +125,8 @@ export default class Picture extends React.PureComponent {
   }
 
   defaultImage () {
-    const src = this.imageLinks().default
+    const src =
+      'https://lastfm.freetls.fastly.net/i/u/600x600/2a96cbd8b46e442fc41c2b86b821562f.png'
 
     return <Image rounded wrapped className="imageWrap" src={src} />
   }
