@@ -11,9 +11,19 @@ export default class ChangeTrack extends React.Component {
   }
 
   changeTrack = () => {
-    this.setState({ loading: true })
+    this.startLoader()
 
-    this.context.changeTrack().then(resp => this.handleResponse(resp))
+    this.changeTrackPromise().then(this.handleResponse)
+  }
+
+  startLoader () {
+    this.setState({ loading: true })
+  }
+
+  changeTrackPromise () {
+    const { artist, title, index } = this.context.currentTrackData
+
+    return this.context.getTrack(artist, title, index + 1)
   }
 
   handleResponse = resp => {

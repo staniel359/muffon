@@ -16,6 +16,7 @@ export default class Track extends React.Component {
       <PlayButton
         artistName={this.props.track.artist}
         trackTitle={this.props.track.title}
+        trackId={this.props.track.id}
       />
     )
   }

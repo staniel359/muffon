@@ -6,39 +6,27 @@ import GetTrackButton from './GetTrack'
 export default class Play extends React.Component {
   static contextType = PlayerContext
 
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
+  isPlaying () {
+    const { currentTrackId } = this.context
+    const { trackId } = this.props
 
-  noTrack () {
-    const audioStopped = this.context.audioStatus === 'stop'
-    const noAudio = !this.state.audioPresent
-
-    return audioStopped || noAudio
-  }
-
-  getTrackButton () {
-    const { artistName, trackTitle } = this.props
-    const { audioPresent } = this
-
-    return <GetTrackButton {...{ artistName, trackTitle, audioPresent }} />
-  }
-
-  audioPresent = () => {
-    this.setState({ audioPresent: true })
+    return currentTrackId === trackId
   }
 
   toggleAudioButton () {
-    return (
-      <Button
-        onClick={this.context.toggleAudio}
-        icon={this.context.toggleAudioButtonIcon()}
-      />
-    )
+    const { toggleAudio, toggleAudioButtonIcon } = this.context
+
+    return <Button onClick={toggleAudio} icon={toggleAudioButtonIcon()} />
+  }
+
+  getTrackButton () {
+    const { artistName, trackTitle, trackId } = this.props
+    const props = { artistName, trackTitle, trackId }
+
+    return <GetTrackButton {...props} />
   }
 
   render () {
-    return this.noTrack() ? this.getTrackButton() : this.toggleAudioButton()
+    return this.isPlaying() ? this.toggleAudioButton() : this.getTrackButton()
   }
 }

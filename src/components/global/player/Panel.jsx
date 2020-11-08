@@ -14,7 +14,7 @@ export default class Panel extends React.Component {
     return (
       <Container className="playerPanelContainer">
         <div className="playerPanelLeftColumn">
-          <Track playingNowTrack={this.context.playingNowTrack} />
+          <Track currentTrack={this.context.currentTrack} />
         </div>
 
         <div className="playerPanelRightColumn">
@@ -32,12 +32,12 @@ export default class Panel extends React.Component {
     return (
       <Sidebar
         as={Segment}
-        visible={!!this.context.playingNowTrack}
+        visible={!!this.context.currentTrack}
         direction="bottom"
         animation="overlay"
         className="playerPanel"
       >
-        {this.context.playingNowTrack && this.playerPanelContainer()}
+        {this.context.currentTrack && this.playerPanelContainer()}
       </Sidebar>
     )
   }

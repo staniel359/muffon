@@ -8,7 +8,6 @@ export default class PlayerProvider extends React.Component {
     this.state = {
       toggleAudio: this.toggleAudio,
       stopAudio: this.stopAudio,
-      setPlayingNowTrack: this.setPlayingNowTrack,
       toggleAudioButtonIcon: this.toggleAudioButtonIcon,
       toggleMute: this.toggleMute,
       muted: false,
@@ -29,9 +28,9 @@ export default class PlayerProvider extends React.Component {
       changeTime: this.changeTime,
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
-      trackIndex: 0,
       getTrack: this.getTrack,
-      changeTrack: this.changeTrack
+      currentTrackId: 0,
+      setCurrentTrackId: this.setCurrentTrackId
     }
   }
 
@@ -61,21 +60,17 @@ export default class PlayerProvider extends React.Component {
   }
 
   stopAudio = () => {
-    this.setState({
-      playingNowTrack: null,
-      audioStatus: 'stop',
-      trackIndex: 0,
-      artistName: null,
-      trackTitle: null
-    })
+    this.setState({ audioStatus: 'stop' })
+
+    this.resetCurrentTrack()
   }
 
-  setPlayingNowTrack = track => {
-    this.setState({ playingNowTrack: track })
-
-    this.audio().src = track.link
-
-    this.playAudio()
+  resetCurrentTrack () {
+    this.setState({
+      currentTrack: null,
+      currentTrackData: null,
+      currentTrackId: null
+    })
   }
 
   toggleAudioButtonIcon = () => {
@@ -165,22 +160,9 @@ export default class PlayerProvider extends React.Component {
     this.audio()[this.state.audioStatus]()
   }
 
-  getTrack = (artistName, trackTitle) => {
-    const trackIndex = 0
-    const promise = this.getTrackData(artistName, trackTitle, trackIndex)
-
-    this.setState({
-      artistName: artistName,
-      trackTitle: trackTitle,
-      trackIndex: trackIndex
-    })
-
-    return promise
-  }
-
-  getTrackData (artistName, trackTitle, trackIndex) {
-    const queryString = `${artistName} ${trackTitle}`
-    const params = { query: queryString, index: trackIndex }
+  getTrack = (artist, title, index = 0) => {
+    const queryString = `${artist} ${title}`
+    const params = { query: queryString, index: index }
     const trackLink = {
       method: 'GET',
       url: '/vk/track',
@@ -188,26 +170,29 @@ export default class PlayerProvider extends React.Component {
     }
 
     return axios(trackLink).then(resp => {
-      return this.handleSuccess(resp)
+      const { track } = resp.data
+
+      if (track) {
+        this.setState({
+          currentTrack: track,
+          currentTrackData: {
+            artist: artist,
+            title: title,
+            index: index
+          }
+        })
+
+        this.audio().src = track.link
+
+        this.playAudio()
+      }
+
+      return resp
     })
   }
 
-  handleSuccess (resp) {
-    const track = resp.data.track
-
-    track && this.state.setPlayingNowTrack(track)
-
-    return resp
-  }
-
-  changeTrack = () => {
-    const newIndex = this.state.trackIndex + 1
-    const { artistName, trackTitle } = this.state
-    const promise = this.getTrackData(artistName, trackTitle, newIndex)
-
-    this.setState({ trackIndex: newIndex })
-
-    return promise
+  setCurrentTrackId = id => {
+    this.setState({ currentTrackId: id })
   }
 
   render () {

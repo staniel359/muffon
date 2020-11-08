@@ -11,11 +11,11 @@ export default class Track extends React.PureComponent {
   }
 
   artistName () {
-    return encodeURIComponent(this.props.playingNowTrack.artist)
+    return encodeURIComponent(this.props.currentTrack.artist)
   }
 
   trackTitle () {
-    return encodeURIComponent(this.props.playingNowTrack.title)
+    return encodeURIComponent(this.props.currentTrack.title)
   }
 
   artistLink () {
@@ -28,23 +28,19 @@ export default class Track extends React.PureComponent {
         <List className="playerPanelTrackWrap">
           <List.Item>
             <div className="playerPanelTrackImage">
-              <Picture artistName={this.props.playingNowTrack.artist} />
+              <Picture artistName={this.props.currentTrack.artist} />
             </div>
 
             <List.Content className="playerPanelTrackContent">
               <List.Header as="h4">
                 <Link to={this.trackLink()}>
-                  <Ticker key={uuid()}>
-                    {this.props.playingNowTrack.title}
-                  </Ticker>
+                  <Ticker key={uuid()}>{this.props.currentTrack.title}</Ticker>
                 </Link>
               </List.Header>
 
               <List.Description>
                 <Link to={this.artistLink()}>
-                  <Ticker key={uuid()}>
-                    {this.props.playingNowTrack.artist}
-                  </Ticker>
+                  <Ticker key={uuid()}>{this.props.currentTrack.artist}</Ticker>
                 </Link>
               </List.Description>
             </List.Content>

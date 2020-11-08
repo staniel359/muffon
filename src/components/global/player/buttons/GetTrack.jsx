@@ -12,7 +12,8 @@ export default class GetTrack extends React.Component {
 
   getTrack = () => {
     this.startLoader()
-    this.getTrackPromise().then(this.props.audioPresent).catch(this.handleError)
+
+    this.getTrackPromise().then(this.handleSuccess).catch(this.handleError)
   }
 
   startLoader () {
@@ -25,8 +26,12 @@ export default class GetTrack extends React.Component {
     return this.context.getTrack(artistName, trackTitle)
   }
 
+  handleSuccess = () => {
+    this.context.setCurrentTrackId(this.props.trackId)
+  }
+
   handleError = () => {
-    this.setState({ error: true, loading: false })
+    this.setState({ loading: false, error: true })
   }
 
   isDisabled () {
