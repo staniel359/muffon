@@ -26,20 +26,24 @@ export default class Picture extends React.PureComponent {
   }
 
   getImages () {
-    this.setState({ images: [], loading: true })
+    this.setState({ loading: true, images: [] })
 
     const artistName = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistName}/images`
     const link = { method: 'GET', url: url }
 
-    axios(link).then(resp => this.setImagesData(resp))
+    axios(link).then(this.setImagesData).catch(this.handleError)
   }
 
-  setImagesData (resp) {
+  setImagesData = resp => {
     const imagesData = resp.data.artist.images
     const images = this.props.dimmer ? imagesData : imagesData.slice(0, 1)
 
-    this.setState({ images: images, loading: false })
+    this.setState({ loading: false, images: images })
+  }
+
+  handleError = () => {
+    this.setState({ loading: false, images: [] })
   }
 
   placeholderImage () {
