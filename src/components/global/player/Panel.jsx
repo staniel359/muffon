@@ -14,7 +14,7 @@ export default class Panel extends React.Component {
     return (
       <Container className="playerPanelContainer">
         <div className="playerPanelLeftColumn">
-          <Track />
+          <Track playingNowTrack={this.context.playingNowTrack} />
         </div>
 
         <div className="playerPanelRightColumn">

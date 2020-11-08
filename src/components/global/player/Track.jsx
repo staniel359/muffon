@@ -2,21 +2,20 @@ import React from 'react'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import { List } from 'semantic-ui-react'
 import Picture from 'global/artists/Picture'
-import PlayerContext from 'contexts/PlayerContext'
+import Ticker from 'partials/Ticker'
+import { v4 as uuid } from 'uuid'
 
-export default class Track extends React.Component {
-  static contextType = PlayerContext
-
+export default class Track extends React.PureComponent {
   trackLink () {
     return `/artists/${this.artistName()}/tracks/${this.trackTitle()}`
   }
 
   artistName () {
-    return encodeURIComponent(this.context.playingNowTrack.artist)
+    return encodeURIComponent(this.props.playingNowTrack.artist)
   }
 
   trackTitle () {
-    return encodeURIComponent(this.context.playingNowTrack.title)
+    return encodeURIComponent(this.props.playingNowTrack.title)
   }
 
   artistLink () {
@@ -29,19 +28,23 @@ export default class Track extends React.Component {
         <List className="playerPanelTrackWrap">
           <List.Item>
             <div className="playerPanelTrackImage">
-              <Picture artistName={this.context.playingNowTrack.artist} />
+              <Picture artistName={this.props.playingNowTrack.artist} />
             </div>
 
             <List.Content className="playerPanelTrackContent">
               <List.Header as="h4">
                 <Link to={this.trackLink()}>
-                  {this.context.playingNowTrack.title}
+                  <Ticker key={uuid()}>
+                    {this.props.playingNowTrack.title}
+                  </Ticker>
                 </Link>
               </List.Header>
 
               <List.Description>
                 <Link to={this.artistLink()}>
-                  {this.context.playingNowTrack.artist}
+                  <Ticker key={uuid()}>
+                    {this.props.playingNowTrack.artist}
+                  </Ticker>
                 </Link>
               </List.Description>
             </List.Content>

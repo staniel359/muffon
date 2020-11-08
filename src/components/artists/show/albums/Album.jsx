@@ -52,7 +52,7 @@ export default class Album extends React.Component {
 
   render () {
     return (
-      <Card as={Link} to={this.albumPageLink()} className="artistPageCard">
+      <Card as={Link} to={this.albumPageLink()} className="artistPageAlbumCard">
         <div />
 
         <Image

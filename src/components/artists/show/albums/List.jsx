@@ -14,7 +14,7 @@ export default class List extends React.PureComponent {
   render () {
     return (
       <Router>
-        <Card.Group itemsPerRow={2}>
+        <Card.Group centered itemsPerRow={2}>
           {this.props.albums.map(album => this.albumData(album))}
         </Card.Group>
       </Router>
