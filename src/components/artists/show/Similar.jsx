@@ -2,6 +2,7 @@ import React from 'react'
 import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './similar/List'
+import ErrorData from 'partials/ErrorData'
 
 export default class Similar extends React.PureComponent {
   constructor (props) {
@@ -14,53 +15,41 @@ export default class Similar extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.state.page !== prevState.page) {
-      this.getSimilar()
-    }
+    const pageChanged = this.state.page !== prevState.page
+
+    pageChanged && this.getSimilar()
   }
 
   getSimilar () {
-    this.setState({ loading: true })
-    axios(this.similarLink()).then(resp => this.setSimilarData(resp))
+    this.switchLoader(true)
+
+    const artistNameEncoded = encodeURIComponent(this.props.artistName)
+    const url = `/lastfm/artists/${artistNameEncoded}/similar`
+    const params = { limit: 4, page: this.state.page }
+
+    axios
+      .get(url, { params: params })
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  similarLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/similar`,
-      params: { limit: 4, page: this.state.page }
-    }
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
   }
 
-  artistName = encodeURIComponent(this.props.artistName)
-
-  setSimilarData (resp) {
-    const data = resp.data.artist
+  handleSuccess = resp => {
+    const { artist } = resp.data
 
     this.setState({
-      similar: data.similar,
-      totalPages: data.total_pages,
-      loading: false
+      similar: artist.similar,
+      totalPages: artist.total_pages,
+      error: null
     })
   }
 
-  similarList () {
-    const { similar } = this.state
-
-    return <List {...{ similar }} />
-  }
-
-  pagination () {
-    return (
-      <Pagination
-        defaultActivePage={this.state.page}
-        totalPages={this.state.totalPages}
-        onPageChange={this.handlePageChange}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={0}
-      />
-    )
+  handleError = error => {
+    this.setState({ error: error, similar: null })
   }
 
   handlePageChange = (_, { activePage }) => {
@@ -70,6 +59,22 @@ export default class Similar extends React.PureComponent {
   }
 
   render () {
+    const { loading, similar, error, page, totalPages } = this.state
+
+    const similarList = similar && <List {...{ similar }} />
+    const errorData = error && <ErrorData {...{ error }} />
+    const similarData = similarList || errorData
+    const paginationData = similar && (
+      <Pagination
+        defaultActivePage={page}
+        totalPages={totalPages}
+        onPageChange={this.handlePageChange}
+        firstItem={null}
+        lastItem={null}
+        siblingRange={0}
+      />
+    )
+
     return (
       <Segment.Group id="similar" className="artistPageSegmentWrap">
         <Segment>
@@ -78,13 +83,11 @@ export default class Similar extends React.PureComponent {
 
         <Segment
           className="artistPageSegment"
-          loading={this.state.loading}
-          content={this.state.similar && this.similarList()}
+          loading={loading}
+          content={similarData}
         />
 
-        <Segment className="artistPagePaginationWrap">
-          {this.state.similar && this.pagination()}
-        </Segment>
+        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
       </Segment.Group>
     )
   }

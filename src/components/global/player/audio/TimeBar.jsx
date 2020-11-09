@@ -1,64 +1,54 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
 
-export default class TimeBar extends React.Component {
+export default class TimeBar extends React.PureComponent {
   static contextType = PlayerContext
 
-  timeBarData () {
-    return (
-      <div className="playerPanelAudioWrap">
-        <div className="playerPanelBackgroundBar" />
+  render () {
+    const {
+      secondsLoaded,
+      duration,
+      currentTime,
+      changeTime,
+      startTimeChange,
+      endTimeChange
+    } = this.context
 
-        <div className="playerPanelLoaderBar" style={this.loaderStyle()} />
+    const background = <div className="playerPanelBackgroundBar" />
 
-        {this.slider()}
-      </div>
-    )
-  }
+    const percentLoaded = (secondsLoaded / duration) * 100 || 0
+    const loaderStyle = { width: `${percentLoaded}%` }
+    const loader = <div className="playerPanelLoaderBar" style={loaderStyle} />
 
-  loaderStyle () {
-    return { width: `${this.percentLoaded()}%` }
-  }
-
-  percentLoaded () {
-    return (this.context.secondsLoaded / this.context.duration) * 100 || 0
-  }
-
-  slider () {
-    return (
+    const percentPlayed = (currentTime / duration) * 100 || 0
+    const sliderBackground = `
+      -webkit-gradient(
+        linear, left top, right top,
+        color-stop(${percentPlayed}%, #804FB3),
+        color-stop(${percentPlayed}%, transparent)
+      )
+    `
+    const sliderStyle = { backgroundImage: sliderBackground }
+    const slider = (
       <input
         type="range"
         step="0.25"
-        max={this.context.duration}
-        value={this.context.currentTime}
+        max={duration}
+        value={currentTime}
         className="playerPanelBar playerPanelAudioBar"
-        style={this.sliderStyle()}
-        onChange={this.context.changeTime}
-        onMouseDown={this.context.startTimeChange}
-        onMouseUp={this.context.endTimeChange}
+        style={sliderStyle}
+        onChange={changeTime}
+        onMouseDown={startTimeChange}
+        onMouseUp={endTimeChange}
       />
     )
-  }
 
-  sliderStyle () {
-    return { backgroundImage: this.sliderBackground() }
-  }
-
-  sliderBackground () {
-    return `
-      -webkit-gradient(
-        linear, left top, right top,
-        color-stop(${this.percentPlayed()}%, #804FB3),
-        color-stop(${this.percentPlayed()}%, transparent)
-      )
-    `
-  }
-
-  percentPlayed () {
-    return (this.context.currentTime / this.context.duration) * 100 || 0
-  }
-
-  render () {
-    return this.timeBarData()
+    return (
+      <div className="playerPanelAudioWrap">
+        {background}
+        {loader}
+        {slider}
+      </div>
+    )
   }
 }

@@ -3,38 +3,29 @@ import { List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import PlayButton from 'global/player/buttons/Play'
 
-export default class Track extends React.Component {
-  trackLink () {
-    return `/artists/${this.artistName}/tracks/${this.trackTitle}`
-  }
-
-  artistName = encodeURIComponent(this.props.track.artist)
-  trackTitle = encodeURIComponent(this.props.track.title)
-
-  playButton () {
-    return (
-      <PlayButton
-        artistName={this.props.track.artist}
-        trackTitle={this.props.track.title}
-        trackId={this.props.track.id}
-      />
-    )
-  }
-
+export default class Track extends React.PureComponent {
   render () {
+    const { track, hideSearch } = this.props
+
+    const artistName = track.artist
+    const trackTitle = track.title
+    const trackId = track.id
+    const playButtonProps = { artistName, trackTitle, trackId }
+    const playButton = <PlayButton {...playButtonProps} />
+
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const trackTitleEncoded = encodeURIComponent(trackTitle)
+    const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
+
     return (
       <List.Item>
         <List.Icon className="searchItemIcon" verticalAlign="middle">
-          {this.playButton()}
+          {playButton}
         </List.Icon>
 
-        <List.Content
-          as={Link}
-          to={this.trackLink()}
-          onClick={this.props.hideSearch}
-        >
-          <List.Header as="h4" content={this.props.track.title} />
-          <List.Description content={this.props.track.artist} />
+        <List.Content as={Link} to={trackLink} onClick={hideSearch}>
+          <List.Header as="h4" content={trackTitle} />
+          <List.Description content={artistName} />
         </List.Content>
       </List.Item>
     )

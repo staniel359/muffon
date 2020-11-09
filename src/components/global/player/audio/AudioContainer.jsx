@@ -1,19 +1,29 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
 
-export default class AudioContainer extends React.Component {
+export default class AudioContainer extends React.PureComponent {
   static contextType = PlayerContext
+
   render () {
+    const {
+      repeat,
+      handleLoadStart,
+      handleProgress,
+      handleTimeUpdate,
+      handleVolumeChange,
+      handleAudioEnd
+    } = this.context
+
     return (
       <audio
         id="playerPanelAudio"
         autoPlay
-        loop={this.context.repeat}
-        onLoadStart={this.context.handleLoadStart}
-        onProgress={this.context.handleProgress}
-        onTimeUpdate={this.context.handleTimeUpdate}
-        onVolumeChange={this.context.handleVolumeChange}
-        onEnded={this.context.handleAudioEnd}
+        loop={repeat}
+        onLoadStart={handleLoadStart}
+        onProgress={handleProgress}
+        onTimeUpdate={handleTimeUpdate}
+        onVolumeChange={handleVolumeChange}
+        onEnded={handleAudioEnd}
       />
     )
   }

@@ -5,17 +5,21 @@ import Album from './Album'
 import { v4 as uuid } from 'uuid'
 
 export default class List extends React.PureComponent {
-  albumData (album) {
-    return (
-      <Album key={uuid()} album={album} artistName={this.props.artistName} />
-    )
+  albumData = album => {
+    const { artistName } = this.props
+    const key = uuid()
+
+    return <Album {...{ key, artistName, album }} />
   }
 
   render () {
+    const { albums } = this.props
+    const albumsList = albums.map(this.albumData)
+
     return (
       <Router>
         <Card.Group centered itemsPerRow={2}>
-          {this.props.albums.map(album => this.albumData(album))}
+          {albumsList}
         </Card.Group>
       </Router>
     )

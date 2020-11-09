@@ -2,58 +2,48 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import PlayerContext from 'contexts/PlayerContext'
 
-export default class Main extends React.Component {
+export default class Main extends React.PureComponent {
   static contextType = PlayerContext
 
-  controlsData () {
-    return (
-      <React.Fragment>
-        {this.shuffleButton()}
+  render () {
+    const {
+      shuffle,
+      toggleShuffle,
+      toggleAudio,
+      toggleAudioButtonIcon,
+      repeat,
+      toggleRepeat
+    } = this.context
 
-        <Button basic compact icon="backward" />
-
-        {this.toggleAudioButton()}
-
-        <Button basic compact icon="forward" />
-
-        {this.repeatButton()}
-      </React.Fragment>
+    const shuffleButton = (
+      <Button basic={!shuffle} compact icon="shuffle" onClick={toggleShuffle} />
     )
-  }
 
-  shuffleButton () {
-    return (
-      <Button
-        basic={!this.context.shuffle}
-        compact
-        icon="shuffle"
-        onClick={this.context.toggleShuffle}
-      />
+    const backwardButton = <Button basic compact icon="backward" />
+
+    const toggleAudioButton = (
+      <Button basic onClick={toggleAudio} icon={toggleAudioButtonIcon()} />
     )
-  }
 
-  toggleAudioButton () {
-    return (
-      <Button
-        basic
-        onClick={this.context.toggleAudio}
-        icon={this.context.toggleAudioButtonIcon()}
-      />
-    )
-  }
+    const forwardButton = <Button basic compact icon="forward" />
 
-  repeatButton () {
-    return (
+    const repeatButton = (
       <Button
-        basic={!this.context.repeat}
+        basic={!repeat}
         compact
         icon="redo alternate"
-        onClick={this.context.toggleRepeat}
+        onClick={toggleRepeat}
       />
     )
-  }
 
-  render () {
-    return this.controlsData()
+    return (
+      <React.Fragment>
+        {shuffleButton}
+        {backwardButton}
+        {toggleAudioButton}
+        {forwardButton}
+        {repeatButton}
+      </React.Fragment>
+    )
   }
 }

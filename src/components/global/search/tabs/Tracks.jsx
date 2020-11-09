@@ -1,159 +1,143 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import { List, Button, Tab } from 'semantic-ui-react'
+import { List, Button, Tab, Ref } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
 import Track from './tracks/Track'
 
-export default class Tracks extends React.Component {
+export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: true,
-      page: 1
-    }
+    this.state = { loading: true, page: 1 }
   }
-
-  limit = 40
 
   componentDidMount () {
     this.search()
   }
 
   search () {
-    this.setState({ loading: true })
+    this.switchLoader(true)
 
-    axios(this.searchLink())
-      .then(resp => this.setSearchResults(resp))
-      .catch(error => this.handleError(error))
-      .then(() => this.setState({ loading: false }))
-  }
-
-  searchLink () {
-    return {
-      method: 'GET',
-      url: '/lastfm/search/tracks',
-      params: {
-        query: this.props.query,
-        limit: this.limit,
-        page: this.state.page
-      }
+    const url = '/lastfm/search/tracks'
+    const params = {
+      query: this.props.query,
+      limit: 40,
+      page: this.state.page
     }
+
+    axios
+      .get(url, { params: params })
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  setSearchResults (resp) {
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
+  }
+
+  handleSuccess = resp => {
     this.setState({ tracks: resp.data.search.tracks })
   }
 
-  handleError (error) {
-    this.setState({
-      error: error,
-      tracks: null
-    })
+  handleError = error => {
+    this.setState({ error: error, tracks: null })
   }
 
-  tabData () {
-    return (
-      <Router>
-        {this.tracksList()}
+  trackData = track => {
+    const { hideSearch } = this.props
+    const key = uuid()
 
-        {this.pagination()}
-      </Router>
-    )
+    return <Track {...{ key, track, hideSearch }} />
   }
 
-  tracksList () {
-    return (
-      <List
-        selection
-        size="medium"
-        verticalAlign="middle"
-        className="searchTab"
-        content={this.tracksData()}
-      />
-    )
-  }
+  changePage = (_, { content }) => {
+    this.tabRef.current.scrollTop = 0
 
-  tracksData () {
-    return this.state.tracks.map(track => this.trackData(track))
-  }
-
-  trackData (track) {
-    return (
-      <Track key={uuid()} track={track} hideSearch={this.props.hideSearch} />
-    )
-  }
-
-  pagination () {
-    return (
-      <div className="searchTabPagination">
-        {this.previousPageTracksButton()}
-
-        {this.nextPageTracksButton()}
-      </div>
-    )
-  }
-
-  previousPageTracksButton () {
-    if (this.state.page > 1) {
-      return (
-        <Button
-          size="tiny"
-          icon="left arrow"
-          content="Previous"
-          floated="left"
-          labelPosition="left"
-          onClick={this.handlePageButtonClick}
-        />
-      )
-    }
-  }
-
-  handlePageButtonClick = (_, { content }) => {
-    this.props.scrollTabToTop()
     this.setState({ page: this.newPage(content) }, this.search)
   }
 
+  tabRef = React.createRef()
+
   newPage (action) {
-    let currentPage = this.state.page
+    const { page } = this.state
+
     switch (action) {
       case 'Next':
-        return (currentPage += 1)
+        return page + 1
       case 'Previous':
-        return (currentPage -= 1)
+        return page - 1
     }
   }
 
-  nextPageTracksButton () {
-    return (
+  render () {
+    const { loading, tracks, page, error } = this.state
+    const { active } = this.props
+    const { changePage } = this
+
+    const tracksList = tracks && tracks.map(this.trackData)
+    const tracksData = (
+      <Router>
+        <List
+          selection
+          size="medium"
+          verticalAlign="middle"
+          className="searchTab"
+          content={tracksList}
+        />
+      </Router>
+    )
+
+    const previousPageButton = (
+      <Button
+        size="tiny"
+        icon="left arrow"
+        content="Previous"
+        floated="left"
+        labelPosition="left"
+        onClick={changePage}
+      />
+    )
+
+    const nextPageButton = (
       <Button
         size="tiny"
         icon="right arrow"
         content="Next"
         floated="right"
         labelPosition="right"
-        onClick={this.handlePageButtonClick}
+        onClick={changePage}
       />
     )
-  }
 
-  successData () {
-    return this.state.tracks && this.tabData()
-  }
+    const pagination = (
+      <div className="searchTabPagination">
+        {page > 1 && previousPageButton}
+        {nextPageButton}
+      </div>
+    )
 
-  errorData () {
-    return this.state.error && <ErrorData error={this.state.error} />
-  }
+    const successData = (
+      <React.Fragment>
+        {tracksData}
+        {pagination}
+      </React.Fragment>
+    )
 
-  render () {
+    const errorData = error && <ErrorData {...{ error }} />
+
+    const tabContent = tracks ? successData : errorData
+
     return (
-      <Tab.Pane
-        className="searchTabWrap"
-        active={this.props.active}
-        loading={this.props.active && this.state.loading}
-        content={this.successData() || this.errorData()}
-      />
+      <Ref innerRef={this.tabRef}>
+        <Tab.Pane
+          className="searchTabWrap"
+          active={active}
+          loading={active && loading}
+          content={tabContent}
+        />
+      </Ref>
     )
   }
 }

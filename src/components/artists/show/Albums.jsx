@@ -2,6 +2,7 @@ import React from 'react'
 import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './albums/List'
+import ErrorData from 'partials/ErrorData'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -14,54 +15,41 @@ export default class Albums extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.state.page !== prevState.page) {
-      this.getAlbums()
-    }
+    const pageChanged = this.state.page !== prevState.page
+
+    pageChanged && this.getAlbums()
   }
 
   getAlbums () {
-    this.setState({ loading: true })
+    this.switchLoader(true)
 
-    axios(this.albumsLink()).then(resp => this.setAlbumsData(resp))
+    const artistNameEncoded = encodeURIComponent(this.props.artistName)
+    const url = `/lastfm/artists/${artistNameEncoded}/albums`
+    const params = { limit: 4, page: this.state.page }
+
+    axios
+      .get(url, { params: params })
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  albumsLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName}/albums`,
-      params: { limit: 4, page: this.state.page }
-    }
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
   }
 
-  artistName = encodeURIComponent(this.props.artistName)
+  handleSuccess = resp => {
+    const { artist } = resp.data
 
-  setAlbumsData (resp) {
-    const data = resp.data.artist
     this.setState({
-      albums: data.albums,
-      totalPages: data.total_pages,
-      loading: false
+      albums: artist.albums,
+      totalPages: artist.total_pages,
+      error: null
     })
   }
 
-  albumsList () {
-    const { albums } = this.state
-    const { artistName } = this.props
-
-    return <List {...{ albums, artistName }} />
-  }
-
-  pagination () {
-    return (
-      <Pagination
-        defaultActivePage={this.state.page}
-        totalPages={this.state.totalPages}
-        onPageChange={this.handlePageChange}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={0}
-      />
-    )
+  handleError = error => {
+    this.setState({ error: error, albums: null })
   }
 
   handlePageChange = (_, { activePage }) => {
@@ -71,6 +59,23 @@ export default class Albums extends React.PureComponent {
   }
 
   render () {
+    const { loading, albums, error, page, totalPages } = this.state
+    const { artistName } = this.props
+
+    const albumsList = albums && <List {...{ albums, artistName }} />
+    const errorData = error && <ErrorData {...{ error }} />
+    const albumsData = albumsList || errorData
+    const paginationData = albums && (
+      <Pagination
+        defaultActivePage={page}
+        totalPages={totalPages}
+        onPageChange={this.handlePageChange}
+        firstItem={null}
+        lastItem={null}
+        siblingRange={0}
+      />
+    )
+
     return (
       <Segment.Group id="albums" className="artistPageSegmentWrap">
         <Segment>
@@ -79,13 +84,11 @@ export default class Albums extends React.PureComponent {
 
         <Segment
           className="artistPageSegment"
-          loading={this.state.loading}
-          content={this.state.albums && this.albumsList()}
+          loading={loading}
+          content={albumsData}
         />
 
-        <Segment className="artistPagePaginationWrap">
-          {this.state.albums && this.pagination()}
-        </Segment>
+        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
       </Segment.Group>
     )
   }

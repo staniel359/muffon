@@ -1,12 +1,28 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
+import { v4 as uuid } from 'uuid'
 
 export default class PageMenu extends React.PureComponent {
-  handleMenuItemClick = (_, { name }) => {
+  menuItemNames = ['info', 'tracks', 'albums', 'similar']
+
+  menuItem = name => {
+    const { menuActiveItem } = this.props
+
+    return {
+      key: uuid(),
+      name: name,
+      active: menuActiveItem === name,
+      onClick: this.scrollToSegmentTop
+    }
+  }
+
+  scrollToSegmentTop = (_, { name }) => {
     this.props.scrollToSegmentTop(name)
   }
 
   render () {
+    const menuItemsList = this.menuItemNames.map(this.menuItem)
+
     return (
       <Menu
         pointing
@@ -15,28 +31,8 @@ export default class PageMenu extends React.PureComponent {
         inverted
         className="artistPageLeftColumnMenu"
         size="large"
-      >
-        <Menu.Item
-          name="info"
-          active={this.props.menuActiveItem === 'info'}
-          onClick={this.handleMenuItemClick}
-        />
-        <Menu.Item
-          name="tracks"
-          active={this.props.menuActiveItem === 'tracks'}
-          onClick={this.handleMenuItemClick}
-        />
-        <Menu.Item
-          name="albums"
-          active={this.props.menuActiveItem === 'albums'}
-          onClick={this.handleMenuItemClick}
-        />
-        <Menu.Item
-          name="similar"
-          active={this.props.menuActiveItem === 'similar'}
-          onClick={this.handleMenuItemClick}
-        />
-      </Menu>
+        items={menuItemsList}
+      />
     )
   }
 }

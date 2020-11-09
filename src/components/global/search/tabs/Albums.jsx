@@ -1,159 +1,143 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import { List, Tab, Button } from 'semantic-ui-react'
+import { List, Tab, Button, Ref } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import Album from './albums/Album'
 
-export default class Albums extends React.Component {
+export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: true,
-      page: 1
-    }
+    this.state = { loading: true, page: 1 }
   }
-
-  limit = 20
 
   componentDidMount () {
     this.search()
   }
 
   search () {
-    this.setState({ loading: true })
+    this.switchLoader(true)
 
-    axios(this.searchLink())
-      .then(resp => this.setSearchResults(resp))
-      .catch(error => this.handleError(error))
-      .then(() => this.setState({ loading: false }))
-  }
-
-  searchLink () {
-    return {
-      method: 'GET',
-      url: '/lastfm/search/albums',
-      params: {
-        query: this.props.query,
-        limit: this.limit,
-        page: this.state.page
-      }
+    const url = '/lastfm/search/albums'
+    const params = {
+      query: this.props.query,
+      limit: 20,
+      page: this.state.page
     }
+
+    axios
+      .get(url, { params: params })
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  setSearchResults (resp) {
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
+  }
+
+  handleSuccess = resp => {
     this.setState({ albums: resp.data.search.albums })
   }
 
-  handleError (error) {
-    this.setState({
-      error: error,
-      albums: null
-    })
+  handleError = error => {
+    this.setState({ error: error, albums: null })
   }
 
-  tabData () {
-    return (
-      <Router>
-        {this.albumsList()}
+  albumData = album => {
+    const { hideSearch } = this.props
+    const key = uuid()
 
-        {this.pagination()}
-      </Router>
-    )
+    return <Album {...{ key, album, hideSearch }} />
   }
 
-  albumsList () {
-    return (
-      <List
-        selection
-        size="medium"
-        verticalAlign="middle"
-        className="searchTab"
-        content={this.albumsData()}
-      />
-    )
-  }
+  changePage = (_, { content }) => {
+    this.tabRef.current.scrollTop = 0
 
-  albumsData () {
-    return this.state.albums.map(album => this.albumData(album))
-  }
-
-  albumData (album) {
-    return (
-      <Album key={uuid()} album={album} hideSearch={this.props.hideSearch} />
-    )
-  }
-
-  pagination () {
-    return (
-      <div className="searchTabPagination">
-        {this.previousPageAlbumsButton()}
-
-        {this.nextPageAlbumsButton()}
-      </div>
-    )
-  }
-
-  previousPageAlbumsButton () {
-    if (this.state.page > 1) {
-      return (
-        <Button
-          size="tiny"
-          icon="left arrow"
-          content="Previous"
-          floated="left"
-          labelPosition="left"
-          onClick={this.handlePageButtonClick}
-        />
-      )
-    }
-  }
-
-  handlePageButtonClick = (_, { content }) => {
-    this.props.scrollTabToTop()
     this.setState({ page: this.newPage(content) }, this.search)
   }
 
+  tabRef = React.createRef()
+
   newPage (action) {
-    let currentPage = this.state.page
+    const { page } = this.state
+
     switch (action) {
       case 'Next':
-        return (currentPage += 1)
+        return page + 1
       case 'Previous':
-        return (currentPage -= 1)
+        return page - 1
     }
   }
 
-  nextPageAlbumsButton () {
-    return (
+  render () {
+    const { loading, albums, page, error } = this.state
+    const { active } = this.props
+    const { changePage } = this
+
+    const albumsList = albums && albums.map(this.albumData)
+    const albumsData = (
+      <Router>
+        <List
+          selection
+          size="medium"
+          verticalAlign="middle"
+          className="searchTab"
+          content={albumsList}
+        />
+      </Router>
+    )
+
+    const previousPageButton = (
+      <Button
+        size="tiny"
+        icon="left arrow"
+        content="Previous"
+        floated="left"
+        labelPosition="left"
+        onClick={changePage}
+      />
+    )
+
+    const nextPageButton = (
       <Button
         size="tiny"
         icon="right arrow"
         content="Next"
         floated="right"
         labelPosition="right"
-        onClick={this.handlePageButtonClick}
+        onClick={changePage}
       />
     )
-  }
 
-  successData () {
-    return this.state.albums && this.tabData()
-  }
+    const pagination = (
+      <div className="searchTabPagination">
+        {page > 1 && previousPageButton}
+        {nextPageButton}
+      </div>
+    )
 
-  errorData () {
-    return this.state.error && <ErrorData error={this.state.error} />
-  }
+    const successData = (
+      <React.Fragment>
+        {albumsData}
+        {pagination}
+      </React.Fragment>
+    )
 
-  render () {
+    const errorData = error && <ErrorData {...{ error }} />
+
+    const tabContent = albums ? successData : errorData
+
     return (
-      <Tab.Pane
-        className="searchTabWrap"
-        active={this.props.active}
-        loading={this.props.active && this.state.loading}
-        content={this.successData() || this.errorData()}
-      />
+      <Ref innerRef={this.tabRef}>
+        <Tab.Pane
+          className="searchTabWrap"
+          active={active}
+          loading={active && loading}
+          content={tabContent}
+        />
+      </Ref>
     )
   }
 }

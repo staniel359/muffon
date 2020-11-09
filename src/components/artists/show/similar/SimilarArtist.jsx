@@ -3,21 +3,19 @@ import { Header, Card } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Picture from 'global/artists/Picture'
 
-export default class SimilarArtist extends React.Component {
-  similarLink () {
-    return `/artists/${this.artistName}`
-  }
-
-  artistName = encodeURIComponent(this.props.artistName)
-
+export default class SimilarArtist extends React.PureComponent {
   render () {
+    const artistName = this.props.artist.name
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const pageLink = `/artists/${artistNameEncoded}`
+
     return (
-      <Card as={Link} to={this.similarLink()} className="artistPageCard">
+      <Card as={Link} to={pageLink} className="artistPageCard">
         <div />
 
-        <Picture artistName={this.props.artistName} border medium />
+        <Picture border medium {...{ artistName }} />
 
-        <Header as="h4" content={this.props.artistName} />
+        <Header as="h4" content={artistName} />
       </Card>
     )
   }

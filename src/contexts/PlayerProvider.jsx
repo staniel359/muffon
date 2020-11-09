@@ -2,7 +2,7 @@ import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
 import axios from 'axios'
 
-export default class PlayerProvider extends React.Component {
+export default class PlayerProvider extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
@@ -63,6 +63,8 @@ export default class PlayerProvider extends React.Component {
     this.setState({ audioStatus: 'stop' })
 
     this.resetCurrentTrack()
+
+    this.audio().src = ''
   }
 
   resetCurrentTrack () {
@@ -162,24 +164,16 @@ export default class PlayerProvider extends React.Component {
 
   getTrack = (artist, title, index = 0) => {
     const queryString = `${artist} ${title}`
+    const url = '/vk/track'
     const params = { query: queryString, index: index }
-    const trackLink = {
-      method: 'GET',
-      url: '/vk/track',
-      params: params
-    }
 
-    return axios(trackLink).then(resp => {
+    return axios.get(url, { params: params }).then(resp => {
       const { track } = resp.data
 
       if (track) {
         this.setState({
           currentTrack: track,
-          currentTrackData: {
-            artist: artist,
-            title: title,
-            index: index
-          }
+          currentTrackData: { artist: artist, title: title, index: index }
         })
 
         this.audio().src = track.link

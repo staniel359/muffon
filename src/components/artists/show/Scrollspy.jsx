@@ -7,55 +7,44 @@ export default class Scrollspy extends React.PureComponent {
   }
 
   componentDidMount () {
-    this.addScrollListener()
+    window.addEventListener('scroll', this.handleWindowScroll)
   }
 
   componentWillUnmount () {
-    this.removeScrollListener()
-  }
-
-  addScrollListener () {
-    window.addEventListener('scroll', this.handleWindowScroll, {
-      passive: true
-    })
+    window.removeEventListener('scroll', this.handleWindowScroll)
   }
 
   handleWindowScroll = () => {
-    this.toggleLeftColumnArtistName()
+    this.toggleArtistName()
     this.changeMenuActiveItem()
   }
 
-  toggleLeftColumnArtistName () {
-    if (window.scrollY >= 60) {
-      this.props.toggleLeftColumnArtistName(true)
-    } else {
-      this.props.toggleLeftColumnArtistName(false)
-    }
+  toggleArtistName () {
+    const bool = window.scrollY >= 60
+
+    this.props.toggleArtistName(bool)
   }
 
   changeMenuActiveItem () {
-    if (this.isLowerThan('similar')) {
-      this.props.setMenuActiveItem('similar')
-    } else if (this.isLowerThan('albums')) {
-      this.props.setMenuActiveItem('albums')
-    } else if (this.isLowerThan('tracks')) {
-      this.props.setMenuActiveItem('tracks')
-    } else if (this.isLowerThan('info')) {
-      this.props.setMenuActiveItem('info')
+    this.setActiveIfLowerThan('similar') ||
+      this.setActiveIfLowerThan('albums') ||
+      this.setActiveIfLowerThan('tracks') ||
+      this.setActiveIfLowerThan('info')
+  }
+
+  setActiveIfLowerThan (segment) {
+    if (this.isLowerThan(segment)) {
+      this.props.setMenuActiveItem(segment)
+      return true
     }
+    return false
   }
 
   isLowerThan (segmentID) {
     return window.scrollY >= this.props.segmentTop(segmentID)
   }
 
-  removeScrollListener () {
-    window.removeEventListener('scroll', this.handleWindowScroll, {
-      passive: true
-    })
-  }
-
   render () {
-    return <div id="scrollspy"></div>
+    return <div id="scrollspy" />
   }
 }

@@ -2,53 +2,53 @@ import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
 import { Button } from 'semantic-ui-react'
 
-export default class ChangeTrack extends React.Component {
+export default class ChangeTrack extends React.PureComponent {
   static contextType = PlayerContext
 
   constructor (props) {
     super(props)
-    this.state = { loading: false, error: false }
+    this.state = { loading: false }
   }
 
   changeTrack = () => {
-    this.startLoader()
+    this.switchLoader(true)
 
-    this.changeTrackPromise().then(this.handleResponse)
-  }
-
-  startLoader () {
-    this.setState({ loading: true })
-  }
-
-  changeTrackPromise () {
     const { artist, title, index } = this.context.currentTrackData
 
-    return this.context.getTrack(artist, title, index + 1)
+    this.context
+      .getTrack(artist, title, index + 1)
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  handleResponse = resp => {
-    this.setState({ loading: false, error: !resp.data.track })
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
   }
 
-  isDisabled () {
-    return this.state.loading || this.state.error
+  handleSuccess = () => {
+    this.setState({ error: false })
   }
 
-  icon () {
-    return this.state.error ? 'times' : 'angle double right'
+  handleError = () => {
+    this.setState({ error: true })
   }
 
   render () {
     const { children, ...rest } = this.props
+    const { loading, error } = this.state
+
+    const icon = error ? 'times' : 'angle double right'
+
     return (
       <Button
         {...rest}
         compact
         onClick={this.changeTrack}
-        basic={!this.isDisabled()}
-        disabled={this.isDisabled()}
-        loading={this.state.loading}
-        icon={this.icon()}
+        loading={loading}
+        disabled={loading || error}
+        basic={!(loading || error)}
+        icon={icon}
       />
     )
   }

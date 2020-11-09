@@ -2,6 +2,7 @@ import React from 'react'
 import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './tracks/List'
+import ErrorData from 'partials/ErrorData'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -14,62 +15,45 @@ export default class Tracks extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (this.state.page !== prevState.page) {
-      this.getTracks()
-    }
+    const pageChanged = this.state.page !== prevState.page
+
+    pageChanged && this.getTracks()
   }
 
   getTracks () {
-    this.setState({ loading: true })
+    this.switchLoader(true)
 
-    axios(this.tracksLink()).then(resp => this.setTracksData(resp))
+    const artistNameEncoded = encodeURIComponent(this.props.artistName)
+    const url = `/lastfm/artists/${artistNameEncoded}/tracks`
+    const params = { limit: 10, page: this.state.page }
+
+    axios
+      .get(url, { params: params })
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  tracksLink () {
-    return {
-      method: 'GET',
-      url: `/lastfm/artists/${this.artistName()}/tracks`,
-      params: { limit: 10, page: this.state.page }
-    }
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
   }
 
-  artistName () {
-    return encodeURIComponent(this.props.artistName)
-  }
+  handleSuccess = resp => {
+    const { artist } = resp.data
 
-  setTracksData (resp) {
-    const data = resp.data.artist
+    const firstTrack = artist.tracks[0]
+    const topTrackCount = this.state.topTrackCount || firstTrack.listeners_count
 
     this.setState({
-      tracks: data.tracks,
-      topTrackCount: this.topTrackCount(data),
-      totalPages: data.total_pages,
-      loading: false
+      tracks: artist.tracks,
+      topTrackCount: topTrackCount,
+      totalPages: artist.total_pages,
+      error: null
     })
   }
 
-  topTrackCount (data) {
-    return this.state.topTrackCount || data.tracks[0].listeners_count
-  }
-
-  tracksList () {
-    const { tracks, topTrackCount } = this.state
-    const { artistName } = this.props
-
-    return <List {...{ tracks, topTrackCount, artistName }} />
-  }
-
-  pagination () {
-    return (
-      <Pagination
-        defaultActivePage={this.state.page}
-        totalPages={this.state.totalPages}
-        onPageChange={this.handlePageChange}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={0}
-      />
-    )
+  handleError = error => {
+    this.setState({ error: error, tracks: null })
   }
 
   handlePageChange = (_, { activePage }) => {
@@ -79,6 +63,32 @@ export default class Tracks extends React.PureComponent {
   }
 
   render () {
+    const {
+      loading,
+      tracks,
+      error,
+      topTrackCount,
+      page,
+      totalPages
+    } = this.state
+    const { artistName } = this.props
+
+    const tracksList = tracks && (
+      <List {...{ tracks, topTrackCount, artistName }} />
+    )
+    const errorData = error && <ErrorData {...{ error }} />
+    const tracksData = tracksList || errorData
+    const paginationData = tracks && (
+      <Pagination
+        defaultActivePage={page}
+        totalPages={totalPages}
+        onPageChange={this.handlePageChange}
+        firstItem={null}
+        lastItem={null}
+        siblingRange={0}
+      />
+    )
+
     return (
       <Segment.Group id="tracks" className="artistPageSegmentWrap">
         <Segment>
@@ -87,13 +97,11 @@ export default class Tracks extends React.PureComponent {
 
         <Segment
           className="artistPageSegment"
-          loading={this.state.loading}
-          content={this.state.tracks && this.tracksList()}
+          loading={loading}
+          content={tracksData}
         />
 
-        <Segment className="artistPagePaginationWrap">
-          {this.state.tracks && this.pagination()}
-        </Segment>
+        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
       </Segment.Group>
     )
   }

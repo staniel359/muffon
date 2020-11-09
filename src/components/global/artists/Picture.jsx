@@ -8,11 +8,7 @@ import PictureDimmer from './PictureDimmer'
 export default class Picture extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: false,
-      imageIndex: 0,
-      images: []
-    }
+    this.state = { loading: false, imageIndex: 0, images: [] }
   }
 
   componentDidMount () {
@@ -26,66 +22,32 @@ export default class Picture extends React.PureComponent {
   }
 
   getImages () {
-    this.setState({ loading: true, images: [] })
+    this.switchLoader(true)
 
     const artistName = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistName}/images`
-    const link = { method: 'GET', url: url }
 
-    axios(link).then(this.setImagesData).catch(this.handleError)
+    axios
+      .get(url)
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  setImagesData = resp => {
-    const imagesData = resp.data.artist.images
-    const images = this.props.dimmer ? imagesData : imagesData.slice(0, 1)
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
+  }
 
-    this.setState({ loading: false, images: images })
+  handleSuccess = resp => {
+    const imagesList = resp.data.artist.images
+    const firstImage = imagesList.slice(0, 1)
+    const images = this.props.dimmer ? imagesList : firstImage
+
+    this.setState({ images: images })
   }
 
   handleError = () => {
-    this.setState({ loading: false, images: [] })
-  }
-
-  placeholderImage () {
-    return (
-      <Placeholder className="rounded" content={<Placeholder.Image square />} />
-    )
-  }
-
-  imagesData () {
-    const anyImages = this.state.images.length > 0
-
-    return anyImages ? this.imageData() : this.defaultImage()
-  }
-
-  imageData () {
-    return this.props.dimmer
-      ? this.dimmableImageData()
-      : this.artistImageBasic()
-  }
-
-  dimmableImageData () {
-    return (
-      <React.Fragment>
-        {this.sliderData()}
-
-        {this.dimmerData()}
-      </React.Fragment>
-    )
-  }
-
-  sliderData () {
-    return (
-      <Slider
-        accessibility={false}
-        afterChange={this.setImageIndex}
-        draggable={false}
-        infinite={false}
-        lazyLoad="ondemand"
-      >
-        {this.state.images.map(this.artistImageDimmable)}
-      </Slider>
-    )
+    this.setState({ images: [] })
   }
 
   setImageIndex = index => {
@@ -106,36 +68,70 @@ export default class Picture extends React.PureComponent {
     )
   }
 
-  artistImageBasic () {
-    const src = this.state.images[0].medium
-
-    return <Image rounded wrapped className="imageWrapBordered" src={src} />
-  }
-
   showDimmer = () => {
-    this.setState({ dimmer: true })
-  }
-
-  dimmerData () {
-    const { dimmer, imageIndex, images } = this.state
-    const { hideDimmer } = this
-    const props = { dimmer, imageIndex, images, hideDimmer }
-
-    return <PictureDimmer {...props} />
+    this.setState({ dimmerActive: true })
   }
 
   hideDimmer = () => {
-    this.setState({ dimmer: false })
-  }
-
-  defaultImage () {
-    const src =
-      'https://lastfm.freetls.fastly.net/i/u/600x600/2a96cbd8b46e442fc41c2b86b821562f.png'
-
-    return <Image rounded wrapped className="imageWrap" src={src} />
+    this.setState({ dimmerActive: false })
   }
 
   render () {
-    return this.state.loading ? this.placeholderImage() : this.imagesData()
+    const { loading, images, dimmerActive, imageIndex } = this.state
+    const { dimmer } = this.props
+    const { hideDimmer } = this
+
+    const placeholderImage = loading && (
+      <Placeholder className="rounded" content={<Placeholder.Image square />} />
+    )
+
+    const anyImages = images.length > 0
+
+    const imagesList = images.map(this.artistImageDimmable)
+    const sliderData = (
+      <Slider
+        accessibility={false}
+        afterChange={this.setImageIndex}
+        draggable={false}
+        infinite={false}
+        lazyLoad="ondemand"
+      >
+        {imagesList}
+      </Slider>
+    )
+
+    const dimmerProps = { dimmerActive, imageIndex, images, hideDimmer }
+    const dimmerData = <PictureDimmer {...dimmerProps} />
+
+    const dimmableImageData = (
+      <React.Fragment>
+        {sliderData}
+        {dimmerData}
+      </React.Fragment>
+    )
+
+    const basicImageSrc = anyImages && images[0].medium
+    const artistImageBasic = (
+      <Image
+        rounded
+        wrapped
+        className="imageWrapBordered"
+        src={basicImageSrc}
+      />
+    )
+
+    const artistImageData = dimmer ? dimmableImageData : artistImageBasic
+
+    const defaultImageSrc =
+      'https://lastfm.freetls.fastly.net/i/u/600x600/' +
+      '2a96cbd8b46e442fc41c2b86b821562f.png'
+    const defaultImage = (
+      <Image rounded wrapped className="imageWrap" src={defaultImageSrc} />
+    )
+
+    const imageData = anyImages ? artistImageData : defaultImage
+    const pictureData = placeholderImage || imageData
+
+    return <React.Fragment>{pictureData}</React.Fragment>
   }
 }

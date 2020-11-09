@@ -7,37 +7,42 @@ import Controls from './audio/Controls'
 import TimeBar from './audio/TimeBar'
 import Track from './Track'
 
-export default class Panel extends React.Component {
+export default class Panel extends React.PureComponent {
   static contextType = PlayerContext
 
-  playerPanelContainer () {
-    return (
+  render () {
+    const { currentTrack } = this.context
+
+    const trackData = (
+      <div className="playerPanelLeftColumn">
+        <Track {...{ currentTrack }} />
+      </div>
+    )
+
+    const audioData = (
+      <div className="playerPanelRightColumn">
+        <AudioContainer />
+        <Controls />
+        <TimeBar />
+      </div>
+    )
+
+    const playerPanelContainer = currentTrack && (
       <Container className="playerPanelContainer">
-        <div className="playerPanelLeftColumn">
-          <Track currentTrack={this.context.currentTrack} />
-        </div>
-
-        <div className="playerPanelRightColumn">
-          <AudioContainer />
-
-          <Controls />
-
-          <TimeBar />
-        </div>
+        {trackData}
+        {audioData}
       </Container>
     )
-  }
 
-  render () {
     return (
       <Sidebar
         as={Segment}
-        visible={!!this.context.currentTrack}
+        visible={!!currentTrack}
         direction="bottom"
         animation="overlay"
         className="playerPanel"
       >
-        {this.context.currentTrack && this.playerPanelContainer()}
+        {playerPanelContainer}
       </Sidebar>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class Ticker extends React.Component {
+export default class Ticker extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {

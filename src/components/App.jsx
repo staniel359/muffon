@@ -1,16 +1,17 @@
 import React from 'react'
 import Routes from './Routes'
 import Search from 'global/Search'
+import Navbar from 'global/Navbar'
 import PlayerPanel from 'global/player/Panel'
 import PlayerProvider from 'contexts/PlayerProvider'
 import Mousetrap from 'mousetrap'
-import { Menu, Container, Breadcrumb } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import 'styles/App.sass'
 
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = { navSections: [] }
   }
 
   componentDidMount () {
@@ -26,35 +27,22 @@ export default class App extends React.Component {
     this.setState({ search: false })
   }
 
-  menu () {
-    return (
-      <Menu borderless className="fixed mainMenu">
-        <Container>
-          <Menu.Item>
-            <Breadcrumb
-              size="large"
-              icon="right angle"
-              sections={this.state.navSections || []}
-            />
-          </Menu.Item>
-        </Container>
-      </Menu>
-    )
-  }
-
   setNavSections = navSections => {
     this.setState({ navSections: navSections })
   }
 
   render () {
+    const { navSections, search } = this.state
+    const { setNavSections, hideSearch } = this
+
     return (
       <PlayerProvider>
-        {this.menu()}
+        {<Navbar {...{ navSections }} />}
 
         <Container className="mainContainer">
-          <Routes setNavSections={this.setNavSections} />
+          {<Routes {...{ setNavSections }} />}
 
-          {this.state.search && <Search hideSearch={this.hideSearch} />}
+          {search && <Search {...{ hideSearch }} />}
         </Container>
 
         <PlayerPanel />

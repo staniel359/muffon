@@ -4,7 +4,7 @@ import Tabs from './Search/Tabs'
 import { v4 as uuid } from 'uuid'
 import 'styles/global/Search.sass'
 
-export default class Search extends React.Component {
+export default class Search extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {}
@@ -14,57 +14,49 @@ export default class Search extends React.Component {
     this.input.current.focus()
   }
 
-  input = React.createRef()
-
-  searchForm () {
-    return (
-      <Segment
-        as={Form}
-        onSubmit={this.handleSubmit}
-        attached={this.state.query && 'top'}
-        content={this.searchInput()}
-      />
-    )
-  }
-
   handleSubmit = e => {
     e.preventDefault()
 
-    const submitValue = this.input.current.inputRef.current.value
-    submitValue && this.setState({ query: submitValue })
-  }
+    const query = this.input.current.inputRef.current.value
 
-  searchInput () {
-    return (
-      <Input
-        size="large"
-        placeholder="Enter something..."
-        icon="search"
-        ref={this.input}
-        fluid
-      />
-    )
-  }
-
-  searchTabsProps () {
-    const { query } = this.state
-    const { hideSearch } = this.props
-    const key = uuid()
-
-    return { key, query, hideSearch }
+    query && this.setState({ query: query })
   }
 
   render () {
-    return (
-      <Dimmer
-        className="search"
-        onClickOutside={this.props.hideSearch}
-        active
-        page
-      >
-        {this.searchForm()}
+    this.input = React.createRef()
 
-        {this.state.query && <Tabs {...this.searchTabsProps()} />}
+    const { query } = this.state
+    const { hideSearch } = this.props
+
+    const key = uuid()
+    const placeholder = 'Enter something...'
+
+    const searchInput = (
+      <Input
+        fluid
+        size="large"
+        icon="search"
+        placeholder={placeholder}
+        ref={this.input}
+      />
+    )
+
+    const searchForm = (
+      <Segment
+        as={Form}
+        onSubmit={this.handleSubmit}
+        attached={query && 'top'}
+        content={searchInput}
+      />
+    )
+
+    const tabsProps = { key, query, hideSearch }
+    const tabsData = query && <Tabs {...tabsProps} />
+
+    return (
+      <Dimmer active page className="search" onClickOutside={hideSearch}>
+        {searchForm}
+        {tabsData}
       </Dimmer>
     )
   }

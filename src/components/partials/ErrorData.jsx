@@ -1,53 +1,38 @@
 import React from 'react'
 import { Message } from 'semantic-ui-react'
 
-export default class ErrorData extends React.Component {
-  errorCode () {
-    return this.props.error.response && this.props.error.response.status
-  }
+export default class ErrorData extends React.PureComponent {
+  render () {
+    const { response } = this.props.error
 
-  notFoundError () {
-    return (
+    const errorCode = response && response.status
+
+    const notFoundError = errorCode === 404 && (
       <Message
         icon="search"
         header="Nothing was found"
-        content="Try searching something else."
+        content="Try looking for something else."
       />
     )
-  }
 
-  timeoutError () {
-    return (
+    const timeoutError = errorCode === 504 && (
       <Message
         icon="clock outline"
         header="Gateway timeout"
         content="Please try again in a moment."
       />
     )
-  }
 
-  serverError () {
-    return (
+    const connectionError = (
       <Message
-        icon="exclamation triangle"
-        header="Something went wrong"
-        content="Please try again in a moment."
-        warning
+        icon="exclamation circle"
+        header="Connection lost"
+        content="We'll try our best to find it."
       />
     )
-  }
 
-  errorData () {
-    if (this.errorCode() === 404) {
-      return this.notFoundError()
-    } else if (this.errorCode() === 504) {
-      return this.timeoutError()
-    } else {
-      return this.serverError()
-    }
-  }
+    const errorData = notFoundError || timeoutError || connectionError
 
-  render () {
-    return this.errorData()
+    return <React.Fragment>{errorData}</React.Fragment>
   }
 }

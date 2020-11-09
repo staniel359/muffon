@@ -6,92 +6,75 @@ import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import Artist from './artists/Artist'
 
-export default class Artists extends React.Component {
+export default class Artists extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {
-      loading: true
-    }
+    this.state = { loading: true }
   }
-
-  limit = 10
 
   componentDidMount () {
     this.search()
   }
 
   search () {
-    this.setState({ loading: true })
+    this.switchLoader(true)
 
-    axios(this.searchLink())
-      .then(resp => this.setSearchResults(resp))
-      .catch(error => this.handleError(error))
-      .then(() => this.setState({ loading: false }))
+    const url = '/lastfm/search/artists'
+    const params = { query: this.props.query, limit: 10 }
+
+    axios
+      .get(url, { params: params })
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+      .then(this.switchLoader)
   }
 
-  searchLink () {
-    return {
-      method: 'GET',
-      url: '/lastfm/search/artists',
-      params: {
-        query: this.props.query,
-        limit: this.limit
-      }
-    }
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
   }
 
-  setSearchResults (resp) {
+  handleSuccess = resp => {
     this.setState({ artists: resp.data.search.artists })
   }
 
-  handleError (error) {
-    this.setState({
-      error: error,
-      artists: null
-    })
+  handleError = error => {
+    this.setState({ error: error, artists: null })
   }
 
-  tabData () {
-    return <Router>{this.tracksList()}</Router>
+  artistData = artist => {
+    const { hideSearch } = this.props
+    const key = uuid()
+
+    return <Artist {...{ key, artist, hideSearch }} />
   }
 
-  tracksList () {
-    return (
+  render () {
+    const { loading, artists, error } = this.state
+    const { active } = this.props
+
+    const artistsList = artists && artists.map(this.artistData)
+    const artistsData = (
       <List
         selection
         size="medium"
         verticalAlign="middle"
         className="searchTab"
-        content={this.artistsData()}
+        content={artistsList}
       />
     )
-  }
 
-  artistsData () {
-    return this.state.artists.map(artist => this.artistData(artist))
-  }
+    const successData = <Router>{artistsData}</Router>
 
-  artistData (artist) {
-    return (
-      <Artist key={uuid()} artist={artist} hideSearch={this.props.hideSearch} />
-    )
-  }
+    const errorData = error && <ErrorData {...{ error }} />
 
-  successData () {
-    return this.state.artists && this.tabData()
-  }
+    const tabContent = artists ? successData : errorData
 
-  errorData () {
-    return this.state.error && <ErrorData error={this.state.error} />
-  }
-
-  render () {
     return (
       <Tab.Pane
         className="searchTabWrap"
-        active={this.props.active}
-        loading={this.props.active && this.state.loading}
-        content={this.successData() || this.errorData()}
+        active={active}
+        loading={active && loading}
+        content={tabContent}
       />
     )
   }

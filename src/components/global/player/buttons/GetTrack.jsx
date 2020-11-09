@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import PlayerContext from 'contexts/PlayerContext'
 
-export default class GetTrack extends React.Component {
+export default class GetTrack extends React.PureComponent {
   static contextType = PlayerContext
 
   constructor (props) {
@@ -11,19 +11,18 @@ export default class GetTrack extends React.Component {
   }
 
   getTrack = () => {
-    this.startLoader()
+    this.switchLoader(true)
 
-    this.getTrackPromise().then(this.handleSuccess).catch(this.handleError)
-  }
-
-  startLoader () {
-    this.setState({ loading: true })
-  }
-
-  getTrackPromise () {
     const { artistName, trackTitle } = this.props
 
-    return this.context.getTrack(artistName, trackTitle)
+    this.context
+      .getTrack(artistName, trackTitle)
+      .then(this.handleSuccess)
+      .catch(this.handleError)
+  }
+
+  switchLoader = bool => {
+    this.setState({ loading: !!bool })
   }
 
   handleSuccess = () => {
@@ -31,24 +30,20 @@ export default class GetTrack extends React.Component {
   }
 
   handleError = () => {
-    this.setState({ loading: false, error: true })
-  }
-
-  isDisabled () {
-    return this.state.loading || this.state.error
-  }
-
-  getTrackButtonIcon () {
-    return this.state.error ? 'times' : 'play'
+    this.setState({ error: true })
   }
 
   render () {
+    const { loading, error } = this.state
+
+    const icon = error ? 'times' : 'play'
+
     return (
       <Button
         onClick={this.getTrack}
-        loading={this.state.loading}
-        disabled={this.isDisabled()}
-        icon={this.getTrackButtonIcon()}
+        loading={loading}
+        disabled={loading || error}
+        icon={icon}
       />
     )
   }
