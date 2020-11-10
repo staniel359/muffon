@@ -5,16 +5,13 @@ import Track from './Track'
 import { v4 as uuid } from 'uuid'
 
 export default class TracksList extends React.PureComponent {
-  trackData = track => {
-    const { artistName, topTrackCount } = this.props
-    const key = uuid()
-
-    return <Track {...{ key, track, artistName, topTrackCount }} />
-  }
-
   render () {
-    const { tracks } = this.props
-    const tracksList = tracks.map(this.trackData)
+    const { tracks, artistName, topTrackCount } = this.props
+
+    const trackData = track => (
+      <Track key={uuid()} {...{ track, artistName, topTrackCount }} />
+    )
+    const tracksList = tracks.map(trackData)
 
     return (
       <Router>

@@ -21,45 +21,36 @@ export default class Tracks extends React.PureComponent {
   }
 
   getTracks () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/tracks`
-    const params = { limit: 10, page: this.state.page }
+    const params = { params: { limit: 10, page: this.state.page } }
+
+    const handleSuccess = resp => {
+      const { topTrackCount } = this.state
+      const { artist } = resp.data
+
+      const firstTrackCount = artist.tracks[0].listeners_count
+
+      this.setState({
+        tracks: artist.tracks,
+        topTrackCount: topTrackCount || firstTrackCount,
+        totalPages: artist.total_pages,
+        error: null
+      })
+    }
+    const handleError = error => {
+      this.setState({ error: error, tracks: null })
+    }
 
     axios
-      .get(url, { params: params })
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = resp => {
-    const { artist } = resp.data
-
-    const firstTrack = artist.tracks[0]
-    const topTrackCount = this.state.topTrackCount || firstTrack.listeners_count
-
-    this.setState({
-      tracks: artist.tracks,
-      topTrackCount: topTrackCount,
-      totalPages: artist.total_pages,
-      error: null
-    })
-  }
-
-  handleError = error => {
-    this.setState({ error: error, tracks: null })
-  }
-
-  handlePageChange = (_, { activePage }) => {
-    this.props.scrollToSegmentTop('tracks')
-
-    this.setState({ page: activePage })
+      .get(url, params)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {
@@ -71,23 +62,26 @@ export default class Tracks extends React.PureComponent {
       page,
       totalPages
     } = this.state
-    const { artistName } = this.props
+    const { artistName, scrollToSegmentTop } = this.props
 
-    const tracksList = tracks && (
-      <List {...{ tracks, topTrackCount, artistName }} />
-    )
+    const tracksListProps = { tracks, topTrackCount, artistName }
+    const tracksList = tracks && <List {...tracksListProps} />
     const errorData = error && <ErrorData {...{ error }} />
     const tracksData = tracksList || errorData
-    const paginationData = tracks && (
-      <Pagination
-        defaultActivePage={page}
-        totalPages={totalPages}
-        onPageChange={this.handlePageChange}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={0}
-      />
-    )
+
+    const handlePageChange = (_, { activePage }) => {
+      scrollToSegmentTop('tracks')
+      this.setState({ page: activePage })
+    }
+    const paginationProps = {
+      defaultActivePage: page,
+      totalPages: totalPages,
+      onPageChange: handlePageChange,
+      firstItem: null,
+      lastItem: null,
+      siblingRange: 0
+    }
+    const paginationData = tracks && <Pagination {...paginationProps} />
 
     return (
       <Segment.Group id="tracks" className="artistPageSegmentWrap">

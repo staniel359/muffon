@@ -11,7 +11,7 @@ import 'styles/App.sass'
 export default class App extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { navSections: [] }
+    this.state = { navSections: [], searchActive: false }
   }
 
   componentDidMount () {
@@ -19,20 +19,16 @@ export default class App extends React.PureComponent {
     Mousetrap.bind('esc', this.hideSearch)
   }
 
-  toggleSearch = () => {
-    this.setState({ search: !this.state.search })
-  }
+  toggleSearch = () => this.setState({ searchActive: !this.state.searchActive })
 
-  hideSearch = () => {
-    this.setState({ search: false })
-  }
+  hideSearch = () => this.setState({ searchActive: false })
 
   setNavSections = navSections => {
     this.setState({ navSections: navSections })
   }
 
   render () {
-    const { navSections, search } = this.state
+    const { navSections, searchActive } = this.state
     const { setNavSections, hideSearch } = this
 
     return (
@@ -42,7 +38,7 @@ export default class App extends React.PureComponent {
         <Container className="mainContainer">
           {<Routes {...{ setNavSections }} />}
 
-          {search && <Search {...{ hideSearch }} />}
+          {<Search {...{ searchActive, hideSearch }} />}
         </Container>
 
         <PlayerPanel />

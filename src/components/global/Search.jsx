@@ -1,7 +1,6 @@
 import React from 'react'
 import { Form, Input, Dimmer, Segment } from 'semantic-ui-react'
 import Tabs from './Search/Tabs'
-import { v4 as uuid } from 'uuid'
 import 'styles/global/Search.sass'
 
 export default class Search extends React.PureComponent {
@@ -10,26 +9,19 @@ export default class Search extends React.PureComponent {
     this.state = {}
   }
 
-  componentDidMount () {
-    this.input.current.focus()
-  }
-
-  handleSubmit = e => {
-    e.preventDefault()
-
-    const query = this.input.current.inputRef.current.value
-
-    query && this.setState({ query: query })
+  componentDidUpdate () {
+    this.input.current && this.input.current.focus()
   }
 
   render () {
-    this.input = React.createRef()
-
     const { query } = this.state
-    const { hideSearch } = this.props
+    const { hideSearch, searchActive } = this.props
 
-    const key = uuid()
+    const className = `searchDimmer ${searchActive ? 'visible' : 'hidden'}`
+
     const placeholder = 'Enter something...'
+
+    this.input = React.createRef()
 
     const searchInput = (
       <Input
@@ -41,20 +33,27 @@ export default class Search extends React.PureComponent {
       />
     )
 
+    const handleSubmit = e => {
+      e.preventDefault()
+
+      const submitValue = this.input.current.inputRef.current.value
+
+      submitValue && this.setState({ query: submitValue })
+    }
+
     const searchForm = (
       <Segment
         as={Form}
-        onSubmit={this.handleSubmit}
+        onSubmit={handleSubmit}
         attached={query && 'top'}
         content={searchInput}
       />
     )
 
-    const tabsProps = { key, query, hideSearch }
-    const tabsData = query && <Tabs {...tabsProps} />
+    const tabsData = query && <Tabs {...{ query, hideSearch }} />
 
     return (
-      <Dimmer active page className="search" onClickOutside={hideSearch}>
+      <Dimmer active page className={className} onClickOutside={hideSearch}>
         {searchForm}
         {tabsData}
       </Dimmer>

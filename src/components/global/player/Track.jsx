@@ -13,6 +13,7 @@ export default class Track extends React.PureComponent {
     const trackTitleEncoded = encodeURIComponent(title)
 
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
+
     const artistLink = `/artists/${artistNameEncoded}`
 
     return (

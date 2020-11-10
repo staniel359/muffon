@@ -26,21 +26,15 @@ export default class Ticker extends React.PureComponent {
     this.content().style.paddingRight = `${this.state.gap}px`
   }
 
-  ticker () {
-    return this.tickerRef.current
-  }
+  ticker = () => this.tickerRef.current
 
   tickerRef = React.createRef()
 
-  container () {
-    return this.tickerContainerRef.current
-  }
+  container = () => this.tickerContainerRef.current
 
   tickerContainerRef = React.createRef()
 
-  content () {
-    return this.tickerContentRef.current
-  }
+  content = () => this.tickerContentRef.current
 
   tickerContentRef = React.createRef()
 

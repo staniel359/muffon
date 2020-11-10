@@ -11,26 +11,19 @@ export default class GetTrack extends React.PureComponent {
   }
 
   getTrack = () => {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
 
-    const { artistName, trackTitle } = this.props
+    switchLoader(true)
+
+    const { artistName, trackTitle, trackId } = this.props
+
+    const handleSuccess = () => this.context.setCurrentTrackId(trackId)
+    const handleError = () => this.setState({ error: true })
 
     this.context
       .getTrack(artistName, trackTitle)
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = () => {
-    this.context.setCurrentTrackId(this.props.trackId)
-  }
-
-  handleError = () => {
-    this.setState({ error: true })
+      .then(handleSuccess)
+      .catch(handleError)
   }
 
   render () {

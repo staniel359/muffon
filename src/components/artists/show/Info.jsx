@@ -16,32 +16,21 @@ export default class Info extends React.PureComponent {
   }
 
   getInfo () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}`
 
-    axios
-      .get(url)
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
+    const handleSuccess = resp => {
+      this.setState({ info: resp.data.artist, error: null })
+    }
+    const handleError = error => {
+      this.setState({ error: error, info: null })
+    }
 
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = resp => {
-    this.setState({ info: resp.data.artist, error: null })
-  }
-
-  handleError = error => {
-    this.setState({ error: error, info: null })
-  }
-
-  tagData = tag => {
-    return <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
+    axios.get(url).then(handleSuccess).catch(handleError).then(switchLoader)
   }
 
   infoData () {
@@ -49,10 +38,6 @@ export default class Info extends React.PureComponent {
     const { description, tags } = info
 
     const artistName = info.name
-    const tagsList = tags.map(this.tagData)
-    const listenersCount = info.listeners_count.toLocaleString('eu')
-    const playsCount = info.plays_count.toLocaleString('eu')
-
     const artistNameData = (
       <Header
         size="huge"
@@ -61,6 +46,10 @@ export default class Info extends React.PureComponent {
       />
     )
 
+    const tagData = tag => (
+      <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
+    )
+    const tagsList = tags.map(tagData)
     const tagsData = (
       <Router>
         <Label.Group size="large">
@@ -71,6 +60,8 @@ export default class Info extends React.PureComponent {
       </Router>
     )
 
+    const listenersCount = info.listeners_count.toLocaleString('eu')
+    const playsCount = info.plays_count.toLocaleString('eu')
     const countersData = (
       <Label.Group size="large">
         <Label basic icon="user" content={listenersCount} />
@@ -79,7 +70,9 @@ export default class Info extends React.PureComponent {
     )
 
     const descriptionData = (
-      <div className="artistPageDescription">{description}</div>
+      <div className="artistPageDescription">
+        {description || 'No description.'}
+      </div>
     )
 
     return (
@@ -95,15 +88,17 @@ export default class Info extends React.PureComponent {
 
   render () {
     const { info, loading, error } = this.state
+
     const infoData = info && this.infoData()
     const errorData = error && <ErrorData {...{ error }} />
+    const content = infoData || errorData
 
     return (
       <Segment.Group id="info" className="artistPageSegmentWrap">
         <Segment
           className="artistPageSegment"
           loading={loading}
-          content={infoData || errorData}
+          content={content}
         />
       </Segment.Group>
     )

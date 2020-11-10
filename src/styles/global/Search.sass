@@ -1,9 +1,13 @@
 @import '../Base.sass'
 
-.search
+.searchDimmer
   z-index: 2000 !important
+.searchDimmer.visible
+  visibility: visible !important
+.searchDimmer.hidden
+  visibility: hidden !important
 
-.search > .content
+.searchDimmer > .content
   height: calc(100% - 80px)
   width: 500px
   text-align: left

@@ -6,19 +6,19 @@ import Similar from '../Similar'
 
 export default class Right extends React.PureComponent {
   render () {
-    const { artistName } = this.props
-    const { scrollToSegmentTop } = this.props
-    const props = { artistName, scrollToSegmentTop }
+    const { artistName, scrollToSegmentTop } = this.props
+
+    const segmentProps = { artistName, scrollToSegmentTop }
 
     return (
       <div className="artistPageRightColumn">
-        <Info {...props} />
+        <Info {...segmentProps} />
 
-        <Tracks {...props} />
+        <Tracks {...segmentProps} />
 
-        <Albums {...props} />
+        <Albums {...segmentProps} />
 
-        <Similar {...props} />
+        <Similar {...segmentProps} />
       </div>
     )
   }

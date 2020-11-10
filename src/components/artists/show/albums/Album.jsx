@@ -14,41 +14,40 @@ export default class Album extends React.PureComponent {
   }
 
   getListenersCount () {
-    const url =
-      `/lastfm/artists/${this.artistNameEncoded}` +
-      `/albums/${this.albumTitleEncoded}`
+    const { artistName, album } = this.props
 
-    axios.get(url).then(this.handleSuccess).catch(this.handleError)
-  }
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const albumTitleEncoded = encodeURIComponent(album.title)
+    const url = `/lastfm/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
-  artistNameEncoded = encodeURIComponent(this.props.artistName)
-  albumTitleEncoded = encodeURIComponent(this.props.album.title)
+    const handleSuccess = resp => {
+      this.setState({ listenersCount: resp.data.album.listeners_count })
+    }
+    const handleError = () => {
+      this.setState({ listenersCount: 0 })
+    }
 
-  handleSuccess = resp => {
-    const listenersCount = resp.data.album.listeners_count
-
-    this.setState({ listenersCount: listenersCount })
-  }
-
-  handleError = () => {
-    this.setState({ listenersCount: 0 })
+    axios.get(url).then(handleSuccess).catch(handleError)
   }
 
   render () {
     const { listenersCount } = this.state
-    const { album } = this.props
+    const { album, artistName } = this.props
 
-    const pageLink =
-      `/artists/${this.artistNameEncoded}/albums/${this.albumTitleEncoded}`
+    const albumTitle = album.title
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const albumTitleEncoded = encodeURIComponent(albumTitle)
+    const pageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+
     const albumCover = album.covers.medium
     const defaultCover =
       'https://lastfm.freetls.fastly.net/i/u/300x300/' +
       'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
     const cover = albumCover || defaultCover
-    const albumTitle = album.title
-    const listenersData = listenersCount && listenersCount.toLocaleString('eu')
 
     const loader = <Loader active inline size="mini" />
+    const listenersData =
+      (listenersCount && listenersCount.toLocaleString('eu')) || loader
 
     return (
       <Card as={Link} to={pageLink} className="artistPageAlbumCard">
@@ -61,7 +60,7 @@ export default class Album extends React.PureComponent {
         <Card.Content>
           <Card.Description>
             <Icon name="user" />
-            {listenersData || loader}
+            {listenersData}
           </Card.Description>
         </Card.Content>
       </Card>

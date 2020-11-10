@@ -21,6 +21,8 @@ export default class PlayerProvider extends React.PureComponent {
       currentTime: 0,
       duration: 0,
       handleLoadStart: this.handleLoadStart,
+      handlePlay: this.handlePlay,
+      handlePause: this.handlePause,
       handleProgress: this.handleProgress,
       handleTimeUpdate: this.handleTimeUpdate,
       handleAudioEnd: this.handleAudioEnd,
@@ -37,15 +39,13 @@ export default class PlayerProvider extends React.PureComponent {
   toggleAudio = () => {
     switch (this.state.audioStatus) {
       case 'play':
-        return this.pauseAudio()
+        return this.audio().pause()
       case 'pause':
-        return this.playAudio()
+        return this.audio().play()
     }
   }
 
-  pauseAudio () {
-    this.audio().pause()
-
+  handlePause = () => {
     this.setState({ audioStatus: 'pause' })
   }
 
@@ -53,9 +53,7 @@ export default class PlayerProvider extends React.PureComponent {
     return document.getElementById('playerPanelAudio')
   }
 
-  playAudio () {
-    this.audio().play()
-
+  handlePlay = () => {
     this.setState({ audioStatus: 'play' })
   }
 
@@ -146,7 +144,7 @@ export default class PlayerProvider extends React.PureComponent {
   handleAudioEnd = e => {
     e.target.currentTime = 0
 
-    this.pauseAudio()
+    this.audio().pause()
   }
 
   changeTime = e => {
@@ -154,12 +152,13 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   startTimeChange = () => {
+    this.setState({ audioStatusOnChange: this.state.audioStatus })
     this.audio().pause()
   }
 
   endTimeChange = () => {
     this.audio().currentTime = this.state.currentTime
-    this.audio()[this.state.audioStatus]()
+    this.audio()[this.state.audioStatusOnChange]()
   }
 
   getTrack = (artist, title, index = 0) => {
@@ -178,7 +177,7 @@ export default class PlayerProvider extends React.PureComponent {
 
         this.audio().src = track.link
 
-        this.playAudio()
+        this.audio().play()
       }
 
       return resp

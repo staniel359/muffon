@@ -17,57 +17,49 @@ export default class Artists extends React.PureComponent {
   }
 
   search () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
+
+    const { query } = this.props
 
     const url = '/lastfm/search/artists'
-    const params = { query: this.props.query, limit: 10 }
+    const params = { params: { query: query, limit: 10 } }
+
+    const handleSuccess = resp =>
+      this.setState({ artists: resp.data.search.artists })
+    const handleError = error => this.setState({ error: error, artists: null })
 
     axios
-      .get(url, { params: params })
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = resp => {
-    this.setState({ artists: resp.data.search.artists })
-  }
-
-  handleError = error => {
-    this.setState({ error: error, artists: null })
-  }
-
-  artistData = artist => {
-    const { hideSearch } = this.props
-    const key = uuid()
-
-    return <Artist {...{ key, artist, hideSearch }} />
+      .get(url, params)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {
     const { loading, artists, error } = this.state
-    const { active } = this.props
+    const { active, hideSearch } = this.props
 
-    const artistsList = artists && artists.map(this.artistData)
-    const artistsData = (
-      <List
-        selection
-        size="medium"
-        verticalAlign="middle"
-        className="searchTab"
-        content={artistsList}
-      />
+    const artistData = artist => (
+      <Artist key={uuid()} {...{ artist, hideSearch }} />
     )
-
-    const successData = <Router>{artistsData}</Router>
+    const artistsList = artists && artists.map(artistData)
+    const artistsData = (
+      <Router>
+        <List
+          selection
+          size="medium"
+          verticalAlign="middle"
+          className="searchTab"
+          content={artistsList}
+        />
+      </Router>
+    )
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const tabContent = artists ? successData : errorData
+    const tabContent = artists ? artistsData : errorData
 
     return (
       <Tab.Pane

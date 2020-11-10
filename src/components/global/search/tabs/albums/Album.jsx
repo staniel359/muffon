@@ -6,17 +6,16 @@ export default class Album extends React.PureComponent {
   render () {
     const { hideSearch, album } = this.props
 
-    const artistNameEncoded = encodeURIComponent(album.artist)
-    const albumTitleEncoded = encodeURIComponent(album.title)
+    const artistName = album.artist
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const albumTitle = album.title
+    const albumTitleEncoded = encodeURIComponent(albumTitle)
     const albumLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
     const coverDefault =
       'https://lastfm.freetls.fastly.net/i/u/64s/' +
       'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
     const cover = album.cover || coverDefault
-
-    const albumTitle = album.title
-    const artistName = album.artist
 
     return (
       <List.Item as={Link} to={albumLink} onClick={hideSearch}>

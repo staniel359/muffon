@@ -22,40 +22,46 @@ export default class Picture extends React.PureComponent {
   }
 
   getImages () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
 
     const artistName = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistName}/images`
 
-    axios
-      .get(url)
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
+    const handleSuccess = resp => {
+      const imagesList = resp.data.artist.images
+      const firstImage = imagesList.slice(0, 1)
+      const images = this.props.dimmer ? imagesList : firstImage
+
+      this.setState({ images: images })
+    }
+    const handleError = () => this.setState({ images: [] })
+
+    axios.get(url).then(handleSuccess).catch(handleError).then(switchLoader)
   }
 
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
+  render () {
+    const { loading, images, dimmerActive, imageIndex } = this.state
+    const { dimmer } = this.props
 
-  handleSuccess = resp => {
-    const imagesList = resp.data.artist.images
-    const firstImage = imagesList.slice(0, 1)
-    const images = this.props.dimmer ? imagesList : firstImage
+    const placeholderImageData = loading && (
+      <Placeholder className="rounded" content={<Placeholder.Image square />} />
+    )
 
-    this.setState({ images: images })
-  }
+    const anyImages = images.length > 0
 
-  handleError = () => {
-    this.setState({ images: [] })
-  }
+    const setImageIndex = index => this.setState({ imageIndex: index })
+    const sliderProps = {
+      accessibility: false,
+      afterChange: setImageIndex,
+      draggable: false,
+      infinite: false,
+      lazyLoad: 'ondemand'
+    }
 
-  setImageIndex = index => {
-    this.setState({ imageIndex: index })
-  }
-
-  artistImageDimmable = image => {
-    return (
+    const showDimmer = () => this.setState({ dimmerActive: true })
+    const artistImageDimmable = image => (
       <Image
         rounded
         wrapped
@@ -63,50 +69,19 @@ export default class Picture extends React.PureComponent {
         key={uuid()}
         src={image.large}
         style={{ cursor: 'pointer' }}
-        onClick={this.showDimmer}
+        onClick={showDimmer}
       />
     )
-  }
+    const imagesList = images.map(artistImageDimmable)
 
-  showDimmer = () => {
-    this.setState({ dimmerActive: true })
-  }
-
-  hideDimmer = () => {
-    this.setState({ dimmerActive: false })
-  }
-
-  render () {
-    const { loading, images, dimmerActive, imageIndex } = this.state
-    const { dimmer } = this.props
-    const { hideDimmer } = this
-
-    const placeholderImage = loading && (
-      <Placeholder className="rounded" content={<Placeholder.Image square />} />
-    )
-
-    const anyImages = images.length > 0
-
-    const imagesList = images.map(this.artistImageDimmable)
-    const sliderData = (
-      <Slider
-        accessibility={false}
-        afterChange={this.setImageIndex}
-        draggable={false}
-        infinite={false}
-        lazyLoad="ondemand"
-      >
-        {imagesList}
-      </Slider>
-    )
-
+    const hideDimmer = () => this.setState({ dimmerActive: false })
     const dimmerProps = { dimmerActive, imageIndex, images, hideDimmer }
-    const dimmerData = <PictureDimmer {...dimmerProps} />
 
     const dimmableImageData = (
       <React.Fragment>
-        {sliderData}
-        {dimmerData}
+        <Slider {...sliderProps}>{imagesList}</Slider>
+
+        <PictureDimmer {...dimmerProps} />
       </React.Fragment>
     )
 
@@ -130,7 +105,8 @@ export default class Picture extends React.PureComponent {
     )
 
     const imageData = anyImages ? artistImageData : defaultImage
-    const pictureData = placeholderImage || imageData
+
+    const pictureData = placeholderImageData || imageData
 
     return <React.Fragment>{pictureData}</React.Fragment>
   }

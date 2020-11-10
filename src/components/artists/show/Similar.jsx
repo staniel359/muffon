@@ -21,59 +21,55 @@ export default class Similar extends React.PureComponent {
   }
 
   getSimilar () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/similar`
-    const params = { limit: 4, page: this.state.page }
+    const params = { params: { limit: 4, page: this.state.page } }
+
+    const handleSuccess = resp => {
+      const { artist } = resp.data
+
+      this.setState({
+        similar: artist.similar,
+        totalPages: artist.total_pages,
+        error: null
+      })
+    }
+    const handleError = error => {
+      this.setState({ error: error, similar: null })
+    }
 
     axios
-      .get(url, { params: params })
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = resp => {
-    const { artist } = resp.data
-
-    this.setState({
-      similar: artist.similar,
-      totalPages: artist.total_pages,
-      error: null
-    })
-  }
-
-  handleError = error => {
-    this.setState({ error: error, similar: null })
-  }
-
-  handlePageChange = (_, { activePage }) => {
-    this.props.scrollToSegmentTop('similar')
-
-    this.setState({ page: activePage })
+      .get(url, params)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {
     const { loading, similar, error, page, totalPages } = this.state
+    const { scrollToSegmentTop } = this.props
 
     const similarList = similar && <List {...{ similar }} />
     const errorData = error && <ErrorData {...{ error }} />
     const similarData = similarList || errorData
-    const paginationData = similar && (
-      <Pagination
-        defaultActivePage={page}
-        totalPages={totalPages}
-        onPageChange={this.handlePageChange}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={0}
-      />
-    )
+
+    const handlePageChange = (_, { activePage }) => {
+      scrollToSegmentTop('similar')
+      this.setState({ page: activePage })
+    }
+    const paginationProps = {
+      defaultActivePage: page,
+      totalPages: totalPages,
+      onPageChange: handlePageChange,
+      firstItem: null,
+      lastItem: null,
+      siblingRange: 0
+    }
+    const paginationData = similar && <Pagination {...paginationProps} />
 
     return (
       <Segment.Group id="similar" className="artistPageSegmentWrap">

@@ -6,10 +6,6 @@ import { Segment, Tab } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 
 export default class Results extends React.PureComponent {
-  tabPaneData = data => {
-    return { menuItem: data[0], pane: data[1] }
-  }
-
   render () {
     const { query, hideSearch } = this.props
 
@@ -21,7 +17,10 @@ export default class Results extends React.PureComponent {
       ['Albums', <Albums key={uuid()} {...tabPaneProps} />],
       ['Tracks', <Tracks key={uuid()} {...tabPaneProps} />]
     ]
-    const tabPanesData = tabPanes.map(this.tabPaneData)
+
+    const tabPaneData = data => ({ menuItem: data[0], pane: data[1] })
+
+    const tabPanesData = tabPanes.map(tabPaneData)
 
     return (
       <Segment attached="bottom" className="searchResultsWrap">

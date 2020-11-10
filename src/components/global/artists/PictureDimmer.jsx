@@ -9,12 +9,21 @@ export default class PictureDimmer extends React.PureComponent {
     this.state = {}
   }
 
-  setMainImageSlider = slider => {
-    this.setState({ mainImageSlider: slider })
-  }
+  render () {
+    const { images, imageIndex, dimmerActive, hideDimmer } = this.props
+    const { mainImageSlider, imagesSlider } = this.state
 
-  imageOriginal = image => {
-    return (
+    const setMainImageSlider = slider =>
+      this.setState({ mainImageSlider: slider })
+    const mainImageSliderProps = {
+      asNavFor: imagesSlider,
+      draggable: false,
+      initialSlide: imageIndex,
+      lazyLoad: 'ondemand',
+      ref: setMainImageSlider
+    }
+
+    const imageOriginal = image => (
       <Image
         wrapped
         className="artistPictureDimmerImageWrap"
@@ -22,35 +31,18 @@ export default class PictureDimmer extends React.PureComponent {
         src={image.original}
       />
     )
-  }
+    const mainImageImagesList = images.map(imageOriginal)
 
-  setImagesSlider = slider => {
-    this.setState({ imagesSlider: slider })
-  }
-
-  imageMedium = image => {
-    return <Image key={uuid()} src={image.medium} />
-  }
-
-  render () {
-    const { images, imageIndex, dimmerActive, hideDimmer } = this.props
-    const { mainImageSlider, imagesSlider } = this.state
-
-    const mainImageSliderSettings = {
-      asNavFor: imagesSlider,
-      draggable: false,
-      initialSlide: imageIndex,
-      lazyLoad: 'ondemand',
-      ref: this.setMainImageSlider
-    }
-    const mainImageImagesList = images.map(this.imageOriginal)
     const mainImageData = (
       <Container className="artistPictureDimmerImageContainer">
-        <Slider {...mainImageSliderSettings}>{mainImageImagesList}</Slider>
+        <Slider {...mainImageSliderProps}>{mainImageImagesList}</Slider>
       </Container>
     )
 
-    const imagesSliderSettings = {
+    const setImagesSlider = slider => {
+      this.setState({ imagesSlider: slider })
+    }
+    const imagesSliderProps = {
       arrows: false,
       asNavFor: mainImageSlider,
       draggable: false,
@@ -58,13 +50,16 @@ export default class PictureDimmer extends React.PureComponent {
       initialSlide: imageIndex,
       focusOnSelect: true,
       lazyLoad: 'ondemand',
-      ref: this.setImagesSlider,
+      ref: setImagesSlider,
       slidesToShow: 7
     }
-    const imagesList = images.map(this.imageMedium)
+
+    const imageMedium = image => <Image key={uuid()} src={image.medium} />
+    const imagesList = images.map(imageMedium)
+
     const imagesData = (
       <Container className="artistPictureDimmerImagesContainer">
-        <Slider {...imagesSliderSettings}>{imagesList}</Slider>
+        <Slider {...imagesSliderProps}>{imagesList}</Slider>
       </Container>
     )
 

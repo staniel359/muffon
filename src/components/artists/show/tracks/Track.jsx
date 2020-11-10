@@ -9,14 +9,15 @@ export default class Track extends React.PureComponent {
 
     const trackTitle = track.title
     const trackId = track.id
+    const playButton = <PlayButton {...{ artistName, trackTitle, trackId }} />
+
     const artistNameEncoded = encodeURIComponent(artistName)
     const trackTitleEncoded = encodeURIComponent(trackTitle)
     const pageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
+
     const listenersCount = track.listeners_count
     const trackLineWidth = `${(listenersCount / topTrackCount) * 70}%`
     const listenersData = listenersCount.toLocaleString('eu')
-
-    const playButton = <PlayButton {...{ artistName, trackTitle, trackId }} />
     const trackCounter = (
       <div className="artistPageTrackCounter">
         <div className="inner trackLine" style={{ width: trackLineWidth }} />

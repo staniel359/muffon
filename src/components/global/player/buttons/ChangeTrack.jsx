@@ -11,27 +11,20 @@ export default class ChangeTrack extends React.PureComponent {
   }
 
   changeTrack = () => {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
 
     const { artist, title, index } = this.context.currentTrackData
 
+    const handleSuccess = () => this.setState({ error: false })
+    const handleError = () => this.setState({ error: true })
+
     this.context
       .getTrack(artist, title, index + 1)
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = () => {
-    this.setState({ error: false })
-  }
-
-  handleError = () => {
-    this.setState({ error: true })
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {

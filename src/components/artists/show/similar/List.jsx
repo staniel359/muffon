@@ -5,16 +5,13 @@ import { Card } from 'semantic-ui-react'
 import { HashRouter as Router } from 'react-router-dom'
 
 export default class List extends React.PureComponent {
-  similarData = artistName => {
-    const artist = { name: artistName }
-    const key = uuid()
-
-    return <SimilarArtist {...{ key, artist }} />
-  }
-
   render () {
     const { similar } = this.props
-    const similarList = similar.map(this.similarData)
+
+    const similarData = artistName => (
+      <SimilarArtist key={uuid()} artist={{ name: artistName }} />
+    )
+    const similarList = similar.map(similarData)
 
     return (
       <Router>

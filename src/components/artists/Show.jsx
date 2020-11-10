@@ -34,52 +34,39 @@ export default class Show extends React.PureComponent {
   }
 
   setArtistName () {
-    const artistNameEncoded = this.props.match.params.artistName
-    const url = `/lastfm/artists/${artistNameEncoded}`
+    const { params } = this.props.match
 
-    axios
-      .get(url)
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
+    const url = `/lastfm/artists/${params.artistName}`
 
-  handleSuccess = resp => {
-    this.setState({ artistName: resp.data.artist.name })
-  }
+    const handleSuccess = resp => {
+      this.setState({ artistName: resp.data.artist.name })
+    }
+    const handleError = error => this.setState({ error: error })
+    const switchLoader = bool => this.setState({ loading: !!bool })
 
-  handleError = error => {
-    this.setState({ error: error })
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  scrollToSegmentTop = segmentID => {
-    window.scrollTo(0, this.segmentTop(segmentID))
-  }
-
-  segmentTop = segmentID => {
-    return document.getElementById(segmentID).offsetTop - 70
+    axios.get(url).then(handleSuccess).catch(handleError).then(switchLoader)
   }
 
   render () {
     const { error, loading, artistName } = this.state
-    const { scrollToSegmentTop, segmentTop } = this
 
     const loader = loading && (
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
+    const pageTopOffset = 70
+    const segmentTop = segmentID =>
+      document.getElementById(segmentID).offsetTop - pageTopOffset
+    const scrollToSegmentTop = segmentID =>
+      window.scrollTo(0, segmentTop(segmentID))
+
     const leftColumnProps = { artistName, scrollToSegmentTop, segmentTop }
-    const leftColumn = <LeftColumn {...leftColumnProps} />
     const rightColumnProps = { artistName, scrollToSegmentTop }
-    const rightColumn = <RightColumn {...rightColumnProps} />
+
     const successData = artistName && (
       <React.Fragment>
-        {leftColumn}
-        {rightColumn}
+        <LeftColumn {...leftColumnProps} />
+        <RightColumn {...rightColumnProps} />
       </React.Fragment>
     )
 

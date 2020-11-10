@@ -8,6 +8,8 @@ export default class AudioContainer extends React.PureComponent {
     const {
       repeat,
       handleLoadStart,
+      handlePlay,
+      handlePause,
       handleProgress,
       handleTimeUpdate,
       handleVolumeChange,
@@ -20,6 +22,8 @@ export default class AudioContainer extends React.PureComponent {
         autoPlay
         loop={repeat}
         onLoadStart={handleLoadStart}
+        onPlay={handlePlay}
+        onPause={handlePause}
         onProgress={handleProgress}
         onTimeUpdate={handleTimeUpdate}
         onVolumeChange={handleVolumeChange}

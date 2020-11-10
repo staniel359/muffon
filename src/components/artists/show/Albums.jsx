@@ -21,60 +21,56 @@ export default class Albums extends React.PureComponent {
   }
 
   getAlbums () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/albums`
-    const params = { limit: 4, page: this.state.page }
+    const params = { params: { limit: 4, page: this.state.page } }
+
+    const handleSuccess = resp => {
+      const { artist } = resp.data
+
+      this.setState({
+        albums: artist.albums,
+        totalPages: artist.total_pages,
+        error: null
+      })
+    }
+    const handleError = error => {
+      this.setState({ error: error, albums: null })
+    }
 
     axios
-      .get(url, { params: params })
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = resp => {
-    const { artist } = resp.data
-
-    this.setState({
-      albums: artist.albums,
-      totalPages: artist.total_pages,
-      error: null
-    })
-  }
-
-  handleError = error => {
-    this.setState({ error: error, albums: null })
-  }
-
-  handlePageChange = (_, { activePage }) => {
-    this.props.scrollToSegmentTop('albums')
-
-    this.setState({ page: activePage })
+      .get(url, params)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {
     const { loading, albums, error, page, totalPages } = this.state
-    const { artistName } = this.props
+    const { artistName, scrollToSegmentTop } = this.props
 
-    const albumsList = albums && <List {...{ albums, artistName }} />
+    const albumsListProps = { albums, artistName }
+    const albumsList = albums && <List {...albumsListProps} />
     const errorData = error && <ErrorData {...{ error }} />
     const albumsData = albumsList || errorData
-    const paginationData = albums && (
-      <Pagination
-        defaultActivePage={page}
-        totalPages={totalPages}
-        onPageChange={this.handlePageChange}
-        firstItem={null}
-        lastItem={null}
-        siblingRange={0}
-      />
-    )
+
+    const handlePageChange = (_, { activePage }) => {
+      scrollToSegmentTop('albums')
+      this.setState({ page: activePage })
+    }
+    const paginationProps = {
+      defaultActivePage: page,
+      totalPages: totalPages,
+      onPageChange: handlePageChange,
+      firstItem: null,
+      lastItem: null,
+      siblingRange: 0
+    }
+    const paginationData = albums && <Pagination {...paginationProps} />
 
     return (
       <Segment.Group id="albums" className="artistPageSegmentWrap">

@@ -23,15 +23,24 @@ export default class ErrorData extends React.PureComponent {
       />
     )
 
-    const connectionError = (
+    const remoteError = errorCode === 503 && (
       <Message
         icon="exclamation circle"
-        header="Connection lost"
-        content="We'll try our best to find it."
+        header="Remote server error"
+        content="Please try again in a moment."
       />
     )
 
-    const errorData = notFoundError || timeoutError || connectionError
+    const connectionError = (
+      <Message
+        icon="exclamation triangle"
+        header="Connection lost"
+        content="We are working on it."
+      />
+    )
+
+    const errorData =
+      notFoundError || timeoutError || remoteError || connectionError
 
     return <React.Fragment>{errorData}</React.Fragment>
   }

@@ -17,66 +17,33 @@ export default class Tracks extends React.PureComponent {
   }
 
   search () {
-    this.switchLoader(true)
+    const switchLoader = bool => this.setState({ loading: !!bool })
 
-    const url = '/lastfm/search/tracks'
-    const params = {
-      query: this.props.query,
-      limit: 40,
-      page: this.state.page
-    }
+    switchLoader(true)
 
-    axios
-      .get(url, { params: params })
-      .then(this.handleSuccess)
-      .catch(this.handleError)
-      .then(this.switchLoader)
-  }
-
-  switchLoader = bool => {
-    this.setState({ loading: !!bool })
-  }
-
-  handleSuccess = resp => {
-    this.setState({ tracks: resp.data.search.tracks })
-  }
-
-  handleError = error => {
-    this.setState({ error: error, tracks: null })
-  }
-
-  trackData = track => {
-    const { hideSearch } = this.props
-    const key = uuid()
-
-    return <Track {...{ key, track, hideSearch }} />
-  }
-
-  changePage = (_, { content }) => {
-    this.tabRef.current.scrollTop = 0
-
-    this.setState({ page: this.newPage(content) }, this.search)
-  }
-
-  tabRef = React.createRef()
-
-  newPage (action) {
+    const { query } = this.props
     const { page } = this.state
 
-    switch (action) {
-      case 'Next':
-        return page + 1
-      case 'Previous':
-        return page - 1
-    }
+    const url = '/lastfm/search/tracks'
+    const params = { params: { query: query, limit: 40, page: page } }
+
+    const handleSuccess = resp =>
+      this.setState({ tracks: resp.data.search.tracks })
+    const handleError = error => this.setState({ error: error, tracks: null })
+
+    axios
+      .get(url, params)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {
     const { loading, tracks, page, error } = this.state
-    const { active } = this.props
-    const { changePage } = this
+    const { active, hideSearch } = this.props
 
-    const tracksList = tracks && tracks.map(this.trackData)
+    const trackData = track => <Track key={uuid()} {...{ track, hideSearch }} />
+    const tracksList = tracks && tracks.map(trackData)
     const tracksData = (
       <Router>
         <List
@@ -88,6 +55,22 @@ export default class Tracks extends React.PureComponent {
         />
       </Router>
     )
+
+    this.tabRef = React.createRef()
+
+    const newPage = action => {
+      switch (action) {
+        case 'Next':
+          return page + 1
+        case 'Previous':
+          return page - 1
+      }
+    }
+
+    const changePage = (_, { content }) => {
+      this.tabRef.current.scrollTop = 0
+      this.setState({ page: newPage(content) }, this.search)
+    }
 
     const previousPageButton = (
       <Button
