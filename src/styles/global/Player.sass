@@ -3,6 +3,7 @@
 .playerPanel
   @extend .noBorder
   z-index: 1500 !important
+  padding: 10px 0 !important
 
 .playerPanel.fullScreen
   min-height: calc(100% - 40px) !important
@@ -21,7 +22,7 @@
 
 .playerPanelAudioWrap
   @extend .relative
-  margin-top: 10px
+  height: 4px
 
 .playerPanelBar
   -webkit-appearance: none
@@ -75,3 +76,8 @@
 .playerPanelExtraPopup
   padding: 6px 12px !important
 
+.playerPanelMainControls
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 10px

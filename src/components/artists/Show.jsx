@@ -54,7 +54,7 @@ export default class Show extends React.PureComponent {
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
-    const pageTopOffset = 70
+    const pageTopOffset = 60
     const segmentTop = segmentID =>
       document.getElementById(segmentID).offsetTop - pageTopOffset
     const scrollToSegmentTop = segmentID =>
