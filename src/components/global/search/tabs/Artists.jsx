@@ -47,13 +47,15 @@ export default class Artists extends React.PureComponent {
     const artistsList = artists && artists.map(artistData)
     const artistsData = (
       <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="searchTab"
-          content={artistsList}
-        />
+        <div className="searchResultsTabContent">
+          <List
+            selection
+            size="medium"
+            verticalAlign="middle"
+            className="searchResultsTabContentList"
+            content={artistsList}
+          />
+        </div>
       </Router>
     )
 
@@ -63,7 +65,7 @@ export default class Artists extends React.PureComponent {
 
     return (
       <Tab.Pane
-        className="searchTabWrap"
+        className="searchResultsTab"
         active={active}
         loading={active && loading}
         content={tabContent}

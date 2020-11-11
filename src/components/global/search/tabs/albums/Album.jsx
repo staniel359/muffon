@@ -18,7 +18,12 @@ export default class Album extends React.PureComponent {
     const cover = album.cover || coverDefault
 
     return (
-      <List.Item as={Link} to={albumLink} onClick={hideSearch}>
+      <List.Item
+        className="searchItem"
+        as={Link}
+        to={albumLink}
+        onClick={hideSearch}
+      >
         <Image src={cover} className="searchItemImage" />
 
         <List.Content className="searchItemContent">

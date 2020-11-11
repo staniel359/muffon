@@ -7,12 +7,11 @@
   width: 200px
   .slick-slider
     cursor: pointer
-    &:hover
-      .slick-arrow
-        opacity: 1
     .slick-arrow
       z-index: 1
       opacity: 0
+    &:hover .slick-arrow
+      opacity: 1
 
 .artistPageLeftColumnName
   margin-top: 10px !important
@@ -56,7 +55,7 @@
   text-align: center
 
 .artistPageCard
-  box-shadow: none !important
+  @extend .noShadow
   text-align: center
   .header
     margin: 5px 0 !important

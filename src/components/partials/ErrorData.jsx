@@ -42,6 +42,6 @@ export default class ErrorData extends React.PureComponent {
     const errorData =
       notFoundError || timeoutError || remoteError || connectionError
 
-    return <React.Fragment>{errorData}</React.Fragment>
+    return <div className="errorMessage">{errorData}</div>
   }
 }

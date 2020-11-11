@@ -2,7 +2,7 @@ import React from 'react'
 import Artists from './tabs/Artists'
 import Albums from './tabs/Albums'
 import Tracks from './tabs/Tracks'
-import { Segment, Tab } from 'semantic-ui-react'
+import { Tab } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 
 export default class Results extends React.PureComponent {
@@ -23,9 +23,12 @@ export default class Results extends React.PureComponent {
     const tabPanesData = tabPanes.map(tabPaneData)
 
     return (
-      <Segment attached="bottom" className="searchResultsWrap">
-        <Tab menu={tabMenu} panes={tabPanesData} renderActiveOnly={false} />
-      </Segment>
+      <Tab
+        className="searchResults"
+        menu={tabMenu}
+        panes={tabPanesData}
+        renderActiveOnly={false}
+      />
     )
   }
 }

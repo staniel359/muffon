@@ -15,7 +15,12 @@ export default class Artist extends React.PureComponent {
     const listenersCount = artist.listeners_count.toLocaleString('eu')
 
     return (
-      <List.Item as={Link} to={artistLink} onClick={hideSearch}>
+      <List.Item
+        className="searchItem"
+        as={Link}
+        to={artistLink}
+        onClick={hideSearch}
+      >
         <Image src={artistImage} avatar className="searchItemImage" />
 
         <List.Content className="searchItemContent">

@@ -11,19 +11,21 @@ export default class Track extends React.PureComponent {
     const trackTitle = track.title
     const trackId = track.id
     const playButtonProps = { artistName, trackTitle, trackId }
-    const playButton = <PlayButton {...playButtonProps} />
 
     const artistNameEncoded = encodeURIComponent(artistName)
     const trackTitleEncoded = encodeURIComponent(trackTitle)
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
 
     return (
-      <List.Item>
-        <List.Icon className="searchItemIcon" verticalAlign="middle">
-          {playButton}
-        </List.Icon>
+      <List.Item className="searchItem">
+        <PlayButton {...playButtonProps} />
 
-        <List.Content as={Link} to={trackLink} onClick={hideSearch}>
+        <List.Content
+          className="searchItemContent"
+          as={Link}
+          to={trackLink}
+          onClick={hideSearch}
+        >
           <List.Header as="h4" content={trackTitle} />
           <List.Description content={artistName} />
         </List.Content>

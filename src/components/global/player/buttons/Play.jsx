@@ -21,6 +21,6 @@ export default class Play extends React.PureComponent {
 
     const playButtonData = isPlaying ? toggleAudioButton : getTrackButton
 
-    return <React.Fragment>{playButtonData}</React.Fragment>
+    return <div className="playButton">{playButtonData}</div>
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import { List, Button, Tab, Ref } from 'semantic-ui-react'
+import { List, Button, Tab, Ref, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
@@ -9,26 +9,40 @@ import Track from './tracks/Track'
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: true, page: 1 }
+    this.state = { loading: true, currentPage: 1 }
   }
 
   componentDidMount () {
     this.search()
   }
 
-  search () {
+  search = (e, data) => {
     const switchLoader = bool => this.setState({ loading: !!bool })
 
     switchLoader(true)
 
     const { query } = this.props
-    const { page } = this.state
+    const { currentPage } = this.state
+
+    const action = data && data.action
+    const nextPage = action === 'next' && currentPage + 1
+    const prevPage = action === 'prev' && currentPage - 1
+    const page = nextPage || prevPage || 1
 
     const url = '/lastfm/search/tracks'
     const params = { params: { query: query, limit: 40, page: page } }
 
-    const handleSuccess = resp =>
-      this.setState({ tracks: resp.data.search.tracks })
+    const scrollToTabTop = () => (this.tabRef.current.scrollTop = 0)
+
+    const handleSuccess = resp => {
+      this.setState({
+        tracks: resp.data.search.tracks,
+        currentPage: page
+      })
+
+      scrollToTabTop()
+    }
+
     const handleError = error => this.setState({ error: error, tracks: null })
 
     axios
@@ -39,47 +53,19 @@ export default class Tracks extends React.PureComponent {
   }
 
   render () {
-    const { loading, tracks, page, error } = this.state
+    const { loading, tracks, currentPage, error } = this.state
     const { active, hideSearch } = this.props
 
-    const trackData = track => <Track key={uuid()} {...{ track, hideSearch }} />
-    const tracksList = tracks && tracks.map(trackData)
-    const tracksData = (
-      <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="searchTab"
-          content={tracksList}
-        />
-      </Router>
-    )
-
     this.tabRef = React.createRef()
-
-    const newPage = action => {
-      switch (action) {
-        case 'Next':
-          return page + 1
-        case 'Previous':
-          return page - 1
-      }
-    }
-
-    const changePage = (_, { content }) => {
-      this.tabRef.current.scrollTop = 0
-      this.setState({ page: newPage(content) }, this.search)
-    }
 
     const previousPageButton = (
       <Button
         size="tiny"
         icon="left arrow"
         content="Previous"
-        floated="left"
+        action="prev"
         labelPosition="left"
-        onClick={changePage}
+        onClick={this.search}
       />
     )
 
@@ -88,39 +74,59 @@ export default class Tracks extends React.PureComponent {
         size="tiny"
         icon="right arrow"
         content="Next"
-        floated="right"
+        action="next"
         labelPosition="right"
-        onClick={changePage}
+        onClick={this.search}
       />
     )
 
     const pagination = (
-      <div className="searchTabPagination">
-        {page > 1 && previousPageButton}
-        {nextPageButton}
+      <div className="searchResultsTabPagination">
+        <div>{currentPage > 1 && previousPageButton}</div>
+
+        <div>{nextPageButton}</div>
       </div>
     )
 
-    const successData = (
+    const trackData = track => <Track key={uuid()} {...{ track, hideSearch }} />
+    const tracksList = tracks && tracks.map(trackData)
+    const tracksData = (
       <React.Fragment>
-        {tracksData}
+        <List
+          selection
+          size="medium"
+          verticalAlign="middle"
+          className="searchResultsTabContentList"
+          content={tracksList}
+        />
+
         {pagination}
       </React.Fragment>
     )
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const tabContent = tracks ? successData : errorData
+    const tabContentData = tracks ? tracksData : errorData
+
+    const tabContent = (
+      <Segment
+        className="searchResultsTabContentWrap"
+        loading={active && loading}
+      >
+        <Router>
+          <Ref innerRef={this.tabRef}>
+            <div className="searchResultsTabContent">{tabContentData}</div>
+          </Ref>
+        </Router>
+      </Segment>
+    )
 
     return (
-      <Ref innerRef={this.tabRef}>
-        <Tab.Pane
-          className="searchTabWrap"
-          active={active}
-          loading={active && loading}
-          content={tabContent}
-        />
-      </Ref>
+      <Tab.Pane
+        className="searchResultsTab"
+        active={active}
+        content={tabContent}
+      />
     )
   }
 }
