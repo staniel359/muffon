@@ -14,8 +14,14 @@ export default class Show extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.setNavSections()
     this.setArtistName()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   setNavSections () {
@@ -37,14 +43,21 @@ export default class Show extends React.PureComponent {
     const { params } = this.props.match
 
     const url = `/lastfm/artists/${params.artistName}`
+    const extra = { cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       this.setState({ artistName: resp.data.artist.name })
     }
+
     const handleError = error => this.setState({ error: error })
+
     const switchLoader = bool => this.setState({ loading: !!bool })
 
-    axios.get(url).then(handleSuccess).catch(handleError).then(switchLoader)
+    axios
+      .get(url, extra)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {

@@ -12,7 +12,13 @@ export default class Picture extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.getImages()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -28,6 +34,7 @@ export default class Picture extends React.PureComponent {
 
     const artistName = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistName}/images`
+    const extra = { cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       const imagesList = resp.data.artist.images
@@ -38,7 +45,11 @@ export default class Picture extends React.PureComponent {
     }
     const handleError = () => this.setState({ images: [] })
 
-    axios.get(url).then(handleSuccess).catch(handleError).then(switchLoader)
+    axios
+      .get(url, extra)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {

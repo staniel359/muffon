@@ -13,7 +13,13 @@ export default class Artists extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.search()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   search () {
@@ -24,14 +30,15 @@ export default class Artists extends React.PureComponent {
     const { query } = this.props
 
     const url = '/lastfm/search/artists'
-    const params = { params: { query: query, limit: 10 } }
+    const params = { query: query, limit: 10 }
+    const extra = { params: params, cancelToken: this.request.token }
 
     const handleSuccess = resp =>
       this.setState({ artists: resp.data.search.artists })
     const handleError = error => this.setState({ error: error, artists: null })
 
     axios
-      .get(url, params)
+      .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)

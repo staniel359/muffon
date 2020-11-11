@@ -11,6 +11,8 @@ export default class Similar extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.getSimilar()
   }
 
@@ -20,6 +22,10 @@ export default class Similar extends React.PureComponent {
     pageChanged && this.getSimilar()
   }
 
+  componentWillUnmount () {
+    this.request.cancel()
+  }
+
   getSimilar () {
     const switchLoader = bool => this.setState({ loading: !!bool })
 
@@ -27,7 +33,8 @@ export default class Similar extends React.PureComponent {
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/similar`
-    const params = { params: { limit: 4, page: this.state.page } }
+    const params = { limit: 4, page: this.state.page }
+    const extra = { params: params, cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       const { artist } = resp.data
@@ -43,7 +50,7 @@ export default class Similar extends React.PureComponent {
     }
 
     axios
-      .get(url, params)
+      .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)

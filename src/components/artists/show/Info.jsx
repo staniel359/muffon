@@ -12,7 +12,13 @@ export default class Info extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.getInfo()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   getInfo () {
@@ -22,15 +28,21 @@ export default class Info extends React.PureComponent {
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}`
+    const extra = { cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       this.setState({ info: resp.data.artist, error: null })
     }
+
     const handleError = error => {
       this.setState({ error: error, info: null })
     }
 
-    axios.get(url).then(handleSuccess).catch(handleError).then(switchLoader)
+    axios
+      .get(url, extra)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   infoData () {

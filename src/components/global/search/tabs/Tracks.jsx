@@ -13,7 +13,13 @@ export default class Tracks extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.search()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   search = (e, data) => {
@@ -30,7 +36,8 @@ export default class Tracks extends React.PureComponent {
     const page = nextPage || prevPage || 1
 
     const url = '/lastfm/search/tracks'
-    const params = { params: { query: query, limit: 40, page: page } }
+    const params = { query: query, limit: 40, page: page }
+    const extra = { params: params, cancelToken: this.request.token }
 
     const scrollToTabTop = () => (this.tabRef.current.scrollTop = 0)
 
@@ -46,7 +53,7 @@ export default class Tracks extends React.PureComponent {
     const handleError = error => this.setState({ error: error, tracks: null })
 
     axios
-      .get(url, params)
+      .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)

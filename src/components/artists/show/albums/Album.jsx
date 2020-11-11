@@ -10,7 +10,13 @@ export default class Album extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.getListenersCount()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   getListenersCount () {
@@ -19,6 +25,7 @@ export default class Album extends React.PureComponent {
     const artistNameEncoded = encodeURIComponent(artistName)
     const albumTitleEncoded = encodeURIComponent(album.title)
     const url = `/lastfm/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+    const extra = { cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       this.setState({ listenersCount: resp.data.album.listeners_count })
@@ -27,7 +34,7 @@ export default class Album extends React.PureComponent {
       this.setState({ listenersCount: 0 })
     }
 
-    axios.get(url).then(handleSuccess).catch(handleError)
+    axios.get(url, extra).then(handleSuccess).catch(handleError)
   }
 
   render () {

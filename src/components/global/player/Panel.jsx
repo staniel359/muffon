@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, Sidebar, Segment } from 'semantic-ui-react'
-import 'styles/global/Player.sass'
 import PlayerContext from 'contexts/PlayerContext'
 import AudioContainer from './audio/AudioContainer'
 import Controls from './audio/Controls'
 import TimeBar from './audio/TimeBar'
 import Track from './Track'
+import 'styles/global/Player.sass'
 
 export default class Panel extends React.PureComponent {
   static contextType = PlayerContext

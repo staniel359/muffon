@@ -11,6 +11,8 @@ export default class Tracks extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.getTracks()
   }
 
@@ -20,6 +22,10 @@ export default class Tracks extends React.PureComponent {
     pageChanged && this.getTracks()
   }
 
+  componentWillUnmount () {
+    this.request.cancel()
+  }
+
   getTracks () {
     const switchLoader = bool => this.setState({ loading: !!bool })
 
@@ -27,7 +33,8 @@ export default class Tracks extends React.PureComponent {
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/tracks`
-    const params = { params: { limit: 10, page: this.state.page } }
+    const params = { limit: 10, page: this.state.page }
+    const extra = { params: params, cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       const { topTrackCount } = this.state
@@ -47,7 +54,7 @@ export default class Tracks extends React.PureComponent {
     }
 
     axios
-      .get(url, params)
+      .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)

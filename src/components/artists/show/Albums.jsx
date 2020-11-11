@@ -11,7 +11,13 @@ export default class Albums extends React.PureComponent {
   }
 
   componentDidMount () {
+    this.request = axios.CancelToken.source()
+
     this.getAlbums()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -27,7 +33,8 @@ export default class Albums extends React.PureComponent {
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/albums`
-    const params = { params: { limit: 4, page: this.state.page } }
+    const params = { limit: 4, page: this.state.page }
+    const extra = { params: params, cancelToken: this.request.token }
 
     const handleSuccess = resp => {
       const { artist } = resp.data
@@ -38,12 +45,13 @@ export default class Albums extends React.PureComponent {
         error: null
       })
     }
+
     const handleError = error => {
       this.setState({ error: error, albums: null })
     }
 
     axios
-      .get(url, params)
+      .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)
