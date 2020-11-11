@@ -24,6 +24,7 @@ export default class GetTrack extends React.PureComponent {
       .getTrack(artistName, trackTitle)
       .then(handleSuccess)
       .catch(handleError)
+      .then(switchLoader)
   }
 
   render () {
