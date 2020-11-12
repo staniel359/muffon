@@ -1,0 +1,35 @@
+@import 'styles/Base.sass'
+
+.albumPage
+  min-height: calc(100vh - 150px)
+
+// Left column
+
+.albumPageLeftColumn
+  width: 220px
+  position: fixed
+
+.albumPageAlbumCover
+  margin-bottom: 0.5em
+
+.albumPageLeftColumnText
+  @extend .margin0
+.albumPageLeftColumnText.hidden
+  display: block !important
+
+// Right column
+
+.albumPageRightColumn
+  margin: 0 0 0 240px
+
+.albumPageAlbumTitle
+  margin: 0 0 5px 0 !important
+
+.albumPageArtistName
+  margin: 0 0 0.5em 0 !important
+  a
+    color: unset
+
+.albumPageDescription
+  max-height: 175px
+  overflow-y: scroll

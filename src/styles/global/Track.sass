@@ -1,0 +1,36 @@
+@import 'styles/Base.sass'
+
+.track
+  @extend .flex
+  align-items: center
+  .playButton button
+   @extend .margin0
+
+.trackContent
+  @extend .w100
+  margin-left: 10px
+
+.trackContentMain
+  @extend .flex
+  align-items: center
+  justify-content: space-between
+
+.trackContentIndexLink
+  @extend .flex
+  align-items: baseline
+
+.trackContentIndex
+  margin-right: 5px
+
+.trackContentCounter
+  @extend .flex
+  align-items: center
+
+.trackContentCounterLine
+  height: 4px
+  background: $semanticGray
+  border-radius: 2px
+  margin-right: 5px
+
+.trackContentLength
+  margin-left: 10px

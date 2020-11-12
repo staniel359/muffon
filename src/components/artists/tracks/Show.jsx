@@ -14,7 +14,8 @@ export default class Show extends React.PureComponent {
       {
         key: uuid(),
         content: decodeURIComponent(params.artistName),
-        href: `#/artists/${params.artistName}`
+        href: `#/artists/${params.artistName}`,
+        active: true
       },
       { key: uuid(), content: 'Tracks' },
       {

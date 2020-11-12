@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
 import { List } from 'semantic-ui-react'
-import Track from './Track'
+import Track from 'global/artists/Track'
 import { v4 as uuid } from 'uuid'
 
 export default class TracksList extends React.PureComponent {

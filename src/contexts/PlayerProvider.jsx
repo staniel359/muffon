@@ -161,8 +161,8 @@ export default class PlayerProvider extends React.PureComponent {
     this.audio()[this.state.audioStatusOnChange]()
   }
 
-  getTrack = (artist, title, index = 0) => {
-    const queryString = `${artist} ${title}`
+  getTrack = ({ artistName, trackTitle, albumTitle, index = 0 }) => {
+    const queryString = `${artistName} ${trackTitle}`
     const url = '/vk/track'
     const params = { query: queryString, index: index }
 
@@ -172,7 +172,12 @@ export default class PlayerProvider extends React.PureComponent {
       if (track) {
         this.setState({
           currentTrack: track,
-          currentTrackData: { artist: artist, title: title, index: index }
+          currentTrackData: {
+            artistName: artistName,
+            trackTitle: trackTitle,
+            albumTitle: albumTitle,
+            index: index
+          }
         })
 
         this.audio().src = track.link

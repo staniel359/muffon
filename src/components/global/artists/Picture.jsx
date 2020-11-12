@@ -43,6 +43,7 @@ export default class Picture extends React.PureComponent {
 
       this.setState({ images: images })
     }
+
     const handleError = () => this.setState({ images: [] })
 
     axios

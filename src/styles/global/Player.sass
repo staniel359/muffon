@@ -1,7 +1,8 @@
-@import '../Base.sass'
+@import 'styles/Base.sass'
 
 .playerPanel
   @extend .noBorder
+  height: 70px
   z-index: 1500 !important
   padding: 10px 0 !important
 
@@ -77,7 +78,7 @@
   padding: 6px 12px !important
 
 .playerPanelMainControls
-  display: flex
+  @extend .flex
   justify-content: space-between
   align-items: center
   margin-bottom: 10px

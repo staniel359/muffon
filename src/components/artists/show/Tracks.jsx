@@ -49,6 +49,7 @@ export default class Tracks extends React.PureComponent {
         error: null
       })
     }
+
     const handleError = error => {
       this.setState({ error: error, tracks: null })
     }

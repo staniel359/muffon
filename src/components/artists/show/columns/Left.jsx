@@ -7,27 +7,27 @@ import Scrollspy from '../utils/Scrollspy'
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { leftColumnName: false, menuActiveItem: 'info' }
+    this.state = { transitionVisible: false, menuActiveItem: 'info' }
   }
 
   render () {
     const { artistName, segmentTop, scrollToSegmentTop } = this.props
-    const { menuActiveItem, leftColumnName } = this.state
+    const { menuActiveItem, transitionVisible } = this.state
 
     const pictureProps = { artistName }
 
     const transitionProps = {
-      visible: leftColumnName,
+      visible: transitionVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
       mountOnShow: false
     }
-    const artistNameData = (
+    const transitionText = (
       <Header
         size="medium"
         textAlign="center"
-        className="artistPageLeftColumnName"
+        className="artistPageLeftColumnText"
         content={artistName}
         inverted
       />
@@ -36,7 +36,7 @@ export default class Left extends React.PureComponent {
     const pageMenuProps = { menuActiveItem, scrollToSegmentTop }
 
     const toggleArtistName = bool => {
-      leftColumnName !== bool && this.setState({ leftColumnName: bool })
+      transitionVisible !== bool && this.setState({ transitionVisible: bool })
     }
     const setMenuActiveItem = item => {
       menuActiveItem !== item && this.setState({ menuActiveItem: item })
@@ -47,7 +47,7 @@ export default class Left extends React.PureComponent {
       <div className="artistPageLeftColumn">
         <Picture dimmer {...pictureProps} />
 
-        <Transition {...transitionProps}>{artistNameData}</Transition>
+        <Transition {...transitionProps}>{transitionText}</Transition>
 
         <PageMenu {...pageMenuProps} />
 

@@ -1,4 +1,4 @@
-@import '../Base.sass'
+@import 'styles/Base.sass'
 
 .searchDimmer
   z-index: 2000 !important
@@ -38,8 +38,10 @@
   margin: 10px 0 !important
 
 .searchItem
-  display: flex !important
+  @extend .flex
   align-items: center
+  .playButton button
+    @extend .margin0
 
 .searchItemImage
   width: 50px !important
@@ -48,13 +50,10 @@
 .searchItemContent
   padding: 0 0 0 10px !important
 
-.searchItem .playButton button
-  @extend .margin0
-
 .searchResultsTabPagination
-  padding: 0.5em
-  display: flex
+  @extend .flex
   justify-content: space-between
+  padding: 0.5em
 
 .searchClearQueryButton
   left: 352px !important

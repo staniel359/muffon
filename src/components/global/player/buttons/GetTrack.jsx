@@ -15,13 +15,14 @@ export default class GetTrack extends React.PureComponent {
 
     switchLoader(true)
 
-    const { artistName, trackTitle, trackId } = this.props
+    const { artistName, trackTitle, albumTitle, trackId } = this.props
+    const getTrackParams = { artistName, trackTitle, albumTitle }
 
     const handleSuccess = () => this.context.setCurrentTrackId(trackId)
     const handleError = () => this.setState({ error: true })
 
     this.context
-      .getTrack(artistName, trackTitle)
+      .getTrack({ ...getTrackParams })
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)
@@ -34,6 +35,7 @@ export default class GetTrack extends React.PureComponent {
 
     return (
       <Button
+        size="small"
         onClick={this.getTrack}
         loading={loading}
         disabled={loading || error}

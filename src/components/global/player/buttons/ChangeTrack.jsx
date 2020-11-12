@@ -15,13 +15,15 @@ export default class ChangeTrack extends React.PureComponent {
 
     switchLoader(true)
 
-    const { artist, title, index } = this.context.currentTrackData
+    const { artistName, trackTitle, albumTitle } = this.context.currentTrackData
+    const index = this.context.currentTrackData.index + 1
+    const changeTrackParams = { artistName, trackTitle, albumTitle, index }
 
     const handleSuccess = () => this.setState({ error: false })
     const handleError = () => this.setState({ error: true })
 
     this.context
-      .getTrack(artist, title, index + 1)
+      .getTrack({ ...changeTrackParams })
       .then(handleSuccess)
       .catch(handleError)
       .then(switchLoader)

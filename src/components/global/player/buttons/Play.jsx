@@ -13,7 +13,11 @@ export default class Play extends React.PureComponent {
     const isPlaying = currentTrackId === trackId
 
     const toggleAudioButton = (
-      <Button onClick={toggleAudio} icon={toggleAudioButtonIcon()} />
+      <Button
+        size="small"
+        onClick={toggleAudio}
+        icon={toggleAudioButtonIcon()}
+      />
     )
 
     const getTrackButtonProps = { artistName, trackTitle, trackId }

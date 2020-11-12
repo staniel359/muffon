@@ -45,6 +45,7 @@ export default class Similar extends React.PureComponent {
         error: null
       })
     }
+
     const handleError = error => {
       this.setState({ error: error, similar: null })
     }

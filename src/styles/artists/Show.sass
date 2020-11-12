@@ -1,4 +1,4 @@
-@import '../Base.sass'
+@import 'styles/Base.sass'
 
 // Left column
 
@@ -13,10 +13,9 @@
     &:hover .slick-arrow
       opacity: 1
 
-.artistPageLeftColumnName
+.artistPageLeftColumnText
   margin-top: 10px !important
-
-.artistPageLeftColumnName.hidden
+.artistPageLeftColumnText.hidden
   display: block !important
 
 .artistPageLeftColumnMenu
@@ -41,15 +40,6 @@
   margin-bottom: 20px !important
   .artistPageSegment
     min-height: 100px
-
-.artistPageTrackCounter
-  .inner
-    @extend .inlineBlock, .midAlign
-  .trackLine
-    background: $semanticGray
-    height: 4px
-    border-radius: 2px
-    margin-right: 0.5em
 
 .artistPagePaginationWrap
   text-align: center
@@ -86,8 +76,7 @@
     @extend .h100
 
 .artistPictureDimmerImageWrap
-  @extend .h100
-  display: flex !important
+  @extend .h100, .flex
   align-items: center
   justify-content: center
   outline: none
