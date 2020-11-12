@@ -17,6 +17,16 @@
 .albumPageLeftColumnText.hidden
   display: block !important
 
+// Dimmer
+
+.albumCoverDimmer
+  z-index: 3000 !important
+  padding: 2em !important
+  .content
+    @extend .h100
+    img
+      max-height: 100%
+
 // Right column
 
 .albumPageRightColumn

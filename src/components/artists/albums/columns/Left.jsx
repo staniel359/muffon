@@ -1,10 +1,10 @@
 import React from 'react'
-import { Image, Header, Transition } from 'semantic-ui-react'
+import { Image, Header, Transition, Dimmer } from 'semantic-ui-react'
 
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { transitionVisible: false }
+    this.state = { transitionVisible: false, dimmerActive: false }
   }
 
   componentDidMount () {
@@ -26,18 +26,22 @@ export default class Left extends React.PureComponent {
 
   render () {
     const { info } = this.props
-    const { transitionVisible } = this.state
+    const { transitionVisible, dimmerActive } = this.state
 
+    const cover = info.covers.medium
     const defaultCover =
       'https://lastfm.freetls.fastly.net/i/u/300x300/' +
       'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
-    const cover = info.covers.medium || defaultCover
+    const coverStyle = { cursor: cover ? 'pointer' : 'unset' }
+    const showDimmer = () => this.setState({ dimmerActive: true })
     const coverData = (
       <Image
         rounded
         wrapped
         className="imageWrapBordered albumPageAlbumCover"
-        src={cover}
+        src={cover || defaultCover}
+        style={coverStyle}
+        onClick={showDimmer}
       />
     )
 
@@ -72,11 +76,25 @@ export default class Left extends React.PureComponent {
       <Transition {...transitionProps}>{transitionText}</Transition>
     )
 
+    const dimmerImage = <Image src={info.covers.original} />
+    const hideDimmer = () => this.setState({ dimmerActive: false })
+    const dimmerData = cover && (
+      <Dimmer
+        page
+        className="albumCoverDimmer"
+        active={dimmerActive}
+        onClick={hideDimmer}
+        content={dimmerImage}
+      />
+    )
+
     return (
       <div className="albumPageLeftColumn">
         {coverData}
 
         {transitionData}
+
+        {dimmerData}
       </div>
     )
   }
