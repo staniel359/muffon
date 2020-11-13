@@ -98,17 +98,21 @@ export default class Tracks extends React.PureComponent {
     const trackData = track => <Track key={uuid()} {...{ track, hideSearch }} />
     const tracksList = tracks && tracks.map(trackData)
     const tracksData = (
-      <React.Fragment>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="searchResultsTabContentList"
-          content={tracksList}
-        />
+      <Router>
+        <Ref innerRef={this.tabRef}>
+          <div className="searchResultsTabContent">
+            <List
+              selection
+              size="medium"
+              verticalAlign="middle"
+              className="searchResultsTabContentList"
+              content={tracksList}
+            />
 
-        {pagination}
-      </React.Fragment>
+            {pagination}
+          </div>
+        </Ref>
+      </Router>
     )
 
     const errorData = error && <ErrorData {...{ error }} />
@@ -120,11 +124,7 @@ export default class Tracks extends React.PureComponent {
         className="searchResultsTabContentWrap"
         loading={active && loading}
       >
-        <Router>
-          <Ref innerRef={this.tabRef}>
-            <div className="searchResultsTabContent">{tabContentData}</div>
-          </Ref>
-        </Router>
+        {tabContentData}
       </Segment>
     )
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import { List, Tab } from 'semantic-ui-react'
+import { List, Tab, Segment } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
@@ -68,13 +68,21 @@ export default class Artists extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const tabContent = artists ? artistsData : errorData
+    const tabContentData = artists ? artistsData : errorData
+
+    const tabContent = (
+      <Segment
+        className="searchResultsTabContentWrap"
+        loading={active && loading}
+      >
+        {tabContentData}
+      </Segment>
+    )
 
     return (
       <Tab.Pane
         className="searchResultsTab"
         active={active}
-        loading={active && loading}
         content={tabContent}
       />
     )

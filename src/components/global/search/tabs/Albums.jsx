@@ -98,17 +98,21 @@ export default class Albums extends React.PureComponent {
     const albumData = album => <Album key={uuid()} {...{ album, hideSearch }} />
     const albumsList = albums && albums.map(albumData)
     const albumsData = (
-      <React.Fragment>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="searchResultsTabContentList"
-          content={albumsList}
-        />
+      <Router>
+        <Ref innerRef={this.tabRef}>
+          <div className="searchResultsTabContent">
+            <List
+              selection
+              size="medium"
+              verticalAlign="middle"
+              className="searchResultsTabContentList"
+              content={albumsList}
+            />
 
-        {pagination}
-      </React.Fragment>
+            {pagination}
+          </div>
+        </Ref>
+      </Router>
     )
 
     const errorData = error && <ErrorData {...{ error }} />
@@ -120,11 +124,7 @@ export default class Albums extends React.PureComponent {
         className="searchResultsTabContentWrap"
         loading={active && loading}
       >
-        <Router>
-          <Ref innerRef={this.tabRef}>
-            <div className="searchResultsTabContent">{tabContentData}</div>
-          </Ref>
-        </Router>
+        {tabContentData}
       </Segment>
     )
 
