@@ -28,6 +28,8 @@ module LastFM
           lastfm_id: @profile.lastfm_id,
           page: page
         )
+      rescue RestClient::BadGateway, RestClient::InternalServerError
+        retry
       end
 
       def import_plays
@@ -35,7 +37,7 @@ module LastFM
       end
 
       def reversed_pages
-        plays_data[:pages_count].downto(1)
+        1.downto(1)
       end
 
       def import_plays_from_page(page)

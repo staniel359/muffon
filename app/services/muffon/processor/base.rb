@@ -1,7 +1,7 @@
 module Muffon
   module Processor
     class Base < Muffon::Base
-    private
+      private
 
       def init_artist(artist_data)
         ::Artist.with_name(artist_data[:name]).first_or_initialize

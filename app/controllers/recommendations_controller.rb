@@ -6,6 +6,7 @@ class RecommendationsController < ApplicationController
     set_recommendations
     set_artist if params[:artist_name].present?
     set_current_artist_ids
+    update_artists
     set_profile_instances
     respond_with_js_and_html
   end
@@ -26,8 +27,15 @@ private
     @title = t("recommendations.#{params[:action]}")
   end
 
+  def set_query_params
+    @query_params = params.as_json.slice(
+      'artist_name', 'tag_name', 'days',
+      'exclude_tag_names', 'recommendation'
+    )
+  end
+
   def set_recommendations
-    @recommendations = paginate(filtered_recommendations, 10)
+    @recommendations = paginate(filtered_recommendations, 20)
   end
 
   def filtered_recommendations
@@ -36,7 +44,8 @@ private
 
   def filter_params
     params.slice(
-      :artist_name, :tag_name, :days
+      :artist_name, :tag_name, :days,
+      :exclude_tag_names, :recommendation, :random
     ).merge!(profile_id: current_profile.id)
   end
 
@@ -52,10 +61,16 @@ private
     @current_artist_ids = @recommendations.pluck(:artist_id)
   end
 
-  def set_query_params
-    @query_params = params.as_json.slice(
-      'artist_name', 'tag_name', 'days'
+  def update_artists
+    Muffon::Processor::Recommendations::Artists.call(
+      artist_names: artist_names
     )
+  end
+
+  def artist_names
+    Artist.where(
+      id: @current_artist_ids, tag_ids: []
+    ).pluck(:name)
   end
 
   def delete_recommendation

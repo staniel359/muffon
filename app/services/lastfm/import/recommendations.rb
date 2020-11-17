@@ -23,7 +23,8 @@ module LastFM
       def profile_artist_ids
         @profile_artist_ids ||= ProfileArtist.where(
           id: @profile.profile_artist_ids
-        ).order(plays_count: :desc).pluck(:id)
+        ).order(plays_count: :desc).pluck(:id) -
+          Recommendation.pluck(:profile_artist_ids).flatten.uniq
       end
 
       def import_recommendations
@@ -35,8 +36,11 @@ module LastFM
 
       def process_artist(id)
         Muffon::Processor::Recommendations.call(
+          profile_id: @profile.id,
           profile_artist_id: id
         )
+      rescue NETWORK_ERRORS
+        retry
       end
     end
   end

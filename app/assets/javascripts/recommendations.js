@@ -14,7 +14,7 @@ $(document).keydown((e) => {
 
 showRecommendationsFilterForm = () => {
   $('#recommendations-filter-button').click(() => {
-    $('#recommendations-filter-form').show()
+    $('#recommendations-filter-form').toggle()
     $('#recommendations-filter-submit-form input').val('')
     $('#recommendations-filter-submit-form input#artist_name').focus()
   });

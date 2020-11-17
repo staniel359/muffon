@@ -14,6 +14,13 @@
     #recommendations-filter-form
       = render 'filter_form'
 
+    #recommendations-randomize-button.d-flex.justify-content-end
+      = button_tag form: 'recommendations-filter-submit-form', name: 'random',  value: true, class: 'btn btn-primary' do
+        %i.fas.fa-random
+        Random
+
+    .separator.default.my-3
+
     #recommendation-query
       = render 'query'
 

@@ -1,5 +1,10 @@
 module Muffon
   class Base
+    NETWORK_ERRORS = [
+      RestClient::BadGateway,
+      RestClient::InternalServerError
+    ].freeze
+
     def self.call(args)
       new(args).call
     end

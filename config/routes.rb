@@ -155,8 +155,8 @@ Rails.application.routes.draw do
       get 'board'
     end
   end
-  resources :artists, only: :show, param: 'artist_name',
-    constraints: { artist_name: /.*/ }
+  # # resources :artists, only: :show, param: 'artist_name',
+  #   constraints: { artist_name: /.*/ }
   namespace :tags do
     scope '/:tag_name', constraints: { tag_name: /.*/ } do
       get 'artists'

@@ -1,19 +1,27 @@
 module Recommendations
   class Filter < Muffon::Base
     def call
-      filter_recommendations
+      retrieve_recommendations
     end
 
   private
 
+    def retrieve_recommendations
+      @args.random ? random_recommendation : filter_recommendations
+    end
+
+    def random_recommendation
+      filter_recommendations.where(id: filter_recommendations.pluck(:id).sample)
+    end
+
     def filter_recommendations
-      @profile.recommendations.not_deleted.joins(
+      @filter_recommendations ||= @profile.recommendations.not_deleted.joins(
         'LEFT JOIN artists ON artists.id = recommendations.artist_id'
       ).where(queries).includes(:artist).artists_count_desc
     end
 
     def queries
-      %w[artist tag days].map do |q|
+      %w[artist tag days exclude_tags recommendation].map do |q|
         send("#{q}_query")
       end.compact.join(' AND ')
     end
@@ -57,6 +65,24 @@ module Recommendations
       ).select(:profile_artist_id).distinct.pluck(
         :profile_artist_id
       )
+    end
+
+    def exclude_tags_query
+      return unless @args.exclude_tag_names.present?
+
+      "NOT (ARRAY#{exclude_tag_ids} && artists.tag_ids)"
+    end
+
+    def exclude_tag_ids
+      @args.exclude_tag_names.split(',').map(&:strip).map do |t|
+        Tag.with(name: t).first&.id.to_i
+      end
+    end
+
+    def recommendation_query
+      return unless @args.recommendation.present?
+
+      "LOWER(artists.name) = '#{@args.recommendation.downcase}'"
     end
   end
 end

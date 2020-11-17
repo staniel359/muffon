@@ -16,18 +16,12 @@ module Muffon
       def recommendation
         @recommendation ||= ::Recommendation.where(
           profile_id: @args.profile_id,
-          artist_id: artist.id
+          artist_id: artist_id
         ).first_or_initialize
       end
 
-      def artist
-        update_artist(
-          @args.artist.except(:tags).merge(tag_ids: tag_ids)
-        )
-      end
-
-      def tag_ids
-        @args.artist[:tags].map { |t| process_tag(t) }.pluck(:id)
+      def artist_id
+        update_artist(name: @args.artist_name).id
       end
 
       def profile_artist_ids

@@ -1,6 +1,6 @@
 module Muffon
   module Processor
-    class Tag
+    class Recommendations
       class Artists < Muffon::Processor::Base
         def call
           process_artists
@@ -9,11 +9,13 @@ module Muffon
       private
 
         def process_artists
+          return unless artists_data.present?
+
           artists_data[:artists].map { |a| process_artist(a) }
         end
 
         def artists_data
-          LastFM::Tag::Artists.call(@args)
+          @artists_data ||= LastFM::Artists.call(@args)
         end
 
         def process_artist(artist)

@@ -28,6 +28,8 @@ module LastFM
           lastfm_id: @profile.lastfm_id,
           page: page
         )
+      rescue RestClient::BadGateway, RestClient::InternalServerError
+        retry
       end
 
       def import_loved_tracks

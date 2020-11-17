@@ -12,6 +12,23 @@
       %h6.mb-0
         Days:
       = text_field_tag :days, params[:days], class: 'input-transp', autocomplete: 'off'
-  = submit_tag 'Search', name: nil, class: 'd-none'
+
+  .my-2
+
+  .row
+    .col-12
+      %h6.mb-0
+        Exclude tags:
+      = text_field_tag :exclude_tag_names, params[:exclude_tag_names], class: 'input-transp', autocomplete: 'off'
+
+  .my-2
+
+  .row
+    .col-12
+      %h6.mb-0
+        Recommendation:
+      = text_field_tag :recommendation, params[:recommendation], class: 'input-transp', autocomplete: 'off'
+
+  = submit_tag '', class: 'd-none'
 
 %hr.my-3
