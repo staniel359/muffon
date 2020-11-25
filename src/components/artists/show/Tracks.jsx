@@ -3,6 +3,7 @@ import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './tracks/List'
 import ErrorData from 'partials/ErrorData'
+import { HashRouter as Router, Link } from 'react-router-dom'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -91,10 +92,17 @@ export default class Tracks extends React.PureComponent {
     }
     const paginationData = tracks && <Pagination {...paginationProps} />
 
+    const artistNameEncoded = encodeURIComponent(this.props.artistName)
+    const tracksPageLink = `/artists/${artistNameEncoded}/tracks`
+
     return (
       <Segment.Group id="tracks" className="artistPageSegmentWrap">
         <Segment>
-          <Header as="h3" content="Top tracks" />
+          <Header as="h3">
+            <Router>
+              <Link to={tracksPageLink}>Top tracks</Link>
+            </Router>
+          </Header>
         </Segment>
 
         <Segment

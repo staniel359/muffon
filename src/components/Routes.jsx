@@ -2,6 +2,7 @@ import React from 'react'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Home from './Home'
 import ArtistShow from './artists/Show'
+import ArtistTracks from './artists/Tracks'
 import AlbumShow from './artists/albums/Show'
 import TrackShow from './artists/tracks/Show'
 import TagShow from './tags/Show'
@@ -15,11 +16,14 @@ export default class Routes extends React.PureComponent {
     const artistShow = props => (
       <ArtistShow key={uuid()} {...props} {...extraProps} />
     )
-    const albumShow = props => (
-      <AlbumShow key={uuid()} {...props} {...extraProps} />
+    const artistTracks = props => (
+      <ArtistTracks key={uuid()} {...props} {...extraProps} />
     )
     const trackShow = props => (
       <TrackShow key={uuid()} {...props} {...extraProps} />
+    )
+    const albumShow = props => (
+      <AlbumShow key={uuid()} {...props} {...extraProps} />
     )
     const tagShow = props => <TagShow key={uuid()} {...props} {...extraProps} />
     const home = props => <Home {...props} {...extraProps} />
@@ -36,6 +40,7 @@ export default class Routes extends React.PureComponent {
             path="/artists/:artistName/tracks/:trackTitle"
             render={trackShow}
           />
+          <Route path="/artists/:artistName/tracks" render={artistTracks} />
           <Route path="/tags/:tagName" render={tagShow} />
           <Route path="/" render={home} />
         </Switch>
