@@ -24,25 +24,6 @@ export default class Show extends React.PureComponent {
     this.request.cancel()
   }
 
-  getAlbumInfo () {
-    const { params } = this.props.match
-
-    const url = `/lastfm/artists/${params.artistName}/albums/${params.albumTitle}`
-    const extra = { cancelToken: this.request.token }
-
-    const handleSuccess = resp => this.setState({ info: resp.data.album })
-
-    const handleError = error => this.setState({ error: error })
-
-    const switchLoader = bool => this.setState({ loading: !!bool })
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(switchLoader)
-  }
-
   setNavSections () {
     const { params } = this.props.match
 
@@ -63,6 +44,25 @@ export default class Show extends React.PureComponent {
     ]
 
     this.props.setNavSections(navSections)
+  }
+
+  getAlbumInfo () {
+    const { params } = this.props.match
+
+    const url = `/lastfm/artists/${params.artistName}/albums/${params.albumTitle}`
+    const extra = { cancelToken: this.request.token }
+
+    const handleSuccess = resp => this.setState({ info: resp.data.album })
+
+    const handleError = error => this.setState({ error: error })
+
+    const switchLoader = bool => this.setState({ loading: !!bool })
+
+    axios
+      .get(url, extra)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(switchLoader)
   }
 
   pageData () {
