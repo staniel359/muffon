@@ -1,9 +1,6 @@
 import React from 'react'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class AudioContainer extends React.PureComponent {
-  static contextType = PlayerContext
-
   render () {
     const {
       repeat,
@@ -14,7 +11,7 @@ export default class AudioContainer extends React.PureComponent {
       handleTimeUpdate,
       handleVolumeChange,
       handleAudioEnd
-    } = this.context
+    } = this.props
 
     return (
       <audio

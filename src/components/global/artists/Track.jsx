@@ -6,7 +6,17 @@ import PlayerContext from 'contexts/PlayerContext'
 import 'styles/global/Track.sass'
 
 export default class Track extends React.PureComponent {
-  static contextType = PlayerContext
+  lengthData () {
+    const { track } = this.props
+
+    const format = seconds =>
+      new Date(seconds * 1000).toISOString().substr(14, 5)
+    const trackLength = format(track.length)
+
+    return (
+      <List.Description className="trackContentLength" content={trackLength} />
+    )
+  }
 
   counterData () {
     const { track, topTrackCount } = this.props
@@ -22,61 +32,63 @@ export default class Track extends React.PureComponent {
           className="trackContentCounterLine"
           style={{ width: trackLineWidth }}
         />
-        <div>
-          <Icon name="user" />
+        <div className="trackContentCounterData">
+          <Icon name="user" size="small" />
           {trackCounterData}
         </div>
       </List.Description>
     )
   }
 
-  lengthData () {
-    const { track } = this.props
-
-    const format = seconds =>
-      new Date(seconds * 1000).toISOString().substr(14, 5)
-    const trackLength = format(track.length)
-
-    return (
-      <List.Description className="trackContentLength" content={trackLength} />
-    )
-  }
-
   render () {
-    const { artistName, track, index } = this.props
-    const { currentTrackId } = this.context
-
-    const trackId = track.id
-    const isPlaying = currentTrackId === trackId
+    const { artistName, track, index, isPlaying } = this.props
 
     const trackTitle = track.title
-    const playButtonProps = { artistName, trackTitle, trackId }
+    const trackId = track.id
+    const playButtonProps = { artistName, trackTitle, trackId, isPlaying }
+    const playButtonData = (
+      <PlayerContext.Consumer>
+        {context => {
+          const audioStatus = isPlaying && context.audioStatus
+          const toggleAudio = context.toggleAudio
+          const playButtonGlobalProps = { audioStatus, toggleAudio }
 
-    const indexData = <div className="trackContentIndex">{`${index + 1}.`}</div>
+          return <PlayButton {...playButtonProps} {...playButtonGlobalProps} />
+        }}
+      </PlayerContext.Consumer>
+    )
+
+    const indexData = index >= 0 && (
+      <div className="trackContentIndex">{`${index + 1}.`}</div>
+    )
 
     const artistNameEncoded = encodeURIComponent(artistName)
     const trackTitleEncoded = encodeURIComponent(trackTitle)
     const trackPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
 
-    return (
-      <List.Item className="track" active={isPlaying}>
-        <PlayButton {...playButtonProps} />
+    const trackData = (
+      <List.Content className="trackContent">
+        <div className="trackContentMain">
+          <div className="trackContentIndexLink">
+            {indexData}
 
-        <List.Content className="trackContent">
-          <div className="trackContentMain">
-            <div className="trackContentIndexLink">
-              {index >= 0 && indexData}
-
-              <Link className="trackContentLink" to={trackPageLink}>
-                <List.Header as="h4" content={trackTitle} />
-              </Link>
-            </div>
-
-            {track.length && this.lengthData()}
+            <Link className="trackContentLink" to={trackPageLink}>
+              <List.Header as="h4" content={trackTitle} />
+            </Link>
           </div>
 
-          {track.listeners_count && this.counterData()}
-        </List.Content>
+          {track.length && this.lengthData()}
+        </div>
+
+        {track.listeners_count && this.counterData()}
+      </List.Content>
+    )
+
+    return (
+      <List.Item className="track" active={isPlaying}>
+        {playButtonData}
+
+        {trackData}
       </List.Item>
     )
   }

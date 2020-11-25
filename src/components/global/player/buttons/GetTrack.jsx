@@ -1,10 +1,7 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class GetTrack extends React.PureComponent {
-  static contextType = PlayerContext
-
   constructor (props) {
     super(props)
     this.state = { loading: false, error: false }
@@ -15,17 +12,26 @@ export default class GetTrack extends React.PureComponent {
 
     switchLoader(true)
 
-    const { artistName, trackTitle, albumTitle, trackId } = this.props
+    const {
+      artistName,
+      trackTitle,
+      albumTitle,
+      trackId,
+      setCurrentTrackId,
+      getTrackData
+    } = this.props
     const getTrackParams = { artistName, trackTitle, albumTitle }
 
-    const handleSuccess = () => this.context.setCurrentTrackId(trackId)
-    const handleError = () => this.setState({ error: true })
+    const handleSuccess = () => setCurrentTrackId(trackId)
+    const handleError = () => {
+      this.setState({ error: true })
 
-    this.context
-      .getTrack({ ...getTrackParams })
+      switchLoader(false)
+    }
+
+    getTrackData({ ...getTrackParams })
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
   }
 
   render () {

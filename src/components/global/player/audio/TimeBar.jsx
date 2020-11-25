@@ -1,9 +1,6 @@
 import React from 'react'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class TimeBar extends React.PureComponent {
-  static contextType = PlayerContext
-
   render () {
     const {
       secondsLoaded,
@@ -12,7 +9,7 @@ export default class TimeBar extends React.PureComponent {
       changeTime,
       startTimeChange,
       endTimeChange
-    } = this.context
+    } = this.props
 
     const background = <div className="playerPanelBackgroundBar" />
 

@@ -1,12 +1,9 @@
 import React from 'react'
 import { Button, Popup } from 'semantic-ui-react'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class Stop extends React.PureComponent {
-  static contextType = PlayerContext
-
   render () {
-    const { stopAudio } = this.context
+    const { stopAudio } = this.props
 
     const stopAudioButton = (
       <Button basic compact size="mini" icon="times" onClick={stopAudio} />

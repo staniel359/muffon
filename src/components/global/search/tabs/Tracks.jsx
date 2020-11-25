@@ -5,6 +5,7 @@ import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
 import Track from './tracks/Track'
+import PlayerContext from 'contexts/PlayerContext'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -95,7 +96,18 @@ export default class Tracks extends React.PureComponent {
       </div>
     )
 
-    const trackData = track => <Track key={uuid()} {...{ track, hideSearch }} />
+    const trackData = track => (
+      <PlayerContext.Consumer key={uuid()}>
+        {context => {
+          const trackProps = { track, hideSearch }
+
+          const isPlaying = context.currentTrackId === track.id
+          const trackGlobalProps = { isPlaying }
+
+          return <Track {...trackProps} {...trackGlobalProps} />
+        }}
+      </PlayerContext.Consumer>
+    )
     const tracksList = tracks && tracks.map(trackData)
     const tracksData = (
       <Router>

@@ -1,19 +1,16 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class Main extends React.PureComponent {
-  static contextType = PlayerContext
-
   render () {
     const {
       shuffle,
       toggleShuffle,
       toggleAudio,
-      toggleAudioButtonIcon,
+      audioStatus,
       repeat,
       toggleRepeat
-    } = this.context
+    } = this.props
 
     const shuffleButton = (
       <Button basic={!shuffle} compact icon="shuffle" onClick={toggleShuffle} />
@@ -21,6 +18,16 @@ export default class Main extends React.PureComponent {
 
     const backwardButton = <Button basic compact icon="backward" />
 
+    const toggleAudioButtonIcon = () => {
+      switch (audioStatus) {
+        case 'play':
+          return 'pause'
+        case 'pause':
+          return 'play'
+        default:
+          return 'pause'
+      }
+    }
     const toggleAudioButton = (
       <Button basic onClick={toggleAudio} icon={toggleAudioButtonIcon()} />
     )

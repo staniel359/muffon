@@ -1,12 +1,9 @@
 import React from 'react'
 import { Button, Popup, Header } from 'semantic-ui-react'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class Volume extends React.PureComponent {
-  static contextType = PlayerContext
-
   render () {
-    const { toggleMute, muted, volume, changeVolume } = this.context
+    const { toggleMute, muted, volume, changeVolume } = this.props
 
     const volumeOffIcon = (muted || volume === 0) && 'volume off'
     const volumeLowIcon = volume < 50 && 'volume down'

@@ -4,6 +4,7 @@ import Search from 'global/Search'
 import Navbar from 'global/Navbar'
 import PlayerPanel from 'global/player/Panel'
 import PlayerProvider from 'contexts/PlayerProvider'
+import PlayerContext from 'contexts/PlayerContext'
 import Mousetrap from 'mousetrap'
 import { Container } from 'semantic-ui-react'
 import 'styles/App.sass'
@@ -41,7 +42,13 @@ export default class App extends React.PureComponent {
           {<Search {...{ searchActive, hideSearch }} />}
         </Container>
 
-        <PlayerPanel />
+        <PlayerContext.Consumer>
+          {context => {
+            const { currentTrack } = context
+
+            return <PlayerPanel {...{ currentTrack }} />
+          }}
+        </PlayerContext.Consumer>
       </PlayerProvider>
     )
   }

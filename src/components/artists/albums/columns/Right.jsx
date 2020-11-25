@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid'
 import { Header, Label, Divider, List } from 'semantic-ui-react'
 import { HashRouter as Router, Link } from 'react-router-dom'
 import Track from 'global/artists/Track'
+import PlayerContext from 'contexts/PlayerContext'
 
 export default class Right extends React.PureComponent {
   render () {
@@ -11,13 +12,13 @@ export default class Right extends React.PureComponent {
 
     const albumTitle = info.title
     const albumTitleData = (
-      <Header as="h2" className="albumPageAlbumTitle" content={albumTitle} />
+      <Header as="h1" className="albumPageAlbumTitle" content={albumTitle} />
     )
 
     const artistPageLink = `/artists/${params.artistName}`
     const artistName = info.artist
     const artistNameData = (
-      <Header className="albumPageArtistName">
+      <Header as="h3" className="albumPageArtistName">
         <Link to={artistPageLink}>{artistName}</Link>
       </Header>
     )
@@ -52,7 +53,16 @@ export default class Right extends React.PureComponent {
     )
 
     const trackData = (track, index) => (
-      <Track key={uuid()} index={index} {...{ track, artistName }} />
+      <PlayerContext.Consumer key={uuid()}>
+        {context => {
+          const trackProps = { index, track, artistName }
+
+          const isPlaying = context.currentTrackId === track.id
+          const trackGlobalProps = { isPlaying }
+
+          return <Track {...trackProps} {...trackGlobalProps} />
+        }}
+      </PlayerContext.Consumer>
     )
     const tracksList = tracks.map(trackData)
     const tracksData = tracks && (
@@ -64,12 +74,9 @@ export default class Right extends React.PureComponent {
     return (
       <div className="albumPageRightColumn">
         {albumTitleData}
-
         {artistNameData}
-
-        {countersData}
-
         {tagsData}
+        {countersData}
 
         <Divider />
 

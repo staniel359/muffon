@@ -8,7 +8,6 @@ export default class PlayerProvider extends React.PureComponent {
     this.state = {
       toggleAudio: this.toggleAudio,
       stopAudio: this.stopAudio,
-      toggleAudioButtonIcon: this.toggleAudioButtonIcon,
       toggleMute: this.toggleMute,
       muted: false,
       volume: 100,
@@ -30,7 +29,7 @@ export default class PlayerProvider extends React.PureComponent {
       changeTime: this.changeTime,
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
-      getTrack: this.getTrack,
+      getTrackData: this.getTrackData,
       currentTrackId: 0,
       setCurrentTrackId: this.setCurrentTrackId
     }
@@ -71,17 +70,6 @@ export default class PlayerProvider extends React.PureComponent {
       currentTrackData: null,
       currentTrackId: null
     })
-  }
-
-  toggleAudioButtonIcon = () => {
-    switch (this.state.audioStatus) {
-      case 'play':
-        return 'pause'
-      case 'pause':
-        return 'play'
-      default:
-        return 'pause'
-    }
   }
 
   toggleMute = () => {
@@ -161,7 +149,7 @@ export default class PlayerProvider extends React.PureComponent {
     this.audio()[this.state.audioStatusOnChange]()
   }
 
-  getTrack = ({ artistName, trackTitle, albumTitle, index = 0 }) => {
+  getTrackData = ({ artistName, trackTitle, albumTitle, index = 0 }) => {
     const queryString = `${artistName} ${trackTitle}`
     const url = '/vk/track'
     const params = { query: queryString, index: index }

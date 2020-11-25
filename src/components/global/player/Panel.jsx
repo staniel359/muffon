@@ -8,10 +8,8 @@ import Track from './Track'
 import 'styles/global/Player.sass'
 
 export default class Panel extends React.PureComponent {
-  static contextType = PlayerContext
-
   render () {
-    const { currentTrack } = this.context
+    const { currentTrack } = this.props
 
     const trackData = (
       <div className="playerPanelLeftColumn">
@@ -19,11 +17,65 @@ export default class Panel extends React.PureComponent {
       </div>
     )
 
+    const audioContainerData = (
+      <PlayerContext.Consumer>
+        {context => {
+          const {
+            repeat,
+            handleLoadStart,
+            handlePlay,
+            handlePause,
+            handleProgress,
+            handleTimeUpdate,
+            handleVolumeChange,
+            handleAudioEnd
+          } = context
+          const audioContainerProps = {
+            repeat,
+            handleLoadStart,
+            handlePlay,
+            handlePause,
+            handleProgress,
+            handleTimeUpdate,
+            handleVolumeChange,
+            handleAudioEnd
+          }
+
+          return <AudioContainer {...audioContainerProps} />
+        }}
+      </PlayerContext.Consumer>
+    )
+
+    const timeBarData = (
+      <PlayerContext.Consumer>
+        {context => {
+          const {
+            secondsLoaded,
+            duration,
+            currentTime,
+            changeTime,
+            startTimeChange,
+            endTimeChange
+          } = context
+          const timeBarProps = {
+            secondsLoaded,
+            duration,
+            currentTime,
+            changeTime,
+            startTimeChange,
+            endTimeChange
+          }
+
+          return <TimeBar {...timeBarProps} />
+        }}
+      </PlayerContext.Consumer>
+    )
+
     const audioData = (
       <div className="playerPanelRightColumn">
-        <AudioContainer />
+        {audioContainerData}
         <Controls />
-        <TimeBar />
+        {timeBarData}
       </div>
     )
 
