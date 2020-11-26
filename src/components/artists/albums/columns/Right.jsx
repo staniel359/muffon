@@ -2,8 +2,7 @@ import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { Header, Label, Divider, List } from 'semantic-ui-react'
 import { HashRouter as Router, Link } from 'react-router-dom'
-import Track from 'global/artists/Track'
-import PlayerContext from 'contexts/PlayerContext'
+import TrackContextWrap from 'global/artists/TrackContextWrap'
 
 export default class Right extends React.PureComponent {
   render () {
@@ -52,18 +51,11 @@ export default class Right extends React.PureComponent {
       </div>
     )
 
-    const trackData = (track, index) => (
-      <PlayerContext.Consumer key={uuid()}>
-        {context => {
-          const trackProps = { index, track, artistName }
+    const trackData = (track, index) => {
+      const trackProps = { track, artistName, index }
 
-          const isPlaying = context.currentTrackId === track.id
-          const trackGlobalProps = { isPlaying }
-
-          return <Track {...trackProps} {...trackGlobalProps} />
-        }}
-      </PlayerContext.Consumer>
-    )
+      return <TrackContextWrap key={uuid()} {...trackProps} />
+    }
     const tracksList = tracks.map(trackData)
     const tracksData = tracks && (
       <Router>

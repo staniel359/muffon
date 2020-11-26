@@ -1,6 +1,6 @@
 import React from 'react'
 import VolumeButton from './extra/Volume'
-import ChangeButton from './extra/Change'
+import ChangeTrackButton from './extra/ChangeTrack'
 import StopButton from './extra/Stop'
 import PlayerContext from 'contexts/PlayerContext'
 
@@ -13,6 +13,17 @@ export default class Extra extends React.PureComponent {
           const volumeProps = { toggleMute, muted, volume, changeVolume }
 
           return <VolumeButton {...volumeProps} />
+        }}
+      </PlayerContext.Consumer>
+    )
+
+    const changeTrackButtonData = (
+      <PlayerContext.Consumer>
+        {context => {
+          const { currentTrackData, getTrackData } = context
+          const changeTrackButtonProps = { currentTrackData, getTrackData }
+
+          return <ChangeTrackButton {...changeTrackButtonProps} />
         }}
       </PlayerContext.Consumer>
     )
@@ -31,9 +42,7 @@ export default class Extra extends React.PureComponent {
     return (
       <React.Fragment>
         {volumeButtonData}
-
-        <ChangeButton />
-
+        {changeTrackButtonData}
         {stopButtonData}
       </React.Fragment>
     )

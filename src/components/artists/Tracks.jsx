@@ -2,9 +2,8 @@ import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { Segment, Dimmer, Loader, List, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
-import Track from 'global/artists/Track'
+import TrackContextWrap from 'global/artists/TrackContextWrap'
 import ErrorData from 'partials/ErrorData'
-import PlayerContext from 'contexts/PlayerContext'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -63,6 +62,8 @@ export default class Tracks extends React.PureComponent {
         error: null,
         page: newPage
       })
+
+      window.scrollTo(0, 0)
     }
 
     const handleError = error => {
@@ -86,25 +87,15 @@ export default class Tracks extends React.PureComponent {
     } = this.state
     const { params } = this.props.match
 
-    const trackData = track => (
-      <PlayerContext.Consumer key={uuid()}>
-        {context => {
-          const artistName = decodeURIComponent(params.artistName)
-          const trackProps = { track, artistName, topTrackCount }
+    const trackData = track => {
+      const artistName = decodeURIComponent(params.artistName)
+      const trackProps = { track, artistName, topTrackCount }
 
-          const isPlaying = context.currentTrackId === track.id
-          const trackGlobalProps = { isPlaying }
-
-          return <Track {...trackProps} {...trackGlobalProps} />
-        }}
-      </PlayerContext.Consumer>
-    )
+      return <TrackContextWrap key={uuid()} {...trackProps} />
+    }
     const tracksList = tracks.map(trackData)
 
-    const handlePageChange = (_, { activePage }) => {
-      window.scrollTo(0, 0)
-      this.getTracks(activePage)
-    }
+    const handlePageChange = (_, { activePage }) => this.getTracks(activePage)
     const paginationProps = {
       defaultActivePage: currentPage,
       totalPages: totalPages,

@@ -4,8 +4,7 @@ import { List, Button, Tab, Ref, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
-import Track from './tracks/Track'
-import PlayerContext from 'contexts/PlayerContext'
+import TrackContextWrap from 'global/artists/TrackContextWrap'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -96,18 +95,13 @@ export default class Tracks extends React.PureComponent {
       </div>
     )
 
-    const trackData = track => (
-      <PlayerContext.Consumer key={uuid()}>
-        {context => {
-          const trackProps = { track, hideSearch }
+    const trackData = track => {
+      const artistName = track.artist
+      const artist = true
+      const trackProps = { track, artistName, artist, hideSearch }
 
-          const isPlaying = context.currentTrackId === track.id
-          const trackGlobalProps = { isPlaying }
-
-          return <Track {...trackProps} {...trackGlobalProps} />
-        }}
-      </PlayerContext.Consumer>
-    )
+      return <TrackContextWrap key={uuid()} {...trackProps} />
+    }
     const tracksList = tracks && tracks.map(trackData)
     const tracksData = (
       <Router>
