@@ -57,9 +57,7 @@ export default class Search extends React.PureComponent {
 
     const clearButton = query && (
       <Icon
-        circular
         link
-        size="small"
         name="times"
         className="searchClearQueryButton"
         onClick={clearQuery}
