@@ -5,7 +5,7 @@ import Tracks from './tabs/Tracks'
 import { Tab } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 
-export default class Results extends React.PureComponent {
+export default class Tabs extends React.PureComponent {
   render () {
     const { query, hideSearch } = this.props
 

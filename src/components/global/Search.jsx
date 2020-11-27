@@ -1,35 +1,39 @@
 import React from 'react'
 import { Form, Input, Dimmer, Segment, Button, Icon } from 'semantic-ui-react'
 import Tabs from './Search/Tabs'
+import { v4 as uuid } from 'uuid'
 import 'styles/global/Search.sass'
 
 export default class Search extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = { query: null }
   }
 
   componentDidMount () {
+    this.inputRef = React.createRef()
+
     this.toggleBodyDimmable()
   }
 
   componentDidUpdate () {
-    this.toggleBodyDimmable()
-
     const input = this.inputRef.current
 
     input && input.focus()
+
+    this.toggleBodyDimmable()
   }
 
   toggleBodyDimmable () {
-    const className = this.props.searchActive ? 'dimmed dimmable' : ''
-
-    document.body.className = className
-    !document.body.className && document.body.removeAttribute('class')
+    if (this.props.searchActive) {
+      document.body.className = 'dimmed dimmable'
+    } else {
+      document.body.removeAttribute('class')
+    }
   }
 
   render () {
-    const { query } = this.state
+    const { query, searchId } = this.state
     const { hideSearch, searchActive } = this.props
 
     const dimmerVisibilityClassName = searchActive ? 'visible' : 'hidden'
@@ -37,17 +41,13 @@ export default class Search extends React.PureComponent {
 
     const dimmerDataClassName = `searchDimmerData ${query && 'h100'}`
 
-    this.inputRef = React.createRef()
-
-    const handleSubmit = e => {
-      e.preventDefault()
+    const handleSubmit = submit => {
+      submit.preventDefault()
 
       const submitValue = this.inputRef.current.value
 
-      submitValue && this.setState({ query: submitValue })
+      submitValue && this.setState({ query: submitValue, searchId: uuid() })
     }
-
-    const placeholder = 'Enter something...'
 
     const clearQuery = () => {
       this.setState({ query: null })
@@ -68,12 +68,13 @@ export default class Search extends React.PureComponent {
       <Button compact size="large" type="submit" content="Search" />
     )
 
+    const placeholder = 'Enter something...'
+    const ref = this.inputRef
     const searchInputContent = (
       <React.Fragment>
         <Icon name="search" />
-        <input placeholder={placeholder} ref={this.inputRef} />
+        <input {...{ placeholder, ref }} />
         {clearButton}
-
         {submitButton}
       </React.Fragment>
     )
@@ -86,13 +87,12 @@ export default class Search extends React.PureComponent {
       </Form>
     )
 
-    const tabsProps = { query, hideSearch }
+    const tabsProps = { query, hideSearch, searchId }
     const tabsData = query && <Tabs {...tabsProps} />
 
-    const dimmerData = (
+    const content = (
       <Segment className={dimmerDataClassName}>
         {searchForm}
-
         {tabsData}
       </Segment>
     )
@@ -103,7 +103,7 @@ export default class Search extends React.PureComponent {
         active
         className={dimmerClassName}
         onClickOutside={hideSearch}
-        content={dimmerData}
+        {...{ content }}
       />
     )
   }
