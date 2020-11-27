@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter as Router } from 'react-router-dom'
-import { List, Button, Tab, Ref, Segment } from 'semantic-ui-react'
+import { List, Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import { v4 as uuid } from 'uuid'
@@ -44,7 +44,13 @@ export default class Tracks extends React.PureComponent {
     const scrollToTabTop = () => (this.tabRef.current.scrollTop = 0)
 
     const handleSuccess = resp => {
-      this.setState({ tracks: resp.data.search.tracks })
+      const { search } = resp.data
+
+      this.setState({
+        tracks: search.tracks,
+        totalPages: search.total_pages,
+        error: null
+      })
 
       scrollToTabTop()
     }
@@ -61,7 +67,7 @@ export default class Tracks extends React.PureComponent {
   }
 
   tracksData () {
-    const { tracks, currentPage } = this.state
+    const { tracks, totalPages } = this.state
     const { hideSearch } = this.props
 
     const trackData = track => {
@@ -72,50 +78,31 @@ export default class Tracks extends React.PureComponent {
 
       return <TrackContextWrap {...trackProps} />
     }
-    const tracksListData = tracks.map(trackData)
-    const tracksList = (
+    const tracksList = tracks.map(trackData)
+    const tracksListData = (
       <List
         selection
         size="medium"
         verticalAlign="middle"
         className="searchResultsTabContentList"
-        content={tracksListData}
+        content={tracksList}
       />
     )
 
-    const handlePageButtonClick = (_, { action }) => {
-      const prevPage = action === 'prev' && currentPage - 1
-      const nextPage = action === 'next' && currentPage + 1
-      const page = prevPage || nextPage || 1
-
-      this.setState({ currentPage: page })
-      this.getData(page)
+    const handlePageChange = (_, { activePage }) => {
+      this.setState({ currentPage: activePage })
+      this.getData(activePage)
     }
-
-    const previousPageButton = currentPage > 1 && (
-      <Button
-        icon="left arrow"
-        content="Previous"
-        action="prev"
-        labelPosition="left"
-        onClick={handlePageButtonClick}
-      />
-    )
-
-    const nextPageButton = (
-      <Button
-        icon="right arrow"
-        content="Next"
-        action="next"
-        labelPosition="right"
-        onClick={handlePageButtonClick}
-      />
-    )
-
-    const pagination = (
+    const paginationProps = {
+      totalPages: totalPages,
+      onPageChange: handlePageChange,
+      firstItem: null,
+      lastItem: null,
+      siblingRange: 0
+    }
+    const paginationData = (
       <div className="searchResultsTabPagination">
-        <div>{previousPageButton}</div>
-        <div>{nextPageButton}</div>
+        <Pagination {...paginationProps} />
       </div>
     )
 
@@ -123,8 +110,11 @@ export default class Tracks extends React.PureComponent {
       <Router>
         <Ref innerRef={this.tabRef}>
           <div className="searchResultsTabContent">
-            {tracksList}
-            {pagination}
+            {tracksListData}
+
+            <Divider />
+
+            {paginationData}
           </div>
         </Ref>
       </Router>

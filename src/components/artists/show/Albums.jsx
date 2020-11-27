@@ -67,6 +67,7 @@ export default class Albums extends React.PureComponent {
       this.setState({ currentPage: activePage })
       this.getData(activePage)
     }
+
     const paginationProps = {
       totalPages: totalPages,
       onPageChange: handlePageChange,
