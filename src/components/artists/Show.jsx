@@ -17,8 +17,15 @@ export default class Show extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.setNavSections()
     this.setArtistName()
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const artistName = props => props.match.params.artistName
+
+    const artistChanged = artistName(this.props) !== artistName(prevProps)
+
+    artistChanged && this.setArtistName()
   }
 
   componentWillUnmount () {
@@ -26,36 +33,26 @@ export default class Show extends React.PureComponent {
     this.request.cancel()
   }
 
-  setNavSections () {
+  setArtistName () {
     const { params } = this.props.match
 
-    const navSections = [
-      { key: uuid(), content: 'Artists' },
-      {
-        key: uuid(),
-        content: decodeURIComponent(params.artistName),
-        active: true
-      }
-    ]
+    this.setNavSections(decodeURIComponent(params.artistName))
 
-    this.props.setNavSections(navSections)
-  }
-
-  setArtistName () {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
 
     switchLoader(true)
 
-    const { params } = this.props.match
-
     const url = `/lastfm/artists/${params.artistName}`
     const cancelToken = this.request.token
     const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
-      this.setState({ artistName: resp.data.artist.name })
+      const artistName = resp.data.artist.name
+
+      this.setState({ ...{ artistName } })
+      this.setNavSections(artistName)
     }
 
     const handleError = error => {
@@ -67,6 +64,15 @@ export default class Show extends React.PureComponent {
       .then(handleSuccess)
       .catch(handleError)
       .then(() => switchLoader(false))
+  }
+
+  setNavSections (artistName) {
+    const navSections = [
+      { key: uuid(), content: 'Artists' },
+      { key: uuid(), content: artistName, active: true }
+    ]
+
+    this.props.setNavSections(navSections)
   }
 
   artistData () {
@@ -91,15 +97,15 @@ export default class Show extends React.PureComponent {
   render () {
     const { error, loading, artistName } = this.state
 
-    const artistData = artistName && this.artistData()
-
-    const errorData = error && <ErrorData {...{ error }} />
-
     const loaderData = loading && (
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
-    const content = artistData || errorData || loaderData
+    const artistData = artistName && this.artistData()
+
+    const errorData = error && <ErrorData {...{ error }} />
+
+    const content = loaderData || artistData || errorData
 
     return <React.Fragment>{content}</React.Fragment>
   }

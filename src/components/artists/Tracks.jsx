@@ -15,8 +15,15 @@ export default class Tracks extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.setNavSections()
     this.getData()
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const artistName = props => props.match.params.artistName
+
+    const artistChanged = artistName(this.props) !== artistName(prevProps)
+
+    artistChanged && this.getData()
   }
 
   componentWillUnmount () {
@@ -24,30 +31,16 @@ export default class Tracks extends React.PureComponent {
     this.request.cancel()
   }
 
-  setNavSections () {
-    const { params } = this.props.match
-
-    const navSections = [
-      { key: uuid(), content: 'Artists' },
-      {
-        key: uuid(),
-        content: decodeURIComponent(params.artistName),
-        href: `#/artists/${params.artistName}`
-      },
-      { key: uuid(), content: 'Tracks', active: true }
-    ]
-
-    this.props.setNavSections(navSections)
-  }
-
   getData = page => {
+    const artistNameEncoded = this.props.match.params.artistName
+
+    this.setNavSections(decodeURIComponent(artistNameEncoded))
+
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
 
     switchLoader(true)
-
-    const artistNameEncoded = this.props.match.params.artistName
 
     const url = `/lastfm/artists/${artistNameEncoded}/tracks`
     const limit = 50
@@ -56,17 +49,19 @@ export default class Tracks extends React.PureComponent {
     const extra = { ...{ params, cancelToken } }
 
     const handleSuccess = resp => {
-      const { topTrackCount } = this.state
       const { artist } = resp.data
 
       const firstTrackCount = artist.tracks[0].listeners_count
+      const topTrackCount = page ? this.state.topTrackCount : firstTrackCount
 
       this.setState({
         tracks: artist.tracks,
-        topTrackCount: topTrackCount || firstTrackCount,
+        topTrackCount: topTrackCount,
         totalPages: artist.total_pages,
         error: null
       })
+
+      this.setNavSections(artist.name)
 
       window.scrollTo(0, 0)
     }
@@ -80,6 +75,17 @@ export default class Tracks extends React.PureComponent {
       .then(handleSuccess)
       .catch(handleError)
       .then(() => switchLoader(false))
+  }
+
+  setNavSections (artistName) {
+    const artistPageLink = `#/artists/${encodeURIComponent(artistName)}`
+    const navSections = [
+      { key: uuid(), content: 'Artists' },
+      { key: uuid(), content: artistName, href: artistPageLink },
+      { key: uuid(), content: 'Tracks', active: true }
+    ]
+
+    this.props.setNavSections(navSections)
   }
 
   tracksList () {
