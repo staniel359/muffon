@@ -5,6 +5,10 @@ html
 
 a
   outline: none
+a:not(.label):not(.item)
+  color: initial !important
+  &:hover
+    color: $muffonBase !important
 
 @media only screen and (max-width: 767px)
   .ui.container

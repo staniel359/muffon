@@ -25,17 +25,17 @@ export default class Track extends React.PureComponent {
             </div>
 
             <List.Content className="playerPanelTrackContent">
-              <List.Header as="h4">
-                <Link to={trackLink}>
-                  <Ticker key={uuid()}>{title}</Ticker>
-                </Link>
-              </List.Header>
+              <Ticker key={uuid()}>
+                <List.Header as="h4">
+                  <Link to={trackLink}>{title}</Link>
+                </List.Header>
+              </Ticker>
 
-              <List.Description>
-                <Link to={artistLink}>
-                  <Ticker key={uuid()}>{artist}</Ticker>
-                </Link>
-              </List.Description>
+              <Ticker key={uuid()}>
+                <List.Description>
+                  <Link to={artistLink}>{artist}</Link>
+                </List.Description>
+              </Ticker>
             </List.Content>
           </List.Item>
         </List>

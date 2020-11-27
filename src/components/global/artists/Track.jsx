@@ -55,13 +55,15 @@ export default class Track extends React.PureComponent {
     const artistPageLink = `/artists/${artistNameEncoded}`
 
     return (
-      <Link
-        className="trackContentLink"
-        to={artistPageLink}
-        onClick={this.handleLinkClick}
-      >
-        <List.Description content={artistName} />
-      </Link>
+      <List.Description>
+        <Link
+          className="trackContentLink"
+          to={artistPageLink}
+          onClick={this.handleLinkClick}
+        >
+          {artistName}
+        </Link>
+      </List.Description>
     )
   }
 
@@ -135,13 +137,15 @@ export default class Track extends React.PureComponent {
     const trackPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
     const titleArtistData = (
       <div>
-        <Link
-          className="trackContentLink"
-          to={trackPageLink}
-          onClick={this.handleLinkClick}
-        >
-          <List.Header as="h4" content={trackTitle} />
-        </Link>
+        <List.Header as="h4">
+          <Link
+            className="trackContentLink"
+            to={trackPageLink}
+            onClick={this.handleLinkClick}
+          >
+            {trackTitle}
+          </Link>
+        </List.Header>
 
         {artist && this.artistData()}
       </div>
