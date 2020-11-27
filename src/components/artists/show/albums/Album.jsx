@@ -31,12 +31,14 @@ export default class Album extends React.PureComponent {
 
     switchLoader(true)
 
-    const url = `/lastfm/artists/${this.artistNameEncoded}/albums/${this.albumTitleEncoded}`
+    const url =
+      `/lastfm/artists/${this.artistNameEncoded}` +
+      `/albums/${this.albumTitleEncoded}/listeners_count`
     const cancelToken = this.request.token
     const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
-      this.setState({ listenersCount: resp.data.album.listeners_count })
+      this.setState({ listenersCount: resp.data.listeners_count })
     }
 
     const handleError = error => {
