@@ -39,6 +39,11 @@
     width: 10px
     border-radius: 5px
     background: $muffonBase
+    visibility: hidden
+
+  &:hover
+    &::-webkit-slider-thumb
+      visibility: visible
 
 .playerPanelAudioBar
   @extend .absolute, .w100
