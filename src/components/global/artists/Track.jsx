@@ -9,6 +9,37 @@ export default class Track extends React.PureComponent {
     this.state = { loading: false, error: false }
   }
 
+  componentDidMount () {
+    this._isMounted = true
+  }
+
+  componentWillUnmount () {
+    this._isMounted = false
+  }
+
+  getData = () => {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
+
+    switchLoader(true)
+
+    const { artistName, track, getTrackData, setCurrentTrackId } = this.props
+
+    const trackTitle = track.title
+    const getTrackParams = { ...{ artistName, trackTitle } }
+
+    const trackId = track.id
+    const handleSuccess = () => setCurrentTrackId(trackId)
+
+    const handleError = () => this.setState({ error: true })
+
+    getTrackData(getTrackParams)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(() => switchLoader(false))
+  }
+
   handleLinkClick = click => {
     click.stopPropagation()
 
@@ -35,15 +66,11 @@ export default class Track extends React.PureComponent {
   }
 
   lengthData () {
-    const { track } = this.props
-
     const format = seconds =>
       new Date(seconds * 1000).toISOString().substr(14, 5)
-    const trackLength = format(track.length)
+    const length = format(this.props.track.length)
 
-    return (
-      <List.Description className="trackContentLength" content={trackLength} />
-    )
+    return <List.Description className="trackContentLength" content={length} />
   }
 
   counterData () {
@@ -51,15 +78,13 @@ export default class Track extends React.PureComponent {
 
     const listenersCount = track.listeners_count
     const trackLineWidth = `${(listenersCount / topTrackCount) * 70}%`
+    const trackLineStyle = { width: trackLineWidth }
 
     const trackCounterData = listenersCount.toLocaleString('eu')
 
     return (
       <List.Description className="trackContentCounter">
-        <div
-          className="trackContentCounterLine"
-          style={{ width: trackLineWidth }}
-        />
+        <div className="trackContentCounterLine" style={trackLineStyle} />
         <div className="trackContentCounterData">
           <Icon name="user" size="small" />
           {trackCounterData}
@@ -76,32 +101,14 @@ export default class Track extends React.PureComponent {
       playing,
       audioStatus,
       toggleAudio,
-      setCurrentTrackId,
-      getTrackData,
       artist
     } = this.props
     const { loading, error } = this.state
 
     const trackTitle = track.title
-    const trackId = track.id
-    const getTrack = () => {
-      const switchLoader = bool => this.setState({ loading: !!bool })
-
-      switchLoader(true)
-
-      const getTrackParams = { artistName, trackTitle }
-
-      const handleSuccess = () => setCurrentTrackId(trackId)
-      const handleError = () => this.setState({ error: true })
-
-      getTrackData({ ...getTrackParams })
-        .then(handleSuccess)
-        .catch(handleError)
-        .then(switchLoader)
-    }
 
     const handleTrackClick = () =>
-      !loading && (playing ? toggleAudio() : getTrack())
+      !loading && (playing ? toggleAudio() : this.getData())
 
     const active = loading || playing
     const disabled = loading || error

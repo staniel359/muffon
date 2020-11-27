@@ -7,10 +7,12 @@ import TrackContextWrap from 'global/artists/TrackContextWrap'
 export default class TracksList extends React.PureComponent {
   render () {
     const { tracks, artistName, topTrackCount } = this.props
-    const trackData = track => {
-      const trackProps = { track, artistName, topTrackCount }
 
-      return <TrackContextWrap key={uuid()} {...trackProps} />
+    const trackData = track => {
+      const key = uuid()
+      const trackProps = { track, artistName, topTrackCount, key }
+
+      return <TrackContextWrap {...trackProps} />
     }
     const tracksList = tracks.map(trackData)
 

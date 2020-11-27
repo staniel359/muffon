@@ -8,46 +8,51 @@ import ErrorData from 'partials/ErrorData'
 export default class Info extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: true }
+    this.state = { loading: false }
   }
 
   componentDidMount () {
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.getInfo()
+    this.getData()
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
-  getInfo () {
-    const switchLoader = bool => this.setState({ loading: !!bool })
+  getData () {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
 
     switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}`
-    const extra = { cancelToken: this.request.token }
+    const cancelToken = this.request.token
+    const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
       this.setState({ info: resp.data.artist, error: null })
     }
 
     const handleError = error => {
-      this.setState({ error: error, info: null })
+      !axios.isCancel(error) && this.setState({ error: error, info: null })
     }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
   infoData () {
     const { info } = this.state
-    const { description, tags } = info
+    const { tags } = info
 
     const artistName = info.name
     const artistNameData = (
@@ -61,11 +66,11 @@ export default class Info extends React.PureComponent {
     const tagData = tag => (
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
-    const tagsList = tags.map(tagData)
+    const tagsListData = tags.map(tagData)
     const tagsData = (
       <Router>
         <Label.Group size="large">
-          {tagsList}
+          {tagsListData}
 
           <Label as="a" content="..." />
         </Label.Group>
@@ -81,10 +86,9 @@ export default class Info extends React.PureComponent {
       </Label.Group>
     )
 
+    const description = info.description || 'No description.'
     const descriptionData = (
-      <div className="artistPageDescription">
-        {description || 'No description.'}
-      </div>
+      <div className="artistPageDescription">{description}</div>
     )
 
     return (
@@ -102,16 +106,14 @@ export default class Info extends React.PureComponent {
     const { info, loading, error } = this.state
 
     const infoData = info && this.infoData()
+
     const errorData = error && <ErrorData {...{ error }} />
+
     const content = infoData || errorData
 
     return (
       <Segment.Group id="info" className="artistPageSegmentWrap">
-        <Segment
-          className="artistPageSegment"
-          loading={loading}
-          content={content}
-        />
+        <Segment className="artistPageSegment" {...{ loading, content }} />
       </Segment.Group>
     )
   }

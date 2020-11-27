@@ -12,56 +12,56 @@ export default class Picture extends React.PureComponent {
   }
 
   componentDidMount () {
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.getImages()
+    this.getData()
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
   componentDidUpdate (prevProps, prevState) {
     const artistNameChanged = this.props.artistName !== prevProps.artistName
 
-    artistNameChanged && this.getImages()
+    artistNameChanged && this.getData()
   }
 
-  getImages () {
-    const switchLoader = bool => this.setState({ loading: !!bool })
+  getData () {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
 
     switchLoader(true)
 
-    const artistName = encodeURIComponent(this.props.artistName)
-    const url = `/lastfm/artists/${artistName}/images`
-    const extra = { cancelToken: this.request.token }
+    const artistNameEncoded = encodeURIComponent(this.props.artistName)
+    const url = `/lastfm/artists/${artistNameEncoded}/images`
+    const cancelToken = this.request.token
+    const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
       const imagesList = resp.data.artist.images
       const firstImage = imagesList.slice(0, 1)
       const images = this.props.dimmer ? imagesList : firstImage
 
-      this.setState({ images: images })
+      this.setState({ ...{ images } })
     }
 
-    const handleError = () => this.setState({ images: [] })
+    const handleError = error => {
+      !axios.isCancel(error) && this.setState({ images: [] })
+    }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
-  render () {
-    const { loading, images, dimmerActive, imageIndex } = this.state
-    const { dimmer } = this.props
-
-    const placeholderImageData = loading && (
-      <Placeholder className="rounded" content={<Placeholder.Image square />} />
-    )
-
-    const anyImages = images.length > 0
+  dimmableImageData () {
+    const { images, dimmerActive, imageIndex } = this.state
 
     const setImageIndex = index => this.setState({ imageIndex: index })
     const sliderProps = {
@@ -73,53 +73,67 @@ export default class Picture extends React.PureComponent {
     }
 
     const showDimmer = () => this.setState({ dimmerActive: true })
-    const artistImageDimmable = image => (
-      <Image
-        rounded
-        wrapped
-        className="imageWrap"
-        key={uuid()}
-        src={image.large}
-        style={{ cursor: 'pointer' }}
-        onClick={showDimmer}
-      />
-    )
-    const imagesList = images.map(artistImageDimmable)
+    const artistImageDimmable = image => {
+      const key = uuid()
+      const src = image.large
+      const style = { cursor: 'pointer' }
+
+      return (
+        <Image
+          rounded
+          wrapped
+          className="imageWrap"
+          onClick={showDimmer}
+          {...{ key, src, style }}
+        />
+      )
+    }
+    const imagesListData = images.map(artistImageDimmable)
 
     const hideDimmer = () => this.setState({ dimmerActive: false })
-    const dimmerProps = { dimmerActive, imageIndex, images, hideDimmer }
+    const dimmerProps = { images, dimmerActive, imageIndex, hideDimmer }
 
-    const dimmableImageData = (
+    return (
       <React.Fragment>
-        <Slider {...sliderProps}>{imagesList}</Slider>
+        <Slider {...sliderProps}>{imagesListData}</Slider>
 
         <PictureDimmer {...dimmerProps} />
       </React.Fragment>
     )
+  }
 
-    const basicImageSrc = anyImages && images[0].medium
-    const artistImageBasic = (
-      <Image
-        rounded
-        wrapped
-        className="imageWrapBordered"
-        src={basicImageSrc}
-      />
-    )
+  artistImageBasic () {
+    const src = this.state.images[0].medium
 
-    const artistImageData = dimmer ? dimmableImageData : artistImageBasic
+    return <Image rounded wrapped className="imageWrapBordered" {...{ src }} />
+  }
 
-    const defaultImageSrc =
+  artistImageData () {
+    return this.props.dimmer
+      ? this.dimmableImageData()
+      : this.artistImageBasic()
+  }
+
+  defaultImage () {
+    const src =
       'https://lastfm.freetls.fastly.net/i/u/600x600/' +
       '2a96cbd8b46e442fc41c2b86b821562f.png'
-    const defaultImage = (
-      <Image rounded wrapped className="imageWrap" src={defaultImageSrc} />
+
+    return <Image rounded wrapped className="imageWrap" {...{ src }} />
+  }
+
+  render () {
+    const { loading, images } = this.state
+
+    const placeholderImageData = loading && (
+      <Placeholder className="rounded" content={<Placeholder.Image square />} />
     )
 
-    const imageData = anyImages ? artistImageData : defaultImage
+    const anyImages = images.length > 0
+    const imageData = anyImages ? this.artistImageData() : this.defaultImage()
 
-    const pictureData = placeholderImageData || imageData
+    const content = placeholderImageData || imageData
 
-    return <React.Fragment>{pictureData}</React.Fragment>
+    return <React.Fragment>{content}</React.Fragment>
   }
 }

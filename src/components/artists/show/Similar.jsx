@@ -7,34 +7,34 @@ import ErrorData from 'partials/ErrorData'
 export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: true, page: 1 }
+    this.state = { loading: false, currentPage: 1 }
   }
 
   componentDidMount () {
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.getSimilar()
-  }
-
-  componentDidUpdate (prevProps, prevState) {
-    const pageChanged = this.state.page !== prevState.page
-
-    pageChanged && this.getSimilar()
+    this.getData()
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
-  getSimilar () {
-    const switchLoader = bool => this.setState({ loading: !!bool })
+  getData (page) {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
 
     switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/similar`
-    const params = { limit: 4, page: this.state.page }
-    const extra = { params: params, cancelToken: this.request.token }
+    const limit = 4
+    const params = { ...{ limit, page } }
+    const cancelToken = this.request.token
+    const extra = { ...{ params, cancelToken } }
 
     const handleSuccess = resp => {
       const { artist } = resp.data
@@ -47,37 +47,48 @@ export default class Similar extends React.PureComponent {
     }
 
     const handleError = error => {
-      this.setState({ error: error, similar: null })
+      !axios.isCancel(error) && this.setState({ error: error, similar: null })
     }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
-  render () {
-    const { loading, similar, error, page, totalPages } = this.state
+  pagination () {
+    const { totalPages } = this.state
     const { scrollToSegmentTop } = this.props
-
-    const similarList = similar && <List {...{ similar }} />
-    const errorData = error && <ErrorData {...{ error }} />
-    const similarData = similarList || errorData
 
     const handlePageChange = (_, { activePage }) => {
       scrollToSegmentTop('similar')
-      this.setState({ page: activePage })
+
+      this.setState({ currentPage: activePage })
+      this.getData(activePage)
     }
+
     const paginationProps = {
-      defaultActivePage: page,
       totalPages: totalPages,
       onPageChange: handlePageChange,
       firstItem: null,
       lastItem: null,
       siblingRange: 0
     }
-    const paginationData = similar && <Pagination {...paginationProps} />
+
+    return <Pagination {...paginationProps} />
+  }
+
+  render () {
+    const { loading, similar, error } = this.state
+
+    const similarData = similar && <List {...{ similar }} />
+
+    const errorData = error && <ErrorData {...{ error }} />
+
+    const content = similarData || errorData
+
+    const paginationData = similar && this.pagination()
 
     return (
       <Segment.Group id="similar" className="artistPageSegmentWrap">
@@ -85,11 +96,7 @@ export default class Similar extends React.PureComponent {
           <Header as="h3" content="Similar" />
         </Segment>
 
-        <Segment
-          className="artistPageSegment"
-          loading={loading}
-          content={similarData}
-        />
+        <Segment className="artistPageSegment" {...{ loading, content }} />
 
         <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
       </Segment.Group>

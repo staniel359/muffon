@@ -31,7 +31,8 @@ export default class PlayerProvider extends React.PureComponent {
       endTimeChange: this.endTimeChange,
       getTrackData: this.getTrackData,
       currentTrackId: 0,
-      setCurrentTrackId: this.setCurrentTrackId
+      setCurrentTrackId: this.setCurrentTrackId,
+      cancelTrackRequest: this.cancelTrackRequest
     }
   }
 
@@ -44,17 +45,11 @@ export default class PlayerProvider extends React.PureComponent {
     }
   }
 
-  handlePause = () => {
-    this.setState({ audioStatus: 'pause' })
-  }
+  handlePause = () => this.setState({ audioStatus: 'pause' })
 
-  audio () {
-    return document.getElementById('playerPanelAudio')
-  }
+  audio = () => document.getElementById('playerPanelAudio')
 
-  handlePlay = () => {
-    this.setState({ audioStatus: 'play' })
-  }
+  handlePlay = () => this.setState({ audioStatus: 'play' })
 
   stopAudio = () => {
     this.setState({ audioStatus: 'stop' })
@@ -95,9 +90,7 @@ export default class PlayerProvider extends React.PureComponent {
     this.setState({ volume: volume, muted: muted })
   }
 
-  toggleShuffle = () => {
-    this.setState({ shuffle: !this.state.shuffle })
-  }
+  toggleShuffle = () => this.setState({ shuffle: !this.state.shuffle })
 
   toggleRepeat = () => {
     const repeat = !this.state.repeat
@@ -135,9 +128,7 @@ export default class PlayerProvider extends React.PureComponent {
     this.audio().pause()
   }
 
-  changeTime = e => {
-    this.audio().currentTime = e.target.value
-  }
+  changeTime = e => (this.audio().currentTime = e.target.value)
 
   startTimeChange = () => {
     this.setState({ audioStatusOnChange: this.state.audioStatus })
@@ -150,36 +141,38 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   getTrackData = ({ artistName, trackTitle, albumTitle, index = 0 }) => {
-    const queryString = `${artistName} ${trackTitle}`
-    const url = '/vk/track'
-    const params = { query: queryString, index: index }
+    this.request = axios.CancelToken.source()
 
-    return axios.get(url, { params: params }).then(resp => {
+    const query = `${artistName} ${trackTitle}`
+    const url = '/vk/track'
+    const params = { ...{ query, index } }
+    const cancelToken = this.request.token
+    const extra = { ...{ params, cancelToken } }
+
+    const handleSuccess = resp => {
       const { track } = resp.data
 
       if (track) {
-        this.setState({
-          currentTrack: track,
-          currentTrackData: {
-            artistName: artistName,
-            trackTitle: trackTitle,
-            albumTitle: albumTitle,
-            index: index
-          }
-        })
+        const currentTrack = track
+        const currentTrackData = {
+          ...{ artistName, trackTitle, albumTitle, index }
+        }
+
+        this.setState({ ...{ currentTrack, currentTrackData } })
 
         this.audio().src = track.link
-
         this.audio().play()
       }
 
       return resp
-    })
+    }
+
+    return axios.get(url, extra).then(handleSuccess)
   }
 
-  setCurrentTrackId = id => {
-    this.setState({ currentTrackId: id })
-  }
+  setCurrentTrackId = id => this.setState({ currentTrackId: id })
+
+  cancelTrackRequest = () => this.request.cancel()
 
   render () {
     return (

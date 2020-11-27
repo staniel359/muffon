@@ -8,9 +8,12 @@ export default class List extends React.PureComponent {
   render () {
     const { similar } = this.props
 
-    const similarData = artistName => (
-      <SimilarArtist key={uuid()} artist={{ name: artistName }} />
-    )
+    const similarData = artistName => {
+      const key = uuid()
+      const similarArtistProps = { artistName, key }
+
+      return <SimilarArtist {...similarArtistProps} />
+    }
     const similarList = similar.map(similarData)
 
     return (

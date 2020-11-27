@@ -8,17 +8,19 @@ import ErrorData from 'partials/ErrorData'
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { currentPage: 1 }
+    this.state = { loading: false, currentPage: 1 }
   }
 
   componentDidMount () {
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.setNavSections()
-    this.getTracks()
+    this.getData()
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
@@ -38,16 +40,20 @@ export default class Tracks extends React.PureComponent {
     this.props.setNavSections(navSections)
   }
 
-  getTracks = newPage => {
-    const switchLoader = bool => this.setState({ loading: !!bool })
+  getData = page => {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
 
     switchLoader(true)
 
     const artistNameEncoded = this.props.match.params.artistName
 
     const url = `/lastfm/artists/${artistNameEncoded}/tracks`
-    const params = { limit: 50, page: newPage }
-    const extra = { params: params, cancelToken: this.request.token }
+    const limit = 50
+    const params = { ...{ limit, page } }
+    const cancelToken = this.request.token
+    const extra = { ...{ params, cancelToken } }
 
     const handleSuccess = resp => {
       const { topTrackCount } = this.state
@@ -59,56 +65,40 @@ export default class Tracks extends React.PureComponent {
         tracks: artist.tracks,
         topTrackCount: topTrackCount || firstTrackCount,
         totalPages: artist.total_pages,
-        error: null,
-        page: newPage
+        error: null
       })
 
       window.scrollTo(0, 0)
     }
 
     const handleError = error => {
-      this.setState({ error: error, tracks: null })
+      !axios.isCancel(error) && this.setState({ error: error, tracks: null })
     }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
-  pageData () {
-    const {
-      tracks,
-      loading,
-      topTrackCount,
-      currentPage,
-      totalPages
-    } = this.state
-    const { params } = this.props.match
+  tracksList () {
+    const { tracks, loading, topTrackCount } = this.state
 
     const trackData = track => {
-      const artistName = decodeURIComponent(params.artistName)
-      const trackProps = { track, artistName, topTrackCount }
+      const artistName = decodeURIComponent(this.props.match.params.artistName)
+      const key = uuid()
+      const trackProps = { track, artistName, topTrackCount, key }
 
-      return <TrackContextWrap key={uuid()} {...trackProps} />
+      return <TrackContextWrap {...trackProps} />
     }
     const tracksList = tracks.map(trackData)
 
-    const handlePageChange = (_, { activePage }) => this.getTracks(activePage)
-    const paginationProps = {
-      defaultActivePage: currentPage,
-      totalPages: totalPages,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0
-    }
-    const paginationData = tracks && <Pagination {...paginationProps} />
+    const paginationData = tracks && this.pagination()
 
     return (
       <Segment.Group>
-        <Segment loading={loading}>
+        <Segment {...{ loading }}>
           <List selection content={tracksList} />
         </Segment>
 
@@ -117,10 +107,29 @@ export default class Tracks extends React.PureComponent {
     )
   }
 
+  pagination () {
+    const { totalPages } = this.state
+
+    const handlePageChange = (_, { activePage }) => {
+      this.setState({ currentPage: activePage })
+      this.getData(activePage)
+    }
+
+    const paginationProps = {
+      totalPages: totalPages,
+      onPageChange: handlePageChange,
+      firstItem: null,
+      lastItem: null,
+      siblingRange: 0
+    }
+
+    return <Pagination {...paginationProps} />
+  }
+
   render () {
     const { loading, tracks, error } = this.state
 
-    const successData = tracks && this.pageData()
+    const tracksData = tracks && this.tracksList()
 
     const errorData = error && <ErrorData {...{ error }} />
 
@@ -128,8 +137,8 @@ export default class Tracks extends React.PureComponent {
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
-    const pageData = successData || errorData || loaderData
+    const content = tracksData || errorData || loaderData
 
-    return <React.Fragment>{pageData}</React.Fragment>
+    return <React.Fragment>{content}</React.Fragment>
   }
 }

@@ -5,7 +5,8 @@ import Picture from 'global/artists/Picture'
 
 export default class SimilarArtist extends React.PureComponent {
   render () {
-    const artistName = this.props.artist.name
+    const { artistName } = this.props
+
     const artistNameEncoded = encodeURIComponent(artistName)
     const pageLink = `/artists/${artistNameEncoded}`
 

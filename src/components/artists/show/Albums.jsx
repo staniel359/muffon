@@ -7,34 +7,34 @@ import ErrorData from 'partials/ErrorData'
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: true, page: 1 }
+    this.state = { loading: false, currentPage: 1 }
   }
 
   componentDidMount () {
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.getAlbums()
+    this.getData()
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    const pageChanged = this.state.page !== prevState.page
-
-    pageChanged && this.getAlbums()
-  }
-
-  getAlbums () {
-    const switchLoader = bool => this.setState({ loading: !!bool })
+  getData (page) {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
 
     switchLoader(true)
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/albums`
-    const params = { limit: 4, page: this.state.page }
-    const extra = { params: params, cancelToken: this.request.token }
+    const limit = 4
+    const params = { ...{ limit, page } }
+    const cancelToken = this.request.token
+    const extra = { ...{ params, cancelToken } }
 
     const handleSuccess = resp => {
       const { artist } = resp.data
@@ -47,38 +47,49 @@ export default class Albums extends React.PureComponent {
     }
 
     const handleError = error => {
-      this.setState({ error: error, albums: null })
+      !axios.isCancel(error) && this.setState({ error: error, albums: null })
     }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
-  render () {
-    const { loading, albums, error, page, totalPages } = this.state
-    const { artistName, scrollToSegmentTop } = this.props
-
-    const albumsListProps = { albums, artistName }
-    const albumsList = albums && <List {...albumsListProps} />
-    const errorData = error && <ErrorData {...{ error }} />
-    const albumsData = albumsList || errorData
+  pagination () {
+    const { totalPages } = this.state
+    const { scrollToSegmentTop } = this.props
 
     const handlePageChange = (_, { activePage }) => {
       scrollToSegmentTop('albums')
-      this.setState({ page: activePage })
+
+      this.setState({ currentPage: activePage })
+      this.getData(activePage)
     }
     const paginationProps = {
-      defaultActivePage: page,
       totalPages: totalPages,
       onPageChange: handlePageChange,
       firstItem: null,
       lastItem: null,
       siblingRange: 0
     }
-    const paginationData = albums && <Pagination {...paginationProps} />
+
+    return <Pagination {...paginationProps} />
+  }
+
+  render () {
+    const { loading, albums, error } = this.state
+    const { artistName } = this.props
+
+    const albumsDataProps = { albums, artistName }
+    const albumsData = albums && <List {...albumsDataProps} />
+
+    const errorData = error && <ErrorData {...{ error }} />
+
+    const content = albumsData || errorData
+
+    const paginationData = albums && this.pagination()
 
     return (
       <Segment.Group id="albums" className="artistPageSegmentWrap">
@@ -86,11 +97,7 @@ export default class Albums extends React.PureComponent {
           <Header as="h3" content="Top albums" />
         </Segment>
 
-        <Segment
-          className="artistPageSegment"
-          loading={loading}
-          content={albumsData}
-        />
+        <Segment className="artistPageSegment" {...{ loading, content }} />
 
         <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
       </Segment.Group>

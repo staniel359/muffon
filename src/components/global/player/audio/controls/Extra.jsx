@@ -20,8 +20,12 @@ export default class Extra extends React.PureComponent {
     const changeTrackButtonData = (
       <PlayerContext.Consumer>
         {context => {
-          const { currentTrackData, getTrackData } = context
-          const changeTrackButtonProps = { currentTrackData, getTrackData }
+          const { currentTrackData, getTrackData, cancelTrackRequest } = context
+          const changeTrackButtonProps = {
+            currentTrackData,
+            getTrackData,
+            cancelTrackRequest
+          }
 
           return <ChangeTrackButton {...changeTrackButtonProps} />
         }}

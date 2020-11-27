@@ -10,10 +10,11 @@ import 'styles/artists/Show.sass'
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: true }
+    this.state = { loading: false }
   }
 
   componentDidMount () {
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.setNavSections()
@@ -21,6 +22,7 @@ export default class Show extends React.PureComponent {
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
@@ -40,53 +42,65 @@ export default class Show extends React.PureComponent {
   }
 
   setArtistName () {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
+
+    switchLoader(true)
+
     const { params } = this.props.match
 
     const url = `/lastfm/artists/${params.artistName}`
-    const extra = { cancelToken: this.request.token }
+    const cancelToken = this.request.token
+    const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
       this.setState({ artistName: resp.data.artist.name })
     }
 
-    const handleError = error => this.setState({ error: error })
-
-    const switchLoader = bool => this.setState({ loading: !!bool })
+    const handleError = error => {
+      !axios.isCancel(error) && this.setState({ ...{ error } })
+    }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
-  render () {
-    const { error, loading, artistName } = this.state
+  artistData () {
+    const { artistName } = this.state
 
-    const loader = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
-
-    const pageTopOffset = 60
     const segmentTop = segmentID =>
-      document.getElementById(segmentID).offsetTop - pageTopOffset
+      document.getElementById(segmentID).offsetTop - 60
     const scrollToSegmentTop = segmentID =>
       window.scrollTo(0, segmentTop(segmentID))
 
     const leftColumnProps = { artistName, scrollToSegmentTop, segmentTop }
     const rightColumnProps = { artistName, scrollToSegmentTop }
 
-    const successData = artistName && (
+    return (
       <React.Fragment>
         <LeftColumn {...leftColumnProps} />
         <RightColumn {...rightColumnProps} />
       </React.Fragment>
     )
+  }
+
+  render () {
+    const { error, loading, artistName } = this.state
+
+    const artistData = artistName && this.artistData()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const pageData = loader || successData || errorData
+    const loaderData = loading && (
+      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
+    )
 
-    return <React.Fragment>{pageData}</React.Fragment>
+    const content = artistData || errorData || loaderData
+
+    return <React.Fragment>{content}</React.Fragment>
   }
 }

@@ -9,131 +9,145 @@ import Album from './albums/Album'
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: true, currentPage: 1 }
+    this.state = { loading: false, currentPage: 1 }
   }
 
   componentDidMount () {
+    this.tabRef = React.createRef()
+
+    this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    this.search()
+    this.getData()
   }
 
   componentWillUnmount () {
+    this._isMounted = false
     this.request.cancel()
   }
 
-  search = (e, data) => {
-    const switchLoader = bool => this.setState({ loading: !!bool })
+  getData = page => {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
 
     switchLoader(true)
 
     const { query } = this.props
-    const { currentPage } = this.state
-
-    const action = data && data.action
-    const nextPage = action === 'next' && currentPage + 1
-    const prevPage = action === 'prev' && currentPage - 1
-    const page = nextPage || prevPage || 1
 
     const url = '/lastfm/search/albums'
-    const params = { query: query, limit: 20, page: page }
-    const extra = { params: params, cancelToken: this.request.token }
+    const limit = 20
+    const params = { ...{ query, limit, page } }
+    const cancelToken = this.request.token
+    const extra = { ...{ params, cancelToken } }
 
     const scrollToTabTop = () => (this.tabRef.current.scrollTop = 0)
 
     const handleSuccess = resp => {
-      this.setState({
-        albums: resp.data.search.albums,
-        currentPage: page
-      })
+      this.setState({ albums: resp.data.search.albums })
 
       scrollToTabTop()
     }
 
-    const handleError = error => this.setState({ error: error, albums: null })
+    const handleError = error => {
+      !axios.isCancel(error) && this.setState({ error: error, albums: null })
+    }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(switchLoader)
+      .then(() => switchLoader(false))
   }
 
-  render () {
-    const { loading, albums, currentPage, error } = this.state
-    const { active, hideSearch } = this.props
+  albumsData () {
+    const { albums, currentPage } = this.state
+    const { hideSearch } = this.props
 
-    this.tabRef = React.createRef()
+    const albumData = album => {
+      const key = uuid()
+      const albumsProps = { album, hideSearch, key }
 
-    const previousPageButton = (
+      return <Album {...albumsProps} />
+    }
+    const albumsListData = albums.map(albumData)
+    const albumsList = (
+      <List
+        selection
+        size="medium"
+        verticalAlign="middle"
+        className="searchResultsTabContentList"
+        content={albumsListData}
+      />
+    )
+
+    const handlePageButtonClick = (_, { action }) => {
+      const prevPage = action === 'prev' && currentPage - 1
+      const nextPage = action === 'next' && currentPage + 1
+      const page = prevPage || nextPage || 1
+
+      this.setState({ currentPage: page })
+      this.getData(page)
+    }
+
+    const previousPageButton = currentPage > 1 && (
       <Button
-        size="tiny"
         icon="left arrow"
         content="Previous"
         action="prev"
         labelPosition="left"
-        onClick={this.search}
+        onClick={handlePageButtonClick}
       />
     )
 
     const nextPageButton = (
       <Button
-        size="tiny"
         icon="right arrow"
         content="Next"
         action="next"
         labelPosition="right"
-        onClick={this.search}
+        onClick={handlePageButtonClick}
       />
     )
 
     const pagination = (
       <div className="searchResultsTabPagination">
-        <div>{currentPage > 1 && previousPageButton}</div>
-
+        <div>{previousPageButton}</div>
         <div>{nextPageButton}</div>
       </div>
     )
 
-    const albumData = album => <Album key={uuid()} {...{ album, hideSearch }} />
-    const albumsList = albums && albums.map(albumData)
-    const albumsData = (
+    return (
       <Router>
         <Ref innerRef={this.tabRef}>
           <div className="searchResultsTabContent">
-            <List
-              selection
-              size="medium"
-              verticalAlign="middle"
-              className="searchResultsTabContentList"
-              content={albumsList}
-            />
-
+            {albumsList}
             {pagination}
           </div>
         </Ref>
       </Router>
     )
+  }
+
+  render () {
+    const { albums, error } = this.state
+    const { active } = this.props
+
+    const loading = active && this.state.loading
+
+    const albumsData = albums && this.albumsData()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const tabContentData = albums ? albumsData : errorData
-
-    const tabContent = (
-      <Segment
-        className="searchResultsTabContentWrap"
-        loading={active && loading}
-      >
-        {tabContentData}
-      </Segment>
-    )
+    const content = albumsData || errorData
 
     return (
-      <Tab.Pane
-        className="searchResultsTab"
-        active={active}
-        content={tabContent}
-      />
+      <Tab.Pane className="searchResultsTab" {...{ active }}>
+        <Segment
+          className="searchResultsTabContentWrap"
+          {...{ loading, content }}
+        />
+      </Tab.Pane>
     )
   }
 }

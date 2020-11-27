@@ -8,7 +8,12 @@ export default class List extends React.PureComponent {
   render () {
     const { albums, artistName } = this.props
 
-    const albumData = album => <Album key={uuid()} {...{ artistName, album }} />
+    const albumData = album => {
+      const key = uuid()
+      const albumsProps = { artistName, album, key }
+
+      return <Album {...albumsProps} />
+    }
     const albumsList = albums.map(albumData)
 
     return (
