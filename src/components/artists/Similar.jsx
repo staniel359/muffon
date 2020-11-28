@@ -1,9 +1,10 @@
 import React from 'react'
-import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
+import { v4 as uuid } from 'uuid'
+import { Segment, Dimmer, Loader, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import List from './similar/List'
 import ErrorData from 'partials/ErrorData'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import Table from './show/similar/Table'
+import 'styles/artists/similar/Show.sass'
 
 export default class Similar extends React.PureComponent {
   constructor (props) {
@@ -15,7 +16,20 @@ export default class Similar extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
+    this.setNavSections(this.params().artistName)
     this.getData()
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const { artistName } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistChanged = artistName !== prevArtistName
+
+    if (artistChanged) {
+      this.setNavSections(artistName)
+      this.getData()
+    }
   }
 
   componentWillUnmount () {
@@ -23,18 +37,29 @@ export default class Similar extends React.PureComponent {
     this.request.cancel()
   }
 
-  artistNameEncoded = encodeURIComponent(this.props.artistName)
+  params = () => this.props.match.params
 
-  getData (page) {
+  setNavSections (artistName) {
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistPageLink = `#/artists/${artistNameEncoded}`
+    const navSections = [
+      { key: uuid(), content: 'Artists' },
+      { key: uuid(), content: artistName, href: artistPageLink },
+      { key: uuid(), content: 'Similar', active: true }
+    ]
+
+    this.props.setNavSections(navSections)
+  }
+
+  getData = page => {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
 
     switchLoader(true)
 
-    const url = `/lastfm/artists/${this.artistNameEncoded}/similar_list`
-    const limit = 4
-    const params = { ...{ limit, page } }
+    const url = `/lastfm/artists/${this.params().artistName}/similar`
+    const params = { ...{ page } }
     const cancelToken = this.request.token
     const extra = { ...{ params, cancelToken } }
 
@@ -42,10 +67,13 @@ export default class Similar extends React.PureComponent {
       const { artist } = resp.data
       const { similar } = artist
 
+      const artistName = artist.name
       const totalPages = artist.total_pages
       const error = null
 
       this.setState({ ...{ similar, totalPages, error } })
+
+      this.setNavSections(artistName)
     }
 
     const handleError = error => {
@@ -55,7 +83,7 @@ export default class Similar extends React.PureComponent {
     }
 
     const handleFinish = () => {
-      page && this.props.scrollToSegmentTop('similar')
+      window.scrollTo(0, 0)
 
       switchLoader(false)
     }
@@ -65,6 +93,22 @@ export default class Similar extends React.PureComponent {
       .then(handleSuccess)
       .catch(handleError)
       .then(handleFinish)
+  }
+
+  similarTable () {
+    const { similar, loading } = this.state
+
+    const similarTableData = <Table {...{ similar }} />
+
+    return (
+      <Segment className="artistPageSegment" {...{ loading }}>
+        {similarTableData}
+
+        <Divider />
+
+        {this.pagination()}
+      </Segment>
+    )
   }
 
   pagination () {
@@ -94,34 +138,16 @@ export default class Similar extends React.PureComponent {
   render () {
     const { loading, similar, error } = this.state
 
-    const similarPageLink = `/artists/${this.artistNameEncoded}/similar`
-
-    const similarData = similar && <List {...{ similar }} />
+    const similarData = similar && this.similarTable()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const contentData = similarData || errorData
-
-    const paginationData = similar && this.pagination()
-
-    return (
-      <Segment.Group id="similar" className="artistPageSegmentWrap">
-        <Segment>
-          <Header as="h3">
-            <Router>
-              <Link to={similarPageLink}>Similar</Link>
-            </Router>
-          </Header>
-        </Segment>
-
-        <Segment className="artistPageSegment" {...{ loading }}>
-          {contentData}
-
-          <Divider />
-
-          {paginationData}
-        </Segment>
-      </Segment.Group>
+    const loaderData = loading && (
+      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
+
+    const contentData = similarData || errorData || loaderData
+
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

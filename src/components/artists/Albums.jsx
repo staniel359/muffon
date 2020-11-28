@@ -58,7 +58,7 @@ export default class Albums extends React.PureComponent {
     switchLoader(true)
 
     const url = `/lastfm/artists/${this.params().artistName}/albums`
-    const limit = 12
+    const limit = 15
     const params = { ...{ limit, page } }
     const cancelToken = this.request.token
     const extra = { ...{ params, cancelToken } }

@@ -46,7 +46,6 @@ export default class PictureDimmer extends React.PureComponent {
       arrows: false,
       asNavFor: mainImageSlider,
       draggable: false,
-      infinite: false,
       initialSlide: imageIndex,
       focusOnSelect: true,
       lazyLoad: 'ondemand',

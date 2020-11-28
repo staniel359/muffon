@@ -6,6 +6,7 @@ import ArtistTracks from './artists/Tracks'
 import TrackShow from './artists/tracks/Show'
 import ArtistAlbums from './artists/Albums'
 import AlbumShow from './artists/albums/Show'
+import ArtistSimilar from './artists/Similar'
 import TagShow from './tags/Show'
 import { v4 as uuid } from 'uuid'
 
@@ -22,6 +23,7 @@ export default class Routes extends React.PureComponent {
     const trackShow = props => <TrackShow {...pageProps(props)} />
     const artistAlbums = props => <ArtistAlbums {...pageProps(props)} />
     const albumShow = props => <AlbumShow {...pageProps(props)} />
+    const artistSimilar = props => <ArtistSimilar {...pageProps(props)} />
     const tagShow = props => <TagShow {...pageProps(props)} />
 
     const routes = [
@@ -31,6 +33,7 @@ export default class Routes extends React.PureComponent {
       ['/artists/:artistName/tracks/:trackTitle', trackShow],
       ['/artists/:artistName/albums/', artistAlbums],
       ['/artists/:artistName/albums/:albumTitle', albumShow],
+      ['/artists/:artistName/similar', artistSimilar],
       ['/tags/:tagName', tagShow]
     ]
 
