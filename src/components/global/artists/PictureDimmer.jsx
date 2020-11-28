@@ -42,19 +42,21 @@ export default class PictureDimmer extends React.PureComponent {
     const setImagesSlider = slider => {
       this.setState({ imagesSlider: slider })
     }
+    const imagesToShow = 7
     const imagesSliderProps = {
       arrows: false,
       asNavFor: mainImageSlider,
       draggable: false,
+      infinite: images.length > imagesToShow,
       initialSlide: imageIndex,
       focusOnSelect: true,
       lazyLoad: 'ondemand',
       ref: setImagesSlider,
-      slidesToShow: 7
+      slidesToShow: imagesToShow
     }
 
-    const imageMedium = image => <Image key={uuid()} src={image.medium} />
-    const imagesList = images.map(imageMedium)
+    const imageSmall = image => <Image key={uuid()} src={image.small} />
+    const imagesList = images.map(imageSmall)
 
     const imagesData = (
       <Container className="artistPictureDimmerImagesContainer">
