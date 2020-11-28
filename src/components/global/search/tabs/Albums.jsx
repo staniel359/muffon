@@ -1,10 +1,8 @@
 import React from 'react'
-import { HashRouter as Router } from 'react-router-dom'
-import { List, Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
-import { v4 as uuid } from 'uuid'
+import { Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import Album from './albums/Album'
+import List from './albums/List'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -67,30 +65,33 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums, totalPages, loading } = this.state
+    const { albums } = this.state
     const { hideSearch } = this.props
 
-    const albumData = album => {
-      const key = uuid()
-      const albumsProps = { album, hideSearch, key }
+    const albumsListDataProps = { albums, hideSearch }
+    const albumsListData = <List {...albumsListDataProps} />
 
-      return <Album {...albumsProps} />
-    }
-    const albumsList = albums.map(albumData)
-    const albumsListData = (
-      <List
-        selection
-        size="medium"
-        verticalAlign="middle"
-        className="searchResultsTabContentList"
-        content={albumsList}
-      />
+    return (
+      <Ref innerRef={this.tabRef}>
+        <div className="searchResultsTabContent">
+          {albumsListData}
+
+          <Divider />
+
+          {this.pagination()}
+        </div>
+      </Ref>
     )
+  }
+
+  pagination () {
+    const { totalPages, loading } = this.state
 
     const handlePageChange = (_, { activePage }) => {
       this.setState({ currentPage: activePage })
       this.getData(activePage)
     }
+
     const paginationProps = {
       totalPages: totalPages,
       onPageChange: handlePageChange,
@@ -99,24 +100,11 @@ export default class Albums extends React.PureComponent {
       siblingRange: 0,
       disabled: loading
     }
-    const paginationData = (
+
+    return (
       <div className="searchResultsTabPagination">
         <Pagination {...paginationProps} />
       </div>
-    )
-
-    return (
-      <Router>
-        <Ref innerRef={this.tabRef}>
-          <div className="searchResultsTabContent">
-            {albumsListData}
-
-            <Divider />
-
-            {paginationData}
-          </div>
-        </Ref>
-      </Router>
     )
   }
 

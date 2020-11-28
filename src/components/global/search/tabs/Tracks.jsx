@@ -1,10 +1,8 @@
 import React from 'react'
-import { HashRouter as Router } from 'react-router-dom'
-import { List, Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
+import { Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import { v4 as uuid } from 'uuid'
-import TrackContextWrap from 'global/artists/TrackContextWrap'
+import List from './tracks/List'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -67,32 +65,33 @@ export default class Tracks extends React.PureComponent {
   }
 
   tracksData () {
-    const { tracks, totalPages, loading } = this.state
+    const { tracks } = this.state
     const { hideSearch } = this.props
 
-    const trackData = track => {
-      const artistName = track.artist
-      const artist = true
-      const key = uuid()
-      const trackProps = { track, artistName, artist, hideSearch, key }
+    const tracksListDataProps = { tracks, hideSearch }
+    const tracksListData = <List {...tracksListDataProps} />
 
-      return <TrackContextWrap {...trackProps} />
-    }
-    const tracksList = tracks.map(trackData)
-    const tracksListData = (
-      <List
-        selection
-        size="medium"
-        verticalAlign="middle"
-        className="searchResultsTabContentList"
-        content={tracksList}
-      />
+    return (
+      <Ref innerRef={this.tabRef}>
+        <div className="searchResultsTabContent">
+          {tracksListData}
+
+          <Divider />
+
+          {this.pagination()}
+        </div>
+      </Ref>
     )
+  }
+
+  pagination () {
+    const { totalPages, loading } = this.state
 
     const handlePageChange = (_, { activePage }) => {
       this.setState({ currentPage: activePage })
       this.getData(activePage)
     }
+
     const paginationProps = {
       totalPages: totalPages,
       onPageChange: handlePageChange,
@@ -101,24 +100,11 @@ export default class Tracks extends React.PureComponent {
       siblingRange: 0,
       disabled: loading
     }
-    const paginationData = (
+
+    return (
       <div className="searchResultsTabPagination">
         <Pagination {...paginationProps} />
       </div>
-    )
-
-    return (
-      <Router>
-        <Ref innerRef={this.tabRef}>
-          <div className="searchResultsTabContent">
-            {tracksListData}
-
-            <Divider />
-
-            {paginationData}
-          </div>
-        </Ref>
-      </Router>
     )
   }
 

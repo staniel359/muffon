@@ -1,10 +1,8 @@
 import React from 'react'
-import { HashRouter as Router } from 'react-router-dom'
-import { List, Tab, Segment } from 'semantic-ui-react'
-import { v4 as uuid } from 'uuid'
+import { Tab, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import Artist from './artists/Artist'
+import List from './artists/List'
 
 export default class Artists extends React.PureComponent {
   constructor (props) {
@@ -58,28 +56,10 @@ export default class Artists extends React.PureComponent {
     const { artists } = this.state
     const { hideSearch } = this.props
 
-    const artistData = artist => {
-      const key = uuid()
-      const artistProps = { artist, hideSearch, key }
+    const artistsListDataProps = { artists, hideSearch }
+    const artistsListData = <List {...artistsListDataProps} />
 
-      return <Artist {...artistProps} />
-    }
-    const artistsListData = artists && artists.map(artistData)
-    const artistsList = (
-      <List
-        selection
-        size="medium"
-        verticalAlign="middle"
-        className="searchResultsTabContentList"
-        content={artistsListData}
-      />
-    )
-
-    return (
-      <Router>
-        <div className="searchResultsTabContent">{artistsList}</div>
-      </Router>
-    )
+    return <div className="searchResultsTabContent">{artistsListData}</div>
   }
 
   render () {
