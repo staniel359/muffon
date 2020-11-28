@@ -4,6 +4,7 @@ import Home from './Home'
 import ArtistShow from './artists/Show'
 import ArtistTracks from './artists/Tracks'
 import TrackShow from './artists/tracks/Show'
+import ArtistAlbums from './artists/Albums'
 import AlbumShow from './artists/albums/Show'
 import TagShow from './tags/Show'
 import { v4 as uuid } from 'uuid'
@@ -19,6 +20,7 @@ export default class Routes extends React.PureComponent {
     const artistShow = props => <ArtistShow {...pageProps(props)} />
     const artistTracks = props => <ArtistTracks {...pageProps(props)} />
     const trackShow = props => <TrackShow {...pageProps(props)} />
+    const artistAlbums = props => <ArtistAlbums {...pageProps(props)} />
     const albumShow = props => <AlbumShow {...pageProps(props)} />
     const tagShow = props => <TagShow {...pageProps(props)} />
 
@@ -27,6 +29,7 @@ export default class Routes extends React.PureComponent {
       ['/artists/:artistName', artistShow],
       ['/artists/:artistName/tracks', artistTracks],
       ['/artists/:artistName/tracks/:trackTitle', trackShow],
+      ['/artists/:artistName/albums/', artistAlbums],
       ['/artists/:artistName/albums/:albumTitle', albumShow],
       ['/tags/:tagName', tagShow]
     ]

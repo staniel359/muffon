@@ -74,10 +74,11 @@ export default class Show extends React.PureComponent {
 
   setNavSections (artistName, albumTitle) {
     const artistPageLink = `#/artists/${encodeURIComponent(artistName)}`
+    const albumsPageLink = `#/artists/${encodeURIComponent(artistName)}/albums`
     const navSections = [
       { key: uuid(), content: 'Artists' },
       { key: uuid(), content: artistName, href: artistPageLink },
-      { key: uuid(), content: 'Albums' },
+      { key: uuid(), content: 'Albums', href: albumsPageLink },
       { key: uuid(), content: albumTitle, active: true }
     ]
 

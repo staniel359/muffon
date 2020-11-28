@@ -3,6 +3,7 @@ import { Header, Segment, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './albums/List'
 import ErrorData from 'partials/ErrorData'
+import { HashRouter as Router, Link } from 'react-router-dom'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -22,6 +23,8 @@ export default class Albums extends React.PureComponent {
     this.request.cancel()
   }
 
+  artistNameEncoded = encodeURIComponent(this.props.artistName)
+
   getData (page) {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
@@ -29,8 +32,7 @@ export default class Albums extends React.PureComponent {
 
     switchLoader(true)
 
-    const artistNameEncoded = encodeURIComponent(this.props.artistName)
-    const url = `/lastfm/artists/${artistNameEncoded}/albums`
+    const url = `/lastfm/artists/${this.artistNameEncoded}/albums`
     const limit = 4
     const params = { ...{ limit, page } }
     const cancelToken = this.request.token
@@ -83,6 +85,8 @@ export default class Albums extends React.PureComponent {
     const { loading, albums, error } = this.state
     const { artistName } = this.props
 
+    const albumsPageLink = `/artists/${this.artistNameEncoded}/albums`
+
     const albumsDataProps = { albums, artistName }
     const albumsData = albums && <List {...albumsDataProps} />
 
@@ -95,7 +99,11 @@ export default class Albums extends React.PureComponent {
     return (
       <Segment.Group id="albums" className="artistPageSegmentWrap">
         <Segment>
-          <Header as="h3" content="Top albums" />
+          <Header as="h3">
+            <Router>
+              <Link to={albumsPageLink}>Top albums</Link>
+            </Router>
+          </Header>
         </Segment>
 
         <Segment className="artistPageSegment" {...{ loading, content }} />
