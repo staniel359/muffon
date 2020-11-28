@@ -67,7 +67,7 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums, totalPages } = this.state
+    const { albums, totalPages, loading } = this.state
     const { hideSearch } = this.props
 
     const albumData = album => {
@@ -96,7 +96,8 @@ export default class Albums extends React.PureComponent {
       onPageChange: handlePageChange,
       firstItem: null,
       lastItem: null,
-      siblingRange: 0
+      siblingRange: 0,
+      disabled: loading
     }
     const paginationData = (
       <div className="searchResultsTabPagination">

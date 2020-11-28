@@ -67,7 +67,7 @@ export default class Tracks extends React.PureComponent {
   }
 
   tracksData () {
-    const { tracks, totalPages } = this.state
+    const { tracks, totalPages, loading } = this.state
     const { hideSearch } = this.props
 
     const trackData = track => {
@@ -98,7 +98,8 @@ export default class Tracks extends React.PureComponent {
       onPageChange: handlePageChange,
       firstItem: null,
       lastItem: null,
-      siblingRange: 0
+      siblingRange: 0,
+      disabled: loading
     }
     const paginationData = (
       <div className="searchResultsTabPagination">

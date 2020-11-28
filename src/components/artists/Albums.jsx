@@ -111,7 +111,7 @@ export default class Albums extends React.PureComponent {
   }
 
   pagination () {
-    const { totalPages } = this.state
+    const { totalPages, loading } = this.state
 
     const handlePageChange = (_, { activePage }) => {
       this.setState({ currentPage: activePage })
@@ -123,7 +123,8 @@ export default class Albums extends React.PureComponent {
       onPageChange: handlePageChange,
       firstItem: null,
       lastItem: null,
-      siblingRange: 0
+      siblingRange: 0,
+      disabled: loading
     }
 
     return <Pagination {...paginationProps} />
