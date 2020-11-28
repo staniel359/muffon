@@ -1,10 +1,9 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { Segment, Dimmer, Loader, List, Pagination } from 'semantic-ui-react'
+import { Segment, Dimmer, Loader, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
-import TrackContextWrap from 'global/artists/TrackContextWrap'
 import ErrorData from 'partials/ErrorData'
-import { HashRouter as Router } from 'react-router-dom'
+import List from './tracks/List'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -76,7 +75,9 @@ export default class Tracks extends React.PureComponent {
       const totalPages = artist.total_pages
       const error = null
 
-      this.setState({ ...{ tracks, topTrackCount, artistName, totalPages, error } })
+      this.setState({
+        ...{ tracks, topTrackCount, artistName, totalPages, error }
+      })
 
       this.setNavSections(artistName)
 
@@ -99,22 +100,15 @@ export default class Tracks extends React.PureComponent {
   tracksList () {
     const { tracks, loading, artistName, topTrackCount } = this.state
 
-    const trackData = track => {
-      const key = uuid()
-      const trackProps = { track, artistName, topTrackCount, key }
-
-      return <TrackContextWrap {...trackProps} />
-    }
-    const tracksList = tracks.map(trackData)
+    const tracksListProps = { tracks, artistName, topTrackCount }
+    const tracksListData = <List {...tracksListProps} />
 
     const paginationData = tracks && this.pagination()
 
     return (
       <Segment.Group>
         <Segment className="artistPageSegment" {...{ loading }}>
-          <Router>
-            <List selection content={tracksList} />
-          </Router>
+          {tracksListData}
         </Segment>
 
         <Segment className="artistPagePaginationWrap">{paginationData}</Segment>

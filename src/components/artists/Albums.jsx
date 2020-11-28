@@ -4,6 +4,7 @@ import { Segment, Dimmer, Loader, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import List from './albums/List'
+
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
