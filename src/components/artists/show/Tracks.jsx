@@ -40,20 +40,22 @@ export default class Tracks extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { artist } = resp.data
+      const { tracks } = artist
 
-      const firstTrackCount = artist.tracks[0].listeners_count
-      const topTrackCount = this.state.topTrackCount || firstTrackCount
+      const pageTopTrackCount =
+        page > 1 ? this.state.topTrackCount : tracks[0].listeners_count
+      const topTrackCount = tracks.length > 0 ? pageTopTrackCount : 0
 
-      this.setState({
-        tracks: artist.tracks,
-        topTrackCount: topTrackCount,
-        totalPages: artist.total_pages,
-        error: null
-      })
+      const totalPages = artist.total_pages
+      const error = null
+
+      this.setState({ ...{ tracks, topTrackCount, totalPages, error } })
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, tracks: null })
+      const tracks = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, tracks } })
     }
 
     axios

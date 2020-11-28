@@ -4,6 +4,7 @@ import { Segment, Dimmer, Loader, List, Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import TrackContextWrap from 'global/artists/TrackContextWrap'
 import ErrorData from 'partials/ErrorData'
+import { HashRouter as Router } from 'react-router-dom'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -15,15 +16,20 @@ export default class Tracks extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
+    this.setNavSections(this.params().artistName)
     this.getData()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const artistName = props => props.match.params.artistName
+    const { artistName } = this.params()
 
-    const artistChanged = artistName(this.props) !== artistName(prevProps)
+    const prevArtistName = prevProps.match.params.artistName
+    const artistChanged = artistName !== prevArtistName
 
-    artistChanged && this.getData()
+    if (artistChanged) {
+      this.setNavSections(artistName)
+      this.getData()
+    }
   }
 
   componentWillUnmount () {
@@ -31,54 +37,11 @@ export default class Tracks extends React.PureComponent {
     this.request.cancel()
   }
 
-  getData = page => {
-    const artistNameEncoded = this.props.match.params.artistName
-
-    this.setNavSections(decodeURIComponent(artistNameEncoded))
-
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
-    }
-
-    switchLoader(true)
-
-    const url = `/lastfm/artists/${artistNameEncoded}/tracks`
-    const limit = 50
-    const params = { ...{ limit, page } }
-    const cancelToken = this.request.token
-    const extra = { ...{ params, cancelToken } }
-
-    const handleSuccess = resp => {
-      const { artist } = resp.data
-
-      const firstTrackCount = artist.tracks[0].listeners_count
-      const topTrackCount = page ? this.state.topTrackCount : firstTrackCount
-
-      this.setState({
-        tracks: artist.tracks,
-        topTrackCount: topTrackCount,
-        totalPages: artist.total_pages,
-        error: null
-      })
-
-      this.setNavSections(artist.name)
-
-      window.scrollTo(0, 0)
-    }
-
-    const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, tracks: null })
-    }
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(() => switchLoader(false))
-  }
+  params = () => this.props.match.params
 
   setNavSections (artistName) {
-    const artistPageLink = `#/artists/${encodeURIComponent(artistName)}`
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistPageLink = `#/artists/${artistNameEncoded}`
     const navSections = [
       { key: uuid(), content: 'Artists' },
       { key: uuid(), content: artistName, href: artistPageLink },
@@ -88,11 +51,55 @@ export default class Tracks extends React.PureComponent {
     this.props.setNavSections(navSections)
   }
 
+  getData = page => {
+    const switchLoader = loading => {
+      this._isMounted && this.setState({ ...{ loading } })
+    }
+
+    switchLoader(true)
+
+    const url = `/lastfm/artists/${this.params().artistName}/tracks`
+    const limit = 50
+    const params = { ...{ limit, page } }
+    const cancelToken = this.request.token
+    const extra = { ...{ params, cancelToken } }
+
+    const handleSuccess = resp => {
+      const { artist } = resp.data
+      const { tracks } = artist
+
+      const pageTopTrackCount =
+        page > 1 ? this.state.topTrackCount : tracks[0].listeners_count
+      const topTrackCount = tracks.length > 0 ? pageTopTrackCount : 0
+
+      const artistName = artist.name
+      const totalPages = artist.total_pages
+      const error = null
+
+      this.setState({ ...{ tracks, topTrackCount, artistName, totalPages, error } })
+
+      this.setNavSections(artistName)
+
+      window.scrollTo(0, 0)
+    }
+
+    const handleError = error => {
+      const tracks = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, tracks } })
+    }
+
+    axios
+      .get(url, extra)
+      .then(handleSuccess)
+      .catch(handleError)
+      .then(() => switchLoader(false))
+  }
+
   tracksList () {
-    const { tracks, loading, topTrackCount } = this.state
+    const { tracks, loading, artistName, topTrackCount } = this.state
 
     const trackData = track => {
-      const artistName = decodeURIComponent(this.props.match.params.artistName)
       const key = uuid()
       const trackProps = { track, artistName, topTrackCount, key }
 
@@ -104,8 +111,10 @@ export default class Tracks extends React.PureComponent {
 
     return (
       <Segment.Group>
-        <Segment {...{ loading }}>
-          <List selection content={tracksList} />
+        <Segment className="artistPageSegment" {...{ loading }}>
+          <Router>
+            <List selection content={tracksList} />
+          </Router>
         </Segment>
 
         <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
