@@ -1,9 +1,9 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { Segment, Dimmer, Loader, Pagination } from 'semantic-ui-react'
+import { Segment, Dimmer, Loader, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import List from './tracks/List'
+import List from './show/tracks/List'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -80,8 +80,6 @@ export default class Tracks extends React.PureComponent {
       })
 
       this.setNavSections(artistName)
-
-      window.scrollTo(0, 0)
     }
 
     const handleError = error => {
@@ -90,11 +88,17 @@ export default class Tracks extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ ...{ error, tracks } })
     }
 
+    const handleFinish = () => {
+      window.scrollTo(0, 0)
+
+      switchLoader(false)
+    }
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   tracksList () {
@@ -103,16 +107,14 @@ export default class Tracks extends React.PureComponent {
     const tracksListProps = { tracks, artistName, topTrackCount }
     const tracksListData = <List {...tracksListProps} />
 
-    const paginationData = tracks && this.pagination()
-
     return (
-      <Segment.Group>
-        <Segment className="artistPageSegment" {...{ loading }}>
-          {tracksListData}
-        </Segment>
+      <Segment className="artistPageSegment" {...{ loading }}>
+        {tracksListData}
 
-        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
-      </Segment.Group>
+        <Divider />
+
+        {this.pagination()}
+      </Segment>
     )
   }
 
@@ -133,7 +135,11 @@ export default class Tracks extends React.PureComponent {
       disabled: loading
     }
 
-    return <Pagination {...paginationProps} />
+    return (
+      <div className="artistPagePaginationWrap">
+        <Pagination {...paginationProps} />
+      </div>
+    )
   }
 
   render () {
@@ -147,8 +153,8 @@ export default class Tracks extends React.PureComponent {
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
-    const content = tracksData || errorData || loaderData
+    const contentData = tracksData || errorData || loaderData
 
-    return <React.Fragment>{content}</React.Fragment>
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

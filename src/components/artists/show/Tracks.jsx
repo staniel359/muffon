@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment, Pagination } from 'semantic-ui-react'
+import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './tracks/List'
 import ErrorData from 'partials/ErrorData'
@@ -58,20 +58,23 @@ export default class Tracks extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ ...{ error, tracks } })
     }
 
+    const handleFinish = () => {
+      page && this.props.scrollToSegmentTop('tracks')
+
+      switchLoader(false)
+    }
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   pagination () {
     const { totalPages, loading } = this.state
-    const { scrollToSegmentTop } = this.props
 
     const handlePageChange = (_, { activePage }) => {
-      scrollToSegmentTop('tracks')
-
       this.setState({ currentPage: activePage })
       this.getData(activePage)
     }
@@ -85,7 +88,11 @@ export default class Tracks extends React.PureComponent {
       disabled: loading
     }
 
-    return <Pagination {...paginationProps} />
+    return (
+      <div className="artistPagePaginationWrap">
+        <Pagination {...paginationProps} />
+      </div>
+    )
   }
 
   render () {
@@ -99,7 +106,7 @@ export default class Tracks extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = tracksData || errorData
+    const contentData = tracksData || errorData
 
     const paginationData = tracks && this.pagination()
 
@@ -113,9 +120,13 @@ export default class Tracks extends React.PureComponent {
           </Header>
         </Segment>
 
-        <Segment className="artistPageSegment" {...{ loading, content }} />
+        <Segment className="artistPageSegment" {...{ loading }}>
+          {contentData}
 
-        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
+          <Divider />
+
+          {paginationData}
+        </Segment>
       </Segment.Group>
     )
   }

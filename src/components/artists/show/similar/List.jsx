@@ -8,18 +8,19 @@ export default class List extends React.PureComponent {
   render () {
     const { similar } = this.props
 
-    const similarData = artistName => {
+    const similarArtistData = artistName => {
       const key = uuid()
       const similarArtistProps = { artistName, key }
 
       return <SimilarArtist {...similarArtistProps} />
     }
-    const similarList = similar.map(similarData)
-
-    return (
+    const similarListData = similar.map(similarArtistData)
+    const similarData = similar.length > 0 && (
       <Router>
-        <Card.Group itemsPerRow={4}>{similarList}</Card.Group>
+        <Card.Group itemsPerRow={4}>{similarListData}</Card.Group>
       </Router>
     )
+
+    return <React.Fragment>{similarData}</React.Fragment>
   }
 }

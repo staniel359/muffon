@@ -14,12 +14,13 @@ export default class TracksList extends React.PureComponent {
 
       return <TrackContextWrap {...trackProps} />
     }
-    const tracksList = tracks.map(trackData)
-
-    return (
+    const tracksListData = tracks.map(trackData)
+    const tracksData = tracks.length > 0 && (
       <Router>
-        <List selection content={tracksList} />
+        <List selection content={tracksListData} />
       </Router>
     )
+
+    return <React.Fragment>{tracksData}</React.Fragment>
   }
 }

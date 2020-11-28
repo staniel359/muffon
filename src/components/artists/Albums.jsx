@@ -1,9 +1,9 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { Segment, Dimmer, Loader, Pagination } from 'semantic-ui-react'
+import { Segment, Dimmer, Loader, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import List from './albums/List'
+import List from './show/albums/List'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -74,8 +74,6 @@ export default class Albums extends React.PureComponent {
       this.setState({ ...{ artistName, albums, totalPages, error } })
 
       this.setNavSections(artistName)
-
-      window.scrollTo(0, 0)
     }
 
     const handleError = error => {
@@ -84,29 +82,34 @@ export default class Albums extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ ...{ error, albums } })
     }
 
+    const handleFinish = () => {
+      window.scrollTo(0, 0)
+
+      switchLoader(false)
+    }
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   albumsList () {
     const { albums, loading, artistName } = this.state
 
-    const albumsListProps = { albums, artistName }
+    const itemsPerRow = 3
+    const albumsListProps = { albums, artistName, itemsPerRow }
     const albumsListData = <List {...albumsListProps} />
 
-    const paginationData = albums && this.pagination()
-
     return (
-      <Segment.Group>
-        <Segment className="artistPageSegment" {...{ loading }}>
-          {albumsListData}
-        </Segment>
+      <Segment className="artistPageSegment" {...{ loading }}>
+        {albumsListData}
 
-        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
-      </Segment.Group>
+        <Divider />
+
+        {this.pagination()}
+      </Segment>
     )
   }
 
@@ -127,7 +130,11 @@ export default class Albums extends React.PureComponent {
       disabled: loading
     }
 
-    return <Pagination {...paginationProps} />
+    return (
+      <div className="artistPagePaginationWrap">
+        <Pagination {...paginationProps} />
+      </div>
+    )
   }
 
   render () {
@@ -141,8 +148,8 @@ export default class Albums extends React.PureComponent {
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
-    const content = albumsData || errorData || loaderData
+    const contentData = albumsData || errorData || loaderData
 
-    return <React.Fragment>{content}</React.Fragment>
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

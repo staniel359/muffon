@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment, Pagination } from 'semantic-ui-react'
+import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './albums/List'
 import ErrorData from 'partials/ErrorData'
@@ -40,32 +40,37 @@ export default class Albums extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { artist } = resp.data
+      const { albums } = artist
 
-      this.setState({
-        albums: artist.albums,
-        totalPages: artist.total_pages,
-        error: null
-      })
+      const totalPages = artist.total_pages
+      const error = null
+
+      this.setState({ ...{ albums, totalPages, error } })
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, albums: null })
+      const albums = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, albums } })
+    }
+
+    const handleFinish = () => {
+      page && this.props.scrollToSegmentTop('albums')
+
+      switchLoader(false)
     }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   pagination () {
     const { totalPages, loading } = this.state
-    const { scrollToSegmentTop } = this.props
 
     const handlePageChange = (_, { activePage }) => {
-      scrollToSegmentTop('albums')
-
       this.setState({ currentPage: activePage })
       this.getData(activePage)
     }
@@ -79,7 +84,11 @@ export default class Albums extends React.PureComponent {
       disabled: loading
     }
 
-    return <Pagination {...paginationProps} />
+    return (
+      <div className="artistPagePaginationWrap">
+        <Pagination {...paginationProps} />
+      </div>
+    )
   }
 
   render () {
@@ -88,12 +97,13 @@ export default class Albums extends React.PureComponent {
 
     const albumsPageLink = `/artists/${this.artistNameEncoded}/albums`
 
-    const albumsDataProps = { albums, artistName }
+    const itemsPerRow = 2
+    const albumsDataProps = { albums, artistName, itemsPerRow }
     const albumsData = albums && <List {...albumsDataProps} />
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = albumsData || errorData
+    const contentData = albumsData || errorData
 
     const paginationData = albums && this.pagination()
 
@@ -107,9 +117,13 @@ export default class Albums extends React.PureComponent {
           </Header>
         </Segment>
 
-        <Segment className="artistPageSegment" {...{ loading, content }} />
+        <Segment className="artistPageSegment" {...{ loading }}>
+          {contentData}
 
-        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
+          <Divider />
+
+          {paginationData}
+        </Segment>
       </Segment.Group>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment, Pagination } from 'semantic-ui-react'
+import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './similar/List'
 import ErrorData from 'partials/ErrorData'
@@ -38,32 +38,37 @@ export default class Similar extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { artist } = resp.data
+      const { similar } = artist
 
-      this.setState({
-        similar: artist.similar,
-        totalPages: artist.total_pages,
-        error: null
-      })
+      const totalPages = artist.total_pages
+      const error = null
+
+      this.setState({ ...{ similar, totalPages, error } })
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, similar: null })
+      const similar = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, similar } })
+    }
+
+    const handleFinish = () => {
+      page && this.props.scrollToSegmentTop('similar')
+
+      switchLoader(false)
     }
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   pagination () {
     const { totalPages, loading } = this.state
-    const { scrollToSegmentTop } = this.props
 
     const handlePageChange = (_, { activePage }) => {
-      scrollToSegmentTop('similar')
-
       this.setState({ currentPage: activePage })
       this.getData(activePage)
     }
@@ -77,7 +82,11 @@ export default class Similar extends React.PureComponent {
       disabled: loading
     }
 
-    return <Pagination {...paginationProps} />
+    return (
+      <div className="artistPagePaginationWrap">
+        <Pagination {...paginationProps} />
+      </div>
+    )
   }
 
   render () {
@@ -87,7 +96,7 @@ export default class Similar extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = similarData || errorData
+    const contentData = similarData || errorData
 
     const paginationData = similar && this.pagination()
 
@@ -97,9 +106,13 @@ export default class Similar extends React.PureComponent {
           <Header as="h3" content="Similar" />
         </Segment>
 
-        <Segment className="artistPageSegment" {...{ loading, content }} />
+        <Segment className="artistPageSegment" {...{ loading }}>
+          {contentData}
 
-        <Segment className="artistPagePaginationWrap">{paginationData}</Segment>
+          <Divider />
+
+          {paginationData}
+        </Segment>
       </Segment.Group>
     )
   }
