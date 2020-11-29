@@ -1,5 +1,4 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import { Segment } from 'semantic-ui-react'
 
 export default class Home extends React.PureComponent {
@@ -8,7 +7,7 @@ export default class Home extends React.PureComponent {
   }
 
   setNavSections () {
-    const navSections = [{ key: uuid(), content: 'Home' }]
+    const navSections = [{ content: 'Home' }]
 
     this.props.setNavSections(navSections)
   }

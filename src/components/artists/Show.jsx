@@ -3,7 +3,6 @@ import LeftColumn from './show/columns/Left'
 import RightColumn from './show/columns/Right'
 import ErrorData from 'partials/ErrorData'
 import { Dimmer, Loader } from 'semantic-ui-react'
-import { v4 as uuid } from 'uuid'
 import axios from 'axios'
 import 'styles/artists/Show.sass'
 
@@ -68,8 +67,8 @@ export default class Show extends React.PureComponent {
 
   setNavSections (artistName) {
     const navSections = [
-      { key: uuid(), content: 'Artists' },
-      { key: uuid(), content: artistName, active: true }
+      { content: 'Artists' },
+      { content: artistName, active: true }
     ]
 
     this.props.setNavSections(navSections)

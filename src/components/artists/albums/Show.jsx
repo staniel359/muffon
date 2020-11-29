@@ -1,5 +1,4 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import { Segment, Dimmer, Loader } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
@@ -76,10 +75,10 @@ export default class Show extends React.PureComponent {
     const artistPageLink = `#/artists/${encodeURIComponent(artistName)}`
     const albumsPageLink = `#/artists/${encodeURIComponent(artistName)}/albums`
     const navSections = [
-      { key: uuid(), content: 'Artists' },
-      { key: uuid(), content: artistName, href: artistPageLink },
-      { key: uuid(), content: 'Albums', href: albumsPageLink },
-      { key: uuid(), content: albumTitle, active: true }
+      { content: 'Artists' },
+      { content: artistName, href: artistPageLink },
+      { content: 'Albums', href: albumsPageLink },
+      { content: albumTitle, active: true }
     ]
 
     this.props.setNavSections(navSections)

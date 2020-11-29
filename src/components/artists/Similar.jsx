@@ -1,5 +1,4 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import { Segment, Dimmer, Loader, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
@@ -43,9 +42,9 @@ export default class Similar extends React.PureComponent {
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistPageLink = `#/artists/${artistNameEncoded}`
     const navSections = [
-      { key: uuid(), content: 'Artists' },
-      { key: uuid(), content: artistName, href: artistPageLink },
-      { key: uuid(), content: 'Similar', active: true }
+      { content: 'Artists' },
+      { content: artistName, href: artistPageLink },
+      { content: 'Similar', active: true }
     ]
 
     this.props.setNavSections(navSections)
