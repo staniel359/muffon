@@ -1,7 +1,6 @@
 import React from 'react'
 import { Container, Sidebar, Segment } from 'semantic-ui-react'
-import PlayerContext from 'contexts/PlayerContext'
-import AudioContainer from './audio/AudioContainer'
+import AudioContainerContextWrap from './audio/AudioContainerContextWrap'
 import Controls from './audio/Controls'
 import TimeBarContextWrap from './audio/TimeBarContextWrap'
 import Track from './Track'
@@ -17,42 +16,11 @@ export default class Panel extends React.PureComponent {
       </div>
     )
 
-    const audioContainerData = (
-      <PlayerContext.Consumer>
-        {context => {
-          const {
-            repeat,
-            handleLoadStart,
-            handlePlay,
-            handlePause,
-            handleProgress,
-            handleTimeUpdate,
-            handleVolumeChange,
-            handleAudioEnd
-          } = context
-          const audioContainerProps = {
-            repeat,
-            handleLoadStart,
-            handlePlay,
-            handlePause,
-            handleProgress,
-            handleTimeUpdate,
-            handleVolumeChange,
-            handleAudioEnd
-          }
-
-          return <AudioContainer {...audioContainerProps} />
-        }}
-      </PlayerContext.Consumer>
-    )
-
-    const timeBarData = <TimeBarContextWrap />
-
     const audioData = (
       <div className="playerPanelRightColumn">
-        {audioContainerData}
+        <AudioContainerContextWrap />
         <Controls />
-        {timeBarData}
+        <TimeBarContextWrap />
       </div>
     )
 
@@ -70,9 +38,8 @@ export default class Panel extends React.PureComponent {
         direction="bottom"
         animation="overlay"
         className="playerPanel"
-      >
-        {playerPanelContainer}
-      </Sidebar>
+        content={playerPanelContainer}
+      />
     )
   }
 }

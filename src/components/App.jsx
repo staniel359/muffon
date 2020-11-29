@@ -2,9 +2,8 @@ import React from 'react'
 import Routes from './Routes'
 import Search from 'global/Search'
 import Navbar from 'global/Navbar'
-import PlayerPanel from 'global/player/Panel'
+import PlayerPanelContextWrap from 'global/player/PanelContextWrap'
 import PlayerProvider from 'contexts/PlayerProvider'
-import PlayerContext from 'contexts/PlayerContext'
 import Mousetrap from 'mousetrap'
 import { Container } from 'semantic-ui-react'
 import { HashRouter as Router } from 'react-router-dom'
@@ -21,44 +20,36 @@ export default class App extends React.PureComponent {
     Mousetrap.bind('esc', this.hideSearch)
   }
 
-  toggleSearch = () => this.setState({ searchActive: !this.state.searchActive })
+  toggleSearch = () => {
+    const searchActive = !this.state.searchActive
+
+    this.setState({ ...{ searchActive } })
+  }
 
   hideSearch = () => this.setState({ searchActive: false })
 
-  setNavSections = navSections => {
-    this.setState({ navSections: navSections })
-  }
+  setNavSections = navSections => this.setState({ ...{ navSections } })
 
   render () {
     const { navSections, searchActive } = this.state
     const { setNavSections, hideSearch } = this
 
-    const navbarData = <Navbar {...{ navSections }} />
-
-    const mainContainerData = (
-      <Container className="mainContainer">
-        {<Routes {...{ setNavSections }} />}
-
-        {<Search {...{ searchActive, hideSearch }} />}
-      </Container>
-    )
-
-    const playerPanelData = (
-      <PlayerContext.Consumer>
-        {context => {
-          const { currentTrack } = context
-
-          return <PlayerPanel {...{ currentTrack }} />
-        }}
-      </PlayerContext.Consumer>
-    )
+    const navbarProps = { navSections }
+    const routesProps = { setNavSections }
+    const searchProps = { searchActive, hideSearch }
 
     return (
       <Router>
         <PlayerProvider>
-          {navbarData}
-          {mainContainerData}
-          {playerPanelData}
+          <Navbar {...navbarProps} />
+
+          <Container className="mainContainer">
+            <Routes {...routesProps} />
+
+            <Search {...searchProps} />
+          </Container>
+
+          <PlayerPanelContextWrap />
         </PlayerProvider>
       </Router>
     )
