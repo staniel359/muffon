@@ -58,7 +58,7 @@ export default class Albums extends React.PureComponent {
     switchLoader(true)
 
     const url = `/lastfm/artists/${this.params().artistName}/albums`
-    const limit = 15
+    const limit = 20
     const params = { ...{ limit, page } }
     const cancelToken = this.request.token
     const extra = { ...{ params, cancelToken } }
@@ -98,7 +98,7 @@ export default class Albums extends React.PureComponent {
   albumsList () {
     const { albums, loading, artistName } = this.state
 
-    const itemsPerRow = 3
+    const itemsPerRow = 4
     const albumsListProps = { albums, artistName, itemsPerRow }
     const albumsListData = <List {...albumsListProps} />
 

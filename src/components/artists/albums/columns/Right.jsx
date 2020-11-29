@@ -11,7 +11,7 @@ export default class Right extends React.PureComponent {
 
     const albumTitle = info.title
     const albumTitleData = (
-      <Header as="h1" className="albumPageAlbumTitle" content={albumTitle} />
+      <Header as="h2" className="albumPageAlbumTitle" content={albumTitle} />
     )
 
     const artistPageLink = `/artists/${params.artistName}`
@@ -20,6 +20,13 @@ export default class Right extends React.PureComponent {
       <Header as="h3" className="albumPageArtistName">
         <Link to={artistPageLink}>{artistName}</Link>
       </Header>
+    )
+
+    const headerData = (
+      <div className="albumPageHeader">
+        {albumTitleData}
+        {artistNameData}
+      </div>
     )
 
     const tagData = tag => (
@@ -61,8 +68,7 @@ export default class Right extends React.PureComponent {
 
     return (
       <div className="albumPageRightColumn">
-        {albumTitleData}
-        {artistNameData}
+        {headerData}
         {tagsData}
         {countersData}
 
