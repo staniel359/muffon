@@ -5,14 +5,14 @@
   margin-bottom: 20px
 
 .similarTableItemImage
-  min-width: 175px
-  max-width: 175px !important
+  width: 175px
+  margin-right: 1em
   img
     border: 1px solid $semanticGray
 
 .similarTableItemContent
-  @extend .w100
-  margin: 0 0 0 1em !important
+  @extend .margin0
+  width: calc(100% - 175px - 1em)
 
 .similarTableItemArtistName
   margin-bottom: 5px !important

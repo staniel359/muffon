@@ -7,13 +7,16 @@ export default class TableSimilarArtist extends React.PureComponent {
   render () {
     const { artist } = this.props
 
-    const src = artist.images.medium
-    const imageData = (
-      <Image wrapped rounded className="similarTableItemImage" {...{ src }} />
-    )
-
     const artistNameEncoded = encodeURIComponent(artist.name)
     const similarArtistPageLink = `/artists/${artistNameEncoded}`
+
+    const src = artist.images.medium
+    const imageData = (
+      <Link className="similarTableItemImage" to={similarArtistPageLink}>
+        <Image rounded {...{ src }} />
+      </Link>
+    )
+
     const nameData = (
       <Header as="h2" className="similarTableItemArtistName">
         <Link to={similarArtistPageLink}>{artist.name}</Link>
