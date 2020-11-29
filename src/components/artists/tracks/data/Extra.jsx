@@ -30,10 +30,14 @@ export default class Extra extends React.PureComponent {
       </Label.Group>
     )
 
-    const descriptionData = <div>{track.description || 'No description.'}</div>
+    const descriptionData = (
+      <div className="trackPageDescription">
+        {track.description || 'No description.'}
+      </div>
+    )
 
     return (
-      <div className="trackPageItemExtra">
+      <div className="trackPageExtra">
         {tagsData}
         {countersData}
 
