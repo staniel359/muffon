@@ -7,6 +7,7 @@ import PlayerProvider from 'contexts/PlayerProvider'
 import PlayerContext from 'contexts/PlayerContext'
 import Mousetrap from 'mousetrap'
 import { Container } from 'semantic-ui-react'
+import { HashRouter as Router } from 'react-router-dom'
 import 'styles/App.sass'
 
 export default class App extends React.PureComponent {
@@ -32,24 +33,34 @@ export default class App extends React.PureComponent {
     const { navSections, searchActive } = this.state
     const { setNavSections, hideSearch } = this
 
+    const navbarData = <Navbar {...{ navSections }} />
+
+    const mainContainerData = (
+      <Container className="mainContainer">
+        {<Routes {...{ setNavSections }} />}
+
+        {<Search {...{ searchActive, hideSearch }} />}
+      </Container>
+    )
+
+    const playerPanelData = (
+      <PlayerContext.Consumer>
+        {context => {
+          const { currentTrack } = context
+
+          return <PlayerPanel {...{ currentTrack }} />
+        }}
+      </PlayerContext.Consumer>
+    )
+
     return (
-      <PlayerProvider>
-        {<Navbar {...{ navSections }} />}
-
-        <Container className="mainContainer">
-          {<Routes {...{ setNavSections }} />}
-
-          {<Search {...{ searchActive, hideSearch }} />}
-        </Container>
-
-        <PlayerContext.Consumer>
-          {context => {
-            const { currentTrack } = context
-
-            return <PlayerPanel {...{ currentTrack }} />
-          }}
-        </PlayerContext.Consumer>
-      </PlayerProvider>
+      <Router>
+        <PlayerProvider>
+          {navbarData}
+          {mainContainerData}
+          {playerPanelData}
+        </PlayerProvider>
+      </Router>
     )
   }
 }

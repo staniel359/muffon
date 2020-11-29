@@ -3,7 +3,7 @@ import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './tracks/List'
 import ErrorData from 'partials/ErrorData'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -114,9 +114,7 @@ export default class Tracks extends React.PureComponent {
       <Segment.Group id="tracks" className="artistPageSegmentWrap">
         <Segment>
           <Header as="h3">
-            <Router>
-              <Link to={tracksPageLink}>Top tracks</Link>
-            </Router>
+            <Link to={tracksPageLink}>Top tracks</Link>
           </Header>
         </Segment>
 

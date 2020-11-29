@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { Segment, Image, Header, Label } from 'semantic-ui-react'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class TableSimilarArtist extends React.PureComponent {
   render () {
@@ -26,12 +26,10 @@ export default class TableSimilarArtist extends React.PureComponent {
     const tagsData = artist.tags.map(tagData)
     const tagsViewMoreData = <Label as="a" content="..." />
     const tagsListData = (
-      <Router>
-        <Label.Group size="large">
-          {tagsData}
-          {tagsViewMoreData}
-        </Label.Group>
-      </Router>
+      <Label.Group size="large">
+        {tagsData}
+        {tagsViewMoreData}
+      </Label.Group>
     )
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')

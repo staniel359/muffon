@@ -3,7 +3,7 @@ import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './albums/List'
 import ErrorData from 'partials/ErrorData'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -111,9 +111,7 @@ export default class Albums extends React.PureComponent {
       <Segment.Group id="albums" className="artistPageSegmentWrap">
         <Segment>
           <Header as="h3">
-            <Router>
-              <Link to={albumsPageLink}>Top albums</Link>
-            </Router>
+            <Link to={albumsPageLink}>Top albums</Link>
           </Header>
         </Segment>
 

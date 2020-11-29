@@ -2,7 +2,6 @@ import React from 'react'
 import { List } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import Album from './Album'
-import { HashRouter as Router } from 'react-router-dom'
 
 export default class AlbumsList extends React.PureComponent {
   render () {
@@ -17,15 +16,13 @@ export default class AlbumsList extends React.PureComponent {
     const albumsListData = albums.map(albumData)
 
     return (
-      <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="searchResultsTabContentList"
-          content={albumsListData}
-        />
-      </Router>
+      <List
+        selection
+        size="medium"
+        verticalAlign="middle"
+        className="searchResultsTabContentList"
+        content={albumsListData}
+      />
     )
   }
 }

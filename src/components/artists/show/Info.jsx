@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { Segment, Header, Label, Divider } from 'semantic-ui-react'
-import { HashRouter as Router, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 
@@ -68,13 +68,11 @@ export default class Info extends React.PureComponent {
     )
     const tagsListData = tags.map(tagData)
     const tagsData = (
-      <Router>
-        <Label.Group size="large">
-          {tagsListData}
+      <Label.Group size="large">
+        {tagsListData}
 
-          <Label as="a" content="..." />
-        </Label.Group>
-      </Router>
+        <Label as="a" content="..." />
+      </Label.Group>
     )
 
     const listenersCount = info.listeners_count.toLocaleString('eu')

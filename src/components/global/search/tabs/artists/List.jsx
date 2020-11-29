@@ -1,5 +1,4 @@
 import React from 'react'
-import { HashRouter as Router } from 'react-router-dom'
 import { List } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import Artist from './Artist'
@@ -17,15 +16,13 @@ export default class ArtistsList extends React.PureComponent {
     const artistsListData = artists && artists.map(artistData)
 
     return (
-      <Router>
-        <List
-          selection
-          size="medium"
-          verticalAlign="middle"
-          className="searchResultsTabContentList"
-          content={artistsListData}
-        />
-      </Router>
+      <List
+        selection
+        size="medium"
+        verticalAlign="middle"
+        className="searchResultsTabContentList"
+        content={artistsListData}
+      />
     )
   }
 }
