@@ -20,7 +20,7 @@ export default class ListSimilarArtist extends React.PureComponent {
       >
         <div />
 
-        <Picture border medium {...{ artistName }} />
+        <Picture border size="small" {...{ artistName }} />
 
         <Header as="h4" content={artistName} />
       </Card>

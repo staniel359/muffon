@@ -75,7 +75,7 @@ export default class Picture extends React.PureComponent {
     const showDimmer = () => this.setState({ dimmerActive: true })
     const artistImageDimmable = image => {
       const key = uuid()
-      const src = image.large
+      const src = image.medium
       const style = { cursor: 'pointer' }
 
       return (
@@ -103,7 +103,7 @@ export default class Picture extends React.PureComponent {
   }
 
   artistImageBasic () {
-    const src = this.state.images[0].medium
+    const src = this.state.images[0][this.props.size]
 
     return <Image rounded wrapped className="imageWrapBordered" {...{ src }} />
   }

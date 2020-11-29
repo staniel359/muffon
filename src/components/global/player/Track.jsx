@@ -8,10 +8,11 @@ import { v4 as uuid } from 'uuid'
 export default class Track extends React.PureComponent {
   render () {
     const track = this.props.currentTrack
+    const artistName = track.artist
 
     const imageData = (
       <div className="playerPanelTrackImage">
-        <Picture artistName={track.artist} />
+        <Picture size="extrasmall" {...{ artistName }} />
       </div>
     )
 
