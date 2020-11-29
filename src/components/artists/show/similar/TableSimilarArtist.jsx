@@ -24,7 +24,9 @@ export default class TableSimilarArtist extends React.PureComponent {
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
     const tagsData = artist.tags.map(tagData)
-    const tagsViewMoreData = <Label as="a" content="..." />
+    const tagsViewMoreData = artist.tags.length > 0 && (
+      <Label as="a" content="..." />
+    )
     const tagsListData = (
       <Label.Group size="large">
         {tagsData}

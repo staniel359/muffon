@@ -3,7 +3,7 @@ import { Container, Sidebar, Segment } from 'semantic-ui-react'
 import PlayerContext from 'contexts/PlayerContext'
 import AudioContainer from './audio/AudioContainer'
 import Controls from './audio/Controls'
-import TimeBar from './audio/TimeBar'
+import TimeBarContextWrap from './audio/TimeBarContextWrap'
 import Track from './Track'
 import 'styles/global/Player.sass'
 
@@ -46,30 +46,7 @@ export default class Panel extends React.PureComponent {
       </PlayerContext.Consumer>
     )
 
-    const timeBarData = (
-      <PlayerContext.Consumer>
-        {context => {
-          const {
-            secondsLoaded,
-            duration,
-            currentTime,
-            changeTime,
-            startTimeChange,
-            endTimeChange
-          } = context
-          const timeBarProps = {
-            secondsLoaded,
-            duration,
-            currentTime,
-            changeTime,
-            startTimeChange,
-            endTimeChange
-          }
-
-          return <TimeBar {...timeBarProps} />
-        }}
-      </PlayerContext.Consumer>
-    )
+    const timeBarData = <TimeBarContextWrap />
 
     const audioData = (
       <div className="playerPanelRightColumn">

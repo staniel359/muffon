@@ -26,8 +26,9 @@ export default class Right extends React.PureComponent {
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
     const tagsListData = tags.map(tagData)
-    const tagsViewMoreData =
-      info.tags.length > 0 && <Label as="a" content="..." />
+    const tagsViewMoreData = info.tags.length > 0 && (
+      <Label as="a" content="..." />
+    )
     const tagsData = (
       <Label.Group size="large">
         {tagsListData}

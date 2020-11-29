@@ -63,16 +63,18 @@ export default class PlayerProvider extends React.PureComponent {
     this.setState({
       currentTrack: null,
       currentTrackData: null,
-      currentTrackId: null
+      currentTrackId: null,
+      currentTime: 0,
+      secondsLoaded: 0
     })
   }
 
   toggleMute = () => {
-    const mutedValue = !this.state.muted
+    const muted = !this.state.muted
 
-    this.audio().muted = mutedValue
+    this.audio().muted = muted
 
-    this.setState({ muted: mutedValue })
+    this.setState({ ...{ muted } })
   }
 
   changeVolume = e => {
@@ -85,9 +87,9 @@ export default class PlayerProvider extends React.PureComponent {
 
   handleVolumeChange = e => {
     const volume = Math.floor(e.target.volume * 100)
-    const muted = e.target.muted
+    const { muted } = e.target
 
-    this.setState({ volume: volume, muted: muted })
+    this.setState({ ...{ volume, muted } })
   }
 
   toggleShuffle = () => this.setState({ shuffle: !this.state.shuffle })
@@ -105,10 +107,10 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   handleProgress = e => {
-    this.setState({
-      secondsLoaded: this.secondsLoaded(e.target),
-      duration: e.target.duration
-    })
+    const secondsLoaded = this.secondsLoaded(e.target)
+    const { duration } = e.target
+
+    this.setState({ ...{ secondsLoaded, duration } })
   }
 
   secondsLoaded (audio) {
@@ -119,7 +121,9 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   handleTimeUpdate = e => {
-    this.setState({ currentTime: e.target.currentTime })
+    const { currentTime } = e.target
+
+    this.setState({ ...{ currentTime } })
   }
 
   handleAudioEnd = e => {
@@ -131,13 +135,17 @@ export default class PlayerProvider extends React.PureComponent {
   changeTime = e => (this.audio().currentTime = e.target.value)
 
   startTimeChange = () => {
-    this.setState({ audioStatusOnChange: this.state.audioStatus })
+    const audioStatusOnChange = this.state.audioStatus
+
+    this.setState({ ...{ audioStatusOnChange } })
     this.audio().pause()
   }
 
   endTimeChange = () => {
-    this.audio().currentTime = this.state.currentTime
-    this.audio()[this.state.audioStatusOnChange]()
+    const { currentTime, audioStatusOnChange } = this.state
+
+    this.audio().currentTime = currentTime
+    this.audio()[audioStatusOnChange]()
   }
 
   getTrackData = ({ artistName, trackTitle, albumTitle, index = 0 }) => {
@@ -175,10 +183,11 @@ export default class PlayerProvider extends React.PureComponent {
   cancelTrackRequest = () => this.request.cancel()
 
   render () {
+    const { children } = this.props
+    const value = this.state
+
     return (
-      <PlayerContext.Provider value={this.state}>
-        {this.props.children}
-      </PlayerContext.Provider>
+      <PlayerContext.Provider {...{ value }}>{children}</PlayerContext.Provider>
     )
   }
 }
