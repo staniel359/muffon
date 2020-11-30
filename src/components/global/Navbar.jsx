@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 
 export default class Navbar extends React.PureComponent {
   render () {
-    const addKeyToSection = section => ({...section, ...{ key: uuid() }})
+    const addKeyToSection = section => ({ ...section, ...{ key: uuid() } })
     const sections = this.props.navSections.map(addKeyToSection)
 
     return (

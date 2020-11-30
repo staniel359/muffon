@@ -23,6 +23,8 @@ export default class Info extends React.PureComponent {
     this.request.cancel()
   }
 
+  artistNameEncoded = encodeURIComponent(this.props.artistName)
+
   getData () {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
@@ -30,8 +32,7 @@ export default class Info extends React.PureComponent {
 
     switchLoader(true)
 
-    const artistNameEncoded = encodeURIComponent(this.props.artistName)
-    const url = `/lastfm/artists/${artistNameEncoded}`
+    const url = `/lastfm/artists/${this.artistNameEncoded}`
     const cancelToken = this.request.token
     const extra = { ...{ cancelToken } }
 
@@ -67,11 +68,14 @@ export default class Info extends React.PureComponent {
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
     const tagsListData = tags.map(tagData)
+    const tagsPageLink = `/artists/${this.artistNameEncoded}/tags`
+    const tagsViewMoreData = tags.length > 0 && (
+      <Label as={Link} to={tagsPageLink} content="..." />
+    )
     const tagsData = (
       <Label.Group size="large">
         {tagsListData}
-
-        <Label as="a" content="..." />
+        {tagsViewMoreData}
       </Label.Group>
     )
 

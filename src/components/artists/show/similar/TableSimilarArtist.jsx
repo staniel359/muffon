@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom'
 export default class TableSimilarArtist extends React.PureComponent {
   render () {
     const { artist } = this.props
+    const { tags, description } = artist
 
-    const artistNameEncoded = encodeURIComponent(artist.name)
+    const artistName = artist.name
+    const artistNameEncoded = encodeURIComponent(artistName)
     const similarArtistPageLink = `/artists/${artistNameEncoded}`
 
     const src = artist.images.medium
@@ -19,17 +21,20 @@ export default class TableSimilarArtist extends React.PureComponent {
 
     const nameData = (
       <Header as="h2" className="similarTableItemArtistName">
-        <Link to={similarArtistPageLink}>{artist.name}</Link>
+        <Link to={similarArtistPageLink}>{artistName}</Link>
       </Header>
     )
 
     const tagData = tag => (
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
-    const tagsData = artist.tags.map(tagData)
-    const tagsViewMoreData = artist.tags.length > 0 && (
-      <Label as="a" content="..." />
+    const tagsData = tags.map(tagData)
+
+    const tagsPageLink = `/artists/${artistNameEncoded}/tags`
+    const tagsViewMoreData = tags.length > 0 && (
+      <Label as={Link} to={tagsPageLink} content="..." />
     )
+
     const tagsListData = (
       <Label.Group size="large">
         {tagsData}
@@ -44,8 +49,7 @@ export default class TableSimilarArtist extends React.PureComponent {
       </Label.Group>
     )
 
-    const description = artist.description || 'No description.'
-    const descriptionData = <div>{description}</div>
+    const descriptionData = <div>{description || 'No description.'}</div>
 
     const contentData = (
       <Segment className="similarTableItemContent">
