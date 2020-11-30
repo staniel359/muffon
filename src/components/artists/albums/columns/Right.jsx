@@ -6,16 +6,17 @@ import { Link } from 'react-router-dom'
 
 export default class Right extends React.PureComponent {
   render () {
-    const { info, params } = this.props
-    const { tags, description, tracks } = info
+    const { album } = this.props
+    const { tags, description, tracks } = album
 
-    const albumTitle = info.title
+    const albumTitle = album.title
     const albumTitleData = (
       <Header as="h2" className="albumPageAlbumTitle" content={albumTitle} />
     )
 
-    const artistPageLink = `/artists/${params.artistName}`
-    const artistName = info.artist
+    const artistName = album.artist
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistPageLink = `/artists/${artistNameEncoded}`
     const artistNameData = (
       <Header as="h3" className="albumPageArtistName">
         <Link to={artistPageLink}>{artistName}</Link>
@@ -33,8 +34,10 @@ export default class Right extends React.PureComponent {
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
     const tagsListData = tags.map(tagData)
-    const tagsViewMoreData = info.tags.length > 0 && (
-      <Label as="a" content="..." />
+    const albumTitleEncoded = encodeURIComponent(albumTitle)
+    const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
+    const tagsViewMoreData = tags.length > 0 && (
+      <Label as={Link} to={tagsPageLink} content="..." />
     )
     const tagsData = (
       <Label.Group size="large">
@@ -43,8 +46,8 @@ export default class Right extends React.PureComponent {
       </Label.Group>
     )
 
-    const listenersCount = info.listeners_count.toLocaleString('eu')
-    const playsCount = info.plays_count.toLocaleString('eu')
+    const listenersCount = album.listeners_count.toLocaleString('eu')
+    const playsCount = album.plays_count.toLocaleString('eu')
     const countersData = (
       <Label.Group size="large">
         <Label basic icon="user" content={listenersCount} />

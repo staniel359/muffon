@@ -16,18 +16,25 @@ export default class Show extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
+    const { artistName, albumTitle } = this.params()
+
+    this.setNavSections(artistName, albumTitle)
     this.getInfo()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const artistName = props => props.match.params.artistName
-    const albumTitle = props => props.match.params.albumTitle
+    const { artistName, albumTitle } = this.params()
 
-    const artistNameChanged = artistName(this.props) !== artistName(prevProps)
-    const albumTitleChanged = albumTitle(this.props) !== albumTitle(prevProps)
+    const prevParams = prevProps.match.params
+
+    const artistNameChanged = artistName !== prevParams.artistName
+    const albumTitleChanged = albumTitle !== prevParams.albumTitle
     const albumChanged = artistNameChanged || albumTitleChanged
 
-    albumChanged && this.getInfo()
+    if (albumChanged) {
+      this.setNavSections(artistName, albumTitle)
+      this.getInfo()
+    }
   }
 
   componentWillUnmount () {
@@ -35,45 +42,47 @@ export default class Show extends React.PureComponent {
     this.request.cancel()
   }
 
+  params = () => this.props.match.params
+
   getInfo () {
-    const { params } = this.props.match
-
-    this.setNavSections(
-      decodeURIComponent(params.artistName),
-      decodeURIComponent(params.albumTitle)
-    )
-
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
 
     switchLoader(true)
 
-    const url = `/lastfm/artists/${params.artistName}/albums/${params.albumTitle}`
+    const { artistName, albumTitle } = this.params()
+
+    const url = `/lastfm/artists/${artistName}/albums/${albumTitle}`
     const cancelToken = this.request.token
     const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
-      const info = resp.data.album
+      const { album } = resp.data
 
-      this.setState({ ...{ info } })
-      this.setNavSections(info.artist, info.title)
+      this.setState({ ...{ album } })
+      this.setNavSections(album.artist, album.title)
     }
 
     const handleError = error => {
       !axios.isCancel(error) && this.setState({ ...{ error } })
     }
 
+    const handleFinish = () => switchLoader(false)
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   setNavSections (artistName, albumTitle) {
-    const artistPageLink = `#/artists/${encodeURIComponent(artistName)}`
-    const albumsPageLink = `#/artists/${encodeURIComponent(artistName)}/albums`
+    const artistNameEncoded = encodeURIComponent(artistName)
+
+    const artistPageLink = `#/artists/${artistNameEncoded}`
+    const albumsPageLink = `#/artists/${artistNameEncoded}/albums`
+
     const navSections = [
       { content: 'Artists' },
       { content: artistName, href: artistPageLink },
@@ -85,26 +94,24 @@ export default class Show extends React.PureComponent {
   }
 
   albumData () {
-    const { info } = this.state
-    const { params } = this.props.match
-    const columnProps = { info, params }
+    const { album } = this.state
 
     return (
       <Segment className="albumPage">
-        <LeftColumn {...columnProps} />
-        <RightColumn {...columnProps} />
+        <LeftColumn {...{ album }} />
+        <RightColumn {...{ album }} />
       </Segment>
     )
   }
 
   render () {
-    const { loading, info, error } = this.state
+    const { loading, album, error } = this.state
 
     const loaderData = loading && (
       <Dimmer active inverted className="fixed" content={<Loader inverted />} />
     )
 
-    const albumData = info && this.albumData()
+    const albumData = album && this.albumData()
 
     const errorData = error && <ErrorData {...{ error }} />
 

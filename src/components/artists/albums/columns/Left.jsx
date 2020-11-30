@@ -25,10 +25,10 @@ export default class Left extends React.PureComponent {
   }
 
   render () {
-    const { info } = this.props
+    const { album } = this.props
     const { transitionVisible, dimmerActive } = this.state
 
-    const cover = info.covers.medium
+    const cover = album.covers.medium
     const defaultCover =
       'https://lastfm.freetls.fastly.net/i/u/300x300/' +
       'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
@@ -53,8 +53,8 @@ export default class Left extends React.PureComponent {
       mountOnShow: false
     }
 
-    const albumTitle = info.title
-    const artistName = info.artist
+    const albumTitle = album.title
+    const artistName = album.artist
     const transitionText = (
       <div>
         <Header
@@ -76,7 +76,7 @@ export default class Left extends React.PureComponent {
       <Transition {...transitionProps}>{transitionText}</Transition>
     )
 
-    const dimmerImage = <Image src={info.covers.original} />
+    const dimmerImage = <Image src={album.covers.original} />
     const hideDimmer = () => this.setState({ dimmerActive: false })
     const dimmerData = cover && (
       <Dimmer
