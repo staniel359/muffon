@@ -6,14 +6,20 @@ import { Link } from 'react-router-dom'
 export default class Extra extends React.PureComponent {
   render () {
     const { track } = this.props
+    const { tags, description } = track
 
     const tagData = tag => (
       <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
     )
-    const tagsListData = track.tags.map(tagData)
-    const tagsViewMoreData = track.tags.length > 0 && (
-      <Label as="a" content="..." />
+    const tagsListData = tags.map(tagData)
+
+    const artistNameEncoded = encodeURIComponent(track.artist)
+    const trackTitleEncoded = encodeURIComponent(track.title)
+    const tagsPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}/tags`
+    const tagsViewMoreData = tags.length > 0 && (
+      <Label as={Link} to={tagsPageLink} content="..." />
     )
+
     const tagsData = (
       <Label.Group size="large">
         {tagsListData}
@@ -32,7 +38,7 @@ export default class Extra extends React.PureComponent {
 
     const descriptionData = (
       <div className="trackPageDescription">
-        {track.description || 'No description.'}
+        {description || 'No description.'}
       </div>
     )
 
