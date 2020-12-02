@@ -90,7 +90,7 @@ export default class Search extends React.PureComponent {
     const tabsProps = { query, hideSearch, searchId }
     const tabsData = query && <Tabs {...tabsProps} />
 
-    const content = (
+    const contentData = (
       <Segment className={dimmerDataClassName}>
         {searchForm}
         {tabsData}
@@ -103,7 +103,7 @@ export default class Search extends React.PureComponent {
         active
         className={dimmerClassName}
         onClickOutside={hideSearch}
-        {...{ content }}
+        content={contentData}
       />
     )
   }

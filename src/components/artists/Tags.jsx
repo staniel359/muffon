@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import { Segment, Dimmer, Loader, Label } from 'semantic-ui-react'
+import LoaderDimmer from 'partials/LoaderDimmer'
+import { Segment, Label } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import { Link } from 'react-router-dom'
 import 'styles/artists/tags/Show.sass'
@@ -16,22 +17,12 @@ export default class Tags extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
-    const { artistName } = this.params()
-
-    this.setNavSections(artistName)
+    this.setNavSections(this.params().artistName)
     this.getData()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { artistName } = this.params()
-
-    const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
-
-    if (artistChanged) {
-      this.setNavSections(artistName)
-      this.getData()
-    }
+    this.handleArtistChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -40,6 +31,19 @@ export default class Tags extends React.PureComponent {
   }
 
   params = () => this.props.match.params
+
+  handleArtistChange (prevProps) {
+    const { artistName } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistChanged = artistName !== prevArtistName
+
+    if (artistChanged) {
+      this.setNavSections(artistName)
+      this.setState({ tags: null })
+      this.getData()
+    }
+  }
 
   setNavSections (artistName) {
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -60,9 +64,7 @@ export default class Tags extends React.PureComponent {
 
     switchLoader(true)
 
-    const { artistName } = this.params()
-
-    const url = `/lastfm/artists/${artistName}/tags`
+    const url = `/lastfm/artists/${this.params().artistName}/tags`
     const cancelToken = this.request.token
     const extra = { ...{ cancelToken } }
 
@@ -118,9 +120,7 @@ export default class Tags extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
+    const loaderData = loading && <LoaderDimmer />
 
     const contentData = tagsData || errorData || loaderData
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Segment, Dimmer, Loader, Pagination, Divider } from 'semantic-ui-react'
+import { Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
+import LoaderDimmer from 'partials/LoaderDimmer'
 import Table from './show/similar/Table'
 import 'styles/artists/similar/Show.sass'
 
@@ -20,15 +21,7 @@ export default class Similar extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { artistName } = this.params()
-
-    const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
-
-    if (artistChanged) {
-      this.setNavSections(artistName)
-      this.getData()
-    }
+    this.handleArtistChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -37,6 +30,19 @@ export default class Similar extends React.PureComponent {
   }
 
   params = () => this.props.match.params
+
+  handleArtistChange (prevProps) {
+    const { artistName } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistChanged = artistName !== prevArtistName
+
+    if (artistChanged) {
+      this.setNavSections(artistName)
+      this.setState({ similar: null })
+      this.getData()
+    }
+  }
 
   setNavSections (artistName) {
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -141,9 +147,7 @@ export default class Similar extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
+    const loaderData = loading && <LoaderDimmer />
 
     const contentData = similarData || errorData || loaderData
 

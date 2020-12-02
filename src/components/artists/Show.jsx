@@ -2,7 +2,7 @@ import React from 'react'
 import LeftColumn from './show/columns/Left'
 import RightColumn from './show/columns/Right'
 import ErrorData from 'partials/ErrorData'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import LoaderDimmer from 'partials/LoaderDimmer'
 import axios from 'axios'
 import 'styles/artists/Show.sass'
 
@@ -16,15 +16,12 @@ export default class Show extends React.PureComponent {
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
+    this.setNavSections(this.params().artistName)
     this.setArtistName()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const artistName = props => props.match.params.artistName
-
-    const artistChanged = artistName(this.props) !== artistName(prevProps)
-
-    artistChanged && this.setArtistName()
+    this.handleArtistChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -32,18 +29,29 @@ export default class Show extends React.PureComponent {
     this.request.cancel()
   }
 
+  params = () => this.props.match.params
+
+  handleArtistChange (prevProps) {
+    const { artistName } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistChanged = artistName !== prevArtistName
+
+    if (artistChanged) {
+      this.setNavSections(artistName)
+      this.setState({ artistName: null })
+      this.setArtistName()
+    }
+  }
+
   setArtistName () {
-    const { params } = this.props.match
-
-    this.setNavSections(decodeURIComponent(params.artistName))
-
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
 
     switchLoader(true)
 
-    const url = `/lastfm/artists/${params.artistName}`
+    const url = `/lastfm/artists/${this.params().artistName}`
     const cancelToken = this.request.token
     const extra = { ...{ cancelToken } }
 
@@ -58,11 +66,13 @@ export default class Show extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ ...{ error } })
     }
 
+    const handleFinish = () => switchLoader(false)
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   setNavSections (artistName) {
@@ -96,16 +106,14 @@ export default class Show extends React.PureComponent {
   render () {
     const { error, loading, artistName } = this.state
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
-
     const artistData = artistName && this.artistData()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = loaderData || artistData || errorData
+    const loaderData = loading && <LoaderDimmer />
 
-    return <React.Fragment>{content}</React.Fragment>
+    const contentData = artistData || errorData || loaderData
+
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

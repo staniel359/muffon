@@ -37,10 +37,12 @@ export default class ChangeTrack extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ error: true })
     }
 
+    const handleFinish = () => switchLoader(false)
+
     getTrackData(changeTrackParams)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   render () {

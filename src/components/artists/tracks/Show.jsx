@@ -1,7 +1,8 @@
 import React from 'react'
-import { Segment, Dimmer, Loader } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
+import LoaderDimmer from 'partials/LoaderDimmer'
 import Main from './data/Main'
 import Extra from './data/Extra'
 import 'styles/artists/tracks/Show.sass'
@@ -23,18 +24,7 @@ export default class Show extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { artistName, trackTitle } = this.params()
-
-    const prevParams = prevProps.match.params
-
-    const artistNameChanged = artistName !== prevParams.artistName
-    const trackTitleChanged = trackTitle !== prevParams.trackTitle
-    const trackChanged = artistNameChanged || trackTitleChanged
-
-    if (trackChanged) {
-      this.setNavSections(artistName, trackTitle)
-      this.getInfo()
-    }
+    this.handleTrackChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -43,6 +33,24 @@ export default class Show extends React.PureComponent {
   }
 
   params = () => this.props.match.params
+
+  handleTrackChange (prevProps) {
+    const { artistName, trackTitle } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistNameChanged = artistName !== prevArtistName
+
+    const prevTrackTitle = prevProps.match.params.trackTitle
+    const trackTitleChanged = trackTitle !== prevTrackTitle
+
+    const trackChanged = artistNameChanged || trackTitleChanged
+
+    if (trackChanged) {
+      this.setNavSections(artistName, trackTitle)
+      this.setState({ track: null })
+      this.getInfo()
+    }
+  }
 
   getInfo () {
     const switchLoader = loading => {
@@ -105,15 +113,13 @@ export default class Show extends React.PureComponent {
   render () {
     const { loading, track, error } = this.state
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
-
     const trackData = track && this.trackData()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const contentData = loaderData || trackData || errorData
+    const loaderData = loading && <LoaderDimmer />
+
+    const contentData = trackData || errorData || loaderData
 
     return <React.Fragment>{contentData}</React.Fragment>
   }

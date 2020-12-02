@@ -37,31 +37,34 @@ export default class Info extends React.PureComponent {
     const extra = { ...{ cancelToken } }
 
     const handleSuccess = resp => {
-      this.setState({ info: resp.data.artist, error: null })
+      const { artist } = resp.data
+
+      const error = null
+
+      this.setState({ ...{ artist, error } })
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, info: null })
+      const artist = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, artist } })
     }
+
+    const handleFinish = () => switchLoader(false)
 
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   infoData () {
-    const { info } = this.state
-    const { tags } = info
+    const { artist } = this.state
+    const { name, tags, description } = artist
 
-    const artistName = info.name
     const artistNameData = (
-      <Header
-        size="huge"
-        className="artistPageArtistName"
-        content={artistName}
-      />
+      <Header as="h1" className="artistPageArtistName" content={name} />
     )
 
     const tagData = tag => (
@@ -79,8 +82,8 @@ export default class Info extends React.PureComponent {
       </Label.Group>
     )
 
-    const listenersCount = info.listeners_count.toLocaleString('eu')
-    const playsCount = info.plays_count.toLocaleString('eu')
+    const listenersCount = artist.listeners_count.toLocaleString('eu')
+    const playsCount = artist.plays_count.toLocaleString('eu')
     const countersData = (
       <Label.Group size="large">
         <Label basic icon="user" content={listenersCount} />
@@ -88,9 +91,10 @@ export default class Info extends React.PureComponent {
       </Label.Group>
     )
 
-    const description = info.description || 'No description.'
     const descriptionData = (
-      <div className="artistPageDescription">{description}</div>
+      <div className="artistPageDescription">
+        {description || 'No description.'}
+      </div>
     )
 
     return (
@@ -105,17 +109,21 @@ export default class Info extends React.PureComponent {
   }
 
   render () {
-    const { info, loading, error } = this.state
+    const { artist, loading, error } = this.state
 
-    const infoData = info && this.infoData()
+    const infoData = artist && this.infoData()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = infoData || errorData
+    const contentData = infoData || errorData
 
     return (
       <Segment.Group id="info" className="artistPageSegmentWrap">
-        <Segment className="artistPageSegment" {...{ loading, content }} />
+        <Segment
+          className="artistPageSegment"
+          content={contentData}
+          {...{ loading }}
+        />
       </Segment.Group>
     )
   }

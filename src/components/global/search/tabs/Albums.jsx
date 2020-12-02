@@ -57,11 +57,13 @@ export default class Albums extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ error: error, albums: null })
     }
 
+    const handleFinish = () => switchLoader(false)
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   albumsData () {
@@ -118,13 +120,14 @@ export default class Albums extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = albumsData || errorData
+    const contentData = albumsData || errorData
 
     return (
       <Tab.Pane className="searchResultsTab" {...{ active }}>
         <Segment
           className="searchResultsTabContentWrap"
-          {...{ loading, content }}
+          content={contentData}
+          {...{ loading }}
         />
       </Tab.Pane>
     )

@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
-import { Segment, Dimmer, Loader, Label } from 'semantic-ui-react'
+import LoaderDimmer from 'partials/LoaderDimmer'
+import { Segment, Label } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import { Link } from 'react-router-dom'
 import 'styles/artists/tags/Show.sass'
@@ -23,18 +24,7 @@ export default class Tags extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { artistName, albumTitle } = this.params()
-
-    const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
-
-    const prevAlbumTitle = prevProps.match.params.albumTitle
-    const albumChanged = albumTitle !== prevAlbumTitle
-
-    if (artistChanged || albumChanged) {
-      this.setNavSections(artistName, albumTitle)
-      this.getData()
-    }
+    this.handleAlbumChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -43,6 +33,24 @@ export default class Tags extends React.PureComponent {
   }
 
   params = () => this.props.match.params
+
+  handleAlbumChange (prevProps) {
+    const { artistName, albumTitle } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistNameChanged = artistName !== prevArtistName
+
+    const prevAlbumTitle = prevProps.match.params.albumTitle
+    const albumTitleChanged = albumTitle !== prevAlbumTitle
+
+    const albumChanged = artistNameChanged || albumTitleChanged
+
+    if (albumChanged) {
+      this.setNavSections(artistName, albumTitle)
+      this.setState({ tags: null })
+      this.getData()
+    }
+  }
 
   setNavSections (artistName, albumTitle) {
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -128,9 +136,7 @@ export default class Tags extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
+    const loaderData = loading && <LoaderDimmer />
 
     const contentData = tagsData || errorData || loaderData
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Segment, Dimmer, Loader } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
+import LoaderDimmer from 'partials/LoaderDimmer'
 import LeftColumn from './columns/Left'
 import RightColumn from './columns/Right'
 import 'styles/artists/albums/Show.sass'
@@ -23,18 +24,7 @@ export default class Show extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { artistName, albumTitle } = this.params()
-
-    const prevParams = prevProps.match.params
-
-    const artistNameChanged = artistName !== prevParams.artistName
-    const albumTitleChanged = albumTitle !== prevParams.albumTitle
-    const albumChanged = artistNameChanged || albumTitleChanged
-
-    if (albumChanged) {
-      this.setNavSections(artistName, albumTitle)
-      this.getInfo()
-    }
+    this.handleAlbumChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -43,6 +33,24 @@ export default class Show extends React.PureComponent {
   }
 
   params = () => this.props.match.params
+
+  handleAlbumChange (prevProps) {
+    const { artistName, albumTitle } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistNameChanged = artistName !== prevArtistName
+
+    const prevAlbumTitle = prevProps.match.params.albumTitle
+    const albumTitleChanged = albumTitle !== prevAlbumTitle
+
+    const albumChanged = artistNameChanged || albumTitleChanged
+
+    if (albumChanged) {
+      this.setNavSections(artistName, albumTitle)
+      this.setState({ album: null })
+      this.getInfo()
+    }
+  }
 
   getInfo () {
     const switchLoader = loading => {
@@ -107,16 +115,14 @@ export default class Show extends React.PureComponent {
   render () {
     const { loading, album, error } = this.state
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
-
     const albumData = album && this.albumData()
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = loaderData || albumData || errorData
+    const loaderData = loading && <LoaderDimmer />
 
-    return <React.Fragment>{content}</React.Fragment>
+    const contentData = albumData || errorData || loaderData
+
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

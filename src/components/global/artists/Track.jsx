@@ -34,10 +34,12 @@ export default class Track extends React.PureComponent {
 
     const handleError = () => this.setState({ error: true })
 
+    const handleFinish = () => switchLoader(false)
+
     getTrackData(getTrackParams)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   handleLinkClick = click => {

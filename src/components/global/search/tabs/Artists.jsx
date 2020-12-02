@@ -45,11 +45,13 @@ export default class Artists extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ error: error, artists: null })
     }
 
+    const handleFinish = () => switchLoader(false)
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   artistsData () {
@@ -72,13 +74,14 @@ export default class Artists extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const content = artistsData || errorData
+    const contentData = artistsData || errorData
 
     return (
       <Tab.Pane className="searchResultsTab" {...{ active }}>
         <Segment
           className="searchResultsTabContentWrap"
-          {...{ loading, content }}
+          content={contentData}
+          {...{ loading }}
         />
       </Tab.Pane>
     )

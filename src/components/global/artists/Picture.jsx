@@ -53,11 +53,13 @@ export default class Picture extends React.PureComponent {
       !axios.isCancel(error) && this.setState({ images: [] })
     }
 
+    const handleFinish = () => switchLoader(false)
+
     axios
       .get(url, extra)
       .then(handleSuccess)
       .catch(handleError)
-      .then(() => switchLoader(false))
+      .then(handleFinish)
   }
 
   dimmableImageData () {
@@ -132,8 +134,8 @@ export default class Picture extends React.PureComponent {
     const anyImages = images.length > 0
     const imageData = anyImages ? this.artistImageData() : this.defaultImage()
 
-    const content = placeholderImageData || imageData
+    const contentData = placeholderImageData || imageData
 
-    return <React.Fragment>{content}</React.Fragment>
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

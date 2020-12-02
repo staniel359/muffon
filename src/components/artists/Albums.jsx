@@ -1,7 +1,8 @@
 import React from 'react'
-import { Segment, Dimmer, Loader, Pagination, Divider } from 'semantic-ui-react'
+import { Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
+import LoaderDimmer from 'partials/LoaderDimmer'
 import List from './show/albums/List'
 
 export default class Albums extends React.PureComponent {
@@ -19,15 +20,7 @@ export default class Albums extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { artistName } = this.params()
-
-    const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
-
-    if (artistChanged) {
-      this.setNavSections(artistName)
-      this.getData()
-    }
+    this.handleArtistChange(prevProps)
   }
 
   componentWillUnmount () {
@@ -36,6 +29,19 @@ export default class Albums extends React.PureComponent {
   }
 
   params = () => this.props.match.params
+
+  handleArtistChange (prevProps) {
+    const { artistName } = this.params()
+
+    const prevArtistName = prevProps.match.params.artistName
+    const artistChanged = artistName !== prevArtistName
+
+    if (artistChanged) {
+      this.setNavSections(artistName)
+      this.setState({ albums: null })
+      this.getData()
+    }
+  }
 
   setNavSections (artistName) {
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -143,9 +149,7 @@ export default class Albums extends React.PureComponent {
 
     const errorData = error && <ErrorData {...{ error }} />
 
-    const loaderData = loading && (
-      <Dimmer active inverted className="fixed" content={<Loader inverted />} />
-    )
+    const loaderData = loading && <LoaderDimmer />
 
     const contentData = albumsData || errorData || loaderData
 
