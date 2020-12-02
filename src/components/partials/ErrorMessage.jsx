@@ -3,45 +3,66 @@ import { Message } from 'semantic-ui-react'
 
 export default class ErrorMessage extends React.PureComponent {
   render () {
-    const { response } = this.props.error
+    const { error } = this.props
 
-    const errorCode = response && response.status
+    const errors = {
+      notFound: {
+        icon: 'search',
+        header: 'Nothing was found',
+        content: 'Please try looking for something else.'
+      },
+      remoteServer: {
+        icon: 'server',
+        header: 'Remote server unavailable',
+        content: 'Please try again in a moment.'
+      },
+      timeout: {
+        icon: 'clock outline',
+        header: 'Gateway timeout',
+        content: 'Please try again in a moment.'
+      },
+      internalServer: {
+        icon: 'server',
+        header: 'Internal server error',
+        content: 'Please contact us for information.'
+      },
+      connection: {
+        icon: 'wifi',
+        header: 'Connection lost',
+        content: 'Please try again in a moment.'
+      },
+      client: {
+        icon: 'window maximize outline',
+        header: 'Client error',
+        content: 'Please contact us for information.'
+      }
+    }
 
-    const notFoundError = errorCode === 404 && (
-      <Message
-        icon="search"
-        header="Nothing was found"
-        content="Try looking for something else."
-      />
+    const errorData = () => {
+      if (error.isAxiosError) {
+        if (error.response) {
+          switch (error.response.status) {
+            case 404:
+              return errors.notFound
+            case 503:
+              return errors.remoteServer
+            case 504:
+              return errors.timeout
+            default:
+              return errors.internalServer
+          }
+        } else {
+          return errors.connection
+        }
+      } else {
+        return errors.client
+      }
+    }
+
+    return (
+      <div className="errorMessage">
+        <Message {...errorData()} />
+      </div>
     )
-
-    const timeoutError = errorCode === 504 && (
-      <Message
-        icon="clock outline"
-        header="Gateway timeout"
-        content="Please try again in a moment."
-      />
-    )
-
-    const remoteError = errorCode === 503 && (
-      <Message
-        icon="exclamation circle"
-        header="Remote server error"
-        content="Please try again in a moment."
-      />
-    )
-
-    const connectionError = (
-      <Message
-        icon="exclamation triangle"
-        header="Connection lost"
-        content="We are working on it."
-      />
-    )
-
-    const errorData =
-      notFoundError || timeoutError || remoteError || connectionError
-
-    return <div className="errorMessage">{errorData}</div>
   }
 }
