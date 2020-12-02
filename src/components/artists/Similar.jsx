@@ -3,7 +3,7 @@ import { Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorData from 'partials/ErrorData'
 import LoaderDimmer from 'partials/LoaderDimmer'
-import Table from './show/similar/Table'
+import List from './similar/List'
 import 'styles/artists/similar/Show.sass'
 
 export default class Similar extends React.PureComponent {
@@ -39,7 +39,7 @@ export default class Similar extends React.PureComponent {
 
     if (artistChanged) {
       this.setNavSections(artistName)
-      this.setState({ similar: null })
+      this.setState({ artists: null })
       this.getData()
     }
   }
@@ -70,21 +70,21 @@ export default class Similar extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { artist } = resp.data
-      const { similar } = artist
 
+      const artists = artist.similar
       const artistName = artist.name
       const totalPages = artist.total_pages
       const error = null
 
-      this.setState({ ...{ similar, totalPages, error } })
+      this.setState({ ...{ artists, totalPages, error } })
 
       this.setNavSections(artistName)
     }
 
     const handleError = error => {
-      const similar = null
+      const artists = null
 
-      !axios.isCancel(error) && this.setState({ ...{ error, similar } })
+      !axios.isCancel(error) && this.setState({ ...{ error, artists } })
     }
 
     const handleFinish = () => {
@@ -100,14 +100,14 @@ export default class Similar extends React.PureComponent {
       .then(handleFinish)
   }
 
-  similarTable () {
-    const { similar, loading } = this.state
+  artistsTable () {
+    const { artists, loading } = this.state
 
-    const similarTableData = <Table {...{ similar }} />
+    const artistsTableData = <List {...{ artists }} />
 
     return (
       <Segment className="artistPageSegment" {...{ loading }}>
-        {similarTableData}
+        {artistsTableData}
 
         <Divider />
 
@@ -141,15 +141,15 @@ export default class Similar extends React.PureComponent {
   }
 
   render () {
-    const { loading, similar, error } = this.state
+    const { loading, artists, error } = this.state
 
-    const similarData = similar && this.similarTable()
+    const artistsData = artists && this.artistsTable()
 
     const errorData = error && <ErrorData {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 
-    const contentData = similarData || errorData || loaderData
+    const contentData = artistsData || errorData || loaderData
 
     return <React.Fragment>{contentData}</React.Fragment>
   }

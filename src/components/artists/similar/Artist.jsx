@@ -3,25 +3,24 @@ import { v4 as uuid } from 'uuid'
 import { Segment, Image, Header, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-export default class TableSimilarArtist extends React.PureComponent {
+export default class Artist extends React.PureComponent {
   render () {
     const { artist } = this.props
-    const { tags, description } = artist
+    const { name, tags, description } = artist
 
-    const artistName = artist.name
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistNameEncoded = encodeURIComponent(name)
     const similarArtistPageLink = `/artists/${artistNameEncoded}`
 
     const src = artist.images.medium
     const imageData = (
-      <Link className="similarTableItemImage" to={similarArtistPageLink}>
+      <Link className="similarPageItemImage" to={similarArtistPageLink}>
         <Image rounded {...{ src }} />
       </Link>
     )
 
     const nameData = (
-      <Header as="h2" className="similarTableItemArtistName">
-        <Link to={similarArtistPageLink}>{artistName}</Link>
+      <Header as="h2" className="similarPageItemArtistName">
+        <Link to={similarArtistPageLink}>{name}</Link>
       </Header>
     )
 
@@ -52,7 +51,7 @@ export default class TableSimilarArtist extends React.PureComponent {
     const descriptionData = <div>{description || 'No description.'}</div>
 
     const contentData = (
-      <Segment className="similarTableItemContent">
+      <Segment className="similarPageItemContent">
         {nameData}
         {tagsListData}
         {countersData}
@@ -61,7 +60,7 @@ export default class TableSimilarArtist extends React.PureComponent {
     )
 
     return (
-      <div className="similarTableItem">
+      <div className="similarPageItem">
         {imageData}
         {contentData}
       </div>

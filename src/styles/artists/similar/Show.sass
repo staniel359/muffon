@@ -1,18 +1,23 @@
 @import 'styles/Base.sass'
 
-.similarTableItem
+.similarPageItem
   @extend .flex
   margin-bottom: 20px
 
-.similarTableItemImage
-  width: 175px
+.similarPageItemImage
+  width: 150px
   margin-right: 1em
   img
     border: 1px solid $semanticGray
 
-.similarTableItemContent
+.similarPageItemContent
   @extend .margin0
-  width: calc(100% - 175px - 1em)
+  width: calc(100% - 150px - 1em)
 
-.similarTableItemArtistName
+.similarPageItemArtistName
   margin-bottom: 5px !important
+
+.similarPageItemImage:hover ~
+  .similarPageItemContent
+    .similarPageItemArtistName a
+      color: $muffonBase !important

@@ -1,6 +1,5 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { Card } from 'semantic-ui-react'
 import Artist from './Artist'
 
 export default class List extends React.PureComponent {
@@ -13,10 +12,8 @@ export default class List extends React.PureComponent {
 
       return <Artist {...artistProps} />
     }
-    const artistsListData = artists.map(artistData)
-    const artistsData = artists.length > 0 && (
-      <Card.Group itemsPerRow={4}>{artistsListData}</Card.Group>
-    )
+    const artistsLIstData = artists.map(artistData)
+    const artistsData = artists.length > 0 && artistsLIstData
 
     return <React.Fragment>{artistsData}</React.Fragment>
   }
