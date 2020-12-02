@@ -1,0 +1,59 @@
+@import 'styles/Base.sass'
+
+.tagsPageSegmentWrap
+  @extend .noBorder
+  margin-bottom: 20px !important
+.tagsPageSegment
+  min-height: 100px
+  .header
+    @extend .margin0
+
+.tagsPageSegmentMain
+  @extend .padding0
+  overflow: hidden
+  .header
+    @extend .margin0
+    color: white
+
+.tagsPageSegmentMainCover
+  height: 350px
+
+.tagsPageSegmentMainContent
+  @extend .absolute, .h100, .w100, .flexColumn
+  top: 0
+  color: white
+  padding: 70px 50px 50px 50px
+  background: #272a2b99
+
+.tagPageTagName
+  @extend .flex
+  align-items: center
+  margin-bottom: 10px
+  i
+    margin-right: 5px
+
+.tagPageCounters
+  margin-bottom: 10px
+
+.tagPageDescription
+  max-height: 100%
+  overflow-y: scroll
+
+.tagPageCard
+  @extend .noShadow
+  text-align: center
+  word-break: break-word
+  .header
+    margin: 5px 0 0 0 !important
+  .content
+    padding: 0 !important
+    border: none !important
+  .tagPageCardImage:hover ~ .tagPageCardMainLink a
+    color: $muffonBase !important
+
+.tagPagePaginationWrap
+  text-align: center
+
+.tagPageHeaderImage
+  width: calc(100% / 6)
+  display: inline-block !important
