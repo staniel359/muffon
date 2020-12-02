@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import Main from './data/Main'
 import Extra from './data/Extra'
@@ -115,7 +115,7 @@ export default class Show extends React.PureComponent {
 
     const trackData = track && this.trackData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import { Segment, Header, Ref } from 'semantic-ui-react'
 import AlbumsData from './albums/AlbumsData'
 
@@ -92,7 +92,7 @@ export default class Albums extends React.PureComponent {
 
     const albumsData = albums && this.albumsData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = albumsData || errorData
 

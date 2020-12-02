@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tab, Segment } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import List from './artists/List'
 
 export default class Artists extends React.PureComponent {
@@ -72,7 +72,7 @@ export default class Artists extends React.PureComponent {
 
     const artistsData = artists && this.artistsData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = artistsData || errorData
 

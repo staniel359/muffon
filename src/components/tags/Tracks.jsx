@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import { Segment, Header, Ref } from 'semantic-ui-react'
 import TracksData from './tracks/TracksData'
 
@@ -94,7 +94,7 @@ export default class Tracks extends React.PureComponent {
 
     const tracksData = tracks && this.tracksData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = tracksData || errorData
 

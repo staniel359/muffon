@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import List from './tracks/List'
 
 export default class Tracks extends React.PureComponent {
@@ -118,7 +118,7 @@ export default class Tracks extends React.PureComponent {
 
     const tracksData = tracks && this.tracksData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = tracksData || errorData
 

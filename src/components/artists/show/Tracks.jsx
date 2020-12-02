@@ -2,7 +2,7 @@ import React from 'react'
 import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './tracks/List'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import { Link } from 'react-router-dom'
 
 export default class Tracks extends React.PureComponent {
@@ -104,7 +104,7 @@ export default class Tracks extends React.PureComponent {
     const tracksDataProps = { tracks, topTrackCount, artistName }
     const tracksData = tracks && <List {...tracksDataProps} />
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = tracksData || errorData
 

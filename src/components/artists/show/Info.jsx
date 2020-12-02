@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 import { Segment, Header, Label, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 
 export default class Info extends React.PureComponent {
   constructor (props) {
@@ -113,7 +113,7 @@ export default class Info extends React.PureComponent {
 
     const infoData = artist && this.infoData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = infoData || errorData
 

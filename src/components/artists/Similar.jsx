@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import List from './similar/List'
 import 'styles/artists/similar/Show.sass'
@@ -145,7 +145,7 @@ export default class Similar extends React.PureComponent {
 
     const artistsData = artists && this.artistsTable()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 

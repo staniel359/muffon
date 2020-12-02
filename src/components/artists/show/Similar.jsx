@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header, Segment, Ref } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import { Link } from 'react-router-dom'
 import ArtistsData from './similar/ArtistsData'
 
@@ -102,7 +102,7 @@ export default class Similar extends React.PureComponent {
 
     const artistsData = artists && this.artistsData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = artistsData || errorData
 

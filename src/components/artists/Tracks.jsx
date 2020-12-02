@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import List from './show/tracks/List'
 
@@ -152,7 +152,7 @@ export default class Tracks extends React.PureComponent {
 
     const tracksData = tracks && this.tracksList()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 

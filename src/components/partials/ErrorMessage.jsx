@@ -1,7 +1,7 @@
 import React from 'react'
 import { Message } from 'semantic-ui-react'
 
-export default class ErrorData extends React.PureComponent {
+export default class ErrorMessage extends React.PureComponent {
   render () {
     const { response } = this.props.error
 

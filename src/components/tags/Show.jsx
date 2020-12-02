@@ -4,7 +4,7 @@ import Artists from './Artists'
 import Albums from './Albums'
 import Tracks from './Tracks'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import 'styles/tags/Show.sass'
 
@@ -120,7 +120,7 @@ export default class Show extends React.PureComponent {
 
     const tagData = tagName && this.tagData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 

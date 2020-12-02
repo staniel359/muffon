@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import { Segment, Header, Icon, Label, Image } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 
@@ -117,7 +117,7 @@ export default class Info extends React.PureComponent {
 
     const tagData = tag && this.tagData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = tagData || errorData
 

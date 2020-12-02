@@ -1,7 +1,7 @@
 import React from 'react'
 import { Segment } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import LeftColumn from './columns/Left'
 import RightColumn from './columns/Right'
@@ -117,7 +117,7 @@ export default class Show extends React.PureComponent {
 
     const albumData = album && this.albumData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 

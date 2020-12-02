@@ -1,7 +1,7 @@
 import React from 'react'
 import LeftColumn from './show/columns/Left'
 import RightColumn from './show/columns/Right'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import axios from 'axios'
 import 'styles/artists/Show.sass'
@@ -108,7 +108,7 @@ export default class Show extends React.PureComponent {
 
     const artistData = artistName && this.artistData()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 

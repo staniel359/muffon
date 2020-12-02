@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ErrorData from 'partials/ErrorData'
+import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import { Segment, Label } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
@@ -118,7 +118,7 @@ export default class Tags extends React.PureComponent {
 
     const tagsData = tags && this.tagsList()
 
-    const errorData = error && <ErrorData {...{ error }} />
+    const errorData = error && <ErrorMessage {...{ error }} />
 
     const loaderData = loading && <LoaderDimmer />
 
