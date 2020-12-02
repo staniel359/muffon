@@ -5,14 +5,14 @@ const isDev = require('electron-is-dev')
 // Init new window
 
 function createWindow () {
+  const iconPath = path.join(__dirname, '../dist/icons/icon.ico')
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences: {
-      nodeIntegration: true
-    },
+    webPreferences: { nodeIntegration: true },
     show: false,
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    icon: iconPath
   })
 
   const localhost = 'http://localhost:3000'
@@ -22,8 +22,8 @@ function createWindow () {
     win.loadURL(localhost)
     win.webContents.openDevTools()
   } else {
-    win.setMenu(null)
     win.loadURL(indexFile)
+    win.setMenu(null)
   }
 
   win.on('ready-to-show', () => {
@@ -39,8 +39,6 @@ function createWindow () {
   } = require('electron-devtools-installer')
 
   installExtension(REACT_DEVELOPER_TOOLS)
-    .then(name => console.log(`Added Extension:  ${name}`))
-    .catch(err => console.log('An error occurred: ', err))
 }
 
 // Create window when app loads

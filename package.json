@@ -1,7 +1,7 @@
 {
   "name": "muffon-desktop",
   "version": "0.1.0",
-  "description": "muffon-desktop",
+  "description": "muffon",
   "license": "MIT",
   "homepage": "./",
   "author": {
@@ -75,8 +75,11 @@
   },
   "private": true,
   "build": {
-    "appId": "com.electron.muffon-desktop",
+    "appId": "com.electron.muffon",
     "copyright": "Copyright © 2020 staniel359",
+    "win": {
+      "icon": "dist/icons/icon.ico"
+    },
     "mac": {
       "category": "public.app-category.music"
     },
