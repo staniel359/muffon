@@ -33,7 +33,7 @@ export default class AlbumsData extends React.PureComponent {
 
     const albumsLoaded = nextAlbums !== prevAlbums
 
-    albumsLoaded && this.props.scrollToTop()
+    albumsLoaded && this.props.scrollToTop('albums')
   }
 
   setAlbumsData () {
@@ -79,7 +79,7 @@ export default class AlbumsData extends React.PureComponent {
     }
 
     const handlePageChange = (_, { activePage }) => {
-      const { getData } = this.props
+      const { getData, scrollToTop } = this.props
 
       const page = activePage - 1
       const currentPage =
@@ -90,7 +90,7 @@ export default class AlbumsData extends React.PureComponent {
 
       this.setState({ ...{ activePage } })
 
-      this.props.scrollToTop()
+      scrollToTop('albums')
     }
 
     const paginationProps = {

@@ -33,7 +33,7 @@ export default class TracksData extends React.PureComponent {
 
     const tracksLoaded = nextTracks !== prevTracks
 
-    tracksLoaded && this.props.scrollToTop()
+    tracksLoaded && this.props.scrollToTop('tracks')
   }
 
   setTracksData () {
@@ -79,7 +79,7 @@ export default class TracksData extends React.PureComponent {
     }
 
     const handlePageChange = (_, { activePage }) => {
-      const { getData } = this.props
+      const { getData, scrollToTop } = this.props
 
       const page = activePage - 1
       const currentPage =
@@ -90,7 +90,7 @@ export default class TracksData extends React.PureComponent {
 
       this.setState({ ...{ activePage } })
 
-      this.props.scrollToTop()
+      scrollToTop('tracks')
     }
 
     const paginationProps = {

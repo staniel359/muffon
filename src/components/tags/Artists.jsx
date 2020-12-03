@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
-import { Segment, Header, Ref } from 'semantic-ui-react'
+import { Segment, Header } from 'semantic-ui-react'
 import ArtistsData from './artists/ArtistsData'
 
 export default class Artists extends React.PureComponent {
@@ -11,8 +11,6 @@ export default class Artists extends React.PureComponent {
   }
 
   componentDidMount () {
-    this.artistsRef = React.createRef()
-
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
@@ -67,11 +65,8 @@ export default class Artists extends React.PureComponent {
 
   artistsData () {
     const { artists, totalPages, currentPage, loading } = this.state
+    const { scrollToTop } = this.props
     const { getData } = this
-
-    const scrollToTop = () => {
-      this.props.scrollToSegmentTop(this.artistsRef)
-    }
 
     const artistsDataProps = {
       artists,
@@ -88,8 +83,6 @@ export default class Artists extends React.PureComponent {
   render () {
     const { artists, error, loading } = this.state
 
-    const innerRef = this.artistsRef
-
     const headerData = <Header as="h3" content="Top artists" />
 
     const artistsData = artists && this.artistsData()
@@ -99,16 +92,14 @@ export default class Artists extends React.PureComponent {
     const contentData = artistsData || errorData
 
     return (
-      <Ref {...{ innerRef }}>
-        <Segment.Group className="tagsPageSegmentWrap">
-          <Segment content={headerData} />
-          <Segment
-            className="tagsPageSegment"
-            content={contentData}
-            {...{ loading }}
-          />
-        </Segment.Group>
-      </Ref>
+      <Segment.Group className="tagsPageSegmentWrap">
+        <Segment content={headerData} />
+        <Segment
+          className="tagsPageSegment"
+          content={contentData}
+          {...{ loading }}
+        />
+      </Segment.Group>
     )
   }
 }

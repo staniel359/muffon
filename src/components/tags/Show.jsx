@@ -6,6 +6,7 @@ import Tracks from './Tracks'
 import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
+import { Ref } from 'semantic-ui-react'
 import 'styles/Tags.sass'
 
 export default class Show extends React.PureComponent {
@@ -88,31 +89,40 @@ export default class Show extends React.PureComponent {
 
   tagData () {
     const { tagName, artistImages } = this.state
-    const { scrollToSegmentTop } = this
 
     const setArtistImages = images => {
       !artistImages && this.setState({ artistImages: images })
     }
 
+    const artistsRef = React.createRef()
+    const albumsRef = React.createRef()
+    const tracksRef = React.createRef()
+
+    const refs = { artistsRef, albumsRef, tracksRef }
+
+    const segment = name => refs[`${name}Ref`]
+    const segmentTop = name => segment(name).current.offsetTop - 60
+    const scrollToTop = name => window.scrollTo(0, segmentTop(name))
+
     const infoProps = { tagName, artistImages }
-    const artistsProps = { tagName, setArtistImages, scrollToSegmentTop }
-    const albumsProps = { tagName, scrollToSegmentTop }
-    const tracksProps = { tagName, scrollToSegmentTop }
+    const artistsProps = { tagName, setArtistImages, scrollToTop }
+    const albumsProps = { tagName, scrollToTop }
+    const tracksProps = { tagName, scrollToTop }
 
     return (
       <div className="tagPage">
         <Info {...infoProps} />
-        <Artists {...artistsProps} />
-        <Albums {...albumsProps} />
-        <Tracks {...tracksProps} />
+        <Ref innerRef={artistsRef}>
+          <Artists {...artistsProps} />
+        </Ref>
+        <Ref innerRef={albumsRef}>
+          <Albums {...albumsProps} />
+        </Ref>
+        <Ref innerRef={tracksRef}>
+          <Tracks {...tracksProps} />
+        </Ref>
       </div>
     )
-  }
-
-  scrollToSegmentTop = segment => {
-    const segmentTop = segment.current.offsetTop - 60
-
-    window.scrollTo(0, segmentTop)
   }
 
   render () {

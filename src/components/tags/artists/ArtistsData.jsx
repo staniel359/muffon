@@ -50,7 +50,7 @@ export default class ArtistsData extends React.PureComponent {
 
     const artistsLoaded = nextArtists !== prevArtists
 
-    artistsLoaded && this.props.scrollToTop()
+    artistsLoaded && this.props.scrollToTop('artists')
   }
 
   setArtistsData () {
@@ -97,7 +97,7 @@ export default class ArtistsData extends React.PureComponent {
 
     const handlePageChange = (_, { activePage }) => {
       const { forward } = this.state
-      const { getData } = this.props
+      const { getData, scrollToTop } = this.props
 
       const page = forward ? activePage : activePage - 1
       const currentPage =
@@ -108,7 +108,7 @@ export default class ArtistsData extends React.PureComponent {
 
       this.setState({ ...{ activePage } })
 
-      this.props.scrollToTop()
+      scrollToTop('artists')
     }
 
     const paginationProps = {
