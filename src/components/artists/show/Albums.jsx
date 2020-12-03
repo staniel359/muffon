@@ -55,7 +55,7 @@ export default class Albums extends React.PureComponent {
     }
 
     const handleFinish = () => {
-      page && this.props.scrollToSegmentTop('albums')
+      page && this.props.scrollToTop('albums')
 
       switchLoader(false)
     }
@@ -108,7 +108,7 @@ export default class Albums extends React.PureComponent {
     const paginationData = albums && this.pagination()
 
     return (
-      <Segment.Group id="albums" className="artistPageSegmentWrap">
+      <Segment.Group className="artistPageSegmentWrap">
         <Segment>
           <Header as="h3">
             <Link to={albumsPageLink}>Top albums</Link>

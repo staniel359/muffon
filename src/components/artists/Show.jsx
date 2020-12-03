@@ -87,13 +87,19 @@ export default class Show extends React.PureComponent {
   artistData () {
     const { artistName } = this.state
 
-    const segmentTop = segmentID =>
-      document.getElementById(segmentID).offsetTop - 60
-    const scrollToSegmentTop = segmentID =>
-      window.scrollTo(0, segmentTop(segmentID))
+    const infoRef = React.createRef()
+    const tracksRef = React.createRef()
+    const albumsRef = React.createRef()
+    const similarRef = React.createRef()
 
-    const leftColumnProps = { artistName, scrollToSegmentTop, segmentTop }
-    const rightColumnProps = { artistName, scrollToSegmentTop }
+    const refs = { infoRef, tracksRef, albumsRef, similarRef }
+
+    const segment = name => refs[`${name}Ref`]
+    const segmentTop = name => segment(name).current.offsetTop - 60
+    const scrollToTop = name => window.scrollTo(0, segmentTop(name))
+
+    const leftColumnProps = { artistName, scrollToTop, segmentTop }
+    const rightColumnProps = { artistName, scrollToTop, refs }
 
     return (
       <React.Fragment>

@@ -7,23 +7,24 @@ import Scrollspy from '../utils/Scrollspy'
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { transitionVisible: false, menuActiveItem: 'info' }
+    this.state = { artistNameVisible: false, menuActiveItem: 'info' }
   }
 
   render () {
-    const { artistName, segmentTop, scrollToSegmentTop } = this.props
-    const { menuActiveItem, transitionVisible } = this.state
+    const { artistName, segmentTop, scrollToTop } = this.props
+    const { artistNameVisible, menuActiveItem } = this.state
 
     const pictureProps = { artistName }
 
     const transitionProps = {
-      visible: transitionVisible,
+      visible: artistNameVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
       mountOnShow: false
     }
-    const transitionText = (
+
+    const transitionData = (
       <Header
         size="medium"
         textAlign="center"
@@ -33,21 +34,31 @@ export default class Left extends React.PureComponent {
       />
     )
 
-    const pageMenuProps = { menuActiveItem, scrollToSegmentTop }
+    const pageMenuProps = { menuActiveItem, scrollToTop }
 
-    const toggleArtistName = bool => {
-      transitionVisible !== bool && this.setState({ transitionVisible: bool })
+    const setArtistNameVisibility = bool => {
+      const visibilityChanged = artistNameVisible !== bool
+
+      visibilityChanged && this.setState({ artistNameVisible: bool })
     }
+
     const setMenuActiveItem = item => {
-      menuActiveItem !== item && this.setState({ menuActiveItem: item })
+      const activeItemChanged = menuActiveItem !== item
+
+      activeItemChanged && this.setState({ menuActiveItem: item })
     }
-    const scrollspyProps = { toggleArtistName, setMenuActiveItem, segmentTop }
+
+    const scrollspyProps = {
+      setArtistNameVisibility,
+      setMenuActiveItem,
+      segmentTop
+    }
 
     return (
       <div className="artistPageLeftColumn">
         <Picture dimmer {...pictureProps} />
 
-        <Transition {...transitionProps}>{transitionText}</Transition>
+        <Transition {...transitionProps}>{transitionData}</Transition>
 
         <PageMenu {...pageMenuProps} />
 

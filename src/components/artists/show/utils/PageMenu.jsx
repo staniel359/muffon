@@ -4,21 +4,19 @@ import { v4 as uuid } from 'uuid'
 
 export default class PageMenu extends React.PureComponent {
   render () {
-    const { menuActiveItem, scrollToSegmentTop } = this.props
+    const { menuActiveItem, scrollToTop } = this.props
 
-    const menuItemNames = ['info', 'tracks', 'albums', 'similar']
+    const menuItems = ['info', 'tracks', 'albums', 'similar']
 
-    const handleClick = (_, { name }) => scrollToSegmentTop(name)
-    const menuItem = name => {
-      return {
-        key: uuid(),
-        name: name,
-        active: menuActiveItem === name,
-        onClick: handleClick
-      }
-    }
+    const handleClick = (_, { name }) => scrollToTop(name)
+    const menuItemData = name => ({
+      key: uuid(),
+      name: name,
+      active: menuActiveItem === name,
+      onClick: handleClick
+    })
 
-    const menuItemsList = menuItemNames.map(menuItem)
+    const menuItemsData = menuItems.map(menuItemData)
 
     return (
       <Menu
@@ -28,7 +26,7 @@ export default class PageMenu extends React.PureComponent {
         inverted
         className="artistPageLeftColumnMenu"
         size="large"
-        items={menuItemsList}
+        items={menuItemsData}
       />
     )
   }

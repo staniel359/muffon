@@ -10,18 +10,24 @@ export default class Scrollspy extends React.PureComponent {
   }
 
   handleScroll = () => {
-    const { setMenuActiveItem, segmentTop, toggleArtistName } = this.props
-    const { scrollY } = window
+    this.setArtistNameVisibility()
+    this.setMenuActiveItem()
+  }
 
-    const bool = scrollY >= 60
+  setArtistNameVisibility () {
+    const artistNameVisible = window.scrollY >= 60
+
+    this.props.setArtistNameVisibility(artistNameVisible)
+  }
+
+  setMenuActiveItem () {
+    const { segmentTop } = this.props
 
     const menuItems = ['info', 'tracks', 'albums', 'similar']
-    const isActiveItem = name => scrollY >= segmentTop(name)
-
+    const isActiveItem = name => window.scrollY >= segmentTop(name)
     const activeItem = menuItems.reverse().find(isActiveItem)
 
-    toggleArtistName(bool)
-    setMenuActiveItem(activeItem)
+    this.props.setMenuActiveItem(activeItem)
   }
 
   render () {

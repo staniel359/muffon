@@ -3,22 +3,26 @@ import Info from '../Info'
 import Tracks from '../Tracks'
 import Albums from '../Albums'
 import Similar from '../Similar'
+import { Ref } from 'semantic-ui-react'
 
 export default class Right extends React.PureComponent {
   render () {
-    const { artistName, scrollToSegmentTop } = this.props
-
-    const segmentProps = { artistName, scrollToSegmentTop }
+    const { artistName, scrollToTop, refs } = this.props
 
     return (
       <div className="artistPageRightColumn">
-        <Info {...segmentProps} />
-
-        <Tracks {...segmentProps} />
-
-        <Albums {...segmentProps} />
-
-        <Similar {...segmentProps} />
+        <Ref innerRef={refs.infoRef}>
+          <Info {...{ artistName }} />
+        </Ref>
+        <Ref innerRef={refs.tracksRef}>
+          <Tracks {...{ artistName, scrollToTop }} />
+        </Ref>
+        <Ref innerRef={refs.albumsRef}>
+          <Albums {...{ artistName, scrollToTop }} />
+        </Ref>
+        <Ref innerRef={refs.similarRef}>
+          <Similar {...{ artistName, scrollToTop }} />
+        </Ref>
       </div>
     )
   }

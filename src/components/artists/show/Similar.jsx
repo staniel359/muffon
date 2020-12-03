@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Segment, Ref } from 'semantic-ui-react'
+import { Header, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
 import { Link } from 'react-router-dom'
@@ -12,8 +12,6 @@ export default class Similar extends React.PureComponent {
   }
 
   componentDidMount () {
-    this.artistsRef = React.createRef()
-
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
@@ -67,11 +65,8 @@ export default class Similar extends React.PureComponent {
 
   artistsData () {
     const { artists, totalPages, currentPage, loading } = this.state
+    const { scrollToTop } = this.props
     const { getData } = this
-
-    const scrollToTop = () => {
-      this.scrollToSegmentTop(this.artistsRef)
-    }
 
     const artistsDataProps = {
       artists,
@@ -85,16 +80,8 @@ export default class Similar extends React.PureComponent {
     return <ArtistsData {...artistsDataProps} />
   }
 
-  scrollToSegmentTop = segment => {
-    const segmentTop = segment.current.offsetTop - 60
-
-    window.scrollTo(0, segmentTop)
-  }
-
   render () {
     const { artists, error, loading } = this.state
-
-    const innerRef = this.artistsRef
 
     const artistsPageLink = `/artists/${this.artistNameEncoded}/similar`
     const artistsPageLinkData = <Link to={artistsPageLink}>Similar</Link>
@@ -107,16 +94,14 @@ export default class Similar extends React.PureComponent {
     const contentData = artistsData || errorData
 
     return (
-      <Ref {...{ innerRef }}>
-        <Segment.Group id="similar" className="artistPageSegmentWrap">
-          <Segment content={headerData} />
-          <Segment
-            className="artistPageSegment"
-            content={contentData}
-            {...{ loading }}
-          />
-        </Segment.Group>
-      </Ref>
+      <Segment.Group className="artistPageSegmentWrap">
+        <Segment content={headerData} />
+        <Segment
+          className="artistPageSegment"
+          content={contentData}
+          {...{ loading }}
+        />
+      </Segment.Group>
     )
   }
 }

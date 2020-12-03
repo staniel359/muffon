@@ -118,7 +118,7 @@ export default class Info extends React.PureComponent {
     const contentData = infoData || errorData
 
     return (
-      <Segment.Group id="info" className="artistPageSegmentWrap">
+      <Segment.Group className="artistPageSegmentWrap">
         <Segment
           className="artistPageSegment"
           content={contentData}
