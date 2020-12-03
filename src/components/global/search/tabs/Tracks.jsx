@@ -24,7 +24,7 @@ export default class Tracks extends React.PureComponent {
     this.request.cancel()
   }
 
-  getData = page => {
+  getData (page) {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
@@ -34,7 +34,7 @@ export default class Tracks extends React.PureComponent {
     const { query } = this.props
 
     const url = '/lastfm/search/tracks'
-    const limit = 40
+    const limit = 50
     const params = { ...{ query, limit, page } }
     const cancelToken = this.request.token
     const extra = { ...{ params, cancelToken } }
@@ -54,7 +54,9 @@ export default class Tracks extends React.PureComponent {
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, tracks: null })
+      const tracks = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, tracks } })
     }
 
     const handleFinish = () => switchLoader(false)

@@ -24,7 +24,7 @@ export default class Albums extends React.PureComponent {
     this.request.cancel()
   }
 
-  getData = page => {
+  getData (page) {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
@@ -54,7 +54,9 @@ export default class Albums extends React.PureComponent {
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: error, albums: null })
+      const albums = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, albums } })
     }
 
     const handleFinish = () => switchLoader(false)

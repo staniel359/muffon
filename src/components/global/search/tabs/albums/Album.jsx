@@ -24,7 +24,7 @@ export default class Album extends React.PureComponent {
         to={albumLink}
         onClick={hideSearch}
       >
-        <Image src={cover} className="searchItemImage" />
+        <Image rounded className="searchItemAlbumCover" src={cover} />
 
         <List.Content className="searchItemContent">
           <List.Header as="h4" content={albumTitle} />
