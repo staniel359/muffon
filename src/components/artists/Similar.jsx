@@ -4,7 +4,7 @@ import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import List from './similar/List'
-import 'styles/artists/similar/Show.sass'
+import 'styles/artists/Similar.sass'
 
 export default class Similar extends React.PureComponent {
   constructor (props) {
@@ -106,7 +106,7 @@ export default class Similar extends React.PureComponent {
     const artistsTableData = <List {...{ artists }} />
 
     return (
-      <Segment className="artistPageSegment" {...{ loading }}>
+      <Segment className="pageSegment" {...{ loading }}>
         {artistsTableData}
 
         <Divider />
@@ -134,7 +134,7 @@ export default class Similar extends React.PureComponent {
     }
 
     return (
-      <div className="artistPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

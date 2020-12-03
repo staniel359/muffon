@@ -9,7 +9,7 @@ export default class List extends React.PureComponent {
 
     const albumData = album => {
       const key = uuid()
-      const albumsProps = { artistName, album, key, itemsPerRow }
+      const albumsProps = { artistName, album, key }
 
       return <Album {...albumsProps} />
     }

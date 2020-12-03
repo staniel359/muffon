@@ -25,13 +25,15 @@ export default class Left extends React.PureComponent {
     }
 
     const transitionData = (
-      <Header
-        size="medium"
-        textAlign="center"
-        className="artistPageLeftColumnText"
-        content={artistName}
-        inverted
-      />
+      <div className="transitionTextWrap">
+        <Header
+          size="medium"
+          textAlign="center"
+          className="transitionText"
+          content={artistName}
+          inverted
+        />
+      </div>
     )
 
     const pageMenuProps = { menuActiveItem, scrollToTop }

@@ -121,7 +121,7 @@ export default class ArtistsData extends React.PureComponent {
     }
 
     return (
-      <div className="tagPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

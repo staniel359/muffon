@@ -104,7 +104,7 @@ export default class Albums extends React.PureComponent {
     }
 
     return (
-      <div className="searchResultsTabPagination">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

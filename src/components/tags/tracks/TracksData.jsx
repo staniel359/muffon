@@ -103,7 +103,7 @@ export default class TracksData extends React.PureComponent {
     }
 
     return (
-      <div className="tagPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

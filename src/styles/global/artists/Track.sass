@@ -1,8 +1,7 @@
-@import 'styles/Base.sass'
+@import 'styles/Global.sass'
 
 .track
-  @extend .flex
-  align-items: center
+  @extend .flex, .alignItemsCenter
   .playButton button
    @extend .margin0
 
@@ -11,20 +10,17 @@
   margin-left: 10px
 
 .trackContentMain
-  @extend .flex
-  align-items: center
+  @extend .flex, .alignItemsCenter
   justify-content: space-between
 
 .trackContentIndexLink
-  @extend .flex
-  align-items: baseline
+  @extend .flex, .alignItemsCenter
 
 .trackContentIndex
   margin-right: 5px
 
 .trackContentCounter
-  @extend .flex
-  align-items: center
+  @extend .flex, .alignItemsCenter
 
 .trackContentCounterLine
   height: 4px
@@ -33,8 +29,7 @@
   margin-right: 5px
 
 .trackContentCounterData
-  @extend .flex
-  align-items: center
+  @extend .flex, .alignItemsCenter
 
 .trackContentLength
   margin-left: 10px

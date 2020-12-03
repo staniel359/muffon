@@ -8,7 +8,7 @@ export default class Navbar extends React.PureComponent {
     const sections = this.props.navSections.map(addKeyToSection)
 
     return (
-      <Menu borderless className="fixed mainMenu">
+      <Menu borderless className="fixed" id="mainMenu">
         <Container>
           <Menu.Item>
             <Breadcrumb size="large" icon="right angle" {...{ sections }} />

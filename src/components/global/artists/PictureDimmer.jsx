@@ -2,6 +2,7 @@ import React from 'react'
 import { Image, Dimmer, Container } from 'semantic-ui-react'
 import Slider from 'react-slick'
 import { v4 as uuid } from 'uuid'
+import 'styles/global/artists/PictureDimmer.sass'
 
 export default class PictureDimmer extends React.PureComponent {
   constructor (props) {

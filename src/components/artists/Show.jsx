@@ -4,7 +4,7 @@ import RightColumn from './show/columns/Right'
 import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import axios from 'axios'
-import 'styles/artists/Show.sass'
+import 'styles/Artists.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {

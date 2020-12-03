@@ -1,0 +1,99 @@
+@import 'semantic-ui-css/semantic.min.css'
+@import "slick-carousel/slick/slick.css"
+@import "slick-carousel/slick/slick-theme.css"
+
+$muffonBase: #804fb3
+$muffonPale: #b589d6
+$semanticGray: #e0e1e2
+$border: 1px solid $semanticGray
+
+.fixed
+  position: fixed !important
+.absolute
+  position: absolute !important
+.relative
+  position: relative !important
+
+.w100
+  width: 100% !important
+.h100
+  height: 100% !important
+
+.noBorder
+  border: none !important
+
+.inlineBlock
+  display: inline-block
+
+.midAlign
+  vertical-align: middle
+
+.flex
+  display: flex !important
+
+.flexColumn
+  @extend .flex
+  flex-direction: column
+
+.alignItemsCenter
+  align-items: center
+
+.margin0
+  margin: 0 !important
+
+.padding0
+  padding: 0 !important
+
+.noShadow
+  box-shadow: none !important
+
+.placeholder.rounded
+  border-radius: 0.3125em
+
+.imageWrap
+  @extend .w100
+  padding-bottom: 100% !important
+  img
+    @extend .absolute
+
+.imageWrapBordered
+  @extend .imageWrap
+  img
+    border: 1px solid rgba(34, 36, 38, 0.1) !important
+
+.cardLight
+  @extend .noShadow
+  text-align: center
+  word-break: break-word
+  .header
+    margin: 5px 0 0 0 !important
+  .content
+    padding: 0 !important
+    border: none !important
+
+.cardLightImage:hover ~ .cardLightMainLink a
+  @extend .colorBase
+
+.colorBase
+  color: $muffonBase !important
+
+.paginationWrap
+  text-align: center
+
+.transitionTextWrap
+  margin: 10px 0
+.transitionTextWrap.hidden
+  display: block !important
+.transitionText
+  @extend .margin0
+
+.pageSegment
+  min-height: calc(100vh - 150px)
+
+.slick-slider
+  .slick-prev
+    left: 10px
+  .slick-next
+    right: 10px
+  .slick-arrow
+    z-index: 1

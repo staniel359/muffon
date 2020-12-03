@@ -5,7 +5,6 @@ import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import LeftColumn from './columns/Left'
 import RightColumn from './columns/Right'
-import 'styles/artists/albums/Show.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
@@ -105,7 +104,7 @@ export default class Show extends React.PureComponent {
     const { album } = this.state
 
     return (
-      <Segment className="albumPage">
+      <Segment className="pageSegment">
         <LeftColumn {...{ album }} />
         <RightColumn {...{ album }} />
       </Segment>

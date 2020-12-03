@@ -1,4 +1,4 @@
-@import './Base.sass'
+@import './Global.sass'
 
 html
   scroll-behavior: smooth
@@ -8,7 +8,7 @@ a
 a:not(.label):not(.item)
   color: initial !important
   &:hover
-    color: $muffonBase !important
+    @extend .colorBase
 
 @media only screen and (max-width: 767px)
   .ui.container
@@ -19,38 +19,12 @@ a:not(.label):not(.item)
 
 #background
   @extend .fixed, .w100, .h100
-  z-index: -1
-  background-image: url('../../dist/images/background.jpg')
-  background-position: center
-  background-repeat: no-repeat
-  background-size: cover
+  background: url('/dist/images/background.jpg') center/cover no-repeat
 
-.mainMenu
+#mainMenu
   @extend .noBorder
   z-index: 1500 !important
   height: 40px
 
-.mainContainer
+#mainContainer
   padding: 60px 0 90px 0
-
-.placeholder.rounded
-  border-radius: 0.3125em
-
-.imageWrap
-  @extend .w100
-  padding-bottom: 100% !important
-  img
-    @extend .absolute
-
-.imageWrapBordered
-  @extend .imageWrap
-  img
-    border: 1px solid rgba(34, 36, 38, 0.1) !important
-
-.slick-slider
-  .slick-prev
-    left: 10px
-  .slick-next
-    right: 10px
-  .slick-arrow
-    z-index: 1

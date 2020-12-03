@@ -13,7 +13,7 @@ export default class Main extends React.PureComponent {
       'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
     const cover = covers ? covers.small : defaultCover
     const coverData = (
-      <Image wrapped className="trackPageItemCover" src={cover} />
+      <Image wrapped className="trackPageCardCover" src={cover} />
     )
 
     const trackTitleData = <Header as="h3" content={track.title} />
@@ -29,7 +29,7 @@ export default class Main extends React.PureComponent {
     const albumTitleData = <Link to={albumPageLink}>{track.album.title}</Link>
 
     const contentData = (
-      <div className="trackPageItemContent">
+      <div className="trackPageCardContent">
         {trackTitleData}
         {artistNameData}
         {albumTitleData}
@@ -40,10 +40,10 @@ export default class Main extends React.PureComponent {
     const playerData = <PlayerContextWrap {...playerProps} />
 
     return (
-      <Segment.Group horizontal className="trackPageItem">
+      <Segment.Group horizontal className="trackPageCard">
         {coverData}
 
-        <Segment className="trackPageItemContentWrap">
+        <Segment className="trackPageCardContentWrap">
           {contentData}
           {playerData}
         </Segment>

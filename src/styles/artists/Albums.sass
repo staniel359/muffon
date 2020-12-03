@@ -1,7 +1,4 @@
-@import 'styles/Base.sass'
-
-.albumPage
-  min-height: calc(100vh - 150px)
+@import 'styles/Global.sass'
 
 // Left column
 
@@ -9,22 +6,11 @@
   width: 220px
   position: fixed
 
-.albumPageAlbumCover
-  margin-bottom: 0.5em
-
-.albumPageLeftColumnText
-  @extend .margin0
-.albumPageLeftColumnText.hidden
-  display: block !important
-
-// Dimmer
-
-.albumCoverDimmer
+.albumPageDimmer
   z-index: 3000 !important
   padding: 2em !important
   .content
-    @extend .h100, .flex
-    align-items: center
+    @extend .h100, .flex, .alignItemsCenter
     img
       max-height: 100%
 
@@ -33,7 +19,7 @@
 .albumPageRightColumn
   margin: 0 0 0 240px
 
-.albumPageHeader
+.albumPageMainHeader
   margin-bottom: 10px
   .header
     @extend .margin0

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Container, Sidebar, Segment } from 'semantic-ui-react'
-import AudioContainerContextWrap from './audio/AudioContainerContextWrap'
-import Controls from './audio/Controls'
-import TimeBarContextWrap from './audio/TimeBarContextWrap'
-import Track from './Track'
+import AudioContainerContextWrap from './player/audio/AudioContainerContextWrap'
+import Controls from './player/audio/Controls'
+import TimeBarContextWrap from './player/audio/TimeBarContextWrap'
+import Track from './player/Track'
 import 'styles/global/Player.sass'
 
 export default class Panel extends React.PureComponent {

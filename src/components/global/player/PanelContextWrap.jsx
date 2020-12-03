@@ -1,6 +1,6 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import PlayerPanel from './Panel'
+import Player from 'global/Player'
 
 export default class PanelContextWrap extends React.PureComponent {
   render () {
@@ -9,7 +9,7 @@ export default class PanelContextWrap extends React.PureComponent {
         {context => {
           const { currentTrack } = context
 
-          return <PlayerPanel {...{ currentTrack }} />
+          return <Player {...{ currentTrack }} />
         }}
       </PlayerContext.Consumer>
     )

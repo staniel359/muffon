@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import List from './albums/List'
+import List from '../albums/List'
 import ErrorMessage from 'partials/ErrorMessage'
 import { Link } from 'react-router-dom'
 
@@ -33,7 +33,7 @@ export default class Albums extends React.PureComponent {
     switchLoader(true)
 
     const url = `/lastfm/artists/${this.artistNameEncoded}/albums`
-    const limit = 4
+    const limit = 3
     const params = { ...{ limit, page } }
     const cancelToken = this.request.token
     const extra = { ...{ params, cancelToken } }
@@ -85,7 +85,7 @@ export default class Albums extends React.PureComponent {
     }
 
     return (
-      <div className="artistPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )
@@ -97,7 +97,7 @@ export default class Albums extends React.PureComponent {
 
     const albumsPageLink = `/artists/${this.artistNameEncoded}/albums`
 
-    const itemsPerRow = 2
+    const itemsPerRow = 3
     const albumsDataProps = { albums, artistName, itemsPerRow }
     const albumsData = albums && <List {...albumsDataProps} />
 

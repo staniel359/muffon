@@ -1,7 +1,7 @@
 import React from 'react'
 import { List, Icon, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import 'styles/global/Track.sass'
+import 'styles/global/artists/Track.sass'
 
 export default class Track extends React.PureComponent {
   constructor (props) {

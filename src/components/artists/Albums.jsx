@@ -3,7 +3,8 @@ import { Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
-import List from './show/albums/List'
+import List from './albums/List'
+import 'styles/artists/Albums.sass'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -108,7 +109,7 @@ export default class Albums extends React.PureComponent {
     const albumsListData = <List {...albumsListProps} />
 
     return (
-      <Segment className="artistPageSegment" {...{ loading }}>
+      <Segment className="pageSegment" {...{ loading }}>
         {albumsListData}
 
         <Divider />
@@ -136,7 +137,7 @@ export default class Albums extends React.PureComponent {
     }
 
     return (
-      <div className="artistPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

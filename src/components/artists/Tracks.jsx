@@ -4,6 +4,7 @@ import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import List from './show/tracks/List'
+import 'styles/artists/Tracks.sass'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -113,7 +114,7 @@ export default class Tracks extends React.PureComponent {
     const tracksListData = <List {...tracksListProps} />
 
     return (
-      <Segment className="artistPageSegment" {...{ loading }}>
+      <Segment className="pageSegment" {...{ loading }}>
         {tracksListData}
 
         <Divider />
@@ -141,7 +142,7 @@ export default class Tracks extends React.PureComponent {
     }
 
     return (
-      <div className="artistPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

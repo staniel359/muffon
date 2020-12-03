@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image, Header, Transition, Dimmer } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default class Left extends React.PureComponent {
   constructor (props) {
@@ -38,7 +39,7 @@ export default class Left extends React.PureComponent {
       <Image
         rounded
         wrapped
-        className="imageWrapBordered albumPageAlbumCover"
+        className="imageWrapBordered"
         src={cover || defaultCover}
         style={coverStyle}
         onClick={showDimmer}
@@ -55,19 +56,22 @@ export default class Left extends React.PureComponent {
 
     const albumTitle = album.title
     const artistName = album.artist
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistPageLink = `/artists/${artistNameEncoded}`
+    const artistPageLinkData = <Link to={artistPageLink}>{artistName}</Link>
     const transitionText = (
-      <div>
+      <div className="transitionTextWrap">
         <Header
           as="h3"
           textAlign="center"
-          className="albumPageLeftColumnText"
+          className="transitionText"
           content={albumTitle}
         />
         <Header
           as="h4"
           textAlign="center"
-          className="albumPageLeftColumnText"
-          content={artistName}
+          className="transitionText"
+          content={artistPageLinkData}
         />
       </div>
     )
@@ -81,7 +85,7 @@ export default class Left extends React.PureComponent {
     const dimmerData = cover && (
       <Dimmer
         page
-        className="albumCoverDimmer"
+        className="albumPageDimmer"
         active={dimmerActive}
         onClick={hideDimmer}
         content={dimmerImage}

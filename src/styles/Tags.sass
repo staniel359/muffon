@@ -1,4 +1,4 @@
-@import 'styles/Base.sass'
+@import 'styles/Global.sass'
 
 .tagsPageSegmentWrap
   @extend .noBorder
@@ -26,8 +26,7 @@
   background: #272a2b99
 
 .tagPageTagName
-  @extend .flex
-  align-items: center
+  @extend .flex, .alignItemsCenter
   margin-bottom: 10px
   i
     margin-right: 5px
@@ -38,21 +37,6 @@
 .tagPageDescription
   max-height: 100%
   overflow-y: scroll
-
-.tagPageCard
-  @extend .noShadow
-  text-align: center
-  word-break: break-word
-  .header
-    margin: 5px 0 0 0 !important
-  .content
-    padding: 0 !important
-    border: none !important
-  .tagPageCardImage:hover ~ .tagPageCardMainLink a
-    color: $muffonBase !important
-
-.tagPagePaginationWrap
-  text-align: center
 
 .tagPageHeaderImage
   width: calc(100% / 6)

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Loader } from 'semantic-ui-react'
+import { Loader, Icon } from 'semantic-ui-react'
 
 export default class ListenersCount extends React.PureComponent {
   constructor (props) {
@@ -61,7 +61,12 @@ export default class ListenersCount extends React.PureComponent {
 
     const loaderData = loading && <Loader active inline size="mini" />
 
-    const listenersData = listenersCount && listenersCount.toLocaleString('eu')
+    const listenersData = listenersCount && (
+      <div>
+        <Icon name="user" />
+        {listenersCount.toLocaleString('eu')}
+      </div>
+    )
 
     const contentData = loaderData || listenersData
 

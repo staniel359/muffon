@@ -64,7 +64,7 @@ export default class Player extends React.PureComponent {
       <Button
         basic
         size="large"
-        className="trackPageItemPlayerPlayButton"
+        className="trackPagePlayerPlayButton"
         icon={playButtonIcon()}
         onClick={handleTrackClick}
         {...{ loading, disabled }}
@@ -72,16 +72,13 @@ export default class Player extends React.PureComponent {
     )
 
     const placeholderData = (
-      <div
-        className="trackPageItemPlayerPlaceholder"
-        onClick={handleTrackClick}
-      >
+      <div className="trackPagePlayerPlaceholder" onClick={handleTrackClick}>
         Click to play
       </div>
     )
 
     const timeBarData = (
-      <div className="trackPageItemPlayerTimeBar">
+      <div className="trackPagePlayerTimeBar">
         <TimeBarContextWrap />
       </div>
     )
@@ -90,11 +87,11 @@ export default class Player extends React.PureComponent {
 
     const lengthFormatted = new Date(length * 1000).toISOString().substr(14, 5)
     const lengthData = length > 0 && (
-      <div className="trackPageItemPlayerLength">{lengthFormatted}</div>
+      <div className="trackPagePlayerLength">{lengthFormatted}</div>
     )
 
     return (
-      <div className="trackPageItemPlayer">
+      <div className="trackPagePlayer">
         {playButtonData}
         {timeBarPlaceholderData}
         {lengthData}

@@ -13,13 +13,13 @@ export default class Artist extends React.PureComponent {
 
     const src = artist.images.medium
     const imageData = (
-      <Link className="similarPageItemImage" to={similarArtistPageLink}>
+      <Link className="similarCardImage" to={similarArtistPageLink}>
         <Image rounded {...{ src }} />
       </Link>
     )
 
     const nameData = (
-      <Header as="h2" className="similarPageItemArtistName">
+      <Header as="h2" className="similarCardMainLink">
         <Link to={similarArtistPageLink}>{name}</Link>
       </Header>
     )
@@ -51,7 +51,7 @@ export default class Artist extends React.PureComponent {
     const descriptionData = <div>{description || 'No description.'}</div>
 
     const contentData = (
-      <Segment className="similarPageItemContent">
+      <Segment className="similarCardContent">
         {nameData}
         {tagsListData}
         {countersData}
@@ -60,7 +60,7 @@ export default class Artist extends React.PureComponent {
     )
 
     return (
-      <div className="similarPageItem">
+      <div className="similarCard">
         {imageData}
         {contentData}
       </div>

@@ -1,0 +1,30 @@
+@import 'styles/Global.sass'
+
+.artistPictureDimmer
+  z-index: 3000 !important
+  padding: 2em !important
+  .content
+    @extend .h100, .w100
+
+.artistPictureDimmerImageContainer
+  height: calc(100% - 100px)
+  padding-bottom: 2em
+  .slick-slider,
+  .slick-list,
+  .slick-track,
+  .slick-slide,
+  .slick-slide > div
+    @extend .h100
+
+.artistPictureDimmerImageWrap
+  @extend .h100, .flex, .alignItemsCenter
+  justify-content: center
+  outline: none
+  img
+    max-height: 100%
+
+.artistPictureDimmerImagesContainer
+  .slick-slide
+    cursor: pointer
+    img
+      outline: none !important

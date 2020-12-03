@@ -15,7 +15,7 @@ export default class Artist extends React.PureComponent {
         wrapped
         circular
         size="small"
-        className="tagPageCardImage imageWrapBordered"
+        className="cardLightImage imageWrapBordered"
         src={artist.image}
         as={Link}
         to={artistPageLink}
@@ -25,7 +25,7 @@ export default class Artist extends React.PureComponent {
     const headerData = (
       <Header
         as="h3"
-        className="tagPageCardMainLink"
+        className="cardLightMainLink"
         content={artistPageLinkData}
       />
     )
@@ -44,7 +44,7 @@ export default class Artist extends React.PureComponent {
     )
 
     return (
-      <Card key={uuid()} className="tagPageCard">
+      <Card key={uuid()} className="cardLight">
         <div />
         {imageData}
         {headerData}

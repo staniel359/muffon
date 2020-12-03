@@ -10,21 +10,19 @@ export default class Right extends React.PureComponent {
     const { tags, description, tracks } = album
 
     const albumTitle = album.title
-    const albumTitleData = (
-      <Header as="h2" className="albumPageAlbumTitle" content={albumTitle} />
-    )
+    const albumTitleData = <Header as="h2" content={albumTitle} />
 
     const artistName = album.artist
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistPageLink = `/artists/${artistNameEncoded}`
     const artistNameData = (
-      <Header as="h3" className="albumPageArtistName">
+      <Header as="h3">
         <Link to={artistPageLink}>{artistName}</Link>
       </Header>
     )
 
     const headerData = (
-      <div className="albumPageHeader">
+      <div className="albumPageMainHeader">
         {albumTitleData}
         {artistNameData}
       </div>

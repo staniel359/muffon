@@ -6,7 +6,7 @@ import Tracks from './Tracks'
 import axios from 'axios'
 import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
-import 'styles/tags/Show.sass'
+import 'styles/Tags.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {

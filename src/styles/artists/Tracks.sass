@@ -1,0 +1,58 @@
+@import 'styles/Global.sass'
+
+$coverSize: 150px
+
+.trackPageCard
+  margin: 0 0 20px 0 !important
+
+.trackPageCardCover
+  height: $coverSize
+  width: $coverSize
+  border-top-left-radius: inherit
+  border-bottom-left-radius: inherit
+  img
+    border-radius: inherit
+
+.trackPageCardContentWrap
+  @extend .padding0, .flexColumn
+  .header
+    @extend .margin0
+
+.trackPageCardContent
+  @extend .h100
+  padding: 1em
+
+// Player
+
+.trackPagePlayer
+  @extend .flex
+  border-top: $border
+
+.trackPagePlayerPlayButton
+  @extend .margin0
+  box-shadow: none !important
+  border-radius: 0 !important
+
+.trackPagePlayerItem
+  @extend .flex, .alignItemsCenter
+  padding: 0 1em
+  border-left: $border
+
+.trackPagePlayerPlaceholder
+  @extend .trackPagePlayerItem, .w100
+  cursor: pointer
+
+.trackPagePlayerTimeBar
+  @extend .trackPagePlayerItem, .w100
+
+.trackPagePlayerLength
+  @extend .trackPagePlayerItem
+
+// Extra
+
+.trackPageExtra
+  margin-left: calc(#{$coverSize} + 1em)
+
+.trackPageDescription
+  max-height: 200px
+  overflow-y: scroll

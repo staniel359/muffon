@@ -89,7 +89,7 @@ export default class Tracks extends React.PureComponent {
     }
 
     return (
-      <div className="artistPagePaginationWrap">
+      <div className="paginationWrap">
         <Pagination {...paginationProps} />
       </div>
     )

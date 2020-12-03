@@ -5,7 +5,6 @@ import ErrorMessage from 'partials/ErrorMessage'
 import LoaderDimmer from 'partials/LoaderDimmer'
 import Main from './data/Main'
 import Extra from './data/Extra'
-import 'styles/artists/tracks/Show.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
@@ -103,7 +102,7 @@ export default class Show extends React.PureComponent {
     const { track } = this.state
 
     return (
-      <Segment className="trackPage">
+      <Segment className="pageSegment">
         <Main {...{ track }} />
         <Extra {...{ track }} />
       </Segment>

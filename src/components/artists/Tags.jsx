@@ -5,7 +5,6 @@ import LoaderDimmer from 'partials/LoaderDimmer'
 import { Segment, Label } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 import { Link } from 'react-router-dom'
-import 'styles/artists/tags/Show.sass'
 
 export default class Tags extends React.PureComponent {
   constructor (props) {
@@ -107,7 +106,7 @@ export default class Tags extends React.PureComponent {
     const tagsData = <Label.Group size="large">{tagsListData}</Label.Group>
 
     return (
-      <Segment className="tagsPage" {...{ loading }}>
+      <Segment className="pageSegment" {...{ loading }}>
         {tagsData}
       </Segment>
     )

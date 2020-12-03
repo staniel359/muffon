@@ -15,7 +15,7 @@ export default class Album extends React.PureComponent {
         wrapped
         rounded
         size="small"
-        className="tagPageCardImage imageWrapBordered"
+        className="cardLightImage imageWrapBordered"
         src={album.cover}
         as={Link}
         to={albumPageLink}
@@ -26,7 +26,7 @@ export default class Album extends React.PureComponent {
     const headerData = (
       <Header
         as="h3"
-        className="tagPageCardMainLink"
+        className="cardLightMainLink"
         content={albumPageLinkData}
       />
     )
@@ -47,7 +47,7 @@ export default class Album extends React.PureComponent {
     )
 
     return (
-      <Card key={uuid()} className="tagPageCard">
+      <Card key={uuid()} className="cardLight">
         <div />
         {coverData}
         {headerData}

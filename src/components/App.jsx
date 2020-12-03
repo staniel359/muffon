@@ -43,7 +43,7 @@ export default class App extends React.PureComponent {
         <PlayerProvider>
           <Navbar {...navbarProps} />
 
-          <Container className="mainContainer">
+          <Container id="mainContainer">
             <Routes {...routesProps} />
 
             <Search {...searchProps} />
