@@ -1,6 +1,7 @@
 import React from 'react'
-import { List, Image } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import Picture from 'global/artists/Picture'
 
 export default class Artist extends React.PureComponent {
   render () {
@@ -9,8 +10,6 @@ export default class Artist extends React.PureComponent {
     const artistName = artist.name
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistLink = `/artists/${artistNameEncoded}`
-
-    const artistImage = artist.image
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')
 
@@ -21,7 +20,9 @@ export default class Artist extends React.PureComponent {
         to={artistLink}
         onClick={hideSearch}
       >
-        <Image src={artistImage} avatar className="searchItemImage" />
+        <div className="searchItemImage">
+          <Picture circular size="extrasmall" {...{ artistName }} />
+        </div>
 
         <List.Content className="searchItemContent">
           <List.Header as="h4" content={artistName} />

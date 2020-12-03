@@ -105,9 +105,18 @@ export default class Picture extends React.PureComponent {
   }
 
   artistImageBasic () {
+    const { circular } = this.props
+
     const src = this.state.images[0][this.props.size]
 
-    return <Image rounded wrapped className="imageWrapBordered" {...{ src }} />
+    return (
+      <Image
+        wrapped
+        className="imageWrapBordered"
+        rounded={!circular}
+        {...{ src, circular }}
+      />
+    )
   }
 
   artistImageData () {
@@ -117,18 +126,32 @@ export default class Picture extends React.PureComponent {
   }
 
   defaultImage () {
+    const { circular } = this.props
+
     const src =
       'https://lastfm.freetls.fastly.net/i/u/600x600/' +
       '2a96cbd8b46e442fc41c2b86b821562f.png'
 
-    return <Image rounded wrapped className="imageWrap" {...{ src }} />
+    return (
+      <Image
+        wrapped
+        className="imageWrap"
+        rounded={!circular}
+        {...{ src, circular }}
+      />
+    )
   }
 
   render () {
     const { loading, images } = this.state
+    const { circular } = this.props
 
+    const placeholderClassName = circular ? 'circular' : 'rounded'
     const placeholderImageData = loading && (
-      <Placeholder className="rounded" content={<Placeholder.Image square />} />
+      <Placeholder
+        className={placeholderClassName}
+        content={<Placeholder.Image square />}
+      />
     )
 
     const anyImages = images.length > 0
