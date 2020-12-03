@@ -62,6 +62,8 @@ export default class ErrorMessage extends React.PureComponent {
           return errors.connection
         }
       } else {
+        console.log(error)
+
         return errors.client
       }
     }

@@ -31,15 +31,13 @@ export default class Artists extends React.PureComponent {
 
     switchLoader(true)
 
-    const { query } = this.props
+    const { query, scrollToTop } = this.props
 
     const url = '/lastfm/search/artists'
     const limit = 20
     const params = { ...{ query, limit, page } }
     const cancelToken = this.request.token
     const extra = { ...{ params, cancelToken } }
-
-    const scrollToTabTop = () => (this.tabRef.current.scrollTop = 0)
 
     const handleSuccess = resp => {
       const { search } = resp.data
@@ -50,7 +48,7 @@ export default class Artists extends React.PureComponent {
         error: null
       })
 
-      scrollToTabTop()
+      scrollToTop('artists')
     }
 
     const handleError = error => {
@@ -70,13 +68,13 @@ export default class Artists extends React.PureComponent {
 
   artistsData () {
     const { artists } = this.state
-    const { hideSearch } = this.props
+    const { hideSearch, artistsRef } = this.props
 
     const artistsListDataProps = { artists, hideSearch }
     const artistsListData = <List {...artistsListDataProps} />
 
     return (
-      <Ref innerRef={this.tabRef}>
+      <Ref innerRef={artistsRef}>
         <div className="searchResultsTabContent">
           {artistsListData}
 

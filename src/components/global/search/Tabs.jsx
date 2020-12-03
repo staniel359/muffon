@@ -11,14 +11,52 @@ export default class Tabs extends React.PureComponent {
 
     const tabMenu = { fluid: true, pointing: true, secondary: true }
 
-    const tabPaneProps = { query, hideSearch }
+    const artistsRef = React.createRef()
+    const albumsRef = React.createRef()
+    const tracksRef = React.createRef()
+
+    const refs = { artistsRef, albumsRef, tracksRef }
+
+    const tab = name => refs[`${name}Ref`]
+    const scrollToTop = name => (tab(name).current.scrollTop = 0)
+
+    const tabPaneProps = { query, hideSearch, scrollToTop }
+
+    const artistsData = () => {
+      const key = uuid()
+
+      const artistsProps = { ...tabPaneProps, artistsRef, key }
+
+      return <Artists {...artistsProps} />
+    }
+
+    const albumsData = () => {
+      const key = uuid()
+
+      const albumsProps = { ...tabPaneProps, albumsRef, key }
+
+      return <Albums {...albumsProps} />
+    }
+
+    const tracksData = () => {
+      const key = uuid()
+
+      const tracksProps = { ...tabPaneProps, tracksRef, key }
+
+      return <Tracks {...tracksProps} />
+    }
+
     const tabPanes = [
-      ['Artists', <Artists key={uuid()} {...tabPaneProps} />],
-      ['Albums', <Albums key={uuid()} {...tabPaneProps} />],
-      ['Tracks', <Tracks key={uuid()} {...tabPaneProps} />]
+      ['Artists', artistsData()],
+      ['Albums', albumsData()],
+      ['Tracks', tracksData()]
     ]
 
-    const tabPaneData = data => ({ menuItem: data[0], pane: data[1] })
+    const tabPaneData = data => {
+      const [menuItem, pane] = data
+
+      return { ...{ menuItem, pane } }
+    }
 
     const tabPanesData = tabPanes.map(tabPaneData)
 
