@@ -1,6 +1,7 @@
 import React from 'react'
 import List from './List'
-import { Pagination, Divider } from 'semantic-ui-react'
+import { Divider } from 'semantic-ui-react'
+import Pagination from 'global/Pagination'
 
 export default class ArtistsData extends React.PureComponent {
   constructor (props) {
@@ -80,11 +81,23 @@ export default class ArtistsData extends React.PureComponent {
     this.setState({ ...{ artistsPaginated, artists } })
   }
 
-  pagination () {
-    const { totalPages, loading } = this.props
+  render () {
+    const { loading } = this.props
 
-    const totalPagesCount = Math.floor(
-      (totalPages * this.currentPageLimit) / this.activePageLimit
+    const activePageArtists = () => {
+      const { artists, activePage } = this.state
+
+      const offset = (activePage - 1) * this.activePageLimit
+      const limit = offset + this.activePageLimit
+
+      return artists.slice(offset, limit).filter(a => a)
+    }
+
+    const artists = activePageArtists()
+    const artistsDataProps = { artists }
+
+    const totalPages = Math.floor(
+      (this.props.totalPages * this.currentPageLimit) / this.activePageLimit
     )
 
     const currentPageArtists = page => {
@@ -95,7 +108,7 @@ export default class ArtistsData extends React.PureComponent {
       return artists ? artists.filter(a => a) : []
     }
 
-    const handlePageChange = (_, { activePage }) => {
+    const handlePageChange = activePage => {
       const { forward } = this.state
       const { getData, scrollToTop } = this.props
 
@@ -111,41 +124,15 @@ export default class ArtistsData extends React.PureComponent {
       scrollToTop('artists')
     }
 
-    const paginationProps = {
-      totalPages: totalPagesCount,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0,
-      disabled: loading
-    }
-
-    return (
-      <div className="paginationWrap">
-        <Pagination {...paginationProps} />
-      </div>
-    )
-  }
-
-  render () {
-    const activePageArtists = () => {
-      const { artists, activePage } = this.state
-
-      const offset = (activePage - 1) * this.activePageLimit
-      const limit = offset + this.activePageLimit
-
-      return artists.slice(offset, limit).filter(a => a)
-    }
-
-    const listProps = { artists: activePageArtists() }
+    const paginationProps = { totalPages, loading, handlePageChange }
 
     return (
       <React.Fragment>
-        <List {...listProps} />
+        <List {...artistsDataProps} />
 
         <Divider />
 
-        {this.pagination()}
+        <Pagination {...paginationProps} />
       </React.Fragment>
     )
   }

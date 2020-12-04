@@ -1,9 +1,10 @@
 import React from 'react'
-import { Segment, Pagination, Divider } from 'semantic-ui-react'
+import { Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import LoaderDimmer from 'global/LoaderDimmer'
 import List from './show/tracks/List'
+import Pagination from 'global/Pagination'
 import 'styles/artists/Tracks.sass'
 
 export default class Tracks extends React.PureComponent {
@@ -107,51 +108,35 @@ export default class Tracks extends React.PureComponent {
       .then(handleFinish)
   }
 
-  tracksList () {
-    const { tracks, loading, artistName, topTrackCount } = this.state
+  tracksData () {
+    const {
+      tracks,
+      loading,
+      artistName,
+      topTrackCount,
+      totalPages
+    } = this.state
 
-    const tracksListProps = { tracks, artistName, topTrackCount }
-    const tracksListData = <List {...tracksListProps} />
+    const tracksDataProps = { tracks, artistName, topTrackCount }
+
+    const handlePageChange = this.getData
+    const paginationProps = { totalPages, loading, handlePageChange }
 
     return (
       <Segment className="pageSegment" {...{ loading }}>
-        {tracksListData}
+        <List {...tracksDataProps} />
 
         <Divider />
 
-        {this.pagination()}
-      </Segment>
-    )
-  }
-
-  pagination () {
-    const { totalPages, loading } = this.state
-
-    const handlePageChange = (_, { activePage }) => {
-      this.setState({ currentPage: activePage })
-      this.getData(activePage)
-    }
-
-    const paginationProps = {
-      totalPages: totalPages,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0,
-      disabled: loading
-    }
-
-    return (
-      <div className="paginationWrap">
         <Pagination {...paginationProps} />
-      </div>
+      </Segment>
     )
   }
 
   render () {
     const { loading, tracks, error } = this.state
 
-    const tracksData = tracks && this.tracksList()
+    const tracksData = tracks && this.tracksData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 

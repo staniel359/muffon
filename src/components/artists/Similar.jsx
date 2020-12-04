@@ -1,9 +1,10 @@
 import React from 'react'
-import { Segment, Pagination, Divider } from 'semantic-ui-react'
+import { Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import LoaderDimmer from 'global/LoaderDimmer'
 import List from './similar/List'
+import Pagination from 'global/Pagination'
 import 'styles/artists/Similar.sass'
 
 export default class Similar extends React.PureComponent {
@@ -100,50 +101,29 @@ export default class Similar extends React.PureComponent {
       .then(handleFinish)
   }
 
-  artistsTable () {
-    const { artists, loading } = this.state
+  artistsData () {
+    const { artists, loading, totalPages } = this.state
 
-    const artistsTableData = <List {...{ artists }} />
+    const artistsDataProps = { artists }
+
+    const handlePageChange = this.getData
+    const paginationProps = { totalPages, loading, handlePageChange }
 
     return (
       <Segment className="pageSegment" {...{ loading }}>
-        {artistsTableData}
+        <List {...artistsDataProps} />
 
         <Divider />
 
-        {this.pagination()}
-      </Segment>
-    )
-  }
-
-  pagination () {
-    const { totalPages, loading } = this.state
-
-    const handlePageChange = (_, { activePage }) => {
-      this.setState({ currentPage: activePage })
-      this.getData(activePage)
-    }
-
-    const paginationProps = {
-      totalPages: totalPages,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0,
-      disabled: loading
-    }
-
-    return (
-      <div className="paginationWrap">
         <Pagination {...paginationProps} />
-      </div>
+      </Segment>
     )
   }
 
   render () {
     const { loading, artists, error } = this.state
 
-    const artistsData = artists && this.artistsTable()
+    const artistsData = artists && this.artistsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 

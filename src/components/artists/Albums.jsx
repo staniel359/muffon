@@ -1,9 +1,10 @@
 import React from 'react'
-import { Segment, Pagination, Divider } from 'semantic-ui-react'
+import { Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import LoaderDimmer from 'global/LoaderDimmer'
 import List from './albums/List'
+import Pagination from 'global/Pagination'
 import 'styles/artists/Albums.sass'
 
 export default class Albums extends React.PureComponent {
@@ -101,52 +102,30 @@ export default class Albums extends React.PureComponent {
       .then(handleFinish)
   }
 
-  albumsList () {
-    const { albums, loading, artistName } = this.state
+  albumsData () {
+    const { albums, loading, artistName, totalPages } = this.state
 
     const itemsPerRow = 4
-    const albumsListProps = { albums, artistName, itemsPerRow }
-    const albumsListData = <List {...albumsListProps} />
+    const albumsDataProps = { albums, artistName, itemsPerRow }
+
+    const handlePageChange = this.getData
+    const paginationProps = { totalPages, loading, handlePageChange }
 
     return (
       <Segment className="pageSegment" {...{ loading }}>
-        {albumsListData}
+        <List {...albumsDataProps} />
 
         <Divider />
 
-        {this.pagination()}
-      </Segment>
-    )
-  }
-
-  pagination () {
-    const { totalPages, loading } = this.state
-
-    const handlePageChange = (_, { activePage }) => {
-      this.setState({ currentPage: activePage })
-      this.getData(activePage)
-    }
-
-    const paginationProps = {
-      totalPages: totalPages,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0,
-      disabled: loading
-    }
-
-    return (
-      <div className="paginationWrap">
         <Pagination {...paginationProps} />
-      </div>
+      </Segment>
     )
   }
 
   render () {
     const { loading, albums, error } = this.state
 
-    const albumsData = albums && this.albumsList()
+    const albumsData = albums && this.albumsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import { Header, Segment, Pagination, Divider } from 'semantic-ui-react'
+import { Header, Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import List from './tracks/List'
 import ErrorMessage from 'global/ErrorMessage'
 import { Link } from 'react-router-dom'
+import Pagination from 'global/Pagination'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -25,7 +26,7 @@ export default class Tracks extends React.PureComponent {
 
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
-  getData (page) {
+  getData = page => {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
@@ -72,10 +73,13 @@ export default class Tracks extends React.PureComponent {
   }
 
   tracksData () {
-    const { tracks, topTrackCount } = this.state
+    const { tracks, topTrackCount, totalPages, loading } = this.state
     const { artistName } = this.props
 
     const tracksDataProps = { tracks, topTrackCount, artistName }
+
+    const handlePageChange = this.getData
+    const paginationProps = { totalPages, loading, handlePageChange }
 
     return (
       <React.Fragment>
@@ -83,32 +87,8 @@ export default class Tracks extends React.PureComponent {
 
         <Divider />
 
-        {this.pagination()}
-      </React.Fragment>
-    )
-  }
-
-  pagination () {
-    const { totalPages, loading } = this.state
-
-    const handlePageChange = (_, { activePage }) => {
-      this.setState({ currentPage: activePage })
-      this.getData(activePage)
-    }
-
-    const paginationProps = {
-      totalPages: totalPages,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0,
-      disabled: loading
-    }
-
-    return (
-      <div className="paginationWrap">
         <Pagination {...paginationProps} />
-      </div>
+      </React.Fragment>
     )
   }
 

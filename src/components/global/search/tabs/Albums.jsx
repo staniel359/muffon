@@ -1,8 +1,9 @@
 import React from 'react'
-import { Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
+import { Tab, Ref, Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import List from './albums/List'
+import Pagination from 'global/Pagination'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -24,7 +25,7 @@ export default class Albums extends React.PureComponent {
     this.request.cancel()
   }
 
-  getData (page) {
+  getData = page => {
     const switchLoader = loading => {
       this._isMounted && this.setState({ ...{ loading } })
     }
@@ -67,46 +68,24 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums } = this.state
+    const { albums, totalPages, loading } = this.state
     const { hideSearch, albumsRef } = this.props
 
-    const albumsListDataProps = { albums, hideSearch }
-    const albumsListData = <List {...albumsListDataProps} />
+    const albumsDataProps = { albums, hideSearch }
+
+    const handlePageChange = this.getData
+    const paginationProps = { totalPages, loading, handlePageChange }
 
     return (
       <Ref innerRef={albumsRef}>
         <div className="searchResultsTabContent">
-          {albumsListData}
+          <List {...albumsDataProps} />
 
           <Divider />
 
-          {this.pagination()}
+          <Pagination {...paginationProps} />
         </div>
       </Ref>
-    )
-  }
-
-  pagination () {
-    const { totalPages, loading } = this.state
-
-    const handlePageChange = (_, { activePage }) => {
-      this.setState({ currentPage: activePage })
-      this.getData(activePage)
-    }
-
-    const paginationProps = {
-      totalPages: totalPages,
-      onPageChange: handlePageChange,
-      firstItem: null,
-      lastItem: null,
-      siblingRange: 0,
-      disabled: loading
-    }
-
-    return (
-      <div className="paginationWrap">
-        <Pagination {...paginationProps} />
-      </div>
     )
   }
 
