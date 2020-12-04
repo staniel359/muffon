@@ -67,6 +67,24 @@ export default class Albums extends React.PureComponent {
       .then(handleFinish)
   }
 
+  albumsData () {
+    const { albums } = this.state
+    const { artistName } = this.props
+
+    const itemsPerRow = 3
+    const albumsDataProps = { albums, artistName, itemsPerRow }
+
+    return (
+      <React.Fragment>
+        <List {...albumsDataProps} />
+
+        <Divider />
+
+        {this.pagination()}
+      </React.Fragment>
+    )
+  }
+
   pagination () {
     const { totalPages, loading } = this.state
 
@@ -93,35 +111,25 @@ export default class Albums extends React.PureComponent {
 
   render () {
     const { loading, albums, error } = this.state
-    const { artistName } = this.props
 
     const albumsPageLink = `/artists/${this.artistNameEncoded}/albums`
+    const albumsPageLinkData = <Link to={albumsPageLink}>Top albums</Link>
+    const headerData = <Header as="h3" content={albumsPageLinkData} />
 
-    const itemsPerRow = 3
-    const albumsDataProps = { albums, artistName, itemsPerRow }
-    const albumsData = albums && <List {...albumsDataProps} />
+    const albumsData = albums && this.albumsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
     const contentData = albumsData || errorData
 
-    const paginationData = albums && this.pagination()
-
     return (
       <Segment.Group className="artistPageSegmentWrap">
-        <Segment>
-          <Header as="h3">
-            <Link to={albumsPageLink}>Top albums</Link>
-          </Header>
-        </Segment>
-
-        <Segment className="artistPageSegment" {...{ loading }}>
-          {contentData}
-
-          <Divider />
-
-          {paginationData}
-        </Segment>
+        <Segment content={headerData} />
+        <Segment
+          className="artistPageSegment"
+          content={contentData}
+          {...{ loading }}
+        />
       </Segment.Group>
     )
   }
