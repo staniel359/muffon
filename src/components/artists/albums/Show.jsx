@@ -1,8 +1,8 @@
 import React from 'react'
 import { Segment } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorMessage from 'partials/ErrorMessage'
-import LoaderDimmer from 'partials/LoaderDimmer'
+import ErrorMessage from 'global/ErrorMessage'
+import LoaderDimmer from 'global/LoaderDimmer'
 import LeftColumn from './columns/Left'
 import RightColumn from './columns/Right'
 

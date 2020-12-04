@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header, Segment } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorMessage from 'partials/ErrorMessage'
+import ErrorMessage from 'global/ErrorMessage'
 import { Link } from 'react-router-dom'
 import ArtistsData from './similar/ArtistsData'
 

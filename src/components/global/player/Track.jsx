@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { List } from 'semantic-ui-react'
 import Picture from 'global/artists/Picture'
-import Ticker from 'partials/Ticker'
+import Ticker from 'global/Ticker'
 import { v4 as uuid } from 'uuid'
 
 export default class Track extends React.PureComponent {

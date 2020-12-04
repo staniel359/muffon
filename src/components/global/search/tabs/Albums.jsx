@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tab, Ref, Segment, Pagination, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorMessage from 'partials/ErrorMessage'
+import ErrorMessage from 'global/ErrorMessage'
 import List from './albums/List'
 
 export default class Albums extends React.PureComponent {

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ErrorMessage from 'partials/ErrorMessage'
+import ErrorMessage from 'global/ErrorMessage'
 import { Segment, Header, Icon, Label, Image } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 

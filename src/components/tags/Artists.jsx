@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import ErrorMessage from 'partials/ErrorMessage'
+import ErrorMessage from 'global/ErrorMessage'
 import { Segment, Header } from 'semantic-ui-react'
 import ArtistsData from './artists/ArtistsData'
 

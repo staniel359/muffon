@@ -1,8 +1,8 @@
 import React from 'react'
 import LeftColumn from './show/columns/Left'
 import RightColumn from './show/columns/Right'
-import ErrorMessage from 'partials/ErrorMessage'
-import LoaderDimmer from 'partials/LoaderDimmer'
+import ErrorMessage from 'global/ErrorMessage'
+import LoaderDimmer from 'global/LoaderDimmer'
 import axios from 'axios'
 import 'styles/Artists.sass'
 

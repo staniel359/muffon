@@ -18,7 +18,6 @@ module.exports = {
       src: path.resolve(__dirname, 'src'),
       styles: path.resolve(__dirname, 'src/styles'),
       global: path.resolve(__dirname, 'src/components/global'),
-      partials: path.resolve(__dirname, 'src/components/partials'),
       contexts: path.resolve(__dirname, 'src/contexts')
     }
   },

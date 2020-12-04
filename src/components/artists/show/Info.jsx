@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid'
 import { Segment, Header, Label, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import ErrorMessage from 'partials/ErrorMessage'
+import ErrorMessage from 'global/ErrorMessage'
 
 export default class Info extends React.PureComponent {
   constructor (props) {
