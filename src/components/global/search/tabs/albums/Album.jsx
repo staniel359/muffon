@@ -1,6 +1,7 @@
 import React from 'react'
 import { List, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import ListenersCount from 'global/artists/albums/ListenersCount'
 
 export default class Album extends React.PureComponent {
   constructor (props) {
@@ -12,10 +13,12 @@ export default class Album extends React.PureComponent {
     const { album, hideSearch } = this.props
     const { active, artistHovered } = this.state
 
-    const artistNameEncoded = encodeURIComponent(album.artist)
+    const artistName = album.artist
+    const artistNameEncoded = encodeURIComponent(artistName)
     const artistPageLink = `/artists/${artistNameEncoded}`
 
-    const albumTitleEncoded = encodeURIComponent(album.title)
+    const albumTitle = album.title
+    const albumTitleEncoded = encodeURIComponent(albumTitle)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
     const albumOrArtistLink = artistHovered ? artistPageLink : albumPageLink
@@ -35,7 +38,7 @@ export default class Album extends React.PureComponent {
       <List.Header
         as="h4"
         className={albumTitleClassName}
-        content={album.title}
+        content={albumTitle}
       />
     )
 
@@ -45,11 +48,14 @@ export default class Album extends React.PureComponent {
     const artistNameData = (
       <List.Description
         className={artistNameClassName}
-        content={album.artist}
+        content={artistName}
         onMouseEnter={toggleArtistHovered}
         onMouseLeave={toggleArtistHovered}
       />
     )
+
+    const listenersCountProps = { artistName, albumTitle }
+    const listenersCountData = <ListenersCount {...listenersCountProps} />
 
     const contentData = (
       <React.Fragment>
@@ -57,6 +63,7 @@ export default class Album extends React.PureComponent {
         <List.Content className="searchItemAlbumContent">
           {albumTitleData}
           {artistNameData}
+          {listenersCountData}
         </List.Content>
       </React.Fragment>
     )

@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import { Loader, Icon } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react'
 
 export default class ListenersCount extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { loading: false, listenersCount: 0 }
   }
 
   componentDidMount () {
@@ -61,11 +61,8 @@ export default class ListenersCount extends React.PureComponent {
 
     const loaderData = loading && <Loader active inline size="mini" />
 
-    const listenersData = listenersCount && (
-      <div>
-        <Icon name="user" />
-        {listenersCount.toLocaleString('eu')}
-      </div>
+    const listenersData = (
+      <div>{listenersCount.toLocaleString('eu') + ' listeners'}</div>
     )
 
     const contentData = loaderData || listenersData

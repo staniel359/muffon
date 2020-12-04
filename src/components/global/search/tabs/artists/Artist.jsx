@@ -34,9 +34,8 @@ export default class Artist extends React.PureComponent {
       />
     )
 
-    const listenersCount = artist.listeners_count.toLocaleString('eu')
     const listenersCountData = (
-      <List.Description content={`${listenersCount} listeners`} />
+      <div>{artist.listeners_count.toLocaleString('eu') + ' listeners'}</div>
     )
 
     const contentData = (
