@@ -4,20 +4,12 @@ import { Link } from 'react-router-dom'
 import Picture from 'global/artists/Picture'
 
 export default class Artist extends React.PureComponent {
-  constructor (props) {
-    super(props)
-    this.state = { active: false }
-  }
-
   render () {
     const { hideSearch, artist } = this.props
-    const { active } = this.state
 
     const artistName = artist.name
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistLink = `/artists/${artistNameEncoded}`
-
-    const toggleActive = bool => this.setState({ active: !active })
 
     const imageData = (
       <div className="searchItemImage">
@@ -25,11 +17,10 @@ export default class Artist extends React.PureComponent {
       </div>
     )
 
-    const artistNameClassName = active ? 'colorBase' : ''
     const artistNameData = (
       <List.Header
         as="h4"
-        className={artistNameClassName}
+        className="searchItemContentMainTitle"
         content={artistName}
       />
     )
@@ -54,8 +45,6 @@ export default class Artist extends React.PureComponent {
         as={Link}
         to={artistLink}
         onClick={hideSearch}
-        onMouseEnter={toggleActive}
-        onMouseLeave={toggleActive}
         content={contentData}
       />
     )
