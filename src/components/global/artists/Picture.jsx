@@ -8,7 +8,7 @@ import PictureDimmer from './PictureDimmer'
 export default class Picture extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, imageIndex: 0, images: [] }
+    this.state = { loading: false, imageIndex: 0 }
   }
 
   componentDidMount () {
@@ -50,7 +50,9 @@ export default class Picture extends React.PureComponent {
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ images: [] })
+      const images = null
+
+      !axios.isCancel(error) && this.setState({ ...{ error, images } })
     }
 
     const handleFinish = () => switchLoader(false)
@@ -105,16 +107,17 @@ export default class Picture extends React.PureComponent {
   }
 
   artistImageBasic () {
-    const { circular } = this.props
+    const { circular, size } = this.props
+    const { images } = this.state
 
-    const src = this.state.images[0][this.props.size]
+    const src = images[0][size]
+    const rounded = !circular
 
     return (
       <Image
         wrapped
         className="imageWrapBordered"
-        rounded={!circular}
-        {...{ src, circular }}
+        {...{ src, rounded, circular }}
       />
     )
   }
@@ -123,23 +126,6 @@ export default class Picture extends React.PureComponent {
     return this.props.dimmer
       ? this.dimmableImageData()
       : this.artistImageBasic()
-  }
-
-  defaultImage () {
-    const { circular } = this.props
-
-    const src =
-      'https://lastfm.freetls.fastly.net/i/u/600x600/' +
-      '2a96cbd8b46e442fc41c2b86b821562f.png'
-
-    return (
-      <Image
-        wrapped
-        className="imageWrap"
-        rounded={!circular}
-        {...{ src, circular }}
-      />
-    )
   }
 
   render () {
@@ -154,10 +140,9 @@ export default class Picture extends React.PureComponent {
       />
     )
 
-    const anyImages = images.length > 0
-    const imageData = anyImages ? this.artistImageData() : this.defaultImage()
+    const artistImageData = images && this.artistImageData()
 
-    const contentData = placeholderImageData || imageData
+    const contentData = placeholderImageData || artistImageData
 
     return <React.Fragment>{contentData}</React.Fragment>
   }

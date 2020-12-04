@@ -11,22 +11,27 @@ export default class Artist extends React.PureComponent {
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistLink = `/artists/${artistNameEncoded}`
 
+    const circular = true
+    const size = 'extrasmall'
+    const pictureProps = { artistName, size, circular }
     const imageData = (
       <div className="searchItemImage">
-        <Picture circular size="extrasmall" {...{ artistName }} />
+        <Picture {...pictureProps} />
       </div>
     )
 
     const artistNameData = (
       <List.Header
         as="h4"
-        className="searchItemContentMainTitle"
+        className="searchItemMainTitle"
         content={artistName}
       />
     )
 
     const listenersCountData = (
-      <div>{artist.listeners_count.toLocaleString('eu') + ' listeners'}</div>
+      <div className="searchItemListeners">
+        {artist.listeners_count.toLocaleString('eu') + ' listeners'}
+      </div>
     )
 
     const contentData = (
@@ -41,7 +46,7 @@ export default class Artist extends React.PureComponent {
 
     return (
       <List.Item
-        className="searchItem"
+        className="searchItemArtist"
         as={Link}
         to={artistLink}
         onClick={hideSearch}

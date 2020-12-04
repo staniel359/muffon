@@ -45,7 +45,7 @@ export default class Artists extends React.PureComponent {
 
       this.setState({ ...{ artists, totalPages, currentPage, error } })
 
-      this.props.setArtistImages(artists.map(a => a.image))
+      this.props.setArtistImages(artists.map(a => a.images.small))
     }
 
     const handleError = error => {

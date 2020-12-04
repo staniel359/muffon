@@ -6,12 +6,12 @@ import ListenersCount from 'global/artists/albums/ListenersCount'
 export default class Album extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { active: false, artistHovered: false }
+    this.state = { artistHovered: false }
   }
 
   render () {
     const { album, hideSearch } = this.props
-    const { active, artistHovered } = this.state
+    const { artistHovered } = this.state
 
     const artistName = album.artist
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -23,17 +23,14 @@ export default class Album extends React.PureComponent {
 
     const albumOrArtistLink = artistHovered ? artistPageLink : albumPageLink
 
-    const toggleActive = bool => this.setState({ active: !active })
-
-    const coverDefault =
-      'https://lastfm.freetls.fastly.net/i/u/64s/' +
-      'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
-    const cover = album.cover || coverDefault
+    const image = album.images.extrasmall
     const imageData = (
-      <Image rounded className="searchItemAlbumCover" src={cover} />
+      <div className="searchItemImage">
+        <Image wrapped rounded className="imageWrapBordered" src={image} />
+      </div>
     )
 
-    const albumTitleClassName = active && !artistHovered ? 'colorBase' : ''
+    const albumTitleClassName = !artistHovered ? 'searchItemMainTitle' : ''
     const albumTitleData = (
       <List.Header
         as="h4"
@@ -42,7 +39,7 @@ export default class Album extends React.PureComponent {
       />
     )
 
-    const artistNameClassName = artistHovered ? 'colorBase' : ''
+    const artistNameClassName = artistHovered ? 'searchItemMainTitle' : ''
     const toggleArtistHovered = bool =>
       this.setState({ artistHovered: !artistHovered })
     const artistNameData = (
@@ -55,27 +52,33 @@ export default class Album extends React.PureComponent {
     )
 
     const listenersCountProps = { artistName, albumTitle }
-    const listenersCountData = <ListenersCount {...listenersCountProps} />
+    const listenersCountData = (
+      <div className="searchItemListeners">
+        <ListenersCount {...listenersCountProps} />
+      </div>
+    )
+
+    const infoData = (
+      <List.Content className="searchItemContent">
+        {albumTitleData}
+        {artistNameData}
+        {listenersCountData}
+      </List.Content>
+    )
 
     const contentData = (
       <React.Fragment>
         {imageData}
-        <List.Content className="searchItemAlbumContent">
-          {albumTitleData}
-          {artistNameData}
-          {listenersCountData}
-        </List.Content>
+        {infoData}
       </React.Fragment>
     )
 
     return (
       <List.Item
-        className="searchItem"
+        className="searchItemAlbum"
         as={Link}
         to={albumOrArtistLink}
         onClick={hideSearch}
-        onMouseEnter={toggleActive}
-        onMouseLeave={toggleActive}
         content={contentData}
       />
     )

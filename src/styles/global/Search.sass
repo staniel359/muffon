@@ -41,31 +41,40 @@
   @extend .flex, .alignItemsCenter
   .playButton button
     @extend .margin0
+  &:hover
+    .searchItemContent
+      .searchItemMainTitle
+        @extend .colorBase
 
-.searchItemImage
-  width: 50px !important
-  height: 50px !important
-
-.searchItemAlbumCover
-  @extend .searchItemImage
-  border: $border
+.searchItemImage img
+  @extend .w100
 
 .searchItemContent
   padding: 0 0 0 10px !important
+  .header, .description
+    width: fit-content
   .ui.loader:before
     border-color: rgba(0,0,0,.1) !important
   .ui.loader:after
     border-color: #767676 transparent transparent !important
 
-.searchItem:hover
+.searchItemArtist
+  @extend .searchItem
   .searchItemContent
-    .searchItemContentMainTitle
-      @extend .colorBase
+    width: calc(100% - 50px)
+  .searchItemImage
+    width: 50px !important
+    height: 50px !important
 
-.searchItemAlbumContent
-  @extend .searchItemContent
-  .header, .description
-    width: fit-content
+.searchItemAlbum
+  @extend .searchItem
+  .searchItemContent
+    width: calc(100% - 60px)
+  .searchItemImage
+    width: 60px !important
+    height: 60px !important
+  .searchItemListeners
+    margin-top: 5px
 
 .searchClearQueryButton
   left: 342px !important

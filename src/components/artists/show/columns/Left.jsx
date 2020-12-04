@@ -58,7 +58,9 @@ export default class Left extends React.PureComponent {
 
     return (
       <div className="artistPageLeftColumn">
-        <Picture dimmer {...pictureProps} />
+        <div className="artistPageArtistImage">
+          <Picture dimmer {...pictureProps} />
+        </div>
 
         <Transition {...transitionProps}>{transitionData}</Transition>
 

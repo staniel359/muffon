@@ -8,53 +8,44 @@ export default class Album extends React.PureComponent {
     const { album, artistName } = this.props
 
     const albumTitle = album.title
-
     const artistNameEncoded = encodeURIComponent(artistName)
     const albumTitleEncoded = encodeURIComponent(albumTitle)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
-    const albumCover = album.covers.small
-    const defaultCover =
-      'https://lastfm.freetls.fastly.net/i/u/174s/' +
-      'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
-    const cover = albumCover || defaultCover
-
+    const image = album.images.small
     const imageData = (
-      <Image
-        rounded
-        wrapped
-        className="cardLightImage imageWrapBordered"
-        src={cover}
-        as={Link}
-        to={albumPageLink}
-      />
+      <Image rounded wrapped className="imageWrapBordered" src={image} />
     )
 
-    const albumPageLinkData = <Link to={albumPageLink}>{albumTitle}</Link>
     const headerData = (
-      <Header
-        as="h4"
-        className="cardLightMainLink"
-        content={albumPageLinkData}
-      />
+      <Header as="h4" className="cardLightMainHeader" content={albumTitle} />
     )
 
     const listenersCountProps = { artistName, albumTitle }
-    const listenersCountData = <ListenersCount {...listenersCountProps} />
-
-    const contentData = (
+    const listenersCountData = (
       <Card.Content>
-        <Card.Description content={listenersCountData} />
+        <Card.Description>
+          <ListenersCount {...listenersCountProps} />
+        </Card.Description>
       </Card.Content>
     )
 
-    return (
-      <Card className="cardLight">
+    const contentData = (
+      <React.Fragment>
         <div />
         {imageData}
         {headerData}
-        {contentData}
-      </Card>
+        {listenersCountData}
+      </React.Fragment>
+    )
+
+    return (
+      <Card
+        className="cardLight"
+        as={Link}
+        to={albumPageLink}
+        content={contentData}
+      />
     )
   }
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { transitionVisible: false, dimmerActive: false }
+    this.state = { artistNameVisible: false, dimmerActive: false }
   }
 
   componentDidMount () {
@@ -17,37 +17,30 @@ export default class Left extends React.PureComponent {
   }
 
   handleScroll = () => {
-    const { transitionVisible } = this.state
+    const artistNameVisible = window.scrollY >= 60
+    const visibilityChanged = artistNameVisible !== this.state.artistNameVisible
 
-    const isVisible = window.scrollY >= 60
-    const transitionChanged = transitionVisible !== isVisible
-
-    transitionChanged && this.setState({ transitionVisible: isVisible })
+    visibilityChanged && this.setState({ ...{ artistNameVisible } })
   }
 
   render () {
     const { album } = this.props
-    const { transitionVisible, dimmerActive } = this.state
+    const { artistNameVisible, dimmerActive } = this.state
 
-    const cover = album.covers.medium
-    const defaultCover =
-      'https://lastfm.freetls.fastly.net/i/u/300x300/' +
-      'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
-    const coverStyle = { cursor: cover ? 'pointer' : 'unset' }
     const showDimmer = () => this.setState({ dimmerActive: true })
-    const coverData = (
+    const image = album.images.medium
+    const imageData = (
       <Image
         rounded
         wrapped
-        className="imageWrapBordered"
-        src={cover || defaultCover}
-        style={coverStyle}
+        className="imageWrapBordered clickable"
+        src={image}
         onClick={showDimmer}
       />
     )
 
     const transitionProps = {
-      visible: transitionVisible,
+      visible: artistNameVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
@@ -80,24 +73,23 @@ export default class Left extends React.PureComponent {
       <Transition {...transitionProps}>{transitionText}</Transition>
     )
 
-    const dimmerImage = <Image src={album.covers.original} />
     const hideDimmer = () => this.setState({ dimmerActive: false })
-    const dimmerData = cover && (
+    const dimmerImage = album.images.original
+    const dimmerImageData = <Image src={dimmerImage} />
+    const dimmerData = (
       <Dimmer
         page
         className="albumPageDimmer"
         active={dimmerActive}
         onClick={hideDimmer}
-        content={dimmerImage}
+        content={dimmerImageData}
       />
     )
 
     return (
       <div className="albumPageLeftColumn">
-        {coverData}
-
+        {imageData}
         {transitionData}
-
         {dimmerData}
       </div>
     )

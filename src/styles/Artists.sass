@@ -6,12 +6,15 @@
   @extend .fixed, .h100, .inlineBlock
   width: 200px
   .slick-slider
-    cursor: pointer
+    @extend .clickable
     .slick-arrow
       z-index: 1
       opacity: 0
     &:hover .slick-arrow
       opacity: 1
+
+.artistPageArtistImage
+  height: 200px
 
 .artistPageLeftColumnMenu
   @extend .w100, .margin0

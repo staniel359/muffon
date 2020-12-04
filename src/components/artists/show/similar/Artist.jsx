@@ -7,35 +7,41 @@ export default class Artist extends React.PureComponent {
   render () {
     const { artist } = this.props
 
-    const artistNameEncoded = encodeURIComponent(artist.name)
+    const artistName = artist.name
+    const artistNameEncoded = encodeURIComponent(artistName)
     const artistPageLink = `/artists/${artistNameEncoded}`
-    const artistPageLinkData = <Link to={artistPageLink}>{artist.name}</Link>
+
+    const image = artist.images.small
     const imageData = (
       <Image
         wrapped
         circular
         size="small"
-        className="cardLightImage imageWrapBordered"
-        src={artist.images.small}
-        as={Link}
-        to={artistPageLink}
+        className="imageWrapBordered"
+        src={image}
       />
     )
 
     const headerData = (
-      <Header
-        as="h4"
-        className="cardLightMainLink"
-        content={artistPageLinkData}
-      />
+      <Header as="h4" className="cardLightMainHeader" content={artistName} />
     )
 
-    return (
-      <Card key={uuid()} className="cardLight">
+    const contentData = (
+      <React.Fragment>
         <div />
         {imageData}
         {headerData}
-      </Card>
+      </React.Fragment>
+    )
+
+    return (
+      <Card
+        key={uuid()}
+        as={Link}
+        to={artistPageLink}
+        className="cardLight"
+        content={contentData}
+      />
     )
   }
 }

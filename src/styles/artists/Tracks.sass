@@ -5,7 +5,7 @@ $coverSize: 150px
 .trackPageCard
   margin: 0 0 20px 0 !important
 
-.trackPageCardCover
+.trackPageCardImage
   height: $coverSize
   width: $coverSize
   border-top-left-radius: inherit
@@ -39,8 +39,9 @@ $coverSize: 150px
   border-left: $border
 
 .trackPagePlayerPlaceholder
-  @extend .trackPagePlayerItem, .w100
-  cursor: pointer
+  @extend .trackPagePlayerItem, .w100, .clickable
+  &:hover
+    @extend .colorBase
 
 .trackPagePlayerTimeBar
   @extend .trackPagePlayerItem, .w100

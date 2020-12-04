@@ -56,7 +56,7 @@ $border: 1px solid $semanticGray
   @extend .w100
   padding-bottom: 100% !important
   img
-    @extend .absolute
+    @extend .absolute, .h100
 
 .imageWrapBordered
   @extend .imageWrap
@@ -73,7 +73,7 @@ $border: 1px solid $semanticGray
     padding: 0 !important
     border: none !important
 
-.cardLightImage:hover ~ .cardLightMainLink a
+.cardLight:hover .cardLightMainHeader
   @extend .colorBase
 
 .colorBase
@@ -99,3 +99,6 @@ $border: 1px solid $semanticGray
     right: 10px
   .slick-arrow
     z-index: 1
+
+.clickable
+  cursor: pointer

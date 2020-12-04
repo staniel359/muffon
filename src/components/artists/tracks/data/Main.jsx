@@ -6,29 +6,26 @@ import { Link } from 'react-router-dom'
 export default class Main extends React.PureComponent {
   render () {
     const { track } = this.props
-    const { covers } = track.album
 
-    const defaultCover =
-      'https://lastfm.freetls.fastly.net/i/u/174s/' +
-      'c6f59c1e5e7240a4c0d427abd71f3dbb.png'
-    const cover = covers ? covers.small : defaultCover
-    const coverData = (
-      <Image wrapped className="trackPageCardCover" src={cover} />
+    const image = track.images.small
+    const imageData = (
+      <Image wrapped className="trackPageCardImage" src={image} />
     )
 
     const trackTitleData = <Header as="h3" content={track.title} />
 
-    const artistPageLink = `/artists/${track.artist}`
-    const artistNameData = (
-      <Header as="h4">
-        <Link to={artistPageLink}>{track.artist}</Link>
-      </Header>
-    )
+    const artistName = track.artist
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistPageLink = `/artists/${artistNameEncoded}`
+    const artistPageLinkData = <Link to={artistPageLink}>{artistName}</Link>
+    const artistNameData = <Header as="h4" content={artistPageLinkData} />
 
-    const albumPageLink = `/artists/${track.artist}/albums/${track.album.title}`
-    const albumTitleData = <Link to={albumPageLink}>{track.album.title}</Link>
+    const albumTitle = track.album
+    const albumTitleEncoded = encodeURIComponent(albumTitle)
+    const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+    const albumTitleData = <Link to={albumPageLink}>{albumTitle}</Link>
 
-    const contentData = (
+    const infoData = (
       <div className="trackPageCardContent">
         {trackTitleData}
         {artistNameData}
@@ -39,14 +36,17 @@ export default class Main extends React.PureComponent {
     const playerProps = { track }
     const playerData = <PlayerContextWrap {...playerProps} />
 
+    const contentData = (
+      <Segment className="trackPageCardContentWrap">
+        {infoData}
+        {playerData}
+      </Segment>
+    )
+
     return (
       <Segment.Group horizontal className="trackPageCard">
-        {coverData}
-
-        <Segment className="trackPageCardContentWrap">
-          {contentData}
-          {playerData}
-        </Segment>
+        {imageData}
+        {contentData}
       </Segment.Group>
     )
   }
