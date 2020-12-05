@@ -3,7 +3,8 @@ import { Header, Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import { Link } from 'react-router-dom'
-import ArtistsData from './similar/ArtistsData'
+import Paginated from 'global/Paginated'
+import List from './similar/List'
 
 export default class Similar extends React.PureComponent {
   constructor (props) {
@@ -68,16 +69,28 @@ export default class Similar extends React.PureComponent {
     const { scrollToTop } = this.props
     const { getData } = this
 
+    const activePageLimit = 4
+    const currentPageLimit = 10
+    const collection = artists
+    const collectionName = 'similar'
+    const collectionList = <List />
+    const itemsPerRow = 4
+
     const artistsDataProps = {
-      artists,
       totalPages,
       currentPage,
       loading,
+      scrollToTop,
       getData,
-      scrollToTop
+      activePageLimit,
+      currentPageLimit,
+      collection,
+      collectionName,
+      collectionList,
+      itemsPerRow
     }
 
-    return <ArtistsData {...artistsDataProps} />
+    return <Paginated {...artistsDataProps} />
   }
 
   render () {

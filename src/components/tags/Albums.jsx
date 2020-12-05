@@ -2,7 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import { Segment, Header } from 'semantic-ui-react'
-import AlbumsData from './albums/AlbumsData'
+import Paginated from 'global/Paginated'
+import List from './albums/List'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -66,16 +67,28 @@ export default class Albums extends React.PureComponent {
     const { scrollToTop } = this.props
     const { getData } = this
 
+    const activePageLimit = 4
+    const currentPageLimit = 20
+    const collection = albums
+    const collectionName = 'albums'
+    const collectionList = <List />
+    const itemsPerRow = 4
+
     const albumsDataProps = {
-      albums,
       totalPages,
       currentPage,
-      getData,
       loading,
-      scrollToTop
+      scrollToTop,
+      getData,
+      activePageLimit,
+      currentPageLimit,
+      collection,
+      collectionName,
+      collectionList,
+      itemsPerRow
     }
 
-    return <AlbumsData {...albumsDataProps} />
+    return <Paginated {...albumsDataProps} />
   }
 
   render () {

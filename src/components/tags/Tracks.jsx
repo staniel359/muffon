@@ -2,7 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import { Segment, Header } from 'semantic-ui-react'
-import TracksData from './tracks/TracksData'
+import Paginated from 'global/Paginated'
+import List from './tracks/List'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
@@ -66,16 +67,26 @@ export default class Tracks extends React.PureComponent {
     const { scrollToTop } = this.props
     const { getData } = this
 
+    const activePageLimit = 10
+    const currentPageLimit = 50
+    const collection = tracks
+    const collectionName = 'tracks'
+    const collectionList = <List />
+
     const tracksDataProps = {
-      tracks,
       totalPages,
       currentPage,
-      getData,
       loading,
-      scrollToTop
+      scrollToTop,
+      getData,
+      activePageLimit,
+      currentPageLimit,
+      collection,
+      collectionName,
+      collectionList
     }
 
-    return <TracksData {...tracksDataProps} />
+    return <Paginated {...tracksDataProps} />
   }
 
   render () {

@@ -5,7 +5,7 @@ import Album from './Album'
 
 export default class List extends React.PureComponent {
   render () {
-    const { albums } = this.props
+    const { albums, itemsPerRow } = this.props
 
     const albumData = album => {
       const key = uuid()
@@ -15,7 +15,7 @@ export default class List extends React.PureComponent {
     }
     const albumsListData = albums.map(albumData)
     const albumsData = albums.length > 0 && (
-      <Card.Group itemsPerRow={4}>{albumsListData}</Card.Group>
+      <Card.Group {...{ itemsPerRow }}>{albumsListData}</Card.Group>
     )
 
     return <React.Fragment>{albumsData}</React.Fragment>
