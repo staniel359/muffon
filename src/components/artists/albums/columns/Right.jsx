@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid'
 import { Header, Label, Divider, List } from 'semantic-ui-react'
 import TrackContextWrap from 'global/artists/TrackContextWrap'
 import { Link } from 'react-router-dom'
+import Tags from 'global/Tags'
 
 export default class Right extends React.PureComponent {
   render () {
@@ -28,21 +29,9 @@ export default class Right extends React.PureComponent {
       </div>
     )
 
-    const tagData = tag => (
-      <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
-    )
-    const tagsListData = tags.map(tagData)
     const albumTitleEncoded = encodeURIComponent(albumTitle)
     const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
-    const tagsViewMoreData = tags.length > 0 && (
-      <Label as={Link} to={tagsPageLink} content="..." />
-    )
-    const tagsData = (
-      <Label.Group size="large">
-        {tagsListData}
-        {tagsViewMoreData}
-      </Label.Group>
-    )
+    const tagsProps = { tags: tags, viewMore: true, link: tagsPageLink }
 
     const listenersCount = album.listeners_count.toLocaleString('eu')
     const playsCount = album.plays_count.toLocaleString('eu')
@@ -70,7 +59,7 @@ export default class Right extends React.PureComponent {
     return (
       <div className="albumPageRightColumn">
         {headerData}
-        {tagsData}
+        <Tags {...tagsProps} />
         {countersData}
 
         <Divider />

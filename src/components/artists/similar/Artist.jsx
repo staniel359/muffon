@@ -1,7 +1,7 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import { Segment, Image, Header, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import Tags from 'global/Tags'
 
 export default class Artist extends React.PureComponent {
   render () {
@@ -11,7 +11,7 @@ export default class Artist extends React.PureComponent {
     const artistNameEncoded = encodeURIComponent(name)
     const similarArtistPageLink = `/artists/${artistNameEncoded}`
 
-    const src = artist.images.medium
+    const src = artist.images.small
     const imageData = (
       <Link className="similarCardImage" to={similarArtistPageLink}>
         <Image rounded {...{ src }} />
@@ -24,22 +24,8 @@ export default class Artist extends React.PureComponent {
       </Header>
     )
 
-    const tagData = tag => (
-      <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
-    )
-    const tagsData = tags.map(tagData)
-
     const tagsPageLink = `/artists/${artistNameEncoded}/tags`
-    const tagsViewMoreData = tags.length > 0 && (
-      <Label as={Link} to={tagsPageLink} content="..." />
-    )
-
-    const tagsListData = (
-      <Label.Group size="large">
-        {tagsData}
-        {tagsViewMoreData}
-      </Label.Group>
-    )
+    const tagsProps = { tags: tags, viewMore: true, link: tagsPageLink }
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')
     const countersData = (
@@ -53,7 +39,7 @@ export default class Artist extends React.PureComponent {
     const contentData = (
       <Segment className="similarCardContent">
         {nameData}
-        {tagsListData}
+        <Tags {...tagsProps} />
         {countersData}
         {descriptionData}
       </Segment>

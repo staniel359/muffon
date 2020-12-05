@@ -1,9 +1,8 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import { Segment, Header, Label, Divider } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
+import Tags from 'global/Tags'
 
 export default class Info extends React.PureComponent {
   constructor (props) {
@@ -67,20 +66,8 @@ export default class Info extends React.PureComponent {
       <Header as="h1" className="artistPageArtistName" content={name} />
     )
 
-    const tagData = tag => (
-      <Label key={uuid()} as={Link} to={`/tags/${tag}`} content={tag} />
-    )
-    const tagsListData = tags.map(tagData)
     const tagsPageLink = `/artists/${this.artistNameEncoded}/tags`
-    const tagsViewMoreData = tags.length > 0 && (
-      <Label as={Link} to={tagsPageLink} content="..." />
-    )
-    const tagsData = (
-      <Label.Group size="large">
-        {tagsListData}
-        {tagsViewMoreData}
-      </Label.Group>
-    )
+    const tagsProps = { tags: tags, viewMore: true, link: tagsPageLink }
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')
     const playsCount = artist.plays_count.toLocaleString('eu')
@@ -100,7 +87,7 @@ export default class Info extends React.PureComponent {
     return (
       <React.Fragment>
         {artistNameData}
-        {tagsData}
+        <Tags {...tagsProps} />
         {countersData}
         <Divider />
         {descriptionData}

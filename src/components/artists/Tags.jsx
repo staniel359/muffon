@@ -2,11 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import ErrorMessage from 'global/ErrorMessage'
 import LoaderDimmer from 'global/LoaderDimmer'
-import { Segment, Label } from 'semantic-ui-react'
-import { v4 as uuid } from 'uuid'
-import { Link } from 'react-router-dom'
+import { Segment } from 'semantic-ui-react'
+import Tags from 'global/Tags'
 
-export default class Tags extends React.PureComponent {
+export default class ArtistTags extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { loading: false }
@@ -93,21 +92,12 @@ export default class Tags extends React.PureComponent {
       .then(handleFinish)
   }
 
-  tagsList () {
+  tagsData () {
     const { tags, loading } = this.state
-
-    const tagData = tag => (
-      <Label key={uuid()} as={Link} to={`/tags/${tag.name}`}>
-        {tag.name}
-        <Label.Detail content={`${tag.percent}%`} />
-      </Label>
-    )
-    const tagsListData = tags.map(tagData)
-    const tagsData = <Label.Group size="large">{tagsListData}</Label.Group>
 
     return (
       <Segment className="pageSegment" {...{ loading }}>
-        {tagsData}
+        <Tags {...{ tags }} />
       </Segment>
     )
   }
@@ -115,7 +105,7 @@ export default class Tags extends React.PureComponent {
   render () {
     const { loading, tags, error } = this.state
 
-    const tagsData = tags && this.tagsList()
+    const tagsData = tags && this.tagsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
