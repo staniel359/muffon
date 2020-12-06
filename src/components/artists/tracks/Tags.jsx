@@ -60,9 +60,9 @@ export default class TrackTags extends React.PureComponent {
 
     const navSections = [
       { content: 'Artists' },
-      { content: artistName, href: artistPageLink },
+      { content: decodeURIComponent(artistName), href: artistPageLink },
       { content: 'Tracks', href: tracksPageLink },
-      { content: trackTitle, href: trackPageLink },
+      { content: decodeURIComponent(trackTitle), href: trackPageLink },
       { content: 'Tags', active: true }
     ]
 

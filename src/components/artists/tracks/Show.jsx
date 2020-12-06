@@ -90,9 +90,9 @@ export default class Show extends React.PureComponent {
     const tracksPageLink = `#/artists/${artistNameEncoded}/tracks`
     const navSections = [
       { content: 'Artists' },
-      { content: artistName, href: artistPageLink },
+      { content: decodeURIComponent(artistName), href: artistPageLink },
       { content: 'Tracks', href: tracksPageLink },
-      { content: trackTitle, active: true }
+      { content: decodeURIComponent(trackTitle), active: true }
     ]
 
     this.props.setNavSections(navSections)

@@ -50,7 +50,7 @@ export default class Show extends React.PureComponent {
   setNavSections (tagName) {
     const navSections = [
       { content: 'Tags' },
-      { content: tagName, active: true }
+      { content: decodeURIComponent(tagName), active: true }
     ]
 
     this.props.setNavSections(navSections)

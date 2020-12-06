@@ -60,9 +60,9 @@ export default class AlbumTags extends React.PureComponent {
 
     const navSections = [
       { content: 'Artists' },
-      { content: artistName, href: artistPageLink },
+      { content: decodeURIComponent(artistName), href: artistPageLink },
       { content: 'Albums', href: albumsPageLink },
-      { content: albumTitle, href: albumPageLink },
+      { content: decodeURIComponent(albumTitle), href: albumPageLink },
       { content: 'Tags', active: true }
     ]
 

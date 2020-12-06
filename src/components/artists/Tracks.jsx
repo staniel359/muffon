@@ -50,7 +50,7 @@ export default class Tracks extends React.PureComponent {
     const artistPageLink = `#/artists/${artistNameEncoded}`
     const navSections = [
       { content: 'Artists' },
-      { content: artistName, href: artistPageLink },
+      { content: decodeURIComponent(artistName), href: artistPageLink },
       { content: 'Tracks', active: true }
     ]
 
