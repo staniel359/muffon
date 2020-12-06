@@ -111,17 +111,10 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   handleProgress = e => {
-    const secondsLoaded = this.secondsLoaded(e.target)
+    const secondsLoaded = e.target.buffered.end(0)
     const { duration } = e.target
 
     this.setState({ ...{ secondsLoaded, duration } })
-  }
-
-  secondsLoaded (audio) {
-    const loaded = audio.buffered
-    const indexLoaded = loaded.length - 1
-
-    return loaded.end(indexLoaded)
   }
 
   handleTimeUpdate = e => {
