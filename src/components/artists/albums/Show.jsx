@@ -9,7 +9,7 @@ import RightColumn from './columns/Right'
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -37,14 +37,14 @@ export default class Show extends React.PureComponent {
     const { artistName, albumTitle } = this.params()
 
     const prevArtistName = prevProps.match.params.artistName
-    const artistNameChanged = artistName !== prevArtistName
+    const isArtistNameChanged = artistName !== prevArtistName
 
     const prevAlbumTitle = prevProps.match.params.albumTitle
-    const albumTitleChanged = albumTitle !== prevAlbumTitle
+    const isAlbumTitleChanged = albumTitle !== prevAlbumTitle
 
-    const albumChanged = artistNameChanged || albumTitleChanged
+    const isAlbumChanged = isArtistNameChanged || isAlbumTitleChanged
 
-    if (albumChanged) {
+    if (isAlbumChanged) {
       this.setNavSections(artistName, albumTitle)
       this.setState({ album: null })
       this.getInfo()
@@ -52,8 +52,8 @@ export default class Show extends React.PureComponent {
   }
 
   getInfo () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -112,13 +112,13 @@ export default class Show extends React.PureComponent {
   }
 
   render () {
-    const { loading, album, error } = this.state
+    const { isLoading, album, error } = this.state
 
     const albumData = album && this.albumData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = albumData || errorData || loaderData
 

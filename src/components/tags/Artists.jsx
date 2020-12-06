@@ -8,7 +8,7 @@ import List from './artists/List'
 export default class Artists extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -24,8 +24,8 @@ export default class Artists extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -48,7 +48,9 @@ export default class Artists extends React.PureComponent {
         ...{ artists, responseTotalPages, responseCurrentPage, error }
       })
 
-      this.props.setArtistImages(artists.map(a => a.images.small))
+      const artistImages = artists.map(a => a.images.small)
+
+      this.props.setArtistImages(artistImages)
     }
 
     const handleError = error => {
@@ -71,7 +73,7 @@ export default class Artists extends React.PureComponent {
       artists,
       responseTotalPages,
       responseCurrentPage,
-      loading
+      isLoading
     } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
@@ -86,7 +88,7 @@ export default class Artists extends React.PureComponent {
     const artistsDataProps = {
       responseTotalPages,
       responseCurrentPage,
-      loading,
+      isLoading,
       scrollToTop,
       getData,
       clientPageLimit,
@@ -101,7 +103,7 @@ export default class Artists extends React.PureComponent {
   }
 
   render () {
-    const { artists, error, loading } = this.state
+    const { artists, error, isLoading } = this.state
 
     const headerData = <Header as="h3" content="Top artists" />
 
@@ -117,7 +119,7 @@ export default class Artists extends React.PureComponent {
         <Segment
           className="tagsPageSegment"
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

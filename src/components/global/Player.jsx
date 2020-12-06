@@ -10,9 +10,11 @@ export default class Panel extends React.PureComponent {
   render () {
     const { currentTrack } = this.props
 
+    const track = currentTrack
+
     const trackData = (
       <div className="playerPanelLeftColumn">
-        <Track {...{ currentTrack }} />
+        <Track {...{ track }} />
       </div>
     )
 

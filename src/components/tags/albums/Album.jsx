@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 export default class Album extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { artistHovered: false }
+    this.state = { isArtistHovered: false }
   }
 
   render () {
     const { album } = this.props
-    const { artistHovered } = this.state
+    const { isArtistHovered } = this.state
 
     const artistName = album.artist
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -20,7 +20,7 @@ export default class Album extends React.PureComponent {
     const albumTitleEncoded = encodeURIComponent(albumTitle)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
-    const albumOrArtistLink = artistHovered ? artistPageLink : albumPageLink
+    const albumOrArtistLink = isArtistHovered ? artistPageLink : albumPageLink
 
     const image = album.images.small
     const imageData = (
@@ -33,14 +33,14 @@ export default class Album extends React.PureComponent {
       />
     )
 
-    const albumTitleClassName = !artistHovered ? 'cardLightMainHeader' : ''
+    const albumTitleClassName = !isArtistHovered ? 'cardLightMainHeader' : ''
     const albumTitleData = (
       <Header as="h3" className={albumTitleClassName} content={albumTitle} />
     )
 
-    const artistNameClassName = artistHovered ? 'cardLightMainHeader' : ''
+    const artistNameClassName = isArtistHovered ? 'cardLightMainHeader' : ''
     const toggleArtistHovered = bool =>
-      this.setState({ artistHovered: !artistHovered })
+      this.setState({ isArtistHovered: !isArtistHovered })
     const artistNameData = (
       <Card.Description
         className={artistNameClassName}

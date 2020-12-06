@@ -8,7 +8,7 @@ export default class AudioContainerContextWrap extends React.PureComponent {
       <PlayerContext.Consumer>
         {context => {
           const {
-            repeat,
+            isRepeat,
             handleLoadStart,
             handlePlay,
             handlePause,
@@ -18,7 +18,7 @@ export default class AudioContainerContextWrap extends React.PureComponent {
             handleAudioEnd
           } = context
           const audioContainerProps = {
-            repeat,
+            isRepeat,
             handleLoadStart,
             handlePlay,
             handlePause,

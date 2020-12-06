@@ -24,7 +24,6 @@ export default class Tabs extends React.PureComponent {
 
     const artistsData = () => {
       const key = uuid()
-
       const artistsProps = { ...tabPaneProps, artistsRef, key }
 
       return <Artists {...artistsProps} />
@@ -32,7 +31,6 @@ export default class Tabs extends React.PureComponent {
 
     const albumsData = () => {
       const key = uuid()
-
       const albumsProps = { ...tabPaneProps, albumsRef, key }
 
       return <Albums {...albumsProps} />
@@ -40,7 +38,6 @@ export default class Tabs extends React.PureComponent {
 
     const tracksData = () => {
       const key = uuid()
-
       const tracksProps = { ...tabPaneProps, tracksRef, key }
 
       return <Tracks {...tracksProps} />

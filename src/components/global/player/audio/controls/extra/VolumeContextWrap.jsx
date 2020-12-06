@@ -7,8 +7,8 @@ export default class VolumeContextWrap extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { toggleMute, muted, volume, changeVolume } = context
-          const volumeProps = { toggleMute, muted, volume, changeVolume }
+          const { toggleMute, isMuted, volume, changeVolume } = context
+          const volumeProps = { toggleMute, isMuted, volume, changeVolume }
 
           return <VolumeButton {...volumeProps} />
         }}

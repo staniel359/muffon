@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { artistNameVisible: false, dimmerActive: false }
+    this.state = { isArtistNameVisible: false, isDimmerActive: false }
   }
 
   componentDidMount () {
@@ -17,17 +17,18 @@ export default class Left extends React.PureComponent {
   }
 
   handleScroll = () => {
-    const artistNameVisible = window.scrollY >= 60
-    const visibilityChanged = artistNameVisible !== this.state.artistNameVisible
+    const isArtistNameVisible = window.scrollY >= 60
+    const isVisibilityChanged =
+      isArtistNameVisible !== this.state.isArtistNameVisible
 
-    visibilityChanged && this.setState({ ...{ artistNameVisible } })
+    isVisibilityChanged && this.setState({ ...{ isArtistNameVisible } })
   }
 
   render () {
     const { album } = this.props
-    const { artistNameVisible, dimmerActive } = this.state
+    const { isArtistNameVisible, isDimmerActive } = this.state
 
-    const showDimmer = () => this.setState({ dimmerActive: true })
+    const showDimmer = () => this.setState({ isDimmerActive: true })
     const image = album.images.medium
     const imageData = (
       <Image
@@ -40,7 +41,7 @@ export default class Left extends React.PureComponent {
     )
 
     const transitionProps = {
-      visible: artistNameVisible,
+      visible: isArtistNameVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
@@ -73,14 +74,14 @@ export default class Left extends React.PureComponent {
       <Transition {...transitionProps}>{transitionText}</Transition>
     )
 
-    const hideDimmer = () => this.setState({ dimmerActive: false })
+    const hideDimmer = () => this.setState({ isDimmerActive: false })
     const dimmerImage = album.images.original
     const dimmerImageData = <Image src={dimmerImage} />
     const dimmerData = (
       <Dimmer
         page
         className="albumPageDimmer"
-        active={dimmerActive}
+        active={isDimmerActive}
         onClick={hideDimmer}
         content={dimmerImageData}
       />

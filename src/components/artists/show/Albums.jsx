@@ -9,7 +9,7 @@ import Pagination from 'global/Pagination'
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { isLoading: false, currentPage: 1 }
   }
 
   componentDidMount () {
@@ -27,8 +27,8 @@ export default class Albums extends React.PureComponent {
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -69,14 +69,14 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums, totalPages, loading } = this.state
+    const { albums, totalPages, isLoading } = this.state
     const { artistName } = this.props
 
     const itemsPerRow = 3
     const albumsDataProps = { albums, artistName, itemsPerRow }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
       <React.Fragment>
@@ -90,7 +90,7 @@ export default class Albums extends React.PureComponent {
   }
 
   render () {
-    const { loading, albums, error } = this.state
+    const { isLoading, albums, error } = this.state
 
     const albumsPageLink = `/artists/${this.artistNameEncoded}/albums`
     const albumsPageLinkData = <Link to={albumsPageLink}>Top albums</Link>
@@ -108,7 +108,7 @@ export default class Albums extends React.PureComponent {
         <Segment
           className="artistPageSegment"
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

@@ -9,7 +9,7 @@ import List from './similar/List'
 export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -27,8 +27,8 @@ export default class Similar extends React.PureComponent {
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -71,7 +71,7 @@ export default class Similar extends React.PureComponent {
       artists,
       responseTotalPages,
       responseCurrentPage,
-      loading
+      isLoading
     } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
@@ -86,7 +86,7 @@ export default class Similar extends React.PureComponent {
     const artistsDataProps = {
       responseTotalPages,
       responseCurrentPage,
-      loading,
+      isLoading,
       scrollToTop,
       getData,
       clientPageLimit,
@@ -101,7 +101,7 @@ export default class Similar extends React.PureComponent {
   }
 
   render () {
-    const { artists, error, loading } = this.state
+    const { artists, error, isLoading } = this.state
 
     const artistsPageLink = `/artists/${this.artistNameEncoded}/similar`
     const artistsPageLinkData = <Link to={artistsPageLink}>Similar</Link>
@@ -119,7 +119,7 @@ export default class Similar extends React.PureComponent {
         <Segment
           className="artistPageSegment"
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

@@ -11,11 +11,13 @@ export default class TimeBar extends React.PureComponent {
       endTimeChange
     } = this.props
 
-    const background = <div className="playerPanelBackgroundBar" />
+    const backgroundData = <div className="playerPanelBackgroundBar" />
 
     const percentLoaded = (secondsLoaded / duration) * 100 || 0
     const loaderStyle = { width: `${percentLoaded}%` }
-    const loader = <div className="playerPanelLoaderBar" style={loaderStyle} />
+    const loaderData = (
+      <div className="playerPanelLoaderBar" style={loaderStyle} />
+    )
 
     const percentPlayed = (currentTime / duration) * 100 || 0
     const sliderBackground = `
@@ -26,7 +28,7 @@ export default class TimeBar extends React.PureComponent {
       )
     `
     const sliderStyle = { backgroundImage: sliderBackground }
-    const slider = (
+    const sliderData = (
       <input
         type="range"
         step="0.25"
@@ -42,9 +44,9 @@ export default class TimeBar extends React.PureComponent {
 
     return (
       <div className="playerPanelAudioWrap">
-        {background}
-        {loader}
-        {slider}
+        {backgroundData}
+        {loaderData}
+        {sliderData}
       </div>
     )
   }

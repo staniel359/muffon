@@ -12,7 +12,7 @@ import 'styles/Tags.sass'
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -38,9 +38,9 @@ export default class Show extends React.PureComponent {
     const { tagName } = this.params()
 
     const prevTagName = prevProps.match.params.tagName
-    const tagChanged = tagName !== prevTagName
+    const isTagChanged = tagName !== prevTagName
 
-    if (tagChanged) {
+    if (isTagChanged) {
       this.setNavSections(tagName)
       this.setState({ tagName: null, artistImages: null })
       this.setTagName()
@@ -57,8 +57,8 @@ export default class Show extends React.PureComponent {
   }
 
   setTagName () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -126,13 +126,13 @@ export default class Show extends React.PureComponent {
   }
 
   render () {
-    const { tagName, error, loading } = this.state
+    const { tagName, error, isLoading } = this.state
 
     const tagData = tagName && this.tagData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = tagData || errorData || loaderData
 

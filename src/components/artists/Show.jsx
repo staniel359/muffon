@@ -9,7 +9,7 @@ import 'styles/Artists.sass'
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -35,9 +35,9 @@ export default class Show extends React.PureComponent {
     const { artistName } = this.params()
 
     const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
+    const isArtistChanged = artistName !== prevArtistName
 
-    if (artistChanged) {
+    if (isArtistChanged) {
       this.setNavSections(artistName)
       this.setState({ artistName: null })
       this.setArtistName()
@@ -45,8 +45,8 @@ export default class Show extends React.PureComponent {
   }
 
   setArtistName () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -110,13 +110,13 @@ export default class Show extends React.PureComponent {
   }
 
   render () {
-    const { error, loading, artistName } = this.state
+    const { error, isLoading, artistName } = this.state
 
     const artistData = artistName && this.artistData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = artistData || errorData || loaderData
 

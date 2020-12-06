@@ -4,8 +4,10 @@ import { v4 as uuid } from 'uuid'
 
 export default class Navbar extends React.PureComponent {
   render () {
-    const addKeyToSection = section => ({ ...section, ...{ key: uuid() } })
-    const sections = this.props.navSections.map(addKeyToSection)
+    const { navSections } = this.props
+
+    const sectionWithKey = section => ({ ...section, key: uuid() })
+    const sections = navSections.map(sectionWithKey)
 
     return (
       <Menu borderless className="fixed" id="mainMenu">

@@ -10,7 +10,7 @@ import 'styles/artists/Tracks.sass'
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { isLoading: false, currentPage: 1 }
   }
 
   componentDidMount () {
@@ -36,9 +36,9 @@ export default class Tracks extends React.PureComponent {
     const { artistName } = this.params()
 
     const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
+    const isArtistChanged = artistName !== prevArtistName
 
-    if (artistChanged) {
+    if (isArtistChanged) {
       this.setNavSections(artistName)
       this.setState({ tracks: null })
       this.getData()
@@ -58,8 +58,8 @@ export default class Tracks extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -111,7 +111,7 @@ export default class Tracks extends React.PureComponent {
   tracksData () {
     const {
       tracks,
-      loading,
+      isLoading,
       artistName,
       topTrackCount,
       totalPages
@@ -120,10 +120,10 @@ export default class Tracks extends React.PureComponent {
     const tracksDataProps = { tracks, artistName, topTrackCount }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
-      <Segment className="pageSegment" {...{ loading }}>
+      <Segment className="pageSegment" loading={isLoading}>
         <List {...tracksDataProps} />
 
         <Divider />
@@ -134,13 +134,13 @@ export default class Tracks extends React.PureComponent {
   }
 
   render () {
-    const { loading, tracks, error } = this.state
+    const { isLoading, tracks, error } = this.state
 
     const tracksData = tracks && this.tracksData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = tracksData || errorData || loaderData
 

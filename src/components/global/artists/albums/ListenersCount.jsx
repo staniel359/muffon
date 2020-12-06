@@ -5,7 +5,7 @@ import { Loader } from 'semantic-ui-react'
 export default class ListenersCount extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, listenersCount: 0 }
+    this.state = { isLoading: false, listenersCount: 0 }
   }
 
   componentDidMount () {
@@ -21,8 +21,8 @@ export default class ListenersCount extends React.PureComponent {
   }
 
   getData () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -57,9 +57,9 @@ export default class ListenersCount extends React.PureComponent {
   }
 
   render () {
-    const { loading, listenersCount } = this.state
+    const { isLoading, listenersCount } = this.state
 
-    const loaderData = loading && <Loader active inline size="mini" />
+    const loaderData = isLoading && <Loader active inline size="mini" />
 
     const listenersData = (
       <div>{listenersCount.toLocaleString('eu') + ' listeners'}</div>

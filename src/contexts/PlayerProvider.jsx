@@ -9,13 +9,13 @@ export default class PlayerProvider extends React.PureComponent {
       toggleAudio: this.toggleAudio,
       stopAudio: this.stopAudio,
       toggleMute: this.toggleMute,
-      muted: false,
+      isMuted: false,
       volume: 100,
       changeVolume: this.changeVolume,
       handleVolumeChange: this.handleVolumeChange,
-      shuffle: false,
+      isShuffle: false,
       toggleShuffle: this.toggleShuffle,
-      repeat: false,
+      isRepeat: false,
       toggleRepeat: this.toggleRepeat,
       currentTime: 0,
       duration: 0,
@@ -70,36 +70,40 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   toggleMute = () => {
-    const muted = !this.state.muted
+    const isMuted = !this.state.isMuted
 
-    this.audio().muted = muted
+    this.audio().muted = isMuted
 
-    this.setState({ ...{ muted } })
+    this.setState({ ...{ isMuted } })
   }
 
   changeVolume = e => {
     const volume = parseInt(e.target.value)
-    const muted = volume === 0
+    const isMuted = volume === 0
 
     this.audio().volume = volume / 100
-    this.audio().muted = muted
+    this.audio().muted = isMuted
   }
 
   handleVolumeChange = e => {
     const volume = Math.floor(e.target.volume * 100)
-    const { muted } = e.target
+    const isMuted = e.target.muted
 
-    this.setState({ ...{ volume, muted } })
+    this.setState({ ...{ volume, isMuted } })
   }
 
-  toggleShuffle = () => this.setState({ shuffle: !this.state.shuffle })
+  toggleShuffle = () => {
+    const isShuffle = !this.state.isShuffle
+
+    this.setState({ ...{ isShuffle } })
+  }
 
   toggleRepeat = () => {
-    const repeat = !this.state.repeat
+    const isRepeat = !this.state.isRepeat
 
-    this.audio().loop = repeat
+    this.audio().loop = isRepeat
 
-    this.setState({ repeat: repeat })
+    this.setState({ ...{ isRepeat } })
   }
 
   handleLoadStart = () => {
@@ -178,7 +182,7 @@ export default class PlayerProvider extends React.PureComponent {
     return axios.get(url, extra).then(handleSuccess)
   }
 
-  setCurrentTrackId = id => this.setState({ currentTrackId: id })
+  setCurrentTrackId = currentTrackId => this.setState({ ...{ currentTrackId } })
 
   cancelTrackRequest = () => this.request.cancel()
 

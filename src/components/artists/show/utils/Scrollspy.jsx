@@ -15,9 +15,9 @@ export default class Scrollspy extends React.PureComponent {
   }
 
   setArtistNameVisibility () {
-    const artistNameVisible = window.scrollY >= 60
+    const isArtistNameVisible = window.scrollY >= 60
 
-    this.props.setArtistNameVisibility(artistNameVisible)
+    this.props.setArtistNameVisibility(isArtistNameVisible)
   }
 
   setMenuActiveItem () {

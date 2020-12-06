@@ -6,20 +6,16 @@ import 'styles/global/artists/Track.sass'
 export default class Track extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, error: false }
+    this.state = { isLoading: false, isError: false }
   }
 
-  componentDidMount () {
-    this._isMounted = true
-  }
+  componentDidMount = () => (this._isMounted = true)
 
-  componentWillUnmount () {
-    this._isMounted = false
-  }
+  componentWillUnmount = () => (this._isMounted = false)
 
   getData = () => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -29,10 +25,9 @@ export default class Track extends React.PureComponent {
     const trackTitle = track.title
     const getTrackParams = { ...{ artistName, trackTitle } }
 
-    const trackId = track.id
-    const handleSuccess = () => setCurrentTrackId(trackId)
+    const handleSuccess = () => setCurrentTrackId(track.id)
 
-    const handleError = () => this.setState({ error: true })
+    const handleError = () => this.setState({ isError: true })
 
     const handleFinish = () => switchLoader(false)
 
@@ -70,11 +65,16 @@ export default class Track extends React.PureComponent {
   }
 
   lengthData () {
-    const format = seconds =>
-      new Date(seconds * 1000).toISOString().substr(14, 5)
-    const length = format(this.props.track.length)
+    const { length } = this.props.track
 
-    return <List.Description className="trackContentLength" content={length} />
+    const lengthFormatted = new Date(length * 1000).toISOString().substr(14, 5)
+
+    return (
+      <List.Description
+        className="trackContentLength"
+        content={lengthFormatted}
+      />
+    )
   }
 
   counterData () {
@@ -102,32 +102,40 @@ export default class Track extends React.PureComponent {
       artistName,
       track,
       index,
-      playing,
+      isPlaying,
       audioStatus,
       toggleAudio,
       artist
     } = this.props
-    const { loading, error } = this.state
+    const { isLoading, isError } = this.state
 
     const trackTitle = track.title
 
     const handleTrackClick = () =>
-      !loading && (playing ? toggleAudio() : this.getData())
+      !isLoading && (isPlaying ? toggleAudio() : this.getData())
 
-    const active = loading || playing
-    const disabled = loading || error
+    const isActive = isLoading || isPlaying
+    const isDisabled = isLoading || isError
     const playButtonIcon = () => {
-      const paused = audioStatus === 'pause'
+      const isPaused = audioStatus === 'pause'
 
-      if (playing) {
-        return paused ? 'play' : 'pause'
+      if (isPlaying) {
+        return isPaused ? 'play' : 'pause'
       } else {
-        return error ? 'times' : 'play'
+        return isError ? 'times' : 'play'
       }
     }
 
     const playButtonData = (
-      <Button size="small" icon={playButtonIcon()} {...{ loading, disabled }} />
+      <div>
+        <Button
+          className="playButton"
+          size="small"
+          icon={playButtonIcon()}
+          loading={isLoading}
+          disabled={isDisabled}
+        />
+      </div>
     )
 
     const indexData = index >= 0 && (
@@ -158,21 +166,17 @@ export default class Track extends React.PureComponent {
         <div className="trackContentMain">
           <div className="trackContentIndexLink">
             {indexData}
-
             {titleArtistData}
           </div>
-
           {track.length && this.lengthData()}
         </div>
-
         {track.listeners_count && this.counterData()}
       </List.Content>
     )
 
     return (
-      <List.Item className="track" onClick={handleTrackClick} {...{ active }}>
-        <div className="playButton">{playButtonData}</div>
-
+      <List.Item className="track" onClick={handleTrackClick} active={isActive}>
+        {playButtonData}
         {trackData}
       </List.Item>
     )

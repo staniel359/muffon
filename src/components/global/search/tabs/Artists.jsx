@@ -8,7 +8,7 @@ import Pagination from 'global/Pagination'
 export default class Artists extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -26,8 +26,8 @@ export default class Artists extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -42,12 +42,12 @@ export default class Artists extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { search } = resp.data
+      const { artists } = search
 
-      this.setState({
-        artists: search.artists,
-        totalPages: search.total_pages,
-        error: null
-      })
+      const totalPages = search.total_pages
+      const error = null
+
+      this.setState({ ...{ artists, totalPages, error } })
 
       scrollToTop('artists')
     }
@@ -68,13 +68,13 @@ export default class Artists extends React.PureComponent {
   }
 
   artistsData () {
-    const { artists, totalPages, loading } = this.state
+    const { artists, totalPages, isLoading } = this.state
     const { hideSearch, artistsRef } = this.props
 
     const artistsDataProps = { artists, hideSearch }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
       <Ref innerRef={artistsRef}>
@@ -90,10 +90,8 @@ export default class Artists extends React.PureComponent {
   }
 
   render () {
-    const { artists, error } = this.state
+    const { artists, error, isLoading } = this.state
     const { active } = this.props
-
-    const loading = active && this.state.loading
 
     const artistsData = artists && this.artistsData()
 
@@ -106,7 +104,7 @@ export default class Artists extends React.PureComponent {
         <Segment
           className="searchResultsTabContentWrap"
           content={contentData}
-          {...{ loading }}
+          loading={active && isLoading}
         />
       </Tab.Pane>
     )

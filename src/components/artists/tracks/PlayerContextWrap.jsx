@@ -19,7 +19,7 @@ export default class PlayerContextWrap extends React.PureComponent {
           const artistName = track.artist
           const trackTitle = track.title
           const trackId = track.id
-          const playing = context.currentTrackId === trackId
+          const isPlaying = context.currentTrackId === trackId
 
           const playerProps = {
             getTrackData,
@@ -30,7 +30,7 @@ export default class PlayerContextWrap extends React.PureComponent {
             artistName,
             trackTitle,
             trackId,
-            playing
+            isPlaying
           }
 
           return <Player {...playerProps} />

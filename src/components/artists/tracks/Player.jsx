@@ -5,7 +5,7 @@ import TimeBarContextWrap from 'global/player/audio/TimeBarContextWrap'
 export default class Player extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, error: false }
+    this.state = { isLoading: false, isError: false }
   }
 
   componentDidMount = () => (this._isMounted = true)
@@ -13,8 +13,8 @@ export default class Player extends React.PureComponent {
   componentWillUnmount = () => (this._isMounted = false)
 
   getData = () => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -31,7 +31,7 @@ export default class Player extends React.PureComponent {
 
     const handleSuccess = () => setCurrentTrackId(trackId)
 
-    const handleError = () => this.setState({ error: true })
+    const handleError = () => this.setState({ isError: true })
 
     const handleFinish = () => switchLoader(false)
 
@@ -42,23 +42,23 @@ export default class Player extends React.PureComponent {
   }
 
   render () {
-    const { loading, error } = this.state
-    const { playing, toggleAudio, audioStatus, length } = this.props
+    const { isLoading, isError } = this.state
+    const { isPlaying, toggleAudio, audioStatus, length } = this.props
 
     const playButtonIcon = () => {
       const paused = audioStatus === 'pause'
 
-      if (playing) {
+      if (isPlaying) {
         return paused ? 'play' : 'pause'
       } else {
-        return error ? 'times' : 'play'
+        return isError ? 'times' : 'play'
       }
     }
 
     const handleTrackClick = () =>
-      !loading && (playing ? toggleAudio() : this.getData())
+      !isLoading && (isPlaying ? toggleAudio() : this.getData())
 
-    const disabled = loading || error
+    const isDisabled = isLoading || isError
 
     const playButtonData = (
       <Button
@@ -67,7 +67,8 @@ export default class Player extends React.PureComponent {
         className="trackPagePlayerPlayButton"
         icon={playButtonIcon()}
         onClick={handleTrackClick}
-        {...{ loading, disabled }}
+        loading={isLoading}
+        disabled={isDisabled}
       />
     )
 
@@ -83,7 +84,7 @@ export default class Player extends React.PureComponent {
       </div>
     )
 
-    const timeBarPlaceholderData = playing ? timeBarData : placeholderData
+    const timeBarPlaceholderData = isPlaying ? timeBarData : placeholderData
 
     const lengthFormatted = new Date(length * 1000).toISOString().substr(14, 5)
     const lengthData = length > 0 && (

@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid'
 
 export default class Track extends React.PureComponent {
   render () {
-    const track = this.props.currentTrack
+    const { track } = this.props
     const artistName = track.artist
 
     const imageData = (
@@ -16,30 +16,27 @@ export default class Track extends React.PureComponent {
       </div>
     )
 
-    const artistNameEncoded = encodeURIComponent(track.artist)
-    const trackTitleEncoded = encodeURIComponent(track.title)
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const trackTitle = track.title
+    const trackTitleEncoded = encodeURIComponent(trackTitle)
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
-    const titleData = (
-      <Ticker key={uuid()}>
-        <List.Header as="h4">
-          <Link to={trackLink}>{track.title}</Link>
-        </List.Header>
-      </Ticker>
+    const trackTitleLinkData = <Link to={trackLink}>{trackTitle}</Link>
+    const trackTitleData = <List.Header as="h4" content={trackTitleLinkData} />
+    const trackTitleTickerData = (
+      <Ticker key={uuid()} content={trackTitleData} />
     )
 
     const artistLink = `/artists/${artistNameEncoded}`
-    const artistData = (
-      <Ticker key={uuid()}>
-        <List.Description>
-          <Link to={artistLink}>{track.artist}</Link>
-        </List.Description>
-      </Ticker>
+    const artistLinkData = <Link to={artistLink}>{artistName}</Link>
+    const artistNameData = <List.Description content={artistLinkData} />
+    const artistNameTickerData = (
+      <Ticker key={uuid()} content={artistNameData} />
     )
 
     const trackData = (
       <List.Content className="playerPanelTrackContent">
-        {titleData}
-        {artistData}
+        {trackTitleTickerData}
+        {artistNameTickerData}
       </List.Content>
     )
 

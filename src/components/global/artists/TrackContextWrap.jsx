@@ -32,10 +32,10 @@ export default class TrackContextWrap extends React.PureComponent {
             getTrackData,
             currentTrackId
           } = context
-          const playing = currentTrackId === track.id
+          const isPlaying = currentTrackId === track.id
           const trackGlobalProps = {
-            playing,
-            ...(playing && { audioStatus }),
+            isPlaying,
+            ...(isPlaying && { audioStatus }),
             toggleAudio,
             setCurrentTrackId,
             getTrackData

@@ -11,7 +11,7 @@ export default class PictureDimmer extends React.PureComponent {
   }
 
   render () {
-    const { images, imageIndex, dimmerActive, hideDimmer } = this.props
+    const { images, imageIndex, isDimmerActive, hideDimmer } = this.props
     const { mainImageSlider, imagesSlider } = this.state
 
     const setMainImageSlider = slider =>
@@ -76,7 +76,7 @@ export default class PictureDimmer extends React.PureComponent {
       <Dimmer
         page
         className="artistPictureDimmer"
-        active={dimmerActive}
+        active={isDimmerActive}
         onClickOutside={hideDimmer}
         content={dimmerData}
       />

@@ -6,12 +6,12 @@ import ListenersCount from 'global/artists/albums/ListenersCount'
 export default class Album extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { artistHovered: false }
+    this.state = { isArtistHovered: false }
   }
 
   render () {
     const { album, hideSearch } = this.props
-    const { artistHovered } = this.state
+    const { isArtistHovered } = this.state
 
     const artistName = album.artist
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -21,7 +21,7 @@ export default class Album extends React.PureComponent {
     const albumTitleEncoded = encodeURIComponent(albumTitle)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
-    const albumOrArtistLink = artistHovered ? artistPageLink : albumPageLink
+    const albumOrArtistLink = isArtistHovered ? artistPageLink : albumPageLink
 
     const image = album.images.extrasmall
     const imageData = (
@@ -30,7 +30,7 @@ export default class Album extends React.PureComponent {
       </div>
     )
 
-    const albumTitleClassName = !artistHovered ? 'searchItemMainTitle' : ''
+    const albumTitleClassName = !isArtistHovered ? 'searchItemMainTitle' : ''
     const albumTitleData = (
       <List.Header
         as="h4"
@@ -39,9 +39,9 @@ export default class Album extends React.PureComponent {
       />
     )
 
-    const artistNameClassName = artistHovered ? 'searchItemMainTitle' : ''
+    const artistNameClassName = isArtistHovered ? 'searchItemMainTitle' : ''
     const toggleArtistHovered = bool =>
-      this.setState({ artistHovered: !artistHovered })
+      this.setState({ isArtistHovered: !isArtistHovered })
     const artistNameData = (
       <List.Description
         className={artistNameClassName}

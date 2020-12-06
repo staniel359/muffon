@@ -7,17 +7,17 @@ import Scrollspy from '../utils/Scrollspy'
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { artistNameVisible: false, menuActiveItem: 'info' }
+    this.state = { isArtistNameVisible: false, menuActiveItem: 'info' }
   }
 
   render () {
     const { artistName, segmentTop, scrollToTop } = this.props
-    const { artistNameVisible, menuActiveItem } = this.state
+    const { isArtistNameVisible, menuActiveItem } = this.state
 
     const pictureProps = { artistName }
 
     const transitionProps = {
-      visible: artistNameVisible,
+      visible: isArtistNameVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
@@ -39,15 +39,15 @@ export default class Left extends React.PureComponent {
     const pageMenuProps = { menuActiveItem, scrollToTop }
 
     const setArtistNameVisibility = bool => {
-      const visibilityChanged = artistNameVisible !== bool
+      const isVisibilityChanged = isArtistNameVisible !== bool
 
-      visibilityChanged && this.setState({ artistNameVisible: bool })
+      isVisibilityChanged && this.setState({ isArtistNameVisible: bool })
     }
 
     const setMenuActiveItem = item => {
-      const activeItemChanged = menuActiveItem !== item
+      const isActiveItemChanged = menuActiveItem !== item
 
-      activeItemChanged && this.setState({ menuActiveItem: item })
+      isActiveItemChanged && this.setState({ menuActiveItem: item })
     }
 
     const scrollspyProps = {

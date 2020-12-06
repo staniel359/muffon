@@ -3,7 +3,7 @@ import React from 'react'
 export default class AudioContainer extends React.PureComponent {
   render () {
     const {
-      repeat,
+      isRepeat,
       handleLoadStart,
       handlePlay,
       handlePause,
@@ -17,7 +17,7 @@ export default class AudioContainer extends React.PureComponent {
       <audio
         id="playerPanelAudio"
         autoPlay
-        loop={repeat}
+        loop={isRepeat}
         onLoadStart={handleLoadStart}
         onPlay={handlePlay}
         onPause={handlePause}

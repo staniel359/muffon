@@ -84,12 +84,12 @@ export default class Ticker extends React.PureComponent {
   }
 
   render () {
+    const { content, children } = this.props
+
     return (
       <div ref={this.tickerRef}>
         <div ref={this.tickerContainerRef}>
-          <div ref={this.tickerContentRef}>
-            {this.props.content || this.props.children}
-          </div>
+          <div ref={this.tickerContentRef}>{content || children}</div>
         </div>
       </div>
     )

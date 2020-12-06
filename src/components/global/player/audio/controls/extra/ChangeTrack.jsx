@@ -5,12 +5,10 @@ import axios from 'axios'
 export default class ChangeTrack extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, error: false }
+    this.state = { isLoading: false, isError: false }
   }
 
-  componentDidMount () {
-    this._isMounted = true
-  }
+  componentDidMount = () => (this._isMounted = true)
 
   componentWillUnmount () {
     this._isMounted = false
@@ -18,8 +16,8 @@ export default class ChangeTrack extends React.PureComponent {
   }
 
   getData = () => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -31,10 +29,10 @@ export default class ChangeTrack extends React.PureComponent {
       ...{ artistName, trackTitle, albumTitle, index }
     }
 
-    const handleSuccess = () => this.setState({ error: false })
+    const handleSuccess = () => this.setState({ isError: false })
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ error: true })
+      !axios.isCancel(error) && this.setState({ isError: true })
     }
 
     const handleFinish = () => switchLoader(false)
@@ -46,15 +44,20 @@ export default class ChangeTrack extends React.PureComponent {
   }
 
   render () {
-    const { loading, error } = this.state
+    const { isLoading, isError } = this.state
 
-    const disabled = loading || error
-    const basic = !disabled
-    const icon = error ? 'times' : 'angle double right'
-    const buttonProps = { loading, disabled, basic, icon }
+    const isDisabled = isLoading || isError
+    const icon = isError ? 'times' : 'angle double right'
 
     const changeTrackButtonData = (
-      <Button compact onClick={this.getData} {...buttonProps} />
+      <Button
+        compact
+        onClick={this.getData}
+        loading={isLoading}
+        disabled={isDisabled}
+        basic={!isDisabled}
+        {...{ icon }}
+      />
     )
 
     return (

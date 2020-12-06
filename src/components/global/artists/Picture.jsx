@@ -8,7 +8,7 @@ import PictureDimmer from './PictureDimmer'
 export default class Picture extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, imageIndex: 0 }
+    this.state = { isLoading: false, imageIndex: 0 }
   }
 
   componentDidMount () {
@@ -24,14 +24,16 @@ export default class Picture extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const artistNameChanged = this.props.artistName !== prevProps.artistName
+    const { artistName } = this.props
 
-    artistNameChanged && this.getData()
+    const isArtistNameChanged = artistName !== prevProps.artistName
+
+    isArtistNameChanged && this.getData()
   }
 
   getData () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -65,7 +67,7 @@ export default class Picture extends React.PureComponent {
   }
 
   dimmableImageData () {
-    const { images, dimmerActive, imageIndex } = this.state
+    const { images, isDimmerActive, imageIndex } = this.state
 
     const setImageIndex = index => this.setState({ imageIndex: index })
     const sliderProps = {
@@ -76,7 +78,7 @@ export default class Picture extends React.PureComponent {
       lazyLoad: 'ondemand'
     }
 
-    const showDimmer = () => this.setState({ dimmerActive: true })
+    const showDimmer = () => this.setState({ isDimmerActive: true })
     const artistImageDimmable = image => {
       const key = uuid()
       const src = image.medium
@@ -94,8 +96,8 @@ export default class Picture extends React.PureComponent {
     }
     const imagesListData = images.map(artistImageDimmable)
 
-    const hideDimmer = () => this.setState({ dimmerActive: false })
-    const dimmerProps = { images, dimmerActive, imageIndex, hideDimmer }
+    const hideDimmer = () => this.setState({ isDimmerActive: false })
+    const dimmerProps = { images, isDimmerActive, imageIndex, hideDimmer }
 
     return (
       <React.Fragment>
@@ -129,11 +131,11 @@ export default class Picture extends React.PureComponent {
   }
 
   render () {
-    const { loading, images } = this.state
+    const { isLoading, images } = this.state
     const { circular } = this.props
 
     const placeholderClassName = circular ? 'circular' : 'rounded'
-    const placeholderImageData = loading && (
+    const placeholderImageData = isLoading && (
       <Placeholder
         className={placeholderClassName}
         content={<Placeholder.Image square />}

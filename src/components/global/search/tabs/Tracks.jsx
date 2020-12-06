@@ -8,7 +8,7 @@ import Pagination from 'global/Pagination'
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -26,8 +26,8 @@ export default class Tracks extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -42,12 +42,12 @@ export default class Tracks extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { search } = resp.data
+      const { tracks } = search
 
-      this.setState({
-        tracks: search.tracks,
-        totalPages: search.total_pages,
-        error: null
-      })
+      const totalPages = search.total_pages
+      const error = null
+
+      this.setState({ ...{ tracks, totalPages, error } })
 
       scrollToTop('tracks')
     }
@@ -68,13 +68,13 @@ export default class Tracks extends React.PureComponent {
   }
 
   tracksData () {
-    const { tracks, totalPages, loading } = this.state
+    const { tracks, totalPages, isLoading } = this.state
     const { hideSearch, tracksRef } = this.props
 
     const tracksDataProps = { tracks, hideSearch }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
       <Ref innerRef={tracksRef}>
@@ -90,10 +90,8 @@ export default class Tracks extends React.PureComponent {
   }
 
   render () {
-    const { tracks, error } = this.state
+    const { tracks, error, isLoading } = this.state
     const { active } = this.props
-
-    const loading = active && this.state.loading
 
     const tracksData = tracks && this.tracksData()
 
@@ -106,7 +104,7 @@ export default class Tracks extends React.PureComponent {
         <Segment
           className="searchResultsTabContentWrap"
           content={contentData}
-          {...{ loading }}
+          loading={active && isLoading}
         />
       </Tab.Pane>
     )

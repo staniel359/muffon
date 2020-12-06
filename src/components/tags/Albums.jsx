@@ -8,7 +8,7 @@ import List from './albums/List'
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -24,8 +24,8 @@ export default class Albums extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -69,7 +69,7 @@ export default class Albums extends React.PureComponent {
       albums,
       responseTotalPages,
       responseCurrentPage,
-      loading
+      isLoading
     } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
@@ -84,7 +84,7 @@ export default class Albums extends React.PureComponent {
     const albumsDataProps = {
       responseTotalPages,
       responseCurrentPage,
-      loading,
+      isLoading,
       scrollToTop,
       getData,
       clientPageLimit,
@@ -99,7 +99,7 @@ export default class Albums extends React.PureComponent {
   }
 
   render () {
-    const { albums, error, loading } = this.state
+    const { albums, error, isLoading } = this.state
 
     const headerData = <Header as="h3" content="Top albums" />
 
@@ -115,7 +115,7 @@ export default class Albums extends React.PureComponent {
         <Segment
           className="tagsPageSegment"
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

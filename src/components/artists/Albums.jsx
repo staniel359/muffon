@@ -10,7 +10,7 @@ import 'styles/artists/Albums.sass'
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { isLoading: false, currentPage: 1 }
   }
 
   componentDidMount () {
@@ -36,9 +36,9 @@ export default class Albums extends React.PureComponent {
     const { artistName } = this.params()
 
     const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
+    const isArtistChanged = artistName !== prevArtistName
 
-    if (artistChanged) {
+    if (isArtistChanged) {
       this.setNavSections(artistName)
       this.setState({ albums: null })
       this.getData()
@@ -58,8 +58,8 @@ export default class Albums extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -103,16 +103,16 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums, loading, artistName, totalPages } = this.state
+    const { albums, isLoading, artistName, totalPages } = this.state
 
     const itemsPerRow = 4
     const albumsDataProps = { albums, artistName, itemsPerRow }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
-      <Segment className="pageSegment" {...{ loading }}>
+      <Segment className="pageSegment" loading={isLoading}>
         <List {...albumsDataProps} />
 
         <Divider />
@@ -123,13 +123,13 @@ export default class Albums extends React.PureComponent {
   }
 
   render () {
-    const { loading, albums, error } = this.state
+    const { isLoading, albums, error } = this.state
 
     const albumsData = albums && this.albumsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = albumsData || errorData || loaderData
 

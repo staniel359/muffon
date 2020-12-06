@@ -7,7 +7,7 @@ import { v4 as uuid } from 'uuid'
 export default class Info extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -23,8 +23,8 @@ export default class Info extends React.PureComponent {
   }
 
   getData () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -109,7 +109,7 @@ export default class Info extends React.PureComponent {
   }
 
   render () {
-    const { tag, error, loading } = this.state
+    const { tag, error, isLoading } = this.state
 
     const segmentClassName = `tagsPageSegment ${
       !error && 'tagsPageSegmentMain'
@@ -126,7 +126,7 @@ export default class Info extends React.PureComponent {
         <Segment
           className={segmentClassName}
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

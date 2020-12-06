@@ -12,7 +12,7 @@ import 'styles/App.sass'
 export default class App extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { navSections: [], searchActive: false }
+    this.state = { navSections: [], isSearchActive: false }
   }
 
   componentDidMount () {
@@ -21,22 +21,22 @@ export default class App extends React.PureComponent {
   }
 
   toggleSearch = () => {
-    const searchActive = !this.state.searchActive
+    const isSearchActive = !this.state.isSearchActive
 
-    this.setState({ ...{ searchActive } })
+    this.setState({ ...{ isSearchActive } })
   }
 
-  hideSearch = () => this.setState({ searchActive: false })
+  hideSearch = () => this.setState({ isSearchActive: false })
 
   setNavSections = navSections => this.setState({ ...{ navSections } })
 
   render () {
-    const { navSections, searchActive } = this.state
+    const { navSections, isSearchActive } = this.state
     const { setNavSections, hideSearch } = this
 
     const navbarProps = { navSections }
     const routesProps = { setNavSections }
-    const searchProps = { searchActive, hideSearch }
+    const searchProps = { isSearchActive, hideSearch }
 
     return (
       <Router>

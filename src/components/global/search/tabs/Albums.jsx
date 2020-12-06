@@ -8,7 +8,7 @@ import Pagination from 'global/Pagination'
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -26,8 +26,8 @@ export default class Albums extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -42,12 +42,12 @@ export default class Albums extends React.PureComponent {
 
     const handleSuccess = resp => {
       const { search } = resp.data
+      const { albums } = search
 
-      this.setState({
-        albums: search.albums,
-        totalPages: search.total_pages,
-        error: null
-      })
+      const totalPages = search.total_pages
+      const error = null
+
+      this.setState({ ...{ albums, totalPages, error } })
 
       scrollToTop('albums')
     }
@@ -68,13 +68,13 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums, totalPages, loading } = this.state
+    const { albums, totalPages, isLoading } = this.state
     const { hideSearch, albumsRef } = this.props
 
     const albumsDataProps = { albums, hideSearch }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
       <Ref innerRef={albumsRef}>
@@ -90,10 +90,8 @@ export default class Albums extends React.PureComponent {
   }
 
   render () {
-    const { albums, error } = this.state
+    const { albums, error, isLoading } = this.state
     const { active } = this.props
-
-    const loading = active && this.state.loading
 
     const albumsData = albums && this.albumsData()
 
@@ -106,7 +104,7 @@ export default class Albums extends React.PureComponent {
         <Segment
           className="searchResultsTabContentWrap"
           content={contentData}
-          {...{ loading }}
+          loading={active && isLoading}
         />
       </Tab.Pane>
     )

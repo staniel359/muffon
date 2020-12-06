@@ -10,7 +10,7 @@ export default class PaginationData extends React.PureComponent {
       getData,
       collection,
       setClientCurrentPage,
-      setIsForward,
+      setForward,
       scrollToTop
     } = this.props
 
@@ -33,7 +33,7 @@ export default class PaginationData extends React.PureComponent {
     !isCollectionFull && getNextCollectionData()
 
     setClientCurrentPage(activePage)
-    setIsForward(isForward)
+    setForward(isForward)
 
     scrollToTop()
   }

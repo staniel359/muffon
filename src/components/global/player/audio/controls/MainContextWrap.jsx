@@ -8,19 +8,19 @@ export default class MainContextWrap extends React.PureComponent {
       <PlayerContext.Consumer>
         {context => {
           const {
-            shuffle,
+            isShuffle,
             toggleShuffle,
             toggleAudio,
             audioStatus,
-            repeat,
+            isRepeat,
             toggleRepeat
           } = context
           const mainControlsProps = {
-            shuffle,
+            isShuffle,
             toggleShuffle,
             toggleAudio,
             audioStatus,
-            repeat,
+            isRepeat,
             toggleRepeat
           }
 

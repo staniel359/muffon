@@ -8,7 +8,7 @@ import Tags from 'global/Tags'
 export default class ArtistTags extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -34,9 +34,9 @@ export default class ArtistTags extends React.PureComponent {
     const { artistName } = this.params()
 
     const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
+    const isArtistChanged = artistName !== prevArtistName
 
-    if (artistChanged) {
+    if (isArtistChanged) {
       this.setNavSections(artistName)
       this.setState({ tags: null })
       this.getData()
@@ -56,8 +56,8 @@ export default class ArtistTags extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -93,23 +93,23 @@ export default class ArtistTags extends React.PureComponent {
   }
 
   tagsData () {
-    const { tags, loading } = this.state
+    const { tags, isLoading } = this.state
 
     return (
-      <Segment className="pageSegment" {...{ loading }}>
+      <Segment className="pageSegment" loading={isLoading}>
         <Tags {...{ tags }} />
       </Segment>
     )
   }
 
   render () {
-    const { loading, tags, error } = this.state
+    const { isLoading, tags, error } = this.state
 
     const tagsData = tags && this.tagsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = tagsData || errorData || loaderData
 

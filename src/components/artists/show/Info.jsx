@@ -7,7 +7,7 @@ import Tags from 'global/Tags'
 export default class Info extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -25,8 +25,8 @@ export default class Info extends React.PureComponent {
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
   getData () {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -96,7 +96,7 @@ export default class Info extends React.PureComponent {
   }
 
   render () {
-    const { artist, loading, error } = this.state
+    const { artist, isLoading, error } = this.state
 
     const infoData = artist && this.infoData()
 
@@ -109,7 +109,7 @@ export default class Info extends React.PureComponent {
         <Segment
           className="artistPageSegment"
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

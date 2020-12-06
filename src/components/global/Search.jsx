@@ -25,19 +25,30 @@ export default class Search extends React.PureComponent {
   }
 
   toggleBodyDimmable () {
-    if (this.props.searchActive) {
-      document.body.className = 'dimmed dimmable'
+    const { isSearchActive } = this.props
+
+    const { classList } = document.body
+
+    if (isSearchActive) {
+      classList.add('dimmed')
+      classList.add('dimmable')
     } else {
-      document.body.removeAttribute('class')
+      classList.remove('dimmed')
+      classList.remove('dimmable')
+
+      if (classList.length === 0) {
+        document.body.removeAttribute('class')
+      }
     }
   }
 
   render () {
     const { query, searchId } = this.state
-    const { hideSearch, searchActive } = this.props
+    const { hideSearch, isSearchActive } = this.props
 
-    const dimmerVisibilityClassName = searchActive ? 'visible' : 'hidden'
-    const dimmerClassName = `searchDimmer ${dimmerVisibilityClassName}`
+    const dimmerClassName = `searchDimmer ${
+      isSearchActive ? 'visible' : 'hidden'
+    }`
 
     const dimmerDataClassName = `searchDimmerData ${query && 'h100'}`
 

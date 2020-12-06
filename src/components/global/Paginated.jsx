@@ -114,7 +114,7 @@ export default class Paginated extends React.PureComponent {
 
     const setClientCurrentPage = clientCurrentPage =>
       this.setState({ ...{ clientCurrentPage } })
-    const setIsForward = isForward => this.setState({ ...{ isForward } })
+    const setForward = isForward => this.setState({ ...{ isForward } })
     const scrollToTop = () => this.props.scrollToTop(collectionName)
 
     const paginationProps = {
@@ -126,7 +126,7 @@ export default class Paginated extends React.PureComponent {
       getData,
       collection,
       setClientCurrentPage,
-      setIsForward,
+      setForward,
       scrollToTop
     }
 

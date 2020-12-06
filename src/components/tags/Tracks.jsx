@@ -8,7 +8,7 @@ import List from './tracks/List'
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false }
+    this.state = { isLoading: false }
   }
 
   componentDidMount () {
@@ -24,8 +24,8 @@ export default class Tracks extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -69,7 +69,7 @@ export default class Tracks extends React.PureComponent {
       tracks,
       responseTotalPages,
       responseCurrentPage,
-      loading
+      isLoading
     } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
@@ -83,7 +83,7 @@ export default class Tracks extends React.PureComponent {
     const tracksDataProps = {
       responseTotalPages,
       responseCurrentPage,
-      loading,
+      isLoading,
       scrollToTop,
       getData,
       clientPageLimit,
@@ -97,7 +97,7 @@ export default class Tracks extends React.PureComponent {
   }
 
   render () {
-    const { tracks, error, loading } = this.state
+    const { tracks, error, isLoading } = this.state
 
     const headerData = <Header as="h3" content="Top tracks" />
 
@@ -113,7 +113,7 @@ export default class Tracks extends React.PureComponent {
         <Segment
           className="tagsPageSegment"
           content={contentData}
-          {...{ loading }}
+          loading={isLoading}
         />
       </Segment.Group>
     )

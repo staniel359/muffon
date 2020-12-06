@@ -3,9 +3,9 @@ import { Button, Popup, Header } from 'semantic-ui-react'
 
 export default class Volume extends React.PureComponent {
   render () {
-    const { toggleMute, muted, volume, changeVolume } = this.props
+    const { toggleMute, isMuted, volume, changeVolume } = this.props
 
-    const volumeOffIcon = (muted || volume === 0) && 'volume off'
+    const volumeOffIcon = (isMuted || volume === 0) && 'volume off'
     const volumeLowIcon = volume < 50 && 'volume down'
     const volumeUpIcon = 'volume up'
     const volumeIcon = volumeOffIcon || volumeLowIcon || volumeUpIcon
@@ -14,7 +14,7 @@ export default class Volume extends React.PureComponent {
       <Button basic compact icon={volumeIcon} onClick={toggleMute} />
     )
 
-    const currentVolume = muted ? 0 : volume
+    const currentVolume = isMuted ? 0 : volume
     const volumeBarBackground = `
       -webkit-gradient(
         linear, left top, right top,

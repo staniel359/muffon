@@ -2,13 +2,8 @@ import React from 'react'
 import { Pagination } from 'semantic-ui-react'
 
 export default class PaginationData extends React.PureComponent {
-  constructor (props) {
-    super(props)
-    this.state = {}
-  }
-
   render () {
-    const { totalPages, loading } = this.props
+    const { totalPages, isLoading } = this.props
 
     const handlePageChange = (_, { activePage }) => {
       this.setState({ currentPage: activePage })
@@ -22,7 +17,7 @@ export default class PaginationData extends React.PureComponent {
       firstItem: null,
       lastItem: null,
       siblingRange: 0,
-      disabled: loading
+      disabled: isLoading
     }
 
     return (

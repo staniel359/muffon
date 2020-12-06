@@ -10,7 +10,7 @@ import 'styles/artists/Similar.sass'
 export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { isLoading: false, currentPage: 1 }
   }
 
   componentDidMount () {
@@ -36,9 +36,9 @@ export default class Similar extends React.PureComponent {
     const { artistName } = this.params()
 
     const prevArtistName = prevProps.match.params.artistName
-    const artistChanged = artistName !== prevArtistName
+    const isArtistChanged = artistName !== prevArtistName
 
-    if (artistChanged) {
+    if (isArtistChanged) {
       this.setNavSections(artistName)
       this.setState({ artists: null })
       this.getData()
@@ -58,8 +58,8 @@ export default class Similar extends React.PureComponent {
   }
 
   getData = page => {
-    const switchLoader = loading => {
-      this._isMounted && this.setState({ ...{ loading } })
+    const switchLoader = isLoading => {
+      this._isMounted && this.setState({ ...{ isLoading } })
     }
 
     switchLoader(true)
@@ -102,15 +102,15 @@ export default class Similar extends React.PureComponent {
   }
 
   artistsData () {
-    const { artists, loading, totalPages } = this.state
+    const { artists, isLoading, totalPages } = this.state
 
     const artistsDataProps = { artists }
 
     const handlePageChange = this.getData
-    const paginationProps = { totalPages, loading, handlePageChange }
+    const paginationProps = { totalPages, isLoading, handlePageChange }
 
     return (
-      <Segment className="pageSegment" {...{ loading }}>
+      <Segment className="pageSegment" loading={isLoading}>
         <List {...artistsDataProps} />
 
         <Divider />
@@ -121,13 +121,13 @@ export default class Similar extends React.PureComponent {
   }
 
   render () {
-    const { loading, artists, error } = this.state
+    const { isLoading, artists, error } = this.state
 
     const artistsData = artists && this.artistsData()
 
     const errorData = error && <ErrorMessage {...{ error }} />
 
-    const loaderData = loading && <LoaderDimmer />
+    const loaderData = isLoading && <LoaderDimmer />
 
     const contentData = artistsData || errorData || loaderData
 

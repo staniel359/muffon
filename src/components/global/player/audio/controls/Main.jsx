@@ -4,16 +4,21 @@ import { Button } from 'semantic-ui-react'
 export default class Main extends React.PureComponent {
   render () {
     const {
-      shuffle,
+      isShuffle,
       toggleShuffle,
       toggleAudio,
       audioStatus,
-      repeat,
+      isRepeat,
       toggleRepeat
     } = this.props
 
     const shuffleButton = (
-      <Button basic={!shuffle} compact icon="shuffle" onClick={toggleShuffle} />
+      <Button
+        basic={!isShuffle}
+        compact
+        icon="shuffle"
+        onClick={toggleShuffle}
+      />
     )
 
     const backwardButton = <Button basic compact icon="backward" />
@@ -36,7 +41,7 @@ export default class Main extends React.PureComponent {
 
     const repeatButton = (
       <Button
-        basic={!repeat}
+        basic={!isRepeat}
         compact
         icon="redo alternate"
         onClick={toggleRepeat}
