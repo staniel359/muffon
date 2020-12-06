@@ -40,11 +40,13 @@ export default class Artists extends React.PureComponent {
       const { tag } = resp.data
 
       const artists = tag.artists
-      const totalPages = tag.total_pages
-      const currentPage = tag.page
+      const responseTotalPages = tag.total_pages
+      const responseCurrentPage = tag.page
       const error = null
 
-      this.setState({ ...{ artists, totalPages, currentPage, error } })
+      this.setState({
+        ...{ artists, responseTotalPages, responseCurrentPage, error }
+      })
 
       this.props.setArtistImages(artists.map(a => a.images.small))
     }
@@ -65,25 +67,30 @@ export default class Artists extends React.PureComponent {
   }
 
   artistsData () {
-    const { artists, totalPages, currentPage, loading } = this.state
+    const {
+      artists,
+      responseTotalPages,
+      responseCurrentPage,
+      loading
+    } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
 
-    const activePageLimit = 4
-    const currentPageLimit = 21
+    const clientPageLimit = 4
+    const responsePageLimit = 21
     const collection = artists
     const collectionName = 'artists'
     const collectionList = <List />
     const itemsPerRow = 4
 
     const artistsDataProps = {
-      totalPages,
-      currentPage,
+      responseTotalPages,
+      responseCurrentPage,
       loading,
       scrollToTop,
       getData,
-      activePageLimit,
-      currentPageLimit,
+      clientPageLimit,
+      responsePageLimit,
       collection,
       collectionName,
       collectionList,

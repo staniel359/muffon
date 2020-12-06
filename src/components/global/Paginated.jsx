@@ -1,147 +1,142 @@
 import React from 'react'
 import { Divider } from 'semantic-ui-react'
-import Pagination from 'global/Pagination'
+import merge from 'deepmerge'
+import Pagination from './paginated/Pagination'
+import List from './paginated/List'
 
 export default class Paginated extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { activePage: 1, collection: [] }
+    this.state = { clientCurrentPage: 1, collection: {}, isForward: true }
   }
 
   componentDidMount = () => this.setData()
 
   componentDidUpdate (prevProps, prevState) {
-    this.handleCurrentPageChange(prevProps)
+    this.handleResponseCurrentPageChange(prevProps)
     this.handleCollectionChange(prevProps)
   }
 
-  handleCurrentPageChange (prevProps) {
-    const nextCurrentPage = this.props.currentPage
-    const prevCurrentPage = prevProps.currentPage
+  handleResponseCurrentPageChange (prevProps) {
+    const { responseCurrentPage } = this.props
 
-    const pageChanged = nextCurrentPage !== prevCurrentPage
+    const isPageChanged = responseCurrentPage !== prevProps.responseCurrentPage
 
-    pageChanged && this.setData()
+    isPageChanged && this.setData()
   }
 
   handleCollectionChange (prevProps) {
-    const { scrollToTop, collectionName } = this.props
+    const { scrollToTop, collectionName, collection } = this.props
 
-    const nextCollection = this.props.collection
-    const prevCollection = prevProps.collection
+    const isCollectionChanged = collection !== prevProps.collection
 
-    const collectionChanged = nextCollection !== prevCollection
-
-    collectionChanged && scrollToTop(collectionName)
+    isCollectionChanged && scrollToTop(collectionName)
   }
 
   setData () {
-    const { currentPage } = this.props
+    const { isForward } = this.state
+    const { arrayMerge } = this
 
-    const placeholderData = () => {
-      const { totalPages, currentPageLimit } = this.props
+    const collectionsArray = [
+      { ...this.state.collection },
+      this.newCollection()
+    ]
+    const collections = isForward
+      ? collectionsArray
+      : collectionsArray.reverse()
 
-      const pagesArray = Array(totalPages)
-      const pageIndexesArray = [...pagesArray.keys()]
+    const collection = merge(...collections, { arrayMerge })
 
-      const collectionArray = Array(currentPageLimit).fill(null)
-      const collectionIndexArray = (_, index) => [index + 1, collectionArray]
+    this.setState({ ...{ collection } })
+  }
 
-      const pagesCollectionsArray = pageIndexesArray.map(collectionIndexArray)
+  newCollection () {
+    const {
+      responsePageLimit,
+      responseCurrentPage,
+      clientPageLimit
+    } = this.props
 
-      const pagesCollectionsObject = Object.fromEntries(pagesCollectionsArray)
+    const totalOffset = responsePageLimit * (responseCurrentPage - 1)
+    const startPage = Math.floor(totalOffset / clientPageLimit) + 1
 
-      return pagesCollectionsObject
+    const collection = [...this.props.collection]
+    collection.length = responsePageLimit
+
+    const collectionArray = []
+
+    for (let page = startPage; collection.length > 0; page++) {
+      const isFirstPage = collectionArray.length === 0
+      const prevPageRemainder = isFirstPage ? totalOffset % clientPageLimit : 0
+      const pageArrayLength = clientPageLimit - prevPageRemainder
+      const pageArray = collection.splice(0, pageArrayLength)
+
+      collectionArray.push([page, pageArray])
     }
 
-    const paginatedData = () => {
-      const { collectionPaginated } = this.state
+    return Object.fromEntries(collectionArray)
+  }
 
-      return collectionPaginated
-        ? { ...collectionPaginated }
-        : placeholderData()
+  arrayMerge = (originalArray, newArray, options) => {
+    const { clientPageLimit } = this.props
+
+    const isFull = array => array.length === clientPageLimit
+
+    if (isFull(originalArray)) {
+      return originalArray
+    } else if (isFull(newArray)) {
+      return newArray
+    } else {
+      return merge(originalArray, newArray)
     }
-
-    const collectionPaginated = paginatedData()
-    collectionPaginated[currentPage] = this.props.collection
-
-    const collection = Object.values(collectionPaginated).flat()
-
-    this.setState({ ...{ collectionPaginated, collection } })
   }
 
   render () {
+    const { clientCurrentPage, collection } = this.state
     const {
+      responseTotalPages,
+      responsePageLimit,
+      clientPageLimit,
       loading,
+      getData,
       collectionName,
-      activePageLimit,
-      currentPageLimit,
-      collectionList,
-      itemsPerRow
+      itemsPerRow,
+      collectionList
     } = this.props
 
-    const activePageCollection = () => {
-      const { collection, activePage } = this.state
-
-      const offset = (activePage - 1) * activePageLimit
-      const limit = offset + activePageLimit
-
-      return collection.slice(offset, limit).filter(a => a)
-    }
-
-    const collectionDataProps = {
-      ...{
-        [collectionName]: activePageCollection(),
-        ...{ itemsPerRow }
-      }
-    }
-    const collectionData = React.cloneElement(
+    const listProps = {
+      collectionName,
+      itemsPerRow,
       collectionList,
-      collectionDataProps
-    )
-
-    const totalPages = Math.floor(
-      (this.props.totalPages * currentPageLimit) / activePageLimit
-    )
-
-    const currentPageCollection = page => {
-      const { collectionPaginated } = this.state
-
-      const collection = collectionPaginated[page]
-
-      return collection ? collection.filter(a => a) : []
+      collection,
+      clientCurrentPage
     }
 
-    const handlePageChange = activePage => {
-      const { getData, scrollToTop, collectionName } = this.props
+    const setClientCurrentPage = clientCurrentPage =>
+      this.setState({ ...{ clientCurrentPage } })
+    const setIsForward = isForward => this.setState({ ...{ isForward } })
+    const scrollToTop = () => this.props.scrollToTop(collectionName)
 
-      const pagesNotMultiple = currentPageLimit % activePageLimit > 0
-      const forward = activePage > this.state.activePage
-      const page = pagesNotMultiple && forward ? activePage : activePage - 1
-
-      const currentPage =
-        Math.floor((page * activePageLimit) / currentPageLimit) + 1
-
-      const noCurrentPageCollection =
-        currentPageCollection(currentPage).length === 0
-
-      noCurrentPageCollection && getData(currentPage)
-
-      this.setState({ ...{ activePage } })
-
-      scrollToTop(collectionName)
+    const paginationProps = {
+      responseTotalPages,
+      responsePageLimit,
+      clientPageLimit,
+      loading,
+      clientCurrentPage,
+      getData,
+      collection,
+      setClientCurrentPage,
+      setIsForward,
+      scrollToTop
     }
-
-    const paginationProps = { totalPages, loading, handlePageChange }
-    const paginationData = <Pagination {...paginationProps} />
 
     return (
       <React.Fragment>
-        {collectionData}
+        <List {...listProps} />
 
         <Divider />
 
-        {paginationData}
+        <Pagination {...paginationProps} />
       </React.Fragment>
     )
   }

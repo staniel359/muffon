@@ -40,11 +40,13 @@ export default class Tracks extends React.PureComponent {
       const { tag } = resp.data
 
       const tracks = tag.tracks
-      const totalPages = tag.total_pages
-      const currentPage = tag.page
+      const responseTotalPages = tag.total_pages
+      const responseCurrentPage = tag.page
       const error = null
 
-      this.setState({ ...{ tracks, totalPages, currentPage, error } })
+      this.setState({
+        ...{ tracks, responseTotalPages, responseCurrentPage, error }
+      })
     }
 
     const handleError = error => {
@@ -63,24 +65,29 @@ export default class Tracks extends React.PureComponent {
   }
 
   tracksData () {
-    const { tracks, totalPages, currentPage, loading } = this.state
+    const {
+      tracks,
+      responseTotalPages,
+      responseCurrentPage,
+      loading
+    } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
 
-    const activePageLimit = 10
-    const currentPageLimit = 50
+    const clientPageLimit = 10
+    const responsePageLimit = 50
     const collection = tracks
     const collectionName = 'tracks'
     const collectionList = <List />
 
     const tracksDataProps = {
-      totalPages,
-      currentPage,
+      responseTotalPages,
+      responseCurrentPage,
       loading,
       scrollToTop,
       getData,
-      activePageLimit,
-      currentPageLimit,
+      clientPageLimit,
+      responsePageLimit,
       collection,
       collectionName,
       collectionList

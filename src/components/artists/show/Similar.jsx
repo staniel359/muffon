@@ -9,7 +9,7 @@ import List from './similar/List'
 export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { loading: false, currentPage: 1 }
+    this.state = { loading: false }
   }
 
   componentDidMount () {
@@ -42,11 +42,13 @@ export default class Similar extends React.PureComponent {
       const { artist } = resp.data
 
       const artists = artist.similar
-      const totalPages = artist.total_pages
-      const currentPage = artist.page
+      const responseTotalPages = artist.total_pages
+      const responseCurrentPage = artist.page
       const error = null
 
-      this.setState({ ...{ artists, totalPages, currentPage, error } })
+      this.setState({
+        ...{ artists, responseTotalPages, responseCurrentPage, error }
+      })
     }
 
     const handleError = error => {
@@ -65,25 +67,30 @@ export default class Similar extends React.PureComponent {
   }
 
   artistsData () {
-    const { artists, totalPages, currentPage, loading } = this.state
+    const {
+      artists,
+      responseTotalPages,
+      responseCurrentPage,
+      loading
+    } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
 
-    const activePageLimit = 4
-    const currentPageLimit = 10
+    const clientPageLimit = 4
+    const responsePageLimit = 10
     const collection = artists
     const collectionName = 'similar'
     const collectionList = <List />
     const itemsPerRow = 4
 
     const artistsDataProps = {
-      totalPages,
-      currentPage,
+      responseTotalPages,
+      responseCurrentPage,
       loading,
       scrollToTop,
       getData,
-      activePageLimit,
-      currentPageLimit,
+      clientPageLimit,
+      responsePageLimit,
       collection,
       collectionName,
       collectionList,

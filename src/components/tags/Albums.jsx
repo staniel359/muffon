@@ -40,11 +40,13 @@ export default class Albums extends React.PureComponent {
       const { tag } = resp.data
 
       const albums = tag.albums
-      const totalPages = tag.total_pages
-      const currentPage = tag.page
+      const responseTotalPages = tag.total_pages
+      const responseCurrentPage = tag.page
       const error = null
 
-      this.setState({ ...{ albums, totalPages, currentPage, error } })
+      this.setState({
+        ...{ albums, responseTotalPages, responseCurrentPage, error }
+      })
     }
 
     const handleError = error => {
@@ -63,25 +65,30 @@ export default class Albums extends React.PureComponent {
   }
 
   albumsData () {
-    const { albums, totalPages, currentPage, loading } = this.state
+    const {
+      albums,
+      responseTotalPages,
+      responseCurrentPage,
+      loading
+    } = this.state
     const { scrollToTop } = this.props
     const { getData } = this
 
-    const activePageLimit = 4
-    const currentPageLimit = 20
+    const clientPageLimit = 4
+    const responsePageLimit = 20
     const collection = albums
     const collectionName = 'albums'
     const collectionList = <List />
     const itemsPerRow = 4
 
     const albumsDataProps = {
-      totalPages,
-      currentPage,
+      responseTotalPages,
+      responseCurrentPage,
       loading,
       scrollToTop,
       getData,
-      activePageLimit,
-      currentPageLimit,
+      clientPageLimit,
+      responsePageLimit,
       collection,
       collectionName,
       collectionList,
