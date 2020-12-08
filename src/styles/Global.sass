@@ -38,6 +38,9 @@ $border: 1px solid $semanticGray
 .alignItemsCenter
   align-items: center
 
+.justifyContentSpaceBetween
+  justify-content: space-between
+
 .margin0
   margin: 0 !important
 
@@ -102,3 +105,9 @@ $border: 1px solid $semanticGray
 
 .clickable
   cursor: pointer
+
+.errorMessage .content
+  @extend .flex, .alignItemsCenter, .justifyContentSpaceBetween
+
+.paginatedWrap
+  @extend .flexColumn, .justifyContentSpaceBetween

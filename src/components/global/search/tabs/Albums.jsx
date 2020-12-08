@@ -1,19 +1,21 @@
 import React from 'react'
-import { Tab, Ref, Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorMessage from 'global/ErrorMessage'
 import List from './albums/List'
-import Pagination from 'global/Pagination'
+import getData from './functions/getData'
+import tabData from './functions/tabData'
+import paginatedData from 'global/functions/paginatedData'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false }
+
+    this.getData = getData.bind(this)
+    this.tabData = tabData.bind(this)
+    this.paginatedData = paginatedData.bind(this)
   }
 
   componentDidMount () {
-    this.tabRef = React.createRef()
-
     this._isMounted = true
     this.request = axios.CancelToken.source()
 
@@ -25,88 +27,24 @@ export default class Albums extends React.PureComponent {
     this.request.cancel()
   }
 
-  getData = page => {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
+  dataName = 'albums'
+  itemsPerRow = 0
+  clientPageLimit = 20
+  requestPageLimit = 20
+  responsePageLimit = 20
+  dataList = (<List />)
 
-    switchLoader(true)
+  tabRef = this.props.albumsRef
 
-    const { query, scrollToTop } = this.props
-
-    const url = '/lastfm/search/albums'
-    const limit = 20
-    const params = { ...{ query, limit, page } }
-    const cancelToken = this.request.token
-    const extra = { ...{ params, cancelToken } }
-
-    const handleSuccess = resp => {
-      const { search } = resp.data
-      const { albums } = search
-
-      const totalPages = search.total_pages
-      const error = null
-
-      this.setState({ ...{ albums, totalPages, error } })
-
-      scrollToTop('albums')
-    }
-
-    const handleError = error => {
-      const albums = null
-
-      !axios.isCancel(error) && this.setState({ ...{ error, albums } })
-    }
-
-    const handleFinish = () => switchLoader(false)
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
-  }
-
-  albumsData () {
-    const { albums, totalPages, isLoading } = this.state
-    const { hideSearch, albumsRef } = this.props
-
-    const albumsDataProps = { albums, hideSearch }
-
-    const handlePageChange = this.getData
-    const paginationProps = { totalPages, isLoading, handlePageChange }
-
+  contentData () {
     return (
-      <Ref innerRef={albumsRef}>
-        <div className="searchResultsTabContent">
-          <List {...albumsDataProps} />
-
-          <Divider />
-
-          <Pagination {...paginationProps} />
-        </div>
-      </Ref>
+      <div className="searchResultsTabContent paginatedWrap">
+        {this.paginatedData()}
+      </div>
     )
   }
 
   render () {
-    const { albums, error, isLoading } = this.state
-    const { active } = this.props
-
-    const albumsData = albums && this.albumsData()
-
-    const errorData = error && <ErrorMessage {...{ error }} />
-
-    const contentData = albumsData || errorData
-
-    return (
-      <Tab.Pane className="searchResultsTab" {...{ active }}>
-        <Segment
-          className="searchResultsTabContentWrap"
-          content={contentData}
-          loading={active && isLoading}
-        />
-      </Tab.Pane>
-    )
+    return <React.Fragment>{this.tabData()}</React.Fragment>
   }
 }

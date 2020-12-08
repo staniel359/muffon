@@ -53,7 +53,7 @@ export default class Album extends React.PureComponent {
 
     const listenersCountProps = { artistName, albumTitle }
     const listenersCountData = (
-      <div className="searchItemListeners">
+      <div className="searchItemExtra">
         <ListenersCount {...listenersCountProps} />
       </div>
     )
@@ -75,7 +75,7 @@ export default class Album extends React.PureComponent {
 
     return (
       <List.Item
-        className="searchItemAlbum"
+        className="searchItem"
         as={Link}
         to={albumOrArtistLink}
         onClick={hideSearch}

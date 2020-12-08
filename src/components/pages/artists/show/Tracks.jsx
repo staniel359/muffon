@@ -1,15 +1,20 @@
 import React from 'react'
-import { Header, Segment, Divider } from 'semantic-ui-react'
+import { Header } from 'semantic-ui-react'
 import axios from 'axios'
-import List from './tracks/List'
-import ErrorMessage from 'global/ErrorMessage'
 import { Link } from 'react-router-dom'
-import Pagination from 'global/Pagination'
+import List from './tracks/List'
+import getData from './functions/getData'
+import segmentData from './functions/segmentData'
+import paginatedData from 'global/functions/paginatedData'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false, currentPage: 1 }
+    this.state = { isLoading: false }
+
+    this.getData = getData.bind(this)
+    this.segmentData = segmentData.bind(this)
+    this.paginatedData = paginatedData.bind(this)
   }
 
   componentDidMount () {
@@ -24,96 +29,28 @@ export default class Tracks extends React.PureComponent {
     this.request.cancel()
   }
 
+  dataName = 'tracks'
+  itemsPerRow = 0
+  clientPageLimit = 10
+  requestPageLimit = 50
+  responsePageLimit = 50
+  dataList = (<List />)
+
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
-  getData = page => {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
+  contentData = () => this.paginatedData()
 
-    switchLoader(true)
-
-    const url = `/lastfm/artists/${this.artistNameEncoded}/tracks`
-    const limit = 10
-    const params = { ...{ limit, page } }
-    const cancelToken = this.request.token
-    const extra = { ...{ params, cancelToken } }
-
-    const handleSuccess = resp => {
-      const { artist } = resp.data
-      const { tracks } = artist
-
-      const pageTopTrackCount =
-        page > 1 ? this.state.topTrackCount : tracks[0].listeners_count
-      const topTrackCount = tracks.length > 0 ? pageTopTrackCount : 0
-
-      const totalPages = artist.total_pages
-      const error = null
-
-      this.setState({ ...{ tracks, topTrackCount, totalPages, error } })
-    }
-
-    const handleError = error => {
-      const tracks = null
-
-      !axios.isCancel(error) && this.setState({ ...{ error, tracks } })
-    }
-
-    const handleFinish = () => {
-      page && this.props.scrollToTop('tracks')
-
-      switchLoader(false)
-    }
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
-  }
-
-  tracksData () {
-    const { tracks, topTrackCount, totalPages, isLoading } = this.state
-    const { artistName } = this.props
-
-    const tracksDataProps = { tracks, topTrackCount, artistName }
-
-    const handlePageChange = this.getData
-    const paginationProps = { totalPages, isLoading, handlePageChange }
+  headerData () {
+    const tracksPageLink = `/artists/${this.artistNameEncoded}/tracks`
 
     return (
-      <React.Fragment>
-        <List {...tracksDataProps} />
-
-        <Divider />
-
-        <Pagination {...paginationProps} />
-      </React.Fragment>
+      <Header as="h3">
+        <Link to={tracksPageLink}>Top tracks</Link>
+      </Header>
     )
   }
 
   render () {
-    const { isLoading, tracks, error } = this.state
-
-    const tracksPageLink = `/artists/${this.artistNameEncoded}/tracks`
-    const tracksPageLinkData = <Link to={tracksPageLink}>Top tracks</Link>
-    const headerData = <Header as="h3" content={tracksPageLinkData} />
-
-    const tracksData = tracks && this.tracksData()
-
-    const errorData = error && <ErrorMessage {...{ error }} />
-
-    const contentData = tracksData || errorData
-
-    return (
-      <Segment.Group className="artistPageSegmentWrap">
-        <Segment content={headerData} />
-        <Segment
-          className="artistPageSegment"
-          content={contentData}
-          loading={isLoading}
-        />
-      </Segment.Group>
-    )
+    return <React.Fragment>{this.segmentData()}</React.Fragment>
   }
 }

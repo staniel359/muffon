@@ -29,9 +29,7 @@ export default class Artist extends React.PureComponent {
     )
 
     const listenersCountData = (
-      <div className="searchItemListeners">
-        {artist.listeners_count.toLocaleString('eu') + ' listeners'}
-      </div>
+      <div>{artist.listeners_count.toLocaleString('eu') + ' listeners'}</div>
     )
 
     const contentData = (
@@ -46,7 +44,7 @@ export default class Artist extends React.PureComponent {
 
     return (
       <List.Item
-        className="searchItemArtist"
+        className="searchItem"
         as={Link}
         to={artistLink}
         onClick={hideSearch}

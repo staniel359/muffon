@@ -31,7 +31,7 @@ export default class Right extends React.PureComponent {
 
     const albumTitleEncoded = encodeURIComponent(albumTitle)
     const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
-    const tagsProps = { tags: tags, viewMore: true, link: tagsPageLink }
+    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
 
     const listenersCount = album.listeners_count.toLocaleString('eu')
     const playsCount = album.plays_count.toLocaleString('eu')

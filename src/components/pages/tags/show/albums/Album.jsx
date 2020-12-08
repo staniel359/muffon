@@ -35,7 +35,7 @@ export default class Album extends React.PureComponent {
 
     const albumTitleClassName = !isArtistHovered ? 'cardLightMainHeader' : ''
     const albumTitleData = (
-      <Header as="h3" className={albumTitleClassName} content={albumTitle} />
+      <Header as="h4" className={albumTitleClassName} content={albumTitle} />
     )
 
     const artistNameClassName = isArtistHovered ? 'cardLightMainHeader' : ''

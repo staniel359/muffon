@@ -25,7 +25,7 @@ export default class Artist extends React.PureComponent {
     )
 
     const tagsPageLink = `/artists/${artistNameEncoded}/tags`
-    const tagsProps = { tags: tags, viewMore: true, link: tagsPageLink }
+    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')
     const countersData = (

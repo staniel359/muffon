@@ -1,16 +1,24 @@
 import React from 'react'
-import { Segment, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorMessage from 'global/ErrorMessage'
-import LoaderDimmer from 'global/LoaderDimmer'
+import { Segment } from 'semantic-ui-react'
 import List from './similar/List'
-import Pagination from 'global/Pagination'
+import setNavSections from './functions/setNavSections'
+import getData from './functions/getData'
+import handleArtistChange from './functions/handleArtistChange'
+import pageData from './functions/pageData'
+import paginatedData from 'global/functions/paginatedData'
 import 'styles/artists/Similar.sass'
 
 export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false, currentPage: 1 }
+    this.state = { isLoading: false }
+
+    this.setNavSections = setNavSections.bind(this)
+    this.getData = getData.bind(this)
+    this.handleArtistChange = handleArtistChange.bind(this)
+    this.pageData = pageData.bind(this)
+    this.paginatedData = paginatedData.bind(this)
   }
 
   componentDidMount () {
@@ -30,107 +38,26 @@ export default class Similar extends React.PureComponent {
     this.request.cancel()
   }
 
+  dataName = 'similar'
+  navSectionData = 'Similar'
+  itemsPerRow = 0
+  clientPageLimit = 10
+  responsePageLimit = 10
+  dataList = (<List />)
+
   params = () => this.props.match.params
 
-  handleArtistChange (prevProps) {
-    const { artistName } = this.params()
-
-    const prevArtistName = prevProps.match.params.artistName
-    const isArtistChanged = artistName !== prevArtistName
-
-    if (isArtistChanged) {
-      this.setNavSections(artistName)
-      this.setState({ artists: null })
-      this.getData()
-    }
-  }
-
-  setNavSections (artistName) {
-    const artistNameEncoded = encodeURIComponent(artistName)
-    const artistPageLink = `#/artists/${artistNameEncoded}`
-    const navSections = [
-      { content: 'Artists' },
-      { content: decodeURIComponent(artistName), href: artistPageLink },
-      { content: 'Similar', active: true }
-    ]
-
-    this.props.setNavSections(navSections)
-  }
-
-  getData = page => {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
-
-    const url = `/lastfm/artists/${this.params().artistName}/similar`
-    const params = { ...{ page } }
-    const cancelToken = this.request.token
-    const extra = { ...{ params, cancelToken } }
-
-    const handleSuccess = resp => {
-      const { artist } = resp.data
-
-      const artists = artist.similar
-      const artistName = artist.name
-      const totalPages = artist.total_pages
-      const error = null
-
-      this.setState({ ...{ artists, totalPages, error } })
-
-      this.setNavSections(artistName)
-    }
-
-    const handleError = error => {
-      const artists = null
-
-      !axios.isCancel(error) && this.setState({ ...{ error, artists } })
-    }
-
-    const handleFinish = () => {
-      window.scrollTo(0, 0)
-
-      switchLoader(false)
-    }
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
-  }
-
-  artistsData () {
-    const { artists, isLoading, totalPages } = this.state
-
-    const artistsDataProps = { artists }
-
-    const handlePageChange = this.getData
-    const paginationProps = { totalPages, isLoading, handlePageChange }
+  contentData () {
+    const { isLoading } = this.state
 
     return (
-      <Segment className="pageSegment" loading={isLoading}>
-        <List {...artistsDataProps} />
-
-        <Divider />
-
-        <Pagination {...paginationProps} />
+      <Segment className="pageSegment paginatedWrap" loading={isLoading}>
+        {this.paginatedData()}
       </Segment>
     )
   }
 
   render () {
-    const { isLoading, artists, error } = this.state
-
-    const artistsData = artists && this.artistsData()
-
-    const errorData = error && <ErrorMessage {...{ error }} />
-
-    const loaderData = isLoading && <LoaderDimmer />
-
-    const contentData = artistsData || errorData || loaderData
-
-    return <React.Fragment>{contentData}</React.Fragment>
+    return <React.Fragment>{this.pageData()}</React.Fragment>
   }
 }

@@ -1,13 +1,16 @@
 import React from 'react'
-import { Segment, Header, Label, Divider } from 'semantic-ui-react'
 import axios from 'axios'
-import ErrorMessage from 'global/ErrorMessage'
-import Tags from 'global/Tags'
+import Data from './info/Data'
+import getData from './functions/getData'
+import segmentData from './functions/segmentData'
 
 export default class Info extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false }
+
+    this.getData = getData.bind(this)
+    this.segmentData = segmentData.bind(this)
   }
 
   componentDidMount () {
@@ -22,96 +25,17 @@ export default class Info extends React.PureComponent {
     this.request.cancel()
   }
 
+  dataName = 'info'
+
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
-  getData () {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
+  contentData = () => {
+    const dataProps = { artist: this.state.data }
 
-    switchLoader(true)
-
-    const url = `/lastfm/artists/${this.artistNameEncoded}`
-    const cancelToken = this.request.token
-    const extra = { ...{ cancelToken } }
-
-    const handleSuccess = resp => {
-      const { artist } = resp.data
-
-      const error = null
-
-      this.setState({ ...{ artist, error } })
-    }
-
-    const handleError = error => {
-      const artist = null
-
-      !axios.isCancel(error) && this.setState({ ...{ error, artist } })
-    }
-
-    const handleFinish = () => switchLoader(false)
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
-  }
-
-  infoData () {
-    const { artist } = this.state
-    const { name, tags, description } = artist
-
-    const artistNameData = (
-      <Header as="h1" className="artistPageArtistName" content={name} />
-    )
-
-    const tagsPageLink = `/artists/${this.artistNameEncoded}/tags`
-    const tagsProps = { tags: tags, viewMore: true, link: tagsPageLink }
-
-    const listenersCount = artist.listeners_count.toLocaleString('eu')
-    const playsCount = artist.plays_count.toLocaleString('eu')
-    const countersData = (
-      <Label.Group size="large">
-        <Label basic icon="user" content={listenersCount} />
-        <Label basic icon="music" content={playsCount} />
-      </Label.Group>
-    )
-
-    const descriptionData = (
-      <div className="artistPageDescription">
-        {description || 'No description.'}
-      </div>
-    )
-
-    return (
-      <React.Fragment>
-        {artistNameData}
-        <Tags {...tagsProps} />
-        {countersData}
-        <Divider />
-        {descriptionData}
-      </React.Fragment>
-    )
+    return <Data {...dataProps} />
   }
 
   render () {
-    const { artist, isLoading, error } = this.state
-
-    const infoData = artist && this.infoData()
-
-    const errorData = error && <ErrorMessage {...{ error }} />
-
-    const contentData = infoData || errorData
-
-    return (
-      <Segment.Group className="artistPageSegmentWrap">
-        <Segment
-          className="artistPageSegment"
-          content={contentData}
-          loading={isLoading}
-        />
-      </Segment.Group>
-    )
+    return <React.Fragment>{this.segmentData()}</React.Fragment>
   }
 }

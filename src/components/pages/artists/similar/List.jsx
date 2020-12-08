@@ -4,7 +4,7 @@ import Artist from './Artist'
 
 export default class List extends React.PureComponent {
   render () {
-    const { artists } = this.props
+    const { similar } = this.props
 
     const artistData = artist => {
       const key = uuid()
@@ -12,8 +12,8 @@ export default class List extends React.PureComponent {
 
       return <Artist {...artistProps} />
     }
-    const artistsLIstData = artists.map(artistData)
-    const artistsData = artists.length > 0 && artistsLIstData
+    const artistsLIstData = similar.map(artistData)
+    const artistsData = similar.length > 0 && artistsLIstData
 
     return <React.Fragment>{artistsData}</React.Fragment>
   }

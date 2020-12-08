@@ -5,7 +5,7 @@ import ListenersCount from 'global/artists/albums/ListenersCount'
 
 export default class Album extends React.PureComponent {
   render () {
-    const { album, artistName } = this.props
+    const { album, artistName, isLoading } = this.props
 
     const albumTitle = album.title
     const artistNameEncoded = encodeURIComponent(artistName)
@@ -22,7 +22,7 @@ export default class Album extends React.PureComponent {
     )
 
     const listenersCountProps = { artistName, albumTitle }
-    const listenersCountData = (
+    const listenersCountData = !isLoading && (
       <Card.Content>
         <Card.Description>
           <ListenersCount {...listenersCountProps} />

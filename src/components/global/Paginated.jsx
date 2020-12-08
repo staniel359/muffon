@@ -1,46 +1,50 @@
 import React from 'react'
 import { Divider } from 'semantic-ui-react'
 import merge from 'deepmerge'
-import Pagination from './paginated/Pagination'
-import List from './paginated/List'
+import Pagination from 'global/Pagination'
+import ErrorMessage from 'global/ErrorMessage'
 
 export default class Paginated extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { clientCurrentPage: 1, collection: {}, isForward: true }
+    this.state = { clientCurrentPage: 1, isForward: true }
   }
 
-  componentDidMount = () => this.setData()
+  componentDidMount () {
+    this.setResponseData()
+    this.handleError()
+  }
 
   componentDidUpdate (prevProps, prevState) {
-    this.handleResponseCurrentPageChange(prevProps)
-    this.handleCollectionChange(prevProps)
+    this.handleDataChange(prevProps)
+    this.handleError()
   }
 
-  handleResponseCurrentPageChange (prevProps) {
-    const { responseCurrentPage } = this.props
+  handleDataChange (prevProps) {
+    const { data } = this.props
 
-    const isPageChanged = responseCurrentPage !== prevProps.responseCurrentPage
+    const isDataChanged = data !== prevProps.data
 
-    isPageChanged && this.setData()
+    isDataChanged && this.setResponseData()
   }
 
-  handleCollectionChange (prevProps) {
-    const { scrollToTop, collectionName, collection } = this.props
+  handleError () {
+    const { error } = this.props
 
-    const isCollectionChanged = collection !== prevProps.collection
+    const clientPageCollection = null
 
-    isCollectionChanged && scrollToTop(collectionName)
+    error && this.setState({ ...{ clientPageCollection } })
   }
 
-  setData () {
-    const { isForward } = this.state
+  setResponseData () {
+    const { isForward, clientCurrentPage } = this.state
     const { arrayMerge } = this
 
     const collectionsArray = [
       { ...this.state.collection },
       this.newCollection()
     ]
+
     const collections = isForward
       ? collectionsArray
       : collectionsArray.reverse()
@@ -48,6 +52,11 @@ export default class Paginated extends React.PureComponent {
     const collection = merge(...collections, { arrayMerge })
 
     this.setState({ ...{ collection } })
+
+    const pageCollection = collection[clientCurrentPage] || []
+    const clientPageCollection = pageCollection.filter(e => e)
+
+    this.setState({ ...{ clientPageCollection } })
   }
 
   newCollection () {
@@ -60,7 +69,7 @@ export default class Paginated extends React.PureComponent {
     const totalOffset = responsePageLimit * (responseCurrentPage - 1)
     const startPage = Math.floor(totalOffset / clientPageLimit) + 1
 
-    const collection = [...this.props.collection]
+    const collection = [...this.props.data]
     collection.length = responsePageLimit
 
     const collectionArray = []
@@ -91,52 +100,117 @@ export default class Paginated extends React.PureComponent {
     }
   }
 
-  render () {
-    const { clientCurrentPage, collection } = this.state
+  paginationData () {
     const {
       responseTotalPages,
       responsePageLimit,
       clientPageLimit,
-      loading,
-      getData,
-      collectionName,
+      isLoading,
+      error
+    } = this.props
+    const { handlePageChange } = this
+
+    const totalPages = Math.floor(
+      (responseTotalPages * responsePageLimit) / clientPageLimit
+    )
+    const isDisabled = isLoading || !!error
+    const paginationProps = { totalPages, isDisabled, handlePageChange }
+
+    return <Pagination {...paginationProps} />
+  }
+
+  handlePageChange = clientCurrentPage => {
+    const { collection } = this.state
+    const { scrollToTop, clientPageLimit, dataName } = this.props
+
+    const isForward = this.isForward(clientCurrentPage)
+    const pageCollection = collection[clientCurrentPage] || []
+    const clientPageCollection = pageCollection.filter(e => e)
+
+    this.setState({ ...{ clientCurrentPage, isForward, clientPageCollection } })
+
+    scrollToTop(dataName)
+
+    const isCollectionFull = pageCollection.length === clientPageLimit
+
+    !isCollectionFull && this.getNextCollectionData(clientCurrentPage)
+  }
+
+  getNextCollectionData (page) {
+    const { responsePageLimit, clientPageLimit, getData } = this.props
+    const { isForward } = this
+
+    const isMultiplePages = responsePageLimit % clientPageLimit === 0
+    const clientNextPage = !isMultiplePages && isForward(page) ? page : page - 1
+
+    const responseNextPage = Math.floor(
+      (clientNextPage * clientPageLimit) / responsePageLimit + 1
+    )
+
+    getData(responseNextPage)
+  }
+
+  isForward = page => {
+    const { clientCurrentPage } = this.state
+
+    return page > clientCurrentPage
+  }
+
+  clientPageCollectionData () {
+    const { clientPageCollection } = this.state
+    const {
+      children,
+      dataName,
       itemsPerRow,
-      collectionList
+      artistName,
+      topTrackCount,
+      isLoading
     } = this.props
 
-    const listProps = {
-      collectionName,
+    const clientPageCollectionProps = {
+      [dataName]: clientPageCollection,
       itemsPerRow,
-      collectionList,
-      collection,
-      clientCurrentPage
+      artistName,
+      topTrackCount,
+      isLoading
     }
 
-    const setClientCurrentPage = clientCurrentPage =>
-      this.setState({ ...{ clientCurrentPage } })
-    const setForward = isForward => this.setState({ ...{ isForward } })
-    const scrollToTop = () => this.props.scrollToTop(collectionName)
+    const clientPageCollectionData =
+      clientPageCollection &&
+      React.cloneElement(children, clientPageCollectionProps)
 
-    const paginationProps = {
-      responseTotalPages,
-      responsePageLimit,
-      clientPageLimit,
-      loading,
-      clientCurrentPage,
-      getData,
-      collection,
-      setClientCurrentPage,
-      setForward,
-      scrollToTop
-    }
+    return clientPageCollectionData
+  }
+
+  errorData () {
+    const { error, getData, responseCurrentPage } = this.props
+
+    const handleRefresh = () => getData(responseCurrentPage)
+    const errorDataProps = { error, handleRefresh }
+
+    return <ErrorMessage {...errorDataProps} />
+  }
+
+  render () {
+    const { error } = this.props
+    const { clientPageCollection } = this.state
+
+    const clientPageCollectionData =
+      clientPageCollection && this.clientPageCollectionData()
+
+    const errorData = error && this.errorData()
+
+    const contentData = clientPageCollectionData || errorData
 
     return (
       <React.Fragment>
-        <List {...listProps} />
+        <div>{contentData}</div>
 
-        <Divider />
+        <div>
+          <Divider />
 
-        <Pagination {...paginationProps} />
+          {this.paginationData()}
+        </div>
       </React.Fragment>
     )
   }

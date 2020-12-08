@@ -3,16 +3,16 @@
 .tagsPageSegmentWrap
   @extend .noBorder
   margin-bottom: 20px !important
+
 .tagsPageSegment
   min-height: 100px
   .header
     @extend .margin0
 
 .tagsPageSegmentMain
-  @extend .padding0
+  @extend .tagsPageSegment, .padding0
   overflow: hidden
   .header
-    @extend .margin0
     color: white
 
 .tagsPageSegmentMainCover

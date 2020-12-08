@@ -1,15 +1,22 @@
 import React from 'react'
 import LeftColumn from './show/columns/Left'
 import RightColumn from './show/columns/Right'
-import ErrorMessage from 'global/ErrorMessage'
-import LoaderDimmer from 'global/LoaderDimmer'
 import axios from 'axios'
+import setNavSections from './functions/setNavSections'
+import getData from './functions/getData'
+import handleArtistChange from './functions/handleArtistChange'
+import pageData from './functions/pageData'
 import 'styles/Artists.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false }
+    this.state = {}
+
+    this.setNavSections = setNavSections.bind(this)
+    this.getData = getData.bind(this)
+    this.handleArtistChange = handleArtistChange.bind(this)
+    this.pageData = pageData.bind(this)
   }
 
   componentDidMount () {
@@ -17,7 +24,7 @@ export default class Show extends React.PureComponent {
     this.request = axios.CancelToken.source()
 
     this.setNavSections(this.params().artistName)
-    this.setArtistName()
+    this.getData()
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -29,62 +36,11 @@ export default class Show extends React.PureComponent {
     this.request.cancel()
   }
 
+  dataName = 'artist'
+
   params = () => this.props.match.params
 
-  handleArtistChange (prevProps) {
-    const { artistName } = this.params()
-
-    const prevArtistName = prevProps.match.params.artistName
-    const isArtistChanged = artistName !== prevArtistName
-
-    if (isArtistChanged) {
-      this.setNavSections(artistName)
-      this.setState({ artistName: null })
-      this.setArtistName()
-    }
-  }
-
-  setArtistName () {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
-
-    const url = `/lastfm/artists/${this.params().artistName}`
-    const cancelToken = this.request.token
-    const extra = { ...{ cancelToken } }
-
-    const handleSuccess = resp => {
-      const artistName = resp.data.artist.name
-
-      this.setState({ ...{ artistName } })
-      this.setNavSections(artistName)
-    }
-
-    const handleError = error => {
-      !axios.isCancel(error) && this.setState({ ...{ error } })
-    }
-
-    const handleFinish = () => switchLoader(false)
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
-  }
-
-  setNavSections (artistName) {
-    const navSections = [
-      { content: 'Artists' },
-      { content: decodeURIComponent(artistName), active: true }
-    ]
-
-    this.props.setNavSections(navSections)
-  }
-
-  artistData () {
+  contentData () {
     const { artistName } = this.state
 
     const infoRef = React.createRef()
@@ -110,16 +66,6 @@ export default class Show extends React.PureComponent {
   }
 
   render () {
-    const { error, isLoading, artistName } = this.state
-
-    const artistData = artistName && this.artistData()
-
-    const errorData = error && <ErrorMessage {...{ error }} />
-
-    const loaderData = isLoading && <LoaderDimmer />
-
-    const contentData = artistData || errorData || loaderData
-
-    return <React.Fragment>{contentData}</React.Fragment>
+    return <React.Fragment>{this.pageData()}</React.Fragment>
   }
 }

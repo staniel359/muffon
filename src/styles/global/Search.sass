@@ -1,5 +1,7 @@
 @import 'styles/Global.sass'
 
+$searchItemImageSize: 60px
+
 .searchDimmer
   z-index: 2000 !important
 .searchDimmer.visible
@@ -46,11 +48,15 @@
       .searchItemMainTitle
         @extend .colorBase
 
-.searchItemImage img
-  @extend .w100
+.searchItemImage
+  width: $searchItemImageSize !important
+  height: $searchItemImageSize !important
+  img
+    @extend .w100
 
 .searchItemContent
   padding: 0 0 0 10px !important
+  width: calc(100% - $searchItemImageSize)
   .header, .description
     width: fit-content
   .ui.loader:before
@@ -58,23 +64,8 @@
   .ui.loader:after
     border-color: #767676 transparent transparent !important
 
-.searchItemArtist
-  @extend .searchItem
-  .searchItemContent
-    width: calc(100% - 50px)
-  .searchItemImage
-    width: 50px !important
-    height: 50px !important
-
-.searchItemAlbum
-  @extend .searchItem
-  .searchItemContent
-    width: calc(100% - 60px)
-  .searchItemImage
-    width: 60px !important
-    height: 60px !important
-  .searchItemListeners
-    margin-top: 5px
+.searchItemExtra
+  margin-top: 5px
 
 .searchClearQueryButton
   left: 342px !important
