@@ -26,7 +26,7 @@ export default class Paginated extends React.PureComponent {
     const collection = this.mergeCollections()
     const clientPageCollection = collection[clientPage] || []
 
-    this.setState({ ...{ collection, clientPageCollection } })
+    this.setState({ collection, clientPageCollection })
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -123,7 +123,7 @@ export default class Paginated extends React.PureComponent {
 
       const clientPageCollection = collection[clientPage] || []
 
-      this.setState({ ...{ clientPageCollection } })
+      this.setState({ clientPageCollection })
     }
   }
 

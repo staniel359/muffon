@@ -23,12 +23,12 @@ export default class App extends React.PureComponent {
   toggleSearch = () => {
     const isSearchActive = !this.state.isSearchActive
 
-    this.setState({ ...{ isSearchActive } })
+    this.setState({ isSearchActive })
   }
 
   hideSearch = () => this.setState({ isSearchActive: false })
 
-  setNavSections = navSections => this.setState({ ...{ navSections } })
+  setNavSections = navSections => this.setState({ navSections })
 
   render () {
     const { navSections, isSearchActive } = this.state

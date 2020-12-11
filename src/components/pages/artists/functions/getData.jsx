@@ -27,27 +27,31 @@ export default function getData (page) {
 
     const data = isArtistPage ? {} : artist[this.dataName]
     const responseTotalPages = artist.total_pages
+    const topTrackCountState = this.dataName === 'tracks' && {
+      topTrackCount: topTrackCount(data)
+    }
 
     const successState = {
       artistName,
       data,
       responseTotalPages,
+      ...topTrackCountState,
       ...finishState
     }
 
     this.setState(successState)
 
-    if (this.dataName === 'tracks') {
-      const pageTopTrackCount =
-        page > 1 ? this.state.topTrackCount : data[0].listeners_count
-      const topTrackCount = data.length > 0 ? pageTopTrackCount : 0
-
-      this.setState({ ...{ topTrackCount } })
-    }
-
     this.setNavSections(artistName)
 
     scrollToTop()
+  }
+
+  const topTrackCount = data => {
+    const { topTrackCount } = this.state
+
+    const pageTopTrackCount = page > 1 ? topTrackCount : data[0].listeners_count
+
+    return data.length > 0 ? pageTopTrackCount : 0
   }
 
   const scrollToTop = () => window.scrollTo(0, 0)

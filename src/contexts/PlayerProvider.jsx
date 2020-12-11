@@ -74,7 +74,7 @@ export default class PlayerProvider extends React.PureComponent {
 
     this.audio().muted = isMuted
 
-    this.setState({ ...{ isMuted } })
+    this.setState({ isMuted })
   }
 
   changeVolume = e => {
@@ -89,13 +89,13 @@ export default class PlayerProvider extends React.PureComponent {
     const volume = Math.floor(e.target.volume * 100)
     const isMuted = e.target.muted
 
-    this.setState({ ...{ volume, isMuted } })
+    this.setState({ volume, isMuted })
   }
 
   toggleShuffle = () => {
     const isShuffle = !this.state.isShuffle
 
-    this.setState({ ...{ isShuffle } })
+    this.setState({ isShuffle })
   }
 
   toggleRepeat = () => {
@@ -103,7 +103,7 @@ export default class PlayerProvider extends React.PureComponent {
 
     this.audio().loop = isRepeat
 
-    this.setState({ ...{ isRepeat } })
+    this.setState({ isRepeat })
   }
 
   handleLoadStart = () => {
@@ -114,13 +114,13 @@ export default class PlayerProvider extends React.PureComponent {
     const secondsLoaded = e.target.buffered.end(0)
     const { duration } = e.target
 
-    this.setState({ ...{ secondsLoaded, duration } })
+    this.setState({ secondsLoaded, duration })
   }
 
   handleTimeUpdate = e => {
     const { currentTime } = e.target
 
-    this.setState({ ...{ currentTime } })
+    this.setState({ currentTime })
   }
 
   handleAudioEnd = e => {
@@ -134,7 +134,7 @@ export default class PlayerProvider extends React.PureComponent {
   startTimeChange = () => {
     const audioStatusOnChange = this.state.audioStatus
 
-    this.setState({ ...{ audioStatusOnChange } })
+    this.setState({ audioStatusOnChange })
     this.audio().pause()
   }
 
@@ -158,12 +158,9 @@ export default class PlayerProvider extends React.PureComponent {
       const { track } = resp.data
 
       if (track) {
-        const currentTrack = track
-        const currentTrackData = {
-          ...{ artistName, trackTitle, albumTitle, index }
-        }
+        const currentTrackData = { artistName, trackTitle, albumTitle, index }
 
-        this.setState({ ...{ currentTrack, currentTrackData } })
+        this.setState({ currentTrack: track, currentTrackData })
 
         this.audio().src = track.link
         this.audio().play()
@@ -175,7 +172,7 @@ export default class PlayerProvider extends React.PureComponent {
     return axios.get(url, extra).then(handleSuccess)
   }
 
-  setCurrentTrackId = currentTrackId => this.setState({ ...{ currentTrackId } })
+  setCurrentTrackId = currentTrackId => this.setState({ currentTrackId })
 
   cancelTrackRequest = () => this.request.cancel()
 

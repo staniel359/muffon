@@ -43,7 +43,7 @@ export default class Show extends React.PureComponent {
   params = () => this.props.match.params
 
   setArtistImages = artistImages => {
-    !this.state.artistImages && this.setState({ ...{ artistImages } })
+    !this.state.artistImages && this.setState({ artistImages })
   }
 
   contentData () {

@@ -13,7 +13,7 @@ export default function paginationData () {
     const isLast = clientPage === totalPages
     const isForward = !isLast && clientPage > this.state.clientPage
 
-    this.setState({ ...{ clientPage, isForward, isLast } })
+    this.setState({ clientPage, isForward, isLast })
 
     scrollToTop(dataName)
   }

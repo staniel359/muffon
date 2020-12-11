@@ -21,7 +21,7 @@ export default class Left extends React.PureComponent {
     const isVisibilityChanged =
       isArtistNameVisible !== this.state.isArtistNameVisible
 
-    isVisibilityChanged && this.setState({ ...{ isArtistNameVisible } })
+    isVisibilityChanged && this.setState({ isArtistNameVisible })
   }
 
   render () {

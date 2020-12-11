@@ -25,24 +25,28 @@ export default function getData (page) {
 
     const data = isInfoSegment ? artist : artist[this.dataName]
     const responseTotalPages = artist.total_pages
+    const topTrackCountState = this.dataName === 'tracks' && {
+      topTrackCount: topTrackCount(data)
+    }
 
     const successState = {
       data,
       responseTotalPages,
+      ...topTrackCountState,
       ...finishState
     }
 
     this.setState(successState)
 
-    if (this.dataName === 'tracks') {
-      const pageTopTrackCount =
-        page > 1 ? this.state.topTrackCount : data[0].listeners_count
-      const topTrackCount = data.length > 0 ? pageTopTrackCount : 0
-
-      this.setState({ ...{ topTrackCount } })
-    }
-
     scrollToTop()
+  }
+
+  const topTrackCount = data => {
+    const { topTrackCount } = this.state
+
+    const pageTopTrackCount = page > 1 ? topTrackCount : data[0].listeners_count
+
+    return data.length > 0 ? pageTopTrackCount : 0
   }
 
   const scrollToTop = () => page && this.props.scrollToTop(this.dataName)
