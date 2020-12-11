@@ -84,7 +84,7 @@ export default class Search extends React.PureComponent {
     const searchInputContent = (
       <React.Fragment>
         <Icon name="search" />
-        <input {...{ placeholder, ref }} />
+        <input className="mousetrap" {...{ placeholder, ref }} />
         {clearButton}
         {submitButton}
       </React.Fragment>
