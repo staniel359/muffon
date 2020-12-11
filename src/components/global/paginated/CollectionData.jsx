@@ -9,7 +9,8 @@ export default class CollectionData extends React.PureComponent {
       artistName,
       topTrackCount,
       isLoading,
-      children
+      children,
+      hideSearch
     } = this.props
 
     const collectionListData = {
@@ -20,7 +21,8 @@ export default class CollectionData extends React.PureComponent {
       itemsPerRow,
       artistName,
       topTrackCount,
-      isLoading
+      isLoading,
+      hideSearch
     }
 
     return React.cloneElement(children, collectionProps)

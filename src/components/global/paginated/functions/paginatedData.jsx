@@ -10,6 +10,7 @@ export default function paginatedData () {
     isLoading,
     topTrackCount
   } = this.state
+  const { hideSearch } = this.props
   const {
     getData,
     dataName,
@@ -38,7 +39,8 @@ export default function paginatedData () {
     responsePageLimit,
     isLoading,
     artistName,
-    topTrackCount
+    topTrackCount,
+    hideSearch
   }
 
   return <Paginated {...paginatedProps}>{this.dataList}</Paginated>

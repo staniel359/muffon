@@ -141,7 +141,8 @@ export default class Paginated extends React.PureComponent {
       artistName,
       topTrackCount,
       isLoading,
-      children
+      children,
+      hideSearch
     } = this.props
 
     const collectionDataProps = {
@@ -151,7 +152,8 @@ export default class Paginated extends React.PureComponent {
       artistName,
       topTrackCount,
       isLoading,
-      children
+      children,
+      hideSearch
     }
 
     return <CollectionData {...collectionDataProps} />
