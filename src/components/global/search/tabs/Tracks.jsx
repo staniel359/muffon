@@ -3,7 +3,7 @@ import axios from 'axios'
 import List from './tracks/List'
 import getData from './functions/getData'
 import tabData from './functions/tabData'
-import paginatedData from 'global/functions/paginatedData'
+import paginatedData from 'global/paginated/functions/paginatedData'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {

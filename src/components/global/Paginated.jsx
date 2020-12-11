@@ -1,6 +1,7 @@
 import React from 'react'
 import { Divider } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
+import CollectionData from './paginated/CollectionData'
 import paginateCollection from './paginated/functions/paginateCollection'
 import mergeCollections from './paginated/functions/mergeCollections'
 import paginationData from './paginated/functions/paginationData'
@@ -140,21 +141,20 @@ export default class Paginated extends React.PureComponent {
       artistName,
       topTrackCount,
       isLoading,
-      children,
+      children
     } = this.props
 
-    const collectionListData = {
-      [dataName]: clientPageCollection.filter(e => e)
-    }
-    const collectionProps = {
-      ...collectionListData,
+    const collectionDataProps = {
+      dataName,
+      clientPageCollection,
       itemsPerRow,
       artistName,
       topTrackCount,
-      isLoading
+      isLoading,
+      children
     }
 
-    return React.cloneElement(children, collectionProps)
+    return <CollectionData {...collectionDataProps} />
   }
 
   errorData () {

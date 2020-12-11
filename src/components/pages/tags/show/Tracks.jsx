@@ -5,7 +5,7 @@ import List from '../tracks/List'
 import { Link } from 'react-router-dom'
 import getData from './functions/getData'
 import segmentData from './functions/segmentData'
-import paginatedData from 'global/functions/paginatedData'
+import paginatedData from 'global/paginated/functions/paginatedData'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {

@@ -6,7 +6,7 @@ import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
 import handleTagChange from './functions/handleTagChange'
 import pageData from './functions/pageData'
-import paginatedData from 'global/functions/paginatedData'
+import paginatedData from 'global/paginated/functions/paginatedData'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {

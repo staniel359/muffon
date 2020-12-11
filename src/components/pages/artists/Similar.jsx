@@ -6,7 +6,7 @@ import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
 import handleArtistChange from './functions/handleArtistChange'
 import pageData from './functions/pageData'
-import paginatedData from 'global/functions/paginatedData'
+import paginatedData from 'global/paginated/functions/paginatedData'
 import 'styles/artists/Similar.sass'
 
 export default class Similar extends React.PureComponent {
