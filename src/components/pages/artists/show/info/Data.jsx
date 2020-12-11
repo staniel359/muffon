@@ -11,7 +11,8 @@ export default class Data extends React.PureComponent {
       <Header as="h1" className="artistPageArtistName" content={name} />
     )
 
-    const tagsPageLink = `/artists/${this.artistNameEncoded}/tags`
+    const artistNameEncoded = encodeURIComponent(name)
+    const tagsPageLink = `/artists/${artistNameEncoded}/tags`
     const tagsProps = { tags, viewMore: true, link: tagsPageLink }
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')
