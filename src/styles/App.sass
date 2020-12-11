@@ -21,10 +21,19 @@ a:not(.label):not(.item)
   @extend .fixed, .w100, .h100
   background: url('/dist/images/background.jpg') center/cover no-repeat
 
-#mainMenu
+#navbar
   @extend .noBorder
   z-index: 1500 !important
   height: 40px
+  .navbarHistoryButton
+    @extend .noShadow
+    width: 40px
+  .navbarContentWrap
+    width: calc(100% - 80px)
+  .navbarContent
+    white-space: nowrap
+    overflow: hidden
+    line-height: 1.3
 
 #mainContainer
   padding: 60px 0 90px 0
