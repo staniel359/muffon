@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Icon, Header, Label } from 'semantic-ui-react'
+import { Image, Icon, Header, Label, Loader } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
 
 export default class Data extends React.PureComponent {
@@ -10,10 +10,12 @@ export default class Data extends React.PureComponent {
     const imageData = src => (
       <Image className="tagPageHeaderImage" key={uuid()} {...{ src }} />
     )
-    const artistImagesList =
+    const artistImagesListData =
       artistImages && artistImages.slice(0, 18).map(imageData)
+    const loaderData = <Loader active inverted size="large" />
+    const artistImagesData = artistImagesListData || loaderData
     const coverData = (
-      <div className="tagsPageSegmentMainCover">{artistImagesList}</div>
+      <div className="tagsPageSegmentMainCover">{artistImagesData}</div>
     )
 
     const headerData = (
