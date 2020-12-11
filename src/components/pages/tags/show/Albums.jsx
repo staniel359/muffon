@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import { Header } from 'semantic-ui-react'
+import List from '../albums/List'
+import { Link } from 'react-router-dom'
 import getData from './functions/getData'
 import segmentData from './functions/segmentData'
 import paginatedData from 'global/functions/paginatedData'
-import List from './albums/List'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
@@ -32,8 +33,16 @@ export default class Albums extends React.PureComponent {
   responsePageLimit = 20
   dataList = (<List />)
 
+  tagNameEncoded = encodeURIComponent(this.props.tagName)
+
   headerData () {
-    return <Header as="h3" content="Top albums" />
+    const albumsPageLink = `/tags/${this.tagNameEncoded}/albums`
+
+    return (
+      <Header as="h3">
+        <Link to={albumsPageLink}>Top albums</Link>
+      </Header>
+    )
   }
 
   contentData = () => this.paginatedData()

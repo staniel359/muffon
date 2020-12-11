@@ -4,23 +4,30 @@ import Artists from './show/Artists'
 import Albums from './show/Albums'
 import Tracks from './show/Tracks'
 import axios from 'axios'
-import ErrorMessage from 'global/ErrorMessage'
-import LoaderDimmer from 'global/LoaderDimmer'
 import { Ref } from 'semantic-ui-react'
+import setNavSections from './functions/setNavSections'
+import handleTagChange from './functions/handleTagChange'
+import getData from './functions/getData'
+import pageData from './functions/pageData'
+
 import 'styles/Tags.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false }
+
+    this.setNavSections = setNavSections.bind(this)
+    this.handleTagChange = handleTagChange.bind(this)
+    this.getData = getData.bind(this)
+    this.pageData = pageData.bind(this)
   }
 
   componentDidMount () {
-    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.setNavSections(this.params().tagName)
-    this.setTagName()
+    this.getData()
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -28,71 +35,20 @@ export default class Show extends React.PureComponent {
   }
 
   componentWillUnmount () {
-    this._isMounted = false
     this.request.cancel()
   }
 
+  dataName = 'tag'
+
   params = () => this.props.match.params
 
-  handleTagChange (prevProps) {
-    const { tagName } = this.params()
-
-    const prevTagName = prevProps.match.params.tagName
-    const isTagChanged = tagName !== prevTagName
-
-    if (isTagChanged) {
-      this.setNavSections(tagName)
-      this.setState({ tagName: null, artistImages: null })
-      this.setTagName()
-    }
+  setArtistImages = artistImages => {
+    !this.state.artistImages && this.setState({ ...{ artistImages } })
   }
 
-  setNavSections (tagName) {
-    const navSections = [
-      { content: 'Tags' },
-      { content: decodeURIComponent(tagName), active: true }
-    ]
-
-    this.props.setNavSections(navSections)
-  }
-
-  setTagName () {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
-
-    const url = `/lastfm/tags/${this.params().tagName}`
-    const cancelToken = this.request.token
-    const extra = { ...{ cancelToken } }
-
-    const handleSuccess = resp => {
-      const tagName = resp.data.tag.name
-
-      this.setState({ ...{ tagName } })
-      this.setNavSections(tagName)
-    }
-
-    const handleError = error => {
-      !axios.isCancel(error) && this.setState({ ...{ error } })
-    }
-
-    const handleFinish = () => switchLoader(false)
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
-  }
-
-  tagData () {
+  contentData () {
     const { tagName, artistImages } = this.state
-
-    const setArtistImages = images => {
-      !artistImages && this.setState({ artistImages: images })
-    }
+    const { setArtistImages } = this
 
     const artistsRef = React.createRef()
     const albumsRef = React.createRef()
@@ -126,16 +82,6 @@ export default class Show extends React.PureComponent {
   }
 
   render () {
-    const { tagName, error, isLoading } = this.state
-
-    const tagData = tagName && this.tagData()
-
-    const errorData = error && <ErrorMessage {...{ error }} />
-
-    const loaderData = isLoading && <LoaderDimmer />
-
-    const contentData = tagData || errorData || loaderData
-
-    return <React.Fragment>{contentData}</React.Fragment>
+    return <React.Fragment>{this.pageData()}</React.Fragment>
   }
 }

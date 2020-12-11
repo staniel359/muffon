@@ -9,9 +9,9 @@ export default function getData (page) {
 
   this.setState(startState)
 
-  const isInfoSegment = this.dataName === 'info'
-  const tagUrl = `/lastfm/tags/${this.tagNameEncoded}`
-  const url = isInfoSegment ? tagUrl : tagUrl + `/${this.dataName}`
+  const isTagPage = this.dataName === 'tag'
+  const tagUrl = `/lastfm/tags/${this.params().tagName}`
+  const url = isTagPage ? tagUrl : tagUrl + `/${this.dataName}`
 
   const params = { ...{ page } }
   const cancelToken = this.request.token
@@ -22,32 +22,26 @@ export default function getData (page) {
   const handleSuccess = resp => {
     const { tag } = resp.data
 
-    const data = isInfoSegment ? tag : tag[this.dataName]
+    const tagName = tag.name
+    const data = isTagPage ? {} : tag[this.dataName]
     const responseTotalPages = tag.total_pages
 
-    const successState = { data, responseTotalPages, ...finishState }
+    const successState = {
+      tagName,
+      data,
+      responseTotalPages,
+      ...finishState
+    }
 
     this.setState(successState)
 
-    if (this.dataName === 'artists') {
-      const { setArtistImages } = this.props
-
-      const artistImages = data.map(a => a.images.small)
-
-      setArtistImages(artistImages)
-    }
-
-    scrollToTop()
+    this.setNavSections(tagName)
   }
-
-  const scrollToTop = () => page && this.props.scrollToTop(this.dataName)
 
   const handleError = error => {
     const errorState = { error, ...finishState }
 
     !axios.isCancel(error) && this.setState(errorState)
-
-    scrollToTop()
   }
 
   axios.get(url, extra).then(handleSuccess).catch(handleError)

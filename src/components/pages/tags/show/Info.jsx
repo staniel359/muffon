@@ -25,6 +25,8 @@ export default class Info extends React.PureComponent {
 
   dataName = 'info'
 
+  tagNameEncoded = encodeURIComponent(this.props.tagName)
+
   contentData () {
     const { artistImages } = this.props
 

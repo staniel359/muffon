@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import { Header } from 'semantic-ui-react'
-import List from './artists/List'
+import List from '../artists/List'
+import { Link } from 'react-router-dom'
 import getData from './functions/getData'
 import segmentData from './functions/segmentData'
 import paginatedData from 'global/functions/paginatedData'
@@ -32,8 +33,16 @@ export default class Artists extends React.PureComponent {
   responsePageLimit = 21
   dataList = (<List />)
 
+  tagNameEncoded = encodeURIComponent(this.props.tagName)
+
   headerData () {
-    return <Header as="h3" content="Top artists" />
+    const artistsPageLink = `/tags/${this.tagNameEncoded}/artists`
+
+    return (
+      <Header as="h3">
+        <Link to={artistsPageLink}>Top artists</Link>
+      </Header>
+    )
   }
 
   contentData = () => this.paginatedData()

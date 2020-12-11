@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Header, Image, Icon } from 'semantic-ui-react'
+import { Card, Header, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class Album extends React.PureComponent {
@@ -52,8 +52,7 @@ export default class Album extends React.PureComponent {
 
     const listenersCountData = (
       <Card.Description>
-        <Icon name="user" size="small" />
-        {album.listeners_count.toLocaleString('eu')}
+        {album.listeners_count.toLocaleString('eu') + ' listeners'}
       </Card.Description>
     )
 

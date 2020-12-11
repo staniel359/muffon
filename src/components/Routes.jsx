@@ -12,6 +12,9 @@ import AlbumTags from './pages/artists/albums/Tags'
 import ArtistSimilar from './pages/artists/Similar'
 import ArtistTags from './pages/artists/Tags'
 import TagShow from './pages/tags/Show'
+import TagArtists from './pages/tags/Artists'
+import TagAlbums from './pages/tags/Albums'
+import TagTracks from './pages/tags/Tracks'
 
 export default class Routes extends React.PureComponent {
   render () {
@@ -31,6 +34,9 @@ export default class Routes extends React.PureComponent {
     const artistSimilar = props => <ArtistSimilar {...pageProps(props)} />
     const artistTags = props => <ArtistTags {...pageProps(props)} />
     const tagShow = props => <TagShow {...pageProps(props)} />
+    const tagArtists = props => <TagArtists {...pageProps(props)} />
+    const tagAlbums = props => <TagAlbums {...pageProps(props)} />
+    const tagTracks = props => <TagTracks {...pageProps(props)} />
 
     const routes = [
       ['/', home],
@@ -43,7 +49,10 @@ export default class Routes extends React.PureComponent {
       ['/artists/:artistName/albums/:albumTitle/tags', albumTags],
       ['/artists/:artistName/similar', artistSimilar],
       ['/artists/:artistName/tags', artistTags],
-      ['/tags/:tagName', tagShow]
+      ['/tags/:tagName', tagShow],
+      ['/tags/:tagName/artists', tagArtists],
+      ['/tags/:tagName/albums', tagAlbums],
+      ['/tags/:tagName/tracks', tagTracks]
     ]
 
     const routeData = route => {
