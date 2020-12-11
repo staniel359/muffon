@@ -9,23 +9,17 @@ export default class ListenersCount extends React.PureComponent {
   }
 
   componentDidMount () {
-    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.getData()
   }
 
   componentWillUnmount () {
-    this._isMounted = false
     this.request.cancel()
   }
 
   getData () {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
+    this.setState({ isLoading: true })
 
     const { artistName, albumTitle } = this.props
 
@@ -40,20 +34,18 @@ export default class ListenersCount extends React.PureComponent {
     const handleSuccess = resp => {
       const listenersCount = resp.data.listeners_count
 
-      this.setState({ ...{ listenersCount } })
+      const successState = { listenersCount, isLoading: false }
+
+      this.setState(successState)
     }
 
     const handleError = error => {
-      !axios.isCancel(error) && this.setState({ listenersCount: 0 })
+      const errorState = { listenersCount: 0, isLoading: false }
+
+      !axios.isCancel(error) && this.setState(errorState)
     }
 
-    const handleFinish = () => switchLoader(false)
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
+    axios.get(url, extra).then(handleSuccess).catch(handleError)
   }
 
   render () {

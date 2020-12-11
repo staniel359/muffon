@@ -1,11 +1,13 @@
 import axios from 'axios'
 
 export default function getData (page) {
-  this.setState({
+  const startState = {
     error: null,
-    responseCurrentPage: page || 1,
+    responsePage: page || 1,
     isLoading: true
-  })
+  }
+
+  this.setState(startState)
 
   const isInfoSegment = this.dataName === 'info'
   const tagNameEncoded = encodeURIComponent(this.props.tagName)
@@ -16,13 +18,17 @@ export default function getData (page) {
   const cancelToken = this.request.token
   const extra = { ...{ params, cancelToken } }
 
+  const finishState = { isLoading: false, isLoaded: true }
+
   const handleSuccess = resp => {
     const { tag } = resp.data
 
     const data = isInfoSegment ? tag : tag[this.dataName]
     const responseTotalPages = tag.total_pages
 
-    this.setState({ ...{ data, responseTotalPages } })
+    const successState = { data, responseTotalPages, ...finishState }
+
+    this.setState(successState)
 
     if (this.dataName === 'artists') {
       const { setArtistImages } = this.props
@@ -31,26 +37,19 @@ export default function getData (page) {
 
       setArtistImages(artistImages)
     }
+
+    scrollToTop()
   }
+
+  const scrollToTop = () => page && this.props.scrollToTop(this.dataName)
 
   const handleError = error => {
-    !axios.isCancel(error) && this.setState({ ...{ error } })
+    const errorState = { error, ...finishState }
+
+    !axios.isCancel(error) && this.setState(errorState)
+
+    scrollToTop()
   }
 
-  const handleFinish = () => {
-    if (this._isMounted) {
-      const { isLoaded } = this.state
-      const { scrollToTop } = this.props
-
-      isLoaded && scrollToTop(this.dataName)
-
-      this.setState({ isLoading: false, isLoaded: true })
-    }
-  }
-
-  axios
-    .get(url, extra)
-    .then(handleSuccess)
-    .catch(handleError)
-    .then(handleFinish)
+  axios.get(url, extra).then(handleSuccess).catch(handleError)
 }

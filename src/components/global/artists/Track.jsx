@@ -14,27 +14,26 @@ export default class Track extends React.PureComponent {
   componentWillUnmount = () => (this._isMounted = false)
 
   getData = () => {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
+    this.setState({ isLoading: true })
 
     const { artistName, track, getTrackData, setCurrentTrackId } = this.props
 
     const trackTitle = track.title
     const getTrackParams = { ...{ artistName, trackTitle } }
 
-    const handleSuccess = () => setCurrentTrackId(track.id)
+    const handleSuccess = () => {
+      setCurrentTrackId(track.id)
 
-    const handleError = () => this.setState({ isError: true })
+      this._isMounted && this.setState({ isLoading: false })
+    }
 
-    const handleFinish = () => switchLoader(false)
+    const handleError = () => {
+      const errorState = { isError: true, isLoading: false }
 
-    getTrackData(getTrackParams)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
+      this._isMounted && this.setState(errorState)
+    }
+
+    getTrackData(getTrackParams).then(handleSuccess).catch(handleError)
   }
 
   handleLinkClick = click => {

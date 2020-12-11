@@ -19,7 +19,6 @@ export default class AlbumTags extends React.PureComponent {
   }
 
   componentDidMount () {
-    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     const { artistName, albumTitle } = this.params()
@@ -33,7 +32,6 @@ export default class AlbumTags extends React.PureComponent {
   }
 
   componentWillUnmount () {
-    this._isMounted = false
     this.request.cancel()
   }
 

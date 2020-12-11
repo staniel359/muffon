@@ -1,11 +1,13 @@
 import axios from 'axios'
 
 export default function getData (page) {
-  this.setState({
+  const startState = {
     error: null,
-    responseCurrentPage: page || 1,
+    responsePage: page || 1,
     isLoading: true
-  })
+  }
+
+  this.setState(startState)
 
   const isInfoSegment = this.dataName === 'info'
   const artistUrl = `/lastfm/artists/${this.artistNameEncoded}`
@@ -16,13 +18,21 @@ export default function getData (page) {
   const cancelToken = this.request.token
   const extra = { ...{ params, cancelToken } }
 
+  const finishState = { isLoading: false, isLoaded: true }
+
   const handleSuccess = resp => {
     const { artist } = resp.data
 
     const data = isInfoSegment ? artist : artist[this.dataName]
     const responseTotalPages = artist.total_pages
 
-    this.setState({ ...{ data, responseTotalPages } })
+    const successState = {
+      data,
+      responseTotalPages,
+      ...finishState
+    }
+
+    this.setState(successState)
 
     if (this.dataName === 'tracks') {
       const pageTopTrackCount =
@@ -31,26 +41,19 @@ export default function getData (page) {
 
       this.setState({ ...{ topTrackCount } })
     }
+
+    scrollToTop()
   }
+
+  const scrollToTop = () => page && this.props.scrollToTop(this.dataName)
 
   const handleError = error => {
-    !axios.isCancel(error) && this.setState({ ...{ error } })
+    const errorState = { error, ...finishState }
+
+    !axios.isCancel(error) && this.setState(errorState)
+
+    scrollToTop()
   }
 
-  const handleFinish = () => {
-    if (this._isMounted) {
-      const { isLoaded } = this.state
-      const { scrollToTop } = this.props
-
-      isLoaded && scrollToTop(this.dataName)
-
-      this.setState({ isLoading: false, isLoaded: true })
-    }
-  }
-
-  axios
-    .get(url, extra)
-    .then(handleSuccess)
-    .catch(handleError)
-    .then(handleFinish)
+  axios.get(url, extra).then(handleSuccess).catch(handleError)
 }

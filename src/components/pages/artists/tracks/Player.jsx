@@ -13,11 +13,7 @@ export default class Player extends React.PureComponent {
   componentWillUnmount = () => (this._isMounted = false)
 
   getData = () => {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
+    this.setState({ isLoading: true })
 
     const {
       artistName,
@@ -29,16 +25,19 @@ export default class Player extends React.PureComponent {
 
     const getTrackParams = { ...{ artistName, trackTitle } }
 
-    const handleSuccess = () => setCurrentTrackId(trackId)
+    const handleSuccess = () => {
+      setCurrentTrackId(trackId)
 
-    const handleError = () => this.setState({ isError: true })
+      this._isMounted && this.setState({ isLoading: false })
+    }
 
-    const handleFinish = () => switchLoader(false)
+    const handleError = () => {
+      const errorState = { isError: true, isLoading: false }
 
-    getTrackData(getTrackParams)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
+      this._isMounted && this.setState(errorState)
+    }
+
+    getTrackData(getTrackParams).then(handleSuccess).catch(handleError)
   }
 
   render () {

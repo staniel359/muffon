@@ -6,7 +6,7 @@ export default function paginatedData () {
     error,
     data,
     responseTotalPages,
-    responseCurrentPage,
+    responsePage,
     isLoading,
     topTrackCount
   } = this.state
@@ -27,7 +27,7 @@ export default function paginatedData () {
 
   const paginatedProps = {
     error,
-    responseCurrentPage,
+    responsePage,
     responseTotalPages,
     scrollToTop,
     getData,

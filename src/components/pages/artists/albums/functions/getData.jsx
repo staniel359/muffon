@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 export default function getData () {
-  this.setState({ error: null, isLoading: true })
+  const startState = { error: null, isLoading: true }
+
+  this.setState(startState)
 
   const { artistName, albumTitle } = this.params()
 
@@ -12,29 +14,26 @@ export default function getData () {
   const cancelToken = this.request.token
   const extra = { ...{ cancelToken } }
 
+  const finishState = { isLoading: false, isLoaded: true }
+
   const handleSuccess = resp => {
     const { album } = resp.data
     const { artist, title } = album
 
     const data = isAlbumPage ? album : album[this.dataName]
 
-    this.setState({ ...{ data } })
+    const successState = { data, ...finishState }
+
+    this.setState(successState)
+
     this.setNavSections(artist, title)
   }
 
   const handleError = error => {
-    !axios.isCancel(error) && this.setState({ ...{ error } })
+    const errorState = { error, ...finishState }
+
+    !axios.isCancel(error) && this.setState(errorState)
   }
 
-  const handleFinish = () => {
-    if (this._isMounted) {
-      this.setState({ isLoading: false, isLoaded: true })
-    }
-  }
-
-  axios
-    .get(url, extra)
-    .then(handleSuccess)
-    .catch(handleError)
-    .then(handleFinish)
+  axios.get(url, extra).then(handleSuccess).catch(handleError)
 }

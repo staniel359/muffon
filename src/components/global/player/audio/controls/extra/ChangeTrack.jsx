@@ -8,19 +8,12 @@ export default class ChangeTrack extends React.PureComponent {
     this.state = { isLoading: false, isError: false }
   }
 
-  componentDidMount = () => (this._isMounted = true)
-
   componentWillUnmount () {
-    this._isMounted = false
     this.props.cancelTrackRequest()
   }
 
   getData = () => {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
+    this.setState({ isLoading: true })
 
     const { currentTrackData, getTrackData } = this.props
     const { artistName, trackTitle, albumTitle } = currentTrackData
@@ -29,18 +22,19 @@ export default class ChangeTrack extends React.PureComponent {
       ...{ artistName, trackTitle, albumTitle, index }
     }
 
-    const handleSuccess = () => this.setState({ isError: false })
+    const handleSuccess = () => {
+      const successState = { isError: false, isLoading: false }
 
-    const handleError = error => {
-      !axios.isCancel(error) && this.setState({ isError: true })
+      this.setState(successState)
     }
 
-    const handleFinish = () => switchLoader(false)
+    const handleError = error => {
+      const errorState = { isError: true, isLoading: false }
 
-    getTrackData(changeTrackParams)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
+      !axios.isCancel(error) && this.setState(errorState)
+    }
+
+    getTrackData(changeTrackParams).then(handleSuccess).catch(handleError)
   }
 
   render () {

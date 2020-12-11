@@ -3,11 +3,13 @@ import axios from 'axios'
 export default function getData (page) {
   const { query } = this.props
 
-  this.setState({
+  const startState = {
     error: null,
-    responseCurrentPage: page || 1,
+    responsePage: page || 1,
     isLoading: true
-  })
+  }
+
+  this.setState(startState)
 
   const url = `lastfm/search/${this.dataName}`
 
@@ -16,32 +18,30 @@ export default function getData (page) {
   const cancelToken = this.request.token
   const extra = { ...{ params, cancelToken } }
 
+  const finishState = { isLoading: false, isLoaded: true }
+
   const handleSuccess = resp => {
     const { search } = resp.data
 
     const data = search[this.dataName]
     const responseTotalPages = search.total_pages
 
-    this.setState({ ...{ data, responseTotalPages } })
+    const successState = { data, responseTotalPages, ...finishState }
+
+    this.setState(successState)
+
+    scrollToTop()
   }
+
+  const scrollToTop = () => this.props.scrollToTop(this.dataName)
 
   const handleError = error => {
-    !axios.isCancel(error) && this.setState({ ...{ error } })
+    const errorState = { error, ...finishState }
+
+    !axios.isCancel(error) && this.setState(errorState)
+
+    scrollToTop()
   }
 
-  const handleFinish = () => {
-    if (this._isMounted) {
-      const { scrollToTop } = this.props
-
-      this.setState({ isLoading: false, isLoaded: true })
-
-      scrollToTop(this.dataName)
-    }
-  }
-
-  axios
-    .get(url, extra)
-    .then(handleSuccess)
-    .catch(handleError)
-    .then(handleFinish)
+  axios.get(url, extra).then(handleSuccess).catch(handleError)
 }

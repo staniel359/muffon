@@ -20,7 +20,6 @@ export default class Show extends React.PureComponent {
   }
 
   componentDidMount () {
-    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.setNavSections(this.params().artistName)
@@ -32,7 +31,6 @@ export default class Show extends React.PureComponent {
   }
 
   componentWillUnmount () {
-    this._isMounted = false
     this.request.cancel()
   }
 

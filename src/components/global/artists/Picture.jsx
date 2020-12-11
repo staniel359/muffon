@@ -12,14 +12,12 @@ export default class Picture extends React.PureComponent {
   }
 
   componentDidMount () {
-    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.getData()
   }
 
   componentWillUnmount () {
-    this._isMounted = false
     this.request.cancel()
   }
 
@@ -32,11 +30,7 @@ export default class Picture extends React.PureComponent {
   }
 
   getData () {
-    const switchLoader = isLoading => {
-      this._isMounted && this.setState({ ...{ isLoading } })
-    }
-
-    switchLoader(true)
+    this.setState({ isLoading: true })
 
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/images`
@@ -48,22 +42,18 @@ export default class Picture extends React.PureComponent {
       const firstImage = imagesList.slice(0, 1)
       const images = this.props.dimmer ? imagesList : firstImage
 
-      this.setState({ ...{ images } })
+      const successState = { images, isLoading: false }
+
+      this.setState(successState)
     }
 
     const handleError = error => {
-      const images = null
+      const errorState = { error, images: null, isLoading: false }
 
-      !axios.isCancel(error) && this.setState({ ...{ error, images } })
+      !axios.isCancel(error) && this.setState(errorState)
     }
 
-    const handleFinish = () => switchLoader(false)
-
-    axios
-      .get(url, extra)
-      .then(handleSuccess)
-      .catch(handleError)
-      .then(handleFinish)
+    axios.get(url, extra).then(handleSuccess).catch(handleError)
   }
 
   dimmableImageData () {

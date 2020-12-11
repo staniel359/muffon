@@ -16,14 +16,12 @@ export default class Tracks extends React.PureComponent {
   }
 
   componentDidMount () {
-    this._isMounted = true
     this.request = axios.CancelToken.source()
 
     this.getData()
   }
 
   componentWillUnmount () {
-    this._isMounted = false
     this.request.cancel()
   }
 

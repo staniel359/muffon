@@ -6,7 +6,7 @@ export default function handleArtistChange (prevProps) {
 
   if (isArtistChanged) {
     this.setNavSections(artistName)
-    this.setState({ data: null, isLoaded: false })
+    this.setState({ artistName: null, data: null, isLoaded: false })
     this.getData()
   }
 }
