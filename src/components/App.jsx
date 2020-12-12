@@ -7,6 +7,7 @@ import PlayerProvider from 'contexts/PlayerProvider'
 import Mousetrap from 'mousetrap'
 import { Container } from 'semantic-ui-react'
 import { HashRouter as Router } from 'react-router-dom'
+import Title from 'global/Title'
 import 'styles/App.sass'
 
 export default class App extends React.PureComponent {
@@ -41,6 +42,8 @@ export default class App extends React.PureComponent {
     return (
       <Router>
         <PlayerProvider>
+          <Title />
+
           <Navbar {...navbarProps} />
 
           <Container id="mainContainer">
