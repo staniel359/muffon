@@ -11,7 +11,7 @@ module.exports = {
     compress: true,
     port: 3000,
     watchContentBase: true,
-    stats: 'errors-only'
+    stats: 'errors-warnings'
   },
   resolve: {
     extensions: ['*', '.js', '.jsx'],
