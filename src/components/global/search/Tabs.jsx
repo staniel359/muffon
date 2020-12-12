@@ -15,47 +15,24 @@ export default class Tabs extends React.PureComponent {
     const albumsRef = React.createRef()
     const tracksRef = React.createRef()
 
-    const refs = { artistsRef, albumsRef, tracksRef }
+    const scrollToTop = tabName => {
+      const refs = { artistsRef, albumsRef, tracksRef }
+      const tab = refs[`${tabName}Ref`].current
 
-    const tab = name => refs[`${name}Ref`]
-    const scrollToTop = name => (tab(name).current.scrollTop = 0)
+      tab && (tab.scrollTop = 0)
+    }
 
     const tabPaneProps = { query, hideSearch, scrollToTop }
 
-    const artistsData = () => {
-      const key = uuid()
-      const artistsProps = { ...tabPaneProps, artistsRef, key }
+    const artistsProps = { key: uuid(), artistsRef, ...tabPaneProps }
+    const albumsProps = { key: uuid(), albumsRef, ...tabPaneProps }
+    const tracksProps = { key: uuid(), tracksRef, ...tabPaneProps }
 
-      return <Artists {...artistsProps} />
-    }
-
-    const albumsData = () => {
-      const key = uuid()
-      const albumsProps = { ...tabPaneProps, albumsRef, key }
-
-      return <Albums {...albumsProps} />
-    }
-
-    const tracksData = () => {
-      const key = uuid()
-      const tracksProps = { ...tabPaneProps, tracksRef, key }
-
-      return <Tracks {...tracksProps} />
-    }
-
-    const tabPanes = [
-      ['Artists', artistsData()],
-      ['Albums', albumsData()],
-      ['Tracks', tracksData()]
+    const tabPanesData = [
+      { menuItem: 'Artists', pane: <Artists {...artistsProps} /> },
+      { menuItem: 'Albums', pane: <Albums {...albumsProps} /> },
+      { menuItem: 'Tracks', pane: <Tracks {...tracksProps} /> }
     ]
-
-    const tabPaneData = data => {
-      const [menuItem, pane] = data
-
-      return { ...{ menuItem, pane } }
-    }
-
-    const tabPanesData = tabPanes.map(tabPaneData)
 
     return (
       <Tab
