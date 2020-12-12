@@ -2,7 +2,7 @@ import React from 'react'
 import { Popup, Button } from 'semantic-ui-react'
 import axios from 'axios'
 
-export default class ChangeTrack extends React.PureComponent {
+export default class ChangeTrackButton extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false, isError: false }

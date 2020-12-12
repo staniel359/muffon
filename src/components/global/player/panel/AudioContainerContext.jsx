@@ -2,7 +2,7 @@ import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
 import AudioContainer from './AudioContainer'
 
-export default class AudioContainerContextWrap extends React.PureComponent {
+export default class AudioContainerContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
@@ -17,6 +17,7 @@ export default class AudioContainerContextWrap extends React.PureComponent {
             handleVolumeChange,
             handleAudioEnd
           } = context
+
           const audioContainerProps = {
             isRepeat,
             handleLoadStart,

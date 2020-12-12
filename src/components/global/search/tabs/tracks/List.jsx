@@ -1,7 +1,7 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
-import TrackContextWrap from 'global/artists/TrackContextWrap'
+import TrackContext from 'global/player/TrackContext'
 
 export default class TracksList extends React.PureComponent {
   render () {
@@ -13,7 +13,7 @@ export default class TracksList extends React.PureComponent {
       const key = uuid()
       const trackProps = { track, artistName, artist, hideSearch, key }
 
-      return <TrackContextWrap {...trackProps} />
+      return <TrackContext {...trackProps} />
     }
     const tracksList = tracks.map(trackData)
 

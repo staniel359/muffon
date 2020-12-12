@@ -30,8 +30,7 @@ export default class PlayerProvider extends React.PureComponent {
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
       getTrackData: this.getTrackData,
-      currentTrackId: 0,
-      setCurrentTrackId: this.setCurrentTrackId,
+      updateCurrentTrack: this.updateCurrentTrack,
       cancelTrackRequest: this.cancelTrackRequest
     }
   }
@@ -52,21 +51,15 @@ export default class PlayerProvider extends React.PureComponent {
   handlePlay = () => this.setState({ audioStatus: 'play' })
 
   stopAudio = () => {
-    this.setState({ audioStatus: 'stop' })
-
-    this.resetCurrentTrack()
-
-    this.audio().src = ''
-  }
-
-  resetCurrentTrack () {
     this.setState({
+      audioStatus: 'stop',
       currentTrack: null,
       currentTrackData: null,
-      currentTrackId: null,
       currentTime: 0,
       secondsLoaded: 0
     })
+
+    this.audio().src = ''
   }
 
   toggleMute = () => {
@@ -172,7 +165,11 @@ export default class PlayerProvider extends React.PureComponent {
     return axios.get(url, extra).then(handleSuccess)
   }
 
-  setCurrentTrackId = currentTrackId => this.setState({ currentTrackId })
+  updateCurrentTrack = data => {
+    const currentTrack = { ...this.state.currentTrack, ...data }
+
+    this.setState({ currentTrack })
+  }
 
   cancelTrackRequest = () => this.request.cancel()
 

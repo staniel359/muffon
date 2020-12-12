@@ -2,7 +2,7 @@ import React from 'react'
 import Routes from './Routes'
 import Search from 'global/Search'
 import Navbar from 'global/Navbar'
-import PlayerPanelContextWrap from 'global/player/PanelContextWrap'
+import PlayerPanelContext from 'global/PlayerPanelContext'
 import PlayerProvider from 'contexts/PlayerProvider'
 import Mousetrap from 'mousetrap'
 import { Container } from 'semantic-ui-react'
@@ -52,7 +52,7 @@ export default class App extends React.PureComponent {
             <Search {...searchProps} />
           </Container>
 
-          <PlayerPanelContextWrap />
+          <PlayerPanelContext />
         </PlayerProvider>
       </Router>
     )

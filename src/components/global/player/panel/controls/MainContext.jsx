@@ -1,8 +1,8 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import MainControls from './Main'
+import Main from './Main'
 
-export default class MainContextWrap extends React.PureComponent {
+export default class MainContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
@@ -15,7 +15,8 @@ export default class MainContextWrap extends React.PureComponent {
             isRepeat,
             toggleRepeat
           } = context
-          const mainControlsProps = {
+
+          const mainProps = {
             isShuffle,
             toggleShuffle,
             toggleAudio,
@@ -24,7 +25,7 @@ export default class MainContextWrap extends React.PureComponent {
             toggleRepeat
           }
 
-          return <MainControls {...mainControlsProps} />
+          return <Main {...mainProps} />
         }}
       </PlayerContext.Consumer>
     )

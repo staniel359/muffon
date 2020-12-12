@@ -1,13 +1,14 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import StopButton from './Stop'
+import StopButton from './StopButton'
 
-export default class StopContextWrap extends React.PureComponent {
+export default class StopButtonContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
         {context => {
           const { stopAudio } = context
+
           const stopButtonProps = { stopAudio }
 
           return <StopButton {...stopButtonProps} />

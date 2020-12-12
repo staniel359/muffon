@@ -2,7 +2,7 @@ import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
 import Track from './Track'
 
-export default class TrackContextWrap extends React.PureComponent {
+export default class TrackContext extends React.PureComponent {
   render () {
     const {
       track,
@@ -26,19 +26,21 @@ export default class TrackContextWrap extends React.PureComponent {
       <PlayerContext.Consumer>
         {context => {
           const {
-            audioStatus,
             toggleAudio,
-            setCurrentTrackId,
+            updateCurrentTrack,
             getTrackData,
-            currentTrackId
+            currentTrack
           } = context
-          const isPlaying = currentTrackId === track.id
+
+          const isPlaying = currentTrack && currentTrack.id === track.id
+          const audioStatus = isPlaying && context.audioStatus
+
           const trackGlobalProps = {
-            isPlaying,
-            ...(isPlaying && { audioStatus }),
             toggleAudio,
-            setCurrentTrackId,
-            getTrackData
+            updateCurrentTrack,
+            getTrackData,
+            isPlaying,
+            audioStatus
           }
 
           return <Track {...trackProps} {...trackGlobalProps} />

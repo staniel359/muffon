@@ -1,7 +1,7 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
 import { Header, Label, Divider, List } from 'semantic-ui-react'
-import TrackContextWrap from 'global/artists/TrackContextWrap'
+import TrackContext from 'global/player/TrackContext'
 import { Link } from 'react-router-dom'
 import Tags from 'global/Tags'
 
@@ -51,7 +51,7 @@ export default class Right extends React.PureComponent {
     const trackData = (track, index) => {
       const trackProps = { track, artistName, index }
 
-      return <TrackContextWrap key={uuid()} {...trackProps} />
+      return <TrackContext key={uuid()} {...trackProps} />
     }
     const tracksList = tracks.map(trackData)
     const tracksData = tracks && <List selection content={tracksList} />

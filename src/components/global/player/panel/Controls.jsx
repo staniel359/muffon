@@ -1,17 +1,17 @@
 import React from 'react'
-import MainControlsContextWrap from './controls/MainContextWrap'
+import TimerContext from './controls/TimerContext'
+import MainContext from './controls/MainContext'
 import ExtraControls from './controls/Extra'
-import TimerContextWrap from './controls/TimerContextWrap'
 
 export default class Controls extends React.PureComponent {
   render () {
     return (
       <div className="playerPanelMainControls">
         <div>
-          <TimerContextWrap />
+          <TimerContext />
         </div>
         <div>
-          <MainControlsContextWrap />
+          <MainContext />
         </div>
         <div>
           <ExtraControls />

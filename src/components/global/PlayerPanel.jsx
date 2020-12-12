@@ -1,11 +1,11 @@
 import React from 'react'
 import { Container, Sidebar, Segment } from 'semantic-ui-react'
-import AudioContainerContextWrap from './player/audio/AudioContainerContextWrap'
-import Controls from './player/audio/Controls'
-import TimeBarContextWrap from './player/audio/TimeBarContextWrap'
-import Track from './player/Track'
+import AudioContainerContext from './player/panel/AudioContainerContext'
+import Controls from './player/panel/Controls'
+import TimeBarContext from './player/panel/TimeBarContext'
+import Track from './player/panel/Track'
 
-export default class Panel extends React.PureComponent {
+export default class PlayerPanel extends React.PureComponent {
   render () {
     const { currentTrack } = this.props
 
@@ -19,9 +19,9 @@ export default class Panel extends React.PureComponent {
 
     const audioData = (
       <div className="playerPanelRightColumn">
-        <AudioContainerContextWrap />
+        <AudioContainerContext />
         <Controls />
-        <TimeBarContextWrap />
+        <TimeBarContext />
       </div>
     )
 

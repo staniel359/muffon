@@ -1,15 +1,15 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import Player from 'global/Player'
+import PlayerPanel from './PlayerPanel'
 
-export default class PanelContextWrap extends React.PureComponent {
+export default class PlayerPanelContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
         {context => {
           const { currentTrack } = context
 
-          return <Player {...{ currentTrack }} />
+          return <PlayerPanel {...{ currentTrack }} />
         }}
       </PlayerContext.Consumer>
     )

@@ -1,13 +1,14 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import ChangeTrackButton from './ChangeTrack'
+import ChangeTrackButton from './ChangeTrackButton'
 
-export default class ChangeTrackContextWrap extends React.PureComponent {
+export default class ChangeTrackButtonContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
         {context => {
           const { currentTrackData, getTrackData, cancelTrackRequest } = context
+
           const changeTrackButtonProps = {
             currentTrackData,
             getTrackData,

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
-import TimeBarContextWrap from 'global/player/audio/TimeBarContextWrap'
+import TimeBarContext from 'global/player/panel/TimeBarContext'
 
-export default class Player extends React.PureComponent {
+export default class PlayerPanel extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false, isError: false }
@@ -20,13 +20,13 @@ export default class Player extends React.PureComponent {
       trackTitle,
       trackId,
       getTrackData,
-      setCurrentTrackId
+      updateCurrentTrack
     } = this.props
 
     const getTrackParams = { ...{ artistName, trackTitle } }
 
     const handleSuccess = () => {
-      setCurrentTrackId(trackId)
+      updateCurrentTrack({ id: trackId })
 
       this._isMounted && this.setState({ isLoading: false })
     }
@@ -79,7 +79,7 @@ export default class Player extends React.PureComponent {
 
     const timeBarData = (
       <div className="trackPagePlayerTimeBar">
-        <TimeBarContextWrap />
+        <TimeBarContext />
       </div>
     )
 

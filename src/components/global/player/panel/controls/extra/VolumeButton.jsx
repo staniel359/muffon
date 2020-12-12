@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Popup, Header } from 'semantic-ui-react'
 
-export default class Volume extends React.PureComponent {
+export default class VolumeButton extends React.PureComponent {
   render () {
     const { toggleMute, isMuted, volume, changeVolume } = this.props
 

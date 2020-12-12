@@ -1,6 +1,6 @@
 import React from 'react'
 import { Segment, Image, Header } from 'semantic-ui-react'
-import PlayerContextWrap from '../PlayerContextWrap'
+import PlayerPanelContext from 'global/player/track/PlayerPanelContext'
 import { Link } from 'react-router-dom'
 
 export default class Main extends React.PureComponent {
@@ -34,7 +34,7 @@ export default class Main extends React.PureComponent {
     )
 
     const playerProps = { track }
-    const playerData = <PlayerContextWrap {...playerProps} />
+    const playerData = <PlayerPanelContext {...playerProps} />
 
     const contentData = (
       <Segment className="trackPageCardContentWrap">

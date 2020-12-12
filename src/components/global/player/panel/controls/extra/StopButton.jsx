@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Popup } from 'semantic-ui-react'
 
-export default class Stop extends React.PureComponent {
+export default class StopButton extends React.PureComponent {
   render () {
     const { stopAudio } = this.props
 

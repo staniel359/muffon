@@ -1,17 +1,18 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import Player from './Player'
+import PlayerPanel from './PlayerPanel'
 
-export default class PlayerContextWrap extends React.PureComponent {
+export default class PlayerPanelContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
         {context => {
           const {
             getTrackData,
-            setCurrentTrackId,
+            updateCurrentTrack,
             toggleAudio,
-            audioStatus
+            audioStatus,
+            currentTrack
           } = context
           const { track } = this.props
           const { length } = track
@@ -19,11 +20,11 @@ export default class PlayerContextWrap extends React.PureComponent {
           const artistName = track.artist
           const trackTitle = track.title
           const trackId = track.id
-          const isPlaying = context.currentTrackId === trackId
+          const isPlaying = currentTrack && currentTrack.id === trackId
 
           const playerProps = {
             getTrackData,
-            setCurrentTrackId,
+            updateCurrentTrack,
             toggleAudio,
             audioStatus,
             length,
@@ -33,7 +34,7 @@ export default class PlayerContextWrap extends React.PureComponent {
             isPlaying
           }
 
-          return <Player {...playerProps} />
+          return <PlayerPanel {...playerProps} />
         }}
       </PlayerContext.Consumer>
     )
