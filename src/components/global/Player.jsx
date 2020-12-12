@@ -4,7 +4,6 @@ import AudioContainerContextWrap from './player/audio/AudioContainerContextWrap'
 import Controls from './player/audio/Controls'
 import TimeBarContextWrap from './player/audio/TimeBarContextWrap'
 import Track from './player/Track'
-import 'styles/global/Player.sass'
 
 export default class Panel extends React.PureComponent {
   render () {

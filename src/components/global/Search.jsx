@@ -2,7 +2,6 @@ import React from 'react'
 import { Form, Input, Dimmer, Segment, Button, Icon } from 'semantic-ui-react'
 import Tabs from './Search/Tabs'
 import { v4 as uuid } from 'uuid'
-import 'styles/global/Search.sass'
 
 export default class Search extends React.PureComponent {
   constructor (props) {

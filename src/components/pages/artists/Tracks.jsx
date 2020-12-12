@@ -7,7 +7,6 @@ import getData from './functions/getData'
 import handleArtistChange from './functions/handleArtistChange'
 import pageData from './functions/pageData'
 import paginatedData from 'global/paginated/functions/paginatedData'
-import 'styles/artists/Tracks.sass'
 
 export default class Tracks extends React.PureComponent {
   constructor (props) {

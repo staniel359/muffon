@@ -10,8 +10,6 @@ import handleTagChange from './functions/handleTagChange'
 import getData from './functions/getData'
 import pageData from './functions/pageData'
 
-import 'styles/Tags.sass'
-
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)

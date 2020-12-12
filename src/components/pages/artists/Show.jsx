@@ -6,7 +6,6 @@ import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
 import handleArtistChange from './functions/handleArtistChange'
 import pageData from './functions/pageData'
-import 'styles/Artists.sass'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
