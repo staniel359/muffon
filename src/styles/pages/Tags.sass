@@ -1,27 +1,31 @@
-.tagsPageSegmentWrap
+.tagPageSegmentWrap
   @extend .noBorder
   margin-bottom: 20px !important
 
-.tagsPageSegment
+.tagPageSegment
   min-height: 100px
   .header
     @extend .margin0
 
-.tagsPageSegmentMain
-  @extend .tagsPageSegment, .padding0
+.tagPageSegmentMain
+  @extend .tagPageSegment, .padding0
   overflow: hidden
   .header
     color: white
 
-.tagsPageSegmentMainCover
-  height: 350px
+.tagPageSegmentMainCover
+  height: 420px
 
-.tagsPageSegmentMainContent
+.tagPageSegmentMainCoverImage
+  width: 140px
+  display: inline-block !important
+
+.tagPageSegmentMainContent
   @extend .absolute, .h100, .w100, .flexColumn
   top: 0
   color: white
   padding: 70px 50px 50px 50px
-  background: #272a2b99
+  background: #272a2bbf
 
 .tagPageTagName
   @extend .flex, .alignItemsCenter
@@ -29,13 +33,18 @@
   i
     margin-right: 5px
 
+.tagPageLabels
+  .ui.label
+    margin-bottom: 0 !important
+
+.tagPageSimilar
+  @extend .flex, .alignItemsCenter
+  .ui.header
+    margin: 0 0.5em 0.5em 0 !important
+
 .tagPageCounters
   margin-bottom: 10px
 
 .tagPageDescription
   max-height: 100%
   overflow-y: scroll
-
-.tagPageHeaderImage
-  width: calc(100% / 6)
-  display: inline-block !important

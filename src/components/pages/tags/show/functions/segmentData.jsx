@@ -10,9 +10,9 @@ export default function pageData () {
 
   const segmentClassName = () => {
     if (isInfoSegment && !error) {
-      return 'tagsPageSegmentMain'
+      return 'tagPageSegmentMain'
     } else {
-      return 'tagsPageSegment'
+      return 'tagPageSegment'
     }
   }
 
@@ -25,7 +25,7 @@ export default function pageData () {
   const segmentData = isLoaded && (contentData || errorData)
 
   return (
-    <Segment.Group className="tagsPageSegmentWrap">
+    <Segment.Group className="tagPageSegmentWrap">
       {headerData}
       <Segment
         className={segmentClassName()}

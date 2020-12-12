@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, Icon, Header, Label, Loader } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
+import Similar from './Similar'
 
 export default class Data extends React.PureComponent {
   render () {
@@ -8,14 +9,18 @@ export default class Data extends React.PureComponent {
     const { artistImages } = this.props
 
     const imageData = src => (
-      <Image className="tagPageHeaderImage" key={uuid()} {...{ src }} />
+      <Image
+        className="tagPageSegmentMainCoverImage"
+        key={uuid()}
+        {...{ src }}
+      />
     )
     const artistImagesListData =
-      artistImages && artistImages.slice(0, 18).map(imageData)
+      artistImages && artistImages.slice(0, 15).map(imageData)
     const loaderData = <Loader active inverted size="large" />
     const artistImagesData = artistImagesListData || loaderData
     const coverData = (
-      <div className="tagsPageSegmentMainCover">{artistImagesData}</div>
+      <div className="tagPageSegmentMainCover">{artistImagesData}</div>
     )
 
     const headerData = (
@@ -34,6 +39,13 @@ export default class Data extends React.PureComponent {
       </Label.Group>
     )
 
+    const similarData = (
+      <div className="tagPageSimilar">
+        <Header as="h4" content="Similar:" />
+        <Similar tagName={tag.name} />
+      </div>
+    )
+
     const descriptionData = (
       <div className="tagPageDescription">
         {tag.description || 'No description.'}
@@ -41,8 +53,9 @@ export default class Data extends React.PureComponent {
     )
 
     const contentData = (
-      <div className="tagsPageSegmentMainContent">
+      <div className="tagPageSegmentMainContent">
         {headerData}
+        {similarData}
         {countersData}
         {descriptionData}
       </div>
