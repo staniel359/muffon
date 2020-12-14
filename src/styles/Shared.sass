@@ -1,7 +1,7 @@
 $muffonBase: #804fb3
 $muffonPale: #b589d6
-$semanticGray: #e0e1e2
-$border: 1px solid $semanticGray
+$muffonGray: #e0e1e2
+$border: 1px solid $muffonGray
 
 .fixed
   position: fixed !important
@@ -108,3 +108,20 @@ $border: 1px solid $semanticGray
 
 .paginatedWrap
   @extend .flexColumn, .justifyContentSpaceBetween
+
+.hidden
+  display: none !important
+
+.noBottomRadius
+  border-bottom-left-radius: 0 !important
+  border-bottom-right-radius: 0 !important
+
+.shadowed
+  box-shadow: 0 0 20px rgba(34,36,38,.15) !important
+
+.yScrollable
+  overflow-y: scroll
+
+.pageDescription
+  @extend .yScrollable
+  max-height: 200px

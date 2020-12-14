@@ -12,7 +12,7 @@ export default function getData (page) {
   const url = isTrackPage ? trackUrl : trackUrl + `/${this.dataName}`
 
   const cancelToken = this.request.token
-  const extra = { ...{ cancelToken } }
+  const extra = { cancelToken }
 
   const finishState = { isLoading: false, isLoaded: true }
 

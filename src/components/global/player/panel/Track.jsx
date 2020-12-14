@@ -8,22 +8,20 @@ import { v4 as uuid } from 'uuid'
 export default class Track extends React.PureComponent {
   render () {
     const { track } = this.props
-    const artistName = track.artist
 
     const imageData = (
       <div className="playerPanelTrackImage">
-        <Picture size="extrasmall" {...{ artistName }} />
+        <Picture circular size="extrasmall" artistName={track.artist} />
       </div>
     )
 
-    const artistNameEncoded = encodeURIComponent(artistName)
-    const trackTitle = track.title
-    const trackTitleEncoded = encodeURIComponent(trackTitle)
+    const artistNameEncoded = encodeURIComponent(track.artist)
+    const trackTitleEncoded = encodeURIComponent(track.title)
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
     const trackTitleTickerData = (
       <Ticker key={uuid()}>
         <List.Header as="h4">
-          <Link to={trackLink}>{trackTitle}</Link>
+          <Link to={trackLink}>{track.title}</Link>
         </List.Header>
       </Ticker>
     )
@@ -32,7 +30,7 @@ export default class Track extends React.PureComponent {
     const artistNameTickerData = (
       <Ticker key={uuid()}>
         <List.Description>
-          <Link to={artistLink}>{artistName}</Link>
+          <Link to={artistLink}>{track.artist}</Link>
         </List.Description>
       </Ticker>
     )
@@ -45,8 +43,8 @@ export default class Track extends React.PureComponent {
     )
 
     return (
-      <List className="playerPanelTrackWrap">
-        <List.Item>
+      <List>
+        <List.Item className="playerPanelTrack">
           {imageData}
           {trackData}
         </List.Item>

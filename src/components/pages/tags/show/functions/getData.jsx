@@ -13,9 +13,9 @@ export default function getData (page) {
   const tagUrl = `/lastfm/tags/${this.tagNameEncoded}`
   const url = isInfoSegment ? tagUrl : tagUrl + `/${this.dataName}`
 
-  const params = { ...{ page } }
+  const params = { page }
   const cancelToken = this.request.token
-  const extra = { ...{ params, cancelToken } }
+  const extra = { params, cancelToken }
 
   const finishState = { isLoading: false, isLoaded: true }
 

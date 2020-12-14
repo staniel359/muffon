@@ -10,7 +10,7 @@ export default class Title extends React.PureComponent {
           const { currentTrack } = context
 
           const titleData = () => {
-            if (currentTrack) {
+            if (currentTrack.isPlaying) {
               const { artist, title } = currentTrack
 
               return `${artist} - ${title} | muffon`

@@ -1,48 +1,25 @@
 import React from 'react'
 import { Button } from 'semantic-ui-react'
-import TimeBarContext from 'global/player/panel/TimeBarContext'
+import TimeBarContext from './panel/TimeBarContext'
+import getData from './functions/getData'
+import formatSeconds from 'global/functions/formatSeconds'
 
-export default class PlayerPanel extends React.PureComponent {
+export default class TrackPlayerPanel extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false, isError: false }
+
+    this.getData = getData.bind(this)
   }
 
   componentDidMount = () => (this._isMounted = true)
 
   componentWillUnmount = () => (this._isMounted = false)
 
-  getData = () => {
-    this.setState({ isLoading: true })
-
-    const {
-      artistName,
-      trackTitle,
-      trackId,
-      getTrackData,
-      updateCurrentTrack
-    } = this.props
-
-    const getTrackParams = { ...{ artistName, trackTitle } }
-
-    const handleSuccess = () => {
-      updateCurrentTrack({ id: trackId })
-
-      this._isMounted && this.setState({ isLoading: false })
-    }
-
-    const handleError = () => {
-      const errorState = { isError: true, isLoading: false }
-
-      this._isMounted && this.setState(errorState)
-    }
-
-    getTrackData(getTrackParams).then(handleSuccess).catch(handleError)
-  }
-
   render () {
     const { isLoading, isError } = this.state
-    const { isPlaying, toggleAudio, audioStatus, length } = this.props
+    const { isPlaying, toggleAudio, audioStatus } = this.props
+    const { length } = this.props.track
 
     const playButtonIcon = () => {
       const paused = audioStatus === 'pause'
@@ -85,9 +62,8 @@ export default class PlayerPanel extends React.PureComponent {
 
     const timeBarPlaceholderData = isPlaying ? timeBarData : placeholderData
 
-    const lengthFormatted = new Date(length * 1000).toISOString().substr(14, 5)
     const lengthData = length > 0 && (
-      <div className="trackPagePlayerLength">{lengthFormatted}</div>
+      <div className="trackPagePlayerLength">{formatSeconds(length)}</div>
     )
 
     return (

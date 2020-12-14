@@ -1,16 +1,68 @@
 .playerPanel
-  @extend .noBorder
+  @extend .noBorder, .padding0, .noShadow
   height: 70px
   z-index: 1500 !important
+.ui.sidebar.playerPanel
+  overflow: visible !important
+
+// Containers
+
+.playerPanelTrackVariantsContainer
+  @extend .relative
+
+.playerPanelBackground
+  @extend .w100, .h100, .absolute, .shadowed
+  background: white
+
+.playerPanelMainContainer
+  @extend .relative
   padding: 10px 0 !important
 
-.playerPanel.fullScreen
-  min-height: calc(100% - 40px) !important
+// Track variants
+
+.playerPanelTrackVariants
+  @extend .absolute
+  bottom: -250px
+  width: 330px
+  transition: 0.2s
+.playerPanelTrackVariants.open
+  bottom: 0
+
+.playerPanelTrackVariantsButton
+  @extend .margin0, .noBottomRadius, .shadowed
+
+.playerPanelTrackVariantsContent
+  @extend .margin0, .noBottomRadius, .shadowed, .noBorder, .yScrollable
+  height: 250px
+  padding: 10px !important
+  border-top-left-radius: 0 !important
+
+.playerPanelTrackVariant.disabled
+  .header, .description
+    color: rgba(40,40,40,.3)!important
+
+.playerPanelTrackVariantContent
+  @extend .flex, .alignItemsCenter, .justifyContentSpaceBetween
+
+.playerPanelTrackVariantLength
+  margin-left: 10px
+
+// Left column
 
 .playerPanelLeftColumn
   @extend .inlineBlock, .midAlign
   width: 200px
   margin-right: 20px
+
+.playerPanelTrack
+  @extend .flex, .alignItemsCenter
+  .playerPanelTrackImage
+    width: 40px
+    margin-right: 10px
+  .playerPanelTrackContent
+    width: calc(100% - 50px)
+
+// Right column
 
 .playerPanelRightColumn
   @extend .inlineBlock, .midAlign
@@ -46,24 +98,13 @@
 .playerPanelAudioBar
   @extend .absolute, .w100
 
-.playerPanelBackgroundBar
+.playerPanelAudioBackgroundBar
   @extend .absolute, .w100, .playerPanelBar
-  background: $semanticGray
+  background: $muffonGray
 
-.playerPanelLoaderBar
+.playerPanelAudioLoaderBar
   @extend .absolute, .playerPanelBar
   background: $muffonPale
-
-.playerPanelTrackWrap
-  .playerPanelTrackImage
-    @extend .inlineBlock, .midAlign
-    width: 40px
-    margin-right: 10px
-  img, .placeholder
-    border-radius: 50% !important
-  .playerPanelTrackContent
-    @extend .inlineBlock, .midAlign
-    width: calc(100% - 50px)
 
 .playerPanelVolumePopup
   .playerPanelVolumeBar

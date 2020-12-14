@@ -14,9 +14,9 @@ export default function getData (page) {
   const url = isInfoSegment ? artistUrl : artistUrl + `/${this.dataName}`
 
   const limit = this.requestPageLimit
-  const params = { ...{ limit, page } }
+  const params = { limit, page }
   const cancelToken = this.request.token
-  const extra = { ...{ params, cancelToken } }
+  const extra = { params, cancelToken }
 
   const finishState = { isLoading: false, isLoaded: true }
 

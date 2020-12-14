@@ -13,9 +13,9 @@ export default function getData (page) {
   const tagUrl = `/lastfm/tags/${this.params().tagName}`
   const url = isTagPage ? tagUrl : tagUrl + `/${this.dataName}`
 
-  const params = { ...{ page } }
+  const params = { page }
   const cancelToken = this.request.token
-  const extra = { ...{ params, cancelToken } }
+  const extra = { params, cancelToken }
 
   const finishState = { isLoading: false, isLoaded: true }
 

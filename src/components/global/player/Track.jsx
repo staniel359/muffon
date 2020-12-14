@@ -1,11 +1,15 @@
 import React from 'react'
 import { List, Icon, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import getData from './functions/getData'
+import formatSeconds from 'global/functions/formatSeconds'
 
 export default class Track extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false, isError: false }
+
+    this.getData = getData.bind(this)
   }
 
   componentDidMount = () => (this._isMounted = true)
@@ -13,15 +17,17 @@ export default class Track extends React.PureComponent {
   componentWillUnmount = () => (this._isMounted = false)
 
   getData = () => {
+    const { track, getTrack, updateCurrentTrack } = this.props
+
     this.setState({ isLoading: true })
 
-    const { artistName, track, getTrackData, updateCurrentTrack } = this.props
-
-    const trackTitle = track.title
-    const getTrackParams = { ...{ artistName, trackTitle } }
+    const getTrackParams = {
+      artistName: track.artist,
+      trackTitle: track.title
+    }
 
     const handleSuccess = () => {
-      updateCurrentTrack({ id: track.id })
+      updateCurrentTrack({ id: track.id, isPlaying: true })
 
       this._isMounted && this.setState({ isLoading: false })
     }
@@ -32,7 +38,7 @@ export default class Track extends React.PureComponent {
       this._isMounted && this.setState(errorState)
     }
 
-    getTrackData(getTrackParams).then(handleSuccess).catch(handleError)
+    getTrack(getTrackParams).then(handleSuccess).catch(handleError)
   }
 
   handleLinkClick = click => {
@@ -44,9 +50,9 @@ export default class Track extends React.PureComponent {
   }
 
   artistData () {
-    const { artistName } = this.props
+    const { track } = this.props
 
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistNameEncoded = encodeURIComponent(track.artist)
     const artistPageLink = `/artists/${artistNameEncoded}`
 
     return (
@@ -56,7 +62,7 @@ export default class Track extends React.PureComponent {
           to={artistPageLink}
           onClick={this.handleLinkClick}
         >
-          {artistName}
+          {track.artist}
         </Link>
       </List.Description>
     )
@@ -65,12 +71,10 @@ export default class Track extends React.PureComponent {
   lengthData () {
     const { length } = this.props.track
 
-    const lengthFormatted = new Date(length * 1000).toISOString().substr(14, 5)
-
     return (
       <List.Description
         className="trackContentLength"
-        content={lengthFormatted}
+        content={formatSeconds(length)}
       />
     )
   }
@@ -97,17 +101,14 @@ export default class Track extends React.PureComponent {
 
   render () {
     const {
-      artistName,
       track,
       index,
       isPlaying,
       audioStatus,
       toggleAudio,
-      artist
+      isWithArtist
     } = this.props
     const { isLoading, isError } = this.state
-
-    const trackTitle = track.title
 
     const handleTrackClick = () =>
       !isLoading && (isPlaying ? toggleAudio() : this.getData())
@@ -139,8 +140,8 @@ export default class Track extends React.PureComponent {
       <div className="trackContentIndex">{`${index + 1}.`}</div>
     )
 
-    const artistNameEncoded = encodeURIComponent(artistName)
-    const trackTitleEncoded = encodeURIComponent(trackTitle)
+    const artistNameEncoded = encodeURIComponent(track.artist)
+    const trackTitleEncoded = encodeURIComponent(track.title)
     const trackPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
     const titleArtistData = (
       <div>
@@ -150,11 +151,11 @@ export default class Track extends React.PureComponent {
             to={trackPageLink}
             onClick={this.handleLinkClick}
           >
-            {trackTitle}
+            {track.title}
           </Link>
         </List.Header>
 
-        {artist && this.artistData()}
+        {isWithArtist && this.artistData()}
       </div>
     )
 

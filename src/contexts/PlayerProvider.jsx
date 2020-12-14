@@ -29,7 +29,9 @@ export default class PlayerProvider extends React.PureComponent {
       changeTime: this.changeTime,
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
-      getTrackData: this.getTrackData,
+      getTrack: this.getTrack,
+      getAudio: this.getAudio,
+      currentTrack: {},
       updateCurrentTrack: this.updateCurrentTrack,
       cancelTrackRequest: this.cancelTrackRequest
     }
@@ -53,8 +55,7 @@ export default class PlayerProvider extends React.PureComponent {
   stopAudio = () => {
     this.setState({
       audioStatus: 'stop',
-      currentTrack: null,
-      currentTrackData: null,
+      currentTrack: {},
       currentTime: 0,
       secondsLoaded: 0
     })
@@ -128,6 +129,7 @@ export default class PlayerProvider extends React.PureComponent {
     const audioStatusOnChange = this.state.audioStatus
 
     this.setState({ audioStatusOnChange })
+
     this.audio().pause()
   }
 
@@ -138,31 +140,53 @@ export default class PlayerProvider extends React.PureComponent {
     this.audio()[audioStatusOnChange]()
   }
 
-  getTrackData = ({ artistName, trackTitle, albumTitle, index = 0 }) => {
+  getTrack = ({ artistName, trackTitle }) => {
     this.request = axios.CancelToken.source()
 
+    const url = '/vk/search/tracks'
+
     const query = `${artistName} ${trackTitle}`
-    const url = '/vk/track'
-    const params = { ...{ query, index } }
+    const params = { query }
+
     const cancelToken = this.request.token
-    const extra = { ...{ params, cancelToken } }
+    const extra = { params, cancelToken }
 
-    const handleSuccess = resp => {
-      const { track } = resp.data
+    return axios.get(url, extra).then(this.setVariants).then(this.getAudio)
+  }
 
-      if (track) {
-        const currentTrackData = { artistName, trackTitle, albumTitle, index }
+  setVariants = resp => {
+    const variants = resp.data.search.tracks
 
-        this.setState({ currentTrack: track, currentTrackData })
+    this.updateCurrentTrack({ variants })
+  }
 
-        this.audio().src = track.link
-        this.audio().play()
-      }
+  getAudio = (index = 0) => {
+    const { variants } = this.state.currentTrack
+
+    this.request = axios.CancelToken.source()
+
+    const audioId = variants[index].audio_id
+    const url = `/vk/tracks/${audioId}`
+
+    const cancelToken = this.request.token
+    const extra = { cancelToken }
+
+    const setIndex = resp => {
+      this.updateCurrentTrack({ index })
 
       return resp
     }
 
-    return axios.get(url, extra).then(handleSuccess)
+    return axios.get(url, extra).then(setIndex).then(this.setAudio)
+  }
+
+  setAudio = resp => {
+    const { track } = resp.data
+
+    this.updateCurrentTrack(track)
+
+    this.audio().src = track.link
+    this.audio().load()
   }
 
   updateCurrentTrack = data => {
@@ -175,6 +199,7 @@ export default class PlayerProvider extends React.PureComponent {
 
   render () {
     const { children } = this.props
+
     const value = this.state
 
     return (

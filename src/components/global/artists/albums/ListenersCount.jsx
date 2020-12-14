@@ -29,7 +29,7 @@ export default class ListenersCount extends React.PureComponent {
       `/lastfm/artists/${artistNameEncoded}` +
       `/albums/${albumTitleEncoded}/listeners_count`
     const cancelToken = this.request.token
-    const extra = { ...{ cancelToken } }
+    const extra = { cancelToken }
 
     const handleSuccess = resp => {
       const listenersCount = resp.data.listeners_count

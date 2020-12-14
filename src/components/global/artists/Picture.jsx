@@ -35,7 +35,7 @@ export default class Picture extends React.PureComponent {
     const artistNameEncoded = encodeURIComponent(this.props.artistName)
     const url = `/lastfm/artists/${artistNameEncoded}/images`
     const cancelToken = this.request.token
-    const extra = { ...{ cancelToken } }
+    const extra = { cancelToken }
 
     const handleSuccess = resp => {
       const imagesList = resp.data.artist.images

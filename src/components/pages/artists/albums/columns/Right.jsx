@@ -43,15 +43,15 @@ export default class Right extends React.PureComponent {
     )
 
     const descriptionData = (
-      <div className="albumPageDescription">
-        {description || 'No description.'}
-      </div>
+      <div className="pageDescription">{description || 'No description.'}</div>
     )
 
     const trackData = (track, index) => {
-      const trackProps = { track, artistName, index }
+      track.artist = artistName
 
-      return <TrackContext key={uuid()} {...trackProps} />
+      const trackProps = { track, index, key: uuid() }
+
+      return <TrackContext {...trackProps} />
     }
     const tracksList = tracks.map(trackData)
     const tracksData = tracks && <List selection content={tracksList} />

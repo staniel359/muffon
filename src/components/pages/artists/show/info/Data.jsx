@@ -25,9 +25,7 @@ export default class Data extends React.PureComponent {
     )
 
     const descriptionData = (
-      <div className="artistPageDescription">
-        {description || 'No description.'}
-      </div>
+      <div className="pageDescription">{description || 'No description.'}</div>
     )
 
     return (

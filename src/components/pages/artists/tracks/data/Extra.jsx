@@ -22,9 +22,7 @@ export default class Extra extends React.PureComponent {
     )
 
     const descriptionData = (
-      <div className="trackPageDescription">
-        {description || 'No description.'}
-      </div>
+      <div className="pageDescription">{description || 'No description.'}</div>
     )
 
     return (

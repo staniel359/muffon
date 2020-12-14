@@ -1,40 +1,33 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import PlayerPanel from './PlayerPanel'
+import TrackPlayerPanel from './TrackPlayerPanel'
 
-export default class PlayerPanelContext extends React.PureComponent {
+export default class TrackPlayerPanelContext extends React.PureComponent {
   render () {
     return (
       <PlayerContext.Consumer>
         {context => {
           const {
-            getTrackData,
+            getTrack,
             updateCurrentTrack,
             toggleAudio,
             audioStatus,
             currentTrack
           } = context
           const { track } = this.props
-          const { length } = track
 
-          const artistName = track.artist
-          const trackTitle = track.title
-          const trackId = track.id
-          const isPlaying = currentTrack && currentTrack.id === trackId
+          const isPlaying = currentTrack.id === track.id
 
           const playerProps = {
-            getTrackData,
+            getTrack,
             updateCurrentTrack,
             toggleAudio,
             audioStatus,
-            length,
-            artistName,
-            trackTitle,
-            trackId,
+            track,
             isPlaying
           }
 
-          return <PlayerPanel {...playerProps} />
+          return <TrackPlayerPanel {...playerProps} />
         }}
       </PlayerContext.Consumer>
     )

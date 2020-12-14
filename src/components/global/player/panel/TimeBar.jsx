@@ -11,12 +11,12 @@ export default class TimeBar extends React.PureComponent {
       endTimeChange
     } = this.props
 
-    const backgroundData = <div className="playerPanelBackgroundBar" />
+    const backgroundData = <div className="playerPanelAudioBackgroundBar" />
 
     const percentLoaded = (secondsLoaded / duration) * 100 || 0
     const loaderStyle = { width: `${percentLoaded}%` }
     const loaderData = (
-      <div className="playerPanelLoaderBar" style={loaderStyle} />
+      <div className="playerPanelAudioLoaderBar" style={loaderStyle} />
     )
 
     const percentPlayed = (currentTime / duration) * 100 || 0
