@@ -13,6 +13,6 @@ export default class Home extends React.PureComponent {
   }
 
   render () {
-    return <Segment>Home</Segment>
+    return <Segment className="pageSegment">Home</Segment>
   }
 }

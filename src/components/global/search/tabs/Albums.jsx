@@ -27,9 +27,9 @@ export default class Albums extends React.PureComponent {
 
   dataName = 'albums'
   itemsPerRow = 0
-  clientPageLimit = 20
-  requestPageLimit = 20
-  responsePageLimit = 20
+  clientPageLimit = 10
+  requestPageLimit = 10
+  responsePageLimit = 10
   dataList = (<List />)
 
   tabRef = this.props.albumsRef

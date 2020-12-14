@@ -30,8 +30,8 @@ export default class Albums extends React.PureComponent {
   dataName = 'albums'
   itemsPerRow = 3
   clientPageLimit = 3
-  requestPageLimit = 20
-  responsePageLimit = 20
+  requestPageLimit = 10
+  responsePageLimit = 10
   dataList = (<List />)
 
   artistNameEncoded = encodeURIComponent(this.props.artistName)

@@ -1,21 +1,16 @@
 import React from 'react'
 
 export default class Ticker extends React.PureComponent {
-  constructor (props) {
-    super(props)
-    this.state = {
-      speed: 40,
-      startWait: true,
-      loopWait: true,
-      waitTime: 2000,
-      gap: 50
-    }
-  }
-
   componentDidMount () {
     this.setStyle()
     this.handleTicker()
   }
+
+  speed = 40
+  startWait = true
+  loopWait = true
+  waitTime = 2000
+  gap = 50
 
   setStyle () {
     this.ticker().style.overflow = 'hidden'
@@ -23,7 +18,7 @@ export default class Ticker extends React.PureComponent {
     this.container().style.display = 'flex'
 
     this.content().style.whiteSpace = 'nowrap'
-    this.content().style.paddingRight = `${this.state.gap}px`
+    this.content().style.paddingRight = `${this.gap}px`
   }
 
   ticker = () => this.tickerRef.current
@@ -41,7 +36,7 @@ export default class Ticker extends React.PureComponent {
   handleTicker () {
     this.progress = 1
 
-    const contentWidth = this.content().offsetWidth - this.state.gap
+    const contentWidth = this.content().offsetWidth - this.gap
     const containerWidth = this.container().offsetWidth
 
     if (contentWidth < containerWidth) return
@@ -50,7 +45,7 @@ export default class Ticker extends React.PureComponent {
 
     this.container().appendChild(contentClone)
 
-    this.state.startWait ? this.wait() : this.setSpeed()
+    this.startWait ? this.wait() : this.setSpeed()
 
     this.loop()
   }
@@ -58,11 +53,11 @@ export default class Ticker extends React.PureComponent {
   wait () {
     this.currentSpeed = 0
 
-    setTimeout(() => this.setSpeed(), this.state.waitTime)
+    setTimeout(() => this.setSpeed(), this.waitTime)
   }
 
   setSpeed () {
-    this.currentSpeed = this.state.speed / 60
+    this.currentSpeed = this.speed / 60
   }
 
   loop () {
@@ -75,7 +70,7 @@ export default class Ticker extends React.PureComponent {
     if (this.progress <= contentWidth) {
       this.progress = 0
 
-      this.state.loopWait && this.wait()
+      this.loopWait && this.wait()
     }
 
     this.container().style.transform = `translateX(${this.progress}px)`

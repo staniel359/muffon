@@ -30,8 +30,8 @@ export default class Tracks extends React.PureComponent {
   dataName = 'tracks'
   itemsPerRow = 0
   clientPageLimit = 10
-  requestPageLimit = 50
-  responsePageLimit = 50
+  requestPageLimit = 10
+  responsePageLimit = 10
   dataList = (<List />)
 
   artistNameEncoded = encodeURIComponent(this.props.artistName)

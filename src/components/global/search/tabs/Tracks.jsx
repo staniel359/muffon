@@ -27,9 +27,9 @@ export default class Tracks extends React.PureComponent {
 
   dataName = 'tracks'
   itemsPerRow = 0
-  clientPageLimit = 50
-  requestPageLimit = 50
-  responsePageLimit = 50
+  clientPageLimit = 20
+  requestPageLimit = 20
+  responsePageLimit = 20
   dataList = (<List />)
 
   tabRef = this.props.tracksRef
