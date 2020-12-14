@@ -1,22 +1,23 @@
 import React from 'react'
 import { List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import Picture from 'global/artists/Picture'
+import Image from 'global/artists/Image'
 
 export default class Artist extends React.PureComponent {
   render () {
     const { hideSearch, artist } = this.props
 
-    const artistName = artist.name
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistNameEncoded = encodeURIComponent(artist.name)
     const artistLink = `/artists/${artistNameEncoded}`
 
-    const circular = true
-    const size = 'extrasmall'
-    const pictureProps = { artistName, size, circular }
+    const imageProps = {
+      artistName: artist.name,
+      size: 'extrasmall',
+      circular: true
+    }
     const imageData = (
       <div className="searchItemImage">
-        <Picture {...pictureProps} />
+        <Image {...imageProps} />
       </div>
     )
 
@@ -24,7 +25,7 @@ export default class Artist extends React.PureComponent {
       <List.Header
         as="h4"
         className="searchItemMainTitle"
-        content={artistName}
+        content={artist.name}
       />
     )
 

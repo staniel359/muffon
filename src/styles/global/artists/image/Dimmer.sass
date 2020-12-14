@@ -1,10 +1,10 @@
-.artistPictureDimmer
+.artistImageDimmer
   z-index: 3000 !important
   padding: 2em !important
   .content
     @extend .h100, .w100
 
-.artistPictureDimmerImageContainer
+.artistImageDimmerImageContainer
   height: calc(100% - 100px)
   padding-bottom: 2em
   .slick-slider,
@@ -14,15 +14,14 @@
   .slick-slide > div
     @extend .h100
 
-.artistPictureDimmerImageWrap
-  @extend .h100, .flex, .alignItemsCenter
+.artistImageDimmerImageWrap
+  @extend .h100, .flex, .alignItemsCenter, .noOutline
   justify-content: center
-  outline: none
   img
     max-height: 100%
 
-.artistPictureDimmerImagesContainer
+.artistImageDimmerImagesContainer
   .slick-slide
     @extend .clickable
     img
-      outline: none !important
+      @extend .noOutline

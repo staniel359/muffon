@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
-import PictureDimmer from 'global/artists/PictureDimmer'
+import Dimmer from 'global/artists/image/Dimmer'
 
 export default class List extends React.PureComponent {
   constructor (props) {
@@ -39,7 +39,7 @@ export default class List extends React.PureComponent {
       <React.Fragment>
         <Card.Group {...{ itemsPerRow }}>{imagesData}</Card.Group>
 
-        <PictureDimmer {...dimmerProps} />
+        <Dimmer {...dimmerProps} />
       </React.Fragment>
     )
   }

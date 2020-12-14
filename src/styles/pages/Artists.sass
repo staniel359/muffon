@@ -3,16 +3,37 @@
 .artistPageLeftColumn
   @extend .fixed, .h100, .inlineBlock
   width: 200px
+
+// Artist image
+
+.artistPageArtistImageWrap
+  height: 200px
+
+.artistPageArtistImage
+  @extend .noBorder, .noShadow, .padding0
+  background: $muffonGray !important
+  &:hover .artistPageImagesLink
+    @extend .shown
   .slick-slider
     @extend .clickable
     .slick-arrow
+      @extend .hidden
       z-index: 1
-      opacity: 0
     &:hover .slick-arrow
-      opacity: 1
+      @extend .shown
 
-.artistPageArtistImage
-  height: 200px
+.artistPageImagesLink
+  @extend .noBorder, .hidden
+  opacity: 0.75
+  background: #272a2bbf !important
+  margin: 5px !important
+  color: white !important
+  .icon
+    @extend .margin0
+  &:hover
+    opacity: 1
+
+// Menu
 
 .artistPageLeftColumnMenu
   @extend .w100, .margin0

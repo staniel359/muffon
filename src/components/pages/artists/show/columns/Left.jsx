@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header, Transition } from 'semantic-ui-react'
-import Picture from 'global/artists/Picture'
+import Image from 'global/artists/Image'
 import PageMenu from '../utils/PageMenu'
 import Scrollspy from '../utils/Scrollspy'
 
@@ -10,11 +10,21 @@ export default class Left extends React.PureComponent {
     this.state = { isArtistNameVisible: false, menuActiveItem: 'info' }
   }
 
-  render () {
-    const { artistName, segmentTop, scrollToTop } = this.props
-    const { isArtistNameVisible, menuActiveItem } = this.state
+  imageData () {
+    const { artistName } = this.props
 
-    const pictureProps = { artistName }
+    const imageProps = { artistName }
+
+    return (
+      <div className="artistPageArtistImageWrap">
+        <Image dimmer {...imageProps} />
+      </div>
+    )
+  }
+
+  transitionData () {
+    const { isArtistNameVisible } = this.state
+    const { artistName } = this.props
 
     const transitionProps = {
       visible: isArtistNameVisible,
@@ -24,7 +34,7 @@ export default class Left extends React.PureComponent {
       mountOnShow: false
     }
 
-    const transitionData = (
+    const contentData = (
       <div className="transitionTextWrap">
         <Header
           size="medium"
@@ -36,18 +46,32 @@ export default class Left extends React.PureComponent {
       </div>
     )
 
+    return <Transition {...transitionProps}>{contentData}</Transition>
+  }
+
+  pageMenuData () {
+    const { menuActiveItem } = this.state
+    const { scrollToTop } = this.props
+
     const pageMenuProps = { menuActiveItem, scrollToTop }
 
-    const setArtistNameVisibility = bool => {
-      const isVisibilityChanged = isArtistNameVisible !== bool
+    return <PageMenu {...pageMenuProps} />
+  }
 
-      isVisibilityChanged && this.setState({ isArtistNameVisible: bool })
+  scrollspyData () {
+    const { segmentTop } = this.props
+
+    const setArtistNameVisibility = isArtistNameVisible => {
+      const isVisibilityChanged =
+        isArtistNameVisible !== this.state.isArtistNameVisible
+
+      isVisibilityChanged && this.setState({ isArtistNameVisible })
     }
 
-    const setMenuActiveItem = item => {
-      const isActiveItemChanged = menuActiveItem !== item
+    const setMenuActiveItem = menuActiveItem => {
+      const isActiveItemChanged = menuActiveItem !== this.state.menuActiveItem
 
-      isActiveItemChanged && this.setState({ menuActiveItem: item })
+      isActiveItemChanged && this.setState({ menuActiveItem })
     }
 
     const scrollspyProps = {
@@ -56,17 +80,16 @@ export default class Left extends React.PureComponent {
       segmentTop
     }
 
+    return <Scrollspy {...scrollspyProps} />
+  }
+
+  render () {
     return (
       <div className="artistPageLeftColumn">
-        <div className="artistPageArtistImage">
-          <Picture dimmer {...pictureProps} />
-        </div>
-
-        <Transition {...transitionProps}>{transitionData}</Transition>
-
-        <PageMenu {...pageMenuProps} />
-
-        <Scrollspy {...scrollspyProps} />
+        {this.imageData()}
+        {this.transitionData()}
+        {this.pageMenuData()}
+        {this.scrollspyData()}
       </div>
     )
   }

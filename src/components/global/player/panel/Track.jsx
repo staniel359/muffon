@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { List } from 'semantic-ui-react'
-import Picture from 'global/artists/Picture'
+import Image from 'global/artists/Image'
 import Ticker from 'global/Ticker'
 import { v4 as uuid } from 'uuid'
 
@@ -11,7 +11,7 @@ export default class Track extends React.PureComponent {
 
     const imageData = (
       <div className="playerPanelTrackImage">
-        <Picture circular size="extrasmall" artistName={track.artist} />
+        <Image circular size="extrasmall" artistName={track.artist} />
       </div>
     )
 

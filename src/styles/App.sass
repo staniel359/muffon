@@ -6,8 +6,8 @@
 @import 'styles/Semantic.sass'
 @import 'styles/global/Player.sass'
 @import 'styles/global/Search.sass'
-@import 'styles/global/artists/PictureDimmer.sass'
 @import 'styles/global/artists/Track.sass'
+@import 'styles/global/artists/image/Dimmer.sass'
 @import 'styles/pages/Artists.sass'
 @import 'styles/pages/Tags.sass'
 @import 'styles/pages/artists/Albums.sass'
@@ -18,7 +18,7 @@ html
   scroll-behavior: smooth
 
 a
-  outline: none
+  @extend .noOutline
 a:not(.label):not(.item)
   color: initial !important
   &:hover
