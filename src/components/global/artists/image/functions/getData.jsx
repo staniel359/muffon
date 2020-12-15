@@ -3,7 +3,7 @@ import axios from 'axios'
 export default function getData () {
   const { artistName, dimmer } = this.props
 
-  this.setState({ isLoading: true })
+  this.setState({ error: null, isLoading: true })
 
   const artistNameEncoded = encodeURIComponent(artistName)
   const url = `/lastfm/artists/${artistNameEncoded}/images`
@@ -21,7 +21,7 @@ export default function getData () {
   }
 
   const handleError = error => {
-    const errorState = { error, images: null, isLoading: false }
+    const errorState = { error: true, images: null, isLoading: false }
 
     !axios.isCancel(error) && this.setState(errorState)
   }

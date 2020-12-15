@@ -18,16 +18,16 @@ export default class ArtistImage extends React.PureComponent {
     this.getData()
   }
 
-  componentWillUnmount () {
-    this.request.cancel()
-  }
-
   componentDidUpdate (prevProps, prevState) {
     const { artistName } = this.props
 
     const isArtistNameChanged = artistName !== prevProps.artistName
 
     isArtistNameChanged && this.getData()
+  }
+
+  componentWillUnmount () {
+    this.request.cancel()
   }
 
   placeholderImageData () {
@@ -73,14 +73,34 @@ export default class ArtistImage extends React.PureComponent {
     return dimmer ? this.dimmableImageData() : this.basicImageData()
   }
 
+  errorData () {
+    const { circular } = this.props
+
+    const imageDefault =
+      'https://lastfm.freetls.fastly.net/i/u/300x300/' +
+      '2a96cbd8b46e442fc41c2b86b821562f.png'
+
+    return (
+      <Image
+        wrapped
+        className="imageWrapBordered"
+        src={imageDefault}
+        rounded={!circular}
+        {...{ circular }}
+      />
+    )
+  }
+
   render () {
-    const { isLoading, images } = this.state
+    const { isLoading, images, error } = this.state
 
     const placeholderImageData = isLoading && this.placeholderImageData()
 
     const artistImageData = images && this.artistImageData()
 
-    const contentData = placeholderImageData || artistImageData
+    const errorData = error && this.errorData()
+
+    const contentData = placeholderImageData || artistImageData || errorData
 
     return <React.Fragment>{contentData}</React.Fragment>
   }
