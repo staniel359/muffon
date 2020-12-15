@@ -12,11 +12,8 @@ export default class SimilarList extends React.PureComponent {
 
       return <TrackContext {...trackProps} />
     }
-    const tracksListData = similar.map(trackData)
-    const tracksData = similar.length > 0 && (
-      <List selection content={tracksListData} />
-    )
+    const tracksData = similar.map(trackData)
 
-    return <React.Fragment>{tracksData}</React.Fragment>
+    return <List selection content={tracksData} />
   }
 }

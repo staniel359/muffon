@@ -12,8 +12,7 @@ export default class List extends React.PureComponent {
 
       return <Artist {...artistProps} />
     }
-    const artistsLIstData = similar.map(artistData)
-    const artistsData = similar.length > 0 && artistsLIstData
+    const artistsData = similar.map(artistData)
 
     return <React.Fragment>{artistsData}</React.Fragment>
   }

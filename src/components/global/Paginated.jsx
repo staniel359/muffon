@@ -71,7 +71,7 @@ export default class Paginated extends React.PureComponent {
     const remainingItems = this.totalItems() - clientOffset
     const clientCurrentPageLimit = Math.min(remainingItems, clientPageLimit)
 
-    return clientPageCollection.length === clientCurrentPageLimit
+    return clientPageCollection.length >= clientCurrentPageLimit
   }
 
   totalItems () {
@@ -170,7 +170,7 @@ export default class Paginated extends React.PureComponent {
 
   render () {
     const { clientPageCollection } = this.state
-    const { error } = this.props
+    const { error, responseTotalPages } = this.props
 
     const collectionData = clientPageCollection && this.collectionData()
 
@@ -178,15 +178,18 @@ export default class Paginated extends React.PureComponent {
 
     const contentData = collectionData || errorData
 
+    const paginationData = responseTotalPages > 1 && (
+      <React.Fragment>
+        <Divider />
+
+        {this.paginationData()}
+      </React.Fragment>
+    )
+
     return (
       <React.Fragment>
         <div>{contentData}</div>
-
-        <div>
-          <Divider />
-
-          {this.paginationData()}
-        </div>
+        <div>{paginationData}</div>
       </React.Fragment>
     )
   }

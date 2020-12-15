@@ -13,11 +13,8 @@ export default class List extends React.PureComponent {
 
       return <Artist {...artistProps} />
     }
-    const artistsListData = artists.map(artistData)
-    const artistsData = artists.length > 0 && (
-      <Card.Group {...{ itemsPerRow }}>{artistsListData}</Card.Group>
-    )
+    const artistsData = artists.map(artistData)
 
-    return <React.Fragment>{artistsData}</React.Fragment>
+    return <Card.Group {...{ itemsPerRow }}>{artistsData}</Card.Group>
   }
 }

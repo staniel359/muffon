@@ -13,11 +13,9 @@ export default class CollectionData extends React.PureComponent {
       hideSearch
     } = this.props
 
-    const collectionListData = {
-      [dataName]: clientPageCollection.filter(e => e)
-    }
+    const collectionData = clientPageCollection.filter(e => e)
     const collectionProps = {
-      ...collectionListData,
+      [dataName]: collectionData,
       itemsPerRow,
       artistName,
       topTrackCount,
@@ -25,6 +23,9 @@ export default class CollectionData extends React.PureComponent {
       hideSearch
     }
 
-    return React.cloneElement(children, collectionProps)
+    const contentData =
+      collectionData.length > 0 && React.cloneElement(children, collectionProps)
+
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

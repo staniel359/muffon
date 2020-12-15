@@ -12,11 +12,8 @@ export default class TracksList extends React.PureComponent {
 
       return <TrackContext {...trackProps} />
     }
-    const tracksListData = tracks.map(trackData)
-    const tracksData = tracks.length > 0 && (
-      <List selection content={tracksListData} />
-    )
+    const tracksData = tracks.map(trackData)
 
-    return <React.Fragment>{tracksData}</React.Fragment>
+    return <List selection content={tracksData} />
   }
 }

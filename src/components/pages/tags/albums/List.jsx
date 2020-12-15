@@ -13,11 +13,8 @@ export default class List extends React.PureComponent {
 
       return <Album {...albumProps} />
     }
-    const albumsListData = albums.map(albumData)
-    const albumsData = albums.length > 0 && (
-      <Card.Group {...{ itemsPerRow }}>{albumsListData}</Card.Group>
-    )
+    const albumsData = albums.map(albumData)
 
-    return <React.Fragment>{albumsData}</React.Fragment>
+    return <Card.Group {...{ itemsPerRow }}>{albumsData}</Card.Group>
   }
 }
