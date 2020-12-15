@@ -11,8 +11,17 @@ export default class Variants extends React.PureComponent {
 
   componentDidMount () {
     this.variantsRef = React.createRef()
+    this.variantsContentRef = React.createRef()
 
     document.addEventListener('click', this.handleClickOutside)
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    const { variants } = this.props
+
+    const isVariantsChanged = variants !== prevProps.variants
+
+    isVariantsChanged && (this.variantsContentRef.current.scrollTop = 0)
   }
 
   componentWillUnmount () {
@@ -61,9 +70,11 @@ export default class Variants extends React.PureComponent {
     const variantsData = variants.map(variantData)
 
     const contentData = (
-      <Segment className="playerPanelTrackVariantsContent">
-        <List selection content={variantsData} />
-      </Segment>
+      <Ref innerRef={this.variantsContentRef}>
+        <Segment className="playerPanelTrackVariantsContent">
+          <List selection content={variantsData} />
+        </Segment>
+      </Ref>
     )
 
     return (
