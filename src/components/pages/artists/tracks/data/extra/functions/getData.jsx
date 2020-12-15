@@ -1,8 +1,6 @@
 import axios from 'axios'
 
 export default function getData (page) {
-  const { artistName, trackTitle } = this.params()
-
   const startState = {
     error: null,
     responsePage: page || 1,
@@ -11,11 +9,11 @@ export default function getData (page) {
 
   this.setState(startState)
 
-  const isTrackPage = this.dataName === 'track'
-  const trackUrl = `/lastfm/artists/${artistName}/tracks/${trackTitle}`
-  const url = isTrackPage ? trackUrl : trackUrl + `/${this.dataName}`
+  const url =
+    `/lastfm/artists/${this.artistNameEncoded}` +
+    `/tracks/${this.trackTitleEncoded}/${this.dataName}`
 
-  const limit = this.clientPageLimit
+  const limit = this.requestPageLimit
   const params = { page, limit }
   const cancelToken = this.request.token
   const extra = { params, cancelToken }
@@ -24,21 +22,18 @@ export default function getData (page) {
 
   const handleSuccess = resp => {
     const { track } = resp.data
-    const { artist, title } = track
 
-    const data = isTrackPage ? track : track[this.dataName]
+    const data = track[this.dataName]
     const responseTotalPages = track.total_pages
 
     const successState = { data, responseTotalPages, ...finishState }
 
     this.setState(successState)
 
-    this.setNavSections(artist, title)
-
     scrollToTop()
   }
 
-  const scrollToTop = () => window.scrollTo(0, 0)
+  const scrollToTop = () => page && this.props.scrollToTop(this.dataName)
 
   const handleError = error => {
     const errorState = { error, ...finishState }

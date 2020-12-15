@@ -6,6 +6,7 @@ import ArtistShow from './pages/artists/Show'
 import ArtistTracks from './pages/artists/Tracks'
 import TrackShow from './pages/artists/tracks/Show'
 import TrackTags from './pages/artists/tracks/Tags'
+import TrackSimilar from './pages/artists/tracks/Similar'
 import ArtistAlbums from './pages/artists/Albums'
 import AlbumShow from './pages/artists/albums/Show'
 import AlbumTags from './pages/artists/albums/Tags'
@@ -29,6 +30,7 @@ export default class Routes extends React.PureComponent {
     const artistTracks = props => <ArtistTracks {...pageProps(props)} />
     const trackShow = props => <TrackShow {...pageProps(props)} />
     const trackTags = props => <TrackTags {...pageProps(props)} />
+    const trackSimilar = props => <TrackSimilar {...pageProps(props)} />
     const artistAlbums = props => <ArtistAlbums {...pageProps(props)} />
     const albumShow = props => <AlbumShow {...pageProps(props)} />
     const albumTags = props => <AlbumTags {...pageProps(props)} />
@@ -46,6 +48,7 @@ export default class Routes extends React.PureComponent {
       ['/artists/:artistName/tracks', artistTracks],
       ['/artists/:artistName/tracks/:trackTitle', trackShow],
       ['/artists/:artistName/tracks/:trackTitle/tags', trackTags],
+      ['/artists/:artistName/tracks/:trackTitle/similar', trackSimilar],
       ['/artists/:artistName/albums/', artistAlbums],
       ['/artists/:artistName/albums/:albumTitle', albumShow],
       ['/artists/:artistName/albums/:albumTitle/tags', albumTags],

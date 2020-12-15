@@ -27,7 +27,7 @@ export default class Info extends React.PureComponent {
 
   artistNameEncoded = encodeURIComponent(this.props.artistName)
 
-  contentData = () => {
+  contentData () {
     const dataProps = { artist: this.state.data }
 
     return <Data {...dataProps} />

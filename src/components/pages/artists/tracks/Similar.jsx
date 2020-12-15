@@ -1,21 +1,23 @@
 import React from 'react'
 import axios from 'axios'
 import { Segment } from 'semantic-ui-react'
-import Tags from 'global/Tags'
+import List from './similar/List'
 import setNavSections from './functions/setNavSections'
-import handleTrackChange from './functions/handleTrackChange'
 import getData from './functions/getData'
+import handleTrackChange from './functions/handleTrackChange'
 import pageData from './functions/pageData'
+import paginatedData from 'global/paginated/functions/paginatedData'
 
-export default class TrackTags extends React.PureComponent {
+export default class Similar extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = { isLoading: false }
 
     this.setNavSections = setNavSections.bind(this)
-    this.handleTrackChange = handleTrackChange.bind(this)
     this.getData = getData.bind(this)
+    this.handleTrackChange = handleTrackChange.bind(this)
     this.pageData = pageData.bind(this)
+    this.paginatedData = paginatedData.bind(this)
   }
 
   componentDidMount () {
@@ -35,16 +37,26 @@ export default class TrackTags extends React.PureComponent {
     this.request.cancel()
   }
 
-  dataName = 'tags'
-  navSectionData = 'Tags'
+  dataName = 'similar'
+  navSectionData = 'Similar'
+  itemsPerRow = 0
+  clientPageLimit = 50
+  requestPageLimit = 50
+  responsePageLimit = 50
+  dataList = (<List />)
 
   params = () => this.props.match.params
 
   contentData () {
-    const tagsProps = { tags: this.state.data }
-    const pageData = <Tags {...tagsProps} />
+    const { isLoading } = this.state
 
-    return <Segment className="pageSegment" content={pageData} />
+    return (
+      <Segment
+        className="pageSegment paginatedWrap"
+        loading={isLoading}
+        content={this.paginatedData()}
+      />
+    )
   }
 
   render () {

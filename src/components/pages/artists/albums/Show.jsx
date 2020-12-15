@@ -42,13 +42,14 @@ export default class Show extends React.PureComponent {
 
   contentData () {
     const columnProps = { album: this.state.data }
-
-    return (
-      <Segment className="pageSegment">
+    const pageData = (
+      <React.Fragment>
         <LeftColumn {...columnProps} />
         <RightColumn {...columnProps} />
-      </Segment>
+      </React.Fragment>
     )
+
+    return <Segment className="pageSegment" content={pageData} />
   }
 
   render () {

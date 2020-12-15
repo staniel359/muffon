@@ -38,14 +38,11 @@ export default class ArtistTags extends React.PureComponent {
 
   params = () => this.props.match.params
 
-  contentData = () => {
+  contentData () {
     const tagsProps = { tags: this.state.data }
+    const pageData = <Tags {...tagsProps} />
 
-    return (
-      <Segment className="pageSegment">
-        <Tags {...tagsProps} />
-      </Segment>
-    )
+    return <Segment className="pageSegment" content={pageData} />
   }
 
   render () {

@@ -1,13 +1,11 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
+import { Segment, Divider } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function segmentData () {
-  const { isLoading, isLoaded, data, error } = this.state
+  const { error, isLoading, isLoaded, data } = this.state
 
-  const headerData = this.dataName !== 'info' && (
-    <Segment content={this.headerData()} />
-  )
+  const headerData = this.headerData()
 
   const contentData = data && this.contentData()
 
@@ -18,13 +16,16 @@ export default function segmentData () {
   const segmentData = isLoaded && (contentData || errorData)
 
   return (
-    <Segment.Group className="artistPageSegmentWrap">
-      {headerData}
+    <div className="trackPageSegment">
+      <div className="trackPageSegmentHeader">{headerData}</div>
+
+      <Divider />
+
       <Segment
-        className="artistPageSegment"
-        loading={isLoading}
+        className="trackPageSegmentContent"
         content={segmentData}
+        loading={isLoading}
       />
-    </Segment.Group>
+    </div>
   )
 }

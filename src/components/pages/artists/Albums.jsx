@@ -49,9 +49,11 @@ export default class Albums extends React.PureComponent {
     const { isLoading } = this.state
 
     return (
-      <Segment className="pageSegment paginatedWrap" loading={isLoading}>
-        {this.paginatedData()}
-      </Segment>
+      <Segment
+        className="pageSegment paginatedWrap"
+        loading={isLoading}
+        content={this.paginatedData()}
+      />
     )
   }
 

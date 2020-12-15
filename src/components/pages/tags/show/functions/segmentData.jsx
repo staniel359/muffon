@@ -2,7 +2,7 @@ import React from 'react'
 import { Segment } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 
-export default function pageData () {
+export default function segmentData () {
   const { error, isLoading, isLoaded, data } = this.state
 
   const isInfoSegment = this.dataName === 'info'
