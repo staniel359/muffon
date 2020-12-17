@@ -1,5 +1,15 @@
 /node_modules
 /build
-/dist/bundle.js
+/dist/*.js
+/dist/*.jpg
+/dist/*.gif
+/dist/*.png
+/dist/*.svg
+/dist/*.ttf
+/dist/*.woff
+/dist/*.woff2
+/dist/*.eot
 
 yarn-error.log
+
+TODO.txt

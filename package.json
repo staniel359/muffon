@@ -1,6 +1,6 @@
 {
-  "name": "muffon-desktop",
-  "version": "0.1.0",
+  "name": "muffon",
+  "version": "1.0.0",
   "description": "muffon",
   "license": "MIT",
   "homepage": "./",
@@ -11,20 +11,11 @@
   },
   "main": "src/electron.js",
   "scripts": {
-    "webpack-start": "webpack serve",
-    "ws": "yarn webpack-start",
-    "electron-start": "electron .",
-    "es": "yarn electron-start",
-    "wait-electron-start": "wait-on http://localhost:3000 && yarn electron-start",
-    "start": "concurrently \"yarn webpack-start\" \"yarn wait-electron-start\"",
-    "test": "jest",
-    "format": "prettier . -w",
-    "lint": "eslint \"**/*.{js,jsx}\" --fix",
-    "brush": "yarn format && yarn lint",
-    "webpack-build": "webpack",
-    "electron-build": "electron-builder --win",
-    "build": "yarn package --dir",
-    "package": "yarn webpack-build && yarn electron-build"
+    "ws": "webpack serve",
+    "es": "electron .",
+    "brush": "prettier . -w && eslint \"**/*.{js,jsx}\" --fix",
+    "build": "webpack && electron-builder --win --dir",
+    "package": "webpack && electron-builder --win"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -90,7 +81,12 @@
     "files": [
       "dist",
       "src/electron.js"
-    ]
+    ],
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
   },
   "postinstall": "electron-builder install-app-deps"
 }
