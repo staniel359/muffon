@@ -8,10 +8,13 @@ import VariantsContext from './player/panel/track/VariantsContext'
 
 export default class PlayerPanel extends React.PureComponent {
   render () {
-    const { currentTrack } = this.props
-    const { isPlaying, variants } = currentTrack
+    const {
+      currentTrack,
+      currentTrackVariants,
+      currentTrackSource
+    } = this.props
 
-    const trackVariantsData = variants && (
+    const currentTrackVariantsData = currentTrackVariants && (
       <Container className="playerPanelTrackVariantsContainer">
         <VariantsContext />
       </Container>
@@ -19,7 +22,8 @@ export default class PlayerPanel extends React.PureComponent {
 
     const backgroundData = <div className="playerPanelBackground" />
 
-    const trackData = isPlaying && <Track track={currentTrack} />
+    const trackProps = { currentTrack, currentTrackSource }
+    const trackData = currentTrack && <Track {...trackProps} />
 
     const audioData = (
       <React.Fragment>
@@ -38,7 +42,7 @@ export default class PlayerPanel extends React.PureComponent {
 
     const contentData = (
       <React.Fragment>
-        {trackVariantsData}
+        {currentTrackVariantsData}
         {backgroundData}
         {mainData}
       </React.Fragment>
@@ -51,7 +55,7 @@ export default class PlayerPanel extends React.PureComponent {
           animation="overlay"
           className="playerPanel"
           as={Segment}
-          visible={isPlaying}
+          visible={!!currentTrack}
           content={contentData}
         />
       </React.Fragment>

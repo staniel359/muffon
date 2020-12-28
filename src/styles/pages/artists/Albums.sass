@@ -12,6 +12,22 @@
     img
       max-height: 100%
 
+// Labels
+
+.bandcampLabel
+  background-color: $bandcamp !important
+  border-color: $bandcamp !important
+  color: white !important
+
+// Select
+
+.albumSourceSelect > .text
+  color: white !important
+  font-weight: 400
+
+.bandcampSelect
+  @extend .albumSourceSelect, .bandcampLabel
+
 // Right column
 
 .albumPageRightColumn

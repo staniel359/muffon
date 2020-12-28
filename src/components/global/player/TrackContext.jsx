@@ -4,19 +4,21 @@ import Track from './Track'
 
 export default class TrackContext extends React.PureComponent {
   render () {
-    const { track, topTrackCount, index, isWithArtist, hideSearch } = this.props
+    const {
+      track,
+      topTrackCount,
+      index,
+      isWithArtist,
+      hideSearch,
+      albumSource
+    } = this.props
 
     return (
       <PlayerContext.Consumer>
         {context => {
-          const {
-            toggleAudio,
-            updateCurrentTrack,
-            getTrack,
-            currentTrack
-          } = context
+          const { toggleAudio, getTrack, currentTrackId } = context
 
-          const isPlaying = currentTrack.id === track.id
+          const isPlaying = currentTrackId && track.id === currentTrackId
           const audioStatus = isPlaying && context.audioStatus
 
           const trackProps = {
@@ -26,10 +28,10 @@ export default class TrackContext extends React.PureComponent {
             isWithArtist,
             hideSearch,
             toggleAudio,
-            updateCurrentTrack,
             getTrack,
             isPlaying,
-            audioStatus
+            audioStatus,
+            albumSource
           }
 
           return <Track {...trackProps} />

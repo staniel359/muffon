@@ -7,7 +7,7 @@ import Scrollspy from '../utils/Scrollspy'
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isArtistNameVisible: false, menuActiveItem: 'info' }
+    this.state = { isTransitionVisible: false, menuActiveItem: 'info' }
   }
 
   imageData () {
@@ -23,11 +23,11 @@ export default class Left extends React.PureComponent {
   }
 
   transitionData () {
-    const { isArtistNameVisible } = this.state
+    const { isTransitionVisible } = this.state
     const { artistName } = this.props
 
     const transitionProps = {
-      visible: isArtistNameVisible,
+      visible: isTransitionVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
@@ -61,11 +61,11 @@ export default class Left extends React.PureComponent {
   scrollspyData () {
     const { segmentTop } = this.props
 
-    const setArtistNameVisibility = isArtistNameVisible => {
+    const setArtistNameVisibility = isTransitionVisible => {
       const isVisibilityChanged =
-        isArtistNameVisible !== this.state.isArtistNameVisible
+        isTransitionVisible !== this.state.isTransitionVisible
 
-      isVisibilityChanged && this.setState({ isArtistNameVisible })
+      isVisibilityChanged && this.setState({ isTransitionVisible })
     }
 
     const setMenuActiveItem = menuActiveItem => {

@@ -11,7 +11,7 @@ export default class Variant extends React.PureComponent {
 
   render () {
     const { isLoading } = this.state
-    const { variant, index, getAudio, currentTrack } = this.props
+    const { variant, index, getVkAudio, currentTrackIndex } = this.props
 
     const handleClick = () => {
       this.setState({ isLoading: true })
@@ -22,10 +22,10 @@ export default class Variant extends React.PureComponent {
         !axios.isCancel(error) && this.setState({ isError: true })
       }
 
-      getAudio(index).then(handleSuccess).catch(handleError)
+      getVkAudio(index).then(handleSuccess).catch(handleError)
     }
 
-    const isActive = index === currentTrack.index
+    const isActive = index === currentTrackIndex
 
     const contentData = (
       <List.Content className="playerPanelTrackVariantContent">

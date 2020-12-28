@@ -1,16 +1,9 @@
 export default function getData () {
-  const { track, getTrack, updateCurrentTrack } = this.props
+  const { track, getTrack } = this.props
 
   this.setState({ isLoading: true })
 
-  const getTrackParams = {
-    artistName: track.artist,
-    trackTitle: track.title
-  }
-
   const handleSuccess = () => {
-    updateCurrentTrack({ id: track.id, isPlaying: true })
-
     this._isMounted && this.setState({ isLoading: false })
   }
 
@@ -20,5 +13,5 @@ export default function getData () {
     this._isMounted && this.setState(errorState)
   }
 
-  getTrack(getTrackParams).then(handleSuccess).catch(handleError)
+  getTrack(track).then(handleSuccess).catch(handleError)
 }

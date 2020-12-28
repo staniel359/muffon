@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default class Tags extends React.PureComponent {
   render () {
-    const { tags, viewMore, link } = this.props
+    const { tags, viewMore, link, albumSource, albumLink } = this.props
 
     const tagName = tag => tag.name || tag
     const tagNameEncoded = tag => encodeURIComponent(tagName(tag))
@@ -22,8 +22,9 @@ export default class Tags extends React.PureComponent {
     )
     const tagsData = tags.map(tagData)
 
-    const tagsViewMoreData = viewMore && tags.length > 0 && (
-      <Label as={Link} to={link} content="..." />
+    const tagsViewMoreLink = { pathname: link, albumSource, albumLink }
+    const tagsViewMoreData = viewMore && tags.length === 5 && (
+      <Label as={Link} to={tagsViewMoreLink} content="..." />
     )
 
     return (

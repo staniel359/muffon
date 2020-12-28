@@ -6,65 +6,99 @@ import { Link } from 'react-router-dom'
 import Tags from 'global/Tags'
 
 export default class Right extends React.PureComponent {
-  render () {
+  headerData () {
     const { album } = this.props
-    const { tags, description, tracks } = album
 
-    const albumTitle = album.title
-    const albumTitleData = <Header as="h2" content={albumTitle} />
+    const albumTitleData = <Header as="h2" content={album.title} />
 
-    const artistName = album.artist
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistNameEncoded = encodeURIComponent(album.artist)
     const artistPageLink = `/artists/${artistNameEncoded}`
     const artistNameData = (
       <Header as="h3">
-        <Link to={artistPageLink}>{artistName}</Link>
+        <Link to={artistPageLink}>{album.artist}</Link>
       </Header>
     )
 
-    const headerData = (
+    return (
       <div className="albumPageMainHeader">
         {albumTitleData}
         {artistNameData}
       </div>
     )
+  }
 
-    const albumTitleEncoded = encodeURIComponent(albumTitle)
+  tagsData () {
+    const { album, albumSource } = this.props
+    const { tags } = album
+
+    const artistNameEncoded = encodeURIComponent(album.artist)
+    const albumTitleEncoded = encodeURIComponent(album.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
-    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
+    const tagsProps = {
+      tags,
+      viewMore: true,
+      link: tagsPageLink,
+      albumSource,
+      albumLink: album.bandcamp_link
+    }
+
+    return <Tags {...tagsProps} />
+  }
+
+  countersData () {
+    const { album } = this.props
 
     const listenersCount = album.listeners_count.toLocaleString('eu')
     const playsCount = album.plays_count.toLocaleString('eu')
-    const countersData = (
+
+    return (
       <Label.Group size="large">
         <Label basic icon="user" content={listenersCount} />
         <Label basic icon="music" content={playsCount} />
       </Label.Group>
     )
+  }
 
-    const descriptionData = (
+  descriptionData () {
+    const { description } = this.props.album
+
+    return (
       <div className="pageDescription">{description || 'No description.'}</div>
     )
+  }
+
+  tracksData () {
+    const { album, albumSource } = this.props
+    const { tracks } = album
 
     const trackData = (track, index) => {
-      track.artist = artistName
+      track.artist = album.artist
 
-      const trackProps = { track, index, key: uuid() }
+      const trackProps = { key: uuid(), track, index, albumSource }
 
       return <TrackContext {...trackProps} />
     }
     const tracksList = tracks.map(trackData)
-    const tracksData = tracks && <List selection content={tracksList} />
+
+    return <List selection content={tracksList} />
+  }
+
+  render () {
+    const { album, albumSource } = this.props
+
+    const countersData = albumSource !== 'bandcamp' && this.countersData()
+
+    const tracksData = album.tracks && this.tracksData()
 
     return (
       <div className="albumPageRightColumn">
-        {headerData}
-        <Tags {...tagsProps} />
+        {this.headerData()}
+        {this.tagsData()}
         {countersData}
 
         <Divider />
 
-        {descriptionData}
+        {this.descriptionData()}
 
         <Divider />
 

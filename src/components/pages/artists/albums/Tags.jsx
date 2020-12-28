@@ -1,11 +1,11 @@
 import React from 'react'
 import axios from 'axios'
-import { Segment } from 'semantic-ui-react'
 import Tags from 'global/Tags'
 import handleAlbumChange from './functions/handleAlbumChange'
 import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
 import pageData from './functions/pageData'
+import segmentData from './functions/segmentData'
 
 export default class AlbumTags extends React.PureComponent {
   constructor (props) {
@@ -16,6 +16,7 @@ export default class AlbumTags extends React.PureComponent {
     this.setNavSections = setNavSections.bind(this)
     this.getData = getData.bind(this)
     this.pageData = pageData.bind(this)
+    this.segmentData = segmentData.bind(this)
   }
 
   componentDidMount () {
@@ -42,9 +43,8 @@ export default class AlbumTags extends React.PureComponent {
 
   contentData () {
     const tagsProps = { tags: this.state.data }
-    const pageData = <Tags {...tagsProps} />
 
-    return <Segment className="pageSegment" content={pageData} />
+    return <Tags {...tagsProps} />
   }
 
   render () {

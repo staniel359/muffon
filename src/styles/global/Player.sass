@@ -1,8 +1,8 @@
 .playerPanel
   @extend .noBorder, .padding0, .noShadow
-  height: 70px
   z-index: 1500 !important
 .ui.sidebar.playerPanel
+  height: 70px !important
   overflow: visible !important
 
 // Containers
@@ -15,8 +15,8 @@
   background: white
 
 .playerPanelMainContainer
-  @extend .relative
-  padding: 10px 0 !important
+  @extend .relative, .flex, .alignItemsCenter
+  padding: 10px 1em
 
 // Track variants
 
@@ -52,8 +52,7 @@
 // Left column
 
 .playerPanelLeftColumn
-  @extend .inlineBlock, .midAlign
-  width: 200px
+  width: 220px
   margin-right: 20px
 
 .playerPanelTrack
@@ -62,13 +61,16 @@
     width: 40px
     margin-right: 10px
   .playerPanelTrackContent
-    width: calc(100% - 50px)
+    width: calc(100% - 80px)
+    margin-right: 10px
+  .playerPanelTrackIcon
+    @extend .padding0
+    width: 20px
 
 // Right column
 
 .playerPanelRightColumn
-  @extend .inlineBlock, .midAlign
-  width: 480px
+  width: calc(100% - 240px) !important
 
 #playerPanelAudio
   @extend .w100

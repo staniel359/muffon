@@ -1,27 +1,48 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { List } from 'semantic-ui-react'
-import Image from 'global/artists/Image'
+import { List, Image } from 'semantic-ui-react'
+import ArtistImage from 'global/artists/Image'
 import Ticker from 'global/Ticker'
 import { v4 as uuid } from 'uuid'
 
 export default class Track extends React.PureComponent {
   render () {
-    const { track } = this.props
+    const { currentTrack, currentTrackSource } = this.props
+
+    const albumImageData = () => {
+      return (
+        <Image
+          rounded
+          wrapped
+          className="imageWrapBordered"
+          src={currentTrack.images.small}
+        />
+      )
+    }
+
+    const artistImageData = () => {
+      return (
+        <ArtistImage
+          circular
+          size="extrasmall"
+          artistName={currentTrack.artist}
+        />
+      )
+    }
 
     const imageData = (
       <div className="playerPanelTrackImage">
-        <Image circular size="extrasmall" artistName={track.artist} />
+        {currentTrack.album ? albumImageData() : artistImageData()}
       </div>
     )
 
-    const artistNameEncoded = encodeURIComponent(track.artist)
-    const trackTitleEncoded = encodeURIComponent(track.title)
+    const artistNameEncoded = encodeURIComponent(currentTrack.artist)
+    const trackTitleEncoded = encodeURIComponent(currentTrack.title)
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
     const trackTitleTickerData = (
       <Ticker key={uuid()}>
         <List.Header as="h4">
-          <Link to={trackLink}>{track.title}</Link>
+          <Link to={trackLink}>{currentTrack.title}</Link>
         </List.Header>
       </Ticker>
     )
@@ -30,7 +51,17 @@ export default class Track extends React.PureComponent {
     const artistNameTickerData = (
       <Ticker key={uuid()}>
         <List.Description>
-          <Link to={artistLink}>{track.artist}</Link>
+          <Link to={artistLink}>{currentTrack.artist}</Link>
+        </List.Description>
+      </Ticker>
+    )
+
+    const albumTitleEncoded = encodeURIComponent(currentTrack.album)
+    const albumLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+    const albumTitleTickerData = currentTrack.album && (
+      <Ticker key={uuid()}>
+        <List.Description>
+          <Link to={albumLink}>{currentTrack.album}</Link>
         </List.Description>
       </Ticker>
     )
@@ -39,7 +70,12 @@ export default class Track extends React.PureComponent {
       <List.Content className="playerPanelTrackContent">
         {trackTitleTickerData}
         {artistNameTickerData}
+        {albumTitleTickerData}
       </List.Content>
+    )
+
+    const iconData = (
+      <List.Icon className="playerPanelTrackIcon" name={currentTrackSource} />
     )
 
     return (
@@ -47,6 +83,7 @@ export default class Track extends React.PureComponent {
         <List.Item className="playerPanelTrack">
           {imageData}
           {trackData}
+          {iconData}
         </List.Item>
       </List>
     )

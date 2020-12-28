@@ -7,20 +7,13 @@ export default class TrackPlayerPanelContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const {
-            getTrack,
-            updateCurrentTrack,
-            toggleAudio,
-            audioStatus,
-            currentTrack
-          } = context
+          const { getTrack, toggleAudio, audioStatus, currentTrackId } = context
           const { track } = this.props
 
-          const isPlaying = currentTrack.id === track.id
+          const isPlaying = currentTrackId && currentTrackId === track.id
 
           const playerProps = {
             getTrack,
-            updateCurrentTrack,
             toggleAudio,
             audioStatus,
             track,

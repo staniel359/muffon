@@ -1,11 +1,12 @@
 import React from 'react'
 import { Image, Header, Transition, Dimmer } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import BandcampSelect from '../bandcamp/Select'
 
 export default class Left extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isArtistNameVisible: false, isDimmerActive: false }
+    this.state = { isTransitionVisible: false, isDimmerActive: false }
   }
 
   componentDidMount () {
@@ -17,81 +18,105 @@ export default class Left extends React.PureComponent {
   }
 
   handleScroll = () => {
-    const isArtistNameVisible = window.scrollY >= 60
+    const isTransitionVisible = window.scrollY >= 60
     const isVisibilityChanged =
-      isArtistNameVisible !== this.state.isArtistNameVisible
+      isTransitionVisible !== this.state.isTransitionVisible
 
-    isVisibilityChanged && this.setState({ isArtistNameVisible })
+    isVisibilityChanged && this.setState({ isTransitionVisible })
   }
 
-  render () {
+  imageData () {
     const { album } = this.props
-    const { isArtistNameVisible, isDimmerActive } = this.state
 
     const showDimmer = () => this.setState({ isDimmerActive: true })
-    const image = album.images.medium
-    const imageData = (
+
+    return (
       <Image
         rounded
         wrapped
         className="imageWrapBordered clickable"
-        src={image}
+        src={album.images.medium}
         onClick={showDimmer}
       />
     )
+  }
+
+  transitionData () {
+    const { isTransitionVisible } = this.state
+    const { album } = this.props
 
     const transitionProps = {
-      visible: isArtistNameVisible,
+      visible: isTransitionVisible,
       transitionOnMount: false,
       animation: 'fade',
       duration: 200,
       mountOnShow: false
     }
 
-    const albumTitle = album.title
-    const artistName = album.artist
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const albumTitleData = (
+      <Header
+        as="h3"
+        textAlign="center"
+        className="transitionText"
+        content={album.title}
+      />
+    )
+
+    const artistNameEncoded = encodeURIComponent(album.artist)
     const artistPageLink = `/artists/${artistNameEncoded}`
-    const artistPageLinkData = <Link to={artistPageLink}>{artistName}</Link>
+    const artistNameData = (
+      <Header as="h4" textAlign="center" className="transitionText">
+        <Link to={artistPageLink}>{album.artist}</Link>
+      </Header>
+    )
+
     const transitionText = (
       <div className="transitionTextWrap">
-        <Header
-          as="h3"
-          textAlign="center"
-          className="transitionText"
-          content={albumTitle}
-        />
-        <Header
-          as="h4"
-          textAlign="center"
-          className="transitionText"
-          content={artistPageLinkData}
-        />
+        {albumTitleData}
+        {artistNameData}
       </div>
     )
 
-    const transitionData = (
-      <Transition {...transitionProps}>{transitionText}</Transition>
-    )
+    return <Transition {...transitionProps}>{transitionText}</Transition>
+  }
+
+  dimmerData () {
+    const { isDimmerActive } = this.state
+    const { album } = this.props
 
     const hideDimmer = () => this.setState({ isDimmerActive: false })
-    const dimmerImage = album.images.original
-    const dimmerImageData = <Image src={dimmerImage} />
-    const dimmerData = (
+
+    return (
       <Dimmer
         page
         className="albumPageDimmer"
         active={isDimmerActive}
         onClick={hideDimmer}
-        content={dimmerImageData}
-      />
+      >
+        <Image src={album.images.original} />
+      </Dimmer>
     )
+  }
 
+  bandcampSelectData () {
+    const { album, getBandcampAlbumData } = this.props
+
+    const bandcampSelectDataProps = {
+      artistName: album.artist,
+      albumTitle: album.title,
+      getAlbumData: getBandcampAlbumData
+    }
+
+    return <BandcampSelect {...bandcampSelectDataProps} />
+  }
+
+  render () {
     return (
       <div className="albumPageLeftColumn">
-        {imageData}
-        {transitionData}
-        {dimmerData}
+        {this.imageData()}
+        {this.transitionData()}
+        {this.dimmerData()}
+        {this.bandcampSelectData()}
       </div>
     )
   }

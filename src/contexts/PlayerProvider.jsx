@@ -30,9 +30,7 @@ export default class PlayerProvider extends React.PureComponent {
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
       getTrack: this.getTrack,
-      getAudio: this.getAudio,
-      currentTrack: {},
-      updateCurrentTrack: this.updateCurrentTrack,
+      getVkAudio: this.getVkAudio,
       cancelTrackRequest: this.cancelTrackRequest
     }
   }
@@ -55,7 +53,10 @@ export default class PlayerProvider extends React.PureComponent {
   stopAudio = () => {
     this.setState({
       audioStatus: 'stop',
-      currentTrack: {},
+      currentTrack: null,
+      currentTrackId: null,
+      currentTrackVariants: null,
+      currentTrackIndex: null,
       currentTime: 0,
       secondsLoaded: 0
     })
@@ -140,59 +141,94 @@ export default class PlayerProvider extends React.PureComponent {
     this.audio()[audioStatusOnChange]()
   }
 
-  getTrack = ({ artistName, trackTitle }) => {
+  getTrack = track => {
+    if (track.has_audio) {
+      if (track.bandcamp_link) {
+        return this.getBandcampTrack(track)
+      }
+    } else {
+      return this.getVkTrack(track)
+    }
+  }
+
+  getBandcampTrack = track => {
+    this.request = axios.CancelToken.source()
+
+    const bandcampLinkEncoded = encodeURIComponent(track.bandcamp_link)
+    const url = `/bandcamp/tracks/${bandcampLinkEncoded}`
+
+    const cancelToken = this.request.tokend
+    const extra = { cancelToken }
+
+    const setCurrentTrackData = resp => {
+      this.setState({
+        currentTrack: resp.data.track,
+        currentTrackId: track.id,
+        currentTrackSource: 'bandcamp',
+        currentTrackVariants: null
+      })
+
+      return resp
+    }
+
+    return axios.get(url, extra).then(setCurrentTrackData).then(this.setAudio)
+  }
+
+  setAudio = resp => {
+    const audioLink = resp.data.track.audio_link
+
+    this.audio().src = audioLink
+    this.audio().load()
+  }
+
+  getVkTrack = track => {
     this.request = axios.CancelToken.source()
 
     const url = '/vk/search/tracks'
 
-    const query = `${artistName} ${trackTitle}`
+    const query = `${track.artist} ${track.title}`
     const params = { query }
 
     const cancelToken = this.request.token
     const extra = { params, cancelToken }
 
-    return axios.get(url, extra).then(this.setVariants).then(this.getAudio)
+    const setCurrentTrackVariants = resp => {
+      this.setState({ currentTrackVariants: resp.data.search.tracks })
+    }
+
+    const setCurrentTrackId = () => {
+      this.setState({ currentTrackId: track.id })
+    }
+
+    return axios
+      .get(url, extra)
+      .then(setCurrentTrackVariants)
+      .then(this.getVkAudio)
+      .then(setCurrentTrackId)
   }
 
-  setVariants = resp => {
-    const variants = resp.data.search.tracks
-
-    this.updateCurrentTrack({ variants })
-  }
-
-  getAudio = (index = 0) => {
-    const { variants } = this.state.currentTrack
+  getVkAudio = (index = 0) => {
+    const { currentTrackVariants } = this.state
 
     this.request = axios.CancelToken.source()
 
-    const audioId = variants[index].audio_id
+    const audioId = currentTrackVariants[index].audio_id
     const url = `/vk/tracks/${audioId}`
 
     const cancelToken = this.request.token
     const extra = { cancelToken }
 
-    const setIndex = resp => {
-      this.updateCurrentTrack({ index })
+    const setCurrentTrackData = resp => {
+      this.setState({
+        currentTrack: resp.data.track,
+        currentTrackIndex: index,
+        currentTrackSource: 'vk'
+      })
 
       return resp
     }
 
-    return axios.get(url, extra).then(setIndex).then(this.setAudio)
-  }
-
-  setAudio = resp => {
-    const { track } = resp.data
-
-    this.updateCurrentTrack(track)
-
-    this.audio().src = track.link
-    this.audio().load()
-  }
-
-  updateCurrentTrack = data => {
-    const currentTrack = { ...this.state.currentTrack, ...data }
-
-    this.setState({ currentTrack })
+    return axios.get(url, extra).then(setCurrentTrackData).then(this.setAudio)
   }
 
   cancelTrackRequest = () => this.request.cancel()

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
 import axios from 'axios'
 import LeftColumn from './columns/Left'
 import RightColumn from './columns/Right'
@@ -7,6 +6,8 @@ import handleAlbumChange from './functions/handleAlbumChange'
 import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
 import pageData from './functions/pageData'
+import segmentData from './functions/segmentData'
+import getBandcampAlbumData from './bandcamp/functions/getAlbumData'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
@@ -17,6 +18,8 @@ export default class Show extends React.PureComponent {
     this.setNavSections = setNavSections.bind(this)
     this.getData = getData.bind(this)
     this.pageData = pageData.bind(this)
+    this.segmentData = segmentData.bind(this)
+    this.getBandcampAlbumData = getBandcampAlbumData.bind(this)
   }
 
   componentDidMount () {
@@ -41,15 +44,19 @@ export default class Show extends React.PureComponent {
   params = () => this.props.match.params
 
   contentData () {
-    const columnProps = { album: this.state.data }
-    const pageData = (
+    const { data, albumSource } = this.state
+    const { getBandcampAlbumData } = this
+
+    const album = data
+    const leftColumnProps = { album, getBandcampAlbumData }
+    const rightColumnProps = { album, albumSource }
+
+    return (
       <React.Fragment>
-        <LeftColumn {...columnProps} />
-        <RightColumn {...columnProps} />
+        <LeftColumn {...leftColumnProps} />
+        <RightColumn {...rightColumnProps} />
       </React.Fragment>
     )
-
-    return <Segment className="pageSegment" content={pageData} />
   }
 
   render () {

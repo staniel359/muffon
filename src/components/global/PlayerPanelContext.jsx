@@ -7,9 +7,19 @@ export default class PlayerPanelContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { currentTrack } = context
+          const {
+            currentTrack,
+            currentTrackVariants,
+            currentTrackSource
+          } = context
 
-          return <PlayerPanel {...{ currentTrack }} />
+          const playerPanelProps = {
+            currentTrack,
+            currentTrackVariants,
+            currentTrackSource
+          }
+
+          return <PlayerPanel {...playerPanelProps} />
         }}
       </PlayerContext.Consumer>
     )

@@ -17,9 +17,10 @@ export default class Variants extends React.PureComponent {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    const { variants } = this.props
+    const { currentTrackVariants } = this.props
 
-    const isVariantsChanged = variants !== prevProps.variants
+    const isVariantsChanged =
+      currentTrackVariants !== prevProps.currentTrackVariants
 
     isVariantsChanged && (this.variantsContentRef.current.scrollTop = 0)
   }
@@ -42,11 +43,11 @@ export default class Variants extends React.PureComponent {
 
   render () {
     const { isOpen } = this.state
-    const { variants } = this.props
+    const { currentTrackVariants } = this.props
 
     const dataClassName = 'playerPanelTrackVariants' + (isOpen ? ' open' : '')
 
-    const buttonText = `Variants (${variants.length})`
+    const buttonText = `Variants (${currentTrackVariants.length})`
     const buttonIcon = isOpen ? 'angle down' : 'angle up'
     const handleButtonClick = () => this.setState({ isOpen: !isOpen })
 
@@ -67,7 +68,7 @@ export default class Variants extends React.PureComponent {
 
       return <VariantContext {...variantProps} />
     }
-    const variantsData = variants.map(variantData)
+    const variantsData = currentTrackVariants.map(variantData)
 
     const contentData = (
       <Ref innerRef={this.variantsContentRef}>

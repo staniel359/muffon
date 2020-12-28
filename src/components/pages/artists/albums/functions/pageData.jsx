@@ -3,11 +3,11 @@ import LoaderDimmer from 'global/LoaderDimmer'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function pageData () {
-  const { isLoaded, data, error } = this.state
+  const { isLoaded, isAlbumPresent, error } = this.state
 
   const loaderData = !isLoaded && <LoaderDimmer />
 
-  const contentData = data && this.contentData()
+  const segmentData = isAlbumPresent && this.segmentData()
 
   const handleRefresh = () => {
     this.setState({ isLoaded: false })
@@ -16,7 +16,7 @@ export default function pageData () {
   const errorDataProps = { error, handleRefresh }
   const errorData = error && <ErrorMessage {...errorDataProps} />
 
-  const pageData = loaderData || contentData || errorData
+  const pageData = loaderData || segmentData || errorData
 
-  return pageData
+  return <React.Fragment>{pageData}</React.Fragment>
 }

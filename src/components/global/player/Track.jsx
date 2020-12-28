@@ -16,6 +16,14 @@ export default class Track extends React.PureComponent {
 
   componentWillUnmount = () => (this._isMounted = false)
 
+  iconData () {
+    const { track, albumSource } = this.props
+
+    const iconName = track.has_audio ? albumSource : ''
+
+    return <List.Icon className="trackSourceIcon" name={iconName} />
+  }
+
   buttonData () {
     const { isError, isLoading } = this.state
     const { audioStatus, isPlaying } = this.props
@@ -35,7 +43,7 @@ export default class Track extends React.PureComponent {
 
   render () {
     const { isLoading } = this.state
-    const { isPlaying, toggleAudio } = this.props
+    const { isPlaying, toggleAudio, albumSource } = this.props
 
     const handleTrackClick = () => {
       if (!isLoading) {
@@ -43,8 +51,11 @@ export default class Track extends React.PureComponent {
       }
     }
 
+    const iconData = albumSource && this.iconData()
+
     const contentData = (
       <React.Fragment>
+        {iconData}
         {this.buttonData()}
         {this.trackData()}
       </React.Fragment>
