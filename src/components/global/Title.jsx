@@ -9,11 +9,22 @@ export default class Title extends React.PureComponent {
         {context => {
           const { audioStatus, currentTrack } = context
 
+          const audioStatusIcon = () => {
+            switch (audioStatus) {
+              case 'play':
+                return '❚❚'
+              case 'pause':
+                return '▶'
+              default:
+                return ''
+            }
+          }
+
           const titleData = () => {
-            if (audioStatus === 'play') {
+            if (currentTrack) {
               const { artist, title } = currentTrack
 
-              return `${artist} - ${title} | muffon`
+              return `${audioStatusIcon()} ${artist} - ${title} | muffon`
             } else {
               return 'muffon'
             }
