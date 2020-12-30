@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, Header, Transition, Dimmer } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import VkSelect from '../vk/Select'
 import BandcampSelect from '../bandcamp/Select'
 
 export default class Left extends React.PureComponent {
@@ -98,12 +99,32 @@ export default class Left extends React.PureComponent {
     )
   }
 
-  bandcampSelectData () {
-    const { album, getBandcampAlbumData } = this.props
+  vkSelectData () {
+    const { getVkAlbumData } = this.props
 
-    const bandcampSelectDataProps = {
+    const vkSelectDataProps = {
+      ...this.selectDataProps(),
+      getAlbumData: getVkAlbumData
+    }
+
+    return <VkSelect {...vkSelectDataProps} />
+  }
+
+  selectDataProps () {
+    const { album, requestSource } = this.props
+
+    return {
       artistName: album.artist,
       albumTitle: album.title,
+      requestSource
+    }
+  }
+
+  bandcampSelectData () {
+    const { getBandcampAlbumData } = this.props
+
+    const bandcampSelectDataProps = {
+      ...this.selectDataProps(),
       getAlbumData: getBandcampAlbumData
     }
 
@@ -116,6 +137,7 @@ export default class Left extends React.PureComponent {
         {this.imageData()}
         {this.transitionData()}
         {this.dimmerData()}
+        {this.vkSelectData()}
         {this.bandcampSelectData()}
       </div>
     )

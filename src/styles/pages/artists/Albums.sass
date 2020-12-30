@@ -19,14 +19,24 @@
   border-color: $bandcamp !important
   color: white !important
 
+.vkLabel
+  background-color: $vk !important
+  border-color: $vk !important
+  color: white !important
+
 // Select
 
-.albumSourceSelect > .text
-  color: white !important
-  font-weight: 400
+.albumSourceSelect
+  margin-bottom: 10px !important
+  & > .text
+    color: white !important
+    font-weight: 400
 
 .bandcampSelect
   @extend .albumSourceSelect, .bandcampLabel
+
+.vkSelect
+  @extend .albumSourceSelect, .vkLabel
 
 // Right column
 

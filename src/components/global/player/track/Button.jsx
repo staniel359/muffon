@@ -20,9 +20,8 @@ export default class TrackButton extends React.PureComponent {
     const isDisabled = isLoading || isError
 
     return (
-      <div>
+      <div className="playButton">
         <Button
-          className="playButton"
           size="small"
           icon={this.buttonIcon()}
           loading={isLoading}

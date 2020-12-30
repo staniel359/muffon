@@ -7,7 +7,11 @@ import { v4 as uuid } from 'uuid'
 
 export default class Track extends React.PureComponent {
   render () {
-    const { currentTrack, currentTrackSource } = this.props
+    const {
+      currentTrack,
+      currentTrackSource,
+      currentTrackIsFromAlbum
+    } = this.props
 
     const albumImageData = () => {
       return (
@@ -32,7 +36,7 @@ export default class Track extends React.PureComponent {
 
     const imageData = (
       <div className="playerPanelTrackImage">
-        {currentTrack.album ? albumImageData() : artistImageData()}
+        {currentTrackIsFromAlbum ? albumImageData() : artistImageData()}
       </div>
     )
 
@@ -58,7 +62,7 @@ export default class Track extends React.PureComponent {
 
     const albumTitleEncoded = encodeURIComponent(currentTrack.album)
     const albumLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
-    const albumTitleTickerData = currentTrack.album && (
+    const albumTitleTickerData = currentTrackIsFromAlbum && (
       <Ticker key={uuid()}>
         <List.Description>
           <Link to={albumLink}>{currentTrack.album}</Link>

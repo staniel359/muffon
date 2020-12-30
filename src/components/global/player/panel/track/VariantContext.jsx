@@ -8,9 +8,14 @@ export default class VariantContext extends React.PureComponent {
       <PlayerContext.Consumer>
         {context => {
           const { variant, index } = this.props
-          const { getVkAudio, currentTrackIndex } = context
+          const { getVkTrackVariant, currentTrackIndex } = context
 
-          const variantProps = { variant, index, getVkAudio, currentTrackIndex }
+          const variantProps = {
+            variant,
+            index,
+            getVkTrackVariant,
+            currentTrackIndex
+          }
 
           return <Variant {...variantProps} />
         }}

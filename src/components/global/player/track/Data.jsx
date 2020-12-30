@@ -19,11 +19,7 @@ export default class Data extends React.PureComponent {
 
     return (
       <List.Header as="h4">
-        <Link
-          className="trackContentLink"
-          to={trackPageLink}
-          onClick={this.handleLinkClick}
-        >
+        <Link to={trackPageLink} onClick={this.handleLinkClick}>
           {track.title}
         </Link>
       </List.Header>
@@ -46,11 +42,7 @@ export default class Data extends React.PureComponent {
 
     return (
       <List.Description>
-        <Link
-          className="trackContentLink"
-          to={artistPageLink}
-          onClick={this.handleLinkClick}
-        >
+        <Link to={artistPageLink} onClick={this.handleLinkClick}>
           {track.artist}
         </Link>
       </List.Description>
@@ -104,7 +96,7 @@ export default class Data extends React.PureComponent {
     return (
       <List.Content className="trackContent">
         <div className="trackContentMain">
-          <div className="trackContentIndexLink">
+          <div className="trackContentIndexTitle">
             {indexData}
             <div>
               {titleData}

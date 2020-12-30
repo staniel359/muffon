@@ -30,7 +30,7 @@ export default class PlayerProvider extends React.PureComponent {
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
       getTrack: this.getTrack,
-      getVkAudio: this.getVkAudio,
+      getVkTrackVariant: this.getVkTrackVariant,
       cancelTrackRequest: this.cancelTrackRequest
     }
   }
@@ -57,6 +57,7 @@ export default class PlayerProvider extends React.PureComponent {
       currentTrackId: null,
       currentTrackVariants: null,
       currentTrackIndex: null,
+      currentTrackIsFromAlbum: null,
       currentTime: 0,
       secondsLoaded: 0
     })
@@ -145,9 +146,11 @@ export default class PlayerProvider extends React.PureComponent {
     if (track.has_audio) {
       if (track.bandcamp_link) {
         return this.getBandcampTrack(track)
+      } else if (track.vk_id) {
+        return this.getVkTrack(track)
       }
     } else {
-      return this.getVkTrack(track)
+      return this.searchVkTrack(track)
     }
   }
 
@@ -165,7 +168,8 @@ export default class PlayerProvider extends React.PureComponent {
         currentTrack: resp.data.track,
         currentTrackId: track.id,
         currentTrackSource: 'bandcamp',
-        currentTrackVariants: null
+        currentTrackVariants: null,
+        currentTrackIsFromAlbum: true
       })
 
       return resp
@@ -184,6 +188,29 @@ export default class PlayerProvider extends React.PureComponent {
   getVkTrack = track => {
     this.request = axios.CancelToken.source()
 
+    const url = `/vk/tracks/${track.vk_id}`
+
+    const cancelToken = this.request.token
+    const extra = { cancelToken }
+
+    const setCurrentTrackData = resp => {
+      this.setState({
+        currentTrack: resp.data.track,
+        currentTrackId: track.id,
+        currentTrackSource: 'vk',
+        currentTrackVariants: null,
+        currentTrackIsFromAlbum: true
+      })
+
+      return resp
+    }
+
+    return axios.get(url, extra).then(setCurrentTrackData).then(this.setAudio)
+  }
+
+  searchVkTrack = track => {
+    this.request = axios.CancelToken.source()
+
     const url = '/vk/search/tracks'
 
     const query = `${track.artist} ${track.title}`
@@ -196,24 +223,27 @@ export default class PlayerProvider extends React.PureComponent {
       this.setState({ currentTrackVariants: resp.data.search.tracks })
     }
 
-    const setCurrentTrackId = () => {
-      this.setState({ currentTrackId: track.id })
+    const setCurrentTrackData = () => {
+      this.setState({
+        currentTrackId: track.id,
+        currentTrackIsFromAlbum: false
+      })
     }
 
     return axios
       .get(url, extra)
       .then(setCurrentTrackVariants)
-      .then(this.getVkAudio)
-      .then(setCurrentTrackId)
+      .then(this.getVkTrackVariant)
+      .then(setCurrentTrackData)
   }
 
-  getVkAudio = (index = 0) => {
+  getVkTrackVariant = (index = 0) => {
     const { currentTrackVariants } = this.state
 
     this.request = axios.CancelToken.source()
 
-    const audioId = currentTrackVariants[index].audio_id
-    const url = `/vk/tracks/${audioId}`
+    const vkId = currentTrackVariants[index].vk_id
+    const url = `/vk/tracks/${vkId}`
 
     const cancelToken = this.request.token
     const extra = { cancelToken }
@@ -222,7 +252,8 @@ export default class PlayerProvider extends React.PureComponent {
       this.setState({
         currentTrack: resp.data.track,
         currentTrackIndex: index,
-        currentTrackSource: 'vk'
+        currentTrackSource: 'vk',
+        currentTrackIsFromAlbum: false
       })
 
       return resp

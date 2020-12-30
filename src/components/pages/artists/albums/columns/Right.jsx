@@ -1,6 +1,6 @@
 import React from 'react'
 import { v4 as uuid } from 'uuid'
-import { Header, Label, Divider, List } from 'semantic-ui-react'
+import { Header, Label, Icon, Divider, List } from 'semantic-ui-react'
 import TrackContext from 'global/player/TrackContext'
 import { Link } from 'react-router-dom'
 import Tags from 'global/Tags'
@@ -48,13 +48,24 @@ export default class Right extends React.PureComponent {
   countersData () {
     const { album } = this.props
 
-    const listenersCount = album.listeners_count.toLocaleString('eu')
-    const playsCount = album.plays_count.toLocaleString('eu')
+    const listenersCountData = album.listeners_count > 0 && (
+      <Label basic>
+        <Icon name="user" />
+        {album.listeners_count.toLocaleString('eu')}
+      </Label>
+    )
+
+    const playsCountData = album.plays_count > 0 && (
+      <Label basic>
+        <Icon name="music" />
+        {album.plays_count.toLocaleString('eu')}
+      </Label>
+    )
 
     return (
       <Label.Group size="large">
-        <Label basic icon="user" content={listenersCount} />
-        <Label basic icon="music" content={playsCount} />
+        {listenersCountData}
+        {playsCountData}
       </Label.Group>
     )
   }
@@ -72,9 +83,16 @@ export default class Right extends React.PureComponent {
     const { tracks } = album
 
     const trackData = (track, index) => {
-      track.artist = album.artist
+      track.artist = track.artist || album.artist
 
-      const trackProps = { key: uuid(), track, index, albumSource }
+      const isWithArtist = track.artist !== album.artist
+      const trackProps = {
+        key: uuid(),
+        track,
+        index,
+        albumSource,
+        isWithArtist
+      }
 
       return <TrackContext {...trackProps} />
     }
@@ -84,17 +102,17 @@ export default class Right extends React.PureComponent {
   }
 
   render () {
-    const { album, albumSource } = this.props
+    const { album } = this.props
 
-    const countersData = albumSource !== 'bandcamp' && this.countersData()
+    const tagsData = album.tags && this.tagsData()
 
     const tracksData = album.tracks && this.tracksData()
 
     return (
       <div className="albumPageRightColumn">
         {this.headerData()}
-        {this.tagsData()}
-        {countersData}
+        {tagsData}
+        {this.countersData()}
 
         <Divider />
 

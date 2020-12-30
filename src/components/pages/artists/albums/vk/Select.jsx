@@ -4,7 +4,7 @@ import { Select } from 'semantic-ui-react'
 import getAlbumsData from './functions/getAlbumsData'
 import { v4 as uuid } from 'uuid'
 
-export default class BandcampSelect extends React.PureComponent {
+export default class VkSelect extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { isLoading: false }
@@ -21,7 +21,7 @@ export default class BandcampSelect extends React.PureComponent {
   componentDidUpdate (prevProps, prevState) {
     const { requestSource } = this.props
 
-    if (requestSource && requestSource !== 'bandcamp') {
+    if (requestSource && requestSource !== 'vk') {
       this.setState({ albumIndex: null })
     }
   }
@@ -30,12 +30,14 @@ export default class BandcampSelect extends React.PureComponent {
     this.request.cancel()
   }
 
+  fullTitle = album => `${album.artist} - ${album.title}`
+
   textData () {
     const { data, albumIndex } = this.state
 
     const album = data && data[albumIndex]
 
-    return album ? album.title : 'On Bandcamp'
+    return album ? this.fullTitle(album) : 'On VK'
   }
 
   albumsData () {
@@ -50,14 +52,14 @@ export default class BandcampSelect extends React.PureComponent {
       const handleClick = () => {
         this.setState({ albumIndex: index })
 
-        getAlbumData(album.link)
+        getAlbumData(album.vk_id, album.vk_owner_id, album.vk_access_hash)
       }
 
       return {
         key: uuid(),
         active: selected,
         selected: selected,
-        text: album.title,
+        text: this.fullTitle(album),
         onClick: handleClick
       }
     }
@@ -79,8 +81,8 @@ export default class BandcampSelect extends React.PureComponent {
         button
         fluid
         labeled
-        className="icon bandcampSelect"
-        icon="bandcamp"
+        className="icon vkSelect"
+        icon="vk"
         options={albumsData}
         disabled={isDisabled}
         loading={isLoading}

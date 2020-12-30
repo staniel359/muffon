@@ -1,19 +1,20 @@
 import axios from 'axios'
 
-export default function getAlbumData (albumLink) {
+export default function getAlbumData (vkId, vkOwnerId, vkAccessHash) {
   const startState = {
     error: null,
     isLoading: true,
-    request: { source: 'bandcamp', link: albumLink }
+    request: { source: 'vk' }
   }
 
   this.setState(startState)
 
-  const albumLinkEncoded = encodeURIComponent(albumLink)
-  const url = `/bandcamp/albums/${albumLinkEncoded}`
+  const url = `/vk/albums/${vkId}`
+
+  const params = { owner_id: vkOwnerId, access_hash: vkAccessHash }
 
   const cancelToken = this.request.token
-  const extra = { cancelToken }
+  const extra = { params, cancelToken }
 
   const finishState = { isLoading: false, isLoaded: true }
 
@@ -21,7 +22,7 @@ export default function getAlbumData (albumLink) {
     const data = resp.data.album
     const { artist, title } = data
 
-    const successState = { data, albumSource: 'bandcamp', ...finishState }
+    const successState = { data, albumSource: 'vk', ...finishState }
 
     this.setState(successState)
 

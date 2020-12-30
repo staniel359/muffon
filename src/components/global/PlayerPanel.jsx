@@ -3,18 +3,14 @@ import { Container, Sidebar, Segment } from 'semantic-ui-react'
 import AudioContainerContext from './player/panel/AudioContainerContext'
 import Controls from './player/panel/Controls'
 import TimeBarContext from './player/panel/TimeBarContext'
-import Track from './player/panel/Track'
+import TrackContext from './player/panel/TrackContext'
 import VariantsContext from './player/panel/track/VariantsContext'
 
 export default class PlayerPanel extends React.PureComponent {
   render () {
-    const {
-      currentTrack,
-      currentTrackVariants,
-      currentTrackSource
-    } = this.props
+    const { currentTrack, currentTrackVariants } = this.props
 
-    const currentTrackVariantsData = currentTrackVariants && (
+    const variantsData = currentTrackVariants && (
       <Container className="playerPanelTrackVariantsContainer">
         <VariantsContext />
       </Container>
@@ -22,8 +18,7 @@ export default class PlayerPanel extends React.PureComponent {
 
     const backgroundData = <div className="playerPanelBackground" />
 
-    const trackProps = { currentTrack, currentTrackSource }
-    const trackData = currentTrack && <Track {...trackProps} />
+    const trackData = currentTrack && <TrackContext />
 
     const audioData = (
       <React.Fragment>
@@ -42,23 +37,21 @@ export default class PlayerPanel extends React.PureComponent {
 
     const contentData = (
       <React.Fragment>
-        {currentTrackVariantsData}
+        {variantsData}
         {backgroundData}
         {mainData}
       </React.Fragment>
     )
 
     return (
-      <React.Fragment>
-        <Sidebar
-          direction="bottom"
-          animation="overlay"
-          className="playerPanel"
-          as={Segment}
-          visible={!!currentTrack}
-          content={contentData}
-        />
-      </React.Fragment>
+      <Sidebar
+        direction="bottom"
+        animation="overlay"
+        className="playerPanel"
+        as={Segment}
+        visible={!!currentTrack}
+        content={contentData}
+      />
     )
   }
 }
