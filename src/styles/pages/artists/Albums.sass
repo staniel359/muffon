@@ -14,14 +14,19 @@
 
 // Labels
 
-.bandcampLabel
-  background-color: $bandcamp !important
-  border-color: $bandcamp !important
+.lastfmLabel
+  background-color: $lastfm !important
+  border-color: $lastfm !important
   color: white !important
 
 .vkLabel
   background-color: $vk !important
   border-color: $vk !important
+  color: white !important
+
+.bandcampLabel
+  background-color: $bandcamp !important
+  border-color: $bandcamp !important
   color: white !important
 
 // Select
@@ -32,11 +37,14 @@
     color: white !important
     font-weight: 400
 
-.bandcampSelect
-  @extend .albumSourceSelect, .bandcampLabel
+.lastfmSelect
+  @extend .albumSourceSelect, .lastfmLabel
 
 .vkSelect
   @extend .albumSourceSelect, .vkLabel
+
+.bandcampSelect
+  @extend .albumSourceSelect, .bandcampLabel
 
 // Right column
 

@@ -51,7 +51,8 @@ export default class Track extends React.PureComponent {
       }
     }
 
-    const iconData = albumSource && this.iconData()
+    const isIconShown = albumSource && albumSource !== 'lastfm'
+    const iconData = isIconShown && this.iconData()
 
     const contentData = (
       <React.Fragment>

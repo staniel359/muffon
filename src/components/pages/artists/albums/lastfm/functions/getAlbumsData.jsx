@@ -7,7 +7,7 @@ export default function getAlbumsData () {
 
   this.setState(startState)
 
-  const url = '/bandcamp/search'
+  const url = '/lastfm/search/albums'
 
   const query = `${artistName} ${albumTitle}`
   const params = { query }

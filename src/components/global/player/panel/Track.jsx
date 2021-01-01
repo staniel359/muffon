@@ -19,7 +19,7 @@ export default class Track extends React.PureComponent {
           rounded
           wrapped
           className="imageWrapBordered"
-          src={currentTrack.images.small}
+          src={currentTrack.images.extrasmall}
         />
       )
     }

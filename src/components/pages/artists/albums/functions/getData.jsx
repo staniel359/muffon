@@ -36,7 +36,7 @@ export default function getData () {
     const successState = {
       data,
       isAlbumPresent: true,
-      albumSource,
+      albumSource: albumSource || 'lastfm',
       ...finishState
     }
 

@@ -5,7 +5,8 @@ import ErrorMessage from 'global/ErrorMessage'
 export default function segmentData () {
   const { isLoading, data, error, albumSource } = this.state
 
-  const albumSourceLabelData = albumSource && (
+  const isLabelShown = albumSource && albumSource !== 'lastfm'
+  const albumSourceLabelData = isLabelShown && (
     <Label
       corner
       size="big"
