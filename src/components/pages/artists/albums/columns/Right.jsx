@@ -27,6 +27,16 @@ export default class Right extends React.PureComponent {
     )
   }
 
+  releasedData () {
+    const { released } = this.props.album
+
+    return (
+      <Label.Group>
+        <Label basic size="large" content={released} />
+      </Label.Group>
+    )
+  }
+
   tagsData () {
     const { album, albumSource } = this.props
     const { tags } = album
@@ -104,6 +114,8 @@ export default class Right extends React.PureComponent {
   render () {
     const { album } = this.props
 
+    const releasedData = album.released && this.releasedData()
+
     const tagsData = album.tags && this.tagsData()
 
     const tracksData = album.tracks && this.tracksData()
@@ -111,6 +123,7 @@ export default class Right extends React.PureComponent {
     return (
       <div className="albumPageRightColumn">
         {this.headerData()}
+        {releasedData}
         {tagsData}
         {this.countersData()}
 
