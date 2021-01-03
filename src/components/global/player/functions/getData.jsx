@@ -1,7 +1,7 @@
 export default function getData () {
   const { track, getTrack } = this.props
 
-  this.setState({ isLoading: true })
+  this.setState({ isError: false, isLoading: true })
 
   const handleSuccess = () => {
     this._isMounted && this.setState({ isLoading: false })

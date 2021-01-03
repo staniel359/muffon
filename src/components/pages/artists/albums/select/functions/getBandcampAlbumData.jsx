@@ -1,11 +1,7 @@
 import axios from 'axios'
 
-export default function getAlbumData (albumLink) {
-  const startState = {
-    error: null,
-    isLoading: true,
-    request: { source: 'bandcamp', link: albumLink }
-  }
+export default function getBandcampAlbumData (albumLink) {
+  const startState = { error: null, isLoading: true }
 
   this.setState(startState)
 

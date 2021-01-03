@@ -1,9 +1,7 @@
 import React from 'react'
 import { Image, Header, Transition, Dimmer } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import LastfmSelect from '../lastfm/Select'
-import VkSelect from '../vk/Select'
-import BandcampSelect from '../bandcamp/Select'
+import Select from '../Select'
 
 export default class Left extends React.PureComponent {
   constructor (props) {
@@ -101,56 +99,23 @@ export default class Left extends React.PureComponent {
   }
 
   selectData () {
-    return (
-      <div>
-        {this.lastfmSelectData()}
-        {this.vkSelectData()}
-        {this.bandcampSelectData()}
-      </div>
-    )
-  }
+    const {
+      album,
+      getLastfmAlbumData,
+      getVkAlbumData,
+      getBandcampAlbumData,
+      getSoundCloudAlbumData
+    } = this.props
 
-  lastfmSelectData () {
-    const { getLastfmAlbumData } = this.props
-
-    const selectDataProps = {
-      ...this.selectDataProps(),
-      getAlbumData: getLastfmAlbumData
+    const selectProps = {
+      album,
+      getLastfmAlbumData,
+      getVkAlbumData,
+      getBandcampAlbumData,
+      getSoundCloudAlbumData
     }
 
-    return <LastfmSelect {...selectDataProps} />
-  }
-
-  selectDataProps () {
-    const { album, requestSource } = this.props
-
-    return {
-      artistName: album.artist,
-      albumTitle: album.title,
-      requestSource
-    }
-  }
-
-  vkSelectData () {
-    const { getVkAlbumData } = this.props
-
-    const selectDataProps = {
-      ...this.selectDataProps(),
-      getAlbumData: getVkAlbumData
-    }
-
-    return <VkSelect {...selectDataProps} />
-  }
-
-  bandcampSelectData () {
-    const { getBandcampAlbumData } = this.props
-
-    const selectDataProps = {
-      ...this.selectDataProps(),
-      getAlbumData: getBandcampAlbumData
-    }
-
-    return <BandcampSelect {...selectDataProps} />
+    return <Select {...selectProps} />
   }
 
   render () {

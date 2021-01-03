@@ -1,11 +1,7 @@
 import axios from 'axios'
 
-export default function getAlbumData (artistName, albumTitle) {
-  const startState = {
-    error: null,
-    isLoading: true,
-    request: { source: 'lastfm' }
-  }
+export default function getLastfmAlbumData (artistName, albumTitle) {
+  const startState = { error: null, isLoading: true }
 
   this.setState(startState)
 

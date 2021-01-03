@@ -5,8 +5,7 @@ import ErrorMessage from 'global/ErrorMessage'
 export default function segmentData () {
   const { isLoading, data, error, albumSource } = this.state
 
-  const isLabelShown = albumSource && albumSource !== 'lastfm'
-  const albumSourceLabelData = isLabelShown && (
+  const albumSourceLabelData = albumSource && (
     <Label
       corner
       size="big"
@@ -17,15 +16,7 @@ export default function segmentData () {
 
   const contentData = data && this.contentData()
 
-  const handleRefresh = () => {
-    const { request } = this.state
-
-    if (request.source === 'bandcamp') {
-      this.getBandcampAlbumData(request.link)
-    } else {
-      this.getData()
-    }
-  }
+  const handleRefresh = () => this.getData()
   const errorDataProps = { error, handleRefresh }
   const errorData = error && <ErrorMessage {...errorDataProps} />
 

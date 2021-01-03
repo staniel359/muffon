@@ -1,16 +1,23 @@
 import axios from 'axios'
 
-export default function getAlbumsData () {
+export default function getAlbumsData (source) {
   const { artistName, albumTitle } = this.props
 
   const startState = { isLoading: true }
 
   this.setState(startState)
 
-  const url = '/bandcamp/search'
+  const url = () => {
+    switch (source) {
+      case 'bandcamp':
+        return '/bandcamp/search'
+      default:
+        return `/${source}/search/albums`
+    }
+  }
 
   const query = `${artistName} ${albumTitle}`
-  const params = { query }
+  const params = { query, limit: 20 }
 
   const cancelToken = this.request.token
   const extra = { params, cancelToken }
@@ -31,5 +38,5 @@ export default function getAlbumsData () {
     !axios.isCancel(error) && this.setState(errorState)
   }
 
-  axios.get(url, extra).then(handleSuccess).catch(handleError)
+  axios.get(url(), extra).then(handleSuccess).catch(handleError)
 }

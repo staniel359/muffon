@@ -2,25 +2,14 @@ import axios from 'axios'
 
 export default function getData () {
   const { artistName, albumTitle } = this.params()
-  const { albumSource, albumLink } = this.props.location
 
   const startState = { error: null, isLoading: true }
 
   this.setState(startState)
 
   const isAlbumPage = this.dataName === 'album'
-
-  const albumUrl = () => {
-    if (albumSource === 'bandcamp') {
-      const albumLinkEncoded = encodeURIComponent(albumLink)
-
-      return `/bandcamp/albums/${albumLinkEncoded}`
-    } else {
-      return `/lastfm/artists/${artistName}/albums/${albumTitle}`
-    }
-  }
-
-  const url = isAlbumPage ? albumUrl() : `${albumUrl()}/${this.dataName}`
+  const baseUrl = `/lastfm/artists/${artistName}/albums/${albumTitle}`
+  const url = isAlbumPage ? baseUrl : `${baseUrl}/${this.dataName}`
 
   const cancelToken = this.request.token
   const extra = { cancelToken }
@@ -33,12 +22,7 @@ export default function getData () {
 
     const data = isAlbumPage ? album : album[this.dataName]
 
-    const successState = {
-      data,
-      isAlbumPresent: true,
-      albumSource: albumSource || 'lastfm',
-      ...finishState
-    }
+    const successState = { data, isAlbumPresent: true, ...finishState }
 
     this.setState(successState)
 

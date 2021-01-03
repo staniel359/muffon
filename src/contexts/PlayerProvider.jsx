@@ -1,10 +1,17 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import axios from 'axios'
+import getAudio from './functions/getAudio'
+import searchTrack from './functions/searchTrack'
+import getTrackVariant from './functions/getTrackVariant'
 
 export default class PlayerProvider extends React.PureComponent {
   constructor (props) {
     super(props)
+
+    this.getAudio = getAudio.bind(this)
+    this.searchTrack = searchTrack.bind(this)
+    this.getTrackVariant = getTrackVariant.bind(this)
+
     this.state = {
       toggleAudio: this.toggleAudio,
       stopAudio: this.stopAudio,
@@ -30,7 +37,7 @@ export default class PlayerProvider extends React.PureComponent {
       startTimeChange: this.startTimeChange,
       endTimeChange: this.endTimeChange,
       getTrack: this.getTrack,
-      getVkTrackVariant: this.getVkTrackVariant,
+      getTrackVariant: this.getTrackVariant,
       cancelTrackRequest: this.cancelTrackRequest
     }
   }
@@ -53,16 +60,24 @@ export default class PlayerProvider extends React.PureComponent {
   stopAudio = () => {
     this.setState({
       audioStatus: 'stop',
-      currentTrack: null,
-      currentTrackId: null,
-      currentTrackVariants: null,
-      currentTrackIndex: null,
-      currentTrackIsFromAlbum: null,
       currentTime: 0,
       secondsLoaded: 0
     })
 
+    this.resetCurrentTrack()
+
     this.audio().src = ''
+  }
+
+  resetCurrentTrack () {
+    this.setState({
+      currentTrack: null,
+      currentTrackId: null,
+      currentTrackAudioId: null,
+      currentTrackSource: null,
+      currentTrackIsFromAlbum: null,
+      currentTrackVariants: null
+    })
   }
 
   toggleMute = () => {
@@ -143,123 +158,20 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   getTrack = track => {
-    if (track.has_audio) {
-      if (track.bandcamp_link) {
-        return this.getBandcampTrack(track)
-      } else if (track.vk_id) {
-        return this.getVkTrack(track)
-      }
+    const { audio } = track
+
+    if (audio && audio.present) {
+      return this.getAudio(track)
     } else {
-      return this.searchVkTrack(track)
+      return this.searchTrack(track)
     }
   }
 
-  getBandcampTrack = track => {
-    this.request = axios.CancelToken.source()
+  setAudio = () => {
+    const { link } = this.state.currentTrack.audio
 
-    const bandcampLinkEncoded = encodeURIComponent(track.bandcamp_link)
-    const url = `/bandcamp/tracks/${bandcampLinkEncoded}`
-
-    const cancelToken = this.request.tokend
-    const extra = { cancelToken }
-
-    const setCurrentTrackData = resp => {
-      this.setState({
-        currentTrack: resp.data.track,
-        currentTrackId: track.id,
-        currentTrackSource: 'bandcamp',
-        currentTrackVariants: null,
-        currentTrackIsFromAlbum: true
-      })
-
-      return resp
-    }
-
-    return axios.get(url, extra).then(setCurrentTrackData).then(this.setAudio)
-  }
-
-  setAudio = resp => {
-    const audioLink = resp.data.track.audio_link
-
-    this.audio().src = audioLink
+    this.audio().src = link
     this.audio().load()
-  }
-
-  getVkTrack = track => {
-    this.request = axios.CancelToken.source()
-
-    const url = `/vk/tracks/${track.vk_id}`
-
-    const cancelToken = this.request.token
-    const extra = { cancelToken }
-
-    const setCurrentTrackData = resp => {
-      this.setState({
-        currentTrack: resp.data.track,
-        currentTrackId: track.id,
-        currentTrackSource: 'vk',
-        currentTrackVariants: null,
-        currentTrackIsFromAlbum: true
-      })
-
-      return resp
-    }
-
-    return axios.get(url, extra).then(setCurrentTrackData).then(this.setAudio)
-  }
-
-  searchVkTrack = track => {
-    this.request = axios.CancelToken.source()
-
-    const url = '/vk/search/tracks'
-
-    const query = `${track.artist} ${track.title}`
-    const params = { query }
-
-    const cancelToken = this.request.token
-    const extra = { params, cancelToken }
-
-    const setCurrentTrackVariants = resp => {
-      this.setState({ currentTrackVariants: resp.data.search.tracks })
-    }
-
-    const setCurrentTrackData = () => {
-      this.setState({
-        currentTrackId: track.id,
-        currentTrackIsFromAlbum: false
-      })
-    }
-
-    return axios
-      .get(url, extra)
-      .then(setCurrentTrackVariants)
-      .then(this.getVkTrackVariant)
-      .then(setCurrentTrackData)
-  }
-
-  getVkTrackVariant = (index = 0) => {
-    const { currentTrackVariants } = this.state
-
-    this.request = axios.CancelToken.source()
-
-    const vkId = currentTrackVariants[index].vk_id
-    const url = `/vk/tracks/${vkId}`
-
-    const cancelToken = this.request.token
-    const extra = { cancelToken }
-
-    const setCurrentTrackData = resp => {
-      this.setState({
-        currentTrack: resp.data.track,
-        currentTrackIndex: index,
-        currentTrackSource: 'vk',
-        currentTrackIsFromAlbum: false
-      })
-
-      return resp
-    }
-
-    return axios.get(url, extra).then(setCurrentTrackData).then(this.setAudio)
   }
 
   cancelTrackRequest = () => this.request.cancel()

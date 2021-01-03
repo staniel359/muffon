@@ -19,7 +19,7 @@ export default class Track extends React.PureComponent {
   iconData () {
     const { track, albumSource } = this.props
 
-    const iconName = track.has_audio ? albumSource : ''
+    const iconName = track.audio.present ? albumSource : ''
 
     return <List.Icon className="trackSourceIcon" name={iconName} />
   }

@@ -1,11 +1,7 @@
 import axios from 'axios'
 
-export default function getAlbumData (vkId, vkOwnerId, vkAccessHash) {
-  const startState = {
-    error: null,
-    isLoading: true,
-    request: { source: 'vk' }
-  }
+export default function getVkAlbumData (vkId, vkOwnerId, vkAccessHash) {
+  const startState = { error: null, isLoading: true }
 
   this.setState(startState)
 

@@ -38,19 +38,13 @@ export default class Right extends React.PureComponent {
   }
 
   tagsData () {
-    const { album, albumSource } = this.props
+    const { album } = this.props
     const { tags } = album
 
     const artistNameEncoded = encodeURIComponent(album.artist)
     const albumTitleEncoded = encodeURIComponent(album.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
-    const tagsProps = {
-      tags,
-      viewMore: true,
-      link: tagsPageLink,
-      albumSource,
-      albumLink: album.bandcamp_link
-    }
+    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
 
     return <Tags {...tagsProps} />
   }

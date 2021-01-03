@@ -7,9 +7,10 @@ import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
 import pageData from './functions/pageData'
 import segmentData from './functions/segmentData'
-import getLastfmAlbumData from './lastfm/functions/getAlbumData'
-import getVkAlbumData from './vk/functions/getAlbumData'
-import getBandcampAlbumData from './bandcamp/functions/getAlbumData'
+import getLastfmAlbumData from './select/functions/getLastfmAlbumData'
+import getVkAlbumData from './select/functions/getVkAlbumData'
+import getBandcampAlbumData from './select/functions/getBandcampAlbumData'
+import getSoundCloudAlbumData from './select/functions/getSoundCloudAlbumData'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
@@ -24,6 +25,7 @@ export default class Show extends React.PureComponent {
     this.getLastfmAlbumData = getLastfmAlbumData.bind(this)
     this.getVkAlbumData = getVkAlbumData.bind(this)
     this.getBandcampAlbumData = getBandcampAlbumData.bind(this)
+    this.getSoundCloudAlbumData = getSoundCloudAlbumData.bind(this)
   }
 
   componentDidMount () {
@@ -48,19 +50,23 @@ export default class Show extends React.PureComponent {
   params = () => this.props.match.params
 
   contentData () {
-    const { data, request, albumSource } = this.state
-    const { getLastfmAlbumData, getVkAlbumData, getBandcampAlbumData } = this
-
-    const album = data
-    const requestSource = request && request.source
-    const leftColumnProps = {
-      album,
+    const { data, albumSource } = this.state
+    const {
       getLastfmAlbumData,
       getVkAlbumData,
       getBandcampAlbumData,
-      requestSource
+      getSoundCloudAlbumData
+    } = this
+
+    const leftColumnProps = {
+      album: data,
+      getLastfmAlbumData,
+      getVkAlbumData,
+      getBandcampAlbumData,
+      getSoundCloudAlbumData
     }
-    const rightColumnProps = { album, albumSource }
+
+    const rightColumnProps = { album: data, albumSource }
 
     return (
       <React.Fragment>

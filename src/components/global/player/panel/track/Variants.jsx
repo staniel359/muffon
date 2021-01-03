@@ -63,8 +63,8 @@ export default class Variants extends React.PureComponent {
       />
     )
 
-    const variantData = (variant, index) => {
-      const variantProps = { variant, index, key: uuid() }
+    const variantData = variant => {
+      const variantProps = { variant, key: uuid() }
 
       return <VariantContext {...variantProps} />
     }
