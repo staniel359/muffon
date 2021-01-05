@@ -1,5 +1,4 @@
 import React from 'react'
-import { Divider } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 import CollectionData from './paginated/CollectionData'
 import paginateCollection from './paginated/functions/paginateCollection'
@@ -170,7 +169,7 @@ export default class Paginated extends React.PureComponent {
 
   render () {
     const { clientPageCollection } = this.state
-    const { error, responseTotalPages } = this.props
+    const { error, responseTotalPages, data, clientPageLimit } = this.props
 
     const collectionData = clientPageCollection && this.collectionData()
 
@@ -178,13 +177,9 @@ export default class Paginated extends React.PureComponent {
 
     const contentData = collectionData || errorData
 
-    const paginationData = responseTotalPages > 1 && (
-      <React.Fragment>
-        <Divider />
-
-        {this.paginationData()}
-      </React.Fragment>
-    )
+    const isResponsePagePageable = data && data.length > clientPageLimit
+    const isResponsePageable = responseTotalPages > 1 || isResponsePagePageable
+    const paginationData = isResponsePageable && this.paginationData()
 
     return (
       <React.Fragment>

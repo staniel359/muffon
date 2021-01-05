@@ -1,4 +1,5 @@
 import React from 'react'
+import { Divider } from 'semantic-ui-react'
 import Pagination from 'global/Pagination'
 
 export default function paginationData () {
@@ -20,5 +21,11 @@ export default function paginationData () {
 
   const paginationProps = { totalPages, isDisabled, handlePageChange }
 
-  return <Pagination {...paginationProps} />
+  return (
+    <React.Fragment>
+      <Divider />
+
+      <Pagination {...paginationProps} />
+    </React.Fragment>
+  )
 }
