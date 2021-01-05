@@ -24,7 +24,6 @@ export default function getAudio (track) {
       currentTrackId: track.id,
       currentTrackAudioId: audioId(),
       currentTrackSource: audio.source,
-      currentTrackIsFromAlbum: true,
       currentTrackVariants: null
     })
   }

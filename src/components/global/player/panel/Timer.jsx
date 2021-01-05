@@ -5,6 +5,9 @@ export default class Timer extends React.PureComponent {
   render () {
     const { currentTime, duration } = this.props
 
-    return `${formatSeconds(currentTime)} / ${formatSeconds(duration)}`
+    const current = formatSeconds(currentTime)
+    const total = formatSeconds(duration)
+
+    return <div>{`${current} / ${total}`}</div>
   }
 }

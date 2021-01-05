@@ -7,9 +7,9 @@ export default class VariantsContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { cancelTrackRequest, currentTrackVariants } = context
+          const { currentTrackVariants } = context
 
-          const variantsProps = { cancelTrackRequest, currentTrackVariants }
+          const variantsProps = { currentTrackVariants }
 
           return <Variants {...variantsProps} />
         }}

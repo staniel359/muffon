@@ -22,7 +22,12 @@ export default function getData () {
 
     const data = isAlbumPage ? album : album[this.dataName]
 
-    const successState = { data, isAlbumPresent: true, ...finishState }
+    const successState = {
+      data,
+      isAlbumPresent: true,
+      albumSource: 'lastfm',
+      ...finishState
+    }
 
     this.setState(successState)
 

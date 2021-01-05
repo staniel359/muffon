@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Popup } from 'semantic-ui-react'
 
-export default class StopButton extends React.PureComponent {
+export default class triggerData extends React.PureComponent {
   render () {
-    const { stopAudio } = this.props
+    const { toggleQueuePanel } = this.props
 
     const triggerData = (
-      <Button basic compact size="mini" icon="times" onClick={stopAudio} />
+      <Button basic compact icon="numbered list" onClick={toggleQueuePanel} />
     )
 
     return (
@@ -15,7 +15,7 @@ export default class StopButton extends React.PureComponent {
         positionFixed
         on="hover"
         position="top center"
-        content="Stop"
+        content="Queue"
         className="playerPanelExtraPopup"
         trigger={triggerData}
       />

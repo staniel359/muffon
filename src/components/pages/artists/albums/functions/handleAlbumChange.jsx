@@ -11,7 +11,7 @@ export default function handleAlbumChange (prevProps) {
 
   if (isAlbumChanged) {
     this.setNavSections(artistName, albumTitle)
-    this.setState({ data: null, albumSource: null, isLoaded: false })
+    this.setState({ data: null, isLoaded: false })
     this.getData()
   }
 }

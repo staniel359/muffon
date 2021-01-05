@@ -13,6 +13,7 @@ export default class PlayerProvider extends React.PureComponent {
     this.getTrackVariant = getTrackVariant.bind(this)
 
     this.state = {
+      setContext: this.setContext,
       toggleAudio: this.toggleAudio,
       stopAudio: this.stopAudio,
       toggleMute: this.toggleMute,
@@ -38,9 +39,13 @@ export default class PlayerProvider extends React.PureComponent {
       endTimeChange: this.endTimeChange,
       getTrack: this.getTrack,
       getTrackVariant: this.getTrackVariant,
-      cancelTrackRequest: this.cancelTrackRequest
+      isPlayerPanelVisible: false,
+      isQueuePanelVisible: false,
+      toggleQueuePanel: this.toggleQueuePanel
     }
   }
+
+  setContext = context => this.setState(context)
 
   toggleAudio = () => {
     switch (this.state.audioStatus) {
@@ -65,8 +70,12 @@ export default class PlayerProvider extends React.PureComponent {
     })
 
     this.resetCurrentTrack()
+    this.resetCurrentAlbum()
+    this.hideAudioPanels()
 
     this.audio().src = ''
+
+    this.request.cancel()
   }
 
   resetCurrentTrack () {
@@ -75,8 +84,22 @@ export default class PlayerProvider extends React.PureComponent {
       currentTrackId: null,
       currentTrackAudioId: null,
       currentTrackSource: null,
-      currentTrackIsFromAlbum: null,
       currentTrackVariants: null
+    })
+  }
+
+  resetCurrentAlbum () {
+    this.setState({
+      currentAlbum: null,
+      currentAlbumSource: null,
+      currentAlbumTrackIndex: null
+    })
+  }
+
+  hideAudioPanels () {
+    this.setState({
+      isPlayerPanelVisible: false,
+      isQueuePanelVisible: false
     })
   }
 
@@ -172,9 +195,15 @@ export default class PlayerProvider extends React.PureComponent {
 
     this.audio().src = link
     this.audio().load()
+
+    this.setState({ isPlayerPanelVisible: true })
   }
 
-  cancelTrackRequest = () => this.request.cancel()
+  toggleQueuePanel = () => {
+    const { isQueuePanelVisible } = this.state
+
+    this.setState({ isQueuePanelVisible: !isQueuePanelVisible })
+  }
 
   render () {
     const { children } = this.props

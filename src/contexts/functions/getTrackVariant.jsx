@@ -14,8 +14,7 @@ export default function getTrackVariant (variant) {
     this.setState({
       currentTrack: resp.data.track,
       currentTrackAudioId: audio.id,
-      currentTrackSource: audio.source,
-      currentTrackIsFromAlbum: false
+      currentTrackSource: audio.source
     })
   }
 

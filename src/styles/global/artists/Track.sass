@@ -1,21 +1,35 @@
 .track
   @extend .flex, .alignItemsCenter
-  .playButton
+  .playButtonWrap
+    width: 20px
+    text-align: center
     margin-right: 10px
-    button
-      @extend .margin0
+  .playButton
+    @extend .margin0, .padding0, .noShadow
+    background: transparent !important
+
+.trackContentWrap
+  @extend .w100, .padding0
 
 .trackContent
-  @extend .w100
-
-.trackContentMain
   @extend .flex, .alignItemsCenter, .justifyContentSpaceBetween
 
-.trackContentIndexTitle
+.trackContentMain
   @extend .flex, .alignItemsCenter
 
 .trackContentIndex
   margin-right: 10px
+
+.trackContentExtra
+  @extend .flex, .alignItemsCenter
+
+.trackContentLength
+  margin-left: 10px
+
+.trackSourceIcon
+  @extend .padding0
+  width: 20px !important
+  margin: 0 0 0 10px !important
 
 .trackContentCounter
   @extend .flex, .alignItemsCenter
@@ -28,11 +42,3 @@
 
 .trackContentCounterData
   @extend .flex, .alignItemsCenter
-
-.trackContentLength
-  margin-left: 10px
-
-.trackSourceIcon
-  @extend .padding0
-  width: 20px !important
-  margin-right: 10px !important

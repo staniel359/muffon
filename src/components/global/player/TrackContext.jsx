@@ -10,7 +10,7 @@ export default class TrackContext extends React.PureComponent {
       index,
       isWithArtist,
       hideSearch,
-      albumSource
+      setCurrentAlbumData
     } = this.props
 
     return (
@@ -31,7 +31,7 @@ export default class TrackContext extends React.PureComponent {
             getTrack,
             isPlaying,
             audioStatus,
-            albumSource
+            setCurrentAlbumData
           }
 
           return <Track {...trackProps} />

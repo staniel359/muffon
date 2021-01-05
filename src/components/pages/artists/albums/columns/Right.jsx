@@ -1,9 +1,8 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
-import { Header, Label, Icon, Divider, List } from 'semantic-ui-react'
-import TrackContext from 'global/player/TrackContext'
+import { Header, Label, Icon, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Tags from 'global/Tags'
+import TracksListContext from '../tracks/ListContext'
 
 export default class Right extends React.PureComponent {
   headerData () {
@@ -84,25 +83,10 @@ export default class Right extends React.PureComponent {
 
   tracksData () {
     const { album, albumSource } = this.props
-    const { tracks } = album
 
-    const trackData = (track, index) => {
-      track.artist = track.artist || album.artist
+    const tracksListProps = { album, albumSource }
 
-      const isWithArtist = track.artist !== album.artist
-      const trackProps = {
-        key: uuid(),
-        track,
-        index,
-        albumSource,
-        isWithArtist
-      }
-
-      return <TrackContext {...trackProps} />
-    }
-    const tracksList = tracks.map(trackData)
-
-    return <List selection content={tracksList} />
+    return <TracksListContext {...tracksListProps} />
   }
 
   render () {

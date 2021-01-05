@@ -1,0 +1,38 @@
+.queuePanel
+  @extend .padding0, .noBorder
+  width: 300px !important
+.ui.sidebar.queuePanel
+  z-index: 1000
+
+.queuePanelContentWrap
+  @extend .flexColumn
+  height: calc(100% - 110px) !important
+  margin-top: 40px !important
+  padding: 1em 1em 0 1em !important
+
+.queuePanelHeaderWrap
+  @extend .margin0
+
+.queuePanelHeader
+  @extend .alignItemsCenter
+  line-height: 1
+
+.queuePanelHeaderImage
+  width: 70px !important
+  height: 70px !important
+  margin-right: 10px !important
+  img
+    @extend .h100
+    border: $border !important
+
+.queuePanelHeaderContent
+  @extend .padding0
+  width: 150px
+  margin: 0 10px 0 0 !important
+
+.queuePanelHeaderIcon
+  @extend .padding0, .margin0
+  width: 20px !important
+
+.queuePanelTracks
+  @extend .h100, .yScrollable, .margin0

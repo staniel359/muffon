@@ -7,7 +7,7 @@ import getData from './functions/getData'
 export default class Track extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false, isError: false }
+    this.state = { isHovered: false, isLoading: false, isError: false }
 
     this.getData = getData.bind(this)
   }
@@ -16,19 +16,17 @@ export default class Track extends React.PureComponent {
 
   componentWillUnmount = () => (this._isMounted = false)
 
-  iconData () {
-    const { track, albumSource } = this.props
-
-    const iconName = track.audio.present ? albumSource : ''
-
-    return <List.Icon className="trackSourceIcon" name={iconName} />
-  }
-
   buttonData () {
-    const { isError, isLoading } = this.state
+    const { isError, isLoading, isHovered } = this.state
     const { audioStatus, isPlaying } = this.props
 
-    const buttonProps = { isError, isLoading, audioStatus, isPlaying }
+    const buttonProps = {
+      isLoading,
+      isError,
+      isPlaying,
+      audioStatus,
+      isHovered
+    }
 
     return <Button {...buttonProps} />
   }
@@ -43,7 +41,7 @@ export default class Track extends React.PureComponent {
 
   render () {
     const { isLoading } = this.state
-    const { isPlaying, toggleAudio, albumSource } = this.props
+    const { isPlaying, toggleAudio } = this.props
 
     const handleTrackClick = () => {
       if (!isLoading) {
@@ -51,16 +49,15 @@ export default class Track extends React.PureComponent {
       }
     }
 
-    const isIconShown = albumSource && albumSource !== 'lastfm'
-    const iconData = isIconShown && this.iconData()
-
     const contentData = (
       <React.Fragment>
-        {iconData}
         {this.buttonData()}
         {this.trackData()}
       </React.Fragment>
     )
+
+    const handleMouseEnter = () => this.setState({ isHovered: true })
+    const handleMouseLeave = () => this.setState({ isHovered: false })
 
     return (
       <List.Item
@@ -68,6 +65,8 @@ export default class Track extends React.PureComponent {
         onClick={handleTrackClick}
         active={isPlaying}
         content={contentData}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       />
     )
   }

@@ -1,5 +1,5 @@
 .playerPanel
-  @extend .noBorder, .padding0, .noShadow
+  @extend .noBorder, .padding0
   z-index: 1500 !important
 .ui.sidebar.playerPanel
   height: 70px !important
@@ -56,16 +56,20 @@
   margin-right: 20px
 
 .playerPanelTrack
-  @extend .flex, .alignItemsCenter
-  .playerPanelTrackImage
-    width: 40px
-    margin-right: 10px
-  .playerPanelTrackContent
-    width: calc(100% - 80px)
-    margin-right: 10px
-  .playerPanelTrackIcon
-    @extend .padding0
-    width: 20px
+  @extend .alignItemsCenter
+  line-height: 1
+
+.playerPanelTrackImageWrap
+  width: 40px
+  margin-right: 10px
+
+.playerPanelTrackContent
+  width: 140px
+  margin: 0 10px 0 0 !important
+
+.playerPanelTrackIcon
+  @extend .padding0, .margin0
+  width: 20px !important
 
 // Right column
 
@@ -120,6 +124,6 @@
 .playerPanelExtraPopup
   padding: 6px 12px !important
 
-.playerPanelMainControls
+.playerPanelTimerControls
   @extend .flex, .alignItemsCenter, .justifyContentSpaceBetween
   margin-bottom: 10px

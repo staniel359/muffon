@@ -7,17 +7,9 @@ export default class TrackContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const {
-            currentTrack,
-            currentTrackSource,
-            currentTrackIsFromAlbum
-          } = context
+          const { currentTrack, currentTrackSource } = context
 
-          const trackProps = {
-            currentTrack,
-            currentTrackSource,
-            currentTrackIsFromAlbum
-          }
+          const trackProps = { currentTrack, currentTrackSource }
 
           return <Track {...trackProps} />
         }}

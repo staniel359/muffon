@@ -1,95 +1,82 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { List, Image } from 'semantic-ui-react'
+import { Item, Icon } from 'semantic-ui-react'
 import ArtistImage from 'global/artists/Image'
 import Ticker from 'global/Ticker'
 import { v4 as uuid } from 'uuid'
 
 export default class Track extends React.PureComponent {
-  render () {
-    const {
-      currentTrack,
-      currentTrackSource,
-      currentTrackIsFromAlbum
-    } = this.props
+  contentData () {
+    return (
+      <Item.Group>
+        <Item className="playerPanelTrack">
+          {this.imageData()}
+          <Item.Content className="playerPanelTrackContent">
+            {this.trackTitleData()}
+            {this.artistNameData()}
+          </Item.Content>
+          {this.iconData()}
+        </Item>
+      </Item.Group>
+    )
+  }
 
-    const albumImageData = () => {
-      return (
-        <Image
-          rounded
-          wrapped
-          className="imageWrapBordered"
-          src={currentTrack.images.extrasmall}
-        />
-      )
-    }
+  imageData () {
+    const { currentTrack } = this.props
 
-    const artistImageData = () => {
-      return (
+    return (
+      <div className="playerPanelTrackImageWrap">
         <ArtistImage
           circular
           size="extrasmall"
           artistName={currentTrack.artist}
         />
-      )
-    }
-
-    const imageData = (
-      <div className="playerPanelTrackImage">
-        {currentTrackIsFromAlbum ? albumImageData() : artistImageData()}
       </div>
     )
+  }
+
+  trackTitleData () {
+    const { currentTrack } = this.props
 
     const artistNameEncoded = encodeURIComponent(currentTrack.artist)
     const trackTitleEncoded = encodeURIComponent(currentTrack.title)
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
-    const trackTitleTickerData = (
-      <Ticker key={uuid()}>
-        <List.Header as="h4">
-          <Link to={trackLink}>{currentTrack.title}</Link>
-        </List.Header>
-      </Ticker>
-    )
-
-    const artistLink = `/artists/${artistNameEncoded}`
-    const artistNameTickerData = (
-      <Ticker key={uuid()}>
-        <List.Description>
-          <Link to={artistLink}>{currentTrack.artist}</Link>
-        </List.Description>
-      </Ticker>
-    )
-
-    const albumTitleEncoded = encodeURIComponent(currentTrack.album)
-    const albumLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
-    const albumTitleTickerData = currentTrackIsFromAlbum && (
-      <Ticker key={uuid()}>
-        <List.Description>
-          <Link to={albumLink}>{currentTrack.album}</Link>
-        </List.Description>
-      </Ticker>
-    )
-
-    const trackData = (
-      <List.Content className="playerPanelTrackContent">
-        {trackTitleTickerData}
-        {artistNameTickerData}
-        {albumTitleTickerData}
-      </List.Content>
-    )
-
-    const iconData = (
-      <List.Icon className="playerPanelTrackIcon" name={currentTrackSource} />
-    )
 
     return (
-      <List>
-        <List.Item className="playerPanelTrack">
-          {imageData}
-          {trackData}
-          {iconData}
-        </List.Item>
-      </List>
+      <Ticker key={uuid()}>
+        <Item.Header as="h4">
+          <Link to={trackLink}>{currentTrack.title}</Link>
+        </Item.Header>
+      </Ticker>
     )
+  }
+
+  artistNameData () {
+    const { currentTrack } = this.props
+
+    const artistNameEncoded = encodeURIComponent(currentTrack.artist)
+    const artistLink = `/artists/${artistNameEncoded}`
+
+    return (
+      <Ticker key={uuid()}>
+        <Item.Description>
+          <Link to={artistLink}>{currentTrack.artist}</Link>
+        </Item.Description>
+      </Ticker>
+    )
+  }
+
+  iconData () {
+    const { currentTrackSource } = this.props
+
+    return <Icon className="playerPanelTrackIcon" name={currentTrackSource} />
+  }
+
+  render () {
+    const { currentTrack } = this.props
+
+    const contentData = currentTrack && this.contentData()
+
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

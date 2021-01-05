@@ -1,5 +1,5 @@
 import React from 'react'
-import { List, Icon } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import formatSeconds from 'global/functions/formatSeconds'
 
@@ -60,6 +60,14 @@ export default class Data extends React.PureComponent {
     )
   }
 
+  iconData () {
+    const { audio } = this.props.track
+
+    const iconName = audio && audio.present ? audio.source : ''
+
+    return <List.Icon className="trackSourceIcon" name={iconName} />
+  }
+
   counterData () {
     const { track, topTrackCount } = this.props
 
@@ -73,7 +81,7 @@ export default class Data extends React.PureComponent {
       <List.Description className="trackContentCounter">
         <div className="trackContentCounterLine" style={trackLineStyle} />
         <div className="trackContentCounterData">
-          <Icon name="user" size="small" />
+          <List.Icon name="user" size="small" />
           {trackCounterData}
         </div>
       </List.Description>
@@ -91,19 +99,24 @@ export default class Data extends React.PureComponent {
 
     const lengthData = track.length >= 0 && this.lengthData()
 
+    const iconData = track.audio && this.iconData()
+
     const counterData = track.listeners_count >= 0 && this.counterData()
 
     return (
-      <List.Content className="trackContent">
-        <div className="trackContentMain">
-          <div className="trackContentIndexTitle">
+      <List.Content className="trackContentWrap">
+        <div className="trackContent">
+          <div className="trackContentMain">
             {indexData}
             <div>
               {titleData}
               {artistData}
             </div>
           </div>
-          {lengthData}
+          <div className="trackContentExtra">
+            {lengthData}
+            {iconData}
+          </div>
         </div>
         {counterData}
       </List.Content>

@@ -20,14 +20,13 @@ export default class Variants extends React.PureComponent {
     const { currentTrackVariants } = this.props
 
     const isVariantsChanged =
+      currentTrackVariants &&
       currentTrackVariants !== prevProps.currentTrackVariants
 
     isVariantsChanged && (this.variantsContentRef.current.scrollTop = 0)
   }
 
   componentWillUnmount () {
-    this.props.cancelTrackRequest()
-
     document.removeEventListener('click', this.handleClickOutside)
   }
 
@@ -41,50 +40,65 @@ export default class Variants extends React.PureComponent {
     !isClickedCurrent() && this.setState({ isOpen: false })
   }
 
-  render () {
+  panelData () {
+    const { isOpen } = this.state
+
+    const panelClassName = 'playerPanelTrackVariants' + (isOpen ? ' open' : '')
+
+    return (
+      <Ref innerRef={this.variantsRef}>
+        <div className={panelClassName}>
+          {this.buttonData()}
+          {this.contentData()}
+        </div>
+      </Ref>
+    )
+  }
+
+  buttonData () {
     const { isOpen } = this.state
     const { currentTrackVariants } = this.props
 
-    const dataClassName = 'playerPanelTrackVariants' + (isOpen ? ' open' : '')
-
-    const buttonText = `Variants (${currentTrackVariants.length})`
-    const buttonIcon = isOpen ? 'angle down' : 'angle up'
+    const content = `Variants (${currentTrackVariants.length})`
+    const icon = `angle ${isOpen ? 'down' : 'up'}`
     const handleButtonClick = () => this.setState({ isOpen: !isOpen })
 
-    const buttonData = (
+    return (
       <Button
         compact
         className="playerPanelTrackVariantsButton"
         size="tiny"
         labelPosition="right"
-        content={buttonText}
-        icon={buttonIcon}
         onClick={handleButtonClick}
+        {...{ content, icon }}
       />
     )
+  }
+
+  contentData () {
+    const { currentTrackVariants } = this.props
 
     const variantData = variant => {
-      const variantProps = { variant, key: uuid() }
+      const variantProps = { key: uuid(), variant }
 
       return <VariantContext {...variantProps} />
     }
     const variantsData = currentTrackVariants.map(variantData)
 
-    const contentData = (
+    return (
       <Ref innerRef={this.variantsContentRef}>
         <Segment className="playerPanelTrackVariantsContent">
           <List selection content={variantsData} />
         </Segment>
       </Ref>
     )
+  }
 
-    return (
-      <Ref innerRef={this.variantsRef}>
-        <div className={dataClassName}>
-          {buttonData}
-          {contentData}
-        </div>
-      </Ref>
-    )
+  render () {
+    const { currentTrackVariants } = this.props
+
+    const panelData = currentTrackVariants && this.panelData()
+
+    return <React.Fragment>{panelData}</React.Fragment>
   }
 }

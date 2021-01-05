@@ -2,6 +2,7 @@ import React from 'react'
 import Routes from './Routes'
 import Search from 'global/Search'
 import Navbar from 'global/Navbar'
+import QueuePanelContext from 'global/QueuePanelContext'
 import PlayerPanelContext from 'global/PlayerPanelContext'
 import PlayerProvider from 'contexts/PlayerProvider'
 import Mousetrap from 'mousetrap'
@@ -51,6 +52,8 @@ export default class App extends React.PureComponent {
 
             <Search {...searchProps} />
           </Container>
+
+          <QueuePanelContext />
 
           <PlayerPanelContext />
         </PlayerProvider>
