@@ -3,7 +3,7 @@ import { Sidebar, Segment, Divider, Item, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import Ticker from 'global/Ticker'
-import TracksList from './queue/tracks/List'
+import TracksListContext from './queue/tracks/ListContext'
 
 export default class QueuePanel extends React.PureComponent {
   contentData () {
@@ -13,7 +13,7 @@ export default class QueuePanel extends React.PureComponent {
 
         <Divider />
 
-        {this.tracksData()}
+        <TracksListContext />
       </div>
     )
   }
@@ -75,14 +75,6 @@ export default class QueuePanel extends React.PureComponent {
     const { released } = this.props.currentAlbum
 
     return <Item.Meta>{released || '\u00A0'}</Item.Meta>
-  }
-
-  tracksData () {
-    const { currentAlbum } = this.props
-
-    const tracksListProps = { currentAlbum }
-
-    return <TracksList {...tracksListProps} />
   }
 
   sourceIconData () {

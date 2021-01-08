@@ -1,51 +1,70 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
+import playerState from './functions/playerState'
 import getAudio from './functions/getAudio'
 import searchTrack from './functions/searchTrack'
 import getTrackVariant from './functions/getTrackVariant'
+import stopAudio from './functions/stopAudio'
+import shuffleArray from 'global/functions/shuffleArray'
 
 export default class PlayerProvider extends React.PureComponent {
   constructor (props) {
     super(props)
 
+    this.playerState = playerState.bind(this)
     this.getAudio = getAudio.bind(this)
     this.searchTrack = searchTrack.bind(this)
     this.getTrackVariant = getTrackVariant.bind(this)
+    this.stopAudio = stopAudio.bind(this)
 
-    this.state = {
-      setContext: this.setContext,
-      toggleAudio: this.toggleAudio,
-      stopAudio: this.stopAudio,
-      toggleMute: this.toggleMute,
-      isMuted: false,
-      volume: 100,
-      changeVolume: this.changeVolume,
-      handleVolumeChange: this.handleVolumeChange,
-      isShuffle: false,
-      toggleShuffle: this.toggleShuffle,
-      isRepeat: false,
-      toggleRepeat: this.toggleRepeat,
-      currentTime: 0,
-      duration: 0,
-      handleLoadStart: this.handleLoadStart,
-      handlePlay: this.handlePlay,
-      handlePause: this.handlePause,
-      handleProgress: this.handleProgress,
-      handleTimeUpdate: this.handleTimeUpdate,
-      handleAudioEnd: this.handleAudioEnd,
-      secondsLoaded: 0,
-      changeTime: this.changeTime,
-      startTimeChange: this.startTimeChange,
-      endTimeChange: this.endTimeChange,
-      getTrack: this.getTrack,
-      getTrackVariant: this.getTrackVariant,
-      isPlayerPanelVisible: false,
-      isQueuePanelVisible: false,
-      toggleQueuePanel: this.toggleQueuePanel
-    }
+    this.state = this.playerState()
   }
 
-  setContext = context => this.setState(context)
+  toggleQueuePanel = () => {
+    const { isQueuePanelVisible } = this.state
+
+    this.setState({ isQueuePanelVisible: !isQueuePanelVisible })
+  }
+
+  isQueueStart = () => {
+    const { queue } = this.state
+
+    return !queue || this.queueIndex() === 0
+  }
+
+  queueIndex () {
+    const { queue } = this.state
+
+    const isQueueCurrentTrack = track => {
+      const { currentTrackId } = this.state
+
+      return track.id === currentTrackId
+    }
+
+    return queue.findIndex(isQueueCurrentTrack)
+  }
+
+  isQueueEnd = () => {
+    const { queue } = this.state
+
+    return !queue || this.queueIndex() === queue.length - 1
+  }
+
+  getQueueNextTrack = direction => {
+    const { queue } = this.state
+
+    const index = () => {
+      switch (direction) {
+        case 'forward':
+          return this.queueIndex() + 1
+        case 'backward':
+          return this.queueIndex() - 1
+      }
+    }
+    const track = queue[index()]
+
+    return this.getTrack(track)
+  }
 
   toggleAudio = () => {
     switch (this.state.audioStatus) {
@@ -61,47 +80,6 @@ export default class PlayerProvider extends React.PureComponent {
   audio = () => document.getElementById('playerPanelAudio')
 
   handlePlay = () => this.setState({ audioStatus: 'play' })
-
-  stopAudio = () => {
-    this.setState({
-      audioStatus: 'stop',
-      currentTime: 0,
-      secondsLoaded: 0
-    })
-
-    this.resetCurrentTrack()
-    this.resetCurrentAlbum()
-    this.hideAudioPanels()
-
-    this.audio().src = ''
-
-    this.request.cancel()
-  }
-
-  resetCurrentTrack () {
-    this.setState({
-      currentTrack: null,
-      currentTrackId: null,
-      currentTrackAudioId: null,
-      currentTrackSource: null,
-      currentTrackVariants: null
-    })
-  }
-
-  resetCurrentAlbum () {
-    this.setState({
-      currentAlbum: null,
-      currentAlbumSource: null,
-      currentAlbumTrackIndex: null
-    })
-  }
-
-  hideAudioPanels () {
-    this.setState({
-      isPlayerPanelVisible: false,
-      isQueuePanelVisible: false
-    })
-  }
 
   toggleMute = () => {
     const isMuted = !this.state.isMuted
@@ -129,7 +107,10 @@ export default class PlayerProvider extends React.PureComponent {
   toggleShuffle = () => {
     const isShuffle = !this.state.isShuffle
 
-    this.setState({ isShuffle })
+    const tracks = [...this.state.currentAlbum.tracks]
+    const queue = isShuffle ? shuffleArray(tracks) : tracks
+
+    this.setState({ isShuffle, queue })
   }
 
   toggleRepeat = () => {
@@ -158,9 +139,15 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   handleAudioEnd = e => {
-    e.target.currentTime = 0
+    if (this.isQueueEnd()) {
+      e.target.currentTime = 0
 
-    this.audio().pause()
+      this.audio().pause()
+    } else {
+      this.setState({ isLoading: true })
+
+      this.getQueueNextTrack('forward')
+    }
   }
 
   changeTime = e => (this.audio().currentTime = e.target.value)
@@ -196,13 +183,19 @@ export default class PlayerProvider extends React.PureComponent {
     this.audio().src = link
     this.audio().load()
 
-    this.setState({ isPlayerPanelVisible: true })
+    this.setState({
+      isPlayerPanelVisible: true,
+      isLoading: false
+    })
   }
 
-  toggleQueuePanel = () => {
-    const { isQueuePanelVisible } = this.state
-
-    this.setState({ isQueuePanelVisible: !isQueuePanelVisible })
+  setCurrentAlbumData = (album, albumSource) => {
+    this.setState({
+      currentAlbum: album,
+      currentAlbumSource: albumSource,
+      queue: album.tracks,
+      isShuffle: false
+    })
   }
 
   render () {

@@ -5,8 +5,7 @@ import { v4 as uuid } from 'uuid'
 
 export default class TracksList extends React.PureComponent {
   render () {
-    const { currentAlbum } = this.props
-    const { tracks } = currentAlbum
+    const { currentAlbum, queue } = this.props
 
     const trackData = (track, index) => {
       const isWithArtist = track.artist !== currentAlbum.artist
@@ -15,7 +14,7 @@ export default class TracksList extends React.PureComponent {
 
       return <TrackContext {...trackProps} />
     }
-    const tracksList = tracks.map(trackData)
+    const tracksList = queue && queue.map(trackData)
 
     return (
       <List

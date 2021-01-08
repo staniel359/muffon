@@ -7,9 +7,9 @@ export default class PlayButtonContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { toggleAudio, audioStatus } = context
+          const { toggleAudio, audioStatus, isLoading } = context
 
-          const playButtonProps = { toggleAudio, audioStatus }
+          const playButtonProps = { toggleAudio, audioStatus, isLoading }
 
           return <PlayButton {...playButtonProps} />
         }}

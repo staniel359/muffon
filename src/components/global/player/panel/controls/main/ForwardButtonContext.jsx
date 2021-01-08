@@ -7,18 +7,11 @@ export default class ForwardButtonContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const {
-            currentAlbum,
-            currentAlbumTrackIndex,
-            getTrack,
-            setContext
-          } = context
+          const { isQueueEnd, getQueueNextTrack } = context
 
           const forwardButtonProps = {
-            currentAlbum,
-            currentAlbumTrackIndex,
-            getTrack,
-            setContext
+            isQueueEnd: isQueueEnd(),
+            getQueueNextTrack
           }
 
           return <ForwardButton {...forwardButtonProps} />

@@ -3,7 +3,7 @@ import { Button } from 'semantic-ui-react'
 
 export default class PlayButton extends React.PureComponent {
   render () {
-    const { toggleAudio, audioStatus } = this.props
+    const { toggleAudio, audioStatus, isLoading } = this.props
 
     const toggleAudioButtonIcon = () => {
       switch (audioStatus) {
@@ -16,6 +16,14 @@ export default class PlayButton extends React.PureComponent {
       }
     }
 
-    return <Button basic onClick={toggleAudio} icon={toggleAudioButtonIcon()} />
+    return (
+      <Button
+        basic
+        onClick={toggleAudio}
+        icon={toggleAudioButtonIcon()}
+        loading={isLoading}
+        disabled={isLoading}
+      />
+    )
   }
 }

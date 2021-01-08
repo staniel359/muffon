@@ -7,18 +7,16 @@ export default class TracksList extends React.PureComponent {
   render () {
     const { album, albumSource } = this.props
 
+    const setCurrentAlbumData = () => {
+      const { setCurrentAlbumData } = this.props
+
+      setCurrentAlbumData(album, albumSource)
+    }
+
     const trackData = (track, index) => {
       track.artist ||= album.artist
 
       const isWithArtist = track.artist !== album.artist
-
-      const setCurrentAlbumData = () => {
-        this.props.setContext({
-          currentAlbum: album,
-          currentAlbumSource: albumSource,
-          currentAlbumTrackIndex: index
-        })
-      }
 
       const trackProps = {
         key: uuid(),

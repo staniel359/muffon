@@ -12,17 +12,9 @@ export default class BackwardButton extends React.PureComponent {
 
   render () {
     const { isLoading } = this.state
-    const { currentAlbum, currentAlbumTrackIndex } = this.props
+    const { isQueueStart } = this.props
 
-    const isFirstTrack = () => {
-      if (currentAlbum) {
-        return currentAlbumTrackIndex === 0
-      } else {
-        return false
-      }
-    }
-    const isDisabled = isFirstTrack() || isLoading
-
+    const isDisabled = isQueueStart || isLoading
     const handleClick = () => this.getData('backward')
 
     return (

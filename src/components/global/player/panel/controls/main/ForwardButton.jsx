@@ -12,18 +12,9 @@ export default class ForwardButton extends React.PureComponent {
 
   render () {
     const { isLoading } = this.state
-    const { currentAlbum, currentAlbumTrackIndex } = this.props
+    const { isQueueEnd } = this.props
 
-    const isLastTrack = () => {
-      if (currentAlbum) {
-        return currentAlbumTrackIndex === currentAlbum.tracks.length - 1
-      } else {
-        return false
-      }
-    }
-
-    const isDisabled = isLastTrack() || isLoading
-
+    const isDisabled = isQueueEnd || isLoading
     const handleClick = () => this.getData('forward')
 
     return (

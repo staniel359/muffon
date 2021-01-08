@@ -1,17 +1,15 @@
 import React from 'react'
 import PlayerContext from 'contexts/PlayerContext'
-import TracksList from '../tracks/List'
+import TracksList from './List'
 
 export default class TracksListContext extends React.PureComponent {
   render () {
-    const { album, albumSource } = this.props
-
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { setCurrentAlbumData } = context
+          const { currentAlbum, queue } = context
 
-          const tracksListProps = { album, albumSource, setCurrentAlbumData }
+          const tracksListProps = { currentAlbum, queue }
 
           return <TracksList {...tracksListProps} />
         }}

@@ -1,25 +1,9 @@
 export default function getData (direction) {
-  const { getTrack, currentAlbum, currentAlbumTrackIndex } = this.props
+  const { getQueueNextTrack } = this.props
 
   this.setState({ isError: false, isLoading: true })
 
-  const index = () => {
-    if (direction === 'backward') {
-      return currentAlbumTrackIndex - 1
-    } else if (direction === 'forward') {
-      return currentAlbumTrackIndex + 1
-    }
-  }
-
-  const track = currentAlbum.tracks[index()]
-
-  const handleSuccess = () => {
-    const { setContext } = this.props
-
-    this.setState({ isLoading: false })
-
-    setContext({ currentAlbumTrackIndex: index() })
-  }
+  const handleSuccess = () => this.setState({ isLoading: false })
 
   const handleError = () => {
     const errorState = { isError: true, isLoading: false }
@@ -27,5 +11,5 @@ export default function getData (direction) {
     this.setState(errorState)
   }
 
-  getTrack(track).then(handleSuccess).catch(handleError)
+  getQueueNextTrack(direction).then(handleSuccess).catch(handleError)
 }

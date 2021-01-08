@@ -7,18 +7,11 @@ export default class BackwardButtonContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const {
-            currentAlbum,
-            currentAlbumTrackIndex,
-            getTrack,
-            setContext
-          } = context
+          const { isQueueStart, getQueueNextTrack } = context
 
           const backwardButtonProps = {
-            currentAlbum,
-            currentAlbumTrackIndex,
-            getTrack,
-            setContext
+            isQueueStart: isQueueStart(),
+            getQueueNextTrack
           }
 
           return <BackwardButton {...backwardButtonProps} />
