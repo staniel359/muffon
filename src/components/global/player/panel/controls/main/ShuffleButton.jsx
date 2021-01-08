@@ -7,9 +7,10 @@ export default class ShuffleButton extends React.PureComponent {
 
     return (
       <Button
-        basic={!isShuffle}
         compact
+        size="tiny"
         icon="shuffle"
+        basic={!isShuffle}
         onClick={toggleShuffle}
       />
     )

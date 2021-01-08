@@ -8,7 +8,7 @@ import RepeatButtonContext from './main/RepeatButtonContext'
 export default class Main extends React.PureComponent {
   render () {
     return (
-      <div>
+      <div className="playerPanelMainControls">
         <ShuffleButtonContext />
         <BackwardButtonContext />
         <PlayButtonContext />

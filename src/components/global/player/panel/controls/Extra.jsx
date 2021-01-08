@@ -6,7 +6,7 @@ import StopButtonContext from './extra/StopButtonContext'
 export default class Extra extends React.PureComponent {
   render () {
     return (
-      <div>
+      <div className="playerPanelExtraControls">
         <VolumeButtonContext />
         <QueueButtonContext />
         <StopButtonContext />

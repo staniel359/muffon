@@ -15,7 +15,8 @@ export default class AudioContainerContext extends React.PureComponent {
             handleProgress,
             handleTimeUpdate,
             handleVolumeChange,
-            handleAudioEnd
+            handleAudioEnd,
+            currentTrackSource
           } = context
 
           const audioContainerProps = {
@@ -26,7 +27,8 @@ export default class AudioContainerContext extends React.PureComponent {
             handleProgress,
             handleTimeUpdate,
             handleVolumeChange,
-            handleAudioEnd
+            handleAudioEnd,
+            currentTrackSource
           }
 
           return <AudioContainer {...audioContainerProps} />

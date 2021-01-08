@@ -10,8 +10,14 @@ export default class VolumeButton extends React.PureComponent {
     const volumeUpIcon = 'volume up'
     const volumeIcon = volumeOffIcon || volumeLowIcon || volumeUpIcon
 
-    const volumeButton = (
-      <Button basic compact icon={volumeIcon} onClick={toggleMute} />
+    const triggerData = (
+      <Button
+        basic
+        compact
+        size="tiny"
+        icon={volumeIcon}
+        onClick={toggleMute}
+      />
     )
 
     const currentVolume = isMuted ? 0 : volume
@@ -59,7 +65,7 @@ export default class VolumeButton extends React.PureComponent {
         on="hover"
         position="top center"
         className="playerPanelVolumePopup"
-        trigger={volumeButton}
+        trigger={triggerData}
         content={volumeBarData}
       />
     )

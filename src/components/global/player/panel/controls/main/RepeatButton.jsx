@@ -7,9 +7,10 @@ export default class RepeatButton extends React.PureComponent {
 
     return (
       <Button
-        basic={!isRepeat}
         compact
+        size="tiny"
         icon="redo alternate"
+        basic={!isRepeat}
         onClick={toggleRepeat}
       />
     )

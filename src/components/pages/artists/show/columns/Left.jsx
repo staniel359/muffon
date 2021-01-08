@@ -15,11 +15,7 @@ export default class Left extends React.PureComponent {
 
     const imageProps = { artistName }
 
-    return (
-      <div className="artistPageArtistImageWrap">
-        <Image dimmer {...imageProps} />
-      </div>
-    )
+    return <Image dimmer {...imageProps} />
   }
 
   transitionData () {

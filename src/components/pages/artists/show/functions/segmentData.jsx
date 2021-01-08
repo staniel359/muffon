@@ -18,10 +18,10 @@ export default function segmentData () {
   const segmentData = isLoaded && (contentData || errorData)
 
   return (
-    <Segment.Group className="artistPageSegmentWrap">
+    <Segment.Group className="artistPageSegment">
       {headerData}
       <Segment
-        className="artistPageSegment"
+        className="artistPageSegmentContent"
         loading={isLoading}
         content={segmentData}
       />

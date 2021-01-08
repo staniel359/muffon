@@ -1,8 +1,8 @@
 // Left column
 
 .albumPageLeftColumn
-  width: 220px
-  position: fixed
+  @extend .fixed
+  width: 210px
 
 .albumPageDimmer
   z-index: 3000 !important
@@ -29,7 +29,7 @@ $sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundclou
 // Right column
 
 .albumPageRightColumn
-  margin: 0 0 0 240px
+  margin-left: 230px
 
 .albumPageMainHeader
   margin-bottom: 10px

@@ -10,13 +10,16 @@ export default class AudioContainer extends React.PureComponent {
       handleProgress,
       handleTimeUpdate,
       handleVolumeChange,
-      handleAudioEnd
+      handleAudioEnd,
+      currentTrackSource
     } = this.props
+
+    const crossOrigin = currentTrackSource === 'soundcloud' ? 'anonymous' : null
 
     return (
       <audio
-        id="playerPanelAudio"
         autoPlay
+        id="playerPanelAudio"
         loop={isRepeat}
         onLoadStart={handleLoadStart}
         onPlay={handlePlay}
@@ -25,6 +28,7 @@ export default class AudioContainer extends React.PureComponent {
         onTimeUpdate={handleTimeUpdate}
         onVolumeChange={handleVolumeChange}
         onEnded={handleAudioEnd}
+        {...{ crossOrigin }}
       />
     )
   }

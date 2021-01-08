@@ -1,13 +1,10 @@
 // Left column
 
 .artistPageLeftColumn
-  @extend .fixed, .h100, .inlineBlock
-  width: 200px
+  @extend .fixed
+  width: 210px
 
 // Artist image
-
-.artistPageArtistImageWrap
-  height: 200px
 
 .artistPageArtistImage
   @extend .noBorder, .noShadow, .padding0
@@ -42,16 +39,14 @@
 // Right column
 
 .artistPageRightColumn
-  @extend .inlineBlock
-  width: 480px
-  margin: 0 0 350px 220px
+  margin-left: 230px
 
 .artistPageArtistName
   margin-bottom: 10px !important
 
-.artistPageSegmentWrap
+.artistPageSegment
   @extend .noBorder
   margin-bottom: 20px !important
 
-.artistPageSegment
+.artistPageSegmentContent
   min-height: 100px

@@ -21,6 +21,7 @@ export default class BackwardButton extends React.PureComponent {
       <Button
         basic
         compact
+        size="tiny"
         icon="backward"
         disabled={isDisabled}
         loading={isLoading}

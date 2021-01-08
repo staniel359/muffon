@@ -1,5 +1,3 @@
-$searchItemImageSize: 60px
-
 .searchDimmer
   z-index: 2000 !important
 .searchDimmer.visible
@@ -44,14 +42,14 @@ $searchItemImageSize: 60px
         @extend .colorBase
 
 .searchItemImage
-  width: $searchItemImageSize !important
-  height: $searchItemImageSize !important
+  width: 60px !important
+  height: 60px !important
+  margin-right: 10px
   img
     @extend .w100
 
 .searchItemContent
-  padding: 0 0 0 10px !important
-  width: calc(100% - $searchItemImageSize)
+  width: calc(100% - 70px)
   .header, .description
     width: fit-content
   .ui.loader:before

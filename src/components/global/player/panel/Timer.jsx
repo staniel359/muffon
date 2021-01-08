@@ -8,6 +8,6 @@ export default class Timer extends React.PureComponent {
     const current = formatSeconds(currentTime)
     const total = formatSeconds(duration)
 
-    return <div>{`${current} / ${total}`}</div>
+    return <div className="playerPanelTimer">{`${current} / ${total}`}</div>
   }
 }

@@ -15,15 +15,14 @@
   background: white
 
 .playerPanelMainContainer
-  @extend .relative, .flex, .alignItemsCenter
-  padding: 10px 1em
+  @extend .relative, .h100, .flex, .alignItemsCenter
 
 // Track variants
 
 .playerPanelTrackVariants
   @extend .absolute
   bottom: -250px
-  width: 330px
+  width: 300px
   transition: 0.2s
 .playerPanelTrackVariants.open
   bottom: 0
@@ -52,8 +51,8 @@
 // Left column
 
 .playerPanelLeftColumn
-  width: 220px
-  margin-right: 20px
+  width: 240px
+  padding: 0 1em
 
 .playerPanelTrack
   @extend .alignItemsCenter
@@ -64,7 +63,7 @@
   margin-right: 10px
 
 .playerPanelTrackContent
-  width: 140px
+  width: 132px
   margin: 0 10px 0 0 !important
 
 .playerPanelTrackIcon
@@ -74,7 +73,8 @@
 // Right column
 
 .playerPanelRightColumn
-  width: calc(100% - 240px) !important
+  width: 460px
+  padding: 0 1em
 
 #playerPanelAudio
   @extend .w100
@@ -125,5 +125,16 @@
   padding: 6px 12px !important
 
 .playerPanelTimerControls
-  @extend .flex, .alignItemsCenter, .justifyContentSpaceBetween
+  @extend .flex, .alignItemsCenter
   margin-bottom: 10px
+
+.playerPanelTimer
+  width: 25%
+
+.playerPanelMainControls
+  width: 50%
+  text-align: center
+
+.playerPanelExtraControls
+  width: 25%
+  text-align: right

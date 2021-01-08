@@ -6,7 +6,7 @@ export default class StopButton extends React.PureComponent {
     const { stopAudio } = this.props
 
     const triggerData = (
-      <Button basic compact size="mini" icon="times" onClick={stopAudio} />
+      <Button basic compact size="tiny" icon="times" onClick={stopAudio} />
     )
 
     return (

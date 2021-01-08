@@ -21,6 +21,7 @@ export default class ForwardButton extends React.PureComponent {
       <Button
         basic
         compact
+        size="tiny"
         icon="forward"
         disabled={isDisabled}
         loading={isLoading}

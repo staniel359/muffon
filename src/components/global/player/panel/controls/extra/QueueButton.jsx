@@ -6,7 +6,13 @@ export default class triggerData extends React.PureComponent {
     const { toggleQueuePanel } = this.props
 
     const triggerData = (
-      <Button basic compact icon="numbered list" onClick={toggleQueuePanel} />
+      <Button
+        basic
+        compact
+        size="tiny"
+        icon="numbered list"
+        onClick={toggleQueuePanel}
+      />
     )
 
     return (
