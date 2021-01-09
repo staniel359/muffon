@@ -18,17 +18,11 @@ export default function stopAudio () {
   }
 
   const resetCurrentAlbum = () => {
-    this.setState({
-      currentAlbum: null,
-      currentAlbumSource: null
-    })
+    this.setState({ currentAlbum: null })
   }
 
   const resetQueue = () => {
-    this.setState({
-      queue: null,
-      isShuffle: false
-    })
+    this.setState({ queue: null, isShuffle: false })
   }
 
   const hideAudioPanels = () => {

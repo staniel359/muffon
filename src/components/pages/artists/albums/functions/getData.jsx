@@ -39,7 +39,7 @@ export default function getData () {
 
     const data = isAlbumPage ? album : album[this.dataName]
     const requestData = {
-      source: 'lastfm',
+      source: album.source,
       title: album.title,
       artist: album.artist
     }

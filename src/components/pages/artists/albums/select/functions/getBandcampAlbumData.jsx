@@ -15,7 +15,7 @@ export default function getBandcampAlbumData (albumLink) {
 
   const handleSuccess = resp => {
     const data = resp.data.album
-    const requestData = { source: 'bandcamp', link: albumLink }
+    const requestData = { source: data.source, link: albumLink }
 
     const successState = { data, requestData, ...finishState }
 

@@ -189,10 +189,9 @@ export default class PlayerProvider extends React.PureComponent {
     })
   }
 
-  setCurrentAlbumData = (album, albumSource) => {
+  setCurrentAlbumData = album => {
     this.setState({
       currentAlbum: album,
-      currentAlbumSource: albumSource,
       queue: album.tracks,
       isShuffle: false
     })

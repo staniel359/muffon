@@ -16,7 +16,7 @@ export default function getVkAlbumData (vkId, vkOwnerId, vkAccessHash) {
 
   const handleSuccess = resp => {
     const data = resp.data.album
-    const requestData = { source: 'vk', id: vkId, params }
+    const requestData = { source: data.source, id: vkId, params }
 
     const successState = { data, requestData, ...finishState }
 

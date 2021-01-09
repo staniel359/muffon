@@ -14,7 +14,7 @@ export default function getSoundCloudAlbumData (albumId) {
 
   const handleSuccess = resp => {
     const data = resp.data.album
-    const requestData = { source: 'soundcloud', id: albumId }
+    const requestData = { source: data.source, id: albumId }
 
     const successState = { data, requestData, ...finishState }
 

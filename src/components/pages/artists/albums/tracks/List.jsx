@@ -5,12 +5,12 @@ import { v4 as uuid } from 'uuid'
 
 export default class TracksList extends React.PureComponent {
   render () {
-    const { album, albumSource } = this.props
+    const { album } = this.props
 
     const setCurrentAlbumData = () => {
       const { setCurrentAlbumData } = this.props
 
-      setCurrentAlbumData(album, albumSource)
+      setCurrentAlbumData(album)
     }
 
     const trackData = (track, index) => {

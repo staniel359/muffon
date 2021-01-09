@@ -17,7 +17,7 @@ export default function getLastfmAlbumData (artistName, albumTitle) {
   const handleSuccess = resp => {
     const data = resp.data.album
     const requestData = {
-      source: 'lastfm',
+      source: data.source,
       title: data.title,
       artist: data.artist
     }

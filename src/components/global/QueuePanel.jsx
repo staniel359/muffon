@@ -78,9 +78,9 @@ export default class QueuePanel extends React.PureComponent {
   }
 
   sourceIconData () {
-    const { currentAlbumSource } = this.props
+    const { currentAlbum } = this.props
 
-    return <Icon className="queuePanelHeaderIcon" name={currentAlbumSource} />
+    return <Icon className="queuePanelHeaderIcon" name={currentAlbum.source} />
   }
 
   render () {

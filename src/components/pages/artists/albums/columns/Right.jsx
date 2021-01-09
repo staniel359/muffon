@@ -102,9 +102,9 @@ export default class Right extends React.PureComponent {
   }
 
   tracksData () {
-    const { album, requestData } = this.props
+    const { album } = this.props
 
-    const tracksListProps = { album, albumSource: requestData.source }
+    const tracksListProps = { album }
 
     return <TracksListContext {...tracksListProps} />
   }

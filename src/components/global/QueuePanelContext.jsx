@@ -7,17 +7,9 @@ export default class QueuePanelContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const {
-            currentAlbum,
-            currentAlbumSource,
-            isQueuePanelVisible
-          } = context
+          const { currentAlbum, isQueuePanelVisible } = context
 
-          const queuePanelProps = {
-            currentAlbum,
-            currentAlbumSource,
-            isQueuePanelVisible
-          }
+          const queuePanelProps = { currentAlbum, isQueuePanelVisible }
 
           return <QueuePanel {...queuePanelProps} />
         }}

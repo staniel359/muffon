@@ -4,14 +4,14 @@ import TracksList from '../tracks/List'
 
 export default class TracksListContext extends React.PureComponent {
   render () {
-    const { album, albumSource } = this.props
+    const { album } = this.props
 
     return (
       <PlayerContext.Consumer>
         {context => {
           const { setCurrentAlbumData } = context
 
-          const tracksListProps = { album, albumSource, setCurrentAlbumData }
+          const tracksListProps = { album, setCurrentAlbumData }
 
           return <TracksList {...tracksListProps} />
         }}
