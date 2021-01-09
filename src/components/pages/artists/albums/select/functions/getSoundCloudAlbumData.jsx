@@ -14,13 +14,13 @@ export default function getSoundCloudAlbumData (albumId) {
 
   const handleSuccess = resp => {
     const data = resp.data.album
-    const { artist, title } = data
+    const requestData = { source: 'soundcloud', id: albumId }
 
-    const successState = { data, albumSource: 'soundcloud', ...finishState }
+    const successState = { data, requestData, ...finishState }
 
     this.setState(successState)
 
-    this.setNavSections(artist, title)
+    this.setNavSections(data.artist, data.title)
   }
 
   const handleError = error => {

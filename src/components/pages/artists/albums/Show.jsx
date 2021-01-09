@@ -50,7 +50,7 @@ export default class Show extends React.PureComponent {
   params = () => this.props.match.params
 
   contentData () {
-    const { data, albumSource } = this.state
+    const { data, requestData } = this.state
     const {
       getLastfmAlbumData,
       getVkAlbumData,
@@ -66,7 +66,7 @@ export default class Show extends React.PureComponent {
       getSoundCloudAlbumData
     }
 
-    const rightColumnProps = { album: data, albumSource }
+    const rightColumnProps = { album: data, requestData }
 
     return (
       <React.Fragment>

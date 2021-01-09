@@ -8,8 +8,25 @@ export default function getData () {
   this.setState(startState)
 
   const isAlbumPage = this.dataName === 'album'
-  const baseUrl = `/lastfm/artists/${artistName}/albums/${albumTitle}`
-  const url = isAlbumPage ? baseUrl : `${baseUrl}/${this.dataName}`
+
+  const baseUrl = () => {
+    const { requestData } = this.props.location
+
+    if (requestData) {
+      switch (requestData.source) {
+        case 'lastfm':
+          return `/lastfm/artists/${requestData.artist}/albums/${requestData.title}`
+        case 'bandcamp':
+          return `/bandcamp/albums/${encodeURIComponent(requestData.link)}`
+        case 'soundcloud':
+          return `/soundcloud/albums/${requestData.id}`
+      }
+    } else {
+      return `/lastfm/artists/${artistName}/albums/${albumTitle}`
+    }
+  }
+
+  const url = isAlbumPage ? baseUrl() : `${baseUrl()}/${this.dataName}`
 
   const cancelToken = this.request.token
   const extra = { cancelToken }
@@ -21,13 +38,13 @@ export default function getData () {
     const { artist, title } = album
 
     const data = isAlbumPage ? album : album[this.dataName]
-
-    const successState = {
-      data,
-      isAlbumPresent: true,
-      albumSource: 'lastfm',
-      ...finishState
+    const requestData = {
+      source: 'lastfm',
+      title: album.title,
+      artist: album.artist
     }
+
+    const successState = { data, requestData, ...finishState }
 
     this.setState(successState)
 

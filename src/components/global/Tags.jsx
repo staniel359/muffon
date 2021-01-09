@@ -22,7 +22,7 @@ export default class Tags extends React.PureComponent {
     )
     const tagsData = tags.map(tagData)
 
-    const tagsViewMoreData = viewMore && tags.length === 5 && (
+    const tagsViewMoreData = viewMore && tags.length > 0 && (
       <Label as={Link} to={link} content="..." />
     )
 

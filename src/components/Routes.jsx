@@ -5,12 +5,15 @@ import Home from './pages/Home'
 import ArtistShow from './pages/artists/Show'
 import ArtistTracks from './pages/artists/Tracks'
 import TrackShow from './pages/artists/tracks/Show'
+import TrackDescription from './pages/artists/tracks/Description'
 import TrackTags from './pages/artists/tracks/Tags'
 import TrackSimilar from './pages/artists/tracks/Similar'
 import ArtistAlbums from './pages/artists/Albums'
 import AlbumShow from './pages/artists/albums/Show'
+import AlbumDescription from './pages/artists/albums/Description'
 import AlbumTags from './pages/artists/albums/Tags'
 import ArtistSimilar from './pages/artists/Similar'
+import ArtistDescription from './pages/artists/Description'
 import ArtistTags from './pages/artists/Tags'
 import ArtistImages from './pages/artists/Images'
 import TagShow from './pages/tags/Show'
@@ -29,12 +32,17 @@ export default class Routes extends React.PureComponent {
     const artistShow = props => <ArtistShow {...pageProps(props)} />
     const artistTracks = props => <ArtistTracks {...pageProps(props)} />
     const trackShow = props => <TrackShow {...pageProps(props)} />
+    const trackDescription = props => <TrackDescription {...pageProps(props)} />
     const trackTags = props => <TrackTags {...pageProps(props)} />
     const trackSimilar = props => <TrackSimilar {...pageProps(props)} />
     const artistAlbums = props => <ArtistAlbums {...pageProps(props)} />
     const albumShow = props => <AlbumShow {...pageProps(props)} />
+    const albumDescription = props => <AlbumDescription {...pageProps(props)} />
     const albumTags = props => <AlbumTags {...pageProps(props)} />
     const artistSimilar = props => <ArtistSimilar {...pageProps(props)} />
+    const artistDescription = props => (
+      <ArtistDescription {...pageProps(props)} />
+    )
     const artistTags = props => <ArtistTags {...pageProps(props)} />
     const artistImages = props => <ArtistImages {...pageProps(props)} />
     const tagShow = props => <TagShow {...pageProps(props)} />
@@ -47,12 +55,15 @@ export default class Routes extends React.PureComponent {
       ['/artists/:artistName', artistShow],
       ['/artists/:artistName/tracks', artistTracks],
       ['/artists/:artistName/tracks/:trackTitle', trackShow],
+      ['/artists/:artistName/tracks/:trackTitle/description', trackDescription],
       ['/artists/:artistName/tracks/:trackTitle/tags', trackTags],
       ['/artists/:artistName/tracks/:trackTitle/similar', trackSimilar],
       ['/artists/:artistName/albums/', artistAlbums],
       ['/artists/:artistName/albums/:albumTitle', albumShow],
+      ['/artists/:artistName/albums/:albumTitle/description', albumDescription],
       ['/artists/:artistName/albums/:albumTitle/tags', albumTags],
       ['/artists/:artistName/similar', artistSimilar],
+      ['/artists/:artistName/description', artistDescription],
       ['/artists/:artistName/tags', artistTags],
       ['/artists/:artistName/images', artistImages],
       ['/tags/:tagName', tagShow],

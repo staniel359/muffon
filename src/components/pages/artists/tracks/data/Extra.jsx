@@ -2,16 +2,16 @@ import React from 'react'
 import { Label, Divider, Ref } from 'semantic-ui-react'
 import Tags from 'global/Tags'
 import Similar from './extra/Similar'
+import { Link } from 'react-router-dom'
 
 export default class Extra extends React.PureComponent {
   tagsData () {
     const { track } = this.props
-    const { tags } = track
 
     const artistNameEncoded = encodeURIComponent(track.artist)
     const trackTitleEncoded = encodeURIComponent(track.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}/tags`
-    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
+    const tagsProps = { tags: track.tags, viewMore: true, link: tagsPageLink }
 
     return <Tags {...tagsProps} />
   }
@@ -31,10 +31,22 @@ export default class Extra extends React.PureComponent {
   }
 
   descriptionData () {
-    const { description } = this.props.track
+    const { track } = this.props
+
+    const artistNameEncoded = encodeURIComponent(track.artist)
+    const trackTitleEncoded = encodeURIComponent(track.title)
+    const descriptionPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}/description`
 
     return (
-      <div className="pageDescription">{description || 'No description.'}</div>
+      <React.Fragment>
+        <Divider />
+
+        <div>
+          {track.description}
+          {'\u00A0'}
+          <Link to={descriptionPageLink}>Read more...</Link>
+        </div>
+      </React.Fragment>
     )
   }
 
@@ -61,14 +73,17 @@ export default class Extra extends React.PureComponent {
   }
 
   render () {
+    const { track } = this.props
+
+    const tagsData = track.tags && this.tagsData()
+
+    const descriptionData = track.description && this.descriptionData()
+
     return (
       <div className="trackPageExtra">
-        {this.tagsData()}
+        {tagsData}
         {this.countersData()}
-
-        <Divider />
-
-        {this.descriptionData()}
+        {descriptionData}
 
         <Divider />
 

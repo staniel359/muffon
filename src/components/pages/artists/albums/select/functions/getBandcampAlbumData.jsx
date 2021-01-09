@@ -15,13 +15,13 @@ export default function getBandcampAlbumData (albumLink) {
 
   const handleSuccess = resp => {
     const data = resp.data.album
-    const { artist, title } = data
+    const requestData = { source: 'bandcamp', link: albumLink }
 
-    const successState = { data, albumSource: 'bandcamp', ...finishState }
+    const successState = { data, requestData, ...finishState }
 
     this.setState(successState)
 
-    this.setNavSections(artist, title)
+    this.setNavSections(data.artist, data.title)
   }
 
   const handleError = error => {

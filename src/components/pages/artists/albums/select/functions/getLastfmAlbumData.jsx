@@ -16,13 +16,17 @@ export default function getLastfmAlbumData (artistName, albumTitle) {
 
   const handleSuccess = resp => {
     const data = resp.data.album
-    const { artist, title } = data
+    const requestData = {
+      source: 'lastfm',
+      title: data.title,
+      artist: data.artist
+    }
 
-    const successState = { data, albumSource: 'lastfm', ...finishState }
+    const successState = { data, requestData, ...finishState }
 
     this.setState(successState)
 
-    this.setNavSections(artist, title)
+    this.setNavSections(data.artist, data.title)
   }
 
   const handleError = error => {

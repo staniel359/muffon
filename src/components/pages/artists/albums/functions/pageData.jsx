@@ -3,11 +3,11 @@ import LoaderDimmer from 'global/LoaderDimmer'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function pageData () {
-  const { isLoaded, isAlbumPresent, error } = this.state
+  const { isLoaded, requestData, error } = this.state
 
   const loaderData = !isLoaded && <LoaderDimmer />
 
-  const segmentData = isAlbumPresent && this.segmentData()
+  const segmentData = requestData && this.segmentData()
 
   const handleRefresh = () => {
     this.setState({ isLoaded: false })

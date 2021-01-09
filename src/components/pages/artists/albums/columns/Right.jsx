@@ -37,13 +37,17 @@ export default class Right extends React.PureComponent {
   }
 
   tagsData () {
-    const { album } = this.props
-    const { tags } = album
+    const { album, requestData } = this.props
 
     const artistNameEncoded = encodeURIComponent(album.artist)
     const albumTitleEncoded = encodeURIComponent(album.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
-    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
+    const tagsPageLinkData = { pathname: tagsPageLink, requestData }
+    const tagsProps = {
+      tags: album.tags,
+      viewMore: true,
+      link: tagsPageLinkData
+    }
 
     return <Tags {...tagsProps} />
   }
@@ -74,17 +78,33 @@ export default class Right extends React.PureComponent {
   }
 
   descriptionData () {
-    const { description } = this.props.album
+    const { album, requestData } = this.props
+
+    const artistNameEncoded = encodeURIComponent(album.artist)
+    const albumTitleEncoded = encodeURIComponent(album.title)
+    const descriptionPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/description`
+    const descriptionPageLinkData = {
+      pathname: descriptionPageLink,
+      requestData
+    }
 
     return (
-      <div className="pageDescription">{description || 'No description.'}</div>
+      <React.Fragment>
+        <Divider />
+
+        <div>
+          {album.description}
+          {'\u00A0'}
+          <Link to={descriptionPageLinkData}>Read more...</Link>
+        </div>
+      </React.Fragment>
     )
   }
 
   tracksData () {
-    const { album, albumSource } = this.props
+    const { album, requestData } = this.props
 
-    const tracksListProps = { album, albumSource }
+    const tracksListProps = { album, albumSource: requestData.source }
 
     return <TracksListContext {...tracksListProps} />
   }
@@ -96,6 +116,8 @@ export default class Right extends React.PureComponent {
 
     const tagsData = album.tags && this.tagsData()
 
+    const descriptionData = album.description && this.descriptionData()
+
     const tracksData = album.tracks && this.tracksData()
 
     return (
@@ -104,10 +126,7 @@ export default class Right extends React.PureComponent {
         {releasedData}
         {tagsData}
         {this.countersData()}
-
-        <Divider />
-
-        {this.descriptionData()}
+        {descriptionData}
 
         <Divider />
 
