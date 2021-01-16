@@ -1,62 +1,59 @@
 import React from 'react'
-import { Select } from 'semantic-ui-react'
+import { Dropdown } from 'semantic-ui-react'
+import Source from './sources/Source'
 
 export default class Sources extends React.PureComponent {
   iconData () {
-    const { currentSource } = this.props
+    const { selectedSource } = this.props
 
-    if (currentSource) {
-      return {
-        name: currentSource.key,
-        className: `${currentSource.key}Label`
-      }
+    if (selectedSource) {
+      return { className: `${selectedSource.id} ${selectedSource.id}Label` }
     } else {
-      return 'dot circle'
+      return { name: 'dot circle' }
     }
   }
 
   textData () {
-    const { currentSource } = this.props
+    const { selectedSource } = this.props
 
-    return currentSource ? currentSource.name : 'Select source'
+    return selectedSource ? selectedSource.name : 'Select source'
   }
 
   sourcesData () {
-    const sourcesList = [
-      { key: 'lastfm', name: 'Last.FM' },
-      { key: 'vk', name: 'VK' },
-      { key: 'bandcamp', name: 'Bandcamp' },
-      { key: 'soundcloud', name: 'SoundCloud' }
-    ]
+    const { sources } = this.props
 
-    return sourcesList.map(this.sourceData)
+    return sources.map(this.sourceData)
   }
 
   sourceData = source => {
-    const { currentSource, setCurrentSource } = this.props
+    const {
+      selectedSource,
+      requestData,
+      setSelectedSource,
+      setSelectedSourceData
+    } = this.props
 
-    const selected = currentSource && source.key === currentSource.key
-    const handleClick = () => setCurrentSource(source)
+    const isSelected = !!selectedSource && source.id === selectedSource.id
 
-    return {
-      key: source.key,
-      icon: {
-        name: source.key,
-        className: `${source.key}Icon`
-      },
-      active: selected,
-      selected: selected,
-      text: source.name,
-      onClick: handleClick
+    const sourceProps = {
+      key: source.id,
+      source,
+      isSelected,
+      requestData,
+      setSelectedSource,
+      setSelectedSourceData
     }
+
+    return <Source {...sourceProps} />
   }
 
   render () {
     return (
-      <Select
+      <Dropdown
         button
         fluid
         labeled
+        selection
         className="icon albumSourceSelect"
         icon={this.iconData()}
         text={this.textData()}

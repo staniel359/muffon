@@ -1,22 +1,57 @@
 import React from 'react'
+import { Segment } from 'semantic-ui-react'
 import LoaderDimmer from 'global/LoaderDimmer'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function pageData () {
-  const { isLoaded, requestData, error } = this.state
+  const pageData = () => {
+    const { isLoaded, isLoading, error } = this.state
 
-  const loaderData = !isLoaded && <LoaderDimmer />
-
-  const segmentData = requestData && this.segmentData()
-
-  const handleRefresh = () => {
-    this.setState({ isLoaded: false })
-    this.getData()
+    if (isLoaded) {
+      return segmentData()
+    } else {
+      if (isLoading) {
+        return <LoaderDimmer />
+      } else {
+        if (error) {
+          return errorData()
+        }
+      }
+    }
   }
-  const errorDataProps = { error, handleRefresh }
-  const errorData = error && <ErrorMessage {...errorDataProps} />
 
-  const pageData = loaderData || segmentData || errorData
+  const segmentData = () => {
+    const { isLoading } = this.state
 
-  return <React.Fragment>{pageData}</React.Fragment>
+    return (
+      <Segment
+        className="pageSegment"
+        loading={isLoading}
+        content={segmentContentData()}
+      />
+    )
+  }
+
+  const segmentContentData = () => {
+    const { error, data } = this.state
+
+    if (error) {
+      return errorData()
+    } else {
+      if (data) {
+        return this.contentData()
+      }
+    }
+  }
+
+  const errorData = () => {
+    const { error } = this.props
+
+    const handleRefresh = () => this.getData()
+    const errorDataProps = { error, handleRefresh }
+
+    return <ErrorMessage {...errorDataProps} />
+  }
+
+  return <React.Fragment>{pageData()}</React.Fragment>
 }

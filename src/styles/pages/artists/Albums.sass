@@ -1,3 +1,11 @@
+$bandcamp: #629aa9
+$vk: #2787F5
+$lastfm: #d51007
+$soundcloud: #ff5500
+$discogs: #333333
+
+$discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
+
 // Left column
 
 .albumPageLeftColumn
@@ -15,7 +23,7 @@
 .albumSourceSelect
   margin-bottom: 10px !important
 
-$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud)
+$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud, discogs: $discogs)
 
 @each $source, $color in $sources
   .#{$source}Icon
@@ -25,6 +33,16 @@ $sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundclou
     background-color: $color !important
     border-color: $color !important
     color: white !important
+
+i.icon.discogs:before
+  content: $discogsIcon
+
+.discogsIcon:before
+  content: $discogsIcon
+
+.discogsLabel:before
+  content: $discogsIcon
+  filter: invert(1)
 
 // Right column
 

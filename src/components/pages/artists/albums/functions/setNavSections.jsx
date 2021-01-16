@@ -1,4 +1,10 @@
-export default function setNavSections (artistName, albumTitle) {
+export default function setNavSections () {
+  const { params } = this.props.match
+
+  const album = this.state.data
+  const artistName = album ? album.artist : params.artistName
+  const albumTitle = album ? album.title : params.albumTitle
+
   const artistNameEncoded = encodeURIComponent(artistName)
   const albumTitleEncoded = encodeURIComponent(albumTitle)
 
@@ -8,16 +14,24 @@ export default function setNavSections (artistName, albumTitle) {
 
   const isAlbumPage = this.dataName === 'album'
 
-  const navSections = [
-    { content: 'Artists' },
-    { content: decodeURIComponent(artistName), href: artistPageLink },
-    { content: 'Albums', href: albumsPageLink },
-    {
-      content: decodeURIComponent(albumTitle),
-      ...(isAlbumPage ? { active: true } : { href: albumPageLink })
-    },
-    !isAlbumPage && { content: this.navSectionData, active: true }
-  ].filter(e => e)
+  const navSections = () => {
+    if (isAlbumPage) {
+      return [
+        { content: 'Artists' },
+        { content: decodeURIComponent(artistName), href: artistPageLink },
+        { content: 'Albums', href: albumsPageLink },
+        { content: decodeURIComponent(albumTitle), active: true }
+      ]
+    } else {
+      return [
+        { content: 'Artists' },
+        { content: decodeURIComponent(artistName), href: artistPageLink },
+        { content: 'Albums', href: albumsPageLink },
+        { content: decodeURIComponent(albumTitle), href: albumPageLink },
+        { content: this.navSectionData, active: true }
+      ]
+    }
+  }
 
-  this.props.setNavSections(navSections)
+  this.props.setNavSections(navSections())
 }

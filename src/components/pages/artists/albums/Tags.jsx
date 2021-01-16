@@ -1,35 +1,31 @@
 import React from 'react'
-import axios from 'axios'
 import Tags from 'global/Tags'
-import handleAlbumChange from './functions/handleAlbumChange'
-import setNavSections from './functions/setNavSections'
-import getData from './functions/getData'
 import pageData from './functions/pageData'
-import segmentData from './functions/segmentData'
+import getData from './functions/getData'
+import getAlbumData from './select/functions/getAlbumData'
+import setNavSections from './functions/setNavSections'
+import checkAlbumChange from './functions/checkAlbumChange'
 
 export default class AlbumTags extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = { isLoaded: false }
 
-    this.handleAlbumChange = handleAlbumChange.bind(this)
-    this.setNavSections = setNavSections.bind(this)
-    this.getData = getData.bind(this)
     this.pageData = pageData.bind(this)
-    this.segmentData = segmentData.bind(this)
+    this.getData = getData.bind(this)
+    this.getAlbumData = getAlbumData.bind(this)
+    this.setNavSections = setNavSections.bind(this)
+    this.checkAlbumChange = checkAlbumChange.bind(this)
   }
 
   componentDidMount () {
-    this.request = axios.CancelToken.source()
-
-    const { artistName, albumTitle } = this.params()
-
-    this.setNavSections(artistName, albumTitle)
     this.getData()
+    this.setNavSections()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    this.handleAlbumChange(prevProps)
+    this.checkAlbumChange(prevProps)
+    this.setNavSections()
   }
 
   componentWillUnmount () {
@@ -39,12 +35,16 @@ export default class AlbumTags extends React.PureComponent {
   dataName = 'tags'
   navSectionData = 'Tags'
 
-  params = () => this.props.match.params
-
   contentData () {
-    const tagsProps = { tags: this.state.data }
+    const { tags } = this.state.data
 
-    return <Tags {...tagsProps} />
+    const tagsProps = { tags }
+
+    return (
+      <React.Fragment>
+        <Tags {...tagsProps} />
+      </React.Fragment>
+    )
   }
 
   render () {

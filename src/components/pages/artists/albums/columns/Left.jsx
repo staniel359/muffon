@@ -99,21 +99,11 @@ export default class Left extends React.PureComponent {
   }
 
   selectData () {
-    const {
-      album,
-      getLastfmAlbumData,
-      getVkAlbumData,
-      getBandcampAlbumData,
-      getSoundCloudAlbumData
-    } = this.props
+    const { album, getAlbumData, setRequestData } = this.props
+    const { artist, title } = album
 
-    const selectProps = {
-      album,
-      getLastfmAlbumData,
-      getVkAlbumData,
-      getBandcampAlbumData,
-      getSoundCloudAlbumData
-    }
+    const requestData = { artist, title }
+    const selectProps = { requestData, getAlbumData, setRequestData }
 
     return <Select {...selectProps} />
   }
