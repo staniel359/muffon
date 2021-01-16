@@ -1,10 +1,10 @@
 import React from 'react'
-import PlayerContext from 'contexts/PlayerContext'
-import playerState from './functions/playerState'
-import getAudio from './functions/getAudio'
-import searchTrack from './functions/searchTrack'
-import getTrackVariant from './functions/getTrackVariant'
-import stopAudio from './functions/stopAudio'
+import PlayerContext from './PlayerContext'
+import playerState from './player/functions/playerState'
+import getAudio from './player/functions/getAudio'
+import searchTrack from './player/functions/searchTrack'
+import getTrackVariant from './player/functions/getTrackVariant'
+import stopAudio from './player/functions/stopAudio'
 import shuffleArray from 'global/functions/shuffleArray'
 
 export default class PlayerProvider extends React.PureComponent {
