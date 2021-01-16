@@ -8,7 +8,17 @@ export default function sourcesList () {
     },
     bandcamp: {
       name: 'Bandcamp',
-      onlyTitle: true
+      onlyTitle: true,
+      types: {
+        albums: {
+          name: 'Album',
+          single: 'album'
+        },
+        tracks: {
+          name: 'Single',
+          single: 'album'
+        }
+      }
     },
     soundcloud: {
       name: 'SoundCloud'

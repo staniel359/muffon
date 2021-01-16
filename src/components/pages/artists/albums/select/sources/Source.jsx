@@ -24,11 +24,11 @@ export default class Source extends React.PureComponent {
   }
 
   contentData () {
-    const { data, isLoading } = this.state
+    const { isLoading } = this.state
     const { source } = this.props
 
     const iconClassName = isLoading ? '' : `${source.id} ${source.id}Icon`
-    const buttonClassName = `dropdownItemIcon${!data ? ' faded' : ''}`
+    const buttonClassName = `dropdownItemIcon${this.isNoData() ? ' faded' : ''}`
     const iconButtonData = (
       <Button
         className={buttonClassName}
@@ -43,6 +43,16 @@ export default class Source extends React.PureComponent {
         {source.name}
       </React.Fragment>
     )
+  }
+
+  isNoData () {
+    const { data } = this.state
+
+    const isNoTypeData = typeData => {
+      return !typeData || typeData.length === 0
+    }
+
+    return !data || Object.values(data).every(isNoTypeData)
   }
 
   render () {
@@ -61,7 +71,7 @@ export default class Source extends React.PureComponent {
 
     return (
       <Dropdown.Item
-        disabled={!data}
+        disabled={this.isNoData()}
         active={isSelected}
         selected={isSelected}
         onClick={handleClick}

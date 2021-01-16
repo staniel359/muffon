@@ -18,7 +18,8 @@ export default class Types extends React.PureComponent {
   typeData = type => {
     const { data, selectedType, setSelectedType } = this.props
 
-    const isDisabled = !data[type.id]
+    const typeData = data[type.id]
+    const isDisabled = !typeData || typeData.length === 0
     const isSelected = !!selectedType && selectedType.id === type.id
     const typeProps = {
       key: type.id,

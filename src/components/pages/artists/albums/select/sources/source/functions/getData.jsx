@@ -7,14 +7,7 @@ export default function getData ({ sourceId, typeId = 'albums' }) {
 
   this.setState(startState)
 
-  const url = () => {
-    switch (sourceId) {
-      case 'bandcamp':
-        return `/${sourceId}/search`
-      default:
-        return `/${sourceId}/search/${typeId}`
-    }
-  }
+  const url = `/${sourceId}/search/${typeId}`
 
   const query = `${artist} ${title}`
 
@@ -25,22 +18,24 @@ export default function getData ({ sourceId, typeId = 'albums' }) {
 
   const finishState = { isLoading: false }
 
-  const handleSuccess = resp => {
-    const data = {
+  const data = resp => {
+    return {
       ...this.state.data,
-      [typeId]: resp.data.search[typeId]
+      [typeId]: resp ? resp.data.search[typeId] : null
     }
+  }
 
-    const successState = { data, ...finishState }
+  const handleSuccess = resp => {
+    const successState = { data: data(resp), ...finishState }
 
     this.setState(successState)
   }
 
   const handleError = error => {
-    const errorState = { data: null, ...finishState }
+    const errorState = { data: data(), ...finishState }
 
     !axios.isCancel(error) && this.setState(errorState)
   }
 
-  axios.get(url(), extra).then(handleSuccess).catch(handleError)
+  axios.get(url, extra).then(handleSuccess).catch(handleError)
 }
