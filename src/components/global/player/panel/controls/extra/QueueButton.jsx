@@ -3,7 +3,7 @@ import { Button, Popup } from 'semantic-ui-react'
 
 export default class triggerData extends React.PureComponent {
   render () {
-    const { toggleQueuePanel } = this.props
+    const { queue, toggleQueuePanel } = this.props
 
     const triggerData = (
       <Button
@@ -11,11 +11,12 @@ export default class triggerData extends React.PureComponent {
         compact
         size="tiny"
         icon="numbered list"
+        disabled={!queue}
         onClick={toggleQueuePanel}
       />
     )
 
-    return (
+    const contentData = (
       <Popup
         inverted
         positionFixed
@@ -26,5 +27,7 @@ export default class triggerData extends React.PureComponent {
         trigger={triggerData}
       />
     )
+
+    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

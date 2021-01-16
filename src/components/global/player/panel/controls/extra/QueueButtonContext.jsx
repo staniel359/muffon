@@ -7,9 +7,9 @@ export default class QueueButtonContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { toggleQueuePanel } = context
+          const { queue, toggleQueuePanel } = context
 
-          const queueButtonProps = { toggleQueuePanel }
+          const queueButtonProps = { queue, toggleQueuePanel }
 
           return <QueueButton {...queueButtonProps} />
         }}

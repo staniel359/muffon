@@ -7,9 +7,9 @@ export default class ShuffleButtonContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { isShuffle, toggleShuffle } = context
+          const { queue, isShuffle, toggleShuffle } = context
 
-          const shuffleButtonProps = { isShuffle, toggleShuffle }
+          const shuffleButtonProps = { queue, isShuffle, toggleShuffle }
 
           return <ShuffleButton {...shuffleButtonProps} />
         }}
