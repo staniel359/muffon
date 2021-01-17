@@ -1,32 +1,34 @@
 import React from 'react'
 import LeftColumn from './show/columns/Left'
 import RightColumn from './show/columns/Right'
-import axios from 'axios'
 import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
-import handleArtistChange from './functions/handleArtistChange'
+import checkArtistChange from './functions/checkArtistChange'
 import pageData from './functions/pageData'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {
+      isLoading: false,
+      isLoaded: false,
+      isPageable: false
+    }
 
     this.setNavSections = setNavSections.bind(this)
     this.getData = getData.bind(this)
-    this.handleArtistChange = handleArtistChange.bind(this)
+    this.checkArtistChange = checkArtistChange.bind(this)
     this.pageData = pageData.bind(this)
   }
 
   componentDidMount () {
-    this.request = axios.CancelToken.source()
-
-    this.setNavSections(this.params().artistName)
     this.getData()
+    this.setNavSections()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    this.handleArtistChange(prevProps)
+    this.checkArtistChange(prevProps)
+    this.setNavSections()
   }
 
   componentWillUnmount () {
@@ -35,10 +37,10 @@ export default class Show extends React.PureComponent {
 
   dataName = 'artist'
 
-  params = () => this.props.match.params
-
   contentData () {
-    const { artistName } = this.state
+    const { artist } = this.state
+
+    const artistName = artist.name
 
     const infoRef = React.createRef()
     const tracksRef = React.createRef()
@@ -47,8 +49,12 @@ export default class Show extends React.PureComponent {
 
     const refs = { infoRef, tracksRef, albumsRef, similarRef }
 
-    const segment = name => refs[`${name}Ref`]
-    const segmentTop = name => segment(name).current.offsetTop - 60
+    const segmentTop = name => {
+      const segment = name => refs[`${name}Ref`]
+
+      return segment(name).current.offsetTop - 60
+    }
+
     const scrollToTop = name => window.scrollTo(0, segmentTop(name))
 
     const leftColumnProps = { artistName, scrollToTop, segmentTop }

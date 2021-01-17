@@ -1,35 +1,37 @@
 import React from 'react'
+import { Ref } from 'semantic-ui-react'
 import Info from './show/Info'
 import Artists from './show/Artists'
 import Albums from './show/Albums'
 import Tracks from './show/Tracks'
-import axios from 'axios'
-import { Ref } from 'semantic-ui-react'
-import setNavSections from './functions/setNavSections'
-import handleTagChange from './functions/handleTagChange'
 import getData from './functions/getData'
+import setNavSections from './functions/setNavSections'
+import checkTagChange from './functions/checkTagChange'
 import pageData from './functions/pageData'
 
 export default class Show extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false }
+    this.state = {
+      isLoading: false,
+      isLoaded: false,
+      isPageable: false
+    }
 
-    this.setNavSections = setNavSections.bind(this)
-    this.handleTagChange = handleTagChange.bind(this)
     this.getData = getData.bind(this)
+    this.setNavSections = setNavSections.bind(this)
+    this.checkTagChange = checkTagChange.bind(this)
     this.pageData = pageData.bind(this)
   }
 
   componentDidMount () {
-    this.request = axios.CancelToken.source()
-
-    this.setNavSections(this.params().tagName)
     this.getData()
+    this.setNavSections()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    this.handleTagChange(prevProps)
+    this.checkTagChange(prevProps)
+    this.setNavSections()
   }
 
   componentWillUnmount () {
@@ -38,15 +40,17 @@ export default class Show extends React.PureComponent {
 
   dataName = 'tag'
 
-  params = () => this.props.match.params
+  setArtistImages = images => {
+    const { artistImages } = this.state
 
-  setArtistImages = artistImages => {
-    !this.state.artistImages && this.setState({ artistImages })
+    !artistImages && this.setState({ artistImages: images })
   }
 
   contentData () {
-    const { tagName, artistImages } = this.state
+    const { tag, artistImages } = this.state
     const { setArtistImages } = this
+
+    const tagName = tag.name
 
     const artistsRef = React.createRef()
     const albumsRef = React.createRef()
@@ -54,8 +58,11 @@ export default class Show extends React.PureComponent {
 
     const refs = { artistsRef, albumsRef, tracksRef }
 
-    const segment = name => refs[`${name}Ref`]
-    const segmentTop = name => segment(name).current.offsetTop - 60
+    const segmentTop = name => {
+      const segment = name => refs[`${name}Ref`]
+
+      return segment(name).current.offsetTop - 60
+    }
     const scrollToTop = name => window.scrollTo(0, segmentTop(name))
 
     const infoProps = { tagName, artistImages }

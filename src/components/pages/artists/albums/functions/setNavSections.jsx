@@ -1,6 +1,8 @@
 export default function setNavSections () {
   const { params } = this.props.match
 
+  const isAlbumPage = this.dataName === 'album'
+
   const album = this.state.data
   const artistName = album ? album.artist : params.artistName
   const albumTitle = album ? album.title : params.albumTitle
@@ -11,8 +13,6 @@ export default function setNavSections () {
   const artistPageLink = `#/artists/${artistNameEncoded}`
   const albumsPageLink = `#/artists/${artistNameEncoded}/albums`
   const albumPageLink = `#/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
-
-  const isAlbumPage = this.dataName === 'album'
 
   const navSections = () => {
     if (isAlbumPage) {

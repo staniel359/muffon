@@ -29,19 +29,19 @@ export default function getData (page) {
     const successState = { data, responseTotalPages, ...finishState }
 
     this.setState(successState)
-
-    scrollToTop()
   }
-
-  const scrollToTop = () => this.props.scrollToTop(this.dataName)
 
   const handleError = error => {
     const errorState = { error, ...finishState }
 
     !axios.isCancel(error) && this.setState(errorState)
-
-    scrollToTop()
   }
 
-  axios.get(url, extra).then(handleSuccess).catch(handleError)
+  const scrollToTop = () => {
+    const { scrollToTop } = this.props
+
+    scrollToTop(this.dataName)
+  }
+
+  axios.get(url, extra).then(handleSuccess).catch(handleError).then(scrollToTop)
 }

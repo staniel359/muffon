@@ -1,34 +1,36 @@
 import React from 'react'
-import axios from 'axios'
 import { Segment } from 'semantic-ui-react'
 import List from './albums/List'
 import setNavSections from './functions/setNavSections'
 import getData from './functions/getData'
-import handleTagChange from './functions/handleTagChange'
+import checkTagChange from './functions/checkTagChange'
 import pageData from './functions/pageData'
 import paginatedData from 'global/paginated/functions/paginatedData'
 
 export default class Albums extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false }
+    this.state = {
+      isLoading: false,
+      isLoaded: false,
+      isPageable: true
+    }
 
-    this.setNavSections = setNavSections.bind(this)
     this.getData = getData.bind(this)
-    this.handleTagChange = handleTagChange.bind(this)
+    this.setNavSections = setNavSections.bind(this)
+    this.checkTagChange = checkTagChange.bind(this)
     this.pageData = pageData.bind(this)
     this.paginatedData = paginatedData.bind(this)
   }
 
   componentDidMount () {
-    this.request = axios.CancelToken.source()
-
-    this.setNavSections(this.params().tagName)
     this.getData()
+    this.setNavSections()
   }
 
   componentDidUpdate (prevProps, prevState) {
-    this.handleTagChange(prevProps)
+    this.checkTagChange(prevProps)
+    this.setNavSections()
   }
 
   componentWillUnmount () {
@@ -41,8 +43,6 @@ export default class Albums extends React.PureComponent {
   clientPageLimit = 20
   responsePageLimit = 20
   dataList = (<List />)
-
-  params = () => this.props.match.params
 
   contentData () {
     const { isLoading } = this.state

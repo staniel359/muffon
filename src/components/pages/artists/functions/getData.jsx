@@ -1,68 +1,92 @@
 import axios from 'axios'
 
 export default function getData (page) {
+  const { isPageable } = this.state
+
+  this.request = axios.CancelToken.source()
+
+  const responsePage = page || 1
+  const pageableState = isPageable && { responsePage }
+
   const startState = {
     error: null,
-    responsePage: page || 1,
-    isLoading: true
+    isLoading: true,
+    ...pageableState
   }
 
   this.setState(startState)
 
-  const isArtistPage = this.dataName === 'artist'
-  const artistUrl = `/lastfm/artists/${this.params().artistName}`
-  const url = isArtistPage ? artistUrl : artistUrl + `/${this.dataName}`
+  const isPage = pageName => this.dataName === pageName
 
-  const limit = this.requestPageLimit
-  const params = { limit, page }
+  const url = () => {
+    const { artistName } = this.props.match.params
+
+    const baseUrl = `/lastfm/artists/${artistName}`
+
+    if (isPage('artist')) {
+      return baseUrl
+    } else {
+      return `${baseUrl}/${this.dataName}`
+    }
+  }
+
+  const params = { limit: this.requestPageLimit, page }
   const cancelToken = this.request.token
   const extra = { params, cancelToken }
-
-  const finishState = { isLoading: false, isLoaded: true }
 
   const handleSuccess = resp => {
     const { artist } = resp.data
 
-    const artistName = artist.name
+    const data = artist[this.dataName]
 
-    const data = isArtistPage ? {} : artist[this.dataName]
     const responseTotalPages = artist.total_pages
-    const topTrackCountState = this.dataName === 'tracks' && {
-      topTrackCount: topTrackCount(data)
+
+    const topTrackCount = () => {
+      if (data.length > 0) {
+        if (responsePage === 1) {
+          return data[0].listeners_count
+        } else {
+          return this.state.topTrackCount
+        }
+      }
     }
 
-    const successState = {
-      artistName,
-      data,
-      responseTotalPages,
-      ...topTrackCountState,
-      ...finishState
+    const trackPageState = isPage('tracks') && {
+      topTrackCount: topTrackCount()
     }
+
+    const pageableState = isPageable && {
+      responseTotalPages,
+      ...trackPageState
+    }
+
+    const defaultState = !isPage('artist') && {
+      data,
+      ...pageableState
+    }
+
+    const finishState = {
+      artist: { name: artist.name },
+      isLoaded: true,
+      isLoading: false
+    }
+
+    const successState = { ...defaultState, ...finishState }
 
     this.setState(successState)
-
-    this.setNavSections(artistName)
-
-    scrollToTop()
   }
 
-  const topTrackCount = data => {
-    const { topTrackCount } = this.state
+  const handleError = error => {
+    const errorState = { error, isLoading: false }
 
-    const pageTopTrackCount = page > 1 ? topTrackCount : data[0].listeners_count
-
-    return data.length > 0 ? pageTopTrackCount : 0
+    !axios.isCancel(error) && this.setState(errorState)
   }
 
   const scrollToTop = () => window.scrollTo(0, 0)
 
-  const handleError = error => {
-    const errorState = { error, ...finishState }
-
-    !axios.isCancel(error) && this.setState(errorState)
-
-    scrollToTop()
-  }
-
-  axios.get(url, extra).then(handleSuccess).catch(handleError)
+  axios
+    .get(url(), extra)
+    .then(handleSuccess)
+    .catch(handleError)
+    .then(scrollToTop)
 }

@@ -1,8 +1,5 @@
 import React from 'react'
-import axios from 'axios'
-import { Header } from 'semantic-ui-react'
 import List from '../tracks/List'
-import { Link } from 'react-router-dom'
 import getData from './functions/getData'
 import segmentData from './functions/segmentData'
 import paginatedData from 'global/paginated/functions/paginatedData'
@@ -10,7 +7,11 @@ import paginatedData from 'global/paginated/functions/paginatedData'
 export default class Tracks extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false }
+    this.state = {
+      isLoading: false,
+      isLoaded: false,
+      isPageable: true
+    }
 
     this.getData = getData.bind(this)
     this.segmentData = segmentData.bind(this)
@@ -18,8 +19,6 @@ export default class Tracks extends React.PureComponent {
   }
 
   componentDidMount () {
-    this.request = axios.CancelToken.source()
-
     this.getData()
   }
 
@@ -28,22 +27,11 @@ export default class Tracks extends React.PureComponent {
   }
 
   dataName = 'tracks'
+  headerText = 'Top tracks'
   itemsPerRow = 0
   clientPageLimit = 10
   responsePageLimit = 50
   dataList = (<List />)
-
-  tagNameEncoded = encodeURIComponent(this.props.tagName)
-
-  headerData () {
-    const tracksPageLink = `/tags/${this.tagNameEncoded}/tracks`
-
-    return (
-      <Header as="h3">
-        <Link to={tracksPageLink}>Top tracks</Link>
-      </Header>
-    )
-  }
 
   contentData = () => this.paginatedData()
 

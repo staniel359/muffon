@@ -8,7 +8,8 @@ export default function paginatedData () {
     responseTotalPages,
     responsePage,
     isLoading,
-    topTrackCount
+    topTrackCount,
+    artist
   } = this.state
   const { hideSearch } = this.props
   const {
@@ -19,7 +20,7 @@ export default function paginatedData () {
     responsePageLimit
   } = this
 
-  const artistName = this.state.artistName || this.props.artistName
+  const artistName = artist ? artist.name : this.props.artistName
   const scrollToTop = () => {
     const { scrollToTop } = this.props
 

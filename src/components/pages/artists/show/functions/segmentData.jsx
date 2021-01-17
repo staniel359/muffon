@@ -1,30 +1,63 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Segment, Header } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function segmentData () {
-  const { isLoading, isLoaded, data, error } = this.state
+  const headerContentData = () => {
+    const { artistName } = this.props
 
-  const headerData = this.dataName !== 'info' && (
-    <Segment content={this.headerData()} />
+    const artistNameEncoded = encodeURIComponent(artistName)
+    const pageLink = `/artists/${artistNameEncoded}/${this.dataName}`
+
+    return (
+      <Header as="h3">
+        <Link to={pageLink}>{this.headerText}</Link>
+      </Header>
+    )
+  }
+
+  const headerData = this.headerText && (
+    <Segment content={headerContentData()} />
   )
 
-  const contentData = data && this.contentData()
+  const errorData = () => {
+    const { error } = this.state
 
-  const handleRefresh = this.getData
-  const errorDataProps = { error, handleRefresh }
-  const errorData = error && <ErrorMessage {...errorDataProps} />
+    const handleRefresh = () => this.getData()
+    const errorDataProps = { error, handleRefresh }
 
-  const segmentData = isLoaded && (contentData || errorData)
+    return <ErrorMessage {...errorDataProps} />
+  }
+
+  const segmentContentData = () => {
+    const { isLoaded, error } = this.state
+
+    if (isLoaded) {
+      return this.contentData()
+    } else {
+      if (error) {
+        return errorData()
+      }
+    }
+  }
+
+  const segmentData = () => {
+    const { isLoading } = this.state
+
+    return (
+      <Segment
+        className="artistPageSegmentContent"
+        loading={isLoading}
+        content={segmentContentData()}
+      />
+    )
+  }
 
   return (
     <Segment.Group className="artistPageSegment">
       {headerData}
-      <Segment
-        className="artistPageSegmentContent"
-        loading={isLoading}
-        content={segmentData}
-      />
+      {segmentData()}
     </Segment.Group>
   )
 }

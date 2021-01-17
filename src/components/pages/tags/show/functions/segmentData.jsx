@@ -1,37 +1,67 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Segment, Header } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function segmentData () {
-  const { error, isLoading, isLoaded, data } = this.state
+  const headerContentData = () => {
+    const { tagName } = this.props
 
-  const isInfoSegment = this.dataName === 'info'
-  const headerData = !isInfoSegment && <Segment content={this.headerData()} />
+    const tagNameEncoded = encodeURIComponent(tagName)
+    const pageLink = `/tags/${tagNameEncoded}/${this.dataName}`
 
-  const segmentClassName = () => {
-    if (isInfoSegment && !error) {
-      return 'tagPageSegmentMain'
+    return (
+      <Header as="h3">
+        <Link to={pageLink}>{this.headerText}</Link>
+      </Header>
+    )
+  }
+
+  const headerData = this.headerText && (
+    <Segment content={headerContentData()} />
+  )
+
+  const errorData = () => {
+    const { error } = this.state
+
+    const handleRefresh = () => this.getData()
+    const errorDataProps = { error, handleRefresh }
+
+    return <ErrorMessage {...errorDataProps} />
+  }
+
+  const segmentContentData = () => {
+    const { isLoaded, error } = this.state
+
+    if (isLoaded) {
+      return this.contentData()
     } else {
-      return 'tagPageSegment'
+      if (error) {
+        return errorData()
+      }
     }
   }
 
-  const contentData = data && this.contentData()
+  const segmentData = () => {
+    const { isLoading, error } = this.state
 
-  const handleRefresh = this.getData
-  const errorDataProps = { error, handleRefresh }
-  const errorData = error && <ErrorMessage {...errorDataProps} />
+    const isInfoSegment = this.dataName === 'info'
+    const isMain = isInfoSegment && !error
+    const classNameData = `tagPageSegment${isMain ? 'Main' : ''}`
 
-  const segmentData = isLoaded && (contentData || errorData)
+    return (
+      <Segment
+        className={classNameData}
+        content={segmentContentData()}
+        loading={isLoading}
+      />
+    )
+  }
 
   return (
     <Segment.Group className="tagPageSegmentWrap">
       {headerData}
-      <Segment
-        className={segmentClassName()}
-        content={segmentData}
-        loading={isLoading}
-      />
+      {segmentData()}
     </Segment.Group>
   )
 }

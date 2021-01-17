@@ -3,25 +3,48 @@ import { Tab, Segment, Ref } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function tabData () {
-  const { data, error, isLoading } = this.state
   const { active } = this.props
 
-  const contentData = data && this.contentData()
+  const isLoading = active && this.state.isLoading
 
-  const handleRefresh = this.getData
-  const errorDataProps = { error, handleRefresh }
-  const errorData = error && <ErrorMessage {...errorDataProps} />
+  const errorData = () => {
+    const { error } = this.state
 
-  const tabData = contentData || errorData || <React.Fragment />
-  const refData = <Ref innerRef={this.tabRef}>{tabData}</Ref>
+    const handleRefresh = () => this.getData()
+    const errorDataProps = { error, handleRefresh }
+
+    return <ErrorMessage {...errorDataProps} />
+  }
+
+  const contentData = () => {
+    const { data, error } = this.state
+
+    if (data) {
+      return this.contentData()
+    } else {
+      if (error) {
+        return errorData()
+      } else {
+        return <React.Fragment />
+      }
+    }
+  }
+
+  const refData = <Ref innerRef={this.tabRef}>{contentData()}</Ref>
+
+  const segmentData = (
+    <Segment
+      className="searchResultsTabContentWrap"
+      loading={isLoading}
+      content={refData}
+    />
+  )
 
   return (
-    <Tab.Pane className="searchResultsTab" {...{ active }}>
-      <Segment
-        className="searchResultsTabContentWrap"
-        loading={active && isLoading}
-        content={refData}
-      />
-    </Tab.Pane>
+    <Tab.Pane
+      className="searchResultsTab"
+      content={segmentData}
+      {...{ active }}
+    />
   )
 }

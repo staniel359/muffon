@@ -1,4 +1,12 @@
-export default function setNavSections (artistName, trackTitle) {
+export default function setNavSections () {
+  const { params } = this.props.match
+  const { track } = this.state
+
+  const isTrackPage = this.dataName === 'track'
+
+  const artistName = track ? track.artist : params.artistName
+  const trackTitle = track ? track.title : params.trackTitle
+
   const artistNameEncoded = encodeURIComponent(artistName)
   const trackTitleEncoded = encodeURIComponent(trackTitle)
 
@@ -6,18 +14,24 @@ export default function setNavSections (artistName, trackTitle) {
   const tracksPageLink = `#/artists/${artistNameEncoded}/tracks`
   const trackPageLink = `#/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
 
-  const isTrackPage = this.dataName === 'track'
+  const navSections = () => {
+    if (isTrackPage) {
+      return [
+        { content: 'Artists' },
+        { content: decodeURIComponent(artistName), href: artistPageLink },
+        { content: 'Tracks', href: tracksPageLink },
+        { content: decodeURIComponent(trackTitle), active: true }
+      ]
+    } else {
+      return [
+        { content: 'Artists' },
+        { content: decodeURIComponent(artistName), href: artistPageLink },
+        { content: 'Tracks', href: tracksPageLink },
+        { content: decodeURIComponent(trackTitle), href: trackPageLink },
+        { content: this.navSectionData, active: true }
+      ]
+    }
+  }
 
-  const navSections = [
-    { content: 'Artists' },
-    { content: decodeURIComponent(artistName), href: artistPageLink },
-    { content: 'Tracks', href: tracksPageLink },
-    {
-      content: decodeURIComponent(trackTitle),
-      ...(isTrackPage ? { active: true } : { href: trackPageLink })
-    },
-    !isTrackPage && { content: this.navSectionData, active: true }
-  ].filter(e => e)
-
-  this.props.setNavSections(navSections)
+  this.props.setNavSections(navSections())
 }

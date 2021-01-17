@@ -1,17 +1,28 @@
-export default function setNavSections (artistName) {
-  const artistNameEncoded = encodeURIComponent(artistName)
-  const artistPageLink = `#/artists/${artistNameEncoded}`
+export default function setNavSections () {
+  const { artist } = this.state
+  const { params } = this.props.match
 
   const isArtistPage = this.dataName === 'artist'
 
-  const navSections = [
-    { content: 'Artists' },
-    {
-      content: decodeURIComponent(artistName),
-      ...(isArtistPage ? { active: true } : { href: artistPageLink })
-    },
-    !isArtistPage && { content: this.navSectionData, active: true }
-  ].filter(e => e)
+  const artistName = artist ? artist.name : params.artistName
 
-  this.props.setNavSections(navSections)
+  const artistNameEncoded = encodeURIComponent(artistName)
+  const artistPageLink = `#/artists/${artistNameEncoded}`
+
+  const navSections = () => {
+    if (isArtistPage) {
+      return [
+        { content: 'Artists' },
+        { content: decodeURIComponent(artistName), active: true }
+      ]
+    } else {
+      return [
+        { content: 'Artists' },
+        { content: decodeURIComponent(artistName), href: artistPageLink },
+        { content: this.navSectionData, active: true }
+      ]
+    }
+  }
+
+  this.props.setNavSections(navSections())
 }

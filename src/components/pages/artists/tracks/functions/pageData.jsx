@@ -3,20 +3,30 @@ import LoaderDimmer from 'global/LoaderDimmer'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function pageData () {
-  const { isLoaded, data, error } = this.state
+  const errorData = () => {
+    const { error } = this.state
 
-  const loaderData = !isLoaded && <LoaderDimmer />
+    const handleRefresh = () => this.getData()
+    const errorDataProps = { error, handleRefresh }
 
-  const contentData = data && this.contentData()
-
-  const handleRefresh = () => {
-    this.setState({ isLoaded: false })
-    this.getData()
+    return <ErrorMessage {...errorDataProps} />
   }
-  const errorDataProps = { error, handleRefresh }
-  const errorData = error && <ErrorMessage {...errorDataProps} />
 
-  const pageData = loaderData || contentData || errorData
+  const pageData = () => {
+    const { isLoaded, isLoading, error } = this.state
 
-  return pageData
+    if (isLoaded) {
+      return this.contentData()
+    } else {
+      if (isLoading) {
+        return <LoaderDimmer />
+      } else {
+        if (error) {
+          return errorData()
+        }
+      }
+    }
+  }
+
+  return <React.Fragment>{pageData()}</React.Fragment>
 }

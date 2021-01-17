@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import Data from './info/Data'
 import getData from './functions/getData'
 import segmentData from './functions/segmentData'
@@ -7,15 +6,17 @@ import segmentData from './functions/segmentData'
 export default class Info extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { isLoading: false }
+    this.state = {
+      isLoading: false,
+      isLoaded: false,
+      isPageable: false
+    }
 
     this.getData = getData.bind(this)
     this.segmentData = segmentData.bind(this)
   }
 
   componentDidMount () {
-    this.request = axios.CancelToken.source()
-
     this.getData()
   }
 
@@ -24,8 +25,6 @@ export default class Info extends React.PureComponent {
   }
 
   dataName = 'info'
-
-  tagNameEncoded = encodeURIComponent(this.props.tagName)
 
   contentData () {
     const { artistImages } = this.props

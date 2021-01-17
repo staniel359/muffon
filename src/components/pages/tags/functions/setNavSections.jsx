@@ -1,17 +1,28 @@
-export default function setNavSections (tagName) {
-  const tagNameEncoded = encodeURIComponent(tagName)
-  const tagPageLink = `#/tags/${tagNameEncoded}`
+export default function setNavSections () {
+  const { tag } = this.state
+  const { params } = this.props.match
 
   const isTagPage = this.dataName === 'tag'
 
-  const navSections = [
-    { content: 'Tags' },
-    {
-      content: decodeURIComponent(tagName),
-      ...(isTagPage ? { active: true } : { href: tagPageLink })
-    },
-    !isTagPage && { content: this.navSectionData, active: true }
-  ].filter(e => e)
+  const tagName = tag ? tag.name : params.tagName
 
-  this.props.setNavSections(navSections)
+  const tagNameEncoded = encodeURIComponent(tagName)
+  const tagPageLink = `#/tags/${tagNameEncoded}`
+
+  const navSections = () => {
+    if (isTagPage) {
+      return [
+        { content: 'Tags' },
+        { content: decodeURIComponent(tagName), active: true }
+      ]
+    } else {
+      return [
+        { content: 'Tags' },
+        { content: decodeURIComponent(tagName), href: tagPageLink },
+        { content: this.navSectionData, active: true }
+      ]
+    }
+  }
+
+  this.props.setNavSections(navSections())
 }
