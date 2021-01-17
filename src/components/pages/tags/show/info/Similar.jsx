@@ -30,7 +30,13 @@ export default class Similar extends React.PureComponent {
     const { isLoading, data } = this.state
 
     const loaderData = isLoading && (
-      <Loader active inverted inline size="mini" />
+      <Loader
+        active
+        inverted
+        inline
+        size="small"
+        className="tagSimilarLoader"
+      />
     )
 
     const tagsData = data && <Tags tags={data} />

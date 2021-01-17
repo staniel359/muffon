@@ -41,7 +41,9 @@ export default function getData (page) {
 
     const responseTotalPages = tag.total_pages
 
-    const pageableState = isPageable && { data, responseTotalPages }
+    const pageableState = isPageable && { responseTotalPages }
+
+    const defaultState = { data, ...pageableState }
 
     const finishState = {
       tag: { name: tag.name },
@@ -49,7 +51,7 @@ export default function getData (page) {
       isLoading: false
     }
 
-    const successState = { ...pageableState, ...finishState }
+    const successState = { ...defaultState, ...finishState }
 
     this.setState(successState)
   }

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Image, Icon, Header, Label, Loader } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
+import { Link } from 'react-router-dom'
+import { Image, Icon, Header, Label, Loader } from 'semantic-ui-react'
 import Similar from './Similar'
 
 export default class Data extends React.PureComponent {
@@ -46,9 +47,13 @@ export default class Data extends React.PureComponent {
       </div>
     )
 
-    const descriptionData = (
+    const tagNameEncoded = encodeURIComponent(tag.name)
+    const descriptionPageLink = `/tags/${tagNameEncoded}/description`
+    const descriptionData = tag.description && (
       <div className="tagPageDescription">
-        {tag.description || 'No description.'}
+        {tag.description}
+        {'\u00A0'}
+        <Link to={descriptionPageLink}>Read more...</Link>
       </div>
     )
 

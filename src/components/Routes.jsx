@@ -17,6 +17,7 @@ import ArtistDescription from './pages/artists/Description'
 import ArtistTags from './pages/artists/Tags'
 import ArtistImages from './pages/artists/Images'
 import TagShow from './pages/tags/Show'
+import TagDescription from './pages/tags/Description'
 import TagArtists from './pages/tags/Artists'
 import TagAlbums from './pages/tags/Albums'
 import TagTracks from './pages/tags/Tracks'
@@ -46,6 +47,7 @@ export default class Routes extends React.PureComponent {
     const artistTags = props => <ArtistTags {...pageProps(props)} />
     const artistImages = props => <ArtistImages {...pageProps(props)} />
     const tagShow = props => <TagShow {...pageProps(props)} />
+    const tagDescription = props => <TagDescription {...pageProps(props)} />
     const tagArtists = props => <TagArtists {...pageProps(props)} />
     const tagAlbums = props => <TagAlbums {...pageProps(props)} />
     const tagTracks = props => <TagTracks {...pageProps(props)} />
@@ -67,6 +69,7 @@ export default class Routes extends React.PureComponent {
       ['/artists/:artistName/tags', artistTags],
       ['/artists/:artistName/images', artistImages],
       ['/tags/:tagName', tagShow],
+      ['/tags/:tagName/description', tagDescription],
       ['/tags/:tagName/artists', tagArtists],
       ['/tags/:tagName/albums', tagAlbums],
       ['/tags/:tagName/tracks', tagTracks]
