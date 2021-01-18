@@ -1,8 +1,15 @@
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import Album from './albums/Album'
+import albumRequestData from './functions/albumRequestData'
 
 export default class Albums extends React.PureComponent {
+  constructor (props) {
+    super(props)
+    this.state = {}
+
+    this.albumRequestData = albumRequestData.bind(this)
+  }
+
   textData () {
     const { selectedAlbum } = this.props
 
@@ -16,30 +23,46 @@ export default class Albums extends React.PureComponent {
   }
 
   albumData = (album, index) => {
-    const {
-      selectedAlbum,
-      isOnlyTitle,
-      setSelectedAlbum,
-      selectedSourceId,
-      selectedTypeId
-    } = this.props
+    const { selectedAlbum } = this.props
 
     const isSelected = !!selectedAlbum && index === selectedAlbum.index
-    const sourceId = selectedSourceId
-    const typeId = selectedTypeId
 
-    const albumProps = {
-      key: index,
-      isSelected,
-      isOnlyTitle,
-      album,
-      setSelectedAlbum,
-      index,
-      sourceId,
-      typeId
+    const imageData = () => {
+      const { images } = album
+
+      const image = images && (images.extrasmall || images.original)
+
+      return {
+        className: 'dropdownItemImage',
+        rounded: true,
+        src: image
+      }
     }
 
-    return <Album {...albumProps} />
+    const fullTitle = () => {
+      const { isOnlyTitle } = this.props
+      const { artist, title } = album
+
+      return isOnlyTitle ? title : `${artist} - ${title}`
+    }
+
+    const handleClick = () => {
+      const { setSelectedAlbum } = this.props
+
+      const requestData = this.albumRequestData({ album })
+
+      setSelectedAlbum({ index, fullTitle: fullTitle(), requestData })
+    }
+
+    return {
+      key: index,
+      className: 'dropdownItem',
+      active: isSelected,
+      selected: isSelected,
+      image: imageData(),
+      text: fullTitle(),
+      onClick: handleClick
+    }
   }
 
   render () {

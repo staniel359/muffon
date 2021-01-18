@@ -1,8 +1,8 @@
-export default function requestData () {
-  const { album, sourceId, typeId } = this.props
+export default function albumRequestData ({ album }) {
+  const { selectedSourceId, selectedTypeId } = this.props
 
   const albumData = () => {
-    switch (sourceId) {
+    switch (selectedSourceId) {
       case 'lastfm':
         return {
           artist: album.artist,
@@ -23,7 +23,11 @@ export default function requestData () {
     }
   }
 
-  const typeIdData = typeId && { typeId }
+  const selectedTypeIdData = selectedTypeId && { typeId: selectedTypeId }
 
-  return { sourceId, ...typeIdData, ...albumData() }
+  return {
+    sourceId: selectedSourceId,
+    ...selectedTypeIdData,
+    ...albumData()
+  }
 }

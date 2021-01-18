@@ -1,6 +1,5 @@
 import React from 'react'
 import { Dropdown } from 'semantic-ui-react'
-import Type from './types/Type'
 
 export default class Types extends React.PureComponent {
   textData () {
@@ -21,15 +20,16 @@ export default class Types extends React.PureComponent {
     const typeData = data[type.id]
     const isDisabled = !typeData || typeData.length === 0
     const isSelected = !!selectedType && selectedType.id === type.id
-    const typeProps = {
-      key: type.id,
-      type,
-      isDisabled,
-      isSelected,
-      setSelectedType
-    }
+    const handleClick = () => setSelectedType(type)
 
-    return <Type {...typeProps} />
+    return {
+      key: type.id,
+      text: type.name,
+      disabled: isDisabled,
+      active: isSelected,
+      selected: isSelected,
+      onClick: handleClick
+    }
   }
 
   render () {

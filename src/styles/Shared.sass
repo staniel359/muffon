@@ -131,6 +131,10 @@ $border: 1px solid $muffonGray
 .whiteSpacePreWrap
   white-space: pre-wrap
 
+.ui.selection.dropdown .menu > .item.dropdownItem
+  @extend .flex, .alignItemsCenter
+  padding: 10px !important
+
 .dropdownItemIcon
   @extend .padding0
   width: 20px
@@ -138,3 +142,11 @@ $border: 1px solid $muffonGray
   background: transparent !important
 .dropdownItemIcon.faded
   pointer-events: none !important
+
+.dropdownItemImage
+  @extend .margin0
+  width: 30px !important
+  height: 30px !important
+  max-height: 30px !important
+  margin-right: 10px !important
+  border: $border !important
