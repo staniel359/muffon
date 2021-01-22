@@ -34,7 +34,7 @@ export default class Left extends React.PureComponent {
       <Image
         rounded
         wrapped
-        className="imageWrapBordered clickable"
+        className="albumPageAlbumCover"
         src={album.images.medium}
         onClick={showDimmer}
       />

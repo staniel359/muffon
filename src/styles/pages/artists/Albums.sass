@@ -12,6 +12,11 @@ $discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
   @extend .fixed
   width: 210px
 
+.albumPageAlbumCover
+  @extend .imageWrapBordered, .clickable
+  img
+    object-fit: contain
+
 .albumPageDimmer
   z-index: 3000 !important
   padding: 2em !important

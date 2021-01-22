@@ -150,3 +150,9 @@ $border: 1px solid $muffonGray
   max-height: 30px !important
   margin-right: 10px !important
   border: $border !important
+  img
+    @extend .w100, .h100
+    object-fit: contain
+
+.dropdownItem .text
+  width: calc(100% - 40px)

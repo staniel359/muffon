@@ -27,16 +27,11 @@ export default class Albums extends React.PureComponent {
 
     const isSelected = !!selectedAlbum && index === selectedAlbum.index
 
-    const imageData = () => {
-      const { images } = album
-
-      const image = images && (images.extrasmall || images.original)
-
-      return {
-        className: 'dropdownItemImage',
-        rounded: true,
-        src: image
-      }
+    const imageData = {
+      className: 'dropdownItemImage',
+      src: album.images.extrasmall,
+      rounded: true,
+      wrapped: true
     }
 
     const fullTitle = () => {
@@ -59,7 +54,7 @@ export default class Albums extends React.PureComponent {
       className: 'dropdownItem',
       active: isSelected,
       selected: isSelected,
-      image: imageData(),
+      image: imageData,
       text: fullTitle(),
       onClick: handleClick
     }
