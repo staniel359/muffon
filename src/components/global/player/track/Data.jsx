@@ -13,7 +13,7 @@ export default class Data extends React.PureComponent {
   titleData () {
     const { track } = this.props
 
-    const artistNameEncoded = encodeURIComponent(track.artist)
+    const artistNameEncoded = encodeURIComponent(track.artist.name)
     const trackTitleEncoded = encodeURIComponent(track.title)
     const trackPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
 
@@ -37,13 +37,13 @@ export default class Data extends React.PureComponent {
   artistData () {
     const { track } = this.props
 
-    const artistNameEncoded = encodeURIComponent(track.artist)
+    const artistNameEncoded = encodeURIComponent(track.artist.name)
     const artistPageLink = `/artists/${artistNameEncoded}`
 
     return (
       <List.Description>
         <Link to={artistPageLink} onClick={this.handleLinkClick}>
-          {track.artist}
+          {track.artist.name}
         </Link>
       </List.Description>
     )

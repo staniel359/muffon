@@ -2,7 +2,7 @@ export default function albumUrl ({ album, dataName }) {
   const baseUrl = () => {
     switch (album.sourceId) {
       case 'lastfm':
-        return `/${album.sourceId}/artists/${album.artist}/albums/${album.title}`
+        return `/${album.sourceId}/artists/${album.artist.name}/albums/${album.title}`
       case 'vk':
         return (
           `/${album.sourceId}/albums/${album.id}` +

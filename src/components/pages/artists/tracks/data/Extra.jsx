@@ -8,7 +8,7 @@ export default class Extra extends React.PureComponent {
   tagsData () {
     const { track } = this.props
 
-    const artistNameEncoded = encodeURIComponent(track.artist)
+    const artistNameEncoded = encodeURIComponent(track.artist.name)
     const trackTitleEncoded = encodeURIComponent(track.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}/tags`
     const tagsProps = { tags: track.tags, viewMore: true, link: tagsPageLink }
@@ -33,7 +33,7 @@ export default class Extra extends React.PureComponent {
   descriptionData () {
     const { track } = this.props
 
-    const artistNameEncoded = encodeURIComponent(track.artist)
+    const artistNameEncoded = encodeURIComponent(track.artist.name)
     const trackTitleEncoded = encodeURIComponent(track.title)
     const descriptionPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}/description`
 

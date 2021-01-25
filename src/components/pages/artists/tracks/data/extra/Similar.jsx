@@ -34,7 +34,7 @@ export default class Tracks extends React.PureComponent {
   responsePageLimit = 5
   dataList = (<List />)
 
-  artistNameEncoded = encodeURIComponent(this.props.track.artist)
+  artistNameEncoded = encodeURIComponent(this.props.track.artist.name)
   trackTitleEncoded = encodeURIComponent(this.props.track.title)
 
   contentData = () => this.paginatedData()

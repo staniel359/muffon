@@ -62,11 +62,11 @@ export default class Left extends React.PureComponent {
       />
     )
 
-    const artistNameEncoded = encodeURIComponent(album.artist)
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
     const artistPageLink = `/artists/${artistNameEncoded}`
     const artistNameData = (
       <Header as="h4" textAlign="center" className="transitionText">
-        <Link to={artistPageLink}>{album.artist}</Link>
+        <Link to={artistPageLink}>{album.artist.name}</Link>
       </Header>
     )
 

@@ -9,7 +9,7 @@ export default function getData ({ sourceId, typeId = 'albums' }) {
 
   const url = `/${sourceId}/search/${typeId}`
 
-  const query = `${artist} ${title}`
+  const query = `${artist.name} ${title}`
 
   const extra = {
     params: { query, limit: 20 },

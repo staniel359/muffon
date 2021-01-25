@@ -8,7 +8,7 @@ export default class TracksList extends React.PureComponent {
     const { tracks, artistName, topTrackCount } = this.props
 
     const trackData = track => {
-      track.artist = artistName
+      track.artist = { name: artistName }
 
       const trackProps = { track, topTrackCount, key: uuid() }
 

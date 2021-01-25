@@ -31,7 +31,7 @@ export default class Variant extends React.PureComponent {
       <List.Content className="playerPanelTrackVariantContent">
         <div>
           <List.Header content={variant.title} />
-          <List.Description content={variant.artist} />
+          <List.Description content={variant.artist.name} />
         </div>
         <div className="playerPanelTrackVariantLength">
           {formatSeconds(variant.length)}

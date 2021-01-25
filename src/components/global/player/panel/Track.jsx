@@ -29,7 +29,7 @@ export default class Track extends React.PureComponent {
         <ArtistImage
           circular
           size="extrasmall"
-          artistName={currentTrack.artist}
+          artistName={currentTrack.artist.name}
         />
       </div>
     )
@@ -38,7 +38,7 @@ export default class Track extends React.PureComponent {
   trackTitleData () {
     const { currentTrack } = this.props
 
-    const artistNameEncoded = encodeURIComponent(currentTrack.artist)
+    const artistNameEncoded = encodeURIComponent(currentTrack.artist.name)
     const trackTitleEncoded = encodeURIComponent(currentTrack.title)
     const trackLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}`
 
@@ -54,13 +54,13 @@ export default class Track extends React.PureComponent {
   artistNameData () {
     const { currentTrack } = this.props
 
-    const artistNameEncoded = encodeURIComponent(currentTrack.artist)
+    const artistNameEncoded = encodeURIComponent(currentTrack.artist.name)
     const artistLink = `/artists/${artistNameEncoded}`
 
     return (
       <Ticker key={uuid()}>
         <Item.Description>
-          <Link to={artistLink}>{currentTrack.artist}</Link>
+          <Link to={artistLink}>{currentTrack.artist.name}</Link>
         </Item.Description>
       </Ticker>
     )

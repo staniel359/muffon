@@ -24,7 +24,7 @@ export default class Title extends React.PureComponent {
             if (currentTrack) {
               const { artist, title } = currentTrack
 
-              return `${audioStatusIcon()} ${artist} - ${title} | muffon`
+              return `${audioStatusIcon()} ${artist.name} - ${title} | muffon`
             } else {
               return 'muffon'
             }

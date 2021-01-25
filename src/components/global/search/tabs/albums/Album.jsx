@@ -13,7 +13,7 @@ export default class Album extends React.PureComponent {
     const { album, hideSearch } = this.props
     const { isArtistHovered } = this.state
 
-    const artistName = album.artist
+    const artistName = album.artist.name
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistPageLink = `/artists/${artistNameEncoded}`
 

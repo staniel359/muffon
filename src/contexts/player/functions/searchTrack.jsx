@@ -5,7 +5,7 @@ export default function searchTrack (track) {
 
   const url = '/vk/search/tracks'
 
-  const query = `${track.artist} ${track.title}`
+  const query = `${track.artist.name} ${track.title}`
   const params = { query }
 
   const cancelToken = this.request.token

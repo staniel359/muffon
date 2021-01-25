@@ -10,11 +10,11 @@ export default class Right extends React.PureComponent {
 
     const albumTitleData = <Header as="h2" content={album.title} />
 
-    const artistNameEncoded = encodeURIComponent(album.artist)
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
     const artistPageLink = `/artists/${artistNameEncoded}`
     const artistNameData = (
       <Header as="h3">
-        <Link to={artistPageLink}>{album.artist}</Link>
+        <Link to={artistPageLink}>{album.artist.name}</Link>
       </Header>
     )
 
@@ -39,7 +39,7 @@ export default class Right extends React.PureComponent {
   tagsData () {
     const { album, requestData } = this.props
 
-    const artistNameEncoded = encodeURIComponent(album.artist)
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
     const albumTitleEncoded = encodeURIComponent(album.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/tags`
     const tagsPageLinkData = { pathname: tagsPageLink, requestData }
@@ -80,7 +80,7 @@ export default class Right extends React.PureComponent {
   descriptionData () {
     const { album, requestData } = this.props
 
-    const artistNameEncoded = encodeURIComponent(album.artist)
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
     const albumTitleEncoded = encodeURIComponent(album.title)
     const descriptionPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}/description`
     const descriptionPageLinkData = {

@@ -4,7 +4,7 @@ export default function setNavSections () {
   const isAlbumPage = this.dataName === 'album'
 
   const album = this.state.data
-  const artistName = album ? album.artist : params.artistName
+  const artistName = album ? album.artist.name : params.artistName
   const albumTitle = album ? album.title : params.albumTitle
 
   const artistNameEncoded = encodeURIComponent(artistName)

@@ -8,7 +8,7 @@ export default class TracksList extends React.PureComponent {
     const { currentAlbum, queue } = this.props
 
     const trackData = (track, index) => {
-      const isWithArtist = track.artist !== currentAlbum.artist
+      const isWithArtist = track.artist.name !== currentAlbum.artist.name
 
       const trackProps = { key: uuid(), track, index, isWithArtist }
 

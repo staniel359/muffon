@@ -43,7 +43,7 @@ export default class QueuePanel extends React.PureComponent {
   albumTitleData () {
     const { currentAlbum } = this.props
 
-    const artistNameEncoded = encodeURIComponent(currentAlbum.artist)
+    const artistNameEncoded = encodeURIComponent(currentAlbum.artist.name)
     const albumTitleEncoded = encodeURIComponent(currentAlbum.title)
     const albumLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
@@ -59,13 +59,13 @@ export default class QueuePanel extends React.PureComponent {
   artistNameData () {
     const { currentAlbum } = this.props
 
-    const artistNameEncoded = encodeURIComponent(currentAlbum.artist)
+    const artistNameEncoded = encodeURIComponent(currentAlbum.artist.name)
     const artistLink = `/artists/${artistNameEncoded}`
 
     return (
       <Ticker key={uuid()}>
         <Item.Description>
-          <Link to={artistLink}>{currentAlbum.artist}</Link>
+          <Link to={artistLink}>{currentAlbum.artist.name}</Link>
         </Item.Description>
       </Ticker>
     )

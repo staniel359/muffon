@@ -5,7 +5,7 @@ export default function getData () {
 
   const initialData = {
     sourceId: 'lastfm',
-    artist: artistName,
+    artist: { name: artistName },
     title: albumTitle
   }
 

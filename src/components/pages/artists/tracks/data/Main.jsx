@@ -14,13 +14,13 @@ export default class Main extends React.PureComponent {
 
     const trackTitleData = <Header as="h3" content={track.title} />
 
-    const artistName = track.artist
+    const artistName = track.artist.name
     const artistNameEncoded = encodeURIComponent(artistName)
     const artistPageLink = `/artists/${artistNameEncoded}`
     const artistPageLinkData = <Link to={artistPageLink}>{artistName}</Link>
     const artistNameData = <Header as="h4" content={artistPageLinkData} />
 
-    const albumTitle = track.album
+    const albumTitle = track.album.title
     const albumTitleEncoded = encodeURIComponent(albumTitle)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
     const albumTitleData = <Link to={albumPageLink}>{albumTitle}</Link>

@@ -16,7 +16,7 @@ export default class TracksList extends React.PureComponent {
     const trackData = (track, index) => {
       track.artist ||= album.artist
 
-      const isWithArtist = track.artist !== album.artist
+      const isWithArtist = track.artist.name !== album.artist.name
 
       const trackProps = {
         key: uuid(),

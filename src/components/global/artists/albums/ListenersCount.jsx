@@ -32,7 +32,7 @@ export default class ListenersCount extends React.PureComponent {
     const extra = { cancelToken }
 
     const handleSuccess = resp => {
-      const listenersCount = resp.data.listeners_count
+      const listenersCount = resp.data.album.listeners_count
 
       const successState = { listenersCount, isLoading: false }
 

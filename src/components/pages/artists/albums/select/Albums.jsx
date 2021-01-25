@@ -38,7 +38,7 @@ export default class Albums extends React.PureComponent {
       const { isOnlyTitle } = this.props
       const { artist, title } = album
 
-      return isOnlyTitle ? title : `${artist} - ${title}`
+      return isOnlyTitle ? title : `${artist.name} - ${title}`
     }
 
     const handleClick = () => {

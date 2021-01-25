@@ -4,7 +4,7 @@ export default function setNavSections () {
 
   const isTrackPage = this.dataName === 'track'
 
-  const artistName = track ? track.artist : params.artistName
+  const artistName = track ? track.artist.name : params.artistName
   const trackTitle = track ? track.title : params.trackTitle
 
   const artistNameEncoded = encodeURIComponent(artistName)
