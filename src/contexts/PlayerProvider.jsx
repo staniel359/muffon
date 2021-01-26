@@ -178,9 +178,12 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   setAudio = () => {
-    const { link } = this.state.currentTrack.audio
+    const { link, path } = this.state.currentTrack.audio
 
-    this.audio().src = link
+    const pathLink = path && `http://localhost:3001/${path}`
+    const src = link || pathLink || ''
+
+    this.audio().src = src
     this.audio().load()
 
     this.setState({

@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuid } from 'uuid'
 import { Dropdown } from 'semantic-ui-react'
 import Source from './sources/Source'
 
@@ -7,7 +8,9 @@ export default class Sources extends React.PureComponent {
     const { selectedSource } = this.props
 
     if (selectedSource) {
-      return { className: `${selectedSource.id} ${selectedSource.id}Label` }
+      const classNameData = `${selectedSource.id} ${selectedSource.id}Label`
+
+      return { className: classNameData }
     } else {
       return { name: 'dot circle' }
     }
@@ -20,9 +23,33 @@ export default class Sources extends React.PureComponent {
   }
 
   sourcesData () {
-    const { sources } = this.props
+    const header = text => {
+      return <Dropdown.Header key={uuid()} content={text} />
+    }
 
-    return sources.map(this.sourceData)
+    const sourcesWithStreamable = bool => {
+      const { sources } = this.props
+
+      return sources.filter(s => s.streamable === bool).map(this.sourceData)
+    }
+
+    const streamableHeader = header('Streamable')
+    const streamableSources = sourcesWithStreamable(true)
+
+    const divider = <Dropdown.Divider key={uuid()} />
+
+    const otherHeader = header('Other')
+    const otherSources = sourcesWithStreamable(false)
+
+    const sourcesData = [
+      streamableHeader,
+      ...streamableSources,
+      divider,
+      otherHeader,
+      ...otherSources
+    ]
+
+    return sourcesData
   }
 
   sourceData = source => {

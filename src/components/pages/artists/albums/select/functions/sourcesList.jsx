@@ -1,13 +1,16 @@
 export default function sourcesList () {
   return {
     lastfm: {
-      name: 'Last.FM'
+      name: 'Last.FM',
+      streamable: false
     },
     vk: {
-      name: 'VK'
+      name: 'VK',
+      streamable: true
     },
     bandcamp: {
       name: 'Bandcamp',
+      streamable: true,
       onlyTitle: true,
       types: {
         albums: {
@@ -21,10 +24,12 @@ export default function sourcesList () {
       }
     },
     soundcloud: {
-      name: 'SoundCloud'
+      name: 'SoundCloud',
+      streamable: true
     },
     discogs: {
       name: 'Discogs',
+      streamable: false,
       onlyTitle: true,
       types: {
         groups: {
@@ -36,6 +41,10 @@ export default function sourcesList () {
           single: 'album'
         }
       }
+    },
+    deezer: {
+      name: 'Deezer',
+      streamable: true
     }
   }
 }

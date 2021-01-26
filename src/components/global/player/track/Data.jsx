@@ -64,8 +64,9 @@ export default class Data extends React.PureComponent {
     const { audio } = this.props.track
 
     const iconName = audio && audio.present ? audio.source : ''
+    const classNameData = `${iconName} trackSourceIcon`
 
-    return <List.Icon className="trackSourceIcon" name={iconName} />
+    return <List.Icon className={classNameData} />
   }
 
   counterData () {

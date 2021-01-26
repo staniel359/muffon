@@ -45,7 +45,7 @@ export default function pageData () {
   }
 
   const errorData = () => {
-    const { error } = this.props
+    const { error } = this.state
 
     const handleRefresh = () => this.getData()
     const errorDataProps = { error, handleRefresh }

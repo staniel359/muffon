@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuid } from 'uuid'
 import { Header, Label, Icon, Divider } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import Tags from 'global/Tags'
@@ -26,14 +27,42 @@ export default class Right extends React.PureComponent {
     )
   }
 
-  releasedData () {
-    const { released } = this.props.album
+  releasedLabelsData () {
+    const { album } = this.props
+
+    const releasedData = album.released && this.releasedData()
+    const labelsData = album.labels && this.labelsData()
 
     return (
       <Label.Group>
-        <Label basic size="large" content={released} />
+        {releasedData}
+        {labelsData}
       </Label.Group>
     )
+  }
+
+  releasedData () {
+    const { released } = this.props.album
+
+    return <Label basic size="large" content={released} />
+  }
+
+  labelsData () {
+    const { labels } = this.props.album
+
+    const labelData = label => {
+      return (
+        <Label
+          basic
+          icon="dot circle"
+          size="large"
+          key={uuid()}
+          content={label}
+        />
+      )
+    }
+
+    return labels.map(labelData)
   }
 
   tagsData () {
@@ -112,8 +141,6 @@ export default class Right extends React.PureComponent {
   render () {
     const { album } = this.props
 
-    const releasedData = album.released && this.releasedData()
-
     const tagsData = album.tags && this.tagsData()
 
     const descriptionData = album.description && this.descriptionData()
@@ -123,7 +150,7 @@ export default class Right extends React.PureComponent {
     return (
       <div className="albumPageRightColumn">
         {this.headerData()}
-        {releasedData}
+        {this.releasedLabelsData()}
         {tagsData}
         {this.countersData()}
         {descriptionData}

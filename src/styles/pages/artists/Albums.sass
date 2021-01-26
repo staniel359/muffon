@@ -3,8 +3,10 @@ $vk: #2787F5
 $lastfm: #d51007
 $soundcloud: #ff5500
 $discogs: #333333
+$deezer: #000000
 
 $discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
+$deezerIcon: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
 
 // Left column
 
@@ -28,7 +30,7 @@ $discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
 .albumSourceSelect
   margin-bottom: 10px !important
 
-$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud, discogs: $discogs)
+$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud, discogs: $discogs, deezer: $deezer)
 
 @each $source, $color in $sources
   .#{$source}Icon
@@ -42,12 +44,15 @@ $sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundclou
 i.icon.discogs:before
   content: $discogsIcon
 
-.discogsIcon:before
-  content: $discogsIcon
-
 .discogsLabel:before
   content: $discogsIcon
   filter: invert(1)
+
+i.icon.deezer:before
+  content: $deezerIcon
+
+.deezerLabel:before
+  content: $deezerIcon
 
 // Right column
 
