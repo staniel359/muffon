@@ -6,11 +6,13 @@ export default function sourcesList () {
     },
     vk: {
       name: 'VK',
-      streamable: true
+      streamable: true,
+      maxBitrate: 320
     },
     bandcamp: {
       name: 'Bandcamp',
       streamable: true,
+      maxBitrate: 128,
       onlyTitle: true,
       types: {
         albums: {
@@ -25,7 +27,8 @@ export default function sourcesList () {
     },
     soundcloud: {
       name: 'SoundCloud',
-      streamable: true
+      streamable: true,
+      maxBitrate: 128
     },
     discogs: {
       name: 'Discogs',
@@ -48,7 +51,8 @@ export default function sourcesList () {
     },
     deezer: {
       name: 'Deezer',
-      streamable: true
+      streamable: true,
+      maxBitrate: 128
     }
   }
 }

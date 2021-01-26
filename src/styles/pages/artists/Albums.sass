@@ -35,6 +35,19 @@ $sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundclou
 .albumSourceSelect
   margin-bottom: 10px !important
 
+.albumSourceSelectSource
+  @extend .flex, .alignItemsCenter
+  .dropdownItemIcon
+    margin-right: 10px
+
+.albumSourceSelectSourceContent
+  @extend .flex, .justifyContentSpaceBetween
+  width: calc(100% - 30px)
+
+.albumSourceSelectSourceMaxBitrate
+  font-size: 12px
+  color: rgba(0,0,0,.4)
+
 @each $source, $color in $sources
   .#{$source}Icon
     color: $color
