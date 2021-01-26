@@ -15,6 +15,8 @@ export default function albumUrl ({ album, dataName }) {
         return `/${album.sourceId}/albums/${album.id}`
       case 'discogs':
         return `/${album.sourceId}/${album.typeId}/${album.id}`
+      case 'spotify':
+        return `/${album.sourceId}/albums/${album.id}`
       case 'deezer':
         return `/${album.sourceId}/albums/${album.id}`
     }

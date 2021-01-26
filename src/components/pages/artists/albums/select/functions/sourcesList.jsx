@@ -42,6 +42,10 @@ export default function sourcesList () {
         }
       }
     },
+    spotify: {
+      name: 'Spotify',
+      streamable: false
+    },
     deezer: {
       name: 'Deezer',
       streamable: true

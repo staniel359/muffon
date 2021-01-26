@@ -20,6 +20,8 @@ export default function albumRequestData ({ album }) {
         return { id: album.soundcloud_id }
       case 'discogs':
         return { id: album.discogs_id }
+      case 'spotify':
+        return { id: album.spotify_id }
       case 'deezer':
         return { id: album.deezer_id }
     }
