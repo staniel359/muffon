@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const isDev = require('electron-is-dev')
+const Store = require('electron-store')
 
 // Init new window
 
@@ -29,6 +30,7 @@ function createWindow () {
   win.on('ready-to-show', () => {
     win.show()
     win.setMinimumSize(800, 600)
+    Store.initRenderer()
   })
 
   // Install React Dev Tools

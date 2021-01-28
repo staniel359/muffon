@@ -38,5 +38,6 @@ module.exports = {
         loader: 'file-loader'
       }
     ]
-  }
+  },
+  target: 'electron-renderer'
 }

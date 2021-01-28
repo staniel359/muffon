@@ -1,37 +1,37 @@
 import React from 'react'
-import { Form, Input, Dimmer, Segment, Button, Icon } from 'semantic-ui-react'
-import Tabs from './Search/Tabs'
+import Store from 'electron-store'
 import { v4 as uuid } from 'uuid'
+import { Dimmer, Segment, Search, Form } from 'semantic-ui-react'
+import Tabs from './Search/Tabs'
 
-export default class Search extends React.PureComponent {
+export default class SearchDimmer extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = { query: null }
+
+    this.inputRef = React.createRef()
+    this.global = new Store()
+    this.historySize = 20
   }
 
   componentDidMount () {
-    this.inputRef = React.createRef()
-
     this.toggleBodyDimmable()
   }
 
   componentDidUpdate () {
-    const input = this.inputRef.current
-
-    input && input.focus()
-
     this.toggleBodyDimmable()
   }
 
   toggleBodyDimmable () {
     const { isSearchActive } = this.props
-
     const { classList } = document.body
 
-    if (isSearchActive) {
+    const handleShow = () => {
       classList.add('dimmed')
       classList.add('dimmable')
-    } else {
+    }
+
+    const handleHide = () => {
       classList.remove('dimmed')
       classList.remove('dimmable')
 
@@ -39,81 +39,108 @@ export default class Search extends React.PureComponent {
         document.body.removeAttribute('class')
       }
     }
+
+    isSearchActive ? handleShow() : handleHide()
   }
 
-  render () {
+  contentData () {
     const { query, searchId } = this.state
-    const { hideSearch, isSearchActive } = this.props
+    const { hideSearch } = this.props
 
-    const dimmerClassName = `searchDimmer ${
-      isSearchActive ? 'visible' : 'hidden'
-    }`
-
-    const dimmerDataClassName = `searchDimmerData ${query && 'h100'}`
-
-    const handleSubmit = submit => {
-      submit.preventDefault()
-
-      const submitValue = this.inputRef.current.value
-
-      submitValue && this.setState({ query: submitValue, searchId: uuid() })
-    }
-
-    const clearQuery = () => {
-      this.setState({ query: null })
-
-      this.inputRef.current.value = ''
-    }
-
-    const clearButton = query && (
-      <Icon
-        link
-        name="times"
-        className="searchClearQueryButton"
-        onClick={clearQuery}
-      />
-    )
-
-    const submitButton = (
-      <Button compact size="large" type="submit" content="Search" />
-    )
-
-    const placeholder = 'Enter something...'
-    const ref = this.inputRef
-    const searchInputContent = (
-      <React.Fragment>
-        <Icon name="search" />
-        <input className="mousetrap" {...{ placeholder, ref }} />
-        {clearButton}
-        {submitButton}
-      </React.Fragment>
-    )
-
-    const searchForm = (
-      <Form onSubmit={handleSubmit}>
-        <Input fluid action size="large" iconPosition="left">
-          {searchInputContent}
-        </Input>
-      </Form>
-    )
+    const queryClassName = !!query ? 'h100' : ''
+    const className = ['searchDimmerData', queryClassName].join(' ')
 
     const tabsProps = { query, hideSearch, searchId }
-    const tabsData = query && <Tabs {...tabsProps} />
+    const tabsData = !!query && <Tabs {...tabsProps} />
 
-    const contentData = (
-      <Segment className={dimmerDataClassName}>
-        {searchForm}
+    return (
+      <Segment {...{ className }}>
+        {this.searchForm()}
         {tabsData}
       </Segment>
     )
+  }
+
+  searchForm () {
+    const iconData = () => {
+      const { query } = this.state
+
+      const queryIconData = {
+        name: 'close',
+        style: { pointerEvents: 'unset', cursor: 'pointer' },
+        onClick: () => {
+          this.setState({ query: null })
+          this.inputRef.current.state.value = ''
+        }
+      }
+
+      return query ? queryIconData : 'search'
+    }
+
+    const searchHistory = this.global.get('searchHistory', [])
+
+    const searchHistoryData = () => {
+      const searchItem = query => ({ key: uuid(), value: query, title: query })
+
+      return searchHistory.slice(0, this.historySize).map(searchItem)
+    }
+
+    const changeQuery = query => {
+      this.setState({ query })
+
+      if (query) {
+        if (query !== searchHistory[0]) {
+          searchHistory.unshift(query)
+
+          this.global.set({ searchHistory })
+        }
+
+        this.setState({ searchId: uuid() })
+      }
+    }
+
+    const handleSubmit = () => {
+      const searchInput = this.inputRef.current
+
+      changeQuery(searchInput.state.value)
+      searchInput.close()
+    }
+
+    const handleResultSelect = (_, { result }) => {
+      changeQuery(result.value)
+    }
+
+    return (
+      <Form onSubmit={handleSubmit}>
+        <Search
+          fluid
+          className="searchInput"
+          size="large"
+          placeholder="Enter something..."
+          noResultsMessage="Your search history is empty."
+          minCharacters={0}
+          icon={iconData()}
+          results={searchHistoryData()}
+          ref={this.inputRef}
+          onResultSelect={handleResultSelect}
+        />
+      </Form>
+    )
+  }
+
+  render () {
+    const { isSearchActive, hideSearch } = this.props
+
+    const searchActiveClassName = isSearchActive ? 'visible' : 'hidden'
+    const className = ['searchDimmer', searchActiveClassName].join(' ')
 
     return (
       <Dimmer
         page
         active
-        className={dimmerClassName}
+        content={this.contentData()}
         onClickOutside={hideSearch}
-        content={contentData}
+        {...{ className }}
       />
     )
   }

@@ -4,6 +4,8 @@
   visibility: visible !important
 .searchDimmer.hidden
   visibility: hidden !important
+  .searchDimmerData
+    @extend .hidden
 
 .searchDimmer > .content
   @extend .h100
@@ -13,6 +15,13 @@
 
 .searchDimmerData
   @extend .flexColumn
+
+.searchInput
+  .ui.input
+    @extend .w100
+  .results
+    @extend .yScrollable
+    max-height: 250px !important
 
 .searchResults
   @extend .h100, .flexColumn
@@ -59,6 +68,3 @@
 
 .searchItemExtra
   margin-top: 5px
-
-.searchClearQueryButton
-  left: 342px !important
