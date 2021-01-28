@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 
 export default class TrackButton extends React.PureComponent {
-  buttonData () {
+  contentData () {
     const { isLoading, isError } = this.props
 
     const isDisabled = isLoading || isError
@@ -10,14 +10,14 @@ export default class TrackButton extends React.PureComponent {
     return (
       <Button
         className="playButton"
-        icon={this.buttonIcon()}
+        icon={this.iconData()}
         loading={isLoading}
         disabled={isDisabled}
       />
     )
   }
 
-  buttonIcon () {
+  iconData () {
     const { isPlaying, audioStatus, isError } = this.props
 
     const isPaused = audioStatus === 'pause'
@@ -33,8 +33,8 @@ export default class TrackButton extends React.PureComponent {
     const { isHovered, isLoading, isError, isPlaying } = this.props
 
     const isVisible = isHovered || isLoading || isError || isPlaying
-    const buttonData = isVisible && this.buttonData()
+    const contentData = isVisible && this.contentData()
 
-    return <div className="playButtonWrap">{buttonData}</div>
+    return <div className="playButtonWrap">{contentData}</div>
   }
 }

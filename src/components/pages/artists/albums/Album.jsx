@@ -4,13 +4,17 @@ import { Link } from 'react-router-dom'
 import ListenersCount from 'global/artists/albums/ListenersCount'
 
 export default class Album extends React.PureComponent {
-  render () {
-    const { album, artistName, isLoading } = this.props
+  albumPageLink () {
+    const { artistName, album } = this.props
 
-    const albumTitle = album.title
     const artistNameEncoded = encodeURIComponent(artistName)
-    const albumTitleEncoded = encodeURIComponent(albumTitle)
-    const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+    const albumTitleEncoded = encodeURIComponent(album.title)
+
+    return `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+  }
+
+  contentData () {
+    const { album, isLoading } = this.props
 
     const image = album.images.small
     const imageData = (
@@ -18,19 +22,12 @@ export default class Album extends React.PureComponent {
     )
 
     const headerData = (
-      <Header as="h4" className="cardLightMainHeader" content={albumTitle} />
+      <Header as="h4" className="cardLightMainHeader" content={album.title} />
     )
 
-    const listenersCountProps = { artistName, albumTitle }
-    const listenersCountData = !isLoading && (
-      <Card.Content>
-        <Card.Description>
-          <ListenersCount {...listenersCountProps} />
-        </Card.Description>
-      </Card.Content>
-    )
+    const listenersCountData = !isLoading && this.listenersCountData()
 
-    const contentData = (
+    return (
       <React.Fragment>
         <div />
         {imageData}
@@ -38,13 +35,30 @@ export default class Album extends React.PureComponent {
         {listenersCountData}
       </React.Fragment>
     )
+  }
 
+  listenersCountData () {
+    const { artistName, album } = this.props
+
+    const albumTitle = album.title
+    const listenersCountProps = { artistName, albumTitle }
+
+    return (
+      <Card.Content>
+        <Card.Description>
+          <ListenersCount {...listenersCountProps} />
+        </Card.Description>
+      </Card.Content>
+    )
+  }
+
+  render () {
     return (
       <Card
         className="cardLight"
         as={Link}
-        to={albumPageLink}
-        content={contentData}
+        to={this.albumPageLink()}
+        content={this.contentData()}
       />
     )
   }

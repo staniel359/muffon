@@ -8,11 +8,11 @@ export default class List extends React.PureComponent {
     const { similar, itemsPerRow } = this.props
 
     const artistData = artist => {
-      const key = uuid()
-      const artistProps = { artist, key }
+      const artistProps = { key: uuid(), artist }
 
       return <Artist {...artistProps} />
     }
+
     const artistsData = similar.map(artistData)
 
     return <Card.Group {...{ itemsPerRow }}>{artistsData}</Card.Group>

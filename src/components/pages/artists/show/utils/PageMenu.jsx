@@ -1,22 +1,25 @@
 import React from 'react'
-import { Menu } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
+import { Menu } from 'semantic-ui-react'
 
 export default class PageMenu extends React.PureComponent {
-  render () {
+  menuItemData = menuItemName => {
     const { menuActiveItem, scrollToTop } = this.props
 
-    const menuItems = ['info', 'tracks', 'albums', 'similar']
+    const isActive = menuItemName === menuActiveItem
+    const handleClick = () => scrollToTop(menuItemName)
 
-    const handleClick = (_, { name }) => scrollToTop(name)
-    const menuItemData = name => ({
+    return {
       key: uuid(),
-      name: name,
-      active: menuActiveItem === name,
+      name: menuItemName,
+      active: isActive,
       onClick: handleClick
-    })
+    }
+  }
 
-    const menuItemsData = menuItems.map(menuItemData)
+  render () {
+    const menuItems = ['info', 'tracks', 'albums', 'similar']
+    const menuItemsData = menuItems.map(this.menuItemData)
 
     return (
       <Menu

@@ -47,13 +47,14 @@ export default function segmentData () {
 
     const isInfoSegment = this.dataName === 'info'
     const isMain = isInfoSegment && !error
-    const classNameData = `tagPageSegment${isMain ? 'Main' : ''}`
+    const classNames = ['tagPageSegment', isMain && 'Main']
+    const className = classNames.filter(Boolean).join('')
 
     return (
       <Segment
-        className={classNameData}
         content={segmentContentData()}
         loading={isLoading}
+        {...{ className }}
       />
     )
   }

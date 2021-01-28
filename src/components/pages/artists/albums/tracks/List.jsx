@@ -1,11 +1,15 @@
 import React from 'react'
+import { v4 as uuid } from 'uuid'
 import { List } from 'semantic-ui-react'
 import TrackContext from 'global/player/TrackContext'
-import { v4 as uuid } from 'uuid'
 
 export default class TracksList extends React.PureComponent {
-  render () {
+  trackData = (track, index) => {
     const { album } = this.props
+
+    track.artist ||= album.artist
+
+    const isWithArtist = track.artist.name !== album.artist.name
 
     const setCurrentAlbumData = () => {
       const { setCurrentAlbumData } = this.props
@@ -13,23 +17,21 @@ export default class TracksList extends React.PureComponent {
       setCurrentAlbumData(album)
     }
 
-    const trackData = (track, index) => {
-      track.artist ||= album.artist
-
-      const isWithArtist = track.artist.name !== album.artist.name
-
-      const trackProps = {
-        key: uuid(),
-        track,
-        index,
-        isWithArtist,
-        setCurrentAlbumData
-      }
-
-      return <TrackContext {...trackProps} />
+    const trackProps = {
+      key: uuid(),
+      track,
+      index,
+      isWithArtist,
+      setCurrentAlbumData
     }
 
-    const tracksList = album.tracks.map(trackData)
+    return <TrackContext {...trackProps} />
+  }
+
+  render () {
+    const { tracks } = this.props.album
+
+    const tracksList = tracks && tracks.map(this.trackData)
 
     return <List selection content={tracksList} />
   }

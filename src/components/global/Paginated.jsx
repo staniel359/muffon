@@ -1,9 +1,10 @@
 import React from 'react'
 import ErrorMessage from 'global/ErrorMessage'
-import CollectionData from './paginated/CollectionData'
-import paginateCollection from './paginated/functions/paginateCollection'
-import mergeCollections from './paginated/functions/mergeCollections'
+import paginateCollection from './paginated/functions/utils/paginateCollection'
+import mergeCollections from './paginated/functions/utils/mergeCollections'
+import nextResponsePage from './paginated/functions/utils/nextResponsePage'
 import paginationData from './paginated/functions/paginationData'
+import collectionData from './paginated/functions/collectionData'
 
 export default class Paginated extends React.PureComponent {
   constructor (props) {
@@ -12,11 +13,20 @@ export default class Paginated extends React.PureComponent {
 
     this.paginateCollection = paginateCollection.bind(this)
     this.mergeCollections = mergeCollections.bind(this)
+    this.nextResponsePage = nextResponsePage.bind(this)
     this.paginationData = paginationData.bind(this)
+    this.collectionData = collectionData.bind(this)
   }
 
   componentDidMount () {
     this.setData()
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    this.handleDataChange(prevProps)
+    this.handleClientPageCollectionChange(prevState)
+    this.handleClientPageChange(prevState)
+    this.handleError()
   }
 
   setData () {
@@ -26,13 +36,6 @@ export default class Paginated extends React.PureComponent {
     const clientPageCollection = collection[clientPage] || []
 
     this.setState({ collection, clientPageCollection })
-  }
-
-  componentDidUpdate (prevProps, prevState) {
-    this.handleDataChange(prevProps)
-    this.handleClientPageCollectionChange(prevState)
-    this.handleClientPageChange(prevState)
-    this.handleError()
   }
 
   handleDataChange (prevProps) {
@@ -79,39 +82,6 @@ export default class Paginated extends React.PureComponent {
     return responseTotalPages * responsePageLimit
   }
 
-  nextResponsePage () {
-    const { clientPageLimit, responsePageLimit } = this.props
-    const { clientPage, clientPageCollection, isForward, isLast } = this.state
-
-    const forwardPage = () => {
-      const forwardPageOffset =
-        (clientPage - 1) * clientPageLimit + clientPageCollection.length
-
-      return forwardPageOffset / responsePageLimit + 1
-    }
-
-    const lastPage = () => {
-      const lastPageOffset = this.totalItems() - clientPageCollection.length
-
-      return lastPageOffset / responsePageLimit
-    }
-
-    const backwardPage = () => {
-      const backwardPageOffset =
-        clientPage * clientPageLimit - clientPageCollection.length
-
-      return backwardPageOffset / responsePageLimit
-    }
-
-    if (isForward) {
-      return forwardPage()
-    } else if (isLast) {
-      return lastPage()
-    } else {
-      return backwardPage()
-    }
-  }
-
   handleClientPageChange (prevState) {
     const { clientPage } = this.state
 
@@ -132,30 +102,17 @@ export default class Paginated extends React.PureComponent {
     error && this.setState({ clientPageCollection: null })
   }
 
-  collectionData () {
+  contentData () {
     const { clientPageCollection } = this.state
-    const {
-      dataName,
-      itemsPerRow,
-      artistName,
-      topTrackCount,
-      isLoading,
-      children,
-      hideSearch
-    } = this.props
+    const { error } = this.props
 
-    const collectionDataProps = {
-      dataName,
-      clientPageCollection,
-      itemsPerRow,
-      artistName,
-      topTrackCount,
-      isLoading,
-      children,
-      hideSearch
+    if (clientPageCollection) {
+      return this.collectionData()
+    } else {
+      if (error) {
+        return this.errorData()
+      }
     }
-
-    return <CollectionData {...collectionDataProps} />
   }
 
   errorData () {
@@ -168,22 +125,15 @@ export default class Paginated extends React.PureComponent {
   }
 
   render () {
-    const { clientPageCollection } = this.state
-    const { error, responseTotalPages, data, clientPageLimit } = this.props
+    const { responseTotalPages, data, clientPageLimit } = this.props
 
-    const collectionData = clientPageCollection && this.collectionData()
-
-    const errorData = error && this.errorData()
-
-    const contentData = collectionData || errorData
-
-    const isResponsePagePageable = data && data.length > clientPageLimit
+    const isResponsePagePageable = !!data && data.length > clientPageLimit
     const isResponsePageable = responseTotalPages > 1 || isResponsePagePageable
     const paginationData = isResponsePageable && this.paginationData()
 
     return (
       <React.Fragment>
-        <div>{contentData}</div>
+        <div>{this.contentData()}</div>
         <div>{paginationData}</div>
       </React.Fragment>
     )

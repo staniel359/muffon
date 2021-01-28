@@ -1,75 +1,110 @@
 import React from 'react'
-import { v4 as uuid } from 'uuid'
 import { Link } from 'react-router-dom'
+import { v4 as uuid } from 'uuid'
 import { Image, Icon, Header, Label, Loader } from 'semantic-ui-react'
 import Similar from './Similar'
 
 export default class Data extends React.PureComponent {
-  render () {
-    const { tag } = this.props
+  coverData () {
     const { artistImages } = this.props
 
-    const imageData = src => (
-      <Image
-        className="tagPageSegmentMainCoverImage"
-        key={uuid()}
-        {...{ src }}
-      />
-    )
-    const artistImagesListData =
-      artistImages && artistImages.slice(0, 15).map(imageData)
-    const loaderData = <Loader active inverted size="large" />
-    const artistImagesData = artistImagesListData || loaderData
-    const coverData = (
-      <div className="tagPageSegmentMainCover">{artistImagesData}</div>
-    )
+    const artistImagesData = () => {
+      const imagesData = artistImages.slice(0, 15)
 
-    const headerData = (
-      <div className="tagPageTagName">
-        <Icon name="tag" size="large" />
-        <Header as="h1" content={tag.name} />
+      const imageData = src => (
+        <Image
+          className="tagPageSegmentMainCoverImage"
+          key={uuid()}
+          {...{ src }}
+        />
+      )
+
+      return imagesData.map(imageData)
+    }
+
+    if (artistImages) {
+      return artistImagesData()
+    } else {
+      return <Loader active inverted size="large" />
+    }
+  }
+
+  contentData () {
+    const { description } = this.props.tag
+
+    const descriptionData = !!description && this.descriptionData()
+
+    return (
+      <div className="tagPageSegmentMainContent">
+        {this.headerData()}
+        {this.similarData()}
+        {this.countersData()}
+        {descriptionData}
       </div>
     )
+  }
+
+  headerData () {
+    const { name } = this.props.tag
+
+    return (
+      <div className="tagPageTagName">
+        <Icon name="tag" size="large" />
+        <Header as="h1" content={name} />
+      </div>
+    )
+  }
+
+  similarData () {
+    const { name } = this.props.tag
+
+    return (
+      <div className="tagPageSimilar">
+        <Header as="h4" content="Similar:" />
+
+        <Similar tagName={name} />
+      </div>
+    )
+  }
+
+  countersData () {
+    const { tag } = this.props
 
     const taggersCount = tag.taggers_count.toLocaleString('eu')
     const taggingsCount = tag.taggings_count.toLocaleString('eu')
-    const countersData = (
+
+    return (
       <Label.Group className="tagPageCounters" size="large">
         <Label basic icon="user" content={taggersCount} />
         <Label basic icon="tags" content={taggingsCount} />
       </Label.Group>
     )
+  }
 
-    const similarData = (
-      <div className="tagPageSimilar">
-        <Header as="h4" content="Similar:" />
-        <Similar tagName={tag.name} />
-      </div>
-    )
+  descriptionData () {
+    const { name, description } = this.props.tag
 
-    const tagNameEncoded = encodeURIComponent(tag.name)
+    const tagNameEncoded = encodeURIComponent(name)
     const descriptionPageLink = `/tags/${tagNameEncoded}/description`
-    const descriptionData = tag.description && (
+
+    return (
       <div className="tagPageDescription">
-        {tag.description}
+        {description}
         {'\u00A0'}
         <Link to={descriptionPageLink}>Read more...</Link>
       </div>
     )
+  }
 
-    const contentData = (
-      <div className="tagPageSegmentMainContent">
-        {headerData}
-        {similarData}
-        {countersData}
-        {descriptionData}
-      </div>
+  render () {
+    const coverData = (
+      <div className="tagPageSegmentMainCover">{this.coverData()}</div>
     )
 
     return (
       <React.Fragment>
         {coverData}
-        {contentData}
+        {this.contentData()}
       </React.Fragment>
     )
   }

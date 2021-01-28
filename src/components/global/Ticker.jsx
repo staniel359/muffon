@@ -1,16 +1,24 @@
 import React from 'react'
 
 export default class Ticker extends React.PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.tickerRef = React.createRef()
+    this.tickerContainerRef = React.createRef()
+    this.tickerContentRef = React.createRef()
+
+    this.speed = 40
+    this.waitTime = 2000
+    this.gap = 50
+    this.isStartWait = true
+    this.isLoopWait = true
+  }
+
   componentDidMount () {
     this.setStyle()
     this.handleTicker()
   }
-
-  speed = 40
-  startWait = true
-  loopWait = true
-  waitTime = 2000
-  gap = 50
 
   setStyle () {
     this.ticker().style.overflow = 'hidden'
@@ -23,15 +31,9 @@ export default class Ticker extends React.PureComponent {
 
   ticker = () => this.tickerRef.current
 
-  tickerRef = React.createRef()
-
   container = () => this.tickerContainerRef.current
 
-  tickerContainerRef = React.createRef()
-
   content = () => this.tickerContentRef.current
-
-  tickerContentRef = React.createRef()
 
   handleTicker () {
     this.progress = 1
@@ -39,15 +41,15 @@ export default class Ticker extends React.PureComponent {
     const contentWidth = this.content().offsetWidth - this.gap
     const containerWidth = this.container().offsetWidth
 
-    if (contentWidth < containerWidth) return
+    if (contentWidth > containerWidth) {
+      const contentClone = this.content().cloneNode(true)
 
-    const contentClone = this.content().cloneNode(true)
+      this.container().appendChild(contentClone)
 
-    this.container().appendChild(contentClone)
+      this.isStartWait ? this.wait() : this.setSpeed()
 
-    this.startWait ? this.wait() : this.setSpeed()
-
-    this.loop()
+      this.loop()
+    }
   }
 
   wait () {
@@ -63,28 +65,30 @@ export default class Ticker extends React.PureComponent {
   loop () {
     this.progress -= this.currentSpeed
 
-    if (!this.content()) return
+    if (this.content()) {
+      const contentWidth = this.content().offsetWidth * -1
 
-    const contentWidth = this.content().offsetWidth * -1
+      if (this.progress <= contentWidth) {
+        this.progress = 0
 
-    if (this.progress <= contentWidth) {
-      this.progress = 0
+        this.isLoopWait && this.wait()
+      }
 
-      this.loopWait && this.wait()
+      this.container().style.transform = `translateX(${this.progress}px)`
+
+      window.requestAnimationFrame(() => this.loop())
     }
-
-    this.container().style.transform = `translateX(${this.progress}px)`
-
-    window.requestAnimationFrame(() => this.loop())
   }
 
   render () {
     const { content, children } = this.props
 
+    const contentData = content || children
+
     return (
       <div ref={this.tickerRef}>
         <div ref={this.tickerContainerRef}>
-          <div ref={this.tickerContentRef}>{content || children}</div>
+          <div ref={this.tickerContentRef}>{contentData}</div>
         </div>
       </div>
     )

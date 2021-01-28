@@ -2,13 +2,13 @@ import React from 'react'
 import { Button, Popup } from 'semantic-ui-react'
 
 export default class StopButton extends React.PureComponent {
-  render () {
+  buttonData () {
     const { stopAudio } = this.props
 
-    const triggerData = (
-      <Button basic compact size="tiny" icon="times" onClick={stopAudio} />
-    )
+    return <Button basic compact size="tiny" icon="times" onClick={stopAudio} />
+  }
 
+  render () {
     return (
       <Popup
         inverted
@@ -17,7 +17,7 @@ export default class StopButton extends React.PureComponent {
         position="top center"
         content="Stop"
         className="playerPanelExtraPopup"
-        trigger={triggerData}
+        trigger={this.buttonData()}
       />
     )
   }

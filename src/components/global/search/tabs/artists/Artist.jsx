@@ -4,52 +4,68 @@ import { Link } from 'react-router-dom'
 import Image from 'global/artists/Image'
 
 export default class Artist extends React.PureComponent {
-  render () {
-    const { hideSearch, artist } = this.props
+  contentData () {
+    return (
+      <React.Fragment>
+        {this.imageData()}
+        <List.Content className="searchItemContent">
+          {this.artistNameData()}
+          {this.listenersCountData()}
+        </List.Content>
+      </React.Fragment>
+    )
+  }
 
-    const artistNameEncoded = encodeURIComponent(artist.name)
-    const artistLink = `/artists/${artistNameEncoded}`
+  imageData () {
+    const { artist } = this.props
 
     const imageProps = {
       artistName: artist.name,
       size: 'extrasmall',
       circular: true
     }
-    const imageData = (
+
+    return (
       <div className="searchItemImage">
         <Image {...imageProps} />
       </div>
     )
+  }
 
-    const artistNameData = (
+  artistNameData () {
+    const { artist } = this.props
+
+    return (
       <List.Header
         as="h4"
         className="searchItemMainTitle"
         content={artist.name}
       />
     )
+  }
 
-    const listenersCountData = (
-      <div>{artist.listeners_count.toLocaleString('eu') + ' listeners'}</div>
-    )
+  listenersCountData () {
+    const { artist } = this.props
 
-    const contentData = (
-      <React.Fragment>
-        {imageData}
-        <List.Content className="searchItemContent">
-          {artistNameData}
-          {listenersCountData}
-        </List.Content>
-      </React.Fragment>
-    )
+    const listenersCount = artist.listeners_count.toLocaleString('eu')
+    const listenersCountData = `${listenersCount} listeners`
+
+    return <div>{listenersCountData}</div>
+  }
+
+  render () {
+    const { artist, hideSearch } = this.props
+
+    const artistNameEncoded = encodeURIComponent(artist.name)
+    const artistLink = `/artists/${artistNameEncoded}`
 
     return (
       <List.Item
         className="searchItem"
         as={Link}
         to={artistLink}
+        content={this.contentData()}
         onClick={hideSearch}
-        content={contentData}
       />
     )
   }

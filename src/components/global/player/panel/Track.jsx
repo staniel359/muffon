@@ -69,9 +69,9 @@ export default class Track extends React.PureComponent {
   iconData () {
     const { currentTrackSource } = this.props
 
-    const classNameData = `${currentTrackSource} playerPanelTrackIcon`
+    const className = ['playerPanelTrackIcon', currentTrackSource].join(' ')
 
-    return <Icon className={classNameData} />
+    return <Icon {...{ className }} />
   }
 
   render () {

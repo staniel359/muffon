@@ -22,6 +22,10 @@ export default class Show extends React.PureComponent {
     this.setNavSections = setNavSections.bind(this)
     this.checkTagChange = checkTagChange.bind(this)
     this.pageData = pageData.bind(this)
+
+    this.artistsRef = React.createRef()
+    this.albumsRef = React.createRef()
+    this.tracksRef = React.createRef()
   }
 
   componentDidMount () {
@@ -40,30 +44,21 @@ export default class Show extends React.PureComponent {
 
   dataName = 'tag'
 
-  setArtistImages = images => {
-    const { artistImages } = this.state
-
-    !artistImages && this.setState({ artistImages: images })
-  }
-
   contentData () {
     const { tag, artistImages } = this.state
-    const { setArtistImages } = this
 
     const tagName = tag.name
 
-    const artistsRef = React.createRef()
-    const albumsRef = React.createRef()
-    const tracksRef = React.createRef()
-
-    const refs = { artistsRef, albumsRef, tracksRef }
-
-    const segmentTop = name => {
-      const segment = name => refs[`${name}Ref`]
-
-      return segment(name).current.offsetTop - 60
+    const setArtistImages = images => {
+      !artistImages && this.setState({ artistImages: images })
     }
-    const scrollToTop = name => window.scrollTo(0, segmentTop(name))
+
+    const scrollToTop = segmentName => {
+      const segment = this[`${segmentName}Ref`]
+      const segmentTop = segment.current.offsetTop - 60
+
+      window.scrollTo(0, segmentTop)
+    }
 
     const infoProps = { tagName, artistImages }
     const artistsProps = { tagName, setArtistImages, scrollToTop }
@@ -73,13 +68,13 @@ export default class Show extends React.PureComponent {
     return (
       <div className="tagPage">
         <Info {...infoProps} />
-        <Ref innerRef={artistsRef}>
+        <Ref innerRef={this.artistsRef}>
           <Artists {...artistsProps} />
         </Ref>
-        <Ref innerRef={albumsRef}>
+        <Ref innerRef={this.albumsRef}>
           <Albums {...albumsProps} />
         </Ref>
-        <Ref innerRef={tracksRef}>
+        <Ref innerRef={this.tracksRef}>
           <Tracks {...tracksProps} />
         </Ref>
       </div>

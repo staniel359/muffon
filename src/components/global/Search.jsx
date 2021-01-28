@@ -47,8 +47,8 @@ export default class SearchDimmer extends React.PureComponent {
     const { query, searchId } = this.state
     const { hideSearch } = this.props
 
-    const queryClassName = !!query ? 'h100' : ''
-    const className = ['searchDimmerData', queryClassName].join(' ')
+    const classNames = ['searchDimmerData', !!query && 'h100']
+    const className = classNames.filter(Boolean).join(' ')
 
     const tabsProps = { query, hideSearch, searchId }
     const tabsData = !!query && <Tabs {...tabsProps} />

@@ -1,9 +1,17 @@
 import React from 'react'
 
 export default class TimeBar extends React.PureComponent {
-  render () {
+  loaderData () {
+    const { secondsLoaded, duration } = this.props
+
+    const percentLoaded = (secondsLoaded / duration) * 100 || 0
+    const style = { width: `${percentLoaded}%` }
+
+    return <div className="playerPanelAudioLoaderBar" {...{ style }} />
+  }
+
+  sliderData () {
     const {
-      secondsLoaded,
       duration,
       currentTime,
       changeTime,
@@ -11,42 +19,37 @@ export default class TimeBar extends React.PureComponent {
       endTimeChange
     } = this.props
 
-    const backgroundData = <div className="playerPanelAudioBackgroundBar" />
-
-    const percentLoaded = (secondsLoaded / duration) * 100 || 0
-    const loaderStyle = { width: `${percentLoaded}%` }
-    const loaderData = (
-      <div className="playerPanelAudioLoaderBar" style={loaderStyle} />
-    )
-
     const percentPlayed = (currentTime / duration) * 100 || 0
-    const sliderBackground = `
+    const backgroundImage = `
       -webkit-gradient(
         linear, left top, right top,
         color-stop(${percentPlayed}%, #804FB3),
         color-stop(${percentPlayed}%, transparent)
       )
     `
-    const sliderStyle = { backgroundImage: sliderBackground }
-    const sliderData = (
+    const style = { backgroundImage }
+
+    return (
       <input
+        className="playerPanelBar playerPanelAudioBar"
         type="range"
         step="0.25"
         max={duration}
         value={currentTime}
-        className="playerPanelBar playerPanelAudioBar"
-        style={sliderStyle}
         onChange={changeTime}
         onMouseDown={startTimeChange}
         onMouseUp={endTimeChange}
+        {...{ style }}
       />
     )
+  }
 
+  render () {
     return (
       <div className="playerPanelAudioWrap">
-        {backgroundData}
-        {loaderData}
-        {sliderData}
+        <div className="playerPanelAudioBackgroundBar" />
+        {this.loaderData()}
+        {this.sliderData()}
       </div>
     )
   }

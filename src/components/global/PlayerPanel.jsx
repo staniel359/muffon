@@ -9,53 +9,59 @@ import TrackContext from './player/panel/TrackContext'
 import VariantsContext from './player/panel/track/VariantsContext'
 
 export default class PlayerPanel extends React.PureComponent {
-  render () {
-    const { isPlayerPanelVisible } = this.props
-
+  contentData () {
     const variantsData = (
       <Container className="playerPanelTrackVariantsContainer">
         <VariantsContext />
       </Container>
     )
 
-    const backgroundData = <div className="playerPanelBackground" />
+    return (
+      <React.Fragment>
+        {variantsData}
+        <div className="playerPanelBackground" />
+        {this.mainData()}
+      </React.Fragment>
+    )
+  }
 
+  mainData () {
     const trackData = (
       <div className="playerPanelLeftColumn">
         <TrackContext />
       </div>
     )
 
-    const timerControlsData = (
+    return (
+      <Container className="playerPanelMainContainer">
+        {trackData}
+        {this.audioData()}
+      </Container>
+    )
+  }
+
+  audioData () {
+    return (
+      <div className="playerPanelRightColumn">
+        <AudioContainerContext />
+        {this.timerControlsData()}
+        <TimeBarContext />
+      </div>
+    )
+  }
+
+  timerControlsData () {
+    return (
       <div className="playerPanelTimerControls">
         <TimerContext />
         <MainControls />
         <ExtraControls />
       </div>
     )
+  }
 
-    const audioData = (
-      <div className="playerPanelRightColumn">
-        <AudioContainerContext />
-        {timerControlsData}
-        <TimeBarContext />
-      </div>
-    )
-
-    const mainData = (
-      <Container className="playerPanelMainContainer">
-        {trackData}
-        {audioData}
-      </Container>
-    )
-
-    const contentData = (
-      <React.Fragment>
-        {variantsData}
-        {backgroundData}
-        {mainData}
-      </React.Fragment>
-    )
+  render () {
+    const { isPlayerPanelVisible } = this.props
 
     return (
       <Sidebar
@@ -64,7 +70,7 @@ export default class PlayerPanel extends React.PureComponent {
         className="playerPanel"
         as={Segment}
         visible={isPlayerPanelVisible}
-        content={contentData}
+        content={this.contentData()}
       />
     )
   }

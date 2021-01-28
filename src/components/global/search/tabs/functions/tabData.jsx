@@ -3,7 +3,7 @@ import { Tab, Segment, Ref } from 'semantic-ui-react'
 import ErrorMessage from 'global/ErrorMessage'
 
 export default function tabData () {
-  const { active } = this.props
+  const { active, tabRef } = this.props
 
   const isLoading = active && this.state.isLoading
 
@@ -30,7 +30,7 @@ export default function tabData () {
     }
   }
 
-  const refData = <Ref innerRef={this.tabRef}>{contentData()}</Ref>
+  const refData = <Ref innerRef={tabRef}>{contentData()}</Ref>
 
   const segmentData = (
     <Segment

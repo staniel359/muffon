@@ -19,7 +19,7 @@ export default class Data extends React.PureComponent {
     const tagsPageLink = `/artists/${artistNameEncoded}/tags`
     const tagsProps = {
       tags: artist.tags,
-      viewMore: true,
+      isViewMore: true,
       link: tagsPageLink
     }
 

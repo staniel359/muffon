@@ -27,16 +27,18 @@ export default class Source extends React.PureComponent {
     const { isLoading } = this.state
     const { source } = this.props
 
-    const iconClassNameData = isLoading ? '' : `${source.id} ${source.id}Icon`
-    const buttonClassNameData = `dropdownItemIcon${
-      this.isNoData() ? ' faded' : ''
-    }`
+    const classNames = ['dropdownItemIcon', this.isNoData() && 'faded']
+    const className = classNames.filter(Boolean).join(' ')
+
+    const iconData = () => {
+      const iconClassName = [source.id, `${source.id}Color`].join(' ')
+      const className = isLoading ? '' : iconClassName
+
+      return { className }
+    }
+
     const iconButtonData = (
-      <Button
-        className={buttonClassNameData}
-        loading={isLoading}
-        icon={{ className: iconClassNameData }}
-      />
+      <Button loading={isLoading} icon={iconData()} {...{ className }} />
     )
 
     return (

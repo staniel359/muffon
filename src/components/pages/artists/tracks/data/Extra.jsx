@@ -11,7 +11,7 @@ export default class Extra extends React.PureComponent {
     const artistNameEncoded = encodeURIComponent(track.artist.name)
     const trackTitleEncoded = encodeURIComponent(track.title)
     const tagsPageLink = `/artists/${artistNameEncoded}/tracks/${trackTitleEncoded}/tags`
-    const tagsProps = { tags: track.tags, viewMore: true, link: tagsPageLink }
+    const tagsProps = { tags: track.tags, isViewMore: true, link: tagsPageLink }
 
     return <Tags {...tagsProps} />
   }

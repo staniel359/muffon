@@ -16,43 +16,48 @@ export default class TrackPlayerPanel extends React.PureComponent {
 
   componentWillUnmount = () => (this._isMounted = false)
 
-  render () {
+  playButtonData () {
     const { isLoading, isError } = this.state
-    const { isPlaying, toggleAudio, audioStatus } = this.props
-    const { length } = this.props.track
-
-    const playButtonIcon = () => {
-      const paused = audioStatus === 'pause'
-
-      if (isPlaying) {
-        return paused ? 'play' : 'pause'
-      } else {
-        return isError ? 'times' : 'play'
-      }
-    }
-
-    const handleTrackClick = () =>
-      !isLoading && (isPlaying ? toggleAudio() : this.getData())
 
     const isDisabled = isLoading || isError
 
-    const playButtonData = (
+    return (
       <Button
         basic
         size="large"
         className="trackPagePlayerPlayButton"
-        icon={playButtonIcon()}
-        onClick={handleTrackClick}
+        icon={this.playButtonIcon()}
+        onClick={this.handleClick}
         loading={isLoading}
         disabled={isDisabled}
       />
     )
+  }
 
-    const placeholderData = (
-      <div className="trackPagePlayerPlaceholder" onClick={handleTrackClick}>
-        Click to play
-      </div>
-    )
+  playButtonIcon () {
+    const { isError } = this.state
+    const { isPlaying, audioStatus } = this.props
+
+    const paused = audioStatus === 'pause'
+
+    if (isPlaying) {
+      return paused ? 'play' : 'pause'
+    } else {
+      return isError ? 'times' : 'play'
+    }
+  }
+
+  handleClick = () => {
+    const { isLoading } = this.state
+    const { isPlaying, toggleAudio } = this.props
+
+    if (!isLoading) {
+      isPlaying ? toggleAudio() : this.getData()
+    }
+  }
+
+  timeBarPlaceholderData () {
+    const { isPlaying } = this.props
 
     const timeBarData = (
       <div className="trackPagePlayerTimeBar">
@@ -60,7 +65,17 @@ export default class TrackPlayerPanel extends React.PureComponent {
       </div>
     )
 
-    const timeBarPlaceholderData = isPlaying ? timeBarData : placeholderData
+    const placeholderData = (
+      <div className="trackPagePlayerPlaceholder" onClick={this.handleClick}>
+        Click to play
+      </div>
+    )
+
+    return isPlaying ? timeBarData : placeholderData
+  }
+
+  render () {
+    const { length } = this.props.track
 
     const lengthData = length > 0 && (
       <div className="trackPagePlayerLength">{formatSeconds(length)}</div>
@@ -68,8 +83,8 @@ export default class TrackPlayerPanel extends React.PureComponent {
 
     return (
       <div className="trackPagePlayer">
-        {playButtonData}
-        {timeBarPlaceholderData}
+        {this.playButtonData()}
+        {this.timeBarPlaceholderData()}
         {lengthData}
       </div>
     )

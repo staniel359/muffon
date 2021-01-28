@@ -9,77 +9,97 @@ export default class Album extends React.PureComponent {
     this.state = { isArtistHovered: false }
   }
 
-  render () {
-    const { album, hideSearch } = this.props
+  albumOrArtistLink () {
     const { isArtistHovered } = this.state
+    const { album } = this.props
 
-    const artistName = album.artist.name
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
     const artistPageLink = `/artists/${artistNameEncoded}`
 
-    const albumTitle = album.title
-    const albumTitleEncoded = encodeURIComponent(albumTitle)
+    const albumTitleEncoded = encodeURIComponent(album.title)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
-    const albumOrArtistLink = isArtistHovered ? artistPageLink : albumPageLink
+    return isArtistHovered ? artistPageLink : albumPageLink
+  }
+
+  contentData () {
+    return (
+      <React.Fragment>
+        {this.imageData()}
+        <List.Content className="searchItemContent">
+          {this.albumTitleData()}
+          {this.artistNameData()}
+          {this.listenersCountData()}
+        </List.Content>
+      </React.Fragment>
+    )
+  }
+
+  imageData () {
+    const { album } = this.props
 
     const image = album.images.extrasmall
-    const imageData = (
+
+    return (
       <div className="searchItemImage">
         <Image wrapped rounded className="imageWrapBordered" src={image} />
       </div>
     )
+  }
 
-    const albumTitleClassName = !isArtistHovered ? 'searchItemMainTitle' : ''
-    const albumTitleData = (
-      <List.Header
-        as="h4"
-        className={albumTitleClassName}
-        content={albumTitle}
-      />
-    )
+  albumTitleData () {
+    const { album } = this.props
+    const { isArtistHovered } = this.state
 
-    const artistNameClassName = isArtistHovered ? 'searchItemMainTitle' : ''
-    const toggleArtistHovered = bool =>
+    const className = !isArtistHovered ? 'searchItemMainTitle' : ''
+
+    return <List.Header as="h4" content={album.title} {...{ className }} />
+  }
+
+  artistNameData () {
+    const { isArtistHovered } = this.state
+    const { album } = this.props
+
+    const toggleArtistHovered = () => {
       this.setState({ isArtistHovered: !isArtistHovered })
-    const artistNameData = (
+    }
+    const className = isArtistHovered ? 'searchItemMainTitle' : ''
+
+    return (
       <List.Description
-        className={artistNameClassName}
-        content={artistName}
+        content={album.artist.name}
         onMouseEnter={toggleArtistHovered}
         onMouseLeave={toggleArtistHovered}
+        {...{ className }}
       />
     )
+  }
+
+  listenersCountData () {
+    const { album } = this.props
+
+    const artistName = album.artist.name
+    const albumTitle = album.title
 
     const listenersCountProps = { artistName, albumTitle }
-    const listenersCountData = (
+
+    return (
       <div className="searchItemExtra">
         <ListenersCount {...listenersCountProps} />
       </div>
     )
+  }
 
-    const infoData = (
-      <List.Content className="searchItemContent">
-        {albumTitleData}
-        {artistNameData}
-        {listenersCountData}
-      </List.Content>
-    )
-
-    const contentData = (
-      <React.Fragment>
-        {imageData}
-        {infoData}
-      </React.Fragment>
-    )
+  render () {
+    const { hideSearch } = this.props
 
     return (
       <List.Item
         className="searchItem"
         as={Link}
-        to={albumOrArtistLink}
+        to={this.albumOrArtistLink()}
+        content={this.contentData()}
         onClick={hideSearch}
-        content={contentData}
       />
     )
   }

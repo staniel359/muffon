@@ -1,54 +1,82 @@
 import React from 'react'
-import { Segment, Image, Header, Label } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { Segment, Image, Header, Label } from 'semantic-ui-react'
 import Tags from 'global/Tags'
 
 export default class Artist extends React.PureComponent {
-  render () {
+  imageData () {
     const { artist } = this.props
-    const { name, tags, description } = artist
 
-    const artistNameEncoded = encodeURIComponent(name)
-    const similarArtistPageLink = `/artists/${artistNameEncoded}`
+    const image = artist.images.small
 
-    const src = artist.images.small
-    const imageData = (
-      <Link className="similarCardImage" to={similarArtistPageLink}>
-        <Image rounded {...{ src }} />
+    return (
+      <Link className="similarCardImage" to={this.similarArtistPageLink()}>
+        <Image rounded src={image} />
       </Link>
     )
+  }
 
-    const nameData = (
+  similarArtistPageLink () {
+    const { artist } = this.props
+
+    const artistNameEncoded = encodeURIComponent(artist.name)
+
+    return `/artists/${artistNameEncoded}`
+  }
+
+  contentData () {
+    const { tags, description } = this.props.artist
+
+    const tagsData = tags.length > 0 && this.tagsData()
+
+    const descriptionData = <div>{description}</div>
+
+    return (
+      <Segment className="similarCardContent">
+        {this.nameData()}
+        {tagsData}
+        {this.countersData()}
+        {descriptionData}
+      </Segment>
+    )
+  }
+
+  nameData () {
+    const { artist } = this.props
+
+    return (
       <Header as="h2" className="similarCardMainLink">
-        <Link to={similarArtistPageLink}>{name}</Link>
+        <Link to={this.similarArtistPageLink()}>{artist.name}</Link>
       </Header>
     )
+  }
 
-    const tagsPageLink = `/artists/${artistNameEncoded}/tags`
-    const tagsProps = { tags, viewMore: true, link: tagsPageLink }
+  tagsData () {
+    const { tags } = this.props.artist
+
+    const tagsPageLink = `${this.similarArtistPageLink()}/tags`
+    const tagsProps = { tags, isViewMore: true, link: tagsPageLink }
+
+    return <Tags {...tagsProps} />
+  }
+
+  countersData () {
+    const { artist } = this.props
 
     const listenersCount = artist.listeners_count.toLocaleString('eu')
-    const countersData = (
+
+    return (
       <Label.Group size="large">
         <Label basic icon="user" content={listenersCount} />
       </Label.Group>
     )
+  }
 
-    const descriptionData = <div>{description || 'No description.'}</div>
-
-    const contentData = (
-      <Segment className="similarCardContent">
-        {nameData}
-        <Tags {...tagsProps} />
-        {countersData}
-        {descriptionData}
-      </Segment>
-    )
-
+  render () {
     return (
       <div className="similarCard">
-        {imageData}
-        {contentData}
+        {this.imageData()}
+        {this.contentData()}
       </div>
     )
   }

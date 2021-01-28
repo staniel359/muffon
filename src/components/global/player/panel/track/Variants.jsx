@@ -43,11 +43,12 @@ export default class Variants extends React.PureComponent {
   panelData () {
     const { isOpen } = this.state
 
-    const panelClassName = 'playerPanelTrackVariants' + (isOpen ? ' open' : '')
+    const classNames = ['playerPanelTrackVariants', isOpen && 'open']
+    const className = classNames.filter(Boolean).join(' ')
 
     return (
       <Ref innerRef={this.variantsRef}>
-        <div className={panelClassName}>
+        <div {...{ className }}>
           {this.buttonData()}
           {this.contentData()}
         </div>

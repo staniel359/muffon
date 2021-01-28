@@ -1,122 +1,102 @@
 import React from 'react'
 import { Message, Icon, Button } from 'semantic-ui-react'
+import errorsList from './error_message/functions/errorsList'
 
 export default class ErrorMessage extends React.PureComponent {
   constructor (props) {
     super(props)
-    this.state = { errorData: {}, isRefreshable: false }
+    this.state = { errorData: {} }
   }
 
-  componentDidMount = () => this.setErrorData()
+  componentDidMount () {
+    this.handleError()
+  }
 
-  setErrorData () {
-    const { error } = this.props
-    const { errors } = this
+  handleError () {
+    const { isAxiosError } = this.props.error
 
-    if (error.isAxiosError) {
-      if (error.response) {
-        switch (error.response.status) {
-          case 400:
-            return this.setState({ errorData: errors.badRequest })
-          case 404:
-            return this.setState({ errorData: errors.notFound })
-          case 500:
-            return this.setState({ errorData: errors.internalServer })
-          case 502:
-            return this.setState({
-              errorData: errors.badGateway,
-              isRefreshable: true
-            })
-          case 504:
-            return this.setState({
-              errorData: errors.gatewayTimeout,
-              isRefreshable: true
-            })
-        }
-      } else {
-        return this.setState({
-          errorData: errors.connection,
-          isRefreshable: true
-        })
-      }
+    if (isAxiosError) {
+      this.handleAxiosError()
     } else {
-      this.setState({ errorData: errors.client })
-      return console.log(error)
+      this.setErrorData('client')
     }
   }
 
-  errors = {
-    badRequest: {
-      icon: 'ban',
-      header: 'Bad request',
-      content: 'Please make a request with valid data.'
-    },
-    notFound: {
-      icon: 'search',
-      header: 'Nothing was found',
-      content: 'Please try looking for something else.'
-    },
-    internalServer: {
-      icon: 'server',
-      header: 'Internal server error',
-      content: 'Please contact us for information.'
-    },
-    badGateway: {
-      icon: 'server',
-      header: 'Remote server error',
-      content: 'Please try again in a moment.'
-    },
-    gatewayTimeout: {
-      icon: 'clock outline',
-      header: 'Remote server timeout',
-      content: 'Please try again in a moment.'
-    },
-    connection: {
-      icon: 'wifi',
-      header: 'Connection lost',
-      content: 'Please try again in a moment.'
-    },
-    client: {
-      icon: 'window maximize outline',
-      header: 'Client error',
-      content: 'Please contact us for information.'
+  handleAxiosError () {
+    const { response } = this.props.error
+
+    if (response) {
+      this.handleResponseError()
+    } else {
+      return this.setErrorData('connection')
     }
   }
 
-  render () {
-    const { handleRefresh } = this.props
-    const { errorData, isRefreshable } = this.state
-    const { icon, header, content } = errorData
+  handleResponseError () {
+    const { status } = this.props.error.response
 
-    const textData = (
+    switch (status) {
+      case 400:
+        return this.setErrorData('badRequest')
+      case 404:
+        return this.setErrorData('notFound')
+      case 500:
+        return this.setErrorData('internalServer')
+      case 502:
+        return this.setErrorData('badGateway')
+      case 504:
+        return this.setErrorData('gatewayTimeout')
+    }
+  }
+
+  setErrorData (error, isRefreshable) {
+    const errorData = errorsList()[error]
+
+    this.setState({ errorData, isRefreshable })
+  }
+
+  contentData () {
+    const { icon } = this.state.errorData
+
+    return (
+      <Message icon>
+        <Icon name={icon} />
+        <Message.Content content={this.messageData()} />
+      </Message>
+    )
+  }
+
+  messageData () {
+    const { isRefreshable } = this.state.errorData
+
+    const refreshButtonData = isRefreshable && this.refreshButtonData()
+
+    return (
+      <React.Fragment>
+        {this.textData()}
+        {refreshButtonData}
+      </React.Fragment>
+    )
+  }
+
+  textData () {
+    const { header, content } = this.state.errorData
+
+    return (
       <div>
         <Message.Header content={header} />
         {content}
       </div>
     )
+  }
 
-    const refreshButtonData = isRefreshable && (
-      <Button
-        icon="refresh"
-        content="Refresh"
-        onClick={() => handleRefresh()}
-      />
-    )
+  refreshButtonData () {
+    const { handleRefresh } = this.props
 
-    const contentData = (
-      <React.Fragment>
-        {textData}
-        {refreshButtonData}
-      </React.Fragment>
-    )
+    return <Button icon="refresh" content="Refresh" onClick={handleRefresh} />
+  }
 
-    return (
-      <div className="errorMessage">
-        <Message icon>
-          <Icon name={icon} />
-          <Message.Content content={contentData} />
-        </Message>
-      </div>
-    )
+  render () {
+    return <div className="errorMessage">{this.contentData()}</div>
   }
 }

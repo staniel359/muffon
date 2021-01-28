@@ -3,15 +3,37 @@ import { Card, Header, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class Artist extends React.PureComponent {
-  render () {
+  artistPageLink () {
     const { artist } = this.props
 
-    const artistName = artist.name
-    const artistNameEncoded = encodeURIComponent(artistName)
-    const artistPageLink = `/artists/${artistNameEncoded}`
+    const artistNameEncoded = encodeURIComponent(artist.name)
 
-    const image = artist.images.small
-    const imageData = (
+    return `/artists/${artistNameEncoded}`
+  }
+
+  contentData () {
+    const { artist } = this.props
+
+    const headerData = (
+      <Header as="h3" className="cardLightMainHeader" content={artist.name} />
+    )
+
+    return (
+      <React.Fragment>
+        <div />
+        {this.imageData()}
+        {headerData}
+        {this.listenersCountData()}
+      </React.Fragment>
+    )
+  }
+
+  imageData () {
+    const { images } = this.props.artist
+
+    const image = images.small
+
+    return (
       <Image
         wrapped
         circular
@@ -20,34 +42,28 @@ export default class Artist extends React.PureComponent {
         src={image}
       />
     )
+  }
 
-    const headerData = (
-      <Header as="h3" className="cardLightMainHeader" content={artistName} />
-    )
+  listenersCountData () {
+    const { artist } = this.props
 
-    const listenersCountData = (
+    const listenersCount = artist.listeners_count.toLocaleString('eu')
+    const listenersCountData = `${listenersCount} listeners`
+
+    return (
       <Card.Content>
-        <Card.Description>
-          {artist.listeners_count.toLocaleString('eu') + ' listeners'}
-        </Card.Description>
+        <Card.Description>{listenersCountData}</Card.Description>
       </Card.Content>
     )
+  }
 
-    const contentData = (
-      <React.Fragment>
-        <div />
-        {imageData}
-        {headerData}
-        {listenersCountData}
-      </React.Fragment>
-    )
-
+  render () {
     return (
       <Card
         className="cardLight"
         as={Link}
-        to={artistPageLink}
-        content={contentData}
+        to={this.artistPageLink()}
+        content={this.contentData()}
       />
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
+import { Card, Image } from 'semantic-ui-react'
 import Dimmer from 'global/artists/image/Dimmer'
 
 export default class List extends React.PureComponent {
@@ -9,37 +9,48 @@ export default class List extends React.PureComponent {
     this.state = { isDimmerActive: false, imageIndex: 0 }
   }
 
-  render () {
+  contentData () {
     const { itemsPerRow, images } = this.props
-    const { isDimmerActive, imageIndex } = this.state
 
-    const imageData = (image, imageIndex) => {
-      const handleClick = () => {
-        this.setState({ isDimmerActive: true, imageIndex })
-      }
+    const imagesData = images.map(this.imageData)
 
-      return (
-        <Card as="a" className="cardLight" key={uuid()}>
-          <Image
-            wrapped
-            rounded
-            className="imageWrapBordered clickable"
-            src={image.small}
-            onClick={handleClick}
-          />
-        </Card>
-      )
+    return <Card.Group {...{ itemsPerRow }}>{imagesData}</Card.Group>
+  }
+
+  imageData = (image, imageIndex) => {
+    const handleClick = () => {
+      this.setState({ isDimmerActive: true, imageIndex })
     }
-    const imagesData = images.map(imageData)
-
-    const hideDimmer = () => this.setState({ isDimmerActive: false })
-    const dimmerProps = { images, isDimmerActive, imageIndex, hideDimmer }
 
     return (
-      <React.Fragment>
-        <Card.Group {...{ itemsPerRow }}>{imagesData}</Card.Group>
+      <Card as="a" className="cardLight" key={uuid()}>
+        <Image
+          wrapped
+          rounded
+          className="imageWrapBordered clickable"
+          src={image.small}
+          onClick={handleClick}
+        />
+      </Card>
+    )
+  }
 
-        <Dimmer {...dimmerProps} />
+  dimmerData () {
+    const { isDimmerActive, imageIndex } = this.state
+    const { images } = this.props
+
+    const hideDimmer = () => this.setState({ isDimmerActive: false })
+
+    const dimmerProps = { isDimmerActive, imageIndex, images, hideDimmer }
+
+    return <Dimmer {...dimmerProps} />
+  }
+
+  render () {
+    return (
+      <React.Fragment>
+        {this.contentData()}
+        {this.dimmerData()}
       </React.Fragment>
     )
   }

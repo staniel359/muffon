@@ -8,11 +8,11 @@ export default class List extends React.PureComponent {
     const { albums, itemsPerRow } = this.props
 
     const albumData = album => {
-      const key = uuid()
-      const albumProps = { album, key }
+      const albumProps = { key: uuid(), album }
 
       return <Album {...albumProps} />
     }
+
     const albumsData = albums.map(albumData)
 
     return <Card.Group {...{ itemsPerRow }}>{albumsData}</Card.Group>

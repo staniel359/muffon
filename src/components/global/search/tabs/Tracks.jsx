@@ -32,8 +32,6 @@ export default class Tracks extends React.PureComponent {
   responsePageLimit = 20
   dataList = (<List />)
 
-  tabRef = this.props.tracksRef
-
   contentData () {
     return (
       <div className="searchResultsTabContent paginatedWrap">

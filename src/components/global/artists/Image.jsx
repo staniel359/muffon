@@ -33,13 +33,10 @@ export default class ArtistImage extends React.PureComponent {
   placeholderImageData () {
     const { circular } = this.props
 
-    const dataClassName = circular ? 'circular' : 'rounded'
+    const className = circular ? 'circular' : 'rounded'
 
     return (
-      <Placeholder
-        className={dataClassName}
-        content={<Placeholder.Image square />}
-      />
+      <Placeholder content={<Placeholder.Image square />} {...{ className }} />
     )
   }
 

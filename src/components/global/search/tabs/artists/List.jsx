@@ -1,19 +1,21 @@
 import React from 'react'
-import { List } from 'semantic-ui-react'
 import { v4 as uuid } from 'uuid'
+import { List } from 'semantic-ui-react'
 import Artist from './Artist'
 
 export default class ArtistsList extends React.PureComponent {
   render () {
-    const { artists, hideSearch } = this.props
+    const { artists } = this.props
 
     const artistData = artist => {
-      const key = uuid()
-      const artistProps = { artist, hideSearch, key }
+      const { hideSearch } = this.props
+
+      const artistProps = { key: uuid(), artist, hideSearch }
 
       return <Artist {...artistProps} />
     }
-    const artistsListData = artists && artists.map(artistData)
+
+    const artistsListData = artists.map(artistData)
 
     return (
       <List

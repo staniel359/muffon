@@ -74,7 +74,7 @@ export default class Right extends React.PureComponent {
     const tagsPageLinkData = { pathname: tagsPageLink, requestData }
     const tagsProps = {
       tags: album.tags,
-      viewMore: true,
+      isViewMore: true,
       link: tagsPageLinkData
     }
 

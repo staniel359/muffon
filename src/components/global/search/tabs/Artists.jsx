@@ -32,8 +32,6 @@ export default class Artists extends React.PureComponent {
   responsePageLimit = 10
   dataList = (<List />)
 
-  tabRef = this.props.artistsRef
-
   contentData () {
     return (
       <div className="searchResultsTabContent paginatedWrap">

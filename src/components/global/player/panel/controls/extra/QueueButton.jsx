@@ -1,11 +1,11 @@
 import React from 'react'
 import { Button, Popup } from 'semantic-ui-react'
 
-export default class triggerData extends React.PureComponent {
-  render () {
+export default class QueueButton extends React.PureComponent {
+  buttonData () {
     const { queue, toggleQueuePanel } = this.props
 
-    const triggerData = (
+    return (
       <Button
         basic
         compact
@@ -15,8 +15,10 @@ export default class triggerData extends React.PureComponent {
         onClick={toggleQueuePanel}
       />
     )
+  }
 
-    const contentData = (
+  render () {
+    return (
       <Popup
         inverted
         positionFixed
@@ -24,10 +26,8 @@ export default class triggerData extends React.PureComponent {
         position="top center"
         content="Queue"
         className="playerPanelExtraPopup"
-        trigger={triggerData}
+        trigger={this.buttonData()}
       />
     )
-
-    return <React.Fragment>{contentData}</React.Fragment>
   }
 }

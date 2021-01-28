@@ -4,32 +4,35 @@ import { v4 as uuid } from 'uuid'
 import { Link } from 'react-router-dom'
 
 export default class Tags extends React.PureComponent {
-  render () {
-    const { tags, viewMore, link } = this.props
+  tagData = tag => {
+    const tagName = tag.name || tag
+    const tagNameEncoded = encodeURIComponent(tagName)
+    const tagPageLink = `/tags/${tagNameEncoded}`
 
-    const tagName = tag => tag.name || tag
-    const tagNameEncoded = tag => encodeURIComponent(tagName(tag))
-    const tagPageLink = tag => `/tags/${tagNameEncoded(tag)}`
+    const tagPercentData = !!tag.percent && (
+      <Label.Detail content={`${tag.percent}%`} />
+    )
 
-    const tagPercentData = tag =>
-      tag.percent && <Label.Detail content={`${tag.percent}%`} />
-
-    const tagData = tag => (
-      <Label key={uuid()} as={Link} to={tagPageLink(tag)}>
-        {tagName(tag)}
-        {tagPercentData(tag)}
+    return (
+      <Label key={uuid()} as={Link} to={tagPageLink}>
+        {tagName}
+        {tagPercentData}
       </Label>
     )
-    const tagsData = tags.map(tagData)
+  }
 
-    const tagsViewMoreData = viewMore && tags.length > 0 && (
-      <Label as={Link} to={link} content="..." />
-    )
+  render () {
+    const { tags, isViewMore, link } = this.props
+
+    const tagsData = tags.map(this.tagData)
+
+    const isMore = isViewMore && tags.length > 0
+    const viewMoreData = isMore && <Label as={Link} to={link} content="..." />
 
     return (
       <Label.Group size="large">
         {tagsData}
-        {tagsViewMoreData}
+        {viewMoreData}
       </Label.Group>
     )
   }

@@ -9,43 +9,57 @@ export default class Variant extends React.PureComponent {
     this.state = { isLoading: false }
   }
 
-  render () {
-    const { isLoading } = this.state
-    const { variant, getTrackVariant, currentTrackAudioId } = this.props
+  contentData () {
+    const { variant } = this.props
 
-    const handleClick = () => {
-      this.setState({ isLoading: true })
+    const titleArtistData = (
+      <div>
+        <List.Header content={variant.title} />
+        <List.Description content={variant.artist.name} />
+      </div>
+    )
 
-      const handleSuccess = () => this.setState({ isLoading: false })
+    const lengthData = (
+      <div className="playerPanelTrackVariantLength">
+        {formatSeconds(variant.length)}
+      </div>
+    )
 
-      const handleError = error => {
-        !axios.isCancel(error) && this.setState({ isError: true })
-      }
-
-      getTrackVariant(variant).then(handleSuccess).catch(handleError)
-    }
-
-    const isActive = variant.audio.id === currentTrackAudioId
-
-    const contentData = (
+    return (
       <List.Content className="playerPanelTrackVariantContent">
-        <div>
-          <List.Header content={variant.title} />
-          <List.Description content={variant.artist.name} />
-        </div>
-        <div className="playerPanelTrackVariantLength">
-          {formatSeconds(variant.length)}
-        </div>
+        {titleArtistData}
+        {lengthData}
       </List.Content>
     )
+  }
+
+  handleClick = () => {
+    const { getTrackVariant, variant } = this.props
+
+    this.setState({ isLoading: true })
+
+    const handleSuccess = () => this.setState({ isLoading: false })
+
+    const handleError = error => {
+      !axios.isCancel(error) && this.setState({ isError: true })
+    }
+
+    getTrackVariant(variant).then(handleSuccess).catch(handleError)
+  }
+
+  render () {
+    const { isLoading } = this.state
+    const { variant, currentTrackAudioId } = this.props
+
+    const isActive = variant.audio.id === currentTrackAudioId
 
     return (
       <List.Item
         className="playerPanelTrackVariant"
-        onClick={handleClick}
         active={isActive}
-        content={contentData}
         disabled={isLoading}
+        content={this.contentData()}
+        onClick={this.handleClick}
       />
     )
   }

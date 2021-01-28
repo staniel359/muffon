@@ -1,16 +1,3 @@
-$bandcamp: #629aa9
-$vk: #2787F5
-$lastfm: #d51007
-$soundcloud: #ff5500
-$discogs: #333333
-$spotify: #1DB954
-$deezer: #000000
-
-$discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
-$deezerIcon: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
-
-$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud, discogs: $discogs, spotify: $spotify, deezer: $deezer)
-
 // Left column
 
 .albumPageLeftColumn
@@ -47,28 +34,6 @@ $sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundclou
 .albumSourceSelectSourceMaxBitrate
   font-size: 12px
   color: rgba(0,0,0,.4)
-
-@each $source, $color in $sources
-  .#{$source}Icon
-    color: $color
-
-  .#{$source}Label
-    background-color: $color !important
-    border-color: $color !important
-    color: white !important
-
-i.icon.discogs:before
-  content: $discogsIcon
-
-.discogsLabel:before
-  content: $discogsIcon
-  filter: invert(1)
-
-i.icon.deezer:before
-  content: $deezerIcon
-
-.deezerLabel:before
-  content: $deezerIcon
 
 // Right column
 

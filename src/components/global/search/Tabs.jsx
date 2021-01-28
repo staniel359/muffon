@@ -1,44 +1,62 @@
 import React from 'react'
+import { v4 as uuid } from 'uuid'
+import { Tab } from 'semantic-ui-react'
 import Artists from './tabs/Artists'
 import Albums from './tabs/Albums'
 import Tracks from './tabs/Tracks'
-import { Tab } from 'semantic-ui-react'
-import { v4 as uuid } from 'uuid'
 
 export default class Tabs extends React.PureComponent {
-  render () {
+  constructor (props) {
+    super(props)
+
+    this.artistsRef = React.createRef()
+    this.albumsRef = React.createRef()
+    this.tracksRef = React.createRef()
+  }
+
+  tabPanesData () {
     const { query, hideSearch } = this.props
 
-    const tabMenu = { fluid: true, pointing: true, secondary: true }
-
-    const artistsRef = React.createRef()
-    const albumsRef = React.createRef()
-    const tracksRef = React.createRef()
+    const ref = refName => this[`${refName}Ref`]
 
     const scrollToTop = tabName => {
-      const refs = { artistsRef, albumsRef, tracksRef }
-      const tab = refs[`${tabName}Ref`].current
+      const tab = ref(tabName).current
 
-      tab && (tab.scrollTop = 0)
+      !!tab && (tab.scrollTop = 0)
     }
 
-    const tabPaneProps = { query, hideSearch, scrollToTop }
+    const tabPaneProps = tabName => ({
+      key: uuid(),
+      tabRef: ref(tabName),
+      query,
+      hideSearch,
+      scrollToTop
+    })
 
-    const artistsProps = { key: uuid(), artistsRef, ...tabPaneProps }
-    const albumsProps = { key: uuid(), albumsRef, ...tabPaneProps }
-    const tracksProps = { key: uuid(), tracksRef, ...tabPaneProps }
-
-    const tabPanesData = [
-      { menuItem: 'Artists', pane: <Artists {...artistsProps} /> },
-      { menuItem: 'Albums', pane: <Albums {...albumsProps} /> },
-      { menuItem: 'Tracks', pane: <Tracks {...tracksProps} /> }
+    return [
+      {
+        menuItem: 'Artists',
+        pane: <Artists {...tabPaneProps('artists')} />
+      },
+      {
+        menuItem: 'Albums',
+        pane: <Albums {...tabPaneProps('albums')} />
+      },
+      {
+        menuItem: 'Tracks',
+        pane: <Tracks {...tabPaneProps('tracks')} />
+      }
     ]
+  }
+
+  render () {
+    const tabMenuData = { fluid: true, pointing: true, secondary: true }
 
     return (
       <Tab
         className="searchResults"
-        menu={tabMenu}
-        panes={tabPanesData}
+        menu={tabMenuData}
+        panes={this.tabPanesData()}
         renderActiveOnly={false}
       />
     )

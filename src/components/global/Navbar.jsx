@@ -4,51 +4,63 @@ import { v4 as uuid } from 'uuid'
 import { createBrowserHistory } from 'history'
 
 export default class Navbar extends React.PureComponent {
-  render () {
-    const { navSections } = this.props
+  constructor (props) {
+    super(props)
 
-    const history = createBrowserHistory()
-    const backButtonData = (
+    this.history = createBrowserHistory()
+  }
+
+  backwardButtonData () {
+    return (
       <Menu.Item fitted>
         <Button
           basic
           className="navbarHistoryButton"
           icon="arrow left"
-          onClick={history.goBack}
+          onClick={this.history.goBack}
         />
       </Menu.Item>
     )
+  }
 
-    const sectionWithKey = section => ({ ...section, key: uuid() })
-    const sections = navSections.map(sectionWithKey)
-    const contentData = (
+  contentData () {
+    const { navSections } = this.props
+
+    const sectionData = section => ({ key: uuid(), ...section })
+    const sectionsData = navSections.map(sectionData)
+
+    return (
       <Menu.Item className="navbarContentWrap">
         <Breadcrumb
           className="navbarContent"
           size="large"
           icon="right angle"
-          {...{ sections }}
+          sections={sectionsData}
         />
       </Menu.Item>
     )
+  }
 
-    const forwardButtonData = (
+  forwardButtonData () {
+    return (
       <Menu.Item fitted>
         <Button
           basic
           className="navbarHistoryButton"
           icon="arrow right"
-          onClick={history.goForward}
+          onClick={this.history.goForward}
         />
       </Menu.Item>
     )
+  }
 
+  render () {
     return (
       <Menu borderless fixed="top" id="navbar">
         <Container>
-          {backButtonData}
-          {contentData}
-          {forwardButtonData}
+          {this.backwardButtonData()}
+          {this.contentData()}
+          {this.forwardButtonData()}
         </Container>
       </Menu>
     )

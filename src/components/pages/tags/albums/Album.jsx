@@ -8,22 +8,39 @@ export default class Album extends React.PureComponent {
     this.state = { isArtistHovered: false }
   }
 
-  render () {
-    const { album } = this.props
+  albumOrArtistLink () {
     const { isArtistHovered } = this.state
+    const { album } = this.props
 
-    const artistName = album.artist.name
-    const artistNameEncoded = encodeURIComponent(artistName)
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
     const artistPageLink = `/artists/${artistNameEncoded}`
 
-    const albumTitle = album.title
-    const albumTitleEncoded = encodeURIComponent(albumTitle)
+    const albumTitleEncoded = encodeURIComponent(album.title)
     const albumPageLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
 
-    const albumOrArtistLink = isArtistHovered ? artistPageLink : albumPageLink
+    return isArtistHovered ? artistPageLink : albumPageLink
+  }
+
+  contentData () {
+    return (
+      <React.Fragment>
+        <div />
+        {this.imageData()}
+        {this.albumTitleData()}
+        <Card.Content>
+          {this.artistNameData()}
+          {this.listenersCountData()}
+        </Card.Content>
+      </React.Fragment>
+    )
+  }
+
+  imageData () {
+    const { album } = this.props
 
     const image = album.images.small
-    const imageData = (
+
+    return (
       <Image
         wrapped
         rounded
@@ -32,48 +49,52 @@ export default class Album extends React.PureComponent {
         src={image}
       />
     )
+  }
 
-    const albumTitleClassName = !isArtistHovered ? 'cardLightMainHeader' : ''
-    const albumTitleData = (
-      <Header as="h4" className={albumTitleClassName} content={albumTitle} />
-    )
+  albumTitleData () {
+    const { isArtistHovered } = this.state
+    const { album } = this.props
 
-    const artistNameClassName = isArtistHovered ? 'cardLightMainHeader' : ''
-    const toggleArtistHovered = bool =>
+    const className = !isArtistHovered ? 'cardLightMainHeader' : ''
+
+    return <Header as="h4" content={album.title} {...{ className }} />
+  }
+
+  artistNameData () {
+    const { isArtistHovered } = this.state
+    const { album } = this.props
+
+    const toggleArtistHovered = () => {
       this.setState({ isArtistHovered: !isArtistHovered })
-    const artistNameData = (
+    }
+    const className = isArtistHovered ? 'cardLightMainHeader' : ''
+
+    return (
       <Card.Description
-        className={artistNameClassName}
-        content={artistName}
+        content={album.artist.name}
         onMouseEnter={toggleArtistHovered}
         onMouseLeave={toggleArtistHovered}
+        {...{ className }}
       />
     )
+  }
 
-    const listenersCountData = (
-      <Card.Description>
-        {album.listeners_count.toLocaleString('eu') + ' listeners'}
-      </Card.Description>
-    )
+  listenersCountData () {
+    const { album } = this.props
 
-    const contentData = (
-      <React.Fragment>
-        <div />
-        {imageData}
-        {albumTitleData}
-        <Card.Content>
-          {artistNameData}
-          {listenersCountData}
-        </Card.Content>
-      </React.Fragment>
-    )
+    const listenersCount = album.listeners_count.toLocaleString('eu')
+    const listenersCountData = `${listenersCount} listeners`
 
+    return <Card.Description>{listenersCountData}</Card.Description>
+  }
+
+  render () {
     return (
       <Card
         className="cardLight"
         as={Link}
-        to={albumOrArtistLink}
-        content={contentData}
+        to={this.albumOrArtistLink()}
+        content={this.contentData()}
       />
     )
   }

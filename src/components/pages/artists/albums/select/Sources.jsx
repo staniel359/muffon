@@ -8,9 +8,10 @@ export default class Sources extends React.PureComponent {
     const { selectedSource } = this.props
 
     if (selectedSource) {
-      const classNameData = `${selectedSource.id} ${selectedSource.id}Label`
+      const sourceId = selectedSource.id
+      const className = [sourceId, `${sourceId}Label`].join(' ')
 
-      return { className: classNameData }
+      return { className }
     } else {
       return { name: 'dot circle' }
     }

@@ -1,14 +1,14 @@
 import React from 'react'
 import Routes from './Routes'
-import Search from 'global/Search'
-import Navbar from 'global/Navbar'
-import QueuePanelContext from 'global/QueuePanelContext'
-import PlayerPanelContext from 'global/PlayerPanelContext'
-import PlayerProvider from 'contexts/PlayerProvider'
-import Mousetrap from 'mousetrap'
-import { Container } from 'semantic-ui-react'
 import { HashRouter as Router } from 'react-router-dom'
-import Title from 'global/Title'
+import { Container } from 'semantic-ui-react'
+import Mousetrap from 'mousetrap'
+import PlayerProvider from 'contexts/PlayerProvider'
+import PlayerPanelContext from 'global/PlayerPanelContext'
+import TitleContext from 'global/TitleContext'
+import QueuePanelContext from 'global/QueuePanelContext'
+import Navbar from 'global/Navbar'
+import Search from 'global/Search'
 import 'styles/App.sass'
 
 export default class App extends React.PureComponent {
@@ -23,34 +23,52 @@ export default class App extends React.PureComponent {
   }
 
   toggleSearch = () => {
-    const isSearchActive = !this.state.isSearchActive
+    const { isSearchActive } = this.state
 
-    this.setState({ isSearchActive })
+    this.setState({ isSearchActive: !isSearchActive })
   }
 
   hideSearch = () => this.setState({ isSearchActive: false })
 
-  setNavSections = navSections => this.setState({ navSections })
-
-  render () {
-    const { navSections, isSearchActive } = this.state
-    const { setNavSections, hideSearch } = this
+  navbarData () {
+    const { navSections } = this.state
 
     const navbarProps = { navSections }
+
+    return <Navbar {...navbarProps} />
+  }
+
+  routesData () {
+    const { setNavSections } = this
+
     const routesProps = { setNavSections }
+
+    return <Routes {...routesProps} />
+  }
+
+  setNavSections = navSections => this.setState({ navSections })
+
+  searchData () {
+    const { isSearchActive } = this.state
+    const { hideSearch } = this
+
     const searchProps = { isSearchActive, hideSearch }
 
+    return <Search {...searchProps} />
+  }
+
+  render () {
     return (
       <Router>
         <PlayerProvider>
-          <Title />
+          <TitleContext />
 
-          <Navbar {...navbarProps} />
+          {this.navbarData()}
 
           <Container id="mainContainer">
-            <Routes {...routesProps} />
+            {this.routesData()}
 
-            <Search {...searchProps} />
+            {this.searchData()}
           </Container>
 
           <QueuePanelContext />
