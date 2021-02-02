@@ -26,6 +26,10 @@ export default class PlayerProvider extends React.PureComponent {
     this.setState({ isQueuePanelVisible: !isQueuePanelVisible })
   }
 
+  hideQueuePanel = () => {
+    this.setState({ isQueuePanelVisible: false })
+  }
+
   isQueueStart = () => {
     const { queue } = this.state
 
@@ -75,11 +79,17 @@ export default class PlayerProvider extends React.PureComponent {
     }
   }
 
-  handlePause = () => this.setState({ audioStatus: 'pause' })
+  handlePause = () => {
+    this.setState({ audioStatus: 'pause' })
+  }
 
-  audio = () => document.getElementById('playerPanelAudio')
+  audio = () => {
+    return document.getElementById('playerPanelAudio')
+  }
 
-  handlePlay = () => this.setState({ audioStatus: 'play' })
+  handlePlay = () => {
+    this.setState({ audioStatus: 'play' })
+  }
 
   toggleMute = () => {
     const isMuted = !this.state.isMuted
@@ -105,10 +115,12 @@ export default class PlayerProvider extends React.PureComponent {
   }
 
   toggleShuffle = () => {
+    const { queueOrdered } = this.state
+
     const isShuffle = !this.state.isShuffle
 
-    const tracks = [...this.state.currentAlbum.tracks]
-    const queue = isShuffle ? shuffleArray(tracks) : tracks
+    const queueShuffled = shuffleArray([...this.state.queue])
+    const queue = isShuffle ? queueShuffled : [...queueOrdered]
 
     this.setState({ isShuffle, queue })
   }
@@ -150,7 +162,9 @@ export default class PlayerProvider extends React.PureComponent {
     }
   }
 
-  changeTime = e => (this.audio().currentTime = e.target.value)
+  changeTime = e => {
+    this.audio().currentTime = e.target.value
+  }
 
   startTimeChange = () => {
     const audioStatusOnChange = this.state.audioStatus
@@ -192,10 +206,29 @@ export default class PlayerProvider extends React.PureComponent {
     })
   }
 
-  setCurrentAlbumData = album => {
+  addAlbumToQueue = album => {
+    const albumData = () => {
+      const { title, artist, images, source } = album
+
+      const image = images.extrasmall
+
+      return { title, artist, image, source }
+    }
+
+    const albumTrackData = track => ({ ...track, album: albumData() })
+    const albumTracksData = album.tracks.map(albumTrackData)
+
     this.setState({
-      currentAlbum: album,
-      queue: album.tracks,
+      queue: albumTracksData,
+      queueOrdered: albumTracksData,
+      isShuffle: false
+    })
+  }
+
+  resetQueue = () => {
+    this.setState({
+      queue: null,
+      queueOrdered: null,
       isShuffle: false
     })
   }

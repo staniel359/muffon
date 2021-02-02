@@ -4,11 +4,11 @@ export default function getData () {
   this.setState({ isError: false, isLoading: true })
 
   const handleSuccess = () => {
-    const { setCurrentAlbumData } = this.props
+    const { addAlbumToQueue } = this.props
 
     this._isMounted && this.setState({ isLoading: false })
 
-    setCurrentAlbumData && setCurrentAlbumData()
+    addAlbumToQueue && addAlbumToQueue()
   }
 
   const handleError = () => {

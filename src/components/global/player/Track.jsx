@@ -32,9 +32,9 @@ export default class Track extends React.PureComponent {
   }
 
   trackData () {
-    const { index, track, isWithArtist, hideSearch, topTrackCount } = this.props
+    const { index, track, isWithArtist, isWithAlbum, isWithAlbumImage, hideSearch, topTrackCount } = this.props
 
-    const dataProps = { index, track, isWithArtist, hideSearch, topTrackCount }
+    const dataProps = { index, track, isWithArtist, isWithAlbum, isWithAlbumImage, hideSearch, topTrackCount }
 
     return <Data {...dataProps} />
   }

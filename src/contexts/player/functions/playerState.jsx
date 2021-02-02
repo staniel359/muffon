@@ -3,6 +3,7 @@ export default function playerState () {
     isPlayerPanelVisible: false,
     isQueuePanelVisible: false,
     toggleQueuePanel: this.toggleQueuePanel,
+    hideQueuePanel: this.hideQueuePanel,
     isQueueStart: this.isQueueStart,
     isQueueEnd: this.isQueueEnd,
     getQueueNextTrack: this.getQueueNextTrack,
@@ -31,6 +32,7 @@ export default function playerState () {
     endTimeChange: this.endTimeChange,
     getTrack: this.getTrack,
     getTrackVariant: this.getTrackVariant,
-    setCurrentAlbumData: this.setCurrentAlbumData
+    addAlbumToQueue: this.addAlbumToQueue,
+    resetQueue: this.resetQueue
   }
 }

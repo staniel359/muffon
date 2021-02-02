@@ -9,9 +9,9 @@ export default class TracksListContext extends React.PureComponent {
     return (
       <PlayerContext.Consumer>
         {context => {
-          const { setCurrentAlbumData } = context
+          const { addAlbumToQueue } = context
 
-          const tracksListProps = { album, setCurrentAlbumData }
+          const tracksListProps = { album, addAlbumToQueue }
 
           return <TracksList {...tracksListProps} />
         }}

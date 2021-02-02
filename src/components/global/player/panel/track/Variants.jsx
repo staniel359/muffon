@@ -31,13 +31,13 @@ export default class Variants extends React.PureComponent {
   }
 
   handleClickOutside = event => {
-    const isClickedCurrent = () => {
+    const isClickedOutside = () => {
       const ref = this.variantsRef.current
 
-      return ref && ref.contains(event.target)
+      return ref && !ref.contains(event.target)
     }
 
-    !isClickedCurrent() && this.setState({ isOpen: false })
+    isClickedOutside() && this.setState({ isOpen: false })
   }
 
   panelData () {

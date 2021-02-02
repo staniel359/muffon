@@ -1,9 +1,15 @@
 import React from 'react'
-import { List } from 'semantic-ui-react'
+import { List, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import formatSeconds from 'global/functions/formatSeconds'
 
 export default class Data extends React.PureComponent {
+  imageData () {
+    const { image } = this.props.track.album
+
+    return <Image rounded className="trackContentImage" src={image} />
+  }
+
   indexData () {
     const { index } = this.props
 
@@ -44,6 +50,23 @@ export default class Data extends React.PureComponent {
       <List.Description>
         <Link to={artistPageLink} onClick={this.handleLinkClick}>
           {track.artist.name}
+        </Link>
+      </List.Description>
+    )
+  }
+
+  albumData () {
+    const { album } = this.props.track
+
+    const artistNameEncoded = encodeURIComponent(album.artist.name)
+    const albumTitleEncoded = encodeURIComponent(album.title)
+    const albumPageLink =
+      `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+
+    return (
+      <List.Description>
+        <Link to={albumPageLink} onClick={this.handleLinkClick}>
+          {album.title}
         </Link>
       </List.Description>
     )
@@ -91,13 +114,17 @@ export default class Data extends React.PureComponent {
   }
 
   render () {
-    const { index, isWithArtist, track } = this.props
+    const { isWithAlbumImage, index, isWithArtist, isWithAlbum, track } = this.props
+
+    const imageData = isWithAlbumImage && track.album && this.imageData()
 
     const indexData = index >= 0 && this.indexData()
 
     const titleData = this.titleData()
 
     const artistData = isWithArtist && this.artistData()
+
+    const albumData = isWithAlbum && track.album && this.albumData()
 
     const lengthData = track.length >= 0 && this.lengthData()
 
@@ -109,10 +136,12 @@ export default class Data extends React.PureComponent {
       <List.Content className="trackContentWrap">
         <div className="trackContent">
           <div className="trackContentMain">
+            {imageData}
             {indexData}
             <div>
               {titleData}
               {artistData}
+              {albumData}
             </div>
           </div>
           <div className="trackContentExtra">

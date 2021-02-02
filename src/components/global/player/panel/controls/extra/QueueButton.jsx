@@ -25,7 +25,7 @@ export default class QueueButton extends React.PureComponent {
         on="hover"
         position="top center"
         content="Queue"
-        className="playerPanelExtraPopup"
+        className="buttonPopup"
         trigger={this.buttonData()}
       />
     )

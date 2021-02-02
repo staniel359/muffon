@@ -9,8 +9,10 @@ export default class TrackContext extends React.PureComponent {
       topTrackCount,
       index,
       isWithArtist,
+      isWithAlbum,
+      isWithAlbumImage,
       hideSearch,
-      setCurrentAlbumData
+      addAlbumToQueue
     } = this.props
 
     return (
@@ -26,12 +28,14 @@ export default class TrackContext extends React.PureComponent {
             topTrackCount,
             index,
             isWithArtist,
+            isWithAlbum,
+            isWithAlbumImage,
             hideSearch,
             toggleAudio,
             getTrack,
             isPlaying,
             audioStatus,
-            setCurrentAlbumData
+            addAlbumToQueue
           }
 
           return <Track {...trackProps} />

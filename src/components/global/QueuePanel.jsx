@@ -1,8 +1,5 @@
 import React from 'react'
-import { Sidebar, Segment, Divider, Item, Icon } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
-import { v4 as uuid } from 'uuid'
-import Ticker from 'global/Ticker'
+import { Sidebar, Segment, Button, Divider, Header } from 'semantic-ui-react'
 import TracksListContext from './queue/tracks/ListContext'
 
 export default class QueuePanel extends React.PureComponent {
@@ -19,76 +16,60 @@ export default class QueuePanel extends React.PureComponent {
   }
 
   headerData () {
+    const { queue } = this.props
+
+    const headerText = `${queue.length} tracks`
+
     return (
-      <Item.Group className="queuePanelHeaderWrap">
-        <Item className="queuePanelHeader">
-          {this.imageData()}
-          <Item.Content className="queuePanelHeaderContent">
-            {this.albumTitleData()}
-            {this.artistNameData()}
-            {this.releasedData()}
-          </Item.Content>
-          {this.sourceIconData()}
-        </Item>
-      </Item.Group>
+      <div className="queuePanelHeader">
+        {this.hideQueueButtonData()}
+
+        <Header
+          as="h5"
+          className="queuePanelHeaderText"
+          content={headerText}
+        />
+
+        {this.clearQueueButtonData()}
+      </div>
     )
   }
 
-  imageData () {
-    const src = this.props.currentAlbum.images.medium
-
-    return <Item.Image rounded className="queuePanelHeaderImage" {...{ src }} />
-  }
-
-  albumTitleData () {
-    const { currentAlbum } = this.props
-
-    const artistNameEncoded = encodeURIComponent(currentAlbum.artist.name)
-    const albumTitleEncoded = encodeURIComponent(currentAlbum.title)
-    const albumLink = `/artists/${artistNameEncoded}/albums/${albumTitleEncoded}`
+  hideQueueButtonData () {
+    const { hideQueuePanel } = this.props
 
     return (
-      <Ticker key={uuid()}>
-        <Item.Header as="h3">
-          <Link to={albumLink}>{currentAlbum.title}</Link>
-        </Item.Header>
-      </Ticker>
+      <Button
+        className="queuePanelHeaderButton"
+        size="large"
+        icon="arrow right"
+        onClick={hideQueuePanel}
+      />
     )
   }
 
-  artistNameData () {
-    const { currentAlbum } = this.props
+  clearQueueButtonData () {
+    const handleClick = () => {
+      const { resetQueue, hideQueuePanel } = this.props
 
-    const artistNameEncoded = encodeURIComponent(currentAlbum.artist.name)
-    const artistLink = `/artists/${artistNameEncoded}`
+      resetQueue()
+      hideQueuePanel()
+    }
 
     return (
-      <Ticker key={uuid()}>
-        <Item.Description>
-          <Link to={artistLink}>{currentAlbum.artist.name}</Link>
-        </Item.Description>
-      </Ticker>
+      <Button
+        className="queuePanelHeaderButton"
+        size="large"
+        icon="close"
+        onClick={handleClick}
+      />
     )
-  }
-
-  releasedData () {
-    const { released } = this.props.currentAlbum
-
-    return <Item.Meta>{released || '\u00A0'}</Item.Meta>
-  }
-
-  sourceIconData () {
-    const { currentAlbum } = this.props
-
-    const className = ['queuePanelHeaderIcon', currentAlbum.source].join(' ')
-
-    return <Icon {...{ className }} />
   }
 
   render () {
-    const { currentAlbum, isQueuePanelVisible } = this.props
+    const { queue, isQueuePanelVisible } = this.props
 
-    const contentData = currentAlbum && this.contentData()
+    const contentData = queue && this.contentData()
 
     return (
       <Sidebar

@@ -11,10 +11,10 @@ export default class TracksList extends React.PureComponent {
 
     const isWithArtist = track.artist.name !== album.artist.name
 
-    const setCurrentAlbumData = () => {
-      const { setCurrentAlbumData } = this.props
+    const addAlbumToQueue = () => {
+      const { addAlbumToQueue } = this.props
 
-      setCurrentAlbumData(album)
+      addAlbumToQueue(album)
     }
 
     const trackProps = {
@@ -22,7 +22,7 @@ export default class TracksList extends React.PureComponent {
       track,
       index,
       isWithArtist,
-      setCurrentAlbumData
+      addAlbumToQueue
     }
 
     return <TrackContext {...trackProps} />

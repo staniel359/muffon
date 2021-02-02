@@ -16,7 +16,7 @@ export default class StopButton extends React.PureComponent {
         on="hover"
         position="top center"
         content="Stop"
-        className="playerPanelExtraPopup"
+        className="buttonPopup"
         trigger={this.buttonData()}
       />
     )
