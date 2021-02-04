@@ -1,3 +1,4 @@
+import { pathCase } from 'path-case'
 import axios from 'axios'
 
 export default function getAudio (track) {
@@ -13,7 +14,7 @@ export default function getAudio (track) {
     }
   }
 
-  const url = `/${audio.source}/tracks/${audioId()}`
+  const url = `/${pathCase(audio.source)}/tracks/${audioId()}`
 
   const cancelToken = this.request.token
   const extra = { cancelToken }

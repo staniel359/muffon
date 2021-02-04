@@ -5,11 +5,13 @@ $soundcloud: #ff5500
 $discogs: #333333
 $spotify: #1DB954
 $deezer: #000000
+$yandexMusic: #ffffff
 
 $discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
 $deezerIcon: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
+$yandexMusicIcon: url("https://music.yandex.ru/favicon16.png")
 
-$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud, discogs: $discogs, spotify: $spotify, deezer: $deezer)
+$sources: (lastfm: $lastfm, vk: $vk, bandcamp: $bandcamp, soundcloud: $soundcloud, discogs: $discogs, spotify: $spotify, deezer: $deezer, yandexMusic: $yandexMusic)
 
 @each $source, $color in $sources
   .#{$source}
@@ -43,5 +45,8 @@ i.icon.deezer:before
   content: $deezerIcon
   filter: grayscale(1) opacity(0.75)
 
-.deezerColor:before, .deezerLabel:before
-  filter: none !important
+// Yandex Music
+
+i.icon.yandexMusic:before
+  content: $yandexMusicIcon
+  filter: grayscale(1) opacity(0.75)

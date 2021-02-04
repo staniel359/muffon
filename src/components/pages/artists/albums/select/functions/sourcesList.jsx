@@ -9,6 +9,11 @@ export default function sourcesList () {
       streamable: true,
       maxBitrate: 320
     },
+    yandexMusic: {
+      name: 'Yandex Music',
+      streamable: true,
+      maxBitrate: 192
+    },
     bandcamp: {
       name: 'Bandcamp',
       streamable: true,

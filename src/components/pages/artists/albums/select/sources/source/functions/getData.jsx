@@ -1,3 +1,4 @@
+import { pathCase } from 'path-case'
 import axios from 'axios'
 
 export default function getData ({ sourceId, typeId = 'albums' }) {
@@ -7,7 +8,7 @@ export default function getData ({ sourceId, typeId = 'albums' }) {
 
   this.setState(startState)
 
-  const url = `/${sourceId}/search/${typeId}`
+  const url = `/${pathCase(sourceId)}/search/${typeId}`
 
   const query = `${artist.name} ${title}`
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { List, Image } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { camelCase } from 'camel-case'
 import formatSeconds from 'global/functions/formatSeconds'
 
 export default class Data extends React.PureComponent {
@@ -87,7 +88,10 @@ export default class Data extends React.PureComponent {
     const { audio } = this.props.track
 
     const isAudioPresent = audio && audio.present
-    const classNames = ['trackSourceIcon', isAudioPresent && audio.source]
+    const classNames = [
+      'trackSourceIcon',
+      isAudioPresent && camelCase(audio.source)
+    ]
     const className = classNames.filter(Boolean).join(' ')
 
     return <List.Icon {...{ className }} />

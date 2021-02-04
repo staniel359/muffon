@@ -19,11 +19,13 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "camel-case": "^4.1.2",
     "deepmerge": "^4.2.2",
     "electron-is-dev": "^1.2.0",
     "electron-store": "^7.0.0",
     "mousetrap": "^1.6.5",
     "node-sass": "^5.0.0",
+    "path-case": "^3.0.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",

@@ -24,6 +24,8 @@ export default function albumRequestData ({ album }) {
         return { id: album.spotify_id }
       case 'deezer':
         return { id: album.deezer_id }
+      case 'yandexMusic':
+        return { id: album.yandex_music_id }
     }
   }
 
