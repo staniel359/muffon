@@ -1,0 +1,57 @@
+<template>
+  <div class="left-column">
+    <div class="main-image-container">
+      <BaseArtistImage
+        class="image-content"
+        size="medium"
+        :artistName="artistName"
+        isInteractive
+        isRounded
+      />
+    </div>
+
+    <BaseTransitionContainer
+      class="artist-name"
+      :scrollable="scrollable"
+    >
+      <h3 class="ui header main-header">
+        {{ artistName }}
+      </h3>
+    </BaseTransitionContainer>
+  </div>
+</template>
+
+<script>
+import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
+import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
+
+export default {
+  name: 'LeftColumn',
+  components: {
+    BaseArtistImage,
+    BaseTransitionContainer
+  },
+  props: {
+    artistName: {
+      type: String,
+      required: true
+    },
+    scrollable: HTMLDivElement
+  }
+}
+</script>
+
+<style lang="sass" scoped>
+.left-column
+  @extend .sticky
+  width: 200px
+  margin-right: 20px
+  align-self: flex-start
+  top: $mainContainerTopPadding
+
+.artist-name
+  @extend .text-align-center
+  margin: 10px 0
+  .main-header
+    @extend .text-color-white
+</style>

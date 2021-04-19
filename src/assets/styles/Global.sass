@@ -1,0 +1,116 @@
+@font-face
+  font-family: LatoDefault
+  src: $fontPath format('truetype')
+
+*:not(i)
+  font-family: Lato, LatoDefault, Helvetica Neue, Arial, Helvetica, sans-serif !important
+
+html
+  @extend .scroll-smooth
+
+@media only screen and (min-width: 768px)
+  .main-container
+    width: 700px !important
+
+.main-divider
+  margin: 10px 0 !important
+
+.main-segment-container
+  @extend .no-border, .no-margin
+  &:not(:first-child)
+    margin-top: 20px !important
+
+.main-segment.loading
+  min-height: 100px
+
+.main-page-segment-container
+  @extend .no-margin
+  min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding})
+
+.main-modal
+  width: 500px !important
+
+.main-image-container
+  @extend .relative
+  padding-bottom: 100%
+  .image-content, & > .image
+    @extend .absolute, .w-100, .h-100
+
+.main-link
+  @extend .text-color-unset
+  &:hover
+    @extend .text-color-base
+
+.main-text-container
+  white-space: pre-wrap
+
+.main-card-light
+  @extend .no-shadow, .text-align-center, .text-color-unset
+  .image-container
+    margin-bottom: 5px
+  .content
+    @extend .no-padding, .no-border
+  .description
+    @extend .no-margin
+  &:hover
+    transform: none !important
+    .link-active
+      @extend .text-color-base
+
+.main-simple-list-item
+  @extend .d-flex, .align-items-center
+  .image
+    width: 60px
+    height: 60px
+  .content
+    @extend .flex-full
+  &:hover
+    .link-active
+      @extend .text-color-base
+
+.main-message
+  @extend .no-shadow
+
+.main-popup
+  @extend .no-border, .text-align-center
+
+.main-header
+  @extend .no-margin
+
+.main-dropdown
+  line-height: 1.2em !important
+
+.main-dropdown-item
+  @extend .d-flex, .align-items-center
+  line-height: 1.2em !important
+  .image-container
+    margin-right: 10px
+    .image
+      @extend .object-fit-cover
+      width: 30px
+      height: 30px
+  .icon
+    @extend .d-flex, .align-items-center, .justify-content-center
+    margin-right: 10px !important
+    height: 18px
+    width: 18px
+  .content
+    @extend .flex-full
+    white-space: normal
+    .header
+      font-weight: 700
+  .extra
+    margin-left: 10px !important
+    font-size: 0.8em
+  &.selected
+    font-weight: unset !important
+
+.ui.modals
+  @extend .justify-content-center
+  z-index: 2000
+
+.pushable
+  .pusher
+    @extend .overflow-visible
+    &:after
+      background: transparent

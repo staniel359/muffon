@@ -1,0 +1,127 @@
+import store from '*/store'
+import { hidePlayerPanel, hideQueuePanel } from '#/actions/layout'
+import { stop as stopAudio } from '#/actions/audio'
+import { reset as resetQueue } from '#/actions/queue'
+
+export function setVariants (value) {
+  store.dispatch(
+    'player/setVariants',
+    value
+  )
+}
+
+export function getVariants () {
+  return store.state.player.variants
+}
+
+export function setPlaying (value) {
+  store.dispatch(
+    'player/setPlaying',
+    value
+  )
+}
+
+export function getPlaying () {
+  return store.state.player.playing
+}
+
+export function setCurrentTrackId (value) {
+  store.dispatch(
+    'player/setCurrentTrackId',
+    value
+  )
+}
+
+export function setCurrentVariantIndex (value) {
+  store.dispatch(
+    'player/setCurrentVariantIndex',
+    value
+  )
+}
+
+export function getSourceId () {
+  return store.state.player.sourceId
+}
+
+export function stopAndClose () {
+  hidePlayerPanel()
+  hideQueuePanel()
+
+  stopAudio()
+
+  resetCurrentTrackId()
+  resetCurrentVariantIndex()
+  resetPlaying()
+  resetVariants()
+
+  resetQueue()
+}
+
+function resetCurrentTrackId () {
+  store.dispatch(
+    'player/setCurrentTrackId',
+    null
+  )
+}
+
+export function resetCurrentVariantIndex () {
+  store.dispatch(
+    'player/setCurrentVariantIndex',
+    null
+  )
+}
+
+function resetPlaying () {
+  store.dispatch('player/setPlaying', null)
+}
+
+export function resetVariants () {
+  store.dispatch('player/setVariants', [])
+}
+
+export function updateTitle () {
+  const defaultTitle = 'muffon'
+  const playerPlaying = store.state.player.playing
+
+  if (playerPlaying) {
+    const audioStatusIcons = {
+      play: '❚❚',
+      pause: '▶'
+    }
+    const audioStatus = store.state.audio.status
+    const audioTitleIcon = audioStatusIcons[audioStatus]
+
+    const artistName = playerPlaying.artist.name
+    const trackTitle = playerPlaying.title
+    const playerPlayingFullTitle =
+      `${artistName} - ${trackTitle}`
+
+    const playerFullTitle = [
+      audioTitleIcon,
+      playerPlayingFullTitle
+    ].join(' ')
+
+    const titleFormatted = [
+      playerFullTitle,
+      defaultTitle
+    ].join(' | ')
+
+    document.title = titleFormatted
+  } else {
+    document.title = defaultTitle
+  }
+}
+
+export function getIsCurrentTrack ({ trackId }) {
+  return (
+    trackId ===
+      store.state.player.currentTrackId
+  )
+}
+
+export function getIsCurrentVariant ({ variantIndex }) {
+  return (
+    variantIndex ===
+      store.state.player.currentVariantIndex
+  )
+}

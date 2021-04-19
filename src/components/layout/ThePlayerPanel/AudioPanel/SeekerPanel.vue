@@ -1,0 +1,170 @@
+<template>
+  <BaseSeeker
+    :options="seekerOptions"
+    :isDisabled="!isAudioPlayable"
+    @init="handleSeekerInit"
+    @mouseDown="handleMouseDown"
+    @change="handleChange"
+    @move="handleMove"
+  />
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import BaseSeeker from '@/BaseSeeker.vue'
+import { setSeekerValue } from '#/actions/plugins/semantic'
+import { mainSeekerOptions } from '#/data/plugins/semantic'
+import {
+  pause as pauseAudio,
+  setCurrentTime as setAudioCurrentTime,
+  setAction as setAudioAction
+} from '#/actions/audio'
+import {
+  clone as cloneElement,
+  addClass as addElementClass,
+  setPercentWidth as setElementPercentWidth,
+  insertAfter as insertElementAfter
+} from '#/actions/plugins/jquery'
+
+export default {
+  name: 'SeekerPanel',
+  components: {
+    BaseSeeker
+  },
+  emits: [
+    'audioEnd'
+  ],
+  data () {
+    return {
+      seeker: null,
+      progressBar: null,
+      seekingAudioStatus: null,
+      isSeeking: false
+    }
+  },
+  computed: {
+    ...mapState('audio', {
+      audioStatus: 'status',
+      audioProgress: 'progress',
+      audioCurrentTime: 'currentTime',
+      audioDuration: 'duration',
+      isAudioPlayable: 'isPlayable'
+    }),
+    seekerOptions () {
+      return mainSeekerOptions()
+    },
+    audioProgressPercent () {
+      return this.secondsToPercent(
+        this.audioProgress
+      )
+    },
+    audioTimePercent () {
+      return this.secondsToPercent(
+        this.audioCurrentTime
+      )
+    },
+    isAudioEnded () {
+      return this.audioTimePercent === 100
+    },
+    seekerMainTrack () {
+      return this.seeker.firstChild.firstChild
+    }
+  },
+  watch: {
+    audioProgressPercent: {
+      immediate: true,
+      handler: 'handleAudioProgressPercentChange'
+    },
+    audioTimePercent: {
+      immediate: true,
+      handler: 'handleAudioTimePercentChange'
+    },
+    isAudioEnded: {
+      immediate: true,
+      handler: 'handleAudioEnd'
+    }
+  },
+  methods: {
+    handleSeekerInit (el) {
+      this.seeker = el
+
+      this.setProgressBar()
+    },
+    handleMouseDown (event) {
+      if (this.isAudioPlayable) {
+        this.isSeeking = true
+
+        if (!this.isAudioEnded) {
+          this.seekingAudioStatus = this.audioStatus
+        }
+
+        pauseAudio()
+      }
+    },
+    handleMove (value) {
+      this.isSeeking && setAudioCurrentTime(
+        this.percentToSeconds(value)
+      )
+    },
+    handleChange (value) {
+      if (this.isSeeking) {
+        setAudioCurrentTime(
+          this.percentToSeconds(value)
+        )
+
+        if (this.isAudioEnded) {
+          this.endAudio()
+        } else {
+          setAudioAction(
+            this.seekingAudioStatus
+          )
+        }
+
+        this.isSeeking = false
+      }
+    },
+    handleAudioProgressPercentChange (value) {
+      this.progressBar && setElementPercentWidth(
+        this.progressBar, value
+      )
+    },
+    handleAudioTimePercentChange (value) {
+      !this.isSeeking && setSeekerValue(
+        this.seeker, value
+      )
+    },
+    handleAudioEnd (value) {
+      if (value && !this.isSeeking) {
+        this.endAudio()
+      }
+    },
+    endAudio () {
+      this.$emit('audioEnd')
+    },
+    setProgressBar () {
+      const el = cloneElement(this.seekerMainTrack)
+
+      addElementClass(el, 'track-progress')
+      setElementPercentWidth(el, 0)
+      insertElementAfter(this.seekerMainTrack, el)
+
+      this.progressBar = el
+    },
+    secondsToPercent (seconds) {
+      if (this.audioDuration) {
+        return seconds / this.audioDuration * 100
+      } else {
+        return 0
+      }
+    },
+    percentToSeconds (percent) {
+      return this.audioDuration * percent / 100
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped>
+::v-deep(.track-progress)
+  background: $colorPale !important
+</style>

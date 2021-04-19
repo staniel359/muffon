@@ -1,0 +1,43 @@
+$colorLastfm: #d51007
+$colorVk: #2787F5
+$colorOdnoklassniki: #ee8208
+$colorBandcamp: #629aa9
+$colorSoundCloud: #ff5500
+$colorSpotify: #1DB954
+
+$yandexMusicIcon: url("https://music.yandex.ru/favicon16.png")
+$deezerIcon: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
+$discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
+
+.icon.colored.lastfm
+  color: $colorLastfm !important
+.icon.colored.vk
+  color: $colorVk !important
+.icon.colored.odnoklassniki
+  color: $colorOdnoklassniki !important
+.icon.colored.bandcamp
+  color: $colorBandcamp !important
+.icon.colored.soundcloud
+  color: $colorSoundCloud !important
+.icon.colored.spotify
+  color: $colorSpotify !important
+
+.icon.yandex-music
+  &:before
+    content: $yandexMusicIcon
+  &:not(.colored):before
+    filter: grayscale(1)
+
+.icon.deezer
+  &:before
+    content: $deezerIcon
+  &:not(.colored):before
+    filter: grayscale(1)
+
+.icon.discogs
+  &:before
+    content: $discogsIcon
+  &:not(.colored):before
+    filter: opacity(0.85)
+
+

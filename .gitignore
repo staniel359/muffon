@@ -1,15 +1,6 @@
 /node_modules
 /build
-/dist/*.js
-/dist/*.jpg
-/dist/*.gif
-/dist/*.png
-/dist/*.svg
-/dist/*.ttf
-/dist/*.woff
-/dist/*.woff2
-/dist/*.eot
+/build_electron
 
 yarn-error.log
-
-TODO.txt
+todo

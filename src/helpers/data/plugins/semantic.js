@@ -1,0 +1,95 @@
+export function mainModalOptions ({ onShow } = {}) {
+  return {
+    duration: 100,
+    transition: 'fade',
+    dimmerSettings: {
+      duration: 100
+    },
+    onShow
+  }
+}
+
+export function mainLoaderOptions () {
+  return {
+    closable: false,
+    duration: 0
+  }
+}
+
+export function mainHistoryInputOptions ({ source, onSelect }) {
+  return {
+    maxResults: 20,
+    minCharacters: 0,
+    duration: 0,
+    searchDelay: 0,
+    cache: false,
+    showNoResults: false,
+    source,
+    onSelect
+  }
+}
+
+export function mainTransitionOptions () {
+  return {
+    animation: 'fade',
+    duration: 150
+  }
+}
+
+export function mainSidebarOptions ({ onShow, onVisible, onHide } = {}) {
+  return {
+    closable: false,
+    dimPage: false,
+    onVisible,
+    onShow,
+    onHide
+  }
+}
+
+export function mainSeekerOptions ({ onMove, onChange } = {}) {
+  return {
+    max: 100,
+    step: 0.25,
+    onMove,
+    onChange
+  }
+}
+
+export function mainVolumeSeekerOptions ({ start, onMove } = {}) {
+  return {
+    max: 1,
+    step: 0.01,
+    start,
+    onMove
+  }
+}
+
+export function mainPopupOptions () {
+  return {
+    duration: 0,
+    position: 'top center',
+    variation: 'basic',
+    closable: false,
+    hoverable: true,
+    inline: true
+  }
+}
+
+export function popupOptions () {
+  return {
+    duration: 0,
+    position: 'top center',
+    variation: 'inverted small'
+  }
+}
+
+export function mainDropdownOptions () {
+  return {
+    on: 'hover',
+    duration: 150,
+    delay: {
+      show: 0,
+      hide: 150
+    }
+  }
+}

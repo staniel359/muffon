@@ -1,95 +1,55 @@
 {
   "name": "muffon",
-  "version": "1.0.0",
+  "version": "0.1.0-alpha",
+  "private": true,
   "description": "muffon",
-  "license": "MIT",
-  "homepage": "./",
   "author": {
     "name": "staniel359",
     "email": "staniel359@gmail.com",
     "url": "https://github.com/staniel359"
   },
-  "main": "src/electron.js",
+  "license": "MIT",
+  "main": "electron.js",
   "scripts": {
-    "ws": "webpack serve",
-    "es": "electron .",
-    "brush": "prettier . -w && eslint \"**/*.{js,jsx}\" --fix",
-    "build": "webpack && electron-builder --win --dir",
-    "package": "webpack && electron-builder --win"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.{js,vue}",
+    "start:electron": "cross-env NODE_ENV=development electron .",
+    "build:electron": "electron-builder --dir",
+    "package:electron": "electron-builder",
+    "build:all": "yarn build && yarn build:electron",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "@sentry/vue": "^6.2.5",
     "axios": "^0.21.1",
-    "camel-case": "^4.1.2",
     "deepmerge": "^4.2.2",
-    "electron-is-dev": "^1.2.0",
-    "electron-store": "^7.0.0",
+    "electron-store": "^7.0.3",
     "mousetrap": "^1.6.5",
-    "node-sass": "^5.0.0",
+    "param-case": "^3.0.4",
     "path-case": "^3.0.4",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
-    "react-router-dom": "^5.2.0",
-    "react-slick": "^0.28.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.1",
-    "slick-carousel": "^1.8.1",
-    "uuid": "^8.3.1"
+    "uuid": "^8.3.2",
+    "vue": "^3.0.5",
+    "vue-i18n": "^9.0.0",
+    "vue-router": "^4.0.6",
+    "vuex": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-react": "^7.12.1",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^5.0.0",
-    "electron": "^11.2.1",
-    "electron-builder": "^22.9.1",
+    "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.5",
+    "cross-env": "^7.0.3",
+    "electron": "^12.0.4",
+    "electron-builder": "22.8.0",
     "electron-devtools-installer": "^3.1.1",
-    "eslint": "^7.12.0",
+    "eslint": "7.12.1",
     "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-unused-imports": "^1.0.0",
-    "file-loader": "^6.1.1",
-    "identity-obj-proxy": "^3.0.0",
-    "prettier": "^2.1.2",
-    "sass-loader": "^10.1.0",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.1.3",
-    "webpack-cli": "^4.1.0",
-    "webpack-dev-server": "^3.11.0"
-  },
-  "private": true,
-  "build": {
-    "appId": "com.electron.muffon",
-    "copyright": "Copyright © 2020-2021 staniel359",
-    "win": {
-      "icon": "dist/icons/icon.ico"
-    },
-    "mac": {
-      "category": "public.app-category.music"
-    },
-    "linux": {
-      "category": "Audio"
-    },
-    "compression": "store",
-    "directories": {
-      "output": "build"
-    },
-    "files": [
-      "dist",
-      "src/electron.js"
-    ],
-    "nsis": {
-      "oneClick": false,
-      "perMachine": true,
-      "allowToChangeInstallationDirectory": true
-    }
-  },
-  "postinstall": "electron-builder install-app-deps"
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-vue": "^7.8.0",
+    "sass": "^1.32.8",
+    "vite": "^2.1.5"
+  }
 }

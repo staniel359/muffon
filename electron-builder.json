@@ -1,0 +1,30 @@
+{
+  "appId": "com.electron.muffon",
+  "copyright": "Copyright © 2020-2021 staniel359",
+  "win": {
+    "icon": "public/icon.ico"
+  },
+  "mac": {
+    "category": "public.app-category.music"
+  },
+  "linux": {
+    "category": "Audio"
+  },
+  "compression": "store",
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowToChangeInstallationDirectory": true
+  },
+  "directories": {
+    "buildResources": "build",
+    "output": "build_electron"
+  },
+  "files": [
+    "electron.js",
+    {
+      "from": "./build",
+      "to": "./"
+    }
+  ]
+}

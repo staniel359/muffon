@@ -1,0 +1,44 @@
+<template>
+  <BaseTagsList
+    v-bind="$attrs"
+    :tags="tags"
+    :isMore="isMore"
+    @viewMore="handleViewMore"
+  />
+
+  <ArtistTagsModal
+    v-if="isRenderModal"
+    ref="modal"
+    :artistName="artistName"
+  />
+</template>
+
+<script>
+import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
+import ArtistTagsModal from './BaseArtistTags/ArtistTagsModal.vue'
+
+export default {
+  name: 'BaseArtistTags',
+  components: {
+    BaseTagsList,
+    ArtistTagsModal
+  },
+  props: {
+    tags: Array,
+    isMore: Boolean,
+    artistName: String
+  },
+  computed: {
+    isRenderModal () {
+      return this.isMore && this.tags.length
+    }
+  },
+  methods: {
+    handleViewMore () {
+      this.$refs.modal.show()
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>
