@@ -87,3 +87,7 @@ export function getFollowingTrack ({ position }) {
     return store.getters['queue/nextTrack']
   }
 }
+
+export function getTracksCount () {
+  return store.getters['queue/tracksCount']
+}

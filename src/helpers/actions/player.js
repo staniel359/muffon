@@ -1,6 +1,8 @@
 import store from '*/store'
-import { hidePlayerPanel, hideQueuePanel } from '#/actions/layout'
-import { stop as stopAudio } from '#/actions/audio'
+import {
+  setIsAutoplay as setIsAudioAutoplay,
+  stop as stopAudio
+} from '#/actions/audio'
 import { reset as resetQueue } from '#/actions/queue'
 
 export function setVariants (value) {
@@ -14,11 +16,13 @@ export function getVariants () {
   return store.state.player.variants
 }
 
-export function setPlaying (value) {
+export function setPlaying (value, { isAutoplay } = {}) {
   store.dispatch(
     'player/setPlaying',
     value
   )
+
+  setIsAudioAutoplay(isAutoplay)
 }
 
 export function getPlaying () {
@@ -44,16 +48,12 @@ export function getSourceId () {
 }
 
 export function stopAndClose () {
-  hidePlayerPanel()
-  hideQueuePanel()
-
   stopAudio()
 
   resetCurrentTrackId()
   resetCurrentVariantIndex()
   resetPlaying()
   resetVariants()
-
   resetQueue()
 }
 
@@ -82,13 +82,13 @@ export function resetVariants () {
 export function updateTitle () {
   const defaultTitle = 'muffon'
   const playerPlaying = store.state.player.playing
+  const audioStatus = store.state.audio.status
 
-  if (playerPlaying) {
+  if (playerPlaying && audioStatus !== 'stop') {
     const audioStatusIcons = {
       play: '❚❚',
       pause: '▶'
     }
-    const audioStatus = store.state.audio.status
     const audioTitleIcon = audioStatusIcons[audioStatus]
 
     const artistName = playerPlaying.artist.name

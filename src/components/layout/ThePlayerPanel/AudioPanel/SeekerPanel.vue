@@ -1,5 +1,6 @@
 <template>
   <BaseSeeker
+    :key="key"
     :options="seekerOptions"
     :isDisabled="!isAudioPlayable"
     @init="handleSeekerInit"
@@ -25,6 +26,7 @@ import {
   setPercentWidth as setElementPercentWidth,
   insertAfter as insertElementAfter
 } from '#/actions/plugins/jquery'
+import { generateKey } from '#/utils'
 
 export default {
   name: 'SeekerPanel',
@@ -39,6 +41,7 @@ export default {
       seeker: null,
       progressBar: null,
       seekingAudioStatus: null,
+      key: null,
       isSeeking: false
     }
   },
@@ -49,6 +52,9 @@ export default {
       audioCurrentTime: 'currentTime',
       audioDuration: 'duration',
       isAudioPlayable: 'isPlayable'
+    }),
+    ...mapState('player', {
+      playerPlaying: 'playing'
     }),
     seekerOptions () {
       return mainSeekerOptions()
@@ -82,7 +88,8 @@ export default {
     isAudioEnded: {
       immediate: true,
       handler: 'handleAudioEnd'
-    }
+    },
+    playerPlaying: 'handlePlayerPlayingChange'
   },
   methods: {
     handleSeekerInit (el) {
@@ -138,6 +145,9 @@ export default {
         this.endAudio()
       }
     },
+    handlePlayerPlayingChange () {
+      this.key = generateKey()
+    },
     endAudio () {
       this.$emit('audioEnd')
     },
@@ -167,4 +177,5 @@ export default {
 <style lang="sass" scoped>
 ::v-deep(.track-progress)
   background: $colorPale !important
+  transition: 0.25s
 </style>

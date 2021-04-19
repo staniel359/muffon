@@ -32,7 +32,10 @@
 </template>
 
 <script>
-import { getHistory, addToHistory } from '#/actions/plugins/electron_store'
+import {
+  getHistory as getLocalHistory,
+  addToHistory as addToLocalHistory
+} from '#/actions/plugins/local'
 import { setSearch, setSearchSource } from '#/actions/plugins/semantic'
 import { mainHistoryInputOptions } from '#/data/plugins/semantic'
 import { localize } from '#/actions/plugins/i18n'
@@ -58,7 +61,7 @@ export default {
   },
   computed: {
     localHistory () {
-      return getHistory(
+      return getLocalHistory(
         this.historyKey,
         { isDistinct: this.isInput }
       )
@@ -123,7 +126,10 @@ export default {
       this.$refs.input.blur()
     },
     updateLocalHistory () {
-      addToHistory(this.historyKey, this.input)
+      addToLocalHistory(
+        this.historyKey,
+        this.input
+      )
     },
     updateHistoryInput () {
       setSearchSource(

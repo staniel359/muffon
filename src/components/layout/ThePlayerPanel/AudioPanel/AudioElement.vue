@@ -1,10 +1,10 @@
 <template>
   <audio
-    class="audio"
+    class="audio-element"
     ref="audio"
     crossorigin="anonymous"
-    autoplay
     controls
+    :autoplay="isAudioAutoplay"
     @loadstart="handleLoadStart"
     @durationchange="handleDurationChange"
     @canplay="handleCanPlay"
@@ -18,12 +18,26 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
+import { load as loadAudio } from '#/actions/audio'
 
 export default {
   name: 'AudioElement',
+  computed: {
+    ...mapState('player', {
+      playerPlaying: 'playing'
+    }),
+    ...mapState('audio', {
+      isAudioAutoplay: 'isAutoplay'
+    })
+  },
+  watch: {
+    playerPlaying: 'handlePlayerPlayingChange'
+  },
   mounted () {
-    this.setAudioElement(this.$refs.audio)
+    this.setAudioElement(
+      this.$refs.audio
+    )
   },
   methods: {
     ...mapActions('audio', {
@@ -35,6 +49,11 @@ export default {
       setAudioCurrentTime: 'setCurrentTime',
       setAudioVolume: 'setVolume'
     }),
+    handlePlayerPlayingChange (value) {
+      value && loadAudio(
+        this.playerPlaying.audio.link
+      )
+    },
     handleLoadStart () {
       this.setAudioDuration(0)
       this.setAudioProgress(0)
@@ -78,6 +97,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.audio
+.audio-element
   @extend .d-none
 </style>

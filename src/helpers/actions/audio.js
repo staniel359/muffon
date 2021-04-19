@@ -1,6 +1,5 @@
 import store from '*/store'
 import { paramCase } from 'param-case'
-import { showPlayerPanel } from '#/actions/layout'
 import sources from '#/data/audio/sources'
 
 function audio () {
@@ -8,25 +7,21 @@ function audio () {
 }
 
 export function load (value) {
-  audio().src = value
-
-  setStatus('play')
   resetIsPlayable()
 
-  showPlayerPanel()
-}
-
-function setStatus (value) {
-  store.dispatch('audio/setStatus', value)
-}
-
-function resetStatus (value) {
-  setStatus('stop')
+  audio().src = value
 }
 
 export function setIsPlayable (value) {
   store.dispatch(
     'audio/setIsPlayable',
+    value
+  )
+}
+
+export function setIsAutoplay (value = true) {
+  store.dispatch(
+    'audio/setIsAutoplay',
     value
   )
 }
@@ -66,6 +61,14 @@ export function stop () {
 
   resetStatus()
   resetIsPlayable()
+}
+
+function resetStatus (value) {
+  setStatus('stop')
+}
+
+function setStatus (value) {
+  store.dispatch('audio/setStatus', value)
 }
 
 export function toggleIsMuted () {

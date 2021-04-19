@@ -4,6 +4,7 @@ export default {
     element: null,
     context: null,
     source: null,
+    isAutoplay: false,
     isLoop: false,
     isMuted: false,
     isPlayable: false,
@@ -57,6 +58,9 @@ export default {
     },
     SET_IS_LOOP (state, value) {
       state.isLoop = value
+    },
+    SET_IS_AUTOPLAY (state, value) {
+      state.isAutoplay = value
     }
   },
   actions: {
@@ -92,6 +96,9 @@ export default {
     },
     setIsLoop ({ commit }, value) {
       commit('SET_IS_LOOP', value)
+    },
+    setIsAutoplay ({ commit }, value) {
+      commit('SET_IS_AUTOPLAY', value)
     }
   }
 }

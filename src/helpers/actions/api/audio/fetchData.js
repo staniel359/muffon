@@ -1,10 +1,7 @@
 import axios from 'axios'
 import { pathCase } from 'path-case'
-import {
-  setPlaying as setPlayerPlaying,
-  getPlaying as getPlayerPlaying
-} from '#/actions/player'
-import { load as loadAudio } from '#/actions/audio'
+import { setPlaying as setPlayerPlaying } from '#/actions/player'
+import { playing as formatPlaying } from '#/formatters/player/playing'
 
 export default function ({ audioData }) {
   const sourceId = audioData.source
@@ -20,17 +17,15 @@ export default function ({ audioData }) {
   }
 
   const url = `/${formatSourceId()}/tracks/${audioId}`
-
   const params = {}
 
-  const handleSuccess = resp => {
-    setPlayerPlaying({
-      ...resp.data.track,
-      album: audioData.album,
-      image: audioData.image
+  const handleSuccess = response => {
+    const playingData = formatPlaying({
+      trackData: response.data.track,
+      audioData
     })
 
-    loadAudio(getPlayerPlaying().audio.link)
+    setPlayerPlaying(playingData)
   }
 
   return axios

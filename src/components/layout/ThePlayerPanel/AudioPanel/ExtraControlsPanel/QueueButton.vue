@@ -4,7 +4,7 @@
     ref="button"
     :data-content="popupTextFormatted"
     :class="{
-      disabled: !queueTracksLength,
+      disabled: isQueueEmpty,
       basic: !isQueuePanelVisible
     }"
     @click="handleClick"
@@ -14,11 +14,12 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import { toggleQueuePanel } from '#/actions/layout'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
 import { localize } from '#/actions/plugins/i18n'
+import { getTracksCount as getQueueTracksCount } from '#/actions/queue'
 
 export default {
   name: 'QueueButton',
@@ -26,11 +27,11 @@ export default {
     ...mapState('layout', [
       'isQueuePanelVisible'
     ]),
-    ...mapGetters('queue', {
-      queueTracksLength: 'tracksLength'
-    }),
     popupTextFormatted () {
       return localize('layout.player.queue')
+    },
+    isQueueEmpty () {
+      return !getQueueTracksCount()
     }
   },
   mounted () {

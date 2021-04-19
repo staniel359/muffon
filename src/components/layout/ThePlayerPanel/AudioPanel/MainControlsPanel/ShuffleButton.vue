@@ -2,7 +2,7 @@
   <div
     class="ui tiny compact icon button"
     :class="{
-      disabled: !queueTracksLength,
+      disabled: isQueueEmpty,
       basic: !isQueueShuffle
     }"
     @click="handleClick"
@@ -12,8 +12,11 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
-import { toggleIsShuffle as toggleIsQueueShuffle } from '#/actions/queue'
+import { mapState } from 'vuex'
+import {
+  getTracksCount as getQueueTracksCount,
+  toggleIsShuffle as toggleIsQueueShuffle
+} from '#/actions/queue'
 
 export default {
   name: 'ShuffleButton',
@@ -21,9 +24,9 @@ export default {
     ...mapState('queue', {
       isQueueShuffle: 'isShuffle'
     }),
-    ...mapGetters('queue', {
-      queueTracksLength: 'tracksLength'
-    })
+    isQueueEmpty () {
+      return !getQueueTracksCount()
+    }
   },
   methods: {
     handleClick () {

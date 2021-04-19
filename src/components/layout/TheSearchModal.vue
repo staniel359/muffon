@@ -20,14 +20,15 @@
 </template>
 
 <script>
+import Mousetrap from 'mousetrap'
 import SearchInput from './TheSearchModal/SearchInput.vue'
 import SearchTabs from './TheSearchModal/SearchTabs.vue'
+import { mainModalOptions } from '#/data/plugins/semantic'
 import {
   setModal,
   toggleModal,
   hideModal
 } from '#/actions/plugins/semantic'
-import { mainModalOptions } from '#/data/plugins/semantic'
 import { toggleClass } from '#/actions/plugins/jquery'
 import { generateKey } from '#/utils'
 
@@ -61,6 +62,8 @@ export default {
       this.$refs.modal,
       mainModalOptions()
     )
+
+    this.setKeyBindings()
   },
   methods: {
     handleSubmit (value) {
@@ -76,6 +79,10 @@ export default {
         'modal-full-height',
         value.length
       )
+    },
+    setKeyBindings () {
+      Mousetrap.bind('ctrl+f', this.toggle, 'keyup')
+      Mousetrap.bind('ctrl+f', this.unfocusInput)
     },
     toggle () {
       toggleModal(this.$refs.modal)

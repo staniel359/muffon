@@ -16,7 +16,7 @@ export default {
         return state.tracks
       }
     },
-    tracksLength (state) {
+    tracksCount (state) {
       return state.tracks.length
     },
     currentTrackIndex (state, getters) {
@@ -30,7 +30,7 @@ export default {
     isEnd (state, getters) {
       return (
         getters.currentTrackIndex ===
-          getters.tracksLength - 1
+          getters.tracksCount - 1
       )
     },
     prevTrack (state, getters) {

@@ -18,7 +18,8 @@
 <script>
 import {
   getIsEdge as getIsQueueEdge,
-  getIsFetching as getIsQueueFetching
+  getIsFetching as getIsQueueFetching,
+  getTracksCount as getQueueTracksCount
 } from '#/actions/queue'
 import fetchQueueTrackData from '#/actions/queue/track/fetchData'
 
@@ -36,7 +37,14 @@ export default {
   },
   computed: {
     isDisabled () {
-      return this.isEdge || this.isFetching
+      return (
+        this.isQueueEmpty ||
+          this.isEdge ||
+          this.isFetching
+      )
+    },
+    isQueueEmpty () {
+      return !getQueueTracksCount()
     },
     isEdge () {
       return getIsQueueEdge({

@@ -19,8 +19,11 @@ import { mapState, mapGetters } from 'vuex'
 import VariantsPanel from './ThePlayerPanel/VariantsPanel.vue'
 import TrackPanel from './ThePlayerPanel/TrackPanel.vue'
 import AudioPanel from './ThePlayerPanel/AudioPanel.vue'
-import { setPlayerPanel } from '#/actions/layout'
-import { updateTitle as updatePlayerTitle } from '#/actions/player'
+import {
+  setPlayerPanel,
+  showPlayerPanel as show,
+  hidePlayerPanel as hide
+} from '#/actions/layout'
 import { resetIsLoop as resetIsAudioLoop } from '#/actions/audio'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 
@@ -40,9 +43,6 @@ export default {
     ...mapState('player', {
       playerPlaying: 'playing'
     }),
-    ...mapState('audio', {
-      audioStatus: 'status'
-    }),
     ...mapGetters('player', {
       playerVariantsCount: 'variantsCount'
     }),
@@ -60,8 +60,7 @@ export default {
     }
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange',
-    audioStatus: 'handleAudioStatusChange'
+    playerPlaying: 'handlePlayerPlayingChange'
   },
   mounted () {
     setPlayerPanel(
@@ -76,13 +75,10 @@ export default {
     handleHide () {
       this.isVisible = false
     },
-    handleAudioStatusChange () {
-      updatePlayerTitle()
-    },
-    handlePlayerPlayingChange () {
-      resetIsAudioLoop()
+    handlePlayerPlayingChange (value) {
+      value ? show() : hide()
 
-      updatePlayerTitle()
+      resetIsAudioLoop()
     }
   }
 }

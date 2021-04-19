@@ -1,4 +1,8 @@
 <template>
+  <TheLocalObserver />
+
+  <TheTitleObserver />
+
   <TheNavbarPanel />
 
   <ThePlayerPanel />
@@ -22,7 +26,8 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
+import TheLocalObserver from '@/layout/TheLocalObserver.vue'
+import TheTitleObserver from '@/layout/TheTitleObserver.vue'
 import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
 import TheSearchModal from '@/layout/TheSearchModal.vue'
 import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
@@ -32,27 +37,13 @@ import TheQueuePanel from '@/layout/TheQueuePanel.vue'
 export default {
   name: 'App',
   components: {
+    TheLocalObserver,
+    TheTitleObserver,
     TheNavbarPanel,
     TheSearchModal,
     TheLoaderDimmer,
     ThePlayerPanel,
     TheQueuePanel
-  },
-  mounted () {
-    this.setKeyBindings()
-  },
-  methods: {
-    setKeyBindings () {
-      Mousetrap.bind(
-        'ctrl+f',
-        this.$refs.search.toggle,
-        'keyup'
-      )
-      Mousetrap.bind(
-        'ctrl+f',
-        this.$refs.search.unfocusInput
-      )
-    }
   }
 }
 </script>

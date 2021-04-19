@@ -16,14 +16,27 @@
 <script>
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
-import { setQueuePanel, setIsQueuePanelVisible } from '#/actions/layout'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
+import {
+  setQueuePanel,
+  setIsQueuePanelVisible as setIsVisible,
+  hideQueuePanel as hide
+} from '#/actions/layout'
+import { getTracksCount as getQueueTracksCount } from '#/actions/queue'
 
 export default {
   name: 'TheQueuePanel',
   components: {
     HeaderSection,
     TracksSection
+  },
+  computed: {
+    queueTracksCount () {
+      return getQueueTracksCount()
+    }
+  },
+  watch: {
+    queueTracksCount: 'handleQueueTracksCountChange'
   },
   mounted () {
     setQueuePanel(
@@ -36,10 +49,13 @@ export default {
   },
   methods: {
     handleVisible () {
-      setIsQueuePanelVisible(true)
+      setIsVisible(true)
     },
     handleHide () {
-      setIsQueuePanelVisible(false)
+      setIsVisible(false)
+    },
+    handleQueueTracksCountChange (value) {
+      !value && hide()
     }
   }
 }
