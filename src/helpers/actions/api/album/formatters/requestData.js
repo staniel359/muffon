@@ -28,11 +28,11 @@ export default function ({ sourceId, albumData }) {
         }
       case 'bandcamp':
         return {
-          model: albumData.id_data.album_type,
-          artistName: albumData.id_data.artist,
-          title: albumData.id_data.title,
+          model: albumData.bandcamp_model,
+          title: albumData.bandcamp_title,
+          artistName: albumData.artist.bandcamp_name,
           paramsData: {
-            album_type: albumData.id_data.album_type
+            album_type: albumData.bandcamp_model
           }
         }
       case 'soundcloud':

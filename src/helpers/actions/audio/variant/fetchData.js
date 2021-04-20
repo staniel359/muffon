@@ -2,33 +2,22 @@ import {
   getVariants as getPlayerVariants,
   setCurrentVariantIndex as setPlayerCurrentVariantIndex
 } from '#/actions/player'
-import fetchBandcampIdData from '#/actions/api/id/bandcamp/fetchData'
+import fetchBandcampIdData from './id/bandcamp/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
 
 export default async function ({ index }) {
-  const variant = getPlayerVariants()[index]
+  const variantData = getPlayerVariants()[index]
 
-  const getAudioDataArgs = async () => {
+  const getAudioDataArgs = () => {
     const isBandcampVariant =
-      variant.audio.source === 'bandcamp'
+      variantData.audio.source === 'bandcamp'
 
     if (isBandcampVariant) {
-      const bandcampIdDataArgs = {
-        model: 'track',
-        artistName: variant.id_data.artist,
-        title: variant.id_data.title
-      }
-
-      const idData = await fetchBandcampIdData(
-        bandcampIdDataArgs
-      )
-
-      return {
-        ...idData,
-        source: 'bandcamp'
-      }
+      return fetchBandcampIdData({
+        trackData: variantData
+      })
     } else {
-      return variant.audio
+      return variantData.audio
     }
   }
 

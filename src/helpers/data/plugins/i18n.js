@@ -81,13 +81,15 @@ export const messages = {
             source: 'Select source:',
             type: 'Select type:',
             album: 'Select album:',
-            group: 'Select album group:'
+            group: 'Select album group:',
+            track: 'Select single:'
           },
           streamable: 'Streamable',
           other: 'Other',
           types: {
             album: 'Album',
-            group: 'Album group'
+            group: 'Album group',
+            track: 'Single'
           }
         }
       },

@@ -6,7 +6,7 @@ import { playing as formatPlaying } from '#/formatters/player/playing'
 export default function ({ audioData }) {
   const sourceId = audioData.source
   const audioId = audioData.id
-  const artistId = audioData.artist_id
+  const artistId = audioData.artist?.id
 
   const formatSourceId = () => {
     if (sourceId === 'bandcamp') {

@@ -46,7 +46,8 @@ export default [
     isStreamable: true,
     maxBitrate: 128,
     types: [
-      'album'
+      'album',
+      'track'
     ]
   },
   {

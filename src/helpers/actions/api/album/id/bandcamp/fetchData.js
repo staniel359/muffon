@@ -11,7 +11,7 @@ export default function ({ model, artistName, title, paramsData }) {
     this.requestAlbumData = {
       sourceId: 'bandcamp',
       albumId: response.id,
-      artistId: response.artist_id,
+      artistId: response.artist.id,
       paramsData
     }
   }
