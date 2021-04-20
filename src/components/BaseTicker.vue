@@ -77,7 +77,10 @@ export default {
       return this.content.cloneNode(true)
     },
     isLoopEnd () {
-      return this.progress <= this.contentWidth * -1
+      return (
+        this.progress <=
+          this.contentWidth * -1
+      )
     }
   },
   mounted () {
@@ -128,7 +131,8 @@ export default {
       })
     },
     transformTicker () {
-      this.ticker.style.transform = `translateX(${this.progress}px)`
+      this.ticker.style.transform =
+        `translateX(${this.progress}px)`
     }
   }
 }
@@ -140,4 +144,5 @@ export default {
 
 .ticker
   @extend .d-flex
+  will-change: transform
 </style>

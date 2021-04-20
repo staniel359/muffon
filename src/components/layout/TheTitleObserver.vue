@@ -1,3 +1,7 @@
+<template>
+  <template></template>
+</template>
+
 <script>
 import { mapState } from 'vuex'
 import { updateTitle as updatePlayerTitle } from '#/actions/player'
@@ -5,6 +9,9 @@ import { updateTitle as updatePlayerTitle } from '#/actions/player'
 export default {
   name: 'TheTitleObserver',
   computed: {
+    ...mapState('player', {
+      playerPlaying: 'playing'
+    }),
     ...mapState('audio', {
       audioStatus: 'status'
     })

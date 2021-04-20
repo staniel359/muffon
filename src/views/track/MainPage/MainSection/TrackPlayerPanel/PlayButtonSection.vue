@@ -1,8 +1,8 @@
 <template>
   <BaseTrackContainer
     class="ui basic medium icon button track-play-button"
-    :trackData="trackData"
-    @loadEnd="handleTrackLoadEnd"
+    :trackData="trackDataFormatted"
+    :queueTracks="tracksFormatted"
   >
     <template #default="trackSlotProps">
       <BaseTrackAudioIcon
@@ -17,7 +17,7 @@
 <script>
 import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
-import { setTracks as setQueueTracks } from '#/actions/queue'
+import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'PlayButtonSection',
@@ -32,13 +32,13 @@ export default {
     }
   },
   computed: {
-    queueTracks () {
-      return [this.trackData]
-    }
-  },
-  methods: {
-    handleTrackLoadEnd () {
-      setQueueTracks(this.queueTracks)
+    trackDataFormatted () {
+      return this.tracksFormatted[0]
+    },
+    tracksFormatted () {
+      return formatCollection(
+        [this.trackData]
+      )
     }
   }
 }

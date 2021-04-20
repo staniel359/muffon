@@ -35,9 +35,9 @@ export default function fetchData ({ position }) {
     }
 
     const handleError = error => {
-      raiseProductionError(error)
-
       retry()
+
+      raiseProductionError(error)
     }
 
     const retry = () => {
@@ -48,7 +48,7 @@ export default function fetchData ({ position }) {
       fetchData({ position })
     }
 
-    fetchTrackAudioData(queueTrackDataArgs)
+    return fetchTrackAudioData(queueTrackDataArgs)
       .then(handleSuccess)
       .catch(handleError)
   }

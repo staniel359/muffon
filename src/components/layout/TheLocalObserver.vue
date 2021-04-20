@@ -1,3 +1,7 @@
+<template>
+  <template></template>
+</template>
+
 <script>
 import { mapState } from 'vuex'
 import {

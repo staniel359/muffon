@@ -1,7 +1,8 @@
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
+import { setTracks as setQueueTracks } from '#/actions/queue'
 import { raiseProductionError } from '#/utils'
 
-export default function ({ trackData }) {
+export default function ({ trackData, queueTracks }) {
   this.isLoading = true
   this.error = null
 
@@ -21,6 +22,10 @@ export default function ({ trackData }) {
 
   const handleFinish = () => {
     this.isLoading = false
+
+    if (queueTracks) {
+      setQueueTracks(queueTracks)
+    }
   }
 
   return fetchTrackAudioData(trackDataArgs)

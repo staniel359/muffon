@@ -5,8 +5,8 @@
       class="item main-simple-list-item"
       :key="trackData.uuid"
       :trackData="trackData"
+      :queueTracks="queueTracks"
       isWithActiveClass
-      @loadEnd="handleTrackLoadEnd"
     >
       <template #default="trackSlotProps">
         <BaseTrackContent
@@ -35,7 +35,6 @@
 import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
 import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
 import { collection as formatCollection } from '#/formatters'
-import { setTracks as setQueueTracks } from '#/actions/queue'
 import { track as formatTrack } from '#/formatters/track'
 
 export default {
@@ -76,16 +75,18 @@ export default {
       return formatCollection(
         this.formatTracks()
       )
+    },
+    queueTracks () {
+      if (this.isQueueable) {
+        return this.tracksFormatted
+      } else {
+        return null
+      }
     }
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
-    },
-    handleTrackLoadEnd () {
-      if (this.isQueueable) {
-        setQueueTracks(this.tracksFormatted)
-      }
     },
     formatTracks () {
       return this.tracks.map(trackData => {

@@ -26,11 +26,14 @@ export default {
       type: Object,
       required: true
     },
+    queueTracks: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     isWithActiveClass: Boolean
   },
-  emits: [
-    'loadEnd'
-  ],
   data () {
     return {
       isLoading: false,
@@ -53,17 +56,18 @@ export default {
       return this.trackData.id
     },
     trackDataArgs () {
-      return { trackData: this.trackData }
+      return {
+        trackData: this.trackData,
+        queueTracks: this.queueTracks
+      }
     }
   },
   methods: {
-    handleLoadEnd () {
-      this.$emit('loadEnd')
-    },
     fetchTrackData,
     fetchAudio () {
-      this.fetchTrackData(this.trackDataArgs)
-        .then(this.handleLoadEnd)
+      this.fetchTrackData(
+        this.trackDataArgs
+      )
     }
   }
 }
