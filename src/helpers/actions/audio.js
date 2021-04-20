@@ -102,3 +102,7 @@ export function getSourceData (sourceId) {
     return source.id === sourceIdFormatted
   }) || {}
 }
+
+export function getIsEnded () {
+  return audio().ended
+}

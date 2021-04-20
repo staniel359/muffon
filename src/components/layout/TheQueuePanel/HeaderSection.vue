@@ -6,17 +6,26 @@
       {{ headerFormatted }}
     </h4>
 
-    <div class="right-block"></div>
+    <div class="right-block">
+      <OptionsButton @click="handleOptionsButtonClick" />
+    </div>
   </div>
 </template>
 
 <script>
+import OptionsButton from './HeaderSection/OptionsButton.vue'
 import { pluralize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 import { getTracksCount as getQueueTracksCount } from '#/actions/queue'
 
 export default {
   name: 'HeaderSection',
+  components: {
+    OptionsButton
+  },
+  emits: [
+    'optionsButtonClick'
+  ],
   computed: {
     headerFormatted () {
       return pluralize(
@@ -32,6 +41,11 @@ export default {
       return formatNumber(
         this.queueTracksCount
       )
+    }
+  },
+  methods: {
+    handleOptionsButtonClick () {
+      this.$emit('optionsButtonClick')
     }
   }
 }

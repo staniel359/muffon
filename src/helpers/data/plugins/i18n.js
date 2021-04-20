@@ -36,6 +36,9 @@ export const messages = {
         queue: 'Queue',
         close: 'Stop and close'
       },
+      queue: {
+        autoplay: 'Autoplay'
+      },
       errors: {
         badRequest: {
           header: 'Bad request',

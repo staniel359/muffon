@@ -62,3 +62,11 @@ export function setQueueCurrentTrackId (value) {
 export function getQueueCurrentTrackId () {
   return store.get('queueCurrentTrackId', null)
 }
+
+export function setIsQueueAutoplay (value) {
+  store.set({ isQueueAutoplay: value })
+}
+
+export function getIsQueueAutoplay () {
+  return store.get('isQueueAutoplay', true)
+}

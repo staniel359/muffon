@@ -13,13 +13,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import AudioElement from './AudioPanel/AudioElement.vue'
 import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
 import fetchQueueTrackData from '#/actions/queue/track/fetchData'
+import { getIsEnded as getIsAudioEnded } from '#/actions/audio'
 
 export default {
   name: 'AudioPanel',
@@ -31,13 +32,30 @@ export default {
     SeekerPanel
   },
   computed: {
+    ...mapState('queue', {
+      isQueueAutoplay: 'isAutoplay'
+    }),
     ...mapGetters('queue', {
       isQueueEnd: 'isEnd'
-    })
+    }),
+    isPlayNext () {
+      return (
+        this.isQueueAutoplay &&
+          !this.isQueueEnd
+      )
+    }
+  },
+  watch: {
+    isQueueAutoplay: 'handleIsQueueAutoplayChange'
   },
   methods: {
     handleAudioEnd () {
-      if (!this.isQueueEnd) {
+      if (this.isPlayNext) {
+        this.fetchQueueNextTrack()
+      }
+    },
+    handleIsQueueAutoplayChange () {
+      if (this.isPlayNext && getIsAudioEnded()) {
         this.fetchQueueNextTrack()
       }
     },

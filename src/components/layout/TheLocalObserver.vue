@@ -14,7 +14,9 @@ import {
   setQueueTracks as setLocalQueueTracks,
   getQueueTracks as getLocalQueueTracks,
   setQueueCurrentTrackId as setLocalQueueCurrentTrackId,
-  getQueueCurrentTrackId as getLocalQueueCurrentTrackId
+  getQueueCurrentTrackId as getLocalQueueCurrentTrackId,
+  setIsQueueAutoplay as setLocalIsQueueAutoplay,
+  getIsQueueAutoplay as getLocalIsQueueAutoplay
 } from '#/actions/plugins/local'
 import {
   setPlaying as setPlayerPlaying,
@@ -23,7 +25,8 @@ import {
 } from '#/actions/player'
 import {
   setTracks as setQueueTracks,
-  setCurrentTrackId as setQueueCurrentTrackId
+  setCurrentTrackId as setQueueCurrentTrackId,
+  setIsAutoplay as setIsQueueAutoplay
 } from '#/actions/queue'
 
 export default {
@@ -36,7 +39,8 @@ export default {
     }),
     ...mapState('queue', {
       queueTracks: 'tracks',
-      queueCurrentTrackId: 'currentTrackId'
+      queueCurrentTrackId: 'currentTrackId',
+      isQueueAutoplay: 'isAutoplay'
     })
   },
   watch: {
@@ -44,7 +48,8 @@ export default {
     playerCurrentTrackId: 'handlePlayerCurrentTrackIdChange',
     playerVariants: 'handlePlayerVariantsChange',
     queueTracks: 'handleQueueTracksChange',
-    queueCurrentTrackId: 'handleQueueCurrentTrackIdChange'
+    queueCurrentTrackId: 'handleQueueCurrentTrackIdChange',
+    isQueueAutoplay: 'handleIsQueueAutoplayChange'
   },
   mounted () {
     setPlayerPlaying(
@@ -63,6 +68,9 @@ export default {
     setQueueCurrentTrackId(
       getLocalQueueCurrentTrackId()
     )
+    setIsQueueAutoplay(
+      getLocalIsQueueAutoplay()
+    )
   },
   methods: {
     handlePlayerPlayingChange (value) {
@@ -79,6 +87,9 @@ export default {
     },
     handleQueueCurrentTrackIdChange (value) {
       setLocalQueueCurrentTrackId(value)
+    },
+    handleIsQueueAutoplayChange (value) {
+      setLocalIsQueueAutoplay(value)
     }
   }
 }

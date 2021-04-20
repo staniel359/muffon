@@ -93,3 +93,10 @@ export function mainDropdownOptions () {
     }
   }
 }
+
+export function mainCheckboxOptions ({ onChecked, onUnchecked } = {}) {
+  return {
+    onChecked,
+    onUnchecked
+  }
+}

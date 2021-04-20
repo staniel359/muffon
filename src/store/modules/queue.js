@@ -2,9 +2,10 @@ export default {
   namespaced: true,
   state: {
     currentTrackId: null,
-    isShuffle: false,
+    isAutoplay: true,
     isFetchingPrev: false,
     isFetchingNext: false,
+    isShuffle: false,
     tracks: [],
     tracksShuffled: []
   },
@@ -62,6 +63,9 @@ export default {
     },
     SET_IS_FETCHING_NEXT (state, value) {
       state.isFetchingNext = value
+    },
+    SET_IS_AUTOPLAY (state, value) {
+      state.isAutoplay = value
     }
   },
   actions: {
@@ -82,6 +86,9 @@ export default {
     },
     setIsFetchingNext ({ commit }, value) {
       commit('SET_IS_FETCHING_NEXT', value)
+    },
+    setIsAutoplay ({ commit }, value) {
+      commit('SET_IS_AUTOPLAY', value)
     }
   }
 }

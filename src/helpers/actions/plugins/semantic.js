@@ -92,6 +92,16 @@ export function setDropdown (el, options) {
   $(el).dropdown(options)
 }
 
+// Checkbox
+
+export function setCheckbox (el, options) {
+  $(el).checkbox(options)
+}
+
+export function checkCheckbox (el) {
+  $(el).checkbox('check')
+}
+
 // Utils
 
 export function numberToColumnWidth (number = 1) {
