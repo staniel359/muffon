@@ -32,9 +32,7 @@ export const messages = {
         }
       },
       player: {
-        variants: 'Variants ({number})',
-        queue: 'Queue',
-        close: 'Stop and close'
+        variants: 'Variants ({number})'
       },
       queue: {
         autoplay: 'Autoplay'

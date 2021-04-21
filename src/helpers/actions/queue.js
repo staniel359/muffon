@@ -88,10 +88,6 @@ export function getFollowingTrack ({ position }) {
   }
 }
 
-export function getTracksCount () {
-  return store.getters['queue/tracksCount']
-}
-
 export function setIsAutoplay (value) {
   store.dispatch(
     'queue/setIsAutoplay',

@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import OptionsSection from './TheQueuePanel/OptionsSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
@@ -29,7 +30,6 @@ import {
   setIsQueuePanelVisible as setIsVisible,
   hideQueuePanel as hide
 } from '#/actions/layout'
-import { getTracksCount as getQueueTracksCount } from '#/actions/queue'
 
 export default {
   name: 'TheQueuePanel',
@@ -44,9 +44,9 @@ export default {
     }
   },
   computed: {
-    queueTracksCount () {
-      return getQueueTracksCount()
-    }
+    ...mapGetters('queue', {
+      queueTracksCount: 'tracksCount'
+    })
   },
   watch: {
     queueTracksCount: 'handleQueueTracksCountChange'

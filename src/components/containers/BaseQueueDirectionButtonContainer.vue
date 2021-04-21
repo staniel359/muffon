@@ -16,10 +16,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import {
   getIsEdge as getIsQueueEdge,
-  getIsFetching as getIsQueueFetching,
-  getTracksCount as getQueueTracksCount
+  getIsFetching as getIsQueueFetching
 } from '#/actions/queue'
 import fetchQueueTrackData from '#/actions/queue/track/fetchData'
 
@@ -36,15 +36,15 @@ export default {
     }
   },
   computed: {
+    ...mapGetters('queue', {
+      queueTracksCount: 'tracksCount'
+    }),
     isDisabled () {
       return (
-        this.isQueueEmpty ||
+        !this.queueTracksCount ||
           this.isEdge ||
           this.isFetching
       )
-    },
-    isQueueEmpty () {
-      return !getQueueTracksCount()
     },
     isEdge () {
       return getIsQueueEdge({

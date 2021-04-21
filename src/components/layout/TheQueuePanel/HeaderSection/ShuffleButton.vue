@@ -1,10 +1,7 @@
 <template>
   <div
-    class="ui tiny compact icon button"
-    :class="{
-      disabled: isQueueEmpty,
-      basic: !isQueueShuffle
-    }"
+    class="ui compact icon button shuffle-button"
+    :class="{ basic: !isQueueShuffle }"
     @click="handleClick"
   >
     <i class="random icon" />
@@ -13,20 +10,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import {
-  getTracksCount as getQueueTracksCount,
-  toggleIsShuffle as toggleIsQueueShuffle
-} from '#/actions/queue'
+import { toggleIsShuffle as toggleIsQueueShuffle } from '#/actions/queue'
 
 export default {
   name: 'ShuffleButton',
   computed: {
     ...mapState('queue', {
       isQueueShuffle: 'isShuffle'
-    }),
-    isQueueEmpty () {
-      return !getQueueTracksCount()
-    }
+    })
   },
   methods: {
     handleClick () {
@@ -36,4 +27,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.shuffle-button
+  @extend .no-margin, .no-shadow
+</style>

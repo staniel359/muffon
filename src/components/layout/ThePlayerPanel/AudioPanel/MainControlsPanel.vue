@@ -1,28 +1,28 @@
 <template>
   <div class="main-controls-panel">
-    <ShuffleButton />
+    <LoopButton />
     <BackwardButton />
     <PlayButton />
     <ForwardButton />
-    <LoopButton />
+    <QueueButton />
   </div>
 </template>
 
 <script>
-import ShuffleButton from './MainControlsPanel/ShuffleButton.vue'
-import BackwardButton from './MainControlsPanel/BackwardButton.vue'
-import ForwardButton from './MainControlsPanel/ForwardButton.vue'
-import PlayButton from './MainControlsPanel/PlayButton.vue'
 import LoopButton from './MainControlsPanel/LoopButton.vue'
+import BackwardButton from './MainControlsPanel/BackwardButton.vue'
+import PlayButton from './MainControlsPanel/PlayButton.vue'
+import ForwardButton from './MainControlsPanel/ForwardButton.vue'
+import QueueButton from './MainControlsPanel/QueueButton.vue'
 
 export default {
   name: 'MainControlsPanel',
   components: {
-    ShuffleButton,
+    LoopButton,
     BackwardButton,
-    ForwardButton,
     PlayButton,
-    LoopButton
+    ForwardButton,
+    QueueButton
   }
 }
 </script>

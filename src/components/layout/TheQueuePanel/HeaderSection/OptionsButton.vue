@@ -23,5 +23,5 @@ export default {
 
 <style lang="sass" scoped>
 .options-button
-  @extend .no-margin, .no-padding, .no-shadow
+  @extend .no-margin, .no-shadow
 </style>
