@@ -6,6 +6,12 @@
 
         <div class="track-bottom">
           <ExtraSection :trackData="pageSlotProps.trackData" />
+
+          <LyricsSection
+            :artistName="pageSlotProps.artistName"
+            :trackTitle="pageSlotProps.trackTitle"
+          />
+
           <SimilarSection
             :artistName="pageSlotProps.artistName"
             :trackTitle="pageSlotProps.trackTitle"
@@ -20,6 +26,7 @@
 import BasePageContainer from '@/containers/pages/track/BasePageContainer.vue'
 import MainSection from './MainPage/MainSection.vue'
 import ExtraSection from './MainPage/ExtraSection.vue'
+import LyricsSection from './MainPage/LyricsSection.vue'
 import SimilarSection from './MainPage/SimilarSection.vue'
 
 export default {
@@ -28,6 +35,7 @@ export default {
     BasePageContainer,
     MainSection,
     ExtraSection,
+    LyricsSection,
     SimilarSection
   }
 }

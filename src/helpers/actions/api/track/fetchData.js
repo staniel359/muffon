@@ -1,20 +1,25 @@
 import axios from 'axios'
 import { raiseProductionError } from '#/utils'
+import formatRequestUrl from './formatters/requestUrl'
 
 export default function ({
+  sourceId = 'lastfm',
   artistName,
   trackTitle,
+  trackId,
   scope = '',
   page,
   limit
 }) {
   this.isLoading = true
 
-  const artistNameEncoded = encodeURIComponent(artistName)
-  const trackTitleEncoded = encodeURIComponent(trackTitle)
-  const url =
-    `/lastfm/artists/${artistNameEncoded}` +
-    `/tracks/${trackTitleEncoded}/${scope}`
+  const urlFormatted = formatRequestUrl({
+    sourceId,
+    artistName,
+    trackTitle,
+    trackId,
+    scope
+  })
 
   const params = {
     ...(page && { page }),
@@ -38,7 +43,7 @@ export default function ({
   }
 
   return axios
-    .get(url, { params })
+    .get(urlFormatted, { params })
     .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)

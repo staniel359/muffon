@@ -23,18 +23,14 @@ export default {
     BaseModalContainer
   },
   props: {
-    artistName: {
-      type: String,
-      required: true
-    },
-    trackTitle: {
-      type: String,
-      required: true
-    },
     scope: {
       type: String,
       required: true
-    }
+    },
+    artistName: String,
+    trackTitle: String,
+    sourceId: String,
+    trackId: String
   },
   data () {
     return {
@@ -48,7 +44,9 @@ export default {
       return {
         artistName: this.artistName,
         trackTitle: this.trackTitle,
-        scope: this.scope
+        scope: this.scope,
+        sourceId: this.sourceId,
+        trackId: this.trackId
       }
     }
   },

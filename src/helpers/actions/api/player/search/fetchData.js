@@ -6,11 +6,12 @@ import {
 } from '#/actions/player'
 import { collection as formatCollection } from '#/formatters'
 
-export default function ({ artistName, trackTitle }) {
-  const playerSourceIdFormatted = pathCase(getPlayerSourceId())
+export default function ({ query }) {
+  const playerSourceIdFormatted = pathCase(
+    getPlayerSourceId()
+  )
   const url = `/${playerSourceIdFormatted}/search/tracks`
 
-  const query = `${artistName} - ${trackTitle}`
   const params = { query }
 
   const handleSuccess = resp => {

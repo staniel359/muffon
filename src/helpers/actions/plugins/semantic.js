@@ -92,6 +92,10 @@ export function setDropdown (el, options) {
   $(el).dropdown(options)
 }
 
+export function selectDropdownValue (el, value) {
+  $(el).dropdown('set selected', value)
+}
+
 // Checkbox
 
 export function setCheckbox (el, options) {

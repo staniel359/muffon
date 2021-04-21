@@ -96,6 +96,12 @@ export const messages = {
           }
         }
       },
+      track: {
+        lyrics: {
+          loading: 'Loading lyrics...',
+          empty: 'No lyrics.'
+        }
+      },
       tag: {
         segments: {
           artists: 'Top artists',

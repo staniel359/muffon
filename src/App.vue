@@ -60,5 +60,5 @@ export default {
 
 <style lang="sass">
 @import './src/assets/styles/Global.sass'
-@import './src/assets/styles/AudioSources.sass'
+@import './src/assets/styles/Sources.sass'
 </style>

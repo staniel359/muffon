@@ -66,14 +66,11 @@ export default {
     searchDataArgs () {
       return {
         sourceId: this.sourceId,
-        query: this.queryFormatted
+        query: this.query
       }
     },
-    queryFormatted () {
-      return [
-        this.artistName,
-        this.albumTitle
-      ].join(' - ')
+    query () {
+      return `${this.artistName} - ${this.albumTitle}`
     }
   },
   watch: {

@@ -25,6 +25,7 @@
 
 <script>
 import BaseImage from '@/BaseImage.vue'
+import { generateKey } from '#/utils'
 
 export default {
   name: 'AlbumItem',
@@ -53,9 +54,10 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedAlbumData(
-        this.albumData
-      )
+      this.setSelectedAlbumData({
+        ...this.albumData,
+        id: generateKey()
+      })
     }
   }
 }

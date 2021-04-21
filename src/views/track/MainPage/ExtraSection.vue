@@ -1,28 +1,30 @@
 <template>
-  <div>
-    <BaseCounters
-      :listenersCount="listenersCount"
-      :playsCount="playsCount"
-    />
+  <div class="ui basic segments main-basic-segment-container">
+    <div class="ui segment">
+      <BaseCounters
+        :listenersCount="listenersCount"
+        :playsCount="playsCount"
+      />
 
-    <BaseTrackTags
-      v-if="tags"
-      :tags="tags"
-      :artistName="artistName"
-      :trackTitle="trackTitle"
-      isMore
-    />
-
-    <template v-if="description">
-      <div class="ui divider main-divider"></div>
-
-      <BaseTrackDescription
-        :description="description"
+      <BaseTrackTags
+        v-if="tags"
+        :tags="tags"
         :artistName="artistName"
         :trackTitle="trackTitle"
         isMore
       />
-    </template>
+
+      <template v-if="description">
+        <div class="ui divider main-divider"></div>
+
+        <BaseTrackDescription
+          :description="description"
+          :artistName="artistName"
+          :trackTitle="trackTitle"
+          isMore
+        />
+      </template>
+    </div>
   </div>
 </template>
 

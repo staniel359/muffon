@@ -27,6 +27,16 @@ html
   @extend .no-margin
   min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding})
 
+.main-basic-segment-container
+  .segment:only-child
+    @extend .no-padding
+  .segment:first-child
+    padding: 0 0 1em 0
+  .segment
+    padding: 1em 0
+  .segment:last-child
+    padding: 1em 0 0 0
+
 .main-modal
   width: 500px !important
 
@@ -43,6 +53,12 @@ html
 
 .main-text-container
   white-space: pre-wrap
+
+.main-lyrics-container
+  @extend .main-text-container
+  padding: 1.25em 2.5em
+  p
+    font-size: 16px
 
 .main-card-light
   @extend .no-shadow, .text-align-center, .text-color-unset
@@ -91,9 +107,10 @@ html
       height: 30px
   .icon
     @extend .d-flex, .align-items-center, .justify-content-center
-    margin-right: 10px !important
-    height: 18px
-    width: 18px
+    height: 18px !important
+    width: 18px !important
+  .icon-right
+    margin-left: 0.5em !important
   .content
     @extend .flex-full
     white-space: normal

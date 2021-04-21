@@ -1,6 +1,6 @@
 <template>
   <i
-    class="icon colored"
+    class="icon"
     :class="iconFormatted"
   >
     <div
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'IconBlock',
+  name: 'BaseIcon',
   props: {
     isLoading: Boolean,
     isError: Boolean,

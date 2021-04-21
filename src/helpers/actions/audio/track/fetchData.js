@@ -33,7 +33,8 @@ export default function ({
   }
 
   const searchAudio = () => {
-    const searchDataArgs = { artistName, trackTitle }
+    const query = `${artistName} - ${trackTitle}`
+    const searchDataArgs = { query }
 
     return fetchSearchData(searchDataArgs)
       .then(handleSearchSuccess)

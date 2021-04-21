@@ -1,6 +1,5 @@
 <template>
   <BasePaginatedSectionContainer
-    class="similar-section"
     headerText="Similar"
     scope="similar"
     :clientPageLimit="5"
@@ -41,7 +40,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.similar-section
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

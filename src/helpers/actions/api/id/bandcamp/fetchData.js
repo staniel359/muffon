@@ -2,12 +2,18 @@ import axios from 'axios'
 
 export default function ({ model, artistName, title }) {
   const formatModelUrl = () => {
-    const isAlbumOrTrack = ['album', 'track'].includes(model)
+    const isAlbumOrTrack =
+      ['album', 'track'].includes(model)
 
-    return isAlbumOrTrack ? `${model}s/${title}` : ''
+    if (isAlbumOrTrack) {
+      return `${model}s/${title}`
+    } else {
+      return ''
+    }
   }
 
   const url = `/bandcamp/id/${artistName}/${formatModelUrl()}`
+
   const params = {}
 
   const handleSuccess = response => {

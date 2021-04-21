@@ -1,20 +1,20 @@
 <template>
-  <i
-    class="icon"
-    :class="icon"
-  >
-    <div
-      v-if="isLoading"
-      class="ui mini active inline loader"
-    ></div>
-  </i>
+  <BaseIcon
+    :isLoading="isLoading"
+    :isError="isError"
+    :icon="icon"
+  />
 </template>
 
 <script>
+import BaseIcon from '@/BaseIcon.vue'
 import { mapGetters } from 'vuex'
 
 export default {
   name: 'BaseTrackAudioIcon',
+  components: {
+    BaseIcon
+  },
   props: {
     isLoading: Boolean,
     isError: Boolean,
@@ -25,11 +25,7 @@ export default {
       audioAction: 'action'
     }),
     icon () {
-      if (this.isLoading) {
-        return null
-      } else if (this.isError) {
-        return 'close'
-      } else if (this.isCurrent) {
+      if (this.isCurrent) {
         return this.audioAction
       } else {
         return 'play'

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui basic segments main-segment-container"
+    class="ui basic segments main-basic-segment-container"
     ref="segment"
   >
     <HeaderSection
@@ -88,11 +88,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-segment-container
-  ::v-deep(.segment:first-child)
-    padding: 0 0 1em 0
-  ::v-deep(.segment)
-    padding: 1em 0
-  ::v-deep(.segment:last-child)
-    padding: 1em 0 0 0
+.main-basic-segment-container
+  @extend .flex-full
 </style>

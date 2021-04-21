@@ -13,7 +13,8 @@
         :sourceId="sourceId"
         :types="types"
       >
-        <IconBlock
+        <BaseIcon
+          class="colored"
           :isLoading="slotProps.isLoading"
           :isError="slotProps.isError"
           :icon="icon"
@@ -34,7 +35,7 @@ import BaseSourceItemContainer
   from '@/containers/album/source_select/BaseSourceItemContainer.vue'
 import BaseSourceItemClickableContainer
   from '@/containers/album/source_select/BaseSourceItemClickableContainer.vue'
-import IconBlock from './SourceItem/IconBlock.vue'
+import BaseIcon from '@/BaseIcon.vue'
 import InfoBlock from './SourceItem/InfoBlock.vue'
 
 export default {
@@ -42,7 +43,7 @@ export default {
   components: {
     BaseSourceItemContainer,
     BaseSourceItemClickableContainer,
-    IconBlock,
+    BaseIcon,
     InfoBlock
   },
   props: {
