@@ -12,6 +12,8 @@
   <div class="pusher">
     <div id="the-background"></div>
 
+    <TheDropdownContext />
+
     <div
       class="ui container main-container"
       id="the-container"
@@ -29,10 +31,11 @@
 import TheLocalObserver from '@/layout/TheLocalObserver.vue'
 import TheTitleObserver from '@/layout/TheTitleObserver.vue'
 import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
-import TheSearchModal from '@/layout/TheSearchModal.vue'
-import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheQueuePanel from '@/layout/TheQueuePanel.vue'
+import TheDropdownContext from '@/layout/TheDropdownContext.vue'
+import TheSearchModal from '@/layout/TheSearchModal.vue'
+import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 
 export default {
   name: 'App',
@@ -40,10 +43,11 @@ export default {
     TheLocalObserver,
     TheTitleObserver,
     TheNavbarPanel,
-    TheSearchModal,
-    TheLoaderDimmer,
     ThePlayerPanel,
-    TheQueuePanel
+    TheQueuePanel,
+    TheDropdownContext,
+    TheSearchModal,
+    TheLoaderDimmer
   }
 }
 </script>

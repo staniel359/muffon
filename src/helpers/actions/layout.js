@@ -71,3 +71,10 @@ export function setIsQueuePanelVisible (value) {
     value
   )
 }
+
+export function setDropdownContext (value) {
+  store.dispatch(
+    'layout/setDropdownContext',
+    value
+  )
+}

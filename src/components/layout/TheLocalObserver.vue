@@ -1,5 +1,5 @@
 <template>
-  <template></template>
+  <div id="the-local-observer"></div>
 </template>
 
 <script>

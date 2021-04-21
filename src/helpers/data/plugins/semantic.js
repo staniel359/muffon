@@ -1,3 +1,5 @@
+import store from '*/store'
+
 export function mainModalOptions ({ onShow } = {}) {
   return {
     duration: 100,
@@ -84,9 +86,12 @@ export function popupOptions () {
 }
 
 export function mainDropdownOptions () {
+  const { dropdownContext } = store.state.layout
+
   return {
     on: 'hover',
     duration: 150,
+    context: dropdownContext,
     delay: {
       show: 0,
       hide: 150

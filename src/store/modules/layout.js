@@ -4,6 +4,7 @@ export default {
     loaderDimmer: null,
     playerPanel: null,
     queuePanel: null,
+    dropdownContext: null,
     isQueuePanelVisible: false,
     navigationSections: []
   },
@@ -22,6 +23,9 @@ export default {
     },
     SET_IS_QUEUE_PANEL_VISIBLE (state, value) {
       state.isQueuePanelVisible = value
+    },
+    SET_DROPDOWN_CONTEXT (state, value) {
+      state.dropdownContext = value
     }
   },
   actions: {
@@ -39,6 +43,9 @@ export default {
     },
     setIsQueuePanelVisible ({ commit }, value) {
       commit('SET_IS_QUEUE_PANEL_VISIBLE', value)
+    },
+    setDropdownContext ({ commit }, value) {
+      commit('SET_DROPDOWN_CONTEXT', value)
     }
   }
 }
