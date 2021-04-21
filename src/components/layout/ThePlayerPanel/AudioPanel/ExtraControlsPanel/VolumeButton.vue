@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui tiny basic compact icon button"
+    class="ui tiny basic compact icon button volume-button"
     ref="popup"
     @click="handleClick"
   >
@@ -64,4 +64,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.volume-button
+  @extend .no-margin
+</style>

@@ -37,5 +37,4 @@ export default {
 <style lang="sass" scoped>
 .close-button
   @extend .no-shadow, .no-margin
-  margin-left: 0.5em !important
 </style>

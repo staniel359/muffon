@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui tiny compact icon button"
+    class="ui tiny compact icon button queue-button"
     :class="{
       disabled: !queueTracksCount,
       basic: !isQueuePanelVisible
@@ -33,4 +33,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.queue-button
+  @extend .no-margin
+</style>

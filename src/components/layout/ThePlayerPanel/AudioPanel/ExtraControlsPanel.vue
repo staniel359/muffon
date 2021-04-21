@@ -1,19 +1,16 @@
 <template>
   <div class="extra-controls-panel">
     <VolumeButton />
-    <CloseButton />
   </div>
 </template>
 
 <script>
 import VolumeButton from './ExtraControlsPanel/VolumeButton.vue'
-import CloseButton from './ExtraControlsPanel/CloseButton.vue'
 
 export default {
   name: 'ExtraControlsPanel',
   components: {
-    VolumeButton,
-    CloseButton
+    VolumeButton
   }
 }
 </script>

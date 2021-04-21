@@ -9,6 +9,7 @@
       <div class="ui container main-container track-audio-container">
         <TrackPanel />
         <AudioPanel />
+        <CloseButton />
       </div>
     </div>
   </div>
@@ -19,6 +20,7 @@ import { mapState, mapGetters } from 'vuex'
 import VariantsPanel from './ThePlayerPanel/VariantsPanel.vue'
 import TrackPanel from './ThePlayerPanel/TrackPanel.vue'
 import AudioPanel from './ThePlayerPanel/AudioPanel.vue'
+import CloseButton from './ThePlayerPanel/CloseButton.vue'
 import {
   setPlayerPanel,
   showPlayerPanel as show,
@@ -32,7 +34,8 @@ export default {
   components: {
     VariantsPanel,
     TrackPanel,
-    AudioPanel
+    AudioPanel,
+    CloseButton
   },
   data () {
     return {
@@ -94,5 +97,5 @@ export default {
   background: white
 
 .track-audio-container
-  @extend .h-100, .d-flex
+  @extend .h-100, .d-flex, .align-items-center
 </style>
