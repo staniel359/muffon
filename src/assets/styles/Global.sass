@@ -149,30 +149,31 @@ html
 
   input
     height: $mainCheckboxThumbHeight
-
-  input ~ label:before
-    background-color: $colorGrey !important
-    border-radius: calc(#{$mainCheckboxThumbHeight} / 2)
-  input ~ label:after
-    left: 0
-
-  input:checked ~ label:before
-    background-color: $colorBase !important
-  input:checked ~ label:after
-    left: calc(#{$mainCheckboxWidth} - #{$mainCheckboxThumbHeight})
-
-  input:focus:checked ~ label:before
-    background-color: $colorBase !important
+    & ~ label
+      &:before
+        background-color: $colorGrey !important
+        border-radius: calc(#{$mainCheckboxThumbHeight} / 2)
+      &:after
+        left: 0
+    &:checked
+      & ~ label
+        &:before
+          background-color: $colorBase !important
+        &:after
+          left: calc(#{$mainCheckboxWidth} - #{$mainCheckboxThumbHeight})
+    &:focus:checked
+      & ~ label
+        &:before
+          background-color: $colorBase !important
 
   label
     padding-left: calc(#{$mainCheckboxWidth} + 0.65em)
     padding-top: 0
     min-height: $mainCheckboxThumbHeight
     line-height: $mainCheckboxThumbHeight
-
-  label:before
-    width: $mainCheckboxWidth
-    height: $mainCheckboxThumbHeight
-  label:after
-    height: $mainCheckboxThumbHeight
-    width: $mainCheckboxThumbHeight
+    &:before
+      width: $mainCheckboxWidth
+      height: $mainCheckboxThumbHeight
+    &:after
+      height: $mainCheckboxThumbHeight
+      width: $mainCheckboxThumbHeight

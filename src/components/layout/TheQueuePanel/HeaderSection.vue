@@ -1,8 +1,6 @@
 <template>
   <div class="header-section">
-    <div class="left-block">
-      <ShuffleButton />
-    </div>
+    <div class="left-block"></div>
 
     <h4 class="ui header central-block">
       {{ headerFormatted }}
@@ -14,15 +12,11 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import ShuffleButton from './HeaderSection/ShuffleButton.vue'
 import { pluralize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
   name: 'HeaderSection',
-  components: {
-    ShuffleButton
-  },
   computed: {
     ...mapGetters('queue', {
       queueTracksCount: 'tracksCount'

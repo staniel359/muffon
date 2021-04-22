@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui compact icon button shuffle-button"
+    class="ui tiny compact icon button"
     :class="{ basic: !isQueueShuffle }"
     @click="handleClick"
   >
@@ -27,7 +27,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.shuffle-button
-  @extend .no-margin, .no-shadow
-</style>
+<style lang="sass" scoped></style>
