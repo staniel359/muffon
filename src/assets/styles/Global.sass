@@ -12,6 +12,11 @@ html
   .main-container
     width: 700px !important
 
+.main-navbar-button
+  @extend .no-shadow
+  width: $navbarHeight
+  height: $navbarHeight
+
 .main-divider
   margin: 10px 0 !important
 
@@ -39,6 +44,13 @@ html
 
 .main-modal
   width: 500px !important
+  .content
+    max-height: $mainModalHeight !important
+
+.main-modal-full-height
+  height: $mainModalHeight
+  .content
+    @extend .h-100
 
 .main-image-container
   @extend .relative

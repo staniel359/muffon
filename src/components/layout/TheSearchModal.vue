@@ -10,6 +10,7 @@
         @submit="handleSubmit"
         @clear="handleClear"
       />
+
       <SearchTabs
         v-if="query"
         :query="query"
@@ -60,7 +61,9 @@ export default {
   mounted () {
     setModal(
       this.$refs.modal,
-      mainModalOptions()
+      mainModalOptions({
+        onVisible: this.focusInput
+      })
     )
 
     this.setKeyBindings()
@@ -76,7 +79,7 @@ export default {
     handleQueryChange (value) {
       toggleClass(
         this.$refs.modal,
-        'modal-full-height',
+        'main-modal-full-height',
         value.length
       )
     },
@@ -87,8 +90,11 @@ export default {
     toggle () {
       toggleModal(this.$refs.modal)
     },
+    focusInput () {
+      this.$refs.input.focus()
+    },
     unfocusInput () {
-      this.$refs.input.unfocusInput()
+      this.$refs.input.unfocus()
     },
     hideSearch () {
       hideModal(this.$refs.modal)
@@ -100,10 +106,6 @@ export default {
 <style lang="sass" scoped>
 .main-modal
   top: calc((100vh - #{$mainModalHeight}) / 2)
-
-.modal-full-height
-  height: $mainModalHeight
-
-.content
-  @extend .d-flex, .flex-column, .h-100
+  .content
+    @extend .d-flex, .flex-column, .h-100
 </style>

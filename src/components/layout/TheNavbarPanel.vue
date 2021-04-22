@@ -5,7 +5,11 @@
   >
     <div class="ui container main-container">
       <NavbarHistoryButton direction="back" />
+
       <NavbarNavigation />
+
+      <NavbarSettingsButton />
+
       <NavbarHistoryButton direction="forward" />
     </div>
   </div>
@@ -13,12 +17,14 @@
 
 <script>
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
+import NavbarSettingsButton from './TheNavbarPanel/NavbarSettingsButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
 
 export default {
   name: 'TheNavbarPanel',
   components: {
     NavbarHistoryButton,
+    NavbarSettingsButton,
     NavbarNavigation
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="fitted item">
     <button
-      class="ui icon button compact basic large history-button"
+      class="ui icon compact basic large button main-navbar-button"
       @click="handleClick"
     >
       <i
@@ -40,9 +40,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.history-button
-  @extend .no-shadow
-  width: $navbarHeight
-  height: $navbarHeight
-</style>
+<style lang="sass" scoped></style>

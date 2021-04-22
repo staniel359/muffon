@@ -47,6 +47,14 @@ export function getPlayerVariants () {
   return store.get('playerVariants', [])
 }
 
+export function setPlayerSourceId (value) {
+  store.set({ playerSourceId: value })
+}
+
+export function getPlayerSourceId (value) {
+  return store.get('playerSourceId', 'vk')
+}
+
 export function setQueueTracks (value) {
   store.set({ queueTracks: value })
 }

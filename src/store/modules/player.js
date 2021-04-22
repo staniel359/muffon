@@ -24,6 +24,9 @@ export default {
     },
     SET_CURRENT_VARIANT_INDEX (state, value) {
       state.currentVariantIndex = value
+    },
+    SET_SOURCE_ID (state, value) {
+      state.sourceId = value
     }
   },
   actions: {
@@ -38,6 +41,9 @@ export default {
     },
     setCurrentVariantIndex ({ commit }, value) {
       commit('SET_CURRENT_VARIANT_INDEX', value)
+    },
+    setSourceId ({ commit }, value) {
+      commit('SET_SOURCE_ID', value)
     }
   }
 }

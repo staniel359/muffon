@@ -19,8 +19,8 @@
 
 <script>
 import BaseError from '@/BaseError.vue'
-import { setModal, showModal, hideModal } from '#/actions/plugins/semantic'
 import { mainModalOptions } from '#/data/plugins/semantic'
+import { setModal, showModal, hideModal } from '#/actions/plugins/semantic'
 import { remove } from '#/actions/plugins/jquery'
 
 export default {
@@ -81,7 +81,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-segment
-  max-height: $mainModalHeight !important
-</style>
+<style lang="sass" scoped></style>

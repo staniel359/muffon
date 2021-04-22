@@ -105,24 +105,24 @@ export default {
       this.$emit('clear')
 
       this.$nextTick(() => {
-        this.focusInput()
+        this.focus()
       })
     },
     handleEnterPress () {
       this.isInput && this.submit()
     },
     submit () {
-      this.unfocusInput()
+      this.unfocus()
 
       this.updateLocalHistory()
       this.updateHistoryInput()
 
       this.$emit('submit', this.input)
     },
-    focusInput () {
+    focus () {
       this.$refs.input.focus()
     },
-    unfocusInput () {
+    unfocus () {
       this.$refs.input.blur()
     },
     updateLocalHistory () {

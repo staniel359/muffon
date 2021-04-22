@@ -8,28 +8,21 @@
       {{ headerFormatted }}
     </h4>
 
-    <div class="right-block">
-      <OptionsButton @click="handleOptionsButtonClick" />
-    </div>
+    <div class="right-block"></div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import ShuffleButton from './HeaderSection/ShuffleButton.vue'
-import OptionsButton from './HeaderSection/OptionsButton.vue'
 import { pluralize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
   name: 'HeaderSection',
   components: {
-    ShuffleButton,
-    OptionsButton
+    ShuffleButton
   },
-  emits: [
-    'optionsButtonClick'
-  ],
   computed: {
     ...mapGetters('queue', {
       queueTracksCount: 'tracksCount'
@@ -45,11 +38,6 @@ export default {
       return formatNumber(
         this.queueTracksCount
       )
-    }
-  },
-  methods: {
-    handleOptionsButtonClick () {
-      this.$emit('optionsButtonClick')
     }
   }
 }

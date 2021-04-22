@@ -1,13 +1,15 @@
 import store from '*/store'
 
-export function mainModalOptions ({ onShow } = {}) {
+export function mainModalOptions ({ onShow, onVisible } = {}) {
   return {
+    autofocus: false,
     duration: 100,
     transition: 'fade',
     dimmerSettings: {
       duration: 100
     },
-    onShow
+    onShow,
+    onVisible
   }
 }
 

@@ -43,6 +43,13 @@ export function setCurrentVariantIndex (value) {
   )
 }
 
+export function setSourceId (value) {
+  store.dispatch(
+    'player/setSourceId',
+    value
+  )
+}
+
 export function getSourceId () {
   return store.state.player.sourceId
 }

@@ -11,6 +11,8 @@ import {
   getPlayerCurrentTrackId as getLocalPlayerCurrentTrackId,
   setPlayerVariants as setLocalPlayerVariants,
   getPlayerVariants as getLocalPlayerVariants,
+  setPlayerSourceId as setLocalPlayerSourceId,
+  getPlayerSourceId as getLocalPlayerSourceId,
   setQueueTracks as setLocalQueueTracks,
   getQueueTracks as getLocalQueueTracks,
   setQueueCurrentTrackId as setLocalQueueCurrentTrackId,
@@ -21,7 +23,8 @@ import {
 import {
   setPlaying as setPlayerPlaying,
   setCurrentTrackId as setPlayerCurrentTrackId,
-  setVariants as setPlayerVariants
+  setVariants as setPlayerVariants,
+  setSourceId as setPlayerSourceId
 } from '#/actions/player'
 import {
   setTracks as setQueueTracks,
@@ -35,7 +38,8 @@ export default {
     ...mapState('player', {
       playerPlaying: 'playing',
       playerCurrentTrackId: 'currentTrackId',
-      playerVariants: 'variants'
+      playerVariants: 'variants',
+      playerSourceId: 'sourceId'
     }),
     ...mapState('queue', {
       queueTracks: 'tracks',
@@ -47,6 +51,7 @@ export default {
     playerPlaying: 'handlePlayerPlayingChange',
     playerCurrentTrackId: 'handlePlayerCurrentTrackIdChange',
     playerVariants: 'handlePlayerVariantsChange',
+    playerSourceId: 'handlePlayerSourceIdChange',
     queueTracks: 'handleQueueTracksChange',
     queueCurrentTrackId: 'handleQueueCurrentTrackIdChange',
     isQueueAutoplay: 'handleIsQueueAutoplayChange'
@@ -61,6 +66,9 @@ export default {
     )
     setPlayerVariants(
       getLocalPlayerVariants()
+    )
+    setPlayerSourceId(
+      getLocalPlayerSourceId()
     )
     setQueueTracks(
       getLocalQueueTracks()
@@ -81,6 +89,9 @@ export default {
     },
     handlePlayerVariantsChange (value) {
       setLocalPlayerVariants(value)
+    },
+    handlePlayerSourceIdChange (value) {
+      setLocalPlayerSourceId(value)
     },
     handleQueueTracksChange (value) {
       setLocalQueueTracks(value)

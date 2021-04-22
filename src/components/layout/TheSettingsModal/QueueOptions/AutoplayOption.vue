@@ -1,13 +1,14 @@
 <template>
-  <div class="options-section">
+  <div class="autoplay-option">
+    <h4 class="ui header main-header">
+      {{ textFormatted }}
+    </h4>
+
     <div
       class="ui toggle checkbox main-checkbox"
       ref="checkbox"
     >
       <input type="checkbox">
-      <label>
-        {{ labelFormatted }}
-      </label>
     </div>
   </div>
 </template>
@@ -20,7 +21,7 @@ import { setIsAutoplay as setIsQueueAutoplay } from '#/actions/queue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'OptionsSection',
+  name: 'AutoplayOption',
   computed: {
     ...mapState('queue', {
       isQueueAutoplay: 'isAutoplay'
@@ -31,8 +32,8 @@ export default {
         onUnchecked: this.handleUncheck
       })
     },
-    labelFormatted () {
-      return localize('layout.queue.autoplay')
+    textFormatted () {
+      return localize('settings.queue.autoplay')
     }
   },
   mounted () {
@@ -57,6 +58,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.options-section
-  padding: 1em
+.autoplay-option
+  @extend .d-flex, .align-items-center
+
+.main-header
+  @extend .flex-full
 </style>

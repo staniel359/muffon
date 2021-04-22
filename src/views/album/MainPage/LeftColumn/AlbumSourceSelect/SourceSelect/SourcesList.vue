@@ -32,8 +32,10 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import { collection as formatCollection } from '#/formatters'
-import audioSources from '#/data/audio/sources'
 import { localize } from '#/actions/plugins/i18n'
+import {
+  getStreamable as getAudioSourcesStreamable
+} from '#/actions/audio/sources'
 
 export default {
   name: 'SourcesList',
@@ -52,7 +54,7 @@ export default {
     },
     streamableSourcesFormatted () {
       return formatCollection(
-        this.filterStreamable(true)
+        getAudioSourcesStreamable(true)
       )
     },
     otherHeaderFormatted () {
@@ -62,15 +64,8 @@ export default {
     },
     otherSourcesFormatted () {
       return formatCollection(
-        this.filterStreamable(false)
+        getAudioSourcesStreamable(false)
       )
-    }
-  },
-  methods: {
-    filterStreamable (bool) {
-      return audioSources.filter(source => {
-        return !!source.isStreamable === bool
-      })
     }
   }
 }

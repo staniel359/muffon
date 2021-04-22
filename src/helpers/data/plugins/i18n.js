@@ -33,39 +33,48 @@ export const messages = {
       },
       player: {
         variants: 'Variants ({number})'
+      }
+    },
+    errors: {
+      badRequest: {
+        header: 'Bad request',
+        content: 'Please make a request with valid data.'
+      },
+      notFound: {
+        header: 'Nothing was found',
+        content: 'Please try looking for something else.'
+      },
+      internalServer: {
+        header: 'Internal server error',
+        content: 'Please contact us for information.'
+      },
+      badGateway: {
+        header: 'Remote server error',
+        content: 'Please try again in a moment.'
+      },
+      gatewayTimeout: {
+        header: 'Remote server timeout',
+        content: 'Please try again in a moment.'
+      },
+      connection: {
+        header: 'Connection lost',
+        content: 'Please try again in a moment.'
+      },
+      client: {
+        header: 'Client error',
+        content: 'Please contact us for information.'
+      }
+    },
+    settings: {
+      headers: {
+        player: 'Player',
+        queue: 'Queue'
+      },
+      player: {
+        audioSource: 'Audio source'
       },
       queue: {
         autoplay: 'Autoplay'
-      },
-      errors: {
-        badRequest: {
-          header: 'Bad request',
-          content: 'Please make a request with valid data.'
-        },
-        notFound: {
-          header: 'Nothing was found',
-          content: 'Please try looking for something else.'
-        },
-        internalServer: {
-          header: 'Internal server error',
-          content: 'Please contact us for information.'
-        },
-        badGateway: {
-          header: 'Remote server error',
-          content: 'Please try again in a moment.'
-        },
-        gatewayTimeout: {
-          header: 'Remote server timeout',
-          content: 'Please try again in a moment.'
-        },
-        connection: {
-          header: 'Connection lost',
-          content: 'Please try again in a moment.'
-        },
-        client: {
-          header: 'Client error',
-          content: 'Please contact us for information.'
-        }
       }
     },
     pages: {

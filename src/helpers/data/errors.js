@@ -9,10 +9,10 @@ export default {
       'ban'
     ],
     header: localize(
-      'layout.errors.badRequest.header'
+      'errors.badRequest.header'
     ),
     content: localize(
-      'layout.errors.badRequest.content'
+      'errors.badRequest.content'
     ),
     isRefreshable: false
   },
@@ -22,10 +22,10 @@ export default {
       'search'
     ],
     header: localize(
-      'layout.errors.notFound.header'
+      'errors.notFound.header'
     ),
     content: localize(
-      'layout.errors.notFound.content'
+      'errors.notFound.content'
     ),
     isRefreshable: false
   },
@@ -36,10 +36,10 @@ export default {
       redCloseCornerIcon
     ],
     header: localize(
-      'layout.errors.internalServer.header'
+      'errors.internalServer.header'
     ),
     content: localize(
-      'layout.errors.internalServer.content'
+      'errors.internalServer.content'
     ),
     isRefreshable: false
   },
@@ -50,10 +50,10 @@ export default {
       redCloseCornerIcon
     ],
     header: localize(
-      'layout.errors.badGateway.header'
+      'errors.badGateway.header'
     ),
     content: localize(
-      'layout.errors.badGateway.content'
+      'errors.badGateway.content'
     ),
     isRefreshable: true
   },
@@ -64,10 +64,10 @@ export default {
       redCloseCornerIcon
     ],
     header: localize(
-      'layout.errors.gatewayTimeout.header'
+      'errors.gatewayTimeout.header'
     ),
     content: localize(
-      'layout.errors.gatewayTimeout.content'
+      'errors.gatewayTimeout.content'
     ),
     isRefreshable: true
   },
@@ -77,10 +77,10 @@ export default {
       redCloseCornerIcon
     ],
     header: localize(
-      'layout.errors.connection.header'
+      'errors.connection.header'
     ),
     content: localize(
-      'layout.errors.connection.content'
+      'errors.connection.content'
     ),
     isRefreshable: true
   },
@@ -90,10 +90,10 @@ export default {
       redCloseCornerIcon
     ],
     header: localize(
-      'layout.errors.client.header'
+      'errors.client.header'
     ),
     content: localize(
-      'layout.errors.client.content'
+      'errors.client.content'
     ),
     isRefreshable: false
   }

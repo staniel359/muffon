@@ -4,13 +4,7 @@
     ref="queuePanel"
   >
     <div class="queue-panel-content">
-      <HeaderSection @optionsButtonClick="handleOptionsButtonClick" />
-
-      <template v-if="isShowOptions">
-        <div class="ui divider main-divider"></div>
-
-        <OptionsSection  />
-      </template>
+      <HeaderSection />
 
       <div class="ui divider main-divider"></div>
 
@@ -22,7 +16,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
-import OptionsSection from './TheQueuePanel/OptionsSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 import {
@@ -35,13 +28,7 @@ export default {
   name: 'TheQueuePanel',
   components: {
     HeaderSection,
-    OptionsSection,
     TracksSection
-  },
-  data () {
-    return {
-      isShowOptions: false
-    }
   },
   computed: {
     ...mapGetters('queue', {
@@ -63,17 +50,12 @@ export default {
   methods: {
     handleVisible () {
       setIsVisible(true)
-
-      this.isShowOptions = false
     },
     handleHide () {
       setIsVisible(false)
     },
     handleQueueTracksCountChange (value) {
       !value && hide()
-    },
-    handleOptionsButtonClick () {
-      this.isShowOptions = !this.isShowOptions
     }
   }
 }

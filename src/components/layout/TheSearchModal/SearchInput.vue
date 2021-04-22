@@ -33,8 +33,11 @@ export default {
     handleClear () {
       this.$emit('clear')
     },
-    unfocusInput () {
-      this.$refs.historyInput.unfocusInput()
+    focus () {
+      this.$refs.historyInput.focus()
+    },
+    unfocus () {
+      this.$refs.historyInput.unfocus()
     }
   }
 }
