@@ -19,7 +19,7 @@ export function setIsPlayable (value) {
   )
 }
 
-export function setIsAutoplay (value = true) {
+export function setIsAutoplay (value) {
   store.dispatch(
     'audio/setIsAutoplay',
     value

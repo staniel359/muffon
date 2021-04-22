@@ -22,7 +22,11 @@ export function setPlaying (value, { isAutoplay } = {}) {
     value
   )
 
-  setIsAudioAutoplay(isAutoplay)
+  const audioStatus = store.state.audio.status
+  const isAudioPaused = audioStatus === 'pause'
+  const isAutoplayValue = isAutoplay ?? !isAudioPaused
+
+  setIsAudioAutoplay(isAutoplayValue)
 }
 
 export function getPlaying () {
