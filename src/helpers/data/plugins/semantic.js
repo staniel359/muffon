@@ -107,3 +107,16 @@ export function mainCheckboxOptions ({ onChecked, onUnchecked } = {}) {
     onUnchecked
   }
 }
+
+export function mainEmbedOptions ({
+  source = 'youtube',
+  id,
+  placeholder
+} = {}
+) {
+  return {
+    source,
+    id,
+    placeholder
+  }
+}

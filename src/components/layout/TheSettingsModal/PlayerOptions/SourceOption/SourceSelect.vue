@@ -43,5 +43,5 @@ export default {
 
 <style lang="sass" scoped>
 .main-dropdown
-  width: 200px
+  width: 220px
 </style>

@@ -5,9 +5,9 @@
     @click="handleClick"
   >
     <div class="content">
-      <div class="header">
+      <h5 class="ui header main-header">
         {{ typeNameFormatted }}
-      </div>
+      </h5>
     </div>
   </div>
 </template>

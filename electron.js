@@ -47,10 +47,17 @@ function createWindow () {
     win.setMenu(null)
   }
 
-  win.on('ready-to-show', () => {
+  function handleReadyToShow () {
     win.show()
     win.setMinimumSize(width, height)
-  })
+  }
+
+  function handleNewWindow (event) {
+    event.preventDefault()
+  }
+
+  win.on('ready-to-show', handleReadyToShow)
+  win.webContents.on('new-window', handleNewWindow)
 }
 
 // async function installVueDevTools () {

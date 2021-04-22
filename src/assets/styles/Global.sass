@@ -25,22 +25,24 @@ html
   &:not(:first-child)
     margin-top: 20px !important
 
-.main-segment.loading
-  min-height: 100px
+.main-segment
+  &.loading
+    min-height: 100px
 
 .main-page-segment-container
   @extend .no-margin
   min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding})
 
-.main-basic-segment-container
-  .segment:only-child
-    @extend .no-padding
-  .segment:first-child
-    padding: 0 0 1em 0
-  .segment
-    padding: 1em 0
-  .segment:last-child
-    padding: 1em 0 0 0
+.main-basic-segments-container
+  .segments
+    .segment:only-child
+      @extend .no-padding
+    .segment:first-child
+      padding: 0 0 1em 0
+    .segment
+      padding: 1em 0
+    .segment:last-child
+      padding: 1em 0 0 0
 
 .main-modal
   width: 500px !important
@@ -97,7 +99,7 @@ html
       @extend .text-color-base
 
 .main-message
-  @extend .no-shadow
+  @extend .no-shadow, .no-margin
 
 .main-popup
   @extend .no-border, .text-align-center
@@ -106,33 +108,53 @@ html
   @extend .no-margin
 
 .main-dropdown
-  line-height: 1.2em !important
+  @extend .d-flex, .align-items-center
+  .text
+    @extend .flex-full
 
 .main-dropdown-item
   @extend .d-flex, .align-items-center
   line-height: 1.2em !important
+  &.selected
+    font-weight: unset !important
   .image-container
     margin-right: 10px
     .image
       @extend .object-fit-cover
       width: 30px
       height: 30px
-  .icon
-    @extend .d-flex, .align-items-center, .justify-content-center
-    height: 18px !important
-    width: 18px !important
-  .icon-right
-    margin-left: 0.5em !important
   .content
     @extend .flex-full
     white-space: normal
-    .header
-      font-weight: 700
   .extra
     margin-left: 10px !important
     font-size: 0.8em
-  &.selected
-    font-weight: unset !important
+
+.main-dropdown-icon
+  @extend .d-flex, .align-items-center, .justify-content-center
+  height: 18px !important
+  width: 18px !important
+
+.main-dropdown-right-icon
+  @extend .no-margin
+  margin-left: 10px !important
+
+.main-track-dropdown-container
+  @extend .d-flex, .align-items-center
+
+.main-track-dropdown-logo-container
+  @extend .d-flex, .align-items-center, .justify-content-center
+  margin-right: 10px
+  width: 25px
+  height: 25px
+  .icon
+    @extend .no-margin
+  .image
+    width: 20px
+    height: 20px
+
+.main-track-dropdown-menu
+  z-index: 200 !important
 
 .ui.modals
   @extend .justify-content-center

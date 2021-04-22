@@ -104,8 +104,14 @@ export const messages = {
         }
       },
       track: {
+        videos: {
+          loading: 'Loading videos...',
+          error: 'Error.',
+          empty: 'No videos.'
+        },
         lyrics: {
           loading: 'Loading lyrics...',
+          error: 'Error.',
           empty: 'No lyrics.'
         }
       },

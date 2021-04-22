@@ -1,5 +1,5 @@
 <template>
-  <div class="menu tracks-list">
+  <div class="menu main-track-dropdown-menu">
     <TrackItem
       v-for="(trackData, index) in tracksFormatted"
       :key="trackData.uuid"
@@ -34,8 +34,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tracks-list
-  margin-top: 0.5em !important
-  z-index: 200 !important
-</style>
+<style lang="sass" scoped></style>

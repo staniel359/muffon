@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui basic segments main-basic-segment-container"
+    class="ui basic segments"
     ref="segment"
   >
     <HeaderSection

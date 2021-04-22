@@ -1,72 +1,45 @@
 <template>
-  <div class="ui basic segments main-basic-segment-container">
-    <div class="ui segment">
-      <BaseCounters
-        :listenersCount="listenersCount"
-        :playsCount="playsCount"
-      />
+  <div class="main-basic-segments-container">
+    <SecondarySection :trackData="trackData" />
+    <VideoSection :query="query" />
+    <LyricsSection :query="query" />
 
-      <BaseTrackTags
-        v-if="tags"
-        :tags="tags"
-        :artistName="artistName"
-        :trackTitle="trackTitle"
-        isMore
-      />
-
-      <template v-if="description">
-        <div class="ui divider main-divider"></div>
-
-        <BaseTrackDescription
-          :description="description"
-          :artistName="artistName"
-          :trackTitle="trackTitle"
-          isMore
-        />
-      </template>
-    </div>
+    <SimilarSection
+      :artistName="artistName"
+      :trackTitle="trackTitle"
+    />
   </div>
 </template>
 
 <script>
-import BaseCounters from '@/BaseCounters.vue'
-import BaseTrackTags from '@/models/track/BaseTrackTags.vue'
-import BaseTrackDescription from '@/models/track/BaseTrackDescription.vue'
+import SecondarySection from './ExtraSection/SecondarySection.vue'
+import VideoSection from './ExtraSection/VideoSection.vue'
+import LyricsSection from './ExtraSection/LyricsSection.vue'
+import SimilarSection from './ExtraSection/SimilarSection.vue'
 
 export default {
   name: 'ExtraSection',
   components: {
-    BaseCounters,
-    BaseTrackTags,
-    BaseTrackDescription
+    SecondarySection,
+    VideoSection,
+    LyricsSection,
+    SimilarSection
   },
   props: {
-    trackData: {
-      type: Object,
-      required: true
-    }
+    trackData: Object,
+    artistName: String,
+    trackTitle: String
   },
   computed: {
-    listenersCount () {
-      return this.trackData.listeners_count
-    },
-    playsCount () {
-      return this.trackData.plays_count
-    },
-    tags () {
-      return this.trackData.tags
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    trackTitle () {
-      return this.trackData.title
-    },
-    description () {
-      return this.trackData.description
+    query () {
+      return `${this.artistName} - ${this.trackTitle}`
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-basic-segments-container
+  @extend .flex-full, .d-flex, .flex-column
+  margin-left: calc(150px + 1em)
+</style>

@@ -5,7 +5,7 @@
     @click="handleClick"
   >
     <div class="content">
-      <h5 class="header main-header">
+      <h5 class="ui header main-header">
         {{ trackTitle }}
       </h5>
       <div>
@@ -45,7 +45,7 @@ export default {
     handleClick () {
       this.setSelectedTrackData({
         ...this.trackData,
-        id: generateKey()
+        uuid: generateKey()
       })
     }
   }

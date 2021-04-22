@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu albums-list">
     <AlbumItem
       v-for="albumData in albumsFormatted"
       :key="albumData.uuid"
@@ -33,4 +33,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.ui.dropdown .albums-list
+  width: $albumSourceSelectMenuWidth !important
+</style>

@@ -5,9 +5,9 @@
   >
     <div class="text main-dropdown-item">
       <div class="content">
-        <div class="header">
+        <h5 class="ui header main-header">
           {{ headerFormatted }}
-        </div>
+        </h5>
       </div>
     </div>
 
@@ -57,7 +57,4 @@ export default {
 <style lang="sass" scoped>
 .main-dropdown
   margin-bottom: 10px
-
-.ui.scrolling.dropdown .menu
-  width: $albumSourceSelectMenuWidth !important
 </style>

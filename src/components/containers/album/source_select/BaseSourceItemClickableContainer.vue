@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui pointing left dropdown item main-dropdown-item"
+    class="item main-dropdown-item"
     :class="{ disabled: isDisabled }"
     @click="handleClick"
   >

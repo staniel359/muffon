@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="menu sources-list">
     <div class="header">
       {{ streamableHeaderFormatted }}
     </div>
@@ -71,4 +71,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.ui.dropdown .sources-list
+  width: $albumSourceSelectMenuWidth !important
+</style>

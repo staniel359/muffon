@@ -2,7 +2,13 @@ import axios from 'axios'
 import { pathCase } from 'path-case'
 import { raiseProductionError } from '#/utils'
 
-export default function ({ sourceId = 'lastfm', scope, query, page, limit }) {
+export default function ({
+  sourceId = 'lastfm',
+  scope = '',
+  query,
+  page,
+  limit
+}) {
   this.isLoading = true
 
   const sourceIdFormatted = pathCase(sourceId)

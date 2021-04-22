@@ -106,6 +106,12 @@ export function checkCheckbox (el) {
   $(el).checkbox('check')
 }
 
+// Embed
+
+export function setEmbed (el, options) {
+  $(el).embed(options)
+}
+
 // Utils
 
 export function numberToColumnWidth (number = 1) {

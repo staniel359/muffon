@@ -1,6 +1,7 @@
 <template>
   <div
     class="item main-dropdown-item"
+    :data-value="index"
     @click="handleClick"
   >
     <div class="image-container">
@@ -14,10 +15,10 @@
 
     <div class="content">
       <h5 class="ui header main-header">
-        {{ albumTitle }}
+        {{ videoTitle }}
       </h5>
       <div>
-        {{ artistName }}
+        {{ channelTitle }}
       </div>
     </div>
   </div>
@@ -28,34 +29,38 @@ import BaseImage from '@/BaseImage.vue'
 import { generateKey } from '#/utils'
 
 export default {
-  name: 'AlbumItem',
+  name: 'VideoItem',
   components: {
     BaseImage
   },
   inject: [
-    'setSelectedAlbumData'
+    'setSelectedVideoData'
   ],
   props: {
-    albumData: {
+    videoData: {
       type: Object,
+      required: true
+    },
+    index: {
+      type: Number,
       required: true
     }
   },
   computed: {
     image () {
-      return this.albumData.image.extrasmall
+      return this.videoData.image.small
     },
-    albumTitle () {
-      return this.albumData.title
+    videoTitle () {
+      return this.videoData.title
     },
-    artistName () {
-      return this.albumData.artist?.name
+    channelTitle () {
+      return this.videoData.channel.title
     }
   },
   methods: {
     handleClick () {
-      this.setSelectedAlbumData({
-        ...this.albumData,
+      this.setSelectedVideoData({
+        ...this.videoData,
         uuid: generateKey()
       })
     }
@@ -63,4 +68,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.image-container
+  .image
+    width: 40px
+</style>

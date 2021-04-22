@@ -5,14 +5,14 @@
     @click="handleClick"
   >
     <BaseIcon
-      class="colored"
+      class="colored main-dropdown-icon"
       :icon="icon"
     />
 
     <div class="content">
-      <div class="header">
+      <h5 class="ui header main-header">
         {{ sourceName }}
-      </div>
+      </h5>
     </div>
 
     <div class="description extra">
