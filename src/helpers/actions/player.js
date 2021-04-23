@@ -90,7 +90,7 @@ export function resetVariants () {
   store.dispatch('player/setVariants', [])
 }
 
-export function updateTitle () {
+export function formatTitle () {
   const defaultTitle = 'muffon'
   const playerPlaying = store.state.player.playing
   const audioStatus = store.state.audio.status
@@ -112,14 +112,12 @@ export function updateTitle () {
       playerPlayingFullTitle
     ].join(' ')
 
-    const titleFormatted = [
+    return [
       playerFullTitle,
       defaultTitle
     ].join(' | ')
-
-    document.title = titleFormatted
   } else {
-    document.title = defaultTitle
+    return defaultTitle
   }
 }
 

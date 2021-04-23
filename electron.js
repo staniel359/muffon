@@ -1,25 +1,26 @@
-const { app, BrowserWindow } = require('electron')
+const { app, ipcMain, BrowserWindow, Tray, Menu } = require('electron')
 const ElectronStore = require('electron-store')
-// const {
-//   default: installExtension,
-//   VUEJS_DEVTOOLS
-// } = require('electron-devtools-installer')
+const {
+  default: installExtension,
+  VUEJS_DEVTOOLS
+} = require('electron-devtools-installer')
+
+const appName = 'muffon'
 
 const width = 800
 const height = 600
-const icon = `${__dirname}/public/icon.ico`
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-const isMac = process.platform === 'darwin'
-const isNoBrowserWindows = !BrowserWindow.getAllWindows().length
+const isDevelopment =
+  process.env.NODE_ENV === 'development'
 
+const iconPath = `${__dirname}/public/icon.ico`
 const developmentUrl = 'http://localhost:3000'
 const productionPath = `file://${__dirname}/index.html`
 
 const browserWindowOptions = {
   width,
   height,
-  icon,
+  icon: iconPath,
   autoHideMenuBar: true,
   show: false,
   webPreferences: {
@@ -29,57 +30,119 @@ const browserWindowOptions = {
   }
 }
 
-function createWindow () {
-  ElectronStore.initRenderer()
+let win = null
+let tray = null
+let isVisible = null
 
-  const win = new BrowserWindow(
+function createTray () {
+  tray = new Tray(iconPath)
+
+  const handleCloseClick = () => {
+    app.exit()
+  }
+
+  const menuItems = [
+    {
+      type: 'normal',
+      label: 'Close',
+      click: handleCloseClick
+    }
+  ]
+  const menu = Menu.buildFromTemplate(menuItems)
+
+  tray.setContextMenu(menu)
+  tray.setToolTip(appName)
+
+  const handleClick = () => {
+    isVisible ? win.hide() : win.show()
+  }
+
+  tray.on('click', handleClick)
+}
+
+function createWindow () {
+  win = new BrowserWindow(
     browserWindowOptions
   )
 
-  if (isDevelopment) {
-    // installVueDevTools()
-
-    win.loadURL(developmentUrl)
+  const setupDevelopment = () => {
+    installExtension(VUEJS_DEVTOOLS).then(() => {
+      win.loadURL(developmentUrl)
+    })
 
     win.webContents.openDevTools()
-  } else {
+  }
+
+  const setupProduction = () => {
     win.loadURL(productionPath)
     win.setMenu(null)
   }
 
-  function handleReadyToShow () {
+  if (isDevelopment) {
+    setupDevelopment()
+  } else {
+    setupProduction()
+  }
+
+  const handleReadyToShow = () => {
     win.show()
     win.setMinimumSize(width, height)
   }
 
-  function handleNewWindow (event) {
+  const handleClose = event =>  {
     event.preventDefault()
+
+    win.hide()
+  }
+
+  const handleShow = () => {
+    isVisible = true
+  }
+
+  const handleHide = () => {
+    isVisible = false
   }
 
   win.on('ready-to-show', handleReadyToShow)
-  win.webContents.on('new-window', handleNewWindow)
+  win.on('close', handleClose)
+  win.on('show', handleShow)
+  win.on('hide', handleHide)
+
+  const handleNewWindow = event => {
+    event.preventDefault()
+  }
+
+  win.webContents.on(
+    'new-window',
+    handleNewWindow
+  )
 }
 
-// async function installVueDevTools () {
-//   try {
-//     await installExtension(VUEJS_DEVTOOLS)
-//   } catch (e) {
-//     console.error(
-//       'Vue Devtools failed to install:',
-//       e.toString()
-//     )
-//   }
-// }
+function setup () {
+  ElectronStore.initRenderer()
 
-function handleActivate () {
-  isNoBrowserWindows && createWindow()
+  createWindow()
+  createTray()
 }
 
-function handleAllWindowsClose () {
-  !isMac && app.quit()
+app.whenReady().then(setup)
+
+app.setAppUserModelId(appName)
+
+function handleAllWindowsClose (event) {
+  event.preventDefault()
 }
 
-app.whenReady().then(createWindow)
+app.on(
+  'window-all-closed',
+  handleAllWindowsClose
+)
 
-app.on('activate', handleActivate)
-app.on('window-all-closed', handleAllWindowsClose)
+function handleSetTrayTooltip (event, value) {
+  tray.setToolTip(value)
+}
+
+ipcMain.handle(
+  'set-tray-tooltip',
+  handleSetTrayTooltip
+)

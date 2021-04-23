@@ -4,7 +4,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { updateTitle as updatePlayerTitle } from '#/actions/player'
+import { formatTitle as formatPlayerTitle } from '#/actions/player'
+import { setTrayTooltip as setElectronTrayTooltip } from '#/actions/electron'
 
 export default {
   name: 'TheTitleObserver',
@@ -17,15 +18,16 @@ export default {
     })
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange',
-    audioStatus: 'handleAudioStatusChange'
+    playerPlaying: 'handlePlayerTitleChange',
+    audioStatus: 'handlePlayerTitleChange'
   },
   methods: {
-    handleAudioStatusChange () {
-      updatePlayerTitle()
-    },
-    handlePlayerPlayingChange () {
-      updatePlayerTitle()
+    handlePlayerTitleChange () {
+      const title = formatPlayerTitle()
+
+      document.title = title
+
+      setElectronTrayTooltip(title)
     }
   }
 }
