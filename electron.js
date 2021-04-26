@@ -1,9 +1,6 @@
-const { app, ipcMain, BrowserWindow, Tray, Menu } = require('electron')
+const { app, BrowserWindow, Tray, Menu, ipcMain } = require('electron')
+const path = require('path')
 const ElectronStore = require('electron-store')
-const {
-  default: installExtension,
-  VUEJS_DEVTOOLS
-} = require('electron-devtools-installer')
 
 const appName = 'muffon'
 
@@ -13,7 +10,11 @@ const height = 600
 const isDevelopment =
   process.env.NODE_ENV === 'development'
 
-const iconPath = `${__dirname}/public/icon.ico`
+const iconPath = path.join(
+  __dirname,
+  (isDevelopment ? 'public' : ''),
+  'icon.ico'
+)
 const developmentUrl = 'http://localhost:3000'
 const productionPath = `file://${__dirname}/index.html`
 
@@ -66,6 +67,11 @@ function createWindow () {
   )
 
   const setupDevelopment = () => {
+    const {
+      default: installExtension,
+      VUEJS_DEVTOOLS
+    } = require('electron-devtools-installer')
+
     installExtension(VUEJS_DEVTOOLS).then(() => {
       win.loadURL(developmentUrl)
     })
