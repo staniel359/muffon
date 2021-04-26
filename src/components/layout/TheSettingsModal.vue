@@ -1,36 +1,30 @@
 <template>
-  <div
-    class="ui modal main-modal main-modal-full-height"
-    ref="modal"
-  >
-    <div class="ui scrolling content">
+  <BaseModalContainer ref="modal">
+    <div class="scrolling content main-modal-content-full-height">
+      <ViewOptions />
       <PlayerOptions />
       <QueueOptions />
     </div>
-  </div>
+  </BaseModalContainer>
 </template>
 
 <script>
+import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import ViewOptions from './TheSettingsModal/ViewOptions.vue'
 import PlayerOptions from './TheSettingsModal/PlayerOptions.vue'
 import QueueOptions from './TheSettingsModal/QueueOptions.vue'
-import { mainModalOptions } from '#/data/plugins/semantic'
-import { setModal, showModal } from '#/actions/plugins/semantic'
 
 export default {
   name: 'TheSettingsModal',
   components: {
+    BaseModalContainer,
+    ViewOptions,
     PlayerOptions,
     QueueOptions
   },
-  mounted () {
-    setModal(
-      this.$refs.modal,
-      mainModalOptions()
-    )
-  },
   methods: {
     show () {
-      showModal(this.$refs.modal)
+      this.$refs.modal.show()
     }
   }
 }

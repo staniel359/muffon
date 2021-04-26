@@ -1,36 +1,38 @@
 <template>
   <div class="ui labels large">
-    <div
+    <BaseLabel
       v-if="released"
-      class="ui basic label"
-    >
-      {{ released }}
-    </div>
+      :text="released"
+    />
 
     <template v-if="labels">
-      <div
+      <BaseLabel
         v-for="labelData in labelsFormatted"
-        class="ui basic label"
         :key="labelData.uuid"
-      >
-        {{ labelData.name }}
-      </div>
+        :text="labelData.name"
+      />
     </template>
   </div>
 </template>
 
 <script>
+import BaseLabel from '@/BaseLabel.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'BaseReleasedLabels',
+  components: {
+    BaseLabel
+  },
   props: {
     released: String,
     labels: Array
   },
   computed: {
     labelsFormatted () {
-      return formatCollection(this.labels)
+      return formatCollection(
+        this.labels
+      )
     }
   }
 }

@@ -174,8 +174,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-::v-deep(.track-progress)
-  background: $colorPale !important
-  transition: 0.25s
-</style>
+<style lang="sass" scoped></style>

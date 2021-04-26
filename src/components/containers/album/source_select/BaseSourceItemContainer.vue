@@ -16,11 +16,7 @@ export default {
       type: String,
       required: true
     },
-    artistName: {
-      type: String,
-      required: true
-    },
-    albumTitle: {
+    query: {
       type: String,
       required: true
     },
@@ -68,9 +64,6 @@ export default {
         sourceId: this.sourceId,
         query: this.query
       }
-    },
-    query () {
-      return `${this.artistName} - ${this.albumTitle}`
     }
   },
   watch: {
@@ -87,8 +80,8 @@ export default {
     handleSearchDataChange (value) {
       value && this.formatTypesData()
     },
-    handleError () {
-      this.errorCollectionsCount++
+    handleError (value) {
+      value && this.errorCollectionsCount++
     },
     fetchSearchData,
     fetchTypesData () {

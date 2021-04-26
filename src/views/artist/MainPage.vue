@@ -1,27 +1,28 @@
 <template>
-  <BasePageContainer
+  <BaseArtistPageContainer
     class="page-container"
     @init="handleContainerInit"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <LeftColumn
-        :artistName="pageSlotProps.artistName"
+        :artistName="slotProps.artistName"
         :scrollable="container"
       />
-      <RightColumn :artistName="pageSlotProps.artistName" />
+      <RightColumn :artistName="slotProps.artistName" />
     </template>
-  </BasePageContainer>
+  </BaseArtistPageContainer>
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/artist/BasePageContainer.vue'
+import BaseArtistPageContainer
+  from '@/containers/pages/artist/BaseArtistPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
 export default {
   name: 'MainPage',
   components: {
-    BasePageContainer,
+    BaseArtistPageContainer,
     LeftColumn,
     RightColumn
   },

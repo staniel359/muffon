@@ -1,19 +1,28 @@
 <template>
-  <div class="ui segment main-segment-container main-page-segment-container">
-    Home
-  </div>
+  <BasePageContainer>
+    <BaseSegmentContainer
+      :class="[
+        'main-segment-container',
+        'main-page-segment-container'
+      ]"
+    >
+      Home
+    </BaseSegmentContainer>
+  </BasePageContainer>
 </template>
 
 <script>
-import pageLoadableMixin from '#/mixins/pageLoadable'
+import BasePageContainer from '@/containers/BasePageContainer.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import { setNavigationSections } from '#/actions/layout'
 import { homePage as formatHomePageNavigation } from '#/formatters/navigation'
 
 export default {
   name: 'HomePage',
-  mixins: [
-    pageLoadableMixin
-  ],
+  components: {
+    BasePageContainer,
+    BaseSegmentContainer
+  },
   computed: {
     navigationSections () {
       return formatHomePageNavigation()

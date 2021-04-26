@@ -1,22 +1,23 @@
 <template>
   <div class="fitted item">
-    <button
-      class="ui icon compact basic large button main-navbar-button"
+    <BaseButton
+      class="basic large main-navbar-button"
+      icon="cog"
       @click="handleClick"
-    >
-      <i class="cog icon" />
-    </button>
+    />
   </div>
 
   <TheSettingsModal ref="modal" />
 </template>
 
 <script>
+import BaseButton from '@/BaseButton.vue'
 import TheSettingsModal from '@/layout/TheSettingsModal.vue'
 
 export default {
   name: 'NavbarSettingsButton',
   components: {
+    BaseButton,
     TheSettingsModal
   },
   methods: {

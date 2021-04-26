@@ -1,5 +1,5 @@
 <template>
-  <BaseModalContainer
+  <BaseModalContentContainer
     ref="modal"
     :key="key"
     :isLoading="isLoading"
@@ -11,18 +11,19 @@
     <template #default>
       <slot :[scope]="albumData[scope]"></slot>
     </template>
-  </BaseModalContainer>
+  </BaseModalContentContainer>
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContentContainer
+  from '@/containers/BaseModalContentContainer.vue'
 import fetchAlbumData from '#/actions/api/album/fetchData'
 import { generateKey } from '#/utils'
 
 export default {
   name: 'BaseAlbumModalContainer',
   components: {
-    BaseModalContainer
+    BaseModalContentContainer
   },
   props: {
     requestAlbumData: {

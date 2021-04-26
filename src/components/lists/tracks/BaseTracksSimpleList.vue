@@ -1,5 +1,5 @@
 <template>
-  <div class="ui selection list">
+  <BaseListContainer class="selection">
     <BaseTrackContainer
       v-for="(trackData, index) in tracksFormatted"
       class="item main-simple-list-item"
@@ -8,12 +8,12 @@
       :queueTracks="queueTracks"
       isWithActiveClass
     >
-      <template #default="trackSlotProps">
+      <template #default="slotProps">
         <BaseTrackContent
           :trackData="trackData"
-          :isLoading="trackSlotProps.isLoading"
-          :isError="trackSlotProps.isError"
-          :isCurrent="trackSlotProps.isCurrent"
+          :isLoading="slotProps.isLoading"
+          :isError="slotProps.isError"
+          :isCurrent="slotProps.isCurrent"
           :isWithImage="isWithImage"
           :isWithIndex="isWithIndex"
           :index="index"
@@ -28,10 +28,11 @@
         />
       </template>
     </BaseTrackContainer>
-  </div>
+  </BaseListContainer>
 </template>
 
 <script>
+import BaseListContainer from '@/containers/BaseListContainer.vue'
 import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
 import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
 import { collection as formatCollection } from '#/formatters'
@@ -40,6 +41,7 @@ import { track as formatTrack } from '#/formatters/track'
 export default {
   name: 'BaseTracksSimpleList',
   components: {
+    BaseListContainer,
     BaseTrackContainer,
     BaseTrackContent
   },

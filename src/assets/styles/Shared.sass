@@ -1,14 +1,18 @@
-$backgroundPath: url('./assets/images/background.jpg')
-$fontPath: url('./assets/fonts/LatoDefault.ttf')
+$backgroundPath: url('*/assets/images/background.jpg')
+$fontPath: url('*/assets/fonts/LatoDefault.ttf')
 
 $colorBase: #804fb3
 $colorPale: #b589d6
-$colorGrey: #e8e8e8
+$colorGrey: #22242626
+$colorGreyInverted: #ffffff26
+$colorDarkGrey: #ffffff14
+$colorWhite: #ffffffe6
 $colorBlackTransparent: #000000a6
 
-$border: 1px solid $colorGrey
+$border: 1px solid $colorGrey !important
+$borderInverted: 1px solid $colorGreyInverted !important
 
-$navbarHeight: 40px
+$navbarHeight: 45px
 $playerPanelHeight: 70px
 $mainContainerTopPadding: $navbarHeight + 20px
 $mainContainerBottomPadding: $playerPanelHeight + 20px
@@ -19,14 +23,33 @@ $trackContentMarginWidth: 0.5em
 $albumSourceSelectMenuWidth: 220px
 $mainCheckboxThumbHeight: 1.2em
 $mainCheckboxWidth: 3em
-$trackPageDropdownWidth: 225px
+$trackPagePlayerPanelHeight: 40px
+$trackPageDropdownWidth: 250px
 
+.text-color-initial
+  color: initial !important
 .text-color-unset
   color: unset !important
 .text-color-white
-  color: white
+  color: $colorWhite
 .text-color-base
   color: $colorBase !important
+
+.background-base
+  background: $colorBase !important
+.background-pale
+  background: $colorPale !important
+.background-grey
+  background: $colorGrey !important
+.background-dark-grey
+  background: $colorDarkGrey !important
+.background-black-transparent
+  background: $colorBlackTransparent !important
+.background-transparent
+  background: transparent !important
+
+.background-grey-inverted
+  background: $colorGreyInverted !important
 
 .absolute
   position: absolute !important
@@ -46,6 +69,8 @@ $trackPageDropdownWidth: 225px
   margin: 0 !important
 .no-padding
   padding: 0 !important
+.no-border-radius
+  border-radius: 0 !important
 .no-border
   border: none !important
 .no-shadow
@@ -69,7 +94,7 @@ $trackPageDropdownWidth: 225px
   justify-content: center !important
 
 .align-items-center
-  align-items: center
+  align-items: center !important
 
 .cursor-pointer
   cursor: pointer !important
@@ -96,9 +121,6 @@ $trackPageDropdownWidth: 225px
 
 .scroll-smooth
   scroll-behavior: smooth
-
-.break-word
-  word-break: break-word
 
 .object-fit-cover
   object-fit: cover

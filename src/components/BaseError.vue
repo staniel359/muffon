@@ -1,38 +1,22 @@
 <template>
-  <div class="ui icon message main-message">
-    <i class="icons error-icon-group">
-      <i
-        v-for="(errorIcon, index) in errorIcons"
-        class="icon"
-        :key="index"
-        :class="errorIcon"
-      />
-    </i>
-
-    <div class="content">
-      <div class="header">
-        {{ errorHeader }}
-      </div>
-      <p>
-        {{ errorContent }}
-      </p>
-    </div>
-
-    <button
-      v-if="isErrorRefreshable"
-      class="circular ui icon basic button"
-      @click="handleRefresh"
-    >
-      <i class="icon sync alternate" />
-    </button>
-  </div>
+  <BaseMessage
+    :icons="icons"
+    :header="header"
+    :content="content"
+    :buttonData="buttonData"
+    @buttonClick="handleButtonClick"
+  />
 </template>
 
 <script>
+import BaseMessage from '@/BaseMessage.vue'
 import errorsData from '#/data/errors'
 
 export default {
   name: 'BaseError',
+  components: {
+    BaseMessage
+  },
   props: {
     error: {
       type: Error,
@@ -48,14 +32,24 @@ export default {
     }
   },
   computed: {
-    errorIcons () {
+    icons () {
       return this.errorData.icons
     },
-    errorHeader () {
+    header () {
       return this.errorData.header
     },
-    errorContent () {
+    content () {
       return this.errorData.content
+    },
+    buttonData () {
+      if (this.isErrorRefreshable) {
+        return {
+          class: 'circular basic',
+          icon: 'sync alternate'
+        }
+      } else {
+        return null
+      }
     },
     isErrorRefreshable () {
       return this.errorData.isRefreshable
@@ -65,37 +59,41 @@ export default {
     this.setErrorData()
   },
   methods: {
-    handleRefresh () {
+    handleButtonClick () {
       this.$emit('refresh')
     },
     setErrorData () {
       if (this.error.isAxiosError) {
         this.setAxiosErrorData()
       } else {
-        this.errorData = { ...errorsData.client }
+        this.errorData = {
+          ...errorsData.client
+        }
       }
     },
     setAxiosErrorData () {
       if (this.error.response) {
         this.setResponseErrorData()
       } else {
-        this.errorData = { ...errorsData.connection }
+        this.errorData = {
+          ...errorsData.connection
+        }
       }
     },
     setResponseErrorData () {
       const errorCode = this.error.response.status
-      const isMatchedError = error => error.code === errorCode
+      const isMatchedError = error => {
+        return error.code === errorCode
+      }
 
       this.errorData = {
-        ...Object.values(errorsData).find(isMatchedError)
+        ...Object.values(errorsData).find(
+          isMatchedError
+        )
       }
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.error-icon-group
-  font-size: 3em
-  margin-right: 0.5em
-</style>
+<style lang="sass" scoped></style>

@@ -1,6 +1,9 @@
 <template>
   <div class="item navigation-container">
-    <div class="ui large breadcrumb">
+    <div
+      class="ui large breadcrumb"
+      :class="{ inverted: isDarkMode }"
+    >
       <NavigationSection
         v-for="(sectionData, index) in navigationSectionsFormatted"
         :key="sectionData.uuid"
@@ -23,7 +26,8 @@ export default {
   },
   computed: {
     ...mapState('layout', [
-      'navigationSections'
+      'navigationSections',
+      'isDarkMode'
     ]),
     navigationSectionsFormatted () {
       return formatCollection(

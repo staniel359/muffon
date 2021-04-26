@@ -1,32 +1,24 @@
 <template>
-  <div
-    class="ui basic button fluid pointing left scrolling dropdown main-dropdown"
-    ref="dropdown"
+  <BaseDropdownContainer
+    class="basic fluid pointing left scrolling button"
+    :header="headerFormatted"
   >
-    <div class="text main-dropdown-item">
-      <div class="content">
-        <h5 class="ui header main-header">
-          {{ headerFormatted }}
-        </h5>
-      </div>
-    </div>
-
     <TypesList
       :albumsData="albumsData"
       :types="types"
     />
-  </div>
+  </BaseDropdownContainer>
 </template>
 
 <script>
+import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import TypesList from './TypeSelect/TypesList.vue'
-import { setDropdown } from '#/actions/plugins/semantic'
-import { mainDropdownOptions } from '#/data/plugins/semantic'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'TypeSelect',
   components: {
+    BaseDropdownContainer,
     TypesList
   },
   props: {
@@ -47,12 +39,6 @@ export default {
         'pages.album.sources.select.type'
       )
     }
-  },
-  mounted () {
-    setDropdown(
-      this.$refs.dropdown,
-      mainDropdownOptions()
-    )
   }
 }
 </script>

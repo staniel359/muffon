@@ -1,5 +1,5 @@
 <template>
-  <BasePaginatedSegmentContainer
+  <BaseArtistPaginatedSegmentContainer
     headerTextKey="tracks"
     scope="tracks"
     :clientPageLimit="10"
@@ -7,27 +7,27 @@
     :artistName="artistName"
     :formatHeaderLink="formatArtistTracksLink"
   >
-    <template #default="segmentSlotProps">
+    <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="segmentSlotProps.tracks"
+        :tracks="slotProps.tracks"
         :artistName="artistName"
-        :topTrackCount="segmentSlotProps.topTrackCount"
+        :topTrackCount="slotProps.topTrackCount"
         isWithListenersCount
       />
     </template>
-  </BasePaginatedSegmentContainer>
+  </BaseArtistPaginatedSegmentContainer>
 </template>
 
 <script>
-import BasePaginatedSegmentContainer
-  from '@/containers/pages/artist/BasePaginatedSegmentContainer.vue'
+import BaseArtistPaginatedSegmentContainer
+  from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import { artistTracks as formatArtistTracksLink } from '#/formatters/links'
 
 export default {
   name: 'TracksSegment',
   components: {
-    BasePaginatedSegmentContainer,
+    BaseArtistPaginatedSegmentContainer,
     BaseTracksSimpleList
   },
   props: {

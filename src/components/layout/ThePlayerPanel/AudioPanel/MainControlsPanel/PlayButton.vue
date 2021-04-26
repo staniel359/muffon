@@ -1,22 +1,22 @@
 <template>
-  <div
-    class="ui basic icon button"
+  <BaseButton
+    class="basic"
     :class="{ disabled: !isAudioPlayable }"
+    :icon="audioAction"
     @click="handleClick"
-  >
-    <i
-      class="icon"
-      :class="audioAction"
-    />
-  </div>
+  />
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
+import BaseButton from '@/BaseButton.vue'
 import { toggleAction as toggleAudioAction } from '#/actions/audio'
 
 export default {
   name: 'PlayButton',
+  components: {
+    BaseButton
+  },
   computed: {
     ...mapState('audio', {
       isAudioPlayable: 'isPlayable'

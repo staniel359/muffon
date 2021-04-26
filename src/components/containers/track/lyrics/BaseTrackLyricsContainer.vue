@@ -1,29 +1,25 @@
 <template>
-  <div
-    class="ui segment main-segment"
-    :class="{ loading: isLoading }"
+  <BaseSegmentContainer
+    :isLoading="isLoading"
+    :error="error"
+    @refresh="handleRefresh"
   >
-    <BaseError
-      v-if="error"
-      :error="error"
-      @refresh="handleRefresh"
-    />
     <slot
-      v-else-if="lyrics"
+      v-if="lyrics"
       :lyrics="lyrics"
       :trackId="trackId"
     ></slot>
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import fetchTrackData from '#/actions/api/track/fetchData'
 
 export default {
   name: 'BaseTrackLyricsContainer',
   components: {
-    BaseError
+    BaseSegmentContainer
   },
   props: {
     selectedTrackData: {

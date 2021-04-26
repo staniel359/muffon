@@ -2,7 +2,11 @@
   <i
     class="icon"
     ref="icon"
-    :class="[sourceIdFormatted, { colored: isActive }]"
+    :class="[
+      sourceIdFormatted,
+      size,
+      { colored: isActive }
+    ]"
     :data-content="popupTextFormatted"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
@@ -19,7 +23,8 @@ import { localize } from '#/actions/plugins/i18n'
 export default {
   name: 'BaseSourceIcon',
   props: {
-    sourceId: String
+    sourceId: String,
+    size: String
   },
   data () {
     return {

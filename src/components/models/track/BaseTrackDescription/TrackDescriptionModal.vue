@@ -5,8 +5,10 @@
     :artistName="artistName"
     :trackTitle="trackTitle"
   >
-    <template #default="modalSlotProps">
-      <BaseModalDescription :description="modalSlotProps.description" />
+    <template #default="slotProps">
+      <BaseModalDescription
+        :description="slotProps.description"
+      />
     </template>
   </BaseTrackModalContainer>
 </template>

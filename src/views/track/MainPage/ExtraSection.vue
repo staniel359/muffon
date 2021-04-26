@@ -1,10 +1,10 @@
 <template>
   <div class="main-basic-segments-container">
-    <SecondarySection :trackData="trackData" />
-    <VideoSection :query="query" />
-    <LyricsSection :query="query" />
+    <SecondarySegment :trackData="trackData" />
+    <VideoSegment :query="query" />
+    <LyricsSegment :query="query" />
 
-    <SimilarSection
+    <SimilarSegment
       :artistName="artistName"
       :trackTitle="trackTitle"
     />
@@ -12,18 +12,18 @@
 </template>
 
 <script>
-import SecondarySection from './ExtraSection/SecondarySection.vue'
-import VideoSection from './ExtraSection/VideoSection.vue'
-import LyricsSection from './ExtraSection/LyricsSection.vue'
-import SimilarSection from './ExtraSection/SimilarSection.vue'
+import SecondarySegment from './ExtraSection/SecondarySegment.vue'
+import VideoSegment from './ExtraSection/VideoSegment.vue'
+import LyricsSegment from './ExtraSection/LyricsSegment.vue'
+import SimilarSegment from './ExtraSection/SimilarSegment.vue'
 
 export default {
   name: 'ExtraSection',
   components: {
-    SecondarySection,
-    VideoSection,
-    LyricsSection,
-    SimilarSection
+    SecondarySegment,
+    VideoSegment,
+    LyricsSegment,
+    SimilarSegment
   },
   props: {
     trackData: Object,
@@ -40,6 +40,5 @@ export default {
 
 <style lang="sass" scoped>
 .main-basic-segments-container
-  @extend .flex-full, .d-flex, .flex-column
   margin-left: calc(150px + 1em)
 </style>

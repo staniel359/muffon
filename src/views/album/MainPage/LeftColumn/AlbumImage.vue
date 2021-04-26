@@ -50,6 +50,5 @@ export default {
 
 <style lang="sass" scoped>
 .album-image
-  @extend .cursor-zoom-in
-  object-fit: cover
+  @extend .cursor-zoom-in, .object-fit-cover
 </style>

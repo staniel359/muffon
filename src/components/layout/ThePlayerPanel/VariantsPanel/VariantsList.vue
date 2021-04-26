@@ -1,35 +1,37 @@
 <template>
-  <div
-    class="ui top attached segment variants-list"
-    ref="list"
+  <BaseSegmentContainer
+    class="top attached variants-list"
+    @init="handleSegmentInit"
   >
-    <div class="ui selection list">
-      <BaseVariantContainer
+    <BaseListContainer class="selection">
+      <BaseTrackVariantContainer
         v-for="(variantData, index) in variantsFormatted"
         class="item main-simple-list-item"
         :key="variantData.uuid"
         :variantData="variantData"
         :index="index"
       >
-        <template #default="variantSlotProps">
+        <template #default="slotProps">
           <BaseTrackContent
             :trackData="variantData"
-            :isLoading="variantSlotProps.isLoading"
-            :isError="variantSlotProps.isError"
-            :isCurrent="variantSlotProps.isCurrent"
+            :isLoading="slotProps.isLoading"
+            :isError="slotProps.isError"
+            :isCurrent="slotProps.isCurrent"
             isWithArtistName
             isWithLength
           />
         </template>
-      </BaseVariantContainer>
-    </div>
-  </div>
+      </BaseTrackVariantContainer>
+    </BaseListContainer>
+  </BaseSegmentContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseVariantContainer
-  from '@/containers/track/variant/BaseVariantContainer.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseTrackVariantContainer
+  from '@/containers/track/variant/BaseTrackVariantContainer.vue'
 import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
 import { collection as formatCollection } from '#/formatters'
 import {
@@ -39,8 +41,15 @@ import {
 export default {
   name: 'VariantsList',
   components: {
-    BaseVariantContainer,
+    BaseSegmentContainer,
+    BaseListContainer,
+    BaseTrackVariantContainer,
     BaseTrackContent
+  },
+  data () {
+    return {
+      segment: null
+    }
   },
   computed: {
     ...mapState('player', {
@@ -56,13 +65,16 @@ export default {
     playerVariants: 'handleVariantsChange'
   },
   methods: {
+    handleSegmentInit (el) {
+      this.segment = el
+    },
     handleVariantsChange () {
       this.scrollToListTop()
 
       resetPlayerCurrentVariantIndex()
     },
     scrollToListTop () {
-      this.$refs.list.scrollTo(0, 0)
+      this.segment.scrollTo(0, 0)
     }
   }
 }

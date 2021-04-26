@@ -1,0 +1,220 @@
+@media only screen and (min-width: 768px)
+  .main-container
+    width: 700px !important
+
+.main-button
+  @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
+
+.main-navbar-button
+  @extend .main-button
+  width: $navbarHeight
+  height: $navbarHeight
+
+.main-divider
+  margin: 10px 0 !important
+
+.main-segment-container
+  @extend .no-border
+  &:not(:first-child)
+    margin: 20px 0 0 0
+
+.main-segment
+  &.loading
+    min-height: 150px
+
+.main-page-segment-container
+  @extend .no-margin
+  min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
+
+.main-paginated-page-segment-container
+  @extend .d-flex
+
+.main-basic-segments-container
+  .segments
+    @extend .no-margin
+    &:not(:first-child)
+      margin-top: 30px !important
+    .segment:only-child
+      @extend .no-padding
+    .segment:first-child
+      padding: 0 0 1em 0
+    .segment
+      padding: 1em 0
+    .segment:last-child
+      padding: 1em 0 0 0
+
+.main-modal
+  width: 500px !important
+  .content
+    max-height: $mainModalHeight !important
+
+.main-modal-content-full-height
+  height: $mainModalHeight
+
+.main-image-modal-container
+  @extend .no-margin, .no-shadow, .width-fit-content, .background-transparent
+
+.main-image-container
+  @extend .relative
+  padding-bottom: 100%
+  .image-content, & > .image
+    @extend .absolute, .w-100, .h-100
+
+.main-link
+  &:hover
+    @extend .main-link-active
+  &:not(.label)
+    @extend .text-color-unset
+
+.main-link-active
+  @extend .text-color-base
+
+.main-link-container
+  @extend .text-color-unset
+  &:hover
+    .link
+      @extend .main-link-active
+
+.main-text-container
+  white-space: pre-wrap
+
+.main-lyrics-container
+  @extend .main-text-container
+  padding: 1.25em 2.5em
+  p
+    font-size: 16px
+
+.main-simple-card
+  @extend .no-shadow, .text-align-center, .text-color-unset
+  .content
+    @extend .no-padding, .no-border
+  .description
+    @extend .no-margin
+  &:hover
+    transform: none !important
+
+.main-simple-card-image-container
+  @extend .main-image-container
+  margin-bottom: 5px
+
+.main-horizontal-card
+  @extend .w-100
+
+.main-horizontal-card-image
+  height: 150px
+  border-right: $border
+  &.inverted
+    border-right: $borderInverted
+
+.main-simple-list-item
+  @extend .d-flex, .align-items-center
+  word-break: break-word
+  .image
+    width: 60px
+    height: 60px
+  .content
+    @extend .flex-full
+  &:hover
+    .link-active
+      @extend .text-color-base
+
+.main-message
+  @extend .no-shadow, .no-margin
+  &.inverted
+    @extend .background-dark-grey
+
+.main-popup
+  @extend .no-border, .text-align-center
+
+.main-header
+  @extend .no-margin
+
+.main-dropdown
+  @extend .d-flex, .align-items-center
+  .text
+    @extend .flex-full
+
+.main-dropdown-item
+  @extend .d-flex, .align-items-center
+  line-height: 1.2em !important
+  &.selected
+    font-weight: unset !important
+  .icon
+    margin-right: 10px !important
+  .image-container
+    margin-right: 10px
+    .image
+      @extend .object-fit-cover
+      width: 30px
+      height: 30px
+  .content
+    @extend .flex-full
+    white-space: normal
+  .extra
+    margin-left: 10px !important
+    font-size: 0.8em
+
+.main-dropdown-icon
+  @extend .d-flex, .align-items-center, .justify-content-center
+  height: 18px !important
+  width: 18px !important
+
+.main-dropdown-right-icon
+  @extend .no-margin
+  margin-left: 10px !important
+
+.main-track-dropdown-container
+  @extend .d-flex, .align-items-center
+
+.main-track-dropdown-logo-container
+  @extend .d-flex, .align-items-center, .justify-content-center
+  margin-right: 10px
+  width: 25px
+  height: 25px
+  .icon
+    @extend .no-margin
+  .image
+    width: 20px
+    height: 20px
+
+.main-track-dropdown-menu
+  z-index: 200 !important
+
+.main-settings-options-block
+  &:not(:first-child)
+    margin-top: 30px
+  & > .content
+    @extend .d-flex, .align-items-center
+    padding-top: 10px
+    .header
+      @extend .flex-full
+
+.main-seeker
+  @extend .no-padding
+  .inner
+    @extend .cursor-pointer
+  .track-fill
+    @extend .background-base
+  .track-progress
+    @extend .background-pale
+    transition: 0.25s
+  .thumb
+    @extend .d-none, .no-shadow, .background-base
+    width: 12px !important
+    height: 12px !important
+  &:hover, &:active
+    .thumb
+      @extend .d-block
+  &:not(.vertical)
+    .thumb
+      top: 1.5px !important
+  &.vertical
+    .thumb
+      left: 1.5px !important
+
+.main-pagination
+  &.inverted
+    @extend .background-dark-grey
+  .item:last-child
+    &:before
+      width: 0

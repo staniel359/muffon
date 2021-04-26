@@ -1,28 +1,18 @@
 <template>
   <TheLocalObserver />
-
   <TheTitleObserver />
 
   <TheNavbarPanel />
-
   <ThePlayerPanel />
-
   <TheQueuePanel />
 
   <div class="pusher">
-    <div id="the-background"></div>
-
+    <TheBackground />
     <TheDropdownContext />
 
-    <div
-      class="ui container main-container"
-      id="the-container"
-    >
-      <RouterView :key="$route.fullPath" />
+    <TheContainer />
 
-      <TheSearchModal ref="search" />
-    </div>
-
+    <TheSearchModal />
     <TheLoaderDimmer />
   </div>
 </template>
@@ -33,7 +23,9 @@ import TheTitleObserver from '@/layout/TheTitleObserver.vue'
 import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
 import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheQueuePanel from '@/layout/TheQueuePanel.vue'
+import TheBackground from '@/layout/TheBackground.vue'
 import TheDropdownContext from '@/layout/TheDropdownContext.vue'
+import TheContainer from '@/layout/TheContainer.vue'
 import TheSearchModal from '@/layout/TheSearchModal.vue'
 import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 
@@ -45,24 +37,18 @@ export default {
     TheNavbarPanel,
     ThePlayerPanel,
     TheQueuePanel,
+    TheBackground,
     TheDropdownContext,
+    TheContainer,
     TheSearchModal,
     TheLoaderDimmer
   }
 }
 </script>
 
-<style lang="sass" scoped>
-#the-background
-  @extend .fixed, .w-100, .h-100
-  background: $backgroundPath center/cover no-repeat
-  z-index: -1
-
-#the-container
-  padding: #{$mainContainerTopPadding} 0 #{$mainContainerBottomPadding} 0
-</style>
-
 <style lang="sass">
 @import './src/assets/styles/Global.sass'
+@import './src/assets/styles/Main.sass'
+@import './src/assets/styles/Semantic.sass'
 @import './src/assets/styles/Sources.sass'
 </style>

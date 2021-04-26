@@ -1,5 +1,5 @@
 <template>
-  <div id="the-local-observer"></div>
+  <div class="the-local-observer"></div>
 </template>
 
 <script>
@@ -17,8 +17,10 @@ import {
   getQueueTracks as getLocalQueueTracks,
   setQueueCurrentTrackId as setLocalQueueCurrentTrackId,
   getQueueCurrentTrackId as getLocalQueueCurrentTrackId,
-  setIsQueueAutoplay as setLocalIsQueueAutoplay,
-  getIsQueueAutoplay as getLocalIsQueueAutoplay
+  setIsQueueAutoplay as setIsLocalQueueAutoplay,
+  getIsQueueAutoplay as getIsLocalQueueAutoplay,
+  setIsDarkMode as setIsLocalDarkMode,
+  getIsDarkMode as getIsLocalDarkMode
 } from '#/actions/plugins/local'
 import {
   setPlaying as setPlayerPlaying,
@@ -31,6 +33,7 @@ import {
   setCurrentTrackId as setQueueCurrentTrackId,
   setIsAutoplay as setIsQueueAutoplay
 } from '#/actions/queue'
+import { setIsDarkMode } from '#/actions/layout'
 
 export default {
   name: 'TheLocalObserver',
@@ -45,7 +48,10 @@ export default {
       queueTracks: 'tracks',
       queueCurrentTrackId: 'currentTrackId',
       isQueueAutoplay: 'isAutoplay'
-    })
+    }),
+    ...mapState('layout', [
+      'isDarkMode'
+    ])
   },
   watch: {
     playerPlaying: 'handlePlayerPlayingChange',
@@ -54,7 +60,8 @@ export default {
     playerSourceId: 'handlePlayerSourceIdChange',
     queueTracks: 'handleQueueTracksChange',
     queueCurrentTrackId: 'handleQueueCurrentTrackIdChange',
-    isQueueAutoplay: 'handleIsQueueAutoplayChange'
+    isQueueAutoplay: 'handleIsQueueAutoplayChange',
+    isDarkMode: 'handleIsDarkModeChange'
   },
   mounted () {
     setPlayerPlaying(
@@ -77,7 +84,10 @@ export default {
       getLocalQueueCurrentTrackId()
     )
     setIsQueueAutoplay(
-      getLocalIsQueueAutoplay()
+      getIsLocalQueueAutoplay()
+    )
+    setIsDarkMode(
+      getIsLocalDarkMode()
     )
   },
   methods: {
@@ -100,7 +110,10 @@ export default {
       setLocalQueueCurrentTrackId(value)
     },
     handleIsQueueAutoplayChange (value) {
-      setLocalIsQueueAutoplay(value)
+      setIsLocalQueueAutoplay(value)
+    },
+    handleIsDarkModeChange (value) {
+      setIsLocalDarkMode(value)
     }
   }
 }

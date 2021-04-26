@@ -6,6 +6,7 @@ export default {
     queuePanel: null,
     dropdownContext: null,
     isQueuePanelVisible: false,
+    isDarkMode: true,
     navigationSections: []
   },
   mutations: {
@@ -26,6 +27,9 @@ export default {
     },
     SET_DROPDOWN_CONTEXT (state, value) {
       state.dropdownContext = value
+    },
+    SET_IS_DARK_MODE (state, value) {
+      state.isDarkMode = value
     }
   },
   actions: {
@@ -46,6 +50,9 @@ export default {
     },
     setDropdownContext ({ commit }, value) {
       commit('SET_DROPDOWN_CONTEXT', value)
+    },
+    setIsDarkMode ({ commit }, value) {
+      commit('SET_IS_DARK_MODE', value)
     }
   }
 }

@@ -3,54 +3,43 @@
     class="ui modal main-modal"
     ref="modal"
   >
-    <div
-      class="ui basic segment scrolling content main-segment"
-      :class="{ loading: isLoading }"
-    >
-      <BaseError
-        v-if="error"
-        :error="error"
-        @refresh="handleRefresh"
-      />
-      <slot v-else-if="responseData"></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import { mapState } from 'vuex'
 import { mainModalOptions } from '#/data/plugins/semantic'
-import { setModal, showModal, hideModal } from '#/actions/plugins/semantic'
-import { remove } from '#/actions/plugins/jquery'
+import {
+  setModal,
+  showModal,
+  hideModal,
+  toggleModal
+} from '#/actions/plugins/semantic'
+import { toggleClass, remove } from '#/actions/plugins/jquery'
 
 export default {
   name: 'BaseModalContainer',
-  components: {
-    BaseError
-  },
-  props: {
-    isLoading: Boolean,
-    error: Error,
-    responseData: Object
-  },
   emits: [
-    'call',
-    'refresh'
+    'show',
+    'visible'
   ],
-  data () {
-    return {
-      isCalled: false
-    }
-  },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     modalOptions () {
       return mainModalOptions({
-        onShow: this.handleShow
+        onShow: this.handleShow,
+        onVisible: this.handleVisible
       })
     }
   },
   watch: {
-    isCalled: 'handleCall'
+    isDarkMode: {
+      immediate: true,
+      handler: 'handleIsDarkModeChange'
+    }
   },
   mounted () {
     setModal(
@@ -62,20 +51,32 @@ export default {
     remove(this.$refs.modal)
   },
   methods: {
+    handleIsDarkModeChange () {
+      this.$nextTick(() => {
+        this.toggleInvertedClass()
+      })
+    },
     handleShow () {
-      this.isCalled = true
+      this.$emit('show')
     },
-    handleCall (value) {
-      value && this.$emit('call')
+    handleVisible () {
+      this.$emit('visible')
     },
-    handleRefresh () {
-      this.$emit('refresh')
+    toggleInvertedClass () {
+      toggleClass(
+        this.$refs.modal,
+        'inverted',
+        this.isDarkMode
+      )
     },
     show () {
       showModal(this.$refs.modal)
     },
     hide () {
       hideModal(this.$refs.modal)
+    },
+    toggle () {
+      toggleModal(this.$refs.modal)
     }
   }
 }

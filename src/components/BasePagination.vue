@@ -1,5 +1,8 @@
 <template>
-  <div class="ui pagination menu disabled">
+  <div
+    class="ui menu main-pagination"
+    :class="{ inverted: isDarkMode }"
+  >
     <a
       v-if="isWithEdgeButtons"
       class="item"
@@ -65,6 +68,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'BasePagination',
   props: {
@@ -97,6 +102,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     isStartDisabled () {
       return (
         this.isDisabled ||

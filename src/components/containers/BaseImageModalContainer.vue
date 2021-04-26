@@ -44,8 +44,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-image-modal-container
-  @extend .no-margin, .no-shadow, .width-fit-content
-  background: transparent !important
-</style>
+<style lang="sass" scoped></style>

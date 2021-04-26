@@ -83,7 +83,7 @@ export function popupOptions () {
   return {
     duration: 0,
     position: 'top center',
-    variation: 'inverted small'
+    variation: 'basic inverted small'
   }
 }
 

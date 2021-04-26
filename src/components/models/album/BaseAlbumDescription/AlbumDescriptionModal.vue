@@ -4,8 +4,10 @@
     scope="description"
     :requestAlbumData="requestAlbumData"
   >
-    <template #default="modalSlotProps">
-      <BaseModalDescription :description="modalSlotProps.description" />
+    <template #default="slotProps">
+      <BaseModalDescription
+        :description="slotProps.description"
+      />
     </template>
   </BaseAlbumModalContainer>
 </template>

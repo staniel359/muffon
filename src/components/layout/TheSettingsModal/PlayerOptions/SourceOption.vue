@@ -1,24 +1,27 @@
 <template>
-  <div class="source-option">
-    <h4 class="ui header main-header">
-      {{ textFormatted }}
-    </h4>
+  <div class="content">
+    <BaseHeader
+      tag="h4"
+      :text="headerFormatted"
+    />
 
     <SourceSelect />
   </div>
 </template>
 
 <script>
+import BaseHeader from '@/BaseHeader.vue'
 import SourceSelect from './SourceOption/SourceSelect.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SourceOption',
   components: {
+    BaseHeader,
     SourceSelect
   },
   computed: {
-    textFormatted () {
+    headerFormatted () {
       return localize(
         'settings.player.audioSource'
       )
@@ -27,10 +30,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.source-option
-  @extend .d-flex, .align-items-center
-
-.main-header
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

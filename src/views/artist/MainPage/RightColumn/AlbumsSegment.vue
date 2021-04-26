@@ -1,5 +1,5 @@
 <template>
-  <BasePaginatedSegmentContainer
+  <BaseArtistPaginatedSegmentContainer
     headerTextKey="albums"
     scope="albums"
     :clientPageLimit="3"
@@ -7,27 +7,27 @@
     :artistName="artistName"
     :formatHeaderLink="formatArtistAlbumsLink"
   >
-    <template #default="segmentSlotProps">
+    <template #default="slotProps">
       <BaseAlbumsTableList
         :itemsInRow="3"
         :artistName="artistName"
-        :albums="segmentSlotProps.albums"
-        :isSegmentLoading="segmentSlotProps.isLoading"
+        :albums="slotProps.albums"
+        :isSegmentLoading="slotProps.isLoading"
       />
     </template>
-  </BasePaginatedSegmentContainer>
+  </BaseArtistPaginatedSegmentContainer>
 </template>
 
 <script>
-import BasePaginatedSegmentContainer
-  from '@/containers/pages/artist/BasePaginatedSegmentContainer.vue'
+import BaseArtistPaginatedSegmentContainer
+  from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 import { artistAlbums as formatArtistAlbumsLink } from '#/formatters/links'
 
 export default {
   name: 'AlbumsSegment',
   components: {
-    BasePaginatedSegmentContainer,
+    BaseArtistPaginatedSegmentContainer,
     BaseAlbumsTableList
   },
   props: {

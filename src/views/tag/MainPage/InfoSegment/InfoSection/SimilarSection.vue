@@ -1,29 +1,18 @@
 <template>
-  <div>
-    <div
+  <div class="ui large labels">
+    <BaseLabel
       v-if="isLoading"
-      class="ui labels"
-    >
-      <div class="ui large label">
-        <div class="ui active mini inline loader"></div>
-      </div>
-    </div>
-    <template v-else-if="isAnyTags">
-      <div class="ui labels">
-        <div class="ui large basic label">
-          {{ similarTextFormatted }}
-        </div>
-      </div>
-
-      <BaseTagsList
-        class="tag-similar-tags"
-        :tags="similar"
-      />
+      isLoading
+    />
+    <template v-else-if="isAnySimilar">
+      <BaseLabel :text="similarTextFormatted" />
+      <BaseTagsList :tags="similar"/>
     </template>
   </div>
 </template>
 
 <script>
+import BaseLabel from '@/BaseLabel.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 import fetchTagData from '#/actions/api/tag/fetchData'
 import { localize } from '#/actions/plugins/i18n'
@@ -31,6 +20,7 @@ import { localize } from '#/actions/plugins/i18n'
 export default {
   name: 'SimilarSection',
   components: {
+    BaseLabel,
     BaseTagsList
   },
   props: {
@@ -47,7 +37,7 @@ export default {
     }
   },
   computed: {
-    isAnyTags () {
+    isAnySimilar () {
       return this.similar?.length
     },
     similar () {
@@ -71,13 +61,12 @@ export default {
   methods: {
     fetchTagData,
     fetchData () {
-      this.fetchTagData(this.tagDataArgs)
+      this.fetchTagData(
+        this.tagDataArgs
+      )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.labels
-  @extend .d-inline
-</style>
+<style lang="sass" scoped></style>

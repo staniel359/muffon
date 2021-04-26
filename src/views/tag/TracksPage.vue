@@ -1,28 +1,28 @@
 <template>
-  <BasePaginatedPageContainer
+  <BaseTagPaginatedPageContainer
     pageNameKey="tracks"
     scope="tracks"
     :clientPageLimit="50"
     :responsePageLimit="50"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="pageSlotProps.tracks"
+        :tracks="slotProps.tracks"
         isWithArtistName
       />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseTagPaginatedPageContainer>
 </template>
 
 <script>
-import BasePaginatedPageContainer
-  from '@/containers/pages/tag/BasePaginatedPageContainer.vue'
+import BaseTagPaginatedPageContainer
+  from '@/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'TracksPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseTagPaginatedPageContainer,
     BaseTracksSimpleList
   }
 }

@@ -1,7 +1,7 @@
 <template>
-  <BasePageContainer @init="handleContainerInit">
+  <BaseAlbumPageContainer @init="handleContainerInit">
     <template #default="pageSlotProps">
-      <BasePageSegmentContainer
+      <BaseAlbumPageSegmentContainer
         class="segment-container"
         :key="key"
       >
@@ -15,15 +15,16 @@
             :requestAlbumData="segmentSlotProps.requestAlbumData || pageSlotProps.requestAlbumData"
           />
         </template>
-      </BasePageSegmentContainer>
+      </BaseAlbumPageSegmentContainer>
     </template>
-  </BasePageContainer>
+  </BaseAlbumPageContainer>
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/album/BasePageContainer.vue'
-import BasePageSegmentContainer
-  from '@/containers/pages/album/BasePageSegmentContainer.vue'
+import BaseAlbumPageContainer
+  from '@/containers/pages/album/BaseAlbumPageContainer.vue'
+import BaseAlbumPageSegmentContainer
+  from '@/containers/pages/album/BaseAlbumPageSegmentContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 import { generateKey } from '#/utils'
@@ -31,8 +32,8 @@ import { generateKey } from '#/utils'
 export default {
   name: 'MainPage',
   components: {
-    BasePageContainer,
-    BasePageSegmentContainer,
+    BaseAlbumPageContainer,
+    BaseAlbumPageSegmentContainer,
     LeftColumn,
     RightColumn
   },

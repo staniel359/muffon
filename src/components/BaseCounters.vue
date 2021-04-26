@@ -1,44 +1,40 @@
 <template>
   <div class="ui large labels">
-    <div
+    <BaseLabel
       v-if="isRenderListenersCount"
-      class="ui basic label"
-    >
-      <i class="user icon" />
-      {{ listenersCountFormatted }}
-    </div>
+      icon="user"
+      :text="listenersCountFormatted"
+    />
 
-    <div
+    <BaseLabel
       v-if="isRenderPlaysCount"
-      class="ui basic label"
-    >
-      <i class="music icon" />
-      {{ playsCountFormatted }}
-    </div>
+      icon="music"
+      :text="playsCountFormatted"
+    />
 
-    <div
+    <BaseLabel
       v-if="isRenderTaggersCount"
-      class="ui basic label"
-    >
-      <i class="user icon" />
-      {{ taggersCountFormatted }}
-    </div>
+      icon="user"
+      :text="taggersCountFormatted"
+    />
 
-    <div
+    <BaseLabel
       v-if="isRenderTaggingsCount"
-      class="ui basic label"
-    >
-      <i class="tags icon" />
-      {{ taggingsCountFormatted }}
-    </div>
+      icon="tags"
+      :text="taggingsCountFormatted"
+    />
   </div>
 </template>
 
 <script>
+import BaseLabel from '@/BaseLabel.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {
   name: 'BaseCounters',
+  components: {
+    BaseLabel
+  },
   props: {
     listenersCount: Number,
     playsCount: Number,

@@ -1,43 +1,46 @@
 <template>
-  <div>
-    <h1 class="ui header main-header">
-      {{ artistName }}
-    </h1>
+  <BaseHeader
+    tag="h1"
+    :text="artistName"
+  />
 
-    <BaseArtistTags
-      v-if="tags"
-      :tags="tags"
+  <BaseArtistTags
+    v-if="tags"
+    :tags="tags"
+    :artistName="artistName"
+    isMore
+  />
+
+  <BaseCounters
+    :listenersCount="listenersCount"
+    :playsCount="playsCount"
+  />
+
+  <template v-if="description">
+    <BaseDivider />
+
+    <BaseArtistDescription
+      :description="description"
       :artistName="artistName"
       isMore
     />
-
-    <BaseCounters
-      :listenersCount="listenersCount"
-      :playsCount="playsCount"
-    />
-
-    <template v-if="description">
-      <div class="ui divider main-divider"></div>
-
-      <BaseArtistDescription
-        :description="description"
-        :artistName="artistName"
-        isMore
-      />
-    </template>
-  </div>
+  </template>
 </template>
 
 <script>
+import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
 import BaseCounters from '@/BaseCounters.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
 
 export default {
   name: 'InfoSection',
   components: {
+    BaseHeader,
     BaseArtistTags,
     BaseCounters,
+    BaseDivider,
     BaseArtistDescription
   },
   props: {

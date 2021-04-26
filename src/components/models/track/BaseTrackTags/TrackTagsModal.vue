@@ -5,9 +5,9 @@
     :artistName="artistName"
     :trackTitle="trackTitle"
   >
-    <template #default="modalSlotProps">
+    <template #default="slotProps">
       <BaseModalTagsList
-        :tags="modalSlotProps.tags"
+        :tags="slotProps.tags"
         @tagClick="handleTagClick"
       />
     </template>

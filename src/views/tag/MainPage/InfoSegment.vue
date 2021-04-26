@@ -1,39 +1,36 @@
 <template>
-  <BaseSegmentContainer :tagName="tagName">
-    <template #default="segmentSlotProps">
+  <BaseTagSegmentContainer :tagName="tagName">
+    <template #default="slotProps">
       <CoverSegment :tagName="tagName"/>
 
-      <div
-        class="ui segment main-segment tag-info-segment"
-        :class="{ loading: segmentSlotProps.isLoading }"
+      <BaseSegmentContainer
+        class="tag-info-segment"
+        :isLoading="slotProps.isLoading"
+        :error="slotProps.error"
+        @refresh="slotProps.handleRefresh"
       >
-        <BaseError
-          v-if="segmentSlotProps.error"
-          :error="segmentSlotProps.error"
-          @refresh="segmentSlotProps.handleRefresh"
-        />
         <InfoSection
-          v-else-if="segmentSlotProps.tagData"
-          :tagData="segmentSlotProps.tagData"
+          v-if="slotProps.tagData"
+          :tagData="slotProps.tagData"
         />
-      </div>
+      </BaseSegmentContainer>
     </template>
-  </BaseSegmentContainer>
+  </BaseTagSegmentContainer>
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '@/containers/pages/tag/BaseSegmentContainer.vue'
+import BaseTagSegmentContainer
+  from '@/containers/pages/tag/BaseTagSegmentContainer.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import CoverSegment from './InfoSegment/CoverSegment.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
-import BaseError from '@/BaseError.vue'
 
 export default {
   name: 'InfoSegment',
   components: {
+    BaseTagSegmentContainer,
     BaseSegmentContainer,
     CoverSegment,
-    BaseError,
     InfoSection
   },
   props: {
@@ -51,5 +48,5 @@ export default {
   @extend .h-100, .overflow-y-auto
   padding: 60px 80px 40px 80px
   &:not(.loading)
-    background: $colorBlackTransparent
+    @extend .background-black-transparent
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="main-controls-panel">
+  <div class="player-main-controls">
     <ShuffleButton />
     <BackwardButton />
     <PlayButton />
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-controls-panel
+.player-main-controls
   @extend .text-align-center
   flex: 0.5
   :last-child

@@ -1,47 +1,34 @@
 <template>
-  <div
-    class="ui basic floating scrolling button dropdown main-dropdown"
+  <BaseDropdownContainer
+    class="basic floating scrolling button source-select"
     ref="dropdown"
   >
-    <div class="text main-dropdown-item"></div>
-
     <SourcesList />
-  </div>
+  </BaseDropdownContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
-import { mainDropdownOptions } from '#/data/plugins/semantic'
-import { setDropdown, selectDropdownValue } from '#/actions/plugins/semantic'
+import {
+  getPlayerSourceId as getLocalPlayerSourceId
+} from '#/actions/plugins/local'
 
 export default {
   name: 'SourceSelect',
   components: {
+    BaseDropdownContainer,
     SourcesList
   },
-  computed: {
-    ...mapState('player', {
-      playerSourceId: 'sourceId'
-    })
-  },
   mounted () {
-    this.$nextTick(() => {
-      setDropdown(
-        this.$refs.dropdown,
-        mainDropdownOptions()
-      )
-
-      selectDropdownValue(
-        this.$refs.dropdown,
-        this.playerSourceId
-      )
-    })
+    this.$refs.dropdown.setValue(
+      getLocalPlayerSourceId()
+    )
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.main-dropdown
+.source-select
   width: 220px
 </style>

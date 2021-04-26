@@ -5,10 +5,10 @@
     :options="sliderOptions"
     @init="handleInit"
   >
-    <template #default="modalSlotProps">
+    <template #default="slotProps">
       <BaseImage
         class="slider-image"
-        :image="modalSlotProps.image"
+        :image="slotProps.image"
       />
     </template>
   </BaseImageModalSliderContainer>

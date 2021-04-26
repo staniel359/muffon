@@ -1,5 +1,5 @@
 <template>
-  <div class="extra-controls-panel">
+  <div class="player-extra-controls">
     <VolumeButton />
     <QueueButton />
   </div>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.extra-controls-panel
+.player-extra-controls
   @extend .text-align-right
   flex: 0.25
   :last-child

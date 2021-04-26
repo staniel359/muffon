@@ -1,21 +1,20 @@
 <template>
-  <div class="ui popup main-popup">
-    <div class="popup-content">
-      <h4 class="ui header main-header">
-        {{ volumeFormatted }}
-      </h4>
+  <BasePopupContainer>
+    <h4 class="ui header main-header">
+      {{ volumeFormatted }}
+    </h4>
 
-      <BaseSeeker
-        class="vertical reversed volume-seeker"
-        :options="seekerOptions"
-        @move="handleMove"
-      />
-    </div>
-  </div>
+    <BaseSeeker
+      class="vertical reversed volume-seeker"
+      :options="seekerOptions"
+      @move="handleMove"
+    />
+  </BasePopupContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import BasePopupContainer from '@/containers/BasePopupContainer.vue'
 import BaseSeeker from '@/BaseSeeker.vue'
 import { mainVolumeSeekerOptions } from '#/data/plugins/semantic'
 import { setVolume as setAudioVolume } from '#/actions/audio'
@@ -23,6 +22,7 @@ import { setVolume as setAudioVolume } from '#/actions/audio'
 export default {
   name: 'VolumePopup',
   components: {
+    BasePopupContainer,
     BaseSeeker
   },
   computed: {
@@ -50,15 +50,13 @@ export default {
 
 <style lang="sass" scoped>
 .main-popup
-  height: 150px
-  width: 55px
+  height: 155px
+  width: 60px
 
-.popup-content
-  @extend .h-100, .d-flex, .flex-column, .align-items-center
-  .main-header
-    margin-bottom: 5px !important
+.main-header
+  margin-bottom: 5px !important
 
 .volume-seeker
   width: 14px !important
-  margin: 5px 0
+  padding: 5px 0 !important
 </style>

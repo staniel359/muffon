@@ -1,20 +1,21 @@
 <template>
   <div class="fitted item">
-    <button
-      class="ui icon compact basic large button main-navbar-button"
+    <BaseButton
+      class="basic large main-navbar-button"
+      :icon="iconFormatted"
       @click="handleClick"
-    >
-      <i
-        class="arrow icon"
-        :class="iconDirection"
-      />
-    </button>
+    />
   </div>
 </template>
 
 <script>
+import BaseButton from '@/BaseButton.vue'
+
 export default {
   name: 'NavbarHistoryButton',
+  components: {
+    BaseButton
+  },
   props: {
     direction: {
       type: String,
@@ -22,8 +23,13 @@ export default {
     }
   },
   computed: {
+    iconFormatted () {
+      return `arrow ${this.iconDirection}`
+    },
     iconDirection () {
-      return this.actionDirections[this.direction]
+      return this.actionDirections[
+        this.direction
+      ]
     },
     actionDirections () {
       return {

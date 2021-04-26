@@ -1,22 +1,19 @@
 <template>
-  <div
-    class="ui tiny compact icon button"
+  <BaseButton
+    class="tiny compact"
+    :icon="icon"
     :class="{
       disabled: isDisabled,
       loading: isFetching,
       basic: !isFetching
     }"
     @click="handleClick"
-  >
-    <i
-      class="icon"
-      :class="icon"
-    />
-  </div>
+  />
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import BaseButton from '@/BaseButton.vue'
 import {
   getIsEdge as getIsQueueEdge,
   getIsFetching as getIsQueueFetching
@@ -25,6 +22,9 @@ import fetchQueueTrackData from '#/actions/queue/track/fetchData'
 
 export default {
   name: 'BaseQueueDirectionButtonContainer',
+  components: {
+    BaseButton
+  },
   props: {
     position: {
       type: String,

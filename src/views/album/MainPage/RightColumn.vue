@@ -5,7 +5,7 @@
       :requestAlbumData="requestAlbumData"
     />
 
-    <div class="ui divider main-divider"></div>
+    <BaseDivider />
 
     <TracksList
       v-if="tracks"
@@ -16,12 +16,14 @@
 
 <script>
 import InfoSection from './RightColumn/InfoSection.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import TracksList from './RightColumn/TracksList.vue'
 
 export default {
   name: 'RightColumn',
   components: {
     InfoSection,
+    BaseDivider,
     TracksList
   },
   props: {

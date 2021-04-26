@@ -1,29 +1,21 @@
 <template>
-  <div
-    class="ui basic button fluid pointing left scrolling dropdown main-dropdown"
-    ref="dropdown"
+  <BaseDropdownContainer
+    class="basic fluid pointing left scrolling button album-select"
+    :header="headerFormatted"
   >
-    <div class="text main-dropdown-item">
-      <div class="content">
-        <h5 class="ui header main-header">
-          {{ headerFormatted }}
-        </h5>
-      </div>
-    </div>
-
     <AlbumsList :albums="albums" />
-  </div>
+  </BaseDropdownContainer>
 </template>
 
 <script>
+import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import AlbumsList from './AlbumSelect/AlbumsList.vue'
-import { setDropdown } from '#/actions/plugins/semantic'
-import { mainDropdownOptions } from '#/data/plugins/semantic'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'AlbumSelect',
   components: {
+    BaseDropdownContainer,
     AlbumsList
   },
   props: {
@@ -44,17 +36,11 @@ export default {
         `pages.album.sources.select.${this.typeId}`
       )
     }
-  },
-  mounted () {
-    setDropdown(
-      this.$refs.dropdown,
-      mainDropdownOptions()
-    )
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.main-dropdown
+.album-select
   margin-bottom: 10px
 </style>

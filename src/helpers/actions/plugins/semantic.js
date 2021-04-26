@@ -92,7 +92,7 @@ export function setDropdown (el, options) {
   $(el).dropdown(options)
 }
 
-export function selectDropdownValue (el, value) {
+export function setDropdownValue (el, value) {
   $(el).dropdown('set selected', value)
 }
 

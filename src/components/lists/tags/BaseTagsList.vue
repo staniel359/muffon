@@ -1,28 +1,31 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui large labels tags-list">
     <TagItem
       v-for="(tagName, index) in tags"
       :key="index"
       :tagName="tagName"
     />
 
-    <a
+    <BaseLabelLinkContainer
       v-if="isRenderMore"
-      class="ui label"
       @click="handleViewMoreClick"
     >
-      ...
-    </a>
+      <span class="link">
+        ...
+      </span>
+    </BaseLabelLinkContainer>
   </div>
 </template>
 
 <script>
 import TagItem from './BaseTagsList/TagItem.vue'
+import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
 
 export default {
   name: 'BaseTagsList',
   components: {
-    TagItem
+    TagItem,
+    BaseLabelLinkContainer
   },
   props: {
     tags: {
@@ -49,4 +52,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.tags-list
+  @extend .d-inline
+</style>

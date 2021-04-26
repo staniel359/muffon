@@ -4,8 +4,10 @@
     scope="description"
     :tagName="tagName"
   >
-    <template #default="modalSlotProps">
-      <BaseModalDescription :description="modalSlotProps.description" />
+    <template #default="slotProps">
+      <BaseModalDescription
+        :description="slotProps.description"
+      />
     </template>
   </BaseTagModalContainer>
 </template>

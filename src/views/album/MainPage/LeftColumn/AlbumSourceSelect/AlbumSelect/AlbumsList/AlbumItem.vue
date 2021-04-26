@@ -1,36 +1,20 @@
 <template>
-  <div
-    class="item main-dropdown-item"
+  <BaseDropdownItem
+    :image="image"
+    :header="albumTitle"
+    :content="artistName"
     @click="handleClick"
-  >
-    <div class="image-container">
-      <BaseImage
-        size="extrasmall"
-        :image="image"
-        isRounded
-        isBordered
-      />
-    </div>
-
-    <div class="content">
-      <h5 class="ui header main-header">
-        {{ albumTitle }}
-      </h5>
-      <div>
-        {{ artistName }}
-      </div>
-    </div>
-  </div>
+  />
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseDropdownItem from '@/BaseDropdownItem.vue'
 import { generateKey } from '#/utils'
 
 export default {
   name: 'AlbumItem',
   components: {
-    BaseImage
+    BaseDropdownItem
   },
   inject: [
     'setSelectedAlbumData'

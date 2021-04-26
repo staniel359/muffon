@@ -1,19 +1,23 @@
 <template>
-  <h2 class="ui header main-header">
-    <RouterLink
-      class="main-link"
-      :to="artistMainLinkFormatted"
-    >
-      {{ artistName }}
-    </RouterLink>
-  </h2>
+  <BaseHeaderContainer tag="h2">
+    <BaseLink
+      :link="artistMainLinkFormatted"
+      :text="artistName"
+    />
+  </BaseHeaderContainer>
 </template>
 
 <script>
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/BaseLink.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
 
 export default {
   name: 'ArtistHeader',
+  components: {
+    BaseHeaderContainer,
+    BaseLink
+  },
   props: {
     artistName: {
       type: String,

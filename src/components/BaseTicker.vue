@@ -8,13 +8,11 @@
         ref="content"
         :style="{ 'padding-right': `${gapWidth}px` }"
       >
-        <RouterLink
+        <BaseLink
           v-if="link"
-          class="main-link"
-          :to="link"
-        >
-          {{ text }}
-        </RouterLink>
+          :link="link"
+          :text="text"
+        />
         <template v-else>
           {{ text }}
         </template>
@@ -24,8 +22,13 @@
 </template>
 
 <script>
+import BaseLink from '@/BaseLink.vue'
+
 export default {
   name: 'BaseTicker',
+  components: {
+    BaseLink
+  },
   props: {
     text: {
       type: String,

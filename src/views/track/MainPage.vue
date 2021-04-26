@@ -1,35 +1,40 @@
 <template>
-  <BasePageContainer>
-    <template #default="pageSlotProps">
-      <div class="ui segment main-segment-container main-page-segment-container">
-        <MainSection :trackData="pageSlotProps.trackData" />
+  <BaseTrackPageContainer>
+    <template #default="slotProps">
+      <BaseSegmentContainer
+        :class="[
+          'main-segment-container',
+          'main-page-segment-container'
+        ]"
+      >
+        <MainSection :trackData="slotProps.trackData" />
 
         <ExtraSection
-          :trackData="pageSlotProps.trackData"
-          :artistName="pageSlotProps.artistName"
-          :trackTitle="pageSlotProps.trackTitle"
+          :trackData="slotProps.trackData"
+          :artistName="slotProps.artistName"
+          :trackTitle="slotProps.trackTitle"
         />
-      </div>
+      </BaseSegmentContainer>
     </template>
-  </BasePageContainer>
+  </BaseTrackPageContainer>
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/track/BasePageContainer.vue'
+import BaseTrackPageContainer
+  from '@/containers/pages/track/BaseTrackPageContainer.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import MainSection from './MainPage/MainSection.vue'
 import ExtraSection from './MainPage/ExtraSection.vue'
 
 export default {
   name: 'MainPage',
   components: {
-    BasePageContainer,
+    BaseTrackPageContainer,
+    BaseSegmentContainer,
     MainSection,
     ExtraSection
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.main-segment-container
-  @extend .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

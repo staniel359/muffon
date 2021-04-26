@@ -1,36 +1,36 @@
 <template>
-  <BasePaginatedPageContainer
+  <BaseArtistPaginatedPageContainer
     pageNameKey="images"
     scope="images"
     :clientPageLimit="40"
     :responsePageLimit="40"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <ImagesList
-        :images="pageSlotProps.images"
+        :images="slotProps.images"
         :modal="modal"
         :mainSlider="mainSlider"
       />
 
       <BaseArtistImageModal
-        :images="pageSlotProps.images"
+        :images="slotProps.images"
         @init="handleModalInit"
         @mainSliderInit="handleMainSliderInit"
       />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseArtistPaginatedPageContainer>
 </template>
 
 <script>
-import BasePaginatedPageContainer
-  from '@/containers/pages/artist/BasePaginatedPageContainer.vue'
+import BaseArtistPaginatedPageContainer
+  from '@/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import ImagesList from './ImagesPage/ImagesList.vue'
 import BaseArtistImageModal from '@/models/artist/BaseArtistImageModal.vue'
 
 export default {
   name: 'ImagesPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseArtistPaginatedPageContainer,
     ImagesList,
     BaseArtistImageModal
   },

@@ -1,22 +1,20 @@
 <template>
-  <div
-    class="item main-dropdown-item"
-    :class="{ disabled: isDisabled }"
+  <BaseDropdownItem
+    :header="headerFormatted"
+    :isDisabled="isDisabled"
     @click="handleClick"
-  >
-    <div class="content">
-      <h5 class="ui header main-header">
-        {{ typeNameFormatted }}
-      </h5>
-    </div>
-  </div>
+  />
 </template>
 
 <script>
+import BaseDropdownItem from '@/BaseDropdownItem.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'TypeItem',
+  components: {
+    BaseDropdownItem
+  },
   inject: [
     'setSelectedTypeId'
   ],
@@ -28,7 +26,7 @@ export default {
     isDisabled: Boolean
   },
   computed: {
-    typeNameFormatted () {
+    headerFormatted () {
       return localize(
         `pages.album.sources.types.${this.typeId}`
       )
@@ -36,7 +34,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedTypeId(this.typeId)
+      this.setSelectedTypeId(
+        this.typeId
+      )
     }
   }
 }

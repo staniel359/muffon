@@ -1,26 +1,26 @@
 <template>
-  <BasePaginatedPageContainer
+  <BaseArtistPaginatedPageContainer
     pageNameKey="similar"
     scope="similar"
     :clientPageLimit="10"
     :responsePageLimit="10"
   >
-    <template #default="pageSlotProps">
-      <BaseArtistsExtendedList :artists="pageSlotProps.similar" />
+    <template #default="slotProps">
+      <BaseArtistsExtendedList :artists="slotProps.similar" />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseArtistPaginatedPageContainer>
 </template>
 
 <script>
-import BasePaginatedPageContainer
-  from '@/containers/pages/artist/BasePaginatedPageContainer.vue'
+import BaseArtistPaginatedPageContainer
+  from '@/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import BaseArtistsExtendedList
   from '@/lists/artists/BaseArtistsExtendedList.vue'
 
 export default {
   name: 'SimilarPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseArtistPaginatedPageContainer,
     BaseArtistsExtendedList
   }
 }

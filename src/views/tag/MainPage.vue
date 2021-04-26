@@ -1,16 +1,17 @@
 <template>
-  <BasePageContainer>
-    <template #default="pageSlotProps">
-      <InfoSegment :tagName="pageSlotProps.tagName" />
-      <ArtistsSegment :tagName="pageSlotProps.tagName" />
-      <AlbumsSegment :tagName="pageSlotProps.tagName" />
-      <TracksSegment :tagName="pageSlotProps.tagName" />
+  <BaseTagPageContainer>
+    <template #default="slotProps">
+      <InfoSegment :tagName="slotProps.tagName" />
+      <ArtistsSegment :tagName="slotProps.tagName" />
+      <AlbumsSegment :tagName="slotProps.tagName" />
+      <TracksSegment :tagName="slotProps.tagName" />
     </template>
-  </BasePageContainer>
+  </BaseTagPageContainer>
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/tag/BasePageContainer.vue'
+import BaseTagPageContainer
+  from '@/containers/pages/tag/BaseTagPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
@@ -19,7 +20,7 @@ import TracksSegment from './MainPage/TracksSegment.vue'
 export default {
   name: 'MainPage',
   components: {
-    BasePageContainer,
+    BaseTagPageContainer,
     InfoSegment,
     ArtistsSegment,
     AlbumsSegment,

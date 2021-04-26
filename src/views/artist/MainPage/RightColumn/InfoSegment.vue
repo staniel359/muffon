@@ -1,35 +1,31 @@
 <template>
-  <BaseSegmentContainer :artistName="artistName">
-    <template #default="segmentSlotProps">
-      <div
-        class="ui segment main-segment"
-        :class="{ loading: segmentSlotProps.isLoading }"
+  <BaseArtistSegmentContainer :artistName="artistName">
+    <template #default="slotProps">
+      <BaseSegmentContainer
+        :isLoading="slotProps.isLoading"
+        :error="slotProps.error"
+        @refresh="slotProps.handleRefresh"
       >
-        <BaseError
-          v-if="segmentSlotProps.error"
-          :error="segmentSlotProps.error"
-          @refresh="segmentSlotProps.handleRefresh"
-        />
         <InfoSection
-          v-else-if="segmentSlotProps.artistData"
-          :artistData="segmentSlotProps.artistData"
+          v-if="slotProps.artistData"
+          :artistData="slotProps.artistData"
         />
-      </div>
+      </BaseSegmentContainer>
     </template>
-  </BaseSegmentContainer>
+  </BaseArtistSegmentContainer>
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '@/containers/pages/artist/BaseSegmentContainer.vue'
-import BaseError from '@/BaseError.vue'
+import BaseArtistSegmentContainer
+  from '@/containers/pages/artist/BaseArtistSegmentContainer.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
 
 export default {
   name: 'InfoSegment',
   components: {
+    BaseArtistSegmentContainer,
     BaseSegmentContainer,
-    BaseError,
     InfoSection
   },
   props: {

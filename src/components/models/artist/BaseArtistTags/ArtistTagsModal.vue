@@ -4,9 +4,9 @@
     scope="tags"
     :artistName="artistName"
   >
-    <template #default="modalSlotProps">
+    <template #default="slotProps">
       <BaseModalTagsList
-        :tags="modalSlotProps.tags"
+        :tags="slotProps.tags"
         @tagClick="handleTagClick"
       />
     </template>

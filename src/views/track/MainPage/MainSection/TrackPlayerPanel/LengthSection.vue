@@ -23,6 +23,5 @@ export default {
 <style lang="sass" scoped>
 .track-length
   @extend .d-flex, .align-items-center
-  border-left: $border
   padding: 0 1em
 </style>

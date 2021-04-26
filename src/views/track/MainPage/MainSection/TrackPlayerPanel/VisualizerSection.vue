@@ -35,7 +35,6 @@ export default {
 <style lang="sass" scoped>
 .track-visualiser-container
   @extend .flex-full
-  border-left: $border
 
 .track-visualiser
   @extend .w-100, .h-100

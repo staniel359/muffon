@@ -1,31 +1,17 @@
 <template>
   <BaseSourceItemContainer
-    :types="types"
     :sourceId="sourceId"
-    :artistName="artistName"
-    :albumTitle="albumTitle"
+    :types="types"
+    :query="query"
   >
     <template #default="slotProps">
-      <BaseSourceItemClickableContainer
+      <BaseSourceItemContent
+        :sourceData="sourceData"
         :isLoading="slotProps.isLoading"
         :isError="slotProps.isError"
         :albumsData="slotProps.albumsData"
-        :sourceId="sourceId"
-        :types="types"
-      >
-        <BaseIcon
-          class="colored"
-          :isLoading="slotProps.isLoading"
-          :isError="slotProps.isError"
-          :icon="icon"
-        />
-
-        <InfoBlock
-          :sourceName="sourceName"
-          :maxBitrate="maxBitrate"
-          :isWithMaxBitrate="isWithMaxBitrate"
-        />
-      </BaseSourceItemClickableContainer>
+        :isWithMaxBitrate="isWithMaxBitrate"
+      />
     </template>
   </BaseSourceItemContainer>
 </template>
@@ -33,18 +19,14 @@
 <script>
 import BaseSourceItemContainer
   from '@/containers/album/source_select/BaseSourceItemContainer.vue'
-import BaseSourceItemClickableContainer
-  from '@/containers/album/source_select/BaseSourceItemClickableContainer.vue'
-import BaseIcon from '@/BaseIcon.vue'
-import InfoBlock from './SourceItem/InfoBlock.vue'
+import BaseSourceItemContent
+  from '@/models/album/source_select/BaseSourceItemContent.vue'
 
 export default {
   name: 'SourceItem',
   components: {
     BaseSourceItemContainer,
-    BaseSourceItemClickableContainer,
-    BaseIcon,
-    InfoBlock
+    BaseSourceItemContent
   },
   props: {
     sourceData: {
@@ -56,20 +38,14 @@ export default {
     isWithMaxBitrate: Boolean
   },
   computed: {
-    icon () {
-      return this.sourceData.icon
-    },
-    sourceName () {
-      return this.sourceData.name
-    },
-    maxBitrate () {
-      return this.sourceData.maxBitrate
-    },
     sourceId () {
       return this.sourceData.id
     },
     types () {
       return this.sourceData.types
+    },
+    query () {
+      return `${this.artistName} - ${this.albumTitle}`
     }
   }
 }

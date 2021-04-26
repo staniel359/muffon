@@ -1,17 +1,22 @@
 <template>
-  <RouterLink
-    class="ui circular mini label view-more-link"
-    :to="artistImagesLinkFormatted"
+  <BaseLabelLinkContainer
+    class="circular small view-more-link"
+    :link="artistImagesLinkFormatted"
+    :isInverted="false"
   >
     <i class="ellipsis horizontal icon view-more-icon" />
-  </RouterLink>
+  </BaseLabelLinkContainer>
 </template>
 
 <script>
+import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
 import { artistImages as formatArtistImagesLink } from '#/formatters/links'
 
 export default {
   name: 'ImagesPageButton',
+  components: {
+    BaseLabelLinkContainer
+  },
   props: {
     artistName: {
       type: String,

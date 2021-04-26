@@ -2,15 +2,13 @@
   <VariantsPanel v-if="isRenderVariantsPanel" />
 
   <div
-    class="ui bottom overlay sidebar player-panel"
+    class="ui bottom overlay segment sidebar main-segment-container"
     ref="playerPanel"
   >
-    <div class="player-panel-content">
-      <div class="ui container main-container track-audio-container">
-        <TrackPanel />
-        <AudioPanel />
-        <CloseButton />
-      </div>
+    <div class="ui container main-container">
+      <TrackPanel />
+      <AudioPanel />
+      <CloseButton />
     </div>
   </div>
 </template>
@@ -28,6 +26,7 @@ import {
 } from '#/actions/layout'
 import { resetIsLoop as resetIsAudioLoop } from '#/actions/audio'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
+import { toggleClass } from '#/actions/plugins/jquery'
 
 export default {
   name: 'ThePlayerPanel',
@@ -46,6 +45,9 @@ export default {
     ...mapState('player', {
       playerPlaying: 'playing'
     }),
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     ...mapGetters('player', {
       playerVariantsCount: 'variantsCount'
     }),
@@ -63,7 +65,11 @@ export default {
     }
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange'
+    playerPlaying: 'handlePlayerPlayingChange',
+    isDarkMode: {
+      immediate: true,
+      handler: 'handleIsDarkModeChange'
+    }
   },
   mounted () {
     setPlayerPanel(
@@ -72,30 +78,40 @@ export default {
     )
   },
   methods: {
+    handlePlayerPlayingChange (value) {
+      value ? show() : hide()
+
+      resetIsAudioLoop()
+    },
+    handleIsDarkModeChange () {
+      this.$nextTick(() => {
+        this.toggleInvertedClass()
+      })
+    },
     handleShow () {
       this.isVisible = true
     },
     handleHide () {
       this.isVisible = false
     },
-    handlePlayerPlayingChange (value) {
-      value ? show() : hide()
-
-      resetIsAudioLoop()
+    toggleInvertedClass () {
+      toggleClass(
+        this.$refs.playerPanel,
+        'inverted',
+        this.isDarkMode
+      )
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.player-panel
+.main-segment-container
+  @extend .no-padding
   overflow: visible !important
   z-index: 400 !important
 
-.player-panel-content
+.main-container
+  @extend .d-flex, .align-items-center
   height: $playerPanelHeight
-  background: white
-
-.track-audio-container
-  @extend .h-100, .d-flex, .align-items-center
 </style>

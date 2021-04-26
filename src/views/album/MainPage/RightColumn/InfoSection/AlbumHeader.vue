@@ -1,25 +1,32 @@
 <template>
   <div class="album-header">
-    <h2 class="ui header main-header">
-      {{ albumTitle }}
-    </h2>
+    <BaseHeader
+      tag="h2"
+      :text="albumTitle"
+    />
 
-    <h3 class="ui header main-header">
-      <RouterLink
-        class="main-link"
-        :to="artistMainLinkFormatted"
-      >
-        {{ artistName }}
-      </RouterLink>
-    </h3>
+    <BaseHeaderContainer tag="h3">
+      <BaseLink
+        :link="artistMainLinkFormatted"
+        :text="artistName"
+      />
+    </BaseHeaderContainer>
   </div>
 </template>
 
 <script>
+import BaseHeader from '@/BaseHeader.vue'
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/BaseLink.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
 
 export default {
   name: 'AlbumHeader',
+  components: {
+    BaseHeader,
+    BaseHeaderContainer,
+    BaseLink
+  },
   props: {
     artistName: {
       type: String,

@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="ui segment main-segment"
-    :class="{ loading: isLoading }"
-  >
+  <BaseSegmentContainer :isLoading="isLoading">
     <template v-if="images">
       <BaseImage
         v-for="imageData in imagesFormatted"
@@ -11,10 +8,11 @@
         :image="imageData.name"
       />
     </template>
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import fetchTagData from '#/actions/api/tag/fetchData'
 import { collection as formatCollection } from '#/formatters'
@@ -22,6 +20,7 @@ import { collection as formatCollection } from '#/formatters'
 export default {
   name: 'CoverSegment',
   components: {
+    BaseSegmentContainer,
     BaseImage
   },
   props: {

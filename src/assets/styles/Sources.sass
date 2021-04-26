@@ -6,9 +6,10 @@ $colorSoundCloud: #ff5500
 $colorSpotify: #1DB954
 $colorYouTube: #FF0000
 
-$yandexMusicIcon: url("https://music.yandex.ru/favicon16.png")
-$deezerIcon: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
-$discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
+$yandexMusicIconUrl: url("https://music.yandex.ru/favicon16.png")
+$deezerIconUrl: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
+$discogsIconUrl: url("https://www.discogs.com/images/favicon-16x16.png")
+$geniusIconUrl: url("https://assets.genius.com/images/apple-touch-icon.png")
 
 .icon.colored.lastfm
   color: $colorLastfm !important
@@ -27,20 +28,25 @@ $discogsIcon: url("https://www.discogs.com/images/favicon-16x16.png")
 
 .icon.yandex-music
   &:before
-    content: $yandexMusicIcon
+    content: $yandexMusicIconUrl
   &:not(.colored):before
     filter: grayscale(1)
 
 .icon.deezer
   &:before
-    content: $deezerIcon
+    content: $deezerIconUrl
   &:not(.colored):before
     filter: grayscale(1)
 
 .icon.discogs
   &:before
-    content: $discogsIcon
+    content: $discogsIconUrl
   &:not(.colored):before
     filter: opacity(0.85)
 
-
+.icon.genius
+  content: $geniusIconUrl
+  width: 20px
+  height: 20px
+  &:not(.colored)
+    filter: grayscale(1)

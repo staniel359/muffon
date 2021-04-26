@@ -1,22 +1,21 @@
 <template>
-  <div class="ui icon message main-message">
-    <i class="icon question" />
-    <div class="content">
-      <div class="header">
-        {{ header }}
-      </div>
-      <p>
-        {{ subheader }}
-      </p>
-    </div>
-  </div>
+  <BaseMessage
+    :icons="icons"
+    :header="header"
+    :content="content"
+  />
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import BaseMessage from '@/BaseMessage.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'NoCollectionMessage',
+  components: {
+    BaseMessage
+  },
   props: {
     scope: {
       type: String,
@@ -24,15 +23,21 @@ export default {
     }
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
+    icons () {
+      return ['question']
+    },
     header () {
       return localize(
         'paginated.noCollection.header',
         { collection: this.scope }
       )
     },
-    subheader () {
+    content () {
       return localize(
-        'paginated.noCollection.subheader',
+        'paginated.noCollection.content',
         { collection: this.scope }
       )
     }

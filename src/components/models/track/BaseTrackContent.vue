@@ -50,11 +50,11 @@
 
 <script>
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
-import TrackImage from './BaseTrack/TrackImage.vue'
-import TrackIndex from './BaseTrack/TrackIndex.vue'
-import TrackMainInfo from './BaseTrack/TrackMainInfo.vue'
-import TrackListenersCount from './BaseTrack/TrackListenersCount.vue'
-import TrackLength from './BaseTrack/TrackLength.vue'
+import TrackImage from './BaseTrackContent/TrackImage.vue'
+import TrackIndex from './BaseTrackContent/TrackIndex.vue'
+import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
+import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
+import TrackLength from './BaseTrackContent/TrackLength.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 
 export default {

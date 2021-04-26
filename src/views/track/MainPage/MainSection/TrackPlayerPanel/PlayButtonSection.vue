@@ -1,20 +1,22 @@
 <template>
   <BaseTrackContainer
-    class="ui basic medium icon button track-play-button"
     :trackData="trackDataFormatted"
     :queueTracks="tracksFormatted"
   >
-    <template #default="trackSlotProps">
-      <BaseTrackAudioIcon
-        :isLoading="trackSlotProps.isLoading"
-        :isError="trackSlotProps.isError"
-        :isCurrent="trackSlotProps.isCurrent"
-      />
+    <template #default="slotProps">
+      <BaseButtonContainer class="basic main-button track-play-button">
+        <BaseTrackAudioIcon
+          :isLoading="slotProps.isLoading"
+          :isError="slotProps.isError"
+          :isCurrent="slotProps.isCurrent"
+        />
+      </BaseButtonContainer>
     </template>
   </BaseTrackContainer>
 </template>
 
 <script>
+import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
 import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
 import { collection as formatCollection } from '#/formatters'
@@ -22,6 +24,7 @@ import { collection as formatCollection } from '#/formatters'
 export default {
   name: 'PlayButtonSection',
   components: {
+    BaseButtonContainer,
     BaseTrackContainer,
     BaseTrackAudioIcon
   },
@@ -46,7 +49,8 @@ export default {
 
 <style lang="sass" scoped>
 .track-play-button
-  @extend .d-flex, .align-items-center, .justify-content-center, .no-margin, .no-shadow, .no-padding
-  width: 40px
-  border-radius: 0
+  @extend .h-100, .no-margin
+  width: $trackPagePlayerPanelHeight
+  .icon
+    @extend .no-margin
 </style>

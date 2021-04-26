@@ -1,29 +1,25 @@
 <template>
-  <div
-    class="ui top attached right icon label variants-label"
-    @click="handleClick"
-  >
-    {{ variantsCountFormatted }}
-
-    <i
-      class="chevron icon"
-      :class="icon"
-    />
-  </div>
+  <BaseLabel
+    class="top attached right icon variants-label"
+    :icon="iconFormatted"
+    :text="variantsCountFormatted"
+    isReverse
+  />
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import BaseLabel from '@/BaseLabel.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'VariantsLabel',
+  components: {
+    BaseLabel
+  },
   props: {
     isPanelVisible: Boolean
   },
-  emits: [
-    'click'
-  ],
   computed: {
     ...mapGetters('player', {
       playerVariantsCount: 'variantsCount'
@@ -34,13 +30,11 @@ export default {
         { number: this.playerVariantsCount }
       )
     },
-    icon () {
+    iconFormatted () {
+      return `chevron ${this.iconDirection}`
+    },
+    iconDirection () {
       return this.isPanelVisible ? 'down' : 'up'
-    }
-  },
-  methods: {
-    handleClick () {
-      this.$emit('click')
     }
   }
 }
@@ -48,7 +42,12 @@ export default {
 
 <style lang="sass" scoped>
 .variants-label
-  @extend .cursor-pointer, .pointer-events-auto
-  width: fit-content !important
-  left: 20px !important
+  @extend .cursor-pointer, .pointer-events-auto, .d-flex, .align-items-center, .justify-content-center, .width-fit-content
+  min-width: 120px
+  left: 30px !important
+  height: 30px
+  border-bottom: 0 !important
+  &.inverted
+    border: $borderInverted
+    border-bottom: 0 !important
 </style>

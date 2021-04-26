@@ -1,30 +1,30 @@
 <template>
-  <BasePaginatedPageContainer
+  <BaseTagPaginatedPageContainer
     pageNameKey="albums"
     scope="albums"
     :clientPageLimit="20"
     :responsePageLimit="20"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <BaseAlbumsTableList
         :itemsInRow="4"
-        :albums="pageSlotProps.albums"
-        :isSegmentLoading="pageSlotProps.isLoading"
+        :albums="slotProps.albums"
+        :isSegmentLoading="slotProps.isLoading"
         isWithArtistName
       />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseTagPaginatedPageContainer>
 </template>
 
 <script>
-import BasePaginatedPageContainer
-  from '@/containers/pages/tag/BasePaginatedPageContainer.vue'
+import BaseTagPaginatedPageContainer
+  from '@/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 
 export default {
   name: 'AlbumsPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseTagPaginatedPageContainer,
     BaseAlbumsTableList
   }
 }

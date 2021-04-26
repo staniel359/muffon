@@ -1,5 +1,5 @@
 <template>
-  <BaseModalContainer
+  <BaseModalContentContainer
     ref="modal"
     :isLoading="isLoading"
     :error="error"
@@ -10,17 +10,18 @@
     <template #default>
       <slot :[scope]="artistData[scope]"></slot>
     </template>
-  </BaseModalContainer>
+  </BaseModalContentContainer>
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContentContainer
+  from '@/containers/BaseModalContentContainer.vue'
 import fetchArtistData from '#/actions/api/artist/fetchData'
 
 export default {
   name: 'BaseArtistModalContainer',
   components: {
-    BaseModalContainer
+    BaseModalContentContainer
   },
   props: {
     artistName: {

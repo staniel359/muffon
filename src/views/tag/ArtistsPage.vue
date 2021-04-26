@@ -1,29 +1,29 @@
 <template>
-  <BasePaginatedPageContainer
+  <BaseTagPaginatedPageContainer
     pageNameKey="artists"
     scope="artists"
     :clientPageLimit="20"
     :responsePageLimit="21"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <BaseArtistsTableList
         :itemsInRow="4"
-        :artists="pageSlotProps.artists"
+        :artists="slotProps.artists"
         isWithListenersCount
       />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseTagPaginatedPageContainer>
 </template>
 
 <script>
-import BasePaginatedPageContainer
-  from '@/containers/pages/tag/BasePaginatedPageContainer.vue'
+import BaseTagPaginatedPageContainer
+  from '@/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
 
 export default {
   name: 'ArtistsPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseTagPaginatedPageContainer,
     BaseArtistsTableList
   }
 }

@@ -1,21 +1,23 @@
 <template>
-  <div class="ui middle aligned selection list">
+  <BaseListContainer class="selection">
     <ArtistItem
       v-for="artistData in artistsFormatted"
       :key="artistData.uuid"
       :artistData="artistData"
       @linkClick="handleLinkClick"
     />
-  </div>
+  </BaseListContainer>
 </template>
 
 <script>
+import BaseListContainer from '@/containers/BaseListContainer.vue'
 import ArtistItem from './BaseArtistsSimpleList/ArtistItem.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'BaseArtistsSimpleList',
   components: {
+    BaseListContainer,
     ArtistItem
   },
   props: {

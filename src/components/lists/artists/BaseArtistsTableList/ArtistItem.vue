@@ -1,47 +1,43 @@
 <template>
-  <RouterLink
-    class="ui card main-card-light"
-    :to="artistMainLinkFormatted"
+  <BaseLinkContainer
+    :link="artistMainLinkFormatted"
+    @click="handleLinkClick"
   >
-    <div></div>
-    <div class="image-container main-image-container">
-      <BaseImage
-        :image="image"
-        isCircular
-        isBordered
-      />
-    </div>
+    <BaseSimpleCardContainer
+      :image="image"
+      isImageCircular
+    >
+      <div class="content">
+        <BaseHeader
+          class="link"
+          :tag="headerTag"
+          :text="artistName"
+        />
 
-    <div class="content">
-      <h4
-        v-if="isSmall"
-        class="ui header link-active"
-      >
-        {{ artistName }}
-      </h4>
-      <h3
-        v-else
-        class="ui header main-header link-active"
-      >
-        {{ artistName }}
-      </h3>
-
-      <template v-if="isWithListenersCount">
-        {{ listenersCountFormatted }}
-      </template>
-    </div>
-  </RouterLink>
+        <div
+          v-if="isWithListenersCount"
+          class="description"
+        >
+          {{ listenersCountFormatted }}
+        </div>
+      </div>
+    </BaseSimpleCardContainer>
+  </BaseLinkContainer>
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
+import BaseHeader from '@/BaseHeader.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
 import { listenersCount as listenersCountDecorated } from '#/decorators'
 
 export default {
   name: 'ArtistItem',
   components: {
-    BaseImage
+    BaseLinkContainer,
+    BaseSimpleCardContainer,
+    BaseHeader
   },
   props: {
     artistData: {
@@ -51,12 +47,23 @@ export default {
     isSmall: Boolean,
     isWithListenersCount: Boolean
   },
+  emits: [
+    'linkClick'
+  ],
   computed: {
+    artistMainLinkFormatted () {
+      return formatArtistMainLink({
+        artistName: this.artistName
+      })
+    },
     artistName () {
       return this.artistData.name
     },
     image () {
       return this.artistData.image.small
+    },
+    headerTag () {
+      return this.isSmall ? 'h4' : 'h3'
     },
     listenersCount () {
       return this.artistData.listeners_count || 0
@@ -65,11 +72,11 @@ export default {
       return listenersCountDecorated(
         this.listenersCount
       )
-    },
-    artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit('linkClick')
     }
   }
 }

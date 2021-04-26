@@ -1,34 +1,23 @@
 <template>
-  <div
-    class="ui circular tiny basic compact icon button close-button"
-    :class="{ red: isHovered }"
+  <BaseButton
+    class="circular red tiny basic compact close-button"
+    icon="close"
     @click="handleClick"
-    @mouseenter="handleMouseEnter"
-    @mouseleave="handleMouseLeave"
-  >
-    <i class="close icon" />
-  </div>
+  />
 </template>
 
 <script>
+import BaseButton from '@/BaseButton.vue'
 import { stopAndClose as stopAndClosePlayer } from '#/actions/player'
 
 export default {
   name: 'CloseButton',
-  data () {
-    return {
-      isHovered: false
-    }
+  components: {
+    BaseButton
   },
   methods: {
     handleClick () {
       stopAndClosePlayer()
-    },
-    handleMouseEnter () {
-      this.isHovered = true
-    },
-    handleMouseLeave () {
-      this.isHovered = false
     }
   }
 }

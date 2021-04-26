@@ -14,13 +14,21 @@ export function getHistory (key, { isDistinct }) {
   })
 }
 
-export function addToHistory (key, item) {
+export function updateHistory (key, item) {
   const history = store.get(key, [])
   const isNewItem = item && item !== history[0]
 
   if (isNewItem) {
     store.set({ [key]: [item, ...history] })
   }
+}
+
+export function setIsDarkMode (value) {
+  store.set({ isDarkMode: value })
+}
+
+export function getIsDarkMode () {
+  return store.get('isDarkMode', null)
 }
 
 export function setPlayerPlaying (value) {

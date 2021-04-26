@@ -10,7 +10,7 @@
   />
 
   <template v-if="description">
-    <div class="ui divider main-divider"></div>
+    <BaseDivider />
 
     <BaseAlbumDescription
       :description="description"
@@ -23,6 +23,7 @@
 <script>
 import AlbumHeader from './InfoSection/AlbumHeader.vue'
 import SecondarySection from './InfoSection/SecondarySection.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BaseAlbumDescription from '@/models/album/BaseAlbumDescription.vue'
 
 export default {
@@ -30,6 +31,7 @@ export default {
   components: {
     AlbumHeader,
     SecondarySection,
+    BaseDivider,
     BaseAlbumDescription
   },
   props: {

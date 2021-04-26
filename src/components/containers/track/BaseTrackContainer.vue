@@ -12,15 +12,12 @@
 </template>
 
 <script>
-import trackPlayableMixin from '#/mixins/trackPlayable'
 import fetchTrackData from '#/actions/player/track/fetchData'
 import { getIsCurrentTrack as getIsPlayerCurrentTrack } from '#/actions/player'
+import { toggleAction as toggleAudioAction } from '#/actions/audio'
 
 export default {
   name: 'BaseTrackContainer',
-  mixins: [
-    trackPlayableMixin
-  ],
   props: {
     trackData: {
       type: Object,
@@ -63,6 +60,13 @@ export default {
     }
   },
   methods: {
+    handleClick () {
+      if (this.isCurrent) {
+        toggleAudioAction()
+      } else {
+        !this.isLoading && this.fetchAudio()
+      }
+    },
     fetchTrackData,
     fetchAudio () {
       this.fetchTrackData(

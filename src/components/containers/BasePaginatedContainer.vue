@@ -20,7 +20,7 @@
     </div>
 
     <template v-if="isRenderPagination">
-      <div class="ui divider main-divider"></div>
+      <BaseDivider />
 
       <div class="pagination-container">
         <BasePagination
@@ -39,6 +39,7 @@ import deepmerge from 'deepmerge'
 import BaseError from '@/BaseError.vue'
 import NoCollectionMessage
   from './BasePaginatedContainer/NoCollectionMessage.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BasePagination from '@/BasePagination.vue'
 
 export default {
@@ -46,6 +47,7 @@ export default {
   components: {
     BaseError,
     NoCollectionMessage,
+    BaseDivider,
     BasePagination
   },
   props: {
@@ -331,5 +333,5 @@ export default {
   @extend .flex-full
 
 .pagination-container
-  @extend .text-align-center
+  @extend .d-flex, .justify-content-center
 </style>

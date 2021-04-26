@@ -5,10 +5,10 @@
     sourceId="genius"
     :trackId="trackId"
   >
-    <template #default="modalSlotProps">
+    <template #default="slotProps">
       <div class="main-lyrics-container">
         <p>
-          {{ modalSlotProps.lyrics }}
+          {{ slotProps.lyrics }}
         </p>
       </div>
     </template>

@@ -1,19 +1,22 @@
 <template>
-  <div
-    class="ui tiny compact icon button"
+  <BaseButton
+    class="tiny compact"
+    icon="redo alternate"
     :class="{ basic: !isAudioLoop }"
     @click="handleClick"
-  >
-    <i class="redo alternate icon" />
-  </div>
+  />
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import BaseButton from '@/BaseButton.vue'
 import { toggleIsLoop as toggleIsAudioLoop } from '#/actions/audio'
 
 export default {
   name: 'LoopButton',
+  components: {
+    BaseButton
+  },
   computed: {
     ...mapState('audio', {
       isAudioLoop: 'isLoop'

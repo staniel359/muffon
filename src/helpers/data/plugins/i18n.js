@@ -67,8 +67,12 @@ export const messages = {
     },
     settings: {
       headers: {
+        view: 'View',
         player: 'Player',
         queue: 'Queue'
+      },
+      view: {
+        darkMode: 'Dark mode'
       },
       player: {
         audioSource: 'Audio source'
@@ -113,6 +117,9 @@ export const messages = {
           loading: 'Loading lyrics...',
           error: 'Error.',
           empty: 'No lyrics.'
+        },
+        segments: {
+          similar: 'Similar'
         }
       },
       tag: {
@@ -137,7 +144,7 @@ export const messages = {
     paginated: {
       noCollection: {
         header: 'No {collection}',
-        subheader: 'Looks like there are no {collection}.'
+        content: 'Looks like there are no {collection}.'
       }
     }
   }

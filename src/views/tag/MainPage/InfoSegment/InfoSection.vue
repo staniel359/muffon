@@ -1,11 +1,12 @@
 <template>
   <div>
-    <h1 class="ui header main-header">
-      <i class="tag icon" />
-      <div class="content">
-        {{ tagName }}
-      </div>
-    </h1>
+    <BaseHeaderContainer
+      tag="h1"
+      class="inverted tag-header"
+      icon="tag"
+    >
+      {{ tagName }}
+    </BaseHeaderContainer>
 
     <SimilarSection :tagName="tagName" />
 
@@ -15,7 +16,7 @@
     />
 
     <template v-if="description">
-      <div class="ui divider main-divider"></div>
+      <BaseDivider isInverted />
 
       <BaseTagDescription
         class="tag-description"
@@ -28,15 +29,19 @@
 </template>
 
 <script>
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import SimilarSection from './InfoSection/SimilarSection.vue'
 import BaseCounters from '@/BaseCounters.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BaseTagDescription from '@/models/tag/BaseTagDescription.vue'
 
 export default {
   name: 'InfoSection',
   components: {
+    BaseHeaderContainer,
     SimilarSection,
     BaseCounters,
+    BaseDivider,
     BaseTagDescription
   },
   props: {
@@ -63,11 +68,10 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-header
-  @extend .text-color-white
+.tag-header
   font-size: 2.5rem !important
   margin-bottom: 25px !important
-  .icon
+  ::v-deep(.icon)
     font-size: 0.75em !important
 
 ::v-deep(.tag-description)

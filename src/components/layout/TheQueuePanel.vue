@@ -3,11 +3,8 @@
     class="ui right overlay sidebar queue-panel"
     ref="queuePanel"
   >
-    <div class="queue-panel-content">
+    <div class="ui segments main-segment-container">
       <HeaderSection />
-
-      <div class="ui divider main-divider"></div>
-
       <TracksSection />
     </div>
   </div>
@@ -63,15 +60,12 @@ export default {
 
 <style lang="sass" scoped>
 .queue-panel
-  @extend .overflow-hidden
-  z-index: 300 !important
-  padding: $navbarHeight 0 $playerPanelHeight 0
-  width: 325px !important
-  background: white
+  width: 320px !important
 
-.queue-panel-content
-  @extend .d-flex, .flex-column, .h-100
-
-.main-divider
-  @extend .no-margin
+.main-segment-container
+  @extend .d-flex, .h-100
+  .segment
+    @extend .no-border-radius
+    &.inverted
+      border-left: $borderInverted
 </style>

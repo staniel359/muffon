@@ -1,103 +1,50 @@
 <template>
-  <div
-    class="ui modal main-modal"
+  <BaseModalContainer
     ref="modal"
+    @visible="handleVisible"
   >
-    <div class="content">
-      <SearchInput
-        ref="input"
-        :isClearable="isClearable"
-        @submit="handleSubmit"
-        @clear="handleClear"
-      />
-
-      <SearchTabs
-        v-if="query"
-        :query="query"
-        :searchKey="key"
-      />
-    </div>
-  </div>
+    <SearchContent ref="search" />
+  </BaseModalContainer>
 </template>
 
 <script>
 import Mousetrap from 'mousetrap'
-import SearchInput from './TheSearchModal/SearchInput.vue'
-import SearchTabs from './TheSearchModal/SearchTabs.vue'
-import { mainModalOptions } from '#/data/plugins/semantic'
-import {
-  setModal,
-  toggleModal,
-  hideModal
-} from '#/actions/plugins/semantic'
-import { toggleClass } from '#/actions/plugins/jquery'
-import { generateKey } from '#/utils'
+import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import SearchContent from './TheSearchModal/SearchContent.vue'
 
 export default {
   name: 'TheSearchModal',
   components: {
-    SearchInput,
-    SearchTabs
+    BaseModalContainer,
+    SearchContent
   },
   provide () {
     return {
-      hideSearch: this.hideSearch
+      hideSearch: this.hide
     }
-  },
-  data () {
-    return {
-      query: '',
-      key: null
-    }
-  },
-  computed: {
-    isClearable () {
-      return !!this.query.length
-    }
-  },
-  watch: {
-    query: 'handleQueryChange'
   },
   mounted () {
-    setModal(
-      this.$refs.modal,
-      mainModalOptions({
-        onVisible: this.focusInput
-      })
-    )
-
     this.setKeyBindings()
   },
   methods: {
-    handleSubmit (value) {
-      this.query = value
-      this.key = generateKey()
-    },
-    handleClear () {
-      this.query = ''
-    },
-    handleQueryChange (value) {
-      toggleClass(
-        this.$refs.modal,
-        'main-modal-full-height',
-        value.length
-      )
+    handleVisible () {
+      this.focusInput()
     },
     setKeyBindings () {
       Mousetrap.bind('ctrl+f', this.toggle, 'keyup')
       Mousetrap.bind('ctrl+f', this.unfocusInput)
     },
+    hide () {
+      this.$refs.modal.hide()
+    },
     toggle () {
-      toggleModal(this.$refs.modal)
+      this.$refs.modal.toggle()
     },
     focusInput () {
-      this.$refs.input.focus()
+      this.$refs.search.focusInput()
     },
     unfocusInput () {
-      this.$refs.input.unfocus()
-    },
-    hideSearch () {
-      hideModal(this.$refs.modal)
+      this.$refs.search.unfocusInput()
     }
   }
 }
@@ -106,6 +53,4 @@ export default {
 <style lang="sass" scoped>
 .main-modal
   top: calc((100vh - #{$mainModalHeight}) / 2)
-  .content
-    @extend .d-flex, .flex-column, .h-100
 </style>

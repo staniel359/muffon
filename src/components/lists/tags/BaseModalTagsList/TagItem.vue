@@ -1,10 +1,8 @@
 <template>
-  <RouterLink
-    class="ui label"
-    :to="tagMainLinkFormatted"
-    @click="handleClick"
-  >
-    {{ tagName }}
+  <BaseLabelLinkContainer :link="tagMainLinkFormatted">
+    <span class="link">
+      {{ tagName }}
+    </span>
 
     <div
       v-if="percent"
@@ -12,23 +10,24 @@
     >
       {{ percentFormatted }}
     </div>
-  </RouterLink>
+  </BaseLabelLinkContainer>
 </template>
 
 <script>
+import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
 import { tagMain as formatTagMainLink } from '#/formatters/links'
 
 export default {
   name: 'TagItem',
+  components: {
+    BaseLabelLinkContainer
+  },
   props: {
     tagData: {
       type: Object,
       required: true
     }
   },
-  emits: [
-    'click'
-  ],
   computed: {
     tagMainLinkFormatted () {
       return formatTagMainLink({
@@ -43,11 +42,6 @@ export default {
     },
     percentFormatted () {
       return `${this.percent}%`
-    }
-  },
-  methods: {
-    handleClick () {
-      this.$emit('click')
     }
   }
 }

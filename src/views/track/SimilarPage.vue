@@ -1,30 +1,30 @@
 <template>
-  <BasePaginatedPageContainer
+  <BaseTrackPaginatedPageContainer
     pageNameKey="similar"
     scope="similar"
     :clientPageLimit="50"
     :responsePageLimit="50"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="pageSlotProps.similar"
-        :artistName="pageSlotProps.artistName"
+        :tracks="slotProps.similar"
+        :artistName="slotProps.artistName"
         isWithArtistName
         isWithLength
       />
     </template>
-  </BasePaginatedPageContainer>
+  </BaseTrackPaginatedPageContainer>
 </template>
 
 <script>
-import BasePaginatedPageContainer
-  from '@/containers/pages/track/BasePaginatedPageContainer.vue'
+import BaseTrackPaginatedPageContainer
+  from '@/containers/pages/track/BaseTrackPaginatedPageContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'SimilarPage',
   components: {
-    BasePaginatedPageContainer,
+    BaseTrackPaginatedPageContainer,
     BaseTracksSimpleList
   }
 }

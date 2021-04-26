@@ -1,25 +1,26 @@
 <template>
-  <div class="card artist-item">
-    <div class="content">
-      <BaseImage
-        class="artist-image"
-        :image="image"
-        isCircular
-        isBordered
-      />
+  <BaseHorizontalCardContainer>
+    <BaseImage
+      class="artist-image"
+      :image="image"
+      isCircular
+      isBordered
+    />
 
-      <InfoBlock :artistData="artistData" />
-    </div>
-  </div>
+    <InfoBlock :artistData="artistData" />
+  </BaseHorizontalCardContainer>
 </template>
 
 <script>
+import BaseHorizontalCardContainer
+  from '@/containers/BaseHorizontalCardContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
 
 export default {
   name: 'ArtistItem',
   components: {
+    BaseHorizontalCardContainer,
     BaseImage,
     InfoBlock
   },
@@ -38,12 +39,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.artist-item
-  @extend .w-100
-
-.content
-  @extend .d-flex
-
 .artist-image
   width: 150px
   height: 150px

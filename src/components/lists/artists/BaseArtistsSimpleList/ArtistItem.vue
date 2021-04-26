@@ -1,7 +1,7 @@
 <template>
-  <RouterLink
+  <BaseLinkContainer
     class="item main-simple-list-item"
-    :to="artistMainLinkFormatted"
+    :link="linkFormatted"
     @click="handleLinkClick"
   >
     <BaseArtistImage
@@ -10,28 +10,26 @@
       isCircular
       isBordered
     />
-    <div class="content">
-      <div class="header">
-        <h4 class="link-active">
-          {{ artistName }}
-        </h4>
-      </div>
-      <div class="description">
-        {{ listenersCountFormatted }}
-      </div>
-    </div>
-  </RouterLink>
+
+    <InfoBlock
+      :artistName="artistName"
+      :listenersCount="listenersCount"
+    />
+  </BaseLinkContainer>
 </template>
 
 <script>
+import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
+import InfoBlock from './ArtistItem/InfoBlock.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
-import { listenersCount as listenersCountDecorated } from '#/decorators'
 
 export default {
   name: 'ArtistItem',
   components: {
-    BaseArtistImage
+    BaseLinkContainer,
+    BaseArtistImage,
+    InfoBlock
   },
   props: {
     artistData: {
@@ -43,21 +41,16 @@ export default {
     'linkClick'
   ],
   computed: {
+    linkFormatted () {
+      return formatArtistMainLink({
+        artistName: this.artistName
+      })
+    },
     artistName () {
       return this.artistData.name
     },
     listenersCount () {
       return this.artistData.listeners_count
-    },
-    listenersCountFormatted () {
-      return listenersCountDecorated(
-        this.listenersCount
-      )
-    },
-    artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
     }
   },
   methods: {

@@ -1,52 +1,38 @@
 <template>
-  <div
-    class="ui scrolling local fluid search"
-    ref="historyInput"
+  <BaseHistoryInputContainer
+    class="scrolling fluid"
+    :scope="scope"
+    :item="query"
+    :isDistinct="isInput"
+    @select="handleSelect"
   >
-    <div
-      class="ui fluid input"
-      :class="{ icon: isWithIcon }"
-    >
-      <input
-        class="prompt mousetrap"
-        ref="input"
-        v-model.trim="input"
-        :placeholder="placeholderFormatted"
-        @keypress.enter="handleEnterPress"
-      />
-
-      <template v-if="isWithIcon">
-        <i
-          v-if="isClearable"
-          class="times link icon"
-          @click="handleClearButtonClick"
-        />
-        <i
-          v-else
-          class="search icon"
-        />
-      </template>
-    </div>
-    <div class="results"></div>
-  </div>
+    <BaseInput
+      class="fluid"
+      ref="input"
+      v-model.trim="input"
+      :icon="iconFormatted"
+      :placeholder="placeholderFormatted"
+      @enterPress="handleEnterPress"
+      @iconClick="handleIconClick"
+    />
+  </BaseHistoryInputContainer>
 </template>
 
 <script>
-import {
-  getHistory as getLocalHistory,
-  addToHistory as addToLocalHistory
-} from '#/actions/plugins/local'
-import { setSearch, setSearchSource } from '#/actions/plugins/semantic'
-import { mainHistoryInputOptions } from '#/data/plugins/semantic'
+import BaseHistoryInputContainer
+  from '@/containers/BaseHistoryInputContainer.vue'
+import BaseInput from '@/BaseInput.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseHistoryInput',
+  components: {
+    BaseHistoryInputContainer,
+    BaseInput
+  },
   props: {
-    historyKey: {
-      type: String,
-      required: true
-    },
+    scope: String,
+    query: String,
     isWithIcon: Boolean,
     isClearable: Boolean
   },
@@ -60,44 +46,42 @@ export default {
     }
   },
   computed: {
-    localHistory () {
-      return getLocalHistory(
-        this.historyKey,
-        { isDistinct: this.isInput }
-      )
-    },
     isInput () {
       return !!this.input.length
+    },
+    iconFormatted () {
+      if (this.isWithIcon) {
+        if (this.isClearable) {
+          return 'close link'
+        } else {
+          return 'search'
+        }
+      } else {
+        return null
+      }
     },
     placeholderFormatted () {
       return localize(
         'layout.search.input.placeholder'
       )
     },
-    historyInputOptions () {
-      return mainHistoryInputOptions({
-        source: this.localHistory,
-        onSelect: this.handleSelect
-      })
+    isClearButton () {
+      return (
+        this.isWithIcon &&
+          this.isClearable
+      )
     }
   },
-  watch: {
-    isInput: 'handleInputChange'
-  },
-  mounted () {
-    setSearch(
-      this.$refs.historyInput,
-      this.historyInputOptions
-    )
-  },
   methods: {
-    handleInputChange () {
-      this.updateHistoryInput()
-    },
-    handleSelect ({ title }) {
-      this.input = title
+    handleSelect (value) {
+      this.input = value
 
       this.submit()
+    },
+    handleIconClick () {
+      if (this.isClearButton) {
+        this.handleClearButtonClick()
+      }
     },
     handleClearButtonClick () {
       this.input = ''
@@ -109,13 +93,12 @@ export default {
       })
     },
     handleEnterPress () {
-      this.isInput && this.submit()
+      if (this.isInput) {
+        this.submit()
+      }
     },
     submit () {
       this.unfocus()
-
-      this.updateLocalHistory()
-      this.updateHistoryInput()
 
       this.$emit('submit', this.input)
     },
@@ -123,25 +106,10 @@ export default {
       this.$refs.input.focus()
     },
     unfocus () {
-      this.$refs.input.blur()
-    },
-    updateLocalHistory () {
-      addToLocalHistory(
-        this.historyKey,
-        this.input
-      )
-    },
-    updateHistoryInput () {
-      setSearchSource(
-        this.$refs.historyInput,
-        this.localHistory
-      )
+      this.$refs.input.unfocus()
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.results
-  z-index: 1500 !important
-</style>
+<style lang="sass" scoped></style>

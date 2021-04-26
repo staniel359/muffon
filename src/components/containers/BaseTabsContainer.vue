@@ -1,16 +1,10 @@
 <template>
-  <div class="tabs-container">
-    <div class="ui secondary pointing menu">
-      <a
-        v-for="tabData in tabs"
-        class="item menu-tab"
-        :key="tabData.uuid"
-        :class="{ active: isActive(tabData.uuid) }"
-        @click="handleTabClick(tabData.uuid)"
-      >
-        {{ tabData.name }}
-      </a>
-    </div>
+  <div>
+    <BaseTabs
+      :tabs="tabs"
+      :activeTabId="activeTabId"
+      @tabClick="handleTabClick"
+    />
 
     <slot
       v-for="tabData in tabs"
@@ -24,8 +18,13 @@
 </template>
 
 <script>
+import BaseTabs from '@/BaseTabs.vue'
+
 export default {
   name: 'BaseTabsContainer',
+  components: {
+    BaseTabs
+  },
   props: {
     tabs: {
       type: Array,
@@ -36,15 +35,15 @@ export default {
   },
   data () {
     return {
-      activeId: this.tabs[0].uuid
+      activeTabId: this.tabs[0].uuid
     }
   },
   methods: {
     handleTabClick (tabId) {
-      this.activeId = tabId
+      this.activeTabId = tabId
     },
     isActive (tabId) {
-      return tabId === this.activeId
+      return tabId === this.activeTabId
     }
   }
 }

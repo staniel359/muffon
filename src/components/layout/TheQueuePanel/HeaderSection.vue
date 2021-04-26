@@ -1,22 +1,26 @@
 <template>
-  <div class="header-section">
+  <BaseSegmentContainer class="header-section">
     <div class="left-block"></div>
 
-    <h4 class="ui header central-block">
+    <h4 class="ui header main-header central-block">
       {{ headerFormatted }}
     </h4>
 
     <div class="right-block"></div>
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import { pluralize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
   name: 'HeaderSection',
+  components: {
+    BaseSegmentContainer
+  },
   computed: {
     ...mapGetters('queue', {
       queueTracksCount: 'tracksCount'
@@ -40,13 +44,13 @@ export default {
 <style lang="sass" scoped>
 .header-section
   @extend .d-flex, .align-items-center
-  padding: 1em
+  padding: calc(#{$navbarHeight} + 1em) 1em 1em 1em
 
 .left-block
   flex: 0.25
 
 .central-block
-  @extend .no-margin, .text-align-center
+  @extend .text-align-center
   flex: 0.5
 
 .right-block

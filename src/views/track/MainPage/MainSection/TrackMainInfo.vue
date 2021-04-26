@@ -1,29 +1,29 @@
 <template>
   <div class="track-main-info">
-    <h3 class="ui header main-header">
-      {{ trackTitle }}
-    </h3>
+    <BaseHeader
+      tag="h3"
+      :text="trackTitle"
+    />
 
-    <h4 class="ui header main-header">
-      <RouterLink
-        class="main-link"
-        :to="artistMainLinkFormatted"
-      >
-        {{ artistName }}
-      </RouterLink>
-    </h4>
+    <BaseHeaderContainer tag="h4">
+      <BaseLink
+        :link="artistMainLinkFormatted"
+        :text="artistName"
+      />
+    </BaseHeaderContainer>
 
-    <RouterLink
+    <BaseLink
       v-if="albumTitle"
-      class="main-link"
-      :to="albumMainLinkFormatted"
-    >
-      {{ albumTitle }}
-    </RouterLink>
+      :link="albumMainLinkFormatted"
+      :text="albumTitle"
+    />
   </div>
 </template>
 
 <script>
+import BaseHeader from '@/BaseHeader.vue'
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/BaseLink.vue'
 import {
   artistMain as formatArtistMainLink,
   albumMain as formatAlbumMainLink
@@ -31,6 +31,11 @@ import {
 
 export default {
   name: 'TrackMainInfo',
+  components: {
+    BaseHeader,
+    BaseHeaderContainer,
+    BaseLink
+  },
   props: {
     trackTitle: {
       type: String,
@@ -61,6 +66,7 @@ export default {
 <style lang="sass" scoped>
 .track-main-info
   @extend .flex-full
+  border-bottom: $border
   padding: 1em
   .description
     @extend .no-margin

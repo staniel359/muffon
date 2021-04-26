@@ -3,28 +3,34 @@
     class="album-full-title"
     :scrollable="scrollable"
   >
-    <h3 class="ui header main-header">
-      {{ albumTitle }}
-    </h3>
-    <h4 class="ui header main-header">
-      <RouterLink
-        class="main-link"
-        :to="artistMainLinkFormatted"
-      >
-        {{ artistName }}
-      </RouterLink>
-    </h4>
+    <BaseHeader
+      tag="h3"
+      :text="albumTitle"
+    />
+
+    <BaseHeaderContainer tag="h4">
+      <BaseLink
+        :link="artistMainLinkFormatted"
+        :text="artistName"
+      />
+    </BaseHeaderContainer>
   </BaseTransitionContainer>
 </template>
 
 <script>
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
+import BaseHeader from '@/BaseHeader.vue'
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/BaseLink.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
 
 export default {
   name: 'AlbumHeader',
   components: {
-    BaseTransitionContainer
+    BaseTransitionContainer,
+    BaseHeader,
+    BaseHeaderContainer,
+    BaseLink
   },
   props: {
     albumTitle: {

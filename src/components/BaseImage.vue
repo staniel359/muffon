@@ -5,7 +5,8 @@
     :class="{
       rounded: isRounded,
       circular: isCircular,
-      bordered: isBordered
+      bordered: isBordered,
+      inverted: isDarkMode
     }"
   ></div>
   <img
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'BaseImage',
   props: {
@@ -29,6 +32,11 @@ export default {
     isRounded: Boolean,
     isCircular: Boolean,
     isBordered: Boolean
+  },
+  computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ])
   }
 }
 </script>

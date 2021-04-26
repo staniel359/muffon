@@ -1,7 +1,7 @@
 <template>
-  <RouterLink
+  <BaseLinkContainer
     class="item main-simple-list-item"
-    :to="mainPageLinkFormatted"
+    :link="linkFormatted"
     @click="handleLinkClick"
   >
     <BaseImage
@@ -10,40 +10,20 @@
       isBordered
     />
 
-    <div class="content">
-      <div class="header">
-        <h4
-          class="main-link"
-          :class="{ 'link-active': !isArtistNameActive }"
-        >
-          {{ albumTitle }}
-        </h4>
-      </div>
-
-      <div
-        v-if="isWithArtistName"
-        class="artist-name main-link"
-        :class="{ 'link-active': isArtistNameActive }"
-        @mouseenter="handleArtistNameMouseEnter"
-        @mouseleave="handleArtistNameMouseLeave"
-      >
-        {{ artistName }}
-      </div>
-
-      <BaseAlbumListenersCount
-        v-if="isWithListenersCount"
-        class="description"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
-      />
-    </div>
-  </RouterLink>
+    <InfoBlock
+      :albumTitle="albumTitle"
+      :artistName="artistName"
+      :isWithArtistName="isWithArtistName"
+      :isArtistNameActive="isArtistNameActive"
+      :isWithListenersCount="isWithListenersCount"
+    />
+  </BaseLinkContainer>
 </template>
 
 <script>
+import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
-import BaseAlbumListenersCount
-  from '@/models/album/BaseAlbumListenersCount.vue'
+import InfoBlock from './AlbumItem/InfoBlock.vue'
 import {
   artistMain as formatArtistMainLink,
   albumMain as formatAlbumMainLink
@@ -52,8 +32,14 @@ import {
 export default {
   name: 'AlbumItem',
   components: {
+    BaseLinkContainer,
     BaseImage,
-    BaseAlbumListenersCount
+    InfoBlock
+  },
+  provide () {
+    return {
+      setIsArtistNameActive: this.setIsArtistNameActive
+    }
   },
   props: {
     albumData: {
@@ -72,16 +58,7 @@ export default {
     }
   },
   computed: {
-    artistName () {
-      return this.albumData.artist.name
-    },
-    albumTitle () {
-      return this.albumData.title
-    },
-    image () {
-      return this.albumData.image.extrasmall
-    },
-    mainPageLinkFormatted () {
+    linkFormatted () {
       if (this.isArtistNameActive) {
         return this.artistMainLinkFormatted
       } else {
@@ -93,28 +70,31 @@ export default {
         artistName: this.artistName
       })
     },
+    artistName () {
+      return this.albumData.artist.name
+    },
     albumMainLinkFormatted () {
       return formatAlbumMainLink({
         artistName: this.artistName,
         albumTitle: this.albumTitle
       })
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    image () {
+      return this.albumData.image.extrasmall
     }
   },
   methods: {
-    handleArtistNameMouseEnter () {
-      this.isArtistNameActive = true
-    },
-    handleArtistNameMouseLeave () {
-      this.isArtistNameActive = false
-    },
     handleLinkClick () {
       this.$emit('linkClick')
+    },
+    setIsArtistNameActive (value) {
+      this.isArtistNameActive = value
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-name
-  @extend .width-fit-content
-</style>
+<style lang="sass" scoped></style>

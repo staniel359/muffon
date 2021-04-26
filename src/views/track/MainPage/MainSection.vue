@@ -1,33 +1,28 @@
 <template>
-  <div class="ui horizontal card track-card">
-    <div></div>
-    <BaseImage
-      class="track-image"
-      :image="image"
+  <BaseHorizontalCardContainer
+    class="track-card"
+    :image="image"
+  >
+    <TrackMainInfo
+      :trackTitle="trackTitle"
+      :artistName="artistName"
+      :albumTitle="albumTitle"
     />
 
-    <div class="content">
-      <TrackMainInfo
-        :trackTitle="trackTitle"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
-      />
-
-      <TrackPlayerPanel :trackData="trackData" />
-    </div>
-    <div></div>
-  </div>
+    <TrackPlayerPanel :trackData="trackData" />
+  </BaseHorizontalCardContainer>
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseHorizontalCardContainer
+  from '@/containers/BaseHorizontalCardContainer.vue'
 import TrackMainInfo from './MainSection/TrackMainInfo.vue'
 import TrackPlayerPanel from './MainSection/TrackPlayerPanel.vue'
 
 export default {
   name: 'MainSection',
   components: {
-    BaseImage,
+    BaseHorizontalCardContainer,
     TrackMainInfo,
     TrackPlayerPanel
   },
@@ -55,12 +50,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-card
-  @extend .w-100
-  .content
-    @extend .no-padding, .d-flex, .flex-column, .no-border
-
-.track-image
-  border-right: $border
-  height: 150px
+::v-deep(.content)
+  @extend .no-padding, .flex-column
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="the-title-observer"></div>
+  <div class="the-title-observer"></div>
 </template>
 
 <script>

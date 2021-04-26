@@ -1,19 +1,22 @@
 <template>
-  <div
-    class="ui tiny compact icon button"
+  <BaseButton
+    class="tiny compact"
+    icon="random"
     :class="{ basic: !isQueueShuffle }"
     @click="handleClick"
-  >
-    <i class="random icon" />
-  </div>
+  />
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import BaseButton from '@/BaseButton.vue'
 import { toggleIsShuffle as toggleIsQueueShuffle } from '#/actions/queue'
 
 export default {
   name: 'ShuffleButton',
+  components: {
+    BaseButton
+  },
   computed: {
     ...mapState('queue', {
       isQueueShuffle: 'isShuffle'

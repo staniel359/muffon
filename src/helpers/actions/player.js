@@ -16,17 +16,13 @@ export function getVariants () {
   return store.state.player.variants
 }
 
-export function setPlaying (value, { isAutoplay } = {}) {
+export function setPlaying (value, { isAutoplay = true } = {}) {
   store.dispatch(
     'player/setPlaying',
     value
   )
 
-  const audioStatus = store.state.audio.status
-  const isAudioPaused = audioStatus === 'pause'
-  const isAutoplayValue = isAutoplay ?? !isAudioPaused
-
-  setIsAudioAutoplay(isAutoplayValue)
+  setIsAudioAutoplay(isAutoplay)
 }
 
 export function getPlaying () {

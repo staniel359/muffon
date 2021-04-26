@@ -1,5 +1,5 @@
 <template>
-  <BasePaginatedSegmentContainer
+  <BaseArtistPaginatedSegmentContainer
     headerTextKey="similar"
     scope="similar"
     :clientPageLimit="4"
@@ -7,26 +7,26 @@
     :artistName="artistName"
     :formatHeaderLink="formatArtistSimilarLink"
   >
-    <template #default="segmentSlotProps">
+    <template #default="slotProps">
       <BaseArtistsTableList
         :itemsInRow="4"
-        :artists="segmentSlotProps.similar"
+        :artists="slotProps.similar"
         isSmall
       />
     </template>
-  </BasePaginatedSegmentContainer>
+  </BaseArtistPaginatedSegmentContainer>
 </template>
 
 <script>
-import BasePaginatedSegmentContainer
-  from '@/containers/pages/artist/BasePaginatedSegmentContainer.vue'
+import BaseArtistPaginatedSegmentContainer
+  from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
 import { artistSimilar as formatArtistSimilarLink } from '#/formatters/links'
 
 export default {
   name: 'SimilarSegment',
   components: {
-    BasePaginatedSegmentContainer,
+    BaseArtistPaginatedSegmentContainer,
     BaseArtistsTableList
   },
   props: {

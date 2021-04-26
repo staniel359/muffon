@@ -1,52 +1,24 @@
 <template>
-  <RouterLink
-    class="ui card main-card-light"
-    :to="mainPageLinkFormatted"
+  <BaseLinkContainer
+    :link="linkFormatted"
+    @click="handleLinkClick"
   >
-    <div></div>
-    <div class="image-container main-image-container">
-      <BaseImage
-        :image="albumImage"
-        isRounded
-        isBordered
-      />
-    </div>
-
-    <div class="content">
-      <h4
-        class="ui header main-header"
-        :class="{ 'link-active': !isArtistNameActive }"
-      >
-        {{ albumTitle }}
-      </h4>
-
-      <div
-        v-if="isWithArtistName"
-        class="artist-name-container"
-        :class="{ 'link-active': isArtistNameActive }"
-      >
-        <div
-          @mouseenter="handleArtistNameMouseEnter"
-          @mouseleave="handleArtistNameMouseLeave"
-        >
-          {{ albumArtistName }}
-        </div>
-      </div>
-
-      <BaseAlbumListenersCount
-        v-if="!isSegmentLoading"
-        class="description"
-        :artistName="albumArtistName"
+    <BaseSimpleCardContainer :image="image">
+      <InfoSection
         :albumTitle="albumTitle"
+        :artistName="albumArtistName"
+        :isWithArtistName="isWithArtistName"
+        :isArtistNameActive="isArtistNameActive"
+        :isWithListenersCount="!isSegmentLoading"
       />
-    </div>
-  </RouterLink>
+    </BaseSimpleCardContainer>
+  </BaseLinkContainer>
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
-import BaseAlbumListenersCount
-  from '@/models/album/BaseAlbumListenersCount.vue'
+import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
+import InfoSection from './AlbumItem/InfoSection.vue'
 import {
   artistMain as formatArtistMainLink,
   albumMain as formatAlbumMainLink
@@ -55,8 +27,14 @@ import {
 export default {
   name: 'AlbumItem',
   components: {
-    BaseImage,
-    BaseAlbumListenersCount
+    BaseLinkContainer,
+    BaseSimpleCardContainer,
+    InfoSection
+  },
+  provide () {
+    return {
+      setIsArtistNameActive: this.setIsArtistNameActive
+    }
   },
   props: {
     albumData: {
@@ -67,25 +45,16 @@ export default {
     isWithArtistName: Boolean,
     isSegmentLoading: Boolean
   },
+  emits: [
+    'linkClick'
+  ],
   data () {
     return {
       isArtistNameActive: false
     }
   },
   computed: {
-    albumTitle () {
-      return this.albumData.title
-    },
-    albumImage () {
-      return this.albumData.image.small
-    },
-    albumArtistName () {
-      return (
-        this.albumData.artist?.name ||
-          this.artistName
-      )
-    },
-    mainPageLinkFormatted () {
+    linkFormatted () {
       if (this.isArtistNameActive) {
         return this.artistMainLinkFormatted
       } else {
@@ -97,25 +66,34 @@ export default {
         artistName: this.albumArtistName
       })
     },
+    albumArtistName () {
+      return (
+        this.albumData.artist?.name ||
+          this.artistName
+      )
+    },
     albumMainLinkFormatted () {
       return formatAlbumMainLink({
         artistName: this.albumArtistName,
         albumTitle: this.albumTitle
       })
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    image () {
+      return this.albumData.image.small
     }
   },
   methods: {
-    handleArtistNameMouseEnter () {
-      this.isArtistNameActive = true
+    handleLinkClick () {
+      this.$emit('linkClick')
     },
-    handleArtistNameMouseLeave () {
-      this.isArtistNameActive = false
+    setIsArtistNameActive (value) {
+      this.isArtistNameActive = value
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-name-container
-  @extend .d-flex, .justify-content-center
-</style>
+<style lang="sass" scoped></style>

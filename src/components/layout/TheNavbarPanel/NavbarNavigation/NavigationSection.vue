@@ -4,14 +4,13 @@
     class="right chevron icon divider"
   />
 
-  <RouterLink
+  <BaseLink
     v-if="link"
-    class="section main-link"
+    class="section"
     :class="{ active: isActive }"
-    :to="link"
-  >
-    {{ sectionName }}
-  </RouterLink>
+    :link="link"
+    :text="sectionName"
+  />
   <div
     v-else
     class="section"
@@ -22,8 +21,13 @@
 </template>
 
 <script>
+import BaseLink from '@/BaseLink.vue'
+
 export default {
   name: 'NavigationSection',
+  components: {
+    BaseLink
+  },
   props: {
     sectionData: {
       type: Object,

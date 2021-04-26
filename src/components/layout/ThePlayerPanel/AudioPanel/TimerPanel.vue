@@ -1,5 +1,5 @@
 <template>
-  <div class="timer-panel">
+  <div class="player-timer">
     {{ audioCurrentTimeFormatted }} / {{ audioDurationFormatted }}
   </div>
 </template>
@@ -30,6 +30,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.timer-panel
+.player-timer
   flex: 0.25
 </style>

@@ -2,7 +2,10 @@
   <div
     class="search-tab-container"
     ref="tab"
-    :class="{ loading: isActive && isLoading }"
+    :class="{
+      loading: isActive && isLoading,
+      inverted: isDarkMode
+    }"
   >
     <BasePaginatedContainer
       :error="error"
@@ -28,6 +31,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
@@ -64,6 +68,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     searchDataArgs () {
       return {
         query: this.query,

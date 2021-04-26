@@ -1,17 +1,20 @@
 <template>
-  <RouterLink
-    class="ui label"
-    :to="tagMainLinkFormatted"
-  >
-    {{ tagName }}
-  </RouterLink>
+  <BaseLabelLinkContainer :link="tagMainLinkFormatted">
+    <span class="link">
+      {{ tagName }}
+    </span>
+  </BaseLabelLinkContainer>
 </template>
 
 <script>
+import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
 import { tagMain as formatTagMainLink } from '#/formatters/links'
 
 export default {
   name: 'TagItem',
+  components: {
+    BaseLabelLinkContainer
+  },
   props: {
     tagName: {
       type: String,

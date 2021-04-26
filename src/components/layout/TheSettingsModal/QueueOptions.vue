@@ -1,27 +1,30 @@
 <template>
-  <div class="main-segment-container main-basic-segment-container">
-    <div class="ui basic segment">
-      <div class="ui horizontal divider">
-        {{ headerFormatted }}
-      </div>
+  <div class="main-settings-options-block">
+    <BaseDivider
+      :text="headerFormatted"
+      isHorizontal
+    />
 
-      <AutoplayOption />
-    </div>
+    <AutoplayOption />
   </div>
 </template>
 
 <script>
+import BaseDivider from '@/BaseDivider.vue'
 import AutoplayOption from './QueueOptions/AutoplayOption.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'QueueOptions',
   components: {
+    BaseDivider,
     AutoplayOption
   },
   computed: {
     headerFormatted () {
-      return localize('settings.headers.queue')
+      return localize(
+        'settings.headers.queue'
+      )
     }
   }
 }

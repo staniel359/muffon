@@ -1,22 +1,25 @@
 <template>
-  <div
-    class="ui tiny compact icon button"
+  <BaseButton
+    class="tiny compact"
+    icon="list ul"
     :class="{
       disabled: !queueTracksCount,
       basic: !isQueuePanelVisible
     }"
     @click="handleClick"
-  >
-    <i class="list ul icon" />
-  </div>
+  />
 </template>
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import BaseButton from '@/BaseButton.vue'
 import { toggleQueuePanel } from '#/actions/layout'
 
 export default {
   name: 'QueueButton',
+  components: {
+    BaseButton
+  },
   computed: {
     ...mapGetters('queue', {
       queueTracksCount: 'tracksCount'

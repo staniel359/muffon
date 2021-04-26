@@ -16,7 +16,7 @@
     />
 
     <template v-if="description">
-      <div class="ui divider main-divider"></div>
+      <BaseDivider />
 
       <BaseArtistDescription
         :description="description"
@@ -31,6 +31,7 @@
 import ArtistHeader from './InfoBlock/ArtistHeader.vue'
 import BaseCounters from '@/BaseCounters.vue'
 import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
 
 export default {
@@ -39,6 +40,7 @@ export default {
     ArtistHeader,
     BaseCounters,
     BaseArtistTags,
+    BaseDivider,
     BaseArtistDescription
   },
   props: {
@@ -68,6 +70,6 @@ export default {
 .artist-info-data
   @extend .flex-full
 
-.artist-counters, ::v-deep(.artist-tags)
+.artist-counters
   @extend .d-inline
 </style>

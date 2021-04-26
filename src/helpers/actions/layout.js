@@ -78,3 +78,10 @@ export function setDropdownContext (value) {
     value
   )
 }
+
+export function setIsDarkMode (value) {
+  store.dispatch(
+    'layout/setIsDarkMode',
+    value
+  )
+}

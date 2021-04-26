@@ -10,9 +10,10 @@
     />
 
     <div class="content">
-      <h5 class="ui header main-header">
-        {{ sourceName }}
-      </h5>
+      <BaseHeader
+        tag="h5"
+        :text="sourceName"
+      />
     </div>
 
     <div class="description extra">
@@ -23,12 +24,14 @@
 
 <script>
 import BaseIcon from '@/BaseIcon.vue'
+import BaseHeader from '@/BaseHeader.vue'
 import { setSourceId as setPlayerSourceId } from '#/actions/player'
 
 export default {
   name: 'SourceItem',
   components: {
-    BaseIcon
+    BaseIcon,
+    BaseHeader
   },
   props: {
     sourceData: {
@@ -47,7 +50,7 @@ export default {
       return this.sourceData.name
     },
     maxBitrateFormatted () {
-      return `~${this.maxBitrate}`
+      return `~ ${this.maxBitrate}`
     },
     maxBitrate () {
       return this.sourceData.maxBitrate
