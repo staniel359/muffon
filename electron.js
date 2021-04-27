@@ -33,7 +33,6 @@ const browserWindowOptions = {
 
 let win = null
 let tray = null
-let isVisible = null
 
 function createTray () {
   tray = new Tray(iconPath)
@@ -55,7 +54,7 @@ function createTray () {
   tray.setToolTip(appName)
 
   const handleClick = () => {
-    isVisible ? win.hide() : win.show()
+    win.show()
   }
 
   tray.on('click', handleClick)
@@ -91,8 +90,8 @@ function createWindow () {
   }
 
   const handleReadyToShow = () => {
-    win.show()
     win.setMinimumSize(width, height)
+    win.show()
   }
 
   const handleClose = event =>  {
@@ -101,18 +100,8 @@ function createWindow () {
     win.hide()
   }
 
-  const handleShow = () => {
-    isVisible = true
-  }
-
-  const handleHide = () => {
-    isVisible = false
-  }
-
   win.on('ready-to-show', handleReadyToShow)
   win.on('close', handleClose)
-  win.on('show', handleShow)
-  win.on('hide', handleHide)
 
   const handleNewWindow = event => {
     event.preventDefault()
