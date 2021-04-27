@@ -1,3 +1,3 @@
-# muffon-desktop
+# muffon
 
 In progress.
