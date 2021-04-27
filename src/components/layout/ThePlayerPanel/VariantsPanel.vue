@@ -7,10 +7,14 @@
       >
         <VariantsLabel
           :isPanelVisible="isVisible"
-          @click="handleLabelClick"
+          @mouseenter="handleMouseEnter"
+          @mouseleave="handleMouseLeave"
         />
 
-        <VariantsList />
+        <VariantsList
+          @mouseenter="handleMouseEnter"
+          @mouseleave="handleMouseLeave"
+        />
       </div>
     </div>
   </div>
@@ -32,8 +36,11 @@ export default {
     }
   },
   methods: {
-    handleLabelClick () {
-      this.isVisible = !this.isVisible
+    handleMouseEnter () {
+      this.isVisible = true
+    },
+    handleMouseLeave () {
+      this.isVisible = false
     }
   }
 }

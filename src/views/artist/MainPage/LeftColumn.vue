@@ -14,9 +14,10 @@
       class="artist-name"
       :scrollable="scrollable"
     >
-      <h3 class="ui header main-header">
-        {{ artistName }}
-      </h3>
+      <BaseHeader
+        tag="h3"
+        :text="artistName"
+      />
     </BaseTransitionContainer>
   </div>
 </template>
@@ -24,12 +25,14 @@
 <script>
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
+import BaseHeader from '@/BaseHeader.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     BaseArtistImage,
-    BaseTransitionContainer
+    BaseTransitionContainer,
+    BaseHeader
   },
   props: {
     artistName: {
@@ -54,6 +57,6 @@ export default {
 .artist-name
   @extend .text-align-center
   margin: 10px 0
-  .main-header
+  .ui.header
     @extend .text-color-white
 </style>
