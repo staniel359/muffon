@@ -2,14 +2,12 @@
   <BaseTagPaginatedPageContainer
     pageNameKey="artists"
     scope="artists"
-    :clientPageLimit="20"
+    :clientPageLimit="10"
     :responsePageLimit="21"
   >
     <template #default="slotProps">
-      <BaseArtistsTableList
-        :itemsInRow="4"
+      <BaseArtistsExtendedList
         :artists="slotProps.artists"
-        isWithListenersCount
       />
     </template>
   </BaseTagPaginatedPageContainer>
@@ -18,13 +16,13 @@
 <script>
 import BaseTagPaginatedPageContainer
   from '@/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
-import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
+import BaseArtistsExtendedList from '@/lists/artists/BaseArtistsExtendedList.vue'
 
 export default {
   name: 'ArtistsPage',
   components: {
     BaseTagPaginatedPageContainer,
-    BaseArtistsTableList
+    BaseArtistsExtendedList
   }
 }
 </script>

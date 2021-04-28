@@ -7,7 +7,6 @@
     <BaseImage
       class="main-horizontal-card-image"
       :class="{ inverted: isDarkMode }"
-      v-if="image"
       :image="image"
     />
 
@@ -23,7 +22,7 @@ import { mapState } from 'vuex'
 import BaseImage from '@/BaseImage.vue'
 
 export default {
-  name: 'BaseHorizontalCardContainer',
+  name: 'BaseTrackHorizontalCardContainer',
   components: {
     BaseImage
   },

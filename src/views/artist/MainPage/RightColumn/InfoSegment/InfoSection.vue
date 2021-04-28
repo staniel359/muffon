@@ -1,5 +1,6 @@
 <template>
   <BaseHeader
+    class="main-artist-name"
     tag="h1"
     :text="artistName"
   />
@@ -69,8 +70,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-header
-  margin-bottom: 15px !important
-  line-height: 1
-</style>
+<style lang="sass" scoped></style>

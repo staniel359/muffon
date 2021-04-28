@@ -1,5 +1,9 @@
 <template>
-  <div :class="`ui ${columnWidth} column grid`">
+  <div :class="[
+    'ui',
+    columnWidth,
+    'column grid'
+  ]">
     <div
       v-for="albumData in albumsFormatted"
       class="column"

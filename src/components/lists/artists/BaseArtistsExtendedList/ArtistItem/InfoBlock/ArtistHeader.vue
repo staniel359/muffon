@@ -1,5 +1,8 @@
 <template>
-  <BaseHeaderContainer tag="h2">
+  <BaseHeaderContainer
+    class="main-artist-name"
+    tag="h2"
+  >
     <BaseLink
       :link="artistMainLinkFormatted"
       :text="artistName"
@@ -34,7 +37,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-header
-  margin-bottom: 5px !important
-</style>
+<style lang="sass" scoped></style>

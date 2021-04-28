@@ -6,7 +6,9 @@
     :responsePageLimit="10"
   >
     <template #default="slotProps">
-      <BaseArtistsExtendedList :artists="slotProps.similar" />
+      <BaseArtistsExtendedList
+        :artists="slotProps.similar"
+      />
     </template>
   </BaseArtistPaginatedPageContainer>
 </template>

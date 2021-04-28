@@ -3,13 +3,12 @@
     <ArtistHeader :artistName="artistName" />
 
     <BaseCounters
-      class="artist-counters"
       :listenersCount="listenersCount"
+      :playsCount="playsCount"
     />
 
     <BaseArtistTags
       v-if="tags"
-      class="artist-tags"
       :tags="tags"
       :artistName="artistName"
       isMore
@@ -56,6 +55,9 @@ export default {
     listenersCount () {
       return this.artistData.listeners_count
     },
+    playsCount () {
+      return this.artistData.plays_count
+    },
     tags () {
       return this.artistData.tags
     },
@@ -69,7 +71,4 @@ export default {
 <style lang="sass" scoped>
 .artist-info-data
   @extend .flex-full
-
-.artist-counters
-  @extend .d-inline
 </style>

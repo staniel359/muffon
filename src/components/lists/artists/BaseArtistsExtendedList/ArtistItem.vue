@@ -1,38 +1,46 @@
 <template>
-  <BaseHorizontalCardContainer>
-    <BaseImage
-      class="artist-image"
-      :image="image"
-      isCircular
-      isBordered
-    />
+  <BaseArtistContainer :artistName="artistName">
+    <template #default="slotProps">
+      <BaseArtistHorizontalCardContainer
+        :isLoading="slotProps.isLoading"
+        :error="slotProps.error"
+        @refresh="slotProps.handleRefresh"
+      >
+        <template v-if="slotProps.artistData">
+          <BaseArtistImage
+            class="artist-image"
+            size="small"
+            :artistName="artistName"
+            isCircular
+            isBordered
+          />
 
-    <InfoBlock :artistData="artistData" />
-  </BaseHorizontalCardContainer>
+          <InfoBlock :artistData="slotProps.artistData" />
+        </template>
+      </BaseArtistHorizontalCardContainer>
+    </template>
+  </BaseArtistContainer>
 </template>
 
 <script>
-import BaseHorizontalCardContainer
-  from '@/containers/BaseHorizontalCardContainer.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseArtistContainer from '@/containers/artist/BaseArtistContainer.vue'
+import BaseArtistHorizontalCardContainer
+  from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
+import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
 
 export default {
   name: 'ArtistItem',
   components: {
-    BaseHorizontalCardContainer,
-    BaseImage,
+    BaseArtistContainer,
+    BaseArtistHorizontalCardContainer,
+    BaseArtistImage,
     InfoBlock
   },
   props: {
-    artistData: {
-      type: Object,
+    artistName: {
+      type: String,
       required: true
-    }
-  },
-  computed: {
-    image () {
-      return this.artistData.image.small
     }
   }
 }

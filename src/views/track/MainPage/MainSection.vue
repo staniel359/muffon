@@ -1,5 +1,5 @@
 <template>
-  <BaseHorizontalCardContainer
+  <BaseTrackHorizontalCardContainer
     class="track-card"
     :image="image"
   >
@@ -10,19 +10,19 @@
     />
 
     <TrackPlayerPanel :trackData="trackData" />
-  </BaseHorizontalCardContainer>
+  </BaseTrackHorizontalCardContainer>
 </template>
 
 <script>
-import BaseHorizontalCardContainer
-  from '@/containers/BaseHorizontalCardContainer.vue'
+import BaseTrackHorizontalCardContainer
+  from '@/containers/track/BaseTrackHorizontalCardContainer.vue'
 import TrackMainInfo from './MainSection/TrackMainInfo.vue'
 import TrackPlayerPanel from './MainSection/TrackPlayerPanel.vue'
 
 export default {
   name: 'MainSection',
   components: {
-    BaseHorizontalCardContainer,
+    BaseTrackHorizontalCardContainer,
     TrackMainInfo,
     TrackPlayerPanel
   },

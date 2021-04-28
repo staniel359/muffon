@@ -47,7 +47,7 @@ export default {
       this.modalOptions
     )
   },
-  unmounted () {
+  beforeUnmount () {
     remove(this.$refs.modal)
   },
   methods: {
