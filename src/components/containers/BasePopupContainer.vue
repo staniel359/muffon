@@ -1,7 +1,7 @@
 <template>
   <div
     class="ui popup main-popup"
-    :class="{ inverted: isDarkMode }"
+    ref="popup"
   >
     <div class="content">
       <slot></slot>
@@ -11,6 +11,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { toggleClass } from '#/actions/plugins/jquery'
 
 export default {
   name: 'BasePopupContainer',
@@ -18,6 +19,18 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ])
+  },
+  watch: {
+    isDarkMode: 'handleIsDarkModeChange'
+  },
+  methods: {
+    handleIsDarkModeChange (value) {
+      toggleClass(
+        this.$refs.popup,
+        'inverted',
+        value
+      )
+    }
   }
 }
 </script>
