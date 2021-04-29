@@ -103,15 +103,7 @@ export function formatTitle () {
     const playerPlayingFullTitle =
       `${artistName} - ${trackTitle}`
 
-    const playerFullTitle = [
-      audioTitleIcon,
-      playerPlayingFullTitle
-    ].join(' ')
-
-    return [
-      playerFullTitle,
-      defaultTitle
-    ].join(' | ')
+    return `${audioTitleIcon} ${playerPlayingFullTitle}`
   } else {
     return defaultTitle
   }
