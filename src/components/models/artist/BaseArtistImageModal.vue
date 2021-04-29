@@ -55,6 +55,7 @@ export default {
     handleShow () {
       this.$nextTick(() => {
         setSliderPosition(this.mainSlider)
+        setSliderPosition(this.thumbsSlider)
       })
     },
     handleMainSliderInit (el) {

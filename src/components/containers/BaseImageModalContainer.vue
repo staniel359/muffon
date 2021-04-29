@@ -1,44 +1,26 @@
 <template>
-  <div
-    class="ui page modal main-image-modal-container"
-    ref="modal"
+  <BaseModalContainer
+    class="main-image-modal"
+    @init="handleInit"
   >
     <slot></slot>
-  </div>
+  </BaseModalContainer>
 </template>
 
 <script>
-import { setModal } from '#/actions/plugins/semantic'
-import { mainModalOptions } from '#/data/plugins/semantic'
-import { remove } from '#/actions/plugins/jquery'
+import BaseModalContainer from '@/containers/BaseModalContainer.vue'
 
 export default {
   name: 'BaseImageModalContainer',
+  components: {
+    BaseModalContainer
+  },
   emits: [
-    'init',
-    'show'
+    'init'
   ],
-  computed: {
-    modalOptions () {
-      return mainModalOptions({
-        onShow: this.handleShow
-      })
-    }
-  },
-  mounted () {
-    setModal(
-      this.$refs.modal,
-      this.modalOptions
-    )
-
-    this.$emit('init', this.$refs.modal)
-  },
-  unmounted () {
-    remove(this.$refs.modal)
-  },
   methods: {
-    handleShow () {
-      this.$emit('show')
+    handleInit (el) {
+      this.$emit('init', el)
     }
   }
 }

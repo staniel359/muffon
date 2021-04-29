@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui modal main-modal"
+    class="ui page modal main-modal"
     ref="modal"
   >
     <slot></slot>
@@ -21,6 +21,7 @@ import { toggleClass, remove } from '#/actions/plugins/jquery'
 export default {
   name: 'BaseModalContainer',
   emits: [
+    'init',
     'show',
     'visible'
   ],
@@ -46,6 +47,8 @@ export default {
       this.$refs.modal,
       this.modalOptions
     )
+
+    this.$emit('init', this.$refs.modal)
   },
   beforeUnmount () {
     remove(this.$refs.modal)
