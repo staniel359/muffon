@@ -1,7 +1,6 @@
 <template>
   <div
     class="ui page dimmer"
-    :class="{ inverted: !isDarkMode }"
     ref="loader"
   >
     <div class="ui loader"></div>
@@ -12,6 +11,7 @@
 import { mapState } from 'vuex'
 import { setLoaderDimmer } from '#/actions/layout'
 import { mainLoaderOptions } from '#/data/plugins/semantic'
+import { toggleClass } from '#/actions/plugins/jquery'
 
 export default {
   name: 'TheLoaderDimmer',
@@ -20,11 +20,23 @@ export default {
       'isDarkMode'
     ])
   },
+  watch: {
+    isDarkMode: 'handleIsDarkModeChange'
+  },
   mounted () {
     setLoaderDimmer(
       this.$refs.loader,
       mainLoaderOptions()
     )
+  },
+  methods: {
+    handleIsDarkModeChange (value) {
+      toggleClass(
+        this.$refs.loader,
+        'inverted',
+        !value
+      )
+    }
   }
 }
 </script>
