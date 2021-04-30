@@ -48,6 +48,6 @@ export default {
   height: 30px
   border-bottom: 0 !important
   &.inverted
-    border: $borderInverted
+    border: $borderInverted !important
     border-bottom: 0 !important
 </style>

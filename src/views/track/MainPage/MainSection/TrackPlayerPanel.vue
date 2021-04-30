@@ -53,7 +53,7 @@ export default {
   &.inverted
     border-top: $borderInverted
     ::v-deep(.track-visualiser-container)
-      border-left: $borderInverted
+      border-left: $borderInverted !important
     ::v-deep(.track-length)
-      border-left: $borderInverted
+      border-left: $borderInverted !important
 </style>

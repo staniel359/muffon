@@ -45,6 +45,8 @@
 
 .ui.modal.main-modal
   width: 500px
+  &.inverted
+    border: $borderInverted
   .content
     max-height: $mainModalHeight !important
 
@@ -52,7 +54,7 @@
   height: $mainModalHeight
 
 .main-image-modal
-  @extend .no-margin, .no-shadow, .width-fit-content, .background-transparent
+  @extend .no-margin, .no-shadow, .no-border, .width-fit-content, .background-transparent
 
 .main-image-container
   @extend .relative

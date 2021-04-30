@@ -41,5 +41,5 @@ export default {
   height: $navbarHeight
   z-index: 1500 !important
   &.inverted
-    border-bottom: $borderInverted
+    border-bottom: $borderInverted !important
 </style>

@@ -2,7 +2,7 @@
   <VariantsPanel v-if="isRenderVariantsPanel" />
 
   <div
-    class="ui bottom overlay segment sidebar main-segment-container"
+    class="ui bottom overlay segment sidebar player-panel"
     ref="playerPanel"
   >
     <div class="ui container main-container">
@@ -106,10 +106,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-segment-container
-  @extend .no-padding
+.player-panel
+  @extend .no-padding, .no-border
   overflow: visible !important
   z-index: 400 !important
+  &.inverted
+    border-top: $borderInverted !important
 
 .main-container
   @extend .d-flex, .align-items-center
