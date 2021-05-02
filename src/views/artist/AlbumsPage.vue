@@ -10,7 +10,6 @@
         :itemsInRow="4"
         :albums="slotProps.albums"
         :artistName="slotProps.artistName"
-        :isSegmentLoading="slotProps.isLoading"
       />
     </template>
   </BaseArtistPaginatedPageContainer>

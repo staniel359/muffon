@@ -1,6 +1,5 @@
 <template>
   <div
-    class="search-tab-container"
     ref="tab"
     :class="{
       loading: isActive && isLoading,
@@ -8,6 +7,7 @@
     }"
   >
     <BasePaginatedContainer
+      :isLoading="isLoading"
       :error="error"
       :responseData="searchData"
       :scope="tabData.scope"
@@ -22,6 +22,7 @@
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :isWithListenersCount="tabData.isWithListenersCount"
+          :scrollable="scrollable"
           isWithArtistName
           @linkClick="handleLinkClick"
         />
@@ -77,6 +78,9 @@ export default {
         scope: this.tabData.scope,
         limit: this.tabData.responsePageLimit
       }
+    },
+    scrollable () {
+      return this.$refs.tab
     }
   },
   mounted () {
@@ -105,10 +109,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-tab-container
-  @extend .flex-full, .relative, .overflow-y-auto, .scroll-smooth
-
-.paginated-container
-  @extend .absolute, .w-100
-</style>
+<style lang="sass" scoped></style>

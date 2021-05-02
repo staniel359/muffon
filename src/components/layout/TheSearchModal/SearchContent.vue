@@ -13,6 +13,7 @@
 
     <SearchTabs
       v-if="query"
+      class="search-tabs"
       :query="query"
       :searchKey="key"
     />
@@ -62,4 +63,7 @@ export default {
 <style lang="sass" scoped>
 .content
   @extend .d-flex, .flex-column
+
+.search-tabs
+  margin-top: 10px
 </style>

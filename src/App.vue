@@ -8,7 +8,7 @@
 
   <div class="pusher">
     <TheBackground />
-    <TheDropdownContext />
+    <TheVisibleContext />
 
     <TheContainer />
 
@@ -24,7 +24,7 @@ import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
 import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheQueuePanel from '@/layout/TheQueuePanel.vue'
 import TheBackground from '@/layout/TheBackground.vue'
-import TheDropdownContext from '@/layout/TheDropdownContext.vue'
+import TheVisibleContext from '@/layout/TheVisibleContext.vue'
 import TheContainer from '@/layout/TheContainer.vue'
 import TheSearchModal from '@/layout/TheSearchModal.vue'
 import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
@@ -38,7 +38,7 @@ export default {
     ThePlayerPanel,
     TheQueuePanel,
     TheBackground,
-    TheDropdownContext,
+    TheVisibleContext,
     TheContainer,
     TheSearchModal,
     TheLoaderDimmer
@@ -47,8 +47,6 @@ export default {
 </script>
 
 <style lang="sass">
-@import './src/assets/styles/Global.sass'
 @import './src/assets/styles/Main.sass'
-@import './src/assets/styles/Semantic.sass'
 @import './src/assets/styles/Sources.sass'
 </style>

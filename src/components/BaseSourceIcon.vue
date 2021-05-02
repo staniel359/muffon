@@ -1,6 +1,6 @@
 <template>
   <i
-    class="icon"
+    class="icon source-icon"
     ref="icon"
     :class="[
       sourceIdFormatted,
@@ -40,13 +40,14 @@ export default {
       }
     },
     popupTextFormatted () {
-      return this.sourceName && this.popupText
-    },
-    popupText () {
-      return localize(
-        'track.source.via',
-        { source: this.sourceName }
-      )
+      if (this.sourceName) {
+        return localize(
+          'track.source.via',
+          { source: this.sourceName }
+        )
+      } else {
+        return null
+      }
     },
     sourceName () {
       return getAudioSourceData(
@@ -71,4 +72,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.source-icon
+  @extend .no-padding, .no-margin
+</style>

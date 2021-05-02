@@ -1,24 +1,19 @@
 <template>
-  <div class="search-tabs-container">
-    <BaseTabsContainer
-      class="tabs-container"
-      :tabs="tabsFormatted"
+  <BaseTabsContainer :tabs="tabsFormatted">
+    <template
+      v-for="tabData in tabsFormatted"
+      :key="tabData.uuid"
+      #[tabData.scope]="slotProps"
     >
-      <template
-        v-for="tabData in tabsFormatted"
-        :key="tabData.uuid"
-        #[tabData.scope]="slotProps"
-      >
-        <BaseSearchTabContainer
-          :key="searchKey"
-          :class="slotProps.class"
-          :isActive="slotProps.isActive"
-          :query="query"
-          :tabData="tabData"
-        />
-      </template>
-    </BaseTabsContainer>
-  </div>
+      <BaseSearchTabContainer
+        :key="searchKey"
+        :class="slotProps.class"
+        :isActive="slotProps.isActive"
+        :query="query"
+        :tabData="tabData"
+      />
+    </template>
+  </BaseTabsContainer>
 </template>
 
 <script>
@@ -45,11 +40,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-tabs-container
-  @extend .d-flex, .flex-column, .flex-full
-  margin-top: 5px
-
-.tabs-container
-  @extend .d-flex, .flex-column, .flex-full
-</style>
+<style lang="sass" scoped></style>

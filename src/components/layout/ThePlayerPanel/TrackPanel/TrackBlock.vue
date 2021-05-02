@@ -63,6 +63,5 @@ export default {
   @extend .d-flex, .align-items-center
 
 .track-source-icon
-  @extend .no-padding, .no-margin
   margin-left: 0.5em !important
 </style>

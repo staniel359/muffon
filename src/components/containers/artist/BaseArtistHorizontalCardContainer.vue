@@ -47,5 +47,5 @@ export default {
 
 <style lang="sass" scoped>
 .segment-container
-  @extend .d-flex
+  @extend .d-flex, .no-padding
 </style>

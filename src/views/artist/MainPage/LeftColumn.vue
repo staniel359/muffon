@@ -2,11 +2,10 @@
   <div class="left-column">
     <div class="main-image-container">
       <BaseArtistImage
-        class="image-content"
+        class="rounded image-content"
         size="medium"
         :artistName="artistName"
         isInteractive
-        isRounded
       />
     </div>
 

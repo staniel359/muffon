@@ -12,7 +12,6 @@
       <AlbumItem
         :albumData="albumData"
         :artistName="artistName"
-        :isSegmentLoading="isSegmentLoading"
         :isWithArtistName="isWithArtistName"
       />
     </div>
@@ -41,7 +40,6 @@ export default {
       }
     },
     artistName: String,
-    isSegmentLoading: Boolean,
     isWithArtistName: Boolean
   },
   computed: {

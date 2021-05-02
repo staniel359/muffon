@@ -9,7 +9,7 @@
         :artistName="albumArtistName"
         :isWithArtistName="isWithArtistName"
         :isArtistNameActive="isArtistNameActive"
-        :isWithListenersCount="!isSegmentLoading"
+        isWithListenersCount
       />
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
@@ -42,8 +42,7 @@ export default {
       required: true
     },
     artistName: String,
-    isWithArtistName: Boolean,
-    isSegmentLoading: Boolean
+    isWithArtistName: Boolean
   },
   emits: [
     'linkClick'

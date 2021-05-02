@@ -1,6 +1,6 @@
 export function focusOnSegment (segment) {
   const segmentTop = $(segment).offset().top
-  const navbarHeight = 40
+  const navbarHeight = 45
   const marginTop = 20
   const offsetTop = segmentTop - navbarHeight - marginTop
 

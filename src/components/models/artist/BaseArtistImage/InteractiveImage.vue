@@ -4,13 +4,10 @@
     class="image-container"
   >
     <ImagesPageButton :artistName="artistName" />
+
     <ImageSlider
       :images="images"
-      :isRounded="isRounded"
-      :isCircular="isCircular"
-      :isBordered="isBordered"
-      :size="size"
-      @click="handleImageClick"
+      @imageClick="handleImageClick"
     />
   </div>
 
@@ -37,11 +34,7 @@ export default {
   },
   props: {
     artistName: String,
-    images: Array,
-    isRounded: Boolean,
-    isCircular: Boolean,
-    isBordered: Boolean,
-    size: String
+    images: Array
   },
   data () {
     return {
@@ -69,7 +62,7 @@ export default {
 
 <style lang="sass" scoped>
 .image-container
-  @extend .relative
+  @extend .relative, .cursor-zoom-in
   .view-more-link
     @extend .d-none
   &:hover

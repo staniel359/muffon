@@ -1,5 +1,5 @@
 <template>
-  <div class="menu main-track-dropdown-menu">
+  <div class="menu">
     <TrackItem
       v-for="(trackData, index) in tracksFormatted"
       :key="trackData.uuid"

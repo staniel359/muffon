@@ -1,6 +1,6 @@
 <template>
   <BaseImageModalContainer @show="handleShow">
-    <div class="ui container main-container">
+    <div class="ui container main-container main-image-modal-content">
       <MainSlider
         :images="imagesFormatted"
         :syncSlider="thumbsSlider"

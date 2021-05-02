@@ -7,10 +7,7 @@
   >
     <template #default="slotProps">
       <div class="image-container">
-        <BaseImage
-          class="slider-image"
-          :image="slotProps.image"
-        />
+        <BaseImage :image="slotProps.image" />
       </div>
     </template>
   </BaseImageModalSliderContainer>

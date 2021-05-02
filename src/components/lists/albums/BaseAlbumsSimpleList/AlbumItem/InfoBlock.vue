@@ -12,7 +12,7 @@
     />
 
     <BaseAlbumListenersCount
-      v-if="isWithListenersCount"
+      v-if="isRenderListenersCount"
       class="description"
       :albumTitle="albumTitle"
       :artistName="artistName"
@@ -44,7 +44,16 @@ export default {
     },
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isVisible: Boolean
+  },
+  computed: {
+    isRenderListenersCount () {
+      return (
+        this.isWithListenersCount &&
+          this.isVisible
+      )
+    }
   }
 }
 </script>

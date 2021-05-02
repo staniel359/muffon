@@ -3,9 +3,7 @@
     class="ui popup main-popup"
     ref="popup"
   >
-    <div class="content">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </div>
 </template>
 
@@ -21,21 +19,23 @@ export default {
     ])
   },
   watch: {
-    isDarkMode: 'handleIsDarkModeChange'
+    isDarkMode: {
+      immediate: true,
+      handler: 'handleIsDarkModeChange'
+    }
   },
   methods: {
     handleIsDarkModeChange (value) {
-      toggleClass(
-        this.$refs.popup,
-        'inverted',
-        value
-      )
+      this.$nextTick(() => {
+        toggleClass(
+          this.$refs.popup,
+          'inverted',
+          value
+        )
+      })
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.content
-  @extend .h-100, .d-flex, .flex-column, .align-items-center
-</style>
+<style lang="sass" scoped></style>

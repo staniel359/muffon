@@ -1,8 +1,11 @@
 <template>
-  <BasePopupContainer>
-    <h4 class="ui header main-header">
-      {{ volumeFormatted }}
-    </h4>
+  <BasePopupContainer class="volume-popup">
+    <div class="volume-header-container">
+      <BaseHeader
+        tag="h4"
+        :text="headerFormatted"
+      />
+    </div>
 
     <BaseSeeker
       class="vertical reversed volume-seeker"
@@ -15,6 +18,7 @@
 <script>
 import { mapState } from 'vuex'
 import BasePopupContainer from '@/containers/BasePopupContainer.vue'
+import BaseHeader from '@/BaseHeader.vue'
 import BaseSeeker from '@/BaseSeeker.vue'
 import { mainVolumeSeekerOptions } from '#/data/plugins/semantic'
 import { setVolume as setAudioVolume } from '#/actions/audio'
@@ -23,16 +27,17 @@ export default {
   name: 'VolumePopup',
   components: {
     BasePopupContainer,
+    BaseHeader,
     BaseSeeker
   },
   computed: {
     ...mapState('audio', {
       audioVolume: 'volume'
     }),
-    volumeFormatted () {
+    headerFormatted () {
       return Math.floor(
         this.audioVolume * 100
-      )
+      ).toString()
     },
     seekerOptions () {
       return mainVolumeSeekerOptions({
@@ -49,14 +54,15 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-popup
-  height: 155px
+.volume-popup
+  @extend .text-align-center
   width: 60px
 
-.main-header
-  margin-bottom: 5px !important
+.volume-header-container
+  margin-bottom: 5px
 
 .volume-seeker
-  width: 14px !important
+  @extend .w-100, .d-flex, .justify-content-center
+  height: 110px !important
   padding: 5px 0 !important
 </style>

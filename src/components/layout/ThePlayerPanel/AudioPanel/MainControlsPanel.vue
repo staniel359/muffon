@@ -29,8 +29,8 @@ export default {
 
 <style lang="sass" scoped>
 .player-main-controls
-  @extend .text-align-center
+  @extend .d-flex, .align-items-center, .justify-content-center
   flex: 0.5
-  :last-child
+  & > :last-child
     @extend .no-margin
 </style>

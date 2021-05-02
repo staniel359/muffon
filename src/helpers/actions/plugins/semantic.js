@@ -52,6 +52,10 @@ export function setVisibility (el, options) {
   $(el).visibility(options)
 }
 
+export function refreshVisibility (el) {
+  $(el).visibility('refresh')
+}
+
 // Sidebar
 
 export function setSidebar (el, options) {

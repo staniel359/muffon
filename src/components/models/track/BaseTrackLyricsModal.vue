@@ -7,7 +7,7 @@
   >
     <template #default="slotProps">
       <div class="main-lyrics-container">
-        <p>
+        <p class="lyrics">
           {{ slotProps.lyrics }}
         </p>
       </div>

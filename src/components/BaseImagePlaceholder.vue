@@ -1,17 +1,15 @@
 <template>
   <div
-    class="ui list main-list"
+    class="ui image placeholder"
     :class="{ inverted: isDarkMode }"
-  >
-    <slot></slot>
-  </div>
+  ></div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
 export default {
-  name: 'BaseListContainer',
+  name: 'BaseImagePlaceholder',
   computed: {
     ...mapState('layout', [
       'isDarkMode'

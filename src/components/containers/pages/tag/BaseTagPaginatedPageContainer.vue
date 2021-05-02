@@ -14,8 +14,9 @@
         :isLoading="pageSlotProps.isLoading"
       >
         <BasePaginatedContainer
-          :responseData="pageSlotProps.tagData"
+          :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
+          :responseData="pageSlotProps.tagData"
           :scope="scope"
           :clientPageLimit="clientPageLimit"
           :responsePageLimit="responsePageLimit"
@@ -24,15 +25,7 @@
           @focus="handleFocus"
         >
           <template #default="slotProps">
-            <slot
-              v-if="isAlbums"
-              :[scope]="slotProps[scope]"
-              :isLoading="pageSlotProps.isLoading"
-            ></slot>
-            <slot
-              v-else
-              :[scope]="slotProps[scope]"
-            ></slot>
+            <slot :[scope]="slotProps[scope]"></slot>
           </template>
         </BasePaginatedContainer>
       </BaseSegmentContainer>
@@ -57,11 +50,6 @@ export default {
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number
-  },
-  computed: {
-    isAlbums () {
-      return this.scope === 'albums'
-    }
   },
   methods: {
     handleFocus () {

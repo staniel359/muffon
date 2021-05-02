@@ -1,6 +1,6 @@
 <template>
   <BaseImageModalContainer>
-    <div class="image-container">
+    <div class="main-image-modal-content">
       <BaseImage :image="image" />
     </div>
   </BaseImageModalContainer>
@@ -23,6 +23,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.image-container .image
-  max-height: $imageModalHeight
+.main-image-modal-content
+  & > .image
+    max-height: $imageModalHeight
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="menu main-track-dropdown-menu">
+  <div class="menu">
     <VideoItem
       v-for="(videoData, index) in videosFormatted"
       :key="videoData.uuid"

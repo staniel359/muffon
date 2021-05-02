@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui toggle checkbox"
+    class="ui toggle checkbox main-toggle-checkbox"
     :class="{ inverted: isDarkMode }"
     ref="checkbox"
   >

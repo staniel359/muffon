@@ -1,6 +1,6 @@
 <template>
   <div class="main-lyrics-container">
-    <p>
+    <p class="lyrics">
       {{ lyrics }}
     </p>
 

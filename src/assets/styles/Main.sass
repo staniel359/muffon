@@ -1,6 +1,81 @@
+@font-face
+  font-family: LatoDefault
+  src: $fontPath format('truetype')
+
+*:not(i)
+  font-family: Lato, LatoDefault, Helvetica Neue, Arial, Helvetica, sans-serif !important
+
+a
+  outline: none
+
+::-webkit-scrollbar
+  width: 10px
+  height: 10px
+
+::-webkit-scrollbar-thumb
+  border-radius: 5px
+  background: #00000040
+
+::-webkit-scrollbar-track
+  background: #0000001a
+
 @media only screen and (min-width: 768px)
   .main-container
     width: 700px !important
+
+.pushable
+  .pusher
+    @extend .overflow-visible
+    &:after
+      @extend .background-transparent
+
+.ui.modals
+  @extend .no-padding
+
+.ui.modal
+  &.main-modal
+    width: 500px
+  &.main-image-modal
+    @extend .background-transparent
+
+.ui.checkbox
+  &.main-toggle-checkbox
+    min-height: $mainCheckboxThumbHeight
+    & > input
+      height: $mainCheckboxThumbHeight
+      & ~ label
+        &:before
+          @extend .background-grey
+        &:after
+          left: 0
+      &:checked
+        & ~ label
+          &:after
+            left: calc(#{$mainCheckboxWidth} - #{$mainCheckboxThumbHeight})
+      &:checked, &:focus:checked
+        & ~ label
+          &:before
+            @extend .background-base
+    & > label
+      padding-left: calc(#{$mainCheckboxWidth} + 0.65em)
+      padding-top: 0
+      min-height: $mainCheckboxThumbHeight
+      line-height: $mainCheckboxThumbHeight
+      &:before
+        width: $mainCheckboxWidth
+        height: $mainCheckboxThumbHeight
+      &:after
+        height: $mainCheckboxThumbHeight
+        width: $mainCheckboxThumbHeight
+    &.inverted
+      & > input
+        & ~ label
+          &:before, &:hover:before
+            @extend .background-grey-inverted
+        &:checked, &:focus:checked
+          & ~ label
+            &:before, &:hover:before
+              @extend .background-base
 
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
@@ -20,46 +95,60 @@
 
 .main-segment
   &.loading
-    min-height: 150px
+    min-height: 200px
+  &.inverted
+    &:not(:first-child)
+      border-top: $borderInverted
+    &.loading
+      &:before
+        @extend .background-black-transparent
 
 .main-page-segment-container
-  @extend .no-margin
   min-height: calc(100vh - #{$mainContainerTopPadding} - #{$mainContainerBottomPadding}) !important
 
 .main-paginated-page-segment-container
   @extend .d-flex
 
 .main-basic-segments-container
-  .segments
+  & > .segments
     @extend .no-margin
     &:not(:first-child)
       margin-top: 30px !important
-  .segment:only-child
-    @extend .no-padding
-  .segment:first-child
-    padding: 0 0 1em 0
-  .segment
-    padding: 1em 0
-  .segment:last-child
-    padding: 1em 0 0 0
+    & > .segment:only-child
+      @extend .no-padding
+    & > .segment:first-child
+      padding: 0 0 1em 0
+    & > .segment
+      padding: 1em 0
+    & > .segment:last-child
+      padding: 1em 0 0 0
 
-.ui.modal.main-modal
-  width: 500px
-  &.inverted
-    border: $borderInverted
-  .content
+.main-modal
+  & > .content
     max-height: $mainModalHeight !important
+  &.inverted
+    @extend .background-black
+    border: $borderInverted
+    & > .content
+      @extend .background-black
 
 .main-modal-content-full-height
   height: $mainModalHeight
 
 .main-image-modal
-  @extend .no-margin, .no-shadow, .no-border, .width-fit-content, .background-transparent
+  @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content
+  &.scrolling
+    &:after
+      @extend .d-none
+
+.main-image-modal-content
+  @extend .d-flex, .flex-column, .justify-content-center
+  height: 100vh
 
 .main-image-container
   @extend .relative
   padding-bottom: 100%
-  .image-content, & > .image
+  & > .image, & > .image-content
     @extend .absolute, .w-100, .h-100
 
 .main-link
@@ -83,17 +172,17 @@
 .main-lyrics-container
   @extend .main-text-container
   padding: 1.25em 2.5em
-  p
+  & > .lyrics
     font-size: 16px
 
 .main-simple-card
   @extend .no-shadow, .text-align-center, .text-color-unset
-  .content
+  & > .content
     @extend .no-padding, .no-border
-  .description
-    @extend .no-margin
+    & > .description
+      @extend .no-margin
   &:hover
-    transform: none !important
+    transform: none
 
 .main-simple-card-image-container
   @extend .main-image-container
@@ -111,10 +200,10 @@
 .main-simple-list-item
   @extend .d-flex, .align-items-center
   word-break: break-word
-  .image
+  & > .image
     width: 60px
     height: 60px
-  .content
+  & > .content
     @extend .flex-full
   &:hover
     .link-active
@@ -126,37 +215,41 @@
     @extend .background-dark-grey
 
 .main-popup
-  @extend .no-border, .text-align-center
+  @extend .no-border
+  &.inverted
+    border: $borderInverted !important
 
 .main-header
   @extend .no-margin
+  line-height: 1.2 !important
 
 .main-artist-name
-  margin-bottom: 15px !important
-  line-height: 1 !important
+  margin-bottom: 10px !important
 
 .main-dropdown
   @extend .d-flex, .align-items-center
-  .text
+  & > .text
     @extend .flex-full
+  & > .menu
+    z-index: 200 !important
 
 .main-dropdown-item
   @extend .d-flex, .align-items-center
   line-height: 1.2em !important
   &.selected
     font-weight: unset !important
-  .icon
+  & > .icon
     margin-right: 10px !important
-  .image-container
+  & > .image-container
     margin-right: 10px
     .image
       @extend .object-fit-cover
       width: 30px
       height: 30px
-  .content
+  & > .content
     @extend .flex-full
     white-space: normal
-  .extra
+  & > .extra
     margin-left: 10px !important
     font-size: 0.8em
 
@@ -177,14 +270,11 @@
   margin-right: 10px
   width: 25px
   height: 25px
-  .icon
+  & > .icon
     @extend .no-margin
-  .image
+  & > .image
     width: 20px
     height: 20px
-
-.main-track-dropdown-menu
-  z-index: 200 !important
 
 .main-settings-options-block
   &:not(:first-child)
@@ -192,35 +282,68 @@
   & > .content
     @extend .d-flex, .align-items-center
     padding-top: 10px
-    .header
+    & > .header
       @extend .flex-full
 
 .main-seeker
   @extend .no-padding
-  .inner
+  & > .inner
     @extend .cursor-pointer
-  .track-fill
-    @extend .background-base
-  .track-progress
-    @extend .background-pale
-    transition: 0.25s
-  .thumb
-    @extend .d-none, .no-shadow, .background-base
-    width: 12px !important
-    height: 12px !important
+    & > .track-fill
+      @extend .background-base
+    & > .track-progress
+      @extend .background-pale
+      transition: 0.25s
+    & > .thumb
+      @extend .d-none, .no-shadow, .background-base
+      width: 12px !important
+      height: 12px !important
   &:hover, &:active
-    .thumb
-      @extend .d-block
+    & > .inner
+      & > .thumb
+        @extend .d-block
   &:not(.vertical)
-    .thumb
-      top: 1.5px !important
+    & > .inner
+      & > .thumb
+        top: 1px !important
   &.vertical
-    .thumb
-      left: 1.5px !important
+    & > .inner
+      & > .thumb
+        left: 1px !important
 
 .main-pagination
   &.inverted
     @extend .background-dark-grey
-  .item:last-child
-    &:before
-      width: 0
+  & > .item
+    &:last-child
+      &:before
+        width: 0
+
+.main-tabs-container
+  @extend .flex-full, .d-flex, .flex-column
+
+.main-tab-container
+  @extend .flex-full, .relative
+
+.main-tab
+  @extend .no-padding, .no-shadow, .absolute, .no-margin, .w-100, .h-100, .overflow-y-auto, .d-flex, .background-transparent
+  visibility: hidden
+  border: $borderTransparent !important
+  &.active
+    visibility: visible
+
+.main-label
+  &.basic
+    &.inverted
+      &:hover
+        color: $colorWhiteInverted !important
+
+.main-list
+  &.selection
+    &.inverted
+      & > .item
+        &.active
+          @extend .background-grey-inverted
+        &:not(.active)
+          &:hover
+            @extend .background-dark-grey

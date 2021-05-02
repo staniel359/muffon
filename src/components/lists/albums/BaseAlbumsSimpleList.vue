@@ -6,6 +6,7 @@
       :albumData="albumData"
       :isWithArtistName="isWithArtistName"
       :isWithListenersCount="isWithListenersCount"
+      :scrollable="scrollable"
       @linkClick="handleLinkClick"
     />
   </BaseListContainer>
@@ -30,7 +31,8 @@ export default {
       }
     },
     isWithArtistName: Boolean,
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    scrollable: HTMLDivElement
   },
   emits: [
     'linkClick'

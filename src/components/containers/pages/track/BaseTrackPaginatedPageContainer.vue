@@ -14,8 +14,9 @@
         :isLoading="pageSlotProps.isLoading"
       >
         <BasePaginatedContainer
-          :responseData="pageSlotProps.trackData"
+          :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
+          :responseData="pageSlotProps.trackData"
           :scope="scope"
           :clientPageLimit="clientPageLimit"
           :responsePageLimit="responsePageLimit"

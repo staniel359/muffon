@@ -83,7 +83,10 @@ export function popupOptions () {
   return {
     duration: 0,
     position: 'top center',
-    variation: 'basic inverted small'
+    variation: 'basic inverted small',
+    className: {
+      popup: 'ui popup main-popup'
+    }
   }
 }
 

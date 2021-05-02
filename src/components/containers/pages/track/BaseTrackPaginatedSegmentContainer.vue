@@ -10,12 +10,13 @@
   >
     <template #default="segmentSlotProps">
       <BaseSegmentContainer
-        :isLoading="segmentSlotProps.isLoading"
         class="segment-container"
+        :isLoading="segmentSlotProps.isLoading"
       >
         <BasePaginatedContainer
-          :responseData="segmentSlotProps.trackData"
+          :isLoading="segmentSlotProps.isLoading"
           :error="segmentSlotProps.error"
+          :responseData="segmentSlotProps.trackData"
           :scope="scope"
           :clientPageLimit="clientPageLimit"
           :responsePageLimit="responsePageLimit"

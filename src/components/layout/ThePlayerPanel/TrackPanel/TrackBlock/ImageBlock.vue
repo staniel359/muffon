@@ -1,18 +1,14 @@
 <template>
   <BaseImage
     v-if="image"
-    class="track-image"
+    class="rounded bordered track-image"
     :image="image"
-    isRounded
-    isBordered
   />
   <BaseArtistImage
     v-else
-    class="track-image"
+    class="circular bordered track-image"
     size="extrasmall"
     :artistName="artistName"
-    isCircular
-    isBordered
   />
 </template>
 

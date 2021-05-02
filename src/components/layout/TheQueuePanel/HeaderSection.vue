@@ -47,13 +47,14 @@ export default {
   padding: calc(#{$navbarHeight} + 1em) 1em 1em 1em
 
 .left-block
+  @extend .d-flex, .align-items-center
   flex: 0.25
 
 .central-block
-  @extend .text-align-center
+  @extend .d-flex, .align-items-center, .justify-content-center
   flex: 0.5
 
 .right-block
-  @extend .text-align-right
+  @extend .d-flex, .align-items-center, .justify-content-flex-end
   flex: 0.25
 </style>

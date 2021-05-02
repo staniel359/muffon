@@ -7,10 +7,13 @@ $colorGrey: #22242626
 $colorGreyInverted: #ffffff26
 $colorDarkGrey: #ffffff14
 $colorWhite: #ffffff
-$colorBlackTransparent: #000000a6
+$colorWhiteInverted: #ffffffe6
+$colorBlack: #1b1c1d
+$colorBlackTransparent: #1b1c1dbf
 
-$border: 1px solid $colorGrey !important
+$border: 1px solid $colorGrey
 $borderInverted: 1px solid $colorGreyInverted
+$borderTransparent: 1px solid transparent
 
 $navbarHeight: 45px
 $playerPanelHeight: 70px
@@ -41,15 +44,16 @@ $trackPageDropdownWidth: 250px
   background: $colorPale !important
 .background-grey
   background: $colorGrey !important
+.background-grey-inverted
+  background: $colorGreyInverted !important
 .background-dark-grey
   background: $colorDarkGrey !important
+.background-black
+  background: $colorBlack !important
 .background-black-transparent
   background: $colorBlackTransparent !important
 .background-transparent
   background: transparent !important
-
-.background-grey-inverted
-  background: $colorGreyInverted !important
 
 .absolute
   position: absolute !important
@@ -92,9 +96,9 @@ $trackPageDropdownWidth: 250px
 
 .justify-content-center
   justify-content: center !important
+.justify-content-flex-end
+  justify-content: flex-end !important
 
-.align-items-start
-  align-items: start
 .align-items-center
   align-items: center !important
 
@@ -115,14 +119,9 @@ $trackPageDropdownWidth: 250px
 
 .text-align-center
   text-align: center
-.text-align-right
-  text-align: right
 
 .width-fit-content
   width: fit-content !important
-
-.scroll-smooth
-  scroll-behavior: smooth
 
 .object-fit-cover
   object-fit: cover

@@ -1,5 +1,15 @@
 <template>
-  <BaseArtistContainer :artistName="artistName">
+  <BaseVisibilityItem
+    ref="visibility"
+    @init="handleInit"
+    @visible="handleVisible"
+  />
+
+  <BaseArtistContainer
+    :artistName="artistName"
+    :isVisible="isVisible"
+    @loadEnd="handleLoadEnd"
+  >
     <template #default="slotProps">
       <BaseArtistHorizontalCardContainer
         :isLoading="slotProps.isLoading"
@@ -8,11 +18,9 @@
       >
         <template v-if="slotProps.artistData">
           <BaseArtistImage
-            class="artist-image"
+            class="circular bordered artist-image"
             size="small"
             :artistName="artistName"
-            isCircular
-            isBordered
           />
 
           <InfoBlock :artistData="slotProps.artistData" />
@@ -23,6 +31,7 @@
 </template>
 
 <script>
+import BaseVisibilityItem from '@/BaseVisibilityItem.vue'
 import BaseArtistContainer from '@/containers/artist/BaseArtistContainer.vue'
 import BaseArtistHorizontalCardContainer
   from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
@@ -32,6 +41,7 @@ import InfoBlock from './ArtistItem/InfoBlock.vue'
 export default {
   name: 'ArtistItem',
   components: {
+    BaseVisibilityItem,
     BaseArtistContainer,
     BaseArtistHorizontalCardContainer,
     BaseArtistImage,
@@ -41,6 +51,26 @@ export default {
     artistName: {
       type: String,
       required: true
+    }
+  },
+  emits: [
+    'init',
+    'loadEnd'
+  ],
+  data () {
+    return {
+      isVisible: false
+    }
+  },
+  methods: {
+    handleInit (el) {
+      this.$emit('init', el)
+    },
+    handleVisible () {
+      this.isVisible = true
+    },
+    handleLoadEnd () {
+      this.$emit('loadEnd')
     }
   }
 }

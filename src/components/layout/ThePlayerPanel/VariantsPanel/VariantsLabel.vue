@@ -42,7 +42,7 @@ export default {
 
 <style lang="sass" scoped>
 .variants-label
-  @extend .cursor-pointer, .pointer-events-auto, .d-flex, .align-items-center, .justify-content-center, .width-fit-content
+  @extend .d-flex, .align-items-center, .justify-content-center, .width-fit-content, .pointer-events-auto
   min-width: 120px
   left: 30px !important
   height: 30px

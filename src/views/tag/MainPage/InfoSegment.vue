@@ -45,7 +45,7 @@ export default {
   height: 420px
 
 .tag-info-segment
-  @extend .h-100, .overflow-y-auto
+  @extend .h-100, .overflow-y-auto, .no-border
   padding: 60px 80px 40px 80px
   &:not(.loading)
     @extend .background-black-transparent

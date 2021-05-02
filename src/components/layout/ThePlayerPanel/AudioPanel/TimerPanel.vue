@@ -31,5 +31,6 @@ export default {
 
 <style lang="sass" scoped>
 .player-timer
+  @extend .d-flex, .align-items-center
   flex: 0.25
 </style>

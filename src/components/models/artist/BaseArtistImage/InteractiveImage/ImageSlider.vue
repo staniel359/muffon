@@ -2,22 +2,19 @@
   <div ref="slider">
     <BaseImage
       v-for="(imageData, index) in imagesFormatted"
-      class="slider-image"
+      class="rounded"
       :key="imageData.uuid"
-      :isRounded="isRounded"
-      :isCircular="isCircular"
-      :isBordered="isBordered"
-      :image="imageData[size]"
-      @click="handleClick(index)"
+      :image="imageData.medium"
+      @click="handleImageClick(index)"
     />
   </div>
 </template>
 
 <script>
 import BaseImage from '@/BaseImage.vue'
-import { collection as formatCollection } from '#/formatters'
-import { setSlider } from '#/actions/plugins/slick'
 import { artistImagesMainSliderOptions } from '#/data/plugins/slick'
+import { setSlider } from '#/actions/plugins/slick'
+import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'ImageSlider',
@@ -25,22 +22,15 @@ export default {
     BaseImage
   },
   props: {
-    size: {
-      type: String,
-      required: true
-    },
     images: {
       type: Array,
       default () {
         return []
       }
-    },
-    isRounded: Boolean,
-    isCircular: Boolean,
-    isBordered: Boolean
+    }
   },
   emits: [
-    'click'
+    'imageClick'
   ],
   computed: {
     imagesFormatted () {
@@ -54,17 +44,14 @@ export default {
     )
   },
   methods: {
-    handleClick (index) {
-      this.$emit('click', index)
+    handleImageClick (index) {
+      this.$emit('imageClick', index)
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.slider-image
-  @extend .cursor-zoom-in
-
 ::v-deep(.slick-next)
   right: 10px !important
 ::v-deep(.slick-prev)

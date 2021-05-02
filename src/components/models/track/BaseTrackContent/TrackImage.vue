@@ -1,9 +1,8 @@
 <template>
   <div class="track-image-container">
     <BaseImage
+      class="rounded bordered"
       :image="image"
-      isRounded
-      isBordered
     />
   </div>
 </template>

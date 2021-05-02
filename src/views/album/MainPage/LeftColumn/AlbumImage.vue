@@ -1,10 +1,8 @@
 <template>
   <div class="main-image-container">
     <BaseImage
-      class="album-image"
+      class="rounded bordered album-image"
       :image="imageData.medium"
-      isRounded
-      isBordered
       @click="handleImageClick"
     />
 

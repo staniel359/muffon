@@ -1,19 +1,21 @@
 <template>
-  <div>
+  <div class="main-tabs-container">
     <BaseTabs
       :tabs="tabs"
       :activeTabId="activeTabId"
       @tabClick="handleTabClick"
     />
 
-    <slot
-      v-for="tabData in tabs"
-      class="ui tab"
-      :key="tabData.uuid"
-      :name="tabData.scope"
-      :class="{ active: isActive(tabData.uuid) }"
-      :isActive="isActive(tabData.uuid)"
-    />
+    <div class="main-tab-container">
+      <slot
+        v-for="tabData in tabs"
+        class="ui segment main-tab main-segment"
+        :key="tabData.uuid"
+        :name="tabData.scope"
+        :class="{ active: isActive(tabData.uuid) }"
+        :isActive="isActive(tabData.uuid)"
+      />
+    </div>
   </div>
 </template>
 

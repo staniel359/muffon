@@ -1,12 +1,14 @@
 <template>
   <div>
-    <BaseHeaderContainer
-      tag="h1"
-      class="inverted tag-header"
-      icon="tag"
-    >
-      {{ tagName }}
-    </BaseHeaderContainer>
+    <div class="tag-header-container">
+      <BaseHeaderContainer
+        tag="h1"
+        class="inverted tag-header"
+        icon="tag"
+      >
+        {{ tagName }}
+      </BaseHeaderContainer>
+    </div>
 
     <SimilarSection :tagName="tagName" />
 
@@ -68,9 +70,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.tag-header-container
+  margin-bottom: 25px
+
 .tag-header
   font-size: 2.5rem !important
-  margin-bottom: 25px !important
   ::v-deep(.icon)
     font-size: 0.75em !important
 

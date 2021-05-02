@@ -10,9 +10,11 @@
     >
       <BaseImage
         :image="image"
-        :isCircular="isImageCircular"
-        isRounded
-        isBordered
+        class="bordered"
+        :class="{
+          circular: isImageCircular,
+          rounded: !isImageCircular
+        }"
       />
     </div>
 

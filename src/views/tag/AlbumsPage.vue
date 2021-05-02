@@ -9,7 +9,6 @@
       <BaseAlbumsTableList
         :itemsInRow="4"
         :albums="slotProps.albums"
-        :isSegmentLoading="slotProps.isLoading"
         isWithArtistName
       />
     </template>

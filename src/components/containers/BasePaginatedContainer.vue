@@ -1,22 +1,23 @@
 <template>
   <div class="paginated-container">
-    <BaseError
-      v-if="error"
-      :error="error"
-      @refresh="handleRefresh"
-    />
-    <div
-      v-else-if="responsePageCollection"
-      class="paginated-data-container"
-    >
-      <NoCollectionMessage
-        v-if="!isResponseCollection"
-        :scope="scope"
-      />
-      <slot
-        v-else-if="isClientPageCollectionFiltered"
-        :[scope]="clientPageCollectionFiltered"
-      />
+    <div class="paginated-data-container">
+      <template v-if="!isLoading">
+        <BaseError
+          v-if="error"
+          :error="error"
+          @refresh="handleRefresh"
+        />
+        <template v-else-if="responsePageCollection">
+          <NoCollectionMessage
+            v-if="!isResponseCollection"
+            :scope="scope"
+          />
+          <slot
+            v-else-if="isClientPageCollectionFiltered"
+            :[scope]="clientPageCollectionFiltered"
+          />
+        </template>
+      </template>
     </div>
 
     <template v-if="isRenderPagination">
@@ -63,8 +64,9 @@ export default {
       type: Number,
       required: true
     },
-    responseData: Object,
-    error: Error
+    isLoading: Boolean,
+    error: Error,
+    responseData: Object
   },
   emits: [
     'focus',
@@ -327,7 +329,7 @@ export default {
 
 <style lang="sass" scoped>
 .paginated-container
-  @extend .d-flex, .flex-column, .w-100, .flex-full
+  @extend .w-100, .d-flex, .flex-column
 
 .paginated-data-container
   @extend .flex-full

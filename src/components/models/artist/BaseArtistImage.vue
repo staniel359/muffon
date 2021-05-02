@@ -1,26 +1,18 @@
 <template>
+  <BaseImagePlaceholder v-if="isLoading" />
   <InteractiveImage
-    v-if="isRenderInteractive"
-    v-bind="$attrs"
+    v-else-if="isRenderInteractive"
     :artistName="artistName"
     :images="images"
-    :isRounded="isRounded"
-    :isCircular="isCircular"
-    :isBordered="isBordered"
-    :size="size"
   />
   <BaseImage
     v-else
-    v-bind="$attrs"
     :image="image"
-    :isLoading="isLoading"
-    :isRounded="isRounded"
-    :isCircular="isCircular"
-    :isBordered="isBordered"
   />
 </template>
 
 <script>
+import BaseImagePlaceholder from '@/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseImage from '@/BaseImage.vue'
 import fetchArtistImageData from '#/actions/api/artist/image/fetchData'
@@ -29,6 +21,7 @@ import { defaultImages as formatDefaultImages } from '#/formatters/artist'
 export default {
   name: 'BaseArtistImage',
   components: {
+    BaseImagePlaceholder,
     InteractiveImage,
     BaseImage
   },
@@ -41,16 +34,17 @@ export default {
       type: String,
       required: true
     },
-    isInteractive: Boolean,
-    isRounded: Boolean,
-    isCircular: Boolean,
-    isBordered: Boolean
+    isVisible: {
+      type: Boolean,
+      default: true
+    },
+    isInteractive: Boolean
   },
   data () {
     return {
-      isLoading: false,
       error: null,
-      images: null
+      images: null,
+      isLoading: false
     }
   },
   computed: {
@@ -84,11 +78,15 @@ export default {
     artistName: {
       immediate: true,
       handler: 'handleArtistNameChange'
-    }
+    },
+    isVisible: 'handleIsVisibleChange'
   },
   methods: {
     handleArtistNameChange () {
-      this.fetchData()
+      this.isVisible && this.fetchData()
+    },
+    handleIsVisibleChange (value) {
+      value && this.fetchData()
     },
     fetchArtistImageData,
     fetchData () {

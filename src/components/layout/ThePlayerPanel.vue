@@ -109,7 +109,7 @@ export default {
 .player-panel
   @extend .no-padding, .no-border
   overflow: visible !important
-  z-index: 400 !important
+  z-index: 200 !important
   &.inverted
     border-top: $borderInverted !important
 

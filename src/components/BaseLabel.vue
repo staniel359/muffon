@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui basic label"
+    class="ui basic label main-label"
     :class="{
       inverted: isDarkMode,
       reversed: isReverse

@@ -20,8 +20,8 @@ export default {
 
 <style lang="sass" scoped>
 .player-extra-controls
-  @extend .text-align-right
+  @extend .d-flex, .align-items-center, .justify-content-flex-end
   flex: 0.25
-  :last-child
+  & > :last-child
     @extend .no-margin
 </style>

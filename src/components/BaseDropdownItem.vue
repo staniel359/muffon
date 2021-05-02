@@ -17,10 +17,8 @@
       class="image-container"
     >
       <BaseImage
-        size="extrasmall"
+        size="rounded bordered extrasmall"
         :image="image"
-        isRounded
-        isBordered
       />
     </div>
 

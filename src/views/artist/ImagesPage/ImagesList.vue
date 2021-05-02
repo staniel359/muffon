@@ -7,10 +7,8 @@
     >
       <div class="main-image-container">
         <BaseImage
-          class="artist-image"
+          class="rounded bordered artist-image"
           :image="imageData.small"
-          isRounded
-          isBordered
           @click="handleImageClick(index)"
         />
       </div>
