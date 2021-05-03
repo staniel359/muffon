@@ -23,72 +23,84 @@ export default [
     path: '/artists/:artistName',
     exact: true,
     name: 'ArtistMainPage',
-    component: ArtistMainPage
+    component: ArtistMainPage,
+    props: true
   },
   {
     path: '/artists/:artistName/images',
     exact: true,
     name: 'ArtistImagesPage',
-    component: ArtistImagesPage
+    component: ArtistImagesPage,
+    props: true
   },
   {
     path: '/artists/:artistName/tracks',
     exact: true,
     name: 'ArtistTracksPage',
-    component: ArtistTracksPage
+    component: ArtistTracksPage,
+    props: true
   },
   {
     path: '/artists/:artistName/albums',
     exact: true,
     name: 'ArtistAlbumsPage',
-    component: ArtistAlbumsPage
+    component: ArtistAlbumsPage,
+    props: true
   },
   {
     path: '/artists/:artistName/similar',
     exact: true,
     name: 'ArtistSimilarPage',
-    component: ArtistSimilarPage
+    component: ArtistSimilarPage,
+    props: true
   },
   {
     path: '/artists/:artistName/albums/:albumTitle',
     exact: true,
     name: 'AlbumMainPage',
-    component: AlbumMainPage
+    component: AlbumMainPage,
+    props: true
   },
   {
     path: '/artists/:artistName/tracks/:trackTitle',
     exact: true,
     name: 'TrackMainPage',
-    component: TrackMainPage
+    component: TrackMainPage,
+    props: true
   },
   {
     path: '/artists/:artistName/tracks/:trackTitle/similar',
     exact: true,
     name: 'TrackSimilarPage',
-    component: TrackSimilarPage
+    component: TrackSimilarPage,
+    props: true
   },
   {
     path: '/tags/:tagName',
     exact: true,
     name: 'TagMainPage',
-    component: TagMainPage
+    component: TagMainPage,
+    props: true
   },
   {
     path: '/tags/:tagName/artists',
     exact: true,
     name: 'TagArtistsPage',
-    component: TagArtistsPage
+    component: TagArtistsPage,
+    props: true
   },
   {
     path: '/tags/:tagName/albums',
     exact: true,
     name: 'TagAlbumsPage',
-    component: TagAlbumsPage
+    component: TagAlbumsPage,
+    props: true
   },
   {
     path: '/tags/:tagName/tracks',
     exact: true,
     name: 'TagTracksPage',
-    component: TagTracksPage
+    component: TagTracksPage,
+    props: true
   }
 ]

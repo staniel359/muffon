@@ -32,6 +32,14 @@ export default {
     BasePageContainer
   },
   props: {
+    artistName: {
+      type: String,
+      required: true
+    },
+    albumTitle: {
+      type: String,
+      required: true
+    },
     scope: String,
     responsePageLimit: Number,
     pageNameKey: String
@@ -47,29 +55,29 @@ export default {
     }
   },
   computed: {
-    artistName () {
-      return (
-        this.albumData?.artist?.name ||
-          this.$route.params.artistName
-      )
-    },
-    albumTitle () {
-      return (
-        this.albumData?.title ||
-          this.$route.params.albumTitle
-      )
-    },
     navigationSections () {
       return formatAlbumPageNavigation({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
+        artistName: this.artistNameFormatted,
+        albumTitle: this.albumTitleFormatted,
         pageNameKey: this.pageNameKey
       })
     },
+    artistNameFormatted () {
+      return (
+        this.albumData?.artist?.name ||
+          this.artistName
+      )
+    },
+    albumTitleFormatted () {
+      return (
+        this.albumData?.title ||
+          this.albumTitle
+      )
+    },
     requestAlbumData () {
       return {
-        artistName: this.artistName,
-        albumTitle: this.albumTitle
+        artistName: this.artistNameFormatted,
+        albumTitle: this.albumTitleFormatted
       }
     },
     albumDataArgs () {
@@ -82,13 +90,13 @@ export default {
     }
   },
   watch: {
-    artistName: {
+    artistNameFormatted: {
       immediate: true,
-      handler: 'handleFullTitleChange'
+      handler: 'handleNavigationDataChange'
     },
-    albumTitle: {
+    albumTitleFormatted: {
       immediate: true,
-      handler: 'handleFullTitleChange'
+      handler: 'handleNavigationDataChange'
     }
   },
   mounted () {
@@ -103,7 +111,7 @@ export default {
 
       this.fetchData()
     },
-    handleFullTitleChange () {
+    handleNavigationDataChange () {
       setNavigationSections(
         this.navigationSections
       )

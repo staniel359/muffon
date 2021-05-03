@@ -10,7 +10,7 @@
       :isLoading="isLoading"
       :error="error"
       :tagData="tagData"
-      :tagName="tagName"
+      :tagName="tagNameFormatted"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -31,6 +31,10 @@ export default {
     BasePageContainer
   },
   props: {
+    tagName: {
+      type: String,
+      required: true
+    },
     scope: String,
     responsePageLimit: Number,
     pageNameKey: String
@@ -43,17 +47,17 @@ export default {
     }
   },
   computed: {
-    tagName () {
-      return (
-        this.tagData?.name ||
-          this.$route.params.tagName
-      )
-    },
     navigationSections () {
       return formatTagPageNavigation({
-        tagName: this.tagName,
+        tagName: this.tagNameFormatted,
         pageNameKey: this.pageNameKey
       })
+    },
+    tagNameFormatted () {
+      return (
+        this.tagData?.name ||
+          this.tagName
+      )
     },
     tagDataArgs () {
       return {
@@ -64,9 +68,9 @@ export default {
     }
   },
   watch: {
-    tagName: {
+    tagNameFormatted: {
       immediate: true,
-      handler: 'handleTagNameChange'
+      handler: 'handleNavigationDataChange'
     }
   },
   mounted () {
@@ -78,7 +82,7 @@ export default {
 
       this.fetchData()
     },
-    handleTagNameChange () {
+    handleNavigationDataChange () {
       this.setNavigation()
     },
     setNavigation () {

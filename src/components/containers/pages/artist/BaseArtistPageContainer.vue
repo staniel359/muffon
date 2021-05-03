@@ -11,7 +11,7 @@
       :isLoading="isLoading"
       :error="error"
       :artistData="artistData"
-      :artistName="artistName"
+      :artistName="artistNameFormatted"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
       :topTrackCount="topTrackCount"
@@ -33,6 +33,10 @@ export default {
     BasePageContainer
   },
   props: {
+    artistName: {
+      type: String,
+      required: true
+    },
     scope: String,
     responsePageLimit: Number,
     pageNameKey: String
@@ -49,17 +53,17 @@ export default {
     }
   },
   computed: {
-    artistName () {
-      return (
-        this.artistData?.name ||
-          this.$route.params.artistName
-      )
-    },
     navigationSections () {
       return formatArtistPageNavigation({
-        artistName: this.artistName,
+        artistName: this.artistNameFormatted,
         pageNameKey: this.pageNameKey
       })
+    },
+    artistNameFormatted () {
+      return (
+        this.artistData?.name ||
+          this.artistName
+      )
     },
     artistDataArgs () {
       return {
@@ -70,9 +74,9 @@ export default {
     }
   },
   watch: {
-    artistName: {
+    artistNameFormatted: {
       immediate: true,
-      handler: 'handleArtistNameChange'
+      handler: 'handleNavigationDataChange'
     }
   },
   mounted () {
@@ -87,7 +91,7 @@ export default {
 
       this.fetchData()
     },
-    handleArtistNameChange () {
+    handleNavigationDataChange () {
       this.setNavigation()
     },
     setNavigation () {

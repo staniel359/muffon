@@ -10,8 +10,8 @@
       :isLoading="isLoading"
       :error="error"
       :trackData="trackData"
-      :artistName="artistName"
-      :trackTitle="trackTitle"
+      :artistName="artistNameFormatted"
+      :trackTitle="trackTitleFormatted"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -32,6 +32,14 @@ export default {
     BasePageContainer
   },
   props: {
+    artistName: {
+      type: String,
+      required: true
+    },
+    trackTitle: {
+      type: String,
+      required: true
+    },
     scope: String,
     responsePageLimit: Number,
     pageNameKey: String
@@ -44,24 +52,24 @@ export default {
     }
   },
   computed: {
-    artistName () {
-      return (
-        this.trackData?.artist?.name ||
-          this.$route.params.artistName
-      )
-    },
-    trackTitle () {
-      return (
-        this.trackData?.title ||
-          this.$route.params.trackTitle
-      )
-    },
     navigationSections () {
       return formatTrackPageNavigation({
         artistName: this.artistName,
         trackTitle: this.trackTitle,
         pageNameKey: this.pageNameKey
       })
+    },
+    artistNameFormatted () {
+      return (
+        this.trackData?.artist?.name ||
+          this.artistName
+      )
+    },
+    trackTitleFormatted () {
+      return (
+        this.trackData?.title ||
+          this.trackTitle
+      )
     },
     trackDataArgs () {
       return {
@@ -73,13 +81,13 @@ export default {
     }
   },
   watch: {
-    artistName: {
+    artistNameFormatted: {
       immediate: true,
-      handler: 'handleArtistNameChange'
+      handler: 'handleNavigationDataChange'
     },
-    trackTitle: {
+    trackTitleFormatted: {
       immediate: true,
-      handler: 'handleTrackTitleChange'
+      handler: 'handleNavigationDataChange'
     }
   },
   mounted () {
@@ -91,13 +99,7 @@ export default {
 
       this.fetchData()
     },
-    handleArtistNameChange () {
-      this.setNavigation()
-    },
-    handleTrackTitleChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
+    handleNavigationDataChange () {
       setNavigationSections(
         this.navigationSections
       )
