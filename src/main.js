@@ -16,7 +16,10 @@ app
   .use(i18n)
   .mount('#app')
 
-app.config.devtools = true
-window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
+if (process.env.NODE_ENV === 'development') {
+  app.config.devtools = true
+
+  window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
+}
 
 setSentry(app)
