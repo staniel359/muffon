@@ -6,7 +6,13 @@ import axios from 'axios'
 import { init as setSentry } from '#/plugins/sentry'
 import i18n from '#/plugins/i18n'
 
-axios.defaults.baseURL = 'http://localhost:4000/api/v1/'
+const isDevelopment = process.env.NODE_ENV === 'development'
+
+const serverURL = isDevelopment
+  ? 'http://localhost:4000'
+  : 'https://muffon.endorphine.by'
+
+axios.defaults.baseURL = `${serverURL}/api/v1/`
 
 const app = createApp(App)
 
@@ -16,7 +22,7 @@ app
   .use(i18n)
   .mount('#app')
 
-if (process.env.NODE_ENV === 'development') {
+if (isDevelopment) {
   app.config.devtools = true
 
   window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
