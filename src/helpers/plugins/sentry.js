@@ -1,8 +1,8 @@
 import * as Sentry from '@sentry/vue'
 
 const dsn =
-  'https://d1a02a1ec71d4be082a858879a0898eb@' +
-  'o563575.ingest.sentry.io/5703733'
+  'https://8c56dfc6026746a9b487ee3a452edd2c' +
+  '@o563575.ingest.sentry.io/5755671'
 
 export function init (app) {
   Sentry.init({
