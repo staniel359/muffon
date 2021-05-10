@@ -20,8 +20,8 @@ export default [
     ]
   },
   {
-    id: 'yandex-music',
-    icon: 'yandex-music',
+    id: 'yandexmusic',
+    icon: 'yandexmusic',
     name: 'Yandex Music',
     isStreamable: true,
     maxBitrate: 192,

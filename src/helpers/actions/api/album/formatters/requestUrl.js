@@ -1,5 +1,3 @@
-import { pathCase } from 'path-case'
-
 export default function ({
   sourceId,
   artistName,
@@ -8,8 +6,6 @@ export default function ({
   albumId,
   albumType = 'album'
 }) {
-  const sourceIdFormatted = pathCase(sourceId)
-
   const artistNameEncoded = encodeURIComponent(artistName)
   const albumTitleEncoded = encodeURIComponent(albumTitle)
 
@@ -26,5 +22,5 @@ export default function ({
     }
   }
 
-  return `/${sourceIdFormatted}/${formatUrlData()}`
+  return `/${sourceId}/${formatUrlData()}`
 }

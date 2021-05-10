@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { pathCase } from 'path-case'
 import {
   getSourceId as getPlayerSourceId,
   setVariants as setPlayerVariants
@@ -7,10 +6,7 @@ import {
 import { collection as formatCollection } from '#/formatters'
 
 export default function ({ query }) {
-  const playerSourceIdFormatted = pathCase(
-    getPlayerSourceId()
-  )
-  const url = `/${playerSourceIdFormatted}/search/tracks`
+  const url = `/${getPlayerSourceId()}/search/tracks`
 
   const params = { query }
 

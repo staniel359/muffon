@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { pathCase } from 'path-case'
 import { raiseProductionError } from '#/utils'
 
 export default function ({
@@ -11,8 +10,7 @@ export default function ({
 }) {
   this.isLoading = true
 
-  const sourceIdFormatted = pathCase(sourceId)
-  const url = `${sourceIdFormatted}/search/${scope}`
+  const url = `${sourceId}/search/${scope}`
 
   const params = {
     query,

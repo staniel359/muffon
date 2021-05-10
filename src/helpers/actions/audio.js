@@ -1,5 +1,4 @@
 import store from '*/store'
-import { paramCase } from 'param-case'
 import sources from '#/data/audio/sources'
 
 function audio () {
@@ -95,11 +94,9 @@ export function resetIsLoop () {
   setIsLoop(false)
 }
 
-export function getSourceData (sourceId) {
-  const sourceIdFormatted = paramCase(sourceId || '')
-
+export function getSourceData (sourceId = '') {
   return sources.find(source => {
-    return source.id === sourceIdFormatted
+    return source.id === sourceId
   }) || {}
 }
 

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { pathCase } from 'path-case'
 import { setPlaying as setPlayerPlaying } from '#/actions/player'
 import { playing as formatPlaying } from '#/formatters/player/playing'
 
@@ -12,7 +11,7 @@ export default function ({ audioData }) {
     if (sourceId === 'bandcamp') {
       return `${sourceId}/artists/${artistId}`
     } else {
-      return pathCase(sourceId)
+      return sourceId
     }
   }
 

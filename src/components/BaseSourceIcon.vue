@@ -3,7 +3,7 @@
     class="icon source-icon"
     ref="icon"
     :class="[
-      sourceIdFormatted,
+      sourceId,
       size,
       { colored: isActive }
     ]"
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { paramCase } from 'param-case'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
 import { getSourceData as getAudioSourceData } from '#/actions/audio'
@@ -32,13 +31,6 @@ export default {
     }
   },
   computed: {
-    sourceIdFormatted () {
-      if (this.sourceId) {
-        return paramCase(this.sourceId)
-      } else {
-        return null
-      }
-    },
     popupTextFormatted () {
       if (this.sourceName) {
         return localize(

@@ -18,7 +18,7 @@ export default function ({ sourceId, albumData }) {
         return {
           albumId: albumData.odnoklassniki_id
         }
-      case 'yandex-music':
+      case 'yandexmusic':
         return {
           albumId: albumData.yandex_music_id
         }
