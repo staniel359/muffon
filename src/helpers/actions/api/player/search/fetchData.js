@@ -8,11 +8,12 @@ import { collection as formatCollection } from '#/formatters'
 export default function ({ query }) {
   const url = `/${getPlayerSourceId()}/search/tracks`
 
-  const params = { query }
+  const limit = 25
+  const params = { query, limit }
 
   const handleSuccess = resp => {
     const variantsFormatted = formatCollection(
-      resp.data.search.tracks
+      resp.data.search.tracks.slice(0, limit)
     )
 
     setPlayerVariants(variantsFormatted)
