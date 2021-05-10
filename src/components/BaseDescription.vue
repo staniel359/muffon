@@ -2,14 +2,13 @@
   <p>
     {{ description }}
 
-    <a
+    <strong
       v-if="isMore"
       class="main-link"
-      href=""
-      @click.prevent="handleViewMore"
+      @click="handleViewMore"
     >
       {{ readMoreFormatted }}
-    </a>
+    </strong>
   </p>
 </template>
 

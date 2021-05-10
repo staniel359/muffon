@@ -22,6 +22,10 @@ a
 @media only screen and (min-width: 768px)
   .main-container
     width: 700px !important
+  .ui.search
+    &.main-history-input
+      & > .results
+        max-height: 250px
 
 .pushable
   .pusher
@@ -152,6 +156,7 @@ a
     @extend .absolute, .w-100, .h-100
 
 .main-link
+  @extend .cursor-pointer
   &:hover
     @extend .main-link-active
   &:not(.label)
@@ -227,7 +232,7 @@ a
   margin-bottom: 10px !important
 
 .main-dropdown
-  @extend .d-flex, .align-items-center
+  @extend .d-flex, .align-items-center, .text-color-unset
   & > .text
     @extend .flex-full
   & > .menu

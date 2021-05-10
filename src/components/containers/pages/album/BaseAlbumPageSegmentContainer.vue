@@ -59,8 +59,8 @@ export default {
   },
   watch: {
     requestAlbumData: 'handleRequestAlbumDataChange',
-    artistName: 'handleFullTitleChange',
-    albumTitle: 'handleFullTitleChange'
+    artistName: 'handleNavigationDataChange',
+    albumTitle: 'handleNavigationDataChange'
   },
   methods: {
     handleRequestAlbumDataChange () {
@@ -71,8 +71,8 @@ export default {
 
       this.fetchData()
     },
-    handleFullTitleChange () {
-      setNavigationSections(
+    handleNavigationDataChange () {
+      !this.error && setNavigationSections(
         this.navigationSections
       )
     },

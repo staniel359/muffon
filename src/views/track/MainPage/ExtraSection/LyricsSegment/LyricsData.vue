@@ -4,13 +4,12 @@
       {{ lyrics }}
     </p>
 
-    <a
+    <strong
       class="main-link"
-      href=""
-      @click.prevent="handleViewMore"
+      @click="handleViewMore"
     >
       {{ readMoreFormatted }}
-    </a>
+    </strong>
   </div>
 
   <BaseTrackLyricsModal

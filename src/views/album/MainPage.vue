@@ -1,19 +1,18 @@
 <template>
   <BaseAlbumPageContainer @init="handleContainerInit">
     <template #default="pageSlotProps">
-      <BaseAlbumPageSegmentContainer
-        class="segment-container"
-        :key="key"
-      >
+      <BaseAlbumPageSegmentContainer :key="key">
         <template #default="segmentSlotProps">
-          <LeftColumn
-            :albumData="segmentSlotProps.albumData || pageSlotProps.albumData"
-            :scrollable="container"
-          />
-          <RightColumn
-            :albumData="segmentSlotProps.albumData || pageSlotProps.albumData"
-            :requestAlbumData="segmentSlotProps.requestAlbumData || pageSlotProps.requestAlbumData"
-          />
+          <div class="columns-container">
+            <LeftColumn
+              :albumData="segmentSlotProps.albumData || pageSlotProps.albumData"
+              :scrollable="container"
+            />
+            <RightColumn
+              :albumData="segmentSlotProps.albumData || pageSlotProps.albumData"
+              :requestAlbumData="segmentSlotProps.requestAlbumData || pageSlotProps.requestAlbumData"
+            />
+          </div>
         </template>
       </BaseAlbumPageSegmentContainer>
     </template>
@@ -60,6 +59,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.segment-container
+.columns-container
   @extend .d-flex
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui local search inverted"
+    class="ui local search inverted main-history-input"
     ref="search"
   >
     <slot></slot>

@@ -19,9 +19,12 @@
         :class="icon"
       />
 
-      <template v-if="text">
+      <span
+        v-if="text"
+        class="label-text"
+      >
         {{ text }}
-      </template>
+      </span>
     </template>
   </div>
 </template>
@@ -48,4 +51,7 @@ export default {
 <style lang="sass" scoped>
 .reversed
   flex-direction: row-reverse
+
+.label-text
+  cursor: default
 </style>
