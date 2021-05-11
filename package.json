@@ -1,8 +1,8 @@
 {
   "name": "muffon",
   "version": "0.1.0-alpha",
-  "private": true,
   "description": "muffon",
+  "homepage": "https://github.com/staniel359/muffon",
   "author": {
     "name": "staniel359",
     "email": "staniel359@gmail.com",
@@ -12,13 +12,13 @@
   "main": "electron.js",
   "scripts": {
     "start": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint src/**/*.{js,vue}",
     "start:electron": "cross-env NODE_ENV=development electron .",
+    "lint": "eslint src/**/*.{js,vue}",
+    "build": "vite build",
     "build:electron": "electron-builder --dir",
-    "package:electron": "electron-builder",
     "build:all": "yarn build && yarn build:electron",
+    "release:electron": "electron-builder -mwl -p always",
+    "release": "yarn build && yarn release:electron",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },

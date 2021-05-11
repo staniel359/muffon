@@ -1,0 +1,22 @@
+language: node_js
+node_js: '15'
+
+os: osx
+osx_image: xcode10.2
+
+env:
+  global:
+  - ELECTRON_CACHE=$HOME/.cache/electron
+  - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+
+cache:
+  directories:
+    - node_modules
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+
+script:
+  - yarn release
+
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine

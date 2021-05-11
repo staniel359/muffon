@@ -5,10 +5,13 @@
     "icon": "public/icon.ico"
   },
   "mac": {
-    "category": "public.app-category.music"
+    "category": "public.app-category.music",
+    "icon": "public/icon.icns",
+    "target": "pkg"
   },
   "linux": {
-    "category": "Audio"
+    "category": "Audio",
+    "target": "deb"
   },
   "compression": "store",
   "nsis": {
