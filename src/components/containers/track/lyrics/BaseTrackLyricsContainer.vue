@@ -42,7 +42,7 @@ export default {
       }
     },
     trackId () {
-      return this.selectedTrackData.path
+      return this.selectedTrackData.genius_id
     },
     lyrics () {
       return this.trackData?.lyrics
