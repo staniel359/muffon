@@ -1,7 +1,6 @@
-export function artistImagesMainSliderOptions ({ syncSlider } = {}) {
+export function artistImagesMainSliderOptions () {
   return {
     accessibility: false,
-    asNavFor: syncSlider,
     draggable: false,
     infinite: false
   }

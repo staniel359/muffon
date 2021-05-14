@@ -1,6 +1,6 @@
 <template>
   <div
-    id="the-visible-context"
+    class="the-visible-context"
     ref="visible"
   ></div>
 </template>
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-#the-visible-context
+.the-visible-context
   @extend .w-100, .fixed
   height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
   top: $navbarHeight

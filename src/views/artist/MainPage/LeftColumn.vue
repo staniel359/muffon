@@ -50,8 +50,6 @@ export default {
   margin-right: 20px
   align-self: flex-start
   top: $mainContainerTopPadding
-  ::v-deep(.ui.image)
-    height: 200px
 
 .artist-name
   @extend .text-align-center

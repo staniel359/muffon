@@ -28,7 +28,7 @@ export default {
 <style lang="sass" scoped>
 .track-panel
   @extend .d-flex, .align-items-center
-  width: 240px
+  width: 235px
   padding: 0 0.5em
 
 .track-container

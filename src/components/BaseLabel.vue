@@ -53,5 +53,5 @@ export default {
   flex-direction: row-reverse
 
 .label-text
-  cursor: default
+  @extend .cursor-default
 </style>

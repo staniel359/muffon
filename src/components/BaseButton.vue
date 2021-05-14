@@ -13,9 +13,9 @@
       :class="icon"
     />
 
-    <template v-if="text">
+    <span v-if="text">
       {{ text }}
-    </template>
+    </span>
   </div>
 </template>
 
