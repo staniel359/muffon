@@ -7,6 +7,17 @@
       :image="image"
       isImageCircular
     >
+      <div
+        v-if="!image"
+        class="main-simple-card-image-container"
+      >
+        <BaseArtistImage
+          class="circular bordered"
+          size="small"
+          :artistName="artistName"
+        />
+      </div>
+
       <div class="content">
         <BaseHeader
           class="link"
@@ -28,6 +39,7 @@
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
+import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
 import { listenersCount as listenersCountDecorated } from '#/decorators'
@@ -37,6 +49,7 @@ export default {
   components: {
     BaseLinkContainer,
     BaseSimpleCardContainer,
+    BaseArtistImage,
     BaseHeader
   },
   props: {
@@ -60,7 +73,7 @@ export default {
       return this.artistData.name
     },
     image () {
-      return this.artistData.image.small
+      return this.artistData.image?.small
     },
     headerTag () {
       return this.isSmall ? 'h4' : 'h3'
