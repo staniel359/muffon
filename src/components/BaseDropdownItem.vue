@@ -17,7 +17,8 @@
       class="image-container"
     >
       <BaseImage
-        size="rounded bordered extrasmall"
+        class="rounded bordered"
+        size="extrasmall"
         :image="image"
       />
     </div>

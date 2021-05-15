@@ -124,6 +124,22 @@ function setKeyBindings () {
   globalShortcut.register('Ctrl+F', () => {
     win.webContents.send('press-ctrl-f')
   })
+
+  globalShortcut.register('MediaPlayPause', () => {
+    win.webContents.send('press-media-play')
+  })
+
+  globalShortcut.register('MediaPreviousTrack', () => {
+    win.webContents.send('press-media-prev')
+  })
+
+  globalShortcut.register('MediaNextTrack', () => {
+    win.webContents.send('press-media-next')
+  })
+
+  globalShortcut.register('MediaStop', () => {
+    win.webContents.send('press-media-stop')
+  })
 }
 
 function setup () {

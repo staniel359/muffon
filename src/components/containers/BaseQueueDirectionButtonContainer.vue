@@ -18,7 +18,7 @@ import {
   getIsEdge as getIsQueueEdge,
   getIsFetching as getIsQueueFetching
 } from '#/actions/queue'
-import fetchQueueTrackData from '#/actions/queue/track/fetchData'
+import fetchQueueTrack from '#/actions/queue/track/fetchData'
 
 export default {
   name: 'BaseQueueDirectionButtonContainer',
@@ -59,11 +59,7 @@ export default {
   },
   methods: {
     handleClick () {
-      this.fetchQueueTrack()
-    },
-    fetchQueueTrackData,
-    fetchQueueTrack () {
-      this.fetchQueueTrackData({
+      fetchQueueTrack({
         position: this.position
       })
     }

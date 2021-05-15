@@ -1,6 +1,5 @@
 <template>
-  <TheLocalObserver />
-  <TheTitleObserver />
+  <TheObservers />
 
   <TheNavbarPanel />
   <ThePlayerPanel />
@@ -12,14 +11,13 @@
 
     <TheContainer />
 
-    <TheSearchModal />
     <TheLoaderDimmer />
+    <TheSearchModal />
   </div>
 </template>
 
 <script>
-import TheLocalObserver from '@/layout/TheLocalObserver.vue'
-import TheTitleObserver from '@/layout/TheTitleObserver.vue'
+import TheObservers from '@/layout/TheObservers.vue'
 import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
 import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheQueuePanel from '@/layout/TheQueuePanel.vue'
@@ -32,8 +30,7 @@ import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 export default {
   name: 'App',
   components: {
-    TheLocalObserver,
-    TheTitleObserver,
+    TheObservers,
     TheNavbarPanel,
     ThePlayerPanel,
     TheQueuePanel,
