@@ -8,9 +8,10 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
 import BaseModalContainer from '@/containers/BaseModalContainer.vue'
 import SearchContent from './TheSearchModal/SearchContent.vue'
+
+const { ipcRenderer } = require('electron')
 
 export default {
   name: 'TheSearchModal',
@@ -24,27 +25,17 @@ export default {
     }
   },
   mounted () {
-    this.setKeyBindings()
+    ipcRenderer.on('press-ctrl-f', this.show)
   },
   methods: {
     handleVisible () {
-      this.focusInput()
+      this.$refs.search.focusInput()
     },
-    setKeyBindings () {
-      Mousetrap.bind('ctrl+f', this.toggle, 'keyup')
-      Mousetrap.bind('ctrl+f', this.unfocusInput)
+    show () {
+      this.$refs.modal.show()
     },
     hide () {
       this.$refs.modal.hide()
-    },
-    toggle () {
-      this.$refs.modal.toggle()
-    },
-    focusInput () {
-      this.$refs.search.focusInput()
-    },
-    unfocusInput () {
-      this.$refs.search.unfocusInput()
     }
   }
 }

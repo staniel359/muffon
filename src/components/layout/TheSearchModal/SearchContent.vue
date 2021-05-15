@@ -52,9 +52,6 @@ export default {
     },
     focusInput () {
       this.$refs.input.focus()
-    },
-    unfocusInput () {
-      this.$refs.input.unfocus()
     }
   }
 }

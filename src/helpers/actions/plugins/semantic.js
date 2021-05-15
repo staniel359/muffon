@@ -22,10 +22,6 @@ export function hideModal (el) {
   $(el).modal('hide')
 }
 
-export function toggleModal (el) {
-  $(el).modal('toggle')
-}
-
 // Search
 
 export function setSearch (el, options) {

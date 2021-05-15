@@ -7,7 +7,7 @@
     }"
   >
     <input
-      class="prompt mousetrap"
+      class="prompt"
       ref="input"
       :value="modelValue"
       :placeholder="placeholder"

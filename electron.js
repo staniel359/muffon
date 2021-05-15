@@ -1,4 +1,11 @@
-const { app, BrowserWindow, Tray, Menu, ipcMain } = require('electron')
+const {
+  app,
+  BrowserWindow,
+  Tray,
+  Menu,
+  ipcMain,
+  globalShortcut
+} = require('electron')
 const path = require('path')
 const ElectronStore = require('electron-store')
 
@@ -33,32 +40,6 @@ const browserWindowOptions = {
 
 let win = null
 let tray = null
-
-function createTray () {
-  tray = new Tray(iconPath)
-
-  const handleCloseClick = () => {
-    app.exit()
-  }
-
-  const menuItems = [
-    {
-      type: 'normal',
-      label: 'Close',
-      click: handleCloseClick
-    }
-  ]
-  const menu = Menu.buildFromTemplate(menuItems)
-
-  tray.setContextMenu(menu)
-  tray.setToolTip(appName)
-
-  const handleClick = () => {
-    win.show()
-  }
-
-  tray.on('click', handleClick)
-}
 
 function createWindow () {
   win = new BrowserWindow(
@@ -113,11 +94,45 @@ function createWindow () {
   )
 }
 
+function createTray () {
+  tray = new Tray(iconPath)
+
+  const handleCloseClick = () => {
+    app.exit()
+  }
+
+  const menuItems = [
+    {
+      type: 'normal',
+      label: 'Close',
+      click: handleCloseClick
+    }
+  ]
+  const menu = Menu.buildFromTemplate(menuItems)
+
+  tray.setContextMenu(menu)
+  tray.setToolTip(appName)
+
+  const handleClick = () => {
+    win.show()
+  }
+
+  tray.on('click', handleClick)
+}
+
+function setKeyBindings () {
+  globalShortcut.register('Ctrl+F', () => {
+    win.webContents.send('press-ctrl-f')
+  })
+}
+
 function setup () {
   ElectronStore.initRenderer()
 
   createWindow()
   createTray()
+
+  setKeyBindings()
 }
 
 app.whenReady().then(setup)

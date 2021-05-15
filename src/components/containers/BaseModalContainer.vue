@@ -10,12 +10,7 @@
 <script>
 import { mapState } from 'vuex'
 import { mainModalOptions } from '#/data/plugins/semantic'
-import {
-  setModal,
-  showModal,
-  hideModal,
-  toggleModal
-} from '#/actions/plugins/semantic'
+import { setModal, showModal, hideModal } from '#/actions/plugins/semantic'
 import { toggleClass, remove } from '#/actions/plugins/jquery'
 
 export default {
@@ -77,9 +72,6 @@ export default {
     },
     hide () {
       hideModal(this.$refs.modal)
-    },
-    toggle () {
-      toggleModal(this.$refs.modal)
     }
   }
 }

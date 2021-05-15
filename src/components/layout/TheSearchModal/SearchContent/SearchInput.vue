@@ -36,9 +36,6 @@ export default {
     },
     focus () {
       this.$refs.input.focus()
-    },
-    unfocus () {
-      this.$refs.input.unfocus()
     }
   }
 }
