@@ -1,9 +1,9 @@
 <template>
   <div class="ui large labels tags-list">
     <TagItem
-      v-for="(tagName, index) in tags"
+      v-for="(tagData, index) in tags"
       :key="index"
-      :tagName="tagName"
+      :tagName="tagData.name"
     />
 
     <BaseLabelLinkContainer
