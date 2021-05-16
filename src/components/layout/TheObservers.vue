@@ -14,7 +14,7 @@ export default {
   components: {
     TheLocalObserver,
     TheTitleObserver,
-    TheMediaKeysObserver,
+    TheMediaKeysObserver
   }
 }
 </script>

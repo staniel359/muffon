@@ -28,8 +28,9 @@ a
         max-height: 250px
 
 .pushable
+  @extend .background-transparent
   .pusher
-    @extend .overflow-visible
+    @extend .overflow-visible, .background-transparent
     &:after
       @extend .background-transparent
 

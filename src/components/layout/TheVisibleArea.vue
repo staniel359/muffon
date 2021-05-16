@@ -1,6 +1,6 @@
 <template>
   <div
-    class="the-visible-context"
+    class="the-visible-area"
     ref="visible"
   ></div>
 </template>
@@ -9,7 +9,7 @@
 import { setDropdownContext } from '#/actions/layout'
 
 export default {
-  name: 'TheVisibleContext',
+  name: 'TheVisibleArea',
   mounted () {
     setDropdownContext(
       this.$refs.visible
@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.the-visible-context
+.the-visible-area
   @extend .w-100, .fixed
   height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
   top: $navbarHeight

@@ -13,7 +13,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       sass: {
-        additionalData: '@import "./src/assets/styles/Shared.sass"'
+        additionalData: `@import './src/assets/styles/Shared.sass'`
       }
     }
   },

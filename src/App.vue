@@ -1,18 +1,20 @@
 <template>
   <TheObservers />
 
+  <TheBackground />
+
   <TheNavbarPanel />
   <ThePlayerPanel />
   <TheQueuePanel />
 
+  <TheVisibleArea />
+
+  <TheSearchModal />
+
   <div class="pusher">
-    <TheBackground />
-    <TheVisibleContext />
-
-    <TheContainer />
-
     <TheLoaderDimmer />
-    <TheSearchModal />
+
+    <TheView />
   </div>
 </template>
 
@@ -22,8 +24,8 @@ import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
 import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheQueuePanel from '@/layout/TheQueuePanel.vue'
 import TheBackground from '@/layout/TheBackground.vue'
-import TheVisibleContext from '@/layout/TheVisibleContext.vue'
-import TheContainer from '@/layout/TheContainer.vue'
+import TheVisibleArea from '@/layout/TheVisibleArea.vue'
+import TheView from '@/layout/TheView.vue'
 import TheSearchModal from '@/layout/TheSearchModal.vue'
 import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 
@@ -35,8 +37,8 @@ export default {
     ThePlayerPanel,
     TheQueuePanel,
     TheBackground,
-    TheVisibleContext,
-    TheContainer,
+    TheVisibleArea,
+    TheView,
     TheSearchModal,
     TheLoaderDimmer
   }

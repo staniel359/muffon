@@ -1,12 +1,12 @@
 <template>
-  <div class="ui container main-container the-container">
+  <div class="ui container main-container the-view">
     <RouterView :key="key" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'TheContainer',
+  name: 'TheView',
   computed: {
     key () {
       return this.$route.fullPath
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.the-container
+.the-view
   padding-top: $mainContainerTopPadding
   padding-bottom: $mainContainerBottomPadding
 </style>
