@@ -26,6 +26,6 @@ if (isDevelopment) {
   app.config.devtools = true
 
   window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor
+} else {
+  setSentry(app)
 }
-
-setSentry(app)
