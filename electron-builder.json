@@ -2,7 +2,8 @@
   "appId": "com.electron.muffon",
   "copyright": "Copyright © 2020-2021 staniel359",
   "win": {
-    "icon": "public/icon.ico"
+    "icon": "public/icon.ico",
+    "verifyUpdateCodeSignature": false
   },
   "mac": {
     "category": "public.app-category.music",
@@ -15,9 +16,11 @@
   },
   "compression": "store",
   "nsis": {
+    "allowToChangeInstallationDirectory": true,
+    "artifactName": "${productName} ${version}.${ext}",
+    "deleteAppDataOnUninstall": true,
     "oneClick": false,
-    "perMachine": true,
-    "allowToChangeInstallationDirectory": true
+    "perMachine": true
   },
   "directories": {
     "buildResources": "build",
