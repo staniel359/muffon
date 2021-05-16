@@ -25,7 +25,7 @@ export default {
     BaseTrackModalContainer
   },
   props: {
-    trackId: String
+    trackId: Number
   },
   methods: {
     show () {

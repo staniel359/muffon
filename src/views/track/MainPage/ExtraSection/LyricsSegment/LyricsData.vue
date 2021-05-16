@@ -32,7 +32,7 @@ export default {
       type: String,
       required: true
     },
-    trackId: String
+    trackId: Number
   },
   computed: {
     readMoreFormatted () {

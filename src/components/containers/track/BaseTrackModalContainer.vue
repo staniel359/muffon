@@ -31,7 +31,7 @@ export default {
     artistName: String,
     trackTitle: String,
     sourceId: String,
-    trackId: String
+    trackId: Number
   },
   data () {
     return {
