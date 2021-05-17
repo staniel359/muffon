@@ -1,11 +1,4 @@
-const {
-  app,
-  BrowserWindow,
-  Tray,
-  Menu,
-  ipcMain,
-  globalShortcut
-} = require('electron')
+const { app, BrowserWindow, Tray, Menu, ipcMain } = require('electron')
 const path = require('path')
 const ElectronStore = require('electron-store')
 
@@ -120,31 +113,11 @@ function createTray () {
   tray.on('click', handleClick)
 }
 
-function setKeyBindings () {
-  globalShortcut.register('MediaPlayPause', () => {
-    win.webContents.send('press-media-play')
-  })
-
-  globalShortcut.register('MediaPreviousTrack', () => {
-    win.webContents.send('press-media-prev')
-  })
-
-  globalShortcut.register('MediaNextTrack', () => {
-    win.webContents.send('press-media-next')
-  })
-
-  globalShortcut.register('MediaStop', () => {
-    win.webContents.send('press-media-stop')
-  })
-}
-
 function setup () {
   ElectronStore.initRenderer()
 
   createWindow()
   createTray()
-
-  setKeyBindings()
 }
 
 app.whenReady().then(setup)

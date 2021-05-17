@@ -3,24 +3,23 @@
 </template>
 
 <script>
-import { toggleAction as toggleAudioAction } from '#/actions/audio'
 import fetchQueueTrack from '#/actions/queue/track/fetchData'
 import { stopAndClose as stopAndClosePlayer } from '#/actions/player'
-
-const { ipcRenderer } = require('electron')
 
 export default {
   name: 'TheMediaKeysObserver',
   mounted () {
-    ipcRenderer.on('press-media-play', this.handlePressPlay)
-    ipcRenderer.on('press-media-prev', this.handlePressPrev)
-    ipcRenderer.on('press-media-next', this.handlePressNext)
-    ipcRenderer.on('press-media-stop', this.handlePressStop)
+    navigator.mediaSession.setActionHandler(
+      'previoustrack', this.handlePressPrev
+    )
+    navigator.mediaSession.setActionHandler(
+      'nexttrack', this.handlePressNext
+    )
+    navigator.mediaSession.setActionHandler(
+      'stop', this.handlePressStop
+    )
   },
   methods: {
-    handlePressPlay () {
-      toggleAudioAction()
-    },
     handlePressPrev () {
       fetchQueueTrack({
         position: 'prev'
