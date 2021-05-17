@@ -23,7 +23,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@sentry/vue": "^6.3.6",
+    "@sentry/vue": "^6.4.0",
     "axios": "^0.21.1",
     "deepmerge": "^4.2.2",
     "electron-store": "^8.0.0",
@@ -48,6 +48,6 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-vue": "^7.9.0",
     "sass": "^1.32.13",
-    "vite": "2.3.1"
+    "vite": "2.3.3"
   }
 }
