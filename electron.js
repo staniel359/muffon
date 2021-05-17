@@ -121,10 +121,6 @@ function createTray () {
 }
 
 function setKeyBindings () {
-  globalShortcut.register('Ctrl+F', () => {
-    win.webContents.send('press-ctrl-f')
-  })
-
   globalShortcut.register('MediaPlayPause', () => {
     win.webContents.send('press-media-play')
   })
