@@ -4,8 +4,6 @@
       v-for="artistData in artistsFormatted"
       :key="artistData.uuid"
       :artistName="artistData.name"
-      @init="handleItemInit"
-      @loadEnd="handleItemLoadEnd"
     />
   </div>
 </template>
@@ -13,7 +11,6 @@
 <script>
 import ArtistItem from './BaseArtistsExtendedList/ArtistItem.vue'
 import { collection as formatCollection } from '#/formatters'
-import { refreshVisibility } from '#/actions/plugins/semantic'
 
 export default {
   name: 'BaseArtistsExtendedList',
@@ -28,30 +25,9 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      items: []
-    }
-  },
   computed: {
     artistsFormatted () {
       return formatCollection(this.artists)
-    }
-  },
-  watch: {
-    artists: 'handleArtistsChange'
-  },
-  methods: {
-    handleItemInit (el) {
-      this.items.push(el)
-    },
-    handleItemLoadEnd () {
-      this.items.forEach(item => {
-        refreshVisibility(item)
-      })
-    },
-    handleArtistsChange () {
-      this.items = []
     }
   }
 }

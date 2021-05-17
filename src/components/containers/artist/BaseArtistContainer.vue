@@ -17,15 +17,8 @@ export default {
     artistName: {
       type: String,
       required: true
-    },
-    isVisible: {
-      type: Boolean,
-      default: true
     }
   },
-  emits: [
-    'loadEnd'
-  ],
   data () {
     return {
       error: null,
@@ -33,25 +26,10 @@ export default {
       isLoading: true
     }
   },
-  watch: {
-    isVisible: 'handleIsVisibleChange',
-    isLoading: {
-      immediate: true,
-      handler: 'handleIsLoadingChange'
-    }
-  },
   mounted () {
-    if (this.isVisible) {
-      this.fetchData()
-    }
+    this.fetchData()
   },
   methods: {
-    handleIsVisibleChange (value) {
-      value && this.fetchData()
-    },
-    handleIsLoadingChange (value) {
-      !value && this.$emit('loadEnd')
-    },
     handleRefresh () {
       this.error = null
 
