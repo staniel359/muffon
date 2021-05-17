@@ -306,10 +306,11 @@ a
       @extend .d-none, .no-shadow, .background-base
       width: 12px !important
       height: 12px !important
-  &:hover, &:active
-    & > .inner
-      & > .thumb
-        @extend .d-block
+  &:not(.disabled)
+    &:hover, &:active
+      & > .inner
+        & > .thumb
+          @extend .d-block
   &:not(.vertical)
     & > .inner
       & > .thumb

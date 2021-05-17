@@ -5,10 +5,8 @@
       :tracks="queueTracksFormatted"
       :isQueueable="false"
       isWithImage
-      isWithIndex
       isWithArtistName
       isWithAlbumTitle
-      isWithLength
       isWithSource
     />
   </BaseSegmentContainer>
@@ -65,4 +63,8 @@ export default {
 
 .queue-tracks
   @extend .h-100, .overflow-y-auto
+
+::v-deep(.main-simple-list-item)
+  & > .content
+    @extend .white-space-no-wrap, .overflow-hidden
 </style>
