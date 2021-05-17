@@ -1,19 +1,19 @@
 <template>
   <TheLocalObserver />
-  <TheTitleObserver />
+  <ThePlayerObserver />
   <TheMediaKeysObserver />
 </template>
 
 <script>
 import TheLocalObserver from '@/observers/TheLocalObserver.vue'
-import TheTitleObserver from '@/observers/TheTitleObserver.vue'
+import ThePlayerObserver from '@/observers/ThePlayerObserver.vue'
 import TheMediaKeysObserver from '@/observers/TheMediaKeysObserver.vue'
 
 export default {
   name: 'TheObservers',
   components: {
     TheLocalObserver,
-    TheTitleObserver,
+    ThePlayerObserver,
     TheMediaKeysObserver
   }
 }

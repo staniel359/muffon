@@ -122,3 +122,20 @@ export function getIsCurrentVariant ({ variantIndex }) {
       store.state.player.currentVariantIndex
   )
 }
+
+export function formatMetadata () {
+  const playerPlaying = store.state.player.playing
+
+  if (playerPlaying) {
+    return new window.MediaMetadata({
+      title: playerPlaying.title,
+      artist: playerPlaying.artist.name,
+      album: playerPlaying.album?.title,
+      artwork: [{
+        src: playerPlaying.image?.small || ''
+      }]
+    })
+  } else {
+    return null
+  }
+}
