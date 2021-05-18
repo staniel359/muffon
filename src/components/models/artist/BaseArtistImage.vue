@@ -82,11 +82,26 @@ export default {
     isVisible: 'handleIsVisibleChange'
   },
   methods: {
-    handleArtistNameChange () {
-      this.isVisible && this.fetchData()
+    handleArtistNameChange (newValue, oldValue) {
+      const isNewArtist = this.isArtistNameChanged(
+        newValue, oldValue
+      )
+
+      if (this.isVisible && isNewArtist) {
+        this.fetchData()
+      }
     },
     handleIsVisibleChange (value) {
       value && this.fetchData()
+    },
+    isArtistNameChanged (newValue, oldValue) {
+      return (
+        this.formatArtistName(newValue) !==
+          this.formatArtistName(oldValue)
+      )
+    },
+    formatArtistName (value) {
+      return value?.trim()?.toLowerCase()
     },
     fetchArtistImageData,
     fetchData () {
