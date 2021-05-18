@@ -6,7 +6,10 @@
     />
     <template v-else-if="isAnySimilar">
       <BaseLabel :text="similarTextFormatted" />
-      <BaseTagsList :tags="similar"/>
+      <BaseTagsList
+        :tags="similar"
+        :isWithIcon="false"
+      />
     </template>
   </div>
 </template>

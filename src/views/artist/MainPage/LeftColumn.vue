@@ -46,7 +46,7 @@ export default {
 <style lang="sass" scoped>
 .left-column
   @extend .sticky
-  width: 200px
+  width: 190px
   margin-right: 20px
   align-self: flex-start
   top: $mainContainerTopPadding

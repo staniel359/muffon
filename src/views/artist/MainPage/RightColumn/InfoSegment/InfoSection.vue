@@ -5,16 +5,16 @@
     :text="artistName"
   />
 
+  <BaseCounters
+    :listenersCount="listenersCount"
+    :playsCount="playsCount"
+  />
+
   <BaseArtistTags
     v-if="tags"
     :tags="tags"
     :artistName="artistName"
-    isMore
-  />
-
-  <BaseCounters
-    :listenersCount="listenersCount"
-    :playsCount="playsCount"
+    :isMore="isMoreTags"
   />
 
   <template v-if="description">
@@ -23,7 +23,7 @@
     <BaseArtistDescription
       :description="description"
       :artistName="artistName"
-      isMore
+      :isMore="isMoreDescription"
     />
   </template>
 </template>
@@ -54,17 +54,23 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    tags () {
-      return this.artistData.tags
-    },
     listenersCount () {
       return this.artistData.listeners_count
     },
     playsCount () {
       return this.artistData.plays_count
     },
+    tags () {
+      return this.artistData.tags
+    },
+    isMoreTags () {
+      return this.artistData.with_more.tags
+    },
     description () {
       return this.artistData.description
+    },
+    isMoreDescription () {
+      return this.artistData.with_more.description
     }
   }
 }

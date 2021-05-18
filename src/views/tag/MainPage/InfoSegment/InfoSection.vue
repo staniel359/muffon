@@ -10,12 +10,12 @@
       </BaseHeaderContainer>
     </div>
 
-    <SimilarSection :tagName="tagName" />
-
     <BaseCounters
       :taggersCount="taggersCount"
       :taggingsCount="taggingsCount"
     />
+
+    <SimilarSection :tagName="tagName" />
 
     <template v-if="description">
       <BaseDivider isInverted />
@@ -24,7 +24,7 @@
         class="tag-description"
         :description="description"
         :tagName="tagName"
-        isMore
+        :isMore="isMoreDescription"
       />
     </template>
   </div>
@@ -64,6 +64,9 @@ export default {
     },
     description () {
       return this.tagData.description
+    },
+    isMoreDescription () {
+      return this.tagData.with_more.description
     }
   }
 }

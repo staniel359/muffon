@@ -11,7 +11,7 @@
         :tags="tags"
         :artistName="artistName"
         :trackTitle="trackTitle"
-        isMore
+        :isMore="isMoreTags"
       />
 
       <template v-if="description">
@@ -21,7 +21,7 @@
           :description="description"
           :artistName="artistName"
           :trackTitle="trackTitle"
-          isMore
+          :isMore="isMoreDescription"
         />
       </template>
     </BaseSegmentContainer>
@@ -60,6 +60,9 @@ export default {
     tags () {
       return this.trackData.tags
     },
+    isMoreTags () {
+      return this.trackData.with_more.tags
+    },
     artistName () {
       return this.trackData.artist.name
     },
@@ -68,6 +71,9 @@ export default {
     },
     description () {
       return this.trackData.description
+    },
+    isMoreDescription () {
+      return this.trackData.with_more.description
     }
   }
 }

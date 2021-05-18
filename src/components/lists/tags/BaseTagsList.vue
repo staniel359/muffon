@@ -1,5 +1,11 @@
 <template>
   <div class="ui large labels tags-list">
+    <BaseIcon
+      v-if="isWithIcon"
+      class="tags-icon"
+      icon="tags"
+    />
+
     <TagItem
       v-for="(tagData, index) in tags"
       :key="index"
@@ -18,12 +24,14 @@
 </template>
 
 <script>
+import BaseIcon from '@/BaseIcon.vue'
 import TagItem from './BaseTagsList/TagItem.vue'
 import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
 
 export default {
   name: 'BaseTagsList',
   components: {
+    BaseIcon,
     TagItem,
     BaseLabelLinkContainer
   },
@@ -33,6 +41,10 @@ export default {
       default () {
         return []
       }
+    },
+    isWithIcon: {
+      type: Boolean,
+      default: true
     },
     isMore: Boolean
   },
@@ -53,6 +65,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.tags-icon
+  margin-right: 0.5em
+
 .tags-list
   @extend .d-inline
 </style>

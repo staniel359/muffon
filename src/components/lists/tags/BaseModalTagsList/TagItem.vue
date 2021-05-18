@@ -3,13 +3,6 @@
     <span class="link">
       {{ tagName }}
     </span>
-
-    <div
-      v-if="percent"
-      class="detail"
-    >
-      {{ percentFormatted }}
-    </div>
   </BaseLabelLinkContainer>
 </template>
 
@@ -36,12 +29,6 @@ export default {
     },
     tagName () {
       return this.tagData.name
-    },
-    percent () {
-      return this.tagData.percent
-    },
-    percentFormatted () {
-      return `${this.percent}%`
     }
   }
 }

@@ -11,7 +11,7 @@
       v-if="tags"
       :tags="tags"
       :artistName="artistName"
-      isMore
+      :isMore="isMoreTags"
     />
 
     <template v-if="description">
@@ -20,7 +20,7 @@
       <BaseArtistDescription
         :description="description"
         :artistName="artistName"
-        isMore
+        :isMore="isMoreDescription"
       />
     </template>
   </div>
@@ -61,8 +61,14 @@ export default {
     tags () {
       return this.artistData.tags
     },
+    isMoreTags () {
+      return this.artistData.with_more.tags
+    },
     description () {
       return this.artistData.description
+    },
+    isMoreDescription () {
+      return this.artistData.with_more.description
     }
   }
 }
