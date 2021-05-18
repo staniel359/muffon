@@ -6,10 +6,12 @@
     @init="handleInit"
   >
     <template #default="slotProps">
-      <BaseImage
-        class="slider-image"
-        :image="slotProps.image"
-      />
+      <div class="image-container">
+        <BaseImage
+          :image="slotProps.image"
+          isLazy
+        />
+      </div>
     </template>
   </BaseImageModalSliderContainer>
 </template>
@@ -49,7 +51,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.slider-image
+.image-container
   @extend .cursor-pointer
   height: $imageModalThumbHeight
 </style>

@@ -7,7 +7,10 @@
   >
     <template #default="slotProps">
       <div class="image-container">
-        <BaseImage :image="slotProps.image" />
+        <BaseImage
+          :image="slotProps.image"
+          isLazy
+        />
       </div>
     </template>
   </BaseImageModalSliderContainer>

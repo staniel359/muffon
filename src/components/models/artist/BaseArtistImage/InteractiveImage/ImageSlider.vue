@@ -1,12 +1,16 @@
 <template>
   <div ref="slider">
-    <BaseImage
+    <div
       v-for="(imageData, index) in imagesFormatted"
-      class="rounded"
       :key="imageData.uuid"
-      :image="imageData.medium"
       @click="handleImageClick(index)"
-    />
+    >
+      <BaseImage
+        class="rounded"
+        :image="imageData.medium"
+        isLazy
+      />
+    </div>
   </div>
 </template>
 

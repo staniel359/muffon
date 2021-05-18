@@ -1,7 +1,7 @@
 <template>
   <img
     class="ui image"
-    :src="image"
+    :[attribute]="image"
   />
 </template>
 
@@ -12,6 +12,12 @@ export default {
     image: {
       type: String,
       required: true
+    },
+    isLazy: Boolean
+  },
+  computed: {
+    attribute () {
+      return this.isLazy ? 'data-lazy' : 'src'
     }
   }
 }
