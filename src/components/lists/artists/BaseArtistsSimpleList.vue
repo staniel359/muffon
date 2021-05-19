@@ -5,6 +5,7 @@
       :key="artistData.uuid"
       :artistData="artistData"
       :scrollable="scrollable"
+      :isSmall="isSmall"
       @linkClick="handleLinkClick"
     />
   </BaseListContainer>
@@ -28,7 +29,8 @@ export default {
         return []
       }
     },
-    scrollable: HTMLDivElement
+    scrollable: HTMLDivElement,
+    isSmall: Boolean
   },
   emits: [
     'linkClick'

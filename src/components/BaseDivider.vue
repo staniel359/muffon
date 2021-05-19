@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui divider main-divider"
+    class="ui divider"
     :class="{
       inverted: isInverted || isDarkMode,
       horizontal: isHorizontal

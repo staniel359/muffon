@@ -24,7 +24,6 @@ export default function ({ artistName, scope = '', page, limit }) {
   }
 
   const handleError = error => {
-    this.artistData = null
     this.error = error
 
     raiseProductionError(error)

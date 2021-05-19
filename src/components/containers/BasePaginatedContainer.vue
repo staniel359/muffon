@@ -42,6 +42,7 @@ import NoCollectionMessage
   from './BasePaginatedContainer/NoCollectionMessage.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BasePagination from '@/BasePagination.vue'
+import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'BasePaginatedContainer',
@@ -71,15 +72,16 @@ export default {
   emits: [
     'focus',
     'fetchData',
-    'refresh'
+    'refresh',
+    'reset'
   ],
   data () {
     return {
-      responseTotalPages: null,
       responsePageCollection: null,
-      clientCollectionPaginated: null,
       clientPageCollection: null,
+      responseTotalPages: 0,
       clientPage: 1,
+      clientCollectionPaginated: {},
       isForward: true,
       isFocusable: false,
       isLastPage: false
@@ -275,7 +277,9 @@ export default {
     handleResponseDataChange (value) {
       if (value) {
         this.responseTotalPages = value.total_pages
-        this.responsePageCollection = value[this.scope]
+        this.responsePageCollection = formatCollection(
+          value[this.scope]
+        )
 
         this.setCollections()
       }
@@ -322,6 +326,16 @@ export default {
     },
     isArrayFull (array) {
       return array.length === this.clientPageLimit
+    },
+    reset () {
+      Object.assign(
+        this.$data,
+        this.$options.data.apply(this)
+      )
+
+      this.$nextTick(() => {
+        this.$emit('reset')
+      })
     }
   }
 }
@@ -329,7 +343,7 @@ export default {
 
 <style lang="sass" scoped>
 .paginated-container
-  @extend .w-100, .d-flex, .flex-column
+  @extend .flex-full, .w-100, .d-flex, .flex-column
 
 .paginated-data-container
   @extend .flex-full

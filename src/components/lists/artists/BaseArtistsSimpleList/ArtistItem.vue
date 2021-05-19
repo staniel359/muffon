@@ -19,6 +19,7 @@
     <InfoBlock
       :artistName="artistName"
       :listenersCount="listenersCount"
+      :isSmall="isSmall"
     />
   </BaseLinkContainer>
 </template>
@@ -43,10 +44,8 @@ export default {
       type: Object,
       required: true
     },
-    scrollable: {
-      type: HTMLDivElement,
-      required: true
-    }
+    scrollable: HTMLDivElement,
+    isSmall: Boolean
   },
   emits: [
     'linkClick'

@@ -2,7 +2,7 @@
   <BasePageContainer
     :isShowLoader="!artistData"
     :isLoading="isLoading"
-    :error="error"
+    :error="pageError"
     @init="handleInit"
     @refresh="handleRefresh"
   >
@@ -70,6 +70,13 @@ export default {
         artistName: this.artistName,
         scope: this.scope,
         limit: this.responsePageLimit
+      }
+    },
+    pageError () {
+      if (this.artistData) {
+        return null
+      } else {
+        return this.error
       }
     }
   },

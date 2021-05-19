@@ -9,7 +9,8 @@ export default [
     clientPageLimit: 20,
     responsePageLimit: 20,
     component: 'BaseArtistsSimpleList',
-    isWithListenersCount: true
+    isWithListenersCount: true,
+    isSmall: true
   },
   {
     name: localize(
@@ -19,7 +20,8 @@ export default [
     clientPageLimit: 20,
     responsePageLimit: 20,
     component: 'BaseAlbumsSimpleList',
-    isWithListenersCount: true
+    isWithListenersCount: true,
+    isSmall: false
   },
   {
     name: localize(
@@ -29,6 +31,7 @@ export default [
     clientPageLimit: 50,
     responsePageLimit: 50,
     component: 'BaseTracksSimpleList',
-    isWithListenersCount: false
+    isWithListenersCount: false,
+    isSmall: false
   }
 ]
