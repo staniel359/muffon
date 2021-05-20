@@ -21,7 +21,10 @@ export default {
     ])
   },
   watch: {
-    isDarkMode: 'handleIsDarkModeChange'
+    isDarkMode: {
+      immediate: true,
+      handler: 'handleIsDarkModeChange'
+    }
   },
   mounted () {
     setLoaderDimmer(
@@ -31,11 +34,13 @@ export default {
   },
   methods: {
     handleIsDarkModeChange (value) {
-      toggleClass(
-        this.$refs.loader,
-        'inverted',
-        !value
-      )
+      this.$nextTick(() => {
+        toggleClass(
+          this.$refs.loader,
+          'inverted',
+          !value
+        )
+      })
     }
   }
 }
