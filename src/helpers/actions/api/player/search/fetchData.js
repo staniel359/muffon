@@ -8,7 +8,7 @@ import { collection as formatCollection } from '#/formatters'
 export default function ({ query }) {
   const url = `/${getPlayerSourceId()}/search/tracks`
 
-  const limit = 25
+  const limit = 20
   const params = { query, limit }
 
   const handleSuccess = resp => {
