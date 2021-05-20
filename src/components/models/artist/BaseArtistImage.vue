@@ -7,7 +7,7 @@
   />
   <BaseImage
     v-else
-    :image="image"
+    :image="imageFormatted"
   />
 </template>
 
@@ -26,20 +26,17 @@ export default {
     BaseImage
   },
   props: {
-    artistName: {
-      type: String,
-      required: true
-    },
     size: {
       type: String,
-      required: true
+      default: 'small'
     },
-    isVisible: {
-      type: Boolean,
-      default: true
-    },
+    image: Object,
+    artistName: String,
     isInteractive: Boolean
   },
+  emits: [
+    'loadEnd'
+  ],
   data () {
     return {
       error: null,
@@ -57,8 +54,8 @@ export default {
     isAnyImages () {
       return this.images?.length
     },
-    image () {
-      return this.imagesFormatted[0][this.size]
+    imageFetched () {
+      return this.imagesFormatted[0]
     },
     imagesFormatted () {
       if (this.isAnyImages) {
@@ -72,6 +69,11 @@ export default {
         artistName: this.artistName,
         isInteractive: this.isInteractive
       }
+    },
+    imageFormatted () {
+      return (
+        this.image || this.imageFetched
+      )[this.size]
     }
   },
   watch: {
@@ -79,7 +81,7 @@ export default {
       immediate: true,
       handler: 'handleArtistNameChange'
     },
-    isVisible: 'handleIsVisibleChange'
+    imageFetched: 'handleImageFetchedChange'
   },
   methods: {
     handleArtistNameChange (newValue, oldValue) {
@@ -87,12 +89,12 @@ export default {
         newValue, oldValue
       )
 
-      if (this.isVisible && isNewArtist) {
+      if (!this.image && isNewArtist) {
         this.fetchData()
       }
     },
-    handleIsVisibleChange (value) {
-      value && this.fetchData()
+    handleImageFetchedChange (value) {
+      this.$emit('loadEnd', value)
     },
     isArtistNameChanged (newValue, oldValue) {
       return (

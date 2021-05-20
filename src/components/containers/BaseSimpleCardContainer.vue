@@ -9,12 +9,8 @@
       class="main-simple-card-image-container"
     >
       <BaseImage
+        class="rounded bordered"
         :image="image"
-        class="bordered"
-        :class="{
-          circular: isImageCircular,
-          rounded: !isImageCircular
-        }"
       />
     </div>
 
@@ -32,8 +28,7 @@ export default {
     BaseImage
   },
   props: {
-    image: String,
-    isImageCircular: Boolean
+    image: String
   },
   computed: {
     ...mapState('layout', [

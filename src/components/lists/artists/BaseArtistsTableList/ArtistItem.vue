@@ -3,18 +3,13 @@
     :link="artistMainLinkFormatted"
     @click="handleLinkClick"
   >
-    <BaseSimpleCardContainer
-      :image="image"
-      isImageCircular
-    >
-      <div
-        v-if="!image"
-        class="main-simple-card-image-container"
-      >
+    <BaseSimpleCardContainer>
+      <div class="main-simple-card-image-container">
         <BaseArtistImage
           class="circular bordered"
-          size="small"
+          :image="image"
           :artistName="artistName"
+          @loadEnd="handleImageLoadEnd"
         />
       </div>
 
@@ -52,6 +47,9 @@ export default {
     BaseArtistImage,
     BaseHeader
   },
+  inject: [
+    'setPaginationItemImage'
+  ],
   props: {
     artistData: {
       type: Object,
@@ -73,7 +71,7 @@ export default {
       return this.artistData.name
     },
     image () {
-      return this.artistData.image?.small
+      return this.artistData.image
     },
     headerTag () {
       return this.isSmall ? 'h4' : 'h3'
@@ -85,11 +83,20 @@ export default {
       return listenersCountDecorated(
         this.listenersCount
       )
+    },
+    uuid () {
+      return this.artistData.uuid
     }
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
+    },
+    handleImageLoadEnd (image) {
+      this.setPaginationItemImage({
+        uuid: this.uuid,
+        image
+      })
     }
   }
 }

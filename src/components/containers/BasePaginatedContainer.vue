@@ -52,6 +52,11 @@ export default {
     BaseDivider,
     BasePagination
   },
+  provide () {
+    return {
+      setPaginationItemImage: this.setPaginationItemImage
+    }
+  },
   props: {
     scope: {
       type: String,
@@ -336,6 +341,13 @@ export default {
       this.$nextTick(() => {
         this.$emit('reset')
       })
+    },
+    setPaginationItemImage ({ uuid, image }) {
+      const data = this.clientPageCollection.find(item => {
+        return item.uuid === uuid
+      })
+
+      data.image = { ...image }
     }
   }
 }

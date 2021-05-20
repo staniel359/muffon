@@ -3,7 +3,7 @@
     <ArtistItem
       v-for="artistData in artistsFormatted"
       :key="artistData.uuid"
-      :artistName="artistData.name"
+      :artistData="artistData"
     />
   </div>
 </template>

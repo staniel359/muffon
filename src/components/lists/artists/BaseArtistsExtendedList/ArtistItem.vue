@@ -9,8 +9,9 @@
         <template v-if="slotProps.artistData">
           <BaseArtistImage
             class="circular bordered artist-image"
-            size="small"
+            :image="image"
             :artistName="artistName"
+            @loadEnd="handleImageLoadEnd"
           />
 
           <InfoBlock :artistData="slotProps.artistData" />
@@ -35,10 +36,32 @@ export default {
     BaseArtistImage,
     InfoBlock
   },
+  inject: [
+    'setPaginationItemImage'
+  ],
   props: {
-    artistName: {
-      type: String,
+    artistData: {
+      type: Object,
       required: true
+    }
+  },
+  computed: {
+    artistName () {
+      return this.artistData.name
+    },
+    image () {
+      return this.artistData.image
+    },
+    uuid () {
+      return this.artistData.uuid
+    }
+  },
+  methods: {
+    handleImageLoadEnd (image) {
+      this.setPaginationItemImage({
+        uuid: this.uuid,
+        image
+      })
     }
   }
 }
