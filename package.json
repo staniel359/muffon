@@ -23,7 +23,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@sentry/vue": "^6.4.0",
+    "@sentry/vue": "^6.4.1",
     "axios": "^0.21.1",
     "deepmerge": "^4.2.2",
     "electron-store": "^8.0.0",
@@ -38,8 +38,8 @@
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.11",
     "cross-env": "^7.0.3",
-    "electron": "^12.0.7",
-    "electron-builder": "^22.11.4",
+    "electron": "^12.0.9",
+    "electron-builder": "^22.11.5",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^7.26.0",
     "eslint-config-standard": "^16.0.2",
