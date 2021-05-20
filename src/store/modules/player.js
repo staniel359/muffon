@@ -4,7 +4,7 @@ export default {
     playing: null,
     currentTrackId: null,
     currentVariantIndex: null,
-    sourceId: 'vk',
+    sourceId: null,
     variants: []
   },
   getters: {

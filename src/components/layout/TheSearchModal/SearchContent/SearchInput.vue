@@ -2,7 +2,7 @@
   <BaseHistoryInput
     class="search-input-container"
     ref="input"
-    scope="searchHistory"
+    scope="search"
     :query="query"
     :isClearable="isClearable"
     isWithIcon

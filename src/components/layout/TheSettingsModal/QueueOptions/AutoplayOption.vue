@@ -16,9 +16,7 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import {
-  getIsQueueAutoplay as getIsLocalQueueAutoplay
-} from '#/actions/plugins/local'
+import { getIsQueueAutoplay } from '#/actions/settings'
 import { setIsAutoplay as setIsQueueAutoplay } from '#/actions/queue'
 import { localize } from '#/actions/plugins/i18n'
 
@@ -35,7 +33,7 @@ export default {
       )
     },
     isChecked () {
-      return getIsLocalQueueAutoplay()
+      return getIsQueueAutoplay()
     }
   },
   methods: {

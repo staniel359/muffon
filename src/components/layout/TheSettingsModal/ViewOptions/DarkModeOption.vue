@@ -16,7 +16,7 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { getIsDarkMode as getIsLocalDarkMode } from '#/actions/plugins/local'
+import { getIsDarkMode } from '#/actions/settings'
 import { setIsDarkMode } from '#/actions/layout'
 import { localize } from '#/actions/plugins/i18n'
 
@@ -33,7 +33,7 @@ export default {
       )
     },
     isChecked () {
-      return getIsLocalDarkMode()
+      return getIsDarkMode()
     }
   },
   methods: {

@@ -1,6 +1,7 @@
 /node_modules
 /build
 /build_electron
+/electron-data
 
 yarn-error.log
 todo

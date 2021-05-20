@@ -45,9 +45,14 @@ export function setCurrentTrackId (value) {
   )
 }
 
+export function resetCurrentTrackId () {
+  setCurrentTrackId(null)
+}
+
 export function reset () {
   resetTracks()
   resetTracksShuffled()
+  resetCurrentTrackId()
 }
 
 export function getIsFetching ({ position }) {

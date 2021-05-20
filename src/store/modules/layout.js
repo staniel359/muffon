@@ -6,7 +6,7 @@ export default {
     queuePanel: null,
     dropdownContext: null,
     isQueuePanelVisible: false,
-    isDarkMode: true,
+    isDarkMode: false,
     navigationSections: []
   },
   mutations: {

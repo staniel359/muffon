@@ -11,9 +11,9 @@
 import { mainHistoryInputOptions } from '#/data/plugins/semantic'
 import { setSearch, setSearchSource } from '#/actions/plugins/semantic'
 import {
-  getHistory as getLocalHistory,
-  updateHistory as updateLocalHistory
-} from '#/actions/plugins/local'
+  get as getLocalHistory,
+  update as updateLocalHistory
+} from '#/actions/plugins/local/history'
 
 export default {
   name: 'BaseHistoryInputContainer',

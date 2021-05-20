@@ -34,6 +34,13 @@ const browserWindowOptions = {
 let win = null
 let tray = null
 
+if (isDevelopment) {
+  app.setPath(
+    'userData',
+    path.join(__dirname, 'electron-data')
+  )
+}
+
 function createWindow () {
   win = new BrowserWindow(
     browserWindowOptions

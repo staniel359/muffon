@@ -10,9 +10,7 @@
 <script>
 import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
-import {
-  getPlayerSourceId as getLocalPlayerSourceId
-} from '#/actions/plugins/local'
+import { getPlayerSourceId } from '#/actions/settings'
 
 export default {
   name: 'SourceSelect',
@@ -22,7 +20,7 @@ export default {
   },
   mounted () {
     this.$refs.dropdown.setValue(
-      getLocalPlayerSourceId()
+      getPlayerSourceId()
     )
   }
 }
