@@ -24,7 +24,6 @@ export default function ({
   }
 
   const handleError = error => {
-    this.searchData = null
     this.error = error
 
     raiseProductionError(error)

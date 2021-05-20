@@ -32,7 +32,6 @@ export default function ({
   }
 
   const handleError = error => {
-    this.trackData = null
     this.error = error
 
     raiseProductionError(error)

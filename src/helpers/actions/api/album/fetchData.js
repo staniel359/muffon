@@ -39,7 +39,6 @@ export default function ({
   }
 
   const handleError = error => {
-    this.albumData = null
     this.error = error
 
     raiseProductionError(error)

@@ -17,7 +17,6 @@ export default function ({ artistName, isInteractive }) {
   }
 
   const handleError = error => {
-    this.images = null
     this.error = error
 
     raiseProductionError(error)

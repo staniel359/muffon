@@ -18,7 +18,6 @@ export default function ({ tagName, scope = '', page, limit }) {
   }
 
   const handleError = error => {
-    this.tagData = null
     this.error = error
 
     raiseProductionError(error)
