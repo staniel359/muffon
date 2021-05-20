@@ -94,7 +94,7 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh () {
+    handleRefresh (page) {
       this.error = null
 
       this.fetchData()

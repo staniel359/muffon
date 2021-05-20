@@ -77,10 +77,10 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh () {
+    handleRefresh (page) {
       this.error = null
 
-      this.fetchData()
+      this.fetchData(page)
     },
     handleNavigationDataChange () {
       this.setNavigation()

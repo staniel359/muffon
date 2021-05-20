@@ -93,10 +93,10 @@ export default {
     handleInit (el) {
       this.$emit('init', el)
     },
-    handleRefresh () {
+    handleRefresh (page) {
       this.error = null
 
-      this.fetchData()
+      this.fetchData(page)
     },
     handleNavigationDataChange () {
       this.setNavigation()
