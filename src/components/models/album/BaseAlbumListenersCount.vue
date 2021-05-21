@@ -3,9 +3,9 @@
     v-if="isLoading"
     class="ui active mini inline loader"
   ></div>
-  <div v-else>
+  <small v-else>
     {{ listenersCountFormatted }}
-  </div>
+  </small>
 </template>
 
 <script>

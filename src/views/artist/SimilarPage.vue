@@ -9,9 +9,9 @@
     @viewButtonClick="handleViewButtonClick"
   >
     <template #default="slotProps">
-      <SimilarList
+      <BaseArtistsList
         :viewIndex="viewIndex"
-        :similar="slotProps.similar"
+        :artists="slotProps.similar"
       />
     </template>
   </BaseArtistPaginatedPageContainer>
@@ -20,13 +20,13 @@
 <script>
 import BaseArtistPaginatedPageContainer
   from '@/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
-import SimilarList from './SimilarPage/SimilarList.vue'
+import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
 
 export default {
   name: 'SimilarPage',
   components: {
     BaseArtistPaginatedPageContainer,
-    SimilarList
+    BaseArtistsList
   },
   data () {
     return {

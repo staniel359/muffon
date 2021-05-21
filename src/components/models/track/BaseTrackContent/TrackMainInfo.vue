@@ -49,8 +49,8 @@ export default {
       return (
         this.isWithArtistName && (
           !this.albumArtistName || (
-            this.artistName !==
-              this.albumArtistName
+            this.artistName.toLowerCase() !==
+              this.albumArtistName.toLowerCase()
           )
         )
       )

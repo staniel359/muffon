@@ -2,16 +2,16 @@
   <div class="content">
     <BaseHeader
       class="link"
-      :tag="headerTag"
+      tag="h4"
       :text="artistName"
     />
 
-    <div
+    <small
       v-if="listenersCount"
       class="description"
     >
       {{ listenersCountFormatted }}
-    </div>
+    </small>
   </div>
 </template>
 
@@ -29,17 +29,13 @@ export default {
       type: String,
       required: true
     },
-    listenersCount: Number,
-    isSmall: Boolean
+    listenersCount: Number
   },
   computed: {
     listenersCountFormatted () {
       return listenersCountDecorated(
         this.listenersCount
       )
-    },
-    headerTag () {
-      return this.isSmall ? 'h4' : 'h3'
     }
   }
 }

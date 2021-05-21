@@ -1,8 +1,8 @@
 <template>
-  <component
+  <Component
     :is="listComponent"
-    :artists="similar"
-    :itemsInRow="4"
+    :artists="artists"
+    :itemsInRow="5"
   />
 </template>
 
@@ -13,7 +13,7 @@ import BaseArtistsExtendedList
   from '@/lists/artists/BaseArtistsExtendedList.vue'
 
 export default {
-  name: 'SimilarList',
+  name: 'BaseArtistsList',
   components: {
     BaseArtistsSimpleList,
     BaseArtistsTableList,
@@ -24,7 +24,7 @@ export default {
       type: Number,
       required: true
     },
-    similar: {
+    artists: {
       type: Array,
       default () {
         return []

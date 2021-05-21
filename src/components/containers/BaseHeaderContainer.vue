@@ -1,5 +1,5 @@
 <template>
-  <component
+  <Component
     class="ui header main-header"
     :is="tag"
     :class="{ inverted: isDarkMode }"
@@ -13,7 +13,7 @@
     <div class="content">
       <slot></slot>
     </div>
-  </component >
+  </Component >
 </template>
 
 <script>

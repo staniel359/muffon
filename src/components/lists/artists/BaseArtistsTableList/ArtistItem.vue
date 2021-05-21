@@ -16,16 +16,16 @@
       <div class="content">
         <BaseHeader
           class="link"
-          :tag="headerTag"
+          tag="h4"
           :text="artistName"
         />
 
-        <div
+        <small
           v-if="isWithListenersCount"
           class="description"
         >
           {{ listenersCountFormatted }}
-        </div>
+        </small>
       </div>
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
@@ -55,7 +55,6 @@ export default {
       type: Object,
       required: true
     },
-    isSmall: Boolean,
     isWithListenersCount: Boolean
   },
   emits: [
@@ -72,9 +71,6 @@ export default {
     },
     image () {
       return this.artistData.image
-    },
-    headerTag () {
-      return this.isSmall ? 'h4' : 'h3'
     },
     listenersCount () {
       return this.artistData.listeners_count || 0

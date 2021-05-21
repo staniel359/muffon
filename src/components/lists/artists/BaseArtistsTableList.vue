@@ -11,7 +11,6 @@
     >
       <ArtistItem
         :artistData="artistData"
-        :isSmall="isSmall"
         :isWithListenersCount="isWithListenersCount"
       />
     </div>
@@ -36,7 +35,6 @@ export default {
       }
     },
     itemsInRow: Number,
-    isSmall: Boolean,
     isWithListenersCount: Boolean
   },
   computed: {

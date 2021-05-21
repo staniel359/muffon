@@ -1,11 +1,11 @@
 <template>
-  <component
+  <Component
     class="ui header main-header"
     :is="tag"
     :class="{ inverted: isDarkMode }"
   >
     {{ text }}
-  </component >
+  </Component >
 </template>
 
 <script>

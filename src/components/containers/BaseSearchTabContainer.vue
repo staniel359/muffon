@@ -18,11 +18,10 @@
       @refresh="handleRefresh"
     >
       <template #default="slotProps">
-        <component
+        <Component
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :isWithListenersCount="tabData.isWithListenersCount"
-          :isSmall="tabData.isSmall"
           :scrollable="scrollable"
           isWithArtistName
           @linkClick="handleLinkClick"

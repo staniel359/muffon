@@ -2,14 +2,14 @@
   <BaseTagPaginatedSegmentContainer
     headerTextKey="artists"
     scope="artists"
-    :clientPageLimit="4"
+    :clientPageLimit="5"
     :responsePageLimit="21"
     :tagName="tagName"
     :formatHeaderLink="formatTagArtistsLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
-        :itemsInRow="4"
+        :itemsInRow="5"
         :artists="slotProps.artists"
         isWithListenersCount
       />

@@ -11,7 +11,6 @@
       <BaseArtistsTableList
         :itemsInRow="4"
         :artists="slotProps.similar"
-        isSmall
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>

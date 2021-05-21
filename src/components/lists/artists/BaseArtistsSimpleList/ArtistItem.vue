@@ -15,7 +15,6 @@
     <InfoBlock
       :artistName="artistName"
       :listenersCount="listenersCount"
-      :isSmall="isSmall"
     />
   </BaseLinkContainer>
 </template>
@@ -40,8 +39,7 @@ export default {
     artistData: {
       type: Object,
       required: true
-    },
-    isSmall: Boolean
+    }
   },
   emits: [
     'linkClick'

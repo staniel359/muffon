@@ -21,9 +21,9 @@
 
         <BasePaginatedContainer
           ref="pagination"
-          :responseData="pageSlotProps.artistData"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
+          :responseData="pageSlotProps.artistData"
           :scope="scope"
           :clientPageLimit="clientPageLimit"
           :responsePageLimit="responsePageLimit"
