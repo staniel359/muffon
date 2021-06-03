@@ -3,20 +3,27 @@ import { setPlaying as setPlayerPlaying } from '#/actions/player'
 import { playing as formatPlaying } from '#/formatters/player/playing'
 
 export default function ({ audioData }) {
-  const sourceId = audioData.source
-  const audioId = audioData.id
-  const artistId = audioData.artist?.id
+  const formatUrl = () => {
+    const sourceId = audioData.source_id
 
-  const formatSourceId = () => {
     if (sourceId === 'bandcamp') {
-      return `${sourceId}/artists/${artistId}`
+      const idData = audioData.id
+      const artistId =
+        audioData.artist_id ||
+          idData.artists[0].bandcamp_id
+      const trackId =
+        audioData.track_id ||
+          idData.bandcamp_id
+
+      return `${sourceId}/artists/${artistId}/tracks/${trackId}`
     } else {
-      return sourceId
+      const trackId = audioData.track_id
+
+      return `${sourceId}/tracks/${trackId}`
     }
   }
 
-  const url = `/${formatSourceId()}/tracks/${audioId}`
-
+  const url = formatUrl()
   const params = {}
 
   const handleSuccess = response => {

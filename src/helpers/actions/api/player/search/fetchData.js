@@ -12,8 +12,10 @@ export default function ({ query }) {
   const params = { query, limit }
 
   const handleSuccess = resp => {
+    const { tracks } = resp.data.search
+
     const variantsFormatted = formatCollection(
-      resp.data.search.tracks.slice(0, limit)
+      tracks.slice(0, limit)
     )
 
     setPlayerVariants(variantsFormatted)

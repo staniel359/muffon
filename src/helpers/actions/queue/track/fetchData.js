@@ -25,7 +25,7 @@ export default function fetchData ({ position }) {
     const queueTrackDataArgs = {
       trackTitle: followingTrackData.title,
       artistName: followingTrackData.artist.name,
-      trackId: followingTrackData.id,
+      trackId: followingTrackData.player_id,
       audioData: followingTrackData.audio,
       queueTrackId: followingTrackData.uuid
     }

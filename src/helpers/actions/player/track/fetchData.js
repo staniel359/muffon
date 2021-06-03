@@ -9,7 +9,7 @@ export default function ({ trackData, queueTracks }) {
   const trackDataArgs = {
     trackTitle: trackData.title,
     artistName: trackData.artist.name,
-    trackId: trackData.id,
+    trackId: trackData.player_id,
     audioData: trackData.audio,
     queueTrackId: trackData.uuid
   }

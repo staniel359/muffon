@@ -7,7 +7,7 @@
     :isWithSource="isWithSource"
     isWithIndex
     isWithArtistName
-    isWithLength
+    isWithDuration
   />
 </template>
 
@@ -45,7 +45,7 @@ export default {
       ).isStreamable
     },
     sourceId () {
-      return this.albumData.source
+      return this.albumData.source_id
     }
   }
 }

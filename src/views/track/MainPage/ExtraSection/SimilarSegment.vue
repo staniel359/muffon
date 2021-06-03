@@ -12,7 +12,7 @@
       <BaseTracksSimpleList
         :tracks="slotProps.similar"
         isWithArtistName
-        isWithLength
+        isWithDuration
       />
     </template>
   </BaseTrackPaginatedSegmentContainer>

@@ -10,7 +10,7 @@
         :tracks="slotProps.similar"
         :artistName="slotProps.artistName"
         isWithArtistName
-        isWithLength
+        isWithDuration
       />
     </template>
   </BaseTrackPaginatedPageContainer>

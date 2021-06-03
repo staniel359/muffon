@@ -10,7 +10,7 @@ export default async function ({ index }) {
 
   const getAudioDataArgs = () => {
     const isBandcampVariant =
-      variantData.audio.source === 'bandcamp'
+      variantData.audio.source_id === 'bandcamp'
 
     if (isBandcampVariant) {
       return fetchBandcampIdData({

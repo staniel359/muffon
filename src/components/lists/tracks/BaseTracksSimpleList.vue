@@ -22,7 +22,7 @@
           :isWithAlbumTitle="isWithAlbumTitle"
           :isWithListenersCount="isWithListenersCount"
           :topTrackCount="topTrackCount"
-          :isWithLength="isWithLength"
+          :isWithDuration="isWithDuration"
           :isWithSource="isWithSource"
           @linkClick="handleLinkClick"
         />
@@ -60,7 +60,7 @@ export default {
     albumArtistName: String,
     isWithAlbumTitle: Boolean,
     albumTitle: String,
-    isWithLength: Boolean,
+    isWithDuration: Boolean,
     isWithSource: Boolean,
     isWithListenersCount: Boolean,
     topTrackCount: Number,

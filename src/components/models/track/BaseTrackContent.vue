@@ -36,9 +36,9 @@
     />
   </div>
 
-  <TrackLength
-    v-if="isRenderLength"
-    :length="length"
+  <TrackDuration
+    v-if="isRenderDuration"
+    :duration="duration"
   />
 
   <BaseSourceIcon
@@ -54,7 +54,7 @@ import TrackImage from './BaseTrackContent/TrackImage.vue'
 import TrackIndex from './BaseTrackContent/TrackIndex.vue'
 import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
-import TrackLength from './BaseTrackContent/TrackLength.vue'
+import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 
 export default {
@@ -65,7 +65,7 @@ export default {
     TrackIndex,
     TrackMainInfo,
     TrackListenersCount,
-    TrackLength,
+    TrackDuration,
     BaseSourceIcon
   },
   props: {
@@ -84,7 +84,7 @@ export default {
     isWithAlbumTitle: Boolean,
     isWithListenersCount: Boolean,
     topTrackCount: Number,
-    isWithLength: Boolean,
+    isWithDuration: Boolean,
     isWithSource: Boolean
   },
   emits: [
@@ -118,15 +118,19 @@ export default {
     listenersCount () {
       return this.trackData.listeners_count
     },
-    isRenderLength () {
-      return this.isWithLength && this.length
+    isRenderDuration () {
+      return (
+        this.isWithDuration &&
+          this.duration &&
+            this.duration !== '00:00'
+      )
     },
-    length () {
-      return this.trackData.length
+    duration () {
+      return this.trackData.duration
     },
     sourceId () {
       if (this.audioData?.present) {
-        return this.audioData.source
+        return this.audioData.source_id
       } else {
         return null
       }

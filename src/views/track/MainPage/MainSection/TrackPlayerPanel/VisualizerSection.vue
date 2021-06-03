@@ -18,7 +18,7 @@ export default {
   },
   props: {
     trackId: {
-      type: Number,
+      type: String,
       required: true
     }
   },

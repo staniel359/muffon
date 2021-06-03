@@ -50,7 +50,7 @@ export default {
       })
     },
     trackId () {
-      return this.trackData.id
+      return this.trackData.player_id
     },
     trackDataArgs () {
       return {

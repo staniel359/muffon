@@ -18,7 +18,7 @@
             :isError="slotProps.isError"
             :isCurrent="slotProps.isCurrent"
             isWithArtistName
-            isWithLength
+            isWithDuration
           />
         </template>
       </BaseTrackVariantContainer>

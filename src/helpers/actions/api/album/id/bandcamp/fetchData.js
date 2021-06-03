@@ -8,10 +8,13 @@ export default function ({ model, artistName, title, paramsData }) {
 
   const handleSuccess = response => {
     this.isLoading = false
+
+    const idData = response.id
+
     this.requestAlbumData = {
       sourceId: 'bandcamp',
-      albumId: response.id,
-      artistId: response.artist.id,
+      albumId: idData.bandcamp_id,
+      artistId: idData.artists[0].bandcamp_id,
       paramsData
     }
   }

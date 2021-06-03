@@ -44,7 +44,7 @@ export default {
       return this.playerPlaying.artist.name
     },
     sourceId () {
-      return this.playerPlaying.audio.source
+      return this.playerPlaying.audio.source_id
     }
   },
   watch: {

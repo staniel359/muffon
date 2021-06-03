@@ -5,9 +5,9 @@
   >
     <PlayButtonSection :trackData="trackData" />
     <VisualizerSection :trackId="trackId" />
-    <LengthSection
-      v-if="length"
-      :length="length"
+    <DurationSection
+      v-if="isRenderDuration"
+      :duration="duration"
     />
   </div>
 </template>
@@ -16,14 +16,14 @@
 import { mapState } from 'vuex'
 import PlayButtonSection from './TrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './TrackPlayerPanel/VisualizerSection.vue'
-import LengthSection from './TrackPlayerPanel/LengthSection.vue'
+import DurationSection from './TrackPlayerPanel/DurationSection.vue'
 
 export default {
   name: 'TrackPlayerPanel',
   components: {
     PlayButtonSection,
     VisualizerSection,
-    LengthSection
+    DurationSection
   },
   props: {
     trackData: Object
@@ -33,10 +33,16 @@ export default {
       'isDarkMode'
     ]),
     trackId () {
-      return this.trackData.id
+      return this.trackData.player_id
     },
-    length () {
-      return this.trackData.length
+    isRenderDuration () {
+      return (
+        this.duration &&
+          this.duration !== '00:00'
+      )
+    },
+    duration () {
+      return this.trackData.duration
     }
   }
 }
@@ -48,12 +54,12 @@ export default {
   height: $trackPagePlayerPanelHeight
   ::v-deep(.track-visualiser-container)
     border-left: $border
-  ::v-deep(.track-length)
+  ::v-deep(.track-duration)
     border-left: $border
   &.inverted
     border-top: $borderInverted
     ::v-deep(.track-visualiser-container)
       border-left: $borderInverted !important
-    ::v-deep(.track-length)
+    ::v-deep(.track-duration)
       border-left: $borderInverted !important
 </style>

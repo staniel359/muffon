@@ -8,7 +8,7 @@ export default {
     default: []
   },
   'player.currentTrackId': {
-    type: ['null', 'number'],
+    type: ['null', 'string'],
     default: null
   },
   'player.playing': {

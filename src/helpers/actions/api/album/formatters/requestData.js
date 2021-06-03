@@ -29,8 +29,8 @@ export default function ({ sourceId, albumData }) {
       case 'bandcamp':
         return {
           model: albumData.bandcamp_model,
-          title: albumData.bandcamp_title,
-          artistName: albumData.artist.bandcamp_name,
+          title: albumData.bandcamp_slug,
+          artistName: albumData.artists[0].bandcamp_slug,
           paramsData: {
             album_type: albumData.bandcamp_model
           }
