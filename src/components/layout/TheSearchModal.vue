@@ -24,7 +24,11 @@ export default {
     }
   },
   mounted () {
-    Mousetrap.bind('ctrl+f', this.show, 'keyup')
+    Mousetrap.bind(
+      ['ctrl+f', 'command+f'],
+      this.show,
+      'keyup'
+    )
   },
   methods: {
     handleVisible () {
