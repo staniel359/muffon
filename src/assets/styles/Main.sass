@@ -216,8 +216,9 @@ a
 
 .main-message
   @extend .no-shadow, .no-margin
+  border: $border
   &.inverted
-    @extend .background-dark-grey
+    border: $borderInverted !important
 
 .main-popup
   @extend .no-border
@@ -297,7 +298,7 @@ a
     & > .track-fill
       @extend .background-base
     & > .track-progress
-      @extend .background-pale
+      @extend .background-grey
       transition: 0.25s
     & > .thumb
       @extend .d-none, .no-shadow, .background-base
@@ -316,10 +317,14 @@ a
     & > .inner
       & > .thumb
         left: 1px !important
+  &.inverted
+    & > .inner
+      & > .track-progress
+        @extend .background-grey-inverted
 
 .main-pagination
   &.inverted
-    @extend .background-dark-grey
+    border: $borderInverted !important
   & > .item
     &:last-child
       &:before
@@ -343,13 +348,3 @@ a
     &.inverted
       &:hover
         color: $colorWhiteInverted !important
-
-.main-list
-  &.selection
-    &.inverted
-      & > .item
-        &.active
-          @extend .background-grey-inverted
-        &:not(.active)
-          &:hover
-            @extend .background-dark-grey
