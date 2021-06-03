@@ -13,11 +13,21 @@ export default function ({ artistName, isInteractive }) {
     const { images } = response.data.artist
 
     this.error = null
-    this.images = isInteractive ? images : images.slice(0, 1)
+
+    const formatImages = () => {
+      if (isInteractive) {
+        return images
+      } else {
+        return images.slice(0, 1)
+      }
+    }
+
+    this.images = formatImages()
   }
 
   const handleError = error => {
     this.error = error
+    this.images = null
 
     raiseProductionError(error)
   }
