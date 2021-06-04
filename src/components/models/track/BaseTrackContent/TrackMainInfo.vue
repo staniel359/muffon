@@ -2,6 +2,7 @@
   <div class="track-main-info">
     <TrackTitle
       :trackTitle="trackTitle"
+      :trackExtraTitle="trackExtraTitle"
       :artistName="artistName"
       @linkClick="handleLinkClick"
     />
@@ -35,6 +36,7 @@ export default {
   },
   props: {
     trackTitle: String,
+    trackExtraTitle: String,
     isWithArtistName: Boolean,
     artistName: String,
     albumArtistName: String,

@@ -20,6 +20,7 @@
 
       <TrackMainInfo
         :trackTitle="trackTitle"
+        :trackExtraTitle="trackExtraTitle"
         :isWithArtistName="isWithArtistName"
         :artistName="artistName"
         :albumArtistName="albumArtistName"
@@ -102,6 +103,9 @@ export default {
     },
     trackTitle () {
       return this.trackData.title
+    },
+    trackExtraTitle () {
+      return this.trackData.extra_title
     },
     artistName () {
       return this.trackData.artist?.name

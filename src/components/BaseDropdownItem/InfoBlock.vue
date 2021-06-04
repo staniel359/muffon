@@ -1,10 +1,18 @@
 <template>
   <div class="content">
-    <BaseHeader
+    <BaseHeaderContainer
       v-if="header"
       tag="h5"
-      :text="header"
-    />
+    >
+      {{ header }}
+
+      <span
+        v-if="subheader"
+        class="sub header main-extra-title"
+      >
+        {{ subheader }}
+      </span>
+    </BaseHeaderContainer>
 
     <div v-if="content">
       {{ content }}
@@ -20,15 +28,16 @@
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 
 export default {
   name: 'InfoBlock',
   components: {
-    BaseHeader
+    BaseHeaderContainer
   },
   props: {
     header: String,
+    subheader: String,
     content: String,
     extra: String
   }
