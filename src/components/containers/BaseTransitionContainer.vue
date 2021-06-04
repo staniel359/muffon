@@ -7,10 +7,9 @@
 <script>
 import {
   setVisibility,
-  setTransition,
-  toggleTransition
+  showTransition,
+  hideTransition
 } from '#/actions/plugins/semantic'
-import { mainTransitionOptions } from '#/data/plugins/semantic'
 
 export default {
   name: 'BaseTransitionContainer',
@@ -25,7 +24,7 @@ export default {
       return {
         once: false,
         onTopPassed: this.handleTopPass,
-        onTopPassedReverse: this.handleTopPass
+        onTopPassedReverse: this.handleTopReversePass
       }
     }
   },
@@ -34,18 +33,21 @@ export default {
       this.scrollable,
       this.visibilityOptions
     )
-
-    setTransition(
-      this.$refs.transition,
-      mainTransitionOptions()
-    )
   },
   methods: {
     handleTopPass () {
-      toggleTransition(
-        this.$refs.transition,
-        mainTransitionOptions()
-      )
+      this.$nextTick(() => {
+        showTransition(
+          this.$refs.transition
+        )
+      })
+    },
+    handleTopReversePass () {
+      this.$nextTick(() => {
+        hideTransition(
+          this.$refs.transition
+        )
+      })
     }
   }
 }

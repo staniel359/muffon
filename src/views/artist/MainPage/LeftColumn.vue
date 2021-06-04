@@ -10,7 +10,7 @@
     </div>
 
     <BaseTransitionContainer
-      class="artist-name"
+      class="artist-name transition hidden"
       :scrollable="scrollable"
     >
       <BaseHeader
