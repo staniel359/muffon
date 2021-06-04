@@ -2,6 +2,7 @@
   <BaseDropdownItem
     :image="image"
     :header="albumTitle"
+    :subheader="albumExtraTitle"
     :content="artistName"
     @click="handleClick"
   />
@@ -31,6 +32,9 @@ export default {
     },
     albumTitle () {
       return this.albumData.title
+    },
+    albumExtraTitle () {
+      return this.albumData.extra_title
     },
     artistName () {
       return this.albumData.artist?.name

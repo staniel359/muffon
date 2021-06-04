@@ -1,9 +1,15 @@
 <template>
   <div class="album-header">
-    <BaseHeader
-      tag="h2"
-      :text="albumTitle"
-    />
+    <BaseHeaderContainer tag="h2">
+      {{ albumTitle }}
+
+      <span
+        v-if="albumExtraTitle"
+        class="sub header main-extra-title"
+      >
+        {{ albumExtraTitle }}
+      </span>
+    </BaseHeaderContainer>
 
     <BaseHeaderContainer tag="h3">
       <BaseLink
@@ -15,7 +21,6 @@
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
@@ -23,19 +28,19 @@ import { artistMain as formatArtistMainLink } from '#/formatters/links'
 export default {
   name: 'AlbumHeader',
   components: {
-    BaseHeader,
     BaseHeaderContainer,
     BaseLink
   },
   props: {
+    albumTitle: {
+      type: String,
+      required: true
+    },
     artistName: {
       type: String,
       required: true
     },
-    albumTitle: {
-      type: String,
-      required: true
-    }
+    albumExtraTitle: String
   },
   computed: {
     artistMainLinkFormatted () {

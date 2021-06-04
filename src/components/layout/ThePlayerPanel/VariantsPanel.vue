@@ -54,10 +54,10 @@ export default {
 
 .variants-block
   @extend .relative
-  width: 300px
+  width: 330px
   height: 0
   padding-top: 30px
   transition: 0.25s
   &.visible
-    height: 275px
+    height: 280px
 </style>

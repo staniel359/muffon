@@ -1,7 +1,8 @@
 <template>
   <AlbumHeader
-    :artistName="artistName"
     :albumTitle="albumTitle"
+    :albumExtraTitle="albumExtraTitle"
+    :artistName="artistName"
   />
 
   <SecondarySection
@@ -28,11 +29,14 @@ export default {
     requestAlbumData: Object
   },
   computed: {
-    artistName () {
-      return this.albumData.artist.name
-    },
     albumTitle () {
       return this.albumData.title
+    },
+    albumExtraTitle () {
+      return this.albumData.extra_title
+    },
+    artistName () {
+      return this.albumData.artist.name
     }
   }
 }

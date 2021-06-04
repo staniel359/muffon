@@ -1,20 +1,30 @@
 <template>
-  <h4 class="header">
+  <BaseHeaderContainer tag="h4">
     <BaseLink
       :link="trackMainLinkFormatted"
       :text="trackTitle"
       @click.stop="handleLinkClick"
     />
-  </h4>
+
+    <span
+      v-if="trackExtraTitle"
+      class="sub header description main-extra-title"
+    >
+      {{ &nbsp; }}
+      {{ trackExtraTitle }}
+    </span>
+  </BaseHeaderContainer>
 </template>
 
 <script>
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
 import { trackMain as formatTrackMainLink } from '#/formatters/links'
 
 export default {
   name: 'TrackTitle',
   components: {
+    BaseHeaderContainer,
     BaseLink
   },
   props: {
@@ -25,7 +35,8 @@ export default {
     artistName: {
       type: String,
       required: true
-    }
+    },
+    trackExtraTitle: String
   },
   emits: [
     'linkClick'
@@ -46,4 +57,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.description
+  font-weight: 400 !important
+</style>
