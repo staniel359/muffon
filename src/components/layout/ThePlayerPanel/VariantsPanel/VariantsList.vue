@@ -17,7 +17,9 @@
             :isLoading="slotProps.isLoading"
             :isError="slotProps.isError"
             :isCurrent="slotProps.isCurrent"
+            isWithImage
             isWithArtistName
+            isWithAlbumTitle
             isWithDuration
           />
         </template>
