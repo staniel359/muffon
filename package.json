@@ -23,7 +23,7 @@
     "postuninstall": "electron-builder install-app-deps"
   },
   "dependencies": {
-    "@sentry/vue": "^6.4.1",
+    "@sentry/vue": "^6.5.1",
     "axios": "^0.21.1",
     "deepmerge": "^4.2.2",
     "electron-store": "^8.0.0",
@@ -32,22 +32,22 @@
     "vue": "^3.0.11",
     "vue-i18n": "^9.1.6",
     "vue-router": "^4.0.8",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.2",
+    "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.11",
     "cross-env": "^7.0.3",
-    "electron": "^12.0.9",
+    "electron": "^12.0.10",
     "electron-builder": "^22.11.5",
     "electron-devtools-installer": "^3.2.0",
-    "eslint": "^7.26.0",
-    "eslint-config-standard": "^16.0.2",
-    "eslint-plugin-import": "^2.23.2",
+    "eslint": "^7.27.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.9.0",
-    "sass": "^1.32.13",
+    "eslint-plugin-vue": "^7.10.0",
+    "sass": "^1.34.1",
     "vite": "2.3.3"
   }
 }
