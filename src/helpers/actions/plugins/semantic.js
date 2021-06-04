@@ -34,12 +34,18 @@ export function setSearchSource (el, source) {
 
 // Transition
 
-export function setTransition (el, options) {
-  $(el).transition(options).transition('hide')
+export function showTransition (el) {
+  $(el).transition({
+    animation: 'fade in',
+    duration: 150
+  })
 }
 
-export function toggleTransition (el, options) {
-  $(el).transition(options)
+export function hideTransition (el) {
+  $(el).transition({
+    animation: 'fade out',
+    duration: 150
+  })
 }
 
 // Visibility

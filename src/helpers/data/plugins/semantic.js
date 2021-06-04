@@ -33,13 +33,6 @@ export function mainHistoryInputOptions ({ source, onSelect }) {
   }
 }
 
-export function mainTransitionOptions () {
-  return {
-    animation: 'fade',
-    duration: 150
-  }
-}
-
 export function mainSidebarOptions ({ onShow, onVisible, onHide } = {}) {
   return {
     closable: false,

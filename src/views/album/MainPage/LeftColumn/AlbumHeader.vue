@@ -1,6 +1,6 @@
 <template>
   <BaseTransitionContainer
-    class="album-full-title"
+    class="album-full-title transition hidden"
     :scrollable="scrollable"
   >
     <BaseHeader
