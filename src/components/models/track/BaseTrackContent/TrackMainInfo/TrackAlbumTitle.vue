@@ -1,11 +1,11 @@
 <template>
-  <div class="description">
+  <small class="description">
     <BaseLink
       :link="albumMainLinkFormatted"
       :text="albumTitle"
       @click.stop="handleLinkClick"
     />
-  </div>
+  </small>
 </template>
 
 <script>
