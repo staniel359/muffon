@@ -1,16 +1,16 @@
 import fetchVariantAudioData from '#/actions/audio/variant/fetchData'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 
-export default function ({ index }) {
+export default function ({ variantId }) {
   this.isLoading = true
   this.error = null
 
-  const variantAudioDataArgs = { index }
+  const variantAudioDataArgs = { variantId }
 
   const handleError = error => {
     this.error = error
 
-    raiseProductionError(error)
+    handleEnvError(error)
   }
 
   const handleFinish = () => {

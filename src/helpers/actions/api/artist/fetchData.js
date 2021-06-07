@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 
 export default function ({ artistName, scope = '', page, limit }) {
   this.isLoading = true
@@ -26,7 +26,7 @@ export default function ({ artistName, scope = '', page, limit }) {
   const handleError = error => {
     this.error = error
 
-    raiseProductionError(error)
+    handleEnvError(error)
   }
 
   const handleFinish = () => {

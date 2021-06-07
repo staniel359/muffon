@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 import formatRequestUrl from './formatters/requestUrl'
 
 export default function ({
@@ -34,7 +34,7 @@ export default function ({
   const handleError = error => {
     this.error = error
 
-    raiseProductionError(error)
+    handleEnvError(error)
   }
 
   const handleFinish = () => {

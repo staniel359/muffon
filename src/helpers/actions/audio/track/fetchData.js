@@ -3,6 +3,8 @@ import fetchVariantData from '#/actions/audio/variant/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
 import {
   setCurrentTrackId as setPlayerCurrentTrackId,
+  setCurrentVariantId as setPlayerCurrentVariantId,
+  getVariants as getPlayerVariants,
   resetVariants as resetPlayerVariants
 } from '#/actions/player'
 import { setCurrentTrackId as setQueueCurrentTrackId } from '#/actions/queue'
@@ -40,15 +42,23 @@ export default function ({
       .then(handleSearchSuccess)
   }
 
-  const handleSearchSuccess = () => {
-    const variantDataArgs = { index: 0 }
+  const getFirstVariantId = () => {
+    return getPlayerVariants()[0].uuid
+  }
 
-    return fetchVariantData(variantDataArgs)
+  const handleSearchSuccess = () => {
+    const variantId = getFirstVariantId()
+
+    return fetchVariantData({ variantId })
       .then(handleVariantSuccess)
   }
 
   const handleVariantSuccess = () => {
     setCurrentTrackIds()
+
+    setPlayerCurrentVariantId(
+      getFirstVariantId()
+    )
   }
 
   if (audioData?.present) {

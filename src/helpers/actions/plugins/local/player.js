@@ -8,6 +8,14 @@ export function getCurrentTrackId () {
   return local.get('player.currentTrackId')
 }
 
+export function setCurrentVariantId (value) {
+  local.set('player.currentVariantId', value)
+}
+
+export function getCurrentVariantId () {
+  return local.get('player.currentVariantId')
+}
+
 export function setPlaying (value) {
   local.set('player.playing', value)
 }

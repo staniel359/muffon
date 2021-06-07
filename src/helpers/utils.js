@@ -2,8 +2,10 @@ export { v4 as generateKey } from 'uuid'
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 
-export function raiseProductionError (error) {
-  if (!isDevelopment) {
+export function handleEnvError (error) {
+  if (isDevelopment) {
+    console.log(error)
+  } else {
     throw error
   }
 }

@@ -4,7 +4,7 @@ import {
   setCurrentTrackId as setQueueCurrentTrackId
 } from '#/actions/queue'
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 
 export default function fetchData ({ position }) {
   const followingTrackData = getQueueFollowingTrack({
@@ -37,7 +37,7 @@ export default function fetchData ({ position }) {
     const handleError = error => {
       retry()
 
-      raiseProductionError(error)
+      handleEnvError(error)
     }
 
     const retry = () => {

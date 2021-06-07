@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 
 export default function ({
   sourceId = 'lastfm',
@@ -26,7 +26,7 @@ export default function ({
   const handleError = error => {
     this.error = error
 
-    raiseProductionError(error)
+    handleEnvError(error)
   }
 
   const handleFinish = () => {

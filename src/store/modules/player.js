@@ -3,7 +3,7 @@ export default {
   state: {
     playing: null,
     currentTrackId: null,
-    currentVariantIndex: null,
+    currentVariantId: null,
     sourceId: null,
     variants: []
   },
@@ -22,8 +22,8 @@ export default {
     SET_CURRENT_TRACK_ID (state, value) {
       state.currentTrackId = value
     },
-    SET_CURRENT_VARIANT_INDEX (state, value) {
-      state.currentVariantIndex = value
+    SET_CURRENT_VARIANT_ID (state, value) {
+      state.currentVariantId = value
     },
     SET_SOURCE_ID (state, value) {
       state.sourceId = value
@@ -39,8 +39,8 @@ export default {
     setCurrentTrackId ({ commit }, value) {
       commit('SET_CURRENT_TRACK_ID', value)
     },
-    setCurrentVariantIndex ({ commit }, value) {
-      commit('SET_CURRENT_VARIANT_INDEX', value)
+    setCurrentVariantId ({ commit }, value) {
+      commit('SET_CURRENT_VARIANT_ID', value)
     },
     setSourceId ({ commit }, value) {
       commit('SET_SOURCE_ID', value)

@@ -36,9 +36,9 @@ export function setCurrentTrackId (value) {
   )
 }
 
-export function setCurrentVariantIndex (value) {
+export function setCurrentVariantId (value) {
   store.dispatch(
-    'player/setCurrentVariantIndex',
+    'player/setCurrentVariantId',
     value
   )
 }
@@ -58,7 +58,7 @@ export function stopAndClose () {
   stopAudio()
 
   resetCurrentTrackId()
-  resetCurrentVariantIndex()
+  resetCurrentVariantId()
   resetPlaying()
   resetVariants()
   resetQueue()
@@ -71,9 +71,9 @@ function resetCurrentTrackId () {
   )
 }
 
-export function resetCurrentVariantIndex () {
+export function resetCurrentVariantId () {
   store.dispatch(
-    'player/setCurrentVariantIndex',
+    'player/setCurrentVariantId',
     null
   )
 }
@@ -116,10 +116,10 @@ export function getIsCurrentTrack ({ trackId }) {
   )
 }
 
-export function getIsCurrentVariant ({ variantIndex }) {
+export function getIsCurrentVariant ({ variantId }) {
   return (
-    variantIndex ===
-      store.state.player.currentVariantIndex
+    variantId ===
+      store.state.player.currentVariantId
   )
 }
 

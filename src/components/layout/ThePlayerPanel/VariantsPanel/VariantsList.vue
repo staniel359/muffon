@@ -5,11 +5,10 @@
   >
     <BaseListContainer class="selection">
       <BaseTrackVariantContainer
-        v-for="(variantData, index) in variantsFormatted"
+        v-for="variantData in variantsFormatted"
         class="item main-simple-list-item"
         :key="variantData.uuid"
         :variantData="variantData"
-        :index="index"
       >
         <template #default="slotProps">
           <BaseTrackContent
@@ -37,7 +36,7 @@ import BaseTrackVariantContainer
 import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
 import { collection as formatCollection } from '#/formatters'
 import {
-  resetCurrentVariantIndex as resetPlayerCurrentVariantIndex
+  resetCurrentVariantId as resetPlayerCurrentVariantId
 } from '#/actions/player'
 
 export default {
@@ -73,7 +72,7 @@ export default {
     handleVariantsChange () {
       this.scrollToListTop()
 
-      resetPlayerCurrentVariantIndex()
+      resetPlayerCurrentVariantId()
     },
     scrollToListTop () {
       this.segment.scrollTo(0, 0)

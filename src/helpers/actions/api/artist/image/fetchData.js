@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 
 export default function ({ artistName, isInteractive }) {
   this.isLoading = true
@@ -29,7 +29,7 @@ export default function ({ artistName, isInteractive }) {
     this.error = error
     this.images = null
 
-    raiseProductionError(error)
+    handleEnvError(error)
   }
 
   const handleFinish = () => {

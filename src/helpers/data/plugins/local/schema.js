@@ -11,6 +11,10 @@ export default {
     type: ['null', 'string'],
     default: null
   },
+  'player.currentVariantId': {
+    type: ['null', 'string'],
+    default: null
+  },
   'player.playing': {
     type: ['null', 'object'],
     default: null

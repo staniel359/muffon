@@ -21,8 +21,8 @@ import { toggleAction as toggleAudioAction } from '#/actions/audio'
 export default {
   name: 'BaseTrackVariantContainer',
   props: {
-    index: {
-      type: Number,
+    variantData: {
+      type: Object,
       required: true
     }
   },
@@ -35,11 +35,14 @@ export default {
   computed: {
     isCurrent () {
       return getIsPlayerCurrentVariant({
-        variantIndex: this.index
+        variantId: this.variantId
       })
     },
+    variantId () {
+      return this.variantData.uuid
+    },
     variantDataArgs () {
-      return { index: this.index }
+      return { variantId: this.variantId }
     }
   },
   methods: {

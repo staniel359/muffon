@@ -9,6 +9,7 @@ import {
 } from '#/actions/plugins/local/layout'
 import {
   setCurrentTrackId as setLocalPlayerCurrentTrackId,
+  setCurrentVariantId as setLocalPlayerCurrentVariantId,
   setPlaying as setLocalPlayerPlaying,
   setSourceId as setLocalPlayerSourceId,
   setVariants as setLocalPlayerVariants
@@ -28,6 +29,7 @@ export default {
     ...mapState('player', {
       playerPlaying: 'playing',
       playerCurrentTrackId: 'currentTrackId',
+      playerCurrentVariantId: 'currentVariantId',
       playerVariants: 'variants',
       playerSourceId: 'sourceId'
     }),
@@ -40,6 +42,7 @@ export default {
   watch: {
     isDarkMode: 'handleIsDarkModeChange',
     playerCurrentTrackId: 'handlePlayerCurrentTrackIdChange',
+    playerCurrentVariantId: 'handlePlayerCurrentVariantIdChange',
     playerPlaying: 'handlePlayerPlayingChange',
     playerSourceId: 'handlePlayerSourceIdChange',
     playerVariants: 'handlePlayerVariantsChange',
@@ -53,6 +56,9 @@ export default {
     },
     handlePlayerCurrentTrackIdChange (value) {
       setLocalPlayerCurrentTrackId(value)
+    },
+    handlePlayerCurrentVariantIdChange (value) {
+      setLocalPlayerCurrentVariantId(value)
     },
     handlePlayerPlayingChange (value) {
       setLocalPlayerPlaying(value)

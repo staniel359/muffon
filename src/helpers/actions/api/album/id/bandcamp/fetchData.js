@@ -1,5 +1,5 @@
 import fetchBandcampIdData from '#/actions/api/id/bandcamp/fetchData'
-import { raiseProductionError } from '#/utils'
+import { handleEnvError } from '#/utils'
 
 export default function ({ model, artistName, title, paramsData }) {
   this.isLoading = true
@@ -23,7 +23,7 @@ export default function ({ model, artistName, title, paramsData }) {
     this.isLoading = false
     this.error = error
 
-    raiseProductionError(error)
+    handleEnvError(error)
   }
 
   return fetchBandcampIdData(bandcampIdDataArgs)

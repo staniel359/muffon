@@ -8,6 +8,7 @@ import {
 } from '#/actions/plugins/local/layout'
 import {
   getCurrentTrackId as getLocalPlayerCurrentTrackId,
+  getCurrentVariantId as getLocalPlayerCurrentVariantId,
   getPlaying as getLocalPlayerPlaying,
   getSourceId as getLocalPlayerSourceId,
   getVariants as getLocalPlayerVariants
@@ -21,6 +22,7 @@ import {
 import { setIsDarkMode } from '#/actions/layout'
 import {
   setCurrentTrackId as setPlayerCurrentTrackId,
+  setCurrentVariantId as setPlayerCurrentVariantId,
   setPlaying as setPlayerPlaying,
   setSourceId as setPlayerSourceId,
   setVariants as setPlayerVariants
@@ -40,6 +42,9 @@ export default {
 
     setPlayerCurrentTrackId(
       getLocalPlayerCurrentTrackId()
+    )
+    setPlayerCurrentVariantId(
+      getLocalPlayerCurrentVariantId()
     )
     setPlayerPlaying(
       getLocalPlayerPlaying(),
