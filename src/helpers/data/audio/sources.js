@@ -61,21 +61,30 @@ export default [
     ]
   },
   {
-    id: 'lastfm',
-    icon: 'lastfm',
-    name: 'Last.FM',
-    isStreamable: false,
-    types: [
-      'album'
-    ]
-  },
-  {
     id: 'discogs',
     icon: 'discogs',
     name: 'Discogs',
     isStreamable: false,
     types: [
       'group',
+      'album'
+    ]
+  },
+  {
+    id: 'genius',
+    icon: 'genius',
+    name: 'Genius',
+    isStreamable: false,
+    types: [
+      'album'
+    ]
+  },
+  {
+    id: 'lastfm',
+    icon: 'lastfm',
+    name: 'Last.FM',
+    isStreamable: false,
+    types: [
       'album'
     ]
   },
@@ -92,10 +101,5 @@ export default [
     id: 'youtube',
     icon: 'youtube',
     name: 'YouTube'
-  },
-  {
-    id: 'genius',
-    icon: 'genius',
-    name: 'Genius'
   }
 ]

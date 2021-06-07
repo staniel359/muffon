@@ -47,6 +47,10 @@ export default function ({ sourceId, albumData }) {
         return {
           albumId: albumData.spotify_id
         }
+      case 'genius':
+        return {
+          albumId: albumData.genius_id
+        }
       default:
         return {}
     }
