@@ -63,9 +63,10 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      searchData: null,
       error: null,
-      searchData: null
+      isActivated: false,
+      isLoading: false
     }
   },
   computed: {
@@ -83,10 +84,23 @@ export default {
       return this.$refs.tab
     }
   },
-  mounted () {
-    this.fetchData()
+  watch: {
+    isActive: {
+      immediate: true,
+      handler: 'handleIsActive'
+    },
+    isActivated: {
+      immediate: true,
+      handler: 'handleIsActivated'
+    }
   },
   methods: {
+    handleIsActive (value) {
+      value && (this.isActivated = true)
+    },
+    handleIsActivated (value) {
+      value && this.fetchData()
+    },
     handleFocus () {
       this.$refs.tab.scrollTo(0, 0)
     },

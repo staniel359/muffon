@@ -19,8 +19,8 @@
 <script>
 import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import BaseSearchTabContainer from '@/containers/BaseSearchTabContainer.vue'
-import tabs from '#/data/searchTabs'
 import { collection as formatCollection } from '#/formatters'
+import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SearchTabs',
@@ -32,9 +32,45 @@ export default {
     query: String,
     searchKey: String
   },
+  data () {
+    return {
+      tabs: [
+        {
+          name: localize(
+            'layout.search.tabs.artists'
+          ),
+          scope: 'artists',
+          clientPageLimit: 20,
+          responsePageLimit: 20,
+          component: 'BaseArtistsSimpleList',
+          isWithListenersCount: true
+        },
+        {
+          name: localize(
+            'layout.search.tabs.albums'
+          ),
+          scope: 'albums',
+          clientPageLimit: 20,
+          responsePageLimit: 20,
+          component: 'BaseAlbumsSimpleList',
+          isWithListenersCount: true
+        },
+        {
+          name: localize(
+            'layout.search.tabs.tracks'
+          ),
+          scope: 'tracks',
+          clientPageLimit: 50,
+          responsePageLimit: 50,
+          component: 'BaseTracksSimpleList',
+          isWithListenersCount: false
+        }
+      ]
+    }
+  },
   computed: {
     tabsFormatted () {
-      return formatCollection(tabs)
+      return formatCollection(this.tabs)
     }
   }
 }
