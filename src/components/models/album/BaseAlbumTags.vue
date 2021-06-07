@@ -1,5 +1,6 @@
 <template>
   <BaseTagsList
+    v-if="tags.length"
     :tags="tags"
     :isMore="isMore"
     @viewMore="handleViewMore"

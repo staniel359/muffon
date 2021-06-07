@@ -13,7 +13,7 @@
     />
 
     <BaseLabelLinkContainer
-      v-if="isRenderMore"
+      v-if="isMore"
       @click="handleViewMoreClick"
     >
       <span class="link">
@@ -51,11 +51,6 @@ export default {
   emits: [
     'viewMore'
   ],
-  computed: {
-    isRenderMore () {
-      return this.isMore && this.tags.length
-    }
-  },
   methods: {
     handleViewMoreClick () {
       this.$emit('viewMore')

@@ -7,6 +7,7 @@
     <template v-else-if="isAnySimilar">
       <BaseLabel :text="similarTextFormatted" />
       <BaseTagsList
+        v-if="similar.length"
         :tags="similar"
         :isWithIcon="false"
       />
