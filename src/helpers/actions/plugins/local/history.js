@@ -23,8 +23,10 @@ export function update (key, item) {
   const history = local.get(historyKey)
 
   const isNewItem =
-    item.toLowerCase() !==
-      history[0]?.toLowerCase()
+    item && (
+      item.toLowerCase() !==
+        history[0]?.toLowerCase()
+    )
   const newHistory = [item, ...history]
 
   isNewItem && local.set(historyKey, newHistory)
