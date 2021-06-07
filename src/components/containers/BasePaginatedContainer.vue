@@ -296,11 +296,18 @@ export default {
       if (value) {
         this.isFocusable && this.$emit('focus')
 
-        !this.isCollectionFull && this.fetchData()
+        !this.isCollectionFull && this.$nextTick(() => {
+          this.fetchData()
+        })
       }
     },
     fetchData () {
-      this.$emit('fetchData', this.requestPage)
+      this.$nextTick(() => {
+        this.$emit(
+          'fetchData',
+          this.requestPage
+        )
+      })
     },
     setCollections () {
       this.clientCollectionPaginated =

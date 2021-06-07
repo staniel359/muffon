@@ -62,8 +62,17 @@ export default {
           scope: 'tracks',
           clientPageLimit: 50,
           responsePageLimit: 50,
-          component: 'BaseTracksSimpleList',
-          isWithListenersCount: false
+          component: 'BaseTracksSimpleList'
+        },
+        {
+          name: localize(
+            'layout.search.tabs.tags'
+          ),
+          scope: 'tags',
+          clientPageLimit: 20,
+          responsePageLimit: 10,
+          component: 'BaseTagsList',
+          isWithIcon: false
         }
       ]
     }

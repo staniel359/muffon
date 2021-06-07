@@ -21,7 +21,8 @@
         <Component
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
-          :isWithListenersCount="tabData.isWithListenersCount"
+          :isWithListenersCount="!!tabData.isWithListenersCount"
+          :isWithIcon="!!tabData.isWithIcon"
           :scrollable="scrollable"
           isWithArtistName
           @linkClick="handleLinkClick"
@@ -37,6 +38,7 @@ import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 import fetchSearchData from '#/actions/api/search/fetchData'
 
 export default {
@@ -45,7 +47,8 @@ export default {
     BasePaginatedContainer,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTagsList
   },
   inject: [
     'hideSearch'

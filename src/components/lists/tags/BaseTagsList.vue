@@ -10,6 +10,7 @@
       v-for="(tagData, index) in tags"
       :key="index"
       :tagName="tagData.name"
+      @click="handleClick"
     />
 
     <BaseLabelLinkContainer
@@ -49,9 +50,13 @@ export default {
     isMore: Boolean
   },
   emits: [
+    'linkClick',
     'viewMore'
   ],
   methods: {
+    handleClick () {
+      this.$emit('linkClick')
+    },
     handleViewMoreClick () {
       this.$emit('viewMore')
     }

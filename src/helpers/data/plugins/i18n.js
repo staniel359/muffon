@@ -28,7 +28,8 @@ export const messages = {
         tabs: {
           artists: 'Artists',
           albums: 'Albums',
-          tracks: 'Tracks'
+          tracks: 'Tracks',
+          tags: 'Tags'
         }
       },
       player: {
