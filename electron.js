@@ -33,8 +33,9 @@ const browserWindowOptions = {
   autoHideMenuBar: true,
   show: false,
   webPreferences: {
-    nodeIntegration: true,
     contextIsolation: false,
+    devTools: isDevelopment,
+    nodeIntegration: true,
     webSecurity: false
   }
 }
