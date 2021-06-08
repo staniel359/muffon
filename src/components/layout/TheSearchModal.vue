@@ -26,8 +26,7 @@ export default {
   mounted () {
     Mousetrap.bind(
       'mod+f',
-      this.handleSearchCall,
-      'keyup'
+      this.handleSearchCall
     )
   },
   methods: {

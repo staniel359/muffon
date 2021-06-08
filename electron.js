@@ -16,6 +16,7 @@ const height = 600
 
 const isDevelopment =
   process.env.NODE_ENV === 'development'
+const isOSX = process.platform === 'darwin'
 
 const iconPath = path.join(
   __dirname,
@@ -38,18 +39,20 @@ const browserWindowOptions = {
   }
 }
 
-let win = null
+let mainWindow = null
 let tray = null
 
 if (isDevelopment) {
-  app.setPath(
-    'userData',
-    path.join(__dirname, 'electron-data')
+  const userDataPath = path.join(
+    __dirname,
+    'electron-data'
   )
+
+  app.setPath('userData', userDataPath)
 }
 
 function createWindow () {
-  win = new BrowserWindow(
+  mainWindow = new BrowserWindow(
     browserWindowOptions
   )
 
@@ -60,15 +63,15 @@ function createWindow () {
     } = require('electron-devtools-installer')
 
     installExtension(VUEJS_DEVTOOLS).then(() => {
-      win.loadURL(developmentUrl)
+      mainWindow.loadURL(developmentUrl)
     })
 
-    win.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
   }
 
   const setupProduction = () => {
-    win.loadURL(productionPath)
-    win.setMenu(null)
+    mainWindow.loadURL(productionPath)
+    mainWindow.setMenu(null)
   }
 
   if (isDevelopment) {
@@ -78,53 +81,56 @@ function createWindow () {
   }
 
   const handleReadyToShow = () => {
-    win.setMinimumSize(width, height)
-    win.show()
+    mainWindow.setMinimumSize(width, height)
+    mainWindow.show()
   }
 
   const handleClose = event =>  {
     event.preventDefault()
 
-    win.hide()
+    mainWindow.hide()
   }
 
-  win.on('ready-to-show', handleReadyToShow)
-  win.on('close', handleClose)
+  mainWindow.on('ready-to-show', handleReadyToShow)
+  mainWindow.on('close', handleClose)
 
   const handleNewWindow = event => {
     event.preventDefault()
   }
 
-  win.webContents.on(
+  mainWindow.webContents.on(
     'new-window',
     handleNewWindow
   )
 }
 
-function createTray () {
-  tray = new Tray(iconPath)
-
-  const handleCloseClick = () => {
+function createTrayOrDock () {
+  const handleQuitClick = () => {
     app.exit()
   }
 
-  const menuItems = [
+  const menu = Menu.buildFromTemplate([
     {
       type: 'normal',
-      label: 'Close',
-      click: handleCloseClick
+      label: 'Quit',
+      click: handleQuitClick
     }
-  ]
-  const menu = Menu.buildFromTemplate(menuItems)
+  ])
 
-  tray.setContextMenu(menu)
-  tray.setToolTip(appName)
+  if (isOSX) {
+    app.dock.setMenu(menu)
+  } else {
+    tray = new Tray(iconPath)
 
-  const handleClick = () => {
-    win.show()
+    tray.setContextMenu(menu)
+    tray.setToolTip(appName)
+
+    const handleTrayIconClick = () => {
+      mainWindow.show()
+    }
+
+    tray.on('click', handleTrayIconClick)
   }
-
-  tray.on('click', handleClick)
 }
 
 function createHeadersHandler () {
@@ -150,7 +156,7 @@ function setup () {
   ElectronStore.initRenderer()
 
   createWindow()
-  createTray()
+  createTrayOrDock()
   createHeadersHandler()
 }
 
@@ -162,10 +168,21 @@ function handleAllWindowsClose (event) {
   event.preventDefault()
 }
 
+function handleActivate () {
+  isAnyWindowsOpen =
+    !!BrowserWindow.getAllWindows().length
+
+  if (!isAnyWindowsOpen) {
+    createWindow()
+  }
+}
+
 app.on(
   'window-all-closed',
   handleAllWindowsClose
 )
+
+app.on('activate', handleActivate)
 
 function handleSetTrayTooltip (event, value) {
   tray.setToolTip(value)
