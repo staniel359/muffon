@@ -1,0 +1,52 @@
+name: main
+on: workflow_dispatch
+
+jobs:
+  CD:
+    runs-on: macos-latest
+
+    steps:
+      - name: Set up checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Yarn cache
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-modules-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-modules-cache-
+
+      - name: Set up Electron cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.cache/electron
+          key: ${{ runner.os }}-electron-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-electron-cache-
+
+      - name: Set up Electron Builder cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.cache/electron-builder
+          key: ${{ runner.os }}-electron-builder-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-electron-builder-cache-
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '15.x'
+
+      - name: Set up dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Release
+        env:
+          ELECTRON_CACHE: ${{ github.workspace }}/.cache/electron
+          ELECTRON_BUILDER_CACHE: ${{ github.workspace }}/.cache/electron-builder
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: yarn release
+
+      - name: Clear Wine cache
+        run: rm -rf ${{ github.workspace }}/.cache/electron-builder/wine
