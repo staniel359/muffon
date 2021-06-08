@@ -25,12 +25,17 @@ export default {
   },
   mounted () {
     Mousetrap.bind(
-      ['ctrl+f', 'command+f'],
-      this.show,
+      'mod+f',
+      this.handleSearchCall,
       'keyup'
     )
   },
   methods: {
+    handleSearchCall () {
+      this.show()
+
+      return false
+    },
     handleVisible () {
       this.$refs.search.focusInput()
     },
