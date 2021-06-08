@@ -1,4 +1,11 @@
-const { app, BrowserWindow, Tray, Menu, ipcMain } = require('electron')
+const {
+  app,
+  BrowserWindow,
+  Tray,
+  Menu,
+  ipcMain,
+  session
+} = require('electron')
 const path = require('path')
 const ElectronStore = require('electron-store')
 
@@ -120,11 +127,31 @@ function createTray () {
   tray.on('click', handleClick)
 }
 
+function createHeadersHandler () {
+  const filter = {
+    urls: ['https://*.youtube.com/*']
+  }
+
+  session
+    .defaultSession
+    .webRequest
+    .onBeforeSendHeaders(filter, (details, callback) => {
+      details.requestHeaders['Referer'] =
+        'https://www.youtube.com'
+
+      callback({
+        cancel: false,
+        requestHeaders: details.requestHeaders
+      })
+    })
+  }
+
 function setup () {
   ElectronStore.initRenderer()
 
   createWindow()
   createTray()
+  createHeadersHandler()
 }
 
 app.whenReady().then(setup)

@@ -26,7 +26,7 @@ export default {
   computed: {
     embedOptions () {
       return mainEmbedOptions({
-        id: this.videoId,
+        videoId: this.videoId,
         placeholder: this.placeholder
       })
     },

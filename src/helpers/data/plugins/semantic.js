@@ -104,15 +104,11 @@ export function mainCheckboxOptions ({ onChecked, onUnchecked } = {}) {
   }
 }
 
-export function mainEmbedOptions ({
-  source = 'youtube',
-  id,
-  placeholder
-} = {}
-) {
+export function mainEmbedOptions ({ videoId, placeholder }) {
+  const url = `https://www.youtube.com/embed/${videoId}`
+
   return {
-    source,
-    id,
+    url,
     placeholder
   }
 }
