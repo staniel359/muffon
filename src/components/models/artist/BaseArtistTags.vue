@@ -4,7 +4,7 @@
     v-bind="$attrs"
     :tags="tags"
     :isMore="isMore"
-    @viewMore="handleViewMore"
+    @moreClick="handleMoreClick"
   />
 
   <ArtistTagsModal
@@ -31,11 +31,14 @@ export default {
   },
   computed: {
     isRenderModal () {
-      return this.isMore && this.tags.length
+      return (
+        this.isMore &&
+          this.tags.length
+      )
     }
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

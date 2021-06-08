@@ -2,7 +2,7 @@
   <BaseDescription
     :description="description"
     :isMore="isMore"
-    @viewMore="handleViewMore"
+    @moreClick="handleMoreClick"
   />
 
   <TrackDescriptionModal
@@ -31,7 +31,7 @@ export default {
     trackTitle: String
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

@@ -3,7 +3,7 @@
     v-bind="$attrs"
     :description="description"
     :isMore="isMore"
-    @viewMore="handleViewMore"
+    @moreClick="handleMoreClick"
   />
 
   <TagDescriptionModal
@@ -30,7 +30,7 @@ export default {
     trackTitle: String
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

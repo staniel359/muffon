@@ -2,7 +2,7 @@
   <BaseDescription
     :description="description"
     :isMore="isMore"
-    @viewMore="handleViewMore"
+    @moreClick="handleMoreClick"
   />
 
   <AlbumDescriptionModal
@@ -29,7 +29,7 @@ export default {
     requestAlbumData: Object
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

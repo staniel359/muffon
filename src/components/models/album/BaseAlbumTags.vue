@@ -3,7 +3,7 @@
     v-if="tags.length"
     :tags="tags"
     :isMore="isMore"
-    @viewMore="handleViewMore"
+    @moreClick="handleMoreClick"
   />
 
   <AlbumTagsModal
@@ -30,11 +30,14 @@ export default {
   },
   computed: {
     isRenderModal () {
-      return this.isMore && this.tags.length
+      return (
+        this.isMore &&
+          this.tags.length
+      )
     }
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

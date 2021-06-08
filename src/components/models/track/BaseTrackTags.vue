@@ -3,7 +3,7 @@
     v-if="tags.length"
     :tags="tags"
     :isMore="isMore"
-    @viewMore="handleViewMore"
+    @moreClick="handleMoreClick"
   />
 
   <TrackTagsModal
@@ -32,11 +32,14 @@ export default {
   },
   computed: {
     isRenderModal () {
-      return this.isMore && this.tags.length
+      return (
+        this.isMore &&
+          this.tags.length
+      )
     }
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

@@ -1,6 +1,6 @@
 {
   "appId": "com.electron.muffon",
-  "copyright": "Copyright © 2020-2021 staniel359",
+  "copyright": "Copyright © 2020-2021 Aleksey Shpakovsky",
   "win": {
     "icon": "public/icon.ico",
     "verifyUpdateCodeSignature": false

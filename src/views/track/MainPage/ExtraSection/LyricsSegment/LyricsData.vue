@@ -6,9 +6,9 @@
 
     <strong
       class="main-link"
-      @click="handleViewMore"
+      @click="handleMoreClick"
     >
-      {{ readMoreFormatted }}
+      {{ moreFormatted }}
     </strong>
   </div>
 
@@ -35,12 +35,12 @@ export default {
     trackId: Number
   },
   computed: {
-    readMoreFormatted () {
-      return localize('shared.readMore')
+    moreFormatted () {
+      return localize('shared.more')
     }
   },
   methods: {
-    handleViewMore () {
+    handleMoreClick () {
       this.$refs.modal.show()
     }
   }

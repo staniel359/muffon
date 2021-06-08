@@ -5,9 +5,9 @@
     <strong
       v-if="isMore"
       class="main-link"
-      @click="handleViewMore"
+      @click="handleMoreClick"
     >
-      {{ readMoreFormatted }}
+      {{ moreFormatted }}
     </strong>
   </p>
 </template>
@@ -25,16 +25,16 @@ export default {
     isMore: Boolean
   },
   emits: [
-    'viewMore'
+    'moreClick'
   ],
   computed: {
-    readMoreFormatted () {
-      return localize('shared.readMore')
+    moreFormatted () {
+      return localize('shared.more')
     }
   },
   methods: {
-    handleViewMore () {
-      this.$emit('viewMore')
+    handleMoreClick () {
+      this.$emit('moreClick')
     }
   }
 }

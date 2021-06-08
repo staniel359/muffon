@@ -1,10 +1,10 @@
 <template>
   <BaseLabelLinkContainer
-    class="circular small view-more-link"
+    class="circular small more-link"
     :link="artistImagesLinkFormatted"
     :isInverted="false"
   >
-    <i class="ellipsis horizontal icon view-more-icon" />
+    <i class="ellipsis horizontal icon more-icon" />
   </BaseLabelLinkContainer>
 </template>
 
@@ -34,12 +34,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.view-more-link
+.more-link
   @extend .no-margin, .absolute
   bottom: 10px
   right: 10px
   z-index: 1
 
-.view-more-icon
+.more-icon
   @extend .no-margin
 </style>

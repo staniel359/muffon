@@ -15,7 +15,7 @@
 
     <BaseLabelLinkContainer
       v-if="isMore"
-      @click="handleViewMoreClick"
+      @click="handleMoreClick"
     >
       <span class="link">
         ...
@@ -51,14 +51,14 @@ export default {
   },
   emits: [
     'linkClick',
-    'viewMore'
+    'moreClick'
   ],
   methods: {
     handleClick () {
       this.$emit('linkClick')
     },
-    handleViewMoreClick () {
-      this.$emit('viewMore')
+    handleMoreClick () {
+      this.$emit('moreClick')
     }
   }
 }

@@ -63,9 +63,9 @@ export default {
 <style lang="sass" scoped>
 .image-container
   @extend .relative, .cursor-zoom-in
-  .view-more-link
+  .more-link
     @extend .d-none
   &:hover
-    .view-more-link
+    .more-link
       @extend .d-block
 </style>

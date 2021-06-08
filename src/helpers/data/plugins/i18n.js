@@ -7,18 +7,17 @@ export const messages = {
         tags: 'Tags',
         artist: {
           images: 'Images',
-          tracks: 'Tracks',
-          albums: 'Albums',
+          tracks: 'Top tracks',
+          albums: 'Top albums',
           similar: 'Similar'
         },
-        album: {},
         track: {
           similar: 'Similar'
         },
         tag: {
-          artists: 'Artists',
-          albums: 'Albums',
-          tracks: 'Tracks'
+          artists: 'Top artists',
+          albums: 'Top albums',
+          tracks: 'Top tracks'
         }
       },
       search: {
@@ -125,15 +124,15 @@ export const messages = {
       },
       tag: {
         segments: {
+          similar: 'Similar:',
           artists: 'Top artists',
           albums: 'Top albums',
-          tracks: 'Top tracks',
-          similar: 'Similar:'
+          tracks: 'Top tracks'
         }
       }
     },
     shared: {
-      readMore: 'Read more...',
+      more: 'More...',
       listener: '{number} listener | {number} listeners',
       tracks: '{number} track | {number} tracks'
     },
