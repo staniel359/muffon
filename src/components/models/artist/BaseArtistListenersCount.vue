@@ -9,17 +9,13 @@
 </template>
 
 <script>
-import fetchAlbumData from '#/actions/api/album/fetchData'
+import fetchArtistData from '#/actions/api/artist/fetchData'
 import { listenersCount as listenersCountDecorated } from '#/decorators'
 
 export default {
-  name: 'BaseAlbumListenersCount',
+  name: 'BaseArtistListenersCount',
   props: {
     artistName: {
-      type: String,
-      required: true
-    },
-    albumTitle: {
       type: String,
       required: true
     },
@@ -32,14 +28,14 @@ export default {
     return {
       isLoading: false,
       error: null,
-      albumData: null
+      artistData: null
     }
   },
   computed: {
     listenersCountFetched () {
       return (
         this.listenersCount ||
-          this.albumData?.listeners_count ||
+          this.artistData?.listeners_count ||
             0
       )
     },
@@ -48,10 +44,9 @@ export default {
         this.listenersCountFetched
       )
     },
-    albumDataArgs () {
+    artistDataArgs () {
       return {
         artistName: this.artistName,
-        albumTitle: this.albumTitle,
         scope: 'listeners_count'
       }
     }
@@ -68,10 +63,10 @@ export default {
     handleListenersCountFetchedChange (value) {
       this.$emit('loadEnd', value)
     },
-    fetchAlbumData,
+    fetchArtistData,
     fetchData () {
-      this.fetchAlbumData(
-        this.albumDataArgs
+      this.fetchArtistData(
+        this.artistDataArgs
       )
     }
   }

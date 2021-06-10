@@ -15,6 +15,8 @@
     <InfoBlock
       :artistName="artistName"
       :listenersCount="listenersCount"
+      :uuid="uuid"
+      :isWithListenersCount="isWithListenersCount"
     />
   </BaseLinkContainer>
 </template>
@@ -33,13 +35,14 @@ export default {
     InfoBlock
   },
   inject: [
-    'setPaginationItemImage'
+    'findPaginationItem'
   ],
   props: {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    isWithListenersCount: Boolean
   },
   emits: [
     'linkClick'
@@ -67,11 +70,10 @@ export default {
     handleLinkClick () {
       this.$emit('linkClick')
     },
-    handleImageLoadEnd (image) {
-      this.setPaginationItemImage({
-        uuid: this.uuid,
-        image
-      })
+    handleImageLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).image = value
     }
   }
 }

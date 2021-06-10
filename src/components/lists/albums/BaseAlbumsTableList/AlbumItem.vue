@@ -7,9 +7,11 @@
       <InfoSection
         :albumTitle="albumTitle"
         :artistName="albumArtistName"
+        :listenersCount="listenersCount"
+        :uuid="uuid"
         :isWithArtistName="isWithArtistName"
         :isArtistNameActive="isArtistNameActive"
-        isWithListenersCount
+        :isWithListenersCount="isWithListenersCount"
       />
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
@@ -42,7 +44,8 @@ export default {
       required: true
     },
     artistName: String,
-    isWithArtistName: Boolean
+    isWithArtistName: Boolean,
+    isWithListenersCount: Boolean
   },
   emits: [
     'linkClick'
@@ -82,6 +85,12 @@ export default {
     },
     image () {
       return this.albumData.image.small
+    },
+    listenersCount () {
+      return this.albumData.listeners_count
+    },
+    uuid () {
+      return this.albumData.uuid
     }
   },
   methods: {

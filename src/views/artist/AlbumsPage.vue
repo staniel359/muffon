@@ -10,6 +10,7 @@
         :itemsInRow="4"
         :albums="slotProps.albums"
         :artistName="slotProps.artistName"
+        isWithListenersCount
       />
     </template>
   </BaseArtistPaginatedPageContainer>

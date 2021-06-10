@@ -54,7 +54,7 @@ export default {
   },
   provide () {
     return {
-      setPaginationItemImage: this.setPaginationItemImage
+      findPaginationItem: this.findPaginationItem
     }
   },
   props: {
@@ -349,12 +349,10 @@ export default {
         this.$emit('reset')
       })
     },
-    setPaginationItemImage ({ uuid, image }) {
-      const data = this.clientPageCollection.find(item => {
+    findPaginationItem ({ uuid }) {
+      return this.clientPageCollection.find(item => {
         return item.uuid === uuid
       })
-
-      data.image = { ...image }
     }
   }
 }

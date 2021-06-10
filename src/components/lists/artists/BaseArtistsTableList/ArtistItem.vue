@@ -20,12 +20,13 @@
           :text="artistName"
         />
 
-        <small
+        <BaseArtistListenersCount
           v-if="isWithListenersCount"
           class="description"
-        >
-          {{ listenersCountFormatted }}
-        </small>
+          :artistName="artistName"
+          :listenersCount="listenersCount"
+          @loadEnd="handleListenersCountLoadEnd"
+        />
       </div>
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
@@ -36,8 +37,9 @@ import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseArtistListenersCount
+  from '@/models/artist/BaseArtistListenersCount.vue'
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
-import { listenersCount as listenersCountDecorated } from '#/decorators'
 
 export default {
   name: 'ArtistItem',
@@ -45,10 +47,11 @@ export default {
     BaseLinkContainer,
     BaseSimpleCardContainer,
     BaseArtistImage,
-    BaseHeader
+    BaseHeader,
+    BaseArtistListenersCount
   },
   inject: [
-    'setPaginationItemImage'
+    'findPaginationItem'
   ],
   props: {
     artistData: {
@@ -73,12 +76,7 @@ export default {
       return this.artistData.image
     },
     listenersCount () {
-      return this.artistData.listeners_count || 0
-    },
-    listenersCountFormatted () {
-      return listenersCountDecorated(
-        this.listenersCount
-      )
+      return this.artistData.listeners_count
     },
     uuid () {
       return this.artistData.uuid
@@ -88,11 +86,15 @@ export default {
     handleLinkClick () {
       this.$emit('linkClick')
     },
-    handleImageLoadEnd (image) {
-      this.setPaginationItemImage({
-        uuid: this.uuid,
-        image
-      })
+    handleImageLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).image = value
+    },
+    handleListenersCountLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).listeners_count = value
     }
   }
 }

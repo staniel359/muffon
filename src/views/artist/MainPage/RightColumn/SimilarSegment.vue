@@ -11,6 +11,7 @@
       <BaseArtistsTableList
         :itemsInRow="4"
         :artists="slotProps.similar"
+        isWithListenersCount
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>

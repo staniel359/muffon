@@ -37,7 +37,7 @@ export default {
     InfoBlock
   },
   inject: [
-    'setPaginationItemImage'
+    'findPaginationItem'
   ],
   props: {
     artistData: {
@@ -57,11 +57,10 @@ export default {
     }
   },
   methods: {
-    handleImageLoadEnd (image) {
-      this.setPaginationItemImage({
-        uuid: this.uuid,
-        image
-      })
+    handleImageLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).image = value
     }
   }
 }

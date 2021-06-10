@@ -4,7 +4,7 @@
       v-for="artistData in artistsFormatted"
       :key="artistData.uuid"
       :artistData="artistData"
-      :scrollable="scrollable"
+      :isWithListenersCount="isWithListenersCount"
       @linkClick="handleLinkClick"
     />
   </BaseListContainer>
@@ -28,7 +28,7 @@ export default {
         return []
       }
     },
-    scrollable: HTMLDivElement
+    isWithListenersCount: Boolean
   },
   emits: [
     'linkClick'

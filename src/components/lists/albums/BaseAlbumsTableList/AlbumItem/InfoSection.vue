@@ -16,6 +16,8 @@
       class="description"
       :albumTitle="albumTitle"
       :artistName="artistName"
+      :listenersCount="listenersCount"
+      @loadEnd="handleListenersCountLoadEnd"
     />
   </div>
 </template>
@@ -33,6 +35,9 @@ export default {
     ArtistName,
     BaseAlbumListenersCount
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     albumTitle: {
       type: String,
@@ -42,9 +47,18 @@ export default {
       type: String,
       required: true
     },
+    listenersCount: Number,
+    uuid: String,
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,
     isWithListenersCount: Boolean
+  },
+  methods: {
+    handleListenersCountLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).listeners_count = value
+    }
   }
 }
 </script>

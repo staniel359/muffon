@@ -32,7 +32,7 @@ export default {
   data () {
     return {
       viewIndex: 1,
-      viewLimits: [20, 20, 10]
+      viewLimits: [50, 20, 10]
     }
   },
   computed: {

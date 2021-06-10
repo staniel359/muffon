@@ -23,7 +23,6 @@
           :[tabData.scope]="slotProps[tabData.scope]"
           :isWithListenersCount="!!tabData.isWithListenersCount"
           :isWithIcon="!!tabData.isWithIcon"
-          :scrollable="scrollable"
           isWithArtistName
           @linkClick="handleLinkClick"
         />
@@ -82,9 +81,6 @@ export default {
         scope: this.tabData.scope,
         limit: this.tabData.responsePageLimit
       }
-    },
-    scrollable () {
-      return this.$refs.tab
     }
   },
   watch: {

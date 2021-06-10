@@ -37,22 +37,19 @@ export default {
     }
   },
   computed: {
-    images () {
-      return this.artists?.map(artist => {
-        return artist.image.small
-      })
-    },
-    artists () {
-      return this.tagData?.artists?.slice(0, 15)
-    },
-    imagesFormatted () {
-      return formatCollection(this.images)
-    },
     tagDataArgs () {
       return {
         tagName: this.tagName,
-        scope: 'artists'
+        scope: 'images'
       }
+    },
+    images () {
+      return this.tagData?.images
+    },
+    imagesFormatted () {
+      return formatCollection(
+        this.images
+      )
     }
   },
   mounted () {
@@ -61,7 +58,9 @@ export default {
   methods: {
     fetchTagData,
     fetchData () {
-      this.fetchTagData(this.tagDataArgs)
+      this.fetchTagData(
+        this.tagDataArgs
+      )
     }
   }
 }

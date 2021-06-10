@@ -13,6 +13,7 @@
         :albumData="albumData"
         :artistName="artistName"
         :isWithArtistName="isWithArtistName"
+        :isWithListenersCount="isWithListenersCount"
       />
     </div>
   </div>
@@ -40,7 +41,8 @@ export default {
       }
     },
     artistName: String,
-    isWithArtistName: Boolean
+    isWithArtistName: Boolean,
+    isWithListenersCount: Boolean
   },
   computed: {
     albumsFormatted () {

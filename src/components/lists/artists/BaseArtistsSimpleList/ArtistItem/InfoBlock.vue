@@ -6,36 +6,44 @@
       :text="artistName"
     />
 
-    <small
-      v-if="listenersCount"
+    <BaseArtistListenersCount
+      v-if="isWithListenersCount"
       class="description"
-    >
-      {{ listenersCountFormatted }}
-    </small>
+      :artistName="artistName"
+      :listenersCount="listenersCount"
+      @loadEnd="handleListenersCountLoadEnd"
+    />
   </div>
 </template>
 
 <script>
 import BaseHeader from '@/BaseHeader.vue'
-import { listenersCount as listenersCountDecorated } from '#/decorators'
+import BaseArtistListenersCount
+  from '@/models/artist/BaseArtistListenersCount.vue'
 
 export default {
   name: 'InfoBlock',
   components: {
-    BaseHeader
+    BaseHeader,
+    BaseArtistListenersCount
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     artistName: {
       type: String,
       required: true
     },
-    listenersCount: Number
+    listenersCount: Number,
+    uuid: String,
+    isWithListenersCount: Boolean
   },
-  computed: {
-    listenersCountFormatted () {
-      return listenersCountDecorated(
-        this.listenersCount
-      )
+  methods: {
+    handleListenersCountLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).listeners_count = value
     }
   }
 }

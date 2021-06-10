@@ -3,6 +3,7 @@
     :is="listComponent"
     :artists="artists"
     :itemsInRow="5"
+    :isWithListenersCount="isWithListenersCount"
   />
 </template>
 
@@ -29,7 +30,8 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isWithListenersCount: Boolean
   },
   data () {
     return {
@@ -42,7 +44,9 @@ export default {
   },
   computed: {
     listComponent () {
-      return this.listComponents[this.viewIndex]
+      return this.listComponents[
+        this.viewIndex
+      ]
     }
   }
 }

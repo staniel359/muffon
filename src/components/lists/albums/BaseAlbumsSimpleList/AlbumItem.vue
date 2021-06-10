@@ -1,9 +1,4 @@
 <template>
-  <BaseVisibilityItem
-    :scrollable="scrollable"
-    @visible="handleVisible"
-  />
-
   <BaseLinkContainer
     class="item main-simple-list-item"
     :link="linkFormatted"
@@ -17,16 +12,16 @@
     <InfoBlock
       :albumTitle="albumTitle"
       :artistName="artistName"
+      :listenersCount="listenersCount"
+      :uuid="uuid"
       :isWithArtistName="isWithArtistName"
       :isArtistNameActive="isArtistNameActive"
       :isWithListenersCount="isWithListenersCount"
-      :isVisible="isVisible"
     />
   </BaseLinkContainer>
 </template>
 
 <script>
-import BaseVisibilityItem from '@/BaseVisibilityItem.vue'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
@@ -38,7 +33,6 @@ import {
 export default {
   name: 'AlbumItem',
   components: {
-    BaseVisibilityItem,
     BaseLinkContainer,
     BaseImage,
     InfoBlock
@@ -53,10 +47,6 @@ export default {
       type: Object,
       required: true
     },
-    scrollable: {
-      type: HTMLDivElement,
-      required: true
-    },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean
   },
@@ -65,8 +55,7 @@ export default {
   ],
   data () {
     return {
-      isArtistNameActive: false,
-      isVisible: false
+      isArtistNameActive: false
     }
   },
   computed: {
@@ -96,14 +85,17 @@ export default {
     },
     image () {
       return this.albumData.image.extrasmall
+    },
+    listenersCount () {
+      return this.albumData.listeners_count
+    },
+    uuid () {
+      return this.albumData.uuid
     }
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
-    },
-    handleVisible () {
-      this.isVisible = true
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value

@@ -12,6 +12,7 @@
         :itemsInRow="3"
         :artistName="artistName"
         :albums="slotProps.albums"
+        isWithListenersCount
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>

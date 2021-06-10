@@ -12,10 +12,12 @@
     />
 
     <BaseAlbumListenersCount
-      v-if="isRenderListenersCount"
+      v-if="isWithListenersCount"
       class="description"
       :albumTitle="albumTitle"
       :artistName="artistName"
+      :listenersCount="listenersCount"
+      @loadEnd="handleListenersCountLoadEnd"
     />
   </div>
 </template>
@@ -33,6 +35,9 @@ export default {
     ArtistName,
     BaseAlbumListenersCount
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     albumTitle: {
       type: String,
@@ -42,17 +47,17 @@ export default {
       type: String,
       required: true
     },
+    listenersCount: Number,
+    uuid: String,
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,
-    isWithListenersCount: Boolean,
-    isVisible: Boolean
+    isWithListenersCount: Boolean
   },
-  computed: {
-    isRenderListenersCount () {
-      return (
-        this.isWithListenersCount &&
-          this.isVisible
-      )
+  methods: {
+    handleListenersCountLoadEnd (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).listeners_count = value
     }
   }
 }
