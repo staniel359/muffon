@@ -86,7 +86,7 @@ function createWindow () {
     mainWindow.show()
   }
 
-  const handleClose = event =>  {
+  const handleClose = event => {
     event.preventDefault()
 
     mainWindow.hide()
@@ -142,16 +142,15 @@ function createHeadersHandler () {
   session
     .defaultSession
     .webRequest
-    .onBeforeSendHeaders(filter, (details, callback) => {
-      details.requestHeaders['Referer'] =
-        'https://www.youtube.com'
+    .onBeforeSendHeaders(filter, (details, request) => {
+      details.requestHeaders.Referer = 'https://www.youtube.com'
 
-      callback({
+      request({
         cancel: false,
         requestHeaders: details.requestHeaders
       })
     })
-  }
+}
 
 function setup () {
   ElectronStore.initRenderer()
@@ -170,7 +169,7 @@ function handleAllWindowsClose (event) {
 }
 
 function handleActivate () {
-  isAnyWindowsOpen =
+  const isAnyWindowsOpen =
     !!BrowserWindow.getAllWindows().length
 
   if (!isAnyWindowsOpen) {

@@ -1,6 +1,5 @@
+import ElectronStore from 'electron-store'
 import schema from '#/data/plugins/local/schema'
-
-const ElectronStore = require('electron-store')
 
 export default new ElectronStore({
   accessPropertiesByDotNotation: false,

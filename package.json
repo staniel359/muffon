@@ -11,10 +11,10 @@
   "license": "MIT",
   "main": "electron.js",
   "scripts": {
-    "start": "vite",
+    "start": "vue-cli-service serve",
     "start:electron": "cross-env NODE_ENV=development electron .",
-    "lint": "eslint src/**/*.{js,vue}",
-    "build": "vite build",
+    "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build",
     "build:electron": "electron-builder --dir",
     "build:all": "yarn build && yarn build:electron",
     "release:electron": "electron-builder -mwl -p always",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@sentry/vue": "^6.6.0",
     "axios": "^0.21.1",
+    "core-js": "^3.6.5",
     "deepmerge": "^4.2.2",
     "electron-store": "^8.0.0",
     "mousetrap": "^1.6.5",
@@ -35,19 +36,25 @@
     "vuex": "^4.0.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.2.3",
+    "@babel/eslint-parser": "^7.14.5",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.1.1",
+    "@vue/eslint-config-standard": "^5.1.2",
     "cross-env": "^7.0.3",
     "electron": "^13.1.2",
     "electron-builder": "^22.11.5",
     "electron-devtools-installer": "^3.2.0",
     "eslint": "^7.28.0",
-    "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^7.10.0",
     "sass": "^1.34.1",
-    "vite": "^2.3.7"
+    "sass-loader": "^8.0.2"
   }
 }
