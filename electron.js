@@ -24,7 +24,11 @@ const iconPath = path.join(
   'icon.ico'
 )
 const developmentUrl = 'http://localhost:3000'
-const productionPath = `file://${__dirname}/index.html`
+const productionPath = path.join(
+  __dirname,
+  'index.html'
+)
+const productionUrl = `file://${productionPath}`
 
 const browserWindowOptions = {
   width,
@@ -71,7 +75,7 @@ function createWindow () {
   }
 
   const setupProduction = () => {
-    mainWindow.loadURL(productionPath)
+    mainWindow.loadURL(productionUrl)
     mainWindow.setMenu(null)
   }
 
