@@ -323,12 +323,16 @@ a
         @extend .background-grey-inverted
 
 .main-pagination
+  @extend .no-margin
+  align-self: center
   &.inverted
     border: $borderInverted !important
   & > .item
     &:last-child
       &:before
         width: 0
+    & > .direction-icon
+      @extend .no-margin
 
 .main-tabs-container
   @extend .flex-full, .d-flex, .flex-column
@@ -351,3 +355,8 @@ a
 
 .main-extra-title
   @extend .d-inline
+
+.main-image
+  &.inverted
+    &.bordered
+      border: $borderInverted !important

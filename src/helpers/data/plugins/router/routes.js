@@ -11,6 +11,8 @@ import TagMainPage from '%/tag/MainPage.vue'
 import TagArtistsPage from '%/tag/ArtistsPage.vue'
 import TagAlbumsPage from '%/tag/AlbumsPage.vue'
 import TagTracksPage from '%/tag/TracksPage.vue'
+import VideoChannelVideosPage from '%/video/channel/VideosPage.vue'
+import VideoMainPage from '%/video/MainPage.vue'
 
 export default [
   {
@@ -101,6 +103,20 @@ export default [
     exact: true,
     name: 'TagTracksPage',
     component: TagTracksPage,
+    props: true
+  },
+  {
+    path: '/video/channels/:channelId/videos',
+    exact: true,
+    name: 'VideoChannelVideosPage',
+    component: VideoChannelVideosPage,
+    props: true
+  },
+  {
+    path: '/video/videos/:videoId',
+    exact: true,
+    name: 'VideoMainPage',
+    component: VideoMainPage,
     props: true
   }
 ]

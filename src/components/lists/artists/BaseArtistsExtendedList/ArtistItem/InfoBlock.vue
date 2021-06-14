@@ -8,7 +8,7 @@
     />
 
     <BaseArtistTags
-      v-if="tags"
+      v-if="tags.length"
       :tags="tags"
       :artistName="artistName"
       :isMore="isMoreTags"

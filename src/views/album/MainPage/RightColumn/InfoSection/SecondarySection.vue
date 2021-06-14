@@ -10,7 +10,7 @@
   />
 
   <BaseAlbumTags
-    v-if="tags"
+    v-if="tags?.length"
     :tags="tags"
     :requestAlbumData="requestAlbumData"
     :isMore="isMoreTags"

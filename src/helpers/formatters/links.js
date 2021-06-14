@@ -81,3 +81,17 @@ export function tagTracks ({ tagName }) {
     params: { tagName }
   }
 }
+
+export function videoChannelVideos ({ channelId }) {
+  return {
+    name: 'VideoChannelVideosPage',
+    params: { channelId }
+  }
+}
+
+export function videoMain ({ videoId }) {
+  return {
+    name: 'VideoMainPage',
+    params: { videoId }
+  }
+}

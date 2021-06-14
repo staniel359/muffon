@@ -5,19 +5,25 @@ export const messages = {
         home: 'Home',
         artists: 'Artists',
         tags: 'Tags',
+        videos: 'Video',
         artist: {
           images: 'Images',
-          tracks: 'Top tracks',
-          albums: 'Top albums',
+          tracks: 'Tracks',
+          albums: 'Albums',
           similar: 'Similar'
         },
         track: {
           similar: 'Similar'
         },
         tag: {
-          artists: 'Top artists',
-          albums: 'Top albums',
-          tracks: 'Top tracks'
+          artists: 'Artists',
+          albums: 'Albums',
+          tracks: 'Tracks'
+        },
+        video: {
+          channel: {
+            videos: 'Videos'
+          }
         }
       },
       search: {

@@ -5,27 +5,27 @@
     @moreClick="handleMoreClick"
   />
 
-  <AlbumTagsModal
+  <VideoTagsModal
     v-if="isMore"
     ref="modal"
-    :requestAlbumData="requestAlbumData"
+    :videoId="videoId"
   />
 </template>
 
 <script>
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import AlbumTagsModal from './BaseAlbumTags/AlbumTagsModal.vue'
+import VideoTagsModal from './BaseVideoTags/VideoTagsModal.vue'
 
 export default {
-  name: 'BaseAlbumTags',
+  name: 'BaseVideoTags',
   components: {
     BaseTagsList,
-    AlbumTagsModal
+    VideoTagsModal
   },
   props: {
     tags: Array,
     isMore: Boolean,
-    requestAlbumData: Object
+    videoId: String
   },
   methods: {
     handleMoreClick () {

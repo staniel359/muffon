@@ -1,11 +1,14 @@
 <template>
   <img
-    class="ui image"
+    class="ui image main-image"
+    :class="{ inverted: isDarkMode }"
     :[attribute]="image"
   />
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'BaseImage',
   props: {
@@ -16,6 +19,9 @@ export default {
     isLazy: Boolean
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     attribute () {
       return this.isLazy ? 'data-lazy' : 'src'
     }

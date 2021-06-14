@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     image () {
-      return this.videoData.image.small
+      return this.videoData.image.extrasmall
     },
     videoTitle () {
       return this.videoData.title

@@ -1,17 +1,15 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!trackData"
+    :isShowLoader="!videoData"
     :isLoading="isLoading"
     :error="error"
     @refresh="handleRefresh"
   >
     <slot
-      v-if="trackData"
+      v-if="videoData"
       :isLoading="isLoading"
       :error="error"
-      :trackData="trackData"
-      :artistName="artistNameFormatted"
-      :trackTitle="trackTitleFormatted"
+      :videoData="videoData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -22,70 +20,58 @@
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import { setNavigationSections } from '#/actions/layout'
 import {
-  navigation as formatTrackPageNavigation
-} from '#/formatters/navigation/track'
-import fetchTrackData from '#/actions/api/track/fetchData'
+  navigation as formatVideoPageNavigation
+} from '#/formatters/navigation/video'
+import fetchVideoData from '#/actions/api/video/fetchData'
 
 export default {
-  name: 'BaseTrackPageContainer',
+  name: 'BaseVideoPageContainer',
   components: {
     BasePageContainer
   },
   props: {
-    artistName: {
+    videoId: {
       type: String,
       required: true
     },
-    trackTitle: {
-      type: String,
-      required: true
-    },
-    scope: String,
-    responsePageLimit: Number,
     pageNameKey: String
   },
   data () {
     return {
-      isLoading: false,
       error: null,
-      trackData: null
+      videoData: null,
+      isLoading: false
     }
   },
   computed: {
     navigationSections () {
-      return formatTrackPageNavigation({
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
+      return formatVideoPageNavigation({
+        videoId: this.videoId,
+        videoTitle: this.videoTitleFetched,
+        channelId: this.channelIdFetched,
+        channelTitle: this.channelTitleFetched,
         pageNameKey: this.pageNameKey
       })
     },
-    artistNameFormatted () {
-      return (
-        this.trackData?.artist?.name ||
-          this.artistName
-      )
+    videoTitleFetched () {
+      return this.videoData?.title
     },
-    trackTitleFormatted () {
-      return (
-        this.trackData?.title ||
-          this.trackTitle
-      )
+    channelIdFetched () {
+      return this.videoData?.channel?.youtube_id
     },
-    trackDataArgs () {
-      return {
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
-        scope: this.scope,
-        limit: this.responsePageLimit
-      }
+    channelTitleFetched () {
+      return this.videoData?.channel?.title
+    },
+    videoDataArgs () {
+      return { videoId: this.videoId }
     }
   },
   watch: {
-    artistNameFormatted: {
+    videoTitleFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     },
-    trackTitleFormatted: {
+    channelTitleFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     }
@@ -104,10 +90,10 @@ export default {
         this.navigationSections
       )
     },
-    fetchTrackData,
+    fetchVideoData,
     fetchData (page) {
-      this.fetchTrackData({
-        ...this.trackDataArgs,
+      this.fetchVideoData({
+        ...this.videoDataArgs,
         page
       })
     }

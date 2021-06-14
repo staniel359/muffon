@@ -187,7 +187,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.direction-icon
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

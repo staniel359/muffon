@@ -1,13 +1,12 @@
 <template>
   <BaseTagsList
-    v-if="tags.length"
     :tags="tags"
     :isMore="isMore"
     @moreClick="handleMoreClick"
   />
 
   <TrackTagsModal
-    v-if="isRenderModal"
+    v-if="isMore"
     ref="modal"
     :artistName="artistName"
     :trackTitle="trackTitle"
@@ -29,14 +28,6 @@ export default {
     isMore: Boolean,
     artistName: String,
     trackTitle: String
-  },
-  computed: {
-    isRenderModal () {
-      return (
-        this.isMore &&
-          this.tags.length
-      )
-    }
   },
   methods: {
     handleMoreClick () {

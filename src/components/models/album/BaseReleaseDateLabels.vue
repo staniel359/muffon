@@ -2,6 +2,7 @@
   <div class="ui labels large">
     <BaseLabel
       v-if="release_date"
+      icon="calendar outline"
       :text="release_date"
     />
 
