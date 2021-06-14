@@ -4,10 +4,18 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        '*': path.resolve(__dirname, './src'),
-        '@': path.resolve(__dirname, './src/components'),
-        '#': path.resolve(__dirname, './src/helpers'),
-        '%': path.resolve(__dirname, './src/views')
+        '*': path.resolve(
+          __dirname, './src'
+        ),
+        '@': path.resolve(
+          __dirname, './src/components'
+        ),
+        '#': path.resolve(
+          __dirname, './src/helpers'
+        ),
+        '%': path.resolve(
+          __dirname, './src/views'
+        )
       }
     },
     target: 'electron-renderer'
@@ -15,7 +23,7 @@ module.exports = {
   css: {
     loaderOptions: {
       sass: {
-        prependData: '@import "./src/assets/styles/Shared.sass"'
+        additionalData: '@import "./src/assets/styles/Shared.sass"'
       }
     }
   },
