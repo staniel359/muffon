@@ -35,7 +35,7 @@
           <template #default="slotProps">
             <slot
               :[scope]="slotProps[scope]"
-              :artistName="pageSlotProps.artistName"
+              :artistName="pageSlotProps.artistData.name"
               :topTrackCount="pageSlotProps.topTrackCount"
             ></slot>
           </template>

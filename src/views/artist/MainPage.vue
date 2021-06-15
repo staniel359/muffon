@@ -5,10 +5,10 @@
   >
     <template #default="slotProps">
       <LeftColumn
-        :artistName="slotProps.artistName"
+        :artistName="slotProps.artistData.name"
         :scrollable="container"
       />
-      <RightColumn :artistName="slotProps.artistName" />
+      <RightColumn :artistName="slotProps.artistData.name" />
     </template>
   </BaseArtistPageContainer>
 </template>

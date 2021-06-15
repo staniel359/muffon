@@ -11,7 +11,6 @@
       :isLoading="isLoading"
       :error="error"
       :artistData="artistData"
-      :artistName="artistNameFormatted"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
       :topTrackCount="topTrackCount"
@@ -55,15 +54,12 @@ export default {
   computed: {
     navigationSections () {
       return formatArtistPageNavigation({
-        artistName: this.artistNameFormatted,
+        artistName: this.artistNameFetched,
         pageNameKey: this.pageNameKey
       })
     },
-    artistNameFormatted () {
-      return (
-        this.artistData?.name ||
-          this.artistName
-      )
+    artistNameFetched () {
+      return this.artistData?.name
     },
     artistDataArgs () {
       return {
@@ -81,7 +77,7 @@ export default {
     }
   },
   watch: {
-    artistNameFormatted: {
+    artistNameFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     }

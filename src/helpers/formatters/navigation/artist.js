@@ -1,7 +1,7 @@
 import { artistMain as formatArtistMainLink } from '#/formatters/links'
 import { localize } from '#/actions/plugins/i18n'
 
-export function navigation ({ artistName, pageNameKey }) {
+export function navigation ({ artistName = '...', pageNameKey }) {
   const artistsPageName = localize(
     'layout.navigation.artists'
   )
