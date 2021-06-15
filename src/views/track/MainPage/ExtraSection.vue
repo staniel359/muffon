@@ -26,11 +26,15 @@ export default {
     SimilarSegment
   },
   props: {
-    trackData: Object,
-    artistName: String,
-    trackTitle: String
+    trackData: Object
   },
   computed: {
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
     query () {
       return `${this.artistName} - ${this.trackTitle}`
     }

@@ -10,8 +10,6 @@
       :isLoading="isLoading"
       :error="error"
       :trackData="trackData"
-      :artistName="artistNameFormatted"
-      :trackTitle="trackTitleFormatted"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -54,22 +52,16 @@ export default {
   computed: {
     navigationSections () {
       return formatTrackPageNavigation({
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
+        artistName: this.artistNameFetched,
+        trackTitle: this.trackTitleFetched,
         pageNameKey: this.pageNameKey
       })
     },
-    artistNameFormatted () {
-      return (
-        this.trackData?.artist?.name ||
-          this.artistName
-      )
+    artistNameFetched () {
+      return this.trackData?.artist?.name
     },
-    trackTitleFormatted () {
-      return (
-        this.trackData?.title ||
-          this.trackTitle
-      )
+    trackTitleFetched () {
+      return this.trackData?.title
     },
     trackDataArgs () {
       return {
@@ -81,11 +73,11 @@ export default {
     }
   },
   watch: {
-    artistNameFormatted: {
+    artistNameFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     },
-    trackTitleFormatted: {
+    trackTitleFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     }

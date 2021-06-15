@@ -8,12 +8,7 @@
         ]"
       >
         <MainSection :trackData="slotProps.trackData" />
-
-        <ExtraSection
-          :trackData="slotProps.trackData"
-          :artistName="slotProps.artistName"
-          :trackTitle="slotProps.trackTitle"
-        />
+        <ExtraSection :trackData="slotProps.trackData"/>
       </BaseSegmentContainer>
     </template>
   </BaseTrackPageContainer>
