@@ -1,7 +1,7 @@
 import { tagMain as formatTagMainLink } from '#/formatters/links'
 import { localize } from '#/actions/plugins/i18n'
 
-export function navigation ({ tagName, pageNameKey }) {
+export function navigation ({ tagName = '...', pageNameKey }) {
   const tagsPageName = localize(
     'layout.navigation.tags'
   )

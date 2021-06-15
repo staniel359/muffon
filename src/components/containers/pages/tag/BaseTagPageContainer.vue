@@ -10,7 +10,6 @@
       :isLoading="isLoading"
       :error="error"
       :tagData="tagData"
-      :tagName="tagNameFormatted"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -49,15 +48,12 @@ export default {
   computed: {
     navigationSections () {
       return formatTagPageNavigation({
-        tagName: this.tagNameFormatted,
+        tagName: this.tagNameFetched,
         pageNameKey: this.pageNameKey
       })
     },
-    tagNameFormatted () {
-      return (
-        this.tagData?.name ||
-          this.tagName
-      )
+    tagNameFetched () {
+      return this.tagData?.name
     },
     tagDataArgs () {
       return {
@@ -68,7 +64,7 @@ export default {
     }
   },
   watch: {
-    tagNameFormatted: {
+    tagNameFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     }

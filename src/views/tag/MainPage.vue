@@ -1,10 +1,10 @@
 <template>
   <BaseTagPageContainer>
     <template #default="slotProps">
-      <InfoSegment :tagName="slotProps.tagName" />
-      <ArtistsSegment :tagName="slotProps.tagName" />
-      <AlbumsSegment :tagName="slotProps.tagName" />
-      <TracksSegment :tagName="slotProps.tagName" />
+      <InfoSegment :tagName="slotProps.tagData.name" />
+      <ArtistsSegment :tagName="slotProps.tagData.name" />
+      <AlbumsSegment :tagName="slotProps.tagData.name" />
+      <TracksSegment :tagName="slotProps.tagData.name" />
     </template>
   </BaseTagPageContainer>
 </template>
