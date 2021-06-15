@@ -12,7 +12,6 @@
       :error="error"
       :albumData="albumData"
       :requestAlbumData="requestAlbumData"
-      :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
   </BasePageContainer>
@@ -25,11 +24,19 @@ import {
   navigation as formatAlbumPageNavigation
 } from '#/formatters/navigation/album'
 import fetchAlbumData from '#/actions/api/album/fetchData'
+import fetchBandcampAlbumIdData
+  from '#/actions/api/album/id/bandcamp/fetchData'
 
 export default {
   name: 'BaseAlbumPageContainer',
   components: {
     BasePageContainer
+  },
+  provide () {
+    return {
+      setRequestAlbumData: this.setRequestAlbumData,
+      resetRequestAlbumData: this.resetRequestAlbumData
+    }
   },
   props: {
     artistName: {
@@ -49,58 +56,47 @@ export default {
   ],
   data () {
     return {
-      isLoading: false,
+      albumData: null,
       error: null,
-      albumData: null
+      requestAlbumData: null,
+      isLoading: false
     }
   },
   computed: {
     navigationSections () {
       return formatAlbumPageNavigation({
-        artistName: this.artistNameFormatted,
-        albumTitle: this.albumTitleFormatted,
+        artistName: this.artistNameFetched,
+        albumTitle: this.albumTitleFetched,
         pageNameKey: this.pageNameKey
       })
     },
-    artistNameFormatted () {
-      return (
-        this.albumData?.artist?.name ||
-          this.artistName
-      )
+    artistNameFetched () {
+      return this.albumData?.artist?.name
     },
-    albumTitleFormatted () {
-      return (
-        this.albumData?.title ||
-          this.albumTitle
-      )
-    },
-    requestAlbumData () {
-      return {
-        artistName: this.artistNameFormatted,
-        albumTitle: this.albumTitleFormatted
-      }
+    albumTitleFetched () {
+      return this.albumData?.title
     },
     albumDataArgs () {
       return {
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
+        ...this.requestAlbumData,
         scope: this.scope,
         limit: this.responsePageLimit
       }
     }
   },
   watch: {
-    artistNameFormatted: {
+    requestAlbumData: 'handleRequestAlbumDataChange',
+    artistNameFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     },
-    albumTitleFormatted: {
+    albumTitleFetched: {
       immediate: true,
       handler: 'handleNavigationDataChange'
     }
   },
   mounted () {
-    this.fetchData()
+    this.resetRequestAlbumData()
   },
   methods: {
     handleInit (el) {
@@ -116,6 +112,23 @@ export default {
         this.navigationSections
       )
     },
+    handleRequestAlbumDataChange () {
+      this.fetchData()
+    },
+    resetRequestAlbumData () {
+      this.setRequestAlbumData({
+        artistName: this.artistName,
+        albumTitle: this.albumTitle
+      })
+    },
+    setRequestAlbumData (value) {
+      if (value.sourceId === 'bandcamp') {
+        this.fetchBandcampAlbumIdData(value)
+      } else {
+        this.requestAlbumData = value
+      }
+    },
+    fetchBandcampAlbumIdData,
     fetchAlbumData,
     fetchData (page) {
       this.fetchAlbumData({

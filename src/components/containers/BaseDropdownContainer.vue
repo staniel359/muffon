@@ -39,7 +39,11 @@ import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseIcon from '@/BaseIcon.vue'
 import { mainDropdownOptions } from '#/data/plugins/semantic'
-import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
+import {
+  setDropdown,
+  setDropdownValue,
+  resetDropdown
+} from '#/actions/plugins/semantic'
 
 export default {
   name: 'BaseDropdownContainer',
@@ -75,6 +79,11 @@ export default {
           value
         )
       })
+    },
+    reset () {
+      resetDropdown(
+        this.$refs.dropdown
+      )
     }
   }
 }

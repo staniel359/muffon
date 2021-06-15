@@ -1,16 +1,22 @@
 <template>
-  <BaseAlbumPageContainer @init="handleContainerInit">
-    <template #default="pageSlotProps">
-      <BaseAlbumPageSegmentContainer :key="key">
-        <template #default="segmentSlotProps">
+  <BaseAlbumPageContainer
+    @init="handleContainerInit"
+  >
+    <template #default="slotProps">
+      <BaseAlbumPageSegmentContainer
+        :isLoading="slotProps.isLoading"
+        :error="slotProps.error"
+        @refresh="slotProps.handleRefresh"
+      >
+        <template #default>
           <div class="columns-container">
             <LeftColumn
-              :albumData="segmentSlotProps.albumData || pageSlotProps.albumData"
-              :scrollable="container"
+              :albumData="slotProps.albumData"
+              :scrollable="scrollable"
             />
             <RightColumn
-              :albumData="segmentSlotProps.albumData || pageSlotProps.albumData"
-              :requestAlbumData="segmentSlotProps.requestAlbumData || pageSlotProps.requestAlbumData"
+              :albumData="slotProps.albumData"
+              :requestAlbumData="slotProps.requestAlbumData"
             />
           </div>
         </template>
@@ -26,7 +32,6 @@ import BaseAlbumPageSegmentContainer
   from '@/containers/pages/album/BaseAlbumPageSegmentContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
-import { generateKey } from '#/utils'
 
 export default {
   name: 'MainPage',
@@ -36,23 +41,14 @@ export default {
     LeftColumn,
     RightColumn
   },
-  provide () {
-    return {
-      resetAlbum: this.resetAlbum
-    }
-  },
   data () {
     return {
-      container: null,
-      key: null
+      scrollable: null
     }
   },
   methods: {
     handleContainerInit (el) {
-      this.container = el
-    },
-    resetAlbum () {
-      this.key = generateKey()
+      this.scrollable = el
     }
   }
 }

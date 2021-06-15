@@ -1,28 +1,27 @@
 <template>
-  <div>
-    <SourceSelect
-      :artistName="artistName"
-      :albumTitle="albumTitle"
+  <SourceSelect
+    ref="source"
+    :artistName="artistName"
+    :albumTitle="albumTitle"
+  />
+
+  <template v-if="selectedSourceData">
+    <TypeSelect
+      v-if="isSelectedSourceWithMultipleTypes"
+      :key="typeSelectKey"
+      :albumsData="selectedSourceAlbumsData"
+      :types="selectedSourceTypes"
     />
 
-    <template v-if="selectedSourceData">
-      <TypeSelect
-        v-if="isSelectedSourceWithMultipleTypes"
-        :key="typeSelectKey"
-        :albumsData="selectedSourceAlbumsData"
-        :types="selectedSourceTypes"
-      />
+    <AlbumSelect
+      v-if="selectedTypeId"
+      :key="albumSelectKey"
+      :albums="selectedTypeAlbums"
+      :typeId="selectedTypeId"
+    />
 
-      <AlbumSelect
-        v-if="selectedTypeId"
-        :key="albumSelectKey"
-        :albums="selectedTypeAlbums"
-        :typeId="selectedTypeId"
-      />
-
-      <ResetButton />
-    </template>
-  </div>
+    <ResetButton @click="handleReset"/>
+  </template>
 </template>
 
 <script>
@@ -49,7 +48,8 @@ export default {
     }
   },
   inject: [
-    'setRequestAlbumData'
+    'setRequestAlbumData',
+    'resetRequestAlbumData'
   ],
   props: {
     albumTitle: String,
@@ -57,11 +57,12 @@ export default {
   },
   data () {
     return {
+      albumSelectKey: null,
+      selectedAlbumData: null,
       selectedSourceData: null,
       selectedTypeId: null,
-      selectedAlbumData: null,
-      typeSelectKey: null,
-      albumSelectKey: null
+      sourceSelectKey: null,
+      typeSelectKey: null
     }
   },
   computed: {
@@ -108,6 +109,13 @@ export default {
         ...value,
         albumType: this.selectedTypeId
       })
+    },
+    handleReset () {
+      this.$refs.source.reset()
+
+      this.selectedSourceData = null
+
+      this.resetRequestAlbumData()
     },
     setSelectedSourceData (value) {
       this.selectedSourceData = value

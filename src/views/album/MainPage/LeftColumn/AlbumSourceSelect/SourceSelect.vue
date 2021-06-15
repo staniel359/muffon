@@ -1,6 +1,7 @@
 <template>
   <BaseDropdownContainer
     class="basic fluid pointing left scrolling button source-select"
+    ref="dropdown"
     :header="headerFormatted"
   >
     <SourcesList
@@ -30,6 +31,11 @@ export default {
       return localize(
         'pages.album.sources.select.source'
       )
+    }
+  },
+  methods: {
+    reset () {
+      this.$refs.dropdown.reset()
     }
   }
 }

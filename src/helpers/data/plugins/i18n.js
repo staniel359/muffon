@@ -110,7 +110,8 @@ export const messages = {
             album: 'Album',
             group: 'Album group',
             track: 'Single'
-          }
+          },
+          reset: 'Reset'
         }
       },
       track: {

@@ -98,6 +98,10 @@ export function setDropdownValue (el, value) {
   $(el).dropdown('set selected', value)
 }
 
+export function resetDropdown (el) {
+  $(el).dropdown('restore defaults')
+}
+
 // Checkbox
 
 export function setCheckbox (el, options) {
