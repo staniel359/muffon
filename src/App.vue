@@ -4,8 +4,8 @@
   <TheBackground />
 
   <TheNavbarPanel />
-  <ThePlayerPanel />
   <TheQueuePanel />
+  <ThePlayerPanel />
 
   <TheVisibleArea />
 
@@ -21,8 +21,8 @@
 <script>
 import TheObservers from '@/layout/TheObservers.vue'
 import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
-import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheQueuePanel from '@/layout/TheQueuePanel.vue'
+import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
 import TheBackground from '@/layout/TheBackground.vue'
 import TheVisibleArea from '@/layout/TheVisibleArea.vue'
 import TheView from '@/layout/TheView.vue'
@@ -34,8 +34,8 @@ export default {
   components: {
     TheObservers,
     TheNavbarPanel,
-    ThePlayerPanel,
     TheQueuePanel,
+    ThePlayerPanel,
     TheBackground,
     TheVisibleArea,
     TheView,

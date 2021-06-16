@@ -45,8 +45,10 @@ a
 
 .ui.checkbox
   &.main-toggle-checkbox
+    width: $mainCheckboxWidth
     min-height: $mainCheckboxThumbHeight
     & > input
+      width: $mainCheckboxWidth
       height: $mainCheckboxThumbHeight
       & ~ label
         &:before
@@ -62,7 +64,7 @@ a
           &:before
             @extend .background-base
     & > label
-      padding-left: calc(#{$mainCheckboxWidth} + 0.65em)
+      padding-left: 0
       padding-top: 0
       min-height: $mainCheckboxThumbHeight
       line-height: $mainCheckboxThumbHeight
