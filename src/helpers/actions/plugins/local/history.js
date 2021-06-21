@@ -1,7 +1,7 @@
 import local from '#/plugins/local'
 import { getDistinctArray } from '#/utils'
 
-export function get (key, { isDistinct }) {
+export const get = (key, { isDistinct }) => {
   const historyKey = `history.${key}`
   const history = local.get(historyKey)
 
@@ -18,7 +18,7 @@ export function get (key, { isDistinct }) {
   })
 }
 
-export function update (key, item) {
+export const update = (key, item) => {
   const historyKey = `history.${key}`
   const history = local.get(historyKey)
 
@@ -29,5 +29,7 @@ export function update (key, item) {
     )
   const newHistory = [item, ...history]
 
-  isNewItem && local.set(historyKey, newHistory)
+  isNewItem && local.set(
+    historyKey, newHistory
+  )
 }

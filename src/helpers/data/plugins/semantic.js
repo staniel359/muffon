@@ -1,6 +1,6 @@
 import store from '*/store'
 
-export function mainModalOptions ({ onShow, onVisible } = {}) {
+export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   return {
     autofocus: false,
     duration: 100,
@@ -13,14 +13,14 @@ export function mainModalOptions ({ onShow, onVisible } = {}) {
   }
 }
 
-export function mainLoaderOptions () {
+export const mainLoaderOptions = () => {
   return {
     closable: false,
     duration: 0
   }
 }
 
-export function mainHistoryInputOptions ({ source, onSelect }) {
+export const mainHistoryInputOptions = ({ source, onSelect }) => {
   return {
     maxResults: 20,
     minCharacters: 0,
@@ -33,7 +33,7 @@ export function mainHistoryInputOptions ({ source, onSelect }) {
   }
 }
 
-export function mainSidebarOptions ({ onShow, onVisible, onHide } = {}) {
+export const mainSidebarOptions = ({ onShow, onVisible, onHide } = {}) => {
   return {
     closable: false,
     dimPage: false,
@@ -43,7 +43,7 @@ export function mainSidebarOptions ({ onShow, onVisible, onHide } = {}) {
   }
 }
 
-export function mainSeekerOptions ({ onMove, onChange } = {}) {
+export const mainSeekerOptions = ({ onMove, onChange } = {}) => {
   return {
     max: 100,
     step: 0.25,
@@ -52,7 +52,7 @@ export function mainSeekerOptions ({ onMove, onChange } = {}) {
   }
 }
 
-export function mainVolumeSeekerOptions ({ start, onMove } = {}) {
+export const mainVolumeSeekerOptions = ({ start, onMove } = {}) => {
   return {
     max: 1,
     step: 0.01,
@@ -61,7 +61,7 @@ export function mainVolumeSeekerOptions ({ start, onMove } = {}) {
   }
 }
 
-export function mainPopupOptions () {
+export const mainPopupOptions = () => {
   return {
     duration: 0,
     position: 'top center',
@@ -72,7 +72,7 @@ export function mainPopupOptions () {
   }
 }
 
-export function popupOptions () {
+export const popupOptions = () => {
   return {
     duration: 0,
     position: 'top center',
@@ -83,13 +83,13 @@ export function popupOptions () {
   }
 }
 
-export function mainDropdownOptions () {
-  const { dropdownContext } = store.state.layout
+export const mainDropdownOptions = () => {
+  const { visibleContext } = store.state.layout
 
   return {
     on: 'hover',
     duration: 150,
-    context: dropdownContext,
+    context: visibleContext,
     delay: {
       show: 0,
       hide: 150
@@ -97,14 +97,14 @@ export function mainDropdownOptions () {
   }
 }
 
-export function mainCheckboxOptions ({ onChecked, onUnchecked } = {}) {
+export const mainCheckboxOptions = ({ onChecked, onUnchecked } = {}) => {
   return {
     onChecked,
     onUnchecked
   }
 }
 
-export function mainEmbedOptions ({ videoId, placeholder }) {
+export const mainEmbedOptions = ({ videoId, placeholder }) => {
   const url = `https://www.youtube.com/embed/${videoId}`
 
   return {

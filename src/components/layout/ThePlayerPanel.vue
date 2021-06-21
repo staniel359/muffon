@@ -14,17 +14,17 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import VariantsPanel from './ThePlayerPanel/VariantsPanel.vue'
 import TrackPanel from './ThePlayerPanel/TrackPanel.vue'
 import AudioPanel from './ThePlayerPanel/AudioPanel.vue'
 import CloseButton from './ThePlayerPanel/CloseButton.vue'
 import {
   setPlayerPanel,
-  showPlayerPanel as show,
-  hidePlayerPanel as hide
+  showPlayerPanel,
+  hidePlayerPanel
 } from '#/actions/layout'
-import { resetIsLoop as resetIsAudioLoop } from '#/actions/audio'
+import { setGlobalData } from '#/actions'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 import { toggleClass } from '#/actions/plugins/jquery'
 
@@ -65,7 +65,10 @@ export default {
     }
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange',
+    playerPlaying: {
+      immediate: true,
+      handler: 'handlePlayerPlayingChange'
+    },
     isDarkMode: {
       immediate: true,
       handler: 'handleIsDarkModeChange'
@@ -78,10 +81,21 @@ export default {
     )
   },
   methods: {
+    ...mapActions('audio', {
+      setIsAudioLoop: 'setIsLoop'
+    }),
     handlePlayerPlayingChange (value) {
-      value ? show() : hide()
+      if (value) {
+        this.$nextTick(() => {
+          showPlayerPanel()
+        })
+      } else {
+        this.clearPlayer()
 
-      resetIsAudioLoop()
+        hidePlayerPanel()
+      }
+
+      this.setIsAudioLoop(false)
     },
     handleIsDarkModeChange () {
       this.$nextTick(() => {
@@ -100,6 +114,13 @@ export default {
         'inverted',
         this.isDarkMode
       )
+    },
+    clearPlayer () {
+      setGlobalData({
+        'player.currentTrackId': null,
+        'player.currentVariantId': null,
+        'player.variants': []
+      })
     }
   }
 }

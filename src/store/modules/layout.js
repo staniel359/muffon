@@ -4,9 +4,11 @@ export default {
     loaderDimmer: null,
     playerPanel: null,
     queuePanel: null,
-    dropdownContext: null,
-    isQueuePanelVisible: false,
+    searchModal: null,
+    tabId: null,
+    visibleContext: null,
     isDarkMode: false,
+    isQueuePanelVisible: false,
     navigationSections: []
   },
   mutations: {
@@ -25,11 +27,17 @@ export default {
     SET_IS_QUEUE_PANEL_VISIBLE (state, value) {
       state.isQueuePanelVisible = value
     },
-    SET_DROPDOWN_CONTEXT (state, value) {
-      state.dropdownContext = value
+    SET_VISIBLE_CONTEXT (state, value) {
+      state.visibleContext = value
     },
     SET_IS_DARK_MODE (state, value) {
       state.isDarkMode = value
+    },
+    SET_TAB_ID (state, value) {
+      state.tabId = value
+    },
+    SET_SEARCH_MODAL (state, value) {
+      state.searchModal = value
     }
   },
   actions: {
@@ -48,11 +56,17 @@ export default {
     setIsQueuePanelVisible ({ commit }, value) {
       commit('SET_IS_QUEUE_PANEL_VISIBLE', value)
     },
-    setDropdownContext ({ commit }, value) {
-      commit('SET_DROPDOWN_CONTEXT', value)
+    setVisibleContext ({ commit }, value) {
+      commit('SET_VISIBLE_CONTEXT', value)
     },
     setIsDarkMode ({ commit }, value) {
       commit('SET_IS_DARK_MODE', value)
+    },
+    setTabId ({ commit }, value) {
+      commit('SET_TAB_ID', value)
+    },
+    setSearchModal ({ commit }, value) {
+      commit('SET_SEARCH_MODAL', value)
     }
   }
 }

@@ -16,8 +16,8 @@
 <script>
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
-import { getSourceData as getAudioSourceData } from '#/actions/audio'
 import { localize } from '#/actions/plugins/i18n'
+import audioSources from '#/data/audio/sources'
 
 export default {
   name: 'BaseSourceIcon',
@@ -42,9 +42,12 @@ export default {
       }
     },
     sourceName () {
-      return getAudioSourceData(
-        this.sourceId
-      ).name
+      return this.sourceData?.name
+    },
+    sourceData () {
+      return audioSources.find(sourceData => {
+        return sourceData.id === this.sourceId
+      })
     }
   },
   mounted () {

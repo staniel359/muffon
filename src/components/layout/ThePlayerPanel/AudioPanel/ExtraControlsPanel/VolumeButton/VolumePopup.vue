@@ -21,7 +21,6 @@ import BasePopupContainer from '@/containers/BasePopupContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSeeker from '@/BaseSeeker.vue'
 import { mainVolumeSeekerOptions } from '#/data/plugins/semantic'
-import { setVolume as setAudioVolume } from '#/actions/audio'
 
 export default {
   name: 'VolumePopup',
@@ -32,7 +31,8 @@ export default {
   },
   computed: {
     ...mapState('audio', {
-      audioVolume: 'volume'
+      audioVolume: 'volume',
+      audioElement: 'element'
     }),
     headerFormatted () {
       return Math.floor(
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     handleMove (value) {
-      setAudioVolume(value)
+      this.audioElement.volume = value
     }
   }
 }

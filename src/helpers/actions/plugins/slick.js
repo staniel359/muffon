@@ -1,23 +1,36 @@
-export function setSlider (el, options) {
+export const setSlider = (el, options) => {
   $(el).slick(options)
 }
 
-export function setSliderOptions (el, options) {
-  $(el).slick('slickSetOption', options, true)
+export const setSliderOptions = (el, options) => {
+  $(el).slick(
+    'slickSetOption',
+    options,
+    true
+  )
 }
 
-export function clearSliderPrevImages (el) {
-  $(el).slick('slickRemove', null, null, true)
+export const clearSliderPrevImages = el => {
+  $(el).slick(
+    'slickRemove',
+    null,
+    null,
+    true
+  )
 }
 
-export function refreshSlider (el) {
+export const refreshSlider = el => {
   $(el).slick('refresh')
 }
 
-export function setSliderPosition (el) {
+export const setSliderPosition = el => {
   $(el).slick('setPosition')
 }
 
-export function goToSliderSlide (el, index) {
-  $(el).slick('slickGoTo', index, true)
+export const goToSliderSlide = (el, index) => {
+  $(el).slick(
+    'slickGoTo',
+    index,
+    true
+  )
 }

@@ -1,4 +1,4 @@
-export function track ({ trackData, artistName, albumTitle, imageData }) {
+export const track = ({ trackData, artistName, albumTitle, imageData }) => {
   const trackArtistName = trackData.artist?.name
   const artistNameFormatted = artistName || trackArtistName
   const trackArtistData = artistNameFormatted && {

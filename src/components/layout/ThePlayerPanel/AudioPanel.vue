@@ -20,7 +20,6 @@ import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
 import fetchQueueTrackData from '#/actions/queue/track/fetchData'
-import { getIsEnded as getIsAudioEnded } from '#/actions/audio'
 
 export default {
   name: 'AudioPanel',
@@ -32,6 +31,9 @@ export default {
     SeekerPanel
   },
   computed: {
+    ...mapState('audio', {
+      audioElement: 'element'
+    }),
     ...mapState('queue', {
       isQueueAutoplay: 'isAutoplay'
     }),
@@ -55,7 +57,10 @@ export default {
       }
     },
     handleIsQueueAutoplayChange () {
-      if (this.isPlayNext && getIsAudioEnded()) {
+      if (
+        this.isPlayNext &&
+          this.audioElement.ended
+      ) {
         this.fetchQueueNextTrack()
       }
     },

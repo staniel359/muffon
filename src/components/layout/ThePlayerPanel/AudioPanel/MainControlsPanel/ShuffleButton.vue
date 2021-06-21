@@ -10,7 +10,8 @@
 <script>
 import { mapState } from 'vuex'
 import BaseButton from '@/BaseButton.vue'
-import { toggleIsShuffle as toggleIsQueueShuffle } from '#/actions/queue'
+import { setGlobalData } from '#/actions'
+import { shuffleArray } from '#/utils'
 
 export default {
   name: 'ShuffleButton',
@@ -19,12 +20,21 @@ export default {
   },
   computed: {
     ...mapState('queue', {
-      isQueueShuffle: 'isShuffle'
+      isQueueShuffle: 'isShuffle',
+      queueTracks: 'tracks'
     })
   },
   methods: {
     handleClick () {
-      toggleIsQueueShuffle()
+      const value = !this.isQueueShuffle
+      const tracks = value
+        ? shuffleArray(this.queueTracks)
+        : []
+
+      setGlobalData({
+        'queue.isShuffle': value,
+        'queue.tracksShuffled': tracks
+      })
     }
   }
 }

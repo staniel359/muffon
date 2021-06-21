@@ -24,7 +24,7 @@
 <script>
 import HeaderSegment from './BaseArtistSegmentContainer/HeaderSegment.vue'
 import fetchArtistData from '#/actions/api/artist/fetchData'
-import { focusOnSegment } from '#/actions/document'
+import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'BaseArtistSegmentContainer',

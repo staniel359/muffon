@@ -1,47 +1,53 @@
 // Dimmer
 
-export function setDimmer (el, options) {
+export const setDimmer = (el, options) => {
   $(el).dimmer(options)
 }
 
-export function toggleDimmer (el, bool) {
-  $(el).dimmer(bool ? 'show' : 'hide')
+export const toggleDimmer = (el, bool) => {
+  const value = bool ? 'show' : 'hide'
+
+  $(el).dimmer(value)
 }
 
 // Modal
 
-export function setModal (el, options) {
+export const setModal = (el, options) => {
   $(el).modal(options)
 }
 
-export function showModal (el) {
+export const showModal = el => {
   $(el).modal('show')
 }
 
-export function hideModal (el) {
+export const hideModal = el => {
   $(el).modal('hide')
 }
 
 // Search
 
-export function setSearch (el, options) {
+export const setSearch = (el, options) => {
   $(el).search(options)
 }
 
-export function setSearchSource (el, source) {
-  $(el).search('setting', 'source', source)
+export const setSearchSource = (el, source) => {
+  $(el).search(
+    'setting',
+    'source',
+    source
+  )
 }
 
 // Transition
 
-export function showTransition (el) {
+export const showTransition = el => {
   $(el).transition({
     animation: 'fade in',
     duration: 150
   })
 }
 
-export function hideTransition (el) {
+export const hideTransition = el => {
   $(el).transition({
     animation: 'fade out',
     duration: 150
@@ -50,77 +56,85 @@ export function hideTransition (el) {
 
 // Visibility
 
-export function setVisibility (el, options) {
+export const setVisibility = (el, options) => {
   $(el).visibility(options)
 }
 
 // Sidebar
 
-export function setSidebar (el, options) {
+export const setSidebar = (el, options) => {
   $(el).sidebar(options)
 }
 
-export function showSidebar (el) {
+export const showSidebar = el => {
   $(el).sidebar('show')
 }
 
-export function hideSidebar (el) {
+export const hideSidebar = el => {
   $(el).sidebar('hide')
 }
 
-export function toggleSidebar (el) {
+export const toggleSidebar = el => {
   $(el).sidebar('toggle')
 }
 
 // Seeker
 
-export function setSeeker (el, options) {
+export const setSeeker = (el, options) => {
   $(el).slider(options)
 }
 
-export function setSeekerValue (el, value) {
-  $(el).slider('set value', value)
+export const setSeekerValue = (el, value) => {
+  $(el).slider(
+    'set value',
+    value
+  )
 }
 
 // Popup
 
-export function setPopup (el, options) {
+export const setPopup = (el, options) => {
   $(el).popup(options)
 }
 
 // Dropdown
 
-export function setDropdown (el, options) {
+export const setDropdown = (el, options) => {
   $(el).dropdown(options)
 }
 
-export function setDropdownValue (el, value) {
-  $(el).dropdown('set selected', value)
+export const setDropdownValue = (el, value) => {
+  $(el).dropdown(
+    'set selected',
+    value
+  )
 }
 
-export function resetDropdown (el) {
+export const resetDropdown = el => {
   $(el).dropdown('restore defaults')
 }
 
 // Checkbox
 
-export function setCheckbox (el, options) {
+export const setCheckbox = (el, options) => {
   $(el).checkbox(options)
 }
 
-export function checkCheckbox (el) {
-  $(el).checkbox('check')
+export const checkCheckbox = (el, bool) => {
+  const value = bool ? 'check' : 'uncheck'
+
+  $(el).checkbox(value)
 }
 
 // Embed
 
-export function setEmbed (el, options) {
+export const setEmbed = (el, options) => {
   $(el).embed(options)
 }
 
 // Utils
 
-export function numberToColumnWidth (number = 1) {
+export const numberToColumnWidth = (value = 1) => {
   const data = {
     1: 'one',
     2: 'two',
@@ -140,5 +154,5 @@ export function numberToColumnWidth (number = 1) {
     16: 'sixteen'
   }
 
-  return data[number]
+  return data[value]
 }

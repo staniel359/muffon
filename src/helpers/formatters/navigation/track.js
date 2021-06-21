@@ -5,11 +5,7 @@ import {
 } from '#/formatters/links'
 import { localize } from '#/actions/plugins/i18n'
 
-export function navigation ({
-  artistName = '...',
-  trackTitle = '...',
-  pageNameKey
-}) {
+export default function ({ artistName, trackTitle, pageNameKey }) {
   const artistsPageName = localize(
     'layout.navigation.artists'
   )

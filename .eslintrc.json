@@ -1,8 +1,8 @@
 {
   "env": {
     "es2021": true,
-    "node": true,
-    "jquery": true
+    "jquery": true,
+    "node": true
   },
   "extends": [
     "plugin:vue/vue3-essential",

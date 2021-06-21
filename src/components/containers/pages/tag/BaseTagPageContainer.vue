@@ -17,12 +17,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
-import { setNavigationSections } from '#/actions/layout'
-import {
-  navigation as formatTagPageNavigation
-} from '#/formatters/navigation/tag'
+import formatTagPageNavigation from '#/formatters/navigation/tag'
+import formatTagPageTab from '#/formatters/tabs/tag'
 import fetchTagData from '#/actions/api/tag/fetchData'
+import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseTagPageContainer',
@@ -47,10 +47,15 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatTagPageNavigation({
+      return formatTagPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
         tagName: this.tagNameFetched,
         pageNameKey: this.pageNameKey
-      })
+      }
     },
     tagNameFetched () {
       return this.tagData?.name
@@ -64,26 +69,29 @@ export default {
     }
   },
   watch: {
-    tagNameFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    }
+    tagData: 'handleTagDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
+    ...mapActions('layout', [
+      'setNavigationSections'
+    ]),
     handleRefresh (page) {
       this.error = null
 
       this.fetchData(page)
     },
-    handleNavigationDataChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      setNavigationSections(
+    handleTagDataChange () {
+      this.setNavigationSections(
         this.navigationSections
+      )
+
+      updateTab(
+        formatTagPageTab(
+          this.navigationData
+        )
       )
     },
     fetchTagData,

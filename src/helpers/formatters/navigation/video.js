@@ -4,11 +4,11 @@ import {
 } from '#/formatters/links'
 import { localize } from '#/actions/plugins/i18n'
 
-export function navigation ({
+export default function ({
   videoId,
-  videoTitle = '...',
+  videoTitle,
   channelId,
-  channelTitle = '...',
+  channelTitle,
   pageNameKey
 }) {
   const videosPageName = localize(

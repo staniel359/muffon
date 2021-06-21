@@ -7,8 +7,8 @@
     :autoplay="isAudioAutoplay"
     @loadstart="handleLoadStart"
     @durationchange="handleDurationChange"
-    @canplay="handleCanPlay"
     @progress="handleProgress"
+    @canplay="handleCanPlay"
     @play="handlePlay"
     @timeupdate="handleTimeUpdate"
     @pause="handlePause"
@@ -19,20 +19,25 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { load as loadAudio } from '#/actions/audio'
 
 export default {
   name: 'AudioElement',
   computed: {
+    ...mapState('audio', {
+      audioElement: 'element',
+      audioStatus: 'status',
+      isAudioAutoplay: 'isAutoplay'
+    }),
     ...mapState('player', {
       playerPlaying: 'playing'
-    }),
-    ...mapState('audio', {
-      isAudioAutoplay: 'isAutoplay'
     })
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange'
+    playerPlaying: {
+      immediate: true,
+      handler: 'handlePlayerPlayingChange'
+    },
+    isAudioAutoplay: 'handleIsAudioAutoplayChange'
   },
   mounted () {
     this.setAudioElement(
@@ -50,11 +55,17 @@ export default {
       setAudioVolume: 'setVolume'
     }),
     handlePlayerPlayingChange (value) {
-      value && loadAudio(
-        this.playerPlaying.audio.link
-      )
+      this.$nextTick(() => {
+        if (value) {
+          this.loadAudio()
+        } else {
+          this.stopAudio()
+        }
+      })
     },
     handleLoadStart () {
+      this.setIsAudioPlayable(false)
+
       this.setAudioDuration(0)
       this.setAudioProgress(0)
     },
@@ -63,15 +74,19 @@ export default {
         event.target.duration
       )
     },
-    handleCanPlay () {
-      this.setIsAudioPlayable(true)
-    },
     handleProgress (event) {
       const { buffered } = event.target
 
-      buffered.length && this.setAudioProgress(
-        buffered.end(0)
-      )
+      if (buffered.length) {
+        this.setAudioProgress(
+          buffered.end(0)
+        )
+      }
+    },
+    handleCanPlay () {
+      this.setIsAudioPlayable(true)
+
+      this.audioElement.autoplay = false
     },
     handlePlay () {
       this.setAudioStatus('play')
@@ -91,6 +106,22 @@ export default {
     },
     handleEmptied () {
       this.setIsAudioPlayable(false)
+    },
+    handleIsAudioAutoplayChange (value) {
+      !value && this.setAudioStatus(
+        'pause'
+      )
+    },
+    loadAudio () {
+      this.audioElement.src =
+        this.playerPlaying.audio.link
+
+      this.audioElement.load()
+    },
+    stopAudio () {
+      this.setAudioStatus('stop')
+
+      this.audioElement.src = null
     }
   }
 }

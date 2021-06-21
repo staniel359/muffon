@@ -1,25 +1,64 @@
-import HomePage from '%/HomePage.vue'
-import ArtistMainPage from '%/artist/MainPage.vue'
-import ArtistImagesPage from '%/artist/ImagesPage.vue'
-import ArtistTracksPage from '%/artist/TracksPage.vue'
-import ArtistAlbumsPage from '%/artist/AlbumsPage.vue'
-import ArtistSimilarPage from '%/artist/SimilarPage.vue'
-import AlbumMainPage from '%/album/MainPage.vue'
-import TrackMainPage from '%/track/MainPage.vue'
-import TrackSimilarPage from '%/track/SimilarPage.vue'
-import TagMainPage from '%/tag/MainPage.vue'
-import TagArtistsPage from '%/tag/ArtistsPage.vue'
-import TagAlbumsPage from '%/tag/AlbumsPage.vue'
-import TagTracksPage from '%/tag/TracksPage.vue'
-import VideoChannelVideosPage from '%/video/channel/VideosPage.vue'
-import VideoMainPage from '%/video/MainPage.vue'
+const RootPage = () => import(
+  '%/RootPage.vue'
+)
+const StartPage = () => import(
+  '%/StartPage.vue'
+)
+const ArtistMainPage = () => import(
+  '%/artist/MainPage.vue'
+)
+const ArtistImagesPage = () => import(
+  '%/artist/ImagesPage.vue'
+)
+const ArtistTracksPage = () => import(
+  '%/artist/TracksPage.vue'
+)
+const ArtistAlbumsPage = () => import(
+  '%/artist/AlbumsPage.vue'
+)
+const ArtistSimilarPage = () => import(
+  '%/artist/SimilarPage.vue'
+)
+const AlbumMainPage = () => import(
+  '%/album/MainPage.vue'
+)
+const TrackMainPage = () => import(
+  '%/track/MainPage.vue'
+)
+const TrackSimilarPage = () => import(
+  '%/track/SimilarPage.vue'
+)
+const TagMainPage = () => import(
+  '%/tag/MainPage.vue'
+)
+const TagArtistsPage = () => import(
+  '%/tag/ArtistsPage.vue'
+)
+const TagAlbumsPage = () => import(
+  '%/tag/AlbumsPage.vue'
+)
+const TagTracksPage = () => import(
+  '%/tag/TracksPage.vue'
+)
+const VideoChannelVideosPage = () => import(
+  '%/video/channel/VideosPage.vue'
+)
+const VideoMainPage = () => import(
+  '%/video/MainPage.vue'
+)
 
 export default [
   {
     path: '/',
     exact: true,
-    name: 'HomePage',
-    component: HomePage
+    name: 'RootPage',
+    component: RootPage
+  },
+  {
+    path: '/start',
+    exact: true,
+    name: 'StartPage',
+    component: StartPage
   },
   {
     path: '/artists/:artistName',

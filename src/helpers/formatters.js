@@ -1,34 +1,34 @@
 import { generateKey } from '#/utils'
 
-export function collection (collection) {
-  return [...collection].map(formatCollectionItem)
-}
+export const collection = collection => {
+  const formatCollectionItemData = item => {
+    const isString = typeof item === 'string'
 
-function formatCollectionItem (item) {
-  return {
-    uuid: generateKey(),
-    ...formatCollectionItemData(item)
+    if (isString) {
+      return { name: item }
+    } else {
+      return item
+    }
   }
-}
 
-function formatCollectionItemData (item) {
-  if (isString(item)) {
-    return { name: item }
-  } else {
-    return item
+  const formatCollectionItem = item => {
+    return {
+      uuid: generateKey(),
+      ...formatCollectionItemData(item)
+    }
   }
+
+  return [...collection].map(
+    formatCollectionItem
+  )
 }
 
-function isString (item) {
-  return typeof item === 'string'
+export const number = value => {
+  return value.toLocaleString('eu')
 }
 
-export function number (number) {
-  return number.toLocaleString('eu')
-}
-
-export function seconds (seconds) {
-  return new Date(seconds * 1000)
+export const seconds = value => {
+  return new Date(value * 1000)
     .toISOString()
     .substr(14, 5)
 }

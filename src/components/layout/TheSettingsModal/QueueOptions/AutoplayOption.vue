@@ -6,7 +6,7 @@
     />
 
     <BaseToggle
-      :isChecked="isChecked"
+      :isChecked="isQueueAutoplay"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -14,11 +14,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { getIsQueueAutoplay } from '#/actions/settings'
-import { setIsAutoplay as setIsQueueAutoplay } from '#/actions/queue'
 import { localize } from '#/actions/plugins/i18n'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'AutoplayOption',
@@ -27,21 +27,25 @@ export default {
     BaseToggle
   },
   computed: {
+    ...mapState('queue', {
+      isQueueAutoplay: 'isAutoplay'
+    }),
     headerFormatted () {
       return localize(
         'settings.queue.autoplay'
       )
-    },
-    isChecked () {
-      return getIsQueueAutoplay()
     }
   },
   methods: {
     handleToggleOn () {
-      setIsQueueAutoplay(true)
+      setGlobalData({
+        'queue.isAutoplay': true
+      })
     },
     handleToggleOff () {
-      setIsQueueAutoplay(false)
+      setGlobalData({
+        'queue.isAutoplay': false
+      })
     }
   }
 }

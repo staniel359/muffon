@@ -17,12 +17,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
-import { setNavigationSections } from '#/actions/layout'
-import {
-  navigation as formatVideoPageNavigation
-} from '#/formatters/navigation/video'
+import formatVideoPageNavigation from '#/formatters/navigation/video'
+import formatVideoPageTab from '#/formatters/tabs/video'
 import fetchVideoData from '#/actions/api/video/fetchData'
+import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseVideoPageContainer',
@@ -45,13 +45,18 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatVideoPageNavigation({
+      return formatVideoPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
         videoId: this.videoId,
         videoTitle: this.videoTitleFetched,
         channelId: this.channelIdFetched,
         channelTitle: this.channelTitleFetched,
         pageNameKey: this.pageNameKey
-      })
+      }
     },
     videoTitleFetched () {
       return this.videoData?.title
@@ -67,27 +72,29 @@ export default {
     }
   },
   watch: {
-    videoTitleFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    },
-    channelTitleFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    }
+    videoData: 'handleVideoDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
+    ...mapActions('layout', [
+      'setNavigationSections'
+    ]),
     handleRefresh (page) {
       this.error = null
 
       this.fetchData(page)
     },
-    handleNavigationDataChange () {
-      setNavigationSections(
+    handleVideoDataChange () {
+      this.setNavigationSections(
         this.navigationSections
+      )
+
+      updateTab(
+        formatVideoPageTab(
+          this.navigationData
+        )
       )
     },
     fetchVideoData,

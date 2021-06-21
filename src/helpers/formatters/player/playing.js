@@ -1,4 +1,4 @@
-export function playing ({ trackData, audioData }) {
+export const playing = ({ trackData, audioData }) => {
   const { album, image, ...playingData } = trackData
 
   const albumData = audioData.album

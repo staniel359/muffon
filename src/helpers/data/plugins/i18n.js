@@ -2,7 +2,7 @@ export const messages = {
   en: {
     layout: {
       navigation: {
-        home: 'Home',
+        start: 'Start',
         artists: 'Artists',
         tags: 'Tags',
         videos: 'Video',
@@ -88,6 +88,13 @@ export const messages = {
       }
     },
     pages: {
+      start: {
+        keys: {
+          search: 'Search',
+          openInTab: 'Open link in new tab',
+          closeTab: 'Close tab'
+        }
+      },
       artist: {
         segments: {
           tracks: 'Top tracks',
@@ -140,6 +147,7 @@ export const messages = {
     },
     shared: {
       more: 'More...',
+      loading: 'Loading...',
       listener: '{number} listener | {number} listeners',
       tracks: '{number} track | {number} tracks'
     },

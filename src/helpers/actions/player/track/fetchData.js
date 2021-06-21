@@ -1,6 +1,6 @@
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
-import { setTracks as setQueueTracks } from '#/actions/queue'
 import { handleEnvError } from '#/utils'
+import { setGlobalData } from '#/actions'
 
 export default function ({ trackData, queueTracks }) {
   this.isLoading = true
@@ -24,7 +24,9 @@ export default function ({ trackData, queueTracks }) {
     this.isLoading = false
 
     if (queueTracks) {
-      setQueueTracks(queueTracks)
+      setGlobalData({
+        'queue.tracks': queueTracks
+      })
     }
   }
 

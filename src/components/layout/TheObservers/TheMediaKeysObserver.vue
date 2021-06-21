@@ -1,10 +1,10 @@
 <template>
-  <div class="the-media-observer"></div>
+  <div id="the-media-observer"></div>
 </template>
 
 <script>
 import fetchQueueTrack from '#/actions/queue/track/fetchData'
-import { stopAndClose as stopAndClosePlayer } from '#/actions/player'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'TheMediaKeysObserver',
@@ -31,7 +31,9 @@ export default {
       })
     },
     handlePressStop () {
-      stopAndClosePlayer()
+      setGlobalData({
+        'player.playing': null
+      })
     }
   }
 }

@@ -6,7 +6,7 @@
     />
 
     <BaseToggle
-      :isChecked="isChecked"
+      :isChecked="isDarkMode"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -14,11 +14,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { getIsDarkMode } from '#/actions/settings'
-import { setIsDarkMode } from '#/actions/layout'
 import { localize } from '#/actions/plugins/i18n'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'DarkModeOption',
@@ -27,21 +27,25 @@ export default {
     BaseToggle
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     headerFormatted () {
       return localize(
         'settings.view.darkMode'
       )
-    },
-    isChecked () {
-      return getIsDarkMode()
     }
   },
   methods: {
     handleToggleOn () {
-      setIsDarkMode(true)
+      setGlobalData({
+        'layout.isDarkMode': true
+      })
     },
     handleToggleOff () {
-      setIsDarkMode(false)
+      setGlobalData({
+        'layout.isDarkMode': false
+      })
     }
   }
 }

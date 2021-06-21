@@ -12,11 +12,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import fetchVariantData from '#/actions/player/variant/fetchData'
-import {
-  getIsCurrentVariant as getIsPlayerCurrentVariant
-} from '#/actions/player'
-import { toggleAction as toggleAudioAction } from '#/actions/audio'
 
 export default {
   name: 'BaseTrackVariantContainer',
@@ -33,10 +30,20 @@ export default {
     }
   },
   computed: {
+    ...mapState('audio', {
+      audioElement: 'element'
+    }),
+    ...mapState('player', {
+      playerCurrentVariantId: 'currentVariantId'
+    }),
+    ...mapGetters('audio', {
+      audioAction: 'action'
+    }),
     isCurrent () {
-      return getIsPlayerCurrentVariant({
-        variantId: this.variantId
-      })
+      return (
+        this.variantId ===
+          this.playerCurrentVariantId
+      )
     },
     variantId () {
       return this.variantData.uuid
@@ -48,10 +55,15 @@ export default {
   methods: {
     handleClick () {
       if (this.isCurrent) {
-        toggleAudioAction()
-      } else {
-        !this.isLoading && this.fetchAudio()
+        this.callAudioAction()
+      } else if (!this.isLoading) {
+        this.fetchAudio()
       }
+    },
+    callAudioAction () {
+      this.audioElement[
+        this.audioAction
+      ]()
     },
     fetchVariantData,
     fetchAudio () {

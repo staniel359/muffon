@@ -1,22 +1,21 @@
-import {
-  getVariants as getPlayerVariants,
-  setCurrentVariantId as setPlayerCurrentVariantId
-} from '#/actions/player'
+import store from '*/store'
 import fetchBandcampIdData from './id/bandcamp/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
+import { setGlobalData } from '#/actions'
 
 export default async function ({ variantId }) {
   const getVariantData = () => {
-    const matchedVariant = variantData => {
+    const isMatchedVariant = variantData => {
       return variantData.uuid === variantId
     }
 
-    return getPlayerVariants().find(matchedVariant)
+    return store.state.player.variants.find(
+      isMatchedVariant
+    )
   }
 
-  const variantData = getVariantData()
-
   const getAudioDataArgs = () => {
+    const variantData = getVariantData()
     const isBandcampVariant =
       variantData.audio.source_id === 'bandcamp'
 
@@ -34,7 +33,9 @@ export default async function ({ variantId }) {
   }
 
   const handleSuccess = () => {
-    setPlayerCurrentVariantId(variantId)
+    setGlobalData({
+      'player.currentVariantId': variantId
+    })
   }
 
   return fetchAudioData(audioDataArgs)

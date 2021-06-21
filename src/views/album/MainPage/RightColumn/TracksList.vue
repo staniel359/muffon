@@ -13,7 +13,7 @@
 
 <script>
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { getSourceData as getAudioSourceData } from '#/actions/audio'
+import audioSources from '#/data/audio/sources'
 
 export default {
   name: 'TracksList',
@@ -40,9 +40,12 @@ export default {
       return this.albumData.image
     },
     isWithSource () {
-      return !!getAudioSourceData(
-        this.sourceId
-      ).isStreamable
+      return !!this.sourceData?.isStreamable
+    },
+    sourceData () {
+      return audioSources.find(sourceData => {
+        return sourceData.id === this.sourceId
+      })
     },
     sourceId () {
       return this.albumData.source_id

@@ -11,15 +11,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
-import {
-  setQueuePanel,
-  setIsQueuePanelVisible as setIsVisible,
-  hideQueuePanel as hide
-} from '#/actions/layout'
+import { setQueuePanel, hideQueuePanel } from '#/actions/layout'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'TheQueuePanel',
@@ -28,31 +25,51 @@ export default {
     TracksSection
   },
   computed: {
+    ...mapState('player', {
+      playerPlaying: 'playing'
+    }),
     ...mapGetters('queue', {
       queueTracksCount: 'tracksCount'
-    })
+    }),
+    queuePanelOptions () {
+      return mainSidebarOptions({
+        onVisible: this.handleVisible,
+        onHide: this.handleHide
+      })
+    }
   },
   watch: {
-    queueTracksCount: 'handleQueueTracksCountChange'
+    queueTracksCount: 'handleQueueTracksCountChange',
+    playerPlaying: 'handlePlayerPlayingChange'
   },
   mounted () {
     setQueuePanel(
       this.$refs.queuePanel,
-      mainSidebarOptions({
-        onVisible: this.handleVisible,
-        onHide: this.handleHide
-      })
+      this.queuePanelOptions
     )
   },
   methods: {
+    ...mapActions('layout', [
+      'setIsQueuePanelVisible'
+    ]),
     handleVisible () {
-      setIsVisible(true)
+      this.setIsQueuePanelVisible(true)
     },
     handleHide () {
-      setIsVisible(false)
+      this.setIsQueuePanelVisible(false)
     },
     handleQueueTracksCountChange (value) {
-      !value && hide()
+      !value && hideQueuePanel()
+    },
+    handlePlayerPlayingChange (value) {
+      !value && this.clearQueue()
+    },
+    clearQueue () {
+      setGlobalData({
+        'queue.currentTrackId': null,
+        'queue.tracks': [],
+        'queue.tracksShuffled': []
+      })
     }
   }
 }

@@ -1,24 +1,30 @@
 import axios from 'axios'
-import {
-  getSourceId as getPlayerSourceId,
-  setVariants as setPlayerVariants
-} from '#/actions/player'
+import store from '*/store'
 import { collection as formatCollection } from '#/formatters'
+import { setGlobalData } from '#/actions'
 
 export default function ({ query }) {
-  const url = `/${getPlayerSourceId()}/search/tracks`
+  const sourceId = store.state.player.sourceId
+  const url = `/${sourceId}/search/tracks`
 
   const limit = 20
   const params = { query, limit }
 
-  const handleSuccess = resp => {
-    const { tracks } = resp.data.search
+  const handleSuccess = response => {
+    const { tracks } = response.data.search
 
     const variantsFormatted = formatCollection(
       tracks.slice(0, limit)
     )
 
-    setPlayerVariants(variantsFormatted)
+    store.dispatch(
+      'player/setVariants',
+      variantsFormatted
+    )
+
+    setGlobalData({
+      'player.variants': variantsFormatted
+    })
   }
 
   return axios

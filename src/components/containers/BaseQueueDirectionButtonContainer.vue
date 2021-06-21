@@ -12,12 +12,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import BaseButton from '@/BaseButton.vue'
-import {
-  getIsEdge as getIsQueueEdge,
-  getIsFetching as getIsQueueFetching
-} from '#/actions/queue'
 import fetchQueueTrack from '#/actions/queue/track/fetchData'
 
 export default {
@@ -36,8 +32,14 @@ export default {
     }
   },
   computed: {
+    ...mapState('queue', {
+      isQueueFetchingPrev: 'isFetchingPrev',
+      isQueueFetchingNext: 'isFetchingNext'
+    }),
     ...mapGetters('queue', {
-      queueTracksCount: 'tracksCount'
+      queueTracksCount: 'tracksCount',
+      isQueueStart: 'isStart',
+      isQueueEnd: 'isEnd'
     }),
     isDisabled () {
       return (
@@ -47,14 +49,24 @@ export default {
       )
     },
     isEdge () {
-      return getIsQueueEdge({
-        position: this.position
-      })
+      switch (this.position) {
+        case 'prev':
+          return this.isQueueStart
+        case 'next':
+          return this.isQueueEnd
+        default:
+          return false
+      }
     },
     isFetching () {
-      return getIsQueueFetching({
-        position: this.position
-      })
+      switch (this.position) {
+        case 'prev':
+          return this.isQueueFetchingPrev
+        case 'next':
+          return this.isQueueFetchingNext
+        default:
+          return false
+      }
     }
   },
   methods: {

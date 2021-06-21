@@ -16,11 +16,6 @@ import BaseSeeker from '@/BaseSeeker.vue'
 import { setSeekerValue } from '#/actions/plugins/semantic'
 import { mainSeekerOptions } from '#/data/plugins/semantic'
 import {
-  pause as pauseAudio,
-  setCurrentTime as setAudioCurrentTime,
-  setAction as setAudioAction
-} from '#/actions/audio'
-import {
   clone as cloneElement,
   addClass as addElementClass,
   setPercentWidth as setElementPercentWidth,
@@ -51,7 +46,8 @@ export default {
       audioProgress: 'progress',
       audioCurrentTime: 'currentTime',
       audioDuration: 'duration',
-      isAudioPlayable: 'isPlayable'
+      isAudioPlayable: 'isPlayable',
+      audioElement: 'element'
     }),
     ...mapState('player', {
       playerPlaying: 'playing'
@@ -105,26 +101,24 @@ export default {
           this.seekingAudioStatus = this.audioStatus
         }
 
-        pauseAudio()
+        this.audioElement.pause()
       }
     },
     handleMove (value) {
-      this.isSeeking && setAudioCurrentTime(
+      this.isSeeking && this.setAudioCurrentTime(
         this.percentToSeconds(value)
       )
     },
     handleChange (value) {
       if (this.isSeeking) {
-        setAudioCurrentTime(
+        this.setAudioCurrentTime(
           this.percentToSeconds(value)
         )
 
         if (this.isAudioEnded) {
           this.endAudio()
         } else {
-          setAudioAction(
-            this.seekingAudioStatus
-          )
+          this.callAudioAction()
         }
 
         this.isSeeking = false
@@ -151,6 +145,11 @@ export default {
     endAudio () {
       this.$emit('audioEnd')
     },
+    callAudioAction () {
+      this.audioElement[
+        this.seekingAudioStatus
+      ]()
+    },
     setProgressBar () {
       const el = cloneElement(this.seekerMainTrack)
 
@@ -169,6 +168,9 @@ export default {
     },
     percentToSeconds (percent) {
       return this.audioDuration * percent / 100
+    },
+    setAudioCurrentTime (value) {
+      this.audioElement.currentTime = value
     }
   }
 }

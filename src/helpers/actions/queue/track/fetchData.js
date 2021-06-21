@@ -1,26 +1,32 @@
-import {
-  getFollowingTrack as getQueueFollowingTrack,
-  setIsFetching as setIsQueueFetching,
-  setCurrentTrackId as setQueueCurrentTrackId
-} from '#/actions/queue'
+import store from '*/store'
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
 import { handleEnvError } from '#/utils'
+import { setGlobalData } from '#/actions'
 
 export default function fetchData ({ position }) {
-  const followingTrackData = getQueueFollowingTrack({
-    position
-  })
+  const followingTrackData = store.getters[
+    `queue/${position}Track`
+  ]
 
-  const startLoader = () => {
-    setIsQueueFetching({ position }, true)
-  }
-
-  const stopLoader = () => {
-    setIsQueueFetching({ position }, false)
+  const setIsQueueFetching = value => {
+    switch (position) {
+      case 'prev':
+        return store.dispatch(
+          'queue/setIsFetchingPrev',
+          value
+        )
+      case 'next':
+        return store.dispatch(
+          'queue/setIsFetchingNext',
+          value
+        )
+      default:
+        return false
+    }
   }
 
   const fetchFollowingTrackAudioData = () => {
-    startLoader()
+    setIsQueueFetching(true)
 
     const queueTrackDataArgs = {
       trackTitle: followingTrackData.title,
@@ -31,7 +37,7 @@ export default function fetchData ({ position }) {
     }
 
     const handleSuccess = () => {
-      stopLoader()
+      setIsQueueFetching(false)
     }
 
     const handleError = error => {
@@ -41,9 +47,12 @@ export default function fetchData ({ position }) {
     }
 
     const retry = () => {
-      setQueueCurrentTrackId(
+      const queueCurrentTrackId =
         followingTrackData.uuid
-      )
+
+      setGlobalData({
+        'queue.currentTrackId': queueCurrentTrackId
+      })
 
       fetchData({ position })
     }
@@ -56,6 +65,6 @@ export default function fetchData ({ position }) {
   if (followingTrackData) {
     fetchFollowingTrackAudioData()
   } else {
-    stopLoader()
+    setIsQueueFetching(false)
   }
 }

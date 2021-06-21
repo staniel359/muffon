@@ -6,14 +6,19 @@
 </template>
 
 <script>
-import { setDropdownContext } from '#/actions/layout'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'TheVisibleArea',
   mounted () {
-    setDropdownContext(
+    this.setVisibleContext(
       this.$refs.visible
     )
+  },
+  methods: {
+    ...mapActions('layout', [
+      'setVisibleContext'
+    ])
   }
 }
 </script>

@@ -8,9 +8,8 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BaseButton from '@/BaseButton.vue'
-import { toggleIsLoop as toggleIsAudioLoop } from '#/actions/audio'
 
 export default {
   name: 'LoopButton',
@@ -19,12 +18,20 @@ export default {
   },
   computed: {
     ...mapState('audio', {
-      isAudioLoop: 'isLoop'
+      isAudioLoop: 'isLoop',
+      audioElement: 'element'
     })
   },
   methods: {
+    ...mapActions('audio', {
+      setIsAudioLoop: 'setIsLoop'
+    }),
     handleClick () {
-      toggleIsAudioLoop()
+      const value = !this.isAudioLoop
+
+      this.audioElement.loop = value
+
+      this.setIsAudioLoop(value)
     }
   }
 }

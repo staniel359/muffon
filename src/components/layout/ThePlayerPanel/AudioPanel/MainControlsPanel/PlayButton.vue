@@ -10,7 +10,6 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import BaseButton from '@/BaseButton.vue'
-import { toggleAction as toggleAudioAction } from '#/actions/audio'
 
 export default {
   name: 'PlayButton',
@@ -19,7 +18,8 @@ export default {
   },
   computed: {
     ...mapState('audio', {
-      isAudioPlayable: 'isPlayable'
+      isAudioPlayable: 'isPlayable',
+      audioElement: 'element'
     }),
     ...mapGetters('audio', {
       audioAction: 'action'
@@ -27,7 +27,12 @@ export default {
   },
   methods: {
     handleClick () {
-      toggleAudioAction()
+      this.callAudioAction()
+    },
+    callAudioAction () {
+      this.audioElement[
+        this.audioAction
+      ]()
     }
   }
 }

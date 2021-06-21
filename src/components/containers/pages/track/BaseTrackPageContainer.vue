@@ -17,12 +17,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
-import { setNavigationSections } from '#/actions/layout'
-import {
-  navigation as formatTrackPageNavigation
-} from '#/formatters/navigation/track'
+import formatTrackPageNavigation from '#/formatters/navigation/track'
+import formatTrackPageTab from '#/formatters/tabs/track'
 import fetchTrackData from '#/actions/api/track/fetchData'
+import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseTrackPageContainer',
@@ -51,11 +51,16 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatTrackPageNavigation({
+      return formatTrackPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
         artistName: this.artistNameFetched,
         trackTitle: this.trackTitleFetched,
         pageNameKey: this.pageNameKey
-      })
+      }
     },
     artistNameFetched () {
       return this.trackData?.artist?.name
@@ -73,27 +78,29 @@ export default {
     }
   },
   watch: {
-    artistNameFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    },
-    trackTitleFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    }
+    trackData: 'handleTrackDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
+    ...mapActions('layout', [
+      'setNavigationSections'
+    ]),
     handleRefresh (page) {
       this.error = null
 
       this.fetchData(page)
     },
-    handleNavigationDataChange () {
-      setNavigationSections(
+    handleTrackDataChange () {
+      this.setNavigationSections(
         this.navigationSections
+      )
+
+      updateTab(
+        formatTrackPageTab(
+          this.navigationData
+        )
       )
     },
     fetchTrackData,

@@ -19,12 +19,12 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
-import { setNavigationSections } from '#/actions/layout'
-import {
-  navigation as formatArtistPageNavigation
-} from '#/formatters/navigation/artist'
+import formatArtistPageNavigation from '#/formatters/navigation/artist'
+import formatArtistPageTab from '#/formatters/tabs/artist'
 import fetchArtistData from '#/actions/api/artist/fetchData'
+import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseArtistPageContainer',
@@ -53,10 +53,15 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatArtistPageNavigation({
+      return formatArtistPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
         artistName: this.artistNameFetched,
         pageNameKey: this.pageNameKey
-      })
+      }
     },
     artistNameFetched () {
       return this.artistData?.name
@@ -77,15 +82,15 @@ export default {
     }
   },
   watch: {
-    artistNameFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    }
+    artistData: 'handleArtistDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
+    ...mapActions('layout', [
+      'setNavigationSections'
+    ]),
     handleInit (el) {
       this.$emit('init', el)
     },
@@ -94,12 +99,15 @@ export default {
 
       this.fetchData(page)
     },
-    handleNavigationDataChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      setNavigationSections(
+    handleArtistDataChange () {
+      this.setNavigationSections(
         this.navigationSections
+      )
+
+      updateTab(
+        formatArtistPageTab(
+          this.navigationData
+        )
       )
     },
     fetchArtistData,

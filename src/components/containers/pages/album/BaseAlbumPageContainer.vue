@@ -18,14 +18,14 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
-import { setNavigationSections } from '#/actions/layout'
-import {
-  navigation as formatAlbumPageNavigation
-} from '#/formatters/navigation/album'
+import formatAlbumPageNavigation from '#/formatters/navigation/album'
+import formatAlbumPageTab from '#/formatters/tabs/album'
 import fetchAlbumData from '#/actions/api/album/fetchData'
 import fetchBandcampAlbumIdData
   from '#/actions/api/album/id/bandcamp/fetchData'
+import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -64,11 +64,16 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatAlbumPageNavigation({
+      return formatAlbumPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
         artistName: this.artistNameFetched,
         albumTitle: this.albumTitleFetched,
         pageNameKey: this.pageNameKey
-      })
+      }
     },
     artistNameFetched () {
       return this.albumData?.artist?.name
@@ -86,19 +91,15 @@ export default {
   },
   watch: {
     requestAlbumData: 'handleRequestAlbumDataChange',
-    artistNameFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    },
-    albumTitleFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    }
+    albumData: 'handleAlbumDataChange'
   },
   mounted () {
     this.resetRequestAlbumData()
   },
   methods: {
+    ...mapActions('layout', [
+      'setNavigationSections'
+    ]),
     handleInit (el) {
       this.$emit('init', el)
     },
@@ -107,9 +108,15 @@ export default {
 
       this.fetchData(page)
     },
-    handleNavigationDataChange () {
-      setNavigationSections(
+    handleAlbumDataChange () {
+      this.setNavigationSections(
         this.navigationSections
+      )
+
+      updateTab(
+        formatAlbumPageTab(
+          this.navigationData
+        )
       )
     },
     handleRequestAlbumDataChange () {

@@ -1,7 +1,7 @@
 {
   "name": "muffon",
   "version": "0.1.0-alpha.6",
-  "description": "muffon",
+  "description": "Desktop music browser",
   "homepage": "https://github.com/staniel359/muffon",
   "author": {
     "name": "Aleksey Shpakovsky",
@@ -47,7 +47,6 @@
     "cross-env": "^7.0.3",
     "electron": "^13.1.2",
     "electron-builder": "^22.11.5",
-    "electron-devtools-installer": "^3.2.0",
     "eslint": "^7.28.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",

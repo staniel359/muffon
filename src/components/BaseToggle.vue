@@ -33,17 +33,27 @@ export default {
       })
     }
   },
+  watch: {
+    isChecked: {
+      immediate: true,
+      handler: 'handleIsChecked'
+    }
+  },
   mounted () {
     setCheckbox(
       this.$refs.checkbox,
       this.checkboxOptions
     )
-
-    if (this.isChecked) {
-      checkCheckbox(this.$refs.checkbox)
-    }
   },
   methods: {
+    handleIsChecked (value) {
+      this.$nextTick(() => {
+        checkCheckbox(
+          this.$refs.checkbox,
+          value
+        )
+      })
+    },
     handleOn () {
       this.$emit('on')
     },

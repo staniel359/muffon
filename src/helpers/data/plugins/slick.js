@@ -1,4 +1,4 @@
-export function artistImagesMainSliderOptions () {
+export const artistImagesMainSliderOptions = () => {
   return {
     accessibility: false,
     draggable: false,
@@ -6,7 +6,7 @@ export function artistImagesMainSliderOptions () {
   }
 }
 
-export function artistImagesModalMainSliderOptions ({ syncSlider } = {}) {
+export const artistImagesModalMainSliderOptions = ({ syncSlider } = {}) => {
   return {
     asNavFor: syncSlider,
     draggable: false,
@@ -14,7 +14,7 @@ export function artistImagesModalMainSliderOptions ({ syncSlider } = {}) {
   }
 }
 
-export function artistImagesModalThumbsSliderOptions ({ syncSlider } = {}) {
+export const artistImagesModalThumbsSliderOptions = ({ syncSlider } = {}) => {
   return {
     arrows: false,
     asNavFor: syncSlider,

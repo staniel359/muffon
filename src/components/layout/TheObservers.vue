@@ -2,14 +2,16 @@
   <TheLocalObserver />
   <TheStoreObserver />
   <ThePlayerObserver />
+  <TheKeysObserver />
   <TheMediaKeysObserver />
 </template>
 
 <script>
-import TheLocalObserver from '@/observers/TheLocalObserver.vue'
-import TheStoreObserver from '@/observers/TheStoreObserver.vue'
-import ThePlayerObserver from '@/observers/ThePlayerObserver.vue'
-import TheMediaKeysObserver from '@/observers/TheMediaKeysObserver.vue'
+import TheLocalObserver from './TheObservers/TheLocalObserver.vue'
+import TheStoreObserver from './TheObservers/TheStoreObserver.vue'
+import ThePlayerObserver from './TheObservers/ThePlayerObserver.vue'
+import TheKeysObserver from './TheObservers/TheKeysObserver.vue'
+import TheMediaKeysObserver from './TheObservers/TheMediaKeysObserver.vue'
 
 export default {
   name: 'TheObservers',
@@ -17,6 +19,7 @@ export default {
     TheLocalObserver,
     TheStoreObserver,
     ThePlayerObserver,
+    TheKeysObserver,
     TheMediaKeysObserver
   }
 }

@@ -8,80 +8,79 @@ import {
   hideSidebar
 } from '#/actions/plugins/semantic'
 
-export function setNavigationSections (value) {
+export const setLoaderDimmer = (el, options) => {
   store.dispatch(
-    'layout/setNavigationSections',
-    value
+    'layout/setLoaderDimmer',
+    el
+  )
+
+  setDimmer(
+    store.state.layout.loaderDimmer,
+    options
   )
 }
 
-function loaderDimmer () {
-  return store.state.layout.loaderDimmer
-}
-
-export function setLoaderDimmer (el, options) {
-  store.dispatch('layout/setLoaderDimmer', el)
-
-  setDimmer(loaderDimmer(), options)
-}
-
-export function toggleLoaderDimmer (bool) {
-  toggleDimmer(loaderDimmer(), bool)
-}
-
-function playerPanel () {
-  return store.state.layout.playerPanel
-}
-
-export function setPlayerPanel (el, options) {
-  store.dispatch('layout/setPlayerPanel', el)
-
-  setSidebar(playerPanel(), options)
-}
-
-export function showPlayerPanel () {
-  showSidebar(playerPanel())
-}
-
-export function hidePlayerPanel () {
-  hideSidebar(playerPanel())
-}
-
-function queuePanel () {
-  return store.state.layout.queuePanel
-}
-
-export function setQueuePanel (el, options) {
-  store.dispatch('layout/setQueuePanel', el)
-
-  setSidebar(queuePanel(), options)
-}
-
-export function toggleQueuePanel () {
-  toggleSidebar(queuePanel())
-}
-
-export function hideQueuePanel () {
-  hideSidebar(queuePanel())
-}
-
-export function setIsQueuePanelVisible (value) {
-  store.dispatch(
-    'layout/setIsQueuePanelVisible',
-    value
+export const toggleLoaderDimmer = bool => {
+  toggleDimmer(
+    store.state.layout.loaderDimmer,
+    bool
   )
 }
 
-export function setDropdownContext (value) {
+export const setPlayerPanel = (el, options) => {
   store.dispatch(
-    'layout/setDropdownContext',
-    value
+    'layout/setPlayerPanel',
+    el
+  )
+
+  setSidebar(
+    store.state.layout.playerPanel,
+    options
   )
 }
 
-export function setIsDarkMode (value) {
-  store.dispatch(
-    'layout/setIsDarkMode',
-    value
+export const showPlayerPanel = () => {
+  showSidebar(
+    store.state.layout.playerPanel
   )
+}
+
+export const hidePlayerPanel = () => {
+  hideSidebar(
+    store.state.layout.playerPanel
+  )
+}
+
+export const setQueuePanel = (el, options) => {
+  store.dispatch(
+    'layout/setQueuePanel',
+    el
+  )
+
+  setSidebar(
+    store.state.layout.queuePanel,
+    options
+  )
+}
+
+export const toggleQueuePanel = () => {
+  toggleSidebar(
+    store.state.layout.queuePanel
+  )
+}
+
+export const hideQueuePanel = () => {
+  hideSidebar(
+    store.state.layout.queuePanel
+  )
+}
+
+export const focusOnSegment = el => {
+  const segmentTop = $(el).offset().top
+  const navbarHeight = 45
+  const marginTop = 20
+  const offsetTop =
+    segmentTop - navbarHeight - marginTop
+
+  window.scrollTo(0, offsetTop)
 }

@@ -8,7 +8,7 @@
 
 <script>
 import BaseButton from '@/BaseButton.vue'
-import { stopAndClose as stopAndClosePlayer } from '#/actions/player'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'CloseButton',
@@ -17,7 +17,9 @@ export default {
   },
   methods: {
     handleClick () {
-      stopAndClosePlayer()
+      setGlobalData({
+        'player.playing': null
+      })
     }
   }
 }

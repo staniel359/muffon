@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Mousetrap from 'mousetrap'
+import { mapActions } from 'vuex'
 import BaseModalContainer from '@/containers/BaseModalContainer.vue'
 import SearchContent from './TheSearchModal/SearchContent.vue'
 
@@ -24,17 +24,14 @@ export default {
     }
   },
   mounted () {
-    Mousetrap.bind(
-      'mod+f',
-      this.handleSearchCall
+    this.setSearchModal(
+      this.$refs.modal
     )
   },
   methods: {
-    handleSearchCall () {
-      this.show()
-
-      return false
-    },
+    ...mapActions('layout', [
+      'setSearchModal'
+    ]),
     handleVisible () {
       this.$refs.search.focusInput()
     },

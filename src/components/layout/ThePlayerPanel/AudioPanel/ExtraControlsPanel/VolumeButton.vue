@@ -10,12 +10,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BaseButton from '@/BaseButton.vue'
 import VolumePopup from './VolumeButton/VolumePopup.vue'
 import { setPopup } from '#/actions/plugins/semantic'
 import { mainPopupOptions } from '#/data/plugins/semantic'
-import { toggleIsMuted as toggleIsAudioMuted } from '#/actions/audio'
 
 export default {
   name: 'VolumeButton',
@@ -31,7 +30,8 @@ export default {
   computed: {
     ...mapState('audio', {
       isAudioMuted: 'isMuted',
-      audioVolume: 'volume'
+      audioVolume: 'volume',
+      audioElement: 'element'
     }),
     iconFormatted () {
       return `volume ${this.volumeIcon}`
@@ -61,11 +61,18 @@ export default {
     )
   },
   methods: {
+    ...mapActions('audio', {
+      setIsAudioMuted: 'setIsMuted'
+    }),
     handleButtonInit (el) {
       this.button = el
     },
     handleClick () {
-      toggleIsAudioMuted()
+      const value = !this.isAudioMuted
+
+      this.audioElement.muted = value
+
+      this.setIsAudioMuted(value)
     }
   }
 }

@@ -1,5 +1,7 @@
 <template>
-  <BaseSegmentContainer class="queue-tracks-container">
+  <BaseSegmentContainer
+    class="queue-tracks-container"
+  >
     <BaseTracksSimpleList
       class="queue-tracks"
       :tracks="queueTracksFormatted"
@@ -13,14 +15,10 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import {
-  resetIsShuffle as resetIsQueueShuffle,
-  setTracksShuffled as setQueueTracksShuffled,
-  resetTracksShuffled as resetQueueTracksShuffled
-} from '#/actions/queue'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'TracksSection',
@@ -29,28 +27,21 @@ export default {
     BaseTracksSimpleList
   },
   computed: {
-    ...mapState('queue', {
-      queueTracks: 'tracks',
-      isQueueShuffle: 'isShuffle'
-    }),
     ...mapGetters('queue', {
       queueTracksFormatted: 'tracksFormatted'
+    }),
+    ...mapState('queue', {
+      queueTracks: 'tracks'
     })
   },
   watch: {
-    queueTracks: 'handleQueueTracksChange',
-    isQueueShuffle: 'handleIsQueueShuffleChange'
+    queueTracks: 'handleQueueTracksChange'
   },
   methods: {
-    handleQueueTracksChange () {
-      resetIsQueueShuffle()
-    },
-    handleIsQueueShuffleChange (value) {
-      if (value) {
-        setQueueTracksShuffled()
-      } else {
-        resetQueueTracksShuffled()
-      }
+    handleQueueTracksChange (value) {
+      setGlobalData({
+        'queue.isShuffle': false
+      })
     }
   }
 }

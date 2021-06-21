@@ -1,13 +1,8 @@
+import store from '*/store'
 import fetchSearchData from '#/actions/api/player/search/fetchData'
 import fetchVariantData from '#/actions/audio/variant/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
-import {
-  setCurrentTrackId as setPlayerCurrentTrackId,
-  setCurrentVariantId as setPlayerCurrentVariantId,
-  getVariants as getPlayerVariants,
-  resetVariants as resetPlayerVariants
-} from '#/actions/player'
-import { setCurrentTrackId as setQueueCurrentTrackId } from '#/actions/queue'
+import { setGlobalData } from '#/actions'
 
 export default function ({
   artistName,
@@ -24,14 +19,18 @@ export default function ({
   }
 
   const handleAudioSuccess = () => {
-    resetPlayerVariants()
+    setGlobalData({
+      'player.variants': []
+    })
 
     setCurrentTrackIds()
   }
 
   const setCurrentTrackIds = () => {
-    setPlayerCurrentTrackId(trackId)
-    setQueueCurrentTrackId(queueTrackId)
+    setGlobalData({
+      'player.currentTrackId': trackId,
+      'queue.currentTrackId': queueTrackId
+    })
   }
 
   const searchAudio = () => {
@@ -43,7 +42,7 @@ export default function ({
   }
 
   const getFirstVariantId = () => {
-    return getPlayerVariants()[0].uuid
+    return store.state.player.variants[0].uuid
   }
 
   const handleSearchSuccess = () => {
@@ -56,9 +55,10 @@ export default function ({
   const handleVariantSuccess = () => {
     setCurrentTrackIds()
 
-    setPlayerCurrentVariantId(
-      getFirstVariantId()
-    )
+    setGlobalData({
+      'player.currentVariantId':
+        getFirstVariantId()
+    })
   }
 
   if (audioData?.present) {

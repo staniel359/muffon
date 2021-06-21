@@ -1,7 +1,11 @@
 import audioSources from '#/data/audio/sources'
 
-export function getStreamable (bool) {
-  return audioSources.filter(source => {
-    return source.isStreamable === bool
-  })
+export const getStreamable = bool => {
+  const isStreamableSource = sourceData => {
+    return sourceData.isStreamable === bool
+  }
+
+  return audioSources.filter(
+    isStreamableSource
+  )
 }

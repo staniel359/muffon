@@ -1,6 +1,5 @@
-/node_modules
 /build
 /build_electron
-/electron-data
-
+/electron_data
+/node_modules
 yarn-error.log

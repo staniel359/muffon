@@ -17,12 +17,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
-import { setNavigationSections } from '#/actions/layout'
-import {
-  navigation as formatVideoChannelPageNavigation
-} from '#/formatters/navigation/videoChannel'
+import formatVideoChannelPageNavigation
+  from '#/formatters/navigation/videoChannel'
+import formatVideoChannelVideosPageTab from '#/formatters/tabs/videoChannel'
 import fetchVideoChannelData from '#/actions/api/videoChannel/fetchData'
+import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseChannelPageContainer',
@@ -45,9 +46,15 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatVideoChannelPageNavigation({
+      return formatVideoChannelPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
+        channelId: this.channelId,
         channelTitle: this.channelTitleFetched
-      })
+      }
     },
     channelTitleFetched () {
       return this.channelData?.title
@@ -61,23 +68,29 @@ export default {
     }
   },
   watch: {
-    channelTitleFetched: {
-      immediate: true,
-      handler: 'handleNavigationDataChange'
-    }
+    channelData: 'handleChannelDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
+    ...mapActions('layout', [
+      'setNavigationSections'
+    ]),
     handleRefresh (page) {
       this.error = null
 
       this.fetchData(page)
     },
-    handleNavigationDataChange () {
-      setNavigationSections(
+    handleChannelDataChange () {
+      this.setNavigationSections(
         this.navigationSections
+      )
+
+      updateTab(
+        formatVideoChannelVideosPageTab(
+          this.navigationData
+        )
       )
     },
     fetchVideoChannelData,

@@ -8,8 +8,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseAudioVisualiser from '@/BaseAudioVisualiser.vue'
-import { getIsCurrentTrack as getIsPlayerCurrentTrack } from '#/actions/player'
 
 export default {
   name: 'VisualizerSection',
@@ -23,10 +23,14 @@ export default {
     }
   },
   computed: {
+    ...mapState('player', {
+      playerCurrentTrackId: 'currentTrackId'
+    }),
     isCurrent () {
-      return getIsPlayerCurrentTrack({
-        trackId: this.trackId
-      })
+      return (
+        this.trackId ===
+          this.playerCurrentTrackId
+      )
     }
   }
 }

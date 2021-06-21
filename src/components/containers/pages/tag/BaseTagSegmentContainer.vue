@@ -23,7 +23,7 @@
 <script>
 import HeaderSegment from './BaseTagSegmentContainer/HeaderSegment.vue'
 import fetchTagData from '#/actions/api/tag/fetchData'
-import { focusOnSegment } from '#/actions/document'
+import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'BaseTagSegmentContainer',

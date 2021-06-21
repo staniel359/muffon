@@ -1,97 +1,111 @@
-export function artistMain ({ artistName }) {
+export const artistMain = ({ artistName }) => {
   return {
     name: 'ArtistMainPage',
-    params: { artistName }
+    params: { artistName },
+    path: `artists/${artistName}`
   }
 }
 
-export function artistImages ({ artistName }) {
+export const artistImages = ({ artistName }) => {
   return {
     name: 'ArtistImagesPage',
-    params: { artistName }
+    params: { artistName },
+    path: `artists/${artistName}/images`
   }
 }
 
-export function artistTracks ({ artistName }) {
+export const artistTracks = ({ artistName }) => {
   return {
     name: 'ArtistTracksPage',
-    params: { artistName }
+    params: { artistName },
+    path: `artists/${artistName}/tracks`
   }
 }
 
-export function artistAlbums ({ artistName }) {
+export const artistAlbums = ({ artistName }) => {
   return {
     name: 'ArtistAlbumsPage',
-    params: { artistName }
+    params: { artistName },
+    path: `artists/${artistName}/albums`
   }
 }
 
-export function artistSimilar ({ artistName }) {
+export const artistSimilar = ({ artistName }) => {
   return {
     name: 'ArtistSimilarPage',
-    params: { artistName }
+    params: { artistName },
+    path: `artists/${artistName}/similar`
   }
 }
 
-export function albumMain ({ artistName, albumTitle }) {
+export const albumMain = ({ artistName, albumTitle }) => {
   return {
     name: 'AlbumMainPage',
-    params: { artistName, albumTitle }
+    params: { artistName, albumTitle },
+    path: `artists/${artistName}/albums/${albumTitle}`
   }
 }
 
-export function trackMain ({ artistName, trackTitle }) {
+export const trackMain = ({ artistName, trackTitle }) => {
   return {
     name: 'TrackMainPage',
-    params: { artistName, trackTitle }
+    params: { artistName, trackTitle },
+    path: `artists/${artistName}/tracks/${trackTitle}`
   }
 }
 
-export function trackSimilar ({ artistName, trackTitle }) {
+export const trackSimilar = ({ artistName, trackTitle }) => {
   return {
     name: 'TrackSimilarPage',
-    params: { artistName, trackTitle }
+    params: { artistName, trackTitle },
+    path: `artists/${artistName}/tracks/${trackTitle}/similar`
   }
 }
 
-export function tagMain ({ tagName }) {
+export const tagMain = ({ tagName }) => {
   return {
     name: 'TagMainPage',
-    params: { tagName }
+    params: { tagName },
+    path: `tags/${tagName}`
   }
 }
 
-export function tagArtists ({ tagName }) {
+export const tagArtists = ({ tagName }) => {
   return {
     name: 'TagArtistsPage',
-    params: { tagName }
+    params: { tagName },
+    path: `tags/${tagName}/artists`
   }
 }
 
-export function tagAlbums ({ tagName }) {
+export const tagAlbums = ({ tagName }) => {
   return {
     name: 'TagAlbumsPage',
-    params: { tagName }
+    params: { tagName },
+    path: `tags/${tagName}/albums`
   }
 }
 
-export function tagTracks ({ tagName }) {
+export const tagTracks = ({ tagName }) => {
   return {
     name: 'TagTracksPage',
-    params: { tagName }
+    params: { tagName },
+    path: `tags/${tagName}/tracks`
   }
 }
 
-export function videoChannelVideos ({ channelId }) {
+export const videoChannelVideos = ({ channelId }) => {
   return {
     name: 'VideoChannelVideosPage',
-    params: { channelId }
+    params: { channelId },
+    path: `video/channels/${channelId}/videos`
   }
 }
 
-export function videoMain ({ videoId }) {
+export const videoMain = ({ videoId }) => {
   return {
     name: 'VideoMainPage',
-    params: { videoId }
+    params: { videoId },
+    path: `video/videos/${videoId}`
   }
 }

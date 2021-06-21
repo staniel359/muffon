@@ -12,9 +12,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import fetchTrackData from '#/actions/player/track/fetchData'
-import { getIsCurrentTrack as getIsPlayerCurrentTrack } from '#/actions/player'
-import { toggleAction as toggleAudioAction } from '#/actions/audio'
 
 export default {
   name: 'BaseTrackContainer',
@@ -38,6 +37,15 @@ export default {
     }
   },
   computed: {
+    ...mapState('player', {
+      playerCurrentTrackId: 'currentTrackId'
+    }),
+    ...mapState('audio', {
+      audioElement: 'element'
+    }),
+    ...mapGetters('audio', {
+      audioAction: 'action'
+    }),
     isActive () {
       return (
         this.isWithActiveClass &&
@@ -45,9 +53,10 @@ export default {
       )
     },
     isCurrent () {
-      return getIsPlayerCurrentTrack({
-        trackId: this.trackId
-      })
+      return (
+        this.trackId ===
+          this.playerCurrentTrackId
+      )
     },
     trackId () {
       return this.trackData.player_id
@@ -62,10 +71,15 @@ export default {
   methods: {
     handleClick () {
       if (this.isCurrent) {
-        toggleAudioAction()
-      } else {
-        !this.isLoading && this.fetchAudio()
+        this.callAudioAction()
+      } else if (!this.isLoading) {
+        this.fetchAudio()
       }
+    },
+    callAudioAction () {
+      this.audioElement[
+        this.audioAction
+      ]()
     },
     fetchTrackData,
     fetchAudio () {

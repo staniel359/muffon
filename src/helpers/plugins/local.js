@@ -3,5 +3,6 @@ import schema from '#/data/plugins/local/schema'
 
 export default new ElectronStore({
   accessPropertiesByDotNotation: false,
-  schema
+  schema,
+  watch: true
 })

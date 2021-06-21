@@ -1,6 +1,8 @@
+import { nextTick } from 'vue'
 import axios from 'axios'
-import { setPlaying as setPlayerPlaying } from '#/actions/player'
+import store from '*/store'
 import { playing as formatPlaying } from '#/formatters/player/playing'
+import { setGlobalData, updateStore } from '#/actions'
 
 export default function ({ audioData }) {
   const formatUrl = () => {
@@ -32,7 +34,22 @@ export default function ({ audioData }) {
       audioData
     })
 
-    setPlayerPlaying(playingData)
+    setGlobalData({
+      'player.playing': playingData
+    })
+
+    const handleUpdateStore = () => {
+      nextTick(() => {
+        store.dispatch(
+          'audio/setIsAutoplay',
+          true
+        )
+      })
+    }
+
+    updateStore({
+      'audio.isAutoplay': false
+    }).then(handleUpdateStore)
   }
 
   return axios

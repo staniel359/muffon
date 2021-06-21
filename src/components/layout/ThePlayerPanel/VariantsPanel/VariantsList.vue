@@ -35,9 +35,6 @@ import BaseTrackVariantContainer
   from '@/containers/track/variant/BaseTrackVariantContainer.vue'
 import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
 import { collection as formatCollection } from '#/formatters'
-import {
-  resetCurrentVariantId as resetPlayerCurrentVariantId
-} from '#/actions/player'
 
 export default {
   name: 'VariantsList',
@@ -71,8 +68,6 @@ export default {
     },
     handleVariantsChange () {
       this.scrollToListTop()
-
-      resetPlayerCurrentVariantId()
     },
     scrollToListTop () {
       this.segment.scrollTo(0, 0)

@@ -1,7 +1,15 @@
 export default {
+  'layout.activeTabId': {
+    type: ['null', 'string'],
+    default: null
+  },
   'layout.isDarkMode': {
     type: 'boolean',
     default: false
+  },
+  'layout.tabs': {
+    type: 'array',
+    default: []
   },
   'history.search': {
     type: 'array',
@@ -35,7 +43,15 @@ export default {
     type: 'boolean',
     default: true
   },
+  'queue.isShuffle': {
+    type: 'boolean',
+    default: true
+  },
   'queue.tracks': {
+    type: 'array',
+    default: []
+  },
+  'queue.tracksShuffled': {
     type: 'array',
     default: []
   }

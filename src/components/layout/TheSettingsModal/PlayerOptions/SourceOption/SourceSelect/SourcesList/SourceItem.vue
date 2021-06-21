@@ -25,7 +25,7 @@
 <script>
 import BaseIcon from '@/BaseIcon.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import { setSourceId as setPlayerSourceId } from '#/actions/player'
+import { setGlobalData } from '#/actions'
 
 export default {
   name: 'SourceItem',
@@ -58,7 +58,9 @@ export default {
   },
   methods: {
     handleClick () {
-      setPlayerSourceId(this.sourceId)
+      setGlobalData({
+        'player.sourceId': this.sourceId
+      })
     }
   }
 }

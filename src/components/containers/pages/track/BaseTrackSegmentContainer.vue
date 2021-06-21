@@ -24,7 +24,7 @@
 <script>
 import HeaderSegment from './BaseTrackSegmentContainer/HeaderSegment.vue'
 import fetchTrackData from '#/actions/api/track/fetchData'
-import { focusOnSegment } from '#/actions/document'
+import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'BaseTrackSegmentContainer',

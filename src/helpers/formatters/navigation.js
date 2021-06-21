@@ -1,11 +1,11 @@
 import { localize } from '#/actions/plugins/i18n'
 
-export function homePage () {
-  const homePageName = localize(
-    'layout.navigation.home'
+export const startPage = () => {
+  const startPageName = localize(
+    'layout.navigation.start'
   )
 
   return [
-    { name: homePageName }
+    { name: startPageName }
   ]
 }
