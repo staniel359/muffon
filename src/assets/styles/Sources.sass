@@ -10,6 +10,7 @@ $yandexMusicIconUrl: url("https://music.yandex.ru/favicon16.png")
 $deezerIconUrl: url("https://cdns-files.dzcdn.net/cache/images/common/favicon/favicon-16x16.526cde4edf20647be4ee32cdf35c1c13.png")
 $discogsIconUrl: url("https://www.discogs.com/images/favicon-16x16.png")
 $geniusIconUrl: url("https://assets.genius.com/images/apple-touch-icon.png")
+$rateYourMusicIconUrl: url("https://e.snmc.io/2.5/img/sonemic.png")
 
 .icon.colored.lastfm
   color: $colorLastfm !important
@@ -46,6 +47,13 @@ $geniusIconUrl: url("https://assets.genius.com/images/apple-touch-icon.png")
 
 .icon.genius
   content: $geniusIconUrl
+  width: 20px
+  height: 20px
+  &:not(.colored)
+    filter: grayscale(1)
+
+.icon.rateyourmusic
+  content: $rateYourMusicIconUrl
   width: 20px
   height: 20px
   &:not(.colored)

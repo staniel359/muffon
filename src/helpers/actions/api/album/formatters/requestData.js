@@ -51,6 +51,12 @@ export default function ({ sourceId, albumData }) {
         return {
           albumId: albumData.genius_id
         }
+      case 'rateyourmusic':
+        return {
+          albumId: encodeURIComponent(
+            albumData.rateyourmusic_slug
+          )
+        }
       default:
         return {}
     }

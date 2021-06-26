@@ -89,6 +89,16 @@ export default [
     ]
   },
   {
+    id: 'rateyourmusic',
+    icon: 'rateyourmusic',
+    name: 'Rate Your Music',
+    isStreamable: false,
+    types: [
+      'album',
+      'albumVarious'
+    ]
+  },
+  {
     id: 'spotify',
     icon: 'spotify',
     name: 'Spotify',

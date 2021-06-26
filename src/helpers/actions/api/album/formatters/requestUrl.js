@@ -9,7 +9,15 @@ export default function ({
   const artistNameEncoded = encodeURIComponent(artistName)
   const albumTitleEncoded = encodeURIComponent(albumTitle)
 
-  const scope = `${albumType}s`
+  const formatScope = () => {
+    if (albumType === 'albumVarious') {
+      return 'albums'
+    } else {
+      return `${albumType}s`
+    }
+  }
+
+  const scope = formatScope()
 
   const formatUrlData = () => {
     switch (sourceId) {

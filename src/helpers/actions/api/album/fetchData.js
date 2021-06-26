@@ -35,7 +35,18 @@ export default function ({
 
   const handleSuccess = response => {
     this.error = null
-    this.albumData = response.data[albumType]
+
+    const formatAlbumType = () => {
+      if (albumType === 'albumVarious') {
+        return 'album'
+      } else {
+        return albumType
+      }
+    }
+
+    this.albumData = response.data[
+      formatAlbumType()
+    ]
   }
 
   const handleError = error => {

@@ -88,16 +88,31 @@ export default {
       this.types.map(this.fetchTypeData)
     },
     fetchTypeData (type) {
+      const formatScope = () => {
+        if (type === 'albumVarious') {
+          return 'albums_various'
+        } else {
+          return `${type}s`
+        }
+      }
+
       this.fetchSearchData({
         ...this.searchDataArgs,
-        scope: `${type}s`
+        scope: formatScope()
       })
     },
     formatTypesData () {
       this.types.map(this.formatTypeData)
     },
     formatTypeData (type) {
-      const scope = `${type}s`
+      const formatScope = () => {
+        if (type === 'albumVarious') {
+          return 'albums_various'
+        } else {
+          return `${type}s`
+        }
+      }
+      const scope = formatScope()
 
       if (this.searchData[scope]) {
         this.albumsData[scope] =

@@ -37,9 +37,17 @@ export default {
   },
   methods: {
     isNoCollection (type) {
-      const scope = `${type}s`
+      const formatScope = () => {
+        if (type === 'albumVarious') {
+          return 'albums_various'
+        } else {
+          return `${type}s`
+        }
+      }
 
-      return !this.albumsData[scope]
+      return !this.albumsData[
+        formatScope()
+      ]
     }
   }
 }

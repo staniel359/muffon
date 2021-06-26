@@ -108,6 +108,7 @@ export const messages = {
             source: 'Select source:',
             type: 'Select type:',
             album: 'Select album:',
+            albumVarious: 'Select V/A album:',
             group: 'Select album group:',
             track: 'Select single:'
           },
@@ -115,6 +116,7 @@ export const messages = {
           other: 'Other',
           types: {
             album: 'Album',
+            albumVarious: 'V/A album',
             group: 'Album group',
             track: 'Single'
           },
