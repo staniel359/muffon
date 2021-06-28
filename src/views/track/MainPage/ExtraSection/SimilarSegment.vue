@@ -3,7 +3,7 @@
     headerTextKey="similar"
     scope="similar"
     :clientPageLimit="5"
-    :responsePageLimit="25"
+    :responsePageLimit="5"
     :artistName="artistName"
     :trackTitle="trackTitle"
     :formatHeaderLink="formatTrackSimilarLink"

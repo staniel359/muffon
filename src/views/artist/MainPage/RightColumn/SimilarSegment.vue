@@ -3,7 +3,7 @@
     headerTextKey="similar"
     scope="similar"
     :clientPageLimit="4"
-    :responsePageLimit="10"
+    :responsePageLimit="4"
     :artistName="artistName"
     :formatHeaderLink="formatArtistSimilarLink"
   >

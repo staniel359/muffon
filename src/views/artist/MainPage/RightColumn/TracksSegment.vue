@@ -3,7 +3,7 @@
     headerTextKey="tracks"
     scope="tracks"
     :clientPageLimit="10"
-    :responsePageLimit="25"
+    :responsePageLimit="10"
     :artistName="artistName"
     :formatHeaderLink="formatArtistTracksLink"
   >
