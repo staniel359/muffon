@@ -3,7 +3,6 @@
     :isShowLoader="!albumData"
     :isLoading="isLoading"
     :error="error"
-    @init="handleInit"
     @refresh="handleRefresh"
   >
     <slot
@@ -51,9 +50,6 @@ export default {
     responsePageLimit: Number,
     pageNameKey: String
   },
-  emits: [
-    'init'
-  ],
   data () {
     return {
       albumData: null,
@@ -100,9 +96,6 @@ export default {
     ...mapActions('layout', [
       'setNavigationSections'
     ]),
-    handleInit (el) {
-      this.$emit('init', el)
-    },
     handleRefresh (page) {
       this.error = null
 

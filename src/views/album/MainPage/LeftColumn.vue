@@ -7,25 +7,18 @@
       :artistName="artistName"
       :scrollable="scrollable"
     />
-
-    <AlbumSourceSelect
-      :albumTitle="albumTitle"
-      :artistName="artistName"
-    />
   </div>
 </template>
 
 <script>
 import AlbumImage from './LeftColumn/AlbumImage.vue'
 import AlbumHeader from './LeftColumn/AlbumHeader.vue'
-import AlbumSourceSelect from './LeftColumn/AlbumSourceSelect.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     AlbumImage,
-    AlbumHeader,
-    AlbumSourceSelect
+    AlbumHeader
   },
   props: {
     albumData: {
@@ -51,8 +44,8 @@ export default {
 <style lang="sass" scoped>
 .left-column
   @extend .sticky
-  width: 200px
+  width: 210px
   margin-right: 1em
-  top: calc(#{$mainContainerTopPadding} + 1em)
+  top: calc(#{$mainContainerTopPadding})
   align-self: flex-start
 </style>

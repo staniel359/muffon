@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="basic fluid pointing left scrolling button album-select"
+    class="basic pointing scrolling button album-select"
     :header="headerFormatted"
   >
     <AlbumsList :albums="albums" />
@@ -42,5 +42,6 @@ export default {
 
 <style lang="sass" scoped>
 .album-select
-  margin-bottom: 10px
+  width: 210px
+  margin-right: 1em
 </style>

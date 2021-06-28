@@ -1,7 +1,5 @@
 <template>
-  <BaseAlbumPageContainer
-    @init="handleContainerInit"
-  >
+  <BaseAlbumPageContainer>
     <template #default="slotProps">
       <BaseAlbumPageSegmentContainer
         :isLoading="slotProps.isLoading"
@@ -9,10 +7,20 @@
         @refresh="slotProps.handleRefresh"
       >
         <template #default>
-          <div class="columns-container">
+          <AlbumSourceSelect
+            :albumData="slotProps.albumData"
+          />
+
+          <BaseDivider />
+
+          <div
+            class="columns-container"
+            ref="scrollable"
+          >
             <LeftColumn
+              v-if="$refs.scrollable"
               :albumData="slotProps.albumData"
-              :scrollable="scrollable"
+              :scrollable="$refs.scrollable"
             />
             <RightColumn
               :albumData="slotProps.albumData"
@@ -30,6 +38,8 @@ import BaseAlbumPageContainer
   from '@/containers/pages/album/BaseAlbumPageContainer.vue'
 import BaseAlbumPageSegmentContainer
   from '@/containers/pages/album/BaseAlbumPageSegmentContainer.vue'
+import AlbumSourceSelect from './MainPage/AlbumSourceSelect.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
@@ -38,18 +48,10 @@ export default {
   components: {
     BaseAlbumPageContainer,
     BaseAlbumPageSegmentContainer,
+    AlbumSourceSelect,
+    BaseDivider,
     LeftColumn,
     RightColumn
-  },
-  data () {
-    return {
-      scrollable: null
-    }
-  },
-  methods: {
-    handleContainerInit (el) {
-      this.scrollable = el
-    }
   }
 }
 </script>

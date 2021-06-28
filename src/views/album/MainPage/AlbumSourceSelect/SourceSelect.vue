@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="basic fluid pointing left scrolling button source-select"
+    class="basic pointing scrolling button source-select"
     ref="dropdown"
     :header="headerFormatted"
   >
@@ -43,5 +43,6 @@ export default {
 
 <style lang="sass" scoped>
 .source-select
-  margin-bottom: 10px
+  width: 210px
+  margin-right: 1em
 </style>

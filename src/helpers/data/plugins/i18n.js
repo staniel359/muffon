@@ -119,8 +119,7 @@ export const messages = {
             albumVarious: 'V/A album',
             group: 'Album group',
             track: 'Single'
-          },
-          reset: 'Reset'
+          }
         }
       },
       track: {

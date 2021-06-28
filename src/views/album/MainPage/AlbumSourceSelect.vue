@@ -1,34 +1,43 @@
 <template>
-  <SourceSelect
-    ref="source"
-    :artistName="artistName"
-    :albumTitle="albumTitle"
-  />
+  <div class="album-source-select-container">
+    <div class="album-source-select-content">
+      <SourceSelect
+        ref="source"
+        :artistName="artistName"
+        :albumTitle="albumTitle"
+      />
 
-  <template v-if="selectedSourceData">
-    <TypeSelect
-      v-if="isSelectedSourceWithMultipleTypes"
-      :key="typeSelectKey"
-      :albumsData="selectedSourceAlbumsData"
-      :types="selectedSourceTypes"
+      <template v-if="selectedSourceData">
+        <TypeSelect
+          v-if="isSelectedSourceWithMultipleTypes"
+          :key="typeSelectKey"
+          :albumsData="selectedSourceAlbumsData"
+          :types="selectedSourceTypes"
+        />
+
+        <AlbumSelect
+          v-if="selectedTypeId"
+          :key="albumSelectKey"
+          :albums="selectedTypeAlbums"
+          :typeId="selectedTypeId"
+        />
+      </template>
+    </div>
+
+    <BaseButton
+      v-if="selectedSourceData"
+      class="circular red basic compact tiny reset-button"
+      icon="close"
+      @click="handleReset"
     />
-
-    <AlbumSelect
-      v-if="selectedTypeId"
-      :key="albumSelectKey"
-      :albums="selectedTypeAlbums"
-      :typeId="selectedTypeId"
-    />
-
-    <ResetButton @click="handleReset"/>
-  </template>
+  </div>
 </template>
 
 <script>
 import SourceSelect from './AlbumSourceSelect/SourceSelect.vue'
 import TypeSelect from './AlbumSourceSelect/TypeSelect.vue'
 import AlbumSelect from './AlbumSourceSelect/AlbumSelect.vue'
-import ResetButton from './AlbumSourceSelect/ResetButton.vue'
+import BaseButton from '@/BaseButton.vue'
 import { generateKey } from '#/utils'
 import formatAlbumRequestData from '#/actions/api/album/formatters/requestData'
 
@@ -38,7 +47,7 @@ export default {
     SourceSelect,
     TypeSelect,
     AlbumSelect,
-    ResetButton
+    BaseButton
   },
   provide () {
     return {
@@ -52,8 +61,10 @@ export default {
     'resetRequestAlbumData'
   ],
   props: {
-    albumTitle: String,
-    artistName: String
+    albumData: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
@@ -66,6 +77,12 @@ export default {
     }
   },
   computed: {
+    albumTitle () {
+      return this.albumData.title
+    },
+    artistName () {
+      return this.albumData.artist.name
+    },
     isSelectedSourceWithMultipleTypes () {
       return this.selectedSourceTypes.length > 1
     },
@@ -143,4 +160,13 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.album-source-select-container
+  @extend .d-flex, .align-items-center
+
+.album-source-select-content
+  @extend .d-flex, .align-items-center, .flex-full
+
+.reset-button
+  @extend .no-margin
+</style>
