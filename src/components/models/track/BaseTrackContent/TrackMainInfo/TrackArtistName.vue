@@ -1,36 +1,26 @@
 <template>
-  <BaseLink
-    :link="artistMainLinkFormatted"
-    :text="artistName"
-    @click.stop="handleLinkClick"
+  <BaseArtistLinks
+    :artists="artists"
+    :artistName="artistName"
+    @linkClick="handleLinkClick"
   />
 </template>
 
 <script>
-import BaseLink from '@/BaseLink.vue'
-import { artistMain as formatArtistMainLink } from '#/formatters/links'
+import BaseArtistLinks from '@/BaseArtistLinks.vue'
 
 export default {
   name: 'TrackArtistName',
   components: {
-    BaseLink
+    BaseArtistLinks
   },
   props: {
-    artistName: {
-      type: String,
-      required: true
-    }
+    artists: Array,
+    artistName: String
   },
   emits: [
     'linkClick'
   ],
-  computed: {
-    artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
-    }
-  },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')

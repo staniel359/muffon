@@ -170,4 +170,6 @@ export default {
   @extend .no-shadow, .d-flex, .align-items-center
   height: 45px
   padding: 0 0.5em
+  &.inverted
+    border-bottom: $borderInverted !important
 </style>

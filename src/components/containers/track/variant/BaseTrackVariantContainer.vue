@@ -49,7 +49,9 @@ export default {
       return this.variantData.uuid
     },
     variantDataArgs () {
-      return { variantId: this.variantId }
+      return {
+        variantId: this.variantId
+      }
     }
   },
   methods: {

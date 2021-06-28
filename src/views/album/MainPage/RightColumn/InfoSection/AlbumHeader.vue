@@ -12,42 +12,28 @@
     </BaseHeaderContainer>
 
     <BaseHeaderContainer tag="h3">
-      <BaseLink
-        :link="artistMainLinkFormatted"
-        :text="artistName"
-      />
+      <BaseArtistLinks :artists="artists" />
     </BaseHeaderContainer>
   </div>
 </template>
 
 <script>
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/BaseLink.vue'
-import { artistMain as formatArtistMainLink } from '#/formatters/links'
+import BaseArtistLinks from '@/BaseArtistLinks.vue'
 
 export default {
   name: 'AlbumHeader',
   components: {
     BaseHeaderContainer,
-    BaseLink
+    BaseArtistLinks
   },
   props: {
     albumTitle: {
       type: String,
       required: true
     },
-    artistName: {
-      type: String,
-      required: true
-    },
+    artists: Array,
     albumExtraTitle: String
-  },
-  computed: {
-    artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
-    }
   }
 }
 </script>

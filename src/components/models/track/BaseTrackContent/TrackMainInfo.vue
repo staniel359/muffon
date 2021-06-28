@@ -9,6 +9,7 @@
 
     <TrackArtistName
       v-if="isRenderArtistName"
+      :artists="artists"
       :artistName="artistName"
       @linkClick="handleLinkClick"
     />
@@ -39,6 +40,7 @@ export default {
     trackExtraTitle: String,
     isWithArtistName: Boolean,
     artistName: String,
+    artists: Array,
     albumArtistName: String,
     isWithAlbumTitle: Boolean,
     albumTitle: String

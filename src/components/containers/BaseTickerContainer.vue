@@ -8,32 +8,16 @@
         ref="content"
         :style="{ 'padding-right': `${gapWidth}px` }"
       >
-        <BaseLink
-          v-if="link"
-          :link="link"
-          :text="text"
-        />
-        <template v-else>
-          {{ text }}
-        </template>
+        <slot></slot>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BaseLink from '@/BaseLink.vue'
-
 export default {
-  name: 'BaseTicker',
-  components: {
-    BaseLink
-  },
+  name: 'BaseTickerContainer',
   props: {
-    text: {
-      type: String,
-      required: true
-    },
     speedPixels: {
       type: Number,
       default: 40
@@ -53,8 +37,7 @@ export default {
     isLoopWait: {
       type: Boolean,
       default: true
-    },
-    link: Object
+    }
   },
   data () {
     return {

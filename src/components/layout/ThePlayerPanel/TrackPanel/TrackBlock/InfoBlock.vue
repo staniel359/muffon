@@ -1,38 +1,43 @@
 <template>
   <div class="content">
     <h4 class="ui header track-title">
-      <BaseTicker
-        :text="trackTitle"
-        :link="trackMainLinkFormatted"
-      />
+      <BaseTickerContainer>
+        <BaseLink
+          :link="trackMainLinkFormatted"
+          :text="trackTitle"
+        />
+      </BaseTickerContainer>
     </h4>
 
-    <BaseTicker
-      :text="artistName"
-      :link="artistMainLinkFormatted"
-    />
+    <BaseTickerContainer>
+      <BaseArtistLinks :artists="artists" />
+    </BaseTickerContainer>
 
-    <BaseTicker
-      v-if="albumTitle"
-      :text="albumTitle"
-      :link="albumMainLinkFormatted"
-    />
+    <BaseTickerContainer v-if="albumTitle">
+      <BaseLink
+        :link="albumMainLinkFormatted"
+        :text="albumTitle"
+      />
+    </BaseTickerContainer>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseTicker from '@/BaseTicker.vue'
+import BaseTickerContainer from '@/containers/BaseTickerContainer.vue'
+import BaseLink from '@/BaseLink.vue'
+import BaseArtistLinks from '@/BaseArtistLinks.vue'
 import {
   trackMain as formatTrackMainLink,
-  artistMain as formatArtistMainLink,
   albumMain as formatAlbumMainLink
 } from '#/formatters/links'
 
 export default {
   name: 'InfoBlock',
   components: {
-    BaseTicker
+    BaseTickerContainer,
+    BaseLink,
+    BaseArtistLinks
   },
   computed: {
     ...mapState('player', {
@@ -47,13 +52,11 @@ export default {
         trackTitle: this.trackTitle
       })
     },
+    artists () {
+      return this.playerPlaying.artists
+    },
     artistName () {
       return this.playerPlaying.artist.name
-    },
-    artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
     },
     albumTitle () {
       return this.playerPlaying.album?.title

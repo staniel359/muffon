@@ -2,7 +2,7 @@
   <AlbumHeader
     :albumTitle="albumTitle"
     :albumExtraTitle="albumExtraTitle"
-    :artistName="artistName"
+    :artists="artists"
   />
 
   <SecondarySection
@@ -35,8 +35,8 @@ export default {
     albumExtraTitle () {
       return this.albumData.extra_title
     },
-    artistName () {
-      return this.albumData.artist.name
+    artists () {
+      return this.albumData.artists
     }
   }
 }
