@@ -2,7 +2,8 @@
   <RouterLink
     class="main-link-container"
     :to="link"
-    @click.ctrl.exact.prevent="handleCtrlClick"
+    @click.exact.stop="handleClick"
+    @click.ctrl.exact.stop="handleCtrlClick"
   >
     <slot></slot>
   </RouterLink>
@@ -22,7 +23,13 @@ export default {
       }
     }
   },
+  emits: [
+    'click'
+  ],
   methods: {
+    handleClick () {
+      this.$emit('click')
+    },
     handleCtrlClick () {
       const tab = this.getTabData()
 

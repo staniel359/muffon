@@ -3,7 +3,7 @@
     <BaseLink
       :link="trackMainLinkFormatted"
       :text="trackTitle"
-      @click.stop="handleLinkClick"
+      @click="handleLinkClick"
     />
 
     <span

@@ -2,6 +2,7 @@
   <RouterLink
     class="ui main-link"
     :to="link"
+    @click.exact.stop="handleClick"
     @click.ctrl.exact.prevent="handleCtrlClick"
   >
     {{ text }}
@@ -26,7 +27,13 @@ export default {
       required: true
     }
   },
+  emits: [
+    'click'
+  ],
   methods: {
+    handleClick () {
+      this.$emit('click')
+    },
     handleCtrlClick () {
       const tab = this.getTabData()
 

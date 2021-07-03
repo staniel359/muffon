@@ -3,7 +3,7 @@
     <BaseLink
       :link="albumMainLinkFormatted"
       :text="albumTitle"
-      @click.stop="handleLinkClick"
+      @click="handleLinkClick"
     />
   </small>
 </template>

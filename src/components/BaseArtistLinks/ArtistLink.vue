@@ -4,7 +4,7 @@
   <BaseLink
     :link="artistMainLinkFormatted"
     :text="artistName"
-    @click.stop="handleClick"
+    @click="handleClick"
   />
 </template>
 
