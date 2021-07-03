@@ -1,13 +1,11 @@
 <template>
+  <TheBackground />
+
   <TheObservers />
 
   <TheView v-if="isRootPage"/>
   <template v-else>
-    <TheBackground />
-
-    <TheNavbarPanel />
-    <TheQueuePanel />
-    <ThePlayerPanel />
+    <ThePanels />
 
     <TheVisibleArea />
 
@@ -24,9 +22,7 @@
 <script>
 import TheView from '@/layout/TheView.vue'
 import TheObservers from '@/layout/TheObservers.vue'
-import TheNavbarPanel from '@/layout/TheNavbarPanel.vue'
-import TheQueuePanel from '@/layout/TheQueuePanel.vue'
-import ThePlayerPanel from '@/layout/ThePlayerPanel.vue'
+import ThePanels from '@/layout/ThePanels.vue'
 import TheBackground from '@/layout/TheBackground.vue'
 import TheVisibleArea from '@/layout/TheVisibleArea.vue'
 import TheSearchModal from '@/layout/TheSearchModal.vue'
@@ -37,9 +33,7 @@ export default {
   components: {
     TheView,
     TheObservers,
-    TheNavbarPanel,
-    TheQueuePanel,
-    ThePlayerPanel,
+    ThePanels,
     TheBackground,
     TheVisibleArea,
     TheSearchModal,
