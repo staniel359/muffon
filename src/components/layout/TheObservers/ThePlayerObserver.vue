@@ -31,14 +31,30 @@ export default {
     playerTitle () {
       return [
         this.playerArtistName,
-        this.playerTrackTitle
+        this.playerTrackFullTitle
       ].join(' - ')
     },
     playerArtistName () {
       return this.playerPlaying.artist.name
     },
+    playerTrackFullTitle () {
+      return [
+        this.playerTrackTitle,
+        this.playerTrackExtraTitleFormatted
+      ].filter(e => e).join(' ')
+    },
     playerTrackTitle () {
       return this.playerPlaying.title
+    },
+    playerTrackExtraTitleFormatted () {
+      if (this.playerTrackExtraTitle) {
+        return `(${this.playerTrackExtraTitle})`
+      } else {
+        return null
+      }
+    },
+    playerTrackExtraTitle () {
+      return this.playerPlaying.extra_title
     },
     mediaMetadata () {
       if (this.playerPlaying) {

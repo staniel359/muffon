@@ -6,6 +6,14 @@
           :link="trackMainLinkFormatted"
           :text="trackTitle"
         />
+
+        <span
+          v-if="trackExtraTitle"
+          class="sub header description main-extra-title"
+        >
+          {{ &nbsp; }}
+          {{ trackExtraTitle }}
+        </span>
       </BaseTickerContainer>
     </h4>
 
@@ -45,6 +53,9 @@ export default {
     }),
     trackTitle () {
       return this.playerPlaying.title
+    },
+    trackExtraTitle () {
+      return this.playerPlaying.extra_title
     },
     trackMainLinkFormatted () {
       return formatTrackMainLink({
