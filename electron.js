@@ -94,10 +94,6 @@ const createWindow = () => {
     mainWindow.hide()
   }
 
-  const handleNewWindow = event => {
-    event.preventDefault()
-  }
-
   mainWindow.on(
     'ready-to-show',
     handleReadyToShow
@@ -106,12 +102,7 @@ const createWindow = () => {
   mainWindow.on(
     'close',
     handleClose
-  )
-
-  mainWindow.webContents.on(
-    'new-window',
-    handleNewWindow
-  )
+  )  
 }
 
 const createTrayOrDock = () => {
@@ -260,6 +251,15 @@ const handleAddTab = (_, value) => {
       mode: 'right'
     })
   }
+
+  const handleNewWindow = event => {
+    event.preventDefault()
+  }
+
+  tab.webContents.on(
+    'new-window',
+    handleNewWindow
+  )
 
   mainWindow.webContents.send(
     'handle-add-tab',

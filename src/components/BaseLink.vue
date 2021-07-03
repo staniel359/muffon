@@ -3,7 +3,7 @@
     class="ui main-link"
     :to="link"
     @click.exact.stop="handleClick"
-    @click.ctrl.exact.prevent="handleCtrlClick"
+    @click.ctrl.exact.stop="handleCtrlClick"
   >
     {{ text }}
   </RouterLink>
