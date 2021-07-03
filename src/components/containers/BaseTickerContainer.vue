@@ -1,5 +1,9 @@
 <template>
-  <div class="ticker-container">
+  <div
+    class="ticker-container"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
     <div
       class="ticker"
       ref="ticker"
@@ -17,34 +21,15 @@
 <script>
 export default {
   name: 'BaseTickerContainer',
-  props: {
-    speedPixels: {
-      type: Number,
-      default: 40
-    },
-    waitTime: {
-      type: Number,
-      default: 2000
-    },
-    gapWidth: {
-      type: Number,
-      default: 50
-    },
-    isStartWait: {
-      type: Boolean,
-      default: true
-    },
-    isLoopWait: {
-      type: Boolean,
-      default: true
-    }
-  },
   data () {
     return {
-      ticker: null,
       content: null,
+      animationFrame: null,
+      ticker: null,
+      gapWidth: 40,
+      progress: 1,
       speed: 0,
-      progress: 1
+      speedPixels: 40
     }
   },
   computed: {
@@ -73,48 +58,43 @@ export default {
     this.ticker = this.$refs.ticker
     this.content = this.$refs.content
 
-    this.setTicker()
+    if (this.isTickable) {
+      this.ticker.appendChild(
+        this.contentClone
+      )
+    }
   },
   methods: {
-    handleLoopEnd () {
-      this.progress = 0
-
-      this.waitAndSetSpeed({
-        isWait: this.isLoopWait
-      })
-    },
-    setTicker () {
+    handleMouseEnter () {
       if (this.isTickable) {
-        this.addContentClone()
-        this.waitAndSetSpeed({
-          isWait: this.isStartWait
-        })
+        this.speed = this.speedPixels / 60
+
         this.animate()
       }
     },
-    addContentClone () {
-      this.ticker.appendChild(this.contentClone)
-    },
-    waitAndSetSpeed ({ isWait }) {
+    handleMouseLeave () {
+      cancelAnimationFrame(
+        this.animationFrame
+      )
+
+      this.progress = 0
       this.speed = 0
 
-      const timeout = isWait ? this.waitTime : 0
-
-      setTimeout(this.setSpeed, timeout)
-    },
-    setSpeed () {
-      this.speed = this.speedPixels / 60
+      this.transformTicker()
     },
     animate () {
       this.progress -= this.speed
 
       this.transformTicker()
 
-      this.isLoopEnd && this.handleLoopEnd()
+      if (this.isLoopEnd) {
+        this.progress = 0
+      }
 
-      requestAnimationFrame(() => {
-        this.animate()
-      })
+      this.animationFrame =
+        requestAnimationFrame(() => {
+          this.animate()
+        })
     },
     transformTicker () {
       this.ticker.style.transform =
