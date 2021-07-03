@@ -109,6 +109,9 @@ export const mainEmbedOptions = ({ videoId, placeholder }) => {
 
   return {
     url,
-    placeholder
+    placeholder,
+    parameters: {
+      fs: 0
+    }
   }
 }
