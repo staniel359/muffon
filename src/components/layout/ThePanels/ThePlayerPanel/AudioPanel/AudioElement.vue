@@ -36,8 +36,7 @@ export default {
     playerPlaying: {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
-    },
-    isAudioAutoplay: 'handleIsAudioAutoplayChange'
+    }
   },
   mounted () {
     this.setAudioElement(
@@ -85,8 +84,6 @@ export default {
     },
     handleCanPlay () {
       this.setIsAudioPlayable(true)
-
-      this.audioElement.autoplay = false
     },
     handlePlay () {
       this.setAudioStatus('play')
@@ -107,12 +104,9 @@ export default {
     handleEmptied () {
       this.setIsAudioPlayable(false)
     },
-    handleIsAudioAutoplayChange (value) {
-      !value && this.setAudioStatus(
-        'pause'
-      )
-    },
     loadAudio () {
+      this.setAudioStatus('pause')
+
       this.audioElement.src =
         this.playerPlaying.audio.link
 

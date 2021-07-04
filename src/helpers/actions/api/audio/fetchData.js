@@ -1,4 +1,3 @@
-import { nextTick } from 'vue'
 import axios from 'axios'
 import store from '*/store'
 import { playing as formatPlaying } from '#/formatters/player/playing'
@@ -39,12 +38,10 @@ export default function ({ audioData }) {
     })
 
     const handleUpdateStore = () => {
-      nextTick(() => {
-        store.dispatch(
-          'audio/setIsAutoplay',
-          true
-        )
-      })
+      store.dispatch(
+        'audio/setIsAutoplay',
+        true
+      )
     }
 
     updateStore({
