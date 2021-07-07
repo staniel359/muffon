@@ -45,13 +45,13 @@
     "@vue/compiler-sfc": "^3.1.4",
     "@vue/eslint-config-standard": "^6.0.0",
     "cross-env": "^7.0.3",
-    "electron": "^13.1.5",
+    "electron": "^13.1.6",
     "electron-builder": "^22.11.5",
     "eslint": "^7.30.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-vue": "^7.12.1",
+    "eslint-plugin-vue": "^7.13.0",
     "sass": "^1.35.1",
     "sass-loader": "^10.2.0"
   }
