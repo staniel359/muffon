@@ -41,3 +41,20 @@ export const updateTab = data => {
     tabs
   )
 }
+
+export const setPlayerPlaying = value => {
+  setGlobalData({
+    'player.playing': value
+  })
+
+  const handleUpdateStore = () => {
+    store.dispatch(
+      'audio/setIsAutoplay',
+      true
+    )
+  }
+
+  updateStore({
+    'audio.isAutoplay': false
+  }).then(handleUpdateStore)
+}

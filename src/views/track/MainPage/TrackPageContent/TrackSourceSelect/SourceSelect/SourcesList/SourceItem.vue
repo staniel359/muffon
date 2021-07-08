@@ -1,7 +1,6 @@
 <template>
   <BaseSourceItemContainer
     :sourceId="sourceId"
-    :types="types"
     :query="query"
   >
     <template #default="slotProps">
@@ -9,7 +8,7 @@
         :sourceData="sourceData"
         :isLoading="slotProps.isLoading"
         :isError="slotProps.isError"
-        :albumsData="slotProps.albumsData"
+        :tracks="slotProps.tracks"
         :isWithMaxBitrate="isWithMaxBitrate"
       />
     </template>
@@ -18,9 +17,9 @@
 
 <script>
 import BaseSourceItemContainer
-  from '@/containers/album/source_select/BaseSourceItemContainer.vue'
+  from '@/containers/track/source_select/BaseSourceItemContainer.vue'
 import BaseSourceItemContent
-  from '@/models/album/source_select/BaseSourceItemContent.vue'
+  from '@/models/track/source_select/BaseSourceItemContent.vue'
 
 export default {
   name: 'SourceItem',
@@ -39,9 +38,6 @@ export default {
   computed: {
     sourceId () {
       return this.sourceData.id
-    },
-    types () {
-      return this.sourceData.types
     }
   }
 }

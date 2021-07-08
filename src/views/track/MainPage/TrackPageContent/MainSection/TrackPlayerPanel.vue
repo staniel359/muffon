@@ -5,9 +5,15 @@
   >
     <PlayButtonSection :trackData="trackData" />
     <VisualizerSection :trackId="trackId" />
+
     <DurationSection
       v-if="isRenderDuration"
       :duration="duration"
+    />
+
+    <SourceSection
+      v-if="isAudioPresent"
+      :sourceId="sourceId"
     />
   </div>
 </template>
@@ -17,13 +23,15 @@ import { mapState } from 'vuex'
 import PlayButtonSection from './TrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './TrackPlayerPanel/VisualizerSection.vue'
 import DurationSection from './TrackPlayerPanel/DurationSection.vue'
+import SourceSection from './TrackPlayerPanel/SourceSection.vue'
 
 export default {
   name: 'TrackPlayerPanel',
   components: {
     PlayButtonSection,
     VisualizerSection,
-    DurationSection
+    DurationSection,
+    SourceSection
   },
   props: {
     trackData: Object
@@ -43,6 +51,12 @@ export default {
     },
     duration () {
       return this.trackData.duration
+    },
+    isAudioPresent () {
+      return !!this.trackData.audio?.present
+    },
+    sourceId () {
+      return this.trackData.audio.source_id
     }
   }
 }
@@ -55,6 +69,8 @@ export default {
   ::v-deep(.track-visualiser-container)
     border-left: $border
   ::v-deep(.track-duration)
+    border-left: $border
+  ::v-deep(.track-source)
     border-left: $border
   &.inverted
     border-top: $borderInverted

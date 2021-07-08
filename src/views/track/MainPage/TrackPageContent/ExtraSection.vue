@@ -36,7 +36,10 @@ export default {
       return this.trackData.title
     },
     query () {
-      return `${this.artistName} - ${this.trackTitle}`
+      return [
+        this.artistName,
+        this.trackTitle
+      ].join(' - ')
     }
   }
 }

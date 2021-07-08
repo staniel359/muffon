@@ -10,6 +10,7 @@
       :isLoading="isLoading"
       :error="error"
       :trackData="trackData"
+      :requestTrackData="requestTrackData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -22,12 +23,20 @@ import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatTrackPageNavigation from '#/formatters/navigation/track'
 import formatTrackPageTab from '#/formatters/tabs/track'
 import fetchTrackData from '#/actions/api/track/fetchData'
+import fetchBandcampTrackIdData
+  from '#/actions/api/track/id/bandcamp/fetchData'
 import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseTrackPageContainer',
   components: {
     BasePageContainer
+  },
+  provide () {
+    return {
+      setRequestTrackData: this.setRequestTrackData,
+      resetRequestTrackData: this.resetRequestTrackData
+    }
   },
   props: {
     artistName: {
@@ -44,9 +53,10 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
       error: null,
-      trackData: null
+      requestTrackData: null,
+      trackData: null,
+      isLoading: false
     }
   },
   computed: {
@@ -70,18 +80,18 @@ export default {
     },
     trackDataArgs () {
       return {
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
+        ...this.requestTrackData,
         scope: this.scope,
         limit: this.responsePageLimit
       }
     }
   },
   watch: {
+    requestTrackData: 'handleRequestTrackDataChange',
     trackData: 'handleTrackDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.resetRequestTrackData()
   },
   methods: {
     ...mapActions('layout', [
@@ -103,6 +113,23 @@ export default {
         )
       )
     },
+    handleRequestTrackDataChange () {
+      this.fetchData()
+    },
+    resetRequestTrackData () {
+      this.setRequestTrackData({
+        artistName: this.artistName,
+        trackTitle: this.trackTitle
+      })
+    },
+    setRequestTrackData (value) {
+      if (value.sourceId === 'bandcamp') {
+        this.fetchBandcampTrackIdData(value)
+      } else {
+        this.requestTrackData = value
+      }
+    },
+    fetchBandcampTrackIdData,
     fetchTrackData,
     fetchData (page) {
       this.fetchTrackData({

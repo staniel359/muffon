@@ -62,5 +62,8 @@ export default function ({ sourceId, albumData }) {
     }
   }
 
-  return { sourceId, ...formatAlbumData() }
+  return {
+    sourceId,
+    ...formatAlbumData()
+  }
 }

@@ -135,6 +135,14 @@ export const messages = {
         },
         segments: {
           similar: 'Similar'
+        },
+        sources: {
+          select: {
+            source: 'Select source:',
+            track: 'Select track:'
+          },
+          streamable: 'Streamable',
+          other: 'Other'
         }
       },
       tag: {

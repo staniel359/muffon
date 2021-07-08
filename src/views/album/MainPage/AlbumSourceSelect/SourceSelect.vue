@@ -4,10 +4,7 @@
     ref="dropdown"
     :header="headerFormatted"
   >
-    <SourcesList
-      :artistName="artistName"
-      :albumTitle="albumTitle"
-    />
+    <SourcesList :query="query" />
   </BaseDropdownContainer>
 </template>
 
@@ -23,8 +20,7 @@ export default {
     SourcesList
   },
   props: {
-    artistName: String,
-    albumTitle: String
+    query: String
   },
   computed: {
     headerFormatted () {

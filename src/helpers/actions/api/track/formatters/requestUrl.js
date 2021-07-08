@@ -2,6 +2,7 @@ export default function ({
   sourceId,
   artistName,
   trackTitle,
+  artistId,
   trackId,
   scope
 }) {
@@ -16,7 +17,11 @@ export default function ({
         `/tracks/${trackTitleEncoded}` +
         `/${scope}`
       )
+    case 'bandcamp':
+      return `/${sourceId}/artists/${artistId}/tracks/${trackId}`
     case 'genius':
       return `/${sourceId}/tracks/${trackId}/${scope}`
+    default:
+      return `/${sourceId}/tracks/${trackId}`
   }
 }

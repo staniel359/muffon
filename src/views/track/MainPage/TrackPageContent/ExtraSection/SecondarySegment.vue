@@ -7,7 +7,7 @@
       />
 
       <BaseTrackTags
-        v-if="tags.length"
+        v-if="isAnyTags"
         :tags="tags"
         :artistName="artistName"
         :trackTitle="trackTitle"
@@ -56,6 +56,9 @@ export default {
     },
     playsCount () {
       return this.trackData.plays_count
+    },
+    isAnyTags () {
+      return this.tags?.length
     },
     tags () {
       return this.trackData.tags

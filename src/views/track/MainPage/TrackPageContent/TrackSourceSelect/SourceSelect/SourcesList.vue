@@ -46,7 +46,7 @@ export default {
   computed: {
     streamableHeaderFormatted () {
       return localize(
-        'pages.album.sources.streamable'
+        'pages.track.sources.streamable'
       )
     },
     streamableSourcesFormatted () {
@@ -56,13 +56,23 @@ export default {
     },
     otherHeaderFormatted () {
       return localize(
-        'pages.album.sources.other'
+        'pages.track.sources.other'
       )
     },
     otherSourcesFormatted () {
       return formatCollection(
-        getAudioSourcesStreamable(false)
+        this.otherSourcesWithTracks
       )
+    },
+    otherSourcesWithTracks () {
+      return getAudioSourcesStreamable(false).filter(
+        this.getIsSourceWithTracks
+      )
+    }
+  },
+  methods: {
+    getIsSourceWithTracks (sourceData) {
+      return sourceData.isWithTracks
     }
   }
 }

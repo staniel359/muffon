@@ -6,6 +6,7 @@ export default function ({
   sourceId = 'lastfm',
   artistName,
   trackTitle,
+  artistId,
   trackId,
   scope = '',
   page,
@@ -17,6 +18,7 @@ export default function ({
     sourceId,
     artistName,
     trackTitle,
+    artistId,
     trackId,
     scope
   })

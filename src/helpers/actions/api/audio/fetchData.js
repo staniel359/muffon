@@ -1,7 +1,6 @@
 import axios from 'axios'
-import store from '*/store'
-import { playing as formatPlaying } from '#/formatters/player/playing'
-import { setGlobalData, updateStore } from '#/actions'
+import formatPlaying from '#/formatters/player/playing'
+import { setPlayerPlaying } from '#/actions'
 
 export default function ({ audioData }) {
   const formatUrl = () => {
@@ -33,20 +32,7 @@ export default function ({ audioData }) {
       audioData
     })
 
-    setGlobalData({
-      'player.playing': playingData
-    })
-
-    const handleUpdateStore = () => {
-      store.dispatch(
-        'audio/setIsAutoplay',
-        true
-      )
-    }
-
-    updateStore({
-      'audio.isAutoplay': false
-    }).then(handleUpdateStore)
+    setPlayerPlaying(playingData)
   }
 
   return axios

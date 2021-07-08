@@ -14,6 +14,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import fetchTrackData from '#/actions/player/track/fetchData'
+import { setGlobalData, setPlayerPlaying } from '#/actions'
 
 export default {
   name: 'BaseTrackContainer',
@@ -66,12 +67,17 @@ export default {
         trackData: this.trackData,
         queueTracks: this.queueTracks
       }
+    },
+    trackAudioLink () {
+      return this.trackData.audio?.link
     }
   },
   methods: {
     handleClick () {
       if (this.isCurrent) {
         this.callAudioAction()
+      } else if (this.trackAudioLink) {
+        this.setAudio()
       } else if (!this.isLoading) {
         this.fetchAudio()
       }
@@ -80,6 +86,16 @@ export default {
       this.audioElement[
         this.audioAction
       ]()
+    },
+    setAudio () {
+      setGlobalData({
+        'player.currentTrackId': this.trackId,
+        'player.variants': []
+      })
+
+      setPlayerPlaying(
+        this.trackData
+      )
     },
     fetchTrackData,
     fetchAudio () {

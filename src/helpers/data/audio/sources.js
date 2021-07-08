@@ -65,6 +65,7 @@ export default [
     icon: 'discogs',
     name: 'Discogs',
     isStreamable: false,
+    isWithTracks: false,
     types: [
       'group',
       'album'
@@ -75,6 +76,7 @@ export default [
     icon: 'genius',
     name: 'Genius',
     isStreamable: false,
+    isWithTracks: true,
     types: [
       'album'
     ]
@@ -84,6 +86,7 @@ export default [
     icon: 'lastfm',
     name: 'Last.FM',
     isStreamable: false,
+    isWithTracks: true,
     types: [
       'album'
     ]
@@ -93,6 +96,7 @@ export default [
     icon: 'rateyourmusic',
     name: 'Rate Your Music',
     isStreamable: false,
+    isWithTracks: false,
     types: [
       'album',
       'albumVarious'
@@ -103,6 +107,7 @@ export default [
     icon: 'spotify',
     name: 'Spotify',
     isStreamable: false,
+    isWithTracks: true,
     types: [
       'album'
     ]

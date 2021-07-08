@@ -3,8 +3,7 @@
     <div class="album-source-select-content">
       <SourceSelect
         ref="source"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
+        :query="query"
       />
 
       <template v-if="selectedSourceData">
@@ -72,11 +71,16 @@ export default {
       selectedAlbumData: null,
       selectedSourceData: null,
       selectedTypeId: null,
-      sourceSelectKey: null,
       typeSelectKey: null
     }
   },
   computed: {
+    query () {
+      return [
+        this.artistName,
+        this.albumTitle
+      ].join(' - ')
+    },
     albumTitle () {
       return this.albumData.title
     },

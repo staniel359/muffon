@@ -6,9 +6,13 @@
           'main-segment-container',
           'main-page-segment-container'
         ]"
+        :isLoading="slotProps.isLoading"
+        :error="slotProps.error"
+        @refresh="slotProps.handleRefresh"
       >
-        <MainSection :trackData="slotProps.trackData" />
-        <ExtraSection :trackData="slotProps.trackData"/>
+        <TrackPageContent
+          :trackData="slotProps.trackData"
+        />
       </BaseSegmentContainer>
     </template>
   </BaseTrackPageContainer>
@@ -18,16 +22,14 @@
 import BaseTrackPageContainer
   from '@/containers/pages/track/BaseTrackPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import MainSection from './MainPage/MainSection.vue'
-import ExtraSection from './MainPage/ExtraSection.vue'
+import TrackPageContent from './MainPage/TrackPageContent.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseTrackPageContainer,
     BaseSegmentContainer,
-    MainSection,
-    ExtraSection
+    TrackPageContent
   }
 }
 </script>

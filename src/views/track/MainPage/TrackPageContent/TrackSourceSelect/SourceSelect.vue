@@ -1,42 +1,44 @@
 <template>
   <BaseDropdownContainer
-    class="basic pointing scrolling button album-select"
+    class="basic pointing scrolling button source-select"
+    ref="dropdown"
     :header="headerFormatted"
   >
-    <AlbumsList :albums="albums" />
+    <SourcesList :query="query" />
   </BaseDropdownContainer>
 </template>
 
 <script>
 import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
-import AlbumsList from './AlbumSelect/AlbumsList.vue'
+import SourcesList from './SourceSelect/SourcesList.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'AlbumSelect',
+  name: 'SourceSelect',
   components: {
     BaseDropdownContainer,
-    AlbumsList
+    SourcesList
   },
   props: {
-    typeId: {
-      type: String,
-      required: true
-    },
-    albums: Array
+    query: String
   },
   computed: {
     headerFormatted () {
       return localize(
-        `pages.album.sources.select.${this.typeId}`
+        'pages.track.sources.select.source'
       )
+    }
+  },
+  methods: {
+    reset () {
+      this.$refs.dropdown.reset()
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.album-select
-  width: 240px
+.source-select
+  width: 210px
   margin-right: 1em
 </style>
