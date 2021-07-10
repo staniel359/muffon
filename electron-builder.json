@@ -12,12 +12,13 @@
   },
   "linux": {
     "category": "Audio",
+    "icon": "public/icon.png",
     "target": "deb"
   },
+  "artifactName": "${productName} ${version}.${ext}",
   "compression": "store",
   "nsis": {
     "allowToChangeInstallationDirectory": true,
-    "artifactName": "${productName} ${version}.${ext}",
     "deleteAppDataOnUninstall": true,
     "oneClick": false,
     "perMachine": true

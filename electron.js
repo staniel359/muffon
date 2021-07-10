@@ -15,10 +15,20 @@ const width = 800
 const height = 600
 const isDevelopment =
   process.env.NODE_ENV === 'development'
+
+const osIcons = {
+  win32: 'icon.ico',
+  darwin: 'icon.icns',
+  linux: 'icon.png'
+}
+const iconName = osIcons[
+  process.platform
+]
+
 const iconPath = path.join(
   __dirname,
   (isDevelopment ? 'public' : ''),
-  'icon.ico'
+  iconName
 )
 
 const getBaseUrl = () => {
