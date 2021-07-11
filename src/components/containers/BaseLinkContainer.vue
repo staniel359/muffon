@@ -4,6 +4,7 @@
     :to="link"
     @click.exact.stop="handleClick"
     @click.ctrl.exact.stop="handleCtrlClick"
+    @auxclick="handleMiddleClick"
   >
     <slot></slot>
   </RouterLink>
@@ -31,6 +32,12 @@ export default {
       this.$emit('click')
     },
     handleCtrlClick () {
+      this.openNewTab()
+    },
+    handleMiddleClick () {
+      this.openNewTab()
+    },
+    openNewTab () {
       const tab = this.getTabData()
 
       ipcRenderer.send(
