@@ -5,18 +5,23 @@
       :text="trackTitle"
     />
 
-    <BaseHeaderContainer tag="h4">
+    <BaseHeaderContainer
+      class="track-artist-name"
+      tag="h4"
+    >
       <BaseLink
         :link="artistMainLinkFormatted"
         :text="artistName"
       />
     </BaseHeaderContainer>
 
-    <BaseLink
-      v-if="albumTitle"
-      :link="albumMainLinkFormatted"
-      :text="albumTitle"
-    />
+    <small>
+      <BaseLink
+        v-if="albumTitle"
+        :link="albumMainLinkFormatted"
+        :text="albumTitle"
+      />
+    </small>
   </div>
 </template>
 
@@ -70,4 +75,7 @@ export default {
   padding: 1em
   .description
     @extend .no-margin
+
+.track-artist-name
+  @extend .text-medium-light
 </style>

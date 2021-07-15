@@ -1,5 +1,5 @@
 <template>
-  <small class="description">
+  <small>
     <BaseLink
       :link="albumMainLinkFormatted"
       :text="albumTitle"

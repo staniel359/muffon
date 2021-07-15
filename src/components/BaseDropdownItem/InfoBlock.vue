@@ -14,9 +14,9 @@
       </span>
     </BaseHeaderContainer>
 
-    <div v-if="content">
+    <small v-if="content">
       {{ content }}
-    </div>
+    </small>
   </div>
 
   <div

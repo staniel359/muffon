@@ -11,7 +11,10 @@
       </span>
     </BaseHeaderContainer>
 
-    <BaseHeaderContainer tag="h3">
+    <BaseHeaderContainer
+      class="album-artist-name"
+      tag="h3"
+    >
       <BaseArtistLinks :artists="artists" />
     </BaseHeaderContainer>
   </div>
@@ -41,4 +44,7 @@ export default {
 <style lang="sass" scoped>
 .album-header
   margin-bottom: 10px
+
+.album-artist-name
+  @extend .text-medium-light
 </style>

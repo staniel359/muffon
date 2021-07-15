@@ -85,7 +85,7 @@ export default {
       return this.albumData.title
     },
     image () {
-      return this.albumData.image.small
+      return this.albumData.image.medium
     },
     releaseDate () {
       return this.albumData.release_date

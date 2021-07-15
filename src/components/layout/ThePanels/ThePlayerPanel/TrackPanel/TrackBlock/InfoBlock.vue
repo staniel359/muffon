@@ -1,6 +1,9 @@
 <template>
   <div class="content">
-    <h4 class="ui header track-title">
+    <BaseHeaderContainer
+      class="track-title"
+      tag="h4"
+    >
       <BaseTickerContainer>
         <BaseLink
           :link="trackMainLinkFormatted"
@@ -15,23 +18,26 @@
           {{ trackExtraTitle }}
         </span>
       </BaseTickerContainer>
-    </h4>
+    </BaseHeaderContainer>
 
     <BaseTickerContainer>
       <BaseArtistLinks :artists="artists" />
     </BaseTickerContainer>
 
-    <BaseTickerContainer v-if="albumTitle">
-      <BaseLink
-        :link="albumMainLinkFormatted"
-        :text="albumTitle"
-      />
-    </BaseTickerContainer>
+    <small>
+      <BaseTickerContainer v-if="albumTitle">
+        <BaseLink
+          :link="albumMainLinkFormatted"
+          :text="albumTitle"
+        />
+      </BaseTickerContainer>
+    </small>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseTickerContainer from '@/containers/BaseTickerContainer.vue'
 import BaseLink from '@/BaseLink.vue'
 import BaseArtistLinks from '@/BaseArtistLinks.vue'
@@ -43,6 +49,7 @@ import {
 export default {
   name: 'InfoBlock',
   components: {
+    BaseHeaderContainer,
     BaseTickerContainer,
     BaseLink,
     BaseArtistLinks
@@ -85,4 +92,7 @@ export default {
 <style lang="sass" scoped>
 .content
   @extend .no-padding, .flex-full, .overflow-hidden
+
+.playing-artist-name
+  @extend .text-medium-light
 </style>

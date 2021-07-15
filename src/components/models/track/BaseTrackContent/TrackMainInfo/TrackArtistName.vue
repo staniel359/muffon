@@ -1,9 +1,11 @@
 <template>
-  <BaseArtistLinks
-    :artists="artists"
-    :artistName="artistName"
-    @linkClick="handleLinkClick"
-  />
+  <div>
+    <BaseArtistLinks
+      :artists="artists"
+      :artistName="artistName"
+      @linkClick="handleLinkClick"
+    />
+  </div>
 </template>
 
 <script>

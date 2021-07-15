@@ -59,5 +59,5 @@ export default {
 
 <style lang="sass" scoped>
 .description
-  font-weight: 400 !important
+  @extend .text-medium-light
 </style>

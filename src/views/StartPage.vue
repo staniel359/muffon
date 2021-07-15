@@ -47,8 +47,7 @@ export default {
   margin-top: 25vh
 
 .start-header
-  @extend .text-color-white
+  @extend .text-color-white, .text-medium-light
   font-size: 3.5em !important
-  font-weight: 400
   margin-bottom: 25px !important
 </style>

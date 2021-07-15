@@ -8,7 +8,10 @@
       :text="albumTitle"
     />
 
-    <BaseHeaderContainer tag="h4">
+    <BaseHeaderContainer
+      class="album-artist-name"
+      tag="h4"
+    >
       <BaseLink
         :link="artistMainLinkFormatted"
         :text="artistName"
@@ -57,4 +60,7 @@ export default {
 .album-full-title
   @extend .text-align-center
   margin: 10px 0
+
+.album-artist-name
+  @extend .text-medium-light
 </style>
