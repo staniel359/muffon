@@ -1,5 +1,6 @@
 <template>
   <BaseTagPageContainer
+    ref="pageContainer"
     :pageNameKey="pageNameKey"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
@@ -20,7 +21,7 @@
         />
 
         <BasePaginatedContainer
-          ref="pagination"
+          ref="paginatedContainer"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.tagData"
@@ -30,7 +31,6 @@
           @focus="handleFocus"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
-          @reset="pageSlotProps.fetchData"
         >
           <template #default="slotProps">
             <slot :[scope]="slotProps[scope]"></slot>
@@ -68,9 +68,11 @@ export default {
   ],
   methods: {
     handleViewButtonClick (index) {
-      this.$refs.pagination.reset()
+      this.$refs.paginatedContainer.reset()
 
       this.$emit('viewButtonClick', index)
+
+      this.$refs.pageContainer.fetchData()
     },
     handleFocus () {
       window.scrollTo(0, 0)

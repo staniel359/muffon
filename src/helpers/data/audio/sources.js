@@ -4,8 +4,9 @@ export default [
     icon: 'vk',
     name: 'VK',
     isStreamable: true,
+    isWithAlbums: false,
     maxBitrate: 320,
-    types: [
+    albumTypes: [
       'album'
     ]
   },
@@ -14,8 +15,9 @@ export default [
     icon: 'odnoklassniki',
     name: 'Odnoklassniki',
     isStreamable: true,
+    isWithAlbums: true,
     maxBitrate: 320,
-    types: [
+    albumTypes: [
       'album'
     ]
   },
@@ -24,8 +26,9 @@ export default [
     icon: 'yandexmusic',
     name: 'Yandex Music',
     isStreamable: true,
+    isWithAlbums: true,
     maxBitrate: 192,
-    types: [
+    albumTypes: [
       'album'
     ]
   },
@@ -34,8 +37,9 @@ export default [
     icon: 'bandcamp',
     name: 'Bandcamp',
     isStreamable: true,
+    isWithAlbums: true,
     maxBitrate: 128,
-    types: [
+    albumTypes: [
       'album',
       'track'
     ]
@@ -45,9 +49,14 @@ export default [
     icon: 'deezer',
     name: 'Deezer',
     isStreamable: true,
+    isWithAlbums: true,
     maxBitrate: 128,
-    types: [
+    albumTypes: [
       'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single'
     ]
   },
   {
@@ -55,8 +64,9 @@ export default [
     icon: 'soundcloud',
     name: 'SoundCloud',
     isStreamable: true,
+    isWithAlbums: true,
     maxBitrate: 128,
-    types: [
+    albumTypes: [
       'album'
     ]
   },
@@ -65,10 +75,18 @@ export default [
     icon: 'discogs',
     name: 'Discogs',
     isStreamable: false,
+    isWithAlbums: true,
     isWithTracks: false,
-    types: [
+    albumTypes: [
       'group',
       'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single_ep',
+      'compilation',
+      'video',
+      'misc'
     ]
   },
   {
@@ -76,8 +94,9 @@ export default [
     icon: 'genius',
     name: 'Genius',
     isStreamable: false,
+    isWithAlbums: true,
     isWithTracks: true,
-    types: [
+    albumTypes: [
       'album'
     ]
   },
@@ -86,8 +105,9 @@ export default [
     icon: 'lastfm',
     name: 'Last.FM',
     isStreamable: false,
+    isWithAlbums: true,
     isWithTracks: true,
-    types: [
+    albumTypes: [
       'album'
     ]
   },
@@ -96,10 +116,22 @@ export default [
     icon: 'rateyourmusic',
     name: 'Rate Your Music',
     isStreamable: false,
+    isWithAlbums: true,
     isWithTracks: false,
-    types: [
+    albumTypes: [
       'album',
       'albumVarious'
+    ],
+    albumsTypes: [
+      'album',
+      'ep',
+      'single',
+      'live',
+      'compilation',
+      'appearance',
+      'unofficial',
+      'various',
+      'video'
     ]
   },
   {
@@ -107,14 +139,22 @@ export default [
     icon: 'spotify',
     name: 'Spotify',
     isStreamable: false,
+    isWithAlbums: true,
     isWithTracks: true,
-    types: [
+    albumTypes: [
       'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single',
+      'compilation',
+      'appearance'
     ]
   },
   {
     id: 'youtube',
     icon: 'youtube',
-    name: 'YouTube'
+    name: 'YouTube',
+    isWithAlbums: false
   }
 ]

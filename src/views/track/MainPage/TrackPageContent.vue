@@ -1,5 +1,5 @@
 <template>
-  <TrackSourceSelect :trackData="trackData" />
+  <BaseTrackSourceSelect :trackData="trackData" />
 
   <BaseDivider />
 
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TrackSourceSelect from './TrackPageContent/TrackSourceSelect.vue'
+import BaseTrackSourceSelect from '@/models/track/BaseTrackSourceSelect.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import MainSection from './TrackPageContent/MainSection.vue'
 import ExtraSection from './TrackPageContent/ExtraSection.vue'
@@ -20,7 +20,7 @@ import { generateKey } from '#/utils'
 export default {
   name: 'TrackPageContent',
   components: {
-    TrackSourceSelect,
+    BaseTrackSourceSelect,
     BaseDivider,
     MainSection,
     ExtraSection

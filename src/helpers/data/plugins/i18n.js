@@ -102,26 +102,6 @@ export const messages = {
           similar: 'Similar'
         }
       },
-      album: {
-        sources: {
-          select: {
-            source: 'Select source:',
-            type: 'Select type:',
-            album: 'Select album:',
-            albumVarious: 'Select V/A album:',
-            group: 'Select album group:',
-            track: 'Select single:'
-          },
-          streamable: 'Streamable',
-          other: 'Other',
-          types: {
-            album: 'Album',
-            albumVarious: 'V/A album',
-            group: 'Album group',
-            track: 'Single'
-          }
-        }
-      },
       track: {
         videos: {
           loading: 'Loading videos...',
@@ -135,14 +115,6 @@ export const messages = {
         },
         segments: {
           similar: 'Similar'
-        },
-        sources: {
-          select: {
-            source: 'Select source:',
-            track: 'Select track:'
-          },
-          streamable: 'Streamable',
-          other: 'Other'
         }
       },
       tag: {
@@ -158,7 +130,35 @@ export const messages = {
       more: 'More...',
       loading: 'Loading...',
       listener: '{number} listener | {number} listeners',
-      tracks: '{number} track | {number} tracks'
+      tracks: '{number} track | {number} tracks',
+      sources: {
+        select: {
+          source: 'Select source:',
+          type: 'Select type:',
+          album: 'Select album:',
+          albumVarious: 'Select V/A album:',
+          group: 'Select album group:',
+          artist: 'Select artist:',
+          track: 'Select track:'
+        },
+        streamable: 'Streamable',
+        other: 'Other',
+        albumTypes: {
+          album: 'Album',
+          albumVarious: 'V/A album',
+          group: 'Album group',
+          track: 'Track'
+        },
+        albumsTypes: {
+          album: 'Albums',
+          single: 'Singles',
+          single_ep: 'Singles / EPs',
+          compilation: 'Compilations',
+          video: 'Videos',
+          misc: 'Miscellaneous',
+          appearance: 'Appearances'
+        }
+      }
     },
     track: {
       source: {

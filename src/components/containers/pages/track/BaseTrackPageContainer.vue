@@ -10,7 +10,6 @@
       :isLoading="isLoading"
       :error="error"
       :trackData="trackData"
-      :requestTrackData="requestTrackData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

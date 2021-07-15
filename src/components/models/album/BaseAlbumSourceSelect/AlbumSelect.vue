@@ -1,0 +1,38 @@
+<template>
+  <BaseDropdownContainer
+    class="basic pointing scrolling button main-source-select-item-select"
+    :header="headerFormatted"
+  >
+    <AlbumsList :albums="albums" />
+  </BaseDropdownContainer>
+</template>
+
+<script>
+import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
+import AlbumsList from './AlbumSelect/AlbumsList.vue'
+import { localize } from '#/actions/plugins/i18n'
+
+export default {
+  name: 'AlbumSelect',
+  components: {
+    BaseDropdownContainer,
+    AlbumsList
+  },
+  props: {
+    typeId: {
+      type: String,
+      required: true
+    },
+    albums: Array
+  },
+  computed: {
+    headerFormatted () {
+      return localize(
+        `shared.sources.select.${this.typeId}`
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

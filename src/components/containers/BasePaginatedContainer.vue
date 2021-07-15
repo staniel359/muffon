@@ -77,8 +77,7 @@ export default {
   emits: [
     'focus',
     'fetchData',
-    'refresh',
-    'reset'
+    'refresh'
   ],
   data () {
     return {
@@ -344,10 +343,6 @@ export default {
         this.$data,
         this.$options.data.apply(this)
       )
-
-      this.$nextTick(() => {
-        this.$emit('reset')
-      })
     },
     findPaginationItem ({ uuid }) {
       return this.clientPageCollection.find(item => {

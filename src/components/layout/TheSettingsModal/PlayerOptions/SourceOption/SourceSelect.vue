@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="basic floating scrolling button source-select"
+    class="basic floating scrolling button main-source-select"
     ref="dropdown"
   >
     <SourcesList />
@@ -42,6 +42,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.source-select
-  width: 220px
+.main-source-select
+  @extend .no-margin
 </style>

@@ -4,6 +4,7 @@
     scope="albums"
     :clientPageLimit="20"
     :responsePageLimit="20"
+    isWithArtistSelect
   >
     <template #default="slotProps">
       <BaseAlbumsTableList

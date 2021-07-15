@@ -12,7 +12,7 @@
   "main": "electron.js",
   "scripts": {
     "start": "vue-cli-service serve",
-    "start:electron": "NODE_ENV=development electron .",
+    "start:electron": "NODE_ENV=development electron . --disable-gpu",
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build",
     "build:electron": "electron-builder --dir",

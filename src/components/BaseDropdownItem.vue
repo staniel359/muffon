@@ -17,8 +17,9 @@
       class="image-container"
     >
       <BaseImage
-        class="rounded bordered"
+        class="bordered"
         size="extrasmall"
+        :class="[isImageCircular ? 'circular' : 'rounded']"
         :image="image"
       />
     </div>
@@ -45,6 +46,10 @@ export default {
     InfoBlock
   },
   props: {
+    isImageCircular: {
+      type: Boolean,
+      default: false
+    },
     isDisabled: Boolean,
     icon: String,
     isIconColored: Boolean,

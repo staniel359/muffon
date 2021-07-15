@@ -7,6 +7,7 @@
       <InfoSection
         :albumTitle="albumTitle"
         :artistName="albumArtistName"
+        :releaseDate="releaseDate"
         :listenersCount="listenersCount"
         :uuid="uuid"
         :isWithArtistName="isWithArtistName"
@@ -85,6 +86,9 @@ export default {
     },
     image () {
       return this.albumData.image.small
+    },
+    releaseDate () {
+      return this.albumData.release_date
     },
     listenersCount () {
       return this.albumData.listeners_count

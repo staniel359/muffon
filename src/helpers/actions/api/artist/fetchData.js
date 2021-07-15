@@ -1,15 +1,31 @@
 import axios from 'axios'
 import { handleEnvError } from '#/utils'
+import formatRequestUrl from './formatters/requestUrl'
 
-export default function ({ artistName, scope = '', page, limit }) {
+export default function ({
+  artistName,
+  artistId,
+  sourceId = 'lastfm',
+  albumType = '',
+  scope = '',
+  page,
+  limit
+}) {
   this.isLoading = true
 
-  const artistNameEncoded = encodeURIComponent(artistName)
-  const url = `/lastfm/artists/${artistNameEncoded}/${scope}`
+  const urlFormatted = formatRequestUrl({
+    sourceId,
+    artistName,
+    artistId,
+    scope
+  })
 
   const params = {
     ...(page && { page }),
-    ...(limit && { limit })
+    ...(limit && { limit }),
+    ...(albumType && {
+      album_type: albumType
+    })
   }
 
   const handleSuccess = response => {
@@ -19,7 +35,8 @@ export default function ({ artistName, scope = '', page, limit }) {
     this.artistData = artist
 
     if (scope === 'tracks') {
-      this.topTrackCount ||= artist.tracks[0].listeners_count
+      this.topTrackCount ||=
+        artist.tracks[0].listeners_count
     }
   }
 
@@ -34,7 +51,7 @@ export default function ({ artistName, scope = '', page, limit }) {
   }
 
   return axios
-    .get(url, { params })
+    .get(urlFormatted, { params })
     .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)

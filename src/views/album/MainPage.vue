@@ -7,7 +7,7 @@
         @refresh="slotProps.handleRefresh"
       >
         <template #default>
-          <AlbumSourceSelect
+          <BaseAlbumSourceSelect
             :albumData="slotProps.albumData"
           />
 
@@ -38,7 +38,7 @@ import BaseAlbumPageContainer
   from '@/containers/pages/album/BaseAlbumPageContainer.vue'
 import BaseAlbumPageSegmentContainer
   from '@/containers/pages/album/BaseAlbumPageSegmentContainer.vue'
-import AlbumSourceSelect from './MainPage/AlbumSourceSelect.vue'
+import BaseAlbumSourceSelect from '@/models/album/BaseAlbumSourceSelect.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
@@ -48,7 +48,7 @@ export default {
   components: {
     BaseAlbumPageContainer,
     BaseAlbumPageSegmentContainer,
-    AlbumSourceSelect,
+    BaseAlbumSourceSelect,
     BaseDivider,
     LeftColumn,
     RightColumn

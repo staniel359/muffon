@@ -24,12 +24,20 @@ import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatArtistPageNavigation from '#/formatters/navigation/artist'
 import formatArtistPageTab from '#/formatters/tabs/artist'
 import fetchArtistData from '#/actions/api/artist/fetchData'
+import fetchBandcampArtistIdData
+  from '#/actions/api/artist/id/bandcamp/fetchData'
 import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseArtistPageContainer',
   components: {
     BasePageContainer
+  },
+  provide () {
+    return {
+      setRequestArtistData: this.setRequestArtistData,
+      resetRequestArtistData: this.resetRequestArtistData
+    }
   },
   props: {
     artistName: {
@@ -45,10 +53,11 @@ export default {
   ],
   data () {
     return {
-      isLoading: false,
       error: null,
       artistData: null,
-      topTrackCount: null
+      requestArtistData: null,
+      topTrackCount: null,
+      isLoading: false
     }
   },
   computed: {
@@ -68,7 +77,7 @@ export default {
     },
     artistDataArgs () {
       return {
-        artistName: this.artistName,
+        ...this.requestArtistData,
         scope: this.scope,
         limit: this.responsePageLimit
       }
@@ -82,10 +91,11 @@ export default {
     }
   },
   watch: {
+    requestArtistData: 'handleRequestArtistDataChange',
     artistData: 'handleArtistDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.resetRequestArtistData()
   },
   methods: {
     ...mapActions('layout', [
@@ -110,6 +120,23 @@ export default {
         )
       )
     },
+    handleRequestArtistDataChange () {
+      this.fetchData()
+    },
+    resetRequestArtistData () {
+      this.setRequestArtistData({
+        sourceId: 'lastfm',
+        artistName: this.artistName
+      })
+    },
+    setRequestArtistData (value) {
+      if (value.sourceId === 'bandcamp') {
+        this.fetchBandcampArtistIdData(value)
+      } else {
+        this.requestArtistData = value
+      }
+    },
+    fetchBandcampArtistIdData,
     fetchArtistData,
     fetchData (page) {
       this.fetchArtistData({

@@ -11,6 +11,13 @@
       :artistName="artistName"
     />
 
+    <div
+      v-if="releaseDate"
+      class="description"
+    >
+      {{ releaseDate }}
+    </div>
+
     <BaseAlbumListenersCount
       v-if="isWithListenersCount"
       class="description"
@@ -48,6 +55,7 @@ export default {
       required: true
     },
     listenersCount: Number,
+    releaseDate: String,
     uuid: String,
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,

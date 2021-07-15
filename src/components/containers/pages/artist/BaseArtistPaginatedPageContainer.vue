@@ -1,5 +1,6 @@
 <template>
   <BaseArtistPageContainer
+    ref="pageContainer"
     :pageNameKey="pageNameKey"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
@@ -19,8 +20,17 @@
           @viewButtonClick="handleViewButtonClick"
         />
 
+        <template v-if="isWithArtistSelect">
+          <BaseAlbumsSourceSelect
+            :artistName="pageSlotProps.artistData.name"
+            @artistDataChange="handleArtistDataChange"
+          />
+
+          <BaseDivider />
+        </template>
+
         <BasePaginatedContainer
-          ref="pagination"
+          ref="paginatedContainer"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.artistData"
@@ -30,7 +40,6 @@
           @focus="handleFocus"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
-          @reset="pageSlotProps.fetchData"
         >
           <template #default="slotProps">
             <slot
@@ -49,6 +58,8 @@
 import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseAlbumsSourceSelect from '@/models/artist/BaseAlbumsSourceSelect.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -57,6 +68,8 @@ export default {
     BaseArtistPageContainer,
     BaseSegmentContainer,
     BaseViewChangeButtons,
+    BaseAlbumsSourceSelect,
+    BaseDivider,
     BasePaginatedContainer
   },
   props: {
@@ -65,16 +78,22 @@ export default {
     clientPageLimit: Number,
     responsePageLimit: Number,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewIndex: Number,
+    isWithArtistSelect: Boolean
   },
   emits: [
     'viewButtonClick'
   ],
   methods: {
     handleViewButtonClick (index) {
-      this.$refs.pagination.reset()
+      this.$refs.paginatedContainer.reset()
 
       this.$emit('viewButtonClick', index)
+
+      this.$refs.pageContainer.fetchData()
+    },
+    handleArtistDataChange () {
+      this.$refs.paginatedContainer.reset()
     },
     handleFocus () {
       window.scrollTo(0, 0)
