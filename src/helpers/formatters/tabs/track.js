@@ -17,9 +17,9 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
 
   const path = [
     'artists',
-    artistName,
+    encodeURIComponent(artistName),
     'tracks',
-    trackTitle,
+    encodeURIComponent(trackTitle),
     pageNameKey
   ].filter(e => e).join('/')
 

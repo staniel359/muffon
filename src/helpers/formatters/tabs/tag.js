@@ -12,7 +12,7 @@ export default function ({ tagName, pageNameKey }) {
 
   const path = [
     'tags',
-    tagName,
+    encodeURIComponent(tagName),
     pageNameKey
   ].filter(e => e).join('/')
 

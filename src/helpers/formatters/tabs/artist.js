@@ -12,7 +12,7 @@ export default function ({ artistName, pageNameKey }) {
 
   const path = [
     'artists',
-    artistName,
+    encodeURIComponent(artistName),
     pageNameKey
   ].filter(e => e).join('/')
 
