@@ -1,10 +1,10 @@
 <template>
   <div class="content">
-    <BaseHeaderContainer
-      class="track-title"
-      tag="h4"
-    >
-      <BaseTickerContainer>
+    <BaseTickerContainer>
+      <BaseHeaderContainer
+        class="track-title"
+        tag="h4"
+      >
         <BaseLink
           :link="trackMainLinkFormatted"
           :text="trackTitle"
@@ -17,21 +17,21 @@
           {{ &nbsp; }}
           {{ trackExtraTitle }}
         </span>
-      </BaseTickerContainer>
-    </BaseHeaderContainer>
+      </BaseHeaderContainer>
+    </BaseTickerContainer>
 
     <BaseTickerContainer>
       <BaseArtistLinks :artists="artists" />
     </BaseTickerContainer>
 
-    <small>
-      <BaseTickerContainer v-if="albumTitle">
+    <BaseTickerContainer v-if="albumTitle">
+      <small>
         <BaseLink
           :link="albumMainLinkFormatted"
           :text="albumTitle"
         />
-      </BaseTickerContainer>
-    </small>
+      </small>
+    </BaseTickerContainer>
   </div>
 </template>
 

@@ -78,4 +78,6 @@ export default {
       border-left: $borderInverted !important
     ::v-deep(.track-duration)
       border-left: $borderInverted !important
+    ::v-deep(.track-source)
+      border-left: $borderInverted !important
 </style>
