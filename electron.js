@@ -127,25 +127,26 @@ const createTrayOrDock = () => {
     }
   ])
 
-  const isMac = process.platform === 'darwin'
+  const isMac =
+    process.platform === 'darwin'
 
   if (isMac) {
     app.dock.setMenu(menu)
-  } else {
-    tray = new Tray(iconPath)
-
-    tray.setContextMenu(menu)
-    tray.setToolTip(appName)
-
-    const handleTrayIconClick = () => {
-      mainWindow.show()
-    }
-
-    tray.on(
-      'click',
-      handleTrayIconClick
-    )
   }
+
+  tray = new Tray(iconPath)
+
+  tray.setContextMenu(menu)
+  tray.setToolTip(appName)
+
+  const handleTrayIconClick = () => {
+    mainWindow.show()
+  }
+
+  tray.on(
+    'click',
+    handleTrayIconClick
+  )
 }
 
 const createHeadersHandler = () => {
