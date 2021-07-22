@@ -31,13 +31,13 @@ export default {
     },
     header () {
       return localize(
-        'paginated.noCollection.header',
+        'shared.paginated.noCollection.header',
         { collection: this.scope }
       )
     },
     content () {
       return localize(
-        'paginated.noCollection.content',
+        'shared.paginated.noCollection.content',
         { collection: this.scope }
       )
     }

@@ -39,6 +39,9 @@ export const messages = {
       },
       player: {
         variants: 'Variants ({number})'
+      },
+      sidebar: {
+        logout: 'Log out'
       }
     },
     errors: {
@@ -130,7 +133,18 @@ export const messages = {
       more: 'More...',
       loading: 'Loading...',
       listener: '{number} listener | {number} listeners',
+      track: {
+        source: {
+          via: 'Via {source}'
+        }
+      },
       tracks: '{number} track | {number} tracks',
+      paginated: {
+        noCollection: {
+          header: 'No {collection}',
+          content: 'Looks like there are no {collection}.'
+        }
+      },
       sources: {
         select: {
           source: 'Select source:',
@@ -158,17 +172,67 @@ export const messages = {
           misc: 'Miscellaneous',
           appearance: 'Appearances'
         }
-      }
-    },
-    track: {
-      source: {
-        via: 'Via {source}'
-      }
-    },
-    paginated: {
-      noCollection: {
-        header: 'No {collection}',
-        content: 'Looks like there are no {collection}.'
+      },
+      profile: {
+        form: {
+          fields: {
+            email: 'Email',
+            password: 'Password',
+            passwordConfirmation: 'Confirm password',
+            nickname: 'Nickname',
+            avatar: 'Upload avatar',
+            gender: 'Gender',
+            birthdate: 'Birth date',
+            country: 'Country',
+            city: 'City',
+            genders: {
+              male: 'Male',
+              female: 'Female',
+              other: 'Other'
+            }
+          },
+          remember: 'Remember me',
+          submit: {
+            login: 'Login',
+            signup: 'Sign up'
+          },
+          sections: {
+            extra: 'Additional info'
+          },
+          errors: {
+            notFound: 'Email or password is wrong',
+            empty: {
+              email: 'Email cannot be empty',
+              password: 'Password cannot be empty',
+              passwordConfirmation: 'Password confirmation cannot be empty',
+              nickname: 'Nickname cannot be empty'
+            },
+            invalid: {
+              email: 'Email is invalid'
+            },
+            taken: {
+              email: 'Email is already taken',
+              nickname: 'Nickname is already taken'
+            },
+            tooShort: {
+              password: 'Password is too short'
+            },
+            tooLong: {
+              nickname: 'Nickname is too long'
+            },
+            confirmation: {
+              passwordConfirmation: 'Password confirmation doesn\'t match password'
+            }
+          },
+          signup: {
+            text: 'Don\'t have an account?',
+            link: 'Sign up'
+          },
+          login: {
+            text: 'Already signed up?',
+            link: 'Log in'
+          }
+        }
       }
     }
   }

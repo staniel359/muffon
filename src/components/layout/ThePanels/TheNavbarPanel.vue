@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui top fixed borderless menu the-navbar"
+    class="ui top fixed borderless menu the-navbar-panel"
     :class="{ inverted: isDarkMode }"
   >
     <div class="ui container main-container">
@@ -36,7 +36,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.the-navbar
+.the-navbar-panel
   @extend .no-border
   height: $navbarHeight
   z-index: 200 !important

@@ -1,4 +1,5 @@
 import store from '*/store'
+import { localize } from '#/actions/plugins/i18n'
 
 export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   return {
@@ -37,6 +38,7 @@ export const mainSidebarOptions = ({ onShow, onVisible, onHide } = {}) => {
   return {
     closable: false,
     dimPage: false,
+    duration: 400,
     onVisible,
     onShow,
     onHide
@@ -113,5 +115,121 @@ export const mainEmbedOptions = ({ videoId, placeholder }) => {
     parameters: {
       fs: 0
     }
+  }
+}
+
+export const loginFormOptions = ({ onSuccess }) => {
+  const emptyEmailPrompt = localize(
+    'shared.profile.form.errors.empty.email'
+  )
+  const emptyPasswordPrompt = localize(
+    'shared.profile.form.errors.empty.password'
+  )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      email: {
+        identifier: 'email',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyEmailPrompt
+          }
+        ]
+      },
+      password: {
+        identifier: 'password',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordPrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
+export const signupFormOptions = ({ onSuccess }) => {
+  const emptyEmailPrompt = localize(
+    'shared.profile.form.errors.empty.email'
+  )
+  const emptyPasswordPrompt = localize(
+    'shared.profile.form.errors.empty.password'
+  )
+  const emptyPasswordConfirmationPrompt = localize(
+    'shared.profile.form.errors.empty.passwordConfirmation'
+  )
+  const emptyNicknamePrompt = localize(
+    'shared.profile.form.errors.empty.nickname'
+  )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      email: {
+        identifier: 'email',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyEmailPrompt
+          }
+        ]
+      },
+      password: {
+        identifier: 'password',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordPrompt
+          }
+        ]
+      },
+      passwordConfirmation: {
+        identifier: 'passwordConfirmation',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordConfirmationPrompt
+          }
+        ]
+      },
+      nickname: {
+        identifier: 'nickname',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyNicknamePrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
+export const birthdateCalendarOptions = () => {
+  const today = new Date()
+  const minDate = new Date(
+    today.getFullYear() - 100,
+    today.getMonth(),
+    today.getDate()
+  )
+  const maxDate = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate()
+  )
+
+  return {
+    type: 'date',
+    monthFirst: false,
+    startMode: 'year',
+    minDate,
+    maxDate
   }
 }

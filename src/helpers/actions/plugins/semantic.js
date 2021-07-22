@@ -132,6 +132,32 @@ export const setEmbed = (el, options) => {
   $(el).embed(options)
 }
 
+// Form
+
+export const setForm = (el, options) => {
+  $(el).form(options)
+}
+
+export const addFormFieldError = (el, field, error) => {
+  $(el).form(
+    'add prompt',
+    field,
+    error
+  )
+}
+
+// Calendar
+
+export const setCalendar = (el, options) => {
+  $(el).calendar(options)
+}
+
+// Accordion
+
+export const setAccordion = (el, options) => {
+  $(el).accordion(options)
+}
+
 // Utils
 
 export const numberToColumnWidth = (value = 1) => {

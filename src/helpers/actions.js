@@ -29,7 +29,7 @@ export const updateTab = data => {
   const tab = tabs.find(isMatchedTab)
 
   const updateTabKeyValue = ([key, value]) => {
-    tab[key] = value
+    tab && (tab[key] = value)
   }
 
   Object.entries(data).forEach(

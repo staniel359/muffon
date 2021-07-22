@@ -21,6 +21,10 @@ export default {
     error: {
       type: Error,
       required: true
+    },
+    isWithButton: {
+      type: Boolean,
+      default: true
     }
   },
   emits: [
@@ -42,7 +46,10 @@ export default {
       return this.errorData.content
     },
     buttonData () {
-      if (this.isErrorRefreshable) {
+      if (
+        this.isErrorRefreshable &&
+          this.isWithButton
+      ) {
         return {
           class: 'circular basic',
           icon: 'sync alternate'

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui right overlay sidebar queue-panel"
+    class="ui right overlay sidebar the-queue-panel"
     ref="queuePanel"
   >
     <div class="ui segments main-segment-container">
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.queue-panel
+.the-queue-panel
   width: 320px !important
 
 .main-segment-container

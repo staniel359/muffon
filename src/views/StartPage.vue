@@ -1,7 +1,7 @@
 <template>
   <div class="start-page-container">
     <BaseHeader
-      class="start-header"
+      class="main-app-title"
       tag="h1"
       text="muffon"
     />
@@ -44,10 +44,5 @@ export default {
 <style lang="sass" scoped>
 .start-page-container
   @extend .d-flex, .flex-column, .align-items-center
-  margin-top: 25vh
-
-.start-header
-  @extend .text-color-white, .text-medium-light
-  font-size: 3.5em !important
-  margin-bottom: 25px !important
+  margin-top: 20vh
 </style>

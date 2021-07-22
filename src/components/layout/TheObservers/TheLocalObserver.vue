@@ -11,7 +11,9 @@ export default {
   name: 'TheLocalObserver',
   computed: {
     localKeysValues () {
-      return Object.entries(local.store)
+      return Object.entries(
+        local.store
+      )
     }
   },
   mounted () {
@@ -35,6 +37,10 @@ export default {
       setPlayerPlaying: 'setPlaying',
       setPlayerSourceId: 'setSourceId',
       setPlayerVariants: 'setVariants'
+    }),
+    ...mapActions('profile', {
+      setProfileInfo: 'setInfo',
+      setIsProfileLoggedIn: 'setIsLoggedIn'
     }),
     ...mapActions('queue', {
       setQueueCurrentTrackId: 'setCurrentTrackId',
@@ -60,6 +66,10 @@ export default {
           return this.setPlayerSourceId(value)
         case 'player.variants':
           return this.setPlayerVariants(value)
+        case 'profile.info':
+          return this.setProfileInfo(value)
+        case 'profile.isLoggedIn':
+          return this.setIsProfileLoggedIn(value)
         case 'queue.currentTrackId':
           return this.setQueueCurrentTrackId(value)
         case 'queue.isAutoplay':

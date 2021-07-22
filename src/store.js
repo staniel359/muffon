@@ -1,14 +1,16 @@
 import { createStore } from 'vuex'
-import layout from './store/modules/layout'
 import audio from './store/modules/audio'
+import layout from './store/modules/layout'
 import player from './store/modules/player'
+import profile from './store/modules/profile'
 import queue from './store/modules/queue'
 
 export default createStore({
   modules: {
-    layout,
     audio,
+    layout,
     player,
+    profile,
     queue
   }
 })

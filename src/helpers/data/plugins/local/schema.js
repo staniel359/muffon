@@ -35,6 +35,22 @@ export default {
     type: 'array',
     default: []
   },
+  'profile.info': {
+    type: ['null', 'object'],
+    default: null
+  },
+  'profile.isLoggedIn': {
+    type: 'boolean',
+    default: false
+  },
+  'profile.isRemember': {
+    type: 'boolean',
+    default: false
+  },
+  'profile.token': {
+    type: ['null', 'string'],
+    default: null
+  },
   'queue.currentTrackId': {
     type: ['null', 'string'],
     default: null

@@ -114,16 +114,31 @@ const createWindow = () => {
   )  
 }
 
-const createTrayOrDock = () => {
-  const handleQuitClick = () => {
-    app.exit()
+const quit = () => {
+  const local = new ElectronStore({
+    accessPropertiesByDotNotation: false
+  })
+
+  const isRememberProfile = local.get(
+    'profile.isRemember'
+  )
+
+  if (!isRememberProfile) {
+    local.set(
+      'profile.isLoggedIn',
+      false
+    )
   }
 
+  app.exit()
+}
+
+const createTrayOrDock = () => {
   const menu = Menu.buildFromTemplate([
     {
       type: 'normal',
       label: 'Quit',
-      click: handleQuitClick
+      click: quit
     }
   ])
 

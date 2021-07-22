@@ -24,7 +24,7 @@ a
 
 @media only screen and (min-width: 768px)
   .main-container
-    width: 700px !important
+    width: 670px !important
   .ui.search
     &.main-history-input
       & > .results
@@ -394,3 +394,31 @@ a
 .main-source-select-item-select
   width: 220px
   margin-right: 1em !important
+
+.main-form
+  &.inverted
+    &.loading
+      &:before
+        @extend .background-black-transparent
+
+.main-app-title
+  @extend .text-color-white, .text-medium-light
+  font-size: 3.5em !important
+  margin-bottom: 25px !important
+
+.main-sidebar-item
+  @extend .no-padding, .d-flex
+
+.main-sidebar-item-icon-container
+  @extend .d-flex, .align-items-center, .justify-content-center
+  width: 40px
+  height: 40px
+  flex-shrink: 0
+  & > .icon
+    @extend .no-margin
+
+.main-sidebar-item-content-container
+  @extend .d-flex, .align-items-center
+  width: 200px
+  padding: 0 0.5em
+  flex-shrink: 0
