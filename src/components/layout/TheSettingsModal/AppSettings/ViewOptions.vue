@@ -5,25 +5,25 @@
       isHorizontal
     />
 
-    <AutoplayOption />
+    <DarkModeOption />
   </div>
 </template>
 
 <script>
 import BaseDivider from '@/BaseDivider.vue'
-import AutoplayOption from './QueueOptions/AutoplayOption.vue'
+import DarkModeOption from './ViewOptions/DarkModeOption.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'QueueOptions',
+  name: 'ViewOptions',
   components: {
     BaseDivider,
-    AutoplayOption
+    DarkModeOption
   },
   computed: {
     headerFormatted () {
       return localize(
-        'settings.headers.queue'
+        'layout.settings.headers.app.view'
       )
     }
   }

@@ -3,75 +3,58 @@
     :options="options"
     :isLoading="isLoading"
     :error="error"
+    :class="{ success: isSuccess }"
     @init="handleInit"
   >
+    <SuccessMessage />
+
     <BaseSection />
-
-    <BaseAccordionContainer :title="extraTextFormatted">
-      <ExtraSection
-        @avatarChange="handleAvatarChange"
-      />
-    </BaseAccordionContainer>
-
-    <RememberField />
-
-    <SubmitButton />
 
     <BaseDivider />
 
-    <LoginSection
-      @loginLinkClick="handleLoginLinkClick"
+    <ExtraSection
+      @avatarChange="handleAvatarChange"
     />
+
+    <SubmitButton />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
-import BaseSection from './SignupForm/BaseSection.vue'
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
-import ExtraSection from './SignupForm/ExtraSection.vue'
-import RememberField from '@/models/profile/fields/RememberField.vue'
-import SubmitButton from './SignupForm/SubmitButton.vue'
+import SuccessMessage from './EditForm/SuccessMessage.vue'
+import BaseSection from './EditForm/BaseSection.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import LoginSection from './SignupForm/LoginSection.vue'
-import { signupFormOptions } from '#/data/plugins/semantic'
-import fetchSignupData from '#/actions/api/profile/signup/fetchData'
-import { localize } from '#/actions/plugins/i18n'
+import ExtraSection from './EditForm/ExtraSection.vue'
+import SubmitButton from './EditForm/SubmitButton.vue'
+import { editFormOptions } from '#/data/plugins/semantic'
+import fetchEditData from '#/actions/api/profile/edit/fetchData'
 import { date as formatDate } from '#/formatters'
 
 export default {
-  name: 'SignupForm',
+  name: 'EditForm',
   components: {
     BaseFormContainer,
+    SuccessMessage,
     BaseSection,
-    BaseAccordionContainer,
-    ExtraSection,
-    RememberField,
-    SubmitButton,
     BaseDivider,
-    LoginSection
+    ExtraSection,
+    SubmitButton
   },
-  emits: [
-    'loginLinkClick'
-  ],
   data () {
     return {
       avatar: null,
       error: null,
       form: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
     options () {
-      return signupFormOptions({
+      return editFormOptions({
         onSuccess: this.handleSuccess
       })
-    },
-    extraTextFormatted () {
-      return localize(
-        'shared.profile.form.sections.extra'
-      )
     }
   },
   methods: {
@@ -81,19 +64,16 @@ export default {
     handleSuccess (event, fields) {
       event.preventDefault()
 
-      this.fetchSignupData(
+      this.fetchEditData(
         this.formatProfileParams(
           fields
         )
       )
     },
-    handleLoginLinkClick () {
-      this.$emit('loginLinkClick')
-    },
     handleAvatarChange (value) {
       this.avatar = value
     },
-    fetchSignupData,
+    fetchEditData,
     formatProfileParams (fields) {
       return {
         email: fields.email,
@@ -107,8 +87,7 @@ export default {
           fields.birthdate
         ),
         country: fields.country,
-        city: fields.city,
-        isRemember: !!fields.remember
+        city: fields.city
       }
     }
   }

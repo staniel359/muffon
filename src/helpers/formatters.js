@@ -32,3 +32,19 @@ export const seconds = value => {
     .toISOString()
     .substr(14, 5)
 }
+
+export const date = value => {
+  if (value) {
+    const day = value.getDate()
+    const month = value.getMonth()
+    const year = value.getFullYear()
+
+    const utcDate = Date.UTC(
+      year, month, day
+    )
+
+    return new Date(utcDate)
+      .toISOString()
+      .substr(0, 10)
+  }
+}

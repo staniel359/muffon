@@ -37,7 +37,10 @@ export default {
     ])
   },
   mounted () {
-    this.$emit('init', this.$refs.button)
+    this.$emit(
+      'init',
+      this.$refs.button
+    )
   }
 }
 </script>

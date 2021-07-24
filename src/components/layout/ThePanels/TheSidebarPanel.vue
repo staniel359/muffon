@@ -7,6 +7,7 @@
     </div>
 
     <div class="sidebar-bottom">
+      <SettingsItem />
       <LogoutItem />
     </div>
   </BaseSegmentContainer>
@@ -15,6 +16,7 @@
 <script>
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
+import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 
 export default {
@@ -22,6 +24,7 @@ export default {
   components: {
     BaseSegmentContainer,
     ProfileItem,
+    SettingsItem,
     LogoutItem
   }
 }

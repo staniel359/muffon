@@ -1,10 +1,7 @@
 <template>
-  <div class="field">
-    <input
-      type="text"
-      name="city"
-      :placeholder="placeholderFormatted"
-    >
+  <div class="ui success message">
+    <i class="check icon"></i>
+    {{ textFormatted }}
   </div>
 </template>
 
@@ -12,11 +9,11 @@
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'CityField',
+  name: 'SuccessMessage',
   computed: {
-    placeholderFormatted () {
+    textFormatted () {
       return localize(
-        'shared.profile.form.fields.city'
+        'shared.profile.form.success'
       )
     }
   }

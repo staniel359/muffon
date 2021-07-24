@@ -30,12 +30,15 @@ import CountryItem from './CountryField/CountryItem.vue'
 import countries from 'i18n-iso-countries'
 import countriesEn from 'i18n-iso-countries/langs/en.json'
 import { localize } from '#/actions/plugins/i18n'
-import { setDropdown } from '#/actions/plugins/semantic'
+import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
   name: 'CountryField',
   components: {
     CountryItem
+  },
+  props: {
+    value: String
   },
   computed: {
     placeholderFormatted () {
@@ -58,6 +61,11 @@ export default {
     setDropdown(
       this.$refs.dropdown,
       { forceSelection: false }
+    )
+
+    setDropdownValue(
+      this.$refs.dropdown,
+      this.value
     )
   }
 }

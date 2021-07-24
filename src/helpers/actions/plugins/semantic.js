@@ -152,6 +152,15 @@ export const setCalendar = (el, options) => {
   $(el).calendar(options)
 }
 
+export const setCalendarDate = (el, value) => {
+  $(el).calendar(
+    'set date',
+    value,
+    false,
+    false
+  )
+}
+
 // Accordion
 
 export const setAccordion = (el, options) => {

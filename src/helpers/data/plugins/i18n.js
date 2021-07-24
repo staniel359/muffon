@@ -41,7 +41,35 @@ export const messages = {
         variants: 'Variants ({number})'
       },
       sidebar: {
+        settings: 'Settings',
         logout: 'Log out'
+      },
+      settings: {
+        tabs: {
+          app: 'App',
+          profile: 'Profile'
+        },
+        headers: {
+          app: {
+            view: 'View',
+            player: 'Player',
+            queue: 'Queue'
+          },
+          profile: {
+            info: 'info'
+          }
+        },
+        options: {
+          view: {
+            darkMode: 'Dark mode'
+          },
+          player: {
+            audioSource: 'Audio source'
+          },
+          queue: {
+            autoplay: 'Autoplay'
+          }
+        }
       }
     },
     errors: {
@@ -72,22 +100,6 @@ export const messages = {
       client: {
         header: 'Client error',
         content: 'Please contact us for information.'
-      }
-    },
-    settings: {
-      headers: {
-        view: 'View',
-        player: 'Player',
-        queue: 'Queue'
-      },
-      view: {
-        darkMode: 'Dark mode'
-      },
-      player: {
-        audioSource: 'Audio source'
-      },
-      queue: {
-        autoplay: 'Autoplay'
       }
     },
     pages: {
@@ -180,7 +192,10 @@ export const messages = {
             password: 'Password',
             passwordConfirmation: 'Confirm password',
             nickname: 'Nickname',
-            avatar: 'Upload avatar',
+            avatar: {
+              add: 'Upload avatar',
+              remove: 'Remove avatar'
+            },
             gender: 'Gender',
             birthdate: 'Birth date',
             country: 'Country',
@@ -194,11 +209,13 @@ export const messages = {
           remember: 'Remember me',
           submit: {
             login: 'Login',
-            signup: 'Sign up'
+            signup: 'Sign up',
+            save: 'Save'
           },
           sections: {
             extra: 'Additional info'
           },
+          success: 'Profile saved',
           errors: {
             notFound: 'Email or password is wrong',
             empty: {

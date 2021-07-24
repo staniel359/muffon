@@ -212,16 +212,68 @@ export const signupFormOptions = ({ onSuccess }) => {
   }
 }
 
+export const editFormOptions = ({ onSuccess }) => {
+  const emptyEmailPrompt = localize(
+    'shared.profile.form.errors.empty.email'
+  )
+  const emptyPasswordConfirmationPrompt = localize(
+    'shared.profile.form.errors.empty.passwordConfirmation'
+  )
+  const emptyNicknamePrompt = localize(
+    'shared.profile.form.errors.empty.nickname'
+  )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      email: {
+        identifier: 'email',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyEmailPrompt
+          }
+        ]
+      },
+      password: {
+        identifier: 'password',
+        optional: true
+      },
+      passwordConfirmation: {
+        identifier: 'passwordConfirmation',
+        depends: 'password',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordConfirmationPrompt
+          }
+        ]
+      },
+      nickname: {
+        identifier: 'nickname',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyNicknamePrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
 export const birthdateCalendarOptions = () => {
   const today = new Date()
   const minDate = new Date(
     today.getFullYear() - 100,
-    today.getMonth(),
+    today.getMonth() + 1,
     today.getDate()
   )
   const maxDate = new Date(
     today.getFullYear(),
-    today.getMonth(),
+    today.getMonth() + 1,
     today.getDate()
   )
 

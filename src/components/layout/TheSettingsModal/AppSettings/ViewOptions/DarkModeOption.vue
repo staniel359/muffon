@@ -6,7 +6,7 @@
     />
 
     <BaseToggle
-      :isChecked="isQueueAutoplay"
+      :isChecked="isDarkMode"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -21,30 +21,30 @@ import { localize } from '#/actions/plugins/i18n'
 import { setGlobalData } from '#/actions'
 
 export default {
-  name: 'AutoplayOption',
+  name: 'DarkModeOption',
   components: {
     BaseHeader,
     BaseToggle
   },
   computed: {
-    ...mapState('queue', {
-      isQueueAutoplay: 'isAutoplay'
-    }),
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     headerFormatted () {
       return localize(
-        'settings.queue.autoplay'
+        'layout.settings.options.view.darkMode'
       )
     }
   },
   methods: {
     handleToggleOn () {
       setGlobalData({
-        'queue.isAutoplay': true
+        'layout.isDarkMode': true
       })
     },
     handleToggleOff () {
       setGlobalData({
-        'queue.isAutoplay': false
+        'layout.isDarkMode': false
       })
     }
   }

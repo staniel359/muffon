@@ -5,6 +5,7 @@
       name="email"
       autofocus
       :placeholder="placeholderFormatted"
+      :value="value"
     >
   </div>
 </template>
@@ -14,6 +15,9 @@ import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'EmailField',
+  props: {
+    value: String
+  },
   computed: {
     placeholderFormatted () {
       return localize(

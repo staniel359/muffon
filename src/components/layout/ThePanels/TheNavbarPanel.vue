@@ -8,7 +8,6 @@
 
       <NavbarNavigation />
 
-      <NavbarSettingsButton />
       <NavbarHistoryButton direction="forward" />
     </div>
   </div>
@@ -17,14 +16,12 @@
 <script>
 import { mapState } from 'vuex'
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
-import NavbarSettingsButton from './TheNavbarPanel/NavbarSettingsButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
 
 export default {
   name: 'TheNavbarPanel',
   components: {
     NavbarHistoryButton,
-    NavbarSettingsButton,
     NavbarNavigation
   },
   computed: {

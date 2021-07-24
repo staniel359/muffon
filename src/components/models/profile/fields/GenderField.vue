@@ -1,6 +1,9 @@
 <template>
   <div class="field">
-    <div class="ui selection dropdown">
+    <div
+      class="ui selection dropdown"
+      ref="dropdown"
+    >
       <input
         type="hidden"
         name="gender"
@@ -28,9 +31,13 @@
 
 <script>
 import { localize } from '#/actions/plugins/i18n'
+import { setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
   name: 'GenderField',
+  props: {
+    value: String
+  },
   computed: {
     placeholderFormatted () {
       return localize(
@@ -52,6 +59,12 @@ export default {
         'shared.profile.form.fields.genders.other'
       )
     }
+  },
+  mounted () {
+    setDropdownValue(
+      this.$refs.dropdown,
+      this.value
+    )
   }
 }
 </script>

@@ -18,11 +18,14 @@
 
 <script>
 import { localize } from '#/actions/plugins/i18n'
-import { setCalendar } from '#/actions/plugins/semantic'
+import { setCalendar, setCalendarDate } from '#/actions/plugins/semantic'
 import { birthdateCalendarOptions } from '#/data/plugins/semantic'
 
 export default {
   name: 'BirthdateField',
+  props: {
+    value: String
+  },
   computed: {
     placeholderFormatted () {
       return localize(
@@ -31,10 +34,17 @@ export default {
     }
   },
   mounted () {
-    setCalendar(
+    setCalendarDate(
       this.$refs.calendar,
-      birthdateCalendarOptions()
+      this.value
     )
+
+    this.$nextTick(() => {
+      setCalendar(
+        this.$refs.calendar,
+        birthdateCalendarOptions()
+      )
+    })
   }
 }
 </script>

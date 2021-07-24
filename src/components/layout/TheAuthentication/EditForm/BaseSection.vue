@@ -1,11 +1,12 @@
 <template>
-  <EmailField />
+  <EmailField :value="email" />
   <PasswordField />
   <PasswordConfirmationField />
-  <NicknameField />
+  <NicknameField :value="nickname" />
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import EmailField from '@/models/profile/fields/EmailField.vue'
 import PasswordField from '@/models/profile/fields/PasswordField.vue'
 import PasswordConfirmationField
@@ -19,6 +20,17 @@ export default {
     PasswordField,
     PasswordConfirmationField,
     NicknameField
+  },
+  computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    email () {
+      return this.profileInfo.email
+    },
+    nickname () {
+      return this.profileInfo.nickname
+    }
   }
 }
 </script>

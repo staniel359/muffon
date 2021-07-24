@@ -2,15 +2,25 @@
   <div class="field">
     <div class="avatar-field">
       <BaseImage
-        class="circular avatar-preview"
-        :image="preview"
+        class="circular bordered avatar-preview"
+        :image="image"
       />
 
-      <label for="avatar">
-        <div class="ui button">
-          {{ textFormatted }}
-        </div>
+      <label
+        class="avatar-add-button"
+        for="avatar"
+      >
+        <BaseButton
+          class="compact"
+          :text="addFormatted"
+        />
       </label>
+
+      <BaseButton
+        class="red compact"
+        :text="removeFormatted"
+        @click="handleRemoveButtonClick"
+      />
 
       <input
         id="avatar"
@@ -26,28 +36,51 @@
 
 <script>
 import BaseImage from '@/BaseImage.vue'
+import BaseButton from '@/BaseButton.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'AvatarField',
   components: {
-    BaseImage
+    BaseImage,
+    BaseButton
+  },
+  props: {
+    value: String
   },
   emits: [
     'change'
   ],
   data () {
     return {
-      preview:
+      preview: null,
+      defaultImage:
         'https://fomantic-ui.com/images' +
         '/wireframe/square-image.png'
     }
   },
   computed: {
-    textFormatted () {
-      return localize(
-        'shared.profile.form.fields.avatar'
+    image () {
+      return (
+        this.preview ||
+          this.defaultImage
       )
+    },
+    addFormatted () {
+      return localize(
+        'shared.profile.form.fields.avatar.add'
+      )
+    },
+    removeFormatted () {
+      return localize(
+        'shared.profile.form.fields.avatar.remove'
+      )
+    }
+  },
+  watch: {
+    value: {
+      immediate: true,
+      handler: 'handleValueChange'
     }
   },
   methods: {
@@ -57,6 +90,17 @@ export default {
       this.preview = URL.createObjectURL(file)
 
       this.convertImage(file)
+    },
+    handleRemoveButtonClick () {
+      this.preview = null
+
+      this.$emit(
+        'change',
+        'DELETED'
+      )
+    },
+    handleValueChange (value) {
+      this.preview = this.value
     },
     convertImage (file) {
       const reader = new FileReader()
@@ -85,7 +129,10 @@ export default {
 
 .avatar-preview
   @extend .object-fit-cover
-  width: 90px
-  height: 90px
+  width: 100px
+  height: 100px
+  margin-bottom: 15px
+
+.avatar-add-button
   margin-bottom: 10px
 </style>

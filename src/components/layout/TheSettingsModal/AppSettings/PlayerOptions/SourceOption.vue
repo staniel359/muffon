@@ -23,7 +23,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        'settings.player.audioSource'
+        'layout.settings.options.player.audioSource'
       )
     }
   }

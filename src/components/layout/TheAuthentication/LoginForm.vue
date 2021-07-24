@@ -22,9 +22,9 @@
 
 <script>
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
-import EmailField from './LoginForm/EmailField.vue'
-import PasswordField from './LoginForm/PasswordField.vue'
-import RememberField from './LoginForm/RememberField.vue'
+import EmailField from '@/models/profile/fields/EmailField.vue'
+import PasswordField from '@/models/profile/fields/PasswordField.vue'
+import RememberField from '@/models/profile/fields/RememberField.vue'
 import SubmitButton from './LoginForm/SubmitButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import SignupSection from './LoginForm/SignupSection.vue'

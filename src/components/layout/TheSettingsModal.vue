@@ -1,26 +1,65 @@
 <template>
   <BaseModalContainer ref="modal">
-    <div class="scrolling content main-modal-content-full-height">
-      <ViewOptions />
-      <PlayerOptions />
-      <QueueOptions />
-    </div>
+    <BaseTabsContainer
+      class="content main-modal-content-full-height"
+      :tabs="tabsFormatted"
+    >
+      <template
+        v-for="tabData in tabsFormatted"
+        :key="tabData.uuid"
+        #[tabData.scope]="slotProps"
+      >
+        <Component
+          :is="tabData.component"
+          :class="slotProps.class"
+        />
+      </template>
+    </BaseTabsContainer>
   </BaseModalContainer>
 </template>
 
 <script>
 import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import ViewOptions from './TheSettingsModal/ViewOptions.vue'
-import PlayerOptions from './TheSettingsModal/PlayerOptions.vue'
-import QueueOptions from './TheSettingsModal/QueueOptions.vue'
+import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
+import AppSettings from './TheSettingsModal/AppSettings.vue'
+import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
+import { collection as formatCollection } from '#/formatters'
+import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'TheSettingsModal',
   components: {
     BaseModalContainer,
-    ViewOptions,
-    PlayerOptions,
-    QueueOptions
+    BaseTabsContainer,
+    AppSettings,
+    ProfileSettings
+  },
+  data () {
+    return {
+      tabs: [
+        {
+          name: localize(
+            'layout.settings.tabs.app'
+          ),
+          scope: 'app',
+          component: 'AppSettings'
+        },
+        {
+          name: localize(
+            'layout.settings.tabs.profile'
+          ),
+          scope: 'profile',
+          component: 'ProfileSettings'
+        }
+      ]
+    }
+  },
+  computed: {
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    }
   },
   methods: {
     show () {

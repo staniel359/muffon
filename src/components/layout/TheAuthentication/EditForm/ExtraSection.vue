@@ -2,20 +2,23 @@
   <div class="extra-section">
     <AvatarField
       class="avatar-field"
+      :value="avatar"
       @change="handleAvatarChange"
     />
 
     <div class="extra-fields">
-      <GenderField />
-      <BirthdateField />
-      <CountryField />
-      <CityField />
+      <GenderField :value="gender" />
+      <BirthdateField :value="birthdate" />
+      <CountryField :value="country" />
+      <CityField :value="city" />
+
       <div></div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import AvatarField from '@/models/profile/fields/AvatarField.vue'
 import GenderField from '@/models/profile/fields/GenderField.vue'
 import BirthdateField from '@/models/profile/fields/BirthdateField.vue'
@@ -34,6 +37,26 @@ export default {
   emits: [
     'avatarChange'
   ],
+  computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    avatar () {
+      return this.profileInfo.avatar
+    },
+    gender () {
+      return this.profileInfo.gender
+    },
+    birthdate () {
+      return this.profileInfo.birthdate
+    },
+    country () {
+      return this.profileInfo.country
+    },
+    city () {
+      return this.profileInfo.city
+    }
+  },
   methods: {
     handleAvatarChange (value) {
       this.$emit(
