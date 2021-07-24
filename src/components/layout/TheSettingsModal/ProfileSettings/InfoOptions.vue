@@ -11,7 +11,7 @@
 
 <script>
 import BaseDivider from '@/BaseDivider.vue'
-import EditForm from '@/layout/TheAuthentication/EditForm.vue'
+import EditForm from '@/models/profile/EditForm.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {

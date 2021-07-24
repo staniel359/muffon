@@ -23,8 +23,8 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import LoginForm from './TheAuthentication/LoginForm.vue'
-import SignupForm from './TheAuthentication/SignupForm.vue'
+import LoginForm from '@/models/profile/LoginForm.vue'
+import SignupForm from '@/models/profile/SignupForm.vue'
 
 export default {
   name: 'TheAuthentication',

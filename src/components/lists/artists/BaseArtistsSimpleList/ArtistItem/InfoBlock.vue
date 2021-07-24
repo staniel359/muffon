@@ -49,8 +49,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.content
-  @extend .no-padding
-  margin-left: 10px
-</style>
+<style lang="sass" scoped></style>

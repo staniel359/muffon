@@ -35,7 +35,7 @@ export default {
   @extend .no-padding, .h-100, .fixed, .no-border, .relative, .d-flex, .flex-column
   z-index: 500 !important
   width: 40px !important
-  transition: 0.4s
+  transition: width 0.3s
   overflow-x: hidden
   &:hover
     width: 240px !important

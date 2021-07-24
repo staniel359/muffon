@@ -57,7 +57,7 @@ export default {
   width: 300px
   height: 0
   padding-top: 30px
-  transition: 0.25s
+  transition: height 0.3s
   &.visible
     height: 275px
 </style>

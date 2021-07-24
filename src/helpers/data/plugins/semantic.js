@@ -38,7 +38,7 @@ export const mainSidebarOptions = ({ onShow, onVisible, onHide } = {}) => {
   return {
     closable: false,
     dimPage: false,
-    duration: 400,
+    duration: 300,
     onVisible,
     onShow,
     onHide

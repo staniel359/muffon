@@ -1,4 +1,6 @@
 <template>
+  <FastLoginSection />
+
   <BaseFormContainer
     :options="options"
     :isLoading="isLoading"
@@ -21,6 +23,7 @@
 </template>
 
 <script>
+import FastLoginSection from './LoginForm/FastLoginSection.vue'
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
 import EmailField from '@/models/profile/fields/EmailField.vue'
 import PasswordField from '@/models/profile/fields/PasswordField.vue'
@@ -34,6 +37,7 @@ import fetchLoginData from '#/actions/api/profile/login/fetchData'
 export default {
   name: 'LoginForm',
   components: {
+    FastLoginSection,
     BaseFormContainer,
     EmailField,
     PasswordField,
