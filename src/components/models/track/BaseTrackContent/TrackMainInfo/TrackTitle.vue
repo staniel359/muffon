@@ -57,7 +57,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.description
-  @extend .text-medium-light
-</style>
+<style lang="sass" scoped></style>

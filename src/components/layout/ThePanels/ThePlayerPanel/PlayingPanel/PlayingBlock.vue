@@ -16,13 +16,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import ImageBlock from './TrackBlock/ImageBlock.vue'
-import InfoBlock from './TrackBlock/InfoBlock.vue'
+import ImageBlock from './PlayingBlock/ImageBlock.vue'
+import InfoBlock from './PlayingBlock/InfoBlock.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import { generateKey } from '#/utils'
 
 export default {
-  name: 'TrackBlock',
+  name: 'PlayingBlock',
   components: {
     ImageBlock,
     InfoBlock,

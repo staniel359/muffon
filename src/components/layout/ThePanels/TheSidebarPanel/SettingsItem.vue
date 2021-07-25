@@ -4,7 +4,7 @@
     @click="handleClick"
   >
     <div class="main-sidebar-item-icon-container">
-      <i class="cog large icon"></i>
+      <i class="cog large grey icon"></i>
     </div>
 
     <div class="main-sidebar-item-content-container">

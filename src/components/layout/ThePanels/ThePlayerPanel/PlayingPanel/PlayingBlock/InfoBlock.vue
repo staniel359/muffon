@@ -1,10 +1,7 @@
 <template>
   <div class="content">
     <BaseTickerContainer>
-      <BaseHeaderContainer
-        class="track-title"
-        tag="h4"
-      >
+      <BaseHeaderContainer tag="h4">
         <BaseLink
           :link="trackMainLinkFormatted"
           :text="trackTitle"

@@ -6,7 +6,7 @@
     ref="playerPanel"
   >
     <div class="ui container main-container">
-      <TrackPanel />
+      <PlayingPanel />
       <AudioPanel />
       <CloseButton />
     </div>
@@ -16,7 +16,7 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import VariantsPanel from './ThePlayerPanel/VariantsPanel.vue'
-import TrackPanel from './ThePlayerPanel/TrackPanel.vue'
+import PlayingPanel from './ThePlayerPanel/PlayingPanel.vue'
 import AudioPanel from './ThePlayerPanel/AudioPanel.vue'
 import CloseButton from './ThePlayerPanel/CloseButton.vue'
 import {
@@ -32,7 +32,7 @@ export default {
   name: 'ThePlayerPanel',
   components: {
     VariantsPanel,
-    TrackPanel,
+    PlayingPanel,
     AudioPanel,
     CloseButton
   },

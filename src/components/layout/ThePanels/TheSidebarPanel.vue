@@ -1,20 +1,23 @@
 <template>
-  <BaseSegmentContainer
-    class="vertical menu the-sidebar-panel"
+  <div
+    class="ui vertical menu left overlay visible sidebar the-sidebar-panel"
+    :class="{ inverted: isDarkMode }"
   >
-    <div class="sidebar-top">
-      <ProfileItem />
-    </div>
+    <div class="sidebar-panel-content">
+      <div class="sidebar-top">
+        <ProfileItem />
+      </div>
 
-    <div class="sidebar-bottom">
-      <SettingsItem />
-      <LogoutItem />
+      <div>
+        <SettingsItem />
+        <LogoutItem />
+      </div>
     </div>
-  </BaseSegmentContainer>
+  </div>
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import { mapState } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
@@ -22,21 +25,25 @@ import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 export default {
   name: 'TheSidebarPanel',
   components: {
-    BaseSegmentContainer,
     ProfileItem,
     SettingsItem,
     LogoutItem
+  },
+  computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ])
   }
 }
 </script>
 
 <style lang="sass" scoped>
 .the-sidebar-panel
-  @extend .no-padding, .h-100, .fixed, .no-border, .relative, .d-flex, .flex-column
-  z-index: 500 !important
+  @extend .no-border
+  z-index: 300 !important
   width: 40px !important
-  transition: width 0.3s
   overflow-x: hidden
+  transition: 0.4s !important
   &:hover
     width: 240px !important
     & > .sidebar-top
@@ -46,6 +53,9 @@ export default {
   & > .item
     &:first-child
       @extend .no-border-radius
+
+.sidebar-panel-content
+  @extend .h-100, .d-flex, .flex-column
 
 .sidebar-top
   @extend .flex-full, .overflow-hidden

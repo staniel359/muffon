@@ -1,7 +1,7 @@
 <template>
   <div class="track-panel">
     <BaseListContainer class="track-container">
-      <TrackBlock v-if="playerPlaying" />
+      <PlayingBlock v-if="playerPlaying" />
     </BaseListContainer>
   </div>
 </template>
@@ -9,13 +9,13 @@
 <script>
 import { mapState } from 'vuex'
 import BaseListContainer from '@/containers/BaseListContainer.vue'
-import TrackBlock from './TrackPanel/TrackBlock.vue'
+import PlayingBlock from './PlayingPanel/PlayingBlock.vue'
 
 export default {
-  name: 'TrackPanel',
+  name: 'PlayingPanel',
   components: {
     BaseListContainer,
-    TrackBlock
+    PlayingBlock
   },
   computed: {
     ...mapState('player', {
