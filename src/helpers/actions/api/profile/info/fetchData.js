@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { setGlobalData } from '#/actions'
 
-export default function ({ token }) {
+export default function ({ profileId }) {
   this.isLoading = true
 
-  const url = `/profiles/${token}`
+  const url = `/profiles/${profileId}`
   const params = {}
 
   const handleSuccess = response => {

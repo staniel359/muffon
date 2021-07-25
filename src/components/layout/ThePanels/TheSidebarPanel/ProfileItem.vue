@@ -40,7 +40,7 @@ export default {
     }),
     avatar () {
       return (
-        this.profileInfo.avatar ||
+        this.profileInfo.avatar_url ||
           this.defaultAvatar
       )
     },

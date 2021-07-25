@@ -9,7 +9,7 @@
     >
       <BaseImage
         class="circular bordered"
-        :image="avatar"
+        :image="avatar_url"
       />
 
       <div class="content">
@@ -44,8 +44,8 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    avatar () {
-      return this.profileInfo.avatar
+    avatar_url () {
+      return this.profileInfo.avatar_url
     },
     nickname () {
       return this.profileInfo.nickname

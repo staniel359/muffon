@@ -45,8 +45,10 @@ export default function ({
       'profile.isLoggedIn': true
     })
 
+    const profileId = response.data.profile.id
+
     return fetchProfileInfo.bind(this)({
-      token
+      profileId
     })
   }
 

@@ -23,8 +23,10 @@ export default function ({ email, password, isRemember }) {
       'profile.isLoggedIn': true
     })
 
+    const profileId = response.data.profile.id
+
     return fetchProfileInfo.bind(this)({
-      token
+      profileId
     })
   }
 

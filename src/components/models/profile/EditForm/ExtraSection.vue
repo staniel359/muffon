@@ -2,7 +2,7 @@
   <div class="extra-section">
     <AvatarField
       class="avatar-field"
-      :value="avatar"
+      :value="avatar_url"
       @change="handleAvatarChange"
     />
 
@@ -41,8 +41,8 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    avatar () {
-      return this.profileInfo.avatar
+    avatar_url () {
+      return this.profileInfo.avatar_url
     },
     gender () {
       return this.profileInfo.gender

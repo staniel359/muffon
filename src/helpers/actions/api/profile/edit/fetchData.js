@@ -20,12 +20,16 @@ export default function ({
   this.isLoading = true
   this.isSuccess = false
 
+  const profileId = local.get(
+    'profile.info'
+  ).id
   const token = local.get(
     'profile.token'
   )
 
-  const url = `/profiles/${token}`
+  const url = `/profiles/${profileId}`
   const params = {
+    token,
     email,
     ...(password && { password }),
     ...(passwordConfirmation && {
