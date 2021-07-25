@@ -40,7 +40,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$router[this.direction]()
+      this.$router[
+        this.direction
+      ]()
     }
   }
 }
