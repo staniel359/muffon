@@ -5,7 +5,7 @@
     :error="error"
     @init="handleInit"
   >
-    <BaseSection />
+    <MainSection />
 
     <BaseAccordionContainer :title="extraTextFormatted">
       <ExtraSection
@@ -13,7 +13,7 @@
       />
     </BaseAccordionContainer>
 
-    <RememberField />
+    <BaseRememberField />
 
     <SubmitButton />
 
@@ -27,26 +27,27 @@
 
 <script>
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
-import BaseSection from './SignupForm/BaseSection.vue'
+import MainSection from './BaseSignupForm/MainSection.vue'
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
-import ExtraSection from './SignupForm/ExtraSection.vue'
-import RememberField from '@/models/profile/fields/RememberField.vue'
-import SubmitButton from './SignupForm/SubmitButton.vue'
+import ExtraSection from './BaseSignupForm/ExtraSection.vue'
+import BaseRememberField from '@/models/profile/fields/BaseRememberField.vue'
+import SubmitButton from './BaseSignupForm/SubmitButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import LoginSection from './SignupForm/LoginSection.vue'
+import LoginSection from './BaseSignupForm/LoginSection.vue'
 import { signupFormOptions } from '#/data/plugins/semantic'
 import fetchSignupData from '#/actions/api/profile/signup/fetchData'
 import { localize } from '#/actions/plugins/i18n'
 import { date as formatDate } from '#/formatters'
+import { setGlobalData } from '#/actions'
 
 export default {
-  name: 'SignupForm',
+  name: 'BaseSignupForm',
   components: {
     BaseFormContainer,
-    BaseSection,
+    MainSection,
     BaseAccordionContainer,
     ExtraSection,
-    RememberField,
+    BaseRememberField,
     SubmitButton,
     BaseDivider,
     LoginSection
@@ -59,6 +60,7 @@ export default {
       avatar: null,
       error: null,
       form: null,
+      profileData: null,
       isLoading: false
     }
   },
@@ -73,6 +75,9 @@ export default {
         'shared.profile.form.sections.extra'
       )
     }
+  },
+  watch: {
+    profileData: 'handleProfileDataChange'
   },
   methods: {
     handleInit (el) {
@@ -92,6 +97,12 @@ export default {
     },
     handleAvatarChange (value) {
       this.avatar = value
+    },
+    handleProfileDataChange (value) {
+      setGlobalData({
+        'profile.isLoggedIn': !!value,
+        'profile.info': value
+      })
     },
     fetchSignupData,
     formatProfileParams (fields) {

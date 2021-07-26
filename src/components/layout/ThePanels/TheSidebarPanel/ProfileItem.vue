@@ -1,9 +1,12 @@
 <template>
-  <a class="item main-sidebar-item">
+  <BaseLinkContainer
+    class="item main-sidebar-item"
+    :link="profileMainLinkFormatted"
+  >
     <div class="main-sidebar-item-icon-container">
-      <BaseImage
-        class="circular sidebar-avatar"
-        :image="avatar"
+      <BaseProfileAvatar
+        class="sidebar-avatar"
+        :avatar="avatar"
       />
     </div>
 
@@ -13,39 +16,40 @@
         :text="nickname"
       />
     </div>
-  </a>
+  </BaseLinkContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseImage from '@/BaseImage.vue'
+import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseProfileAvatar from '@/models/profile/BaseProfileAvatar.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import { profileMain as formatProfileMainLink } from '#/formatters/links'
 
 export default {
   name: 'ProfileItem',
   components: {
-    BaseImage,
+    BaseLinkContainer,
+    BaseProfileAvatar,
     BaseHeader
-  },
-  data () {
-    return {
-      defaultAvatar:
-        'https://fomantic-ui.com/images' +
-        '/wireframe/square-image.png'
-    }
   },
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
     avatar () {
-      return (
-        this.profileInfo.avatar_url ||
-          this.defaultAvatar
-      )
+      return this.profileInfo.avatar_url
     },
     nickname () {
       return this.profileInfo.nickname
+    },
+    profileId () {
+      return this.profileInfo.id
+    },
+    profileMainLinkFormatted () {
+      return formatProfileMainLink({
+        profileId: this.profileId
+      })
     }
   }
 }
@@ -53,7 +57,6 @@ export default {
 
 <style lang="sass" scoped>
 .sidebar-avatar
-  @extend .object-fit-cover
   width: 25px
   height: 25px
 </style>

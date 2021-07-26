@@ -22,7 +22,7 @@ import { setCalendar, setCalendarDate } from '#/actions/plugins/semantic'
 import { birthdateCalendarOptions } from '#/data/plugins/semantic'
 
 export default {
-  name: 'BirthdateField',
+  name: 'BaseBirthdateField',
   props: {
     value: String
   },

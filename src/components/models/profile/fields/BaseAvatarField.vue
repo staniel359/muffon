@@ -1,9 +1,9 @@
 <template>
   <div class="field">
     <div class="avatar-field">
-      <BaseImage
-        class="circular bordered avatar-preview"
-        :image="image"
+      <BaseProfileAvatar
+        class="avatar-preview"
+        :avatar="avatar"
       />
 
       <label
@@ -35,14 +35,14 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseProfileAvatar from '@/models/profile/BaseProfileAvatar.vue'
 import BaseButton from '@/BaseButton.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'AvatarField',
+  name: 'BaseAvatarField',
   components: {
-    BaseImage,
+    BaseProfileAvatar,
     BaseButton
   },
   props: {
@@ -53,19 +53,10 @@ export default {
   ],
   data () {
     return {
-      preview: null,
-      defaultImage:
-        'https://fomantic-ui.com/images' +
-        '/wireframe/square-image.png'
+      avatar: null
     }
   },
   computed: {
-    image () {
-      return (
-        this.preview ||
-          this.defaultImage
-      )
-    },
     addFormatted () {
       return localize(
         'shared.profile.form.fields.avatar.add'
@@ -87,12 +78,12 @@ export default {
     handleChange (event) {
       const file = event.target.files[0]
 
-      this.preview = URL.createObjectURL(file)
+      this.avatar = URL.createObjectURL(file)
 
       this.convertImage(file)
     },
     handleRemoveButtonClick () {
-      this.preview = null
+      this.avatar = null
 
       this.$emit(
         'change',
@@ -100,7 +91,7 @@ export default {
       )
     },
     handleValueChange (value) {
-      this.preview = this.value
+      this.avatar = this.value
     },
     convertImage (file) {
       const reader = new FileReader()
@@ -128,7 +119,6 @@ export default {
   @extend .d-none
 
 .avatar-preview
-  @extend .object-fit-cover
   width: 100px
   height: 100px
   margin-bottom: 15px

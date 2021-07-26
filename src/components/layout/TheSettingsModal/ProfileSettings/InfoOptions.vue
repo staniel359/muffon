@@ -5,20 +5,20 @@
       isHorizontal
     />
 
-    <EditForm />
+    <BaseEditForm />
   </div>
 </template>
 
 <script>
 import BaseDivider from '@/BaseDivider.vue'
-import EditForm from '@/models/profile/EditForm.vue'
+import BaseEditForm from '@/models/profile/BaseEditForm.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'InfoOptions',
   components: {
     BaseDivider,
-    EditForm
+    BaseEditForm
   },
   computed: {
     headerFormatted () {

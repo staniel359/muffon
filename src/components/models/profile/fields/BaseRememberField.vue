@@ -21,7 +21,7 @@ import { setCheckbox } from '#/actions/plugins/semantic'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'RememberField',
+  name: 'BaseRememberField',
   computed: {
     textFormatted () {
       return localize(

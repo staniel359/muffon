@@ -6,6 +6,7 @@ export const messages = {
         artists: 'Artists',
         tags: 'Tags',
         videos: 'Video',
+        profiles: 'Profiles',
         artist: {
           images: 'Images',
           tracks: 'Tracks',

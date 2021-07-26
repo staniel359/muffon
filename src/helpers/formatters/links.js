@@ -159,3 +159,14 @@ export const videoMain = ({ videoId }) => {
     path: `video/videos/${videoId}`
   }
 }
+
+export const profileMain = ({ profileId }) => {
+  return {
+    name: 'ProfileMainPage',
+    params: { profileId },
+    path: [
+      'profiles',
+      profileId
+    ].join('/')
+  }
+}

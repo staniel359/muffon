@@ -1,18 +1,17 @@
 import axios from 'axios'
-import { setGlobalData } from '#/actions'
 
-export default function ({ profileId }) {
+export default function ({ profileId, scope = '', page, limit }) {
   this.isLoading = true
 
-  const url = `/profiles/${profileId}`
-  const params = {}
+  const url = `/profiles/${profileId}/${scope}`
+  const params = {
+    ...(page && { page }),
+    ...(limit && { limit })
+  }
 
   const handleSuccess = response => {
-    const info = response.data.profile
-
-    setGlobalData({
-      'profile.info': info
-    })
+    this.error = null
+    this.profileData = response.data.profile
   }
 
   const handleError = error => {

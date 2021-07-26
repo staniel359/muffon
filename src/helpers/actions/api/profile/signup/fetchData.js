@@ -1,10 +1,9 @@
 import axios from 'axios'
 import { camelCase } from 'camel-case'
 import local from '#/plugins/local'
-import { setGlobalData } from '#/actions'
 import { localize } from '#/actions/plugins/i18n'
 import { addFormFieldError } from '#/actions/plugins/semantic'
-import fetchProfileInfo from '../info/fetchData'
+import fetchProfileData from '../fetchData'
 
 export default function ({
   email,
@@ -41,13 +40,9 @@ export default function ({
       'profile.isRemember': isRemember
     })
 
-    setGlobalData({
-      'profile.isLoggedIn': true
-    })
-
     const profileId = response.data.profile.id
 
-    return fetchProfileInfo.bind(this)({
+    return fetchProfileData.bind(this)({
       profileId
     })
   }

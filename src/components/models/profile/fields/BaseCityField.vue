@@ -1,9 +1,10 @@
 <template>
   <div class="field">
     <input
-      type="password"
-      name="passwordConfirmation"
+      type="text"
+      name="city"
       :placeholder="placeholderFormatted"
+      :value="value"
     >
   </div>
 </template>
@@ -12,11 +13,14 @@
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'PasswordConfirmationField',
+  name: 'BaseCityField',
+  props: {
+    value: String
+  },
   computed: {
     placeholderFormatted () {
       return localize(
-        'shared.profile.form.fields.passwordConfirmation'
+        'shared.profile.form.fields.city'
       )
     }
   }

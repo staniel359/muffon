@@ -7,10 +7,10 @@
     :error="error"
     @init="handleInit"
   >
-    <EmailField />
-    <PasswordField />
+    <BaseEmailField />
+    <BasePasswordField />
 
-    <RememberField />
+    <BaseRememberField />
 
     <SubmitButton />
 
@@ -23,25 +23,26 @@
 </template>
 
 <script>
-import FastLoginSection from './LoginForm/FastLoginSection.vue'
+import FastLoginSection from './BaseLoginForm/FastLoginSection.vue'
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
-import EmailField from '@/models/profile/fields/EmailField.vue'
-import PasswordField from '@/models/profile/fields/PasswordField.vue'
-import RememberField from '@/models/profile/fields/RememberField.vue'
-import SubmitButton from './LoginForm/SubmitButton.vue'
+import BaseEmailField from '@/models/profile/fields/BaseEmailField.vue'
+import BasePasswordField from '@/models/profile/fields/BasePasswordField.vue'
+import BaseRememberField from '@/models/profile/fields/BaseRememberField.vue'
+import SubmitButton from './BaseLoginForm/SubmitButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import SignupSection from './LoginForm/SignupSection.vue'
+import SignupSection from './BaseLoginForm/SignupSection.vue'
 import { loginFormOptions } from '#/data/plugins/semantic'
 import fetchLoginData from '#/actions/api/profile/login/fetchData'
+import { setGlobalData } from '#/actions'
 
 export default {
-  name: 'LoginForm',
+  name: 'BaseLoginForm',
   components: {
     FastLoginSection,
     BaseFormContainer,
-    EmailField,
-    PasswordField,
-    RememberField,
+    BaseEmailField,
+    BasePasswordField,
+    BaseRememberField,
     SubmitButton,
     SignupSection,
     BaseDivider
@@ -53,6 +54,7 @@ export default {
     return {
       error: null,
       form: null,
+      profileData: null,
       isLoading: false
     }
   },
@@ -62,6 +64,9 @@ export default {
         onSuccess: this.handleSuccess
       })
     }
+  },
+  watch: {
+    profileData: 'handleProfileDataChange'
   },
   methods: {
     handleInit (el) {
@@ -78,6 +83,12 @@ export default {
     },
     handleSignupLinkClick () {
       this.$emit('signupLinkClick')
+    },
+    handleProfileDataChange (value) {
+      setGlobalData({
+        'profile.isLoggedIn': !!value,
+        'profile.info': value
+      })
     },
     fetchLoginData,
     formatProfileParams (fields) {

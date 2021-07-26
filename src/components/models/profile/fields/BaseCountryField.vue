@@ -26,14 +26,14 @@
 </template>
 
 <script>
-import CountryItem from './CountryField/CountryItem.vue'
+import CountryItem from './BaseCountryField/CountryItem.vue'
 import countries from 'i18n-iso-countries'
 import countriesEn from 'i18n-iso-countries/langs/en.json'
 import { localize } from '#/actions/plugins/i18n'
 import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
-  name: 'CountryField',
+  name: 'BaseCountryField',
   components: {
     CountryItem
   },

@@ -1,10 +1,9 @@
 <template>
   <div class="field">
     <input
-      type="text"
-      name="city"
+      type="password"
+      name="password"
       :placeholder="placeholderFormatted"
-      :value="value"
     >
   </div>
 </template>
@@ -13,14 +12,11 @@
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'CityField',
-  props: {
-    value: String
-  },
+  name: 'BasePasswordField',
   computed: {
     placeholderFormatted () {
       return localize(
-        'shared.profile.form.fields.city'
+        'shared.profile.form.fields.password'
       )
     }
   }

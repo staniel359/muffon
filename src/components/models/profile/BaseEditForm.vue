@@ -8,7 +8,7 @@
   >
     <SuccessMessage />
 
-    <BaseSection />
+    <MainSection />
 
     <BaseDivider />
 
@@ -22,21 +22,21 @@
 
 <script>
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
-import SuccessMessage from './EditForm/SuccessMessage.vue'
-import BaseSection from './EditForm/BaseSection.vue'
+import SuccessMessage from './BaseEditForm/SuccessMessage.vue'
+import MainSection from './BaseEditForm/MainSection.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import ExtraSection from './EditForm/ExtraSection.vue'
-import SubmitButton from './EditForm/SubmitButton.vue'
+import ExtraSection from './BaseEditForm/ExtraSection.vue'
+import SubmitButton from './BaseEditForm/SubmitButton.vue'
 import { editFormOptions } from '#/data/plugins/semantic'
 import fetchEditData from '#/actions/api/profile/edit/fetchData'
 import { date as formatDate } from '#/formatters'
 
 export default {
-  name: 'EditForm',
+  name: 'BaseEditForm',
   components: {
     BaseFormContainer,
     SuccessMessage,
-    BaseSection,
+    MainSection,
     BaseDivider,
     ExtraSection,
     SubmitButton

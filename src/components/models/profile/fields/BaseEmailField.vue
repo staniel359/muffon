@@ -1,9 +1,11 @@
 <template>
   <div class="field">
     <input
-      type="password"
-      name="password"
+      type="text"
+      name="email"
+      autofocus
       :placeholder="placeholderFormatted"
+      :value="value"
     >
   </div>
 </template>
@@ -12,11 +14,14 @@
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'PasswordField',
+  name: 'BaseEmailField',
+  props: {
+    value: String
+  },
   computed: {
     placeholderFormatted () {
       return localize(
-        'shared.profile.form.fields.password'
+        'shared.profile.form.fields.email'
       )
     }
   }

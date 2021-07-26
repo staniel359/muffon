@@ -34,7 +34,7 @@ import { localize } from '#/actions/plugins/i18n'
 import { setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
-  name: 'GenderField',
+  name: 'BaseGenderField',
   props: {
     value: String
   },

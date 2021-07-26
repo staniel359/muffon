@@ -7,12 +7,12 @@
     />
 
     <BaseSegmentContainer class="auth-form-segment">
-      <LoginForm
+      <BaseLoginForm
         v-if="activeForm === 'login'"
         @signupLinkClick="handleSignupLinkClick"
       />
 
-      <SignupForm
+      <BaseSignupForm
         v-else-if="activeForm === 'signup'"
         @loginLinkClick="handleLoginLinkClick"
       />
@@ -23,16 +23,16 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import LoginForm from '@/models/profile/LoginForm.vue'
-import SignupForm from '@/models/profile/SignupForm.vue'
+import BaseLoginForm from '@/models/profile/BaseLoginForm.vue'
+import BaseSignupForm from '@/models/profile/BaseSignupForm.vue'
 
 export default {
   name: 'TheAuthentication',
   components: {
     BaseHeader,
     BaseSegmentContainer,
-    LoginForm,
-    SignupForm
+    BaseLoginForm,
+    BaseSignupForm
   },
   data () {
     return {

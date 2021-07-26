@@ -1,16 +1,16 @@
 <template>
   <div class="extra-section">
-    <AvatarField
+    <BaseAvatarField
       class="avatar-field"
-      :value="avatar_url"
+      :value="avatar"
       @change="handleAvatarChange"
     />
 
     <div class="extra-fields">
-      <GenderField :value="gender" />
-      <BirthdateField :value="birthdate" />
-      <CountryField :value="country" />
-      <CityField :value="city" />
+      <BaseGenderField :value="gender" />
+      <BaseBirthdateField :value="birthdate" />
+      <BaseCountryField :value="country" />
+      <BaseCityField :value="city" />
 
       <div></div>
     </div>
@@ -19,20 +19,20 @@
 
 <script>
 import { mapState } from 'vuex'
-import AvatarField from '@/models/profile/fields/AvatarField.vue'
-import GenderField from '@/models/profile/fields/GenderField.vue'
-import BirthdateField from '@/models/profile/fields/BirthdateField.vue'
-import CountryField from '@/models/profile/fields/CountryField.vue'
-import CityField from '@/models/profile/fields/CityField.vue'
+import BaseAvatarField from '@/models/profile/fields/BaseAvatarField.vue'
+import BaseGenderField from '@/models/profile/fields/BaseGenderField.vue'
+import BaseBirthdateField from '@/models/profile/fields/BaseBirthdateField.vue'
+import BaseCountryField from '@/models/profile/fields/BaseCountryField.vue'
+import BaseCityField from '@/models/profile/fields/BaseCityField.vue'
 
 export default {
   name: 'ExtraSection',
   components: {
-    AvatarField,
-    GenderField,
-    BirthdateField,
-    CountryField,
-    CityField
+    BaseAvatarField,
+    BaseGenderField,
+    BaseBirthdateField,
+    BaseCountryField,
+    BaseCityField
   },
   emits: [
     'avatarChange'
@@ -41,7 +41,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    avatar_url () {
+    avatar () {
       return this.profileInfo.avatar_url
     },
     gender () {
