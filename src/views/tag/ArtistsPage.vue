@@ -37,7 +37,9 @@ export default {
   },
   computed: {
     limit () {
-      return this.viewLimits[this.viewIndex]
+      return this.viewLimits[
+        this.viewIndex
+      ]
     }
   },
   methods: {

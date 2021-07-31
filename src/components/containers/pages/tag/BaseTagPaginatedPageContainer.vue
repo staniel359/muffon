@@ -70,9 +70,14 @@ export default {
     handleViewButtonClick (index) {
       this.$refs.paginatedContainer.reset()
 
-      this.$emit('viewButtonClick', index)
+      this.$emit(
+        'viewButtonClick',
+        index
+      )
 
-      this.$refs.pageContainer.fetchData()
+      this.$nextTick(() => {
+        this.$refs.pageContainer.fetchData()
+      })
     },
     handleFocus () {
       window.scrollTo(0, 0)

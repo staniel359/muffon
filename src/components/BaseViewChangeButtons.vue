@@ -42,7 +42,10 @@ export default {
   ],
   methods: {
     handleViewButtonClick (index) {
-      this.$emit('viewButtonClick', index)
+      this.$emit(
+        'viewButtonClick',
+        index
+      )
     }
   }
 }
