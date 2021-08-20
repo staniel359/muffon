@@ -6,50 +6,56 @@
     :responsePageLimit="responsePageLimit"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
+      <div
         :class="[
+          'ui segments',
           'main-segment-container',
           'main-page-segment-container',
           'main-paginated-page-segment-container'
         ]"
-        :isLoading="pageSlotProps.isLoading"
       >
-        <BaseViewChangeButtons
-          v-if="isWithViewChange"
-          :viewIndex="viewIndex"
-          @viewButtonClick="handleViewButtonClick"
-        />
-
-        <template v-if="isWithArtistSelect">
-          <BaseAlbumsSourceSelect
-            :artistName="pageSlotProps.artistData.name"
+        <BaseSegmentContainer
+          v-if="isWithArtistSelect"
+        >
+          <ArtistSourceSelect
+            :artistName="pageSlotProps.artistName"
             @artistDataChange="handleArtistDataChange"
           />
+        </BaseSegmentContainer>
 
-          <BaseDivider />
-        </template>
-
-        <BasePaginatedContainer
-          ref="paginatedContainer"
+        <BaseSegmentContainer
+          class="artist-segment"
           :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.artistData"
-          :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
-          @focus="handleFocus"
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
         >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-              :artistName="pageSlotProps.artistData.name"
-              :topTrackCount="pageSlotProps.topTrackCount"
-            ></slot>
-          </template>
-        </BasePaginatedContainer>
-      </BaseSegmentContainer>
+          <BaseViewChangeButtons
+            v-if="isWithViewChange"
+            :viewIndex="viewIndex"
+            @viewButtonClick="handleViewButtonClick"
+          />
+
+          <BasePaginatedContainer
+            ref="paginatedContainer"
+            :isLoading="pageSlotProps.isLoading"
+            :error="pageSlotProps.error"
+            :responseData="pageSlotProps.artistData"
+            :scope="scope"
+            :clientPageLimit="clientPageLimit"
+            :responsePageLimit="responsePageLimit"
+            @focus="handleFocus"
+            @fetchData="pageSlotProps.fetchData"
+            @refresh="pageSlotProps.handleRefresh"
+          >
+            <template #default="slotProps">
+              <slot
+                :[scope]="slotProps[scope]"
+                :artistName="pageSlotProps.artistName"
+                :topTrackCount="pageSlotProps.topTrackCount"
+                :profileId="pageSlotProps.profileId"
+              ></slot>
+            </template>
+          </BasePaginatedContainer>
+        </BaseSegmentContainer>
+      </div>
     </template>
   </BaseArtistPageContainer>
 </template>
@@ -57,9 +63,9 @@
 <script>
 import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import ArtistSourceSelect
+  from './BaseArtistPaginatedPageContainer/ArtistSourceSelect.vue'
 import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
-import BaseAlbumsSourceSelect from '@/models/artist/BaseAlbumsSourceSelect.vue'
-import BaseDivider from '@/BaseDivider.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -67,9 +73,8 @@ export default {
   components: {
     BaseArtistPageContainer,
     BaseSegmentContainer,
+    ArtistSourceSelect,
     BaseViewChangeButtons,
-    BaseAlbumsSourceSelect,
-    BaseDivider,
     BasePaginatedContainer
   },
   props: {
@@ -110,4 +115,7 @@ export default {
 <style lang="sass" scoped>
 .main-paginated-page-segment-container
   @extend .flex-column
+
+.artist-segment
+  @extend .flex-full, .d-flex, .flex-column
 </style>

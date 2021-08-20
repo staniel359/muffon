@@ -2,6 +2,7 @@
   <BasePageContainer
     :isShowLoader="!artistData"
     :isLoading="isLoading"
+    :isError="!artistData && !!error"
     :error="pageError"
     @init="handleInit"
     @refresh="handleRefresh"
@@ -11,15 +12,18 @@
       :isLoading="isLoading"
       :error="error"
       :artistData="artistData"
+      :artistName="artistNameFetched"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
       :topTrackCount="topTrackCount"
+      :profileId="profileId"
+      :libraryId="libraryId"
     ></slot>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatArtistPageNavigation from '#/formatters/navigation/artist'
 import formatArtistPageTab from '#/formatters/tabs/artist'
@@ -61,6 +65,12 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     navigationSections () {
       return formatArtistPageNavigation(
         this.navigationData
@@ -78,6 +88,7 @@ export default {
     artistDataArgs () {
       return {
         ...this.requestArtistData,
+        profileId: this.profileId,
         scope: this.scope,
         limit: this.responsePageLimit
       }
@@ -88,6 +99,9 @@ export default {
       } else {
         return this.error
       }
+    },
+    libraryId () {
+      return this.artistData?.library_id?.toString()
     }
   },
   watch: {

@@ -62,7 +62,7 @@ export default {
 
 <style lang="sass" scoped>
 .image-container
-  @extend .relative, .cursor-zoom-in
+  @extend .cursor-zoom-in
   .more-link
     @extend .d-none
   &:hover

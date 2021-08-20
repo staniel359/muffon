@@ -6,6 +6,7 @@
   ></slot>
 
   <BaseError
+    class="error-message"
     v-if="error"
     :error="error"
     @refresh="handleRefresh"
@@ -73,4 +74,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.error-message
+  margin-top: 1em !important
+</style>

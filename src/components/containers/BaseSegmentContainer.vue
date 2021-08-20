@@ -19,6 +19,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseError from '@/BaseError.vue'
+import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'BaseSegmentContainer',
@@ -39,11 +40,19 @@ export default {
     ])
   },
   mounted () {
-    this.$emit('init', this.$refs.segment)
+    this.$emit(
+      'init',
+      this.$refs.segment
+    )
   },
   methods: {
     handleRefresh () {
       this.$emit('refresh')
+    },
+    focus () {
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

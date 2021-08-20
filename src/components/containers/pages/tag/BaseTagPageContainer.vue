@@ -2,6 +2,7 @@
   <BasePageContainer
     :isShowLoader="!tagData"
     :isLoading="isLoading"
+    :isError="!tagData && !!error"
     :error="error"
     @refresh="handleRefresh"
   >
@@ -12,12 +13,13 @@
       :tagData="tagData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
+      :profileId="profileId"
     ></slot>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatTagPageNavigation from '#/formatters/navigation/tag'
 import formatTagPageTab from '#/formatters/tabs/tag'
@@ -46,6 +48,12 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     navigationSections () {
       return formatTagPageNavigation(
         this.navigationData
@@ -64,6 +72,7 @@ export default {
       return {
         tagName: this.tagName,
         scope: this.scope,
+        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

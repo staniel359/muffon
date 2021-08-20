@@ -17,11 +17,13 @@
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
       :topTrackCount="topTrackCount"
+      :profileId="profileId"
     ></slot>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import HeaderSegment from './BaseArtistSegmentContainer/HeaderSegment.vue'
 import fetchArtistData from '#/actions/api/artist/fetchData'
 import { focusOnSegment } from '#/actions/layout'
@@ -50,10 +52,17 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     artistDataArgs () {
       return {
         artistName: this.artistName,
         scope: this.scope,
+        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }
@@ -73,7 +82,9 @@ export default {
     },
     focus () {
       this.$nextTick(() => {
-        focusOnSegment(this.$refs.segment)
+        focusOnSegment(
+          this.$refs.segment
+        )
       })
     }
   },

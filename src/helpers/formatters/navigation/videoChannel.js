@@ -1,17 +1,18 @@
 import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ channelTitle }) {
-  const videosPageName = localize(
-    'layout.navigation.videos'
-  )
-
-  const channelVideosPageName = localize(
-    'layout.navigation.video.channel.videos'
-  )
-
   return [
-    { name: videosPageName },
+    {
+      name: localize(
+        'layout.navigation.videos'
+      )
+    },
     { name: channelTitle },
-    { name: channelVideosPageName }
+    {
+      name: localize(
+        'layout.navigation.videoChannel.videos'
+      ),
+      isActive: true
+    }
   ]
 }

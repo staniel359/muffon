@@ -33,5 +33,5 @@ export default {
 .track-image
   width: 40px
   height: 40px
-  margin-right: 10px !important
+  margin-right: 0.5em !important
 </style>

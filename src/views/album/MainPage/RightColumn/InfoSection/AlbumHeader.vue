@@ -7,7 +7,9 @@
         v-if="albumExtraTitle"
         class="sub header main-extra-title"
       >
-        {{ albumExtraTitle }}
+        <strong>
+          {{ albumExtraTitle }}
+        </strong>
       </span>
     </BaseHeaderContainer>
 
@@ -43,7 +45,7 @@ export default {
 
 <style lang="sass" scoped>
 .album-header
-  margin-bottom: 10px
+  margin-bottom: 0.75em
 
 .album-artist-name
   @extend .text-medium-light

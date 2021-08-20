@@ -1,34 +1,41 @@
 <template>
   <BaseAlbumPageContainer>
     <template #default="slotProps">
-      <BaseAlbumPageSegmentContainer
-        :isLoading="slotProps.isLoading"
-        :error="slotProps.error"
-        @refresh="slotProps.handleRefresh"
+      <div
+        :class="[
+          'ui segments',
+          'main-segment-container',
+          'main-page-segment-container'
+        ]"
       >
-        <template #default>
-          <BaseAlbumSourceSelect
+        <BaseSegmentContainer>
+          <AlbumSourceSelect
             :albumData="slotProps.albumData"
           />
+        </BaseSegmentContainer>
 
-          <BaseDivider />
-
-          <div
-            class="columns-container"
-            ref="scrollable"
-          >
+        <BaseSegmentContainer
+          class="album-segment"
+          :isLoading="slotProps.isLoading"
+          :error="slotProps.error"
+          @init="handleInit"
+          @refresh="slotProps.handleRefresh"
+        >
+          <template #default>
             <LeftColumn
-              v-if="$refs.scrollable"
+              v-if="scrollable"
               :albumData="slotProps.albumData"
-              :scrollable="$refs.scrollable"
+              :scrollable="scrollable"
+              :profileId="slotProps.profileId"
             />
             <RightColumn
               :albumData="slotProps.albumData"
               :requestAlbumData="slotProps.requestAlbumData"
+              :profileId="slotProps.profileId"
             />
-          </div>
-        </template>
-      </BaseAlbumPageSegmentContainer>
+          </template>
+        </BaseSegmentContainer>
+      </div>
     </template>
   </BaseAlbumPageContainer>
 </template>
@@ -36,10 +43,8 @@
 <script>
 import BaseAlbumPageContainer
   from '@/containers/pages/album/BaseAlbumPageContainer.vue'
-import BaseAlbumPageSegmentContainer
-  from '@/containers/pages/album/BaseAlbumPageSegmentContainer.vue'
-import BaseAlbumSourceSelect from '@/models/album/BaseAlbumSourceSelect.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import AlbumSourceSelect from './MainPage/AlbumSourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
@@ -47,16 +52,28 @@ export default {
   name: 'MainPage',
   components: {
     BaseAlbumPageContainer,
-    BaseAlbumPageSegmentContainer,
-    BaseAlbumSourceSelect,
-    BaseDivider,
+    BaseSegmentContainer,
+    AlbumSourceSelect,
     LeftColumn,
     RightColumn
+  },
+  data () {
+    return {
+      scrollable: null
+    }
+  },
+  methods: {
+    handleInit (el) {
+      this.scrollable = el
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.columns-container
+.main-page-segment-container
   @extend .d-flex
+
+.album-segment
+  @extend .flex-full, .d-flex
 </style>

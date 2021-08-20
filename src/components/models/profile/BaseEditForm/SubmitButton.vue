@@ -1,6 +1,6 @@
 <template>
   <button
-    class="ui fluid button"
+    class="ui green fluid button"
     :class="{ inverted: isDarkMode }"
     type="submit"
   >

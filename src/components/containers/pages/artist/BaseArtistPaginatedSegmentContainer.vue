@@ -27,6 +27,7 @@
             <slot
               :[scope]="slotProps[scope]"
               :topTrackCount="segmentSlotProps.topTrackCount"
+              :profileId="segmentSlotProps.profileId"
             ></slot>
           </template>
         </BasePaginatedContainer>

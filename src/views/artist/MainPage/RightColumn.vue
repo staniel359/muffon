@@ -1,6 +1,6 @@
 <template>
-  <div class="right-column">
-    <InfoSegment :artistName="artistName" />
+  <div class="artist-page-right-column">
+    <InfoSegment :artistData="artistData" />
     <TracksSegment :artistName="artistName" />
     <AlbumsSegment :artistName="artistName" />
     <SimilarSegment :artistName="artistName" />
@@ -22,12 +22,18 @@ export default {
     SimilarSegment
   },
   props: {
-    artistName: String
+    artistData: Object
+  },
+  computed: {
+    artistName () {
+      return this.artistData.name
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.right-column
+.artist-page-right-column
   @extend .flex-full
+  margin-left: 1.5em
 </style>

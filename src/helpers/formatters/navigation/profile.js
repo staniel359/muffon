@@ -1,11 +1,7 @@
-import { profileMain as formatProfileMainLink } from '#/formatters/links'
+import { main as formatProfileMainLink } from '#/formatters/links/profile'
 import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ profileId, profileNickname, pageNameKey }) {
-  const profilesPageName = localize(
-    'layout.navigation.profiles'
-  )
-
   const formatLink = () => {
     if (pageNameKey) {
       return formatProfileMainLink({
@@ -16,19 +12,21 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
 
   const formatSubpageSection = () => {
     if (pageNameKey) {
-      const profilePageName = localize(
-        `layout.navigation.profile.${pageNameKey}`
-      )
-
       return {
-        name: profilePageName,
+        name: localize(
+          `layout.navigation.profile.${pageNameKey}`
+        ),
         isActive: true
       }
     }
   }
 
   return [
-    { name: profilesPageName },
+    {
+      name: localize(
+        'layout.navigation.profiles'
+      )
+    },
     {
       name: profileNickname,
       isActive: !pageNameKey,

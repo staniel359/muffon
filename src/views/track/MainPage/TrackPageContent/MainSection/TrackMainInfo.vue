@@ -15,13 +15,15 @@
       />
     </BaseHeaderContainer>
 
-    <small>
-      <BaseLink
-        v-if="albumTitle"
-        :link="albumMainLinkFormatted"
-        :text="albumTitle"
-      />
-    </small>
+    <div class="main-header">
+      <small>
+        <BaseLink
+          v-if="albumTitle"
+          :link="albumMainLinkFormatted"
+          :text="albumTitle"
+        />
+      </small>
+    </div>
   </div>
 </template>
 
@@ -29,10 +31,8 @@
 import BaseHeader from '@/BaseHeader.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
-import {
-  artistMain as formatArtistMainLink,
-  albumMain as formatAlbumMainLink
-} from '#/formatters/links'
+import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import { main as formatAlbumMainLink } from '#/formatters/links/album'
 
 export default {
   name: 'TrackMainInfo',

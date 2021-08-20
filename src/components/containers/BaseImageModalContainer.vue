@@ -1,8 +1,5 @@
 <template>
-  <BaseModalContainer
-    class="main-image-modal"
-    @init="handleInit"
-  >
+  <BaseModalContainer class="main-image-modal">
     <slot></slot>
   </BaseModalContainer>
 </template>
@@ -14,14 +11,6 @@ export default {
   name: 'BaseImageModalContainer',
   components: {
     BaseModalContainer
-  },
-  emits: [
-    'init'
-  ],
-  methods: {
-    handleInit (el) {
-      this.$emit('init', el)
-    }
   }
 }
 </script>

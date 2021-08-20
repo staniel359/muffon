@@ -45,6 +45,11 @@ a
     width: 500px
   &.main-image-modal
     @extend .background-transparent
+  &.inverted
+    & > .header
+      border-bottom: $borderInverted
+    & > .actions
+      border-top: $borderInverted
 
 .ui.checkbox
   &.main-toggle-checkbox
@@ -87,6 +92,13 @@ a
             &:before, &:hover:before
               @extend .background-base
 
+.ui.toast-container
+  @extend .pointer-events-auto
+  &.top.right
+    @extend .absolute, .no-margin
+    top: 10px
+    right: 10px
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -98,7 +110,7 @@ a
 .main-segment-container
   @extend .no-border
   &:not(:first-child)
-    margin: 20px 0 0 0
+    margin: 1.5em 0 0 0
 
 .main-segment
   &.loading
@@ -120,7 +132,7 @@ a
   & > .segments
     @extend .no-margin
     &:not(:first-child)
-      margin-top: 30px !important
+      margin-top: 1.5em !important
     & > .segment:only-child
       @extend .no-padding
     & > .segment:first-child
@@ -136,11 +148,14 @@ a
   &.inverted
     @extend .background-black
     border: $borderInverted
-    & > .content
+    & > .header, & > .content
       @extend .background-black
 
 .main-modal-content-full-height
+  @extend .d-flex, .flex-column
   height: $mainModalHeight
+  .main-tab
+    @extend .absolute, .overflow-y-auto
 
 .main-image-modal
   @extend .no-margin, .no-shadow, .no-border, .no-border-radius, .width-fit-content
@@ -188,24 +203,18 @@ a
   & > .content
     @extend .no-padding, .no-border
     & > .description
-      @extend .no-margin
+      margin-top: 0.25em !important
   &:hover
     transform: none
 
 .main-simple-card-image-container
   @extend .main-image-container
-  margin-bottom: 5px
+  margin-bottom: 0.25em
   & > .placeholder
     left: 0
 
 .main-horizontal-card
   @extend .w-100
-
-.main-horizontal-card-image
-  height: 150px
-  border-right: $border
-  &.inverted
-    border-right: $borderInverted
 
 .main-simple-list-item
   @extend .d-flex, .align-items-center
@@ -236,7 +245,7 @@ a
   line-height: 1.2 !important
 
 .main-artist-name
-  margin-bottom: 10px !important
+  margin-bottom: 0.4em !important
 
 .main-dropdown
   @extend .d-flex, .align-items-center, .text-color-unset
@@ -251,9 +260,9 @@ a
   &.selected
     font-weight: unset !important
   & > .icon
-    margin-right: 10px !important
+    margin-right: 0.75em !important
   & > .image-container
-    margin-right: 10px
+    margin-right: 0.5em
     .image
       @extend .object-fit-cover
       width: 30px
@@ -262,7 +271,7 @@ a
     @extend .flex-full
     white-space: normal
   & > .extra
-    margin-left: 10px !important
+    margin-left: 0.75em !important
     font-size: 0.8em
 
 .main-dropdown-icon
@@ -272,14 +281,14 @@ a
 
 .main-dropdown-right-icon
   @extend .no-margin
-  margin-left: 10px !important
+  margin-left: 0.75em !important
 
 .main-track-dropdown-container
   @extend .d-flex, .align-items-center
 
 .main-track-dropdown-logo-container
   @extend .d-flex, .align-items-center, .justify-content-center
-  margin-right: 10px
+  margin-right: 0.75em
   width: 25px
   height: 25px
   & > .icon
@@ -290,7 +299,7 @@ a
 
 .main-settings-options-block
   &:not(:first-child)
-    margin-top: 40px
+    margin-top: 2em
   & > .content
     @extend .d-flex, .align-items-center
     padding-top: 10px
@@ -347,11 +356,15 @@ a
   @extend .flex-full, .relative
 
 .main-tab
-  @extend .no-padding, .no-shadow, .absolute, .no-margin, .w-100, .h-100, .overflow-y-auto, .d-flex, .background-transparent
-  visibility: hidden
-  border: $borderTransparent !important
+  @extend .no-padding, .no-shadow, .no-border, .no-margin, .w-100, .h-100, .d-flex, .background-transparent
   &.active
     visibility: visible
+  &:not(.active)
+    @extend .absolute
+    visibility: hidden
+    top: 0
+    .main-paginated-content-container
+      height: 0
 
 .main-label
   &.basic
@@ -385,7 +398,7 @@ a
   @extend .no-margin
 
 .main-source-select
-  width: 220px
+  width: 210px
   margin-right: 1em !important
 
 .main-source-select-type-select
@@ -393,7 +406,7 @@ a
   margin-right: 1em !important
 
 .main-source-select-item-select
-  width: 220px
+  width: 210px
   margin-right: 1em !important
 
 .main-form
@@ -405,7 +418,7 @@ a
 .main-app-title
   @extend .text-color-white, .text-medium-light
   font-size: 3.5em !important
-  margin-bottom: 25px !important
+  margin-bottom: 0.5em !important
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
@@ -417,6 +430,7 @@ a
   flex-shrink: 0
   & > .icon
     @extend .no-margin
+    font-size: 1.25em
 
 .main-sidebar-item-content-container
   @extend .d-flex, .align-items-center
@@ -424,5 +438,62 @@ a
   padding: 0 0.5em
   flex-shrink: 0
 
-.main-profile-avatar
+.main-profile-image
   @extend .object-fit-cover
+
+.main-paginated-container
+  @extend .flex-full, .w-100, .d-flex, .flex-column
+
+.main-paginated-content-container
+  @extend .flex-full
+
+.main-pagination-container
+  @extend .d-flex, .justify-content-center
+  padding: 5px
+
+.main-small-container
+  line-height: 0.8em
+
+.main-progress
+  &:not(.success, .error)
+    & > .bar
+      &.base
+        @extend .background-base
+
+.main-library-page-columns-container
+  @extend .d-flex
+
+.main-library-page-left-column
+  width: 170px
+  .main-library-info
+    @extend .d-flex, .flex-column, .align-items-center, .text-align-center
+    word-break: break-word
+  .main-library-info-image
+    margin-bottom: 0.5em
+
+.main-library-page-right-column
+  @extend .flex-full
+  margin-left: 1.5em
+
+.main-sticky-container
+  @extend .sticky
+  top: $mainContainerTopPadding
+  height: fit-content
+
+.main-library-modal-import-section
+  @extend .d-flex, .flex-column, .flex-full, .overflow-hidden
+
+.main-library-modal-complete-section
+  @extend .d-flex, .flex-column, .flex-full, .overflow-hidden
+
+.main-library-modal-save-section
+  @extend .d-flex, .flex-column, .flex-full, .overflow-hidden
+
+.main-library-modal-success-section
+  @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto
+
+.main-library-modal-retry-section
+  @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto
+
+.main-library-modal-message-container
+  margin-bottom: 1em

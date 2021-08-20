@@ -37,7 +37,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        `pages.artist.segments.${this.headerTextKey}`
+        `layout.navigation.artist.${this.headerTextKey}`
       )
     },
     linkFormatted () {

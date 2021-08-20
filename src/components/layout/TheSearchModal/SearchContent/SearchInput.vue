@@ -1,23 +1,30 @@
 <template>
-  <BaseHistoryInput
-    class="search-input-container"
-    ref="input"
-    scope="search"
-    :query="query"
-    :isClearable="isClearable"
-    isWithIcon
-    @submit="handleSubmit"
-    @clear="handleClear"
-  />
+  <div class="search-input-container">
+    <BaseHistoryInput
+      class="search-input"
+      ref="input"
+      scope="search"
+      :query="query"
+      @submit="handleSubmit"
+    />
+
+    <BaseClearButton
+      v-if="isClearable"
+      class="clear-button"
+      @click="handleClearButtonClick"
+    />
+  </div>
 </template>
 
 <script>
 import BaseHistoryInput from '@/BaseHistoryInput.vue'
+import BaseClearButton from '@/BaseClearButton.vue'
 
 export default {
   name: 'SearchInput',
   components: {
-    BaseHistoryInput
+    BaseHistoryInput,
+    BaseClearButton
   },
   props: {
     query: String,
@@ -31,7 +38,9 @@ export default {
     handleSubmit (value) {
       this.$emit('submit', value)
     },
-    handleClear () {
+    handleClearButtonClick () {
+      this.$refs.input.clear()
+
       this.$emit('clear')
     },
     focus () {
@@ -43,5 +52,11 @@ export default {
 
 <style lang="sass" scoped>
 .search-input-container
-  font-size: 16px !important
+  @extend .d-flex, .align-items-center
+
+.search-input
+  @extend .flex-full
+
+.clear-button
+  margin-left: 1em !important
 </style>

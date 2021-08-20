@@ -1,11 +1,7 @@
-import { artistMain as formatArtistMainLink } from '#/formatters/links'
+import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, pageNameKey }) {
-  const artistsPageName = localize(
-    'layout.navigation.artists'
-  )
-
   const formatLink = () => {
     if (pageNameKey) {
       return formatArtistMainLink({
@@ -16,19 +12,21 @@ export default function ({ artistName, pageNameKey }) {
 
   const formatSubpageSection = () => {
     if (pageNameKey) {
-      const artistPageName = localize(
-        `layout.navigation.artist.${pageNameKey}`
-      )
-
       return {
-        name: artistPageName,
+        name: localize(
+          `layout.navigation.artist.${pageNameKey}`
+        ),
         isActive: true
       }
     }
   }
 
   return [
-    { name: artistsPageName },
+    {
+      name: localize(
+        'layout.navigation.artists'
+      )
+    },
     {
       name: artistName,
       isActive: !pageNameKey,

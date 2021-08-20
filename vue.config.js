@@ -1,7 +1,17 @@
 const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   configureWebpack: {
+    externals: {
+      'react-native-fs': 'reactNativeFs'
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery'
+      })
+    ],
     resolve: {
       alias: {
         '*': path.resolve(
@@ -15,6 +25,9 @@ module.exports = {
         ),
         '%': path.resolve(
           __dirname, './src/views'
+        ),
+        semantic: path.resolve(
+          __dirname, './semantic'
         )
       }
     },

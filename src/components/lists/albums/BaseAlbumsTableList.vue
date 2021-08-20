@@ -14,6 +14,10 @@
         :artistName="artistName"
         :isWithArtistName="isWithArtistName"
         :isWithListenersCount="isWithListenersCount"
+        :isWithTracksCount="isWithTracksCount"
+        :isLinkToLibrary="isLinkToLibrary"
+        :profileId="profileId"
+        :isWithLibraryLink="isWithLibraryLink"
       />
     </div>
   </div>
@@ -42,7 +46,11 @@ export default {
     },
     artistName: String,
     isWithArtistName: Boolean,
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isWithTracksCount: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean
   },
   computed: {
     albumsFormatted () {

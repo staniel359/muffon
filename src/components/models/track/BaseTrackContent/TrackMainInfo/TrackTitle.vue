@@ -19,7 +19,10 @@
 <script>
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
-import { trackMain as formatTrackMainLink } from '#/formatters/links'
+import { main as formatTrackMainLink } from '#/formatters/links/track'
+import {
+  main as formatProfileLibraryTrackMainLink
+} from '#/formatters/links/profile/library/track'
 
 export default {
   name: 'TrackTitle',
@@ -32,21 +35,28 @@ export default {
       type: String,
       required: true
     },
-    artistName: {
-      type: String,
-      required: true
-    },
-    trackExtraTitle: String
+    artistName: String,
+    trackExtraTitle: String,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    trackId: String
   },
   emits: [
     'linkClick'
   ],
   computed: {
     trackMainLinkFormatted () {
-      return formatTrackMainLink({
-        trackTitle: this.trackTitle,
-        artistName: this.artistName
-      })
+      if (this.isLinkToLibrary) {
+        return formatProfileLibraryTrackMainLink({
+          profileId: this.profileId,
+          trackId: this.trackId
+        })
+      } else {
+        return formatTrackMainLink({
+          trackTitle: this.trackTitle,
+          artistName: this.artistName
+        })
+      }
     }
   },
   methods: {

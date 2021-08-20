@@ -5,9 +5,11 @@
     :albumTitle="albumTitle"
     :imageData="imageData"
     :isWithSource="isWithSource"
+    :profileId="profileId"
     isWithIndex
     isWithArtistName
     isWithDuration
+    isWithLibraryLink
   />
 </template>
 
@@ -24,7 +26,8 @@ export default {
     albumData: {
       type: Object,
       required: true
-    }
+    },
+    profileId: String
   },
   computed: {
     tracks () {

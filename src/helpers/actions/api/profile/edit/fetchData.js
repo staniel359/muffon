@@ -10,7 +10,7 @@ export default function ({
   password,
   passwordConfirmation,
   nickname,
-  avatar,
+  image,
   gender,
   birthdate,
   country,
@@ -37,7 +37,7 @@ export default function ({
         passwordConfirmation
     }),
     nickname,
-    avatar,
+    image,
     gender,
     birthdate,
     country,
@@ -53,7 +53,7 @@ export default function ({
 
     this.isSuccess = true
     this.error = null
-    this.avatar = null
+    this.image = null
   }
 
   const handleError = error => {

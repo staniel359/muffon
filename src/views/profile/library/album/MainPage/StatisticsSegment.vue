@@ -1,0 +1,59 @@
+<template>
+  <BaseSegmentContainer
+    class="main-segment-container"
+  >
+    <BaseStatistics
+      class="one small"
+      :statistics="statistics"
+    />
+  </BaseSegmentContainer>
+</template>
+
+<script>
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseStatistics from '@/BaseStatistics.vue'
+import {
+  tracks as formatProfileLibraryAlbumTracksLink
+} from '#/formatters/links/profile/library/album'
+import { localize } from '#/actions/plugins/i18n'
+
+export default {
+  name: 'StatisticsSegment',
+  components: {
+    BaseSegmentContainer,
+    BaseStatistics
+  },
+  props: {
+    albumData: {
+      type: Object,
+      required: true
+    },
+    profileId: {
+      type: String,
+      required: true
+    },
+    albumId: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    statistics () {
+      return [
+        {
+          text: localize(
+            'pages.library.statistics.tracks'
+          ),
+          value: this.albumData.tracks_count,
+          link: formatProfileLibraryAlbumTracksLink({
+            profileId: this.profileId,
+            albumId: this.albumId
+          })
+        }
+      ]
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

@@ -9,6 +9,7 @@ export default function ({
   artistId,
   trackId,
   scope = '',
+  profileId,
   page,
   limit
 }) {
@@ -24,6 +25,7 @@ export default function ({
   })
 
   const params = {
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit })
   }

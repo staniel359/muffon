@@ -49,6 +49,36 @@ const VideoMainPage = () => import(
 const ProfileMainPage = () => import(
   '%/profile/MainPage.vue'
 )
+const ProfileLibraryMainPage = () => import(
+  '%/profile/library/MainPage.vue'
+)
+const ProfileLibraryArtistsPage = () => import(
+  '%/profile/library/ArtistsPage.vue'
+)
+const ProfileLibraryArtistMainPage = () => import(
+  '%/profile/library/artist/MainPage.vue'
+)
+const ProfileLibraryArtistAlbumsPage = () => import(
+  '%/profile/library/artist/AlbumsPage.vue'
+)
+const ProfileLibraryArtistTracksPage = () => import(
+  '%/profile/library/artist/TracksPage.vue'
+)
+const ProfileLibraryAlbumsPage = () => import(
+  '%/profile/library/AlbumsPage.vue'
+)
+const ProfileLibraryAlbumMainPage = () => import(
+  '%/profile/library/album/MainPage.vue'
+)
+const ProfileLibraryAlbumTracksPage = () => import(
+  '%/profile/library/album/TracksPage.vue'
+)
+const ProfileLibraryTracksPage = () => import(
+  '%/profile/library/TracksPage.vue'
+)
+const ProfileLibraryTrackMainPage = () => import(
+  '%/profile/library/track/MainPage.vue'
+)
 
 export default [
   {
@@ -166,6 +196,76 @@ export default [
     exact: true,
     name: 'ProfileMainPage',
     component: ProfileMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library',
+    exact: true,
+    name: 'ProfileLibraryMainPage',
+    component: ProfileLibraryMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/artists',
+    exact: true,
+    name: 'ProfileLibraryArtistsPage',
+    component: ProfileLibraryArtistsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/artists/:artistId',
+    exact: true,
+    name: 'ProfileLibraryArtistMainPage',
+    component: ProfileLibraryArtistMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/artists/:artistId/albums',
+    exact: true,
+    name: 'ProfileLibraryArtistAlbumsPage',
+    component: ProfileLibraryArtistAlbumsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/artists/:artistId/tracks',
+    exact: true,
+    name: 'ProfileLibraryArtistTracksPage',
+    component: ProfileLibraryArtistTracksPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/albums',
+    exact: true,
+    name: 'ProfileLibraryAlbumsPage',
+    component: ProfileLibraryAlbumsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/albums/:albumId',
+    exact: true,
+    name: 'ProfileLibraryAlbumMainPage',
+    component: ProfileLibraryAlbumMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/albums/:albumId/tracks',
+    exact: true,
+    name: 'ProfileLibraryAlbumTracksPage',
+    component: ProfileLibraryAlbumTracksPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tracks',
+    exact: true,
+    name: 'ProfileLibraryTracksPage',
+    component: ProfileLibraryTracksPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tracks/:trackId',
+    exact: true,
+    name: 'ProfileLibraryTrackMainPage',
+    component: ProfileLibraryTrackMainPage,
     props: true
   }
 ]

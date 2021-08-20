@@ -22,7 +22,7 @@
 import BaseTagPaginatedSegmentContainer
   from '@/containers/pages/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
-import { tagAlbums as formatTagAlbumsLink } from '#/formatters/links'
+import { albums as formatTagAlbumsLink } from '#/formatters/links/tag'
 
 export default {
   name: 'AlbumsSegment',

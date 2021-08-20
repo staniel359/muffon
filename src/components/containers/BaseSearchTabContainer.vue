@@ -23,7 +23,9 @@
           :[tabData.scope]="slotProps[tabData.scope]"
           :isWithListenersCount="!!tabData.isWithListenersCount"
           :isWithIcon="!!tabData.isWithIcon"
+          :profileId="profileId"
           isWithArtistName
+          isWithLibraryLink
           @linkClick="handleLinkClick"
         />
       </template>
@@ -75,12 +77,19 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
     searchDataArgs () {
       return {
         query: this.query,
         scope: this.tabData.scope,
+        profileId: this.profileId,
         limit: this.tabData.responsePageLimit
       }
+    },
+    profileId () {
+      return this.profileInfo.id.toString()
     }
   },
   watch: {

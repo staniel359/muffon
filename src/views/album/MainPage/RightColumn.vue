@@ -1,5 +1,5 @@
 <template>
-  <div class="right-column">
+  <div class="album-page-right-column">
     <InfoSection
       :albumData="albumData"
       :requestAlbumData="requestAlbumData"
@@ -10,6 +10,7 @@
     <TracksList
       v-if="tracks"
       :albumData="albumData"
+      :profileId="profileId"
     />
   </div>
 </template>
@@ -31,7 +32,8 @@ export default {
       type: Object,
       required: true
     },
-    requestAlbumData: Object
+    requestAlbumData: Object,
+    profileId: String
   },
   computed: {
     tracks () {
@@ -42,6 +44,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.right-column
+.album-page-right-column
   @extend .flex-full
+  margin-left: 1em
 </style>

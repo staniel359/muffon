@@ -24,7 +24,13 @@
           :topTrackCount="topTrackCount"
           :isWithDuration="isWithDuration"
           :isWithSource="isWithSource"
+          :isLinkToLibrary="isLinkToLibrary"
+          :profileId="profileId"
+          :isWithLibraryLink="isWithLibraryLink"
+          :isWithClearButton="isWithClearButton"
+          :isWithCreated="isWithCreated"
           @linkClick="handleLinkClick"
+          @deleteButtonClick="handleDeleteButtonClick"
         />
       </template>
     </BaseTrackContainer>
@@ -52,6 +58,10 @@ export default {
         return []
       }
     },
+    isQueueable: {
+      type: Boolean,
+      default: true
+    },
     isWithImage: Boolean,
     imageData: Object,
     isWithIndex: Boolean,
@@ -64,13 +74,16 @@ export default {
     isWithSource: Boolean,
     isWithListenersCount: Boolean,
     topTrackCount: Number,
-    isQueueable: {
-      type: Boolean,
-      default: true
-    }
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    artistId: String,
+    isWithLibraryLink: Boolean,
+    isWithClearButton: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteButtonClick'
   ],
   computed: {
     tracksFormatted () {
@@ -90,10 +103,17 @@ export default {
     handleLinkClick () {
       this.$emit('linkClick')
     },
+    handleDeleteButtonClick ({ uuid }) {
+      this.$emit(
+        'deleteButtonClick',
+        { uuid }
+      )
+    },
     formatTracks () {
       return this.tracks.map(trackData => {
         return formatTrack({
           trackData,
+          artistId: this.artistId,
           artistName: this.artistName,
           albumTitle: this.albumTitle,
           imageData: this.imageData

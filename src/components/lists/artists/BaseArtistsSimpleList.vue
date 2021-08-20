@@ -5,7 +5,17 @@
       :key="artistData.uuid"
       :artistData="artistData"
       :isWithListenersCount="isWithListenersCount"
+      :isWithTracksCount="isWithTracksCount"
+      :topTracksCount="topTracksCount"
+      :isWithAlbumsCount="isWithAlbumsCount"
+      :topAlbumsCount="topAlbumsCount"
+      :isWithLibrary="isWithLibrary"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :isWithLibraryLink="isWithLibraryLink"
+      :isWithClearButton="isWithClearButton"
       @linkClick="handleLinkClick"
+      @deleteButtonClick="handleDeleteButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -28,19 +38,39 @@ export default {
         return []
       }
     },
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isWithTracksCount: Boolean,
+    topTracksCount: Number,
+    isWithAlbumsCount: Boolean,
+    topAlbumsCount: Number,
+    isWithLibrary: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean,
+    isWithClearButton: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteButtonClick'
   ],
   computed: {
     artistsFormatted () {
-      return formatCollection(this.artists)
+      return formatCollection(
+        this.artists
+      )
     }
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
+    },
+    handleDeleteButtonClick ({ uuid }) {
+      this.$emit(
+        'deleteButtonClick',
+        { uuid }
+      )
     }
   }
 }

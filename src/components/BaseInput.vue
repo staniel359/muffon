@@ -19,7 +19,6 @@
       v-if="icon"
       class="icon"
       :class="icon"
-      @click="handleIconClick"
     />
   </div>
 </template>
@@ -36,8 +35,7 @@ export default {
   },
   emits: [
     'update:modelValue',
-    'enterPress',
-    'iconClick'
+    'enterPress'
   ],
   computed: {
     ...mapState('layout', [
@@ -53,9 +51,6 @@ export default {
     },
     handleEnterPress () {
       this.$emit('enterPress')
-    },
-    handleIconClick () {
-      this.$emit('iconClick')
     },
     focus () {
       this.$refs.input.focus()

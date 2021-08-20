@@ -20,6 +20,7 @@
 <script>
 import { mapState } from 'vuex'
 import { setAccordion } from '#/actions/plugins/semantic'
+import { mainAccordionOptions } from '#/data/plugins/semantic'
 
 export default {
   name: 'BaseAccordionContainer',
@@ -29,6 +30,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'open'
+  ],
   computed: {
     ...mapState('layout', [
       'isDarkMode'
@@ -37,8 +41,15 @@ export default {
   mounted () {
     setAccordion(
       this.$refs.accordion,
-      { duration: 0 }
+      mainAccordionOptions({
+        onOpen: this.handleOpen
+      })
     )
+  },
+  methods: {
+    handleOpen () {
+      this.$emit('open')
+    }
   }
 }
 </script>

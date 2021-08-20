@@ -1,3 +1,5 @@
+import store from '*/store'
+
 export { v4 as generateKey } from 'uuid'
 
 const isDevelopment =
@@ -32,4 +34,14 @@ export const shuffleArray = value => {
   }
 
   return array
+}
+
+export const isCurrentProfile = profileId => {
+  const profileInfo =
+    store.state.profile.info
+
+  return (
+    parseInt(profileId) ===
+      parseInt(profileInfo.id)
+  )
 }

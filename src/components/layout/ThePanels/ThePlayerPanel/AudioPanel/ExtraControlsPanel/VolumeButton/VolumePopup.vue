@@ -59,7 +59,7 @@ export default {
   width: 60px
 
 .volume-header-container
-  margin-bottom: 5px
+  margin-bottom: 0.25em
 
 .volume-seeker
   @extend .w-100, .d-flex, .justify-content-center

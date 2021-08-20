@@ -1,6 +1,6 @@
 <template>
-  <div class="paginated-container">
-    <div class="paginated-data-container">
+  <div class="main-paginated-container">
+    <div class="main-paginated-content-container">
       <template v-if="!isLoading">
         <BaseError
           v-if="error"
@@ -23,7 +23,7 @@
     <template v-if="isRenderPagination">
       <BaseDivider />
 
-      <div class="pagination-container">
+      <div class="main-pagination-container">
         <BasePagination
           :totalPages="clientTotalPages"
           :isDisabled="isPaginationDisabled"
@@ -72,7 +72,9 @@ export default {
     },
     isLoading: Boolean,
     error: Error,
-    responseData: Object
+    responseData: Object,
+    isReset: Boolean,
+    isWithPagination: Boolean
   },
   emits: [
     'focus',
@@ -96,12 +98,14 @@ export default {
       return this.responsePageCollection.length
     },
     isClientPageCollectionFiltered () {
-      return this.clientPageCollectionFiltered.length
+      return !!this.clientPageCollectionFiltered.length
     },
     isRenderPagination () {
       return (
-        this.responsePageCollection &&
-          this.isPageable
+        this.isWithPagination || (
+          this.responsePageCollection &&
+            this.isPageable
+        )
       )
     },
     isPageable () {
@@ -144,10 +148,7 @@ export default {
       )
     },
     clientResponsePageCollections () {
-      const collections = [
-        { ...this.clientCollectionPaginated },
-        this.responsePageCollectionPaginated
-      ]
+      const collections = this.formatCollections()
 
       if (this.isForward) {
         return collections
@@ -156,7 +157,9 @@ export default {
       }
     },
     responsePageCollectionPaginated () {
-      const collection = [...this.responsePageCollection]
+      const collection = [
+        ...this.responsePageCollection
+      ]
       collection.length = this.responsePageLimit
 
       const newCollection = []
@@ -170,12 +173,18 @@ export default {
           newCollection.length ? 0 : this.pageRemainder
         const pageDataLength =
           this.clientPageLimit - prevPageRemainder
-        const pageData = collection.splice(0, pageDataLength)
+        const pageData = collection.splice(
+          0, pageDataLength
+        )
 
-        newCollection.push([page, pageData])
+        newCollection.push(
+          [page, pageData]
+        )
       }
 
-      return Object.fromEntries(newCollection)
+      return Object.fromEntries(
+        newCollection
+      )
     },
     clientStartPage () {
       return Math.floor(
@@ -276,7 +285,10 @@ export default {
   },
   methods: {
     handleRefresh () {
-      this.$emit('refresh', this.requestPage)
+      this.$emit(
+        'refresh',
+        this.requestPage
+      )
     },
     handleResponseDataChange (value) {
       if (value) {
@@ -293,11 +305,15 @@ export default {
     },
     handleClientPageCollectionChange (value) {
       if (value) {
-        this.isFocusable && this.$emit('focus')
+        if (this.isFocusable) {
+          this.$emit('focus')
+        }
 
-        !this.isCollectionFull && this.$nextTick(() => {
-          this.fetchData()
-        })
+        if (!this.isCollectionFull) {
+          this.$nextTick(() => {
+            this.fetchData()
+          })
+        }
       }
     },
     fetchData () {
@@ -319,7 +335,8 @@ export default {
         this.clientCollectionPaginated[this.clientPage] || []
     },
     changeClientPage (page) {
-      this.isLastPage = page === this.clientTotalPages
+      this.isLastPage =
+        page === this.clientTotalPages
       this.isForward =
         page > this.clientPage &&
           !this.isLastPage
@@ -348,18 +365,21 @@ export default {
       return this.clientPageCollection.find(item => {
         return item.uuid === uuid
       })
+    },
+    formatCollections () {
+      if (this.isReset) {
+        return [
+          this.responsePageCollectionPaginated
+        ]
+      } else {
+        return [
+          { ...this.clientCollectionPaginated },
+          this.responsePageCollectionPaginated
+        ]
+      }
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.paginated-container
-  @extend .flex-full, .w-100, .d-flex, .flex-column
-
-.paginated-data-container
-  @extend .flex-full
-
-.pagination-container
-  @extend .d-flex, .justify-content-center
-</style>
+<style lang="sass" scoped></style>

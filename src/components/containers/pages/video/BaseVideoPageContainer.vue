@@ -2,6 +2,7 @@
   <BasePageContainer
     :isShowLoader="!videoData"
     :isLoading="isLoading"
+    :isError="!videoData && !!error"
     :error="error"
     @refresh="handleRefresh"
   >

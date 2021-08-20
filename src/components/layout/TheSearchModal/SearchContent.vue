@@ -58,9 +58,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.content
-  @extend .d-flex, .flex-column
-
 .search-tabs
-  margin-top: 10px
+  margin-top: 0.5em
 </style>

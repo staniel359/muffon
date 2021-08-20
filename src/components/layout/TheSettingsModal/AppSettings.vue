@@ -1,5 +1,5 @@
 <template>
-  <div class="app-settings-container">
+  <div>
     <ViewOptions />
     <PlayerOptions />
     <QueueOptions />
@@ -21,7 +21,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.app-settings-container
-  @extend .d-flex, .flex-column, .overflow-y-auto
-</style>
+<style lang="sass" scoped></style>

@@ -4,7 +4,7 @@
     ref="button"
     :class="{
       inverted: isDarkMode,
-      icon
+      icon: !!icon && !text
     }"
   >
     <i

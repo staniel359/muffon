@@ -18,6 +18,20 @@
       :isArtistNameActive="isArtistNameActive"
       :isWithListenersCount="isWithListenersCount"
     />
+
+    <BaseProfileLibraryLinkButton
+      v-if="isShowLibraryLink"
+      model="album"
+      :modelId="libraryId"
+      :profileId="profileId"
+      @click="handleLinkClick"
+    />
+
+    <BaseClearButton
+      v-if="isWithClearButton"
+      class="delete-button"
+      @click="handleDeleteButtonClick"
+    />
   </BaseLinkContainer>
 </template>
 
@@ -25,17 +39,19 @@
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
-import {
-  artistMain as formatArtistMainLink,
-  albumMain as formatAlbumMainLink
-} from '#/formatters/links'
+import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseClearButton from '@/BaseClearButton.vue'
+import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import { main as formatAlbumMainLink } from '#/formatters/links/album'
 
 export default {
   name: 'AlbumItem',
   components: {
     BaseLinkContainer,
     BaseImage,
-    InfoBlock
+    InfoBlock,
+    BaseProfileLibraryLinkButton,
+    BaseClearButton
   },
   provide () {
     return {
@@ -48,10 +64,14 @@ export default {
       required: true
     },
     isWithArtistName: Boolean,
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isWithLibraryLink: Boolean,
+    profileId: String,
+    isWithClearButton: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteButtonClick'
   ],
   data () {
     return {
@@ -91,11 +111,26 @@ export default {
     },
     uuid () {
       return this.albumData.uuid
+    },
+    isShowLibraryLink () {
+      return (
+        this.isWithLibraryLink &&
+          !!this.libraryId
+      )
+    },
+    libraryId () {
+      return this.albumData.library_id?.toString()
     }
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
+    },
+    handleDeleteButtonClick () {
+      this.$emit(
+        'deleteButtonClick',
+        { uuid: this.albumData.uuid }
+      )
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value
@@ -104,4 +139,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.delete-button
+  margin-left: 0.5em !important
+</style>

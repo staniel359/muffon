@@ -84,7 +84,7 @@ export const popupOptions = () => {
   }
 }
 
-export const mainDropdownOptions = () => {
+export const mainDropdownOptions = ({ onChange } = {}) => {
   const { visibleContext } = store.state.layout
 
   return {
@@ -94,7 +94,8 @@ export const mainDropdownOptions = () => {
     delay: {
       show: 0,
       hide: 150
-    }
+    },
+    onChange
   }
 }
 
@@ -282,5 +283,26 @@ export const birthdateCalendarOptions = () => {
     startMode: 'year',
     minDate,
     maxDate
+  }
+}
+
+export const mainProgressOptions = ({ formatActive, onSuccess }) => {
+  return {
+    text: {
+      active: formatActive(
+        {
+          value: '{value}',
+          total: '{total}'
+        }
+      )
+    },
+    onSuccess
+  }
+}
+
+export const mainAccordionOptions = ({ onOpen }) => {
+  return {
+    duration: 0,
+    onOpen
   }
 }

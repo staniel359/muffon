@@ -2,6 +2,7 @@
   <BasePageContainer
     :isShowLoader="!trackData"
     :isLoading="isLoading"
+    :isError="!trackData && !!error"
     :error="error"
     @refresh="handleRefresh"
   >
@@ -12,12 +13,13 @@
       :trackData="trackData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
+      :profileId="profileId"
     ></slot>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatTrackPageNavigation from '#/formatters/navigation/track'
 import formatTrackPageTab from '#/formatters/tabs/track'
@@ -59,6 +61,12 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     navigationSections () {
       return formatTrackPageNavigation(
         this.navigationData
@@ -81,6 +89,7 @@ export default {
       return {
         ...this.requestTrackData,
         scope: this.scope,
+        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

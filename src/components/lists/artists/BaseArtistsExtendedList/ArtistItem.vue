@@ -7,14 +7,39 @@
         @refresh="slotProps.handleRefresh"
       >
         <template v-if="slotProps.artistData">
-          <BaseArtistImage
-            class="circular bordered artist-image"
-            :image="image"
-            :artistName="artistName"
-            @loadEnd="handleImageLoadEnd"
-          />
+          <div class="artist-left-column">
+            <BaseArtistImage
+              class="circular bordered artist-image"
+              :image="image"
+              :artistName="artistName"
+              @loadEnd="handleImageLoadEnd"
+            />
 
-          <InfoBlock :artistData="slotProps.artistData" />
+            <LibraryCountersSection
+              v-if="isWithLibrary"
+              :artistData="artistData"
+              :isWithTracksCount="isWithTracksCount"
+              :isWithAlbumsCount="isWithAlbumsCount"
+              :profileId="profileId"
+              :artistId="artistId"
+            />
+
+            <div class="library-link-button">
+              <BaseProfileLibraryLinkButton
+                v-if="isShowLibraryLink"
+                model="artist"
+                :modelId="libraryId"
+                :profileId="profileId"
+              />
+            </div>
+          </div>
+
+          <InfoBlock
+            :artistData="slotProps.artistData"
+            :isLinkToLibrary="isLinkToLibrary"
+            :profileId="profileId"
+            :artistId="artistId"
+          />
         </template>
       </BaseArtistHorizontalCardContainer>
     </template>
@@ -26,6 +51,8 @@ import BaseArtistContainer from '@/containers/artist/BaseArtistContainer.vue'
 import BaseArtistHorizontalCardContainer
   from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
+import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
+import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
 
 export default {
@@ -34,6 +61,8 @@ export default {
     BaseArtistContainer,
     BaseArtistHorizontalCardContainer,
     BaseArtistImage,
+    LibraryCountersSection,
+    BaseProfileLibraryLinkButton,
     InfoBlock
   },
   inject: [
@@ -43,7 +72,13 @@ export default {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    isWithTracksCount: Boolean,
+    isWithAlbumsCount: Boolean,
+    isWithLibrary: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean
   },
   computed: {
     artistName () {
@@ -54,6 +89,18 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    artistId () {
+      return this.artistData.id?.toString()
+    },
+    isShowLibraryLink () {
+      return (
+        this.isWithLibraryLink &&
+          !!this.libraryId
+      )
+    },
+    libraryId () {
+      return this.artistData.library_id?.toString()
     }
   },
   methods: {
@@ -67,8 +114,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.artist-left-column
+  @extend .d-flex, .flex-column, .align-items-center
+  margin-right: 1em
+
 .artist-image
   width: 150px
   height: 150px
-  margin-right: 1em
+
+.library-link-button
+  margin-top: 1em
 </style>

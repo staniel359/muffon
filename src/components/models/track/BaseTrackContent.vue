@@ -27,6 +27,11 @@
         :albumArtistName="albumArtistName"
         :isWithAlbumTitle="isWithAlbumTitle"
         :albumTitle="albumTitle"
+        :isLinkToLibrary="isLinkToLibrary"
+        :profileId="profileId"
+        :trackId="trackId"
+        :artistId="artistId"
+        :albumId="albumId"
         @linkClick="handleLinkClick"
       />
     </div>
@@ -48,6 +53,37 @@
     class="track-source-icon"
     :sourceId="sourceId"
   />
+
+  <div
+    v-if="isWithCreated"
+    class="main-small-container created-container"
+  >
+    <div>
+      <small>
+        {{ createdDateFormatted }}
+      </small>
+    </div>
+
+    <div>
+      <small>
+        {{ createdTimeFormatted }}
+      </small>
+    </div>
+  </div>
+
+  <BaseProfileLibraryLinkButton
+    v-if="isShowLibraryLink"
+    class="track-library-link"
+    model="track"
+    :modelId="libraryId"
+    :profileId="profileId"
+  />
+
+  <BaseClearButton
+    v-if="isWithClearButton"
+    class="delete-button"
+    @click="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
@@ -58,6 +94,12 @@ import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
+import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseClearButton from '@/BaseClearButton.vue'
+import {
+  date as formatDate,
+  time as formatTime
+} from '#/formatters'
 
 export default {
   name: 'BaseTrackContent',
@@ -68,7 +110,9 @@ export default {
     TrackMainInfo,
     TrackListenersCount,
     TrackDuration,
-    BaseSourceIcon
+    BaseSourceIcon,
+    BaseProfileLibraryLinkButton,
+    BaseClearButton
   },
   props: {
     trackData: {
@@ -87,14 +131,23 @@ export default {
     isWithListenersCount: Boolean,
     topTrackCount: Number,
     isWithDuration: Boolean,
-    isWithSource: Boolean
+    isWithSource: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean,
+    isWithClearButton: Boolean,
+    isWithCreated: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteButtonClick'
   ],
   computed: {
     isRenderImage () {
-      return this.isWithImage && this.imageData
+      return (
+        this.isWithImage &&
+          this.imageData
+      )
     },
     imageData () {
       return this.trackData.image
@@ -145,11 +198,48 @@ export default {
     },
     audioData () {
       return this.trackData.audio
+    },
+    trackId () {
+      return this.trackData.id?.toString()
+    },
+    artistId () {
+      return this.trackData.artist.id?.toString()
+    },
+    albumId () {
+      return this.trackData.album?.id?.toString()
+    },
+    isShowLibraryLink () {
+      return (
+        this.isWithLibraryLink &&
+          !!this.libraryId
+      )
+    },
+    libraryId () {
+      return this.trackData.library_id?.toString()
+    },
+    createdDateFormatted () {
+      return formatDate(
+        this.created
+      )
+    },
+    created () {
+      return this.trackData.created
+    },
+    createdTimeFormatted () {
+      return formatTime(
+        this.created
+      )
     }
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
+    },
+    handleDeleteButtonClick () {
+      this.$emit(
+        'deleteButtonClick',
+        { uuid: this.trackData.uuid }
+      )
     }
   }
 }
@@ -172,4 +262,14 @@ export default {
   @extend .no-padding
   min-width: unset !important
   margin-left: $trackContentMarginWidth !important
+
+.track-library-link
+  margin-left: $trackContentMarginWidth !important
+
+.delete-button
+  margin-left: $trackContentMarginWidth !important
+
+.created-container
+  margin-left: $trackContentMarginWidth !important
+  text-align: right
 </style>

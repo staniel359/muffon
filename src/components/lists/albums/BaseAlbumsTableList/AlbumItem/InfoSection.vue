@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :class="{ link: !isArtistNameActive }"
+      :class="{ link: isHeaderLink }"
       :text="albumTitle"
     />
 
@@ -13,7 +13,7 @@
 
     <div
       v-if="releaseDate"
-      class="description"
+      class="description release-date"
     >
       {{ releaseDate }}
     </div>
@@ -26,6 +26,29 @@
       :listenersCount="listenersCount"
       @loadEnd="handleListenersCountLoadEnd"
     />
+
+    <div
+      v-if="isWithTracksCount"
+      class="description main-small-container"
+      :class="{ link: isTracksLinkActive }"
+      @mouseenter="handleTracksLinkMouseEnter"
+      @mouseleave="handleTracksLinkMouseLeave"
+    >
+      <small>
+        <i class="music icon"></i>
+        <span>
+          {{ tracksCount }}
+        </span>
+      </small>
+    </div>
+
+    <BaseProfileLibraryLinkButton
+      v-if="isShowLibraryLink"
+      class="library-link"
+      model="album"
+      :modelId="libraryId"
+      :profileId="profileId"
+    />
   </div>
 </template>
 
@@ -34,13 +57,15 @@ import BaseHeader from '@/BaseHeader.vue'
 import ArtistName from './InfoSection/ArtistName.vue'
 import BaseAlbumListenersCount
   from '@/models/album/BaseAlbumListenersCount.vue'
+import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
 
 export default {
   name: 'InfoSection',
   components: {
     BaseHeader,
     ArtistName,
-    BaseAlbumListenersCount
+    BaseAlbumListenersCount,
+    BaseProfileLibraryLinkButton
   },
   inject: [
     'findPaginationItem'
@@ -50,25 +75,64 @@ export default {
       type: String,
       required: true
     },
-    artistName: {
-      type: String,
-      required: true
-    },
+    artistName: String,
     listenersCount: Number,
     releaseDate: String,
     uuid: String,
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,
-    isWithListenersCount: Boolean
+    isTracksLinkActive: Boolean,
+    isWithListenersCount: Boolean,
+    isWithTracksCount: Boolean,
+    tracksCount: Number,
+    isWithLibraryLink: Boolean,
+    profileId: String,
+    libraryId: String
+  },
+  emits: [
+    'tracksLinkActiveChange'
+  ],
+  computed: {
+    isHeaderLink () {
+      return (
+        !this.isArtistNameActive &&
+          !this.isTracksLinkActive
+      )
+    },
+    isShowLibraryLink () {
+      return (
+        this.isWithLibraryLink &&
+          !!this.libraryId
+      )
+    }
   },
   methods: {
     handleListenersCountLoadEnd (value) {
       this.findPaginationItem({
         uuid: this.uuid
       }).listeners_count = value
+    },
+    handleTracksLinkMouseEnter () {
+      this.$emit(
+        'tracksLinkActiveChange',
+        true
+      )
+    },
+    handleTracksLinkMouseLeave () {
+      this.$emit(
+        'tracksLinkActiveChange',
+        false
+      )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.description
+  &.release-date
+    @extend .no-margin
+
+.library-link
+  margin-top: 0.5em !important
+</style>

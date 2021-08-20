@@ -63,8 +63,8 @@ import BaseVideoTags from '@/models/video/BaseVideoTags.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseVideoDescription from '@/models/video/BaseVideoDescription.vue'
 import {
-  videoChannelVideos as formatVideoChannelVideosLink
-} from '#/formatters/links'
+  videos as formatVideoChannelVideosLink
+} from '#/formatters/links/videoChannel'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -138,6 +138,5 @@ export default {
 
 <style lang="sass" scoped>
 .video-labels
-  @extend .d-flex
-  justify-content: space-between
+  @extend .d-flex, .justify-content-space-between
 </style>

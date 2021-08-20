@@ -1,7 +1,7 @@
 <template>
-  <TheBackground />
-
   <TheObservers />
+
+  <TheBackground />
 
   <TheView v-if="isRootPage"/>
   <template v-else>
@@ -14,7 +14,7 @@
     <div class="pusher">
       <TheLoaderDimmer />
 
-      <TheView />
+      <TheView ref="view" />
     </div>
   </template>
 </template>
@@ -39,15 +39,22 @@ export default {
     TheSearchModal,
     TheLoaderDimmer
   },
+  provide () {
+    return {
+      refresh: this.refresh
+    }
+  },
   computed: {
     isRootPage () {
       return this.$route.path === '/'
+    }
+  },
+  methods: {
+    refresh () {
+      this.$refs.view.refresh()
     }
   }
 }
 </script>
 
-<style lang="sass">
-@import './src/assets/styles/Main.sass'
-@import './src/assets/styles/Sources.sass'
-</style>
+<style lang="sass"></style>

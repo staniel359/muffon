@@ -1,6 +1,14 @@
 <template>
   <div class="artist-info-data">
-    <ArtistHeader :artistName="artistName" />
+    <BaseHeaderContainer
+      class="main-artist-name"
+      tag="h2"
+    >
+      <BaseLink
+        :link="artistMainLinkFormatted"
+        :text="artistName"
+      />
+    </BaseHeaderContainer>
 
     <BaseCounters
       :listenersCount="listenersCount"
@@ -27,16 +35,22 @@
 </template>
 
 <script>
-import ArtistHeader from './InfoBlock/ArtistHeader.vue'
+import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/BaseLink.vue'
 import BaseCounters from '@/BaseCounters.vue'
 import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
+import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import {
+  main as formatProfileLibraryArtistMainLink
+} from '#/formatters/links/profile/library/artist'
 
 export default {
   name: 'InfoBlock',
   components: {
-    ArtistHeader,
+    BaseHeaderContainer,
+    BaseLink,
     BaseCounters,
     BaseArtistTags,
     BaseDivider,
@@ -46,9 +60,24 @@ export default {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    artistId: String
   },
   computed: {
+    artistMainLinkFormatted () {
+      if (this.isLinkToLibrary) {
+        return formatProfileLibraryArtistMainLink({
+          profileId: this.profileId,
+          artistId: this.artistId
+        })
+      } else {
+        return formatArtistMainLink({
+          artistName: this.artistName
+        })
+      }
+    },
     artistName () {
       return this.artistData.name
     },

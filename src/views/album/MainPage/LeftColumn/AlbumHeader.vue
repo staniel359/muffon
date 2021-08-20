@@ -1,6 +1,6 @@
 <template>
   <BaseTransitionContainer
-    class="album-full-title transition hidden"
+    class="transition hidden album-full-title"
     :scrollable="scrollable"
   >
     <BaseHeader
@@ -8,31 +8,24 @@
       :text="albumTitle"
     />
 
-    <BaseHeaderContainer
-      class="album-artist-name"
-      tag="h4"
-    >
-      <BaseLink
-        :link="artistMainLinkFormatted"
-        :text="artistName"
-      />
-    </BaseHeaderContainer>
+    <BaseLink
+      :link="artistMainLinkFormatted"
+      :text="artistName"
+    />
   </BaseTransitionContainer>
 </template>
 
 <script>
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
-import { artistMain as formatArtistMainLink } from '#/formatters/links'
+import { main as formatArtistMainLink } from '#/formatters/links/artist'
 
 export default {
   name: 'AlbumHeader',
   components: {
     BaseTransitionContainer,
     BaseHeader,
-    BaseHeaderContainer,
     BaseLink
   },
   props: {
@@ -59,8 +52,5 @@ export default {
 <style lang="sass" scoped>
 .album-full-title
   @extend .text-align-center
-  margin: 10px 0
-
-.album-artist-name
-  @extend .text-medium-light
+  margin-top: 0.5em
 </style>

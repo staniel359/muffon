@@ -1,13 +1,14 @@
 import axios from 'axios'
 import { handleEnvError } from '#/utils'
 
-export default function ({ tagName, scope = '', page, limit }) {
+export default function ({ tagName, scope = '', profileId, page, limit }) {
   this.isLoading = true
 
   const tagNameEncoded = encodeURIComponent(tagName)
   const url = `/lastfm/tags/${tagNameEncoded}/${scope}`
 
   const params = {
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit })
   }

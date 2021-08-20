@@ -1,56 +1,50 @@
 import {
-  artistMain as formatArtistMainLink,
-  artistAlbums as formatArtistAlbumsLink,
-  albumMain as formatAlbumMainLink
-} from '#/formatters/links'
+  main as formatArtistMainLink,
+  albums as formatArtistAlbumsLink
+} from '#/formatters/links/artist'
+import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, albumTitle, pageNameKey }) {
-  const artistsPageName = localize(
-    'layout.navigation.artists'
-  )
-
-  const artistMainLink = formatArtistMainLink({
-    artistName
-  })
-
-  const artistAlbumsPageName = localize(
-    'layout.navigation.artist.albums'
-  )
-  const artistAlbumsLink = formatArtistAlbumsLink({
-    artistName
-  })
-
   const formatLink = () => {
     if (pageNameKey) {
       return formatAlbumMainLink({
-        artistName, albumTitle
+        artistName,
+        albumTitle
       })
     }
   }
 
   const formatSubpageSection = () => {
     if (pageNameKey) {
-      const albumPageName = localize(
-        `layout.navigation.album.${pageNameKey}`
-      )
-
       return {
-        name: albumPageName,
+        name: localize(
+          `layout.navigation.album.${pageNameKey}`
+        ),
         isActive: true
       }
     }
   }
 
   return [
-    { name: artistsPageName },
     {
-      name: artistName,
-      link: artistMainLink
+      name: localize(
+        'layout.navigation.artists'
+      )
     },
     {
-      name: artistAlbumsPageName,
-      link: artistAlbumsLink
+      name: artistName,
+      link: formatArtistMainLink({
+        artistName
+      })
+    },
+    {
+      name: localize(
+        'layout.navigation.artist.albums'
+      ),
+      link: formatArtistAlbumsLink({
+        artistName
+      })
     },
     {
       name: albumTitle,

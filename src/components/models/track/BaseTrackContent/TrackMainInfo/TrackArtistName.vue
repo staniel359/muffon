@@ -3,6 +3,9 @@
     <BaseArtistLinks
       :artists="artists"
       :artistName="artistName"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :artistId="artistId"
       @linkClick="handleLinkClick"
     />
   </div>
@@ -18,7 +21,10 @@ export default {
   },
   props: {
     artists: Array,
-    artistName: String
+    artistName: String,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    artistId: String
   },
   emits: [
     'linkClick'

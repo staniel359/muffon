@@ -53,8 +53,8 @@ export default {
 <style lang="sass" scoped>
 .image-container
   @extend .d-flex, .align-items-center, .justify-content-center
-  height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 25px)
-  margin-bottom: 25px
+  height: calc(#{$imageModalHeight} - #{$imageModalThumbHeight} - 1.5em)
+  margin-bottom: 1.5em
   .image
     max-height: 100%
 

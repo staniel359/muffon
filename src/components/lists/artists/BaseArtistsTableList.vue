@@ -12,6 +12,12 @@
       <ArtistItem
         :artistData="artistData"
         :isWithListenersCount="isWithListenersCount"
+        :isWithTracksCount="isWithTracksCount"
+        :isWithAlbumsCount="isWithAlbumsCount"
+        :isWithLibrary="isWithLibrary"
+        :isLinkToLibrary="isLinkToLibrary"
+        :profileId="profileId"
+        :isWithLibraryLink="isWithLibraryLink"
       />
     </div>
   </div>
@@ -35,7 +41,13 @@ export default {
       }
     },
     itemsInRow: Number,
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isWithTracksCount: Boolean,
+    isWithAlbumsCount: Boolean,
+    isWithLibrary: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean
   },
   computed: {
     artistsFormatted () {

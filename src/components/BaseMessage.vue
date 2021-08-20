@@ -22,9 +22,22 @@
       <div class="header">
         {{ header }}
       </div>
-      <p>
+
+      <p v-if="content">
         {{ content }}
       </p>
+
+      <ul
+        v-if="listItems"
+        class="list"
+      >
+        <li
+          v-for="listItemData in listItems"
+          :key="listItemData.key"
+        >
+          {{ listItemData.text }}
+        </li>
+      </ul>
     </div>
 
     <BaseButton
@@ -49,7 +62,8 @@ export default {
     icons: Array,
     buttonData: Object,
     header: String,
-    content: String
+    content: String,
+    listItems: Array
   },
   emits: [
     'buttonClick'

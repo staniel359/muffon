@@ -12,7 +12,9 @@
       <BaseArtistsList
         :viewIndex="viewIndex"
         :artists="slotProps.artists"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseTagPaginatedPageContainer>

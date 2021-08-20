@@ -10,7 +10,9 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
+        :profileId="slotProps.profileId"
         isWithArtistName
+        isWithLibraryLink
       />
     </template>
   </BaseTagPaginatedSegmentContainer>
@@ -20,7 +22,7 @@
 import BaseTagPaginatedSegmentContainer
   from '@/containers/pages/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { tagTracks as formatTagTracksLink } from '#/formatters/links'
+import { tracks as formatTagTracksLink } from '#/formatters/links/tag'
 
 export default {
   name: 'TracksSegment',

@@ -90,7 +90,8 @@ export default {
     setAudio () {
       setGlobalData({
         'player.currentTrackId': this.trackId,
-        'player.variants': []
+        'player.variants': [],
+        'queue.tracks': this.queueTracks
       })
 
       setPlayerPlaying(

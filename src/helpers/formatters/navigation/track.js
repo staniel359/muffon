@@ -1,26 +1,11 @@
 import {
-  artistMain as formatArtistMainLink,
-  artistTracks as formatArtistTracksLink,
-  trackMain as formatTrackMainLink
-} from '#/formatters/links'
+  main as formatArtistMainLink,
+  tracks as formatArtistTracksLink
+} from '#/formatters/links/artist'
+import { main as formatTrackMainLink } from '#/formatters/links/track'
 import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, trackTitle, pageNameKey }) {
-  const artistsPageName = localize(
-    'layout.navigation.artists'
-  )
-
-  const artistMainLink = formatArtistMainLink({
-    artistName
-  })
-
-  const artistTracksPageName = localize(
-    'layout.navigation.artist.tracks'
-  )
-  const artistTracksLink = formatArtistTracksLink({
-    artistName
-  })
-
   const formatLink = () => {
     if (pageNameKey) {
       return formatTrackMainLink({
@@ -31,26 +16,34 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
 
   const formatSubpageSection = () => {
     if (pageNameKey) {
-      const trackPageName = localize(
-        `layout.navigation.track.${pageNameKey}`
-      )
-
       return {
-        name: trackPageName,
+        name: localize(
+          `layout.navigation.track.${pageNameKey}`
+        ),
         isActive: true
       }
     }
   }
 
   return [
-    { name: artistsPageName },
     {
-      name: artistName,
-      link: artistMainLink
+      name: localize(
+        'layout.navigation.artists'
+      )
     },
     {
-      name: artistTracksPageName,
-      link: artistTracksLink
+      name: artistName,
+      link: formatArtistMainLink({
+        artistName
+      })
+    },
+    {
+      name: localize(
+        'layout.navigation.artist.tracks'
+      ),
+      link: formatArtistTracksLink({
+        artistName
+      })
     },
     {
       name: trackTitle,

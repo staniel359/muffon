@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-settings-container">
+  <div>
     <InfoOptions />
   </div>
 </template>
@@ -15,7 +15,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.profile-settings-container
-  @extend .d-flex, .flex-column, .overflow-y-auto
-</style>
+<style lang="sass" scoped></style>

@@ -1,7 +1,7 @@
 import {
-  videoChannelVideos as formatVideoChannelVideosLink,
-  videoMain as formatVideoMainLink
-} from '#/formatters/links'
+  videos as formatVideoChannelVideosLink
+} from '#/formatters/links/videoChannel'
+import { main as formatVideoMainLink } from '#/formatters/links/video'
 import { localize } from '#/actions/plugins/i18n'
 
 export default function ({
@@ -11,17 +11,6 @@ export default function ({
   channelTitle,
   pageNameKey
 }) {
-  const videosPageName = localize(
-    'layout.navigation.videos'
-  )
-
-  const channelVideosPageName = localize(
-    'layout.navigation.video.channel.videos'
-  )
-  const channelVideosLink = formatVideoChannelVideosLink({
-    channelId
-  })
-
   const formatLink = () => {
     if (pageNameKey) {
       return formatVideoMainLink({
@@ -32,23 +21,29 @@ export default function ({
 
   const formatSubpageSection = () => {
     if (pageNameKey) {
-      const videoPageName = localize(
-        `layout.navigation.video.${pageNameKey}`
-      )
-
       return {
-        name: videoPageName,
+        name: localize(
+          `layout.navigation.video.${pageNameKey}`
+        ),
         isActive: true
       }
     }
   }
 
   return [
-    { name: videosPageName },
+    {
+      name: localize(
+        'layout.navigation.videos'
+      )
+    },
     { name: channelTitle },
     {
-      name: channelVideosPageName,
-      link: channelVideosLink
+      name: localize(
+        'layout.navigation.video.channel.videos'
+      ),
+      link: formatVideoChannelVideosLink({
+        channelId
+      })
     },
     {
       name: videoTitle,

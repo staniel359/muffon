@@ -25,7 +25,10 @@
           @focus="handleFocus"
         >
           <template #default="slotProps">
-            <slot :[scope]="slotProps[scope]" />
+            <slot
+              :[scope]="slotProps[scope]"
+              :profileId="segmentSlotProps.profileId"
+            />
           </template>
         </BasePaginatedContainer>
       </BaseSegmentContainer>

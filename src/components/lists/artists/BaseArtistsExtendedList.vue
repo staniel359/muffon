@@ -4,6 +4,12 @@
       v-for="artistData in artistsFormatted"
       :key="artistData.uuid"
       :artistData="artistData"
+      :isWithTracksCount="isWithTracksCount"
+      :isWithAlbumsCount="isWithAlbumsCount"
+      :isWithLibrary="isWithLibrary"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :isWithLibraryLink="isWithLibraryLink"
     />
   </div>
 </template>
@@ -23,7 +29,13 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isWithTracksCount: Boolean,
+    isWithAlbumsCount: Boolean,
+    isWithLibrary: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean
   },
   computed: {
     artistsFormatted () {

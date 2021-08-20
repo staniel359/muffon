@@ -1,21 +1,41 @@
-export const track = ({ trackData, artistName, albumTitle, imageData }) => {
+export const track = ({
+  trackData,
+  artistId,
+  artistName,
+  albumTitle,
+  imageData
+}) => {
+  const trackArtistId = trackData.artist?.id
+  const artistIdFormatted =
+    artistId || trackArtistId
+
   const trackArtistName = trackData.artist?.name
-  const artistNameFormatted = artistName || trackArtistName
+  const artistNameFormatted =
+    artistName || trackArtistName
+
   const trackArtistData = artistNameFormatted && {
     artist: {
+      id: artistIdFormatted,
       name: artistNameFormatted
     }
   }
 
+  const trackAlbumId = trackData.album?.id
+
   const trackAlbumTitle = trackData.album?.title
-  const albumTitleFormatted = albumTitle || trackAlbumTitle
+  const albumTitleFormatted =
+    albumTitle || trackAlbumTitle
+
   const trackAlbumData = albumTitleFormatted && {
     album: {
+      id: trackAlbumId,
       title: albumTitleFormatted
     }
   }
 
-  const imageDataFormatted = imageData || trackData.image
+  const imageDataFormatted =
+    imageData || trackData.image
+
   const trackImageData = imageDataFormatted && {
     image: {
       ...imageDataFormatted
@@ -23,6 +43,7 @@ export const track = ({ trackData, artistName, albumTitle, imageData }) => {
   }
 
   const audioDataFormatted = trackData.audio
+
   const trackAudioData = audioDataFormatted && {
     audio: {
       ...audioDataFormatted,

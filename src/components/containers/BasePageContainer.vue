@@ -1,7 +1,7 @@
 <template>
   <div ref="container">
     <BaseError
-      v-if="error"
+      v-if="isError"
       :error="error"
       @refresh="handleRefresh"
     />
@@ -24,6 +24,7 @@ export default {
       default: true
     },
     isLoading: Boolean,
+    isError: Boolean,
     error: Error
   },
   emits: [
@@ -37,7 +38,10 @@ export default {
     }
   },
   mounted () {
-    this.$emit('init', this.$refs.container)
+    this.$emit(
+      'init',
+      this.$refs.container
+    )
   },
   methods: {
     handleLoadingChange (value) {

@@ -76,6 +76,5 @@ export default {
   width: 400px
 
 .keys-combination
-  @extend .d-flex, .align-items-center
-  justify-content: space-between
+  @extend .d-flex, .align-items-center, .justify-content-space-between
 </style>

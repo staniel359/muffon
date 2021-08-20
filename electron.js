@@ -84,11 +84,11 @@ const createWindow = () => {
   mainWindow.loadURL(baseUrl)
   mainWindow.setMenu(null)
 
-  if (isDevelopment) {
-    mainWindow.webContents.openDevTools({
-      mode: 'detach'
-    })
-  }
+  // if (isDevelopment) {
+  //   mainWindow.webContents.openDevTools({
+  //     mode: 'detach'
+  //   })
+  // }
 
   const handleReadyToShow = () => {
     mainWindow.setMinimumSize(
@@ -111,7 +111,7 @@ const createWindow = () => {
   mainWindow.on(
     'close',
     handleClose
-  )  
+  )
 }
 
 const quit = () => {

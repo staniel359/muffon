@@ -8,7 +8,7 @@
 
 <script>
 import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
-import { tagMain as formatTagMainLink } from '#/formatters/links'
+import { main as formatTagMainLink } from '#/formatters/links/tag'
 
 export default {
   name: 'TagItem',

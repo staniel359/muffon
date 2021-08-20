@@ -2,6 +2,7 @@
   <BasePageContainer
     :isShowLoader="!channelData"
     :isLoading="isLoading"
+    :isError="!channelData && !!error"
     :error="error"
     @refresh="handleRefresh"
   >

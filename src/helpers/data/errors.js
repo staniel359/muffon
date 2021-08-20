@@ -16,6 +16,19 @@ export default {
     ),
     isRefreshable: false
   },
+  forbidden: {
+    code: 403,
+    icons: [
+      'close'
+    ],
+    header: localize(
+      'errors.forbidden.header'
+    ),
+    content: localize(
+      'errors.forbidden.content'
+    ),
+    isRefreshable: false
+  },
   notFound: {
     code: 404,
     icons: [

@@ -8,6 +8,9 @@
     "plugin:vue/vue3-essential",
     "standard"
   ],
+  "ignorePatterns": [
+    "semantic/**/*"
+  ],
   "parserOptions": {
     "ecmaVersion": 12,
     "parser": "@babel/eslint-parser",

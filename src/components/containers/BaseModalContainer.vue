@@ -43,7 +43,10 @@ export default {
       this.modalOptions
     )
 
-    this.$emit('init', this.$refs.modal)
+    this.$emit(
+      'init',
+      this.$refs.modal
+    )
   },
   beforeUnmount () {
     remove(this.$refs.modal)

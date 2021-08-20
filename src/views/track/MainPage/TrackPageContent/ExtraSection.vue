@@ -1,8 +1,16 @@
 <template>
   <div class="main-basic-segments-container">
-    <SecondarySegment :trackData="trackData" />
+    <InfoSegment :trackData="trackData" />
+
+    <BaseDivider />
+
     <VideoSegment :query="query" />
+
+    <BaseDivider />
+
     <LyricsSegment :query="query" />
+
+    <BaseDivider />
 
     <SimilarSegment
       :artistName="artistName"
@@ -12,7 +20,8 @@
 </template>
 
 <script>
-import SecondarySegment from './ExtraSection/SecondarySegment.vue'
+import InfoSegment from './ExtraSection/InfoSegment.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
 import SimilarSegment from './ExtraSection/SimilarSegment.vue'
@@ -20,7 +29,8 @@ import SimilarSegment from './ExtraSection/SimilarSegment.vue'
 export default {
   name: 'ExtraSection',
   components: {
-    SecondarySegment,
+    InfoSegment,
+    BaseDivider,
     VideoSegment,
     LyricsSegment,
     SimilarSegment
@@ -45,7 +55,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-basic-segments-container
-  margin-left: calc(150px + 1em)
-</style>
+<style lang="sass" scoped></style>

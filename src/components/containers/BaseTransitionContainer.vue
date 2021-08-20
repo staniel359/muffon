@@ -53,7 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.hidden.transition
-  @extend .d-block
-</style>
+<style lang="sass" scoped></style>

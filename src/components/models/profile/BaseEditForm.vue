@@ -13,7 +13,7 @@
     <BaseDivider />
 
     <ExtraSection
-      @avatarChange="handleAvatarChange"
+      @imageChange="handleImageChange"
     />
 
     <SubmitButton />
@@ -29,7 +29,7 @@ import ExtraSection from './BaseEditForm/ExtraSection.vue'
 import SubmitButton from './BaseEditForm/SubmitButton.vue'
 import { editFormOptions } from '#/data/plugins/semantic'
 import fetchEditData from '#/actions/api/profile/edit/fetchData'
-import { date as formatDate } from '#/formatters'
+import { stringToDate as formatStringToDate } from '#/formatters'
 
 export default {
   name: 'BaseEditForm',
@@ -43,7 +43,7 @@ export default {
   },
   data () {
     return {
-      avatar: null,
+      image: null,
       error: null,
       form: null,
       isLoading: false,
@@ -70,8 +70,8 @@ export default {
         )
       )
     },
-    handleAvatarChange (value) {
-      this.avatar = value
+    handleImageChange (value) {
+      this.image = value
     },
     fetchEditData,
     formatProfileParams (fields) {
@@ -81,9 +81,9 @@ export default {
         passwordConfirmation:
           fields.passwordConfirmation,
         nickname: fields.nickname,
-        avatar: this.avatar,
+        image: this.image,
         gender: fields.gender,
-        birthdate: formatDate(
+        birthdate: formatStringToDate(
           fields.birthdate
         ),
         country: fields.country,

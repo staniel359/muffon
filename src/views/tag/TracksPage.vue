@@ -8,7 +8,9 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
+        :profileId="slotProps.profileId"
         isWithArtistName
+        isWithLibraryLink
       />
     </template>
   </BaseTagPaginatedPageContainer>

@@ -9,8 +9,10 @@
       <BaseTracksSimpleList
         :tracks="slotProps.similar"
         :artistName="slotProps.artistName"
+        :profileId="slotProps.profileId"
         isWithArtistName
         isWithDuration
+        isWithLibraryLink
       />
     </template>
   </BaseTrackPaginatedPageContainer>

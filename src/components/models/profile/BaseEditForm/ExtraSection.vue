@@ -1,9 +1,9 @@
 <template>
   <div class="extra-section">
-    <BaseAvatarField
-      class="avatar-field"
-      :value="avatar"
-      @change="handleAvatarChange"
+    <BaseImageField
+      class="image-field"
+      :value="image"
+      @change="handleImageChange"
     />
 
     <div class="extra-fields">
@@ -19,7 +19,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseAvatarField from '@/models/profile/fields/BaseAvatarField.vue'
+import BaseImageField from '@/models/profile/fields/BaseImageField.vue'
 import BaseGenderField from '@/models/profile/fields/BaseGenderField.vue'
 import BaseBirthdateField from '@/models/profile/fields/BaseBirthdateField.vue'
 import BaseCountryField from '@/models/profile/fields/BaseCountryField.vue'
@@ -28,21 +28,21 @@ import BaseCityField from '@/models/profile/fields/BaseCityField.vue'
 export default {
   name: 'ExtraSection',
   components: {
-    BaseAvatarField,
+    BaseImageField,
     BaseGenderField,
     BaseBirthdateField,
     BaseCountryField,
     BaseCityField
   },
   emits: [
-    'avatarChange'
+    'imageChange'
   ],
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    avatar () {
-      return this.profileInfo.avatar_url
+    image () {
+      return this.profileInfo.image_url
     },
     gender () {
       return this.profileInfo.gender
@@ -58,9 +58,9 @@ export default {
     }
   },
   methods: {
-    handleAvatarChange (value) {
+    handleImageChange (value) {
       this.$emit(
-        'avatarChange',
+        'imageChange',
         value
       )
     }
@@ -72,7 +72,7 @@ export default {
 .extra-section
   @extend .d-flex
 
-.avatar-field
+.image-field
   margin-right: 1em !important
 
 .extra-fields

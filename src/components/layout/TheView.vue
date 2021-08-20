@@ -5,11 +5,24 @@
 </template>
 
 <script>
+import { generateKey } from '#/utils'
+
 export default {
   name: 'TheView',
-  computed: {
-    key () {
-      return this.$route.fullPath
+  data () {
+    return {
+      key: null
+    }
+  },
+  watch: {
+    $route: 'handleRouteChange'
+  },
+  methods: {
+    handleRouteChange () {
+      this.refresh()
+    },
+    refresh () {
+      this.key = generateKey()
     }
   }
 }

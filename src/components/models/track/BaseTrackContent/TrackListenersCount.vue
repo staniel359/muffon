@@ -6,10 +6,12 @@
       :style="{ width: listenersCounterBarWidthFormatted }"
     ></div>
 
-    <div class="description track-listeners-count-content">
-      <i class="user icon track-listeners-icon" />
+    <div class="description">
       <small>
-        {{ listenersCountFormatted }}
+        <i class="user icon" />
+        <span>
+          {{ listenersCountFormatted }}
+        </span>
       </small>
     </div>
   </div>
@@ -67,10 +69,6 @@ export default {
   &.inverted
     @extend .background-grey-inverted
 
-.track-listeners-count-content
+.description
   @extend .d-flex, .align-items-center
-
-.track-listeners-icon
-  font-size: 0.7em
-  height: 0.9em
 </style>

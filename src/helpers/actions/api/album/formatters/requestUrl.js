@@ -4,7 +4,8 @@ export default function ({
   albumTitle,
   artistId,
   albumId,
-  albumType = 'album'
+  albumType = 'album',
+  scope
 }) {
   const artistNameEncoded = encodeURIComponent(artistName)
   const albumTitleEncoded = encodeURIComponent(albumTitle)
@@ -17,16 +18,16 @@ export default function ({
     }
   }
 
-  const scope = formatScope()
+  const albumScope = formatScope()
 
   const formatUrlData = () => {
     switch (sourceId) {
       case 'lastfm':
-        return `artists/${artistNameEncoded}/${scope}/${albumTitleEncoded}`
+        return `artists/${artistNameEncoded}/${albumScope}/${albumTitleEncoded}/${scope}`
       case 'bandcamp':
-        return `artists/${artistId}/${scope}/${albumId}`
+        return `artists/${artistId}/${albumScope}/${albumId}/${scope}`
       default:
-        return `${scope}/${albumId}`
+        return `${albumScope}/${albumId}/${scope}`
     }
   }
 

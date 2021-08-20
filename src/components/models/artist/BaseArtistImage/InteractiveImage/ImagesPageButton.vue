@@ -10,7 +10,7 @@
 
 <script>
 import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
-import { artistImages as formatArtistImagesLink } from '#/formatters/links'
+import { images as formatArtistImagesLink } from '#/formatters/links/artist'
 
 export default {
   name: 'ImagesPageButton',

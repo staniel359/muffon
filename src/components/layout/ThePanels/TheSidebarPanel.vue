@@ -6,6 +6,7 @@
     <div class="sidebar-panel-content">
       <div class="sidebar-top">
         <ProfileItem />
+        <LibraryItem />
       </div>
 
       <div>
@@ -19,6 +20,7 @@
 <script>
 import { mapState } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
+import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 
@@ -26,6 +28,7 @@ export default {
   name: 'TheSidebarPanel',
   components: {
     ProfileItem,
+    LibraryItem,
     SettingsItem,
     LogoutItem
   },

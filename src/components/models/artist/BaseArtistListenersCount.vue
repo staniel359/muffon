@@ -3,14 +3,22 @@
     v-if="isLoading"
     class="ui active mini inline loader"
   ></div>
-  <small v-else>
-    {{ listenersCountFormatted }}
-  </small>
+  <div
+    v-else
+    class="main-small-container"
+  >
+    <small>
+      <i class="user icon"></i>
+      <span>
+        {{ listenersCountFormatted }}
+      </span>
+    </small>
+  </div>
 </template>
 
 <script>
 import fetchArtistData from '#/actions/api/artist/fetchData'
-import { listenersCount as listenersCountDecorated } from '#/decorators'
+import { number as formatNumber } from '#/formatters'
 
 export default {
   name: 'BaseArtistListenersCount',
@@ -40,7 +48,7 @@ export default {
       )
     },
     listenersCountFormatted () {
-      return listenersCountDecorated(
+      return formatNumber(
         this.listenersCountFetched
       )
     },

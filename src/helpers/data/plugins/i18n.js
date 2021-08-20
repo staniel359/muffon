@@ -1,4 +1,4 @@
-export const messages = {
+export default {
   en: {
     layout: {
       navigation: {
@@ -21,9 +21,22 @@ export const messages = {
           albums: 'Albums',
           tracks: 'Tracks'
         },
-        video: {
-          channel: {
-            videos: 'Videos'
+        videoChannel: {
+          videos: 'Videos'
+        },
+        profile: {
+          library: 'Library'
+        },
+        library: {
+          artists: 'Artists',
+          albums: 'Albums',
+          tracks: 'Tracks',
+          artist: {
+            albums: 'Albums',
+            tracks: 'Tracks'
+          },
+          album: {
+            tracks: 'Tracks'
           }
         }
       },
@@ -42,6 +55,7 @@ export const messages = {
         variants: 'Variants ({number})'
       },
       sidebar: {
+        library: 'Library',
         settings: 'Settings',
         logout: 'Log out'
       },
@@ -78,6 +92,10 @@ export const messages = {
         header: 'Bad request',
         content: 'Please make a request with valid data.'
       },
+      forbidden: {
+        header: 'Forbidden',
+        content: 'You don\'t have rights to perform this action.'
+      },
       notFound: {
         header: 'Nothing was found',
         content: 'Please try looking for something else.'
@@ -111,47 +129,141 @@ export const messages = {
           closeTab: 'Close tab'
         }
       },
-      artist: {
-        segments: {
-          tracks: 'Top tracks',
-          albums: 'Top albums',
-          similar: 'Similar'
-        }
-      },
       track: {
         videos: {
+          find: 'Find video',
+          select: 'Select video:',
           loading: 'Loading videos...',
-          error: 'Error.',
-          empty: 'No videos.'
+          error: 'Error',
+          empty: 'No videos'
         },
         lyrics: {
+          find: 'Find lyrics',
+          select: 'Select lyrics:',
           loading: 'Loading lyrics...',
-          error: 'Error.',
-          empty: 'No lyrics.'
-        },
-        segments: {
-          similar: 'Similar'
+          error: 'Error',
+          empty: 'No lyrics'
         }
       },
       tag: {
-        segments: {
-          similar: 'Similar:',
-          artists: 'Top artists',
-          albums: 'Top albums',
-          tracks: 'Top tracks'
+        similar: 'Similar:'
+      },
+      library: {
+        statistics: {
+          artists: 'Artists',
+          albums: 'Albums',
+          tracks: 'Tracks'
+        },
+        since: 'In library since',
+        add: {
+          header: 'Add to library',
+          buttons: {
+            folder: 'From folder',
+            account: 'From account',
+            search: 'From search'
+          },
+          save: 'Save to library',
+          retry: 'Retry',
+          folder: {
+            select: 'Select folder',
+            active: {
+              import: 'Importing {value} of {total} files...',
+              save: 'Saving {value} of {total} files...'
+            },
+            error: {
+              import: {
+                header: '{count} files could not be processed. Please fix these files\' ID3 tags and retry:'
+              },
+              save: {
+                header: '{count} files could not be processed:'
+              }
+            },
+            success: {
+              import: {
+                header: 'All {count} files were successfuly imported',
+                content: 'You might want to check them before saving to library'
+              },
+              save: {
+                header: 'All {count} files were successfuly saved to library'
+              }
+            }
+          },
+          account: {
+            connect: {
+              lastfm: 'Connect Last.FM account'
+            },
+            import: {
+              lastfm: 'Import Last.FM data'
+            },
+            active: {
+              import: 'Importing {value} of {total} plays...',
+              save: 'Saving {value} of {total} tracks...'
+            },
+            error: {
+              save: {
+                header: '{count} tracks could not be processed:'
+              }
+            },
+            success: {
+              import: {
+                header: 'All {count} tracks were successfuly imported',
+                content: 'You might want to check them before saving to library'
+              },
+              save: {
+                header: 'All {count} tracks were successfuly saved to library'
+              }
+            }
+          },
+          search: {
+            input: {
+              artists: 'Search for artists...',
+              albums: 'Search for albums...',
+              tracks: 'Search for tracks...'
+            },
+            select: {
+              artists: 'Artists',
+              albums: 'Albums',
+              tracks: 'Tracks'
+            },
+            active: {
+              save: {
+                artists: 'Saving {value} of {total} artists...',
+                albums: 'Saving {value} of {total} albums...',
+                tracks: 'Saving {value} of {total} tracks...'
+              }
+            },
+            error: {
+              save: {
+                header: {
+                  artists: '{count} artists could not be processed:',
+                  albums: '{count} albums could not be processed:',
+                  tracks: '{count} tracks could not be processed:'
+                }
+              }
+            },
+            success: {
+              save: {
+                header: {
+                  artists: 'All {count} artists were successfuly saved to library',
+                  albums: 'All {count} albums were successfuly saved to library',
+                  tracks: 'All {count} tracks were successfuly saved to library'
+                }
+              }
+            }
+          }
         }
       }
     },
     shared: {
+      error: 'Error',
       more: 'More...',
       loading: 'Loading...',
-      listener: '{number} listener | {number} listeners',
       track: {
         source: {
           via: 'Via {source}'
         }
       },
-      tracks: '{number} track | {number} tracks',
+      tracks: '{count} tracks',
       paginated: {
         noCollection: {
           header: 'No {collection}',
@@ -159,6 +271,7 @@ export const messages = {
         }
       },
       sources: {
+        find: 'Find in sources',
         select: {
           source: 'Select source:',
           type: 'Select type:',
@@ -193,9 +306,9 @@ export const messages = {
             password: 'Password',
             passwordConfirmation: 'Confirm password',
             nickname: 'Nickname',
-            avatar: {
-              add: 'Upload avatar',
-              remove: 'Remove avatar'
+            image: {
+              add: 'Upload image',
+              remove: 'Remove image'
             },
             gender: 'Gender',
             birthdate: 'Birth date',
@@ -251,6 +364,32 @@ export const messages = {
             link: 'Log in'
           }
         }
+      },
+      library: {
+        add: 'Add to library',
+        show: 'Show in library',
+        delete: {
+          header: 'Delete from library',
+          artist: {
+            header: 'Delete artist from library',
+            also: 'This will also delete all this artist\'s albums and tracks.'
+          },
+          album: {
+            header: 'Delete album from library',
+            also: 'This will also delete all this album\'s tracks.'
+          },
+          track: {
+            header: 'Delete track from library'
+          },
+          going: 'You are going to delete {modelFullTitle} from your library.',
+          undo: 'You can\'t undo this action!',
+          sure: 'Are you sure?'
+        },
+        deleted: '{modelFullTitle} was successfully deleted from your library'
+      },
+      buttons: {
+        cancel: 'Cancel',
+        delete: 'Delete'
       }
     }
   }

@@ -8,12 +8,13 @@ export default function ({
   sourceId = 'lastfm',
   albumType = '',
   scope = '',
+  profileId,
   page,
   limit
 }) {
   this.isLoading = true
 
-  const urlFormatted = formatRequestUrl({
+  const url = formatRequestUrl({
     sourceId,
     artistName,
     artistId,
@@ -21,6 +22,7 @@ export default function ({
   })
 
   const params = {
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit }),
     ...(albumType && {
@@ -51,7 +53,7 @@ export default function ({
   }
 
   return axios
-    .get(urlFormatted, { params })
+    .get(url, { params })
     .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)

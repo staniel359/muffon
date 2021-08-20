@@ -11,8 +11,10 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps.similar"
+        :profileId="slotProps.profileId"
         isWithArtistName
         isWithDuration
+        isWithLibraryLink
       />
     </template>
   </BaseTrackPaginatedSegmentContainer>
@@ -22,7 +24,7 @@
 import BaseTrackPaginatedSegmentContainer
   from '@/containers/pages/track/BaseTrackPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { trackSimilar as formatTrackSimilarLink } from '#/formatters/links'
+import { similar as formatTrackSimilarLink } from '#/formatters/links/track'
 
 export default {
   name: 'SimilarSegment',

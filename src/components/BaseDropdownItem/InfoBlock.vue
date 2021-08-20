@@ -10,13 +10,20 @@
         v-if="subheader"
         class="sub header main-extra-title"
       >
-        {{ subheader }}
+        <strong>
+          {{ subheader }}
+        </strong>
       </span>
     </BaseHeaderContainer>
 
-    <small v-if="content">
-      {{ content }}
-    </small>
+    <div
+      v-if="content"
+      class="main-small-container"
+    >
+      <small>
+        {{ content }}
+      </small>
+    </div>
   </div>
 
   <div

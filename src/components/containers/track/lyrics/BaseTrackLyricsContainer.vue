@@ -1,5 +1,6 @@
 <template>
   <BaseSegmentContainer
+    class="basic"
     :isLoading="isLoading"
     :error="error"
     @refresh="handleRefresh"

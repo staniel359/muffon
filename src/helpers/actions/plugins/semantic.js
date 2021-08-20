@@ -1,3 +1,5 @@
+import store from '*/store'
+
 // Dimmer
 
 export const setDimmer = (el, options) => {
@@ -165,6 +167,42 @@ export const setCalendarDate = (el, value) => {
 
 export const setAccordion = (el, options) => {
   $(el).accordion(options)
+}
+
+// Progress
+
+export const setProgress = (el, options) => {
+  $(el).progress(options)
+}
+
+export const resetProgress = el => {
+  $(el).progress('reset')
+  $(el).progress('remove success')
+  $(el).progress('remove error')
+}
+
+export const setProgressTotalCount = (el, value) => {
+  $(el).progress('set total', value)
+}
+
+export const incrementProgress = el => {
+  $(el).progress('increment')
+}
+
+export const setProgressValue = (el, value) => {
+  $(el).progress('set progress', value)
+}
+
+// Toast
+
+export const setToast = ({ message, icon }) => {
+  const { visibleContext } = store.state.layout
+
+  $('body').toast({
+    showIcon: icon,
+    context: visibleContext,
+    message
+  })
 }
 
 // Utils

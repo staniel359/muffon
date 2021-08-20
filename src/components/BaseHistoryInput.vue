@@ -9,11 +9,10 @@
     <BaseInput
       class="fluid"
       ref="input"
+      icon="search"
       v-model.trim="input"
-      :icon="iconFormatted"
       :placeholder="placeholderFormatted"
       @enterPress="handleEnterPress"
-      @iconClick="handleIconClick"
     />
   </BaseHistoryInputContainer>
 </template>
@@ -32,9 +31,7 @@ export default {
   },
   props: {
     scope: String,
-    query: String,
-    isWithIcon: Boolean,
-    isClearable: Boolean
+    query: String
   },
   emits: [
     'submit',
@@ -49,26 +46,9 @@ export default {
     isInput () {
       return !!this.input.length
     },
-    iconFormatted () {
-      if (this.isWithIcon) {
-        if (this.isClearable) {
-          return 'close link'
-        } else {
-          return 'search'
-        }
-      } else {
-        return null
-      }
-    },
     placeholderFormatted () {
       return localize(
         'layout.search.input.placeholder'
-      )
-    },
-    isClearButton () {
-      return (
-        this.isWithIcon &&
-          this.isClearable
       )
     }
   },
@@ -78,20 +58,6 @@ export default {
 
       this.submit()
     },
-    handleIconClick () {
-      if (this.isClearButton) {
-        this.handleClearButtonClick()
-      }
-    },
-    handleClearButtonClick () {
-      this.input = ''
-
-      this.$emit('clear')
-
-      this.$nextTick(() => {
-        this.focus()
-      })
-    },
     handleEnterPress () {
       if (this.isInput) {
         this.submit()
@@ -100,13 +66,23 @@ export default {
     submit () {
       this.unfocus()
 
-      this.$emit('submit', this.input)
+      this.$emit(
+        'submit',
+        this.input
+      )
     },
     focus () {
       this.$refs.input.focus()
     },
     unfocus () {
       this.$refs.input.unfocus()
+    },
+    clear () {
+      this.input = ''
+
+      this.$nextTick(() => {
+        this.focus()
+      })
     }
   }
 }

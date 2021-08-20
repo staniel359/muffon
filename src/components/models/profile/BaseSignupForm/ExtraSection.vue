@@ -1,8 +1,8 @@
 <template>
   <div class="extra-section">
-    <BaseAvatarField
-      class="avatar-field"
-      @change="handleAvatarChange"
+    <BaseImageField
+      class="image-field"
+      @change="handleImageChange"
     />
 
     <div class="extra-fields">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import BaseAvatarField from '@/models/profile/fields/BaseAvatarField.vue'
+import BaseImageField from '@/models/profile/fields/BaseImageField.vue'
 import BaseGenderField from '@/models/profile/fields/BaseGenderField.vue'
 import BaseBirthdateField from '@/models/profile/fields/BaseBirthdateField.vue'
 import BaseCountryField from '@/models/profile/fields/BaseCountryField.vue'
@@ -26,19 +26,19 @@ import BaseCityField from '@/models/profile/fields/BaseCityField.vue'
 export default {
   name: 'ExtraSection',
   components: {
-    BaseAvatarField,
+    BaseImageField,
     BaseGenderField,
     BaseBirthdateField,
     BaseCountryField,
     BaseCityField
   },
   emits: [
-    'avatarChange'
+    'imageChange'
   ],
   methods: {
-    handleAvatarChange (value) {
+    handleImageChange (value) {
       this.$emit(
-        'avatarChange',
+        'imageChange',
         value
       )
     }
@@ -50,7 +50,7 @@ export default {
 .extra-section
   @extend .d-flex
 
-.avatar-field
+.image-field
   margin-right: 1em !important
 
 .extra-fields

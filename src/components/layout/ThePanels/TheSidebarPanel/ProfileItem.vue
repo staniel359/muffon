@@ -4,9 +4,9 @@
     :link="profileMainLinkFormatted"
   >
     <div class="main-sidebar-item-icon-container">
-      <BaseProfileAvatar
-        class="sidebar-avatar"
-        :avatar="avatar"
+      <BaseProfileImage
+        class="profile-image"
+        :image="image"
       />
     </div>
 
@@ -22,23 +22,23 @@
 <script>
 import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
-import BaseProfileAvatar from '@/models/profile/BaseProfileAvatar.vue'
+import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import { profileMain as formatProfileMainLink } from '#/formatters/links'
+import { main as formatProfileMainLink } from '#/formatters/links/profile'
 
 export default {
   name: 'ProfileItem',
   components: {
     BaseLinkContainer,
-    BaseProfileAvatar,
+    BaseProfileImage,
     BaseHeader
   },
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    avatar () {
-      return this.profileInfo.avatar_url
+    image () {
+      return this.profileInfo.image_url
     },
     nickname () {
       return this.profileInfo.nickname
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.sidebar-avatar
+.profile-image
   width: 25px
   height: 25px
 </style>

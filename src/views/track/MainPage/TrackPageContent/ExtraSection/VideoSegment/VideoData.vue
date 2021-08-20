@@ -1,34 +1,32 @@
 <template>
-  <BaseSegmentContainer class="video-data">
+  <div>
     <div
-      class="ui embed"
+      class="ui embed video-embed"
       ref="video"
     ></div>
-  </BaseSegmentContainer>
 
-  <div class="video-data-more-container">
-    <BaseLinkContainer
-      :link="videoMainLinkFormatted"
-    >
-      <strong class="link">
-        {{ moreFormatted }}
-      </strong>
-    </BaseLinkContainer>
+    <div class="video-data-more-container">
+      <BaseLinkContainer
+        :link="videoMainLinkFormatted"
+      >
+        <strong class="link">
+          {{ moreFormatted }}
+        </strong>
+      </BaseLinkContainer>
+    </div>
   </div>
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import { setEmbed } from '#/actions/plugins/semantic'
 import { mainEmbedOptions } from '#/data/plugins/semantic'
-import { videoMain as formatVideoMainLink } from '#/formatters/links'
+import { main as formatVideoMainLink } from '#/formatters/links/video'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'VideoData',
   components: {
-    BaseSegmentContainer,
     BaseLinkContainer
   },
   props: {
@@ -69,8 +67,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.video-data
-  margin: 20px 0
+.video-embed
+  margin: 1em 0
 
 .video-data-more-container
   @extend .d-flex, .justify-content-flex-end

@@ -10,7 +10,9 @@
         :tracks="slotProps.tracks"
         :artistName="slotProps.artistName"
         :topTrackCount="slotProps.topTrackCount"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseArtistPaginatedPageContainer>

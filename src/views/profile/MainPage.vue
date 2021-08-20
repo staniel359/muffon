@@ -3,45 +3,42 @@
     :profileId="profileId"
   >
     <template #default="slotProps">
-      <BaseSegmentContainer
-        :class="[
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
-      >
-        <InfoSection
-          :profileData="slotProps.profileData"
-        />
+      <div class="main-library-page-columns-container">
+        <div :class="[
+          'main-library-page-left-column',
+          'main-sticky-container'
+        ]">
+          <InfoSegment
+            :profileData="slotProps.profileData"
+          />
+        </div>
 
-        <BaseDivider />
-      </BaseSegmentContainer>
+        <div class="main-library-page-right-column">
+          <LibrarySegment
+            :profileId="slotProps.profileData.id.toString()"
+          />
+        </div>
+      </div>
     </template>
   </BaseProfilePageContainer>
 </template>
 
 <script>
 import BaseProfilePageContainer
-  from '@/containers/profile/BaseProfilePageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import InfoSection from './MainPage/InfoSection.vue'
-import BaseDivider from '@/BaseDivider.vue'
+  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+import InfoSegment from './MainPage/InfoSegment.vue'
+import LibrarySegment from './MainPage/LibrarySegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseProfilePageContainer,
-    BaseSegmentContainer,
-    InfoSection,
-    BaseDivider
+    InfoSegment,
+    LibrarySegment
   },
   props: {
     profileId: String
-  },
-  data () {
-    return {}
-  },
-  computed: {},
-  methods: {}
+  }
 }
 </script>
 

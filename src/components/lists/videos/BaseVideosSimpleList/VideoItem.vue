@@ -15,9 +15,11 @@
         :text="videoTitle"
       />
 
-      <small>
-        {{ publishDate }}
-      </small>
+      <div class="main-small-container">
+        <small>
+          {{ publishDate }}
+        </small>
+      </div>
     </div>
   </BaseLinkContainer>
 </template>
@@ -26,7 +28,7 @@
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import { videoMain as formatVideoMainLink } from '#/formatters/links'
+import { main as formatVideoMainLink } from '#/formatters/links/video'
 
 export default {
   name: 'VideoItem',
@@ -67,7 +69,7 @@ export default {
 .video-image
   width: 112px
   height: 63px
-  margin-right: 10px !important
+  margin-right: 0.5em !important
 
 .content
   @extend .no-padding

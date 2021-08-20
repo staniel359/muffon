@@ -11,24 +11,25 @@ export default function ({
   albumType = 'album',
   paramsData,
   scope = '',
+  profileId,
   page,
   limit
 }) {
   this.isLoading = true
 
-  const urlFormatted = formatRequestUrl({
+  const url = formatRequestUrl({
     sourceId,
     artistName,
     albumTitle,
     artistId,
     albumId,
-    albumType
+    albumType,
+    scope
   })
-
-  const url = `${urlFormatted}/${scope}`
 
   const params = {
     ...paramsData,
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit })
   }

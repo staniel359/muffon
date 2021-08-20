@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    :link="artistMainLinkFormatted"
+    :link="linkFormatted"
     @click="handleLinkClick"
   >
     <BaseSimpleCardContainer>
@@ -15,7 +15,7 @@
 
       <div class="content">
         <BaseHeader
-          class="link"
+          :class="{ link: isHeaderLink }"
           tag="h4"
           :text="artistName"
         />
@@ -27,6 +27,23 @@
           :listenersCount="listenersCount"
           @loadEnd="handleListenersCountLoadEnd"
         />
+
+        <LibraryCountersSection
+          :artistData="artistData"
+          :isWithTracksCount="isWithTracksCount"
+          :isWithAlbumsCount="isWithAlbumsCount"
+          @tracksLinkActiveChange="handleTracksLinkActiveChange"
+          @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
+        />
+
+        <div class="description">
+          <BaseProfileLibraryLinkButton
+            v-if="isShowLibraryLink"
+            model="artist"
+            :modelId="libraryId"
+            :profileId="profileId"
+          />
+        </div>
       </div>
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
@@ -39,7 +56,14 @@ import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
-import { artistMain as formatArtistMainLink } from '#/formatters/links'
+import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
+import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import {
+  main as formatProfileLibraryArtistMainLink,
+  tracks as formatProfileLibraryArtistTracksLink,
+  albums as formatProfileLibraryArtistAlbumsLink
+} from '#/formatters/links/profile/library/artist'
 
 export default {
   name: 'ArtistItem',
@@ -48,7 +72,9 @@ export default {
     BaseSimpleCardContainer,
     BaseArtistImage,
     BaseHeader,
-    BaseArtistListenersCount
+    BaseArtistListenersCount,
+    LibraryCountersSection,
+    BaseProfileLibraryLinkButton
   },
   inject: [
     'findPaginationItem'
@@ -58,16 +84,50 @@ export default {
       type: Object,
       required: true
     },
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isWithTracksCount: Boolean,
+    isWithAlbumsCount: Boolean,
+    isWithLibrary: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    isWithLibraryLink: Boolean
   },
   emits: [
     'linkClick'
   ],
+  data () {
+    return {
+      isTracksLinkActive: false,
+      isAlbumsLinkActive: false
+    }
+  },
   computed: {
-    artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+    linkFormatted () {
+      if (this.isLinkToLibrary) {
+        if (this.isTracksLinkActive) {
+          return formatProfileLibraryArtistTracksLink({
+            profileId: this.profileId,
+            artistId: this.artistId
+          })
+        } else if (this.isAlbumsLinkActive) {
+          return formatProfileLibraryArtistAlbumsLink({
+            profileId: this.profileId,
+            artistId: this.artistId
+          })
+        } else {
+          return formatProfileLibraryArtistMainLink({
+            profileId: this.profileId,
+            artistId: this.artistId
+          })
+        }
+      } else {
+        return formatArtistMainLink({
+          artistName: this.artistName
+        })
+      }
+    },
+    artistId () {
+      return this.artistData.id
     },
     artistName () {
       return this.artistData.name
@@ -80,6 +140,21 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    isHeaderLink () {
+      return (
+        !this.isTracksLinkActive &&
+          !this.isAlbumsLinkActive
+      )
+    },
+    isShowLibraryLink () {
+      return (
+        this.isWithLibraryLink &&
+          !!this.libraryId
+      )
+    },
+    libraryId () {
+      return this.artistData.library_id?.toString()
     }
   },
   methods: {
@@ -95,6 +170,12 @@ export default {
       this.findPaginationItem({
         uuid: this.uuid
       }).listeners_count = value
+    },
+    handleTracksLinkActiveChange (value) {
+      this.isTracksLinkActive = value
+    },
+    handleAlbumsLinkActiveChange (value) {
+      this.isAlbumsLinkActive = value
     }
   }
 }

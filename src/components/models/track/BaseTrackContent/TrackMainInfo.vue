@@ -4,6 +4,9 @@
       :trackTitle="trackTitle"
       :trackExtraTitle="trackExtraTitle"
       :artistName="artistName"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :trackId="trackId"
       @linkClick="handleLinkClick"
     />
 
@@ -11,6 +14,9 @@
       v-if="isRenderArtistName"
       :artists="artists"
       :artistName="artistName"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :artistId="artistId"
       @linkClick="handleLinkClick"
     />
 
@@ -18,6 +24,9 @@
       v-if="isRenderAlbumTitle"
       :albumTitle="albumTitle"
       :artistName="artistName"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :albumId="albumId"
       @linkClick="handleLinkClick"
     />
   </div>
@@ -43,7 +52,12 @@ export default {
     artists: Array,
     albumArtistName: String,
     isWithAlbumTitle: Boolean,
-    albumTitle: String
+    albumTitle: String,
+    isLinkToLibrary: Boolean,
+    profileId: String,
+    trackId: String,
+    artistId: String,
+    albumId: String
   },
   emits: [
     'linkClick'

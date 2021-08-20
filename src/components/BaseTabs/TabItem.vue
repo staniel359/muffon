@@ -26,7 +26,10 @@ export default {
   ],
   computed: {
     isActive () {
-      return this.tabId === this.activeTabId
+      return (
+        this.tabId ===
+          this.activeTabId
+      )
     },
     tabId () {
       return this.tabData.uuid
@@ -37,7 +40,10 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click', this.tabId)
+      this.$emit(
+        'click',
+        this.tabId
+      )
     }
   }
 }

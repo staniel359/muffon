@@ -1,0 +1,149 @@
+<template>
+  <div class="main-library-modal-save-section">
+    <BaseProgress
+      v-show="isProgress"
+      ref="progress"
+      :formatActive="formatProgressActive"
+      @complete="handleProgressComplete"
+    />
+
+    <CompleteSection
+      v-if="isComplete"
+      :isError="isError"
+      :totalCount="totalCount"
+      :errorFiles="errorFiles"
+      @retry="handleRetry"
+    />
+  </div>
+</template>
+
+<script>
+import BaseProgress from '@/BaseProgress.vue'
+import CompleteSection from './SaveSection/CompleteSection.vue'
+import postTrackData from '#/actions/api/profile/library/tracks/postData'
+import { localize } from '#/actions/plugins/i18n'
+
+export default {
+  name: 'SaveSection',
+  components: {
+    BaseProgress,
+    CompleteSection
+  },
+  provide () {
+    return {
+      setErrorFiles: this.setErrorFiles
+    }
+  },
+  inject: [
+    'setFiles'
+  ],
+  props: {
+    files: {
+      type: Array,
+      required: true
+    }
+  },
+  data () {
+    return {
+      isComplete: false,
+      isError: false,
+      isMounted: false,
+      isProgress: true,
+      errorFiles: []
+    }
+  },
+  computed: {
+    totalCount () {
+      return this.files.length
+    }
+  },
+  mounted () {
+    this.isMounted = true
+
+    this.saveFiles()
+  },
+  beforeUnmount () {
+    this.isMounted = false
+  },
+  watch: {
+    files: 'handleFilesChange'
+  },
+  methods: {
+    handleFilesChange () {
+      this.$refs.progress.reset()
+
+      this.saveFiles()
+    },
+    handleProgressComplete () {
+      this.isComplete = true
+      this.isProgress = false
+    },
+    handleRetry () {
+      this.isComplete = false
+      this.isError = false
+      this.isProgress = true
+
+      this.setFiles(
+        this.errorFiles
+      )
+
+      this.errorFiles = []
+    },
+    postTrackData,
+    formatProgressActive ({ value, total }) {
+      return localize(
+        'pages.library.add.folder.active.save',
+        { value, total }
+      )
+    },
+    async saveFiles () {
+      this.$refs.progress.setTotalCount(
+        this.totalCount
+      )
+
+      for (const fileData of this.files) {
+        if (this.isMounted) {
+          await this.saveFile(fileData)
+        }
+      }
+    },
+    async saveFile (fileData) {
+      const fileFormatted = this.formatFile(
+        fileData
+      )
+
+      const handleError = () => {
+        if (this.isMounted) {
+          this.errorFiles.push(
+            fileData
+          )
+        }
+      }
+
+      const handleFinish = () => {
+        if (this.isMounted) {
+          this.$refs.progress.increment()
+        }
+      }
+
+      await this.postTrackData(fileFormatted)
+        .catch(handleError)
+        .finally(handleFinish)
+    },
+    formatFile (fileData) {
+      return {
+        title: fileData.title,
+        artistName: fileData.artist.name,
+        albumTitle: fileData.album.title,
+        image: fileData.image.medium,
+        created: fileData.created
+      }
+    },
+    setErrorFiles (value) {
+      this.errorFiles = value
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

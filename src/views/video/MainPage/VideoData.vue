@@ -42,5 +42,5 @@ export default {
 
 <style lang="sass" scoped>
 .video-data
-  margin-bottom: 10px
+  margin-bottom: 1em
 </style>

@@ -7,7 +7,7 @@
       class="item main-simple-list-item"
       @click="handleClick"
     >
-      <BaseProfileAvatar :avatar="avatar" />
+      <BaseProfileImage :image="image" />
 
       <div class="content">
         <BaseHeader
@@ -26,7 +26,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseListContainer from '@/containers/BaseListContainer.vue'
-import BaseProfileAvatar from '@/models/profile/BaseProfileAvatar.vue'
+import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { setGlobalData } from '#/actions'
 
@@ -34,15 +34,15 @@ export default {
   name: 'FastLoginSection',
   components: {
     BaseListContainer,
-    BaseProfileAvatar,
+    BaseProfileImage,
     BaseHeader
   },
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    avatar () {
-      return this.profileInfo.avatar_url
+    image () {
+      return this.profileInfo.image_url
     },
     nickname () {
       return this.profileInfo.nickname

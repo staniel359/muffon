@@ -9,8 +9,10 @@
       <BaseAlbumsTableList
         :itemsInRow="4"
         :albums="slotProps.albums"
+        :profileId="slotProps.profileId"
         isWithArtistName
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseTagPaginatedPageContainer>

@@ -6,7 +6,11 @@
       :albumData="albumData"
       :isWithArtistName="isWithArtistName"
       :isWithListenersCount="isWithListenersCount"
+      :isWithLibraryLink="isWithLibraryLink"
+      :profileId="profileId"
+      :isWithClearButton="isWithClearButton"
       @linkClick="handleLinkClick"
+      @deleteButtonClick="handleDeleteButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -30,10 +34,14 @@ export default {
       }
     },
     isWithArtistName: Boolean,
-    isWithListenersCount: Boolean
+    isWithListenersCount: Boolean,
+    isWithLibraryLink: Boolean,
+    profileId: String,
+    isWithClearButton: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteButtonClick'
   ],
   computed: {
     albumsFormatted () {
@@ -43,6 +51,12 @@ export default {
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
+    },
+    handleDeleteButtonClick ({ uuid }) {
+      this.$emit(
+        'deleteButtonClick',
+        { uuid }
+      )
     }
   }
 }

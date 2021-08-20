@@ -1,3 +1,7 @@
+import 'slick-carousel'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 export const setSlider = (el, options) => {
   $(el).slick(options)
 }

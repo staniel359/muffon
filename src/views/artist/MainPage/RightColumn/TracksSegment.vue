@@ -12,7 +12,9 @@
         :tracks="slotProps.tracks"
         :artistName="artistName"
         :topTrackCount="slotProps.topTrackCount"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>
@@ -22,7 +24,7 @@
 import BaseArtistPaginatedSegmentContainer
   from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { artistTracks as formatArtistTracksLink } from '#/formatters/links'
+import { tracks as formatArtistTracksLink } from '#/formatters/links/artist'
 
 export default {
   name: 'TracksSegment',

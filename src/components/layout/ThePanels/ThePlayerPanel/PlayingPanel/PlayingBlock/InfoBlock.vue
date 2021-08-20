@@ -22,12 +22,14 @@
     </BaseTickerContainer>
 
     <BaseTickerContainer v-if="albumTitle">
-      <small>
-        <BaseLink
-          :link="albumMainLinkFormatted"
-          :text="albumTitle"
-        />
-      </small>
+      <div class="main-small-container">
+        <small>
+          <BaseLink
+            :link="albumMainLinkFormatted"
+            :text="albumTitle"
+          />
+        </small>
+      </div>
     </BaseTickerContainer>
   </div>
 </template>
@@ -38,10 +40,8 @@ import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseTickerContainer from '@/containers/BaseTickerContainer.vue'
 import BaseLink from '@/BaseLink.vue'
 import BaseArtistLinks from '@/BaseArtistLinks.vue'
-import {
-  trackMain as formatTrackMainLink,
-  albumMain as formatAlbumMainLink
-} from '#/formatters/links'
+import { main as formatTrackMainLink } from '#/formatters/links/track'
+import { main as formatAlbumMainLink } from '#/formatters/links/album'
 
 export default {
   name: 'InfoBlock',

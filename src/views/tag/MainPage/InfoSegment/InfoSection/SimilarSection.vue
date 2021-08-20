@@ -49,7 +49,7 @@ export default {
     },
     similarTextFormatted () {
       return localize(
-        'pages.tag.segments.similar'
+        'pages.tag.similar'
       )
     },
     tagDataArgs () {

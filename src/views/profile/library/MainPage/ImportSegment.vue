@@ -1,0 +1,47 @@
+<template>
+  <BaseSegmentContainer
+    class="main-segment-container"
+  >
+    <BaseAccordionContainer
+      :title="headerFormatted"
+    >
+      <SearchImportBlock />
+      <AccountImportBlock />
+      <FolderImportBlock />
+    </BaseAccordionContainer>
+  </BaseSegmentContainer>
+</template>
+
+<script>
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+import SearchImportBlock from './ImportSegment/SearchImportBlock.vue'
+import AccountImportBlock from './ImportSegment/AccountImportBlock.vue'
+import FolderImportBlock from './ImportSegment/FolderImportBlock.vue'
+import { localize } from '#/actions/plugins/i18n'
+
+export default {
+  name: 'ImportSegment',
+  components: {
+    BaseSegmentContainer,
+    BaseAccordionContainer,
+    SearchImportBlock,
+    AccountImportBlock,
+    FolderImportBlock
+  },
+  computed: {
+    headerFormatted () {
+      return localize(
+        'pages.library.add.header'
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped>
+::v-deep(.import-button)
+  @extend .no-margin
+  &:not(:first-child)
+    margin-left: 1em !important
+</style>

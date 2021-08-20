@@ -74,7 +74,7 @@ export default {
 
 <style lang="sass" scoped>
 .tag-header-container
-  margin-bottom: 20px
+  margin-bottom: 1.5em
 
 .tag-header
   font-size: 2.5rem !important

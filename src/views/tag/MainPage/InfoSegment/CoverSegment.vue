@@ -1,5 +1,8 @@
 <template>
-  <BaseSegmentContainer :isLoading="isLoading">
+  <BaseSegmentContainer
+    class="cover-segment-container"
+    :isLoading="isLoading"
+  >
     <template v-if="images">
       <BaseImage
         v-for="imageData in imagesFormatted"
@@ -67,9 +70,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-segment
+.cover-segment-container
   @extend .no-padding, .absolute, .w-100
   z-index: -1
+  width: 700px !important
+  margin-left: -15px
 
 .artist-image
   @extend .d-inline

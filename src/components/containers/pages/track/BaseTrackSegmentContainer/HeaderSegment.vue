@@ -38,7 +38,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        `pages.track.segments.${this.headerTextKey}`
+        `layout.navigation.track.${this.headerTextKey}`
       )
     },
     linkFormatted () {

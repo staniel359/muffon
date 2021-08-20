@@ -5,6 +5,7 @@ export default function ({
   sourceId = 'lastfm',
   scope = '',
   query,
+  profileId,
   page,
   limit
 }) {
@@ -14,6 +15,7 @@ export default function ({
 
   const params = {
     query,
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit })
   }

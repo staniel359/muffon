@@ -11,7 +11,9 @@
       <BaseArtistsTableList
         :itemsInRow="4"
         :artists="slotProps.similar"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>
@@ -21,7 +23,7 @@
 import BaseArtistPaginatedSegmentContainer
   from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
-import { artistSimilar as formatArtistSimilarLink } from '#/formatters/links'
+import { similar as formatArtistSimilarLink } from '#/formatters/links/artist'
 
 export default {
   name: 'SimilarSegment',

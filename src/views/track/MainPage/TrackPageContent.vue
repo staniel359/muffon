@@ -1,18 +1,44 @@
 <template>
-  <BaseTrackSourceSelect :trackData="trackData" />
+  <div
+    class="track-page-columns-container"
+    ref="scrollable"
+  >
+    <div class="track-page-left-column main-sticky-container">
+      <BaseImage
+        class="rounded bordered track-image"
+        :image="image"
+      />
 
-  <BaseDivider />
+      <TrackHeader
+        v-if="scrollable"
+        :trackData="trackData"
+        :scrollable="scrollable"
+      />
 
-  <MainSection :trackData="trackData" />
-  <ExtraSection
-    :key="extraSectionKey"
-    :trackData="trackData"
-  />
+      <BaseProfileLibraryButton
+        class="library-button"
+        model="track"
+        :profileId="profileId"
+        :modelId="libraryId"
+        :trackTitle="title"
+        :artistName="artistName"
+      />
+    </div>
+
+    <div class="track-page-right-column">
+      <MainSection :trackData="trackData" />
+      <ExtraSection
+        :key="extraSectionKey"
+        :trackData="trackData"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-import BaseTrackSourceSelect from '@/models/track/BaseTrackSourceSelect.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseImage from '@/BaseImage.vue'
+import TrackHeader from './TrackPageContent/TrackHeader.vue'
+import BaseProfileLibraryButton from '@/BaseProfileLibraryButton.vue'
 import MainSection from './TrackPageContent/MainSection.vue'
 import ExtraSection from './TrackPageContent/ExtraSection.vue'
 import { generateKey } from '#/utils'
@@ -20,21 +46,44 @@ import { generateKey } from '#/utils'
 export default {
   name: 'TrackPageContent',
   components: {
-    BaseTrackSourceSelect,
-    BaseDivider,
+    BaseImage,
+    TrackHeader,
+    BaseProfileLibraryButton,
     MainSection,
     ExtraSection
   },
   props: {
-    trackData: Object
+    trackData: {
+      type: Object,
+      required: true
+    },
+    profileId: String
   },
   data () {
     return {
-      extraSectionKey: null
+      extraSectionKey: null,
+      scrollable: null
+    }
+  },
+  computed: {
+    title () {
+      return this.trackData.title
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    image () {
+      return this.trackData.image.small
+    },
+    libraryId () {
+      return this.trackData.library_id?.toString()
     }
   },
   watch: {
     trackData: 'handleTrackDataChange'
+  },
+  mounted () {
+    this.scrollable = this.$refs.scrollable
   },
   methods: {
     handleTrackDataChange () {
@@ -44,4 +93,17 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.track-page-columns-container
+  @extend .d-flex
+
+.track-page-left-column
+  width: 150px
+
+.library-button
+  margin-top: 1em
+
+.track-page-right-column
+  @extend .flex-full
+  margin-left: 1em
+</style>

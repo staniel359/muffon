@@ -1,7 +1,6 @@
 <template>
   <BaseTrackHorizontalCardContainer
     class="track-card"
-    :image="image"
   >
     <TrackMainInfo
       :trackTitle="trackTitle"
@@ -9,7 +8,9 @@
       :albumTitle="albumTitle"
     />
 
-    <TrackPlayerPanel :trackData="trackData" />
+    <BaseTrackPlayerPanel
+      :trackData="trackData"
+    />
   </BaseTrackHorizontalCardContainer>
 </template>
 
@@ -17,14 +18,14 @@
 import BaseTrackHorizontalCardContainer
   from '@/containers/track/BaseTrackHorizontalCardContainer.vue'
 import TrackMainInfo from './MainSection/TrackMainInfo.vue'
-import TrackPlayerPanel from './MainSection/TrackPlayerPanel.vue'
+import BaseTrackPlayerPanel from '@/models/track/BaseTrackPlayerPanel.vue'
 
 export default {
   name: 'MainSection',
   components: {
     BaseTrackHorizontalCardContainer,
     TrackMainInfo,
-    TrackPlayerPanel
+    BaseTrackPlayerPanel
   },
   props: {
     trackData: {
@@ -33,9 +34,6 @@ export default {
     }
   },
   computed: {
-    image () {
-      return this.trackData.image.small
-    },
     trackTitle () {
       return this.trackData.title
     },

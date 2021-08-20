@@ -12,7 +12,9 @@
         :itemsInRow="3"
         :artistName="artistName"
         :albums="slotProps.albums"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>
@@ -22,7 +24,7 @@
 import BaseArtistPaginatedSegmentContainer
   from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
-import { artistAlbums as formatArtistAlbumsLink } from '#/formatters/links'
+import { albums as formatArtistAlbumsLink } from '#/formatters/links/artist'
 
 export default {
   name: 'AlbumsSegment',

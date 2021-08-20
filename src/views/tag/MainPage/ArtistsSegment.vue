@@ -11,7 +11,9 @@
       <BaseArtistsTableList
         :itemsInRow="5"
         :artists="slotProps.artists"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseTagPaginatedSegmentContainer>
@@ -21,7 +23,7 @@
 import BaseTagPaginatedSegmentContainer
   from '@/containers/pages/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
-import { tagArtists as formatTagArtistsLink } from '#/formatters/links'
+import { artists as formatTagArtistsLink } from '#/formatters/links/tag'
 
 export default {
   name: 'ArtistsSegment',

@@ -32,7 +32,9 @@ export default function ({ audioData }) {
       audioData
     })
 
-    setPlayerPlaying(playingData)
+    setPlayerPlaying(
+      playingData
+    )
   }
 
   return axios

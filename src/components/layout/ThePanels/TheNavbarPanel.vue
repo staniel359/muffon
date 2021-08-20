@@ -11,6 +11,8 @@
       <NavbarNavigation />
 
       <NavbarHistoryButton direction="forward" />
+
+      <NavbarRefreshButton />
     </div>
   </div>
 </template>
@@ -20,13 +22,15 @@ import { mapState } from 'vuex'
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
+import NavbarRefreshButton from './TheNavbarPanel/NavbarRefreshButton.vue'
 
 export default {
   name: 'TheNavbarPanel',
   components: {
     NavbarHistoryButton,
     NavbarSearchButton,
-    NavbarNavigation
+    NavbarNavigation,
+    NavbarRefreshButton
   },
   computed: {
     ...mapState('layout', [

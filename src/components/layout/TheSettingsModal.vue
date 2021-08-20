@@ -1,20 +1,20 @@
 <template>
   <BaseModalContainer ref="modal">
-    <BaseTabsContainer
-      class="content main-modal-content-full-height"
-      :tabs="tabsFormatted"
-    >
-      <template
-        v-for="tabData in tabsFormatted"
-        :key="tabData.uuid"
-        #[tabData.scope]="slotProps"
-      >
-        <Component
-          :is="tabData.component"
-          :class="slotProps.class"
-        />
-      </template>
-    </BaseTabsContainer>
+    <div class="content main-modal-content-full-height">
+      <BaseTabsContainer :tabs="tabsFormatted">
+        <template
+          v-for="tabData in tabsFormatted"
+          :key="tabData.uuid"
+          #[tabData.scope]="slotProps"
+        >
+          <Component
+            class="settings-container"
+            :is="tabData.component"
+            :class="slotProps.class"
+          />
+        </template>
+      </BaseTabsContainer>
+    </div>
   </BaseModalContainer>
 </template>
 
@@ -69,4 +69,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.settings-container
+  @extend .d-flex, .flex-column
+</style>

@@ -11,7 +11,9 @@
         :itemsInRow="4"
         :albums="slotProps.albums"
         :artistName="slotProps.artistName"
+        :profileId="slotProps.profileId"
         isWithListenersCount
+        isWithLibraryLink
       />
     </template>
   </BaseArtistPaginatedPageContainer>

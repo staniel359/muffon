@@ -8,7 +8,11 @@
       <ExtraControlsPanel />
     </div>
 
-    <SeekerPanel @audioEnd="handleAudioEnd" />
+    <div class="audio-bottom-section">
+      <SeekerPanel
+        @audioEnd="handleAudioEnd"
+      />
+    </div>
   </div>
 </template>
 
@@ -81,5 +85,8 @@ export default {
 
 .audio-top-section
   @extend .d-flex, .align-items-center, .w-100
-  margin-bottom: 5px
+
+.audio-bottom-section
+  @extend .w-100
+  margin-top: 0.5em
 </style>

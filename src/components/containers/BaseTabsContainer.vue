@@ -1,6 +1,7 @@
 <template>
   <div class="main-tabs-container">
     <BaseTabs
+      v-bind="$attrs"
       :tabs="tabs"
       :activeTabId="activeTabId"
       @tabClick="handleTabClick"
@@ -42,10 +43,13 @@ export default {
   },
   methods: {
     handleTabClick (tabId) {
-      this.activeTabId = tabId
+      this.setActiveTab(tabId)
     },
     isActive (tabId) {
       return tabId === this.activeTabId
+    },
+    setActiveTab (tabId) {
+      this.activeTabId = tabId
     }
   }
 }

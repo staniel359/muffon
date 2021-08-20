@@ -2,6 +2,7 @@
   <BasePageContainer
     :isShowLoader="!albumData"
     :isLoading="isLoading"
+    :isError="!albumData && !!error"
     :error="error"
     @refresh="handleRefresh"
   >
@@ -12,12 +13,13 @@
       :albumData="albumData"
       :requestAlbumData="requestAlbumData"
       :handleRefresh="handleRefresh"
+      :profileId="profileId"
     ></slot>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatAlbumPageNavigation from '#/formatters/navigation/album'
 import formatAlbumPageTab from '#/formatters/tabs/album'
@@ -59,6 +61,12 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     navigationSections () {
       return formatAlbumPageNavigation(
         this.navigationData
@@ -81,6 +89,7 @@ export default {
       return {
         ...this.requestAlbumData,
         scope: this.scope,
+        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

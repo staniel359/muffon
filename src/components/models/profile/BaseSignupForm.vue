@@ -9,7 +9,7 @@
 
     <BaseAccordionContainer :title="extraTextFormatted">
       <ExtraSection
-        @avatarChange="handleAvatarChange"
+        @imageChange="handleImageChange"
       />
     </BaseAccordionContainer>
 
@@ -37,7 +37,7 @@ import LoginSection from './BaseSignupForm/LoginSection.vue'
 import { signupFormOptions } from '#/data/plugins/semantic'
 import fetchSignupData from '#/actions/api/profile/signup/fetchData'
 import { localize } from '#/actions/plugins/i18n'
-import { date as formatDate } from '#/formatters'
+import { stringToDate as formatStringToDate } from '#/formatters'
 import { setGlobalData } from '#/actions'
 
 export default {
@@ -57,7 +57,7 @@ export default {
   ],
   data () {
     return {
-      avatar: null,
+      image: null,
       error: null,
       form: null,
       profileData: null,
@@ -95,8 +95,8 @@ export default {
     handleLoginLinkClick () {
       this.$emit('loginLinkClick')
     },
-    handleAvatarChange (value) {
-      this.avatar = value
+    handleImageChange (value) {
+      this.image = value
     },
     handleProfileDataChange (value) {
       setGlobalData({
@@ -112,9 +112,9 @@ export default {
         passwordConfirmation:
           fields.passwordConfirmation,
         nickname: fields.nickname,
-        avatar: this.avatar,
+        image: this.image,
         gender: fields.gender,
-        birthdate: formatDate(
+        birthdate: formatStringToDate(
           fields.birthdate
         ),
         country: fields.country,
