@@ -79,6 +79,9 @@ const ProfileLibraryTracksPage = () => import(
 const ProfileLibraryTrackMainPage = () => import(
   '%/profile/library/track/MainPage.vue'
 )
+const RecommendationsPage = () => import(
+  '%/RecommendationsPage.vue'
+)
 
 export default [
   {
@@ -266,6 +269,13 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackMainPage',
     component: ProfileLibraryTrackMainPage,
+    props: true
+  },
+  {
+    path: '/recommendations',
+    exact: true,
+    name: 'RecommendationsPage',
+    component: RecommendationsPage,
     props: true
   }
 ]

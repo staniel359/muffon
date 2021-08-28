@@ -6,7 +6,12 @@
       text="muffon"
     />
 
-    <BaseSegmentContainer class="auth-form-segment">
+    <BaseSegmentContainer
+      :class="[
+        'auth-form-segment',
+        'main-segment-container'
+      ]"
+    >
       <BaseLoginForm
         v-if="activeForm === 'login'"
         @signupLinkClick="handleSignupLinkClick"

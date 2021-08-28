@@ -17,7 +17,9 @@
       </label>
 
       <BaseButton
-        class="red compact"
+        v-if="image"
+        class="red basic compact small"
+        icon="close"
         :text="removeFormatted"
         @click="handleRemoveButtonClick"
       />
@@ -64,7 +66,7 @@ export default {
     },
     removeFormatted () {
       return localize(
-        'shared.profile.form.fields.image.remove'
+        'shared.buttons.delete'
       )
     }
   },

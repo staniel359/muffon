@@ -1,10 +1,12 @@
 <template>
-  <BaseButton
-    class="red fluid"
-    icon="close"
-    :text="textFormatted"
-    @click="handleClick"
-  />
+  <div class="delete-button-container">
+    <BaseButton
+      class="red basic compact small"
+      icon="close"
+      :text="textFormatted"
+      @click="handleClick"
+    />
+  </div>
 
   <DeleteModal
     ref="modal"
@@ -35,7 +37,7 @@ export default {
   computed: {
     textFormatted () {
       return localize(
-        'shared.library.delete.header'
+        'shared.buttons.delete'
       )
     }
   },
@@ -47,4 +49,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.delete-button-container
+  @extend .d-flex, .justify-content-center
+</style>

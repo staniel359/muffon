@@ -7,6 +7,7 @@
     <BaseArtistImage
       class="circular bordered"
       size="extrasmall"
+      :class="{ small: isImageSmall }"
       :image="image"
       :artistName="artistName"
       @loadEnd="handleImageLoadEnd"
@@ -100,7 +101,8 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isImageSmall: Boolean
   },
   emits: [
     'linkClick',

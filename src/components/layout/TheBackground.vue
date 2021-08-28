@@ -22,6 +22,7 @@ export default {
 .the-background
   @extend .fixed, .w-100, .h-100
   background: $backgroundPath center/cover no-repeat
+  z-index: -1
   &.dark
     filter: brightness(0.5)
 </style>

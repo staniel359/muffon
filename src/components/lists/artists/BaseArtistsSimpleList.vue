@@ -14,6 +14,7 @@
       :profileId="profileId"
       :isWithLibraryLink="isWithLibraryLink"
       :isWithClearButton="isWithClearButton"
+      :isImageSmall="isImageSmall"
       @linkClick="handleLinkClick"
       @deleteButtonClick="handleDeleteButtonClick"
     />
@@ -47,7 +48,8 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isImageSmall: Boolean
   },
   emits: [
     'linkClick',

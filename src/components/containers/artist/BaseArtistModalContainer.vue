@@ -59,7 +59,9 @@ export default {
     },
     fetchArtistData,
     fetchData () {
-      this.fetchArtistData(this.artistDataArgs)
+      this.fetchArtistData(
+        this.artistDataArgs
+      )
     },
     show () {
       this.$refs.modal.show()

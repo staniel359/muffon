@@ -4,6 +4,7 @@
     :class="{ inverted: isDarkMode }"
     type="submit"
   >
+    <i class="save icon"></i>
     {{ textFormatted }}
   </button>
 </template>

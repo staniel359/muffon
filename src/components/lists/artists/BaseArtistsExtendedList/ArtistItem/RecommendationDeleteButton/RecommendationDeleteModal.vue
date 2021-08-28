@@ -6,9 +6,8 @@
       </div>
 
       <div class="content">
-        <TextSection
-          :model="model"
-          :modelFullTitle="modelFullTitle"
+        <RecommendationDeleteTextSection
+          :artistName="artistName"
         />
 
         <BaseError
@@ -37,43 +36,30 @@
 
 <script>
 import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import TextSection from './DeleteModal/TextSection.vue'
+import RecommendationDeleteTextSection
+  from './RecommendationDeleteModal/RecommendationDeleteTextSection.vue'
 import BaseError from '@/BaseError.vue'
 import BaseButton from '@/BaseButton.vue'
-import deleteProfileLibraryModelData
-  from '#/actions/api/profile/library/model/deleteData'
-import {
-  main as formatProfileLibraryMainLink
-} from '#/formatters/links/profile/library'
-import { setToast } from '#/actions/plugins/semantic'
+import deleteRecommendationData from '#/actions/api/recommendation/deleteData'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'DeleteModal',
+  name: 'RecommendationDeleteModal',
   components: {
     BaseModalContainer,
-    TextSection,
+    RecommendationDeleteTextSection,
     BaseError,
     BaseButton
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
-    model: {
-      type: String,
-      required: true
-    },
-    modelId: {
-      type: String,
-      required: true
-    },
-    modelFullTitle: {
-      type: String,
+    recommendationData: {
+      type: Object,
       required: true
     }
   },
+  emits: [
+    'deleted'
+  ],
   data () {
     return {
       error: null,
@@ -84,7 +70,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        `shared.library.delete.${this.model}.header`
+        'shared.recommendation.delete.header'
       )
     },
     cancelFormatted () {
@@ -97,44 +83,27 @@ export default {
         'shared.buttons.delete'
       )
     },
-    toastMessage () {
-      return localize(
-        'shared.library.deleted',
-        { modelFullTitle: this.modelFullTitleFormatted }
-      )
+    artistName () {
+      return this.recommendationData.name
     },
-    modelFullTitleFormatted () {
-      return `<strong>${this.modelFullTitle}</strong>`
-    },
-    callbackUrl () {
-      return formatProfileLibraryMainLink({
-        profileId: this.profileId
-      })
+    recommendationId () {
+      return this.recommendationData.id
     }
   },
   watch: {
     isSuccess: 'handleIsSuccessChange'
   },
   methods: {
-    deleteProfileLibraryModelData,
+    deleteRecommendationData,
     handleDeleteButtonClick () {
-      this.deleteProfileLibraryModelData({
-        profileId: this.profileId,
-        model: this.model,
-        modelId: this.modelId
+      this.deleteRecommendationData({
+        recommendationId: this.recommendationId
       })
     },
     handleIsSuccessChange () {
       this.$refs.modal.hide()
 
-      this.$router.push(
-        this.callbackUrl
-      )
-
-      setToast({
-        message: this.toastMessage,
-        icon: 'green check'
-      })
+      this.$emit('deleted')
     },
     show () {
       this.$refs.modal.show()
@@ -145,6 +114,5 @@ export default {
 
 <style lang="sass" scoped>
 .error-message
-  @extend .no-margin
   margin-top: 1em !important
 </style>

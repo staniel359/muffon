@@ -1,10 +1,10 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="profileLibraryMainLinkFormatted"
+    :link="recommendationsLinkFormatted"
   >
     <div class="main-sidebar-item-icon-container">
-      <i class="headphones grey icon"></i>
+      <i class="volume up grey icon"></i>
     </div>
 
     <div class="main-sidebar-item-content-container">
@@ -17,35 +17,26 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import {
-  main as formatProfileLibraryMainLink
-} from '#/formatters/links/profile/library'
+  recommendations as formatRecommendationsLink
+} from '#/formatters/links'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'LibraryItem',
+  name: 'RecommendationsItem',
   components: {
     BaseLinkContainer,
     BaseHeader
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileLibraryMainLinkFormatted () {
-      return formatProfileLibraryMainLink({
-        profileId: this.profileId
-      })
-    },
-    profileId () {
-      return this.profileInfo.id
+    recommendationsLinkFormatted () {
+      return formatRecommendationsLink()
     },
     textFormatted () {
       return localize(
-        'layout.sidebar.library'
+        'layout.sidebar.recommendations'
       )
     }
   }

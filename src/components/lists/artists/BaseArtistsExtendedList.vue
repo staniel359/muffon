@@ -10,6 +10,7 @@
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
       :isWithLibraryLink="isWithLibraryLink"
+      :isRecommendation="isRecommendation"
     />
   </div>
 </template>
@@ -35,7 +36,8 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean
+    isWithLibraryLink: Boolean,
+    isRecommendation: Boolean
   },
   computed: {
     artistsFormatted () {

@@ -1,17 +1,29 @@
 import axios from 'axios'
+import local from '#/plugins/local'
 
-export default function ({ profileId, scope = '', page, limit }) {
+export default function ({ page, limit }) {
   this.isLoading = true
 
-  const url = `/profiles/${profileId}/${scope}`
+  const profileId = local.get(
+    'profile.info'
+  ).id
+  const url =
+    `/profiles/${profileId}/recommendations`
+
+  const token = local.get(
+    'profile.token'
+  )
   const params = {
+    profileId,
+    token,
     ...(page && { page }),
     ...(limit && { limit })
   }
 
   const handleSuccess = response => {
     this.error = null
-    this.profileData = response.data.profile
+    this.recommendationsData =
+      response.data.profile
   }
 
   const handleError = error => {

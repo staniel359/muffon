@@ -27,6 +27,9 @@ export default {
         profile: {
           library: 'Library'
         },
+        self: {
+          recommendations: 'Recommendations'
+        },
         library: {
           artists: 'Artists',
           albums: 'Albums',
@@ -56,6 +59,7 @@ export default {
       },
       sidebar: {
         library: 'Library',
+        recommendations: 'Recommendations',
         settings: 'Settings',
         logout: 'Log out'
       },
@@ -307,8 +311,7 @@ export default {
             passwordConfirmation: 'Confirm password',
             nickname: 'Nickname',
             image: {
-              add: 'Upload image',
-              remove: 'Remove image'
+              add: 'Upload image'
             },
             gender: 'Gender',
             birthdate: 'Birth date',
@@ -329,7 +332,7 @@ export default {
           sections: {
             extra: 'Additional info'
           },
-          success: 'Profile saved',
+          success: 'Profile was saved',
           errors: {
             notFound: 'Email or password is wrong',
             empty: {
@@ -390,6 +393,16 @@ export default {
       buttons: {
         cancel: 'Cancel',
         delete: 'Delete'
+      },
+      recommendation: {
+        similar: 'Similar to {count} artists:',
+        delete: {
+          header: 'Delete recommendation',
+          going: 'You are going to delete {artistName} from your recommendations.',
+          undo: 'You can\'t undo this action!',
+          sure: 'Are you sure?'
+        },
+        deleted: 'Recommendation was deleted'
       }
     }
   }

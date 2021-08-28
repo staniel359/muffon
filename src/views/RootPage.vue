@@ -1,5 +1,7 @@
 <template>
-  <TheBrowserTabs v-if="isProfileLoggedIn" />
+  <TheBrowserTabs
+    v-if="isProfileLoggedIn"
+  />
   <TheAuthentication v-else />
 </template>
 

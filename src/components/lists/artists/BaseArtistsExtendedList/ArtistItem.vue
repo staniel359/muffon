@@ -7,39 +7,56 @@
         @refresh="slotProps.handleRefresh"
       >
         <template v-if="slotProps.artistData">
-          <div class="artist-left-column">
-            <BaseArtistImage
-              class="circular bordered artist-image"
-              :image="image"
-              :artistName="artistName"
-              @loadEnd="handleImageLoadEnd"
-            />
+          <div
+            v-if="isDeleted"
+            class="deleted-container"
+          >
+            <span>
+              {{ deletedFormatted }}
+            </span>
+          </div>
+          <template v-else>
+            <div class="artist-left-column">
+              <BaseArtistImage
+                class="circular bordered artist-image"
+                :image="image"
+                :artistName="artistName"
+                @loadEnd="handleImageLoadEnd"
+              />
 
-            <LibraryCountersSection
-              v-if="isWithLibrary"
-              :artistData="artistData"
-              :isWithTracksCount="isWithTracksCount"
-              :isWithAlbumsCount="isWithAlbumsCount"
-              :profileId="profileId"
-              :artistId="artistId"
-            />
+              <LibraryCountersSection
+                v-if="isWithLibrary"
+                :artistData="artistData"
+                :isWithTracksCount="isWithTracksCount"
+                :isWithAlbumsCount="isWithAlbumsCount"
+                :profileId="profileId"
+                :artistId="artistId"
+              />
 
-            <div class="library-link-button">
               <BaseProfileLibraryLinkButton
                 v-if="isShowLibraryLink"
+                class="library-button"
                 model="artist"
                 :modelId="libraryId"
                 :profileId="profileId"
               />
-            </div>
-          </div>
 
-          <InfoBlock
-            :artistData="slotProps.artistData"
-            :isLinkToLibrary="isLinkToLibrary"
-            :profileId="profileId"
-            :artistId="artistId"
-          />
+              <RecommendationDeleteButton
+                v-if="isRecommendation"
+                :recommendationData="artistData"
+                @deleted="handleDeleted"
+              />
+            </div>
+
+            <InfoBlock
+              :artistData="slotProps.artistData"
+              :isLinkToLibrary="isLinkToLibrary"
+              :profileId="profileId"
+              :artistId="artistId"
+              :isRecommendation="isRecommendation"
+              :recommendationData="artistData"
+            />
+          </template>
         </template>
       </BaseArtistHorizontalCardContainer>
     </template>
@@ -53,7 +70,10 @@ import BaseArtistHorizontalCardContainer
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import RecommendationDeleteButton
+  from './ArtistItem/RecommendationDeleteButton.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
+import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ArtistItem',
@@ -63,7 +83,8 @@ export default {
     BaseArtistImage,
     LibraryCountersSection,
     BaseProfileLibraryLinkButton,
-    InfoBlock
+    InfoBlock,
+    RecommendationDeleteButton
   },
   inject: [
     'findPaginationItem'
@@ -78,7 +99,13 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean
+    isWithLibraryLink: Boolean,
+    isRecommendation: Boolean
+  },
+  data () {
+    return {
+      isDeleted: false
+    }
   },
   computed: {
     artistName () {
@@ -101,6 +128,11 @@ export default {
     },
     libraryId () {
       return this.artistData.library_id?.toString()
+    },
+    deletedFormatted () {
+      return localize(
+        'shared.recommendation.deleted'
+      )
     }
   },
   methods: {
@@ -108,6 +140,9 @@ export default {
       this.findPaginationItem({
         uuid: this.uuid
       }).image = value
+    },
+    handleDeleted () {
+      this.isDeleted = true
     }
   }
 }
@@ -117,11 +152,14 @@ export default {
 .artist-left-column
   @extend .d-flex, .flex-column, .align-items-center
   margin-right: 1em
+  width: 150px
 
 .artist-image
-  width: 150px
-  height: 150px
+  @extend .w-100
 
-.library-link-button
+.library-button
   margin-top: 1em
+
+.deleted-container
+  @extend .d-flex, .justify-content-center, .flex-full
 </style>
