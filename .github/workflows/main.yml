@@ -36,7 +36,7 @@ jobs:
           node-version: '16.x'
 
       - name: Set up dependencies
-        run: yarn
+        run: yarn --ignore-scripts
 
       - name: Lint
         run: yarn lint
