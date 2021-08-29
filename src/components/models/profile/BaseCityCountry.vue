@@ -1,6 +1,7 @@
 <template>
   <div>
     <i
+      v-if="country"
       class="profile-country-flag"
       :class="iconClassName"
     ></i>
@@ -13,7 +14,7 @@
 import countries from 'i18n-iso-countries'
 
 export default {
-  name: 'CityCountrySection',
+  name: 'BaseProfileCityCountry',
   props: {
     city: String,
     country: String

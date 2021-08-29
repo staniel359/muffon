@@ -1,9 +1,10 @@
 <template>
   <div
-    class="ui basic label main-label"
+    class="ui label main-label"
     :class="{
       inverted: isDarkMode,
-      reversed: isReverse
+      reversed: isReverse,
+      basic: isBasic
     }"
     @click="handleClick"
   >
@@ -38,7 +39,11 @@ export default {
     icon: String,
     text: String,
     isReverse: Boolean,
-    isLoading: Boolean
+    isLoading: Boolean,
+    isBasic: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
     ...mapState('layout', [

@@ -1,3 +1,4 @@
+import { profiles as formatProfilesLink } from '#/formatters/links'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 import {
   main as formatProfileLibraryMainLink,
@@ -39,7 +40,8 @@ export default function ({
     {
       name: localize(
         'layout.navigation.profiles'
-      )
+      ),
+      link: formatProfilesLink()
     },
     {
       name: profileNickname,

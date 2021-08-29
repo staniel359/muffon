@@ -14,7 +14,7 @@
 import { age as formatAge } from '#/formatters'
 
 export default {
-  name: 'GenderAgeSection',
+  name: 'BaseGenderAge',
   props: {
     gender: String,
     birthdate: String

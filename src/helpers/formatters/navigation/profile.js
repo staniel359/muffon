@@ -1,3 +1,4 @@
+import { profiles as formatProfilesLink } from '#/formatters/links'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 import { localize } from '#/actions/plugins/i18n'
 
@@ -25,7 +26,8 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
     {
       name: localize(
         'layout.navigation.profiles'
-      )
+      ),
+      link: formatProfilesLink()
     },
     {
       name: profileNickname,

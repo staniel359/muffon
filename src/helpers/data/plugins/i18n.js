@@ -403,6 +403,9 @@ export default {
           sure: 'Are you sure?'
         },
         deleted: 'Recommendation was deleted'
+      },
+      roles: {
+        creator: 'Creator'
       }
     }
   }

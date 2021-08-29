@@ -3,13 +3,13 @@
     <BaseDivider/>
 
     <div class="main-library-info">
-      <GenderAgeSection
+      <BaseGenderAge
         v-if="gender || birthdate"
         :gender="gender"
         :birthdate="birthdate"
       />
 
-      <CityCountrySection
+      <BaseCityCountry
         v-if="city || country"
         :city="city"
         :country="country"
@@ -20,15 +20,15 @@
 
 <script>
 import BaseDivider from '@/BaseDivider.vue'
-import GenderAgeSection from './ExtraInfoSection/GenderAgeSection.vue'
-import CityCountrySection from './ExtraInfoSection/CityCountrySection.vue'
+import BaseGenderAge from '@/models/profile/BaseGenderAge.vue'
+import BaseCityCountry from '@/models/profile/BaseCityCountry.vue'
 
 export default {
   name: 'ExtraInfoSection',
   components: {
     BaseDivider,
-    GenderAgeSection,
-    CityCountrySection
+    BaseGenderAge,
+    BaseCityCountry
   },
   props: {
     profileData: {

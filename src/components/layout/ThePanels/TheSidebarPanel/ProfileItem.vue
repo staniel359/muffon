@@ -38,7 +38,7 @@ export default {
       profileInfo: 'info'
     }),
     image () {
-      return this.profileInfo.image_url
+      return this.profileInfo.image.extrasmall
     },
     nickname () {
       return this.profileInfo.nickname

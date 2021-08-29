@@ -46,6 +46,9 @@ const VideoChannelVideosPage = () => import(
 const VideoMainPage = () => import(
   '%/video/MainPage.vue'
 )
+const ProfilesPage = () => import(
+  '%/ProfilesPage.vue'
+)
 const ProfileMainPage = () => import(
   '%/profile/MainPage.vue'
 )
@@ -192,6 +195,13 @@ export default [
     exact: true,
     name: 'VideoMainPage',
     component: VideoMainPage,
+    props: true
+  },
+  {
+    path: '/profiles',
+    exact: true,
+    name: 'ProfilesPage',
+    component: ProfilesPage,
     props: true
   },
   {

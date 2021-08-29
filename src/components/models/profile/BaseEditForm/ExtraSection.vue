@@ -42,7 +42,7 @@ export default {
       profileInfo: 'info'
     }),
     image () {
-      return this.profileInfo.image_url
+      return this.profileInfo.image.small
     },
     gender () {
       return this.profileInfo.gender
