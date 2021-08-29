@@ -156,6 +156,7 @@ export default {
 
 .artist-image
   @extend .w-100
+  height: 150px
 
 .library-button
   margin-top: 1em

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '*/store'
 import { handleEnvError } from '#/utils'
 import formatRequestUrl from './formatters/requestUrl'
 
@@ -11,7 +12,6 @@ export default function ({
   albumType = 'album',
   paramsData,
   scope = '',
-  profileId,
   page,
   limit
 }) {
@@ -27,6 +27,8 @@ export default function ({
     scope
   })
 
+  const profileId =
+    store.state.profile.info.id
   const params = {
     ...paramsData,
     profile_id: profileId,

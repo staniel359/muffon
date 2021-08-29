@@ -1,17 +1,18 @@
 import axios from 'axios'
-import local from '#/plugins/local'
+import store from '*/store'
 
-export default function ({ profileId, model, modelId }) {
+export default function ({ model, modelId }) {
   this.isLoading = true
   this.error = null
 
+  const profileId =
+    store.state.profile.info.id
   const url =
-    `profiles/${this.profileId}/library` +
+    `profiles/${profileId}/library` +
     `/${this.model}s/${this.modelId}`
 
-  const token = local.get(
-    'profile.token'
-  )
+  const token =
+    store.state.profile.token
   const params = { token }
 
   const handleSuccess = () => {

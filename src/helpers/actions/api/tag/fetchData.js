@@ -1,12 +1,15 @@
 import axios from 'axios'
+import store from '*/store'
 import { handleEnvError } from '#/utils'
 
-export default function ({ tagName, scope = '', profileId, page, limit }) {
+export default function ({ tagName, scope = '', page, limit }) {
   this.isLoading = true
 
   const tagNameEncoded = encodeURIComponent(tagName)
   const url = `/lastfm/tags/${tagNameEncoded}/${scope}`
 
+  const profileId =
+    store.state.profile.info.id
   const params = {
     profile_id: profileId,
     ...(page && { page }),

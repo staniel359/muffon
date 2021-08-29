@@ -72,7 +72,6 @@ export default {
       return {
         tagName: this.tagName,
         scope: this.scope,
-        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

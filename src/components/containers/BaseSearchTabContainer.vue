@@ -84,7 +84,6 @@ export default {
       return {
         query: this.query,
         scope: this.tabData.scope,
-        profileId: this.profileId,
         limit: this.tabData.responsePageLimit
       }
     },

@@ -119,7 +119,6 @@ export default {
     deleteProfileLibraryModelData,
     handleDeleteButtonClick () {
       this.deleteProfileLibraryModelData({
-        profileId: this.profileId,
         model: this.model,
         modelId: this.modelId
       })

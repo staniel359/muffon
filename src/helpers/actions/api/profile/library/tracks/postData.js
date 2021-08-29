@@ -1,5 +1,5 @@
 import axios from 'axios'
-import local from '#/plugins/local'
+import store from '*/store'
 
 export default function ({
   title,
@@ -11,15 +11,13 @@ export default function ({
 }) {
   this.isLoading = true
 
-  const profileId = local.get(
-    'profile.info'
-  ).id
+  const profileId =
+    store.state.profile.info.id
   const url =
     `/profiles/${profileId}/library/tracks`
 
-  const token = local.get(
-    'profile.token'
-  )
+  const token =
+    store.state.profile.token
   const params = {
     token,
     title,

@@ -89,7 +89,6 @@ export default {
       return {
         ...this.requestAlbumData,
         scope: this.scope,
-        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

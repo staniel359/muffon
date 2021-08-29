@@ -89,7 +89,6 @@ export default {
       return {
         ...this.requestTrackData,
         scope: this.scope,
-        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

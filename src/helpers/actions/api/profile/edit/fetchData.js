@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { camelCase } from 'camel-case'
-import local from '#/plugins/local'
+import store from '*/store'
 import { setGlobalData } from '#/actions'
 import { localize } from '#/actions/plugins/i18n'
 import { addFormFieldError } from '#/actions/plugins/semantic'
@@ -20,14 +20,12 @@ export default function ({
   this.isLoading = true
   this.isSuccess = false
 
-  const profileId = local.get(
-    'profile.info'
-  ).id
-  const token = local.get(
-    'profile.token'
-  )
-
+  const profileId =
+    store.state.profile.info.id
   const url = `/profiles/${profileId}`
+
+  const token =
+    store.state.profile.token
   const params = {
     token,
     email,

@@ -40,7 +40,9 @@ export default {
     }),
     ...mapActions('profile', {
       setProfileInfo: 'setInfo',
-      setIsProfileLoggedIn: 'setIsLoggedIn'
+      setProfileToken: 'setToken',
+      setIsProfileLoggedIn: 'setIsLoggedIn',
+      setIsProfileRemember: 'setIsRemember'
     }),
     ...mapActions('queue', {
       setQueueCurrentTrackId: 'setCurrentTrackId',
@@ -68,8 +70,12 @@ export default {
           return this.setPlayerVariants(value)
         case 'profile.info':
           return this.setProfileInfo(value)
+        case 'profile.token':
+          return this.setProfileToken(value)
         case 'profile.isLoggedIn':
           return this.setIsProfileLoggedIn(value)
+        case 'profile.isRemember':
+          return this.setIsProfileRemember(value)
         case 'queue.currentTrackId':
           return this.setQueueCurrentTrackId(value)
         case 'queue.isAutoplay':

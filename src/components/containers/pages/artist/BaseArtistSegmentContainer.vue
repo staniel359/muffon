@@ -62,7 +62,6 @@ export default {
       return {
         artistName: this.artistName,
         scope: this.scope,
-        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

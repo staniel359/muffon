@@ -1,11 +1,11 @@
 import axios from 'axios'
+import store from '*/store'
 import { handleEnvError } from '#/utils'
 
 export default function ({
   sourceId = 'lastfm',
   scope = '',
   query,
-  profileId,
   page,
   limit
 }) {
@@ -13,6 +13,8 @@ export default function ({
 
   const url = `${sourceId}/search/${scope}`
 
+  const profileId =
+    store.state.profile.info.id
   const params = {
     query,
     profile_id: profileId,

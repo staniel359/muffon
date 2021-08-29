@@ -43,13 +43,13 @@ export default {
     nickname () {
       return this.profileInfo.nickname
     },
-    profileId () {
-      return this.profileInfo.id
-    },
     profileMainLinkFormatted () {
       return formatProfileMainLink({
         profileId: this.profileId
       })
+    },
+    profileId () {
+      return this.profileInfo.id
     }
   }
 }

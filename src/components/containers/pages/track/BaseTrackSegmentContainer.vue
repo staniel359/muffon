@@ -66,7 +66,6 @@ export default {
         artistName: this.artistName,
         trackTitle: this.trackTitle,
         scope: this.scope,
-        profileId: this.profileId,
         limit: this.responsePageLimit
       }
     }

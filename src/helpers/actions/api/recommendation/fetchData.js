@@ -1,5 +1,5 @@
 import axios from 'axios'
-import local from '#/plugins/local'
+import store from '*/store'
 
 export default function ({
   recommendationId,
@@ -10,16 +10,14 @@ export default function ({
   this.isLoading = true
   this.error = null
 
-  const profileId = local.get(
-    'profile.info'
-  ).id
+  const profileId =
+    store.state.profile.info.id
   const url = `profiles/${profileId}` +
     `/recommendations/${recommendationId}` +
     '/artists'
 
-  const token = local.get(
-    'profile.token'
-  )
+  const token =
+    store.state.profile.token
   const params = {
     token,
     ...(page && { page }),

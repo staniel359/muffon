@@ -88,7 +88,6 @@ export default {
     artistDataArgs () {
       return {
         ...this.requestArtistData,
-        profileId: this.profileId,
         scope: this.scope,
         limit: this.responsePageLimit
       }

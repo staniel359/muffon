@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '*/store'
 import { handleEnvError } from '#/utils'
 import formatRequestUrl from './formatters/requestUrl'
 
@@ -8,7 +9,6 @@ export default function ({
   sourceId = 'lastfm',
   albumType = '',
   scope = '',
-  profileId,
   page,
   limit
 }) {
@@ -21,6 +21,8 @@ export default function ({
     scope
   })
 
+  const profileId =
+    store.state.profile.info.id
   const params = {
     profile_id: profileId,
     ...(page && { page }),
