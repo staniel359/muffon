@@ -51,6 +51,13 @@ const getBaseUrl = () => {
 
 const baseUrl = getBaseUrl()
 
+const i18n = {
+  en: {
+    show: 'Show',
+    close: 'Close'
+  }
+}
+
 let mainWindow = null
 let tray = null
 let tabs = []
@@ -65,6 +72,14 @@ if (isDevelopment) {
     'userData',
     userDataPath
   )
+}
+
+const show = () => {
+  mainWindow.show()
+}
+
+const hide = () => {
+  mainWindow.hide()
 }
 
 const createWindow = () => {
@@ -84,23 +99,18 @@ const createWindow = () => {
   mainWindow.loadURL(baseUrl)
   mainWindow.setMenu(null)
 
-  // if (isDevelopment) {
-  //   mainWindow.webContents.openDevTools({
-  //     mode: 'detach'
-  //   })
-  // }
-
   const handleReadyToShow = () => {
     mainWindow.setMinimumSize(
       width, height
     )
-    mainWindow.show()
+
+    show()
   }
 
   const handleClose = event => {
     event.preventDefault()
 
-    mainWindow.hide()
+    hide()
   }
 
   mainWindow.on(
@@ -137,7 +147,12 @@ const createTrayOrDock = () => {
   const menu = Menu.buildFromTemplate([
     {
       type: 'normal',
-      label: 'Quit',
+      label: i18n.en.show,
+      click: show
+    },
+    {
+      type: 'normal',
+      label: i18n.en.close,
       click: quit
     }
   ])
