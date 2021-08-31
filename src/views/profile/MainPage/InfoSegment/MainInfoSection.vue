@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     image () {
-      return this.profileData.image.small
+      return this.profileData.image.medium
     },
     nickname () {
       return this.profileData.nickname

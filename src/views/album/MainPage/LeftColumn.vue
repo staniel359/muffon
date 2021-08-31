@@ -10,38 +10,49 @@
       :scrollable="scrollable"
     />
 
-    <BaseProfileLibraryButton
-      class="library-button"
-      model="album"
-      :modelId="libraryId"
-      :profileId="profileId"
-      :artistName="artistName"
-      :albumTitle="albumTitle"
-      :albumTracks="tracks"
-      :albumImageUrl="image"
-    />
+    <div class="main-self-buttons">
+      <BaseLibraryButton
+        class="main-self-button"
+        model="album"
+        :modelId="libraryId"
+        :artistName="artistName"
+        :albumTitle="albumTitle"
+        :albumTracks="tracks"
+        :albumImageUrl="image"
+      />
+
+      <BaseListenedButton
+        class="main-self-button"
+        model="album"
+        :modelId="listenedId"
+        :artistName="artistName"
+        :albumTitle="albumTitle"
+        :albumImageUrl="image"
+      />
+    </div>
   </div>
 </template>
 
 <script>
 import AlbumImage from './LeftColumn/AlbumImage.vue'
 import AlbumHeader from './LeftColumn/AlbumHeader.vue'
-import BaseProfileLibraryButton from '@/BaseProfileLibraryButton.vue'
+import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
+import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     AlbumImage,
     AlbumHeader,
-    BaseProfileLibraryButton
+    BaseLibraryButton,
+    BaseListenedButton
   },
   props: {
     albumData: {
       type: Object,
       required: true
     },
-    scrollable: HTMLDivElement,
-    profileId: String
+    scrollable: HTMLDivElement
   },
   computed: {
     imageData () {
@@ -61,6 +72,9 @@ export default {
     },
     image () {
       return this.albumData.image.medium
+    },
+    listenedId () {
+      return this.albumData.listened_id?.toString()
     }
   }
 }
@@ -69,7 +83,4 @@ export default {
 <style lang="sass" scoped>
 .album-page-left-column
   width: 200px
-
-.library-button
-  margin-top: 1em
 </style>

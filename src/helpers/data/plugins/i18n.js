@@ -406,6 +406,11 @@ export default {
       },
       roles: {
         creator: 'Creator'
+      },
+      listened: {
+        add: 'Add to listened',
+        added: 'Listened',
+        delete: 'Delete from listened'
       }
     }
   }

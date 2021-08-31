@@ -13,6 +13,7 @@
         :profileId="slotProps.profileId"
         isWithArtistName
         isWithLibraryLink
+        isWithListenedButton
       />
     </template>
   </BaseTagPaginatedSegmentContainer>

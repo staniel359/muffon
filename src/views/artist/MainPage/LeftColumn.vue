@@ -19,13 +19,21 @@
       />
     </BaseTransitionContainer>
 
-    <BaseProfileLibraryButton
-      class="library-button"
-      model="artist"
-      :modelId="libraryId"
-      :profileId="profileId"
-      :artistName="artistName"
-    />
+    <div class="main-self-buttons">
+      <BaseLibraryButton
+        class="main-self-button"
+        model="artist"
+        :modelId="libraryId"
+        :artistName="artistName"
+      />
+
+      <BaseListenedButton
+        class="main-self-button"
+        model="artist"
+        :modelId="listenedId"
+        :artistName="artistName"
+      />
+    </div>
   </div>
 </template>
 
@@ -33,7 +41,8 @@
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseProfileLibraryButton from '@/BaseProfileLibraryButton.vue'
+import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
+import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
 
 export default {
   name: 'LeftColumn',
@@ -41,7 +50,8 @@ export default {
     BaseArtistImage,
     BaseTransitionContainer,
     BaseHeader,
-    BaseProfileLibraryButton
+    BaseLibraryButton,
+    BaseListenedButton
   },
   props: {
     artistName: {
@@ -50,7 +60,7 @@ export default {
     },
     scrollable: HTMLDivElement,
     libraryId: String,
-    profileId: String
+    listenedId: String
   }
 }
 </script>
@@ -64,7 +74,4 @@ export default {
   margin: 0.5em 0
   .ui.header
     @extend .text-color-white
-
-.library-button
-  margin-top: 1em
 </style>

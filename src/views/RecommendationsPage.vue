@@ -26,6 +26,7 @@
               :artists="slotProps.recommendations"
               :profileId="profileId"
               isWithLibraryLink
+              isWithListenedButton
               isRecommendation
             />
           </template>

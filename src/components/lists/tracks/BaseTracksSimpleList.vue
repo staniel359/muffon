@@ -27,6 +27,7 @@
           :isLinkToLibrary="isLinkToLibrary"
           :profileId="profileId"
           :isWithLibraryLink="isWithLibraryLink"
+          :isWithListenedButton="isWithListenedButton"
           :isWithClearButton="isWithClearButton"
           :isWithCreated="isWithCreated"
           @linkClick="handleLinkClick"
@@ -78,6 +79,7 @@ export default {
     profileId: String,
     artistId: String,
     isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean,
     isWithClearButton: Boolean,
     isWithCreated: Boolean
   },

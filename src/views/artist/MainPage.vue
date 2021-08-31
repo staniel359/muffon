@@ -8,7 +8,7 @@
         :artistName="slotProps.artistName"
         :scrollable="container"
         :libraryId="slotProps.libraryId"
-        :profileId="slotProps.profileId"
+        :listenedId="slotProps.listenedId"
       />
       <RightColumn
         :artistData="slotProps.artistData"

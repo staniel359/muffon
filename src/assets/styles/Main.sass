@@ -204,6 +204,8 @@ a
     @extend .no-padding, .no-border
     & > .description
       margin-top: 0.25em !important
+    & > .main-simple-self-buttons
+      margin-top: 0.5em
   &:hover
     transform: none
 
@@ -217,8 +219,7 @@ a
   @extend .w-100
 
 .main-simple-list-item
-  @extend .d-flex, .align-items-center
-  word-break: break-word
+  @extend .d-flex, .align-items-center, .word-break-break-word
   & > .image
     width: 50px
     height: 50px
@@ -271,7 +272,7 @@ a
       width: 30px
       height: 30px
   & > .content
-    @extend .flex-full
+    @extend .flex-full, .word-break-break-word
     white-space: normal
   & > .extra
     margin-left: 0.75em !important
@@ -421,9 +422,14 @@ a
 .main-app-title
   @extend .text-color-white, .text-medium-light
   font-size: 3.5em !important
+  z-index: 1
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
+  &:hover
+    .main-sidebar-item-icon-container
+      & > .icon
+        color: $colorBase !important
 
 .main-sidebar-item-icon-container
   @extend .d-flex, .align-items-center, .justify-content-center
@@ -468,8 +474,7 @@ a
 .main-library-page-left-column
   width: 170px
   .main-library-info
-    @extend .d-flex, .flex-column, .align-items-center, .text-align-center
-    word-break: break-word
+    @extend .d-flex, .flex-column, .align-items-center, .text-align-center, .word-break-break-word
   .main-library-info-image
     margin-bottom: 0.5em
 
@@ -499,3 +504,15 @@ a
 
 .main-library-modal-message-container
   margin-bottom: 1em
+
+.main-self-buttons
+  margin-top: 1em
+  & > .main-self-button
+    &:not(:first-child)
+      margin-top: 0.5em
+
+.main-simple-self-buttons
+  @extend .d-flex, .justify-content-center
+  & > .main-simple-self-button
+    &:not(:first-child)
+      margin-left: 0.5em

@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div
+    ref="button"
+    :data-content="popupTextFormatted"
+  >
     <BaseLinkContainer
       :link="linkFormatted"
       @click="handleClick"
@@ -13,6 +16,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButton from '@/BaseButton.vue'
 import {
@@ -24,9 +28,12 @@ import {
 import {
   main as formatProfileLibraryTrackMainLink
 } from '#/formatters/links/profile/library/track'
+import { setPopup } from '#/actions/plugins/semantic'
+import { popupOptions } from '#/data/plugins/semantic'
+import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'BaseProfileLibraryLinkButton',
+  name: 'BaseLibrarySimpleButton',
   components: {
     BaseLinkContainer,
     BaseButton
@@ -39,16 +46,15 @@ export default {
     modelId: {
       type: String,
       required: true
-    },
-    profileId: {
-      type: String,
-      required: true
     }
   },
   emits: [
     'click'
   ],
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
     linkFormatted () {
       switch (this.model) {
         case 'artist':
@@ -69,7 +75,21 @@ export default {
         default:
           return {}
       }
+    },
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
+    popupTextFormatted () {
+      return localize(
+        'shared.library.show'
+      )
     }
+  },
+  mounted () {
+    setPopup(
+      this.$refs.button,
+      popupOptions()
+    )
   },
   methods: {
     handleClick () {

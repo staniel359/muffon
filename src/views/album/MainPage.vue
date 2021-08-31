@@ -26,7 +26,6 @@
               v-if="scrollable"
               :albumData="slotProps.albumData"
               :scrollable="scrollable"
-              :profileId="slotProps.profileId"
             />
             <RightColumn
               :albumData="slotProps.albumData"

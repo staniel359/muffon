@@ -18,6 +18,7 @@
         :isLinkToLibrary="isLinkToLibrary"
         :profileId="profileId"
         :isWithLibraryLink="isWithLibraryLink"
+        :isWithListenedButton="isWithListenedButton"
       />
     </div>
   </div>
@@ -47,7 +48,8 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean
+    isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean
   },
   computed: {
     artistsFormatted () {

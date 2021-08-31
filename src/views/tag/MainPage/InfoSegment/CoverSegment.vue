@@ -74,7 +74,7 @@ export default {
   @extend .no-padding, .absolute, .w-100
   z-index: -1
   width: 700px !important
-  margin-left: -15px
+  margin-left: -15px !important
 
 .artist-image
   @extend .d-inline

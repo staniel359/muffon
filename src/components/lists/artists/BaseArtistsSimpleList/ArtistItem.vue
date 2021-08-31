@@ -40,14 +40,22 @@
       />
     </div>
 
-    <BaseProfileLibraryLinkButton
-      v-if="isShowLibraryLink"
-      class="library-link"
-      model="artist"
-      :modelId="libraryId"
-      :profileId="profileId"
-      @click="handleLinkClick"
-    />
+    <div class="main-simple-self-buttons">
+      <BaseLibrarySimpleButton
+        v-if="isShowLibraryLink"
+        class="main-simple-self-button"
+        model="artist"
+        :modelId="libraryId"
+        @click="handleLinkClick"
+      />
+
+      <BaseListenedSimpleButton
+        v-if="isShowListenedButton"
+        class="main-simple-self-button"
+        model="artist"
+        :modelId="listenedId"
+      />
+    </div>
 
     <BaseClearButton
       v-if="isWithClearButton"
@@ -64,7 +72,9 @@ import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
+import BaseListenedSimpleButton
+  from '@/models/self/BaseListenedSimpleButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
@@ -81,7 +91,8 @@ export default {
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseProfileLibraryLinkButton,
+    BaseListenedSimpleButton,
+    BaseLibrarySimpleButton,
     BaseClearButton
   },
   inject: [
@@ -101,6 +112,7 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean,
     isWithClearButton: Boolean,
     isImageSmall: Boolean
   },
@@ -174,6 +186,15 @@ export default {
     },
     libraryId () {
       return this.artistData.library_id?.toString()
+    },
+    isShowListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
+      )
+    },
+    listenedId () {
+      return this.artistData.listened_id?.toString()
     }
   },
   methods: {
@@ -207,7 +228,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.library-link
+.main-simple-self-buttons
   margin-left: 0.5em !important
 
 .delete-button

@@ -26,6 +26,7 @@
           :profileId="profileId"
           isWithArtistName
           isWithLibraryLink
+          isWithListenedButton
           @linkClick="handleLinkClick"
         />
       </template>

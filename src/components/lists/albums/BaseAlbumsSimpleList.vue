@@ -7,8 +7,8 @@
       :isWithArtistName="isWithArtistName"
       :isWithListenersCount="isWithListenersCount"
       :isWithLibraryLink="isWithLibraryLink"
-      :profileId="profileId"
       :isWithClearButton="isWithClearButton"
+      :isWithListenedButton="isWithListenedButton"
       @linkClick="handleLinkClick"
       @deleteButtonClick="handleDeleteButtonClick"
     />
@@ -36,8 +36,8 @@ export default {
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
     isWithLibraryLink: Boolean,
-    profileId: String,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithListenedButton: Boolean
   },
   emits: [
     'linkClick',

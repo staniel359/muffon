@@ -19,13 +19,22 @@
       :isWithListenersCount="isWithListenersCount"
     />
 
-    <BaseProfileLibraryLinkButton
-      v-if="isShowLibraryLink"
-      model="album"
-      :modelId="libraryId"
-      :profileId="profileId"
-      @click="handleLinkClick"
-    />
+    <div class="main-simple-self-buttons">
+      <BaseLibrarySimpleButton
+        v-if="isShowLibraryLink"
+        class="main-simple-self-button"
+        model="album"
+        :modelId="libraryId"
+        @click="handleLinkClick"
+      />
+
+      <BaseListenedSimpleButton
+        v-if="isShowListenedButton"
+        class="main-simple-self-button"
+        model="album"
+        :modelId="listenedId"
+      />
+    </div>
 
     <BaseClearButton
       v-if="isWithClearButton"
@@ -39,7 +48,9 @@
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
-import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
+import BaseListenedSimpleButton
+  from '@/models/self/BaseListenedSimpleButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
@@ -50,7 +61,8 @@ export default {
     BaseLinkContainer,
     BaseImage,
     InfoBlock,
-    BaseProfileLibraryLinkButton,
+    BaseListenedSimpleButton,
+    BaseLibrarySimpleButton,
     BaseClearButton
   },
   provide () {
@@ -66,8 +78,8 @@ export default {
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
     isWithLibraryLink: Boolean,
-    profileId: String,
-    isWithClearButton: Boolean
+    isWithClearButton: Boolean,
+    isWithListenedButton: Boolean
   },
   emits: [
     'linkClick',
@@ -120,6 +132,15 @@ export default {
     },
     libraryId () {
       return this.albumData.library_id?.toString()
+    },
+    isShowListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
+      )
+    },
+    listenedId () {
+      return this.albumData.listened_id?.toString()
     }
   },
   methods: {
@@ -140,6 +161,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.main-simple-self-buttons
+  margin-left: 0.5em
+
 .delete-button
   margin-left: 0.5em !important
 </style>

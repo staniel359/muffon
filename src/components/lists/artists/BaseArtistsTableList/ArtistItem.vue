@@ -29,6 +29,7 @@
         />
 
         <LibraryCountersSection
+          v-if="isWithTracksCount || isWithAlbumsCount"
           :artistData="artistData"
           :isWithTracksCount="isWithTracksCount"
           :isWithAlbumsCount="isWithAlbumsCount"
@@ -36,12 +37,19 @@
           @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
         />
 
-        <div class="description">
-          <BaseProfileLibraryLinkButton
+        <div class="main-simple-self-buttons">
+          <BaseLibrarySimpleButton
             v-if="isShowLibraryLink"
+            class="main-simple-self-button"
             model="artist"
             :modelId="libraryId"
-            :profileId="profileId"
+          />
+
+          <BaseListenedSimpleButton
+            v-if="isShowListenedButton"
+            class="main-simple-self-button"
+            model="artist"
+            :modelId="listenedId"
           />
         </div>
       </div>
@@ -57,7 +65,9 @@ import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
+import BaseListenedSimpleButton
+  from '@/models/self/BaseListenedSimpleButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink,
@@ -74,7 +84,8 @@ export default {
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseProfileLibraryLinkButton
+    BaseLibrarySimpleButton,
+    BaseListenedSimpleButton
   },
   inject: [
     'findPaginationItem'
@@ -90,7 +101,8 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean
+    isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean
   },
   emits: [
     'linkClick'
@@ -155,6 +167,15 @@ export default {
     },
     libraryId () {
       return this.artistData.library_id?.toString()
+    },
+    isShowListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
+      )
+    },
+    listenedId () {
+      return this.artistData.listened_id?.toString()
     }
   },
   methods: {

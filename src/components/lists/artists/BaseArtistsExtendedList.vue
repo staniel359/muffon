@@ -10,6 +10,7 @@
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
       :isWithLibraryLink="isWithLibraryLink"
+      :isWithListenedButton="isWithListenedButton"
       :isRecommendation="isRecommendation"
     />
   </div>
@@ -37,6 +38,7 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean,
     isRecommendation: Boolean
   },
   computed: {

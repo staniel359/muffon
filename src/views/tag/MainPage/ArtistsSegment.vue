@@ -14,6 +14,7 @@
         :profileId="slotProps.profileId"
         isWithListenersCount
         isWithLibraryLink
+        isWithListenedButton
       />
     </template>
   </BaseTagPaginatedSegmentContainer>

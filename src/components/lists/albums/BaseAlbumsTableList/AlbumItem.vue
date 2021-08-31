@@ -17,8 +17,9 @@
         :isWithTracksCount="isWithTracksCount"
         :tracksCount="tracksCount"
         :isWithLibraryLink="isWithLibraryLink"
-        :profileId="profileId"
+        :isWithListenedButton="isWithListenedButton"
         :libraryId="libraryId"
+        :listenedId="listenedId"
         @tracksLinkActiveChange="handleTracksLinkActiveChange"
       />
     </BaseSimpleCardContainer>
@@ -62,7 +63,8 @@ export default {
     isWithTracksCount: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean
+    isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean
   },
   emits: [
     'linkClick'
@@ -146,6 +148,9 @@ export default {
     },
     libraryId () {
       return this.albumData.library_id?.toString()
+    },
+    listenedId () {
+      return this.albumData.listened_id?.toString()
     }
   },
   methods: {

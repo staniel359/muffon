@@ -33,13 +33,21 @@
                 :artistId="artistId"
               />
 
-              <BaseProfileLibraryLinkButton
-                v-if="isShowLibraryLink"
-                class="library-button"
-                model="artist"
-                :modelId="libraryId"
-                :profileId="profileId"
-              />
+              <div class="main-simple-self-buttons">
+                <BaseLibrarySimpleButton
+                  v-if="isShowLibraryLink"
+                  class="main-simple-self-button"
+                  model="artist"
+                  :modelId="libraryId"
+                />
+
+                <BaseListenedSimpleButton
+                  v-if="isShowListenedButton"
+                  class="main-simple-self-button"
+                  model="artist"
+                  :modelId="listenedId"
+                />
+              </div>
 
               <RecommendationDeleteButton
                 v-if="isRecommendation"
@@ -69,7 +77,9 @@ import BaseArtistHorizontalCardContainer
   from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
+import BaseListenedSimpleButton
+  from '@/models/self/BaseListenedSimpleButton.vue'
 import RecommendationDeleteButton
   from './ArtistItem/RecommendationDeleteButton.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
@@ -82,7 +92,8 @@ export default {
     BaseArtistHorizontalCardContainer,
     BaseArtistImage,
     LibraryCountersSection,
-    BaseProfileLibraryLinkButton,
+    BaseListenedSimpleButton,
+    BaseLibrarySimpleButton,
     InfoBlock,
     RecommendationDeleteButton
   },
@@ -100,6 +111,7 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean,
     isRecommendation: Boolean
   },
   data () {
@@ -133,6 +145,15 @@ export default {
       return localize(
         'shared.recommendation.deleted'
       )
+    },
+    isShowListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
+      )
+    },
+    listenedId () {
+      return this.artistData.listened_id?.toString()
     }
   },
   methods: {
@@ -158,7 +179,7 @@ export default {
   @extend .w-100
   height: 150px
 
-.library-button
+.main-simple-self-buttons
   margin-top: 1em
 
 .deleted-container

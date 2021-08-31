@@ -13,6 +13,7 @@
         isWithArtistName
         isWithListenersCount
         isWithLibraryLink
+        isWithListenedButton
       />
     </template>
   </BaseTagPaginatedPageContainer>

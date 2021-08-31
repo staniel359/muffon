@@ -22,7 +22,6 @@
         >
           <TrackPageContent
             :trackData="slotProps.trackData"
-            :profileId="slotProps.profileId"
           />
         </BaseSegmentContainer>
       </div>

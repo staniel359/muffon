@@ -57,8 +57,8 @@ export default {
 
 <style lang="sass" scoped>
 .auth-form-container
-  @extend .d-flex, .flex-column, .align-items-center, .justify-content-center
-  margin-top: 10vh
+  @extend .d-flex, .flex-column, .align-items-center
+  margin-top: 5vh
 
 .auth-form-segment
   width: 400px

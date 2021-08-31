@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButton from '@/BaseButton.vue'
 import {
@@ -42,17 +43,13 @@ import postTrackData from '#/actions/api/profile/library/tracks/postData'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'BaseProfileLibraryButton',
+  name: 'BaseLibraryButton',
   components: {
     BaseLinkContainer,
     BaseButton
   },
   props: {
     model: {
-      type: String,
-      required: true
-    },
-    profileId: {
       type: String,
       required: true
     },
@@ -76,6 +73,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
     showFormatted () {
       return localize(
         'shared.library.show'
@@ -106,6 +106,9 @@ export default {
         default:
           return {}
       }
+    },
+    profileId () {
+      return this.profileInfo.id.toString()
     },
     albumTracksFormatted () {
       return this.albumTracks.map(

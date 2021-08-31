@@ -10,6 +10,7 @@
     isWithArtistName
     isWithDuration
     isWithLibraryLink
+    isWithListenedButton
   />
 </template>
 

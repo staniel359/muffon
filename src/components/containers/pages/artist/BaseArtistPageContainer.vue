@@ -18,6 +18,7 @@
       :topTrackCount="topTrackCount"
       :profileId="profileId"
       :libraryId="libraryId"
+      :listenedId="listenedId"
     ></slot>
   </BasePageContainer>
 </template>
@@ -101,6 +102,9 @@ export default {
     },
     libraryId () {
       return this.artistData?.library_id?.toString()
+    },
+    listenedId () {
+      return this.artistData?.listened_id?.toString()
     }
   },
   watch: {

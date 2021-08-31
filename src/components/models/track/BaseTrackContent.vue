@@ -71,13 +71,21 @@
     </div>
   </div>
 
-  <BaseProfileLibraryLinkButton
-    v-if="isShowLibraryLink"
-    class="track-library-link"
-    model="track"
-    :modelId="libraryId"
-    :profileId="profileId"
-  />
+  <div class="main-simple-self-buttons">
+    <BaseLibrarySimpleButton
+      v-if="isShowLibraryLink"
+      class="main-simple-self-button"
+      model="track"
+      :modelId="libraryId"
+    />
+
+    <BaseListenedSimpleButton
+      v-if="isShowListenedButton"
+      class="main-simple-self-button"
+      model="track"
+      :modelId="listenedId"
+    />
+  </div>
 
   <BaseClearButton
     v-if="isWithClearButton"
@@ -94,7 +102,9 @@ import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
-import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
+import BaseListenedSimpleButton
+  from '@/models/self/BaseListenedSimpleButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import {
   date as formatDate,
@@ -111,7 +121,8 @@ export default {
     TrackListenersCount,
     TrackDuration,
     BaseSourceIcon,
-    BaseProfileLibraryLinkButton,
+    BaseLibrarySimpleButton,
+    BaseListenedSimpleButton,
     BaseClearButton
   },
   props: {
@@ -135,6 +146,7 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean,
     isWithClearButton: Boolean,
     isWithCreated: Boolean
   },
@@ -229,6 +241,15 @@ export default {
       return formatTime(
         this.created
       )
+    },
+    isShowListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
+      )
+    },
+    listenedId () {
+      return this.trackData.listened_id?.toString()
     }
   },
   methods: {
@@ -263,7 +284,7 @@ export default {
   min-width: unset !important
   margin-left: $trackContentMarginWidth !important
 
-.track-library-link
+.main-simple-self-buttons
   margin-left: $trackContentMarginWidth !important
 
 .delete-button

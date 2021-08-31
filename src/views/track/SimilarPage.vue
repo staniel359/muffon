@@ -13,6 +13,7 @@
         isWithArtistName
         isWithDuration
         isWithLibraryLink
+        isWithListenedButton
       />
     </template>
   </BaseTrackPaginatedPageContainer>

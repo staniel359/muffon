@@ -42,13 +42,21 @@
       </small>
     </div>
 
-    <BaseProfileLibraryLinkButton
-      v-if="isShowLibraryLink"
-      class="library-link"
-      model="album"
-      :modelId="libraryId"
-      :profileId="profileId"
-    />
+    <div class="main-simple-self-buttons">
+      <BaseLibrarySimpleButton
+        v-if="isShowLibraryLink"
+        class="main-simple-self-button"
+        model="album"
+        :modelId="libraryId"
+      />
+
+      <BaseListenedSimpleButton
+        v-if="isShowListenedButton"
+        class="main-simple-self-button"
+        model="album"
+        :modelId="listenedId"
+      />
+    </div>
   </div>
 </template>
 
@@ -57,7 +65,9 @@ import BaseHeader from '@/BaseHeader.vue'
 import ArtistName from './InfoSection/ArtistName.vue'
 import BaseAlbumListenersCount
   from '@/models/album/BaseAlbumListenersCount.vue'
-import BaseProfileLibraryLinkButton from '@/BaseProfileLibraryLinkButton.vue'
+import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
+import BaseListenedSimpleButton
+  from '@/models/self/BaseListenedSimpleButton.vue'
 
 export default {
   name: 'InfoSection',
@@ -65,7 +75,8 @@ export default {
     BaseHeader,
     ArtistName,
     BaseAlbumListenersCount,
-    BaseProfileLibraryLinkButton
+    BaseListenedSimpleButton,
+    BaseLibrarySimpleButton
   },
   inject: [
     'findPaginationItem'
@@ -86,8 +97,9 @@ export default {
     isWithTracksCount: Boolean,
     tracksCount: Number,
     isWithLibraryLink: Boolean,
-    profileId: String,
-    libraryId: String
+    isWithListenedButton: Boolean,
+    libraryId: String,
+    listenedId: String
   },
   emits: [
     'tracksLinkActiveChange'
@@ -103,6 +115,12 @@ export default {
       return (
         this.isWithLibraryLink &&
           !!this.libraryId
+      )
+    },
+    isShowListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
       )
     }
   },
@@ -132,7 +150,4 @@ export default {
 .description
   &.release-date
     @extend .no-margin
-
-.library-link
-  margin-top: 0.5em !important
 </style>

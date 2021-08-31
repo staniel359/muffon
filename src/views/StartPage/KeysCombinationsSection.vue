@@ -1,5 +1,11 @@
 <template>
-  <div class="ui segments keys-combinations">
+  <div
+    :class="[
+      'ui segments',
+      'keys-combinations',
+      'main-segment-container'
+    ]"
+  >
     <BaseSegmentContainer
       v-for="combinationData in combinationsFormatted"
       :key="combinationData.uuid"
@@ -72,7 +78,6 @@ export default {
 
 <style lang="sass" scoped>
 .keys-combinations
-  @extend .no-margin
   width: 400px
 
 .keys-combination

@@ -13,6 +13,7 @@
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
       :isWithLibraryLink="isWithLibraryLink"
+      :isWithListenedButton="isWithListenedButton"
       :isWithClearButton="isWithClearButton"
       :isImageSmall="isImageSmall"
       @linkClick="handleLinkClick"
@@ -48,6 +49,7 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
+    isWithListenedButton: Boolean,
     isWithClearButton: Boolean,
     isImageSmall: Boolean
   },

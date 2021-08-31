@@ -15,18 +15,30 @@
         :scrollable="scrollable"
       />
 
-      <BaseProfileLibraryButton
-        class="library-button"
-        model="track"
-        :profileId="profileId"
-        :modelId="libraryId"
-        :trackTitle="title"
-        :artistName="artistName"
-      />
+      <div class="main-self-buttons">
+        <BaseLibraryButton
+          class="main-self-button"
+          model="track"
+          :modelId="libraryId"
+          :trackTitle="title"
+          :artistName="artistName"
+        />
+
+        <BaseListenedButton
+          class="main-self-button"
+          model="track"
+          :modelId="listenedId"
+          :trackTitle="title"
+          :artistName="artistName"
+        />
+      </div>
     </div>
 
     <div class="track-page-right-column">
-      <MainSection :trackData="trackData" />
+      <MainSection
+        :trackData="trackData"
+      />
+
       <ExtraSection
         :key="extraSectionKey"
         :trackData="trackData"
@@ -38,7 +50,8 @@
 <script>
 import BaseImage from '@/BaseImage.vue'
 import TrackHeader from './TrackPageContent/TrackHeader.vue'
-import BaseProfileLibraryButton from '@/BaseProfileLibraryButton.vue'
+import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
+import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
 import MainSection from './TrackPageContent/MainSection.vue'
 import ExtraSection from './TrackPageContent/ExtraSection.vue'
 import { generateKey } from '#/utils'
@@ -48,7 +61,8 @@ export default {
   components: {
     BaseImage,
     TrackHeader,
-    BaseProfileLibraryButton,
+    BaseLibraryButton,
+    BaseListenedButton,
     MainSection,
     ExtraSection
   },
@@ -56,8 +70,7 @@ export default {
     trackData: {
       type: Object,
       required: true
-    },
-    profileId: String
+    }
   },
   data () {
     return {
@@ -77,6 +90,9 @@ export default {
     },
     libraryId () {
       return this.trackData.library_id?.toString()
+    },
+    listenedId () {
+      return this.trackData.listened_id?.toString()
     }
   },
   watch: {
@@ -99,9 +115,6 @@ export default {
 
 .track-page-left-column
   width: 150px
-
-.library-button
-  margin-top: 1em
 
 .track-page-right-column
   @extend .flex-full

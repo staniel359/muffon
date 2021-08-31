@@ -11,6 +11,7 @@
         :profileId="slotProps.profileId"
         isWithArtistName
         isWithLibraryLink
+        isWithListenedButton
       />
     </template>
   </BaseTagPaginatedPageContainer>

@@ -13,6 +13,8 @@
         :albums="slotProps.albums"
         isWithArtistName
         isWithListenersCount
+        isWithLibraryLink
+        isWithListenedButton
       />
     </template>
   </BaseTagPaginatedSegmentContainer>
