@@ -1,0 +1,73 @@
+<template>
+  <div class="content">
+    <div class="header">
+      <BaseButton
+        :text="buttonTextFormatted"
+        :class="{
+          loading: isLoading,
+          disabled: isLoading
+        }"
+        @click="handleClick"
+      />
+    </div>
+
+    <div v-if="isSuccess">
+      <i class="check green icon"></i>
+      <span>
+        {{ successFormatted }}
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+import { ipcRenderer } from 'electron'
+import BaseButton from '@/BaseButton.vue'
+import { localize } from '#/actions/plugins/i18n'
+
+export default {
+  name: 'ClearCacheOption',
+  components: {
+    BaseButton
+  },
+  data () {
+    return {
+      isLoading: false,
+      isSuccess: false
+    }
+  },
+  computed: {
+    buttonTextFormatted () {
+      return localize(
+        'layout.settings.options.data.cache.clear'
+      )
+    },
+    successFormatted () {
+      return localize(
+        'layout.settings.options.data.cache.cleared'
+      )
+    }
+  },
+  methods: {
+    handleClick () {
+      this.isSuccess = false
+      this.isLoading = true
+
+      const handleSuccess = () => {
+        this.isSuccess = true
+      }
+
+      const handleFinish = () => {
+        this.isLoading = false
+      }
+
+      ipcRenderer
+        .invoke('clear-cache')
+        .then(handleSuccess)
+        .finally(handleFinish)
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

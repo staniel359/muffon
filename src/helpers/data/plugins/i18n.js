@@ -72,7 +72,8 @@ export default {
           app: {
             view: 'View',
             player: 'Player',
-            queue: 'Queue'
+            queue: 'Queue',
+            data: 'Data'
           },
           profile: {
             info: 'info'
@@ -87,6 +88,18 @@ export default {
           },
           queue: {
             autoplay: 'Autoplay'
+          },
+          data: {
+            cache: {
+              clear: 'Clear cache',
+              cleared: 'Cache was cleared'
+            },
+            history: {
+              search: {
+                clear: 'Clear search history',
+                cleared: 'Search history was cleared'
+              }
+            }
           }
         }
       }

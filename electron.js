@@ -417,6 +417,10 @@ const handleUpdateTabs = (_, value) => {
   )
 }
 
+const handleClearCache = () => {
+  return mainWindow.webContents.session.clearCache()
+}
+
 ipcMain.on(
   'set-title',
   handleSetTitle
@@ -455,4 +459,9 @@ ipcMain.handle(
 ipcMain.on(
   'update-tabs',
   handleUpdateTabs
+)
+
+ipcMain.handle(
+  'clear-cache',
+  handleClearCache
 )
