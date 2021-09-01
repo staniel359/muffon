@@ -67,7 +67,8 @@ export default {
     artistImageDataArgs () {
       return {
         artistName: this.artistName,
-        isInteractive: this.isInteractive
+        isInteractive: this.isInteractive,
+        limit: 20
       }
     },
     imageFormatted () {

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { handleEnvError } from '#/utils'
 
-export default function ({ artistName, isInteractive }) {
+export default function ({ artistName, isInteractive, limit }) {
   this.isLoading = true
 
   const artistNameEncoded = encodeURIComponent(artistName)
@@ -16,7 +16,11 @@ export default function ({ artistName, isInteractive }) {
 
     const formatImages = () => {
       if (isInteractive) {
-        return images
+        if (limit) {
+          return images.slice(0, limit)
+        } else {
+          return images
+        }
       } else {
         return images.slice(0, 1)
       }

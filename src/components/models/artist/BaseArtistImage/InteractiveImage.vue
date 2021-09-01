@@ -3,7 +3,9 @@
     v-bind="$attrs"
     class="image-container"
   >
-    <ImagesPageButton :artistName="artistName" />
+    <ImagesPageButton
+      :artistName="artistName"
+    />
 
     <ImageSlider
       :images="images"
@@ -50,7 +52,10 @@ export default {
       this.mainSlider = el
     },
     handleImageClick (index) {
-      goToSliderSlide(this.mainSlider, index)
+      goToSliderSlide(
+        this.mainSlider,
+        index
+      )
 
       this.$nextTick(() => {
         showModal(this.modal)
