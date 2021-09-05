@@ -11,7 +11,7 @@ export default function ({ sourceId, albumData }) {
           albumId: albumData.vk_id,
           paramsData: {
             owner_id: albumData.vk_owner_id,
-            access_hash: albumData.vk_access_hash
+            access_key: albumData.vk_access_key
           }
         }
       case 'odnoklassniki':
