@@ -92,7 +92,7 @@ export default {
     postAlbumData,
     formatProgressActive ({ value, total }) {
       return localize(
-        'pages.library.add.search.active.save.albums',
+        'pages.library.add.save.active.albums',
         { value, total }
       )
     },

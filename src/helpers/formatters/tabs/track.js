@@ -8,7 +8,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
   const formatSubpageTitle = () => {
     if (pageNameKey) {
       return localize(
-        `layout.navigation.track.${pageNameKey}`
+        `layout.navigation.${pageNameKey}`
       ).toLowerCase()
     }
   }
@@ -19,7 +19,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
   ].filter(e => e).join(' ')
 
   const artistTracksPageName = localize(
-    'layout.navigation.artist.tracks'
+    'layout.navigation.tracks'
   ).toLowerCase()
   const artistPageTitle =
     `${artistName} ${artistTracksPageName}`

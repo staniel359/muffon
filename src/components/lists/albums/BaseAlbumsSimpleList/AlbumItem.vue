@@ -1,56 +1,62 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
+    :class="{
+      disabled: isDisabled
+    }"
     :link="linkFormatted"
     @click="handleLinkClick"
   >
-    <BaseImage
-      class="rounded bordered"
-      :image="image"
+    <BaseBookmarkDeletedBlock
+      v-if="isBookmarkDeleted"
     />
-
-    <InfoBlock
-      :albumTitle="albumTitle"
-      :artistName="artistName"
-      :listenersCount="listenersCount"
-      :uuid="uuid"
-      :isWithArtistName="isWithArtistName"
-      :isArtistNameActive="isArtistNameActive"
-      :isWithListenersCount="isWithListenersCount"
-    />
-
-    <div class="main-simple-self-buttons">
-      <BaseLibrarySimpleButton
-        v-if="isShowLibraryLink"
-        class="main-simple-self-button"
-        model="album"
-        :modelId="libraryId"
-        @click="handleLinkClick"
+    <template v-else>
+      <BaseImage
+        class="rounded bordered"
+        :image="image"
       />
 
-      <BaseListenedSimpleButton
-        v-if="isShowListenedButton"
-        class="main-simple-self-button"
-        model="album"
-        :modelId="listenedId"
+      <InfoBlock
+        :albumTitle="albumTitle"
+        :artistName="artistName"
+        :listenersCount="listenersCount"
+        :uuid="uuid"
+        :isWithArtistName="isWithArtistName"
+        :isArtistNameActive="isArtistNameActive"
+        :isWithListenersCount="isWithListenersCount"
       />
-    </div>
 
-    <BaseClearButton
-      v-if="isWithClearButton"
-      class="delete-button"
-      @click="handleDeleteButtonClick"
-    />
+      <BaseSelfSimpleButtons
+        model="album"
+        :modelData="albumData"
+        :isWithLibraryLink="isWithLibraryLink"
+        :isWithListenedButton="isWithListenedButton"
+        :isWithBookmarkButton="isWithBookmarkButton"
+      />
+
+      <BaseBookmarkDeleteButton
+        v-if="isBookmark"
+        model="album"
+        :modelData="albumData"
+        @deleted="handleBookmarkDeleted"
+      />
+
+      <BaseClearButton
+        v-if="isWithClearButton"
+        class="delete-button"
+        @click="handleDeleteButtonClick"
+      />
+    </template>
   </BaseLinkContainer>
 </template>
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseBookmarkDeletedBlock from '@/BaseBookmarkDeletedBlock.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
-import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
-import BaseListenedSimpleButton
-  from '@/models/self/BaseListenedSimpleButton.vue'
+import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
+import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
@@ -59,10 +65,11 @@ export default {
   name: 'AlbumItem',
   components: {
     BaseLinkContainer,
+    BaseBookmarkDeletedBlock,
     BaseImage,
     InfoBlock,
-    BaseListenedSimpleButton,
-    BaseLibrarySimpleButton,
+    BaseSelfSimpleButtons,
+    BaseBookmarkDeleteButton,
     BaseClearButton
   },
   provide () {
@@ -79,7 +86,9 @@ export default {
     isWithListenersCount: Boolean,
     isWithLibraryLink: Boolean,
     isWithClearButton: Boolean,
-    isWithListenedButton: Boolean
+    isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick',
@@ -87,13 +96,16 @@ export default {
   ],
   data () {
     return {
-      isArtistNameActive: false
+      isArtistNameActive: false,
+      isBookmarkDeleted: false
     }
   },
   computed: {
     linkFormatted () {
       if (this.isArtistNameActive) {
         return this.artistMainLinkFormatted
+      } else if (this.isBookmarkDeleted) {
+        return {}
       } else {
         return this.albumMainLinkFormatted
       }
@@ -124,23 +136,8 @@ export default {
     uuid () {
       return this.albumData.uuid
     },
-    isShowLibraryLink () {
-      return (
-        this.isWithLibraryLink &&
-          !!this.libraryId
-      )
-    },
-    libraryId () {
-      return this.albumData.library_id?.toString()
-    },
-    isShowListenedButton () {
-      return (
-        this.isWithListenedButton &&
-          !!this.listenedId
-      )
-    },
-    listenedId () {
-      return this.albumData.listened_id?.toString()
+    isDisabled () {
+      return this.isBookmarkDeleted
     }
   },
   methods: {
@@ -150,8 +147,11 @@ export default {
     handleDeleteButtonClick () {
       this.$emit(
         'deleteButtonClick',
-        { uuid: this.albumData.uuid }
+        { uuid: this.uuid }
       )
+    },
+    handleBookmarkDeleted () {
+      this.isBookmarkDeleted = true
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value

@@ -39,7 +39,7 @@ export default {
     },
     headerFormatted () {
       return localize(
-        'layout.navigation.profile.library'
+        'layout.navigation.library'
       )
     }
   }

@@ -15,7 +15,7 @@ export default function ({
   const formatSubpageTitle = () => {
     if (pageNameKey) {
       return localize(
-        `layout.navigation.library.album.${pageNameKey}`
+        `layout.navigation.${pageNameKey}`
       ).toLowerCase()
     }
   }
@@ -26,13 +26,13 @@ export default function ({
   ].filter(e => e).join(' ')
 
   const profileLibraryArtistAlbumsPageName = localize(
-    'layout.navigation.library.artist.albums'
+    'layout.navigation.albums'
   ).toLowerCase()
   const profileLibraryArtistPageTitle =
     `${artistName} ${profileLibraryArtistAlbumsPageName}`
 
   const profileLibraryArtistsPageName = localize(
-    'layout.navigation.library.artists'
+    'layout.navigation.artists'
   ).toLowerCase()
   const profileLibraryPageTitle =
     `${profileNickname} ${profileLibraryArtistsPageName}`

@@ -48,7 +48,7 @@ export default {
     },
     placeholderFormatted () {
       return localize(
-        'layout.search.input.placeholder'
+        'layout.search.input'
       )
     }
   },

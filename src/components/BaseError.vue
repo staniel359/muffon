@@ -1,11 +1,13 @@
 <template>
-  <BaseMessage
-    :icons="icons"
-    :header="header"
-    :content="content"
-    :buttonData="buttonData"
-    @buttonClick="handleButtonClick"
-  />
+  <div class="main-error-container">
+    <BaseMessage
+      :icons="icons"
+      :header="header"
+      :content="content"
+      :buttonData="buttonData"
+      @buttonClick="handleButtonClick"
+    />
+  </div>
 </template>
 
 <script>

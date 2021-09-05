@@ -1,80 +1,86 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
+    :class="{
+      disabled: isDisabled
+    }"
     :link="linkFormatted"
     @click="handleLinkClick"
   >
-    <BaseArtistImage
-      class="circular bordered"
-      size="extrasmall"
-      :class="{ small: isImageSmall }"
-      :image="image"
-      :artistName="artistName"
-      @loadEnd="handleImageLoadEnd"
+    <BaseBookmarkDeletedBlock
+      v-if="isBookmarkDeleted"
     />
-
-    <div class="content">
-      <BaseHeader
-        tag="h4"
-        :class="{ link: isHeaderLink }"
-        :text="artistName"
-      />
-
-      <BaseArtistListenersCount
-        v-if="isWithListenersCount"
-        class="description"
+    <template v-else>
+      <BaseArtistImage
+        class="circular bordered"
+        size="extrasmall"
+        :class="{ small: isImageSmall }"
+        :image="image"
         :artistName="artistName"
-        :listenersCount="listenersCount"
-        @loadEnd="handleListenersCountLoadEnd"
+        @loadEnd="handleImageLoadEnd"
       />
 
-      <LibraryCountersSection
-        :isWithTracksCount="isWithTracksCount"
-        :tracksCount="tracksCount"
-        :topTracksCount="topTracksCount"
-        :isWithAlbumsCount="isWithAlbumsCount"
-        :albumsCount="albumsCount"
-        :topAlbumsCount="topAlbumsCount"
-        @tracksLinkActiveChange="handleTracksLinkActiveChange"
-        @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
-      />
-    </div>
+      <div class="content">
+        <BaseHeader
+          tag="h4"
+          :class="{ link: isHeaderLink }"
+          :text="artistName"
+        />
 
-    <div class="main-simple-self-buttons">
-      <BaseLibrarySimpleButton
-        v-if="isShowLibraryLink"
-        class="main-simple-self-button"
+        <BaseArtistListenersCount
+          v-if="isWithListenersCount"
+          class="description"
+          :artistName="artistName"
+          :listenersCount="listenersCount"
+          @loadEnd="handleListenersCountLoadEnd"
+        />
+
+        <LibraryCountersSection
+          :isWithTracksCount="isWithTracksCount"
+          :tracksCount="tracksCount"
+          :topTracksCount="topTracksCount"
+          :isWithAlbumsCount="isWithAlbumsCount"
+          :albumsCount="albumsCount"
+          :topAlbumsCount="topAlbumsCount"
+          @tracksLinkActiveChange="handleTracksLinkActiveChange"
+          @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
+        />
+      </div>
+
+      <BaseSelfSimpleButtons
         model="artist"
-        :modelId="libraryId"
-        @click="handleLinkClick"
+        :modelData="artistData"
+        :isWithLibraryLink="isWithLibraryLink"
+        :isWithListenedButton="isWithListenedButton"
+        :isWithBookmarkButton="isWithBookmarkButton"
       />
 
-      <BaseListenedSimpleButton
-        v-if="isShowListenedButton"
-        class="main-simple-self-button"
+      <BaseBookmarkDeleteButton
+        v-if="isBookmark"
         model="artist"
-        :modelId="listenedId"
+        :modelData="artistData"
+        @deleted="handleBookmarkDeleted"
       />
-    </div>
 
-    <BaseClearButton
-      v-if="isWithClearButton"
-      class="delete-button"
-      @click="handleDeleteButtonClick"
-    />
+      <BaseClearButton
+        v-if="isWithClearButton"
+        class="delete-button"
+        @click="handleDeleteButtonClick"
+      />
+    </template>
   </BaseLinkContainer>
 </template>
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseBookmarkDeletedBlock from '@/BaseBookmarkDeletedBlock.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
-import BaseListenedSimpleButton
-  from '@/models/self/BaseListenedSimpleButton.vue'
+import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
+import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
@@ -87,12 +93,13 @@ export default {
   name: 'ArtistItem',
   components: {
     BaseLinkContainer,
+    BaseBookmarkDeletedBlock,
     BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseListenedSimpleButton,
-    BaseLibrarySimpleButton,
+    BaseSelfSimpleButtons,
+    BaseBookmarkDeleteButton,
     BaseClearButton
   },
   inject: [
@@ -113,8 +120,10 @@ export default {
     profileId: String,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean,
     isWithClearButton: Boolean,
-    isImageSmall: Boolean
+    isImageSmall: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick',
@@ -122,8 +131,9 @@ export default {
   ],
   data () {
     return {
-      isTracksLinkActive: false,
-      isAlbumsLinkActive: false
+      isBookmarkDeleted: false,
+      isAlbumsLinkActive: false,
+      isTracksLinkActive: false
     }
   },
   computed: {
@@ -178,23 +188,8 @@ export default {
           !this.isAlbumsLinkActive
       )
     },
-    isShowLibraryLink () {
-      return (
-        this.isWithLibraryLink &&
-          !!this.libraryId
-      )
-    },
-    libraryId () {
-      return this.artistData.library_id?.toString()
-    },
-    isShowListenedButton () {
-      return (
-        this.isWithListenedButton &&
-          !!this.listenedId
-      )
-    },
-    listenedId () {
-      return this.artistData.listened_id?.toString()
+    isDisabled () {
+      return this.isBookmarkDeleted
     }
   },
   methods: {
@@ -220,8 +215,11 @@ export default {
     handleDeleteButtonClick () {
       this.$emit(
         'deleteButtonClick',
-        { uuid: this.artistData.uuid }
+        { uuid: this.uuid }
       )
+    },
+    handleBookmarkDeleted () {
+      this.isBookmarkDeleted = true
     }
   }
 }

@@ -398,9 +398,6 @@ a
 .main-source-select-content
   @extend .d-flex, .align-items-center, .flex-full
 
-.main-source-select-reset-button
-  @extend .no-margin
-
 .main-source-select
   width: 210px
   margin-right: 1em !important
@@ -511,8 +508,16 @@ a
     &:not(:first-child)
       margin-top: 0.5em
 
-.main-simple-self-buttons
-  @extend .d-flex, .justify-content-center
-  & > .main-simple-self-button
-    &:not(:first-child)
-      margin-left: 0.5em
+.main-simple-self-buttons-container
+  @extend .text-align-right
+  width: 67px
+
+.main-simple-self-button
+  display: inline-block
+  margin: 0.25em
+
+.main-error-container
+  @extend .w-100
+
+.main-deleted-container
+  @extend .d-flex, .justify-content-center, .flex-full

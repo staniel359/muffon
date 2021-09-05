@@ -35,17 +35,17 @@ export default {
     },
     artistsFormatted () {
       return localize(
-        'pages.library.add.search.select.artists'
+        'layout.navigation.artists'
       )
     },
     albumsFormatted () {
       return localize(
-        'pages.library.add.search.select.albums'
+        'layout.navigation.albums'
       )
     },
     tracksFormatted () {
       return localize(
-        'pages.library.add.search.select.tracks'
+        'layout.navigation.tracks'
       )
     }
   },

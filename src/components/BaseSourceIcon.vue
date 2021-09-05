@@ -34,7 +34,7 @@ export default {
     popupTextFormatted () {
       if (this.sourceName) {
         return localize(
-          'shared.track.source.via',
+          'shared.track.source',
           { source: this.sourceName }
         )
       } else {

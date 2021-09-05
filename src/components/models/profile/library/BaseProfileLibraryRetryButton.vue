@@ -22,7 +22,7 @@ export default {
   computed: {
     textFormatted () {
       return localize(
-        'pages.library.add.retry'
+        'pages.library.add.buttons.retry'
       )
     }
   },

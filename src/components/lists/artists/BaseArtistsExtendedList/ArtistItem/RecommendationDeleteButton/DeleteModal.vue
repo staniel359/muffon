@@ -6,7 +6,7 @@
       </div>
 
       <div class="content">
-        <RecommendationDeleteTextSection
+        <TextSection
           :artistName="artistName"
         />
 
@@ -36,18 +36,17 @@
 
 <script>
 import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import RecommendationDeleteTextSection
-  from './RecommendationDeleteModal/RecommendationDeleteTextSection.vue'
+import TextSection from './DeleteModal/TextSection.vue'
 import BaseError from '@/BaseError.vue'
 import BaseButton from '@/BaseButton.vue'
 import deleteRecommendationData from '#/actions/api/recommendation/deleteData'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'RecommendationDeleteModal',
+  name: 'DeleteModal',
   components: {
     BaseModalContainer,
-    RecommendationDeleteTextSection,
+    TextSection,
     BaseError,
     BaseButton
   },
@@ -63,8 +62,7 @@ export default {
   data () {
     return {
       error: null,
-      isLoading: false,
-      isSuccess: false
+      isLoading: false
     }
   },
   computed: {
@@ -90,17 +88,14 @@ export default {
       return this.recommendationData.id
     }
   },
-  watch: {
-    isSuccess: 'handleIsSuccessChange'
-  },
   methods: {
     deleteRecommendationData,
     handleDeleteButtonClick () {
       this.deleteRecommendationData({
         recommendationId: this.recommendationId
-      })
+      }).then(this.handleSuccess)
     },
-    handleIsSuccessChange () {
+    handleSuccess () {
       this.$refs.modal.hide()
 
       this.$emit('deleted')

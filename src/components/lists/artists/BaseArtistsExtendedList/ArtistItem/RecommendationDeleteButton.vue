@@ -6,7 +6,7 @@
     @click="handleClick"
   />
 
-  <RecommendationDeleteModal
+  <DeleteModal
     ref="modal"
     :recommendationData="recommendationData"
     @deleted="handleDeleted"
@@ -15,15 +15,14 @@
 
 <script>
 import BaseButton from '@/BaseButton.vue'
-import RecommendationDeleteModal
-  from './RecommendationDeleteButton/RecommendationDeleteModal.vue'
+import DeleteModal from './RecommendationDeleteButton/DeleteModal.vue'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'RecommendationDeleteButton',
   components: {
     BaseButton,
-    RecommendationDeleteModal
+    DeleteModal
   },
   props: {
     recommendationData: Object

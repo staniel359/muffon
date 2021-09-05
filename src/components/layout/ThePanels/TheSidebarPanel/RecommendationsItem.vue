@@ -36,7 +36,7 @@ export default {
     },
     textFormatted () {
       return localize(
-        'layout.sidebar.recommendations'
+        'layout.navigation.recommendations'
       )
     }
   }

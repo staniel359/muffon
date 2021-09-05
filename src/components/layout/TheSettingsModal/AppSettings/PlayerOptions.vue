@@ -23,7 +23,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        'layout.settings.headers.app.player'
+        'layout.settings.sections.app.player'
       )
     }
   }

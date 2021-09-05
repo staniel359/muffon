@@ -4,13 +4,13 @@ export default function ({ channelTitle }) {
   return [
     {
       name: localize(
-        'layout.navigation.videos'
+        'layout.navigation.videoChannels'
       )
     },
     { name: channelTitle },
     {
       name: localize(
-        'layout.navigation.videoChannel.videos'
+        'layout.navigation.videos'
       ),
       isActive: true
     }

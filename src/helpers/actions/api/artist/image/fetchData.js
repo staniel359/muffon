@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { handleEnvError } from '#/utils'
 
 export default function ({ artistName, isInteractive, limit }) {
   this.isLoading = true
@@ -32,8 +31,6 @@ export default function ({ artistName, isInteractive, limit }) {
   const handleError = error => {
     this.error = error
     this.images = null
-
-    handleEnvError(error)
   }
 
   const handleFinish = () => {

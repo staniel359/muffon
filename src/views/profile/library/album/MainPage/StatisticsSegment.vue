@@ -42,7 +42,7 @@ export default {
       return [
         {
           text: localize(
-            'pages.library.statistics.tracks'
+            'layout.navigation.tracks'
           ),
           value: this.albumData.tracks_count,
           link: formatProfileLibraryAlbumTracksLink({

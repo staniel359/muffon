@@ -14,6 +14,7 @@
         isWithArtistName
         isWithLibraryLink
         isWithListenedButton
+        isWithBookmarkButton
       />
     </template>
   </BaseTagPaginatedSegmentContainer>

@@ -34,7 +34,7 @@ export default {
       return [
         {
           text: localize(
-            'pages.library.statistics.artists'
+            'layout.navigation.artists'
           ),
           value: this.libraryData.artists_count,
           link: formatProfileLibraryArtistsLink({
@@ -43,7 +43,7 @@ export default {
         },
         {
           text: localize(
-            'pages.library.statistics.albums'
+            'layout.navigation.albums'
           ),
           value: this.libraryData.albums_count,
           link: formatProfileLibraryAlbumsLink({
@@ -52,7 +52,7 @@ export default {
         },
         {
           text: localize(
-            'pages.library.statistics.tracks'
+            'layout.navigation.tracks'
           ),
           value: this.libraryData.tracks_count,
           link: formatProfileLibraryTracksLink({

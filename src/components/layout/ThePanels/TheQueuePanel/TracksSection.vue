@@ -6,6 +6,7 @@
       class="queue-tracks"
       :tracks="queueTracksFormatted"
       :isQueueable="false"
+      :isWithSelfButtons="false"
       isWithImage
       isWithArtistName
       isWithAlbumTitle

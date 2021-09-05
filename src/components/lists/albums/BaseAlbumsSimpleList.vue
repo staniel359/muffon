@@ -9,6 +9,8 @@
       :isWithLibraryLink="isWithLibraryLink"
       :isWithClearButton="isWithClearButton"
       :isWithListenedButton="isWithListenedButton"
+      :isWithBookmarkButton="isWithBookmarkButton"
+      :isBookmark="isBookmark"
       @linkClick="handleLinkClick"
       @deleteButtonClick="handleDeleteButtonClick"
     />
@@ -37,7 +39,9 @@ export default {
     isWithListenersCount: Boolean,
     isWithLibraryLink: Boolean,
     isWithClearButton: Boolean,
-    isWithListenedButton: Boolean
+    isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick',

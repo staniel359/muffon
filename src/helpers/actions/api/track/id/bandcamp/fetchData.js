@@ -1,5 +1,4 @@
 import fetchBandcampIdData from '#/actions/api/id/bandcamp/fetchData'
-import { handleEnvError } from '#/utils'
 
 export default function ({ artistName, title }) {
   this.isLoading = true
@@ -27,8 +26,6 @@ export default function ({ artistName, title }) {
   const handleError = error => {
     this.isLoading = false
     this.error = error
-
-    handleEnvError(error)
   }
 
   return fetchBandcampIdData(bandcampIdDataArgs)

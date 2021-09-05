@@ -43,7 +43,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        `layout.navigation.library.${this.headerTextKey}`
+        `layout.navigation.${this.headerTextKey}`
       )
     },
     linkFormatted () {

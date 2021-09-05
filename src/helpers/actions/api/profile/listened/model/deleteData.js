@@ -1,14 +1,14 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ albumId }) {
+export default function ({ model, listenedId }) {
   this.isLoading = true
   this.error = null
 
   const profileId =
     store.state.profile.info.id
   const url = `profiles/${profileId}` +
-    `/listened/albums/${albumId}`
+    `/listened/${model}s/${listenedId}`
 
   const token =
     store.state.profile.token

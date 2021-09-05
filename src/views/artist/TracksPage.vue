@@ -14,6 +14,7 @@
         isWithListenersCount
         isWithLibraryLink
         isWithListenedButton
+        isWithBookmarkButton
       />
     </template>
   </BaseArtistPaginatedPageContainer>

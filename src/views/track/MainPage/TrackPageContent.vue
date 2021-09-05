@@ -4,10 +4,12 @@
     ref="scrollable"
   >
     <div class="track-page-left-column main-sticky-container">
-      <BaseImage
-        class="rounded bordered track-image"
-        :image="image"
-      />
+      <div class="main-image-container">
+        <BaseImage
+          class="rounded bordered track-image"
+          :image="image"
+        />
+      </div>
 
       <TrackHeader
         v-if="scrollable"
@@ -28,6 +30,14 @@
           class="main-self-button"
           model="track"
           :modelId="listenedId"
+          :trackTitle="title"
+          :artistName="artistName"
+        />
+
+        <BaseBookmarkButton
+          class="main-self-button"
+          model="track"
+          :modelId="bookmarkId"
           :trackTitle="title"
           :artistName="artistName"
         />
@@ -52,6 +62,7 @@ import BaseImage from '@/BaseImage.vue'
 import TrackHeader from './TrackPageContent/TrackHeader.vue'
 import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
 import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
+import BaseBookmarkButton from '@/models/self/BaseBookmarkButton.vue'
 import MainSection from './TrackPageContent/MainSection.vue'
 import ExtraSection from './TrackPageContent/ExtraSection.vue'
 import { generateKey } from '#/utils'
@@ -63,6 +74,7 @@ export default {
     TrackHeader,
     BaseLibraryButton,
     BaseListenedButton,
+    BaseBookmarkButton,
     MainSection,
     ExtraSection
   },
@@ -93,6 +105,9 @@ export default {
     },
     listenedId () {
       return this.trackData.listened_id?.toString()
+    },
+    bookmarkId () {
+      return this.trackData.bookmark_id?.toString()
     }
   },
   watch: {

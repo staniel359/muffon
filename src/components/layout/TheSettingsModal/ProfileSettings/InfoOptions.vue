@@ -23,7 +23,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        'layout.settings.headers.profile.info'
+        'layout.settings.sections.profile.info'
       )
     }
   }

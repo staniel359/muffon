@@ -18,7 +18,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
     if (pageNameKey) {
       return {
         name: localize(
-          `layout.navigation.library.${pageNameKey}`
+          `layout.navigation.${pageNameKey}`
         ),
         isActive: true
       }
@@ -40,7 +40,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
     },
     {
       name: localize(
-        'layout.navigation.profile.library'
+        'layout.navigation.library'
       ),
       isActive: !pageNameKey,
       link: formatLink()

@@ -13,7 +13,7 @@
     :profileId="profileId"
     :model="model"
     :modelId="modelId"
-    :modelFullTitle="modelFullTitle"
+    :modelTitle="modelTitle"
   />
 </template>
 
@@ -32,7 +32,7 @@ export default {
     profileId: String,
     model: String,
     modelId: String,
-    modelFullTitle: String
+    modelTitle: String
   },
   computed: {
     textFormatted () {

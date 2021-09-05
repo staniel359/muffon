@@ -14,7 +14,7 @@ export default function ({ artistName, pageNameKey }) {
     if (pageNameKey) {
       return {
         name: localize(
-          `layout.navigation.artist.${pageNameKey}`
+          `layout.navigation.${pageNameKey}`
         ),
         isActive: true
       }

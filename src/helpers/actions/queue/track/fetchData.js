@@ -1,6 +1,5 @@
 import store from '*/store'
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
-import { handleEnvError } from '#/utils'
 import { setGlobalData } from '#/actions'
 
 export default function fetchData ({ position }) {
@@ -40,10 +39,8 @@ export default function fetchData ({ position }) {
       setIsQueueFetching(false)
     }
 
-    const handleError = error => {
+    const handleError = () => {
       retry()
-
-      handleEnvError(error)
     }
 
     const retry = () => {

@@ -13,3 +13,11 @@ export const recommendations = () => {
     path: 'recommendations'
   }
 }
+
+export const bookmarks = () => {
+  return {
+    name: 'BookmarksPage',
+    params: {},
+    path: 'bookmarks'
+  }
+}

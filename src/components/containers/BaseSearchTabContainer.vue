@@ -27,6 +27,7 @@
           isWithArtistName
           isWithLibraryLink
           isWithListenedButton
+          isWithBookmarkButton
           @linkClick="handleLinkClick"
         />
       </template>

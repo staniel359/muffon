@@ -14,8 +14,10 @@
       :profileId="profileId"
       :isWithLibraryLink="isWithLibraryLink"
       :isWithListenedButton="isWithListenedButton"
+      :isWithBookmarkButton="isWithBookmarkButton"
       :isWithClearButton="isWithClearButton"
       :isImageSmall="isImageSmall"
+      :isBookmark="isBookmark"
       @linkClick="handleLinkClick"
       @deleteButtonClick="handleDeleteButtonClick"
     />
@@ -50,8 +52,10 @@ export default {
     profileId: String,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean,
     isWithClearButton: Boolean,
-    isImageSmall: Boolean
+    isImageSmall: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick',

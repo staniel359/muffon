@@ -40,7 +40,7 @@
         model="artist"
         :profileId="profileId"
         :modelId="artistId"
-        :modelFullTitle="artistName"
+        :modelTitle="artistName"
       />
     </BaseSegmentContainer>
   </div>

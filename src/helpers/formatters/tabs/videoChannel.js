@@ -5,7 +5,7 @@ import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ channelTitle, channelId }) {
   const videoChannelVideosPageName = localize(
-    'layout.navigation.videoChannel.videos'
+    'layout.navigation.videos'
   ).toLowerCase()
 
   const title = [

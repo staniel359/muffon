@@ -42,21 +42,13 @@
       </small>
     </div>
 
-    <div class="main-simple-self-buttons">
-      <BaseLibrarySimpleButton
-        v-if="isShowLibraryLink"
-        class="main-simple-self-button"
-        model="album"
-        :modelId="libraryId"
-      />
-
-      <BaseListenedSimpleButton
-        v-if="isShowListenedButton"
-        class="main-simple-self-button"
-        model="album"
-        :modelId="listenedId"
-      />
-    </div>
+    <BaseSelfSimpleButtons
+      model="album"
+      :modelData="albumData"
+      :isWithLibraryLink="isWithLibraryLink"
+      :isWithListenedButton="isWithListenedButton"
+      :isWithBookmarkButton="isWithBookmarkButton"
+    />
   </div>
 </template>
 
@@ -65,9 +57,7 @@ import BaseHeader from '@/BaseHeader.vue'
 import ArtistName from './InfoSection/ArtistName.vue'
 import BaseAlbumListenersCount
   from '@/models/album/BaseAlbumListenersCount.vue'
-import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
-import BaseListenedSimpleButton
-  from '@/models/self/BaseListenedSimpleButton.vue'
+import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
 
 export default {
   name: 'InfoSection',
@@ -75,52 +65,49 @@ export default {
     BaseHeader,
     ArtistName,
     BaseAlbumListenersCount,
-    BaseListenedSimpleButton,
-    BaseLibrarySimpleButton
+    BaseSelfSimpleButtons
   },
   inject: [
     'findPaginationItem'
   ],
   props: {
-    albumTitle: {
-      type: String,
+    albumData: {
+      type: Object,
       required: true
     },
     artistName: String,
-    listenersCount: Number,
-    releaseDate: String,
-    uuid: String,
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,
     isTracksLinkActive: Boolean,
     isWithListenersCount: Boolean,
     isWithTracksCount: Boolean,
-    tracksCount: Number,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
-    libraryId: String,
-    listenedId: String
+    isWithBookmarkButton: Boolean
   },
   emits: [
     'tracksLinkActiveChange'
   ],
   computed: {
+    albumTitle () {
+      return this.albumData.title
+    },
+    uuid () {
+      return this.albumData.uuid
+    },
+    listenersCount () {
+      return this.albumData.listeners_count
+    },
+    releaseDate () {
+      return this.albumData.release_date
+    },
+    tracksCount () {
+      return this.albumData.tracks_count
+    },
     isHeaderLink () {
       return (
         !this.isArtistNameActive &&
           !this.isTracksLinkActive
-      )
-    },
-    isShowLibraryLink () {
-      return (
-        this.isWithLibraryLink &&
-          !!this.libraryId
-      )
-    },
-    isShowListenedButton () {
-      return (
-        this.isWithListenedButton &&
-          !!this.listenedId
       )
     }
   },

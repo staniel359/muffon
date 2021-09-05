@@ -40,7 +40,7 @@ export default {
   computed: {
     successMessageHeaderFormatted () {
       return localize(
-        'pages.library.add.search.success.save.header.tracks',
+        'pages.library.add.save.success.tracks',
         { count: this.totalCountFormatted }
       )
     },

@@ -5,7 +5,7 @@ import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ pageNameKey }) {
   const recommendationsPageTitle = localize(
-    'layout.navigation.self.recommendations'
+    'layout.navigation.recommendations'
   )
 
   const formatSubpageTitle = () => {

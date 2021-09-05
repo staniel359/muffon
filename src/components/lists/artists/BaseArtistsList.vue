@@ -13,6 +13,7 @@
     :profileId="profileId"
     :isWithLibraryLink="isWithLibraryLink"
     :isWithListenedButton="isWithListenedButton"
+    :isWithBookmarkButton="isWithBookmarkButton"
   />
 </template>
 
@@ -49,7 +50,8 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean
+    isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean
   },
   data () {
     return {

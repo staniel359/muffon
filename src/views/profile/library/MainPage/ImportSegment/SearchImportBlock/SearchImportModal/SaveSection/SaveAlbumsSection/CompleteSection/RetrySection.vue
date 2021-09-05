@@ -52,7 +52,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return localize(
-        'pages.library.add.search.error.save.header.albums',
+        'pages.library.add.save.error.albums',
         { count: this.totalCountFormatted }
       )
     },

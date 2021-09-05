@@ -21,8 +21,6 @@
 import { mapState } from 'vuex'
 import { number as formatNumber } from '#/formatters'
 
-const widthMaxPercent = 70
-
 export default {
   name: 'TrackListenersCount',
   props: {
@@ -44,8 +42,8 @@ export default {
     },
     listenersCounterBarWidth () {
       return (
-        this.listenersCount * widthMaxPercent /
-          this.topTrackCount
+        this.listenersCount /
+          this.topTrackCount * 75
       )
     },
     listenersCountFormatted () {

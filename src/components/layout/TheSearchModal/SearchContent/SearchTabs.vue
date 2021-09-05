@@ -37,7 +37,7 @@ export default {
       tabs: [
         {
           name: localize(
-            'layout.search.tabs.artists'
+            'layout.navigation.artists'
           ),
           scope: 'artists',
           clientPageLimit: 20,
@@ -47,7 +47,7 @@ export default {
         },
         {
           name: localize(
-            'layout.search.tabs.albums'
+            'layout.navigation.albums'
           ),
           scope: 'albums',
           clientPageLimit: 20,
@@ -57,7 +57,7 @@ export default {
         },
         {
           name: localize(
-            'layout.search.tabs.tracks'
+            'layout.navigation.tracks'
           ),
           scope: 'tracks',
           clientPageLimit: 50,
@@ -66,7 +66,7 @@ export default {
         },
         {
           name: localize(
-            'layout.search.tabs.tags'
+            'layout.navigation.tags'
           ),
           scope: 'tags',
           clientPageLimit: 20,

@@ -16,7 +16,7 @@ export default function ({ artistName, albumTitle, pageNameKey }) {
   ].filter(e => e).join(' ')
 
   const artistAlbumsPageName = localize(
-    'layout.navigation.artist.albums'
+    'layout.navigation.albums'
   ).toLowerCase()
   const artistPageTitle =
     `${artistName} ${artistAlbumsPageName}`

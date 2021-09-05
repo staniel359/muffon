@@ -23,7 +23,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        'layout.settings.headers.app.queue'
+        'layout.settings.sections.app.queue'
       )
     }
   }

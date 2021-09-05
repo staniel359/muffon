@@ -1,21 +1,22 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ trackId }) {
+export default function ({ scope = '', page, limit }) {
   this.isLoading = true
-  this.error = null
 
   const profileId =
     store.state.profile.info.id
-  const url = `profiles/${profileId}` +
-    `/listened/tracks/${trackId}`
+  const url =
+    `/profiles/${profileId}/bookmarks/${scope}`
 
-  const token =
-    store.state.profile.token
-  const params = { token }
+  const params = {
+    ...(page && { page }),
+    ...(limit && { limit })
+  }
 
-  const handleSuccess = () => {
-    this.listenedId = null
+  const handleSuccess = response => {
+    this.error = null
+    this.profileData = response.data.profile
   }
 
   const handleError = error => {
@@ -27,7 +28,7 @@ export default function ({ trackId }) {
   }
 
   axios
-    .delete(url, { params })
+    .get(url, { params })
     .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)

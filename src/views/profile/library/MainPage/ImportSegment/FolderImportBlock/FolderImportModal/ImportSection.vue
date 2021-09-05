@@ -73,7 +73,7 @@ export default {
     },
     formatProgressActive ({ value, total }) {
       return localize(
-        'pages.library.add.folder.active.import',
+        'pages.library.add.import.active.tracks',
         { value, total }
       )
     },

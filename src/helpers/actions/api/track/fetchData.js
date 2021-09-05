@@ -1,6 +1,5 @@
 import axios from 'axios'
 import store from '*/store'
-import { handleEnvError } from '#/utils'
 import formatRequestUrl from './formatters/requestUrl'
 
 export default function ({
@@ -39,8 +38,6 @@ export default function ({
 
   const handleError = error => {
     this.error = error
-
-    handleEnvError(error)
   }
 
   const handleFinish = () => {

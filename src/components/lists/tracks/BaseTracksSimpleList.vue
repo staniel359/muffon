@@ -3,6 +3,9 @@
     <BaseTrackContainer
       v-for="(trackData, index) in tracksFormatted"
       class="item main-simple-list-item"
+      :class="{
+        disabled: isDisabled
+      }"
       :key="trackData.uuid"
       :trackData="trackData"
       :queueTracks="queueTracks"
@@ -28,10 +31,15 @@
           :profileId="profileId"
           :isWithLibraryLink="isWithLibraryLink"
           :isWithListenedButton="isWithListenedButton"
+          :isWithBookmarkButton="isWithBookmarkButton"
           :isWithClearButton="isWithClearButton"
           :isWithCreated="isWithCreated"
+          :isWithSelfButtons="isWithSelfButtons"
+          :isBookmark="isBookmark"
+          :isBookmarkDeleted="isBookmarkDeleted"
           @linkClick="handleLinkClick"
           @deleteButtonClick="handleDeleteButtonClick"
+          @bookmarkDeleted="handleBookmarkDeleted"
         />
       </template>
     </BaseTrackContainer>
@@ -63,6 +71,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isWithSelfButtons: {
+      type: Boolean,
+      default: true
+    },
     isWithImage: Boolean,
     imageData: Object,
     isWithIndex: Boolean,
@@ -80,13 +92,20 @@ export default {
     artistId: String,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean,
     isWithClearButton: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isBookmark: Boolean
   },
   emits: [
     'linkClick',
     'deleteButtonClick'
   ],
+  data () {
+    return {
+      isBookmarkDeleted: false
+    }
+  },
   computed: {
     tracksFormatted () {
       return formatCollection(
@@ -99,6 +118,9 @@ export default {
       } else {
         return null
       }
+    },
+    isDisabled () {
+      return this.isBookmarkDeleted
     }
   },
   methods: {
@@ -110,6 +132,9 @@ export default {
         'deleteButtonClick',
         { uuid }
       )
+    },
+    handleBookmarkDeleted () {
+      this.isBookmarkDeleted = true
     },
     formatTracks () {
       return this.tracks.map(trackData => {

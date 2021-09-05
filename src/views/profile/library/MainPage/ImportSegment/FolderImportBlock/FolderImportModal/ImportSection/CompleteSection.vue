@@ -33,7 +33,7 @@ export default {
   computed: {
     errorMessageHeaderFormatted () {
       return localize(
-        'pages.library.add.folder.error.import.header',
+        'pages.library.add.import.error.files',
         { count: this.totalCountFormatted }
       )
     },

@@ -4,62 +4,25 @@ export default {
       navigation: {
         start: 'Start',
         artists: 'Artists',
+        albums: 'Albums',
+        tracks: 'Tracks',
         tags: 'Tags',
-        videos: 'Video',
+        similar: 'Similar',
+        images: 'Images',
+        videoChannels: 'Video channels',
+        videos: 'Videos',
         profiles: 'Profiles',
-        artist: {
-          images: 'Images',
-          tracks: 'Tracks',
-          albums: 'Albums',
-          similar: 'Similar'
-        },
-        track: {
-          similar: 'Similar'
-        },
-        tag: {
-          artists: 'Artists',
-          albums: 'Albums',
-          tracks: 'Tracks'
-        },
-        videoChannel: {
-          videos: 'Videos'
-        },
-        profile: {
-          library: 'Library'
-        },
-        self: {
-          recommendations: 'Recommendations'
-        },
-        library: {
-          artists: 'Artists',
-          albums: 'Albums',
-          tracks: 'Tracks',
-          artist: {
-            albums: 'Albums',
-            tracks: 'Tracks'
-          },
-          album: {
-            tracks: 'Tracks'
-          }
-        }
+        library: 'Library',
+        recommendations: 'Recommendations',
+        bookmarks: 'Bookmarks'
       },
       search: {
-        input: {
-          placeholder: 'Enter something...'
-        },
-        tabs: {
-          artists: 'Artists',
-          albums: 'Albums',
-          tracks: 'Tracks',
-          tags: 'Tags'
-        }
+        input: 'Enter something...'
       },
       player: {
         variants: 'Variants ({number})'
       },
       sidebar: {
-        library: 'Library',
-        recommendations: 'Recommendations',
         settings: 'Settings',
         logout: 'Log out'
       },
@@ -68,7 +31,7 @@ export default {
           app: 'App',
           profile: 'Profile'
         },
-        headers: {
+        sections: {
           app: {
             view: 'View',
             player: 'Player',
@@ -151,58 +114,30 @@ export default {
           find: 'Find video',
           select: 'Select video:',
           loading: 'Loading videos...',
-          error: 'Error',
           empty: 'No videos'
         },
         lyrics: {
           find: 'Find lyrics',
           select: 'Select lyrics:',
           loading: 'Loading lyrics...',
-          error: 'Error',
           empty: 'No lyrics'
         }
       },
-      tag: {
-        similar: 'Similar:'
-      },
       library: {
-        statistics: {
-          artists: 'Artists',
-          albums: 'Albums',
-          tracks: 'Tracks'
-        },
         since: 'In library since',
         add: {
-          header: 'Add to library',
           buttons: {
             folder: 'From folder',
             account: 'From account',
-            search: 'From search'
+            search: 'From search',
+            save: 'Save to library',
+            retry: 'Retry'
           },
-          save: 'Save to library',
-          retry: 'Retry',
-          folder: {
-            select: 'Select folder',
-            active: {
-              import: 'Importing {value} of {total} files...',
-              save: 'Saving {value} of {total} files...'
-            },
-            error: {
-              import: {
-                header: '{count} files could not be processed. Please fix these files\' ID3 tags and retry:'
-              },
-              save: {
-                header: '{count} files could not be processed:'
-              }
-            },
-            success: {
-              import: {
-                header: 'All {count} files were successfuly imported',
-                content: 'You might want to check them before saving to library'
-              },
-              save: {
-                header: 'All {count} files were successfuly saved to library'
-              }
+          search: {
+            input: {
+              artists: 'Search for artists...',
+              albums: 'Search for albums...',
+              tracks: 'Search for tracks...'
             }
           },
           account: {
@@ -211,61 +146,41 @@ export default {
             },
             import: {
               lastfm: 'Import Last.FM data'
-            },
-            active: {
-              import: 'Importing {value} of {total} plays...',
-              save: 'Saving {value} of {total} tracks...'
-            },
-            error: {
-              save: {
-                header: '{count} tracks could not be processed:'
-              }
-            },
-            success: {
-              import: {
-                header: 'All {count} tracks were successfuly imported',
-                content: 'You might want to check them before saving to library'
-              },
-              save: {
-                header: 'All {count} tracks were successfuly saved to library'
-              }
             }
           },
-          search: {
-            input: {
-              artists: 'Search for artists...',
-              albums: 'Search for albums...',
-              tracks: 'Search for tracks...'
-            },
-            select: {
-              artists: 'Artists',
-              albums: 'Albums',
-              tracks: 'Tracks'
-            },
+          folder: {
+            select: 'Select folder'
+          },
+          import: {
             active: {
-              save: {
-                artists: 'Saving {value} of {total} artists...',
-                albums: 'Saving {value} of {total} albums...',
-                tracks: 'Saving {value} of {total} tracks...'
+              tracks: 'Importing {value} of {total} tracks...',
+              plays: 'Importing {value} of {total} plays...'
+            },
+            success: {
+              tracks: {
+                header: 'All {count} tracks were successfuly imported',
+                content: 'You may want to check them before saving to library'
               }
             },
             error: {
-              save: {
-                header: {
-                  artists: '{count} artists could not be processed:',
-                  albums: '{count} albums could not be processed:',
-                  tracks: '{count} tracks could not be processed:'
-                }
-              }
+              files: '{count} files could not be imported. Please fix these files\' ID3 tags and retry:'
+            }
+          },
+          save: {
+            active: {
+              artists: 'Saving {value} of {total} artists...',
+              albums: 'Saving {value} of {total} albums...',
+              tracks: 'Saving {value} of {total} tracks...'
             },
             success: {
-              save: {
-                header: {
-                  artists: 'All {count} artists were successfuly saved to library',
-                  albums: 'All {count} albums were successfuly saved to library',
-                  tracks: 'All {count} tracks were successfuly saved to library'
-                }
-              }
+              artists: 'All {count} artists were successfuly saved to library',
+              albums: 'All {count} albums were successfuly saved to library',
+              tracks: 'All {count} tracks were successfuly saved to library'
+            },
+            error: {
+              artists: '{count} artists could not be processed:',
+              albums: '{count} albums could not be processed:',
+              tracks: '{count} tracks could not be processed:'
             }
           }
         }
@@ -276,9 +191,7 @@ export default {
       more: 'More...',
       loading: 'Loading...',
       track: {
-        source: {
-          via: 'Via {source}'
-        }
+        source: 'Via {source}'
       },
       tracks: '{count} tracks',
       paginated: {
@@ -323,9 +236,7 @@ export default {
             password: 'Password',
             passwordConfirmation: 'Confirm password',
             nickname: 'Nickname',
-            image: {
-              add: 'Upload image'
-            },
+            image: 'Upload image',
             gender: 'Gender',
             birthdate: 'Birth date',
             country: 'Country',
@@ -338,7 +249,7 @@ export default {
           },
           remember: 'Remember me',
           submit: {
-            login: 'Login',
+            login: 'Log in',
             signup: 'Sign up',
             save: 'Save'
           },
@@ -379,7 +290,18 @@ export default {
             text: 'Already signed up?',
             link: 'Log in'
           }
+        },
+        roles: {
+          creator: 'Creator'
         }
+      },
+      buttons: {
+        cancel: 'Cancel',
+        delete: 'Delete'
+      },
+      modal: {
+        undo: 'You can\'t undo this action!',
+        sure: 'Are you sure?'
       },
       library: {
         add: 'Add to library',
@@ -397,33 +319,34 @@ export default {
           track: {
             header: 'Delete track from library'
           },
-          going: 'You are going to delete {modelFullTitle} from your library.',
-          undo: 'You can\'t undo this action!',
-          sure: 'Are you sure?'
+          going: 'You are going to delete {modelTitle} from your library.'
         },
-        deleted: '{modelFullTitle} was successfully deleted from your library'
-      },
-      buttons: {
-        cancel: 'Cancel',
-        delete: 'Delete'
+        deleted: '{modelTitle} was successfully deleted from your library'
       },
       recommendation: {
         similar: 'Similar to {count} artists:',
         delete: {
           header: 'Delete recommendation',
-          going: 'You are going to delete {artistName} from your recommendations.',
-          undo: 'You can\'t undo this action!',
-          sure: 'Are you sure?'
+          going: 'You are going to delete {artistName} from your recommendations.'
         },
         deleted: 'Recommendation was deleted'
-      },
-      roles: {
-        creator: 'Creator'
       },
       listened: {
         add: 'Add to listened',
         added: 'Listened',
         delete: 'Delete from listened'
+      },
+      bookmarks: {
+        add: 'Add to bookmarks',
+        added: 'Bookmarked',
+        delete: 'Delete from bookmarks'
+      },
+      bookmark: {
+        delete: {
+          header: 'Delete bookmark',
+          going: 'You are going to delete {modelName} from your bookmarks.'
+        },
+        deleted: 'Bookmark was deleted'
       }
     }
   }

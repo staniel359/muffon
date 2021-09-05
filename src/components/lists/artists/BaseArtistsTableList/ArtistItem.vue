@@ -37,21 +37,13 @@
           @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
         />
 
-        <div class="main-simple-self-buttons">
-          <BaseLibrarySimpleButton
-            v-if="isShowLibraryLink"
-            class="main-simple-self-button"
-            model="artist"
-            :modelId="libraryId"
-          />
-
-          <BaseListenedSimpleButton
-            v-if="isShowListenedButton"
-            class="main-simple-self-button"
-            model="artist"
-            :modelId="listenedId"
-          />
-        </div>
+        <BaseSelfSimpleButtons
+          model="artist"
+          :modelData="artistData"
+          :isWithLibraryLink="isWithLibraryLink"
+          :isWithListenedButton="isWithListenedButton"
+          :isWithBookmarkButton="isWithBookmarkButton"
+        />
       </div>
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
@@ -65,9 +57,7 @@ import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
-import BaseListenedSimpleButton
-  from '@/models/self/BaseListenedSimpleButton.vue'
+import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink,
@@ -84,8 +74,7 @@ export default {
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseLibrarySimpleButton,
-    BaseListenedSimpleButton
+    BaseSelfSimpleButtons
   },
   inject: [
     'findPaginationItem'
@@ -102,7 +91,8 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean
+    isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean
   },
   emits: [
     'linkClick'
@@ -158,24 +148,6 @@ export default {
         !this.isTracksLinkActive &&
           !this.isAlbumsLinkActive
       )
-    },
-    isShowLibraryLink () {
-      return (
-        this.isWithLibraryLink &&
-          !!this.libraryId
-      )
-    },
-    libraryId () {
-      return this.artistData.library_id?.toString()
-    },
-    isShowListenedButton () {
-      return (
-        this.isWithListenedButton &&
-          !!this.listenedId
-      )
-    },
-    listenedId () {
-      return this.artistData.listened_id?.toString()
     }
   },
   methods: {

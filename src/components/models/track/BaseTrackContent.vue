@@ -1,100 +1,112 @@
 <template>
-  <BaseTrackAudioIcon
-    class="track-play-button"
-    :isLoading="isLoading"
-    :isError="isError"
-    :isCurrent="isCurrent"
+  <BaseBookmarkDeletedBlock
+    v-if="isBookmarkDeleted"
   />
-
-  <TrackImage
-    v-if="isRenderImage"
-    :imageData="imageData"
-  />
-
-  <div class="content">
-    <div class="track-index-main-info">
-      <TrackIndex
-        v-if="isRenderIndex"
-        :index="index"
-      />
-
-      <TrackMainInfo
-        :trackTitle="trackTitle"
-        :trackExtraTitle="trackExtraTitle"
-        :isWithArtistName="isWithArtistName"
-        :artistName="artistName"
-        :artists="artists"
-        :albumArtistName="albumArtistName"
-        :isWithAlbumTitle="isWithAlbumTitle"
-        :albumTitle="albumTitle"
-        :isLinkToLibrary="isLinkToLibrary"
-        :profileId="profileId"
-        :trackId="trackId"
-        :artistId="artistId"
-        :albumId="albumId"
-        @linkClick="handleLinkClick"
-      />
-    </div>
-
-    <TrackListenersCount
-      v-if="isRenderListenersCount"
-      :listenersCount="listenersCount"
-      :topTrackCount="topTrackCount"
+  <template v-else>
+    <BaseTrackAudioIcon
+      class="track-play-button"
+      :isLoading="isLoading"
+      :isError="isError"
+      :isCurrent="isCurrent"
     />
-  </div>
 
-  <TrackDuration
-    v-if="isRenderDuration"
-    :duration="duration"
-  />
+    <TrackImage
+      v-if="isRenderImage"
+      :imageData="imageData"
+    />
 
-  <BaseSourceIcon
-    v-if="isWithSource"
-    class="track-source-icon"
-    :sourceId="sourceId"
-  />
+    <div class="content">
+      <div class="track-index-main-info-listeners">
+        <div class="track-index-main-info">
+          <TrackIndex
+            v-if="isRenderIndex"
+            :index="index"
+          />
 
-  <div
-    v-if="isWithCreated"
-    class="main-small-container created-container"
-  >
-    <div>
-      <small>
-        {{ createdDateFormatted }}
-      </small>
+          <TrackMainInfo
+            :trackTitle="trackTitle"
+            :trackExtraTitle="trackExtraTitle"
+            :isWithArtistName="isWithArtistName"
+            :artistName="artistName"
+            :artists="artists"
+            :albumArtistName="albumArtistName"
+            :isWithAlbumTitle="isWithAlbumTitle"
+            :albumTitle="albumTitle"
+            :isLinkToLibrary="isLinkToLibrary"
+            :profileId="profileId"
+            :trackId="trackId"
+            :artistId="artistId"
+            :albumId="albumId"
+            @linkClick="handleLinkClick"
+          />
+        </div>
+
+        <TrackListenersCount
+          v-if="isRenderListenersCount"
+          :listenersCount="listenersCount"
+          :topTrackCount="topTrackCount"
+        />
+      </div>
+
+      <div
+        v-if="isWithSelfButtons"
+        class="main-simple-self-buttons-container"
+      >
+        <BaseSelfSimpleButtons
+          model="track"
+          :modelData="trackData"
+          :isWithLibraryLink="isWithLibraryLink"
+          :isWithListenedButton="isWithListenedButton"
+          :isWithBookmarkButton="isWithBookmarkButton"
+        />
+      </div>
     </div>
 
-    <div>
-      <small>
-        {{ createdTimeFormatted }}
-      </small>
-    </div>
-  </div>
+    <TrackDuration
+      v-if="isRenderDuration"
+      :duration="duration"
+    />
 
-  <div class="main-simple-self-buttons">
-    <BaseLibrarySimpleButton
-      v-if="isShowLibraryLink"
-      class="main-simple-self-button"
+    <BaseSourceIcon
+      v-if="isWithSource"
+      class="track-source-icon"
+      :sourceId="sourceId"
+    />
+
+    <div
+      v-if="isWithCreated"
+      class="main-small-container created-container"
+    >
+      <div>
+        <small>
+          {{ createdDateFormatted }}
+        </small>
+      </div>
+
+      <div>
+        <small>
+          {{ createdTimeFormatted }}
+        </small>
+      </div>
+    </div>
+
+    <BaseBookmarkDeleteButton
+      v-if="isBookmark"
       model="track"
-      :modelId="libraryId"
+      :modelData="trackData"
+      @deleted="handleBookmarkDeleted"
     />
 
-    <BaseListenedSimpleButton
-      v-if="isShowListenedButton"
-      class="main-simple-self-button"
-      model="track"
-      :modelId="listenedId"
+    <BaseClearButton
+      v-if="isWithClearButton"
+      class="delete-button"
+      @click="handleDeleteButtonClick"
     />
-  </div>
-
-  <BaseClearButton
-    v-if="isWithClearButton"
-    class="delete-button"
-    @click="handleDeleteButtonClick"
-  />
+  </template>
 </template>
 
 <script>
+import BaseBookmarkDeletedBlock from '@/BaseBookmarkDeletedBlock.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
 import TrackImage from './BaseTrackContent/TrackImage.vue'
 import TrackIndex from './BaseTrackContent/TrackIndex.vue'
@@ -102,9 +114,8 @@ import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
-import BaseLibrarySimpleButton from '@/models/self/BaseLibrarySimpleButton.vue'
-import BaseListenedSimpleButton
-  from '@/models/self/BaseListenedSimpleButton.vue'
+import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
+import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import {
   date as formatDate,
@@ -114,6 +125,7 @@ import {
 export default {
   name: 'BaseTrackContent',
   components: {
+    BaseBookmarkDeletedBlock,
     BaseTrackAudioIcon,
     TrackImage,
     TrackIndex,
@@ -121,14 +133,18 @@ export default {
     TrackListenersCount,
     TrackDuration,
     BaseSourceIcon,
-    BaseLibrarySimpleButton,
-    BaseListenedSimpleButton,
+    BaseSelfSimpleButtons,
+    BaseBookmarkDeleteButton,
     BaseClearButton
   },
   props: {
     trackData: {
       type: Object,
       required: true
+    },
+    isWithSelfButtons: {
+      type: Boolean,
+      default: true
     },
     isLoading: Boolean,
     isError: Boolean,
@@ -147,12 +163,16 @@ export default {
     profileId: String,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean,
     isWithClearButton: Boolean,
-    isWithCreated: Boolean
+    isWithCreated: Boolean,
+    isBookmark: Boolean,
+    isBookmarkDeleted: Boolean
   },
   emits: [
     'linkClick',
-    'deleteButtonClick'
+    'deleteButtonClick',
+    'bookmarkDeleted'
   ],
   computed: {
     isRenderImage () {
@@ -220,15 +240,6 @@ export default {
     albumId () {
       return this.trackData.album?.id?.toString()
     },
-    isShowLibraryLink () {
-      return (
-        this.isWithLibraryLink &&
-          !!this.libraryId
-      )
-    },
-    libraryId () {
-      return this.trackData.library_id?.toString()
-    },
     createdDateFormatted () {
       return formatDate(
         this.created
@@ -242,14 +253,8 @@ export default {
         this.created
       )
     },
-    isShowListenedButton () {
-      return (
-        this.isWithListenedButton &&
-          !!this.listenedId
-      )
-    },
-    listenedId () {
-      return this.trackData.listened_id?.toString()
+    uuid () {
+      return this.trackData.uuid
     }
   },
   methods: {
@@ -259,8 +264,11 @@ export default {
     handleDeleteButtonClick () {
       this.$emit(
         'deleteButtonClick',
-        { uuid: this.trackData.uuid }
+        { uuid: this.uuid }
       )
+    },
+    handleBookmarkDeleted () {
+      this.$emit('bookmarkDeleted')
     }
   }
 }
@@ -273,18 +281,21 @@ export default {
   margin: 0 $trackContentMarginWidth !important
 
 .content
-  @extend .no-padding
+  @extend .d-flex, .align-items-center
   margin-left: $trackContentMarginWidth
+
+.track-index-main-info-listeners
+  @extend .flex-full
 
 .track-index-main-info
   @extend .d-flex, .align-items-center
 
+.main-simple-self-buttons-container
+  margin-left: $trackContentMarginWidth
+
 .track-source-icon
   @extend .no-padding
   min-width: unset !important
-  margin-left: $trackContentMarginWidth !important
-
-.main-simple-self-buttons
   margin-left: $trackContentMarginWidth !important
 
 .delete-button

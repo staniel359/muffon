@@ -92,7 +92,7 @@ export default {
     postTrackData,
     formatProgressActive ({ value, total }) {
       return localize(
-        'pages.library.add.folder.active.save',
+        'pages.library.add.save.active.tracks',
         { value, total }
       )
     },

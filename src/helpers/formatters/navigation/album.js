@@ -40,7 +40,7 @@ export default function ({ artistName, albumTitle, pageNameKey }) {
     },
     {
       name: localize(
-        'layout.navigation.artist.albums'
+        'layout.navigation.albums'
       ),
       link: formatArtistAlbumsLink({
         artistName

@@ -13,7 +13,6 @@
     <BaseLabel
       v-if="isStaff"
       class="primary role-label"
-      :isBasic="false"
       :text="roleFormatted"
     />
   </div>
@@ -53,7 +52,7 @@ export default {
     },
     roleFormatted () {
       return localize(
-        `shared.roles.${this.role}`
+        `shared.profile.roles.${this.role}`
       )
     }
   }

@@ -1,5 +1,4 @@
 import fetchVariantAudioData from '#/actions/audio/variant/fetchData'
-import { handleEnvError } from '#/utils'
 
 export default function ({ variantId }) {
   this.isLoading = true
@@ -9,8 +8,6 @@ export default function ({ variantId }) {
 
   const handleError = error => {
     this.error = error
-
-    handleEnvError(error)
   }
 
   const handleFinish = () => {

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { handleEnvError } from '#/utils'
 
 export default function ({ videoId, scope = '' }) {
   this.isLoading = true
@@ -14,8 +13,6 @@ export default function ({ videoId, scope = '' }) {
 
   const handleError = error => {
     this.error = error
-
-    handleEnvError(error)
   }
 
   const handleFinish = () => {

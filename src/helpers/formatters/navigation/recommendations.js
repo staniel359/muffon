@@ -24,7 +24,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
   return [
     {
       name: localize(
-        'layout.navigation.self.recommendations'
+        'layout.navigation.recommendations'
       ),
       isActive: !pageNameKey,
       link: formatLink()

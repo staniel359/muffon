@@ -73,7 +73,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return localize(
-        'pages.library.add.account.success.import.header',
+        'pages.library.add.import.success.tracks.header',
         { count: this.totalCountFormatted }
       )
     },
@@ -84,7 +84,7 @@ export default {
     },
     messageContentFormatted () {
       return localize(
-        'pages.library.add.account.success.import.content'
+        'pages.library.add.import.success.tracks.content'
       )
     },
     tracksData () {

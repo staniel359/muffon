@@ -9,6 +9,7 @@
         :scrollable="container"
         :libraryId="slotProps.libraryId"
         :listenedId="slotProps.listenedId"
+        :bookmarkId="slotProps.bookmarkId"
       />
       <RightColumn
         :artistData="slotProps.artistData"

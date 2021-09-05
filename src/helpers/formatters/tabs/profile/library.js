@@ -14,7 +14,7 @@ export default function ({
   const formatSubpageTitle = () => {
     if (pageNameKey) {
       return localize(
-        `layout.navigation.library.${pageNameKey}`
+        `layout.navigation.${pageNameKey}`
       ).toLowerCase()
     }
   }

@@ -54,7 +54,7 @@ const baseUrl = getBaseUrl()
 const i18n = {
   en: {
     show: 'Show',
-    close: 'Close'
+    quit: 'Quit'
   }
 }
 
@@ -152,7 +152,7 @@ const createTrayOrDock = () => {
     },
     {
       type: 'normal',
-      label: i18n.en.close,
+      label: i18n.en.quit,
       click: quit
     }
   ])

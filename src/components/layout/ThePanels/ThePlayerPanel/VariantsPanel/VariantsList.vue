@@ -16,6 +16,7 @@
             :isLoading="slotProps.isLoading"
             :isError="slotProps.isError"
             :isCurrent="slotProps.isCurrent"
+            :isWithSelfButtons="false"
             isWithImage
             isWithArtistName
             isWithAlbumTitle

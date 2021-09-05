@@ -19,6 +19,7 @@
       :profileId="profileId"
       :libraryId="libraryId"
       :listenedId="listenedId"
+      :bookmarkId="bookmarkId"
     ></slot>
   </BasePageContainer>
 </template>
@@ -105,6 +106,9 @@ export default {
     },
     listenedId () {
       return this.artistData?.listened_id?.toString()
+    },
+    bookmarkId () {
+      return this.artistData?.bookmark_id?.toString()
     }
   },
   watch: {

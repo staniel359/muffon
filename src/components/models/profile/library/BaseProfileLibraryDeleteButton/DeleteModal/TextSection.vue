@@ -30,7 +30,7 @@ export default {
       type: String,
       required: true
     },
-    modelFullTitle: {
+    modelTitle: {
       type: String,
       required: true
     }
@@ -39,11 +39,11 @@ export default {
     goingFormatted () {
       return localize(
         'shared.library.delete.going',
-        { modelFullTitle: this.modelFullTitleFormatted }
+        { modelTitle: this.modelTitleFormatted }
       )
     },
-    modelFullTitleFormatted () {
-      return `<strong>${this.modelFullTitle}</strong>`
+    modelTitleFormatted () {
+      return `<strong>${this.modelTitle}</strong>`
     },
     isArtistOrAlbum () {
       return (
@@ -58,12 +58,12 @@ export default {
     },
     undoFormatted () {
       return localize(
-        'shared.library.delete.undo'
+        'shared.modal.undo'
       )
     },
     sureFormatted () {
       return localize(
-        'shared.library.delete.sure'
+        'shared.modal.sure'
       )
     }
   }

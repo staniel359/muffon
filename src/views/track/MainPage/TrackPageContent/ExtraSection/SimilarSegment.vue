@@ -16,6 +16,7 @@
         isWithDuration
         isWithLibraryLink
         isWithListenedButton
+        isWithBookmarkButton
       />
     </template>
   </BaseTrackPaginatedSegmentContainer>

@@ -13,10 +13,8 @@
       />
     </div>
 
-    <BaseButton
+    <BaseClearButton
       v-if="selectedSourceData"
-      class="circular red basic compact tiny main-source-select-reset-button"
-      icon="close"
       @click="handleReset"
     />
   </div>
@@ -25,7 +23,7 @@
 <script>
 import SourceSelect from './BaseTrackSourceSelect/SourceSelect.vue'
 import TrackSelect from './BaseTrackSourceSelect/TrackSelect.vue'
-import BaseButton from '@/BaseButton.vue'
+import BaseClearButton from '@/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatTrackRequestData from '#/actions/api/track/formatters/requestData'
 
@@ -34,7 +32,7 @@ export default {
   components: {
     SourceSelect,
     TrackSelect,
-    BaseButton
+    BaseClearButton
   },
   provide () {
     return {

@@ -14,10 +14,6 @@ export default function ({ recommendationId }) {
     store.state.profile.token
   const params = { token }
 
-  const handleSuccess = () => {
-    this.isSuccess = true
-  }
-
   const handleError = error => {
     this.error = error
   }
@@ -26,9 +22,8 @@ export default function ({ recommendationId }) {
     this.isLoading = false
   }
 
-  axios
+  return axios
     .delete(url, { params })
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

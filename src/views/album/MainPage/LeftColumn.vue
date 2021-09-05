@@ -29,6 +29,15 @@
         :albumTitle="albumTitle"
         :albumImageUrl="image"
       />
+
+      <BaseBookmarkButton
+        class="main-self-button"
+        model="album"
+        :modelId="bookmarkId"
+        :artistName="artistName"
+        :albumTitle="albumTitle"
+        :albumImageUrl="image"
+      />
     </div>
   </div>
 </template>
@@ -38,6 +47,7 @@ import AlbumImage from './LeftColumn/AlbumImage.vue'
 import AlbumHeader from './LeftColumn/AlbumHeader.vue'
 import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
 import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
+import BaseBookmarkButton from '@/models/self/BaseBookmarkButton.vue'
 
 export default {
   name: 'LeftColumn',
@@ -45,7 +55,8 @@ export default {
     AlbumImage,
     AlbumHeader,
     BaseLibraryButton,
-    BaseListenedButton
+    BaseListenedButton,
+    BaseBookmarkButton
   },
   props: {
     albumData: {
@@ -75,6 +86,9 @@ export default {
     },
     listenedId () {
       return this.albumData.listened_id?.toString()
+    },
+    bookmarkId () {
+      return this.albumData.bookmark_id?.toString()
     }
   }
 }

@@ -45,15 +45,19 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
-        `pages.track.videos.${this.headerKey}`
-      )
+      if (this.isError) {
+        return localize(
+          'shared.error'
+        )
+      } else {
+        return localize(
+          `pages.track.videos.${this.headerKey}`
+        )
+      }
     },
     headerKey () {
       if (this.isLoading) {
         return 'loading'
-      } else if (this.isError) {
-        return 'error'
       } else if (!this.isAnyVideos) {
         return 'empty'
       } else {

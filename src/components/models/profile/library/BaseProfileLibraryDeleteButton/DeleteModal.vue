@@ -8,7 +8,7 @@
       <div class="content">
         <TextSection
           :model="model"
-          :modelFullTitle="modelFullTitle"
+          :modelTitle="modelTitle"
         />
 
         <BaseError
@@ -69,7 +69,7 @@ export default {
       type: String,
       required: true
     },
-    modelFullTitle: {
+    modelTitle: {
       type: String,
       required: true
     }
@@ -100,11 +100,11 @@ export default {
     toastMessage () {
       return localize(
         'shared.library.deleted',
-        { modelFullTitle: this.modelFullTitleFormatted }
+        { modelTitle: this.modelTitleFormatted }
       )
     },
-    modelFullTitleFormatted () {
-      return `<strong>${this.modelFullTitle}</strong>`
+    modelTitleFormatted () {
+      return `<strong>${this.modelTitle}</strong>`
     },
     callbackUrl () {
       return formatProfileLibraryMainLink({

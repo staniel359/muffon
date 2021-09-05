@@ -27,7 +27,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        'layout.settings.headers.app.data'
+        'layout.settings.sections.app.data'
       )
     }
   }

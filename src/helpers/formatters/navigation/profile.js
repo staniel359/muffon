@@ -15,7 +15,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
     if (pageNameKey) {
       return {
         name: localize(
-          `layout.navigation.profile.${pageNameKey}`
+          `layout.navigation.${pageNameKey}`
         ),
         isActive: true
       }

@@ -42,15 +42,19 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
-        `pages.track.lyrics.${this.headerKey}`
-      )
+      if (this.isError) {
+        return localize(
+          'shared.error'
+        )
+      } else {
+        return localize(
+          `pages.track.lyrics.${this.headerKey}`
+        )
+      }
     },
     headerKey () {
       if (this.isLoading) {
         return 'loading'
-      } else if (this.isError) {
-        return 'error'
       } else if (!this.isAnyTracks) {
         return 'empty'
       } else {

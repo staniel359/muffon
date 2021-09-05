@@ -30,10 +30,8 @@ import BaseButton from '@/BaseButton.vue'
 import postArtistData from '#/actions/api/profile/listened/artists/postData'
 import postAlbumData from '#/actions/api/profile/listened/albums/postData'
 import postTrackData from '#/actions/api/profile/listened/tracks/postData'
-import deleteArtistData
-  from '#/actions/api/profile/listened/artist/deleteData'
-import deleteAlbumData from '#/actions/api/profile/listened/album/deleteData'
-import deleteTrackData from '#/actions/api/profile/listened/track/deleteData'
+import deleteListenedData
+  from '#/actions/api/profile/listened/model/deleteData'
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
@@ -97,29 +95,15 @@ export default {
       }
     },
     handleDeleteButtonClick () {
-      switch (this.model) {
-        case 'artist':
-          return this.deleteArtistData({
-            artistId: this.listenedId
-          })
-        case 'album':
-          return this.deleteAlbumData({
-            albumId: this.listenedId
-          })
-        case 'track':
-          return this.deleteTrackData({
-            trackId: this.listenedId
-          })
-        default:
-          return null
-      }
+      return this.deleteListenedData({
+        model: this.model,
+        listenedId: this.listenedId
+      })
     },
     postArtistData,
     postAlbumData,
     postTrackData,
-    deleteArtistData,
-    deleteAlbumData,
-    deleteTrackData
+    deleteListenedData
   }
 }
 </script>

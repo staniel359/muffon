@@ -8,7 +8,7 @@
       @click="handleClick"
     >
       <BaseButton
-        class="basic circular compact small library-link-button"
+        class="basic circular compact tiny library-link-button"
         icon="headphones primary"
       />
     </BaseLinkContainer>

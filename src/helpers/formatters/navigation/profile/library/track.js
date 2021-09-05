@@ -35,7 +35,7 @@ export default function ({
     if (pageNameKey) {
       return {
         name: localize(
-          `layout.navigation.library.track.${pageNameKey}`
+          `layout.navigation.${pageNameKey}`
         ),
         isActive: true
       }
@@ -57,7 +57,7 @@ export default function ({
     },
     {
       name: localize(
-        'layout.navigation.profile.library'
+        'layout.navigation.library'
       ),
       link: formatProfileLibraryMainLink({
         profileId
@@ -65,7 +65,7 @@ export default function ({
     },
     {
       name: localize(
-        'layout.navigation.library.artists'
+        'layout.navigation.artists'
       ),
       link: formatProfileLibraryArtistsLink({
         profileId
@@ -80,7 +80,7 @@ export default function ({
     },
     {
       name: localize(
-        'layout.navigation.library.tracks'
+        'layout.navigation.tracks'
       ),
       link: formatProfileLibraryArtistTracksLink({
         profileId,

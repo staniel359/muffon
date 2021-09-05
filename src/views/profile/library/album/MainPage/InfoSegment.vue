@@ -47,7 +47,7 @@
         model="album"
         :profileId="profileId"
         :modelId="albumId"
-        :modelFullTitle="albumFullTitle"
+        :modelTitle="albumFullTitle"
       />
     </BaseSegmentContainer>
   </div>

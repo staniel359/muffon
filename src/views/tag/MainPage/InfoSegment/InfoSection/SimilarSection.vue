@@ -5,7 +5,9 @@
       isLoading
     />
     <template v-else-if="isAnySimilar">
-      <BaseLabel :text="similarTextFormatted" />
+      <BaseLabel
+        :text="similarTextFormatted"
+      />
       <BaseTagsList
         v-if="similar.length"
         :tags="similar"
@@ -50,7 +52,7 @@ export default {
     similarTextFormatted () {
       return localize(
         'pages.tag.similar'
-      )
+      ) + ':'
     },
     tagDataArgs () {
       return {

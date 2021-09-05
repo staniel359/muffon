@@ -1,33 +1,38 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ artistId }) {
+export default function ({ artistName }) {
   this.isLoading = true
-  this.error = null
 
   const profileId =
     store.state.profile.info.id
-  const url = `profiles/${profileId}` +
-    `/listened/artists/${artistId}`
+  const url =
+    `profiles/${profileId}/bookmarks/artists`
 
   const token =
     store.state.profile.token
-  const params = { token }
+  const params = {
+    token,
+    artist: artistName
+  }
 
-  const handleSuccess = () => {
-    this.listenedId = null
+  const handleSuccess = response => {
+    this.bookmarkId =
+      response.data.bookmark_id
   }
 
   const handleError = error => {
-    this.error = error
+    this.isError = true
+
+    throw error
   }
 
   const handleFinish = () => {
     this.isLoading = false
   }
 
-  axios
-    .delete(url, { params })
+  return axios
+    .post(url, params)
     .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)

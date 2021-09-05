@@ -1,19 +1,17 @@
 <template>
-  <BaseButton
-    class="circular red tiny basic compact close-button"
-    icon="close"
+  <BaseClearButton
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseButton from '@/BaseButton.vue'
+import BaseClearButton from '@/BaseClearButton.vue'
 import { setGlobalData } from '#/actions'
 
 export default {
   name: 'CloseButton',
   components: {
-    BaseButton
+    BaseClearButton
   },
   methods: {
     handleClick () {
@@ -25,7 +23,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.close-button
-  @extend .no-shadow, .no-margin
-</style>
+<style lang="sass" scoped></style>

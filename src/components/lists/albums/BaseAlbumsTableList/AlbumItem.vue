@@ -5,21 +5,16 @@
   >
     <BaseSimpleCardContainer :image="image">
       <InfoSection
-        :albumTitle="albumTitle"
+        :albumData="albumData"
         :artistName="albumArtistName"
-        :releaseDate="releaseDate"
-        :listenersCount="listenersCount"
-        :uuid="uuid"
         :isWithArtistName="isWithArtistName"
         :isArtistNameActive="isArtistNameActive"
         :isTracksLinkActive="isTracksLinkActive"
         :isWithListenersCount="isWithListenersCount"
         :isWithTracksCount="isWithTracksCount"
-        :tracksCount="tracksCount"
         :isWithLibraryLink="isWithLibraryLink"
         :isWithListenedButton="isWithListenedButton"
-        :libraryId="libraryId"
-        :listenedId="listenedId"
+        :isWithBookmarkButton="isWithBookmarkButton"
         @tracksLinkActiveChange="handleTracksLinkActiveChange"
       />
     </BaseSimpleCardContainer>
@@ -64,7 +59,8 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean
+    isWithListenedButton: Boolean,
+    isWithBookmarkButton: Boolean
   },
   emits: [
     'linkClick'
@@ -128,29 +124,11 @@ export default {
     image () {
       return this.albumData.image.medium
     },
-    releaseDate () {
-      return this.albumData.release_date
-    },
-    listenersCount () {
-      return this.albumData.listeners_count
-    },
-    uuid () {
-      return this.albumData.uuid
-    },
-    tracksCount () {
-      return this.albumData.tracks_count
-    },
     artistId () {
       return this.albumData.artist.id
     },
     albumId () {
       return this.albumData.id
-    },
-    libraryId () {
-      return this.albumData.library_id?.toString()
-    },
-    listenedId () {
-      return this.albumData.listened_id?.toString()
     }
   },
   methods: {

@@ -92,7 +92,7 @@ export default {
     postArtistData,
     formatProgressActive ({ value, total }) {
       return localize(
-        'pages.library.add.search.active.save.artists',
+        'pages.library.add.save.active.artists',
         { value, total }
       )
     },

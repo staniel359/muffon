@@ -72,7 +72,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return localize(
-        'pages.library.add.folder.error.save.header',
+        'pages.library.add.save.error.tracks',
         { count: this.totalCountFormatted }
       )
     },

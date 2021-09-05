@@ -46,21 +46,21 @@ export default {
       tabs: [
         {
           name: localize(
-            'pages.library.add.search.select.artists'
+            'layout.navigation.artists'
           ),
           component: 'SaveArtistsSection',
           scope: 'artists'
         },
         {
           name: localize(
-            'pages.library.add.search.select.albums'
+            'layout.navigation.albums'
           ),
           component: 'SaveAlbumsSection',
           scope: 'albums'
         },
         {
           name: localize(
-            'pages.library.add.search.select.tracks'
+            'layout.navigation.tracks'
           ),
           component: 'SaveTracksSection',
           scope: 'tracks'

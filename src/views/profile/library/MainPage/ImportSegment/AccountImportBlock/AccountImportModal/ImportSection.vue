@@ -94,7 +94,7 @@ export default {
     },
     formatProgressActive ({ value, total }) {
       return localize(
-        'pages.library.add.account.active.import',
+        'pages.library.add.import.active.plays',
         { value, total }
       )
     },

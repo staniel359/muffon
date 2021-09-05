@@ -6,7 +6,7 @@
   >
     <BaseLinkContainer :link="{}">
       <BaseButton
-        class="basic circular compact small listened-simple-button"
+        class="basic circular compact tiny listened-simple-button"
         icon="check primary"
         :class="{
           loading: isLoading,
@@ -21,10 +21,8 @@
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButton from '@/BaseButton.vue'
-import deleteArtistData
-  from '#/actions/api/profile/listened/artist/deleteData'
-import deleteAlbumData from '#/actions/api/profile/listened/album/deleteData'
-import deleteTrackData from '#/actions/api/profile/listened/track/deleteData'
+import deleteListenedData
+  from '#/actions/api/profile/listened/model/deleteData'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
 import { localize } from '#/actions/plugins/i18n'
@@ -67,26 +65,12 @@ export default {
   },
   methods: {
     handleClick () {
-      switch (this.model) {
-        case 'artist':
-          return this.deleteArtistData({
-            artistId: this.listenedId
-          })
-        case 'album':
-          return this.deleteAlbumData({
-            albumId: this.listenedId
-          })
-        case 'track':
-          return this.deleteTrackData({
-            trackId: this.listenedId
-          })
-        default:
-          return null
-      }
+      return this.deleteListenedData({
+        model: this.model,
+        listenedId: this.listenedId
+      })
     },
-    deleteArtistData,
-    deleteAlbumData,
-    deleteTrackData
+    deleteListenedData
   }
 }
 </script>

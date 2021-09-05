@@ -33,6 +33,13 @@
         :modelId="listenedId"
         :artistName="artistName"
       />
+
+      <BaseBookmarkButton
+        class="main-self-button"
+        model="artist"
+        :modelId="bookmarkId"
+        :artistName="artistName"
+      />
     </div>
   </div>
 </template>
@@ -43,6 +50,7 @@ import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
 import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
+import BaseBookmarkButton from '@/models/self/BaseBookmarkButton.vue'
 
 export default {
   name: 'LeftColumn',
@@ -51,7 +59,8 @@ export default {
     BaseTransitionContainer,
     BaseHeader,
     BaseLibraryButton,
-    BaseListenedButton
+    BaseListenedButton,
+    BaseBookmarkButton
   },
   props: {
     artistName: {
@@ -60,7 +69,8 @@ export default {
     },
     scrollable: HTMLDivElement,
     libraryId: String,
-    listenedId: String
+    listenedId: String,
+    bookmarkId: String
   }
 }
 </script>

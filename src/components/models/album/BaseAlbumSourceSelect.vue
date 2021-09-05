@@ -23,10 +23,9 @@
       </template>
     </div>
 
-    <BaseButton
+    <BaseClearButton
       v-if="selectedSourceData"
-      class="circular red basic compact tiny main-source-select-reset-button"
-      icon="close"
+      class="main-source-select-reset-button"
       @click="handleReset"
     />
   </div>
@@ -36,7 +35,7 @@
 import SourceSelect from './BaseAlbumSourceSelect/SourceSelect.vue'
 import TypeSelect from './BaseAlbumSourceSelect/TypeSelect.vue'
 import AlbumSelect from './BaseAlbumSourceSelect/AlbumSelect.vue'
-import BaseButton from '@/BaseButton.vue'
+import BaseClearButton from '@/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatAlbumRequestData from '#/actions/api/album/formatters/requestData'
 
@@ -46,7 +45,7 @@ export default {
     SourceSelect,
     TypeSelect,
     AlbumSelect,
-    BaseButton
+    BaseClearButton
   },
   provide () {
     return {

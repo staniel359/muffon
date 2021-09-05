@@ -8,7 +8,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
   const formatSubpageTitle = () => {
     if (pageNameKey) {
       return localize(
-        `layout.navigation.profile.${pageNameKey}`
+        `layout.navigation.${pageNameKey}`
       ).toLowerCase()
     }
   }

@@ -18,7 +18,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
     if (pageNameKey) {
       return {
         name: localize(
-          `layout.navigation.track.${pageNameKey}`
+          `layout.navigation.${pageNameKey}`
         ),
         isActive: true
       }
@@ -39,7 +39,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
     },
     {
       name: localize(
-        'layout.navigation.artist.tracks'
+        'layout.navigation.tracks'
       ),
       link: formatArtistTracksLink({
         artistName

@@ -55,7 +55,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return localize(
-        'pages.library.add.search.error.save.header.tracks',
+        'pages.library.add.save.error.tracks',
         { count: this.totalCountFormatted }
       )
     },

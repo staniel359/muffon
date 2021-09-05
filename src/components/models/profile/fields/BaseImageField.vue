@@ -61,7 +61,7 @@ export default {
   computed: {
     addFormatted () {
       return localize(
-        'shared.profile.form.fields.image.add'
+        'shared.profile.form.fields.image'
       )
     },
     removeFormatted () {

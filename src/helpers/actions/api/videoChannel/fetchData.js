@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { handleEnvError } from '#/utils'
 
 export default function ({ channelId, scope = '', page, limit }) {
   this.isLoading = true
@@ -18,8 +17,6 @@ export default function ({ channelId, scope = '', page, limit }) {
 
   const handleError = error => {
     this.error = error
-
-    handleEnvError(error)
   }
 
   const handleFinish = () => {

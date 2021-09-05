@@ -45,7 +45,7 @@ export default {
     },
     textFormatted () {
       return localize(
-        'layout.sidebar.library'
+        'layout.navigation.library'
       )
     }
   }

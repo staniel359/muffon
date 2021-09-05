@@ -59,7 +59,7 @@
         model="track"
         :profileId="profileId"
         :modelId="trackId"
-        :modelFullTitle="trackFullTitle"
+        :modelTitle="trackFullTitle"
       />
     </BaseSegmentContainer>
   </div>

@@ -1,5 +1,4 @@
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
-import { handleEnvError } from '#/utils'
 import { setGlobalData } from '#/actions'
 
 export default function ({ trackData, queueTracks }) {
@@ -16,8 +15,6 @@ export default function ({ trackData, queueTracks }) {
 
   const handleError = error => {
     this.error = error
-
-    handleEnvError(error)
   }
 
   const handleFinish = () => {

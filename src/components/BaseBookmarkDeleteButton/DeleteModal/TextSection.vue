@@ -20,9 +20,9 @@
 import { localize } from '#/actions/plugins/i18n'
 
 export default {
-  name: 'RecommendationDeleteTextSection',
+  name: 'TextSection',
   props: {
-    artistName: {
+    modelName: {
       type: String,
       required: true
     }
@@ -30,21 +30,21 @@ export default {
   computed: {
     goingFormatted () {
       return localize(
-        'shared.recommendation.delete.going',
-        { artistName: this.artistNameFormatted }
+        'shared.bookmark.delete.going',
+        { modelName: this.modelNameFormatted }
       )
     },
-    artistNameFormatted () {
-      return `<strong>${this.artistName}</strong>`
+    modelNameFormatted () {
+      return `<strong>${this.modelName}</strong>`
     },
     undoFormatted () {
       return localize(
-        'shared.recommendation.delete.undo'
+        'shared.modal.undo'
       )
     },
     sureFormatted () {
       return localize(
-        'shared.recommendation.delete.sure'
+        'shared.modal.sure'
       )
     }
   }

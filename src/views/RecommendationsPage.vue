@@ -27,6 +27,7 @@
               :profileId="profileId"
               isWithLibraryLink
               isWithListenedButton
+              isWithBookmarkButton
               isRecommendation
             />
           </template>

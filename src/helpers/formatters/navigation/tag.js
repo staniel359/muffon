@@ -14,7 +14,7 @@ export default function ({ tagName, pageNameKey }) {
     if (pageNameKey) {
       return {
         name: localize(
-          `layout.navigation.tag.${pageNameKey}`
+          `layout.navigation.${pageNameKey}`
         ),
         isActive: true
       }

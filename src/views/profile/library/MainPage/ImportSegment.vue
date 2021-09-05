@@ -32,7 +32,7 @@ export default {
   computed: {
     headerFormatted () {
       return localize(
-        'pages.library.add.header'
+        'shared.library.add'
       )
     }
   }
