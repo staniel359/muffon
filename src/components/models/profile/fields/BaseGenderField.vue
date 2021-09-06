@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
 import { setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
@@ -40,22 +39,22 @@ export default {
   },
   computed: {
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.gender'
       )
     },
     maleFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.genders.male'
       )
     },
     femaleFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.genders.female'
       )
     },
     otherFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.genders.other'
       )
     }

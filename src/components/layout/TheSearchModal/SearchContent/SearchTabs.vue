@@ -20,7 +20,6 @@
 import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import BaseSearchTabContainer from '@/containers/BaseSearchTabContainer.vue'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SearchTabs',
@@ -32,11 +31,16 @@ export default {
     query: String,
     searchKey: String
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    },
+    tabs () {
+      return [
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.artists'
           ),
           scope: 'artists',
@@ -46,7 +50,7 @@ export default {
           isWithListenersCount: true
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.albums'
           ),
           scope: 'albums',
@@ -56,7 +60,7 @@ export default {
           isWithListenersCount: true
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.tracks'
           ),
           scope: 'tracks',
@@ -65,7 +69,7 @@ export default {
           component: 'BaseTracksSimpleList'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.tags'
           ),
           scope: 'tags',
@@ -75,11 +79,6 @@ export default {
           isWithIcon: false
         }
       ]
-    }
-  },
-  computed: {
-    tabsFormatted () {
-      return formatCollection(this.tabs)
     }
   }
 }

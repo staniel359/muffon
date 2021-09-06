@@ -15,7 +15,6 @@ import BaseDivider from '@/BaseDivider.vue'
 import ClearCacheOption from './DataOptions/ClearCacheOption.vue'
 import ClearSearchHistoryOption
   from './DataOptions/ClearSearchHistoryOption.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'DataOptions',
@@ -26,7 +25,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.sections.app.data'
       )
     }

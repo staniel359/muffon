@@ -1,3 +1,4 @@
+import store from '*/store'
 import { generateKey } from '#/utils'
 
 export const collection = collection => {
@@ -50,9 +51,18 @@ export const stringToDate = value => {
 }
 
 export const date = date => {
+  const { language } = store.state.profile
+
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
+  }
+
   return new Date(date)
-    .toString()
-    .substr(4, 11)
+    .toLocaleDateString(
+      language, options
+    )
 }
 
 export const time = date => {
@@ -63,8 +73,7 @@ export const time = date => {
 
 export const age = birthdate => {
   const yearsInSecondsFromNow =
-    new Date() -
-      new Date(birthdate)
+    new Date() - new Date(birthdate)
   const yearsInSeconds =
     1000 * 60 * 60 * 24 * 365
 

@@ -12,7 +12,6 @@
 <script>
 import BaseButton from '@/BaseButton.vue'
 import FolderImportModal from './FolderImportBlock/FolderImportModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'FolderImportBlock',
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     addFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.buttons.folder'
       )
     }

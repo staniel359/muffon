@@ -26,7 +26,6 @@ import SaveArtistsSection from './SaveSection/SaveArtistsSection.vue'
 import SaveAlbumsSection from './SaveSection/SaveAlbumsSection.vue'
 import SaveTracksSection from './SaveSection/SaveTracksSection.vue'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SaveSection',
@@ -41,38 +40,36 @@ export default {
     albums: Array,
     tracks: Array
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    },
+    tabs () {
+      return [
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.artists'
           ),
           component: 'SaveArtistsSection',
           scope: 'artists'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.albums'
           ),
           component: 'SaveAlbumsSection',
           scope: 'albums'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.tracks'
           ),
           component: 'SaveTracksSection',
           scope: 'tracks'
         }
       ]
-    }
-  },
-  computed: {
-    tabsFormatted () {
-      return formatCollection(
-        this.tabs
-      )
     }
   }
 }

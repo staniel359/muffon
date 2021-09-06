@@ -1,26 +1,16 @@
 <template>
-  <BaseTagSegmentContainer :tagName="tagName">
-    <template #default="slotProps">
-      <CoverSegment :tagName="tagName"/>
+  <div class="ui segments main-segment-container">
+    <CoverSegment :tagName="tagName"/>
 
-      <BaseSegmentContainer
-        class="tag-info-segment"
-        :isLoading="slotProps.isLoading"
-        :error="slotProps.error"
-        @refresh="slotProps.handleRefresh"
-      >
-        <InfoSection
-          v-if="slotProps.tagData"
-          :tagData="slotProps.tagData"
-        />
-      </BaseSegmentContainer>
-    </template>
-  </BaseTagSegmentContainer>
+    <BaseSegmentContainer
+      class="tag-info-segment"
+    >
+      <InfoSection :tagData="tagData" />
+    </BaseSegmentContainer>
+  </div>
 </template>
 
 <script>
-import BaseTagSegmentContainer
-  from '@/containers/pages/tag/BaseTagSegmentContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import CoverSegment from './InfoSegment/CoverSegment.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
@@ -28,13 +18,20 @@ import InfoSection from './InfoSegment/InfoSection.vue'
 export default {
   name: 'InfoSegment',
   components: {
-    BaseTagSegmentContainer,
     BaseSegmentContainer,
     CoverSegment,
     InfoSection
   },
   props: {
-    tagName: String
+    tagData: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    tagName () {
+      return this.tagData.name
+    }
   }
 }
 </script>
@@ -45,7 +42,7 @@ export default {
   height: 420px
 
 .tag-info-segment
-  @extend .h-100, .overflow-y-auto, .no-border
+  @extend .h-100, .overflow-y-auto
   padding: 60px 80px 40px 80px
   &:not(.loading)
     @extend .background-black-transparent

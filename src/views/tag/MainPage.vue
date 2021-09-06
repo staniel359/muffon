@@ -1,7 +1,8 @@
 <template>
-  <BaseTagPageContainer>
+  <BaseTagPageContainer :tagName="tagName">
     <template #default="slotProps">
-      <InfoSegment :tagName="slotProps.tagData.name" />
+      <InfoSegment :tagData="slotProps.tagData" />
+
       <ArtistsSegment :tagName="slotProps.tagData.name" />
       <AlbumsSegment :tagName="slotProps.tagData.name" />
       <TracksSegment :tagName="slotProps.tagData.name" />
@@ -25,6 +26,9 @@ export default {
     ArtistsSegment,
     AlbumsSegment,
     TracksSegment
+  },
+  props: {
+    tagName: String
   }
 }
 </script>

@@ -20,7 +20,6 @@
 
 <script>
 import BaseTrackLyricsModal from '@/models/track/BaseTrackLyricsModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'LyricsData',
@@ -36,7 +35,9 @@ export default {
   },
   computed: {
     moreFormatted () {
-      return localize('shared.more')
+      return this.$t(
+        'shared.more'
+      )
     }
   },
   methods: {

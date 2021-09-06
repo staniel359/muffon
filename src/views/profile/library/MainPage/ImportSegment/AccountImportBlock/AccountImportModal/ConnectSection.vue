@@ -46,7 +46,6 @@ import UserInfoSection from './ConnectSection/UserInfoSection.vue'
 import fetchLastfmTokenData from '#/actions/api/lastfm/connect/token/fetchData'
 import fetchLastfmSessionData
   from '#/actions/api/lastfm/connect/session/fetchData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ConnectSection',
@@ -75,11 +74,11 @@ export default {
   computed: {
     textFormatted () {
       if (this.token) {
-        return localize(
+        return this.$t(
           'pages.library.add.account.import.lastfm'
         )
       } else {
-        return localize(
+        return this.$t(
           'pages.library.add.account.connect.lastfm'
         )
       }

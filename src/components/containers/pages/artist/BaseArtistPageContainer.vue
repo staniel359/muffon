@@ -68,7 +68,8 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info'
+      profileInfo: 'info',
+      profileLanguage: 'language'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -113,7 +114,8 @@ export default {
   },
   watch: {
     requestArtistData: 'handleRequestArtistDataChange',
-    artistData: 'handleArtistDataChange'
+    artistData: 'handleArtistDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.resetRequestArtistData()
@@ -131,6 +133,15 @@ export default {
       this.fetchData(page)
     },
     handleArtistDataChange () {
+      this.setNavigation()
+    },
+    handleRequestArtistDataChange () {
+      this.fetchData()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )
@@ -140,9 +151,6 @@ export default {
           this.navigationData
         )
       )
-    },
-    handleRequestArtistDataChange () {
-      this.fetchData()
     },
     resetRequestArtistData () {
       this.setRequestArtistData({

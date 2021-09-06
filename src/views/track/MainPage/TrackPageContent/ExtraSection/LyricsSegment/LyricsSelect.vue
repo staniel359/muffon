@@ -21,7 +21,6 @@
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import TracksList from './LyricsSelect/TracksList.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'LyricsSelect',
@@ -43,11 +42,11 @@ export default {
   computed: {
     headerFormatted () {
       if (this.isError) {
-        return localize(
+        return this.$t(
           'shared.error'
         )
       } else {
-        return localize(
+        return this.$t(
           `pages.track.lyrics.${this.headerKey}`
         )
       }

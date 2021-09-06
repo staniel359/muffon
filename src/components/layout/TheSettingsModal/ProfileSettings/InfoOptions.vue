@@ -12,7 +12,6 @@
 <script>
 import BaseDivider from '@/BaseDivider.vue'
 import BaseEditForm from '@/models/profile/BaseEditForm.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'InfoOptions',
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.sections.profile.info'
       )
     }

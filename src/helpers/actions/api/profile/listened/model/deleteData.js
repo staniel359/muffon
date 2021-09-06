@@ -10,8 +10,7 @@ export default function ({ model, listenedId }) {
   const url = `profiles/${profileId}` +
     `/listened/${model}s/${listenedId}`
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = { token }
 
   const handleSuccess = () => {

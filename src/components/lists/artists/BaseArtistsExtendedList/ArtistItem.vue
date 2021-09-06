@@ -73,7 +73,6 @@ import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
 import RecommendationDeleteButton
   from './ArtistItem/RecommendationDeleteButton.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ArtistItem',
@@ -123,7 +122,7 @@ export default {
       return this.artistData.id?.toString()
     },
     deletedFormatted () {
-      return localize(
+      return this.$t(
         'shared.recommendation.deleted'
       )
     }

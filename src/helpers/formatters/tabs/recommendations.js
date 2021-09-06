@@ -1,16 +1,16 @@
+import i18n from '*/i18n'
 import {
   recommendations as formatRecommendationsLink
 } from '#/formatters/links'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ pageNameKey }) {
-  const recommendationsPageTitle = localize(
+  const recommendationsPageTitle = i18n.global.t(
     'layout.navigation.recommendations'
   )
 
   const formatSubpageTitle = () => {
     if (pageNameKey) {
-      return localize(
+      return i18n.global.t(
         `layout.navigation.recommendations.${pageNameKey}`
       ).toLowerCase()
     }

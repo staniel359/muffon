@@ -21,7 +21,6 @@
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveArtistsSection/CompleteSection.vue'
 import postArtistData from '#/actions/api/profile/library/artists/postData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SaveArtistsSection',
@@ -91,7 +90,7 @@ export default {
     },
     postArtistData,
     formatProgressActive ({ value, total }) {
-      return localize(
+      return this.$t(
         'pages.library.add.save.active.artists',
         { value, total }
       )

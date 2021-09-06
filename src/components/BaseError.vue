@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseMessage from '@/BaseMessage.vue'
 import errorsData from '#/data/errors'
 
@@ -38,6 +39,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
     icons () {
       return this.errorData.icons
     },
@@ -64,10 +68,16 @@ export default {
       return this.errorData.isRefreshable
     }
   },
-  mounted () {
-    this.setErrorData()
+  watch: {
+    profileLanguage: {
+      immediate: true,
+      handler: 'handleProfileLanguageChange'
+    }
   },
   methods: {
+    handleProfileLanguageChange () {
+      this.setErrorData()
+    },
     handleButtonClick () {
       this.$emit('refresh')
     },

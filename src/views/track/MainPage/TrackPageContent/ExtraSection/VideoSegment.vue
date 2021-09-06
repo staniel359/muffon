@@ -33,7 +33,6 @@ import BaseTrackSearchContainer
 import VideoSelect from './VideoSegment/VideoSelect.vue'
 import VideoData from './VideoSegment/VideoData.vue'
 import { generateKey } from '#/utils'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'VideoSegment',
@@ -60,7 +59,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'pages.track.videos.find'
       )
     }

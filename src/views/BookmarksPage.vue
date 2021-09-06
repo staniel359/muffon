@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import BaseBookmarksTabContainer
@@ -38,7 +38,6 @@ import formatBookmarksPageNavigation
 import formatBookmarksPageTab from '#/formatters/tabs/bookmarks'
 import { updateTab } from '#/actions'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BookmarksPage',
@@ -47,11 +46,22 @@ export default {
     BaseTabsContainer,
     BaseBookmarksTabContainer
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
+    navigationSections () {
+      return formatBookmarksPageNavigation()
+    },
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    },
+    tabs () {
+      return [
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.artists'
           ),
           scope: 'artists',
@@ -60,7 +70,7 @@ export default {
           component: 'BaseArtistsSimpleList'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.albums'
           ),
           scope: 'albums',
@@ -69,7 +79,7 @@ export default {
           component: 'BaseAlbumsSimpleList'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.tracks'
           ),
           scope: 'tracks',
@@ -80,33 +90,32 @@ export default {
       ]
     }
   },
-  computed: {
-    navigationSections () {
-      return formatBookmarksPageNavigation()
-    },
-    tabsFormatted () {
-      return formatCollection(
-        this.tabs
-      )
+  watch: {
+    profileLanguage: {
+      immediate: true,
+      handler: 'handleProfileLanguageChange'
     }
-  },
-  mounted () {
-    this.setNavigationSections(
-      this.navigationSections
-    )
-
-    updateTab(
-      formatBookmarksPageTab()
-    )
   },
   methods: {
     ...mapActions('layout', [
       'setNavigationSections'
     ]),
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
     handleFocus () {
       this.$nextTick(() => {
         this.$refs.segment.focus()
       })
+    },
+    setNavigation () {
+      this.setNavigationSections(
+        this.navigationSections
+      )
+
+      updateTab(
+        formatBookmarksPageTab()
+      )
     }
   }
 }

@@ -1,6 +1,6 @@
 import axios from 'axios'
-import local from '#/plugins/local'
-import { localize } from '#/actions/plugins/i18n'
+import i18n from '*/i18n'
+import { setGlobalData } from '#/actions'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 import fetchProfileData from '../fetchData'
 
@@ -13,7 +13,7 @@ export default function ({ email, password, isRemember }) {
   const handleSuccess = response => {
     const { token } = response.data.profile
 
-    local.set({
+    setGlobalData({
       'profile.token': token,
       'profile.isRemember': isRemember
     })
@@ -31,7 +31,7 @@ export default function ({ email, password, isRemember }) {
 
     if (isNotFound) {
       const fields = ['email', 'password']
-      const notFoundError = localize(
+      const notFoundError = i18n.global.t(
         'shared.profile.form.errors.notFound'
       )
 

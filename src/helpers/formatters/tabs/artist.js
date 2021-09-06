@@ -1,3 +1,4 @@
+import i18n from '*/i18n'
 import {
   main as formatArtistMainLink,
   images as formatArtistImagesLink,
@@ -5,21 +6,18 @@ import {
   albums as formatArtistAlbumsLink,
   similar as formatArtistSimilarLink
 } from '#/formatters/links/artist'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, pageNameKey }) {
-  const formatSubpageTitle = () => {
+  const formatTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.artist.${pageNameKey}`,
+        { artistName }
+      )
+    } else {
+      return artistName
     }
   }
-
-  const title = [
-    artistName,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
 
   const formatPath = () => {
     switch (pageNameKey) {
@@ -48,7 +46,7 @@ export default function ({ artistName, pageNameKey }) {
 
   return {
     icon: 'microphone alternate',
-    title,
+    title: formatTitle(),
     path: formatPath()
   }
 }

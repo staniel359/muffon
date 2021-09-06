@@ -14,7 +14,6 @@
 <script>
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import BaseAlbumsSourceSelect from '@/models/artist/BaseAlbumsSourceSelect.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ArtistSourceSelect',
@@ -35,7 +34,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.sources.find'
       )
     }

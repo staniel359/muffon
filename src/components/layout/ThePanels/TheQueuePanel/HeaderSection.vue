@@ -13,7 +13,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -26,7 +25,7 @@ export default {
       queueTracksCount: 'tracksCount'
     }),
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.tracks',
         { count: this.queueTracksCountFormatted }
       )

@@ -27,6 +27,7 @@
           isWithAlbumTitle
           isWithTracksCount
           isWithAlbumsCount
+          isWithCreated
           isLinkToLibrary
         />
       </template>

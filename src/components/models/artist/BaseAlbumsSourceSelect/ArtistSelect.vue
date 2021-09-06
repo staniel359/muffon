@@ -10,7 +10,6 @@
 <script>
 import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import ArtistsList from './ArtistSelect/ArtistsList.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ArtistSelect',
@@ -23,7 +22,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.sources.select.artist'
       )
     }

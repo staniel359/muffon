@@ -49,7 +49,6 @@ import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import ProfileArtistsModal
   from './ProfileArtistsSection/ProfileArtistsModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ProfileArtistsSection',
@@ -69,7 +68,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.recommendation.similar',
         { count: this.profileArtistsCount }
       )
@@ -91,7 +90,7 @@ export default {
       return this.profileArtistsCount > 5
     },
     moreFormatted () {
-      return localize(
+      return this.$t(
         'shared.more'
       )
     },

@@ -7,7 +7,6 @@
 
 <script>
 import BaseStatistics from '@/BaseStatistics.vue'
-import { localize } from '#/actions/plugins/i18n'
 import {
   artists as formatProfileLibraryArtistsLink,
   albums as formatProfileLibraryAlbumsLink,
@@ -33,7 +32,7 @@ export default {
     statistics () {
       return [
         {
-          text: localize(
+          text: this.$t(
             'layout.navigation.artists'
           ),
           value: this.libraryData.artists_count,
@@ -42,7 +41,7 @@ export default {
           })
         },
         {
-          text: localize(
+          text: this.$t(
             'layout.navigation.albums'
           ),
           value: this.libraryData.albums_count,
@@ -51,7 +50,7 @@ export default {
           })
         },
         {
-          text: localize(
+          text: this.$t(
             'layout.navigation.tracks'
           ),
           value: this.libraryData.tracks_count,

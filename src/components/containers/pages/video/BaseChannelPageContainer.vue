@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatVideoChannelPageNavigation
   from '#/formatters/navigation/videoChannel'
@@ -46,6 +46,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
     navigationSections () {
       return formatVideoChannelPageNavigation(
         this.navigationData
@@ -69,7 +72,8 @@ export default {
     }
   },
   watch: {
-    channelData: 'handleChannelDataChange'
+    channelData: 'handleChannelDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.fetchData()
@@ -84,6 +88,12 @@ export default {
       this.fetchData(page)
     },
     handleChannelDataChange () {
+      this.setNavigation()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )

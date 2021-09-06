@@ -15,7 +15,6 @@ import BaseStatistics from '@/BaseStatistics.vue'
 import {
   tracks as formatProfileLibraryAlbumTracksLink
 } from '#/formatters/links/profile/library/album'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'StatisticsSegment',
@@ -41,7 +40,7 @@ export default {
     statistics () {
       return [
         {
-          text: localize(
+          text: this.$t(
             'layout.navigation.tracks'
           ),
           value: this.albumData.tracks_count,

@@ -40,7 +40,6 @@ import TextSection from './DeleteModal/TextSection.vue'
 import BaseError from '@/BaseError.vue'
 import BaseButton from '@/BaseButton.vue'
 import deleteRecommendationData from '#/actions/api/recommendation/deleteData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'DeleteModal',
@@ -67,17 +66,17 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.recommendation.delete.header'
       )
     },
     cancelFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.cancel'
       )
     },
     deleteFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.delete'
       )
     },

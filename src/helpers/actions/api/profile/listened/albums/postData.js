@@ -9,8 +9,7 @@ export default function ({ title, artistName, imageUrl }) {
   const url =
     `profiles/${profileId}/listened/albums`
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = {
     token,
     title,

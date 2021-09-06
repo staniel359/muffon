@@ -62,7 +62,8 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info'
+      profileInfo: 'info',
+      profileLanguage: 'language'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -95,7 +96,8 @@ export default {
   },
   watch: {
     requestAlbumData: 'handleRequestAlbumDataChange',
-    albumData: 'handleAlbumDataChange'
+    albumData: 'handleAlbumDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.resetRequestAlbumData()
@@ -110,6 +112,15 @@ export default {
       this.fetchData(page)
     },
     handleAlbumDataChange () {
+      this.setNavigation()
+    },
+    handleRequestAlbumDataChange () {
+      this.fetchData()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )
@@ -119,9 +130,6 @@ export default {
           this.navigationData
         )
       )
-    },
-    handleRequestAlbumDataChange () {
-      this.fetchData()
     },
     resetRequestAlbumData () {
       this.setRequestAlbumData({

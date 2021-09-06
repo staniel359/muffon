@@ -12,7 +12,6 @@
 <script>
 import BaseButton from '@/BaseButton.vue'
 import AccountImportModal from './AccountImportBlock/AccountImportModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'AccountImportBlock',
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     addFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.buttons.account'
       )
     }

@@ -52,7 +52,7 @@ export default {
   z-index: 300 !important
   width: 40px !important
   overflow-x: hidden
-  transition: 0.4s !important
+  transition: 0.35s !important
   &:hover
     width: 240px !important
     & > .sidebar-top

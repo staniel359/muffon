@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatProfileLibraryTrackPageNavigation
   from '#/formatters/navigation/profile/library/track'
@@ -54,6 +54,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
     navigationSections () {
       return formatProfileLibraryTrackPageNavigation(
         this.navigationData
@@ -101,7 +104,8 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange'
+    profileData: 'handleProfileDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.fetchData()
@@ -116,6 +120,12 @@ export default {
       this.fetchData(page)
     },
     handleProfileDataChange () {
+      this.setNavigation()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )

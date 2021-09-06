@@ -40,7 +40,6 @@ import {
 import postArtistData from '#/actions/api/profile/library/artists/postData'
 import postAlbumData from '#/actions/api/profile/library/albums/postData'
 import postTrackData from '#/actions/api/profile/library/tracks/postData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseLibraryButton',
@@ -77,12 +76,12 @@ export default {
       profileInfo: 'info'
     }),
     showFormatted () {
-      return localize(
+      return this.$t(
         'shared.library.show'
       )
     },
     addFormatted () {
-      return localize(
+      return this.$t(
         'shared.library.add'
       )
     },

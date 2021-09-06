@@ -1,6 +1,7 @@
-import { localize } from '#/actions/plugins/i18n'
+import i18n from '*/i18n'
 
-const redCloseCornerIcon = 'red bottom right corner close'
+const redCloseCornerIcon =
+  'red bottom right corner close'
 
 export default {
   badRequest: {
@@ -8,10 +9,10 @@ export default {
     icons: [
       'ban'
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.badRequest.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.badRequest.content'
     ),
     isRefreshable: false
@@ -21,10 +22,10 @@ export default {
     icons: [
       'close'
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.forbidden.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.forbidden.content'
     ),
     isRefreshable: false
@@ -34,10 +35,10 @@ export default {
     icons: [
       'search'
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.notFound.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.notFound.content'
     ),
     isRefreshable: false
@@ -48,10 +49,10 @@ export default {
       'server',
       redCloseCornerIcon
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.internalServer.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.internalServer.content'
     ),
     isRefreshable: false
@@ -62,10 +63,10 @@ export default {
       'server',
       redCloseCornerIcon
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.badGateway.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.badGateway.content'
     ),
     isRefreshable: true
@@ -76,10 +77,10 @@ export default {
       'hourglass end',
       redCloseCornerIcon
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.gatewayTimeout.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.gatewayTimeout.content'
     ),
     isRefreshable: true
@@ -89,10 +90,10 @@ export default {
       'wifi',
       redCloseCornerIcon
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.connection.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.connection.content'
     ),
     isRefreshable: true
@@ -102,10 +103,10 @@ export default {
       'window maximize outline',
       redCloseCornerIcon
     ],
-    header: localize(
+    header: i18n.global.t(
       'errors.client.header'
     ),
-    content: localize(
+    content: i18n.global.t(
       'errors.client.content'
     ),
     isRefreshable: false

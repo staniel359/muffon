@@ -53,14 +53,14 @@ const baseUrl = getBaseUrl()
 
 const i18n = {
   en: {
-    show: 'Show',
+    show: 'Open',
     quit: 'Quit'
+  },
+  ru: {
+    show: 'Открыть',
+    quit: 'Выйти'
   }
 }
-
-let mainWindow = null
-let tray = null
-let tabs = []
 
 if (isDevelopment) {
   const userDataPath = path.join(
@@ -73,6 +73,17 @@ if (isDevelopment) {
     userDataPath
   )
 }
+
+const local = new ElectronStore({
+  accessPropertiesByDotNotation: false
+})
+
+let lang = local.get(
+  'profile.language'
+)
+let mainWindow = null
+let tray = null
+let tabs = []
 
 const show = () => {
   mainWindow.show()
@@ -125,10 +136,6 @@ const createWindow = () => {
 }
 
 const quit = () => {
-  const local = new ElectronStore({
-    accessPropertiesByDotNotation: false
-  })
-
   const isRememberProfile = local.get(
     'profile.isRemember'
   )
@@ -143,19 +150,21 @@ const quit = () => {
   app.exit()
 }
 
-const createTrayOrDock = () => {
+const setTrayMenu = () => {
   const menu = Menu.buildFromTemplate([
     {
       type: 'normal',
-      label: i18n.en.show,
+      label: i18n[lang].show,
       click: show
     },
     {
       type: 'normal',
-      label: i18n.en.quit,
+      label: i18n[lang].quit,
       click: quit
     }
   ])
+
+  tray.setContextMenu(menu)
 
   const isMac =
     process.platform === 'darwin'
@@ -163,10 +172,13 @@ const createTrayOrDock = () => {
   if (isMac) {
     app.dock.setMenu(menu)
   }
+}
 
+const createTrayOrDock = () => {
   tray = new Tray(iconPath)
 
-  tray.setContextMenu(menu)
+  setTrayMenu()
+
   tray.setToolTip(appName)
 
   const handleTrayIconClick = () => {
@@ -263,18 +275,16 @@ const handleAddTab = (_, value) => {
 
   prependTabToTabs(tab)
 
-  const [
-    tabWidth,
-    tabHeight
-  ] = mainWindow.getContentSize()
+  const [width, height] =
+    mainWindow.getContentSize()
 
   const tabsPanelHeight = 45
 
   tab.setBounds({
     x: 0,
     y: tabsPanelHeight,
-    width: tabWidth,
-    height: tabHeight - tabsPanelHeight
+    width,
+    height: height - tabsPanelHeight
   })
 
   tab.setAutoResize({
@@ -292,19 +302,14 @@ const handleAddTab = (_, value) => {
     })
   }
 
-  const handleNewWindow = event => {
-    event.preventDefault()
-  }
-
-  tab.webContents.on(
-    'new-window',
-    handleNewWindow
-  )
-
   mainWindow.webContents.send(
     'handle-add-tab',
     value
   )
+
+  const handleNewWindow = event => {
+    event.preventDefault()
+  }
 
   const handleDidStartNavigation = () => {
     tab.webContents.send(
@@ -312,6 +317,11 @@ const handleAddTab = (_, value) => {
       uuid
     )
   }
+
+  tab.webContents.on(
+    'new-window',
+    handleNewWindow
+  )
 
   tab.webContents.on(
     'did-start-navigation',
@@ -410,15 +420,21 @@ const handleUpdateStore = (_, data) => {
   )
 }
 
-const handleUpdateTabs = (_, value) => {
+const handleUpdateTab = (_, { tabId, data }) => {
   mainWindow.webContents.send(
-    'handle-update-tabs',
-    value
+    'handle-update-tab',
+    { tabId, data }
   )
 }
 
 const handleClearCache = () => {
   return mainWindow.webContents.session.clearCache()
+}
+
+const handleSetLanguage = (_, value) => {
+  lang = value
+
+  setTrayMenu()
 }
 
 ipcMain.on(
@@ -457,11 +473,16 @@ ipcMain.handle(
 )
 
 ipcMain.on(
-  'update-tabs',
-  handleUpdateTabs
+  'update-tab',
+  handleUpdateTab
 )
 
 ipcMain.handle(
   'clear-cache',
   handleClearCache
+)
+
+ipcMain.on(
+  'set-language',
+  handleSetLanguage
 )

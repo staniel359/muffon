@@ -32,7 +32,6 @@ import postAlbumData from '#/actions/api/profile/bookmarks/albums/postData'
 import postTrackData from '#/actions/api/profile/bookmarks/tracks/postData'
 import deleteBookmarkData
   from '#/actions/api/profile/bookmarks/model/deleteData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseBookmarkButton',
@@ -59,12 +58,12 @@ export default {
   },
   computed: {
     deleteFormatted () {
-      return localize(
+      return this.$t(
         'shared.bookmarks.added'
       )
     },
     addFormatted () {
-      return localize(
+      return this.$t(
         'shared.bookmarks.add'
       )
     }

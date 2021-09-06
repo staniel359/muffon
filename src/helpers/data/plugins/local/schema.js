@@ -47,6 +47,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'profile.language': {
+    type: 'string',
+    default: 'en'
+  },
   'profile.token': {
     type: ['null', 'string'],
     default: null

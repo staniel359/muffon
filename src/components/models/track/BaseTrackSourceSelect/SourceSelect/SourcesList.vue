@@ -30,7 +30,6 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 import {
   getStreamable as getAudioSourcesStreamable
 } from '#/actions/audio/sources'
@@ -45,7 +44,7 @@ export default {
   },
   computed: {
     streamableHeaderFormatted () {
-      return localize(
+      return this.$t(
         'shared.sources.streamable'
       )
     },
@@ -55,7 +54,7 @@ export default {
       )
     },
     otherHeaderFormatted () {
-      return localize(
+      return this.$t(
         'shared.sources.other'
       )
     },

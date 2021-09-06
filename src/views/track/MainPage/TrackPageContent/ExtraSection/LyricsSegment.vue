@@ -42,7 +42,6 @@ import BaseTrackLyricsContainer
   from '@/containers/track/lyrics/BaseTrackLyricsContainer.vue'
 import LyricsData from './LyricsSegment/LyricsData.vue'
 import { generateKey } from '#/utils'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'LyricsSegment',
@@ -70,7 +69,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'pages.track.lyrics.find'
       )
     }

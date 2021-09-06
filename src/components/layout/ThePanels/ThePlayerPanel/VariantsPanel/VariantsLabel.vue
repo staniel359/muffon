@@ -10,7 +10,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import BaseLabel from '@/BaseLabel.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'VariantsLabel',
@@ -25,7 +24,7 @@ export default {
       playerVariantsCount: 'variantsCount'
     }),
     variantsCountFormatted () {
-      return localize(
+      return this.$t(
         'layout.player.variants',
         { number: this.playerVariantsCount }
       )

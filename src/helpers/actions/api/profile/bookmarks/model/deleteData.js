@@ -10,8 +10,7 @@ export default function ({ model, bookmarkId }) {
   const url = `profiles/${profileId}` +
     `/bookmarks/${model}s/${bookmarkId}`
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = { token }
 
   const handleError = error => {

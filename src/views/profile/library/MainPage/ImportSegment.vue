@@ -18,7 +18,6 @@ import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import SearchImportBlock from './ImportSegment/SearchImportBlock.vue'
 import AccountImportBlock from './ImportSegment/AccountImportBlock.vue'
 import FolderImportBlock from './ImportSegment/FolderImportBlock.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ImportSegment',
@@ -31,7 +30,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.library.add'
       )
     }

@@ -16,7 +16,6 @@
 <script>
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 import audioSources from '#/data/audio/sources'
 
 export default {
@@ -33,7 +32,7 @@ export default {
   computed: {
     popupTextFormatted () {
       if (this.sourceName) {
-        return localize(
+        return this.$t(
           'shared.track.source',
           { source: this.sourceName }
         )

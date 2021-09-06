@@ -21,7 +21,6 @@
 import BaseHistoryInputContainer
   from '@/containers/BaseHistoryInputContainer.vue'
 import BaseInput from '@/BaseInput.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseHistoryInput',
@@ -47,7 +46,7 @@ export default {
       return !!this.input.length
     },
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'layout.search.input'
       )
     }

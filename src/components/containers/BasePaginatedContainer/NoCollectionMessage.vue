@@ -9,7 +9,6 @@
 <script>
 import { mapState } from 'vuex'
 import BaseMessage from '@/BaseMessage.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'NoCollectionMessage',
@@ -30,15 +29,13 @@ export default {
       return ['question']
     },
     header () {
-      return localize(
-        'shared.paginated.noCollection.header',
-        { collection: this.scope }
+      return this.$t(
+        `shared.paginated.noCollection.header.${this.scope}`
       )
     },
     content () {
-      return localize(
-        'shared.paginated.noCollection.content',
-        { collection: this.scope }
+      return this.$t(
+        'shared.paginated.noCollection.content'
       )
     }
   }

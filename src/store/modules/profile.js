@@ -4,7 +4,8 @@ export default {
     info: null,
     token: null,
     isLoggedIn: false,
-    isRemember: false
+    isRemember: false,
+    language: null
   },
   mutations: {
     SET_INFO (state, value) {
@@ -18,6 +19,9 @@ export default {
     },
     SET_IS_REMEMBER (state, value) {
       state.isRemember = value
+    },
+    SET_LANGUAGE (state, value) {
+      state.language = value
     }
   },
   actions: {
@@ -32,6 +36,9 @@ export default {
     },
     setIsRemember ({ commit }, value) {
       commit('SET_IS_REMEMBER', value)
+    },
+    setLanguage ({ commit }, value) {
+      commit('SET_LANGUAGE', value)
     }
   }
 }

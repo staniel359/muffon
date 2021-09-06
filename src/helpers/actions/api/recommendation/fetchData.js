@@ -16,8 +16,7 @@ export default function ({
     `/recommendations/${recommendationId}` +
     '/artists'
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = {
     token,
     ...(page && { page }),

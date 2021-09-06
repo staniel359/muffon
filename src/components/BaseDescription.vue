@@ -13,8 +13,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'BaseDescription',
   props: {
@@ -29,7 +27,7 @@ export default {
   ],
   computed: {
     moreFormatted () {
-      return localize('shared.more')
+      return this.$t('shared.more')
     }
   },
   methods: {

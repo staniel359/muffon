@@ -14,6 +14,7 @@
         isWithImage
         isWithArtistName
         isWithAlbumTitle
+        isWithCreated
         isLinkToLibrary
       />
     </template>

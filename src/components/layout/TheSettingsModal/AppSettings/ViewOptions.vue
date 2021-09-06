@@ -12,7 +12,6 @@
 <script>
 import BaseDivider from '@/BaseDivider.vue'
 import DarkModeOption from './ViewOptions/DarkModeOption.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ViewOptions',
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.sections.app.view'
       )
     }

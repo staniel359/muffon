@@ -55,7 +55,6 @@ import BaseDivider from '@/BaseDivider.vue'
 import BaseProfileLibraryDeleteButton
   from '@/models/profile/library/BaseProfileLibraryDeleteButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import { localize } from '#/actions/plugins/i18n'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
 
@@ -87,7 +86,7 @@ export default {
       return this.artistData.image
     },
     sinceFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.since'
       )
     },

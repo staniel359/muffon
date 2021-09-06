@@ -62,7 +62,8 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info'
+      profileInfo: 'info',
+      profileLanguage: 'language'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -95,7 +96,8 @@ export default {
   },
   watch: {
     requestTrackData: 'handleRequestTrackDataChange',
-    trackData: 'handleTrackDataChange'
+    trackData: 'handleTrackDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.resetRequestTrackData()
@@ -110,6 +112,15 @@ export default {
       this.fetchData(page)
     },
     handleTrackDataChange () {
+      this.setNavigation()
+    },
+    handleRequestTrackDataChange () {
+      this.fetchData()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )
@@ -119,9 +130,6 @@ export default {
           this.navigationData
         )
       )
-    },
-    handleRequestTrackDataChange () {
-      this.fetchData()
     },
     resetRequestTrackData () {
       this.setRequestTrackData({

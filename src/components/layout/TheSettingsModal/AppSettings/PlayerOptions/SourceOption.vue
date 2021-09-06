@@ -12,7 +12,6 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import SourceSelect from './SourceOption/SourceSelect.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SourceOption',
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.options.player.audioSource'
       )
     }

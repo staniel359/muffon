@@ -20,7 +20,6 @@
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButton from '@/BaseButton.vue'
 import DeleteModal from './BaseBookmarkDeleteButton/DeleteModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseBookmarkDeleteButton',
@@ -38,7 +37,7 @@ export default {
   ],
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.delete'
       )
     }

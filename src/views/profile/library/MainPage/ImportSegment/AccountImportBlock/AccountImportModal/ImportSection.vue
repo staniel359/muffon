@@ -20,7 +20,6 @@ import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
 import fetchLastfmUserPlaysData
   from '#/actions/api/lastfm/user/plays/fetchData'
-import { localize } from '#/actions/plugins/i18n'
 import {
   collection as formatCollection,
   playsToTracks as formatPlaysToTracks
@@ -93,7 +92,7 @@ export default {
       )
     },
     formatProgressActive ({ value, total }) {
-      return localize(
+      return this.$t(
         'pages.library.add.import.active.plays',
         { value, total }
       )

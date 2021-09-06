@@ -19,7 +19,7 @@ export default {
       if (this.playerPlaying) {
         return this.playerFullTitle
       } else {
-        return ''
+        return 'muffon'
       }
     },
     playerFullTitle () {

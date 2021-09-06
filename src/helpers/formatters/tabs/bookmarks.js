@@ -1,8 +1,8 @@
+import i18n from '*/i18n'
 import { bookmarks as formatBookmarksLink } from '#/formatters/links'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function () {
-  const title = localize(
+  const title = i18n.global.t(
     'layout.navigation.bookmarks'
   )
 

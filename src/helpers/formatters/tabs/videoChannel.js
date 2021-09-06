@@ -1,17 +1,13 @@
+import i18n from '*/i18n'
 import {
   videos as formatVideoChannelVideosLink
 } from '#/formatters/links/videoChannel'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ channelTitle, channelId }) {
-  const videoChannelVideosPageName = localize(
-    'layout.navigation.videos'
-  ).toLowerCase()
-
-  const title = [
-    channelTitle,
-    videoChannelVideosPageName
-  ].join(' ')
+  const title = i18n.global.t(
+    'layout.navigation.videoChannel.videos',
+    { channelTitle }
+  )
 
   const formatPath = () => {
     return formatVideoChannelVideosLink({

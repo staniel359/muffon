@@ -33,7 +33,6 @@ import SearchTracksList from './lists/SearchTracksList.vue'
 import BaseProfileLibrarySaveButton
   from '@/models/profile/library/BaseProfileLibrarySaveButton.vue'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ImportSection',
@@ -57,38 +56,36 @@ export default {
     'change',
     'save'
   ],
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    },
+    tabs () {
+      return [
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.artists'
           ),
           component: 'SearchArtistsList',
           scope: 'artists'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.albums'
           ),
           component: 'SearchAlbumsList',
           scope: 'albums'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.tracks'
           ),
           component: 'SearchTracksList',
           scope: 'tracks'
         }
       ]
-    }
-  },
-  computed: {
-    tabsFormatted () {
-      return formatCollection(
-        this.tabs
-      )
     }
   },
   watch: {
@@ -113,13 +110,13 @@ export default {
         return tabData.scope === value
       }
 
-      const activeTab = this.tabsFormatted.find(
+      const activeTabIndex = this.tabsFormatted.findIndex(
         isActiveTab
       )
 
       this.$nextTick(() => {
         this.$refs.tabs.setActiveTab(
-          activeTab.uuid
+          activeTabIndex
         )
       })
     }

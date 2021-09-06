@@ -12,12 +12,16 @@
 export default {
   name: 'TabItem',
   props: {
-    tabData: {
-      type: Object,
+    tabName: {
+      type: String,
       required: true
     },
-    activeTabId: {
-      type: String,
+    index: {
+      type: Number,
+      required: true
+    },
+    activeTabIndex: {
+      type: Number,
       required: true
     }
   },
@@ -27,22 +31,16 @@ export default {
   computed: {
     isActive () {
       return (
-        this.tabId ===
-          this.activeTabId
+        this.index ===
+          this.activeTabIndex
       )
-    },
-    tabId () {
-      return this.tabData.uuid
-    },
-    tabName () {
-      return this.tabData.name
     }
   },
   methods: {
     handleClick () {
       this.$emit(
         'click',
-        this.tabId
+        this.index
       )
     }
   }

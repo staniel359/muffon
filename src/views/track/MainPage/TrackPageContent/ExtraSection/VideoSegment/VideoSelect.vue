@@ -24,7 +24,6 @@
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import VideosList from './VideoSelect/VideosList.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'VideoSelect',
@@ -46,11 +45,11 @@ export default {
   computed: {
     headerFormatted () {
       if (this.isError) {
-        return localize(
+        return this.$t(
           'shared.error'
         )
       } else {
-        return localize(
+        return this.$t(
           `pages.track.videos.${this.headerKey}`
         )
       }

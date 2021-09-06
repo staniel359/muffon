@@ -3,18 +3,18 @@
     <BaseTabs
       v-bind="$attrs"
       :tabs="tabs"
-      :activeTabId="activeTabId"
+      :activeTabIndex="activeTabIndex"
       @tabClick="handleTabClick"
     />
 
     <div class="main-tab-container">
       <slot
-        v-for="tabData in tabs"
+        v-for="(tabData, index) in tabs"
         class="ui segment main-tab main-segment"
         :key="tabData.uuid"
         :name="tabData.scope"
-        :class="{ active: isActive(tabData.uuid) }"
-        :isActive="isActive(tabData.uuid)"
+        :class="{ active: isActive(index) }"
+        :isActive="isActive(index)"
       />
     </div>
   </div>
@@ -38,18 +38,18 @@ export default {
   },
   data () {
     return {
-      activeTabId: this.tabs[0].uuid
+      activeTabIndex: 0
     }
   },
   methods: {
-    handleTabClick (tabId) {
-      this.setActiveTab(tabId)
+    handleTabClick (index) {
+      this.setActiveTab(index)
     },
-    isActive (tabId) {
-      return tabId === this.activeTabId
+    isActive (index) {
+      return index === this.activeTabIndex
     },
-    setActiveTab (tabId) {
-      this.activeTabId = tabId
+    setActiveTab (index) {
+      this.activeTabIndex = index
     }
   }
 }

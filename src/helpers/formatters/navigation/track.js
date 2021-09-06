@@ -1,9 +1,9 @@
+import i18n from '*/i18n'
 import {
   main as formatArtistMainLink,
   tracks as formatArtistTracksLink
 } from '#/formatters/links/artist'
 import { main as formatTrackMainLink } from '#/formatters/links/track'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, trackTitle, pageNameKey }) {
   const formatLink = () => {
@@ -17,7 +17,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
   const formatSubpageSection = () => {
     if (pageNameKey) {
       return {
-        name: localize(
+        name: i18n.global.t(
           `layout.navigation.${pageNameKey}`
         ),
         isActive: true
@@ -27,7 +27,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
 
   return [
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.artists'
       )
     },
@@ -38,7 +38,7 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
       })
     },
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.tracks'
       ),
       link: formatArtistTracksLink({

@@ -1,15 +1,15 @@
-import { localize } from '#/actions/plugins/i18n'
+import i18n from '*/i18n'
 
 export default function ({ channelTitle }) {
   return [
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.videoChannels'
       )
     },
     { name: channelTitle },
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.videos'
       ),
       isActive: true

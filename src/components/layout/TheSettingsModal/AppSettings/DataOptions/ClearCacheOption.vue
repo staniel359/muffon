@@ -23,7 +23,6 @@
 <script>
 import { ipcRenderer } from 'electron'
 import BaseButton from '@/BaseButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ClearCacheOption',
@@ -38,12 +37,12 @@ export default {
   },
   computed: {
     buttonTextFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.options.data.cache.clear'
       )
     },
     successFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.options.data.cache.cleared'
       )
     }

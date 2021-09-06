@@ -7,8 +7,8 @@ import '*/assets/styles/Sources.sass'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import i18n from './i18n'
 import { init as setSentry } from '#/plugins/sentry'
-import i18n from '#/plugins/i18n'
 
 const isDevelopment =
   process.env.NODE_ENV === 'development'

@@ -23,7 +23,6 @@ import BaseHeader from '@/BaseHeader.vue'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'LibraryItem',
@@ -44,7 +43,7 @@ export default {
       return this.profileInfo.id
     },
     textFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.library'
       )
     }

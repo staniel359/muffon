@@ -46,7 +46,6 @@ import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
 import { setToast } from '#/actions/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'DeleteModal',
@@ -83,22 +82,22 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         `shared.library.delete.${this.model}.header`
       )
     },
     cancelFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.cancel'
       )
     },
     deleteFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.delete'
       )
     },
     toastMessage () {
-      return localize(
+      return this.$t(
         'shared.library.deleted',
         { modelTitle: this.modelTitleFormatted }
       )

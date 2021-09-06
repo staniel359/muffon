@@ -12,8 +12,7 @@ export default function ({
   const url =
     `/profiles/${profileId}/bookmarks/tracks`
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = {
     token,
     title,

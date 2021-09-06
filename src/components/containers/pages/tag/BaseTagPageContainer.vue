@@ -49,7 +49,8 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info'
+      profileInfo: 'info',
+      profileLanguage: 'language'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -77,7 +78,8 @@ export default {
     }
   },
   watch: {
-    tagData: 'handleTagDataChange'
+    tagData: 'handleTagDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.fetchData()
@@ -92,6 +94,12 @@ export default {
       this.fetchData(page)
     },
     handleTagDataChange () {
+      this.setNavigation()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )

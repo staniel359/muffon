@@ -65,7 +65,6 @@ import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import { localize } from '#/actions/plugins/i18n'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
 
@@ -119,7 +118,7 @@ export default {
       return this.albumData.image.medium
     },
     sinceFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.since'
       )
     },

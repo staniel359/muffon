@@ -27,7 +27,6 @@ import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import BaseProfileLibraryTabContainer
   from '@/models/profile/library/BaseProfileLibraryTabContainer.vue'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'LibraryTabsSegment',
@@ -39,11 +38,16 @@ export default {
   props: {
     profileId: String
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    },
+    tabs () {
+      return [
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.artists'
           ),
           scope: 'artists',
@@ -53,7 +57,7 @@ export default {
           itemsInRow: 4
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.albums'
           ),
           scope: 'albums',
@@ -63,7 +67,7 @@ export default {
           itemsInRow: 3
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.navigation.tracks'
           ),
           scope: 'tracks',
@@ -72,13 +76,6 @@ export default {
           component: 'BaseTracksSimpleList'
         }
       ]
-    }
-  },
-  computed: {
-    tabsFormatted () {
-      return formatCollection(
-        this.tabs
-      )
     }
   },
   methods: {

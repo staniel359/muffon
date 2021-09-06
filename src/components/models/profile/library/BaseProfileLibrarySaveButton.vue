@@ -9,7 +9,6 @@
 
 <script>
 import BaseButton from '@/BaseButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseProfileLibrarySaveButton',
@@ -21,7 +20,7 @@ export default {
   ],
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.buttons.save'
       )
     }

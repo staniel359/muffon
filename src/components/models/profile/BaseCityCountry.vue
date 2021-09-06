@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import countries from 'i18n-iso-countries'
 
 export default {
@@ -20,6 +21,9 @@ export default {
     country: String
   },
   computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
     iconClassName () {
       return `${this.country} flag`
     },
@@ -32,7 +36,7 @@ export default {
     countryFormatted () {
       return countries.getName(
         this.country,
-        'en'
+        this.profileLanguage
       )
     }
   }

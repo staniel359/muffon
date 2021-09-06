@@ -1,9 +1,9 @@
+import i18n from '*/i18n'
 import { profiles as formatProfilesLink } from '#/formatters/links'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ profileId, profileNickname, pageNameKey }) {
   const formatLink = () => {
@@ -17,7 +17,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
   const formatSubpageSection = () => {
     if (pageNameKey) {
       return {
-        name: localize(
+        name: i18n.global.t(
           `layout.navigation.${pageNameKey}`
         ),
         isActive: true
@@ -27,7 +27,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
 
   return [
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.profiles'
       ),
       link: formatProfilesLink()
@@ -39,7 +39,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
       })
     },
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.library'
       ),
       isActive: !pageNameKey,

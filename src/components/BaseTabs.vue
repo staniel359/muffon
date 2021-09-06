@@ -4,10 +4,11 @@
     :class="{ inverted: isDarkMode }"
   >
     <TabItem
-      v-for="tabData in tabs"
+      v-for="(tabData, index) in tabs"
       :key="tabData.uuid"
-      :tabData="tabData"
-      :activeTabId="activeTabId"
+      :tabName="tabData.name"
+      :index="index"
+      :activeTabIndex="activeTabIndex"
       @click="handleTabClick"
     />
   </div>
@@ -32,7 +33,7 @@ export default {
         return []
       }
     },
-    activeTabId: String
+    activeTabIndex: Number
   },
   computed: {
     ...mapState('layout', [
@@ -40,8 +41,11 @@ export default {
     ])
   },
   methods: {
-    handleTabClick (tabId) {
-      this.$emit('tabClick', tabId)
+    handleTabClick (index) {
+      this.$emit(
+        'tabClick',
+        index
+      )
     }
   }
 }

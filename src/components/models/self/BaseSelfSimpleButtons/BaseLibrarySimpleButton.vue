@@ -30,7 +30,6 @@ import {
 } from '#/formatters/links/profile/library/track'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseLibrarySimpleButton',
@@ -80,7 +79,7 @@ export default {
       return this.profileInfo.id.toString()
     },
     popupTextFormatted () {
-      return localize(
+      return this.$t(
         'shared.library.show'
       )
     }

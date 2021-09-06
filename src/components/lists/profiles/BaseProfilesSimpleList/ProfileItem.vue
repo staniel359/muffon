@@ -51,7 +51,6 @@ import BaseLabel from '@/BaseLabel.vue'
 import BaseGenderAge from '@/models/profile/BaseGenderAge.vue'
 import BaseCityCountry from '@/models/profile/BaseCityCountry.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ProfileItem',
@@ -103,7 +102,7 @@ export default {
       return this.profileData.role
     },
     roleFormatted () {
-      return localize(
+      return this.$t(
         `shared.profile.roles.${this.role}`
       )
     }

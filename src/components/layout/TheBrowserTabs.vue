@@ -87,8 +87,8 @@ export default {
     )
 
     ipcRenderer.on(
-      'handle-update-tabs',
-      this.handleUpdateTabs
+      'handle-update-tab',
+      this.handleUpdateTab
     )
   },
   methods: {
@@ -125,8 +125,26 @@ export default {
 
       this.tabs = tabs
     },
-    handleUpdateTabs (_, value) {
-      this.tabs = value
+    handleUpdateTab (_, { tabId, data }) {
+      const isMatchedTab = tabData => {
+        return tabData.uuid === tabId
+      }
+
+      const tab = this.tabs.find(
+        isMatchedTab
+      )
+
+      if (tab) {
+        const updateTabKeyValue = ([key, value]) => {
+          tab[key] = value
+        }
+
+        Object.entries(data).forEach(
+          updateTabKeyValue
+        )
+      }
+
+      this.tabs = [...this.tabs]
     },
     addTabsFromLocal () {
       this.localTabs.forEach(

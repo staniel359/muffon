@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'TextSection',
   props: {
@@ -37,7 +35,7 @@ export default {
   },
   computed: {
     goingFormatted () {
-      return localize(
+      return this.$t(
         'shared.library.delete.going',
         { modelTitle: this.modelTitleFormatted }
       )
@@ -52,17 +50,17 @@ export default {
       )
     },
     alsoFormatted () {
-      return localize(
+      return this.$t(
         `shared.library.delete.${this.model}.also`
       )
     },
     undoFormatted () {
-      return localize(
+      return this.$t(
         'shared.modal.undo'
       )
     },
     sureFormatted () {
-      return localize(
+      return this.$t(
         'shared.modal.sure'
       )
     }

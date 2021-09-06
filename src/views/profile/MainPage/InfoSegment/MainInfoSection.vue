@@ -22,7 +22,6 @@
 import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseLabel from '@/BaseLabel.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'MainInfoSection',
@@ -51,7 +50,7 @@ export default {
       return this.profileData.role
     },
     roleFormatted () {
-      return localize(
+      return this.$t(
         `shared.profile.roles.${this.role}`
       )
     }

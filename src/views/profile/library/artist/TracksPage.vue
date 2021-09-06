@@ -15,6 +15,7 @@
         :artistName="slotProps.artistName"
         isWithImage
         isWithAlbumTitle
+        isWithCreated
         isLinkToLibrary
       />
     </template>

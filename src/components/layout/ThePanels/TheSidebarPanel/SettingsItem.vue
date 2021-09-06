@@ -21,7 +21,6 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import TheSettingsModal from '@/layout/TheSettingsModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SettingsItem',
@@ -31,7 +30,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'layout.sidebar.settings'
       )
     }

@@ -19,11 +19,9 @@
 import axios from 'axios'
 import { mapState } from 'vuex'
 import { setSearch } from '#/actions/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SearchArtistsInput',
-  components: {},
   props: {
     artists: {
       type: Array,
@@ -40,7 +38,7 @@ export default {
       profileInfo: 'info'
     }),
     textFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.search.input.artists'
       )
     },
@@ -52,7 +50,7 @@ export default {
         },
         cache: false,
         error: {
-          serverError: localize(
+          serverError: this.$t(
             'shared.error'
           )
         },

@@ -41,7 +41,6 @@ import BaseError from '@/BaseError.vue'
 import BaseButton from '@/BaseButton.vue'
 import deleteBookmarkData
   from '#/actions/api/profile/bookmarks/model/deleteData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'DeleteModal',
@@ -72,17 +71,17 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.bookmark.delete.header'
       )
     },
     cancelFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.cancel'
       )
     },
     deleteFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.delete'
       )
     },

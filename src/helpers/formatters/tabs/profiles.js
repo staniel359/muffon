@@ -1,12 +1,18 @@
+import i18n from '*/i18n'
 import { profiles as formatProfilesLink } from '#/formatters/links'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function () {
+  const title = i18n.global.t(
+    'layout.navigation.profiles'
+  )
+
+  const formatPath = () => {
+    return formatProfilesLink().path
+  }
+
   return {
     icon: 'user',
-    title: localize(
-      'layout.navigation.profiles'
-    ),
-    path: formatProfilesLink().path
+    title,
+    path: formatPath()
   }
 }

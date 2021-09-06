@@ -73,6 +73,7 @@ export default {
   @extend .d-flex
 
 .image-field
+  width: 120px
   margin-right: 1em !important
 
 .extra-fields

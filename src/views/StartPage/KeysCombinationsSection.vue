@@ -25,7 +25,6 @@
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseCode from '@/BaseCode.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
@@ -44,33 +43,24 @@ export default {
     combinations () {
       return [
         {
-          header: this.searchHeaderFormatted,
+          header: this.$t(
+            'pages.start.keys.search'
+          ),
           code: 'Ctrl/⌘ + F'
         },
         {
-          header: this.openInHeaderFormatted,
+          header: this.$t(
+            'pages.start.keys.openInTab'
+          ),
           code: 'Ctrl/⌘ + Left Click'
         },
         {
-          header: this.closeTabHeaderFormatted,
+          header: this.$t(
+            'pages.start.keys.closeTab'
+          ),
           code: 'Ctrl/⌘ + W'
         }
       ]
-    },
-    searchHeaderFormatted () {
-      return localize(
-        'pages.start.keys.search'
-      )
-    },
-    openInHeaderFormatted () {
-      return localize(
-        'pages.start.keys.openInTab'
-      )
-    },
-    closeTabHeaderFormatted () {
-      return localize(
-        'pages.start.keys.closeTab'
-      )
     }
   }
 }

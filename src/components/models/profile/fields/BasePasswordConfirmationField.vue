@@ -9,13 +9,11 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'BasePasswordConfirmationField',
   computed: {
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.passwordConfirmation'
       )
     }

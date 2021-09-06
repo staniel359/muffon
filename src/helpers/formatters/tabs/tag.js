@@ -1,24 +1,22 @@
+import i18n from '*/i18n'
 import {
   main as formatTagMainLink,
   artists as formatTagArtistsLink,
   albums as formatTagAlbumsLink,
   tracks as formatTagTracksLink
 } from '#/formatters/links/tag'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ tagName, pageNameKey }) {
-  const formatSubpageTitle = () => {
+  const formatTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.tag.${pageNameKey}`,
+        { tagName }
+      )
+    } else {
+      return tagName
     }
   }
-
-  const title = [
-    tagName,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
 
   const formatPath = () => {
     switch (pageNameKey) {
@@ -43,7 +41,7 @@ export default function ({ tagName, pageNameKey }) {
 
   return {
     icon: 'tag',
-    title,
+    title: formatTitle(),
     path: formatPath()
   }
 }

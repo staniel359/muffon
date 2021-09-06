@@ -1,5 +1,5 @@
 import store from '*/store'
-import { localize } from '#/actions/plugins/i18n'
+import i18n from '*/i18n'
 
 export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   return {
@@ -119,10 +119,10 @@ export const mainEmbedOptions = ({ videoId, placeholder }) => {
 }
 
 export const loginFormOptions = ({ onSuccess }) => {
-  const emptyEmailPrompt = localize(
+  const emptyEmailPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.email'
   )
-  const emptyPasswordPrompt = localize(
+  const emptyPasswordPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.password'
   )
 
@@ -154,16 +154,16 @@ export const loginFormOptions = ({ onSuccess }) => {
 }
 
 export const signupFormOptions = ({ onSuccess }) => {
-  const emptyEmailPrompt = localize(
+  const emptyEmailPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.email'
   )
-  const emptyPasswordPrompt = localize(
+  const emptyPasswordPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.password'
   )
-  const emptyPasswordConfirmationPrompt = localize(
+  const emptyPasswordConfirmationPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.passwordConfirmation'
   )
-  const emptyNicknamePrompt = localize(
+  const emptyNicknamePrompt = i18n.global.t(
     'shared.profile.form.errors.empty.nickname'
   )
 
@@ -213,13 +213,13 @@ export const signupFormOptions = ({ onSuccess }) => {
 }
 
 export const editFormOptions = ({ onSuccess }) => {
-  const emptyEmailPrompt = localize(
+  const emptyEmailPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.email'
   )
-  const emptyPasswordConfirmationPrompt = localize(
+  const emptyPasswordConfirmationPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.passwordConfirmation'
   )
-  const emptyNicknamePrompt = localize(
+  const emptyNicknamePrompt = i18n.global.t(
     'shared.profile.form.errors.empty.nickname'
   )
 

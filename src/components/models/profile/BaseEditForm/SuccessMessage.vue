@@ -8,7 +8,6 @@
 
 <script>
 import BaseMessage from '@/BaseMessage.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SuccessMessage',
@@ -17,7 +16,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.success'
       )
     }

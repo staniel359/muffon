@@ -7,13 +7,11 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'BaseBookmarkDeletedBlock',
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.bookmark.deleted'
       )
     }

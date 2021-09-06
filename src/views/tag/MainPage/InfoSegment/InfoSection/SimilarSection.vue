@@ -21,7 +21,6 @@
 import BaseLabel from '@/BaseLabel.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 import fetchTagData from '#/actions/api/tag/fetchData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SimilarSection',
@@ -50,8 +49,8 @@ export default {
       return this.tagData?.similar
     },
     similarTextFormatted () {
-      return localize(
-        'pages.tag.similar'
+      return this.$t(
+        'layout.navigation.similar'
       ) + ':'
     },
     tagDataArgs () {

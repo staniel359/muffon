@@ -23,7 +23,6 @@
 <script>
 import local from '#/plugins/local'
 import BaseButton from '@/BaseButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'ClearSearchHistoryOption',
@@ -38,12 +37,12 @@ export default {
   },
   computed: {
     buttonTextFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.options.data.history.search.clear'
       )
     },
     successFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.options.data.history.search.cleared'
       )
     }

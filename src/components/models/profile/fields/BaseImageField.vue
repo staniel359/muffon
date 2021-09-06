@@ -1,24 +1,24 @@
 <template>
   <div class="field">
-    <div class="image-field">
+    <div class="image-field-content">
       <BaseProfileImage
         class="image-preview"
         :image="image"
       />
 
       <label
-        class="image-add-button"
+        class="image-add-button-label"
         for="image"
       >
         <BaseButton
-          class="compact"
+          class="compact image-add-button"
           :text="addFormatted"
         />
       </label>
 
       <BaseButton
         v-if="image"
-        class="red basic compact small"
+        class="red basic compact small remove-button"
         icon="close"
         :text="removeFormatted"
         @click="handleRemoveButtonClick"
@@ -39,7 +39,6 @@
 <script>
 import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
 import BaseButton from '@/BaseButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseImageField',
@@ -60,12 +59,12 @@ export default {
   },
   computed: {
     addFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.image'
       )
     },
     removeFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.delete'
       )
     }
@@ -114,7 +113,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.image-field
+.image-field-content
   @extend .d-flex, .flex-column, .align-items-center
 
 .image-input
@@ -125,6 +124,12 @@ export default {
   height: 100px
   margin-bottom: 1em
 
-.image-add-button
+.image-add-button-label
   margin-bottom: 0.5em
+
+.image-add-button
+  @extend .no-margin
+
+.remove-button
+  @extend .no-margin
 </style>

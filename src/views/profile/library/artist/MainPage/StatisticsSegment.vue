@@ -16,7 +16,6 @@ import {
   albums as formatProfileLibraryArtistAlbumsLink,
   tracks as formatProfileLibraryArtistTracksLink
 } from '#/formatters/links/profile/library/artist'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'StatisticsSegment',
@@ -42,7 +41,7 @@ export default {
     statistics () {
       return [
         {
-          text: localize(
+          text: this.$t(
             'layout.navigation.albums'
           ),
           value: this.artistData.albums_count,
@@ -52,7 +51,7 @@ export default {
           })
         },
         {
-          text: localize(
+          text: this.$t(
             'layout.navigation.tracks'
           ),
           value: this.artistData.tracks_count,

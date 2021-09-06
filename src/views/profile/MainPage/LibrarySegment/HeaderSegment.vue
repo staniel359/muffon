@@ -16,7 +16,6 @@ import BaseLink from '@/BaseLink.vue'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'HeaderSegment',
@@ -38,7 +37,7 @@ export default {
       })
     },
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.library'
       )
     }

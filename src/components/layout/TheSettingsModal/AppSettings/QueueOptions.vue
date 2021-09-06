@@ -12,7 +12,6 @@
 <script>
 import BaseDivider from '@/BaseDivider.vue'
 import AutoplayOption from './QueueOptions/AutoplayOption.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'QueueOptions',
@@ -22,7 +21,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.sections.app.queue'
       )
     }

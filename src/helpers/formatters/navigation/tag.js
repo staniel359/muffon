@@ -1,5 +1,5 @@
+import i18n from '*/i18n'
 import { main as formatTagMainLink } from '#/formatters/links/tag'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ tagName, pageNameKey }) {
   const formatLink = () => {
@@ -13,7 +13,7 @@ export default function ({ tagName, pageNameKey }) {
   const formatSubpageSection = () => {
     if (pageNameKey) {
       return {
-        name: localize(
+        name: i18n.global.t(
           `layout.navigation.${pageNameKey}`
         ),
         isActive: true
@@ -23,7 +23,7 @@ export default function ({ tagName, pageNameKey }) {
 
   return [
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.tags'
       )
     },

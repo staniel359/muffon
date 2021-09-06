@@ -20,7 +20,6 @@
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { bookmarks as formatBookmarksLink } from '#/formatters/links'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'RecommendationsItem',
@@ -33,7 +32,7 @@ export default {
       return formatBookmarksLink()
     },
     textFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.bookmarks'
       )
     }

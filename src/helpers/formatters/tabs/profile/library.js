@@ -1,28 +1,26 @@
+import i18n from '*/i18n'
 import {
   main as formatProfileLibraryMainLink,
   artists as formatProfileLibraryArtistsLink,
   albums as formatProfileLibraryAlbumsLink,
   tracks as formatProfileLibraryTracksLink
 } from '#/formatters/links/profile/library'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({
   profileId,
   profileNickname,
   pageNameKey
 }) {
-  const formatSubpageTitle = () => {
+  const formatTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.profile.${pageNameKey}`,
+        { nickname: profileNickname }
+      )
+    } else {
+      return profileNickname
     }
   }
-
-  const title = [
-    profileNickname,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
 
   const formatPath = () => {
     switch (pageNameKey) {
@@ -47,7 +45,7 @@ export default function ({
 
   return {
     icon: 'headphones',
-    title,
+    title: formatTitle(),
     path: formatPath()
   }
 }

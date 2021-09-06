@@ -1,7 +1,7 @@
-import { localize } from '#/actions/plugins/i18n'
+import i18n from '*/i18n'
 
 export const startPage = () => {
-  const title = localize(
+  const title = i18n.global.t(
     'layout.navigation.start'
   )
 

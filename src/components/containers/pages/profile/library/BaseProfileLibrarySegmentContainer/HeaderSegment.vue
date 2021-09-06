@@ -13,7 +13,6 @@
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'HeaderSegment',
@@ -42,7 +41,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         `layout.navigation.${this.headerTextKey}`
       )
     },

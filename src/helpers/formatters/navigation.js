@@ -1,11 +1,14 @@
-import { localize } from '#/actions/plugins/i18n'
+import i18n from '*/i18n'
 
 export const startPage = () => {
-  const startPageName = localize(
+  const startPageName = i18n.global.t(
     'layout.navigation.start'
   )
 
   return [
-    { name: startPageName }
+    {
+      name: startPageName,
+      isActive: true
+    }
   ]
 }

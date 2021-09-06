@@ -10,8 +10,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'BaseCityField',
   props: {
@@ -19,7 +17,7 @@ export default {
   },
   computed: {
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.city'
       )
     }

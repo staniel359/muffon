@@ -26,10 +26,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import CountryItem from './BaseCountryField/CountryItem.vue'
 import countries from 'i18n-iso-countries'
 import countriesEn from 'i18n-iso-countries/langs/en.json'
-import { localize } from '#/actions/plugins/i18n'
+import countriesRu from 'i18n-iso-countries/langs/ru.json'
 import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
@@ -41,20 +42,28 @@ export default {
     value: String
   },
   computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.country'
       )
     },
     countriesList () {
       return Object.entries(
-        countries.getNames('en')
+        countries.getNames(
+          this.profileLanguage
+        )
       )
     }
   },
   beforeMount () {
     countries.registerLocale(
       countriesEn
+    )
+    countries.registerLocale(
+      countriesRu
     )
   },
   mounted () {

@@ -20,7 +20,6 @@
 import jsmediatags from 'jsmediatags'
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { tags as formatFileTags } from '#/formatters/file'
 import { generateKey } from '#/utils'
 
@@ -72,7 +71,7 @@ export default {
       }
     },
     formatProgressActive ({ value, total }) {
-      return localize(
+      return this.$t(
         'pages.library.add.import.active.tracks',
         { value, total }
       )

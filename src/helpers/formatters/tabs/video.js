@@ -1,19 +1,17 @@
+import i18n from '*/i18n'
 import { main as formatVideoMainLink } from '#/formatters/links/video'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ videoTitle, videoId, pageNameKey }) {
-  const formatSubpageTitle = () => {
+  const formatTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.video.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.video.${pageNameKey}`,
+        { videoTitle }
+      )
+    } else {
+      return videoTitle
     }
   }
-
-  const title = [
-    videoTitle,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
 
   const formatPath = () => {
     switch (pageNameKey) {
@@ -26,7 +24,7 @@ export default function ({ videoTitle, videoId, pageNameKey }) {
 
   return {
     icon: 'film',
-    title,
+    title: formatTitle(),
     path: formatPath()
   }
 }

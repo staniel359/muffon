@@ -24,7 +24,6 @@ import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
 import { collection as formatCollection } from '#/formatters'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'TheSettingsModal',
@@ -34,31 +33,29 @@ export default {
     AppSettings,
     ProfileSettings
   },
-  data () {
-    return {
-      tabs: [
+  computed: {
+    tabsFormatted () {
+      return formatCollection(
+        this.tabs
+      )
+    },
+    tabs () {
+      return [
         {
-          name: localize(
+          name: this.$t(
             'layout.settings.tabs.app'
           ),
           scope: 'app',
           component: 'AppSettings'
         },
         {
-          name: localize(
+          name: this.$t(
             'layout.settings.tabs.profile'
           ),
           scope: 'profile',
           component: 'ProfileSettings'
         }
       ]
-    }
-  },
-  computed: {
-    tabsFormatted () {
-      return formatCollection(
-        this.tabs
-      )
     }
   },
   methods: {

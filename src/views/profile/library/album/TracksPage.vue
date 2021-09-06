@@ -14,6 +14,7 @@
         :artistName="slotProps.artistName"
         :artistId="slotProps.artistId"
         isWithImage
+        isWithCreated
         isLinkToLibrary
       />
     </template>

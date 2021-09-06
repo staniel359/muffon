@@ -45,7 +45,6 @@ import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import BaseProfileLibraryRetryButton
   from '@/models/profile/library/BaseProfileLibraryRetryButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -71,7 +70,7 @@ export default {
   ],
   computed: {
     messageHeaderFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.save.error.tracks',
         { count: this.totalCountFormatted }
       )

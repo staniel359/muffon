@@ -47,7 +47,6 @@ import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import BaseProfileLibrarySaveButton
   from '@/models/profile/library/BaseProfileLibrarySaveButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -72,7 +71,7 @@ export default {
   },
   computed: {
     messageHeaderFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.import.success.tracks.header',
         { count: this.totalCountFormatted }
       )
@@ -83,7 +82,7 @@ export default {
       )
     },
     messageContentFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.import.success.tracks.content'
       )
     },

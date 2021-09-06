@@ -16,6 +16,7 @@
         :artistName="artistName"
         isWithImage
         isWithAlbumTitle
+        isWithCreated
         isLinkToLibrary
       />
     </template>

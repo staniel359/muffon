@@ -32,7 +32,6 @@ import { ipcRenderer } from 'electron'
 import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
 import BaseIcon from '@/BaseIcon.vue'
 import BaseButton from '@/BaseButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BrowserTab',
@@ -62,7 +61,9 @@ export default {
       )
     },
     loadingFormatted () {
-      return localize('shared.loading')
+      return this.$t(
+        'shared.loading'
+      )
     },
     isActive () {
       return (

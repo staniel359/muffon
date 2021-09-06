@@ -27,7 +27,6 @@ import BaseMessage from '@/BaseMessage.vue'
 import SearchAlbumsList from '../../../lists/SearchAlbumsList.vue'
 import BaseProfileLibraryRetryButton
   from '@/models/profile/library/BaseProfileLibraryRetryButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -51,7 +50,7 @@ export default {
   ],
   computed: {
     messageHeaderFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.save.error.albums',
         { count: this.totalCountFormatted }
       )

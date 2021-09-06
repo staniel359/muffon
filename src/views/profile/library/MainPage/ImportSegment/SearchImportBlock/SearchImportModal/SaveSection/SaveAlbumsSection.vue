@@ -21,7 +21,6 @@
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveAlbumsSection/CompleteSection.vue'
 import postAlbumData from '#/actions/api/profile/library/albums/postData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SaveAlbumsSection',
@@ -91,7 +90,7 @@ export default {
     },
     postAlbumData,
     formatProgressActive ({ value, total }) {
-      return localize(
+      return this.$t(
         'pages.library.add.save.active.albums',
         { value, total }
       )

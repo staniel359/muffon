@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatProfilePageNavigation from '#/formatters/navigation/profile'
 import formatProfilePageTab from '#/formatters/tabs/profile'
@@ -48,6 +48,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    }),
     navigationSections () {
       return formatProfilePageNavigation(
         this.navigationData
@@ -75,7 +78,8 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange'
+    profileData: 'handleProfileDataChange',
+    profileLanguage: 'handleProfileLanguageChange'
   },
   mounted () {
     this.fetchData()
@@ -90,6 +94,12 @@ export default {
       this.fetchData(page)
     },
     handleProfileDataChange () {
+      this.setNavigation()
+    },
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
       this.setNavigationSections(
         this.navigationSections
       )

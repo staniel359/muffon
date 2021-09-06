@@ -19,7 +19,6 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import { setGlobalData } from '#/actions'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'LogoutItem',
@@ -28,7 +27,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'layout.sidebar.logout'
       )
     }

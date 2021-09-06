@@ -9,10 +9,8 @@ export default function ({ page, limit }) {
   const url =
     `/profiles/${profileId}/recommendations`
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = {
-    profileId,
     token,
     ...(page && { page }),
     ...(limit && { limit })

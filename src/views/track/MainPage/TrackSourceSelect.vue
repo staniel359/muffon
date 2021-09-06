@@ -13,7 +13,6 @@
 <script>
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import BaseTrackSourceSelect from '@/models/track/BaseTrackSourceSelect.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'TrackSourceSelect',
@@ -31,7 +30,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.sources.find'
       )
     }

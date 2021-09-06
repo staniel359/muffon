@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'TextSection',
   props: {
@@ -29,7 +27,7 @@ export default {
   },
   computed: {
     goingFormatted () {
-      return localize(
+      return this.$t(
         'shared.recommendation.delete.going',
         { artistName: this.artistNameFormatted }
       )
@@ -38,12 +36,12 @@ export default {
       return `<strong>${this.artistName}</strong>`
     },
     undoFormatted () {
-      return localize(
+      return this.$t(
         'shared.modal.undo'
       )
     },
     sureFormatted () {
-      return localize(
+      return this.$t(
         'shared.modal.sure'
       )
     }

@@ -18,13 +18,12 @@
 
 <script>
 import { setCheckbox } from '#/actions/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseRememberField',
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.remember'
       )
     }

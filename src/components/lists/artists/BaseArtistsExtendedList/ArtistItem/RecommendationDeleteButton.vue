@@ -16,7 +16,6 @@
 <script>
 import BaseButton from '@/BaseButton.vue'
 import DeleteModal from './RecommendationDeleteButton/DeleteModal.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'RecommendationDeleteButton',
@@ -32,7 +31,7 @@ export default {
   ],
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.buttons.delete'
       )
     }

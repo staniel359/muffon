@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
 import { setCalendar, setCalendarDate } from '#/actions/plugins/semantic'
 import { birthdateCalendarOptions } from '#/data/plugins/semantic'
 
@@ -28,7 +27,7 @@ export default {
   },
   computed: {
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.fields.birthdate'
       )
     }

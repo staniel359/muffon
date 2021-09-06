@@ -1,3 +1,4 @@
+import i18n from '*/i18n'
 import { profiles as formatProfilesLink } from '#/formatters/links'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 import {
@@ -11,7 +12,6 @@ import {
 import {
   main as formatProfileLibraryTrackMainLink
 } from '#/formatters/links/profile/library/track'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({
   profileId,
@@ -34,7 +34,7 @@ export default function ({
   const formatSubpageSection = () => {
     if (pageNameKey) {
       return {
-        name: localize(
+        name: i18n.global.t(
           `layout.navigation.${pageNameKey}`
         ),
         isActive: true
@@ -44,7 +44,7 @@ export default function ({
 
   return [
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.profiles'
       ),
       link: formatProfilesLink()
@@ -56,7 +56,7 @@ export default function ({
       })
     },
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.library'
       ),
       link: formatProfileLibraryMainLink({
@@ -64,7 +64,7 @@ export default function ({
       })
     },
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.artists'
       ),
       link: formatProfileLibraryArtistsLink({
@@ -79,7 +79,7 @@ export default function ({
       })
     },
     {
-      name: localize(
+      name: i18n.global.t(
         'layout.navigation.tracks'
       ),
       link: formatProfileLibraryArtistTracksLink({

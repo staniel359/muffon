@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { camelCase } from 'camel-case'
+import i18n from '*/i18n'
 import local from '#/plugins/local'
-import { localize } from '#/actions/plugins/i18n'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 import fetchProfileData from '../fetchData'
 
@@ -69,7 +69,7 @@ export default function ({
             )
             const fieldFormatted = camelCase(field)
 
-            const error = localize(
+            const error = i18n.global.t(
               'shared.profile.form.errors' +
               `.${errorFormatted}` +
               `.${fieldFormatted}`

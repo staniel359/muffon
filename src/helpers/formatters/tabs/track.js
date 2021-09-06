@@ -1,31 +1,28 @@
+import i18n from '*/i18n'
 import {
   main as formatTrackMainLink,
   similar as formatTrackSimilarLink
 } from '#/formatters/links/track'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, trackTitle, pageNameKey }) {
-  const formatSubpageTitle = () => {
+  const formatTrackPageTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.track.${pageNameKey}`,
+        { trackTitle }
+      )
+    } else {
+      return trackTitle
     }
   }
 
-  const trackPageTitle = [
-    trackTitle,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
-
-  const artistTracksPageName = localize(
-    'layout.navigation.tracks'
-  ).toLowerCase()
-  const artistPageTitle =
-    `${artistName} ${artistTracksPageName}`
+  const artistPageTitle = i18n.global.t(
+    'layout.navigation.artist.tracks',
+    { artistName }
+  )
 
   const title = [
-    trackPageTitle,
+    formatTrackPageTitle(),
     artistPageTitle
   ].join(' | ')
 

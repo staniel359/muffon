@@ -1,8 +1,8 @@
+import i18n from '*/i18n'
 import {
   videos as formatVideoChannelVideosLink
 } from '#/formatters/links/videoChannel'
 import { main as formatVideoMainLink } from '#/formatters/links/video'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({
   videoId,
@@ -22,7 +22,7 @@ export default function ({
   const formatSubpageSection = () => {
     if (pageNameKey) {
       return {
-        name: localize(
+        name: i18n.global.t(
           `layout.navigation.video.${pageNameKey}`
         ),
         isActive: true
@@ -32,14 +32,14 @@ export default function ({
 
   return [
     {
-      name: localize(
-        'layout.navigation.videos'
+      name: i18n.global.t(
+        'layout.navigation.videoChannels'
       )
     },
     { name: channelTitle },
     {
-      name: localize(
-        'layout.navigation.video.channel.videos'
+      name: i18n.global.t(
+        'layout.navigation.videos'
       ),
       link: formatVideoChannelVideosLink({
         channelId

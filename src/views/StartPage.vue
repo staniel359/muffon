@@ -11,10 +11,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import KeysCombinationsSection from './StartPage/KeysCombinationsSection.vue'
-import { startPage as formatStartPageNavigation } from '#/formatters/navigation'
+import {
+  startPage as formatStartPageNavigation
+} from '#/formatters/navigation'
 import { updateTab } from '#/actions'
 import { startPage as formatStartPageTab } from '#/formatters/tabs'
 
@@ -24,19 +26,33 @@ export default {
     BaseHeader,
     KeysCombinationsSection
   },
-  mounted () {
-    this.setNavigationSections(
-      formatStartPageNavigation()
-    )
-
-    updateTab(
-      formatStartPageTab()
-    )
+  computed: {
+    ...mapState('profile', {
+      profileLanguage: 'language'
+    })
+  },
+  watch: {
+    profileLanguage: {
+      immediate: true,
+      handler: 'handleProfileLanguageChange'
+    }
   },
   methods: {
     ...mapActions('layout', [
       'setNavigationSections'
-    ])
+    ]),
+    handleProfileLanguageChange () {
+      this.setNavigation()
+    },
+    setNavigation () {
+      this.setNavigationSections(
+        formatStartPageNavigation()
+      )
+
+      updateTab(
+        formatStartPageTab()
+      )
+    }
   }
 }
 </script>

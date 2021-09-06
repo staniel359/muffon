@@ -25,7 +25,6 @@ import deleteListenedData
   from '#/actions/api/profile/listened/model/deleteData'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseListenedSimpleButton',
@@ -48,7 +47,7 @@ export default {
   },
   computed: {
     popupTextFormatted () {
-      return localize(
+      return this.$t(
         'shared.listened.delete'
       )
     }

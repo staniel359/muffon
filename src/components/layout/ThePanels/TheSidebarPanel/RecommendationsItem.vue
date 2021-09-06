@@ -22,7 +22,6 @@ import BaseHeader from '@/BaseHeader.vue'
 import {
   recommendations as formatRecommendationsLink
 } from '#/formatters/links'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'RecommendationsItem',
@@ -35,7 +34,7 @@ export default {
       return formatRecommendationsLink()
     },
     textFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.recommendations'
       )
     }

@@ -5,6 +5,7 @@
 <script>
 import { mapActions } from 'vuex'
 import { ipcRenderer } from 'electron'
+import i18n from '*/i18n'
 import local from '#/plugins/local'
 
 export default {
@@ -42,7 +43,8 @@ export default {
       setProfileInfo: 'setInfo',
       setProfileToken: 'setToken',
       setIsProfileLoggedIn: 'setIsLoggedIn',
-      setIsProfileRemember: 'setIsRemember'
+      setIsProfileRemember: 'setIsRemember',
+      setProfileLanguage: 'setLanguage'
     }),
     ...mapActions('queue', {
       setQueueCurrentTrackId: 'setCurrentTrackId',
@@ -76,6 +78,10 @@ export default {
           return this.setIsProfileLoggedIn(value)
         case 'profile.isRemember':
           return this.setIsProfileRemember(value)
+        case 'profile.language':
+          i18n.global.locale = value
+
+          return this.setProfileLanguage(value)
         case 'queue.currentTrackId':
           return this.setQueueCurrentTrackId(value)
         case 'queue.isAutoplay':

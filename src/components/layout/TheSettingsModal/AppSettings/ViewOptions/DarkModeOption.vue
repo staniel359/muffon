@@ -17,7 +17,6 @@
 import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { setGlobalData } from '#/actions'
 
 export default {
@@ -31,7 +30,7 @@ export default {
       'isDarkMode'
     ]),
     headerFormatted () {
-      return localize(
+      return this.$t(
         'layout.settings.options.view.darkMode'
       )
     }

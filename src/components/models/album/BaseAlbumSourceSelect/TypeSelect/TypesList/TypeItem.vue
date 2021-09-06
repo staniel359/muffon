@@ -8,7 +8,6 @@
 
 <script>
 import BaseDropdownItem from '@/BaseDropdownItem.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'TypeItem',
@@ -27,7 +26,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         `shared.sources.albumTypes.${this.typeId}`
       )
     }

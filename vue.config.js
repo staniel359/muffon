@@ -44,5 +44,14 @@ module.exports = {
     port: 3000
   },
   outputDir: 'build',
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableLegacy: true,
+      fullInstall: false
+    }
+  },
   publicPath: './'
 }

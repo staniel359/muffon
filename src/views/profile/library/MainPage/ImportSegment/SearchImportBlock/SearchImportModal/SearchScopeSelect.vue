@@ -20,7 +20,6 @@
 <script>
 import { setDropdown } from '#/actions/plugins/semantic'
 import { mainDropdownOptions } from '#/data/plugins/semantic'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SearchScopeSelect',
@@ -34,17 +33,17 @@ export default {
       })
     },
     artistsFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.artists'
       )
     },
     albumsFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.albums'
       )
     },
     tracksFormatted () {
-      return localize(
+      return this.$t(
         'layout.navigation.tracks'
       )
     }
@@ -53,6 +52,10 @@ export default {
     setDropdown(
       this.$refs.dropdown,
       this.dropdownOptions
+    )
+
+    this.handleChange(
+      'artists'
     )
   },
   methods: {

@@ -1,8 +1,8 @@
+import i18n from '*/i18n'
 import {
   main as formatProfileLibraryAlbumMainLink,
   tracks as formatProfileLibraryAlbumTracksLink
 } from '#/formatters/links/profile/library/album'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({
   profileId,
@@ -12,33 +12,29 @@ export default function ({
   albumTitle,
   pageNameKey
 }) {
-  const formatSubpageTitle = () => {
+  const formatProfileLibraryAlbumPageTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.album.${pageNameKey}`,
+        { albumTitle }
+      )
+    } else {
+      return albumTitle
     }
   }
 
-  const profileLibraryAlbumPageTitle = [
-    albumTitle,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
+  const profileLibraryArtistPageTitle = i18n.global.t(
+    'layout.navigation.artist.albums',
+    { artistName }
+  )
 
-  const profileLibraryArtistAlbumsPageName = localize(
-    'layout.navigation.albums'
-  ).toLowerCase()
-  const profileLibraryArtistPageTitle =
-    `${artistName} ${profileLibraryArtistAlbumsPageName}`
-
-  const profileLibraryArtistsPageName = localize(
-    'layout.navigation.artists'
-  ).toLowerCase()
-  const profileLibraryPageTitle =
-    `${profileNickname} ${profileLibraryArtistsPageName}`
+  const profileLibraryPageTitle = i18n.global.t(
+    'layout.navigation.profile.artists',
+    { nickname: profileNickname }
+  )
 
   const title = [
-    profileLibraryAlbumPageTitle,
+    formatProfileLibraryAlbumPageTitle(),
     profileLibraryArtistPageTitle,
     profileLibraryPageTitle
   ].join(' | ')

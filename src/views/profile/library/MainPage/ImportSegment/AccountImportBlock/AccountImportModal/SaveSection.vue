@@ -21,7 +21,6 @@
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
 import postTrackData from '#/actions/api/profile/library/tracks/postData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SaveSection',
@@ -91,7 +90,7 @@ export default {
     },
     postTrackData,
     formatProgressActive ({ value, total }) {
-      return localize(
+      return this.$t(
         'pages.library.add.save.active.tracks',
         { value, total }
       )

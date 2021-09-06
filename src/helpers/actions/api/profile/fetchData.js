@@ -1,13 +1,13 @@
 import axios from 'axios'
+import store from '*/store'
 
-export default function ({ profileId, scope = '', page, limit }) {
+export default function ({ profileId, scope = '' }) {
   this.isLoading = true
 
   const url = `/profiles/${profileId}/${scope}`
-  const params = {
-    ...(page && { page }),
-    ...(limit && { limit })
-  }
+
+  const { token } = store.state.profile
+  const params = { token }
 
   const handleSuccess = response => {
     this.error = null

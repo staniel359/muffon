@@ -30,7 +30,6 @@
 <script>
 import BaseButton from '@/BaseButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { generateKey } from '#/utils'
 
 export default {
@@ -51,7 +50,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.folder.select'
       )
     }

@@ -20,7 +20,6 @@
 <script>
 import RetrySection from './CompleteSection/RetrySection.vue'
 import BaseMessage from '@/BaseMessage.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -39,7 +38,7 @@ export default {
   ],
   computed: {
     successMessageHeaderFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.save.success.artists',
         { count: this.totalCountFormatted }
       )

@@ -1,29 +1,26 @@
+import i18n from '*/i18n'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import { localize } from '#/actions/plugins/i18n'
 
 export default function ({ artistName, albumTitle, pageNameKey }) {
-  const formatSubpageTitle = () => {
+  const formatAlbumPageTitle = () => {
     if (pageNameKey) {
-      return localize(
-        `layout.navigation.album.${pageNameKey}`
-      ).toLowerCase()
+      return i18n.global.t(
+        `layout.navigation.album.${pageNameKey}`,
+        { albumTitle }
+      )
+    } else {
+      return albumTitle
     }
   }
 
-  const albumPageTitle = [
-    albumTitle,
-    formatSubpageTitle()
-  ].filter(e => e).join(' ')
-
-  const artistAlbumsPageName = localize(
-    'layout.navigation.albums'
-  ).toLowerCase()
-  const artistPageTitle =
-    `${artistName} ${artistAlbumsPageName}`
+  const artistAlbumsPageName = i18n.global.t(
+    'layout.navigation.artist.albums',
+    { artistName }
+  )
 
   const title = [
-    albumPageTitle,
-    artistPageTitle
+    formatAlbumPageTitle(),
+    artistAlbumsPageName
   ].join(' | ')
 
   const formatPath = () => {

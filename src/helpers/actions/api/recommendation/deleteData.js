@@ -10,8 +10,7 @@ export default function ({ recommendationId }) {
   const url = `profiles/${profileId}` +
     `/recommendations/${recommendationId}`
 
-  const token =
-    store.state.profile.token
+  const { token } = store.state.profile
   const params = { token }
 
   const handleError = error => {

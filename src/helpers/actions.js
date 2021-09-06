@@ -18,27 +18,9 @@ export const updateStore = data => {
 export const updateTab = data => {
   const { tabId } = store.state.layout
 
-  const tabs = local.get(
-    'layout.tabs'
-  )
-
-  const isMatchedTab = tabData => {
-    return tabData.uuid === tabId
-  }
-
-  const tab = tabs.find(isMatchedTab)
-
-  const updateTabKeyValue = ([key, value]) => {
-    tab && (tab[key] = value)
-  }
-
-  Object.entries(data).forEach(
-    updateTabKeyValue
-  )
-
   ipcRenderer.send(
-    'update-tabs',
-    tabs
+    'update-tab',
+    { tabId, data }
   )
 }
 

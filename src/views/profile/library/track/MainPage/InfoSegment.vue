@@ -80,7 +80,6 @@ import {
   main as formatProfileLibraryAlbumMainLink
 } from '#/formatters/links/profile/library/album'
 import { main as formatTrackMainLink } from '#/formatters/links/track'
-import { localize } from '#/actions/plugins/i18n'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
 
@@ -152,7 +151,7 @@ export default {
       return this.trackData.image.medium
     },
     sinceFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.since'
       )
     },

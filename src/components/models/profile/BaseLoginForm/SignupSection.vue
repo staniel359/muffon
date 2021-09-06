@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import { localize } from '#/actions/plugins/i18n'
-
 export default {
   name: 'SignupSection',
   emits: [
@@ -23,12 +21,12 @@ export default {
   ],
   computed: {
     textFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.signup.text'
       )
     },
     linkFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.signup.link'
       )
     }

@@ -32,7 +32,6 @@ import postAlbumData from '#/actions/api/profile/listened/albums/postData'
 import postTrackData from '#/actions/api/profile/listened/tracks/postData'
 import deleteListenedData
   from '#/actions/api/profile/listened/model/deleteData'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'BaseListenedButton',
@@ -59,12 +58,12 @@ export default {
   },
   computed: {
     deleteFormatted () {
-      return localize(
+      return this.$t(
         'shared.listened.added'
       )
     },
     addFormatted () {
-      return localize(
+      return this.$t(
         'shared.listened.add'
       )
     }

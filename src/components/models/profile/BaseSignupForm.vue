@@ -36,7 +36,6 @@ import BaseDivider from '@/BaseDivider.vue'
 import LoginSection from './BaseSignupForm/LoginSection.vue'
 import { signupFormOptions } from '#/data/plugins/semantic'
 import fetchSignupData from '#/actions/api/profile/signup/fetchData'
-import { localize } from '#/actions/plugins/i18n'
 import { stringToDate as formatStringToDate } from '#/formatters'
 import { setGlobalData } from '#/actions'
 
@@ -71,7 +70,7 @@ export default {
       })
     },
     extraTextFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.sections.extra'
       )
     }

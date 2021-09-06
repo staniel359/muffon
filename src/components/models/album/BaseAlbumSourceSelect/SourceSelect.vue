@@ -11,7 +11,6 @@
 <script>
 import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SourceSelect',
@@ -24,7 +23,7 @@ export default {
   },
   computed: {
     headerFormatted () {
-      return localize(
+      return this.$t(
         'shared.sources.select.source'
       )
     }

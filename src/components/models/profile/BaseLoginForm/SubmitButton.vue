@@ -10,7 +10,6 @@
 
 <script>
 import { mapState } from 'vuex'
-import { localize } from '#/actions/plugins/i18n'
 
 export default {
   name: 'SubmitButton',
@@ -19,7 +18,7 @@ export default {
       'isDarkMode'
     ]),
     placeholderFormatted () {
-      return localize(
+      return this.$t(
         'shared.profile.form.submit.login'
       )
     }

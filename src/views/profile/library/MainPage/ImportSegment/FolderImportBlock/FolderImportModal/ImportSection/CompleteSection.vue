@@ -16,7 +16,6 @@
 <script>
 import BaseMessage from '@/BaseMessage.vue'
 import SuccessSection from './CompleteSection/SuccessSection.vue'
-import { localize } from '#/actions/plugins/i18n'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -32,7 +31,7 @@ export default {
   },
   computed: {
     errorMessageHeaderFormatted () {
-      return localize(
+      return this.$t(
         'pages.library.add.import.error.files',
         { count: this.totalCountFormatted }
       )
