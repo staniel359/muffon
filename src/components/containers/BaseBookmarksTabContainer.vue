@@ -22,6 +22,7 @@
           :[tabData.scope]="slotProps[tabData.scope]"
           isWithImage
           isWithArtistName
+          isWithAlbumTitle
           isBookmark
         />
       </template>

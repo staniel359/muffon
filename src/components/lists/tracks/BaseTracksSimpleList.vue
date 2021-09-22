@@ -1,55 +1,38 @@
 <template>
   <BaseListContainer class="selection">
-    <BaseTrackContainer
+    <TrackItem
       v-for="(trackData, index) in tracksFormatted"
-      class="item main-simple-list-item"
-      :class="{
-        disabled: isDisabled
-      }"
       :key="trackData.uuid"
       :trackData="trackData"
       :queueTracks="queueTracks"
-      isWithActiveClass
-    >
-      <template #default="slotProps">
-        <BaseTrackContent
-          :trackData="trackData"
-          :isLoading="slotProps.isLoading"
-          :isError="slotProps.isError"
-          :isCurrent="slotProps.isCurrent"
-          :isWithImage="isWithImage"
-          :isWithIndex="isWithIndex"
-          :index="index"
-          :isWithArtistName="isWithArtistName"
-          :albumArtistName="albumArtistName"
-          :isWithAlbumTitle="isWithAlbumTitle"
-          :isWithListenersCount="isWithListenersCount"
-          :topTrackCount="topTrackCount"
-          :isWithDuration="isWithDuration"
-          :isWithSource="isWithSource"
-          :isLinkToLibrary="isLinkToLibrary"
-          :profileId="profileId"
-          :isWithLibraryLink="isWithLibraryLink"
-          :isWithListenedButton="isWithListenedButton"
-          :isWithBookmarkButton="isWithBookmarkButton"
-          :isWithClearButton="isWithClearButton"
-          :isWithCreated="isWithCreated"
-          :isWithSelfButtons="isWithSelfButtons"
-          :isBookmark="isBookmark"
-          :isBookmarkDeleted="isBookmarkDeleted"
-          @linkClick="handleLinkClick"
-          @deleteButtonClick="handleDeleteButtonClick"
-          @bookmarkDeleted="handleBookmarkDeleted"
-        />
-      </template>
-    </BaseTrackContainer>
+      :isWithImage="isWithImage"
+      :isWithIndex="isWithIndex"
+      :index="index"
+      :isWithArtistName="isWithArtistName"
+      :albumArtistName="albumArtistName"
+      :isWithAlbumTitle="isWithAlbumTitle"
+      :isWithListenersCount="isWithListenersCount"
+      :topTrackCount="topTrackCount"
+      :isWithDuration="isWithDuration"
+      :isWithSource="isWithSource"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
+      :isWithLibraryLink="isWithLibraryLink"
+      :isWithListenedButton="isWithListenedButton"
+      :isWithBookmarkButton="isWithBookmarkButton"
+      :isWithClearButton="isWithClearButton"
+      :isWithCreated="isWithCreated"
+      :isWithSelfButtons="isWithSelfButtons"
+      :isBookmark="isBookmark"
+      @linkClick="handleLinkClick"
+      @deleteButtonClick="handleDeleteButtonClick"
+    />
   </BaseListContainer>
 </template>
 
 <script>
 import BaseListContainer from '@/containers/BaseListContainer.vue'
-import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
-import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
+import TrackItem from './BaseTracksSimpleList/TrackItem.vue'
 import { collection as formatCollection } from '#/formatters'
 import { track as formatTrack } from '#/formatters/track'
 
@@ -57,8 +40,7 @@ export default {
   name: 'BaseTracksSimpleList',
   components: {
     BaseListContainer,
-    BaseTrackContainer,
-    BaseTrackContent
+    TrackItem
   },
   props: {
     tracks: {
@@ -101,11 +83,6 @@ export default {
     'linkClick',
     'deleteButtonClick'
   ],
-  data () {
-    return {
-      isBookmarkDeleted: false
-    }
-  },
   computed: {
     tracksFormatted () {
       return formatCollection(
@@ -116,11 +93,8 @@ export default {
       if (this.isQueueable) {
         return this.tracksFormatted
       } else {
-        return null
+        return []
       }
-    },
-    isDisabled () {
-      return this.isBookmarkDeleted
     }
   },
   methods: {
@@ -132,9 +106,6 @@ export default {
         'deleteButtonClick',
         { uuid }
       )
-    },
-    handleBookmarkDeleted () {
-      this.isBookmarkDeleted = true
     },
     formatTracks () {
       return this.tracks.map(trackData => {

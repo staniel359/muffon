@@ -1,6 +1,9 @@
 <template>
   <div
-    :class="{ active: isActive }"
+    :class="{
+      active: isActive,
+      disabled: isDisabled
+    }"
     @click="handleClick"
   >
     <slot
@@ -29,7 +32,8 @@ export default {
         return []
       }
     },
-    isWithActiveClass: Boolean
+    isWithActiveClass: Boolean,
+    isDisabled: Boolean
   },
   data () {
     return {
@@ -50,7 +54,8 @@ export default {
     isActive () {
       return (
         this.isWithActiveClass &&
-          this.isCurrent
+          this.isCurrent &&
+            !this.isDisabled
       )
     },
     isCurrent () {

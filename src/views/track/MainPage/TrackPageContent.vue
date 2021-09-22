@@ -24,6 +24,8 @@
           :modelId="libraryId"
           :trackTitle="title"
           :artistName="artistName"
+          :albumTitle="albumTitle"
+          :imageUrl="image"
         />
 
         <BaseListenedButton
@@ -32,6 +34,8 @@
           :modelId="listenedId"
           :trackTitle="title"
           :artistName="artistName"
+          :albumTitle="albumTitle"
+          :imageUrl="image"
         />
 
         <BaseBookmarkButton
@@ -40,6 +44,8 @@
           :modelId="bookmarkId"
           :trackTitle="title"
           :artistName="artistName"
+          :albumTitle="albumTitle"
+          :imageUrl="image"
         />
       </div>
     </div>
@@ -96,6 +102,9 @@ export default {
     },
     artistName () {
       return this.trackData.artist.name
+    },
+    albumTitle () {
+      return this.trackData.album.title
     },
     image () {
       return this.trackData.image.small

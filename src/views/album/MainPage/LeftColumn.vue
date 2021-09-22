@@ -18,7 +18,7 @@
         :artistName="artistName"
         :albumTitle="albumTitle"
         :albumTracks="tracks"
-        :albumImageUrl="image"
+        :imageUrl="image"
       />
 
       <BaseListenedButton
@@ -27,7 +27,7 @@
         :modelId="listenedId"
         :artistName="artistName"
         :albumTitle="albumTitle"
-        :albumImageUrl="image"
+        :imageUrl="image"
       />
 
       <BaseBookmarkButton
@@ -36,7 +36,7 @@
         :modelId="bookmarkId"
         :artistName="artistName"
         :albumTitle="albumTitle"
-        :albumImageUrl="image"
+        :imageUrl="image"
       />
     </div>
   </div>

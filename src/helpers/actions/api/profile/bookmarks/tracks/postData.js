@@ -3,7 +3,9 @@ import store from '*/store'
 
 export default function ({
   title,
-  artistName
+  artistName,
+  albumTitle,
+  imageUrl
 }) {
   this.isLoading = true
 
@@ -16,7 +18,9 @@ export default function ({
   const params = {
     token,
     title,
-    artist: artistName
+    artist: artistName,
+    album: albumTitle,
+    image_url: imageUrl
   }
 
   const handleSuccess = response => {

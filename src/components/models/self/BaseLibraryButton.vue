@@ -61,8 +61,8 @@ export default {
     modelId: String,
     artistName: String,
     albumTitle: String,
-    albumImageUrl: String,
-    trackTitle: String
+    trackTitle: String,
+    imageUrl: String
   },
   data () {
     return {
@@ -130,12 +130,14 @@ export default {
             title: this.albumTitle,
             artistName: this.artistName,
             tracks: this.albumTracksFormatted,
-            imageUrl: this.albumImageUrl
+            imageUrl: this.imageUrl
           })
         case 'track':
           return this.postTrackData({
             title: this.trackTitle,
-            artistName: this.artistName
+            artistName: this.artistName,
+            albumTitle: this.albumTitle,
+            imageUrl: this.imageUrl
           })
         default:
           return null

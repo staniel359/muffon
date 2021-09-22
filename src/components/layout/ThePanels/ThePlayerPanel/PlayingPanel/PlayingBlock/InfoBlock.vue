@@ -1,36 +1,38 @@
 <template>
   <div class="content">
-    <BaseTickerContainer>
-      <BaseHeaderContainer tag="h4">
-        <BaseLink
-          :link="trackMainLinkFormatted"
-          :text="trackTitle"
-        />
-
-        <span
-          v-if="trackExtraTitle"
-          class="sub header description main-extra-title"
-        >
-          {{ &nbsp; }}
-          {{ trackExtraTitle }}
-        </span>
-      </BaseHeaderContainer>
-    </BaseTickerContainer>
-
-    <BaseTickerContainer>
-      <BaseArtistLinks :artists="artists" />
-    </BaseTickerContainer>
-
-    <BaseTickerContainer v-if="albumTitle">
-      <div class="main-small-container">
-        <small>
+    <div class="info-block-content">
+      <BaseTickerContainer>
+        <BaseHeaderContainer tag="h4">
           <BaseLink
-            :link="albumMainLinkFormatted"
-            :text="albumTitle"
+            :link="trackMainLinkFormatted"
+            :text="trackTitle"
           />
-        </small>
-      </div>
-    </BaseTickerContainer>
+
+          <span
+            v-if="trackExtraTitle"
+            class="sub header description main-extra-title"
+          >
+            {{ &nbsp; }}
+            {{ trackExtraTitle }}
+          </span>
+        </BaseHeaderContainer>
+      </BaseTickerContainer>
+
+      <BaseTickerContainer>
+        <BaseArtistLinks :artists="artists" />
+      </BaseTickerContainer>
+
+      <BaseTickerContainer v-if="albumTitle">
+        <div class="main-small-container">
+          <small>
+            <BaseLink
+              :link="albumMainLinkFormatted"
+              :text="albumTitle"
+            />
+          </small>
+        </div>
+      </BaseTickerContainer>
+    </div>
   </div>
 </template>
 
@@ -89,6 +91,10 @@ export default {
 <style lang="sass" scoped>
 .content
   @extend .no-padding, .flex-full, .overflow-hidden
+
+.info-block-content
+  @extend .d-flex, .flex-column, .justify-content-center
+  height: 50px
 
 .playing-artist-name
   @extend .text-medium-light
