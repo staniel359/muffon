@@ -12,6 +12,7 @@
     isWithLibraryLink
     isWithListenedButton
     isWithBookmarkButton
+    isWithFavoriteButton
   />
 </template>
 

@@ -14,6 +14,7 @@
       "library": "Library",
       "recommendations": "Recommendations",
       "bookmarks": "Bookmarks",
+      "favorites": "Favorites",
       "artist": {
         "images": "{artistName} images",
         "tracks": "{artistName} tracks",
@@ -38,7 +39,8 @@
         "library": "{nickname} library",
         "artists": "{nickname} artists",
         "albums": "{nickname} albums",
-        "tracks": "{nickname} tracks"
+        "tracks": "{nickname} tracks",
+        "favorites": "{nickname} favorites"
       }
     },
     "search": {
@@ -380,6 +382,21 @@
         "going": "You are going to delete {modelName} from your bookmarks."
       },
       "deleted": "Bookmark was deleted"
+    },
+    "favorites": {
+      "add": "Add to favorites",
+      "added": "Favorite",
+      "delete": "Delete from favorites"
+    },
+    "favorite": {
+      "delete": {
+        "header": "Delete favorite",
+        "going": "You are going to delete {modelName} from your favorites."
+      },
+      "deleted": "Favorite was deleted"
+    },
+    "self": {
+      "actions": "Actions"
     }
   }
 }

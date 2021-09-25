@@ -7,7 +7,9 @@
   >
     <MainSection />
 
-    <BaseAccordionContainer :title="extraTextFormatted">
+    <BaseAccordionContainer
+      :title="extraTextFormatted"
+    >
       <ExtraSection
         @imageChange="handleImageChange"
       />

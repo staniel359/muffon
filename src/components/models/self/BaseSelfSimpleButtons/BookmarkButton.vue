@@ -1,13 +1,13 @@
 <template>
   <div
-    v-if="listenedId"
+    v-if="bookmarkId"
     ref="button"
     :data-content="popupTextFormatted"
   >
     <BaseLinkContainer :link="{}">
       <BaseButton
-        class="basic circular compact tiny listened-simple-button"
-        icon="check primary"
+        class="basic circular compact tiny bookmark-simple-button"
+        icon="bookmark primary"
         :class="{
           loading: isLoading,
           disabled: isLoading
@@ -21,13 +21,13 @@
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButton from '@/BaseButton.vue'
-import deleteListenedData
-  from '#/actions/api/profile/listened/model/deleteData'
+import deleteBookmarkData
+  from '#/actions/api/profile/bookmarks/model/deleteData'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
 
 export default {
-  name: 'BaseListenedSimpleButton',
+  name: 'BookmarkButton',
   components: {
     BaseLinkContainer,
     BaseButton
@@ -41,19 +41,19 @@ export default {
   },
   data () {
     return {
-      listenedId: null,
+      bookmarkId: null,
       isLoading: false
     }
   },
   computed: {
     popupTextFormatted () {
       return this.$t(
-        'shared.listened.delete'
+        'shared.bookmarks.delete'
       )
     }
   },
   mounted () {
-    this.listenedId = this.modelId
+    this.bookmarkId = this.modelId
 
     this.$nextTick(() => {
       setPopup(
@@ -64,17 +64,20 @@ export default {
   },
   methods: {
     handleClick () {
-      return this.deleteListenedData({
+      return this.deleteBookmarkData({
         model: this.model,
-        listenedId: this.listenedId
-      })
+        bookmarkId: this.bookmarkId
+      }).then(this.handleSuccess)
     },
-    deleteListenedData
+    handleSuccess () {
+      this.bookmarkId = null
+    },
+    deleteBookmarkData
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.listened-simple-button
+.bookmark-simple-button
   @extend .no-margin
 </style>

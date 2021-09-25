@@ -2,7 +2,7 @@
   <template v-if="isAnyInfo">
     <BaseDivider/>
 
-    <div class="main-library-info">
+    <div class="main-profile-page-info">
       <BaseGenderAge
         v-if="gender || birthdate"
         :gender="gender"

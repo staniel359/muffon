@@ -32,7 +32,7 @@ import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
 
 export default {
-  name: 'BaseLibrarySimpleButton',
+  name: 'LibraryButton',
   components: {
     BaseLinkContainer,
     BaseButton

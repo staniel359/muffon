@@ -53,11 +53,13 @@ const baseUrl = getBaseUrl()
 
 const i18n = {
   en: {
-    show: 'Open',
+    show: 'Show',
+    hide: 'Hide',
     quit: 'Quit'
   },
   ru: {
     show: 'Открыть',
+    hide: 'Скрыть',
     quit: 'Выйти'
   }
 }
@@ -87,10 +89,14 @@ let tabs = []
 
 const show = () => {
   mainWindow.show()
+
+  setTrayMenu()
 }
 
 const hide = () => {
   mainWindow.hide()
+
+  setTrayMenu()
 }
 
 const createWindow = () => {
@@ -154,8 +160,10 @@ const setTrayMenu = () => {
   const menu = Menu.buildFromTemplate([
     {
       type: 'normal',
-      label: i18n[lang].show,
-      click: show
+      label: i18n[lang][
+        mainWindow.isVisible() ? 'hide' : 'show'
+      ],
+      click: mainWindow.isVisible() ? hide : show
     },
     {
       type: 'normal',

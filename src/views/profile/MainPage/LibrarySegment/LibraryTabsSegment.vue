@@ -25,7 +25,7 @@
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import BaseProfileLibraryTabContainer
-  from '@/models/profile/library/BaseProfileLibraryTabContainer.vue'
+  from '@/containers/profile/BaseProfileLibraryTabContainer.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {

@@ -10,7 +10,10 @@
       :isWithClearButton="isWithClearButton"
       :isWithListenedButton="isWithListenedButton"
       :isWithBookmarkButton="isWithBookmarkButton"
+      :isWithFavoriteButton="isWithFavoriteButton"
       :isBookmark="isBookmark"
+      :isFavorite="isFavorite"
+      :profileId="profileId"
       @linkClick="handleLinkClick"
       @deleteButtonClick="handleDeleteButtonClick"
     />
@@ -41,7 +44,10 @@ export default {
     isWithClearButton: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
-    isBookmark: Boolean
+    isWithFavoriteButton: Boolean,
+    isBookmark: Boolean,
+    isFavorite: Boolean,
+    profileId: String
   },
   emits: [
     'linkClick',

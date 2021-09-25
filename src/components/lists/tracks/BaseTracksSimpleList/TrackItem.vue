@@ -3,7 +3,7 @@
     class="item main-simple-list-item"
     :trackData="trackData"
     :queueTracks="queueTracks"
-    :isDisabled="isDisabled"
+    :isDisabled="isDeleted"
     isWithActiveClass
   >
     <template #default="slotProps">
@@ -27,14 +27,16 @@
         :isWithLibraryLink="isWithLibraryLink"
         :isWithListenedButton="isWithListenedButton"
         :isWithBookmarkButton="isWithBookmarkButton"
+        :isWithFavoriteButton="isWithFavoriteButton"
         :isWithClearButton="isWithClearButton"
         :isWithCreated="isWithCreated"
         :isWithSelfButtons="isWithSelfButtons"
         :isBookmark="isBookmark"
-        :isBookmarkDeleted="isBookmarkDeleted"
+        :isFavorite="isFavorite"
+        :isDeleted="isDeleted"
         @linkClick="handleLinkClick"
         @deleteButtonClick="handleDeleteButtonClick"
-        @bookmarkDeleted="handleBookmarkDeleted"
+        @deleted="handleDeleted"
       />
     </template>
   </BaseTrackContainer>
@@ -70,10 +72,12 @@ export default {
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean,
     isWithClearButton: Boolean,
     isWithCreated: Boolean,
     isWithSelfButtons: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isFavorite: Boolean
   },
   emits: [
     'linkClick',
@@ -81,12 +85,7 @@ export default {
   ],
   data () {
     return {
-      isBookmarkDeleted: false
-    }
-  },
-  computed: {
-    isDisabled () {
-      return this.isBookmarkDeleted
+      isDeleted: false
     }
   },
   methods: {
@@ -99,8 +98,8 @@ export default {
         { uuid }
       )
     },
-    handleBookmarkDeleted () {
-      this.isBookmarkDeleted = true
+    handleDeleted () {
+      this.isDeleted = true
     }
   }
 }

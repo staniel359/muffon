@@ -4,7 +4,10 @@
     ref="accordion"
     :class="{ inverted: isDarkMode }"
   >
-    <div class="title">
+    <div
+      class="title"
+      :class="{ 'text-color-white': isTextWhite }"
+    >
       <i class="dropdown icon"></i>
       {{ title }}
     </div>
@@ -28,7 +31,8 @@ export default {
     title: {
       type: String,
       required: true
-    }
+    },
+    isTextWhite: Boolean
   },
   emits: [
     'open'

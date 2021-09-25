@@ -14,6 +14,7 @@
       "library": "Библиотека",
       "recommendations": "Рекомендации",
       "bookmarks": "Закладки",
+      "favorites": "Избранное",
       "artist": {
         "images": "Изображения {artistName}",
         "tracks": "Композиции {artistName}",
@@ -38,7 +39,8 @@
         "library": "Библиотека {nickname}",
         "artists": "Исполнители {nickname}",
         "albums": "Альбомы {nickname}",
-        "tracks": "Композиции {nickname}"
+        "tracks": "Композиции {nickname}",
+        "favorites": "Избранное {nickname}"
       }
     },
     "search": {
@@ -377,9 +379,24 @@
     "bookmark": {
       "delete": {
         "header": "Удалить закладку",
-        "going": "Вы собираетесь удалить {modelName} из ваших закладок."
+        "going": "Вы собираетесь удалить {modelName} из Ваших закладок."
       },
       "deleted": "Закладка была удалена"
+    },
+    "favorites": {
+      "add": "Добавить в избранное",
+      "added": "В избранном",
+      "delete": "Удалить из избранного"
+    },
+    "favorite": {
+      "delete": {
+        "header": "Удалить избранное",
+        "going": "Вы собираетесь удалить {modelName} из Вашего избранного."
+      },
+      "deleted": "Избранное было удалено"
+    },
+    "self": {
+      "actions": "Действия"
     }
   }
 }

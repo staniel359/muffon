@@ -302,7 +302,6 @@ export const mainProgressOptions = ({ formatActive, onSuccess }) => {
 
 export const mainAccordionOptions = ({ onOpen }) => {
   return {
-    duration: 0,
     onOpen
   }
 }

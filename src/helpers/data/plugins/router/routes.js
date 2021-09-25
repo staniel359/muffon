@@ -88,6 +88,9 @@ const RecommendationsPage = () => import(
 const BookmarksPage = () => import(
   '%/BookmarksPage.vue'
 )
+const ProfileFavoritesPage = () => import(
+  '%/profile/FavoritesPage.vue'
+)
 
 export default [
   {
@@ -296,6 +299,13 @@ export default [
     exact: true,
     name: 'BookmarksPage',
     component: BookmarksPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/favorites',
+    exact: true,
+    name: 'ProfileFavoritesPage',
+    component: ProfileFavoritesPage,
     props: true
   }
 ]

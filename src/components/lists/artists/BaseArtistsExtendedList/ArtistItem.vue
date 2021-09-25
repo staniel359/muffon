@@ -39,6 +39,7 @@
                 :isWithLibraryLink="isWithLibraryLink"
                 :isWithListenedButton="isWithListenedButton"
                 :isWithBookmarkButton="isWithBookmarkButton"
+                :isWithFavoriteButton="isWithFavoriteButton"
               />
 
               <RecommendationDeleteButton
@@ -101,6 +102,7 @@ export default {
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean,
     isRecommendation: Boolean
   },
   data () {

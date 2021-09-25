@@ -12,6 +12,7 @@
       :isWithLibraryLink="isWithLibraryLink"
       :isWithListenedButton="isWithListenedButton"
       :isWithBookmarkButton="isWithBookmarkButton"
+      :isWithFavoriteButton="isWithFavoriteButton"
       :isRecommendation="isRecommendation"
     />
   </div>
@@ -41,6 +42,7 @@ export default {
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean,
     isRecommendation: Boolean
   },
   computed: {

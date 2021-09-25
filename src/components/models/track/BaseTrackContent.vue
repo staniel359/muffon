@@ -1,6 +1,8 @@
 <template>
-  <BaseBookmarkDeletedBlock
-    v-if="isBookmarkDeleted"
+  <BaseDeletedBlock
+    v-if="isDeleted"
+    :isBookmark="isBookmark"
+    :isFavorite="isFavorite"
   />
   <template v-else>
     <BaseTrackAudioIcon
@@ -58,6 +60,7 @@
           :isWithLibraryLink="isWithLibraryLink"
           :isWithListenedButton="isWithListenedButton"
           :isWithBookmarkButton="isWithBookmarkButton"
+          :isWithFavoriteButton="isWithFavoriteButton"
         />
       </div>
     </div>
@@ -94,7 +97,14 @@
       v-if="isBookmark"
       model="track"
       :modelData="trackData"
-      @deleted="handleBookmarkDeleted"
+      @deleted="handleDeleted"
+    />
+
+    <BaseFavoriteDeleteButton
+      v-if="isRenderFavoriteDeleteButton"
+      model="track"
+      :modelData="trackData"
+      @deleted="handleDeleted"
     />
 
     <BaseClearButton
@@ -106,7 +116,7 @@
 </template>
 
 <script>
-import BaseBookmarkDeletedBlock from '@/BaseBookmarkDeletedBlock.vue'
+import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
 import TrackImage from './BaseTrackContent/TrackImage.vue'
 import TrackIndex from './BaseTrackContent/TrackIndex.vue'
@@ -116,16 +126,18 @@ import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
 import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
+import BaseFavoriteDeleteButton from '@/BaseFavoriteDeleteButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import {
   date as formatDate,
   time as formatTime
 } from '#/formatters'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'BaseTrackContent',
   components: {
-    BaseBookmarkDeletedBlock,
+    BaseDeletedBlock,
     BaseTrackAudioIcon,
     TrackImage,
     TrackIndex,
@@ -135,6 +147,7 @@ export default {
     BaseSourceIcon,
     BaseSelfSimpleButtons,
     BaseBookmarkDeleteButton,
+    BaseFavoriteDeleteButton,
     BaseClearButton
   },
   props: {
@@ -164,15 +177,17 @@ export default {
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean,
     isWithClearButton: Boolean,
     isWithCreated: Boolean,
     isBookmark: Boolean,
-    isBookmarkDeleted: Boolean
+    isFavorite: Boolean,
+    isDeleted: Boolean
   },
   emits: [
     'linkClick',
     'deleteButtonClick',
-    'bookmarkDeleted'
+    'deleted'
   ],
   computed: {
     isRenderImage () {
@@ -255,6 +270,12 @@ export default {
     },
     uuid () {
       return this.trackData.uuid
+    },
+    isRenderFavoriteDeleteButton () {
+      return (
+        this.isFavorite &&
+          isCurrentProfile(this.profileId)
+      )
     }
   },
   methods: {
@@ -267,8 +288,8 @@ export default {
         { uuid: this.uuid }
       )
     },
-    handleBookmarkDeleted () {
-      this.$emit('bookmarkDeleted')
+    handleDeleted () {
+      this.$emit('deleted')
     }
   }
 }

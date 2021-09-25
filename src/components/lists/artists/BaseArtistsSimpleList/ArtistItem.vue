@@ -1,14 +1,14 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :class="{
-      disabled: isDisabled
-    }"
+    :class="{ disabled: isDeleted }"
     :link="linkFormatted"
     @click="handleLinkClick"
   >
-    <BaseBookmarkDeletedBlock
-      v-if="isBookmarkDeleted"
+    <BaseDeletedBlock
+      v-if="isDeleted"
+      :isBookmark="isBookmark"
+      :isFavorite="isFavorite"
     />
     <template v-else>
       <BaseArtistImage
@@ -53,13 +53,21 @@
         :isWithLibraryLink="isWithLibraryLink"
         :isWithListenedButton="isWithListenedButton"
         :isWithBookmarkButton="isWithBookmarkButton"
+        :isWithFavoriteButton="isWithFavoriteButton"
       />
 
       <BaseBookmarkDeleteButton
         v-if="isBookmark"
         model="artist"
         :modelData="artistData"
-        @deleted="handleBookmarkDeleted"
+        @deleted="handleDeleted"
+      />
+
+      <BaseFavoriteDeleteButton
+        v-if="isRenderFavoriteDeleteButton"
+        model="artist"
+        :modelData="artistData"
+        @deleted="handleDeleted"
       />
 
       <BaseClearButton
@@ -73,7 +81,7 @@
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
-import BaseBookmarkDeletedBlock from '@/BaseBookmarkDeletedBlock.vue'
+import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
@@ -81,6 +89,7 @@ import BaseArtistListenersCount
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
 import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
+import BaseFavoriteDeleteButton from '@/BaseFavoriteDeleteButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
@@ -88,18 +97,20 @@ import {
   tracks as formatProfileLibraryArtistTracksLink,
   albums as formatProfileLibraryArtistAlbumsLink
 } from '#/formatters/links/profile/library/artist'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'ArtistItem',
   components: {
     BaseLinkContainer,
-    BaseBookmarkDeletedBlock,
+    BaseDeletedBlock,
     BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
     BaseSelfSimpleButtons,
     BaseBookmarkDeleteButton,
+    BaseFavoriteDeleteButton,
     BaseClearButton
   },
   inject: [
@@ -121,9 +132,11 @@ export default {
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean,
     isWithClearButton: Boolean,
     isImageSmall: Boolean,
-    isBookmark: Boolean
+    isBookmark: Boolean,
+    isFavorite: Boolean
   },
   emits: [
     'linkClick',
@@ -131,8 +144,8 @@ export default {
   ],
   data () {
     return {
-      isBookmarkDeleted: false,
       isAlbumsLinkActive: false,
+      isDeleted: false,
       isTracksLinkActive: false
     }
   },
@@ -188,8 +201,11 @@ export default {
           !this.isAlbumsLinkActive
       )
     },
-    isDisabled () {
-      return this.isBookmarkDeleted
+    isRenderFavoriteDeleteButton () {
+      return (
+        this.isFavorite &&
+          isCurrentProfile(this.profileId)
+      )
     }
   },
   methods: {
@@ -218,8 +234,8 @@ export default {
         { uuid: this.uuid }
       )
     },
-    handleBookmarkDeleted () {
-      this.isBookmarkDeleted = true
+    handleDeleted () {
+      this.isDeleted = true
     }
   }
 }

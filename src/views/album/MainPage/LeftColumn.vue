@@ -4,38 +4,22 @@
       :imageData="imageData"
     />
 
-    <AlbumHeader
-      :albumTitle="albumTitle"
-      :artistName="artistName"
-      :scrollable="scrollable"
-    />
+    <div class="left-column-extra">
+      <AlbumHeader
+        :albumTitle="albumTitle"
+        :artistName="artistName"
+        :scrollable="scrollable"
+      />
 
-    <div class="main-self-buttons">
-      <BaseLibraryButton
-        class="main-self-button"
+      <BaseSelfButtons
         model="album"
-        :modelId="libraryId"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
         :artistName="artistName"
         :albumTitle="albumTitle"
         :albumTracks="tracks"
-        :imageUrl="image"
-      />
-
-      <BaseListenedButton
-        class="main-self-button"
-        model="album"
-        :modelId="listenedId"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
-        :imageUrl="image"
-      />
-
-      <BaseBookmarkButton
-        class="main-self-button"
-        model="album"
-        :modelId="bookmarkId"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
         :imageUrl="image"
       />
     </div>
@@ -45,18 +29,14 @@
 <script>
 import AlbumImage from './LeftColumn/AlbumImage.vue'
 import AlbumHeader from './LeftColumn/AlbumHeader.vue'
-import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
-import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
-import BaseBookmarkButton from '@/models/self/BaseBookmarkButton.vue'
+import BaseSelfButtons from '@/models/self/BaseSelfButtons.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     AlbumImage,
     AlbumHeader,
-    BaseLibraryButton,
-    BaseListenedButton,
-    BaseBookmarkButton
+    BaseSelfButtons
   },
   props: {
     albumData: {
@@ -89,6 +69,9 @@ export default {
     },
     bookmarkId () {
       return this.albumData.bookmark_id?.toString()
+    },
+    favoriteId () {
+      return this.albumData.favorite_id?.toString()
     }
   }
 }
@@ -96,5 +79,8 @@ export default {
 
 <style lang="sass" scoped>
 .album-page-left-column
-  width: 200px
+  width: 190px
+
+.left-column-extra
+  margin-top: 0.5em
 </style>

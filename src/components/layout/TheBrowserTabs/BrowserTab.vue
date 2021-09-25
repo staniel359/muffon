@@ -101,23 +101,26 @@ export default {
 
 <style lang="sass" scoped>
 .browser-tab
-  @extend .d-flex, .align-items-center, .cursor-pointer, .no-margin, .overflow-hidden
+  @extend .d-flex, .align-items-center, .cursor-pointer, .no-margin
   padding: 0.5em
   margin-right: 0.5em !important
+  max-width: 250px
 
 .browser-tab-content
-  @extend .overflow-hidden
+  @extend .overflow-hidden, .d-flex, .align-items-center
 
 .browser-tab-icon
   @extend .no-margin
+  margin-left: 0.5em !important
 
 .browser-tab-name
   @extend .white-space-no-wrap
-  margin: 1em
+  margin-left: 0.5em
   &.active
     font-weight: 700
 
 .browser-tab-close-button
   @extend .no-margin
+  margin-left: 0.5em !important
   padding: 4px !important
 </style>

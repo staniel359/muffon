@@ -8,6 +8,7 @@
         <ProfileItem />
         <LibraryItem />
         <RecommendationsItem />
+        <FavoritesItem />
         <BookmarksItem />
       </div>
 
@@ -24,6 +25,7 @@ import { mapState } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
 import RecommendationsItem from './TheSidebarPanel/RecommendationsItem.vue'
+import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
@@ -34,6 +36,7 @@ export default {
     ProfileItem,
     LibraryItem,
     RecommendationsItem,
+    FavoritesItem,
     BookmarksItem,
     SettingsItem,
     LogoutItem
@@ -52,7 +55,7 @@ export default {
   z-index: 300 !important
   width: 40px !important
   overflow-x: hidden
-  transition: 0.35s !important
+  transition: width 0.35s !important
   &:hover
     width: 240px !important
     & > .sidebar-top

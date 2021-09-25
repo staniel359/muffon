@@ -20,6 +20,7 @@
         :isWithLibraryLink="isWithLibraryLink"
         :isWithListenedButton="isWithListenedButton"
         :isWithBookmarkButton="isWithBookmarkButton"
+        :isWithFavoriteButton="isWithFavoriteButton"
       />
     </div>
   </div>
@@ -51,7 +52,8 @@ export default {
     profileId: String,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean
+    isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean
   },
   computed: {
     artistsFormatted () {

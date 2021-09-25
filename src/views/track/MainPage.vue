@@ -18,11 +18,20 @@
           class="track-segment"
           :isLoading="slotProps.isLoading"
           :error="slotProps.error"
+          @init="handleInit"
           @refresh="slotProps.handleRefresh"
         >
-          <TrackPageContent
-            :trackData="slotProps.trackData"
-          />
+          <template #default>
+            <LeftColumn
+              v-if="scrollable"
+              :trackData="slotProps.trackData"
+              :scrollable="scrollable"
+            />
+
+            <RightColumn
+              :trackData="slotProps.trackData"
+            />
+          </template>
         </BaseSegmentContainer>
       </div>
     </template>
@@ -34,7 +43,8 @@ import BaseTrackPageContainer
   from '@/containers/pages/track/BaseTrackPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import TrackSourceSelect from './MainPage/TrackSourceSelect.vue'
-import TrackPageContent from './MainPage/TrackPageContent.vue'
+import LeftColumn from './MainPage/LeftColumn.vue'
+import RightColumn from './MainPage/RightColumn.vue'
 
 export default {
   name: 'MainPage',
@@ -42,7 +52,18 @@ export default {
     BaseTrackPageContainer,
     BaseSegmentContainer,
     TrackSourceSelect,
-    TrackPageContent
+    LeftColumn,
+    RightColumn
+  },
+  data () {
+    return {
+      scrollable: null
+    }
+  },
+  methods: {
+    handleInit (el) {
+      this.scrollable = el
+    }
   }
 }
 </script>
@@ -52,5 +73,5 @@ export default {
   @extend .d-flex
 
 .track-segment
-  @extend .flex-full
+  @extend .flex-full, .d-flex
 </style>

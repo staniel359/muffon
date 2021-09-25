@@ -22,7 +22,7 @@ import BaseHeader from '@/BaseHeader.vue'
 import { bookmarks as formatBookmarksLink } from '#/formatters/links'
 
 export default {
-  name: 'RecommendationsItem',
+  name: 'BookmarksItem',
   components: {
     BaseLinkContainer,
     BaseHeader

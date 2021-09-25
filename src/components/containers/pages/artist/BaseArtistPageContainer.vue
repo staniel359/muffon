@@ -20,6 +20,7 @@
       :libraryId="libraryId"
       :listenedId="listenedId"
       :bookmarkId="bookmarkId"
+      :favoriteId="favoriteId"
     ></slot>
   </BasePageContainer>
 </template>
@@ -110,6 +111,9 @@ export default {
     },
     bookmarkId () {
       return this.artistData?.bookmark_id?.toString()
+    },
+    favoriteId () {
+      return this.artistData?.favorite_id?.toString()
     }
   },
   watch: {

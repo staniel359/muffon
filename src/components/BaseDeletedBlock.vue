@@ -8,11 +8,22 @@
 
 <script>
 export default {
-  name: 'BaseBookmarkDeletedBlock',
+  name: 'BaseDeletedBlock',
+  props: {
+    isBookmark: Boolean,
+    isFavorite: Boolean
+  },
   computed: {
     textFormatted () {
       return this.$t(
-        'shared.bookmark.deleted'
+        `shared.${this.model}.deleted`
+      )
+    },
+    model () {
+      return (
+        this.isBookmark && 'bookmark'
+      ) || (
+        this.isFavorite && 'favorite'
       )
     }
   }

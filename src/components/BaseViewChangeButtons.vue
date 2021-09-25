@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import BaseButtonsContainer from '@/BaseButtonsContainer.vue'
+import BaseButtonsContainer from '@/containers/BaseButtonsContainer.vue'
 import BaseViewChangeButton
   from './BaseViewChangeButtons/BaseViewChangeButton.vue'
 import BaseDivider from '@/BaseDivider.vue'

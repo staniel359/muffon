@@ -5,3 +5,11 @@ export const main = ({ profileId }) => {
     path: `profiles/${profileId}`
   }
 }
+
+export const favorites = ({ profileId }) => {
+  return {
+    name: 'ProfileFavoritesPage',
+    params: { profileId },
+    path: `profiles/${profileId}/favorites`
+  }
+}

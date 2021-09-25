@@ -1,13 +1,13 @@
 <template>
   <div
-    v-if="bookmarkId"
+    v-if="favoriteId"
     ref="button"
     :data-content="popupTextFormatted"
   >
     <BaseLinkContainer :link="{}">
       <BaseButton
-        class="basic circular compact tiny bookmark-simple-button"
-        icon="bookmark primary"
+        class="basic circular compact tiny favorite-simple-button"
+        icon="star primary"
         :class="{
           loading: isLoading,
           disabled: isLoading
@@ -21,13 +21,13 @@
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButton from '@/BaseButton.vue'
-import deleteBookmarkData
-  from '#/actions/api/profile/bookmarks/model/deleteData'
+import deleteFavoriteData
+  from '#/actions/api/profile/favorites/model/deleteData'
 import { setPopup } from '#/actions/plugins/semantic'
 import { popupOptions } from '#/data/plugins/semantic'
 
 export default {
-  name: 'BaseBookmarkSimpleButton',
+  name: 'FavoriteButton',
   components: {
     BaseLinkContainer,
     BaseButton
@@ -41,19 +41,19 @@ export default {
   },
   data () {
     return {
-      bookmarkId: null,
+      favoriteId: null,
       isLoading: false
     }
   },
   computed: {
     popupTextFormatted () {
       return this.$t(
-        'shared.bookmarks.delete'
+        'shared.favorites.delete'
       )
     }
   },
   mounted () {
-    this.bookmarkId = this.modelId
+    this.favoriteId = this.modelId
 
     this.$nextTick(() => {
       setPopup(
@@ -64,20 +64,20 @@ export default {
   },
   methods: {
     handleClick () {
-      return this.deleteBookmarkData({
+      return this.deleteFavoriteData({
         model: this.model,
-        bookmarkId: this.bookmarkId
+        favoriteId: this.favoriteId
       }).then(this.handleSuccess)
     },
     handleSuccess () {
-      this.bookmarkId = null
+      this.favoriteId = null
     },
-    deleteBookmarkData
+    deleteFavoriteData
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.bookmark-simple-button
+.favorite-simple-button
   @extend .no-margin
 </style>

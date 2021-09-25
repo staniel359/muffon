@@ -1,7 +1,7 @@
 <template>
-  <div class="main-library-info">
+  <div class="main-profile-page-info">
     <BaseProfileImage
-      class="main-library-info-image"
+      class="main-profile-page-image"
       :image="image"
     />
 
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-library-info-image
+.main-profile-page-image
   width: 120px
   height: 120px
 

@@ -14,6 +14,7 @@
     :isWithLibraryLink="isWithLibraryLink"
     :isWithListenedButton="isWithListenedButton"
     :isWithBookmarkButton="isWithBookmarkButton"
+    :isWithFavoriteButton="isWithFavoriteButton"
   />
 </template>
 
@@ -51,7 +52,8 @@ export default {
     profileId: String,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean
+    isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean
   },
   data () {
     return {

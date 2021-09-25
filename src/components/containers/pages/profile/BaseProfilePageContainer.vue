@@ -23,6 +23,8 @@ import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
 import formatProfilePageNavigation from '#/formatters/navigation/profile'
 import formatProfilePageTab from '#/formatters/tabs/profile'
+import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
+import formatProfileFavoritesPageTab from '#/formatters/tabs/profile/favorites'
 import fetchProfileData from '#/actions/api/profile/fetchData'
 import { updateTab } from '#/actions'
 
@@ -75,6 +77,22 @@ export default {
     },
     libraryData () {
       return this.profileData?.library
+    },
+    tabData () {
+      switch (this.pageNameKey) {
+        case 'library':
+          return formatProfileLibraryPageTab(
+            this.navigationData
+          )
+        case 'favorites':
+          return formatProfileFavoritesPageTab(
+            this.navigationData
+          )
+        default:
+          return formatProfilePageTab(
+            this.navigationData
+          )
+      }
     }
   },
   watch: {
@@ -105,9 +123,7 @@ export default {
       )
 
       updateTab(
-        formatProfilePageTab(
-          this.navigationData
-        )
+        this.tabData
       )
     },
     fetchProfileData,

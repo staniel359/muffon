@@ -16,6 +16,7 @@
         isWithLibraryLink
         isWithListenedButton
         isWithBookmarkButton
+        isWithFavoriteButton
       />
     </template>
   </BaseTagPaginatedSegmentContainer>

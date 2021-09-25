@@ -27,6 +27,7 @@
               :albumData="slotProps.albumData"
               :scrollable="scrollable"
             />
+
             <RightColumn
               :albumData="slotProps.albumData"
               :requestAlbumData="slotProps.requestAlbumData"

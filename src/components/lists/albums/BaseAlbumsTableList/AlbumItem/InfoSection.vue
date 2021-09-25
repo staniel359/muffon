@@ -48,6 +48,7 @@
       :isWithLibraryLink="isWithLibraryLink"
       :isWithListenedButton="isWithListenedButton"
       :isWithBookmarkButton="isWithBookmarkButton"
+      :isWithFavoriteButton="isWithFavoriteButton"
     />
   </div>
 </template>
@@ -83,7 +84,8 @@ export default {
     isWithTracksCount: Boolean,
     isWithLibraryLink: Boolean,
     isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean
+    isWithBookmarkButton: Boolean,
+    isWithFavoriteButton: Boolean
   },
   emits: [
     'tracksLinkActiveChange'

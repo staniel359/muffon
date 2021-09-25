@@ -28,6 +28,7 @@
           isWithLibraryLink
           isWithListenedButton
           isWithBookmarkButton
+          isWithFavoriteButton
           @linkClick="handleLinkClick"
         />
       </template>

@@ -4,9 +4,9 @@
     :trackId="trackId"
   >
     <template #default="slotProps">
-      <div class="main-library-page-columns-container">
+      <div class="main-profile-page-columns-container">
         <div :class="[
-          'main-library-page-left-column',
+          'main-profile-page-left-column',
           'main-sticky-container'
         ]">
           <InfoSegment
@@ -16,7 +16,7 @@
           />
         </div>
 
-        <div class="main-library-page-right-column">
+        <div class="main-profile-page-right-column">
           <PlayerPanelSegment
             :trackData="slotProps.libraryTrackData"
           />

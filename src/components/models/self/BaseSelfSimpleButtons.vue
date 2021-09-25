@@ -3,43 +3,49 @@
     v-if="isRender"
     class="main-simple-self-buttons"
   >
-    <BaseLibrarySimpleButton
+    <LibraryButton
       v-if="isRenderLibraryLink"
       class="main-simple-self-button"
       :model="model"
       :modelId="libraryId"
     />
 
-    <BaseListenedSimpleButton
-      v-if="isRenderListenedButton"
+    <FavoriteButton
+      v-if="isRenderFavoriteButton"
       class="main-simple-self-button"
       :model="model"
-      :modelId="listenedId"
+      :modelId="favoriteId"
     />
 
-    <BaseBookmarkSimpleButton
+    <BookmarkButton
       v-if="isRenderBookmarkButton"
       class="main-simple-self-button"
       :model="model"
       :modelId="bookmarkId"
     />
+
+    <ListenedButton
+      v-if="isRenderListenedButton"
+      class="main-simple-self-button"
+      :model="model"
+      :modelId="listenedId"
+    />
   </div>
 </template>
 
 <script>
-import BaseLibrarySimpleButton
-  from './BaseSelfSimpleButtons/BaseLibrarySimpleButton.vue'
-import BaseListenedSimpleButton
-  from './BaseSelfSimpleButtons/BaseListenedSimpleButton.vue'
-import BaseBookmarkSimpleButton
-  from './BaseSelfSimpleButtons/BaseBookmarkSimpleButton.vue'
+import LibraryButton from './BaseSelfSimpleButtons/LibraryButton.vue'
+import FavoriteButton from './BaseSelfSimpleButtons/FavoriteButton.vue'
+import BookmarkButton from './BaseSelfSimpleButtons/BookmarkButton.vue'
+import ListenedButton from './BaseSelfSimpleButtons/ListenedButton.vue'
 
 export default {
   name: 'BaseSelfSimpleButtons',
   components: {
-    BaseLibrarySimpleButton,
-    BaseListenedSimpleButton,
-    BaseBookmarkSimpleButton
+    LibraryButton,
+    FavoriteButton,
+    BookmarkButton,
+    ListenedButton
   },
   props: {
     modelData: {
@@ -51,15 +57,17 @@ export default {
       required: true
     },
     isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean
+    isWithFavoriteButton: Boolean,
+    isWithBookmarkButton: Boolean,
+    isWithListenedButton: Boolean
   },
   computed: {
     isRender () {
       return (
         this.isRenderLibraryLink ||
-          this.isRenderListenedButton ||
-          this.isRenderBookmarkButton
+          this.isRenderFavoriteButton ||
+          this.isRenderBookmarkButton ||
+          this.isRenderListenedButton
       )
     },
     isRenderLibraryLink () {
@@ -71,14 +79,14 @@ export default {
     libraryId () {
       return this.modelData.library_id?.toString()
     },
-    isRenderListenedButton () {
+    isRenderFavoriteButton () {
       return (
-        this.isWithListenedButton &&
-          !!this.listenedId
+        this.isWithFavoriteButton &&
+          !!this.favoriteId
       )
     },
-    listenedId () {
-      return this.modelData.listened_id?.toString()
+    favoriteId () {
+      return this.modelData.favorite_id?.toString()
     },
     isRenderBookmarkButton () {
       return (
@@ -88,6 +96,15 @@ export default {
     },
     bookmarkId () {
       return this.modelData.bookmark_id?.toString()
+    },
+    isRenderListenedButton () {
+      return (
+        this.isWithListenedButton &&
+          !!this.listenedId
+      )
+    },
+    listenedId () {
+      return this.modelData.listened_id?.toString()
     }
   }
 }

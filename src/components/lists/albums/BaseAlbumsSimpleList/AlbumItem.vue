@@ -1,14 +1,14 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :class="{
-      disabled: isDisabled
-    }"
+    :class="{ disabled: isDeleted }"
     :link="linkFormatted"
     @click="handleLinkClick"
   >
-    <BaseBookmarkDeletedBlock
-      v-if="isBookmarkDeleted"
+    <BaseDeletedBlock
+      v-if="isDeleted"
+      :isBookmark="isBookmark"
+      :isFavorite="isFavorite"
     />
     <template v-else>
       <BaseImage
@@ -32,13 +32,21 @@
         :isWithLibraryLink="isWithLibraryLink"
         :isWithListenedButton="isWithListenedButton"
         :isWithBookmarkButton="isWithBookmarkButton"
+        :isWithFavoriteButton="isWithFavoriteButton"
       />
 
       <BaseBookmarkDeleteButton
         v-if="isBookmark"
         model="album"
         :modelData="albumData"
-        @deleted="handleBookmarkDeleted"
+        @deleted="handleDeleted"
+      />
+
+      <BaseFavoriteDeleteButton
+        v-if="isRenderFavoriteDeleteButton"
+        model="album"
+        :modelData="albumData"
+        @deleted="handleDeleted"
       />
 
       <BaseClearButton
@@ -52,24 +60,27 @@
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
-import BaseBookmarkDeletedBlock from '@/BaseBookmarkDeletedBlock.vue'
+import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
 import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
 import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
+import BaseFavoriteDeleteButton from '@/BaseFavoriteDeleteButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'AlbumItem',
   components: {
     BaseLinkContainer,
-    BaseBookmarkDeletedBlock,
+    BaseDeletedBlock,
     BaseImage,
     InfoBlock,
     BaseSelfSimpleButtons,
     BaseBookmarkDeleteButton,
+    BaseFavoriteDeleteButton,
     BaseClearButton
   },
   provide () {
@@ -88,7 +99,10 @@ export default {
     isWithClearButton: Boolean,
     isWithListenedButton: Boolean,
     isWithBookmarkButton: Boolean,
-    isBookmark: Boolean
+    isWithFavoriteButton: Boolean,
+    isBookmark: Boolean,
+    isFavorite: Boolean,
+    profileId: String
   },
   emits: [
     'linkClick',
@@ -97,15 +111,13 @@ export default {
   data () {
     return {
       isArtistNameActive: false,
-      isBookmarkDeleted: false
+      isDeleted: false
     }
   },
   computed: {
     linkFormatted () {
       if (this.isArtistNameActive) {
         return this.artistMainLinkFormatted
-      } else if (this.isBookmarkDeleted) {
-        return {}
       } else {
         return this.albumMainLinkFormatted
       }
@@ -136,8 +148,11 @@ export default {
     uuid () {
       return this.albumData.uuid
     },
-    isDisabled () {
-      return this.isBookmarkDeleted
+    isRenderFavoriteDeleteButton () {
+      return (
+        this.isFavorite &&
+          isCurrentProfile(this.profileId)
+      )
     }
   },
   methods: {
@@ -150,8 +165,8 @@ export default {
         { uuid: this.uuid }
       )
     },
-    handleBookmarkDeleted () {
-      this.isBookmarkDeleted = true
+    handleDeleted () {
+      this.isDeleted = true
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value

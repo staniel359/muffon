@@ -4,11 +4,11 @@
       class="main-segment-container"
     >
       <BaseLinkContainer
-        class="main-library-info"
+        class="main-profile-page-info"
         :link="artistMainLinkFormatted"
       >
         <BaseArtistImage
-          class="circular bordered main-library-info-image"
+          class="circular bordered main-profile-page-image"
           size="medium"
           :image="image"
           :artistName="artistName"
@@ -23,7 +23,7 @@
 
       <BaseDivider />
 
-      <div class="main-library-info">
+      <div class="main-profile-page-info">
         <div>
           {{ sinceFormatted }}
         </div>
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-library-info-image
+.main-profile-page-image
   width: 120px
   height: 120px
 </style>

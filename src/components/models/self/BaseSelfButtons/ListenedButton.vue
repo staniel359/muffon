@@ -1,9 +1,9 @@
 <template>
   <div>
     <BaseButton
-      v-if="bookmarkId"
+      v-if="listenedId"
       class="green fluid"
-      icon="bookmark"
+      icon="check"
       :class="{
         loading: isLoading,
         disabled: isLoading
@@ -14,7 +14,7 @@
     <BaseButton
       v-else
       class="primary fluid"
-      icon="bookmark"
+      icon="check"
       :class="{
         loading: isLoading,
         disabled: isLoading
@@ -27,14 +27,14 @@
 
 <script>
 import BaseButton from '@/BaseButton.vue'
-import postArtistData from '#/actions/api/profile/bookmarks/artists/postData'
-import postAlbumData from '#/actions/api/profile/bookmarks/albums/postData'
-import postTrackData from '#/actions/api/profile/bookmarks/tracks/postData'
-import deleteBookmarkData
-  from '#/actions/api/profile/bookmarks/model/deleteData'
+import postArtistData from '#/actions/api/profile/listened/artists/postData'
+import postAlbumData from '#/actions/api/profile/listened/albums/postData'
+import postTrackData from '#/actions/api/profile/listened/tracks/postData'
+import deleteListenedData
+  from '#/actions/api/profile/listened/model/deleteData'
 
 export default {
-  name: 'BaseBookmarkButton',
+  name: 'ListenedButton',
   components: {
     BaseButton
   },
@@ -51,7 +51,7 @@ export default {
   },
   data () {
     return {
-      bookmarkId: null,
+      listenedId: null,
       isError: false,
       isLoading: false
     }
@@ -59,17 +59,17 @@ export default {
   computed: {
     deleteFormatted () {
       return this.$t(
-        'shared.bookmarks.added'
+        'shared.listened.added'
       )
     },
     addFormatted () {
       return this.$t(
-        'shared.bookmarks.add'
+        'shared.listened.add'
       )
     }
   },
   mounted () {
-    this.bookmarkId = this.modelId
+    this.listenedId = this.modelId
   },
   methods: {
     handleAddButtonClick () {
@@ -96,18 +96,15 @@ export default {
       }
     },
     handleDeleteButtonClick () {
-      return this.deleteBookmarkData({
+      return this.deleteListenedData({
         model: this.model,
-        bookmarkId: this.bookmarkId
-      }).then(this.handleSuccess)
-    },
-    handleSuccess () {
-      this.bookmarkId = null
+        listenedId: this.listenedId
+      })
     },
     postArtistData,
     postAlbumData,
     postTrackData,
-    deleteBookmarkData
+    deleteListenedData
   }
 }
 </script>

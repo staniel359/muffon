@@ -4,17 +4,17 @@
       class="main-segment-container"
     >
       <BaseLinkContainer
-        class="main-library-info"
+        class="main-profile-page-info"
         :link="albumMainLinkFormatted"
       >
         <BaseImage
-          class="rounded bordered main-library-info-image"
+          class="rounded bordered main-profile-page-image"
           size="small"
           :image="image"
         />
 
         <BaseHeader
-          tag="h4"
+          tag="h3"
           :class="{ link: !isArtistNameActive }"
           :text="albumTitle"
         />
@@ -30,7 +30,7 @@
 
       <BaseDivider />
 
-      <div class="main-library-info">
+      <div class="main-profile-page-info">
         <div>
           {{ sinceFormatted }}
         </div>

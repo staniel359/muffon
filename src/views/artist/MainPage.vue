@@ -10,6 +10,7 @@
         :libraryId="slotProps.libraryId"
         :listenedId="slotProps.listenedId"
         :bookmarkId="slotProps.bookmarkId"
+        :favoriteId="slotProps.favoriteId"
       />
       <RightColumn
         :artistData="slotProps.artistData"

@@ -9,36 +9,25 @@
       />
     </div>
 
-    <BaseTransitionContainer
-      class="artist-name transition hidden"
-      :scrollable="scrollable"
-    >
-      <BaseHeader
-        tag="h3"
-        :text="artistName"
-      />
-    </BaseTransitionContainer>
+    <div class="left-column-extra">
+      <BaseTransitionContainer
+        class="artist-name transition hidden"
+        :scrollable="scrollable"
+      >
+        <BaseHeader
+          tag="h3"
+          :text="artistName"
+        />
+      </BaseTransitionContainer>
 
-    <div class="main-self-buttons">
-      <BaseLibraryButton
-        class="main-self-button"
+      <BaseSelfButtons
         model="artist"
-        :modelId="libraryId"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
         :artistName="artistName"
-      />
-
-      <BaseListenedButton
-        class="main-self-button"
-        model="artist"
-        :modelId="listenedId"
-        :artistName="artistName"
-      />
-
-      <BaseBookmarkButton
-        class="main-self-button"
-        model="artist"
-        :modelId="bookmarkId"
-        :artistName="artistName"
+        isTextWhite
       />
     </div>
   </div>
@@ -48,9 +37,7 @@
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseLibraryButton from '@/models/self/BaseLibraryButton.vue'
-import BaseListenedButton from '@/models/self/BaseListenedButton.vue'
-import BaseBookmarkButton from '@/models/self/BaseBookmarkButton.vue'
+import BaseSelfButtons from '@/models/self/BaseSelfButtons.vue'
 
 export default {
   name: 'LeftColumn',
@@ -58,9 +45,7 @@ export default {
     BaseArtistImage,
     BaseTransitionContainer,
     BaseHeader,
-    BaseLibraryButton,
-    BaseListenedButton,
-    BaseBookmarkButton
+    BaseSelfButtons
   },
   props: {
     artistName: {
@@ -70,7 +55,8 @@ export default {
     scrollable: HTMLDivElement,
     libraryId: String,
     listenedId: String,
-    bookmarkId: String
+    bookmarkId: String,
+    favoriteId: String
   }
 }
 </script>
@@ -79,9 +65,11 @@ export default {
 .artist-page-left-column
   width: 200px
 
+.left-column-extra
+  margin-top: 0.5em
+
 .artist-name
   @extend .text-align-center
-  margin: 0.5em 0
   .ui.header
     @extend .text-color-white
 </style>

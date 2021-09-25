@@ -42,7 +42,7 @@ import postAlbumData from '#/actions/api/profile/library/albums/postData'
 import postTrackData from '#/actions/api/profile/library/tracks/postData'
 
 export default {
-  name: 'BaseLibraryButton',
+  name: 'LibraryButton',
   components: {
     BaseLinkContainer,
     BaseButton
