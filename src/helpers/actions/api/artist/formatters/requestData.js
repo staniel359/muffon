@@ -7,7 +7,7 @@ export default function ({ sourceId, artistData, albumType = '' }) {
         }
       case 'vk':
         return {
-          artistId: artistData.vk_slug
+          artistId: artistData.vk_id
         }
       case 'odnoklassniki':
         return {

@@ -4,7 +4,7 @@ export default [
     icon: 'vk',
     name: 'VK',
     isStreamable: true,
-    isWithAlbums: false,
+    isWithAlbums: true,
     maxBitrate: 320,
     albumTypes: [
       'album'
