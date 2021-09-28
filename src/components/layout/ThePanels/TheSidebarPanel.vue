@@ -10,6 +10,7 @@
         <RecommendationsItem />
         <FavoritesItem />
         <BookmarksItem />
+        <TopItem />
       </div>
 
       <div>
@@ -27,6 +28,7 @@ import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
 import RecommendationsItem from './TheSidebarPanel/RecommendationsItem.vue'
 import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
+import TopItem from './TheSidebarPanel/TopItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 
@@ -38,6 +40,7 @@ export default {
     RecommendationsItem,
     FavoritesItem,
     BookmarksItem,
+    TopItem,
     SettingsItem,
     LogoutItem
   },

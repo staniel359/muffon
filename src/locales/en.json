@@ -15,6 +15,7 @@
       "recommendations": "Recommendations",
       "bookmarks": "Bookmarks",
       "favorites": "Favorites",
+      "tops": "Top",
       "artist": {
         "images": "{artistName} images",
         "tracks": "{artistName} tracks",
@@ -41,6 +42,11 @@
         "albums": "{nickname} albums",
         "tracks": "{nickname} tracks",
         "favorites": "{nickname} favorites"
+      },
+      "top": {
+        "artists": "Top artists",
+        "tracks": "Top tracks",
+        "tags": "Top tags"
       }
     },
     "search": {

@@ -91,6 +91,18 @@ const BookmarksPage = () => import(
 const ProfileFavoritesPage = () => import(
   '%/profile/FavoritesPage.vue'
 )
+const TopMainPage = () => import(
+  '%/top/MainPage.vue'
+)
+const TopArtistsPage = () => import(
+  '%/top/ArtistsPage.vue'
+)
+const TopTracksPage = () => import(
+  '%/top/TracksPage.vue'
+)
+const TopTagsPage = () => import(
+  '%/top/TagsPage.vue'
+)
 
 export default [
   {
@@ -306,6 +318,34 @@ export default [
     exact: true,
     name: 'ProfileFavoritesPage',
     component: ProfileFavoritesPage,
+    props: true
+  },
+  {
+    path: '/top',
+    exact: true,
+    name: 'TopMainPage',
+    component: TopMainPage,
+    props: true
+  },
+  {
+    path: '/top/artists',
+    exact: true,
+    name: 'TopArtistsPage',
+    component: TopArtistsPage,
+    props: true
+  },
+  {
+    path: '/top/tracks',
+    exact: true,
+    name: 'TopTracksPage',
+    component: TopTracksPage,
+    props: true
+  },
+  {
+    path: '/top/tags',
+    exact: true,
+    name: 'TopTagsPage',
+    component: TopTagsPage,
     props: true
   }
 ]

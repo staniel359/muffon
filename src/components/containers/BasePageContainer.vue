@@ -34,7 +34,7 @@ export default {
   watch: {
     isLoading: {
       immediate: true,
-      handler: 'handleLoadingChange'
+      handler: 'handleIsLoadingChange'
     }
   },
   mounted () {
@@ -44,7 +44,7 @@ export default {
     )
   },
   methods: {
-    handleLoadingChange (value) {
+    handleIsLoadingChange (value) {
       toggleLoaderDimmer(
         this.isShowLoader && value
       )
