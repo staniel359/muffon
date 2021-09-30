@@ -103,6 +103,12 @@ const TopTracksPage = () => import(
 const TopTagsPage = () => import(
   '%/top/TagsPage.vue'
 )
+const ProfilePlaylistsPage = () => import(
+  '%/profile/PlaylistsPage.vue'
+)
+const ProfilePlaylistPage = () => import(
+  '%/profile/PlaylistPage.vue'
+)
 
 export default [
   {
@@ -346,6 +352,20 @@ export default [
     exact: true,
     name: 'TopTagsPage',
     component: TopTagsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/playlists',
+    exact: true,
+    name: 'ProfilePlaylistsPage',
+    component: ProfilePlaylistsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/playlists/:playlistId',
+    exact: true,
+    name: 'ProfilePlaylistPage',
+    component: ProfilePlaylistPage,
     props: true
   }
 ]

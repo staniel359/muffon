@@ -21,6 +21,7 @@
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :profileId="profileId"
+          :isWithDeleteOption="isWithDeleteOption"
           isWithImage
           isWithArtistName
           isWithAlbumTitle
@@ -38,6 +39,7 @@ import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import fetchFavoritesData from '#/actions/api/profile/favorites/fetchData'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'BaseFavoritesTabContainer',
@@ -79,6 +81,11 @@ export default {
     },
     favoritesData () {
       return this.profileData?.favorites
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
     }
   },
   watch: {

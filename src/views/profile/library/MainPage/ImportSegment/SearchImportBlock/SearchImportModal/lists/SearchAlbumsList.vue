@@ -14,7 +14,8 @@
       <BaseAlbumsSimpleList
         :albums="slotProps.albums"
         isWithArtistName
-        isWithClearButton
+        isWithDeleteOption
+        isClearable
         @linkClick="handleLinkClick"
         @deleteButtonClick="handleDeleteButtonClick"
       />

@@ -91,7 +91,7 @@ export default {
     postAlbumData,
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'pages.library.add.save.active.albums',
+        'shared.add.save.active.albums',
         { value, total }
       )
     },

@@ -12,6 +12,9 @@
         :itemsInRow="4"
         :albums="slotProps.albums"
         :profileId="profileId"
+        :artistName="slotProps.artistName"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithTracksCount
         isLinkToLibrary
       />
@@ -23,6 +26,7 @@
 import BaseProfileLibraryArtistPaginatedPageContainer
   from '@/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'AlbumsPage',
@@ -33,6 +37,18 @@ export default {
   props: {
     profileId: String,
     artistId: String
+  },
+  computed: {
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>

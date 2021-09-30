@@ -14,10 +14,13 @@
         :profileId="profileId"
         :artistId="artistId"
         :artistName="artistName"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithImage
         isWithAlbumTitle
         isWithCreated
         isLinkToLibrary
+        isWithPlaylistOption
       />
     </template>
   </BaseProfileLibraryArtistPaginatedSegmentContainer>
@@ -40,7 +43,9 @@ export default {
   props: {
     profileId: String,
     artistId: String,
-    artistName: String
+    artistName: String,
+    isWithFavoriteOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   methods: {
     formatProfileLibraryArtistTracksLink

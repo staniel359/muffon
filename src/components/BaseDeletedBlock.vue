@@ -10,20 +10,15 @@
 export default {
   name: 'BaseDeletedBlock',
   props: {
-    isBookmark: Boolean,
-    isFavorite: Boolean
+    model: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     textFormatted () {
       return this.$t(
-        `shared.${this.model}.deleted`
-      )
-    },
-    model () {
-      return (
-        this.isBookmark && 'bookmark'
-      ) || (
-        this.isFavorite && 'favorite'
+        `shared.deleted.${this.model}`
       )
     }
   }

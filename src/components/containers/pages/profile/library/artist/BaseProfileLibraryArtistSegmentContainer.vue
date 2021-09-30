@@ -16,6 +16,7 @@
       :isLoading="isLoading"
       :error="error"
       :libraryArtistData="libraryArtistData"
+      :artistName="artistName"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -66,6 +67,9 @@ export default {
     },
     libraryArtistData () {
       return this.profileData?.library?.artist
+    },
+    artistName () {
+      return this.libraryArtistData?.name
     }
   },
   methods: {

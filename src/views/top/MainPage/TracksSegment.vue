@@ -8,10 +8,11 @@
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
         isWithArtistName
-        isWithLibraryLink
-        isWithFavoriteButton
-        isWithBookmarkButton
-        isWithListenedButton
+        isWithLibraryOption
+        isWithFavoriteOption
+        isWithBookmarkOption
+        isWithListenedOption
+        isWithPlaylistOption
       />
     </template>
   </BaseTopPaginatedSegmentContainer>

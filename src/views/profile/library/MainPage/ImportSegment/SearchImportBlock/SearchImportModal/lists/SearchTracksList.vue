@@ -14,7 +14,8 @@
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
         isWithArtistName
-        isWithClearButton
+        isWithDeleteOption
+        isClearable
         @linkClick="handleLinkClick"
         @deleteButtonClick="handleDeleteButtonClick"
       />

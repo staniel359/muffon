@@ -3,7 +3,7 @@
     <div class="main-image-container">
       <BaseImage
         class="rounded bordered track-image"
-        :image="image"
+        :image="imageData.medium"
       />
     </div>
 
@@ -13,16 +13,37 @@
         :scrollable="scrollable"
       />
 
-      <BaseSelfButtons
-        model="track"
+      <BaseSelfIcons
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
         :listenedId="listenedId"
-        :trackTitle="title"
-        :artistName="artistName"
+      />
+
+      <div class="main-options-dropdown-container-right">
+        <BaseOptionsDropdown
+          model="track"
+          :modelId="trackId"
+          :libraryId="libraryId"
+          :favoriteId="favoriteId"
+          :bookmarkId="bookmarkId"
+          :listenedId="listenedId"
+          :albumTitle="albumTitle"
+          :imageUrl="imageData.medium"
+          isWithLibraryOption
+          isWithFavoriteOption
+          isWithBookmarkOption
+          isWithListenedOption
+          isWithPlaylistOption
+          @playlist="handlePlaylistOptionClick"
+        />
+      </div>
+
+      <BasePlaylistsModal
+        ref="playlistModal"
+        :trackId="trackId"
         :albumTitle="albumTitle"
-        :imageUrl="image"
+        :imageUrl="imageData.medium"
       />
     </div>
   </div>
@@ -31,14 +52,26 @@
 <script>
 import BaseImage from '@/BaseImage.vue'
 import TrackHeader from './LeftColumn/TrackHeader.vue'
-import BaseSelfButtons from '@/models/self/BaseSelfButtons.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BasePlaylistsModal from '@/BasePlaylistsModal.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
     BaseImage,
     TrackHeader,
-    BaseSelfButtons
+    BaseSelfIcons,
+    BaseOptionsDropdown,
+    BasePlaylistsModal
+  },
+  provide () {
+    return {
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
+    }
   },
   props: {
     trackData: {
@@ -47,23 +80,19 @@ export default {
     },
     scrollable: HTMLDivElement
   },
+  data () {
+    return {
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null
+    }
+  },
   computed: {
-    image () {
-      return this.trackData.image.small
+    imageData () {
+      return this.trackData.image
     },
-    libraryId () {
-      return this.trackData.library_id?.toString()
-    },
-    favoriteId () {
-      return this.trackData.favorite_id?.toString()
-    },
-    bookmarkId () {
-      return this.trackData.bookmark_id?.toString()
-    },
-    listenedId () {
-      return this.trackData.listened_id?.toString()
-    },
-    title () {
+    trackTitle () {
       return this.trackData.title
     },
     artistName () {
@@ -71,6 +100,36 @@ export default {
     },
     albumTitle () {
       return this.trackData.album?.title
+    },
+    trackId () {
+      return this.trackData.id.toString()
+    }
+  },
+  mounted () {
+    this.libraryId =
+      this.trackData.library_id?.toString()
+    this.favoriteId =
+      this.trackData.favorite_id?.toString()
+    this.bookmarkId =
+      this.trackData.bookmark_id?.toString()
+    this.listenedId =
+      this.trackData.listened_id?.toString()
+  },
+  methods: {
+    handlePlaylistOptionClick () {
+      this.$refs.playlistModal.show()
+    },
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
     }
   }
 }
@@ -82,4 +141,8 @@ export default {
 
 .left-column-extra
   margin-top: 0.5em
+
+.main-self-icons
+  @extend .text-align-center
+  margin-top: 0.25em
 </style>

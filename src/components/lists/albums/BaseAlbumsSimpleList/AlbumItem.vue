@@ -7,13 +7,12 @@
   >
     <BaseDeletedBlock
       v-if="isDeleted"
-      :isBookmark="isBookmark"
-      :isFavorite="isFavorite"
+      model="album"
     />
     <template v-else>
       <BaseImage
         class="rounded bordered"
-        :image="image"
+        :image="imageData.extrasmall"
       />
 
       <InfoBlock
@@ -26,33 +25,45 @@
         :isWithListenersCount="isWithListenersCount"
       />
 
-      <BaseSelfSimpleButtons
-        model="album"
-        :modelData="albumData"
-        :isWithLibraryLink="isWithLibraryLink"
-        :isWithListenedButton="isWithListenedButton"
-        :isWithBookmarkButton="isWithBookmarkButton"
-        :isWithFavoriteButton="isWithFavoriteButton"
+      <BaseSelfIcons
+        v-if="isWithSelfIcons"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
       />
 
-      <BaseBookmarkDeleteButton
+      <BaseOptionsDropdown
+        model="album"
+        :modelId="albumId"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
+        :isWithLibraryOption="isWithLibraryOption"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithBookmarkOption="isWithBookmarkOption"
+        :isWithListenedOption="isWithListenedOption"
+        :isWithDeleteOption="isWithDeleteOption"
+        :imageUrl="imageData.medium"
+        @delete="handleDeleteOptionClick"
+        @linkClick="handleLinkClick"
+      />
+
+      <BaseBookmarkDeleteModal
         v-if="isBookmark"
+        ref="modal"
         model="album"
         :modelData="albumData"
         @deleted="handleDeleted"
       />
 
-      <BaseFavoriteDeleteButton
-        v-if="isRenderFavoriteDeleteButton"
+      <BaseFavoriteDeleteModal
+        v-if="isFavorite"
+        ref="modal"
         model="album"
         :modelData="albumData"
         @deleted="handleDeleted"
-      />
-
-      <BaseClearButton
-        v-if="isWithClearButton"
-        class="delete-button"
-        @click="handleDeleteButtonClick"
       />
     </template>
   </BaseLinkContainer>
@@ -63,13 +74,12 @@ import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
-import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
-import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
-import BaseFavoriteDeleteButton from '@/BaseFavoriteDeleteButton.vue'
-import BaseClearButton from '@/BaseClearButton.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'AlbumItem',
@@ -78,14 +88,18 @@ export default {
     BaseDeletedBlock,
     BaseImage,
     InfoBlock,
-    BaseSelfSimpleButtons,
-    BaseBookmarkDeleteButton,
-    BaseFavoriteDeleteButton,
-    BaseClearButton
+    BaseSelfIcons,
+    BaseOptionsDropdown,
+    BaseBookmarkDeleteModal,
+    BaseFavoriteDeleteModal
   },
   provide () {
     return {
-      setIsArtistNameActive: this.setIsArtistNameActive
+      setIsArtistNameActive: this.setIsArtistNameActive,
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
     }
   },
   props: {
@@ -93,13 +107,18 @@ export default {
       type: Object,
       required: true
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
-    isWithLibraryLink: Boolean,
-    isWithClearButton: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
     profileId: String
@@ -110,6 +129,10 @@ export default {
   ],
   data () {
     return {
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null,
       isArtistNameActive: false,
       isDeleted: false
     }
@@ -139,8 +162,8 @@ export default {
     albumTitle () {
       return this.albumData.title
     },
-    image () {
-      return this.albumData.image.extrasmall
+    imageData () {
+      return this.albumData.image
     },
     listenersCount () {
       return this.albumData.listeners_count
@@ -148,37 +171,54 @@ export default {
     uuid () {
       return this.albumData.uuid
     },
-    isRenderFavoriteDeleteButton () {
-      return (
-        this.isFavorite &&
-          isCurrentProfile(this.profileId)
-      )
+    albumId () {
+      return this.albumData.id.toString()
     }
+  },
+  mounted () {
+    this.libraryId =
+      this.albumData.library_id?.toString()
+    this.favoriteId =
+      this.albumData.favorite_id?.toString()
+    this.bookmarkId =
+      this.albumData.bookmark_id?.toString()
+    this.listenedId =
+      this.albumData.listened_id?.toString()
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
     },
-    handleDeleteButtonClick () {
-      this.$emit(
-        'deleteButtonClick',
-        { uuid: this.uuid }
-      )
+    handleDeleteOptionClick () {
+      if (this.isClearable) {
+        this.$emit(
+          'deleteButtonClick',
+          { uuid: this.uuid }
+        )
+      } else {
+        this.$refs.modal.show()
+      }
     },
     handleDeleted () {
       this.isDeleted = true
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value
+    },
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.main-simple-self-buttons
-  margin-left: 0.5em
-
-.delete-button
-  margin-left: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

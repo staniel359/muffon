@@ -32,7 +32,7 @@ export default {
   computed: {
     errorMessageHeaderFormatted () {
       return this.$t(
-        'pages.library.add.import.error.files',
+        'shared.add.import.error.files',
         { count: this.totalCountFormatted }
       )
     },

@@ -17,10 +17,11 @@
         :isWithLibrary="isWithLibrary"
         :isLinkToLibrary="isLinkToLibrary"
         :profileId="profileId"
-        :isWithLibraryLink="isWithLibraryLink"
-        :isWithListenedButton="isWithListenedButton"
-        :isWithBookmarkButton="isWithBookmarkButton"
-        :isWithFavoriteButton="isWithFavoriteButton"
+        :isWithLibraryOption="isWithLibraryOption"
+        :isWithListenedOption="isWithListenedOption"
+        :isWithBookmarkOption="isWithBookmarkOption"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
       />
     </div>
   </div>
@@ -50,10 +51,11 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean
+    isWithLibraryOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   computed: {
     artistsFormatted () {

@@ -20,15 +20,27 @@
         />
       </BaseTransitionContainer>
 
-      <BaseSelfButtons
-        model="artist"
+      <BaseSelfIcons
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
         :listenedId="listenedId"
-        :artistName="artistName"
-        isTextWhite
       />
+
+      <div class="main-options-dropdown-container-right">
+        <BaseOptionsDropdown
+          model="artist"
+          :modelId="artistId"
+          :libraryId="libraryId"
+          :favoriteId="favoriteId"
+          :bookmarkId="bookmarkId"
+          :listenedId="listenedId"
+          isWithLibraryOption
+          isWithFavoriteOption
+          isWithBookmarkOption
+          isWithListenedOption
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -37,7 +49,8 @@
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseSelfButtons from '@/models/self/BaseSelfButtons.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 
 export default {
   name: 'LeftColumn',
@@ -45,18 +58,63 @@ export default {
     BaseArtistImage,
     BaseTransitionContainer,
     BaseHeader,
-    BaseSelfButtons
+    BaseSelfIcons,
+    BaseOptionsDropdown
+  },
+  provide () {
+    return {
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
+    }
   },
   props: {
-    artistName: {
-      type: String,
+    artistData: {
+      type: Object,
       required: true
     },
-    scrollable: HTMLDivElement,
-    libraryId: String,
-    listenedId: String,
-    bookmarkId: String,
-    favoriteId: String
+    scrollable: HTMLDivElement
+  },
+  data () {
+    return {
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null
+    }
+  },
+  computed: {
+    artistName () {
+      return this.artistData.name
+    },
+    artistId () {
+      return this.artistData.id.toString()
+    }
+  },
+  mounted () {
+    this.libraryId =
+      this.artistData.library_id?.toString()
+    this.favoriteId =
+      this.artistData.favorite_id?.toString()
+    this.bookmarkId =
+      this.artistData.bookmark_id?.toString()
+    this.listenedId =
+      this.artistData.listened_id?.toString()
+  },
+  methods: {
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
+    }
   }
 }
 </script>
@@ -72,4 +130,8 @@ export default {
   @extend .text-align-center
   .ui.header
     @extend .text-color-white
+
+.main-self-icons
+  @extend .text-align-center
+  margin-top: 0.25em
 </style>

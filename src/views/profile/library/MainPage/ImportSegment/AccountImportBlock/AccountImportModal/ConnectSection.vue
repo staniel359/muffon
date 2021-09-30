@@ -75,11 +75,11 @@ export default {
     textFormatted () {
       if (this.token) {
         return this.$t(
-          'pages.library.add.account.import.lastfm'
+          'shared.add.account.import.lastfm'
         )
       } else {
         return this.$t(
-          'pages.library.add.account.connect.lastfm'
+          'shared.add.account.connect.lastfm'
         )
       }
     },

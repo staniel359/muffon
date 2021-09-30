@@ -9,10 +9,11 @@
       :isWithLibrary="isWithLibrary"
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
-      :isWithLibraryLink="isWithLibraryLink"
-      :isWithListenedButton="isWithListenedButton"
-      :isWithBookmarkButton="isWithBookmarkButton"
-      :isWithFavoriteButton="isWithFavoriteButton"
+      :isWithLibraryOption="isWithLibraryOption"
+      :isWithFavoriteOption="isWithFavoriteOption"
+      :isWithBookmarkOption="isWithBookmarkOption"
+      :isWithListenedOption="isWithListenedOption"
+      :isWithDeleteOption="isWithDeleteOption"
       :isRecommendation="isRecommendation"
     />
   </div>
@@ -39,10 +40,11 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean,
     isRecommendation: Boolean
   },
   computed: {

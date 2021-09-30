@@ -84,7 +84,7 @@ export const popupOptions = () => {
   }
 }
 
-export const mainDropdownOptions = ({ onChange } = {}) => {
+export const mainDropdownOptions = ({ onChange, action } = {}) => {
   const { visibleContext } = store.state.layout
 
   return {
@@ -95,7 +95,8 @@ export const mainDropdownOptions = ({ onChange } = {}) => {
       show: 0,
       hide: 150
     },
-    onChange
+    onChange,
+    action
   }
 }
 
@@ -212,7 +213,7 @@ export const signupFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const editFormOptions = ({ onSuccess }) => {
+export const profileEditFormOptions = ({ onSuccess }) => {
   const emptyEmailPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.email'
   )
@@ -256,6 +257,29 @@ export const editFormOptions = ({ onSuccess }) => {
           {
             type: 'empty',
             prompt: emptyNicknamePrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
+export const playlistFormOptions = ({ onSuccess }) => {
+  const emptyTitlePrompt = i18n.global.t(
+    'shared.playlist.form.errors.empty.title'
+  )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      title: {
+        identifier: 'title',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyTitlePrompt
           }
         ]
       }

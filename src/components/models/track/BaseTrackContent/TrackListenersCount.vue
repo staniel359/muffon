@@ -43,7 +43,7 @@ export default {
     listenersCounterBarWidth () {
       return (
         this.listenersCount /
-          this.topTrackCount * 75
+          this.topTrackCount * 70
       )
     },
     listenersCountFormatted () {

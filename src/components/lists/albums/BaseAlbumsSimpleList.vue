@@ -6,11 +6,12 @@
       :albumData="albumData"
       :isWithArtistName="isWithArtistName"
       :isWithListenersCount="isWithListenersCount"
-      :isWithLibraryLink="isWithLibraryLink"
-      :isWithClearButton="isWithClearButton"
-      :isWithListenedButton="isWithListenedButton"
-      :isWithBookmarkButton="isWithBookmarkButton"
-      :isWithFavoriteButton="isWithFavoriteButton"
+      :isWithLibraryOption="isWithLibraryOption"
+      :isWithFavoriteOption="isWithFavoriteOption"
+      :isWithBookmarkOption="isWithBookmarkOption"
+      :isWithListenedOption="isWithListenedOption"
+      :isWithDeleteOption="isWithDeleteOption"
+      :isClearable="isClearable"
       :isBookmark="isBookmark"
       :isFavorite="isFavorite"
       :profileId="profileId"
@@ -40,11 +41,12 @@ export default {
     },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
-    isWithLibraryLink: Boolean,
-    isWithClearButton: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
     profileId: String
@@ -55,7 +57,9 @@ export default {
   ],
   computed: {
     albumsFormatted () {
-      return formatCollection(this.albums)
+      return formatCollection(
+        this.albums
+      )
     }
   },
   methods: {

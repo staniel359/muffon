@@ -1,6 +1,7 @@
 <template>
   <div
     class="ui button"
+    ref="button"
     :class="{ inverted: isDarkMode }"
   >
     <slot></slot>
@@ -16,6 +17,15 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ])
+  },
+  emits: [
+    'init'
+  ],
+  mounted () {
+    this.$emit(
+      'init',
+      this.$refs.button
+    )
   }
 }
 </script>

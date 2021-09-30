@@ -12,6 +12,8 @@
         :itemsInRow="5"
         :artists="slotProps.artists"
         :profileId="profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithTracksCount
         isWithAlbumsCount
         isLinkToLibrary
@@ -35,7 +37,9 @@ export default {
     BaseArtistsTableList
   },
   props: {
-    profileId: String
+    profileId: String,
+    isWithFavoriteOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   methods: {
     formatProfileLibraryArtistsLink

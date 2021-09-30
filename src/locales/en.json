@@ -16,6 +16,7 @@
       "bookmarks": "Bookmarks",
       "favorites": "Favorites",
       "tops": "Top",
+      "playlists": "Playlists",
       "artist": {
         "images": "{artistName} images",
         "tracks": "{artistName} tracks",
@@ -41,7 +42,8 @@
         "artists": "{nickname} artists",
         "albums": "{nickname} albums",
         "tracks": "{nickname} tracks",
-        "favorites": "{nickname} favorites"
+        "favorites": "{nickname} favorites",
+        "playlists": "{nickname} playlists"
       },
       "top": {
         "artists": "Top artists",
@@ -161,67 +163,33 @@
       }
     },
     "library": {
-      "since": "In library since",
-      "add": {
-        "buttons": {
-          "folder": "From folder",
-          "account": "From account",
-          "search": "From search",
-          "save": "Save to library",
-          "retry": "Retry"
-        },
-        "search": {
-          "input": {
-            "artists": "Search for artists...",
-            "albums": "Search for albums...",
-            "tracks": "Search for tracks..."
-          }
-        },
-        "account": {
-          "connect": {
-            "lastfm": "Connect Last.FM account"
-          },
-          "import": {
-            "lastfm": "Import Last.FM data"
-          }
-        },
-        "folder": {
-          "select": "Select folder"
-        },
-        "import": {
-          "active": {
-            "tracks": "Importing {value} of {total} tracks...",
-            "plays": "Importing {value} of {total} plays..."
-          },
-          "success": {
-            "tracks": {
-              "header": "All {count} tracks were successfuly imported",
-              "content": "You may want to check them before saving to library"
-            }
-          },
-          "error": {
-            "files": "{count} files could not be imported. Please fix these files' ID3 data and retry:"
-          }
-        },
-        "save": {
-          "active": {
-            "artists": "Saving {value} of {total} artists...",
-            "albums": "Saving {value} of {total} albums...",
-            "tracks": "Saving {value} of {total} tracks..."
-          },
-          "success": {
-            "artists": "All {count} artists were successfuly saved to library",
-            "albums": "All {count} albums were successfuly saved to library",
-            "tracks": "All {count} tracks were successfuly saved to library"
-          },
-          "error": {
-            "artists": "{count} artists could not be saved:",
-            "albums": "{count} albums could not be saved:",
-            "tracks": "{count} tracks could not be saved:"
-          }
-        }
-      }
+      "since": "In library since"
     }
+  },
+  "buttons": {
+    "create": "Create",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "retry": "Retry",
+    "from": {
+      "search": "From search",
+      "folder": "From folder",
+      "account": "From account",
+      "library": "From library"
+    }
+  },
+  "inputs": {
+    "search": {
+      "artists": "Search for artists...",
+      "albums": "Search for albums...",
+      "tracks": "Search for tracks..."
+    }
+  },
+  "modals": {
+    "undo": "You can't undo this action!",
+    "sure": "Are you sure?"
   },
   "shared": {
     "error": "Error",
@@ -236,7 +204,9 @@
         "header": {
           "artists": "No artists",
           "albums": "No albums",
-          "tracks": "No tracks"
+          "tracks": "No tracks",
+          "playlists": "No playlists",
+          "recommendations": "No recommendations"
         },
         "content": "Looks like there is nothing here",
       }
@@ -270,6 +240,51 @@
         "appearance": "Appearances"
       }
     },
+    "add": {
+      "account": {
+        "connect": {
+          "lastfm": "Connect Last.FM account"
+        },
+        "import": {
+          "lastfm": "Import Last.FM data"
+        }
+      },
+      "folder": {
+        "select": "Select folder"
+      },
+      "import": {
+        "active": {
+          "tracks": "Importing {value} of {total} tracks...",
+          "plays": "Importing {value} of {total} plays..."
+        },
+        "success": {
+          "tracks": {
+            "header": "All {count} tracks were successfuly imported",
+            "content": "You may want to check them before saving to library"
+          }
+        },
+        "error": {
+          "files": "{count} files could not be imported. Please fix these files' ID3 data and retry:"
+        }
+      },
+      "save": {
+        "active": {
+          "artists": "Saving {value} of {total} artists...",
+          "albums": "Saving {value} of {total} albums...",
+          "tracks": "Saving {value} of {total} tracks..."
+        },
+        "success": {
+          "artists": "All {count} artists were successfuly saved to library",
+          "albums": "All {count} albums were successfuly saved to library",
+          "tracks": "All {count} tracks were successfuly saved to library"
+        },
+        "error": {
+          "artists": "{count} artists could not be saved:",
+          "albums": "{count} albums could not be saved:",
+          "tracks": "{count} tracks could not be saved:"
+        }
+      }
+    },
     "profile": {
       "form": {
         "fields": {
@@ -291,8 +306,7 @@
         "remember": "Remember me",
         "submit": {
           "login": "Log in",
-          "signup": "Sign up",
-          "save": "Save"
+          "signup": "Sign up"
         },
         "sections": {
           "extra": "Additional info"
@@ -336,14 +350,6 @@
         "creator": "Creator"
       }
     },
-    "buttons": {
-      "cancel": "Cancel",
-      "delete": "Delete"
-    },
-    "modal": {
-      "undo": "You can't undo this action!",
-      "sure": "Are you sure?"
-    },
     "library": {
       "add": "Add to library",
       "show": "Show in library",
@@ -369,8 +375,7 @@
       "delete": {
         "header": "Delete recommendation",
         "going": "You are going to delete {artistName} from your recommendations."
-      },
-      "deleted": "Recommendation was deleted"
+      }
     },
     "listened": {
       "add": "Add to listened",
@@ -386,8 +391,7 @@
       "delete": {
         "header": "Delete bookmark",
         "going": "You are going to delete {modelName} from your bookmarks."
-      },
-      "deleted": "Bookmark was deleted"
+      }
     },
     "favorites": {
       "add": "Add to favorites",
@@ -398,11 +402,50 @@
       "delete": {
         "header": "Delete favorite",
         "going": "You are going to delete {modelName} from your favorites."
+      }
+    },
+    "playlists": {
+      "create": "Create playlist"
+    },
+    "playlist": {
+      "created": "Created at {date}",
+      "form": {
+        "fields": {
+          "title": "Title",
+          "image": "Upload image"
+        },
+        "errors": {
+          "empty": {
+            "title": "Title cannot be empty"
+          },
+          "taken": {
+            "title": "Title is already taken"
+          }
+        }
       },
-      "deleted": "Favorite was deleted"
+      "addTracks": "Add tracks",
+      "add": "Add to playlist",
+      "delete": {
+        "header": "Delete playlist",
+        "going": "You are going to delete {playlistTitle} from your playlists.",
+        "also": "This will also delete all this playlist's tracks."
+      },
+      "deleted": "Playlist {playlistTitle} was deleted"
+    },
+    "playlistTrack": {
+      "delete": {
+        "header": "Delete playlist track",
+        "going": "You are going to delete {playlistTrackFullTitle} from {playlistTitle} playlist."
+      }
     },
     "self": {
       "actions": "Actions"
+    },
+    "deleted": {
+      "artist": "Artist was deleted",
+      "album": "Album was deleted",
+      "track": "Track was deleted",
+      "recommendation": "Recommendation was deleted"
     }
   }
 }

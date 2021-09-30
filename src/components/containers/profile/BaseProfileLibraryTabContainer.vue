@@ -29,6 +29,8 @@
           isWithAlbumsCount
           isWithCreated
           isLinkToLibrary
+          isWithFavoriteOption
+          isWithDeleteOption
         />
       </template>
     </BasePaginatedContainer>

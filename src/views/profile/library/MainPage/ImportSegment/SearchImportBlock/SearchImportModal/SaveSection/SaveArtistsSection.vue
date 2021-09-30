@@ -91,7 +91,7 @@ export default {
     postArtistData,
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'pages.library.add.save.active.artists',
+        'shared.add.save.active.artists',
         { value, total }
       )
     },

@@ -9,10 +9,10 @@
         :itemsInRow="5"
         :artists="slotProps.artists"
         isWithListenersCount
-        isWithLibraryLink
-        isWithFavoriteButton
-        isWithBookmarkButton
-        isWithListenedButton
+        isWithLibraryOption
+        isWithFavoriteOption
+        isWithBookmarkOption
+        isWithListenedOption
       />
     </template>
   </BaseTopPaginatedSegmentContainer>

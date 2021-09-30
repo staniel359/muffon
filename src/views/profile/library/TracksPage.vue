@@ -10,11 +10,14 @@
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
         :profileId="profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithImage
         isWithArtistName
         isWithAlbumTitle
         isWithCreated
         isLinkToLibrary
+        isWithPlaylistOption
       />
     </template>
   </BaseProfileLibraryPaginatedPageContainer>
@@ -24,6 +27,7 @@
 import BaseProfileLibraryPaginatedPageContainer
   from '@/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'TracksPage',
@@ -33,6 +37,18 @@ export default {
   },
   props: {
     profileId: String
+  },
+  computed: {
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>

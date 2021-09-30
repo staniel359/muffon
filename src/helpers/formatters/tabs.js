@@ -7,6 +7,7 @@ export const startPage = () => {
 
   return {
     title,
-    path: 'start'
+    path: 'start',
+    icon: 'home'
   }
 }

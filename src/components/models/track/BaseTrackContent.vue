@@ -1,8 +1,7 @@
 <template>
   <BaseDeletedBlock
     v-if="isDeleted"
-    :isBookmark="isBookmark"
-    :isFavorite="isFavorite"
+    model="track"
   />
   <template v-else>
     <BaseTrackAudioIcon
@@ -50,19 +49,13 @@
         />
       </div>
 
-      <div
-        v-if="isWithSelfButtons"
-        class="main-simple-self-buttons-container"
-      >
-        <BaseSelfSimpleButtons
-          model="track"
-          :modelData="trackData"
-          :isWithLibraryLink="isWithLibraryLink"
-          :isWithListenedButton="isWithListenedButton"
-          :isWithBookmarkButton="isWithBookmarkButton"
-          :isWithFavoriteButton="isWithFavoriteButton"
-        />
-      </div>
+      <BaseSelfIcons
+        v-if="isWithSelfIcons"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
+      />
     </div>
 
     <TrackDuration
@@ -93,24 +86,62 @@
       </div>
     </div>
 
-    <BaseBookmarkDeleteButton
+    <BaseOptionsDropdown
+      model="track"
+      :modelId="trackId"
+      :libraryId="libraryId"
+      :favoriteId="favoriteId"
+      :bookmarkId="bookmarkId"
+      :listenedId="listenedId"
+      :isWithLibraryOption="isWithLibraryOption"
+      :isWithFavoriteOption="isWithFavoriteOption"
+      :isWithBookmarkOption="isWithBookmarkOption"
+      :isWithListenedOption="isWithListenedOption"
+      :isWithPlaylistOption="isWithPlaylistOption"
+      :isWithDeleteOption="isWithDeleteOption"
+      :albumTitle="albumTitle"
+      :imageUrl="imageData?.medium"
+      @delete="handleDeleteOptionClick"
+      @playlist="handlePlaylistOptionClick"
+      @linkClick="handleLinkClick"
+    />
+
+    <BasePlaylistsModal
+      ref="playlistModal"
+      :trackId="trackId"
+      :albumTitle="albumTitle"
+      :imageUrl="imageData?.medium"
+    />
+
+    <BaseBookmarkDeleteModal
       v-if="isBookmark"
+      ref="deleteModal"
       model="track"
       :modelData="trackData"
       @deleted="handleDeleted"
     />
-
-    <BaseFavoriteDeleteButton
-      v-if="isRenderFavoriteDeleteButton"
+    <BaseFavoriteDeleteModal
+      v-else-if="isFavorite"
+      ref="deleteModal"
       model="track"
       :modelData="trackData"
       @deleted="handleDeleted"
     />
-
-    <BaseClearButton
-      v-if="isWithClearButton"
-      class="delete-button"
-      @click="handleDeleteButtonClick"
+    <BasePlaylistTrackDeleteModal
+      v-else-if="isPlaylistTrack"
+      ref="deleteModal"
+      :playlistTrackData="trackData"
+      :playlistId="playlistId"
+      :playlistTitle="playlistTitle"
+      @deleted="handleDeleted"
+    />
+    <BaseProfileLibraryDeleteModal
+      v-else-if="isLinkToLibrary"
+      ref="deleteModal"
+      model="track"
+      :profileId="profileId"
+      :modelId="trackId"
+      :modelTitle="trackFullTitle"
     />
   </template>
 </template>
@@ -124,15 +155,18 @@ import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
-import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
-import BaseBookmarkDeleteButton from '@/BaseBookmarkDeleteButton.vue'
-import BaseFavoriteDeleteButton from '@/BaseFavoriteDeleteButton.vue'
-import BaseClearButton from '@/BaseClearButton.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BasePlaylistsModal from '@/BasePlaylistsModal.vue'
+import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
+import BasePlaylistTrackDeleteModal from '@/BasePlaylistTrackDeleteModal.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   date as formatDate,
   time as formatTime
 } from '#/formatters'
-import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'BaseTrackContent',
@@ -145,17 +179,28 @@ export default {
     TrackListenersCount,
     TrackDuration,
     BaseSourceIcon,
-    BaseSelfSimpleButtons,
-    BaseBookmarkDeleteButton,
-    BaseFavoriteDeleteButton,
-    BaseClearButton
+    BaseSelfIcons,
+    BaseOptionsDropdown,
+    BasePlaylistsModal,
+    BaseBookmarkDeleteModal,
+    BaseFavoriteDeleteModal,
+    BasePlaylistTrackDeleteModal,
+    BaseProfileLibraryDeleteModal
+  },
+  provide () {
+    return {
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
+    }
   },
   props: {
     trackData: {
       type: Object,
       required: true
     },
-    isWithSelfButtons: {
+    isWithSelfIcons: {
       type: Boolean,
       default: true
     },
@@ -174,14 +219,19 @@ export default {
     isWithSource: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
-    isWithClearButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithPlaylistOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean,
     isWithCreated: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
+    isPlaylistTrack: Boolean,
+    playlistId: String,
+    playlistTitle: String,
     isDeleted: Boolean
   },
   emits: [
@@ -189,6 +239,14 @@ export default {
     'deleteButtonClick',
     'deleted'
   ],
+  data () {
+    return {
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null
+    }
+  },
   computed: {
     isRenderImage () {
       return (
@@ -271,25 +329,51 @@ export default {
     uuid () {
       return this.trackData.uuid
     },
-    isRenderFavoriteDeleteButton () {
-      return (
-        this.isFavorite &&
-          isCurrentProfile(this.profileId)
-      )
+    trackFullTitle () {
+      return `${this.artistName} - ${this.trackTitle}`
     }
+  },
+  mounted () {
+    this.libraryId =
+      this.trackData.library_id?.toString()
+    this.favoriteId =
+      this.trackData.favorite_id?.toString()
+    this.bookmarkId =
+      this.trackData.bookmark_id?.toString()
+    this.listenedId =
+      this.trackData.listened_id?.toString()
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
     },
-    handleDeleteButtonClick () {
-      this.$emit(
-        'deleteButtonClick',
-        { uuid: this.uuid }
-      )
+    handleDeleteOptionClick () {
+      if (this.isClearable) {
+        this.$emit(
+          'deleteButtonClick',
+          { uuid: this.uuid }
+        )
+      } else {
+        this.$refs.deleteModal.show()
+      }
+    },
+    handlePlaylistOptionClick () {
+      this.$refs.playlistModal.show()
     },
     handleDeleted () {
       this.$emit('deleted')
+    },
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
     }
   }
 }
@@ -317,9 +401,6 @@ export default {
 .track-source-icon
   @extend .no-padding
   min-width: unset !important
-  margin-left: $trackContentMarginWidth !important
-
-.delete-button
   margin-left: $trackContentMarginWidth !important
 
 .created-container

@@ -19,6 +19,10 @@
           tag="h3"
           :text="artistName"
         />
+
+        <BaseSelfIcons
+          :favoriteId="favoriteId"
+        />
       </BaseLinkContainer>
 
       <BaseDivider />
@@ -34,9 +38,21 @@
     </BaseSegmentContainer>
 
     <BaseSegmentContainer
-      v-if="isCurrentProfile(profileId)"
+      v-if="isRenderOptions"
     >
-      <BaseProfileLibraryDeleteButton
+      <div class="main-options-dropdown-container-right">
+        <BaseOptionsDropdown
+          model="artist"
+          :modelId="artistArtistId"
+          :favoriteId="favoriteId"
+          isWithFavoriteOption
+          isWithDeleteOption
+          @delete="handleDeleteOptionClick"
+        />
+      </div>
+
+      <BaseProfileLibraryDeleteModal
+        ref="deleteModal"
         model="artist"
         :profileId="profileId"
         :modelId="artistId"
@@ -51,9 +67,11 @@ import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import BaseProfileLibraryDeleteButton
-  from '@/models/profile/library/BaseProfileLibraryDeleteButton.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
@@ -65,13 +83,25 @@ export default {
     BaseLinkContainer,
     BaseArtistImage,
     BaseHeader,
+    BaseSelfIcons,
     BaseDivider,
-    BaseProfileLibraryDeleteButton
+    BaseOptionsDropdown,
+    BaseProfileLibraryDeleteModal
+  },
+  provide () {
+    return {
+      setFavoriteId: this.setFavoriteId
+    }
   },
   props: {
     artistData: Object,
     profileId: String,
     artistId: String
+  },
+  data () {
+    return {
+      favoriteId: null
+    }
   },
   computed: {
     artistMainLinkFormatted () {
@@ -97,10 +127,27 @@ export default {
     },
     created () {
       return this.artistData.created
+    },
+    isRenderOptions () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    artistArtistId () {
+      return this.artistData.artist_id.toString()
     }
   },
+  mounted () {
+    this.favoriteId =
+      this.artistData.favorite_id?.toString()
+  },
   methods: {
-    isCurrentProfile
+    handleDeleteOptionClick () {
+      this.$refs.deleteModal.show()
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    }
   }
 }
 </script>
@@ -109,4 +156,7 @@ export default {
 .main-profile-page-image
   width: 120px
   height: 120px
+
+.main-self-icons
+  margin-top: 0.25em
 </style>

@@ -6,10 +6,7 @@
         :image="image"
       />
 
-      <label
-        class="image-add-button-label"
-        for="image"
-      >
+      <label for="profile-image">
         <BaseButton
           class="compact image-add-button"
           :text="addFormatted"
@@ -25,7 +22,7 @@
       />
 
       <input
-        id="image"
+        id="profile-image"
         class="image-input"
         type="file"
         name="image"
@@ -65,7 +62,7 @@ export default {
     },
     removeFormatted () {
       return this.$t(
-        'shared.buttons.delete'
+        'buttons.delete'
       )
     }
   },
@@ -79,9 +76,11 @@ export default {
     handleChange (event) {
       const file = event.target.files[0]
 
-      this.image = URL.createObjectURL(file)
+      if (file) {
+        this.image = URL.createObjectURL(file)
 
-      this.convertImage(file)
+        this.convertImage(file)
+      }
     },
     handleRemoveButtonClick () {
       this.image = null
@@ -124,12 +123,10 @@ export default {
   height: 100px
   margin-bottom: 1em
 
-.image-add-button-label
-  margin-bottom: 0.5em
-
 .image-add-button
   @extend .no-margin
 
 .remove-button
   @extend .no-margin
+  margin-top: 0.5em !important
 </style>

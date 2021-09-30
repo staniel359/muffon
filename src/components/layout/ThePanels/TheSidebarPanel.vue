@@ -8,6 +8,7 @@
         <ProfileItem />
         <LibraryItem />
         <RecommendationsItem />
+        <PlaylistsItem />
         <FavoritesItem />
         <BookmarksItem />
         <TopItem />
@@ -26,6 +27,7 @@ import { mapState } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
 import RecommendationsItem from './TheSidebarPanel/RecommendationsItem.vue'
+import PlaylistsItem from './TheSidebarPanel/PlaylistsItem.vue'
 import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
 import TopItem from './TheSidebarPanel/TopItem.vue'
@@ -38,6 +40,7 @@ export default {
     ProfileItem,
     LibraryItem,
     RecommendationsItem,
+    PlaylistsItem,
     FavoritesItem,
     BookmarksItem,
     TopItem,

@@ -91,7 +91,7 @@ export default {
     postTrackData,
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'pages.library.add.save.active.tracks',
+        'shared.add.save.active.tracks',
         { value, total }
       )
     },

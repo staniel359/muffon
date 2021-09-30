@@ -99,6 +99,14 @@ a
     top: 10px
     right: 10px
 
+.ui.card.main-simple-card, .ui.card.main-horizontal-card
+  & > .content .star.icon
+    opacity: 1
+    cursor: unset
+    transition: unset
+    &:hover
+      color: $colorBase
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -204,10 +212,16 @@ a
     @extend .no-padding, .no-border
     & > .description
       margin-top: 0.25em !important
-    & > .main-simple-self-buttons
+    & > .main-self-icons
       margin-top: 0.5em
+  & > .main-options-dropdown-container
+    @extend .absolute, .no-margin, .d-none
+    top: 10px
+    right: 10px
   &:hover
     transform: none
+    & > .main-options-dropdown-container
+      @extend .d-block
 
 .main-simple-card-image-container
   @extend .main-image-container
@@ -217,6 +231,8 @@ a
 
 .main-horizontal-card
   @extend .w-100
+  .main-self-icons
+    margin-top: 0.5em
 
 .main-simple-list-item
   @extend .d-flex, .align-items-center, .word-break-break-word
@@ -229,9 +245,18 @@ a
       height: 30px
   & > .content
     @extend .flex-full, .no-padding
+  & > .main-options-dropdown-container
+    margin-left: 0.5em
+    visibility: hidden
+  .main-self-icons
+    @extend .text-align-center
+    width: 50px
+    margin-left: 0.5em
   &:hover
-    .link-active
+    & > .link-active
       @extend .text-color-base
+    & > .main-options-dropdown-container
+      visibility: visible
 
 .main-message
   @extend .no-shadow, .no-margin
@@ -446,6 +471,9 @@ a
 .main-profile-image
   @extend .object-fit-cover
 
+.main-playlist-image
+  @extend .object-fit-cover
+
 .main-paginated-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
 
@@ -506,16 +534,25 @@ a
   &:not(:first-child)
     margin-top: 0.5em
 
-.main-simple-self-buttons-container
-  @extend .text-align-right
-  width: 67px
-
-.main-simple-self-button
+.main-simple-self-icon
+  @extend .no-margin
   display: inline-block
-  margin: 0.25em
+  margin: 0.25em !important
 
 .main-error-container
   @extend .w-100
 
 .main-deleted-container
   @extend .d-flex, .justify-content-center, .flex-full
+
+.main-options-dropdown-container-right
+  @extend .w-100, .d-flex, .justify-content-flex-end
+
+.main-options-dropdown
+  @extend .width-fit-content
+  background: white
+  border-radius: 50%
+  &.inverted
+    @extend .background-black
+  & > .dropdown
+    @extend .no-margin

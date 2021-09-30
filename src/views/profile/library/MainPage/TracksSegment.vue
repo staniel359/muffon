@@ -11,11 +11,14 @@
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
         :profileId="profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithImage
         isWithArtistName
         isWithAlbumTitle
         isWithCreated
         isLinkToLibrary
+        isWithPlaylistOption
       />
     </template>
   </BaseProfileLibraryPaginatedSegmentContainer>
@@ -36,7 +39,9 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    profileId: String
+    profileId: String,
+    isWithFavoriteOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   methods: {
     formatProfileLibraryTracksLink

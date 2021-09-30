@@ -39,7 +39,7 @@ export default {
   computed: {
     successMessageHeaderFormatted () {
       return this.$t(
-        'pages.library.add.save.success.tracks',
+        'shared.add.save.success.tracks',
         { count: this.totalCountFormatted }
       )
     },

@@ -22,7 +22,7 @@ export default {
   computed: {
     addFormatted () {
       return this.$t(
-        'pages.library.add.buttons.search'
+        'buttons.from.search'
       )
     }
   },

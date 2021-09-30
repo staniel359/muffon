@@ -16,6 +16,8 @@
         :topTracksCount="slotProps.topTracksCount"
         :topAlbumsCount="slotProps.topAlbumsCount"
         :profileId="slotProps.profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithTracksCount
         isWithAlbumsCount
         isWithLibrary
@@ -29,6 +31,7 @@
 import BaseProfileLibraryPaginatedPageContainer
   from '@/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
 import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'ArtistsPage',
@@ -50,6 +53,16 @@ export default {
       return this.viewLimits[
         this.viewIndex
       ]
+    },
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
     }
   },
   methods: {

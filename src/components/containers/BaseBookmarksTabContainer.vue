@@ -24,6 +24,7 @@
           isWithArtistName
           isWithAlbumTitle
           isBookmark
+          isWithDeleteOption
         />
       </template>
     </BasePaginatedContainer>

@@ -24,15 +24,20 @@
         :isWithSource="isWithSource"
         :isLinkToLibrary="isLinkToLibrary"
         :profileId="profileId"
-        :isWithLibraryLink="isWithLibraryLink"
-        :isWithListenedButton="isWithListenedButton"
-        :isWithBookmarkButton="isWithBookmarkButton"
-        :isWithFavoriteButton="isWithFavoriteButton"
-        :isWithClearButton="isWithClearButton"
+        :isWithLibraryOption="isWithLibraryOption"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithBookmarkOption="isWithBookmarkOption"
+        :isWithListenedOption="isWithListenedOption"
+        :isWithPlaylistOption="isWithPlaylistOption"
+        :isWithDeleteOption="isWithDeleteOption"
+        :isClearable="isClearable"
         :isWithCreated="isWithCreated"
-        :isWithSelfButtons="isWithSelfButtons"
+        :isWithSelfIcons="isWithSelfIcons"
         :isBookmark="isBookmark"
         :isFavorite="isFavorite"
+        :isPlaylistTrack="isPlaylistTrack"
+        :playlistId="playlistId"
+        :playlistTitle="playlistTitle"
         :isDeleted="isDeleted"
         @linkClick="handleLinkClick"
         @deleteButtonClick="handleDeleteButtonClick"
@@ -69,15 +74,20 @@ export default {
     isLinkToLibrary: Boolean,
     profileId: String,
     artistId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
-    isWithClearButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithPlaylistOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean,
     isWithCreated: Boolean,
-    isWithSelfButtons: Boolean,
+    isWithSelfIcons: Boolean,
     isBookmark: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isPlaylistTrack: Boolean,
+    playlistId: String,
+    playlistTitle: String
   },
   emits: [
     'linkClick',

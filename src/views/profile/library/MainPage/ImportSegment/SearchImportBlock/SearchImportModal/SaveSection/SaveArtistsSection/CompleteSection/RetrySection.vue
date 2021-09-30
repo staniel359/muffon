@@ -17,7 +17,7 @@
     />
   </div>
 
-  <BaseProfileLibraryRetryButton
+  <BaseRetryButton
     @click="handleRetryButtonClick"
   />
 </template>
@@ -25,8 +25,7 @@
 <script>
 import BaseMessage from '@/BaseMessage.vue'
 import SearchArtistsList from '../../../lists/SearchArtistsList.vue'
-import BaseProfileLibraryRetryButton
-  from '@/models/profile/library/BaseProfileLibraryRetryButton.vue'
+import BaseRetryButton from '@/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -34,7 +33,7 @@ export default {
   components: {
     BaseMessage,
     SearchArtistsList,
-    BaseProfileLibraryRetryButton
+    BaseRetryButton
   },
   inject: [
     'setErrorArtists'
@@ -51,7 +50,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return this.$t(
-        'pages.library.add.save.error.artists',
+        'shared.add.save.error.artists',
         { count: this.totalCountFormatted }
       )
     },

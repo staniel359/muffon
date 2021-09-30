@@ -26,6 +26,10 @@
         >
           {{ artistName }}
         </div>
+
+        <BaseSelfIcons
+          :favoriteId="favoriteId"
+        />
       </BaseLinkContainer>
 
       <BaseDivider />
@@ -41,9 +45,21 @@
     </BaseSegmentContainer>
 
     <BaseSegmentContainer
-      v-if="isCurrentProfile(profileId)"
+      v-if="isRenderOptions"
     >
-      <BaseProfileLibraryDeleteButton
+      <div class="main-options-dropdown-container-right">
+        <BaseOptionsDropdown
+          model="album"
+          :modelId="albumAlbumId"
+          :favoriteId="favoriteId"
+          isWithFavoriteOption
+          isWithDeleteOption
+          @delete="handleDeleteOptionClick"
+        />
+      </div>
+
+      <BaseProfileLibraryDeleteModal
+        ref="deleteModal"
         model="album"
         :profileId="profileId"
         :modelId="albumId"
@@ -58,9 +74,11 @@ import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import BaseProfileLibraryDeleteButton
-  from '@/models/profile/library/BaseProfileLibraryDeleteButton.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'
@@ -75,8 +93,15 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
+    BaseSelfIcons,
     BaseDivider,
-    BaseProfileLibraryDeleteButton
+    BaseOptionsDropdown,
+    BaseProfileLibraryDeleteModal
+  },
+  provide () {
+    return {
+      setFavoriteId: this.setFavoriteId
+    }
   },
   props: {
     albumData: Object,
@@ -85,6 +110,7 @@ export default {
   },
   data () {
     return {
+      favoriteId: null,
       isArtistNameActive: false
     }
   },
@@ -129,7 +155,19 @@ export default {
     },
     created () {
       return this.albumData.created
+    },
+    isRenderOptions () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    albumAlbumId () {
+      return this.albumData.album_id.toString()
     }
+  },
+  mounted () {
+    this.favoriteId =
+      this.albumData.favorite_id?.toString()
   },
   methods: {
     handleArtistLinkMouseEnter () {
@@ -138,9 +176,17 @@ export default {
     handleArtistLinkMouseLeave () {
       this.isArtistNameActive = false
     },
-    isCurrentProfile
+    handleDeleteOptionClick () {
+      this.$refs.deleteModal.show()
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-self-icons
+  margin-top: 0.25em
+</style>

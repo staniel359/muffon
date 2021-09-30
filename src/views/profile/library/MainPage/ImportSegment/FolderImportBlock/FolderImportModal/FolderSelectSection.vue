@@ -51,7 +51,7 @@ export default {
   computed: {
     textFormatted () {
       return this.$t(
-        'pages.library.add.folder.select'
+        'shared.add.folder.select'
       )
     }
   },

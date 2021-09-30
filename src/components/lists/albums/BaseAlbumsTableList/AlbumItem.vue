@@ -3,7 +3,27 @@
     :link="linkFormatted"
     @click="handleLinkClick"
   >
-    <BaseSimpleCardContainer :image="image">
+    <BaseSimpleCardContainer
+      :image="imageData.medium"
+    >
+      <BaseOptionsDropdown
+        class="options"
+        model="album"
+        :modelId="albumId"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
+        :isWithLibraryOption="isWithLibraryOption"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithBookmarkOption="isWithBookmarkOption"
+        :isWithListenedOption="isWithListenedOption"
+        :isWithDeleteOption="isWithDeleteOption"
+        :imageUrl="imageData.medium"
+        @linkClick="handleLinkClick"
+        @delete="handleDeleteOptionClick"
+      />
+
       <InfoSection
         :albumData="albumData"
         :artistName="albumArtistName"
@@ -12,20 +32,32 @@
         :isTracksLinkActive="isTracksLinkActive"
         :isWithListenersCount="isWithListenersCount"
         :isWithTracksCount="isWithTracksCount"
-        :isWithLibraryLink="isWithLibraryLink"
-        :isWithListenedButton="isWithListenedButton"
-        :isWithBookmarkButton="isWithBookmarkButton"
-        :isWithFavoriteButton="isWithFavoriteButton"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
         @tracksLinkActiveChange="handleTracksLinkActiveChange"
       />
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
+
+  <BaseProfileLibraryDeleteModal
+    v-if="isLinkToLibrary"
+    ref="deleteModal"
+    model="album"
+    :profileId="profileId"
+    :modelId="albumId"
+    :modelTitle="albumFullTitle"
+  />
 </template>
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 import InfoSection from './AlbumItem/InfoSection.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import {
@@ -41,11 +73,17 @@ export default {
   components: {
     BaseLinkContainer,
     BaseSimpleCardContainer,
-    InfoSection
+    BaseOptionsDropdown,
+    InfoSection,
+    BaseProfileLibraryDeleteModal
   },
   provide () {
     return {
-      setIsArtistNameActive: this.setIsArtistNameActive
+      setIsArtistNameActive: this.setIsArtistNameActive,
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
     }
   },
   props: {
@@ -59,10 +97,11 @@ export default {
     isWithTracksCount: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   emits: [
     'linkClick'
@@ -70,7 +109,11 @@ export default {
   data () {
     return {
       isArtistNameActive: false,
-      isTracksLinkActive: false
+      isTracksLinkActive: false,
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null
     }
   },
   computed: {
@@ -123,15 +166,28 @@ export default {
     albumTitle () {
       return this.albumData.title
     },
-    image () {
-      return this.albumData.image.medium
+    imageData () {
+      return this.albumData.image
     },
     artistId () {
       return this.albumData.artist.id
     },
     albumId () {
-      return this.albumData.id
+      return this.albumData.id.toString()
+    },
+    albumFullTitle () {
+      return `${this.albumArtistName} - ${this.albumTitle}`
     }
+  },
+  mounted () {
+    this.libraryId =
+      this.albumData.library_id?.toString()
+    this.favoriteId =
+      this.albumData.favorite_id?.toString()
+    this.bookmarkId =
+      this.albumData.bookmark_id?.toString()
+    this.listenedId =
+      this.albumData.listened_id?.toString()
   },
   methods: {
     handleLinkClick () {
@@ -140,8 +196,23 @@ export default {
     handleTracksLinkActiveChange (value) {
       this.isTracksLinkActive = value
     },
+    handleDeleteOptionClick () {
+      this.$refs.deleteModal.show()
+    },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value
+    },
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
     }
   }
 }
