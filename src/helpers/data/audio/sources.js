@@ -33,6 +33,24 @@ export default [
     ]
   },
   {
+    id: 'spotify',
+    icon: 'spotify',
+    name: 'Spotify',
+    isStreamable: true,
+    isWithAlbums: true,
+    isWithTracks: true,
+    maxBitrate: 160,
+    albumTypes: [
+      'album'
+    ],
+    albumsTypes: [
+      'album',
+      'single',
+      'compilation',
+      'appearance'
+    ]
+  },
+  {
     id: 'bandcamp',
     icon: 'bandcamp',
     name: 'Bandcamp',
@@ -132,23 +150,6 @@ export default [
       'unofficial',
       'various',
       'video'
-    ]
-  },
-  {
-    id: 'spotify',
-    icon: 'spotify',
-    name: 'Spotify',
-    isStreamable: false,
-    isWithAlbums: true,
-    isWithTracks: true,
-    albumTypes: [
-      'album'
-    ],
-    albumsTypes: [
-      'album',
-      'single',
-      'compilation',
-      'appearance'
     ]
   },
   {
