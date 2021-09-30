@@ -93,7 +93,7 @@ export default {
     },
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'pages.library.add.import.active.plays',
+        'shared.add.import.active.plays',
         { value, total }
       )
     },

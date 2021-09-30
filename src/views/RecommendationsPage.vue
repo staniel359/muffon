@@ -25,10 +25,11 @@
             <BaseArtistsExtendedList
               :artists="slotProps.recommendations"
               :profileId="profileId"
-              isWithLibraryLink
-              isWithListenedButton
-              isWithBookmarkButton
-              isWithFavoriteButton
+              isWithLibraryOption
+              isWithFavoriteOption
+              isWithBookmarkOption
+              isWithListenedOption
+              isWithDeleteOption
               isRecommendation
             />
           </template>

@@ -28,7 +28,8 @@
           isWithAlbumTitle
           isWithImage
           isWithCreated
-          isWithClearButton
+          isWithDeleteOption
+          isClearable
           @linkClick="handleLinkClick"
           @deleteButtonClick="handleDeleteButtonClick"
         />
@@ -36,7 +37,7 @@
     </BasePaginatedContainer>
   </div>
 
-  <BaseProfileLibrarySaveButton
+  <BaseSaveButton
     @click="handleSaveButtonClick"
   />
 </template>
@@ -45,8 +46,7 @@
 import BaseMessage from '@/BaseMessage.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import BaseProfileLibrarySaveButton
-  from '@/models/profile/library/BaseProfileLibrarySaveButton.vue'
+import BaseSaveButton from '@/BaseSaveButton.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -55,7 +55,7 @@ export default {
     BaseMessage,
     BasePaginatedContainer,
     BaseTracksSimpleList,
-    BaseProfileLibrarySaveButton
+    BaseSaveButton
   },
   inject: [
     'setSuccessFiles',
@@ -72,7 +72,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return this.$t(
-        'pages.library.add.import.success.tracks.header',
+        'shared.add.import.success.tracks.header',
         { count: this.totalCountFormatted }
       )
     },
@@ -83,7 +83,7 @@ export default {
     },
     messageContentFormatted () {
       return this.$t(
-        'pages.library.add.import.success.tracks.content'
+        'shared.add.import.success.tracks.content'
       )
     },
     totalCount () {

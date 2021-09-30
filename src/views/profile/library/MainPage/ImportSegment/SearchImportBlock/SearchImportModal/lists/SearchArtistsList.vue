@@ -13,7 +13,8 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps.artists"
-        isWithClearButton
+        isWithDeleteOption
+        isClearable
         @linkClick="handleLinkClick"
         @deleteButtonClick="handleDeleteButtonClick"
       />

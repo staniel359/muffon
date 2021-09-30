@@ -17,10 +17,9 @@
     />
   </div>
 
-  <BaseProfileLibraryRetryButton
+  <BaseRetryButton
     class="fluid retry-button"
     icon="redo alternate"
-    :text="retryFormatted"
     @click="handleRetryButtonClick"
   />
 </template>
@@ -28,8 +27,7 @@
 <script>
 import BaseMessage from '@/BaseMessage.vue'
 import SearchTracksList from '../../../lists/SearchTracksList.vue'
-import BaseProfileLibraryRetryButton
-  from '@/models/profile/library/BaseProfileLibraryRetryButton.vue'
+import BaseRetryButton from '@/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -37,7 +35,7 @@ export default {
   components: {
     BaseMessage,
     SearchTracksList,
-    BaseProfileLibraryRetryButton
+    BaseRetryButton
   },
   inject: [
     'setErrorTracks'
@@ -54,7 +52,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return this.$t(
-        'pages.library.add.save.error.tracks',
+        'shared.add.save.error.tracks',
         { count: this.totalCountFormatted }
       )
     },

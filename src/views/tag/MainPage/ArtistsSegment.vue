@@ -13,10 +13,10 @@
         :artists="slotProps.artists"
         :profileId="slotProps.profileId"
         isWithListenersCount
-        isWithLibraryLink
-        isWithListenedButton
-        isWithBookmarkButton
-        isWithFavoriteButton
+        isWithLibraryOption
+        isWithFavoriteOption
+        isWithBookmarkOption
+        isWithListenedOption
       />
     </template>
   </BaseTagPaginatedSegmentContainer>

@@ -13,6 +13,22 @@
         />
       </div>
 
+      <BaseOptionsDropdown
+        model="artist"
+        :modelId="artistId"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
+        :isWithLibraryOption="isWithLibraryOption"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithBookmarkOption="isWithBookmarkOption"
+        :isWithListenedOption="isWithListenedOption"
+        :isWithDeleteOption="isWithDeleteOption"
+        @linkClick="handleLinkClick"
+        @delete="handleDeleteOptionClick"
+      />
+
       <div class="content">
         <BaseHeader
           :class="{ link: isHeaderLink }"
@@ -37,28 +53,39 @@
           @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
         />
 
-        <BaseSelfSimpleButtons
-          model="artist"
-          :modelData="artistData"
-          :isWithLibraryLink="isWithLibraryLink"
-          :isWithListenedButton="isWithListenedButton"
-          :isWithBookmarkButton="isWithBookmarkButton"
-          :isWithFavoriteButton="isWithFavoriteButton"
+        <BaseSelfIcons
+          v-if="isWithSelfIcons"
+          :libraryId="libraryId"
+          :favoriteId="favoriteId"
+          :bookmarkId="bookmarkId"
+          :listenedId="listenedId"
         />
       </div>
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
+
+  <BaseProfileLibraryDeleteModal
+    v-if="isLinkToLibrary"
+    ref="deleteModal"
+    model="artist"
+    :profileId="profileId"
+    :modelId="artistId"
+    :modelTitle="artistName"
+  />
 </template>
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink,
@@ -72,10 +99,20 @@ export default {
     BaseLinkContainer,
     BaseSimpleCardContainer,
     BaseArtistImage,
+    BaseOptionsDropdown,
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseSelfSimpleButtons
+    BaseSelfIcons,
+    BaseProfileLibraryDeleteModal
+  },
+  provide () {
+    return {
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
+    }
   },
   inject: [
     'findPaginationItem'
@@ -85,16 +122,21 @@ export default {
       type: Object,
       required: true
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     isWithListenersCount: Boolean,
     isWithTracksCount: Boolean,
     isWithAlbumsCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   emits: [
     'linkClick'
@@ -102,7 +144,11 @@ export default {
   data () {
     return {
       isTracksLinkActive: false,
-      isAlbumsLinkActive: false
+      isAlbumsLinkActive: false,
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null
     }
   },
   computed: {
@@ -131,7 +177,7 @@ export default {
       }
     },
     artistId () {
-      return this.artistData.id
+      return this.artistData.id.toString()
     },
     artistName () {
       return this.artistData.name
@@ -152,6 +198,16 @@ export default {
       )
     }
   },
+  mounted () {
+    this.libraryId =
+      this.artistData.library_id?.toString()
+    this.favoriteId =
+      this.artistData.favorite_id?.toString()
+    this.bookmarkId =
+      this.artistData.bookmark_id?.toString()
+    this.listenedId =
+      this.artistData.listened_id?.toString()
+  },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
@@ -171,6 +227,21 @@ export default {
     },
     handleAlbumsLinkActiveChange (value) {
       this.isAlbumsLinkActive = value
+    },
+    handleDeleteOptionClick () {
+      this.$refs.deleteModal.show()
+    },
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
     }
   }
 }

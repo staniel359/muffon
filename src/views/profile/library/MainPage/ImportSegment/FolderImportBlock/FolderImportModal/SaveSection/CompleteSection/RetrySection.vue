@@ -26,7 +26,8 @@
           isWithAlbumTitle
           isWithImage
           isWithCreated
-          isWithClearButton
+          isWithDeleteOption
+          isClearable
           @linkClick="handleLinkClick"
           @deleteButtonClick="handleDeleteButtonClick"
         />
@@ -34,7 +35,7 @@
     </BasePaginatedContainer>
   </div>
 
-  <BaseProfileLibraryRetryButton
+  <BaseRetryButton
     @click="handleRetryButtonClick"
   />
 </template>
@@ -43,8 +44,7 @@
 import BaseMessage from '@/BaseMessage.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import BaseProfileLibraryRetryButton
-  from '@/models/profile/library/BaseProfileLibraryRetryButton.vue'
+import BaseRetryButton from '@/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -53,7 +53,7 @@ export default {
     BaseMessage,
     BasePaginatedContainer,
     BaseTracksSimpleList,
-    BaseProfileLibraryRetryButton
+    BaseRetryButton
   },
   inject: [
     'setErrorFiles',
@@ -71,7 +71,7 @@ export default {
   computed: {
     messageHeaderFormatted () {
       return this.$t(
-        'pages.library.add.save.error.tracks',
+        'shared.add.save.error.tracks',
         { count: this.totalCountFormatted }
       )
     },

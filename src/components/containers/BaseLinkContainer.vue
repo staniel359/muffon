@@ -27,6 +27,13 @@ export default {
   emits: [
     'click'
   ],
+  computed: {
+    isLinkPresent () {
+      return Object.keys(
+        this.link
+      ).length
+    }
+  },
   methods: {
     handleClick () {
       this.$emit('click')
@@ -38,17 +45,19 @@ export default {
       this.openNewTab()
     },
     openNewTab () {
-      const tab = this.getTabData()
+      if (this.isLinkPresent) {
+        const tab = this.getTabData()
 
-      ipcRenderer.send(
-        'add-tab',
-        tab
-      )
+        ipcRenderer.send(
+          'add-tab',
+          tab
+        )
 
-      ipcRenderer.send(
-        'set-top-tab',
-        tab.uuid
-      )
+        ipcRenderer.send(
+          'set-top-tab',
+          tab.uuid
+        )
+      }
     },
     getTabData () {
       return {

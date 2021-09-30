@@ -16,14 +16,20 @@
 
       <ArtistsSegment
         :profileId="profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
       />
 
       <AlbumsSegment
         :profileId="profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
       />
 
       <TracksSegment
         :profileId="profileId"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
       />
     </template>
   </BaseProfilePageContainer>
@@ -51,6 +57,18 @@ export default {
   },
   props: {
     profileId: String
+  },
+  computed: {
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   },
   methods: {
     isCurrentProfile

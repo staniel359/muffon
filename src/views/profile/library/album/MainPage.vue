@@ -25,6 +25,8 @@
           <TracksSegment
             :profileId="profileId"
             :albumId="albumId"
+            :isWithFavoriteOption="isWithFavoriteOption"
+            :isWithDeleteOption="isWithDeleteOption"
           />
         </div>
       </div>
@@ -38,6 +40,7 @@ import BaseProfileLibraryAlbumPageContainer
 import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'MainPage',
@@ -50,6 +53,18 @@ export default {
   props: {
     profileId: String,
     albumId: String
+  },
+  computed: {
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>

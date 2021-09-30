@@ -13,10 +13,13 @@
         :profileId="profileId"
         :artistId="artistId"
         :artistName="slotProps.artistName"
+        :isWithFavoriteOption="isWithFavoriteOption"
+        :isWithDeleteOption="isWithDeleteOption"
         isWithImage
         isWithAlbumTitle
         isWithCreated
         isLinkToLibrary
+        isWithPlaylistOption
       />
     </template>
   </BaseProfileLibraryArtistPaginatedPageContainer>
@@ -26,6 +29,7 @@
 import BaseProfileLibraryArtistPaginatedPageContainer
   from '@/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'TracksPage',
@@ -36,6 +40,18 @@ export default {
   props: {
     profileId: String,
     artistId: String
+  },
+  computed: {
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>

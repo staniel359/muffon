@@ -1,5 +1,7 @@
 <template>
-  <BaseArtistContainer :artistName="artistName">
+  <BaseArtistContainer
+    :artistName="artistName"
+  >
     <template #default="slotProps">
       <BaseArtistHorizontalCardContainer
         :isLoading="slotProps.isLoading"
@@ -24,6 +26,14 @@
                 @loadEnd="handleImageLoadEnd"
               />
 
+              <BaseSelfIcons
+                v-if="isWithSelfIcons"
+                :libraryId="libraryId"
+                :favoriteId="favoriteId"
+                :bookmarkId="bookmarkId"
+                :listenedId="listenedId"
+              />
+
               <LibraryCountersSection
                 v-if="isWithLibrary"
                 :artistData="artistData"
@@ -33,20 +43,22 @@
                 :artistId="artistId"
               />
 
-              <BaseSelfSimpleButtons
-                model="artist"
-                :modelData="artistData"
-                :isWithLibraryLink="isWithLibraryLink"
-                :isWithListenedButton="isWithListenedButton"
-                :isWithBookmarkButton="isWithBookmarkButton"
-                :isWithFavoriteButton="isWithFavoriteButton"
-              />
-
-              <RecommendationDeleteButton
-                v-if="isRecommendation"
-                :recommendationData="artistData"
-                @deleted="handleDeleted"
-              />
+              <div class="main-options-dropdown-container-right">
+                <BaseOptionsDropdown
+                  model="artist"
+                  :modelId="artistId"
+                  :libraryId="libraryId"
+                  :favoriteId="favoriteId"
+                  :bookmarkId="bookmarkId"
+                  :listenedId="listenedId"
+                  :isWithLibraryOption="isWithLibraryOption"
+                  :isWithFavoriteOption="isWithFavoriteOption"
+                  :isWithBookmarkOption="isWithBookmarkOption"
+                  :isWithListenedOption="isWithListenedOption"
+                  :isWithDeleteOption="isWithDeleteOption"
+                  @delete="handleDeleteOptionClick"
+                />
+              </div>
             </div>
 
             <InfoBlock
@@ -56,6 +68,22 @@
               :artistId="artistId"
               :isRecommendation="isRecommendation"
               :recommendationData="artistData"
+            />
+
+            <BaseRecommendationDeleteModal
+              v-if="isRecommendation"
+              ref="deleteModal"
+              :recommendationData="artistData"
+              @deleted="handleDeleted"
+            />
+
+            <BaseProfileLibraryDeleteModal
+              v-if="isLinkToLibrary"
+              ref="deleteModal"
+              model="artist"
+              :profileId="profileId"
+              :modelId="artistId"
+              :modelTitle="artistName"
             />
           </template>
         </template>
@@ -69,11 +97,14 @@ import BaseArtistContainer from '@/containers/artist/BaseArtistContainer.vue'
 import BaseArtistHorizontalCardContainer
   from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
-import RecommendationDeleteButton
-  from './ArtistItem/RecommendationDeleteButton.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
+import BaseRecommendationDeleteModal
+  from '@/BaseRecommendationDeleteModal.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 
 export default {
   name: 'ArtistItem',
@@ -81,10 +112,20 @@ export default {
     BaseArtistContainer,
     BaseArtistHorizontalCardContainer,
     BaseArtistImage,
+    BaseOptionsDropdown,
     LibraryCountersSection,
-    BaseSelfSimpleButtons,
+    BaseSelfIcons,
     InfoBlock,
-    RecommendationDeleteButton
+    BaseRecommendationDeleteModal,
+    BaseProfileLibraryDeleteModal
+  },
+  provide () {
+    return {
+      setLibraryId: this.setLibraryId,
+      setFavoriteId: this.setFavoriteId,
+      setBookmarkId: this.setBookmarkId,
+      setListenedId: this.setListenedId
+    }
   },
   inject: [
     'findPaginationItem'
@@ -94,20 +135,29 @@ export default {
       type: Object,
       required: true
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     isWithTracksCount: Boolean,
     isWithAlbumsCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean,
     isRecommendation: Boolean
   },
   data () {
     return {
-      isDeleted: false
+      isDeleted: false,
+      libraryId: null,
+      favoriteId: null,
+      bookmarkId: null,
+      listenedId: null
     }
   },
   computed: {
@@ -125,9 +175,19 @@ export default {
     },
     deletedFormatted () {
       return this.$t(
-        'shared.recommendation.deleted'
+        'shared.deleted.recommendation'
       )
     }
+  },
+  mounted () {
+    this.libraryId =
+      this.artistData.library_id?.toString()
+    this.favoriteId =
+      this.artistData.favorite_id?.toString()
+    this.bookmarkId =
+      this.artistData.bookmark_id?.toString()
+    this.listenedId =
+      this.artistData.listened_id?.toString()
   },
   methods: {
     handleImageLoadEnd (value) {
@@ -137,6 +197,21 @@ export default {
     },
     handleDeleted () {
       this.isDeleted = true
+    },
+    handleDeleteOptionClick () {
+      this.$refs.deleteModal.show()
+    },
+    setLibraryId (value) {
+      this.libraryId = value
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    },
+    setBookmarkId (value) {
+      this.bookmarkId = value
+    },
+    setListenedId (value) {
+      this.listenedId = value
     }
   }
 }

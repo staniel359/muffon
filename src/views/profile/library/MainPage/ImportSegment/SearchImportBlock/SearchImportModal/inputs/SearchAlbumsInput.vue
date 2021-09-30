@@ -39,7 +39,7 @@ export default {
     }),
     textFormatted () {
       return this.$t(
-        'pages.library.add.search.input.albums'
+        'inputs.search.albums'
       )
     },
     searchOptions () {

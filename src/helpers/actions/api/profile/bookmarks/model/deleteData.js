@@ -7,11 +7,16 @@ export default function ({ model, bookmarkId }) {
 
   const profileId =
     store.state.profile.info.id
-  const url = `profiles/${profileId}` +
+  const url =
+    `profiles/${profileId}` +
     `/bookmarks/${model}s/${bookmarkId}`
 
   const { token } = store.state.profile
   const params = { token }
+
+  const handleSuccess = () => {
+    this.setBookmarkId(null)
+  }
 
   const handleError = error => {
     this.error = error
@@ -23,6 +28,7 @@ export default function ({ model, bookmarkId }) {
 
   return axios
     .delete(url, { params })
+    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

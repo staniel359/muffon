@@ -226,6 +226,8 @@ const setup = () => {
   createHeadersHandler()
 }
 
+app.disableHardwareAcceleration()
+
 app.whenReady().then(setup)
 
 app.setAppUserModelId(appName)

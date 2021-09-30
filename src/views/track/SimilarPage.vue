@@ -12,10 +12,11 @@
         :profileId="slotProps.profileId"
         isWithArtistName
         isWithDuration
-        isWithLibraryLink
-        isWithListenedButton
-        isWithBookmarkButton
-        isWithFavoriteButton
+        isWithLibraryOption
+        isWithFavoriteOption
+        isWithBookmarkOption
+        isWithListenedOption
+        isWithPlaylistOption
       />
     </template>
   </BaseTrackPaginatedPageContainer>

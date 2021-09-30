@@ -27,7 +27,7 @@ import MainSection from './BaseEditForm/MainSection.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import ExtraSection from './BaseEditForm/ExtraSection.vue'
 import SubmitButton from './BaseEditForm/SubmitButton.vue'
-import { editFormOptions } from '#/data/plugins/semantic'
+import { profileEditFormOptions } from '#/data/plugins/semantic'
 import fetchEditData from '#/actions/api/profile/edit/fetchData'
 import { stringToDate as formatStringToDate } from '#/formatters'
 
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     options () {
-      return editFormOptions({
+      return profileEditFormOptions({
         onSuccess: this.handleSuccess
       })
     }

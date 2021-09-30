@@ -10,7 +10,7 @@
         <BaseImage
           class="rounded bordered main-profile-page-image"
           size="small"
-          :image="image"
+          :image="imageData.medium"
         />
 
         <BaseHeader
@@ -38,6 +38,10 @@
             {{ albumTitle }}
           </small>
         </div>
+
+        <BaseSelfIcons
+          :favoriteId="favoriteId"
+        />
       </BaseLinkContainer>
 
       <BaseDivider />
@@ -53,9 +57,30 @@
     </BaseSegmentContainer>
 
     <BaseSegmentContainer
-      v-if="isCurrentProfile(profileId)"
+      v-if="isRenderOptions"
     >
-      <BaseProfileLibraryDeleteButton
+      <div class="main-options-dropdown-container-right">
+        <BaseOptionsDropdown
+          model="track"
+          :modelId="trackTrackId"
+          :favoriteId="favoriteId"
+          isWithFavoriteOption
+          isWithPlaylistOption
+          isWithDeleteOption
+          @delete="handleDeleteOptionClick"
+          @playlist="handlePlaylistOptionClick"
+        />
+      </div>
+
+      <BasePlaylistsModal
+        ref="playlistModal"
+        :trackId="trackTrackId"
+        :albumTitle="albumTitle"
+        :imageUrl="imageData.medium"
+      />
+
+      <BaseProfileLibraryDeleteModal
+        ref="deleteModal"
         model="track"
         :profileId="profileId"
         :modelId="trackId"
@@ -70,9 +95,12 @@ import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseImage from '@/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import BaseProfileLibraryDeleteButton
-  from '@/models/profile/library/BaseProfileLibraryDeleteButton.vue'
+import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BasePlaylistsModal from '@/BasePlaylistsModal.vue'
+import BaseProfileLibraryDeleteModal
+  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'
@@ -90,8 +118,16 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
+    BaseSelfIcons,
     BaseDivider,
-    BaseProfileLibraryDeleteButton
+    BaseOptionsDropdown,
+    BasePlaylistsModal,
+    BaseProfileLibraryDeleteModal
+  },
+  provide () {
+    return {
+      setFavoriteId: this.setFavoriteId
+    }
   },
   props: {
     trackData: Object,
@@ -100,6 +136,7 @@ export default {
   },
   data () {
     return {
+      favoriteId: null,
       isArtistNameActive: false,
       isAlbumTitleActive: false
     }
@@ -147,8 +184,8 @@ export default {
     albumTitle () {
       return this.trackData.album?.title
     },
-    image () {
-      return this.trackData.image.medium
+    imageData () {
+      return this.trackData.image
     },
     sinceFormatted () {
       return this.$t(
@@ -162,7 +199,19 @@ export default {
     },
     created () {
       return this.trackData.created
+    },
+    isRenderOptions () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    trackTrackId () {
+      return this.trackData.track_id.toString()
     }
+  },
+  mounted () {
+    this.favoriteId =
+      this.trackData.favorite_id?.toString()
   },
   methods: {
     handleArtistLinkMouseEnter () {
@@ -177,7 +226,15 @@ export default {
     handleAlbumLinkMouseLeave () {
       this.isAlbumTitleActive = false
     },
-    isCurrentProfile
+    handleDeleteOptionClick () {
+      this.$refs.deleteModal.show()
+    },
+    handlePlaylistOptionClick () {
+      this.$refs.playlistModal.show()
+    },
+    setFavoriteId (value) {
+      this.favoriteId = value
+    }
   }
 }
 </script>
@@ -186,4 +243,7 @@ export default {
 .main-profile-page-image
   width: 120px
   height: 120px
+
+.main-self-icons
+  margin-top: 0.25em
 </style>

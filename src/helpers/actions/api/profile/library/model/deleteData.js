@@ -8,8 +8,8 @@ export default function ({ model, modelId }) {
   const profileId =
     store.state.profile.info.id
   const url =
-    `profiles/${profileId}/library` +
-    `/${this.model}s/${this.modelId}`
+    `profiles/${profileId}` +
+    `/library/${model}s/${modelId}`
 
   const { token } = store.state.profile
   const params = { token }

@@ -20,7 +20,7 @@ export default {
     ]),
     textFormatted () {
       return this.$t(
-        'shared.profile.form.submit.save'
+        'buttons.save'
       )
     }
   }

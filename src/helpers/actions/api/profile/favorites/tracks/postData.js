@@ -1,12 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({
-  title,
-  artistName,
-  albumTitle,
-  imageUrl
-}) {
+export default function ({ trackId, albumTitle, imageUrl }) {
   this.isLoading = true
 
   const profileId =
@@ -17,15 +12,15 @@ export default function ({
   const { token } = store.state.profile
   const params = {
     token,
-    title,
-    artist: artistName,
+    track_id: trackId,
     album: albumTitle,
     image_url: imageUrl
   }
 
   const handleSuccess = response => {
-    this.favoriteId =
-      response.data.favorite_id
+    this.setFavoriteId(
+      response.data.favorite_id.toString()
+    )
   }
 
   const handleError = error => {

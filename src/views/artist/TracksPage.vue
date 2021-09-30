@@ -12,10 +12,11 @@
         :topTrackCount="slotProps.topTrackCount"
         :profileId="slotProps.profileId"
         isWithListenersCount
-        isWithLibraryLink
-        isWithListenedButton
-        isWithBookmarkButton
-        isWithFavoriteButton
+        isWithLibraryOption
+        isWithFavoriteOption
+        isWithBookmarkOption
+        isWithListenedOption
+        isWithPlaylistOption
       />
     </template>
   </BaseArtistPaginatedPageContainer>

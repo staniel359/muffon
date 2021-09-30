@@ -17,10 +17,6 @@
       :handleRefresh="handleRefresh"
       :topTrackCount="topTrackCount"
       :profileId="profileId"
-      :libraryId="libraryId"
-      :listenedId="listenedId"
-      :bookmarkId="bookmarkId"
-      :favoriteId="favoriteId"
     ></slot>
   </BasePageContainer>
 </template>
@@ -102,18 +98,6 @@ export default {
       } else {
         return this.error
       }
-    },
-    libraryId () {
-      return this.artistData?.library_id?.toString()
-    },
-    listenedId () {
-      return this.artistData?.listened_id?.toString()
-    },
-    bookmarkId () {
-      return this.artistData?.bookmark_id?.toString()
-    },
-    favoriteId () {
-      return this.artistData?.favorite_id?.toString()
     }
   },
   watch: {

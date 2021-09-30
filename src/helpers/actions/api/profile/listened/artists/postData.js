@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ artistName }) {
+export default function ({ artistId }) {
   this.isLoading = true
 
   const profileId =
@@ -12,12 +12,13 @@ export default function ({ artistName }) {
   const { token } = store.state.profile
   const params = {
     token,
-    artist: artistName
+    artist_id: artistId
   }
 
   const handleSuccess = response => {
-    this.listenedId =
-      response.data.listened_id
+    this.setListenedId(
+      response.data.listened_id.toString()
+    )
   }
 
   const handleError = error => {

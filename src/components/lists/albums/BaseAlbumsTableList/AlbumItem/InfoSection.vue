@@ -42,13 +42,12 @@
       </small>
     </div>
 
-    <BaseSelfSimpleButtons
-      model="album"
-      :modelData="albumData"
-      :isWithLibraryLink="isWithLibraryLink"
-      :isWithListenedButton="isWithListenedButton"
-      :isWithBookmarkButton="isWithBookmarkButton"
-      :isWithFavoriteButton="isWithFavoriteButton"
+    <BaseSelfIcons
+      v-if="isWithSelfIcons"
+      :libraryId="libraryId"
+      :favoriteId="favoriteId"
+      :bookmarkId="bookmarkId"
+      :listenedId="listenedId"
     />
   </div>
 </template>
@@ -58,7 +57,7 @@ import BaseHeader from '@/BaseHeader.vue'
 import ArtistName from './InfoSection/ArtistName.vue'
 import BaseAlbumListenersCount
   from '@/models/album/BaseAlbumListenersCount.vue'
-import BaseSelfSimpleButtons from '@/models/self/BaseSelfSimpleButtons.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 
 export default {
   name: 'InfoSection',
@@ -66,7 +65,7 @@ export default {
     BaseHeader,
     ArtistName,
     BaseAlbumListenersCount,
-    BaseSelfSimpleButtons
+    BaseSelfIcons
   },
   inject: [
     'findPaginationItem'
@@ -76,16 +75,20 @@ export default {
       type: Object,
       required: true
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     artistName: String,
     isWithArtistName: Boolean,
     isArtistNameActive: Boolean,
     isTracksLinkActive: Boolean,
     isWithListenersCount: Boolean,
     isWithTracksCount: Boolean,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean
+    libraryId: String,
+    favoriteId: String,
+    bookmarkId: String,
+    listenedId: String
   },
   emits: [
     'tracksLinkActiveChange'

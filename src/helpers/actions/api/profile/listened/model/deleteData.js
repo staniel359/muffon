@@ -7,14 +7,15 @@ export default function ({ model, listenedId }) {
 
   const profileId =
     store.state.profile.info.id
-  const url = `profiles/${profileId}` +
+  const url =
+    `profiles/${profileId}` +
     `/listened/${model}s/${listenedId}`
 
   const { token } = store.state.profile
   const params = { token }
 
   const handleSuccess = () => {
-    this.listenedId = null
+    this.setListenedId(null)
   }
 
   const handleError = error => {

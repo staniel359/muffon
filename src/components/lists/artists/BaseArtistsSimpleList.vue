@@ -12,11 +12,12 @@
       :isWithLibrary="isWithLibrary"
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
-      :isWithLibraryLink="isWithLibraryLink"
-      :isWithListenedButton="isWithListenedButton"
-      :isWithBookmarkButton="isWithBookmarkButton"
-      :isWithFavoriteButton="isWithFavoriteButton"
-      :isWithClearButton="isWithClearButton"
+      :isWithLibraryOption="isWithLibraryOption"
+      :isWithFavoriteOption="isWithFavoriteOption"
+      :isWithBookmarkOption="isWithBookmarkOption"
+      :isWithListenedOption="isWithListenedOption"
+      :isWithDeleteOption="isWithDeleteOption"
+      :isClearable="isClearable"
       :isImageSmall="isImageSmall"
       :isBookmark="isBookmark"
       :isFavorite="isFavorite"
@@ -52,11 +53,12 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    isWithLibraryLink: Boolean,
-    isWithListenedButton: Boolean,
-    isWithBookmarkButton: Boolean,
-    isWithFavoriteButton: Boolean,
-    isWithClearButton: Boolean,
+    isWithLibraryOption: Boolean,
+    isWithFavoriteOption: Boolean,
+    isWithBookmarkOption: Boolean,
+    isWithListenedOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean,
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean

@@ -27,6 +27,7 @@
           <template #default="slotProps">
             <slot
               :[scope]="slotProps[scope]"
+              :artistName="segmentSlotProps.artistName"
             ></slot>
           </template>
         </BasePaginatedContainer>

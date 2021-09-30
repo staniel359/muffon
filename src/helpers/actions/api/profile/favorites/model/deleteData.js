@@ -7,11 +7,16 @@ export default function ({ model, favoriteId }) {
 
   const profileId =
     store.state.profile.info.id
-  const url = `profiles/${profileId}` +
+  const url =
+    `profiles/${profileId}` +
     `/favorites/${model}s/${favoriteId}`
 
   const { token } = store.state.profile
   const params = { token }
+
+  const handleSuccess = () => {
+    this.setFavoriteId(null)
+  }
 
   const handleError = error => {
     this.error = error
@@ -23,6 +28,7 @@ export default function ({ model, favoriteId }) {
 
   return axios
     .delete(url, { params })
+    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

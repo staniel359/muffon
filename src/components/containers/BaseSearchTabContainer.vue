@@ -24,11 +24,12 @@
           :isWithListenersCount="!!tabData.isWithListenersCount"
           :isWithIcon="!!tabData.isWithIcon"
           :profileId="profileId"
+          :isWithPlaylistOption="isWithPlaylistOption"
           isWithArtistName
-          isWithLibraryLink
-          isWithListenedButton
-          isWithBookmarkButton
-          isWithFavoriteButton
+          isWithLibraryOption
+          isWithListenedOption
+          isWithBookmarkOption
+          isWithFavoriteOption
           @linkClick="handleLinkClick"
         />
       </template>
@@ -92,6 +93,9 @@ export default {
     },
     profileId () {
       return this.profileInfo.id.toString()
+    },
+    isWithPlaylistOption () {
+      return this.tabData.scope === 'tracks'
     }
   },
   watch: {

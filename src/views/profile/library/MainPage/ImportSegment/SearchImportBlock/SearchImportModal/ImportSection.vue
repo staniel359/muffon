@@ -20,7 +20,7 @@
     </BaseTabsContainer>
   </div>
 
-  <BaseProfileLibrarySaveButton
+  <BaseSaveButton
     @click="handleSaveButtonClick"
   />
 </template>
@@ -30,8 +30,7 @@ import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import SearchArtistsList from './lists/SearchArtistsList.vue'
 import SearchAlbumsList from './lists/SearchAlbumsList.vue'
 import SearchTracksList from './lists/SearchTracksList.vue'
-import BaseProfileLibrarySaveButton
-  from '@/models/profile/library/BaseProfileLibrarySaveButton.vue'
+import BaseSaveButton from '@/BaseSaveButton.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
@@ -41,7 +40,7 @@ export default {
     SearchArtistsList,
     SearchAlbumsList,
     SearchTracksList,
-    BaseProfileLibrarySaveButton
+    BaseSaveButton
   },
   props: {
     scope: {
