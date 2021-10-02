@@ -1,8 +1,8 @@
-{
-  "plugins": [
+module.exports = {
+  plugins: [
     "@babel/plugin-syntax-dynamic-import"
   ],
-  "presets": [
+  presets: [
     "@vue/cli-plugin-babel/preset"
   ]
 }
