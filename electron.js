@@ -82,7 +82,7 @@ const local = new ElectronStore({
 
 let lang = local.get(
   'profile.language'
-)
+) || 'en'
 let mainWindow = null
 let tray = null
 let tabs = []
