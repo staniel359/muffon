@@ -1,6 +1,4 @@
 <template>
-  <FastLoginSection />
-
   <BaseFormContainer
     :options="options"
     :isLoading="isLoading"
@@ -23,7 +21,6 @@
 </template>
 
 <script>
-import FastLoginSection from './BaseLoginForm/FastLoginSection.vue'
 import BaseFormContainer from '@/containers/BaseFormContainer.vue'
 import BaseEmailField from '@/models/profile/fields/BaseEmailField.vue'
 import BasePasswordField from '@/models/profile/fields/BasePasswordField.vue'
@@ -38,7 +35,6 @@ import { setGlobalData } from '#/actions'
 export default {
   name: 'BaseLoginForm',
   components: {
-    FastLoginSection,
     BaseFormContainer,
     BaseEmailField,
     BasePasswordField,
