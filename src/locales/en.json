@@ -445,7 +445,8 @@
       "artist": "Artist was deleted",
       "album": "Album was deleted",
       "track": "Track was deleted",
-      "recommendation": "Recommendation was deleted"
+      "recommendation": "Recommendation was deleted",
+      "playlist": "Playlist was deleted"
     }
   }
 }

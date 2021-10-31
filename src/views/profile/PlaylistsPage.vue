@@ -28,7 +28,6 @@
         <BaseSegmentContainer
           class="playlists-segment"
           :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
         >
           <BasePaginatedContainer
             scope="playlists"

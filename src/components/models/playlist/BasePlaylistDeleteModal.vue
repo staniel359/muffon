@@ -66,8 +66,12 @@ export default {
     playlistTitle: {
       type: String,
       required: true
-    }
+    },
+    isDeleteWithRedirect: Boolean
   },
+  emits: [
+    'deleted'
+  ],
   data () {
     return {
       error: null,
@@ -110,7 +114,6 @@ export default {
     isSuccess: 'handleIsSuccessChange'
   },
   methods: {
-    deleteProfilePlaylistData,
     handleDeleteButtonClick () {
       this.deleteProfilePlaylistData({
         playlistId: this.playlistId
@@ -119,15 +122,20 @@ export default {
     handleIsSuccessChange () {
       this.$refs.modal.hide()
 
-      this.$router.push(
-        this.callbackUrl
-      )
+      if (this.isDeleteWithRedirect) {
+        this.$router.push(
+          this.callbackUrl
+        )
 
-      setToast({
-        message: this.toastMessage,
-        icon: 'green check'
-      })
+        setToast({
+          message: this.toastMessage,
+          icon: 'green check'
+        })
+      } else {
+        this.$emit('deleted')
+      }
     },
+    deleteProfilePlaylistData,
     show () {
       this.$refs.modal.show()
     }

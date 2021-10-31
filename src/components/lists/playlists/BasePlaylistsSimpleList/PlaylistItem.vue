@@ -1,28 +1,35 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
+    :class="{ disabled: isDeleted }"
     :link="linkFormatted"
   >
-    <BasePlaylistImage
-      :image="imageData.small"
+    <BaseDeletedBlock
+      v-if="isDeleted"
+      model="playlist"
     />
-
-    <div class="content">
-      <BaseHeader
-        class="link"
-        tag="h4"
-        :text="playlistTitle"
+    <template v-else>
+      <BasePlaylistImage
+        :image="imageData.small"
       />
 
-      <div class="description">
-        {{ tracksCountTextFormatted }}
-      </div>
-    </div>
+      <div class="content">
+        <BaseHeader
+          class="link"
+          tag="h4"
+          :text="playlistTitle"
+        />
 
-    <BaseOptionsDropdown
-      :isWithDeleteOption="isWithDeleteOption"
-      @delete="handleDeleteOptionClick"
-    />
+        <div class="description">
+          {{ tracksCountTextFormatted }}
+        </div>
+      </div>
+
+      <BaseOptionsDropdown
+        :isWithDeleteOption="isWithDeleteOption"
+        @delete="handleDeleteOptionClick"
+      />
+    </template>
   </BaseLinkContainer>
 
   <BasePlaylistDeleteModal
@@ -30,11 +37,13 @@
     :playlistId="playlistId"
     :playlistTitle="playlistTitle"
     :profileId="profileId"
+    @deleted="handleDeleted"
   />
 </template>
 
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
@@ -49,6 +58,7 @@ export default {
   name: 'PlaylistItem',
   components: {
     BaseLinkContainer,
+    BaseDeletedBlock,
     BasePlaylistImage,
     BaseHeader,
     BaseOptionsDropdown,
@@ -64,6 +74,11 @@ export default {
       required: true
     },
     isWithDeleteOption: Boolean
+  },
+  data () {
+    return {
+      isDeleted: false
+    }
   },
   computed: {
     linkFormatted () {
@@ -99,6 +114,9 @@ export default {
   methods: {
     handleDeleteOptionClick () {
       this.$refs.deleteModal.show()
+    },
+    handleDeleted () {
+      this.isDeleted = true
     }
   }
 }
