@@ -22,6 +22,8 @@
           :[tabData.scope]="slotProps[tabData.scope]"
           :itemsInRow="tabData.itemsInRow"
           :profileId="profileId"
+          :isWithFavoriteOption="isWithFavoriteOption"
+          :isWithDeleteOption="isWithDeleteOption"
           isWithImage
           isWithArtistName
           isWithAlbumTitle
@@ -29,8 +31,6 @@
           isWithAlbumsCount
           isWithCreated
           isLinkToLibrary
-          isWithFavoriteOption
-          isWithDeleteOption
         />
       </template>
     </BasePaginatedContainer>
@@ -44,6 +44,7 @@ import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import fetchLibraryData from '#/actions/api/profile/library/fetchData'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',
@@ -88,6 +89,16 @@ export default {
     },
     libraryData () {
       return this.profileData?.library
+    },
+    isWithFavoriteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
+    isWithDeleteOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
     }
   },
   watch: {
