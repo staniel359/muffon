@@ -12,7 +12,6 @@
         :profileId="profileId"
         :itemsInRow="4"
         :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
         isWithArtistName
         isWithTracksCount
         isLinkToLibrary
@@ -38,11 +37,6 @@ export default {
   },
   computed: {
     isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
       return isCurrentProfile(
         this.profileId
       )

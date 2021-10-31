@@ -13,14 +13,14 @@
         :scrollable="scrollable"
       />
 
-      <BaseSelfIcons
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-      />
+      <div class="main-self-container">
+        <BaseSelfIcons
+          :libraryId="libraryId"
+          :favoriteId="favoriteId"
+          :bookmarkId="bookmarkId"
+          :listenedId="listenedId"
+        />
 
-      <div class="main-options-dropdown-container-right">
         <BaseOptionsDropdown
           model="track"
           :modelId="trackId"
@@ -141,8 +141,4 @@ export default {
 
 .left-column-extra
   margin-top: 0.5em
-
-.main-self-icons
-  @extend .text-align-center
-  margin-top: 0.25em
 </style>

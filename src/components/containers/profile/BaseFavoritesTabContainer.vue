@@ -21,6 +21,7 @@
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :profileId="profileId"
+          :isWithPlaylistOption="isWithPlaylistOption"
           :isWithDeleteOption="isWithDeleteOption"
           isWithImage
           isWithArtistName
@@ -81,6 +82,11 @@ export default {
     },
     favoritesData () {
       return this.profileData?.favorites
+    },
+    isWithPlaylistOption () {
+      return isCurrentProfile(
+        this.profileId
+      )
     },
     isWithDeleteOption () {
       return isCurrentProfile(

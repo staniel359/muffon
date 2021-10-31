@@ -14,7 +14,6 @@
         :profileId="profileId"
         :artistName="slotProps.artistName"
         :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
         isWithTracksCount
         isLinkToLibrary
       />
@@ -40,11 +39,6 @@ export default {
   },
   computed: {
     isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
       return isCurrentProfile(
         this.profileId
       )

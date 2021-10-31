@@ -1,7 +1,9 @@
 <template>
-  <div
-    class="item"
+  <Component
+    class="ui item"
+    :is="component"
     :class="{ disabled: isLoading }"
+    :link="linkFormatted"
     @click="handleClick"
   >
     <i
@@ -16,11 +18,12 @@
     ></i>
 
     {{ textFormatted }}
-  </div>
+  </Component>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import postArtistData from '#/actions/api/profile/library/artists/postData'
 import postAlbumData from '#/actions/api/profile/library/albums/postData'
 import postTrackData from '#/actions/api/profile/library/tracks/postData'
@@ -36,6 +39,9 @@ import {
 
 export default {
   name: 'FavoriteOption',
+  components: {
+    BaseLinkContainer
+  },
   inject: [
     'setLibraryId'
   ],
@@ -106,12 +112,19 @@ export default {
       return this.albumTracks.map(
         this.formatAlbumTrack
       )
+    },
+    component () {
+      if (this.optionModelId) {
+        return 'BaseLinkContainer'
+      } else {
+        return 'div'
+      }
     }
   },
   methods: {
     handleClick () {
       if (this.optionModelId) {
-        this.showInLibrary()
+        this.$emit('linkClick')
       } else {
         this.addToLibrary()
       }
@@ -119,13 +132,6 @@ export default {
     postArtistData,
     postAlbumData,
     postTrackData,
-    showInLibrary () {
-      this.$emit('linkClick')
-
-      this.$router.push(
-        this.linkFormatted
-      )
-    },
     addToLibrary () {
       switch (this.model) {
         case 'artist':

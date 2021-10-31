@@ -1,7 +1,7 @@
 <template>
   <BasePlaylistsPageContainer
     :profileId="profileId"
-    :responsePageLimit="20"
+    :responsePageLimit="50"
   >
     <template #default="pageSlotProps">
       <div
@@ -35,8 +35,8 @@
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.profileData"
-            :clientPageLimit="20"
-            :responsePageLimit="20"
+            :clientPageLimit="50"
+            :responsePageLimit="50"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
