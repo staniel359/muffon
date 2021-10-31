@@ -554,5 +554,18 @@ a
   border-radius: 50%
   &.inverted
     @extend .background-black
-  & > .dropdown
-    @extend .no-margin
+
+.main-options-dropdown-button
+  @extend .no-margin
+  padding: 0.5em !important
+
+.main-self-container
+  @extend .d-flex, .w-100, .justify-content-center, .align-items-center
+  margin-top: 0.5em
+  .main-options-dropdown-container
+    @extend .absolute
+    right: 0
+
+.main-self-icons-segment-container
+  @extend .width-fit-content
+  padding: 0.25em !important

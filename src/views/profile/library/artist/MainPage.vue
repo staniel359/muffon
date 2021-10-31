@@ -27,7 +27,6 @@
             :profileId="profileId"
             :artistId="artistId"
             :isWithFavoriteOption="isWithFavoriteOption"
-            :isWithDeleteOption="isWithDeleteOption"
           />
 
           <TracksSegment

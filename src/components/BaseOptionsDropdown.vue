@@ -37,10 +37,10 @@ import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
 import LibraryOption from './BaseOptionsDropdown/LibraryOption.vue'
+import PlaylistOption from './BaseOptionsDropdown/PlaylistOption.vue'
 import FavoriteOption from './BaseOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseOptionsDropdown/ListenedOption.vue'
-import PlaylistOption from './BaseOptionsDropdown/PlaylistOption.vue'
 import EditOption from './BaseOptionsDropdown/EditOption.vue'
 import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
 import { setDropdown } from '#/actions/plugins/semantic'
@@ -53,10 +53,10 @@ export default {
     BaseLinkContainer,
     BaseButtonContainer,
     LibraryOption,
+    PlaylistOption,
     FavoriteOption,
     BookmarkOption,
     ListenedOption,
-    PlaylistOption,
     EditOption,
     DeleteOption
   },
@@ -68,10 +68,10 @@ export default {
     bookmarkId: String,
     listenedId: String,
     isWithLibraryOption: Boolean,
+    isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
-    isWithPlaylistOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     albumTitle: String,
@@ -108,6 +108,10 @@ export default {
             this.libraryOption
         ),
         (
+          this.isWithPlaylistOption &&
+            this.playlistOption
+        ),
+        (
           this.isWithFavoriteOption &&
             this.favoriteOption
         ),
@@ -118,10 +122,6 @@ export default {
         (
           this.isWithListenedOption &&
             this.listenedOption
-        ),
-        (
-          this.isWithPlaylistOption &&
-            this.playlistOption
         ),
         (
           this.isWithEditOption &&
@@ -137,6 +137,12 @@ export default {
       return {
         component: 'LibraryOption',
         optionModelId: this.libraryId
+      }
+    },
+    playlistOption () {
+      return {
+        component: 'PlaylistOption',
+        action: this.handlePlaylistOptionClick
       }
     },
     favoriteOption () {
@@ -155,12 +161,6 @@ export default {
       return {
         component: 'ListenedOption',
         optionModelId: this.listenedId
-      }
-    },
-    playlistOption () {
-      return {
-        component: 'PlaylistOption',
-        action: this.handlePlaylistOptionClick
       }
     },
     editOption () {
@@ -207,7 +207,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-options-dropdown-button
-  padding: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

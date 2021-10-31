@@ -20,14 +20,19 @@
         />
       </BaseTransitionContainer>
 
-      <BaseSelfIcons
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-      />
+      <div class="main-self-container">
+        <BaseSegmentContainer
+          v-if="isShowSelfIcons"
+          class="main-self-icons-segment-container main-segment-container"
+        >
+          <BaseSelfIcons
+            :libraryId="libraryId"
+            :favoriteId="favoriteId"
+            :bookmarkId="bookmarkId"
+            :listenedId="listenedId"
+          />
+        </BaseSegmentContainer>
 
-      <div class="main-options-dropdown-container-right">
         <BaseOptionsDropdown
           model="artist"
           :modelId="artistId"
@@ -49,6 +54,7 @@
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 
@@ -58,6 +64,7 @@ export default {
     BaseArtistImage,
     BaseTransitionContainer,
     BaseHeader,
+    BaseSegmentContainer,
     BaseSelfIcons,
     BaseOptionsDropdown
   },
@@ -90,6 +97,14 @@ export default {
     },
     artistId () {
       return this.artistData.id.toString()
+    },
+    isShowSelfIcons () {
+      return (
+        this.libraryId ||
+          this.favoriteId ||
+          this.bookmarkId ||
+          this.listenedId
+      )
     }
   },
   mounted () {
@@ -130,8 +145,4 @@ export default {
   @extend .text-align-center
   .ui.header
     @extend .text-color-white
-
-.main-self-icons
-  @extend .text-align-center
-  margin-top: 0.25em
 </style>

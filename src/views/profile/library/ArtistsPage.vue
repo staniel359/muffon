@@ -17,7 +17,6 @@
         :topAlbumsCount="slotProps.topAlbumsCount"
         :profileId="slotProps.profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
         isWithTracksCount
         isWithAlbumsCount
         isWithLibrary
@@ -55,11 +54,6 @@ export default {
       ]
     },
     isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
       return isCurrentProfile(
         this.profileId
       )

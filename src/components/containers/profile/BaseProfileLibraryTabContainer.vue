@@ -22,8 +22,9 @@
           :[tabData.scope]="slotProps[tabData.scope]"
           :itemsInRow="tabData.itemsInRow"
           :profileId="profileId"
+          :isWithPlaylistOption="isWithPlaylistOption"
           :isWithFavoriteOption="isWithFavoriteOption"
-          :isWithDeleteOption="isWithDeleteOption"
+          :isWithDeleteOption="isWithDeleteOption(tabData.scope)"
           isWithImage
           isWithArtistName
           isWithAlbumTitle
@@ -90,12 +91,12 @@ export default {
     libraryData () {
       return this.profileData?.library
     },
-    isWithFavoriteOption () {
+    isWithPlaylistOption () {
       return isCurrentProfile(
         this.profileId
       )
     },
-    isWithDeleteOption () {
+    isWithFavoriteOption () {
       return isCurrentProfile(
         this.profileId
       )
@@ -134,6 +135,14 @@ export default {
         ...this.libraryDataArgs,
         page
       })
+    },
+    isWithDeleteOption (scope) {
+      return (
+        scope === 'tracks' &&
+          isCurrentProfile(
+            this.profileId
+          )
+      )
     }
   }
 }

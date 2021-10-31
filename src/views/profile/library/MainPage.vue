@@ -17,13 +17,11 @@
       <ArtistsSegment
         :profileId="profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
       />
 
       <AlbumsSegment
         :profileId="profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
       />
 
       <TracksSegment
