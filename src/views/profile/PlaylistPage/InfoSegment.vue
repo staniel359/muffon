@@ -42,6 +42,7 @@
     :playlistId="playlistId"
     :playlistTitle="playlistTitle"
     :profileId="profileId"
+    isDeleteWithRedirect
   />
 </template>
 
