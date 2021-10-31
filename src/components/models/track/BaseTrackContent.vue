@@ -88,7 +88,7 @@
 
     <BaseOptionsDropdown
       model="track"
-      :modelId="trackId"
+      :modelId="trackTrackId"
       :libraryId="libraryId"
       :favoriteId="favoriteId"
       :bookmarkId="bookmarkId"
@@ -108,7 +108,7 @@
 
     <BasePlaylistsModal
       ref="playlistModal"
-      :trackId="trackId"
+      :trackId="trackTrackId"
       :albumTitle="albumTitle"
       :imageUrl="imageData?.medium"
     />
@@ -306,6 +306,9 @@ export default {
     },
     trackId () {
       return this.trackData.id?.toString()
+    },
+    trackTrackId () {
+      return this.trackData.track_id?.toString()
     },
     artistId () {
       return this.trackData.artist.id?.toString()
