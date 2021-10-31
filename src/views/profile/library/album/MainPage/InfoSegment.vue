@@ -64,6 +64,7 @@
         :profileId="profileId"
         :modelId="albumId"
         :modelTitle="albumFullTitle"
+        isDeleteWithRedirect
       />
     </BaseSegmentContainer>
   </div>

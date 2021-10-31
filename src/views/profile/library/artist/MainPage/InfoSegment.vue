@@ -57,6 +57,7 @@
         :profileId="profileId"
         :modelId="artistId"
         :modelTitle="artistName"
+        isDeleteWithRedirect
       />
     </BaseSegmentContainer>
   </div>

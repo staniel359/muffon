@@ -142,6 +142,7 @@
       :profileId="profileId"
       :modelId="trackId"
       :modelTitle="trackFullTitle"
+      @deleted="handleDeleted"
     />
   </template>
 </template>
