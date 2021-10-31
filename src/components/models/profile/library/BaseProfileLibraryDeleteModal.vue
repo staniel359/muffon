@@ -71,8 +71,12 @@ export default {
     modelTitle: {
       type: String,
       required: true
-    }
+    },
+    isDeleteWithRedirect: Boolean
   },
+  emits: [
+    'deleted'
+  ],
   data () {
     return {
       error: null,
@@ -125,14 +129,18 @@ export default {
     handleIsSuccessChange () {
       this.$refs.modal.hide()
 
-      this.$router.push(
-        this.callbackUrl
-      )
+      if (this.isDeleteWithRedirect) {
+        this.$router.push(
+          this.callbackUrl
+        )
 
-      setToast({
-        message: this.toastMessage,
-        icon: 'green check'
-      })
+        setToast({
+          message: this.toastMessage,
+          icon: 'green check'
+        })
+      } else {
+        this.$emit('deleted')
+      }
     },
     show () {
       this.$refs.modal.show()

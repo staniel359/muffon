@@ -85,6 +85,7 @@
         :profileId="profileId"
         :modelId="trackId"
         :modelTitle="trackFullTitle"
+        isDeleteWithRedirect
       />
     </BaseSegmentContainer>
   </div>
