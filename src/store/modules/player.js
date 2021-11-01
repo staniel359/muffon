@@ -5,6 +5,7 @@ export default {
     currentTrackId: null,
     currentVariantId: null,
     sourceId: null,
+    isScrobbling: false,
     variants: []
   },
   getters: {
@@ -27,6 +28,9 @@ export default {
     },
     SET_SOURCE_ID (state, value) {
       state.sourceId = value
+    },
+    SET_IS_SCROBBLING (state, value) {
+      state.isScrobbling = value
     }
   },
   actions: {
@@ -44,6 +48,9 @@ export default {
     },
     setSourceId ({ commit }, value) {
       commit('SET_SOURCE_ID', value)
+    },
+    setIsScrobbling ({ commit }, value) {
+      commit('SET_IS_SCROBBLING', value)
     }
   }
 }

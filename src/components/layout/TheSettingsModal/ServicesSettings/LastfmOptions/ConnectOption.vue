@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseError from '@/BaseError.vue'
 import BaseButton from '@/BaseButton.vue'
 import fetchLastfmTokenData from '#/actions/api/lastfm/connect/token/fetchData'
@@ -47,10 +46,14 @@ import fetchLastfmSessionData
   from '#/actions/api/lastfm/connect/session/fetchData'
 
 export default {
-  name: 'LastfmOption',
+  name: 'ConnectOption',
   components: {
     BaseError,
     BaseButton
+  },
+  props: {
+    isConnected: Boolean,
+    lastfmNickname: String
   },
   data () {
     return {
@@ -62,9 +65,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     buttonTextFormatted () {
       if (this.isConnected) {
         return this.$t(
@@ -76,12 +76,6 @@ export default {
         )
       }
     },
-    isConnected () {
-      return (
-        this.lastfmNickname &&
-          this.lastfmSessionKey
-      )
-    },
     waitMessageFormatted () {
       return this.$t(
         'layout.settings.options.services.lastfm.wait'
@@ -92,12 +86,6 @@ export default {
         this.isLoading ||
           this.isConnected
       )
-    },
-    lastfmNickname () {
-      return this.profileInfo.lastfm_nickname
-    },
-    lastfmSessionKey () {
-      return this.profileInfo.lastfm_session_key
     }
   },
   methods: {

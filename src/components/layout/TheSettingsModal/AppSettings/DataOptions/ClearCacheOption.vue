@@ -1,5 +1,5 @@
 <template>
-  <div class="clear-cache-option content">
+  <div class="content clear-cache-option">
     <div class="header">
       <BaseButton
         :text="buttonTextFormatted"
@@ -38,12 +38,12 @@ export default {
   computed: {
     buttonTextFormatted () {
       return this.$t(
-        'layout.settings.options.data.cache.clear'
+        'layout.settings.options.app.data.cache.clear'
       )
     },
     successFormatted () {
       return this.$t(
-        'layout.settings.options.data.cache.cleared'
+        'layout.settings.options.app.data.cache.cleared'
       )
     }
   },

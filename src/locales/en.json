@@ -80,27 +80,29 @@
         }
       },
       "options": {
-        "main": {
-          "language": "Language"
-        },
-        "view": {
-          "darkMode": "Dark mode"
-        },
-        "player": {
-          "audioSource": "Audio source"
-        },
-        "queue": {
-          "autoplay": "Autoplay"
-        },
-        "data": {
-          "cache": {
-            "clear": "Clear cache",
-            "cleared": "Cache was cleared"
+        "app": {
+          "main": {
+            "language": "Language"
           },
-          "history": {
-            "search": {
-              "clear": "Clear search history",
-              "cleared": "Search history was cleared"
+          "view": {
+            "darkMode": "Dark mode"
+          },
+          "player": {
+            "audioSource": "Audio source"
+          },
+          "queue": {
+            "autoplay": "Autoplay"
+          },
+          "data": {
+            "cache": {
+              "clear": "Clear cache",
+              "cleared": "Cache was cleared"
+            },
+            "history": {
+              "search": {
+                "clear": "Clear search history",
+                "cleared": "Search history was cleared"
+              }
             }
           }
         },
@@ -108,7 +110,8 @@
           "lastfm": {
             "connect": "Connect Last.FM account",
             "wait": "Your browser will now open. Confirm connection there and click this button again.",
-            "connected": "Last.FM account connected"
+            "connected": "Last.FM account connected",
+            "scrobbling": "Scrobbling"
           }
         }
       }

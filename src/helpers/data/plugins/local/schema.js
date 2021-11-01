@@ -23,6 +23,10 @@ export default {
     type: ['null', 'string'],
     default: null
   },
+  'player.isScrobbling': {
+    type: 'boolean',
+    default: false
+  },
   'player.playing': {
     type: ['null', 'object'],
     default: null
