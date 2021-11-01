@@ -64,7 +64,8 @@
     "settings": {
       "tabs": {
         "app": "App",
-        "profile": "Profile"
+        "profile": "Profile",
+        "services": "Services"
       },
       "sections": {
         "app": {
@@ -101,6 +102,13 @@
               "clear": "Clear search history",
               "cleared": "Search history was cleared"
             }
+          }
+        },
+        "services": {
+          "lastfm": {
+            "connect": "Connect Last.FM account",
+            "wait": "Your browser will now open. Confirm connection there and click this button again.",
+            "connected": "Last.FM account connected"
           }
         }
       }
@@ -242,9 +250,6 @@
     },
     "add": {
       "account": {
-        "connect": {
-          "lastfm": "Connect Last.FM account"
-        },
         "import": {
           "lastfm": "Import Last.FM data"
         }

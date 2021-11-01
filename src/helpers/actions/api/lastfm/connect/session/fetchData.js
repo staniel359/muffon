@@ -1,22 +1,37 @@
 import axios from 'axios'
-import fetchLastfmUserData from '#/actions/api/lastfm/user/fetchData'
+import store from '*/store'
+import { setGlobalData } from '#/actions'
 
 export default function ({ token }) {
   this.error = null
   this.isLoading = true
 
   const url = 'lastfm/connect/session'
-  const params = { token }
+
+  const profileId =
+    store.state.profile.info.id
+  const params = {
+    profile_id: profileId,
+    token
+  }
 
   const handleError = error => {
     this.error = error
   }
 
   const handleSuccess = response => {
-    const { nickname } = response.data.session
+    const localProfileInfo =
+      store.state.profile.info
+    const profileData =
+      response.data.profile
 
-    return fetchLastfmUserData.bind(this)({
-      nickname
+    const newProfileInfo = {
+      ...localProfileInfo,
+      ...profileData
+    }
+
+    setGlobalData({
+      'profile.info': newProfileInfo
     })
   }
 
