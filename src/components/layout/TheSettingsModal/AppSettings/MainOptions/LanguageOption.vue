@@ -50,6 +50,10 @@ export default {
         {
           code: 'ru',
           text: 'Русский'
+        },
+        {
+          code: 'it',
+          text: 'Italiano'
         }
       ]
     }
