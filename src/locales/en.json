@@ -219,7 +219,7 @@
           "playlists": "No playlists",
           "recommendations": "No recommendations"
         },
-        "content": "Looks like there is nothing here",
+        "content": "Looks like there is nothing here"
       }
     },
     "sources": {
@@ -267,7 +267,7 @@
         },
         "success": {
           "tracks": {
-            "header": "All {count} tracks were successfuly imported",
+            "header": "All {count} tracks were successfully imported",
             "content": "You may want to check them before saving to library"
           }
         },
@@ -282,9 +282,9 @@
           "tracks": "Saving {value} of {total} tracks..."
         },
         "success": {
-          "artists": "All {count} artists were successfuly saved to library",
-          "albums": "All {count} albums were successfuly saved to library",
-          "tracks": "All {count} tracks were successfuly saved to library"
+          "artists": "All {count} artists were successfully saved to library",
+          "albums": "All {count} albums were successfully saved to library",
+          "tracks": "All {count} tracks were successfully saved to library"
         },
         "error": {
           "artists": "{count} artists could not be saved:",
