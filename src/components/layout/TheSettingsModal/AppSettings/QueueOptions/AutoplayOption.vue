@@ -31,7 +31,7 @@ export default {
     }),
     headerFormatted () {
       return this.$t(
-        'layout.settings.options.queue.autoplay'
+        'layout.settings.options.app.queue.autoplay'
       )
     }
   },

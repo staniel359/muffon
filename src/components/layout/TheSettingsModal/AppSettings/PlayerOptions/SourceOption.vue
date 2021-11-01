@@ -22,7 +22,7 @@ export default {
   computed: {
     headerFormatted () {
       return this.$t(
-        'layout.settings.options.player.audioSource'
+        'layout.settings.options.app.player.audioSource'
       )
     }
   }

@@ -38,12 +38,12 @@ export default {
   computed: {
     buttonTextFormatted () {
       return this.$t(
-        'layout.settings.options.data.history.search.clear'
+        'layout.settings.options.app.data.history.search.clear'
       )
     },
     successFormatted () {
       return this.$t(
-        'layout.settings.options.data.history.search.cleared'
+        'layout.settings.options.app.data.history.search.cleared'
       )
     }
   },
