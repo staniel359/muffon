@@ -23,6 +23,7 @@ import BaseModalContainer from '@/containers/BaseModalContainer.vue'
 import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
+import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
@@ -31,7 +32,8 @@ export default {
     BaseModalContainer,
     BaseTabsContainer,
     AppSettings,
-    ProfileSettings
+    ProfileSettings,
+    ServicesSettings
   },
   computed: {
     tabsFormatted () {
@@ -54,6 +56,13 @@ export default {
           ),
           scope: 'profile',
           component: 'ProfileSettings'
+        },
+        {
+          name: this.$t(
+            'layout.settings.tabs.services'
+          ),
+          scope: 'services',
+          component: 'ServicesSettings'
         }
       ]
     }

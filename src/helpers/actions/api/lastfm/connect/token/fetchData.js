@@ -8,12 +8,11 @@ export default function () {
   const url = 'lastfm/connect/token'
 
   const handleSuccess = response => {
-    this.isReset = false
-
     const { token, link } =
       response.data.connect
 
     this.token = token
+    this.isShowWaitMessage = true
 
     shell.openExternal(link)
   }

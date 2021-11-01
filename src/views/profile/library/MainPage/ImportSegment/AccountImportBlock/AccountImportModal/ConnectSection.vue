@@ -43,9 +43,7 @@ import BaseButton from '@/BaseButton.vue'
 import BaseClearButton from '@/BaseClearButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import UserInfoSection from './ConnectSection/UserInfoSection.vue'
-import fetchLastfmTokenData from '#/actions/api/lastfm/connect/token/fetchData'
-import fetchLastfmSessionData
-  from '#/actions/api/lastfm/connect/session/fetchData'
+import fetchLastfmUserData from '#/actions/api/lastfm/user/fetchData'
 
 export default {
   name: 'ConnectSection',
@@ -65,7 +63,6 @@ export default {
   data () {
     return {
       error: null,
-      token: null,
       userData: null,
       isLoading: false,
       isReset: true
@@ -73,15 +70,9 @@ export default {
   },
   computed: {
     textFormatted () {
-      if (this.token) {
-        return this.$t(
-          'shared.add.account.import.lastfm'
-        )
-      } else {
-        return this.$t(
-          'shared.add.account.connect.lastfm'
-        )
-      }
+      return this.$t(
+        'shared.add.account.import.lastfm'
+      )
     },
     isDisabled () {
       return !!this.userData
@@ -91,8 +82,9 @@ export default {
     userData: 'handleUserDataChange'
   },
   methods: {
-    fetchLastfmTokenData,
-    fetchLastfmSessionData,
+    handleClick () {
+      this.fetchLastfmUserData()
+    },
     handleUserDataChange (value) {
       this.$emit(
         'userDataChange',
@@ -101,21 +93,12 @@ export default {
 
       this.setStatus('import')
     },
-    handleClick () {
-      if (this.token) {
-        this.fetchLastfmSessionData({
-          token: this.token
-        })
-      } else {
-        this.fetchLastfmTokenData()
-      }
-    },
     handleResetButtonClick () {
       this.error = null
-      this.token = null
       this.userData = null
       this.isReset = true
-    }
+    },
+    fetchLastfmUserData
   }
 }
 </script>
