@@ -1,6 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import local from '#/plugins/local'
 import en from '*/locales/en.json'
+import it from '*/locales/it.json'
 import ru from '*/locales/ru.json'
 
 export default createI18n({
@@ -10,6 +11,7 @@ export default createI18n({
   fallbackLocale: 'en',
   messages: {
     en,
+    it,
     ru
   }
 })

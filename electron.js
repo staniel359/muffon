@@ -57,6 +57,11 @@ const i18n = {
     hide: 'Hide',
     quit: 'Quit'
   },
+  it: {
+    show: 'Mostra',
+    hide: 'Nascondi',
+    quit: 'Esci'
+  },
   ru: {
     show: 'Открыть',
     hide: 'Скрыть',

@@ -1,0 +1,460 @@
+{
+  "layout": {
+    "navigation": {
+      "start": "Pagina iniziale",
+      "artists": "Artisti",
+      "albums": "Album",
+      "tracks": "Brani",
+      "tags": "Tag",
+      "similar": "Simili",
+      "images": "Immagini",
+      "videoChannels": "Canali video",
+      "videos": "Video",
+      "profiles": "Profili",
+      "library": "Libreria",
+      "recommendations": "Consigliati",
+      "bookmarks": "Salvati",
+      "favorites": "Preferiti",
+      "tops": "In evidenza",
+      "playlists": "Playlist",
+      "artist": {
+        "images": "Immagini di {artistName}",
+        "tracks": "Brani di {artistName}",
+        "albums": "Album di {artistName}",
+        "similar": "Simile a {artistName}"
+      },
+      "album": {
+        "tracks": "Brani di {albumTitle}"
+      },
+      "track": {
+        "similar": "Simile a {trackTitle}"
+      },
+      "tag": {
+        "artists": "Artisti {tagName}",
+        "albums": "Album {tagName}",
+        "tracks": "Brani {tagName}"
+      },
+      "videoChannel": {
+        "videos": "Video di {channelTitle}"
+      },
+      "profile": {
+        "library": "Libreria di {nickname}",
+        "artists": "Artisti di {nickname}",
+        "albums": "Album di {nickname}",
+        "tracks": "Brani di {nickname}",
+        "favorites": "Preferiti di {nickname}",
+        "playlists": "Playlist di {nickname}"
+      },
+      "top": {
+        "artists": "Artisti in evidenza",
+        "tracks": "Brani in evidenza",
+        "tags": "Tag in evidenza"
+      }
+    },
+    "search": {
+      "input": "Cerca qualcosa..."
+    },
+    "player": {
+      "variants": "Varianti ({number})"
+    },
+    "sidebar": {
+      "settings": "Impostazioni",
+      "logout": "Disconnetti"
+    },
+    "settings": {
+      "tabs": {
+        "app": "App",
+        "profile": "Profilo",
+        "services": "Servizi"
+      },
+      "sections": {
+        "app": {
+          "main": "Principale",
+          "view": "Vista",
+          "player": "Lettore",
+          "queue": "Coda",
+          "data": "Dati"
+        },
+        "profile": {
+          "info": "Info"
+        }
+      },
+      "options": {
+        "app": {
+          "main": {
+            "language": "Lingua"
+          },
+          "view": {
+            "darkMode": "Tema scuro"
+          },
+          "player": {
+            "audioSource": "Fonte audio"
+          },
+          "queue": {
+            "autoplay": "Autoplay"
+          },
+          "data": {
+            "cache": {
+              "clear": "Cancella cache",
+              "cleared": "La cache è stata cancellata"
+            },
+            "history": {
+              "search": {
+                "clear": "Cancella cronologia ricerche",
+                "cleared": "La cronologia delle ricerche è stata cancellata"
+              }
+            }
+          }
+        },
+        "services": {
+          "lastfm": {
+            "connect": "Connetti account di Last.FM",
+            "wait": "Il browser verrà aperto. Confermare la connessione e cliccare di nuovo il pulsante.",
+            "connected": "L'account di Last.FM è connesso",
+            "scrobbling": "Scrobbling"
+          }
+        }
+      }
+    }
+  },
+  "errors": {
+    "badRequest": {
+      "header": "Richiesta non valida",
+      "content": "Invia una richiesta con dati validi"
+    },
+    "forbidden": {
+      "header": "Accesso negato",
+      "content": "Non disponi dei diritti per eseguire l'azione"
+    },
+    "notFound": {
+      "header": "Nessun elemento trovato",
+      "content": "Riprova con qualcos'altro"
+    },
+    "internalServer": {
+      "header": "Errore interno del server",
+      "content": "Contattaci per informazioni"
+    },
+    "badGateway": {
+      "header": "Errore del server remoto",
+      "content": "Riprova tra qualche istante"
+    },
+    "gatewayTimeout": {
+      "header": "Timeout del server remoto",
+      "content": "Riprova tra qualche istante"
+    },
+    "connection": {
+      "header": "Connessione persa",
+      "content": "Riprova tra qualche istante"
+    },
+    "client": {
+      "header": "Errore del client",
+      "content": "Contattaci per informazioni"
+    }
+  },
+  "pages": {
+    "start": {
+      "keys": {
+        "search": "Cerca",
+        "openInTab": "Apri in una nuova scheda",
+        "closeTab": "Chiudi scheda"
+      }
+    },
+    "track": {
+      "videos": {
+        "find": "Trova video",
+        "loading": "Caricamento video...",
+        "select": "Seleziona video:",
+        "empty": "Nessun video"
+      },
+      "lyrics": {
+        "find": "Trova testo",
+        "loading": "Caricamento testo...",
+        "select": "Seleziona testo:",
+        "empty": "Nessun testo"
+      }
+    },
+    "library": {
+      "since": "In libreria dal"
+    }
+  },
+  "buttons": {
+    "create": "Crea",
+    "edit": "Modifica",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Cancella",
+    "retry": "Riprova",
+    "from": {
+      "search": "dalla ricerca",
+      "folder": "dalla cartella",
+      "account": "dall'account",
+      "library": "dalla libreria"
+    }
+  },
+  "inputs": {
+    "search": {
+      "artists": "Cerca artisti...",
+      "albums": "Cerca album...",
+      "tracks": "Cerca brani..."
+    }
+  },
+  "modals": {
+    "undo": "Questa azione non potrà essere annullata.",
+    "sure": "Continuare?"
+  },
+  "shared": {
+    "error": "Errore",
+    "more": "Altro...",
+    "loading": "Caricamento...",
+    "track": {
+      "source": "Via {source}"
+    },
+    "tracks": "{count} brani",
+    "paginated": {
+      "noCollection": {
+        "header": {
+          "artists": "Nessun artista",
+          "albums": "Nessun album",
+          "tracks": "Nessun brano",
+          "playlists": "Nessuna playlist",
+          "recommendations": "Nessun consiglio"
+        },
+        "content": "Non c'è ancora nulla qui"
+      }
+    },
+    "sources": {
+      "find": "Trova nelle fonti",
+      "select": {
+        "source": "Seleziona fonte:",
+        "type": "Seleziona tipo:",
+        "album": "Seleziona album:",
+        "albumVarious": "Seleziona album A/V:",
+        "group": "Seleziona gruppo di album:",
+        "artist": "Seleziona artista:",
+        "track": "Seleziona brano:"
+      },
+      "streamable": "In streaming",
+      "other": "Altro",
+      "albumTypes": {
+        "album": "Album",
+        "albumVarious": "Album A/V",
+        "group": "Gruppo di album",
+        "track": "Brano"
+      },
+      "albumsTypes": {
+        "album": "Album",
+        "single": "Singoli",
+        "single_ep": "Singoli / EP",
+        "compilation": "Compilation",
+        "video": "Video",
+        "misc": "Varie",
+        "appearance": "Apparizioni"
+      }
+    },
+    "add": {
+      "account": {
+        "import": {
+          "lastfm": "Importa dati da Last.FM"
+        }
+      },
+      "folder": {
+        "select": "Seleziona cartella"
+      },
+      "import": {
+        "active": {
+          "tracks": "Sono stati importati {value} su {total} brani...",
+          "plays": "Sono state importate {value} di {total} riproduzioni..."
+        },
+        "success": {
+          "tracks": {
+            "header": "Tutti i {count} brani sono stati importati con successo",
+            "content": "È possibile controllarli prima di salvarli nella libreria"
+          }
+        },
+        "error": {
+          "files": "Impossibile importare {count} file. Correggere i dati ID3 e riprovare:"
+        }
+      },
+      "save": {
+        "active": {
+          "artists": "Salvataggio di {value} su {total} artisti...",
+          "albums": "Salvataggio di {value} su {total} album...",
+          "tracks": "Salvataggio di {value} su {total} brani..."
+        },
+        "success": {
+          "artists": "{count} artisti salvati con successo nella libreria",
+          "albums": "{count} album salvati con successo nella libreria",
+          "tracks": "{count} brani salvati con successo nella libreria"
+        },
+        "error": {
+          "artists": "Impossibile salvare {count} artisti:",
+          "albums": "Impossibile salvare {count} album:",
+          "tracks": "Impossibile salvare {count} brani:"
+        }
+      }
+    },
+    "profile": {
+      "form": {
+        "fields": {
+          "email": "Email",
+          "password": "Password",
+          "passwordConfirmation": "Conferma password",
+          "nickname": "Nome utente",
+          "image": "Carica immagine",
+          "gender": "Genere",
+          "birthdate": "Compleanno",
+          "country": "Nazione",
+          "city": "Città",
+          "genders": {
+            "male": "Maschio",
+            "female": "Femmina",
+            "other": "Altro"
+          }
+        },
+        "remember": "Ricorda dati",
+        "submit": {
+          "login": "Accesso",
+          "signup": "Iscrizione"
+        },
+        "sections": {
+          "extra": "Altre informazioni"
+        },
+        "success": "Profilo salvato",
+        "errors": {
+          "notFound": "Email o password errati",
+          "empty": {
+            "email": "L'email non può essere vuota",
+            "password": "La password non può essere vuota",
+            "passwordConfirmation": "Conferma password non può essere vuota",
+            "nickname": "Il nome utente non può essere vuoto"
+          },
+          "invalid": {
+            "email": "Email non valida"
+          },
+          "taken": {
+            "email": "L'email è già utilizzata",
+            "nickname": "Il nome utente è già utilizzato"
+          },
+          "tooShort": {
+            "password": "La password è troppo breve"
+          },
+          "tooLong": {
+            "nickname": "Il nome utente è troppo lungo"
+          },
+          "confirmation": {
+            "passwordConfirmation": "Password e conferma password non corrispondono"
+          }
+        },
+        "signup": {
+          "text": "Non hai ancora un account?",
+          "link": "Iscriviti"
+        },
+        "login": {
+          "text": "Sei già registrato?",
+          "link": "Accedi"
+        }
+      },
+      "roles": {
+        "creator": "Creatore"
+      }
+    },
+    "library": {
+      "add": "Aggiungi alla libreria",
+      "show": "Mostra nella libreria",
+      "delete": {
+        "header": "Cancella dalla libreria",
+        "artist": {
+          "header": "Cancella artista dalla libreria",
+          "also": "Verranno inoltre cancellati tutti gli album e i brani di questo artista."
+        },
+        "album": {
+          "header": "Cancella album dalla libreria",
+          "also": "Verranno inoltre cancellati tutti i brani di questo album."
+        },
+        "track": {
+          "header": "Cancella brano dalla libreria"
+        },
+        "going": "Stai per cancellare {modelTitle} dalla libreria."
+      },
+      "deleted": "{modelTitle} è stato cancellato dalla libreria"
+    },
+    "recommendation": {
+      "similar": "Simile a {count} artisti:",
+      "delete": {
+        "header": "Cancella consiglio",
+        "going": "Stai per cancellare {artistName} dai consigli."
+      }
+    },
+    "listened": {
+      "add": "Aggiungi ad ascoltati",
+      "added": "Ascoltati",
+      "delete": "Cancella da ascoltati"
+    },
+    "bookmarks": {
+      "add": "Aggiungi a salvati",
+      "added": "Salvati",
+      "delete": "Cancella da salvati"
+    },
+    "bookmark": {
+      "delete": {
+        "header": "Cancella salvati",
+        "going": "Stai per cancellare {modelName} dai salvati."
+      }
+    },
+    "favorites": {
+      "add": "Aggiungi a preferiti",
+      "added": "Preferiti",
+      "delete": "Cancella da preferiti"
+    },
+    "favorite": {
+      "delete": {
+        "header": "Cancella preferito",
+        "going": "Stai per cancellare {modelName} dai preferiti."
+      }
+    },
+    "playlists": {
+      "create": "Crea playlist"
+    },
+    "playlist": {
+      "created": "Creata il {date}",
+      "form": {
+        "fields": {
+          "title": "Titolo",
+          "image": "Carica immagine"
+        },
+        "errors": {
+          "empty": {
+            "title": "Il titolo non può essere vuoto"
+          },
+          "taken": {
+            "title": "Il titolo è già utilizzato"
+          }
+        }
+      },
+      "addTracks": "Aggiungi brani",
+      "add": "Aggiungi alla playlist",
+      "delete": {
+        "header": "Cancella playlist",
+        "going": "Stai per cancellare {playlistTitle} dalle tue playlist.",
+        "also": "Verranno inoltre cancellati tutti i brani nella playlist."
+      },
+      "deleted": "La playlist {playlistTitle} è stata cancellata"
+    },
+    "playlistTrack": {
+      "delete": {
+        "header": "Cancella brano della playlist",
+        "going": "Stai per cancellare {playlistTrackFullTitle} dalla playlist {playlistTitle}."
+      }
+    },
+    "self": {
+      "actions": "Azioni"
+    },
+    "deleted": {
+      "artist": "L'artista è stato eliminato",
+      "album": "L'album è stato eliminato",
+      "track": "Il brano è stato eliminato",
+      "recommendation": "Il consiglio è stato eliminato",
+      "playlist": "La playlist è stata cancellata"
+    }
+  }
+}
