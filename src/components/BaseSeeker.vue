@@ -7,6 +7,7 @@
       inverted: isDarkMode
     }"
     @mousedown.capture="handleMouseDown"
+    @mouseup.capture="handleMouseUp"
   ></div>
 </template>
 
@@ -28,6 +29,7 @@ export default {
   emits: [
     'init',
     'mouseDown',
+    'mouseUp',
     'move',
     'change'
   ],
@@ -49,7 +51,10 @@ export default {
   mounted () {
     this.setSeekerData()
 
-    this.$emit('init', this.$refs.seeker)
+    this.$emit(
+      'init',
+      this.$refs.seeker
+    )
   },
   methods: {
     handleIsDisabledChange (value) {
@@ -59,6 +64,9 @@ export default {
     },
     handleMouseDown () {
       this.$emit('mouseDown')
+    },
+    handleMouseUp () {
+      this.$emit('mouseUp')
     },
     handleMove (value) {
       this.$emit('move', value)

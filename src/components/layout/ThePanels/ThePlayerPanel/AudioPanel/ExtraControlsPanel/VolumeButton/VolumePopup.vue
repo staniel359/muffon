@@ -10,7 +10,9 @@
     <BaseSeeker
       class="vertical reversed volume-seeker"
       :options="seekerOptions"
+      @init="handleInit"
       @move="handleMove"
+      @mouseUp="handleMouseUp"
     />
   </BasePopupContainer>
 </template>
@@ -21,6 +23,8 @@ import BasePopupContainer from '@/containers/BasePopupContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSeeker from '@/BaseSeeker.vue'
 import { mainVolumeSeekerOptions } from '#/data/plugins/semantic'
+import { setGlobalData } from '#/actions'
+import { setSeekerValue } from '#/actions/plugins/semantic'
 
 export default {
   name: 'VolumePopup',
@@ -28,6 +32,11 @@ export default {
     BasePopupContainer,
     BaseHeader,
     BaseSeeker
+  },
+  data () {
+    return {
+      seeker: null
+    }
   },
   computed: {
     ...mapState('audio', {
@@ -45,9 +54,26 @@ export default {
       })
     }
   },
+  watch: {
+    audioVolume: 'handleAudioVolumeChange'
+  },
   methods: {
+    handleInit (el) {
+      this.seeker = el
+    },
     handleMove (value) {
       this.audioElement.volume = value
+    },
+    handleMouseUp () {
+      setGlobalData({
+        'audio.volume': this.audioVolume
+      })
+    },
+    handleAudioVolumeChange (value) {
+      setSeekerValue(
+        this.seeker,
+        value
+      )
     }
   }
 }

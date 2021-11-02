@@ -1,4 +1,8 @@
 export default {
+  'audio.volume': {
+    type: 'number',
+    default: 1
+  },
   'layout.activeTabId': {
     type: ['null', 'string'],
     default: null

@@ -28,6 +28,9 @@ export default {
     )
   },
   methods: {
+    ...mapActions('audio', {
+      setAudioVolume: 'setVolume'
+    }),
     ...mapActions('layout', [
       'setIsDarkMode',
       'setTabId'
@@ -60,6 +63,8 @@ export default {
     },
     setStoreKeyValue ([key, value]) {
       switch (key) {
+        case 'audio.volume':
+          return this.setAudioVolume(value)
         case 'layout.isDarkMode':
           return this.setIsDarkMode(value)
         case 'player.currentTrackId':

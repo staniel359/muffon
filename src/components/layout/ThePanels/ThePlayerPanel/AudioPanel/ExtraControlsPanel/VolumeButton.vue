@@ -71,6 +71,8 @@ export default {
       const value = !this.isAudioMuted
 
       this.audioElement.muted = value
+      this.audioElement.volume =
+        this.audioVolume
 
       this.setIsAudioMuted(value)
     }

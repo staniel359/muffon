@@ -17,7 +17,8 @@ export default {
   },
   methods: {
     ...mapActions('audio', {
-      setIsAudioAutoplay: 'setIsAutoplay'
+      setIsAudioAutoplay: 'setIsAutoplay',
+      setAudioVolume: 'setVolume'
     }),
     ...mapActions('layout', [
       'setIsDarkMode'
@@ -60,6 +61,8 @@ export default {
       switch (key) {
         case 'audio.isAutoplay':
           return this.setIsAudioAutoplay(value)
+        case 'audio.volume':
+          return this.setAudioVolume(value)
         case 'layout.isDarkMode':
           return this.setIsDarkMode(value)
         case 'player.currentTrackId':
