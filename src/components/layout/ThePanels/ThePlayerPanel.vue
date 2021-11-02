@@ -1,5 +1,7 @@
 <template>
-  <VariantsPanel v-if="isRenderVariantsPanel" />
+  <VariantsPanel
+    v-if="isRenderVariantsPanel"
+  />
 
   <div
     class="ui bottom overlay segment sidebar the-player-panel"
@@ -27,6 +29,7 @@ import {
 import { setGlobalData } from '#/actions'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 import { toggleClass } from '#/actions/plugins/jquery'
+import { setToast } from '#/actions/plugins/semantic'
 
 export default {
   name: 'ThePlayerPanel',
@@ -43,6 +46,8 @@ export default {
   },
   computed: {
     ...mapState('player', {
+      isPlayerScrobbled: 'isScrobbled',
+      isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications',
       playerPlaying: 'playing'
     }),
     ...mapState('layout', [
@@ -62,6 +67,24 @@ export default {
         onShow: this.handleShow,
         onHide: this.handleHide
       })
+    },
+    scrobbledMessage () {
+      return this.$t(
+        'shared.player.scrobbled',
+        { trackFullTitle: this.trackFullTitleFormatted }
+      )
+    },
+    trackFullTitleFormatted () {
+      return `<strong>${this.trackFullTitle}</strong>`
+    },
+    trackFullTitle () {
+      return `${this.trackTitle} - ${this.artistName}`
+    },
+    trackTitle () {
+      return this.playerPlaying.title
+    },
+    artistName () {
+      return this.playerPlaying.artist.name
     }
   },
   watch: {
@@ -69,6 +92,7 @@ export default {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
     },
+    isPlayerScrobbled: 'handleIsPlayerScrobbledChange',
     isDarkMode: {
       immediate: true,
       handler: 'handleIsDarkModeChange'
@@ -107,6 +131,14 @@ export default {
     },
     handleHide () {
       this.isVisible = false
+    },
+    handleIsPlayerScrobbledChange (value) {
+      if (this.isPlayerWithScrobbleNotifications && value) {
+        setToast({
+          message: this.scrobbledMessage,
+          icon: 'green check'
+        })
+      }
     },
     toggleInvertedClass () {
       toggleClass(

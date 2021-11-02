@@ -1,12 +1,13 @@
 <template>
-  <div class="content">
+  <div class="content scrobble-option">
     <BaseHeader
       tag="h4"
       :text="headerFormatted"
     />
 
     <BaseToggle
-      :isChecked="isDarkMode"
+      :class="{ disabled: isDisabled }"
+      :isChecked="isChecked"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -20,34 +21,49 @@ import BaseToggle from '@/BaseToggle.vue'
 import { setGlobalData } from '#/actions'
 
 export default {
-  name: 'DarkModeOption',
+  name: 'ScrobbleOption',
   components: {
     BaseHeader,
     BaseToggle
   },
+  props: {
+    isConnected: Boolean
+  },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState('player', {
+      isPlayerScrobbling: 'isScrobbling'
+    }),
     headerFormatted () {
       return this.$t(
-        'layout.settings.options.app.view.darkMode'
+        'layout.settings.options.services.lastfm.scrobbling'
       )
+    },
+    isChecked () {
+      return (
+        this.isConnected &&
+          this.isPlayerScrobbling
+      )
+    },
+    isDisabled () {
+      return !this.isConnected
     }
   },
   methods: {
     handleToggleOn () {
       setGlobalData({
-        'layout.isDarkMode': true
+        'player.isScrobbling': true
       })
     },
     handleToggleOff () {
       setGlobalData({
-        'layout.isDarkMode': false
+        'player.isScrobbling': false
       })
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.scrobble-option
+  margin-top: 1em
+</style>

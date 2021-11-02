@@ -1,30 +1,42 @@
 <template>
-  <div id="the-store-observer"></div>
+  <div id="the-local-observer"></div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import { ipcRenderer } from 'electron'
 import i18n from '*/i18n'
+import local from '#/plugins/local'
 
 export default {
-  name: 'TheStoreObserver',
+  name: 'TheLocalObserver',
+  computed: {
+    localKeysValues () {
+      return Object.entries(
+        local.store
+      )
+    }
+  },
   mounted () {
     ipcRenderer.on(
-      'handle-update-store',
-      this.handleUpdateStore
+      'set-tab-id',
+      this.handleSetTabId
+    )
+
+    this.localKeysValues.forEach(
+      this.setStoreKeyValue
     )
   },
   methods: {
-    ...mapActions('audio', {
-      setIsAudioAutoplay: 'setIsAutoplay'
-    }),
     ...mapActions('layout', [
-      'setIsDarkMode'
+      'setIsDarkMode',
+      'setTabId'
     ]),
     ...mapActions('player', {
       setPlayerCurrentTrackId: 'setCurrentTrackId',
       setPlayerCurrentVariantId: 'setCurrentVariantId',
+      setIsPlayerScrobbling: 'setIsScrobbling',
+      setIsPlayerWithScrobbleNotifications: 'setIsWithScrobbleNotifications',
       setPlayerPlaying: 'setPlaying',
       setPlayerSourceId: 'setSourceId',
       setPlayerVariants: 'setVariants'
@@ -43,25 +55,21 @@ export default {
       setQueueTracks: 'setTracks',
       setQueueTracksShuffled: 'setTracksShuffled'
     }),
-    handleUpdateStore (_, data) {
-      const storeKeysValues = Object.entries(
-        JSON.parse(data)
-      )
-
-      storeKeysValues.forEach(
-        this.setStoreKeyValue
-      )
+    handleSetTabId (_, value) {
+      this.setTabId(value)
     },
     setStoreKeyValue ([key, value]) {
       switch (key) {
-        case 'audio.isAutoplay':
-          return this.setIsAudioAutoplay(value)
         case 'layout.isDarkMode':
           return this.setIsDarkMode(value)
         case 'player.currentTrackId':
           return this.setPlayerCurrentTrackId(value)
         case 'player.currentVariantId':
           return this.setPlayerCurrentVariantId(value)
+        case 'player.isScrobbling':
+          return this.setIsPlayerScrobbling(value)
+        case 'player.isWithScrobbleNotifications':
+          return this.setIsPlayerWithScrobbleNotifications(value)
         case 'player.playing':
           return this.setPlayerPlaying(value)
         case 'player.sourceId':

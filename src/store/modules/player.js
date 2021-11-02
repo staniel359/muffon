@@ -5,6 +5,11 @@ export default {
     currentTrackId: null,
     currentVariantId: null,
     sourceId: null,
+    isScrobbling: false,
+    isToScrobble: false,
+    isScrobbled: false,
+    isWithScrobbleNotifications: false,
+    scrobblePercent: 50,
     variants: []
   },
   getters: {
@@ -27,6 +32,18 @@ export default {
     },
     SET_SOURCE_ID (state, value) {
       state.sourceId = value
+    },
+    SET_IS_SCROBBLING (state, value) {
+      state.isScrobbling = value
+    },
+    SET_IS_TO_SCROBBLE (state, value) {
+      state.isToScrobble = value
+    },
+    SET_IS_SCROBBLED (state, value) {
+      state.isScrobbled = value
+    },
+    SET_IS_WITH_SCROBBLE_NOTIFICATIONS (state, value) {
+      state.isWithScrobbleNotifications = value
     }
   },
   actions: {
@@ -44,6 +61,18 @@ export default {
     },
     setSourceId ({ commit }, value) {
       commit('SET_SOURCE_ID', value)
+    },
+    setIsScrobbling ({ commit }, value) {
+      commit('SET_IS_SCROBBLING', value)
+    },
+    setIsToScrobble ({ commit }, value) {
+      commit('SET_IS_TO_SCROBBLE', value)
+    },
+    setIsScrobbled ({ commit }, value) {
+      commit('SET_IS_SCROBBLED', value)
+    },
+    setIsWithScrobbleNotifications ({ commit }, value) {
+      commit('SET_IS_WITH_SCROBBLE_NOTIFICATIONS', value)
     }
   }
 }

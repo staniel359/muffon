@@ -19,9 +19,15 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'AudioElement',
+  data () {
+    return {
+      isToScrobble: false
+    }
+  },
   computed: {
     ...mapState('audio', {
       audioElement: 'element',
@@ -29,14 +35,17 @@ export default {
       isAudioAutoplay: 'isAutoplay'
     }),
     ...mapState('player', {
-      playerPlaying: 'playing'
+      isPlayerScrobbling: 'isScrobbling',
+      playerPlaying: 'playing',
+      playerScrobblePercent: 'scrobblePercent'
     })
   },
   watch: {
     playerPlaying: {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
-    }
+    },
+    isToScrobble: 'handleIsToScrobbleChange'
   },
   mounted () {
     this.setAudioElement(
@@ -89,9 +98,22 @@ export default {
       this.setAudioStatus('play')
     },
     handleTimeUpdate (event) {
+      const { currentTime } = event.target
+
       this.setAudioCurrentTime(
-        event.target.currentTime
+        currentTime
       )
+
+      if (this.isPlayerScrobbling) {
+        const { duration } = event.target
+
+        const isToScrobble = (
+          currentTime * 100 / duration >=
+            this.playerScrobblePercent
+        )
+
+        this.isToScrobble = isToScrobble
+      }
     },
     handlePause () {
       this.setAudioStatus('pause')
@@ -103,6 +125,17 @@ export default {
     },
     handleEmptied () {
       this.setIsAudioPlayable(false)
+    },
+    handleIsToScrobbleChange (value) {
+      if (!value) {
+        updateStore({
+          'player.isScrobbled': false
+        })
+      }
+
+      updateStore({
+        'player.isToScrobble': value
+      })
     },
     loadAudio () {
       this.setAudioStatus('pause')

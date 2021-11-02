@@ -80,27 +80,29 @@
         }
       },
       "options": {
-        "main": {
-          "language": "Language"
-        },
-        "view": {
-          "darkMode": "Dark mode"
-        },
-        "player": {
-          "audioSource": "Audio source"
-        },
-        "queue": {
-          "autoplay": "Autoplay"
-        },
-        "data": {
-          "cache": {
-            "clear": "Clear cache",
-            "cleared": "Cache was cleared"
+        "app": {
+          "main": {
+            "language": "Language"
           },
-          "history": {
-            "search": {
-              "clear": "Clear search history",
-              "cleared": "Search history was cleared"
+          "view": {
+            "darkMode": "Dark mode"
+          },
+          "player": {
+            "audioSource": "Audio source"
+          },
+          "queue": {
+            "autoplay": "Autoplay"
+          },
+          "data": {
+            "cache": {
+              "clear": "Clear cache",
+              "cleared": "Cache was cleared"
+            },
+            "history": {
+              "search": {
+                "clear": "Clear search history",
+                "cleared": "Search history was cleared"
+              }
             }
           }
         },
@@ -108,7 +110,9 @@
           "lastfm": {
             "connect": "Connect Last.FM account",
             "wait": "Your browser will now open. Confirm connection there and click this button again.",
-            "connected": "Last.FM account connected"
+            "connected": "Last.FM account connected",
+            "scrobbling": "Scrobbling",
+            "scrobbleNotifications": "Scrobble notifications"
           }
         }
       }
@@ -218,6 +222,9 @@
         },
         "content": "Looks like there is nothing here",
       }
+    },
+    "player": {
+      "scrobbled": "{trackFullTitle} was successfully scrobbled"
     },
     "sources": {
       "find": "Find in sources",
@@ -442,9 +449,6 @@
         "header": "Delete playlist track",
         "going": "You are going to delete {playlistTrackFullTitle} from {playlistTitle} playlist."
       }
-    },
-    "self": {
-      "actions": "Actions"
     },
     "deleted": {
       "artist": "Artist was deleted",

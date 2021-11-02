@@ -1,5 +1,8 @@
 <template>
-  <TheObservers />
+  <TheStoreObserver />
+  <TheLocalObserver />
+  <TheKeysObserver />
+  <TheMediaKeysObserver />
 
   <TheBackground />
 
@@ -20,8 +23,11 @@
 </template>
 
 <script>
+import TheStoreObserver from '@/layout/observers/TheStoreObserver.vue'
+import TheLocalObserver from '@/layout/observers/TheLocalObserver.vue'
+import TheKeysObserver from '@/layout/observers/TheKeysObserver.vue'
+import TheMediaKeysObserver from '@/layout/observers/TheMediaKeysObserver.vue'
 import TheView from '@/layout/TheView.vue'
-import TheObservers from '@/layout/TheObservers.vue'
 import ThePanels from '@/layout/ThePanels.vue'
 import TheBackground from '@/layout/TheBackground.vue'
 import TheVisibleArea from '@/layout/TheVisibleArea.vue'
@@ -31,8 +37,11 @@ import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 export default {
   name: 'App',
   components: {
+    TheStoreObserver,
+    TheLocalObserver,
+    TheKeysObserver,
+    TheMediaKeysObserver,
     TheView,
-    TheObservers,
     ThePanels,
     TheBackground,
     TheVisibleArea,

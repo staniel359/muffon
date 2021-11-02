@@ -1,16 +1,16 @@
 <template>
   <div class="main-settings-options-block">
-    <LastfmOption />
+    <LastfmOptions />
   </div>
 </template>
 
 <script>
-import LastfmOption from './ServicesSettings/LastfmOption.vue'
+import LastfmOptions from './ServicesSettings/LastfmOptions.vue'
 
 export default {
   name: 'ServicesSettings',
   components: {
-    LastfmOption
+    LastfmOptions
   }
 }
 </script>

@@ -63,7 +63,7 @@ export default {
     }),
     headerFormatted () {
       return this.$t(
-        'layout.settings.options.main.language'
+        'layout.settings.options.app.main.language'
       )
     }
   },

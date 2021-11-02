@@ -30,30 +30,30 @@ export default {
     },
     playerTitle () {
       return [
-        this.playerArtistName,
-        this.playerTrackFullTitle
+        this.artistName,
+        this.trackFullTitle
       ].join(' - ')
     },
-    playerArtistName () {
+    artistName () {
       return this.playerPlaying.artist.name
     },
-    playerTrackFullTitle () {
+    trackFullTitle () {
       return [
-        this.playerTrackTitle,
-        this.playerTrackExtraTitleFormatted
+        this.trackTitle,
+        this.trackExtraTitleFormatted
       ].filter(e => e).join(' ')
     },
-    playerTrackTitle () {
+    trackTitle () {
       return this.playerPlaying.title
     },
-    playerTrackExtraTitleFormatted () {
-      if (this.playerTrackExtraTitle) {
-        return `(${this.playerTrackExtraTitle})`
+    trackExtraTitleFormatted () {
+      if (this.trackExtraTitle) {
+        return `(${this.trackExtraTitle})`
       } else {
         return null
       }
     },
-    playerTrackExtraTitle () {
+    trackExtraTitle () {
       return this.playerPlaying.extra_title
     },
     mediaMetadata () {
@@ -67,15 +67,15 @@ export default {
     },
     mediaMetadataOptions () {
       return {
-        title: this.playerTrackTitle,
-        artist: this.playerArtistName,
-        album: this.playerAlbumTitle,
+        title: this.trackTitle,
+        artist: this.artistName,
+        album: this.albumTitle,
         artwork: [{
           src: this.playerImage
         }]
       }
     },
-    playerAlbumTitle () {
+    albumTitle () {
       return this.playerPlaying.album?.title
     },
     playerImage () {
