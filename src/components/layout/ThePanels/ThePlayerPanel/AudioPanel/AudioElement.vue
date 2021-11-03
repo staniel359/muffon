@@ -2,7 +2,6 @@
   <audio
     class="audio-element"
     ref="audio"
-    crossorigin="anonymous"
     controls
     :autoplay="isAudioAutoplay"
     @loadstart="handleLoadStart"
