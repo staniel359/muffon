@@ -26,6 +26,7 @@
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
         @linkClick="handleLinkClick"
+        isWhite
         @delete="handleDeleteOptionClick"
       />
 

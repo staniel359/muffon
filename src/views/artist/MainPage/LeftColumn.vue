@@ -44,6 +44,7 @@
           isWithFavoriteOption
           isWithBookmarkOption
           isWithListenedOption
+          isWhite
         />
       </div>
     </div>
