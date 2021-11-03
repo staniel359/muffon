@@ -11,9 +11,15 @@
     />
     <ScrobbleOption
       :isConnected="isConnected"
+      :isPlayerScrobbling="isPlayerScrobbling"
     />
     <ScrobbleNotificationsOption
       :isConnected="isConnected"
+      :isPlayerScrobbling="isPlayerScrobbling"
+    />
+    <ScrobblePercentOption
+      :isConnected="isConnected"
+      :isPlayerScrobbling="isPlayerScrobbling"
     />
   </div>
 </template>
@@ -25,6 +31,7 @@ import ConnectOption from './LastfmOptions/ConnectOption.vue'
 import ScrobbleOption from './LastfmOptions/ScrobbleOption.vue'
 import ScrobbleNotificationsOption
   from './LastfmOptions/ScrobbleNotificationsOption.vue'
+import ScrobblePercentOption from './LastfmOptions/ScrobblePercentOption.vue'
 
 export default {
   name: 'LastfmOptions',
@@ -32,9 +39,13 @@ export default {
     BaseDivider,
     ConnectOption,
     ScrobbleOption,
-    ScrobbleNotificationsOption
+    ScrobbleNotificationsOption,
+    ScrobblePercentOption
   },
   computed: {
+    ...mapState('player', {
+      isPlayerScrobbling: 'isScrobbling'
+    }),
     ...mapState('profile', {
       profileInfo: 'info'
     }),

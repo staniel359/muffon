@@ -1,5 +1,5 @@
 <template>
-  <div class="content scrobble-option">
+  <div class="content">
     <BaseHeader
       tag="h4"
       :text="headerFormatted"
@@ -27,11 +27,11 @@ export default {
     BaseToggle
   },
   props: {
-    isConnected: Boolean
+    isConnected: Boolean,
+    isPlayerScrobbling: Boolean
   },
   computed: {
     ...mapState('player', {
-      isPlayerScrobbling: 'isScrobbling',
       isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications'
     }),
     headerFormatted () {
@@ -68,7 +68,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.scrobble-option
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

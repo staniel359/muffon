@@ -1,5 +1,5 @@
 <template>
-  <div class="content scrobble-option">
+  <div class="content">
     <BaseHeader
       tag="h4"
       :text="headerFormatted"
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
 import { setGlobalData } from '#/actions'
@@ -27,12 +26,10 @@ export default {
     BaseToggle
   },
   props: {
-    isConnected: Boolean
+    isConnected: Boolean,
+    isPlayerScrobbling: Boolean
   },
   computed: {
-    ...mapState('player', {
-      isPlayerScrobbling: 'isScrobbling'
-    }),
     headerFormatted () {
       return this.$t(
         'layout.settings.options.services.lastfm.scrobbling'
@@ -63,7 +60,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.scrobble-option
-  margin-top: 1em
-</style>
+<style lang="sass" scoped></style>

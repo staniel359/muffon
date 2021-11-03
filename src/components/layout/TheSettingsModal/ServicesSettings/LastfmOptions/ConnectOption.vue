@@ -25,8 +25,6 @@
       class="connect-nickname"
     >
       {{ lastfmNickname }}
-
-      <i class="green check icon connect-success-icon"></i>
     </strong>
   </div>
 
@@ -115,9 +113,6 @@ export default {
 
 .connect-nickname
   margin-left: 1em
-
-.connect-success-icon
-  margin-left: 0.5em
 
 .connect-wait-message
   margin-top: 0.5em

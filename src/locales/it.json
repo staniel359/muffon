@@ -108,9 +108,9 @@
         },
         "services": {
           "lastfm": {
-            "connect": "Connetti account di Last.FM",
+            "connect": "Connetti account",
             "wait": "Il browser verrà aperto. Confermare la connessione e cliccare di nuovo il pulsante.",
-            "connected": "L'account di Last.FM è connesso",
+            "connected": "L'account è connesso",
             "scrobbling": "Scrobbling"
           }
         }
@@ -445,9 +445,6 @@
         "header": "Cancella brano della playlist",
         "going": "Stai per cancellare {playlistTrackFullTitle} dalla playlist {playlistTitle}."
       }
-    },
-    "self": {
-      "actions": "Azioni"
     },
     "deleted": {
       "artist": "L'artista è stato eliminato",

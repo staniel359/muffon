@@ -40,6 +40,7 @@ export default {
       setPlayerCurrentVariantId: 'setCurrentVariantId',
       setIsPlayerScrobbling: 'setIsScrobbling',
       setIsPlayerWithScrobbleNotifications: 'setIsWithScrobbleNotifications',
+      setPlayerScrobblePercent: 'setScrobblePercent',
       setPlayerPlaying: 'setPlaying',
       setPlayerSourceId: 'setSourceId',
       setPlayerVariants: 'setVariants'
@@ -75,6 +76,8 @@ export default {
           return this.setIsPlayerScrobbling(value)
         case 'player.isWithScrobbleNotifications':
           return this.setIsPlayerWithScrobbleNotifications(value)
+        case 'player.scrobblePercent':
+          return this.setPlayerScrobblePercent(value)
         case 'player.playing':
           return this.setPlayerPlaying(value)
         case 'player.sourceId':

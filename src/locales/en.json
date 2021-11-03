@@ -108,11 +108,12 @@
         },
         "services": {
           "lastfm": {
-            "connect": "Connect Last.FM account",
+            "connect": "Connect account",
             "wait": "Your browser will now open. Confirm connection there and click this button again.",
-            "connected": "Last.FM account connected",
+            "connected": "Account connected",
             "scrobbling": "Scrobbling",
-            "scrobbleNotifications": "Scrobble notifications"
+            "scrobbleNotifications": "Scrobble notifications",
+            "scrobblePercent": "Scrobble after"
           }
         }
       }

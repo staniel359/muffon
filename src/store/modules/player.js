@@ -44,6 +44,9 @@ export default {
     },
     SET_IS_WITH_SCROBBLE_NOTIFICATIONS (state, value) {
       state.isWithScrobbleNotifications = value
+    },
+    SET_SCROBBLE_PERCENT (state, value) {
+      state.scrobblePercent = value
     }
   },
   actions: {
@@ -73,6 +76,9 @@ export default {
     },
     setIsWithScrobbleNotifications ({ commit }, value) {
       commit('SET_IS_WITH_SCROBBLE_NOTIFICATIONS', value)
+    },
+    setScrobblePercent ({ commit }, value) {
+      commit('SET_SCROBBLE_PERCENT', value)
     }
   }
 }

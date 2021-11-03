@@ -4,8 +4,9 @@ import { generateKey } from '#/utils'
 export const collection = collection => {
   const formatCollectionItemData = item => {
     const isString = typeof item === 'string'
+    const isNumber = typeof item === 'number'
 
-    if (isString) {
+    if (isString || isNumber) {
       return { name: item }
     } else {
       return item

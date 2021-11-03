@@ -1,5 +1,5 @@
 <template>
-  <div class="content clear-cache-option">
+  <div class="content">
     <div class="header">
       <BaseButton
         :text="buttonTextFormatted"
@@ -69,7 +69,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.clear-cache-option
-  margin-bottom: 0.5em
-</style>
+<style lang="sass" scoped></style>
