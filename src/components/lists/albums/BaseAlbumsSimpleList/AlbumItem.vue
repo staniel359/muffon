@@ -80,6 +80,8 @@ import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
+import formatAlbumSourceParams
+  from '#/actions/api/album/formatters/requestData'
 
 export default {
   name: 'AlbumItem',
@@ -156,7 +158,15 @@ export default {
     albumMainLinkFormatted () {
       return formatAlbumMainLink({
         artistName: this.artistName,
-        albumTitle: this.albumTitle
+        albumTitle: this.albumTitle,
+        sourceParams: this.sourceParams
+      })
+    },
+    sourceParams () {
+      return formatAlbumSourceParams({
+        sourceId: this.albumData.source_id,
+        albumData: this.albumData,
+        artistName: this.artistName
       })
     },
     albumTitle () {

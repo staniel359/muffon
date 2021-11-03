@@ -1,9 +1,12 @@
-export default function ({ sourceId, albumData }) {
+export default function ({ sourceId, albumData, artistName }) {
   const formatAlbumData = () => {
     switch (sourceId) {
       case 'lastfm':
         return {
-          artistName: albumData.artist.name,
+          artistName: (
+            albumData.artist?.name ||
+              artistName
+          ),
           albumTitle: albumData.title
         }
       case 'vk':
@@ -28,9 +31,11 @@ export default function ({ sourceId, albumData }) {
         }
       case 'bandcamp':
         return {
-          model: albumData.bandcamp_model,
-          title: albumData.bandcamp_slug,
           artistName: albumData.artists[0].bandcamp_slug,
+          albumTitle: albumData.bandcamp_slug,
+          albumId: albumData.bandcamp_id,
+          artistId: albumData.artists[0].bandcamp_id,
+          model: albumData.bandcamp_model,
           paramsData: {
             album_type: albumData.bandcamp_model
           }

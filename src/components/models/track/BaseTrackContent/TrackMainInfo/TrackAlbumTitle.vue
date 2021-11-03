@@ -16,6 +16,8 @@ import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import {
   main as formatProfileLibraryAlbumMainLink
 } from '#/formatters/links/profile/library/album'
+import formatAlbumSourceParams
+  from '#/actions/api/album/formatters/requestData'
 
 export default {
   name: 'TrackAlbumTitle',
@@ -23,8 +25,8 @@ export default {
     BaseLink
   },
   props: {
-    albumTitle: {
-      type: String,
+    albumData: {
+      type: Object,
       required: true
     },
     artistName: String,
@@ -45,9 +47,20 @@ export default {
       } else {
         return formatAlbumMainLink({
           albumTitle: this.albumTitle,
-          artistName: this.artistName
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
         })
       }
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    sourceParams () {
+      return formatAlbumSourceParams({
+        sourceId: this.albumData.source_id,
+        albumData: this.albumData,
+        artistName: this.artistName
+      })
     }
   },
   methods: {

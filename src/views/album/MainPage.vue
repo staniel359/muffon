@@ -1,5 +1,9 @@
 <template>
-  <BaseAlbumPageContainer>
+  <BaseAlbumPageContainer
+    :artistName="artistName"
+    :albumTitle="albumTitle"
+    :sourceParams="sourceParams"
+  >
     <template #default="slotProps">
       <div
         :class="[
@@ -57,9 +61,43 @@ export default {
     LeftColumn,
     RightColumn
   },
+  props: {
+    artistName: String,
+    albumTitle: String
+  },
   data () {
     return {
       scrollable: null
+    }
+  },
+  computed: {
+    sourceParams () {
+      return {
+        sourceId: this.sourceId,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        albumId: this.albumId,
+        artistId: this.artistId,
+        model: this.model,
+        paramsData: this.paramsData
+      }
+    },
+    sourceId () {
+      return this.$route.query.source_id
+    },
+    albumId () {
+      return this.$route.query.album_id
+    },
+    artistId () {
+      return this.$route.query.artist_id
+    },
+    model () {
+      return this.$route.query.model
+    },
+    paramsData () {
+      return JSON.parse(
+        this.$route.query.params_data || '{}'
+      )
     }
   },
   methods: {

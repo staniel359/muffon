@@ -22,7 +22,7 @@
 
     <TrackAlbumTitle
       v-if="isRenderAlbumTitle"
-      :albumTitle="albumTitle"
+      :albumData="albumData"
       :artistName="artistName"
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
@@ -52,7 +52,7 @@ export default {
     artists: Array,
     albumArtistName: String,
     isWithAlbumTitle: Boolean,
-    albumTitle: String,
+    albumData: Object,
     isLinkToLibrary: Boolean,
     profileId: String,
     trackId: String,
@@ -76,7 +76,7 @@ export default {
     isRenderAlbumTitle () {
       return (
         this.isWithAlbumTitle &&
-          this.albumTitle
+          this.albumData
       )
     }
   },
