@@ -111,7 +111,9 @@
             "connect": "Connetti account",
             "wait": "Il browser verrà aperto. Confermare la connessione e cliccare di nuovo il pulsante.",
             "connected": "L'account è connesso",
-            "scrobbling": "Scrobbling"
+            "scrobbling": "Scrobbling",
+            "scrobbleNotifications": "Notifiche scrobble",
+            "scrobblePercent": "Scrobble dopo"
           }
         }
       }
@@ -221,6 +223,9 @@
         },
         "content": "Non c'è ancora nulla qui"
       }
+    },
+    "player": {
+      "scrobbled": "Scrobble di {trackFullTitle} completato"
     },
     "sources": {
       "find": "Trova nelle fonti",
