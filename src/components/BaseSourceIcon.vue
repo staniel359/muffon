@@ -14,8 +14,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { setPopup } from '#/actions/plugins/semantic'
-import { popupOptions } from '#/data/plugins/semantic'
+import { sourcePopupOptions } from '#/data/plugins/semantic'
 import audioSources from '#/data/audio/sources'
 
 export default {
@@ -30,6 +31,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     popupTextFormatted () {
       if (this.sourceName) {
         return this.$t(
@@ -47,20 +51,34 @@ export default {
       return audioSources.find(sourceData => {
         return sourceData.id === this.sourceId
       })
+    },
+    popupOptions () {
+      return sourcePopupOptions({
+        isDarkMode: this.isDarkMode
+      })
     }
   },
+  watch: {
+    isDarkMode: 'handleIsDarkModeChange'
+  },
   mounted () {
-    setPopup(
-      this.$refs.icon,
-      popupOptions()
-    )
+    this.setSourcePopup()
   },
   methods: {
+    handleIsDarkModeChange () {
+      this.setSourcePopup()
+    },
     handleMouseEnter () {
       this.isActive = true
     },
     handleMouseLeave () {
       this.isActive = false
+    },
+    setSourcePopup () {
+      setPopup(
+        this.$refs.icon,
+        this.popupOptions
+      )
     }
   }
 }

@@ -73,11 +73,16 @@ export const mainPopupOptions = () => {
   }
 }
 
-export const popupOptions = () => {
+export const sourcePopupOptions = ({ isDarkMode }) => {
+  const variation = [
+    'basic small',
+    (isDarkMode && 'inverted')
+  ].filter(e => e).join(' ')
+
   return {
     duration: 0,
     position: 'top center',
-    variation: 'basic inverted small',
+    variation,
     className: {
       popup: 'ui popup main-popup'
     }
