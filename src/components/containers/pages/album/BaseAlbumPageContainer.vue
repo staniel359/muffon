@@ -48,6 +48,10 @@ export default {
       type: String,
       required: true
     },
+    sourceParams: {
+      type: Object,
+      required: true
+    },
     scope: String,
     responsePageLimit: Number,
     pageNameKey: String
@@ -77,6 +81,7 @@ export default {
       return {
         artistName: this.artistNameFetched,
         albumTitle: this.albumTitleFetched,
+        sourceParams: this.sourceParams,
         pageNameKey: this.pageNameKey
       }
     },
@@ -120,6 +125,8 @@ export default {
     handleProfileLanguageChange () {
       this.setNavigation()
     },
+    fetchBandcampAlbumIdData,
+    fetchAlbumData,
     setNavigation () {
       this.setNavigationSections(
         this.navigationSections
@@ -132,20 +139,26 @@ export default {
       )
     },
     resetRequestAlbumData () {
-      this.setRequestAlbumData({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle
-      })
+      this.setRequestAlbumData(
+        this.sourceParams
+      )
     },
     setRequestAlbumData (value) {
-      if (value.sourceId === 'bandcamp') {
+      if (this.isFetchBandcampAlbumIdData(value)) {
         this.fetchBandcampAlbumIdData(value)
       } else {
         this.requestAlbumData = value
       }
     },
-    fetchBandcampAlbumIdData,
-    fetchAlbumData,
+    isFetchBandcampAlbumIdData (value) {
+      return (
+        value.sourceId === 'bandcamp' &&
+          !(
+            value.albumId &&
+              value.artistId
+          )
+      )
+    },
     fetchData (page) {
       this.fetchAlbumData({
         ...this.albumDataArgs,

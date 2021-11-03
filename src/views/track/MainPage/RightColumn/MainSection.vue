@@ -5,7 +5,7 @@
     <TrackMainInfo
       :trackTitle="trackTitle"
       :artistName="artistName"
-      :albumTitle="albumTitle"
+      :albumData="albumData"
     />
 
     <BaseTrackPlayerPanel
@@ -40,8 +40,8 @@ export default {
     artistName () {
       return this.trackData.artist.name
     },
-    albumTitle () {
-      return this.trackData.album?.title
+    albumData () {
+      return this.trackData.albums?.[0]
     }
   }
 }

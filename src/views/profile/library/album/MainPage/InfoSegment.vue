@@ -86,6 +86,8 @@ import {
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
+import formatAlbumSourceParams
+  from '#/actions/api/album/formatters/requestData'
 
 export default {
   name: 'InfoSegment',
@@ -125,9 +127,17 @@ export default {
       } else {
         return formatAlbumMainLink({
           albumTitle: this.albumTitle,
-          artistName: this.artistName
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
         })
       }
+    },
+    sourceParams () {
+      return formatAlbumSourceParams({
+        sourceId: 'lastfm',
+        albumData: this.albumData,
+        artistName: this.artistName
+      })
     },
     artistId () {
       return this.albumData.artist.id

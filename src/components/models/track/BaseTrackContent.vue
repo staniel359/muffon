@@ -32,7 +32,7 @@
             :artists="artists"
             :albumArtistName="albumArtistName"
             :isWithAlbumTitle="isWithAlbumTitle"
-            :albumTitle="albumTitle"
+            :albumData="albumData"
             :isLinkToLibrary="isLinkToLibrary"
             :profileId="profileId"
             :trackId="trackId"
@@ -274,7 +274,10 @@ export default {
       return this.trackData.artists
     },
     albumTitle () {
-      return this.trackData.album?.title
+      return this.albumData?.title
+    },
+    albumData () {
+      return this.trackData.albums?.[0]
     },
     isRenderListenersCount () {
       return (
@@ -315,7 +318,7 @@ export default {
       return this.trackData.artist.id?.toString()
     },
     albumId () {
-      return this.trackData.album?.id?.toString()
+      return this.albumData?.id?.toString()
     },
     createdDateFormatted () {
       return formatDate(

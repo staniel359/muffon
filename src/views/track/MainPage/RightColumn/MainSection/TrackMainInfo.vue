@@ -15,10 +15,12 @@
       />
     </BaseHeaderContainer>
 
-    <div class="main-header">
+    <div
+      v-if="albumData"
+      class="main-header"
+    >
       <small>
         <BaseLink
-          v-if="albumTitle"
           :link="albumMainLinkFormatted"
           :text="albumTitle"
         />
@@ -33,6 +35,8 @@ import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/BaseLink.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
+import formatAlbumSourceParams
+  from '#/actions/api/album/formatters/requestData'
 
 export default {
   name: 'TrackMainInfo',
@@ -50,7 +54,7 @@ export default {
       type: String,
       required: true
     },
-    albumTitle: String
+    albumData: Object
   },
   computed: {
     artistMainLinkFormatted () {
@@ -61,6 +65,17 @@ export default {
     albumMainLinkFormatted () {
       return formatAlbumMainLink({
         albumTitle: this.albumTitle,
+        artistName: this.artistName,
+        sourceParams: this.sourceParams
+      })
+    },
+    albumTitle () {
+      return this.albumData?.title
+    },
+    sourceParams () {
+      return formatAlbumSourceParams({
+        sourceId: this.albumData.source_id,
+        albumData: this.albumData,
         artistName: this.artistName
       })
     }

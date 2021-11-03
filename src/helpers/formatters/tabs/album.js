@@ -1,7 +1,12 @@
 import i18n from '*/i18n'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 
-export default function ({ artistName, albumTitle, pageNameKey }) {
+export default function ({
+  artistName,
+  albumTitle,
+  sourceParams,
+  pageNameKey
+}) {
   const formatAlbumPageTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
@@ -28,7 +33,8 @@ export default function ({ artistName, albumTitle, pageNameKey }) {
       default:
         return formatAlbumMainLink({
           artistName,
-          albumTitle
+          albumTitle,
+          sourceParams
         }).path
     }
   }
