@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui button"
+    class="ui button main-simple-button"
     ref="button"
     :class="{ inverted: isDarkMode }"
   >

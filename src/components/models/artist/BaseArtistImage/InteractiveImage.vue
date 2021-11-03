@@ -1,38 +1,35 @@
 <template>
-  <div
-    v-bind="$attrs"
-    class="image-container"
-  >
-    <ImagesPageButton
+  <div class="image-container">
+    <MoreLinkButton
       :artistName="artistName"
     />
 
-    <ImageSlider
+    <BaseImage
+      class="rounded"
+      :image="imageData.medium"
+      @click="handleClick"
+    />
+
+    <BaseArtistImageModal
       :images="images"
-      @imageClick="handleImageClick"
+      @init="handleModalInit"
+      @mainSliderInit="handleMainSliderInit"
     />
   </div>
-
-  <BaseArtistImageModal
-    :images="images"
-    @init="handleModalInit"
-    @mainSliderInit="handleMainSliderInit"
-  />
 </template>
 
 <script>
-import ImagesPageButton from './InteractiveImage/ImagesPageButton.vue'
-import ImageSlider from './InteractiveImage/ImageSlider.vue'
+import MoreLinkButton from './InteractiveImage/MoreLinkButton.vue'
+import BaseImage from '@/BaseImage.vue'
 import BaseArtistImageModal from '@/models/artist/BaseArtistImageModal.vue'
-import { goToSliderSlide } from '#/actions/plugins/slick'
 import { showModal } from '#/actions/plugins/semantic'
 
 export default {
   name: 'InteractiveImage',
   components: {
-    ImageSlider,
-    BaseArtistImageModal,
-    ImagesPageButton
+    MoreLinkButton,
+    BaseImage,
+    BaseArtistImageModal
   },
   props: {
     artistName: String,
@@ -44,6 +41,11 @@ export default {
       mainSlider: null
     }
   },
+  computed: {
+    imageData () {
+      return this.images[0]
+    }
+  },
   methods: {
     handleModalInit (el) {
       this.modal = el
@@ -51,15 +53,8 @@ export default {
     handleMainSliderInit (el) {
       this.mainSlider = el
     },
-    handleImageClick (index) {
-      goToSliderSlide(
-        this.mainSlider,
-        index
-      )
-
-      this.$nextTick(() => {
-        showModal(this.modal)
-      })
+    handleClick () {
+      showModal(this.modal)
     }
   }
 }
@@ -68,9 +63,9 @@ export default {
 <style lang="sass" scoped>
 .image-container
   @extend .cursor-zoom-in
-  .more-link
+  .more-link-button
     @extend .d-none
   &:hover
-    .more-link
+    .more-link-button
       @extend .d-block
 </style>

@@ -20,6 +20,7 @@
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
         :imageUrl="imageData.medium"
+        isWhite
         @linkClick="handleLinkClick"
         @delete="handleDeleteOptionClick"
       />

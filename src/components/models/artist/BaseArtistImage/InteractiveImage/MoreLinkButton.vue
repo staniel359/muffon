@@ -1,21 +1,21 @@
 <template>
-  <BaseLabelLinkContainer
-    class="circular small more-link"
-    :link="artistImagesLinkFormatted"
-    :isInverted="false"
-  >
-    <i class="ellipsis horizontal icon more-icon" />
-  </BaseLabelLinkContainer>
+  <BaseButton
+    class="basic compact circular small more-link-button"
+    icon="ellipsis horizontal"
+    :class="{ white: !isDarkMode }"
+    @click="handleClick"
+  />
 </template>
 
 <script>
-import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
+import { mapState } from 'vuex'
+import BaseButton from '@/BaseButton.vue'
 import { images as formatArtistImagesLink } from '#/formatters/links/artist'
 
 export default {
-  name: 'ImagesPageButton',
+  name: 'MoreLinkButton',
   components: {
-    BaseLabelLinkContainer
+    BaseButton
   },
   props: {
     artistName: {
@@ -24,22 +24,29 @@ export default {
     }
   },
   computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ]),
     artistImagesLinkFormatted () {
       return formatArtistImagesLink({
         artistName: this.artistName
       })
+    }
+  },
+  methods: {
+    handleClick () {
+      this.$router.push(
+        this.artistImagesLinkFormatted
+      )
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.more-link
+.more-link-button
   @extend .no-margin, .absolute
   bottom: 10px
   right: 10px
   z-index: 1
-
-.more-icon
-  @extend .no-margin
 </style>
