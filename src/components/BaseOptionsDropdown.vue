@@ -3,32 +3,28 @@
     v-if="isAnyOptions"
     class="main-options-dropdown-container"
   >
-    <div
-      class="main-options-dropdown"
-      :class="{ inverted: isDarkMode }"
+    <BaseButtonContainer
+      class="compact basic circular top right pointing floating dropdown icon main-options-dropdown-button"
+      :class="{ white: isWhite && !isDarkMode }"
+      @init="handleDropdownInit"
     >
-      <BaseButtonContainer
-        class="compact basic circular top right pointing floating dropdown icon main-options-dropdown-button"
-        @init="handleDropdownInit"
-      >
-        <i class="ellipsis vertical icon"></i>
-        <div class="menu">
-          <Component
-            v-for="optionData in optionsFormatted"
-            :key="optionData.uuid"
-            :is="optionData.component"
-            :model="model"
-            :modelId="modelId"
-            :optionModelId="optionData.optionModelId"
-            :albumTitle="albumTitle"
-            :albumTracks="albumTracks"
-            :imageUrl="imageUrl"
-            @click="optionData.action"
-            @linkClick="handleLinkClick"
-          />
-        </div>
-      </BaseButtonContainer>
-    </div>
+      <i class="ellipsis vertical icon"></i>
+      <div class="menu">
+        <Component
+          v-for="optionData in optionsFormatted"
+          :key="optionData.uuid"
+          :is="optionData.component"
+          :model="model"
+          :modelId="modelId"
+          :optionModelId="optionData.optionModelId"
+          :albumTitle="albumTitle"
+          :albumTracks="albumTracks"
+          :imageUrl="imageUrl"
+          @click="optionData.action"
+          @linkClick="handleLinkClick"
+        />
+      </div>
+    </BaseButtonContainer>
   </BaseLinkContainer>
 </template>
 
@@ -76,7 +72,8 @@ export default {
     isWithDeleteOption: Boolean,
     albumTitle: String,
     albumTracks: Array,
-    imageUrl: String
+    imageUrl: String,
+    isWhite: Boolean
   },
   emits: [
     'playlist',

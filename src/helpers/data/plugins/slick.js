@@ -1,11 +1,3 @@
-export const artistImagesMainSliderOptions = () => {
-  return {
-    accessibility: false,
-    draggable: false,
-    infinite: false
-  }
-}
-
 export const artistImagesModalMainSliderOptions = ({ syncSlider } = {}) => {
   return {
     asNavFor: syncSlider,

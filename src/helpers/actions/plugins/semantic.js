@@ -196,11 +196,17 @@ export const setProgressValue = (el, value) => {
 // Toast
 
 export const setToast = ({ message, icon }) => {
-  const { visibleContext } = store.state.layout
+  const {
+    visibleContext,
+    isDarkMode
+  } = store.state.layout
+
+  const className = isDarkMode ? 'inverted' : ''
 
   $('body').toast({
     showIcon: icon,
     context: visibleContext,
+    class: className,
     message
   })
 }

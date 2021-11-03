@@ -3,6 +3,7 @@
     class="ui image main-image"
     :class="{ inverted: isDarkMode }"
     :[attribute]="image"
+    @click="handleClick"
   />
 </template>
 
@@ -18,12 +19,20 @@ export default {
     },
     isLazy: Boolean
   },
+  emits: [
+    'click'
+  ],
   computed: {
     ...mapState('layout', [
       'isDarkMode'
     ]),
     attribute () {
       return this.isLazy ? 'data-lazy' : 'src'
+    }
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
     }
   }
 }
