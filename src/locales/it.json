@@ -434,5 +434,8 @@
       "recommendation": "Il consiglio è stato eliminato",
       "playlist": "La playlist è stata cancellata"
     }
+  },
+  "temp": {
+    "feed": "Presto ci sarà un feed qui"
   }
 }
