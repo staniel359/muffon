@@ -5,6 +5,7 @@
     :scope="scope"
     :pageNameKey="pageNameKey"
     :responsePageLimit="responsePageLimit"
+    :query="query"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -15,10 +16,24 @@
         ]"
         :isLoading="pageSlotProps.isLoading"
       >
-        <BaseViewChangeButtons
-          v-if="isWithViewChange"
-          :viewIndex="viewIndex"
-          @viewButtonClick="handleViewButtonClick"
+        <div class="search-view-buttons-container">
+          <SearchInput
+            v-if="isWithSearch"
+            :isClearable="isSearchClearable"
+            :query="query"
+            @submit="handleSearchSubmit"
+            @clear="handleSearchClear"
+          />
+
+          <BaseViewChangeButtons
+            v-if="isWithViewChange"
+            :viewIndex="viewIndex"
+            @viewButtonClick="handleViewButtonClick"
+          />
+        </div>
+
+        <BaseDivider
+          v-if="isWithSearch || isWithViewChange"
         />
 
         <BasePaginatedContainer
@@ -29,6 +44,7 @@
           :scope="scope"
           :clientPageLimit="clientPageLimit"
           :responsePageLimit="responsePageLimit"
+          isReset
           @focus="handleFocus"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
@@ -51,7 +67,10 @@
 import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import SearchInput
+  from './BaseProfileLibraryPaginatedPageContainer/SearchInput.vue'
 import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -59,8 +78,10 @@ export default {
   components: {
     BaseProfileLibraryPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
-    BaseViewChangeButtons
+    SearchInput,
+    BaseViewChangeButtons,
+    BaseDivider,
+    BasePaginatedContainer
   },
   props: {
     profileId: String,
@@ -69,11 +90,22 @@ export default {
     responsePageLimit: Number,
     pageNameKey: String,
     isWithViewChange: Boolean,
-    viewIndex: Number
+    viewIndex: Number,
+    isWithSearch: Boolean
   },
   emits: [
     'viewButtonClick'
   ],
+  data () {
+    return {
+      query: ''
+    }
+  },
+  computed: {
+    isSearchClearable () {
+      return !!this.query.length
+    }
+  },
   methods: {
     handleViewButtonClick (index) {
       this.$refs.paginatedContainer.reset()
@@ -89,6 +121,12 @@ export default {
     },
     handleFocus () {
       window.scrollTo(0, 0)
+    },
+    handleSearchSubmit (value) {
+      this.query = value
+    },
+    handleSearchClear () {
+      this.query = ''
     }
   }
 }
@@ -97,4 +135,7 @@ export default {
 <style lang="sass" scoped>
 .main-paginated-page-segment-container
   @extend .flex-column
+
+.search-view-buttons-container
+  @extend .d-flex, .align-items-center
 </style>

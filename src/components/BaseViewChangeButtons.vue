@@ -11,22 +11,18 @@
       />
     </BaseButtonsContainer>
   </div>
-
-  <BaseDivider />
 </template>
 
 <script>
 import BaseButtonsContainer from '@/containers/BaseButtonsContainer.vue'
 import BaseViewChangeButton
   from './BaseViewChangeButtons/BaseViewChangeButton.vue'
-import BaseDivider from '@/BaseDivider.vue'
 
 export default {
   name: 'BaseViewChangeButtons',
   components: {
     BaseButtonsContainer,
-    BaseViewChangeButton,
-    BaseDivider
+    BaseViewChangeButton
   },
   props: {
     buttons: {
@@ -53,5 +49,5 @@ export default {
 
 <style lang="sass" scoped>
 .view-change-buttons-container
-  @extend .d-flex, .justify-content-flex-end
+  @extend .d-flex, .justify-content-flex-end, .flex-full
 </style>

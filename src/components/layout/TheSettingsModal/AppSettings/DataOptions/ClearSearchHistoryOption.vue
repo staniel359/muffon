@@ -52,12 +52,18 @@ export default {
       this.isSuccess = false
       this.isLoading = true
 
-      await local.delete(
-        'history.search'
-      )
+      await this.clearHistory()
 
       this.isSuccess = true
       this.isLoading = false
+    },
+    clearHistory () {
+      local.delete(
+        'history.search'
+      )
+      local.delete(
+        'history.librarySearch'
+      )
     }
   }
 }

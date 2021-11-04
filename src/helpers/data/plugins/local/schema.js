@@ -19,6 +19,10 @@ export default {
     type: 'array',
     default: []
   },
+  'history.librarySearch': {
+    type: 'array',
+    default: []
+  },
   'player.currentTrackId': {
     type: ['null', 'string'],
     default: null
