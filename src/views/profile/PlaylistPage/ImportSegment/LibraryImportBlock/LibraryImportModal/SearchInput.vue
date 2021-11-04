@@ -39,7 +39,7 @@ export default {
   computed: {
     textFormatted () {
       return this.$t(
-        'inputs.search.tracks'
+        'inputs.search'
       )
     },
     searchOptions () {

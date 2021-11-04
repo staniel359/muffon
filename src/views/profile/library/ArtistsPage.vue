@@ -7,6 +7,7 @@
     :responsePageLimit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
+    isWithSearch
     @viewButtonClick="handleViewButtonClick"
   >
     <template #default="slotProps">

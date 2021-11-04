@@ -25,6 +25,8 @@ import formatProfileLibraryPageNavigation
   from '#/formatters/navigation/profile/library'
 import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
 import fetchProfileLibraryData from '#/actions/api/profile/library/fetchData'
+import fetchProfileLibrarySearchData
+  from '#/actions/api/profile/library/search/fetchData'
 import { updateTab } from '#/actions'
 
 export default {
@@ -39,7 +41,8 @@ export default {
     },
     scope: String,
     responsePageLimit: Number,
-    pageNameKey: String
+    pageNameKey: String,
+    query: String
   },
   data () {
     return {
@@ -80,7 +83,8 @@ export default {
   },
   watch: {
     profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    profileLanguage: 'handleProfileLanguageChange',
+    query: 'handleQueryChange'
   },
   mounted () {
     this.fetchData()
@@ -100,6 +104,9 @@ export default {
     handleProfileLanguageChange () {
       this.setNavigation()
     },
+    handleQueryChange () {
+      this.fetchData()
+    },
     setNavigation () {
       this.setNavigationSections(
         this.navigationSections
@@ -112,11 +119,20 @@ export default {
       )
     },
     fetchProfileLibraryData,
+    fetchProfileLibrarySearchData,
     fetchData (page) {
-      this.fetchProfileLibraryData({
-        ...this.libraryDataArgs,
-        page
-      })
+      if (this.query) {
+        this.fetchProfileLibrarySearchData({
+          ...this.libraryDataArgs,
+          query: this.query,
+          page
+        })
+      } else {
+        this.fetchProfileLibraryData({
+          ...this.libraryDataArgs,
+          page
+        })
+      }
     }
   }
 }

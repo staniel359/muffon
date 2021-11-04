@@ -16,12 +16,6 @@
         ]"
         :isLoading="pageSlotProps.isLoading"
       >
-        <BaseViewChangeButtons
-          v-if="isWithViewChange"
-          :viewIndex="viewIndex"
-          @viewButtonClick="handleViewButtonClick"
-        />
-
         <BasePaginatedContainer
           ref="paginatedContainer"
           :isLoading="pageSlotProps.isLoading"
@@ -50,7 +44,6 @@
 import BaseProfileLibraryArtistPageContainer
   from './BaseProfileLibraryArtistPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -58,8 +51,7 @@ export default {
   components: {
     BaseProfileLibraryArtistPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
-    BaseViewChangeButtons
+    BasePaginatedContainer
   },
   props: {
     profileId: String,
@@ -67,26 +59,9 @@ export default {
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,
-    pageNameKey: String,
-    isWithViewChange: Boolean,
-    viewIndex: Number
+    pageNameKey: String
   },
-  emits: [
-    'viewButtonClick'
-  ],
   methods: {
-    handleViewButtonClick (index) {
-      this.$refs.paginatedContainer.reset()
-
-      this.$emit(
-        'viewButtonClick',
-        index
-      )
-
-      this.$nextTick(() => {
-        this.$refs.pageContainer.fetchData()
-      })
-    },
     handleFocus () {
       window.scrollTo(0, 0)
     }

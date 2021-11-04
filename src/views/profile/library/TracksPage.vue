@@ -5,6 +5,7 @@
     :profileId="profileId"
     :clientPageLimit="50"
     :responsePageLimit="50"
+    isWithSearch
   >
     <template #default="slotProps">
       <BaseTracksSimpleList

@@ -34,9 +34,6 @@
         "tags": "Tag in evidenza"
       }
     },
-    "search": {
-      "input": "Cerca qualcosa..."
-    },
     "player": {
       "variants": "Varianti ({number})"
     },
@@ -170,11 +167,7 @@
     }
   },
   "inputs": {
-    "search": {
-      "artists": "Cerca artisti...",
-      "albums": "Cerca album...",
-      "tracks": "Cerca brani..."
-    }
+    "search": "Ricerca..."
   },
   "modals": {
     "undo": "Questa azione non potrà essere annullata.",

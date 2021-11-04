@@ -39,7 +39,7 @@ export default {
     }),
     textFormatted () {
       return this.$t(
-        'inputs.search.artists'
+        'inputs.search'
       )
     },
     searchOptions () {

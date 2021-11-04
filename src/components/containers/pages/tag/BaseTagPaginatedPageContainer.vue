@@ -14,11 +14,14 @@
         ]"
         :isLoading="pageSlotProps.isLoading"
       >
-        <BaseViewChangeButtons
-          v-if="isWithViewChange"
-          :viewIndex="viewIndex"
-          @viewButtonClick="handleViewButtonClick"
-        />
+        <template v-if="isWithViewChange">
+          <BaseViewChangeButtons
+            :viewIndex="viewIndex"
+            @viewButtonClick="handleViewButtonClick"
+          />
+
+          <BaseDivider />
+        </template>
 
         <BasePaginatedContainer
           ref="paginatedContainer"
@@ -48,6 +51,7 @@
 import BaseTagPageContainer from './BaseTagPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -55,8 +59,9 @@ export default {
   components: {
     BaseTagPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
-    BaseViewChangeButtons
+    BaseViewChangeButtons,
+    BaseDivider,
+    BasePaginatedContainer
   },
   props: {
     pageNameKey: String,
