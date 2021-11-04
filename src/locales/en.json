@@ -17,33 +17,16 @@
       "favorites": "Favorites",
       "tops": "Top",
       "playlists": "Playlists",
-      "artist": {
-        "images": "{artistName} images",
-        "tracks": "{artistName} tracks",
-        "albums": "{artistName} albums",
-        "similar": "{artistName} similar"
-      },
-      "album": {
-        "tracks": "{albumTitle} tracks"
-      },
-      "track": {
-        "similar": "{trackTitle} similar"
-      },
-      "tag": {
-        "artists": "{tagName} artists",
-        "albums": "{tagName} albums",
-        "tracks": "{tagName} tracks"
-      },
-      "videoChannel": {
-        "videos": "{channelTitle} videos"
-      },
-      "profile": {
-        "library": "{nickname} library",
-        "artists": "{nickname} artists",
-        "albums": "{nickname} albums",
-        "tracks": "{nickname} tracks",
-        "favorites": "{nickname} favorites",
-        "playlists": "{nickname} playlists"
+      "model": {
+        "artists": "{modelName} artists",
+        "albums": "{modelName} albums",
+        "tracks": "{modelName} tracks",
+        "similar": "{modelName} similar",
+        "images": "{modelName} images",
+        "videos": "{modelName} videos",
+        "library": "{modelName} library",
+        "favorites": "{modelName} favorites",
+        "playlists": "{modelName} playlists"
       },
       "top": {
         "artists": "Top artists",

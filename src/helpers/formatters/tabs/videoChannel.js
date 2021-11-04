@@ -5,8 +5,8 @@ import {
 
 export default function ({ channelTitle, channelId }) {
   const title = i18n.global.t(
-    'layout.navigation.videoChannel.videos',
-    { channelTitle }
+    'layout.navigation.model.videos',
+    { modelName: channelTitle }
   )
 
   const formatPath = () => {

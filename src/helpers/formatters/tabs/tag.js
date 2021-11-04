@@ -10,8 +10,8 @@ export default function ({ tagName, pageNameKey }) {
   const formatTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.tag.${pageNameKey}`,
-        { tagName }
+        `layout.navigation.model.${pageNameKey}`,
+        { modelName: tagName }
       )
     } else {
       return tagName

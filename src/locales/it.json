@@ -17,33 +17,16 @@
       "favorites": "Preferiti",
       "tops": "In evidenza",
       "playlists": "Playlist",
-      "artist": {
-        "images": "Immagini di {artistName}",
-        "tracks": "Brani di {artistName}",
-        "albums": "Album di {artistName}",
-        "similar": "Simile a {artistName}"
-      },
-      "album": {
-        "tracks": "Brani di {albumTitle}"
-      },
-      "track": {
-        "similar": "Simile a {trackTitle}"
-      },
-      "tag": {
-        "artists": "Artisti {tagName}",
-        "albums": "Album {tagName}",
-        "tracks": "Brani {tagName}"
-      },
-      "videoChannel": {
-        "videos": "Video di {channelTitle}"
-      },
-      "profile": {
-        "library": "Libreria di {nickname}",
-        "artists": "Artisti di {nickname}",
-        "albums": "Album di {nickname}",
-        "tracks": "Brani di {nickname}",
-        "favorites": "Preferiti di {nickname}",
-        "playlists": "Playlist di {nickname}"
+      "model": {
+        "artists": "Artisti {modelName}",
+        "albums": "Album {modelName}",
+        "tracks": "Brani {modelName}",
+        "similar": "Simile a {modelName}",
+        "images": "Immagini {modelName}",
+        "videos": "Video {modelName}",
+        "library": "Libreria {modelName}",
+        "favorites": "Preferiti {nickname}",
+        "playlists": "Playlist {nickname}"
       },
       "top": {
         "artists": "Artisti in evidenza",

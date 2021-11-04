@@ -25,7 +25,8 @@ export default function ({
     if (pageNameKey) {
       return {
         name: i18n.global.t(
-          `layout.navigation.album.${pageNameKey}`
+          `layout.navigation.model.${pageNameKey}`,
+          { modelName: albumTitle }
         ),
         isActive: true
       }
