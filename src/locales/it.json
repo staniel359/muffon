@@ -137,13 +137,6 @@
     }
   },
   "pages": {
-    "start": {
-      "keys": {
-        "search": "Cerca",
-        "openInTab": "Apri in una nuova scheda",
-        "closeTab": "Chiudi scheda"
-      }
-    },
     "track": {
       "videos": {
         "find": "Trova video",

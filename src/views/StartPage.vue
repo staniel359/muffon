@@ -5,15 +5,12 @@
       tag="h1"
       text="muffon"
     />
-
-    <KeysCombinationsSection />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
-import KeysCombinationsSection from './StartPage/KeysCombinationsSection.vue'
 import {
   startPage as formatStartPageNavigation
 } from '#/formatters/navigation'
@@ -23,8 +20,7 @@ import { startPage as formatStartPageTab } from '#/formatters/tabs'
 export default {
   name: 'StartPage',
   components: {
-    BaseHeader,
-    KeysCombinationsSection
+    BaseHeader
   },
   computed: {
     ...mapState('profile', {
