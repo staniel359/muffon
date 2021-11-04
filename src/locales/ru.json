@@ -17,33 +17,16 @@
       "favorites": "Избранное",
       "tops": "Популярное",
       "playlists": "Списки",
-      "artist": {
-        "images": "Изображения {artistName}",
-        "tracks": "Композиции {artistName}",
-        "albums": "Альбомы {artistName}",
-        "similar": "Похожие на {artistName}"
-      },
-      "album": {
-        "tracks": "Композиции {albumTitle}"
-      },
-      "track": {
-        "similar": "Похожие на {trackTitle}"
-      },
-      "tag": {
-        "artists": "Исполнители {tagName}",
-        "albums": "Альбомы {tagName}",
-        "tracks": "Композиции {tagName}"
-      },
-      "videoChannel": {
-        "videos": "Видео {channelTitle}"
-      },
-      "profile": {
-        "library": "Библиотека {nickname}",
-        "artists": "Исполнители {nickname}",
-        "albums": "Альбомы {nickname}",
-        "tracks": "Композиции {nickname}",
-        "favorites": "Избранное {nickname}",
-        "playlists": "Списки {nickname}"
+      "model": {
+        "artists": "Исполнители {modelName}",
+        "albums": "Альбомы {modelName}",
+        "tracks": "Композиции {modelName}",
+        "similar": "Похожие на {modelName}",
+        "images": "Изображения {modelName}",
+        "videos": "Видео {modelName}",
+        "library": "Библиотека {modelName}",
+        "favorites": "Избранное {modelName}",
+        "playlists": "Списки {modelName}"
       },
       "top": {
         "artists": "Популярные исполнители",

@@ -15,8 +15,8 @@ export default function ({
   const formatProfileLibraryAlbumPageTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.album.${pageNameKey}`,
-        { albumTitle }
+        `layout.navigation.model.${pageNameKey}`,
+        { modelName: albumTitle }
       )
     } else {
       return albumTitle
@@ -24,13 +24,13 @@ export default function ({
   }
 
   const profileLibraryArtistPageTitle = i18n.global.t(
-    'layout.navigation.artist.albums',
-    { artistName }
+    'layout.navigation.model.albums',
+    { modelName: artistName }
   )
 
   const profileLibraryPageTitle = i18n.global.t(
-    'layout.navigation.profile.artists',
-    { nickname: profileNickname }
+    'layout.navigation.model.artists',
+    { modelName: profileNickname }
   )
 
   const title = [

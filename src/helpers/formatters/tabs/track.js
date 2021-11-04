@@ -8,8 +8,8 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
   const formatTrackPageTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.track.${pageNameKey}`,
-        { trackTitle }
+        `layout.navigation.model.${pageNameKey}`,
+        { modelName: trackTitle }
       )
     } else {
       return trackTitle
@@ -17,8 +17,8 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
   }
 
   const artistPageTitle = i18n.global.t(
-    'layout.navigation.artist.tracks',
-    { artistName }
+    'layout.navigation.model.tracks',
+    { modelName: artistName }
   )
 
   const title = [

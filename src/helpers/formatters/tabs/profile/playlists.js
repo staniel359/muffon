@@ -6,8 +6,8 @@ import {
 export default function ({ profileId, profileNickname }) {
   const formatTitle = () => {
     return i18n.global.t(
-      'layout.navigation.profile.playlists',
-      { nickname: profileNickname }
+      'layout.navigation.model.playlists',
+      { modelName: profileNickname }
     )
   }
 
