@@ -5,6 +5,7 @@
     :profileId="profileId"
     :clientPageLimit="20"
     :responsePageLimit="20"
+    isWithSearch
   >
     <template #default="slotProps">
       <BaseAlbumsTableList

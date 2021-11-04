@@ -47,7 +47,7 @@ export default {
     },
     placeholderFormatted () {
       return this.$t(
-        'layout.search.input'
+        'inputs.search'
       )
     }
   },

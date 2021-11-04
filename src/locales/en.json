@@ -34,9 +34,6 @@
         "tags": "Top tags"
       }
     },
-    "search": {
-      "input": "Enter something..."
-    },
     "player": {
       "variants": "Variants ({number})"
     },
@@ -170,11 +167,7 @@
     }
   },
   "inputs": {
-    "search": {
-      "artists": "Search for artists...",
-      "albums": "Search for albums...",
-      "tracks": "Search for tracks..."
-    }
+    "search": "Search..."
   },
   "modals": {
     "undo": "You can't undo this action!",
