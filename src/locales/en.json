@@ -434,5 +434,8 @@
       "recommendation": "Recommendation was deleted",
       "playlist": "Playlist was deleted"
     }
+  },
+  "temp": {
+    "feed": "Here will be feed soon"
   }
 }
