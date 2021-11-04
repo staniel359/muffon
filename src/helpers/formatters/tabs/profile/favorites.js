@@ -5,8 +5,8 @@ import {
 
 export default function ({ profileId, profileNickname }) {
   const title = i18n.global.t(
-    'layout.navigation.profile.favorites',
-    { nickname: profileNickname }
+    'layout.navigation.model.favorites',
+    { modelName: profileNickname }
   )
 
   const formatPath = () => {
