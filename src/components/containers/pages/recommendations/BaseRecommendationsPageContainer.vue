@@ -33,7 +33,9 @@ export default {
   },
   props: {
     responsePageLimit: Number,
-    pageNameKey: String
+    pageNameKey: String,
+    filter: String,
+    filterValue: Array
   },
   data () {
     return {
@@ -58,7 +60,9 @@ export default {
     },
     recommendationsDataArgs () {
       return {
-        limit: this.responsePageLimit
+        limit: this.responsePageLimit,
+        filter: this.filter,
+        filterValue: this.filterValue
       }
     }
   },
@@ -66,7 +70,8 @@ export default {
     profileLanguage: {
       immediate: true,
       handler: 'handleProfileLanguageChange'
-    }
+    },
+    filterValue: 'handleFilterValueChange'
   },
   mounted () {
     this.fetchData()
@@ -82,6 +87,9 @@ export default {
     },
     handleProfileLanguageChange () {
       this.setNavigation()
+    },
+    handleFilterValueChange () {
+      this.fetchData()
     },
     setNavigation () {
       this.setNavigationSections(

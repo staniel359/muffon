@@ -1,0 +1,59 @@
+<template>
+  <div class="scope-select-container">
+    <select
+      class="ui compact selection dropdown"
+      ref="dropdown"
+    >
+      <option value="artists">
+        {{ artistsFormatted }}
+      </option>
+    </select>
+  </div>
+</template>
+
+<script>
+import { setDropdown } from '#/actions/plugins/semantic'
+import { mainDropdownOptions } from '#/data/plugins/semantic'
+
+export default {
+  name: 'FilterScopeSelect',
+  emits: [
+    'select'
+  ],
+  computed: {
+    dropdownOptions () {
+      return mainDropdownOptions({
+        onChange: this.handleChange
+      })
+    },
+    artistsFormatted () {
+      return this.$t(
+        'layout.navigation.artists'
+      )
+    }
+  },
+  mounted () {
+    setDropdown(
+      this.$refs.dropdown,
+      this.dropdownOptions
+    )
+
+    this.handleChange(
+      'artists'
+    )
+  },
+  methods: {
+    handleChange (value) {
+      this.$emit(
+        'select',
+        value
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped>
+.scope-select-container
+  margin-left: 1em !important
+</style>

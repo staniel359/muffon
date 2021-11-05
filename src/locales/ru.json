@@ -150,6 +150,9 @@
     },
     "library": {
       "since": "В библиотеке с"
+    },
+    "recommendations": {
+      "filter": "Фильтр"
     }
   },
   "buttons": {

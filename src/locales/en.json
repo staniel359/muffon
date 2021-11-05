@@ -150,6 +150,9 @@
     },
     "library": {
       "since": "In library since"
+    },
+    "recommendations": {
+      "filter": "Filter"
     }
   },
   "buttons": {
