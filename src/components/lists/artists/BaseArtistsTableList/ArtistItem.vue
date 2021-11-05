@@ -15,7 +15,7 @@
 
       <BaseOptionsDropdown
         model="artist"
-        :modelId="artistId"
+        :modelId="artistArtistId"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -179,6 +179,12 @@ export default {
     },
     artistId () {
       return this.artistData.id.toString()
+    },
+    artistArtistId () {
+      return (
+        this.artistData.artist_id ||
+          this.artistId
+      )?.toString()
     },
     artistName () {
       return this.artistData.name

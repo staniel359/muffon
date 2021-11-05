@@ -35,7 +35,7 @@
 
       <BaseOptionsDropdown
         model="album"
-        :modelId="albumId"
+        :modelId="albumAlbumId"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -182,7 +182,13 @@ export default {
       return this.albumData.uuid
     },
     albumId () {
-      return this.albumData.id.toString()
+      return this.albumData.id?.toString()
+    },
+    albumAlbumId () {
+      return (
+        this.albumData.album_id ||
+          this.albumId
+      )?.toString()
     }
   },
   mounted () {
