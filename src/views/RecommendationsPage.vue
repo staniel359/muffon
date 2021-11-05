@@ -1,5 +1,9 @@
 <template>
-  <BaseRecommendationsPageContainer>
+  <BaseRecommendationsPageContainer
+    :responsePageLimit="limit"
+    :filter="filter"
+    :filterValue="filterValue"
+  >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
         :class="[
@@ -10,13 +14,22 @@
         :isLoading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
       >
+        <FiltersBlock
+          :filter="filter"
+          @filterChange="handleFilterChange"
+          @filterValueChange="handleFilterValueChange"
+        />
+
+        <BaseDivider />
+
         <BasePaginatedContainer
+          ref="paginatedContainer"
           scope="recommendations"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.recommendationsData"
-          :clientPageLimit="10"
-          :responsePageLimit="10"
+          :clientPageLimit="limit"
+          :responsePageLimit="limit"
           @focus="handleFocus"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
@@ -44,6 +57,8 @@ import { mapState } from 'vuex'
 import BaseRecommendationsPageContainer
   from '@/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import FiltersBlock from './RecommendationsPage/FiltersBlock.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseArtistsExtendedList
   from '@/lists/artists/BaseArtistsExtendedList.vue'
@@ -53,8 +68,17 @@ export default {
   components: {
     BaseRecommendationsPageContainer,
     BaseSegmentContainer,
+    FiltersBlock,
+    BaseDivider,
     BasePaginatedContainer,
     BaseArtistsExtendedList
+  },
+  data () {
+    return {
+      filter: null,
+      filterValue: null,
+      limit: 10
+    }
   },
   computed: {
     ...mapState('profile', {
@@ -67,9 +91,20 @@ export default {
   methods: {
     handleFocus () {
       window.scrollTo(0, 0)
+    },
+    handleFilterChange (value) {
+      this.filter = value
+    },
+    handleFilterValueChange (value) {
+      this.filterValue = value
+
+      this.$refs.paginatedContainer.reset()
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-paginated-page-segment-container
+  @extend .flex-column
+</style>

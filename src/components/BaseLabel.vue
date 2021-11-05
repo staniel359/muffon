@@ -1,10 +1,7 @@
 <template>
   <div
     class="ui basic label main-label"
-    :class="{
-      inverted: isDarkMode,
-      reversed: isReverse
-    }"
+    :class="{ inverted: isDarkMode }"
     @click="handleClick"
   >
     <div
@@ -14,9 +11,10 @@
 
     <template v-else>
       <i
-        v-if="icon"
+        v-if="icon && !isReverse"
         class="icon"
         :class="icon"
+        @click="handleIconClick"
       />
 
       <span
@@ -25,6 +23,13 @@
       >
         {{ text }}
       </span>
+
+      <i
+        v-if="icon && isReverse"
+        class="icon"
+        :class="icon"
+        @click="handleIconClick"
+      />
     </template>
   </div>
 </template>
@@ -40,18 +45,27 @@ export default {
     isReverse: Boolean,
     isLoading: Boolean
   },
+  emits: [
+    'click',
+    'iconClick'
+  ],
   computed: {
     ...mapState('layout', [
       'isDarkMode'
     ])
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
+    },
+    handleIconClick () {
+      this.$emit('iconClick')
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.reversed
-  flex-direction: row-reverse
-
 .label-text
   @extend .cursor-default
 </style>

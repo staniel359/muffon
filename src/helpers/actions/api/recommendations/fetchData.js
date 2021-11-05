@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ page, limit }) {
+export default function ({ page, limit, filter, filterValue }) {
   this.isLoading = true
 
   const profileId =
@@ -13,7 +13,16 @@ export default function ({ page, limit }) {
   const params = {
     token,
     ...(page && { page }),
-    ...(limit && { limit })
+    ...(limit && { limit }),
+    ...(
+      filter &&
+        filterValue?.length &&
+        { filter }
+    ),
+    ...(
+      filterValue?.length &&
+        { filter_value: filterValue }
+    )
   }
 
   const handleSuccess = response => {
