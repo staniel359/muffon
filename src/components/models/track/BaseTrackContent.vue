@@ -312,7 +312,10 @@ export default {
       return this.trackData.id?.toString()
     },
     trackTrackId () {
-      return this.trackData.track_id?.toString()
+      return (
+        this.trackData.track_id ||
+          this.trackId
+      )?.toString()
     },
     artistId () {
       return this.trackData.artist.id?.toString()
