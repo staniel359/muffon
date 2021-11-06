@@ -1,46 +1,50 @@
 <template>
-  <BaseAccordionContainer
-    :title="textFormatted"
-    @open="handleOpen"
-  >
-    <div class="filters-block-container">
-      <ProfileArtistsFilterBlock
-        v-if="filter === 'artists'"
-        ref="filter"
-        :artists="artists"
-        @change="handleArtistsFilterValueChange"
-      />
+  <BaseSegmentContainer>
+    <BaseAccordionContainer
+      :title="textFormatted"
+      @open="handleOpen"
+    >
+      <div class="filters-block-container">
+        <ProfileArtistsFilterBlock
+          v-if="filter === 'artists'"
+          ref="filter"
+          :artists="artists"
+          @change="handleArtistsFilterValueChange"
+        />
 
-      <FilterScopeSelect
-        @select="handleFilterChange"
-      />
-    </div>
-
-    <div class="profile-artists-container">
-      <div class="ui labels">
-        <BaseLabel
-          v-for="artistData in artists"
-          icon="close"
-          :key="artistData.uuid"
-          :text="artistData.name"
-          isReverse
-          @iconClick="handleArtistDeleteButtonClick(artistData.uuid)"
+        <FilterScopeSelect
+          @select="handleFilterChange"
         />
       </div>
-    </div>
-  </BaseAccordionContainer>
+
+      <div class="profile-artists-container">
+        <div class="ui labels">
+          <BaseLabel
+            v-for="artistData in artists"
+            icon="close"
+            :key="artistData.uuid"
+            :text="artistData.name"
+            isReverse
+            @iconClick="handleArtistDeleteButtonClick(artistData.uuid)"
+          />
+        </div>
+      </div>
+    </BaseAccordionContainer>
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import ProfileArtistsFilterBlock
-  from './FiltersBlock/ProfileArtistsFilterBlock.vue'
-import FilterScopeSelect from './FiltersBlock/FilterScopeSelect.vue'
+  from './FiltersSegment/ProfileArtistsFilterBlock.vue'
+import FilterScopeSelect from './FiltersSegment/FilterScopeSelect.vue'
 import BaseLabel from '@/BaseLabel.vue'
 
 export default {
-  name: 'FiltersBlock',
+  name: 'FiltersSegment',
   components: {
+    BaseSegmentContainer,
     BaseAccordionContainer,
     ProfileArtistsFilterBlock,
     FilterScopeSelect,

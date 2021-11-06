@@ -9,15 +9,15 @@
           @select="handleSelect"
         />
 
-        <SearchScopeSelect
-          :key="key"
-          @select="handleScopeSelect"
-        />
-
         <BaseClearButton
           v-if="!isReset"
           class="reset-button"
           @click="handleResetButtonClick"
+        />
+
+        <SearchScopeSelect
+          :key="key"
+          @select="handleScopeSelect"
         />
       </div>
 
