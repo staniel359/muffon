@@ -5,42 +5,47 @@
     :responsePageLimit="responsePageLimit"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
+      <div
         :class="[
+          'ui segments',
           'main-segment-container',
           'main-page-segment-container',
           'main-paginated-page-segment-container'
         ]"
-        :isLoading="pageSlotProps.isLoading"
       >
-        <template v-if="isWithViewChange">
+        <BaseSegmentContainer
+          v-if="isWithViewChange"
+        >
           <BaseViewChangeButtons
             :viewIndex="viewIndex"
             @viewButtonClick="handleViewButtonClick"
           />
+        </BaseSegmentContainer>
 
-          <BaseDivider />
-        </template>
-
-        <BasePaginatedContainer
-          ref="paginatedContainer"
+        <BaseSegmentContainer
+          class="top-segment"
           :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.topData"
-          :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
-          @focus="handleFocus"
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
         >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-            ></slot>
-          </template>
-        </BasePaginatedContainer>
-      </BaseSegmentContainer>
+          <BasePaginatedContainer
+            ref="paginatedContainer"
+            :isLoading="pageSlotProps.isLoading"
+            :error="pageSlotProps.error"
+            :responseData="pageSlotProps.topData"
+            :scope="scope"
+            :clientPageLimit="clientPageLimit"
+            :responsePageLimit="responsePageLimit"
+            @focus="handleFocus"
+            @fetchData="pageSlotProps.fetchData"
+            @refresh="pageSlotProps.handleRefresh"
+          >
+            <template #default="slotProps">
+              <slot
+                :[scope]="slotProps[scope]"
+              ></slot>
+            </template>
+          </BasePaginatedContainer>
+        </BaseSegmentContainer>
+      </div>
     </template>
   </BaseTopPageContainer>
 </template>
@@ -49,7 +54,6 @@
 import BaseTopPageContainer from './BaseTopPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
-import BaseDivider from '@/BaseDivider.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -58,7 +62,6 @@ export default {
     BaseTopPageContainer,
     BaseSegmentContainer,
     BaseViewChangeButtons,
-    BaseDivider,
     BasePaginatedContainer
   },
   props: {
@@ -97,4 +100,7 @@ export default {
 <style lang="sass" scoped>
 .main-paginated-page-segment-container
   @extend .flex-column
+
+.top-segment
+  @extend .flex-full, .d-flex, .flex-column
 </style>

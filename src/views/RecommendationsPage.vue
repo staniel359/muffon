@@ -5,49 +5,51 @@
     :filterValue="filterValue"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
+      <div
         :class="[
+          'ui segments',
           'main-segment-container',
           'main-page-segment-container',
           'main-paginated-page-segment-container'
         ]"
-        :isLoading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
       >
-        <FiltersBlock
+        <FiltersSegment
           :filter="filter"
           @filterChange="handleFilterChange"
           @filterValueChange="handleFilterValueChange"
         />
 
-        <BaseDivider />
-
-        <BasePaginatedContainer
-          ref="paginatedContainer"
-          scope="recommendations"
+        <BaseSegmentContainer
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
-          :responseData="pageSlotProps.recommendationsData"
-          :clientPageLimit="limit"
-          :responsePageLimit="limit"
-          @focus="handleFocus"
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
         >
-          <template #default="slotProps">
-            <BaseArtistsExtendedList
-              :artists="slotProps.recommendations"
-              :profileId="profileId"
-              isWithLibraryOption
-              isWithFavoriteOption
-              isWithBookmarkOption
-              isWithListenedOption
-              isWithDeleteOption
-              isRecommendation
-            />
-          </template>
-        </BasePaginatedContainer>
-      </BaseSegmentContainer>
+          <BasePaginatedContainer
+            ref="paginatedContainer"
+            scope="recommendations"
+            :isLoading="pageSlotProps.isLoading"
+            :error="pageSlotProps.error"
+            :responseData="pageSlotProps.recommendationsData"
+            :clientPageLimit="limit"
+            :responsePageLimit="limit"
+            @focus="handleFocus"
+            @fetchData="pageSlotProps.fetchData"
+            @refresh="pageSlotProps.handleRefresh"
+          >
+            <template #default="slotProps">
+              <BaseArtistsExtendedList
+                :artists="slotProps.recommendations"
+                :profileId="profileId"
+                isWithLibraryOption
+                isWithFavoriteOption
+                isWithBookmarkOption
+                isWithListenedOption
+                isWithDeleteOption
+                isRecommendation
+              />
+            </template>
+          </BasePaginatedContainer>
+        </BaseSegmentContainer>
+      </div>
     </template>
   </BaseRecommendationsPageContainer>
 </template>
@@ -57,8 +59,7 @@ import { mapState } from 'vuex'
 import BaseRecommendationsPageContainer
   from '@/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import FiltersBlock from './RecommendationsPage/FiltersBlock.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import FiltersSegment from './RecommendationsPage/FiltersSegment.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseArtistsExtendedList
   from '@/lists/artists/BaseArtistsExtendedList.vue'
@@ -68,8 +69,7 @@ export default {
   components: {
     BaseRecommendationsPageContainer,
     BaseSegmentContainer,
-    FiltersBlock,
-    BaseDivider,
+    FiltersSegment,
     BasePaginatedContainer,
     BaseArtistsExtendedList
   },
