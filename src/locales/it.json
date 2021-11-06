@@ -150,6 +150,9 @@
     },
     "library": {
       "since": "In libreria dal"
+    },
+    "recommendations": {
+      "filter": "Filtro"
     }
   },
   "buttons": {
@@ -427,5 +430,8 @@
       "recommendation": "Il consiglio è stato eliminato",
       "playlist": "La playlist è stata cancellata"
     }
+  },
+  "temp": {
+    "feed": "Presto ci sarà un feed qui"
   }
 }
