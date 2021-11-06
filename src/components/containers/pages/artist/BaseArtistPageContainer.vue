@@ -89,8 +89,18 @@ export default {
       return {
         ...this.requestArtistData,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
+    },
+    limit () {
+      if (this.isDiscogsSource) {
+        return 25
+      } else {
+        return this.responsePageLimit
+      }
+    },
+    isDiscogsSource () {
+      return this.requestArtistData.sourceId === 'discogs'
     },
     pageError () {
       if (this.artistData) {
