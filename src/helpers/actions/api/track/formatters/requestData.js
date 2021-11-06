@@ -24,8 +24,10 @@ export default function ({ sourceId, trackData }) {
         }
       case 'bandcamp':
         return {
-          artist: trackData.artists[0].bandcamp_slug,
-          track: trackData.bandcamp_slug
+          trackId: trackData.bandcamp_id,
+          artistId: trackData.artists[0].bandcamp_id,
+          track: trackData.bandcamp_slug,
+          artist: trackData.artists[0].bandcamp_slug
         }
       case 'soundcloud':
         return {

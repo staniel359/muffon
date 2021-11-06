@@ -9,6 +9,8 @@ export const main = ({ artistName, albumTitle, sourceParams }) => {
     sourceId,
     albumId,
     artistId,
+    album,
+    artist,
     model,
     albumType,
     paramsData
@@ -32,8 +34,8 @@ export const main = ({ artistName, albumTitle, sourceParams }) => {
     source_id: sourceId,
     album_id: albumId,
     artist_id: artistId,
-    album: sourceParams.album,
-    artist: sourceParams.artist,
+    album,
+    artist,
     model,
     album_type: albumType,
     params_data: formatParamsDataString()

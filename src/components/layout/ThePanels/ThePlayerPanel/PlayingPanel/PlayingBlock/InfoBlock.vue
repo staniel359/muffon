@@ -46,6 +46,8 @@ import { main as formatTrackMainLink } from '#/formatters/links/track'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumSourceParams
   from '#/actions/api/album/formatters/requestData'
+import formatTrackSourceParams
+  from '#/actions/api/track/formatters/requestData'
 
 export default {
   name: 'InfoBlock',
@@ -68,7 +70,14 @@ export default {
     trackMainLinkFormatted () {
       return formatTrackMainLink({
         artistName: this.artistName,
-        trackTitle: this.trackTitle
+        trackTitle: this.trackTitle,
+        sourceParams: this.trackSourceParams
+      })
+    },
+    trackSourceParams () {
+      return formatTrackSourceParams({
+        sourceId: this.playerPlaying.source_id,
+        trackData: this.playerPlaying
       })
     },
     artists () {
@@ -84,10 +93,10 @@ export default {
       return formatAlbumMainLink({
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        sourceParams: this.sourceParams
+        sourceParams: this.albumSourceParams
       })
     },
-    sourceParams () {
+    albumSourceParams () {
       return formatAlbumSourceParams({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,

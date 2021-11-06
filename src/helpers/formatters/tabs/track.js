@@ -4,7 +4,12 @@ import {
   similar as formatTrackSimilarLink
 } from '#/formatters/links/track'
 
-export default function ({ artistName, trackTitle, pageNameKey }) {
+export default function ({
+  artistName,
+  trackTitle,
+  sourceParams,
+  pageNameKey
+}) {
   const formatTrackPageTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
@@ -36,7 +41,8 @@ export default function ({ artistName, trackTitle, pageNameKey }) {
       default:
         return formatTrackMainLink({
           artistName,
-          trackTitle
+          trackTitle,
+          sourceParams
         }).path
     }
   }

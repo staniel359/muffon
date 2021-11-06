@@ -111,6 +111,8 @@ import {
 import { main as formatTrackMainLink } from '#/formatters/links/track'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
+import formatTrackSourceParams
+  from '#/actions/api/track/formatters/requestData'
 
 export default {
   name: 'InfoSegment',
@@ -163,9 +165,16 @@ export default {
       } else {
         return formatTrackMainLink({
           trackTitle: this.trackTitle,
-          artistName: this.artistName
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
         })
       }
+    },
+    sourceParams () {
+      return formatTrackSourceParams({
+        sourceId: 'lastfm',
+        trackData: this.trackData
+      })
     },
     trackFullTitle () {
       return `${this.artistName} - ${this.trackTitle}`

@@ -23,6 +23,8 @@ import { main as formatTrackMainLink } from '#/formatters/links/track'
 import {
   main as formatProfileLibraryTrackMainLink
 } from '#/formatters/links/profile/library/track'
+import formatTrackSourceParams
+  from '#/actions/api/track/formatters/requestData'
 
 export default {
   name: 'TrackTitle',
@@ -31,12 +33,11 @@ export default {
     BaseLink
   },
   props: {
-    trackTitle: {
-      type: String,
+    trackData: {
+      type: Object,
       required: true
     },
     artistName: String,
-    trackExtraTitle: String,
     isLinkToLibrary: Boolean,
     profileId: String,
     trackId: String
@@ -45,6 +46,12 @@ export default {
     'linkClick'
   ],
   computed: {
+    trackTitle () {
+      return this.trackData.title
+    },
+    trackExtraTitle () {
+      return this.trackData.extra_title
+    },
     trackMainLinkFormatted () {
       if (this.isLinkToLibrary) {
         return formatProfileLibraryTrackMainLink({
@@ -54,9 +61,16 @@ export default {
       } else {
         return formatTrackMainLink({
           trackTitle: this.trackTitle,
-          artistName: this.artistName
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
         })
       }
+    },
+    sourceParams () {
+      return formatTrackSourceParams({
+        sourceId: this.trackData.source_id,
+        trackData: this.trackData
+      })
     }
   },
   methods: {

@@ -106,7 +106,7 @@ export default {
 
 <style lang="sass" scoped>
 .ticker-container
-  @extend .overflow-hidden, .white-space-no-wrap
+  @extend .white-space-no-wrap
 
 .ticker
   @extend .d-flex

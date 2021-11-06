@@ -5,11 +5,18 @@ import {
 } from '#/formatters/links/artist'
 import { main as formatTrackMainLink } from '#/formatters/links/track'
 
-export default function ({ artistName, trackTitle, pageNameKey }) {
+export default function ({
+  artistName,
+  trackTitle,
+  sourceParams,
+  pageNameKey
+}) {
   const formatLink = () => {
     if (pageNameKey) {
       return formatTrackMainLink({
-        artistName, trackTitle
+        artistName,
+        trackTitle,
+        sourceParams
       })
     }
   }

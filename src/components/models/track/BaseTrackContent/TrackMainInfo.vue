@@ -1,8 +1,7 @@
 <template>
   <div class="track-main-info">
     <TrackTitle
-      :trackTitle="trackTitle"
-      :trackExtraTitle="trackExtraTitle"
+      :trackData="trackData"
       :artistName="artistName"
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
@@ -45,8 +44,7 @@ export default {
     TrackAlbumTitle
   },
   props: {
-    trackTitle: String,
-    trackExtraTitle: String,
+    trackData: Object,
     isWithArtistName: Boolean,
     artistName: String,
     artists: Array,

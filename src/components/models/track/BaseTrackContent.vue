@@ -25,8 +25,7 @@
           />
 
           <TrackMainInfo
-            :trackTitle="trackTitle"
-            :trackExtraTitle="trackExtraTitle"
+            :trackData="trackData"
             :isWithArtistName="isWithArtistName"
             :artistName="artistName"
             :artists="artists"

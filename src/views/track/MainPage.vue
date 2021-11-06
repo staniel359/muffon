@@ -1,5 +1,9 @@
 <template>
-  <BaseTrackPageContainer>
+  <BaseTrackPageContainer
+    :trackTitle="trackTitle"
+    :artistName="artistName"
+    :sourceParams="sourceParams"
+  >
     <template #default="slotProps">
       <div
         :class="[
@@ -55,9 +59,41 @@ export default {
     LeftColumn,
     RightColumn
   },
+  props: {
+    trackTitle: String,
+    artistName: String
+  },
   data () {
     return {
       scrollable: null
+    }
+  },
+  computed: {
+    sourceParams () {
+      return {
+        sourceId: this.sourceId,
+        artistName: this.artistName,
+        trackTitle: this.trackTitle,
+        trackId: this.trackId,
+        artistId: this.artistId,
+        track: this.track,
+        artist: this.artist
+      }
+    },
+    sourceId () {
+      return this.$route.query.source_id
+    },
+    trackId () {
+      return this.$route.query.track_id
+    },
+    artistId () {
+      return this.$route.query.artist_id
+    },
+    track () {
+      return this.$route.query.track
+    },
+    artist () {
+      return this.$route.query.artist
     }
   },
   methods: {
