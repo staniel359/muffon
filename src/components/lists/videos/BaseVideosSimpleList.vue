@@ -4,6 +4,7 @@
       v-for="videoData in videosFormatted"
       :key="videoData.uuid"
       :videoData="videoData"
+      @linkClick="handleLinkClick"
     />
   </BaseListContainer>
 </template>
@@ -32,6 +33,11 @@ export default {
       return formatCollection(
         this.videos
       )
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit('linkClick')
     }
   }
 }

@@ -52,7 +52,7 @@ export default {
 
 <style lang="sass" scoped>
 .search-input-container
-  @extend .d-flex, .align-items-center
+  @extend .d-flex, .align-items-center, .flex-full
 
 .search-input
   @extend .flex-full

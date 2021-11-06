@@ -31,10 +31,10 @@ export default function ({ sourceId, albumData, artistName }) {
         }
       case 'bandcamp':
         return {
-          artistName: albumData.artists[0].bandcamp_slug,
-          albumTitle: albumData.bandcamp_slug,
           albumId: albumData.bandcamp_id,
           artistId: albumData.artists[0].bandcamp_id,
+          album: albumData.bandcamp_slug,
+          artist: albumData.artists[0].bandcamp_slug,
           model: albumData.bandcamp_model,
           paramsData: {
             album_type: albumData.bandcamp_model
@@ -46,7 +46,8 @@ export default function ({ sourceId, albumData, artistName }) {
         }
       case 'discogs':
         return {
-          albumId: albumData.discogs_id
+          albumId: albumData.discogs_id,
+          albumType: albumData.discogs_type
         }
       case 'spotify':
         return {

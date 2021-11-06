@@ -7,6 +7,7 @@
   />
   <BaseImage
     v-else
+    class="artist-image"
     :image="imageFormatted"
   />
 </template>
@@ -116,4 +117,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.artist-image
+  @extend .object-fit-cover
+</style>

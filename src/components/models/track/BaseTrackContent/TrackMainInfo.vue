@@ -76,7 +76,8 @@ export default {
     isRenderAlbumTitle () {
       return (
         this.isWithAlbumTitle &&
-          this.albumData
+          this.albumData &&
+          this.albumData.title
       )
     }
   },

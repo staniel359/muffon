@@ -10,12 +10,44 @@ export const main = ({ artistName, albumTitle, sourceParams }) => {
     albumId,
     artistId,
     model,
+    albumType,
     paramsData
   } = sourceParams
 
-  const paramsDataString = JSON.stringify(
-    paramsData || {}
+  const formatParamsDataString = () => {
+    const isParamsData = Object.keys(
+      paramsData || {}
+    ).length
+
+    if (isParamsData) {
+      return JSON.stringify(
+        paramsData
+      )
+    } else {
+      return null
+    }
+  }
+
+  const query = {
+    source_id: sourceId,
+    album_id: albumId,
+    artist_id: artistId,
+    album: sourceParams.album,
+    artist: sourceParams.artist,
+    model,
+    album_type: albumType,
+    params_data: formatParamsDataString()
+  }
+
+  const queryFiltered = Object.fromEntries(
+    Object.entries(
+      query
+    ).filter(a => a[1])
   )
+
+  const queryString = new URLSearchParams(
+    queryFiltered
+  ).toString()
 
   return {
     name: 'AlbumMainPage',
@@ -23,17 +55,7 @@ export const main = ({ artistName, albumTitle, sourceParams }) => {
     path:
       `artists/${artistNameEncoded}` +
       `/albums/${albumTitleEncoded}` +
-      `?source_id=${sourceId}` +
-      `&album_id=${albumId}` +
-      `&artist_id=${artistId}` +
-      `&model=${model}` +
-      `&params_data=${paramsDataString}`,
-    query: {
-      source_id: sourceId,
-      album_id: albumId,
-      artist_id: artistId,
-      model,
-      params_data: paramsDataString
-    }
+      `?${queryString}`,
+    query: queryFiltered
   }
 }

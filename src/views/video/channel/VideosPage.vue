@@ -11,8 +11,8 @@
         :isLoading="slotProps.isLoading"
         :error="slotProps.error"
       >
-        <VideosList
-          :channelData="slotProps.channelData"
+        <BaseVideosPaginatedList
+          :videosData="slotProps.channelData"
           @prevPageButtonClick="slotProps.fetchData"
           @nextPageButtonClick="slotProps.fetchData"
         />
@@ -25,14 +25,15 @@
 import BaseChannelPageContainer
   from '@/containers/pages/video/BaseChannelPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import VideosList from './VideosPage/VideosList.vue'
+import BaseVideosPaginatedList
+  from '@/lists/videos/BaseVideosPaginatedList.vue'
 
 export default {
   name: 'VideosPage',
   components: {
     BaseChannelPageContainer,
     BaseSegmentContainer,
-    VideosList
+    BaseVideosPaginatedList
   }
 }
 </script>

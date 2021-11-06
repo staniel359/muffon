@@ -22,7 +22,9 @@ export default {
   },
   computed: {
     sourcesFormatted () {
-      return formatCollection(this.sources)
+      return formatCollection(
+        this.sources
+      )
     },
     sources () {
       return getAudioSourcesStreamable(true)

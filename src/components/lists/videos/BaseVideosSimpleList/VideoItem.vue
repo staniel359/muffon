@@ -2,6 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item"
     :link="linkFormatted"
+    @click="handleLinkClick"
   >
     <BaseImage
       class="rounded bordered video-image"
@@ -43,6 +44,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'linkClick'
+  ],
   computed: {
     linkFormatted () {
       return formatVideoMainLink({
@@ -60,6 +64,11 @@ export default {
     },
     publishDate () {
       return this.videoData.publish_date
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit('linkClick')
     }
   }
 }

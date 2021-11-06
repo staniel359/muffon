@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function ({ model, artistName, title }) {
+export default function ({ model, artist, title }) {
   const formatModelUrl = () => {
     const isAlbumOrTrack = [
       'album', 'track'
@@ -13,7 +13,8 @@ export default function ({ model, artistName, title }) {
     }
   }
 
-  const url = `/bandcamp/id/${artistName}/${formatModelUrl()}`
+  const url =
+    `/bandcamp/id/${artist}/${formatModelUrl()}`
 
   const params = {}
 

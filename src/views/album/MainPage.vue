@@ -78,7 +78,10 @@ export default {
         albumTitle: this.albumTitle,
         albumId: this.albumId,
         artistId: this.artistId,
+        album: this.album,
+        artist: this.artist,
         model: this.model,
+        albumType: this.albumType,
         paramsData: this.paramsData
       }
     },
@@ -91,8 +94,17 @@ export default {
     artistId () {
       return this.$route.query.artist_id
     },
+    album () {
+      return this.$route.query.album
+    },
+    artist () {
+      return this.$route.query.artist
+    },
     model () {
       return this.$route.query.model
+    },
+    albumType () {
+      return this.$route.query.album_type
     },
     paramsData () {
       return JSON.parse(

@@ -1,19 +1,20 @@
 import fetchBandcampIdData from '#/actions/api/id/bandcamp/fetchData'
 
-export default function ({ artistName, title }) {
+export default function ({ artist, track }) {
   this.isLoading = true
 
   const bandcampIdDataArgs = {
     model: 'track',
-    artistName,
-    title
+    artist,
+    title: track
   }
 
   const handleSuccess = response => {
     this.isLoading = false
 
     const idData = response.id
-    const artistId = idData.artists[0].bandcamp_id
+    const artistId =
+      idData.artists[0].bandcamp_id
     const trackId = idData.bandcamp_id
 
     this.requestTrackData = {

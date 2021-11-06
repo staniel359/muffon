@@ -39,6 +39,12 @@ export default {
         return []
       }
     },
+    groups: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
     isWithLibraryOption: Boolean,
@@ -58,8 +64,15 @@ export default {
   computed: {
     albumsFormatted () {
       return formatCollection(
-        this.albums
+        this.albumsOrGroups
       )
+    },
+    albumsOrGroups () {
+      if (this.albums.length) {
+        return this.albums
+      } else {
+        return this.groups
+      }
     }
   },
   methods: {

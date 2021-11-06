@@ -1,12 +1,32 @@
 <template>
   <div
     ref="tab"
+    class="search-tab-container"
     :class="{
       loading: isActive && isLoading,
       inverted: isDarkMode
     }"
   >
+    <template v-if="isRenderVideos">
+      <div
+        v-show="!isLoading"
+        class="videos-list-container-wrapper"
+      >
+        <div class="videos-list-container">
+          <BaseVideosPaginatedList
+            :videosData="searchData"
+            :error="error"
+            @prevPageButtonClick="fetchData"
+            @nextPageButtonClick="fetchData"
+            @focus="handleFocus"
+            @refresh="handleRefresh"
+            @linkClick="handleLinkClick"
+          />
+        </div>
+      </div>
+    </template>
     <BasePaginatedContainer
+      v-else
       :isLoading="isLoading"
       :error="error"
       :responseData="searchData"
@@ -25,7 +45,10 @@
           :isWithIcon="!!tabData.isWithIcon"
           :profileId="profileId"
           :isWithPlaylistOption="isWithPlaylistOption"
+          isWithImage
           isWithArtistName
+          isWithAlbumTitle
+          isWithSource
           isWithLibraryOption
           isWithListenedOption
           isWithBookmarkOption
@@ -39,6 +62,8 @@
 
 <script>
 import { mapState } from 'vuex'
+import BaseVideosPaginatedList
+  from '@/lists/videos/BaseVideosPaginatedList.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
@@ -49,6 +74,7 @@ import fetchSearchData from '#/actions/api/search/fetchData'
 export default {
   name: 'BaseSearchTabContainer',
   components: {
+    BaseVideosPaginatedList,
     BasePaginatedContainer,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
@@ -59,6 +85,10 @@ export default {
     'hideSearch'
   ],
   props: {
+    sourceId: {
+      type: String,
+      required: true
+    },
     query: {
       type: String,
       required: true
@@ -86,6 +116,7 @@ export default {
     }),
     searchDataArgs () {
       return {
+        sourceId: this.sourceId,
         query: this.query,
         scope: this.tabData.scope,
         limit: this.tabData.responsePageLimit
@@ -96,6 +127,12 @@ export default {
     },
     isWithPlaylistOption () {
       return this.tabData.scope === 'tracks'
+    },
+    isRenderVideos () {
+      return (
+        this.tabData.scope === 'videos' &&
+          !!this.searchData
+      )
     }
   },
   watch: {
@@ -137,4 +174,13 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.search-tab-container
+  z-index: 1
+
+.videos-list-container-wrapper
+  @extend .w-100
+
+.videos-list-container
+  @extend .d-flex, .flex-column
+</style>
