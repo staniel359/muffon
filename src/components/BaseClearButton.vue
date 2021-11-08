@@ -3,7 +3,7 @@
     <BaseButton
       class="basic red mini compact circular clear-button"
       icon="close"
-      @click="handleClick"
+      @click.prevent="handleClick"
     />
   </BaseLinkContainer>
 </template>

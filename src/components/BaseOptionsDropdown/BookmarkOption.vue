@@ -2,7 +2,7 @@
   <div
     class="item"
     :class="{ disabled: isLoading }"
-    @click="handleClick"
+    @click.prevent="handleClick"
   >
     <i
       v-if="isLoading"

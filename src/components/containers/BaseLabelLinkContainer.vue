@@ -1,8 +1,9 @@
 <template>
   <BaseLinkContainer
     class="ui basic label"
-    :class="{ inverted: isInverted ?? isDarkMode }"
+    :class="{ inverted: isDarkMode }"
     :link="link"
+    @click="handleClick"
   >
     <slot></slot>
   </BaseLinkContainer>
@@ -18,16 +19,20 @@ export default {
     BaseLinkContainer
   },
   props: {
-    isInverted: {
-      type: Boolean,
-      default: null
-    },
     link: Object
   },
+  emits: [
+    'click'
+  ],
   computed: {
     ...mapState('layout', [
       'isDarkMode'
     ])
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
+    }
   }
 }
 </script>

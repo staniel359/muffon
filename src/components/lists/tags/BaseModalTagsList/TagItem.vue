@@ -1,5 +1,7 @@
 <template>
-  <BaseLabelLinkContainer :link="tagMainLinkFormatted">
+  <BaseLabelLinkContainer
+    :link="tagMainLinkFormatted"
+  >
     <span class="link">
       {{ tagName }}
     </span>

@@ -6,6 +6,7 @@
       inverted: isDarkMode,
       icon: !!icon && !text
     }"
+    @click.stop="handleClick"
   >
     <i
       v-if="icon"
@@ -29,7 +30,8 @@ export default {
     text: String
   },
   emits: [
-    'init'
+    'init',
+    'click'
   ],
   computed: {
     ...mapState('layout', [
@@ -41,6 +43,14 @@ export default {
       'init',
       this.$refs.button
     )
+  },
+  methods: {
+    handleClick () {
+      this.$emit(
+        'click',
+        event
+      )
+    }
   }
 }
 </script>

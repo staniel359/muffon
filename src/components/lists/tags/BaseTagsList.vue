@@ -13,28 +13,29 @@
       @click="handleClick"
     />
 
-    <BaseLabelLinkContainer
+    <div
       v-if="isMore"
-      @click="handleMoreClick"
+      class="ui basic label main-link-container"
+      :class="{ inverted: isDarkMode }"
+      @click.prevent="handleMoreClick"
     >
       <span class="link">
         ...
       </span>
-    </BaseLabelLinkContainer>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseIcon from '@/BaseIcon.vue'
 import TagItem from './BaseTagsList/TagItem.vue'
-import BaseLabelLinkContainer from '@/containers/BaseLabelLinkContainer.vue'
 
 export default {
   name: 'BaseTagsList',
   components: {
     BaseIcon,
-    TagItem,
-    BaseLabelLinkContainer
+    TagItem
   },
   props: {
     tags: {
@@ -53,6 +54,11 @@ export default {
     'linkClick',
     'moreClick'
   ],
+  computed: {
+    ...mapState('layout', [
+      'isDarkMode'
+    ])
+  },
   methods: {
     handleClick () {
       this.$emit('linkClick')

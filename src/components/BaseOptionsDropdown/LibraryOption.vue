@@ -122,10 +122,12 @@ export default {
     }
   },
   methods: {
-    handleClick () {
+    handleClick (event) {
       if (this.optionModelId) {
         this.$emit('linkClick')
       } else {
+        event.preventDefault()
+
         this.addToLibrary()
       }
     },
