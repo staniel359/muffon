@@ -9,16 +9,24 @@
 You can:
 
 - listen to tracks/artists/whole albums
+- scrobble tracks
 - watch videos
 - view tracks' lyrics
 - view tags and their top artists/albums/tracks
 - view top artists/tracks/tags
+- search through sources above
 - create music library
 - get personal recommendations (based on your library)
 - create playlists
 - add to favorites
 - add to bookmarks
 - add to listened
+
+Languages:
+
+- English
+- Italiano
+- Русский
 
 It has **no ads** and it's **absolutely free** to use.
 
