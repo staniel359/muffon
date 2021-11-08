@@ -28,7 +28,7 @@ export default {
   },
   props: {
     isConnected: Boolean,
-    isPlayerScrobbling: Boolean
+    isPlayerWithScrobbling: Boolean
   },
   computed: {
     ...mapState('player', {
@@ -42,14 +42,14 @@ export default {
     isChecked () {
       return (
         this.isConnected &&
-          this.isPlayerScrobbling &&
+          this.isPlayerWithScrobbling &&
           this.isPlayerWithScrobbleNotifications
       )
     },
     isDisabled () {
       return !(
         this.isConnected &&
-          this.isPlayerScrobbling
+          this.isPlayerWithScrobbling
       )
     }
   },

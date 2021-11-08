@@ -27,7 +27,7 @@ export default {
   },
   props: {
     isConnected: Boolean,
-    isPlayerScrobbling: Boolean
+    isPlayerWithScrobbling: Boolean
   },
   computed: {
     headerFormatted () {
@@ -38,7 +38,7 @@ export default {
     isChecked () {
       return (
         this.isConnected &&
-          this.isPlayerScrobbling
+          this.isPlayerWithScrobbling
       )
     },
     isDisabled () {
@@ -48,12 +48,12 @@ export default {
   methods: {
     handleToggleOn () {
       setGlobalData({
-        'player.isScrobbling': true
+        'player.isWithScrobbling': true
       })
     },
     handleToggleOff () {
       setGlobalData({
-        'player.isScrobbling': false
+        'player.isWithScrobbling': false
       })
     }
   }

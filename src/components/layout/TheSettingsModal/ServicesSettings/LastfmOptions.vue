@@ -11,15 +11,15 @@
     />
     <ScrobbleOption
       :isConnected="isConnected"
-      :isPlayerScrobbling="isPlayerScrobbling"
+      :isPlayerWithScrobbling="isPlayerWithScrobbling"
     />
     <ScrobbleNotificationsOption
       :isConnected="isConnected"
-      :isPlayerScrobbling="isPlayerScrobbling"
+      :isPlayerWithScrobbling="isPlayerWithScrobbling"
     />
     <ScrobblePercentOption
       :isConnected="isConnected"
-      :isPlayerScrobbling="isPlayerScrobbling"
+      :isPlayerWithScrobbling="isPlayerWithScrobbling"
     />
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     ...mapState('player', {
-      isPlayerScrobbling: 'isScrobbling'
+      isPlayerWithScrobbling: 'isWithScrobbling'
     }),
     ...mapState('profile', {
       profileInfo: 'info'

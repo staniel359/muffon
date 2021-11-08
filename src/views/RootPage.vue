@@ -2,7 +2,7 @@
   <ThePlayerObserver />
 
   <TheScrobblingObserver
-    v-if="isPlayerScrobbling"
+    v-if="isPlayerWithScrobbling"
   />
 
   <TheBrowserTabs
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState('player', {
-      isPlayerScrobbling: 'isScrobbling'
+      isPlayerWithScrobbling: 'isWithScrobbling'
     }),
     ...mapState('profile', {
       isProfileLoggedIn: 'isLoggedIn'

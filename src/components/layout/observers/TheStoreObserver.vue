@@ -26,6 +26,7 @@ export default {
     ...mapActions('player', {
       setPlayerCurrentTrackId: 'setCurrentTrackId',
       setPlayerCurrentVariantId: 'setCurrentVariantId',
+      setIsPlayerWithScrobbling: 'setIsWithScrobbling',
       setIsPlayerScrobbling: 'setIsScrobbling',
       setIsPlayerToScrobble: 'setIsToScrobble',
       setIsPlayerScrobbled: 'setIsScrobbled',
@@ -70,6 +71,8 @@ export default {
           return this.setPlayerCurrentTrackId(value)
         case 'player.currentVariantId':
           return this.setPlayerCurrentVariantId(value)
+        case 'player.isWithScrobbling':
+          return this.setIsPlayerWithScrobbling(value)
         case 'player.isScrobbling':
           return this.setIsPlayerScrobbling(value)
         case 'player.isToScrobble':

@@ -31,7 +31,7 @@ export default {
     type: ['null', 'string'],
     default: null
   },
-  'player.isScrobbling': {
+  'player.isWithScrobbling': {
     type: 'boolean',
     default: false
   },

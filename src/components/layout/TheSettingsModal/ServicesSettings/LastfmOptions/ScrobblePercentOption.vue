@@ -45,7 +45,7 @@ export default {
   },
   props: {
     isConnected: Boolean,
-    isPlayerScrobbling: Boolean
+    isPlayerWithScrobbling: Boolean
   },
   data () {
     return {
@@ -72,7 +72,7 @@ export default {
     isDisabled () {
       return !(
         this.isConnected &&
-          this.isPlayerScrobbling
+          this.isPlayerWithScrobbling
       )
     }
   },

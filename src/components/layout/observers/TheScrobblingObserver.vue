@@ -15,6 +15,7 @@ export default {
   computed: {
     ...mapState('player', {
       playerPlaying: 'playing',
+      isPlayerScrobbling: 'isScrobbling',
       isPlayerToScrobble: 'isToScrobble'
     }),
     trackData () {
@@ -42,14 +43,11 @@ export default {
     }
   },
   watch: {
-    playerPlaying: {
-      immediate: true,
-      handler: 'handlePlayerPlayingChange'
-    },
+    isPlayerScrobbling: 'handleIsPlayerScrobblingChange',
     isPlayerToScrobble: 'handleIsPlayerToScrobbleChange'
   },
   methods: {
-    handlePlayerPlayingChange (value) {
+    handleIsPlayerScrobblingChange (value) {
       if (value) {
         postScrobblerPlayData({
           ...this.trackData

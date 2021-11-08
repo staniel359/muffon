@@ -5,6 +5,7 @@ export default {
     currentTrackId: null,
     currentVariantId: null,
     sourceId: null,
+    isWithScrobbling: false,
     isScrobbling: false,
     isToScrobble: false,
     isScrobbled: false,
@@ -33,8 +34,8 @@ export default {
     SET_SOURCE_ID (state, value) {
       state.sourceId = value
     },
-    SET_IS_SCROBBLING (state, value) {
-      state.isScrobbling = value
+    SET_IS_WITH_SCROBBLING (state, value) {
+      state.isWithScrobbling = value
     },
     SET_IS_TO_SCROBBLE (state, value) {
       state.isToScrobble = value
@@ -47,6 +48,9 @@ export default {
     },
     SET_SCROBBLE_PERCENT (state, value) {
       state.scrobblePercent = value
+    },
+    SET_IS_SCROBBLING (state, value) {
+      state.isScrobbling = value
     }
   },
   actions: {
@@ -65,8 +69,8 @@ export default {
     setSourceId ({ commit }, value) {
       commit('SET_SOURCE_ID', value)
     },
-    setIsScrobbling ({ commit }, value) {
-      commit('SET_IS_SCROBBLING', value)
+    setIsWithScrobbling ({ commit }, value) {
+      commit('SET_IS_WITH_SCROBBLING', value)
     },
     setIsToScrobble ({ commit }, value) {
       commit('SET_IS_TO_SCROBBLE', value)
@@ -79,6 +83,9 @@ export default {
     },
     setScrobblePercent ({ commit }, value) {
       commit('SET_SCROBBLE_PERCENT', value)
+    },
+    setIsScrobbling ({ commit }, value) {
+      commit('SET_IS_SCROBBLING', value)
     }
   }
 }
