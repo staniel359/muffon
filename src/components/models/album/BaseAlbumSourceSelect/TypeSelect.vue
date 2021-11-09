@@ -1,6 +1,7 @@
 <template>
   <BaseDropdownContainer
-    class="basic pointing scrolling button main-source-select-type-select"
+    class="selection scrolling main-source-select-type-select"
+    icon="dropdown"
     :header="headerFormatted"
   >
     <TypesList

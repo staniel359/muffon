@@ -1,8 +1,9 @@
 <template>
   <div>
     <div
-      class="ui embed video-embed"
       ref="video"
+      class="ui embed video-embed"
+      @click="handleClick"
     ></div>
 
     <div class="video-data-more-container">
@@ -34,6 +35,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'click'
+  ],
   computed: {
     embedOptions () {
       return mainEmbedOptions({
@@ -63,6 +67,11 @@ export default {
       this.$refs.video,
       this.embedOptions
     )
+  },
+  methods: {
+    handleClick () {
+      this.$emit('click')
+    }
   }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <BaseDropdownContainer
-    class="basic pointing scrolling button track-select"
+    class="selection scrolling track-select"
+    icon="dropdown"
     :header="headerFormatted"
   >
     <TracksList :tracks="tracks" />

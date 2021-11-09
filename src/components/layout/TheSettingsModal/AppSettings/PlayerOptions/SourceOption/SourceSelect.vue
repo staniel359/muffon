@@ -1,7 +1,8 @@
 <template>
   <BaseDropdownContainer
-    class="basic floating scrolling button main-source-select"
     ref="dropdown"
+    class="selection main-source-select"
+    icon="dropdown"
   >
     <SourcesList />
   </BaseDropdownContainer>
@@ -44,4 +45,7 @@ export default {
 <style lang="sass" scoped>
 .main-source-select
   @extend .no-margin
+
+::v-deep(.menu)
+  max-height: 200px !important
 </style>

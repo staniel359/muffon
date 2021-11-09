@@ -1,6 +1,7 @@
 <template>
   <BaseAccordionContainer
     :title="textFormatted"
+    @init="handleInit"
     @open="handleOpen"
   >
     <BaseTrackSearchContainer
@@ -22,6 +23,7 @@
       v-if="selectedVideoData"
       :key="key"
       :selectedVideoData="selectedVideoData"
+      @click="handleVideoClick"
     />
   </BaseAccordionContainer>
 </template>
@@ -33,6 +35,7 @@ import BaseTrackSearchContainer
 import VideoSelect from './VideoSegment/VideoSelect.vue'
 import VideoData from './VideoSegment/VideoData.vue'
 import { generateKey } from '#/utils'
+import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'VideoSegment',
@@ -68,11 +71,19 @@ export default {
     selectedVideoData: 'handleSelectedVideoDataChange'
   },
   methods: {
+    handleInit (el) {
+      this.segment = el
+    },
     handleOpen () {
       this.isOpen = true
     },
     handleSelectedVideoDataChange () {
       this.key = generateKey()
+    },
+    handleVideoClick () {
+      focusOnSegment(
+        this.segment
+      )
     },
     setSelectedVideoData (value) {
       this.selectedVideoData = value

@@ -107,6 +107,11 @@ a
     &:hover
       color: $colorBase
 
+.ui.scrolling.dropdown
+  &.main-dropdown
+    .menu
+      width: 101% !important
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -278,10 +283,9 @@ a
 
 .main-dropdown
   @extend .d-flex, .align-items-center, .text-color-unset
+  min-width: unset !important
   & > .text
     @extend .flex-full
-  & > .menu
-    z-index: 200 !important
 
 .main-dropdown-item
   @extend .d-flex, .align-items-center
@@ -426,7 +430,7 @@ a
   @extend .d-flex, .align-items-center, .flex-full
 
 .main-source-select
-  width: 210px
+  width: 220px
   margin-right: 1em !important
 
 .main-source-select-type-select
@@ -434,7 +438,7 @@ a
   margin-right: 1em !important
 
 .main-source-select-item-select
-  width: 210px
+  width: 200px
   margin-right: 1em !important
 
 .main-form

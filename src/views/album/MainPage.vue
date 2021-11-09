@@ -126,4 +126,5 @@ export default {
 
 .album-segment
   @extend .flex-full, .d-flex
+  z-index: 1
 </style>

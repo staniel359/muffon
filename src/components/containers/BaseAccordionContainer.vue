@@ -35,6 +35,7 @@ export default {
     isTextWhite: Boolean
   },
   emits: [
+    'init',
     'open'
   ],
   computed: {
@@ -48,6 +49,11 @@ export default {
       mainAccordionOptions({
         onOpen: this.handleOpen
       })
+    )
+
+    this.$emit(
+      'init',
+      this.$refs.accordion
     )
   },
   methods: {
