@@ -6,7 +6,7 @@
 
 <script>
 import BaseClearButton from '@/BaseClearButton.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'CloseButton',
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     handleClick () {
-      setGlobalData({
+      updateStore({
         'player.playing': null
       })
     }

@@ -17,7 +17,7 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'ScrobbleOption',
@@ -47,12 +47,12 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      setGlobalData({
+      updateStore({
         'player.isWithScrobbling': true
       })
     },
     handleToggleOff () {
-      setGlobalData({
+      updateStore({
         'player.isWithScrobbling': false
       })
     }

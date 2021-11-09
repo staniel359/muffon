@@ -1,12 +1,5 @@
 import { ipcRenderer } from 'electron'
-import local from '#/plugins/local'
 import store from '*/store'
-
-export const setGlobalData = data => {
-  local.set(data)
-
-  updateStore(data)
-}
 
 export const updateStore = data => {
   return ipcRenderer.invoke(
@@ -25,7 +18,7 @@ export const updateTab = data => {
 }
 
 export const setPlayerPlaying = value => {
-  setGlobalData({
+  updateStore({
     'player.playing': value
   })
 

@@ -33,7 +33,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 import { mainDropdownOptions } from '#/data/plugins/semantic'
 import { collection as formatCollection } from '#/formatters'
@@ -96,7 +96,7 @@ export default {
   },
   methods: {
     handleScrobblePercentSelect (value) {
-      setGlobalData({
+      updateStore({
         'player.scrobblePercent': value
       })
     },

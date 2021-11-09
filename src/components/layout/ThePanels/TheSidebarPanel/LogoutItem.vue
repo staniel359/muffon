@@ -18,7 +18,7 @@
 
 <script>
 import BaseHeader from '@/BaseHeader.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'LogoutItem',
@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     handleClick () {
-      setGlobalData({
+      updateStore({
         'profile.isLoggedIn': false,
         'profile.isRemember': false
       })

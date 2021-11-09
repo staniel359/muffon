@@ -1,7 +1,7 @@
 import store from '*/store'
 import fetchBandcampIdData from './id/bandcamp/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default async function ({ variantId }) {
   const getVariantData = () => {
@@ -33,7 +33,7 @@ export default async function ({ variantId }) {
   }
 
   const handleSuccess = () => {
-    setGlobalData({
+    updateStore({
       'player.currentVariantId': variantId
     })
   }

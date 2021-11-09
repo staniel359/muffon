@@ -31,7 +31,7 @@
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
 import BaseHeader from '@/BaseHeader.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 import { mainDropdownOptions } from '#/data/plugins/semantic'
 
@@ -96,7 +96,7 @@ export default {
         value
       )
 
-      setGlobalData({
+      updateStore({
         'profile.language': value
       })
     },

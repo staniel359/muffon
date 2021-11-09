@@ -1,6 +1,6 @@
 import store from '*/store'
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default function fetchData ({ position }) {
   const followingTrackData = store.getters[
@@ -47,7 +47,7 @@ export default function fetchData ({ position }) {
       const queueCurrentTrackId =
         followingTrackData.uuid
 
-      setGlobalData({
+      updateStore({
         'queue.currentTrackId': queueCurrentTrackId
       })
 

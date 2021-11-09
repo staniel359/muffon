@@ -17,7 +17,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import fetchTrackData from '#/actions/player/track/fetchData'
-import { setGlobalData, setPlayerPlaying } from '#/actions'
+import { updateStore, setPlayerPlaying } from '#/actions'
 
 export default {
   name: 'BaseTrackContainer',
@@ -93,7 +93,7 @@ export default {
       ]()
     },
     setAudio () {
-      setGlobalData({
+      updateStore({
         'player.currentTrackId': this.trackId,
         'player.variants': [],
         'queue.tracks': this.queueTracks

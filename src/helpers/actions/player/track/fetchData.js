@@ -1,5 +1,5 @@
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default function ({ trackData, queueTracks }) {
   this.isLoading = true
@@ -21,7 +21,7 @@ export default function ({ trackData, queueTracks }) {
     this.isLoading = false
 
     if (queueTracks) {
-      setGlobalData({
+      updateStore({
         'queue.tracks': queueTracks
       })
     }

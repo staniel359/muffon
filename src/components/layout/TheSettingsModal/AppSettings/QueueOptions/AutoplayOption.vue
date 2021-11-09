@@ -17,7 +17,7 @@
 import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'AutoplayOption',
@@ -37,12 +37,12 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      setGlobalData({
+      updateStore({
         'queue.isAutoplay': true
       })
     },
     handleToggleOff () {
-      setGlobalData({
+      updateStore({
         'queue.isAutoplay': false
       })
     }

@@ -30,7 +30,7 @@ import BaseDivider from '@/BaseDivider.vue'
 import SignupSection from './BaseLoginForm/SignupSection.vue'
 import { loginFormOptions } from '#/data/plugins/semantic'
 import fetchLoginData from '#/actions/api/profile/login/fetchData'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'BaseLoginForm',
@@ -81,7 +81,7 @@ export default {
       this.$emit('signupLinkClick')
     },
     handleProfileDataChange (value) {
-      setGlobalData({
+      updateStore({
         'profile.isLoggedIn': !!value,
         'profile.info': value
       })

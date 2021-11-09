@@ -39,7 +39,7 @@ import LoginSection from './BaseSignupForm/LoginSection.vue'
 import { signupFormOptions } from '#/data/plugins/semantic'
 import fetchSignupData from '#/actions/api/profile/signup/fetchData'
 import { stringToDate as formatStringToDate } from '#/formatters'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'BaseSignupForm',
@@ -100,7 +100,7 @@ export default {
       this.image = value
     },
     handleProfileDataChange (value) {
-      setGlobalData({
+      updateStore({
         'profile.isLoggedIn': !!value,
         'profile.info': value
       })

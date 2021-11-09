@@ -23,7 +23,7 @@ import BasePopupContainer from '@/containers/BasePopupContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSeeker from '@/BaseSeeker.vue'
 import { mainVolumeSeekerOptions } from '#/data/plugins/semantic'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { setSeekerValue } from '#/actions/plugins/semantic'
 
 export default {
@@ -65,7 +65,7 @@ export default {
       this.audioElement.volume = value
     },
     handleMouseUp () {
-      setGlobalData({
+      updateStore({
         'audio.volume': this.audioVolume
       })
     },

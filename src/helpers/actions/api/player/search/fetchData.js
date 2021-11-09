@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 import { collection as formatCollection } from '#/formatters'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default function ({ query }) {
   const sourceId = store.state.player.sourceId
@@ -22,7 +22,7 @@ export default function ({ query }) {
       variantsFormatted
     )
 
-    setGlobalData({
+    updateStore({
       'player.variants': variantsFormatted
     })
   }

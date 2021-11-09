@@ -2,7 +2,7 @@ import store from '*/store'
 import fetchSearchData from '#/actions/api/player/search/fetchData'
 import fetchVariantData from '#/actions/audio/variant/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default function ({
   artistName,
@@ -19,7 +19,7 @@ export default function ({
   }
 
   const handleAudioSuccess = () => {
-    setGlobalData({
+    updateStore({
       'player.variants': []
     })
 
@@ -27,7 +27,7 @@ export default function ({
   }
 
   const setCurrentTrackIds = () => {
-    setGlobalData({
+    updateStore({
       'player.currentTrackId': trackId,
       'queue.currentTrackId': queueTrackId
     })
@@ -55,7 +55,7 @@ export default function ({
   const handleVariantSuccess = () => {
     setCurrentTrackIds()
 
-    setGlobalData({
+    updateStore({
       'player.currentVariantId':
         getFirstVariantId()
     })

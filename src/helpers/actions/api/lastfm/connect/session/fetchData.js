@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '*/store'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default function ({ token }) {
   this.error = null
@@ -30,7 +30,7 @@ export default function ({ token }) {
       ...profileData
     }
 
-    setGlobalData({
+    updateStore({
       'profile.info': newProfileInfo
     })
   }

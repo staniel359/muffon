@@ -18,7 +18,7 @@
 import { mapState } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseToggle from '@/BaseToggle.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'ScrobbleNotificationsOption',
@@ -55,12 +55,12 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      setGlobalData({
+      updateStore({
         'player.isWithScrobbleNotifications': true
       })
     },
     handleToggleOff () {
-      setGlobalData({
+      updateStore({
         'player.isWithScrobbleNotifications': false
       })
     }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import i18n from '*/i18n'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 import fetchProfileData from '../fetchData'
 
@@ -13,7 +13,7 @@ export default function ({ email, password, isRemember }) {
   const handleSuccess = response => {
     const { token } = response.data.profile
 
-    setGlobalData({
+    updateStore({
       'profile.token': token,
       'profile.isRemember': isRemember
     })

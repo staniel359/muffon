@@ -4,7 +4,7 @@
 
 <script>
 import fetchQueueTrack from '#/actions/queue/track/fetchData'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'TheMediaKeysObserver',
@@ -31,7 +31,7 @@ export default {
       })
     },
     handlePressStop () {
-      setGlobalData({
+      updateStore({
         'player.playing': null
       })
     }

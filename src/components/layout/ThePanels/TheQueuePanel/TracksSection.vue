@@ -19,7 +19,7 @@
 import { mapGetters, mapState } from 'vuex'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'TracksSection',
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     handleQueueTracksChange (value) {
-      setGlobalData({
+      updateStore({
         'queue.isShuffle': false
       })
     }

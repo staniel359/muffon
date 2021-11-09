@@ -26,7 +26,7 @@ import {
   showPlayerPanel,
   hidePlayerPanel
 } from '#/actions/layout'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 import { toggleClass } from '#/actions/plugins/jquery'
 import { setToast } from '#/actions/plugins/semantic'
@@ -148,7 +148,7 @@ export default {
       )
     },
     clearPlayer () {
-      setGlobalData({
+      updateStore({
         'player.currentTrackId': null,
         'player.currentVariantId': null,
         'player.variants': []

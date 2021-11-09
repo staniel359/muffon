@@ -16,7 +16,7 @@ import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 import { setQueuePanel, hideQueuePanel } from '#/actions/layout'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 
 export default {
   name: 'TheQueuePanel',
@@ -65,7 +65,7 @@ export default {
       !value && this.clearQueue()
     },
     clearQueue () {
-      setGlobalData({
+      updateStore({
         'queue.currentTrackId': null,
         'queue.tracks': [],
         'queue.tracksShuffled': []

@@ -10,7 +10,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseButton from '@/BaseButton.vue'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { shuffleArray } from '#/utils'
 
 export default {
@@ -31,7 +31,7 @@ export default {
         ? shuffleArray(this.queueTracks)
         : []
 
-      setGlobalData({
+      updateStore({
         'queue.isShuffle': value,
         'queue.tracksShuffled': tracks
       })

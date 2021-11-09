@@ -2,7 +2,7 @@ import axios from 'axios'
 import { camelCase } from 'camel-case'
 import store from '*/store'
 import i18n from '*/i18n'
-import { setGlobalData } from '#/actions'
+import { updateStore } from '#/actions'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 
 export default function ({
@@ -44,7 +44,7 @@ export default function ({
   const handleSuccess = response => {
     const info = response.data.profile
 
-    setGlobalData({
+    updateStore({
       'profile.info': info
     })
 
