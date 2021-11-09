@@ -64,9 +64,9 @@ export default {
     handleMove (value) {
       this.audioElement.volume = value
     },
-    handleMouseUp () {
+    handleMouseUp (value) {
       updateStore({
-        'audio.volume': this.audioVolume
+        'audio.volume': value
       })
     },
     handleAudioVolumeChange (value) {

@@ -53,12 +53,11 @@ export const mainSeekerOptions = ({ onMove, onChange } = {}) => {
   }
 }
 
-export const mainVolumeSeekerOptions = ({ start, onMove } = {}) => {
+export const mainVolumeSeekerOptions = ({ start } = {}) => {
   return {
     max: 1,
     step: 0.01,
-    start,
-    onMove
+    start
   }
 }
 

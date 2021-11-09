@@ -7,7 +7,6 @@
       inverted: isDarkMode
     }"
     @mousedown.capture="handleMouseDown"
-    @mouseup.capture="handleMouseUp"
   ></div>
 </template>
 
@@ -33,6 +32,11 @@ export default {
     'move',
     'change'
   ],
+  data () {
+    return {
+      isMouseUp: true
+    }
+  },
   computed: {
     ...mapState('layout', [
       'isDarkMode'
@@ -46,7 +50,8 @@ export default {
     }
   },
   watch: {
-    isDisabled: 'handleIsDisabledChange'
+    isDisabled: 'handleIsDisabledChange',
+    isMouseUp: 'handleIsMouseUpChange'
   },
   mounted () {
     this.setSeekerData()
@@ -63,16 +68,38 @@ export default {
       })
     },
     handleMouseDown () {
+      this.isMouseUp = false
+
       this.$emit('mouseDown')
     },
     handleMouseUp () {
-      this.$emit('mouseUp')
+      this.isMouseUp = true
     },
     handleMove (value) {
       this.$emit('move', value)
     },
     handleChange (value) {
       this.$emit('change', value)
+
+      if (this.isMouseUp) {
+        this.$emit(
+          'mouseUp',
+          value
+        )
+      }
+    },
+    handleIsMouseUpChange (value) {
+      if (value) {
+        document.removeEventListener(
+          'mouseup',
+          this.handleMouseUp
+        )
+      } else {
+        document.addEventListener(
+          'mouseup',
+          this.handleMouseUp
+        )
+      }
     },
     setSeekerData () {
       setSeeker(
