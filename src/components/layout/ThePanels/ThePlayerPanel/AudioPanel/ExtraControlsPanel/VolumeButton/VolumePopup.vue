@@ -55,14 +55,17 @@ export default {
     }
   },
   watch: {
-    audioVolume: 'handleAudioVolumeChange'
+    audioVolume: {
+      immediate: true,
+      handler: 'handleAudioVolumeChange'
+    }
   },
   methods: {
     handleInit (el) {
       this.seeker = el
     },
     handleMove (value) {
-      this.audioElement.volume = value
+      this.setAudioVolume(value)
     },
     handleMouseUp (value) {
       updateStore({
@@ -74,6 +77,13 @@ export default {
         this.seeker,
         value
       )
+
+      this.setAudioVolume(value)
+    },
+    setAudioVolume (value) {
+      this.$nextTick(() => {
+        this.audioElement.volume = value
+      })
     }
   }
 }
