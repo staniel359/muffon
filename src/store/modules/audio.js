@@ -23,15 +23,6 @@ export default {
       }
 
       return statusActions[state.status]
-    },
-    statusIcon (state) {
-      const statusIcons = {
-        play: '❚❚',
-        pause: '▶',
-        stop: ''
-      }
-
-      return statusIcons[state.status]
     }
   },
   mutations: {

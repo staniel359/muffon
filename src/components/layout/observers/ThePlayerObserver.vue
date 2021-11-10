@@ -3,30 +3,21 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
 
 export default {
   name: 'ThePlayerObserver',
   computed: {
-    ...mapGetters('audio', {
-      audioStatusIcon: 'statusIcon'
-    }),
     ...mapState('player', {
       playerPlaying: 'playing'
     }),
     title () {
       if (this.playerPlaying) {
-        return this.playerFullTitle
+        return this.playerTitle
       } else {
         return 'muffon'
       }
-    },
-    playerFullTitle () {
-      return [
-        this.audioStatusIcon,
-        this.playerTitle
-      ].filter(e => e).join(' ')
     },
     playerTitle () {
       return [
