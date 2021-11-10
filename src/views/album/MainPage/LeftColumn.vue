@@ -21,13 +21,14 @@
 
         <BaseOptionsDropdown
           model="album"
-          :modelId="albumId"
+          :albumTitle="albumTitle"
+          :artistName="artistName"
+          :albumTracks="tracks"
+          :imageUrl="imageData.medium"
           :libraryId="libraryId"
           :favoriteId="favoriteId"
           :bookmarkId="bookmarkId"
           :listenedId="listenedId"
-          :albumTracks="tracks"
-          :imageUrl="imageData.medium"
           isWithLibraryOption
           isWithFavoriteOption
           isWithBookmarkOption
@@ -87,9 +88,6 @@ export default {
     },
     tracks () {
       return this.albumData.tracks
-    },
-    albumId () {
-      return this.albumData.id.toString()
     }
   },
   mounted () {

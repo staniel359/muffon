@@ -46,7 +46,7 @@
               <div class="main-options-dropdown-container-right">
                 <BaseOptionsDropdown
                   model="artist"
-                  :modelId="artistArtistId"
+                  :artistName="artistName"
                   :libraryId="libraryId"
                   :favoriteId="favoriteId"
                   :bookmarkId="bookmarkId"
@@ -76,15 +76,6 @@
               :recommendationData="artistData"
               @deleted="handleDeleted"
             />
-
-            <BaseProfileLibraryDeleteModal
-              v-if="isLinkToLibrary"
-              ref="deleteModal"
-              model="artist"
-              :profileId="profileId"
-              :modelId="artistId"
-              :modelTitle="artistName"
-            />
           </template>
         </template>
       </BaseArtistHorizontalCardContainer>
@@ -103,8 +94,6 @@ import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
 import BaseRecommendationDeleteModal
   from '@/BaseRecommendationDeleteModal.vue'
-import BaseProfileLibraryDeleteModal
-  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 
 export default {
   name: 'ArtistItem',
@@ -116,8 +105,7 @@ export default {
     LibraryCountersSection,
     BaseSelfIcons,
     InfoBlock,
-    BaseRecommendationDeleteModal,
-    BaseProfileLibraryDeleteModal
+    BaseRecommendationDeleteModal
   },
   provide () {
     return {
@@ -172,12 +160,6 @@ export default {
     },
     artistId () {
       return this.artistData.id?.toString()
-    },
-    artistArtistId () {
-      return (
-        this.artistData.artist_id ||
-          this.artistId
-      )?.toString()
     },
     deletedFormatted () {
       return this.$t(

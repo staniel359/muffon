@@ -23,13 +23,14 @@
 
         <BaseOptionsDropdown
           model="track"
-          :modelId="trackId"
+          :trackTitle="trackTitle"
+          :artistName="artistName"
+          :albumTitle="albumTitle"
+          :imageUrl="imageData.medium"
           :libraryId="libraryId"
           :favoriteId="favoriteId"
           :bookmarkId="bookmarkId"
           :listenedId="listenedId"
-          :albumTitle="albumTitle"
-          :imageUrl="imageData.medium"
           isWithLibraryOption
           isWithFavoriteOption
           isWithBookmarkOption
@@ -41,7 +42,8 @@
 
       <BasePlaylistsModal
         ref="playlistModal"
-        :trackId="trackId"
+        :trackTitle="trackTitle"
+        :artistName="artistName"
         :albumTitle="albumTitle"
         :imageUrl="imageData.medium"
       />
@@ -100,9 +102,6 @@ export default {
     },
     albumTitle () {
       return this.trackData.album?.title
-    },
-    trackId () {
-      return this.trackData.id.toString()
     }
   },
   mounted () {

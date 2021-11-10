@@ -139,7 +139,8 @@ export default {
     formatTrack (trackData) {
       return {
         playlistId: this.playlistId,
-        trackId: trackData.track_id,
+        trackTitle: trackData.title,
+        artistName: trackData.artist.name,
         albumTitle: trackData.album?.title,
         imageUrl: trackData.image.medium
       }

@@ -131,7 +131,7 @@ export default {
     },
     formatFile (fileData) {
       return {
-        title: fileData.title,
+        trackTitle: fileData.title,
         artistName: fileData.artist.name,
         albumTitle: fileData.album.title,
         image: fileData.image.medium,

@@ -35,7 +35,7 @@
 
         <BaseOptionsDropdown
           model="artist"
-          :modelId="artistId"
+          :artistName="artistName"
           :libraryId="libraryId"
           :favoriteId="favoriteId"
           :bookmarkId="bookmarkId"
@@ -95,9 +95,6 @@ export default {
   computed: {
     artistName () {
       return this.artistData.name
-    },
-    artistId () {
-      return this.artistData.id.toString()
     },
     isShowSelfIcons () {
       return (

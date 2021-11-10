@@ -43,7 +43,7 @@
       <div class="main-options-dropdown-container-right">
         <BaseOptionsDropdown
           model="artist"
-          :modelId="artistArtistId"
+          :artistName="artistName"
           :favoriteId="favoriteId"
           isWithFavoriteOption
           isWithDeleteOption
@@ -133,9 +133,6 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
-    },
-    artistArtistId () {
-      return this.artistData.artist_id.toString()
     }
   },
   mounted () {

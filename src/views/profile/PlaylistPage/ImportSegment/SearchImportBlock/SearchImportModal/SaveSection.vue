@@ -139,7 +139,8 @@ export default {
     formatTrack (trackData) {
       return {
         playlistId: this.playlistId,
-        trackId: trackData.id
+        trackTitle: trackData.title,
+        artistName: trackData.artist.name
       }
     },
     setErrorTracks (value) {

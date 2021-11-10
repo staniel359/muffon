@@ -14,10 +14,6 @@ export default function ({ model, listenedId }) {
   const { token } = store.state.profile
   const params = { token }
 
-  const handleSuccess = () => {
-    this.setListenedId(null)
-  }
-
   const handleError = error => {
     this.error = error
   }
@@ -26,9 +22,8 @@ export default function ({ model, listenedId }) {
     this.isLoading = false
   }
 
-  axios
+  return axios
     .delete(url, { params })
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

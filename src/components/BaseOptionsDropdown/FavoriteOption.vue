@@ -36,8 +36,9 @@ export default {
       required: true
     },
     modelId: String,
-    optionModelId: String,
+    artistName: String,
     albumTitle: String,
+    trackTitle: String,
     imageUrl: String
   },
   data () {
@@ -47,7 +48,7 @@ export default {
   },
   computed: {
     textFormatted () {
-      if (this.optionModelId) {
+      if (this.modelId) {
         return this.$t(
           'shared.favorites.delete'
         )
@@ -56,14 +57,44 @@ export default {
           'shared.favorites.add'
         )
       }
+    },
+    artistParams () {
+      return {
+        artistName: this.artistName
+      }
+    },
+    albumParams () {
+      return {
+        albumTitle: this.albumTitle,
+        artistName: this.artistName,
+        imageUrl: this.imageUrl
+      }
+    },
+    trackParams () {
+      return {
+        trackTitle: this.trackTitle,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        imageUrl: this.imageUrl
+      }
     }
   },
   methods: {
     handleClick () {
-      if (this.optionModelId) {
+      if (this.modelId) {
         this.deleteFavorite()
       } else {
+        const handleSuccess = response => {
+          const favoriteId =
+            response.data.favorite_id.toString()
+
+          this.setFavoriteId(
+            favoriteId
+          )
+        }
+
         this.createFavorite()
+          .then(handleSuccess)
       }
     },
     deleteData,
@@ -71,28 +102,29 @@ export default {
     postAlbumData,
     postTrackData,
     deleteFavorite () {
+      const handleSuccess = response => {
+        this.setFavoriteId(null)
+      }
+
       this.deleteData({
         model: this.model,
-        favoriteId: this.optionModelId
-      })
+        favoriteId: this.modelId
+      }).then(handleSuccess)
     },
     createFavorite () {
       switch (this.model) {
         case 'artist':
-          return this.postArtistData({
-            artistId: this.modelId
-          })
+          return this.postArtistData(
+            this.artistParams
+          )
         case 'album':
-          return this.postAlbumData({
-            albumId: this.modelId,
-            imageUrl: this.imageUrl
-          })
+          return this.postAlbumData(
+            this.albumParams
+          )
         case 'track':
-          return this.postTrackData({
-            trackId: this.modelId,
-            albumTitle: this.albumTitle,
-            imageUrl: this.imageUrl
-          })
+          return this.postTrackData(
+            this.trackParams
+          )
         default:
           return null
       }

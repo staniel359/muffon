@@ -62,7 +62,9 @@
       <div class="main-options-dropdown-container-right">
         <BaseOptionsDropdown
           model="track"
-          :modelId="trackTrackId"
+          :trackTitle="trackTitle"
+          :artistName="artistName"
+          :albumTitle="albumTitle"
           :favoriteId="favoriteId"
           isWithFavoriteOption
           isWithPlaylistOption
@@ -74,7 +76,8 @@
 
       <BasePlaylistsModal
         ref="playlistModal"
-        :trackId="trackTrackId"
+        :trackTitle="trackTitle"
+        :artistName="artistName"
         :albumTitle="albumTitle"
         :imageUrl="imageData.medium"
       />
@@ -214,9 +217,6 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
-    },
-    trackTrackId () {
-      return this.trackData.track_id.toString()
     }
   },
   mounted () {

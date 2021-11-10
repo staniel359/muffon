@@ -56,7 +56,7 @@
 
       <BaseOptionsDropdown
         model="artist"
-        :modelId="artistArtistId"
+        :artistName="artistName"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -84,14 +84,6 @@
         :modelData="artistData"
         @deleted="handleDeleted"
       />
-      <BaseProfileLibraryDeleteModal
-        v-else-if="isLinkToLibrary"
-        ref="deleteModal"
-        model="artist"
-        :profileId="profileId"
-        :modelId="artistId"
-        :modelTitle="artistName"
-      />
     </template>
   </BaseLinkContainer>
 </template>
@@ -108,8 +100,6 @@ import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
-import BaseProfileLibraryDeleteModal
-  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink,
@@ -129,8 +119,7 @@ export default {
     BaseSelfIcons,
     BaseOptionsDropdown,
     BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal,
-    BaseProfileLibraryDeleteModal
+    BaseFavoriteDeleteModal
   },
   provide () {
     return {
@@ -212,12 +201,6 @@ export default {
     },
     artistId () {
       return this.artistData.id.toString()
-    },
-    artistArtistId () {
-      return (
-        this.artistData.artist_id ||
-          this.artistId
-      )?.toString()
     },
     image () {
       return this.artistData.image

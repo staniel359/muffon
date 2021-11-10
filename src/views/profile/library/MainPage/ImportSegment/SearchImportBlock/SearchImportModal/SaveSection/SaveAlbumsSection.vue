@@ -133,7 +133,7 @@ export default {
     },
     formatAlbum (albumData) {
       return {
-        title: albumData.title,
+        albumTitle: albumData.title,
         artistName: albumData.artist.name,
         imageUrl: albumData.image.medium
       }

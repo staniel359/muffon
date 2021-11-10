@@ -35,7 +35,9 @@
 
       <BaseOptionsDropdown
         model="album"
-        :modelId="albumAlbumId"
+        :artistName="artistName"
+        :albumTitle="albumTitle"
+        :imageUrl="imageData.medium"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -45,7 +47,6 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        :imageUrl="imageData.medium"
         @delete="handleDeleteOptionClick"
         @linkClick="handleLinkClick"
       />
@@ -180,15 +181,6 @@ export default {
     },
     uuid () {
       return this.albumData.uuid
-    },
-    albumId () {
-      return this.albumData.id?.toString()
-    },
-    albumAlbumId () {
-      return (
-        this.albumData.album_id ||
-          this.albumId
-      )?.toString()
     }
   },
   mounted () {

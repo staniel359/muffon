@@ -9,7 +9,9 @@
       <BaseOptionsDropdown
         class="options"
         model="album"
-        :modelId="albumAlbumId"
+        :artistName="albumArtistName"
+        :albumTitle="albumTitle"
+        :imageUrl="imageData.medium"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -19,10 +21,8 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        :imageUrl="imageData.medium"
         isWhite
         @linkClick="handleLinkClick"
-        @delete="handleDeleteOptionClick"
       />
 
       <InfoSection
@@ -41,15 +41,6 @@
       />
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
-
-  <BaseProfileLibraryDeleteModal
-    v-if="isLinkToLibrary"
-    ref="deleteModal"
-    model="album"
-    :profileId="profileId"
-    :modelId="albumId"
-    :modelTitle="albumFullTitle"
-  />
 </template>
 
 <script>
@@ -57,8 +48,6 @@ import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
 import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
 import InfoSection from './AlbumItem/InfoSection.vue'
-import BaseProfileLibraryDeleteModal
-  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import {
@@ -77,8 +66,7 @@ export default {
     BaseLinkContainer,
     BaseSimpleCardContainer,
     BaseOptionsDropdown,
-    InfoSection,
-    BaseProfileLibraryDeleteModal
+    InfoSection
   },
   provide () {
     return {
@@ -185,15 +173,6 @@ export default {
     },
     albumId () {
       return this.albumData.id?.toString()
-    },
-    albumAlbumId () {
-      return (
-        this.albumData.album_id ||
-          this.albumId
-      )?.toString()
-    },
-    albumFullTitle () {
-      return `${this.albumArtistName} - ${this.albumTitle}`
     }
   },
   mounted () {
@@ -212,9 +191,6 @@ export default {
     },
     handleTracksLinkActiveChange (value) {
       this.isTracksLinkActive = value
-    },
-    handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value

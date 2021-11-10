@@ -87,7 +87,10 @@
 
     <BaseOptionsDropdown
       model="track"
-      :modelId="trackTrackId"
+      :trackTitle="trackTitle"
+      :artistName="artistName"
+      :albumTitle="albumTitle"
+      :imageUrl="imageData?.medium"
       :libraryId="libraryId"
       :favoriteId="favoriteId"
       :bookmarkId="bookmarkId"
@@ -98,8 +101,6 @@
       :isWithListenedOption="isWithListenedOption"
       :isWithPlaylistOption="isWithPlaylistOption"
       :isWithDeleteOption="isWithDeleteOption"
-      :albumTitle="albumTitle"
-      :imageUrl="imageData?.medium"
       @delete="handleDeleteOptionClick"
       @playlist="handlePlaylistOptionClick"
       @linkClick="handleLinkClick"
@@ -107,7 +108,8 @@
 
     <BasePlaylistsModal
       ref="playlistModal"
-      :trackId="trackTrackId"
+      :trackTitle="trackTitle"
+      :artistName="artistName"
       :albumTitle="albumTitle"
       :imageUrl="imageData?.medium"
     />
@@ -276,7 +278,10 @@ export default {
       return this.albumData?.title
     },
     albumData () {
-      return this.trackData.albums?.[0]
+      return (
+        this.trackData.albums?.[0] ||
+          this.trackData.album
+      )
     },
     isRenderListenersCount () {
       return (
@@ -309,12 +314,6 @@ export default {
     },
     trackId () {
       return this.trackData.id?.toString()
-    },
-    trackTrackId () {
-      return (
-        this.trackData.track_id ||
-          this.trackId
-      )?.toString()
     },
     artistId () {
       return this.trackData.artist.id?.toString()

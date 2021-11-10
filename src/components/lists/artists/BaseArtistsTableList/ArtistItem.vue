@@ -15,7 +15,7 @@
 
       <BaseOptionsDropdown
         model="artist"
-        :modelId="artistArtistId"
+        :artistName="artistName"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -25,9 +25,8 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        @linkClick="handleLinkClick"
         isWhite
-        @delete="handleDeleteOptionClick"
+        @linkClick="handleLinkClick"
       />
 
       <div class="content">
@@ -64,15 +63,6 @@
       </div>
     </BaseSimpleCardContainer>
   </BaseLinkContainer>
-
-  <BaseProfileLibraryDeleteModal
-    v-if="isLinkToLibrary"
-    ref="deleteModal"
-    model="artist"
-    :profileId="profileId"
-    :modelId="artistId"
-    :modelTitle="artistName"
-  />
 </template>
 
 <script>
@@ -85,8 +75,6 @@ import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseProfileLibraryDeleteModal
-  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink,
@@ -104,8 +92,7 @@ export default {
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseSelfIcons,
-    BaseProfileLibraryDeleteModal
+    BaseSelfIcons
   },
   provide () {
     return {
@@ -180,12 +167,6 @@ export default {
     artistId () {
       return this.artistData.id.toString()
     },
-    artistArtistId () {
-      return (
-        this.artistData.artist_id ||
-          this.artistId
-      )?.toString()
-    },
     artistName () {
       return this.artistData.name
     },
@@ -234,9 +215,6 @@ export default {
     },
     handleAlbumsLinkActiveChange (value) {
       this.isAlbumsLinkActive = value
-    },
-    handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
     },
     setLibraryId (value) {
       this.libraryId = value

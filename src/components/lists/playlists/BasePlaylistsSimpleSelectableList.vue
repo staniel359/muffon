@@ -5,7 +5,8 @@
       :key="playlistData.uuid"
       :playlistData="playlistData"
       :profileId="profileId"
-      :trackId="trackId"
+      :trackTitle="trackTitle"
+      :artistName="artistName"
       :albumTitle="albumTitle"
       :imageUrl="imageUrl"
     />
@@ -31,7 +32,8 @@ export default {
       }
     },
     profileId: String,
-    trackId: String,
+    trackTitle: String,
+    artistName: String,
     albumTitle: String,
     imageUrl: String
   },

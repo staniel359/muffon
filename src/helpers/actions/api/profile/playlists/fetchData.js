@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-export default function ({ profileId, trackId, page, limit }) {
+export default function ({ profileId, trackTitle, artistName, page, limit }) {
   this.isLoading = true
 
   const url = `/profiles/${profileId}/playlists`
 
   const params = {
-    track_id: trackId,
+    track_title: trackTitle,
+    artist_name: artistName,
     ...(page && { page }),
     ...(limit && { limit })
   }

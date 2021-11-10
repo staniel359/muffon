@@ -57,8 +57,9 @@ export default {
       }
     },
     modelId: String,
-    optionModelId: String,
+    artistName: String,
     albumTitle: String,
+    trackTitle: String,
     imageUrl: String
   },
   emits: [
@@ -74,7 +75,7 @@ export default {
       profileInfo: 'info'
     }),
     textFormatted () {
-      if (this.optionModelId) {
+      if (this.modelId) {
         return this.$t(
           'shared.library.show'
         )
@@ -89,17 +90,17 @@ export default {
         case 'artist':
           return formatProfileLibraryArtistMainLink({
             profileId: this.profileId,
-            artistId: this.optionModelId
+            artistId: this.modelId
           })
         case 'album':
           return formatProfileLibraryAlbumMainLink({
             profileId: this.profileId,
-            albumId: this.optionModelId
+            albumId: this.modelId
           })
         case 'track':
           return formatProfileLibraryTrackMainLink({
             profileId: this.profileId,
-            trackId: this.optionModelId
+            trackId: this.modelId
           })
         default:
           return {}
@@ -114,21 +115,52 @@ export default {
       )
     },
     component () {
-      if (this.optionModelId) {
+      if (this.modelId) {
         return 'BaseLinkContainer'
       } else {
         return 'div'
+      }
+    },
+    artistParams () {
+      return {
+        artistName: this.artistName
+      }
+    },
+    albumParams () {
+      return {
+        albumTitle: this.albumTitle,
+        artistName: this.artistName,
+        albumTracks: this.albumTracksFormatted,
+        imageUrl: this.imageUrl
+      }
+    },
+    trackParams () {
+      return {
+        trackTitle: this.trackTitle,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        imageUrl: this.imageUrl
       }
     }
   },
   methods: {
     handleClick (event) {
-      if (this.optionModelId) {
+      if (this.modelId) {
         this.$emit('linkClick')
       } else {
         event.preventDefault()
 
+        const handleSuccess = response => {
+          const libraryId =
+            response.data.library_id.toString()
+
+          this.setLibraryId(
+            libraryId
+          )
+        }
+
         this.addToLibrary()
+          .then(handleSuccess)
       }
     },
     postArtistData,
@@ -137,21 +169,17 @@ export default {
     addToLibrary () {
       switch (this.model) {
         case 'artist':
-          return this.postArtistData({
-            artistId: this.modelId
-          })
+          return this.postArtistData(
+            this.artistParams
+          )
         case 'album':
-          return this.postAlbumData({
-            albumId: this.modelId,
-            tracks: this.albumTracks,
-            imageUrl: this.imageUrl
-          })
+          return this.postAlbumData(
+            this.albumParams
+          )
         case 'track':
-          return this.postTrackData({
-            trackId: this.modelId,
-            albumTitle: this.albumTitle,
-            imageUrl: this.imageUrl
-          })
+          return this.postTrackData(
+            this.trackParams
+          )
         default:
           return null
       }
@@ -159,7 +187,9 @@ export default {
     formatAlbumTrack (trackData) {
       return {
         title: trackData.title,
-        artist: trackData.artist.name
+        artist: {
+          name: trackData.artist.name
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ albumId, tracks, imageUrl }) {
+export default function ({ albumTitle, artistName, albumTracks, imageUrl }) {
   this.isLoading = true
 
   const profileId =
@@ -12,15 +12,10 @@ export default function ({ albumId, tracks, imageUrl }) {
   const { token } = store.state.profile
   const params = {
     token,
-    album_id: albumId,
-    tracks,
+    title: albumTitle,
+    artist_name: artistName,
+    tracks: albumTracks,
     image_url: imageUrl
-  }
-
-  const handleSuccess = response => {
-    this.setLibraryId(
-      response.data.library_id.toString()
-    )
   }
 
   const handleError = error => {
@@ -35,7 +30,6 @@ export default function ({ albumId, tracks, imageUrl }) {
 
   return axios
     .post(url, params)
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

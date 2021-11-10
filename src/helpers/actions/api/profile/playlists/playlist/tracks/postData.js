@@ -3,7 +3,8 @@ import store from '*/store'
 
 export default function ({
   playlistId,
-  trackId,
+  trackTitle,
+  artistName,
   albumTitle,
   image,
   imageUrl,
@@ -20,8 +21,9 @@ export default function ({
   const { token } = store.state.profile
   const params = {
     token,
-    track_id: trackId,
-    album: albumTitle,
+    title: trackTitle,
+    artist_name: artistName,
+    album_title: albumTitle,
     image,
     image_url: imageUrl,
     created_at: created

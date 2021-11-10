@@ -64,7 +64,11 @@ export default {
       type: String,
       required: true
     },
-    trackId: {
+    trackTitle: {
+      type: String,
+      required: true
+    },
+    artistName: {
       type: String,
       required: true
     },
@@ -105,6 +109,15 @@ export default {
     },
     isActive () {
       return !!this.playlistTrackId
+    },
+    trackParams () {
+      return {
+        playlistId: this.playlistId,
+        trackTitle: this.trackTitle,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        imageUrl: this.imageUrl
+      }
     }
   },
   mounted () {
@@ -122,12 +135,9 @@ export default {
     postTrackData,
     deleteTrackData,
     postData () {
-      this.postTrackData({
-        playlistId: this.playlistId,
-        trackId: this.trackId,
-        albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
-      })
+      this.postTrackData(
+        this.trackParams
+      )
     },
     deleteData () {
       this.deleteTrackData({

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ albumId, imageUrl }) {
+export default function ({ albumTitle, artistName, imageUrl }) {
   this.isLoading = true
 
   const profileId =
@@ -12,14 +12,9 @@ export default function ({ albumId, imageUrl }) {
   const { token } = store.state.profile
   const params = {
     token,
-    album_id: albumId,
+    title: albumTitle,
+    artist_name: artistName,
     image_url: imageUrl
-  }
-
-  const handleSuccess = response => {
-    this.setFavoriteId(
-      response.data.favorite_id.toString()
-    )
   }
 
   const handleError = error => {
@@ -34,7 +29,6 @@ export default function ({ albumId, imageUrl }) {
 
   return axios
     .post(url, params)
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

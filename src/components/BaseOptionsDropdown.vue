@@ -15,8 +15,9 @@
           :key="optionData.uuid"
           :is="optionData.component"
           :model="model"
-          :modelId="modelId"
-          :optionModelId="optionData.optionModelId"
+          :modelId="optionData.modelId"
+          :artistName="artistName"
+          :trackTitle="trackTitle"
           :albumTitle="albumTitle"
           :albumTracks="albumTracks"
           :imageUrl="imageUrl"
@@ -58,7 +59,11 @@ export default {
   },
   props: {
     model: String,
-    modelId: String,
+    artistName: String,
+    trackTitle: String,
+    albumTitle: String,
+    albumTracks: Array,
+    imageUrl: String,
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
@@ -70,9 +75,6 @@ export default {
     isWithListenedOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
-    albumTitle: String,
-    albumTracks: Array,
-    imageUrl: String,
     isWhite: Boolean
   },
   emits: [
@@ -133,7 +135,7 @@ export default {
     libraryOption () {
       return {
         component: 'LibraryOption',
-        optionModelId: this.libraryId
+        modelId: this.libraryId
       }
     },
     playlistOption () {
@@ -145,19 +147,19 @@ export default {
     favoriteOption () {
       return {
         component: 'FavoriteOption',
-        optionModelId: this.favoriteId
+        modelId: this.favoriteId
       }
     },
     bookmarkOption () {
       return {
         component: 'BookmarkOption',
-        optionModelId: this.bookmarkId
+        modelId: this.bookmarkId
       }
     },
     listenedOption () {
       return {
         component: 'ListenedOption',
-        optionModelId: this.listenedId
+        modelId: this.listenedId
       }
     },
     editOption () {

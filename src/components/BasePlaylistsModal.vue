@@ -25,7 +25,8 @@
           <BasePlaylistsSimpleSelectableList
             :playlists="slotProps.playlists"
             :profileId="profileId"
-            :trackId="trackId"
+            :trackTitle="trackTitle"
+            :artistName="artistName"
             :albumTitle="albumTitle"
             :imageUrl="imageUrl"
           />
@@ -54,7 +55,8 @@ export default {
     BasePlaylistsSimpleSelectableList
   },
   props: {
-    trackId: String,
+    trackTitle: String,
+    artistName: String,
     albumTitle: String,
     imageUrl: String
   },
@@ -76,7 +78,8 @@ export default {
       return {
         profileId: this.profileId,
         limit: this.limit,
-        trackId: this.trackId
+        trackTitle: this.trackTitle,
+        artistName: this.artistName
       }
     },
     profileId () {

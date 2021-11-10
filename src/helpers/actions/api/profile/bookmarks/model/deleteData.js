@@ -14,10 +14,6 @@ export default function ({ model, bookmarkId }) {
   const { token } = store.state.profile
   const params = { token }
 
-  const handleSuccess = () => {
-    this.setBookmarkId(null)
-  }
-
   const handleError = error => {
     this.error = error
   }
@@ -28,7 +24,6 @@ export default function ({ model, bookmarkId }) {
 
   return axios
     .delete(url, { params })
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

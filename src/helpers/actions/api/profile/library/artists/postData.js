@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ artistId }) {
+export default function ({ artistName }) {
   this.isLoading = true
 
   const profileId =
@@ -12,13 +12,7 @@ export default function ({ artistId }) {
   const { token } = store.state.profile
   const params = {
     token,
-    artist_id: artistId
-  }
-
-  const handleSuccess = response => {
-    this.setLibraryId(
-      response.data.library_id.toString()
-    )
+    name: artistName
   }
 
   const handleError = error => {
@@ -33,7 +27,6 @@ export default function ({ artistId }) {
 
   return axios
     .post(url, params)
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

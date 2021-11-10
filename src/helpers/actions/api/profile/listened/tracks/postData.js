@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ trackId }) {
+export default function ({ trackTitle, artistName }) {
   this.isLoading = true
 
   const profileId =
@@ -12,13 +12,8 @@ export default function ({ trackId }) {
   const { token } = store.state.profile
   const params = {
     token,
-    track_id: trackId
-  }
-
-  const handleSuccess = response => {
-    this.setListenedId(
-      response.data.listened_id.toString()
-    )
+    title: trackTitle,
+    artist_name: artistName
   }
 
   const handleError = error => {
@@ -33,7 +28,6 @@ export default function ({ trackId }) {
 
   return axios
     .post(url, params)
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

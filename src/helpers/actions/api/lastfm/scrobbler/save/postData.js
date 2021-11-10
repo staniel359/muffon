@@ -12,8 +12,8 @@ export default function ({ title, artistName, albumTitle, duration }) {
   const params = {
     token,
     title,
-    artist: artistName,
-    album: albumTitle,
+    artist_name: artistName,
+    album_title: albumTitle,
     duration
   }
 

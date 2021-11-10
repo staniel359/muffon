@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/store'
 
-export default function ({ trackId, albumTitle, imageUrl }) {
+export default function ({ trackTitle, artistName, albumTitle, imageUrl }) {
   this.isLoading = true
 
   const profileId =
@@ -12,15 +12,10 @@ export default function ({ trackId, albumTitle, imageUrl }) {
   const { token } = store.state.profile
   const params = {
     token,
-    track_id: trackId,
-    album: albumTitle,
+    title: trackTitle,
+    artist_name: artistName,
+    album_title: albumTitle,
     image_url: imageUrl
-  }
-
-  const handleSuccess = response => {
-    this.setBookmarkId(
-      response.data.bookmark_id.toString()
-    )
   }
 
   const handleError = error => {
@@ -35,7 +30,6 @@ export default function ({ trackId, albumTitle, imageUrl }) {
 
   return axios
     .post(url, params)
-    .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)
 }

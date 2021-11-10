@@ -133,7 +133,7 @@ export default {
     },
     formatTrack (trackData) {
       return {
-        title: trackData.title,
+        trackTitle: trackData.title,
         artistName: trackData.artist.name
       }
     },
