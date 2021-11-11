@@ -38,7 +38,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
     "@intlify/vue-i18n-loader": "^3.3.0",
     "@vue/cli-plugin-babel": "~5.0.0-rc.0",
     "@vue/cli-plugin-eslint": "~5.0.0-rc.0",
@@ -50,7 +50,7 @@
     "electron": "^14.2.1",
     "electron-builder": "^22.13.1",
     "eslint": "^8.2.0",
-    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-vue": "^8.0.3",
