@@ -32,7 +32,7 @@
     "jsmediatags": "^3.9.7",
     "slick-carousel": "^1.8.1",
     "uuid": "^8.3.2",
-    "vue": "^3.2.21",
+    "vue": "^3.2.22",
     "vue-i18n": "^9.1.9",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"
@@ -45,7 +45,7 @@
     "@vue/cli-plugin-router": "~5.0.0-rc.0",
     "@vue/cli-plugin-vuex": "~5.0.0-rc.0",
     "@vue/cli-service": "~5.0.0-rc.0",
-    "@vue/compiler-sfc": "^3.2.21",
+    "@vue/compiler-sfc": "^3.2.22",
     "@vue/eslint-config-standard": "^6.1.0",
     "electron": "^14.2.1",
     "electron-builder": "^22.13.1",
