@@ -39,3 +39,5 @@ It's currently in **alpha**, so not everything's perfect and much to be done.
 [Download](https://github.com/staniel359/muffon/releases)
 
 If you have any questions/suggestions/bug reports, feel free to create an issue [here](https://github.com/staniel359/muffon/issues)
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
