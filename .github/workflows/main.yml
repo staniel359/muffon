@@ -33,7 +33,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: '16.x'
+          node-version: '17.x'
 
       - name: Set up dependencies
         run: yarn --ignore-scripts
