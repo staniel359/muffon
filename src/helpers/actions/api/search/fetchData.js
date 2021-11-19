@@ -6,7 +6,8 @@ export default function ({
   scope = '',
   query,
   page,
-  limit
+  limit,
+  isWithSelfData = false
 }) {
   this.isLoading = true
 
@@ -16,7 +17,10 @@ export default function ({
     store.state.profile.info.id
   const params = {
     query,
-    profile_id: profileId,
+    ...(
+      isWithSelfData &&
+        { profile_id: profileId }
+    ),
     ...(page && { page }),
     ...(limit && { limit })
   }

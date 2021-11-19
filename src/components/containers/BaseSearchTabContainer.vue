@@ -119,7 +119,8 @@ export default {
         sourceId: this.sourceId,
         query: this.query,
         scope: this.tabData.scope,
-        limit: this.tabData.responsePageLimit
+        limit: this.tabData.responsePageLimit,
+        isWithSelfData: true
       }
     },
     profileId () {
