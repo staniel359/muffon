@@ -6,6 +6,7 @@
     <BaseButtonContainer
       class="compact basic circular top right pointing floating dropdown icon main-options-dropdown-button"
       :class="{ white: isWhite && !isDarkMode }"
+      @click.prevent
       @init="handleDropdownInit"
     >
       <i class="ellipsis vertical icon"></i>
