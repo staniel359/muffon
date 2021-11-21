@@ -18,6 +18,7 @@
         />
 
         <ImportSegment
+          v-if="isRenderImport"
           :playlistId="playlistId"
           :profileId="profileId"
         />
@@ -38,6 +39,7 @@ import BasePlaylistPageContainer
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'PlaylistPage',
@@ -50,6 +52,13 @@ export default {
   props: {
     profileId: String,
     playlistId: String
+  },
+  computed: {
+    isRenderImport () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>
