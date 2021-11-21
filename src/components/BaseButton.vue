@@ -6,7 +6,7 @@
       inverted: isDarkMode,
       icon: !!icon && !text
     }"
-    @click.stop="handleClick"
+    @click="handleClick"
   >
     <i
       v-if="icon"

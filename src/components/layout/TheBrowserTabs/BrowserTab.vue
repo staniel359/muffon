@@ -21,7 +21,7 @@
     <BaseButton
       class="basic mini compact circular browser-tab-close-button"
       icon="close"
-      @click="handleRemoveButtonClick"
+      @click.stop="handleRemoveButtonClick"
     />
   </BaseButtonContainer>
 </template>
