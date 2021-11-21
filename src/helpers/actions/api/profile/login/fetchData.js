@@ -21,7 +21,8 @@ export default function ({ email, password, isRemember }) {
     const profileId = response.data.profile.id
 
     return fetchProfileData.bind(this)({
-      profileId
+      profileId,
+      token
     })
   }
 

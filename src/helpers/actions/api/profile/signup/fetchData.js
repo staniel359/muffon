@@ -43,7 +43,8 @@ export default function ({
     const profileId = response.data.profile.id
 
     return fetchProfileData.bind(this)({
-      profileId
+      profileId,
+      token
     })
   }
 
