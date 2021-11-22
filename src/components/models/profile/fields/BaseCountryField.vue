@@ -30,6 +30,7 @@ import { mapState } from 'vuex'
 import CountryItem from './BaseCountryField/CountryItem.vue'
 import countries from 'i18n-iso-countries'
 import countriesEn from 'i18n-iso-countries/langs/en.json'
+import countriesIt from 'i18n-iso-countries/langs/it.json'
 import countriesRu from 'i18n-iso-countries/langs/ru.json'
 import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 
@@ -56,14 +57,18 @@ export default {
           this.profileLanguage
         )
       )
+    },
+    locales () {
+      return [
+        countriesEn,
+        countriesIt,
+        countriesRu
+      ]
     }
   },
   beforeMount () {
-    countries.registerLocale(
-      countriesEn
-    )
-    countries.registerLocale(
-      countriesRu
+    this.locales.forEach(
+      this.registerLocale
     )
   },
   mounted () {
@@ -76,6 +81,13 @@ export default {
       this.$refs.dropdown,
       this.value
     )
+  },
+  methods: {
+    registerLocale (locale) {
+      countries.registerLocale(
+        locale
+      )
+    }
   }
 }
 </script>
