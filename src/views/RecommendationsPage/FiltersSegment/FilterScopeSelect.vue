@@ -7,6 +7,9 @@
       <option value="artists">
         {{ artistsFormatted }}
       </option>
+      <option value="tags">
+        {{ tagsFormatted }}
+      </option>
     </select>
   </div>
 </template>
@@ -29,6 +32,11 @@ export default {
     artistsFormatted () {
       return this.$t(
         'layout.navigation.artists'
+      )
+    },
+    tagsFormatted () {
+      return this.$t(
+        'layout.navigation.tags'
       )
     }
   },

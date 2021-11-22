@@ -5,11 +5,11 @@
       @open="handleOpen"
     >
       <div class="filters-block-container">
-        <ProfileArtistsFilterBlock
-          v-if="filter === 'artists'"
+        <Component
           ref="filter"
-          :artists="artists"
-          @change="handleArtistsFilterValueChange"
+          :is="filterComponent"
+          :[filter]="filterItems"
+          @change="handleFilterItemsChange"
         />
 
         <FilterScopeSelect
@@ -17,18 +17,10 @@
         />
       </div>
 
-      <div class="profile-artists-container">
-        <div class="ui labels">
-          <BaseLabel
-            v-for="artistData in artists"
-            icon="close"
-            :key="artistData.uuid"
-            :text="artistData.name"
-            isReverse
-            @iconClick="handleArtistDeleteButtonClick(artistData.uuid)"
-          />
-        </div>
-      </div>
+      <FilterItems
+        :filterItems="filterItems"
+        @change="handleFilterItemsChange"
+      />
     </BaseAccordionContainer>
   </BaseSegmentContainer>
 </template>
@@ -38,8 +30,9 @@ import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import ProfileArtistsFilterBlock
   from './FiltersSegment/ProfileArtistsFilterBlock.vue'
+import TagsFilterBlock from './FiltersSegment/TagsFilterBlock.vue'
 import FilterScopeSelect from './FiltersSegment/FilterScopeSelect.vue'
-import BaseLabel from '@/BaseLabel.vue'
+import FilterItems from './FiltersSegment/FilterItems.vue'
 
 export default {
   name: 'FiltersSegment',
@@ -47,8 +40,9 @@ export default {
     BaseSegmentContainer,
     BaseAccordionContainer,
     ProfileArtistsFilterBlock,
+    TagsFilterBlock,
     FilterScopeSelect,
-    BaseLabel
+    FilterItems
   },
   props: {
     filter: String
@@ -59,7 +53,11 @@ export default {
   ],
   data () {
     return {
-      artists: []
+      filterItems: [],
+      filters: {
+        artists: 'ProfileArtistsFilterBlock',
+        tags: 'TagsFilterBlock'
+      }
     }
   },
   computed: {
@@ -68,44 +66,45 @@ export default {
         'pages.recommendations.filter'
       )
     },
-    artistIds () {
-      return this.artists.map(artistData => {
-        return artistData.id
+    filterComponent () {
+      return this.filters[this.filter]
+    },
+    filterValue () {
+      return this.filterItems.map(filterItemData => {
+        return filterItemData.id
       })
     }
   },
   watch: {
-    artists: 'handleArtistsChange'
+    filterValue: 'handleFilterValueChange'
   },
   methods: {
     handleOpen () {
       this.$refs.filter.focusInput()
     },
     handleFilterChange (value) {
+      this.filterItems = []
+
       this.$emit(
         'filterChange',
         value
       )
     },
-    handleArtistsChange (value) {
-      this.$emit(
-        'filterValueChange',
-        this.artistIds
+    handleFilterItemsChange (value) {
+      this.filterItems = value
+    },
+    handleFilterValueChange (newValue, oldValue) {
+      const isChanged = (
+        JSON.stringify(newValue) !==
+          JSON.stringify(oldValue)
       )
-    },
-    handleArtistsFilterValueChange (value) {
-      this.artists = value
-    },
-    handleArtistDeleteButtonClick (uuid) {
-      const isMatchedArtist = artistData => {
-        return artistData.uuid !== uuid
-      }
 
-      this.artists = [
-        ...this.artists.filter(
-          isMatchedArtist
+      if (isChanged) {
+        this.$emit(
+          'filterValueChange',
+          newValue
         )
-      ]
+      }
     }
   }
 }
@@ -114,7 +113,4 @@ export default {
 <style lang="sass" scoped>
 .filters-block-container
   @extend .d-flex, .align-items-center
-
-.profile-artists-container
-  margin-top: 1em
 </style>

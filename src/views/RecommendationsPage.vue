@@ -110,4 +110,5 @@ export default {
 
 .recommendations-segment
   @extend .flex-full, .d-flex, .flex-column
+  z-index: 1
 </style>
