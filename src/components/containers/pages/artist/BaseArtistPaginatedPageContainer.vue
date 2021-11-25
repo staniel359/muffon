@@ -1,6 +1,7 @@
 <template>
   <BaseArtistPageContainer
     ref="pageContainer"
+    :artistName="artistName"
     :pageNameKey="pageNameKey"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
@@ -82,6 +83,7 @@ export default {
     BasePaginatedContainer
   },
   props: {
+    artistName: String,
     pageNameKey: String,
     scope: String,
     clientPageLimit: Number,

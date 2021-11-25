@@ -5,7 +5,7 @@ export default function ({ artistName }) {
 
   const bandcampIdDataArgs = {
     model: 'artist',
-    artistName
+    artist: artistName
   }
 
   const handleSuccess = response => {

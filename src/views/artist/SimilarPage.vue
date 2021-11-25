@@ -2,6 +2,7 @@
   <BaseArtistPaginatedPageContainer
     pageNameKey="similar"
     scope="similar"
+    :artistName="artistName"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :viewIndex="viewIndex"
@@ -33,6 +34,9 @@ export default {
   components: {
     BaseArtistPaginatedPageContainer,
     BaseArtistsList
+  },
+  props: {
+    artistName: String
   },
   data () {
     return {

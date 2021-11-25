@@ -2,6 +2,7 @@
   <BaseArtistPaginatedPageContainer
     pageNameKey="tracks"
     scope="tracks"
+    :artistName="artistName"
     :clientPageLimit="50"
     :responsePageLimit="50"
   >
@@ -32,6 +33,9 @@ export default {
   components: {
     BaseArtistPaginatedPageContainer,
     BaseTracksSimpleList
+  },
+  props: {
+    artistName: String
   }
 }
 </script>

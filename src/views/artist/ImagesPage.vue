@@ -2,6 +2,7 @@
   <BaseArtistPaginatedPageContainer
     pageNameKey="images"
     scope="images"
+    :artistName="artistName"
     :clientPageLimit="40"
     :responsePageLimit="40"
   >
@@ -33,6 +34,9 @@ export default {
     BaseArtistPaginatedPageContainer,
     ImagesList,
     BaseArtistImageModal
+  },
+  props: {
+    artistName: String
   },
   data () {
     return {

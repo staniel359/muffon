@@ -1,6 +1,7 @@
 <template>
   <BaseArtistPageContainer
     class="page-container"
+    :artistName="artistName"
     @init="handleContainerInit"
   >
     <template #default="slotProps">
@@ -27,6 +28,9 @@ export default {
     BaseArtistPageContainer,
     LeftColumn,
     RightColumn
+  },
+  props: {
+    artistName: String
   },
   data () {
     return {
