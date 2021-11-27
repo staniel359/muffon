@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import { main as formatTopMainLink } from '#/formatters/links/top'
 
 export default function ({ pageNameKey }) {

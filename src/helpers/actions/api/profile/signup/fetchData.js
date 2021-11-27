@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { camelCase } from 'camel-case'
-import i18n from '*/i18n'
-import local from '#/plugins/local'
+import i18n from '&/i18n'
+import local from '&/local'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 import fetchProfileData from '../fetchData'
 

@@ -1,4 +1,4 @@
-import store from '*/store'
+import store from '&/store'
 import fetchBandcampIdData from './id/bandcamp/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'
 import { updateStore } from '#/actions'

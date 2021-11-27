@@ -1,4 +1,4 @@
-import store from '*/store'
+import store from '&/store'
 
 export { v4 as generateKey } from 'uuid'
 

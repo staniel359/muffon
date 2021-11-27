@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import {
   recommendations as formatRecommendationsLink
 } from '#/formatters/links'

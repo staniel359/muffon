@@ -1,4 +1,4 @@
-import store from '*/store'
+import store from '&/store'
 import fetchTrackAudioData from '#/actions/audio/track/fetchData'
 import { updateStore } from '#/actions'
 

@@ -1,8 +1,8 @@
 import { createI18n } from 'vue-i18n'
-import local from '#/plugins/local'
-import en from '*/locales/en.json'
-import it from '*/locales/it.json'
-import ru from '*/locales/ru.json'
+import local from '&/local'
+import en from '#/data/plugins/i18n/locales/en.json'
+import it from '#/data/plugins/i18n/locales/it.json'
+import ru from '#/data/plugins/i18n/locales/ru.json'
 
 const locale = local.get(
   'profile.language'

@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import { main as formatTagMainLink } from '#/formatters/links/tag'
 
 export default function ({ tagName, pageNameKey }) {

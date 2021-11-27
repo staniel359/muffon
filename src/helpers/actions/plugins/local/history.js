@@ -1,4 +1,4 @@
-import local from '#/plugins/local'
+import local from '&/local'
 import { getDistinctArray } from '#/utils'
 
 export const get = (key, { isDistinct }) => {

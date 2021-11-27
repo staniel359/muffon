@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import local from '#/plugins/local'
+import local from '&/local'
 import BaseButton from '@/BaseButton.vue'
 
 export default {

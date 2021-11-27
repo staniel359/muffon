@@ -1,5 +1,5 @@
 import { ipcRenderer } from 'electron'
-import store from '*/store'
+import store from '&/store'
 
 export const updateStore = data => {
   return ipcRenderer.invoke(

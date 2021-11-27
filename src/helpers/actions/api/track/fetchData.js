@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '*/store'
+import store from '&/store'
 import formatRequestUrl from './formatters/requestUrl'
 
 export default function ({

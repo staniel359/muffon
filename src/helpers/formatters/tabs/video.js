@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import { main as formatVideoMainLink } from '#/formatters/links/video'
 
 export default function ({ videoTitle, videoId, pageNameKey }) {

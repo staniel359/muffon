@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import { bookmarks as formatBookmarksLink } from '#/formatters/links'
 
 export default function () {

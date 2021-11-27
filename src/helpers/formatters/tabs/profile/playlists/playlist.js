@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import {
   playlist as formatProfilePlaylistLink
 } from '#/formatters/links/profile'

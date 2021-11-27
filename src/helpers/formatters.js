@@ -1,4 +1,4 @@
-import store from '*/store'
+import store from '&/store'
 import { generateKey } from '#/utils'
 
 export const collection = collection => {

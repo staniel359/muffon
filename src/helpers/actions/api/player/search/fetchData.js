@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '*/store'
+import store from '&/store'
 import { collection as formatCollection } from '#/formatters'
 import { updateStore } from '#/actions'
 

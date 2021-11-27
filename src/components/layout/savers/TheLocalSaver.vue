@@ -4,7 +4,7 @@
 
 <script>
 import { ipcRenderer } from 'electron'
-import local from '#/plugins/local'
+import local from '&/local'
 
 export default {
   name: 'TheLocalSaver',

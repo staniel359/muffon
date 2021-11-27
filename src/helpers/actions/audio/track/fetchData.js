@@ -1,4 +1,4 @@
-import store from '*/store'
+import store from '&/store'
 import fetchSearchData from '#/actions/api/player/search/fetchData'
 import fetchVariantData from '#/actions/audio/variant/fetchData'
 import fetchAudioData from '#/actions/api/audio/fetchData'

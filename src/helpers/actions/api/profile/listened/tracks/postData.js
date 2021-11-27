@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '*/store'
+import store from '&/store'
 
 export default function ({ trackTitle, artistName }) {
   this.isLoading = true

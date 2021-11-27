@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { camelCase } from 'camel-case'
-import i18n from '*/i18n'
-import store from '*/store'
+import i18n from '&/i18n'
+import store from '&/store'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 
 export default function ({ playlistId, title, image }) {

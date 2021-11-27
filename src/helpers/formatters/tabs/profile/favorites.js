@@ -1,4 +1,4 @@
-import i18n from '*/i18n'
+import i18n from '&/i18n'
 import {
   favorites as formatProfileFavoritesLink
 } from '#/formatters/links/profile'

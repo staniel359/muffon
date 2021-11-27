@@ -26,6 +26,9 @@ module.exports = {
         '%': path.resolve(
           __dirname, './src/views'
         ),
+        '&': path.resolve(
+          __dirname, './src/plugins'
+        ),
         semantic: path.resolve(
           __dirname, './semantic'
         )
