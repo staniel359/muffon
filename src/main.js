@@ -8,6 +8,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import i18n from './i18n'
+import setupI18nCountries from '#/plugins/i18n-countries'
 
 const isDevelopment =
   process.env.NODE_ENV === 'development'
@@ -30,3 +31,5 @@ app
   .use(store)
   .use(i18n)
   .mount('#app')
+
+setupI18nCountries()

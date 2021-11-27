@@ -14,62 +14,29 @@
       </div>
       <i class="dropdown icon"></i>
 
-      <div class="menu">
-        <CountryItem
-          v-for="countryData in countriesList"
-          :key="countryData[0]"
-          :countryData="countryData"
-        />
-      </div>
+      <CountriesList />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import CountryItem from './BaseCountryField/CountryItem.vue'
-import countries from 'i18n-iso-countries'
-import countriesEn from 'i18n-iso-countries/langs/en.json'
-import countriesIt from 'i18n-iso-countries/langs/it.json'
-import countriesRu from 'i18n-iso-countries/langs/ru.json'
+import CountriesList from './BaseCountryField/CountriesList.vue'
 import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
 
 export default {
   name: 'BaseCountryField',
   components: {
-    CountryItem
+    CountriesList
   },
   props: {
     value: String
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     placeholderFormatted () {
       return this.$t(
         'shared.profile.form.fields.country'
       )
-    },
-    countriesList () {
-      return Object.entries(
-        countries.getNames(
-          this.profileLanguage
-        )
-      )
-    },
-    locales () {
-      return [
-        countriesEn,
-        countriesIt,
-        countriesRu
-      ]
     }
-  },
-  beforeMount () {
-    this.locales.forEach(
-      this.registerLocale
-    )
   },
   mounted () {
     setDropdown(
@@ -81,13 +48,6 @@ export default {
       this.$refs.dropdown,
       this.value
     )
-  },
-  methods: {
-    registerLocale (locale) {
-      countries.registerLocale(
-        locale
-      )
-    }
   }
 }
 </script>
