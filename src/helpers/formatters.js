@@ -73,14 +73,17 @@ export const time = date => {
 }
 
 export const age = birthdate => {
-  const yearsInSecondsFromNow =
-    new Date() - new Date(birthdate)
-  const yearsInSeconds =
-    1000 * 60 * 60 * 24 * 365
+  const ageInMilliseconds = (
+    new Date() -
+      new Date(birthdate)
+  )
 
-  return Math.floor(
-    yearsInSecondsFromNow /
-      yearsInSeconds
+  const ageInDatetime = new Date(
+    ageInMilliseconds
+  )
+
+  return Math.abs(
+    ageInDatetime.getUTCFullYear() - 1970
   )
 }
 
