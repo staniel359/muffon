@@ -6,16 +6,13 @@
       :title="headerFormatted"
     >
       <SearchImportBlock />
-      <AccountImportBlock
-        v-if="lastfmNickname"
-      />
+      <AccountImportBlock />
       <FolderImportBlock />
     </BaseAccordionContainer>
   </BaseSegmentContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import SearchImportBlock from './ImportSegment/SearchImportBlock.vue'
@@ -32,16 +29,10 @@ export default {
     FolderImportBlock
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     headerFormatted () {
       return this.$t(
         'shared.library.add'
       )
-    },
-    lastfmNickname () {
-      return this.profileInfo.lastfm_nickname
     }
   }
 }
