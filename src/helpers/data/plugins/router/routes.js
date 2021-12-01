@@ -109,6 +109,9 @@ const ProfilePlaylistsPage = () => import(
 const ProfilePlaylistPage = () => import(
   '%/profile/PlaylistPage.vue'
 )
+const RadioPage = () => import(
+  '%/RadioPage.vue'
+)
 
 export default [
   {
@@ -366,6 +369,13 @@ export default [
     exact: true,
     name: 'ProfilePlaylistPage',
     component: ProfilePlaylistPage,
+    props: true
+  },
+  {
+    path: '/radio',
+    exact: true,
+    name: 'RadioPage',
+    component: RadioPage,
     props: true
   }
 ]

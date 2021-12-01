@@ -5,6 +5,7 @@ import store from '&/store'
 import { addFormFieldError } from '#/actions/plugins/semantic'
 
 export default function ({ title, image }) {
+  this.error = null
   this.isLoading = true
 
   const profileId =

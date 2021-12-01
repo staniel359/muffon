@@ -125,8 +125,6 @@ export default {
       this.$emit('focus')
     },
     handleRefresh (page) {
-      this.error = null
-
       this.fetchData(page)
     },
     fetchLibraryData,

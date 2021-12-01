@@ -112,8 +112,6 @@ export default {
       'setNavigationSections'
     ]),
     handleRefresh (page) {
-      this.error = null
-
       this.fetchData(page)
     },
     handleTrackDataChange () {

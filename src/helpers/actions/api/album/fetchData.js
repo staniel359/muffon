@@ -14,6 +14,7 @@ export default function ({
   page,
   limit
 }) {
+  this.error = null
   this.isLoading = true
 
   const url = formatRequestUrl({
@@ -40,8 +41,6 @@ export default function ({
   }
 
   const handleSuccess = response => {
-    this.error = null
-
     const formatAlbumType = () => {
       if (albumType === 'albumVarious') {
         return 'album'

@@ -17,6 +17,7 @@ export default function ({
   city,
   isRemember
 }) {
+  this.error = null
   this.isLoading = true
 
   const url = '/profiles'

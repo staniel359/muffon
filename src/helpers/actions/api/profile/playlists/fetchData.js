@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default function ({ profileId, trackTitle, artistName, page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const url = `/profiles/${profileId}/playlists`
@@ -13,7 +14,6 @@ export default function ({ profileId, trackTitle, artistName, page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.profileData = response.data.profile
   }
 

@@ -21,3 +21,11 @@ export const bookmarks = () => {
     path: 'bookmarks'
   }
 }
+
+export const radio = () => {
+  return {
+    name: 'RadioPage',
+    params: {},
+    path: 'radio'
+  }
+}

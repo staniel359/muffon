@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default function ({ artistName, isInteractive, limit }) {
+  this.error = null
   this.isLoading = true
 
   const artistNameEncoded = encodeURIComponent(artistName)
@@ -10,8 +11,6 @@ export default function ({ artistName, isInteractive, limit }) {
 
   const handleSuccess = response => {
     const { images } = response.data.artist
-
-    this.error = null
 
     const formatImages = () => {
       if (isInteractive) {

@@ -9,6 +9,7 @@ export default function ({
   imageUrl,
   created
 }) {
+  this.isError = false
   this.isLoading = true
 
   const profileId =

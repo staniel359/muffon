@@ -1,7 +1,6 @@
 <template>
   <div
     ref="tab"
-    class="search-tab-container"
     :class="{
       loading: isActive && isLoading,
       inverted: isDarkMode
@@ -157,8 +156,6 @@ export default {
       this.$refs.tab.scrollTo(0, 0)
     },
     handleRefresh (page) {
-      this.error = null
-
       this.fetchData(page)
     },
     handleLinkClick () {
@@ -176,9 +173,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.search-tab-container
-  z-index: 1
-
 .videos-list-container-wrapper
   @extend .w-100
 

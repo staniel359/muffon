@@ -126,8 +126,6 @@ export default {
       this.$emit('init', el)
     },
     handleRefresh (page) {
-      this.error = null
-
       this.fetchData(page)
     },
     handleArtistDataChange () {

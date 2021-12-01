@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '&/store'
 
 export default function ({ tagName, scope = '', page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const tagNameEncoded = encodeURIComponent(tagName)
@@ -20,7 +21,6 @@ export default function ({ tagName, scope = '', page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.tagData = response.data.tag
   }
 

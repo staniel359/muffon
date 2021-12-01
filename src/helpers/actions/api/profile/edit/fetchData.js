@@ -17,6 +17,7 @@ export default function ({
   city,
   isRemember
 }) {
+  this.error = null
   this.isLoading = true
   this.isSuccess = false
 
@@ -49,7 +50,6 @@ export default function ({
     })
 
     this.isSuccess = true
-    this.error = null
     this.image = null
   }
 

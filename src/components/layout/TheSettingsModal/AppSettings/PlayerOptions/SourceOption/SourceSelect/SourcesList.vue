@@ -1,11 +1,9 @@
 <template>
-  <div class="menu">
-    <SourceItem
-      v-for="sourceData in sourcesFormatted"
-      :key="sourceData.uuid"
-      :sourceData="sourceData"
-    />
-  </div>
+  <SourceItem
+    v-for="sourceData in sourcesFormatted"
+    :key="sourceData.uuid"
+    :sourceData="sourceData"
+  />
 </template>
 
 <script>

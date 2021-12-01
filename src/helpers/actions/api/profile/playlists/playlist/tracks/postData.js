@@ -10,8 +10,8 @@ export default function ({
   imageUrl,
   created
 }) {
-  this.isLoading = true
   this.isError = false
+  this.isLoading = true
 
   const profileId =
     store.state.profile.info.id

@@ -31,8 +31,6 @@ export default {
   },
   methods: {
     handleRefresh () {
-      this.error = null
-
       this.fetchData()
     },
     fetchArtistData,

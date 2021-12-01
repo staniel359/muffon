@@ -1,30 +1,28 @@
 <template>
-  <div class="menu">
-    <div class="header">
-      {{ streamableHeaderFormatted }}
-    </div>
-
-    <SourceItem
-      v-for="sourceData in streamableSourcesFormatted"
-      :key="sourceData.uuid"
-      :sourceData="sourceData"
-      :query="query"
-      isWithMaxBitrate
-    />
-
-    <div class="divider"></div>
-
-    <div class="header">
-      {{ otherHeaderFormatted }}
-    </div>
-
-    <SourceItem
-      v-for="sourceData in otherSourcesFormatted"
-      :key="sourceData.uuid"
-      :query="query"
-      :sourceData="sourceData"
-    />
+  <div class="header">
+    {{ streamableHeaderFormatted }}
   </div>
+
+  <SourceItem
+    v-for="sourceData in streamableSourcesFormatted"
+    :key="sourceData.uuid"
+    :sourceData="sourceData"
+    :query="query"
+    isWithMaxBitrate
+  />
+
+  <div class="divider"></div>
+
+  <div class="header">
+    {{ otherHeaderFormatted }}
+  </div>
+
+  <SourceItem
+    v-for="sourceData in otherSourcesFormatted"
+    :key="sourceData.uuid"
+    :query="query"
+    :sourceData="sourceData"
+  />
 </template>
 
 <script>

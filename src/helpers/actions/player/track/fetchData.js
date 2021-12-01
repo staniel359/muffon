@@ -2,8 +2,8 @@ import fetchTrackAudioData from '#/actions/audio/track/fetchData'
 import { updateStore } from '#/actions'
 
 export default function ({ trackData, queueTracks }) {
-  this.isLoading = true
   this.error = null
+  this.isLoading = true
 
   const trackDataArgs = {
     trackTitle: trackData.title,

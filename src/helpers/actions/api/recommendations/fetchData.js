@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '&/store'
 
 export default function ({ page, limit, filter, filterValue }) {
+  this.error = null
   this.isLoading = true
 
   const profileId =
@@ -26,7 +27,6 @@ export default function ({ page, limit, filter, filterValue }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.recommendationsData =
       response.data.profile
   }

@@ -1,54 +1,30 @@
 <template>
-  <div class="scope-select-container">
-    <select
-      class="ui compact selection dropdown"
-      ref="dropdown"
-    >
-      <option value="artists">
-        {{ artistsFormatted }}
-      </option>
-      <option value="tags">
-        {{ tagsFormatted }}
-      </option>
-    </select>
-  </div>
+  <BaseScopesDropdown
+    class="scope-select-container"
+    selected="artists"
+    :scopes="scopes"
+    @change="handleChange"
+  />
 </template>
 
 <script>
-import { setDropdown } from '#/actions/plugins/semantic'
-import { mainDropdownOptions } from '#/data/plugins/semantic'
+import BaseScopesDropdown from '@/BaseScopesDropdown.vue'
 
 export default {
   name: 'FilterScopeSelect',
+  components: {
+    BaseScopesDropdown
+  },
   emits: [
     'select'
   ],
-  computed: {
-    dropdownOptions () {
-      return mainDropdownOptions({
-        onChange: this.handleChange
-      })
-    },
-    artistsFormatted () {
-      return this.$t(
-        'layout.navigation.artists'
-      )
-    },
-    tagsFormatted () {
-      return this.$t(
-        'layout.navigation.tags'
-      )
+  data () {
+    return {
+      scopes: [
+        'artists',
+        'tags'
+      ]
     }
-  },
-  mounted () {
-    setDropdown(
-      this.$refs.dropdown,
-      this.dropdownOptions
-    )
-
-    this.handleChange(
-      'artists'
-    )
   },
   methods: {
     handleChange (value) {
@@ -63,5 +39,5 @@ export default {
 
 <style lang="sass" scoped>
 .scope-select-container
-  margin-left: 1em !important
+  margin-right: 1em
 </style>

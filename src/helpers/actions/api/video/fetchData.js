@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 export default function ({ videoId, scope = '' }) {
+  this.error = null
   this.isLoading = true
 
   const url = `/youtube/videos/${videoId}/${scope}`
   const params = {}
 
   const handleSuccess = response => {
-    this.error = null
     this.videoData = response.data.video
   }
 

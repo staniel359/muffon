@@ -91,8 +91,6 @@ export default {
       value && this.fetchData()
     },
     handleRefresh (page) {
-      this.error = null
-
       this.fetchData(page)
     },
     handleFocus () {

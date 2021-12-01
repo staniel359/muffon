@@ -1,5 +1,6 @@
 <template>
   <BaseTrackContainer
+    ref="container"
     class="item main-simple-list-item"
     :trackData="trackData"
     :queueTracks="queueTracks"
@@ -110,6 +111,9 @@ export default {
     },
     handleDeleted () {
       this.isDeleted = true
+    },
+    fetchAudio () {
+      this.$refs.container.fetchAudio()
     }
   }
 }

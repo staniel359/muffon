@@ -1,12 +1,10 @@
 <template>
-  <div class="menu">
-    <TrackItem
-      v-for="(trackData, index) in tracksFormatted"
-      :key="trackData.uuid"
-      :trackData="trackData"
-      :index="index"
-    />
-  </div>
+  <TrackItem
+    v-for="(trackData, index) in tracksFormatted"
+    :key="trackData.uuid"
+    :trackData="trackData"
+    :index="index"
+  />
 </template>
 
 <script>

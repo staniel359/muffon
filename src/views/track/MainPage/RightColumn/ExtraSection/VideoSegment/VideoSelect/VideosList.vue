@@ -1,12 +1,10 @@
 <template>
-  <div class="menu">
-    <VideoItem
-      v-for="(videoData, index) in videosFormatted"
-      :key="videoData.uuid"
-      :videoData="videoData"
-      :index="index"
-    />
-  </div>
+  <VideoItem
+    v-for="(videoData, index) in videosFormatted"
+    :key="videoData.uuid"
+    :videoData="videoData"
+    :index="index"
+  />
 </template>
 
 <script>

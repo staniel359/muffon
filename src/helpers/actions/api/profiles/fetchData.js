@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default function ({ page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const url = '/profiles'
@@ -10,7 +11,6 @@ export default function ({ page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.profilesData = response.data.profiles
   }
 

@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
-    class="basic pointing scrolling button main-source-select"
     ref="dropdown"
+    class="main-source-select"
     :header="headerFormatted"
   >
     <SourcesList :query="query" />

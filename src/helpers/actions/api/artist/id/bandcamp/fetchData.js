@@ -1,6 +1,7 @@
 import fetchBandcampIdData from '#/actions/api/id/bandcamp/fetchData'
 
 export default function ({ artistName }) {
+  this.error = null
   this.isLoading = true
 
   const bandcampIdDataArgs = {

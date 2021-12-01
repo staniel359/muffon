@@ -12,6 +12,7 @@ export default function ({
   page,
   limit
 }) {
+  this.error = null
   this.isLoading = true
 
   const urlFormatted = formatRequestUrl({
@@ -36,7 +37,6 @@ export default function ({
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.trackData = response.data.track
   }
 

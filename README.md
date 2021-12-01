@@ -9,6 +9,7 @@
 You can:
 
 - listen to tracks/artists/whole albums
+- listen to tag/artist radio
 - scrobble tracks
 - watch videos
 - view tracks' lyrics

@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="basic pointing scrolling button main-source-select-item-select"
+    class="main-source-select-item-select"
     :header="headerFormatted"
   >
     <ArtistsList :artists="artists" />

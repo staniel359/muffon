@@ -94,8 +94,6 @@ export default {
       this.setNavigation()
     },
     handleRefresh () {
-      this.error = null
-
       this.fetchData()
     },
     handleProfileLanguageChange () {

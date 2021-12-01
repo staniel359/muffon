@@ -8,8 +8,7 @@
     </div>
 
     <BaseDropdownContainer
-      class="scrolling floating video-select"
-      icon="dropdown"
+      class="main-source-select-track-select"
       :header="headerFormatted"
       :isLoading="isLoading"
       :isError="isError"
@@ -71,8 +70,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.video-select
-  width: $trackPageDropdownWidth
+.main-source-select-track-select
+  @extend .no-margin
   ::v-deep(.image)
     width: 40px
 </style>

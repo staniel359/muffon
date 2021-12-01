@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ui dropdown main-dropdown"
     ref="dropdown"
+    class="ui selection dropdown main-dropdown"
     :class="{
       inverted: isDarkMode,
       disabled: isDisabled
@@ -11,26 +11,22 @@
       class="text main-dropdown-item"
       :class="{ inverted: isDarkMode }"
     >
-      <div
+      <BaseHeader
         v-if="header"
-        class="content"
-      >
-        <BaseHeader
-          tag="h5"
-          :text="header"
-        />
-      </div>
+        tag="h5"
+        :text="header"
+      />
     </div>
 
     <BaseIcon
-      v-if="icon"
-      class="main-dropdown-icon main-dropdown-right-icon"
-      :icon="icon"
+      icon="dropdown"
       :isLoading="isLoading"
       :isError="isError"
     />
 
-    <slot></slot>
+    <div class="menu">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -53,25 +49,38 @@ export default {
   },
   props: {
     header: String,
-    icon: String,
     isDisabled: Boolean,
     isLoading: Boolean,
     isError: Boolean
   },
+  emits: [
+    'change'
+  ],
   computed: {
     ...mapState('layout', [
       'isDarkMode'
-    ])
+    ]),
+    dropdownOptions () {
+      return mainDropdownOptions({
+        onChange: this.handleChange
+      })
+    }
   },
   mounted () {
     this.$nextTick(() => {
       setDropdown(
         this.$refs.dropdown,
-        mainDropdownOptions()
+        this.dropdownOptions
       )
     })
   },
   methods: {
+    handleChange (value) {
+      this.$emit(
+        'change',
+        value
+      )
+    },
     setValue (value) {
       this.$nextTick(() => {
         setDropdownValue(

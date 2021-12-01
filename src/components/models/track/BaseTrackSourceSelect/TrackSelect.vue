@@ -1,7 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="selection scrolling track-select"
-    icon="dropdown"
+    class="main-source-select-track-select"
     :header="headerFormatted"
   >
     <TracksList :tracks="tracks" />
@@ -31,8 +30,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.track-select
-  width: 240px
-  margin-right: 1em
-</style>
+<style lang="sass" scoped></style>

@@ -9,6 +9,7 @@ export default function ({
   limit,
   isWithSelfData = false
 }) {
+  this.error = null
   this.isLoading = true
 
   const url = `${sourceId}/search/${scope}`
@@ -26,7 +27,6 @@ export default function ({
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.searchData = response.data.search
   }
 

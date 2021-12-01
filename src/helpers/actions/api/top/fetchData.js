@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '&/store'
 
 export default function ({ scope, page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const url = `/lastfm/top/${scope}`
@@ -15,7 +16,6 @@ export default function ({ scope, page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.topData = response.data.top
   }
 

@@ -9,7 +9,7 @@
     @click="handleClick"
   >
     <i
-      v-if="icon"
+      v-if="icon && !isReverse"
       class="icon"
       :class="icon"
     />
@@ -17,6 +17,12 @@
     <span v-if="text">
       {{ text }}
     </span>
+
+    <i
+      v-if="icon && isReverse"
+      class="icon"
+      :class="icon"
+    />
   </div>
 </template>
 
@@ -27,7 +33,8 @@ export default {
   name: 'BaseButton',
   props: {
     icon: String,
-    text: String
+    text: String,
+    isReverse: Boolean
   },
   emits: [
     'init',

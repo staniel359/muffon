@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui fluid search search-input"
+    class="ui fluid search main-search-input-container"
     ref="search"
   >
     <div class="ui icon fluid input">
@@ -112,7 +112,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-input
-  width: 250px
-</style>
+<style lang="sass" scoped></style>

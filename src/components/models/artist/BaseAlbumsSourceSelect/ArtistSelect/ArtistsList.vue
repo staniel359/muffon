@@ -1,11 +1,9 @@
 <template>
-  <div class="menu">
-    <ArtistItem
-      v-for="artistData in artistsFormatted"
-      :key="artistData.uuid"
-      :artistData="artistData"
-    />
-  </div>
+  <ArtistItem
+    v-for="artistData in artistsFormatted"
+    :key="artistData.uuid"
+    :artistData="artistData"
+  />
 </template>
 
 <script>

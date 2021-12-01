@@ -7,8 +7,8 @@ export default function ({
   page,
   limit
 }) {
-  this.isLoading = true
   this.error = null
+  this.isLoading = true
 
   const profileId =
     store.state.profile.info.id

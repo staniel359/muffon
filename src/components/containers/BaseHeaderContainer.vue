@@ -10,9 +10,7 @@
       :class="icon"
     />
 
-    <div class="content">
-      <slot></slot>
-    </div>
+    <slot></slot>
   </Component >
 </template>
 

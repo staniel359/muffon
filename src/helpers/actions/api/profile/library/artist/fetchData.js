@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default function ({ profileId, artistId, scope = '', page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const url =
@@ -12,7 +13,6 @@ export default function ({ profileId, artistId, scope = '', page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.profileData = response.data.profile
   }
 

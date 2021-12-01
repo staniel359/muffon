@@ -22,7 +22,7 @@ import BaseHeader from '@/BaseHeader.vue'
 import { main as formatTopMainLink } from '#/formatters/links/top'
 
 export default {
-  name: 'RecommendationsItem',
+  name: 'TopItem',
   components: {
     BaseLinkContainer,
     BaseHeader

@@ -1,8 +1,7 @@
 <template>
   <BaseDropdownContainer
     ref="dropdown"
-    class="selection main-source-select"
-    icon="dropdown"
+    class="main-source-select"
   >
     <SourcesList />
   </BaseDropdownContainer>

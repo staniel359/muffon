@@ -2,6 +2,7 @@ import axios from 'axios'
 import store from '&/store'
 
 export default function ({ albumTitle, artistName, albumTracks, imageUrl }) {
+  this.isError = false
   this.isLoading = true
 
   const profileId =

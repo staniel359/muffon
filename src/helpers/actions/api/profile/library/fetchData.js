@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default function ({ profileId, scope = '', page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const url = `/profiles/${profileId}/library/${scope}`
@@ -10,7 +11,6 @@ export default function ({ profileId, scope = '', page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.profileData = response.data.profile
   }
 

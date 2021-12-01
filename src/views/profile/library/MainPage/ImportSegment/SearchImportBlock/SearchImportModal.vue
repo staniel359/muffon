@@ -16,7 +16,6 @@
         />
 
         <SearchScopeSelect
-          :key="key"
           @select="handleScopeSelect"
         />
       </div>
@@ -43,7 +42,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseModalContainer from '@/containers/BaseModalContainer.vue'
 import SearchArtistsInput
   from './SearchImportModal/inputs/SearchArtistsInput.vue'
@@ -81,7 +79,6 @@ export default {
   },
   data () {
     return {
-      key: null,
       isReset: true,
       artists: [],
       albums: [],
@@ -105,9 +102,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     isImport () {
       return (
         this.status === 'import' &&
@@ -130,9 +124,6 @@ export default {
     isSave () {
       return this.status === 'save'
     }
-  },
-  watch: {
-    profileLanguage: 'handleProfileLanguageChange'
   },
   methods: {
     handleScopeSelect (value) {
@@ -166,9 +157,6 @@ export default {
     },
     handleSave () {
       this.status = 'save'
-    },
-    handleProfileLanguageChange () {
-      this.key = generateKey()
     },
     show () {
       this.$refs.modal.show()

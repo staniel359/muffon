@@ -1,12 +1,10 @@
 <template>
-  <div class="menu">
-    <TypeItem
-      v-for="(typeData, index) in typesFormatted"
-      :key="typeData.uuid"
-      :typeId="typeData.name"
-      :index="index"
-    />
-  </div>
+  <TypeItem
+    v-for="(typeData, index) in typesFormatted"
+    :key="typeData.uuid"
+    :typeId="typeData.name"
+    :index="index"
+  />
 </template>
 
 <script>

@@ -5,8 +5,8 @@ export default function ({
   playlistId,
   playlistTrackId
 }) {
-  this.isLoading = true
   this.isError = false
+  this.isLoading = true
 
   const profileId =
     store.state.profile.info.id

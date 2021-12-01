@@ -3,10 +3,12 @@
     "navigation": {
       "start": "Начальная страница",
       "artists": "Исполнители",
+      "artist": "Исполнитель",
       "albums": "Альбомы",
       "albumGroups": "Группы альбомов",
       "tracks": "Композиции",
       "tags": "Метки",
+      "tag": "Метка",
       "similar": "Похожие",
       "images": "Изображения",
       "videoChannels": "Видео-каналы",
@@ -18,6 +20,7 @@
       "favorites": "Избранное",
       "tops": "Популярное",
       "playlists": "Списки",
+      "radio": "Радио",
       "model": {
         "artists": "Исполнители {modelName}",
         "albums": "Альбомы {modelName}",
@@ -181,6 +184,7 @@
     "error": "Ошибка",
     "more": "Ещё...",
     "loading": "Загрузка...",
+    "next": "Дальше",
     "track": {
       "source": "Из {source}"
     },

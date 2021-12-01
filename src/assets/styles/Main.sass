@@ -107,11 +107,6 @@ a
     &:hover
       color: $colorBase
 
-.ui.scrolling.dropdown
-  &.main-dropdown
-    .menu
-      width: 101% !important
-
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -128,6 +123,7 @@ a
 .main-segment
   &.loading
     min-height: 150px
+    z-index: 1
   &.inverted
     &:not(:first-child)
       border-top: $borderInverted
@@ -441,6 +437,10 @@ a
   width: 200px
   margin-right: 1em !important
 
+.main-source-select-track-select
+  width: 250px
+  margin-right: 1em !important
+
 .main-form
   &.inverted
     &.loading
@@ -573,3 +573,6 @@ a
 .main-simple-button
   &.white
     background: white !important
+
+.main-search-input-container
+  width: 220px

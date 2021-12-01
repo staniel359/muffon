@@ -12,6 +12,7 @@
         <FavoritesItem />
         <BookmarksItem />
         <TopItem />
+        <RadioItem />
       </div>
 
       <div>
@@ -31,6 +32,7 @@ import PlaylistsItem from './TheSidebarPanel/PlaylistsItem.vue'
 import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
 import TopItem from './TheSidebarPanel/TopItem.vue'
+import RadioItem from './TheSidebarPanel/RadioItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 
@@ -44,6 +46,7 @@ export default {
     FavoritesItem,
     BookmarksItem,
     TopItem,
+    RadioItem,
     SettingsItem,
     LogoutItem
   },

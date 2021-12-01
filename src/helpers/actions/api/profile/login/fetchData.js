@@ -5,6 +5,7 @@ import { addFormFieldError } from '#/actions/plugins/semantic'
 import fetchProfileData from '../fetchData'
 
 export default function ({ email, password, isRemember }) {
+  this.error = null
   this.isLoading = true
 
   const url = '/sessions'

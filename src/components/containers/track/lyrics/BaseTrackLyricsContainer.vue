@@ -60,8 +60,6 @@ export default {
       this.fetchData()
     },
     handleRefresh () {
-      this.error = null
-
       this.fetchData()
     },
     fetchTrackData,

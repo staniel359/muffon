@@ -1,12 +1,10 @@
 <template>
-  <div class="menu">
-    <SourceItem
-      v-for="sourceData in audioSourcesFormatted"
-      :key="sourceData.uuid"
-      :sourceData="sourceData"
-      :query="query"
-    />
-  </div>
+  <SourceItem
+    v-for="sourceData in audioSourcesFormatted"
+    :key="sourceData.uuid"
+    :sourceData="sourceData"
+    :query="query"
+  />
 </template>
 
 <script>

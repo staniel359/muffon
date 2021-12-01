@@ -1,11 +1,9 @@
 <template>
-  <div class="menu">
-    <AlbumItem
-      v-for="albumData in albumsFormatted"
-      :key="albumData.uuid"
-      :albumData="albumData"
-    />
-  </div>
+  <AlbumItem
+    v-for="albumData in albumsFormatted"
+    :key="albumData.uuid"
+    :albumData="albumData"
+  />
 </template>
 
 <script>

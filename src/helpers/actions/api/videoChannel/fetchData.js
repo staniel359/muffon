@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default function ({ channelId, scope = '', page, limit }) {
+  this.error = null
   this.isLoading = true
 
   const url = `/youtube/channels/${channelId}/${scope}`
@@ -11,7 +12,6 @@ export default function ({ channelId, scope = '', page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.error = null
     this.channelData = response.data.channel
   }
 

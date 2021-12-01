@@ -5,15 +5,15 @@
       @open="handleOpen"
     >
       <div class="filters-block-container">
+        <FilterScopeSelect
+          @select="handleFilterChange"
+        />
+
         <Component
           ref="filter"
           :is="filterComponent"
           :[filter]="filterItems"
           @change="handleFilterItemsChange"
-        />
-
-        <FilterScopeSelect
-          @select="handleFilterChange"
         />
       </div>
 
@@ -89,6 +89,10 @@ export default {
         'filterChange',
         value
       )
+
+      this.$nextTick(() => {
+        this.$refs.filter.focusInput()
+      })
     },
     handleFilterItemsChange (value) {
       this.filterItems = value

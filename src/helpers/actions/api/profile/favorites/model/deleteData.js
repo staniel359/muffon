@@ -2,8 +2,8 @@ import axios from 'axios'
 import store from '&/store'
 
 export default function ({ model, favoriteId }) {
-  this.isLoading = true
   this.error = null
+  this.isLoading = true
 
   const profileId =
     store.state.profile.info.id

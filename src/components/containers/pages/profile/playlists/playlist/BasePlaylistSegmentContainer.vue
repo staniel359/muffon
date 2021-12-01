@@ -60,8 +60,6 @@ export default {
   },
   methods: {
     handleRefresh (page) {
-      this.error = null
-
       this.fetchData(page)
     },
     fetchProfilePlaylistData,

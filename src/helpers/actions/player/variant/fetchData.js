@@ -1,8 +1,8 @@
 import fetchVariantAudioData from '#/actions/audio/variant/fetchData'
 
 export default function ({ variantId }) {
-  this.isLoading = true
   this.error = null
+  this.isLoading = true
 
   const variantAudioDataArgs = { variantId }
 

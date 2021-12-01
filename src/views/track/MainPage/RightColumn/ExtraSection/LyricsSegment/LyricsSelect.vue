@@ -5,8 +5,7 @@
     </div>
 
     <BaseDropdownContainer
-      class="scrolling floating track-select"
-      icon="dropdown"
+      class="main-source-select-track-select"
       :header="headerFormatted"
       :isLoading="isLoading"
       :isError="isError"
@@ -68,6 +67,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-select
-  width: $trackPageDropdownWidth
+.main-source-select-track-select
+  @extend .no-margin
 </style>

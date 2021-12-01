@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 export default function ({ profileId, token, scope = '' }) {
+  this.error = null
   this.isLoading = true
 
   const url = `/profiles/${profileId}/${scope}`
   const params = { token }
 
   const handleSuccess = response => {
-    this.error = null
     this.profileData = response.data.profile
   }
 

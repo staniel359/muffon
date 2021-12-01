@@ -1,7 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="selection scrolling main-source-select-item-select"
-    icon="dropdown"
+    class="main-source-select-item-select"
     :header="headerFormatted"
   >
     <AlbumsList :albums="albums" />

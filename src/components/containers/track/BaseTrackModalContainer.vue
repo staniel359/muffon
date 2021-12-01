@@ -56,8 +56,6 @@ export default {
       this.fetchData()
     },
     handleModalRefresh () {
-      this.error = null
-
       this.fetchData()
     },
     fetchTrackData,

@@ -1,12 +1,10 @@
 <template>
-  <div class="menu">
-    <TypeItem
-      v-for="typeData in typesFormatted"
-      :key="typeData.uuid"
-      :typeId="typeData.name"
-      :isDisabled="isNoCollection(typeData.name)"
-    />
-  </div>
+  <TypeItem
+    v-for="typeData in typesFormatted"
+    :key="typeData.uuid"
+    :typeId="typeData.name"
+    :isDisabled="isNoCollection(typeData.name)"
+  />
 </template>
 
 <script>

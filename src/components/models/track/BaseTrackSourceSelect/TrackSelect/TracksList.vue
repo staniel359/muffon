@@ -1,11 +1,9 @@
 <template>
-  <div class="menu">
-    <TrackItem
-      v-for="trackData in tracksFormatted"
-      :key="trackData.uuid"
-      :trackData="trackData"
-    />
-  </div>
+  <TrackItem
+    v-for="trackData in tracksFormatted"
+    :key="trackData.uuid"
+    :trackData="trackData"
+  />
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
-    class="basic pointing scrolling button main-source-select-type-select"
     ref="dropdown"
+    class="main-source-select-type-select"
   >
     <TypesList :types="types" />
   </BaseDropdownContainer>
