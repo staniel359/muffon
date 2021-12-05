@@ -10,8 +10,7 @@
         :class="[
           'ui segments',
           'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
+          'main-page-segment-container'
         ]"
       >
         <BaseSegmentContainer
@@ -24,7 +23,7 @@
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
-          class="tag-segment"
+          class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
           <BasePaginatedContainer
@@ -55,7 +54,7 @@
 <script>
 import BaseTagPageContainer from './BaseTagPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -97,10 +96,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-paginated-page-segment-container
-  @extend .flex-column
-
-.tag-segment
-  @extend .flex-full, .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

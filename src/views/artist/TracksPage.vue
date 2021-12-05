@@ -3,8 +3,8 @@
     pageNameKey="tracks"
     scope="tracks"
     :artistName="artistName"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -36,6 +36,11 @@ export default {
   },
   props: {
     artistName: String
+  },
+  data () {
+    return {
+      limit: 50
+    }
   }
 }
 </script>

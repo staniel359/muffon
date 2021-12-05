@@ -2,8 +2,11 @@
   <BaseTrackPaginatedPageContainer
     pageNameKey="similar"
     scope="similar"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
+    :trackTitle="trackTitle"
+    :artistName="artistName"
+    :sourceParams="sourceParams"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -32,6 +35,23 @@ export default {
   components: {
     BaseTrackPaginatedPageContainer,
     BaseTracksSimpleList
+  },
+  props: {
+    trackTitle: String,
+    artistName: String
+  },
+  data () {
+    return {
+      limit: 50
+    }
+  },
+  computed: {
+    sourceParams () {
+      return {
+        artistName: this.artistName,
+        trackTitle: this.trackTitle
+      }
+    }
   }
 }
 </script>

@@ -1,15 +1,15 @@
 <template>
   <div class="extra-section">
-    <BaseImageField
+    <BaseProfileImageField
       class="image-field"
       @change="handleImageChange"
     />
 
     <div class="extra-fields">
-      <BaseGenderField />
-      <BaseBirthdateField />
-      <BaseCountryField />
-      <BaseCityField />
+      <BaseProfileGenderField />
+      <BaseProfileBirthdateField />
+      <BaseProfileCountryField />
+      <BaseProfileCityField />
 
       <div></div>
     </div>
@@ -17,20 +17,25 @@
 </template>
 
 <script>
-import BaseImageField from '@/models/profile/fields/BaseImageField.vue'
-import BaseGenderField from '@/models/profile/fields/BaseGenderField.vue'
-import BaseBirthdateField from '@/models/profile/fields/BaseBirthdateField.vue'
-import BaseCountryField from '@/models/profile/fields/BaseCountryField.vue'
-import BaseCityField from '@/models/profile/fields/BaseCityField.vue'
+import BaseProfileImageField
+  from '@/models/profile/fields/BaseProfileImageField.vue'
+import BaseProfileGenderField
+  from '@/models/profile/fields/BaseProfileGenderField.vue'
+import BaseProfileBirthdateField
+  from '@/models/profile/fields/BaseProfileBirthdateField.vue'
+import BaseProfileCountryField
+  from '@/models/profile/fields/BaseProfileCountryField.vue'
+import BaseProfileCityField
+  from '@/models/profile/fields/BaseProfileCityField.vue'
 
 export default {
   name: 'ExtraSection',
   components: {
-    BaseImageField,
-    BaseGenderField,
-    BaseBirthdateField,
-    BaseCountryField,
-    BaseCityField
+    BaseProfileImageField,
+    BaseProfileGenderField,
+    BaseProfileBirthdateField,
+    BaseProfileCountryField,
+    BaseProfileCityField
   },
   emits: [
     'imageChange'

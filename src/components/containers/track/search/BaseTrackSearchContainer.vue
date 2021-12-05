@@ -5,22 +5,23 @@
     :[scope]="collection"
   ></slot>
 
-  <BaseError
+  <BaseErrorMessage
     class="error-message"
     v-if="error"
     :error="error"
+    isWithRefreshButton
     @refresh="handleRefresh"
   />
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import fetchSearchData from '#/actions/api/search/fetchData'
 
 export default {
   name: 'BaseTrackSearchContainer',
   components: {
-    BaseError
+    BaseErrorMessage
   },
   props: {
     query: {

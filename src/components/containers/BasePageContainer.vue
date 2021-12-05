@@ -1,6 +1,6 @@
 <template>
   <div ref="container">
-    <BaseError
+    <BaseErrorMessage
       v-if="isError"
       :error="error"
       @refresh="handleRefresh"
@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import { toggleLoaderDimmer } from '#/actions/layout'
 
 export default {
   name: 'BasePageContainer',
   components: {
-    BaseError
+    BaseErrorMessage
   },
   props: {
     isShowLoader: {

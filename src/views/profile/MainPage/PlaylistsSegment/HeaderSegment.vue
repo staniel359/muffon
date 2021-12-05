@@ -2,7 +2,7 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :link="profileFavoritesLinkFormatted"
+        :link="profilePlaylistsLinkFormatted"
         :text="headerFormatted"
       />
     </BaseHeaderContainer>
@@ -31,7 +31,7 @@ export default {
     }
   },
   computed: {
-    profileFavoritesLinkFormatted () {
+    profilePlaylistsLinkFormatted () {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })

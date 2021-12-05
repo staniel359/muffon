@@ -1,7 +1,8 @@
 <template>
-  <BaseError
+  <BaseErrorMessage
     v-if="error"
     :error="error"
+    isWithRefreshButton
     @refresh="handleRefresh"
   />
   <template v-else>
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import BaseVideosSimpleList from './BaseVideosSimpleList.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseSimplePagination from '@/BaseSimplePagination.vue'
@@ -33,7 +34,7 @@ import BaseSimplePagination from '@/BaseSimplePagination.vue'
 export default {
   name: 'BaseVideosPaginatedList',
   components: {
-    BaseError,
+    BaseErrorMessage,
     BaseVideosSimpleList,
     BaseDivider,
     BaseSimplePagination

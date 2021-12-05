@@ -70,7 +70,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-paginated-page-segment-container
-  @extend .flex-column
-</style>
+<style lang="sass" scoped></style>

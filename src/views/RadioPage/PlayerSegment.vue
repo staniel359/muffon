@@ -10,11 +10,10 @@
         :modelScope="modelScope"
       />
 
-      <BaseError
+      <BaseErrorMessage
         v-if="error"
         class="error-message"
         :error="error"
-        :isWithButton="false"
       />
 
       <TrackSection
@@ -39,9 +38,9 @@
 <script>
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import PlayerLabel from './PlayerSegment/PlayerLabel.vue'
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
-import BaseButton from '@/BaseButton.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
 import fetchRadioData from '#/actions/api/radio/fetchData'
 
 export default {
@@ -49,7 +48,7 @@ export default {
   components: {
     BaseSegmentContainer,
     PlayerLabel,
-    BaseError,
+    BaseErrorMessage,
     TrackSection,
     BaseButton
   },

@@ -7,11 +7,10 @@
       inverted: isDarkMode
     }"
   >
-    <BaseError
+    <BaseErrorMessage
       v-if="error"
       class="form-error"
       :error="error"
-      :isWithButton="false"
     />
 
     <slot></slot>
@@ -20,13 +19,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import { setForm } from '#/actions/plugins/semantic'
 
 export default {
   name: 'BaseFormContainer',
   components: {
-    BaseError
+    BaseErrorMessage
   },
   props: {
     options: {

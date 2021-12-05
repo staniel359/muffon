@@ -1,25 +1,28 @@
 <template>
-  <BaseEmailField :value="email" />
-  <BasePasswordField />
-  <BasePasswordConfirmationField />
-  <BaseNicknameField :value="nickname" />
+  <BaseProfileEmailField :value="email" />
+  <BaseProfilePasswordField />
+  <BaseProfilePasswordConfirmationField />
+  <BaseProfileNicknameField :value="nickname" />
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseEmailField from '@/models/profile/fields/BaseEmailField.vue'
-import BasePasswordField from '@/models/profile/fields/BasePasswordField.vue'
-import BasePasswordConfirmationField
-  from '@/models/profile/fields/BasePasswordConfirmationField.vue'
-import BaseNicknameField from '@/models/profile/fields/BaseNicknameField.vue'
+import BaseProfileEmailField
+  from '@/models/profile/fields/BaseProfileEmailField.vue'
+import BaseProfilePasswordField
+  from '@/models/profile/fields/BaseProfilePasswordField.vue'
+import BaseProfilePasswordConfirmationField
+  from '@/models/profile/fields/BaseProfilePasswordConfirmationField.vue'
+import BaseProfileNicknameField
+  from '@/models/profile/fields/BaseProfileNicknameField.vue'
 
 export default {
   name: 'MainSection',
   components: {
-    BaseEmailField,
-    BasePasswordField,
-    BasePasswordConfirmationField,
-    BaseNicknameField
+    BaseProfileEmailField,
+    BaseProfilePasswordField,
+    BaseProfilePasswordConfirmationField,
+    BaseProfileNicknameField
   },
   computed: {
     ...mapState('profile', {

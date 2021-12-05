@@ -50,7 +50,6 @@ export default function ({
     })
 
     this.isSuccess = true
-    this.image = null
   }
 
   const handleError = error => {

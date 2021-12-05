@@ -29,3 +29,11 @@ export const playlist = ({ profileId, playlistId }) => {
     path: `profiles/${profileId}/playlists/${playlistId}`
   }
 }
+
+export const posts = ({ profileId }) => {
+  return {
+    name: 'ProfilePostsPage',
+    params: { profileId },
+    path: `profiles/${profileId}/posts`
+  }
+}

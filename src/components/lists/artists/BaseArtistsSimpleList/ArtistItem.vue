@@ -97,9 +97,11 @@ import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
-import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
-import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BaseBookmarkDeleteModal
+  from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal
+  from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink,
@@ -170,7 +172,6 @@ export default {
       bookmarkId: null,
       listenedId: null,
       isAlbumsLinkActive: false,
-      isDeleted: false,
       isTracksLinkActive: false
     }
   },
@@ -225,6 +226,9 @@ export default {
         !this.isTracksLinkActive &&
           !this.isAlbumsLinkActive
       )
+    },
+    isDeleted () {
+      return !!this.artistData.isDeleted
     }
   },
   mounted () {
@@ -268,7 +272,9 @@ export default {
       }
     },
     handleDeleted () {
-      this.isDeleted = true
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).isDeleted = true
     },
     setLibraryId (value) {
       this.libraryId = value

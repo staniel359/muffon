@@ -1,10 +1,6 @@
 <template>
-  <BaseFormContainer
-    :options="options"
-    :isLoading="isLoading"
-    :error="error"
-    :class="{ success: isSuccess }"
-    @init="handleInit"
+  <BaseProfileEditFormContainer
+    :image="image"
   >
     <SuccessMessage />
 
@@ -17,24 +13,22 @@
     />
 
     <SubmitButton />
-  </BaseFormContainer>
+  </BaseProfileEditFormContainer>
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/BaseFormContainer.vue'
+import BaseProfileEditFormContainer
+  from '@/containers/profile/BaseProfileEditFormContainer.vue'
 import SuccessMessage from './BaseEditForm/SuccessMessage.vue'
 import MainSection from './BaseEditForm/MainSection.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import ExtraSection from './BaseEditForm/ExtraSection.vue'
 import SubmitButton from './BaseEditForm/SubmitButton.vue'
-import { profileEditFormOptions } from '#/data/plugins/semantic'
-import fetchEditData from '#/actions/api/profile/edit/fetchData'
-import { stringToDate as formatStringToDate } from '#/formatters'
 
 export default {
   name: 'BaseEditForm',
   components: {
-    BaseFormContainer,
+    BaseProfileEditFormContainer,
     SuccessMessage,
     MainSection,
     BaseDivider,
@@ -43,52 +37,12 @@ export default {
   },
   data () {
     return {
-      image: null,
-      error: null,
-      form: null,
-      isLoading: false,
-      isSuccess: false
-    }
-  },
-  computed: {
-    options () {
-      return profileEditFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      image: {}
     }
   },
   methods: {
-    handleInit (el) {
-      this.form = el
-    },
-    handleSuccess (event, fields) {
-      event.preventDefault()
-
-      this.fetchEditData(
-        this.formatProfileParams(
-          fields
-        )
-      )
-    },
     handleImageChange (value) {
       this.image = value
-    },
-    fetchEditData,
-    formatProfileParams (fields) {
-      return {
-        email: fields.email,
-        password: fields.password,
-        passwordConfirmation:
-          fields.passwordConfirmation,
-        nickname: fields.nickname,
-        image: this.image,
-        gender: fields.gender,
-        birthdate: formatStringToDate(
-          fields.birthdate
-        ),
-        country: fields.country,
-        city: fields.city
-      }
     }
   }
 }

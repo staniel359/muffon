@@ -2,9 +2,10 @@
   <div class="main-paginated-container">
     <div class="main-paginated-content-container">
       <template v-if="!isLoading">
-        <BaseError
+        <BaseErrorMessage
           v-if="error"
           :error="error"
+          isWithRefreshButton
           @refresh="handleRefresh"
         />
         <template v-else-if="responsePageCollection">
@@ -37,7 +38,7 @@
 
 <script>
 import deepmerge from 'deepmerge'
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import NoCollectionMessage
   from './BasePaginatedContainer/NoCollectionMessage.vue'
 import BaseDivider from '@/BaseDivider.vue'
@@ -47,14 +48,15 @@ import { collection as formatCollection } from '#/formatters'
 export default {
   name: 'BasePaginatedContainer',
   components: {
-    BaseError,
+    BaseErrorMessage,
     NoCollectionMessage,
     BaseDivider,
     BasePagination
   },
   provide () {
     return {
-      findPaginationItem: this.findPaginationItem
+      findPaginationItem: this.findPaginationItem,
+      updatePaginationItem: this.updatePaginationItem
     }
   },
   props: {
@@ -362,9 +364,16 @@ export default {
       )
     },
     findPaginationItem ({ uuid }) {
-      return this.clientPageCollection.find(item => {
-        return item.uuid === uuid
+      return this.clientPageCollection.find(itemData => {
+        return itemData.uuid === uuid
       })
+    },
+    updatePaginationItem ({ uuid, value }) {
+      const index = this.clientPageCollection.findIndex(itemData => {
+        return itemData.uuid === uuid
+      })
+
+      this.clientPageCollection[index] = value
     },
     formatCollections () {
       if (this.isReset) {

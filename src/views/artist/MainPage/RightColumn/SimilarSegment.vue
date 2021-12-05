@@ -2,8 +2,8 @@
   <BaseArtistPaginatedSegmentContainer
     headerTextKey="similar"
     scope="similar"
-    :clientPageLimit="4"
-    :responsePageLimit="4"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :artistName="artistName"
     :formatHeaderLink="formatArtistSimilarLink"
   >
@@ -36,6 +36,11 @@ export default {
   },
   props: {
     artistName: String
+  },
+  data () {
+    return {
+      limit: 4
+    }
   },
   methods: {
     formatArtistSimilarLink

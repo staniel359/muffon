@@ -22,6 +22,7 @@ You can:
 - add to favorites
 - add to bookmarks
 - add to listened
+- create posts
 
 Languages:
 

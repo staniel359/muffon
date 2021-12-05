@@ -24,6 +24,7 @@
       </div>
 
       <BaseOptionsDropdown
+        class="playlist-options"
         :isWithEditOption="isWithEditOption"
         :isWithDeleteOption="isWithDeleteOption"
         @edit="handleEditOptionClick"
@@ -50,11 +51,11 @@
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistEditModal
-  from '@/models/playlist/BasePlaylistEditModal.vue'
+  from '@/modals/playlist/BasePlaylistEditModal.vue'
 import BasePlaylistDeleteModal
-  from '@/models/playlist/BasePlaylistDeleteModal.vue'
+  from '@/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   number as formatNumber,
   date as formatDate
@@ -143,6 +144,6 @@ export default {
   width: 60px
   height: 60px
 
-.main-options-dropdown
-  visibility: visible
+.playlist-options
+  @extend .visibility-visible
 </style>

@@ -121,9 +121,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-page-segment-container
-  @extend .d-flex
-
 .album-segment
   @extend .flex-full, .d-flex
 </style>

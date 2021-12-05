@@ -158,13 +158,16 @@ import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
-import BasePlaylistsModal from '@/BasePlaylistsModal.vue'
-import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
-import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
-import BasePlaylistTrackDeleteModal from '@/BasePlaylistTrackDeleteModal.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
+import BaseBookmarkDeleteModal
+  from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal
+  from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BasePlaylistTrackDeleteModal
+  from '@/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
 import BaseProfileLibraryDeleteModal
-  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
+  from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   date as formatDate,
   time as formatTime

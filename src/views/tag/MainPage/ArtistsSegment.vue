@@ -2,7 +2,7 @@
   <BaseTagPaginatedSegmentContainer
     headerTextKey="artists"
     scope="artists"
-    :clientPageLimit="5"
+    :clientPageLimit="limit"
     :responsePageLimit="21"
     :tagName="tagName"
     :formatHeaderLink="formatTagArtistsLink"
@@ -36,6 +36,11 @@ export default {
   },
   props: {
     tagName: String
+  },
+  data () {
+    return {
+      limit: 5
+    }
   },
   methods: {
     formatTagArtistsLink

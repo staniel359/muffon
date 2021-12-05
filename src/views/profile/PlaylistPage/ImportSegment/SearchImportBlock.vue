@@ -6,21 +6,22 @@
     @click="handleClick"
   />
 
-  <SearchImportModal
+  <BasePlaylistSearchImportModal
     ref="modal"
     :playlistId="playlistId"
   />
 </template>
 
 <script>
-import BaseButton from '@/BaseButton.vue'
-import SearchImportModal from './SearchImportBlock/SearchImportModal.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
+import BasePlaylistSearchImportModal
+  from '@/modals/playlist/BasePlaylistSearchImportModal.vue'
 
 export default {
   name: 'SearchImportBlock',
   components: {
     BaseButton,
-    SearchImportModal
+    BasePlaylistSearchImportModal
   },
   props: {
     playlistId: String

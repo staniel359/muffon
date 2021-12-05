@@ -13,7 +13,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import BaseButton from '@/BaseButton.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
 import fetchQueueTrack from '#/actions/queue/track/fetchData'
 
 export default {

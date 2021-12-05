@@ -58,6 +58,11 @@ export default {
     BaseTrackContainer,
     BaseTrackContent
   },
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     trackData: Object,
     queueTracks: Array,
@@ -94,9 +99,12 @@ export default {
     'linkClick',
     'deleteButtonClick'
   ],
-  data () {
-    return {
-      isDeleted: false
+  computed: {
+    isDeleted () {
+      return !!this.trackData.isDeleted
+    },
+    uuid () {
+      return this.trackData.uuid
     }
   },
   methods: {
@@ -110,7 +118,9 @@ export default {
       )
     },
     handleDeleted () {
-      this.isDeleted = true
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).isDeleted = true
     },
     fetchAudio () {
       this.$refs.container.fetchAudio()

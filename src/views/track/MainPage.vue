@@ -105,9 +105,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-page-segment-container
-  @extend .d-flex
-
 .track-segment
   @extend .flex-full, .d-flex
 </style>

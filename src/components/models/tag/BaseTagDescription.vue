@@ -6,7 +6,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <TagDescriptionModal
+  <BaseTagDescriptionModal
     v-if="isMore"
     ref="modal"
     :tagName="tagName"
@@ -15,13 +15,13 @@
 
 <script>
 import BaseDescription from '@/BaseDescription.vue'
-import TagDescriptionModal from './BaseTagDescription/TagDescriptionModal.vue'
+import BaseTagDescriptionModal from '@/modals/tag/BaseTagDescriptionModal.vue'
 
 export default {
   name: 'BaseTagDescription',
   components: {
     BaseDescription,
-    TagDescriptionModal
+    BaseTagDescriptionModal
   },
   props: {
     description: String,

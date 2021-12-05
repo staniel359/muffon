@@ -6,7 +6,7 @@
     @click="handleClick"
   />
 
-  <LibraryImportModal
+  <BasePlaylistLibraryImportModal
     ref="modal"
     :playlistId="playlistId"
     :profileId="profileId"
@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import BaseButton from '@/BaseButton.vue'
-import LibraryImportModal from './LibraryImportBlock/LibraryImportModal.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
+import BasePlaylistLibraryImportModal
+  from '@/modals/playlist/BasePlaylistLibraryImportModal.vue'
 
 export default {
   name: 'LibraryImportBlock',
   components: {
     BaseButton,
-    LibraryImportModal
+    BasePlaylistLibraryImportModal
   },
   props: {
     playlistId: String,

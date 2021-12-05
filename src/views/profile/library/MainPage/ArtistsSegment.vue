@@ -2,8 +2,8 @@
   <BaseProfileLibraryPaginatedSegmentContainer
     headerTextKey="artists"
     scope="artists"
-    :clientPageLimit="5"
-    :responsePageLimit="5"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :profileId="profileId"
     :formatHeaderLink="formatProfileLibraryArtistsLink"
   >
@@ -38,6 +38,11 @@ export default {
   props: {
     profileId: String,
     isWithFavoriteOption: Boolean
+  },
+  data () {
+    return {
+      limit: 5
+    }
   },
   methods: {
     formatProfileLibraryArtistsLink

@@ -6,18 +6,19 @@
     @click="handleClick"
   />
 
-  <SearchImportModal ref="modal" />
+  <BaseProfileLibrarySearchImportModal ref="modal" />
 </template>
 
 <script>
-import BaseButton from '@/BaseButton.vue'
-import SearchImportModal from './SearchImportBlock/SearchImportModal.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
+import BaseProfileLibrarySearchImportModal
+  from '@/modals/profile/library/BaseProfileLibrarySearchImportModal.vue'
 
 export default {
   name: 'SearchImportBlock',
   components: {
     BaseButton,
-    SearchImportModal
+    BaseProfileLibrarySearchImportModal
   },
   computed: {
     addFormatted () {

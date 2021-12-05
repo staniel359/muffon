@@ -158,7 +158,7 @@ export const loginFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const signupFormOptions = ({ onSuccess }) => {
+export const profileCreateFormOptions = ({ onSuccess }) => {
   const emptyEmailPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.email'
   )
@@ -290,6 +290,10 @@ export const playlistFormOptions = ({ onSuccess }) => {
     },
     onSuccess
   }
+}
+
+export const postFormOptions = ({ onSuccess }) => {
+  return { onSuccess }
 }
 
 export const birthdateCalendarOptions = () => {

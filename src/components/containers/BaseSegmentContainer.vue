@@ -7,9 +7,10 @@
       inverted: isDarkMode
     }"
   >
-    <BaseError
+    <BaseErrorMessage
       v-if="error"
       :error="error"
+      isWithRefreshButton
       @refresh="handleRefresh"
     />
     <slot v-else></slot>
@@ -18,13 +19,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseError from '@/BaseError.vue'
+import BaseErrorMessage from '@/BaseErrorMessage.vue'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'BaseSegmentContainer',
   components: {
-    BaseError
+    BaseErrorMessage
   },
   props: {
     isLoading: Boolean,

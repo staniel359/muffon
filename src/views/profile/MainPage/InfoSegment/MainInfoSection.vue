@@ -2,7 +2,7 @@
   <div class="main-profile-page-info">
     <BaseProfileImage
       class="main-profile-page-image"
-      :image="image"
+      :image="imageData.medium"
     />
 
     <BaseHeader
@@ -37,8 +37,8 @@ export default {
     }
   },
   computed: {
-    image () {
-      return this.profileData.image.medium
+    imageData () {
+      return this.profileData.image
     },
     nickname () {
       return this.profileData.nickname

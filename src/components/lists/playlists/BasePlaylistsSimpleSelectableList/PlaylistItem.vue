@@ -43,10 +43,8 @@ import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { number as formatNumber } from '#/formatters'
-import postTrackData
-  from '#/actions/api/profile/playlists/playlist/tracks/postData'
-import deleteTrackData
-  from '#/actions/api/profile/playlists/playlist/tracks/deleteData'
+import postTrackData from '#/actions/api/profile/playlist/tracks/postData'
+import deleteTrackData from '#/actions/api/profile/playlist/tracks/deleteData'
 
 export default {
   name: 'PlaylistItem',

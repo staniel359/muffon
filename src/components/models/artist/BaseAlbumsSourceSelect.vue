@@ -31,7 +31,7 @@
 import SourceSelect from './BaseAlbumsSourceSelect/SourceSelect.vue'
 import ArtistSelect from './BaseAlbumsSourceSelect/ArtistSelect.vue'
 import TypeSelect from './BaseAlbumsSourceSelect/TypeSelect.vue'
-import BaseClearButton from '@/BaseClearButton.vue'
+import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatArtistRequestData
   from '#/actions/api/artist/formatters/requestData'
