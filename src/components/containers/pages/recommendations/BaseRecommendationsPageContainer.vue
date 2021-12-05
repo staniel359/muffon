@@ -18,22 +18,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatRecommendationsPageNavigation
   from '#/formatters/navigation/recommendations'
 import formatRecommendationsPageTab from '#/formatters/tabs/recommendations'
 import fetchRecommendationsData from '#/actions/api/recommendations/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseRecommendationsPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     responsePageLimit: Number,
-    pageNameKey: String,
     filter: String,
     filterValue: Array
   },
@@ -45,18 +46,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
-      return formatRecommendationsPageNavigation(
-        this.navigationData
-      )
+      return formatRecommendationsPageNavigation()
     },
-    navigationData () {
-      return {
-        pageNameKey: this.pageNameKey
-      }
+    tabData () {
+      return formatRecommendationsPageTab()
     },
     recommendationsDataArgs () {
       return {
@@ -67,38 +61,19 @@ export default {
     }
   },
   watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    },
     filterValue: 'handleFilterValueChange'
   },
   mounted () {
+    this.setNavigation()
+
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
     },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleFilterValueChange () {
       this.fetchData()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatRecommendationsPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchRecommendationsData,
     fetchData (page) {

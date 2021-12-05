@@ -11,18 +11,20 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatTopPageNavigation from '#/formatters/navigation/top'
 import formatTopPageTab from '#/formatters/tabs/top'
 import fetchTopData from '#/actions/api/top/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseTopPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     scope: String,
     responsePageLimit: Number,
@@ -36,9 +38,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatTopPageNavigation(
         this.navigationData
@@ -49,6 +48,11 @@ export default {
         pageNameKey: this.scope
       }
     },
+    tabData () {
+      return formatTopPageTab(
+        this.navigationData
+      )
+    },
     topDataArgs () {
       return {
         scope: this.scope,
@@ -56,32 +60,12 @@ export default {
       }
     }
   },
-  watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    }
+  mounted () {
+    this.setNavigation()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatTopPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchTopData,
     fetchData (page) {

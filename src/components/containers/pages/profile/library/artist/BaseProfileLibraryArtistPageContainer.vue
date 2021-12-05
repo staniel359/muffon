@@ -19,21 +19,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryArtistPageNavigation
   from '#/formatters/navigation/profile/library/artist'
 import formatProfileLibraryArtistPageTab
   from '#/formatters/tabs/profile/library/artist'
 import fetchProfileLibraryArtistData
   from '#/actions/api/profile/library/artist/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseProfileLibraryArtistPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -55,9 +57,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfileLibraryArtistPageNavigation(
         this.navigationData
@@ -71,6 +70,11 @@ export default {
         artistName: this.artistNameFetched,
         pageNameKey: this.pageNameKey
       }
+    },
+    tabData () {
+      return formatProfileLibraryArtistPageTab(
+        this.navigationData
+      )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
@@ -94,35 +98,14 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfileLibraryArtistPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfileLibraryArtistData,
     fetchData (page) {

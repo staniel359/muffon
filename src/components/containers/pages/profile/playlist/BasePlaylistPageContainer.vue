@@ -18,19 +18,21 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilePlaylistPageNavigation
   from '#/formatters/navigation/profile/playlist'
 import formatProfilePlaylistPageTab from '#/formatters/tabs/profile/playlist'
 import fetchProfilePlaylistData from '#/actions/api/profile/playlist/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BasePlaylistPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   provide () {
     return {
       setProfileData: this.setProfileData
@@ -48,9 +50,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfilePlaylistPageNavigation(
         this.navigationData
@@ -63,6 +62,11 @@ export default {
         playlistId: this.playlistId,
         playlistTitle: this.playlistTitleFetched
       }
+    },
+    tabData () {
+      return formatProfilePlaylistPageTab(
+        this.navigationData
+      )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
@@ -78,35 +82,14 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
     handleRefresh () {
       this.fetchData()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfilePlaylistPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfilePlaylistData,
     fetchData () {

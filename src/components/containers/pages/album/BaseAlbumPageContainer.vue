@@ -19,20 +19,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatAlbumPageNavigation from '#/formatters/navigation/album'
 import formatAlbumPageTab from '#/formatters/tabs/album'
 import fetchAlbumData from '#/actions/api/album/fetchData'
 import fetchBandcampAlbumIdData
   from '#/actions/api/album/id/bandcamp/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseAlbumPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   provide () {
     return {
       setRequestAlbumData: this.setRequestAlbumData,
@@ -66,8 +69,7 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info',
-      profileLanguage: 'language'
+      profileInfo: 'info'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -85,6 +87,11 @@ export default {
         pageNameKey: this.pageNameKey
       }
     },
+    tabData () {
+      return formatAlbumPageTab(
+        this.navigationData
+      )
+    },
     artistNameFetched () {
       return this.albumData?.artist?.name
     },
@@ -101,41 +108,20 @@ export default {
   },
   watch: {
     requestAlbumData: 'handleRequestAlbumDataChange',
-    albumData: 'handleAlbumDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    albumData: 'handleNavigationDataChange'
   },
   mounted () {
     this.resetRequestAlbumData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleAlbumDataChange () {
-      this.setNavigation()
     },
     handleRequestAlbumDataChange () {
       this.fetchData()
     },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     fetchBandcampAlbumIdData,
     fetchAlbumData,
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatAlbumPageTab(
-          this.navigationData
-        )
-      )
-    },
     resetRequestAlbumData () {
       this.setRequestAlbumData(
         this.sourceParams
