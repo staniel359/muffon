@@ -19,21 +19,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryPageNavigation
   from '#/formatters/navigation/profile/library'
 import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
 import fetchProfileLibraryData from '#/actions/api/profile/library/fetchData'
 import fetchProfileLibrarySearchData
   from '#/actions/api/profile/library/search/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseProfileLibraryPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -52,9 +54,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfileLibraryPageNavigation(
         this.navigationData
@@ -66,6 +65,11 @@ export default {
         profileNickname: this.profileNicknameFetched,
         pageNameKey: this.pageNameKey
       }
+    },
+    tabData () {
+      return formatProfileLibraryPageTab(
+        this.navigationData
+      )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
@@ -82,39 +86,18 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange',
+    profileData: 'handleNavigationDataChange',
     query: 'handleQueryChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
     },
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleQueryChange () {
       this.fetchData()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfileLibraryPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfileLibraryData,
     fetchProfileLibrarySearchData,

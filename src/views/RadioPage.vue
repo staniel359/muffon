@@ -26,12 +26,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import SearchSegment from './RadioPage/SearchSegment.vue'
 import PlayerSegment from './RadioPage/PlayerSegment.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatRadioPageNavigation from '#/formatters/navigation/radio'
 import formatRadioPageTab from '#/formatters/tabs/radio'
-import { updateTab } from '#/actions'
 import { generateKey } from '#/utils'
 
 export default {
@@ -40,6 +39,9 @@ export default {
     SearchSegment,
     PlayerSegment
   },
+  mixins: [
+    navigationMixin
+  ],
   data () {
     return {
       key: null,
@@ -49,26 +51,17 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatRadioPageNavigation()
+    },
+    tabData () {
+      return formatRadioPageTab()
     }
   },
-  watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    }
+  mounted () {
+    this.setNavigation()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleScopeChange (value) {
       this.scope = value
     },
@@ -81,15 +74,6 @@ export default {
       this.modelScope = value
 
       this.key = generateKey()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatRadioPageTab()
-      )
     }
   }
 }

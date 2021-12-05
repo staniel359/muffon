@@ -23,13 +23,12 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import {
   startPage as formatStartPageNavigation
 } from '#/formatters/navigation'
-import { updateTab } from '#/actions'
 import { startPage as formatStartPageTab } from '#/formatters/tabs'
 
 export default {
@@ -38,38 +37,24 @@ export default {
     BaseHeader,
     BaseSegmentContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
+    navigationSections () {
+      return formatStartPageNavigation()
+    },
+    tabData () {
+      return formatStartPageTab()
+    },
     feedTempTextFormatted () {
       return this.$t(
         'temp.feed'
       )
     }
   },
-  watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    }
-  },
-  methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        formatStartPageNavigation()
-      )
-
-      updateTab(
-        formatStartPageTab()
-      )
-    }
+  mounted () {
+    this.setNavigation()
   }
 }
 </script>

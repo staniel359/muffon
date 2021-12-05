@@ -18,19 +18,21 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatVideoChannelPageNavigation
   from '#/formatters/navigation/videoChannel'
 import formatVideoChannelVideosPageTab from '#/formatters/tabs/videoChannel'
 import fetchVideoChannelData from '#/actions/api/videoChannel/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseChannelPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     channelId: {
       type: String,
@@ -46,9 +48,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatVideoChannelPageNavigation(
         this.navigationData
@@ -59,6 +58,11 @@ export default {
         channelId: this.channelId,
         channelTitle: this.channelTitleFetched
       }
+    },
+    tabData () {
+      return formatVideoChannelVideosPageTab(
+        this.navigationData
+      )
     },
     channelTitleFetched () {
       return this.channelData?.title
@@ -72,35 +76,14 @@ export default {
     }
   },
   watch: {
-    channelData: 'handleChannelDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    channelData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleChannelDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatVideoChannelVideosPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchVideoChannelData,
     fetchData (page) {
