@@ -18,18 +18,20 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilePageNavigation from '#/formatters/navigation/profile'
 import formatProfilePostsPageTab from '#/formatters/tabs/profile/posts'
 import fetchProfilePostsData from '#/actions/api/profile/posts/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BasePostsPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -45,9 +47,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfilePageNavigation(
         this.navigationData
@@ -60,6 +59,11 @@ export default {
         pageNameKey: 'posts'
       }
     },
+    tabData () {
+      return formatProfilePostsPageTab(
+        this.navigationData
+      )
+    },
     profileNicknameFetched () {
       return this.profileData?.nickname
     },
@@ -71,35 +75,14 @@ export default {
     }
   },
   watch: {
-    profileLanguage: 'handleProfileLanguageChange',
-    profileData: 'handleProfileDataChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfilePostsPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfilePostsData,
     fetchData (page) {

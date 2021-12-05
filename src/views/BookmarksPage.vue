@@ -28,15 +28,14 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
 import BaseBookmarksTabContainer
   from '@/containers/BaseBookmarksTabContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatBookmarksPageNavigation
   from '#/formatters/navigation/bookmarks'
 import formatBookmarksPageTab from '#/formatters/tabs/bookmarks'
-import { updateTab } from '#/actions'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
@@ -46,12 +45,15 @@ export default {
     BaseTabsContainer,
     BaseBookmarksTabContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatBookmarksPageNavigation()
+    },
+    tabData () {
+      return formatBookmarksPageTab()
     },
     tabsFormatted () {
       return formatCollection(
@@ -90,32 +92,12 @@ export default {
       ]
     }
   },
-  watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    }
+  mounted () {
+    this.setNavigation()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleFocus () {
-      this.$nextTick(() => {
-        this.$refs.segment.focus()
-      })
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatBookmarksPageTab()
-      )
+      this.$refs.segment.focus()
     }
   }
 }

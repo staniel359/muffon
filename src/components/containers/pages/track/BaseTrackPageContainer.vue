@@ -19,20 +19,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatTrackPageNavigation from '#/formatters/navigation/track'
 import formatTrackPageTab from '#/formatters/tabs/track'
 import fetchTrackData from '#/actions/api/track/fetchData'
 import fetchBandcampTrackIdData
   from '#/actions/api/track/id/bandcamp/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseTrackPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   provide () {
     return {
       setRequestTrackData: this.setRequestTrackData,
@@ -66,8 +69,7 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info',
-      profileLanguage: 'language'
+      profileInfo: 'info'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -85,6 +87,11 @@ export default {
         pageNameKey: this.pageNameKey
       }
     },
+    tabData () {
+      return formatTrackPageTab(
+        this.navigationData
+      )
+    },
     artistNameFetched () {
       return this.trackData?.artist?.name
     },
@@ -101,41 +108,20 @@ export default {
   },
   watch: {
     requestTrackData: 'handleRequestTrackDataChange',
-    trackData: 'handleTrackDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    trackData: 'handleNavigationDataChange'
   },
   mounted () {
     this.resetRequestTrackData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleTrackDataChange () {
-      this.setNavigation()
     },
     handleRequestTrackDataChange () {
       this.fetchData()
     },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     fetchBandcampTrackIdData,
     fetchTrackData,
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatTrackPageTab(
-          this.navigationData
-        )
-      )
-    },
     resetRequestTrackData () {
       this.setRequestTrackData(
         this.sourceParams

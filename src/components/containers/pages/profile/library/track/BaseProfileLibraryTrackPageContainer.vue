@@ -18,21 +18,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryTrackPageNavigation
   from '#/formatters/navigation/profile/library/track'
 import formatProfileLibraryTrackPageTab
   from '#/formatters/tabs/profile/library/track'
 import fetchProfileLibraryTrackData
   from '#/actions/api/profile/library/track/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseProfileLibraryTrackPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -54,9 +56,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfileLibraryTrackPageNavigation(
         this.navigationData
@@ -72,6 +71,11 @@ export default {
         trackTitle: this.trackTitleFetched,
         pageNameKey: this.pageNameKey
       }
+    },
+    tabData () {
+      return formatProfileLibraryTrackPageTab(
+        this.navigationData
+      )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
@@ -104,35 +108,14 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfileLibraryTrackPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfileLibraryTrackData,
     fetchData (page) {

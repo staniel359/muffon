@@ -19,18 +19,21 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatTagPageNavigation from '#/formatters/navigation/tag'
 import formatTagPageTab from '#/formatters/tabs/tag'
 import fetchTagData from '#/actions/api/tag/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseTagPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     tagName: {
       type: String,
@@ -49,8 +52,7 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info',
-      profileLanguage: 'language'
+      profileInfo: 'info'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -66,6 +68,11 @@ export default {
         pageNameKey: this.pageNameKey
       }
     },
+    tabData () {
+      return formatTagPageTab(
+        this.navigationData
+      )
+    },
     tagNameFetched () {
       return this.tagData?.name
     },
@@ -78,35 +85,14 @@ export default {
     }
   },
   watch: {
-    tagData: 'handleTagDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    tagData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleTagDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatTagPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchTagData,
     fetchData (page) {

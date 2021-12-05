@@ -20,21 +20,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryAlbumPageNavigation
   from '#/formatters/navigation/profile/library/album'
 import formatProfileLibraryAlbumPageTab
   from '#/formatters/tabs/profile/library/album'
 import fetchProfileLibraryAlbumData
   from '#/actions/api/profile/library/album/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseProfileLibraryAlbumPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -56,9 +58,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfileLibraryAlbumPageNavigation(
         this.navigationData
@@ -74,6 +73,11 @@ export default {
         albumTitle: this.albumTitleFetched,
         pageNameKey: this.pageNameKey
       }
+    },
+    tabData () {
+      return formatProfileLibraryAlbumPageTab(
+        this.navigationData
+      )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
@@ -106,35 +110,14 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfileLibraryAlbumPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfileLibraryAlbumData,
     fetchData (page) {

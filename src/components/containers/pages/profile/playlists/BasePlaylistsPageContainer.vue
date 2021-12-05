@@ -18,19 +18,21 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilePageNavigation from '#/formatters/navigation/profile'
 import formatProfilePlaylistsPageTab from '#/formatters/tabs/profile/playlists'
 import fetchProfilePlaylistsData
   from '#/actions/api/profile/playlists/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BasePlaylistsPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     profileId: String,
     responsePageLimit: Number
@@ -43,9 +45,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfilePageNavigation(
         this.navigationData
@@ -58,6 +57,11 @@ export default {
         pageNameKey: 'playlists'
       }
     },
+    tabData () {
+      return formatProfilePlaylistsPageTab(
+        this.navigationData
+      )
+    },
     profileNicknameFetched () {
       return this.profileData?.nickname
     },
@@ -69,35 +73,14 @@ export default {
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileDataChange () {
-      this.setNavigation()
-    },
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfilePlaylistsPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchProfilePlaylistsData,
     fetchData (page) {

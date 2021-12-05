@@ -22,20 +22,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatArtistPageNavigation from '#/formatters/navigation/artist'
 import formatArtistPageTab from '#/formatters/tabs/artist'
 import fetchArtistData from '#/actions/api/artist/fetchData'
 import fetchBandcampArtistIdData
   from '#/actions/api/artist/id/bandcamp/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseArtistPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   provide () {
     return {
       setRequestArtistData: this.setRequestArtistData,
@@ -65,8 +68,7 @@ export default {
   },
   computed: {
     ...mapState('profile', {
-      profileInfo: 'info',
-      profileLanguage: 'language'
+      profileInfo: 'info'
     }),
     profileId () {
       return this.profileInfo.id.toString()
@@ -81,6 +83,11 @@ export default {
         artistName: this.artistNameFetched,
         pageNameKey: this.pageNameKey
       }
+    },
+    tabData () {
+      return formatArtistPageTab(
+        this.navigationData
+      )
     },
     artistNameFetched () {
       return this.artistData?.name
@@ -112,41 +119,20 @@ export default {
   },
   watch: {
     requestArtistData: 'handleRequestArtistDataChange',
-    artistData: 'handleArtistDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    artistData: 'handleNavigationDataChange'
   },
   mounted () {
     this.resetRequestArtistData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleInit (el) {
       this.$emit('init', el)
     },
     handleRefresh (page) {
       this.fetchData(page)
     },
-    handleArtistDataChange () {
-      this.setNavigation()
-    },
     handleRequestArtistDataChange () {
       this.fetchData()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatArtistPageTab(
-          this.navigationData
-        )
-      )
     },
     resetRequestArtistData () {
       this.setRequestArtistData({

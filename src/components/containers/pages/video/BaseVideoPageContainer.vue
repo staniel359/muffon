@@ -18,18 +18,20 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatVideoPageNavigation from '#/formatters/navigation/video'
 import formatVideoPageTab from '#/formatters/tabs/video'
 import fetchVideoData from '#/actions/api/video/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseVideoPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     videoId: {
       type: String,
@@ -45,9 +47,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatVideoPageNavigation(
         this.navigationData
@@ -61,6 +60,11 @@ export default {
         channelTitle: this.channelTitleFetched,
         pageNameKey: this.pageNameKey
       }
+    },
+    tabData () {
+      return formatVideoPageTab(
+        this.navigationData
+      )
     },
     videoTitleFetched () {
       return this.videoData?.title
@@ -76,35 +80,14 @@ export default {
     }
   },
   watch: {
-    videoData: 'handleVideoDataChange',
-    profileLanguage: 'handleProfileLanguageChange'
+    videoData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    handleVideoDataChange () {
-      this.setNavigation()
-    },
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatVideoPageTab(
-          this.navigationData
-        )
-      )
     },
     fetchVideoData,
     fetchData (page) {

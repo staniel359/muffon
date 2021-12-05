@@ -18,18 +18,20 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 import BasePageContainer from '@/containers/BasePageContainer.vue'
+import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilesPageNavigation from '#/formatters/navigation/profiles'
 import formatProfilesPageTab from '#/formatters/tabs/profiles'
 import fetchProfilesData from '#/actions/api/profiles/fetchData'
-import { updateTab } from '#/actions'
 
 export default {
   name: 'BaseProfilesPageContainer',
   components: {
     BasePageContainer
   },
+  mixins: [
+    navigationMixin
+  ],
   props: {
     responsePageLimit: Number
   },
@@ -41,11 +43,11 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
     navigationSections () {
       return formatProfilesPageNavigation()
+    },
+    tabData () {
+      return formatProfilesPageTab()
     },
     profilesDataArgs () {
       return {
@@ -53,33 +55,14 @@ export default {
       }
     }
   },
-  watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    }
-  },
   mounted () {
+    this.setNavigation()
+
     this.fetchData()
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
-    handleProfileLanguageChange () {
-      this.setNavigation()
-    },
     handleRefresh (page) {
       this.fetchData(page)
-    },
-    setNavigation () {
-      this.setNavigationSections(
-        this.navigationSections
-      )
-
-      updateTab(
-        formatProfilesPageTab()
-      )
     },
     fetchProfilesData,
     fetchData (page) {
