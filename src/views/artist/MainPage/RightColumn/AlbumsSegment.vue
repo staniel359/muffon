@@ -2,8 +2,8 @@
   <BaseArtistPaginatedSegmentContainer
     headerTextKey="albums"
     scope="albums"
-    :clientPageLimit="3"
-    :responsePageLimit="3"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :artistName="artistName"
     :formatHeaderLink="formatArtistAlbumsLink"
   >
@@ -37,6 +37,11 @@ export default {
   },
   props: {
     artistName: String
+  },
+  data () {
+    return {
+      limit: 3
+    }
   },
   methods: {
     formatArtistAlbumsLink

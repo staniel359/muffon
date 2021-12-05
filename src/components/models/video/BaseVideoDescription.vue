@@ -5,7 +5,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <VideoDescriptionModal
+  <BaseVideoDescriptionModal
     v-if="isMore"
     ref="modal"
     :videoId="videoId"
@@ -14,14 +14,14 @@
 
 <script>
 import BaseDescription from '@/BaseDescription.vue'
-import VideoDescriptionModal
-  from './BaseVideoDescription/VideoDescriptionModal.vue'
+import BaseVideoDescriptionModal
+  from '@/modals/video/BaseVideoDescriptionModal.vue'
 
 export default {
   name: 'BaseVideoDescription',
   components: {
     BaseDescription,
-    VideoDescriptionModal
+    BaseVideoDescriptionModal
   },
   props: {
     description: String,

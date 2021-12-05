@@ -2,7 +2,7 @@
   <BaseTagPaginatedSegmentContainer
     headerTextKey="tracks"
     scope="tracks"
-    :clientPageLimit="10"
+    :clientPageLimit="limit"
     :responsePageLimit="50"
     :tagName="tagName"
     :formatHeaderLink="formatTagTracksLink"
@@ -36,6 +36,11 @@ export default {
   },
   props: {
     tagName: String
+  },
+  data () {
+    return {
+      limit: 10
+    }
   },
   methods: {
     formatTagTracksLink

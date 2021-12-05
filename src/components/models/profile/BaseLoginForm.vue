@@ -1,14 +1,9 @@
 <template>
-  <BaseFormContainer
-    :options="options"
-    :isLoading="isLoading"
-    :error="error"
-    @init="handleInit"
-  >
-    <BaseEmailField />
-    <BasePasswordField />
+  <BaseProfileLoginContainer>
+    <BaseProfileEmailField />
+    <BaseProfilePasswordField />
 
-    <BaseRememberField />
+    <BaseProfileRememberField />
 
     <SubmitButton />
 
@@ -17,28 +12,29 @@
     <SignupSection
       @signupLinkClick="handleSignupLinkClick"
     />
-  </BaseFormContainer>
+  </BaseProfileLoginContainer>
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/BaseFormContainer.vue'
-import BaseEmailField from '@/models/profile/fields/BaseEmailField.vue'
-import BasePasswordField from '@/models/profile/fields/BasePasswordField.vue'
-import BaseRememberField from '@/models/profile/fields/BaseRememberField.vue'
+import BaseProfileLoginContainer
+  from '@/containers/profile/BaseProfileLoginContainer.vue'
+import BaseProfileEmailField
+  from '@/models/profile/fields/BaseProfileEmailField.vue'
+import BaseProfilePasswordField
+  from '@/models/profile/fields/BaseProfilePasswordField.vue'
+import BaseProfileRememberField
+  from '@/models/profile/fields/BaseProfileRememberField.vue'
 import SubmitButton from './BaseLoginForm/SubmitButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import SignupSection from './BaseLoginForm/SignupSection.vue'
-import { loginFormOptions } from '#/data/plugins/semantic'
-import fetchLoginData from '#/actions/api/profile/login/fetchData'
-import { updateStore } from '#/actions'
 
 export default {
   name: 'BaseLoginForm',
   components: {
-    BaseFormContainer,
-    BaseEmailField,
-    BasePasswordField,
-    BaseRememberField,
+    BaseProfileLoginContainer,
+    BaseProfileEmailField,
+    BaseProfilePasswordField,
+    BaseProfileRememberField,
     SubmitButton,
     SignupSection,
     BaseDivider
@@ -46,53 +42,11 @@ export default {
   emits: [
     'signupLinkClick'
   ],
-  data () {
-    return {
-      error: null,
-      form: null,
-      profileData: null,
-      isLoading: false
-    }
-  },
-  computed: {
-    options () {
-      return loginFormOptions({
-        onSuccess: this.handleSuccess
-      })
-    }
-  },
-  watch: {
-    profileData: 'handleProfileDataChange'
-  },
   methods: {
-    handleInit (el) {
-      this.form = el
-    },
-    handleSuccess (event, fields) {
-      event.preventDefault()
-
-      this.fetchLoginData(
-        this.formatProfileParams(
-          fields
-        )
-      )
-    },
     handleSignupLinkClick () {
-      this.$emit('signupLinkClick')
-    },
-    handleProfileDataChange (value) {
-      updateStore({
-        'profile.isLoggedIn': !!value,
-        'profile.info': value
-      })
-    },
-    fetchLoginData,
-    formatProfileParams (fields) {
-      return {
-        email: fields.email,
-        password: fields.password,
-        isRemember: !!fields.remember
-      }
+      this.$emit(
+        'signupLinkClick'
+      )
     }
   }
 }

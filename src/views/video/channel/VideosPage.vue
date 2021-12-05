@@ -1,6 +1,6 @@
 <template>
   <BaseChannelPageContainer
-    :responsePageLimit="50"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseSegmentContainer
@@ -34,11 +34,13 @@ export default {
     BaseChannelPageContainer,
     BaseSegmentContainer,
     BaseVideosPaginatedList
+  },
+  data () {
+    return {
+      limit: 50
+    }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.main-page-segment-container
-  @extend .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

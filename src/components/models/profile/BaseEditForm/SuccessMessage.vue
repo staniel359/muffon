@@ -17,7 +17,7 @@ export default {
   computed: {
     headerFormatted () {
       return this.$t(
-        'shared.profile.form.success'
+        'shared.updated.profile'
       )
     }
   }

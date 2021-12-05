@@ -16,7 +16,7 @@
 
 <script>
 import SearchInput from './TagsFilterBlock/SearchInput.vue'
-import BaseClearButton from '@/BaseClearButton.vue'
+import BaseClearButton from '@/buttons/BaseClearButton.vue'
 
 export default {
   name: 'TagsFilterBlock',

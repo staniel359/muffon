@@ -11,8 +11,7 @@
         :class="[
           'ui segments',
           'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
+          'main-page-segment-container'
         ]"
       >
         <BaseSegmentContainer
@@ -35,7 +34,7 @@
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
-          class="artist-segment"
+          class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
           <BasePaginatedContainer
@@ -70,7 +69,7 @@ import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import ArtistSourceSelect
   from './BaseArtistPaginatedPageContainer/ArtistSourceSelect.vue'
-import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {
@@ -118,10 +117,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-paginated-page-segment-container
-  @extend .flex-column
-
-.artist-segment
-  @extend .flex-full, .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

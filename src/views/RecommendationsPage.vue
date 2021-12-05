@@ -9,8 +9,7 @@
         :class="[
           'ui segments',
           'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
+          'main-page-segment-container'
         ]"
       >
         <FiltersSegment
@@ -20,7 +19,7 @@
         />
 
         <BaseSegmentContainer
-          class="recommendations-segment"
+          class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
           <BasePaginatedContainer
@@ -104,10 +103,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-paginated-page-segment-container
-  @extend .flex-column
-
-.recommendations-segment
-  @extend .flex-full, .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

@@ -3,8 +3,8 @@
     scope="albums"
     pageNameKey="albums"
     :profileId="profileId"
-    :clientPageLimit="20"
-    :responsePageLimit="20"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     isWithSearch
   >
     <template #default="slotProps">
@@ -35,6 +35,11 @@ export default {
   },
   props: {
     profileId: String
+  },
+  data () {
+    return {
+      limit: 20
+    }
   },
   computed: {
     isWithFavoriteOption () {

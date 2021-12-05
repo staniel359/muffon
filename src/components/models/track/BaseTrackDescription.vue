@@ -5,7 +5,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <TrackDescriptionModal
+  <BaseTrackDescriptionModal
     v-if="isMore"
     ref="modal"
     :artistName="artistName"
@@ -15,14 +15,14 @@
 
 <script>
 import BaseDescription from '@/BaseDescription.vue'
-import TrackDescriptionModal
-  from './BaseTrackDescription/TrackDescriptionModal.vue'
+import BaseTrackDescriptionModal
+  from '@/modals/track/BaseTrackDescriptionModal.vue'
 
 export default {
   name: 'BaseTrackDescription',
   components: {
     BaseDescription,
-    TrackDescriptionModal
+    BaseTrackDescriptionModal
   },
   props: {
     description: String,

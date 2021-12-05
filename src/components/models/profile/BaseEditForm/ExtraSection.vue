@@ -1,16 +1,24 @@
 <template>
   <div class="extra-section">
-    <BaseImageField
+    <BaseProfileImageField
       class="image-field"
-      :value="image"
+      :value="imageData.medium"
       @change="handleImageChange"
     />
 
     <div class="extra-fields">
-      <BaseGenderField :value="gender" />
-      <BaseBirthdateField :value="birthdate" />
-      <BaseCountryField :value="country" />
-      <BaseCityField :value="city" />
+      <BaseProfileGenderField
+        :value="gender"
+      />
+      <BaseProfileBirthdateField
+        :value="birthdate"
+      />
+      <BaseProfileCountryField
+        :value="country"
+      />
+      <BaseProfileCityField
+        :value="city"
+      />
 
       <div></div>
     </div>
@@ -19,20 +27,25 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseImageField from '@/models/profile/fields/BaseImageField.vue'
-import BaseGenderField from '@/models/profile/fields/BaseGenderField.vue'
-import BaseBirthdateField from '@/models/profile/fields/BaseBirthdateField.vue'
-import BaseCountryField from '@/models/profile/fields/BaseCountryField.vue'
-import BaseCityField from '@/models/profile/fields/BaseCityField.vue'
+import BaseProfileImageField
+  from '@/models/profile/fields/BaseProfileImageField.vue'
+import BaseProfileGenderField
+  from '@/models/profile/fields/BaseProfileGenderField.vue'
+import BaseProfileBirthdateField
+  from '@/models/profile/fields/BaseProfileBirthdateField.vue'
+import BaseProfileCountryField
+  from '@/models/profile/fields/BaseProfileCountryField.vue'
+import BaseProfileCityField
+  from '@/models/profile/fields/BaseProfileCityField.vue'
 
 export default {
   name: 'ExtraSection',
   components: {
-    BaseImageField,
-    BaseGenderField,
-    BaseBirthdateField,
-    BaseCountryField,
-    BaseCityField
+    BaseProfileImageField,
+    BaseProfileGenderField,
+    BaseProfileBirthdateField,
+    BaseProfileCountryField,
+    BaseProfileCityField
   },
   emits: [
     'imageChange'
@@ -41,8 +54,8 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    image () {
-      return this.profileInfo.image.small
+    imageData () {
+      return this.profileInfo.image
     },
     gender () {
       return this.profileInfo.gender

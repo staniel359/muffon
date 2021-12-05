@@ -5,7 +5,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <ArtistDescriptionModal
+  <BaseArtistDescriptionModal
     v-if="isMore"
     ref="modal"
     :artistName="artistName"
@@ -14,14 +14,14 @@
 
 <script>
 import BaseDescription from '@/BaseDescription.vue'
-import ArtistDescriptionModal
-  from './BaseArtistDescription/ArtistDescriptionModal.vue'
+import BaseArtistDescriptionModal
+  from '@/modals/artist/BaseArtistDescriptionModal.vue'
 
 export default {
   name: 'BaseArtistDescription',
   components: {
     BaseDescription,
-    ArtistDescriptionModal
+    BaseArtistDescriptionModal
   },
   props: {
     description: String,

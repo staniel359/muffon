@@ -5,8 +5,8 @@
     scope="tracks"
     :profileId="profileId"
     :playlistId="playlistId"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -25,7 +25,7 @@
 
 <script>
 import BasePlaylistPaginatedSegmentContainer
-  from '@/containers/pages/profile/playlists/playlist/BasePlaylistPaginatedSegmentContainer.vue'
+  from '@/containers/pages/profile/playlist/BasePlaylistPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
@@ -38,6 +38,11 @@ export default {
     profileId: String,
     playlistId: String,
     playlistTitle: String
+  },
+  data () {
+    return {
+      limit: 50
+    }
   }
 }
 </script>

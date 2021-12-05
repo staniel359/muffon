@@ -76,9 +76,11 @@ import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseImage from '@/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
-import BaseBookmarkDeleteModal from '@/BaseBookmarkDeleteModal.vue'
-import BaseFavoriteDeleteModal from '@/BaseFavoriteDeleteModal.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BaseBookmarkDeleteModal
+  from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
+import BaseFavoriteDeleteModal
+  from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumSourceParams
@@ -105,6 +107,9 @@ export default {
       setListenedId: this.setListenedId
     }
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     albumData: {
       type: Object,
@@ -136,8 +141,7 @@ export default {
       favoriteId: null,
       bookmarkId: null,
       listenedId: null,
-      isArtistNameActive: false,
-      isDeleted: false
+      isArtistNameActive: false
     }
   },
   computed: {
@@ -181,6 +185,9 @@ export default {
     },
     uuid () {
       return this.albumData.uuid
+    },
+    isDeleted () {
+      return !!this.albumData.isDeleted
     }
   },
   mounted () {
@@ -208,7 +215,9 @@ export default {
       }
     },
     handleDeleted () {
-      this.isDeleted = true
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).isDeleted = true
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value

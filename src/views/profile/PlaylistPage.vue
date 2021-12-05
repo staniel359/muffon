@@ -8,8 +8,7 @@
         :class="[
           'ui segments',
           'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
+          'main-page-segment-container'
         ]"
       >
         <InfoSegment
@@ -24,6 +23,7 @@
         />
 
         <TracksSegment
+          class="main-paginated-page-segment-container"
           :profileId="profileId"
           :playlistId="playlistId"
           :playlistTitle="pageSlotProps.profileData.playlist.title"
@@ -35,7 +35,7 @@
 
 <script>
 import BasePlaylistPageContainer
-  from '@/containers/pages/profile/playlists/playlist/BasePlaylistPageContainer.vue'
+  from '@/containers/pages/profile/playlist/BasePlaylistPageContainer.vue'
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'

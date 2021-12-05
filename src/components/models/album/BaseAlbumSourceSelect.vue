@@ -35,7 +35,7 @@
 import SourceSelect from './BaseAlbumSourceSelect/SourceSelect.vue'
 import TypeSelect from './BaseAlbumSourceSelect/TypeSelect.vue'
 import AlbumSelect from './BaseAlbumSourceSelect/AlbumSelect.vue'
-import BaseClearButton from '@/BaseClearButton.vue'
+import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatAlbumRequestData from '#/actions/api/album/formatters/requestData'
 

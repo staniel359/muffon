@@ -23,7 +23,7 @@
 <script>
 import SourceSelect from './BaseTrackSourceSelect/SourceSelect.vue'
 import TrackSelect from './BaseTrackSourceSelect/TrackSelect.vue'
-import BaseClearButton from '@/BaseClearButton.vue'
+import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatTrackRequestData from '#/actions/api/track/formatters/requestData'
 

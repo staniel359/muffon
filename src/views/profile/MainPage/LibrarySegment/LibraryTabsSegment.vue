@@ -10,6 +10,7 @@
         #[tabData.scope]="slotProps"
       >
         <BaseProfileLibraryTabContainer
+          class="main-relative-tab"
           :class="slotProps.class"
           :isActive="slotProps.isActive"
           :profileId="profileId"

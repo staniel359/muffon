@@ -2,8 +2,8 @@
   <BaseProfileLibraryAlbumPaginatedSegmentContainer
     headerTextKey="tracks"
     scope="tracks"
-    :clientPageLimit="10"
-    :responsePageLimit="10"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :profileId="profileId"
     :albumId="albumId"
     :formatHeaderLink="formatProfileLibraryAlbumTracksLink"
@@ -43,6 +43,11 @@ export default {
     albumId: String,
     isWithFavoriteOption: Boolean,
     isWithDeleteOption: Boolean
+  },
+  data () {
+    return {
+      limit: 10
+    }
   },
   methods: {
     formatProfileLibraryAlbumTracksLink

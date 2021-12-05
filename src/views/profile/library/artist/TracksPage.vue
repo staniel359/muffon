@@ -2,8 +2,8 @@
   <BaseProfileLibraryArtistPaginatedPageContainer
     pageNameKey="tracks"
     scope="tracks"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :profileId="profileId"
     :artistId="artistId"
   >
@@ -40,6 +40,11 @@ export default {
   props: {
     profileId: String,
     artistId: String
+  },
+  data () {
+    return {
+      limit: 50
+    }
   },
   computed: {
     isWithFavoriteOption () {

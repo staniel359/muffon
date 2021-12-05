@@ -95,7 +95,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-page-segment-container
-  @extend .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

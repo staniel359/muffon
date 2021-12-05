@@ -1,8 +1,8 @@
 <template>
   <BaseTopPaginatedSegmentContainer
     scope="artists"
-    :clientPageLimit="5"
-    :responsePageLimit="5"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
@@ -28,6 +28,11 @@ export default {
   components: {
     BaseTopPaginatedSegmentContainer,
     BaseArtistsTableList
+  },
+  data () {
+    return {
+      limit: 5
+    }
   }
 }
 </script>

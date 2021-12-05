@@ -3,8 +3,8 @@
     pageNameKey="albums"
     scope="albums"
     :artistName="artistName"
-    :clientPageLimit="20"
-    :responsePageLimit="20"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     isWithArtistSelect
   >
     <template #default="slotProps">
@@ -36,6 +36,11 @@ export default {
   },
   props: {
     artistName: String
+  },
+  data () {
+    return {
+      limit: 20
+    }
   }
 }
 </script>

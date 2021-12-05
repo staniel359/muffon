@@ -3,8 +3,8 @@
     pageNameKey="images"
     scope="images"
     :artistName="artistName"
-    :clientPageLimit="40"
-    :responsePageLimit="40"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <ImagesList
@@ -26,7 +26,7 @@
 import BaseArtistPaginatedPageContainer
   from '@/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import ImagesList from './ImagesPage/ImagesList.vue'
-import BaseArtistImageModal from '@/models/artist/BaseArtistImageModal.vue'
+import BaseArtistImageModal from '@/modals/artist/BaseArtistImageModal.vue'
 
 export default {
   name: 'ImagesPage',
@@ -41,7 +41,8 @@ export default {
   data () {
     return {
       modal: null,
-      mainSlider: null
+      mainSlider: null,
+      limit: 40
     }
   },
   methods: {

@@ -3,8 +3,8 @@
     scope="tracks"
     pageNameKey="tracks"
     :profileId="profileId"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     isWithSearch
   >
     <template #default="slotProps">
@@ -38,6 +38,11 @@ export default {
   },
   props: {
     profileId: String
+  },
+  data () {
+    return {
+      limit: 50
+    }
   },
   computed: {
     isWithFavoriteOption () {

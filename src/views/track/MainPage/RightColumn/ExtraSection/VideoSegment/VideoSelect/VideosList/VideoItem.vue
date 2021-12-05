@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BaseDropdownItem from '@/BaseDropdownItem.vue'
+import BaseDropdownItem from '@/dropdowns/BaseDropdownItem.vue'
 import { generateKey } from '#/utils'
 
 export default {

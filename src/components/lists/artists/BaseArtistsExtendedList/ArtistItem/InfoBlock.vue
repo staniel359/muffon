@@ -32,7 +32,7 @@
       />
     </template>
 
-    <ProfileArtistsSection
+    <RecommendationProfileArtistsSection
       v-if="isRecommendation"
       :recommendationData="recommendationData"
       :profileId="profileId"
@@ -47,7 +47,8 @@ import BaseCounters from '@/BaseCounters.vue'
 import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
-import ProfileArtistsSection from './InfoBlock/ProfileArtistsSection.vue'
+import RecommendationProfileArtistsSection
+  from './InfoBlock/RecommendationProfileArtistsSection.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink
@@ -62,7 +63,7 @@ export default {
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
-    ProfileArtistsSection
+    RecommendationProfileArtistsSection
   },
   props: {
     artistData: {

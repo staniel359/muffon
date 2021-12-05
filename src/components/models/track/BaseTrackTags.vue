@@ -5,7 +5,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <TrackTagsModal
+  <BaseTrackTagsModal
     v-if="isMore"
     ref="modal"
     :artistName="artistName"
@@ -15,13 +15,13 @@
 
 <script>
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import TrackTagsModal from './BaseTrackTags/TrackTagsModal.vue'
+import BaseTrackTagsModal from '@/modals/track/BaseTrackTagsModal.vue'
 
 export default {
   name: 'BaseTrackTags',
   components: {
     BaseTagsList,
-    TrackTagsModal
+    BaseTrackTagsModal
   },
   props: {
     tags: Array,

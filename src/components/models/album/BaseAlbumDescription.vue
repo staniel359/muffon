@@ -5,7 +5,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <AlbumDescriptionModal
+  <BaseAlbumDescriptionModal
     v-if="isMore"
     ref="modal"
     :requestAlbumData="requestAlbumData"
@@ -14,14 +14,14 @@
 
 <script>
 import BaseDescription from '@/BaseDescription.vue'
-import AlbumDescriptionModal
-  from './BaseAlbumDescription/AlbumDescriptionModal.vue'
+import BaseAlbumDescriptionModal
+  from '@/modals/album/BaseAlbumDescriptionModal.vue'
 
 export default {
   name: 'BaseAlbumDescription',
   components: {
     BaseDescription,
-    AlbumDescriptionModal
+    BaseAlbumDescriptionModal
   },
   props: {
     description: String,
