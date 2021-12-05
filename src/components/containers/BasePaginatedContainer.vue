@@ -37,7 +37,7 @@
 
 <script>
 import deepmerge from 'deepmerge'
-import BaseError from '@/BaseError.vue'
+import BaseError from '@/BaseErrorMessage.vue'
 import NoCollectionMessage
   from './BasePaginatedContainer/NoCollectionMessage.vue'
 import BaseDivider from '@/BaseDivider.vue'
@@ -54,7 +54,8 @@ export default {
   },
   provide () {
     return {
-      findPaginationItem: this.findPaginationItem
+      findPaginationItem: this.findPaginationItem,
+      updatePaginationItem: this.updatePaginationItem
     }
   },
   props: {
@@ -362,9 +363,16 @@ export default {
       )
     },
     findPaginationItem ({ uuid }) {
-      return this.clientPageCollection.find(item => {
-        return item.uuid === uuid
+      return this.clientPageCollection.find(itemData => {
+        return itemData.uuid === uuid
       })
+    },
+    updatePaginationItem ({ uuid, value }) {
+      const index = this.clientPageCollection.findIndex(itemData => {
+        return itemData.uuid === uuid
+      })
+
+      this.clientPageCollection[index] = value
     },
     formatCollections () {
       if (this.isReset) {

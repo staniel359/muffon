@@ -2,8 +2,8 @@
   <BaseTagPaginatedPageContainer
     pageNameKey="albums"
     scope="albums"
-    :clientPageLimit="20"
-    :responsePageLimit="20"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
@@ -31,6 +31,11 @@ export default {
   components: {
     BaseTagPaginatedPageContainer,
     BaseAlbumsTableList
+  },
+  data () {
+    return {
+      limit: 20
+    }
   }
 }
 </script>

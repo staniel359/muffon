@@ -31,7 +31,7 @@ import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
 import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
 import BaseIcon from '@/BaseIcon.vue'
-import BaseButton from '@/BaseButton.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
 
 export default {
   name: 'BrowserTab',

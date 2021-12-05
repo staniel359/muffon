@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import BaseError from '@/BaseErrorMessage.vue'
 import { toggleLoaderDimmer } from '#/actions/layout'
 
 export default {

@@ -55,7 +55,7 @@
 <script>
 import BaseTagPageContainer from './BaseTagPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {

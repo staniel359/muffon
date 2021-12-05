@@ -57,7 +57,7 @@ import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 
 export default {
   name: 'LeftColumn',

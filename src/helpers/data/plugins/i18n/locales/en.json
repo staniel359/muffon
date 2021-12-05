@@ -21,6 +21,7 @@
       "tops": "Top",
       "playlists": "Playlists",
       "radio": "Radio",
+      "posts": "Posts",
       "model": {
         "artists": "{modelName} artists",
         "albums": "{modelName} albums",
@@ -30,7 +31,8 @@
         "videos": "{modelName} videos",
         "library": "{modelName} library",
         "favorites": "{modelName} favorites",
-        "playlists": "{modelName} playlists"
+        "playlists": "{modelName} playlists",
+        "posts": "{modelName} posts"
       },
       "top": {
         "artists": "Top artists",
@@ -166,6 +168,7 @@
     "cancel": "Cancel",
     "delete": "Delete",
     "retry": "Retry",
+    "post": "Post",
     "from": {
       "search": "From search",
       "folder": "From folder",
@@ -174,7 +177,8 @@
     }
   },
   "inputs": {
-    "search": "Search..."
+    "search": "Search...",
+    "post": "Write something..."
   },
   "modals": {
     "undo": "You can't undo this action!",
@@ -196,7 +200,8 @@
           "albums": "No albums",
           "tracks": "No tracks",
           "playlists": "No playlists",
-          "recommendations": "No recommendations"
+          "recommendations": "No recommendations",
+          "posts": "No posts"
         },
         "content": "Looks like there is nothing here"
       }
@@ -301,7 +306,6 @@
         "sections": {
           "extra": "Additional info"
         },
-        "success": "Profile was saved",
         "errors": {
           "notFound": "Email or password is wrong",
           "empty": {
@@ -428,12 +432,23 @@
         "going": "You are going to delete {playlistTrackFullTitle} from {playlistTitle} playlist."
       }
     },
+    "post": {
+      "delete": {
+        "header": "Delete post",
+        "going": "You are going to delete this post."
+      }
+    },
+    "updated": {
+      "profile": "Profile was updated",
+      "post": "Post was updated"
+    },
     "deleted": {
       "artist": "Artist was deleted",
       "album": "Album was deleted",
       "track": "Track was deleted",
       "recommendation": "Recommendation was deleted",
-      "playlist": "Playlist was deleted"
+      "playlist": "Playlist was deleted",
+      "post": "Post was deleted"
     }
   },
   "temp": {

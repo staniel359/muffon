@@ -1,8 +1,8 @@
 <template>
   <BaseTopPaginatedSegmentContainer
     scope="tags"
-    :clientPageLimit="20"
-    :responsePageLimit="20"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseTagsList
@@ -23,6 +23,11 @@ export default {
   components: {
     BaseTopPaginatedSegmentContainer,
     BaseTagsList
+  },
+  data () {
+    return {
+      limit: 20
+    }
   }
 }
 </script>

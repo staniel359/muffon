@@ -1,8 +1,8 @@
 <template>
   <BaseTopPaginatedPageContainer
     scope="tracks"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -28,6 +28,11 @@ export default {
   components: {
     BaseTopPaginatedPageContainer,
     BaseTracksSimpleList
+  },
+  data () {
+    return {
+      limit: 50
+    }
   }
 }
 </script>

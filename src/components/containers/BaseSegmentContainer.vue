@@ -18,7 +18,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseError from '@/BaseError.vue'
+import BaseError from '@/BaseErrorMessage.vue'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {

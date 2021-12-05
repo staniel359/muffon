@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BaseError from '@/BaseError.vue'
+import BaseError from '@/BaseErrorMessage.vue'
 import fetchSearchData from '#/actions/api/search/fetchData'
 
 export default {

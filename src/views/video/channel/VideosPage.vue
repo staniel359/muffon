@@ -1,6 +1,6 @@
 <template>
   <BaseChannelPageContainer
-    :responsePageLimit="50"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseSegmentContainer
@@ -34,6 +34,11 @@ export default {
     BaseChannelPageContainer,
     BaseSegmentContainer,
     BaseVideosPaginatedList
+  },
+  data () {
+    return {
+      limit: 50
+    }
   }
 }
 </script>

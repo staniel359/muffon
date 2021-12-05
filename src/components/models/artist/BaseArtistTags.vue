@@ -6,7 +6,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <ArtistTagsModal
+  <BaseArtistTagsModal
     v-if="isMore"
     ref="modal"
     :artistName="artistName"
@@ -15,13 +15,13 @@
 
 <script>
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import ArtistTagsModal from './BaseArtistTags/ArtistTagsModal.vue'
+import BaseArtistTagsModal from '@/modals/artist/BaseArtistTagsModal.vue'
 
 export default {
   name: 'BaseArtistTags',
   components: {
     BaseTagsList,
-    ArtistTagsModal
+    BaseArtistTagsModal
   },
   props: {
     tags: Array,

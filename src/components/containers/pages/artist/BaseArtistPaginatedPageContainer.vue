@@ -70,7 +70,7 @@ import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
 import ArtistSourceSelect
   from './BaseArtistPaginatedPageContainer/ArtistSourceSelect.vue'
-import BaseViewChangeButtons from '@/BaseViewChangeButtons.vue'
+import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 
 export default {

@@ -6,18 +6,19 @@
     @click="handleClick"
   />
 
-  <FolderImportModal ref="modal" />
+  <BaseProfileLibraryFolderImportModal ref="modal" />
 </template>
 
 <script>
-import BaseButton from '@/BaseButton.vue'
-import FolderImportModal from './FolderImportBlock/FolderImportModal.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
+import BaseProfileLibraryFolderImportModal
+  from '@/modals/profile/library/BaseProfileLibraryFolderImportModal.vue'
 
 export default {
   name: 'FolderImportBlock',
   components: {
     BaseButton,
-    FolderImportModal
+    BaseProfileLibraryFolderImportModal
   },
   computed: {
     addFormatted () {

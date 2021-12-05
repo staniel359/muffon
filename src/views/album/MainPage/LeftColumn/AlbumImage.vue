@@ -15,7 +15,7 @@
 
 <script>
 import BaseImage from '@/BaseImage.vue'
-import BaseAlbumImageModal from '@/models/album/BaseAlbumImageModal.vue'
+import BaseAlbumImageModal from '@/modals/album/BaseAlbumImageModal.vue'
 import { showModal } from '#/actions/plugins/semantic'
 
 export default {

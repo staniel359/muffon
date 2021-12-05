@@ -5,7 +5,7 @@
     @moreClick="handleMoreClick"
   />
 
-  <VideoTagsModal
+  <BaseVideoTagsModal
     v-if="isMore"
     ref="modal"
     :videoId="videoId"
@@ -14,13 +14,13 @@
 
 <script>
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import VideoTagsModal from './BaseVideoTags/VideoTagsModal.vue'
+import BaseVideoTagsModal from '@/modals/video/BaseVideoTagsModal.vue'
 
 export default {
   name: 'BaseVideoTags',
   components: {
     BaseTagsList,
-    VideoTagsModal
+    BaseVideoTagsModal
   },
   props: {
     tags: Array,

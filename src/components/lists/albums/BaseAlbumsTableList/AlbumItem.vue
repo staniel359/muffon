@@ -46,7 +46,7 @@
 <script>
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import InfoSection from './AlbumItem/InfoSection.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'

@@ -107,6 +107,10 @@ a
     &:hover
       color: $colorBase
 
+.ui.selection.list
+  & > .item
+    padding: 0.5em !important
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -216,13 +220,13 @@ a
     & > .main-self-icons
       margin-top: 0.5em
   & > .main-options-dropdown-container
-    @extend .absolute, .no-margin, .d-none
+    @extend .absolute, .no-margin, .visibility-hidden
     top: 10px
     right: 10px
   &:hover
     transform: none
     & > .main-options-dropdown-container
-      @extend .d-block
+      @extend .visibility-visible
 
 .main-simple-card-image-container
   @extend .main-image-container
@@ -247,8 +251,8 @@ a
   & > .content
     @extend .flex-full, .no-padding
   & > .main-options-dropdown-container
+    @extend .visibility-hidden
     margin-left: 0.5em
-    visibility: hidden
   .main-self-icons
     @extend .text-align-center
     width: 50px
@@ -257,7 +261,7 @@ a
     & > .link-active
       @extend .text-color-base
     & > .main-options-dropdown-container
-      visibility: visible
+      @extend .visibility-visible
 
 .main-message
   @extend .no-shadow, .no-margin
@@ -389,10 +393,9 @@ a
 .main-tab
   @extend .no-padding, .no-shadow, .no-border, .no-margin, .w-100, .h-100, .d-flex, .background-transparent
   &.active
-    visibility: visible
+    @extend .visibility-visible
   &:not(.active)
-    @extend .absolute
-    visibility: hidden
+    @extend .absolute, .visibility-hidden
     top: 0
     .main-paginated-content-container
       height: 0
@@ -541,8 +544,7 @@ a
     margin-top: 0.5em
 
 .main-simple-self-icon
-  @extend .no-margin
-  display: inline-block
+  @extend .no-margin, .d-inline-block
   margin: 0.25em !important
 
 .main-error-container
@@ -576,3 +578,43 @@ a
 
 .main-search-input-container
   width: 220px
+
+.main-post-item
+  @extend .d-flex
+  padding: 1em 0 !important
+  & > .avatar
+    width: 35px !important
+    height: 35px !important
+  & > .content
+    @extend .flex-full
+    .description
+      margin-top: 0.2em
+    .post-options
+      @extend .d-none
+    & > .text
+      font-size: 18px
+      line-height: 1.2em
+  &:hover
+    .post-options
+      @extend .d-block
+
+.main-image-input
+  @extend .d-none
+
+.main-playlist-form
+  & > .fields-container
+    @extend .d-flex
+    & > .image-field
+      width: 120px
+      margin-right: 1em !important
+    & > .title-field
+      @extend .flex-full
+
+.main-post-form
+  & > .buttons-container
+    @extend .d-flex, .align-items-center
+    margin-top: 1em
+    & > .button
+      @extend .no-margin
+    & > .add-buttons
+      @extend .flex-full

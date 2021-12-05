@@ -4,19 +4,16 @@
   >
     <template #default="slotProps">
       <BaseArtistHorizontalCardContainer
+        :class="{ disabled: isDeleted }"
         :isLoading="slotProps.isLoading"
         :error="slotProps.error"
         @refresh="slotProps.handleRefresh"
       >
         <template v-if="slotProps.artistData">
-          <div
+          <BaseDeletedBlock
             v-if="isDeleted"
-            class="main-deleted-container"
-          >
-            <span>
-              {{ deletedFormatted }}
-            </span>
-          </div>
+            model="recommendation"
+          />
           <template v-else>
             <div class="artist-left-column">
               <BaseArtistImage
@@ -87,19 +84,21 @@
 import BaseArtistContainer from '@/containers/artist/BaseArtistContainer.vue'
 import BaseArtistHorizontalCardContainer
   from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
+import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import InfoBlock from './ArtistItem/InfoBlock.vue'
 import BaseRecommendationDeleteModal
-  from '@/BaseRecommendationDeleteModal.vue'
+  from '@/modals/recommendation/BaseRecommendationDeleteModal.vue'
 
 export default {
   name: 'ArtistItem',
   components: {
     BaseArtistContainer,
     BaseArtistHorizontalCardContainer,
+    BaseDeletedBlock,
     BaseArtistImage,
     BaseOptionsDropdown,
     LibraryCountersSection,
@@ -141,7 +140,6 @@ export default {
   },
   data () {
     return {
-      isDeleted: false,
       libraryId: null,
       favoriteId: null,
       bookmarkId: null,
@@ -165,6 +163,9 @@ export default {
       return this.$t(
         'shared.deleted.recommendation'
       )
+    },
+    isDeleted () {
+      return !!this.artistData.isDeleted
     }
   },
   mounted () {
@@ -184,7 +185,9 @@ export default {
       }).image = value
     },
     handleDeleted () {
-      this.isDeleted = true
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).isDeleted = true
     },
     handleDeleteOptionClick () {
       this.$refs.deleteModal.show()

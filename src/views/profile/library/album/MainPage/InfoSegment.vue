@@ -78,9 +78,9 @@ import BaseImage from '@/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseDivider from '@/BaseDivider.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BaseProfileLibraryDeleteModal
-  from '@/models/profile/library/BaseProfileLibraryDeleteModal.vue'
+  from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'

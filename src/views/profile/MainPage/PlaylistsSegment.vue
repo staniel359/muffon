@@ -8,6 +8,7 @@
     />
 
     <BaseSegmentContainer
+      class="playlists-segment"
       :isLoading="isLoading"
     >
       <BasePaginatedContainer
@@ -92,4 +93,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.playlists-segment
+  @extend .d-flex
+</style>

@@ -2,8 +2,8 @@
   <BaseTrackPaginatedPageContainer
     pageNameKey="similar"
     scope="similar"
-    :clientPageLimit="50"
-    :responsePageLimit="50"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -32,6 +32,11 @@ export default {
   components: {
     BaseTrackPaginatedPageContainer,
     BaseTracksSimpleList
+  },
+  data () {
+    return {
+      limit: 50
+    }
   }
 }
 </script>

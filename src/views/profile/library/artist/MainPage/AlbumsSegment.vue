@@ -2,8 +2,8 @@
   <BaseProfileLibraryArtistPaginatedSegmentContainer
     headerTextKey="albums"
     scope="albums"
-    :clientPageLimit="3"
-    :responsePageLimit="3"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :profileId="profileId"
     :artistId="artistId"
     :formatHeaderLink="formatProfileLibraryArtistAlbumsLink"
@@ -40,6 +40,11 @@ export default {
     profileId: String,
     artistId: String,
     isWithFavoriteOption: Boolean
+  },
+  data () {
+    return {
+      limit: 3
+    }
   },
   methods: {
     formatProfileLibraryArtistAlbumsLink

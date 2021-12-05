@@ -2,8 +2,8 @@
   <BaseTrackPaginatedSegmentContainer
     headerTextKey="similar"
     scope="similar"
-    :clientPageLimit="5"
-    :responsePageLimit="5"
+    :clientPageLimit="limit"
+    :responsePageLimit="limit"
     :artistName="artistName"
     :trackTitle="trackTitle"
     :formatHeaderLink="formatTrackSimilarLink"
@@ -39,6 +39,11 @@ export default {
   props: {
     artistName: String,
     trackTitle: String
+  },
+  data () {
+    return {
+      limit: 5
+    }
   },
   methods: {
     formatTrackSimilarLink

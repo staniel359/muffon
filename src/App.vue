@@ -1,13 +1,21 @@
 <template>
   <TheStoreObserver />
+
   <TheLocalObserver />
+
   <TheMediaKeysObserver />
 
   <TheBackground />
 
   <TheView v-if="isRootPage"/>
   <template v-else>
-    <ThePanels />
+    <TheNavbarPanel />
+
+    <TheSidebarPanel />
+
+    <TheQueuePanel />
+
+    <ThePlayerPanel />
 
     <TheVisibleArea />
 
@@ -26,10 +34,13 @@ import TheStoreObserver from '@/layout/observers/TheStoreObserver.vue'
 import TheLocalObserver from '@/layout/observers/TheLocalObserver.vue'
 import TheMediaKeysObserver from '@/layout/observers/TheMediaKeysObserver.vue'
 import TheView from '@/layout/TheView.vue'
-import ThePanels from '@/layout/ThePanels.vue'
+import TheSidebarPanel from '@/layout/panels/TheSidebarPanel.vue'
+import TheNavbarPanel from '@/layout/panels/TheNavbarPanel.vue'
+import TheQueuePanel from '@/layout/panels/TheQueuePanel.vue'
+import ThePlayerPanel from '@/layout/panels/ThePlayerPanel.vue'
 import TheBackground from '@/layout/TheBackground.vue'
 import TheVisibleArea from '@/layout/TheVisibleArea.vue'
-import TheSearchModal from '@/layout/TheSearchModal.vue'
+import TheSearchModal from '@/layout/modals/TheSearchModal.vue'
 import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
 
 export default {
@@ -39,7 +50,10 @@ export default {
     TheLocalObserver,
     TheMediaKeysObserver,
     TheView,
-    ThePanels,
+    TheSidebarPanel,
+    TheNavbarPanel,
+    TheQueuePanel,
+    ThePlayerPanel,
     TheBackground,
     TheVisibleArea,
     TheSearchModal,

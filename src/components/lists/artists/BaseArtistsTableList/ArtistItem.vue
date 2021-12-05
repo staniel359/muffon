@@ -69,7 +69,7 @@
 import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'

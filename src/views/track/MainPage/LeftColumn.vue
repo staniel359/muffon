@@ -55,8 +55,8 @@
 import BaseImage from '@/BaseImage.vue'
 import TrackHeader from './LeftColumn/TrackHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
-import BasePlaylistsModal from '@/BasePlaylistsModal.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
 
 export default {
   name: 'LeftColumn',

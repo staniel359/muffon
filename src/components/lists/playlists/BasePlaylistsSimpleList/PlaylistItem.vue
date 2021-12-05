@@ -46,9 +46,9 @@ import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseOptionsDropdown from '@/BaseOptionsDropdown.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistDeleteModal
-  from '@/models/playlist/BasePlaylistDeleteModal.vue'
+  from '@/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   playlist as formatProfilePlaylistLink
 } from '#/formatters/links/profile'
@@ -64,6 +64,9 @@ export default {
     BaseOptionsDropdown,
     BasePlaylistDeleteModal
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     playlistData: {
       type: Object,
@@ -74,11 +77,6 @@ export default {
       required: true
     },
     isWithDeleteOption: Boolean
-  },
-  data () {
-    return {
-      isDeleted: false
-    }
   },
   computed: {
     linkFormatted () {
@@ -109,6 +107,12 @@ export default {
     },
     tracksCount () {
       return this.playlistData.tracks_count
+    },
+    isDeleted () {
+      return !!this.playlistData.isDeleted
+    },
+    uuid () {
+      return this.playlistData.uuid
     }
   },
   methods: {
@@ -116,7 +120,9 @@ export default {
       this.$refs.deleteModal.show()
     },
     handleDeleted () {
-      this.isDeleted = true
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).isDeleted = true
     }
   }
 }

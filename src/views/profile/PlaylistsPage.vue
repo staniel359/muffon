@@ -1,7 +1,7 @@
 <template>
   <BasePlaylistsPageContainer
     :profileId="profileId"
-    :responsePageLimit="50"
+    :responsePageLimit="limit"
   >
     <template #default="pageSlotProps">
       <div
@@ -22,7 +22,9 @@
             @click="handleCreateButtonClick"
           />
 
-          <CreateModal ref="modal" />
+          <BasePlaylistCreateModal
+            ref="modal"
+          />
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
@@ -34,8 +36,8 @@
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.profileData"
-            :clientPageLimit="50"
-            :responsePageLimit="50"
+            :clientPageLimit="limit"
+            :responsePageLimit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
@@ -57,8 +59,9 @@
 import BasePlaylistsPageContainer
   from '@/containers/pages/profile/playlists/BasePlaylistsPageContainer.vue'
 import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseButton from '@/BaseButton.vue'
-import CreateModal from './PlaylistsPage/CreateModal.vue'
+import BaseButton from '@/buttons/BaseButton.vue'
+import BasePlaylistCreateModal
+  from '@/modals/playlist/BasePlaylistCreateModal.vue'
 import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
 import BasePlaylistsSimpleList
   from '@/lists/playlists/BasePlaylistsSimpleList.vue'
@@ -70,12 +73,17 @@ export default {
     BasePlaylistsPageContainer,
     BaseSegmentContainer,
     BaseButton,
-    CreateModal,
+    BasePlaylistCreateModal,
     BasePaginatedContainer,
     BasePlaylistsSimpleList
   },
   props: {
     profileId: String
+  },
+  data () {
+    return {
+      limit: 50
+    }
   },
   computed: {
     createFormatted () {
