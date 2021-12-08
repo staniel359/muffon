@@ -1,6 +1,7 @@
 # muffon
 
 [![main](https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/staniel359/muffon/actions/workflows/main.yml)
+[![Join the chat at https://gitter.im/muffon-support/community](https://badges.gitter.im/muffon-support/community.svg)](https://gitter.im/muffon-support/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ![muffon](https://i.ibb.co/bXSP762/2021-10-23-14-13-29.png)
 
