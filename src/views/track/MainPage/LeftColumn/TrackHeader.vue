@@ -29,8 +29,8 @@
 <script>
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/BaseLink.vue'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLink from '@/links/BaseLink.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumSourceParams

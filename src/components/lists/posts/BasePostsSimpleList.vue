@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import PostItem from './BasePostsSimpleList/PostItem.vue'
 
 export default {

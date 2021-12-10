@@ -31,7 +31,7 @@
 <script>
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import BaseTrackSearchContainer
-  from '@/containers/track/search/BaseTrackSearchContainer.vue'
+  from '@/containers/track/BaseTrackSearchContainer.vue'
 import VideoSelect from './VideoSegment/VideoSelect.vue'
 import VideoData from './VideoSegment/VideoData.vue'
 import { generateKey } from '#/utils'
@@ -79,6 +79,10 @@ export default {
     },
     handleSelectedVideoDataChange () {
       this.key = generateKey()
+
+      focusOnSegment(
+        this.segment
+      )
     },
     handleVideoClick () {
       focusOnSegment(

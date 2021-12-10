@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'

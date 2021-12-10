@@ -154,8 +154,17 @@
         "empty": "Нет текстов песен"
       }
     },
-    "library": {
-      "since": "В библиотеке с"
+    "profile": {
+      "library": {
+        "since": "В библиотеке с"
+      },
+      "compatibility": {
+        "header": "Ваш уровень совместимости с {profileNickname}",
+        "common": "Из общего у вас:",
+        "artists": "{count} исполнителей",
+        "albums": "{count} альбомов",
+        "tracks": "{count} композиций"
+      }
     },
     "recommendations": {
       "filter": "Фильтр"

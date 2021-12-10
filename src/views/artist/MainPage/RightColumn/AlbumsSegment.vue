@@ -25,7 +25,7 @@
 
 <script>
 import BaseArtistPaginatedSegmentContainer
-  from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
+  from '@/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 import { albums as formatArtistAlbumsLink } from '#/formatters/links/artist'
 

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import PlaylistItem from './BasePlaylistsSimpleSelectableList/PlaylistItem.vue'
 import { collection as formatCollection } from '#/formatters'
 

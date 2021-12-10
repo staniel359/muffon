@@ -17,7 +17,8 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import { updateStore } from '#/actions'
 

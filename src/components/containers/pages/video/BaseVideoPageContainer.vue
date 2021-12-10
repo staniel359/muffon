@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/BasePageContainer.vue'
+import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatVideoPageNavigation from '#/formatters/navigation/video'
 import formatVideoPageTab from '#/formatters/tabs/video'

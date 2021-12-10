@@ -285,8 +285,14 @@ a
 .main-dropdown
   @extend .d-flex, .align-items-center, .text-color-unset
   min-width: unset !important
+  padding-right: 1em !important
   & > .text
     @extend .flex-full
+  & > .icon.dropdown
+    @extend .relative, .no-padding, .no-margin
+    top: 0 !important
+    right: 0 !important
+    margin-left: 0.5em !important
 
 .main-dropdown-item
   @extend .d-flex, .align-items-center
@@ -486,10 +492,10 @@ a
 .main-playlist-image
   @extend .object-fit-cover
 
-.main-paginated-container
+.main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
 
-.main-paginated-content-container
+.main-paginated-list-content-container
   @extend .flex-full
 
 .main-pagination-container
@@ -621,3 +627,18 @@ a
       @extend .no-margin
     & > .add-buttons
       @extend .flex-full
+
+.main-percent-circle
+  & > path
+    fill: none
+    &.background
+      stroke: $colorGrey
+      &.inverted
+        stroke: $colorGreyInverted
+    &.main
+      stroke: $colorBase
+  & > text
+    text-anchor: middle
+    font-size: 14px
+    &.inverted
+      fill: $colorWhite

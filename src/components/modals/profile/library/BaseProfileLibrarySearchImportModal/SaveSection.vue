@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
+import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
 import SaveArtistsSection from './SaveSection/SaveArtistsSection.vue'
 import SaveAlbumsSection from './SaveSection/SaveAlbumsSection.vue'
 import SaveTracksSection from './SaveSection/SaveTracksSection.vue'

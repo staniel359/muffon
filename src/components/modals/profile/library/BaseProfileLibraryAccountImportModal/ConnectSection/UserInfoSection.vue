@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { number as formatNumber } from '#/formatters'
 

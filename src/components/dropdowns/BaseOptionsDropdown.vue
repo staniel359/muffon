@@ -32,8 +32,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
-import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseButtonContainer from '@/containers/buttons/BaseButtonContainer.vue'
 import LibraryOption from './BaseOptionsDropdown/LibraryOption.vue'
 import PlaylistOption from './BaseOptionsDropdown/PlaylistOption.vue'
 import FavoriteOption from './BaseOptionsDropdown/FavoriteOption.vue'

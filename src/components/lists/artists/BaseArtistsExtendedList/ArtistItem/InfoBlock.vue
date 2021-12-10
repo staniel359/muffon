@@ -32,7 +32,7 @@
       />
     </template>
 
-    <RecommendationProfileArtistsSection
+    <ProfileArtistsSection
       v-if="isRecommendation"
       :recommendationData="recommendationData"
       :profileId="profileId"
@@ -42,13 +42,12 @@
 
 <script>
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import BaseCounters from '@/BaseCounters.vue'
 import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
-import RecommendationProfileArtistsSection
-  from './InfoBlock/RecommendationProfileArtistsSection.vue'
+import ProfileArtistsSection from './InfoBlock/ProfileArtistsSection.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink
@@ -63,7 +62,7 @@ export default {
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
-    RecommendationProfileArtistsSection
+    ProfileArtistsSection
   },
   props: {
     artistData: {

@@ -71,9 +71,9 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import InfoBlock from './AlbumItem/InfoBlock.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
@@ -81,7 +81,13 @@ import BaseBookmarkDeleteModal
   from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
+import {
+  main as formatProfileLibraryArtistMainLink
+} from '#/formatters/links/profile/library/artist'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import {
+  main as formatProfileLibraryAlbumMainLink
+} from '#/formatters/links/profile/library/album'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumSourceParams
   from '#/actions/api/album/formatters/requestData'
@@ -121,6 +127,7 @@ export default {
     },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
+    isLinkToLibrary: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -153,19 +160,39 @@ export default {
       }
     },
     artistMainLinkFormatted () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+      if (this.isLinkToLibrary) {
+        return formatProfileLibraryArtistMainLink({
+          profileId: this.profileId,
+          artistId: this.artistId
+        })
+      } else {
+        return formatArtistMainLink({
+          artistName: this.artistName
+        })
+      }
+    },
+    artistId () {
+      return this.albumData.artist.id
     },
     artistName () {
       return this.albumData.artist.name
     },
     albumMainLinkFormatted () {
-      return formatAlbumMainLink({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        sourceParams: this.sourceParams
-      })
+      if (this.isLinkToLibrary) {
+        return formatProfileLibraryAlbumMainLink({
+          profileId: this.profileId,
+          albumId: this.albumId
+        })
+      } else {
+        return formatAlbumMainLink({
+          artistName: this.artistName,
+          albumTitle: this.albumTitle,
+          sourceParams: this.sourceParams
+        })
+      }
+    },
+    albumId () {
+      return this.albumData.id?.toString()
     },
     sourceParams () {
       return formatAlbumSourceParams({

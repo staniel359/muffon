@@ -1,5 +1,5 @@
 <template>
-  <BaseReleaseDateLabels
+  <BaseAlbumReleaseDateLabels
     :release_date="release_date"
     :labels="labels"
   />
@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import BaseReleaseDateLabels from '@/models/album/BaseReleaseDateLabels.vue'
+import BaseAlbumReleaseDateLabels
+  from '@/models/album/BaseAlbumReleaseDateLabels.vue'
 import BaseAlbumTags from '@/models/album/BaseAlbumTags.vue'
 import BaseCounters from '@/BaseCounters.vue'
 import BaseDivider from '@/BaseDivider.vue'
@@ -37,7 +38,7 @@ import BaseAlbumDescription from '@/models/album/BaseAlbumDescription.vue'
 export default {
   name: 'SecondarySection',
   components: {
-    BaseReleaseDateLabels,
+    BaseAlbumReleaseDateLabels,
     BaseAlbumTags,
     BaseCounters,
     BaseDivider,

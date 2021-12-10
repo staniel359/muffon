@@ -1,5 +1,5 @@
 <template>
-  <BasePaginatedContainer
+  <BasePaginatedListContainer
     v-if="artists.length"
     ref="pagination"
     scope="artists"
@@ -19,17 +19,18 @@
         @deleteButtonClick="handleDeleteButtonClick"
       />
     </template>
-  </BasePaginatedContainer>
+  </BasePaginatedListContainer>
 </template>
 
 <script>
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
   name: 'SearchArtistsList',
   components: {
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseArtistsSimpleList
   },
   inject: [

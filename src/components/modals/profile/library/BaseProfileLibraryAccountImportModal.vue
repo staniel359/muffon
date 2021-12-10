@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import ConnectSection
   from './BaseProfileLibraryAccountImportModal/ConnectSection.vue'
 import BaseDivider from '@/BaseDivider.vue'

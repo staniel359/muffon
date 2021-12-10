@@ -12,7 +12,7 @@
       />
     </div>
 
-    <BasePaginatedContainer
+    <BasePaginatedListContainer
       scope="files"
       :responseData="filesData"
       :clientPageLimit="limit"
@@ -34,7 +34,7 @@
           @deleteButtonClick="handleDeleteButtonClick"
         />
       </template>
-    </BasePaginatedContainer>
+    </BasePaginatedListContainer>
   </div>
 
   <BaseSaveButton
@@ -43,8 +43,9 @@
 </template>
 
 <script>
-import BaseMessage from '@/BaseMessage.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseMessage from '@/messages/BaseMessage.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import BaseSaveButton from '@/buttons/BaseSaveButton.vue'
 import { number as formatNumber } from '#/formatters'
@@ -53,7 +54,7 @@ export default {
   name: 'SuccessSection',
   components: {
     BaseMessage,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseTracksSimpleList,
     BaseSaveButton
   },

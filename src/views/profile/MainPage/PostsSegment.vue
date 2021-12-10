@@ -14,7 +14,7 @@
       class="posts-segment"
       :isLoading="isLoading"
     >
-      <BasePaginatedContainer
+      <BasePaginatedListContainer
         ref="paginatedContainer"
         scope="posts"
         :isLoading="isLoading"
@@ -32,7 +32,7 @@
             :profileId="profileId"
           />
         </template>
-      </BasePaginatedContainer>
+      </BasePaginatedListContainer>
     </BaseSegmentContainer>
   </div>
 </template>
@@ -40,8 +40,10 @@
 <script>
 import HeaderSegment from './PostsSegment/HeaderSegment.vue'
 import FormSegment from './PostsSegment/FormSegment.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
 import fetchProfilePostsData
   from '#/actions/api/profile/posts/fetchData'
@@ -52,7 +54,7 @@ export default {
     HeaderSegment,
     FormSegment,
     BaseSegmentContainer,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BasePostsSimpleList
   },
   props: {

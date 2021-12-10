@@ -1,6 +1,7 @@
 <template>
   <BaseAccordionContainer
     :title="textFormatted"
+    @init="handleInit"
     @open="handleOpen"
   >
     <BaseTrackSearchContainer
@@ -36,12 +37,13 @@
 <script>
 import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import BaseTrackSearchContainer
-  from '@/containers/track/search/BaseTrackSearchContainer.vue'
+  from '@/containers/track/BaseTrackSearchContainer.vue'
 import LyricsSelect from './LyricsSegment/LyricsSelect.vue'
 import BaseTrackLyricsContainer
-  from '@/containers/track/lyrics/BaseTrackLyricsContainer.vue'
+  from '@/containers/track/BaseTrackLyricsContainer.vue'
 import LyricsData from './LyricsSegment/LyricsData.vue'
 import { generateKey } from '#/utils'
+import { focusOnSegment } from '#/actions/layout'
 
 export default {
   name: 'LyricsSegment',
@@ -62,6 +64,7 @@ export default {
   },
   data () {
     return {
+      segment: null,
       selectedTrackData: null,
       key: null,
       isOpen: false
@@ -78,11 +81,18 @@ export default {
     selectedTrackData: 'handleSelectedTrackDataChange'
   },
   methods: {
+    handleInit (el) {
+      this.segment = el
+    },
     handleOpen () {
       this.isOpen = true
     },
     handleSelectedTrackDataChange () {
       this.key = generateKey()
+
+      focusOnSegment(
+        this.segment
+      )
     },
     setSelectedTrackData (value) {
       this.selectedTrackData = value

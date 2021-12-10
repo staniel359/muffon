@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BaseButtonsContainer from '@/containers/BaseButtonsContainer.vue'
+import BaseButtonsContainer from '@/containers/buttons/BaseButtonsContainer.vue'
 import BaseViewChangeButton
   from './BaseViewChangeButtons/BaseViewChangeButton.vue'
 

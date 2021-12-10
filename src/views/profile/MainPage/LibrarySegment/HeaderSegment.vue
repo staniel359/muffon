@@ -10,9 +10,10 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'

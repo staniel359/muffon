@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer ref="modal">
     <div class="content">
-      <BasePlaylistCreateContainer
+      <BasePlaylistCreateFormContainer
         class="main-playlist-form"
         :image="image"
         @success="handleSuccess"
@@ -19,26 +19,26 @@
         </div>
 
         <SubmitButton />
-      </BasePlaylistCreateContainer>
+      </BasePlaylistCreateFormContainer>
     </div>
   </BaseModalContainer>
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import BasePlaylistCreateContainer
-  from '@/containers/playlist/BasePlaylistCreateContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BasePlaylistCreateFormContainer
+  from '@/containers/forms/playlist/BasePlaylistCreateFormContainer.vue'
 import BasePlaylistImageField
-  from '@/models/playlist/fields/BasePlaylistImageField.vue'
+  from '@/fields/playlist/BasePlaylistImageField.vue'
 import BasePlaylistTitleField
-  from '@/models/playlist/fields/BasePlaylistTitleField.vue'
+  from '@/fields/playlist/BasePlaylistTitleField.vue'
 import SubmitButton from './BasePlaylistCreateModal/SubmitButton.vue'
 
 export default {
   name: 'BasePlaylistCreateModal',
   components: {
     BaseModalContainer,
-    BasePlaylistCreateContainer,
+    BasePlaylistCreateFormContainer,
     BasePlaylistImageField,
     BasePlaylistTitleField,
     SubmitButton

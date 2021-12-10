@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { main as formatVideoMainLink } from '#/formatters/links/video'
 

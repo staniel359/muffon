@@ -20,7 +20,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 
 export default {
   name: 'BaseSimpleCardContainer',

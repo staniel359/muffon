@@ -22,7 +22,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {

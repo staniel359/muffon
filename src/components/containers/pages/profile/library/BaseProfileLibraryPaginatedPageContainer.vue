@@ -18,7 +18,7 @@
         <BaseSegmentContainer
           class="search-view-buttons-segment"
         >
-          <SearchInput
+          <BaseProfileLibrarySearchInput
             v-if="isWithSearch"
             :isClearable="isSearchClearable"
             :query="query"
@@ -37,7 +37,7 @@
           class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
-          <BasePaginatedContainer
+          <BasePaginatedListContainer
             ref="paginatedContainer"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
@@ -57,7 +57,7 @@
                 :profileId="pageSlotProps.profileId"
               ></slot>
             </template>
-          </BasePaginatedContainer>
+          </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
@@ -67,20 +67,22 @@
 <script>
 import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import SearchInput
-  from './BaseProfileLibraryPaginatedPageContainer/SearchInput.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseProfileLibrarySearchInput
+  from '@/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',
   components: {
     BaseProfileLibraryPageContainer,
     BaseSegmentContainer,
-    SearchInput,
+    BaseProfileLibrarySearchInput,
     BaseViewChangeButtons,
-    BasePaginatedContainer
+    BasePaginatedListContainer
   },
   props: {
     profileId: String,

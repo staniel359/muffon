@@ -40,8 +40,8 @@
 import { mapState } from 'vuex'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseTickerContainer from '@/containers/BaseTickerContainer.vue'
-import BaseLink from '@/BaseLink.vue'
-import BaseArtistLinks from '@/BaseArtistLinks.vue'
+import BaseLink from '@/links/BaseLink.vue'
+import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 import { main as formatTrackMainLink } from '#/formatters/links/track'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumSourceParams

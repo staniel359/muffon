@@ -29,7 +29,7 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
-import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
+import BaseButtonContainer from '@/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '@/BaseIcon.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 

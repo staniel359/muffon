@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import VideoItem from './BaseVideosSimpleList/VideoItem.vue'
 import { collection as formatCollection } from '#/formatters'
 

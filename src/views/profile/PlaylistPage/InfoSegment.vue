@@ -48,7 +48,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'

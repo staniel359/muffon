@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'

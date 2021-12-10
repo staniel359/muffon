@@ -21,7 +21,7 @@
             :key="tabData.uuid"
             #[tabData.scope]="slotProps"
           >
-            <BaseProfileFavoritesTabContainer
+            <BaseProfileFavoriteTabContainer
               :class="slotProps.class"
               :isActive="slotProps.isActive"
               :profileId="profileId"
@@ -38,10 +38,11 @@
 <script>
 import BaseProfilePageContainer
   from '@/containers/pages/profile/BaseProfilePageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
-import BaseProfileFavoritesTabContainer
-  from '@/containers/profile/BaseProfileFavoritesTabContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
+import BaseProfileFavoriteTabContainer
+  from '@/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
@@ -50,7 +51,7 @@ export default {
     BaseProfilePageContainer,
     BaseSegmentContainer,
     BaseTabsContainer,
-    BaseProfileFavoritesTabContainer
+    BaseProfileFavoriteTabContainer
   },
   props: {
     profileId: String

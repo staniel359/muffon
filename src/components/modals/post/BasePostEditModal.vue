@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer ref="modal">
     <div class="content">
-      <BaseEditPostContainer
+      <BasePostEditFormContainer
         class="main-post-form"
         :postId="postId"
         :tracks="tracks"
@@ -35,15 +35,15 @@
             class="submit-button"
           />
         </div>
-      </BaseEditPostContainer>
+      </BasePostEditFormContainer>
     </div>
   </BaseModalContainer>
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import BaseEditPostContainer
-  from '@/containers/post/BaseEditPostContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BasePostEditFormContainer
+  from '@/containers/forms/post/BasePostEditFormContainer.vue'
 import BasePostContentField from '@/models/post/BasePostContentField.vue'
 import BasePostImagesSection from '@/models/post/BasePostImagesSection.vue'
 import BasePostTracksSection from '@/models/post/BasePostTracksSection.vue'
@@ -57,7 +57,7 @@ export default {
   name: 'BasePostEditModal',
   components: {
     BaseModalContainer,
-    BaseEditPostContainer,
+    BasePostEditFormContainer,
     BasePostContentField,
     BasePostImagesSection,
     BasePostTracksSection,

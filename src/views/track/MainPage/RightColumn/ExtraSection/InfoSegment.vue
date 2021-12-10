@@ -29,7 +29,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseCounters from '@/BaseCounters.vue'
 import BaseTrackTags from '@/models/track/BaseTrackTags.vue'
 import BaseDivider from '@/BaseDivider.vue'

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseAlbumImageModal from '@/modals/album/BaseAlbumImageModal.vue'
 import { showModal } from '#/actions/plugins/semantic'
 

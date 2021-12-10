@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
+import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
 import SearchArtistsList from './lists/SearchArtistsList.vue'
 import SearchAlbumsList from './lists/SearchAlbumsList.vue'
 import SearchTracksList from './lists/SearchTracksList.vue'

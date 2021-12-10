@@ -17,7 +17,7 @@
         <BaseSegmentContainer
           v-if="isWithArtistSelect"
         >
-          <ArtistSourceSelect
+          <BaseArtistSourceSelect
             :artistName="pageSlotProps.artistName"
             @artistDataChange="handleArtistDataChange"
           />
@@ -37,7 +37,7 @@
           class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
-          <BasePaginatedContainer
+          <BasePaginatedListContainer
             ref="paginatedContainer"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
@@ -57,7 +57,7 @@
                 :profileId="pageSlotProps.profileId"
               ></slot>
             </template>
-          </BasePaginatedContainer>
+          </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
@@ -66,20 +66,21 @@
 
 <script>
 import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import ArtistSourceSelect
-  from './BaseArtistPaginatedPageContainer/ArtistSourceSelect.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseArtistSourceSelect from '@/models/artist/BaseArtistSourceSelect.vue'
 import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseArtistPaginatedPageContainer',
   components: {
     BaseArtistPageContainer,
     BaseSegmentContainer,
-    ArtistSourceSelect,
+    BaseArtistSourceSelect,
     BaseViewChangeButtons,
-    BasePaginatedContainer
+    BasePaginatedListContainer
   },
   props: {
     artistName: String,

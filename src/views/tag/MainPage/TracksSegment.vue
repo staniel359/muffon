@@ -24,7 +24,7 @@
 
 <script>
 import BaseTagPaginatedSegmentContainer
-  from '@/containers/pages/tag/BaseTagPaginatedSegmentContainer.vue'
+  from '@/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import { tracks as formatTagTracksLink } from '#/formatters/links/tag'
 

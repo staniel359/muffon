@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import TrackHeader from './LeftColumn/TrackHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'

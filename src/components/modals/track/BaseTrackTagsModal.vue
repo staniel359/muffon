@@ -16,7 +16,7 @@
 
 <script>
 import BaseTrackModalContainer
-  from '@/containers/track/BaseTrackModalContainer.vue'
+  from '@/containers/modals/track/BaseTrackModalContainer.vue'
 import BaseModalTagsList from '@/lists/tags/BaseModalTagsList.vue'
 
 export default {

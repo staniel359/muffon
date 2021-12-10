@@ -26,7 +26,7 @@
           class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
-          <BasePaginatedContainer
+          <BasePaginatedListContainer
             ref="paginatedContainer"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
@@ -44,7 +44,7 @@
                 :profileId="pageSlotProps.profileId"
               ></slot>
             </template>
-          </BasePaginatedContainer>
+          </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
@@ -53,9 +53,11 @@
 
 <script>
 import BaseTagPageContainer from './BaseTagPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseTagPaginatedPageContainer',
@@ -63,7 +65,7 @@ export default {
     BaseTagPageContainer,
     BaseSegmentContainer,
     BaseViewChangeButtons,
-    BasePaginatedContainer
+    BasePaginatedListContainer
   },
   props: {
     pageNameKey: String,

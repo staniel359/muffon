@@ -154,8 +154,17 @@
         "empty": "No lyrics"
       }
     },
-    "library": {
-      "since": "In library since"
+    "profile": {
+      "library": {
+        "since": "In library since"
+      },
+      "compatibility": {
+        "header": "Your compatibility level with {profileNickname}",
+        "common": "You have in common:",
+        "artists": "{count} artists",
+        "albums": "{count} albums",
+        "tracks": "{count} tracks"
+      }
     },
     "recommendations": {
       "filter": "Filter"

@@ -35,9 +35,9 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePlaylistDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import deleteProfilePlaylistData
   from '#/actions/api/profile/playlist/deleteData'

@@ -12,7 +12,7 @@
         ]"
         :isLoading="pageSlotProps.isLoading"
       >
-        <BasePaginatedContainer
+        <BasePaginatedListContainer
           ref="paginatedContainer"
           scope="posts"
           :isLoading="pageSlotProps.isLoading"
@@ -30,7 +30,7 @@
               :profileId="profileId"
             />
           </template>
-        </BasePaginatedContainer>
+        </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
   </BasePostsPageContainer>
@@ -40,8 +40,10 @@
 import { mapState } from 'vuex'
 import BasePostsPageContainer
   from '@/containers/pages/profile/posts/BasePostsPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
 
 export default {
@@ -49,7 +51,7 @@ export default {
   components: {
     BasePostsPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BasePostsSimpleList
   },
   data () {

@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 
 export default {
   name: 'NavigationSection',

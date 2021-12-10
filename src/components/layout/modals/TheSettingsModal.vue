@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
 import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'

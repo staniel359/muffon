@@ -10,7 +10,7 @@
       :isLoading="isLoading"
       @init="handleInit"
     >
-      <BasePaginatedContainer
+      <BasePaginatedListContainer
         scope="playlists"
         :isLoading="isLoading"
         :error="error"
@@ -31,16 +31,18 @@
             :imageUrl="imageUrl"
           />
         </template>
-      </BasePaginatedContainer>
+      </BasePaginatedListContainer>
     </BaseSegmentContainer>
   </BaseModalContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleSelectableList
   from '@/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
 import fetchProfilePlaylistsData from
@@ -51,7 +53,7 @@ export default {
   components: {
     BaseModalContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BasePlaylistsSimpleSelectableList
   },
   props: {

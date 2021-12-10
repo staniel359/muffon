@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseTrackPlayerPanel from '@/models/track/BaseTrackPlayerPanel.vue'
 
 export default {

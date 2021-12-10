@@ -18,7 +18,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import {
   favorites as formatProfileFavoritesLink

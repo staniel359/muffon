@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import BaseArtistLinks from '@/BaseArtistLinks.vue'
+import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 
 export default {
   name: 'TrackArtistName',

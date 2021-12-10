@@ -4,7 +4,9 @@
       v-for="imageData in images"
       :key="imageData.uuid"
     >
-      <slot :image="imageData[size]"></slot>
+      <slot
+        :image="imageData[size]"
+      ></slot>
     </template>
   </div>
 </template>
@@ -45,20 +47,33 @@ export default {
     options: 'handleOptionsChange'
   },
   mounted () {
-    setSlider(this.$refs.slider, this.options)
+    setSlider(
+      this.$refs.slider,
+      this.options
+    )
 
-    this.$emit('init', this.$refs.slider)
+    this.$emit(
+      'init',
+      this.$refs.slider
+    )
   },
   methods: {
     handleImagesChange () {
-      clearSliderPrevImages(this.$refs.slider)
+      clearSliderPrevImages(
+        this.$refs.slider
+      )
 
       this.$nextTick(() => {
-        refreshSlider(this.$refs.slider)
+        refreshSlider(
+          this.$refs.slider
+        )
       })
     },
     handleOptionsChange (value) {
-      setSliderOptions(this.$refs.slider, value)
+      setSliderOptions(
+        this.$refs.slider,
+        value
+      )
     }
   }
 }

@@ -25,7 +25,7 @@
 
 <script>
 import BasePlaylistPaginatedSegmentContainer
-  from '@/containers/pages/profile/playlist/BasePlaylistPaginatedSegmentContainer.vue'
+  from '@/containers/segments/playlist/BasePlaylistPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {

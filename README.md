@@ -18,6 +18,7 @@ You can:
 - view top artists/tracks/tags
 - search through sources above
 - create music library
+- view your library compatibility with others
 - get personal recommendations (based on your library)
 - create playlists
 - add to favorites

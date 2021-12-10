@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BaseMessage from '@/BaseMessage.vue'
+import BaseMessage from '@/messages/BaseMessage.vue'
 import SuccessSection from './CompleteSection/SuccessSection.vue'
 import { number as formatNumber } from '#/formatters'
 

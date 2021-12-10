@@ -11,7 +11,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import CoverSegment from './InfoSegment/CoverSegment.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
 

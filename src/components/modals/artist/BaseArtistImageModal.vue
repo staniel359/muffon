@@ -1,6 +1,14 @@
 <template>
-  <BaseImageModalContainer @show="handleShow">
-    <div class="ui container main-container main-image-modal-content">
+  <BaseImageModalContainer
+    @show="handleShow"
+  >
+    <div
+      :class="[
+        'ui container',
+        'main-container',
+        'main-image-modal-content'
+      ]"
+    >
       <MainSlider
         :images="imagesFormatted"
         :syncSlider="thumbsSlider"
@@ -16,7 +24,8 @@
 </template>
 
 <script>
-import BaseImageModalContainer from '@/containers/BaseImageModalContainer.vue'
+import BaseImageModalContainer
+  from '@/containers/modals/BaseImageModalContainer.vue'
 import MainSlider from './BaseArtistImageModal/MainSlider.vue'
 import ThumbsSlider from './BaseArtistImageModal/ThumbsSlider.vue'
 import { collection as formatCollection } from '#/formatters'
@@ -48,20 +57,30 @@ export default {
   },
   computed: {
     imagesFormatted () {
-      return formatCollection(this.images)
+      return formatCollection(
+        this.images
+      )
     }
   },
   methods: {
     handleShow () {
       this.$nextTick(() => {
-        setSliderPosition(this.mainSlider)
-        setSliderPosition(this.thumbsSlider)
+        setSliderPosition(
+          this.mainSlider
+        )
+
+        setSliderPosition(
+          this.thumbsSlider
+        )
       })
     },
     handleMainSliderInit (el) {
       this.mainSlider = el
 
-      this.$emit('mainSliderInit', el)
+      this.$emit(
+        'mainSliderInit',
+        el
+      )
     },
     handleThumbsSliderInit (el) {
       this.thumbsSlider = el

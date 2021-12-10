@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseImagePlaceholder from '@/BaseImagePlaceholder.vue'
+import BaseImagePlaceholder from '@/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import fetchArtistImageData from '#/actions/api/artist/image/fetchData'
 import { defaultImages as formatDefaultImages } from '#/formatters/artist'
 

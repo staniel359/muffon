@@ -22,7 +22,8 @@
 <script>
 import BaseVideoPageContainer
   from '@/containers/pages/video/BaseVideoPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import VideoData from './MainPage/VideoData.vue'
 import VideoInfoData from './MainPage/VideoInfoData.vue'
 

@@ -28,10 +28,11 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
 import BaseBookmarksTabContainer
-  from '@/containers/BaseBookmarksTabContainer.vue'
+  from '@/containers/tabs/BaseBookmarksTabContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatBookmarksPageNavigation
   from '#/formatters/navigation/bookmarks'

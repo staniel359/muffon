@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BasePlaylistSearchImportModal/SearchInput.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import BaseDivider from '@/BaseDivider.vue'

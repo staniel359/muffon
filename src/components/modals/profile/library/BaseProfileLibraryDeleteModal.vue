@@ -36,9 +36,9 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseProfileLibraryDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import deleteProfileLibraryModelData
   from '#/actions/api/profile/library/model/deleteData'

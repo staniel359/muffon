@@ -14,7 +14,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLibraryStatistics
   from '@/models/profile/library/BaseProfileLibraryStatistics.vue'
 import fetchLibraryData from '#/actions/api/profile/library/fetchData'

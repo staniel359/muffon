@@ -24,7 +24,8 @@
 
 <script>
 import BaseHeader from '@/BaseHeader.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
   startPage as formatStartPageNavigation

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseImageModalSliderContainer
   from '@/containers/BaseImageModalSliderContainer.vue'
 import { artistImagesModalThumbsSliderOptions } from '#/data/plugins/slick'

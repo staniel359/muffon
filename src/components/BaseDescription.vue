@@ -1,5 +1,7 @@
 <template>
-  <p>
+  <p
+    :class="{ 'main-text-container': isModal }"
+  >
     {{ description }}
 
     <strong
@@ -20,6 +22,7 @@ export default {
       type: String,
       required: true
     },
+    isModal: Boolean,
     isMore: Boolean
   },
   emits: [

@@ -35,7 +35,7 @@
 
 <script>
 import BaseIcon from '@/BaseIcon.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import InfoBlock from './BaseDropdownItem/InfoBlock.vue'
 
 export default {

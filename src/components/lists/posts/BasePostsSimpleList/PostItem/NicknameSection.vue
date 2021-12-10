@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 
 export default {

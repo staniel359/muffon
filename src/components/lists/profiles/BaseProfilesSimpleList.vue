@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import ProfileItem from './BaseProfilesSimpleList/ProfileItem.vue'
 import { collection as formatCollection } from '#/formatters'
 

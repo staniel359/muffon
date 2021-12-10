@@ -35,7 +35,7 @@
 
 <script>
 import BasePlaylistPageContainer
-  from '@/containers/pages/profile/playlist/BasePlaylistPageContainer.vue'
+  from '@/containers/pages/playlist/BasePlaylistPageContainer.vue'
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'

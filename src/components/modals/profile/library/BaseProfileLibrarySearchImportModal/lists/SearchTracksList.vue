@@ -1,5 +1,5 @@
 <template>
-  <BasePaginatedContainer
+  <BasePaginatedListContainer
     v-if="tracks.length"
     ref="pagination"
     scope="tracks"
@@ -20,17 +20,18 @@
         @deleteButtonClick="handleDeleteButtonClick"
       />
     </template>
-  </BasePaginatedContainer>
+  </BasePaginatedListContainer>
 </template>
 
 <script>
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'SearchTracksList',
   components: {
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseTracksSimpleList
   },
   inject: [

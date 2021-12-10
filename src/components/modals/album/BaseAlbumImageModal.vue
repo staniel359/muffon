@@ -1,5 +1,7 @@
 <template>
-  <BaseImageModalContainer>
+  <BaseImageModalContainer
+    @init="handleInit"
+  >
     <div class="main-image-modal-content">
       <BaseImage :image="image" />
     </div>
@@ -7,8 +9,9 @@
 </template>
 
 <script>
-import BaseImageModalContainer from '@/containers/BaseImageModalContainer.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseImageModalContainer
+  from '@/containers/modals/BaseImageModalContainer.vue'
+import BaseImage from '@/images/BaseImage.vue'
 
 export default {
   name: 'BaseAlbumImageModal',
@@ -18,6 +21,14 @@ export default {
   },
   props: {
     image: String
+  },
+  emits: [
+    'init'
+  ],
+  methods: {
+    handleInit (el) {
+      this.$emit('init', el)
+    }
   }
 }
 </script>

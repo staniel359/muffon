@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer ref="modal">
     <div class="content">
-      <BasePlaylistEditContainer
+      <BasePlaylistEditFormContainer
         class="main-playlist-form"
         :playlistId="playlistId"
         :image="image"
@@ -21,26 +21,26 @@
         </div>
 
         <SubmitButton />
-      </BasePlaylistEditContainer>
+      </BasePlaylistEditFormContainer>
     </div>
   </BaseModalContainer>
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import BasePlaylistEditContainer
-  from '@/containers/playlist/BasePlaylistEditContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BasePlaylistEditFormContainer
+  from '@/containers/forms/playlist/BasePlaylistEditFormContainer.vue'
 import BasePlaylistImageField
-  from '@/models/playlist/fields/BasePlaylistImageField.vue'
+  from '@/fields/playlist/BasePlaylistImageField.vue'
 import BasePlaylistTitleField
-  from '@/models/playlist/fields/BasePlaylistTitleField.vue'
+  from '@/fields/playlist/BasePlaylistTitleField.vue'
 import SubmitButton from './BasePlaylistEditModal/SubmitButton.vue'
 
 export default {
   name: 'BasePlaylistEditModal',
   components: {
     BaseModalContainer,
-    BasePlaylistEditContainer,
+    BasePlaylistEditFormContainer,
     BasePlaylistImageField,
     BasePlaylistTitleField,
     SubmitButton

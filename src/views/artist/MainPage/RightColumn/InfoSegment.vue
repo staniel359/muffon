@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import InfoSection from './InfoSegment/InfoSection.vue'
 
 export default {
