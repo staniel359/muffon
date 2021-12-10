@@ -3,9 +3,12 @@
     "navigation": {
       "start": "Pagina iniziale",
       "artists": "Artisti",
+      "artist": "Artista",
       "albums": "Album",
+      "albumGroups": "Gruppi di album",
       "tracks": "Brani",
       "tags": "Tag",
+      "tag": "Tag",
       "similar": "Simili",
       "images": "Immagini",
       "videoChannels": "Canali video",
@@ -17,6 +20,8 @@
       "favorites": "Preferiti",
       "tops": "In evidenza",
       "playlists": "Playlist",
+      "radio": "Radio",
+      "posts": "Post",
       "model": {
         "artists": "Artisti {modelName}",
         "albums": "Album {modelName}",
@@ -26,7 +31,8 @@
         "videos": "Video {modelName}",
         "library": "Libreria {modelName}",
         "favorites": "Preferiti {nickname}",
-        "playlists": "Playlist {nickname}"
+        "playlists": "Playlist {nickname}",
+        "posts": "{modelName} post"
       },
       "top": {
         "artists": "Artisti in evidenza",
@@ -148,8 +154,17 @@
         "empty": "Nessun testo"
       }
     },
-    "library": {
-      "since": "In libreria dal"
+    "profile": {
+      "library": {
+        "since": "In libreria dal"
+      },
+      "compatibility": {
+        "header": "Livello di compatibilità con {profileNickname}",
+        "common": "Hai in comune:",
+        "artists": "{count} artisti",
+        "albums": "{count} album",
+        "tracks": "{count} brani"
+      }
     },
     "recommendations": {
       "filter": "Filtro"
@@ -162,6 +177,7 @@
     "cancel": "Annulla",
     "delete": "Cancella",
     "retry": "Riprova",
+    "post": "Post",
     "from": {
       "search": "dalla ricerca",
       "folder": "dalla cartella",
@@ -170,7 +186,8 @@
     }
   },
   "inputs": {
-    "search": "Ricerca..."
+    "search": "Ricerca...",
+    "post": "Scrivi qualcosa..."
   },
   "modals": {
     "undo": "Questa azione non potrà essere annullata.",
@@ -180,6 +197,7 @@
     "error": "Errore",
     "more": "Altro...",
     "loading": "Caricamento...",
+    "next": "Prossimo",
     "track": {
       "source": "Via {source}"
     },
@@ -191,7 +209,8 @@
           "albums": "Nessun album",
           "tracks": "Nessun brano",
           "playlists": "Nessuna playlist",
-          "recommendations": "Nessun consiglio"
+          "recommendations": "Nessun consiglio",
+          "posts": "Nessun post"
         },
         "content": "Non c'è ancora nulla qui"
       }
@@ -296,7 +315,6 @@
         "sections": {
           "extra": "Altre informazioni"
         },
-        "success": "Profilo salvato",
         "errors": {
           "notFound": "Email o password errati",
           "empty": {
@@ -423,12 +441,23 @@
         "going": "Stai per cancellare {playlistTrackFullTitle} dalla playlist {playlistTitle}."
       }
     },
+    "post": {
+      "delete": {
+        "header": "Cancella post",
+        "going": "Stai per cancellare questo post."
+      }
+    },
+    "updated": {
+      "profile": "Il profilo è stato aggiornato",
+      "post": "Il post è stato aggiornato"
+    },
     "deleted": {
       "artist": "L'artista è stato eliminato",
       "album": "L'album è stato eliminato",
       "track": "Il brano è stato eliminato",
       "recommendation": "Il consiglio è stato eliminato",
-      "playlist": "La playlist è stata cancellata"
+      "playlist": "La playlist è stata cancellata",
+      "post": "Il post è stato cancellato"
     }
   },
   "temp": {
