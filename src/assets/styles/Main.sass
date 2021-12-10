@@ -621,3 +621,18 @@ a
       @extend .no-margin
     & > .add-buttons
       @extend .flex-full
+
+.main-percent-circle
+  & > path
+    fill: none
+    &.background
+      stroke: $colorGrey
+      &.inverted
+        stroke: $colorGreyInverted
+    &.main
+      stroke: $colorBase
+  & > text
+    text-anchor: middle
+    font-size: 14px
+    &.inverted
+      fill: $colorWhite

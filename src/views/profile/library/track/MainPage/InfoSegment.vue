@@ -202,7 +202,7 @@ export default {
     },
     sinceFormatted () {
       return this.$t(
-        'pages.library.since'
+        'pages.profile.library.since'
       )
     },
     createdFormatted () {
