@@ -72,9 +72,10 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseDivider from '@/BaseDivider.vue'
@@ -157,7 +158,7 @@ export default {
     },
     sinceFormatted () {
       return this.$t(
-        'pages.library.since'
+        'pages.profile.library.since'
       )
     },
     createdFormatted () {

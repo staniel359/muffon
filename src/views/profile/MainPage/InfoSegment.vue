@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import MainInfoSection from './InfoSegment/MainInfoSection.vue'
 import ExtraInfoSection from './InfoSegment/ExtraInfoSection.vue'
 

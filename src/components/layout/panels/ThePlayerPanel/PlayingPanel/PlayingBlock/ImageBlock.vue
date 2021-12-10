@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 
 export default {

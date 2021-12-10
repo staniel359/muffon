@@ -13,7 +13,7 @@
         ]"
         :isLoading="pageSlotProps.isLoading"
       >
-        <BasePaginatedContainer
+        <BasePaginatedListContainer
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.trackData"
@@ -30,7 +30,7 @@
               :profileId="pageSlotProps.profileId"
             ></slot>
           </template>
-        </BasePaginatedContainer>
+        </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
   </BaseTrackPageContainer>
@@ -38,15 +38,17 @@
 
 <script>
 import BaseTrackPageContainer from './BaseTrackPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseTrackPaginatedPageContainer',
   components: {
     BaseTrackPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer
+    BasePaginatedListContainer
   },
   props: {
     pageNameKey: String,

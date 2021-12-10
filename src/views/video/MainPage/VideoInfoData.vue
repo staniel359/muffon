@@ -57,7 +57,7 @@
 
 <script>
 import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import BaseLabel from '@/BaseLabel.vue'
 import BaseVideoTags from '@/models/video/BaseVideoTags.vue'
 import BaseDivider from '@/BaseDivider.vue'

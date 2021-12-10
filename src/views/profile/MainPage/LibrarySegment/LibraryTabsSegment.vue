@@ -23,10 +23,11 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseTabsContainer from '@/containers/BaseTabsContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
 import BaseProfileLibraryTabContainer
-  from '@/containers/profile/BaseProfileLibraryTabContainer.vue'
+  from '@/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {

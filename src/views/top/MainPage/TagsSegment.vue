@@ -15,7 +15,7 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '@/containers/pages/top/BaseTopPaginatedSegmentContainer.vue'
+  from '@/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 
 export default {

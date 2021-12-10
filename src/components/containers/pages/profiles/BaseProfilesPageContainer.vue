@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/BasePageContainer.vue'
+import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilesPageNavigation from '#/formatters/navigation/profiles'
 import formatProfilesPageTab from '#/formatters/tabs/profiles'

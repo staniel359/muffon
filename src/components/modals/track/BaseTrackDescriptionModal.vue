@@ -6,8 +6,9 @@
     :trackTitle="trackTitle"
   >
     <template #default="slotProps">
-      <BaseModalDescription
+      <BaseDescription
         :description="slotProps.description"
+        isModal
       />
     </template>
   </BaseTrackModalContainer>
@@ -15,14 +16,14 @@
 
 <script>
 import BaseTrackModalContainer
-  from '@/containers/track/BaseTrackModalContainer.vue'
-import BaseModalDescription from '@/BaseModalDescription.vue'
+  from '@/containers/modals/track/BaseTrackModalContainer.vue'
+import BaseDescription from '@/BaseDescription.vue'
 
 export default {
   name: 'BaseTrackDescriptionModal',
   components: {
     BaseTrackModalContainer,
-    BaseModalDescription
+    BaseDescription
   },
   props: {
     artistName: String,

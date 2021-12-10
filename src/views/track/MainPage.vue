@@ -45,7 +45,8 @@
 <script>
 import BaseTrackPageContainer
   from '@/containers/pages/track/BaseTrackPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import TrackSourceSelect from './MainPage/TrackSourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'

@@ -22,7 +22,7 @@
           class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
-          <BasePaginatedContainer
+          <BasePaginatedListContainer
             ref="paginatedContainer"
             scope="recommendations"
             :isLoading="pageSlotProps.isLoading"
@@ -46,7 +46,7 @@
                 isRecommendation
               />
             </template>
-          </BasePaginatedContainer>
+          </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
@@ -57,9 +57,11 @@
 import { mapState } from 'vuex'
 import BaseRecommendationsPageContainer
   from '@/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import FiltersSegment from './RecommendationsPage/FiltersSegment.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsExtendedList
   from '@/lists/artists/BaseArtistsExtendedList.vue'
 
@@ -69,7 +71,7 @@ export default {
     BaseRecommendationsPageContainer,
     BaseSegmentContainer,
     FiltersSegment,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseArtistsExtendedList
   },
   data () {

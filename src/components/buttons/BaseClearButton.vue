@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 
 export default {

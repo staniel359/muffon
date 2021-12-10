@@ -4,6 +4,12 @@
       :profileId="profileId"
     />
 
+    <CompatibilitySegment
+      v-if="isRenderCompatibility"
+      :profileId="profileId"
+      :profileNickname="profileNickname"
+    />
+
     <StatisticsSegment
       :profileId="profileId"
     />
@@ -16,18 +22,29 @@
 
 <script>
 import HeaderSegment from './LibrarySegment/HeaderSegment.vue'
+import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'LibrarySegment',
   components: {
     HeaderSegment,
+    CompatibilitySegment,
     StatisticsSegment,
     LibraryTabsSegment
   },
   props: {
-    profileId: String
+    profileId: String,
+    profileNickname: String
+  },
+  computed: {
+    isRenderCompatibility () {
+      return !isCurrentProfile(
+        this.profileId
+      )
+    }
   }
 }
 </script>

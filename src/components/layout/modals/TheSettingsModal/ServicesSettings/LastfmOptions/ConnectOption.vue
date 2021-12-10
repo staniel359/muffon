@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import fetchLastfmTokenData from '#/actions/api/lastfm/connect/token/fetchData'
 import fetchLastfmSessionData

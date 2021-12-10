@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import BaseMessage from '@/BaseMessage.vue'
+import BaseMessage from '@/messages/BaseMessage.vue'
 import SearchTracksList from '../../../lists/SearchTracksList.vue'
 import BaseRetryButton from '@/buttons/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'

@@ -35,7 +35,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BasePlaylistLibraryImportModal/SearchInput.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import BaseDivider from '@/BaseDivider.vue'

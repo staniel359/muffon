@@ -20,7 +20,7 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '@/containers/pages/top/BaseTopPaginatedSegmentContainer.vue'
+  from '@/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
 
 export default {

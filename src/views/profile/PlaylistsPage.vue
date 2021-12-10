@@ -30,7 +30,7 @@
           class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
-          <BasePaginatedContainer
+          <BasePaginatedListContainer
             scope="playlists"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
@@ -47,7 +47,7 @@
                 :profileId="profileId"
               />
             </template>
-          </BasePaginatedContainer>
+          </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
@@ -57,11 +57,13 @@
 <script>
 import BasePlaylistsPageContainer
   from '@/containers/pages/profile/playlists/BasePlaylistsPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import BasePlaylistCreateModal
   from '@/modals/playlist/BasePlaylistCreateModal.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
   from '@/lists/playlists/BasePlaylistsSimpleList.vue'
 import { isCurrentProfile } from '#/utils'
@@ -73,7 +75,7 @@ export default {
     BaseSegmentContainer,
     BaseButton,
     BasePlaylistCreateModal,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BasePlaylistsSimpleList
   },
   props: {

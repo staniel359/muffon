@@ -24,7 +24,8 @@
 <script>
 import BaseChannelPageContainer
   from '@/containers/pages/video/BaseChannelPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseVideosPaginatedList
   from '@/lists/videos/BaseVideosPaginatedList.vue'
 

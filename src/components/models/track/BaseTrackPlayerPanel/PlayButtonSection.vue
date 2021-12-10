@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseButtonContainer from '@/containers/BaseButtonContainer.vue'
+import BaseButtonContainer from '@/containers/buttons/BaseButtonContainer.vue'
 import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
 import { collection as formatCollection } from '#/formatters'

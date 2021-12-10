@@ -5,6 +5,7 @@
       :key="albumData.uuid"
       :albumData="albumData"
       :isWithArtistName="isWithArtistName"
+      :isLinkToLibrary="isLinkToLibrary"
       :isWithListenersCount="isWithListenersCount"
       :isWithLibraryOption="isWithLibraryOption"
       :isWithFavoriteOption="isWithFavoriteOption"
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import AlbumItem from './BaseAlbumsSimpleList/AlbumItem.vue'
 import { collection as formatCollection } from '#/formatters'
 
@@ -47,6 +48,7 @@ export default {
     },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
+    isLinkToLibrary: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

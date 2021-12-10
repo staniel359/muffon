@@ -1,5 +1,5 @@
 <template>
-  <BaseSourceItemContainer
+  <BaseTrackSourceItemContainer
     :sourceId="sourceId"
     :query="query"
   >
@@ -12,18 +12,18 @@
         :isWithMaxBitrate="isWithMaxBitrate"
       />
     </template>
-  </BaseSourceItemContainer>
+  </BaseTrackSourceItemContainer>
 </template>
 
 <script>
-import BaseSourceItemContainer
-  from '@/containers/track/BaseTrackSourceSelect/BaseSourceItemContainer.vue'
+import BaseTrackSourceItemContainer
+  from '@/containers/track/BaseTrackSourceItemContainer.vue'
 import SourceItemContent from './SourceItem/SourceItemContent.vue'
 
 export default {
   name: 'SourceItem',
   components: {
-    BaseSourceItemContainer,
+    BaseTrackSourceItemContainer,
     SourceItemContent
   },
   props: {

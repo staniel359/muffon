@@ -26,7 +26,7 @@
 
 <script>
 import BaseArtistPaginatedSegmentContainer
-  from '@/containers/pages/artist/BaseArtistPaginatedSegmentContainer.vue'
+  from '@/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import { tracks as formatArtistTracksLink } from '#/formatters/links/artist'
 

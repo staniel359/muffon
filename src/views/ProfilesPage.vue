@@ -13,7 +13,7 @@
         :error="pageSlotProps.error"
         @refresh="pageSlotProps.handleRefresh"
       >
-        <BasePaginatedContainer
+        <BasePaginatedListContainer
           scope="profiles"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
@@ -29,7 +29,7 @@
               :profiles="slotProps.profiles"
             />
           </template>
-        </BasePaginatedContainer>
+        </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
   </BaseProfilesPageContainer>
@@ -38,8 +38,10 @@
 <script>
 import BaseProfilesPageContainer
   from '@/containers/pages/profiles/BaseProfilesPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseProfilesSimpleList from '@/lists/profiles/BaseProfilesSimpleList.vue'
 
 export default {
@@ -47,7 +49,7 @@ export default {
   components: {
     BaseProfilesPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseProfilesSimpleList
   },
   data () {

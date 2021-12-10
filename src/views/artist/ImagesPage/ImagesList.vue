@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import { collection as formatCollection } from '#/formatters'
 import { goToSliderSlide } from '#/actions/plugins/slick'
 import { showModal } from '#/actions/plugins/semantic'
@@ -39,12 +39,17 @@ export default {
   },
   computed: {
     imagesFormatted () {
-      return formatCollection(this.images)
+      return formatCollection(
+        this.images
+      )
     }
   },
   methods: {
     handleImageClick (index) {
-      goToSliderSlide(this.mainSlider, index)
+      goToSliderSlide(
+        this.mainSlider,
+        index
+      )
 
       this.$nextTick(() => {
         showModal(this.modal)

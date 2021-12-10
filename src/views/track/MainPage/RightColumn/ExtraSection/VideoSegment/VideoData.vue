@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import { setEmbed } from '#/actions/plugins/semantic'
 import { mainEmbedOptions } from '#/data/plugins/semantic'
 import { main as formatVideoMainLink } from '#/formatters/links/video'

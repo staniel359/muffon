@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/BaseListContainer.vue'
+import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import TrackItem from './BaseTracksSimpleList/TrackItem.vue'
 import { collection as formatCollection } from '#/formatters'
 import { track as formatTrack } from '#/formatters/track'

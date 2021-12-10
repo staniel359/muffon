@@ -11,7 +11,7 @@
       class="playlists-segment"
       :isLoading="isLoading"
     >
-      <BasePaginatedContainer
+      <BasePaginatedListContainer
         scope="playlists"
         :isLoading="isLoading"
         :error="error"
@@ -28,15 +28,17 @@
             :profileId="profileId"
           />
         </template>
-      </BasePaginatedContainer>
+      </BasePaginatedListContainer>
     </BaseSegmentContainer>
   </div>
 </template>
 
 <script>
 import HeaderSegment from './PlaylistsSegment/HeaderSegment.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
   from '@/lists/playlists/BasePlaylistsSimpleList.vue'
 import fetchProfilePlaylistsData
@@ -48,7 +50,7 @@ export default {
   components: {
     HeaderSegment,
     BaseSegmentContainer,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BasePlaylistsSimpleList
   },
   props: {

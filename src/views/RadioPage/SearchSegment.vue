@@ -30,7 +30,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import ScopeSelect from './SearchSegment/ScopeSelect.vue'
 import TagScopeSelect from './SearchSegment/TagScopeSelect.vue'
 import ArtistScopeSelect from './SearchSegment/ArtistScopeSelect.vue'

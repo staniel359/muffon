@@ -21,7 +21,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'

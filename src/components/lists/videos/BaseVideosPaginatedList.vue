@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseVideosSimpleList from './BaseVideosSimpleList.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseSimplePagination from '@/BaseSimplePagination.vue'

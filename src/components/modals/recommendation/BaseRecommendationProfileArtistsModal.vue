@@ -11,7 +11,7 @@
       :error="error"
       @init="handleInit"
     >
-      <BasePaginatedContainer
+      <BasePaginatedListContainer
         v-if="recommendationData"
         scope="profile_artists"
         :isLoading="isLoading"
@@ -31,15 +31,17 @@
             @linkClick="handleLinkClick"
           />
         </template>
-      </BasePaginatedContainer>
+      </BasePaginatedListContainer>
     </BaseSegmentContainer>
   </BaseModalContainer>
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import fetchRecommendationData from '#/actions/api/recommendation/fetchData'
 
@@ -48,7 +50,7 @@ export default {
   components: {
     BaseModalContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseArtistsSimpleList
   },
   props: {
@@ -68,7 +70,7 @@ export default {
       scrollable: null,
       isLoading: false,
       isOpen: false,
-      limit: 20
+      limit: 50
     }
   },
   computed: {
@@ -88,7 +90,9 @@ export default {
       this.scrollable = el
     },
     handleIsOpenChange (value) {
-      value && this.fetchData()
+      if (value) {
+        this.fetchData()
+      }
     },
     handleRefresh (page) {
       this.fetchData(page)

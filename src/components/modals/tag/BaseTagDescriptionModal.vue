@@ -5,22 +5,24 @@
     :tagName="tagName"
   >
     <template #default="slotProps">
-      <BaseModalDescription
+      <BaseDescription
         :description="slotProps.description"
+        isModal
       />
     </template>
   </BaseTagModalContainer>
 </template>
 
 <script>
-import BaseTagModalContainer from '@/containers/tag/BaseTagModalContainer.vue'
-import BaseModalDescription from '@/BaseModalDescription.vue'
+import BaseTagModalContainer
+  from '@/containers/modals/tag/BaseTagModalContainer.vue'
+import BaseDescription from '@/BaseDescription.vue'
 
 export default {
   name: 'BaseTagDescriptionModal',
   components: {
     BaseTagModalContainer,
-    BaseModalDescription
+    BaseDescription
   },
   props: {
     tagName: String

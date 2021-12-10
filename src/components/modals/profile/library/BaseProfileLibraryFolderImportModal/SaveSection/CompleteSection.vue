@@ -19,7 +19,7 @@
 
 <script>
 import RetrySection from './CompleteSection/RetrySection.vue'
-import BaseMessage from '@/BaseMessage.vue'
+import BaseMessage from '@/messages/BaseMessage.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {

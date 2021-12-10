@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import { collection as formatCollection } from '#/formatters'
 
 export default {

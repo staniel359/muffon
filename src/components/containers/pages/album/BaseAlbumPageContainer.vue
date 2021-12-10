@@ -20,7 +20,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePageContainer from '@/containers/BasePageContainer.vue'
+import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatAlbumPageNavigation from '#/formatters/navigation/album'
 import formatAlbumPageTab from '#/formatters/tabs/album'

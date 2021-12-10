@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseStatistics from '@/BaseStatistics.vue'
 import {
   tracks as formatProfileLibraryAlbumTracksLink

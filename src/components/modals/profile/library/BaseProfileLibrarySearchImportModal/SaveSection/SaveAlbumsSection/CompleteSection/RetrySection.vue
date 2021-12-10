@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import BaseMessage from '@/BaseMessage.vue'
+import BaseMessage from '@/messages/BaseMessage.vue'
 import SearchAlbumsList from '../../../lists/SearchAlbumsList.vue'
 import BaseRetryButton from '@/buttons/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'

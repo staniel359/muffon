@@ -18,7 +18,7 @@
 
 <script>
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import { main as formatTrackMainLink } from '#/formatters/links/track'
 import {
   main as formatProfileLibraryTrackMainLink

@@ -15,8 +15,9 @@
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseImage from '@/BaseImage.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import fetchTagData from '#/actions/api/tag/fetchData'
 import { collection as formatCollection } from '#/formatters'
 

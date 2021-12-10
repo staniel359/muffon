@@ -23,7 +23,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import postArtistData from '#/actions/api/profile/library/artists/postData'
 import postAlbumData from '#/actions/api/profile/library/albums/postData'
 import postTrackData from '#/actions/api/profile/library/tracks/postData'

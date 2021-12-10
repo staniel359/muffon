@@ -10,7 +10,7 @@
       />
     </div>
 
-    <BasePaginatedContainer
+    <BasePaginatedListContainer
       scope="files"
       :responseData="errorFilesData"
       :clientPageLimit="limit"
@@ -32,7 +32,7 @@
           @deleteButtonClick="handleDeleteButtonClick"
         />
       </template>
-    </BasePaginatedContainer>
+    </BasePaginatedListContainer>
   </div>
 
   <BaseRetryButton
@@ -41,8 +41,9 @@
 </template>
 
 <script>
-import BaseMessage from '@/BaseMessage.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseMessage from '@/messages/BaseMessage.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import BaseRetryButton from '@/buttons/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'
@@ -51,7 +52,7 @@ export default {
   name: 'RetrySection',
   components: {
     BaseMessage,
-    BasePaginatedContainer,
+    BasePaginatedListContainer,
     BaseTracksSimpleList,
     BaseRetryButton
   },

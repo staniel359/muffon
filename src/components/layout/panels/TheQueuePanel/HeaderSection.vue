@@ -12,7 +12,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import { number as formatNumber } from '#/formatters'
 
 export default {

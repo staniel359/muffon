@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import FolderSelectSection
   from './BaseProfileLibraryFolderImportModal/FolderSelectSection.vue'
 import BaseDivider from '@/BaseDivider.vue'

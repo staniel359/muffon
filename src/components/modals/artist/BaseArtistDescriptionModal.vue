@@ -5,8 +5,9 @@
     :artistName="artistName"
   >
     <template #default="slotProps">
-      <BaseModalDescription
+      <BaseDescription
         :description="slotProps.description"
+        isModal
       />
     </template>
   </BaseArtistModalContainer>
@@ -14,14 +15,14 @@
 
 <script>
 import BaseArtistModalContainer
-  from '@/containers/artist/BaseArtistModalContainer.vue'
-import BaseModalDescription from '@/BaseModalDescription.vue'
+  from '@/containers/modals/artist/BaseArtistModalContainer.vue'
+import BaseDescription from '@/BaseDescription.vue'
 
 export default {
   name: 'BaseArtistDescriptionModal',
   components: {
     BaseArtistModalContainer,
-    BaseModalDescription
+    BaseDescription
   },
   props: {
     artistName: String

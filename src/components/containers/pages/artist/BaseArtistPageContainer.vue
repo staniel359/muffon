@@ -23,7 +23,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePageContainer from '@/containers/BasePageContainer.vue'
+import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatArtistPageNavigation from '#/formatters/navigation/artist'
 import formatArtistPageTab from '#/formatters/tabs/artist'

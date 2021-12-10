@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/BaseModalContainer.vue'
+import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import SearchArtistsInput
   from './BaseProfileLibrarySearchImportModal/inputs/SearchArtistsInput.vue'
 import SearchAlbumsInput

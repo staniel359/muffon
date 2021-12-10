@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/BasePageContainer.vue'
+import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatTopPageNavigation from '#/formatters/navigation/top'
 import formatTopPageTab from '#/formatters/tabs/top'

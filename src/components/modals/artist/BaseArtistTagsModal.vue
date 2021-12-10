@@ -15,7 +15,7 @@
 
 <script>
 import BaseArtistModalContainer
-  from '@/containers/artist/BaseArtistModalContainer.vue'
+  from '@/containers/modals/artist/BaseArtistModalContainer.vue'
 import BaseModalTagsList from '@/lists/tags/BaseModalTagsList.vue'
 
 export default {

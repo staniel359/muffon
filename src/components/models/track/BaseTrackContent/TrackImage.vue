@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseImage from '@/BaseImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 
 export default {
   name: 'TrackImage',

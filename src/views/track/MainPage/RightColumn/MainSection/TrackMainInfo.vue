@@ -32,7 +32,7 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumSourceParams

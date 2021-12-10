@@ -16,7 +16,7 @@
         ]"
         :isLoading="pageSlotProps.isLoading"
       >
-        <BasePaginatedContainer
+        <BasePaginatedListContainer
           ref="paginatedContainer"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
@@ -34,7 +34,7 @@
               :artistName="pageSlotProps.artistName"
             ></slot>
           </template>
-        </BasePaginatedContainer>
+        </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
   </BaseProfileLibraryArtistPageContainer>
@@ -43,15 +43,17 @@
 <script>
 import BaseProfileLibraryArtistPageContainer
   from './BaseProfileLibraryArtistPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BasePaginatedContainer from '@/containers/BasePaginatedContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedListContainer
+  from '@/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseProfileLibraryArtistPaginatedPageContainer',
   components: {
     BaseProfileLibraryArtistPageContainer,
     BaseSegmentContainer,
-    BasePaginatedContainer
+    BasePaginatedListContainer
   },
   props: {
     profileId: String,

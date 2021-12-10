@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { main as formatTopMainLink } from '#/formatters/links/top'
 

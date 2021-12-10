@@ -24,7 +24,7 @@
 
 <script>
 import BaseTagPaginatedSegmentContainer
-  from '@/containers/pages/tag/BaseTagPaginatedSegmentContainer.vue'
+  from '@/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 import { albums as formatTagAlbumsLink } from '#/formatters/links/tag'
 

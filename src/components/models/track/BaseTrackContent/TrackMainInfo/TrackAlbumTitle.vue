@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BaseLink from '@/BaseLink.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import {
   main as formatProfileLibraryAlbumMainLink

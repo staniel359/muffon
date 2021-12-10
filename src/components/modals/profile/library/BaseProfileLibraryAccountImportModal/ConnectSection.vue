@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import BaseDivider from '@/BaseDivider.vue'

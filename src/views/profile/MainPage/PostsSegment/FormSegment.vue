@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer>
-    <BaseCreatePostContainer
+    <BasePostCreateFormContainer
       class="main-post-form"
       :profileId="profileId"
       :tracks="tracks"
@@ -33,14 +33,15 @@
           class="submit-button"
         />
       </div>
-    </BaseCreatePostContainer>
+    </BasePostCreateFormContainer>
   </BaseSegmentContainer>
 </template>
 
 <script>
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
-import BaseCreatePostContainer
-  from '@/containers/post/BaseCreatePostContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
+import BasePostCreateFormContainer
+  from '@/containers/forms/post/BasePostCreateFormContainer.vue'
 import BasePostContentField from '@/models/post/BasePostContentField.vue'
 import BasePostImagesSection from '@/models/post/BasePostImagesSection.vue'
 import BasePostTracksSection from '@/models/post/BasePostTracksSection.vue'
@@ -52,7 +53,7 @@ export default {
   name: 'FormSegment',
   components: {
     BaseSegmentContainer,
-    BaseCreatePostContainer,
+    BasePostCreateFormContainer,
     BasePostContentField,
     BasePostImagesSection,
     BasePostTracksSection,

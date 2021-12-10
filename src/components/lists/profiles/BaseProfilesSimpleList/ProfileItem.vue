@@ -24,7 +24,7 @@
 
       <div class="description">
         <small>
-          <BaseGenderAge
+          <BaseProfileGenderAge
             v-if="gender || birthdate"
             :gender="gender"
             :birthdate="birthdate"
@@ -32,7 +32,7 @@
         </small>
 
         <small>
-          <BaseCityCountry
+          <BaseProfileCityCountry
             v-if="city || country"
             :city="city"
             :country="country"
@@ -44,12 +44,13 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/BaseLinkContainer.vue'
+import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseLabel from '@/BaseLabel.vue'
-import BaseGenderAge from '@/models/profile/BaseGenderAge.vue'
-import BaseCityCountry from '@/models/profile/BaseCityCountry.vue'
+import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
+import BaseProfileCityCountry
+  from '@/models/profile/BaseProfileCityCountry.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 
 export default {
@@ -59,8 +60,8 @@ export default {
     BaseProfileImage,
     BaseHeader,
     BaseLabel,
-    BaseGenderAge,
-    BaseCityCountry
+    BaseProfileGenderAge,
+    BaseProfileCityCountry
   },
   props: {
     profileData: {

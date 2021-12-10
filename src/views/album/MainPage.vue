@@ -47,7 +47,8 @@
 <script>
 import BaseAlbumPageContainer
   from '@/containers/pages/album/BaseAlbumPageContainer.vue'
-import BaseSegmentContainer from '@/containers/BaseSegmentContainer.vue'
+import BaseSegmentContainer
+  from '@/containers/segments/BaseSegmentContainer.vue'
 import AlbumSourceSelect from './MainPage/AlbumSourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
