@@ -47,6 +47,11 @@
           isWhite
         />
       </div>
+
+      <RecommendedSegment
+        v-if="recommendationData"
+        :recommendationData="recommendationData"
+      />
     </div>
   </div>
 </template>
@@ -59,6 +64,7 @@ import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
 
 export default {
   name: 'LeftColumn',
@@ -68,7 +74,8 @@ export default {
     BaseHeader,
     BaseSegmentContainer,
     BaseSelfIcons,
-    BaseOptionsDropdown
+    BaseOptionsDropdown,
+    RecommendedSegment
   },
   provide () {
     return {
@@ -104,6 +111,9 @@ export default {
           this.bookmarkId ||
           this.listenedId
       )
+    },
+    recommendationData () {
+      return this.artistData.recommendation
     }
   },
   mounted () {
