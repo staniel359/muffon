@@ -12,9 +12,11 @@ export default function ({
 
   const profileId =
     store.state.profile.info.id
-  const url = `profiles/${profileId}` +
+  const url = (
+    `profiles/${profileId}` +
     `/recommendations/${recommendationId}` +
-    '/artists'
+    `/${scope}`
+  )
 
   const { token } = store.state.profile
   const params = {

@@ -140,6 +140,13 @@
     }
   },
   "pages": {
+    "artist": {
+      "recommended": {
+        "header": "Рекомендовано Вам",
+        "based": "На основе Ваших:",
+        "artists": "{count} исполнителей"
+      }
+    },
     "track": {
       "videos": {
         "find": "Найти видео",

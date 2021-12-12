@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
@@ -57,10 +58,6 @@ export default {
     recommendationId: {
       type: String,
       required: true
-    },
-    profileId: {
-      type: String,
-      required: true
     }
   },
   data () {
@@ -74,6 +71,12 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     recommendationDataArgs () {
       return {
         recommendationId: this.recommendationId,
