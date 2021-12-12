@@ -3,7 +3,7 @@
     class="main-segment-container"
   >
     <BaseAccordionContainer
-      :title="headerFormatted"
+      :title="addText"
     >
       <SearchImportBlock />
       <AccountImportBlock />
@@ -30,7 +30,7 @@ export default {
     FolderImportBlock
   },
   computed: {
-    headerFormatted () {
+    addText () {
       return this.$t(
         'shared.library.add'
       )

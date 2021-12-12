@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="favoritesLinkFormatted"
+    :link="favoritesLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="star grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="favoritesText"
       />
     </div>
   </BaseLinkContainer>
@@ -34,7 +34,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    favoritesLinkFormatted () {
+    favoritesLink () {
       return formatProfileFavoritesLink({
         profileId: this.profileId
       })
@@ -42,7 +42,7 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    textFormatted () {
+    favoritesText () {
       return this.$t(
         'layout.navigation.favorites'
       )

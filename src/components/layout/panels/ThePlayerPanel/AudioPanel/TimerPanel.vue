@@ -1,6 +1,6 @@
 <template>
   <div class="player-timer">
-    {{ audioCurrentTimeFormatted }} / {{ audioDurationFormatted }}
+    {{ audioTime }}
   </div>
 </template>
 
@@ -15,12 +15,18 @@ export default {
       audioCurrentTime: 'currentTime',
       audioDuration: 'duration'
     }),
-    audioCurrentTimeFormatted () {
+    audioTime () {
+      return [
+        this.audioCurrentTimeSeconds,
+        this.audioDurationSeconds
+      ].join(' / ')
+    },
+    audioCurrentTimeSeconds () {
       return formatSeconds(
         this.audioCurrentTime
       )
     },
-    audioDurationFormatted () {
+    audioDurationSeconds () {
       return formatSeconds(
         this.audioDuration
       )

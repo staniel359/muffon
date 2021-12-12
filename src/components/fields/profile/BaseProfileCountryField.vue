@@ -10,7 +10,7 @@
       >
 
       <div class="default text">
-        {{ placeholderFormatted }}
+        {{ countryText }}
       </div>
       <i class="dropdown icon"></i>
 
@@ -32,7 +32,7 @@ export default {
     value: String
   },
   computed: {
-    placeholderFormatted () {
+    countryText () {
       return this.$t(
         'shared.profile.form.fields.country'
       )

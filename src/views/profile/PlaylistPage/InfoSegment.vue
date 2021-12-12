@@ -13,12 +13,12 @@
         />
 
         <div>
-          {{ tracksCountTextFormatted }}
+          {{ tracksCountText }}
         </div>
 
         <div class="description main-small-container">
           <small>
-            {{ createdTextFormatted }}
+            {{ createdText }}
           </small>
         </div>
       </div>
@@ -93,7 +93,7 @@ export default {
     playlistTitle () {
       return this.playlistData.title
     },
-    tracksCountTextFormatted () {
+    tracksCountText () {
       return this.$t(
         'shared.tracks',
         { count: this.tracksCountFormatted }
@@ -107,7 +107,7 @@ export default {
     tracksCount () {
       return this.playlistData.tracks_count
     },
-    createdTextFormatted () {
+    createdText () {
       return this.$t(
         'shared.playlist.created',
         { date: this.createdDateFormatted }

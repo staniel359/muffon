@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :link="profileMainLinkFormatted"
+    :link="profileMainLink"
   >
     <BaseProfileImage
       class="circular bordered"
@@ -18,7 +18,7 @@
         <BaseLabel
           v-if="isStaff"
           class="small primary role-label"
-          :text="roleFormatted"
+          :text="roleText"
         />
       </div>
 
@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    profileMainLinkFormatted () {
+    profileMainLink () {
       return formatProfileMainLink({
         profileId: this.profileId
       })
@@ -102,7 +102,7 @@ export default {
     role () {
       return this.profileData.role
     },
-    roleFormatted () {
+    roleText () {
       return this.$t(
         `shared.profile.roles.${this.role}`
       )

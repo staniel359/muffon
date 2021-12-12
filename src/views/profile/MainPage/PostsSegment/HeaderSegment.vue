@@ -2,8 +2,8 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :link="profilePostsLinkFormatted"
-        :text="headerFormatted"
+        :link="profilePostsLink"
+        :text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -32,12 +32,12 @@ export default {
     }
   },
   computed: {
-    profilePostsLinkFormatted () {
+    profilePostsLink () {
       return formatProfilePostsLink({
         profileId: this.profileId
       })
     },
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'layout.navigation.posts'
       )

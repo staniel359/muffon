@@ -5,7 +5,7 @@
   >
     <template v-if="images">
       <BaseImage
-        v-for="imageData in imagesFormatted"
+        v-for="imageData in imagesCollection"
         class="artist-image"
         :key="imageData.uuid"
         :image="imageData.name"
@@ -50,7 +50,7 @@ export default {
     images () {
       return this.tagData?.images
     },
-    imagesFormatted () {
+    imagesCollection () {
       return formatCollection(
         this.images
       )

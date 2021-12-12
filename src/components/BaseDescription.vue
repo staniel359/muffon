@@ -9,7 +9,7 @@
       class="main-link"
       @click="handleMoreClick"
     >
-      {{ moreFormatted }}
+      {{ moreText }}
     </strong>
   </p>
 </template>
@@ -29,8 +29,10 @@ export default {
     'moreClick'
   ],
   computed: {
-    moreFormatted () {
-      return this.$t('shared.more')
+    moreText () {
+      return this.$t(
+        'shared.more'
+      )
     }
   },
   methods: {

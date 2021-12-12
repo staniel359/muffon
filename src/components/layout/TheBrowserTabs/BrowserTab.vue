@@ -57,10 +57,10 @@ export default {
     tabTitle () {
       return (
         this.tabData.title ||
-          this.loadingFormatted
+          this.loadingText
       )
     },
-    loadingFormatted () {
+    loadingText () {
       return this.$t(
         'shared.loading'
       )

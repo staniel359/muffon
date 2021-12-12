@@ -4,7 +4,7 @@
     :class="{ inverted: isDarkMode }"
     type="submit"
   >
-    {{ placeholderFormatted }}
+    {{ loginText }}
   </button>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    placeholderFormatted () {
+    loginText () {
       return this.$t(
         'shared.profile.form.submit.login'
       )

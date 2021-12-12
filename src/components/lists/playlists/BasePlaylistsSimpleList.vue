@@ -1,7 +1,7 @@
 <template>
   <BaseListContainer class="selection">
     <PlaylistItem
-      v-for="playlistData in playlistsFormatted"
+      v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"
       :playlistData="playlistData"
       :profileId="profileId"
@@ -32,7 +32,7 @@ export default {
     profileId: String
   },
   computed: {
-    playlistsFormatted () {
+    playlistsCollection () {
       return formatCollection(
         this.playlists
       )

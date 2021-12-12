@@ -2,7 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
-    :link="linkFormatted"
+    :link="link"
     @click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -176,38 +176,50 @@ export default {
     }
   },
   computed: {
-    linkFormatted () {
+    link () {
       if (this.isLinkToLibrary) {
         if (this.isTracksLinkActive) {
-          return formatProfileLibraryArtistTracksLink({
-            profileId: this.profileId,
-            artistId: this.artistId
-          })
+          return this.profileLibraryArtistTracksLink
         } else if (this.isAlbumsLinkActive) {
-          return formatProfileLibraryArtistAlbumsLink({
-            profileId: this.profileId,
-            artistId: this.artistId
-          })
+          return this.profileLibraryArtistAlbumsLink
         } else {
-          return formatProfileLibraryArtistMainLink({
-            profileId: this.profileId,
-            artistId: this.artistId
-          })
+          return this.profileLibraryArtistMainLink
         }
       } else {
-        return formatArtistMainLink({
-          artistName: this.artistName
-        })
+        return this.artistMainLink
       }
+    },
+    profileLibraryArtistTracksLink () {
+      return formatProfileLibraryArtistTracksLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
     },
     artistId () {
       return this.artistData.id.toString()
     },
-    image () {
-      return this.artistData.image
+    profileLibraryArtistAlbumsLink () {
+      return formatProfileLibraryArtistAlbumsLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    },
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    },
+    artistMainLink () {
+      return formatArtistMainLink({
+        artistName: this.artistName
+      })
     },
     artistName () {
       return this.artistData.name
+    },
+    image () {
+      return this.artistData.image
     },
     listenersCount () {
       return this.artistData.listeners_count

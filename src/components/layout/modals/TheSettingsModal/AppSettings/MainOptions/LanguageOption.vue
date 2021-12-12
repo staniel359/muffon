@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="languageText"
     />
 
     <div
@@ -65,7 +65,7 @@ export default {
     ...mapState('profile', {
       profileLanguage: 'language'
     }),
-    headerFormatted () {
+    languageText () {
       return this.$t(
         'layout.settings.options.app.main.language'
       )

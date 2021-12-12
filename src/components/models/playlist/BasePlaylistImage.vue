@@ -1,7 +1,7 @@
 <template>
   <BaseImage
     class="rounded bordered main-playlist-image"
-    :image="imageFormatted"
+    :image="imageConditional"
   />
 </template>
 
@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    imageFormatted () {
+    imageConditional () {
       return (
         this.image ||
           this.defaultImage

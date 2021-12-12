@@ -2,7 +2,7 @@
   <BaseMessage
     class="success success-message"
     :icons="['check']"
-    :header="headerFormatted"
+    :header="updatedText"
   />
 </template>
 
@@ -15,7 +15,7 @@ export default {
     BaseMessage
   },
   computed: {
-    headerFormatted () {
+    updatedText () {
       return this.$t(
         'shared.updated.profile'
       )

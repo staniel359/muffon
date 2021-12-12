@@ -30,10 +30,10 @@ export default {
     cityWithCountry () {
       return [
         this.city,
-        this.countryFormatted
+        this.countryName
       ].filter(e => e).join(', ')
     },
-    countryFormatted () {
+    countryName () {
       return countries.getName(
         this.country,
         this.profileLanguage

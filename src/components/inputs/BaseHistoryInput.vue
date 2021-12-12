@@ -11,7 +11,7 @@
       ref="input"
       icon="search"
       v-model.trim="input"
-      :placeholder="placeholderFormatted"
+      :placeholder="searchText"
       @enterPress="handleEnterPress"
     />
   </BaseHistoryInputContainer>
@@ -45,7 +45,7 @@ export default {
     isInput () {
       return !!this.input.length
     },
-    placeholderFormatted () {
+    searchText () {
       return this.$t(
         'inputs.search'
       )

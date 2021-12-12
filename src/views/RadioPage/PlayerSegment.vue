@@ -26,7 +26,7 @@
         <BaseButton
           class="compact"
           icon="right arrow"
-          :text="nextFormatted"
+          :text="nextText"
           isReverse
           @click="handleNextButtonClick"
         />
@@ -75,7 +75,7 @@ export default {
     trackData () {
       return this.radioData?.track
     },
-    nextFormatted () {
+    nextText () {
       return this.$t(
         'shared.next'
       )

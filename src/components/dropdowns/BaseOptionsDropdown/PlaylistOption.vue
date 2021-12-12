@@ -4,7 +4,7 @@
     @click="handleClick"
   >
     <i class="file audio icon"></i>
-    {{ textFormatted }}
+    {{ addText }}
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     'click'
   ],
   computed: {
-    textFormatted () {
+    addText () {
       return this.$t(
         'shared.playlist.add'
       )

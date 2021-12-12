@@ -8,7 +8,7 @@
         ref="input"
         class="prompt"
         type="text"
-        :placeholder="textFormatted"
+        :placeholder="searchText"
       >
       <i class="search icon"></i>
     </div>
@@ -38,7 +38,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    textFormatted () {
+    searchText () {
       return this.$t(
         'inputs.search'
       )

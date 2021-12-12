@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer>
     <BaseAccordionContainer
-      :title="headerFormatted"
+      :title="addTracksText"
     >
       <SearchImportBlock
         :playlistId="playlistId"
@@ -34,7 +34,7 @@ export default {
     profileId: String
   },
   computed: {
-    headerFormatted () {
+    addTracksText () {
       return this.$t(
         'shared.playlist.addTracks'
       )

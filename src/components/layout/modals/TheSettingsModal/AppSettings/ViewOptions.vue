@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="headerFormatted"
+      :text="viewText"
       isHorizontal
     />
 
@@ -20,7 +20,7 @@ export default {
     DarkModeOption
   },
   computed: {
-    headerFormatted () {
+    viewText () {
       return this.$t(
         'layout.settings.sections.app.view'
       )

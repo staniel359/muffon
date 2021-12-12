@@ -2,7 +2,7 @@
   <div class="fitted item">
     <BaseButton
       class="basic large main-navbar-button"
-      :icon="iconFormatted"
+      :icon="icon"
       @click="handleClick"
     />
   </div>
@@ -23,7 +23,7 @@ export default {
     }
   },
   computed: {
-    iconFormatted () {
+    icon () {
       return `arrow ${this.iconDirection}`
     },
     iconDirection () {

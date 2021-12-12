@@ -1,6 +1,6 @@
 <template>
   <TrackItem
-    v-for="trackData in tracksFormatted"
+    v-for="trackData in tracksCollection"
     :key="trackData.uuid"
     :trackData="trackData"
   />
@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    tracksFormatted () {
+    tracksCollection () {
       return formatCollection(
         this.tracks
       )

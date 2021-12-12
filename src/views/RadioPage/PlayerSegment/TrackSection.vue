@@ -2,8 +2,8 @@
   <BaseListContainer class="selection">
     <TrackItem
       ref="track"
-      :trackData="trackDataFormatted"
-      :queueTracks="tracksFormatted"
+      :trackData="firstTrackData"
+      :queueTracks="tracksCollection"
       isWithArtistName
     />
   </BaseListContainer>
@@ -27,16 +27,13 @@ export default {
     }
   },
   computed: {
-    tracksFormatted () {
+    firstTrackData () {
+      return this.tracksCollection[0]
+    },
+    tracksCollection () {
       return formatCollection(
-        this.tracks
+        [this.trackData]
       )
-    },
-    tracks () {
-      return [this.trackData]
-    },
-    trackDataFormatted () {
-      return this.tracksFormatted[0]
     }
   },
   methods: {

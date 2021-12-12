@@ -7,8 +7,8 @@
       <BaseMessage
         class="success"
         :icons="['check']"
-        :header="messageHeaderFormatted"
-        :content="messageContentFormatted"
+        :header="successHeaderText"
+        :content="successContentText"
       />
     </div>
 
@@ -76,7 +76,7 @@ export default {
     }
   },
   computed: {
-    messageHeaderFormatted () {
+    successHeaderText () {
       return this.$t(
         'shared.add.import.success.tracks.header',
         { count: this.totalCountFormatted }
@@ -87,7 +87,7 @@ export default {
         this.totalCount
       )
     },
-    messageContentFormatted () {
+    successContentText () {
       return this.$t(
         'shared.add.import.success.tracks.content'
       )

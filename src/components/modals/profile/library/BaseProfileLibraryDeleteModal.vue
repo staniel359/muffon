@@ -2,7 +2,7 @@
   <BaseModalContainer ref="modal">
     <template #default>
       <div class="header">
-        {{ headerFormatted }}
+        {{ headerText }}
       </div>
 
       <div class="content">
@@ -21,12 +21,12 @@
       <div class="actions">
         <BaseButton
           class="cancel"
-          :text="cancelFormatted"
+          :text="cancelText"
         />
 
         <BaseButton
           class="red"
-          :text="deleteFormatted"
+          :text="deleteText"
           :class="{ loading: isLoading }"
           @click="handleDeleteButtonClick"
         />
@@ -85,17 +85,17 @@ export default {
     }
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       return this.$t(
         `shared.library.delete.${this.model}.header`
       )
     },
-    cancelFormatted () {
+    cancelText () {
       return this.$t(
         'buttons.cancel'
       )
     },
-    deleteFormatted () {
+    deleteText () {
       return this.$t(
         'buttons.delete'
       )
@@ -103,13 +103,13 @@ export default {
     toastMessage () {
       return this.$t(
         'shared.library.deleted',
-        { modelTitle: this.modelTitleFormatted }
+        { modelTitle: this.modelTitleStrong }
       )
     },
-    modelTitleFormatted () {
+    modelTitleStrong () {
       return `<strong>${this.modelTitle}</strong>`
     },
-    callbackUrl () {
+    profileLibraryMainLink () {
       return formatProfileLibraryMainLink({
         profileId: this.profileId
       })
@@ -131,7 +131,7 @@ export default {
 
       if (this.isDeleteWithRedirect) {
         this.$router.push(
-          this.callbackUrl
+          this.profileLibraryMainLink
         )
 
         setToast({

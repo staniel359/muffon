@@ -6,7 +6,7 @@
     <div class="main-library-modal-message-container">
       <BaseMessage
         class="error"
-        :header="messageHeaderFormatted"
+        :header="errorText"
       />
     </div>
 
@@ -50,7 +50,7 @@ export default {
     'retry'
   ],
   computed: {
-    messageHeaderFormatted () {
+    errorText () {
       return this.$t(
         'shared.add.save.error.tracks',
         { count: this.totalCountFormatted }

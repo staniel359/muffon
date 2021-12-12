@@ -15,7 +15,7 @@
       class="star icon"
     ></i>
 
-    {{ textFormatted }}
+    {{ favoriteText }}
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    favoriteText () {
       if (this.modelId) {
         return this.$t(
           'shared.favorites.delete'

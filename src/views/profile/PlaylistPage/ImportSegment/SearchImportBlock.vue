@@ -2,7 +2,7 @@
   <BaseButton
     class="primary import-button"
     icon="search"
-    :text="addFormatted"
+    :text="searchText"
     @click="handleClick"
   />
 
@@ -27,7 +27,7 @@ export default {
     playlistId: String
   },
   computed: {
-    addFormatted () {
+    searchText () {
       return this.$t(
         'buttons.from.search'
       )

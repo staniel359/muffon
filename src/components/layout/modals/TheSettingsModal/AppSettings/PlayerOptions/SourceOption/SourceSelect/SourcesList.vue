@@ -1,6 +1,6 @@
 <template>
   <SourceItem
-    v-for="sourceData in sourcesFormatted"
+    v-for="sourceData in sourcesCollection"
     :key="sourceData.uuid"
     :sourceData="sourceData"
   />
@@ -19,7 +19,7 @@ export default {
     SourceItem
   },
   computed: {
-    sourcesFormatted () {
+    sourcesCollection () {
       return formatCollection(
         this.sources
       )

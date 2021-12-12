@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="scrobbleNotificationsText"
     />
 
     <BaseToggle
@@ -34,7 +34,7 @@ export default {
     ...mapState('player', {
       isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications'
     }),
-    headerFormatted () {
+    scrobbleNotificationsText () {
       return this.$t(
         'layout.settings.options.services.lastfm.scrobbleNotifications'
       )

@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="sourceText"
     />
 
     <SourceSelect />
@@ -20,7 +20,7 @@ export default {
     SourceSelect
   },
   computed: {
-    headerFormatted () {
+    sourceText () {
       return this.$t(
         'layout.settings.options.app.player.audioSource'
       )

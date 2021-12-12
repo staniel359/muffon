@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="headerFormatted"
+      :text="mainText"
       isHorizontal
     />
 
@@ -20,7 +20,7 @@ export default {
     LanguageOption
   },
   computed: {
-    headerFormatted () {
+    mainText () {
       return this.$t(
         'layout.settings.sections.app.main'
       )

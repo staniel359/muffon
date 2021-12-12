@@ -5,7 +5,7 @@
       :class="{ inverted: isDarkMode }"
     >
       <NavigationSection
-        v-for="(sectionData, index) in navigationSectionsFormatted"
+        v-for="(sectionData, index) in navigationSectionsCollection"
         :key="sectionData.uuid"
         :sectionData="sectionData"
         :index="index"
@@ -29,7 +29,7 @@ export default {
       'navigationSections',
       'isDarkMode'
     ]),
-    navigationSectionsFormatted () {
+    navigationSectionsCollection () {
       return formatCollection(
         this.navigationSections
       )

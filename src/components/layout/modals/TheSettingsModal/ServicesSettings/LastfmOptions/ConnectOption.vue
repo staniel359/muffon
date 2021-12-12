@@ -14,7 +14,7 @@
           loading: isLoading,
           disabled: isDisabled
         }"
-        :text="buttonTextFormatted"
+        :text="connectText"
         @click="handleClick"
       />
     </div>
@@ -31,7 +31,7 @@
     v-if="isShowWaitMessage"
     class="connect-wait-message"
   >
-    {{ waitMessageFormatted }}
+    {{ waitText }}
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
     }
   },
   computed: {
-    buttonTextFormatted () {
+    connectText () {
       if (this.isConnected) {
         return this.$t(
           'layout.settings.options.services.lastfm.connected'
@@ -73,7 +73,7 @@ export default {
         )
       }
     },
-    waitMessageFormatted () {
+    waitText () {
       return this.$t(
         'layout.settings.options.services.lastfm.wait'
       )

@@ -3,7 +3,7 @@
     ref="input"
     name="content"
     rows="4"
-    :placeholder="textFormatted"
+    :placeholder="postText"
     :value="value"
   ></textarea>
 </template>
@@ -15,7 +15,7 @@ export default {
     value: String
   },
   computed: {
-    textFormatted () {
+    postText () {
       return this.$t(
         'inputs.post'
       )

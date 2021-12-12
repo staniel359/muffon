@@ -2,8 +2,8 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :link="profileFavoritesLinkFormatted"
-        :text="headerFormatted"
+        :link="profileFavoritesLink"
+        :text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -32,12 +32,12 @@ export default {
     }
   },
   computed: {
-    profileFavoritesLinkFormatted () {
+    profileFavoritesLink () {
       return formatProfileFavoritesLink({
         profileId: this.profileId
       })
     },
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'layout.navigation.favorites'
       )

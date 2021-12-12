@@ -3,7 +3,7 @@
 
   <BaseHeader
     tag="h4"
-    :text="headerFormatted"
+    :text="similarText"
   />
 
   <BasePaginatedListContainer
@@ -31,7 +31,7 @@
       class="main-link"
       @click="handleMoreClick"
     >
-      {{ moreFormatted }}
+      {{ moreText }}
     </strong>
 
     <BaseRecommendationProfileArtistsModal
@@ -72,7 +72,7 @@ export default {
     }
   },
   computed: {
-    headerFormatted () {
+    similarText () {
       return this.$t(
         'shared.recommendation.similar',
         { count: this.profileArtistsCount }
@@ -94,7 +94,7 @@ export default {
     isMore () {
       return this.profileArtistsCount > 5
     },
-    moreFormatted () {
+    moreText () {
       return this.$t(
         'shared.more'
       )

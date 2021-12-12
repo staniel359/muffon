@@ -1,7 +1,7 @@
 <template>
   <BaseHeaderContainer tag="h4">
     <BaseLink
-      :link="trackMainLinkFormatted"
+      :link="link"
       :text="trackTitle"
       @click="handleLinkClick"
     />
@@ -52,19 +52,25 @@ export default {
     trackExtraTitle () {
       return this.trackData.extra_title
     },
-    trackMainLinkFormatted () {
+    link () {
       if (this.isLinkToLibrary) {
-        return formatProfileLibraryTrackMainLink({
-          profileId: this.profileId,
-          trackId: this.trackId
-        })
+        return this.profileLibraryTrackMainLink
       } else {
-        return formatTrackMainLink({
-          trackTitle: this.trackTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        })
+        return this.trackMainLink
       }
+    },
+    profileLibraryTrackMainLink () {
+      return formatProfileLibraryTrackMainLink({
+        profileId: this.profileId,
+        trackId: this.trackId
+      })
+    },
+    trackMainLink () {
+      return formatTrackMainLink({
+        trackTitle: this.trackTitle,
+        artistName: this.artistName,
+        sourceParams: this.sourceParams
+      })
     },
     sourceParams () {
       return formatTrackSourceParams({

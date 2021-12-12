@@ -2,7 +2,7 @@
   <BaseButton
     class="fluid green save-button"
     icon="save"
-    :text="textFormatted"
+    :text="saveText"
     @click="handleClick"
   />
 </template>
@@ -19,7 +19,7 @@ export default {
     'click'
   ],
   computed: {
-    textFormatted () {
+    saveText () {
       return this.$t(
         'buttons.save'
       )

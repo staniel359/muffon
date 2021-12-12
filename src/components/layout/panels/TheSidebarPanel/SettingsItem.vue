@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="settingsText"
       />
     </div>
   </a>
@@ -29,7 +29,7 @@ export default {
     TheSettingsModal
   },
   computed: {
-    textFormatted () {
+    settingsText () {
       return this.$t(
         'layout.sidebar.settings'
       )

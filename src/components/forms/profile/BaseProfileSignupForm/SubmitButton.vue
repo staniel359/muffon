@@ -4,7 +4,7 @@
     :class="{ inverted: isDarkMode }"
     type="submit"
   >
-    {{ textFormatted }}
+    {{ signupText }}
   </button>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    textFormatted () {
+    signupText () {
       return this.$t(
         'shared.profile.form.submit.signup'
       )

@@ -2,7 +2,7 @@
   <BaseButton
     class="primary import-button"
     icon="headphones"
-    :text="addFormatted"
+    :text="libraryText"
     @click="handleClick"
   />
 
@@ -29,7 +29,7 @@ export default {
     profileId: String
   },
   computed: {
-    addFormatted () {
+    libraryText () {
       return this.$t(
         'buttons.from.library'
       )

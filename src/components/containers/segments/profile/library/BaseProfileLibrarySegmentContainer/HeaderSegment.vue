@@ -2,8 +2,8 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :text="headerFormatted"
-        :link="linkFormatted"
+        :link="headerLink"
+        :text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -41,16 +41,16 @@ export default {
     }
   },
   computed: {
-    headerFormatted () {
-      return this.$t(
-        `layout.navigation.${this.headerTextKey}`
-      )
-    },
-    linkFormatted () {
+    headerLink () {
       return this.formatHeaderLink({
         profileId: this.profileId,
         scope: this.scope
       })
+    },
+    headerText () {
+      return this.$t(
+        `layout.navigation.${this.headerTextKey}`
+      )
     }
   }
 }

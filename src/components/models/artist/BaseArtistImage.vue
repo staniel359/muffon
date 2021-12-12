@@ -8,7 +8,7 @@
   <BaseImage
     v-else
     class="artist-image"
-    :image="imageFormatted"
+    :image="imageConditional"
   />
 </template>
 
@@ -56,9 +56,9 @@ export default {
       return this.images?.length
     },
     imageFetched () {
-      return this.imagesFormatted[0]
+      return this.imagesConditional[0]
     },
-    imagesFormatted () {
+    imagesConditional () {
       if (this.isAnyImages) {
         return this.images
       } else {
@@ -72,7 +72,7 @@ export default {
         limit: 20
       }
     },
-    imageFormatted () {
+    imageConditional () {
       return (
         this.image || this.imageFetched
       )[this.size]

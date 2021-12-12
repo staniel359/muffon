@@ -1,17 +1,17 @@
 <template>
   <div class="content">
     <p
-      v-html="goingFormatted"
+      v-html="goingText"
     ></p>
 
     <p>
       <strong>
-        {{ undoFormatted }}
+        {{ undoText }}
       </strong>
     </p>
 
     <p>
-      {{ sureFormatted }}
+      {{ sureText }}
     </p>
   </div>
 </template>
@@ -30,27 +30,27 @@ export default {
     }
   },
   computed: {
-    goingFormatted () {
+    goingText () {
       return this.$t(
         'shared.playlistTrack.delete.going',
         {
-          playlistTrackFullTitle: this.playlistTrackFullTitleFormatted,
-          playlistTitle: this.playlistTitleFormatted
+          playlistTrackFullTitle: this.playlistTrackFullTitleStrong,
+          playlistTitle: this.playlistTitleStrong
         }
       )
     },
-    playlistTrackFullTitleFormatted () {
+    playlistTrackFullTitleStrong () {
       return `<strong>${this.playlistTrackFullTitle}</strong>`
     },
-    playlistTitleFormatted () {
+    playlistTitleStrong () {
       return `<strong>${this.playlistTitle}</strong>`
     },
-    undoFormatted () {
+    undoText () {
       return this.$t(
         'modals.undo'
       )
     },
-    sureFormatted () {
+    sureText () {
       return this.$t(
         'modals.sure'
       )

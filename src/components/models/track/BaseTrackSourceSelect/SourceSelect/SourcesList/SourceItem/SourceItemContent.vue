@@ -2,7 +2,7 @@
   <BaseDropdownItem
     :icon="icon"
     :header="sourceName"
-    :extra="extraFormatted"
+    :extra="extraText"
     :isLoading="isLoading"
     :isError="isError"
     :isDisabled="isDisabled"
@@ -49,15 +49,15 @@ export default {
     sourceName () {
       return this.sourceData.name
     },
-    extraFormatted () {
+    extraText () {
       if (this.isWithMaxBitrate) {
-        return this.maxBitrateFormatted
+        return `~ ${this.maxBitrate}`
       } else {
         return null
       }
     },
-    maxBitrateFormatted () {
-      return `~ ${this.sourceData.maxBitrate}`
+    maxBitrate () {
+      return this.sourceData.maxBitrate
     },
     sourceId () {
       return this.sourceData.id

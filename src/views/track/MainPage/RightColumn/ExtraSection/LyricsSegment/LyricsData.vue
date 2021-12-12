@@ -8,7 +8,7 @@
       class="main-link"
       @click="handleMoreClick"
     >
-      {{ moreFormatted }}
+      {{ moreText }}
     </strong>
   </div>
 
@@ -34,7 +34,7 @@ export default {
     trackId: Number
   },
   computed: {
-    moreFormatted () {
+    moreText () {
       return this.$t(
         'shared.more'
       )

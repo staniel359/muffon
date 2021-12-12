@@ -3,7 +3,7 @@
     <input
       type="password"
       name="password"
-      :placeholder="placeholderFormatted"
+      :placeholder="passwordText"
     >
   </div>
 </template>
@@ -12,7 +12,7 @@
 export default {
   name: 'BaseProfilePasswordField',
   computed: {
-    placeholderFormatted () {
+    passwordText () {
       return this.$t(
         'shared.profile.form.fields.password'
       )

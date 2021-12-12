@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="radioLinkFormatted"
+    :link="radioLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="broadcast tower grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="radioText"
       />
     </div>
   </BaseLinkContainer>
@@ -28,10 +28,10 @@ export default {
     BaseHeader
   },
   computed: {
-    radioLinkFormatted () {
+    radioLink () {
       return formatRadioLink()
     },
-    textFormatted () {
+    radioText () {
       return this.$t(
         'layout.navigation.radio'
       )

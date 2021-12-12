@@ -3,7 +3,7 @@
     <div class="left-block"></div>
 
     <h4 class="ui header main-header central-block">
-      {{ headerFormatted }}
+      {{ tracksText }}
     </h4>
 
     <div class="right-block"></div>
@@ -25,7 +25,7 @@ export default {
     ...mapGetters('queue', {
       queueTracksCount: 'tracksCount'
     }),
-    headerFormatted () {
+    tracksText () {
       return this.$t(
         'shared.tracks',
         { count: this.queueTracksCountFormatted }

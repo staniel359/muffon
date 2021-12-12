@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="logoutText"
       />
     </div>
   </a>
@@ -26,7 +26,7 @@ export default {
     BaseHeader
   },
   computed: {
-    textFormatted () {
+    logoutText () {
       return this.$t(
         'layout.sidebar.logout'
       )

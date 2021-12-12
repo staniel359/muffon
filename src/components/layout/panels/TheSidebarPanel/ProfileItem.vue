@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="profileMainLinkFormatted"
+    :link="profileMainLink"
   >
     <div class="main-sidebar-item-icon-container">
       <BaseProfileImage
@@ -43,7 +43,7 @@ export default {
     nickname () {
       return this.profileInfo.nickname
     },
-    profileMainLinkFormatted () {
+    profileMainLink () {
       return formatProfileMainLink({
         profileId: this.profileId
       })

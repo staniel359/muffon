@@ -1,8 +1,8 @@
 <template>
   <BaseLabel
     class="top attached right icon variants-label"
-    :icon="iconFormatted"
-    :text="variantsCountFormatted"
+    :icon="icon"
+    :text="variantsText"
     isReverse
   />
 </template>
@@ -23,13 +23,13 @@ export default {
     ...mapGetters('player', {
       playerVariantsCount: 'variantsCount'
     }),
-    variantsCountFormatted () {
+    variantsText () {
       return this.$t(
         'layout.player.variants',
         { number: this.playerVariantsCount }
       )
     },
-    iconFormatted () {
+    icon () {
       return `chevron ${this.iconDirection}`
     },
     iconDirection () {

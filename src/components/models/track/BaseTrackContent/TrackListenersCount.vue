@@ -3,7 +3,7 @@
     <div
       class="track-listeners-count-bar"
       :class="{ inverted: isDarkMode }"
-      :style="{ width: listenersCounterBarWidthFormatted }"
+      :style="{ width: listenersCounterBarWidthPercent }"
     ></div>
 
     <div class="description">
@@ -37,7 +37,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    listenersCounterBarWidthFormatted () {
+    listenersCounterBarWidthPercent () {
       return `${this.listenersCounterBarWidth}%`
     },
     listenersCounterBarWidth () {

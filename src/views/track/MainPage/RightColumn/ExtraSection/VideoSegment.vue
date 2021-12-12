@@ -1,6 +1,6 @@
 <template>
   <BaseAccordionContainer
-    :title="textFormatted"
+    :title="findText"
     @init="handleInit"
     @open="handleOpen"
   >
@@ -61,7 +61,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    findText () {
       return this.$t(
         'pages.track.videos.find'
       )

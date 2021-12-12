@@ -2,7 +2,7 @@
   <div class="content">
     <div class="header">
       <BaseButton
-        :text="buttonTextFormatted"
+        :text="clearText"
         :class="{
           loading: isLoading,
           disabled: isLoading
@@ -14,7 +14,7 @@
     <div v-if="isSuccess">
       <i class="check green icon"></i>
       <span>
-        {{ successFormatted }}
+        {{ clearedText }}
       </span>
     </div>
   </div>
@@ -36,12 +36,12 @@ export default {
     }
   },
   computed: {
-    buttonTextFormatted () {
+    clearText () {
       return this.$t(
         'layout.settings.options.app.data.history.search.clear'
       )
     },
-    successFormatted () {
+    clearedText () {
       return this.$t(
         'layout.settings.options.app.data.history.search.cleared'
       )

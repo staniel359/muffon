@@ -3,7 +3,7 @@
     class="selection"
   >
     <ProfileItem
-      v-for="profileData in profilesFormatted"
+      v-for="profileData in profilesCollection"
       :key="profileData.uuid"
       :profileData="profileData"
     />
@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    profilesFormatted () {
+    profilesCollection () {
       return formatCollection(
         this.profiles
       )

@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="playlistsLinkFormatted"
+    :link="playlistsLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="file audio grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="playlistsText"
       />
     </div>
   </BaseLinkContainer>
@@ -34,7 +34,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    playlistsLinkFormatted () {
+    playlistsLink () {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })
@@ -42,7 +42,7 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    textFormatted () {
+    playlistsText () {
       return this.$t(
         'layout.navigation.playlists'
       )

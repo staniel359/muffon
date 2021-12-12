@@ -1,7 +1,7 @@
 <template>
   <BaseListContainer class="selection">
     <TrackItem
-      v-for="(trackData, index) in tracksFormatted"
+      v-for="(trackData, index) in tracksCollection"
       :key="trackData.uuid"
       :trackData="trackData"
       :queueTracks="queueTracks"
@@ -98,14 +98,14 @@ export default {
     'deleteButtonClick'
   ],
   computed: {
-    tracksFormatted () {
+    tracksCollection () {
       return formatCollection(
         this.formatTracks()
       )
     },
     queueTracks () {
       if (this.isQueueable) {
-        return this.tracksFormatted
+        return this.tracksCollection
       } else {
         return []
       }

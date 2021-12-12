@@ -113,7 +113,7 @@ export default {
       })
     },
     addToSuccessFiles ({ tags, file }) {
-      const dataFormatted = {
+      const fileData = {
         uuid: generateKey(),
         ...formatFileTags(
           tags, file
@@ -121,19 +121,19 @@ export default {
       }
 
       this.successFiles.push(
-        dataFormatted
+        fileData
       )
 
       this.$refs.progress.increment()
     },
     addToErrorFiles ({ file }) {
-      const dataFormatted = {
+      const fileData = {
         uuid: generateKey(),
         text: file.path
       }
 
       this.errorFiles.push(
-        dataFormatted
+        fileData
       )
 
       this.$refs.progress.increment()

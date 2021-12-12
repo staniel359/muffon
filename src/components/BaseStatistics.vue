@@ -4,7 +4,7 @@
     :class="{ inverted: isDarkMode }"
   >
     <BaseLinkContainer
-      v-for="statisticData in statisticsFormatted"
+      v-for="statisticData in statisticsCollection"
       class="statistic"
       :key="statisticData.key"
       :link="statisticData.link"
@@ -40,7 +40,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    statisticsFormatted () {
+    statisticsCollection () {
       return formatCollection(
         this.statistics
       )

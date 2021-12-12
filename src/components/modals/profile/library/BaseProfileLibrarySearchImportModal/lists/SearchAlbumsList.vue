@@ -3,7 +3,7 @@
     v-if="albums.length"
     ref="pagination"
     scope="albums"
-    :responseData="albumsDataFormatted"
+    :responseData="albumsData"
     :clientPageLimit="limit"
     :responsePageLimit="totalCount"
     isReset
@@ -55,14 +55,14 @@ export default {
     }
   },
   computed: {
-    albumsDataFormatted () {
+    albumsData () {
       return {
         page: 1,
         total_pages: 1,
-        albums: this.albumsFormatted
+        albums: this.albumsReversed
       }
     },
-    albumsFormatted () {
+    albumsReversed () {
       return [
         ...this.albums
       ].reverse()

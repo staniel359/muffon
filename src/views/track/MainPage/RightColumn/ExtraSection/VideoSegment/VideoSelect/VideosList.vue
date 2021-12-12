@@ -1,6 +1,6 @@
 <template>
   <VideoItem
-    v-for="(videoData, index) in videosFormatted"
+    v-for="(videoData, index) in videosCollection"
     :key="videoData.uuid"
     :videoData="videoData"
     :index="index"
@@ -25,8 +25,10 @@ export default {
     }
   },
   computed: {
-    videosFormatted () {
-      return formatCollection(this.videos)
+    videosCollection () {
+      return formatCollection(
+        this.videos
+      )
     }
   }
 }

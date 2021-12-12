@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
     class="main-source-select-track-select"
-    :header="headerFormatted"
+    :header="headerText"
   >
     <TracksList :tracks="tracks" />
   </BaseDropdownContainer>
@@ -21,7 +21,7 @@ export default {
     tracks: Array
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'shared.sources.select.track'
       )

@@ -5,7 +5,7 @@
     >
       <BaseLinkContainer
         class="main-profile-page-info"
-        :link="artistMainLinkFormatted"
+        :link="artistMainLink"
       >
         <BaseArtistImage
           class="circular bordered main-profile-page-image"
@@ -29,7 +29,7 @@
 
       <div class="main-profile-page-info">
         <div>
-          {{ sinceFormatted }}
+          {{ sinceText }}
         </div>
         <strong>
           {{ createdFormatted }}
@@ -106,7 +106,7 @@ export default {
     }
   },
   computed: {
-    artistMainLinkFormatted () {
+    artistMainLink () {
       return formatArtistMainLink({
         artistName: this.artistName
       })
@@ -117,7 +117,7 @@ export default {
     image () {
       return this.artistData.image
     },
-    sinceFormatted () {
+    sinceText () {
       return this.$t(
         'pages.profile.library.since'
       )
