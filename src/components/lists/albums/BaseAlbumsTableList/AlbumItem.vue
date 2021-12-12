@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    :link="linkFormatted"
+    :link="link"
     @click="handleLinkClick"
   >
     <BaseSimpleCardContainer
@@ -108,26 +108,36 @@ export default {
     }
   },
   computed: {
-    linkFormatted () {
+    link () {
       if (this.isArtistNameActive) {
-        return this.artistMainLinkFormatted
+        if (this.isLinkToLibrary) {
+          return this.profileLibraryArtistMainLink
+        } else {
+          return this.artistMainLink
+        }
       } else if (this.isTracksLinkActive) {
-        return this.profileLibraryAlbumTracksLinkFormatted
+        return this.profileLibraryAlbumTracksLink
       } else {
-        return this.albumMainLinkFormatted
+        if (this.isLinkToLibrary) {
+          return this.profileLibraryAlbumMainLink
+        } else {
+          return this.albumMainLink
+        }
       }
     },
-    artistMainLinkFormatted () {
-      if (this.isLinkToLibrary) {
-        return formatProfileLibraryArtistMainLink({
-          profileId: this.profileId,
-          artistId: this.artistId
-        })
-      } else {
-        return formatArtistMainLink({
-          artistName: this.albumArtistName
-        })
-      }
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    },
+    artistId () {
+      return this.albumData.artist.id
+    },
+    artistMainLink () {
+      return formatArtistMainLink({
+        artistName: this.albumArtistName
+      })
     },
     albumArtistName () {
       return (
@@ -135,25 +145,27 @@ export default {
           this.artistName
       )
     },
-    profileLibraryAlbumTracksLinkFormatted () {
+    profileLibraryAlbumTracksLink () {
       return formatProfileLibraryAlbumTracksLink({
         profileId: this.profileId,
         albumId: this.albumId
       })
     },
-    albumMainLinkFormatted () {
-      if (this.isLinkToLibrary) {
-        return formatProfileLibraryAlbumMainLink({
-          profileId: this.profileId,
-          albumId: this.albumId
-        })
-      } else {
-        return formatAlbumMainLink({
-          artistName: this.albumArtistName,
-          albumTitle: this.albumTitle,
-          sourceParams: this.sourceParams
-        })
-      }
+    albumId () {
+      return this.albumData.id?.toString()
+    },
+    profileLibraryAlbumMainLink () {
+      return formatProfileLibraryAlbumMainLink({
+        profileId: this.profileId,
+        albumId: this.albumId
+      })
+    },
+    albumMainLink () {
+      return formatAlbumMainLink({
+        artistName: this.albumArtistName,
+        albumTitle: this.albumTitle,
+        sourceParams: this.sourceParams
+      })
     },
     sourceParams () {
       return formatAlbumSourceParams({
@@ -167,12 +179,6 @@ export default {
     },
     imageData () {
       return this.albumData.image
-    },
-    artistId () {
-      return this.albumData.artist.id
-    },
-    albumId () {
-      return this.albumData.id?.toString()
     }
   },
   mounted () {

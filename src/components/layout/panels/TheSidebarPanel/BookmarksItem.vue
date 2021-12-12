@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="bookmarksLinkFormatted"
+    :link="bookmarksLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="bookmark grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="bookmarksText"
       />
     </div>
   </BaseLinkContainer>
@@ -28,10 +28,10 @@ export default {
     BaseHeader
   },
   computed: {
-    bookmarksLinkFormatted () {
+    bookmarksLink () {
       return formatBookmarksLink()
     },
-    textFormatted () {
+    bookmarksText () {
       return this.$t(
         'layout.navigation.bookmarks'
       )

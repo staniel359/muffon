@@ -8,7 +8,7 @@
         ref="input"
         class="prompt"
         type="text"
-        :placeholder="textFormatted"
+        :placeholder="searchText"
       >
       <i class="search icon"></i>
     </div>
@@ -33,7 +33,7 @@ export default {
     'select'
   ],
   computed: {
-    textFormatted () {
+    searchText () {
       return this.$t(
         'inputs.search'
       )

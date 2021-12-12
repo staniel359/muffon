@@ -1,10 +1,10 @@
 <template>
   <div class="header">
-    {{ streamableHeaderFormatted }}
+    {{ streamableText }}
   </div>
 
   <SourceItem
-    v-for="sourceData in streamableSourcesFormatted"
+    v-for="sourceData in streamableSourcesCollection"
     :key="sourceData.uuid"
     :sourceData="sourceData"
     :query="query"
@@ -14,11 +14,11 @@
   <div class="divider"></div>
 
   <div class="header">
-    {{ otherHeaderFormatted }}
+    {{ otherText }}
   </div>
 
   <SourceItem
-    v-for="sourceData in otherSourcesFormatted"
+    v-for="sourceData in otherSourcesCollection"
     :key="sourceData.uuid"
     :query="query"
     :sourceData="sourceData"
@@ -41,22 +41,22 @@ export default {
     query: String
   },
   computed: {
-    streamableHeaderFormatted () {
+    streamableText () {
       return this.$t(
         'shared.sources.streamable'
       )
     },
-    streamableSourcesFormatted () {
+    streamableSourcesCollection () {
       return formatCollection(
         getAudioSourcesStreamable(true)
       )
     },
-    otherHeaderFormatted () {
+    otherText () {
       return this.$t(
         'shared.sources.other'
       )
     },
-    otherSourcesFormatted () {
+    otherSourcesCollection () {
       return formatCollection(
         getAudioSourcesStreamable(false)
       )

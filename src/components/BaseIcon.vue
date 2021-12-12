@@ -1,7 +1,7 @@
 <template>
   <i
     class="icon"
-    :class="iconFormatted"
+    :class="iconConditional"
   >
     <div
       v-if="isLoading"
@@ -19,7 +19,7 @@ export default {
     icon: String
   },
   computed: {
-    iconFormatted () {
+    iconConditional () {
       if (this.isLoading) {
         return null
       } else if (this.isError) {

@@ -7,7 +7,7 @@
       <div
         class="count-bar"
         :class="{ inverted: isDarkMode }"
-        :style="{ width: tracksCounterBarWidthFormatted }"
+        :style="{ width: tracksCounterBarWidthPercent }"
       ></div>
 
       <div
@@ -32,7 +32,7 @@
       <div
         class="count-bar"
         :class="{ inverted: isDarkMode }"
-        :style="{ width: albumsCounterBarWidthFormatted }"
+        :style="{ width: albumsCounterBarWidthPercent }"
       ></div>
 
       <div
@@ -82,7 +82,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    tracksCounterBarWidthFormatted () {
+    tracksCounterBarWidthPercent () {
       return `${this.tracksCounterBarWidth}%`
     },
     tracksCounterBarWidth () {
@@ -96,7 +96,7 @@ export default {
         this.tracksCount
       )
     },
-    albumsCounterBarWidthFormatted () {
+    albumsCounterBarWidthPercent () {
       return `${this.albumsCounterBarWidth}%`
     },
     albumsCounterBarWidth () {

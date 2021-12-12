@@ -1,7 +1,7 @@
 <template>
   <template v-if="images">
     <BaseImage
-      v-for="imageData in imagesFormatted"
+      v-for="imageData in imagesCollection"
       class="post-image"
       :key="imageData.uuid"
       :image="imageData.original"
@@ -28,7 +28,7 @@ export default {
     images () {
       return this.postData.images
     },
-    imagesFormatted () {
+    imagesCollection () {
       return formatCollection(
         this.images
       )

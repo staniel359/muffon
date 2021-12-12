@@ -8,7 +8,7 @@
 
     <template v-if="labels">
       <BaseLabel
-        v-for="labelData in labelsFormatted"
+        v-for="labelData in labelsCollection"
         :key="labelData.uuid"
         :text="labelData.name"
       />
@@ -30,7 +30,7 @@ export default {
     labels: Array
   },
   computed: {
-    labelsFormatted () {
+    labelsCollection () {
       return formatCollection(
         this.labels
       )

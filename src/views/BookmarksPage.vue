@@ -9,10 +9,10 @@
   >
     <BaseTabsContainer
       class="three item"
-      :tabs="tabsFormatted"
+      :tabs="tabsCollection"
     >
       <template
-        v-for="tabData in tabsFormatted"
+        v-for="tabData in tabsCollection"
         :key="tabData.uuid"
         #[tabData.scope]="slotProps"
       >
@@ -56,7 +56,7 @@ export default {
     tabData () {
       return formatBookmarksPageTab()
     },
-    tabsFormatted () {
+    tabsCollection () {
       return formatCollection(
         this.tabs
       )

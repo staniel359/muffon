@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="autoplayText"
     />
 
     <BaseToggle
@@ -29,7 +29,7 @@ export default {
     ...mapState('queue', {
       isQueueAutoplay: 'isAutoplay'
     }),
-    headerFormatted () {
+    autoplayText () {
       return this.$t(
         'layout.settings.options.app.queue.autoplay'
       )

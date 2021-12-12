@@ -1,6 +1,6 @@
 <template>
   <TypeItem
-    v-for="typeData in typesFormatted"
+    v-for="typeData in typesCollection"
     :key="typeData.uuid"
     :typeId="typeData.name"
     :isDisabled="isNoCollection(typeData.name)"
@@ -29,7 +29,7 @@ export default {
     }
   },
   computed: {
-    typesFormatted () {
+    typesCollection () {
       return formatCollection(
         this.types
       )

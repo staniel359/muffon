@@ -1,6 +1,6 @@
 <template>
   <div class="description track-index">
-    {{ indexFormatted }}
+    {{ indexText }}
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
     }
   },
   computed: {
-    indexFormatted () {
+    indexText () {
       return `${this.index + 1}.`
     }
   }

@@ -17,7 +17,7 @@
     </div>
 
     <div class="description extra">
-      {{ maxBitrateFormatted }}
+      {{ bitrateText }}
     </div>
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
     sourceName () {
       return this.sourceData.name
     },
-    maxBitrateFormatted () {
+    bitrateText () {
       return `~ ${this.maxBitrate}`
     },
     maxBitrate () {

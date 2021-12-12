@@ -1,7 +1,7 @@
 <template>
   <BaseTrackContainer
-    :trackData="trackDataFormatted"
-    :queueTracks="tracksFormatted"
+    :trackData="firstTrackData"
+    :queueTracks="tracksCollection"
   >
     <template #default="slotProps">
       <BaseButtonContainer
@@ -37,10 +37,10 @@ export default {
     }
   },
   computed: {
-    trackDataFormatted () {
-      return this.tracksFormatted[0]
+    firstTrackData () {
+      return this.tracksCollection[0]
     },
-    tracksFormatted () {
+    tracksCollection () {
       return formatCollection(
         [this.trackData]
       )

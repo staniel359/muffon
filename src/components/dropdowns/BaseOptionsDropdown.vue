@@ -12,7 +12,7 @@
       <i class="ellipsis vertical icon"></i>
       <div class="menu">
         <Component
-          v-for="optionData in optionsFormatted"
+          v-for="optionData in optionsCollection"
           :key="optionData.uuid"
           :is="optionData.component"
           :model="model"
@@ -175,7 +175,7 @@ export default {
         action: this.handleDeleteOptionClick
       }
     },
-    optionsFormatted () {
+    optionsCollection () {
       return formatCollection(
         this.options
       )

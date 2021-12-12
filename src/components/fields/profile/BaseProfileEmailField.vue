@@ -4,7 +4,7 @@
       type="text"
       name="email"
       autofocus
-      :placeholder="placeholderFormatted"
+      :placeholder="emailText"
       :value="value"
     >
   </div>
@@ -17,7 +17,7 @@ export default {
     value: String
   },
   computed: {
-    placeholderFormatted () {
+    emailText () {
       return this.$t(
         'shared.profile.form.fields.email'
       )

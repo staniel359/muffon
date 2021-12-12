@@ -2,7 +2,7 @@
   <BaseModalContainer ref="modal">
     <template #default>
       <div class="header">
-        {{ headerFormatted }}
+        {{ headerText }}
       </div>
 
       <div class="content">
@@ -20,12 +20,12 @@
       <div class="actions">
         <BaseButton
           class="cancel"
-          :text="cancelFormatted"
+          :text="cancelText"
         />
 
         <BaseButton
           class="red"
-          :text="deleteFormatted"
+          :text="deleteText"
           :class="{ loading: isLoading }"
           @click="handleDeleteButtonClick"
         />
@@ -65,17 +65,17 @@ export default {
     }
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'shared.recommendation.delete.header'
       )
     },
-    cancelFormatted () {
+    cancelText () {
       return this.$t(
         'buttons.cancel'
       )
     },
-    deleteFormatted () {
+    deleteText () {
       return this.$t(
         'buttons.delete'
       )

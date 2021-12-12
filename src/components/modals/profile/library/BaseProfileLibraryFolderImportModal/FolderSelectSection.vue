@@ -15,7 +15,7 @@
         <BaseButton
           icon="folder open"
           :class="{ disabled: !isReset }"
-          :text="textFormatted"
+          :text="selectText"
         />
       </label>
     </div>
@@ -49,7 +49,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    selectText () {
       return this.$t(
         'shared.add.folder.select'
       )

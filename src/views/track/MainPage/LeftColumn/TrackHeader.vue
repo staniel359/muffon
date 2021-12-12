@@ -9,13 +9,13 @@
     />
 
     <BaseLink
-      :link="artistMainLinkFormatted"
+      :link="artistMainLink"
       :text="artistName"
     />
 
     <BaseLinkContainer
       v-if="albumTitle"
-      :link="albumMainLinkFormatted"
+      :link="albumMainLink"
     >
       <div class="link main-small-container">
         <small>
@@ -64,12 +64,12 @@ export default {
     albumData () {
       return this.trackData.albums?.[0]
     },
-    artistMainLinkFormatted () {
+    artistMainLink () {
       return formatArtistMainLink({
         artistName: this.artistName
       })
     },
-    albumMainLinkFormatted () {
+    albumMainLink () {
       return formatAlbumMainLink({
         artistName: this.artistName,
         albumTitle: this.albumTitle,

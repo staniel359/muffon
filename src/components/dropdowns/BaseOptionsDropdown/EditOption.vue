@@ -4,7 +4,7 @@
     @click="handleClick"
   >
     <i class="edit icon"></i>
-    {{ textFormatted }}
+    {{ editText }}
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     'click'
   ],
   computed: {
-    textFormatted () {
+    editText () {
       return this.$t(
         'buttons.edit'
       )

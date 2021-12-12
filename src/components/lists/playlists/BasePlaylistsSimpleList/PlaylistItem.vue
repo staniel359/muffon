@@ -2,7 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
-    :link="linkFormatted"
+    :link="profilePlaylistLink"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -21,7 +21,7 @@
         />
 
         <div class="description">
-          {{ tracksCountTextFormatted }}
+          {{ tracksCountText }}
         </div>
       </div>
 
@@ -79,7 +79,7 @@ export default {
     isWithDeleteOption: Boolean
   },
   computed: {
-    linkFormatted () {
+    profilePlaylistLink () {
       return formatProfilePlaylistLink({
         profileId: this.profileId,
         playlistId: this.playlistId
@@ -94,7 +94,7 @@ export default {
     playlistTitle () {
       return this.playlistData.title
     },
-    tracksCountTextFormatted () {
+    tracksCountText () {
       return this.$t(
         'shared.tracks',
         { count: this.tracksCountFormatted }

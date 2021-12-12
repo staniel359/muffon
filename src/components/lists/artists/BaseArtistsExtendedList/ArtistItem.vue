@@ -159,11 +159,6 @@ export default {
     artistId () {
       return this.artistData.id?.toString()
     },
-    deletedFormatted () {
-      return this.$t(
-        'shared.deleted.recommendation'
-      )
-    },
     isDeleted () {
       return !!this.artistData.isDeleted
     }

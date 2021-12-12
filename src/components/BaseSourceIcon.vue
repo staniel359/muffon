@@ -7,7 +7,7 @@
       size,
       { colored: isActive }
     ]"
-    :data-content="popupTextFormatted"
+    :data-content="popupText"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   />
@@ -34,7 +34,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    popupTextFormatted () {
+    popupText () {
       if (this.sourceName) {
         return this.$t(
           'shared.track.source',

@@ -15,7 +15,7 @@
       class="check icon"
     ></i>
 
-    {{ textFormatted }}
+    {{ listenedText }}
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    listenedText () {
       if (this.modelId) {
         return this.$t(
           'shared.listened.delete'

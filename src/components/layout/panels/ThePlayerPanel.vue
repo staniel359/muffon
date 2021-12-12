@@ -71,14 +71,17 @@ export default {
     scrobbledMessage () {
       return this.$t(
         'shared.player.scrobbled',
-        { trackFullTitle: this.trackFullTitleFormatted }
+        { trackFullTitle: this.trackFullTitleStrong }
       )
     },
-    trackFullTitleFormatted () {
+    trackFullTitleStrong () {
       return `<strong>${this.trackFullTitle}</strong>`
     },
     trackFullTitle () {
-      return `${this.trackTitle} - ${this.artistName}`
+      return [
+        this.trackTitle,
+        this.artistName
+      ].join(' - ')
     },
     trackTitle () {
       return this.playerPlaying.title

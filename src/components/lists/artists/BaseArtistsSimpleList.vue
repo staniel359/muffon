@@ -1,7 +1,7 @@
 <template>
   <BaseListContainer class="selection">
     <ArtistItem
-      v-for="artistData in artistsFormatted"
+      v-for="artistData in artistsCollection"
       :key="artistData.uuid"
       :artistData="artistData"
       :isWithListenersCount="isWithListenersCount"
@@ -68,7 +68,7 @@ export default {
     'deleteButtonClick'
   ],
   computed: {
-    artistsFormatted () {
+    artistsCollection () {
       return formatCollection(
         this.artists
       )

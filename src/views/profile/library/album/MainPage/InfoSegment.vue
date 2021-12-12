@@ -5,7 +5,7 @@
     >
       <BaseLinkContainer
         class="main-profile-page-info"
-        :link="albumMainLinkFormatted"
+        :link="link"
       >
         <BaseImage
           class="rounded bordered main-profile-page-image"
@@ -36,7 +36,7 @@
 
       <div class="main-profile-page-info">
         <div>
-          {{ sinceFormatted }}
+          {{ sinceText }}
         </div>
         <strong>
           {{ createdFormatted }}
@@ -120,19 +120,34 @@ export default {
     }
   },
   computed: {
-    albumMainLinkFormatted () {
+    link () {
       if (this.isArtistNameActive) {
-        return formatProfileLibraryArtistMainLink({
-          profileId: this.profileId,
-          artistId: this.artistId
-        })
+        return this.profileLibraryArtistMainLink
       } else {
-        return formatAlbumMainLink({
-          albumTitle: this.albumTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        })
+        return this.albumMainLink
       }
+    },
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    },
+    artistId () {
+      return this.albumData.artist.id
+    },
+    albumMainLink () {
+      return formatAlbumMainLink({
+        albumTitle: this.albumTitle,
+        artistName: this.artistName,
+        sourceParams: this.sourceParams
+      })
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    artistName () {
+      return this.albumData.artist.name
     },
     sourceParams () {
       return formatAlbumSourceParams({
@@ -141,22 +156,13 @@ export default {
         artistName: this.artistName
       })
     },
-    artistId () {
-      return this.albumData.artist.id
-    },
     albumFullTitle () {
       return `${this.artistName} - ${this.albumTitle}`
-    },
-    albumTitle () {
-      return this.albumData.title
-    },
-    artistName () {
-      return this.albumData.artist.name
     },
     image () {
       return this.albumData.image.medium
     },
-    sinceFormatted () {
+    sinceText () {
       return this.$t(
         'pages.profile.library.since'
       )

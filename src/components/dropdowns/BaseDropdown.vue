@@ -4,7 +4,7 @@
     @change="handleChange"
   >
     <div
-      v-for="optionData in optionsFormatted"
+      v-for="optionData in optionsCollection"
       class="item"
       :key="optionData.uuid"
       :data-value="optionData.id"
@@ -31,7 +31,7 @@ export default {
     selected: String
   },
   computed: {
-    optionsFormatted () {
+    optionsCollection () {
       return formatCollection(
         this.options
       )

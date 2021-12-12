@@ -10,19 +10,18 @@
       >
 
       <div class="default text">
-        {{ placeholderFormatted }}
+        {{ genderText }}
       </div>
       <i class="dropdown icon"></i>
 
       <div class="menu">
-        <div class="item" data-value="male">
-          {{ maleFormatted }}
-        </div>
-        <div class="item" data-value="female">
-          {{ femaleFormatted }}
-        </div>
-        <div class="item" data-value="other">
-          {{ otherFormatted }}
+        <div
+          v-for="optionData in optionsCollection"
+          class="item"
+          :key="optionData.uuid"
+          :data-value="optionData.name"
+        >
+          {{ formatOptionText(optionData.name) }}
         </div>
       </div>
     </div>
@@ -31,31 +30,31 @@
 
 <script>
 import { setDropdownValue } from '#/actions/plugins/semantic'
+import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'BaseProfileGenderField',
   props: {
     value: String
   },
+  data () {
+    return {
+      options: [
+        'male',
+        'female',
+        'other'
+      ]
+    }
+  },
   computed: {
-    placeholderFormatted () {
+    genderText () {
       return this.$t(
         'shared.profile.form.fields.gender'
       )
     },
-    maleFormatted () {
-      return this.$t(
-        'shared.profile.form.fields.genders.male'
-      )
-    },
-    femaleFormatted () {
-      return this.$t(
-        'shared.profile.form.fields.genders.female'
-      )
-    },
-    otherFormatted () {
-      return this.$t(
-        'shared.profile.form.fields.genders.other'
+    optionsCollection () {
+      return formatCollection(
+        this.options
       )
     }
   },
@@ -64,6 +63,13 @@ export default {
       this.$refs.dropdown,
       this.value
     )
+  },
+  methods: {
+    formatOptionText (option) {
+      return this.$t(
+        `shared.profile.form.fields.genders.${option}`
+      )
+    }
   }
 }
 </script>

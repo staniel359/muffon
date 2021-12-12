@@ -15,7 +15,7 @@ export default function ({
   this.error = null
   this.isLoading = true
 
-  const urlFormatted = formatRequestUrl({
+  const url = formatRequestUrl({
     sourceId,
     artistName,
     trackTitle,
@@ -49,7 +49,7 @@ export default function ({
   }
 
   return axios
-    .get(urlFormatted, { params })
+    .get(url, { params })
     .then(handleSuccess)
     .catch(handleError)
     .finally(handleFinish)

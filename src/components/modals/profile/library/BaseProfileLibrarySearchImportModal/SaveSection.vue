@@ -2,10 +2,10 @@
   <div class="main-library-modal-save-section">
     <BaseTabsContainer
       ref="tabs"
-      :tabs="tabsFormatted"
+      :tabs="tabsCollection"
     >
       <template
-        v-for="tabData in tabsFormatted"
+        v-for="tabData in tabsCollection"
         :key="tabData.uuid"
         #[tabData.scope]="slotProps"
       >
@@ -41,7 +41,7 @@ export default {
     tracks: Array
   },
   computed: {
-    tabsFormatted () {
+    tabsCollection () {
       return formatCollection(
         this.tabs
       )

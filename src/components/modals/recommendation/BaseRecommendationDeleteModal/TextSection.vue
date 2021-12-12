@@ -1,17 +1,17 @@
 <template>
   <div class="content">
     <p
-      v-html="goingFormatted"
+      v-html="goingText"
     ></p>
 
     <p>
       <strong>
-        {{ undoFormatted }}
+        {{ undoText }}
       </strong>
     </p>
 
     <p>
-      {{ sureFormatted }}
+      {{ sureText }}
     </p>
   </div>
 </template>
@@ -26,21 +26,21 @@ export default {
     }
   },
   computed: {
-    goingFormatted () {
+    goingText () {
       return this.$t(
         'shared.recommendation.delete.going',
-        { artistName: this.artistNameFormatted }
+        { artistName: this.artistNameStrong }
       )
     },
-    artistNameFormatted () {
+    artistNameStrong () {
       return `<strong>${this.artistName}</strong>`
     },
-    undoFormatted () {
+    undoText () {
       return this.$t(
         'modals.undo'
       )
     },
-    sureFormatted () {
+    sureText () {
       return this.$t(
         'modals.sure'
       )

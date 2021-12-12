@@ -10,7 +10,7 @@
       >
 
       <label>
-        {{ textFormatted }}
+        {{ rememberText }}
       </label>
     </div>
   </div>
@@ -22,7 +22,7 @@ import { setCheckbox } from '#/actions/plugins/semantic'
 export default {
   name: 'BaseProfileRememberField',
   computed: {
-    textFormatted () {
+    rememberText () {
       return this.$t(
         'shared.profile.form.remember'
       )

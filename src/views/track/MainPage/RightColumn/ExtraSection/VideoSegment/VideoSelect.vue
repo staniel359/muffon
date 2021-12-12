@@ -9,7 +9,7 @@
 
     <BaseDropdownContainer
       class="main-source-select-track-select"
-      :header="headerFormatted"
+      :header="headerText"
       :isLoading="isLoading"
       :isError="isError"
       :isDisabled="!isAnyVideos"
@@ -42,16 +42,22 @@ export default {
     isError: Boolean
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       if (this.isError) {
-        return this.$t(
-          'shared.error'
-        )
+        return this.errorText
       } else {
-        return this.$t(
-          `pages.track.videos.${this.headerKey}`
-        )
+        return this.headerKeyText
       }
+    },
+    errorText () {
+      return this.$t(
+        'shared.error'
+      )
+    },
+    headerKeyText () {
+      return this.$t(
+        `pages.track.videos.${this.headerKey}`
+      )
     },
     headerKey () {
       if (this.isLoading) {

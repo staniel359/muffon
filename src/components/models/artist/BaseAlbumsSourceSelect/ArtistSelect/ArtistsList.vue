@@ -1,6 +1,6 @@
 <template>
   <ArtistItem
-    v-for="artistData in artistsFormatted"
+    v-for="artistData in artistsCollection"
     :key="artistData.uuid"
     :artistData="artistData"
   />
@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    artistsFormatted () {
+    artistsCollection () {
       return formatCollection(
         this.artists
       )

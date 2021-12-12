@@ -1,6 +1,6 @@
 <template>
   <SourceItem
-    v-for="sourceData in audioSourcesFormatted"
+    v-for="sourceData in audioSourcesCollection"
     :key="sourceData.uuid"
     :sourceData="sourceData"
     :query="query"
@@ -21,7 +21,7 @@ export default {
     query: String
   },
   computed: {
-    audioSourcesFormatted () {
+    audioSourcesCollection () {
       return formatCollection(
         this.audioSourcesWithAlbums
       )

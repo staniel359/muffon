@@ -3,7 +3,7 @@
     class="ui item"
     :is="component"
     :class="{ disabled: isLoading }"
-    :link="linkFormatted"
+    :link="link"
     @click="handleClick"
   >
     <i
@@ -17,7 +17,7 @@
       class="headphones icon"
     ></i>
 
-    {{ textFormatted }}
+    {{ libraryText }}
   </Component>
 </template>
 
@@ -74,40 +74,46 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    textFormatted () {
-      if (this.modelId) {
-        return this.$t(
-          'shared.library.show'
-        )
-      } else {
-        return this.$t(
-          'shared.library.add'
-        )
-      }
-    },
-    linkFormatted () {
+    link () {
       switch (this.model) {
         case 'artist':
-          return formatProfileLibraryArtistMainLink({
-            profileId: this.profileId,
-            artistId: this.modelId
-          })
+          return this.profileLibraryArtistMainLink
         case 'album':
-          return formatProfileLibraryAlbumMainLink({
-            profileId: this.profileId,
-            albumId: this.modelId
-          })
+          return this.profileLibraryAlbumMainLink
         case 'track':
-          return formatProfileLibraryTrackMainLink({
-            profileId: this.profileId,
-            trackId: this.modelId
-          })
+          return this.profileLibraryTrackMainLink
         default:
           return {}
       }
     },
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.modelId
+      })
+    },
     profileId () {
       return this.profileInfo.id.toString()
+    },
+    profileLibraryAlbumMainLink () {
+      return formatProfileLibraryAlbumMainLink({
+        profileId: this.profileId,
+        albumId: this.modelId
+      })
+    },
+    profileLibraryTrackMainLink () {
+      return formatProfileLibraryTrackMainLink({
+        profileId: this.profileId,
+        trackId: this.modelId
+      })
+    },
+    libraryText () {
+      return this.$t(
+        `shared.library.${this.libraryTextKey}`
+      )
+    },
+    libraryTextKey () {
+      return this.modelId ? 'show' : 'add'
     },
     albumTracksFormatted () {
       return this.albumTracks.map(

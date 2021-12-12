@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="percentText"
     />
 
     <div
@@ -17,7 +17,7 @@
       <i class="dropdown icon"></i>
       <div class="menu">
         <div
-          v-for="scrobblePercentValue in scrobblePercentValuesFormatted"
+          v-for="scrobblePercentValue in scrobblePercentValuesCollection"
           class="item"
           :key="scrobblePercentValue.key"
           :data-value="scrobblePercentValue.name"
@@ -59,12 +59,12 @@ export default {
     ...mapState('player', {
       playerScrobblePercent: 'scrobblePercent'
     }),
-    headerFormatted () {
+    percentText () {
       return this.$t(
         'layout.settings.options.services.lastfm.scrobblePercent'
       )
     },
-    scrobblePercentValuesFormatted () {
+    scrobblePercentValuesCollection () {
       return formatCollection(
         this.scrobblePercentValues
       )

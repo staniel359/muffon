@@ -15,7 +15,7 @@
             loading: isLoading,
             disabled: isDisabled
           }"
-          :text="textFormatted"
+          :text="importText"
           @click="handleClick"
         />
       </div>
@@ -68,7 +68,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    importText () {
       return this.$t(
         'shared.add.account.import.lastfm'
       )

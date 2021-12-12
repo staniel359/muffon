@@ -9,7 +9,7 @@
     />
 
     <BaseLink
-      :link="artistMainLinkFormatted"
+      :link="artistMainLink"
       :text="artistName"
     />
   </BaseTransitionContainer>
@@ -40,7 +40,7 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    artistMainLinkFormatted () {
+    artistMainLink () {
       return formatArtistMainLink({
         artistName: this.artistName
       })

@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="tiny basic compact"
-    :icon="iconFormatted"
+    :icon="icon"
     @init="handleButtonInit"
     @click="handleClick"
   />
@@ -33,7 +33,7 @@ export default {
       audioVolume: 'volume',
       audioElement: 'element'
     }),
-    iconFormatted () {
+    icon () {
       return `volume ${this.volumeIcon}`
     },
     volumeIcon () {

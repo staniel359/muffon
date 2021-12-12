@@ -27,7 +27,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    artistImagesLinkFormatted () {
+    artistImagesLink () {
       return formatArtistImagesLink({
         artistName: this.artistName
       })
@@ -36,7 +36,7 @@ export default {
   methods: {
     handleClick () {
       this.$router.push(
-        this.artistImagesLinkFormatted
+        this.artistImagesLink
       )
     }
   }

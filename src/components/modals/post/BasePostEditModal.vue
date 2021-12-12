@@ -89,7 +89,7 @@ export default {
     postImages () {
       return this.postData.images || []
     },
-    tracksFormatted () {
+    tracksCollection () {
       return formatCollection(
         this.postTracks
       )
@@ -103,7 +103,7 @@ export default {
       this.processImage
     )
 
-    this.tracks = this.tracksFormatted
+    this.tracks = this.tracksCollection
   },
   methods: {
     handleTracksChange (value) {

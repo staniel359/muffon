@@ -1,13 +1,13 @@
 <template>
   <div class="signup-section">
-    {{ textFormatted }}
+    {{ signupText }}
 
     <span
       class="main-link"
       @click="handleSignupLinkClick"
     >
       <strong>
-        {{ linkFormatted }}
+        {{ linkText }}
       </strong>
     </span>
   </div>
@@ -20,12 +20,12 @@ export default {
     'signupLinkClick'
   ],
   computed: {
-    textFormatted () {
+    signupText () {
       return this.$t(
         'shared.profile.form.signup.text'
       )
     },
-    linkFormatted () {
+    linkText () {
       return this.$t(
         'shared.profile.form.signup.link'
       )
@@ -33,7 +33,9 @@ export default {
   },
   methods: {
     handleSignupLinkClick () {
-      this.$emit('signupLinkClick')
+      this.$emit(
+        'signupLinkClick'
+      )
     }
   }
 }

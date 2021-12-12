@@ -4,7 +4,7 @@
     :class="{ inverted: isDarkMode }"
     type="submit"
   >
-    {{ textFormatted }}
+    {{ saveText }}
   </button>
 </template>
 
@@ -17,7 +17,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    textFormatted () {
+    saveText () {
       return this.$t(
         'buttons.save'
       )

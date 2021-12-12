@@ -46,25 +46,33 @@ export default {
       return this.listenersCount >= 0
     },
     listenersCountFormatted () {
-      return formatNumber(this.listenersCount)
+      return formatNumber(
+        this.listenersCount
+      )
     },
     isRenderPlaysCount () {
       return this.playsCount >= 0
     },
     playsCountFormatted () {
-      return formatNumber(this.playsCount)
+      return formatNumber(
+        this.playsCount
+      )
     },
     isRenderTaggersCount () {
       return this.taggersCount >= 0
     },
     taggersCountFormatted () {
-      return formatNumber(this.taggersCount)
+      return formatNumber(
+        this.taggersCount
+      )
     },
     isRenderTaggingsCount () {
       return this.taggingsCount >= 0
     },
     taggingsCountFormatted () {
-      return formatNumber(this.taggingsCount)
+      return formatNumber(
+        this.taggingsCount
+      )
     }
   }
 }

@@ -17,7 +17,7 @@
         'feed-segment'
       ]"
     >
-      {{ feedTempTextFormatted }}
+      {{ tempFeedText }}
     </BaseSegmentContainer>
   </div>
 </template>
@@ -48,7 +48,7 @@ export default {
     tabData () {
       return formatStartPageTab()
     },
-    feedTempTextFormatted () {
+    tempFeedText () {
       return this.$t(
         'temp.feed'
       )

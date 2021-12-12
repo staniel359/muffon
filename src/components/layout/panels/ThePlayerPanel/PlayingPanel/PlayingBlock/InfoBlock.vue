@@ -4,7 +4,7 @@
       <BaseTickerContainer>
         <BaseHeaderContainer tag="h4">
           <BaseLink
-            :link="trackMainLinkFormatted"
+            :link="trackMainLink"
             :text="trackTitle"
           />
 
@@ -26,7 +26,7 @@
         <div class="main-small-container">
           <small>
             <BaseLink
-              :link="albumMainLinkFormatted"
+              :link="albumMainLink"
               :text="albumTitle"
             />
           </small>
@@ -67,7 +67,7 @@ export default {
     trackExtraTitle () {
       return this.playerPlaying.extra_title
     },
-    trackMainLinkFormatted () {
+    trackMainLink () {
       return formatTrackMainLink({
         artistName: this.artistName,
         trackTitle: this.trackTitle,
@@ -89,7 +89,7 @@ export default {
     albumTitle () {
       return this.playerPlaying.album?.title
     },
-    albumMainLinkFormatted () {
+    albumMainLink () {
       return formatAlbumMainLink({
         artistName: this.artistName,
         albumTitle: this.albumTitle,

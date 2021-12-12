@@ -1,7 +1,7 @@
 <template>
   <div class="ui large labels">
     <TagItem
-      v-for="tagData in tagsFormatted"
+      v-for="tagData in tagsCollection"
       :key="tagData.uuid"
       :tagData="tagData"
       @click="handleTagClick"
@@ -30,13 +30,17 @@ export default {
     'tagClick'
   ],
   computed: {
-    tagsFormatted () {
-      return formatCollection(this.tags)
+    tagsCollection () {
+      return formatCollection(
+        this.tags
+      )
     }
   },
   methods: {
     handleTagClick () {
-      this.$emit('tagClick')
+      this.$emit(
+        'tagClick'
+      )
     }
   }
 }

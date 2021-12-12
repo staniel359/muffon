@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="profileLibraryMainLinkFormatted"
+    :link="profileLibraryMainLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="headphones grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="profileLibraryText"
       />
     </div>
   </BaseLinkContainer>
@@ -34,7 +34,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    profileLibraryMainLinkFormatted () {
+    profileLibraryMainLink () {
       return formatProfileLibraryMainLink({
         profileId: this.profileId
       })
@@ -42,7 +42,7 @@ export default {
     profileId () {
       return this.profileInfo.id
     },
-    textFormatted () {
+    profileLibraryText () {
       return this.$t(
         'layout.navigation.library'
       )

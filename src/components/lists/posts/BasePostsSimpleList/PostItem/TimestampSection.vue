@@ -2,8 +2,7 @@
   <div class="description">
     <div class="main-small-container">
       <small>
-        {{ createdDateFormatted }}
-        {{ createdTimeFormatted }}
+        {{ createdText }}
       </small>
     </div>
   </div>
@@ -24,6 +23,12 @@ export default {
     }
   },
   computed: {
+    createdText () {
+      return [
+        this.createdDateFormatted,
+        this.createdTimeFormatted
+      ].join(' ')
+    },
     createdDateFormatted () {
       return formatDate(
         this.created

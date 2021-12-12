@@ -2,7 +2,7 @@
   <BaseDropdownContainer
     ref="dropdown"
     class="main-source-select"
-    :header="headerFormatted"
+    :header="headerText"
   >
     <SourcesList :query="query" />
   </BaseDropdownContainer>
@@ -22,7 +22,7 @@ export default {
     query: String
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'shared.sources.select.source'
       )

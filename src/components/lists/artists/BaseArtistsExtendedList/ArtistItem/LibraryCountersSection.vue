@@ -4,7 +4,7 @@
 
     <BaseLinkContainer
       v-if="isWithTracksCount"
-      :link="profileLibraryArtistTracksLinkFormatted"
+      :link="profileLibraryArtistTracksLink"
     >
       <div class="link">
         <i class="music icon"></i>
@@ -16,7 +16,7 @@
 
     <BaseLinkContainer
       v-if="isWithAlbumsCount"
-      :link="profileLibraryArtistAlbumsLinkFormatted"
+      :link="profileLibraryArtistAlbumsLink"
     >
       <div class="link">
         <i class="record vinyl icon"></i>
@@ -65,13 +65,13 @@ export default {
     albumsCount () {
       return this.artistData.albums_count
     },
-    profileLibraryArtistTracksLinkFormatted () {
+    profileLibraryArtistTracksLink () {
       return formatProfileLibraryArtistTracksLink({
         profileId: this.profileId,
         artistId: this.artistId
       })
     },
-    profileLibraryArtistAlbumsLinkFormatted () {
+    profileLibraryArtistAlbumsLink () {
       return formatProfileLibraryArtistAlbumsLink({
         profileId: this.profileId,
         artistId: this.artistId

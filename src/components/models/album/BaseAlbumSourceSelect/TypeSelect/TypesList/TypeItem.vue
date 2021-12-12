@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownItem
-    :header="headerFormatted"
+    :header="headerText"
     :isDisabled="isDisabled"
     @click="handleClick"
   />
@@ -25,7 +25,7 @@ export default {
     isDisabled: Boolean
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       return this.$t(
         `shared.sources.albumTypes.${this.typeId}`
       )

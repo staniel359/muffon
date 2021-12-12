@@ -1,7 +1,7 @@
 <template>
   <div class="ui horizontal cards">
     <ArtistItem
-      v-for="artistData in artistsFormatted"
+      v-for="artistData in artistsCollection"
       :key="artistData.uuid"
       :artistData="artistData"
       :isWithTracksCount="isWithTracksCount"
@@ -48,8 +48,10 @@ export default {
     isRecommendation: Boolean
   },
   computed: {
-    artistsFormatted () {
-      return formatCollection(this.artists)
+    artistsCollection () {
+      return formatCollection(
+        this.artists
+      )
     }
   }
 }

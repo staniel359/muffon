@@ -5,7 +5,7 @@
   >
     <BaseListContainer class="selection">
       <BaseTrackVariantContainer
-        v-for="variantData in variantsFormatted"
+        v-for="variantData in variantsCollection"
         class="item main-simple-list-item"
         :key="variantData.uuid"
         :variantData="variantData"
@@ -55,7 +55,7 @@ export default {
     ...mapState('player', {
       playerVariants: 'variants'
     }),
-    variantsFormatted () {
+    variantsCollection () {
       return formatCollection(
         this.playerVariants
       )

@@ -5,7 +5,7 @@
   />
 
   <BaseLink
-    :link="videoChannelVideosLinkFormatted"
+    :link="videoChannelVideosLink"
     :text="channelTitle"
   />
 
@@ -87,7 +87,7 @@ export default {
     videoTitle () {
       return this.videoData.title
     },
-    videoChannelVideosLinkFormatted () {
+    videoChannelVideosLink () {
       return formatVideoChannelVideosLink({
         channelId: this.channelId,
         channelTitle: this.channelTitle

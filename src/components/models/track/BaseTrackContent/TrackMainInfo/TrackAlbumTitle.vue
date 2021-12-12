@@ -2,7 +2,7 @@
   <div class="description main-small-container">
     <small>
       <BaseLink
-        :link="albumMainLinkFormatted"
+        :link="link"
         :text="albumTitle"
         @click="handleLinkClick"
       />
@@ -38,19 +38,25 @@ export default {
     'linkClick'
   ],
   computed: {
-    albumMainLinkFormatted () {
+    link () {
       if (this.isLinkToLibrary) {
-        return formatProfileLibraryAlbumMainLink({
-          profileId: this.profileId,
-          albumId: this.albumId
-        })
+        return this.profileLibraryAlbumMainLink
       } else {
-        return formatAlbumMainLink({
-          albumTitle: this.albumTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        })
+        return this.albumMainLink
       }
+    },
+    profileLibraryAlbumMainLink () {
+      return formatProfileLibraryAlbumMainLink({
+        profileId: this.profileId,
+        albumId: this.albumId
+      })
+    },
+    albumMainLink () {
+      return formatAlbumMainLink({
+        albumTitle: this.albumTitle,
+        artistName: this.artistName,
+        sourceParams: this.sourceParams
+      })
     },
     albumTitle () {
       return this.albumData.title
@@ -65,7 +71,9 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

@@ -31,13 +31,13 @@ export default {
     trackFullTitle () {
       return [
         this.trackTitle,
-        this.trackExtraTitleFormatted
+        this.trackExtraTitleConditional
       ].filter(e => e).join(' ')
     },
     trackTitle () {
       return this.playerPlaying.title
     },
-    trackExtraTitleFormatted () {
+    trackExtraTitleConditional () {
       if (this.trackExtraTitle) {
         return `(${this.trackExtraTitle})`
       } else {

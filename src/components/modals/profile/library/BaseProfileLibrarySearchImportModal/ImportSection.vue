@@ -2,10 +2,10 @@
   <div class="main-library-modal-import-section">
     <BaseTabsContainer
       ref="tabs"
-      :tabs="tabsFormatted"
+      :tabs="tabsCollection"
     >
       <template
-        v-for="tabData in tabsFormatted"
+        v-for="tabData in tabsCollection"
         :key="tabData.uuid"
         #[tabData.scope]="slotProps"
       >
@@ -56,7 +56,7 @@ export default {
     'save'
   ],
   computed: {
-    tabsFormatted () {
+    tabsCollection () {
       return formatCollection(
         this.tabs
       )
@@ -109,9 +109,10 @@ export default {
         return tabData.scope === value
       }
 
-      const activeTabIndex = this.tabsFormatted.findIndex(
-        isActiveTab
-      )
+      const activeTabIndex =
+        this.tabsCollection.findIndex(
+          isActiveTab
+        )
 
       this.$nextTick(() => {
         this.$refs.tabs.setActiveTab(

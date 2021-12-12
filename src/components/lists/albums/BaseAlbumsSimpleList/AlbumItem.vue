@@ -2,7 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
-    :link="linkFormatted"
+    :link="link"
     @click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -152,47 +152,53 @@ export default {
     }
   },
   computed: {
-    linkFormatted () {
+    link () {
       if (this.isArtistNameActive) {
-        return this.artistMainLinkFormatted
+        if (this.isLinkToLibrary) {
+          return this.profileLibraryArtistMainLink
+        } else {
+          return this.artistMainLink
+        }
       } else {
-        return this.albumMainLinkFormatted
+        if (this.isLinkToLibrary) {
+          return this.profileLibraryAlbumMainLink
+        } else {
+          return this.albumMainLink
+        }
       }
     },
-    artistMainLinkFormatted () {
-      if (this.isLinkToLibrary) {
-        return formatProfileLibraryArtistMainLink({
-          profileId: this.profileId,
-          artistId: this.artistId
-        })
-      } else {
-        return formatArtistMainLink({
-          artistName: this.artistName
-        })
-      }
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
     },
     artistId () {
       return this.albumData.artist.id
     },
+    artistMainLink () {
+      return formatArtistMainLink({
+        artistName: this.artistName
+      })
+    },
     artistName () {
       return this.albumData.artist.name
     },
-    albumMainLinkFormatted () {
-      if (this.isLinkToLibrary) {
-        return formatProfileLibraryAlbumMainLink({
-          profileId: this.profileId,
-          albumId: this.albumId
-        })
-      } else {
-        return formatAlbumMainLink({
-          artistName: this.artistName,
-          albumTitle: this.albumTitle,
-          sourceParams: this.sourceParams
-        })
-      }
+    profileLibraryAlbumMainLink () {
+      return formatProfileLibraryAlbumMainLink({
+        profileId: this.profileId,
+        albumId: this.albumId
+      })
     },
     albumId () {
       return this.albumData.id?.toString()
+    },
+    albumMainLink () {
+      return formatAlbumMainLink({
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        sourceParams: this.sourceParams
+      })
     },
     sourceParams () {
       return formatAlbumSourceParams({
@@ -229,7 +235,9 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
     handleDeleteOptionClick () {
       if (this.isClearable) {

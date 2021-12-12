@@ -3,7 +3,7 @@
     v-if="tracks.length"
     ref="pagination"
     scope="tracks"
-    :responseData="tracksDataFormatted"
+    :responseData="tracksData"
     :clientPageLimit="limit"
     :responsePageLimit="totalCount"
     isReset
@@ -57,14 +57,14 @@ export default {
     }
   },
   computed: {
-    tracksDataFormatted () {
+    tracksData () {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.tracksFormatted
+        tracks: this.tracksReversed
       }
     },
-    tracksFormatted () {
+    tracksReversed () {
       return [
         ...this.tracks
       ].reverse()

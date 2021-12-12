@@ -1,21 +1,21 @@
 <template>
   <div class="content">
     <p
-      v-html="goingFormatted"
+      v-html="goingText"
     ></p>
 
     <p v-if="isArtistOrAlbum">
-      {{ alsoFormatted }}
+      {{ alsoText }}
     </p>
 
     <p>
       <strong>
-        {{ undoFormatted }}
+        {{ undoText }}
       </strong>
     </p>
 
     <p>
-      {{ sureFormatted }}
+      {{ sureText }}
     </p>
   </div>
 </template>
@@ -34,13 +34,13 @@ export default {
     }
   },
   computed: {
-    goingFormatted () {
+    goingText () {
       return this.$t(
         'shared.library.delete.going',
-        { modelTitle: this.modelTitleFormatted }
+        { modelTitle: this.modelTitleStrong }
       )
     },
-    modelTitleFormatted () {
+    modelTitleStrong () {
       return `<strong>${this.modelTitle}</strong>`
     },
     isArtistOrAlbum () {
@@ -49,17 +49,17 @@ export default {
           this.model === 'album'
       )
     },
-    alsoFormatted () {
+    alsoText () {
       return this.$t(
         `shared.library.delete.${this.model}.also`
       )
     },
-    undoFormatted () {
+    undoText () {
       return this.$t(
         'modals.undo'
       )
     },
-    sureFormatted () {
+    sureText () {
       return this.$t(
         'modals.sure'
       )

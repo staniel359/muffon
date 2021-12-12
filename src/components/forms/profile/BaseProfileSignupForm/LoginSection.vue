@@ -1,13 +1,13 @@
 <template>
   <div class="login-section">
-    {{ textFormatted }}
+    {{ loginText }}
 
     <span
       class="main-link"
       @click="handleLoginLinkClick"
     >
       <strong>
-        {{ linkFormatted }}
+        {{ linkText }}
       </strong>
     </span>
   </div>
@@ -20,12 +20,12 @@ export default {
     'loginLinkClick'
   ],
   computed: {
-    textFormatted () {
+    loginText () {
       return this.$t(
         'shared.profile.form.login.text'
       )
     },
-    linkFormatted () {
+    linkText () {
       return this.$t(
         'shared.profile.form.login.link'
       )

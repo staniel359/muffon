@@ -13,7 +13,7 @@
     <BaseLabel
       v-if="isStaff"
       class="primary role-label"
-      :text="roleFormatted"
+      :text="roleText"
     />
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
     role () {
       return this.profileData.role
     },
-    roleFormatted () {
+    roleText () {
       return this.$t(
         `shared.profile.roles.${this.role}`
       )

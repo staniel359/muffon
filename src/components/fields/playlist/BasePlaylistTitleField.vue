@@ -4,7 +4,7 @@
       ref="input"
       type="text"
       name="title"
-      :placeholder="placeholderFormatted"
+      :placeholder="titleText"
       :value="value"
     >
   </div>
@@ -17,7 +17,7 @@ export default {
     value: String
   },
   computed: {
-    placeholderFormatted () {
+    titleText () {
       return this.$t(
         'shared.playlist.form.fields.title'
       )

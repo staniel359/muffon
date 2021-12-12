@@ -1,7 +1,7 @@
 <template>
   <BaseListContainer class="selection">
     <VideoItem
-      v-for="videoData in videosFormatted"
+      v-for="videoData in videosCollection"
       :key="videoData.uuid"
       :videoData="videoData"
       @linkClick="handleLinkClick"
@@ -29,7 +29,7 @@ export default {
     }
   },
   computed: {
-    videosFormatted () {
+    videosCollection () {
       return formatCollection(
         this.videos
       )

@@ -63,12 +63,12 @@ export default {
     formatPlaylistParams (fields) {
       const { title } = fields
 
-      const imageFormatted = this.image.data
+      const image = this.image.data
 
       return {
         playlistId: this.playlistId,
-        title: title,
-        image: imageFormatted
+        title,
+        image
       }
     }
   }

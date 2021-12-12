@@ -3,7 +3,7 @@
     <input
       type="password"
       name="passwordConfirmation"
-      :placeholder="placeholderFormatted"
+      :placeholder="passwordConfirmationText"
     >
   </div>
 </template>
@@ -12,7 +12,7 @@
 export default {
   name: 'BaseProfilePasswordConfirmationField',
   computed: {
-    placeholderFormatted () {
+    passwordConfirmationText () {
       return this.$t(
         'shared.profile.form.fields.passwordConfirmation'
       )

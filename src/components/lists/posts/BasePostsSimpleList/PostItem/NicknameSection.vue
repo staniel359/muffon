@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <BaseLink
-      :link="profileMainLinkFormatted"
+      :link="profileMainLink"
       :text="profileNickname"
     />
   </div>
@@ -23,7 +23,7 @@ export default {
     }
   },
   computed: {
-    profileMainLinkFormatted () {
+    profileMainLink () {
       return formatProfileMainLink({
         profileId: this.profileId
       })

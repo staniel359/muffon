@@ -3,11 +3,11 @@
     <BaseHeaderContainer tag="h3">
       <BaseLink
         v-if="formatHeaderLink"
-        :link="linkFormatted"
-        :text="headerFormatted"
+        :link="headerLink"
+        :text="headerText"
       />
       <template v-else>
-        {{ headerFormatted }}
+        {{ headerText }}
       </template>
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -36,16 +36,16 @@ export default {
     trackTitle: String
   },
   computed: {
-    headerFormatted () {
-      return this.$t(
-        `layout.navigation.${this.headerTextKey}`
-      )
-    },
-    linkFormatted () {
+    headerLink () {
       return this.formatHeaderLink({
         artistName: this.artistName,
         trackTitle: this.trackTitle
       })
+    },
+    headerText () {
+      return this.$t(
+        `layout.navigation.${this.headerTextKey}`
+      )
     }
   }
 }
