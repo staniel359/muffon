@@ -3,7 +3,7 @@
     <input
       type="text"
       name="city"
-      :placeholder="placeholderFormatted"
+      :placeholder="cityText"
       :value="value"
     >
   </div>
@@ -16,7 +16,7 @@ export default {
     value: String
   },
   computed: {
-    placeholderFormatted () {
+    cityText () {
       return this.$t(
         'shared.profile.form.fields.city'
       )

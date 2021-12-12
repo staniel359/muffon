@@ -2,7 +2,7 @@
   <span v-if="index">, </span>
 
   <BaseLink
-    :link="artistMainLinkFormatted"
+    :link="link"
     :text="artistName"
     @click="handleClick"
   />
@@ -37,17 +37,23 @@ export default {
     'linkClick'
   ],
   computed: {
-    artistMainLinkFormatted () {
+    link () {
       if (this.isLinkToLibrary) {
-        return formatProfileLibraryArtistMainLink({
-          profileId: this.profileId,
-          artistId: this.artistId
-        })
+        return this.profileLibraryArtistMainLink
       } else {
-        return formatArtistMainLink({
-          artistName: this.artistName
-        })
+        return this.artistMainLink
       }
+    },
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    },
+    artistMainLink () {
+      return formatArtistMainLink({
+        artistName: this.artistName
+      })
     },
     artistName () {
       return this.artistData.name

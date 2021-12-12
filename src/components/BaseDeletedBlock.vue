@@ -1,7 +1,7 @@
 <template>
   <div class="main-deleted-container">
     <span>
-      {{ textFormatted }}
+      {{ deletedText }}
     </span>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    deletedText () {
       return this.$t(
         `shared.deleted.${this.model}`
       )

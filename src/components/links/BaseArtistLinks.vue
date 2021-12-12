@@ -1,6 +1,6 @@
 <template>
   <ArtistLink
-    v-for="(artistData, index) in artistsFormatted"
+    v-for="(artistData, index) in artistsCollection"
     :key="artistData.uuid"
     :artistData="artistData"
     :index="index"
@@ -31,7 +31,7 @@ export default {
     'linkClick'
   ],
   computed: {
-    artistsFormatted () {
+    artistsCollection () {
       return formatCollection(
         this.artists || [this.artist]
       )

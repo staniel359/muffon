@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="scrobblingText"
     />
 
     <BaseToggle
@@ -30,7 +30,7 @@ export default {
     isPlayerWithScrobbling: Boolean
   },
   computed: {
-    headerFormatted () {
+    scrobblingText () {
       return this.$t(
         'layout.settings.options.services.lastfm.scrobbling'
       )

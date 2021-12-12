@@ -5,7 +5,7 @@
     <MainSection />
 
     <BaseAccordionContainer
-      :title="extraTextFormatted"
+      :title="extraText"
     >
       <ExtraSection
         @imageChange="handleImageChange"
@@ -57,7 +57,7 @@ export default {
     }
   },
   computed: {
-    extraTextFormatted () {
+    extraText () {
       return this.$t(
         'shared.profile.form.sections.extra'
       )

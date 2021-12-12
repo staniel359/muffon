@@ -1,6 +1,6 @@
 <template>
   <BaseLabelLinkContainer
-    :link="tagMainLinkFormatted"
+    :link="tagMainLink"
   >
     <span class="link">
       {{ tagName }}
@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    tagMainLinkFormatted () {
+    tagMainLink () {
       return formatTagMainLink({
         tagName: this.tagName
       })

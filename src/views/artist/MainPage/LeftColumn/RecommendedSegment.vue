@@ -18,7 +18,7 @@
         <BaseButton
           class="basic compact fluid"
           icon="microphone alternate"
-          :text="artistsTextFormatted"
+          :text="artistsText"
           @click="handleArtistsButtonClick"
         />
 
@@ -64,7 +64,7 @@ export default {
         'pages.artist.recommended.based'
       )
     },
-    artistsTextFormatted () {
+    artistsText () {
       return this.$t(
         'pages.artist.recommended.artists',
         { count: this.profileArtistsCount }

@@ -5,7 +5,7 @@
     >
       <BaseLinkContainer
         class="main-profile-page-info"
-        :link="trackMainLinkFormatted"
+        :link="link"
       >
         <BaseImage
           class="rounded bordered main-profile-page-image"
@@ -48,7 +48,7 @@
 
       <div class="main-profile-page-info">
         <div>
-          {{ sinceFormatted }}
+          {{ sinceText }}
         </div>
         <strong>
           {{ createdFormatted }}
@@ -155,24 +155,45 @@ export default {
           !this.isAlbumTitleActive
       )
     },
-    trackMainLinkFormatted () {
+    link () {
       if (this.isArtistNameActive) {
-        return formatProfileLibraryArtistMainLink({
-          profileId: this.profileId,
-          artistId: this.artistId
-        })
+        return this.profileLibraryArtistMainLink
       } else if (this.isAlbumTitleActive) {
-        return formatProfileLibraryAlbumMainLink({
-          profileId: this.profileId,
-          albumId: this.albumId
-        })
+        return this.profileLibraryAlbumMainLink
       } else {
-        return formatTrackMainLink({
-          trackTitle: this.trackTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        })
+        return this.trackMainLink
       }
+    },
+    profileLibraryArtistMainLink () {
+      return formatProfileLibraryArtistMainLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    },
+    artistId () {
+      return this.trackData.artist.id
+    },
+    profileLibraryAlbumMainLink () {
+      return formatProfileLibraryAlbumMainLink({
+        profileId: this.profileId,
+        albumId: this.albumId
+      })
+    },
+    albumId () {
+      return this.trackData.album.id
+    },
+    trackMainLink () {
+      return formatTrackMainLink({
+        trackTitle: this.trackTitle,
+        artistName: this.artistName,
+        sourceParams: this.sourceParams
+      })
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
+    artistName () {
+      return this.trackData.artist.name
     },
     sourceParams () {
       return formatTrackSourceParams({
@@ -183,25 +204,13 @@ export default {
     trackFullTitle () {
       return `${this.artistName} - ${this.trackTitle}`
     },
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistId () {
-      return this.trackData.artist.id
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    albumId () {
-      return this.trackData.album.id
-    },
     albumTitle () {
       return this.trackData.album?.title
     },
     imageData () {
       return this.trackData.image
     },
-    sinceFormatted () {
+    sinceText () {
       return this.$t(
         'pages.profile.library.since'
       )

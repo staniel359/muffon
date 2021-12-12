@@ -19,7 +19,7 @@
       />
 
       <div class="description">
-        {{ tracksCountTextFormatted }}
+        {{ tracksCountText }}
       </div>
     </div>
 
@@ -91,7 +91,7 @@ export default {
     playlistTitle () {
       return this.playlistData.title
     },
-    tracksCountTextFormatted () {
+    tracksCountText () {
       return this.$t(
         'shared.tracks',
         { count: this.tracksCountFormatted }

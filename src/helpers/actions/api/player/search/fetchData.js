@@ -13,17 +13,17 @@ export default function ({ query }) {
   const handleSuccess = response => {
     const { tracks } = response.data.search
 
-    const variantsFormatted = formatCollection(
+    const variantsCollection = formatCollection(
       tracks.slice(0, limit)
     )
 
     store.dispatch(
       'player/setVariants',
-      variantsFormatted
+      variantsCollection
     )
 
     updateStore({
-      'player.variants': variantsFormatted
+      'player.variants': variantsCollection
     })
   }
 

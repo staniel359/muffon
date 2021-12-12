@@ -1,9 +1,11 @@
 <template>
   <BaseModalContainer ref="modal">
     <div class="content main-modal-content-full-height">
-      <BaseTabsContainer :tabs="tabsFormatted">
+      <BaseTabsContainer
+        :tabs="tabsCollection"
+      >
         <template
-          v-for="tabData in tabsFormatted"
+          v-for="tabData in tabsCollection"
           :key="tabData.uuid"
           #[tabData.scope]="slotProps"
         >
@@ -36,7 +38,7 @@ export default {
     ServicesSettings
   },
   computed: {
-    tabsFormatted () {
+    tabsCollection () {
       return formatCollection(
         this.tabs
       )

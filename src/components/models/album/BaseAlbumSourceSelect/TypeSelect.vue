@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
     class="main-source-select-type-select"
-    :header="headerFormatted"
+    :header="headerText"
   >
     <TypesList
       :albumsData="albumsData"
@@ -25,7 +25,7 @@ export default {
     types: Array
   },
   computed: {
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'shared.sources.select.type'
       )

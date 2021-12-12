@@ -8,10 +8,10 @@
 
     <div class="video-data-more-container">
       <BaseLinkContainer
-        :link="videoMainLinkFormatted"
+        :link="videoMainLink"
       >
         <strong class="link">
-          {{ moreFormatted }}
+          {{ moreText }}
         </strong>
       </BaseLinkContainer>
     </div>
@@ -51,12 +51,12 @@ export default {
     placeholder () {
       return this.selectedVideoData.image.small
     },
-    videoMainLinkFormatted () {
+    videoMainLink () {
       return formatVideoMainLink({
         videoId: this.videoId
       })
     },
-    moreFormatted () {
+    moreText () {
       return this.$t(
         'shared.more'
       )

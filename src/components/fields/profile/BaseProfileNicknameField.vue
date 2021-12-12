@@ -3,7 +3,7 @@
     <input
       type="text"
       name="nickname"
-      :placeholder="placeholderFormatted"
+      :placeholder="nicknameText"
       :value="value"
     >
   </div>
@@ -16,7 +16,7 @@ export default {
     value: String
   },
   computed: {
-    placeholderFormatted () {
+    nicknameText () {
       return this.$t(
         'shared.profile.form.fields.nickname'
       )

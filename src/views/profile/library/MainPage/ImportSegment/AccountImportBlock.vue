@@ -3,7 +3,7 @@
     class="primary import-button"
     icon="user circle"
     :class="{ disabled: !isAccountConnected }"
-    :text="addFormatted"
+    :text="accountText"
     @click="handleClick"
   />
 
@@ -29,7 +29,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    addFormatted () {
+    accountText () {
       return this.$t(
         'buttons.from.account'
       )

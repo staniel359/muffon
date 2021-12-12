@@ -2,7 +2,7 @@
   <BaseTracksSimpleList
     v-if="tracks"
     class="post-tracks"
-    :tracks="tracksFormatted"
+    :tracks="tracksCollection"
     isWithArtistName
   />
 </template>
@@ -26,7 +26,7 @@ export default {
     tracks () {
       return this.postData.tracks
     },
-    tracksFormatted () {
+    tracksCollection () {
       return formatCollection(
         this.tracks
       )

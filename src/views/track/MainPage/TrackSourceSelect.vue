@@ -1,6 +1,6 @@
 <template>
   <BaseAccordionContainer
-    :title="textFormatted"
+    :title="findText"
     @open="handleOpen"
   >
     <BaseTrackSourceSelect
@@ -29,7 +29,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    findText () {
       return this.$t(
         'shared.sources.find'
       )

@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="headerFormatted"
+      :text="queueText"
       isHorizontal
     />
 
@@ -20,7 +20,7 @@ export default {
     AutoplayOption
   },
   computed: {
-    headerFormatted () {
+    queueText () {
       return this.$t(
         'layout.settings.sections.app.queue'
       )

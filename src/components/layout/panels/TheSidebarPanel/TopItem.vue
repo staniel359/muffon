@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="topLinkFormatted"
+    :link="topLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="arrow alternate circle up grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="topText"
       />
     </div>
   </BaseLinkContainer>
@@ -28,10 +28,10 @@ export default {
     BaseHeader
   },
   computed: {
-    topLinkFormatted () {
+    topLink () {
       return formatTopMainLink()
     },
-    textFormatted () {
+    topText () {
       return this.$t(
         'layout.navigation.tops'
       )

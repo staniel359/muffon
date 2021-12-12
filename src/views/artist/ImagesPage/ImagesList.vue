@@ -1,7 +1,7 @@
 <template>
   <div class="ui four column grid">
     <div
-      v-for="(imageData, index) in imagesFormatted"
+      v-for="(imageData, index) in imagesCollection"
       class="column"
       :key="imageData.uuid"
     >
@@ -38,7 +38,7 @@ export default {
     mainSlider: HTMLDivElement
   },
   computed: {
-    imagesFormatted () {
+    imagesCollection () {
       return formatCollection(
         this.images
       )

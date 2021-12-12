@@ -17,7 +17,7 @@
           <BaseButton
             class="primary"
             icon="plus"
-            :text="createFormatted"
+            :text="createText"
             @click="handleCreateButtonClick"
           />
 
@@ -87,7 +87,7 @@ export default {
     }
   },
   computed: {
-    createFormatted () {
+    createText () {
       return this.$t(
         'shared.playlists.create'
       )

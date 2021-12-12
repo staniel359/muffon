@@ -10,12 +10,12 @@
       ]"
     >
       <MainSlider
-        :images="imagesFormatted"
+        :images="imagesCollection"
         :syncSlider="thumbsSlider"
         @init="handleMainSliderInit"
       />
       <ThumbsSlider
-        :images="imagesFormatted"
+        :images="imagesCollection"
         :syncSlider="mainSlider"
         @init="handleThumbsSliderInit"
       />
@@ -56,7 +56,7 @@ export default {
     }
   },
   computed: {
-    imagesFormatted () {
+    imagesCollection () {
       return formatCollection(
         this.images
       )

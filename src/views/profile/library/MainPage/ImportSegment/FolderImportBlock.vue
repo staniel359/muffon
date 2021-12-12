@@ -2,7 +2,7 @@
   <BaseButton
     class="primary import-button"
     icon="folder"
-    :text="addFormatted"
+    :text="folderText"
     @click="handleClick"
   />
 
@@ -21,7 +21,7 @@ export default {
     BaseProfileLibraryFolderImportModal
   },
   computed: {
-    addFormatted () {
+    folderText () {
       return this.$t(
         'buttons.from.folder'
       )

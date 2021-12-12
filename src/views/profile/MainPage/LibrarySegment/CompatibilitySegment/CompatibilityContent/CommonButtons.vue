@@ -1,6 +1,6 @@
 <template>
   <template
-    v-for="buttonData in buttonsFormatted"
+    v-for="buttonData in buttonsCollection"
     :key="buttonData.uuid"
   >
     <BaseButton
@@ -64,7 +64,7 @@ export default {
     }
   },
   computed: {
-    buttonsFormatted () {
+    buttonsCollection () {
       return formatCollection(
         this.buttons
       )

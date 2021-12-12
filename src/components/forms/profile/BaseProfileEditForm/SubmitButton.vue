@@ -5,7 +5,7 @@
     type="submit"
   >
     <i class="save icon"></i>
-    {{ textFormatted }}
+    {{ saveText }}
   </button>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    textFormatted () {
+    saveText () {
       return this.$t(
         'buttons.save'
       )

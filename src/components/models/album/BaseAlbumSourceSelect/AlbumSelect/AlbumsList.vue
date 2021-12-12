@@ -1,6 +1,6 @@
 <template>
   <AlbumItem
-    v-for="albumData in albumsFormatted"
+    v-for="albumData in albumsCollection"
     :key="albumData.uuid"
     :albumData="albumData"
   />
@@ -24,7 +24,7 @@ export default {
     }
   },
   computed: {
-    albumsFormatted () {
+    albumsCollection () {
       return formatCollection(
         this.albums
       )

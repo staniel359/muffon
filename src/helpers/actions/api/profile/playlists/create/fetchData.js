@@ -39,29 +39,34 @@ export default function ({ title, image }) {
       const addError = errorData => {
         const addFieldError = field => {
           if (errorData[field]) {
-            const errorFormatted = camelCase(
+            const errorKey = camelCase(
               errorData[field]
             )
-            const fieldFormatted = camelCase(field)
+            const fieldKey = camelCase(
+              field
+            )
 
             const error = i18n.global.t(
               'shared.playlist.form.errors' +
-              `.${errorFormatted}` +
-              `.${fieldFormatted}`
+              `.${errorKey}.${fieldKey}`
             )
 
             addFormFieldError(
               this.form,
-              fieldFormatted,
+              fieldKey,
               error
             )
           }
         }
 
-        fields.forEach(addFieldError)
+        fields.forEach(
+          addFieldError
+        )
       }
 
-      errors.forEach(addError)
+      errors.forEach(
+        addError
+      )
     } else {
       this.error = error
     }

@@ -9,7 +9,7 @@
       <label for="profile-image-input">
         <BaseButton
           class="compact image-add-button"
-          :text="addFormatted"
+          :text="addText"
         />
       </label>
 
@@ -17,7 +17,7 @@
         v-if="imageUrl"
         class="red basic compact small delete-button"
         icon="close"
-        :text="deleteFormatted"
+        :text="deleteText"
         @click="handleDeleteButtonClick"
       />
 
@@ -53,12 +53,12 @@ export default {
     }
   },
   computed: {
-    addFormatted () {
+    addText () {
       return this.$t(
         'shared.profile.form.fields.image'
       )
     },
-    deleteFormatted () {
+    deleteText () {
       return this.$t(
         'buttons.delete'
       )

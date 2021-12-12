@@ -12,7 +12,7 @@
       v-else
       class="success"
       :icons="['check']"
-      :header="successMessageHeaderFormatted"
+      :header="successText"
     />
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
     'retry'
   ],
   computed: {
-    successMessageHeaderFormatted () {
+    successText () {
       return this.$t(
         'shared.add.save.success.tracks',
         { count: this.totalCountFormatted }

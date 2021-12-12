@@ -15,7 +15,7 @@
       class="bookmark icon"
     ></i>
 
-    {{ textFormatted }}
+    {{ bookmarkText }}
   </div>
 </template>
 
@@ -47,7 +47,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    bookmarkText () {
       if (this.modelId) {
         return this.$t(
           'shared.bookmarks.delete'

@@ -10,7 +10,7 @@
       tag="h4"
     >
       <BaseLink
-        :link="artistMainLinkFormatted"
+        :link="artistMainLink"
         :text="artistName"
       />
     </BaseHeaderContainer>
@@ -21,7 +21,7 @@
     >
       <small>
         <BaseLink
-          :link="albumMainLinkFormatted"
+          :link="albumMainLink"
           :text="albumTitle"
         />
       </small>
@@ -57,12 +57,12 @@ export default {
     albumData: Object
   },
   computed: {
-    artistMainLinkFormatted () {
+    artistMainLink () {
       return formatArtistMainLink({
         artistName: this.artistName
       })
     },
-    albumMainLinkFormatted () {
+    albumMainLink () {
       return formatAlbumMainLink({
         albumTitle: this.albumTitle,
         artistName: this.artistName,

@@ -7,7 +7,7 @@
     <BaseButton
       class="red basic compact small delete-button"
       icon="close"
-      :text="deleteFormatted"
+      :text="deleteText"
       @click="handleDeleteButtonClick"
     />
   </div>
@@ -36,7 +36,7 @@ export default {
     imageUrl () {
       return this.imageData.url
     },
-    deleteFormatted () {
+    deleteText () {
       return this.$t(
         'buttons.delete'
       )

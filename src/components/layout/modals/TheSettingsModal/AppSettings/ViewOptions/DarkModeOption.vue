@@ -2,7 +2,7 @@
   <div class="content">
     <BaseHeader
       tag="h4"
-      :text="headerFormatted"
+      :text="darkModeText"
     />
 
     <BaseToggle
@@ -29,7 +29,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    headerFormatted () {
+    darkModeText () {
       return this.$t(
         'layout.settings.options.app.view.darkMode'
       )

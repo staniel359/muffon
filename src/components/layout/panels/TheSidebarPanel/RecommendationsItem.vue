@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-sidebar-item"
-    :link="recommendationsLinkFormatted"
+    :link="recommendationsLink"
   >
     <div class="main-sidebar-item-icon-container">
       <i class="volume up grey icon"></i>
@@ -10,7 +10,7 @@
     <div class="main-sidebar-item-content-container">
       <BaseHeader
         tag="h4"
-        :text="textFormatted"
+        :text="recommendationsText"
       />
     </div>
   </BaseLinkContainer>
@@ -30,10 +30,10 @@ export default {
     BaseHeader
   },
   computed: {
-    recommendationsLinkFormatted () {
+    recommendationsLink () {
       return formatRecommendationsLink()
     },
-    textFormatted () {
+    recommendationsText () {
       return this.$t(
         'layout.navigation.recommendations'
       )

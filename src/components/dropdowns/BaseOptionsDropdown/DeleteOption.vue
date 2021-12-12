@@ -4,7 +4,7 @@
     @click="handleClick"
   >
     <i class="red close icon"></i>
-    {{ textFormatted }}
+    {{ deleteText }}
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     'click'
   ],
   computed: {
-    textFormatted () {
+    deleteText () {
       return this.$t(
         'buttons.delete'
       )

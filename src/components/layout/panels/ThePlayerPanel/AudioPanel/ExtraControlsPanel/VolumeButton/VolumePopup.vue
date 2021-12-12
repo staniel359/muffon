@@ -3,7 +3,7 @@
     <div class="volume-header-container">
       <BaseHeader
         tag="h4"
-        :text="headerFormatted"
+        :text="volumeText"
       />
     </div>
 
@@ -43,7 +43,7 @@ export default {
       audioVolume: 'volume',
       audioElement: 'element'
     }),
-    headerFormatted () {
+    volumeText () {
       return Math.floor(
         this.audioVolume * 100
       ).toString()
@@ -65,7 +65,9 @@ export default {
       this.seeker = el
     },
     handleMove (value) {
-      this.setAudioVolume(value)
+      this.setAudioVolume(
+        value
+      )
     },
     handleMouseUp (value) {
       updateStore({
@@ -78,7 +80,9 @@ export default {
         value
       )
 
-      this.setAudioVolume(value)
+      this.setAudioVolume(
+        value
+      )
     },
     setAudioVolume (value) {
       this.$nextTick(() => {

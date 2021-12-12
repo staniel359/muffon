@@ -3,7 +3,7 @@
     <BaseMessage
       v-if="isError"
       class="error"
-      :header="errorMessageHeaderFormatted"
+      :header="errorText"
       :listItems="errorFiles"
     />
     <SuccessSection
@@ -30,7 +30,7 @@ export default {
     successFiles: Array
   },
   computed: {
-    errorMessageHeaderFormatted () {
+    errorText () {
       return this.$t(
         'shared.add.import.error.files',
         { count: this.totalCountFormatted }

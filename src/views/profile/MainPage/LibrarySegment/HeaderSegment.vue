@@ -2,8 +2,8 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :link="profileLibraryMainLinkFormatted"
-        :text="headerFormatted"
+        :link="profileLibraryMainLink"
+        :text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -32,12 +32,12 @@ export default {
     }
   },
   computed: {
-    profileLibraryMainLinkFormatted () {
+    profileLibraryMainLink () {
       return formatProfileLibraryMainLink({
         profileId: this.profileId
       })
     },
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'layout.navigation.library'
       )

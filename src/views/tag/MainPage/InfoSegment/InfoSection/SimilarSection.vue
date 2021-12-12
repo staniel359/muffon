@@ -6,7 +6,7 @@
     />
     <template v-else-if="isAnySimilar">
       <BaseLabel
-        :text="similarTextFormatted"
+        :text="similarText"
       />
       <BaseTagsList
         v-if="similar.length"
@@ -48,7 +48,7 @@ export default {
     similar () {
       return this.tagData?.similar
     },
-    similarTextFormatted () {
+    similarText () {
       return this.$t(
         'layout.navigation.similar'
       ) + ':'

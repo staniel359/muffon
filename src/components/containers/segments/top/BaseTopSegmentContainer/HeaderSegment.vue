@@ -2,8 +2,8 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :text="headerFormatted"
-        :link="linkFormatted"
+        :link="headerLink"
+        :text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -34,12 +34,7 @@ export default {
     }
   },
   computed: {
-    headerFormatted () {
-      return this.$t(
-        `layout.navigation.${this.scope}`
-      )
-    },
-    linkFormatted () {
+    headerLink () {
       switch (this.scope) {
         case 'artists':
           return formatTopArtistsLink()
@@ -50,6 +45,11 @@ export default {
         default:
           return null
       }
+    },
+    headerText () {
+      return this.$t(
+        `layout.navigation.${this.scope}`
+      )
     }
   }
 }

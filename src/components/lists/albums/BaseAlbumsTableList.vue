@@ -5,7 +5,7 @@
     'column grid'
   ]">
     <div
-      v-for="albumData in albumsFormatted"
+      v-for="albumData in albumsCollection"
       class="column"
       :key="albumData.uuid"
     >
@@ -61,11 +61,15 @@ export default {
     isWithDeleteOption: Boolean
   },
   computed: {
-    albumsFormatted () {
-      return formatCollection(this.albums)
+    albumsCollection () {
+      return formatCollection(
+        this.albums
+      )
     },
     columnWidth () {
-      return numberToColumnWidth(this.itemsInRow)
+      return numberToColumnWidth(
+        this.itemsInRow
+      )
     }
   }
 }

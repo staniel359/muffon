@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :link="linkFormatted"
+    :link="videoMainLink"
     @click="handleLinkClick"
   >
     <BaseImage
@@ -48,7 +48,7 @@ export default {
     'linkClick'
   ],
   computed: {
-    linkFormatted () {
+    videoMainLink () {
       return formatVideoMainLink({
         videoId: this.videoId
       })

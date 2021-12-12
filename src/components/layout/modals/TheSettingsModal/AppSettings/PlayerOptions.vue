@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="headerFormatted"
+      :text="playerText"
       isHorizontal
     />
 
@@ -20,7 +20,7 @@ export default {
     SourceOption
   },
   computed: {
-    headerFormatted () {
+    playerText () {
       return this.$t(
         'layout.settings.sections.app.player'
       )

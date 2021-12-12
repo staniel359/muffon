@@ -1,17 +1,17 @@
 <template>
   <div class="content">
     <p
-      v-html="goingFormatted"
+      v-html="goingText"
     ></p>
 
     <p>
       <strong>
-        {{ undoFormatted }}
+        {{ undoText }}
       </strong>
     </p>
 
     <p>
-      {{ sureFormatted }}
+      {{ sureText }}
     </p>
   </div>
 </template>
@@ -20,17 +20,17 @@
 export default {
   name: 'TextSection',
   computed: {
-    goingFormatted () {
+    goingText () {
       return this.$t(
         'shared.post.delete.going'
       )
     },
-    undoFormatted () {
+    undoText () {
       return this.$t(
         'modals.undo'
       )
     },
-    sureFormatted () {
+    sureText () {
       return this.$t(
         'modals.sure'
       )

@@ -67,9 +67,9 @@ export default {
         city
       } = fields
 
-      const imageFormatted = this.image.data
+      const image = this.image.data
 
-      const birthdateFormatted = formatStringToDate(
+      const birthdateToDate = formatStringToDate(
         birthdate
       )
 
@@ -78,9 +78,9 @@ export default {
         password,
         passwordConfirmation,
         nickname,
-        image: imageFormatted,
+        image: image,
         gender,
-        birthdate: birthdateFormatted,
+        birthdate: birthdateToDate,
         country,
         city
       }

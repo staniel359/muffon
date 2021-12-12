@@ -4,7 +4,7 @@
   >
     <BaseTracksSimpleList
       class="queue-tracks"
-      :tracks="queueTracksFormatted"
+      :tracks="queueTracksConditional"
       :isQueueable="false"
       :isWithSelfIcons="false"
       isWithImage
@@ -30,7 +30,7 @@ export default {
   },
   computed: {
     ...mapGetters('queue', {
-      queueTracksFormatted: 'tracksFormatted'
+      queueTracksConditional: 'tracksConditional'
     }),
     ...mapState('queue', {
       queueTracks: 'tracks'

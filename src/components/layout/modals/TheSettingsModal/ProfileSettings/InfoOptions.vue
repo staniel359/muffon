@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="headerFormatted"
+      :text="infoText"
       isHorizontal
     />
 
@@ -20,7 +20,7 @@ export default {
     BaseProfileEditForm
   },
   computed: {
-    headerFormatted () {
+    infoText () {
       return this.$t(
         'layout.settings.sections.profile.info'
       )

@@ -1,7 +1,7 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="headerFormatted"
+      :text="dataText"
       isHorizontal
     />
 
@@ -24,7 +24,7 @@ export default {
     ClearSearchHistoryOption
   },
   computed: {
-    headerFormatted () {
+    dataText () {
       return this.$t(
         'layout.settings.sections.app.data'
       )

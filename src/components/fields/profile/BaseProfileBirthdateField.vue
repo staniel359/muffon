@@ -9,7 +9,7 @@
         <input
           type="text"
           name="birthdate"
-          :placeholder="placeholderFormatted"
+          :placeholder="birthdateText"
         >
       </div>
     </div>
@@ -26,7 +26,7 @@ export default {
     value: String
   },
   computed: {
-    placeholderFormatted () {
+    birthdateText () {
       return this.$t(
         'shared.profile.form.fields.birthdate'
       )

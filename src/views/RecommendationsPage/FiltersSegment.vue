@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer>
     <BaseAccordionContainer
-      :title="textFormatted"
+      :title="filterText"
       @open="handleOpen"
     >
       <div class="filters-block-container">
@@ -62,7 +62,7 @@ export default {
     }
   },
   computed: {
-    textFormatted () {
+    filterText () {
       return this.$t(
         'pages.recommendations.filter'
       )

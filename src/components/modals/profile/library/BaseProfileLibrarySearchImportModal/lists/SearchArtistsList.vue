@@ -3,7 +3,7 @@
     v-if="artists.length"
     ref="pagination"
     scope="artists"
-    :responseData="artistsDataFormatted"
+    :responseData="artistsData"
     :clientPageLimit="limit"
     :responsePageLimit="totalCount"
     isReset
@@ -54,14 +54,14 @@ export default {
     }
   },
   computed: {
-    artistsDataFormatted () {
+    artistsData () {
       return {
         page: 1,
         total_pages: 1,
-        artists: this.artistsFormatted
+        artists: this.artistsReversed
       }
     },
-    artistsFormatted () {
+    artistsReversed () {
       return [
         ...this.artists
       ].reverse()

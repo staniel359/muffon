@@ -2,8 +2,8 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :link="profilePlaylistsLinkFormatted"
-        :text="headerFormatted"
+        :link="profilePlaylistsLink"
+        :text="headerText"
       />
     </BaseHeaderContainer>
   </BaseSegmentContainer>
@@ -32,12 +32,12 @@ export default {
     }
   },
   computed: {
-    profilePlaylistsLinkFormatted () {
+    profilePlaylistsLink () {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })
     },
-    headerFormatted () {
+    headerText () {
       return this.$t(
         'layout.navigation.playlists'
       )

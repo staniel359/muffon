@@ -2,7 +2,7 @@
   <BaseButton
     class="fluid retry-button"
     icon="redo alternate"
-    :text="textFormatted"
+    :text="retryText"
     @click="handleClick"
   />
 </template>
@@ -19,7 +19,7 @@ export default {
     'click'
   ],
   computed: {
-    textFormatted () {
+    retryText () {
       return this.$t(
         'buttons.retry'
       )
