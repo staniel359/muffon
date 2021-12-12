@@ -37,7 +37,6 @@
     <BaseRecommendationProfileArtistsModal
       ref="modal"
       :recommendationId="recommendationId"
-      :profileId="profileId"
     />
   </div>
 </template>

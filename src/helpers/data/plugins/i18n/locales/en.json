@@ -140,6 +140,13 @@
     }
   },
   "pages": {
+    "artist": {
+      "recommended": {
+        "header": "Recommended to you",
+        "based": "Based on your:",
+        "artists": "{count} artists"
+      }
+    },
     "track": {
       "videos": {
         "find": "Find video",
