@@ -105,10 +105,7 @@ export default {
       type: Object,
       required: true
     },
-    profileId: {
-      type: String,
-      required: true
-    }
+    profileId: String
   },
   computed: {
     ...mapState('profile', {
