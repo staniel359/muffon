@@ -210,7 +210,8 @@
           "tracks": "Nessun brano",
           "playlists": "Nessuna playlist",
           "recommendations": "Nessun consiglio",
-          "posts": "Nessun post"
+          "posts": "Nessun post",
+          "feed": "Nessun post"
         },
         "content": "Non c'è ancora nulla qui"
       }
@@ -459,8 +460,5 @@
       "playlist": "La playlist è stata cancellata",
       "post": "Il post è stato cancellato"
     }
-  },
-  "temp": {
-    "feed": "Presto ci sarà un feed qui"
   }
 }

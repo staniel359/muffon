@@ -1,8 +1,8 @@
 const RootPage = () => import(
   '%/RootPage.vue'
 )
-const StartPage = () => import(
-  '%/StartPage.vue'
+const FeedPage = () => import(
+  '%/FeedPage.vue'
 )
 const ArtistMainPage = () => import(
   '%/artist/MainPage.vue'
@@ -124,10 +124,10 @@ export default [
     component: RootPage
   },
   {
-    path: '/start',
+    path: '/feed',
     exact: true,
-    name: 'StartPage',
-    component: StartPage
+    name: 'FeedPage',
+    component: FeedPage
   },
   {
     path: '/artists/:artistName',

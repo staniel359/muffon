@@ -1,3 +1,11 @@
+export const feed = () => {
+  return {
+    name: 'FeedPage',
+    params: {},
+    path: 'feed'
+  }
+}
+
 export const profiles = () => {
   return {
     name: 'ProfilesPage',

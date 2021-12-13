@@ -176,7 +176,7 @@ export default {
     getNewTabData () {
       return {
         uuid: generateKey(),
-        path: 'start'
+        path: 'feed'
       }
     }
   }

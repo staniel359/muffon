@@ -1,13 +1,13 @@
 import i18n from '&/i18n'
 
-export const startPage = () => {
+export const feed = () => {
   const title = i18n.global.t(
-    'layout.navigation.start'
+    'layout.navigation.feed'
   )
 
   return {
     title,
-    path: 'start',
-    icon: 'home'
+    path: 'feed',
+    icon: 'list'
   }
 }
