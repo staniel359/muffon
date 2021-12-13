@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'start-page-container',
+      'feed-page-container',
       'main-page-segment-container'
     ]"
   >
@@ -11,47 +11,34 @@
       text="muffon"
     />
 
-    <BaseSegmentContainer
-      :class="[
-        'main-segment-container',
-        'feed-segment'
-      ]"
-    >
-      {{ tempFeedText }}
-    </BaseSegmentContainer>
+    <FeedSegment />
   </div>
 </template>
 
 <script>
 import BaseHeader from '@/BaseHeader.vue'
-import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+import FeedSegment from './FeedPage/FeedSegment.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
-  startPage as formatStartPageNavigation
+  feed as formatFeedPageNavigation
 } from '#/formatters/navigation'
-import { startPage as formatStartPageTab } from '#/formatters/tabs'
+import { feed as formatFeedPageTab } from '#/formatters/tabs'
 
 export default {
-  name: 'StartPage',
+  name: 'FeedPage',
   components: {
     BaseHeader,
-    BaseSegmentContainer
+    FeedSegment
   },
   mixins: [
     navigationMixin
   ],
   computed: {
     navigationSections () {
-      return formatStartPageNavigation()
+      return formatFeedPageNavigation()
     },
     tabData () {
-      return formatStartPageTab()
-    },
-    tempFeedText () {
-      return this.$t(
-        'temp.feed'
-      )
+      return formatFeedPageTab()
     }
   },
   mounted () {
@@ -61,12 +48,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.start-page-container
+.feed-page-container
   @extend .d-flex, .flex-column, .align-items-center
   padding-top: 5vh
   height: 70vh
-
-.feed-segment
-  @extend .flex-full, .overflow-y-auto
-  width: 450px
 </style>

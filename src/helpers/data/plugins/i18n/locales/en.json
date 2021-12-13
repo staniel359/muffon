@@ -1,7 +1,7 @@
 {
   "layout": {
     "navigation": {
-      "start": "Start page",
+      "feed": "Feed",
       "artists": "Artists",
       "artist": "Artist",
       "albums": "Albums",
@@ -217,7 +217,8 @@
           "tracks": "No tracks",
           "playlists": "No playlists",
           "recommendations": "No recommendations",
-          "posts": "No posts"
+          "posts": "No posts",
+          "feed": "No posts"
         },
         "content": "Looks like there is nothing here"
       }
@@ -469,8 +470,5 @@
       "playlist": "Playlist was deleted",
       "post": "Post was deleted"
     }
-  },
-  "temp": {
-    "feed": "Here will be feed soon"
   }
 }

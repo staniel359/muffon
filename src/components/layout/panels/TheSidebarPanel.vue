@@ -6,6 +6,7 @@
     <div class="sidebar-panel-content">
       <div class="sidebar-top">
         <ProfileItem />
+        <FeedItem />
         <LibraryItem />
         <RecommendationsItem />
         <PlaylistsItem />
@@ -26,6 +27,7 @@
 <script>
 import { mapState } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
+import FeedItem from './TheSidebarPanel/FeedItem.vue'
 import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
 import RecommendationsItem from './TheSidebarPanel/RecommendationsItem.vue'
 import PlaylistsItem from './TheSidebarPanel/PlaylistsItem.vue'
@@ -40,6 +42,7 @@ export default {
   name: 'TheSidebarPanel',
   components: {
     ProfileItem,
+    FeedItem,
     LibraryItem,
     RecommendationsItem,
     PlaylistsItem,
