@@ -39,7 +39,23 @@
           />
         </small>
       </div>
+
+      <small>
+        <BaseFollowingMessage
+          class="following-message"
+          :profileData="profileData"
+        />
+      </small>
     </div>
+
+    <BaseLinkContainer
+      v-if="isRenderFollowButton"
+    >
+      <BaseFollowButton
+        class="tiny compact follow-button"
+        :profileData="profileData"
+      />
+    </BaseLinkContainer>
   </BaseLinkContainer>
 </template>
 
@@ -51,7 +67,10 @@ import BaseLabel from '@/BaseLabel.vue'
 import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
   from '@/models/profile/BaseProfileCityCountry.vue'
+import BaseFollowingMessage from '@/models/profile/BaseFollowingMessage.vue'
+import BaseFollowButton from '@/models/profile/BaseFollowButton.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
+import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'ProfileItem',
@@ -61,7 +80,9 @@ export default {
     BaseHeader,
     BaseLabel,
     BaseProfileGenderAge,
-    BaseProfileCityCountry
+    BaseProfileCityCountry,
+    BaseFollowingMessage,
+    BaseFollowButton
   },
   props: {
     profileData: {
@@ -106,6 +127,11 @@ export default {
       return this.$t(
         `shared.profile.roles.${this.role}`
       )
+    },
+    isRenderFollowButton () {
+      return !isCurrentProfile(
+        this.profileId
+      )
     }
   }
 }
@@ -117,4 +143,11 @@ export default {
 
 .role-label
   margin-left: 0.5em
+
+.following-message
+  margin-top: 0.5em
+
+.follow-button
+  @extend .no-margin
+  margin-left: 0.5em !important
 </style>

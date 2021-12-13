@@ -1,11 +1,16 @@
 import axios from 'axios'
+import store from '&/store'
 
 export default function ({ page, limit }) {
   this.error = null
   this.isLoading = true
 
   const url = '/profiles'
+
+  const otherProfileId =
+    store.state.profile.info.id
   const params = {
+    other_profile_id: otherProfileId,
     ...(page && { page }),
     ...(limit && { limit })
   }
