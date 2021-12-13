@@ -52,7 +52,7 @@ export default {
     )
   },
   methods: {
-    handleClick () {
+    handleClick (event) {
       this.$emit(
         'click',
         event

@@ -1,25 +1,24 @@
 import axios from 'axios'
 import store from '&/store'
 
-export default function ({ profileId, token, scope = '' }) {
-  this.error = null
+export default function ({ otherProfileId }) {
+  this.isError = false
   this.isLoading = true
 
-  const url = `/profiles/${profileId}/${scope}`
-
-  const otherProfileId =
+  const profileId =
     store.state.profile.info.id
+  const url = `profiles/${profileId}/followers`
+
+  const { token } = store.state.profile
   const params = {
     token,
     other_profile_id: otherProfileId
   }
 
-  const handleSuccess = response => {
-    this.profileData = response.data.profile
-  }
-
   const handleError = error => {
-    this.error = error
+    this.isError = true
+
+    throw error
   }
 
   const handleFinish = () => {
@@ -27,8 +26,7 @@ export default function ({ profileId, token, scope = '' }) {
   }
 
   return axios
-    .get(url, { params })
-    .then(handleSuccess)
+    .post(url, params)
     .catch(handleError)
     .finally(handleFinish)
 }
