@@ -38,7 +38,7 @@ import BasePaginatedListContainer
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import fetchBookmarksData from '#/actions/api/profile/bookmarks/fetchData'
+import fetchBookmarksData from '#/actions/api/bookmarks/fetchData'
 
 export default {
   name: 'BaseBookmarksTabContainer',

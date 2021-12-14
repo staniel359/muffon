@@ -1,7 +1,7 @@
 <template>
-  <div class="main-search-input-container">
+  <div class="search-container">
     <BaseHistoryInput
-      class="search-input"
+      class="main-search-input"
       ref="input"
       scope="librarySearch"
       :query="query"
@@ -51,11 +51,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-search-input-container
+.search-container
   @extend .d-flex, .align-items-center
-
-.search-input
-  @extend .flex-full
 
 .clear-button
   margin-left: 1em !important

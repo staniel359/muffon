@@ -1,6 +1,6 @@
 <template>
   <BaseModalContainer ref="modal">
-    <div class="content">
+    <div class="scrolling content">
       <BasePostEditFormContainer
         class="main-post-form"
         :postId="postId"
@@ -8,23 +8,30 @@
         :images="images"
         @postDataChange="handlePostDataChange"
       >
-        <BasePostContentField
+        <BaseContentField
           ref="input"
           :value="postContent"
         />
 
-        <BasePostImagesSection
-          :images="images"
-          @imagesChange="handleImagesChange"
-        />
+        <div
+          v-if="images.length || tracks.length"
+          class="images-tracks-section"
+        >
+          <BaseFormImagesSection
+            v-if="images.length"
+            :images="images"
+            @imagesChange="handleImagesChange"
+          />
 
-        <BasePostTracksSection
-          :tracks="tracks"
-          @tracksChange="handleTracksChange"
-        />
+          <BaseFormTracksSection
+            v-if="tracks.length"
+            :tracks="tracks"
+            @tracksChange="handleTracksChange"
+          />
+        </div>
 
         <div class="buttons-container">
-          <BasePostAddButtonsSection
+          <BaseFormAddButtonsSection
             :tracks="tracks"
             :images="images"
             @tracksChange="handleTracksChange"
@@ -44,11 +51,10 @@
 import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import BasePostEditFormContainer
   from '@/containers/forms/post/BasePostEditFormContainer.vue'
-import BasePostContentField from '@/models/post/BasePostContentField.vue'
-import BasePostImagesSection from '@/models/post/BasePostImagesSection.vue'
-import BasePostTracksSection from '@/models/post/BasePostTracksSection.vue'
-import BasePostAddButtonsSection
-  from '@/models/post/BasePostAddButtonsSection.vue'
+import BaseContentField from '@/fields/BaseContentField.vue'
+import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
+import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
+import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
 import BasePostSubmitButton from '@/models/post/BasePostSubmitButton.vue'
 import { generateKey } from '#/utils'
 import { collection as formatCollection } from '#/formatters'
@@ -58,10 +64,10 @@ export default {
   components: {
     BaseModalContainer,
     BasePostEditFormContainer,
-    BasePostContentField,
-    BasePostImagesSection,
-    BasePostTracksSection,
-    BasePostAddButtonsSection,
+    BaseContentField,
+    BaseFormImagesSection,
+    BaseFormTracksSection,
+    BaseFormAddButtonsSection,
     BasePostSubmitButton
   },
   props: {

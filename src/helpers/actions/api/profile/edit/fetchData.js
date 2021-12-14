@@ -1,9 +1,6 @@
 import axios from 'axios'
-import { camelCase } from 'camel-case'
 import store from '&/store'
-import i18n from '&/i18n'
-import { updateStore } from '#/actions'
-import { addFormFieldError } from '#/actions/plugins/semantic'
+import { updateStore, addFormErrors } from '#/actions'
 
 export default function ({
   email,
@@ -57,8 +54,6 @@ export default function ({
       error.response?.status === 403
 
     if (isBadRequest) {
-      const { errors } = error.response.data
-
       const fields = [
         'email',
         'password',
@@ -66,37 +61,12 @@ export default function ({
         'nickname'
       ]
 
-      const addError = errorData => {
-        const addFieldError = field => {
-          if (errorData[field]) {
-            const errorKey = camelCase(
-              errorData[field]
-            )
-            const fieldKey = camelCase(
-              field
-            )
-
-            const error = i18n.global.t(
-              'shared.profile.form.errors' +
-              `.${errorKey}.${fieldKey}`
-            )
-
-            addFormFieldError(
-              this.form,
-              fieldKey,
-              error
-            )
-          }
-        }
-
-        fields.forEach(
-          addFieldError
-        )
-      }
-
-      errors.forEach(
-        addError
-      )
+      addFormErrors({
+        error,
+        fields,
+        form: this.form,
+        formKey: 'profile'
+      })
     } else {
       this.error = error
     }

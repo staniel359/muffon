@@ -7,7 +7,7 @@
     <template #default="slotProps">
       <div
         :class="[
-          'ui segments',
+          'ui raised segments',
           'main-segment-container',
           'main-page-segment-container'
         ]"

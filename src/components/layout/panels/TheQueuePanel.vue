@@ -3,7 +3,7 @@
     class="ui right overlay sidebar the-queue-panel"
     ref="queuePanel"
   >
-    <div class="ui segments main-segment-container">
+    <div class="ui raised segments main-segment-container">
       <HeaderSection />
       <TracksSection />
     </div>

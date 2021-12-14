@@ -10,6 +10,7 @@
     <template #default="pageSlotProps">
       <BaseSegmentContainer
         :class="[
+          'raised',
           'main-segment-container',
           'main-page-segment-container',
           'main-paginated-page-segment-container'

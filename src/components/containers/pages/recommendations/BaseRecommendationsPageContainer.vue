@@ -20,8 +20,9 @@
 <script>
 import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatRecommendationsPageNavigation
-  from '#/formatters/navigation/recommendations'
+import {
+  recommendations as formatRecommendationsPageNavigation
+} from '#/formatters/navigation'
 import formatRecommendationsPageTab from '#/formatters/tabs/recommendations'
 import fetchRecommendationsData from '#/actions/api/recommendations/fetchData'
 
@@ -40,8 +41,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       recommendationsData: null,
+      error: null,
       isLoading: false
     }
   },

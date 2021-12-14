@@ -8,13 +8,11 @@ export default function () {
     'layout.navigation.recommendations'
   )
 
-  const formatPath = () => {
-    return formatRecommendationsLink().path
-  }
+  const { path } = formatRecommendationsLink()
 
   return {
     icon: 'volume up',
     title,
-    path: formatPath()
+    path
   }
 }

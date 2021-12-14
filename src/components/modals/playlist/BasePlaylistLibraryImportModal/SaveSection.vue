@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
-import postTrackData from '#/actions/api/profile/playlist/tracks/postData'
+import postTrackData from '#/actions/api/playlist/tracks/postData'
 
 export default {
   name: 'SaveSection',

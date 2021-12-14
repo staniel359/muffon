@@ -1,5 +1,7 @@
 <template>
-  <BaseSegmentContainer class="main-segment-container">
+  <BaseSegmentContainer
+    class="raised main-segment-container"
+  >
     <InfoSection
       :artistData="artistData"
     />

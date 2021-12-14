@@ -5,6 +5,7 @@
     <template #default="slotProps">
       <BaseSegmentContainer
         :class="[
+          'raised',
           'main-segment-container',
           'main-page-segment-container'
         ]"

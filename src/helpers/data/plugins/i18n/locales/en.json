@@ -2,6 +2,7 @@
   "layout": {
     "navigation": {
       "feed": "Feed",
+      "conversations": "Conversations",
       "artists": "Artists",
       "artist": "Artist",
       "albums": "Albums",
@@ -185,6 +186,7 @@
     "delete": "Delete",
     "retry": "Retry",
     "post": "Post",
+    "send": "Send",
     "from": {
       "search": "From search",
       "folder": "From folder",
@@ -194,7 +196,7 @@
   },
   "inputs": {
     "search": "Search...",
-    "post": "Write something..."
+    "content": "Write something..."
   },
   "modals": {
     "undo": "You can't undo this action!",
@@ -218,7 +220,8 @@
           "playlists": "No playlists",
           "recommendations": "No recommendations",
           "posts": "No posts",
-          "feed": "No posts"
+          "feed": "No posts",
+          "conversations": "No conversations"
         },
         "content": "Looks like there is nothing here"
       }
@@ -360,9 +363,11 @@
       "roles": {
         "creator": "Creator"
       },
-      "following": "Following you",
+      "followed": "Following you",
+      "following": "You are following",
       "follow": "Follow",
-      "unfollow": "Unfollow"
+      "unfollow": "Unfollow",
+      "message": "Send message"
     },
     "library": {
       "add": "Add to library",
@@ -456,6 +461,12 @@
       "delete": {
         "header": "Delete post",
         "going": "You are going to delete this post."
+      }
+    },
+    "message": {
+      "sent": {
+        "header": "Message was sent",
+        "content": "Go to conversation"
       }
     },
     "updated": {

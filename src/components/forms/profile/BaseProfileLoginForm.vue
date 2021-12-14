@@ -1,6 +1,9 @@
 <template>
   <BaseProfileLoginFormContainer>
-    <BaseProfileEmailField />
+    <BaseProfileEmailField
+      ref="email"
+    />
+
     <BaseProfilePasswordField />
 
     <BaseProfileRememberField />
@@ -42,6 +45,9 @@ export default {
   emits: [
     'signupLinkClick'
   ],
+  mounted () {
+    this.$refs.email.focus()
+  },
   methods: {
     handleSignupLinkClick () {
       this.$emit(

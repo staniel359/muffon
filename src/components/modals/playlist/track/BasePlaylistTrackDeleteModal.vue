@@ -40,8 +40,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePlaylistTrackDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deletePlaylistTrackData
-  from '#/actions/api/profile/playlist/track/deleteData'
+import deletePlaylistTrackData from '#/actions/api/playlist/track/deleteData'
 
 export default {
   name: 'BasePlaylistTrackDeleteModal',

@@ -11,7 +11,7 @@
 <script>
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '#/data/plugins/semantic'
-import fetchPostEditData from '#/actions/api/profile/post/edit/fetchData'
+import fetchPostEditData from '#/actions/api/post/edit/fetchData'
 
 export default {
   name: 'BasePostEditFormContainer',

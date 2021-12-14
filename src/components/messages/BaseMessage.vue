@@ -24,7 +24,15 @@
       </div>
 
       <p v-if="content">
-        {{ content }}
+        <BaseLink
+          v-if="isContentLink"
+          :link="link"
+          :text="content"
+          @click="handleLinkClick"
+        />
+        <template v-else>
+          {{ content }}
+        </template>
       </p>
 
       <ul
@@ -52,21 +60,26 @@
 <script>
 import { mapState } from 'vuex'
 import BaseButton from '@/buttons/BaseButton.vue'
+import BaseLink from '@/links/BaseLink.vue'
 
 export default {
   name: 'BaseMessage',
   components: {
-    BaseButton
+    BaseButton,
+    BaseLink
   },
   props: {
     icons: Array,
     buttonData: Object,
     header: String,
     content: String,
-    listItems: Array
+    listItems: Array,
+    isContentLink: Boolean,
+    link: Object
   },
   emits: [
-    'buttonClick'
+    'buttonClick',
+    'linkClick'
   ],
   computed: {
     ...mapState('layout', [
@@ -75,7 +88,14 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('buttonClick')
+      this.$emit(
+        'buttonClick'
+      )
+    },
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

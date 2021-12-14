@@ -37,7 +37,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePostDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deletePostData from '#/actions/api/profile/post/deleteData'
+import deletePostData from '#/actions/api/post/deleteData'
 
 export default {
   name: 'BasePostDeleteModal',

@@ -7,8 +7,11 @@
 
     <div class="extra-fields">
       <BaseProfileGenderField />
+
       <BaseProfileBirthdateField />
+
       <BaseProfileCountryField />
+
       <BaseProfileCityField />
 
       <div></div>

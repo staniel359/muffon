@@ -1,7 +1,5 @@
 <template>
   <BasePlaylistPaginatedSegmentContainer
-    class="tracks-segment"
-    headerTextKey="tracks"
     scope="tracks"
     :profileId="profileId"
     :playlistId="playlistId"
@@ -47,7 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.tracks-segment
-  @extend .flex-full, .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

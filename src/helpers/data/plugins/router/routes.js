@@ -4,6 +4,12 @@ const RootPage = () => import(
 const FeedPage = () => import(
   '%/FeedPage.vue'
 )
+const ConversationsPage = () => import(
+  '%/conversations/MainPage.vue'
+)
+const ConversationPage = () => import(
+  '%/conversations/ConversationPage.vue'
+)
 const ArtistMainPage = () => import(
   '%/artist/MainPage.vue'
 )
@@ -121,13 +127,29 @@ export default [
     path: '/',
     exact: true,
     name: 'RootPage',
-    component: RootPage
+    component: RootPage,
+    props: true
   },
   {
     path: '/feed',
     exact: true,
     name: 'FeedPage',
-    component: FeedPage
+    component: FeedPage,
+    props: true
+  },
+  {
+    path: '/conversations',
+    exact: true,
+    name: 'ConversationsPage',
+    component: ConversationsPage,
+    props: true
+  },
+  {
+    path: '/conversations/:conversationId',
+    exact: true,
+    name: 'ConversationPage',
+    component: ConversationPage,
+    props: true
   },
   {
     path: '/artists/:artistName',

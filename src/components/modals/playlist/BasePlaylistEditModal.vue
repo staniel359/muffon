@@ -5,6 +5,7 @@
         class="main-playlist-form"
         :playlistId="playlistId"
         :image="image"
+        @success="handleSuccess"
       >
         <div class="fields-container">
           <BasePlaylistImageField
@@ -70,6 +71,9 @@ export default {
   methods: {
     handleImageChange (value) {
       this.image = value
+    },
+    handleSuccess () {
+      this.$refs.modal.hide()
     },
     show () {
       this.$refs.modal.show()

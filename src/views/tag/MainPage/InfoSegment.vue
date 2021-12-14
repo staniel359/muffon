@@ -1,5 +1,5 @@
 <template>
-  <div class="ui segments main-segment-container">
+  <div class="ui raised segments main-segment-container">
     <CoverSegment :tagName="tagName"/>
 
     <BaseSegmentContainer

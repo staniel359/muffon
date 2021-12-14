@@ -2,7 +2,7 @@ import axios from 'axios'
 import i18n from '&/i18n'
 import { updateStore } from '#/actions'
 import { addFormFieldError } from '#/actions/plugins/semantic'
-import fetchProfileData from '../fetchData'
+import fetchProfileData from '#/actions/api/profile/fetchData'
 
 export default function ({ email, password, isRemember }) {
   this.error = null
@@ -32,7 +32,10 @@ export default function ({ email, password, isRemember }) {
       error.response?.status === 404
 
     if (isNotFound) {
-      const fields = ['email', 'password']
+      const fields = [
+        'email',
+        'password'
+      ]
       const notFoundError = i18n.global.t(
         'shared.profile.form.errors.notFound'
       )
@@ -45,7 +48,9 @@ export default function ({ email, password, isRemember }) {
         )
       }
 
-      fields.forEach(addFieldError)
+      fields.forEach(
+        addFieldError
+      )
     } else {
       this.error = error
     }

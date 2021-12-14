@@ -39,8 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePlaylistDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteProfilePlaylistData
-  from '#/actions/api/profile/playlist/deleteData'
+import deleteProfilePlaylistData from '#/actions/api/playlist/deleteData'
 import {
   playlists as formatProfilePlaylistsLink
 } from '#/formatters/links/profile'

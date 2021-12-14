@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="top attached variants-list"
+    class="raised top attached variants-list"
     @init="handleSegmentInit"
   >
     <BaseListContainer class="selection">
@@ -80,5 +80,5 @@ export default {
 
 <style lang="sass" scoped>
 .variants-list
-  @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto
+  @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto, .no-border
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div class="field">
     <input
+      ref="input"
       type="text"
       name="email"
-      autofocus
       :placeholder="emailText"
       :value="value"
     >
@@ -21,6 +21,11 @@ export default {
       return this.$t(
         'shared.profile.form.fields.email'
       )
+    }
+  },
+  methods: {
+    focus () {
+      this.$refs.input.focus()
     }
   }
 }

@@ -10,12 +10,15 @@
       <BaseProfileGenderField
         :value="gender"
       />
+
       <BaseProfileBirthdateField
         :value="birthdate"
       />
+
       <BaseProfileCountryField
         :value="country"
       />
+
       <BaseProfileCityField
         :value="city"
       />
