@@ -11,7 +11,7 @@
 <script>
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '#/data/plugins/semantic'
-import fetchPostCreateData from '#/actions/api/profile/post/create/fetchData'
+import fetchPostCreateData from '#/actions/api/posts/create/fetchData'
 
 export default {
   name: 'BasePostCreateFormContainer',
@@ -37,11 +37,10 @@ export default {
     }
   },
   emits: [
-    'postDataChange'
+    'success'
   ],
   data () {
     return {
-      postData: null,
       error: null,
       isLoading: false
     }
@@ -63,9 +62,6 @@ export default {
       )
     }
   },
-  watch: {
-    postData: 'handlePostDataChange'
-  },
   methods: {
     handleSuccess (event, fields) {
       event.preventDefault()
@@ -83,12 +79,14 @@ export default {
 
         this.fetchPostCreateData(
           createDataArgs
+        ).then(
+          this.handlePostSuccess
         )
       }
     },
-    handlePostDataChange () {
+    handlePostSuccess () {
       this.$emit(
-        'postDataChange'
+        'success'
       )
     },
     fetchPostCreateData,

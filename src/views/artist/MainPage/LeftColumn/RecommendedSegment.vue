@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="main-segment-container"
+    class="raised main-segment-container"
   >
     <div class="recommended-block">
       <i class="volume up icon"></i>

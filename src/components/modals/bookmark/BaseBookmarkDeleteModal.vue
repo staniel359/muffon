@@ -39,8 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseBookmarkDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteBookmarkData
-  from '#/actions/api/profile/bookmarks/model/deleteData'
+import deleteBookmarkData from '#/actions/api/bookmarks/model/deleteData'
 
 export default {
   name: 'BaseBookmarkDeleteModal',

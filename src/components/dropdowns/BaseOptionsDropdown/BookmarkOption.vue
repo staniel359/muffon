@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteData from '#/actions/api/profile/bookmarks/model/deleteData'
-import postArtistData from '#/actions/api/profile/bookmarks/artists/postData'
-import postAlbumData from '#/actions/api/profile/bookmarks/albums/postData'
-import postTrackData from '#/actions/api/profile/bookmarks/tracks/postData'
+import deleteData from '#/actions/api/bookmarks/model/deleteData'
+import postArtistData from '#/actions/api/bookmarks/artists/postData'
+import postAlbumData from '#/actions/api/bookmarks/albums/postData'
+import postTrackData from '#/actions/api/bookmarks/tracks/postData'
 
 export default {
   name: 'BookmarkOption',

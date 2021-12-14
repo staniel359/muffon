@@ -2,6 +2,7 @@
   <BaseSegmentContainer
     ref="segment"
     :class="[
+      'raised',
       'main-segment-container',
       'main-page-segment-container',
       'main-paginated-page-segment-container'
@@ -34,8 +35,9 @@ import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
 import BaseBookmarksTabContainer
   from '@/containers/tabs/BaseBookmarksTabContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatBookmarksPageNavigation
-  from '#/formatters/navigation/bookmarks'
+import {
+  bookmarks as formatBookmarksPageNavigation
+} from '#/formatters/navigation'
 import formatBookmarksPageTab from '#/formatters/tabs/bookmarks'
 import { collection as formatCollection } from '#/formatters'
 

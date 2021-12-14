@@ -296,6 +296,10 @@ export const postFormOptions = ({ onSuccess }) => {
   return { onSuccess }
 }
 
+export const messageFormOptions = ({ onSuccess }) => {
+  return { onSuccess }
+}
+
 export const birthdateCalendarOptions = () => {
   const today = new Date()
   const minDate = new Date(

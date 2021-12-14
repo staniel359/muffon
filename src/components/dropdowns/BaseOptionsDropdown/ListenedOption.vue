@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteData from '#/actions/api/profile/listened/model/deleteData'
-import postArtistData from '#/actions/api/profile/listened/artists/postData'
-import postAlbumData from '#/actions/api/profile/listened/albums/postData'
-import postTrackData from '#/actions/api/profile/listened/tracks/postData'
+import deleteData from '#/actions/api/listened/model/deleteData'
+import postArtistData from '#/actions/api/listened/artists/postData'
+import postAlbumData from '#/actions/api/listened/albums/postData'
+import postTrackData from '#/actions/api/listened/tracks/postData'
 
 export default {
   name: 'ListenedOption',

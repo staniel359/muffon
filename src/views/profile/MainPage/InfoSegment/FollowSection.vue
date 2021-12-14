@@ -1,12 +1,12 @@
 <template>
   <BaseDivider />
 
-  <BaseFollowingMessage
+  <BaseProfileFollowingMessage
     class="following-message"
-    :profileData="profileData"
+    :otherProfileData="otherProfileData"
   />
 
-  <BaseFollowButton
+  <BaseProfileFollowButton
     class="fluid"
     :profileData="profileData"
   />
@@ -14,24 +14,31 @@
 
 <script>
 import BaseDivider from '@/BaseDivider.vue'
-import BaseFollowingMessage from '@/models/profile/BaseFollowingMessage.vue'
-import BaseFollowButton from '@/models/profile/BaseFollowButton.vue'
+import BaseProfileFollowingMessage
+  from '@/models/profile/BaseProfileFollowingMessage.vue'
+import BaseProfileFollowButton
+  from '@/models/profile/BaseProfileFollowButton.vue'
 
 export default {
   name: 'FollowSection',
   components: {
     BaseDivider,
-    BaseFollowingMessage,
-    BaseFollowButton
+    BaseProfileFollowingMessage,
+    BaseProfileFollowButton
   },
   props: {
     profileData: Object
+  },
+  computed: {
+    otherProfileData () {
+      return this.profileData.other_profile
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
 .following-message
-  @extend .justify-content-center
+  @extend .d-flex, .flex-column, .align-items-center
   margin-bottom: 1em
 </style>

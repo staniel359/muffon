@@ -1,7 +1,12 @@
 <template>
-  <BaseProfileEmailField />
+  <BaseProfileEmailField
+    ref="email"
+  />
+
   <BaseProfilePasswordField />
+
   <BaseProfilePasswordConfirmationField />
+
   <BaseProfileNicknameField />
 </template>
 
@@ -22,6 +27,9 @@ export default {
     BaseProfilePasswordField,
     BaseProfilePasswordConfirmationField,
     BaseProfileNicknameField
+  },
+  mounted () {
+    this.$refs.email.focus()
   }
 }
 </script>

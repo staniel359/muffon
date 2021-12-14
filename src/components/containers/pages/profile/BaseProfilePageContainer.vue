@@ -35,6 +35,11 @@ export default {
   mixins: [
     navigationMixin
   ],
+  provide () {
+    return {
+      setIsFollowing: this.setIsFollowing
+    }
+  },
   props: {
     profileId: {
       type: String,
@@ -110,6 +115,9 @@ export default {
         ...this.profileDataArgs,
         page
       })
+    },
+    setIsFollowing (value) {
+      this.profileData.other_profile.follower_of_profile = value
     }
   }
 }

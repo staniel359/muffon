@@ -13,8 +13,7 @@
 import { mapState } from 'vuex'
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { playlistFormOptions } from '#/data/plugins/semantic'
-import fetchPlaylistCreateData
-  from '#/actions/api/profile/playlists/create/fetchData'
+import fetchPlaylistCreateData from '#/actions/api/playlists/create/fetchData'
 import {
   playlist as formatProfilePlaylistLink
 } from '#/formatters/links/profile'

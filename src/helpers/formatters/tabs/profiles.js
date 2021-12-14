@@ -6,13 +6,11 @@ export default function () {
     'layout.navigation.profiles'
   )
 
-  const formatPath = () => {
-    return formatProfilesLink().path
-  }
+  const { path } = formatProfilesLink()
 
   return {
     icon: 'user',
     title,
-    path: formatPath()
+    path
   }
 }

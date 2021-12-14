@@ -23,7 +23,11 @@
       <div class="main-self-container">
         <BaseSegmentContainer
           v-if="isShowSelfIcons"
-          class="main-self-icons-segment-container main-segment-container"
+          :class="[
+            'raised',
+            'main-segment-container',
+            'main-self-icons-segment-container'
+          ]"
         >
           <BaseSelfIcons
             :libraryId="libraryId"

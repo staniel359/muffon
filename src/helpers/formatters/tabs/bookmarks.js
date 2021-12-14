@@ -6,13 +6,11 @@ export default function () {
     'layout.navigation.bookmarks'
   )
 
-  const formatPath = () => {
-    return formatBookmarksLink().path
-  }
+  const { path } = formatBookmarksLink()
 
   return {
     icon: 'bookmark',
     title,
-    path: formatPath()
+    path
   }
 }

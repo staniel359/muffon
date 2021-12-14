@@ -1,8 +1,15 @@
 <template>
-  <BaseProfileEmailField :value="email" />
+  <BaseProfileEmailField
+    :value="email"
+  />
+
   <BaseProfilePasswordField />
+
   <BaseProfilePasswordConfirmationField />
-  <BaseProfileNicknameField :value="nickname" />
+
+  <BaseProfileNicknameField
+    :value="nickname"
+  />
 </template>
 
 <script>
