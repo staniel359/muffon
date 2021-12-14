@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-post-item"
+    class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
   >
     <BaseDeletedBlock
@@ -9,25 +9,25 @@
     />
     <template v-else>
       <BaseProfileImage
-        class="avatar"
+        class="small"
         :image="profileImage"
       />
 
       <div class="content">
         <div class="post-top-section">
           <div class="post-nickname-timestamp-block">
-            <NicknameSection
-              :postData="postData"
+            <BaseProfileNickname
+              :profileData="profileData"
             />
 
-            <TimestampSection
-              :postData="postData"
+            <BaseTimestamp
+              class="description"
+              :created="created"
             />
           </div>
 
           <BaseOptionsDropdown
             v-if="isWithOptions"
-            class="post-options"
             isWithEditOption
             isWithDeleteOption
             @edit="handleEditOptionClick"
@@ -47,22 +47,26 @@
           />
         </div>
 
-        <BaseDivider />
+        <div class="content-container">
+          <div
+            v-if="content"
+            class="text main-text-container"
+          >
+            {{ content }}
+          </div>
 
-        <div
-          v-if="content"
-          class="text main-text-container"
-        >
-          {{ content }}
+          <BaseImagesSection
+            v-if="images"
+            class="content-section"
+            :images="images"
+          />
+
+          <BaseTracksSection
+            v-if="tracks"
+            class="content-section"
+            :tracks="tracks"
+          />
         </div>
-
-        <ImagesSection
-          :postData="postData"
-        />
-
-        <TracksSection
-          :postData="postData"
-        />
       </div>
     </template>
   </div>
@@ -72,14 +76,13 @@
 import { mapState } from 'vuex'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
-import NicknameSection from './PostItem/NicknameSection.vue'
-import TimestampSection from './PostItem/TimestampSection.vue'
+import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
+import BaseTimestamp from '@/BaseTimestamp.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BasePostEditModal from '@/modals/post/BasePostEditModal.vue'
 import BasePostDeleteModal from '@/modals/post/BasePostDeleteModal.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import ImagesSection from './PostItem/ImagesSection.vue'
-import TracksSection from './PostItem/TracksSection.vue'
+import BaseImagesSection from '@/BaseImagesSection.vue'
+import BaseTracksSection from '@/BaseTracksSection.vue'
 import { setToast } from '#/actions/plugins/semantic'
 
 export default {
@@ -87,14 +90,13 @@ export default {
   components: {
     BaseDeletedBlock,
     BaseProfileImage,
-    NicknameSection,
-    TimestampSection,
+    BaseProfileNickname,
+    BaseTimestamp,
     BaseOptionsDropdown,
     BasePostEditModal,
     BasePostDeleteModal,
-    BaseDivider,
-    ImagesSection,
-    TracksSection
+    BaseImagesSection,
+    BaseTracksSection
   },
   inject: [
     'findPaginationItem',
@@ -112,7 +114,10 @@ export default {
       profileInfo: 'info'
     }),
     profileImage () {
-      return this.postData.profile.image.extrasmall
+      return this.profileData.image.extrasmall
+    },
+    profileData () {
+      return this.postData.profile
     },
     content () {
       return this.postData.content
@@ -133,7 +138,7 @@ export default {
       return this.profileInfo.id.toString()
     },
     postProfileId () {
-      return this.postData.profile.id.toString()
+      return this.profileData.id.toString()
     },
     isPageOwner () {
       return (
@@ -151,6 +156,15 @@ export default {
     },
     isDeleted () {
       return !!this.postData.isDeleted
+    },
+    created () {
+      return this.postData.created
+    },
+    images () {
+      return this.postData.images
+    },
+    tracks () {
+      return this.postData.tracks
     }
   },
   methods: {
@@ -183,6 +197,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.main-simple-list-item
+  @extend .align-items-start
+
 .post-top-section
   @extend .d-flex
 

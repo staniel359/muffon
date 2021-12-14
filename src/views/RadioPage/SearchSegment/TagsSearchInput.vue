@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui fluid search main-search-input-container"
+    class="ui fluid search main-search-input"
     ref="search"
   >
     <div class="ui icon fluid input">

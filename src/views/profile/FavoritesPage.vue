@@ -7,6 +7,7 @@
       <BaseSegmentContainer
         ref="segment"
         :class="[
+          'raised',
           'main-segment-container',
           'main-page-segment-container',
           'main-paginated-page-segment-container'

@@ -20,7 +20,9 @@
 <script>
 import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatProfilesPageNavigation from '#/formatters/navigation/profiles'
+import {
+  profiles as formatProfilesPageNavigation
+} from '#/formatters/navigation'
 import formatProfilesPageTab from '#/formatters/tabs/profiles'
 import fetchProfilesData from '#/actions/api/profiles/fetchData'
 

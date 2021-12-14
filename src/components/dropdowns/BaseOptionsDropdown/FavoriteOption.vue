@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteData from '#/actions/api/profile/favorites/model/deleteData'
-import postArtistData from '#/actions/api/profile/favorites/artists/postData'
-import postAlbumData from '#/actions/api/profile/favorites/albums/postData'
-import postTrackData from '#/actions/api/profile/favorites/tracks/postData'
+import deleteData from '#/actions/api/favorites/model/deleteData'
+import postArtistData from '#/actions/api/favorites/artists/postData'
+import postAlbumData from '#/actions/api/favorites/albums/postData'
+import postTrackData from '#/actions/api/favorites/tracks/postData'
 
 export default {
   name: 'FavoriteOption',

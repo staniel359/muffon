@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="main-segment-container"
+    class="raised main-segment-container"
   >
     <MainInfoSection
       :profileData="profileData"
@@ -10,10 +10,15 @@
       :profileData="profileData"
     />
 
-    <FollowSection
-      v-if="isRenderFollowSection"
-      :profileData="profileData"
-    />
+    <template v-if="isRenderProfileSection">
+      <FollowSection
+        :profileData="profileData"
+      />
+
+      <MessageSection
+        :profileData="profileData"
+      />
+    </template>
   </BaseSegmentContainer>
 </template>
 
@@ -23,6 +28,7 @@ import BaseSegmentContainer
 import MainInfoSection from './InfoSegment/MainInfoSection.vue'
 import ExtraInfoSection from './InfoSegment/ExtraInfoSection.vue'
 import FollowSection from './InfoSegment/FollowSection.vue'
+import MessageSection from './InfoSegment/MessageSection.vue'
 import { isCurrentProfile } from '#/utils'
 
 export default {
@@ -31,19 +37,20 @@ export default {
     BaseSegmentContainer,
     MainInfoSection,
     ExtraInfoSection,
-    FollowSection
+    FollowSection,
+    MessageSection
   },
   props: {
     profileData: Object
   },
   computed: {
-    isRenderFollowSection () {
+    isRenderProfileSection () {
       return !isCurrentProfile(
         this.profileId
       )
     },
     profileId () {
-      return this.profileData.id
+      return this.profileData.id.toString()
     }
   }
 }

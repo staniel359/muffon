@@ -187,7 +187,7 @@
   },
   "inputs": {
     "search": "Ricerca...",
-    "post": "Scrivi qualcosa..."
+    "content": "Scrivi qualcosa..."
   },
   "modals": {
     "undo": "Questa azione non potrà essere annullata.",

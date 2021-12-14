@@ -41,7 +41,7 @@ import TextSection from './BaseProfileLibraryDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import deleteProfileLibraryModelData
-  from '#/actions/api/profile/library/model/deleteData'
+  from '#/actions/api/library/model/deleteData'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'

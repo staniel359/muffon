@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     :class="[
+      'raised',
       'main-segment-container',
       'main-paginated-page-segment-container',
       'feed-segment'
@@ -35,7 +36,7 @@ import BaseSegmentContainer
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
-import fetchFeedData from '#/actions/api/profile/feed/fetchData'
+import fetchFeedData from '#/actions/api/feed/fetchData'
 
 export default {
   name: 'FeedSegment',

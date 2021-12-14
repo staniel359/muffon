@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     :class="[
+      'raised',
       'main-segment-container',
       'track-player-panel-container'
     ]"

@@ -41,21 +41,26 @@
       </div>
 
       <small>
-        <BaseFollowingMessage
+        <BaseProfileFollowingMessage
           class="following-message"
-          :profileData="profileData"
+          :otherProfileData="otherProfileData"
         />
       </small>
     </div>
 
-    <BaseLinkContainer
-      v-if="isRenderFollowButton"
-    >
-      <BaseFollowButton
-        class="tiny compact follow-button"
+    <template v-if="isRenderOptions">
+      <BaseOptionsDropdown
+        :profileData="profileData"
+        isWithFollowOption
+        isWithMessageOption
+        @message="handleMessageOptionClick"
+      />
+
+      <BaseProfileMessageModal
+        ref="messageModal"
         :profileData="profileData"
       />
-    </BaseLinkContainer>
+    </template>
   </BaseLinkContainer>
 </template>
 
@@ -67,8 +72,11 @@ import BaseLabel from '@/BaseLabel.vue'
 import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
   from '@/models/profile/BaseProfileCityCountry.vue'
-import BaseFollowingMessage from '@/models/profile/BaseFollowingMessage.vue'
-import BaseFollowButton from '@/models/profile/BaseFollowButton.vue'
+import BaseProfileFollowingMessage
+  from '@/models/profile/BaseProfileFollowingMessage.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BaseProfileMessageModal
+  from '@/modals/profile/BaseProfileMessageModal.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 import { isCurrentProfile } from '#/utils'
 
@@ -81,9 +89,18 @@ export default {
     BaseLabel,
     BaseProfileGenderAge,
     BaseProfileCityCountry,
-    BaseFollowingMessage,
-    BaseFollowButton
+    BaseProfileFollowingMessage,
+    BaseOptionsDropdown,
+    BaseProfileMessageModal
   },
+  provide () {
+    return {
+      setIsFollowing: this.setIsFollowing
+    }
+  },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     profileData: {
       type: Object,
@@ -128,10 +145,26 @@ export default {
         `shared.profile.roles.${this.role}`
       )
     },
-    isRenderFollowButton () {
+    isRenderOptions () {
       return !isCurrentProfile(
         this.profileId
       )
+    },
+    otherProfileData () {
+      return this.profileData.other_profile
+    },
+    uuid () {
+      return this.profileData.uuid
+    }
+  },
+  methods: {
+    handleMessageOptionClick () {
+      this.$refs.messageModal.show()
+    },
+    setIsFollowing (value) {
+      this.findPaginationItem({
+        uuid: this.uuid
+      }).other_profile.follower_of_profile = value
     }
   }
 }

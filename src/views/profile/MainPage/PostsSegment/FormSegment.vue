@@ -5,24 +5,29 @@
       :profileId="profileId"
       :tracks="tracks"
       :images="images"
-      @postDataChange="handlePostDataChange"
+      @success="handleSuccess"
     >
-      <BasePostContentField
-        ref="input"
-      />
+      <BaseContentField ref="input" />
 
-      <BasePostImagesSection
-        :images="images"
-        @imagesChange="handleImagesChange"
-      />
+      <div
+        v-if="images.length || tracks.length"
+        class="images-tracks-section"
+      >
+        <BaseFormImagesSection
+          v-if="images.length"
+          :images="images"
+          @imagesChange="handleImagesChange"
+        />
 
-      <BasePostTracksSection
-        :tracks="tracks"
-        @tracksChange="handleTracksChange"
-      />
+        <BaseFormTracksSection
+          v-if="tracks.length"
+          :tracks="tracks"
+          @tracksChange="handleTracksChange"
+        />
+      </div>
 
       <div class="buttons-container">
-        <BasePostAddButtonsSection
+        <BaseFormAddButtonsSection
           :tracks="tracks"
           :images="images"
           @tracksChange="handleTracksChange"
@@ -42,11 +47,10 @@ import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BasePostCreateFormContainer
   from '@/containers/forms/post/BasePostCreateFormContainer.vue'
-import BasePostContentField from '@/models/post/BasePostContentField.vue'
-import BasePostImagesSection from '@/models/post/BasePostImagesSection.vue'
-import BasePostTracksSection from '@/models/post/BasePostTracksSection.vue'
-import BasePostAddButtonsSection
-  from '@/models/post/BasePostAddButtonsSection.vue'
+import BaseContentField from '@/fields/BaseContentField.vue'
+import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
+import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
+import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
 import BasePostSubmitButton from '@/models/post/BasePostSubmitButton.vue'
 
 export default {
@@ -54,15 +58,18 @@ export default {
   components: {
     BaseSegmentContainer,
     BasePostCreateFormContainer,
-    BasePostContentField,
-    BasePostImagesSection,
-    BasePostTracksSection,
-    BasePostAddButtonsSection,
+    BaseContentField,
+    BaseFormImagesSection,
+    BaseFormTracksSection,
+    BaseFormAddButtonsSection,
     BasePostSubmitButton
   },
   props: {
     profileId: String
   },
+  emits: [
+    'success'
+  ],
   data () {
     return {
       tracks: [],
@@ -70,13 +77,15 @@ export default {
     }
   },
   methods: {
-    handlePostDataChange () {
+    handleSuccess () {
       this.$refs.input.reset()
 
       this.tracks = []
       this.images = []
 
-      this.$emit('add')
+      this.$emit(
+        'success'
+      )
     },
     handleTracksChange (value) {
       this.tracks = value

@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveArtistsSection/CompleteSection.vue'
-import postArtistData from '#/actions/api/profile/library/artists/postData'
+import postArtistData from '#/actions/api/library/artists/postData'
 
 export default {
   name: 'SaveArtistsSection',

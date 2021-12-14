@@ -39,8 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseFavoriteDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteFavoriteData
-  from '#/actions/api/profile/favorites/model/deleteData'
+import deleteFavoriteData from '#/actions/api/favorites/model/deleteData'
 
 export default {
   name: 'BaseFavoriteDeleteModal',

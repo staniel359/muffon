@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="main-segment-container"
+    class="raised main-segment-container"
   >
     <BaseStatistics
       class="two small"

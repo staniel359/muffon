@@ -8,6 +8,7 @@
 
     <BaseSegmentContainer
       :class="[
+        'raised',
         'auth-form-segment',
         'main-segment-container'
       ]"

@@ -6,13 +6,11 @@ export default function () {
     'layout.navigation.radio'
   )
 
-  const formatPath = () => {
-    return formatRadioLink().path
-  }
+  const { path } = formatRadioLink()
 
   return {
     icon: 'broadcast tower',
     title,
-    path: formatPath()
+    path
   }
 }

@@ -22,6 +22,7 @@
           :albumTitle="albumTitle"
           :albumTracks="albumTracks"
           :imageUrl="imageUrl"
+          :profileData="optionData.profileData"
           @click="optionData.action"
           @linkClick="handleLinkClick"
         />
@@ -41,6 +42,8 @@ import BookmarkOption from './BaseOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseOptionsDropdown/ListenedOption.vue'
 import EditOption from './BaseOptionsDropdown/EditOption.vue'
 import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
+import FollowOption from './BaseOptionsDropdown/FollowOption.vue'
+import MessageOption from './BaseOptionsDropdown/MessageOption.vue'
 import { setDropdown } from '#/actions/plugins/semantic'
 import { mainDropdownOptions } from '#/data/plugins/semantic'
 import { collection as formatCollection } from '#/formatters'
@@ -56,7 +59,9 @@ export default {
     BookmarkOption,
     ListenedOption,
     EditOption,
-    DeleteOption
+    DeleteOption,
+    FollowOption,
+    MessageOption
   },
   props: {
     model: String,
@@ -76,12 +81,16 @@ export default {
     isWithListenedOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
+    isWithFollowOption: Boolean,
+    isWithMessageOption: Boolean,
+    profileData: Object,
     isWhite: Boolean
   },
   emits: [
     'playlist',
     'edit',
     'delete',
+    'message',
     'linkClick'
   ],
   data () {
@@ -130,6 +139,14 @@ export default {
         (
           this.isWithDeleteOption &&
             this.deleteOption
+        ),
+        (
+          this.isWithFollowOption &&
+            this.followOption
+        ),
+        (
+          this.isWithMessageOption &&
+            this.messageOption
         )
       ].filter(e => e)
     },
@@ -175,6 +192,18 @@ export default {
         action: this.handleDeleteOptionClick
       }
     },
+    followOption () {
+      return {
+        component: 'FollowOption',
+        profileData: this.profileData
+      }
+    },
+    messageOption () {
+      return {
+        component: 'MessageOption',
+        action: this.handleMessageOptionClick
+      }
+    },
     optionsCollection () {
       return formatCollection(
         this.options
@@ -199,6 +228,9 @@ export default {
     },
     handleDeleteOptionClick () {
       this.$emit('delete')
+    },
+    handleMessageOptionClick () {
+      this.$emit('message')
     },
     handleLinkClick () {
       this.$emit('linkClick')

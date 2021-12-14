@@ -9,7 +9,7 @@
     <template #default="pageSlotProps">
       <div
         :class="[
-          'ui segments',
+          'ui raised segments',
           'main-segment-container',
           'main-page-segment-container'
         ]"

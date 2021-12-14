@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'ui segments',
+      'ui raised segments',
       'main-segment-container',
       'main-page-segment-container'
     ]"
@@ -29,7 +29,9 @@
 import SearchSegment from './RadioPage/SearchSegment.vue'
 import PlayerSegment from './RadioPage/PlayerSegment.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatRadioPageNavigation from '#/formatters/navigation/radio'
+import {
+  radio as formatRadioPageNavigation
+} from '#/formatters/navigation'
 import formatRadioPageTab from '#/formatters/tabs/radio'
 import { generateKey } from '#/utils'
 

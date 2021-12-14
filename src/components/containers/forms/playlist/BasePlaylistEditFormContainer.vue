@@ -12,8 +12,7 @@
 <script>
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { playlistFormOptions } from '#/data/plugins/semantic'
-import fetchPlaylistEditData
-  from '#/actions/api/profile/playlist/edit/fetchData'
+import fetchPlaylistEditData from '#/actions/api/playlist/edit/fetchData'
 
 export default {
   name: 'BasePlaylistEditFormContainer',
@@ -30,6 +29,9 @@ export default {
     },
     image: Object
   },
+  emits: [
+    'success'
+  ],
   data () {
     return {
       form: null,

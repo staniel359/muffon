@@ -247,11 +247,18 @@ a
     height: 50px
     margin-right: 0.5em !important
     &.small
-      width: 30px
-      height: 30px
+      width: 35px
+      height: 35px
   & > .content
     @extend .flex-full, .no-padding
-  & > .main-options-dropdown-container
+    .content-container
+      margin-top: 1em
+    .content-section
+      margin-top: 5px !important
+    .text
+      font-size: 18px
+      line-height: 1.2em
+  .main-options-dropdown-container
     @extend .visibility-hidden
     margin-left: 0.5em
   .main-self-icons
@@ -259,9 +266,9 @@ a
     width: 50px
     margin-left: 0.5em
   &:hover
-    & > .link-active
+    .link-active
       @extend .text-color-base
-    & > .main-options-dropdown-container
+    .main-options-dropdown-container
       @extend .visibility-visible
 
 .main-message
@@ -398,11 +405,11 @@ a
   @extend .flex-full, .relative
 
 .main-tab
-  @extend .no-padding, .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .background-transparent, .absolute
+  @extend .no-padding, .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .background-transparent
   &.active
     @extend .visibility-visible
   &:not(.active)
-    @extend .visibility-hidden
+    @extend .visibility-hidden, .absolute
 
 .main-relative-tab
   @extend .relative
@@ -585,27 +592,11 @@ a
   &.white
     background: white !important
 
-.main-search-input-container
-  width: 220px
-
-.main-post-item
-  @extend .d-flex
-  padding: 1em 0 !important
-  & > .avatar
-    width: 35px !important
-    height: 35px !important
-  & > .content
-    @extend .flex-full
-    .description
-      margin-top: 0.2em
-    .post-options
-      @extend .d-none
-    & > .text
-      font-size: 18px
-      line-height: 1.2em
-  &:hover
-    .post-options
-      @extend .d-block
+.main-search-input
+  width: 230px
+  .results
+    .title
+      @extend .no-padding
 
 .main-image-input
   @extend .d-none
@@ -619,7 +610,7 @@ a
     & > .title-field
       @extend .flex-full
 
-.main-post-form
+.main-post-form, .main-message-form
   & > .buttons-container
     @extend .d-flex, .align-items-center
     margin-top: 1em
@@ -627,6 +618,8 @@ a
       @extend .no-margin
     & > .add-buttons
       @extend .flex-full
+  .images-tracks-section
+    margin-top: 1em
 
 .main-percent-circle
   & > path
@@ -645,4 +638,8 @@ a
 
 .main-following-message
   @extend .d-flex, .align-items-center
-  line-height: 1em
+
+.main-list
+  &.divided
+    & > .item
+      padding: 1em 0 !important
