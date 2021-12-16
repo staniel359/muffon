@@ -13,13 +13,19 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'BasePostSubmitButton',
+  props: {
+    actionKey: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     ...mapState('layout', [
       'isDarkMode'
     ]),
     postText () {
       return this.$t(
-        'buttons.post'
+        `buttons.${this.actionKey}`
       )
     }
   }

@@ -23,6 +23,8 @@
       "playlists": "Списки",
       "radio": "Радио",
       "posts": "Публикации",
+      "followers": "Подписчики",
+      "following": "Подписки",
       "model": {
         "artists": "Исполнители {modelName}",
         "albums": "Альбомы {modelName}",
@@ -33,7 +35,9 @@
         "library": "Библиотека {modelName}",
         "favorites": "Избранное {modelName}",
         "playlists": "Списки {modelName}",
-        "posts": "Публикации {modelName}"
+        "posts": "Публикации {modelName}",
+        "followers": "Подписчики {modelName}",
+        "following": "Подписки {modelName}"
       },
       "top": {
         "artists": "Популярные исполнители",
@@ -221,7 +225,9 @@
           "recommendations": "Нет рекомендаций",
           "posts": "Нет публикаций",
           "feed": "Нет публикаций",
-          "conversations": "Нет переписок"
+          "conversations": "Нет переписок",
+          "followers": "Нет подписчиков",
+          "following": "Нет подписок"
         },
         "content": "Похоже, здесь ничего нет"
       }
@@ -363,6 +369,8 @@
       "roles": {
         "creator": "Создатель"
       },
+      "followersCount": "{count} подписчиков",
+      "followingCount": "{count} подписок",
       "followed": "Подписан(а) на Вас",
       "following": "Вы подписаны",
       "follow": "Подписаться",

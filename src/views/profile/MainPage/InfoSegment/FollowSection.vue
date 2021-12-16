@@ -39,6 +39,5 @@ export default {
 
 <style lang="sass" scoped>
 .following-message
-  @extend .d-flex, .flex-column, .align-items-center
   margin-bottom: 1em
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="isFollowing || isFollowed">
+  <div
+    v-if="isFollowing || isFollowed"
+    class="main-following-message-container"
+  >
     <div
       v-if="isFollowing"
       class="main-following-message"

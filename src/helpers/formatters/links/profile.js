@@ -37,3 +37,19 @@ export const posts = ({ profileId }) => {
     path: `profiles/${profileId}/posts`
   }
 }
+
+export const followers = ({ profileId }) => {
+  return {
+    name: 'ProfileFollowersPage',
+    params: { profileId },
+    path: `profiles/${profileId}/followers`
+  }
+}
+
+export const following = ({ profileId }) => {
+  return {
+    name: 'ProfileFollowingPage',
+    params: { profileId },
+    path: `profiles/${profileId}/following`
+  }
+}

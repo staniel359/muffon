@@ -40,6 +40,7 @@
 
           <BasePostSubmitButton
             class="submit-button"
+            actionKey="save"
           />
         </div>
       </BasePostEditFormContainer>
