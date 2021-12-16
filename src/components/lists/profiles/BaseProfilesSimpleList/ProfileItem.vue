@@ -12,6 +12,7 @@
       <div class="nickname-label-container">
         <BaseHeader
           tag="h4"
+          :class="{ link: isMainLinkActive }"
           :text="nickname"
         />
 
@@ -25,28 +26,27 @@
       <div class="description">
         <small>
           <BaseProfileGenderAge
-            v-if="gender || birthdate"
-            :gender="gender"
-            :birthdate="birthdate"
+            :profileData="profileData"
           />
-        </small>
 
-        <small>
           <BaseProfileCityCountry
-            v-if="city || country"
-            :city="city"
-            :country="country"
+            :profileData="profileData"
+          />
+
+          <BaseProfileFollowingCount
+            class="following-count"
+            :profileData="profileData"
+            @activeLinkChange="handleActiveLinkChange"
           />
         </small>
       </div>
-
-      <small>
-        <BaseProfileFollowingMessage
-          class="following-message"
-          :otherProfileData="otherProfileData"
-        />
-      </small>
     </div>
+
+    <small class="following-message">
+      <BaseProfileFollowingMessage
+        :otherProfileData="otherProfileData"
+      />
+    </small>
 
     <template v-if="isRenderOptions">
       <BaseOptionsDropdown
@@ -72,6 +72,8 @@ import BaseLabel from '@/BaseLabel.vue'
 import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
   from '@/models/profile/BaseProfileCityCountry.vue'
+import BaseProfileFollowingCount
+  from '@/models/profile/BaseProfileFollowingCount.vue'
 import BaseProfileFollowingMessage
   from '@/models/profile/BaseProfileFollowingMessage.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
@@ -89,6 +91,7 @@ export default {
     BaseLabel,
     BaseProfileGenderAge,
     BaseProfileCityCountry,
+    BaseProfileFollowingCount,
     BaseProfileFollowingMessage,
     BaseOptionsDropdown,
     BaseProfileMessageModal
@@ -107,6 +110,11 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      isMainLinkActive: true
+    }
+  },
   computed: {
     profileMainLink () {
       return formatProfileMainLink({
@@ -121,18 +129,6 @@ export default {
     },
     nickname () {
       return this.profileData.nickname
-    },
-    gender () {
-      return this.profileData.gender
-    },
-    birthdate () {
-      return this.profileData.birthdate
-    },
-    city () {
-      return this.profileData.city
-    },
-    country () {
-      return this.profileData.country
     },
     isStaff () {
       return this.role === 'creator'
@@ -161,6 +157,9 @@ export default {
     handleMessageOptionClick () {
       this.$refs.messageModal.show()
     },
+    handleActiveLinkChange (value) {
+      this.isMainLinkActive = !value
+    },
     setIsFollowing (value) {
       this.findPaginationItem({
         uuid: this.uuid
@@ -177,8 +176,13 @@ export default {
 .role-label
   margin-left: 0.5em
 
+.following-count
+  @extend .d-flex
+  ::v-deep(.followers)
+    margin-left: 0.5em
+
 .following-message
-  margin-top: 0.5em
+  margin-left: 0.5em
 
 .follow-button
   @extend .no-margin

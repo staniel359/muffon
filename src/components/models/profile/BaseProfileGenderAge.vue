@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div v-if="gender || age">
     <div
       v-if="gender"
       class="ui tiny empty circular label profile-gender"
-      :class="labelClassName"
+      :class="labelColor"
     ></div>
 
     {{ age }}
@@ -16,17 +16,28 @@ import { age as formatAge } from '#/formatters'
 export default {
   name: 'BaseProfileGenderAge',
   props: {
-    gender: String,
-    birthdate: String
+    profileData: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      genders: {
+        male: 'blue',
+        female: 'pink',
+        other: 'grey'
+      }
+    }
   },
   computed: {
-    labelClassName () {
-      switch (this.gender) {
-        case 'male': return 'blue'
-        case 'female': return 'pink'
-        case 'other': return 'grey'
-        default: return null
-      }
+    labelColor () {
+      return this.genders[
+        this.gender
+      ]
+    },
+    gender () {
+      return this.profileData.gender
     },
     age () {
       if (this.birthdate) {
@@ -36,6 +47,9 @@ export default {
       } else {
         return null
       }
+    },
+    birthdate () {
+      return this.profileData.birthdate
     }
   }
 }

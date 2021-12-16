@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="city || country">
     <i
       v-if="country"
       class="profile-country-flag"
@@ -17,8 +17,10 @@ import countries from 'i18n-iso-countries'
 export default {
   name: 'BaseProfileCityCountry',
   props: {
-    city: String,
-    country: String
+    profileData: {
+      type: Object,
+      required: true
+    }
   },
   computed: {
     ...mapState('profile', {
@@ -27,11 +29,17 @@ export default {
     iconClassName () {
       return `${this.country} flag`
     },
+    country () {
+      return this.profileData.country
+    },
     cityWithCountry () {
       return [
         this.city,
         this.countryName
       ].filter(e => e).join(', ')
+    },
+    city () {
+      return this.profileData.city
     },
     countryName () {
       return countries.getName(

@@ -10,7 +10,7 @@
       :link="statisticData.link"
     >
       <div class="value link">
-        {{ statisticData.value }}
+        {{ formatNumber(statisticData.value) }}
       </div>
 
       <div class="label link">
@@ -23,7 +23,10 @@
 <script>
 import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import { collection as formatCollection } from '#/formatters'
+import {
+  collection as formatCollection,
+  number as formatNumber
+} from '#/formatters'
 
 export default {
   name: 'BaseStatistics',
@@ -45,6 +48,9 @@ export default {
         this.statistics
       )
     }
+  },
+  methods: {
+    formatNumber
   }
 }
 </script>

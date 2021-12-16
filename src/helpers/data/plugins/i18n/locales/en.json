@@ -23,6 +23,8 @@
       "playlists": "Playlists",
       "radio": "Radio",
       "posts": "Posts",
+      "followers": "Followers",
+      "following": "Following",
       "model": {
         "artists": "{modelName} artists",
         "albums": "{modelName} albums",
@@ -33,7 +35,9 @@
         "library": "{modelName} library",
         "favorites": "{modelName} favorites",
         "playlists": "{modelName} playlists",
-        "posts": "{modelName} posts"
+        "posts": "{modelName} posts",
+        "followers": "{modelName} followers",
+        "following": "{modelName} following"
       },
       "top": {
         "artists": "Top artists",
@@ -221,7 +225,9 @@
           "recommendations": "No recommendations",
           "posts": "No posts",
           "feed": "No posts",
-          "conversations": "No conversations"
+          "conversations": "No conversations",
+          "followers": "No followers",
+          "following": "No following"
         },
         "content": "Looks like there is nothing here"
       }
@@ -363,6 +369,8 @@
       "roles": {
         "creator": "Creator"
       },
+      "followersCount": "{count} followers",
+      "followingCount": "{count} following",
       "followed": "Following you",
       "following": "You are following",
       "follow": "Follow",
