@@ -44,4 +44,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.header
+  @extend .width-fit-content
+</style>

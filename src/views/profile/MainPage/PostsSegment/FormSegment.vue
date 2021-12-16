@@ -36,6 +36,7 @@
 
         <BasePostSubmitButton
           class="submit-button"
+          actionKey="post"
         />
       </div>
     </BasePostCreateFormContainer>

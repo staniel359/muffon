@@ -25,6 +25,8 @@ import formatProfilePageNavigation from '#/formatters/navigation/profile'
 import formatProfilePageTab from '#/formatters/tabs/profile'
 import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
 import formatProfileFavoritesPageTab from '#/formatters/tabs/profile/favorites'
+import formatProfilePlaylistsPageTab from '#/formatters/tabs/profile/playlists'
+import formatProfilePostsPageTab from '#/formatters/tabs/profile/posts'
 import fetchProfileData from '#/actions/api/profile/fetchData'
 
 export default {
@@ -90,6 +92,14 @@ export default {
           )
         case 'favorites':
           return formatProfileFavoritesPageTab(
+            this.navigationData
+          )
+        case 'playlists':
+          return formatProfilePlaylistsPageTab(
+            this.navigationData
+          )
+        case 'posts':
+          return formatProfilePostsPageTab(
             this.navigationData
           )
         default:

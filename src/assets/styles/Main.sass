@@ -636,10 +636,13 @@ a
     &.inverted
       fill: $colorWhite
 
-.main-following-message
-  @extend .d-flex, .align-items-center
-
 .main-list
   &.divided
     & > .item
       padding: 1em 0 !important
+
+.main-following-message-container
+  @extend .d-flex, .flex-column, .align-items-center
+
+.main-following-message
+  @extend .d-flex, .align-items-center

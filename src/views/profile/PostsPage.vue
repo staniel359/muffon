@@ -1,5 +1,7 @@
 <template>
-  <BasePostsPageContainer
+  <BaseProfilePageContainer
+    scope="posts"
+    pageNameKey="posts"
     :profileId="profileId"
     :responsePageLimit="limit"
   >
@@ -34,13 +36,13 @@
         </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
-  </BasePostsPageContainer>
+  </BaseProfilePageContainer>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BasePostsPageContainer
-  from '@/containers/pages/profile/posts/BasePostsPageContainer.vue'
+import BaseProfilePageContainer
+  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
@@ -50,7 +52,7 @@ import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
 export default {
   name: 'PostsPage',
   components: {
-    BasePostsPageContainer,
+    BaseProfilePageContainer,
     BaseSegmentContainer,
     BasePaginatedListContainer,
     BasePostsSimpleList

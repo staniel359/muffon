@@ -121,6 +121,12 @@ const RadioPage = () => import(
 const ProfilePostsPage = () => import(
   '%/profile/PostsPage.vue'
 )
+const ProfileFollowersPage = () => import(
+  '%/profile/FollowersPage.vue'
+)
+const ProfileFollowingPage = () => import(
+  '%/profile/FollowingPage.vue'
+)
 
 export default [
   {
@@ -408,6 +414,20 @@ export default [
     exact: true,
     name: 'ProfilePostsPage',
     component: ProfilePostsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/followers',
+    exact: true,
+    name: 'ProfileFollowersPage',
+    component: ProfileFollowersPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/following',
+    exact: true,
+    name: 'ProfileFollowingPage',
+    component: ProfileFollowingPage,
     props: true
   }
 ]

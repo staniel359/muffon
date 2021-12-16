@@ -1,7 +1,7 @@
 <template>
   <BaseProfilePageContainer
-    scope="playlists"
-    pageNameKey="playlists"
+    scope="following"
+    pageNameKey="following"
     :profileId="profileId"
     :responsePageLimit="limit"
   >
@@ -14,26 +14,11 @@
         ]"
       >
         <BaseSegmentContainer
-          v-if="isRenderCreateSegment"
-        >
-          <BaseButton
-            class="primary"
-            icon="plus"
-            :text="createText"
-            @click="handleCreateButtonClick"
-          />
-
-          <BasePlaylistCreateModal
-            ref="modal"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
           class="main-paginated-page-segment-container"
           :isLoading="pageSlotProps.isLoading"
         >
           <BasePaginatedListContainer
-            scope="playlists"
+            scope="following"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.profileData"
@@ -44,9 +29,8 @@
             @refresh="pageSlotProps.handleRefresh"
           >
             <template #default="slotProps">
-              <BasePlaylistsSimpleList
-                :playlists="slotProps.playlists"
-                :profileId="profileId"
+              <BaseProfilesSimpleList
+                :profiles="slotProps.following"
               />
             </template>
           </BasePaginatedListContainer>
@@ -61,24 +45,18 @@ import BaseProfilePageContainer
   from '@/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import BasePlaylistCreateModal
-  from '@/modals/playlist/BasePlaylistCreateModal.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
-import BasePlaylistsSimpleList
-  from '@/lists/playlists/BasePlaylistsSimpleList.vue'
-import { isCurrentProfile } from '#/utils'
+import BaseProfilesSimpleList
+  from '@/lists/profiles/BaseProfilesSimpleList.vue'
 
 export default {
-  name: 'PlaylistsPage',
+  name: 'FollowingPage',
   components: {
     BaseProfilePageContainer,
     BaseSegmentContainer,
-    BaseButton,
-    BasePlaylistCreateModal,
     BasePaginatedListContainer,
-    BasePlaylistsSimpleList
+    BaseProfilesSimpleList
   },
   props: {
     profileId: String
@@ -88,24 +66,9 @@ export default {
       limit: 50
     }
   },
-  computed: {
-    createText () {
-      return this.$t(
-        'shared.playlists.create'
-      )
-    },
-    isRenderCreateSegment () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    }
-  },
   methods: {
     handleFocus () {
       window.scrollTo(0, 0)
-    },
-    handleCreateButtonClick () {
-      this.$refs.modal.show()
     }
   }
 }
