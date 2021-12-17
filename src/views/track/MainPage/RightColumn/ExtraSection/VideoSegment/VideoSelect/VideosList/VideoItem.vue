@@ -1,9 +1,11 @@
 <template>
   <BaseDropdownItem
+    model="video"
     :data-value="index"
     :header="videoTitle"
     :content="channelTitle"
-    :image="image"
+    :image="imageData?.extrasmall"
+    isWithImage
     @click="handleClick"
   />
 </template>
@@ -31,8 +33,8 @@ export default {
     }
   },
   computed: {
-    image () {
-      return this.videoData.image.extrasmall
+    imageData () {
+      return this.videoData.image
     },
     videoTitle () {
       return this.videoData.title

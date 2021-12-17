@@ -30,9 +30,7 @@ export default {
   ],
   computed: {
     moreText () {
-      return this.$t(
-        'shared.more'
-      )
+      return this.$t('more')
     }
   },
   methods: {

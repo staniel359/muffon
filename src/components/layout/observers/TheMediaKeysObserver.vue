@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import fetchQueueTrack from '#/actions/queue/track/fetchData'
+import getQueueTrack from '#/actions/queue/track/get'
 import { updateStore } from '#/actions'
 
 export default {
@@ -19,16 +19,28 @@ export default {
       'stop', this.handlePressStop
     )
   },
+  computed: {
+    prevQueueTrackArgs () {
+      return {
+        position: 'prev'
+      }
+    },
+    nextQueueTrackArgs () {
+      return {
+        position: 'prev'
+      }
+    }
+  },
   methods: {
     handlePressPrev () {
-      fetchQueueTrack({
-        position: 'prev'
-      })
+      getQueueTrack(
+        this.prevQueueTrackArgs
+      )
     },
     handlePressNext () {
-      fetchQueueTrack({
-        position: 'next'
-      })
+      getQueueTrack(
+        this.nextQueueTrackArgs
+      )
     },
     handlePressStop () {
       updateStore({

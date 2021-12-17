@@ -111,6 +111,11 @@ a
   & > .item
     padding: 0.5em !important
 
+.ui.inverted.pointing.upward.dropdown
+  & > .menu:after
+    box-shadow: 1px 1px 0 0 rgb(255 255 255 / 15%)
+    margin: -0.3em 0 0
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -158,6 +163,7 @@ a
 
 .main-modal
   & > .content
+    @extend .no-margin
     max-height: $mainModalHeight !important
   &.inverted
     @extend .background-black
@@ -219,7 +225,7 @@ a
     & > .description
       margin-top: 0.25em !important
     & > .main-self-icons
-      margin-top: 0.5em
+      margin-top: 0.25em
   & > .main-options-dropdown-container
     @extend .absolute, .no-margin, .visibility-hidden
     top: 10px
@@ -237,8 +243,6 @@ a
 
 .main-horizontal-card
   @extend .w-100
-  .main-self-icons
-    margin-top: 0.5em
 
 .main-simple-list-item
   @extend .d-flex, .align-items-center, .word-break-break-word
@@ -258,6 +262,8 @@ a
     .text
       font-size: 18px
       line-height: 1.2em
+    & > .description
+      margin-top: 0.25em !important
   .main-options-dropdown-container
     @extend .visibility-hidden
     margin-left: 0.5em
@@ -402,14 +408,14 @@ a
   @extend .flex-full, .d-flex, .flex-column
 
 .main-tab-container
-  @extend .flex-full, .relative
+  @extend .flex-full, .d-flex, .flex-column, .relative
 
 .main-tab
-  @extend .no-padding, .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .background-transparent
+  @extend .no-padding, .no-shadow, .no-border, .no-margin, .h-100, .w-100, .d-flex, .flex-full, .background-transparent
   &.active
     @extend .visibility-visible
   &:not(.active)
-    @extend .visibility-hidden, .absolute
+    @extend .d-none
 
 .main-relative-tab
   @extend .relative
@@ -426,6 +432,7 @@ a
   @extend .d-inline
 
 .main-image
+  @extend .object-fit-cover
   &.inverted
     &.bordered
       border: $borderInverted !important
@@ -461,10 +468,19 @@ a
   margin-right: 1em !important
 
 .main-form
+  & > .submit-button-container
+    @extend .d-flex, .justify-content-flex-end
+  & > .remember-submit-button-container
+    @extend .d-flex, .align-items-center, .justify-content-space-between
+    & > .remember-field
+      @extend .no-margin
   &.inverted
     &.loading
       &:before
         @extend .background-black-transparent
+
+.main-submit-button
+  @extend .no-margin
 
 .main-app-title
   @extend .text-color-white, .text-medium-light
@@ -492,12 +508,6 @@ a
   width: 200px
   padding: 0 0.5em
   flex-shrink: 0
-
-.main-profile-image
-  @extend .object-fit-cover
-
-.main-playlist-image
-  @extend .object-fit-cover
 
 .main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
@@ -569,15 +579,12 @@ a
 .main-deleted-container
   @extend .d-flex, .justify-content-center, .flex-full
 
-.main-options-dropdown-container-right
-  @extend .w-100, .d-flex, .justify-content-flex-end
-
 .main-options-dropdown-button
   @extend .no-margin
   padding: 0.5em !important
 
 .main-self-container
-  @extend .d-flex, .w-100, .justify-content-center, .align-items-center
+  @extend .d-flex, .w-100, .justify-content-center, .align-items-center, .relative
   min-height: 30px
   margin-top: 0.5em
   .main-options-dropdown-container
@@ -590,7 +597,9 @@ a
 
 .main-simple-button
   &.white
-    background: white !important
+    background: $colorWhite !important
+  &.black
+    background: $colorBlack !important
 
 .main-search-input
   width: 230px
@@ -614,8 +623,6 @@ a
   & > .buttons-container
     @extend .d-flex, .align-items-center
     margin-top: 1em
-    & > .button
-      @extend .no-margin
     & > .add-buttons
       @extend .flex-full
   .images-tracks-section

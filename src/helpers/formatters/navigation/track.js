@@ -25,7 +25,7 @@ export default function ({
     if (pageNameKey) {
       return {
         name: i18n.global.t(
-          `layout.navigation.${pageNameKey}`
+          `navigation.${pageNameKey}`
         ),
         isActive: true
       }
@@ -35,7 +35,7 @@ export default function ({
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.artists'
+        'navigation.artists'
       )
     },
     {
@@ -46,7 +46,7 @@ export default function ({
     },
     {
       name: i18n.global.t(
-        'layout.navigation.tracks'
+        'navigation.tracks'
       ),
       link: formatArtistTracksLink({
         artistName

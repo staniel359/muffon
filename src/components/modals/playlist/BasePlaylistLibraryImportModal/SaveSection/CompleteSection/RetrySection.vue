@@ -52,7 +52,7 @@ export default {
   computed: {
     errorText () {
       return this.$t(
-        'shared.add.save.error.tracks',
+        'save.error.tracks',
         { count: this.totalCountFormatted }
       )
     },

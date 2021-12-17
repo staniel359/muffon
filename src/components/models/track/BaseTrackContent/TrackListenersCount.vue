@@ -63,7 +63,7 @@ export default {
   @extend .background-grey
   height: 4px
   border-radius: 2px
-  margin-right: $trackContentMarginWidth
+  margin-right: 0.5em
   &.inverted
     @extend .background-grey-inverted
 

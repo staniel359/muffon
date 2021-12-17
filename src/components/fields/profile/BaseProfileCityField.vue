@@ -18,7 +18,7 @@ export default {
   computed: {
     cityText () {
       return this.$t(
-        'shared.profile.form.fields.city'
+        'forms.fields.city'
       )
     }
   }

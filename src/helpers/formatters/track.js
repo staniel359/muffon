@@ -6,57 +6,80 @@ export const track = ({
   imageData
 }) => {
   const trackArtistId = trackData.artist?.id
+
   const artistIdConditional =
     artistId || trackArtistId
 
   const trackArtistName = trackData.artist?.name
+
   const artistNameConditional =
     artistName || trackArtistName
 
-  const trackArtistData = artistNameConditional && {
+  const trackArtistData = {
     artist: {
       id: artistIdConditional,
       name: artistNameConditional
     }
   }
 
+  const trackArtistDataConditional = (
+    artistNameConditional &&
+      trackArtistData
+  )
+
   const trackAlbumId = trackData.album?.id
 
   const trackAlbumTitle = trackData.album?.title
+
   const albumTitleConditional =
     albumTitle || trackAlbumTitle
 
-  const trackAlbumData = albumTitleConditional && {
+  const trackAlbumData = {
     album: {
       id: trackAlbumId,
       title: albumTitleConditional
     }
   }
 
+  const trackAlbumDataConditional = (
+    albumTitleConditional &&
+      trackAlbumData
+  )
+
   const imageDataConditional =
     imageData || trackData.image
 
-  const trackImageData = imageDataConditional && {
+  const trackImageData = {
     image: {
       ...imageDataConditional
     }
   }
 
+  const trackImageDataConditional = (
+    imageDataConditional &&
+      trackImageData
+  )
+
   const audioData = trackData.audio
 
-  const trackAudioData = audioData && {
+  const trackAudioData = {
     audio: {
       ...audioData,
-      ...trackAlbumData,
-      ...trackImageData
+      ...trackAlbumDataConditional,
+      ...trackImageDataConditional
     }
   }
 
+  const trackAudioDataConditional = (
+    audioData &&
+      trackAudioData
+  )
+
   return {
     ...trackData,
-    ...trackArtistData,
-    ...trackAlbumData,
-    ...trackImageData,
-    ...trackAudioData
+    ...trackArtistDataConditional,
+    ...trackAlbumDataConditional,
+    ...trackImageDataConditional,
+    ...trackAudioDataConditional
   }
 }

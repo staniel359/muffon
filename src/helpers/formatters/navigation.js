@@ -4,7 +4,7 @@ export const feed = () => {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.feed'
+        'navigation.feed'
       ),
       isActive: true
     }
@@ -15,7 +15,7 @@ export const profiles = () => {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.profiles'
+        'navigation.profiles'
       ),
       isActive: true
     }
@@ -26,7 +26,7 @@ export const recommendations = () => {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.recommendations'
+        'navigation.recommendations'
       ),
       isActive: true
     }
@@ -37,7 +37,7 @@ export const bookmarks = () => {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.bookmarks'
+        'navigation.bookmarks'
       ),
       isActive: true
     }
@@ -48,7 +48,7 @@ export const radio = () => {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.radio'
+        'navigation.radio'
       ),
       isActive: true
     }

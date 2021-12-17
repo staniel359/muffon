@@ -5,7 +5,7 @@
         <SearchInput
           ref="input"
           :tracks="tracks"
-          :profileId="profileId"
+          :playlistId="playlistId"
           @select="handleSelect"
         />
 
@@ -60,8 +60,7 @@ export default {
     }
   },
   props: {
-    playlistId: String,
-    profileId: String
+    playlistId: String
   },
   data () {
     return {
@@ -90,6 +89,10 @@ export default {
   },
   methods: {
     handleSelect (value) {
+      if (this.status === 'save') {
+        this.reset()
+      }
+
       this.tracks.push({
         uuid: generateKey(),
         ...value
@@ -101,12 +104,11 @@ export default {
       this.tracks = [...value]
     },
     handleResetButtonClick () {
-      this.tracks = []
+      this.reset()
 
       this.$refs.input.clear()
       this.$refs.input.focus()
 
-      this.status = 'import'
       this.isReset = true
     },
     handleSave () {
@@ -114,6 +116,11 @@ export default {
     },
     handleProfileLanguageChange () {
       this.key = generateKey()
+    },
+    reset () {
+      this.status = 'import'
+
+      this.tracks = []
     },
     show () {
       this.$refs.modal.show()

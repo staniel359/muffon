@@ -6,30 +6,21 @@
       text="muffon"
     />
 
-    <BaseSegmentContainer
-      :class="[
-        'raised',
-        'auth-form-segment',
-        'main-segment-container'
-      ]"
-    >
-      <BaseProfileLoginForm
-        v-if="activeForm === 'login'"
-        @signupLinkClick="handleSignupLinkClick"
-      />
-
-      <BaseProfileSignupForm
-        v-else-if="activeForm === 'signup'"
-        @loginLinkClick="handleLoginLinkClick"
-      />
-    </BaseSegmentContainer>
+    <BaseProfileLoginForm
+      v-if="isLogin"
+      class="auth-form-segment"
+      @signupLinkClick="handleSignupLinkClick"
+    />
+    <BaseProfileSignupForm
+      v-else-if="isSignup"
+      class="auth-form-segment"
+      @loginLinkClick="handleLoginLinkClick"
+    />
   </div>
 </template>
 
 <script>
 import BaseHeader from '@/BaseHeader.vue'
-import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLoginForm from '@/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfileSignupForm from '@/forms/profile/BaseProfileSignupForm.vue'
 
@@ -37,13 +28,26 @@ export default {
   name: 'TheAuthentication',
   components: {
     BaseHeader,
-    BaseSegmentContainer,
     BaseProfileLoginForm,
     BaseProfileSignupForm
   },
   data () {
     return {
       activeForm: 'login'
+    }
+  },
+  computed: {
+    isLogin () {
+      return (
+        this.activeForm ===
+          'login'
+      )
+    },
+    isSignup () {
+      return (
+        this.activeForm ===
+          'signup'
+      )
     }
   },
   methods: {

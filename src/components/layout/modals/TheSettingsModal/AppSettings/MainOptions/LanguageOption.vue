@@ -67,7 +67,7 @@ export default {
     }),
     languageText () {
       return this.$t(
-        'layout.settings.options.app.main.language'
+        'settings.options.app.main.language'
       )
     }
   },

@@ -50,7 +50,7 @@ export default {
   computed: {
     errorText () {
       return this.$t(
-        'shared.add.save.error.artists',
+        'save.error.artists',
         { count: this.totalCountFormatted }
       )
     },

@@ -8,8 +8,7 @@
   <BaseTrackDescriptionModal
     v-if="isMore"
     ref="modal"
-    :artistName="artistName"
-    :trackTitle="trackTitle"
+    :requestTrackData="requestTrackData"
   />
 </template>
 
@@ -25,10 +24,9 @@ export default {
     BaseTrackDescriptionModal
   },
   props: {
+    requestTrackData: Object,
     description: String,
-    isMore: Boolean,
-    artistName: String,
-    trackTitle: String
+    isMore: Boolean
   },
   methods: {
     handleMoreClick () {

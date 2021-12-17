@@ -11,7 +11,7 @@
 <script>
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '#/data/plugins/semantic'
-import fetchPostCreateData from '#/actions/api/posts/create/fetchData'
+import createPost from '#/actions/api/post/create'
 
 export default {
   name: 'BasePostCreateFormContainer',
@@ -73,23 +73,24 @@ export default {
       )
 
       if (isContentData) {
-        const createDataArgs = this.formatPostArgs(
-          fields
-        )
+        const createArgs =
+          this.formatCreateArgs(
+            fields
+          )
 
-        this.fetchPostCreateData(
-          createDataArgs
+        this.createPost(
+          createArgs
         ).then(
-          this.handlePostSuccess
+          this.handleCreateSuccess
         )
       }
     },
-    handlePostSuccess () {
+    handleCreateSuccess () {
       this.$emit(
         'success'
       )
     },
-    fetchPostCreateData,
+    createPost,
     formatTrack (trackData) {
       const { title, artist } = trackData
 
@@ -98,7 +99,7 @@ export default {
     formatImage (imageData) {
       return imageData.data
     },
-    formatPostArgs (fields) {
+    formatCreateArgs (fields) {
       return {
         otherProfileId: this.profileId,
         content: fields.content,

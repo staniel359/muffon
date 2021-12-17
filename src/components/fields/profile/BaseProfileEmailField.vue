@@ -19,7 +19,7 @@ export default {
   computed: {
     emailText () {
       return this.$t(
-        'shared.profile.form.fields.email'
+        'forms.fields.email'
       )
     }
   },

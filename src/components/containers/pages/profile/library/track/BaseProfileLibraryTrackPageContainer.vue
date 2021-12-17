@@ -24,8 +24,7 @@ import formatProfileLibraryTrackPageNavigation
   from '#/formatters/navigation/profile/library/track'
 import formatProfileLibraryTrackPageTab
   from '#/formatters/tabs/profile/library/track'
-import fetchProfileLibraryTrackData
-  from '#/actions/api/profile/library/track/fetchData'
+import getLibraryTrack from '#/actions/api/library/track/get'
 
 export default {
   name: 'BaseProfileLibraryTrackPageContainer',
@@ -98,7 +97,7 @@ export default {
     trackTitleFetched () {
       return this.libraryTrackData?.title
     },
-    libraryDataArgs () {
+    libraryArgs () {
       return {
         profileId: this.profileId,
         trackId: this.trackId,
@@ -117,10 +116,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchProfileLibraryTrackData,
+    getLibraryTrack,
     fetchData (page) {
-      this.fetchProfileLibraryTrackData({
-        ...this.libraryDataArgs,
+      this.getLibraryTrack({
+        ...this.libraryArgs,
         page
       })
     }

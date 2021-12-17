@@ -39,7 +39,7 @@ export const setPlayerPlaying = value => {
   )
 }
 
-export const addFormErrors = ({ error, fields, form, formKey }) => {
+export const addFormErrors = ({ error, fields, form }) => {
   const { errors } = error.response.data
 
   const addFieldsError = errorData => {
@@ -53,7 +53,7 @@ export const addFormErrors = ({ error, fields, form, formKey }) => {
         )
 
         const error = i18n.global.t(
-          `shared.${formKey}.form.errors.${errorKey}.${fieldKey}`
+          `forms.errors.${errorKey}.${fieldKey}`
         )
 
         addFormFieldError(

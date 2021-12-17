@@ -37,7 +37,7 @@ import TypeSelect from './BaseAlbumSourceSelect/TypeSelect.vue'
 import AlbumSelect from './BaseAlbumSourceSelect/AlbumSelect.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import { generateKey } from '#/utils'
-import formatAlbumRequestData from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
   name: 'BaseAlbumSourceSelect',
@@ -154,10 +154,11 @@ export default {
       this.selectedTypeId = value
     },
     setSelectedAlbumData (value) {
-      this.selectedAlbumData = formatAlbumRequestData({
-        sourceId: this.selectedSourceId,
-        albumData: value
-      })
+      this.selectedAlbumData =
+        formatAlbumRequestData({
+          sourceId: this.selectedSourceId,
+          albumData: value
+        })
     }
   }
 }

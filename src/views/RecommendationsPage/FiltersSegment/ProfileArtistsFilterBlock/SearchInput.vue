@@ -1,28 +1,23 @@
 <template>
-  <div
-    class="ui fluid search main-search-input"
-    ref="search"
-  >
-    <div class="ui icon fluid input">
-      <input
-        ref="input"
-        class="prompt"
-        type="text"
-        :placeholder="searchText"
-      >
-      <i class="search icon"></i>
-    </div>
-  </div>
+  <BaseSearchInput
+    ref="input"
+    :url="url"
+    :fields="fields"
+    :formatResponse="formatResponse"
+    @select="handleSelect"
+  />
 </template>
 
 <script>
-import axios from 'axios'
+import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
 import { mapState } from 'vuex'
-import { setSearch } from '#/actions/plugins/semantic'
 import { generateKey } from '#/utils'
 
 export default {
   name: 'SearchInput',
+  components: {
+    BaseSearchInput
+  },
   props: {
     artists: {
       type: Array,
@@ -38,60 +33,37 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    searchText () {
-      return this.$t(
-        'inputs.search'
-      )
-    },
-    searchOptions () {
-      return {
-        apiSettings: {
-          url: this.searchUrl,
-          onResponse: this.formatResponse
-        },
-        cache: false,
-        error: {
-          serverError: this.$t(
-            'shared.error'
-          )
-        },
-        fields: {
-          results: 'artists',
-          title: 'name',
-          image: null
-        },
-        minCharacters: 1,
-        maxResults: 5,
-        onSelect: this.handleArtistSelect,
-        searchDelay: 500,
-        searchOnFocus: false
-      }
-    },
-    searchUrl () {
-      return `${axios.defaults.baseURL}` +
-        `profiles/${this.profileId}` +
+    url () {
+      return (
+        `/profiles/${this.profileId}` +
         '/library/search/artists' +
         '?query={query}&limit=5'
+      )
     },
     profileId () {
       return this.profileInfo.id
+    },
+    fields () {
+      return {
+        results: 'artists',
+        title: 'name',
+        image: null
+      }
     }
   },
-  mounted () {
-    setSearch(
-      this.$refs.search,
-      this.searchOptions
-    )
-  },
   methods: {
-    handleArtistSelect (artist) {
+    handleSelect (artist) {
       const isArtistPresent = artistData => {
-        return artist.id === artistData.id
+        return (
+          artist.id ===
+            artistData.id
+        )
       }
 
-      const isPresent = this.artists.find(
-        isArtistPresent
-      )
+      const isPresent =
+        this.artists.find(
+          isArtistPresent
+        )
 
       if (!isPresent) {
         const artistData = {
@@ -103,18 +75,21 @@ export default {
           'addArtist',
           artistData
         )
-
-        this.clear()
       }
+
+      this.clear()
     },
     formatResponse (response) {
-      return response.profile.library.artists
+      return response
+        .profile
+        .library
+        .artists
     },
     focus () {
       this.$refs.input.focus()
     },
     clear () {
-      this.$refs.input.value = ''
+      this.$refs.input.clear()
     }
   }
 }

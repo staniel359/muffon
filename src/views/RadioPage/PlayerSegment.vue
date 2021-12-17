@@ -42,7 +42,7 @@ import PlayerLabel from './PlayerSegment/PlayerLabel.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import fetchRadioData from '#/actions/api/radio/fetchData'
+import getRadio from '#/actions/api/radio/get'
 
 export default {
   name: 'PlayerSegment',
@@ -77,10 +77,10 @@ export default {
     },
     nextText () {
       return this.$t(
-        'shared.next'
+        'actions.next'
       )
     },
-    radioDataArgs () {
+    radioArgs () {
       return {
         scope: this.scope,
         modelName: this.modelName,
@@ -97,11 +97,13 @@ export default {
     handleNextButtonClick () {
       this.fetchData()
     },
-    fetchRadioData,
+    getRadio,
     fetchData () {
-      this.fetchRadioData(
-        this.radioDataArgs
-      ).then(this.fetchAudio)
+      this.getRadio(
+        this.radioArgs
+      ).then(
+        this.fetchAudio
+      )
     },
     fetchAudio () {
       if (!this.error) {

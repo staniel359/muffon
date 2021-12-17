@@ -10,13 +10,14 @@
 </template>
 
 <script>
-import postProfileFollowersData from '#/actions/api/followers/postData'
-import deleteProfileFollowerData from '#/actions/api/follower/deleteData'
+import createFollower from '#/actions/api/follower/create'
+import deleteFollower from '#/actions/api/follower/delete'
 
 export default {
   name: 'BaseProfileFollowButtonContainer',
   inject: [
-    'setIsFollowing'
+    'setIsFollowing',
+    'setFollowersCount'
   ],
   props: {
     profileData: {
@@ -24,6 +25,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'click'
+  ],
   data () {
     return {
       isFollowing: false,
@@ -40,7 +44,7 @@ export default {
     },
     followText () {
       return this.$t(
-        `shared.profile.${this.followTextKey}`
+        `relationships.${this.followTextKey}`
       )
     },
     followTextKey () {
@@ -62,45 +66,51 @@ export default {
       return this.profileData.id.toString()
     }
   },
-  watch: {
-    isFollowing: 'handleIsFollowingChange'
-  },
   mounted () {
     this.isFollowing = this.isFollower
   },
   methods: {
-    handleIsFollowingChange (value) {
-      this.setIsFollowing(value)
-    },
     onClick () {
       if (this.isFollowing) {
         this.unfollow()
       } else {
         this.follow()
       }
+
+      this.$emit('click')
     },
     follow () {
-      this.postProfileFollowersData(
+      this.createFollower(
         this.followerData
       ).then(
         this.handleFollowSuccess
       )
     },
-    handleFollowSuccess () {
+    handleFollowSuccess (response) {
       this.isFollowing = true
+
+      this.setIsFollowing(true)
+      this.setFollowersCount(
+        response.data.other_profile_follower_profiles_count
+      )
     },
     unfollow () {
-      this.deleteProfileFollowerData(
+      this.deleteFollower(
         this.followerData
       ).then(
         this.handleUnfollowSuccess
       )
     },
-    handleUnfollowSuccess () {
+    handleUnfollowSuccess (response) {
       this.isFollowing = false
+
+      this.setIsFollowing(false)
+      this.setFollowersCount(
+        response.data.other_profile_follower_profiles_count
+      )
     },
-    postProfileFollowersData,
-    deleteProfileFollowerData
+    createFollower,
+    deleteFollower
   }
 }
 </script>

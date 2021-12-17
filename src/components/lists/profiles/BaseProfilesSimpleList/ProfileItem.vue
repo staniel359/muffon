@@ -3,9 +3,10 @@
     class="item main-simple-list-item"
     :link="profileMainLink"
   >
-    <BaseProfileImage
+    <BaseImage
       class="circular bordered"
-      :image="image"
+      model="profile"
+      :image="imageData?.small"
     />
 
     <div class="content">
@@ -66,7 +67,7 @@
 
 <script>
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseLabel from '@/BaseLabel.vue'
 import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
@@ -86,7 +87,7 @@ export default {
   name: 'ProfileItem',
   components: {
     BaseLinkContainer,
-    BaseProfileImage,
+    BaseImage,
     BaseHeader,
     BaseLabel,
     BaseProfileGenderAge,
@@ -98,7 +99,8 @@ export default {
   },
   provide () {
     return {
-      setIsFollowing: this.setIsFollowing
+      setIsFollowing: this.setIsFollowing,
+      setFollowersCount: this.setFollowersCount
     }
   },
   inject: [
@@ -124,8 +126,8 @@ export default {
     profileId () {
       return this.profileData.id.toString()
     },
-    image () {
-      return this.profileData.image.extrasmall
+    imageData () {
+      return this.profileData.image
     },
     nickname () {
       return this.profileData.nickname
@@ -138,7 +140,7 @@ export default {
     },
     roleText () {
       return this.$t(
-        `shared.profile.roles.${this.role}`
+        `roles.${this.role}`
       )
     },
     isRenderOptions () {
@@ -148,6 +150,11 @@ export default {
     },
     otherProfileData () {
       return this.profileData.other_profile
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
     },
     uuid () {
       return this.profileData.uuid
@@ -161,9 +168,12 @@ export default {
       this.isMainLinkActive = !value
     },
     setIsFollowing (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).other_profile.follower_of_profile = value
+      this.paginationItem
+        .other_profile.follower_of_profile = value
+    },
+    setFollowersCount (value) {
+      this.paginationItem
+        .follower_profiles_count = value
     }
   }
 }

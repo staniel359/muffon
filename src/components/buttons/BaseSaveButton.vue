@@ -21,7 +21,7 @@ export default {
   computed: {
     saveText () {
       return this.$t(
-        'buttons.save'
+        'actions.save'
       )
     }
   },

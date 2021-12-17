@@ -37,7 +37,7 @@ export default {
     popupText () {
       if (this.sourceName) {
         return this.$t(
-          'shared.track.source',
+          'track.source',
           { source: this.sourceName }
         )
       } else {
@@ -49,7 +49,10 @@ export default {
     },
     sourceData () {
       return audioSources.find(sourceData => {
-        return sourceData.id === this.sourceId
+        return (
+          sourceData.id ===
+            this.sourceId
+        )
       })
     },
     popupOptions () {

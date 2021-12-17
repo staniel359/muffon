@@ -1,8 +1,9 @@
 <template>
   <div class="item track-block">
     <ImageBlock
-      :image="image"
+      :image="imageData?.extrasmall"
       :artistName="artistName"
+      :isWithImage="isWithAlbum"
     />
 
     <InfoBlock :key="key" />
@@ -37,14 +38,17 @@ export default {
     ...mapState('player', {
       playerPlaying: 'playing'
     }),
-    image () {
-      return this.playerPlaying.image?.extrasmall
+    imageData () {
+      return this.playerPlaying.image
     },
     artistName () {
       return this.playerPlaying.artist.name
     },
     sourceId () {
       return this.playerPlaying.audio.source_id
+    },
+    isWithAlbum () {
+      return !!this.playerPlaying.album
     }
   },
   watch: {

@@ -13,7 +13,7 @@
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { profileCreateFormOptions } from '#/data/plugins/semantic'
 import { stringToDate as formatStringToDate } from '#/formatters'
-import fetchCreateData from '#/actions/api/profile/create/fetchData'
+import createProfile from '#/actions/api/profile/create'
 import { updateStore } from '#/actions'
 
 export default {
@@ -49,12 +49,13 @@ export default {
     handleSuccess (event, fields) {
       event.preventDefault()
 
-      const createDataArgs = this.formatProfileParams(
-        fields
-      )
+      const createArgs =
+        this.formatCreateArgs(
+          fields
+        )
 
-      this.fetchCreateData(
-        createDataArgs
+      this.createProfile(
+        createArgs
       )
     },
     handleProfileDataChange (value) {
@@ -63,8 +64,8 @@ export default {
         'profile.info': value
       })
     },
-    fetchCreateData,
-    formatProfileParams (fields) {
+    createProfile,
+    formatCreateArgs (fields) {
       const {
         email,
         password,

@@ -35,7 +35,7 @@ export default function ({
     if (pageNameKey) {
       return {
         name: i18n.global.t(
-          `layout.navigation.${pageNameKey}`
+          `navigation.${pageNameKey}`
         ),
         isActive: true
       }
@@ -45,7 +45,7 @@ export default function ({
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.profiles'
+        'navigation.profiles'
       ),
       link: formatProfilesLink()
     },
@@ -57,7 +57,7 @@ export default function ({
     },
     {
       name: i18n.global.t(
-        'layout.navigation.library'
+        'navigation.library'
       ),
       link: formatProfileLibraryMainLink({
         profileId
@@ -65,7 +65,7 @@ export default function ({
     },
     {
       name: i18n.global.t(
-        'layout.navigation.artists'
+        'navigation.artists'
       ),
       link: formatProfileLibraryArtistsLink({
         profileId
@@ -80,7 +80,7 @@ export default function ({
     },
     {
       name: i18n.global.t(
-        'layout.navigation.tracks'
+        'navigation.tracks'
       ),
       link: formatProfileLibraryArtistTracksLink({
         profileId,

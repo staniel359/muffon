@@ -4,8 +4,6 @@
       v-for="artistData in artistsCollection"
       :key="artistData.uuid"
       :artistData="artistData"
-      :isWithTracksCount="isWithTracksCount"
-      :isWithAlbumsCount="isWithAlbumsCount"
       :isWithLibrary="isWithLibrary"
       :isLinkToLibrary="isLinkToLibrary"
       :profileId="profileId"
@@ -35,8 +33,6 @@ export default {
         return []
       }
     },
-    isWithTracksCount: Boolean,
-    isWithAlbumsCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,

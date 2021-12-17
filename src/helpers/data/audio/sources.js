@@ -156,6 +156,8 @@ export default [
     id: 'youtube',
     icon: 'youtube',
     name: 'YouTube',
-    isWithAlbums: false
+    isStreamable: false,
+    isWithAlbums: false,
+    isWithTracks: false
   }
 ]

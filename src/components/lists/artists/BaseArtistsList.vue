@@ -4,9 +4,7 @@
     :artists="artists"
     :itemsInRow="5"
     :isWithListenersCount="isWithListenersCount"
-    :isWithTracksCount="isWithTracksCount"
     :topTracksCount="topTracksCount"
-    :isWithAlbumsCount="isWithAlbumsCount"
     :topAlbumsCount="topAlbumsCount"
     :isWithLibrary="isWithLibrary"
     :isLinkToLibrary="isLinkToLibrary"
@@ -43,9 +41,7 @@ export default {
       }
     },
     isWithListenersCount: Boolean,
-    isWithTracksCount: Boolean,
     topTracksCount: Number,
-    isWithAlbumsCount: Boolean,
     topAlbumsCount: Number,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,

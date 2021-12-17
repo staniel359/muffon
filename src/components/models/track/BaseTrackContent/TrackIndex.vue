@@ -23,5 +23,5 @@ export default {
 
 <style lang="sass" scoped>
 .track-index
-  margin-right: $trackContentMarginWidth
+  margin-right: 0.5em
 </style>

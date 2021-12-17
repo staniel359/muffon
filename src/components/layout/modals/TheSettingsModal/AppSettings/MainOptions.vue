@@ -22,7 +22,7 @@ export default {
   computed: {
     mainText () {
       return this.$t(
-        'layout.settings.sections.app.main'
+        'settings.sections.app.main'
       )
     }
   }

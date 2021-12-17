@@ -5,7 +5,7 @@
   >
     <BaseButtonContainer
       class="compact basic circular top right pointing floating dropdown icon main-options-dropdown-button"
-      :class="{ white: isWhite && !isDarkMode }"
+      :class="buttonColor"
       @click.prevent
       @init="handleDropdownInit"
     >
@@ -64,6 +64,10 @@ export default {
     MessageOption
   },
   props: {
+    isTransparent: {
+      type: Boolean,
+      default: true
+    },
     model: String,
     artistName: String,
     trackTitle: String,
@@ -87,6 +91,7 @@ export default {
     isWhite: Boolean
   },
   emits: [
+    'click',
     'playlist',
     'edit',
     'delete',
@@ -153,7 +158,8 @@ export default {
     libraryOption () {
       return {
         component: 'LibraryOption',
-        modelId: this.libraryId
+        modelId: this.libraryId,
+        action: this.handleClick
       }
     },
     playlistOption () {
@@ -165,19 +171,22 @@ export default {
     favoriteOption () {
       return {
         component: 'FavoriteOption',
-        modelId: this.favoriteId
+        modelId: this.favoriteId,
+        action: this.handleClick
       }
     },
     bookmarkOption () {
       return {
         component: 'BookmarkOption',
-        modelId: this.bookmarkId
+        modelId: this.bookmarkId,
+        action: this.handleClick
       }
     },
     listenedOption () {
       return {
         component: 'ListenedOption',
-        modelId: this.listenedId
+        modelId: this.listenedId,
+        action: this.handleClick
       }
     },
     editOption () {
@@ -195,7 +204,8 @@ export default {
     followOption () {
       return {
         component: 'FollowOption',
-        profileData: this.profileData
+        profileData: this.profileData,
+        action: this.handleClick
       }
     },
     messageOption () {
@@ -208,6 +218,17 @@ export default {
       return formatCollection(
         this.options
       )
+    },
+    buttonColor () {
+      if (this.isTransparent) {
+        return null
+      } else {
+        if (this.isDarkMode) {
+          return 'black'
+        } else {
+          return 'white'
+        }
+      }
     }
   },
   mounted () {
@@ -219,6 +240,9 @@ export default {
   methods: {
     handleDropdownInit (el) {
       this.dropdown = el
+    },
+    handleClick () {
+      this.$emit('click')
     },
     handlePlaylistOptionClick () {
       this.$emit('playlist')

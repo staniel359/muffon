@@ -1,54 +1,23 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <template #default>
-      <div class="header">
-        {{ headerText }}
-      </div>
-
-      <div class="content">
-        <TextSection
-          :playlistTrackFullTitle="playlistTrackFullTitle"
-          :playlistTitle="playlistTitle"
-        />
-
-        <BaseErrorMessage
-          v-if="error"
-          class="error-message"
-          :error="error"
-        />
-      </div>
-
-      <div class="actions">
-        <BaseButton
-          class="cancel"
-          :text="cancelText"
-        />
-
-        <BaseButton
-          class="red"
-          :text="deleteText"
-          :class="{ loading: isLoading }"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
-    </template>
-  </BaseModalContainer>
+  <BaseDeleteModal
+    ref="modal"
+    modelType="playlistTrack"
+    :modelName="playlistTrackFullTitle"
+    :parentModelName="playlistTitle"
+    :isLoading="isLoading"
+    :error="error"
+    @deleteButtonClick="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import TextSection from './BasePlaylistTrackDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import deletePlaylistTrackData from '#/actions/api/playlist/track/deleteData'
+import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
+import deletePlaylistTrack from '#/actions/api/playlist/track/delete'
 
 export default {
   name: 'BasePlaylistTrackDeleteModal',
   components: {
-    BaseModalContainer,
-    TextSection,
-    BaseErrorMessage,
-    BaseButton
+    BaseDeleteModal
   },
   props: {
     playlistTrackData: {
@@ -74,21 +43,6 @@ export default {
     }
   },
   computed: {
-    headerText () {
-      return this.$t(
-        'shared.favorite.delete.header'
-      )
-    },
-    cancelText () {
-      return this.$t(
-        'buttons.cancel'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'buttons.delete'
-      )
-    },
     playlistTrackFullTitle () {
       return [
         this.playlistTrackData.artist.name,
@@ -97,16 +51,28 @@ export default {
     },
     playlistTrackId () {
       return this.playlistTrackData.id
+    },
+    deleteArgs () {
+      return {
+        playlistId: this.playlistId,
+        playlistTrackId: this.playlistTrackId
+      }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deletePlaylistTrackData({
-        playlistId: this.playlistId,
-        playlistTrackId: this.playlistTrackId
-      })
+      this.deletePlaylistTrack(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
-    deletePlaylistTrackData,
+    handleSuccess () {
+      this.$refs.modal.hide()
+
+      this.$emit('deleted')
+    },
+    deletePlaylistTrack,
     show () {
       this.$refs.modal.show()
     }

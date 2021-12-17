@@ -1,9 +1,7 @@
 <template>
   <div class="library-counters-container">
-    <div></div>
-
     <BaseLinkContainer
-      v-if="isWithTracksCount"
+      class="tracks-counter"
       :link="profileLibraryArtistTracksLink"
     >
       <div class="link">
@@ -15,7 +13,6 @@
     </BaseLinkContainer>
 
     <BaseLinkContainer
-      v-if="isWithAlbumsCount"
       :link="profileLibraryArtistAlbumsLink"
     >
       <div class="link">
@@ -25,8 +22,6 @@
         </span>
       </div>
     </BaseLinkContainer>
-
-    <div></div>
   </div>
 </template>
 
@@ -50,32 +45,29 @@ export default {
     profileId: {
       type: String,
       required: true
-    },
-    artistId: {
-      type: String,
-      required: true
-    },
-    isWithTracksCount: Boolean,
-    isWithAlbumsCount: Boolean
+    }
   },
   computed: {
-    tracksCount () {
-      return this.artistData.tracks_count
-    },
-    albumsCount () {
-      return this.artistData.albums_count
-    },
     profileLibraryArtistTracksLink () {
       return formatProfileLibraryArtistTracksLink({
         profileId: this.profileId,
         artistId: this.artistId
       })
     },
+    artistId () {
+      return this.artistData.id
+    },
+    tracksCount () {
+      return this.artistData.tracks_count
+    },
     profileLibraryArtistAlbumsLink () {
       return formatProfileLibraryArtistAlbumsLink({
         profileId: this.profileId,
         artistId: this.artistId
       })
+    },
+    albumsCount () {
+      return this.artistData.albums_count
     }
   }
 }
@@ -83,5 +75,8 @@ export default {
 
 <style lang="sass" scoped>
 .library-counters-container
-  @extend .d-flex, .w-100, .justify-content-space-evenly
+  @extend .d-flex, .justify-content-center
+  margin-top: 0.5em
+  .tracks-counter
+    margin-right: 1em
 </style>

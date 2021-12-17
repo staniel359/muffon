@@ -27,7 +27,7 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        'shared.sources.select.type'
+        'sources.select.type'
       )
     }
   }

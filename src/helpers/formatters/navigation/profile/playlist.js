@@ -9,7 +9,7 @@ export default function ({ profileId, profileNickname, playlistTitle }) {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.profiles'
+        'navigation.profiles'
       ),
       link: formatProfilesLink()
     },
@@ -21,7 +21,7 @@ export default function ({ profileId, profileNickname, playlistTitle }) {
     },
     {
       name: i18n.global.t(
-        'layout.navigation.playlists'
+        'navigation.playlists'
       ),
       link: formatProfilePlaylistsLink({
         profileId

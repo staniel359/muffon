@@ -8,11 +8,9 @@
         'main-segment-container'
       ]"
       :isLoading="isLoading"
-      :error="error"
       @init="handleInit"
     >
       <BasePaginatedListContainer
-        v-if="compatibilityData"
         :scope="scope"
         :isLoading="isLoading"
         :error="error"
@@ -39,8 +37,7 @@ import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
-import fetchProfileCompatibilityData
-  from '#/actions/api/profile/library/compatibility/fetchData'
+import getLibraryCompatibility from '#/actions/api/library/compatibility/get'
 
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',
@@ -70,7 +67,7 @@ export default {
     }
   },
   computed: {
-    profileCompatibilityDataArgs () {
+    libraryCompatibilityArgs () {
       return {
         otherProfileId: this.profileId,
         scope: this.scope,
@@ -96,10 +93,10 @@ export default {
     handleFocus () {
       this.scrollable.scrollTo(0, 0)
     },
-    fetchProfileCompatibilityData,
+    getLibraryCompatibility,
     fetchData (page) {
-      this.fetchProfileCompatibilityData({
-        ...this.profileCompatibilityDataArgs,
+      this.getLibraryCompatibility({
+        ...this.libraryCompatibilityArgs,
         page
       })
     },

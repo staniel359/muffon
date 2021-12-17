@@ -8,7 +8,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
   const formatTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.model.${pageNameKey}`,
+        `navigation.model.${pageNameKey}`,
         { modelName: profileNickname }
       )
     } else {

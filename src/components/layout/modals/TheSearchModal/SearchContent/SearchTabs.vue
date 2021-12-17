@@ -106,7 +106,7 @@ export default {
     artistsTab () {
       return {
         name: this.$t(
-          'layout.navigation.artists'
+          'navigation.artists'
         ),
         scope: 'artists',
         clientPageLimit: 20,
@@ -128,7 +128,7 @@ export default {
     albumsTab () {
       return {
         name: this.$t(
-          'layout.navigation.albums'
+          'navigation.albums'
         ),
         scope: 'albums',
         clientPageLimit: 20,
@@ -150,7 +150,7 @@ export default {
     albumGroupsTab () {
       return {
         name: this.$t(
-          'layout.navigation.albumGroups'
+          'navigation.albumGroups'
         ),
         scope: 'groups',
         clientPageLimit: 20,
@@ -162,7 +162,7 @@ export default {
     tracksTab () {
       return {
         name: this.$t(
-          'layout.navigation.tracks'
+          'navigation.tracks'
         ),
         scope: 'tracks',
         clientPageLimit: 50,
@@ -185,7 +185,7 @@ export default {
     tagsTab () {
       return {
         name: this.$t(
-          'layout.navigation.tags'
+          'navigation.tags'
         ),
         scope: 'tags',
         clientPageLimit: 20,
@@ -197,7 +197,7 @@ export default {
     videosTab () {
       return {
         name: this.$t(
-          'layout.navigation.videos'
+          'navigation.videos'
         ),
         scope: 'videos',
         clientPageLimit: 20,

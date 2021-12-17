@@ -13,7 +13,7 @@
 import { mapState } from 'vuex'
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { playlistFormOptions } from '#/data/plugins/semantic'
-import fetchPlaylistCreateData from '#/actions/api/playlists/create/fetchData'
+import createPlaylist from '#/actions/api/playlist/create'
 import {
   playlist as formatProfilePlaylistLink
 } from '#/formatters/links/profile'
@@ -66,25 +66,29 @@ export default {
     handleSuccess (event, fields) {
       event.preventDefault()
 
-      const createDataArgs = this.formatPlaylistParams(
-        fields
-      )
+      const createArgs =
+        this.formatCreateArgs(
+          fields
+        )
 
-      this.fetchPlaylistCreateData(
-        createDataArgs
+      this.createPlaylist(
+        createArgs
       )
     },
     handlePlaylistIdChange () {
-      this.$router.push(
-        this.playlistUrl
-      )
+      this.redirect()
 
       this.$emit(
         'success'
       )
     },
-    fetchPlaylistCreateData,
-    formatPlaylistParams (fields) {
+    createPlaylist,
+    redirect () {
+      this.$router.push(
+        this.playlistUrl
+      )
+    },
+    formatCreateArgs (fields) {
       const { title } = fields
 
       const image = this.image.data

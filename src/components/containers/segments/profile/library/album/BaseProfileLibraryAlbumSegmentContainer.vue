@@ -27,8 +27,7 @@
 <script>
 import HeaderSegment
   from './BaseProfileLibraryAlbumSegmentContainer/HeaderSegment.vue'
-import fetchLibraryAlbumData
-  from '#/actions/api/profile/library/album/fetchData'
+import getLibraryAlbum from '#/actions/api/library/album/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -58,7 +57,7 @@ export default {
     }
   },
   computed: {
-    libraryAlbumDataArgs () {
+    libraryAlbumArgs () {
       return {
         profileId: this.profileId,
         albumId: this.albumId,
@@ -83,10 +82,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchLibraryAlbumData,
+    getLibraryAlbum,
     fetchData (page) {
-      this.fetchLibraryAlbumData({
-        ...this.libraryAlbumDataArgs,
+      this.getLibraryAlbum({
+        ...this.libraryAlbumArgs,
         page
       })
     },

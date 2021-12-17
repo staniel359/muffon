@@ -3,7 +3,7 @@ import { bookmarks as formatBookmarksLink } from '#/formatters/links'
 
 export default function () {
   const title = i18n.global.t(
-    'layout.navigation.bookmarks'
+    'navigation.bookmarks'
   )
 
   const { path } = formatBookmarksLink()

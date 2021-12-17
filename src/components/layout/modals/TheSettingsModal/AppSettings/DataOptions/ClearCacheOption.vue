@@ -38,12 +38,12 @@ export default {
   computed: {
     clearText () {
       return this.$t(
-        'layout.settings.options.app.data.cache.clear'
+        'settings.options.app.data.cache.clear'
       )
     },
     clearedText () {
       return this.$t(
-        'layout.settings.options.app.data.cache.cleared'
+        'settings.options.app.data.cache.cleared'
       )
     }
   },
@@ -60,10 +60,13 @@ export default {
         this.isLoading = false
       }
 
-      ipcRenderer
-        .invoke('clear-cache')
-        .then(handleSuccess)
-        .finally(handleFinish)
+      ipcRenderer.invoke(
+        'clear-cache'
+      ).then(
+        handleSuccess
+      ).finally(
+        handleFinish
+      )
     }
   }
 }

@@ -1,6 +1,7 @@
 <template>
   <BaseDescription
-    v-bind="$attrs"
+    class="tag-description"
+    :class="{ white: isWhite }"
     :description="description"
     :isMore="isMore"
     @moreClick="handleMoreClick"
@@ -27,7 +28,8 @@ export default {
     description: String,
     isMore: Boolean,
     tagName: String,
-    trackTitle: String
+    trackTitle: String,
+    isWhite: Boolean
   },
   methods: {
     handleMoreClick () {
@@ -37,4 +39,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.tag-description
+  &.white
+    @extend .text-color-white
+</style>

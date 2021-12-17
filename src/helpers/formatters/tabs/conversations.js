@@ -6,7 +6,7 @@ import {
 
 export default function ({ conversationId, profileNickname } = {}) {
   const conversationsTitle = i18n.global.t(
-    'layout.navigation.conversations'
+    'navigation.conversations'
   )
 
   const title = [

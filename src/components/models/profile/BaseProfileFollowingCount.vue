@@ -50,7 +50,7 @@ export default {
     },
     followersText () {
       return this.$t(
-        'shared.profile.followersCount',
+        'counters.followers',
         { count: this.followersCountStrong }
       )
     },
@@ -67,7 +67,7 @@ export default {
     },
     followingText () {
       return this.$t(
-        'shared.profile.followingCount',
+        'counters.following',
         { count: this.followingCountStrong }
       )
     },

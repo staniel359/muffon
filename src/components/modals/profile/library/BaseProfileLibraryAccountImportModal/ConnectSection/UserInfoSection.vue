@@ -3,7 +3,8 @@
     <div class="item main-simple-list-item">
       <BaseImage
         class="circular bordered"
-        :image="image"
+        model="profile"
+        :image="imageData?.small"
       />
 
       <div class="content">
@@ -45,8 +46,8 @@ export default {
     }
   },
   computed: {
-    image () {
-      return this.userData.image.small
+    imageData () {
+      return this.userData.image
     },
     nickname () {
       return this.userData.nickname

@@ -19,7 +19,7 @@ export default {
   computed: {
     titleText () {
       return this.$t(
-        'shared.playlist.form.fields.title'
+        'forms.fields.title'
       )
     }
   },

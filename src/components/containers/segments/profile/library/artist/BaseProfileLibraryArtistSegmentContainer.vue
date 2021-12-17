@@ -26,8 +26,7 @@
 <script>
 import HeaderSegment
   from './BaseProfileLibraryArtistSegmentContainer/HeaderSegment.vue'
-import fetchLibraryArtistData
-  from '#/actions/api/profile/library/artist/fetchData'
+import getLibraryArtist from '#/actions/api/library/artist/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -57,7 +56,7 @@ export default {
     }
   },
   computed: {
-    libraryArtistDataArgs () {
+    libraryArtistArgs () {
       return {
         profileId: this.profileId,
         artistId: this.artistId,
@@ -76,10 +75,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchLibraryArtistData,
+    getLibraryArtist,
     fetchData (page) {
-      this.fetchLibraryArtistData({
-        ...this.libraryArtistDataArgs,
+      this.getLibraryArtist({
+        ...this.libraryArtistArgs,
         page
       })
     },

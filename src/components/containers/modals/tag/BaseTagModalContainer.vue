@@ -16,7 +16,7 @@
 <script>
 import BaseModalContentContainer
   from '@/containers/modals/BaseModalContentContainer.vue'
-import fetchTagData from '#/actions/api/tag/fetchData'
+import getTag from '#/actions/api/tag/get'
 
 export default {
   name: 'BaseTagModalContainer',
@@ -41,7 +41,7 @@ export default {
     }
   },
   computed: {
-    tagDataArgs () {
+    tagArgs () {
       return {
         tagName: this.tagName,
         scope: this.scope
@@ -55,9 +55,11 @@ export default {
     handleModalRefresh () {
       this.fetchData()
     },
-    fetchTagData,
+    getTag,
     fetchData () {
-      this.fetchTagData(this.tagDataArgs)
+      this.getTag(
+        this.tagArgs
+      )
     },
     show () {
       this.$refs.modal.show()

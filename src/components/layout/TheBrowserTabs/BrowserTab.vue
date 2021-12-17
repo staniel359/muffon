@@ -62,7 +62,7 @@ export default {
     },
     loadingText () {
       return this.$t(
-        'shared.loading'
+        'loading'
       )
     },
     isActive () {

@@ -33,12 +33,12 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        'shared.message.sent.header'
+        'message.sent.header'
       )
     },
     contentText () {
       return this.$t(
-        'shared.message.sent.content'
+        'message.sent.content'
       )
     },
     conversationLink () {

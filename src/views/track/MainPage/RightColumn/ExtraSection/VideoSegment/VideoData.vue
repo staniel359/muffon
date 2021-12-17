@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div
-      ref="video"
-      class="ui embed video-embed"
+    <BaseEmbed
+      class="video-embed"
+      :videoData="selectedVideoData"
       @click="handleClick"
-    ></div>
+    />
 
-    <div class="video-data-more-container">
+    <div class="video-more-container">
       <BaseLinkContainer
         :link="videoMainLink"
       >
@@ -19,14 +19,14 @@
 </template>
 
 <script>
+import BaseEmbed from '@/BaseEmbed.vue'
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import { setEmbed } from '#/actions/plugins/semantic'
-import { mainEmbedOptions } from '#/data/plugins/semantic'
 import { main as formatVideoMainLink } from '#/formatters/links/video'
 
 export default {
   name: 'VideoData',
   components: {
+    BaseEmbed,
     BaseLinkContainer
   },
   props: {
@@ -39,17 +39,8 @@ export default {
     'click'
   ],
   computed: {
-    embedOptions () {
-      return mainEmbedOptions({
-        videoId: this.videoId,
-        placeholder: this.placeholder
-      })
-    },
     videoId () {
       return this.selectedVideoData.youtube_id
-    },
-    placeholder () {
-      return this.selectedVideoData.image.small
     },
     videoMainLink () {
       return formatVideoMainLink({
@@ -57,16 +48,8 @@ export default {
       })
     },
     moreText () {
-      return this.$t(
-        'shared.more'
-      )
+      return this.$t('more')
     }
-  },
-  mounted () {
-    setEmbed(
-      this.$refs.video,
-      this.embedOptions
-    )
   },
   methods: {
     handleClick () {
@@ -80,6 +63,6 @@ export default {
 .video-embed
   margin: 1em 0
 
-.video-data-more-container
+.video-more-container
   @extend .d-flex, .justify-content-flex-end
 </style>

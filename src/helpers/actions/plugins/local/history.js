@@ -27,9 +27,15 @@ export const update = (key, item) => {
       item.toLowerCase() !==
         history[0]?.toLowerCase()
     )
-  const newHistory = [item, ...history]
 
-  isNewItem && local.set(
-    historyKey, newHistory
-  )
+  const newHistory = [
+    item,
+    ...history
+  ]
+
+  if (isNewItem) {
+    local.set(
+      historyKey, newHistory
+    )
+  }
 }

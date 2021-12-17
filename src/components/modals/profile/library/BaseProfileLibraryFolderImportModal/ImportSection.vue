@@ -72,7 +72,7 @@ export default {
     },
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'shared.add.import.active.tracks',
+        'import.active.tracks',
         { value, total }
       )
     },

@@ -4,6 +4,7 @@ import i18n from '&/i18n'
 export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   return {
     autofocus: false,
+    allowMultiple: true,
     duration: 100,
     transition: 'fade',
     dimmerSettings: {
@@ -125,10 +126,10 @@ export const mainEmbedOptions = ({ videoId, placeholder }) => {
 
 export const loginFormOptions = ({ onSuccess }) => {
   const emptyEmailPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.email'
+    'forms.errors.empty.email'
   )
   const emptyPasswordPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.password'
+    'forms.errors.empty.password'
   )
 
   return {
@@ -160,16 +161,16 @@ export const loginFormOptions = ({ onSuccess }) => {
 
 export const profileCreateFormOptions = ({ onSuccess }) => {
   const emptyEmailPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.email'
+    'forms.errors.empty.email'
   )
   const emptyPasswordPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.password'
+    'forms.errors.empty.password'
   )
   const emptyPasswordConfirmationPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.passwordConfirmation'
+    'forms.errors.empty.passwordConfirmation'
   )
   const emptyNicknamePrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.nickname'
+    'forms.errors.empty.nickname'
   )
 
   return {
@@ -217,15 +218,15 @@ export const profileCreateFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const profileEditFormOptions = ({ onSuccess }) => {
+export const profileUpdateFormOptions = ({ onSuccess }) => {
   const emptyEmailPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.email'
+    'forms.errors.empty.email'
   )
   const emptyPasswordConfirmationPrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.passwordConfirmation'
+    'forms.errors.empty.passwordConfirmation'
   )
   const emptyNicknamePrompt = i18n.global.t(
-    'shared.profile.form.errors.empty.nickname'
+    'forms.errors.empty.nickname'
   )
 
   return {
@@ -271,7 +272,7 @@ export const profileEditFormOptions = ({ onSuccess }) => {
 
 export const playlistFormOptions = ({ onSuccess }) => {
   const emptyTitlePrompt = i18n.global.t(
-    'shared.playlist.form.errors.empty.title'
+    'forms.errors.empty.title'
   )
 
   return {

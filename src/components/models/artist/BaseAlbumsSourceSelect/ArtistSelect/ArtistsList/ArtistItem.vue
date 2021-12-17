@@ -1,7 +1,9 @@
 <template>
   <BaseDropdownItem
-    :image="image"
+    model="artist"
+    :image="imageData?.extrasmall"
     :header="artistName"
+    isWithImage
     isImageCircular
     @click="handleClick"
   />
@@ -26,8 +28,8 @@ export default {
     }
   },
   computed: {
-    image () {
-      return this.artistData.image?.extrasmall
+    imageData () {
+      return this.artistData.image
     },
     artistName () {
       return this.artistData.name

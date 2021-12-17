@@ -18,7 +18,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
     if (pageNameKey) {
       return {
         name: i18n.global.t(
-          `layout.navigation.${pageNameKey}`
+          `navigation.${pageNameKey}`
         ),
         isActive: true
       }
@@ -28,7 +28,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.profiles'
+        'navigation.profiles'
       ),
       link: formatProfilesLink()
     },
@@ -40,7 +40,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
     },
     {
       name: i18n.global.t(
-        'layout.navigation.library'
+        'navigation.library'
       ),
       isActive: !pageNameKey,
       link: formatLink()

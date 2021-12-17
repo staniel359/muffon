@@ -50,21 +50,21 @@ export default {
       return [
         {
           name: this.$t(
-            'layout.navigation.artists'
+            'navigation.artists'
           ),
           component: 'SaveArtistsSection',
           scope: 'artists'
         },
         {
           name: this.$t(
-            'layout.navigation.albums'
+            'navigation.albums'
           ),
           component: 'SaveAlbumsSection',
           scope: 'albums'
         },
         {
           name: this.$t(
-            'layout.navigation.tracks'
+            'navigation.tracks'
           ),
           component: 'SaveTracksSection',
           scope: 'tracks'

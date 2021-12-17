@@ -3,7 +3,7 @@ import { profiles as formatProfilesLink } from '#/formatters/links'
 
 export default function () {
   const title = i18n.global.t(
-    'layout.navigation.profiles'
+    'navigation.profiles'
   )
 
   const { path } = formatProfilesLink()

@@ -1,27 +1,22 @@
 <template>
-  <div
-    class="ui fluid search search-tracks-input"
-    ref="search"
-  >
-    <div class="ui icon fluid input">
-      <input
-        ref="input"
-        class="prompt"
-        type="text"
-        :placeholder="searchText"
-      >
-      <i class="search icon"></i>
-    </div>
-  </div>
+  <BaseSearchInput
+    ref="input"
+    :url="url"
+    :fields="fields"
+    :formatResponse="formatResponse"
+    @select="handleSelect"
+  />
 </template>
 
 <script>
-import axios from 'axios'
 import { mapState } from 'vuex'
-import { setSearch } from '#/actions/plugins/semantic'
+import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'SearchTracksInput',
+  components: {
+    BaseSearchInput
+  },
   props: {
     tracks: {
       type: Array,
@@ -37,64 +32,52 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    searchText () {
-      return this.$t(
-        'inputs.search'
-      )
-    },
-    searchOptions () {
-      return {
-        apiSettings: {
-          url: this.searchUrl,
-          onResponse: this.formatResponse
-        },
-        cache: false,
-        error: {
-          serverError: this.$t(
-            'shared.error'
-          )
-        },
-        fields: {
-          results: 'tracks',
-          title: 'title',
-          description: 'artistName',
-          image: null
-        },
-        minCharacters: 1,
-        maxResults: 5,
-        onSelect: this.handleTrackSelect,
-        searchDelay: 500,
-        searchOnFocus: false
-      }
-    },
-    searchUrl () {
-      return `${axios.defaults.baseURL}` +
-        'lastfm/search/tracks' +
+    url () {
+      return (
+        '/lastfm/search/tracks' +
         '?query={query}&limit=5' +
         `&profile_id=${this.profileId}`
+      )
     },
     profileId () {
       return this.profileInfo.id
+    },
+    fields () {
+      return {
+        results: 'tracks',
+        title: 'title',
+        description: 'artistName',
+        image: null
+      }
     }
   },
-  mounted () {
-    setSearch(
-      this.$refs.search,
-      this.searchOptions
-    )
-  },
   methods: {
-    handleTrackSelect (track) {
+    handleSelect (track) {
       const isTrackPresent = trackData => {
+        const isSameTitle = (
+          track.title ===
+            trackData.title
+        )
+
+        const isSameArtistName = (
+          track.artist.name ===
+            trackData.artist.name
+        )
+
         return (
-          track.title === trackData.title &&
-            track.artist.name === trackData.artist.name
+          isSameTitle &&
+            isSameArtistName
         )
       }
-      const isPresent = this.tracks.find(
-        isTrackPresent
-      )
-      const isInLibrary = !!track.library_id
+
+      const isPresent =
+        this.tracks.find(
+          isTrackPresent
+        )
+
+      const isInLibrary =
+        !!track.library_id
+
       const isAddTrack = (
         !isPresent && !isInLibrary
       )
@@ -105,26 +88,31 @@ export default {
           track
         )
       }
+
+      this.clear()
     },
     formatResponse (response) {
-      return response.search.tracks.map(trackData => {
-        return {
-          ...trackData,
-          artistName: trackData.artist.name
-        }
-      })
+      const { tracks } = response.search
+
+      return tracks.map(
+        this.formatTrack
+      )
+    },
+    formatTrack (trackData) {
+      return {
+        ...trackData,
+        artistName:
+          trackData.artist.name
+      }
     },
     focus () {
       this.$refs.input.focus()
     },
     clear () {
-      this.$refs.input.value = ''
+      this.$refs.input.clear()
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.search-tracks-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

@@ -40,7 +40,7 @@ export default {
     },
     followingText () {
       return this.$t(
-        'shared.profile.following'
+        'relationships.following'
       )
     },
     isFollowed () {
@@ -48,7 +48,7 @@ export default {
     },
     followedText () {
       return this.$t(
-        'shared.profile.followed'
+        'relationships.followed'
       )
     }
   }

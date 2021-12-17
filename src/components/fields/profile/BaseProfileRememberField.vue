@@ -1,5 +1,5 @@
 <template>
-  <div class="field">
+  <div class="field remember-field">
     <div
       class="ui checkbox"
       ref="checkbox"
@@ -24,7 +24,7 @@ export default {
   computed: {
     rememberText () {
       return this.$t(
-        'shared.profile.form.remember'
+        'forms.remember'
       )
     }
   },

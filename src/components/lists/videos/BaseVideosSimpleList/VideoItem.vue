@@ -6,17 +6,27 @@
   >
     <BaseImage
       class="rounded bordered video-image"
-      :image="image"
+      model="video"
+      :image="imageData?.small"
     />
 
     <div class="content">
       <BaseHeader
-        class="link"
         tag="h4"
+        :class="{ link: isMainLinkActive }"
         :text="videoTitle"
       />
 
-      <div class="main-small-container">
+      <BaseLink
+        v-if="isWithChannelTitle"
+        :link="videoChannelVideosLink"
+        :text="channelTitle"
+        @click="handleLinkClick"
+        @mouseenter="handleChannelLinkMouseEnter"
+        @mouseleave="handleChannelLinkMouseLeave"
+      />
+
+      <div class="description main-small-container">
         <small>
           {{ publishDate }}
         </small>
@@ -29,19 +39,30 @@
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import { main as formatVideoMainLink } from '#/formatters/links/video'
+import {
+  videos as formatVideoChannelVideosLink
+} from '#/formatters/links/videoChannel'
 
 export default {
   name: 'VideoItem',
   components: {
     BaseLinkContainer,
     BaseImage,
-    BaseHeader
+    BaseHeader,
+    BaseLink
   },
   props: {
     videoData: {
       type: Object,
       required: true
+    },
+    isWithChannelTitle: Boolean
+  },
+  data () {
+    return {
+      isMainLinkActive: true
     }
   },
   emits: [
@@ -56,19 +77,40 @@ export default {
     videoId () {
       return this.videoData.youtube_id
     },
-    image () {
-      return this.videoData.image.small
+    imageData () {
+      return this.videoData.image
     },
     videoTitle () {
       return this.videoData.title
     },
     publishDate () {
       return this.videoData.publish_date
+    },
+    channelData () {
+      return this.videoData.channel
+    },
+    videoChannelVideosLink () {
+      return formatVideoChannelVideosLink({
+        channelId: this.channelId,
+        channelTitle: this.channelTitle
+      })
+    },
+    channelId () {
+      return this.channelData.youtube_id
+    },
+    channelTitle () {
+      return this.channelData.title
     }
   },
   methods: {
     handleLinkClick () {
       this.$emit('linkClick')
+    },
+    handleChannelLinkMouseEnter () {
+      this.isMainLinkActive = false
+    },
+    handleChannelLinkMouseLeave () {
+      this.isMainLinkActive = true
     }
   }
 }

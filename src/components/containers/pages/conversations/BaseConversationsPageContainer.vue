@@ -23,7 +23,7 @@ import navigationMixin from '*/mixins/navigationMixin'
 import formatConversationsPageNavigation
   from '#/formatters/navigation/conversations'
 import formatConversationsPageTab from '#/formatters/tabs/conversations'
-import fetchConversationsData from '#/actions/api/conversations/fetchData'
+import getConversations from '#/actions/api/conversations/get'
 
 export default {
   name: 'BaseConversationsPageContainer',
@@ -50,7 +50,7 @@ export default {
     tabData () {
       return formatConversationsPageTab()
     },
-    conversationsDataArgs () {
+    conversationsArgs () {
       return {
         limit: this.responsePageLimit
       }
@@ -65,10 +65,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchConversationsData,
+    getConversations,
     fetchData (page) {
-      this.fetchConversationsData({
-        ...this.conversationsDataArgs,
+      this.getConversations({
+        ...this.conversationsArgs,
         page
       })
     }

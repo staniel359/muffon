@@ -18,5 +18,5 @@ export default {
 
 <style lang="sass" scoped>
 .track-duration
-  margin-left: $trackContentMarginWidth
+  margin-left: 0.5em
 </style>

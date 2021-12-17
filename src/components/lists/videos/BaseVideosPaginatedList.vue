@@ -6,9 +6,11 @@
     @refresh="handleRefresh"
   />
   <template v-else>
-    <BaseVideosSimpleList
+    <Component
       class="videos-list"
+      :is="videosListComponent"
       :videos="videos"
+      :isWithChannelTitle="isWithChannelTitle"
       @linkClick="handleLinkClick"
     />
 
@@ -28,6 +30,7 @@
 <script>
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseVideosSimpleList from './BaseVideosSimpleList.vue'
+import BaseVideosTableList from './BaseVideosTableList.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import BaseSimplePagination from '@/BaseSimplePagination.vue'
 
@@ -36,6 +39,7 @@ export default {
   components: {
     BaseErrorMessage,
     BaseVideosSimpleList,
+    BaseVideosTableList,
     BaseDivider,
     BaseSimplePagination
   },
@@ -45,7 +49,10 @@ export default {
       required: true
     },
     error: Error,
-    page: String
+    page: String,
+    isWithChannelTitle: Boolean,
+    isSimpleList: Boolean,
+    isTableList: Boolean
   },
   emits: [
     'prevPageButtonClick',
@@ -74,6 +81,15 @@ export default {
     },
     nextPage () {
       return this.videosData.next_page
+    },
+    videosListComponent () {
+      if (this.isSimpleList) {
+        return 'BaseVideosSimpleList'
+      } else if (this.isTableList) {
+        return 'BaseVideosTableList'
+      } else {
+        return null
+      }
     }
   },
   watch: {

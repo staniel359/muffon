@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveAlbumsSection/CompleteSection.vue'
-import postAlbumData from '#/actions/api/library/albums/postData'
+import createLibraryAlbum from '#/actions/api/library/album/create'
 
 export default {
   name: 'SaveAlbumsSection',
@@ -88,10 +88,10 @@ export default {
 
       this.errorAlbums = []
     },
-    postAlbumData,
+    createLibraryAlbum,
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'shared.add.save.active.albums',
+        'save.active.albums',
         { value, total }
       )
     },
@@ -109,9 +109,10 @@ export default {
       }
     },
     async saveAlbum (albumData) {
-      const albumFormatted = this.formatAlbum(
-        albumData
-      )
+      const albumFormatted =
+        this.formatAlbum(
+          albumData
+        )
 
       const handleError = () => {
         if (this.isMounted) {
@@ -127,15 +128,19 @@ export default {
         }
       }
 
-      await this.postAlbumData(albumFormatted)
-        .catch(handleError)
-        .finally(handleFinish)
+      await this.createLibraryAlbum(
+        albumFormatted
+      ).catch(
+        handleError
+      ).finally(
+        handleFinish
+      )
     },
     formatAlbum (albumData) {
       return {
         albumTitle: albumData.title,
         artistName: albumData.artist.name,
-        imageUrl: albumData.image.medium
+        imageUrl: albumData.image?.original
       }
     },
     setErrorAlbums (value) {

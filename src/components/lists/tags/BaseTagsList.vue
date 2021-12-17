@@ -61,10 +61,14 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
     handleMoreClick () {
-      this.$emit('moreClick')
+      this.$emit(
+        'moreClick'
+      )
     }
   }
 }

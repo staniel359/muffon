@@ -32,7 +32,7 @@ export default {
   computed: {
     errorText () {
       return this.$t(
-        'shared.add.import.error.files',
+        'import.error.files',
         { count: this.totalCountFormatted }
       )
     },

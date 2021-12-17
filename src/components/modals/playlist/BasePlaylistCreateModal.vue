@@ -18,7 +18,11 @@
           />
         </div>
 
-        <SubmitButton />
+        <div class="submit-button-container">
+          <BaseSubmitButton
+            actionKey="create"
+          />
+        </div>
       </BasePlaylistCreateFormContainer>
     </div>
   </BaseModalContainer>
@@ -32,7 +36,7 @@ import BasePlaylistImageField
   from '@/fields/playlist/BasePlaylistImageField.vue'
 import BasePlaylistTitleField
   from '@/fields/playlist/BasePlaylistTitleField.vue'
-import SubmitButton from './BasePlaylistCreateModal/SubmitButton.vue'
+import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'BasePlaylistCreateModal',
@@ -41,7 +45,7 @@ export default {
     BasePlaylistCreateFormContainer,
     BasePlaylistImageField,
     BasePlaylistTitleField,
-    SubmitButton
+    BaseSubmitButton
   },
   data () {
     return {

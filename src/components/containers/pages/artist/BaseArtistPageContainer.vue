@@ -27,9 +27,9 @@ import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatArtistPageNavigation from '#/formatters/navigation/artist'
 import formatArtistPageTab from '#/formatters/tabs/artist'
-import fetchArtistData from '#/actions/api/artist/fetchData'
-import fetchBandcampArtistIdData
-  from '#/actions/api/artist/id/bandcamp/fetchData'
+import getArtist from '#/actions/api/artist/get'
+import getBandcampArtistId
+  from '#/actions/api/bandcamp_id/artist/get'
 
 export default {
   name: 'BaseArtistPageContainer',
@@ -92,7 +92,7 @@ export default {
     artistNameFetched () {
       return this.artistData?.name
     },
-    artistDataArgs () {
+    artistArgs () {
       return {
         ...this.requestArtistData,
         scope: this.scope,
@@ -107,7 +107,10 @@ export default {
       }
     },
     isDiscogsSource () {
-      return this.requestArtistData.sourceId === 'discogs'
+      return (
+        this.requestArtistData.sourceId ===
+          'discogs'
+      )
     },
     pageError () {
       if (this.artistData) {
@@ -142,16 +145,16 @@ export default {
     },
     setRequestArtistData (value) {
       if (value.sourceId === 'bandcamp') {
-        this.fetchBandcampArtistIdData(value)
+        this.getBandcampArtistId(value)
       } else {
         this.requestArtistData = value
       }
     },
-    fetchBandcampArtistIdData,
-    fetchArtistData,
+    getBandcampArtistId,
+    getArtist,
     fetchData (page) {
-      this.fetchArtistData({
-        ...this.artistDataArgs,
+      this.getArtist({
+        ...this.artistArgs,
         page
       })
     }

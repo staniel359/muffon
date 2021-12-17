@@ -14,7 +14,7 @@ export default {
   computed: {
     passwordText () {
       return this.$t(
-        'shared.profile.form.fields.password'
+        'forms.fields.password'
       )
     }
   }

@@ -19,7 +19,7 @@
 
 <script>
 import HeaderSegment from './BaseTopSegmentContainer/HeaderSegment.vue'
-import fetchTopData from '#/actions/api/top/fetchData'
+import getTop from '#/actions/api/top/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -42,7 +42,7 @@ export default {
     }
   },
   computed: {
-    topDataArgs () {
+    topArgs () {
       return {
         scope: this.scope,
         limit: this.responsePageLimit
@@ -53,10 +53,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchTopData,
+    getTop,
     fetchData (page) {
-      this.fetchTopData({
-        ...this.topDataArgs,
+      this.getTop({
+        ...this.topArgs,
         page
       })
     },

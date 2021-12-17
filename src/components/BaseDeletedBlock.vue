@@ -18,7 +18,7 @@ export default {
   computed: {
     deletedText () {
       return this.$t(
-        `shared.deleted.${this.model}`
+        `deleted.${this.model}`
       )
     }
   }

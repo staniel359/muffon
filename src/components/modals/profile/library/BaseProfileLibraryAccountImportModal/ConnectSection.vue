@@ -42,7 +42,7 @@ import BaseButton from '@/buttons/BaseButton.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import UserInfoSection from './ConnectSection/UserInfoSection.vue'
-import fetchLastfmUserData from '#/actions/api/lastfm/user/fetchData'
+import getLastfmUser from '#/actions/api/lastfm/user/get'
 
 export default {
   name: 'ConnectSection',
@@ -70,7 +70,7 @@ export default {
   computed: {
     importText () {
       return this.$t(
-        'shared.add.account.import.lastfm'
+        'actions.account.import.lastfm'
       )
     },
     isDisabled () {
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     handleClick () {
-      this.fetchLastfmUserData()
+      this.getLastfmUser()
     },
     handleUserDataChange (value) {
       this.$emit(
@@ -97,7 +97,7 @@ export default {
       this.userData = null
       this.isReset = true
     },
-    fetchLastfmUserData
+    getLastfmUser
   }
 }
 </script>

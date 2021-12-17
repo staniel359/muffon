@@ -25,7 +25,7 @@
 <script>
 import { mapState } from 'vuex'
 import HeaderSegment from './BaseTrackSegmentContainer/HeaderSegment.vue'
-import fetchTrackData from '#/actions/api/track/fetchData'
+import getTrack from '#/actions/api/track/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -61,7 +61,7 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    trackDataArgs () {
+    trackArgs () {
       return {
         artistName: this.artistName,
         trackTitle: this.trackTitle,
@@ -77,10 +77,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchTrackData,
+    getTrack,
     fetchData (page) {
-      this.fetchTrackData({
-        ...this.trackDataArgs,
+      this.getTrack({
+        ...this.trackArgs,
         page
       })
     },

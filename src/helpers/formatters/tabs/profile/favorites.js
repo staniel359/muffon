@@ -5,7 +5,7 @@ import {
 
 export default function ({ profileId, profileNickname }) {
   const title = i18n.global.t(
-    'layout.navigation.model.favorites',
+    'navigation.model.favorites',
     { modelName: profileNickname }
   )
 

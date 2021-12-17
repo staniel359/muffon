@@ -38,12 +38,12 @@ export default {
   computed: {
     clearText () {
       return this.$t(
-        'layout.settings.options.app.data.history.search.clear'
+        'settings.options.app.data.history.search.clear'
       )
     },
     clearedText () {
       return this.$t(
-        'layout.settings.options.app.data.history.search.cleared'
+        'settings.options.app.data.history.search.cleared'
       )
     }
   },

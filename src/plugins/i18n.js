@@ -8,8 +8,6 @@ const locale = local.get(
   'profile.language'
 )
 
-const fallbackLocale = 'en'
-
 const messages = {
   en,
   it,
@@ -18,6 +16,6 @@ const messages = {
 
 export default createI18n({
   locale,
-  fallbackLocale,
+  fallbackLocale: 'en',
   messages
 })

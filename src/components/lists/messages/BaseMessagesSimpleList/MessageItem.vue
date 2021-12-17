@@ -2,9 +2,10 @@
   <BaseSegmentContainer
     class="main-simple-list-item"
   >
-    <BaseProfileImage
-      class="small"
-      :image="profileImage"
+    <BaseImage
+      class="small circular bordered"
+      model="profile"
+      :image="imageData?.extrasmall"
     />
 
     <div class="content">
@@ -41,7 +42,7 @@
 <script>
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
 import BaseTimestamp from '@/BaseTimestamp.vue'
 import BaseImagesSection from '@/BaseImagesSection.vue'
@@ -51,7 +52,7 @@ export default {
   name: 'MessageItem',
   components: {
     BaseSegmentContainer,
-    BaseProfileImage,
+    BaseImage,
     BaseProfileNickname,
     BaseTimestamp,
     BaseImagesSection,
@@ -64,8 +65,8 @@ export default {
     }
   },
   computed: {
-    profileImage () {
-      return this.profileData.image.extrasmall
+    imageData () {
+      return this.profileData.image
     },
     profileData () {
       return this.messageData.profile

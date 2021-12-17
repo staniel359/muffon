@@ -3,6 +3,7 @@
     <div class="content main-modal-content-full-height">
       <div class="top-section-container">
         <Component
+          class="search-input"
           ref="input"
           :is="activeInput.component"
           :[activeInput.scope]="this[activeInput.scope]"
@@ -136,6 +137,10 @@ export default {
       })
     },
     handleSelect (value) {
+      if (this.status === 'save') {
+        this.reset()
+      }
+
       this[this.scope].push({
         uuid: generateKey(),
         ...value
@@ -147,18 +152,22 @@ export default {
       this[scope] = [...value]
     },
     handleResetButtonClick () {
-      this.artists = []
-      this.albums = []
-      this.tracks = []
+      this.reset()
 
       this.$refs.input.clear()
       this.$refs.input.focus()
 
-      this.status = 'import'
       this.isReset = true
     },
     handleSave () {
       this.status = 'save'
+    },
+    reset () {
+      this.status = 'import'
+
+      this.artists = []
+      this.albums = []
+      this.tracks = []
     },
     show () {
       this.$refs.modal.show()
@@ -183,6 +192,9 @@ export default {
 <style lang="sass" scoped>
 .top-section-container
   @extend .d-flex, .align-items-center
+
+.search-input
+  @extend .flex-full
 
 .reset-button
   margin-left: 1em !important

@@ -8,6 +8,7 @@
   <BaseImage
     v-else
     class="artist-image"
+    model="artist"
     :image="imageConditional"
   />
 </template>
@@ -16,7 +17,7 @@
 import BaseImagePlaceholder from '@/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseImage from '@/images/BaseImage.vue'
-import fetchArtistImageData from '#/actions/api/artist/image/fetchData'
+import getArtistImage from '#/actions/api/artist/image/get'
 import { defaultImages as formatDefaultImages } from '#/formatters/artist'
 
 export default {
@@ -29,9 +30,9 @@ export default {
   props: {
     size: {
       type: String,
-      default: 'small'
+      required: true
     },
-    image: Object,
+    imageData: Object,
     artistName: String,
     isInteractive: Boolean
   },
@@ -65,7 +66,7 @@ export default {
         return formatDefaultImages()
       }
     },
-    artistImageDataArgs () {
+    artistImageArgs () {
       return {
         artistName: this.artistName,
         isInteractive: this.isInteractive,
@@ -74,7 +75,8 @@ export default {
     },
     imageConditional () {
       return (
-        this.image || this.imageFetched
+        this.imageData ||
+          this.imageFetched
       )[this.size]
     }
   },
@@ -87,16 +89,23 @@ export default {
   },
   methods: {
     handleArtistNameChange (newValue, oldValue) {
-      const isNewArtist = this.isArtistNameChanged(
-        newValue, oldValue
-      )
+      const isNewArtist =
+        this.isArtistNameChanged(
+          newValue, oldValue
+        )
 
-      if (!this.image && isNewArtist) {
+      if (
+        !this.imageData &&
+          isNewArtist
+      ) {
         this.fetchData()
       }
     },
     handleImageFetchedChange (value) {
-      this.$emit('loadEnd', value)
+      this.$emit(
+        'loadEnd',
+        value
+      )
     },
     isArtistNameChanged (newValue, oldValue) {
       return (
@@ -107,10 +116,10 @@ export default {
     formatArtistName (value) {
       return value?.trim()?.toLowerCase()
     },
-    fetchArtistImageData,
+    getArtistImage,
     fetchData () {
-      this.fetchArtistImageData(
-        this.artistImageDataArgs
+      this.getArtistImage(
+        this.artistImageArgs
       )
     }
   }

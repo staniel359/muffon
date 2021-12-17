@@ -22,7 +22,7 @@ export default {
   computed: {
     sourceText () {
       return this.$t(
-        'layout.settings.options.app.player.audioSource'
+        'settings.options.app.player.audioSource'
       )
     }
   }

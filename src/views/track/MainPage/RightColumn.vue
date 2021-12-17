@@ -7,6 +7,7 @@
     <ExtraSection
       :key="key"
       :trackData="trackData"
+      :requestTrackData="requestTrackData"
     />
   </div>
 </template>
@@ -26,7 +27,8 @@ export default {
     trackData: {
       type: Object,
       required: true
-    }
+    },
+    requestTrackData: Object
   },
   data () {
     return {

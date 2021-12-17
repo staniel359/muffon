@@ -32,7 +32,7 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        `shared.sources.albumsTypes.${this.typeId}`
+        `sources.albumsTypes.${this.typeId}`
       )
     }
   },

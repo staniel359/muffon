@@ -64,7 +64,7 @@ export default {
   computed: {
     filterText () {
       return this.$t(
-        'pages.recommendations.filter'
+        'recommendations.filter'
       )
     },
     filterComponent () {

@@ -45,8 +45,7 @@ import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleSelectableList
   from '@/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
-import fetchProfilePlaylistsData from
-  '#/actions/api/profile/playlists/fetchData'
+import getProfilePlaylists from '#/actions/api/profile/playlists/get'
 
 export default {
   name: 'BasePlaylistsModal',
@@ -76,7 +75,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    playlistsDataArgs () {
+    playlistsArgs () {
       return {
         profileId: this.profileId,
         limit: this.limit,
@@ -96,7 +95,9 @@ export default {
       this.scrollable = el
     },
     handleIsOpenChange (value) {
-      value && this.fetchData()
+      if (value) {
+        this.fetchData()
+      }
     },
     handleRefresh (page) {
       this.fetchData(page)
@@ -104,10 +105,10 @@ export default {
     handleFocus () {
       this.scrollable.scrollTo(0, 0)
     },
-    fetchProfilePlaylistsData,
+    getProfilePlaylists,
     fetchData (page) {
-      this.fetchProfilePlaylistsData({
-        ...this.playlistsDataArgs,
+      this.getProfilePlaylists({
+        ...this.playlistsArgs,
         page
       })
     },

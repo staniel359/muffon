@@ -39,7 +39,7 @@ export default {
     },
     headerText () {
       return this.$t(
-        'layout.navigation.playlists'
+        'navigation.playlists'
       )
     }
   }

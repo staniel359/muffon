@@ -1,8 +1,10 @@
 <template>
   <BaseSegmentContainer>
     <div class="main-simple-list-item">
-      <BaseProfileImage
-        :image="profileImage"
+      <BaseImage
+        class="circular bordered"
+        model="profile"
+        :image="imageData?.small"
       />
 
       <div class="content">
@@ -18,14 +20,14 @@
 <script>
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
 
 export default {
   name: 'ProfileSegment',
   components: {
     BaseSegmentContainer,
-    BaseProfileImage,
+    BaseImage,
     BaseProfileNickname
   },
   props: {
@@ -38,8 +40,8 @@ export default {
     profileData () {
       return this.conversationData.profile
     },
-    profileImage () {
-      return this.profileData.image.small
+    imageData () {
+      return this.profileData.image
     },
     profileId () {
       return this.profileData.id

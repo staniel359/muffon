@@ -14,6 +14,7 @@
       >
         <BaseVideosPaginatedList
           :videosData="slotProps.channelData"
+          isTableList
           @prevPageButtonClick="slotProps.fetchData"
           @nextPageButtonClick="slotProps.fetchData"
         />

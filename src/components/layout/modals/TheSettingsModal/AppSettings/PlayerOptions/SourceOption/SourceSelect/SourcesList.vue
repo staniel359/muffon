@@ -1,6 +1,6 @@
 <template>
   <SourceItem
-    v-for="sourceData in sourcesCollection"
+    v-for="sourceData in streamableSourcesCollection"
     :key="sourceData.uuid"
     :sourceData="sourceData"
   />
@@ -9,9 +9,8 @@
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
-  getStreamable as getAudioSourcesStreamable
-} from '#/actions/audio/sources'
-import { collection as formatCollection } from '#/formatters'
+  streamableCollection as getStreamableSourcesCollection
+} from '#/formatters/sources'
 
 export default {
   name: 'SourcesList',
@@ -19,13 +18,8 @@ export default {
     SourceItem
   },
   computed: {
-    sourcesCollection () {
-      return formatCollection(
-        this.sources
-      )
-    },
-    sources () {
-      return getAudioSourcesStreamable(true)
+    streamableSourcesCollection () {
+      return getStreamableSourcesCollection()
     }
   }
 }

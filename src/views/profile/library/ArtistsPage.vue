@@ -18,8 +18,6 @@
         :topAlbumsCount="slotProps.topAlbumsCount"
         :profileId="slotProps.profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
-        isWithTracksCount
-        isWithAlbumsCount
         isWithLibrary
         isLinkToLibrary
       />

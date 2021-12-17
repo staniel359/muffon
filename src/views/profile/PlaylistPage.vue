@@ -19,7 +19,6 @@
         <ImportSegment
           v-if="isRenderImport"
           :playlistId="playlistId"
-          :profileId="profileId"
         />
 
         <TracksSegment

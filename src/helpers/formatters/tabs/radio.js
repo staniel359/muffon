@@ -3,7 +3,7 @@ import { radio as formatRadioLink } from '#/formatters/links'
 
 export default function () {
   const title = i18n.global.t(
-    'layout.navigation.radio'
+    'navigation.radio'
   )
 
   const { path } = formatRadioLink()

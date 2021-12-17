@@ -1,9 +1,12 @@
 <template>
-  <BaseLinkContainer
+  <BaseAlbumLinkContainer
     class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
-    :link="link"
-    @click="handleLinkClick"
+    :albumData="albumData"
+    :profileId="profileId"
+    :isLinkToLibrary="isLinkToLibrary"
+    :isArtistNameActive="isArtistNameActive"
+    @linkClick="handleLinkClick"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -12,18 +15,33 @@
     <template v-else>
       <BaseImage
         class="rounded bordered"
-        :image="imageData.extrasmall"
+        model="album"
+        :image="imageData?.small"
       />
 
-      <InfoBlock
-        :albumTitle="albumTitle"
-        :artistName="artistName"
-        :listenersCount="listenersCount"
-        :uuid="uuid"
-        :isWithArtistName="isWithArtistName"
-        :isArtistNameActive="isArtistNameActive"
-        :isWithListenersCount="isWithListenersCount"
-      />
+      <div class="content">
+        <BaseHeader
+          tag="h4"
+          :class="{ link: isHeaderActive }"
+          :text="albumTitle"
+        />
+
+        <ArtistNameSection
+          v-if="isWithArtistName"
+          :artistName="artistName"
+          :isArtistNameActive="isArtistNameActive"
+          @activeChange="handleArtistNameActiveChange"
+        />
+
+        <BaseAlbumListenersCount
+          v-if="isWithListenersCount"
+          class="description"
+          :albumTitle="albumTitle"
+          :artistName="artistName"
+          :listenersCount="listenersCount"
+          @loadEnd="handleListenersCountLoadEnd"
+        />
+      </div>
 
       <BaseSelfIcons
         v-if="isWithSelfIcons"
@@ -37,7 +55,7 @@
         model="album"
         :artistName="artistName"
         :albumTitle="albumTitle"
-        :imageUrl="imageData.medium"
+        :imageUrl="imageData?.original"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -58,47 +76,42 @@
         :modelData="albumData"
         @deleted="handleDeleted"
       />
-
       <BaseFavoriteDeleteModal
-        v-if="isFavorite"
+        v-else-if="isFavorite"
         ref="modal"
         model="album"
         :modelData="albumData"
         @deleted="handleDeleted"
       />
     </template>
-  </BaseLinkContainer>
+  </BaseAlbumLinkContainer>
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseAlbumLinkContainer
+  from '@/containers/album/BaseAlbumLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseImage from '@/images/BaseImage.vue'
-import InfoBlock from './AlbumItem/InfoBlock.vue'
+import BaseHeader from '@/BaseHeader.vue'
+import ArtistNameSection from './AlbumItem/ArtistNameSection.vue'
+import BaseAlbumListenersCount
+  from '@/models/album/BaseAlbumListenersCount.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BaseBookmarkDeleteModal
   from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
-import {
-  main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import {
-  main as formatProfileLibraryAlbumMainLink
-} from '#/formatters/links/profile/library/album'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
 
 export default {
   name: 'AlbumItem',
   components: {
-    BaseLinkContainer,
+    BaseAlbumLinkContainer,
     BaseDeletedBlock,
     BaseImage,
-    InfoBlock,
+    BaseHeader,
+    ArtistNameSection,
+    BaseAlbumListenersCount,
     BaseSelfIcons,
     BaseOptionsDropdown,
     BaseBookmarkDeleteModal,
@@ -106,7 +119,6 @@ export default {
   },
   provide () {
     return {
-      setIsArtistNameActive: this.setIsArtistNameActive,
       setLibraryId: this.setLibraryId,
       setFavoriteId: this.setFavoriteId,
       setBookmarkId: this.setBookmarkId,
@@ -152,60 +164,8 @@ export default {
     }
   },
   computed: {
-    link () {
-      if (this.isArtistNameActive) {
-        if (this.isLinkToLibrary) {
-          return this.profileLibraryArtistMainLink
-        } else {
-          return this.artistMainLink
-        }
-      } else {
-        if (this.isLinkToLibrary) {
-          return this.profileLibraryAlbumMainLink
-        } else {
-          return this.albumMainLink
-        }
-      }
-    },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    artistId () {
-      return this.albumData.artist.id
-    },
-    artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
-    },
     artistName () {
       return this.albumData.artist.name
-    },
-    profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
-    },
-    albumId () {
-      return this.albumData.id?.toString()
-    },
-    albumMainLink () {
-      return formatAlbumMainLink({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        sourceParams: this.sourceParams
-      })
-    },
-    sourceParams () {
-      return formatAlbumSourceParams({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.artistName
-      })
     },
     albumTitle () {
       return this.albumData.title
@@ -216,11 +176,19 @@ export default {
     listenersCount () {
       return this.albumData.listeners_count
     },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
     uuid () {
       return this.albumData.uuid
     },
     isDeleted () {
       return !!this.albumData.isDeleted
+    },
+    isHeaderActive () {
+      return !this.isArtistNameActive
     }
   },
   mounted () {
@@ -250,11 +218,12 @@ export default {
       }
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     },
-    setIsArtistNameActive (value) {
+    handleListenersCountLoadEnd (value) {
+      this.paginationItem.listeners_count = value
+    },
+    handleArtistNameActiveChange (value) {
       this.isArtistNameActive = value
     },
     setLibraryId (value) {

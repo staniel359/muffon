@@ -15,7 +15,7 @@ import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatTopPageNavigation from '#/formatters/navigation/top'
 import formatTopPageTab from '#/formatters/tabs/top'
-import fetchTopData from '#/actions/api/top/fetchData'
+import getTop from '#/actions/api/top/get'
 
 export default {
   name: 'BaseTopPageContainer',
@@ -53,7 +53,7 @@ export default {
         this.navigationData
       )
     },
-    topDataArgs () {
+    topArgs () {
       return {
         scope: this.scope,
         limit: this.responsePageLimit
@@ -67,10 +67,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchTopData,
+    getTop,
     fetchData (page) {
-      this.fetchTopData({
-        ...this.topDataArgs,
+      this.getTop({
+        ...this.topArgs,
         page
       })
     }

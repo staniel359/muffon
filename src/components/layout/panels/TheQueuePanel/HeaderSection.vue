@@ -27,7 +27,7 @@ export default {
     }),
     tracksText () {
       return this.$t(
-        'shared.tracks',
+        'counters.tracks',
         { count: this.queueTracksCountFormatted }
       )
     },

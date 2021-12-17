@@ -1,47 +1,19 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <template #default>
-      <div class="header">
-        {{ headerText }}
-      </div>
-
-      <div class="content">
-        <TextSection
-          :model="model"
-          :modelTitle="modelTitle"
-        />
-
-        <BaseErrorMessage
-          v-if="error"
-          class="error-message"
-          :error="error"
-        />
-      </div>
-
-      <div class="actions">
-        <BaseButton
-          class="cancel"
-          :text="cancelText"
-        />
-
-        <BaseButton
-          class="red"
-          :text="deleteText"
-          :class="{ loading: isLoading }"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
-    </template>
-  </BaseModalContainer>
+  <BaseDeleteModal
+    ref="modal"
+    modelType="library"
+    :model="model"
+    :modelName="modelName"
+    :isLoading="isLoading"
+    :error="error"
+    :isWithAlsoText="isWithAlsoText"
+    @deleteButtonClick="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import TextSection from './BaseProfileLibraryDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import deleteProfileLibraryModelData
-  from '#/actions/api/library/model/deleteData'
+import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
+import deleteLibraryModel from '#/actions/api/library/model/delete'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
@@ -50,10 +22,7 @@ import { setToast } from '#/actions/plugins/semantic'
 export default {
   name: 'BaseProfileLibraryDeleteModal',
   components: {
-    BaseModalContainer,
-    TextSection,
-    BaseErrorMessage,
-    BaseButton
+    BaseDeleteModal
   },
   props: {
     profileId: {
@@ -68,7 +37,7 @@ export default {
       type: String,
       required: true
     },
-    modelTitle: {
+    modelName: {
       type: String,
       required: true
     },
@@ -80,67 +49,66 @@ export default {
   data () {
     return {
       error: null,
-      isLoading: false,
-      isSuccess: false
+      isLoading: false
     }
   },
   computed: {
-    headerText () {
+    deletedMessage () {
       return this.$t(
-        `shared.library.delete.${this.model}.header`
+        'notifications.deleted.library',
+        { modelName: this.modelNameStrong }
       )
     },
-    cancelText () {
-      return this.$t(
-        'buttons.cancel'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'buttons.delete'
-      )
-    },
-    toastMessage () {
-      return this.$t(
-        'shared.library.deleted',
-        { modelTitle: this.modelTitleStrong }
-      )
-    },
-    modelTitleStrong () {
-      return `<strong>${this.modelTitle}</strong>`
+    modelNameStrong () {
+      return `<strong>${this.modelName}</strong>`
     },
     profileLibraryMainLink () {
       return formatProfileLibraryMainLink({
         profileId: this.profileId
       })
-    }
-  },
-  watch: {
-    isSuccess: 'handleIsSuccessChange'
-  },
-  methods: {
-    deleteProfileLibraryModelData,
-    handleDeleteButtonClick () {
-      this.deleteProfileLibraryModelData({
+    },
+    isWithAlsoText () {
+      return (
+        this.model === 'artist' ||
+          this.model === 'album'
+      )
+    },
+    deleteArgs () {
+      return {
         model: this.model,
         modelId: this.modelId
-      })
+      }
+    }
+  },
+  methods: {
+    handleDeleteButtonClick () {
+      this.deleteLibraryModel(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
-    handleIsSuccessChange () {
+    handleSuccess () {
       this.$refs.modal.hide()
 
       if (this.isDeleteWithRedirect) {
-        this.$router.push(
-          this.profileLibraryMainLink
-        )
-
-        setToast({
-          message: this.toastMessage,
-          icon: 'green check'
-        })
+        this.redirect()
+        this.notify()
       } else {
         this.$emit('deleted')
       }
+    },
+    deleteLibraryModel,
+    redirect () {
+      this.$router.push(
+        this.profileLibraryMainLink
+      )
+    },
+    notify () {
+      setToast({
+        message: this.deletedMessage,
+        icon: 'green check'
+      })
     },
     show () {
       this.$refs.modal.show()

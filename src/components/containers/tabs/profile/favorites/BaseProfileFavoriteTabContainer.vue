@@ -40,7 +40,7 @@ import BasePaginatedListContainer
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import fetchFavoritesData from '#/actions/api/profile/favorites/fetchData'
+import getFavorites from '#/actions/api/favorites/get'
 import { isCurrentProfile } from '#/utils'
 
 export default {
@@ -74,7 +74,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    favoritesDataArgs () {
+    favoritesArgs () {
       return {
         profileId: this.profileId,
         scope: this.tabData.scope,
@@ -107,12 +107,14 @@ export default {
   },
   methods: {
     handleIsActive (value) {
-      value && (
+      if (value) {
         this.isActivated = true
-      )
+      }
     },
     handleIsActivated (value) {
-      value && this.fetchData()
+      if (value) {
+        this.fetchData()
+      }
     },
     handleFocus () {
       this.$emit('focus')
@@ -120,10 +122,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchFavoritesData,
+    getFavorites,
     fetchData (page) {
-      this.fetchFavoritesData({
-        ...this.favoritesDataArgs,
+      this.getFavorites({
+        ...this.favoritesArgs,
         page
       })
     }

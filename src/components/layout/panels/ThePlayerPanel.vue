@@ -70,7 +70,7 @@ export default {
     },
     scrobbledMessage () {
       return this.$t(
-        'shared.player.scrobbled',
+        'notifications.scrobbled',
         { trackFullTitle: this.trackFullTitleStrong }
       )
     },
@@ -136,12 +136,18 @@ export default {
       this.isVisible = false
     },
     handleIsPlayerScrobbledChange (value) {
-      if (this.isPlayerWithScrobbleNotifications && value) {
-        setToast({
-          message: this.scrobbledMessage,
-          icon: 'green check'
-        })
+      if (
+        this.isPlayerWithScrobbleNotifications &&
+          value
+      ) {
+        this.notify()
       }
+    },
+    notify () {
+      setToast({
+        message: this.scrobbledMessage,
+        icon: 'green check'
+      })
     },
     toggleInvertedClass () {
       toggleClass(

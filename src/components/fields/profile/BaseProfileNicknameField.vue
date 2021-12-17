@@ -18,7 +18,7 @@ export default {
   computed: {
     nicknameText () {
       return this.$t(
-        'shared.profile.form.fields.nickname'
+        'forms.fields.nickname'
       )
     }
   }

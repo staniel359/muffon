@@ -26,7 +26,7 @@ export default {
   computed: {
     dataText () {
       return this.$t(
-        'layout.settings.sections.app.data'
+        'settings.sections.app.data'
       )
     }
   }

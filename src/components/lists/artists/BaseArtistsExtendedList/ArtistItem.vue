@@ -18,29 +18,27 @@
             <div class="artist-left-column">
               <BaseArtistImage
                 class="circular bordered artist-image"
-                :image="image"
+                size="medium"
+                :imageData="imageData"
                 :artistName="artistName"
                 @loadEnd="handleImageLoadEnd"
-              />
-
-              <BaseSelfIcons
-                v-if="isWithSelfIcons"
-                :libraryId="libraryId"
-                :favoriteId="favoriteId"
-                :bookmarkId="bookmarkId"
-                :listenedId="listenedId"
               />
 
               <LibraryCountersSection
                 v-if="isWithLibrary"
                 :artistData="artistData"
-                :isWithTracksCount="isWithTracksCount"
-                :isWithAlbumsCount="isWithAlbumsCount"
                 :profileId="profileId"
-                :artistId="artistId"
               />
 
-              <div class="main-options-dropdown-container-right">
+              <div class="main-self-container">
+                <BaseSelfIcons
+                  v-if="isWithSelfIcons"
+                  :libraryId="libraryId"
+                  :favoriteId="favoriteId"
+                  :bookmarkId="bookmarkId"
+                  :listenedId="listenedId"
+                />
+
                 <BaseOptionsDropdown
                   model="artist"
                   :artistName="artistName"
@@ -58,21 +56,33 @@
               </div>
             </div>
 
-            <InfoBlock
-              :artistData="slotProps.artistData"
-              :isLinkToLibrary="isLinkToLibrary"
-              :profileId="profileId"
-              :artistId="artistId"
-              :isRecommendation="isRecommendation"
-              :recommendationData="artistData"
-            />
+            <div class="artist-info">
+              <HeaderSection
+                :artistData="artistData"
+                :profileId="profileId"
+                :isLinkToLibrary="isLinkToLibrary"
+              />
 
-            <BaseRecommendationDeleteModal
-              v-if="isRecommendation"
-              ref="deleteModal"
-              :recommendationData="artistData"
-              @deleted="handleDeleted"
-            />
+              <BaseCounters
+                :listenersCount="listenersCount"
+                :playsCount="playsCount"
+              />
+
+              <TagsSection
+                :artistData="slotProps.artistData"
+              />
+
+              <DescriptionSection
+                :artistData="slotProps.artistData"
+              />
+
+              <RecommendationSection
+                v-if="isRecommendation"
+                ref="recommendation"
+                :artistData="artistData"
+                :profileId="profileId"
+              />
+            </div>
           </template>
         </template>
       </BaseArtistHorizontalCardContainer>
@@ -86,12 +96,14 @@ import BaseArtistHorizontalCardContainer
   from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import InfoBlock from './ArtistItem/InfoBlock.vue'
-import BaseRecommendationDeleteModal
-  from '@/modals/recommendation/BaseRecommendationDeleteModal.vue'
+import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import HeaderSection from './ArtistItem/HeaderSection.vue'
+import BaseCounters from '@/BaseCounters.vue'
+import TagsSection from './ArtistItem/TagsSection.vue'
+import DescriptionSection from './ArtistItem/DescriptionSection.vue'
+import RecommendationSection from './ArtistItem/RecommendationSection.vue'
 
 export default {
   name: 'ArtistItem',
@@ -100,11 +112,14 @@ export default {
     BaseArtistHorizontalCardContainer,
     BaseDeletedBlock,
     BaseArtistImage,
-    BaseOptionsDropdown,
     LibraryCountersSection,
     BaseSelfIcons,
-    InfoBlock,
-    BaseRecommendationDeleteModal
+    BaseOptionsDropdown,
+    HeaderSection,
+    BaseCounters,
+    TagsSection,
+    DescriptionSection,
+    RecommendationSection
   },
   provide () {
     return {
@@ -114,9 +129,6 @@ export default {
       setListenedId: this.setListenedId
     }
   },
-  inject: [
-    'findPaginationItem'
-  ],
   props: {
     artistData: {
       type: Object,
@@ -126,8 +138,6 @@ export default {
       type: Boolean,
       default: true
     },
-    isWithTracksCount: Boolean,
-    isWithAlbumsCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -150,17 +160,17 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
-    },
-    uuid () {
-      return this.artistData.uuid
-    },
-    artistId () {
-      return this.artistData.id?.toString()
     },
     isDeleted () {
       return !!this.artistData.isDeleted
+    },
+    listenersCount () {
+      return this.artistData.listeners_count
+    },
+    playsCount () {
+      return this.artistData.plays_count
     }
   },
   mounted () {
@@ -175,17 +185,10 @@ export default {
   },
   methods: {
     handleImageLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).image = value
-    },
-    handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.image = value
     },
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs.recommendation.showDeleteModal()
     },
     setLibraryId (value) {
       this.libraryId = value
@@ -205,7 +208,6 @@ export default {
 
 <style lang="sass" scoped>
 .artist-left-column
-  @extend .d-flex, .flex-column, .align-items-center
   margin-right: 1em
   width: 150px
 
@@ -213,6 +215,10 @@ export default {
   @extend .w-100
   height: 150px
 
-.main-simple-self-buttons
-  margin-top: 1em
+.main-self-icons
+  @extend .text-align-center
+  max-width: 80px
+
+.artist-info
+  @extend .flex-full
 </style>

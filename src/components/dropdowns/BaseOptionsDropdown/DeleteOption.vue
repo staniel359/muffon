@@ -17,7 +17,7 @@ export default {
   computed: {
     deleteText () {
       return this.$t(
-        'buttons.delete'
+        'actions.delete'
       )
     }
   },

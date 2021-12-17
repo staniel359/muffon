@@ -18,7 +18,7 @@
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseImage from '@/images/BaseImage.vue'
-import fetchTagData from '#/actions/api/tag/fetchData'
+import getTag from '#/actions/api/tag/get'
 import { collection as formatCollection } from '#/formatters'
 
 export default {
@@ -41,7 +41,7 @@ export default {
     }
   },
   computed: {
-    tagDataArgs () {
+    tagArgs () {
       return {
         tagName: this.tagName,
         scope: 'images'
@@ -60,10 +60,10 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchTagData,
+    getTag,
     fetchData () {
-      this.fetchTagData(
-        this.tagDataArgs
+      this.getTag(
+        this.tagArgs
       )
     }
   }

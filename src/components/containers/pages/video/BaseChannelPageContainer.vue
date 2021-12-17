@@ -23,7 +23,7 @@ import navigationMixin from '*/mixins/navigationMixin'
 import formatVideoChannelPageNavigation
   from '#/formatters/navigation/videoChannel'
 import formatVideoChannelVideosPageTab from '#/formatters/tabs/videoChannel'
-import fetchVideoChannelData from '#/actions/api/videoChannel/fetchData'
+import getVideoChannel from '#/actions/api/video_channel/get'
 
 export default {
   name: 'BaseChannelPageContainer',
@@ -67,7 +67,7 @@ export default {
     channelTitleFetched () {
       return this.channelData?.title
     },
-    channelDataArgs () {
+    videoChannelArgs () {
       return {
         channelId: this.channelId,
         scope: 'videos',
@@ -85,14 +85,15 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchVideoChannelData,
+    getVideoChannel,
     fetchData (page) {
-      page && (this.channelData = {})
+      if (page) {
+        this.channelData.videos = []
+      }
 
-      this.fetchVideoChannelData({
-        ...this.channelDataArgs,
-        page,
-        limit: this.responsePageLimit
+      this.getVideoChannel({
+        ...this.videoChannelArgs,
+        page
       })
     }
   }

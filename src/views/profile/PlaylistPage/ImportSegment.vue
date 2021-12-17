@@ -8,7 +8,6 @@
       />
       <LibraryImportBlock
         :playlistId="playlistId"
-        :profileId="profileId"
       />
     </BaseAccordionContainer>
   </BaseSegmentContainer>
@@ -30,13 +29,12 @@ export default {
     LibraryImportBlock
   },
   props: {
-    playlistId: String,
-    profileId: String
+    playlistId: String
   },
   computed: {
     addTracksText () {
       return this.$t(
-        'shared.playlist.addTracks'
+        'actions.add.tracks'
       )
     }
   }

@@ -24,7 +24,7 @@
 <script>
 import { mapState } from 'vuex'
 import HeaderSegment from './BaseTagSegmentContainer/HeaderSegment.vue'
-import fetchTagData from '#/actions/api/tag/fetchData'
+import getTag from '#/actions/api/tag/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -57,7 +57,7 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    tagDataArgs () {
+    tagArgs () {
       return {
         tagName: this.tagName,
         scope: this.scope,
@@ -72,10 +72,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchTagData,
+    getTag,
     fetchData (page) {
-      this.fetchTagData({
-        ...this.tagDataArgs,
+      this.getTag({
+        ...this.tagArgs,
         page
       })
     },

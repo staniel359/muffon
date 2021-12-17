@@ -61,7 +61,7 @@ export default {
     }),
     percentText () {
       return this.$t(
-        'layout.settings.options.services.lastfm.scrobblePercent'
+        'settings.options.services.lastfm.scrobblePercent'
       )
     },
     scrobblePercentValuesCollection () {

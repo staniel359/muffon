@@ -1,13 +1,20 @@
 <template>
-  <BaseLinkContainer
-    :link="link"
+  <BaseArtistLinkContainer
+    :artistData="artistData"
+    :profileId="profileId"
+    :isLinkToLibrary="isLinkToLibrary"
+    :isTracksActive="isTracksActive"
+    :isAlbumsActive="isAlbumsActive"
     @click="handleLinkClick"
   >
-    <BaseSimpleCardContainer>
+    <BaseSimpleCardContainer
+      :isWithImage="false"
+    >
       <div class="main-simple-card-image-container">
         <BaseArtistImage
           class="circular bordered"
-          :image="image"
+          size="medium"
+          :imageData="imageData"
           :artistName="artistName"
           @loadEnd="handleImageLoadEnd"
         />
@@ -25,13 +32,13 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        isWhite
+        :isTransparent="false"
         @linkClick="handleLinkClick"
       />
 
       <div class="content">
         <BaseHeader
-          :class="{ link: isHeaderLink }"
+          :class="{ link: isHeaderActive }"
           tag="h4"
           :text="artistName"
         />
@@ -45,12 +52,12 @@
         />
 
         <LibraryCountersSection
-          v-if="isWithTracksCount || isWithAlbumsCount"
+          v-if="isWithLibrary"
           :artistData="artistData"
-          :isWithTracksCount="isWithTracksCount"
-          :isWithAlbumsCount="isWithAlbumsCount"
-          @tracksLinkActiveChange="handleTracksLinkActiveChange"
-          @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
+          :isTracksActive="isTracksActive"
+          :isAlbumsActive="isAlbumsActive"
+          @tracksActiveChange="handleTracksActiveChange"
+          @albumsActiveChange="handleAlbumsActiveChange"
         />
 
         <BaseSelfIcons
@@ -62,11 +69,12 @@
         />
       </div>
     </BaseSimpleCardContainer>
-  </BaseLinkContainer>
+  </BaseArtistLinkContainer>
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseArtistLinkContainer
+  from '@/containers/artist/BaseArtistLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
@@ -75,17 +83,11 @@ import BaseArtistListenersCount
   from '@/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import {
-  main as formatProfileLibraryArtistMainLink,
-  tracks as formatProfileLibraryArtistTracksLink,
-  albums as formatProfileLibraryArtistAlbumsLink
-} from '#/formatters/links/profile/library/artist'
 
 export default {
   name: 'ArtistItem',
   components: {
-    BaseLinkContainer,
+    BaseArtistLinkContainer,
     BaseSimpleCardContainer,
     BaseArtistImage,
     BaseOptionsDropdown,
@@ -115,8 +117,6 @@ export default {
       default: true
     },
     isWithListenersCount: Boolean,
-    isWithTracksCount: Boolean,
-    isWithAlbumsCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -131,8 +131,8 @@ export default {
   ],
   data () {
     return {
-      isTracksLinkActive: false,
-      isAlbumsLinkActive: false,
+      isTracksActive: false,
+      isAlbumsActive: false,
       libraryId: null,
       favoriteId: null,
       bookmarkId: null,
@@ -140,62 +140,28 @@ export default {
     }
   },
   computed: {
-    link () {
-      if (this.isLinkToLibrary) {
-        if (this.isTracksLinkActive) {
-          return this.profileLibraryArtistTracksLink
-        } else if (this.isAlbumsLinkActive) {
-          return this.profileLibraryArtistAlbumsLink
-        } else {
-          return this.profileLibraryArtistMainLink
-        }
-      } else {
-        return this.artistMainLink
-      }
-    },
-    profileLibraryArtistTracksLink () {
-      return formatProfileLibraryArtistTracksLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    artistId () {
-      return this.artistData.id.toString()
-    },
-    profileLibraryArtistAlbumsLink () {
-      return formatProfileLibraryArtistAlbumsLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
-    },
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
     },
     listenersCount () {
       return this.artistData.listeners_count
     },
+    isHeaderActive () {
+      return !(
+        this.isTracksActive ||
+          this.isAlbumsActive
+      )
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
     uuid () {
       return this.artistData.uuid
-    },
-    isHeaderLink () {
-      return (
-        !this.isTracksLinkActive &&
-          !this.isAlbumsLinkActive
-      )
     }
   },
   mounted () {
@@ -213,20 +179,16 @@ export default {
       this.$emit('linkClick')
     },
     handleImageLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).image = value
+      this.paginationItem.image = value
     },
     handleListenersCountLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).listeners_count = value
+      this.paginationItem.listeners_count = value
     },
-    handleTracksLinkActiveChange (value) {
-      this.isTracksLinkActive = value
+    handleTracksActiveChange (value) {
+      this.isTracksActive = value
     },
-    handleAlbumsLinkActiveChange (value) {
-      this.isAlbumsLinkActive = value
+    handleAlbumsActiveChange (value) {
+      this.isAlbumsActive = value
     },
     setLibraryId (value) {
       this.libraryId = value

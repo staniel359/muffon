@@ -31,7 +31,7 @@ export default {
     ]),
     darkModeText () {
       return this.$t(
-        'layout.settings.options.app.view.darkMode'
+        'settings.options.app.view.darkMode'
       )
     }
   },

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import fetchArtistData from '#/actions/api/artist/fetchData'
+import getArtist from '#/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistContainer',
@@ -33,9 +33,9 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    fetchArtistData,
+    getArtist,
     fetchData () {
-      this.fetchArtistData({
+      this.getArtist({
         artistName: this.artistName
       })
     }

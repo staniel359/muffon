@@ -1,8 +1,9 @@
 <template>
   <div class="main-profile-page-info">
-    <BaseProfileImage
-      class="main-profile-page-image"
-      :image="imageData.medium"
+    <BaseImage
+      class="main-profile-page-image circular bordered"
+      model="profile"
+      :image="imageData?.medium"
     />
 
     <BaseHeader
@@ -19,14 +20,14 @@
 </template>
 
 <script>
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseLabel from '@/BaseLabel.vue'
 
 export default {
   name: 'MainInfoSection',
   components: {
-    BaseProfileImage,
+    BaseImage,
     BaseHeader,
     BaseLabel
   },
@@ -51,7 +52,7 @@ export default {
     },
     roleText () {
       return this.$t(
-        `shared.profile.roles.${this.role}`
+        `roles.${this.role}`
       )
     }
   }

@@ -22,7 +22,7 @@ export default {
   computed: {
     playerText () {
       return this.$t(
-        'layout.settings.sections.app.player'
+        'settings.sections.app.player'
       )
     }
   }

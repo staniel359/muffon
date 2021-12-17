@@ -33,7 +33,7 @@ export default {
       return [
         {
           text: this.$t(
-            'layout.navigation.artists'
+            'navigation.artists'
           ),
           value: this.libraryData.artists_count,
           link: formatProfileLibraryArtistsLink({
@@ -42,7 +42,7 @@ export default {
         },
         {
           text: this.$t(
-            'layout.navigation.albums'
+            'navigation.albums'
           ),
           value: this.libraryData.albums_count,
           link: formatProfileLibraryAlbumsLink({
@@ -51,7 +51,7 @@ export default {
         },
         {
           text: this.$t(
-            'layout.navigation.tracks'
+            'navigation.tracks'
           ),
           value: this.libraryData.tracks_count,
           link: formatProfileLibraryTracksLink({

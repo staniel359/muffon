@@ -8,44 +8,51 @@ const {
   Tray
 } = require('electron')
 const path = require('path')
-const ElectronStore = require('electron-store')
+const ElectronStore = require(
+  'electron-store'
+)
 
 const appName = 'muffon'
+
 const width = 800
 const height = 600
+
 const isDevelopment =
   process.env.NODE_ENV === 'development'
 
-const osIcons = {
-  win32: 'icon.ico',
-  darwin: 'icon.icns',
-  linux: 'icon.png'
-}
-const iconName = osIcons[
-  process.platform
-]
+const getIconPath = () => {
+  const publicPath =
+    isDevelopment ? 'public' : ''
 
-const iconPath = path.join(
-  __dirname,
-  (isDevelopment ? 'public' : ''),
-  iconName
-)
+  const osIcons = {
+    win32: 'icon.ico',
+    darwin: 'icon.icns',
+    linux: 'icon.png'
+  }
+
+  const iconName = osIcons[
+    process.platform
+  ]
+
+  return path.join(
+    __dirname,
+    publicPath,
+    iconName
+  )
+}
+
+const iconPath = getIconPath()
 
 const getBaseUrl = () => {
-  const developmentBaseUrl =
-    'http://localhost:3000/'
-
-  const productionPath = path.join(
-    __dirname,
-    'index.html'
-  )
-  const productionBaseUrl =
-    `file://${productionPath}`
-
   if (isDevelopment) {
-    return developmentBaseUrl
+    return 'http://localhost:3000/'
   } else {
-    return productionBaseUrl
+    const productionPath = path.join(
+      __dirname,
+      'index.html'
+    )
+
+    return `file://${productionPath}`
   }
 }
 
@@ -85,23 +92,21 @@ const local = new ElectronStore({
   accessPropertiesByDotNotation: false
 })
 
-let lang = local.get(
-  'profile.language'
-) || 'en'
-let mainWindow = null
-let tray = null
+let language = local.get(
+  'profile.language', 'en'
+)
+
+let mainWindow
+let tray
+
 let tabs = []
 
-const show = () => {
-  mainWindow.show()
+const setup = () => {
+  ElectronStore.initRenderer()
 
-  setTrayMenu()
-}
-
-const hide = () => {
-  mainWindow.hide()
-
-  setTrayMenu()
+  createWindow()
+  createTrayOrDock()
+  createHeadersHandler()
 }
 
 const createWindow = () => {
@@ -129,6 +134,11 @@ const createWindow = () => {
     show()
   }
 
+  mainWindow.on(
+    'ready-to-show',
+    handleReadyToShow
+  )
+
   const handleClose = event => {
     event.preventDefault()
 
@@ -136,14 +146,68 @@ const createWindow = () => {
   }
 
   mainWindow.on(
-    'ready-to-show',
-    handleReadyToShow
-  )
-
-  mainWindow.on(
     'close',
     handleClose
   )
+}
+
+const hide = () => {
+  mainWindow.hide()
+
+  setTrayMenu()
+}
+
+const createTrayOrDock = () => {
+  tray = new Tray(iconPath)
+
+  setTrayMenu()
+
+  tray.setToolTip(appName)
+
+  const handleClick = () => {
+    mainWindow.show()
+  }
+
+  tray.on(
+    'click',
+    handleClick
+  )
+}
+
+const setTrayMenu = () => {
+  const showHideText =
+    mainWindow.isVisible() ? 'hide' : 'show'
+
+  const showHideAction =
+    mainWindow.isVisible() ? hide : show
+
+  const menu = Menu.buildFromTemplate([
+    {
+      type: 'normal',
+      label: i18n[language][showHideText],
+      click: showHideAction
+    },
+    {
+      type: 'normal',
+      label: i18n[language].quit,
+      click: quit
+    }
+  ])
+
+  tray.setContextMenu(menu)
+
+  const isMac =
+    process.platform === 'darwin'
+
+  if (isMac) {
+    app.dock.setMenu(menu)
+  }
+}
+
+const show = () => {
+  mainWindow.show()
+
+  setTrayMenu()
 }
 
 const quit = () => {
@@ -159,49 +223,6 @@ const quit = () => {
   }
 
   app.exit()
-}
-
-const setTrayMenu = () => {
-  const menu = Menu.buildFromTemplate([
-    {
-      type: 'normal',
-      label: i18n[lang][
-        mainWindow.isVisible() ? 'hide' : 'show'
-      ],
-      click: mainWindow.isVisible() ? hide : show
-    },
-    {
-      type: 'normal',
-      label: i18n[lang].quit,
-      click: quit
-    }
-  ])
-
-  tray.setContextMenu(menu)
-
-  const isMac =
-    process.platform === 'darwin'
-
-  if (isMac) {
-    app.dock.setMenu(menu)
-  }
-}
-
-const createTrayOrDock = () => {
-  tray = new Tray(iconPath)
-
-  setTrayMenu()
-
-  tray.setToolTip(appName)
-
-  const handleTrayIconClick = () => {
-    mainWindow.show()
-  }
-
-  tray.on(
-    'click',
-    handleTrayIconClick
-  )
 }
 
 const createHeadersHandler = () => {
@@ -223,21 +244,24 @@ const createHeadersHandler = () => {
     })
 }
 
-const setup = () => {
-  ElectronStore.initRenderer()
+app.whenReady().then(
+  setup
+)
 
-  createWindow()
-  createTrayOrDock()
-  createHeadersHandler()
-}
+app.setAppUserModelId(
+  appName
+)
 
-app.whenReady().then(setup)
-
-app.setAppUserModelId(appName)
+// App event handlers
 
 const handleAllWindowsClose = event => {
   event.preventDefault()
 }
+
+app.on(
+  'window-all-closed',
+  handleAllWindowsClose
+)
 
 const handleActivate = () => {
   const isAnyWindowsOpen =
@@ -249,14 +273,13 @@ const handleActivate = () => {
 }
 
 app.on(
-  'window-all-closed',
-  handleAllWindowsClose
-)
-
-app.on(
   'activate',
   handleActivate
 )
+
+// IPC event handlers
+
+// Set title
 
 const handleSetTitle = (_, value) => {
   mainWindow.setTitle(
@@ -264,13 +287,23 @@ const handleSetTitle = (_, value) => {
   )
 }
 
+ipcMain.on(
+  'set-title',
+  handleSetTitle
+)
+
+// Set tray tooltip
+
 const handleSetTrayTooltip = (_, value) => {
   tray.setToolTip(value)
 }
 
-const prependTabToTabs = tab => {
-  tabs = [tab, ...tabs]
-}
+ipcMain.on(
+  'set-tray-tooltip',
+  handleSetTrayTooltip
+)
+
+// Add tab
 
 const handleAddTab = (_, value) => {
   const { uuid, path } = value
@@ -342,8 +375,37 @@ const handleAddTab = (_, value) => {
   )
 }
 
-const getTabs = () => {
-  return mainWindow.getBrowserViews()
+const prependTabToTabs = tab => {
+  tabs = [tab, ...tabs]
+}
+
+ipcMain.on(
+  'add-tab',
+  handleAddTab
+)
+
+// Set top tab
+
+const handleSetTopTab = (_, tabId) => {
+  const tab = findTab(
+    tabId
+  )
+
+  mainWindow.setTopBrowserView(
+    tab
+  )
+
+  removeTabFromTabs(
+    tabId
+  )
+  prependTabToTabs(
+    tab
+  )
+
+  mainWindow.webContents.send(
+    'handle-set-top-tab',
+    tabId
+  )
 }
 
 const findTab = tabId => {
@@ -356,6 +418,10 @@ const findTab = tabId => {
   )
 }
 
+const getTabs = () => {
+  return mainWindow.getBrowserViews()
+}
+
 const removeTabFromTabs = tabId => {
   const isMatchedTab = tabData => {
     return tabData.uuid !== tabId
@@ -366,31 +432,12 @@ const removeTabFromTabs = tabId => {
   )
 }
 
-const handleSetTopTab = (_, tabId) => {
-  const tab = findTab(tabId)
+ipcMain.on(
+  'set-top-tab',
+  handleSetTopTab
+)
 
-  mainWindow.setTopBrowserView(tab)
-
-  removeTabFromTabs(tabId)
-  prependTabToTabs(tab)
-
-  mainWindow.webContents.send(
-    'handle-set-top-tab',
-    tabId
-  )
-}
-
-const removeTab = tab => {
-  if (tab) {
-    mainWindow.removeBrowserView(tab)
-
-    if (isDevelopment) {
-      tab.webContents.closeDevTools()
-    }
-
-    tab.webContents.destroy()
-  }
-}
+// Remove tab
 
 const handleRemoveTab = (_, tabId) => {
   removeTab(
@@ -412,13 +459,37 @@ const handleRemoveTab = (_, tabId) => {
   }
 }
 
-const handleClearTabs = () => {
-  getTabs().forEach(removeTab)
+const removeTab = tab => {
+  if (tab) {
+    mainWindow.removeBrowserView(tab)
+
+    if (isDevelopment) {
+      tab.webContents.closeDevTools()
+    }
+
+    tab.webContents.destroy()
+  }
 }
 
-const getViews = () => {
-  return [mainWindow, ...getTabs()]
+ipcMain.on(
+  'remove-tab',
+  handleRemoveTab
+)
+
+// Clear tabs
+
+const handleClearTabs = () => {
+  getTabs().forEach(
+    removeTab
+  )
 }
+
+ipcMain.on(
+  'clear-tabs',
+  handleClearTabs
+)
+
+// Update store
 
 const handleUpdateStore = (_, data) => {
   const updateViewStore = view => {
@@ -428,10 +499,22 @@ const handleUpdateStore = (_, data) => {
     )
   }
 
-  getViews().forEach(
+  const views = [
+    mainWindow,
+    ...getTabs()
+  ]
+
+  views.forEach(
     updateViewStore
   )
 }
+
+ipcMain.handle(
+  'update-store',
+  handleUpdateStore
+)
+
+// Update tab
 
 const handleUpdateTab = (_, { tabId, data }) => {
   mainWindow.webContents.send(
@@ -440,60 +523,32 @@ const handleUpdateTab = (_, { tabId, data }) => {
   )
 }
 
-const handleClearCache = () => {
-  return mainWindow.webContents.session.clearCache()
-}
-
-const handleSetLanguage = (_, value) => {
-  lang = value
-
-  setTrayMenu()
-}
-
-ipcMain.on(
-  'set-title',
-  handleSetTitle
-)
-
-ipcMain.on(
-  'set-tray-tooltip',
-  handleSetTrayTooltip
-)
-
-ipcMain.on(
-  'add-tab',
-  handleAddTab
-)
-
-ipcMain.on(
-  'set-top-tab',
-  handleSetTopTab
-)
-
-ipcMain.on(
-  'remove-tab',
-  handleRemoveTab
-)
-
-ipcMain.on(
-  'clear-tabs',
-  handleClearTabs
-)
-
-ipcMain.handle(
-  'update-store',
-  handleUpdateStore
-)
-
 ipcMain.on(
   'update-tab',
   handleUpdateTab
 )
 
+// Clear cache
+
+const handleClearCache = () => {
+  return mainWindow
+    .webContents
+    .session
+    .clearCache()
+}
+
 ipcMain.handle(
   'clear-cache',
   handleClearCache
 )
+
+// Set language
+
+const handleSetLanguage = (_, value) => {
+  language = value
+
+  setTrayMenu()
+}
 
 ipcMain.on(
   'set-language',

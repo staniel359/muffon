@@ -16,7 +16,7 @@
 <script>
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import fetchTrackData from '#/actions/api/track/fetchData'
+import getTrack from '#/actions/api/track/get'
 
 export default {
   name: 'BaseTrackLyricsContainer',
@@ -37,7 +37,7 @@ export default {
     }
   },
   computed: {
-    trackDataArgs () {
+    trackArgs () {
       return {
         sourceId: 'genius',
         trackId: this.trackId
@@ -63,10 +63,10 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    fetchTrackData,
+    getTrack,
     fetchData () {
-      this.fetchTrackData(
-        this.trackDataArgs
+      this.getTrack(
+        this.trackArgs
       )
     }
   }

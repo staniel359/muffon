@@ -1,53 +1,23 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <template #default>
-      <div class="header">
-        {{ headerText }}
-      </div>
-
-      <div class="content">
-        <TextSection
-          :modelName="modelName"
-        />
-
-        <BaseErrorMessage
-          v-if="error"
-          class="error-message"
-          :error="error"
-        />
-      </div>
-
-      <div class="actions">
-        <BaseButton
-          class="cancel"
-          :text="cancelText"
-        />
-
-        <BaseButton
-          class="red"
-          :text="deleteText"
-          :class="{ loading: isLoading }"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
-    </template>
-  </BaseModalContainer>
+  <BaseDeleteModal
+    ref="modal"
+    modelType="bookmark"
+    :model="model"
+    :modelName="modelName"
+    :isLoading="isLoading"
+    :error="error"
+    @deleteButtonClick="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import TextSection from './BaseBookmarkDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import deleteBookmarkData from '#/actions/api/bookmarks/model/deleteData'
+import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
+import deleteBookmark from '#/actions/api/bookmarks/model/delete'
 
 export default {
   name: 'BaseBookmarkDeleteModal',
   components: {
-    BaseModalContainer,
-    TextSection,
-    BaseErrorMessage,
-    BaseButton
+    BaseDeleteModal
   },
   props: {
     model: {
@@ -69,21 +39,6 @@ export default {
     }
   },
   computed: {
-    headerText () {
-      return this.$t(
-        'shared.bookmark.delete.header'
-      )
-    },
-    cancelText () {
-      return this.$t(
-        'buttons.cancel'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'buttons.delete'
-      )
-    },
     modelName () {
       switch (this.model) {
         case 'artist':
@@ -95,23 +50,30 @@ export default {
           ].join(' - ')
       }
     },
+    deleteArgs () {
+      return {
+        model: this.model,
+        bookmarkId: this.bookmarkId
+      }
+    },
     bookmarkId () {
       return this.modelData.id
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteBookmarkData({
-        model: this.model,
-        bookmarkId: this.bookmarkId
-      }).then(this.handleSuccess)
+      this.deleteBookmark(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
-
       this.$emit('deleted')
+
+      this.$refs.modal.hide()
     },
-    deleteBookmarkData,
+    deleteBookmark,
     show () {
       this.$refs.modal.show()
     }
@@ -119,7 +81,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.error-message
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

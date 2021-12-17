@@ -5,7 +5,7 @@ import {
 
 export default function ({ channelTitle, channelId }) {
   const title = i18n.global.t(
-    'layout.navigation.model.videos',
+    'navigation.model.videos',
     { modelName: channelTitle }
   )
 

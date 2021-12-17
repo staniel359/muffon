@@ -5,7 +5,7 @@
     @click="handleClick"
   />
 
-  <BasePostAddTracksModal
+  <BaseAddTracksModal
     ref="modal"
     :tracks="tracks"
     @change="handleTracksChange"
@@ -14,13 +14,13 @@
 
 <script>
 import BaseButton from '@/buttons/BaseButton.vue'
-import BasePostAddTracksModal from '@/modals/post/BasePostAddTracksModal.vue'
+import BaseAddTracksModal from '@/modals/BaseAddTracksModal.vue'
 
 export default {
   name: 'TracksButton',
   components: {
     BaseButton,
-    BasePostAddTracksModal
+    BaseAddTracksModal
   },
   props: {
     tracks: Array

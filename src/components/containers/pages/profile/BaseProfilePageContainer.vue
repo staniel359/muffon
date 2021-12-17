@@ -27,7 +27,7 @@ import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
 import formatProfileFavoritesPageTab from '#/formatters/tabs/profile/favorites'
 import formatProfilePlaylistsPageTab from '#/formatters/tabs/profile/playlists'
 import formatProfilePostsPageTab from '#/formatters/tabs/profile/posts'
-import fetchProfileData from '#/actions/api/profile/fetchData'
+import getProfile from '#/actions/api/profile/get'
 
 export default {
   name: 'BaseProfilePageContainer',
@@ -39,7 +39,8 @@ export default {
   ],
   provide () {
     return {
-      setIsFollowing: this.setIsFollowing
+      setIsFollowing: this.setIsFollowing,
+      setFollowersCount: this.setFollowersCount
     }
   },
   props: {
@@ -74,7 +75,7 @@ export default {
     profileNicknameFetched () {
       return this.profileData?.nickname
     },
-    profileDataArgs () {
+    profileArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -119,15 +120,21 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchProfileData,
+    getProfile,
     fetchData (page) {
-      this.fetchProfileData({
-        ...this.profileDataArgs,
+      this.getProfile({
+        ...this.profileArgs,
         page
       })
     },
     setIsFollowing (value) {
-      this.profileData.other_profile.follower_of_profile = value
+      this.profileData
+        .other_profile
+        .follower_of_profile = value
+    },
+    setFollowersCount (value) {
+      this.profileData
+        .follower_profiles_count = value
     }
   }
 }

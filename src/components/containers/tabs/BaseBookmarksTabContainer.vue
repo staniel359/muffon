@@ -38,7 +38,7 @@ import BasePaginatedListContainer
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import fetchBookmarksData from '#/actions/api/bookmarks/fetchData'
+import getBookmarks from '#/actions/api/bookmarks/get'
 
 export default {
   name: 'BaseBookmarksTabContainer',
@@ -70,7 +70,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    bookmarksDataArgs () {
+    bookmarksArgs () {
       return {
         scope: this.tabData.scope,
         limit: this.tabData.responsePageLimit
@@ -92,12 +92,14 @@ export default {
   },
   methods: {
     handleIsActive (value) {
-      value && (
+      if (value) {
         this.isActivated = true
-      )
+      }
     },
     handleIsActivated (value) {
-      value && this.fetchData()
+      if (value) {
+        this.fetchData()
+      }
     },
     handleFocus () {
       this.$emit('focus')
@@ -105,10 +107,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchBookmarksData,
+    getBookmarks,
     fetchData (page) {
-      this.fetchBookmarksData({
-        ...this.bookmarksDataArgs,
+      this.getBookmarks({
+        ...this.bookmarksArgs,
         page
       })
     }

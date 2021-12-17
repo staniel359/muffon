@@ -1,9 +1,13 @@
 <template>
-  <BaseLinkContainer
+  <BaseArtistLinkContainer
     class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
-    :link="link"
-    @click="handleLinkClick"
+    :artistData="artistData"
+    :profileId="profileId"
+    :isLinkToLibrary="isLinkToLibrary"
+    :isTracksActive="isTracksActive"
+    :isAlbumsActive="isAlbumsActive"
+    @linkClick="handleLinkClick"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -12,9 +16,9 @@
     <template v-else>
       <BaseArtistImage
         class="circular bordered"
-        size="extrasmall"
+        size="small"
         :class="{ small: isImageSmall }"
-        :image="image"
+        :imageData="imageData"
         :artistName="artistName"
         @loadEnd="handleImageLoadEnd"
       />
@@ -35,14 +39,14 @@
         />
 
         <LibraryCountersSection
-          :isWithTracksCount="isWithTracksCount"
-          :tracksCount="tracksCount"
+          v-if="isWithLibrary"
+          :artistData="artistData"
           :topTracksCount="topTracksCount"
-          :isWithAlbumsCount="isWithAlbumsCount"
-          :albumsCount="albumsCount"
           :topAlbumsCount="topAlbumsCount"
-          @tracksLinkActiveChange="handleTracksLinkActiveChange"
-          @albumsLinkActiveChange="handleAlbumsLinkActiveChange"
+          :isTracksActive="isTracksActive"
+          :isAlbumsActive="isAlbumsActive"
+          @tracksActiveChange="handleTracksActiveChange"
+          @albumsActiveChange="handleAlbumsActiveChange"
         />
       </div>
 
@@ -85,11 +89,12 @@
         @deleted="handleDeleted"
       />
     </template>
-  </BaseLinkContainer>
+  </BaseArtistLinkContainer>
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseArtistLinkContainer
+  from '@/containers/artist/BaseArtistLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
@@ -102,17 +107,11 @@ import BaseBookmarkDeleteModal
   from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import {
-  main as formatProfileLibraryArtistMainLink,
-  tracks as formatProfileLibraryArtistTracksLink,
-  albums as formatProfileLibraryArtistAlbumsLink
-} from '#/formatters/links/profile/library/artist'
 
 export default {
   name: 'ArtistItem',
   components: {
-    BaseLinkContainer,
+    BaseArtistLinkContainer,
     BaseDeletedBlock,
     BaseArtistImage,
     BaseHeader,
@@ -144,9 +143,7 @@ export default {
       default: true
     },
     isWithListenersCount: Boolean,
-    isWithTracksCount: Boolean,
     topTracksCount: Number,
-    isWithAlbumsCount: Boolean,
     topAlbumsCount: Number,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
@@ -171,76 +168,36 @@ export default {
       favoriteId: null,
       bookmarkId: null,
       listenedId: null,
-      isAlbumsLinkActive: false,
-      isTracksLinkActive: false
+      isTracksActive: false,
+      isAlbumsActive: false
     }
   },
   computed: {
-    link () {
-      if (this.isLinkToLibrary) {
-        if (this.isTracksLinkActive) {
-          return this.profileLibraryArtistTracksLink
-        } else if (this.isAlbumsLinkActive) {
-          return this.profileLibraryArtistAlbumsLink
-        } else {
-          return this.profileLibraryArtistMainLink
-        }
-      } else {
-        return this.artistMainLink
-      }
-    },
-    profileLibraryArtistTracksLink () {
-      return formatProfileLibraryArtistTracksLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    artistId () {
-      return this.artistData.id.toString()
-    },
-    profileLibraryArtistAlbumsLink () {
-      return formatProfileLibraryArtistAlbumsLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
-    },
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
     },
     listenersCount () {
       return this.artistData.listeners_count
     },
-    uuid () {
-      return this.artistData.uuid
-    },
-    tracksCount () {
-      return this.artistData.tracks_count
-    },
-    albumsCount () {
-      return this.artistData.albums_count
-    },
     isHeaderLink () {
       return (
-        !this.isTracksLinkActive &&
-          !this.isAlbumsLinkActive
+        !this.isTracksActive &&
+          !this.isAlbumsActive
       )
     },
     isDeleted () {
       return !!this.artistData.isDeleted
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.artistData.uuid
     }
   },
   mounted () {
@@ -258,20 +215,16 @@ export default {
       this.$emit('linkClick')
     },
     handleImageLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).image = value
+      this.paginationItem.image = value
     },
     handleListenersCountLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).listeners_count = value
+      this.paginationItem.listeners_count = value
     },
-    handleTracksLinkActiveChange (value) {
-      this.isTracksLinkActive = value
+    handleTracksActiveChange (value) {
+      this.isTracksActive = value
     },
-    handleAlbumsLinkActiveChange (value) {
-      this.isAlbumsLinkActive = value
+    handleAlbumsActiveChange (value) {
+      this.isAlbumsActive = value
     },
     handleDeleteOptionClick () {
       if (this.isClearable) {
@@ -284,9 +237,7 @@ export default {
       }
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     setLibraryId (value) {
       this.libraryId = value

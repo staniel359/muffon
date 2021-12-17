@@ -63,7 +63,7 @@ export default {
   computed: {
     findText () {
       return this.$t(
-        'pages.track.videos.find'
+        'actions.find.videos'
       )
     }
   },

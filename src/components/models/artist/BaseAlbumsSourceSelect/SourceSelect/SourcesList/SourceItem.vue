@@ -1,5 +1,5 @@
 <template>
-  <BaseSourceItemContainer
+  <BaseArtistSourceItemContainer
     :sourceId="sourceId"
     :query="query"
   >
@@ -11,18 +11,18 @@
         :artists="slotProps.artists"
       />
     </template>
-  </BaseSourceItemContainer>
+  </BaseArtistSourceItemContainer>
 </template>
 
 <script>
-import BaseSourceItemContainer
-  from '@/containers/artist/BaseSourceItemContainer.vue'
+import BaseArtistSourceItemContainer
+  from '@/containers/artist/BaseArtistSourceItemContainer.vue'
 import SourceItemContent from './SourceItem/SourceItemContent.vue'
 
 export default {
   name: 'SourceItem',
   components: {
-    BaseSourceItemContainer,
+    BaseArtistSourceItemContainer,
     SourceItemContent
   },
   props: {
