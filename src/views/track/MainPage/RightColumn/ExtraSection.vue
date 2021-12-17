@@ -1,6 +1,9 @@
 <template>
   <div class="main-basic-segments-container">
-    <InfoSegment :trackData="trackData" />
+    <InfoSegment
+      :trackData="trackData"
+      :requestTrackData="requestTrackData"
+    />
 
     <BaseDivider />
 
@@ -36,7 +39,8 @@ export default {
     SimilarSegment
   },
   props: {
-    trackData: Object
+    trackData: Object,
+    requestTrackData: Object
   },
   computed: {
     artistName () {

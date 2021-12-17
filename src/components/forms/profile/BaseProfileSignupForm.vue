@@ -14,7 +14,11 @@
 
     <BaseProfileRememberField />
 
-    <SubmitButton />
+    <div class="submit-button-container">
+      <BaseProfileSubmitButton
+        actionKey="signup"
+      />
+    </div>
 
     <BaseDivider />
 
@@ -32,7 +36,8 @@ import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
 import ExtraSection from './BaseProfileSignupForm/ExtraSection.vue'
 import BaseProfileRememberField
   from '@/fields/profile/BaseProfileRememberField.vue'
-import SubmitButton from './BaseProfileSignupForm/SubmitButton.vue'
+import BaseProfileSubmitButton
+  from '@/forms/profile/BaseProfileSubmitButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import LoginSection from './BaseProfileSignupForm/LoginSection.vue'
 
@@ -44,7 +49,7 @@ export default {
     BaseAccordionContainer,
     ExtraSection,
     BaseProfileRememberField,
-    SubmitButton,
+    BaseProfileSubmitButton,
     BaseDivider,
     LoginSection
   },

@@ -79,5 +79,6 @@ export default {
 
 <style lang="sass" scoped>
 .settings-container
-  @extend .d-flex, .flex-column
+  &.active
+    @extend .d-flex, .flex-column
 </style>

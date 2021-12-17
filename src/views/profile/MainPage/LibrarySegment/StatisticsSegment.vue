@@ -18,7 +18,7 @@ import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLibraryStatistics
   from '@/models/profile/library/BaseProfileLibraryStatistics.vue'
-import fetchLibraryData from '#/actions/api/profile/library/fetchData'
+import getLibrary from '#/actions/api/library/get'
 
 export default {
   name: 'StatisticsSegment',
@@ -51,9 +51,9 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    fetchLibraryData,
+    getLibrary,
     fetchData () {
-      this.fetchLibraryData({
+      this.getLibrary({
         profileId: this.profileId
       })
     }

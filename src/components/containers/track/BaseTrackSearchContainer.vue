@@ -16,7 +16,7 @@
 
 <script>
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import fetchSearchData from '#/actions/api/search/fetchData'
+import getSearch from '#/actions/api/search/get'
 
 export default {
   name: 'BaseTrackSearchContainer',
@@ -45,7 +45,7 @@ export default {
     }
   },
   computed: {
-    searchDataArgs () {
+    searchArgs () {
       return {
         sourceId: this.sourceId,
         scope: this.scope,
@@ -63,10 +63,10 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    fetchSearchData,
+    getSearch,
     fetchData () {
-      this.fetchSearchData(
-        this.searchDataArgs
+      this.getSearch(
+        this.searchArgs
       )
     }
   }

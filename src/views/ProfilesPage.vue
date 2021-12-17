@@ -11,7 +11,6 @@
           'main-paginated-page-segment-container'
         ]"
         :isLoading="pageSlotProps.isLoading"
-        :error="pageSlotProps.error"
         @refresh="pageSlotProps.handleRefresh"
       >
         <BasePaginatedListContainer

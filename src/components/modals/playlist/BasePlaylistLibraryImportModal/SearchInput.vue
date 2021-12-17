@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import axios from 'axios'
 import { setSearch } from '#/actions/plugins/semantic'
 
@@ -28,7 +29,7 @@ export default {
         return []
       }
     },
-    profileId: {
+    playlistId: {
       type: String,
       required: true
     }
@@ -37,6 +38,9 @@ export default {
     'select'
   ],
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
     searchText () {
       return this.$t(
         'inputs.search'
@@ -71,7 +75,11 @@ export default {
       return `${axios.defaults.baseURL}` +
         `profiles/${this.profileId}` +
         '/library/search/tracks' +
-        '?query={query}&limit=5'
+        '?query={query}&limit=5' +
+        `&playlist_id=${this.playlistId}`
+    },
+    profileId () {
+      return this.profileInfo.id
     }
   },
   mounted () {
@@ -83,17 +91,30 @@ export default {
   methods: {
     handleTrackSelect (track) {
       const isTrackPresent = trackData => {
+        const isSameTitle = (
+          track.title ===
+            trackData.title
+        )
+        const isSameArtistName = (
+          track.artist.name ===
+            trackData.artist.name
+        )
+
         return (
-          track.title === trackData.title &&
-            track.artist.name === trackData.artist.name
+          isSameTitle &&
+            isSameArtistName
         )
       }
-      const isPresent = this.tracks.find(
-        isTrackPresent
-      )
-      const isInLibrary = !!track.library_id
+
+      const isPresent =
+        this.tracks.find(
+          isTrackPresent
+        )
+      const isInPlaylist =
+        !!track.playlist_track_id
+
       const isAddTrack = (
-        !isPresent && !isInLibrary
+        !isPresent && !isInPlaylist
       )
 
       if (isAddTrack) {

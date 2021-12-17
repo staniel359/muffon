@@ -1,40 +1,28 @@
 <template>
-  <BaseLinkContainer
-    class="item main-sidebar-item"
+  <BaseSidebarItem
+    icon="broadcast tower"
+    :text="radioText"
     :link="radioLink"
-  >
-    <div class="main-sidebar-item-icon-container">
-      <i class="broadcast tower grey icon"></i>
-    </div>
-
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="radioText"
-      />
-    </div>
-  </BaseLinkContainer>
+  />
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseSidebarItem from '@/BaseSidebarItem.vue'
 import { radio as formatRadioLink } from '#/formatters/links'
 
 export default {
   name: 'RadioItem',
   components: {
-    BaseLinkContainer,
-    BaseHeader
+    BaseSidebarItem
   },
   computed: {
-    radioLink () {
-      return formatRadioLink()
-    },
     radioText () {
       return this.$t(
         'layout.navigation.radio'
       )
+    },
+    radioLink () {
+      return formatRadioLink()
     }
   }
 }

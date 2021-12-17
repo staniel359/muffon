@@ -20,7 +20,7 @@
 <script>
 import BaseLabel from '@/BaseLabel.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import fetchTagData from '#/actions/api/tag/fetchData'
+import getTag from '#/actions/api/tag/get'
 
 export default {
   name: 'SimilarSection',
@@ -53,7 +53,7 @@ export default {
         'layout.navigation.similar'
       ) + ':'
     },
-    tagDataArgs () {
+    tagArgs () {
       return {
         tagName: this.tagName,
         scope: 'similar'
@@ -64,10 +64,10 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchTagData,
+    getTag,
     fetchData () {
-      this.fetchTagData(
-        this.tagDataArgs
+      this.getTag(
+        this.tagArgs
       )
     }
   }

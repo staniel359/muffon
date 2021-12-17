@@ -23,8 +23,7 @@ import { main as formatTrackMainLink } from '#/formatters/links/track'
 import {
   main as formatProfileLibraryTrackMainLink
 } from '#/formatters/links/profile/library/track'
-import formatTrackSourceParams
-  from '#/actions/api/track/formatters/requestData'
+import formatTrackRequestData from '#/formatters/request/track/requestData'
 
 export default {
   name: 'TrackTitle',
@@ -73,7 +72,7 @@ export default {
       })
     },
     sourceParams () {
-      return formatTrackSourceParams({
+      return formatTrackRequestData({
         sourceId: this.trackData.source_id,
         trackData: this.trackData
       })

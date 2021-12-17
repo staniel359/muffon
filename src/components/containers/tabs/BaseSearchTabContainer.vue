@@ -69,7 +69,7 @@ import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import fetchSearchData from '#/actions/api/search/fetchData'
+import getSearch from '#/actions/api/search/get'
 
 export default {
   name: 'BaseSearchTabContainer',
@@ -114,7 +114,7 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    searchDataArgs () {
+    searchArgs () {
       return {
         sourceId: this.sourceId,
         query: this.query,
@@ -148,10 +148,14 @@ export default {
   },
   methods: {
     handleIsActive (value) {
-      value && (this.isActivated = true)
+      if (value) {
+        this.isActivated = true
+      }
     },
     handleIsActivated (value) {
-      value && this.fetchData()
+      if (value) {
+        this.fetchData()
+      }
     },
     handleFocus () {
       this.$refs.tab.scrollTo(0, 0)
@@ -162,10 +166,10 @@ export default {
     handleLinkClick () {
       this.hideSearch()
     },
-    fetchSearchData,
+    getSearch,
     fetchData (page) {
-      this.fetchSearchData({
-        ...this.searchDataArgs,
+      this.getSearch({
+        ...this.searchArgs,
         page
       })
     }

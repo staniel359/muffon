@@ -7,8 +7,9 @@
       >
         <BaseImage
           class="rounded bordered main-profile-page-image"
+          model="album"
           size="small"
-          :image="image"
+          :image="imageData?.medium"
         />
 
         <BaseHeader
@@ -24,11 +25,39 @@
         >
           {{ artistName }}
         </div>
+      </BaseLinkContainer>
 
+      <div
+        v-if="favoriteId || isRenderOptions"
+        class="main-self-container"
+      >
         <BaseSelfIcons
           :favoriteId="favoriteId"
         />
-      </BaseLinkContainer>
+
+        <template
+          v-if="isRenderOptions"
+        >
+          <BaseOptionsDropdown
+            model="album"
+            :albumTitle="albumTitle"
+            :artistName="artistName"
+            :favoriteId="favoriteId"
+            isWithFavoriteOption
+            isWithDeleteOption
+            @delete="handleDeleteOptionClick"
+          />
+
+          <BaseProfileLibraryDeleteModal
+            ref="deleteModal"
+            model="album"
+            :profileId="profileId"
+            :modelId="albumId"
+            :modelTitle="albumFullTitle"
+            isDeleteWithRedirect
+          />
+        </template>
+      </div>
 
       <BaseDivider />
 
@@ -41,31 +70,6 @@
         </strong>
       </div>
     </BaseSegmentContainer>
-
-    <BaseSegmentContainer
-      v-if="isRenderOptions"
-    >
-      <div class="main-options-dropdown-container-right">
-        <BaseOptionsDropdown
-          model="album"
-          :albumTitle="albumTitle"
-          :artistName="artistName"
-          :favoriteId="favoriteId"
-          isWithFavoriteOption
-          isWithDeleteOption
-          @delete="handleDeleteOptionClick"
-        />
-      </div>
-
-      <BaseProfileLibraryDeleteModal
-        ref="deleteModal"
-        model="album"
-        :profileId="profileId"
-        :modelId="albumId"
-        :modelTitle="albumFullTitle"
-        isDeleteWithRedirect
-      />
-    </BaseSegmentContainer>
   </div>
 </template>
 
@@ -76,18 +80,17 @@ import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseDivider from '@/BaseDivider.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BaseProfileLibraryDeleteModal
   from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
   name: 'InfoSegment',
@@ -148,7 +151,7 @@ export default {
       return this.albumData.artist.name
     },
     sourceParams () {
-      return formatAlbumSourceParams({
+      return formatAlbumRequestData({
         sourceId: 'lastfm',
         albumData: this.albumData,
         artistName: this.artistName
@@ -157,8 +160,8 @@ export default {
     albumFullTitle () {
       return `${this.artistName} - ${this.albumTitle}`
     },
-    image () {
-      return this.albumData.image.medium
+    imageData () {
+      return this.albumData.image
     },
     sinceText () {
       return this.$t(
@@ -200,7 +203,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-self-icons
-  margin-top: 0.25em
-</style>
+<style lang="sass" scoped></style>

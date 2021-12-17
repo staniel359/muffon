@@ -16,7 +16,7 @@
 <script>
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import fetchConversationData from '#/actions/api/conversation/fetchData'
+import getConversation from '#/actions/api/conversation/get'
 
 export default {
   name: 'BaseConversationSegmentContainer',
@@ -39,7 +39,7 @@ export default {
     }
   },
   computed: {
-    conversationDataArgs () {
+    conversationArgs () {
       return {
         conversationId: this.conversationId,
         scope: this.scope,
@@ -54,10 +54,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchConversationData,
+    getConversation,
     fetchData (page) {
-      this.fetchConversationData({
-        ...this.conversationDataArgs,
+      this.getConversation({
+        ...this.conversationArgs,
         page
       })
     },

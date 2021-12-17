@@ -4,9 +4,10 @@
     :link="profileMainLink"
   >
     <div class="main-sidebar-item-icon-container">
-      <BaseProfileImage
-        class="profile-image"
-        :image="image"
+      <BaseImage
+        class="profile-image circular bordered"
+        model="profile"
+        :image="imageData?.extrasmall"
       />
     </div>
 
@@ -22,7 +23,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { main as formatProfileMainLink } from '#/formatters/links/profile'
 
@@ -30,15 +31,15 @@ export default {
   name: 'ProfileItem',
   components: {
     BaseLinkContainer,
-    BaseProfileImage,
+    BaseImage,
     BaseHeader
   },
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    image () {
-      return this.profileInfo.image.extrasmall
+    imageData () {
+      return this.profileInfo.image
     },
     nickname () {
       return this.profileInfo.nickname

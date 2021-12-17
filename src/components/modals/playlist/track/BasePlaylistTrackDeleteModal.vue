@@ -40,7 +40,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePlaylistTrackDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deletePlaylistTrackData from '#/actions/api/playlist/track/deleteData'
+import deletePlaylistTrack from '#/actions/api/playlist/track/delete'
 
 export default {
   name: 'BasePlaylistTrackDeleteModal',
@@ -97,16 +97,28 @@ export default {
     },
     playlistTrackId () {
       return this.playlistTrackData.id
+    },
+    deleteArgs () {
+      return {
+        playlistId: this.playlistId,
+        playlistTrackId: this.playlistTrackId
+      }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deletePlaylistTrackData({
-        playlistId: this.playlistId,
-        playlistTrackId: this.playlistTrackId
-      })
+      this.deletePlaylistTrack(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
-    deletePlaylistTrackData,
+    handleSuccess () {
+      this.$refs.modal.hide()
+
+      this.$emit('deleted')
+    },
+    deletePlaylistTrack,
     show () {
       this.$refs.modal.show()
     }

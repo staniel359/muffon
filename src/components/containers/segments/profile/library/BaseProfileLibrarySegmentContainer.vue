@@ -24,7 +24,7 @@
 <script>
 import HeaderSegment
   from './BaseProfileLibrarySegmentContainer/HeaderSegment.vue'
-import fetchLibraryData from '#/actions/api/profile/library/fetchData'
+import getLibrary from '#/actions/api/library/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: {
-    libraryDataArgs () {
+    libraryArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -65,10 +65,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchLibraryData,
+    getLibrary,
     fetchData (page) {
-      this.fetchLibraryData({
-        ...this.libraryDataArgs,
+      this.getLibrary({
+        ...this.libraryArgs,
         page
       })
     },

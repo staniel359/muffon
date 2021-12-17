@@ -8,7 +8,6 @@
         'main-segment-container'
       ]"
       :isLoading="isLoading"
-      :error="error"
       @init="handleInit"
     >
       <BasePaginatedListContainer
@@ -44,7 +43,7 @@ import BaseSegmentContainer
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
-import fetchRecommendationData from '#/actions/api/recommendation/fetchData'
+import getRecommendation from '#/actions/api/recommendation/get'
 
 export default {
   name: 'BaseRecommendationProfileArtistsModal',
@@ -77,7 +76,7 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    recommendationDataArgs () {
+    recommendationArgs () {
       return {
         recommendationId: this.recommendationId,
         scope: 'artists',
@@ -106,10 +105,10 @@ export default {
     handleLinkClick () {
       this.$refs.modal.hide()
     },
-    fetchRecommendationData,
+    getRecommendation,
     fetchData (page) {
-      this.fetchRecommendationData({
-        ...this.recommendationDataArgs,
+      this.getRecommendation({
+        ...this.recommendationArgs,
         page
       })
     },

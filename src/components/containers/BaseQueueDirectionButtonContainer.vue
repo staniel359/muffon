@@ -14,7 +14,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import BaseButton from '@/buttons/BaseButton.vue'
-import fetchQueueTrack from '#/actions/queue/track/fetchData'
+import getQueueTrack from '#/actions/queue/track/get'
 
 export default {
   name: 'BaseQueueDirectionButtonContainer',
@@ -67,13 +67,18 @@ export default {
         default:
           return false
       }
+    },
+    queueTrackArgs () {
+      return {
+        position: this.position
+      }
     }
   },
   methods: {
     handleClick () {
-      fetchQueueTrack({
-        position: this.position
-      })
+      getQueueTrack(
+        this.queueTrackArgs
+      )
     }
   }
 }

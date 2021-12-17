@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteData from '#/actions/api/favorites/model/deleteData'
-import postArtistData from '#/actions/api/favorites/artists/postData'
-import postAlbumData from '#/actions/api/favorites/albums/postData'
-import postTrackData from '#/actions/api/favorites/tracks/postData'
+import deleteFavorite from '#/actions/api/favorites/model/delete'
+import createFavoriteArtist from '#/actions/api/favorites/artist/create'
+import createFavoriteAlbum from '#/actions/api/favorites/album/create'
+import createFavoriteTrack from '#/actions/api/favorites/track/create'
 
 export default {
   name: 'FavoriteOption',
@@ -58,72 +58,75 @@ export default {
         )
       }
     },
-    artistParams () {
+    artistCreateArgs () {
       return {
         artistName: this.artistName
       }
     },
-    albumParams () {
+    albumCreateArgs () {
       return {
         albumTitle: this.albumTitle,
         artistName: this.artistName,
         imageUrl: this.imageUrl
       }
     },
-    trackParams () {
+    trackCreateArgs () {
       return {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
         imageUrl: this.imageUrl
       }
+    },
+    deleteArgs () {
+      return {
+        model: this.model,
+        favoriteId: this.modelId
+      }
     }
   },
   methods: {
     handleClick () {
       if (this.modelId) {
-        this.deleteFavorite()
+        this.deleteFavorite(
+          this.deleteArgs
+        ).then(
+          this.handleDeleteSuccess
+        )
       } else {
-        const handleSuccess = response => {
-          const favoriteId =
-            response.data.favorite_id.toString()
-
-          this.setFavoriteId(
-            favoriteId
-          )
-        }
-
-        this.createFavorite()
-          .then(handleSuccess)
+        this.createFavorite().then(
+          this.handleCreateSuccess
+        )
       }
     },
-    deleteData,
-    postArtistData,
-    postAlbumData,
-    postTrackData,
-    deleteFavorite () {
-      const handleSuccess = response => {
-        this.setFavoriteId(null)
-      }
+    handleCreateSuccess (response) {
+      const favoriteId =
+        response.data.favorite_id.toString()
 
-      this.deleteData({
-        model: this.model,
-        favoriteId: this.modelId
-      }).then(handleSuccess)
+      this.setFavoriteId(
+        favoriteId
+      )
     },
+    handleDeleteSuccess () {
+      this.setFavoriteId(null)
+    },
+    deleteFavorite,
+    createFavoriteArtist,
+    createFavoriteAlbum,
+    createFavoriteTrack,
     createFavorite () {
       switch (this.model) {
         case 'artist':
-          return this.postArtistData(
-            this.artistParams
+          return this.createFavoriteArtist(
+            this.artistCreateArgs
           )
         case 'album':
-          return this.postAlbumData(
-            this.albumParams
+          return this.createFavoriteAlbum(
+            this.albumCreateArgs
           )
         case 'track':
-          return this.postTrackData(
-            this.trackParams
+          return this.createFavoriteTrack(
+            this.trackCreateArgs
           )
         default:
           return null

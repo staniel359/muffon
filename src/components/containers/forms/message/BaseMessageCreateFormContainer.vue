@@ -11,7 +11,7 @@
 <script>
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { messageFormOptions } from '#/data/plugins/semantic'
-import fetchMessageCreateData from '#/actions/api/messages/create/fetchData'
+import createMessage from '#/actions/api/message/create'
 
 export default {
   name: 'BaseMessageCreateFormContainer',
@@ -73,24 +73,25 @@ export default {
       )
 
       if (isContentData) {
-        const createDataArgs = this.formatMessageArgs(
-          fields
-        )
+        const createArgs =
+          this.formatCreateArgs(
+            fields
+          )
 
-        this.fetchMessageCreateData(
-          createDataArgs
+        this.createMessage(
+          createArgs
         ).then(
-          this.handleMessageSuccess
+          this.handleCreateSuccess
         )
       }
     },
-    handleMessageSuccess (response) {
+    handleCreateSuccess (response) {
       this.$emit(
         'success',
         response.data.conversation_id
       )
     },
-    fetchMessageCreateData,
+    createMessage,
     formatTrack (trackData) {
       const { title, artist } = trackData
 
@@ -99,7 +100,7 @@ export default {
     formatImage (imageData) {
       return imageData.data
     },
-    formatMessageArgs (fields) {
+    formatCreateArgs (fields) {
       return {
         otherProfileId: this.profileId,
         content: fields.content,

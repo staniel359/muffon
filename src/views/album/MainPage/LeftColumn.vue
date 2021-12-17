@@ -1,57 +1,37 @@
 <template>
   <div class="album-page-left-column main-sticky-container">
-    <AlbumImage
-      :imageData="imageData"
+    <ImageSection
+      :albumData="albumData"
     />
 
     <div class="left-column-extra">
-      <AlbumHeader
-        :albumTitle="albumTitle"
-        :artistName="artistName"
+      <HeaderSection
+        :albumData="albumData"
         :scrollable="scrollable"
       />
 
-      <div class="main-self-container">
-        <BaseSelfIcons
-          :libraryId="libraryId"
-          :favoriteId="favoriteId"
-          :bookmarkId="bookmarkId"
-          :listenedId="listenedId"
-        />
-
-        <BaseOptionsDropdown
-          model="album"
-          :albumTitle="albumTitle"
-          :artistName="artistName"
-          :albumTracks="tracks"
-          :imageUrl="imageData.medium"
-          :libraryId="libraryId"
-          :favoriteId="favoriteId"
-          :bookmarkId="bookmarkId"
-          :listenedId="listenedId"
-          isWithLibraryOption
-          isWithFavoriteOption
-          isWithBookmarkOption
-          isWithListenedOption
-        />
-      </div>
+      <SelfSection
+        :albumData="albumData"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import AlbumImage from './LeftColumn/AlbumImage.vue'
-import AlbumHeader from './LeftColumn/AlbumHeader.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import ImageSection from './LeftColumn/ImageSection.vue'
+import HeaderSection from './LeftColumn/HeaderSection.vue'
+import SelfSection from './LeftColumn/SelfSection.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
-    AlbumImage,
-    AlbumHeader,
-    BaseSelfIcons,
-    BaseOptionsDropdown
+    ImageSection,
+    HeaderSection,
+    SelfSection
   },
   provide () {
     return {
@@ -76,31 +56,23 @@ export default {
       listenedId: null
     }
   },
-  computed: {
-    imageData () {
-      return this.albumData.image
-    },
-    albumTitle () {
-      return this.albumData.title
-    },
-    artistName () {
-      return this.albumData.artist.name
-    },
-    tracks () {
-      return this.albumData.tracks
+  watch: {
+    albumData: {
+      immediate: true,
+      handler: 'handleAlbumDataChange'
     }
   },
-  mounted () {
-    this.libraryId =
-      this.albumData.library_id?.toString()
-    this.favoriteId =
-      this.albumData.favorite_id?.toString()
-    this.bookmarkId =
-      this.albumData.bookmark_id?.toString()
-    this.listenedId =
-      this.albumData.listened_id?.toString()
-  },
   methods: {
+    handleAlbumDataChange () {
+      this.libraryId =
+        this.albumData.library_id?.toString()
+      this.favoriteId =
+        this.albumData.favorite_id?.toString()
+      this.bookmarkId =
+        this.albumData.bookmark_id?.toString()
+      this.listenedId =
+        this.albumData.listened_id?.toString()
+    },
     setLibraryId (value) {
       this.libraryId = value
     },

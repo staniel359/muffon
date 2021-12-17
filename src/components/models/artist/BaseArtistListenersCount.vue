@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import fetchArtistData from '#/actions/api/artist/fetchData'
+import getArtist from '#/actions/api/artist/get'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -52,7 +52,7 @@ export default {
         this.listenersCountFetched
       )
     },
-    artistDataArgs () {
+    artistArgs () {
       return {
         artistName: this.artistName,
         scope: 'listeners_count'
@@ -71,10 +71,10 @@ export default {
     handleListenersCountFetchedChange (value) {
       this.$emit('loadEnd', value)
     },
-    fetchArtistData,
+    getArtist,
     fetchData () {
-      this.fetchArtistData(
-        this.artistDataArgs
+      this.getArtist(
+        this.artistArgs
       )
     }
   }

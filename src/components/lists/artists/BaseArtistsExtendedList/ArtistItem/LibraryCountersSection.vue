@@ -84,4 +84,5 @@ export default {
 <style lang="sass" scoped>
 .library-counters-container
   @extend .d-flex, .w-100, .justify-content-space-evenly
+  margin-top: 0.5em
 </style>

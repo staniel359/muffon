@@ -1,8 +1,9 @@
 <template>
   <div class="main-simple-list-item">
-    <BaseProfileImage
-      class="small"
-      :image="otherProfileImage"
+    <BaseImage
+      class="small circular bordered"
+      model="profile"
+      :image="imageData?.extrasmall"
     />
 
     <div class="content">
@@ -14,13 +15,13 @@
 </template>
 
 <script>
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
 
 export default {
   name: 'OtherProfileSection',
   components: {
-    BaseProfileImage,
+    BaseImage,
     BaseProfileNickname
   },
   props: {
@@ -30,8 +31,8 @@ export default {
     }
   },
   computed: {
-    otherProfileImage () {
-      return this.otherProfileData.image.small
+    imageData () {
+      return this.otherProfileData.image
     }
   }
 }

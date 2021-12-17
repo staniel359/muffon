@@ -79,7 +79,7 @@ export default {
     handleClick (scope) {
       this.$refs[
         `${scope}Modal`
-      ].show()
+      ][0].show()
     },
     formatButtonData (scope) {
       const icon = this.icons[scope]

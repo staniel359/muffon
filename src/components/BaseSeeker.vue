@@ -63,9 +63,11 @@ export default {
   },
   methods: {
     handleIsDisabledChange (value) {
-      !value && this.$nextTick(() => {
-        this.setSeekerData()
-      })
+      if (!value) {
+        this.$nextTick(() => {
+          this.setSeekerData()
+        })
+      }
     },
     handleMouseDown () {
       this.isMouseUp = false

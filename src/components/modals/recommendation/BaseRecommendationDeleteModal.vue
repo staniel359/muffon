@@ -39,7 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseRecommendationDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteRecommendationData from '#/actions/api/recommendation/deleteData'
+import deleteRecommendation from '#/actions/api/recommendation/delete'
 
 export default {
   name: 'BaseRecommendationDeleteModal',
@@ -85,14 +85,21 @@ export default {
     },
     recommendationId () {
       return this.recommendationData.id
+    },
+    deleteArgs () {
+      return {
+        recommendationId: this.recommendationId
+      }
     }
   },
   methods: {
-    deleteRecommendationData,
+    deleteRecommendation,
     handleDeleteButtonClick () {
-      this.deleteRecommendationData({
-        recommendationId: this.recommendationId
-      }).then(this.handleSuccess)
+      this.deleteRecommendation(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
       this.$refs.modal.hide()

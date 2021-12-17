@@ -1,7 +1,5 @@
 <template>
-  <BaseSegmentContainer
-    class="raised main-segment-container"
-  >
+  <BaseSegmentContainer>
     <div class="recommended-block">
       <i class="volume up icon"></i>
 
@@ -92,7 +90,8 @@ export default {
     @extend .no-margin
     font-size: 1.2em
   & > .content
+    @extend .flex-full
     margin-left: 0.5em !important
     & > .based-text
-      margin-bottom: 0.25em
+      margin: 0.25em 0
 </style>

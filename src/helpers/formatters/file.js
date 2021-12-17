@@ -15,7 +15,7 @@ export const tags = (tags, file) => {
     },
     image: {
       extrasmall: image,
-      medium: image
+      original: image
     },
     created: fs.statSync(
       file.path

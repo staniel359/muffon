@@ -13,13 +13,14 @@
     />
 
     <div
-      v-if="image"
+      v-if="isWithImage"
       class="image-container"
     >
       <BaseImage
         class="bordered"
         size="extrasmall"
         :class="[isImageCircular ? 'circular' : 'rounded']"
+        :model="model"
         :image="image"
       />
     </div>
@@ -50,12 +51,14 @@ export default {
       type: Boolean,
       default: false
     },
+    isWithImage: Boolean,
     isDisabled: Boolean,
     icon: String,
     isIconColored: Boolean,
     isLoading: Boolean,
     isError: Boolean,
     image: String,
+    model: String,
     header: String,
     subheader: String,
     content: String,

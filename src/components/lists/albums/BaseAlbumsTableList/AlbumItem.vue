@@ -4,14 +4,15 @@
     @click="handleLinkClick"
   >
     <BaseSimpleCardContainer
-      :image="imageData.medium"
+      model="album"
+      :image="imageData?.medium"
     >
       <BaseOptionsDropdown
         class="options"
         model="album"
         :artistName="albumArtistName"
         :albumTitle="albumTitle"
-        :imageUrl="imageData.medium"
+        :imageUrl="imageData?.original"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -21,7 +22,7 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        isWhite
+        :isTransparent="false"
         @linkClick="handleLinkClick"
       />
 
@@ -57,8 +58,7 @@ import {
   main as formatProfileLibraryAlbumMainLink,
   tracks as formatProfileLibraryAlbumTracksLink
 } from '#/formatters/links/profile/library/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
   name: 'AlbumItem',
@@ -168,7 +168,7 @@ export default {
       })
     },
     sourceParams () {
-      return formatAlbumSourceParams({
+      return formatAlbumRequestData({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,
         artistName: this.albumArtistName

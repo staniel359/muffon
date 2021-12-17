@@ -59,10 +59,14 @@ export default {
       this.setIsQueuePanelVisible(false)
     },
     handleQueueTracksCountChange (value) {
-      !value && hideQueuePanel()
+      if (!value) {
+        hideQueuePanel()
+      }
     },
     handlePlayerPlayingChange (value) {
-      !value && this.clearQueue()
+      if (!value) {
+        this.clearQueue()
+      }
     },
     clearQueue () {
       updateStore({

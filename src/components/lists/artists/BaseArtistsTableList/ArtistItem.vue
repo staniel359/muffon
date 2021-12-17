@@ -3,11 +3,14 @@
     :link="link"
     @click="handleLinkClick"
   >
-    <BaseSimpleCardContainer>
+    <BaseSimpleCardContainer
+      :isWithImage="false"
+    >
       <div class="main-simple-card-image-container">
         <BaseArtistImage
           class="circular bordered"
-          :image="image"
+          size="medium"
+          :imageData="imageData"
           :artistName="artistName"
           @loadEnd="handleImageLoadEnd"
         />
@@ -25,7 +28,7 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        isWhite
+        :isTransparent="false"
         @linkClick="handleLinkClick"
       />
 
@@ -182,20 +185,25 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
     },
     listenersCount () {
       return this.artistData.listeners_count
-    },
-    uuid () {
-      return this.artistData.uuid
     },
     isHeaderLink () {
       return (
         !this.isTracksLinkActive &&
           !this.isAlbumsLinkActive
       )
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.artistData.uuid
     }
   },
   mounted () {
@@ -213,14 +221,10 @@ export default {
       this.$emit('linkClick')
     },
     handleImageLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).image = value
+      this.paginationItem.image = value
     },
     handleListenersCountLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).listeners_count = value
+      this.paginationItem.listeners_count = value
     },
     handleTracksLinkActiveChange (value) {
       this.isTracksLinkActive = value

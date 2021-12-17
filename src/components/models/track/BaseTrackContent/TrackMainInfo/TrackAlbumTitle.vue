@@ -16,8 +16,7 @@ import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import {
   main as formatProfileLibraryAlbumMainLink
 } from '#/formatters/links/profile/library/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
   name: 'TrackAlbumTitle',
@@ -62,7 +61,7 @@ export default {
       return this.albumData.title
     },
     sourceParams () {
-      return formatAlbumSourceParams({
+      return formatAlbumRequestData({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,
         artistName: this.artistName

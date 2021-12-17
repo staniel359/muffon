@@ -8,7 +8,9 @@
     @refresh="handleModalRefresh"
   >
     <template #default>
-      <slot :[scope]="trackData[scope]"></slot>
+      <slot
+        :[scope]="trackData[scope]"
+      ></slot>
     </template>
   </BaseModalContentContainer>
 </template>
@@ -16,7 +18,7 @@
 <script>
 import BaseModalContentContainer
   from '@/containers/modals/BaseModalContentContainer.vue'
-import fetchTrackData from '#/actions/api/track/fetchData'
+import getTrack from '#/actions/api/track/get'
 
 export default {
   name: 'BaseTrackModalContainer',
@@ -24,14 +26,14 @@ export default {
     BaseModalContentContainer
   },
   props: {
+    requestTrackData: {
+      type: Object,
+      required: true
+    },
     scope: {
       type: String,
       required: true
-    },
-    artistName: String,
-    trackTitle: String,
-    sourceId: String,
-    trackId: Number
+    }
   },
   data () {
     return {
@@ -41,13 +43,10 @@ export default {
     }
   },
   computed: {
-    trackDataArgs () {
+    trackArgs () {
       return {
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
-        scope: this.scope,
-        sourceId: this.sourceId,
-        trackId: this.trackId
+        ...this.requestTrackData,
+        scope: this.scope
       }
     }
   },
@@ -58,9 +57,11 @@ export default {
     handleModalRefresh () {
       this.fetchData()
     },
-    fetchTrackData,
+    getTrack,
     fetchData () {
-      this.fetchTrackData(this.trackDataArgs)
+      this.getTrack(
+        this.trackArgs
+      )
     },
     show () {
       this.$refs.modal.show()

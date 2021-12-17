@@ -9,8 +9,10 @@
       model="playlist"
     />
     <template v-else>
-      <BasePlaylistImage
-        :image="imageData.small"
+      <BaseImage
+        class="rounded bordered"
+        model="playlist"
+        :image="imageData?.small"
       />
 
       <div class="content">
@@ -44,7 +46,7 @@
 <script>
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistDeleteModal
@@ -59,7 +61,7 @@ export default {
   components: {
     BaseLinkContainer,
     BaseDeletedBlock,
-    BasePlaylistImage,
+    BaseImage,
     BaseHeader,
     BaseOptionsDropdown,
     BasePlaylistDeleteModal
@@ -111,6 +113,11 @@ export default {
     isDeleted () {
       return !!this.playlistData.isDeleted
     },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
     uuid () {
       return this.playlistData.uuid
     }
@@ -120,9 +127,7 @@ export default {
       this.$refs.deleteModal.show()
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     }
   }
 }

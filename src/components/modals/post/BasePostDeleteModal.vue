@@ -37,7 +37,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePostDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deletePostData from '#/actions/api/post/deleteData'
+import deletePost from '#/actions/api/post/delete'
 
 export default {
   name: 'BasePostDeleteModal',
@@ -80,20 +80,27 @@ export default {
     },
     postId () {
       return this.postData.id
+    },
+    deleteArgs () {
+      return {
+        postId: this.postId
+      }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deletePostData({
-        postId: this.postId
-      }).then(this.handleSuccess)
+      this.deletePost(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
       this.$refs.modal.hide()
 
       this.$emit('deleted')
     },
-    deletePostData,
+    deletePost,
     show () {
       this.$refs.modal.show()
     }

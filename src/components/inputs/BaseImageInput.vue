@@ -35,9 +35,10 @@ export default {
       }
     },
     handleLoadEnd ({ reader, file }) {
-      const url = URL.createObjectURL(
-        file
-      )
+      const url =
+        URL.createObjectURL(
+          file
+        )
 
       const image = {
         uuid: generateKey(),

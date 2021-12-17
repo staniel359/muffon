@@ -24,9 +24,9 @@ import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatAlbumPageNavigation from '#/formatters/navigation/album'
 import formatAlbumPageTab from '#/formatters/tabs/album'
-import fetchAlbumData from '#/actions/api/album/fetchData'
-import fetchBandcampAlbumIdData
-  from '#/actions/api/album/id/bandcamp/fetchData'
+import getAlbum from '#/actions/api/album/get'
+import getBandcampAlbumId
+  from '#/actions/api/bandcamp_id/album/get'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -98,7 +98,7 @@ export default {
     albumTitleFetched () {
       return this.albumData?.title
     },
-    albumDataArgs () {
+    albumArgs () {
       return {
         ...this.requestAlbumData,
         scope: this.scope,
@@ -120,21 +120,21 @@ export default {
     handleRequestAlbumDataChange () {
       this.fetchData()
     },
-    fetchBandcampAlbumIdData,
-    fetchAlbumData,
+    getBandcampAlbumId,
+    getAlbum,
     resetRequestAlbumData () {
       this.setRequestAlbumData(
         this.sourceParams
       )
     },
     setRequestAlbumData (value) {
-      if (this.isFetchBandcampAlbumIdData(value)) {
-        this.fetchBandcampAlbumIdData(value)
+      if (this.isGetBandcampAlbumId(value)) {
+        this.getBandcampAlbumId(value)
       } else {
         this.requestAlbumData = value
       }
     },
-    isFetchBandcampAlbumIdData (value) {
+    isGetBandcampAlbumId (value) {
       return (
         value.sourceId === 'bandcamp' &&
           !(
@@ -144,8 +144,8 @@ export default {
       )
     },
     fetchData (page) {
-      this.fetchAlbumData({
-        ...this.albumDataArgs,
+      this.getAlbum({
+        ...this.albumArgs,
         page
       })
     }

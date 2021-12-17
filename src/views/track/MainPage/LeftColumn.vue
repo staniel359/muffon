@@ -1,71 +1,37 @@
 <template>
   <div class="track-page-left-column main-sticky-container">
-    <div class="main-image-container">
-      <BaseImage
-        class="rounded bordered track-image"
-        :image="imageData.medium"
-      />
-    </div>
+    <ImageSection
+      :trackData="trackData"
+    />
 
     <div class="left-column-extra">
-      <TrackHeader
+      <HeaderSection
         :trackData="trackData"
         :scrollable="scrollable"
       />
 
-      <div class="main-self-container">
-        <BaseSelfIcons
-          :libraryId="libraryId"
-          :favoriteId="favoriteId"
-          :bookmarkId="bookmarkId"
-          :listenedId="listenedId"
-        />
-
-        <BaseOptionsDropdown
-          model="track"
-          :trackTitle="trackTitle"
-          :artistName="artistName"
-          :albumTitle="albumTitle"
-          :imageUrl="imageData.medium"
-          :libraryId="libraryId"
-          :favoriteId="favoriteId"
-          :bookmarkId="bookmarkId"
-          :listenedId="listenedId"
-          isWithLibraryOption
-          isWithFavoriteOption
-          isWithBookmarkOption
-          isWithListenedOption
-          isWithPlaylistOption
-          @playlist="handlePlaylistOptionClick"
-        />
-      </div>
-
-      <BasePlaylistsModal
-        ref="playlistModal"
-        :trackTitle="trackTitle"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
-        :imageUrl="imageData.medium"
+      <SelfSection
+        :trackData="trackData"
+        :libraryId="libraryId"
+        :favoriteId="favoriteId"
+        :bookmarkId="bookmarkId"
+        :listenedId="listenedId"
       />
     </div>
   </div>
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import TrackHeader from './LeftColumn/TrackHeader.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
+import ImageSection from './LeftColumn/ImageSection.vue'
+import HeaderSection from './LeftColumn/HeaderSection.vue'
+import SelfSection from './LeftColumn/SelfSection.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
-    BaseImage,
-    TrackHeader,
-    BaseSelfIcons,
-    BaseOptionsDropdown,
-    BasePlaylistsModal
+    ImageSection,
+    HeaderSection,
+    SelfSection
   },
   provide () {
     return {
@@ -90,33 +56,22 @@ export default {
       listenedId: null
     }
   },
-  computed: {
-    imageData () {
-      return this.trackData.image
-    },
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    albumTitle () {
-      return this.trackData.album?.title
+  watch: {
+    trackData: {
+      immediate: true,
+      handler: 'handleTrackDataChange'
     }
   },
-  mounted () {
-    this.libraryId =
-      this.trackData.library_id?.toString()
-    this.favoriteId =
-      this.trackData.favorite_id?.toString()
-    this.bookmarkId =
-      this.trackData.bookmark_id?.toString()
-    this.listenedId =
-      this.trackData.listened_id?.toString()
-  },
   methods: {
-    handlePlaylistOptionClick () {
-      this.$refs.playlistModal.show()
+    handleTrackDataChange () {
+      this.libraryId =
+        this.trackData.library_id?.toString()
+      this.favoriteId =
+        this.trackData.favorite_id?.toString()
+      this.bookmarkId =
+        this.trackData.bookmark_id?.toString()
+      this.listenedId =
+        this.trackData.listened_id?.toString()
     },
     setLibraryId (value) {
       this.libraryId = value
@@ -140,4 +95,8 @@ export default {
 
 .left-column-extra
   margin-top: 0.5em
+
+.main-self-icons
+  @extend .text-align-center
+  max-width: 80px
 </style>

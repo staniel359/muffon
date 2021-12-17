@@ -12,7 +12,7 @@
 <script>
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { loginFormOptions } from '#/data/plugins/semantic'
-import fetchLoginData from '#/actions/api/profile/login/fetchData'
+import getLogin from '#/actions/api/login/get'
 import { updateStore } from '#/actions'
 
 export default {
@@ -45,12 +45,13 @@ export default {
     handleSuccess (event, fields) {
       event.preventDefault()
 
-      const loginDataArgs = this.formatLoginParams(
-        fields
-      )
+      const loginArgs =
+        this.formatLoginArgs(
+          fields
+        )
 
-      this.fetchLoginData(
-        loginDataArgs
+      this.getLogin(
+        loginArgs
       )
     },
     handleProfileDataChange (value) {
@@ -59,9 +60,13 @@ export default {
         'profile.info': value
       })
     },
-    fetchLoginData,
-    formatLoginParams (fields) {
-      const { email, password, remember } = fields
+    getLogin,
+    formatLoginArgs (fields) {
+      const {
+        email,
+        password,
+        remember
+      } = fields
 
       return {
         email,

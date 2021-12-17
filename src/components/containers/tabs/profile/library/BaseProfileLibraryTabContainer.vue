@@ -45,7 +45,7 @@ import BasePaginatedListContainer
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import fetchLibraryData from '#/actions/api/profile/library/fetchData'
+import getLibrary from '#/actions/api/library/get'
 import { isCurrentProfile } from '#/utils'
 
 export default {
@@ -82,7 +82,7 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    libraryDataArgs () {
+    libraryArgs () {
       return {
         profileId: this.profileId,
         scope: this.tabData.scope,
@@ -115,12 +115,14 @@ export default {
   },
   methods: {
     handleIsActive (value) {
-      value && (
+      if (value) {
         this.isActivated = true
-      )
+      }
     },
     handleIsActivated (value) {
-      value && this.fetchData()
+      if (value) {
+        this.fetchData()
+      }
     },
     handleFocus () {
       this.$emit('focus')
@@ -128,10 +130,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchLibraryData,
+    getLibrary,
     fetchData (page) {
-      this.fetchLibraryData({
-        ...this.libraryDataArgs,
+      this.getLibrary({
+        ...this.libraryArgs,
         page
       })
     },

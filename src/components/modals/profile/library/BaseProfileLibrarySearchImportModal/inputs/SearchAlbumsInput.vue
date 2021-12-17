@@ -86,14 +86,25 @@ export default {
   methods: {
     handleAlbumSelect (album) {
       const isAlbumPresent = albumData => {
+        const isSameTitle = (
+          album.title ===
+            albumData.title
+        )
+        const isSameArtistName = (
+          album.artist.name ===
+            albumData.artist.name
+        )
+
         return (
-          album.title === albumData.title &&
-            album.artist.name === albumData.artist.name
+          isSameTitle &&
+            isSameArtistName
         )
       }
-      const isPresent = this.albums.find(
-        isAlbumPresent
-      )
+      const isPresent =
+        this.albums.find(
+          isAlbumPresent
+        )
+
       const isInLibrary = !!album.library_id
       const isAddAlbum = (
         !isPresent && !isInLibrary
@@ -107,7 +118,9 @@ export default {
       }
     },
     formatResponse (response) {
-      return response.search.albums.map(albumData => {
+      const { albums } = response.search
+
+      return albums.map(albumData => {
         return {
           ...albumData,
           artistName: albumData.artist.name

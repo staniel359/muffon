@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveTracksSection/CompleteSection.vue'
-import postTrackData from '#/actions/api/library/tracks/postData'
+import createLibraryTrack from '#/actions/api/library/track/create'
 
 export default {
   name: 'SaveTracksSection',
@@ -88,7 +88,7 @@ export default {
 
       this.errorTracks = []
     },
-    postTrackData,
+    createLibraryTrack,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'shared.add.save.active.tracks',
@@ -109,9 +109,10 @@ export default {
       }
     },
     async saveTrack (trackData) {
-      const trackFormatted = this.formatTrack(
-        trackData
-      )
+      const trackFormatted =
+        this.formatTrack(
+          trackData
+        )
 
       const handleError = () => {
         if (this.isMounted) {
@@ -127,9 +128,13 @@ export default {
         }
       }
 
-      await this.postTrackData(trackFormatted)
-        .catch(handleError)
-        .finally(handleFinish)
+      await this.createLibraryTrack(
+        trackFormatted
+      ).catch(
+        handleError
+      ).finally(
+        handleFinish
+      )
     },
     formatTrack (trackData) {
       return {

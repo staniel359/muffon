@@ -2,8 +2,7 @@
   <BaseTrackModalContainer
     ref="modal"
     scope="description"
-    :artistName="artistName"
-    :trackTitle="trackTitle"
+    :requestTrackData="requestTrackData"
   >
     <template #default="slotProps">
       <BaseDescription
@@ -26,8 +25,7 @@ export default {
     BaseDescription
   },
   props: {
-    artistName: String,
-    trackTitle: String
+    requestTrackData: Object
   },
   methods: {
     show () {

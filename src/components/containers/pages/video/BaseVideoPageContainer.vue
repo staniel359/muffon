@@ -22,7 +22,7 @@ import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatVideoPageNavigation from '#/formatters/navigation/video'
 import formatVideoPageTab from '#/formatters/tabs/video'
-import fetchVideoData from '#/actions/api/video/fetchData'
+import getVideo from '#/actions/api/video/get'
 
 export default {
   name: 'BaseVideoPageContainer',
@@ -75,8 +75,10 @@ export default {
     channelTitleFetched () {
       return this.videoData?.channel?.title
     },
-    videoDataArgs () {
-      return { videoId: this.videoId }
+    videoArgs () {
+      return {
+        videoId: this.videoId
+      }
     }
   },
   watch: {
@@ -89,10 +91,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchVideoData,
+    getVideo,
     fetchData (page) {
-      this.fetchVideoData({
-        ...this.videoDataArgs,
+      this.getVideo({
+        ...this.videoArgs,
         page
       })
     }

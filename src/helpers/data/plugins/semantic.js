@@ -4,6 +4,7 @@ import i18n from '&/i18n'
 export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   return {
     autofocus: false,
+    allowMultiple: true,
     duration: 100,
     transition: 'fade',
     dimmerSettings: {
@@ -217,7 +218,7 @@ export const profileCreateFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const profileEditFormOptions = ({ onSuccess }) => {
+export const profileUpdateFormOptions = ({ onSuccess }) => {
   const emptyEmailPrompt = i18n.global.t(
     'shared.profile.form.errors.empty.email'
   )

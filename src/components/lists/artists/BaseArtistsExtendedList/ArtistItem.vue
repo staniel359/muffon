@@ -18,17 +18,10 @@
             <div class="artist-left-column">
               <BaseArtistImage
                 class="circular bordered artist-image"
-                :image="image"
+                size="medium"
+                :imageData="imageData"
                 :artistName="artistName"
                 @loadEnd="handleImageLoadEnd"
-              />
-
-              <BaseSelfIcons
-                v-if="isWithSelfIcons"
-                :libraryId="libraryId"
-                :favoriteId="favoriteId"
-                :bookmarkId="bookmarkId"
-                :listenedId="listenedId"
               />
 
               <LibraryCountersSection
@@ -40,7 +33,15 @@
                 :artistId="artistId"
               />
 
-              <div class="main-options-dropdown-container-right">
+              <div class="main-self-container">
+                <BaseSelfIcons
+                  v-if="isWithSelfIcons"
+                  :libraryId="libraryId"
+                  :favoriteId="favoriteId"
+                  :bookmarkId="bookmarkId"
+                  :listenedId="listenedId"
+                />
+
                 <BaseOptionsDropdown
                   model="artist"
                   :artistName="artistName"
@@ -150,17 +151,22 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
-    },
-    uuid () {
-      return this.artistData.uuid
     },
     artistId () {
       return this.artistData.id?.toString()
     },
     isDeleted () {
       return !!this.artistData.isDeleted
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.artistData.uuid
     }
   },
   mounted () {
@@ -175,14 +181,10 @@ export default {
   },
   methods: {
     handleImageLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).image = value
+      this.paginationItem.image = value
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     handleDeleteOptionClick () {
       this.$refs.deleteModal.show()
@@ -205,7 +207,6 @@ export default {
 
 <style lang="sass" scoped>
 .artist-left-column
-  @extend .d-flex, .flex-column, .align-items-center
   margin-right: 1em
   width: 150px
 
@@ -213,6 +214,7 @@ export default {
   @extend .w-100
   height: 150px
 
-.main-simple-self-buttons
-  margin-top: 1em
+.main-self-icons
+  @extend .text-align-center
+  max-width: 80px
 </style>

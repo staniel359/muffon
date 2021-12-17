@@ -11,10 +11,14 @@
       :isCurrent="isCurrent"
     />
 
-    <TrackImage
-      v-if="isRenderImage"
-      :imageData="imageData"
-    />
+    <div class="track-image-container">
+      <BaseImage
+        v-if="isWithImage"
+        class="rounded bordered"
+        model="track"
+        :image="imageData?.extrasmall"
+      />
+    </div>
 
     <div class="content">
       <div class="track-index-main-info-listeners">
@@ -90,7 +94,7 @@
       :trackTitle="trackTitle"
       :artistName="artistName"
       :albumTitle="albumTitle"
-      :imageUrl="imageData?.medium"
+      :imageUrl="imageData?.original"
       :libraryId="libraryId"
       :favoriteId="favoriteId"
       :bookmarkId="bookmarkId"
@@ -111,7 +115,7 @@
       :trackTitle="trackTitle"
       :artistName="artistName"
       :albumTitle="albumTitle"
-      :imageUrl="imageData?.medium"
+      :imageUrl="imageData?.original"
     />
 
     <BaseBookmarkDeleteModal
@@ -151,7 +155,7 @@
 <script>
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
-import TrackImage from './BaseTrackContent/TrackImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import TrackIndex from './BaseTrackContent/TrackIndex.vue'
 import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
@@ -178,7 +182,7 @@ export default {
   components: {
     BaseDeletedBlock,
     BaseTrackAudioIcon,
-    TrackImage,
+    BaseImage,
     TrackIndex,
     TrackMainInfo,
     TrackListenersCount,
@@ -395,6 +399,12 @@ export default {
   @extend .no-padding
   min-width: unset !important
   margin: 0 $trackContentMarginWidth !important
+
+.track-image-container
+  margin-left: $trackContentMarginWidth
+  .image
+    width: 30px
+    height: 30px
 
 .content
   @extend .d-flex, .align-items-center

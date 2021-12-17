@@ -28,7 +28,10 @@ export default {
       return this.videoData.youtube_id
     },
     placeholder () {
-      return this.videoData.image.small
+      return this.imageData?.small
+    },
+    imageData () {
+      return this.videoData.image
     }
   },
   mounted () {

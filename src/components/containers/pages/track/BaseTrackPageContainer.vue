@@ -11,6 +11,7 @@
       :isLoading="isLoading"
       :error="error"
       :trackData="trackData"
+      :requestTrackData="requestTrackData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
       :profileId="profileId"
@@ -24,9 +25,9 @@ import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatTrackPageNavigation from '#/formatters/navigation/track'
 import formatTrackPageTab from '#/formatters/tabs/track'
-import fetchTrackData from '#/actions/api/track/fetchData'
-import fetchBandcampTrackIdData
-  from '#/actions/api/track/id/bandcamp/fetchData'
+import getTrack from '#/actions/api/track/get'
+import getBandcampTrackId
+  from '#/actions/api/bandcamp_id/track/get'
 
 export default {
   name: 'BaseTrackPageContainer',
@@ -98,7 +99,7 @@ export default {
     trackTitleFetched () {
       return this.trackData?.title
     },
-    trackDataArgs () {
+    trackArgs () {
       return {
         ...this.requestTrackData,
         scope: this.scope,
@@ -120,21 +121,21 @@ export default {
     handleRequestTrackDataChange () {
       this.fetchData()
     },
-    fetchBandcampTrackIdData,
-    fetchTrackData,
+    getBandcampTrackId,
+    getTrack,
     resetRequestTrackData () {
       this.setRequestTrackData(
         this.sourceParams
       )
     },
     setRequestTrackData (value) {
-      if (this.isFetchBandcampTrackIdData(value)) {
-        this.fetchBandcampTrackIdData(value)
+      if (this.isGetBandcampTrackId(value)) {
+        this.getBandcampTrackId(value)
       } else {
         this.requestTrackData = value
       }
     },
-    isFetchBandcampTrackIdData (value) {
+    isGetBandcampTrackId (value) {
       return (
         value.sourceId === 'bandcamp' &&
           !(
@@ -144,8 +145,8 @@ export default {
       )
     },
     fetchData (page) {
-      this.fetchTrackData({
-        ...this.trackDataArgs,
+      this.getTrack({
+        ...this.trackArgs,
         page
       })
     }
