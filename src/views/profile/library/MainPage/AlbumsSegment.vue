@@ -14,7 +14,7 @@
         :profileId="profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
         isWithArtistName
-        isWithTracksCount
+        isWithLibrary
         isLinkToLibrary
       />
     </template>

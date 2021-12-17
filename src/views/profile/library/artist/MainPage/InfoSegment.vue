@@ -8,7 +8,7 @@
         <BaseArtistImage
           class="circular bordered main-profile-page-image"
           size="medium"
-          :image="image"
+          :imageData="imageData"
           :artistName="artistName"
         />
 
@@ -17,11 +17,38 @@
           tag="h3"
           :text="artistName"
         />
+      </BaseLinkContainer>
 
+      <div
+        v-if="favoriteId || isRenderOptions"
+        class="main-self-container"
+      >
         <BaseSelfIcons
           :favoriteId="favoriteId"
         />
-      </BaseLinkContainer>
+
+        <template
+          v-if="isRenderOptions"
+        >
+          <BaseOptionsDropdown
+            model="artist"
+            :artistName="artistName"
+            :favoriteId="favoriteId"
+            isWithFavoriteOption
+            isWithDeleteOption
+            @delete="handleDeleteOptionClick"
+          />
+
+          <BaseProfileLibraryDeleteModal
+            ref="deleteModal"
+            model="artist"
+            :profileId="profileId"
+            :modelId="artistId"
+            :modelName="artistName"
+            isDeleteWithRedirect
+          />
+        </template>
+      </div>
 
       <BaseDivider />
 
@@ -34,30 +61,6 @@
         </strong>
       </div>
     </BaseSegmentContainer>
-
-    <BaseSegmentContainer
-      v-if="isRenderOptions"
-    >
-      <div class="main-options-dropdown-container-right">
-        <BaseOptionsDropdown
-          model="artist"
-          :artistName="artistName"
-          :favoriteId="favoriteId"
-          isWithFavoriteOption
-          isWithDeleteOption
-          @delete="handleDeleteOptionClick"
-        />
-      </div>
-
-      <BaseProfileLibraryDeleteModal
-        ref="deleteModal"
-        model="artist"
-        :profileId="profileId"
-        :modelId="artistId"
-        :modelTitle="artistName"
-        isDeleteWithRedirect
-      />
-    </BaseSegmentContainer>
   </div>
 </template>
 
@@ -68,10 +71,10 @@ import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseDivider from '@/BaseDivider.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BaseProfileLibraryDeleteModal
   from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
@@ -112,12 +115,12 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
     },
     sinceText () {
       return this.$t(
-        'pages.profile.library.since'
+        'library.since'
       )
     },
     createdFormatted () {
@@ -153,7 +156,4 @@ export default {
 .main-profile-page-image
   width: 120px
   height: 120px
-
-.main-self-icons
-  margin-top: 0.25em
 </style>

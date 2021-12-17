@@ -1,45 +1,18 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <template #default>
-      <div class="header">
-        {{ headerText }}
-      </div>
-
-      <div class="content">
-        <TextSection
-          :playlistTitle="playlistTitle"
-        />
-
-        <BaseErrorMessage
-          v-if="error"
-          class="error-message"
-          :error="error"
-        />
-      </div>
-
-      <div class="actions">
-        <BaseButton
-          class="cancel"
-          :text="cancelText"
-        />
-
-        <BaseButton
-          class="red"
-          :text="deleteText"
-          :class="{ loading: isLoading }"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
-    </template>
-  </BaseModalContainer>
+  <BaseDeleteModal
+    ref="modal"
+    modelType="playlist"
+    :modelName="playlistTitle"
+    :isLoading="isLoading"
+    :error="error"
+    isWithAlsoText
+    @deleteButtonClick="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import TextSection from './BasePlaylistDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import deleteProfilePlaylistData from '#/actions/api/playlist/deleteData'
+import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
+import deletePlaylist from '#/actions/api/playlist/delete'
 import {
   playlists as formatProfilePlaylistsLink
 } from '#/formatters/links/profile'
@@ -48,10 +21,7 @@ import { setToast } from '#/actions/plugins/semantic'
 export default {
   name: 'BasePlaylistDeleteModal',
   components: {
-    BaseModalContainer,
-    TextSection,
-    BaseErrorMessage,
-    BaseButton
+    BaseDeleteModal
   },
   props: {
     profileId: {
@@ -74,29 +44,13 @@ export default {
   data () {
     return {
       error: null,
-      isLoading: false,
-      isSuccess: false
+      isLoading: false
     }
   },
   computed: {
-    headerText () {
+    deletedMessage () {
       return this.$t(
-        'shared.playlist.delete.header'
-      )
-    },
-    cancelText () {
-      return this.$t(
-        'buttons.cancel'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'buttons.delete'
-      )
-    },
-    toastMessage () {
-      return this.$t(
-        'shared.playlist.deleted',
+        'notifications.deleted.playlist',
         { playlistTitle: this.playlistTitleStrong }
       )
     },
@@ -107,34 +61,43 @@ export default {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })
+    },
+    deleteArgs () {
+      return {
+        playlistId: this.playlistId
+      }
     }
-  },
-  watch: {
-    isSuccess: 'handleIsSuccessChange'
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteProfilePlaylistData({
-        playlistId: this.playlistId
-      })
+      this.deletePlaylist(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
-    handleIsSuccessChange () {
+    handleSuccess () {
       this.$refs.modal.hide()
 
       if (this.isDeleteWithRedirect) {
-        this.$router.push(
-          this.profilePlaylistsLink
-        )
-
-        setToast({
-          message: this.toastMessage,
-          icon: 'green check'
-        })
+        this.redirect()
+        this.notify()
       } else {
         this.$emit('deleted')
       }
     },
-    deleteProfilePlaylistData,
+    deletePlaylist,
+    redirect () {
+      this.$router.push(
+        this.profilePlaylistsLink
+      )
+    },
+    notify () {
+      setToast({
+        message: this.deletedMessage,
+        icon: 'green check'
+      })
+    },
     show () {
       this.$refs.modal.show()
     }

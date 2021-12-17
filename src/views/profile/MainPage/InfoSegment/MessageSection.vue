@@ -29,7 +29,7 @@ export default {
   computed: {
     messageText () {
       return this.$t(
-        'shared.profile.message'
+        'message.send'
       )
     }
   },

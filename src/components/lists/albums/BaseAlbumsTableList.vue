@@ -14,7 +14,7 @@
         :artistName="artistName"
         :isWithArtistName="isWithArtistName"
         :isWithListenersCount="isWithListenersCount"
-        :isWithTracksCount="isWithTracksCount"
+        :isWithLibrary="isWithLibrary"
         :isLinkToLibrary="isLinkToLibrary"
         :profileId="profileId"
         :isWithLibraryOption="isWithLibraryOption"
@@ -51,7 +51,7 @@ export default {
     artistName: String,
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
-    isWithTracksCount: Boolean,
+    isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryOption: Boolean,

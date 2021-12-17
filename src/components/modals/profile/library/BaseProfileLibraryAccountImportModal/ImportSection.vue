@@ -18,8 +18,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
-import fetchLastfmUserPlaysData
-  from '#/actions/api/lastfm/user/plays/fetchData'
+import getLastfmUserPlays from '#/actions/api/lastfm/user/plays/get'
 import {
   collection as formatCollection,
   playsToTracks as formatPlaysToTracks
@@ -67,7 +66,7 @@ export default {
       this.userData.plays_count
     )
 
-    this.fetchLastfmUserPlaysData({
+    this.getLastfmUserPlays({
       nickname: this.nickname
     })
   },
@@ -75,7 +74,7 @@ export default {
     this.isMounted = false
   },
   methods: {
-    fetchLastfmUserPlaysData,
+    getLastfmUserPlays,
     handlePlaysChange (value) {
       this.$refs.progress.setValue(
         value.length
@@ -85,15 +84,16 @@ export default {
       this.isComplete = true
       this.isProgress = false
 
-      this.successTracks = formatCollection(
-        formatPlaysToTracks(
-          this.plays
+      this.successTracks =
+        formatCollection(
+          formatPlaysToTracks(
+            this.plays
+          )
         )
-      )
     },
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'shared.add.import.active.plays',
+        'import.active.plays',
         { value, total }
       )
     },

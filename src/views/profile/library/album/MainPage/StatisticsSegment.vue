@@ -42,7 +42,7 @@ export default {
       return [
         {
           text: this.$t(
-            'layout.navigation.tracks'
+            'navigation.tracks'
           ),
           value: this.albumData.tracks_count,
           link: formatProfileLibraryAlbumTracksLink({

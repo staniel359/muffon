@@ -23,7 +23,7 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        'shared.sources.select.track'
+        'sources.select.track'
       )
     }
   }

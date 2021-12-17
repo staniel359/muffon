@@ -65,21 +65,21 @@ export default {
       return [
         {
           name: this.$t(
-            'layout.navigation.artists'
+            'navigation.artists'
           ),
           component: 'SearchArtistsList',
           scope: 'artists'
         },
         {
           name: this.$t(
-            'layout.navigation.albums'
+            'navigation.albums'
           ),
           component: 'SearchAlbumsList',
           scope: 'albums'
         },
         {
           name: this.$t(
-            'layout.navigation.tracks'
+            'navigation.tracks'
           ),
           component: 'SearchTracksList',
           scope: 'tracks'

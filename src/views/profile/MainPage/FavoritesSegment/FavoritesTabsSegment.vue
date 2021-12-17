@@ -50,7 +50,7 @@ export default {
       return [
         {
           name: this.$t(
-            'layout.navigation.artists'
+            'navigation.artists'
           ),
           scope: 'artists',
           clientPageLimit: 5,
@@ -59,7 +59,7 @@ export default {
         },
         {
           name: this.$t(
-            'layout.navigation.albums'
+            'navigation.albums'
           ),
           scope: 'albums',
           clientPageLimit: 5,
@@ -68,7 +68,7 @@ export default {
         },
         {
           name: this.$t(
-            'layout.navigation.tracks'
+            'navigation.tracks'
           ),
           scope: 'tracks',
           clientPageLimit: 5,

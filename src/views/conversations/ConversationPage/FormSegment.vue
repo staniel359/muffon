@@ -34,8 +34,8 @@
           @imagesChange="handleImagesChange"
         />
 
-        <BaseMessageSubmitButton
-          class="submit-button"
+        <BaseSubmitButton
+          actionKey="send"
         />
       </div>
     </BaseMessageCreateFormContainer>
@@ -51,8 +51,7 @@ import BaseContentField from '@/fields/BaseContentField.vue'
 import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
 import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
 import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
-import BaseMessageSubmitButton
-  from '@/models/message/BaseMessageSubmitButton.vue'
+import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FormSegment',
@@ -63,7 +62,7 @@ export default {
     BaseFormImagesSection,
     BaseFormTracksSection,
     BaseFormAddButtonsSection,
-    BaseMessageSubmitButton
+    BaseSubmitButton
   },
   props: {
     profileId: String

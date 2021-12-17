@@ -49,7 +49,7 @@ export default {
   computed: {
     genderText () {
       return this.$t(
-        'shared.profile.form.fields.gender'
+        'forms.fields.gender'
       )
     },
     optionsCollection () {
@@ -67,7 +67,7 @@ export default {
   methods: {
     formatOptionText (option) {
       return this.$t(
-        `shared.profile.form.fields.genders.${option}`
+        `forms.fields.genders.${option}`
       )
     }
   }

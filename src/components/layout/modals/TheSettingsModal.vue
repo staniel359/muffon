@@ -47,21 +47,21 @@ export default {
       return [
         {
           name: this.$t(
-            'layout.settings.tabs.app'
+            'settings.tabs.app'
           ),
           scope: 'app',
           component: 'AppSettings'
         },
         {
           name: this.$t(
-            'layout.settings.tabs.profile'
+            'settings.tabs.profile'
           ),
           scope: 'profile',
           component: 'ProfileSettings'
         },
         {
           name: this.$t(
-            'layout.settings.tabs.services'
+            'settings.tabs.services'
           ),
           scope: 'services',
           component: 'ServicesSettings'
@@ -79,5 +79,6 @@ export default {
 
 <style lang="sass" scoped>
 .settings-container
-  @extend .d-flex, .flex-column
+  &.active
+    @extend .d-flex, .flex-column
 </style>

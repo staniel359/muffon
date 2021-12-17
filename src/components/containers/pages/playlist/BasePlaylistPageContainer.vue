@@ -23,7 +23,7 @@ import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilePlaylistPageNavigation
   from '#/formatters/navigation/profile/playlist'
 import formatProfilePlaylistPageTab from '#/formatters/tabs/profile/playlist'
-import fetchProfilePlaylistData from '#/actions/api/profile/playlist/fetchData'
+import getPlaylist from '#/actions/api/playlist/get'
 
 export default {
   name: 'BasePlaylistPageContainer',
@@ -74,7 +74,7 @@ export default {
     playlistTitleFetched () {
       return this.profileData?.playlist?.title
     },
-    playlistDataArgs () {
+    playlistArgs () {
       return {
         profileId: this.profileId,
         playlistId: this.playlistId
@@ -91,10 +91,10 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    fetchProfilePlaylistData,
+    getPlaylist,
     fetchData () {
-      this.fetchProfilePlaylistData(
-        this.playlistDataArgs
+      this.getPlaylist(
+        this.playlistArgs
       )
     },
     setProfileData (value) {

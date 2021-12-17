@@ -31,7 +31,7 @@ export default {
     }),
     autoplayText () {
       return this.$t(
-        'layout.settings.options.app.queue.autoplay'
+        'settings.options.app.queue.autoplay'
       )
     }
   },

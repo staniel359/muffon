@@ -5,7 +5,7 @@ export default function ({ videoTitle, videoId, pageNameKey }) {
   const formatTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.video.${pageNameKey}`,
+        `navigation.video.${pageNameKey}`,
         { videoTitle }
       )
     } else {

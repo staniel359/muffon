@@ -1,25 +1,14 @@
 <template>
-  <BaseLinkContainer
-    class="item main-sidebar-item"
+  <BaseSidebarItem
+    icon="headphones"
+    :text="profileLibraryText"
     :link="profileLibraryMainLink"
-  >
-    <div class="main-sidebar-item-icon-container">
-      <i class="headphones grey icon"></i>
-    </div>
-
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="profileLibraryText"
-      />
-    </div>
-  </BaseLinkContainer>
+  />
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseSidebarItem from '@/BaseSidebarItem.vue'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
@@ -27,13 +16,17 @@ import {
 export default {
   name: 'LibraryItem',
   components: {
-    BaseLinkContainer,
-    BaseHeader
+    BaseSidebarItem
   },
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
+    profileLibraryText () {
+      return this.$t(
+        'navigation.library'
+      )
+    },
     profileLibraryMainLink () {
       return formatProfileLibraryMainLink({
         profileId: this.profileId
@@ -41,11 +34,6 @@ export default {
     },
     profileId () {
       return this.profileInfo.id
-    },
-    profileLibraryText () {
-      return this.$t(
-        'layout.navigation.library'
-      )
     }
   }
 }

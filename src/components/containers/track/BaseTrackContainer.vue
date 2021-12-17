@@ -16,7 +16,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import fetchTrackData from '#/actions/player/track/fetchData'
+import getPlayerTrack from '#/actions/player/track/get'
 import { updateStore, setPlayerPlaying } from '#/actions'
 
 export default {
@@ -67,7 +67,7 @@ export default {
     trackId () {
       return this.trackData.player_id
     },
-    trackDataArgs () {
+    playerTrackArgs () {
       return {
         trackData: this.trackData,
         queueTracks: this.queueTracks
@@ -103,10 +103,10 @@ export default {
         this.trackData
       )
     },
-    fetchTrackData,
+    getPlayerTrack,
     fetchAudio () {
-      this.fetchTrackData(
-        this.trackDataArgs
+      this.getPlayerTrack(
+        this.playerTrackArgs
       )
     }
   }

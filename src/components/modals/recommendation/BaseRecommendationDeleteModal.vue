@@ -1,53 +1,22 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <template #default>
-      <div class="header">
-        {{ headerText }}
-      </div>
-
-      <div class="content">
-        <TextSection
-          :artistName="artistName"
-        />
-
-        <BaseErrorMessage
-          v-if="error"
-          class="error-message"
-          :error="error"
-        />
-      </div>
-
-      <div class="actions">
-        <BaseButton
-          class="cancel"
-          :text="cancelText"
-        />
-
-        <BaseButton
-          class="red"
-          :text="deleteText"
-          :class="{ loading: isLoading }"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
-    </template>
-  </BaseModalContainer>
+  <BaseDeleteModal
+    ref="modal"
+    modelType="recommendation"
+    :modelName="artistName"
+    :isLoading="isLoading"
+    :error="error"
+    @deleteButtonClick="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import TextSection from './BaseRecommendationDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import deleteRecommendationData from '#/actions/api/recommendation/deleteData'
+import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
+import deleteRecommendation from '#/actions/api/recommendation/delete'
 
 export default {
   name: 'BaseRecommendationDeleteModal',
   components: {
-    BaseModalContainer,
-    TextSection,
-    BaseErrorMessage,
-    BaseButton
+    BaseDeleteModal
   },
   props: {
     recommendationData: {
@@ -65,40 +34,32 @@ export default {
     }
   },
   computed: {
-    headerText () {
-      return this.$t(
-        'shared.recommendation.delete.header'
-      )
-    },
-    cancelText () {
-      return this.$t(
-        'buttons.cancel'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'buttons.delete'
-      )
-    },
     artistName () {
       return this.recommendationData.name
     },
     recommendationId () {
       return this.recommendationData.id
+    },
+    deleteArgs () {
+      return {
+        recommendationId: this.recommendationId
+      }
     }
   },
   methods: {
-    deleteRecommendationData,
     handleDeleteButtonClick () {
-      this.deleteRecommendationData({
-        recommendationId: this.recommendationId
-      }).then(this.handleSuccess)
+      this.deleteRecommendation(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
       this.$refs.modal.hide()
 
       this.$emit('deleted')
     },
+    deleteRecommendation,
     show () {
       this.$refs.modal.show()
     }

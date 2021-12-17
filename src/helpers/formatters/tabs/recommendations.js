@@ -5,7 +5,7 @@ import {
 
 export default function () {
   const title = i18n.global.t(
-    'layout.navigation.recommendations'
+    'navigation.recommendations'
   )
 
   const { path } = formatRecommendationsLink()

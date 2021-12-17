@@ -5,10 +5,12 @@
       disabled: isLoading,
       active: isActive
     }"
-    @click="handleClick"
+    @click.prevent="handleClick"
   >
-    <BasePlaylistImage
-      :image="imageData.small"
+    <BaseImage
+      class="rounded bordered"
+      model="playlist"
+      :image="imageData?.small"
     />
 
     <div class="content">
@@ -40,19 +42,22 @@
 
 <script>
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import { number as formatNumber } from '#/formatters'
-import postTrackData from '#/actions/api/playlist/tracks/postData'
-import deleteTrackData from '#/actions/api/playlist/tracks/deleteData'
+import createPlaylistTrack from '#/actions/api/playlist/track/create'
+import deletePlaylistTrack from '#/actions/api/playlist/track/delete'
 
 export default {
   name: 'PlaylistItem',
   components: {
     BaseLinkContainer,
-    BasePlaylistImage,
+    BaseImage,
     BaseHeader
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     playlistData: {
       type: Object,
@@ -93,7 +98,7 @@ export default {
     },
     tracksCountText () {
       return this.$t(
-        'shared.tracks',
+        'counters.tracks',
         { count: this.tracksCountFormatted }
       )
     },
@@ -108,13 +113,27 @@ export default {
     isActive () {
       return !!this.playlistTrackId
     },
-    trackParams () {
+    createArgs () {
       return {
         playlistId: this.playlistId,
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
         imageUrl: this.imageUrl
+      }
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.playlistData.uuid
+    },
+    deleteArgs () {
+      return {
+        playlistId: this.playlistId,
+        playlistTrackId: this.playlistTrackId
       }
     }
   },
@@ -130,18 +149,30 @@ export default {
         this.postData()
       }
     },
-    postTrackData,
-    deleteTrackData,
+    handleSuccess (response) {
+      this.isSuccess = true
+
+      this.playlistTrackId =
+        response.data.playlist_track_id
+
+      this.paginationItem.tracks_count =
+        response.data.playlist_tracks_count
+    },
+    createPlaylistTrack,
+    deletePlaylistTrack,
     postData () {
-      this.postTrackData(
-        this.trackParams
+      this.createPlaylistTrack(
+        this.createArgs
+      ).then(
+        this.handleSuccess
       )
     },
     deleteData () {
-      this.deleteTrackData({
-        playlistId: this.playlistId,
-        playlistTrackId: this.playlistTrackId
-      })
+      this.deletePlaylistTrack(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     }
   }
 }

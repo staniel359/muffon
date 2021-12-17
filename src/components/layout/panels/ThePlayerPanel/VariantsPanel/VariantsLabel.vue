@@ -25,7 +25,7 @@ export default {
     }),
     variantsText () {
       return this.$t(
-        'layout.player.variants',
+        'player.variants',
         { number: this.playerVariantsCount }
       )
     },

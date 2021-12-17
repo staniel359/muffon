@@ -10,11 +10,11 @@ export default function ({ pageNameKey }) {
   const formatTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.top.${pageNameKey}`
+        `navigation.top.${pageNameKey}`
       )
     } else {
       return i18n.global.t(
-        'layout.navigation.tops'
+        'navigation.tops'
       )
     }
   }

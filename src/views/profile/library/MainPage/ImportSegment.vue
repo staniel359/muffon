@@ -32,7 +32,7 @@ export default {
   computed: {
     addText () {
       return this.$t(
-        'shared.library.add'
+        'actions.addTo.library'
       )
     }
   }

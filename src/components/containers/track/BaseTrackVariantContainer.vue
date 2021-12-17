@@ -13,7 +13,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import fetchVariantData from '#/actions/player/variant/fetchData'
+import getPlayerVariant from '#/actions/player/variant/get'
 
 export default {
   name: 'BaseTrackVariantContainer',
@@ -48,7 +48,7 @@ export default {
     variantId () {
       return this.variantData.uuid
     },
-    variantDataArgs () {
+    playerVariantArgs () {
       return {
         variantId: this.variantId
       }
@@ -67,10 +67,10 @@ export default {
         this.audioAction
       ]()
     },
-    fetchVariantData,
+    getPlayerVariant,
     fetchAudio () {
-      this.fetchVariantData(
-        this.variantDataArgs
+      this.getPlayerVariant(
+        this.playerVariantArgs
       )
     }
   }

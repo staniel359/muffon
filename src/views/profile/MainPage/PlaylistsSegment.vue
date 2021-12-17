@@ -41,8 +41,7 @@ import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
   from '@/lists/playlists/BasePlaylistsSimpleList.vue'
-import fetchProfilePlaylistsData
-  from '#/actions/api/profile/playlists/fetchData'
+import getProfilePlaylists from '#/actions/api/profile/playlists/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -65,7 +64,7 @@ export default {
     }
   },
   computed: {
-    playlistsDataArgs () {
+    profilePlaylistsArgs () {
       return {
         profileId: this.profileId,
         limit: this.limit
@@ -84,10 +83,10 @@ export default {
         this.$refs.segment
       )
     },
-    fetchProfilePlaylistsData,
+    getProfilePlaylists,
     fetchData (page) {
-      this.fetchProfilePlaylistsData({
-        ...this.playlistsDataArgs,
+      this.getProfilePlaylists({
+        ...this.profilePlaylistsArgs,
         page
       })
     }

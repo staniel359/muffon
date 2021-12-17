@@ -78,7 +78,7 @@ export default {
   computed: {
     successHeaderText () {
       return this.$t(
-        'shared.add.import.success.tracks.header',
+        'import.success.tracks.header',
         { count: this.totalCountFormatted }
       )
     },
@@ -89,7 +89,7 @@ export default {
     },
     successContentText () {
       return this.$t(
-        'shared.add.import.success.tracks.content'
+        'import.success.tracks.content'
       )
     },
     tracksData () {

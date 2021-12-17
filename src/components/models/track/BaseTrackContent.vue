@@ -11,10 +11,14 @@
       :isCurrent="isCurrent"
     />
 
-    <TrackImage
-      v-if="isRenderImage"
-      :imageData="imageData"
-    />
+    <div class="track-image-container">
+      <BaseImage
+        v-if="isWithImage"
+        class="rounded bordered"
+        model="track"
+        :image="imageData?.extrasmall"
+      />
+    </div>
 
     <div class="content">
       <div class="track-index-main-info-listeners">
@@ -24,21 +28,36 @@
             :index="index"
           />
 
-          <TrackMainInfo
-            :trackData="trackData"
-            :isWithArtistName="isWithArtistName"
-            :artistName="artistName"
-            :artists="artists"
-            :albumArtistName="albumArtistName"
-            :isWithAlbumTitle="isWithAlbumTitle"
-            :albumData="albumData"
-            :isLinkToLibrary="isLinkToLibrary"
-            :profileId="profileId"
-            :trackId="trackId"
-            :artistId="artistId"
-            :albumId="albumId"
-            @linkClick="handleLinkClick"
-          />
+          <div class="track-main-info">
+            <TrackTitle
+              :trackData="trackData"
+              :artistName="artistName"
+              :isLinkToLibrary="isLinkToLibrary"
+              :profileId="profileId"
+              :trackId="trackId"
+              @linkClick="handleLinkClick"
+            />
+
+            <TrackArtistName
+              v-if="isRenderArtistName"
+              :artists="artists"
+              :artistName="artistName"
+              :isLinkToLibrary="isLinkToLibrary"
+              :profileId="profileId"
+              :artistId="artistId"
+              @linkClick="handleLinkClick"
+            />
+
+            <TrackAlbumTitle
+              v-if="isRenderAlbumTitle"
+              :albumData="albumData"
+              :artistName="artistName"
+              :isLinkToLibrary="isLinkToLibrary"
+              :profileId="profileId"
+              :albumId="albumId"
+              @linkClick="handleLinkClick"
+            />
+          </div>
         </div>
 
         <TrackListenersCount
@@ -90,7 +109,7 @@
       :trackTitle="trackTitle"
       :artistName="artistName"
       :albumTitle="albumTitle"
-      :imageUrl="imageData?.medium"
+      :imageUrl="imageData?.original"
       :libraryId="libraryId"
       :favoriteId="favoriteId"
       :bookmarkId="bookmarkId"
@@ -111,7 +130,7 @@
       :trackTitle="trackTitle"
       :artistName="artistName"
       :albumTitle="albumTitle"
-      :imageUrl="imageData?.medium"
+      :imageUrl="imageData?.original"
     />
 
     <BaseBookmarkDeleteModal
@@ -142,7 +161,7 @@
       model="track"
       :profileId="profileId"
       :modelId="trackId"
-      :modelTitle="trackFullTitle"
+      :modelName="trackFullTitle"
       @deleted="handleDeleted"
     />
   </template>
@@ -151,9 +170,11 @@
 <script>
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
 import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
-import TrackImage from './BaseTrackContent/TrackImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import TrackIndex from './BaseTrackContent/TrackIndex.vue'
-import TrackMainInfo from './BaseTrackContent/TrackMainInfo.vue'
+import TrackTitle from './BaseTrackContent/TrackTitle.vue'
+import TrackArtistName from './BaseTrackContent/TrackArtistName.vue'
+import TrackAlbumTitle from './BaseTrackContent/TrackAlbumTitle.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
@@ -178,9 +199,11 @@ export default {
   components: {
     BaseDeletedBlock,
     BaseTrackAudioIcon,
-    TrackImage,
+    BaseImage,
     TrackIndex,
-    TrackMainInfo,
+    TrackTitle,
+    TrackArtistName,
+    TrackAlbumTitle,
     TrackListenersCount,
     TrackDuration,
     BaseSourceIcon,
@@ -253,17 +276,14 @@ export default {
     }
   },
   computed: {
-    isRenderImage () {
-      return (
-        this.isWithImage &&
-          this.imageData
-      )
-    },
     imageData () {
       return this.trackData.image
     },
     isRenderIndex () {
-      return this.isWithIndex && this.index >= 0
+      return (
+        this.isWithIndex &&
+          this.index >= 0
+      )
     },
     trackTitle () {
       return this.trackData.title
@@ -271,11 +291,31 @@ export default {
     trackExtraTitle () {
       return this.trackData.extra_title
     },
+    isRenderArtistName () {
+      return (
+        this.isWithArtistName && (
+          !this.albumArtistName ||
+            this.isDifferentNames
+        )
+      )
+    },
+    isDifferentNames () {
+      return (
+        this.artistName.toLowerCase() !==
+          this.albumArtistName.toLowerCase()
+      )
+    },
     artistName () {
       return this.trackData.artist?.name
     },
     artists () {
       return this.trackData.artists
+    },
+    isRenderAlbumTitle () {
+      return (
+        this.isWithAlbumTitle &&
+          this.albumTitle
+      )
     },
     albumTitle () {
       return this.albumData?.title
@@ -341,7 +381,10 @@ export default {
       return this.trackData.uuid
     },
     trackFullTitle () {
-      return `${this.artistName} - ${this.trackTitle}`
+      return [
+        this.artistName,
+        this.trackTitle
+      ].join(' - ')
     }
   },
   mounted () {
@@ -394,11 +437,17 @@ export default {
 .track-play-button
   @extend .no-padding
   min-width: unset !important
-  margin: 0 $trackContentMarginWidth !important
+  margin: 0 0.5em !important
+
+.track-image-container
+  margin-left: 0.5em
+  .image
+    width: 30px
+    height: 30px
 
 .content
   @extend .d-flex, .align-items-center
-  margin-left: $trackContentMarginWidth
+  margin-left: 0.5em
 
 .track-index-main-info-listeners
   @extend .flex-full
@@ -406,15 +455,18 @@ export default {
 .track-index-main-info
   @extend .d-flex, .align-items-center
 
+.track-main-info
+  @extend .flex-full
+
 .main-simple-self-buttons-container
-  margin-left: $trackContentMarginWidth
+  margin-left: 0.5em
 
 .track-source-icon
   @extend .no-padding
   min-width: unset !important
-  margin-left: $trackContentMarginWidth !important
+  margin-left: 0.5em !important
 
 .created-container
-  margin-left: $trackContentMarginWidth !important
+  margin-left: 0.5em !important
   text-align: right
 </style>

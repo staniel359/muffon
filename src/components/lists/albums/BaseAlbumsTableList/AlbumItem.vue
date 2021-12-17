@@ -1,17 +1,23 @@
 <template>
-  <BaseLinkContainer
-    :link="link"
-    @click="handleLinkClick"
+  <BaseAlbumLinkContainer
+    :albumData="albumData"
+    :profileId="profileId"
+    :artistName="artistName"
+    :isLinkToLibrary="isLinkToLibrary"
+    :isArtistNameActive="isArtistNameActive"
+    :isTracksActive="isTracksActive"
+    @linkClick="handleLinkClick"
   >
     <BaseSimpleCardContainer
-      :image="imageData.medium"
+      model="album"
+      :image="imageData?.medium"
     >
       <BaseOptionsDropdown
         class="options"
         model="album"
         :artistName="albumArtistName"
         :albumTitle="albumTitle"
-        :imageUrl="imageData.medium"
+        :imageUrl="imageData?.original"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -21,71 +27,107 @@
         :isWithBookmarkOption="isWithBookmarkOption"
         :isWithListenedOption="isWithListenedOption"
         :isWithDeleteOption="isWithDeleteOption"
-        isWhite
+        :isTransparent="false"
         @linkClick="handleLinkClick"
       />
 
-      <InfoSection
-        :albumData="albumData"
-        :artistName="albumArtistName"
-        :isWithArtistName="isWithArtistName"
-        :isArtistNameActive="isArtistNameActive"
-        :isTracksLinkActive="isTracksLinkActive"
-        :isWithListenersCount="isWithListenersCount"
-        :isWithTracksCount="isWithTracksCount"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-        @tracksLinkActiveChange="handleTracksLinkActiveChange"
-      />
+      <div class="content">
+        <BaseHeader
+          tag="h4"
+          :class="{ link: isHeaderActive }"
+          :text="albumTitle"
+        />
+
+        <ArtistNameSection
+          v-if="isWithArtistName"
+          :artistName="albumArtistName"
+          :isArtistNameActive="isArtistNameActive"
+          @activeChange="handleArtistNameActiveChange"
+        />
+
+        <div
+          v-if="releaseDate"
+          class="description release-date"
+        >
+          {{ releaseDate }}
+        </div>
+
+        <BaseAlbumListenersCount
+          v-if="isWithListenersCount"
+          class="description"
+          :albumTitle="albumTitle"
+          :artistName="albumArtistName"
+          :listenersCount="listenersCount"
+          @loadEnd="handleListenersCountLoadEnd"
+        />
+
+        <TracksSection
+          v-if="isWithLibrary"
+          :albumData="albumData"
+          :isTracksActive="isTracksActive"
+          @activeChange="handleTracksActiveChange"
+        />
+
+        <BaseSelfIcons
+          v-if="isWithSelfIcons"
+          :libraryId="libraryId"
+          :favoriteId="favoriteId"
+          :bookmarkId="bookmarkId"
+          :listenedId="listenedId"
+        />
+      </div>
     </BaseSimpleCardContainer>
-  </BaseLinkContainer>
+  </BaseAlbumLinkContainer>
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseAlbumLinkContainer
+  from '@/containers/album/BaseAlbumLinkContainer.vue'
 import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import InfoSection from './AlbumItem/InfoSection.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import {
-  main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
-import {
-  main as formatProfileLibraryAlbumMainLink,
-  tracks as formatProfileLibraryAlbumTracksLink
-} from '#/formatters/links/profile/library/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import BaseHeader from '@/BaseHeader.vue'
+import ArtistNameSection from './AlbumItem/ArtistNameSection.vue'
+import BaseAlbumListenersCount
+  from '@/models/album/BaseAlbumListenersCount.vue'
+import TracksSection from './AlbumItem/TracksSection.vue'
+import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 
 export default {
   name: 'AlbumItem',
   components: {
-    BaseLinkContainer,
+    BaseAlbumLinkContainer,
     BaseSimpleCardContainer,
     BaseOptionsDropdown,
-    InfoSection
+    BaseHeader,
+    ArtistNameSection,
+    BaseAlbumListenersCount,
+    TracksSection,
+    BaseSelfIcons
   },
   provide () {
     return {
-      setIsArtistNameActive: this.setIsArtistNameActive,
       setLibraryId: this.setLibraryId,
       setFavoriteId: this.setFavoriteId,
       setBookmarkId: this.setBookmarkId,
       setListenedId: this.setListenedId
     }
   },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     albumData: {
       type: Object,
       required: true
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     artistName: String,
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
-    isWithTracksCount: Boolean,
+    isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryOption: Boolean,
@@ -99,86 +141,46 @@ export default {
   ],
   data () {
     return {
-      isArtistNameActive: false,
-      isTracksLinkActive: false,
       libraryId: null,
       favoriteId: null,
       bookmarkId: null,
-      listenedId: null
+      listenedId: null,
+      isArtistNameActive: false,
+      isTracksActive: false
     }
   },
   computed: {
-    link () {
-      if (this.isArtistNameActive) {
-        if (this.isLinkToLibrary) {
-          return this.profileLibraryArtistMainLink
-        } else {
-          return this.artistMainLink
-        }
-      } else if (this.isTracksLinkActive) {
-        return this.profileLibraryAlbumTracksLink
-      } else {
-        if (this.isLinkToLibrary) {
-          return this.profileLibraryAlbumMainLink
-        } else {
-          return this.albumMainLink
-        }
-      }
-    },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
-    },
-    artistId () {
-      return this.albumData.artist.id
-    },
-    artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.albumArtistName
-      })
-    },
     albumArtistName () {
       return (
         this.albumData.artist?.name ||
           this.artistName
       )
     },
-    profileLibraryAlbumTracksLink () {
-      return formatProfileLibraryAlbumTracksLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
-    },
-    albumId () {
-      return this.albumData.id?.toString()
-    },
-    profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
-    },
-    albumMainLink () {
-      return formatAlbumMainLink({
-        artistName: this.albumArtistName,
-        albumTitle: this.albumTitle,
-        sourceParams: this.sourceParams
-      })
-    },
-    sourceParams () {
-      return formatAlbumSourceParams({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.albumArtistName
-      })
-    },
     albumTitle () {
       return this.albumData.title
     },
     imageData () {
       return this.albumData.image
+    },
+    isHeaderActive () {
+      return !(
+        this.isArtistNameActive ||
+          this.isTracksActive
+      )
+    },
+    releaseDate () {
+      return this.albumData.release_date
+    },
+    listenersCount () {
+      return this.albumData.listeners_count
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.albumData.uuid
     }
   },
   mounted () {
@@ -195,11 +197,14 @@ export default {
     handleLinkClick () {
       this.$emit('linkClick')
     },
-    handleTracksLinkActiveChange (value) {
-      this.isTracksLinkActive = value
-    },
-    setIsArtistNameActive (value) {
+    handleArtistNameActiveChange (value) {
       this.isArtistNameActive = value
+    },
+    handleTracksActiveChange (value) {
+      this.isTracksActive = value
+    },
+    handleListenersCountLoadEnd (value) {
+      this.paginationItem.listeners_count = value
     },
     setLibraryId (value) {
       this.libraryId = value
@@ -217,4 +222,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.content
+  @extend .d-flex, .flex-column, .align-items-center
+
+.release-date
+  line-height: 1em
+</style>

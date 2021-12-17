@@ -1,7 +1,6 @@
 <template>
   <BasePaginatedListContainer
     v-if="tracks.length"
-    ref="pagination"
     scope="tracks"
     :responseData="tracksData"
     :clientPageLimit="limit"

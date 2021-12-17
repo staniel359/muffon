@@ -1,8 +1,9 @@
 <template>
   <div class="field">
     <div class="image-field-content">
-      <BaseProfileImage
-        class="image-preview"
+      <BaseImage
+        class="image-preview circular bordered"
+        model="profile"
         :image="imageUrl"
       />
 
@@ -30,14 +31,14 @@
 </template>
 
 <script>
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import BaseImageInput from '@/inputs/BaseImageInput.vue'
 
 export default {
-  name: 'BaseProfileImageField',
+  name: 'BaseImageField',
   components: {
-    BaseProfileImage,
+    BaseImage,
     BaseButton,
     BaseImageInput
   },
@@ -55,12 +56,12 @@ export default {
   computed: {
     addText () {
       return this.$t(
-        'shared.profile.form.fields.image'
+        'forms.fields.image'
       )
     },
     deleteText () {
       return this.$t(
-        'buttons.delete'
+        'actions.delete'
       )
     }
   },

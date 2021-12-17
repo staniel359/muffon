@@ -25,8 +25,7 @@ import formatProfileLibraryArtistPageNavigation
   from '#/formatters/navigation/profile/library/artist'
 import formatProfileLibraryArtistPageTab
   from '#/formatters/tabs/profile/library/artist'
-import fetchProfileLibraryArtistData
-  from '#/actions/api/profile/library/artist/fetchData'
+import getLibraryArtist from '#/actions/api/library/artist/get'
 
 export default {
   name: 'BaseProfileLibraryArtistPageContainer',
@@ -88,7 +87,7 @@ export default {
     libraryData () {
       return this.profileData?.library
     },
-    libraryDataArgs () {
+    libraryArgs () {
       return {
         profileId: this.profileId,
         artistId: this.artistId,
@@ -107,10 +106,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchProfileLibraryArtistData,
+    getLibraryArtist,
     fetchData (page) {
-      this.fetchProfileLibraryArtistData({
-        ...this.libraryDataArgs,
+      this.getLibraryArtist({
+        ...this.libraryArgs,
         page
       })
     }

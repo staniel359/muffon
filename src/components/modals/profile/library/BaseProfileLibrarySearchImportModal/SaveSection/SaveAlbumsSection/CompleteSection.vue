@@ -39,7 +39,7 @@ export default {
   computed: {
     successText () {
       return this.$t(
-        'shared.add.save.success.albums',
+        'save.success.albums',
         { count: this.totalCountFormatted }
       )
     },

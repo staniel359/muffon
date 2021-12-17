@@ -17,7 +17,7 @@ export default {
   computed: {
     addText () {
       return this.$t(
-        'shared.playlist.add'
+        'actions.addTo.playlist'
       )
     }
   },

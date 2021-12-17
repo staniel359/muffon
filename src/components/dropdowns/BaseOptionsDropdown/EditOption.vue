@@ -17,7 +17,7 @@ export default {
   computed: {
     editText () {
       return this.$t(
-        'buttons.edit'
+        'actions.edit'
       )
     }
   },

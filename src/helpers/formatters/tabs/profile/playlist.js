@@ -11,7 +11,7 @@ export default function ({
 }) {
   const formatProfilePlaylistsPageTitle = () => {
     return i18n.global.t(
-      'layout.navigation.model.playlists',
+      'navigation.model.playlists',
       { modelName: profileNickname }
     )
   }

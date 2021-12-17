@@ -38,13 +38,13 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        'pages.profile.compatibility.header',
+        'compatibility.header',
         { profileNickname: this.profileNickname }
       )
     },
     commonText () {
       return this.$t(
-        'pages.profile.compatibility.common'
+        'compatibility.common'
       )
     }
   }

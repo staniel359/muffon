@@ -1,53 +1,31 @@
 <template>
-  <BaseProfileLoginFormContainer>
-    <BaseProfileEmailField
-      ref="email"
-    />
+  <div
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
+  >
+    <FormSegment/>
 
-    <BaseProfilePasswordField />
-
-    <BaseProfileRememberField />
-
-    <SubmitButton />
-
-    <BaseDivider />
-
-    <SignupSection
+    <SignupSegment
       @signupLinkClick="handleSignupLinkClick"
     />
-  </BaseProfileLoginFormContainer>
+  </div>
 </template>
 
 <script>
-import BaseProfileLoginFormContainer
-  from '@/containers/forms/profile/BaseProfileLoginFormContainer.vue'
-import BaseProfileEmailField
-  from '@/fields/profile/BaseProfileEmailField.vue'
-import BaseProfilePasswordField
-  from '@/fields/profile/BaseProfilePasswordField.vue'
-import BaseProfileRememberField
-  from '@/fields/profile/BaseProfileRememberField.vue'
-import SubmitButton from './BaseProfileLoginForm/SubmitButton.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import SignupSection from './BaseProfileLoginForm/SignupSection.vue'
+import FormSegment from './BaseProfileLoginForm/FormSegment.vue'
+import SignupSegment from './BaseProfileLoginForm/SignupSegment.vue'
 
 export default {
   name: 'BaseProfileLoginForm',
   components: {
-    BaseProfileLoginFormContainer,
-    BaseProfileEmailField,
-    BaseProfilePasswordField,
-    BaseProfileRememberField,
-    SubmitButton,
-    SignupSection,
-    BaseDivider
+    FormSegment,
+    SignupSegment
   },
   emits: [
     'signupLinkClick'
   ],
-  mounted () {
-    this.$refs.email.focus()
-  },
   methods: {
     handleSignupLinkClick () {
       this.$emit(

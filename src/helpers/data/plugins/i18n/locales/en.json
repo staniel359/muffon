@@ -1,113 +1,48 @@
 {
-  "layout": {
-    "navigation": {
-      "feed": "Feed",
-      "conversations": "Conversations",
-      "artists": "Artists",
-      "artist": "Artist",
-      "albums": "Albums",
-      "albumGroups": "Album groups",
-      "tracks": "Tracks",
-      "tags": "Tags",
-      "tag": "Tag",
-      "similar": "Similar",
-      "images": "Images",
-      "videoChannels": "Video channels",
-      "videos": "Videos",
-      "profiles": "Profiles",
-      "library": "Library",
-      "recommendations": "Recommendations",
-      "bookmarks": "Bookmarks",
-      "favorites": "Favorites",
-      "tops": "Top",
-      "playlists": "Playlists",
-      "radio": "Radio",
-      "posts": "Posts",
-      "followers": "Followers",
-      "following": "Following",
-      "model": {
-        "artists": "{modelName} artists",
-        "albums": "{modelName} albums",
-        "tracks": "{modelName} tracks",
-        "similar": "{modelName} similar",
-        "images": "{modelName} images",
-        "videos": "{modelName} videos",
-        "library": "{modelName} library",
-        "favorites": "{modelName} favorites",
-        "playlists": "{modelName} playlists",
-        "posts": "{modelName} posts",
-        "followers": "{modelName} followers",
-        "following": "{modelName} following"
-      },
-      "top": {
-        "artists": "Top artists",
-        "tracks": "Top tracks",
-        "tags": "Top tags"
-      }
+  "navigation": {
+    "artists": "Artists",
+    "artist": "Artist",
+    "albums": "Albums",
+    "albumGroups": "Album groups",
+    "tracks": "Tracks",
+    "tags": "Tags",
+    "tag": "Tag",
+    "similar": "Similar",
+    "images": "Images",
+    "videoChannels": "Video channels",
+    "videos": "Videos",
+    "tops": "Top",
+    "radio": "Radio",
+    "profiles": "Profiles",
+    "feed": "Feed",
+    "posts": "Posts",
+    "followers": "Followers",
+    "following": "Following",
+    "conversations": "Conversations",
+    "library": "Library",
+    "recommendations": "Recommendations",
+    "playlists": "Playlists",
+    "favorites": "Favorites",
+    "bookmarks": "Bookmarks",
+    "settings": "Settings",
+    "model": {
+      "artists": "{modelName} artists",
+      "albums": "{modelName} albums",
+      "tracks": "{modelName} tracks",
+      "similar": "{modelName} similar",
+      "images": "{modelName} images",
+      "videos": "{modelName} videos",
+      "posts": "{modelName} posts",
+      "followers": "{modelName} followers",
+      "following": "{modelName} following",
+      "library": "{modelName} library",
+      "playlists": "{modelName} playlists",
+      "favorites": "{modelName} favorites"
     },
-    "player": {
-      "variants": "Variants ({number})"
-    },
-    "sidebar": {
-      "settings": "Settings",
-      "logout": "Log out"
-    },
-    "settings": {
-      "tabs": {
-        "app": "App",
-        "profile": "Profile",
-        "services": "Services"
-      },
-      "sections": {
-        "app": {
-          "main": "Main",
-          "view": "View",
-          "player": "Player",
-          "queue": "Queue",
-          "data": "Data"
-        },
-        "profile": {
-          "info": "Info"
-        }
-      },
-      "options": {
-        "app": {
-          "main": {
-            "language": "Language"
-          },
-          "view": {
-            "darkMode": "Dark mode"
-          },
-          "player": {
-            "audioSource": "Audio source"
-          },
-          "queue": {
-            "autoplay": "Autoplay"
-          },
-          "data": {
-            "cache": {
-              "clear": "Clear cache",
-              "cleared": "Cache was cleared"
-            },
-            "history": {
-              "search": {
-                "clear": "Clear search history",
-                "cleared": "Search history was cleared"
-              }
-            }
-          }
-        },
-        "services": {
-          "lastfm": {
-            "connect": "Connect account",
-            "wait": "Your browser will now open. Confirm connection there and click this button again.",
-            "connected": "Account connected",
-            "scrobbling": "Scrobbling",
-            "scrobbleNotifications": "Scrobble notifications",
-            "scrobblePercent": "Scrobble after"
-          }
-        }
-      }
+    "top": {
+      "artists": "Top artists",
+      "tracks": "Top tracks",
+      "tags": "Top tags"
     }
   },
   "errors": {
@@ -144,45 +79,10 @@
       "content": "Please contact us for information"
     }
   },
-  "pages": {
-    "artist": {
-      "recommended": {
-        "header": "Recommended to you",
-        "based": "Based on your:",
-        "artists": "{count} artists"
-      }
-    },
-    "track": {
-      "videos": {
-        "find": "Find video",
-        "loading": "Loading videos...",
-        "select": "Select video:",
-        "empty": "No videos"
-      },
-      "lyrics": {
-        "find": "Find lyrics",
-        "loading": "Loading lyrics...",
-        "select": "Select lyrics:",
-        "empty": "No lyrics"
-      }
-    },
-    "profile": {
-      "library": {
-        "since": "In library since"
-      },
-      "compatibility": {
-        "header": "Your compatibility level with {profileNickname}",
-        "common": "You have in common:",
-        "artists": "{count} artists",
-        "albums": "{count} albums",
-        "tracks": "{count} tracks"
-      }
-    },
-    "recommendations": {
-      "filter": "Filter"
-    }
-  },
-  "buttons": {
+  "actions": {
+    "login": "Log in",
+    "logout": "Log out",
+    "signup": "Sign up",
     "create": "Create",
     "edit": "Edit",
     "save": "Save",
@@ -191,11 +91,44 @@
     "retry": "Retry",
     "post": "Post",
     "send": "Send",
+    "next": "Next",
     "from": {
       "search": "From search",
       "folder": "From folder",
       "account": "From account",
       "library": "From library"
+    },
+    "find": {
+      "sources": "Find in sources",
+      "videos": "Find video",
+      "lyrics": "Find lyrics"
+    },
+    "account": {
+      "import": {
+        "lastfm": "Import Last.FM data"
+      }
+    },
+    "folder": {
+      "select": "Select folder"
+    },
+    "add": {
+      "playlist": "Add playlist",
+      "tracks": "Add tracks"
+    },
+    "addTo": {
+      "library": "Add to library",
+      "playlist": "Add to playlist",
+      "favorites": "Add to favorites",
+      "bookmarks": "Add to bookmarks",
+      "listened": "Add to listened"
+    },
+    "show": {
+      "library": "Show in library"
+    },
+    "deleteFrom": {
+      "favorites": "Delete from favorites",
+      "bookmarks": "Delete from bookmarks",
+      "listened": "Delete from listened"
     }
   },
   "inputs": {
@@ -203,291 +136,320 @@
     "content": "Write something..."
   },
   "modals": {
-    "undo": "You can't undo this action!",
-    "sure": "Are you sure?"
+    "delete": {
+      "header": {
+        "library": {
+          "artist": "Delete artist from library",
+          "album": "Delete album from library",
+          "track": "Delete track from library"
+        },
+        "recommendation": "Delete recommendation",
+        "playlist": "Delete playlist",
+        "playlistTrack": "Delete track from playlist",
+        "favorite": {
+          "artist": "Delete artist from favorites",
+          "album": "Delete album from favorites",
+          "track": "Delete track from favorites"
+        },
+        "bookmark": {
+          "artist": "Delete artist from bookmarks",
+          "album": "Delete album from bookmarks",
+          "track": "Delete track from bookmarks"
+        },
+        "post": "Delete post"
+      },
+      "going": {
+        "library": "You are going to delete {modelName} from your library.",
+        "recommendation": "You are going to delete {modelName} from your recommendations.",
+        "playlist": "You are going to delete {modelName} from your playlists.",
+        "playlistTrack": "You are going to delete {modelName} from {parentModelName} playlist.",
+        "favorite": "You are going to delete {modelName} from your favorites.",
+        "bookmark": "You are going to delete {modelName} from your bookmarks.",
+        "post": "You are going to delete this post."
+      },
+      "also": {
+        "library": {
+          "artist": "This will also delete all this artist's albums and tracks.",
+          "album": "This will also delete all this album's tracks."
+        },
+        "playlist": "This will also delete all this playlist's tracks."
+      },
+      "undo": "You can't undo this action!",
+      "sure": "Are you sure?"
+    }
   },
-  "shared": {
-    "error": "Error",
-    "more": "More...",
-    "loading": "Loading...",
-    "next": "Next",
-    "track": {
-      "source": "Via {source}"
-    },
-    "tracks": "{count} tracks",
-    "paginated": {
-      "noCollection": {
-        "header": {
-          "artists": "No artists",
-          "albums": "No albums",
-          "tracks": "No tracks",
-          "playlists": "No playlists",
-          "recommendations": "No recommendations",
-          "posts": "No posts",
-          "feed": "No posts",
-          "conversations": "No conversations",
-          "followers": "No followers",
-          "following": "No following"
-        },
-        "content": "Looks like there is nothing here"
+  "forms": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Password confirmation",
+      "nickname": "Nickname",
+      "title": "Title",
+      "image": "Upload image",
+      "gender": "Gender",
+      "birthdate": "Birth date",
+      "country": "Country",
+      "city": "City",
+      "genders": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
       }
     },
-    "player": {
-      "scrobbled": "{trackFullTitle} was successfully scrobbled"
-    },
-    "sources": {
-      "find": "Find in sources",
-      "select": {
-        "source": "Select source:",
-        "type": "Select type:",
-        "album": "Select album:",
-        "albumVarious": "Select V/A album:",
-        "group": "Select album group:",
-        "artist": "Select artist:",
-        "track": "Select track:"
+    "remember": "Remember me",
+    "extra": "Additional info",
+    "errors": {
+      "notFound": "Email or password is wrong",
+      "empty": {
+        "email": "Email is empty",
+        "password": "Password is empty",
+        "passwordConfirmation": "Password confirmation is empty",
+        "nickname": "Nickname is empty",
+        "title": "Title is empty"
       },
-      "streamable": "Streamable",
-      "other": "Other",
-      "albumTypes": {
-        "album": "Album",
-        "albumVarious": "V/A album",
-        "group": "Album group",
-        "track": "Track"
+      "invalid": {
+        "email": "Email is invalid"
       },
-      "albumsTypes": {
-        "album": "Albums",
-        "single": "Singles",
-        "single_ep": "Singles / EPs",
-        "compilation": "Compilations",
-        "video": "Videos",
-        "misc": "Miscellaneous",
-        "appearance": "Appearances"
+      "taken": {
+        "email": "Email is taken",
+        "nickname": "Nickname is taken",
+        "title": "Title is taken"
+      },
+      "tooShort": {
+        "password": "Password is too short"
+      },
+      "tooLong": {
+        "nickname": "Nickname is too long"
+      },
+      "confirmation": {
+        "passwordConfirmation": "Password and its confirmation don't match"
       }
-    },
-    "add": {
-      "account": {
-        "import": {
-          "lastfm": "Import Last.FM data"
-        }
-      },
-      "folder": {
-        "select": "Select folder"
-      },
-      "import": {
-        "active": {
-          "tracks": "Importing {value} of {total} tracks...",
-          "plays": "Importing {value} of {total} plays..."
-        },
-        "success": {
-          "tracks": {
-            "header": "All {count} tracks were successfully imported",
-            "content": "You may want to check them before saving to library"
-          }
-        },
-        "error": {
-          "files": "{count} files could not be imported. Please fix these files' ID3 data and retry:"
-        }
-      },
-      "save": {
-        "active": {
-          "artists": "Saving {value} of {total} artists...",
-          "albums": "Saving {value} of {total} albums...",
-          "tracks": "Saving {value} of {total} tracks..."
-        },
-        "success": {
-          "artists": "All {count} artists were successfully saved to library",
-          "albums": "All {count} albums were successfully saved to library",
-          "tracks": "All {count} tracks were successfully saved to library"
-        },
-        "error": {
-          "artists": "{count} artists could not be saved:",
-          "albums": "{count} albums could not be saved:",
-          "tracks": "{count} tracks could not be saved:"
-        }
-      }
-    },
-    "profile": {
-      "form": {
-        "fields": {
-          "email": "Email",
-          "password": "Password",
-          "passwordConfirmation": "Password confirmation",
-          "nickname": "Nickname",
-          "image": "Upload image",
-          "gender": "Gender",
-          "birthdate": "Birth date",
-          "country": "Country",
-          "city": "City",
-          "genders": {
-            "male": "Male",
-            "female": "Female",
-            "other": "Other"
-          }
-        },
-        "remember": "Remember me",
-        "submit": {
-          "login": "Log in",
-          "signup": "Sign up"
-        },
-        "sections": {
-          "extra": "Additional info"
-        },
-        "errors": {
-          "notFound": "Email or password is wrong",
-          "empty": {
-            "email": "Email cannot be empty",
-            "password": "Password cannot be empty",
-            "passwordConfirmation": "Password confirmation cannot be empty",
-            "nickname": "Nickname cannot be empty"
-          },
-          "invalid": {
-            "email": "Email is invalid"
-          },
-          "taken": {
-            "email": "Email is already taken",
-            "nickname": "Nickname is already taken"
-          },
-          "tooShort": {
-            "password": "Password is too short"
-          },
-          "tooLong": {
-            "nickname": "Nickname is too long"
-          },
-          "confirmation": {
-            "passwordConfirmation": "Password and password confirmation don't match"
-          }
-        },
-        "signup": {
-          "text": "Don't have an account?",
-          "link": "Sign up"
-        },
-        "login": {
-          "text": "Already signed up?",
-          "link": "Log in"
-        }
-      },
-      "roles": {
-        "creator": "Creator"
-      },
-      "followersCount": "{count} followers",
-      "followingCount": "{count} following",
-      "followed": "Following you",
-      "following": "You are following",
-      "follow": "Follow",
-      "unfollow": "Unfollow",
-      "message": "Send message"
-    },
-    "library": {
-      "add": "Add to library",
-      "show": "Show in library",
-      "delete": {
-        "header": "Delete from library",
-        "artist": {
-          "header": "Delete artist from library",
-          "also": "This will also delete all this artist's albums and tracks."
-        },
-        "album": {
-          "header": "Delete album from library",
-          "also": "This will also delete all this album's tracks."
-        },
-        "track": {
-          "header": "Delete track from library"
-        },
-        "going": "You are going to delete {modelTitle} from your library."
-      },
-      "deleted": "{modelTitle} was successfully deleted from your library"
-    },
-    "recommendation": {
-      "similar": "Similar to {count} artists:",
-      "delete": {
-        "header": "Delete recommendation",
-        "going": "You are going to delete {artistName} from your recommendations."
-      }
-    },
-    "listened": {
-      "add": "Add to listened",
-      "added": "Listened",
-      "delete": "Delete from listened"
-    },
-    "bookmarks": {
-      "add": "Add to bookmarks",
-      "added": "Bookmarked",
-      "delete": "Delete from bookmarks"
-    },
-    "bookmark": {
-      "delete": {
-        "header": "Delete bookmark",
-        "going": "You are going to delete {modelName} from your bookmarks."
-      }
-    },
-    "favorites": {
-      "add": "Add to favorites",
-      "added": "Favorite",
-      "delete": "Delete from favorites"
-    },
-    "favorite": {
-      "delete": {
-        "header": "Delete favorite",
-        "going": "You are going to delete {modelName} from your favorites."
-      }
-    },
-    "playlists": {
-      "create": "Create playlist"
-    },
-    "playlist": {
-      "created": "Created at {date}",
-      "form": {
-        "fields": {
-          "title": "Title",
-          "image": "Upload image"
-        },
-        "errors": {
-          "empty": {
-            "title": "Title cannot be empty"
-          },
-          "taken": {
-            "title": "Title is already taken"
-          }
-        }
-      },
-      "addTracks": "Add tracks",
-      "add": "Add to playlist",
-      "delete": {
-        "header": "Delete playlist",
-        "going": "You are going to delete {playlistTitle} from your playlists.",
-        "also": "This will also delete all this playlist's tracks."
-      },
-      "deleted": "Playlist {playlistTitle} was deleted"
-    },
-    "playlistTrack": {
-      "delete": {
-        "header": "Delete playlist track",
-        "going": "You are going to delete {playlistTrackFullTitle} from {playlistTitle} playlist."
-      }
-    },
-    "post": {
-      "delete": {
-        "header": "Delete post",
-        "going": "You are going to delete this post."
-      }
-    },
-    "message": {
-      "sent": {
-        "header": "Message was sent",
-        "content": "Go to conversation"
-      }
-    },
+    }
+  },
+  "notifications": {
+    "scrobbled": "{trackFullTitle} was scrobbled",
     "updated": {
-      "profile": "Profile was updated",
       "post": "Post was updated"
     },
     "deleted": {
-      "artist": "Artist was deleted",
-      "album": "Album was deleted",
-      "track": "Track was deleted",
-      "recommendation": "Recommendation was deleted",
-      "playlist": "Playlist was deleted",
-      "post": "Post was deleted"
+      "library": "{modelName} was deleted from your library",
+      "playlist": "Playlist {playlistTitle} was deleted"
     }
-  }
+  },
+  "counters": {
+    "artists": "{count} artists",
+    "albums": "{count} albums",
+    "tracks": "{count} tracks",
+    "followers": "{count} followers",
+    "following": "{count} following"
+  },
+  "sources": {
+    "select": {
+      "source": "Select source:",
+      "type": "Select type:",
+      "album": "Select album:",
+      "albumVarious": "Select V/A album:",
+      "group": "Select album group:",
+      "artist": "Select artist:",
+      "track": "Select track:"
+    },
+    "streamable": "Streamable",
+    "other": "Other",
+    "albumTypes": {
+      "album": "Album",
+      "albumVarious": "V/A album",
+      "group": "Album group",
+      "track": "Track"
+    },
+    "albumsTypes": {
+      "album": "Albums",
+      "single": "Singles",
+      "single_ep": "Singles / EPs",
+      "compilation": "Compilations",
+      "video": "Videos",
+      "misc": "Miscellaneous",
+      "appearance": "Appearances"
+    }
+  },
+  "player": {
+    "variants": "Variants ({number})"
+  },
+  "settings": {
+    "tabs": {
+      "app": "App",
+      "profile": "Profile",
+      "services": "Services"
+    },
+    "sections": {
+      "app": {
+        "main": "Main",
+        "view": "View",
+        "player": "Player",
+        "queue": "Queue",
+        "data": "Data"
+      },
+      "profile": {
+        "info": "Info"
+      }
+    },
+    "options": {
+      "app": {
+        "main": {
+          "language": "Language"
+        },
+        "view": {
+          "darkMode": "Dark mode"
+        },
+        "player": {
+          "audioSource": "Audio source"
+        },
+        "queue": {
+          "autoplay": "Autoplay"
+        },
+        "data": {
+          "cache": {
+            "clear": "Clear cache",
+            "cleared": "Cache was cleared"
+          },
+          "history": {
+            "search": {
+              "clear": "Clear search history",
+              "cleared": "Search history was cleared"
+            }
+          }
+        }
+      },
+      "services": {
+        "lastfm": {
+          "scrobbling": "Scrobbling",
+          "scrobbleNotifications": "Scrobble notifications",
+          "scrobblePercent": "Scrobble after"
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Via {source}"
+  },
+  "videos": {
+    "loading": "Loading videos...",
+    "select": "Select video:",
+    "empty": "No videos"
+  },
+  "lyrics": {
+    "loading": "Loading lyrics...",
+    "select": "Select lyrics:",
+    "empty": "No lyrics"
+  },
+  "recommended": {
+    "header": "Recommended to you",
+    "based": "Based on your:"
+  },
+  "signup": {
+    "text": "Don't have an account?",
+    "link": "Sign up"
+  },
+  "login": {
+    "text": "Already signed up?",
+    "link": "Log in"
+  },
+  "profile": {
+    "updated": "Profile was updated"
+  },
+  "roles": {
+    "creator": "Creator"
+  },
+  "relationships": {
+    "followed": "Following you",
+    "following": "You are following",
+    "follow": "Follow",
+    "unfollow": "Unfollow"
+  },
+  "message": {
+    "send": "Send message",
+    "sent": {
+      "header": "Message was sent",
+      "content": "Go to conversation"
+    }
+  },
+  "library": {
+    "since": "In library since"
+  },
+  "compatibility": {
+    "header": "Your compatibility level with {profileNickname}",
+    "common": "You have in common:"
+  },
+  "recommendations": {
+    "filter": "Filter"
+  },
+  "recommendation": {
+    "similar": "Similar to {count} artists:"
+  },
+  "playlist": {
+    "created": "Created at {date}"
+  },
+  "import": {
+    "active": {
+      "tracks": "Importing {value} of {total} tracks...",
+      "plays": "Importing {value} of {total} plays..."
+    },
+    "success": {
+      "tracks": {
+        "header": "All {count} tracks were imported",
+        "content": "You may want to check them before saving to library"
+      }
+    },
+    "error": {
+      "files": "{count} files could not be imported. Please fix these files' ID3 data and retry:"
+    }
+  },
+  "save": {
+    "active": {
+      "artists": "Saving {value} of {total} artists...",
+      "albums": "Saving {value} of {total} albums...",
+      "tracks": "Saving {value} of {total} tracks..."
+    },
+    "success": {
+      "artists": "All {count} artists were saved to library",
+      "albums": "All {count} albums were saved to library",
+      "tracks": "All {count} tracks were saved to library"
+    },
+    "error": {
+      "artists": "{count} artists could not be saved:",
+      "albums": "{count} albums could not be saved:",
+      "tracks": "{count} tracks could not be saved:"
+    }
+  },
+  "accounts": {
+    "connect": "Connect account",
+    "wait": "Your browser will now open. Confirm connection there and click this button again.",
+    "connected": "Account connected"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "No artists",
+      "albums": "No albums",
+      "tracks": "No tracks",
+      "posts": "No posts",
+      "feed": "No posts",
+      "conversations": "No conversations",
+      "followers": "No followers",
+      "following": "No following",
+      "profile_artists": "No artists",
+      "recommendations": "No recommendations",
+      "playlists": "No playlists"
+    },
+    "content": "Looks like there is nothing here"
+  },
+  "deleted": {
+    "artist": "Artist was deleted",
+    "album": "Album was deleted",
+    "track": "Track was deleted",
+    "recommendation": "Recommendation was deleted",
+    "playlist": "Playlist was deleted",
+    "post": "Post was deleted"
+  },
+  "error": "Error",
+  "more": "More...",
+  "loading": "Loading..."
 }

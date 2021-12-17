@@ -31,7 +31,7 @@ export default {
   computed: {
     findText () {
       return this.$t(
-        'shared.sources.find'
+        'actions.find.sources'
       )
     }
   },

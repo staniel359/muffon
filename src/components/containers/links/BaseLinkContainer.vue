@@ -35,8 +35,11 @@ export default {
     }
   },
   methods: {
-    handleClick () {
-      this.$emit('click')
+    handleClick (event) {
+      this.$emit(
+        'click',
+        event
+      )
     },
     handleCtrlClick () {
       this.openNewTab()

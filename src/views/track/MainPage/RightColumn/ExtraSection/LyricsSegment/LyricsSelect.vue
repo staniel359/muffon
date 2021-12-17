@@ -48,12 +48,12 @@ export default {
     },
     errorText () {
       return this.$t(
-        'shared.error'
+        'error'
       )
     },
     headerKeyText () {
       return this.$t(
-        `pages.track.lyrics.${this.headerKey}`
+        `lyrics.${this.headerKey}`
       )
     },
     headerKey () {

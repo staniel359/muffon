@@ -13,18 +13,22 @@
     />
 
     <div
-      v-if="image"
+      v-if="isWithImage"
       class="image-container"
     >
       <BaseImage
         class="bordered"
         size="extrasmall"
-        :class="[isImageCircular ? 'circular' : 'rounded']"
+        :class="{
+          circular: isImageCircular,
+          rounded: !isImageCircular
+        }"
+        :model="model"
         :image="image"
       />
     </div>
 
-    <InfoBlock
+    <ContentBlock
       :header="header"
       :subheader="subheader"
       :content="content"
@@ -36,26 +40,28 @@
 <script>
 import BaseIcon from '@/BaseIcon.vue'
 import BaseImage from '@/images/BaseImage.vue'
-import InfoBlock from './BaseDropdownItem/InfoBlock.vue'
+import ContentBlock from './BaseDropdownItem/ContentBlock.vue'
 
 export default {
   name: 'BaseDropdownItem',
   components: {
     BaseIcon,
     BaseImage,
-    InfoBlock
+    ContentBlock
   },
   props: {
     isImageCircular: {
       type: Boolean,
       default: false
     },
+    isWithImage: Boolean,
     isDisabled: Boolean,
     icon: String,
     isIconColored: Boolean,
     isLoading: Boolean,
     isError: Boolean,
     image: String,
+    model: String,
     header: String,
     subheader: String,
     content: String,

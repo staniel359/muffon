@@ -1,8 +1,9 @@
 <template>
   <div class="field">
     <div class="image-field-content">
-      <BasePlaylistImage
-        class="image-preview"
+      <BaseImage
+        class="rounded bordered image-preview"
+        model="playlist"
         :image="imageUrl"
       />
 
@@ -30,14 +31,14 @@
 </template>
 
 <script>
-import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
 import BaseImageInput from '@/inputs/BaseImageInput.vue'
 
 export default {
   name: 'BasePlaylistImageField',
   components: {
-    BasePlaylistImage,
+    BaseImage,
     BaseButton,
     BaseImageInput
   },
@@ -55,12 +56,12 @@ export default {
   computed: {
     addText () {
       return this.$t(
-        'shared.playlist.form.fields.image'
+        'forms.fields.image'
       )
     },
     deleteText () {
       return this.$t(
-        'buttons.delete'
+        'actions.delete'
       )
     }
   },

@@ -22,7 +22,7 @@ export default {
   computed: {
     queueText () {
       return this.$t(
-        'layout.settings.sections.app.queue'
+        'settings.sections.app.queue'
       )
     }
   }

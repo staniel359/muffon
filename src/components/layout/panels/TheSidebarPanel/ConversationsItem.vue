@@ -1,24 +1,13 @@
 <template>
-  <BaseLinkContainer
-    class="item main-sidebar-item"
+  <BaseSidebarItem
+    icon="comments"
+    :text="conversationsText"
     :link="conversationsLink"
-  >
-    <div class="main-sidebar-item-icon-container">
-      <i class="comments grey icon"></i>
-    </div>
-
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="conversationsText"
-      />
-    </div>
-  </BaseLinkContainer>
+  />
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseSidebarItem from '@/BaseSidebarItem.vue'
 import {
   main as formatConversationsLink
 } from '#/formatters/links/conversations'
@@ -26,17 +15,16 @@ import {
 export default {
   name: 'ConversationsItem',
   components: {
-    BaseLinkContainer,
-    BaseHeader
+    BaseSidebarItem
   },
   computed: {
-    conversationsLink () {
-      return formatConversationsLink()
-    },
     conversationsText () {
       return this.$t(
-        'layout.navigation.conversations'
+        'navigation.conversations'
       )
+    },
+    conversationsLink () {
+      return formatConversationsLink()
     }
   }
 }

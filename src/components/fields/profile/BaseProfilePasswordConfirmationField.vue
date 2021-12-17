@@ -14,7 +14,7 @@ export default {
   computed: {
     passwordConfirmationText () {
       return this.$t(
-        'shared.profile.form.fields.passwordConfirmation'
+        'forms.fields.passwordConfirmation'
       )
     }
   }

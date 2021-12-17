@@ -24,9 +24,8 @@ import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryPageNavigation
   from '#/formatters/navigation/profile/library'
 import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
-import fetchProfileLibraryData from '#/actions/api/profile/library/fetchData'
-import fetchProfileLibrarySearchData
-  from '#/actions/api/profile/library/search/fetchData'
+import getLibrary from '#/actions/api/library/get'
+import getLibrarySearch from '#/actions/api/library/search/get'
 
 export default {
   name: 'BaseProfileLibraryPageContainer',
@@ -74,7 +73,7 @@ export default {
     profileNicknameFetched () {
       return this.profileData?.nickname
     },
-    libraryDataArgs () {
+    libraryArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -99,18 +98,18 @@ export default {
     handleQueryChange () {
       this.fetchData()
     },
-    fetchProfileLibraryData,
-    fetchProfileLibrarySearchData,
+    getLibrary,
+    getLibrarySearch,
     fetchData (page) {
       if (this.query) {
-        this.fetchProfileLibrarySearchData({
-          ...this.libraryDataArgs,
+        this.getLibrarySearch({
+          ...this.libraryArgs,
           query: this.query,
           page
         })
       } else {
-        this.fetchProfileLibraryData({
-          ...this.libraryDataArgs,
+        this.getLibrary({
+          ...this.libraryArgs,
           page
         })
       }

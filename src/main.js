@@ -13,16 +13,12 @@ import setupI18nCountries from '&/i18n-countries'
 const isDevelopment =
   process.env.NODE_ENV === 'development'
 
-const getServerUrl = () => {
-  if (isDevelopment) {
-    return 'http://localhost:4000'
-  } else {
-    return 'https://muffon.endorphine.by'
-  }
-}
+const serverUrl = isDevelopment
+  ? 'http://localhost:4000'
+  : 'https://muffon.endorphine.by'
 
 axios.defaults.baseURL =
-  `${getServerUrl()}/api/v1/`
+  `${serverUrl}/api/v1/`
 
 const app = createApp(App)
 

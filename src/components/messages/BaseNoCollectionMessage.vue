@@ -30,12 +30,12 @@ export default {
     },
     header () {
       return this.$t(
-        `shared.paginated.noCollection.header.${this.scope}`
+        `noCollection.header.${this.scope}`
       )
     },
     content () {
       return this.$t(
-        'shared.paginated.noCollection.content'
+        'noCollection.content'
       )
     }
   }

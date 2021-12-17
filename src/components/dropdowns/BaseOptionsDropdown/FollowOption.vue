@@ -37,7 +37,10 @@ export default {
   },
   props: {
     profileData: Object
-  }
+  },
+  emits: [
+    'click'
+  ]
 }
 </script>
 

@@ -44,10 +44,9 @@ import BaseLink from '@/links/BaseLink.vue'
 import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 import { main as formatTrackMainLink } from '#/formatters/links/track'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 import formatTrackSourceParams
-  from '#/actions/api/track/formatters/requestData'
+  from '#/formatters/request/track/requestData'
 
 export default {
   name: 'InfoBlock',
@@ -97,7 +96,7 @@ export default {
       })
     },
     albumSourceParams () {
-      return formatAlbumSourceParams({
+      return formatAlbumRequestData({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,
         artistName: this.artistName

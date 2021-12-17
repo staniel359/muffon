@@ -36,7 +36,7 @@ import BaseSegmentContainer
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
-import fetchFeedData from '#/actions/api/feed/fetchData'
+import getFeed from '#/actions/api/feed/get'
 
 export default {
   name: 'FeedSegment',
@@ -77,9 +77,9 @@ export default {
     handleFocus () {
       this.segment.scrollTo(0, 0)
     },
-    fetchFeedData,
+    getFeed,
     fetchData (page) {
-      this.fetchFeedData({
+      this.getFeed({
         ...this.feedArgs,
         page
       })

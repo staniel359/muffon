@@ -8,9 +8,10 @@
       model="post"
     />
     <template v-else>
-      <BaseProfileImage
-        class="small"
-        :image="profileImage"
+      <BaseImage
+        class="small circular bordered"
+        model="profile"
+        :image="imageData?.extrasmall"
       />
 
       <div class="content">
@@ -34,8 +35,8 @@
             @delete="handleDeleteOptionClick"
           />
 
-          <BasePostEditModal
-            ref="editModal"
+          <BasePostUpdateModal
+            ref="updateModal"
             :postData="postData"
             @updated="handleUpdated"
           />
@@ -75,11 +76,11 @@
 <script>
 import { mapState } from 'vuex'
 import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseProfileImage from '@/models/profile/BaseProfileImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
 import BaseTimestamp from '@/BaseTimestamp.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePostEditModal from '@/modals/post/BasePostEditModal.vue'
+import BasePostUpdateModal from '@/modals/post/BasePostUpdateModal.vue'
 import BasePostDeleteModal from '@/modals/post/BasePostDeleteModal.vue'
 import BaseImagesSection from '@/BaseImagesSection.vue'
 import BaseTracksSection from '@/BaseTracksSection.vue'
@@ -89,11 +90,11 @@ export default {
   name: 'PostItem',
   components: {
     BaseDeletedBlock,
-    BaseProfileImage,
+    BaseImage,
     BaseProfileNickname,
     BaseTimestamp,
     BaseOptionsDropdown,
-    BasePostEditModal,
+    BasePostUpdateModal,
     BasePostDeleteModal,
     BaseImagesSection,
     BaseTracksSection
@@ -113,8 +114,8 @@ export default {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
-    profileImage () {
-      return this.profileData.image.extrasmall
+    imageData () {
+      return this.profileData.image
     },
     profileData () {
       return this.postData.profile
@@ -146,12 +147,9 @@ export default {
           this.profileId
       )
     },
-    uuid () {
-      return this.postData.uuid
-    },
     updatedMessage () {
       return this.$t(
-        'shared.updated.post'
+        'notifications.updated.post'
       )
     },
     isDeleted () {
@@ -165,32 +163,41 @@ export default {
     },
     tracks () {
       return this.postData.tracks
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.postData.uuid
     }
   },
   methods: {
     handleEditOptionClick () {
-      this.$refs.editModal.show()
+      this.$refs.updateModal.show()
     },
     handleDeleteOptionClick () {
       this.$refs.deleteModal.show()
     },
     handleUpdated (value) {
-      this.$refs.editModal.hide()
+      this.$refs.updateModal.hide()
 
       this.updatePaginationItem({
         uuid: this.uuid,
         value
       })
 
+      this.notify()
+    },
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
+    },
+    notify () {
       setToast({
         message: this.updatedMessage,
         icon: 'green check'
       })
-    },
-    handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
     }
   }
 }

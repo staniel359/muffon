@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import fetchAlbumData from '#/actions/api/album/fetchData'
+import getAlbum from '#/actions/api/album/get'
 import { number as formatNumber } from '#/formatters'
 
 export default {
@@ -57,7 +57,7 @@ export default {
         this.listenersCountFetched
       )
     },
-    albumDataArgs () {
+    albumArgs () {
       return {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
@@ -75,12 +75,15 @@ export default {
   },
   methods: {
     handleListenersCountFetchedChange (value) {
-      this.$emit('loadEnd', value)
+      this.$emit(
+        'loadEnd',
+        value
+      )
     },
-    fetchAlbumData,
+    getAlbum,
     fetchData () {
-      this.fetchAlbumData(
-        this.albumDataArgs
+      this.getAlbum(
+        this.albumArgs
       )
     }
   }

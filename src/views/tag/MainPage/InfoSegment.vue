@@ -1,27 +1,49 @@
 <template>
   <div class="ui raised segments main-segment-container">
-    <CoverSegment :tagName="tagName"/>
+    <CoverSegment
+      :tagName="tagName"
+    />
 
     <BaseSegmentContainer
       class="tag-info-segment"
     >
-      <InfoSection :tagData="tagData" />
+      <HeaderSection
+        :tagName="tagName"
+      />
+
+      <CountersSection
+        :tagData="tagData"
+      />
+
+      <SimilarSection
+        :tagName="tagName"
+      />
+
+      <DescriptionSection
+        :tagData="tagData"
+      />
     </BaseSegmentContainer>
   </div>
 </template>
 
 <script>
+import CoverSegment from './InfoSegment/CoverSegment.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import CoverSegment from './InfoSegment/CoverSegment.vue'
-import InfoSection from './InfoSegment/InfoSection.vue'
+import HeaderSection from './InfoSegment/HeaderSection.vue'
+import CountersSection from './InfoSegment/CountersSection.vue'
+import SimilarSection from './InfoSegment/SimilarSection.vue'
+import DescriptionSection from './InfoSegment/DescriptionSection.vue'
 
 export default {
   name: 'InfoSegment',
   components: {
-    BaseSegmentContainer,
     CoverSegment,
-    InfoSection
+    BaseSegmentContainer,
+    HeaderSection,
+    CountersSection,
+    SimilarSection,
+    DescriptionSection
   },
   props: {
     tagData: {

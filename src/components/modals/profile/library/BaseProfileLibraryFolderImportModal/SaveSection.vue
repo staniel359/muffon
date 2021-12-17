@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
-import postTrackData from '#/actions/api/library/tracks/postData'
+import createLibraryTrack from '#/actions/api/library/track/create'
 
 export default {
   name: 'SaveSection',
@@ -88,10 +88,10 @@ export default {
 
       this.errorFiles = []
     },
-    postTrackData,
+    createLibraryTrack,
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'shared.add.save.active.tracks',
+        'save.active.tracks',
         { value, total }
       )
     },
@@ -107,9 +107,10 @@ export default {
       }
     },
     async saveFile (fileData) {
-      const fileFormatted = this.formatFile(
-        fileData
-      )
+      const fileFormatted =
+        this.formatFile(
+          fileData
+        )
 
       const handleError = () => {
         if (this.isMounted) {
@@ -125,16 +126,20 @@ export default {
         }
       }
 
-      await this.postTrackData(fileFormatted)
-        .catch(handleError)
-        .finally(handleFinish)
+      await this.createLibraryTrack(
+        fileFormatted
+      ).catch(
+        handleError
+      ).finally(
+        handleFinish
+      )
     },
     formatFile (fileData) {
       return {
         trackTitle: fileData.title,
         artistName: fileData.artist.name,
-        albumTitle: fileData.album.title,
-        image: fileData.image.medium,
+        albumTitle: fileData.album?.title,
+        image: fileData.image?.original,
         created: fileData.created
       }
     },

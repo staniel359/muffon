@@ -4,6 +4,7 @@
       v-for="videoData in videosCollection"
       :key="videoData.uuid"
       :videoData="videoData"
+      :isWithChannelTitle="isWithChannelTitle"
       @linkClick="handleLinkClick"
     />
   </BaseListContainer>
@@ -26,7 +27,8 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isWithChannelTitle: Boolean
   },
   computed: {
     videosCollection () {

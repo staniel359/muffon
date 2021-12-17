@@ -1,5 +1,5 @@
 <template>
-  <BaseSourceItemContainer
+  <BaseAlbumSourceItemContainer
     :sourceId="sourceId"
     :types="types"
     :query="query"
@@ -13,18 +13,18 @@
         :isWithMaxBitrate="isWithMaxBitrate"
       />
     </template>
-  </BaseSourceItemContainer>
+  </BaseAlbumSourceItemContainer>
 </template>
 
 <script>
-import BaseSourceItemContainer
-  from '@/containers/album/BaseSourceItemContainer.vue'
+import BaseAlbumSourceItemContainer
+  from '@/containers/album/BaseAlbumSourceItemContainer.vue'
 import SourceItemContent from './SourceItem/SourceItemContent.vue'
 
 export default {
   name: 'SourceItem',
   components: {
-    BaseSourceItemContainer,
+    BaseAlbumSourceItemContainer,
     SourceItemContent
   },
   props: {

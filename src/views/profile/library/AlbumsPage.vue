@@ -14,7 +14,7 @@
         :itemsInRow="4"
         :isWithFavoriteOption="isWithFavoriteOption"
         isWithArtistName
-        isWithTracksCount
+        isWithLibrary
         isLinkToLibrary
       />
     </template>

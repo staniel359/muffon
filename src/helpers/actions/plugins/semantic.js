@@ -201,7 +201,9 @@ export const setToast = ({ message, icon }) => {
     isDarkMode
   } = store.state.layout
 
-  const className = isDarkMode ? 'inverted' : ''
+  const className = isDarkMode
+    ? 'inverted'
+    : ''
 
   $('body').toast({
     showIcon: icon,

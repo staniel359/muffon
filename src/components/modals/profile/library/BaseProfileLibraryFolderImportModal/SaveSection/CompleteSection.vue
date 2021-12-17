@@ -39,7 +39,7 @@ export default {
   computed: {
     successText () {
       return this.$t(
-        'shared.add.save.success.tracks',
+        'save.success.tracks',
         { count: this.totalCountFormatted }
       )
     },

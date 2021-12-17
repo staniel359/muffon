@@ -91,7 +91,7 @@ export default {
   computed: {
     createText () {
       return this.$t(
-        'shared.playlists.create'
+        'actions.add.playlist'
       )
     },
     isRenderCreateSegment () {

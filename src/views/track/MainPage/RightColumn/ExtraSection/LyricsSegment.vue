@@ -73,7 +73,7 @@ export default {
   computed: {
     findText () {
       return this.$t(
-        'pages.track.lyrics.find'
+        'actions.find.lyrics'
       )
     }
   },

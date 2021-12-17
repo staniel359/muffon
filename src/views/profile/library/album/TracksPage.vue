@@ -15,7 +15,6 @@
         :artistId="slotProps.artistId"
         :isWithFavoriteOption="isWithFavoriteOption"
         :isWithDeleteOption="isWithDeleteOption"
-        isWithImage
         isWithCreated
         isLinkToLibrary
         isWithPlaylistOption

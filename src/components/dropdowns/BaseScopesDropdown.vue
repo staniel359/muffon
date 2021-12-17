@@ -39,7 +39,7 @@ export default {
       return {
         id: scope,
         name: this.$t(
-          `layout.navigation.${scope}`
+          `navigation.${scope}`
         )
       }
     }

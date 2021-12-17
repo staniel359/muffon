@@ -1,40 +1,28 @@
 <template>
-  <BaseLinkContainer
-    class="item main-sidebar-item"
+  <BaseSidebarItem
+    icon="bookmark"
+    :text="bookmarksText"
     :link="bookmarksLink"
-  >
-    <div class="main-sidebar-item-icon-container">
-      <i class="bookmark grey icon"></i>
-    </div>
-
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="bookmarksText"
-      />
-    </div>
-  </BaseLinkContainer>
+  />
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseSidebarItem from '@/BaseSidebarItem.vue'
 import { bookmarks as formatBookmarksLink } from '#/formatters/links'
 
 export default {
   name: 'BookmarksItem',
   components: {
-    BaseLinkContainer,
-    BaseHeader
+    BaseSidebarItem
   },
   computed: {
-    bookmarksLink () {
-      return formatBookmarksLink()
-    },
     bookmarksText () {
       return this.$t(
-        'layout.navigation.bookmarks'
+        'navigation.bookmarks'
       )
+    },
+    bookmarksLink () {
+      return formatBookmarksLink()
     }
   }
 }

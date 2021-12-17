@@ -51,7 +51,7 @@ export default {
   computed: {
     selectText () {
       return this.$t(
-        'shared.add.folder.select'
+        'actions.folder.select'
       )
     }
   },

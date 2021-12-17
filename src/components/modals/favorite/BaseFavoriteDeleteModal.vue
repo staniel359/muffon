@@ -1,53 +1,23 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <template #default>
-      <div class="header">
-        {{ headerText }}
-      </div>
-
-      <div class="content">
-        <TextSection
-          :modelName="modelName"
-        />
-
-        <BaseErrorMessage
-          v-if="error"
-          class="error-message"
-          :error="error"
-        />
-      </div>
-
-      <div class="actions">
-        <BaseButton
-          class="cancel"
-          :text="cancelText"
-        />
-
-        <BaseButton
-          class="red"
-          :text="deleteText"
-          :class="{ loading: isLoading }"
-          @click="handleDeleteButtonClick"
-        />
-      </div>
-    </template>
-  </BaseModalContainer>
+  <BaseDeleteModal
+    ref="modal"
+    modelType="favorite"
+    :model="model"
+    :modelName="modelName"
+    :isLoading="isLoading"
+    :error="error"
+    @deleteButtonClick="handleDeleteButtonClick"
+  />
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import TextSection from './BaseFavoriteDeleteModal/TextSection.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import deleteFavoriteData from '#/actions/api/favorites/model/deleteData'
+import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
+import deleteFavorite from '#/actions/api/favorites/model/delete'
 
 export default {
   name: 'BaseFavoriteDeleteModal',
   components: {
-    BaseModalContainer,
-    TextSection,
-    BaseErrorMessage,
-    BaseButton
+    BaseDeleteModal
   },
   props: {
     model: {
@@ -69,21 +39,6 @@ export default {
     }
   },
   computed: {
-    headerText () {
-      return this.$t(
-        'shared.favorite.delete.header'
-      )
-    },
-    cancelText () {
-      return this.$t(
-        'buttons.cancel'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'buttons.delete'
-      )
-    },
     modelName () {
       switch (this.model) {
         case 'artist':
@@ -97,21 +52,28 @@ export default {
     },
     favoriteId () {
       return this.modelData.id
+    },
+    deleteArgs () {
+      return {
+        model: this.model,
+        favoriteId: this.favoriteId
+      }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteFavoriteData({
-        model: this.model,
-        favoriteId: this.favoriteId
-      }).then(this.handleSuccess)
+      this.deleteFavorite(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
       this.$refs.modal.hide()
 
       this.$emit('deleted')
     },
-    deleteFavoriteData,
+    deleteFavorite,
     show () {
       this.$refs.modal.show()
     }

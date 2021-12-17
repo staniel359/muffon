@@ -21,7 +21,7 @@ export default {
   computed: {
     retryText () {
       return this.$t(
-        'buttons.retry'
+        'actions.retry'
       )
     }
   },

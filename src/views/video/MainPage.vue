@@ -8,11 +8,26 @@
           'main-page-segment-container'
         ]"
       >
-        <VideoData
+        <BaseEmbed
+          class="video-embed"
           :videoData="slotProps.videoData"
         />
 
-        <VideoInfoData
+        <TitleSection
+          :videoData="slotProps.videoData"
+        />
+
+        <BaseDivider />
+
+        <CountersDateSection
+          :videoData="slotProps.videoData"
+        />
+
+        <TagsSection
+          :videoData="slotProps.videoData"
+        />
+
+        <DescriptionSection
           :videoData="slotProps.videoData"
         />
       </BaseSegmentContainer>
@@ -25,18 +40,29 @@ import BaseVideoPageContainer
   from '@/containers/pages/video/BaseVideoPageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import VideoData from './MainPage/VideoData.vue'
-import VideoInfoData from './MainPage/VideoInfoData.vue'
+import BaseEmbed from '@/BaseEmbed.vue'
+import TitleSection from './MainPage/TitleSection.vue'
+import BaseDivider from '@/BaseDivider.vue'
+import CountersDateSection from './MainPage/CountersDateSection.vue'
+import TagsSection from './MainPage/TagsSection.vue'
+import DescriptionSection from './MainPage/DescriptionSection.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseVideoPageContainer,
     BaseSegmentContainer,
-    VideoData,
-    VideoInfoData
+    BaseEmbed,
+    TitleSection,
+    BaseDivider,
+    CountersDateSection,
+    TagsSection,
+    DescriptionSection
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.video-embed
+  margin-bottom: 1em
+</style>

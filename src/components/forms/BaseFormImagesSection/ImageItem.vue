@@ -38,7 +38,7 @@ export default {
     },
     deleteText () {
       return this.$t(
-        'buttons.delete'
+        'actions.delete'
       )
     },
     uuid () {

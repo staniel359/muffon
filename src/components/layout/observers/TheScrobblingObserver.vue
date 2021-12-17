@@ -4,10 +4,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import postScrobblerPlayData
-  from '#/actions/api/lastfm/scrobbler/play/postData'
-import postScrobblerSaveData
-  from '#/actions/api/lastfm/scrobbler/save/postData'
+import createScrobblerPlay from '#/actions/api/lastfm/scrobbler/play/create'
+import createScrobblerSave from '#/actions/api/lastfm/scrobbler/save/create'
 import { updateStore } from '#/actions'
 
 export default {
@@ -49,16 +47,18 @@ export default {
   methods: {
     handleIsPlayerScrobblingChange (value) {
       if (value) {
-        postScrobblerPlayData({
+        createScrobblerPlay({
           ...this.trackData
         })
       }
     },
     handleIsPlayerToScrobbleChange (value) {
       if (value) {
-        postScrobblerSaveData({
-          ...this.trackData
-        }).then(this.handleSuccess)
+        createScrobblerSave(
+          this.trackData
+        ).then(
+          this.handleSuccess
+        )
       }
     },
     handleSuccess () {

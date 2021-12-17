@@ -31,7 +31,7 @@ export default {
     }),
     accountText () {
       return this.$t(
-        'buttons.from.account'
+        'actions.from.account'
       )
     },
     isAccountConnected () {

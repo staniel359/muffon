@@ -1,10 +1,12 @@
 <template>
   <BaseDropdownItem
-    :image="image"
+    model="track"
+    :image="imageData?.extrasmall"
     :header="trackTitle"
     :subheader="trackExtraTitle"
     :content="artistName"
     :extra="duration"
+    isWithImage
     @click="handleClick"
   />
 </template>
@@ -28,8 +30,8 @@ export default {
     }
   },
   computed: {
-    image () {
-      return this.trackData.image?.extrasmall
+    imageData () {
+      return this.trackData.image
     },
     trackTitle () {
       return this.trackData.title

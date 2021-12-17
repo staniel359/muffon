@@ -79,7 +79,7 @@ export default {
     handleClick (scope) {
       this.$refs[
         `${scope}Modal`
-      ].show()
+      ][0].show()
     },
     formatButtonData (scope) {
       const icon = this.icons[scope]
@@ -109,7 +109,7 @@ export default {
     },
     formatText (scope) {
       return this.$t(
-        `pages.profile.compatibility.${scope}`,
+        `counters.${scope}`,
         { count: this.formatCount(scope) }
       )
     },

@@ -44,7 +44,7 @@ export default {
     },
     text () {
       return this.$t(
-        `layout.navigation.model.${this.modelScope}`,
+        `navigation.model.${this.modelScope}`,
         { modelName: this.modelName }
       )
     }

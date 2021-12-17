@@ -28,7 +28,7 @@ export default {
   computed: {
     birthdateText () {
       return this.$t(
-        'shared.profile.form.fields.birthdate'
+        'forms.fields.birthdate'
       )
     }
   },

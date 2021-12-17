@@ -5,6 +5,7 @@
         <SearchInput
           ref="input"
           :tracks="tracks"
+          :playlistId="playlistId"
           @select="handleSelect"
         />
 
@@ -80,6 +81,10 @@ export default {
   },
   methods: {
     handleSelect (value) {
+      if (this.status === 'save') {
+        this.reset()
+      }
+
       this.tracks.push({
         uuid: generateKey(),
         ...value
@@ -91,16 +96,20 @@ export default {
       this.tracks = [...value]
     },
     handleResetButtonClick () {
-      this.tracks = []
+      this.reset()
 
       this.$refs.input.clear()
       this.$refs.input.focus()
 
-      this.status = 'import'
       this.isReset = true
     },
     handleSave () {
       this.status = 'save'
+    },
+    reset () {
+      this.status = 'import'
+
+      this.tracks = []
     },
     show () {
       this.$refs.modal.show()

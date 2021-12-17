@@ -11,7 +11,7 @@ export default function ({ artistName, pageNameKey }) {
   const formatTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `layout.navigation.model.${pageNameKey}`,
+        `navigation.model.${pageNameKey}`,
         { modelName: artistName }
       )
     } else {

@@ -23,7 +23,7 @@ export default {
   computed: {
     folderText () {
       return this.$t(
-        'buttons.from.folder'
+        'actions.from.folder'
       )
     }
   },

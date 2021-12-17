@@ -51,12 +51,12 @@ export default {
     },
     errorText () {
       return this.$t(
-        'shared.error'
+        'error'
       )
     },
     headerKeyText () {
       return this.$t(
-        `pages.track.videos.${this.headerKey}`
+        `videos.${this.headerKey}`
       )
     },
     headerKey () {

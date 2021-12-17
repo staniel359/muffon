@@ -25,7 +25,7 @@
 <script>
 import { mapState } from 'vuex'
 import HeaderSegment from './BaseArtistSegmentContainer/HeaderSegment.vue'
-import fetchArtistData from '#/actions/api/artist/fetchData'
+import getArtist from '#/actions/api/artist/get'
 import { focusOnSegment } from '#/actions/layout'
 
 export default {
@@ -58,7 +58,7 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    artistDataArgs () {
+    artistArgs () {
       return {
         artistName: this.artistName,
         scope: this.scope,
@@ -70,10 +70,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchArtistData,
+    getArtist,
     fetchData (page) {
-      this.fetchArtistData({
-        ...this.artistDataArgs,
+      this.getArtist({
+        ...this.artistArgs,
         page
       })
     },

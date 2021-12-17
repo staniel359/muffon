@@ -34,7 +34,7 @@ export default {
   computed: {
     countryText () {
       return this.$t(
-        'shared.profile.form.fields.country'
+        'forms.fields.country'
       )
     }
   },

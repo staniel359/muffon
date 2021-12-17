@@ -22,7 +22,7 @@ export default {
   computed: {
     viewText () {
       return this.$t(
-        'layout.settings.sections.app.view'
+        'settings.sections.app.view'
       )
     }
   }

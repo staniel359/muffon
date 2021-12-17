@@ -23,7 +23,7 @@ import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
-import fetchQueueTrackData from '#/actions/queue/track/fetchData'
+import getQueueTrack from '#/actions/queue/track/get'
 
 export default {
   name: 'AudioPanel',
@@ -49,6 +49,11 @@ export default {
         this.isQueueAutoplay &&
           !this.isQueueEnd
       )
+    },
+    queueTrackArgs () {
+      return {
+        position: 'next'
+      }
     }
   },
   watch: {
@@ -68,11 +73,11 @@ export default {
         this.fetchQueueNextTrack()
       }
     },
-    fetchQueueTrackData,
+    getQueueTrack,
     fetchQueueNextTrack () {
-      this.fetchQueueTrackData({
-        position: 'next'
-      })
+      this.getQueueTrack(
+        this.queueTrackArgs
+      )
     }
   }
 }

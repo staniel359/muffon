@@ -32,11 +32,12 @@ export default {
   },
   computed: {
     ...mapState('player', {
-      isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications'
+      isPlayerWithScrobbleNotifications:
+        'isWithScrobbleNotifications'
     }),
     scrobbleNotificationsText () {
       return this.$t(
-        'layout.settings.options.services.lastfm.scrobbleNotifications'
+        'settings.options.services.lastfm.scrobbleNotifications'
       )
     },
     isChecked () {

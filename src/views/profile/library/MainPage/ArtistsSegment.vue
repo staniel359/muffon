@@ -13,8 +13,7 @@
         :artists="slotProps.artists"
         :profileId="profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
-        isWithTracksCount
-        isWithAlbumsCount
+        isWithLibrary
         isLinkToLibrary
       />
     </template>

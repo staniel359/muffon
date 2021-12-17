@@ -1,77 +1,47 @@
 <template>
-  <div
-    class="ui fluid search main-search-input"
-    ref="search"
-  >
-    <div class="ui icon fluid input">
-      <input
-        ref="input"
-        class="prompt"
-        type="text"
-        :placeholder="searchText"
-      >
-      <i class="search icon"></i>
-    </div>
-  </div>
+  <BaseSearchInput
+    ref="input"
+    :url="url"
+    :fields="fields"
+    :formatResponse="formatResponse"
+    @select="handleSelect"
+  />
 </template>
 
 <script>
-import axios from 'axios'
-import { setSearch } from '#/actions/plugins/semantic'
+import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'ArtistsSearchInput',
+  components: {
+    BaseSearchInput
+  },
   emits: [
     'select'
   ],
   computed: {
-    searchText () {
-      return this.$t(
-        'inputs.search'
+    url () {
+      return (
+        '/lastfm/search/artists' +
+        '?query={query}&limit=5'
       )
     },
-    searchOptions () {
+    fields () {
       return {
-        apiSettings: {
-          url: this.searchUrl,
-          onResponse: this.formatResponse
-        },
-        cache: false,
-        error: {
-          serverError: this.$t(
-            'shared.error'
-          )
-        },
-        fields: {
-          results: 'artists',
-          title: 'name',
-          image: null
-        },
-        minCharacters: 1,
-        maxResults: 5,
-        onSelect: this.handleArtistSelect,
-        searchDelay: 500,
-        searchOnFocus: false
+        results: 'artists',
+        title: 'name',
+        image: null
       }
-    },
-    searchUrl () {
-      return `${axios.defaults.baseURL}` +
-        'lastfm/search/artists' +
-        '?query={query}&limit=5'
     }
   },
-  mounted () {
-    setSearch(
-      this.$refs.search,
-      this.searchOptions
-    )
-  },
   methods: {
-    handleArtistSelect (artist) {
+    handleSelect (artist) {
       this.$emit(
         'select',
         artist.name
       )
+
+      this.clear()
     },
     formatResponse (response) {
       return response.search.artists
@@ -80,7 +50,7 @@ export default {
       this.$refs.input.focus()
     },
     clear () {
-      this.$refs.input.value = ''
+      this.$refs.input.clear()
     }
   }
 }

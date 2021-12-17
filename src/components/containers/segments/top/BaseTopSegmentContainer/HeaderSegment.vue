@@ -48,7 +48,7 @@ export default {
     },
     headerText () {
       return this.$t(
-        `layout.navigation.${this.scope}`
+        `navigation.${this.scope}`
       )
     }
   }

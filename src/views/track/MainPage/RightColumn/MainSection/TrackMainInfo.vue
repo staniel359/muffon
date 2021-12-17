@@ -35,8 +35,7 @@ import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseLink from '@/links/BaseLink.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
   name: 'TrackMainInfo',
@@ -73,7 +72,7 @@ export default {
       return this.albumData?.title
     },
     sourceParams () {
-      return formatAlbumSourceParams({
+      return formatAlbumRequestData({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,
         artistName: this.artistName

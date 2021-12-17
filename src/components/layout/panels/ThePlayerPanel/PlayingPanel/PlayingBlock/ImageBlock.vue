@@ -1,6 +1,6 @@
 <template>
   <BaseImage
-    v-if="image"
+    v-if="isWithImage"
     class="rounded bordered track-image"
     :image="image"
   />
@@ -23,6 +23,7 @@ export default {
     BaseArtistImage
   },
   props: {
+    isWithImage: Boolean,
     image: String,
     artistName: String
   }

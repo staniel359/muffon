@@ -24,7 +24,7 @@ import {
   profiles as formatProfilesPageNavigation
 } from '#/formatters/navigation'
 import formatProfilesPageTab from '#/formatters/tabs/profiles'
-import fetchProfilesData from '#/actions/api/profiles/fetchData'
+import getProfiles from '#/actions/api/profiles/get'
 
 export default {
   name: 'BaseProfilesPageContainer',
@@ -51,7 +51,7 @@ export default {
     tabData () {
       return formatProfilesPageTab()
     },
-    profilesDataArgs () {
+    profilesArgs () {
       return {
         limit: this.responsePageLimit
       }
@@ -66,10 +66,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchProfilesData,
+    getProfiles,
     fetchData (page) {
-      this.fetchProfilesData({
-        ...this.profilesDataArgs,
+      this.getProfiles({
+        ...this.profilesArgs,
         page
       })
     }

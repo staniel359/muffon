@@ -23,7 +23,7 @@ export default function ({
     if (pageNameKey) {
       return {
         name: i18n.global.t(
-          `layout.navigation.video.${pageNameKey}`
+          `navigation.video.${pageNameKey}`
         ),
         isActive: true
       }
@@ -33,13 +33,13 @@ export default function ({
   return [
     {
       name: i18n.global.t(
-        'layout.navigation.videoChannels'
+        'navigation.videoChannels'
       )
     },
     { name: channelTitle },
     {
       name: i18n.global.t(
-        'layout.navigation.videos'
+        'navigation.videos'
       ),
       link: formatVideoChannelVideosLink({
         channelId

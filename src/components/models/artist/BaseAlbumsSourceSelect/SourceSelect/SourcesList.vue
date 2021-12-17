@@ -1,6 +1,6 @@
 <template>
   <SourceItem
-    v-for="sourceData in audioSourcesCollection"
+    v-for="sourceData in sourcesWithAlbumsCollection"
     :key="sourceData.uuid"
     :sourceData="sourceData"
     :query="query"
@@ -9,8 +9,9 @@
 
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
-import { collection as formatCollection } from '#/formatters'
-import audioSources from '#/data/audio/sources'
+import {
+  allWithAlbumsCollection as getSourcesWithAlbumsCollection
+} from '#/formatters/sources'
 
 export default {
   name: 'SourcesList',
@@ -21,15 +22,8 @@ export default {
     query: String
   },
   computed: {
-    audioSourcesCollection () {
-      return formatCollection(
-        this.audioSourcesWithAlbums
-      )
-    },
-    audioSourcesWithAlbums () {
-      return audioSources.filter(sourceData => {
-        return sourceData.isWithAlbums
-      })
+    sourcesWithAlbumsCollection () {
+      return getSourcesWithAlbumsCollection()
     }
   }
 }

@@ -23,7 +23,7 @@ export default {
   computed: {
     searchText () {
       return this.$t(
-        'buttons.from.search'
+        'actions.from.search'
       )
     }
   },
