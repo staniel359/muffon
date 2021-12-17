@@ -24,7 +24,7 @@ import navigationMixin from '*/mixins/navigationMixin'
 import formatConversationsPageNavigation
   from '#/formatters/navigation/conversations'
 import formatConversationsPageTab from '#/formatters/tabs/conversations'
-import fetchConversationData from '#/actions/api/conversation/fetchData'
+import getConversation from '#/actions/api/conversation/get'
 
 export default {
   name: 'BaseConversationPageContainer',
@@ -66,7 +66,7 @@ export default {
         profileNickname: this.profileNicknameFetched
       })
     },
-    conversationDataArgs () {
+    conversationArgs () {
       return {
         conversationId: this.conversationId
       }
@@ -82,10 +82,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchConversationData,
+    getConversation,
     fetchData (page) {
-      this.fetchConversationData({
-        ...this.conversationDataArgs,
+      this.getConversation({
+        ...this.conversationArgs,
         page
       })
     }

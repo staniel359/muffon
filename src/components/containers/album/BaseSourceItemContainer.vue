@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import fetchSearchData from '#/actions/api/search/fetchData'
+import getSearch from '#/actions/api/search/get'
 
 export default {
   name: 'BaseSourceItemContainer',
@@ -59,7 +59,7 @@ export default {
           this.typesCount
       )
     },
-    searchDataArgs () {
+    searchArgs () {
       return {
         sourceId: this.sourceId,
         query: this.query
@@ -78,14 +78,20 @@ export default {
   },
   methods: {
     handleSearchDataChange (value) {
-      value && this.formatTypesData()
+      if (value) {
+        this.formatTypesData()
+      }
     },
     handleError (value) {
-      value && this.errorCollectionsCount++
+      if (value) {
+        this.errorCollectionsCount++
+      }
     },
-    fetchSearchData,
+    getSearch,
     fetchTypesData () {
-      this.types.map(this.fetchTypeData)
+      this.types.map(
+        this.fetchTypeData
+      )
     },
     fetchTypeData (type) {
       const formatScope = () => {
@@ -96,13 +102,15 @@ export default {
         }
       }
 
-      this.fetchSearchData({
-        ...this.searchDataArgs,
+      this.getSearch({
+        ...this.searchArgs,
         scope: formatScope()
       })
     },
     formatTypesData () {
-      this.types.map(this.formatTypeData)
+      this.types.map(
+        this.formatTypeData
+      )
     },
     formatTypeData (type) {
       const formatScope = () => {

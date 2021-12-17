@@ -34,8 +34,7 @@
           @imagesChange="handleImagesChange"
         />
 
-        <BasePostSubmitButton
-          class="submit-button"
+        <BaseSubmitButton
           actionKey="post"
         />
       </div>
@@ -52,7 +51,7 @@ import BaseContentField from '@/fields/BaseContentField.vue'
 import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
 import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
 import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
-import BasePostSubmitButton from '@/models/post/BasePostSubmitButton.vue'
+import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FormSegment',
@@ -63,7 +62,7 @@ export default {
     BaseFormImagesSection,
     BaseFormTracksSection,
     BaseFormAddButtonsSection,
-    BasePostSubmitButton
+    BaseSubmitButton
   },
   props: {
     profileId: String

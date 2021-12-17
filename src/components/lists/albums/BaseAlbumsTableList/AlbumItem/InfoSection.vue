@@ -97,9 +97,6 @@ export default {
     albumTitle () {
       return this.albumData.title
     },
-    uuid () {
-      return this.albumData.uuid
-    },
     listenersCount () {
       return this.albumData.listeners_count
     },
@@ -114,13 +111,19 @@ export default {
         !this.isArtistNameActive &&
           !this.isTracksLinkActive
       )
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.albumData.uuid
     }
   },
   methods: {
     handleListenersCountLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).listeners_count = value
+      this.paginationItem.listeners_count = value
     },
     handleTracksLinkMouseEnter () {
       this.$emit(

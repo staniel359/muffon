@@ -39,7 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseFavoriteDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteFavoriteData from '#/actions/api/favorites/model/deleteData'
+import deleteFavoriteModel from '#/actions/api/favorites/model/delete'
 
 export default {
   name: 'BaseFavoriteDeleteModal',
@@ -97,21 +97,28 @@ export default {
     },
     favoriteId () {
       return this.modelData.id
+    },
+    deleteArgs () {
+      return {
+        model: this.model,
+        favoriteId: this.favoriteId
+      }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteFavoriteData({
-        model: this.model,
-        favoriteId: this.favoriteId
-      }).then(this.handleSuccess)
+      this.deleteFavoriteModel(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
       this.$refs.modal.hide()
 
       this.$emit('deleted')
     },
-    deleteFavoriteData,
+    deleteFavoriteModel,
     show () {
       this.$refs.modal.show()
     }

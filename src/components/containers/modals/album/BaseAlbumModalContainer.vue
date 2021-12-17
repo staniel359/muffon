@@ -17,7 +17,7 @@
 <script>
 import BaseModalContentContainer
   from '@/containers/modals/BaseModalContentContainer.vue'
-import fetchAlbumData from '#/actions/api/album/fetchData'
+import getAlbum from '#/actions/api/album/get'
 import { generateKey } from '#/utils'
 
 export default {
@@ -44,7 +44,7 @@ export default {
     }
   },
   computed: {
-    albumDataArgs () {
+    albumArgs () {
       return {
         ...this.requestAlbumData,
         scope: this.scope
@@ -63,11 +63,14 @@ export default {
     },
     handleRequestAlbumDataChange () {
       this.albumData = null
+
       this.key = generateKey()
     },
-    fetchAlbumData,
+    getAlbum,
     fetchData () {
-      this.fetchAlbumData(this.albumDataArgs)
+      this.getAlbum(
+        this.albumArgs
+      )
     },
     show () {
       this.$refs.modal.show()

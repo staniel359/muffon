@@ -12,9 +12,9 @@
     <template v-else>
       <BaseArtistImage
         class="circular bordered"
-        size="extrasmall"
+        size="small"
         :class="{ small: isImageSmall }"
-        :image="image"
+        :imageData="imageData"
         :artistName="artistName"
         @loadEnd="handleImageLoadEnd"
       />
@@ -218,14 +218,11 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    image () {
+    imageData () {
       return this.artistData.image
     },
     listenersCount () {
       return this.artistData.listeners_count
-    },
-    uuid () {
-      return this.artistData.uuid
     },
     tracksCount () {
       return this.artistData.tracks_count
@@ -241,6 +238,14 @@ export default {
     },
     isDeleted () {
       return !!this.artistData.isDeleted
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.artistData.uuid
     }
   },
   mounted () {
@@ -258,14 +263,10 @@ export default {
       this.$emit('linkClick')
     },
     handleImageLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).image = value
+      this.paginationItem.image = value
     },
     handleListenersCountLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).listeners_count = value
+      this.paginationItem.listeners_count = value
     },
     handleTracksLinkActiveChange (value) {
       this.isTracksLinkActive = value
@@ -284,9 +285,7 @@ export default {
       }
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     setLibraryId (value) {
       this.libraryId = value

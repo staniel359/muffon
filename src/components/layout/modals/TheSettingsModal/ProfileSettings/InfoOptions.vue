@@ -5,19 +5,19 @@
       isHorizontal
     />
 
-    <BaseProfileEditForm />
+    <BaseProfileUpdateForm />
   </div>
 </template>
 
 <script>
 import BaseDivider from '@/BaseDivider.vue'
-import BaseProfileEditForm from '@/forms/profile/BaseProfileEditForm.vue'
+import BaseProfileUpdateForm from '@/forms/profile/BaseProfileUpdateForm.vue'
 
 export default {
   name: 'InfoOptions',
   components: {
     BaseDivider,
-    BaseProfileEditForm
+    BaseProfileUpdateForm
   },
   computed: {
     infoText () {

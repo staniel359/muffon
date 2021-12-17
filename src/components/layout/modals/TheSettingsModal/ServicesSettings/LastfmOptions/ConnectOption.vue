@@ -38,9 +38,8 @@
 <script>
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import fetchLastfmTokenData from '#/actions/api/lastfm/connect/token/fetchData'
-import fetchLastfmSessionData
-  from '#/actions/api/lastfm/connect/session/fetchData'
+import getLastfmToken from '#/actions/api/lastfm/connect/token/get'
+import getLastfmSession from '#/actions/api/lastfm/connect/session/get'
 
 export default {
   name: 'ConnectOption',
@@ -90,15 +89,15 @@ export default {
       if (this.token) {
         this.isShowWaitMessage = false
 
-        this.fetchLastfmSessionData({
+        this.getLastfmSession({
           token: this.token
         })
       } else {
-        this.fetchLastfmTokenData()
+        this.getLastfmToken()
       }
     },
-    fetchLastfmTokenData,
-    fetchLastfmSessionData
+    getLastfmToken,
+    getLastfmSession
   }
 }
 </script>

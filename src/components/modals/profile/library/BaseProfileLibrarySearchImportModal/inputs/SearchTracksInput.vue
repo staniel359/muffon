@@ -86,15 +86,26 @@ export default {
   methods: {
     handleTrackSelect (track) {
       const isTrackPresent = trackData => {
+        const isSameTitle = (
+          track.title ===
+            trackData.title
+        )
+        const isSameArtistName = (
+          track.artist.name ===
+            trackData.artist.name
+        )
+
         return (
-          track.title === trackData.title &&
-            track.artist.name === trackData.artist.name
+          isSameTitle &&
+            isSameArtistName
         )
       }
+
       const isPresent = this.tracks.find(
         isTrackPresent
       )
       const isInLibrary = !!track.library_id
+
       const isAddTrack = (
         !isPresent && !isInLibrary
       )
@@ -107,7 +118,9 @@ export default {
       }
     },
     formatResponse (response) {
-      return response.search.tracks.map(trackData => {
+      const { tracks } = response.search
+
+      return tracks.map(trackData => {
         return {
           ...trackData,
           artistName: trackData.artist.name

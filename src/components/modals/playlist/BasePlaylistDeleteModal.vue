@@ -39,7 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BasePlaylistDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteProfilePlaylistData from '#/actions/api/playlist/deleteData'
+import deletePlaylist from '#/actions/api/playlist/delete'
 import {
   playlists as formatProfilePlaylistsLink
 } from '#/formatters/links/profile'
@@ -74,8 +74,7 @@ export default {
   data () {
     return {
       error: null,
-      isLoading: false,
-      isSuccess: false
+      isLoading: false
     }
   },
   computed: {
@@ -107,34 +106,43 @@ export default {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })
+    },
+    deleteArgs () {
+      return {
+        playlistId: this.playlistId
+      }
     }
-  },
-  watch: {
-    isSuccess: 'handleIsSuccessChange'
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteProfilePlaylistData({
-        playlistId: this.playlistId
-      })
+      this.deletePlaylist(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
-    handleIsSuccessChange () {
+    handleSuccess () {
       this.$refs.modal.hide()
 
       if (this.isDeleteWithRedirect) {
-        this.$router.push(
-          this.profilePlaylistsLink
-        )
-
-        setToast({
-          message: this.toastMessage,
-          icon: 'green check'
-        })
+        this.redirect()
+        this.notify()
       } else {
         this.$emit('deleted')
       }
     },
-    deleteProfilePlaylistData,
+    deletePlaylist,
+    redirect () {
+      this.$router.push(
+        this.profilePlaylistsLink
+      )
+    },
+    notify () {
+      setToast({
+        message: this.toastMessage,
+        icon: 'green check'
+      })
+    },
     show () {
       this.$refs.modal.show()
     }

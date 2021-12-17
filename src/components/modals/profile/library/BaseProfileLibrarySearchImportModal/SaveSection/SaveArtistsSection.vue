@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveArtistsSection/CompleteSection.vue'
-import postArtistData from '#/actions/api/library/artists/postData'
+import createLibraryArtist from '#/actions/api/library/artist/create'
 
 export default {
   name: 'SaveArtistsSection',
@@ -88,7 +88,7 @@ export default {
 
       this.errorArtists = []
     },
-    postArtistData,
+    createLibraryArtist,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'shared.add.save.active.artists',
@@ -109,9 +109,10 @@ export default {
       }
     },
     async saveArtist (artistData) {
-      const artistFormatted = this.formatArtist(
-        artistData
-      )
+      const artistFormatted =
+        this.formatArtist(
+          artistData
+        )
 
       const handleError = () => {
         if (this.isMounted) {
@@ -127,9 +128,13 @@ export default {
         }
       }
 
-      await this.postArtistData(artistFormatted)
-        .catch(handleError)
-        .finally(handleFinish)
+      await this.createLibraryArtist(
+        artistFormatted
+      ).catch(
+        handleError
+      ).finally(
+        handleFinish
+      )
     },
     formatArtist (artistData) {
       return {

@@ -49,7 +49,10 @@ export default {
       return this.selectedVideoData.youtube_id
     },
     placeholder () {
-      return this.selectedVideoData.image.small
+      return this.imageData?.small
+    },
+    imageData () {
+      return this.selectedVideoData.image
     },
     videoMainLink () {
       return formatVideoMainLink({

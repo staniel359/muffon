@@ -10,6 +10,7 @@
         :profileId="profileId"
         isWithArtistName
         isLinkToLibrary
+        isWithImage
         @linkClick="handleLinkClick"
       />
     </template>

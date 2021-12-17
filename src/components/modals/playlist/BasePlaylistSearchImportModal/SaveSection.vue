@@ -20,7 +20,7 @@
 <script>
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
-import postTrackData from '#/actions/api/playlist/tracks/postData'
+import createPlaylistTrack from '#/actions/api/playlist/track/create'
 
 export default {
   name: 'SaveSection',
@@ -92,7 +92,7 @@ export default {
 
       this.errorTracks = []
     },
-    postTrackData,
+    createPlaylistTrack,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'shared.add.save.active.tracks',
@@ -113,9 +113,10 @@ export default {
       }
     },
     async saveTrack (trackData) {
-      const trackFormatted = this.formatTrack(
-        trackData
-      )
+      const createArgs =
+        this.formatTrack(
+          trackData
+        )
 
       const handleError = () => {
         if (this.isMounted) {
@@ -131,9 +132,13 @@ export default {
         }
       }
 
-      await this.postTrackData(trackFormatted)
-        .catch(handleError)
-        .finally(handleFinish)
+      await this.createPlaylistTrack(
+        createArgs
+      ).catch(
+        handleError
+      ).finally(
+        handleFinish
+      )
     },
     formatTrack (trackData) {
       return {

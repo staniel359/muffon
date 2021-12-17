@@ -34,6 +34,7 @@
 
             <RightColumn
               :trackData="slotProps.trackData"
+              :requestTrackData="slotProps.requestTrackData"
             />
           </template>
         </BaseSegmentContainer>

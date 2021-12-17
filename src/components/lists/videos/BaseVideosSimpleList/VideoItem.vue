@@ -6,7 +6,8 @@
   >
     <BaseImage
       class="rounded bordered video-image"
-      :image="image"
+      model="video"
+      :image="imageData?.small"
     />
 
     <div class="content">
@@ -56,8 +57,8 @@ export default {
     videoId () {
       return this.videoData.youtube_id
     },
-    image () {
-      return this.videoData.image.small
+    imageData () {
+      return this.videoData.image
     },
     videoTitle () {
       return this.videoData.title

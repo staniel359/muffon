@@ -1,24 +1,13 @@
 <template>
-  <BaseLinkContainer
-    class="item main-sidebar-item"
+  <BaseSidebarItem
+    icon="volume up"
+    :text="recommendationsText"
     :link="recommendationsLink"
-  >
-    <div class="main-sidebar-item-icon-container">
-      <i class="volume up grey icon"></i>
-    </div>
-
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="recommendationsText"
-      />
-    </div>
-  </BaseLinkContainer>
+  />
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseSidebarItem from '@/BaseSidebarItem.vue'
 import {
   recommendations as formatRecommendationsLink
 } from '#/formatters/links'
@@ -26,17 +15,16 @@ import {
 export default {
   name: 'RecommendationsItem',
   components: {
-    BaseLinkContainer,
-    BaseHeader
+    BaseSidebarItem
   },
   computed: {
-    recommendationsLink () {
-      return formatRecommendationsLink()
-    },
     recommendationsText () {
       return this.$t(
         'layout.navigation.recommendations'
       )
+    },
+    recommendationsLink () {
+      return formatRecommendationsLink()
     }
   }
 }

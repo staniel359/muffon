@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import fetchSearchData from '#/actions/api/search/fetchData'
+import getSearch from '#/actions/api/search/get'
 
 export default {
   name: 'BaseTrackSourceItemContainer',
@@ -29,10 +29,11 @@ export default {
     }
   },
   computed: {
-    searchDataArgs () {
+    searchArgs () {
       return {
         sourceId: this.sourceId,
-        query: this.query
+        query: this.query,
+        scope: 'tracks'
       }
     },
     tracks () {
@@ -43,12 +44,11 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchSearchData,
+    getSearch,
     fetchData () {
-      this.fetchSearchData({
-        ...this.searchDataArgs,
-        scope: 'tracks'
-      })
+      this.getSearch(
+        this.searchArgs
+      )
     }
   }
 }

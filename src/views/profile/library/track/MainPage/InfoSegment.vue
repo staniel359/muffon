@@ -7,8 +7,9 @@
       >
         <BaseImage
           class="rounded bordered main-profile-page-image"
+          model="track"
           size="small"
-          :image="imageData.medium"
+          :image="imageData?.medium"
         />
 
         <BaseHeader
@@ -36,11 +37,50 @@
             {{ albumTitle }}
           </small>
         </div>
+      </BaseLinkContainer>
 
+      <div
+        v-if="favoriteId || isRenderOptions"
+        class="main-self-container"
+      >
         <BaseSelfIcons
           :favoriteId="favoriteId"
         />
-      </BaseLinkContainer>
+
+        <template
+          v-if="isRenderOptions"
+        >
+          <BaseOptionsDropdown
+            model="track"
+            :trackTitle="trackTitle"
+            :artistName="artistName"
+            :albumTitle="albumTitle"
+            :favoriteId="favoriteId"
+            isWithFavoriteOption
+            isWithPlaylistOption
+            isWithDeleteOption
+            @delete="handleDeleteOptionClick"
+            @playlist="handlePlaylistOptionClick"
+          />
+
+          <BasePlaylistsModal
+            ref="playlistModal"
+            :trackTitle="trackTitle"
+            :artistName="artistName"
+            :albumTitle="albumTitle"
+            :imageUrl="imageData?.original"
+          />
+
+          <BaseProfileLibraryDeleteModal
+            ref="deleteModal"
+            model="track"
+            :profileId="profileId"
+            :modelId="trackId"
+            :modelTitle="trackFullTitle"
+            isDeleteWithRedirect
+          />
+        </template>
+      </div>
 
       <BaseDivider />
 
@@ -53,42 +93,6 @@
         </strong>
       </div>
     </BaseSegmentContainer>
-
-    <BaseSegmentContainer
-      v-if="isRenderOptions"
-    >
-      <div class="main-options-dropdown-container-right">
-        <BaseOptionsDropdown
-          model="track"
-          :trackTitle="trackTitle"
-          :artistName="artistName"
-          :albumTitle="albumTitle"
-          :favoriteId="favoriteId"
-          isWithFavoriteOption
-          isWithPlaylistOption
-          isWithDeleteOption
-          @delete="handleDeleteOptionClick"
-          @playlist="handlePlaylistOptionClick"
-        />
-      </div>
-
-      <BasePlaylistsModal
-        ref="playlistModal"
-        :trackTitle="trackTitle"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
-        :imageUrl="imageData.medium"
-      />
-
-      <BaseProfileLibraryDeleteModal
-        ref="deleteModal"
-        model="track"
-        :profileId="profileId"
-        :modelId="trackId"
-        :modelTitle="trackFullTitle"
-        isDeleteWithRedirect
-      />
-    </BaseSegmentContainer>
   </div>
 </template>
 
@@ -99,11 +103,11 @@ import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseDivider from '@/BaseDivider.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
 import BaseProfileLibraryDeleteModal
   from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseDivider from '@/BaseDivider.vue'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'
@@ -113,8 +117,7 @@ import {
 import { main as formatTrackMainLink } from '#/formatters/links/track'
 import { isCurrentProfile } from '#/utils'
 import { date as formatDate } from '#/formatters'
-import formatTrackSourceParams
-  from '#/actions/api/track/formatters/requestData'
+import formatTrackRequestData from '#/formatters/request/track/requestData'
 
 export default {
   name: 'InfoSegment',
@@ -194,7 +197,7 @@ export default {
       return this.trackData.artist.name
     },
     sourceParams () {
-      return formatTrackSourceParams({
+      return formatTrackRequestData({
         sourceId: 'lastfm',
         trackData: this.trackData
       })
@@ -261,7 +264,4 @@ export default {
 .main-profile-page-image
   width: 120px
   height: 120px
-
-.main-self-icons
-  margin-top: 0.25em
 </style>

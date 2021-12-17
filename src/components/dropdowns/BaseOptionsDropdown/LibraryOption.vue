@@ -2,7 +2,10 @@
   <Component
     class="ui item"
     :is="component"
-    :class="{ disabled: isLoading }"
+    :class="{
+      disabled: isLoading,
+      'main-link': modelId
+    }"
     :link="link"
     @click="handleClick"
   >
@@ -24,9 +27,9 @@
 <script>
 import { mapState } from 'vuex'
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import postArtistData from '#/actions/api/library/artists/postData'
-import postAlbumData from '#/actions/api/library/albums/postData'
-import postTrackData from '#/actions/api/library/tracks/postData'
+import createLibraryArtist from '#/actions/api/library/artist/create'
+import createLibraryAlbum from '#/actions/api/library/album/create'
+import createLibraryTrack from '#/actions/api/library/track/create'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '#/formatters/links/profile/library/artist'
@@ -127,12 +130,12 @@ export default {
         return 'div'
       }
     },
-    artistParams () {
+    artistCreateArgs () {
       return {
         artistName: this.artistName
       }
     },
-    albumParams () {
+    albumCreateArgs () {
       return {
         albumTitle: this.albumTitle,
         artistName: this.artistName,
@@ -140,7 +143,7 @@ export default {
         imageUrl: this.imageUrl
       }
     },
-    trackParams () {
+    trackCreateArgs () {
       return {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
@@ -156,35 +159,35 @@ export default {
       } else {
         event.preventDefault()
 
-        const handleSuccess = response => {
-          const libraryId =
-            response.data.library_id.toString()
-
-          this.setLibraryId(
-            libraryId
-          )
-        }
-
-        this.addToLibrary()
-          .then(handleSuccess)
+        this.addToLibrary().then(
+          this.handleCreateSuccess
+        )
       }
     },
-    postArtistData,
-    postAlbumData,
-    postTrackData,
+    handleCreateSuccess (response) {
+      const libraryId =
+        response.data.library_id.toString()
+
+      this.setLibraryId(
+        libraryId
+      )
+    },
+    createLibraryArtist,
+    createLibraryAlbum,
+    createLibraryTrack,
     addToLibrary () {
       switch (this.model) {
         case 'artist':
-          return this.postArtistData(
-            this.artistParams
+          return this.createLibraryArtist(
+            this.artistCreateArgs
           )
         case 'album':
-          return this.postAlbumData(
-            this.albumParams
+          return this.createLibraryAlbum(
+            this.albumCreateArgs
           )
         case 'track':
-          return this.postTrackData(
-            this.trackParams
+          return this.createLibraryTrack(
+            this.trackCreateArgs
           )
         default:
           return null

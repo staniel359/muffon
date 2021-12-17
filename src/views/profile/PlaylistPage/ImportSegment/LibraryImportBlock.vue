@@ -9,7 +9,6 @@
   <BasePlaylistLibraryImportModal
     ref="modal"
     :playlistId="playlistId"
-    :profileId="profileId"
   />
 </template>
 
@@ -25,8 +24,7 @@ export default {
     BasePlaylistLibraryImportModal
   },
   props: {
-    playlistId: String,
-    profileId: String
+    playlistId: String
   },
   computed: {
     libraryText () {

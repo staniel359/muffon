@@ -24,7 +24,7 @@ import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatTagPageNavigation from '#/formatters/navigation/tag'
 import formatTagPageTab from '#/formatters/tabs/tag'
-import fetchTagData from '#/actions/api/tag/fetchData'
+import getTag from '#/actions/api/tag/get'
 
 export default {
   name: 'BaseTagPageContainer',
@@ -76,7 +76,7 @@ export default {
     tagNameFetched () {
       return this.tagData?.name
     },
-    tagDataArgs () {
+    tagArgs () {
       return {
         tagName: this.tagName,
         scope: this.scope,
@@ -94,10 +94,10 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    fetchTagData,
+    getTag,
     fetchData (page) {
-      this.fetchTagData({
-        ...this.tagDataArgs,
+      this.getTag({
+        ...this.tagArgs,
         page
       })
     }

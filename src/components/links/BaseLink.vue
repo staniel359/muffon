@@ -6,9 +6,9 @@
     @click.ctrl.exact.stop="handleCtrlClick"
     @auxclick="handleMiddleClick"
   >
-    <div
+    <span
       v-html="text"
-    ></div>
+    ></span>
   </RouterLink>
 </template>
 

@@ -9,8 +9,7 @@
       <BaseTrackTags
         v-if="isAnyTags"
         :tags="tags"
-        :artistName="artistName"
-        :trackTitle="trackTitle"
+        :requestTrackData="requestTrackData"
         :isMore="isMoreTags"
       />
 
@@ -19,8 +18,7 @@
 
         <BaseTrackDescription
           :description="description"
-          :artistName="artistName"
-          :trackTitle="trackTitle"
+          :requestTrackData="requestTrackData"
           :isMore="isMoreDescription"
         />
       </template>
@@ -49,7 +47,8 @@ export default {
     trackData: {
       type: Object,
       required: true
-    }
+    },
+    requestTrackData: Object
   },
   computed: {
     listenersCount () {

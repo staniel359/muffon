@@ -24,7 +24,7 @@ import {
   recommendations as formatRecommendationsPageNavigation
 } from '#/formatters/navigation'
 import formatRecommendationsPageTab from '#/formatters/tabs/recommendations'
-import fetchRecommendationsData from '#/actions/api/recommendations/fetchData'
+import getRecommendations from '#/actions/api/recommendations/get'
 
 export default {
   name: 'BaseRecommendationsPageContainer',
@@ -53,7 +53,7 @@ export default {
     tabData () {
       return formatRecommendationsPageTab()
     },
-    recommendationsDataArgs () {
+    recommendationsArgs () {
       return {
         limit: this.responsePageLimit,
         filter: this.filter,
@@ -76,10 +76,10 @@ export default {
     handleFilterValueChange () {
       this.fetchData()
     },
-    fetchRecommendationsData,
+    getRecommendations,
     fetchData (page) {
-      this.fetchRecommendationsData({
-        ...this.recommendationsDataArgs,
+      this.getRecommendations({
+        ...this.recommendationsArgs,
         page
       })
     }

@@ -30,7 +30,8 @@ export default {
   },
   computed: {
     ...mapGetters('queue', {
-      queueTracksConditional: 'tracksConditional'
+      queueTracksConditional:
+        'tracksConditional'
     }),
     ...mapState('queue', {
       queueTracks: 'tracks'

@@ -64,18 +64,21 @@ export default {
     isRenderArtistName () {
       return (
         this.isWithArtistName && (
-          !this.albumArtistName || (
-            this.artistName.toLowerCase() !==
-              this.albumArtistName.toLowerCase()
-          )
+          !this.albumArtistName ||
+            this.isDifferentNames
         )
+      )
+    },
+    isDifferentNames () {
+      return (
+        this.artistName.toLowerCase() !==
+          this.albumArtistName.toLowerCase()
       )
     },
     isRenderAlbumTitle () {
       return (
         this.isWithAlbumTitle &&
-          this.albumData &&
-          this.albumData.title
+          this.albumData?.title
       )
     }
   },

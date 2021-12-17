@@ -2,8 +2,7 @@
   <BaseTrackModalContainer
     ref="modal"
     scope="tags"
-    :artistName="artistName"
-    :trackTitle="trackTitle"
+    :requestTrackData="requestTrackData"
   >
     <template #default="slotProps">
       <BaseModalTagsList
@@ -26,8 +25,7 @@ export default {
     BaseModalTagsList
   },
   props: {
-    artistName: String,
-    trackTitle: String
+    requestTrackData: Object
   },
   methods: {
     handleTagClick () {

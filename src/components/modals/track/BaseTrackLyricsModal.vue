@@ -3,7 +3,7 @@
     ref="modal"
     scope="lyrics"
     sourceId="genius"
-    :trackId="trackId"
+    :requestTrackData="requestTrackData"
   >
     <template #default="slotProps">
       <div class="main-lyrics-container">
@@ -26,6 +26,14 @@ export default {
   },
   props: {
     trackId: Number
+  },
+  computed: {
+    requestTrackData () {
+      return {
+        sourceId: 'genius',
+        trackId: this.trackId
+      }
+    }
   },
   methods: {
     show () {

@@ -2,6 +2,7 @@
   <BaseSegmentContainer
     :isLoading="isLoading"
     :error="error"
+    @refresh="handleRefresh"
   >
     <div
       v-if="compatibilityData"
@@ -29,8 +30,7 @@ import BaseSegmentContainer
 import BasePercentCircle from '@/BasePercentCircle.vue'
 import CompatibilityContent
   from './CompatibilitySegment/CompatibilityContent.vue'
-import fetchProfileLibraryCompatibilityData
-  from '#/actions/api/profile/library/compatibility/fetchData'
+import getLibraryCompatibility from '#/actions/api/library/compatibility/get'
 
 export default {
   name: 'CompatibilitySegment',
@@ -62,9 +62,12 @@ export default {
     this.fetchData()
   },
   methods: {
-    fetchProfileLibraryCompatibilityData,
+    handleRefresh () {
+      this.fetchData()
+    },
+    getLibraryCompatibility,
     fetchData () {
-      this.fetchProfileLibraryCompatibilityData({
+      this.getLibraryCompatibility({
         otherProfileId: this.profileId
       })
     }

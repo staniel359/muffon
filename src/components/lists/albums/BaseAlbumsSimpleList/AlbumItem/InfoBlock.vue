@@ -53,11 +53,16 @@ export default {
     isArtistNameActive: Boolean,
     isWithListenersCount: Boolean
   },
+  computed: {
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    }
+  },
   methods: {
     handleListenersCountLoadEnd (value) {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).listeners_count = value
+      this.paginationItem.listeners_count = value
     }
   }
 }

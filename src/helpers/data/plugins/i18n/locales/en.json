@@ -227,7 +227,8 @@
           "feed": "No posts",
           "conversations": "No conversations",
           "followers": "No followers",
-          "following": "No following"
+          "following": "No following",
+          "profile_artists": "No artists"
         },
         "content": "Looks like there is nothing here"
       }

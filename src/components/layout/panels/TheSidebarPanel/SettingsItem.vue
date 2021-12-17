@@ -1,31 +1,21 @@
 <template>
-  <a
-    class="item main-sidebar-item"
+  <BaseSidebarItem
+    icon="cog"
+    :text="settingsText"
     @click="handleClick"
-  >
-    <div class="main-sidebar-item-icon-container">
-      <i class="cog grey icon"></i>
-    </div>
-
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="settingsText"
-      />
-    </div>
-  </a>
+  />
 
   <TheSettingsModal ref="modal" />
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
+import BaseSidebarItem from '@/BaseSidebarItem.vue'
 import TheSettingsModal from '@/layout/modals/TheSettingsModal.vue'
 
 export default {
   name: 'SettingsItem',
   components: {
-    BaseHeader,
+    BaseSidebarItem,
     TheSettingsModal
   },
   computed: {

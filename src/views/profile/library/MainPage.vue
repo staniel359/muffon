@@ -5,13 +5,13 @@
     :profileId="profileId"
   >
     <template #default="slotProps">
-      <ImportSegment
-        v-if="isCurrentProfile(profileId)"
-      />
-
       <StatisticsSegment
         :libraryData="slotProps.libraryData"
         :profileId="profileId"
+      />
+
+      <ImportSegment
+        v-if="isCurrentProfile(profileId)"
       />
 
       <ArtistsSegment
@@ -36,8 +36,8 @@
 <script>
 import BaseProfilePageContainer
   from '@/containers/pages/profile/BaseProfilePageContainer.vue'
-import ImportSegment from './MainPage/ImportSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
+import ImportSegment from './MainPage/ImportSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
@@ -47,8 +47,8 @@ export default {
   name: 'MainPage',
   components: {
     BaseProfilePageContainer,
-    ImportSegment,
     StatisticsSegment,
+    ImportSegment,
     ArtistsSegment,
     AlbumsSegment,
     TracksSegment

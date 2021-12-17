@@ -40,8 +40,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseProfileLibraryDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteProfileLibraryModelData
-  from '#/actions/api/library/model/deleteData'
+import deleteLibraryModel from '#/actions/api/library/model/delete'
 import {
   main as formatProfileLibraryMainLink
 } from '#/formatters/links/profile/library'
@@ -119,9 +118,9 @@ export default {
     isSuccess: 'handleIsSuccessChange'
   },
   methods: {
-    deleteProfileLibraryModelData,
+    deleteLibraryModel,
     handleDeleteButtonClick () {
-      this.deleteProfileLibraryModelData({
+      this.deleteLibraryModel({
         model: this.model,
         modelId: this.modelId
       })

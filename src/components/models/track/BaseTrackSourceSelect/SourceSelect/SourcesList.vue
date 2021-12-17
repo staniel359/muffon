@@ -18,7 +18,7 @@
   </div>
 
   <SourceItem
-    v-for="sourceData in otherSourcesCollection"
+    v-for="sourceData in otherSourcesWithTracksCollection"
     :key="sourceData.uuid"
     :query="query"
     :sourceData="sourceData"
@@ -27,10 +27,10 @@
 
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
-import { collection as formatCollection } from '#/formatters'
 import {
-  getStreamable as getAudioSourcesStreamable
-} from '#/actions/audio/sources'
+  streamableCollection as getStreamableSourcesCollection,
+  otherWithTracksCollection as getOtherSourcesWithTracksCollection
+} from '#/formatters/sources'
 
 export default {
   name: 'SourcesList',
@@ -47,29 +47,15 @@ export default {
       )
     },
     streamableSourcesCollection () {
-      return formatCollection(
-        getAudioSourcesStreamable(true)
-      )
+      return getStreamableSourcesCollection()
     },
     otherText () {
       return this.$t(
         'shared.sources.other'
       )
     },
-    otherSourcesCollection () {
-      return formatCollection(
-        this.otherSourcesWithTracks
-      )
-    },
-    otherSourcesWithTracks () {
-      return getAudioSourcesStreamable(false).filter(
-        this.getIsSourceWithTracks
-      )
-    }
-  },
-  methods: {
-    getIsSourceWithTracks (sourceData) {
-      return sourceData.isWithTracks
+    otherSourcesWithTracksCollection () {
+      return getOtherSourcesWithTracksCollection()
     }
   }
 }

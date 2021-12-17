@@ -8,7 +8,11 @@
 
     <BaseProfileRememberField />
 
-    <SubmitButton />
+    <div class="submit-button-container">
+      <BaseProfileSubmitButton
+        actionKey="login"
+      />
+    </div>
 
     <BaseDivider />
 
@@ -27,7 +31,8 @@ import BaseProfilePasswordField
   from '@/fields/profile/BaseProfilePasswordField.vue'
 import BaseProfileRememberField
   from '@/fields/profile/BaseProfileRememberField.vue'
-import SubmitButton from './BaseProfileLoginForm/SubmitButton.vue'
+import BaseProfileSubmitButton
+  from '@/forms/profile/BaseProfileSubmitButton.vue'
 import BaseDivider from '@/BaseDivider.vue'
 import SignupSection from './BaseProfileLoginForm/SignupSection.vue'
 
@@ -38,7 +43,7 @@ export default {
     BaseProfileEmailField,
     BaseProfilePasswordField,
     BaseProfileRememberField,
-    SubmitButton,
+    BaseProfileSubmitButton,
     SignupSection,
     BaseDivider
   },

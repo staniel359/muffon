@@ -1,84 +1,41 @@
 <template>
-  <div class="artist-page-left-column main-sticky-container">
-    <div class="main-image-container">
-      <BaseArtistImage
-        class="rounded image-content"
-        size="medium"
-        :artistName="artistName"
-        isInteractive
-      />
-    </div>
+  <div
+    :class="[
+      'ui segments',
+      'artist-page-left-column',
+      'main-sticky-container'
+    ]"
+  >
+    <ImageNameSegment
+      :artistName="artistName"
+      :scrollable="scrollable"
+    />
 
-    <div class="left-column-extra">
-      <BaseTransitionContainer
-        class="artist-name transition hidden"
-        :scrollable="scrollable"
-      >
-        <BaseHeader
-          tag="h3"
-          :text="artistName"
-        />
-      </BaseTransitionContainer>
+    <SelfSegment
+      :artistName="artistName"
+      :libraryId="libraryId"
+      :favoriteId="favoriteId"
+      :bookmarkId="bookmarkId"
+      :listenedId="listenedId"
+    />
 
-      <div class="main-self-container">
-        <BaseSegmentContainer
-          v-if="isShowSelfIcons"
-          :class="[
-            'raised',
-            'main-segment-container',
-            'main-self-icons-segment-container'
-          ]"
-        >
-          <BaseSelfIcons
-            :libraryId="libraryId"
-            :favoriteId="favoriteId"
-            :bookmarkId="bookmarkId"
-            :listenedId="listenedId"
-          />
-        </BaseSegmentContainer>
-
-        <BaseOptionsDropdown
-          model="artist"
-          :artistName="artistName"
-          :libraryId="libraryId"
-          :favoriteId="favoriteId"
-          :bookmarkId="bookmarkId"
-          :listenedId="listenedId"
-          isWithLibraryOption
-          isWithFavoriteOption
-          isWithBookmarkOption
-          isWithListenedOption
-          isWhite
-        />
-      </div>
-
-      <RecommendedSegment
-        v-if="recommendationData"
-        :recommendationData="recommendationData"
-      />
-    </div>
+    <RecommendedSegment
+      v-if="recommendationData"
+      :recommendationData="recommendationData"
+    />
   </div>
 </template>
 
 <script>
-import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import ImageNameSegment from './LeftColumn/ImageNameSegment.vue'
+import SelfSegment from './LeftColumn/SelfSegment.vue'
 import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
-    BaseArtistImage,
-    BaseTransitionContainer,
-    BaseHeader,
-    BaseSegmentContainer,
-    BaseSelfIcons,
-    BaseOptionsDropdown,
+    ImageNameSegment,
+    SelfSegment,
     RecommendedSegment
   },
   provide () {
@@ -108,29 +65,27 @@ export default {
     artistName () {
       return this.artistData.name
     },
-    isShowSelfIcons () {
-      return (
-        this.libraryId ||
-          this.favoriteId ||
-          this.bookmarkId ||
-          this.listenedId
-      )
-    },
     recommendationData () {
       return this.artistData.recommendation
     }
   },
-  mounted () {
-    this.libraryId =
-      this.artistData.library_id?.toString()
-    this.favoriteId =
-      this.artistData.favorite_id?.toString()
-    this.bookmarkId =
-      this.artistData.bookmark_id?.toString()
-    this.listenedId =
-      this.artistData.listened_id?.toString()
+  watch: {
+    artistData: {
+      immediate: true,
+      handler: 'handleArtistDataChange'
+    }
   },
   methods: {
+    handleArtistDataChange () {
+      this.libraryId =
+        this.artistData.library_id?.toString()
+      this.favoriteId =
+        this.artistData.favorite_id?.toString()
+      this.bookmarkId =
+        this.artistData.bookmark_id?.toString()
+      this.listenedId =
+        this.artistData.listened_id?.toString()
+    },
     setLibraryId (value) {
       this.libraryId = value
     },
@@ -150,12 +105,4 @@ export default {
 <style lang="sass" scoped>
 .artist-page-left-column
   width: 200px
-
-.left-column-extra
-  margin-top: 0.5em
-
-.artist-name
-  @extend .text-align-center
-  .ui.header
-    @extend .text-color-white
 </style>

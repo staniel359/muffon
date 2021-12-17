@@ -16,7 +16,7 @@
 <script>
 import BaseModalContentContainer
   from '@/containers/modals/BaseModalContentContainer.vue'
-import fetchVideoData from '#/actions/api/video/fetchData'
+import getVideo from '#/actions/api/video/get'
 
 export default {
   name: 'BaseVideoModalContainer',
@@ -41,7 +41,7 @@ export default {
     }
   },
   computed: {
-    videoDataArgs () {
+    videoArgs () {
       return {
         videoId: this.videoId,
         scope: this.scope
@@ -55,10 +55,10 @@ export default {
     handleModalRefresh () {
       this.fetchData()
     },
-    fetchVideoData,
+    getVideo,
     fetchData () {
-      this.fetchVideoData(
-        this.videoDataArgs
+      this.getVideo(
+        this.videoArgs
       )
     },
     show () {

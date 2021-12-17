@@ -5,11 +5,12 @@
   >
     <div></div>
     <div
-      v-if="image"
+      v-if="isWithImage"
       class="main-simple-card-image-container"
     >
       <BaseImage
         class="rounded bordered"
+        :model="model"
         :image="image"
       />
     </div>
@@ -28,7 +29,12 @@ export default {
     BaseImage
   },
   props: {
-    image: String
+    isWithImage: {
+      type: Boolean,
+      default: true
+    },
+    image: String,
+    model: String
   },
   computed: {
     ...mapState('layout', [

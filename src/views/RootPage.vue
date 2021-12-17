@@ -47,7 +47,9 @@ export default {
   },
   methods: {
     handleIsProfileLoggedInChange (value) {
-      !value && this.clearTabs()
+      if (!value) {
+        this.clearTabs()
+      }
     },
     clearTabs () {
       ipcRenderer.send(

@@ -1,9 +1,10 @@
 <template>
   <BaseSegmentContainer>
     <div class="info-container main-simple-list-item">
-      <BasePlaylistImage
-        class="playlist-image"
-        :image="imageData.small"
+      <BaseImage
+        class="playlist-image rounded bordered"
+        model="playlist"
+        :image="imageData?.small"
       />
 
       <div class="content">
@@ -33,7 +34,7 @@
     </div>
   </BaseSegmentContainer>
 
-  <BasePlaylistEditModal
+  <BasePlaylistUpdateModal
     ref="editModal"
     :playlistData="playlistData"
   />
@@ -50,11 +51,11 @@
 <script>
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BasePlaylistImage from '@/models/playlist/BasePlaylistImage.vue'
+import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePlaylistEditModal
-  from '@/modals/playlist/BasePlaylistEditModal.vue'
+import BasePlaylistUpdateModal
+  from '@/modals/playlist/BasePlaylistUpdateModal.vue'
 import BasePlaylistDeleteModal
   from '@/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
@@ -67,10 +68,10 @@ export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
-    BasePlaylistImage,
+    BaseImage,
     BaseHeader,
     BaseOptionsDropdown,
-    BasePlaylistEditModal,
+    BasePlaylistUpdateModal,
     BasePlaylistDeleteModal
   },
   props: {

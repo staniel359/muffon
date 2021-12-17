@@ -16,7 +16,7 @@
 <script>
 import BaseModalContentContainer
   from '@/containers/modals/BaseModalContentContainer.vue'
-import fetchArtistData from '#/actions/api/artist/fetchData'
+import getArtist from '#/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistModalContainer',
@@ -41,7 +41,7 @@ export default {
     }
   },
   computed: {
-    artistDataArgs () {
+    artistArgs () {
       return {
         artistName: this.artistName,
         scope: this.scope
@@ -55,10 +55,10 @@ export default {
     handleModalRefresh () {
       this.fetchData()
     },
-    fetchArtistData,
+    getArtist,
     fetchData () {
-      this.fetchArtistData(
-        this.artistDataArgs
+      this.getArtist(
+        this.artistArgs
       )
     },
     show () {

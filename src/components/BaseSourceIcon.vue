@@ -49,7 +49,10 @@ export default {
     },
     sourceData () {
       return audioSources.find(sourceData => {
-        return sourceData.id === this.sourceId
+        return (
+          sourceData.id ===
+            this.sourceId
+        )
       })
     },
     popupOptions () {

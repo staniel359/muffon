@@ -60,10 +60,13 @@ export default {
         this.isLoading = false
       }
 
-      ipcRenderer
-        .invoke('clear-cache')
-        .then(handleSuccess)
-        .finally(handleFinish)
+      ipcRenderer.invoke(
+        'clear-cache'
+      ).then(
+        handleSuccess
+      ).finally(
+        handleFinish
+      )
     }
   }
 }

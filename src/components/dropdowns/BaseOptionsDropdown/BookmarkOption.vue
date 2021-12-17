@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteData from '#/actions/api/bookmarks/model/deleteData'
-import postArtistData from '#/actions/api/bookmarks/artists/postData'
-import postAlbumData from '#/actions/api/bookmarks/albums/postData'
-import postTrackData from '#/actions/api/bookmarks/tracks/postData'
+import deleteBookmark from '#/actions/api/bookmarks/model/delete'
+import createBookmarkArtist from '#/actions/api/bookmarks/artist/create'
+import createBookmarkAlbum from '#/actions/api/bookmarks/album/create'
+import createBookmarkTrack from '#/actions/api/bookmarks/track/create'
 
 export default {
   name: 'BookmarkOption',
@@ -58,72 +58,75 @@ export default {
         )
       }
     },
-    artistParams () {
+    artistCreateArgs () {
       return {
         artistName: this.artistName
       }
     },
-    albumParams () {
+    albumCreateArgs () {
       return {
         albumTitle: this.albumTitle,
         artistName: this.artistName,
         imageUrl: this.imageUrl
       }
     },
-    trackParams () {
+    trackCreateArgs () {
       return {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
         imageUrl: this.imageUrl
       }
+    },
+    deleteArgs () {
+      return {
+        model: this.model,
+        bookmarkId: this.modelId
+      }
     }
   },
   methods: {
     handleClick () {
       if (this.modelId) {
-        this.deleteBookmark()
+        this.deleteBookmark(
+          this.deleteArgs
+        ).then(
+          this.handleDeleteSuccess
+        )
       } else {
-        const handleSuccess = response => {
-          const bookmarkId =
-            response.data.bookmark_id.toString()
-
-          this.setBookmarkId(
-            bookmarkId
-          )
-        }
-
-        this.createBookmark()
-          .then(handleSuccess)
+        this.createBookmark().then(
+          this.handleCreateSuccess
+        )
       }
     },
-    deleteData,
-    postArtistData,
-    postAlbumData,
-    postTrackData,
-    deleteBookmark () {
-      const handleSuccess = response => {
-        this.setBookmarkId(null)
-      }
+    handleCreateSuccess (response) {
+      const bookmarkId =
+        response.data.bookmark_id.toString()
 
-      this.deleteData({
-        model: this.model,
-        bookmarkId: this.modelId
-      }).then(handleSuccess)
+      this.setBookmarkId(
+        bookmarkId
+      )
     },
+    handleDeleteSuccess () {
+      this.setBookmarkId(null)
+    },
+    deleteBookmark,
+    createBookmarkArtist,
+    createBookmarkAlbum,
+    createBookmarkTrack,
     createBookmark () {
       switch (this.model) {
         case 'artist':
-          return this.postArtistData(
-            this.artistParams
+          return this.createBookmarkArtist(
+            this.artistCreateArgs
           )
         case 'album':
-          return this.postAlbumData(
-            this.albumParams
+          return this.createBookmarkAlbum(
+            this.albumCreateArgs
           )
         case 'track':
-          return this.postTrackData(
-            this.trackParams
+          return this.createBookmarkTrack(
+            this.trackCreateArgs
           )
         default:
           return null

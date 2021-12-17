@@ -92,7 +92,7 @@ export const playsToTracks = plays => {
     const playId = [
       playData.title,
       playData.artist.name,
-      playData.album.title
+      playData.album?.title
     ].filter(e => e).join(':')
 
     return [
@@ -101,20 +101,22 @@ export const playsToTracks = plays => {
     ]
   }
 
-  const playsFormatted = plays.map(
-    formatPlay
-  )
+  const playsFormatted =
+    plays.map(
+      formatPlay
+    )
 
   const tracks = [...new Map(
     playsFormatted
   ).values()]
 
-  const tracksSorted = tracks.sort((a, b) => {
-    return (
-      new Date(b.created) -
-        new Date(a.created)
-    )
-  })
+  const tracksSorted =
+    tracks.sort((a, b) => {
+      return (
+        new Date(b.created) -
+          new Date(a.created)
+      )
+    })
 
   return tracksSorted
 }

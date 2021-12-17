@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteData from '#/actions/api/listened/model/deleteData'
-import postArtistData from '#/actions/api/listened/artists/postData'
-import postAlbumData from '#/actions/api/listened/albums/postData'
-import postTrackData from '#/actions/api/listened/tracks/postData'
+import deleteListened from '#/actions/api/listened/model/delete'
+import createListenedArtist from '#/actions/api/listened/artist/create'
+import createListenedAlbum from '#/actions/api/listened/album/create'
+import createListenedTrack from '#/actions/api/listened/track/create'
 
 export default {
   name: 'ListenedOption',
@@ -57,69 +57,72 @@ export default {
         )
       }
     },
-    artistParams () {
+    artistCreateArgs () {
       return {
         artistName: this.artistName
       }
     },
-    albumParams () {
+    albumCreateArgs () {
       return {
         albumTitle: this.albumTitle,
         artistName: this.artistName
       }
     },
-    trackParams () {
+    trackCreateArgs () {
       return {
         trackTitle: this.trackTitle,
         artistName: this.artistName
+      }
+    },
+    deleteArgs () {
+      return {
+        model: this.model,
+        listenedId: this.modelId
       }
     }
   },
   methods: {
     handleClick () {
       if (this.modelId) {
-        this.deleteListened()
+        this.deleteListened(
+          this.deleteArgs
+        ).then(
+          this.handleDeleteSuccess
+        )
       } else {
-        const handleSuccess = response => {
-          const listenedId =
-            response.data.listened_id.toString()
-
-          this.setListenedId(
-            listenedId
-          )
-        }
-
-        this.createListened()
-          .then(handleSuccess)
+        this.createListened().then(
+          this.handleCreateSuccess
+        )
       }
     },
-    deleteData,
-    postArtistData,
-    postAlbumData,
-    postTrackData,
-    deleteListened () {
-      const handleSuccess = response => {
-        this.setListenedId(null)
-      }
+    handleCreateSuccess (response) {
+      const listenedId =
+        response.data.listened_id.toString()
 
-      this.deleteData({
-        model: this.model,
-        listenedId: this.modelId
-      }).then(handleSuccess)
+      this.setListenedId(
+        listenedId
+      )
     },
+    handleDeleteSuccess () {
+      this.setListenedId(null)
+    },
+    deleteListened,
+    createListenedArtist,
+    createListenedAlbum,
+    createListenedTrack,
     createListened () {
       switch (this.model) {
         case 'artist':
-          return this.postArtistData(
-            this.artistParams
+          return this.createListenedArtist(
+            this.artistCreateArgs
           )
         case 'album':
-          return this.postAlbumData(
-            this.albumParams
+          return this.createListenedAlbum(
+            this.albumCreateArgs
           )
         case 'track':
-          return this.postTrackData(
-            this.trackParams
+          return this.createListenedTrack(
+            this.trackCreateArgs
           )
         default:
           return null

@@ -103,6 +103,11 @@ export default {
     isDeleted () {
       return !!this.trackData.isDeleted
     },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
     uuid () {
       return this.trackData.uuid
     }
@@ -118,9 +123,7 @@ export default {
       )
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     fetchAudio () {
       this.$refs.container.fetchAudio()

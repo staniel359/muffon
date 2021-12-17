@@ -39,7 +39,7 @@ import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
 import TextSection from './BaseBookmarkDeleteModal/TextSection.vue'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseButton from '@/buttons/BaseButton.vue'
-import deleteBookmarkData from '#/actions/api/bookmarks/model/deleteData'
+import deleteBookmarkModel from '#/actions/api/bookmarks/model/delete'
 
 export default {
   name: 'BaseBookmarkDeleteModal',
@@ -97,21 +97,28 @@ export default {
     },
     bookmarkId () {
       return this.modelData.id
+    },
+    deleteArgs () {
+      return {
+        model: this.model,
+        bookmarkId: this.bookmarkId
+      }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteBookmarkData({
-        model: this.model,
-        bookmarkId: this.bookmarkId
-      }).then(this.handleSuccess)
+      this.deleteBookmarkModel(
+        this.deleteArgs
+      ).then(
+        this.handleSuccess
+      )
     },
     handleSuccess () {
       this.$refs.modal.hide()
 
       this.$emit('deleted')
     },
-    deleteBookmarkData,
+    deleteBookmarkModel,
     show () {
       this.$refs.modal.show()
     }

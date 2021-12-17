@@ -12,7 +12,8 @@
     <template v-else>
       <BaseImage
         class="rounded bordered"
-        :image="imageData.extrasmall"
+        model="album"
+        :image="imageData?.small"
       />
 
       <InfoBlock
@@ -37,7 +38,7 @@
         model="album"
         :artistName="artistName"
         :albumTitle="albumTitle"
-        :imageUrl="imageData.medium"
+        :imageUrl="imageData?.original"
         :libraryId="libraryId"
         :favoriteId="favoriteId"
         :bookmarkId="bookmarkId"
@@ -89,8 +90,7 @@ import {
   main as formatProfileLibraryAlbumMainLink
 } from '#/formatters/links/profile/library/album'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumSourceParams
-  from '#/actions/api/album/formatters/requestData'
+import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
   name: 'AlbumItem',
@@ -201,7 +201,7 @@ export default {
       })
     },
     sourceParams () {
-      return formatAlbumSourceParams({
+      return formatAlbumRequestData({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,
         artistName: this.artistName
@@ -215,6 +215,11 @@ export default {
     },
     listenersCount () {
       return this.albumData.listeners_count
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
     },
     uuid () {
       return this.albumData.uuid
@@ -250,9 +255,7 @@ export default {
       }
     },
     handleDeleted () {
-      this.findPaginationItem({
-        uuid: this.uuid
-      }).isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     setIsArtistNameActive (value) {
       this.isArtistNameActive = value

@@ -2,7 +2,7 @@
   <BaseButton
     class="basic compact circular small more-link-button"
     icon="ellipsis horizontal"
-    :class="{ white: !isDarkMode }"
+    :class="buttonClass"
     @click="handleClick"
   />
 </template>
@@ -31,6 +31,9 @@ export default {
       return formatArtistImagesLink({
         artistName: this.artistName
       })
+    },
+    buttonClass () {
+      return this.isDarkMode ? 'black' : 'white'
     }
   },
   methods: {

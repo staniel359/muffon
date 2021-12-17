@@ -87,10 +87,12 @@ export default {
       const isArtistPresent = artistData => {
         return artist.name === artistData.name
       }
+
       const isPresent = this.artists.find(
         isArtistPresent
       )
       const isInLibrary = !!artist.library_id
+
       const isAddArtist = (
         !isPresent && !isInLibrary
       )
