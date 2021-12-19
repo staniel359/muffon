@@ -5,6 +5,8 @@
     v-if="isPlayerWithScrobbling"
   />
 
+  <TheOnlineObserver />
+
   <TheLocalSaver />
 
   <TheBrowserTabs
@@ -18,6 +20,7 @@ import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
 import ThePlayerObserver from '@/layout/observers/ThePlayerObserver.vue'
 import TheScrobblingObserver from '@/layout/observers/TheScrobblingObserver.vue'
+import TheOnlineObserver from '@/layout/observers/TheOnlineObserver.vue'
 import TheLocalSaver from '@/layout/savers/TheLocalSaver.vue'
 import TheBrowserTabs from '@/layout/TheBrowserTabs.vue'
 import TheAuthentication from '@/layout/TheAuthentication.vue'
@@ -27,6 +30,7 @@ export default {
   components: {
     ThePlayerObserver,
     TheScrobblingObserver,
+    TheOnlineObserver,
     TheLocalSaver,
     TheBrowserTabs,
     TheAuthentication
