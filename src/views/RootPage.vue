@@ -7,9 +7,13 @@
 
   <TheLocalSaver />
 
-  <TheBrowserTabs
+  <template
     v-if="isProfileLoggedIn"
-  />
+  >
+    <TheOnlineObserver />
+
+    <TheBrowserTabs />
+  </template>
   <TheAuthentication v-else />
 </template>
 
@@ -19,6 +23,7 @@ import { ipcRenderer } from 'electron'
 import ThePlayerObserver from '@/layout/observers/ThePlayerObserver.vue'
 import TheScrobblingObserver from '@/layout/observers/TheScrobblingObserver.vue'
 import TheLocalSaver from '@/layout/savers/TheLocalSaver.vue'
+import TheOnlineObserver from '@/layout/observers/TheOnlineObserver.vue'
 import TheBrowserTabs from '@/layout/TheBrowserTabs.vue'
 import TheAuthentication from '@/layout/TheAuthentication.vue'
 
@@ -28,6 +33,7 @@ export default {
     ThePlayerObserver,
     TheScrobblingObserver,
     TheLocalSaver,
+    TheOnlineObserver,
     TheBrowserTabs,
     TheAuthentication
   },

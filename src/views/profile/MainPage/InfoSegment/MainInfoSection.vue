@@ -11,6 +11,11 @@
       :text="nickname"
     />
 
+    <BaseProfileOnlineLabel
+      class="online-label"
+      :profileData="profileData"
+    />
+
     <BaseLabel
       v-if="isStaff"
       class="primary role-label"
@@ -22,6 +27,8 @@
 <script>
 import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseProfileOnlineLabel
+  from '@/models/profile/BaseProfileOnlineLabel.vue'
 import BaseLabel from '@/BaseLabel.vue'
 
 export default {
@@ -29,6 +36,7 @@ export default {
   components: {
     BaseImage,
     BaseHeader,
+    BaseProfileOnlineLabel,
     BaseLabel
   },
   props: {
@@ -63,6 +71,9 @@ export default {
 .main-profile-page-image
   width: 120px
   height: 120px
+
+.online-label
+  margin-top: 0.5em
 
 .role-label
   margin-top: 0.5em
