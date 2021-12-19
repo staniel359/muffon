@@ -7,7 +7,7 @@
 
   <TheBackground />
 
-  <TheView v-if="isRootPage"/>
+  <TheView v-if="isRootPage" />
   <template v-else>
     <TheNavbarPanel />
 

@@ -62,17 +62,17 @@ const i18n = {
   en: {
     show: 'Show',
     hide: 'Hide',
-    quit: 'Quit'
+    exit: 'Exit'
   },
   it: {
     show: 'Mostra',
     hide: 'Nascondi',
-    quit: 'Esci'
+    exit: 'Esci'
   },
   ru: {
     show: 'Открыть',
     hide: 'Скрыть',
-    quit: 'Выйти'
+    exit: 'Выйти'
   }
 }
 
@@ -189,8 +189,8 @@ const setTrayMenu = () => {
     },
     {
       type: 'normal',
-      label: i18n[language].quit,
-      click: quit
+      label: i18n[language].exit,
+      click: exit
     }
   ])
 
@@ -210,7 +210,7 @@ const show = () => {
   setTrayMenu()
 }
 
-const quit = () => {
+const exit = () => {
   const isRememberProfile = local.get(
     'profile.isRemember'
   )
@@ -222,7 +222,9 @@ const quit = () => {
     )
   }
 
-  app.exit()
+  mainWindow.webContents.send(
+    'handle-exit'
+  )
 }
 
 const createHeadersHandler = () => {
@@ -553,4 +555,15 @@ const handleSetLanguage = (_, value) => {
 ipcMain.on(
   'set-language',
   handleSetLanguage
+)
+
+// Exit
+
+const handleExit = () => {
+  app.exit()
+}
+
+ipcMain.on(
+  'exit',
+  handleExit
 )

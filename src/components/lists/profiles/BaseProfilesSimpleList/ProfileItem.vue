@@ -17,6 +17,11 @@
           :text="nickname"
         />
 
+        <BaseProfileOnlineLabel
+          class="online-label"
+          :profileData="profileData"
+        />
+
         <BaseLabel
           v-if="isStaff"
           class="small primary role-label"
@@ -69,6 +74,8 @@
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/images/BaseImage.vue'
 import BaseHeader from '@/BaseHeader.vue'
+import BaseProfileOnlineLabel
+  from '@/models/profile/BaseProfileOnlineLabel.vue'
 import BaseLabel from '@/BaseLabel.vue'
 import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
@@ -89,6 +96,7 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
+    BaseProfileOnlineLabel,
     BaseLabel,
     BaseProfileGenderAge,
     BaseProfileCityCountry,
@@ -182,6 +190,9 @@ export default {
 <style lang="sass" scoped>
 .nickname-label-container
   @extend .d-flex, .align-items-center
+
+.online-label
+  margin-left: 0.5em
 
 .role-label
   margin-left: 0.5em
