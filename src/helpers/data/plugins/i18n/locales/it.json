@@ -1,7 +1,8 @@
 {
   "layout": {
     "navigation": {
-      "start": "Pagina iniziale",
+      "feed": "Feed",
+      "conversations": "Conversazioni",
       "artists": "Artisti",
       "artist": "Artista",
       "albums": "Album",
@@ -22,6 +23,8 @@
       "playlists": "Playlist",
       "radio": "Radio",
       "posts": "Post",
+      "followers": "Follower",
+      "following": "Following",
       "model": {
         "artists": "Artisti {modelName}",
         "albums": "Album {modelName}",
@@ -32,7 +35,9 @@
         "library": "Libreria {modelName}",
         "favorites": "Preferiti {nickname}",
         "playlists": "Playlist {nickname}",
-        "posts": "{modelName} post"
+        "posts": "{modelName} post",
+        "followers": "{modelName} follower",
+        "following": "{modelName} following"
       },
       "top": {
         "artists": "Artisti in evidenza",
@@ -140,6 +145,13 @@
     }
   },
   "pages": {
+    "artist": {
+      "recommended": {
+        "header": "Consigliati per te",
+        "based": "Basati su:",
+        "artists": "{count} artisti"
+      }
+    },
     "track": {
       "videos": {
         "find": "Trova video",
@@ -178,6 +190,7 @@
     "delete": "Cancella",
     "retry": "Riprova",
     "post": "Post",
+    "send": "Invia",
     "from": {
       "search": "dalla ricerca",
       "folder": "dalla cartella",
@@ -211,7 +224,11 @@
           "playlists": "Nessuna playlist",
           "recommendations": "Nessun consiglio",
           "posts": "Nessun post",
-          "feed": "Nessun post"
+          "feed": "Nessun post",
+          "conversations": "Nessuna conversazione",
+          "followers": "Non ti segue nessuno",
+          "following": "Non stai seguendo nessuno",
+          "profile_artists": "Nessun artista"
         },
         "content": "Non c'è ancora nulla qui"
       }
@@ -352,7 +369,14 @@
       },
       "roles": {
         "creator": "Creatore"
-      }
+      },
+      "followersCount": "{count} follower",
+      "followingCount": "{count} following",
+      "followed": "Ti seguono",
+      "following": "Stai seguendo",
+      "follow": "Segui",
+      "unfollow": "Smetti di seguire",
+      "message": "Invia messaggio"
     },
     "library": {
       "add": "Aggiungi alla libreria",
@@ -446,6 +470,12 @@
       "delete": {
         "header": "Cancella post",
         "going": "Stai per cancellare questo post."
+      }
+    },
+    "message": {
+      "sent": {
+        "header": "Il messaggio è stato inviato",
+        "content": "Vai alla conversazione"
       }
     },
     "updated": {
