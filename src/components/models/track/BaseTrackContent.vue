@@ -13,7 +13,7 @@
 
     <div class="track-image-container">
       <BaseImage
-        v-if="isWithImage"
+        v-if="isRenderImage"
         class="rounded bordered"
         model="track"
         :image="imageData?.extrasmall"
