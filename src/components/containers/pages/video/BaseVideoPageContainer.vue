@@ -37,7 +37,9 @@ export default {
       type: String,
       required: true
     },
-    pageNameKey: String
+    scope: String,
+    pageNameKey: String,
+    responsePageLimit: Number
   },
   data () {
     return {
@@ -77,7 +79,9 @@ export default {
     },
     videoArgs () {
       return {
-        videoId: this.videoId
+        videoId: this.videoId,
+        scope: this.scope,
+        limit: this.responsePageLimit
       }
     }
   },

@@ -1,15 +1,28 @@
 import axios from 'axios'
 
-export default function ({ videoId, scope = '' }) {
+export default function ({ videoId, scope = '', page, limit }) {
   this.error = null
   this.isLoading = true
 
   const url =
     `/youtube/videos/${videoId}/${scope}`
 
+  const params = {
+    ...(page && { page }),
+    ...(limit && { limit })
+  }
+
   const handleSuccess = response => {
-    this.videoData =
-      response.data.video
+    if (scope === 'related') {
+      this.videoData = {
+        page: 1,
+        total_pages: 1,
+        ...response.data.video
+      }
+    } else {
+      this.videoData =
+        response.data.video
+    }
   }
 
   const handleError = error => {
@@ -21,7 +34,7 @@ export default function ({ videoId, scope = '' }) {
   }
 
   return axios.get(
-    url
+    url, { params }
   ).then(
     handleSuccess
   ).catch(

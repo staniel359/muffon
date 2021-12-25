@@ -23,7 +23,7 @@ export default function ({
     if (pageNameKey) {
       return {
         name: i18n.global.t(
-          `navigation.video.${pageNameKey}`
+          `navigation.${pageNameKey}`
         ),
         isActive: true
       }

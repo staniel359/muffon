@@ -11,6 +11,7 @@
     "images": "Images",
     "videoChannels": "Video channels",
     "videos": "Videos",
+    "related": "Related",
     "tops": "Top",
     "radio": "Radio",
     "profiles": "Profiles",
@@ -32,6 +33,7 @@
       "similar": "{modelName} similar",
       "images": "{modelName} images",
       "videos": "{modelName} videos",
+      "related": "{modelName} related",
       "posts": "{modelName} posts",
       "followers": "{modelName} followers",
       "following": "{modelName} following",
@@ -437,7 +439,8 @@
       "following": "No following",
       "profile_artists": "No artists",
       "recommendations": "No recommendations",
-      "playlists": "No playlists"
+      "playlists": "No playlists",
+      "videos": "No videos"
     },
     "content": "Looks like there is nothing here"
   },

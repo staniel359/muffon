@@ -30,6 +30,12 @@
         <DescriptionSection
           :videoData="slotProps.videoData"
         />
+
+        <div class="main-basic-segments-container">
+          <RelatedSegment
+            :videoData="slotProps.videoData"
+          />
+        </div>
       </BaseSegmentContainer>
     </template>
   </BaseVideoPageContainer>
@@ -46,6 +52,7 @@ import BaseDivider from '@/BaseDivider.vue'
 import CountersDateSection from './MainPage/CountersDateSection.vue'
 import TagsSection from './MainPage/TagsSection.vue'
 import DescriptionSection from './MainPage/DescriptionSection.vue'
+import RelatedSegment from './MainPage/RelatedSegment.vue'
 
 export default {
   name: 'MainPage',
@@ -57,7 +64,8 @@ export default {
     BaseDivider,
     CountersDateSection,
     TagsSection,
-    DescriptionSection
+    DescriptionSection,
+    RelatedSegment
   }
 }
 </script>

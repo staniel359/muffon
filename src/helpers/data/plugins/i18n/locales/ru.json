@@ -11,6 +11,7 @@
     "images": "Изображения",
     "videoChannels": "Видео-каналы",
     "videos": "Видео",
+    "related": "Связанные",
     "tops": "Популярное",
     "radio": "Радио",
     "profiles": "Профили",
@@ -32,6 +33,7 @@
       "similar": "Похожие на {modelName}",
       "images": "Изображения {modelName}",
       "videos": "Видео {modelName}",
+      "related": "Связанные с {modelName}",
       "posts": "Публикации {modelName}",
       "followers": "Подписчики {modelName}",
       "following": "Подписки {modelName}",
@@ -437,7 +439,8 @@
       "following": "Нет подписок",
       "profile_artists": "Нет исполнителей",
       "recommendations": "Нет рекомендаций",
-      "playlists": "Нет списков"
+      "playlists": "Нет списков",
+      "videos": "Нет видео"
     },
     "content": "Похоже, здесь ничего нет"
   },

@@ -1,12 +1,15 @@
 import i18n from '&/i18n'
-import { main as formatVideoMainLink } from '#/formatters/links/video'
+import {
+  main as formatVideoMainLink,
+  related as formatVideoRelatedLink
+} from '#/formatters/links/video'
 
 export default function ({ videoTitle, videoId, pageNameKey }) {
   const formatTitle = () => {
     if (pageNameKey) {
       return i18n.global.t(
-        `navigation.video.${pageNameKey}`,
-        { videoTitle }
+        `navigation.model.${pageNameKey}`,
+        { modelName: videoTitle }
       )
     } else {
       return videoTitle
@@ -15,6 +18,10 @@ export default function ({ videoTitle, videoId, pageNameKey }) {
 
   const formatPath = () => {
     switch (pageNameKey) {
+      case 'related':
+        return formatVideoRelatedLink({
+          videoId
+        }).path
       default:
         return formatVideoMainLink({
           videoId

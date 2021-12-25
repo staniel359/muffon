@@ -26,8 +26,16 @@ export default function ({
   }
 
   const handleSuccess = response => {
-    this.searchData =
-      response.data.search
+    if (sourceId === 'youtube') {
+      this.searchData = {
+        page: 1,
+        total_pages: 1,
+        ...response.data.search
+      }
+    } else {
+      this.searchData =
+        response.data.search
+    }
   }
 
   const handleError = error => {

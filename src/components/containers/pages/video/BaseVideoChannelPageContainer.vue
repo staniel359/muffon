@@ -26,7 +26,7 @@ import formatVideoChannelVideosPageTab from '#/formatters/tabs/videoChannel'
 import getVideoChannel from '#/actions/api/video_channel/get'
 
 export default {
-  name: 'BaseChannelPageContainer',
+  name: 'BaseVideoChannelPageContainer',
   components: {
     BasePageContainer
   },

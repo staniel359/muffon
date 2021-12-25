@@ -25,7 +25,16 @@
       <BaseDivider />
 
       <div class="main-pagination-container">
+        <BaseSimplePagination
+          v-if="isPaginationSimple"
+          :isWithPrevPage="!!prevPage"
+          :isWithNextPage="!!nextPage"
+          :isDisabled="isPaginationDisabled"
+          @prevPageButtonClick="handlePrevPageButtonClick"
+          @nextPageButtonClick="handleNextPageButtonClick"
+        />
         <BasePagination
+          v-else
           :totalPages="clientTotalPages"
           :isDisabled="isPaginationDisabled"
           isWithNearButtons
@@ -41,6 +50,7 @@ import deepmerge from 'deepmerge'
 import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
 import BaseNoCollectionMessage from '@/messages/BaseNoCollectionMessage.vue'
 import BaseDivider from '@/BaseDivider.vue'
+import BaseSimplePagination from '@/BaseSimplePagination.vue'
 import BasePagination from '@/BasePagination.vue'
 import { collection as formatCollection } from '#/formatters'
 
@@ -50,6 +60,7 @@ export default {
     BaseErrorMessage,
     BaseNoCollectionMessage,
     BaseDivider,
+    BaseSimplePagination,
     BasePagination
   },
   provide () {
@@ -75,7 +86,8 @@ export default {
     error: Error,
     responseData: Object,
     isReset: Boolean,
-    isWithPagination: Boolean
+    isWithPagination: Boolean,
+    isPaginationSimple: Boolean
   },
   emits: [
     'focus',
@@ -86,6 +98,7 @@ export default {
     return {
       responsePageCollection: null,
       clientPageCollection: null,
+      currentPage: null,
       responseTotalPages: 0,
       clientPage: 1,
       clientCollectionPaginated: {},
@@ -116,7 +129,17 @@ export default {
       )
     },
     isResponsePageable () {
-      return this.responseTotalPages > 1
+      return (
+        this.responseTotalPages > 1 ||
+          this.nextPage ||
+            this.prevPage
+      )
+    },
+    nextPage () {
+      return this.responseData?.next_page
+    },
+    prevPage () {
+      return this.responseData?.prev_page
     },
     isResponsePagePageable () {
       return (
@@ -140,7 +163,9 @@ export default {
       return !!this.error
     },
     clientPageCollectionFiltered () {
-      return this.clientPageCollection.filter(item => item)
+      return this.clientPageCollection.filter(item => {
+        return item
+      })
     },
     newClientCollectionPaginated () {
       return deepmerge(
@@ -149,7 +174,8 @@ export default {
       )
     },
     clientResponsePageCollections () {
-      const collections = this.formatCollections()
+      const collections =
+        this.formatCollections()
 
       if (this.isForward) {
         return collections
@@ -172,11 +198,14 @@ export default {
       ) {
         const prevPageRemainder =
           newCollection.length ? 0 : this.pageRemainder
-        const pageDataLength =
-          this.clientPageLimit - prevPageRemainder
-        const pageData = collection.splice(
-          0, pageDataLength
+        const pageDataLength = (
+          this.clientPageLimit -
+            prevPageRemainder
         )
+        const pageData =
+          collection.splice(
+            0, pageDataLength
+          )
 
         newCollection.push(
           [page, pageData]
@@ -221,7 +250,10 @@ export default {
       )
     },
     remainingItems () {
-      return this.totalItems - this.clientOffset
+      return (
+        this.totalItems -
+          this.clientOffset
+      )
     },
     clientOffset () {
       return (
@@ -284,19 +316,30 @@ export default {
     clientPage: 'handleClientPageChange',
     clientPageCollection: 'handleClientPageCollectionChange'
   },
+  mounted () {
+    if (this.isPaginationSimple) {
+      this.currentPage = this.nextPage
+    }
+  },
   methods: {
     handleRefresh () {
+      const page = this.isPaginationSimple
+        ? this.currentPage
+        : this.requestPage
+
       this.$emit(
         'refresh',
-        this.requestPage
+        page
       )
     },
     handleResponseDataChange (value) {
       if (value) {
-        this.responseTotalPages = value.total_pages
-        this.responsePageCollection = formatCollection(
-          value[this.scope]
-        )
+        this.responseTotalPages =
+          value.total_pages
+        this.responsePageCollection =
+          formatCollection(
+            value[this.scope]
+          )
 
         this.setCollections()
       }
@@ -317,6 +360,22 @@ export default {
         }
       }
     },
+    handlePrevPageButtonClick () {
+      this.currentPage = this.prevPage
+
+      this.$emit(
+        'fetchData',
+        this.prevPage
+      )
+    },
+    handleNextPageButtonClick () {
+      this.currentPage = this.nextPage
+
+      this.$emit(
+        'fetchData',
+        this.nextPage
+      )
+    },
     fetchData () {
       this.$nextTick(() => {
         this.$emit(
@@ -333,14 +392,19 @@ export default {
     },
     setClientPageCollection () {
       this.clientPageCollection =
-        this.clientCollectionPaginated[this.clientPage] || []
+        this.clientCollectionPaginated[
+          this.clientPage
+        ] || []
     },
     changeClientPage (page) {
-      this.isLastPage =
-        page === this.clientTotalPages
-      this.isForward =
+      this.isLastPage = (
+        page ===
+          this.clientTotalPages
+      )
+      this.isForward = (
         page > this.clientPage &&
           !this.isLastPage
+      )
       this.clientPage = page
       this.isFocusable = true
     },
@@ -354,7 +418,10 @@ export default {
       }
     },
     isArrayFull (array) {
-      return array.length === this.clientPageLimit
+      return (
+        array.length ===
+          this.clientPageLimit
+      )
     },
     reset () {
       Object.assign(
@@ -368,9 +435,10 @@ export default {
       })
     },
     updatePaginationItem ({ uuid, value }) {
-      const index = this.clientPageCollection.findIndex(itemData => {
-        return itemData.uuid === uuid
-      })
+      const index =
+        this.clientPageCollection.findIndex(itemData => {
+          return itemData.uuid === uuid
+        })
 
       this.clientPageCollection[index] = value
     },
