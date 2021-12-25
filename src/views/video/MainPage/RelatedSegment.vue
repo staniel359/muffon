@@ -1,62 +1,81 @@
 <template>
-  <BaseVideoChannelPageContainer
+  <BaseVideoSegmentContainer
+    ref="segment"
+    scope="related"
+    headerTextKey="related"
+    :videoId="videoId"
     :responsePageLimit="limit"
+    :formatHeaderLink="formatVideoRelatedLink"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
-        :class="[
-          'raised',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
         :isLoading="pageSlotProps.isLoading"
       >
         <BasePaginatedListContainer
-          scope="videos"
+          scope="related"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
-          :responseData="pageSlotProps.channelData"
-          :clientPageLimit="limit"
+          :responseData="pageSlotProps.videoData"
+          :clientPageLimit="4"
           :responsePageLimit="limit"
-          isPaginationSimple
-          isReset
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
         >
           <template #default="slotProps">
             <BaseVideosTableList
-              :videos="slotProps.videos"
+              :videos="slotProps.related"
             />
           </template>
         </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
-  </BaseVideoChannelPageContainer>
+  </BaseVideoSegmentContainer>
 </template>
 
 <script>
-import BaseVideoChannelPageContainer
-  from '@/containers/pages/video/BaseVideoChannelPageContainer.vue'
+import BaseVideoSegmentContainer
+  from '@/containers/segments/video/BaseVideoSegmentContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseVideosTableList from '@/lists/videos/BaseVideosTableList.vue'
+import { related as formatVideoRelatedLink } from '#/formatters/links/video'
 
 export default {
-  name: 'VideosPage',
+  name: 'RelatedSegment',
   components: {
-    BaseVideoChannelPageContainer,
+    BaseVideoSegmentContainer,
     BaseSegmentContainer,
     BasePaginatedListContainer,
     BaseVideosTableList
+  },
+  props: {
+    videoData: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
       limit: 40
     }
+  },
+  computed: {
+    videoId () {
+      return this.videoData.youtube_id.toString()
+    }
+  },
+  methods: {
+    handleFocus () {
+      this.$refs.segment.focus()
+    },
+    formatVideoRelatedLink
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.segment-container
+  @extend .d-flex
+</style>

@@ -13,8 +13,11 @@ export default function ({ channelId, scope = '', page, limit }) {
   }
 
   const handleSuccess = response => {
-    this.channelData =
-      response.data.channel
+    this.channelData = {
+      page: 1,
+      total_pages: 1,
+      ...response.data.channel
+    }
   }
 
   const handleError = error => {

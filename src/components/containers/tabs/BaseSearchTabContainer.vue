@@ -6,34 +6,15 @@
       inverted: isDarkMode
     }"
   >
-    <template v-if="isRenderVideos">
-      <div
-        v-show="!isLoading"
-        class="videos-list-container-wrapper"
-      >
-        <div class="videos-list-container">
-          <BaseVideosPaginatedList
-            :videosData="searchData"
-            :error="error"
-            isWithChannelTitle
-            isSimpleList
-            @prevPageButtonClick="fetchData"
-            @nextPageButtonClick="fetchData"
-            @focus="handleFocus"
-            @refresh="handleRefresh"
-            @linkClick="handleLinkClick"
-          />
-        </div>
-      </div>
-    </template>
     <BasePaginatedListContainer
-      v-else
       :isLoading="isLoading"
       :error="error"
       :responseData="searchData"
       :scope="tabData.scope"
       :clientPageLimit="tabData.clientPageLimit"
       :responsePageLimit="tabData.responsePageLimit"
+      :isPaginationSimple="isVideos"
+      :isReset="isVideos"
       @fetchData="fetchData"
       @focus="handleFocus"
       @refresh="handleRefresh"
@@ -45,7 +26,7 @@
           :isWithListenersCount="!!tabData.isWithListenersCount"
           :isWithIcon="!!tabData.isWithIcon"
           :profileId="profileId"
-          :isWithPlaylistOption="isWithPlaylistOption"
+          :isWithPlaylistOption="isTracks"
           isWithImage
           isWithArtistName
           isWithAlbumTitle
@@ -53,6 +34,7 @@
           isWithLibraryOption
           isWithListenedOption
           isWithBookmarkOption
+          isWithChannelTitle
           isWithFavoriteOption
           @linkClick="handleLinkClick"
         />
@@ -63,25 +45,24 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseVideosPaginatedList
-  from '@/lists/videos/BaseVideosPaginatedList.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
+import BaseVideosSimpleList from '@/lists/videos/BaseVideosSimpleList.vue'
 import getSearch from '#/actions/api/search/get'
 
 export default {
   name: 'BaseSearchTabContainer',
   components: {
-    BaseVideosPaginatedList,
     BasePaginatedListContainer,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
     BaseTracksSimpleList,
-    BaseTagsList
+    BaseTagsList,
+    BaseVideosSimpleList
   },
   inject: [
     'hideSearch'
@@ -128,13 +109,16 @@ export default {
     profileId () {
       return this.profileInfo.id.toString()
     },
-    isWithPlaylistOption () {
-      return this.tabData.scope === 'tracks'
-    },
-    isRenderVideos () {
+    isTracks () {
       return (
-        this.tabData.scope === 'videos' &&
-          !!this.searchData
+        this.tabData.scope ===
+          'tracks'
+      )
+    },
+    isVideos () {
+      return (
+        this.tabData.scope ===
+          'videos'
       )
     }
   },
@@ -179,10 +163,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.videos-list-container-wrapper
-  @extend .w-100
-
-.videos-list-container
-  @extend .d-flex, .flex-column
-</style>
+<style lang="sass" scoped></style>

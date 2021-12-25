@@ -1,5 +1,8 @@
 <template>
-  <BaseVideoChannelPageContainer
+  <BaseVideoPageContainer
+    scope="related"
+    pageNameKey="related"
+    :videoId="videoId"
     :responsePageLimit="limit"
   >
     <template #default="pageSlotProps">
@@ -12,10 +15,10 @@
         :isLoading="pageSlotProps.isLoading"
       >
         <BasePaginatedListContainer
-          scope="videos"
+          scope="related"
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
-          :responseData="pageSlotProps.channelData"
+          :responseData="pageSlotProps.videoData"
           :clientPageLimit="limit"
           :responsePageLimit="limit"
           isPaginationSimple
@@ -25,18 +28,18 @@
         >
           <template #default="slotProps">
             <BaseVideosTableList
-              :videos="slotProps.videos"
+              :videos="slotProps.related"
             />
           </template>
         </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
-  </BaseVideoChannelPageContainer>
+  </BaseVideoPageContainer>
 </template>
 
 <script>
-import BaseVideoChannelPageContainer
-  from '@/containers/pages/video/BaseVideoChannelPageContainer.vue'
+import BaseVideoPageContainer
+  from '@/containers/pages/video/BaseVideoPageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
@@ -46,10 +49,13 @@ import BaseVideosTableList from '@/lists/videos/BaseVideosTableList.vue'
 export default {
   name: 'VideosPage',
   components: {
-    BaseVideoChannelPageContainer,
+    BaseVideoPageContainer,
     BaseSegmentContainer,
     BasePaginatedListContainer,
     BaseVideosTableList
+  },
+  props: {
+    videoId: String
   },
   data () {
     return {

@@ -5,3 +5,11 @@ export const main = ({ videoId }) => {
     path: `video/videos/${videoId}`
   }
 }
+
+export const related = ({ videoId }) => {
+  return {
+    name: 'VideoRelatedPage',
+    params: { videoId },
+    path: `video/videos/${videoId}/related`
+  }
+}

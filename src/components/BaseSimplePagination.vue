@@ -5,7 +5,7 @@
   >
     <a
       class="item"
-      :class="{ disabled: !isWithPrevPage }"
+      :class="{ disabled: isPrevDisabled }"
       @click="handlePrevPageButtonClick"
     >
       <i class="angle left icon direction-icon" />
@@ -13,7 +13,7 @@
 
     <a
       class="item"
-      :class="{ disabled: !isWithNextPage }"
+      :class="{ disabled: isNextDisabled }"
       @click="handleNextPageButtonClick"
     >
       <i class="angle right icon direction-icon" />
@@ -28,7 +28,8 @@ export default {
   name: 'BaseSimplePagination',
   props: {
     isWithPrevPage: Boolean,
-    isWithNextPage: Boolean
+    isWithNextPage: Boolean,
+    isDisabled: Boolean
   },
   emits: [
     'prevPageButtonClick',
@@ -37,7 +38,19 @@ export default {
   computed: {
     ...mapState('layout', [
       'isDarkMode'
-    ])
+    ]),
+    isPrevDisabled () {
+      return (
+        !this.isWithPrevPage ||
+          this.isDisabled
+      )
+    },
+    isNextDisabled () {
+      return (
+        !this.isWithNextPage ||
+          this.isDisabled
+      )
+    }
   },
   methods: {
     handlePrevPageButtonClick () {
