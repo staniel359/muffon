@@ -18,6 +18,7 @@
 import { mapState, mapGetters } from 'vuex'
 import getPlayerTrack from '#/actions/player/track/get'
 import { updateStore, setPlayerPlaying } from '#/actions'
+import { track as formatTrack } from '#/formatters/track'
 
 export default {
   name: 'BaseTrackContainer',
@@ -69,9 +70,15 @@ export default {
     },
     playerTrackArgs () {
       return {
-        trackData: this.trackData,
+        trackData: this.trackFormatted,
         queueTracks: this.queueTracks
       }
+    },
+    trackFormatted () {
+      return formatTrack({
+        trackData: this.trackData,
+        isFromSource: true
+      })
     },
     trackAudioLink () {
       return this.trackData.audio?.link
@@ -100,7 +107,7 @@ export default {
       })
 
       setPlayerPlaying(
-        this.trackData
+        this.trackFormatted
       )
     },
     getPlayerTrack,

@@ -30,6 +30,7 @@
           isWithImage
           isWithArtistName
           isWithAlbumTitle
+          isWithDuration
           isWithSource
           isWithLibraryOption
           isWithListenedOption

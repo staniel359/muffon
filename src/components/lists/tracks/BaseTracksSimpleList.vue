@@ -4,7 +4,7 @@
       v-for="(trackData, index) in tracksCollection"
       :key="trackData.uuid"
       :trackData="trackData"
-      :queueTracks="queueTracks"
+      :queueTracks="tracksCollection"
       :isWithImage="isWithImage"
       :isWithIndex="isWithIndex"
       :index="index"
@@ -56,10 +56,6 @@ export default {
         return []
       }
     },
-    isQueueable: {
-      type: Boolean,
-      default: true
-    },
     isWithSelfIcons: {
       type: Boolean,
       default: true
@@ -78,7 +74,6 @@ export default {
     topTrackCount: Number,
     isLinkToLibrary: Boolean,
     profileId: String,
-    artistId: String,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -102,13 +97,6 @@ export default {
       return formatCollection(
         this.formatTracks()
       )
-    },
-    queueTracks () {
-      if (this.isQueueable) {
-        return this.tracksCollection
-      } else {
-        return []
-      }
     }
   },
   methods: {
@@ -123,12 +111,15 @@ export default {
     },
     formatTracks () {
       return this.tracks.map(trackData => {
+        const isFromSource =
+          trackData.audio?.present
+
         return formatTrack({
           trackData,
-          artistId: this.artistId,
           artistName: this.artistName,
           albumTitle: this.albumTitle,
-          imageData: this.imageData
+          imageData: this.imageData,
+          isFromSource
         })
       })
     }

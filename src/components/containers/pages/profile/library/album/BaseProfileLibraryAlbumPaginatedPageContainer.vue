@@ -32,7 +32,6 @@
           <template #default="slotProps">
             <slot
               :[scope]="slotProps[scope]"
-              :artistId="pageSlotProps.artistId"
               :artistName="pageSlotProps.artistName"
             ></slot>
           </template>

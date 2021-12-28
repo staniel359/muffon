@@ -34,7 +34,7 @@ export default {
       return this.artistData.name
     },
     isMore () {
-      return this.artistData.with_more.description
+      return this.artistData.with_more?.description
     }
   }
 }

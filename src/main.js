@@ -18,7 +18,7 @@ const serverUrl = isDevelopment
   : 'https://muffon.endorphine.by'
 
 axios.defaults.baseURL =
-  `${serverUrl}/api/v1/`
+  `${serverUrl}/api/v2/`
 
 const app = createApp(App)
 

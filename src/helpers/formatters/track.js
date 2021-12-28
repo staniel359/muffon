@@ -1,85 +1,35 @@
 export const track = ({
   trackData,
-  artistId,
   artistName,
   albumTitle,
-  imageData
+  imageData,
+  isFromSource
 }) => {
-  const trackArtistId = trackData.artist?.id
-
-  const artistIdConditional =
-    artistId || trackArtistId
-
-  const trackArtistName = trackData.artist?.name
-
-  const artistNameConditional =
-    artistName || trackArtistName
-
-  const trackArtistData = {
-    artist: {
-      id: artistIdConditional,
-      name: artistNameConditional
-    }
+  const trackArtistsData = artistName && {
+    artists: [{
+      name: artistName
+    }]
   }
 
-  const trackArtistDataConditional = (
-    artistNameConditional &&
-      trackArtistData
-  )
-
-  const trackAlbumId = trackData.album?.id
-
-  const trackAlbumTitle = trackData.album?.title
-
-  const albumTitleConditional =
-    albumTitle || trackAlbumTitle
-
-  const trackAlbumData = {
+  const trackAlbumData = albumTitle && {
     album: {
-      id: trackAlbumId,
-      title: albumTitleConditional
+      title: albumTitle
     }
   }
 
-  const trackAlbumDataConditional = (
-    albumTitleConditional &&
-      trackAlbumData
-  )
-
-  const imageDataConditional =
-    imageData || trackData.image
-
-  const trackImageData = {
-    image: {
-      ...imageDataConditional
-    }
+  const trackImageData = imageData && {
+    image: imageData
   }
 
-  const trackImageDataConditional = (
-    imageDataConditional &&
-      trackImageData
-  )
-
-  const audioData = trackData.audio
-
-  const trackAudioData = {
-    audio: {
-      ...audioData,
-      ...trackAlbumDataConditional,
-      ...trackImageDataConditional
-    }
+  const trackOtherData = {
+    from_source: !!isFromSource
   }
-
-  const trackAudioDataConditional = (
-    audioData &&
-      trackAudioData
-  )
 
   return {
     ...trackData,
-    ...trackArtistDataConditional,
-    ...trackAlbumDataConditional,
-    ...trackImageDataConditional,
-    ...trackAudioDataConditional
+    ...trackArtistsData,
+    ...trackAlbumData,
+    ...trackImageData,
+    ...trackOtherData
   }
 }

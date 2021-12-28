@@ -1,9 +1,10 @@
 import axios from 'axios'
-import formatPlaying from '#/formatters/player/playing'
 import formatRequestUrl from '#/formatters/request/track/requestUrl'
 import { setPlayerPlaying } from '#/actions'
 
-export default function ({ audioData }) {
+export default function ({ trackData }) {
+  const audioData = trackData.audio
+
   const formatUrl = () => {
     const sourceId = audioData.source_id
 
@@ -29,14 +30,14 @@ export default function ({ audioData }) {
   const url = formatUrl()
 
   const handleSuccess = response => {
-    const trackData =
-      response.data.track
+    const { album, image } = trackData
 
-    const playingData =
-      formatPlaying({
-        trackData,
-        audioData
-      })
+    const playingData = {
+      ...trackData,
+      ...response.data.track,
+      album,
+      image
+    }
 
     setPlayerPlaying(
       playingData

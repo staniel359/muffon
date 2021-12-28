@@ -2,7 +2,7 @@
   <BaseAlbumLinkContainer
     :albumData="albumData"
     :profileId="profileId"
-    :artistName="artistName"
+    :artistName="albumArtistName"
     :isLinkToLibrary="isLinkToLibrary"
     :isArtistNameActive="isArtistNameActive"
     :isTracksActive="isTracksActive"
@@ -91,6 +91,7 @@ import BaseAlbumListenersCount
   from '@/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'AlbumItem',
@@ -151,10 +152,23 @@ export default {
   },
   computed: {
     albumArtistName () {
-      return (
-        this.albumData.artist?.name ||
-          this.artistName
-      )
+      if (this.artists) {
+        return formatArtistName(
+          this.artists
+        )
+      } else {
+        return this.artistName
+      }
+    },
+    artists () {
+      if (this.artistData) {
+        return [this.artistData]
+      } else {
+        return this.albumData.artists
+      }
+    },
+    artistData () {
+      return this.albumData.artist
     },
     albumTitle () {
       return this.albumData.title

@@ -40,8 +40,10 @@ export default async function ({ variantId }) {
   }
 
   const audioArgs = {
-    audioData:
-      await getAudioArgs()
+    trackData: {
+      ...trackData,
+      audio: await getAudioArgs()
+    }
   }
 
   const handleSuccess = () => {

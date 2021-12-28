@@ -11,14 +11,15 @@
 <script>
 import { mapState } from 'vuex'
 import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
-  name: 'SearchArtistsInput',
+  name: 'AlbumsInput',
   components: {
     BaseSearchInput
   },
   props: {
-    artists: {
+    albums: {
       type: Array,
       default () {
         return []
@@ -34,7 +35,7 @@ export default {
     }),
     url () {
       return (
-        '/lastfm/search/artists' +
+        '/lastfm/search/albums' +
         '?query={query}&limit=5' +
         `&profile_id=${this.profileId}`
       )
@@ -44,44 +45,70 @@ export default {
     },
     fields () {
       return {
-        results: 'artists',
-        title: 'name',
+        results: 'albums',
+        title: 'title',
+        description: 'artistName',
         image: null
       }
     }
   },
   methods: {
-    handleSelect (artist) {
-      const isArtistPresent = artistData => {
+    handleSelect (album) {
+      const isAlbumPresent = albumData => {
+        const isSameTitle = (
+          album.title ===
+            albumData.title
+        )
+
+        const isSameArtistName = (
+          album.artistName ===
+            albumData.artistName
+        )
+
         return (
-          artist.name ===
-            artistData.name
+          isSameTitle &&
+            isSameArtistName
         )
       }
 
       const isPresent =
-        this.artists.find(
-          isArtistPresent
+        this.albums.find(
+          isAlbumPresent
         )
 
       const isInLibrary =
-        !!artist.library_id
+        !!album.library_id
 
-      const isAddArtist = (
+      const isAddAlbum = (
         !isPresent && !isInLibrary
       )
 
-      if (isAddArtist) {
+      if (isAddAlbum) {
         this.$emit(
           'select',
-          artist
+          album
         )
       }
 
       this.clear()
     },
     formatResponse (response) {
-      return response.search.artists
+      const { albums } = response.search
+
+      return albums.map(
+        this.formatAlbum
+      )
+    },
+    formatAlbum (albumData) {
+      const artistName =
+        formatArtistName(
+          albumData.artists
+        )
+
+      return {
+        ...albumData,
+        artistName
+      }
     },
     focus () {
       this.$refs.input.focus()
@@ -93,4 +120,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.search-albums-input
+  @extend .flex-full
+</style>

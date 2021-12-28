@@ -13,12 +13,12 @@ import { mapState } from 'vuex'
 import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
 
 export default {
-  name: 'SearchTracksInput',
+  name: 'ArtistsInput',
   components: {
     BaseSearchInput
   },
   props: {
-    tracks: {
+    artists: {
       type: Array,
       default () {
         return []
@@ -34,7 +34,7 @@ export default {
     }),
     url () {
       return (
-        '/lastfm/search/tracks' +
+        '/lastfm/search/artists' +
         '?query={query}&limit=5' +
         `&profile_id=${this.profileId}`
       )
@@ -44,66 +44,44 @@ export default {
     },
     fields () {
       return {
-        results: 'tracks',
-        title: 'title',
-        description: 'artistName',
+        results: 'artists',
+        title: 'name',
         image: null
       }
     }
   },
   methods: {
-    handleSelect (track) {
-      const isTrackPresent = trackData => {
-        const isSameTitle = (
-          track.title ===
-            trackData.title
-        )
-
-        const isSameArtistName = (
-          track.artist.name ===
-            trackData.artist.name
-        )
-
+    handleSelect (artist) {
+      const isArtistPresent = artistData => {
         return (
-          isSameTitle &&
-            isSameArtistName
+          artist.name ===
+            artistData.name
         )
       }
 
       const isPresent =
-        this.tracks.find(
-          isTrackPresent
+        this.artists.find(
+          isArtistPresent
         )
 
       const isInLibrary =
-        !!track.library_id
+        !!artist.library_id
 
-      const isAddTrack = (
+      const isAddArtist = (
         !isPresent && !isInLibrary
       )
 
-      if (isAddTrack) {
+      if (isAddArtist) {
         this.$emit(
           'select',
-          track
+          artist
         )
       }
 
       this.clear()
     },
     formatResponse (response) {
-      const { tracks } = response.search
-
-      return tracks.map(
-        this.formatTrack
-      )
-    },
-    formatTrack (trackData) {
-      return {
-        ...trackData,
-        artistName:
-          trackData.artist.name
-      }
+      return response.search.artists
     },
     focus () {
       this.$refs.input.focus()

@@ -12,7 +12,6 @@
         :tracks="slotProps.tracks"
         :profileId="profileId"
         :artistName="slotProps.artistName"
-        :artistId="slotProps.artistId"
         :isWithFavoriteOption="isWithFavoriteOption"
         :isWithDeleteOption="isWithDeleteOption"
         isWithCreated

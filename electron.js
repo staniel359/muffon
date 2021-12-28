@@ -20,6 +20,9 @@ const height = 600
 const isDevelopment =
   process.env.NODE_ENV === 'development'
 
+const isMac =
+  process.platform === 'darwin'
+
 const getIconPath = () => {
   const publicPath =
     isDevelopment ? 'public' : ''
@@ -105,7 +108,7 @@ const setup = () => {
   ElectronStore.initRenderer()
 
   createWindow()
-  createTrayOrDock()
+  createTray()
   createHeadersHandler()
 }
 
@@ -157,7 +160,7 @@ const hide = () => {
   setTrayMenu()
 }
 
-const createTrayOrDock = () => {
+const createTray = () => {
   tray = new Tray(iconPath)
 
   setTrayMenu()
@@ -195,9 +198,6 @@ const setTrayMenu = () => {
   ])
 
   tray.setContextMenu(menu)
-
-  const isMac =
-    process.platform === 'darwin'
 
   if (isMac) {
     app.dock.setMenu(menu)

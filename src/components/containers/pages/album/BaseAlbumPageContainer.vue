@@ -27,6 +27,7 @@ import formatAlbumPageTab from '#/formatters/tabs/album'
 import getAlbum from '#/actions/api/album/get'
 import getBandcampAlbumId
   from '#/actions/api/bandcamp_id/album/get'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -93,7 +94,16 @@ export default {
       )
     },
     artistNameFetched () {
-      return this.albumData?.artist?.name
+      if (this.artists) {
+        return formatArtistName(
+          this.artists
+        )
+      } else {
+        return null
+      }
+    },
+    artists () {
+      return this.albumData?.artists
     },
     albumTitleFetched () {
       return this.albumData?.title

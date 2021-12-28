@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item main-profile-item"
     :link="profileMainLink"
   >
     <BaseImage

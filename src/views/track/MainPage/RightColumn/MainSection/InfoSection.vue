@@ -9,9 +9,8 @@
       class="track-artist-name"
       tag="h4"
     >
-      <BaseLink
-        :link="artistMainLink"
-        :text="artistName"
+      <BaseArtistLinks
+        :artists="artists"
       />
     </BaseHeaderContainer>
 
@@ -32,34 +31,32 @@
 <script>
 import BaseHeader from '@/BaseHeader.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 import BaseLink from '@/links/BaseLink.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
+import { artistName as formatArtistName } from '#/formatters/artist'
 import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
-  name: 'TrackMainInfo',
+  name: 'InfoSection',
   components: {
     BaseHeader,
     BaseHeaderContainer,
+    BaseArtistLinks,
     BaseLink
   },
   props: {
-    trackTitle: {
-      type: String,
+    trackData: {
+      type: Object,
       required: true
-    },
-    artistName: {
-      type: String,
-      required: true
-    },
-    albumData: Object
+    }
   },
   computed: {
-    artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+    trackTitle () {
+      return this.trackData.title
+    },
+    artists () {
+      return this.trackData.artists
     },
     albumMainLink () {
       return formatAlbumMainLink({
@@ -70,6 +67,14 @@ export default {
     },
     albumTitle () {
       return this.albumData?.title
+    },
+    albumData () {
+      return this.trackData.album
+    },
+    artistName () {
+      return formatArtistName(
+        this.artists
+      )
     },
     sourceParams () {
       return formatAlbumRequestData({

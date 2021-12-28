@@ -245,7 +245,7 @@ a
   @extend .w-100
 
 .main-simple-list-item
-  @extend .d-flex, .align-items-center, .word-break-break-word
+  @extend .d-flex, .word-break-break-word
   & > .image
     width: 50px
     height: 50px
@@ -276,6 +276,12 @@ a
       @extend .text-color-base
     .main-options-dropdown-container
       @extend .visibility-visible
+  &.main-playlist-item, &.main-profile-item
+    & > .content
+      & > .description
+        @extend .no-margin
+  &:not(.main-profile-item)
+    @extend .align-items-center
 
 .main-message
   @extend .no-shadow, .no-margin

@@ -28,7 +28,7 @@ import BasePaginatedListContainer
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
-  name: 'SearchTracksList',
+  name: 'TracksList',
   components: {
     BasePaginatedListContainer,
     BaseTracksSimpleList
@@ -79,13 +79,13 @@ export default {
         return trackData.uuid !== uuid
       }
 
-      const tracks = this.tracks.filter(
-        isMatchedTrack
-      )
+      const tracks =
+        this.tracks.filter(
+          isMatchedTrack
+        )
 
       this.$emit(
         'change',
-        { scope: 'tracks' },
         tracks
       )
     },

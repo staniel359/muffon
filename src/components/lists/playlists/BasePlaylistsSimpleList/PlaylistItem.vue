@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item"
+    class="item main-simple-list-item main-playlist-item"
     :class="{ disabled: isDeleted }"
     :link="profilePlaylistLink"
   >

@@ -64,19 +64,13 @@ export default {
       return this.trackData.tags
     },
     isMoreTags () {
-      return this.trackData.with_more.tags
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    trackTitle () {
-      return this.trackData.title
+      return this.trackData.with_more?.tags
     },
     description () {
       return this.trackData.description
     },
     isMoreDescription () {
-      return this.trackData.with_more.description
+      return this.trackData.with_more?.description
     }
   }
 }

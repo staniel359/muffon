@@ -12,6 +12,7 @@
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '#/data/plugins/semantic'
 import createPost from '#/actions/api/post/create'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'BasePostCreateFormContainer',
@@ -92,9 +93,19 @@ export default {
     },
     createPost,
     formatTrack (trackData) {
-      const { title, artist } = trackData
+      const artistName =
+        formatArtistName(
+          trackData.artists
+        )
 
-      return { title, artist }
+      const artistData = {
+        name: artistName
+      }
+
+      return {
+        title: trackData.title,
+        artist: artistData
+      }
     },
     formatImage (imageData) {
       return imageData.data

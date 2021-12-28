@@ -1,25 +1,17 @@
-import store from '&/store'
-import getSearch from '#/actions/api/player/search/get'
-import getPlayerVariantAudio from '#/actions/player/variant/audio/get'
 import getAudio from '#/actions/api/audio/get'
+import searchPlayerTrackAudio from '#/actions/player/track/audio/search'
 import { updateStore } from '#/actions'
 
-export default function ({
-  artistName,
-  trackTitle,
-  trackId,
-  audioData,
-  queueTrackId
-}) {
-  const handleAudioSuccess = () => {
-    updateStore({
-      'player.variants': []
-    })
+export default function ({ trackData }) {
+  const isAudioPresent =
+    trackData?.audio?.present
 
-    setCurrentTrackIds()
-  }
+  const audioArgs = { trackData }
 
   const setCurrentTrackIds = () => {
+    const trackId = trackData.player_id
+    const queueTrackId = trackData.uuid
+
     updateStore({
       'player.currentTrackId':
         trackId,
@@ -28,58 +20,27 @@ export default function ({
     })
   }
 
-  const searchAudio = () => {
-    const query =
-      `${artistName} - ${trackTitle}`
-    const searchArgs = { query }
-
-    return getSearch(
-      searchArgs
-    ).then(
-      handleSearchSuccess
-    )
-  }
-
-  const getFirstVariantId = () => {
-    return store
-      .state
-      .player
-      .variants[0]
-      .uuid
-  }
-
-  const handleSearchSuccess = () => {
-    const playerVariantAudioArgs = {
-      variantId: getFirstVariantId()
-    }
-
-    return getPlayerVariantAudio(
-      playerVariantAudioArgs
-    ).then(
-      handleVariantSuccess
-    )
-  }
-
-  const handleVariantSuccess = () => {
-    setCurrentTrackIds()
-
+  const handleSuccess = () => {
     updateStore({
-      'player.currentVariantId':
-        getFirstVariantId()
+      'player.variants': []
     })
+
+    setCurrentTrackIds()
   }
 
-  if (audioData?.present) {
-    const audioArgs = {
-      audioData
-    }
+  const playerTrackAudioArgs = {
+    trackData
+  }
 
+  if (isAudioPresent) {
     return getAudio(
       audioArgs
     ).then(
-      handleAudioSuccess
+      handleSuccess
     )
   } else {
-    return searchAudio()
+    return searchPlayerTrackAudio(
+      playerTrackAudioArgs
+    )
   }
 }

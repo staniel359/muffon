@@ -19,10 +19,14 @@
       </BaseTickerContainer>
 
       <BaseTickerContainer>
-        <BaseArtistLinks :artists="artists" />
+        <BaseArtistLinks
+          :artists="artists"
+        />
       </BaseTickerContainer>
 
-      <BaseTickerContainer v-if="albumTitle">
+      <BaseTickerContainer
+        v-if="isRenderAlbumTitle"
+      >
         <div class="main-small-container">
           <small>
             <BaseLink
@@ -47,6 +51,7 @@ import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumRequestData from '#/formatters/request/album/requestData'
 import formatTrackSourceParams
   from '#/formatters/request/track/requestData'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'InfoBlock',
@@ -55,6 +60,9 @@ export default {
     BaseTickerContainer,
     BaseLink,
     BaseArtistLinks
+  },
+  props: {
+    isWithAlbum: Boolean
   },
   computed: {
     ...mapState('player', {
@@ -73,20 +81,31 @@ export default {
         sourceParams: this.trackSourceParams
       })
     },
+    artistName () {
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.playerPlaying.artists
+    },
     trackSourceParams () {
       return formatTrackSourceParams({
         sourceId: this.playerPlaying.source_id,
         trackData: this.playerPlaying
       })
     },
-    artists () {
-      return this.playerPlaying.artists
-    },
-    artistName () {
-      return this.playerPlaying.artist.name
+    isRenderAlbumTitle () {
+      return (
+        this.isWithAlbum &&
+          !!this.albumTitle
+      )
     },
     albumTitle () {
-      return this.playerPlaying.album?.title
+      return this.albumData?.title
+    },
+    albumData () {
+      return this.playerPlaying.album
     },
     albumMainLink () {
       return formatAlbumMainLink({
@@ -101,9 +120,6 @@ export default {
         albumData: this.albumData,
         artistName: this.artistName
       })
-    },
-    albumData () {
-      return this.playerPlaying.albums?.[0]
     }
   }
 }

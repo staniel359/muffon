@@ -79,7 +79,6 @@ export default {
     isWithSource: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
-    artistId: String,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

@@ -71,13 +71,13 @@ export default {
       return this.artistData.tags
     },
     isMoreTags () {
-      return this.artistData.with_more.tags
+      return this.artistData.with_more?.tags
     },
     description () {
       return this.artistData.description
     },
     isMoreDescription () {
-      return this.artistData.with_more.description
+      return this.artistData.with_more?.description
     }
   }
 }

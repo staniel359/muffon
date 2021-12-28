@@ -11,14 +11,15 @@
 <script>
 import { mapState } from 'vuex'
 import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
-  name: 'SearchAlbumsInput',
+  name: 'TracksInput',
   components: {
     BaseSearchInput
   },
   props: {
-    albums: {
+    tracks: {
       type: Array,
       default () {
         return []
@@ -34,7 +35,7 @@ export default {
     }),
     url () {
       return (
-        '/lastfm/search/albums' +
+        '/lastfm/search/tracks' +
         '?query={query}&limit=5' +
         `&profile_id=${this.profileId}`
       )
@@ -44,7 +45,7 @@ export default {
     },
     fields () {
       return {
-        results: 'albums',
+        results: 'tracks',
         title: 'title',
         description: 'artistName',
         image: null
@@ -52,16 +53,16 @@ export default {
     }
   },
   methods: {
-    handleSelect (album) {
-      const isAlbumPresent = albumData => {
+    handleSelect (track) {
+      const isTrackPresent = trackData => {
         const isSameTitle = (
-          album.title ===
-            albumData.title
+          track.title ===
+            trackData.title
         )
 
         const isSameArtistName = (
-          album.artist.name ===
-            albumData.artist.name
+          track.artistName ===
+            trackData.artistName
         )
 
         return (
@@ -71,38 +72,42 @@ export default {
       }
 
       const isPresent =
-        this.albums.find(
-          isAlbumPresent
+        this.tracks.find(
+          isTrackPresent
         )
 
       const isInLibrary =
-        !!album.library_id
+        !!track.library_id
 
-      const isAddAlbum = (
+      const isAddTrack = (
         !isPresent && !isInLibrary
       )
 
-      if (isAddAlbum) {
+      if (isAddTrack) {
         this.$emit(
           'select',
-          album
+          track
         )
       }
 
       this.clear()
     },
     formatResponse (response) {
-      const { albums } = response.search
+      const { tracks } = response.search
 
-      return albums.map(
-        this.formatAlbum
+      return tracks.map(
+        this.formatTrack
       )
     },
-    formatAlbum (albumData) {
+    formatTrack (trackData) {
+      const artistName =
+        formatArtistName(
+          trackData.artists
+        )
+
       return {
-        ...albumData,
-        artistName:
-          albumData.artist.name
+        ...trackData,
+        artistName
       }
     },
     focus () {
@@ -115,7 +120,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-albums-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

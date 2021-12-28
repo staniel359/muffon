@@ -11,7 +11,7 @@
       v-if="isComplete"
       :isError="isError"
       :totalCount="totalCount"
-      :errorTracks="errorTracks"
+      :errorArtists="errorArtists"
       @retry="handleRetry"
     />
   </div>
@@ -19,25 +19,25 @@
 
 <script>
 import BaseProgress from '@/BaseProgress.vue'
-import CompleteSection from './SaveTracksSection/CompleteSection.vue'
-import createLibraryTrack from '#/actions/api/library/track/create'
+import CompleteSection from './ArtistsSection/CompleteSection.vue'
+import createLibraryArtist from '#/actions/api/library/artist/create'
 
 export default {
-  name: 'SaveTracksSection',
+  name: 'ArtistsSection',
   components: {
     BaseProgress,
     CompleteSection
   },
   provide () {
     return {
-      setErrorTracks: this.setErrorTracks
+      setErrorArtists: this.setErrorArtists
     }
   },
   inject: [
-    'setTracks'
+    'setCollection'
   ],
   props: {
-    tracks: {
+    artists: {
       type: Array,
       required: true
     }
@@ -48,30 +48,30 @@ export default {
       isError: false,
       isMounted: false,
       isProgress: true,
-      errorTracks: []
+      errorArtists: []
     }
   },
   computed: {
     totalCount () {
-      return this.tracks.length
+      return this.artists.length
     }
   },
   mounted () {
     this.isMounted = true
 
-    this.saveTracks()
+    this.saveArtists()
   },
   beforeUnmount () {
     this.isMounted = false
   },
   watch: {
-    tracks: 'handleTracksChange'
+    artists: 'handleArtistsChange'
   },
   methods: {
-    handleTracksChange () {
+    handleArtistsChange () {
       this.$refs.progress.reset()
 
-      this.saveTracks()
+      this.saveArtists()
     },
     handleProgressComplete () {
       this.isComplete = true
@@ -82,42 +82,42 @@ export default {
       this.isError = false
       this.isProgress = true
 
-      this.setTracks(
-        [...this.errorTracks]
+      this.setCollection(
+        [...this.errorArtists]
       )
 
-      this.errorTracks = []
+      this.errorArtists = []
     },
-    createLibraryTrack,
+    createLibraryArtist,
     formatProgressActive ({ value, total }) {
       return this.$t(
-        'save.active.tracks',
+        'save.active.artists',
         { value, total }
       )
     },
-    async saveTracks () {
+    async saveArtists () {
       this.$refs.progress.setTotalCount(
         this.totalCount
       )
 
-      for (const trackData of this.tracks) {
+      for (const artistData of this.artists) {
         if (this.isMounted) {
-          await this.saveTrack(
-            trackData
+          await this.saveArtist(
+            artistData
           )
         }
       }
     },
-    async saveTrack (trackData) {
-      const trackFormatted =
-        this.formatTrack(
-          trackData
+    async saveArtist (artistData) {
+      const artistFormatted =
+        this.formatArtist(
+          artistData
         )
 
       const handleError = () => {
         if (this.isMounted) {
-          this.errorTracks.push(
-            trackData
+          this.errorArtists.push(
+            artistData
           )
         }
       }
@@ -128,22 +128,21 @@ export default {
         }
       }
 
-      await this.createLibraryTrack(
-        trackFormatted
+      await this.createLibraryArtist(
+        artistFormatted
       ).catch(
         handleError
       ).finally(
         handleFinish
       )
     },
-    formatTrack (trackData) {
+    formatArtist (artistData) {
       return {
-        trackTitle: trackData.title,
-        artistName: trackData.artist.name
+        artistName: artistData.name
       }
     },
-    setErrorTracks (value) {
-      this.errorTracks = value
+    setErrorArtists (value) {
+      this.errorArtists = value
     }
   }
 }

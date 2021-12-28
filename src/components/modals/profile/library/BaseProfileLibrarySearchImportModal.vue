@@ -2,16 +2,16 @@
   <BaseModalContainer ref="modal">
     <div class="content main-modal-content-full-height">
       <div class="top-section-container">
-        <Component
-          class="search-input"
+        <SearchInput
+          v-if="scope"
           ref="input"
-          :is="activeInput.component"
-          :[activeInput.scope]="this[activeInput.scope]"
+          :scope="scope"
+          :collection="collection"
           @select="handleSelect"
         />
 
         <BaseClearButton
-          v-if="!isReset"
+          v-if="isRenderClearButton"
           class="reset-button"
           @click="handleResetButtonClick"
         />
@@ -25,18 +25,15 @@
 
       <ImportSection
         v-if="isImport"
-        :artists="artists"
-        :albums="albums"
-        :tracks="tracks"
         :scope="scope"
+        :collection="collection"
         @change="handleChange"
         @save="handleSave"
       />
       <SaveSection
         v-else-if="isSave"
-        :artists="artists"
-        :albums="albums"
-        :tracks="tracks"
+        :scope="scope"
+        :collection="collection"
       />
     </div>
   </BaseModalContainer>
@@ -44,12 +41,7 @@
 
 <script>
 import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
-import SearchArtistsInput
-  from './BaseProfileLibrarySearchImportModal/inputs/SearchArtistsInput.vue'
-import SearchAlbumsInput
-  from './BaseProfileLibrarySearchImportModal/inputs/SearchAlbumsInput.vue'
-import SearchTracksInput
-  from './BaseProfileLibrarySearchImportModal/inputs/SearchTracksInput.vue'
+import SearchInput from './BaseProfileLibrarySearchImportModal/SearchInput.vue'
 import SearchScopeSelect
   from './BaseProfileLibrarySearchImportModal/SearchScopeSelect.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
@@ -63,9 +55,7 @@ export default {
   name: 'BaseProfileLibrarySearchImportModal',
   components: {
     BaseModalContainer,
-    SearchArtistsInput,
-    SearchAlbumsInput,
-    SearchTracksInput,
+    SearchInput,
     SearchScopeSelect,
     BaseClearButton,
     BaseDivider,
@@ -74,63 +64,39 @@ export default {
   },
   provide () {
     return {
-      setArtists: this.setArtists,
-      setAlbums: this.setAlbums,
-      setTracks: this.setTracks,
+      setCollection: this.setCollection,
       hideModal: this.hide
     }
   },
   data () {
     return {
-      isReset: true,
-      artists: [],
-      albums: [],
-      tracks: [],
-      status: 'import',
-      scope: 'artists',
-      inputs: [
-        {
-          component: 'SearchArtistsInput',
-          scope: 'artists'
-        },
-        {
-          component: 'SearchAlbumsInput',
-          scope: 'albums'
-        },
-        {
-          component: 'SearchTracksInput',
-          scope: 'tracks'
-        }
-      ]
+      scope: null,
+      collection: [],
+      status: 'import'
     }
   },
   computed: {
     isImport () {
       return (
         this.status === 'import' &&
-          (
-            this.artists.length ||
-              this.albums.length ||
-              this.tracks.length
-          )
-      )
-    },
-    activeInput () {
-      const isActiveInput = inputData => {
-        return inputData.scope === this.scope
-      }
-
-      return this.inputs.find(
-        isActiveInput
+          this.collection.length
       )
     },
     isSave () {
-      return this.status === 'save'
+      return (
+        this.status === 'save' &&
+          this.collection.length
+      )
+    },
+    isRenderClearButton () {
+      return this.collection.length
     }
   },
   methods: {
     handleScopeSelect (value) {
       this.scope = value
+
+      this.reset()
 
       this.$nextTick(() => {
         this.$refs.input.focus()
@@ -141,23 +107,19 @@ export default {
         this.reset()
       }
 
-      this[this.scope].push({
+      this.collection.push({
         uuid: generateKey(),
         ...value
       })
-
-      this.isReset = false
     },
-    handleChange ({ scope }, value) {
-      this[scope] = [...value]
+    handleChange (value) {
+      this.collection = [...value]
     },
     handleResetButtonClick () {
       this.reset()
 
       this.$refs.input.clear()
       this.$refs.input.focus()
-
-      this.isReset = true
     },
     handleSave () {
       this.status = 'save'
@@ -165,9 +127,7 @@ export default {
     reset () {
       this.status = 'import'
 
-      this.artists = []
-      this.albums = []
-      this.tracks = []
+      this.collection = []
     },
     show () {
       this.$refs.modal.show()
@@ -176,14 +136,8 @@ export default {
     hide () {
       this.$refs.modal.hide()
     },
-    setArtists (value) {
-      this.artists = value
-    },
-    setAlbums (value) {
-      this.albums = value
-    },
-    setTracks (value) {
-      this.tracks = value
+    setCollection (value) {
+      this.collection = value
     }
   }
 }
@@ -192,9 +146,6 @@ export default {
 <style lang="sass" scoped>
 .top-section-container
   @extend .d-flex, .align-items-center
-
-.search-input
-  @extend .flex-full
 
 .reset-button
   margin-left: 1em !important

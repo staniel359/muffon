@@ -1,6 +1,7 @@
 <template>
   <BaseImage
     v-if="isWithImage"
+    model="track"
     class="rounded bordered track-image"
     :image="image"
   />

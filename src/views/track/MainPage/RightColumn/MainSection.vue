@@ -2,10 +2,8 @@
   <BaseTrackHorizontalCardContainer
     class="track-card"
   >
-    <TrackMainInfo
-      :trackTitle="trackTitle"
-      :artistName="artistName"
-      :albumData="albumData"
+    <InfoSection
+      :trackData="trackData"
     />
 
     <BaseTrackPlayerPanel
@@ -17,37 +15,26 @@
 <script>
 import BaseTrackHorizontalCardContainer
   from '@/containers/track/BaseTrackHorizontalCardContainer.vue'
-import TrackMainInfo from './MainSection/TrackMainInfo.vue'
+import InfoSection from './MainSection/InfoSection.vue'
 import BaseTrackPlayerPanel from '@/models/track/BaseTrackPlayerPanel.vue'
 
 export default {
   name: 'MainSection',
   components: {
     BaseTrackHorizontalCardContainer,
-    TrackMainInfo,
+    InfoSection,
     BaseTrackPlayerPanel
   },
   props: {
-    trackData: {
-      type: Object,
-      required: true
-    }
-  },
-  computed: {
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    albumData () {
-      return this.trackData.albums?.[0]
-    }
+    trackData: Object
   }
 }
 </script>
 
 <style lang="sass" scoped>
+.track-card
+  @extend .overflow-hidden
+
 ::v-deep(.content)
   @extend .no-padding, .flex-column
 </style>

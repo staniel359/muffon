@@ -25,7 +25,7 @@
         @save="handleSave"
       />
       <SaveSection
-        v-else-if="isSave && tracks.length"
+        v-else-if="isSave"
         :playlistId="playlistId"
         :tracks="tracks"
       />
@@ -76,7 +76,10 @@ export default {
       )
     },
     isSave () {
-      return this.status === 'save'
+      return (
+        this.status === 'save' &&
+          this.tracks.length
+      )
     }
   },
   methods: {

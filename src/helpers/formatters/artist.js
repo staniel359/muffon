@@ -33,3 +33,13 @@ export const defaultImages = () => {
 
   return [formatDefaultImage()]
 }
+
+export const artistName = artists => {
+  const getArtistName = artistData => {
+    return artistData.name
+  }
+
+  return artists.map(
+    getArtistName
+  ).join(', ')
+}

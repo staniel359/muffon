@@ -11,7 +11,6 @@
       :isLoading="isLoading"
       :error="error"
       :libraryAlbumData="libraryAlbumData"
-      :artistId="artistIdFetched"
       :artistName="artistNameFetched"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
