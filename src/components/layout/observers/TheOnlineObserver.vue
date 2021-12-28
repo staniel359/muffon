@@ -11,8 +11,12 @@ export default {
   name: 'TheOnlineObserver',
   computed: {
     ...mapState('profile', {
-      isProfileLoggedIn: 'isLoggedIn'
-    })
+      isProfileLoggedIn: 'isLoggedIn',
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo?.id
+    }
   },
   watch: {
     isProfileLoggedIn: {
@@ -28,11 +32,13 @@ export default {
   },
   methods: {
     handleIsProfileLoggedInChange (value) {
-      const online = value ? 1 : 0
+      if (this.profileId) {
+        const online = value ? 1 : 0
 
-      this.setOnline(
-        online
-      )
+        this.setOnline(
+          online
+        )
+      }
     },
     handleExit () {
       this.setOnline(0).finally(
