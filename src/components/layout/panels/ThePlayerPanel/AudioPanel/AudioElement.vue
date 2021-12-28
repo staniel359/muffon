@@ -218,16 +218,18 @@ export default {
       this.currentPercent = currentPercent
     },
     getCurrentPercent () {
-      if (this.audioDuration === 0) {
-        return 0
-      } else {
-        const { currentTime } = this.$refs.audio
+      this.$nextTick(() => {
+        if (this.audioDuration === 0) {
+          return 0
+        } else {
+          const { currentTime } = this.$refs.audio
 
-        return (
-          currentTime * 100 /
-            this.audioDuration
-        )
-      }
+          return (
+            currentTime * 100 /
+              this.audioDuration
+          )
+        }
+      })
     }
   }
 }

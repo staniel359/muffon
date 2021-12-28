@@ -3,9 +3,10 @@
     class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
     :albumData="albumData"
+    :artistName="artistName"
     :profileId="profileId"
     :isLinkToLibrary="isLinkToLibrary"
-    :isArtistNameActive="isArtistNameActive"
+    :isNoLink="isArtistNameActive"
     @linkClick="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -28,8 +29,7 @@
 
         <ArtistNameSection
           v-if="isWithArtistName"
-          :artistName="artistName"
-          :isArtistNameActive="isArtistNameActive"
+          :artists="artists"
           @activeChange="handleArtistNameActiveChange"
         />
 
@@ -102,6 +102,7 @@ import BaseBookmarkDeleteModal
   from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'AlbumItem',
@@ -165,7 +166,23 @@ export default {
   },
   computed: {
     artistName () {
-      return this.albumData.artist.name
+      if (this.artists) {
+        return formatArtistName(
+          this.artists
+        )
+      } else {
+        return null
+      }
+    },
+    artists () {
+      if (this.artistData) {
+        return [this.artistData]
+      } else {
+        return this.albumData.artists
+      }
+    },
+    artistData () {
+      return this.albumData.artist
     },
     albumTitle () {
       return this.albumData.title

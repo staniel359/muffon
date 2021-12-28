@@ -12,6 +12,7 @@
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { messageFormOptions } from '#/data/plugins/semantic'
 import createMessage from '#/actions/api/message/create'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'BaseMessageCreateFormContainer',
@@ -93,9 +94,19 @@ export default {
     },
     createMessage,
     formatTrack (trackData) {
-      const { title, artist } = trackData
+      const artistName =
+        formatArtistName(
+          trackData.artists
+        )
 
-      return { title, artist }
+      const artistData = {
+        name: artistName
+      }
+
+      return {
+        title: trackData.title,
+        artist: artistData
+      }
     },
     formatImage (imageData) {
       return imageData.data

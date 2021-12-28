@@ -6,7 +6,6 @@
     :index="index"
     :isLinkToLibrary="isLinkToLibrary"
     :profileId="profileId"
-    :artistId="artistId"
     @linkClick="handleLinkClick"
   />
 </template>
@@ -22,10 +21,8 @@ export default {
   },
   props: {
     artists: Array,
-    artistName: String,
     isLinkToLibrary: Boolean,
-    profileId: String,
-    artistId: String
+    profileId: String
   },
   emits: [
     'linkClick'
@@ -33,14 +30,8 @@ export default {
   computed: {
     artistsCollection () {
       return formatCollection(
-        this.artists || [this.artist]
+        this.artists
       )
-    },
-    artist () {
-      return {
-        id: this.artistId,
-        name: this.artistName
-      }
     }
   },
   methods: {

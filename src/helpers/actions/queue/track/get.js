@@ -29,16 +29,7 @@ export default function getQueueTrack ({ position }) {
     setIsQueueFetching(true)
 
     const playerTrackAudioArgs = {
-      trackTitle:
-        followingTrackData.title,
-      artistName:
-        followingTrackData.artist.name,
-      trackId:
-        followingTrackData.player_id,
-      audioData:
-        followingTrackData.audio,
-      queueTrackId:
-        followingTrackData.uuid
+      trackData: followingTrackData
     }
 
     const handleSuccess = () => {

@@ -68,13 +68,13 @@ export default {
       return this.albumData.tags
     },
     isMoreTags () {
-      return this.albumData.with_more.tags
+      return this.albumData.with_more?.tags
     },
     description () {
       return this.albumData.description
     },
     isMoreDescription () {
-      return this.albumData.with_more.description
+      return this.albumData.with_more?.description
     }
   }
 }

@@ -185,7 +185,9 @@ export default {
   },
   methods: {
     handleImageLoadEnd (value) {
-      this.paginationItem.image = value
+      if (this.paginationItem) {
+        this.paginationItem.image = value
+      }
     },
     handleDeleteOptionClick () {
       this.$refs.recommendation.showDeleteModal()

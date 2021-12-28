@@ -6,16 +6,7 @@ export default function ({ trackData, queueTracks }) {
   this.isLoading = true
 
   const playerTrackAudioArgs = {
-    trackTitle:
-      trackData.title,
-    artistName:
-      trackData.artist.name,
-    trackId:
-      trackData.player_id,
-    audioData:
-      trackData.audio,
-    queueTrackId:
-      trackData.uuid
+    trackData
   }
 
   const handleError = error => {

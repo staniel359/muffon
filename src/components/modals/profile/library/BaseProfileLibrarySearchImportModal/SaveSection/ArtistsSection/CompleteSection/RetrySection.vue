@@ -10,9 +10,9 @@
       />
     </div>
 
-    <SearchAlbumsList
-      :albums="errorAlbums"
-      @change="handleAlbumsChange"
+    <ArtistsList
+      :artists="errorArtists"
+      @change="handleArtistsChange"
       @focus="handleFocus"
     />
   </div>
@@ -24,7 +24,7 @@
 
 <script>
 import BaseMessage from '@/messages/BaseMessage.vue'
-import SearchAlbumsList from '../../../lists/SearchAlbumsList.vue'
+import ArtistsList from '../../../lists/ArtistsList.vue'
 import BaseRetryButton from '@/buttons/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'
 
@@ -32,14 +32,14 @@ export default {
   name: 'RetrySection',
   components: {
     BaseMessage,
-    SearchAlbumsList,
+    ArtistsList,
     BaseRetryButton
   },
   inject: [
-    'setErrorAlbums'
+    'setErrorArtists'
   ],
   props: {
-    errorAlbums: {
+    errorArtists: {
       type: Array,
       required: true
     }
@@ -50,7 +50,7 @@ export default {
   computed: {
     errorText () {
       return this.$t(
-        'save.error.albums',
+        'save.error.artists',
         { count: this.totalCountFormatted }
       )
     },
@@ -59,15 +59,15 @@ export default {
         this.totalCount
       )
     },
-    errorAlbumsData () {
+    errorArtistsData () {
       return {
         page: 1,
         total_pages: 1,
-        albums: this.errorAlbums
+        artists: this.errorArtists
       }
     },
     totalCount () {
-      return this.errorAlbums.length
+      return this.errorArtists.length
     }
   },
   methods: {
@@ -77,8 +77,8 @@ export default {
     handleFocus () {
       this.$refs.scrollable.scrollTo(0, 0)
     },
-    handleAlbumsChange ({ scope }, value) {
-      this.setErrorAlbums(
+    handleArtistsChange ({ scope }, value) {
+      this.setErrorArtists(
         [...value]
       )
     }

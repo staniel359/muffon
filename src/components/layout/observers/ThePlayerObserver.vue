@@ -5,6 +5,7 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'ThePlayerObserver',
@@ -26,7 +27,12 @@ export default {
       ].join(' - ')
     },
     artistName () {
-      return this.playerPlaying.artist.name
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.playerPlaying.artists
     },
     trackFullTitle () {
       return [

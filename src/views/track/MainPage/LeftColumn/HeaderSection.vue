@@ -8,9 +8,8 @@
       :text="trackTitle"
     />
 
-    <BaseLink
-      :link="artistMainLink"
-      :text="artistName"
+    <BaseArtistLinks
+      :artists="artists"
     />
 
     <BaseLinkContainer
@@ -29,18 +28,18 @@
 <script>
 import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/links/BaseLink.vue'
+import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
 import formatAlbumRequestData from '#/formatters/request/album/requestData'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'HeaderSection',
   components: {
     BaseTransitionContainer,
     BaseHeader,
-    BaseLink,
+    BaseArtistLinks,
     BaseLinkContainer
   },
   props: {
@@ -54,26 +53,26 @@ export default {
     trackTitle () {
       return this.trackData.title
     },
-    artistName () {
-      return this.trackData.artist.name
+    artists () {
+      return this.trackData.artists
+    },
+    albumMainLink () {
+      return formatAlbumMainLink({
+        albumTitle: this.albumTitle,
+        artistName: this.artistName,
+        sourceParams: this.sourceParams
+      })
     },
     albumTitle () {
       return this.albumData?.title
     },
     albumData () {
-      return this.trackData.albums?.[0]
+      return this.trackData.album
     },
-    artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
-    },
-    albumMainLink () {
-      return formatAlbumMainLink({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        sourceParams: this.sourceParams
-      })
+    artistName () {
+      return formatArtistName(
+        this.artists
+      )
     },
     sourceParams () {
       return formatAlbumRequestData({

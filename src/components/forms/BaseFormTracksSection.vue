@@ -29,9 +29,10 @@ export default {
         return trackData.uuid !== uuid
       }
 
-      const tracks = this.tracks.filter(
-        isMatchedTrack
-      )
+      const tracks =
+        this.tracks.filter(
+          isMatchedTrack
+        )
 
       this.$emit(
         'tracksChange',

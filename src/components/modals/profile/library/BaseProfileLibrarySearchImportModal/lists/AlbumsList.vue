@@ -28,7 +28,7 @@ import BasePaginatedListContainer
 import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
 
 export default {
-  name: 'SearchAlbumsList',
+  name: 'AlbumsList',
   components: {
     BasePaginatedListContainer,
     BaseAlbumsSimpleList
@@ -85,7 +85,6 @@ export default {
 
       this.$emit(
         'change',
-        { scope: 'albums' },
         albums
       )
     },

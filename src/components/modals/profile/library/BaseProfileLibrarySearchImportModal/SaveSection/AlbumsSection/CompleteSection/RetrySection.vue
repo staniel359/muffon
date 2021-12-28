@@ -10,23 +10,21 @@
       />
     </div>
 
-    <SearchTracksList
-      :tracks="errorTracks"
-      @change="handleTracksChange"
+    <AlbumsList
+      :albums="errorAlbums"
+      @change="handleAlbumsChange"
       @focus="handleFocus"
     />
   </div>
 
   <BaseRetryButton
-    class="fluid retry-button"
-    icon="redo alternate"
     @click="handleRetryButtonClick"
   />
 </template>
 
 <script>
 import BaseMessage from '@/messages/BaseMessage.vue'
-import SearchTracksList from '../../../lists/SearchTracksList.vue'
+import AlbumsList from '../../../lists/AlbumsList.vue'
 import BaseRetryButton from '@/buttons/BaseRetryButton.vue'
 import { number as formatNumber } from '#/formatters'
 
@@ -34,14 +32,14 @@ export default {
   name: 'RetrySection',
   components: {
     BaseMessage,
-    SearchTracksList,
+    AlbumsList,
     BaseRetryButton
   },
   inject: [
-    'setErrorTracks'
+    'setErrorAlbums'
   ],
   props: {
-    errorTracks: {
+    errorAlbums: {
       type: Array,
       required: true
     }
@@ -52,7 +50,7 @@ export default {
   computed: {
     errorText () {
       return this.$t(
-        'save.error.tracks',
+        'save.error.albums',
         { count: this.totalCountFormatted }
       )
     },
@@ -61,15 +59,15 @@ export default {
         this.totalCount
       )
     },
-    errorTracksData () {
+    errorAlbumsData () {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.errorTracks
+        albums: this.errorAlbums
       }
     },
     totalCount () {
-      return this.errorTracks.length
+      return this.errorAlbums.length
     }
   },
   methods: {
@@ -79,8 +77,8 @@ export default {
     handleFocus () {
       this.$refs.scrollable.scrollTo(0, 0)
     },
-    handleTracksChange ({ scope }, value) {
-      this.setErrorTracks(
+    handleAlbumsChange ({ scope }, value) {
+      this.setErrorAlbums(
         [...value]
       )
     }

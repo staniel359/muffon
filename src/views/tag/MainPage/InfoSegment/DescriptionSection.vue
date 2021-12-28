@@ -35,7 +35,7 @@ export default {
       return this.tagData.name
     },
     isMore () {
-      return this.tagData.with_more.description
+      return this.tagData.with_more?.description
     }
   }
 }

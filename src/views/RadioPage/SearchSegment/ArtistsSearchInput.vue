@@ -40,17 +40,12 @@ export default {
         'select',
         artist.name
       )
-
-      this.clear()
     },
     formatResponse (response) {
       return response.search.artists
     },
     focus () {
       this.$refs.input.focus()
-    },
-    clear () {
-      this.$refs.input.clear()
     }
   }
 }

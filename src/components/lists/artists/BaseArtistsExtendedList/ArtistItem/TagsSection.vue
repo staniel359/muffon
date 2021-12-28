@@ -29,7 +29,7 @@ export default {
       return this.artistData.name
     },
     isMore () {
-      return this.artistData.with_more.tags
+      return this.artistData.with_more?.tags
     }
   }
 }

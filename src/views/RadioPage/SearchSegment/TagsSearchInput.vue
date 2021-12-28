@@ -40,17 +40,12 @@ export default {
         'select',
         tag.name
       )
-
-      this.clear()
     },
     formatResponse (response) {
       return response.search.tags
     },
     focus () {
       this.$refs.input.focus()
-    },
-    clear () {
-      this.$refs.input.clear()
     }
   }
 }

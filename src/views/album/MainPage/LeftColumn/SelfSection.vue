@@ -28,6 +28,7 @@
 <script>
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'SelfSection',
@@ -50,7 +51,12 @@ export default {
       return this.albumData.title
     },
     artistName () {
-      return this.albumData.artist.name
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.albumData.artists
     },
     tracks () {
       return this.albumData.tracks

@@ -153,8 +153,7 @@ export default {
     sourceParams () {
       return formatAlbumRequestData({
         sourceId: 'lastfm',
-        albumData: this.albumData,
-        artistName: this.artistName
+        albumData: this.albumData
       })
     },
     albumFullTitle () {

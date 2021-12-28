@@ -39,6 +39,7 @@ import {
 import {
   main as formatProfileLibraryTrackMainLink
 } from '#/formatters/links/profile/library/track'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'FavoriteOption',
@@ -196,11 +197,18 @@ export default {
       }
     },
     formatAlbumTrack (trackData) {
+      const artistName =
+        formatArtistName(
+          trackData.artists
+        )
+
+      const artistData = {
+        name: artistName
+      }
+
       return {
         title: trackData.title,
-        artist: {
-          name: trackData.artist.name
-        }
+        artist: artistData
       }
     }
   }

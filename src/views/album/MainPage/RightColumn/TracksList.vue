@@ -20,6 +20,7 @@
 <script>
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import audioSources from '#/data/audio/sources'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'TracksList',
@@ -38,7 +39,12 @@ export default {
       return this.albumData.tracks
     },
     artistName () {
-      return this.albumData.artist.name
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.albumData.artists
     },
     albumTitle () {
       return this.albumData.title

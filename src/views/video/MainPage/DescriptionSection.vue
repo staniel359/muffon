@@ -40,7 +40,7 @@ export default {
       return this.videoData.description
     },
     isMore () {
-      return this.videoData.with_more.description
+      return this.videoData.with_more?.description
     },
     videoId () {
       return this.videoData.youtube_id

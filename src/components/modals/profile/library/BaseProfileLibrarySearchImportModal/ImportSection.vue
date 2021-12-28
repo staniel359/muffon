@@ -1,23 +1,10 @@
 <template>
   <div class="main-library-modal-import-section">
-    <BaseTabsContainer
-      ref="tabs"
-      :tabs="tabsCollection"
-    >
-      <template
-        v-for="tabData in tabsCollection"
-        :key="tabData.uuid"
-        #[tabData.scope]="slotProps"
-      >
-        <Component
-          :ref="tabData.scope"
-          :is="tabData.component"
-          :class="slotProps.class"
-          :[tabData.scope]="this[tabData.scope]"
-          @change="handleChange"
-        />
-      </template>
-    </BaseTabsContainer>
+    <Component
+      :is="component"
+      :[scope]="collection"
+      @change="handleChange"
+    />
   </div>
 
   <BaseSaveButton
@@ -26,20 +13,17 @@
 </template>
 
 <script>
-import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
-import SearchArtistsList from './lists/SearchArtistsList.vue'
-import SearchAlbumsList from './lists/SearchAlbumsList.vue'
-import SearchTracksList from './lists/SearchTracksList.vue'
+import ArtistsList from './lists/ArtistsList.vue'
+import AlbumsList from './lists/AlbumsList.vue'
+import TracksList from './lists/TracksList.vue'
 import BaseSaveButton from '@/buttons/BaseSaveButton.vue'
-import { collection as formatCollection } from '#/formatters'
 
 export default {
   name: 'ImportSection',
   components: {
-    BaseTabsContainer,
-    SearchArtistsList,
-    SearchAlbumsList,
-    SearchTracksList,
+    ArtistsList,
+    AlbumsList,
+    TracksList,
     BaseSaveButton
   },
   props: {
@@ -47,78 +31,37 @@ export default {
       type: String,
       required: true
     },
-    artists: Array,
-    albums: Array,
-    tracks: Array
+    collection: Array
+  },
+  data () {
+    return {
+      components: {
+        artists: 'ArtistsList',
+        albums: 'AlbumsList',
+        tracks: 'TracksList'
+      }
+    }
   },
   emits: [
     'change',
     'save'
   ],
   computed: {
-    tabsCollection () {
-      return formatCollection(
-        this.tabs
-      )
-    },
-    tabs () {
-      return [
-        {
-          name: this.$t(
-            'navigation.artists'
-          ),
-          component: 'SearchArtistsList',
-          scope: 'artists'
-        },
-        {
-          name: this.$t(
-            'navigation.albums'
-          ),
-          component: 'SearchAlbumsList',
-          scope: 'albums'
-        },
-        {
-          name: this.$t(
-            'navigation.tracks'
-          ),
-          component: 'SearchTracksList',
-          scope: 'tracks'
-        }
+    component () {
+      return this.components[
+        this.scope
       ]
     }
   },
-  watch: {
-    scope: {
-      immediate: true,
-      handler: 'handleScopeChange'
-    }
-  },
   methods: {
-    handleChange ({ scope }, value) {
+    handleChange (value) {
       this.$emit(
         'change',
-        { scope },
         value
       )
     },
     handleSaveButtonClick () {
       this.$emit('save')
-    },
-    handleScopeChange (value) {
-      const isActiveTab = tabData => {
-        return tabData.scope === value
-      }
-
-      const activeTabIndex =
-        this.tabsCollection.findIndex(
-          isActiveTab
-        )
-
-      this.$nextTick(() => {
-        this.$refs.tabs.setActiveTab(
-          activeTabIndex
-        )
-      })
     }
   }
 }

@@ -41,10 +41,8 @@
             <TrackArtistName
               v-if="isRenderArtistName"
               :artists="artists"
-              :artistName="artistName"
               :isLinkToLibrary="isLinkToLibrary"
               :profileId="profileId"
-              :artistId="artistId"
               @linkClick="handleLinkClick"
             />
 
@@ -193,6 +191,7 @@ import {
   date as formatDate,
   time as formatTime
 } from '#/formatters'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'BaseTrackContent',
@@ -306,10 +305,19 @@ export default {
       )
     },
     artistName () {
-      return this.trackData.artist?.name
+      return formatArtistName(
+        this.artists
+      )
     },
     artists () {
-      return this.trackData.artists
+      if (this.artistData) {
+        return [this.artistData]
+      } else {
+        return this.trackData.artists
+      }
+    },
+    artistData () {
+      return this.trackData.artist
     },
     isRenderAlbumTitle () {
       return (
@@ -321,10 +329,7 @@ export default {
       return this.albumData?.title
     },
     albumData () {
-      return (
-        this.trackData.albums?.[0] ||
-          this.trackData.album
-      )
+      return this.trackData.album
     },
     isRenderListenersCount () {
       return (

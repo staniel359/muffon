@@ -35,7 +35,7 @@ export default {
       return this.videoData.tags
     },
     isMore () {
-      return this.videoData.with_more.tags
+      return this.videoData.with_more?.tags
     },
     videoId () {
       return this.videoData.youtube_id

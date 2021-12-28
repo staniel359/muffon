@@ -5,7 +5,6 @@
     <BaseTracksSimpleList
       class="queue-tracks"
       :tracks="queueTracksConditional"
-      :isQueueable="false"
       :isWithSelfIcons="false"
       isWithImage
       isWithArtistName

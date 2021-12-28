@@ -34,14 +34,17 @@ export default {
     artistName: String,
     isLinkToLibrary: Boolean,
     isArtistNameActive: Boolean,
-    isTracksActive: Boolean
+    isTracksActive: Boolean,
+    isNoLink: Boolean
   },
   emits: [
     'linkClick'
   ],
   computed: {
     link () {
-      if (this.isArtistNameActive) {
+      if (this.isNoLink) {
+        return {}
+      } else if (this.isArtistNameActive) {
         if (this.isLinkToLibrary) {
           return this.profileLibraryArtistMainLink
         } else {
@@ -68,14 +71,8 @@ export default {
     },
     artistMainLink () {
       return formatArtistMainLink({
-        artistName: this.albumArtistName
+        artistName: this.artistName
       })
-    },
-    albumArtistName () {
-      return (
-        this.albumData.artist?.name ||
-          this.artistName
-      )
     },
     profileLibraryAlbumTracksLink () {
       return formatProfileLibraryAlbumTracksLink({
@@ -94,7 +91,7 @@ export default {
     },
     albumMainLink () {
       return formatAlbumMainLink({
-        artistName: this.albumArtistName,
+        artistName: this.artistName,
         albumTitle: this.albumTitle,
         sourceParams: this.sourceParams
       })
@@ -106,7 +103,7 @@ export default {
       return formatAlbumRequestData({
         sourceId: this.albumData.source_id,
         albumData: this.albumData,
-        artistName: this.albumArtistName
+        artistName: this.artistName
       })
     }
   },

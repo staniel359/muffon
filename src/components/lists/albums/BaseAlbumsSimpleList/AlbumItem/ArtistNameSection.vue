@@ -1,22 +1,24 @@
 <template>
   <span
-    :class="{ link: isArtistNameActive }"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
-    {{ artistName }}
+    <BaseArtistLinks
+      :artists="artists"
+    />
   </span>
 </template>
 
 <script>
+import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
+
 export default {
   name: 'ArtistNameSection',
+  components: {
+    BaseArtistLinks
+  },
   props: {
-    artistName: {
-      type: String,
-      required: true
-    },
-    isArtistNameActive: Boolean
+    artists: Array
   },
   emits: [
     'activeChange'

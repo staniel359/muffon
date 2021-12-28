@@ -27,7 +27,6 @@
           <template #default="slotProps">
             <slot
               :[scope]="slotProps[scope]"
-              :artistId="segmentSlotProps.artistId"
               :artistName="segmentSlotProps.artistName"
             ></slot>
           </template>

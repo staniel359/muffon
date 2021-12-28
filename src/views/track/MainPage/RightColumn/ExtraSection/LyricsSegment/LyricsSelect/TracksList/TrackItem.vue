@@ -10,6 +10,7 @@
 <script>
 import BaseDropdownItem from '@/dropdowns/BaseDropdownItem.vue'
 import { generateKey } from '#/utils'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'TrackItem',
@@ -34,7 +35,12 @@ export default {
       return this.trackData.title
     },
     artistName () {
-      return this.trackData.artist.name
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.trackData.artists
     }
   },
   methods: {

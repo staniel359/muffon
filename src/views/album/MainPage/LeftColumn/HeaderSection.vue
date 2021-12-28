@@ -20,6 +20,7 @@ import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/BaseHeader.vue'
 import BaseLink from '@/links/BaseLink.vue'
 import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'HeaderSection',
@@ -45,7 +46,12 @@ export default {
       })
     },
     artistName () {
-      return this.albumData.artist.name
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.albumData.artists
     }
   }
 }

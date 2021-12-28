@@ -12,7 +12,6 @@
       <BaseTracksSimpleList
         :tracks="slotProps.tracks"
         :profileId="profileId"
-        :artistId="artistId"
         :artistName="artistName"
         :isWithFavoriteOption="isWithFavoriteOption"
         :isWithDeleteOption="isWithDeleteOption"

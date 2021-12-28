@@ -30,8 +30,7 @@ export default {
       required: true
     },
     isLinkToLibrary: Boolean,
-    profileId: String,
-    artistId: String
+    profileId: String
   },
   emits: [
     'linkClick'
@@ -49,6 +48,9 @@ export default {
         profileId: this.profileId,
         artistId: this.artistId
       })
+    },
+    artistId () {
+      return this.artistData.id
     },
     artistMainLink () {
       return formatArtistMainLink({

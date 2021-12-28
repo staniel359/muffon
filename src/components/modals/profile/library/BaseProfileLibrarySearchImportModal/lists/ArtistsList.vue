@@ -27,7 +27,7 @@ import BasePaginatedListContainer
 import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
-  name: 'SearchArtistsList',
+  name: 'ArtistsList',
   components: {
     BasePaginatedListContainer,
     BaseArtistsSimpleList
@@ -84,7 +84,6 @@ export default {
 
       this.$emit(
         'change',
-        { scope: 'artists' },
         artists
       )
     },

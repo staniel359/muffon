@@ -16,7 +16,6 @@
       :isLoading="isLoading"
       :error="error"
       :libraryAlbumData="libraryAlbumData"
-      :artistId="artistIdFetched"
       :artistName="artistNameFetched"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
@@ -67,9 +66,6 @@ export default {
     },
     libraryAlbumData () {
       return this.profileData?.library?.album
-    },
-    artistIdFetched () {
-      return this.libraryAlbumArtistData?.id?.toString()
     },
     libraryAlbumArtistData () {
       return this.libraryAlbumData?.artist

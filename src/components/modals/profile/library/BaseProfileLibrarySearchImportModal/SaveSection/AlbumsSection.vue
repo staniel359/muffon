@@ -19,11 +19,12 @@
 
 <script>
 import BaseProgress from '@/BaseProgress.vue'
-import CompleteSection from './SaveAlbumsSection/CompleteSection.vue'
+import CompleteSection from './AlbumsSection/CompleteSection.vue'
 import createLibraryAlbum from '#/actions/api/library/album/create'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
-  name: 'SaveAlbumsSection',
+  name: 'AlbumsSection',
   components: {
     BaseProgress,
     CompleteSection
@@ -34,7 +35,7 @@ export default {
     }
   },
   inject: [
-    'setAlbums'
+    'setCollection'
   ],
   props: {
     albums: {
@@ -82,7 +83,7 @@ export default {
       this.isError = false
       this.isProgress = true
 
-      this.setAlbums(
+      this.setCollection(
         [...this.errorAlbums]
       )
 
@@ -137,9 +138,14 @@ export default {
       )
     },
     formatAlbum (albumData) {
+      const artistName =
+        formatArtistName(
+          albumData.artists
+        )
+
       return {
         albumTitle: albumData.title,
-        artistName: albumData.artist.name,
+        artistName,
         imageUrl: albumData.image?.original
       }
     },

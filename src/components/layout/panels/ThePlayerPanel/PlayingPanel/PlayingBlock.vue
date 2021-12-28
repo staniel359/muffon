@@ -3,10 +3,13 @@
     <ImageBlock
       :image="imageData?.extrasmall"
       :artistName="artistName"
-      :isWithImage="isWithAlbum"
+      :isWithImage="isFromSource"
     />
 
-    <InfoBlock :key="key" />
+    <InfoBlock
+      :key="key"
+      :isWithAlbum="isFromSource"
+    />
 
     <BaseSourceIcon
       class="description track-source-icon"
@@ -21,6 +24,7 @@ import ImageBlock from './PlayingBlock/ImageBlock.vue'
 import InfoBlock from './PlayingBlock/InfoBlock.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import { generateKey } from '#/utils'
+import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'PlayingBlock',
@@ -42,13 +46,21 @@ export default {
       return this.playerPlaying.image
     },
     artistName () {
-      return this.playerPlaying.artist.name
+      return formatArtistName(
+        this.artists
+      )
+    },
+    artists () {
+      return this.playerPlaying.artists
     },
     sourceId () {
       return this.playerPlaying.audio.source_id
     },
-    isWithAlbum () {
-      return !!this.playerPlaying.album
+    albumData () {
+      return this.playerPlaying.album
+    },
+    isFromSource () {
+      return !!this.playerPlaying.from_source
     }
   },
   watch: {
