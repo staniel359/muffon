@@ -214,7 +214,8 @@
       },
       "taken": {
         "email": "L'email è già utilizzata",
-        "nickname": "Il nome utente è già utilizzato"
+        "nickname": "Il nome utente è già utilizzato",
+        "title": "Il titolo è già utilizzato"
       },
       "tooShort": {
         "password": "La password è troppo breve"
