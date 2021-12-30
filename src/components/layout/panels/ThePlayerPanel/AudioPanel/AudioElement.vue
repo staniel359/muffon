@@ -113,15 +113,11 @@ export default {
       this.setAudioDuration(
         duration
       )
+
+      this.setProgress(event)
     },
     handleProgress (event) {
-      const { buffered } = event.target
-
-      if (buffered.length) {
-        this.setAudioProgress(
-          buffered.end(0)
-        )
-      }
+      this.setProgress(event)
     },
     handleCanPlay () {
       this.setIsAudioPlayable(true)
@@ -201,7 +197,7 @@ export default {
     stopAudio () {
       this.setAudioStatus('stop')
 
-      this.audioElement.src = null
+      this.audioElement.src = ''
 
       updateStore({
         'player.isScrobbling': false
@@ -230,6 +226,20 @@ export default {
           )
         }
       })
+    },
+    setProgress (event) {
+      const { buffered } = event.target
+
+      if (buffered.length) {
+        const progress =
+          buffered.end(
+            buffered.length - 1
+          )
+
+        this.setAudioProgress(
+          progress
+        )
+      }
     }
   }
 }
