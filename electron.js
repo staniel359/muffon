@@ -4,6 +4,7 @@ const {
   BrowserWindow,
   ipcMain,
   Menu,
+  nativeImage,
   session,
   Tray
 } = require('electron')
@@ -23,28 +24,20 @@ const isDevelopment =
 const isMac =
   process.platform === 'darwin'
 
-const getIconPath = () => {
-  const publicPath =
-    isDevelopment ? 'public' : ''
+const publicPath =
+  isDevelopment ? 'public' : ''
 
-  const osIcons = {
-    win32: 'icon.ico',
-    darwin: 'icon.icns',
-    linux: 'icon.png'
-  }
-
-  const iconName = osIcons[
-    process.platform
-  ]
-
-  return path.join(
+const iconPath =
+  path.join(
     __dirname,
     publicPath,
-    iconName
+    'icon.png'
   )
-}
 
-const iconPath = getIconPath()
+const icon =
+  nativeImage.createFromPath(
+    iconPath
+  )
 
 const getBaseUrl = () => {
   if (isDevelopment) {
@@ -116,7 +109,7 @@ const createWindow = () => {
   mainWindow = new BrowserWindow({
     width,
     height,
-    icon: iconPath,
+    icon: icon,
     autoHideMenuBar: true,
     show: false,
     webPreferences: {
@@ -161,7 +154,13 @@ const hide = () => {
 }
 
 const createTray = () => {
-  tray = new Tray(iconPath)
+  const trayIcon =
+    icon.resize({
+      width: 16,
+      height: 16
+    })
+
+  tray = new Tray(trayIcon)
 
   setTrayMenu()
 
