@@ -64,8 +64,8 @@
               />
 
               <BaseCounters
-                :listenersCount="listenersCount"
-                :playsCount="playsCount"
+                :listenersCount="slotProps.artistData.listeners_count"
+                :playsCount="slotProps.artistData.plays_count"
               />
 
               <TagsSection
@@ -165,12 +165,6 @@ export default {
     },
     isDeleted () {
       return !!this.artistData.isDeleted
-    },
-    listenersCount () {
-      return this.artistData.listeners_count
-    },
-    playsCount () {
-      return this.artistData.plays_count
     }
   },
   mounted () {
