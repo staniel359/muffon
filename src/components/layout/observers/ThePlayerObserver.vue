@@ -80,17 +80,20 @@ export default {
     }
   },
   watch: {
-    playerPlaying: 'handlePlayerPlayingChange',
-    title: 'handleTitleChange'
+    playerPlaying: {
+      immediate: true,
+      handler: 'handlePlayerPlayingChange'
+    },
+    title: {
+      immediate: true,
+      handler: 'handleTitleChange'
+    }
   },
   methods: {
     handlePlayerPlayingChange () {
       this.changeMediaMetadata()
     },
     handleTitleChange () {
-      this.changeTitle()
-    },
-    changeTitle () {
       ipcRenderer.send(
         'set-title',
         this.title
@@ -102,8 +105,9 @@ export default {
       )
     },
     changeMediaMetadata () {
-      navigator.mediaSession.metadata =
-        this.mediaMetadata
+      navigator
+        .mediaSession
+        .metadata = this.mediaMetadata
     }
   }
 }

@@ -9,6 +9,8 @@
 
   <TheView v-if="isRootPage" />
   <template v-else>
+    <ThePlayerObserver />
+
     <TheNavbarPanel />
 
     <TheSidebarPanel />
@@ -33,12 +35,13 @@
 import TheStoreObserver from '@/layout/observers/TheStoreObserver.vue'
 import TheLocalObserver from '@/layout/observers/TheLocalObserver.vue'
 import TheMediaKeysObserver from '@/layout/observers/TheMediaKeysObserver.vue'
+import TheBackground from '@/layout/TheBackground.vue'
 import TheView from '@/layout/TheView.vue'
-import TheSidebarPanel from '@/layout/panels/TheSidebarPanel.vue'
+import ThePlayerObserver from '@/layout/observers/ThePlayerObserver.vue'
 import TheNavbarPanel from '@/layout/panels/TheNavbarPanel.vue'
+import TheSidebarPanel from '@/layout/panels/TheSidebarPanel.vue'
 import TheQueuePanel from '@/layout/panels/TheQueuePanel.vue'
 import ThePlayerPanel from '@/layout/panels/ThePlayerPanel.vue'
-import TheBackground from '@/layout/TheBackground.vue'
 import TheVisibleArea from '@/layout/TheVisibleArea.vue'
 import TheSearchModal from '@/layout/modals/TheSearchModal.vue'
 import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
@@ -49,12 +52,13 @@ export default {
     TheStoreObserver,
     TheLocalObserver,
     TheMediaKeysObserver,
+    TheBackground,
     TheView,
-    TheSidebarPanel,
+    ThePlayerObserver,
     TheNavbarPanel,
+    TheSidebarPanel,
     TheQueuePanel,
     ThePlayerPanel,
-    TheBackground,
     TheVisibleArea,
     TheSearchModal,
     TheLoaderDimmer

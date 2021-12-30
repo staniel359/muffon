@@ -9,15 +9,24 @@ import { updateStore } from '#/actions'
 export default {
   name: 'TheMediaKeysObserver',
   mounted () {
-    navigator.mediaSession.setActionHandler(
-      'previoustrack', this.handlePressPrev
-    )
-    navigator.mediaSession.setActionHandler(
-      'nexttrack', this.handlePressNext
-    )
-    navigator.mediaSession.setActionHandler(
-      'stop', this.handlePressStop
-    )
+    navigator
+      .mediaSession
+      .setActionHandler(
+        'previoustrack',
+        this.handlePressPrev
+      )
+    navigator
+      .mediaSession
+      .setActionHandler(
+        'nexttrack',
+        this.handlePressNext
+      )
+    navigator
+      .mediaSession
+      .setActionHandler(
+        'stop',
+        this.handlePressStop
+      )
   },
   computed: {
     prevQueueTrackArgs () {
