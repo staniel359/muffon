@@ -4,11 +4,11 @@
 [![Join the chat at https://gitter.im/muffon-support/community](https://badges.gitter.im/muffon-support/community.svg)](https://gitter.im/muffon-support/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Important!
-Alpha versions will not be working anymore. Please download latest version.
+The alpha versions don't work anymore. Please download latest version.
 
 ![muffon](https://i.ibb.co/M8GsTfr/2021-12-30-16-47-24.png)
 
-**muffon** is a desktop music browser / streaming service that retrieves info and audio/video from **Last.FM**, **Discogs**, **VK**, **YouTube**, **Deezer**, **Yandex Music**, **Odnoklassniki**, **Spotify**, **SoundCloud**, **Bandcamp** and **Genius**.
+**muffon** is a desktop music browser / streaming service that retrieves metadata, audio, and video from **Last.FM**, **Discogs**, **VK**, **YouTube**, **Deezer**, **Yandex Music**, **Odnoklassniki**, **Spotify**, **SoundCloud**, **Bandcamp** and **Genius**.
 
 You can:
 
@@ -48,6 +48,6 @@ It's currently in **beta**, so not everything's perfect.
 
 [Download](https://github.com/staniel359/muffon/releases)
 
-If you have any questions/suggestions/bug reports, feel free to create an issue [here](https://github.com/staniel359/muffon/issues)
+If you have any questions, suggestions, or bug reports, feel free to create an issue [here](https://github.com/staniel359/muffon/issues)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
