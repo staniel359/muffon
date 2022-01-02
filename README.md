@@ -61,7 +61,7 @@ It has **no ads** and is **absolutely free** to use.
 - MacOS
 
 ## Download
-[Latest (v0.1.0-beta)](https://github.com/staniel359/muffon/releases/tag/v0.1.0-beta)
+[Latest (v0.1.0-beta.1)](https://github.com/staniel359/muffon/releases/tag/v0.1.0-beta.1)
 
 ## Support
 
