@@ -68,13 +68,17 @@
                 :playsCount="slotProps.artistData.plays_count"
               />
 
-              <TagsSection
+              <BaseArtistTags
                 :artistData="slotProps.artistData"
               />
 
-              <DescriptionSection
-                :artistData="slotProps.artistData"
-              />
+              <template v-if="slotProps.artistData.description">
+                <BaseDivider />
+
+                <BaseArtistDescription
+                  :artistData="slotProps.artistData"
+                />
+              </template>
 
               <RecommendationSection
                 v-if="isRecommendation"
@@ -101,8 +105,9 @@ import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
 import BaseCounters from '@/BaseCounters.vue'
-import TagsSection from './ArtistItem/TagsSection.vue'
-import DescriptionSection from './ArtistItem/DescriptionSection.vue'
+import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
+import BaseDivider from '@/BaseDivider.vue'
+import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
 import RecommendationSection from './ArtistItem/RecommendationSection.vue'
 
 export default {
@@ -117,8 +122,9 @@ export default {
     BaseOptionsDropdown,
     HeaderSection,
     BaseCounters,
-    TagsSection,
-    DescriptionSection,
+    BaseArtistTags,
+    BaseDivider,
+    BaseArtistDescription,
     RecommendationSection
   },
   provide () {
@@ -205,11 +211,10 @@ export default {
 <style lang="sass" scoped>
 .artist-left-column
   margin-right: 1em
-  width: 150px
 
 .artist-image
-  @extend .w-100
-  height: 150px
+  width: 145px
+  height: 145px
 
 .main-self-icons
   @extend .text-align-center

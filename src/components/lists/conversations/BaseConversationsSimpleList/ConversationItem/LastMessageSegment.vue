@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="main-simple-list-item last-message-item"
+    class="main-simple-list-item main-message-item"
   >
     <BaseImage
       class="small circular bordered"
@@ -87,8 +87,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.last-message-item
-  @extend .align-items-start
+.main-message-item
   margin-left: 45px
   margin-top: 0.5em
 </style>

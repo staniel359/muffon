@@ -280,7 +280,7 @@ a
     & > .content
       & > .description
         @extend .no-margin
-  &:not(.main-profile-item)
+  &:not(.main-profile-item, .main-message-item)
     @extend .align-items-center
 
 .main-message
@@ -659,3 +659,7 @@ a
 
 .main-following-message
   @extend .d-flex, .align-items-center
+
+.main-message-item
+  &.inverted
+    border: $borderInverted !important

@@ -1,16 +1,18 @@
 <template>
-  <BaseTagsList
-    v-bind="$attrs"
-    :tags="tags"
-    :isMore="isMore"
-    @moreClick="handleMoreClick"
-  />
+  <template v-if="tags">
+    <BaseTagsList
+      v-bind="$attrs"
+      :tags="tags"
+      :isMore="isMore"
+      @moreClick="handleMoreClick"
+    />
 
-  <BaseArtistTagsModal
-    v-if="isMore"
-    ref="modal"
-    :artistName="artistName"
-  />
+    <BaseArtistTagsModal
+      v-if="isMore"
+      ref="modal"
+      :artistName="artistName"
+    />
+  </template>
 </template>
 
 <script>
@@ -24,9 +26,21 @@ export default {
     BaseArtistTagsModal
   },
   props: {
-    tags: Array,
-    isMore: Boolean,
-    artistName: String
+    artistData: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    tags () {
+      return this.artistData.tags
+    },
+    isMore () {
+      return this.artistData.with_more?.tags
+    },
+    artistName () {
+      return this.artistData.name
+    }
   },
   methods: {
     handleMoreClick () {

@@ -80,5 +80,7 @@ export default {
 
 <style lang="sass" scoped>
 .variants-list
-  @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto, .no-border
+  @extend .no-margin, .h-100, .overflow-y-auto, .pointer-events-auto
+  &.inverted
+    border-color: $colorGreyInverted !important
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <template v-if="tags.length">
+  <template v-if="tags">
     <BaseTagsList
       :tags="tags"
       :isMore="isMore"

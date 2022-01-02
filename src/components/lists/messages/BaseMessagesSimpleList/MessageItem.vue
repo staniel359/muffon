@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    class="main-simple-list-item"
+    class="main-simple-list-item main-message-item"
   >
     <BaseImage
       class="small circular bordered"
@@ -87,7 +87,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-simple-list-item
-  @extend .align-items-start
-</style>
+<style lang="sass" scoped></style>

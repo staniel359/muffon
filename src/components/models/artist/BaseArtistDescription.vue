@@ -1,15 +1,17 @@
 <template>
-  <BaseDescription
-    :description="description"
-    :isMore="isMore"
-    @moreClick="handleMoreClick"
-  />
+  <template v-if="description">
+    <BaseDescription
+      :description="description"
+      :isMore="isMore"
+      @moreClick="handleMoreClick"
+    />
 
-  <BaseArtistDescriptionModal
-    v-if="isMore"
-    ref="modal"
-    :artistName="artistName"
-  />
+    <BaseArtistDescriptionModal
+      v-if="isMore"
+      ref="modal"
+      :artistName="artistName"
+    />
+  </template>
 </template>
 
 <script>
@@ -24,9 +26,21 @@ export default {
     BaseArtistDescriptionModal
   },
   props: {
-    description: String,
-    isMore: Boolean,
-    artistName: String
+    artistData: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    description () {
+      return this.artistData.description
+    },
+    isMore () {
+      return this.artistData.with_more?.description
+    },
+    artistName () {
+      return this.artistData.name
+    }
   },
   methods: {
     handleMoreClick () {

@@ -1,9 +1,19 @@
 <template>
   <div class="track-main-info">
-    <BaseHeader
+    <BaseHeaderContainer
       tag="h3"
-      :text="trackTitle"
-    />
+    >
+      {{ trackTitle }}
+
+      <span
+        v-if="trackExtraTitle"
+        class="sub header main-extra-title"
+      >
+        <strong>
+          {{ trackExtraTitle }}
+        </strong>
+      </span>
+    </BaseHeaderContainer>
 
     <BaseHeaderContainer
       class="track-artist-name"
@@ -29,7 +39,6 @@
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
 import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 import BaseLink from '@/links/BaseLink.vue'
@@ -40,7 +49,6 @@ import formatAlbumRequestData from '#/formatters/request/album/requestData'
 export default {
   name: 'InfoSection',
   components: {
-    BaseHeader,
     BaseHeaderContainer,
     BaseArtistLinks,
     BaseLink
@@ -82,6 +90,9 @@ export default {
         albumData: this.albumData,
         artistName: this.artistName
       })
+    },
+    trackExtraTitle () {
+      return this.trackData.extra_title
     }
   }
 }

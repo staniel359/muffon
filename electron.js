@@ -106,10 +106,16 @@ const setup = () => {
 }
 
 const createWindow = () => {
+  const mainWindowIcon =
+    icon.resize({
+      width: 64,
+      height: 64
+    })
+
   mainWindow = new BrowserWindow({
     width,
     height,
-    icon: icon,
+    icon: mainWindowIcon,
     autoHideMenuBar: true,
     show: false,
     webPreferences: {

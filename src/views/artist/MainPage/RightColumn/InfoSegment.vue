@@ -14,19 +14,14 @@
     />
 
     <BaseArtistTags
-      v-if="tags.length"
-      :tags="tags"
-      :artistName="artistName"
-      :isMore="isMoreTags"
+      :artistData="artistData"
     />
 
     <template v-if="description">
       <BaseDivider />
 
       <BaseArtistDescription
-        :description="description"
-        :artistName="artistName"
-        :isMore="isMoreDescription"
+        :artistData="artistData"
       />
     </template>
   </BaseSegmentContainer>
@@ -67,17 +62,8 @@ export default {
     playsCount () {
       return this.artistData.plays_count
     },
-    tags () {
-      return this.artistData.tags
-    },
-    isMoreTags () {
-      return this.artistData.with_more?.tags
-    },
     description () {
       return this.artistData.description
-    },
-    isMoreDescription () {
-      return this.artistData.with_more?.description
     }
   }
 }
