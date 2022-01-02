@@ -8,53 +8,51 @@ import { updateStore } from '#/actions'
 
 export default {
   name: 'TheMediaKeysObserver',
-  mounted () {
-    navigator
-      .mediaSession
-      .setActionHandler(
-        'previoustrack',
-        this.handlePressPrev
-      )
-    navigator
-      .mediaSession
-      .setActionHandler(
-        'nexttrack',
-        this.handlePressNext
-      )
-    navigator
-      .mediaSession
-      .setActionHandler(
-        'stop',
-        this.handlePressStop
-      )
-  },
-  computed: {
-    prevQueueTrackArgs () {
-      return {
-        position: 'prev'
-      }
-    },
-    nextQueueTrackArgs () {
-      return {
-        position: 'prev'
-      }
+  data () {
+    return {
+      mediaActionsHandlers: [
+        {
+          action: 'previoustrack',
+          handler: this.handlePressPrev
+        },
+        {
+          action: 'nexttrack',
+          handler: this.handlePressNext
+        },
+        {
+          action: 'stop',
+          handler: this.handlePressStop
+        }
+      ]
     }
+  },
+  mounted () {
+    this.mediaActionsHandlers.forEach(
+      this.setMediaActionHandler
+    )
   },
   methods: {
     handlePressPrev () {
-      getQueueTrack(
-        this.prevQueueTrackArgs
-      )
+      getQueueTrack({
+        position: 'prev'
+      })
     },
     handlePressNext () {
-      getQueueTrack(
-        this.nextQueueTrackArgs
-      )
+      getQueueTrack({
+        position: 'next'
+      })
     },
     handlePressStop () {
       updateStore({
         'player.playing': null
       })
+    },
+    setMediaActionHandler ({ action, handler }) {
+      navigator
+        .mediaSession
+        .setActionHandler(
+          action, handler
+        )
     }
   }
 }
