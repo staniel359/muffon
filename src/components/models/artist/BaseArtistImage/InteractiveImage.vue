@@ -5,7 +5,7 @@
     />
 
     <BaseImage
-      class="rounded"
+      v-bind="$attrs"
       :image="imageData.medium"
       @click="handleClick"
     />

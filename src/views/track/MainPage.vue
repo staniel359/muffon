@@ -1,7 +1,5 @@
 <template>
   <BaseTrackPageContainer
-    :trackTitle="trackTitle"
-    :artistName="artistName"
     :sourceParams="sourceParams"
   >
     <template #default="slotProps">

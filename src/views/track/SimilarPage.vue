@@ -4,8 +4,6 @@
     scope="similar"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
-    :trackTitle="trackTitle"
-    :artistName="artistName"
     :sourceParams="sourceParams"
   >
     <template #default="slotProps">

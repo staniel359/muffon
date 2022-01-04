@@ -16,10 +16,10 @@
     <template v-else>
       <BaseArtistImage
         class="circular bordered"
-        size="small"
         :class="{ small: isImageSmall }"
         :imageData="imageData"
         :artistName="artistName"
+        :size="imageSize"
         @loadEnd="handleImageLoadEnd"
       />
 
@@ -198,6 +198,9 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    imageSize () {
+      return this.isImageSmall ? 'extrasmall' : 'small'
     }
   },
   mounted () {

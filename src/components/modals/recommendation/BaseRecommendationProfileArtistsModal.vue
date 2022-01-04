@@ -27,6 +27,7 @@
             :artists="slotProps.profile_artists"
             :profileId="profileId"
             isLinkToLibrary
+            isImageSmall
             @linkClick="handleLinkClick"
           />
         </template>

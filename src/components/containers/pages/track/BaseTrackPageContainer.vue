@@ -45,14 +45,6 @@ export default {
     }
   },
   props: {
-    artistName: {
-      type: String,
-      required: true
-    },
-    trackTitle: {
-      type: String,
-      required: true
-    },
     sourceParams: {
       type: Object,
       required: true

@@ -1,5 +1,7 @@
 <template>
-  <BaseImagePlaceholder v-if="isLoading" />
+  <BaseImagePlaceholder
+    v-if="isLoading"
+  />
   <InteractiveImage
     v-else-if="isRenderInteractive"
     :artistName="artistName"

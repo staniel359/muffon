@@ -116,6 +116,12 @@ a
     box-shadow: 1px 1px 0 0 rgb(255 255 255 / 15%)
     margin: -0.3em 0 0
 
+.ui.segments
+  .main-segment
+    &.inverted
+      &:not(:first-child)
+        border-top: $borderInverted
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -133,10 +139,7 @@ a
   &.loading
     min-height: 150px
     z-index: 1
-  &.inverted
-    &:not(:first-child)
-      border-top: $borderInverted
-    &.loading
+    &.inverted
       &:before
         @extend .background-black-transparent
 

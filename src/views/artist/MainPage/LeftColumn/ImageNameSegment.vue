@@ -4,7 +4,7 @@
   >
     <div class="main-image-container">
       <BaseArtistImage
-        class="rounded image-content"
+        class="rounded bordered image-content"
         size="medium"
         :artistName="artistName"
         isInteractive
