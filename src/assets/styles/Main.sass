@@ -248,7 +248,7 @@ a
   @extend .w-100
 
 .main-simple-list-item
-  @extend .d-flex, .word-break-break-word
+  @extend .d-flex, .align-items-center, .word-break-break-word
   & > .image
     width: 50px
     height: 50px
@@ -283,8 +283,10 @@ a
     & > .content
       & > .description
         @extend .no-margin
-  &:not(.main-profile-item, .main-message-item)
-    @extend .align-items-center
+
+.main-message-item, .main-profile-item
+  & > .image
+    align-self: start
 
 .main-message
   @extend .no-shadow, .no-margin

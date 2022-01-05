@@ -29,3 +29,11 @@ export const tracks = ({ profileId }) => {
     path: `profiles/${profileId}/library/tracks`
   }
 }
+
+export const tags = ({ profileId }) => {
+  return {
+    name: 'ProfileLibraryTagsPage',
+    params: { profileId },
+    path: `profiles/${profileId}/library/tags`
+  }
+}

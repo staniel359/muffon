@@ -66,7 +66,7 @@ export default {
 
 .tag-info-segment
   @extend .h-100, .overflow-y-auto
-  padding: 60px 80px 40px 80px
+  padding: 50px 80px 30px 80px
   &:not(.loading)
     @extend .background-black-transparent
 </style>

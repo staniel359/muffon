@@ -1,27 +1,35 @@
 <template>
-  <BaseTopPaginatedPageContainer
+  <BaseProfileLibraryPaginatedPageContainer
     scope="tags"
+    pageNameKey="tags"
+    :profileId="profileId"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
+    isWithSearch
   >
     <template #default="slotProps">
       <BaseTagsList
         :tags="slotProps.tags"
+        :profileId="profileId"
+        isLinkToLibrary
       />
     </template>
-  </BaseTopPaginatedPageContainer>
+  </BaseProfileLibraryPaginatedPageContainer>
 </template>
 
 <script>
-import BaseTopPaginatedPageContainer
-  from '@/containers/pages/top/BaseTopPaginatedPageContainer.vue'
+import BaseProfileLibraryPaginatedPageContainer
+  from '@/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
 import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 
 export default {
   name: 'TagsPage',
   components: {
-    BaseTopPaginatedPageContainer,
+    BaseProfileLibraryPaginatedPageContainer,
     BaseTagsList
+  },
+  props: {
+    profileId: String
   },
   data () {
     return {

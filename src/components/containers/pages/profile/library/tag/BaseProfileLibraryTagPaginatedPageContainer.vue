@@ -1,11 +1,11 @@
 <template>
-  <BaseProfileLibraryPageContainer
+  <BaseProfileLibraryTagPageContainer
     ref="pageContainer"
     :profileId="profileId"
+    :tagId="tagId"
     :scope="scope"
-    :pageNameKey="pageNameKey"
     :responsePageLimit="responsePageLimit"
-    :query="query"
+    :pageNameKey="pageNameKey"
   >
     <template #default="pageSlotProps">
       <div
@@ -18,14 +18,6 @@
         <BaseSegmentContainer
           class="search-view-buttons-segment"
         >
-          <BaseProfileLibrarySearchInput
-            v-if="isWithSearch"
-            :isClearable="isSearchClearable"
-            :query="query"
-            @submit="handleSearchSubmit"
-            @clear="handleSearchClear"
-          />
-
           <BaseViewChangeButtons
             v-if="isWithViewChange"
             :viewIndex="viewIndex"
@@ -41,7 +33,7 @@
             ref="paginatedContainer"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
-            :responseData="pageSlotProps.libraryData"
+            :responseData="pageSlotProps.libraryTagData"
             :scope="scope"
             :clientPageLimit="clientPageLimit"
             :responsePageLimit="responsePageLimit"
@@ -52,64 +44,51 @@
             <template #default="slotProps">
               <slot
                 :[scope]="slotProps[scope]"
-                :topTracksCount="pageSlotProps.libraryData.top_tracks_count"
-                :topAlbumsCount="pageSlotProps.libraryData.top_albums_count"
+                :topTracksCount="pageSlotProps.libraryTagData.top_tracks_count"
+                :topAlbumsCount="pageSlotProps.libraryTagData.top_albums_count"
               ></slot>
             </template>
           </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
-  </BaseProfileLibraryPageContainer>
+  </BaseProfileLibraryTagPageContainer>
 </template>
 
 <script>
-import BaseProfileLibraryPageContainer
-  from './BaseProfileLibraryPageContainer.vue'
+import BaseProfileLibraryTagPageContainer
+  from './BaseProfileLibraryTagPageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseProfileLibrarySearchInput
-  from '@/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
-  name: 'BaseProfileLibraryPaginatedPageContainer',
+  name: 'BaseProfileLibraryTagPaginatedPageContainer',
   components: {
-    BaseProfileLibraryPageContainer,
+    BaseProfileLibraryTagPageContainer,
     BaseSegmentContainer,
-    BaseProfileLibrarySearchInput,
     BaseViewChangeButtons,
     BasePaginatedListContainer
   },
   props: {
     profileId: String,
+    tagId: String,
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,
     pageNameKey: String,
     isWithViewChange: Boolean,
-    viewIndex: Number,
-    isWithSearch: Boolean
+    viewIndex: Number
   },
   emits: [
     'viewButtonClick'
   ],
-  data () {
-    return {
-      query: ''
-    }
-  },
-  computed: {
-    isSearchClearable () {
-      return !!this.query.length
-    }
-  },
-  watch: {
-    query: 'handleQueryChange'
-  },
   methods: {
+    handleFocus () {
+      window.scrollTo(0, 0)
+    },
     handleViewButtonClick (index) {
       this.resetPagination()
 
@@ -121,18 +100,6 @@ export default {
       this.$nextTick(() => {
         this.$refs.pageContainer.fetchData()
       })
-    },
-    handleFocus () {
-      window.scrollTo(0, 0)
-    },
-    handleSearchSubmit (value) {
-      this.query = value
-    },
-    handleSearchClear () {
-      this.query = ''
-    },
-    handleQueryChange () {
-      this.resetPagination()
     },
     resetPagination () {
       this.$refs.paginatedContainer.reset()

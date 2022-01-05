@@ -200,7 +200,9 @@ export default {
       return this.artistData.uuid
     },
     imageSize () {
-      return this.isImageSmall ? 'extrasmall' : 'small'
+      return this.isImageSmall
+        ? 'extrasmall'
+        : 'small'
     }
   },
   mounted () {

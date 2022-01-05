@@ -24,7 +24,6 @@
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :isWithListenersCount="!!tabData.isWithListenersCount"
-          :isWithIcon="!!tabData.isWithIcon"
           :profileId="profileId"
           :isWithPlaylistOption="isTracks"
           isWithImage

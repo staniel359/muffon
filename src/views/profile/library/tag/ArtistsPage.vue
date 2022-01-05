@@ -1,8 +1,9 @@
 <template>
-  <BaseProfileLibraryPaginatedPageContainer
+  <BaseProfileLibraryTagPaginatedPageContainer
     scope="artists"
     pageNameKey="artists"
     :profileId="profileId"
+    :tagId="tagId"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :viewIndex="viewIndex"
@@ -22,23 +23,24 @@
         isLinkToLibrary
       />
     </template>
-  </BaseProfileLibraryPaginatedPageContainer>
+  </BaseProfileLibraryTagPaginatedPageContainer>
 </template>
 
 <script>
-import BaseProfileLibraryPaginatedPageContainer
-  from '@/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
+import BaseProfileLibraryTagPaginatedPageContainer
+  from '@/containers/pages/profile/library/tag/BaseProfileLibraryTagPaginatedPageContainer.vue'
 import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
 import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'ArtistsPage',
   components: {
-    BaseProfileLibraryPaginatedPageContainer,
+    BaseProfileLibraryTagPaginatedPageContainer,
     BaseArtistsList
   },
   props: {
-    profileId: String
+    profileId: String,
+    tagId: String
   },
   data () {
     return {

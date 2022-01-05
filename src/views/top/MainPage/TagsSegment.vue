@@ -7,7 +7,6 @@
     <template #default="slotProps">
       <BaseTagsList
         :tags="slotProps.tags"
-        :isWithIcon="false"
       />
     </template>
   </BaseTopPaginatedSegmentContainer>

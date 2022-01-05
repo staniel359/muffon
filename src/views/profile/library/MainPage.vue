@@ -29,6 +29,10 @@
         :isWithFavoriteOption="isWithFavoriteOption"
         :isWithDeleteOption="isWithDeleteOption"
       />
+
+      <TagsSegment
+        :profileId="profileId"
+      />
     </template>
   </BaseProfilePageContainer>
 </template>
@@ -41,6 +45,7 @@ import ImportSegment from './MainPage/ImportSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
+import TagsSegment from './MainPage/TagsSegment.vue'
 import { isCurrentProfile } from '#/utils'
 
 export default {
@@ -51,7 +56,8 @@ export default {
     ImportSegment,
     ArtistsSegment,
     AlbumsSegment,
-    TracksSegment
+    TracksSegment,
+    TagsSegment
   },
   props: {
     profileId: String

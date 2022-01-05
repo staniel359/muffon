@@ -1,24 +1,17 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    headerTextKey="tracks"
-    scope="tracks"
+    headerTextKey="tags"
+    scope="tags"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :profileId="profileId"
-    :formatHeaderLink="formatProfileLibraryTracksLink"
+    :formatHeaderLink="formatProfileLibraryTagsLink"
   >
     <template #default="slotProps">
-      <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+      <BaseTagsList
+        :tags="slotProps.tags"
         :profileId="profileId"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        isWithImage
-        isWithArtistName
-        isWithAlbumTitle
-        isWithCreated
         isLinkToLibrary
-        isWithPlaylistOption
       />
     </template>
   </BaseProfileLibraryPaginatedSegmentContainer>
@@ -27,29 +20,27 @@
 <script>
 import BaseProfileLibraryPaginatedSegmentContainer
   from '@/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 import {
-  tracks as formatProfileLibraryTracksLink
+  tags as formatProfileLibraryTagsLink
 } from '#/formatters/links/profile/library'
 
 export default {
-  name: 'TracksSegment',
+  name: 'TagsSegment',
   components: {
     BaseProfileLibraryPaginatedSegmentContainer,
-    BaseTracksSimpleList
+    BaseTagsList
   },
   props: {
-    profileId: String,
-    isWithFavoriteOption: Boolean,
-    isWithDeleteOption: Boolean
+    profileId: String
   },
   data () {
     return {
-      limit: 10
+      limit: 20
     }
   },
   methods: {
-    formatProfileLibraryTracksLink
+    formatProfileLibraryTagsLink
   }
 }
 </script>

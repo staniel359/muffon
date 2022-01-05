@@ -96,10 +96,12 @@ export default {
           newValue, oldValue
         )
 
-      if (
+      const isFetchImage = (
         !this.imageData &&
           isNewArtist
-      ) {
+      )
+
+      if (isFetchImage) {
         this.fetchData()
       }
     },

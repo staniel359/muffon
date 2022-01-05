@@ -91,6 +91,15 @@ const ProfileLibraryTracksPage = () => import(
 const ProfileLibraryTrackMainPage = () => import(
   '%/profile/library/track/MainPage.vue'
 )
+const ProfileLibraryTagsPage = () => import(
+  '%/profile/library/TagsPage.vue'
+)
+const ProfileLibraryTagMainPage = () => import(
+  '%/profile/library/tag/MainPage.vue'
+)
+const ProfileLibraryTagArtistsPage = () => import(
+  '%/profile/library/tag/ArtistsPage.vue'
+)
 const RecommendationsPage = () => import(
   '%/RecommendationsPage.vue'
 )
@@ -347,6 +356,27 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackMainPage',
     component: ProfileLibraryTrackMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tags',
+    exact: true,
+    name: 'ProfileLibraryTagsPage',
+    component: ProfileLibraryTagsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tags/:tagId',
+    exact: true,
+    name: 'ProfileLibraryTagMainPage',
+    component: ProfileLibraryTagMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tags/:tagId/artists',
+    exact: true,
+    name: 'ProfileLibraryTagArtistsPage',
+    component: ProfileLibraryTagArtistsPage,
     props: true
   },
   {

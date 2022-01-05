@@ -9,7 +9,9 @@
     <TagItem
       v-for="(tagData, index) in tags"
       :key="index"
-      :tagName="tagData.name"
+      :tagData="tagData"
+      :isLinkToLibrary="isLinkToLibrary"
+      :profileId="profileId"
       @click="handleClick"
     />
 
@@ -44,11 +46,10 @@ export default {
         return []
       }
     },
-    isWithIcon: {
-      type: Boolean,
-      default: true
-    },
-    isMore: Boolean
+    isWithIcon: Boolean,
+    isMore: Boolean,
+    isLinkToLibrary: Boolean,
+    profileId: String
   },
   emits: [
     'linkClick',

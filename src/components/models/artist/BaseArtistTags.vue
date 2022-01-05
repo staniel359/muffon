@@ -4,6 +4,7 @@
       v-bind="$attrs"
       :tags="tags"
       :isMore="isMore"
+      isWithIcon
       @moreClick="handleMoreClick"
     />
 

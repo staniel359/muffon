@@ -10,7 +10,7 @@
       v-if="libraryData"
       :isLoading="isLoading"
       :error="error"
-      :libraryData="libraryData"
+      :libraryTagData="libraryTagData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -20,14 +20,14 @@
 <script>
 import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatProfileLibraryPageNavigation
-  from '#/formatters/navigation/profile/library'
-import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
-import getLibrary from '#/actions/api/library/get'
-import getLibrarySearch from '#/actions/api/library/search/get'
+import formatProfileLibraryTagPageNavigation
+  from '#/formatters/navigation/profile/library/tag'
+import formatProfileLibraryTagPageTab
+  from '#/formatters/tabs/profile/library/tag'
+import getLibraryTag from '#/actions/api/library/tag/get'
 
 export default {
-  name: 'BaseProfileLibraryPageContainer',
+  name: 'BaseProfileLibraryTagPageContainer',
   components: {
     BasePageContainer
   },
@@ -39,10 +39,13 @@ export default {
       type: String,
       required: true
     },
+    tagId: {
+      type: String,
+      required: true
+    },
     scope: String,
     responsePageLimit: Number,
-    pageNameKey: String,
-    query: String
+    pageNameKey: String
   },
   data () {
     return {
@@ -53,7 +56,7 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatProfileLibraryPageNavigation(
+      return formatProfileLibraryTagPageNavigation(
         this.navigationData
       )
     },
@@ -61,31 +64,39 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNicknameFetched,
+        tagId: this.tagId,
+        tagName: this.tagNameFetched,
         pageNameKey: this.pageNameKey
       }
     },
     tabData () {
-      return formatProfileLibraryPageTab(
+      return formatProfileLibraryTagPageTab(
         this.navigationData
       )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
     },
-    libraryArgs () {
-      return {
-        profileId: this.profileId,
-        scope: this.scope,
-        limit: this.responsePageLimit
-      }
+    tagNameFetched () {
+      return this.libraryTagData?.name
+    },
+    libraryTagData () {
+      return this.libraryData?.tag
     },
     libraryData () {
       return this.profileData?.library
+    },
+    libraryTagArgs () {
+      return {
+        profileId: this.profileId,
+        tagId: this.tagId,
+        scope: this.scope,
+        limit: this.responsePageLimit
+      }
     }
   },
   watch: {
-    profileData: 'handleNavigationDataChange',
-    query: 'handleQueryChange'
+    profileData: 'handleNavigationDataChange'
   },
   mounted () {
     this.fetchData()
@@ -94,24 +105,12 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    handleQueryChange () {
-      this.fetchData()
-    },
-    getLibrary,
-    getLibrarySearch,
+    getLibraryTag,
     fetchData (page) {
-      if (this.query) {
-        this.getLibrarySearch({
-          ...this.libraryArgs,
-          query: this.query,
-          page
-        })
-      } else {
-        this.getLibrary({
-          ...this.libraryArgs,
-          page
-        })
-      }
+      this.getLibraryTag({
+        ...this.libraryTagArgs,
+        page
+      })
     }
   }
 }

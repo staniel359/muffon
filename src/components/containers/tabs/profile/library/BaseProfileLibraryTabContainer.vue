@@ -44,6 +44,7 @@ import BasePaginatedListContainer
 import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
 import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
 import getLibrary from '#/actions/api/library/get'
 import { isCurrentProfile } from '#/utils'
 
@@ -53,7 +54,8 @@ export default {
     BasePaginatedListContainer,
     BaseArtistsTableList,
     BaseAlbumsTableList,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseTagsList
   },
   props: {
     profileId: {

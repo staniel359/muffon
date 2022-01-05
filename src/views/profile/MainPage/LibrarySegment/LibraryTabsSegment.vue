@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer ref="segment">
     <BaseTabsContainer
-      class="three item"
+      class="four item"
       :tabs="tabsCollection"
     >
       <template
@@ -76,6 +76,15 @@ export default {
           clientPageLimit: 5,
           responsePageLimit: 5,
           component: 'BaseTracksSimpleList'
+        },
+        {
+          name: this.$t(
+            'navigation.tags'
+          ),
+          scope: 'tags',
+          clientPageLimit: 10,
+          responsePageLimit: 10,
+          component: 'BaseTagsList'
         }
       ]
     }

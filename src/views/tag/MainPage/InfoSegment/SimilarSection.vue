@@ -11,7 +11,6 @@
       <BaseTagsList
         v-if="similar.length"
         :tags="similar"
-        :isWithIcon="false"
       />
     </template>
   </div>

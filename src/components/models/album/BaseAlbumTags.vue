@@ -2,6 +2,7 @@
   <BaseTagsList
     :tags="tags"
     :isMore="isMore"
+    isWithIcon
     @moreClick="handleMoreClick"
   />
 

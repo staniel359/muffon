@@ -190,8 +190,7 @@ export default {
         scope: 'tags',
         clientPageLimit: 20,
         responsePageLimit: 10,
-        component: 'BaseTagsList',
-        isWithIcon: false
+        component: 'BaseTagsList'
       }
     },
     videosTab () {
