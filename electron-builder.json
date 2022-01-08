@@ -2,17 +2,17 @@
   "appId": "com.electron.muffon",
   "copyright": "Copyright © 2020-2022 Aleksey Shpakovsky",
   "win": {
-    "icon": "public/icon.ico",
+    "icon": "build/icon.ico",
     "verifyUpdateCodeSignature": false
   },
   "mac": {
     "category": "public.app-category.music",
-    "icon": "public/icon.icns",
+    "icon": "build/icon.icns",
     "target": "pkg"
   },
   "linux": {
     "category": "Audio",
-    "icon": "public/icon.png",
+    "icon": "build/icon.icns",
     "target": "deb"
   },
   "artifactName": "${productName} ${version}.${ext}",
