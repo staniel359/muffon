@@ -1,8 +1,6 @@
 <template>
   <div class="item track-block">
     <ImageBlock
-      :image="imageData?.extrasmall"
-      :artistName="artistName"
       :isWithImage="isFromSource"
     />
 
@@ -24,7 +22,6 @@ import ImageBlock from './PlayingBlock/ImageBlock.vue'
 import InfoBlock from './PlayingBlock/InfoBlock.vue'
 import BaseSourceIcon from '@/BaseSourceIcon.vue'
 import { generateKey } from '#/utils'
-import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'PlayingBlock',
@@ -42,25 +39,11 @@ export default {
     ...mapState('player', {
       playerPlaying: 'playing'
     }),
-    imageData () {
-      return this.playerPlaying.image
-    },
-    artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.playerPlaying.artists
+    isFromSource () {
+      return !!this.playerPlaying.from_source
     },
     sourceId () {
       return this.playerPlaying.audio.source_id
-    },
-    albumData () {
-      return this.playerPlaying.album
-    },
-    isFromSource () {
-      return !!this.playerPlaying.from_source
     }
   },
   watch: {

@@ -3,7 +3,10 @@
     @init="handleInit"
   >
     <div class="main-image-modal-content">
-      <BaseImage :image="image" />
+      <BaseImage
+        class="rounded"
+        :image="image"
+      />
     </div>
   </BaseImageModalContainer>
 </template>
@@ -35,6 +38,7 @@ export default {
 
 <style lang="sass" scoped>
 .main-image-modal-content
-  & > .image
+  .image
     max-height: $imageModalHeight
+    border: $borderInverted
 </style>

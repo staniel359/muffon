@@ -20,7 +20,7 @@
 <script>
 import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
 import audioSources from '#/data/audio/sources'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'TracksList',

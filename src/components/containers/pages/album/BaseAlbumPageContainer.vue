@@ -27,7 +27,7 @@ import formatAlbumPageTab from '#/formatters/tabs/album'
 import getAlbum from '#/actions/api/album/get'
 import getBandcampAlbumId
   from '#/actions/api/bandcamp_id/album/get'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'BaseAlbumPageContainer',

@@ -28,7 +28,7 @@ import formatTrackPageTab from '#/formatters/tabs/track'
 import getTrack from '#/actions/api/track/get'
 import getBandcampTrackId
   from '#/actions/api/bandcamp_id/track/get'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'BaseTrackPageContainer',

@@ -38,7 +38,7 @@ import AlbumSelect from './BaseAlbumSourceSelect/AlbumSelect.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatAlbumRequestData from '#/formatters/request/album/requestData'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'BaseAlbumSourceSelect',

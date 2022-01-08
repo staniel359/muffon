@@ -6,7 +6,7 @@
     @init="handleInit"
   >
     <template #default="slotProps">
-      <div class="image-container">
+      <div class="image-container main-image-container">
         <BaseImage
           :image="slotProps.image"
           isLazy
@@ -53,5 +53,4 @@ export default {
 <style lang="sass" scoped>
 .image-container
   @extend .cursor-pointer
-  height: $imageModalThumbHeight
 </style>

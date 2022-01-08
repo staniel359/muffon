@@ -39,7 +39,7 @@ import {
 import {
   main as formatProfileLibraryTrackMainLink
 } from '#/formatters/links/profile/library/track'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'FavoriteOption',

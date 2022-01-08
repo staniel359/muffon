@@ -12,7 +12,7 @@
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { messageFormOptions } from '#/data/plugins/semantic'
 import createMessage from '#/actions/api/message/create'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'BaseMessageCreateFormContainer',

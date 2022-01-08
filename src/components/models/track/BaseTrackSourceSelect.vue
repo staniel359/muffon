@@ -26,7 +26,7 @@ import TrackSelect from './BaseTrackSourceSelect/TrackSelect.vue'
 import BaseClearButton from '@/buttons/BaseClearButton.vue'
 import { generateKey } from '#/utils'
 import formatTrackRequestData from '#/formatters/request/track/requestData'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'BaseTrackSourceSelect',

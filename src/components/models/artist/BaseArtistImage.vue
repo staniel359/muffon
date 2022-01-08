@@ -6,6 +6,7 @@
     v-else-if="isRenderInteractive"
     :artistName="artistName"
     :images="images"
+    :imageData="image"
   />
   <BaseImage
     v-else
@@ -20,7 +21,6 @@ import BaseImagePlaceholder from '@/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseImage from '@/images/BaseImage.vue'
 import getArtistImage from '#/actions/api/artist/image/get'
-import { defaultImages as formatDefaultImages } from '#/formatters/artist'
 
 export default {
   name: 'BaseArtistImage',
@@ -44,6 +44,7 @@ export default {
   data () {
     return {
       error: null,
+      image: null,
       images: null,
       isLoading: false
     }
@@ -52,34 +53,21 @@ export default {
     isRenderInteractive () {
       return (
         this.isInteractive &&
-          this.isAnyImages
+          this.image &&
+          this.images?.length
       )
-    },
-    isAnyImages () {
-      return this.images?.length
-    },
-    imageFetched () {
-      return this.imagesConditional[0]
-    },
-    imagesConditional () {
-      if (this.isAnyImages) {
-        return this.images
-      } else {
-        return formatDefaultImages()
-      }
     },
     artistImageArgs () {
       return {
         artistName: this.artistName,
-        isInteractive: this.isInteractive,
-        limit: 20
+        isInteractive: this.isInteractive
       }
     },
     imageConditional () {
       return (
         this.imageData ||
-          this.imageFetched
-      )[this.size]
+          this.image
+      )?.[this.size]
     }
   },
   watch: {
@@ -87,7 +75,7 @@ export default {
       immediate: true,
       handler: 'handleArtistNameChange'
     },
-    imageFetched: 'handleImageFetchedChange'
+    image: 'handleImageChange'
   },
   methods: {
     handleArtistNameChange (newValue, oldValue) {
@@ -105,7 +93,7 @@ export default {
         this.fetchData()
       }
     },
-    handleImageFetchedChange (value) {
+    handleImageChange (value) {
       this.$emit(
         'loadEnd',
         value

@@ -120,3 +120,13 @@ export const playsToTracks = plays => {
 
   return tracksSorted
 }
+
+export const artistName = artists => {
+  const getArtistName = artistData => {
+    return artistData.name
+  }
+
+  return artists.map(
+    getArtistName
+  ).join(', ')
+}

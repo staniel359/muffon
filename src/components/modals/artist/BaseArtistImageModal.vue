@@ -29,7 +29,7 @@ import BaseImageModalContainer
 import MainSlider from './BaseArtistImageModal/MainSlider.vue'
 import ThumbsSlider from './BaseArtistImageModal/ThumbsSlider.vue'
 import { collection as formatCollection } from '#/formatters'
-import { setSliderPosition } from '#/actions/plugins/slick'
+import { setSliderPosition, goToSliderSlide } from '#/actions/plugins/slick'
 
 export default {
   name: 'BaseArtistImageModal',
@@ -44,7 +44,8 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isReset: Boolean
   },
   emits: [
     'mainSliderInit'
@@ -65,9 +66,15 @@ export default {
   methods: {
     handleShow () {
       this.$nextTick(() => {
-        setSliderPosition(
-          this.mainSlider
-        )
+        if (this.isReset) {
+          goToSliderSlide(
+            this.mainSlider, 0
+          )
+        } else {
+          setSliderPosition(
+            this.mainSlider
+          )
+        }
 
         setSliderPosition(
           this.thumbsSlider

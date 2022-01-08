@@ -11,7 +11,7 @@
 
 <script>
 import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'SearchInput',

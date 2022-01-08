@@ -5,7 +5,7 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'ThePlayerObserver',

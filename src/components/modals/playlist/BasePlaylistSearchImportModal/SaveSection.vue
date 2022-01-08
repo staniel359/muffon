@@ -21,7 +21,7 @@
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
 import createPlaylistTrack from '#/actions/api/playlist/track/create'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'SaveSection',

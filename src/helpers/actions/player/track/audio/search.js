@@ -2,7 +2,7 @@ import store from '&/store'
 import getSearch from '#/actions/api/player/search/get'
 import getPlayerVariantAudio from '#/actions/player/variant/audio/get'
 import { updateStore } from '#/actions'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default function ({ trackData }) {
   const artistData = trackData.artist

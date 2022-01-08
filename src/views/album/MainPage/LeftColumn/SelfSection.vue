@@ -28,7 +28,7 @@
 <script>
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'SelfSection',

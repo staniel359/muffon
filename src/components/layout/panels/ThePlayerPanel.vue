@@ -30,7 +30,7 @@ import { updateStore } from '#/actions'
 import { mainSidebarOptions } from '#/data/plugins/semantic'
 import { toggleClass } from '#/actions/plugins/jquery'
 import { setToast } from '#/actions/plugins/semantic'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'ThePlayerPanel',

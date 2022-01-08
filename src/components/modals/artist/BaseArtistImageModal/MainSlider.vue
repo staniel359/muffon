@@ -8,6 +8,7 @@
     <template #default="slotProps">
       <div class="image-container">
         <BaseImage
+          class="rounded"
           :image="slotProps.image"
           isLazy
         />
@@ -57,6 +58,7 @@ export default {
   margin-bottom: 1.5em
   .image
     max-height: 100%
+    border: $borderInverted
 
 ::v-deep(.slick-prev)
   left: 20px

@@ -7,7 +7,7 @@ import { mapState } from 'vuex'
 import createScrobblerPlay from '#/actions/api/lastfm/scrobbler/play/create'
 import createScrobblerSave from '#/actions/api/lastfm/scrobbler/save/create'
 import { updateStore } from '#/actions'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'TheScrobblingObserver',

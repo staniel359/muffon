@@ -21,7 +21,7 @@
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './TracksSection/CompleteSection.vue'
 import createLibraryTrack from '#/actions/api/library/track/create'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'TracksSection',

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export default function ({ artistName, isInteractive, limit }) {
+export default function ({ artistName, isInteractive }) {
   this.error = null
   this.isLoading = true
 
@@ -12,22 +12,15 @@ export default function ({ artistName, isInteractive, limit }) {
     `/lastfm/artists/${artistNameEncoded}/images`
 
   const handleSuccess = response => {
-    const { images } =
+    const { image, images } =
       response.data.artist
 
-    const formatImages = () => {
-      if (isInteractive) {
-        if (limit) {
-          return images.slice(0, limit)
-        } else {
-          return images
-        }
-      } else {
-        return images.slice(0, 1)
-      }
-    }
+    this.image = image
 
-    this.images = formatImages()
+    if (isInteractive) {
+      this.images =
+        images.slice(0, 20)
+    }
   }
 
   const handleError = error => {

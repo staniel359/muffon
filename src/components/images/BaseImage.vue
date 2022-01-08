@@ -2,7 +2,7 @@
   <img
     class="ui image main-image"
     :class="{ inverted: isDarkMode }"
-    :[attribute]="image || defaultImage"
+    :[attribute]="imageConditional"
     @click="handleClick"
   />
 </template>
@@ -37,7 +37,15 @@ export default {
       'isDarkMode'
     ]),
     attribute () {
-      return this.isLazy ? 'data-lazy' : 'src'
+      return this.isLazy
+        ? 'data-lazy'
+        : 'src'
+    },
+    imageConditional () {
+      return (
+        this.image ||
+          this.defaultImage
+      )
     },
     defaultImage () {
       return this.defaultImages[

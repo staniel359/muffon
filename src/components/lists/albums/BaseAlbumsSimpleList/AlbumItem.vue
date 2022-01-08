@@ -102,7 +102,7 @@ import BaseBookmarkDeleteModal
   from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'AlbumItem',

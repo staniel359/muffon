@@ -12,6 +12,7 @@
 
     <BaseArtistImageModal
       :images="images"
+      isReset
       @init="handleModalInit"
       @mainSliderInit="handleMainSliderInit"
     />
@@ -32,6 +33,10 @@ export default {
     BaseArtistImageModal
   },
   props: {
+    imageData: {
+      type: Object,
+      required: true
+    },
     artistName: String,
     images: Array
   },
@@ -39,11 +44,6 @@ export default {
     return {
       modal: null,
       mainSlider: null
-    }
-  },
-  computed: {
-    imageData () {
-      return this.images[0]
     }
   },
   methods: {

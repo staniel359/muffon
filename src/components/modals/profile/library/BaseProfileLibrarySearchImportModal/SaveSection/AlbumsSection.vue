@@ -21,7 +21,7 @@
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './AlbumsSection/CompleteSection.vue'
 import createLibraryAlbum from '#/actions/api/library/album/create'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'AlbumsSection',

@@ -12,7 +12,7 @@
 import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '#/data/plugins/semantic'
 import createPost from '#/actions/api/post/create'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'BasePostCreateFormContainer',

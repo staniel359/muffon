@@ -91,7 +91,7 @@ import BaseAlbumListenersCount
   from '@/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
 import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'AlbumItem',

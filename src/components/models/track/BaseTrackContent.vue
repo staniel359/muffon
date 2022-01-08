@@ -189,9 +189,9 @@ import BaseProfileLibraryDeleteModal
   from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   date as formatDate,
-  time as formatTime
+  time as formatTime,
+  artistName as formatArtistName
 } from '#/formatters'
-import { artistName as formatArtistName } from '#/formatters/artist'
 
 export default {
   name: 'BaseTrackContent',

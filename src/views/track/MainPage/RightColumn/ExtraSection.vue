@@ -28,7 +28,7 @@ import BaseDivider from '@/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
 import SimilarSegment from './ExtraSection/SimilarSegment.vue'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 
 export default {
   name: 'ExtraSection',

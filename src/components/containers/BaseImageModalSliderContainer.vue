@@ -82,4 +82,11 @@ export default {
 <style lang="sass" scoped>
 ::v-deep(.slick-slide)
   outline: none
+  .image
+    border-top: $borderInverted
+    border-bottom: $borderInverted
+    border-left: $borderInverted
+  &:last-child
+    .image
+      border-right: $borderInverted
 </style>

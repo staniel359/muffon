@@ -43,7 +43,7 @@ import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
 import BaseLink from '@/links/BaseLink.vue'
 import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import { artistName as formatArtistName } from '#/formatters/artist'
+import { artistName as formatArtistName } from '#/formatters'
 import formatAlbumRequestData from '#/formatters/request/album/requestData'
 
 export default {
