@@ -97,12 +97,43 @@ let tray
 
 let tabs = []
 
-const setup = () => {
-  ElectronStore.initRenderer()
+const setTrayMenu = () => {
+  const showHideText =
+    mainWindow.isVisible() ? 'hide' : 'show'
 
-  createWindow()
-  createTray()
-  createHeadersHandler()
+  const showHideAction =
+    mainWindow.isVisible() ? hide : show
+
+  const menu = Menu.buildFromTemplate([
+    {
+      type: 'normal',
+      label: i18n[language][showHideText],
+      click: showHideAction
+    },
+    {
+      type: 'normal',
+      label: i18n[language].exit,
+      click: exit
+    }
+  ])
+
+  tray.setContextMenu(menu)
+
+  if (isMac) {
+    app.dock.setMenu(menu)
+  }
+}
+
+const show = () => {
+  mainWindow.show()
+
+  setTrayMenu()
+}
+
+const hide = () => {
+  mainWindow.hide()
+
+  setTrayMenu()
 }
 
 const createWindow = () => {
@@ -153,10 +184,21 @@ const createWindow = () => {
   )
 }
 
-const hide = () => {
-  mainWindow.hide()
+const exit = () => {
+  const isRememberProfile = local.get(
+    'profile.isRemember'
+  )
 
-  setTrayMenu()
+  if (!isRememberProfile) {
+    local.set(
+      'profile.isLoggedIn',
+      false
+    )
+  }
+
+  mainWindow.webContents.send(
+    'handle-exit'
+  )
 }
 
 const createTray = () => {
@@ -182,56 +224,6 @@ const createTray = () => {
   )
 }
 
-const setTrayMenu = () => {
-  const showHideText =
-    mainWindow.isVisible() ? 'hide' : 'show'
-
-  const showHideAction =
-    mainWindow.isVisible() ? hide : show
-
-  const menu = Menu.buildFromTemplate([
-    {
-      type: 'normal',
-      label: i18n[language][showHideText],
-      click: showHideAction
-    },
-    {
-      type: 'normal',
-      label: i18n[language].exit,
-      click: exit
-    }
-  ])
-
-  tray.setContextMenu(menu)
-
-  if (isMac) {
-    app.dock.setMenu(menu)
-  }
-}
-
-const show = () => {
-  mainWindow.show()
-
-  setTrayMenu()
-}
-
-const exit = () => {
-  const isRememberProfile = local.get(
-    'profile.isRemember'
-  )
-
-  if (!isRememberProfile) {
-    local.set(
-      'profile.isLoggedIn',
-      false
-    )
-  }
-
-  mainWindow.webContents.send(
-    'handle-exit'
-  )
-}
-
 const createHeadersHandler = () => {
   const filter = {
     urls: ['https://*.youtube.com/*']
@@ -249,6 +241,14 @@ const createHeadersHandler = () => {
         requestHeaders: details.requestHeaders
       })
     })
+}
+
+const setup = () => {
+  ElectronStore.initRenderer()
+
+  createWindow()
+  createTray()
+  createHeadersHandler()
 }
 
 app.whenReady().then(
