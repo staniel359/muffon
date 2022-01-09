@@ -37,3 +37,11 @@ export const radio = () => {
     path: 'radio'
   }
 }
+
+export const playlists = () => {
+  return {
+    name: 'PlaylistsPage',
+    params: {},
+    path: 'playlists'
+  }
+}

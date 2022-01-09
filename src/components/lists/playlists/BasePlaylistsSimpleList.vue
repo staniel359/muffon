@@ -4,8 +4,7 @@
       v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"
       :playlistData="playlistData"
-      :profileId="profileId"
-      :isWithDeleteOption="isWithDeleteOption"
+      :isWithProfile="isWithProfile"
     />
   </BaseListContainer>
 </template>
@@ -14,7 +13,6 @@
 import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
 import PlaylistItem from './BasePlaylistsSimpleList/PlaylistItem.vue'
 import { collection as formatCollection } from '#/formatters'
-import { isCurrentProfile } from '#/utils'
 
 export default {
   name: 'BasePlaylistsSimpleList',
@@ -29,17 +27,12 @@ export default {
         return []
       }
     },
-    profileId: String
+    isWithProfile: Boolean
   },
   computed: {
     playlistsCollection () {
       return formatCollection(
         this.playlists
-      )
-    },
-    isWithDeleteOption () {
-      return isCurrentProfile(
-        this.profileId
       )
     }
   }

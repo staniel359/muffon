@@ -54,3 +54,14 @@ export const radio = () => {
     }
   ]
 }
+
+export const playlists = () => {
+  return [
+    {
+      name: i18n.global.t(
+        'navigation.playlists'
+      ),
+      isActive: true
+    }
+  ]
+}

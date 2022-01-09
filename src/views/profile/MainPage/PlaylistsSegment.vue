@@ -25,7 +25,6 @@
         <template #default="slotProps">
           <BasePlaylistsSimpleList
             :playlists="slotProps.playlists"
-            :profileId="profileId"
           />
         </template>
       </BasePaginatedListContainer>

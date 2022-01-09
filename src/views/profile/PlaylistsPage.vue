@@ -14,17 +14,28 @@
         ]"
       >
         <BaseSegmentContainer
-          v-if="isRenderCreateSegment"
+          class="top-segment"
         >
-          <BaseButton
-            class="primary"
-            icon="plus"
-            :text="createText"
-            @click="handleCreateButtonClick"
-          />
+          <div>
+            <template
+              v-if="isRenderCreateButton"
+            >
+              <BaseButton
+                class="primary"
+                icon="plus"
+                :text="createText"
+                @click="handleCreateButtonClick"
+              />
 
-          <BasePlaylistCreateModal
-            ref="modal"
+              <BasePlaylistCreateModal
+                ref="modal"
+              />
+            </template>
+          </div>
+
+          <BaseLink
+            :link="playlistsLink"
+            :text="playlistsLinkText"
           />
         </BaseSegmentContainer>
 
@@ -46,7 +57,6 @@
             <template #default="slotProps">
               <BasePlaylistsSimpleList
                 :playlists="slotProps.playlists"
-                :profileId="profileId"
               />
             </template>
           </BasePaginatedListContainer>
@@ -64,11 +74,13 @@ import BaseSegmentContainer
 import BaseButton from '@/buttons/BaseButton.vue'
 import BasePlaylistCreateModal
   from '@/modals/playlist/BasePlaylistCreateModal.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
   from '@/lists/playlists/BasePlaylistsSimpleList.vue'
 import { isCurrentProfile } from '#/utils'
+import { playlists as formatPlaylistsLink } from '#/formatters/links'
 
 export default {
   name: 'PlaylistsPage',
@@ -77,6 +89,7 @@ export default {
     BaseSegmentContainer,
     BaseButton,
     BasePlaylistCreateModal,
+    BaseLink,
     BasePaginatedListContainer,
     BasePlaylistsSimpleList
   },
@@ -94,10 +107,16 @@ export default {
         'actions.add.playlist'
       )
     },
-    isRenderCreateSegment () {
+    isRenderCreateButton () {
       return isCurrentProfile(
         this.profileId
       )
+    },
+    playlistsLink () {
+      return formatPlaylistsLink()
+    },
+    playlistsLinkText () {
+      return 'View all playlists'
     }
   },
   methods: {
@@ -111,4 +130,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.top-segment
+  @extend .d-flex, .align-items-center, .justify-content-space-between
+</style>

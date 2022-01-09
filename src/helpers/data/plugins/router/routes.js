@@ -139,6 +139,9 @@ const ProfileFollowersPage = () => import(
 const ProfileFollowingPage = () => import(
   '%/profile/FollowingPage.vue'
 )
+const PlaylistsPage = () => import(
+  '%/PlaylistsPage.vue'
+)
 
 export default [
   {
@@ -468,6 +471,13 @@ export default [
     exact: true,
     name: 'ProfileFollowingPage',
     component: ProfileFollowingPage,
+    props: true
+  },
+  {
+    path: '/playlists',
+    exact: true,
+    name: 'PlaylistsPage',
+    component: PlaylistsPage,
     props: true
   }
 ]
