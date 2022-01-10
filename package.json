@@ -17,7 +17,7 @@
     "release": "yarn build && yarn release:electron",
     "release:electron": "electron-builder -mwl -p always",
     "start": "vue-cli-service serve",
-    "start:electron": "NODE_ENV=development electron ."
+    "start:electron": "cross-env NODE_ENV=development electron ."
   },
   "main": "electron.js",
   "dependencies": {
@@ -47,6 +47,7 @@
     "@vue/cli-service": "~5.0.0-rc.1",
     "@vue/compiler-sfc": "^3.2.26",
     "@vue/eslint-config-standard": "^6.1.0",
+    "cross-env": "^7.0.3",
     "electron": "^16.0.6",
     "electron-builder": "^22.14.5",
     "eslint": "^8.6.0",
