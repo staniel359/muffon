@@ -1,17 +1,23 @@
 import fs from 'fs'
+import musicMetadata from 'music-metadata'
 
-export const tags = (tags, file) => {
-  const image = formatImage(
-    tags.APIC
-  )
+export function tags (tags, file) {
+  const cover =
+    musicMetadata.selectCover(
+      tags.picture
+    )
+
+  const image = cover
+    ? formatImage(cover)
+    : null
 
   return {
-    title: tags.TIT2?.data,
+    title: tags.title,
     artist: {
-      name: tags.TPE1?.data
+      name: tags.artist
     },
     album: {
-      title: tags.TALB?.data
+      title: tags.album
     },
     image: {
       extrasmall: image,
@@ -23,25 +29,7 @@ export const tags = (tags, file) => {
   }
 }
 
-const formatImage = data => {
-  if (data) {
-    const imageFormat = data.data.format
-
-    const processImageByte = byte => {
-      return String.fromCharCode(byte)
-    }
-
-    const imageDecoded = data.data.data.map(
-      processImageByte
-    ).join('')
-
-    const imageBase64 = window.btoa(
-      imageDecoded
-    )
-
-    return [
-      `data:${imageFormat}`,
-      `base64,${imageBase64}`
-    ].join(';')
-  }
+function formatImage (picture) {
+  const imageBase64Data = picture.data.toString('base64')
+  return `data:${picture.format};base64,${imageBase64Data}`
 }
