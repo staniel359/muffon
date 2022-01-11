@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import jsmediatags from 'jsmediatags'
+import musicMetadata from 'music-metadata'
 import BaseProgress from '@/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
 import { tags as formatFileTags } from '#/formatters/file'
@@ -87,32 +87,25 @@ export default {
       )
     },
     formatFile (file) {
-      const reader = new jsmediatags.Reader(
-        file
-      )
-
-      const handleSuccess = ({ tags }) => {
+      musicMetadata.parseFile(file.path).then(metadata => {
+        // handle success
         if (this.isMounted) {
           this.addToSuccessFiles(
-            { tags, file }
+            { tags: metadata.common, file }
           )
         }
-      }
-
-      const handleError = () => {
+      }).catch(() => {
+        // handle error
         if (this.isMounted) {
           this.addToErrorFiles(
             { file }
           )
         }
-      }
-
-      reader.read({
-        onSuccess: handleSuccess,
-        onError: handleError
       })
     },
-    addToSuccessFiles ({ tags, file }) {
+    addToSuccessFiles (
+      { tags, file }
+    ) {
       const fileData = {
         uuid: generateKey(),
         ...formatFileTags(

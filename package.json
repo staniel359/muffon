@@ -29,7 +29,7 @@
     "fomantic-ui": "^2.8.8",
     "i18n-iso-countries": "^7.2.0",
     "jquery": "^3.6.0",
-    "jsmediatags": "^3.9.7",
+    "music-metadata": "^7.11.6",
     "slick-carousel": "^1.8.1",
     "uuid": "^8.3.2",
     "vue": "^3.2.26",
