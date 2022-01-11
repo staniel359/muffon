@@ -1,6 +1,7 @@
 <template>
-  <BaseLinkContainer
+  <Component
     class="item main-sidebar-item"
+    :is="component"
     :link="link"
     @click="handleClick"
   >
@@ -17,7 +18,7 @@
         :text="text"
       />
     </div>
-  </BaseLinkContainer>
+  </Component>
 </template>
 
 <script>
@@ -44,6 +45,13 @@ export default {
   emits: [
     'click'
   ],
+  computed: {
+    component () {
+      return this.link
+        ? 'BaseLinkContainer'
+        : 'div'
+    }
+  },
   methods: {
     handleClick () {
       this.$emit('click')
