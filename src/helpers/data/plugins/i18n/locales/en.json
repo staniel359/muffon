@@ -398,12 +398,12 @@
     },
     "success": {
       "tracks": {
-        "header": "All {count} tracks were imported",
+        "header": "All {count} tracks have been imported",
         "content": "You may want to check them before saving to library"
       }
     },
     "error": {
-      "files": "{count} files could not be imported. Please fix these files' ID3 data and retry:"
+      "files": "{count} tracks could not be imported. Please ensure they have metadata defined:"
     }
   },
   "save": {
