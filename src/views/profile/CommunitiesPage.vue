@@ -1,5 +1,8 @@
 <template>
-  <BasePlaylistsPageContainer
+  <BaseProfilePageContainer
+    scope="communities"
+    pageNameKey="communities"
+    :profileId="profileId"
     :responsePageLimit="limit"
   >
     <template #default="pageSlotProps">
@@ -10,8 +13,13 @@
           'main-page-segment-container'
         ]"
       >
-        <BaseSegmentContainer>
-          <BasePlaylistCreateButton />
+        <BaseSegmentContainer
+          class="top-segment"
+        >
+          <BaseLink
+            :link="communitiesLink"
+            :text="communitiesLinkText"
+          />
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
@@ -19,11 +27,10 @@
           :isLoading="pageSlotProps.isLoading"
         >
           <BasePaginatedListContainer
-            ref="paginatedContainer"
-            scope="playlists"
+            scope="communities"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
-            :responseData="pageSlotProps.playlistsData"
+            :responseData="pageSlotProps.profileData"
             :clientPageLimit="limit"
             :responsePageLimit="limit"
             @focus="handleFocus"
@@ -31,42 +38,56 @@
             @refresh="pageSlotProps.handleRefresh"
           >
             <template #default="slotProps">
-              <BasePlaylistsSimpleList
-                :playlists="slotProps.playlists"
-                isWithProfile
+              <BaseCommunitiesSimpleList
+                :communities="slotProps.communities"
               />
             </template>
           </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
-  </BasePlaylistsPageContainer>
+  </BaseProfilePageContainer>
 </template>
 
 <script>
-import BasePlaylistsPageContainer
-  from '@/containers/pages/playlists/BasePlaylistsPageContainer.vue'
+import BaseProfilePageContainer
+  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BasePlaylistCreateButton
-  from '@/buttons/playlist/BasePlaylistCreateButton.vue'
+import BaseLink from '@/links/BaseLink.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
-import BasePlaylistsSimpleList
-  from '@/lists/playlists/BasePlaylistsSimpleList.vue'
+import BaseCommunitiesSimpleList
+  from '@/lists/communities/BaseCommunitiesSimpleList.vue'
+import {
+  main as formatCommunitiesLink
+} from '#/formatters/links/communities'
 
 export default {
   name: 'PlaylistsPage',
   components: {
-    BasePlaylistsPageContainer,
+    BaseProfilePageContainer,
     BaseSegmentContainer,
-    BasePlaylistCreateButton,
+    BaseLink,
     BasePaginatedListContainer,
-    BasePlaylistsSimpleList
+    BaseCommunitiesSimpleList
+  },
+  props: {
+    profileId: String
   },
   data () {
     return {
       limit: 50
+    }
+  },
+  computed: {
+    communitiesLink () {
+      return formatCommunitiesLink()
+    },
+    communitiesLinkText () {
+      return this.$t(
+        'links.communities'
+      )
     }
   },
   methods: {
@@ -77,4 +98,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.top-segment
+  @extend .d-flex, .justify-content-flex-end
+</style>

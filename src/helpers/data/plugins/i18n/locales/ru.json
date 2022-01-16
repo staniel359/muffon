@@ -25,6 +25,7 @@
     "playlists": "Списки",
     "favorites": "Избранное",
     "bookmarks": "Закладки",
+    "communities": "Сообщества",
     "settings": "Настройки",
     "model": {
       "artists": "Исполнители {modelName}",
@@ -40,7 +41,8 @@
       "following": "Подписки {modelName}",
       "library": "Библиотека {modelName}",
       "playlists": "Списки {modelName}",
-      "favorites": "Избранное {modelName}"
+      "favorites": "Избранное {modelName}",
+      "communities": "Сообщества {modelName}"
     },
     "top": {
       "artists": "Популярные исполнители",
@@ -133,6 +135,10 @@
       "bookmarks": "Удалить из закладок",
       "listened": "Удалить из прослушанного"
     }
+  },
+  "links": {
+    "playlists": "Все списки",
+    "communities": "Все сообщества"
   },
   "inputs": {
     "search": "Поиск...",
@@ -244,7 +250,8 @@
     "albums": "{count} альбомов",
     "tracks": "{count} композиций",
     "followers": "{count} подписчиков",
-    "following": "{count} подписок"
+    "following": "{count} подписок",
+    "members": "{count} участников"
   },
   "sources": {
     "select": {

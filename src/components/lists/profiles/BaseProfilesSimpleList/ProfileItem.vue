@@ -2,6 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item main-profile-item"
     :link="profileMainLink"
+    @click="handleLinkClick"
   >
     <BaseImage
       class="circular bordered"
@@ -120,6 +121,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'linkClick'
+  ],
   data () {
     return {
       isMainLinkActive: true
@@ -169,6 +173,9 @@ export default {
     }
   },
   methods: {
+    handleLinkClick () {
+      this.$emit('linkClick')
+    },
     handleMessageOptionClick () {
       this.$refs.messageModal.show()
     },

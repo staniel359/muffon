@@ -1,5 +1,5 @@
 <template>
-  <BasePlaylistsPageContainer
+  <BaseCommunitiesPageContainer
     :responsePageLimit="limit"
   >
     <template #default="pageSlotProps">
@@ -11,7 +11,7 @@
         ]"
       >
         <BaseSegmentContainer>
-          <BasePlaylistCreateButton />
+          <BaseCommunityCreateButton />
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
@@ -20,10 +20,10 @@
         >
           <BasePaginatedListContainer
             ref="paginatedContainer"
-            scope="playlists"
+            scope="communities"
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
-            :responseData="pageSlotProps.playlistsData"
+            :responseData="pageSlotProps.communitiesData"
             :clientPageLimit="limit"
             :responsePageLimit="limit"
             @focus="handleFocus"
@@ -31,38 +31,37 @@
             @refresh="pageSlotProps.handleRefresh"
           >
             <template #default="slotProps">
-              <BasePlaylistsSimpleList
-                :playlists="slotProps.playlists"
-                isWithProfile
+              <BaseCommunitiesSimpleList
+                :communities="slotProps.communities"
               />
             </template>
           </BasePaginatedListContainer>
         </BaseSegmentContainer>
       </div>
     </template>
-  </BasePlaylistsPageContainer>
+  </BaseCommunitiesPageContainer>
 </template>
 
 <script>
-import BasePlaylistsPageContainer
-  from '@/containers/pages/playlists/BasePlaylistsPageContainer.vue'
+import BaseCommunitiesPageContainer
+  from '@/containers/pages/communities/BaseCommunitiesPageContainer.vue'
 import BaseSegmentContainer
   from '@/containers/segments/BaseSegmentContainer.vue'
-import BasePlaylistCreateButton
-  from '@/buttons/playlist/BasePlaylistCreateButton.vue'
+import BaseCommunityCreateButton
+  from '@/buttons/community/BaseCommunityCreateButton.vue'
 import BasePaginatedListContainer
   from '@/containers/lists/BasePaginatedListContainer.vue'
-import BasePlaylistsSimpleList
-  from '@/lists/playlists/BasePlaylistsSimpleList.vue'
+import BaseCommunitiesSimpleList
+  from '@/lists/communities/BaseCommunitiesSimpleList.vue'
 
 export default {
-  name: 'PlaylistsPage',
+  name: 'MainPage',
   components: {
-    BasePlaylistsPageContainer,
+    BaseCommunitiesPageContainer,
     BaseSegmentContainer,
-    BasePlaylistCreateButton,
+    BaseCommunityCreateButton,
     BasePaginatedListContainer,
-    BasePlaylistsSimpleList
+    BaseCommunitiesSimpleList
   },
   data () {
     return {

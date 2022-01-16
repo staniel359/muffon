@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item main-playlist-item"
+    class="item main-simple-list-item"
     :class="{
       disabled: isLoading,
       active: isActive

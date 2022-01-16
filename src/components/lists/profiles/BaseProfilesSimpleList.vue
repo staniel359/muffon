@@ -6,6 +6,7 @@
       v-for="profileData in profilesCollection"
       :key="profileData.uuid"
       :profileData="profileData"
+      @linkClick="handleLinkClick"
     />
   </BaseListContainer>
 </template>
@@ -29,11 +30,19 @@ export default {
       }
     }
   },
+  emits: [
+    'linkClick'
+  ],
   computed: {
     profilesCollection () {
       return formatCollection(
         this.profiles
       )
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit('linkClick')
     }
   }
 }

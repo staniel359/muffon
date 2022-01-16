@@ -25,6 +25,7 @@
     "playlists": "Playlists",
     "favorites": "Favorites",
     "bookmarks": "Bookmarks",
+    "communities": "Communities",
     "settings": "Settings",
     "model": {
       "artists": "{modelName} artists",
@@ -40,7 +41,8 @@
       "following": "{modelName} following",
       "library": "{modelName} library",
       "playlists": "{modelName} playlists",
-      "favorites": "{modelName} favorites"
+      "favorites": "{modelName} favorites",
+      "communities": "{modelName} communities"
     },
     "top": {
       "artists": "Top artists",
@@ -133,6 +135,10 @@
       "bookmarks": "Delete from bookmarks",
       "listened": "Delete from listened"
     }
+  },
+  "links": {
+    "playlists": "All playlists",
+    "communities": "All communities"
   },
   "inputs": {
     "search": "Search...",
@@ -244,7 +250,8 @@
     "albums": "{count} albums",
     "tracks": "{count} tracks",
     "followers": "{count} followers",
-    "following": "{count} following"
+    "following": "{count} following",
+    "members": "{count} members"
   },
   "sources": {
     "select": {

@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item main-playlist-item"
+    class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
     :link="link"
   >
@@ -28,7 +28,7 @@
           @mouseleave="handleProfileNicknameMouseLeave"
         >
           <BaseLink
-            :text="profileData.nickname"
+            :text="profileNickname"
             :link="profileMainLink"
           />
         </span>

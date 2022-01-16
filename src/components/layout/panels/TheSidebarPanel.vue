@@ -15,6 +15,7 @@
         <BookmarksItem />
         <TopItem />
         <RadioItem />
+        <CommunitiesItem />
       </div>
 
       <div>
@@ -37,6 +38,7 @@ import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
 import TopItem from './TheSidebarPanel/TopItem.vue'
 import RadioItem from './TheSidebarPanel/RadioItem.vue'
+import CommunitiesItem from './TheSidebarPanel/CommunitiesItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
 
@@ -53,6 +55,7 @@ export default {
     BookmarksItem,
     TopItem,
     RadioItem,
+    CommunitiesItem,
     SettingsItem,
     LogoutItem
   },
