@@ -53,3 +53,11 @@ export const following = ({ profileId }) => {
     path: `profiles/${profileId}/following`
   }
 }
+
+export const communities = ({ profileId }) => {
+  return {
+    name: 'ProfileCommunitiesPage',
+    params: { profileId },
+    path: `profiles/${profileId}/communities`
+  }
+}

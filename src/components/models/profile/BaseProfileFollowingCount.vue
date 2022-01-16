@@ -24,6 +24,7 @@ import {
   followers as formatProfileFollowersLink,
   following as formatProfileFollowingLink
 } from '#/formatters/links/profile'
+import { number as formatNumber } from '#/formatters'
 
 export default {
   name: 'BaseProfileFollowingCount',
@@ -55,7 +56,12 @@ export default {
       )
     },
     followersCountStrong () {
-      return `<strong>${this.followersCount}</strong>`
+      return `<strong>${this.followersCountFormatted}</strong>`
+    },
+    followersCountFormatted () {
+      return formatNumber(
+        this.followersCount
+      )
     },
     followersCount () {
       return this.profileData.follower_profiles_count
