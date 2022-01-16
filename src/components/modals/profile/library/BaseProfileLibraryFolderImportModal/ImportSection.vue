@@ -87,25 +87,32 @@ export default {
       )
     },
     formatFile (file) {
-      musicMetadata.parseFile(file.path).then(metadata => {
-        // handle success
+      const handleSuccess = metadata => {
         if (this.isMounted) {
-          this.addToSuccessFiles(
-            { tags: metadata.common, file }
-          )
+          this.addToSuccessFiles({
+            tags: metadata.common,
+            file
+          })
         }
-      }).catch(() => {
-        // handle error
+      }
+
+      const handleError = () => {
         if (this.isMounted) {
-          this.addToErrorFiles(
-            { file }
-          )
+          this.addToErrorFiles({
+            file
+          })
         }
-      })
+      }
+
+      musicMetadata.parseFile(
+        file.path
+      ).then(
+        handleSuccess
+      ).catch(
+        handleError
+      )
     },
-    addToSuccessFiles (
-      { tags, file }
-    ) {
+    addToSuccessFiles ({ tags, file }) {
       const fileData = {
         uuid: generateKey(),
         ...formatFileTags(

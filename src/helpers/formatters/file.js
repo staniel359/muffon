@@ -1,7 +1,7 @@
 import fs from 'fs'
 import musicMetadata from 'music-metadata'
 
-export function tags (tags, file) {
+export const tags = (tags, file) => {
   const cover =
     musicMetadata.selectCover(
       tags.picture
@@ -29,7 +29,13 @@ export function tags (tags, file) {
   }
 }
 
-function formatImage (picture) {
-  const imageBase64Data = picture.data.toString('base64')
-  return `data:${picture.format};base64,${imageBase64Data}`
+const formatImage = cover => {
+  const { format } = cover
+
+  const base64 =
+    cover.data.toString(
+      'base64'
+    )
+
+  return `data:${format};base64,${base64}`
 }
