@@ -73,3 +73,6 @@ Create an issue [here](https://github.com/staniel359/muffon/issues)
 - Python + Ruby developers wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
+
+## Related projects
+[muffon-api](https://github.com/staniel359/muffon-api) - REST API for client
