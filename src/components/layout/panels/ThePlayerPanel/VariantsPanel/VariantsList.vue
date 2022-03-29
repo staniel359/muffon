@@ -31,12 +31,13 @@
 <script>
 import { mapState } from 'vuex'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
 import BaseTrackVariantContainer
-  from '@/containers/track/BaseTrackVariantContainer.vue'
-import BaseTrackContent from '@/models/track/BaseTrackContent.vue'
-import { collection as formatCollection } from '#/formatters'
+  from '*/components/containers/track/BaseTrackVariantContainer.vue'
+import BaseTrackContent from '*/components/models/track/BaseTrackContent.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'VariantsList',

@@ -10,10 +10,11 @@
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { loginFormOptions } from '#/data/plugins/semantic'
-import getLogin from '#/actions/api/login/get'
-import { updateStore } from '#/actions'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { loginFormOptions } from '*/helpers/data/plugins/semantic'
+import getLogin from '*/helpers/actions/api/login/get'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'BaseProfileLoginFormContainer',

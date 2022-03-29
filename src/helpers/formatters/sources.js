@@ -1,5 +1,5 @@
-import audioSources from '#/data/audio/sources'
-import { collection as formatCollection } from '#/formatters'
+import audioSources from '*/helpers/data/audio/sources'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 const streamable = () => {
   return audioSources.filter(sourceData => {

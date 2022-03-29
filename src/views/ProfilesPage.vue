@@ -37,12 +37,13 @@
 
 <script>
 import BaseProfilesPageContainer
-  from '@/containers/pages/profiles/BaseProfilesPageContainer.vue'
+  from '*/components/containers/pages/profiles/BaseProfilesPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseProfilesSimpleList from '@/lists/profiles/BaseProfilesSimpleList.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseProfilesSimpleList
+  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 
 export default {
   name: 'ProfilesPage',

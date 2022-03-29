@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
+import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'ArtistNameSection',

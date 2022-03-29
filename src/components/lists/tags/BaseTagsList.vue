@@ -30,7 +30,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseIcon from '@/BaseIcon.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import TagItem from './BaseTagsList/TagItem.vue'
 
 export default {

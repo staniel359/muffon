@@ -23,9 +23,10 @@
 
 <script>
 import BaseProfileLibraryArtistPaginatedPageContainer
-  from '@/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
-import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
-import { isCurrentProfile } from '#/utils'
+  from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
+import BaseAlbumsTableList
+  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'AlbumsPage',

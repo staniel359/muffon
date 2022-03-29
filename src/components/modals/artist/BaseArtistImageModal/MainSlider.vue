@@ -18,10 +18,12 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
 import BaseImageModalSliderContainer
-  from '@/containers/BaseImageModalSliderContainer.vue'
-import { artistImagesModalMainSliderOptions } from '#/data/plugins/slick'
+  from '*/components/containers/BaseImageModalSliderContainer.vue'
+import {
+  artistImagesModalMainSliderOptions
+} from '*/helpers/data/plugins/slick'
 
 export default {
   name: 'MainSlider',

@@ -15,8 +15,8 @@
 
 <script>
 import BaseTrackModalContainer
-  from '@/containers/modals/track/BaseTrackModalContainer.vue'
-import BaseModalTagsList from '@/lists/tags/BaseModalTagsList.vue'
+  from '*/components/containers/modals/track/BaseTrackModalContainer.vue'
+import BaseModalTagsList from '*/components/lists/tags/BaseModalTagsList.vue'
 
 export default {
   name: 'BaseTrackTagsModal',

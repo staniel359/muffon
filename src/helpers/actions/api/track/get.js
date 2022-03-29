@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '&/store'
-import formatRequestUrl from '#/formatters/request/track/requestUrl'
+import store from '*/plugins/store'
+import formatRequestUrl from '*/helpers/formatters/request/track/requestUrl'
 
 export default function ({
   sourceId = 'lastfm',

@@ -32,11 +32,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
-import getFeed from '#/actions/api/feed/get'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePostsSimpleList
+  from '*/components/lists/posts/BasePostsSimpleList.vue'
+import getFeed from '*/helpers/actions/api/feed/get'
 
 export default {
   name: 'FeedSegment',

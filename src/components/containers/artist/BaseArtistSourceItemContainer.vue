@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import getSearch from '#/actions/api/search/get'
+import getSearch from '*/helpers/actions/api/search/get'
 
 export default {
   name: 'BaseArtistSourceItemContainer',

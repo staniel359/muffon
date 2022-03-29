@@ -15,7 +15,7 @@
 import ProfileArtistsSection
   from './RecommendationSection/ProfileArtistsSection.vue'
 import BaseRecommendationDeleteModal
-  from '@/modals/recommendation/BaseRecommendationDeleteModal.vue'
+  from '*/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
 
 export default {
   name: 'RecommendationSection',

@@ -16,7 +16,7 @@
 import ArtistsList from './lists/ArtistsList.vue'
 import AlbumsList from './lists/AlbumsList.vue'
 import TracksList from './lists/TracksList.vue'
-import BaseSaveButton from '@/buttons/BaseSaveButton.vue'
+import BaseSaveButton from '*/components/buttons/BaseSaveButton.vue'
 
 export default {
   name: 'ImportSection',

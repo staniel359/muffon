@@ -1,8 +1,10 @@
-import i18n from '&/i18n'
-import { main as formatProfileMainLink } from '#/formatters/links/profile'
+import i18n from '*/plugins/i18n'
+import {
+  main as formatProfileMainLink
+} from '*/helpers/formatters/links/profile'
 import {
   main as formatProfileLibraryMainLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default function ({ profileId, profileNickname, pageNameKey }) {
   const formatTitle = () => {

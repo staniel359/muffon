@@ -9,9 +9,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import { mainModalOptions } from '#/data/plugins/semantic'
-import { setModal, showModal, hideModal } from '#/actions/plugins/semantic'
-import { toggleClass, remove } from '#/actions/plugins/jquery'
+import { mainModalOptions } from '*/helpers/data/plugins/semantic'
+import {
+  setModal,
+  showModal,
+  hideModal
+} from '*/helpers/actions/plugins/semantic'
+import { toggleClass, remove } from '*/helpers/actions/plugins/jquery'
 
 export default {
   name: 'BaseModalContainer',

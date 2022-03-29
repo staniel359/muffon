@@ -1,7 +1,7 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   videos as formatVideoChannelVideosLink
-} from '#/formatters/links/videoChannel'
+} from '*/helpers/formatters/links/videoChannel'
 
 export default function ({ channelTitle, channelId }) {
   const title = i18n.global.t(

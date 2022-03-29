@@ -31,7 +31,7 @@
 import SearchInput from './SearchContent/SearchInput.vue'
 import SearchSourceSelect from './SearchContent/SearchSourceSelect.vue'
 import SearchTabs from './SearchContent/SearchTabs.vue'
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'SearchContent',

@@ -26,9 +26,10 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
 import ArtistItem from './BaseArtistsSimpleList/ArtistItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistsSimpleList',

@@ -21,14 +21,15 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatTrackPageNavigation from '#/formatters/navigation/track'
-import formatTrackPageTab from '#/formatters/tabs/track'
-import getTrack from '#/actions/api/track/get'
+import formatTrackPageNavigation from '*/helpers/formatters/navigation/track'
+import formatTrackPageTab from '*/helpers/formatters/tabs/track'
+import getTrack from '*/helpers/actions/api/track/get'
 import getBandcampTrackId
-  from '#/actions/api/bandcamp_id/track/get'
-import { artistName as formatArtistName } from '#/formatters'
+  from '*/helpers/actions/api/bandcamp_id/track/get'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'BaseTrackPageContainer',

@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BasePlaylistLibraryImportModal
-  from '@/modals/playlist/BasePlaylistLibraryImportModal.vue'
+  from '*/components/modals/playlist/BasePlaylistLibraryImportModal.vue'
 
 export default {
   name: 'LibraryImportBlock',

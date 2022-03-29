@@ -41,12 +41,13 @@
 </template>
 
 <script>
-import BaseMessage from '@/messages/BaseMessage.vue'
+import BaseMessage from '*/components/messages/BaseMessage.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import BaseRetryButton from '@/buttons/BaseRetryButton.vue'
-import { number as formatNumber } from '#/formatters'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseRetryButton from '*/components/buttons/BaseRetryButton.vue'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'RetrySection',

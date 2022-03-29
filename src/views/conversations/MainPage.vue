@@ -37,13 +37,13 @@
 
 <script>
 import BaseConversationsPageContainer
-  from '@/containers/pages/conversations/BaseConversationsPageContainer.vue'
+  from '*/components/containers/pages/conversations/BaseConversationsPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseConversationsSimpleList
-  from '@/lists/conversations/BaseConversationsSimpleList.vue'
+  from '*/components/lists/conversations/BaseConversationsSimpleList.vue'
 
 export default {
   name: 'MainPage',

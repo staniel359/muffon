@@ -24,11 +24,12 @@
 
 <script>
 import BaseProfileLibraryArtistPaginatedSegmentContainer
-  from '@/containers/segments/profile/library/artist/BaseProfileLibraryArtistPaginatedSegmentContainer.vue'
-import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
+  from '*/components/containers/segments/profile/library/artist/BaseProfileLibraryArtistPaginatedSegmentContainer.vue'
+import BaseAlbumsTableList
+  from '*/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   albums as formatProfileLibraryArtistAlbumsLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'AlbumsSegment',

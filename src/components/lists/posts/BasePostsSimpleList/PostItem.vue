@@ -75,16 +75,20 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
-import BaseTimestamp from '@/BaseTimestamp.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePostUpdateModal from '@/modals/post/BasePostUpdateModal.vue'
-import BasePostDeleteModal from '@/modals/post/BasePostDeleteModal.vue'
-import BaseImagesSection from '@/BaseImagesSection.vue'
-import BaseTracksSection from '@/BaseTracksSection.vue'
-import { setToast } from '#/actions/plugins/semantic'
+import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseProfileNickname
+  from '*/components/models/profile/BaseProfileNickname.vue'
+import BaseTimestamp from '*/components/BaseTimestamp.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePostUpdateModal
+  from '*/components/modals/post/BasePostUpdateModal.vue'
+import BasePostDeleteModal
+  from '*/components/modals/post/BasePostDeleteModal.vue'
+import BaseImagesSection from '*/components/BaseImagesSection.vue'
+import BaseTracksSection from '*/components/BaseTracksSection.vue'
+import { setToast } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'PostItem',

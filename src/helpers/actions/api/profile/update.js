@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '&/store'
-import { updateStore, addFormErrors } from '#/actions'
+import store from '*/plugins/store'
+import { updateStore, addFormErrors } from '*/helpers/actions'
 
 export default function ({
   email,

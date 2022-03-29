@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import BaseDropdownItem from '@/dropdowns/BaseDropdownItem.vue'
-import { generateKey } from '#/utils'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
+import { generateKey } from '*/helpers/utils'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',

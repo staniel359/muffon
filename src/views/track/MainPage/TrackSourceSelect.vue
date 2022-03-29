@@ -11,8 +11,10 @@
 </template>
 
 <script>
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
-import BaseTrackSourceSelect from '@/models/track/BaseTrackSourceSelect.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
+import BaseTrackSourceSelect
+  from '*/components/models/track/BaseTrackSourceSelect.vue'
 
 export default {
   name: 'TrackSourceSelect',

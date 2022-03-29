@@ -24,8 +24,8 @@
 <script>
 import { mapState } from 'vuex'
 import HeaderSegment from './BaseTagSegmentContainer/HeaderSegment.vue'
-import getTag from '#/actions/api/tag/get'
-import { focusOnSegment } from '#/actions/layout'
+import getTag from '*/helpers/actions/api/tag/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTagSegmentContainer',

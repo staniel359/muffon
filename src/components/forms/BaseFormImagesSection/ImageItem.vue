@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'ImageItem',

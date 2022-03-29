@@ -1,8 +1,8 @@
-import store from '&/store'
-import getSearch from '#/actions/api/player/search/get'
-import getPlayerVariantAudio from '#/actions/player/variant/audio/get'
-import { updateStore } from '#/actions'
-import { artistName as formatArtistName } from '#/formatters'
+import store from '*/plugins/store'
+import getSearch from '*/helpers/actions/api/player/search/get'
+import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
+import { updateStore } from '*/helpers/actions'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default function ({ trackData }) {
   const artistData = trackData.artist

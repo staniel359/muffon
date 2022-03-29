@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '&/store'
-import { updateStore } from '#/actions'
+import store from '*/plugins/store'
+import { updateStore } from '*/helpers/actions'
 
 export default function ({ token }) {
   this.error = null

@@ -10,8 +10,9 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
-import BaseProfileUpdateForm from '@/forms/profile/BaseProfileUpdateForm.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseProfileUpdateForm
+  from '*/components/forms/profile/BaseProfileUpdateForm.vue'
 
 export default {
   name: 'InfoOptions',

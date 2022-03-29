@@ -28,7 +28,7 @@
 
 <script>
 import BaseProfileLibraryTrackPageContainer
-  from '@/containers/pages/profile/library/track/BaseProfileLibraryTrackPageContainer.vue'
+  from '*/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import PlayerPanelSegment from './MainPage/PlayerPanelSegment.vue'
 

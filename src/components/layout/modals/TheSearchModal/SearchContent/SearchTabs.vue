@@ -20,10 +20,11 @@
 </template>
 
 <script>
-import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
+import BaseTabsContainer
+  from '*/components/containers/tabs/BaseTabsContainer.vue'
 import BaseSearchTabContainer
-  from '@/containers/tabs/BaseSearchTabContainer.vue'
-import { collection as formatCollection } from '#/formatters'
+  from '*/components/containers/tabs/BaseSearchTabContainer.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'SearchTabs',

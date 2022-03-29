@@ -14,7 +14,7 @@
 
 <script>
 import { ipcRenderer } from 'electron'
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'BaseLink',

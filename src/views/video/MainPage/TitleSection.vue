@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/links/BaseLink.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
 import {
   videos as formatVideoChannelVideosLink
-} from '#/formatters/links/videoChannel'
+} from '*/helpers/formatters/links/videoChannel'
 
 export default {
   name: 'TitleSection',

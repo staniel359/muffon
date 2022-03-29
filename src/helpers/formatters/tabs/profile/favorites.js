@@ -1,7 +1,7 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   favorites as formatProfileFavoritesLink
-} from '#/formatters/links/profile'
+} from '*/helpers/formatters/links/profile'
 
 export default function ({ profileId, profileNickname }) {
   const title = i18n.global.t(

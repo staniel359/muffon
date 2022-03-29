@@ -10,7 +10,7 @@
 
 <script>
 import BaseTopPageContainer
-  from '@/containers/pages/top/BaseTopPageContainer.vue'
+  from '*/components/containers/pages/top/BaseTopPageContainer.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'

@@ -8,7 +8,7 @@
 
 <script>
 import AlbumItem from './AlbumsList/AlbumItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsList',

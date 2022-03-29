@@ -48,16 +48,20 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import BasePostUpdateFormContainer
-  from '@/containers/forms/post/BasePostUpdateFormContainer.vue'
-import BaseContentField from '@/fields/BaseContentField.vue'
-import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
-import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
-import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
-import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
-import { generateKey } from '#/utils'
-import { collection as formatCollection } from '#/formatters'
+  from '*/components/containers/forms/post/BasePostUpdateFormContainer.vue'
+import BaseContentField from '*/components/fields/BaseContentField.vue'
+import BaseFormImagesSection
+  from '*/components/forms/BaseFormImagesSection.vue'
+import BaseFormTracksSection
+  from '*/components/forms/BaseFormTracksSection.vue'
+import BaseFormAddButtonsSection
+  from '*/components/forms/BaseFormAddButtonsSection.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+import { generateKey } from '*/helpers/utils'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BasePostUpdateModal',

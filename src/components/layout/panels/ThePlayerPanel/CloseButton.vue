@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import BaseClearButton from '@/buttons/BaseClearButton.vue'
-import { updateStore } from '#/actions'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'CloseButton',

@@ -10,7 +10,8 @@
 </template>
 
 <script>
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'BaseFormTracksSection',

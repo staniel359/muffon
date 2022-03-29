@@ -59,8 +59,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
-import BaseLink from '@/links/BaseLink.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
 
 export default {
   name: 'BaseMessage',

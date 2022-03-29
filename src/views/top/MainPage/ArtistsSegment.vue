@@ -20,8 +20,9 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '@/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
-import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
+  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+import BaseArtistsTableList
+  from '*/components/lists/artists/BaseArtistsTableList.vue'
 
 export default {
   name: 'ArtistsSegment',

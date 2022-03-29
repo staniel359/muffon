@@ -19,8 +19,8 @@
 
 <script>
 import RetrySection from './CompleteSection/RetrySection.vue'
-import BaseMessage from '@/messages/BaseMessage.vue'
-import { number as formatNumber } from '#/formatters'
+import BaseMessage from '*/components/messages/BaseMessage.vue'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'CompleteSection',

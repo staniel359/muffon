@@ -1,4 +1,4 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 
 const redCloseCornerIcon =
   'red bottom right corner close'

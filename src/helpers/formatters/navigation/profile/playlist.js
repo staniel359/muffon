@@ -1,9 +1,9 @@
-import i18n from '&/i18n'
-import { profiles as formatProfilesLink } from '#/formatters/links'
+import i18n from '*/plugins/i18n'
+import { profiles as formatProfilesLink } from '*/helpers/formatters/links'
 import {
   main as formatProfileMainLink,
   playlists as formatProfilePlaylistsLink
-} from '#/formatters/links/profile'
+} from '*/helpers/formatters/links/profile'
 
 export default function ({ profileId, profileNickname, playlistTitle }) {
   return [

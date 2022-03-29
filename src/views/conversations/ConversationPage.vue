@@ -31,11 +31,11 @@
 
 <script>
 import BaseConversationPageContainer
-  from '@/containers/pages/conversation/BaseConversationPageContainer.vue'
+  from '*/components/containers/pages/conversation/BaseConversationPageContainer.vue'
 import ProfileSegment from './ConversationPage/ProfileSegment.vue'
 import FormSegment from './ConversationPage/FormSegment.vue'
 import MessagesSegment from './ConversationPage/MessagesSegment.vue'
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'ConversationPage',

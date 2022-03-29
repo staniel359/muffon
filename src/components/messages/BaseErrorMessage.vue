@@ -12,8 +12,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseMessage from '@/messages/BaseMessage.vue'
-import errorsData from '#/data/errors'
+import BaseMessage from '*/components/messages/BaseMessage.vue'
+import errorsData from '*/helpers/data/errors'
 
 export default {
   name: 'BaseErrorMessage',

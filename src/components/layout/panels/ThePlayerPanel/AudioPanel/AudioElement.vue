@@ -20,7 +20,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import { updateStore } from '#/actions'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'AudioElement',

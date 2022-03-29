@@ -15,9 +15,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseToggle from '@/BaseToggle.vue'
-import { updateStore } from '#/actions'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseToggle from '*/components/BaseToggle.vue'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'AutoplayOption',

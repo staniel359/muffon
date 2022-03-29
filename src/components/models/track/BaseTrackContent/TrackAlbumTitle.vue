@@ -11,12 +11,13 @@
 </template>
 
 <script>
-import BaseLink from '@/links/BaseLink.vue'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
+import BaseLink from '*/components/links/BaseLink.vue'
+import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
 import {
   main as formatProfileLibraryAlbumMainLink
-} from '#/formatters/links/profile/library/album'
-import formatAlbumRequestData from '#/formatters/request/album/requestData'
+} from '*/helpers/formatters/links/profile/library/album'
+import formatAlbumRequestData
+  from '*/helpers/formatters/request/album/requestData'
 
 export default {
   name: 'TrackAlbumTitle',

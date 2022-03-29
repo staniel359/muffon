@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import { toggleLoaderDimmer } from '#/actions/layout'
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import { toggleLoaderDimmer } from '*/helpers/actions/layout'
 
 export default {
   name: 'BasePageContainer',

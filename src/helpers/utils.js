@@ -1,4 +1,4 @@
-import store from '&/store'
+import store from '*/plugins/store'
 
 export { v4 as generateKey } from 'uuid'
 

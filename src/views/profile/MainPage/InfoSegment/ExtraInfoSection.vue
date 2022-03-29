@@ -18,12 +18,13 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
-import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseProfileGenderAge
+  from '*/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
-  from '@/models/profile/BaseProfileCityCountry.vue'
+  from '*/components/models/profile/BaseProfileCityCountry.vue'
 import BaseProfileFollowingCount
-  from '@/models/profile/BaseProfileFollowingCount.vue'
+  from '*/components/models/profile/BaseProfileFollowingCount.vue'
 
 export default {
   name: 'ExtraInfoSection',

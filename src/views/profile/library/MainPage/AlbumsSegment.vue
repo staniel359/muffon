@@ -23,11 +23,12 @@
 
 <script>
 import BaseProfileLibraryPaginatedSegmentContainer
-  from '@/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
-import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
+  from '*/components/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
+import BaseAlbumsTableList
+  from '*/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   albums as formatProfileLibraryAlbumsLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'AlbumsSegment',

@@ -14,9 +14,9 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
-import { mainSidebarOptions } from '#/data/plugins/semantic'
-import { setQueuePanel, hideQueuePanel } from '#/actions/layout'
-import { updateStore } from '#/actions'
+import { mainSidebarOptions } from '*/helpers/data/plugins/semantic'
+import { setQueuePanel, hideQueuePanel } from '*/helpers/actions/layout'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'TheQueuePanel',

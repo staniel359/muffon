@@ -8,17 +8,21 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
+import {
+  main as formatArtistMainLink
+} from '*/helpers/formatters/links/artist'
 import {
   main as formatProfileLibraryAlbumMainLink,
   tracks as formatProfileLibraryAlbumTracksLink
-} from '#/formatters/links/profile/library/album'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumRequestData from '#/formatters/request/album/requestData'
+} from '*/helpers/formatters/links/profile/library/album'
+import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import formatAlbumRequestData
+  from '*/helpers/formatters/request/album/requestData'
 
 export default {
   name: 'BaseAlbumLinkContainer',

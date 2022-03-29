@@ -26,9 +26,12 @@
 
 <script>
 import BaseTrackPaginatedSegmentContainer
-  from '@/containers/segments/track/BaseTrackPaginatedSegmentContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { similar as formatTrackSimilarLink } from '#/formatters/links/track'
+  from '*/components/containers/segments/track/BaseTrackPaginatedSegmentContainer.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import {
+  similar as formatTrackSimilarLink
+} from '*/helpers/formatters/links/track'
 
 export default {
   name: 'SimilarSegment',

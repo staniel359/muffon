@@ -20,9 +20,11 @@
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
-import BaseProfileLoginForm from '@/forms/profile/BaseProfileLoginForm.vue'
-import BaseProfileSignupForm from '@/forms/profile/BaseProfileSignupForm.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseProfileLoginForm
+  from '*/components/forms/profile/BaseProfileLoginForm.vue'
+import BaseProfileSignupForm
+  from '*/components/forms/profile/BaseProfileSignupForm.vue'
 
 export default {
   name: 'TheAuthentication',

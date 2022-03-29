@@ -47,12 +47,13 @@
 
 <script>
 import deepmerge from 'deepmerge'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseNoCollectionMessage from '@/messages/BaseNoCollectionMessage.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import BaseSimplePagination from '@/BaseSimplePagination.vue'
-import BasePagination from '@/BasePagination.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseNoCollectionMessage
+  from '*/components/messages/BaseNoCollectionMessage.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseSimplePagination from '*/components/BaseSimplePagination.vue'
+import BasePagination from '*/components/BasePagination.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BasePaginatedListContainer',

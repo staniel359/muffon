@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import BaseProgress from '@/BaseProgress.vue'
+import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
-import createPlaylistTrack from '#/actions/api/playlist/track/create'
+import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
 
 export default {
   name: 'SaveSection',

@@ -55,20 +55,22 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/links/BaseLink.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistDeleteModal
-  from '@/modals/playlist/BasePlaylistDeleteModal.vue'
+  from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   main as formatProfileMainLink,
   playlist as formatProfilePlaylistLink
-} from '#/formatters/links/profile'
-import { number as formatNumber } from '#/formatters'
-import { isCurrentProfile } from '#/utils'
+} from '*/helpers/formatters/links/profile'
+import { number as formatNumber } from '*/helpers/formatters'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'PlaylistItem',

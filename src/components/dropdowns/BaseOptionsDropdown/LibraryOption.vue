@@ -26,20 +26,21 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import createLibraryArtist from '#/actions/api/library/artist/create'
-import createLibraryAlbum from '#/actions/api/library/album/create'
-import createLibraryTrack from '#/actions/api/library/track/create'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import createLibraryArtist from '*/helpers/actions/api/library/artist/create'
+import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
+import createLibraryTrack from '*/helpers/actions/api/library/track/create'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 import {
   main as formatProfileLibraryAlbumMainLink
-} from '#/formatters/links/profile/library/album'
+} from '*/helpers/formatters/links/profile/library/album'
 import {
   main as formatProfileLibraryTrackMainLink
-} from '#/formatters/links/profile/library/track'
-import { artistName as formatArtistName } from '#/formatters'
+} from '*/helpers/formatters/links/profile/library/track'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'FavoriteOption',

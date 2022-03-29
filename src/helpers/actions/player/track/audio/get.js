@@ -1,6 +1,7 @@
-import getAudio from '#/actions/api/audio/get'
-import searchPlayerTrackAudio from '#/actions/player/track/audio/search'
-import { updateStore } from '#/actions'
+import getAudio from '*/helpers/actions/api/audio/get'
+import searchPlayerTrackAudio
+  from '*/helpers/actions/player/track/audio/search'
+import { updateStore } from '*/helpers/actions'
 
 export default function ({ trackData }) {
   const isAudioPresent =

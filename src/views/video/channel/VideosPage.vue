@@ -36,12 +36,13 @@
 
 <script>
 import BaseVideoChannelPageContainer
-  from '@/containers/pages/video/BaseVideoChannelPageContainer.vue'
+  from '*/components/containers/pages/video/BaseVideoChannelPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseVideosTableList from '@/lists/videos/BaseVideosTableList.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseVideosTableList
+  from '*/components/lists/videos/BaseVideosTableList.vue'
 
 export default {
   name: 'VideosPage',

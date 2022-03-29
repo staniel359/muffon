@@ -11,9 +11,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLibraryStatistics
-  from '@/models/profile/library/BaseProfileLibraryStatistics.vue'
+  from '*/components/models/profile/library/BaseProfileLibraryStatistics.vue'
 
 export default {
   name: 'StatisticsSegment',

@@ -1,10 +1,10 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   main as formatProfileLibraryMainLink,
   artists as formatProfileLibraryArtistsLink,
   albums as formatProfileLibraryAlbumsLink,
   tracks as formatProfileLibraryTracksLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default function ({
   profileId,

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import store from '&/store'
+import store from '*/plugins/store'
 
 export default function ({ albumTitle, artistName, imageUrl }) {
   this.isError = false

@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import { setEmbed } from '#/actions/plugins/semantic'
-import { mainEmbedOptions } from '#/data/plugins/semantic'
+import { setEmbed } from '*/helpers/actions/plugins/semantic'
+import { mainEmbedOptions } from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseEmbed',

@@ -22,7 +22,7 @@
 
 <script>
 import { ipcRenderer } from 'electron'
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'ClearCacheOption',

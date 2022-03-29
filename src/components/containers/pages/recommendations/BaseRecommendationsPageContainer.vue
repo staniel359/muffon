@@ -18,13 +18,15 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
   recommendations as formatRecommendationsPageNavigation
-} from '#/formatters/navigation'
-import formatRecommendationsPageTab from '#/formatters/tabs/recommendations'
-import getRecommendations from '#/actions/api/recommendations/get'
+} from '*/helpers/formatters/navigation'
+import formatRecommendationsPageTab
+  from '*/helpers/formatters/tabs/recommendations'
+import getRecommendations from '*/helpers/actions/api/recommendations/get'
 
 export default {
   name: 'BaseRecommendationsPageContainer',

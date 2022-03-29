@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import BaseIcon from '@/BaseIcon.vue'
-import BaseImage from '@/images/BaseImage.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
 import ContentBlock from './BaseDropdownItem/ContentBlock.vue'
 
 export default {

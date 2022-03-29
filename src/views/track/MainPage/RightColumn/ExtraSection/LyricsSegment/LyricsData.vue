@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import BaseTrackLyricsModal from '@/modals/track/BaseTrackLyricsModal.vue'
+import BaseTrackLyricsModal
+  from '*/components/modals/track/BaseTrackLyricsModal.vue'
 
 export default {
   name: 'LyricsData',

@@ -20,8 +20,9 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '@/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'TracksSegment',

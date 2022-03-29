@@ -1,5 +1,5 @@
-import getPlayerTrackAudio from '#/actions/player/track/audio/get'
-import { updateStore } from '#/actions'
+import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
+import { updateStore } from '*/helpers/actions'
 
 export default function ({ trackData, queueTracks }) {
   this.error = null

@@ -95,19 +95,22 @@
 </template>
 
 <script>
-import BaseArtistContainer from '@/containers/artist/BaseArtistContainer.vue'
+import BaseArtistContainer
+  from '*/components/containers/artist/BaseArtistContainer.vue'
 import BaseArtistHorizontalCardContainer
-  from '@/containers/artist/BaseArtistHorizontalCardContainer.vue'
-import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
+  from '*/components/containers/artist/BaseArtistHorizontalCardContainer.vue'
+import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
+import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
-import BaseCounters from '@/BaseCounters.vue'
-import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
+import BaseCounters from '*/components/BaseCounters.vue'
+import BaseArtistTags from '*/components/models/artist/BaseArtistTags.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseArtistDescription
+  from '*/components/models/artist/BaseArtistDescription.vue'
 import RecommendationSection from './ArtistItem/RecommendationSection.vue'
 
 export default {

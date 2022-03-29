@@ -1,8 +1,8 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   main as formatProfileLibraryAlbumMainLink,
   tracks as formatProfileLibraryAlbumTracksLink
-} from '#/formatters/links/profile/library/album'
+} from '*/helpers/formatters/links/profile/library/album'
 
 export default function ({
   profileId,

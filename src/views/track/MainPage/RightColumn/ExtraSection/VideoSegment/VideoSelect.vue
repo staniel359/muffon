@@ -20,8 +20,9 @@
 </template>
 
 <script>
-import BaseSourceIcon from '@/BaseSourceIcon.vue'
-import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
+import BaseDropdownContainer
+  from '*/components/containers/BaseDropdownContainer.vue'
 import VideosList from './VideoSelect/VideosList.vue'
 
 export default {

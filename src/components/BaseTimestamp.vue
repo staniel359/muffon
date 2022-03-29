@@ -10,7 +10,7 @@
 import {
   date as formatDate,
   time as formatTime
-} from '#/formatters'
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTimestamp',

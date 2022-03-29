@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import BaseStatistics from '@/BaseStatistics.vue'
+import BaseStatistics from '*/components/BaseStatistics.vue'
 import {
   artists as formatProfileLibraryArtistsLink,
   albums as formatProfileLibraryAlbumsLink,
   tracks as formatProfileLibraryTracksLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'BaseProfileLibraryStatistics',

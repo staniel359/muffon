@@ -18,12 +18,14 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilePlaylistPageNavigation
-  from '#/formatters/navigation/profile/playlist'
-import formatProfilePlaylistPageTab from '#/formatters/tabs/profile/playlist'
-import getPlaylist from '#/actions/api/playlist/get'
+  from '*/helpers/formatters/navigation/profile/playlist'
+import formatProfilePlaylistPageTab
+  from '*/helpers/formatters/tabs/profile/playlist'
+import getPlaylist from '*/helpers/actions/api/playlist/get'
 
 export default {
   name: 'BasePlaylistPageContainer',

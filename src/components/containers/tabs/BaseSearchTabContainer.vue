@@ -46,13 +46,17 @@
 <script>
 import { mapState } from 'vuex'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
-import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import BaseVideosSimpleList from '@/lists/videos/BaseVideosSimpleList.vue'
-import getSearch from '#/actions/api/search/get'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+import BaseAlbumsSimpleList
+  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseVideosSimpleList
+  from '*/components/lists/videos/BaseVideosSimpleList.vue'
+import getSearch from '*/helpers/actions/api/search/get'
 
 export default {
   name: 'BaseSearchTabContainer',

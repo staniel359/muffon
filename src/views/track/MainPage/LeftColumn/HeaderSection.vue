@@ -26,13 +26,16 @@
 </template>
 
 <script>
-import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumRequestData from '#/formatters/request/album/requestData'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseTransitionContainer
+  from '*/components/containers/BaseTransitionContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import formatAlbumRequestData
+  from '*/helpers/formatters/request/album/requestData'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',

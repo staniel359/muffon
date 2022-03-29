@@ -18,13 +18,14 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryTagPageNavigation
-  from '#/formatters/navigation/profile/library/tag'
+  from '*/helpers/formatters/navigation/profile/library/tag'
 import formatProfileLibraryTagPageTab
-  from '#/formatters/tabs/profile/library/tag'
-import getLibraryTag from '#/actions/api/library/tag/get'
+  from '*/helpers/formatters/tabs/profile/library/tag'
+import getLibraryTag from '*/helpers/actions/api/library/tag/get'
 
 export default {
   name: 'BaseProfileLibraryTagPageContainer',

@@ -1,7 +1,7 @@
 import axios from 'axios'
-import store from '&/store'
-import { collection as formatCollection } from '#/formatters'
-import { updateStore } from '#/actions'
+import store from '*/plugins/store'
+import { collection as formatCollection } from '*/helpers/formatters'
+import { updateStore } from '*/helpers/actions'
 
 export default function ({ query }) {
   const sourceId = store.state.player.sourceId

@@ -17,13 +17,15 @@
 </template>
 
 <script>
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/links/BaseLink.vue'
-import { main as formatTrackMainLink } from '#/formatters/links/track'
+import BaseHeaderContainer
+  from '*/components/containers/BaseHeaderContainer.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
+import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
 import {
   main as formatProfileLibraryTrackMainLink
-} from '#/formatters/links/profile/library/track'
-import formatTrackRequestData from '#/formatters/request/track/requestData'
+} from '*/helpers/formatters/links/profile/library/track'
+import formatTrackRequestData
+  from '*/helpers/formatters/request/track/requestData'
 
 export default {
   name: 'TrackTitle',

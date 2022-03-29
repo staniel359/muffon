@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import BaseImageInput from '@/inputs/BaseImageInput.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
 
 export default {
   name: 'BaseImageField',

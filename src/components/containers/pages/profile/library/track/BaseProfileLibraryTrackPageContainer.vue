@@ -18,13 +18,14 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryTrackPageNavigation
-  from '#/formatters/navigation/profile/library/track'
+  from '*/helpers/formatters/navigation/profile/library/track'
 import formatProfileLibraryTrackPageTab
-  from '#/formatters/tabs/profile/library/track'
-import getLibraryTrack from '#/actions/api/library/track/get'
+  from '*/helpers/formatters/tabs/profile/library/track'
+import getLibraryTrack from '*/helpers/actions/api/library/track/get'
 
 export default {
   name: 'BaseProfileLibraryTrackPageContainer',

@@ -19,9 +19,10 @@
 </template>
 
 <script>
-import BaseEmbed from '@/BaseEmbed.vue'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import { main as formatVideoMainLink } from '#/formatters/links/video'
+import BaseEmbed from '*/components/BaseEmbed.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
 
 export default {
   name: 'VideoData',

@@ -20,7 +20,7 @@
 import HeaderSegment from './PostsSegment/HeaderSegment.vue'
 import FormSegment from './PostsSegment/FormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'PostsSegment',

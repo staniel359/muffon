@@ -20,14 +20,15 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatAlbumPageNavigation from '#/formatters/navigation/album'
-import formatAlbumPageTab from '#/formatters/tabs/album'
-import getAlbum from '#/actions/api/album/get'
+import formatAlbumPageNavigation from '*/helpers/formatters/navigation/album'
+import formatAlbumPageTab from '*/helpers/formatters/tabs/album'
+import getAlbum from '*/helpers/actions/api/album/get'
 import getBandcampAlbumId
-  from '#/actions/api/bandcamp_id/album/get'
-import { artistName as formatArtistName } from '#/formatters'
+  from '*/helpers/actions/api/bandcamp_id/album/get'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumPageContainer',

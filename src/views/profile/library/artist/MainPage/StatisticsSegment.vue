@@ -11,12 +11,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseStatistics from '@/BaseStatistics.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseStatistics from '*/components/BaseStatistics.vue'
 import {
   albums as formatProfileLibraryArtistAlbumsLink,
   tracks as formatProfileLibraryArtistTracksLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'StatisticsSegment',

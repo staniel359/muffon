@@ -39,14 +39,14 @@
 
 <script>
 import BaseProfilePageContainer
-  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ImportSegment from './MainPage/ImportSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'
-import { isCurrentProfile } from '#/utils'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'MainPage',

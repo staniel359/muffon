@@ -26,8 +26,8 @@
 
 <script>
 import BaseArtistPaginatedPageContainer
-  from '@/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
-import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
+  from '*/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
+import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
 
 export default {
   name: 'SimilarPage',

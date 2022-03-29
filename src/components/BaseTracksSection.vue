@@ -8,8 +8,9 @@
 </template>
 
 <script>
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseTracksSection',

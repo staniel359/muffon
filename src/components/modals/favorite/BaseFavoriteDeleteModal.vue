@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
-import deleteFavorite from '#/actions/api/favorites/model/delete'
+import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
+import deleteFavorite from '*/helpers/actions/api/favorites/model/delete'
 
 export default {
   name: 'BaseFavoriteDeleteModal',

@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import BaseVideoTagsModal from '@/modals/video/BaseVideoTagsModal.vue'
+import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseVideoTagsModal
+  from '*/components/modals/video/BaseVideoTagsModal.vue'
 
 export default {
   name: 'TagsSection',

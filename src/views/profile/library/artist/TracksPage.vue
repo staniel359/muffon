@@ -26,9 +26,10 @@
 
 <script>
 import BaseProfileLibraryArtistPaginatedPageContainer
-  from '@/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import { isCurrentProfile } from '#/utils'
+  from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'TracksPage',

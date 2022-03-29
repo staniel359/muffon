@@ -9,7 +9,8 @@
 
 <script>
 import { mapActions } from 'vuex'
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import SearchContent from './TheSearchModal/SearchContent.vue'
 
 export default {

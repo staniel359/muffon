@@ -29,8 +29,8 @@
 
 <script>
 import AlbumItem from './BaseAlbumsTableList/AlbumItem.vue'
-import { collection as formatCollection } from '#/formatters'
-import { numberToColumnWidth } from '#/actions/plugins/semantic'
+import { collection as formatCollection } from '*/helpers/formatters'
+import { numberToColumnWidth } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseAlbumsTableList',

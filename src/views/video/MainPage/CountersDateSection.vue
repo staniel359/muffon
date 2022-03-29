@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import BaseLabel from '@/BaseLabel.vue'
-import { number as formatNumber } from '#/formatters'
+import BaseLabel from '*/components/BaseLabel.vue'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'CountersDateSection',

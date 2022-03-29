@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { messageFormOptions } from '#/data/plugins/semantic'
-import createMessage from '#/actions/api/message/create'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { messageFormOptions } from '*/helpers/data/plugins/semantic'
+import createMessage from '*/helpers/actions/api/message/create'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'BaseMessageCreateFormContainer',

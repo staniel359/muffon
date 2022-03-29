@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import { mainHistoryInputOptions } from '#/data/plugins/semantic'
-import { setSearch, setSearchSource } from '#/actions/plugins/semantic'
+import { mainHistoryInputOptions } from '*/helpers/data/plugins/semantic'
+import { setSearch, setSearchSource } from '*/helpers/actions/plugins/semantic'
 import {
   get as getLocalHistory,
   update as updateLocalHistory
-} from '#/actions/plugins/local/history'
+} from '*/helpers/actions/plugins/local/history'
 
 export default {
   name: 'BaseHistoryInputContainer',

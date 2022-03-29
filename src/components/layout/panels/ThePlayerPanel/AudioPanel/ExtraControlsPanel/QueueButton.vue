@@ -12,8 +12,8 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
-import { toggleQueuePanel } from '#/actions/layout'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import { toggleQueuePanel } from '*/helpers/actions/layout'
 
 export default {
   name: 'QueueButton',

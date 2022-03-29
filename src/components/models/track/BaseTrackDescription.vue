@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseDescription from '@/BaseDescription.vue'
+import BaseDescription from '*/components/BaseDescription.vue'
 import BaseTrackDescriptionModal
-  from '@/modals/track/BaseTrackDescriptionModal.vue'
+  from '*/components/modals/track/BaseTrackDescriptionModal.vue'
 
 export default {
   name: 'BaseTrackDescription',

@@ -25,8 +25,8 @@
 <script>
 import { mapState } from 'vuex'
 import HeaderSegment from './BaseArtistSegmentContainer/HeaderSegment.vue'
-import getArtist from '#/actions/api/artist/get'
-import { focusOnSegment } from '#/actions/layout'
+import getArtist from '*/helpers/actions/api/artist/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseArtistSegmentContainer',

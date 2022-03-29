@@ -1,5 +1,5 @@
 import { mapState, mapActions } from 'vuex'
-import { updateTab } from '#/actions'
+import { updateTab } from '*/helpers/actions'
 
 export default {
   computed: {

@@ -89,20 +89,21 @@
 
 <script>
 import BaseAlbumLinkContainer
-  from '@/containers/album/BaseAlbumLinkContainer.vue'
-import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
+  from '*/components/containers/album/BaseAlbumLinkContainer.vue'
+import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 import ArtistNameSection from './AlbumItem/ArtistNameSection.vue'
 import BaseAlbumListenersCount
-  from '@/models/album/BaseAlbumListenersCount.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+  from '*/components/models/album/BaseAlbumListenersCount.vue'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BaseBookmarkDeleteModal
-  from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
+  from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
-  from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
-import { artistName as formatArtistName } from '#/formatters'
+  from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',

@@ -16,9 +16,9 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import getPlayerTrack from '#/actions/player/track/get'
-import { updateStore, setPlayerPlaying } from '#/actions'
-import { track as formatTrack } from '#/formatters/track'
+import getPlayerTrack from '*/helpers/actions/player/track/get'
+import { updateStore, setPlayerPlaying } from '*/helpers/actions'
+import { track as formatTrack } from '*/helpers/formatters/track'
 
 export default {
   name: 'BaseTrackContainer',

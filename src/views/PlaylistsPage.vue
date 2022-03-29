@@ -38,13 +38,13 @@
 
 <script>
 import BasePlaylistsPageContainer
-  from '@/containers/pages/playlists/BasePlaylistsPageContainer.vue'
+  from '*/components/containers/pages/playlists/BasePlaylistsPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
-  from '@/lists/playlists/BasePlaylistsSimpleList.vue'
+  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
 
 export default {
   name: 'PlaylistsPage',

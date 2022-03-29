@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import local from '&/local'
-import BaseButton from '@/buttons/BaseButton.vue'
+import local from '*/plugins/local'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'ClearSearchHistoryOption',

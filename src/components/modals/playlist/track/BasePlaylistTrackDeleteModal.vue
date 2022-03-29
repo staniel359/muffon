@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
-import deletePlaylistTrack from '#/actions/api/playlist/track/delete'
+import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
+import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
 
 export default {
   name: 'BasePlaylistTrackDeleteModal',

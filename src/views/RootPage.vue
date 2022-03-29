@@ -16,11 +16,13 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
-import TheScrobblingObserver from '@/layout/observers/TheScrobblingObserver.vue'
-import TheOnlineObserver from '@/layout/observers/TheOnlineObserver.vue'
-import TheLocalSaver from '@/layout/savers/TheLocalSaver.vue'
-import TheBrowserTabs from '@/layout/TheBrowserTabs.vue'
-import TheAuthentication from '@/layout/TheAuthentication.vue'
+import TheScrobblingObserver
+  from '*/components/layout/observers/TheScrobblingObserver.vue'
+import TheOnlineObserver
+  from '*/components/layout/observers/TheOnlineObserver.vue'
+import TheLocalSaver from '*/components/layout/savers/TheLocalSaver.vue'
+import TheBrowserTabs from '*/components/layout/TheBrowserTabs.vue'
+import TheAuthentication from '*/components/layout/TheAuthentication.vue'
 
 export default {
   name: 'RootPage',

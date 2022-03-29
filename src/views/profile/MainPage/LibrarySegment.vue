@@ -25,7 +25,7 @@ import HeaderSegment from './LibrarySegment/HeaderSegment.vue'
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
-import { isCurrentProfile } from '#/utils'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'LibrarySegment',

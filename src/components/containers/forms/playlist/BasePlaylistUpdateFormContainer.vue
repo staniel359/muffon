@@ -10,9 +10,10 @@
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { playlistFormOptions } from '#/data/plugins/semantic'
-import updatePlaylist from '#/actions/api/playlist/update'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { playlistFormOptions } from '*/helpers/data/plugins/semantic'
+import updatePlaylist from '*/helpers/actions/api/playlist/update'
 
 export default {
   name: 'BasePlaylistUpdateFormContainer',

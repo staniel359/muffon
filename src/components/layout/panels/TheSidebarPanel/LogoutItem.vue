@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
-import { updateStore } from '#/actions'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'LogoutItem',

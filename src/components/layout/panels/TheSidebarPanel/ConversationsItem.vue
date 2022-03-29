@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   main as formatConversationsLink
-} from '#/formatters/links/conversations'
+} from '*/helpers/formatters/links/conversations'
 
 export default {
   name: 'ConversationsItem',

@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import BaseProgress from '@/BaseProgress.vue'
+import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './TracksSection/CompleteSection.vue'
-import createLibraryTrack from '#/actions/api/library/track/create'
-import { artistName as formatArtistName } from '#/formatters'
+import createLibraryTrack from '*/helpers/actions/api/library/track/create'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'TracksSection',

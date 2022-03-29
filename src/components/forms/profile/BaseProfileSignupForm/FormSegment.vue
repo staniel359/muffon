@@ -26,16 +26,17 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileCreateFormContainer
-  from '@/containers/forms/profile/BaseProfileCreateFormContainer.vue'
+  from '*/components/containers/forms/profile/BaseProfileCreateFormContainer.vue'
 import MainSection from './FormSegment/MainSection.vue'
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import ExtraSection from './FormSegment/ExtraSection.vue'
 import BaseProfileRememberField
-  from '@/fields/profile/BaseProfileRememberField.vue'
+  from '*/components/fields/profile/BaseProfileRememberField.vue'
 import BaseProfileSubmitButton
-  from '@/forms/profile/BaseProfileSubmitButton.vue'
+  from '*/components/forms/profile/BaseProfileSubmitButton.vue'
 
 export default {
   name: 'FormSegment',

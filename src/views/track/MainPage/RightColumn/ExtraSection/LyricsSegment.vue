@@ -35,15 +35,16 @@
 </template>
 
 <script>
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import BaseTrackSearchContainer
-  from '@/containers/track/BaseTrackSearchContainer.vue'
+  from '*/components/containers/track/BaseTrackSearchContainer.vue'
 import LyricsSelect from './LyricsSegment/LyricsSelect.vue'
 import BaseTrackLyricsContainer
-  from '@/containers/track/BaseTrackLyricsContainer.vue'
+  from '*/components/containers/track/BaseTrackLyricsContainer.vue'
 import LyricsData from './LyricsSegment/LyricsData.vue'
-import { generateKey } from '#/utils'
-import { focusOnSegment } from '#/actions/layout'
+import { generateKey } from '*/helpers/utils'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'LyricsSegment',

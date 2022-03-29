@@ -11,11 +11,12 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatTopPageNavigation from '#/formatters/navigation/top'
-import formatTopPageTab from '#/formatters/tabs/top'
-import getTop from '#/actions/api/top/get'
+import formatTopPageNavigation from '*/helpers/formatters/navigation/top'
+import formatTopPageTab from '*/helpers/formatters/tabs/top'
+import getTop from '*/helpers/actions/api/top/get'
 
 export default {
   name: 'BaseTopPageContainer',

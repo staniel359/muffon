@@ -44,12 +44,12 @@
 
 <script>
 import BaseProfileLibraryArtistPageContainer
-  from '@/containers/pages/profile/library/artist/BaseProfileLibraryArtistPageContainer.vue'
+  from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
-import { isCurrentProfile } from '#/utils'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'MainPage',

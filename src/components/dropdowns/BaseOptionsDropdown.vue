@@ -33,8 +33,10 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseButtonContainer from '@/containers/buttons/BaseButtonContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseButtonContainer
+  from '*/components/containers/buttons/BaseButtonContainer.vue'
 import LibraryOption from './BaseOptionsDropdown/LibraryOption.vue'
 import PlaylistOption from './BaseOptionsDropdown/PlaylistOption.vue'
 import FavoriteOption from './BaseOptionsDropdown/FavoriteOption.vue'
@@ -44,9 +46,9 @@ import EditOption from './BaseOptionsDropdown/EditOption.vue'
 import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
 import FollowOption from './BaseOptionsDropdown/FollowOption.vue'
 import MessageOption from './BaseOptionsDropdown/MessageOption.vue'
-import { setDropdown } from '#/actions/plugins/semantic'
-import { mainDropdownOptions } from '#/data/plugins/semantic'
-import { collection as formatCollection } from '#/formatters'
+import { setDropdown } from '*/helpers/actions/plugins/semantic'
+import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseOptionsDropdown',

@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import BaseDropdownItem from '@/dropdowns/BaseDropdownItem.vue'
-import { generateKey } from '#/utils'
+import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'ArtistItem',

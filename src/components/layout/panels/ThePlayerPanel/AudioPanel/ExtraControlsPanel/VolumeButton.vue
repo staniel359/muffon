@@ -11,10 +11,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import VolumePopup from './VolumeButton/VolumePopup.vue'
-import { setPopup } from '#/actions/plugins/semantic'
-import { mainPopupOptions } from '#/data/plugins/semantic'
+import { setPopup } from '*/helpers/actions/plugins/semantic'
+import { mainPopupOptions } from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'VolumeButton',

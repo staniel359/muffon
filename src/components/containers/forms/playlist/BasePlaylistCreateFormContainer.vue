@@ -11,12 +11,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { playlistFormOptions } from '#/data/plugins/semantic'
-import createPlaylist from '#/actions/api/playlist/create'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { playlistFormOptions } from '*/helpers/data/plugins/semantic'
+import createPlaylist from '*/helpers/actions/api/playlist/create'
 import {
   playlist as formatProfilePlaylistLink
-} from '#/formatters/links/profile'
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'BasePlaylistCreateFormContainer',

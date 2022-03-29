@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import BaseLink from '@/links/BaseLink.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
 import {
   followers as formatProfileFollowersLink,
   following as formatProfileFollowingLink
-} from '#/formatters/links/profile'
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'BaseProfileFollowingCount',

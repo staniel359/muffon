@@ -25,8 +25,8 @@
 
 <script>
 import BaseTagPaginatedPageContainer
-  from '@/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
-import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
+  from '*/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
+import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
 
 export default {
   name: 'ArtistsPage',

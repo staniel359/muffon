@@ -1,13 +1,15 @@
-import i18n from '&/i18n'
-import { profiles as formatProfilesLink } from '#/formatters/links'
-import { main as formatProfileMainLink } from '#/formatters/links/profile'
+import i18n from '*/plugins/i18n'
+import { profiles as formatProfilesLink } from '*/helpers/formatters/links'
+import {
+  main as formatProfileMainLink
+} from '*/helpers/formatters/links/profile'
 import {
   main as formatProfileLibraryMainLink,
   artists as formatProfileLibraryArtistsLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 
 export default function ({
   profileId,

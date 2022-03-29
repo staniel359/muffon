@@ -1,8 +1,8 @@
 import axios from 'axios'
-import i18n from '&/i18n'
-import { updateStore } from '#/actions'
-import { addFormFieldError } from '#/actions/plugins/semantic'
-import getProfile from '#/actions/api/profile/get'
+import i18n from '*/plugins/i18n'
+import { updateStore } from '*/helpers/actions'
+import { addFormFieldError } from '*/helpers/actions/plugins/semantic'
+import getProfile from '*/helpers/actions/api/profile/get'
 
 export default function ({ email, password, isRemember }) {
   this.error = null

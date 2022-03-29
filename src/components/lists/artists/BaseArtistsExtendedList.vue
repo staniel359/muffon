@@ -19,7 +19,7 @@
 
 <script>
 import ArtistItem from './BaseArtistsExtendedList/ArtistItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistsExtendedList',

@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 import BaseProfileOnlineLabel
-  from '@/models/profile/BaseProfileOnlineLabel.vue'
-import BaseLabel from '@/BaseLabel.vue'
+  from '*/components/models/profile/BaseProfileOnlineLabel.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 
 export default {
   name: 'MainInfoSection',

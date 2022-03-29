@@ -11,12 +11,13 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/links/BaseLink.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseHeaderContainer
+  from '*/components/containers/BaseHeaderContainer.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
 import {
   main as formatProfileLibraryMainLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'HeaderSegment',

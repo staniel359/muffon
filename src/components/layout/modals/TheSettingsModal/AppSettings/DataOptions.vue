@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import ClearCacheOption from './DataOptions/ClearCacheOption.vue'
 import ClearSearchHistoryOption
   from './DataOptions/ClearSearchHistoryOption.vue'

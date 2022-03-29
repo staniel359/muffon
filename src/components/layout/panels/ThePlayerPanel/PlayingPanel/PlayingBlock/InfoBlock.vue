@@ -42,16 +42,19 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseTickerContainer from '@/containers/BaseTickerContainer.vue'
-import BaseLink from '@/links/BaseLink.vue'
-import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
-import { main as formatTrackMainLink } from '#/formatters/links/track'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
-import formatAlbumRequestData from '#/formatters/request/album/requestData'
+import BaseHeaderContainer
+  from '*/components/containers/BaseHeaderContainer.vue'
+import BaseTickerContainer
+  from '*/components/containers/BaseTickerContainer.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
+import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
+import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import formatAlbumRequestData
+  from '*/helpers/formatters/request/album/requestData'
 import formatTrackSourceParams
-  from '#/formatters/request/track/requestData'
-import { artistName as formatArtistName } from '#/formatters'
+  from '*/helpers/formatters/request/track/requestData'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'InfoBlock',

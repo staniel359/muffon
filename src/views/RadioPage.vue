@@ -31,9 +31,9 @@ import PlayerSegment from './RadioPage/PlayerSegment.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
   radio as formatRadioPageNavigation
-} from '#/formatters/navigation'
-import formatRadioPageTab from '#/formatters/tabs/radio'
-import { generateKey } from '#/utils'
+} from '*/helpers/formatters/navigation'
+import formatRadioPageTab from '*/helpers/formatters/tabs/radio'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'RadioPage',

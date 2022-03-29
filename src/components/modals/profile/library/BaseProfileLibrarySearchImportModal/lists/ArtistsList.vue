@@ -23,8 +23,9 @@
 
 <script>
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
   name: 'ArtistsList',

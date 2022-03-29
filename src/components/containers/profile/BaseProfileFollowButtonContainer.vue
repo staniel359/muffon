@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import createFollower from '#/actions/api/follower/create'
-import deleteFollower from '#/actions/api/follower/delete'
+import createFollower from '*/helpers/actions/api/follower/create'
+import deleteFollower from '*/helpers/actions/api/follower/delete'
 
 export default {
   name: 'BaseProfileFollowButtonContainer',

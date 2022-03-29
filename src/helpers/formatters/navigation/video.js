@@ -1,8 +1,8 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   videos as formatVideoChannelVideosLink
-} from '#/formatters/links/videoChannel'
-import { main as formatVideoMainLink } from '#/formatters/links/video'
+} from '*/helpers/formatters/links/videoChannel'
+import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
 
 export default function ({
   videoId,

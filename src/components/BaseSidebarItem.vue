@@ -22,8 +22,9 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 
 export default {
   name: 'BaseSidebarItem',

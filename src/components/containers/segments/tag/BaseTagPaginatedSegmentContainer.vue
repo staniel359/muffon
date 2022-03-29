@@ -38,9 +38,9 @@
 <script>
 import BaseTagSegmentContainer from './BaseTagSegmentContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseTagPaginatedSegmentContainer',

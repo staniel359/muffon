@@ -23,9 +23,9 @@
 </template>
 
 <script>
-import BaseIcon from '@/BaseIcon.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import { updateStore } from '#/actions'
+import BaseIcon from '*/components/BaseIcon.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'SourceItem',

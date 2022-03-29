@@ -31,15 +31,15 @@
 <script>
 import { mapState } from 'vuex'
 import BaseProfileImageField
-  from '@/fields/profile/BaseProfileImageField.vue'
+  from '*/components/fields/profile/BaseProfileImageField.vue'
 import BaseProfileGenderField
-  from '@/fields/profile/BaseProfileGenderField.vue'
+  from '*/components/fields/profile/BaseProfileGenderField.vue'
 import BaseProfileBirthdateField
-  from '@/fields/profile/BaseProfileBirthdateField.vue'
+  from '*/components/fields/profile/BaseProfileBirthdateField.vue'
 import BaseProfileCountryField
-  from '@/fields/profile/BaseProfileCountryField.vue'
+  from '*/components/fields/profile/BaseProfileCountryField.vue'
 import BaseProfileCityField
-  from '@/fields/profile/BaseProfileCityField.vue'
+  from '*/components/fields/profile/BaseProfileCityField.vue'
 
 export default {
   name: 'ExtraSection',

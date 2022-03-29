@@ -26,12 +26,13 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BaseAddTracksModal/SearchInput.vue'
-import BaseClearButton from '@/buttons/BaseClearButton.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import SearchList from './BaseAddTracksModal/SearchList.vue'
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'BaseAddTracksModal',

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BaseCounters from '@/BaseCounters.vue'
+import BaseCounters from '*/components/BaseCounters.vue'
 
 export default {
   name: 'CountersSection',

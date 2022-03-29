@@ -32,12 +32,14 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import getLibraryCompatibility from '#/actions/api/library/compatibility/get'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import getLibraryCompatibility
+  from '*/helpers/actions/api/library/compatibility/get'
 
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',

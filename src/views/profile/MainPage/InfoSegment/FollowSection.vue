@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import BaseProfileFollowingMessage
-  from '@/models/profile/BaseProfileFollowingMessage.vue'
+  from '*/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseProfileFollowButton
-  from '@/models/profile/BaseProfileFollowButton.vue'
+  from '*/components/models/profile/BaseProfileFollowButton.vue'
 
 export default {
   name: 'FollowSection',

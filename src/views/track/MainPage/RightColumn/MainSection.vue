@@ -14,9 +14,10 @@
 
 <script>
 import BaseTrackHorizontalCardContainer
-  from '@/containers/track/BaseTrackHorizontalCardContainer.vue'
+  from '*/components/containers/track/BaseTrackHorizontalCardContainer.vue'
 import InfoSection from './MainSection/InfoSection.vue'
-import BaseTrackPlayerPanel from '@/models/track/BaseTrackPlayerPanel.vue'
+import BaseTrackPlayerPanel
+  from '*/components/models/track/BaseTrackPlayerPanel.vue'
 
 export default {
   name: 'MainSection',

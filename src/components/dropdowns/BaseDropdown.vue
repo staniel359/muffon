@@ -15,8 +15,9 @@
 </template>
 
 <script>
-import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseDropdownContainer
+  from '*/components/containers/BaseDropdownContainer.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseDropdown',

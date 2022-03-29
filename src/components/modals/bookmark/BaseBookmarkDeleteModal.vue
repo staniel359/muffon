@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
-import deleteBookmark from '#/actions/api/bookmarks/model/delete'
+import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
+import deleteBookmark from '*/helpers/actions/api/bookmarks/model/delete'
 
 export default {
   name: 'BaseBookmarkDeleteModal',

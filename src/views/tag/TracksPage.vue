@@ -22,8 +22,9 @@
 
 <script>
 import BaseTagPaginatedPageContainer
-  from '@/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+  from '*/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'TracksPage',

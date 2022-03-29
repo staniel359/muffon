@@ -67,12 +67,13 @@
 import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLibrarySearchInput
-  from '@/models/profile/library/BaseProfileLibrarySearchInput.vue'
-import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
+  from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
+import BaseViewChangeButtons
+  from '*/components/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',

@@ -27,10 +27,11 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import { number as formatNumber } from '#/formatters'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'UserInfoSection',

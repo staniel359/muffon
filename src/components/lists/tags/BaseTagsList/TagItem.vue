@@ -18,11 +18,11 @@
 
 <script>
 import BaseLabelLinkContainer
-  from '@/containers/links/BaseLabelLinkContainer.vue'
-import { main as formatTagMainLink } from '#/formatters/links/tag'
+  from '*/components/containers/links/BaseLabelLinkContainer.vue'
+import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
 import {
   main as formatProfileLibraryTagMainLink
-} from '#/formatters/links/profile/library/tag'
+} from '*/helpers/formatters/links/profile/library/tag'
 
 export default {
   name: 'TagItem',

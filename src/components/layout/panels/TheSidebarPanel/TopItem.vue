@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
-import { main as formatTopMainLink } from '#/formatters/links/top'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import { main as formatTopMainLink } from '*/helpers/formatters/links/top'
 
 export default {
   name: 'TopItem',

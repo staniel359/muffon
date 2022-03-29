@@ -1,9 +1,9 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   main as formatArtistMainLink,
   tracks as formatArtistTracksLink
-} from '#/formatters/links/artist'
-import { main as formatTrackMainLink } from '#/formatters/links/track'
+} from '*/helpers/formatters/links/artist'
+import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
 
 export default function ({
   artistName,

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'BaseImageInput',

@@ -19,11 +19,11 @@
 
 <script>
 import BaseProfileLibraryPaginatedSegmentContainer
-  from '@/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
-import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
+  from '*/components/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
+import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
 import {
   tags as formatProfileLibraryTagsLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'TagsSegment',

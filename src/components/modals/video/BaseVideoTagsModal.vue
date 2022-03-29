@@ -15,8 +15,8 @@
 
 <script>
 import BaseVideoModalContainer
-  from '@/containers/modals/video/BaseVideoModalContainer.vue'
-import BaseModalTagsList from '@/lists/tags/BaseModalTagsList.vue'
+  from '*/components/containers/modals/video/BaseVideoModalContainer.vue'
+import BaseModalTagsList from '*/components/lists/tags/BaseModalTagsList.vue'
 
 export default {
   name: 'BaseVideoTagsModal',

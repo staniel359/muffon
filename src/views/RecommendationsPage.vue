@@ -56,14 +56,14 @@
 <script>
 import { mapState } from 'vuex'
 import BaseRecommendationsPageContainer
-  from '@/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
+  from '*/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import FiltersSegment from './RecommendationsPage/FiltersSegment.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsExtendedList
-  from '@/lists/artists/BaseArtistsExtendedList.vue'
+  from '*/components/lists/artists/BaseArtistsExtendedList.vue'
 
 export default {
   name: 'RecommendationsPage',

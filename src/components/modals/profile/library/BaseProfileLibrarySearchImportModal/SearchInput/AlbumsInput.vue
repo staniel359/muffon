@@ -10,8 +10,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsInput',

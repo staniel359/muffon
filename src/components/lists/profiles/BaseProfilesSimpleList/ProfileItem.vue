@@ -71,24 +71,29 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 import BaseProfileOnlineLabel
-  from '@/models/profile/BaseProfileOnlineLabel.vue'
-import BaseLabel from '@/BaseLabel.vue'
-import BaseProfileGenderAge from '@/models/profile/BaseProfileGenderAge.vue'
+  from '*/components/models/profile/BaseProfileOnlineLabel.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
+import BaseProfileGenderAge
+  from '*/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
-  from '@/models/profile/BaseProfileCityCountry.vue'
+  from '*/components/models/profile/BaseProfileCityCountry.vue'
 import BaseProfileFollowingCount
-  from '@/models/profile/BaseProfileFollowingCount.vue'
+  from '*/components/models/profile/BaseProfileFollowingCount.vue'
 import BaseProfileFollowingMessage
-  from '@/models/profile/BaseProfileFollowingMessage.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+  from '*/components/models/profile/BaseProfileFollowingMessage.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BaseProfileMessageModal
-  from '@/modals/profile/BaseProfileMessageModal.vue'
-import { main as formatProfileMainLink } from '#/formatters/links/profile'
-import { isCurrentProfile } from '#/utils'
+  from '*/components/modals/profile/BaseProfileMessageModal.vue'
+import {
+  main as formatProfileMainLink
+} from '*/helpers/formatters/links/profile'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'ProfileItem',

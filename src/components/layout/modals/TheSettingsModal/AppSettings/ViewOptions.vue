@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import DarkModeOption from './ViewOptions/DarkModeOption.vue'
 
 export default {

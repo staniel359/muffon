@@ -9,7 +9,7 @@
 
 <script>
 import TrackItem from './TracksList/TrackItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'TracksList',

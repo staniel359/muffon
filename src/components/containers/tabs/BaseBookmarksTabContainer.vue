@@ -34,11 +34,14 @@
 <script>
 import { mapState } from 'vuex'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
-import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import getBookmarks from '#/actions/api/bookmarks/get'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+import BaseAlbumsSimpleList
+  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import getBookmarks from '*/helpers/actions/api/bookmarks/get'
 
 export default {
   name: 'BaseBookmarksTabContainer',

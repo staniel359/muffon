@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import deleteListened from '#/actions/api/listened/model/delete'
-import createListenedArtist from '#/actions/api/listened/artist/create'
-import createListenedAlbum from '#/actions/api/listened/album/create'
-import createListenedTrack from '#/actions/api/listened/track/create'
+import deleteListened from '*/helpers/actions/api/listened/model/delete'
+import createListenedArtist from '*/helpers/actions/api/listened/artist/create'
+import createListenedAlbum from '*/helpers/actions/api/listened/album/create'
+import createListenedTrack from '*/helpers/actions/api/listened/track/create'
 
 export default {
   name: 'ListenedOption',

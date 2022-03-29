@@ -8,7 +8,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseMessage from '@/messages/BaseMessage.vue'
+import BaseMessage from '*/components/messages/BaseMessage.vue'
 
 export default {
   name: 'BaseNoCollectionMessage',

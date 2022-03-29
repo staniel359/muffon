@@ -42,13 +42,13 @@
 
 <script>
 import BaseProfilePageContainer
-  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseProfilesSimpleList
-  from '@/lists/profiles/BaseProfilesSimpleList.vue'
+  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 
 export default {
   name: 'FollowingPage',

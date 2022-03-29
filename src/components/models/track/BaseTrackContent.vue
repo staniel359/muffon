@@ -166,32 +166,35 @@
 </template>
 
 <script>
-import BaseDeletedBlock from '@/BaseDeletedBlock.vue'
-import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
-import BaseImage from '@/images/BaseImage.vue'
+import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
+import BaseTrackAudioIcon
+  from '*/components/models/track/BaseTrackAudioIcon.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
 import TrackIndex from './BaseTrackContent/TrackIndex.vue'
 import TrackTitle from './BaseTrackContent/TrackTitle.vue'
 import TrackArtistName from './BaseTrackContent/TrackArtistName.vue'
 import TrackAlbumTitle from './BaseTrackContent/TrackAlbumTitle.vue'
 import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
 import TrackDuration from './BaseTrackContent/TrackDuration.vue'
-import BaseSourceIcon from '@/BaseSourceIcon.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistsModal
+  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import BaseBookmarkDeleteModal
-  from '@/modals/bookmark/BaseBookmarkDeleteModal.vue'
+  from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
-  from '@/modals/favorite/BaseFavoriteDeleteModal.vue'
+  from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import BasePlaylistTrackDeleteModal
-  from '@/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
+  from '*/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
 import BaseProfileLibraryDeleteModal
-  from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   date as formatDate,
   time as formatTime,
   artistName as formatArtistName
-} from '#/formatters'
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTrackContent',

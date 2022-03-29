@@ -9,7 +9,7 @@
 
 <script>
 import TypeItem from './TypesList/TypeItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'TypesList',

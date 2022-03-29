@@ -22,11 +22,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
 import {
   collection as formatCollection,
   number as formatNumber
-} from '#/formatters'
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseStatistics',

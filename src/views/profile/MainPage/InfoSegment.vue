@@ -24,12 +24,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import MainInfoSection from './InfoSegment/MainInfoSection.vue'
 import ExtraInfoSection from './InfoSegment/ExtraInfoSection.vue'
 import FollowSection from './InfoSegment/FollowSection.vue'
 import MessageSection from './InfoSegment/MessageSection.vue'
-import { isCurrentProfile } from '#/utils'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'InfoSegment',

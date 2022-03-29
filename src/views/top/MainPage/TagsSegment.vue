@@ -14,8 +14,8 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '@/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
-import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
+  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
 
 export default {
   name: 'TagsSegment',

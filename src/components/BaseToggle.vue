@@ -10,8 +10,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { mainCheckboxOptions } from '#/data/plugins/semantic'
-import { setCheckbox, checkCheckbox } from '#/actions/plugins/semantic'
+import { mainCheckboxOptions } from '*/helpers/data/plugins/semantic'
+import { setCheckbox, checkCheckbox } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseToggle',

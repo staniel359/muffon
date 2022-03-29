@@ -8,10 +8,10 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   playlists as formatProfilePlaylistsLink
-} from '#/formatters/links/profile'
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'PlaylistsItem',

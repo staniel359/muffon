@@ -36,14 +36,15 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/links/BaseLink.vue'
-import { main as formatVideoMainLink } from '#/formatters/links/video'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
+import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
 import {
   videos as formatVideoChannelVideosLink
-} from '#/formatters/links/videoChannel'
+} from '*/helpers/formatters/links/videoChannel'
 
 export default {
   name: 'VideoItem',

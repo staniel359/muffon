@@ -28,9 +28,9 @@
 
 <script>
 import BaseProfileLibraryTagPaginatedPageContainer
-  from '@/containers/pages/profile/library/tag/BaseProfileLibraryTagPaginatedPageContainer.vue'
-import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
-import { isCurrentProfile } from '#/utils'
+  from '*/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPaginatedPageContainer.vue'
+import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'ArtistsPage',

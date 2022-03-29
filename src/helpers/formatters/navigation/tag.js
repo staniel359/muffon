@@ -1,5 +1,5 @@
-import i18n from '&/i18n'
-import { main as formatTagMainLink } from '#/formatters/links/tag'
+import i18n from '*/plugins/i18n'
+import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
 
 export default function ({ tagName, pageNameKey }) {
   const formatLink = () => {

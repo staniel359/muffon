@@ -25,8 +25,9 @@
 
 <script>
 import BaseArtistPaginatedPageContainer
-  from '@/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
-import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
+  from '*/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
+import BaseAlbumsTableList
+  from '*/components/lists/albums/BaseAlbumsTableList.vue'
 
 export default {
   name: 'AlbumsPage',

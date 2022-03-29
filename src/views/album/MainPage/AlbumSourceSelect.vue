@@ -11,8 +11,10 @@
 </template>
 
 <script>
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
-import BaseAlbumSourceSelect from '@/models/album/BaseAlbumSourceSelect.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
+import BaseAlbumSourceSelect
+  from '*/components/models/album/BaseAlbumSourceSelect.vue'
 
 export default {
   name: 'AlbumSourceSelect',

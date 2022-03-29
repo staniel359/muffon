@@ -23,8 +23,9 @@
 </template>
 
 <script>
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseArtistLinks from '@/links/BaseArtistLinks.vue'
+import BaseHeaderContainer
+  from '*/components/containers/BaseHeaderContainer.vue'
+import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'AlbumHeader',

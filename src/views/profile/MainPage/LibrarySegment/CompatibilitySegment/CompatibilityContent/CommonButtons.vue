@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseCommonProfileArtistsModal
-  from '@/modals/profile/library/compatibility/BaseCommonProfileArtistsModal.vue'
+  from '*/components/modals/profile/library/compatibility/BaseCommonProfileArtistsModal.vue'
 import BaseCommonProfileAlbumsModal
-  from '@/modals/profile/library/compatibility/BaseCommonProfileAlbumsModal.vue'
+  from '*/components/modals/profile/library/compatibility/BaseCommonProfileAlbumsModal.vue'
 import BaseCommonProfileTracksModal
-  from '@/modals/profile/library/compatibility/BaseCommonProfileTracksModal.vue'
-import { collection as formatCollection } from '#/formatters'
+  from '*/components/modals/profile/library/compatibility/BaseCommonProfileTracksModal.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'CommonButtons',

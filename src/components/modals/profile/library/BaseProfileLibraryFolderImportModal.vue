@@ -18,10 +18,11 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import FolderSelectSection
   from './BaseProfileLibraryFolderImportModal/FolderSelectSection.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import ImportSection
   from './BaseProfileLibraryFolderImportModal/ImportSection.vue'
 import SaveSection from './BaseProfileLibraryFolderImportModal/SaveSection.vue'

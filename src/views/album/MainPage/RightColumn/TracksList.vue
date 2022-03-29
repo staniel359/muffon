@@ -18,9 +18,10 @@
 </template>
 
 <script>
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import audioSources from '#/data/audio/sources'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import audioSources from '*/helpers/data/audio/sources'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'TracksList',

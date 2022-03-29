@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import BaseHeader from '@/BaseHeader.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 import FeedSegment from './FeedPage/FeedSegment.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
   feed as formatFeedPageNavigation
-} from '#/formatters/navigation'
-import { feed as formatFeedPageTab } from '#/formatters/tabs'
+} from '*/helpers/formatters/navigation'
+import { feed as formatFeedPageTab } from '*/helpers/formatters/tabs'
 
 export default {
   name: 'FeedPage',

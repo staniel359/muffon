@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
-import deletePost from '#/actions/api/post/delete'
+import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
+import deletePost from '*/helpers/actions/api/post/delete'
 
 export default {
   name: 'BasePostDeleteModal',

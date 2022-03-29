@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseProfileMessageModal
-  from '@/modals/profile/BaseProfileMessageModal.vue'
+  from '*/components/modals/profile/BaseProfileMessageModal.vue'
 
 export default {
   name: 'MessageSection',

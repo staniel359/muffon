@@ -13,7 +13,7 @@
 
 <script>
 import SearchList from './SearchList.vue'
-import BaseSaveButton from '@/buttons/BaseSaveButton.vue'
+import BaseSaveButton from '*/components/buttons/BaseSaveButton.vue'
 
 export default {
   name: 'ImportSection',

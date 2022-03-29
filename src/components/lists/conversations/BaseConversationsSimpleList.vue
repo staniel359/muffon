@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
 import ConversationItem
   from './BaseConversationsSimpleList/ConversationItem.vue'
 

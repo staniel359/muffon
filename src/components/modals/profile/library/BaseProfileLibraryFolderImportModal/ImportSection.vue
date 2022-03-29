@@ -18,10 +18,10 @@
 
 <script>
 import musicMetadata from 'music-metadata'
-import BaseProgress from '@/BaseProgress.vue'
+import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
-import { tags as formatFileTags } from '#/formatters/file'
-import { generateKey } from '#/utils'
+import { tags as formatFileTags } from '*/helpers/formatters/file'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'ImportSection',

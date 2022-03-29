@@ -36,12 +36,15 @@
 <script>
 import { mapState } from 'vuex'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
-import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import getFavorites from '#/actions/api/favorites/get'
-import { isCurrentProfile } from '#/utils'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+import BaseAlbumsSimpleList
+  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import getFavorites from '*/helpers/actions/api/favorites/get'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileFavoriteTabContainer',

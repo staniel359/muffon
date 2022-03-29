@@ -17,7 +17,7 @@
 
 <script>
 import axios from 'axios'
-import { setSearch } from '#/actions/plugins/semantic'
+import { setSearch } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseSearchInput',

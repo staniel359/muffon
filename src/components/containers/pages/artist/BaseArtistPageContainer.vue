@@ -23,13 +23,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatArtistPageNavigation from '#/formatters/navigation/artist'
-import formatArtistPageTab from '#/formatters/tabs/artist'
-import getArtist from '#/actions/api/artist/get'
+import formatArtistPageNavigation from '*/helpers/formatters/navigation/artist'
+import formatArtistPageTab from '*/helpers/formatters/tabs/artist'
+import getArtist from '*/helpers/actions/api/artist/get'
 import getBandcampArtistId
-  from '#/actions/api/bandcamp_id/artist/get'
+  from '*/helpers/actions/api/bandcamp_id/artist/get'
 
 export default {
   name: 'BaseArtistPageContainer',

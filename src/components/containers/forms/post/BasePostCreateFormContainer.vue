@@ -9,10 +9,11 @@
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { postFormOptions } from '#/data/plugins/semantic'
-import createPost from '#/actions/api/post/create'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { postFormOptions } from '*/helpers/data/plugins/semantic'
+import createPost from '*/helpers/actions/api/post/create'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'BasePostCreateFormContainer',

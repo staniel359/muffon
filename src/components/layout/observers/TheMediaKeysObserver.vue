@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import getQueueTrack from '#/actions/queue/track/get'
-import { updateStore } from '#/actions'
+import getQueueTrack from '*/helpers/actions/queue/track/get'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'TheMediaKeysObserver',

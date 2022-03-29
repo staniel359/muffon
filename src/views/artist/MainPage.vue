@@ -18,7 +18,7 @@
 
 <script>
 import BaseArtistPageContainer
-  from '@/containers/pages/artist/BaseArtistPageContainer.vue'
+  from '*/components/containers/pages/artist/BaseArtistPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 

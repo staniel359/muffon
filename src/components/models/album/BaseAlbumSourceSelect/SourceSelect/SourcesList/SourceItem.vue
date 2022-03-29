@@ -18,7 +18,7 @@
 
 <script>
 import BaseAlbumSourceItemContainer
-  from '@/containers/album/BaseAlbumSourceItemContainer.vue'
+  from '*/components/containers/album/BaseAlbumSourceItemContainer.vue'
 import SourceItemContent from './SourceItem/SourceItemContent.vue'
 
 export default {

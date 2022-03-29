@@ -14,12 +14,13 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
 import OtherProfileSection from './ConversationItem/OtherProfileSection.vue'
 import LastMessageSegment from './ConversationItem/LastMessageSegment.vue'
 import {
   conversation as formatConversationLink
-} from '#/formatters/links/conversations'
+} from '*/helpers/formatters/links/conversations'
 
 export default {
   name: 'ConversationItem',

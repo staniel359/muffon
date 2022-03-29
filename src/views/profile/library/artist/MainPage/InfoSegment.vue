@@ -66,18 +66,22 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BaseProfileLibraryDeleteModal
-  from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import { isCurrentProfile } from '#/utils'
-import { date as formatDate } from '#/formatters'
+  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import {
+  main as formatArtistMainLink
+} from '*/helpers/formatters/links/artist'
+import { isCurrentProfile } from '*/helpers/utils'
+import { date as formatDate } from '*/helpers/formatters'
 
 export default {
   name: 'InfoSegment',

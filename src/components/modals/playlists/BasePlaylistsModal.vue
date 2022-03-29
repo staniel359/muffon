@@ -38,14 +38,15 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleSelectableList
-  from '@/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
-import getProfilePlaylists from '#/actions/api/profile/playlists/get'
+  from '*/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
+import getProfilePlaylists from '*/helpers/actions/api/profile/playlists/get'
 
 export default {
   name: 'BasePlaylistsModal',

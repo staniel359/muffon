@@ -27,7 +27,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { number as formatNumber } from '#/formatters'
+import { number as formatNumber } from '*/helpers/formatters'
 
 const widthMaxPercent = 70
 

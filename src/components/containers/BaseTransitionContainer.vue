@@ -9,7 +9,7 @@ import {
   setVisibility,
   showTransition,
   hideTransition
-} from '#/actions/plugins/semantic'
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseTransitionContainer',

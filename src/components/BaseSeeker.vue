@@ -12,7 +12,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { setSeeker } from '#/actions/plugins/semantic'
+import { setSeeker } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseSeeker',

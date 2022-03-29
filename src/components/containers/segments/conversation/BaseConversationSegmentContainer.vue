@@ -15,8 +15,8 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import getConversation from '#/actions/api/conversation/get'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import getConversation from '*/helpers/actions/api/conversation/get'
 
 export default {
   name: 'BaseConversationSegmentContainer',

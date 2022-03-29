@@ -38,7 +38,7 @@
 
 <script>
 import BaseProfilePageContainer
-  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import LibrarySegment from './MainPage/LibrarySegment.vue'
 import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'

@@ -22,8 +22,8 @@ import {
   incrementProgress,
   resetProgress,
   setProgressValue
-} from '#/actions/plugins/semantic'
-import { mainProgressOptions } from '#/data/plugins/semantic'
+} from '*/helpers/actions/plugins/semantic'
+import { mainProgressOptions } from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseProgress',

@@ -36,10 +36,12 @@
 </template>
 
 <script>
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistsModal
+  from '*/components/modals/playlists/BasePlaylistsModal.vue'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'SelfSection',

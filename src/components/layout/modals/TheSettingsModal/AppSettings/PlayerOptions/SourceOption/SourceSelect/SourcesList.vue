@@ -10,7 +10,7 @@
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
   streamableCollection as getStreamableSourcesCollection
-} from '#/formatters/sources'
+} from '*/helpers/formatters/sources'
 
 export default {
   name: 'SourcesList',

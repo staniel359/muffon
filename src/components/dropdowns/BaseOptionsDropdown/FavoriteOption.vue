@@ -20,10 +20,11 @@
 </template>
 
 <script>
-import deleteFavorite from '#/actions/api/favorites/model/delete'
-import createFavoriteArtist from '#/actions/api/favorites/artist/create'
-import createFavoriteAlbum from '#/actions/api/favorites/album/create'
-import createFavoriteTrack from '#/actions/api/favorites/track/create'
+import deleteFavorite from '*/helpers/actions/api/favorites/model/delete'
+import createFavoriteArtist
+  from '*/helpers/actions/api/favorites/artist/create'
+import createFavoriteAlbum from '*/helpers/actions/api/favorites/album/create'
+import createFavoriteTrack from '*/helpers/actions/api/favorites/track/create'
 
 export default {
   name: 'FavoriteOption',

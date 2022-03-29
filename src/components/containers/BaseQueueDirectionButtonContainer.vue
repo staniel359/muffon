@@ -13,8 +13,8 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
-import getQueueTrack from '#/actions/queue/track/get'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import getQueueTrack from '*/helpers/actions/queue/track/get'
 
 export default {
   name: 'BaseQueueDirectionButtonContainer',

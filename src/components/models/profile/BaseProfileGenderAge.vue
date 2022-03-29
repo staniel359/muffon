@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { age as formatAge } from '#/formatters'
+import { age as formatAge } from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfileGenderAge',

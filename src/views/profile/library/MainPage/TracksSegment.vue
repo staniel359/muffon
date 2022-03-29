@@ -26,11 +26,12 @@
 
 <script>
 import BaseProfileLibraryPaginatedSegmentContainer
-  from '@/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
+  from '*/components/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   tracks as formatProfileLibraryTracksLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'TracksSegment',

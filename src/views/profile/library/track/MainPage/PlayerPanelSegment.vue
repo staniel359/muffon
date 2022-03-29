@@ -14,8 +14,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseTrackPlayerPanel from '@/models/track/BaseTrackPlayerPanel.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseTrackPlayerPanel
+  from '*/components/models/track/BaseTrackPlayerPanel.vue'
 
 export default {
   name: 'PlayerPanelSegment',

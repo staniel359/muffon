@@ -1,5 +1,5 @@
-import i18n from '&/i18n'
-import { main as formatAlbumMainLink } from '#/formatters/links/album'
+import i18n from '*/plugins/i18n'
+import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
 
 export default function ({
   artistName,

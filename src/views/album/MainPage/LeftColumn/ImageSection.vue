@@ -15,9 +15,10 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import BaseAlbumImageModal from '@/modals/album/BaseAlbumImageModal.vue'
-import { showModal } from '#/actions/plugins/semantic'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseAlbumImageModal
+  from '*/components/modals/album/BaseAlbumImageModal.vue'
+import { showModal } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ImageSection',

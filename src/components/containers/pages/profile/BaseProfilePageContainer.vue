@@ -19,15 +19,20 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatProfilePageNavigation from '#/formatters/navigation/profile'
-import formatProfilePageTab from '#/formatters/tabs/profile'
-import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
-import formatProfileFavoritesPageTab from '#/formatters/tabs/profile/favorites'
-import formatProfilePlaylistsPageTab from '#/formatters/tabs/profile/playlists'
-import formatProfilePostsPageTab from '#/formatters/tabs/profile/posts'
-import getProfile from '#/actions/api/profile/get'
+import formatProfilePageNavigation
+  from '*/helpers/formatters/navigation/profile'
+import formatProfilePageTab from '*/helpers/formatters/tabs/profile'
+import formatProfileLibraryPageTab
+  from '*/helpers/formatters/tabs/profile/library'
+import formatProfileFavoritesPageTab
+  from '*/helpers/formatters/tabs/profile/favorites'
+import formatProfilePlaylistsPageTab
+  from '*/helpers/formatters/tabs/profile/playlists'
+import formatProfilePostsPageTab from '*/helpers/formatters/tabs/profile/posts'
+import getProfile from '*/helpers/actions/api/profile/get'
 
 export default {
   name: 'BaseProfilePageContainer',

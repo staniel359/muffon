@@ -5,8 +5,8 @@
 <script>
 import { mapActions } from 'vuex'
 import { ipcRenderer } from 'electron'
-import i18n from '&/i18n'
-import local from '&/local'
+import i18n from '*/plugins/i18n'
+import local from '*/plugins/local'
 
 export default {
   name: 'TheLocalObserver',

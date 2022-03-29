@@ -27,8 +27,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import ProfileArtistsFilterBlock
   from './FiltersSegment/ProfileArtistsFilterBlock.vue'
 import TagsFilterBlock from './FiltersSegment/TagsFilterBlock.vue'

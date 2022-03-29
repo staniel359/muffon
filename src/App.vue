@@ -32,19 +32,23 @@
 </template>
 
 <script>
-import TheStoreObserver from '@/layout/observers/TheStoreObserver.vue'
-import TheLocalObserver from '@/layout/observers/TheLocalObserver.vue'
-import TheMediaKeysObserver from '@/layout/observers/TheMediaKeysObserver.vue'
-import TheBackground from '@/layout/TheBackground.vue'
-import TheView from '@/layout/TheView.vue'
-import ThePlayerObserver from '@/layout/observers/ThePlayerObserver.vue'
-import TheNavbarPanel from '@/layout/panels/TheNavbarPanel.vue'
-import TheSidebarPanel from '@/layout/panels/TheSidebarPanel.vue'
-import TheQueuePanel from '@/layout/panels/TheQueuePanel.vue'
-import ThePlayerPanel from '@/layout/panels/ThePlayerPanel.vue'
-import TheVisibleArea from '@/layout/TheVisibleArea.vue'
-import TheSearchModal from '@/layout/modals/TheSearchModal.vue'
-import TheLoaderDimmer from '@/layout/TheLoaderDimmer.vue'
+import TheStoreObserver
+  from '*/components/layout/observers/TheStoreObserver.vue'
+import TheLocalObserver
+  from '*/components/layout/observers/TheLocalObserver.vue'
+import TheMediaKeysObserver
+  from '*/components/layout/observers/TheMediaKeysObserver.vue'
+import TheBackground from '*/components/layout/TheBackground.vue'
+import TheView from '*/components/layout/TheView.vue'
+import ThePlayerObserver
+  from '*/components/layout/observers/ThePlayerObserver.vue'
+import TheNavbarPanel from '*/components/layout/panels/TheNavbarPanel.vue'
+import TheSidebarPanel from '*/components/layout/panels/TheSidebarPanel.vue'
+import TheQueuePanel from '*/components/layout/panels/TheQueuePanel.vue'
+import ThePlayerPanel from '*/components/layout/panels/ThePlayerPanel.vue'
+import TheVisibleArea from '*/components/layout/TheVisibleArea.vue'
+import TheSearchModal from '*/components/layout/modals/TheSearchModal.vue'
+import TheLoaderDimmer from '*/components/layout/TheLoaderDimmer.vue'
 
 export default {
   name: 'App',

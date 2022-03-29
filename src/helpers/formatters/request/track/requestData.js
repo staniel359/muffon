@@ -1,4 +1,4 @@
-import { artistName as formatArtistName } from '#/formatters'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default function ({ sourceId, trackData }) {
   const artistData = trackData.artist

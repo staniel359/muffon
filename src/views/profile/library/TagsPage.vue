@@ -19,8 +19,8 @@
 
 <script>
 import BaseProfileLibraryPaginatedPageContainer
-  from '@/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
-import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
+  from '*/components/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
+import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
 
 export default {
   name: 'TagsPage',

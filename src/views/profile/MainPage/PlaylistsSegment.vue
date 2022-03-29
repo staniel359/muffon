@@ -35,13 +35,13 @@
 <script>
 import HeaderSegment from './PlaylistsSegment/HeaderSegment.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
-  from '@/lists/playlists/BasePlaylistsSimpleList.vue'
-import getProfilePlaylists from '#/actions/api/profile/playlists/get'
-import { focusOnSegment } from '#/actions/layout'
+  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+import getProfilePlaylists from '*/helpers/actions/api/profile/playlists/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'PlaylistsSegment',

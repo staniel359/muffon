@@ -34,13 +34,14 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BasePlaylistSearchImportModal/SearchInput.vue'
-import BaseClearButton from '@/buttons/BaseClearButton.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import ImportSection from './BasePlaylistSearchImportModal/ImportSection.vue'
 import SaveSection from './BasePlaylistSearchImportModal/SaveSection.vue'
-import { generateKey } from '#/utils'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'BasePlaylistSearchImportModal',

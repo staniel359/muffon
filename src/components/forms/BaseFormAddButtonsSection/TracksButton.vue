@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import BaseButton from '@/buttons/BaseButton.vue'
-import BaseAddTracksModal from '@/modals/BaseAddTracksModal.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseAddTracksModal from '*/components/modals/BaseAddTracksModal.vue'
 
 export default {
   name: 'TracksButton',

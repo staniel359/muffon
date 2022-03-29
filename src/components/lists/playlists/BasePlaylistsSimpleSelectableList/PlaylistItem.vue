@@ -41,12 +41,13 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import { number as formatNumber } from '#/formatters'
-import createPlaylistTrack from '#/actions/api/playlist/track/create'
-import deletePlaylistTrack from '#/actions/api/playlist/track/delete'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import { number as formatNumber } from '*/helpers/formatters'
+import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
+import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
 
 export default {
   name: 'PlaylistItem',

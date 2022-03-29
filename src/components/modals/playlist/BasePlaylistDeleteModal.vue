@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import BaseDeleteModal from '@/modals/BaseDeleteModal.vue'
-import deletePlaylist from '#/actions/api/playlist/delete'
+import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
+import deletePlaylist from '*/helpers/actions/api/playlist/delete'
 import {
   playlists as formatProfilePlaylistsLink
-} from '#/formatters/links/profile'
-import { setToast } from '#/actions/plugins/semantic'
+} from '*/helpers/formatters/links/profile'
+import { setToast } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BasePlaylistDeleteModal',

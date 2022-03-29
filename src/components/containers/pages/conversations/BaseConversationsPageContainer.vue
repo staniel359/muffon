@@ -18,12 +18,14 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatConversationsPageNavigation
-  from '#/formatters/navigation/conversations'
-import formatConversationsPageTab from '#/formatters/tabs/conversations'
-import getConversations from '#/actions/api/conversations/get'
+  from '*/helpers/formatters/navigation/conversations'
+import formatConversationsPageTab
+  from '*/helpers/formatters/tabs/conversations'
+import getConversations from '*/helpers/actions/api/conversations/get'
 
 export default {
   name: 'BaseConversationsPageContainer',

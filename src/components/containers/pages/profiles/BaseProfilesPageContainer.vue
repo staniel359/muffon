@@ -18,13 +18,14 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
   profiles as formatProfilesPageNavigation
-} from '#/formatters/navigation'
-import formatProfilesPageTab from '#/formatters/tabs/profiles'
-import getProfiles from '#/actions/api/profiles/get'
+} from '*/helpers/formatters/navigation'
+import formatProfilesPageTab from '*/helpers/formatters/tabs/profiles'
+import getProfiles from '*/helpers/actions/api/profiles/get'
 
 export default {
   name: 'BaseProfilesPageContainer',

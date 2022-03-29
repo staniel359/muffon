@@ -20,17 +20,17 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLoginFormContainer
-  from '@/containers/forms/profile/BaseProfileLoginFormContainer.vue'
+  from '*/components/containers/forms/profile/BaseProfileLoginFormContainer.vue'
 import BaseProfileEmailField
-  from '@/fields/profile/BaseProfileEmailField.vue'
+  from '*/components/fields/profile/BaseProfileEmailField.vue'
 import BaseProfilePasswordField
-  from '@/fields/profile/BaseProfilePasswordField.vue'
+  from '*/components/fields/profile/BaseProfilePasswordField.vue'
 import BaseProfileRememberField
-  from '@/fields/profile/BaseProfileRememberField.vue'
+  from '*/components/fields/profile/BaseProfileRememberField.vue'
 import BaseProfileSubmitButton
-  from '@/forms/profile/BaseProfileSubmitButton.vue'
+  from '*/components/forms/profile/BaseProfileSubmitButton.vue'
 
 export default {
   name: 'FormSegment',

@@ -16,21 +16,6 @@ module.exports = {
       alias: {
         '*': path.resolve(
           __dirname, './src'
-        ),
-        '@': path.resolve(
-          __dirname, './src/components'
-        ),
-        '#': path.resolve(
-          __dirname, './src/helpers'
-        ),
-        '%': path.resolve(
-          __dirname, './src/views'
-        ),
-        '&': path.resolve(
-          __dirname, './src/plugins'
-        ),
-        semantic: path.resolve(
-          __dirname, './semantic'
         )
       }
     },

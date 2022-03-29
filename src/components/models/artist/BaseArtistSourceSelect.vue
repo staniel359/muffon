@@ -12,9 +12,10 @@
 </template>
 
 <script>
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import BaseArtistAlbumsSourceSelect
-  from '@/models/artist/BaseArtistAlbumsSourceSelect.vue'
+  from '*/components/models/artist/BaseArtistAlbumsSourceSelect.vue'
 
 export default {
   name: 'BaseArtistSourceSelect',

@@ -24,9 +24,12 @@
 
 <script>
 import BaseArtistPaginatedSegmentContainer
-  from '@/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
-import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
-import { similar as formatArtistSimilarLink } from '#/formatters/links/artist'
+  from '*/components/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
+import BaseArtistsTableList
+  from '*/components/lists/artists/BaseArtistsTableList.vue'
+import {
+  similar as formatArtistSimilarLink
+} from '*/helpers/formatters/links/artist'
 
 export default {
   name: 'SimilarSegment',

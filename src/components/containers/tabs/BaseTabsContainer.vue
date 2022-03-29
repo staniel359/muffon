@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import BaseTabs from '@/BaseTabs.vue'
+import BaseTabs from '*/components/BaseTabs.vue'
 
 export default {
   name: 'BaseTabsContainer',

@@ -15,8 +15,8 @@
 
 <script>
 import BaseModalContentContainer
-  from '@/containers/modals/BaseModalContentContainer.vue'
-import getArtist from '#/actions/api/artist/get'
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import getArtist from '*/helpers/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistModalContainer',

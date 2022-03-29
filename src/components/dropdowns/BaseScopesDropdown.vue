@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseDropdown from '@/dropdowns/BaseDropdown.vue'
+import BaseDropdown from '*/components/dropdowns/BaseDropdown.vue'
 
 export default {
   name: 'BaseScopesDropdown',

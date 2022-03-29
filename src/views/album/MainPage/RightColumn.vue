@@ -17,7 +17,7 @@
 
 <script>
 import InfoSection from './RightColumn/InfoSection.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import TracksList from './RightColumn/TracksList.vue'
 
 export default {

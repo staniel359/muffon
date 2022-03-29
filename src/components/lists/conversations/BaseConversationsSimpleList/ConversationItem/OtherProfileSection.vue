@@ -15,8 +15,9 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseProfileNickname
+  from '*/components/models/profile/BaseProfileNickname.vue'
 
 export default {
   name: 'OtherProfileSection',

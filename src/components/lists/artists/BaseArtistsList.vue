@@ -17,10 +17,12 @@
 </template>
 
 <script>
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
-import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+import BaseArtistsTableList
+  from '*/components/lists/artists/BaseArtistsTableList.vue'
 import BaseArtistsExtendedList
-  from '@/lists/artists/BaseArtistsExtendedList.vue'
+  from '*/components/lists/artists/BaseArtistsExtendedList.vue'
 
 export default {
   name: 'BaseArtistsList',

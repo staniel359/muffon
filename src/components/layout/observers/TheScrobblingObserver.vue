@@ -4,10 +4,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import createScrobblerPlay from '#/actions/api/lastfm/scrobbler/play/create'
-import createScrobblerSave from '#/actions/api/lastfm/scrobbler/save/create'
-import { updateStore } from '#/actions'
-import { artistName as formatArtistName } from '#/formatters'
+import createScrobblerPlay
+  from '*/helpers/actions/api/lastfm/scrobbler/play/create'
+import createScrobblerSave
+  from '*/helpers/actions/api/lastfm/scrobbler/save/create'
+import { updateStore } from '*/helpers/actions'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'TheScrobblingObserver',

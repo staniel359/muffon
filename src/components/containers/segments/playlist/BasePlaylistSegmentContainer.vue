@@ -15,8 +15,8 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import getPlaylist from '#/actions/api/playlist/get'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import getPlaylist from '*/helpers/actions/api/playlist/get'
 
 export default {
   name: 'BasePlaylistSegmentContainer',

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseImage from '*/components/images/BaseImage.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseImagesSection',

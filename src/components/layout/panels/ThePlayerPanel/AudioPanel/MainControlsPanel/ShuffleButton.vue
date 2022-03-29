@@ -9,9 +9,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
-import { updateStore } from '#/actions'
-import { shuffleArray } from '#/utils'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import { updateStore } from '*/helpers/actions'
+import { shuffleArray } from '*/helpers/utils'
 
 export default {
   name: 'ShuffleButton',

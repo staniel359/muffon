@@ -38,13 +38,15 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
-import getRecommendation from '#/actions/api/recommendation/get'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+import getRecommendation from '*/helpers/actions/api/recommendation/get'
 
 export default {
   name: 'BaseRecommendationProfileArtistsModal',

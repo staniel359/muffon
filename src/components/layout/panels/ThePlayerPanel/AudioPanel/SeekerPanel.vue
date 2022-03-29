@@ -12,16 +12,16 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseSeeker from '@/BaseSeeker.vue'
-import { setSeekerValue } from '#/actions/plugins/semantic'
-import { mainSeekerOptions } from '#/data/plugins/semantic'
+import BaseSeeker from '*/components/BaseSeeker.vue'
+import { setSeekerValue } from '*/helpers/actions/plugins/semantic'
+import { mainSeekerOptions } from '*/helpers/data/plugins/semantic'
 import {
   clone as cloneElement,
   addClass as addElementClass,
   setPercentWidth as setElementPercentWidth,
   insertAfter as insertElementAfter
-} from '#/actions/plugins/jquery'
-import { generateKey } from '#/utils'
+} from '*/helpers/actions/plugins/jquery'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'SeekerPanel',

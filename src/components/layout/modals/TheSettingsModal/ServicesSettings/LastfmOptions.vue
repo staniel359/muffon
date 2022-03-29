@@ -26,7 +26,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import ConnectOption from './LastfmOptions/ConnectOption.vue'
 import ScrobbleOption from './LastfmOptions/ScrobbleOption.vue'
 import ScrobbleNotificationsOption

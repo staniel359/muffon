@@ -44,10 +44,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
-import BaseTimestamp from '@/BaseTimestamp.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseProfileNickname
+  from '*/components/models/profile/BaseProfileNickname.vue'
+import BaseTimestamp from '*/components/BaseTimestamp.vue'
 
 export default {
   name: 'LastMessageSegment',

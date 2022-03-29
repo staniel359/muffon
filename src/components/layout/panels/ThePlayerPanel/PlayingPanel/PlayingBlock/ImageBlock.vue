@@ -15,9 +15,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'ImageBlock',

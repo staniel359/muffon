@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseSourceIcon from '@/BaseSourceIcon.vue'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 
 export default {
   name: 'SourceSection',

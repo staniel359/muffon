@@ -17,8 +17,11 @@
 </template>
 
 <script>
-import { setCalendar, setCalendarDate } from '#/actions/plugins/semantic'
-import { birthdateCalendarOptions } from '#/data/plugins/semantic'
+import {
+  setCalendar,
+  setCalendarDate
+} from '*/helpers/actions/plugins/semantic'
+import { birthdateCalendarOptions } from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseProfileBirthdateField',

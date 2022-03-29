@@ -56,17 +56,21 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import SuccessMessage from './BaseProfileMessageModal/SuccessMessage.vue'
 import OtherProfileSection
   from './BaseProfileMessageModal/OtherProfileSection.vue'
 import BaseMessageCreateFormContainer
-  from '@/containers/forms/message/BaseMessageCreateFormContainer.vue'
-import BaseContentField from '@/fields/BaseContentField.vue'
-import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
-import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
-import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
-import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
+  from '*/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
+import BaseContentField from '*/components/fields/BaseContentField.vue'
+import BaseFormImagesSection
+  from '*/components/forms/BaseFormImagesSection.vue'
+import BaseFormTracksSection
+  from '*/components/forms/BaseFormTracksSection.vue'
+import BaseFormAddButtonsSection
+  from '*/components/forms/BaseFormAddButtonsSection.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'BaseProfileMessageModal',

@@ -16,10 +16,10 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import getTag from '#/actions/api/tag/get'
-import { collection as formatCollection } from '#/formatters'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import getTag from '*/helpers/actions/api/tag/get'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'CoverSegment',

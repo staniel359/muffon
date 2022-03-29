@@ -1,5 +1,5 @@
-import local from '&/local'
-import { getDistinctArray } from '#/utils'
+import local from '*/plugins/local'
+import { getDistinctArray } from '*/helpers/utils'
 
 export const get = (key, { isDistinct }) => {
   const historyKey = `history.${key}`

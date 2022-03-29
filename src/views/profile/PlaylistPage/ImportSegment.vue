@@ -15,8 +15,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import SearchImportBlock from './ImportSegment/SearchImportBlock.vue'
 import LibraryImportBlock from './ImportSegment/LibraryImportBlock.vue'
 

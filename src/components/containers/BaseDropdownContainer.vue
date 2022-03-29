@@ -32,14 +32,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseIcon from '@/BaseIcon.vue'
-import { mainDropdownOptions } from '#/data/plugins/semantic'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
+import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
 import {
   setDropdown,
   setDropdownValue,
   resetDropdown
-} from '#/actions/plugins/semantic'
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseDropdownContainer',

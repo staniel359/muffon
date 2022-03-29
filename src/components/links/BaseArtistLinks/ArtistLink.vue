@@ -9,11 +9,13 @@
 </template>
 
 <script>
-import BaseLink from '@/links/BaseLink.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
+import BaseLink from '*/components/links/BaseLink.vue'
+import {
+  main as formatArtistMainLink
+} from '*/helpers/formatters/links/artist'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'ArtistLink',

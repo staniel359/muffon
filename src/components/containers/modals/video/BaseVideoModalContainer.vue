@@ -15,8 +15,8 @@
 
 <script>
 import BaseModalContentContainer
-  from '@/containers/modals/BaseModalContentContainer.vue'
-import getVideo from '#/actions/api/video/get'
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import getVideo from '*/helpers/actions/api/video/get'
 
 export default {
   name: 'BaseVideoModalContainer',

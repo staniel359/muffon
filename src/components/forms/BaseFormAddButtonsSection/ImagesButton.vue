@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import BaseButton from '@/buttons/BaseButton.vue'
-import BaseImageInput from '@/inputs/BaseImageInput.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
 
 export default {
   name: 'ImagesButton',

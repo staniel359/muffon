@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import { setDropdownValue } from '#/actions/plugins/semantic'
-import { collection as formatCollection } from '#/formatters'
+import { setDropdownValue } from '*/helpers/actions/plugins/semantic'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfileGenderField',

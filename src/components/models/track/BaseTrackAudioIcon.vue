@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseIcon from '@/BaseIcon.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import { mapGetters } from 'vuex'
 
 export default {

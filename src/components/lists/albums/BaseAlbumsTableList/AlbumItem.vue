@@ -82,16 +82,18 @@
 
 <script>
 import BaseAlbumLinkContainer
-  from '@/containers/album/BaseAlbumLinkContainer.vue'
-import BaseSimpleCardContainer from '@/containers/BaseSimpleCardContainer.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BaseHeader from '@/BaseHeader.vue'
+  from '*/components/containers/album/BaseAlbumLinkContainer.vue'
+import BaseSimpleCardContainer
+  from '*/components/containers/BaseSimpleCardContainer.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 import ArtistNameSection from './AlbumItem/ArtistNameSection.vue'
 import BaseAlbumListenersCount
-  from '@/models/album/BaseAlbumListenersCount.vue'
+  from '*/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',

@@ -12,7 +12,7 @@
 
 <script>
 import ArtistLink from './BaseArtistLinks/ArtistLink.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistLinks',

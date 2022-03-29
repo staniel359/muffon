@@ -25,12 +25,12 @@ import {
   setPlayerPanel,
   showPlayerPanel,
   hidePlayerPanel
-} from '#/actions/layout'
-import { updateStore } from '#/actions'
-import { mainSidebarOptions } from '#/data/plugins/semantic'
-import { toggleClass } from '#/actions/plugins/jquery'
-import { setToast } from '#/actions/plugins/semantic'
-import { artistName as formatArtistName } from '#/formatters'
+} from '*/helpers/actions/layout'
+import { updateStore } from '*/helpers/actions'
+import { mainSidebarOptions } from '*/helpers/data/plugins/semantic'
+import { toggleClass } from '*/helpers/actions/plugins/jquery'
+import { setToast } from '*/helpers/actions/plugins/semantic'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'ThePlayerPanel',

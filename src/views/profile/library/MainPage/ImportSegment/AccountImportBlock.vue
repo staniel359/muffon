@@ -15,9 +15,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseProfileLibraryAccountImportModal
-  from '@/modals/profile/library/BaseProfileLibraryAccountImportModal.vue'
+  from '*/components/modals/profile/library/BaseProfileLibraryAccountImportModal.vue'
 
 export default {
   name: 'AccountImportBlock',

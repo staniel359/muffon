@@ -1,4 +1,4 @@
-import getPlayerVariantAudio from '#/actions/player/variant/audio/get'
+import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
 
 export default function ({ variantId }) {
   this.error = null

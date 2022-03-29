@@ -30,16 +30,17 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseTabsContainer
+  from '*/components/containers/tabs/BaseTabsContainer.vue'
 import BaseBookmarksTabContainer
-  from '@/containers/tabs/BaseBookmarksTabContainer.vue'
+  from '*/components/containers/tabs/BaseBookmarksTabContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import {
   bookmarks as formatBookmarksPageNavigation
-} from '#/formatters/navigation'
-import formatBookmarksPageTab from '#/formatters/tabs/bookmarks'
-import { collection as formatCollection } from '#/formatters'
+} from '*/helpers/formatters/navigation'
+import formatBookmarksPageTab from '*/helpers/formatters/tabs/bookmarks'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BookmarksPage',

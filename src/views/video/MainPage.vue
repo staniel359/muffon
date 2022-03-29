@@ -43,12 +43,12 @@
 
 <script>
 import BaseVideoPageContainer
-  from '@/containers/pages/video/BaseVideoPageContainer.vue'
+  from '*/components/containers/pages/video/BaseVideoPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseEmbed from '@/BaseEmbed.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseEmbed from '*/components/BaseEmbed.vue'
 import TitleSection from './MainPage/TitleSection.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import CountersDateSection from './MainPage/CountersDateSection.vue'
 import TagsSection from './MainPage/TagsSection.vue'
 import DescriptionSection from './MainPage/DescriptionSection.vue'

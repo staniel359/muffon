@@ -1,5 +1,5 @@
-import i18n from '&/i18n'
-import { main as formatTopMainLink } from '#/formatters/links/top'
+import i18n from '*/plugins/i18n'
+import { main as formatTopMainLink } from '*/helpers/formatters/links/top'
 
 export default function ({ pageNameKey }) {
   const formatLink = () => {

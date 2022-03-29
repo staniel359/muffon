@@ -8,7 +8,8 @@
 </template>
 
 <script>
-import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
+import BaseDropdownContainer
+  from '*/components/containers/BaseDropdownContainer.vue'
 import TracksList from './TrackSelect/TracksList.vue'
 
 export default {

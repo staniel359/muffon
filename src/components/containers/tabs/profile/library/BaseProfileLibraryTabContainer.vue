@@ -40,13 +40,16 @@
 <script>
 import { mapState } from 'vuex'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
-import BaseAlbumsTableList from '@/lists/albums/BaseAlbumsTableList.vue'
-import BaseTracksSimpleList from '@/lists/tracks/BaseTracksSimpleList.vue'
-import BaseTagsList from '@/lists/tags/BaseTagsList.vue'
-import getLibrary from '#/actions/api/library/get'
-import { isCurrentProfile } from '#/utils'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsTableList
+  from '*/components/lists/artists/BaseArtistsTableList.vue'
+import BaseAlbumsTableList
+  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+import BaseTracksSimpleList
+  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import getLibrary from '*/helpers/actions/api/library/get'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',

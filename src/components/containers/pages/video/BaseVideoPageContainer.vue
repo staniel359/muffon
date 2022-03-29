@@ -18,11 +18,12 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatVideoPageNavigation from '#/formatters/navigation/video'
-import formatVideoPageTab from '#/formatters/tabs/video'
-import getVideo from '#/actions/api/video/get'
+import formatVideoPageNavigation from '*/helpers/formatters/navigation/video'
+import formatVideoPageTab from '*/helpers/formatters/tabs/video'
+import getVideo from '*/helpers/actions/api/video/get'
 
 export default {
   name: 'BaseVideoPageContainer',

@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import getAlbum from '#/actions/api/album/get'
-import { number as formatNumber } from '#/formatters'
+import getAlbum from '*/helpers/actions/api/album/get'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumListenersCount',

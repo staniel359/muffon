@@ -37,12 +37,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import PlayerLabel from './PlayerSegment/PlayerLabel.vue'
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import getRadio from '#/actions/api/radio/get'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import getRadio from '*/helpers/actions/api/radio/get'
 
 export default {
   name: 'PlayerSegment',

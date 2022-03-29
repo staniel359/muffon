@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import SuccessSection from './CompleteSection/SuccessSection.vue'
 
 export default {

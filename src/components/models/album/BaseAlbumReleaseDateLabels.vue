@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import BaseLabel from '@/BaseLabel.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseLabel from '*/components/BaseLabel.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumReleaseDateLabels',

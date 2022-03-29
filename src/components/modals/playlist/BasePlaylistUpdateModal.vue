@@ -32,14 +32,15 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import BasePlaylistUpdateFormContainer
-  from '@/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
+  from '*/components/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
 import BasePlaylistImageField
-  from '@/fields/playlist/BasePlaylistImageField.vue'
+  from '*/components/fields/playlist/BasePlaylistImageField.vue'
 import BasePlaylistTitleField
-  from '@/fields/playlist/BasePlaylistTitleField.vue'
-import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
+  from '*/components/fields/playlist/BasePlaylistTitleField.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'BasePlaylistUpdateModal',

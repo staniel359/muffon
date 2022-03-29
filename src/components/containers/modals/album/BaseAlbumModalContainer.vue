@@ -16,9 +16,9 @@
 
 <script>
 import BaseModalContentContainer
-  from '@/containers/modals/BaseModalContentContainer.vue'
-import getAlbum from '#/actions/api/album/get'
-import { generateKey } from '#/utils'
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import getAlbum from '*/helpers/actions/api/album/get'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'BaseAlbumModalContainer',

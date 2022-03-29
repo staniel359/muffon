@@ -23,8 +23,8 @@
 
 <script>
 import BaseTopPaginatedPageContainer
-  from '@/containers/pages/top/BaseTopPaginatedPageContainer.vue'
-import BaseArtistsList from '@/lists/artists/BaseArtistsList.vue'
+  from '*/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
+import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
 
 export default {
   name: 'ArtistsPage',

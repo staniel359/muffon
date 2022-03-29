@@ -21,7 +21,10 @@
 
 <script>
 import CountriesList from './BaseProfileCountryField/CountriesList.vue'
-import { setDropdown, setDropdownValue } from '#/actions/plugins/semantic'
+import {
+  setDropdown,
+  setDropdownValue
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseProfileCountryField',

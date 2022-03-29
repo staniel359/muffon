@@ -1,8 +1,8 @@
 import { ipcRenderer } from 'electron'
 import { camelCase } from 'camel-case'
-import store from '&/store'
-import i18n from '&/i18n'
-import { addFormFieldError } from '#/actions/plugins/semantic'
+import store from '*/plugins/store'
+import i18n from '*/plugins/i18n'
+import { addFormFieldError } from '*/helpers/actions/plugins/semantic'
 
 export const updateStore = data => {
   return ipcRenderer.invoke(

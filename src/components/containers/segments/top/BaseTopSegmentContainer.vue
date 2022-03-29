@@ -19,8 +19,8 @@
 
 <script>
 import HeaderSegment from './BaseTopSegmentContainer/HeaderSegment.vue'
-import getTop from '#/actions/api/top/get'
-import { focusOnSegment } from '#/actions/layout'
+import getTop from '*/helpers/actions/api/top/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTopSegmentContainer',

@@ -16,11 +16,14 @@
 </template>
 
 <script>
-import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseLink from '@/links/BaseLink.vue'
-import { main as formatArtistMainLink } from '#/formatters/links/artist'
-import { artistName as formatArtistName } from '#/formatters'
+import BaseTransitionContainer
+  from '*/components/containers/BaseTransitionContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
+import {
+  main as formatArtistMainLink
+} from '*/helpers/formatters/links/artist'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',

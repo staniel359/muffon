@@ -50,19 +50,20 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistUpdateModal
-  from '@/modals/playlist/BasePlaylistUpdateModal.vue'
+  from '*/components/modals/playlist/BasePlaylistUpdateModal.vue'
 import BasePlaylistDeleteModal
-  from '@/modals/playlist/BasePlaylistDeleteModal.vue'
+  from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   number as formatNumber,
   date as formatDate
-} from '#/formatters'
-import { isCurrentProfile } from '#/utils'
+} from '*/helpers/formatters'
+import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
   name: 'InfoSegment',

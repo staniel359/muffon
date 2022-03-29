@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import BaseDropdownContainer from '@/containers/BaseDropdownContainer.vue'
+import BaseDropdownContainer
+  from '*/components/containers/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
 
 export default {

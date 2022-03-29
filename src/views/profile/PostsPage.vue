@@ -42,12 +42,13 @@
 <script>
 import { mapState } from 'vuex'
 import BaseProfilePageContainer
-  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePostsSimpleList
+  from '*/components/lists/posts/BasePostsSimpleList.vue'
 
 export default {
   name: 'PostsPage',

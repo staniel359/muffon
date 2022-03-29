@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import BaseProgress from '@/BaseProgress.vue'
+import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
-import getLastfmUserPlays from '#/actions/api/lastfm/user/plays/get'
+import getLastfmUserPlays from '*/helpers/actions/api/lastfm/user/plays/get'
 import {
   collection as formatCollection,
   playsToTracks as formatPlaysToTracks
-} from '#/formatters'
+} from '*/helpers/formatters'
 
 export default {
   name: 'ImportSection',

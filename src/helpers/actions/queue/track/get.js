@@ -1,6 +1,6 @@
-import store from '&/store'
-import getPlayerTrackAudio from '#/actions/player/track/audio/get'
-import { updateStore } from '#/actions'
+import store from '*/plugins/store'
+import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
+import { updateStore } from '*/helpers/actions'
 
 export default function getQueueTrack ({ position }) {
   const followingTrackData =

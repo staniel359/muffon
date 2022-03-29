@@ -20,13 +20,15 @@
 </template>
 
 <script>
-import BaseModalContainer from '@/containers/modals/BaseModalContainer.vue'
+import BaseModalContainer
+  from '*/components/containers/modals/BaseModalContainer.vue'
 import ConnectSection
   from './BaseProfileLibraryAccountImportModal/ConnectSection.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import ImportSection
   from './BaseProfileLibraryAccountImportModal/ImportSection.vue'
-import SaveSection from './BaseProfileLibraryAccountImportModal/SaveSection.vue'
+import SaveSection
+  from './BaseProfileLibraryAccountImportModal/SaveSection.vue'
 
 export default {
   name: 'BaseProfileLibraryAccountImportModal',

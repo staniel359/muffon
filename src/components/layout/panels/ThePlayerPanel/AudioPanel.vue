@@ -23,7 +23,7 @@ import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
-import getQueueTrack from '#/actions/queue/track/get'
+import getQueueTrack from '*/helpers/actions/queue/track/get'
 
 export default {
   name: 'AudioPanel',

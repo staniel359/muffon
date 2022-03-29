@@ -27,8 +27,8 @@
 
 <script>
 import ArtistItem from './BaseArtistsTableList/ArtistItem.vue'
-import { collection as formatCollection } from '#/formatters'
-import { numberToColumnWidth } from '#/actions/plugins/semantic'
+import { collection as formatCollection } from '*/helpers/formatters'
+import { numberToColumnWidth } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseArtistsTableList',

@@ -20,8 +20,8 @@
 import { mapState } from 'vuex'
 import ImageBlock from './PlayingBlock/ImageBlock.vue'
 import InfoBlock from './PlayingBlock/InfoBlock.vue'
-import BaseSourceIcon from '@/BaseSourceIcon.vue'
-import { generateKey } from '#/utils'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'PlayingBlock',

@@ -8,9 +8,12 @@
 </template>
 
 <script>
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
-import BaseLink from '@/links/BaseLink.vue'
-import { main as formatProfileMainLink } from '#/formatters/links/profile'
+import BaseHeaderContainer
+  from '*/components/containers/BaseHeaderContainer.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
+import {
+  main as formatProfileMainLink
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'BaseProfileNickname',

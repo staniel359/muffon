@@ -22,10 +22,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import { main as formatProfileMainLink } from '#/formatters/links/profile'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import {
+  main as formatProfileMainLink
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'ProfileItem',

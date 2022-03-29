@@ -31,7 +31,7 @@
 import BaseConversationSegmentContainer
   from './BaseConversationSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseConversationPaginatedSegmentContainer',

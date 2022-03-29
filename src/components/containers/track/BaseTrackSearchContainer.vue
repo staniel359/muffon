@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import getSearch from '#/actions/api/search/get'
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import getSearch from '*/helpers/actions/api/search/get'
 
 export default {
   name: 'BaseTrackSearchContainer',

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { setCheckbox } from '#/actions/plugins/semantic'
+import { setCheckbox } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseProfileRememberField',

@@ -24,11 +24,11 @@
 
 <script>
 import InfoSegment from './ExtraSection/InfoSegment.vue'
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
 import SimilarSegment from './ExtraSection/SimilarSegment.vue'
-import { artistName as formatArtistName } from '#/formatters'
+import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'ExtraSection',

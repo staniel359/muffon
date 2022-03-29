@@ -19,7 +19,7 @@
 <script>
 import { mapState } from 'vuex'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 
 export default {
   name: 'BaseArtistHorizontalCardContainer',

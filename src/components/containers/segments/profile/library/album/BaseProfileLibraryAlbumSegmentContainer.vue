@@ -26,8 +26,8 @@
 <script>
 import HeaderSegment
   from './BaseProfileLibraryAlbumSegmentContainer/HeaderSegment.vue'
-import getLibraryAlbum from '#/actions/api/library/album/get'
-import { focusOnSegment } from '#/actions/layout'
+import getLibraryAlbum from '*/helpers/actions/api/library/album/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibraryAlbumSegmentContainer',

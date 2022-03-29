@@ -17,8 +17,8 @@
 
 <script>
 import BaseModalContentContainer
-  from '@/containers/modals/BaseModalContentContainer.vue'
-import getTrack from '#/actions/api/track/get'
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import getTrack from '*/helpers/actions/api/track/get'
 
 export default {
   name: 'BaseTrackModalContainer',

@@ -20,8 +20,8 @@
 
 <script>
 import BaseProfileFollowButtonContainer
-  from '@/containers/profile/BaseProfileFollowButtonContainer.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
+  from '*/components/containers/profile/BaseProfileFollowButtonContainer.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseProfileFollowButton',

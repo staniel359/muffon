@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
-import TheSettingsModal from '@/layout/modals/TheSettingsModal.vue'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import TheSettingsModal from '*/components/layout/modals/TheSettingsModal.vue'
 
 export default {
   name: 'SettingsItem',

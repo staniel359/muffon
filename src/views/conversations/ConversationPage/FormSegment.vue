@@ -44,14 +44,17 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseMessageCreateFormContainer
-  from '@/containers/forms/message/BaseMessageCreateFormContainer.vue'
-import BaseContentField from '@/fields/BaseContentField.vue'
-import BaseFormImagesSection from '@/forms/BaseFormImagesSection.vue'
-import BaseFormTracksSection from '@/forms/BaseFormTracksSection.vue'
-import BaseFormAddButtonsSection from '@/forms/BaseFormAddButtonsSection.vue'
-import BaseSubmitButton from '@/buttons/BaseSubmitButton.vue'
+  from '*/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
+import BaseContentField from '*/components/fields/BaseContentField.vue'
+import BaseFormImagesSection
+  from '*/components/forms/BaseFormImagesSection.vue'
+import BaseFormTracksSection
+  from '*/components/forms/BaseFormTracksSection.vue'
+import BaseFormAddButtonsSection
+  from '*/components/forms/BaseFormAddButtonsSection.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FormSegment',

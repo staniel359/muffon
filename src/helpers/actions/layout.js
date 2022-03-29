@@ -1,4 +1,4 @@
-import store from '&/store'
+import store from '*/plugins/store'
 import {
   setDimmer,
   toggleDimmer,
@@ -6,7 +6,7 @@ import {
   showSidebar,
   toggleSidebar,
   hideSidebar
-} from '#/actions/plugins/semantic'
+} from '*/helpers/actions/plugins/semantic'
 
 export const setLoaderDimmer = (el, options) => {
   store.dispatch(

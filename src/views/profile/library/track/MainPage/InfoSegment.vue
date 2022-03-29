@@ -98,26 +98,30 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseSelfIcons from '@/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown from '@/dropdowns/BaseOptionsDropdown.vue'
-import BasePlaylistsModal from '@/modals/playlists/BasePlaylistsModal.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistsModal
+  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import BaseProfileLibraryDeleteModal
-  from '@/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
-import BaseDivider from '@/BaseDivider.vue'
+  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 import {
   main as formatProfileLibraryAlbumMainLink
-} from '#/formatters/links/profile/library/album'
-import { main as formatTrackMainLink } from '#/formatters/links/track'
-import { isCurrentProfile } from '#/utils'
-import { date as formatDate } from '#/formatters'
-import formatTrackRequestData from '#/formatters/request/track/requestData'
+} from '*/helpers/formatters/links/profile/library/album'
+import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
+import { isCurrentProfile } from '*/helpers/utils'
+import { date as formatDate } from '*/helpers/formatters'
+import formatTrackRequestData
+  from '*/helpers/formatters/request/track/requestData'
 
 export default {
   name: 'InfoSegment',

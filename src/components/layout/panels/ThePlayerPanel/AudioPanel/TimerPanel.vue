@@ -6,7 +6,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { seconds as formatSeconds } from '#/formatters'
+import { seconds as formatSeconds } from '*/helpers/formatters'
 
 export default {
   name: 'TimerPanel',

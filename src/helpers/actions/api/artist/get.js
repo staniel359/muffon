@@ -1,6 +1,6 @@
 import axios from 'axios'
-import store from '&/store'
-import formatRequestUrl from '#/formatters/request/artist/requestUrl'
+import store from '*/plugins/store'
+import formatRequestUrl from '*/helpers/formatters/request/artist/requestUrl'
 
 export default function ({
   artistName,

@@ -15,8 +15,8 @@
 
 <script>
 import BaseModalContentContainer
-  from '@/containers/modals/BaseModalContentContainer.vue'
-import getTag from '#/actions/api/tag/get'
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import getTag from '*/helpers/actions/api/tag/get'
 
 export default {
   name: 'BaseTagModalContainer',

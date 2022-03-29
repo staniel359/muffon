@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseLabel from '@/BaseLabel.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 
 export default {
   name: 'PlayerLabel',

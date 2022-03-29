@@ -14,9 +14,10 @@
 </template>
 
 <script>
-import BaseHeaderContainer from '@/containers/BaseHeaderContainer.vue'
+import BaseHeaderContainer
+  from '*/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinkContainer
-  from '@/containers/artist/BaseArtistLinkContainer.vue'
+  from '*/components/containers/artist/BaseArtistLinkContainer.vue'
 
 export default {
   name: 'HeaderSection',

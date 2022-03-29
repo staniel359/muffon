@@ -21,9 +21,10 @@
 
 <script>
 import MoreLinkButton from './InteractiveImage/MoreLinkButton.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseArtistImageModal from '@/modals/artist/BaseArtistImageModal.vue'
-import { showModal } from '#/actions/plugins/semantic'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseArtistImageModal
+  from '*/components/modals/artist/BaseArtistImageModal.vue'
+import { showModal } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'InteractiveImage',

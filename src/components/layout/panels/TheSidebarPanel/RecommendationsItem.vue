@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   recommendations as formatRecommendationsLink
-} from '#/formatters/links'
+} from '*/helpers/formatters/links'
 
 export default {
   name: 'RecommendationsItem',

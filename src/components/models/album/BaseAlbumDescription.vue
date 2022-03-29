@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseDescription from '@/BaseDescription.vue'
+import BaseDescription from '*/components/BaseDescription.vue'
 import BaseAlbumDescriptionModal
-  from '@/modals/album/BaseAlbumDescriptionModal.vue'
+  from '*/components/modals/album/BaseAlbumDescriptionModal.vue'
 
 export default {
   name: 'BaseAlbumDescription',

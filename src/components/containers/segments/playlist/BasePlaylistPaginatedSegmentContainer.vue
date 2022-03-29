@@ -31,7 +31,7 @@
 <script>
 import BasePlaylistSegmentContainer from './BasePlaylistSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BasePlaylistPaginatedSegmentContainer',

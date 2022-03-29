@@ -22,8 +22,8 @@
 
 <script>
 import HeaderSegment from './BaseVideoSegmentContainer/HeaderSegment.vue'
-import getVideo from '#/actions/api/video/get'
-import { focusOnSegment } from '#/actions/layout'
+import getVideo from '*/helpers/actions/api/video/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseVideoSegmentContainer',

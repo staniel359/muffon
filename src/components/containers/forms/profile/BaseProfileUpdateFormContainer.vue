@@ -11,10 +11,11 @@
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { profileUpdateFormOptions } from '#/data/plugins/semantic'
-import { stringToDate as formatStringToDate } from '#/formatters'
-import patchProfile from '#/actions/api/profile/update'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { profileUpdateFormOptions } from '*/helpers/data/plugins/semantic'
+import { stringToDate as formatStringToDate } from '*/helpers/formatters'
+import patchProfile from '*/helpers/actions/api/profile/update'
 
 export default {
   name: 'BaseProfileUpdateFormContainer',

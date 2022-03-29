@@ -29,11 +29,12 @@
 
 <script>
 import BaseAlbumReleaseDateLabels
-  from '@/models/album/BaseAlbumReleaseDateLabels.vue'
-import BaseAlbumTags from '@/models/album/BaseAlbumTags.vue'
-import BaseCounters from '@/BaseCounters.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import BaseAlbumDescription from '@/models/album/BaseAlbumDescription.vue'
+  from '*/components/models/album/BaseAlbumReleaseDateLabels.vue'
+import BaseAlbumTags from '*/components/models/album/BaseAlbumTags.vue'
+import BaseCounters from '*/components/BaseCounters.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseAlbumDescription
+  from '*/components/models/album/BaseAlbumDescription.vue'
 
 export default {
   name: 'SecondarySection',

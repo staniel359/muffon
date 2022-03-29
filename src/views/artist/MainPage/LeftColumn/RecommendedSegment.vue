@@ -31,11 +31,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseRecommendationProfileArtistsModal
-  from '@/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
+  from '*/components/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
 
 export default {
   name: 'RecommendedSegment',

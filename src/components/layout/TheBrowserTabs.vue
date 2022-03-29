@@ -21,10 +21,10 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
-import local from '&/local'
+import local from '*/plugins/local'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import { generateKey } from '#/utils'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'TheBrowserTabs',

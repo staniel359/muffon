@@ -1,10 +1,10 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   main as formatTopMainLink,
   artists as formatTopArtistsLink,
   tracks as formatTopTracksLink,
   tags as formatTopTagsLink
-} from '#/formatters/links/top'
+} from '*/helpers/formatters/links/top'
 
 export default function ({ pageNameKey }) {
   const formatTitle = () => {

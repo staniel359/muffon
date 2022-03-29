@@ -10,11 +10,12 @@
 </template>
 
 <script>
-import BaseFormContainer from '@/containers/forms/BaseFormContainer.vue'
-import { profileCreateFormOptions } from '#/data/plugins/semantic'
-import { stringToDate as formatStringToDate } from '#/formatters'
-import createProfile from '#/actions/api/profile/create'
-import { updateStore } from '#/actions'
+import BaseFormContainer
+  from '*/components/containers/forms/BaseFormContainer.vue'
+import { profileCreateFormOptions } from '*/helpers/data/plugins/semantic'
+import { stringToDate as formatStringToDate } from '*/helpers/formatters'
+import createProfile from '*/helpers/actions/api/profile/create'
+import { updateStore } from '*/helpers/actions'
 
 export default {
   name: 'BaseProfileCreateFormContainer',

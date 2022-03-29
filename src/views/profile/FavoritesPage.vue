@@ -38,13 +38,14 @@
 
 <script>
 import BaseProfilePageContainer
-  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseTabsContainer from '@/containers/tabs/BaseTabsContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseTabsContainer
+  from '*/components/containers/tabs/BaseTabsContainer.vue'
 import BaseProfileFavoriteTabContainer
-  from '@/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
-import { collection as formatCollection } from '#/formatters'
+  from '*/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'FavoritesPage',

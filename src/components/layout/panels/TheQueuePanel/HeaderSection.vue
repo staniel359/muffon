@@ -13,8 +13,8 @@
 <script>
 import { mapGetters } from 'vuex'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import { number as formatNumber } from '#/formatters'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',

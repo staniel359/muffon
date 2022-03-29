@@ -36,10 +36,10 @@
 </template>
 
 <script>
-import BaseErrorMessage from '@/messages/BaseErrorMessage.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
-import getLastfmToken from '#/actions/api/lastfm/connect/token/get'
-import getLastfmSession from '#/actions/api/lastfm/connect/session/get'
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import getLastfmToken from '*/helpers/actions/api/lastfm/connect/token/get'
+import getLastfmSession from '*/helpers/actions/api/lastfm/connect/session/get'
 
 export default {
   name: 'ConnectOption',

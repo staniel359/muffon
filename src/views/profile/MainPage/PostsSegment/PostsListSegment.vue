@@ -28,11 +28,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BasePostsSimpleList from '@/lists/posts/BasePostsSimpleList.vue'
-import getProfilePosts from '#/actions/api/profile/posts/get'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePostsSimpleList
+  from '*/components/lists/posts/BasePostsSimpleList.vue'
+import getProfilePosts from '*/helpers/actions/api/profile/posts/get'
 
 export default {
   name: 'PostsListSegment',

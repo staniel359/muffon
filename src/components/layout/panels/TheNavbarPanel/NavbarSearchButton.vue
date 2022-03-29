@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'NavbarSearchButton',

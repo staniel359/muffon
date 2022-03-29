@@ -28,7 +28,7 @@
 
 <script>
 import BaseProfileFollowButtonContainer
-  from '@/containers/profile/BaseProfileFollowButtonContainer.vue'
+  from '*/components/containers/profile/BaseProfileFollowButtonContainer.vue'
 
 export default {
   name: 'FollowOption',

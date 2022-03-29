@@ -17,7 +17,7 @@
 <script>
 import { mapState } from 'vuex'
 import NavigationSection from './NavbarNavigation/NavigationSection.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'NavbarNavigation',

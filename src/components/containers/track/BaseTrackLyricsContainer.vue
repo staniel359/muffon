@@ -15,8 +15,8 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import getTrack from '#/actions/api/track/get'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import getTrack from '*/helpers/actions/api/track/get'
 
 export default {
   name: 'BaseTrackLyricsContainer',

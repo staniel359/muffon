@@ -5,7 +5,7 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
-import updateOnline from '#/actions/api/online/update'
+import updateOnline from '*/helpers/actions/api/online/update'
 
 export default {
   name: 'TheOnlineObserver',

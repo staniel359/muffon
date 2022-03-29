@@ -8,7 +8,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
 import PlayingBlock from './PlayingPanel/PlayingBlock.vue'
 
 export default {

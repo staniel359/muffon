@@ -29,12 +29,13 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseArtistTags from '@/models/artist/BaseArtistTags.vue'
-import BaseCounters from '@/BaseCounters.vue'
-import BaseDivider from '@/BaseDivider.vue'
-import BaseArtistDescription from '@/models/artist/BaseArtistDescription.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseArtistTags from '*/components/models/artist/BaseArtistTags.vue'
+import BaseCounters from '*/components/BaseCounters.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseArtistDescription
+  from '*/components/models/artist/BaseArtistDescription.vue'
 
 export default {
   name: 'InfoSegment',

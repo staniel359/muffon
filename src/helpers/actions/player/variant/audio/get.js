@@ -1,7 +1,7 @@
-import store from '&/store'
-import getBandcampId from '#/actions/api/bandcamp_id/track/variant/get'
-import getAudio from '#/actions/api/audio/get'
-import { updateStore } from '#/actions'
+import store from '*/plugins/store'
+import getBandcampId from '*/helpers/actions/api/bandcamp_id/track/variant/get'
+import getAudio from '*/helpers/actions/api/audio/get'
+import { updateStore } from '*/helpers/actions'
 
 export default async function ({ variantId }) {
   const isMatchedVariant = variantData => {

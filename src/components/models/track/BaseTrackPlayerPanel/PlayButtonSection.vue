@@ -18,10 +18,13 @@
 </template>
 
 <script>
-import BaseButtonContainer from '@/containers/buttons/BaseButtonContainer.vue'
-import BaseTrackContainer from '@/containers/track/BaseTrackContainer.vue'
-import BaseTrackAudioIcon from '@/models/track/BaseTrackAudioIcon.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseButtonContainer
+  from '*/components/containers/buttons/BaseButtonContainer.vue'
+import BaseTrackContainer
+  from '*/components/containers/track/BaseTrackContainer.vue'
+import BaseTrackAudioIcon
+  from '*/components/models/track/BaseTrackAudioIcon.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'PlayButtonSection',

@@ -10,7 +10,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
+import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'ArtistsInput',

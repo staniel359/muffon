@@ -25,10 +25,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseArtistImage from '@/models/artist/BaseArtistImage.vue'
-import BaseTransitionContainer from '@/containers/BaseTransitionContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+import BaseTransitionContainer
+  from '*/components/containers/BaseTransitionContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 
 export default {
   name: 'ImageNameSegment',

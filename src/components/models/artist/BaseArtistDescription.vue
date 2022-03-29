@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import BaseDescription from '@/BaseDescription.vue'
+import BaseDescription from '*/components/BaseDescription.vue'
 import BaseArtistDescriptionModal
-  from '@/modals/artist/BaseArtistDescriptionModal.vue'
+  from '*/components/modals/artist/BaseArtistDescriptionModal.vue'
 
 export default {
   name: 'BaseArtistDescription',

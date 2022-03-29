@@ -19,13 +19,14 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryArtistPageNavigation
-  from '#/formatters/navigation/profile/library/artist'
+  from '*/helpers/formatters/navigation/profile/library/artist'
 import formatProfileLibraryArtistPageTab
-  from '#/formatters/tabs/profile/library/artist'
-import getLibraryArtist from '#/actions/api/library/artist/get'
+  from '*/helpers/formatters/tabs/profile/library/artist'
+import getLibraryArtist from '*/helpers/actions/api/library/artist/get'
 
 export default {
   name: 'BaseProfileLibraryArtistPageContainer',

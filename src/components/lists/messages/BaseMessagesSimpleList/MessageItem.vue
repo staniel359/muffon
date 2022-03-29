@@ -41,12 +41,13 @@
 
 <script>
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import BaseProfileNickname from '@/models/profile/BaseProfileNickname.vue'
-import BaseTimestamp from '@/BaseTimestamp.vue'
-import BaseImagesSection from '@/BaseImagesSection.vue'
-import BaseTracksSection from '@/BaseTracksSection.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
+import BaseProfileNickname
+  from '*/components/models/profile/BaseProfileNickname.vue'
+import BaseTimestamp from '*/components/BaseTimestamp.vue'
+import BaseImagesSection from '*/components/BaseImagesSection.vue'
+import BaseTracksSection from '*/components/BaseTracksSection.vue'
 
 export default {
   name: 'MessageItem',

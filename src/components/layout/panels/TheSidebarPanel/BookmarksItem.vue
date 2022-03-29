@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import BaseSidebarItem from '@/BaseSidebarItem.vue'
-import { bookmarks as formatBookmarksLink } from '#/formatters/links'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import { bookmarks as formatBookmarksLink } from '*/helpers/formatters/links'
 
 export default {
   name: 'BookmarksItem',

@@ -1,7 +1,7 @@
 import axios from 'axios'
-import local from '&/local'
-import getProfile from '#/actions/api/profile/get'
-import { addFormErrors } from '#/actions'
+import local from '*/plugins/local'
+import getProfile from '*/helpers/actions/api/profile/get'
+import { addFormErrors } from '*/helpers/actions'
 
 export default function ({
   email,

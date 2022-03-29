@@ -9,7 +9,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { toggleClass } from '#/actions/plugins/jquery'
+import { toggleClass } from '*/helpers/actions/plugins/jquery'
 
 export default {
   name: 'BasePopupContainer',

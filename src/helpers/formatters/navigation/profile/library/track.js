@@ -1,17 +1,19 @@
-import i18n from '&/i18n'
-import { profiles as formatProfilesLink } from '#/formatters/links'
-import { main as formatProfileMainLink } from '#/formatters/links/profile'
+import i18n from '*/plugins/i18n'
+import { profiles as formatProfilesLink } from '*/helpers/formatters/links'
+import {
+  main as formatProfileMainLink
+} from '*/helpers/formatters/links/profile'
 import {
   main as formatProfileLibraryMainLink,
   artists as formatProfileLibraryArtistsLink
-} from '#/formatters/links/profile/library'
+} from '*/helpers/formatters/links/profile/library'
 import {
   main as formatProfileLibraryArtistMainLink,
   tracks as formatProfileLibraryArtistTracksLink
-} from '#/formatters/links/profile/library/artist'
+} from '*/helpers/formatters/links/profile/library/artist'
 import {
   main as formatProfileLibraryTrackMainLink
-} from '#/formatters/links/profile/library/track'
+} from '*/helpers/formatters/links/profile/library/track'
 
 export default function ({
   profileId,

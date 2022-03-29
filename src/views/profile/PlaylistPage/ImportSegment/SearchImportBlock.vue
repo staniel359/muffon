@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BasePlaylistSearchImportModal
-  from '@/modals/playlist/BasePlaylistSearchImportModal.vue'
+  from '*/components/modals/playlist/BasePlaylistSearchImportModal.vue'
 
 export default {
   name: 'SearchImportBlock',

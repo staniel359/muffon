@@ -1,5 +1,5 @@
-import store from '&/store'
-import { generateKey } from '#/utils'
+import store from '*/plugins/store'
+import { generateKey } from '*/helpers/utils'
 
 export const collection = collection => {
   const formatCollectionItemData = item => {

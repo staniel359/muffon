@@ -42,13 +42,14 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
-import BaseHeader from '@/BaseHeader.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList from '@/lists/artists/BaseArtistsSimpleList.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseRecommendationProfileArtistsModal
-  from '@/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
+  from '*/components/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
 
 export default {
   name: 'ProfileArtistsSection',

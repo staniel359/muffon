@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import getArtist from '#/actions/api/artist/get'
-import { number as formatNumber } from '#/formatters'
+import getArtist from '*/helpers/actions/api/artist/get'
+import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistListenersCount',

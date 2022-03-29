@@ -19,12 +19,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePopupContainer from '@/containers/BasePopupContainer.vue'
-import BaseHeader from '@/BaseHeader.vue'
-import BaseSeeker from '@/BaseSeeker.vue'
-import { mainVolumeSeekerOptions } from '#/data/plugins/semantic'
-import { updateStore } from '#/actions'
-import { setSeekerValue } from '#/actions/plugins/semantic'
+import BasePopupContainer from '*/components/containers/BasePopupContainer.vue'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseSeeker from '*/components/BaseSeeker.vue'
+import { mainVolumeSeekerOptions } from '*/helpers/data/plugins/semantic'
+import { updateStore } from '*/helpers/actions'
+import { setSeekerValue } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'VolumePopup',

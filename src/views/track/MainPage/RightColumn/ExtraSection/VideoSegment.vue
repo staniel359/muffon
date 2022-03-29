@@ -29,13 +29,14 @@
 </template>
 
 <script>
-import BaseAccordionContainer from '@/containers/BaseAccordionContainer.vue'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import BaseTrackSearchContainer
-  from '@/containers/track/BaseTrackSearchContainer.vue'
+  from '*/components/containers/track/BaseTrackSearchContainer.vue'
 import VideoSelect from './VideoSegment/VideoSelect.vue'
 import VideoData from './VideoSegment/VideoData.vue'
-import { generateKey } from '#/utils'
-import { focusOnSegment } from '#/actions/layout'
+import { generateKey } from '*/helpers/utils'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'VideoSegment',

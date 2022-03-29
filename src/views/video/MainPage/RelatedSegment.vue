@@ -34,13 +34,16 @@
 
 <script>
 import BaseVideoSegmentContainer
-  from '@/containers/segments/video/BaseVideoSegmentContainer.vue'
+  from '*/components/containers/segments/video/BaseVideoSegmentContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseVideosTableList from '@/lists/videos/BaseVideosTableList.vue'
-import { related as formatVideoRelatedLink } from '#/formatters/links/video'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseVideosTableList
+  from '*/components/lists/videos/BaseVideosTableList.vue'
+import {
+  related as formatVideoRelatedLink
+} from '*/helpers/formatters/links/video'
 
 export default {
   name: 'RelatedSegment',

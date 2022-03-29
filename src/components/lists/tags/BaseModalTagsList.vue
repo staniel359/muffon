@@ -11,7 +11,7 @@
 
 <script>
 import TagItem from './BaseModalTagsList/TagItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseModalTagsList',

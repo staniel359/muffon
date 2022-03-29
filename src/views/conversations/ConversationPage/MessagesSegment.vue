@@ -15,9 +15,9 @@
 
 <script>
 import BaseConversationPaginatedSegmentContainer
-  from '@/containers/segments/conversation/BaseConversationPaginatedSegmentContainer.vue'
+  from '*/components/containers/segments/conversation/BaseConversationPaginatedSegmentContainer.vue'
 import BaseMessagesSimpleList
-  from '@/lists/messages/BaseMessagesSimpleList.vue'
+  from '*/components/lists/messages/BaseMessagesSimpleList.vue'
 
 export default {
   name: 'MessagesSegment',

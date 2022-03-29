@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import BaseProgress from '@/BaseProgress.vue'
+import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './ArtistsSection/CompleteSection.vue'
-import createLibraryArtist from '#/actions/api/library/artist/create'
+import createLibraryArtist from '*/helpers/actions/api/library/artist/create'
 
 export default {
   name: 'ArtistsSection',

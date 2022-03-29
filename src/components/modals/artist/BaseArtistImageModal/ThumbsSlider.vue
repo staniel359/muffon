@@ -17,10 +17,12 @@
 </template>
 
 <script>
-import BaseImage from '@/images/BaseImage.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
 import BaseImageModalSliderContainer
-  from '@/containers/BaseImageModalSliderContainer.vue'
-import { artistImagesModalThumbsSliderOptions } from '#/data/plugins/slick'
+  from '*/components/containers/BaseImageModalSliderContainer.vue'
+import {
+  artistImagesModalThumbsSliderOptions
+} from '*/helpers/data/plugins/slick'
 
 export default {
   name: 'ThumbsSlider',

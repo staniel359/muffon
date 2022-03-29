@@ -24,8 +24,9 @@
 
 <script>
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
-import BaseAlbumsSimpleList from '@/lists/albums/BaseAlbumsSimpleList.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseAlbumsSimpleList
+  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
 
 export default {
   name: 'AlbumsList',

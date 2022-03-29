@@ -18,13 +18,15 @@
 </template>
 
 <script>
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import formatProfileLibraryPageNavigation
-  from '#/formatters/navigation/profile/library'
-import formatProfileLibraryPageTab from '#/formatters/tabs/profile/library'
-import getLibrary from '#/actions/api/library/get'
-import getLibrarySearch from '#/actions/api/library/search/get'
+  from '*/helpers/formatters/navigation/profile/library'
+import formatProfileLibraryPageTab
+  from '*/helpers/formatters/tabs/profile/library'
+import getLibrary from '*/helpers/actions/api/library/get'
+import getLibrarySearch from '*/helpers/actions/api/library/search/get'
 
 export default {
   name: 'BaseProfileLibraryPageContainer',

@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import BaseDropdown from '@/dropdowns/BaseDropdown.vue'
-import audioSources from '#/data/audio/sources'
+import BaseDropdown from '*/components/dropdowns/BaseDropdown.vue'
+import audioSources from '*/helpers/data/audio/sources'
 
 export default {
   name: 'SearchSourceSelect',

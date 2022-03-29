@@ -1,5 +1,5 @@
-import store from '&/store'
-import i18n from '&/i18n'
+import store from '*/plugins/store'
+import i18n from '*/plugins/i18n'
 
 export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   return {

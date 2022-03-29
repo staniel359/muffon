@@ -9,9 +9,9 @@
 
 <script>
 import { mapState } from 'vuex'
-import { setLoaderDimmer } from '#/actions/layout'
-import { mainLoaderOptions } from '#/data/plugins/semantic'
-import { toggleClass } from '#/actions/plugins/jquery'
+import { setLoaderDimmer } from '*/helpers/actions/layout'
+import { mainLoaderOptions } from '*/helpers/data/plugins/semantic'
+import { toggleClass } from '*/helpers/actions/plugins/jquery'
 
 export default {
   name: 'TheLoaderDimmer',

@@ -68,19 +68,19 @@
 
 <script>
 import BaseProfilePageContainer
-  from '@/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 import BasePlaylistCreateModal
-  from '@/modals/playlist/BasePlaylistCreateModal.vue'
-import BaseLink from '@/links/BaseLink.vue'
+  from '*/components/modals/playlist/BasePlaylistCreateModal.vue'
+import BaseLink from '*/components/links/BaseLink.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleList
-  from '@/lists/playlists/BasePlaylistsSimpleList.vue'
-import { isCurrentProfile } from '#/utils'
-import { playlists as formatPlaylistsLink } from '#/formatters/links'
+  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+import { isCurrentProfile } from '*/helpers/utils'
+import { playlists as formatPlaylistsLink } from '*/helpers/formatters/links'
 
 export default {
   name: 'PlaylistsPage',

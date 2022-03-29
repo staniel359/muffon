@@ -10,9 +10,11 @@
 </template>
 
 <script>
-import BaseListContainer from '@/containers/lists/BaseListContainer.vue'
-import TrackItem from '@/lists/tracks/BaseTracksSimpleList/TrackItem.vue'
-import { collection as formatCollection } from '#/formatters'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
+import TrackItem
+  from '*/components/lists/tracks/BaseTracksSimpleList/TrackItem.vue'
+import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'TrackSection',

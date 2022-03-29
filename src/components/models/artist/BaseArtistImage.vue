@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import BaseImagePlaceholder from '@/images/BaseImagePlaceholder.vue'
+import BaseImagePlaceholder from '*/components/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
-import BaseImage from '@/images/BaseImage.vue'
-import getArtistImage from '#/actions/api/artist/image/get'
+import BaseImage from '*/components/images/BaseImage.vue'
+import getArtistImage from '*/helpers/actions/api/artist/image/get'
 
 export default {
   name: 'BaseArtistImage',

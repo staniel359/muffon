@@ -9,8 +9,10 @@
 
 <script>
 import { mapState } from 'vuex'
-import BaseButton from '@/buttons/BaseButton.vue'
-import { images as formatArtistImagesLink } from '#/formatters/links/artist'
+import BaseButton from '*/components/buttons/BaseButton.vue'
+import {
+  images as formatArtistImagesLink
+} from '*/helpers/formatters/links/artist'
 
 export default {
   name: 'MoreLinkButton',

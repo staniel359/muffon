@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import BaseSearchInput from '@/inputs/BaseSearchInput.vue'
-import { generateKey } from '#/utils'
+import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'SearchInput',

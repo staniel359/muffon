@@ -9,8 +9,9 @@
 </template>
 
 <script>
-import BaseLinkContainer from '@/containers/links/BaseLinkContainer.vue'
-import BaseButton from '@/buttons/BaseButton.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseClearButton',

@@ -23,11 +23,12 @@
 
 <script>
 import BaseProfileLibraryTagPaginatedSegmentContainer
-  from '@/containers/segments/profile/library/tag/BaseProfileLibraryTagPaginatedSegmentContainer.vue'
-import BaseArtistsTableList from '@/lists/artists/BaseArtistsTableList.vue'
+  from '*/components/containers/segments/profile/library/tag/BaseProfileLibraryTagPaginatedSegmentContainer.vue'
+import BaseArtistsTableList
+  from '*/components/lists/artists/BaseArtistsTableList.vue'
 import {
   artists as formatProfileLibraryTagArtistsLink
-} from '#/formatters/links/profile/library/tag'
+} from '*/helpers/formatters/links/profile/library/tag'
 
 export default {
   name: 'ArtistsSegment',

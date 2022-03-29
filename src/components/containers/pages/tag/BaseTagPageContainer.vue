@@ -20,11 +20,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import BasePageContainer from '@/containers/pages/BasePageContainer.vue'
+import BasePageContainer
+  from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatTagPageNavigation from '#/formatters/navigation/tag'
-import formatTagPageTab from '#/formatters/tabs/tag'
-import getTag from '#/actions/api/tag/get'
+import formatTagPageNavigation from '*/helpers/formatters/navigation/tag'
+import formatTagPageTab from '*/helpers/formatters/tabs/tag'
+import getTag from '*/helpers/actions/api/tag/get'
 
 export default {
   name: 'BaseTagPageContainer',

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseDivider from '@/BaseDivider.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
 import SourceOption from './PlayerOptions/SourceOption.vue'
 
 export default {

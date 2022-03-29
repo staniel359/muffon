@@ -1,6 +1,6 @@
 import axios from 'axios'
-import formatRequestUrl from '#/formatters/request/track/requestUrl'
-import { setPlayerPlaying } from '#/actions'
+import formatRequestUrl from '*/helpers/formatters/request/track/requestUrl'
+import { setPlayerPlaying } from '*/helpers/actions'
 
 export default function ({ trackData }) {
   const audioData = trackData.audio

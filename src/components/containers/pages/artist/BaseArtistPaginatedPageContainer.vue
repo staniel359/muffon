@@ -67,11 +67,13 @@
 <script>
 import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
 import BaseSegmentContainer
-  from '@/containers/segments/BaseSegmentContainer.vue'
-import BaseArtistSourceSelect from '@/models/artist/BaseArtistSourceSelect.vue'
-import BaseViewChangeButtons from '@/buttons/BaseViewChangeButtons.vue'
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseArtistSourceSelect
+  from '*/components/models/artist/BaseArtistSourceSelect.vue'
+import BaseViewChangeButtons
+  from '*/components/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedListContainer
-  from '@/containers/lists/BasePaginatedListContainer.vue'
+  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 
 export default {
   name: 'BaseArtistPaginatedPageContainer',

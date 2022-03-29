@@ -1,7 +1,7 @@
-import i18n from '&/i18n'
+import i18n from '*/plugins/i18n'
 import {
   main as formatConversationsLink
-} from '#/formatters/links/conversations'
+} from '*/helpers/formatters/links/conversations'
 
 export default function ({ conversationId, profileNickname } = {}) {
   const formatLink = () => {

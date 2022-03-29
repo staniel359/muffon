@@ -25,8 +25,8 @@
 <script>
 import { mapState } from 'vuex'
 import HeaderSegment from './BaseTrackSegmentContainer/HeaderSegment.vue'
-import getTrack from '#/actions/api/track/get'
-import { focusOnSegment } from '#/actions/layout'
+import getTrack from '*/helpers/actions/api/track/get'
+import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackSegmentContainer',

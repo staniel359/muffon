@@ -22,8 +22,8 @@
 
 <script>
 import { mapState } from 'vuex'
-import { setAccordion } from '#/actions/plugins/semantic'
-import { mainAccordionOptions } from '#/data/plugins/semantic'
+import { setAccordion } from '*/helpers/actions/plugins/semantic'
+import { mainAccordionOptions } from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseAccordionContainer',
