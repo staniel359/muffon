@@ -27,6 +27,10 @@
             :profileId="profileId"
           />
 
+          <CommunitiesSegment
+            :profileId="profileId"
+          />
+
           <PostsSegment
             :profileId="profileId"
           />
@@ -43,6 +47,7 @@ import InfoSegment from './MainPage/InfoSegment.vue'
 import LibrarySegment from './MainPage/LibrarySegment.vue'
 import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'
 import FavoritesSegment from './MainPage/FavoritesSegment.vue'
+import CommunitiesSegment from './MainPage/CommunitiesSegment.vue'
 import PostsSegment from './MainPage/PostsSegment.vue'
 
 export default {
@@ -53,6 +58,7 @@ export default {
     LibrarySegment,
     PlaylistsSegment,
     FavoritesSegment,
+    CommunitiesSegment,
     PostsSegment
   },
   props: {

@@ -303,6 +303,29 @@ export const messageFormOptions = ({ onSuccess }) => {
   return { onSuccess }
 }
 
+export const communityFormOptions = ({ onSuccess }) => {
+  const emptyTitlePrompt = i18n.global.t(
+    'forms.errors.empty.title'
+  )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      title: {
+        identifier: 'title',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyTitlePrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
 export const birthdateCalendarOptions = () => {
   const today = new Date()
   const minDate = new Date(

@@ -23,6 +23,7 @@
     "playlists": "Playlists",
     "favorites": "Favorites",
     "bookmarks": "Bookmarks",
+    "communities": "Communities",
     "settings": "Settings",
     "model": {
       "artists": "{modelName} artists",
@@ -36,7 +37,8 @@
       "posts": "{modelName} posts",
       "library": "{modelName} library",
       "playlists": "{modelName} playlists",
-      "favorites": "{modelName} favorites"
+      "favorites": "{modelName} favorites",
+      "communities": "{modelName} communities"
     },
     "top": {
       "artists": "Top artists",
@@ -112,7 +114,8 @@
     },
     "add": {
       "playlist": "Add playlist",
-      "tracks": "Add tracks"
+      "tracks": "Add tracks",
+      "community": "Add community"
     },
     "addTo": {
       "library": "Add to library",
@@ -131,7 +134,8 @@
     }
   },
   "links": {
-    "playlists": "All playlists"
+    "playlists": "All playlists",
+    "communities": "All communities"
   },
   "inputs": {
     "search": "Search...",
@@ -187,6 +191,7 @@
       "passwordConfirmation": "Password confirmation",
       "nickname": "Nickname",
       "title": "Title",
+      "description": "Description",
       "image": "Upload image",
       "gender": "Gender",
       "birthdate": "Birth date",
@@ -243,7 +248,8 @@
     "albums": "{count} albums",
     "tracks": "{count} tracks",
     "followers": "{count} followers",
-    "following": "{count} following"
+    "following": "{count} following",
+    "members": "{count} members"
   },
   "sources": {
     "select": {
@@ -441,6 +447,8 @@
       "profile_artists": "No artists",
       "recommendations": "No recommendations",
       "playlists": "No playlists",
+      "communities": "No communities",
+      "members": "No members",
       "videos": "No videos"
     },
     "content": "Looks like there is nothing here"

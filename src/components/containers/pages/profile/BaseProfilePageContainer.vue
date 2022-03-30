@@ -32,6 +32,8 @@ import formatProfileFavoritesPageTab
 import formatProfilePlaylistsPageTab
   from '*/helpers/formatters/tabs/profile/playlists'
 import formatProfilePostsPageTab from '*/helpers/formatters/tabs/profile/posts'
+import formatProfileCommunitiesPageTab
+  from '*/helpers/formatters/tabs/profile/communities'
 import getProfile from '*/helpers/actions/api/profile/get'
 
 export default {
@@ -106,6 +108,10 @@ export default {
           )
         case 'posts':
           return formatProfilePostsPageTab(
+            this.navigationData
+          )
+        case 'communities':
+          return formatProfileCommunitiesPageTab(
             this.navigationData
           )
         default:

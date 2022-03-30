@@ -136,6 +136,15 @@ const ProfilePostsPage = () => import(
 const PlaylistsPage = () => import(
   '*/views/PlaylistsPage.vue'
 )
+const ProfileCommunitiesPage = () => import(
+  '*/views/profile/CommunitiesPage.vue'
+)
+const CommunitiesPage = () => import(
+  '*/views/communities/MainPage.vue'
+)
+const CommunityPage = () => import(
+  '*/views/communities/CommunityPage.vue'
+)
 
 export default [
   {
@@ -458,6 +467,27 @@ export default [
     exact: true,
     name: 'PlaylistsPage',
     component: PlaylistsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/communities',
+    exact: true,
+    name: 'ProfileCommunitiesPage',
+    component: ProfileCommunitiesPage,
+    props: true
+  },
+  {
+    path: '/communities',
+    exact: true,
+    name: 'CommunitiesPage',
+    component: CommunitiesPage,
+    props: true
+  },
+  {
+    path: '/communities/:communityId',
+    exact: true,
+    name: 'CommunityPage',
+    component: CommunityPage,
     props: true
   }
 ]

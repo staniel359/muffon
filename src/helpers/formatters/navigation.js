@@ -65,3 +65,14 @@ export const playlists = () => {
     }
   ]
 }
+
+export const communities = () => {
+  return [
+    {
+      name: i18n.global.t(
+        'navigation.communities'
+      ),
+      isActive: true
+    }
+  ]
+}

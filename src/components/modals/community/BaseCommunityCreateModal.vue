@@ -1,20 +1,22 @@
 <template>
   <BaseModalContainer ref="modal">
     <div class="content">
-      <BasePlaylistCreateFormContainer
-        class="main-playlist-form"
+      <BaseCommunityCreateFormContainer
+        class="main-community-form"
         :image="image"
         @success="handleSuccess"
       >
         <div class="fields-container">
           <BaseImageField
             class="image-field"
-            model="playlist"
+            model="community"
             @change="handleImageChange"
           />
 
           <div class="fields-right-column">
             <BaseTitleField ref="title" />
+
+            <BaseDescriptionField />
           </div>
         </div>
 
@@ -23,7 +25,7 @@
             actionKey="create"
           />
         </div>
-      </BasePlaylistCreateFormContainer>
+      </BaseCommunityCreateFormContainer>
     </div>
   </BaseModalContainer>
 </template>
@@ -31,19 +33,21 @@
 <script>
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
-import BasePlaylistCreateFormContainer
-  from '*/components/containers/forms/playlist/BasePlaylistCreateFormContainer.vue'
+import BaseCommunityCreateFormContainer
+  from '*/components/containers/forms/community/BaseCommunityCreateFormContainer.vue'
 import BaseImageField from '*/components/fields/BaseImageField.vue'
 import BaseTitleField from '*/components/fields/BaseTitleField.vue'
+import BaseDescriptionField from '*/components/fields/BaseDescriptionField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
-  name: 'BasePlaylistCreateModal',
+  name: 'BaseCommunityCreateModal',
   components: {
     BaseModalContainer,
-    BasePlaylistCreateFormContainer,
+    BaseCommunityCreateFormContainer,
     BaseImageField,
     BaseTitleField,
+    BaseDescriptionField,
     BaseSubmitButton
   },
   data () {

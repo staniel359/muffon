@@ -8,17 +8,19 @@
         @success="handleSuccess"
       >
         <div class="fields-container">
-          <BasePlaylistImageField
+          <BaseImageField
             class="image-field"
+            model="playlist"
             :value="imageData?.medium"
             @change="handleImageChange"
           />
 
-          <BasePlaylistTitleField
-            ref="title"
-            class="title-field"
-            :value="playlistTitle"
-          />
+          <div class="fields-right-column">
+            <BaseTitleField
+              ref="title"
+              :value="playlistTitle"
+            />
+          </div>
         </div>
 
         <div class="submit-button-container">
@@ -36,10 +38,8 @@ import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
 import BasePlaylistUpdateFormContainer
   from '*/components/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
-import BasePlaylistImageField
-  from '*/components/fields/playlist/BasePlaylistImageField.vue'
-import BasePlaylistTitleField
-  from '*/components/fields/playlist/BasePlaylistTitleField.vue'
+import BaseImageField from '*/components/fields/BaseImageField.vue'
+import BaseTitleField from '*/components/fields/BaseTitleField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
@@ -47,8 +47,8 @@ export default {
   components: {
     BaseModalContainer,
     BasePlaylistUpdateFormContainer,
-    BasePlaylistImageField,
-    BasePlaylistTitleField,
+    BaseImageField,
+    BaseTitleField,
     BaseSubmitButton
   },
   props: {

@@ -1,31 +1,26 @@
 <template>
   <div class="field">
-    <input
-      ref="input"
+    <textarea
       type="text"
-      name="title"
-      :placeholder="titleText"
+      name="description"
+      rows="4"
+      :placeholder="descriptionText"
       :value="value"
-    >
+    ></textarea>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'BasePlaylistTitleField',
+  name: 'BaseDescriptionField',
   props: {
     value: String
   },
   computed: {
-    titleText () {
+    descriptionText () {
       return this.$t(
-        'forms.fields.title'
+        'forms.fields.description'
       )
-    }
-  },
-  methods: {
-    focus () {
-      this.$refs.input.focus()
     }
   }
 }

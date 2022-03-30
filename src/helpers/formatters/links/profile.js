@@ -37,3 +37,11 @@ export const posts = ({ profileId }) => {
     path: `profiles/${profileId}/posts`
   }
 }
+
+export const communities = ({ profileId }) => {
+  return {
+    name: 'ProfileCommunitiesPage',
+    params: { profileId },
+    path: `profiles/${profileId}/communities`
+  }
+}

@@ -23,6 +23,7 @@
     "playlists": "Списки",
     "favorites": "Избранное",
     "bookmarks": "Закладки",
+    "communities": "Сообщества",
     "settings": "Настройки",
     "model": {
       "artists": "Исполнители {modelName}",
@@ -36,7 +37,8 @@
       "posts": "Публикации {modelName}",
       "library": "Библиотека {modelName}",
       "playlists": "Списки {modelName}",
-      "favorites": "Избранное {modelName}"
+      "favorites": "Избранное {modelName}",
+      "communities": "Сообщества {modelName}"
     },
     "top": {
       "artists": "Популярные исполнители",
@@ -112,7 +114,8 @@
     },
     "add": {
       "playlist": "Добавить список",
-      "tracks": "Добавить композиции"
+      "tracks": "Добавить композиции",
+      "community": "Добавить сообщество"
     },
     "addTo": {
       "library": "Добавить в библиотеку",
@@ -131,7 +134,8 @@
     }
   },
   "links": {
-    "playlists": "Все списки"
+    "playlists": "Все списки",
+    "communities": "Все сообщества"
   },
   "inputs": {
     "search": "Поиск...",
@@ -187,6 +191,7 @@
       "passwordConfirmation": "Подтверждение пароля",
       "nickname": "Ник",
       "title": "Название",
+      "description": "Описание",
       "image": "Загрузить изображение",
       "gender": "Пол",
       "birthdate": "Дата рождения",
@@ -243,7 +248,8 @@
     "albums": "{count} альбомов",
     "tracks": "{count} композиций",
     "followers": "{count} подписчиков",
-    "following": "{count} подписок"
+    "following": "{count} подписок",
+    "members": "{count} участников"
   },
   "sources": {
     "select": {
@@ -441,6 +447,8 @@
       "profile_artists": "Нет исполнителей",
       "recommendations": "Нет рекомендаций",
       "playlists": "Нет списков",
+      "communities": "Нет сообществ",
+      "members": "Нет участников",
       "videos": "Нет видео"
     },
     "content": "Похоже, здесь ничего нет"

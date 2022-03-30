@@ -3,11 +3,11 @@
     <div class="image-field-content">
       <BaseImage
         class="rounded bordered image-preview"
-        model="playlist"
+        :model="model"
         :image="imageUrl"
       />
 
-      <label for="playlist-image-input">
+      <label for="image-input">
         <BaseButton
           class="compact image-add-button"
           :text="addText"
@@ -23,7 +23,7 @@
       />
 
       <BaseImageInput
-        id="playlist-image-input"
+        id="image-input"
         @change="handleChange"
       />
     </div>
@@ -36,13 +36,17 @@ import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
 
 export default {
-  name: 'BasePlaylistImageField',
+  name: 'BaseImageField',
   components: {
     BaseImage,
     BaseButton,
     BaseImageInput
   },
   props: {
+    model: {
+      type: String,
+      required: true
+    },
     value: String
   },
   emits: [
