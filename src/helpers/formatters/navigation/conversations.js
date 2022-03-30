@@ -3,7 +3,7 @@ import {
   main as formatConversationsLink
 } from '*/helpers/formatters/links/conversations'
 
-export default function ({ conversationId, profileNickname } = {}) {
+export default function ({ profileNickname } = {}) {
   const formatLink = () => {
     if (profileNickname) {
       return formatConversationsLink()

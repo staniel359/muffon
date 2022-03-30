@@ -17,8 +17,6 @@
     "profiles": "Профили",
     "feed": "Лента",
     "posts": "Публикации",
-    "followers": "Подписчики",
-    "following": "Подписки",
     "conversations": "Переписки",
     "library": "Библиотека",
     "recommendations": "Рекомендации",
@@ -36,8 +34,6 @@
       "videos": "Видео {modelName}",
       "related": "Связанные с {modelName}",
       "posts": "Публикации {modelName}",
-      "followers": "Подписчики {modelName}",
-      "following": "Подписки {modelName}",
       "library": "Библиотека {modelName}",
       "playlists": "Списки {modelName}",
       "favorites": "Избранное {modelName}"

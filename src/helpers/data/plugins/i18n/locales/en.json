@@ -17,8 +17,6 @@
     "profiles": "Profiles",
     "feed": "Feed",
     "posts": "Posts",
-    "followers": "Followers",
-    "following": "Following",
     "conversations": "Conversations",
     "library": "Library",
     "recommendations": "Recommendations",
@@ -36,8 +34,6 @@
       "videos": "{modelName} videos",
       "related": "{modelName} related",
       "posts": "{modelName} posts",
-      "followers": "{modelName} followers",
-      "following": "{modelName} following",
       "library": "{modelName} library",
       "playlists": "{modelName} playlists",
       "favorites": "{modelName} favorites"

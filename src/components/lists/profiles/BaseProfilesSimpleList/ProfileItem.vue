@@ -2,6 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item main-profile-item"
     :link="profileMainLink"
+    @click="handleLinkClick"
   >
     <BaseImage
       class="circular bordered"
@@ -13,7 +14,7 @@
       <div class="nickname-label-container">
         <BaseHeader
           tag="h4"
-          :class="{ link: isMainLinkActive }"
+          class="link"
           :text="nickname"
         />
 
@@ -39,10 +40,9 @@
             :profileData="profileData"
           />
 
-          <BaseProfileFollowingCount
-            class="following-count"
+          <BaseProfileFollowCounters
+            class="follow-counters"
             :profileData="profileData"
-            @activeLinkChange="handleActiveLinkChange"
           />
         </small>
       </div>
@@ -82,8 +82,8 @@ import BaseProfileGenderAge
   from '*/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
   from '*/components/models/profile/BaseProfileCityCountry.vue'
-import BaseProfileFollowingCount
-  from '*/components/models/profile/BaseProfileFollowingCount.vue'
+import BaseProfileFollowCounters
+  from '*/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowingMessage
   from '*/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseOptionsDropdown
@@ -105,7 +105,7 @@ export default {
     BaseLabel,
     BaseProfileGenderAge,
     BaseProfileCityCountry,
-    BaseProfileFollowingCount,
+    BaseProfileFollowCounters,
     BaseProfileFollowingMessage,
     BaseOptionsDropdown,
     BaseProfileMessageModal
@@ -125,11 +125,9 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      isMainLinkActive: true
-    }
-  },
+  emits: [
+    'linkClick'
+  ],
   computed: {
     profileMainLink () {
       return formatProfileMainLink({
@@ -174,11 +172,11 @@ export default {
     }
   },
   methods: {
+    handleLinkClick () {
+      this.$emit('linkClick')
+    },
     handleMessageOptionClick () {
       this.$refs.messageModal.show()
-    },
-    handleActiveLinkChange (value) {
-      this.isMainLinkActive = !value
     },
     setIsFollowing (value) {
       this.paginationItem
@@ -202,9 +200,9 @@ export default {
 .role-label
   margin-left: 0.5em
 
-.following-count
+.follow-counters
   @extend .d-flex
-  ::v-deep(.followers)
+  ::v-deep(.following)
     margin-left: 0.5em
 
 .following-message
