@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item main-playlist-item"
+    class="item main-simple-list-item"
     :class="{ disabled: isDeleted }"
     :link="link"
   >
@@ -24,18 +24,20 @@
 
         <span
           v-if="isWithProfile"
+          class="description profile-nickname"
           @mouseenter="handleProfileNicknameMouseEnter"
           @mouseleave="handleProfileNicknameMouseLeave"
         >
           <BaseLink
-            :text="profileData.nickname"
+            :text="profileNickname"
             :link="profileMainLink"
           />
         </span>
 
-        <div class="description">
-          {{ tracksCountText }}
-        </div>
+        <small
+          class="description"
+          v-html="tracksCountText"
+        ></small>
       </div>
 
       <BaseOptionsDropdown
@@ -135,8 +137,11 @@ export default {
     tracksCountText () {
       return this.$t(
         'counters.tracks',
-        { count: this.tracksCountFormatted }
+        { count: this.tracksCountStrong }
       )
+    },
+    tracksCountStrong () {
+      return `<strong>${this.tracksCountFormatted}</strong>`
     },
     tracksCountFormatted () {
       return formatNumber(
@@ -183,4 +188,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-simple-list-item
+  & > .content
+    & > .description
+      &.profile-nickname
+        @extend .width-fit-content
+        margin-top: 0 !important
+</style>

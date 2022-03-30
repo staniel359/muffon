@@ -17,20 +17,9 @@
           class="top-segment"
         >
           <div>
-            <template
+            <BasePlaylistCreateButton
               v-if="isRenderCreateButton"
-            >
-              <BaseButton
-                class="primary"
-                icon="plus"
-                :text="createText"
-                @click="handleCreateButtonClick"
-              />
-
-              <BasePlaylistCreateModal
-                ref="modal"
-              />
-            </template>
+            />
           </div>
 
           <BaseLink
@@ -71,9 +60,8 @@ import BaseProfilePageContainer
   from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BasePlaylistCreateModal
-  from '*/components/modals/playlist/BasePlaylistCreateModal.vue'
+import BasePlaylistCreateButton
+  from '*/components/buttons/playlist/BasePlaylistCreateButton.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
@@ -87,8 +75,7 @@ export default {
   components: {
     BaseProfilePageContainer,
     BaseSegmentContainer,
-    BaseButton,
-    BasePlaylistCreateModal,
+    BasePlaylistCreateButton,
     BaseLink,
     BasePaginatedListContainer,
     BasePlaylistsSimpleList
@@ -102,11 +89,6 @@ export default {
     }
   },
   computed: {
-    createText () {
-      return this.$t(
-        'actions.add.playlist'
-      )
-    },
     isRenderCreateButton () {
       return isCurrentProfile(
         this.profileId
@@ -116,15 +98,14 @@ export default {
       return formatPlaylistsLink()
     },
     playlistsLinkText () {
-      return 'View all playlists'
+      return this.$t(
+        'links.playlists'
+      )
     }
   },
   methods: {
     handleFocus () {
       window.scrollTo(0, 0)
-    },
-    handleCreateButtonClick () {
-      this.$refs.modal.show()
     }
   }
 }

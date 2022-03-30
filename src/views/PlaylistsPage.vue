@@ -5,7 +5,7 @@
     <template #default="pageSlotProps">
       <BaseSegmentContainer
         :class="[
-          'raised',
+          'ui raised segments',
           'main-segment-container',
           'main-page-segment-container',
           'main-paginated-page-segment-container'

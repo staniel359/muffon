@@ -13,9 +13,9 @@
           :text="playlistTitle"
         />
 
-        <div>
-          {{ tracksCountText }}
-        </div>
+        <div
+          v-html="tracksCountText"
+        ></div>
 
         <div class="description main-small-container">
           <small>
@@ -98,8 +98,11 @@ export default {
     tracksCountText () {
       return this.$t(
         'counters.tracks',
-        { count: this.tracksCountFormatted }
+        { count: this.tracksCountStrong }
       )
+    },
+    tracksCountStrong () {
+      return `<strong>${this.tracksCountFormatted}</strong>`
     },
     tracksCountFormatted () {
       return formatNumber(

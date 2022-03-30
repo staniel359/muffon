@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item main-playlist-item"
+    class="item main-simple-list-item"
     :class="{
       disabled: isLoading,
       active: isActive
@@ -20,9 +20,10 @@
         :text="playlistTitle"
       />
 
-      <div class="description">
-        {{ tracksCountText }}
-      </div>
+      <small
+        class="description"
+        v-html="tracksCountText"
+      ></small>
     </div>
 
     <div
@@ -100,8 +101,11 @@ export default {
     tracksCountText () {
       return this.$t(
         'counters.tracks',
-        { count: this.tracksCountFormatted }
+        { count: this.tracksCountStrong }
       )
+    },
+    tracksCountStrong () {
+      return `<strong>${this.tracksCountFormatted}</strong>`
     },
     tracksCountFormatted () {
       return formatNumber(

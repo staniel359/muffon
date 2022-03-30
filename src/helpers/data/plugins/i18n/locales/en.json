@@ -134,6 +134,9 @@
       "listened": "Delete from listened"
     }
   },
+  "links": {
+    "playlists": "All playlists"
+  },
   "inputs": {
     "search": "Search...",
     "content": "Write something..."
