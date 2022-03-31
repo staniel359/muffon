@@ -12,7 +12,7 @@
       <BaseImage
         class="rounded bordered"
         model="playlist"
-        :image="imageData?.small"
+        :image="imageData?.extrasmall"
       />
 
       <div class="content">

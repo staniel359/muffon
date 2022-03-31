@@ -17,7 +17,7 @@
       <BaseImage
         class="rounded bordered"
         model="album"
-        :image="imageData?.small"
+        :image="imageData?.extrasmall"
       />
 
       <div class="content">

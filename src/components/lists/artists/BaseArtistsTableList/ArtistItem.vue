@@ -13,7 +13,7 @@
       <div class="main-simple-card-image-container">
         <BaseArtistImage
           class="circular bordered"
-          size="medium"
+          size="small"
           :imageData="imageData"
           :artistName="artistName"
           @loadEnd="handleImageLoadEnd"

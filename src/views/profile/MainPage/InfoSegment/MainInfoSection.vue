@@ -11,15 +11,15 @@
       :text="nickname"
     />
 
-    <BaseProfileOnlineLabel
-      class="online-label"
-      :profileData="profileData"
-    />
-
     <BaseLabel
       v-if="isStaff"
       class="primary role-label"
       :text="roleText"
+    />
+
+    <BaseProfileOnlineLabel
+      class="online-label"
+      :profileData="profileData"
     />
   </div>
 </template>
@@ -72,9 +72,9 @@ export default {
   width: 120px
   height: 120px
 
-.online-label
-  margin-top: 0.5em
-
 .role-label
+  margin: 0.25em 0
+
+.online-label
   margin-top: 0.5em
 </style>
