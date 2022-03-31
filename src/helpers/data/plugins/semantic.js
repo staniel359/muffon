@@ -92,10 +92,12 @@ export const sourcePopupOptions = ({ isDarkMode }) => {
 export const mainDropdownOptions = ({ onChange, action } = {}) => {
   const { visibleContext } = store.state.layout
 
+  const context = visibleContext || 'body'
+
   return {
     on: 'hover',
     duration: 150,
-    context: visibleContext,
+    context,
     delay: {
       show: 0,
       hide: 150
