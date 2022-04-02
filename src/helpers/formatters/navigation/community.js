@@ -4,9 +4,9 @@ import {
   community as formatCommunityLink
 } from '*/helpers/formatters/links/communities'
 
-export default function ({ communityId, communityTitle, pageNameKey }) {
+export default function ({ communityId, communityTitle, scope }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatCommunityLink({
         communityId
       })
@@ -14,10 +14,10 @@ export default function ({ communityId, communityTitle, pageNameKey }) {
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.${pageNameKey}`
+          `navigation.${scope}`
         ),
         isActive: true
       }
@@ -33,7 +33,7 @@ export default function ({ communityId, communityTitle, pageNameKey }) {
     },
     {
       name: communityTitle,
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

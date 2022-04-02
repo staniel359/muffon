@@ -2,10 +2,9 @@
   <BaseVideoSegmentContainer
     ref="segment"
     scope="related"
-    headerTextKey="related"
     :videoId="videoId"
     :responsePageLimit="limit"
-    :formatHeaderLink="formatVideoRelatedLink"
+    :headerLink="headerLink"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -67,13 +66,17 @@ export default {
   computed: {
     videoId () {
       return this.videoData.youtube_id.toString()
+    },
+    headerLink () {
+      return formatVideoRelatedLink({
+        videoId: this.videoId
+      })
     }
   },
   methods: {
     handleFocus () {
       this.$refs.segment.focus()
-    },
-    formatVideoRelatedLink
+    }
   }
 }
 </script>

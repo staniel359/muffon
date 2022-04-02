@@ -4,11 +4,11 @@ import {
   related as formatVideoRelatedLink
 } from '*/helpers/formatters/links/video'
 
-export default function ({ videoTitle, videoId, pageNameKey }) {
+export default function ({ videoTitle, videoId, scope }) {
   const formatTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: videoTitle }
       )
     } else {
@@ -17,7 +17,7 @@ export default function ({ videoTitle, videoId, pageNameKey }) {
   }
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'related':
         return formatVideoRelatedLink({
           videoId

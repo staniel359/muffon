@@ -3,8 +3,9 @@
     class="ui raised segments main-segment-container"
     ref="segment"
   >
-    <HeaderSegment
+    <BaseHeaderSegment
       :scope="scope"
+      :link="headerLink"
     />
 
     <slot
@@ -18,21 +19,22 @@
 </template>
 
 <script>
-import HeaderSegment from './BaseTopSegmentContainer/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getTop from '*/helpers/actions/api/top/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTopSegmentContainer',
   components: {
-    HeaderSegment
+    BaseHeaderSegment
   },
   props: {
     scope: {
       type: String,
       required: true
     },
-    responsePageLimit: Number
+    responsePageLimit: Number,
+    headerLink: Object
   },
   data () {
     return {

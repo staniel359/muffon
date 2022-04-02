@@ -6,11 +6,11 @@ import {
   tags as formatTopTagsLink
 } from '*/helpers/formatters/links/top'
 
-export default function ({ pageNameKey }) {
+export default function ({ scope }) {
   const formatTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.top.${pageNameKey}`
+        `navigation.top.${scope}`
       )
     } else {
       return i18n.global.t(
@@ -20,7 +20,7 @@ export default function ({ pageNameKey }) {
   }
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'artists':
         return formatTopArtistsLink().path
       case 'tracks':

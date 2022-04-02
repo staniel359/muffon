@@ -1,11 +1,10 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    headerTextKey="albums"
     scope="albums"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :profileId="profileId"
-    :formatHeaderLink="formatProfileLibraryAlbumsLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
@@ -37,7 +36,10 @@ export default {
     BaseAlbumsTableList
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     isWithFavoriteOption: Boolean
   },
   data () {
@@ -45,8 +47,12 @@ export default {
       limit: 4
     }
   },
-  methods: {
-    formatProfileLibraryAlbumsLink
+  computed: {
+    headerLink () {
+      return formatProfileLibraryAlbumsLink({
+        profileId: this.profileId
+      })
+    }
   }
 }
 </script>

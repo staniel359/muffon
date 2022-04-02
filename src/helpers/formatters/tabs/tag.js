@@ -6,11 +6,11 @@ import {
   tracks as formatTagTracksLink
 } from '*/helpers/formatters/links/tag'
 
-export default function ({ tagName, pageNameKey }) {
+export default function ({ tagName, scope }) {
   const formatTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: tagName }
       )
     } else {
@@ -19,7 +19,7 @@ export default function ({ tagName, pageNameKey }) {
   }
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'artists':
         return formatTagArtistsLink({
           tagName

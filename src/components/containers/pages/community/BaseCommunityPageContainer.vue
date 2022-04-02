@@ -40,7 +40,8 @@ export default {
     }
   },
   props: {
-    communityId: String
+    communityId: String,
+    scope: String
   },
   data () {
     return {
@@ -58,7 +59,8 @@ export default {
     navigationData () {
       return {
         communityId: this.communityId,
-        communityTitle: this.communityTitleFetched
+        communityTitle: this.communityTitleFetched,
+        scope: this.scope
       }
     },
     tabData () {

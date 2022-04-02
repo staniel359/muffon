@@ -2,7 +2,6 @@
   <BaseArtistPageContainer
     ref="pageContainer"
     :artistName="artistName"
-    :pageNameKey="pageNameKey"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
   >
@@ -86,7 +85,6 @@ export default {
   },
   props: {
     artistName: String,
-    pageNameKey: String,
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,

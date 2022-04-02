@@ -41,8 +41,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   data () {
     return {
@@ -66,7 +65,7 @@ export default {
     navigationData () {
       return {
         tagName: this.tagNameFetched,
-        pageNameKey: this.pageNameKey
+        scope: this.scope
       }
     },
     tabData () {

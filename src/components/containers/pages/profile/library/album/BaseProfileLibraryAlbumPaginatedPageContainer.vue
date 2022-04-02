@@ -5,7 +5,6 @@
     :albumId="albumId"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
-    :pageNameKey="pageNameKey"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -61,8 +60,7 @@ export default {
     albumId: String,
     scope: String,
     clientPageLimit: Number,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   methods: {
     handleFocus () {

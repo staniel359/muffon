@@ -1,7 +1,6 @@
 <template>
   <BaseVideoPageContainer
     scope="related"
-    pageNameKey="related"
     :videoId="videoId"
     :responsePageLimit="limit"
   >

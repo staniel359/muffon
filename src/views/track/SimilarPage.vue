@@ -1,6 +1,5 @@
 <template>
   <BaseTrackPaginatedPageContainer
-    pageNameKey="similar"
     scope="similar"
     :clientPageLimit="limit"
     :responsePageLimit="limit"

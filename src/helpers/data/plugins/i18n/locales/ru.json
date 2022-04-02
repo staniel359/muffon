@@ -38,6 +38,11 @@
       "library": "Библиотека {modelName}",
       "playlists": "Списки {modelName}",
       "favorites": "Избранное {modelName}",
+      "favoritesModels": {
+        "artists": "{modelName} избранные исполнители",
+        "albums": "{modelName} избранные альбомы",
+        "tracks": "{modelName} избранные композиции"
+      },
       "communities": "Сообщества {modelName}"
     },
     "top": {

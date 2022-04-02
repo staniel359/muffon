@@ -27,8 +27,6 @@ import formatProfilePageNavigation
 import formatProfilePageTab from '*/helpers/formatters/tabs/profile'
 import formatProfileLibraryPageTab
   from '*/helpers/formatters/tabs/profile/library'
-import formatProfileFavoritesPageTab
-  from '*/helpers/formatters/tabs/profile/favorites'
 import formatProfilePlaylistsPageTab
   from '*/helpers/formatters/tabs/profile/playlists'
 import formatProfilePostsPageTab from '*/helpers/formatters/tabs/profile/posts'
@@ -56,8 +54,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   data () {
     return {
@@ -76,7 +73,7 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNicknameFetched,
-        pageNameKey: this.pageNameKey
+        scope: this.scope
       }
     },
     profileNicknameFetched () {
@@ -93,13 +90,9 @@ export default {
       return this.profileData?.library
     },
     tabData () {
-      switch (this.pageNameKey) {
+      switch (this.scope) {
         case 'library':
           return formatProfileLibraryPageTab(
-            this.navigationData
-          )
-        case 'favorites':
-          return formatProfileFavoritesPageTab(
             this.navigationData
           )
         case 'playlists':

@@ -3,11 +3,9 @@
     class="ui basic segments"
     ref="segment"
   >
-    <HeaderSegment
-      v-if="headerTextKey"
-      :headerTextKey="headerTextKey"
-      :formatHeaderLink="formatHeaderLink"
-      :videoId="videoId"
+    <BaseHeaderSegment
+      :scope="scope"
+      :link="headerLink"
     />
 
     <slot
@@ -21,24 +19,26 @@
 </template>
 
 <script>
-import HeaderSegment from './BaseVideoSegmentContainer/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getVideo from '*/helpers/actions/api/video/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseVideoSegmentContainer',
   components: {
-    HeaderSegment
+    BaseHeaderSegment
   },
   props: {
     videoId: {
       type: String,
       required: true
     },
-    scope: String,
+    scope: {
+      type: String,
+      required: true
+    },
     responsePageLimit: Number,
-    headerTextKey: String,
-    formatHeaderLink: Function
+    headerLink: Object
   },
   data () {
     return {

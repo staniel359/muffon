@@ -3,8 +3,9 @@
     class="ui raised segments main-segment-container"
     ref="segment"
   >
-    <HeaderSegment
-      :profileId="profileId"
+    <BaseHeaderSegment
+      scope="playlists"
+      :link="headerLink"
     />
 
     <BaseSegmentContainer
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import HeaderSegment from './PlaylistsSegment/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
@@ -42,17 +43,23 @@ import BasePlaylistsSimpleList
   from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import getProfilePlaylists from '*/helpers/actions/api/profile/playlists/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  playlists as formatProfilePlaylistsLink
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'PlaylistsSegment',
   components: {
-    HeaderSegment,
+    BaseHeaderSegment,
     BaseSegmentContainer,
     BasePaginatedListContainer,
     BasePlaylistsSimpleList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -68,6 +75,11 @@ export default {
         profileId: this.profileId,
         limit: this.limit
       }
+    },
+    headerLink () {
+      return formatProfilePlaylistsLink({
+        profileId: this.profileId
+      })
     }
   },
   mounted () {

@@ -52,8 +52,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   emits: [
     'init'
@@ -82,7 +81,7 @@ export default {
     navigationData () {
       return {
         artistName: this.artistNameFetched,
-        pageNameKey: this.pageNameKey
+        scope: this.scope
       }
     },
     tabData () {

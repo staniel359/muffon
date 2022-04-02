@@ -1,7 +1,6 @@
 <template>
   <BaseProfilePageContainer
     scope="posts"
-    pageNameKey="posts"
     :profileId="profileId"
     :responsePageLimit="limit"
   >

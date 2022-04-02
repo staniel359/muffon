@@ -1,11 +1,10 @@
 <template>
   <BaseArtistPaginatedSegmentContainer
-    headerTextKey="similar"
     scope="similar"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :artistName="artistName"
-    :formatHeaderLink="formatArtistSimilarLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
@@ -38,15 +37,22 @@ export default {
     BaseArtistsTableList
   },
   props: {
-    artistName: String
+    artistName: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
       limit: 4
     }
   },
-  methods: {
-    formatArtistSimilarLink
+  computed: {
+    headerLink () {
+      return formatArtistSimilarLink({
+        artistName: this.artistName
+      })
+    }
   }
 }
 </script>

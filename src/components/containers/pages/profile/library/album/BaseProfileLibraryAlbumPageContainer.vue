@@ -46,8 +46,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   data () {
     return {
@@ -70,7 +69,7 @@ export default {
         artistName: this.artistNameFetched,
         albumId: this.albumId,
         albumTitle: this.albumTitleFetched,
-        pageNameKey: this.pageNameKey
+        scope: this.scope
       }
     },
     tabData () {

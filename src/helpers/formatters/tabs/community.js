@@ -3,11 +3,11 @@ import {
   community as formatCommunityLink
 } from '*/helpers/formatters/links/communities'
 
-export default function ({ communityId, communityTitle, pageNameKey }) {
+export default function ({ communityId, communityTitle, scope }) {
   const formatTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: communityTitle }
       )
     } else {
@@ -16,7 +16,7 @@ export default function ({ communityId, communityTitle, pageNameKey }) {
   }
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       default:
         return formatCommunityLink({
           communityId

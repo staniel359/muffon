@@ -1,7 +1,6 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
     scope="artists"
-    pageNameKey="artists"
     :profileId="profileId"
     :clientPageLimit="limit"
     :responsePageLimit="limit"

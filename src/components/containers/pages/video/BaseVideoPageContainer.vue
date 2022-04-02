@@ -39,7 +39,6 @@ export default {
       required: true
     },
     scope: String,
-    pageNameKey: String,
     responsePageLimit: Number
   },
   data () {
@@ -61,7 +60,7 @@ export default {
         videoTitle: this.videoTitleFetched,
         channelId: this.channelIdFetched,
         channelTitle: this.channelTitleFetched,
-        pageNameKey: this.pageNameKey
+        scope: this.scope
       }
     },
     tabData () {

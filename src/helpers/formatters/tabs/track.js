@@ -8,12 +8,12 @@ export default function ({
   artistName,
   trackTitle,
   sourceParams,
-  pageNameKey
+  scope
 }) {
   const formatTrackPageTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: trackTitle }
       )
     } else {
@@ -32,7 +32,7 @@ export default function ({
   ].join(' | ')
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'similar':
         return formatTrackSimilarLink({
           artistName,

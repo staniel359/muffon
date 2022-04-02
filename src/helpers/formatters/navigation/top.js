@@ -1,18 +1,18 @@
 import i18n from '*/plugins/i18n'
 import { main as formatTopMainLink } from '*/helpers/formatters/links/top'
 
-export default function ({ pageNameKey }) {
+export default function ({ scope }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatTopMainLink()
     }
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.${pageNameKey}`
+          `navigation.${scope}`
         ),
         isActive: true
       }
@@ -24,7 +24,7 @@ export default function ({ pageNameKey }) {
       name: i18n.global.t(
         'navigation.tops'
       ),
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

@@ -6,14 +6,6 @@ export const main = ({ profileId }) => {
   }
 }
 
-export const favorites = ({ profileId }) => {
-  return {
-    name: 'ProfileFavoritesPage',
-    params: { profileId },
-    path: `profiles/${profileId}/favorites`
-  }
-}
-
 export const playlists = ({ profileId }) => {
   return {
     name: 'ProfilePlaylistsPage',

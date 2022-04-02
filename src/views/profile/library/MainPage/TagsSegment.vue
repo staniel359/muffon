@@ -1,11 +1,10 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    headerTextKey="tags"
     scope="tags"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :profileId="profileId"
-    :formatHeaderLink="formatProfileLibraryTagsLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTagsList
@@ -32,15 +31,22 @@ export default {
     BaseTagsList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
       limit: 20
     }
   },
-  methods: {
-    formatProfileLibraryTagsLink
+  computed: {
+    headerLink () {
+      return formatProfileLibraryTagsLink({
+        profileId: this.profileId
+      })
+    }
   }
 }
 </script>

@@ -1,7 +1,6 @@
 <template>
   <BaseProfileLibraryTagPaginatedPageContainer
     scope="artists"
-    pageNameKey="artists"
     :profileId="profileId"
     :tagId="tagId"
     :clientPageLimit="limit"

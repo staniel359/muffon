@@ -3,11 +3,9 @@
     class="ui raised segments main-segment-container"
     ref="segment"
   >
-    <HeaderSegment
-      v-if="headerTextKey"
-      :headerTextKey="headerTextKey"
-      :formatHeaderLink="formatHeaderLink"
-      :tagName="tagName"
+    <BaseHeaderSegment
+      :scope="scope"
+      :link="headerLink"
     />
 
     <slot
@@ -23,24 +21,26 @@
 
 <script>
 import { mapState } from 'vuex'
-import HeaderSegment from './BaseTagSegmentContainer/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getTag from '*/helpers/actions/api/tag/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTagSegmentContainer',
   components: {
-    HeaderSegment
+    BaseHeaderSegment
   },
   props: {
     tagName: {
       type: String,
       required: true
     },
-    scope: String,
+    scope: {
+      type: String,
+      required: true
+    },
     responsePageLimit: Number,
-    headerTextKey: String,
-    formatHeaderLink: Function
+    headerLink: Object
   },
   data () {
     return {

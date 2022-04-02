@@ -9,10 +9,10 @@ export default function ({
   videoTitle,
   channelId,
   channelTitle,
-  pageNameKey
+  scope
 }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatVideoMainLink({
         videoId
       })
@@ -20,10 +20,10 @@ export default function ({
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.${pageNameKey}`
+          `navigation.${scope}`
         ),
         isActive: true
       }
@@ -47,7 +47,7 @@ export default function ({
     },
     {
       name: videoTitle,
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

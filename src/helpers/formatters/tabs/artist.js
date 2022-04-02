@@ -7,11 +7,11 @@ import {
   similar as formatArtistSimilarLink
 } from '*/helpers/formatters/links/artist'
 
-export default function ({ artistName, pageNameKey }) {
+export default function ({ artistName, scope }) {
   const formatTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: artistName }
       )
     } else {
@@ -20,7 +20,7 @@ export default function ({ artistName, pageNameKey }) {
   }
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'images':
         return formatArtistImagesLink({
           artistName

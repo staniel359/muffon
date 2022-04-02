@@ -3,11 +3,9 @@
     class="ui raised segments main-segment-container"
     ref="segment"
   >
-    <HeaderSegment
-      v-if="headerTextKey"
-      :headerTextKey="headerTextKey"
-      :formatHeaderLink="formatHeaderLink"
-      :artistName="artistName"
+    <BaseHeaderSegment
+      :scope="scope"
+      :link="headerLink"
     />
 
     <slot
@@ -24,24 +22,26 @@
 
 <script>
 import { mapState } from 'vuex'
-import HeaderSegment from './BaseArtistSegmentContainer/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getArtist from '*/helpers/actions/api/artist/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseArtistSegmentContainer',
   components: {
-    HeaderSegment
+    BaseHeaderSegment
   },
   props: {
     artistName: {
       type: String,
       required: true
     },
-    scope: String,
+    scope: {
+      type: String,
+      required: true
+    },
     responsePageLimit: Number,
-    headerTextKey: String,
-    formatHeaderLink: Function
+    headerLink: Object
   },
   data () {
     return {

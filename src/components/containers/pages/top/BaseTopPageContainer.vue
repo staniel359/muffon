@@ -28,14 +28,13 @@ export default {
   ],
   props: {
     scope: String,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   data () {
     return {
-      isLoading: false,
       error: null,
-      topData: null
+      topData: null,
+      isLoading: false
     }
   },
   computed: {
@@ -46,7 +45,7 @@ export default {
     },
     navigationData () {
       return {
-        pageNameKey: this.scope
+        scope: this.scope
       }
     },
     tabData () {

@@ -3,12 +3,9 @@
     class="ui basic segments"
     ref="segment"
   >
-    <HeaderSegment
-      v-if="headerTextKey"
-      :headerTextKey="headerTextKey"
-      :formatHeaderLink="formatHeaderLink"
-      :artistName="artistName"
-      :trackTitle="trackTitle"
+    <BaseHeaderSegment
+      :scope="scope"
+      :link="headerLink"
     />
 
     <slot
@@ -24,14 +21,14 @@
 
 <script>
 import { mapState } from 'vuex'
-import HeaderSegment from './BaseTrackSegmentContainer/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getTrack from '*/helpers/actions/api/track/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackSegmentContainer',
   components: {
-    HeaderSegment
+    BaseHeaderSegment
   },
   props: {
     artistName: {
@@ -42,10 +39,12 @@ export default {
       type: String,
       required: true
     },
-    scope: String,
+    scope: {
+      type: String,
+      required: true
+    },
     responsePageLimit: Number,
-    headerTextKey: String,
-    formatHeaderLink: Function
+    headerLink: Object
   },
   data () {
     return {

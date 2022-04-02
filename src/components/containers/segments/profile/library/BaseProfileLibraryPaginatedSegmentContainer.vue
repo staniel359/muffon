@@ -4,8 +4,7 @@
     :profileId="profileId"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
-    :headerTextKey="headerTextKey"
-    :formatHeaderLink="formatHeaderLink"
+    :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
       <BaseSegmentContainer
@@ -52,8 +51,7 @@ export default {
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,
-    headerTextKey: String,
-    formatHeaderLink: Function
+    headerLink: Object
   },
   methods: {
     handleFocus () {

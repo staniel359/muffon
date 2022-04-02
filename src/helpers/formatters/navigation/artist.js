@@ -3,9 +3,9 @@ import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
 
-export default function ({ artistName, pageNameKey }) {
+export default function ({ artistName, scope }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatArtistMainLink({
         artistName
       })
@@ -13,10 +13,10 @@ export default function ({ artistName, pageNameKey }) {
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.${pageNameKey}`
+          `navigation.${scope}`
         ),
         isActive: true
       }
@@ -31,7 +31,7 @@ export default function ({ artistName, pageNameKey }) {
     },
     {
       name: artistName,
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

@@ -1,6 +1,5 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    pageNameKey="tracks"
     scope="tracks"
     :artistName="artistName"
     :clientPageLimit="limit"

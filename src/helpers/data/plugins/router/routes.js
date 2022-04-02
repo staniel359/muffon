@@ -106,8 +106,17 @@ const RecommendationsPage = () => import(
 const BookmarksPage = () => import(
   '*/views/BookmarksPage.vue'
 )
-const ProfileFavoritesPage = () => import(
-  '*/views/profile/FavoritesPage.vue'
+const ProfileFavoritesMainPage = () => import(
+  '*/views/profile/favorites/MainPage.vue'
+)
+const ProfileFavoritesArtistsPage = () => import(
+  '*/views/profile/favorites/ArtistsPage.vue'
+)
+const ProfileFavoritesAlbumsPage = () => import(
+  '*/views/profile/favorites/AlbumsPage.vue'
+)
+const ProfileFavoritesTracksPage = () => import(
+  '*/views/profile/favorites/TracksPage.vue'
 )
 const TopMainPage = () => import(
   '*/views/top/MainPage.vue'
@@ -402,8 +411,29 @@ export default [
   {
     path: '/profiles/:profileId/favorites',
     exact: true,
-    name: 'ProfileFavoritesPage',
-    component: ProfileFavoritesPage,
+    name: 'ProfileFavoritesMainPage',
+    component: ProfileFavoritesMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/favorites/artists',
+    exact: true,
+    name: 'ProfileFavoritesArtistsPage',
+    component: ProfileFavoritesArtistsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/favorites/albums',
+    exact: true,
+    name: 'ProfileFavoritesAlbumsPage',
+    component: ProfileFavoritesAlbumsPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/favorites/tracks',
+    exact: true,
+    name: 'ProfileFavoritesTracksPage',
+    component: ProfileFavoritesTracksPage,
     props: true
   },
   {

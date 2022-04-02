@@ -1,12 +1,11 @@
 <template>
   <BaseTrackPaginatedSegmentContainer
-    headerTextKey="similar"
     scope="similar"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :artistName="artistName"
     :trackTitle="trackTitle"
-    :formatHeaderLink="formatTrackSimilarLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -40,16 +39,27 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    artistName: String,
-    trackTitle: String
+    artistName: {
+      type: String,
+      required: true
+    },
+    trackTitle: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
       limit: 5
     }
   },
-  methods: {
-    formatTrackSimilarLink
+  computed: {
+    headerLink () {
+      return formatTrackSimilarLink({
+        artistName: this.artistName,
+        trackTitle: this.trackTitle
+      })
+    }
   }
 }
 </script>

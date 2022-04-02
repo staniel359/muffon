@@ -3,6 +3,7 @@
     scope="artists"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
@@ -23,6 +24,9 @@ import BaseTopPaginatedSegmentContainer
   from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseArtistsTableList
   from '*/components/lists/artists/BaseArtistsTableList.vue'
+import {
+  artists as formatTopArtistsLink
+} from '*/helpers/formatters/links/top'
 
 export default {
   name: 'ArtistsSegment',
@@ -33,6 +37,11 @@ export default {
   data () {
     return {
       limit: 5
+    }
+  },
+  computed: {
+    headerLink () {
+      return formatTopArtistsLink()
     }
   }
 }

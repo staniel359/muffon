@@ -3,12 +3,9 @@
     class="ui raised segments main-segment-container"
     ref="segment"
   >
-    <HeaderSegment
-      v-if="headerTextKey"
-      :profileId="profileId"
+    <BaseHeaderSegment
       :scope="scope"
-      :headerTextKey="headerTextKey"
-      :formatHeaderLink="formatHeaderLink"
+      :link="headerLink"
     />
 
     <slot
@@ -22,25 +19,26 @@
 </template>
 
 <script>
-import HeaderSegment
-  from './BaseProfileLibrarySegmentContainer/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getLibrary from '*/helpers/actions/api/library/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibrarySegmentContainer',
   components: {
-    HeaderSegment
+    BaseHeaderSegment
   },
   props: {
     profileId: {
       type: String,
       required: true
     },
-    scope: String,
+    scope: {
+      type: String,
+      required: true
+    },
     responsePageLimit: Number,
-    headerTextKey: String,
-    formatHeaderLink: Function
+    headerLink: Object
   },
   data () {
     return {

@@ -5,7 +5,6 @@
     :tagId="tagId"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
-    :pageNameKey="pageNameKey"
   >
     <template #default="pageSlotProps">
       <div
@@ -79,7 +78,6 @@ export default {
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,
-    pageNameKey: String,
     isWithViewChange: Boolean,
     viewIndex: Number
   },

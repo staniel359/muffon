@@ -10,8 +10,8 @@
 import { mapState } from 'vuex'
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
-  favorites as formatProfileFavoritesLink
-} from '*/helpers/formatters/links/profile'
+  main as formatProfileFavoritesMainLink
+} from '*/helpers/formatters/links/profile/favorites'
 
 export default {
   name: 'FavoritesItem',
@@ -28,7 +28,7 @@ export default {
       )
     },
     favoritesLink () {
-      return formatProfileFavoritesLink({
+      return formatProfileFavoritesMainLink({
         profileId: this.profileId
       })
     },

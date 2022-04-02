@@ -9,10 +9,10 @@ export default function ({
   artistName,
   albumTitle,
   sourceParams,
-  pageNameKey
+  scope
 }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatAlbumMainLink({
         artistName,
         albumTitle,
@@ -22,10 +22,10 @@ export default function ({
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.model.${pageNameKey}`,
+          `navigation.model.${scope}`,
           { modelName: albumTitle }
         ),
         isActive: true
@@ -55,7 +55,7 @@ export default function ({
     },
     {
       name: albumTitle,
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

@@ -1,7 +1,6 @@
 <template>
   <BaseProfilePageContainer
     scope="communities"
-    pageNameKey="communities"
     :profileId="profileId"
     :responsePageLimit="limit"
   >

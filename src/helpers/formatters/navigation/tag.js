@@ -1,9 +1,9 @@
 import i18n from '*/plugins/i18n'
 import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
 
-export default function ({ tagName, pageNameKey }) {
+export default function ({ tagName, scope }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatTagMainLink({
         tagName
       })
@@ -11,10 +11,10 @@ export default function ({ tagName, pageNameKey }) {
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.${pageNameKey}`
+          `navigation.${scope}`
         ),
         isActive: true
       }
@@ -29,7 +29,7 @@ export default function ({ tagName, pageNameKey }) {
     },
     {
       name: tagName,
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

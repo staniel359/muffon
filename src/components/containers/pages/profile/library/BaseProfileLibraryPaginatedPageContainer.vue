@@ -3,7 +3,6 @@
     ref="pageContainer"
     :profileId="profileId"
     :scope="scope"
-    :pageNameKey="pageNameKey"
     :responsePageLimit="responsePageLimit"
     :query="query"
   >
@@ -89,7 +88,6 @@ export default {
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,
-    pageNameKey: String,
     isWithViewChange: Boolean,
     viewIndex: Number,
     isWithSearch: Boolean

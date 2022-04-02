@@ -9,12 +9,12 @@ export default function ({
   profileNickname,
   tagId,
   tagName,
-  pageNameKey
+  scope
 }) {
   const formatProfileLibraryTagPageTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: tagName }
       )
     } else {
@@ -33,7 +33,7 @@ export default function ({
   ].join(' | ')
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'artists':
         return formatProfileLibraryTagArtistsLink({
           profileId,

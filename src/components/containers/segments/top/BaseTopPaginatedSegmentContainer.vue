@@ -3,6 +3,7 @@
     ref="segment"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
+    :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
       <BaseSegmentContainer
@@ -46,7 +47,8 @@ export default {
   props: {
     scope: String,
     clientPageLimit: Number,
-    responsePageLimit: Number
+    responsePageLimit: Number,
+    headerLink: Object
   },
   methods: {
     handleFocus () {

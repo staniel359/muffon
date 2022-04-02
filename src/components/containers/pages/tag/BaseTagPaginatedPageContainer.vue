@@ -1,7 +1,6 @@
 <template>
   <BaseTagPageContainer
     ref="pageContainer"
-    :pageNameKey="pageNameKey"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
   >
@@ -69,7 +68,6 @@ export default {
     BasePaginatedListContainer
   },
   props: {
-    pageNameKey: String,
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,

@@ -43,7 +43,6 @@ export default {
     },
     scope: String,
     responsePageLimit: Number,
-    pageNameKey: String,
     query: String
   },
   data () {
@@ -63,7 +62,7 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNicknameFetched,
-        pageNameKey: this.pageNameKey
+        scope: this.scope
       }
     },
     tabData () {

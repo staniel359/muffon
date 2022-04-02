@@ -3,8 +3,9 @@
     class="ui raised segments main-segment-container"
     ref="segment"
   >
-    <HeaderSegment
-      :profileId="profileId"
+    <BaseHeaderSegment
+      scope="communities"
+      :link="headerLink"
     />
 
     <BaseSegmentContainer
@@ -33,7 +34,7 @@
 </template>
 
 <script>
-import HeaderSegment from './CommunitiesSegment/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
@@ -42,17 +43,23 @@ import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import getProfileCommunities from '*/helpers/actions/api/profile/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  communities as formatProfileCommunitiesLink
+} from '*/helpers/formatters/links/profile'
 
 export default {
   name: 'CommunitiesSegment',
   components: {
-    HeaderSegment,
+    BaseHeaderSegment,
     BaseSegmentContainer,
     BasePaginatedListContainer,
     BaseCommunitiesSimpleList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -69,6 +76,11 @@ export default {
         scope: 'communities',
         limit: this.limit
       }
+    },
+    headerLink () {
+      return formatProfileCommunitiesLink({
+        profileId: this.profileId
+      })
     }
   },
   mounted () {

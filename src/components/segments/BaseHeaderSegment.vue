@@ -2,7 +2,7 @@
   <BaseSegmentContainer>
     <BaseHeaderContainer tag="h3">
       <BaseLink
-        :link="profileCommunitiesLink"
+        :link="link"
         :text="headerText"
       />
     </BaseHeaderContainer>
@@ -15,32 +15,28 @@ import BaseSegmentContainer
 import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import {
-  communities as formatProfileCommunitiesLink
-} from '*/helpers/formatters/links/profile'
 
 export default {
-  name: 'HeaderSegment',
+  name: 'BaseHeaderSegment',
   components: {
     BaseSegmentContainer,
     BaseHeaderContainer,
     BaseLink
   },
   props: {
-    profileId: {
+    link: {
+      type: Object,
+      required: true
+    },
+    scope: {
       type: String,
       required: true
     }
   },
   computed: {
-    profileCommunitiesLink () {
-      return formatProfileCommunitiesLink({
-        profileId: this.profileId
-      })
-    },
     headerText () {
       return this.$t(
-        'navigation.communities'
+        `navigation.${this.scope}`
       )
     }
   }

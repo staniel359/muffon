@@ -5,7 +5,6 @@
     :artistId="artistId"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
-    :pageNameKey="pageNameKey"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -61,8 +60,7 @@ export default {
     artistId: String,
     scope: String,
     clientPageLimit: Number,
-    responsePageLimit: Number,
-    pageNameKey: String
+    responsePageLimit: Number
   },
   methods: {
     handleFocus () {

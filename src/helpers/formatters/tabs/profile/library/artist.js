@@ -10,12 +10,12 @@ export default function ({
   profileNickname,
   artistId,
   artistName,
-  pageNameKey
+  scope
 }) {
   const formatProfileLibraryArtistPageTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: artistName }
       )
     } else {
@@ -34,7 +34,7 @@ export default function ({
   ].join(' | ')
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'albums':
         return formatProfileLibraryArtistAlbumsLink({
           profileId,

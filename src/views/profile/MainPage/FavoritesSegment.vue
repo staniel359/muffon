@@ -1,7 +1,8 @@
 <template>
   <div class="ui raised segments main-segment-container">
-    <HeaderSegment
-      :profileId="profileId"
+    <BaseHeaderSegment
+      scope="favorites"
+      :link="headerLink"
     />
 
     <FavoritesTabsSegment
@@ -11,17 +12,30 @@
 </template>
 
 <script>
-import HeaderSegment from './FavoritesSegment/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import FavoritesTabsSegment from './FavoritesSegment/FavoritesTabsSegment.vue'
+import {
+  main as formatProfileFavoritesMainLink
+} from '*/helpers/formatters/links/profile/favorites'
 
 export default {
   name: 'FavoritesSegment',
   components: {
-    HeaderSegment,
+    BaseHeaderSegment,
     FavoritesTabsSegment
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
+  computed: {
+    headerLink () {
+      return formatProfileFavoritesMainLink({
+        profileId: this.profileId
+      })
+    }
   }
 }
 </script>

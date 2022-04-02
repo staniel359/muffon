@@ -1,6 +1,5 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    pageNameKey="similar"
     scope="similar"
     :artistName="artistName"
     :clientPageLimit="limit"

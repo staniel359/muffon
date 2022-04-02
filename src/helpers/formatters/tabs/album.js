@@ -5,12 +5,12 @@ export default function ({
   artistName,
   albumTitle,
   sourceParams,
-  pageNameKey
+  scope
 }) {
   const formatAlbumPageTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: albumTitle }
       )
     } else {
@@ -29,7 +29,7 @@ export default function ({
   ].join(' | ')
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       default:
         return formatAlbumMainLink({
           artistName,

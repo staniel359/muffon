@@ -1,6 +1,5 @@
 <template>
   <BaseTagPaginatedPageContainer
-    pageNameKey="albums"
     scope="albums"
     :clientPageLimit="limit"
     :responsePageLimit="limit"

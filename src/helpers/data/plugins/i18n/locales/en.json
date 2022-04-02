@@ -38,6 +38,11 @@
       "library": "{modelName} library",
       "playlists": "{modelName} playlists",
       "favorites": "{modelName} favorites",
+      "favoritesModels": {
+        "artists": "{modelName} favorite artists",
+        "albums": "{modelName} favorite albums",
+        "tracks": "{modelName} favorite tracks"
+      },
       "communities": "{modelName} communities"
     },
     "top": {

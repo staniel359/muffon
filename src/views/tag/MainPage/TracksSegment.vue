@@ -1,11 +1,10 @@
 <template>
   <BaseTagPaginatedSegmentContainer
-    headerTextKey="tracks"
     scope="tracks"
     :clientPageLimit="limit"
     :responsePageLimit="50"
     :tagName="tagName"
-    :formatHeaderLink="formatTagTracksLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -36,15 +35,22 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    tagName: String
+    tagName: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
       limit: 10
     }
   },
-  methods: {
-    formatTagTracksLink
+  computed: {
+    headerLink () {
+      return formatTagTracksLink({
+        tagName: this.tagName
+      })
+    }
   }
 }
 </script>

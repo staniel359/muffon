@@ -6,15 +6,11 @@ import {
   tracks as formatProfileLibraryTracksLink
 } from '*/helpers/formatters/links/profile/library'
 
-export default function ({
-  profileId,
-  profileNickname,
-  pageNameKey
-}) {
+export default function ({ profileId, profileNickname, scope }) {
   const formatTitle = () => {
-    if (pageNameKey) {
+    if (scope) {
       return i18n.global.t(
-        `navigation.model.${pageNameKey}`,
+        `navigation.model.${scope}`,
         { modelName: profileNickname }
       )
     } else {
@@ -23,7 +19,7 @@ export default function ({
   }
 
   const formatPath = () => {
-    switch (pageNameKey) {
+    switch (scope) {
       case 'artists':
         return formatProfileLibraryArtistsLink({
           profileId

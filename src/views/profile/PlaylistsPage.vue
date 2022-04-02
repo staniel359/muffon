@@ -1,7 +1,6 @@
 <template>
   <BaseProfilePageContainer
     scope="playlists"
-    pageNameKey="playlists"
     :profileId="profileId"
     :responsePageLimit="limit"
   >

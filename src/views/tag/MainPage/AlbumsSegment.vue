@@ -1,11 +1,10 @@
 <template>
   <BaseTagPaginatedSegmentContainer
-    headerTextKey="albums"
     scope="albums"
     :clientPageLimit="limit"
     :responsePageLimit="20"
     :tagName="tagName"
-    :formatHeaderLink="formatTagAlbumsLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
@@ -36,15 +35,22 @@ export default {
     BaseAlbumsTableList
   },
   props: {
-    tagName: String
+    tagName: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
       limit: 4
     }
   },
-  methods: {
-    formatTagAlbumsLink
+  computed: {
+    headerLink () {
+      return formatTagAlbumsLink({
+        tagName: this.tagName
+      })
+    }
   }
 }
 </script>

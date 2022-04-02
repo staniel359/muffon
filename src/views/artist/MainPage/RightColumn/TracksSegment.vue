@@ -1,11 +1,10 @@
 <template>
   <BaseArtistPaginatedSegmentContainer
-    headerTextKey="tracks"
     scope="tracks"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :artistName="artistName"
-    :formatHeaderLink="formatArtistTracksLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -40,15 +39,22 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    artistName: String
+    artistName: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
       limit: 10
     }
   },
-  methods: {
-    formatArtistTracksLink
+  computed: {
+    headerLink () {
+      return formatArtistTracksLink({
+        artistName: this.artistName
+      })
+    }
   }
 }
 </script>

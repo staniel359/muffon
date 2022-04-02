@@ -1,7 +1,6 @@
 <template>
   <BaseProfilePageContainer
     scope="library"
-    pageNameKey="library"
     :profileId="profileId"
   >
     <template #default="slotProps">

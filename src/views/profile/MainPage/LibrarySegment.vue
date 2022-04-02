@@ -1,7 +1,8 @@
 <template>
   <div class="ui raised segments main-segment-container">
-    <HeaderSegment
-      :profileId="profileId"
+    <BaseHeaderSegment
+      scope="library"
+      :link="headerLink"
     />
 
     <CompatibilitySegment
@@ -21,22 +22,28 @@
 </template>
 
 <script>
-import HeaderSegment from './LibrarySegment/HeaderSegment.vue'
+import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
 import { isCurrentProfile } from '*/helpers/utils'
+import {
+  main as formatProfileLibraryMainLink
+} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'LibrarySegment',
   components: {
-    HeaderSegment,
+    BaseHeaderSegment,
     CompatibilitySegment,
     StatisticsSegment,
     LibraryTabsSegment
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     profileNickname: String
   },
   computed: {
@@ -44,6 +51,11 @@ export default {
       return !isCurrentProfile(
         this.profileId
       )
+    },
+    headerLink () {
+      return formatProfileLibraryMainLink({
+        profileId: this.profileId
+      })
     }
   }
 }

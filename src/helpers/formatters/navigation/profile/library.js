@@ -7,9 +7,9 @@ import {
   main as formatProfileLibraryMainLink
 } from '*/helpers/formatters/links/profile/library'
 
-export default function ({ profileId, profileNickname, pageNameKey }) {
+export default function ({ profileId, profileNickname, scope }) {
   const formatLink = () => {
-    if (pageNameKey) {
+    if (scope) {
       return formatProfileLibraryMainLink({
         profileId
       })
@@ -17,10 +17,10 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
   }
 
   const formatSubpageSection = () => {
-    if (pageNameKey) {
+    if (scope) {
       return {
         name: i18n.global.t(
-          `navigation.${pageNameKey}`
+          `navigation.${scope}`
         ),
         isActive: true
       }
@@ -44,7 +44,7 @@ export default function ({ profileId, profileNickname, pageNameKey }) {
       name: i18n.global.t(
         'navigation.library'
       ),
-      isActive: !pageNameKey,
+      isActive: !scope,
       link: formatLink()
     },
     formatSubpageSection()

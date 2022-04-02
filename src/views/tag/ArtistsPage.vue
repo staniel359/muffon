@@ -1,6 +1,5 @@
 <template>
   <BaseTagPaginatedPageContainer
-    pageNameKey="artists"
     scope="artists"
     :clientPageLimit="limit"
     :responsePageLimit="21"

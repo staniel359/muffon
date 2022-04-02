@@ -1,12 +1,11 @@
 <template>
   <BaseProfileLibraryArtistPaginatedSegmentContainer
-    headerTextKey="tracks"
     scope="tracks"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
     :profileId="profileId"
     :artistId="artistId"
-    :formatHeaderLink="formatProfileLibraryArtistTracksLink"
+    :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -41,8 +40,14 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    profileId: String,
-    artistId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
+    artistId: {
+      type: String,
+      required: true
+    },
     artistName: String,
     isWithFavoriteOption: Boolean,
     isWithDeleteOption: Boolean
@@ -52,8 +57,13 @@ export default {
       limit: 10
     }
   },
-  methods: {
-    formatProfileLibraryArtistTracksLink
+  computed: {
+    headerLink () {
+      return formatProfileLibraryArtistTracksLink({
+        profileId: this.profileId,
+        artistId: this.artistId
+      })
+    }
   }
 }
 </script>

@@ -1,7 +1,6 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
     scope="tags"
-    pageNameKey="tags"
     :profileId="profileId"
     :clientPageLimit="limit"
     :responsePageLimit="limit"

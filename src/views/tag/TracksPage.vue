@@ -1,6 +1,5 @@
 <template>
   <BaseTagPaginatedPageContainer
-    pageNameKey="tracks"
     scope="tracks"
     :clientPageLimit="limit"
     :responsePageLimit="limit"
