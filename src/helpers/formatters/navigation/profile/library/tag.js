@@ -1,15 +1,15 @@
-import i18n from '*/plugins/i18n'
-import { profiles as formatProfilesLink } from '*/helpers/formatters/links'
-import {
-  main as formatProfileMainLink
-} from '*/helpers/formatters/links/profile'
-import {
-  main as formatProfileLibraryMainLink,
-  tags as formatProfileLibraryTagsLink
-} from '*/helpers/formatters/links/profile/library'
-import {
-  main as formatProfileLibraryTagMainLink
-} from '*/helpers/formatters/links/profile/library/tag'
+import formatProfilesSection
+  from '*/helpers/formatters/navigation/sections/profiles'
+import formatProfileSection
+  from '*/helpers/formatters/navigation/sections/profile'
+import formatProfileLibrarySection
+  from '*/helpers/formatters/navigation/sections/profile/library'
+import formatProfileLibraryTagsSection
+  from '*/helpers/formatters/navigation/sections/profile/library/tags'
+import formatProfileLibraryTagSection
+  from '*/helpers/formatters/navigation/sections/profile/library/tag'
+import formatSubpageSection
+  from '*/helpers/formatters/navigation/sections/subpage'
 
 export default function ({
   profileId,
@@ -18,60 +18,26 @@ export default function ({
   tagName,
   scope
 }) {
-  const formatLink = () => {
-    if (scope) {
-      return formatProfileLibraryTagMainLink({
-        profileId,
-        tagId
-      })
-    }
-  }
-
-  const formatSubpageSection = () => {
-    if (scope) {
-      return {
-        name: i18n.global.t(
-          `navigation.${scope}`
-        ),
-        isActive: true
-      }
-    }
-  }
-
   return [
-    {
-      name: i18n.global.t(
-        'navigation.profiles'
-      ),
-      link: formatProfilesLink()
-    },
-    {
-      name: profileNickname,
-      link: formatProfileMainLink({
-        profileId
-      })
-    },
-    {
-      name: i18n.global.t(
-        'navigation.library'
-      ),
-      link: formatProfileLibraryMainLink({
-        profileId
-      })
-    },
-    {
-      name: i18n.global.t(
-        'navigation.tags'
-      ),
-      link: formatProfileLibraryTagsLink({
-        profileId
-      })
-    },
-    {
-      name: tagName,
-      isActive: !scope,
-      link: formatLink()
-    },
-    formatSubpageSection()
+    formatProfilesSection(),
+    formatProfileSection({
+      profileId,
+      profileNickname
+    }),
+    formatProfileLibrarySection({
+      profileId
+    }),
+    formatProfileLibraryTagsSection({
+      profileId
+    }),
+    formatProfileLibraryTagSection({
+      profileId,
+      tagId,
+      tagName,
+      isActive: !scope
+    }),
+    scope && formatSubpageSection({
+      scope
+    })
   ].filter(e => e)
 }

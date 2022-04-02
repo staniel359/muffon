@@ -73,7 +73,7 @@ export default {
     }
   },
   computed: {
-    profileArgs () {
+    followArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -105,7 +105,7 @@ export default {
     getProfileFollow,
     fetchData (page) {
       this.getProfileFollow({
-        ...this.profileArgs,
+        ...this.followArgs,
         page
       })
     },

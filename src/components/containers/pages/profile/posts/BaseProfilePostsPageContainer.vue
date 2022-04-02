@@ -21,28 +21,25 @@
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatProfilePlaylistPageNavigation
-  from '*/helpers/formatters/navigation/profile/playlist'
-import formatProfilePlaylistPageTab
-  from '*/helpers/formatters/tabs/profile/playlist'
-import getPlaylist from '*/helpers/actions/api/playlist/get'
+import formatProfilePageNavigation
+  from '*/helpers/formatters/navigation/profile'
+import formatProfilePostsPageTab from '*/helpers/formatters/tabs/profile/posts'
+import getProfilePosts from '*/helpers/actions/api/profile/get'
 
 export default {
-  name: 'BasePlaylistPageContainer',
+  name: 'BaseProfilePostsPageContainer',
   components: {
     BasePageContainer
   },
   mixins: [
     navigationMixin
   ],
-  provide () {
-    return {
-      setProfileData: this.setProfileData
-    }
-  },
   props: {
-    profileId: String,
-    playlistId: String
+    profileId: {
+      type: String,
+      required: true
+    },
+    responsePageLimit: Number
   },
   data () {
     return {
@@ -53,34 +50,32 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatProfilePlaylistPageNavigation(
+      return formatProfilePageNavigation(
         this.navigationData
       )
     },
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
-        playlistId: this.playlistId,
-        playlistTitle: this.playlistTitleFetched
+        profileNickname:
+          this.profileNicknameFetched,
+        scope: 'posts'
       }
-    },
-    tabData () {
-      return formatProfilePlaylistPageTab(
-        this.navigationData
-      )
     },
     profileNicknameFetched () {
       return this.profileData?.nickname
     },
-    playlistTitleFetched () {
-      return this.profileData?.playlist?.title
-    },
-    playlistArgs () {
+    postsArgs () {
       return {
         profileId: this.profileId,
-        playlistId: this.playlistId
+        scope: 'posts',
+        limit: this.responsePageLimit
       }
+    },
+    tabData () {
+      return formatProfilePostsPageTab(
+        this.navigationData
+      )
     }
   },
   watch: {
@@ -90,17 +85,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh () {
-      this.fetchData()
+    handleRefresh (page) {
+      this.fetchData(page)
     },
-    getPlaylist,
-    fetchData () {
-      this.getPlaylist(
-        this.playlistArgs
-      )
-    },
-    setProfileData (value) {
-      this.profileData = value
+    getProfilePosts,
+    fetchData (page) {
+      this.getProfilePosts({
+        ...this.postsArgs,
+        page
+      })
     }
   }
 }

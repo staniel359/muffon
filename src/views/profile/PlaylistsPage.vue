@@ -1,6 +1,5 @@
 <template>
-  <BaseProfilePageContainer
-    scope="playlists"
+  <BaseProfilePlaylistsPageContainer
     :profileId="profileId"
     :responsePageLimit="limit"
   >
@@ -51,12 +50,12 @@
         </BaseSegmentContainer>
       </div>
     </template>
-  </BaseProfilePageContainer>
+  </BaseProfilePlaylistsPageContainer>
 </template>
 
 <script>
-import BaseProfilePageContainer
-  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
+import BaseProfilePlaylistsPageContainer
+  from '*/components/containers/pages/profile/playlists/BaseProfilePlaylistsPageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePlaylistCreateButton
@@ -72,7 +71,7 @@ import { playlists as formatPlaylistsLink } from '*/helpers/formatters/links'
 export default {
   name: 'PlaylistsPage',
   components: {
-    BaseProfilePageContainer,
+    BaseProfilePlaylistsPageContainer,
     BaseSegmentContainer,
     BasePlaylistCreateButton,
     BaseLink,

@@ -48,7 +48,7 @@ export default {
     }
   },
   computed: {
-    profileFavoritesArgs () {
+    favoritesArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -69,7 +69,7 @@ export default {
     getProfileFavorites,
     fetchData (page) {
       this.getProfileFavorites({
-        ...this.profileFavoritesArgs,
+        ...this.favoritesArgs,
         page
       })
     },

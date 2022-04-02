@@ -1,37 +1,19 @@
-import i18n from '*/plugins/i18n'
-import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
+import formatTagsSection
+  from '*/helpers/formatters/navigation/sections/tags'
+import formatTagSection
+  from '*/helpers/formatters/navigation/sections/tag'
+import formatSubpageSection
+  from '*/helpers/formatters/navigation/sections/subpage'
 
 export default function ({ tagName, scope }) {
-  const formatLink = () => {
-    if (scope) {
-      return formatTagMainLink({
-        tagName
-      })
-    }
-  }
-
-  const formatSubpageSection = () => {
-    if (scope) {
-      return {
-        name: i18n.global.t(
-          `navigation.${scope}`
-        ),
-        isActive: true
-      }
-    }
-  }
-
   return [
-    {
-      name: i18n.global.t(
-        'navigation.tags'
-      )
-    },
-    {
-      name: tagName,
-      isActive: !scope,
-      link: formatLink()
-    },
-    formatSubpageSection()
+    formatTagsSection(),
+    formatTagSection({
+      tagName,
+      isActive: !scope
+    }),
+    scope && formatSubpageSection({
+      scope
+    })
   ].filter(e => e)
 }

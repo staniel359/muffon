@@ -72,7 +72,7 @@ export default {
         this.navigationData
       )
     },
-    favoriteArgs () {
+    favoritesArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -96,7 +96,7 @@ export default {
     getProfileFavorites,
     fetchData (page) {
       this.getProfileFavorites({
-        ...this.favoriteArgs,
+        ...this.favoritesArgs,
         page
       })
     }

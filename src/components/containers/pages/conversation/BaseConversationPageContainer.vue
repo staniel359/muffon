@@ -22,8 +22,8 @@
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatConversationsPageNavigation
-  from '*/helpers/formatters/navigation/conversations'
+import formatConversationPageNavigation
+  from '*/helpers/formatters/navigation/conversation'
 import formatConversationsPageTab
   from '*/helpers/formatters/tabs/conversations'
 import getConversation from '*/helpers/actions/api/conversation/get'
@@ -51,10 +51,15 @@ export default {
   },
   computed: {
     navigationSections () {
-      return formatConversationsPageNavigation({
+      return formatConversationPageNavigation(
+        this.navigationData
+      )
+    },
+    navigationData () {
+      return {
         conversationId: this.conversationId,
         profileNickname: this.profileNicknameFetched
-      })
+      }
     },
     profileNicknameFetched () {
       return this.conversationData?.profile?.nickname
@@ -63,10 +68,9 @@ export default {
       return this.conversationData?.profile?.id?.toString()
     },
     tabData () {
-      return formatConversationsPageTab({
-        conversationId: this.conversationId,
-        profileNickname: this.profileNicknameFetched
-      })
+      return formatConversationsPageTab(
+        this.navigationData
+      )
     },
     conversationArgs () {
       return {

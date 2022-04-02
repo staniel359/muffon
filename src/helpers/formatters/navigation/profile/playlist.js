@@ -1,32 +1,20 @@
-import i18n from '*/plugins/i18n'
-import { profiles as formatProfilesLink } from '*/helpers/formatters/links'
-import {
-  main as formatProfileMainLink,
-  playlists as formatProfilePlaylistsLink
-} from '*/helpers/formatters/links/profile'
+import formatProfilesSection
+  from '*/helpers/formatters/navigation/sections/profiles'
+import formatProfileSection
+  from '*/helpers/formatters/navigation/sections/profile'
+import formatProfilePlaylistsSection
+  from '*/helpers/formatters/navigation/sections/profile/playlists'
 
 export default function ({ profileId, profileNickname, playlistTitle }) {
   return [
-    {
-      name: i18n.global.t(
-        'navigation.profiles'
-      ),
-      link: formatProfilesLink()
-    },
-    {
-      name: profileNickname,
-      link: formatProfileMainLink({
-        profileId
-      })
-    },
-    {
-      name: i18n.global.t(
-        'navigation.playlists'
-      ),
-      link: formatProfilePlaylistsLink({
-        profileId
-      })
-    },
+    formatProfilesSection(),
+    formatProfileSection({
+      profileId,
+      profileNickname
+    }),
+    formatProfilePlaylistsSection({
+      profileId
+    }),
     {
       name: playlistTitle,
       isActive: true

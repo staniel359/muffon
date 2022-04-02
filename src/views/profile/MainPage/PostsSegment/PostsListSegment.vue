@@ -33,7 +33,7 @@ import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
-import getProfilePosts from '*/helpers/actions/api/profile/posts/get'
+import getProfilePosts from '*/helpers/actions/api/profile/get'
 
 export default {
   name: 'PostsListSegment',
@@ -57,9 +57,10 @@ export default {
     }
   },
   computed: {
-    profilePostsArgs () {
+    postsArgs () {
       return {
         profileId: this.profileId,
+        scope: 'posts',
         limit: this.limit
       }
     }
@@ -77,7 +78,7 @@ export default {
     getProfilePosts,
     fetchData (page) {
       this.getProfilePosts({
-        ...this.profilePostsArgs,
+        ...this.postsArgs,
         page
       })
     }

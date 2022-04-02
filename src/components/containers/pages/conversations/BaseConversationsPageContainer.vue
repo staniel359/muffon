@@ -21,8 +21,9 @@
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatConversationsPageNavigation
-  from '*/helpers/formatters/navigation/conversations'
+import {
+  conversations as formatConversationsPageNavigation
+} from '*/helpers/formatters/navigation'
 import formatConversationsPageTab
   from '*/helpers/formatters/tabs/conversations'
 import getConversations from '*/helpers/actions/api/conversations/get'

@@ -1,18 +1,19 @@
-import i18n from '*/plugins/i18n'
+import formatVideoChannelsSection
+  from '*/helpers/formatters/navigation/sections/videoChannels'
+import formatVideoChannelSection
+  from '*/helpers/formatters/navigation/sections/videoChannel'
+import formatVideosSection
+  from '*/helpers/formatters/navigation/sections/videos'
 
-export default function ({ channelTitle }) {
+export default function ({ channelId, channelTitle }) {
   return [
-    {
-      name: i18n.global.t(
-        'navigation.videoChannels'
-      )
-    },
-    { name: channelTitle },
-    {
-      name: i18n.global.t(
-        'navigation.videos'
-      ),
+    formatVideoChannelsSection(),
+    formatVideoChannelSection({
+      channelTitle
+    }),
+    formatVideosSection({
+      channelId,
       isActive: true
-    }
+    })
   ]
 }

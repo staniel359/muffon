@@ -1,32 +1,15 @@
-import i18n from '*/plugins/i18n'
-import { main as formatTopMainLink } from '*/helpers/formatters/links/top'
+import formatTopSection
+  from '*/helpers/formatters/navigation/sections/top'
+import formatSubpageSection
+  from '*/helpers/formatters/navigation/sections/subpage'
 
 export default function ({ scope }) {
-  const formatLink = () => {
-    if (scope) {
-      return formatTopMainLink()
-    }
-  }
-
-  const formatSubpageSection = () => {
-    if (scope) {
-      return {
-        name: i18n.global.t(
-          `navigation.${scope}`
-        ),
-        isActive: true
-      }
-    }
-  }
-
   return [
-    {
-      name: i18n.global.t(
-        'navigation.tops'
-      ),
-      isActive: !scope,
-      link: formatLink()
-    },
-    formatSubpageSection()
+    formatTopSection({
+      isActive: !scope
+    }),
+    scope && formatSubpageSection({
+      scope
+    })
   ].filter(e => e)
 }

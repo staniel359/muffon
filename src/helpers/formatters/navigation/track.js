@@ -1,9 +1,13 @@
-import i18n from '*/plugins/i18n'
-import {
-  main as formatArtistMainLink,
-  tracks as formatArtistTracksLink
-} from '*/helpers/formatters/links/artist'
-import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
+import formatArtistsSection
+  from '*/helpers/formatters/navigation/sections/artists'
+import formatArtistSection
+  from '*/helpers/formatters/navigation/sections/artist'
+import formatArtistTracksSection
+  from '*/helpers/formatters/navigation/sections/artist/tracks'
+import formatTrackSection
+  from '*/helpers/formatters/navigation/sections/track'
+import formatSubpageSection
+  from '*/helpers/formatters/navigation/sections/subpage'
 
 export default function ({
   artistName,
@@ -11,52 +15,22 @@ export default function ({
   sourceParams,
   scope
 }) {
-  const formatLink = () => {
-    if (scope) {
-      return formatTrackMainLink({
-        artistName,
-        trackTitle,
-        sourceParams
-      })
-    }
-  }
-
-  const formatSubpageSection = () => {
-    if (scope) {
-      return {
-        name: i18n.global.t(
-          `navigation.${scope}`
-        ),
-        isActive: true
-      }
-    }
-  }
-
   return [
-    {
-      name: i18n.global.t(
-        'navigation.artists'
-      )
-    },
-    {
-      name: artistName,
-      link: formatArtistMainLink({
-        artistName
-      })
-    },
-    {
-      name: i18n.global.t(
-        'navigation.tracks'
-      ),
-      link: formatArtistTracksLink({
-        artistName
-      })
-    },
-    {
-      name: trackTitle,
-      isActive: !scope,
-      link: formatLink()
-    },
-    formatSubpageSection()
+    formatArtistsSection(),
+    formatArtistSection({
+      artistName
+    }),
+    formatArtistTracksSection({
+      artistName
+    }),
+    formatTrackSection({
+      artistName,
+      trackTitle,
+      sourceParams,
+      isActive: !scope
+    }),
+    scope && formatSubpageSection({
+      scope
+    })
   ].filter(e => e)
 }

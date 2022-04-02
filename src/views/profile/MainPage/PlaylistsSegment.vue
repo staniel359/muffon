@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    profilePlaylistsArgs () {
+    playlistsArgs () {
       return {
         profileId: this.profileId,
         limit: this.limit
@@ -97,7 +97,7 @@ export default {
     getProfilePlaylists,
     fetchData (page) {
       this.getProfilePlaylists({
-        ...this.profilePlaylistsArgs,
+        ...this.playlistsArgs,
         page
       })
     }

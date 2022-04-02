@@ -1,5 +1,5 @@
 <template>
-  <BasePlaylistPageContainer
+  <BaseProfilePlaylistPageContainer
     :profileId="profileId"
     :playlistId="playlistId"
   >
@@ -29,12 +29,12 @@
         />
       </div>
     </template>
-  </BasePlaylistPageContainer>
+  </BaseProfilePlaylistPageContainer>
 </template>
 
 <script>
-import BasePlaylistPageContainer
-  from '*/components/containers/pages/playlist/BasePlaylistPageContainer.vue'
+import BaseProfilePlaylistPageContainer
+  from '*/components/containers/pages/profile/playlist/BaseProfilePlaylistPageContainer.vue'
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'
@@ -43,7 +43,7 @@ import { isCurrentProfile } from '*/helpers/utils'
 export default {
   name: 'PlaylistPage',
   components: {
-    BasePlaylistPageContainer,
+    BaseProfilePlaylistPageContainer,
     InfoSegment,
     ImportSegment,
     TracksSegment

@@ -11,7 +11,6 @@
       :isLoading="isLoading"
       :error="error"
       :profileData="profileData"
-      :libraryData="libraryData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -25,13 +24,6 @@ import navigationMixin from '*/mixins/navigationMixin'
 import formatProfilePageNavigation
   from '*/helpers/formatters/navigation/profile'
 import formatProfilePageTab from '*/helpers/formatters/tabs/profile'
-import formatProfileLibraryPageTab
-  from '*/helpers/formatters/tabs/profile/library'
-import formatProfilePlaylistsPageTab
-  from '*/helpers/formatters/tabs/profile/playlists'
-import formatProfilePostsPageTab from '*/helpers/formatters/tabs/profile/posts'
-import formatProfileCommunitiesPageTab
-  from '*/helpers/formatters/tabs/profile/communities'
 import getProfile from '*/helpers/actions/api/profile/get'
 
 export default {
@@ -53,7 +45,6 @@ export default {
       type: String,
       required: true
     },
-    scope: String,
     responsePageLimit: Number
   },
   data () {
@@ -72,8 +63,8 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
-        scope: this.scope
+        profileNickname:
+          this.profileNicknameFetched
       }
     },
     profileNicknameFetched () {
@@ -82,36 +73,13 @@ export default {
     profileArgs () {
       return {
         profileId: this.profileId,
-        scope: this.scope,
         limit: this.responsePageLimit
       }
     },
-    libraryData () {
-      return this.profileData?.library
-    },
     tabData () {
-      switch (this.scope) {
-        case 'library':
-          return formatProfileLibraryPageTab(
-            this.navigationData
-          )
-        case 'playlists':
-          return formatProfilePlaylistsPageTab(
-            this.navigationData
-          )
-        case 'posts':
-          return formatProfilePostsPageTab(
-            this.navigationData
-          )
-        case 'communities':
-          return formatProfileCommunitiesPageTab(
-            this.navigationData
-          )
-        default:
-          return formatProfilePageTab(
-            this.navigationData
-          )
-      }
+      return formatProfilePageTab(
+        this.navigationData
+      )
     }
   },
   watch: {

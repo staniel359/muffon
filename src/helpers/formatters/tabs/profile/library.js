@@ -14,7 +14,10 @@ export default function ({ profileId, profileNickname, scope }) {
         { modelName: profileNickname }
       )
     } else {
-      return profileNickname
+      return i18n.global.t(
+        'navigation.model.library',
+        { modelName: profileNickname }
+      )
     }
   }
 

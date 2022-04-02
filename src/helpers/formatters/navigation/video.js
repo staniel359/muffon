@@ -1,8 +1,13 @@
-import i18n from '*/plugins/i18n'
-import {
-  videos as formatVideoChannelVideosLink
-} from '*/helpers/formatters/links/videoChannel'
-import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
+import formatVideoChannelsSection
+  from '*/helpers/formatters/navigation/sections/videoChannels'
+import formatVideoChannelSection
+  from '*/helpers/formatters/navigation/sections/videoChannel'
+import formatVideosSection
+  from '*/helpers/formatters/navigation/sections/videos'
+import formatVideoSection
+  from '*/helpers/formatters/navigation/sections/video'
+import formatSubpageSection
+  from '*/helpers/formatters/navigation/sections/subpage'
 
 export default function ({
   videoId,
@@ -11,45 +16,21 @@ export default function ({
   channelTitle,
   scope
 }) {
-  const formatLink = () => {
-    if (scope) {
-      return formatVideoMainLink({
-        videoId
-      })
-    }
-  }
-
-  const formatSubpageSection = () => {
-    if (scope) {
-      return {
-        name: i18n.global.t(
-          `navigation.${scope}`
-        ),
-        isActive: true
-      }
-    }
-  }
-
   return [
-    {
-      name: i18n.global.t(
-        'navigation.videoChannels'
-      )
-    },
-    { name: channelTitle },
-    {
-      name: i18n.global.t(
-        'navigation.videos'
-      ),
-      link: formatVideoChannelVideosLink({
-        channelId
-      })
-    },
-    {
-      name: videoTitle,
-      isActive: !scope,
-      link: formatLink()
-    },
-    formatSubpageSection()
+    formatVideoChannelsSection(),
+    formatVideoChannelSection({
+      channelTitle
+    }),
+    formatVideosSection({
+      channelId
+    }),
+    formatVideoSection({
+      videoId,
+      videoTitle,
+      isActive: !scope
+    }),
+    scope && formatSubpageSection({
+      scope
+    })
   ].filter(e => e)
 }

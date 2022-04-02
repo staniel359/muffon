@@ -1,6 +1,5 @@
 <template>
-  <BaseProfilePageContainer
-    scope="communities"
+  <BaseProfileCommunitiesPageContainer
     :profileId="profileId"
     :responsePageLimit="limit"
   >
@@ -45,12 +44,12 @@
         </BaseSegmentContainer>
       </div>
     </template>
-  </BaseProfilePageContainer>
+  </BaseProfileCommunitiesPageContainer>
 </template>
 
 <script>
-import BaseProfilePageContainer
-  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
+import BaseProfileCommunitiesPageContainer
+  from '*/components/containers/pages/profile/communities/BaseProfileCommunitiesPageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
@@ -65,7 +64,7 @@ import {
 export default {
   name: 'PlaylistsPage',
   components: {
-    BaseProfilePageContainer,
+    BaseProfileCommunitiesPageContainer,
     BaseSegmentContainer,
     BaseLink,
     BasePaginatedListContainer,

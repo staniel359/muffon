@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    profileCommunitiesArgs () {
+    communitiesArgs () {
       return {
         profileId: this.profileId,
         scope: 'communities',
@@ -98,7 +98,7 @@ export default {
     getProfileCommunities,
     fetchData (page) {
       this.getProfileCommunities({
-        ...this.profileCommunitiesArgs,
+        ...this.communitiesArgs,
         page
       })
     }

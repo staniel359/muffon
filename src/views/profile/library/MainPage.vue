@@ -1,6 +1,5 @@
 <template>
-  <BaseProfilePageContainer
-    scope="library"
+  <BaseProfileLibraryPageContainer
     :profileId="profileId"
   >
     <template #default="slotProps">
@@ -33,12 +32,12 @@
         :profileId="profileId"
       />
     </template>
-  </BaseProfilePageContainer>
+  </BaseProfileLibraryPageContainer>
 </template>
 
 <script>
-import BaseProfilePageContainer
-  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
+import BaseProfileLibraryPageContainer
+  from '*/components/containers/pages/profile/library/BaseProfileLibraryPageContainer.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ImportSegment from './MainPage/ImportSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
@@ -50,7 +49,7 @@ import { isCurrentProfile } from '*/helpers/utils'
 export default {
   name: 'MainPage',
   components: {
-    BaseProfilePageContainer,
+    BaseProfileLibraryPageContainer,
     StatisticsSegment,
     ImportSegment,
     ArtistsSegment,
