@@ -20,7 +20,8 @@
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
-import getLibraryTag from '*/helpers/actions/api/library/tag/get'
+import getProfileLibraryTag
+  from '*/helpers/actions/api/profile/library/tag/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
@@ -68,9 +69,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getLibraryTag,
+    getProfileLibraryTag,
     fetchData (page) {
-      this.getLibraryTag({
+      this.getProfileLibraryTag({
         ...this.libraryTagArgs,
         page
       })

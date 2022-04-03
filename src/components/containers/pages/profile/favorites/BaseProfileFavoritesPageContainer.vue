@@ -26,7 +26,7 @@ import formatProfileFavoritesPageNavigation
   from '*/helpers/formatters/navigation/profile/favorites'
 import formatProfileFavoritesPageTab
   from '*/helpers/formatters/tabs/profile/favorites'
-import getProfileFavorites from '*/helpers/actions/api/favorites/get'
+import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
 
 export default {
   name: 'BaseProfileFavoritesPageContainer',

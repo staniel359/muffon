@@ -26,7 +26,8 @@ import formatProfileLibraryAlbumPageNavigation
   from '*/helpers/formatters/navigation/profile/library/album'
 import formatProfileLibraryAlbumPageTab
   from '*/helpers/formatters/tabs/profile/library/album'
-import getLibraryAlbum from '*/helpers/actions/api/library/album/get'
+import getProfileLibraryAlbum
+  from '*/helpers/actions/api/profile/library/album/get'
 
 export default {
   name: 'BaseProfileLibraryAlbumPageContainer',
@@ -117,9 +118,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getLibraryAlbum,
+    getProfileLibraryAlbum,
     fetchData (page) {
-      this.getLibraryAlbum({
+      this.getProfileLibraryAlbum({
         ...this.libraryArgs,
         page
       })

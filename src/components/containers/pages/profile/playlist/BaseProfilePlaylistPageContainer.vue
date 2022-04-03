@@ -25,7 +25,7 @@ import formatProfilePlaylistPageNavigation
   from '*/helpers/formatters/navigation/profile/playlist'
 import formatProfilePlaylistPageTab
   from '*/helpers/formatters/tabs/profile/playlist'
-import getPlaylist from '*/helpers/actions/api/playlist/get'
+import getProfilePlaylist from '*/helpers/actions/api/profile/playlist/get'
 
 export default {
   name: 'BaseProfilePlaylistPageContainer',
@@ -99,9 +99,9 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    getPlaylist,
+    getProfilePlaylist,
     fetchData () {
-      this.getPlaylist(
+      this.getProfilePlaylist(
         this.playlistArgs
       )
     },

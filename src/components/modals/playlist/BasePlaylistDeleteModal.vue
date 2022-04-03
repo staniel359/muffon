@@ -12,7 +12,8 @@
 
 <script>
 import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deletePlaylist from '*/helpers/actions/api/playlist/delete'
+import deleteProfilePlaylist
+  from '*/helpers/actions/api/profile/playlist/delete'
 import {
   playlists as formatProfilePlaylistsLink
 } from '*/helpers/formatters/links/profile'
@@ -70,7 +71,7 @@ export default {
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deletePlaylist(
+      this.deleteProfilePlaylist(
         this.deleteArgs
       ).then(
         this.handleSuccess
@@ -86,7 +87,7 @@ export default {
         this.$emit('deleted')
       }
     },
-    deletePlaylist,
+    deleteProfilePlaylist,
     redirect () {
       this.$router.push(
         this.profilePlaylistsLink

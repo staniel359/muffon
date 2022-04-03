@@ -14,7 +14,7 @@ import { mapState } from 'vuex'
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
 import { playlistFormOptions } from '*/helpers/data/plugins/semantic'
-import createPlaylist from '*/helpers/actions/api/playlist/create'
+import createProfilePlaylist from '*/helpers/actions/api/profile/playlist/create'
 import {
   playlist as formatProfilePlaylistLink
 } from '*/helpers/formatters/links/profile'
@@ -72,7 +72,7 @@ export default {
           fields
         )
 
-      this.createPlaylist(
+      this.createProfilePlaylist(
         createArgs
       )
     },
@@ -83,7 +83,7 @@ export default {
         'success'
       )
     },
-    createPlaylist,
+    createProfilePlaylist,
     redirect () {
       this.$router.push(
         this.playlistUrl

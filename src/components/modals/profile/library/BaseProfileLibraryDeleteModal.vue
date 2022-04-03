@@ -13,7 +13,8 @@
 
 <script>
 import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteLibraryModel from '*/helpers/actions/api/library/model/delete'
+import deleteProfileLibraryModel
+  from '*/helpers/actions/api/profile/library/model/delete'
 import {
   main as formatProfileLibraryMainLink
 } from '*/helpers/formatters/links/profile/library'
@@ -82,7 +83,7 @@ export default {
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteLibraryModel(
+      this.deleteProfileLibraryModel(
         this.deleteArgs
       ).then(
         this.handleSuccess
@@ -98,7 +99,7 @@ export default {
         this.$emit('deleted')
       }
     },
-    deleteLibraryModel,
+    deleteProfileLibraryModel,
     redirect () {
       this.$router.push(
         this.profileLibraryMainLink

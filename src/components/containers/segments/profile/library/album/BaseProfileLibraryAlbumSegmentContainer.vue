@@ -21,7 +21,8 @@
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
-import getLibraryAlbum from '*/helpers/actions/api/library/album/get'
+import getProfileLibraryAlbum
+  from '*/helpers/actions/api/profile/library/album/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {
@@ -75,9 +76,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getLibraryAlbum,
+    getProfileLibraryAlbum,
     fetchData (page) {
-      this.getLibraryAlbum({
+      this.getProfileLibraryAlbum({
         ...this.libraryAlbumArgs,
         page
       })

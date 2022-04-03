@@ -20,7 +20,7 @@
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
-import getProfileFavorites from '*/helpers/actions/api/favorites/get'
+import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
 import { focusOnSegment } from '*/helpers/actions/layout'
 
 export default {

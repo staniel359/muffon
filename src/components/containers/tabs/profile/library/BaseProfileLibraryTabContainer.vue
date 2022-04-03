@@ -48,7 +48,7 @@ import BaseAlbumsTableList
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
-import getLibrary from '*/helpers/actions/api/library/get'
+import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
 import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
@@ -134,9 +134,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getLibrary,
+    getProfileLibrary,
     fetchData (page) {
-      this.getLibrary({
+      this.getProfileLibrary({
         ...this.libraryArgs,
         page
       })

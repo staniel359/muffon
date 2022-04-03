@@ -16,7 +16,7 @@
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import getPlaylist from '*/helpers/actions/api/playlist/get'
+import getProfilePlaylist from '*/helpers/actions/api/profile/playlist/get'
 
 export default {
   name: 'BasePlaylistSegmentContainer',
@@ -62,9 +62,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getPlaylist,
+    getProfilePlaylist,
     fetchData (page) {
-      this.getPlaylist({
+      this.getProfilePlaylist({
         ...this.playlistArgs,
         page
       })

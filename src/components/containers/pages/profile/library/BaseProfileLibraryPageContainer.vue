@@ -25,8 +25,9 @@ import formatProfileLibraryPageNavigation
   from '*/helpers/formatters/navigation/profile/library'
 import formatProfileLibraryPageTab
   from '*/helpers/formatters/tabs/profile/library'
-import getLibrary from '*/helpers/actions/api/library/get'
-import getLibrarySearch from '*/helpers/actions/api/library/search/get'
+import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
+import getProfileLibrarySearch
+  from '*/helpers/actions/api/profile/library/search/get'
 
 export default {
   name: 'BaseProfileLibraryPageContainer',
@@ -98,17 +99,17 @@ export default {
     handleQueryChange () {
       this.fetchData()
     },
-    getLibrary,
-    getLibrarySearch,
+    getProfileLibrary,
+    getProfileLibrarySearch,
     fetchData (page) {
       if (this.query) {
-        this.getLibrarySearch({
+        this.getProfileLibrarySearch({
           ...this.libraryArgs,
           query: this.query,
           page
         })
       } else {
-        this.getLibrary({
+        this.getProfileLibrary({
           ...this.libraryArgs,
           page
         })

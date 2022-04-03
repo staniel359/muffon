@@ -20,7 +20,8 @@
 <script>
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './ArtistsSection/CompleteSection.vue'
-import createLibraryArtist from '*/helpers/actions/api/library/artist/create'
+import createProfileLibraryArtist
+  from '*/helpers/actions/api/profile/library/artist/create'
 
 export default {
   name: 'ArtistsSection',
@@ -88,7 +89,7 @@ export default {
 
       this.errorArtists = []
     },
-    createLibraryArtist,
+    createProfileLibraryArtist,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'save.active.artists',
@@ -128,7 +129,7 @@ export default {
         }
       }
 
-      await this.createLibraryArtist(
+      await this.createProfileLibraryArtist(
         artistFormatted
       ).catch(
         handleError

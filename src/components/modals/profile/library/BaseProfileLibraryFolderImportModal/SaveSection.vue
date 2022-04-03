@@ -20,7 +20,8 @@
 <script>
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
-import createLibraryTrack from '*/helpers/actions/api/library/track/create'
+import createProfileLibraryTrack
+  from '*/helpers/actions/api/profile/library/track/create'
 
 export default {
   name: 'SaveSection',
@@ -88,7 +89,7 @@ export default {
 
       this.errorFiles = []
     },
-    createLibraryTrack,
+    createProfileLibraryTrack,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'save.active.tracks',
@@ -126,7 +127,7 @@ export default {
         }
       }
 
-      await this.createLibraryTrack(
+      await this.createProfileLibraryTrack(
         fileFormatted
       ).catch(
         handleError

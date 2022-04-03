@@ -25,7 +25,8 @@ import formatProfileLibraryTagPageNavigation
   from '*/helpers/formatters/navigation/profile/library/tag'
 import formatProfileLibraryTagPageTab
   from '*/helpers/formatters/tabs/profile/library/tag'
-import getLibraryTag from '*/helpers/actions/api/library/tag/get'
+import getProfileLibraryTag
+  from '*/helpers/actions/api/profile/library/tag/get'
 
 export default {
   name: 'BaseProfileLibraryTagPageContainer',
@@ -105,9 +106,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getLibraryTag,
+    getProfileLibraryTag,
     fetchData (page) {
-      this.getLibraryTag({
+      this.getProfileLibraryTag({
         ...this.libraryTagArgs,
         page
       })

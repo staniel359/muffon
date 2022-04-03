@@ -20,11 +20,14 @@
 </template>
 
 <script>
-import deleteFavorite from '*/helpers/actions/api/favorites/model/delete'
-import createFavoriteArtist
-  from '*/helpers/actions/api/favorites/artist/create'
-import createFavoriteAlbum from '*/helpers/actions/api/favorites/album/create'
-import createFavoriteTrack from '*/helpers/actions/api/favorites/track/create'
+import deleteProfileFavorite
+  from '*/helpers/actions/api/profile/favorites/model/delete'
+import createProfileFavoriteArtist
+  from '*/helpers/actions/api/profile/favorites/artist/create'
+import createProfileFavoriteAlbum
+  from '*/helpers/actions/api/profile/favorites/album/create'
+import createProfileFavoriteTrack
+  from '*/helpers/actions/api/profile/favorites/track/create'
 
 export default {
   name: 'FavoriteOption',
@@ -88,7 +91,7 @@ export default {
   methods: {
     handleClick () {
       if (this.modelId) {
-        this.deleteFavorite(
+        this.deleteProfileFavorite(
           this.deleteArgs
         ).then(
           this.handleDeleteSuccess
@@ -110,22 +113,22 @@ export default {
     handleDeleteSuccess () {
       this.setFavoriteId(null)
     },
-    deleteFavorite,
-    createFavoriteArtist,
-    createFavoriteAlbum,
-    createFavoriteTrack,
+    deleteProfileFavorite,
+    createProfileFavoriteArtist,
+    createProfileFavoriteAlbum,
+    createProfileFavoriteTrack,
     createFavorite () {
       switch (this.model) {
         case 'artist':
-          return this.createFavoriteArtist(
+          return this.createProfileFavoriteArtist(
             this.artistCreateArgs
           )
         case 'album':
-          return this.createFavoriteAlbum(
+          return this.createProfileFavoriteAlbum(
             this.albumCreateArgs
           )
         case 'track':
-          return this.createFavoriteTrack(
+          return this.createProfileFavoriteTrack(
             this.trackCreateArgs
           )
         default:

@@ -43,7 +43,7 @@ import BaseAlbumsSimpleList
   from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import getFavorites from '*/helpers/actions/api/favorites/get'
+import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
 import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
@@ -125,9 +125,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getFavorites,
+    getProfileFavorites,
     fetchData (page) {
-      this.getFavorites({
+      this.getProfileFavorites({
         ...this.favoritesArgs,
         page
       })

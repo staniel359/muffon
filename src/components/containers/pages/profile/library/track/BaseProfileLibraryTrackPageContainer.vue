@@ -25,7 +25,8 @@ import formatProfileLibraryTrackPageNavigation
   from '*/helpers/formatters/navigation/profile/library/track'
 import formatProfileLibraryTrackPageTab
   from '*/helpers/formatters/tabs/profile/library/track'
-import getLibraryTrack from '*/helpers/actions/api/library/track/get'
+import getProfileLibraryTrack
+  from '*/helpers/actions/api/profile/library/track/get'
 
 export default {
   name: 'BaseProfileLibraryTrackPageContainer',
@@ -116,9 +117,9 @@ export default {
     handleRefresh (page) {
       this.fetchData(page)
     },
-    getLibraryTrack,
+    getProfileLibraryTrack,
     fetchData (page) {
-      this.getLibraryTrack({
+      this.getProfileLibraryTrack({
         ...this.libraryArgs,
         page
       })

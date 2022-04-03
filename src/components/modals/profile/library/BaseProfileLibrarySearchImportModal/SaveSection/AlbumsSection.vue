@@ -20,7 +20,8 @@
 <script>
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './AlbumsSection/CompleteSection.vue'
-import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
+import createProfileLibraryAlbum
+  from '*/helpers/actions/api/profile/library/album/create'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
@@ -89,7 +90,7 @@ export default {
 
       this.errorAlbums = []
     },
-    createLibraryAlbum,
+    createProfileLibraryAlbum,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'save.active.albums',
@@ -129,7 +130,7 @@ export default {
         }
       }
 
-      await this.createLibraryAlbum(
+      await this.createProfileLibraryAlbum(
         albumFormatted
       ).catch(
         handleError

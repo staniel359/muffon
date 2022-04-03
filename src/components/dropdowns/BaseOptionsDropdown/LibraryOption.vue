@@ -28,9 +28,12 @@
 import { mapState } from 'vuex'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
-import createLibraryArtist from '*/helpers/actions/api/library/artist/create'
-import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
-import createLibraryTrack from '*/helpers/actions/api/library/track/create'
+import createProfileLibraryArtist
+  from '*/helpers/actions/api/profile/library/artist/create'
+import createProfileLibraryAlbum
+  from '*/helpers/actions/api/profile/library/album/create'
+import createProfileLibraryTrack
+  from '*/helpers/actions/api/profile/library/track/create'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '*/helpers/formatters/links/profile/library/artist'
@@ -176,21 +179,21 @@ export default {
         libraryId
       )
     },
-    createLibraryArtist,
-    createLibraryAlbum,
-    createLibraryTrack,
+    createProfileLibraryArtist,
+    createProfileLibraryAlbum,
+    createProfileLibraryTrack,
     addToLibrary () {
       switch (this.model) {
         case 'artist':
-          return this.createLibraryArtist(
+          return this.createProfileLibraryArtist(
             this.artistCreateArgs
           )
         case 'album':
-          return this.createLibraryAlbum(
+          return this.createProfileLibraryAlbum(
             this.albumCreateArgs
           )
         case 'track':
-          return this.createLibraryTrack(
+          return this.createProfileLibraryTrack(
             this.trackCreateArgs
           )
         default:

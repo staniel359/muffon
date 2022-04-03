@@ -20,7 +20,8 @@
 <script>
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './TracksSection/CompleteSection.vue'
-import createLibraryTrack from '*/helpers/actions/api/library/track/create'
+import createProfileLibraryTrack
+  from '*/helpers/actions/api/profile/library/track/create'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
@@ -89,7 +90,7 @@ export default {
 
       this.errorTracks = []
     },
-    createLibraryTrack,
+    createProfileLibraryTrack,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'save.active.tracks',
@@ -129,7 +130,7 @@ export default {
         }
       }
 
-      await this.createLibraryTrack(
+      await this.createProfileLibraryTrack(
         trackFormatted
       ).catch(
         handleError
