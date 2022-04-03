@@ -3,11 +3,10 @@
     class="ui statistics"
     :class="{ inverted: isDarkMode }"
   >
-    <BaseLinkContainer
+    <div
       v-for="statisticData in statisticsCollection"
       class="statistic"
       :key="statisticData.key"
-      :link="statisticData.link"
     >
       <div class="value link">
         {{ formatNumber(statisticData.value) }}
@@ -16,14 +15,12 @@
       <div class="label link">
         {{ statisticData.text }}
       </div>
-    </BaseLinkContainer>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
 import {
   collection as formatCollection,
   number as formatNumber
@@ -31,9 +28,6 @@ import {
 
 export default {
   name: 'BaseStatistics',
-  components: {
-    BaseLinkContainer
-  },
   props: {
     statistics: {
       type: Array,

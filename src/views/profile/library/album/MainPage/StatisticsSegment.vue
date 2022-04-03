@@ -13,9 +13,6 @@
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseStatistics from '*/components/BaseStatistics.vue'
-import {
-  tracks as formatProfileLibraryAlbumTracksLink
-} from '*/helpers/formatters/links/profile/library/album'
 
 export default {
   name: 'StatisticsSegment',
@@ -27,14 +24,6 @@ export default {
     albumData: {
       type: Object,
       required: true
-    },
-    profileId: {
-      type: String,
-      required: true
-    },
-    albumId: {
-      type: String,
-      required: true
     }
   },
   computed: {
@@ -44,13 +33,12 @@ export default {
           text: this.$t(
             'navigation.tracks'
           ),
-          value: this.albumData.tracks_count,
-          link: formatProfileLibraryAlbumTracksLink({
-            profileId: this.profileId,
-            albumId: this.albumId
-          })
+          value: this.tracksCount
         }
       ]
+    },
+    tracksCount () {
+      return this.albumData.tracks_count
     }
   }
 }

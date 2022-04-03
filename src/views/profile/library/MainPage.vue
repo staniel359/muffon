@@ -5,7 +5,6 @@
     <template #default="slotProps">
       <StatisticsSegment
         :libraryData="slotProps.libraryData"
-        :profileId="profileId"
       />
 
       <ImportSegment

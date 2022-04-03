@@ -13,9 +13,6 @@
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseStatistics from '*/components/BaseStatistics.vue'
-import {
-  artists as formatProfileLibraryTagArtistsLink
-} from '*/helpers/formatters/links/profile/library/tag'
 
 export default {
   name: 'StatisticsSegment',
@@ -27,38 +24,21 @@ export default {
     tagData: {
       type: Object,
       required: true
-    },
-    profileId: {
-      type: String,
-      required: true
     }
   },
   computed: {
     statistics () {
       return [
         {
-          text: this.artistsText,
-          value: this.tagArtistsCount,
-          link: this.tagArtistsLink
+          text: this.$t(
+            'navigation.artists'
+          ),
+          value: this.artistsCount
         }
       ]
     },
-    artistsText () {
-      return this.$t(
-        'navigation.artists'
-      )
-    },
-    tagArtistsCount () {
+    artistsCount () {
       return this.tagData.artists_count
-    },
-    tagArtistsLink () {
-      return formatProfileLibraryTagArtistsLink({
-        profileId: this.profileId,
-        tagId: this.tagId
-      })
-    },
-    tagId () {
-      return this.tagData.id
     }
   }
 }

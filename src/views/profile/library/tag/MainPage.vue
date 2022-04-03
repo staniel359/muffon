@@ -17,7 +17,6 @@
         <div class="main-profile-page-right-column">
           <StatisticsSegment
             :tagData="slotProps.libraryTagData"
-            :profileId="profileId"
           />
 
           <ArtistsSegment

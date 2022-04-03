@@ -4,7 +4,6 @@
   >
     <BaseProfileLibraryStatistics
       :libraryData="libraryData"
-      :profileId="profileId"
     />
   </BaseSegmentContainer>
 </template>
@@ -22,8 +21,7 @@ export default {
     BaseProfileLibraryStatistics
   },
   props: {
-    libraryData: Object,
-    profileId: String
+    libraryData: Object
   }
 }
 </script>

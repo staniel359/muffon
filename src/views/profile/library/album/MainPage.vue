@@ -19,8 +19,6 @@
         <div class="main-profile-page-right-column">
           <StatisticsSegment
             :albumData="slotProps.libraryAlbumData"
-            :profileId="profileId"
-            :albumId="albumId"
           />
           <TracksSegment
             :profileId="profileId"

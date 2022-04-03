@@ -7,11 +7,6 @@
 
 <script>
 import BaseStatistics from '*/components/BaseStatistics.vue'
-import {
-  artists as formatProfileLibraryArtistsLink,
-  albums as formatProfileLibraryAlbumsLink,
-  tracks as formatProfileLibraryTracksLink
-} from '*/helpers/formatters/links/profile/library'
 
 export default {
   name: 'BaseProfileLibraryStatistics',
@@ -22,10 +17,6 @@ export default {
     libraryData: {
       type: Object,
       required: true
-    },
-    profileId: {
-      type: String,
-      required: true
     }
   },
   computed: {
@@ -35,30 +26,30 @@ export default {
           text: this.$t(
             'navigation.artists'
           ),
-          value: this.libraryData.artists_count,
-          link: formatProfileLibraryArtistsLink({
-            profileId: this.profileId
-          })
+          value: this.artistsCount
         },
         {
           text: this.$t(
             'navigation.albums'
           ),
-          value: this.libraryData.albums_count,
-          link: formatProfileLibraryAlbumsLink({
-            profileId: this.profileId
-          })
+          value: this.albumsCount
         },
         {
           text: this.$t(
             'navigation.tracks'
           ),
-          value: this.libraryData.tracks_count,
-          link: formatProfileLibraryTracksLink({
-            profileId: this.profileId
-          })
+          value: this.tracksCount
         }
       ]
+    },
+    artistsCount () {
+      return this.libraryData.artists_count
+    },
+    albumsCount () {
+      return this.libraryData.albums_count
+    },
+    tracksCount () {
+      return this.libraryData.tracks_count
     }
   }
 }

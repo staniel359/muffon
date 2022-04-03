@@ -4,12 +4,10 @@
     :error="error"
     @refresh="handleRefresh"
   >
-    <template v-if="libraryData">
-      <BaseProfileLibraryStatistics
-        :libraryData="libraryData"
-        :profileId="profileId"
-      />
-    </template>
+    <BaseProfileLibraryStatistics
+      v-if="libraryData"
+      :libraryData="libraryData"
+    />
   </BaseSegmentContainer>
 </template>
 
