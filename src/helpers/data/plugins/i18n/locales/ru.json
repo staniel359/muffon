@@ -23,6 +23,11 @@
     "playlists": "Списки",
     "favorites": "Избранное",
     "bookmarks": "Закладки",
+    "bookmarkModels": {
+      "artists": "Закладки исполнителей",
+      "albums": "Закладки альбомов",
+      "tracks": "Закладки композиций"
+    },
     "communities": "Сообщества",
     "settings": "Настройки",
     "model": {

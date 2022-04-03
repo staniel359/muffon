@@ -8,7 +8,9 @@
 
 <script>
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
-import { bookmarks as formatBookmarksLink } from '*/helpers/formatters/links'
+import {
+  main as formatBookmarksMainLink
+} from '*/helpers/formatters/links/bookmarks'
 
 export default {
   name: 'BookmarksItem',
@@ -22,7 +24,7 @@ export default {
       )
     },
     bookmarksLink () {
-      return formatBookmarksLink()
+      return formatBookmarksMainLink()
     }
   }
 }

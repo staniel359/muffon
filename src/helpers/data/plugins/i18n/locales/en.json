@@ -23,6 +23,11 @@
     "playlists": "Playlists",
     "favorites": "Favorites",
     "bookmarks": "Bookmarks",
+    "bookmarkModels": {
+      "artists": "Bookmark artists",
+      "albums": "Bookmark albums",
+      "tracks": "Bookmark tracks"
+    },
     "communities": "Communities",
     "settings": "Settings",
     "model": {

@@ -1,7 +1,6 @@
 <template>
-  <BaseProfileFavoritesSegmentContainer
+  <BaseBookmarksSegmentContainer
     ref="segment"
-    :profileId="profileId"
     :scope="scope"
     :responsePageLimit="responsePageLimit"
     :headerLink="headerLink"
@@ -14,7 +13,7 @@
         <BasePaginatedListContainer
           :isLoading="segmentSlotProps.isLoading"
           :error="segmentSlotProps.error"
-          :responseData="segmentSlotProps.favoritesData"
+          :responseData="segmentSlotProps.bookmarksData"
           :scope="scope"
           :clientPageLimit="clientPageLimit"
           :responsePageLimit="responsePageLimit"
@@ -30,12 +29,12 @@
         </BasePaginatedListContainer>
       </BaseSegmentContainer>
     </template>
-  </BaseProfileFavoritesSegmentContainer>
+  </BaseBookmarksSegmentContainer>
 </template>
 
 <script>
-import BaseProfileFavoritesSegmentContainer
-  from './BaseProfileFavoritesSegmentContainer.vue'
+import BaseBookmarksSegmentContainer
+  from './BaseBookmarksSegmentContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
@@ -44,12 +43,11 @@ import BasePaginatedListContainer
 export default {
   name: 'BaseProfileFavoritesPaginatedSegmentContainer',
   components: {
-    BaseProfileFavoritesSegmentContainer,
+    BaseBookmarksSegmentContainer,
     BaseSegmentContainer,
     BasePaginatedListContainer
   },
   props: {
-    profileId: String,
     scope: String,
     clientPageLimit: Number,
     responsePageLimit: Number,

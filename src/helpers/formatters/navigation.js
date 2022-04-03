@@ -4,8 +4,6 @@ import formatProfilesSection
   from '*/helpers/formatters/navigation/sections/profiles'
 import formatRecomendationsSection
   from '*/helpers/formatters/navigation/sections/recommendations'
-import formatBookmarksSection
-  from '*/helpers/formatters/navigation/sections/bookmarks'
 import formatRadioSection
   from '*/helpers/formatters/navigation/sections/radio'
 import formatPlaylistsSection
@@ -34,14 +32,6 @@ export const profiles = () => {
 export const recommendations = () => {
   return [
     formatRecomendationsSection({
-      isActive: true
-    })
-  ]
-}
-
-export const bookmarks = () => {
-  return [
-    formatBookmarksSection({
       isActive: true
     })
   ]

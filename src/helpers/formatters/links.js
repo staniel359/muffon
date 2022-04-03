@@ -22,14 +22,6 @@ export const recommendations = () => {
   }
 }
 
-export const bookmarks = () => {
-  return {
-    name: 'BookmarksPage',
-    params: {},
-    path: 'bookmarks'
-  }
-}
-
 export const radio = () => {
   return {
     name: 'RadioPage',

@@ -103,8 +103,17 @@ const ProfileLibraryTagArtistsPage = () => import(
 const RecommendationsPage = () => import(
   '*/views/RecommendationsPage.vue'
 )
-const BookmarksPage = () => import(
-  '*/views/BookmarksPage.vue'
+const BookmarksMainPage = () => import(
+  '*/views/bookmarks/MainPage.vue'
+)
+const BookmarksArtistsPage = () => import(
+  '*/views/bookmarks/ArtistsPage.vue'
+)
+const BookmarksAlbumsPage = () => import(
+  '*/views/bookmarks/AlbumsPage.vue'
+)
+const BookmarksTracksPage = () => import(
+  '*/views/bookmarks/TracksPage.vue'
 )
 const ProfileFavoritesMainPage = () => import(
   '*/views/profile/favorites/MainPage.vue'
@@ -404,8 +413,29 @@ export default [
   {
     path: '/bookmarks',
     exact: true,
-    name: 'BookmarksPage',
-    component: BookmarksPage,
+    name: 'BookmarksMainPage',
+    component: BookmarksMainPage,
+    props: true
+  },
+  {
+    path: '/bookmarks/artists',
+    exact: true,
+    name: 'BookmarksArtistsPage',
+    component: BookmarksArtistsPage,
+    props: true
+  },
+  {
+    path: '/bookmarks/albums',
+    exact: true,
+    name: 'BookmarksAlbumsPage',
+    component: BookmarksAlbumsPage,
+    props: true
+  },
+  {
+    path: '/bookmarks/tracks',
+    exact: true,
+    name: 'BookmarksTracksPage',
+    component: BookmarksTracksPage,
     props: true
   },
   {
