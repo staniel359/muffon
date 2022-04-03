@@ -50,10 +50,8 @@ import BaseLink from '*/components/links/BaseLink.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
 import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
-import formatAlbumRequestData
-  from '*/helpers/formatters/request/album/requestData'
-import formatTrackSourceParams
-  from '*/helpers/formatters/request/track/requestData'
+import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
+import formatTrackRequestData from '*/helpers/formatters/request/track/data'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
@@ -93,7 +91,7 @@ export default {
       return this.playerPlaying.artists
     },
     trackSourceParams () {
-      return formatTrackSourceParams({
+      return formatTrackRequestData({
         sourceId: this.playerPlaying.source_id,
         trackData: this.playerPlaying
       })

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '*/plugins/store'
-import formatRequestUrl from '*/helpers/formatters/request/artist/requestUrl'
+import formatArtistRequestUrl from '*/helpers/formatters/request/artist/url'
 
 export default function ({
   artistName,
@@ -15,7 +15,7 @@ export default function ({
   this.isLoading = true
 
   const url =
-    formatRequestUrl({
+    formatArtistRequestUrl({
       sourceId,
       artistName,
       artistId,

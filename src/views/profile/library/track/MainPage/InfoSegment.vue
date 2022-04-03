@@ -120,8 +120,7 @@ import {
 import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
 import { isCurrentProfile } from '*/helpers/utils'
 import { date as formatDate } from '*/helpers/formatters'
-import formatTrackRequestData
-  from '*/helpers/formatters/request/track/requestData'
+import formatTrackRequestData from '*/helpers/formatters/request/track/data'
 
 export default {
   name: 'InfoSegment',

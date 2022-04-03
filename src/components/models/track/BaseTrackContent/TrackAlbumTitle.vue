@@ -16,8 +16,7 @@ import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
 import {
   main as formatProfileLibraryAlbumMainLink
 } from '*/helpers/formatters/links/profile/library/album'
-import formatAlbumRequestData
-  from '*/helpers/formatters/request/album/requestData'
+import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
   name: 'TrackAlbumTitle',

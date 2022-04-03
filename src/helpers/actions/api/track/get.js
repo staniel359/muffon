@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '*/plugins/store'
-import formatRequestUrl from '*/helpers/formatters/request/track/requestUrl'
+import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
 
 export default function ({
   sourceId = 'lastfm',
@@ -16,7 +16,7 @@ export default function ({
   this.isLoading = true
 
   const url =
-    formatRequestUrl({
+    formatTrackRequestUrl({
       sourceId,
       artistName,
       trackTitle,

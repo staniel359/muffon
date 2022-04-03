@@ -21,8 +21,7 @@ import {
   tracks as formatProfileLibraryAlbumTracksLink
 } from '*/helpers/formatters/links/profile/library/album'
 import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
-import formatAlbumRequestData
-  from '*/helpers/formatters/request/album/requestData'
+import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
   name: 'BaseAlbumLinkContainer',

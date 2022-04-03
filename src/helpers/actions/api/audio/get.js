@@ -1,5 +1,5 @@
 import axios from 'axios'
-import formatRequestUrl from '*/helpers/formatters/request/track/requestUrl'
+import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
 import { setPlayerPlaying } from '*/helpers/actions'
 
 export default function ({ trackData }) {
@@ -20,7 +20,7 @@ export default function ({ trackData }) {
         idData?.bandcamp_id
     )
 
-    return formatRequestUrl({
+    return formatTrackRequestUrl({
       sourceId,
       artistId,
       trackId

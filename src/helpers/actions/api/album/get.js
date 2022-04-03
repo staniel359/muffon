@@ -1,6 +1,6 @@
 import axios from 'axios'
 import store from '*/plugins/store'
-import formatRequestUrl from '*/helpers/formatters/request/album/requestUrl'
+import formatAlbumRequestUrl from '*/helpers/formatters/request/album/url'
 
 export default function ({
   sourceId = 'lastfm',
@@ -18,7 +18,7 @@ export default function ({
   this.isLoading = true
 
   const url =
-    formatRequestUrl({
+    formatAlbumRequestUrl({
       sourceId,
       artistName,
       albumTitle,

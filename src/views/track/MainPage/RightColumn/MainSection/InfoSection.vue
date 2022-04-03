@@ -45,8 +45,7 @@ import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
 import { artistName as formatArtistName } from '*/helpers/formatters'
-import formatAlbumRequestData
-  from '*/helpers/formatters/request/album/requestData'
+import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
   name: 'InfoSection',

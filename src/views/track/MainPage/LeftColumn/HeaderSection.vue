@@ -33,8 +33,7 @@ import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
-import formatAlbumRequestData
-  from '*/helpers/formatters/request/album/requestData'
+import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {

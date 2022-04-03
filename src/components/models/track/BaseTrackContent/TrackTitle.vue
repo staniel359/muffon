@@ -24,8 +24,7 @@ import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
 import {
   main as formatProfileLibraryTrackMainLink
 } from '*/helpers/formatters/links/profile/library/track'
-import formatTrackRequestData
-  from '*/helpers/formatters/request/track/requestData'
+import formatTrackRequestData from '*/helpers/formatters/request/track/data'
 
 export default {
   name: 'TrackTitle',

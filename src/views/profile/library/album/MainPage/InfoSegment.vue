@@ -92,8 +92,7 @@ import {
 import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
 import { isCurrentProfile } from '*/helpers/utils'
 import { date as formatDate } from '*/helpers/formatters'
-import formatAlbumRequestData
-  from '*/helpers/formatters/request/album/requestData'
+import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
   name: 'InfoSegment',
