@@ -1,13 +1,13 @@
 <template>
-  <div id="the-local-saver"></div>
+  <div id="the-electron-store-saver"></div>
 </template>
 
 <script>
 import { ipcRenderer } from 'electron'
-import local from '*/plugins/local'
+import electronStore from '*/plugins/electronStore'
 
 export default {
-  name: 'TheLocalSaver',
+  name: 'TheElectronStoreSaver',
   mounted () {
     ipcRenderer.on(
       'handle-update-store',
@@ -21,11 +21,11 @@ export default {
       )
 
       storeKeysValues.forEach(
-        this.setLocalKeyValue
+        this.setElectronStoreKeyValue
       )
     },
-    setLocalKeyValue ([key, value]) {
-      local.set({
+    setElectronStoreKeyValue ([key, value]) {
+      electronStore.set({
         [key]: value
       })
     }

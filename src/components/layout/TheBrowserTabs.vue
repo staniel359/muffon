@@ -21,7 +21,7 @@
 <script>
 import { mapState } from 'vuex'
 import { ipcRenderer } from 'electron'
-import local from '*/plugins/local'
+import electronStore from '*/plugins/electronStore'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import { generateKey } from '*/helpers/utils'
@@ -42,13 +42,13 @@ export default {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    localTabs () {
-      return local.get(
+    electronStoreTabs () {
+      return electronStore.get(
         'layout.tabs'
       )
     },
-    localActiveTabId () {
-      return local.get(
+    electronStoreActiveTabId () {
+      return electronStore.get(
         'layout.activeTabId'
       )
     }
@@ -61,10 +61,10 @@ export default {
       'clear-tabs'
     )
 
-    if (this.localTabs.length) {
-      this.addTabsFromLocal()
+    if (this.electronStoreTabs.length) {
+      this.addTabsFromElectronStore()
 
-      if (this.localActiveTabId) {
+      if (this.electronStoreActiveTabId) {
         this.setActiveTab()
       }
     } else {
@@ -97,7 +97,7 @@ export default {
         this.addNewTab()
       }
 
-      local.set(
+      electronStore.set(
         'layout.tabs',
         value
       )
@@ -113,7 +113,7 @@ export default {
     handleSetTopTab (_, tabId) {
       this.activeTabId = tabId
 
-      local.set(
+      electronStore.set(
         'layout.activeTabId',
         tabId
       )
@@ -146,8 +146,8 @@ export default {
 
       this.tabs = [...this.tabs]
     },
-    addTabsFromLocal () {
-      this.localTabs.forEach(
+    addTabsFromElectronStore () {
+      this.electronStoreTabs.forEach(
         this.addTab
       )
     },
@@ -160,7 +160,7 @@ export default {
     setActiveTab () {
       ipcRenderer.send(
         'set-top-tab',
-        this.localActiveTabId
+        this.electronStoreActiveTabId
       )
     },
     addNewTab () {

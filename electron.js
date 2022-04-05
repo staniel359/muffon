@@ -84,11 +84,11 @@ if (isDevelopment) {
   )
 }
 
-const local = new ElectronStore({
+const electronStore = new ElectronStore({
   accessPropertiesByDotNotation: false
 })
 
-let language = local.get(
+let language = electronStore.get(
   'profile.language', 'en'
 )
 
@@ -185,12 +185,12 @@ const createWindow = () => {
 }
 
 const exit = () => {
-  const isRememberProfile = local.get(
+  const isRememberProfile = electronStore.get(
     'profile.isRemember'
   )
 
   if (!isRememberProfile) {
-    local.set(
+    electronStore.set(
       'profile.isLoggedIn',
       false
     )

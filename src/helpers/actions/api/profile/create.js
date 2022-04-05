@@ -1,5 +1,5 @@
 import axios from 'axios'
-import local from '*/plugins/local'
+import electronStore from '*/plugins/electronStore'
 import getProfile from '*/helpers/actions/api/profile/get'
 import { addFormErrors } from '*/helpers/actions'
 
@@ -36,7 +36,7 @@ export default function ({
     const { token } =
       response.data.profile
 
-    local.set({
+    electronStore.set({
       'profile.token': token,
       'profile.isRemember': isRemember
     })

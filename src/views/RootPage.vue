@@ -5,7 +5,7 @@
 
   <TheOnlineObserver />
 
-  <TheLocalSaver />
+  <TheElectronStoreSaver />
 
   <TheBrowserTabs
     v-if="isProfileLoggedIn"
@@ -20,7 +20,8 @@ import TheScrobblingObserver
   from '*/components/layout/observers/TheScrobblingObserver.vue'
 import TheOnlineObserver
   from '*/components/layout/observers/TheOnlineObserver.vue'
-import TheLocalSaver from '*/components/layout/savers/TheLocalSaver.vue'
+import TheElectronStoreSaver
+  from '*/components/layout/savers/TheElectronStoreSaver.vue'
 import TheBrowserTabs from '*/components/layout/TheBrowserTabs.vue'
 import TheAuthentication from '*/components/layout/TheAuthentication.vue'
 
@@ -29,7 +30,7 @@ export default {
   components: {
     TheScrobblingObserver,
     TheOnlineObserver,
-    TheLocalSaver,
+    TheElectronStoreSaver,
     TheBrowserTabs,
     TheAuthentication
   },

@@ -1,19 +1,19 @@
 <template>
-  <div id="the-local-observer"></div>
+  <div id="the-electron-store-observer"></div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import { ipcRenderer } from 'electron'
 import i18n from '*/plugins/i18n'
-import local from '*/plugins/local'
+import electronStore from '*/plugins/electronStore'
 
 export default {
-  name: 'TheLocalObserver',
+  name: 'TheElectronStoreObserver',
   computed: {
-    localKeysValues () {
+    electronStoreKeysValues () {
       return Object.entries(
-        local.store
+        electronStore.store
       )
     }
   },
@@ -23,7 +23,7 @@ export default {
       this.handleSetTabId
     )
 
-    this.localKeysValues.forEach(
+    this.electronStoreKeysValues.forEach(
       this.setStoreKeyValue
     )
   },

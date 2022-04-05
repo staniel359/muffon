@@ -20,13 +20,13 @@ export default function ({ token }) {
   }
 
   const handleSuccess = response => {
-    const localProfileInfo =
+    const storeProfileInfo =
       store.state.profile.info
     const profileData =
       response.data.profile
 
     const newProfileInfo = {
-      ...localProfileInfo,
+      ...storeProfileInfo,
       ...profileData
     }
 

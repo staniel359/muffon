@@ -1,9 +1,11 @@
-import local from '*/plugins/local'
+import electronStore from '*/plugins/electronStore'
 import { getDistinctArray } from '*/helpers/utils'
 
 export const get = (key, { isDistinct }) => {
   const historyKey = `history.${key}`
-  const history = local.get(historyKey)
+  const history = electronStore.get(
+    historyKey
+  )
 
   const getScopedHistory = () => {
     if (isDistinct) {
@@ -20,7 +22,9 @@ export const get = (key, { isDistinct }) => {
 
 export const update = (key, item) => {
   const historyKey = `history.${key}`
-  const history = local.get(historyKey)
+  const history = electronStore.get(
+    historyKey
+  )
 
   const isNewItem =
     item && (
@@ -34,7 +38,7 @@ export const update = (key, item) => {
   ]
 
   if (isNewItem) {
-    local.set(
+    electronStore.set(
       historyKey, newHistory
     )
   }

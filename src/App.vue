@@ -1,7 +1,7 @@
 <template>
   <TheStoreObserver />
 
-  <TheLocalObserver />
+  <TheElectronStoreObserver />
 
   <TheMediaKeysObserver />
 
@@ -34,8 +34,8 @@
 <script>
 import TheStoreObserver
   from '*/components/layout/observers/TheStoreObserver.vue'
-import TheLocalObserver
-  from '*/components/layout/observers/TheLocalObserver.vue'
+import TheElectronStoreObserver
+  from '*/components/layout/observers/TheElectronStoreObserver.vue'
 import TheMediaKeysObserver
   from '*/components/layout/observers/TheMediaKeysObserver.vue'
 import TheBackground from '*/components/layout/TheBackground.vue'
@@ -54,7 +54,7 @@ export default {
   name: 'App',
   components: {
     TheStoreObserver,
-    TheLocalObserver,
+    TheElectronStoreObserver,
     TheMediaKeysObserver,
     TheBackground,
     TheView,

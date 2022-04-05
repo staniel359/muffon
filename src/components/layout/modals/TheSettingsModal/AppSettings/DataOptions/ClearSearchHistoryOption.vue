@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import local from '*/plugins/local'
+import electronStore from '*/plugins/electronStore'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
@@ -58,10 +58,10 @@ export default {
       this.isLoading = false
     },
     clearHistory () {
-      local.delete(
+      electronStore.delete(
         'history.search'
       )
-      local.delete(
+      electronStore.delete(
         'history.librarySearch'
       )
     }
