@@ -1,8 +1,10 @@
 <template>
   <BaseDropdown
-    class="scope-select-container"
+    class="floating scrolling scope-select-container"
     selected="lastfm"
     :options="options"
+    :isSelection="false"
+    isOnlyIcon
     @change="handleChange"
   />
 </template>
@@ -37,6 +39,6 @@ export default {
 
 <style lang="sass" scoped>
 .scope-select-container
+  @extend .no-padding
   margin-left: 1em
-  width: 135px
 </style>

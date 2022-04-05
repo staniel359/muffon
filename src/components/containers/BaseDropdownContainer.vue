@@ -1,13 +1,20 @@
 <template>
   <div
     ref="dropdown"
-    class="ui selection dropdown main-dropdown"
+    class="ui dropdown main-dropdown"
     :class="{
       inverted: isDarkMode,
-      disabled: isDisabled
+      disabled: isDisabled,
+      selection: isSelection
     }"
   >
+    <i
+      v-if="isOnlyIcon"
+      class="icon colored main-dropdown-icon"
+      :class="selected"
+    ></i>
     <div
+      v-else
       class="text main-dropdown-item"
       :class="{ inverted: isDarkMode }"
     >
@@ -48,6 +55,11 @@ export default {
     BaseIcon
   },
   props: {
+    isSelection: {
+      type: Boolean,
+      default: true
+    },
+    isOnlyIcon: Boolean,
     header: String,
     isDisabled: Boolean,
     isLoading: Boolean,
@@ -56,6 +68,11 @@ export default {
   emits: [
     'change'
   ],
+  data () {
+    return {
+      selected: null
+    }
+  },
   computed: {
     ...mapState('layout', [
       'isDarkMode'
@@ -80,6 +97,8 @@ export default {
         'change',
         value
       )
+
+      this.selected = value
     },
     setValue (value) {
       this.$nextTick(() => {
