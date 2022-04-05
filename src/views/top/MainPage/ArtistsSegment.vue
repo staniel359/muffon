@@ -1,8 +1,7 @@
 <template>
   <BaseTopPaginatedSegmentContainer
     scope="artists"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">

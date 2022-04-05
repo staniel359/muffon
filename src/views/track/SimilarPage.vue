@@ -1,8 +1,7 @@
 <template>
   <BaseTrackPaginatedPageContainer
     scope="similar"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :sourceParams="sourceParams"
   >
     <template #default="slotProps">

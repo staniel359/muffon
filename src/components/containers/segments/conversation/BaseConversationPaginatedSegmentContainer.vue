@@ -3,7 +3,7 @@
     ref="segment"
     :conversationId="conversationId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedListContainer
@@ -11,8 +11,7 @@
         :error="segmentSlotProps.error"
         :responseData="segmentSlotProps.conversationData"
         :scope="scope"
-        :clientPageLimit="clientPageLimit"
-        :responsePageLimit="responsePageLimit"
+        :limit="limit"
         @fetchData="segmentSlotProps.fetchData"
         @refresh="segmentSlotProps.handleRefresh"
         @focus="handleFocus"
@@ -42,8 +41,7 @@ export default {
   props: {
     conversationId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number
+    limit: Number
   },
   methods: {
     handleFocus () {

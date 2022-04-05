@@ -2,8 +2,7 @@
   <BaseProfileFavoritesPaginatedPageContainer
     scope="albums"
     :profileId="profileId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList

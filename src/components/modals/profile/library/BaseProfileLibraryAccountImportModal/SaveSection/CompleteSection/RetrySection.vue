@@ -13,7 +13,7 @@
     <BasePaginatedListContainer
       scope="tracks"
       :responseData="errorTracksData"
-      :clientPageLimit="limit"
+      :limit="limit"
       :responsePageLimit="totalCount"
       isReset
       isWithPagination

@@ -1,6 +1,6 @@
 <template>
   <BasePlaylistsPageContainer
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -18,8 +18,7 @@
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.playlistsData"
-          :clientPageLimit="limit"
-          :responsePageLimit="limit"
+          :limit="limit"
           @focus="handleFocus"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"

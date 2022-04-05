@@ -1,7 +1,7 @@
 <template>
   <BaseTagPaginatedSegmentContainer
     scope="artists"
-    :clientPageLimit="limit"
+    :limit="limit"
     :responsePageLimit="21"
     :tagName="tagName"
     :headerLink="headerLink"

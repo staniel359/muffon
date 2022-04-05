@@ -33,7 +33,7 @@ export default {
     navigationMixin
   ],
   props: {
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -51,7 +51,7 @@ export default {
     },
     communitiesArgs () {
       return {
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

@@ -42,7 +42,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number,
+    limit: Number,
     query: String
   },
   data () {
@@ -77,7 +77,7 @@ export default {
       return {
         profileId: this.profileId,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     },
     libraryData () {

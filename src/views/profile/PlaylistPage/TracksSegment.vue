@@ -3,8 +3,7 @@
     scope="tracks"
     :profileId="profileId"
     :playlistId="playlistId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList

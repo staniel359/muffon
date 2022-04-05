@@ -34,7 +34,7 @@ export default {
     navigationMixin
   ],
   props: {
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -52,7 +52,7 @@ export default {
     },
     conversationsArgs () {
       return {
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

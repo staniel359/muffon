@@ -1,8 +1,7 @@
 <template>
   <BaseTopPaginatedPageContainer
     scope="artists"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
     @viewButtonClick="handleViewButtonClick"

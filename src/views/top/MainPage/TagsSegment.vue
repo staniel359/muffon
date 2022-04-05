@@ -1,8 +1,7 @@
 <template>
   <BaseTopPaginatedSegmentContainer
     scope="tags"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">

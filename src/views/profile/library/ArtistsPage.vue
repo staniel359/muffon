@@ -2,8 +2,7 @@
   <BaseProfileLibraryPaginatedPageContainer
     scope="artists"
     :profileId="profileId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
     isWithSearch

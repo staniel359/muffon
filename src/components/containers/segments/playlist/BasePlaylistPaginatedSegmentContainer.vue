@@ -4,7 +4,7 @@
     :profileId="profileId"
     :playlistId="playlistId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedListContainer
@@ -12,8 +12,7 @@
         :error="segmentSlotProps.error"
         :responseData="segmentSlotProps.playlistData"
         :scope="scope"
-        :clientPageLimit="clientPageLimit"
-        :responsePageLimit="responsePageLimit"
+        :limit="limit"
         @fetchData="segmentSlotProps.fetchData"
         @refresh="segmentSlotProps.handleRefresh"
         @focus="handleFocus"
@@ -43,8 +42,7 @@ export default {
     profileId: String,
     playlistId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number
+    limit: Number
   },
   methods: {
     handleFocus () {

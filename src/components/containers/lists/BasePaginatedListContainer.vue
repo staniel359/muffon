@@ -75,13 +75,21 @@ export default {
       type: String,
       required: true
     },
-    clientPageLimit: {
+    limit: {
       type: Number,
       required: true
     },
     responsePageLimit: {
       type: Number,
-      required: true
+      default (props) {
+        return props.limit
+      }
+    },
+    clientPageLimit: {
+      type: Number,
+      default (props) {
+        return props.limit
+      }
     },
     isLoading: Boolean,
     error: Error,
@@ -199,10 +207,12 @@ export default {
       ) {
         const prevPageRemainder =
           newCollection.length ? 0 : this.pageRemainder
+
         const pageDataLength = (
           this.clientPageLimit -
             prevPageRemainder
         )
+
         const pageData =
           collection.splice(
             0, pageDataLength
@@ -315,7 +325,8 @@ export default {
       handler: 'handleResponseDataChange'
     },
     clientPage: 'handleClientPageChange',
-    clientPageCollection: 'handleClientPageCollectionChange'
+    clientPageCollection:
+      'handleClientPageCollectionChange'
   },
   mounted () {
     if (this.isPaginationSimple) {
@@ -337,6 +348,7 @@ export default {
       if (value) {
         this.responseTotalPages =
           value.total_pages
+
         this.responsePageCollection =
           formatCollection(
             value[this.scope]
@@ -402,10 +414,12 @@ export default {
         page ===
           this.clientTotalPages
       )
+
       this.isForward = (
         page > this.clientPage &&
           !this.isLastPage
       )
+
       this.clientPage = page
       this.isFocusable = true
     },

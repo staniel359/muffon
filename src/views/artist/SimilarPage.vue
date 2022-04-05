@@ -2,8 +2,7 @@
   <BaseArtistPaginatedPageContainer
     scope="similar"
     :artistName="artistName"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
     @viewButtonClick="handleViewButtonClick"

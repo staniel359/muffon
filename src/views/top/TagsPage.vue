@@ -1,8 +1,7 @@
 <template>
   <BaseTopPaginatedPageContainer
     scope="tags"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseTagsList

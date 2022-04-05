@@ -1,8 +1,7 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
     scope="artists"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList

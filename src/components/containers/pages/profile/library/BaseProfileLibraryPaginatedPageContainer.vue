@@ -3,7 +3,7 @@
     ref="pageContainer"
     :profileId="profileId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
     :query="query"
   >
     <template #default="pageSlotProps">
@@ -42,8 +42,7 @@
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.libraryData"
             :scope="scope"
-            :clientPageLimit="clientPageLimit"
-            :responsePageLimit="responsePageLimit"
+            :limit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
@@ -86,8 +85,7 @@ export default {
   props: {
     profileId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number,
     isWithSearch: Boolean

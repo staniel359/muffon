@@ -36,7 +36,7 @@ export default {
     navigationMixin
   ],
   props: {
-    responsePageLimit: Number,
+    limit: Number,
     filter: String,
     filterValue: Array
   },
@@ -59,7 +59,7 @@ export default {
     },
     recommendationsArgs () {
       return {
-        limit: this.responsePageLimit,
+        limit: this.limit,
         filter: this.filter,
         filterValue: this.filterValue
       }

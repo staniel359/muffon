@@ -3,7 +3,7 @@
     ref="segment"
     :tagName="tagName"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
@@ -16,7 +16,7 @@
           :error="segmentSlotProps.error"
           :responseData="segmentSlotProps.tagData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
+          :limit="limit"
           :responsePageLimit="responsePageLimit"
           @fetchData="segmentSlotProps.fetchData"
           @refresh="segmentSlotProps.handleRefresh"
@@ -51,7 +51,7 @@ export default {
   props: {
     tagName: String,
     scope: String,
-    clientPageLimit: Number,
+    limit: Number,
     responsePageLimit: Number,
     headerLink: Object
   },

@@ -3,7 +3,7 @@
     ref="pageContainer"
     :artistName="artistName"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <div
@@ -42,8 +42,7 @@
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.artistData"
             :scope="scope"
-            :clientPageLimit="clientPageLimit"
-            :responsePageLimit="responsePageLimit"
+            :limit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
@@ -86,8 +85,7 @@ export default {
   props: {
     artistName: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number,
     isWithArtistSelect: Boolean

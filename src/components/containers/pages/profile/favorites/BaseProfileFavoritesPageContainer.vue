@@ -38,7 +38,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -72,7 +72,7 @@ export default {
       return {
         profileId: this.profileId,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     },
     favoritesData () {

@@ -15,7 +15,7 @@
     <BasePaginatedListContainer
       scope="files"
       :responseData="filesData"
-      :clientPageLimit="limit"
+      :limit="limit"
       :responsePageLimit="totalCount"
       isReset
       isWithPagination

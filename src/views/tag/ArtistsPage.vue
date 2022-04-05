@@ -1,7 +1,7 @@
 <template>
   <BaseTagPaginatedPageContainer
     scope="artists"
-    :clientPageLimit="limit"
+    :limit="limit"
     :responsePageLimit="21"
     :viewIndex="viewIndex"
     isWithViewChange

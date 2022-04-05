@@ -1,8 +1,7 @@
 <template>
   <BaseBookmarksPaginatedSegmentContainer
     scope="albums"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">

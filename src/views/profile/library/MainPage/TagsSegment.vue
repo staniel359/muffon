@@ -1,8 +1,7 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
     scope="tags"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :profileId="profileId"
     :headerLink="headerLink"
   >

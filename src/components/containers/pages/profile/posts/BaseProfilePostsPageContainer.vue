@@ -36,7 +36,7 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -66,7 +66,7 @@ export default {
       return {
         profileId: this.profileId,
         scope: 'posts',
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     },
     tabData () {

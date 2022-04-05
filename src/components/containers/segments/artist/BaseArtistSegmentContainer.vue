@@ -40,7 +40,7 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   data () {
@@ -62,7 +62,7 @@ export default {
       return {
         artistName: this.artistName,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

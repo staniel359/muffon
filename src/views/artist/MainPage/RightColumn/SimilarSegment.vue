@@ -1,8 +1,7 @@
 <template>
   <BaseArtistPaginatedSegmentContainer
     scope="similar"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :artistName="artistName"
     :headerLink="headerLink"
   >

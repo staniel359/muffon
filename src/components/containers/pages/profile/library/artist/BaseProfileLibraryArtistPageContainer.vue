@@ -44,7 +44,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -90,7 +90,7 @@ export default {
         profileId: this.profileId,
         artistId: this.artistId,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

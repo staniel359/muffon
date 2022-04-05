@@ -2,8 +2,7 @@
   <BaseProfileLibraryPaginatedPageContainer
     scope="tags"
     :profileId="profileId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     isWithSearch
   >
     <template #default="slotProps">

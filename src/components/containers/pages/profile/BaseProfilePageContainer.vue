@@ -43,7 +43,7 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -71,7 +71,7 @@ export default {
     profileArgs () {
       return {
         profileId: this.profileId,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     },
     tabData () {

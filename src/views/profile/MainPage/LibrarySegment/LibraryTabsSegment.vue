@@ -54,8 +54,7 @@ export default {
             'navigation.artists'
           ),
           scope: 'artists',
-          clientPageLimit: 4,
-          responsePageLimit: 4,
+          limit: 4,
           component: 'BaseArtistsTableList',
           itemsInRow: 4
         },
@@ -64,8 +63,7 @@ export default {
             'navigation.albums'
           ),
           scope: 'albums',
-          clientPageLimit: 3,
-          responsePageLimit: 3,
+          limit: 3,
           component: 'BaseAlbumsTableList',
           itemsInRow: 3
         },
@@ -74,8 +72,7 @@ export default {
             'navigation.tracks'
           ),
           scope: 'tracks',
-          clientPageLimit: 5,
-          responsePageLimit: 5,
+          limit: 5,
           component: 'BaseTracksSimpleList'
         },
         {
@@ -83,8 +80,7 @@ export default {
             'navigation.tags'
           ),
           scope: 'tags',
-          clientPageLimit: 10,
-          responsePageLimit: 10,
+          limit: 10,
           component: 'BaseTagsList'
         }
       ]

@@ -43,7 +43,7 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   data () {
@@ -59,7 +59,7 @@ export default {
         profileId: this.profileId,
         artistId: this.artistId,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     },
     libraryArtistData () {

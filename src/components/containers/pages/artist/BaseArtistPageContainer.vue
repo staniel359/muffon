@@ -49,7 +49,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   emits: [
     'init'
@@ -93,14 +93,14 @@ export default {
       return {
         ...this.requestArtistData,
         scope: this.scope,
-        limit: this.limit
+        limit: this.artistLimit
       }
     },
-    limit () {
+    artistLimit () {
       if (this.isDiscogsSource) {
         return 25
       } else {
-        return this.responsePageLimit
+        return this.limit
       }
     },
     isDiscogsSource () {

@@ -110,8 +110,9 @@ export default {
           'navigation.artists'
         ),
         scope: 'artists',
-        clientPageLimit: 20,
-        responsePageLimit: this.artistsResponsePageLimit,
+        limit: 20,
+        responsePageLimit:
+          this.artistsResponsePageLimit,
         component: 'BaseArtistsSimpleList',
         isWithListenersCount: true
       }
@@ -132,8 +133,9 @@ export default {
           'navigation.albums'
         ),
         scope: 'albums',
-        clientPageLimit: 20,
-        responsePageLimit: this.albumsResponsePageLimit,
+        limit: 20,
+        responsePageLimit:
+          this.albumsResponsePageLimit,
         component: 'BaseAlbumsSimpleList',
         isWithListenersCount: true
       }
@@ -154,7 +156,7 @@ export default {
           'navigation.albumGroups'
         ),
         scope: 'groups',
-        clientPageLimit: 20,
+        limit: 20,
         responsePageLimit: 20,
         component: 'BaseAlbumsSimpleList',
         isWithListenersCount: true
@@ -166,8 +168,9 @@ export default {
           'navigation.tracks'
         ),
         scope: 'tracks',
-        clientPageLimit: 50,
-        responsePageLimit: this.tracksResponsePageLimit,
+        limit: 50,
+        responsePageLimit:
+          this.tracksResponsePageLimit,
         component: 'BaseTracksSimpleList'
       }
     },
@@ -189,7 +192,7 @@ export default {
           'navigation.tags'
         ),
         scope: 'tags',
-        clientPageLimit: 20,
+        limit: 20,
         responsePageLimit: 10,
         component: 'BaseTagsList'
       }
@@ -200,7 +203,7 @@ export default {
           'navigation.videos'
         ),
         scope: 'videos',
-        clientPageLimit: 20,
+        limit: 20,
         responsePageLimit: 20,
         component: 'BaseVideosSimpleList'
       }

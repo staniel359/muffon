@@ -2,8 +2,7 @@
   <BaseConversationPaginatedSegmentContainer
     scope="messages"
     :conversationId="conversationId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseMessagesSimpleList

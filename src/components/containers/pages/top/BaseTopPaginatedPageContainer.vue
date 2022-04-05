@@ -2,7 +2,7 @@
   <BaseTopPageContainer
     ref="pageContainer"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <div
@@ -31,8 +31,7 @@
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.topData"
             :scope="scope"
-            :clientPageLimit="clientPageLimit"
-            :responsePageLimit="responsePageLimit"
+            :limit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
@@ -68,8 +67,7 @@ export default {
   },
   props: {
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number
   },

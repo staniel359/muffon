@@ -4,7 +4,7 @@
     :profileId="profileId"
     :artistId="artistId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -22,8 +22,7 @@
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.libraryArtistData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
+          :limit="limit"
           @focus="handleFocus"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
@@ -59,8 +58,7 @@ export default {
     profileId: String,
     artistId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number
+    limit: Number
   },
   methods: {
     handleFocus () {

@@ -1,7 +1,7 @@
 <template>
   <BaseTrackPageContainer
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -18,8 +18,7 @@
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.trackData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
+          :limit="limit"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
           @focus="handleFocus"
@@ -52,8 +51,7 @@ export default {
   },
   props: {
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number
+    limit: Number
   },
   methods: {
     handleFocus () {

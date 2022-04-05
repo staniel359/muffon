@@ -39,7 +39,7 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   data () {
@@ -61,7 +61,7 @@ export default {
       return {
         tagName: this.tagName,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

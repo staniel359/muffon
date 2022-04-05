@@ -4,7 +4,7 @@
     :artistName="artistName"
     :trackTitle="trackTitle"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
@@ -17,8 +17,7 @@
           :error="segmentSlotProps.error"
           :responseData="segmentSlotProps.trackData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
+          :limit="limit"
           @fetchData="segmentSlotProps.fetchData"
           @refresh="segmentSlotProps.handleRefresh"
           @focus="handleFocus"
@@ -53,8 +52,7 @@ export default {
     artistName: String,
     trackTitle: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   methods: {

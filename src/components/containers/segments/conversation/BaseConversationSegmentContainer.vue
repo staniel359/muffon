@@ -29,7 +29,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -43,7 +43,7 @@ export default {
       return {
         conversationId: this.conversationId,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

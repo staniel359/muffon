@@ -33,7 +33,7 @@ export default {
   ],
   props: {
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -61,7 +61,7 @@ export default {
     bookmarksArgs () {
       return {
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     },
     bookmarksData () {

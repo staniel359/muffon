@@ -10,8 +10,7 @@
       :error="error"
       :responseData="libraryData"
       :scope="tabData.scope"
-      :clientPageLimit="tabData.clientPageLimit"
-      :responsePageLimit="tabData.responsePageLimit"
+      :limit="tabData.limit"
       @fetchData="fetchData"
       @focus="handleFocus"
       @refresh="handleRefresh"
@@ -90,7 +89,7 @@ export default {
       return {
         profileId: this.profileId,
         scope: this.tabData.scope,
-        limit: this.tabData.responsePageLimit
+        limit: this.tabData.limit
       }
     },
     libraryData () {

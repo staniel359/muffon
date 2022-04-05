@@ -1,8 +1,7 @@
 <template>
   <BaseProfileLibraryAlbumPaginatedSegmentContainer
     scope="tracks"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :profileId="profileId"
     :albumId="albumId"
     :headerLink="headerLink"

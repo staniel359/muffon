@@ -3,7 +3,7 @@
     ref="segment"
     scope="related"
     :videoId="videoId"
-    :responsePageLimit="limit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="pageSlotProps">
@@ -15,8 +15,8 @@
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.videoData"
+          :limit="limit"
           :clientPageLimit="4"
-          :responsePageLimit="limit"
           @fetchData="pageSlotProps.fetchData"
           @refresh="pageSlotProps.handleRefresh"
         >

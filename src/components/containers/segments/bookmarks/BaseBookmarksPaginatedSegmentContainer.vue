@@ -2,7 +2,7 @@
   <BaseBookmarksSegmentContainer
     ref="segment"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
@@ -15,8 +15,7 @@
           :error="segmentSlotProps.error"
           :responseData="segmentSlotProps.bookmarksData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
+          :limit="limit"
           @fetchData="segmentSlotProps.fetchData"
           @refresh="segmentSlotProps.handleRefresh"
           @focus="handleFocus"
@@ -49,8 +48,7 @@ export default {
   },
   props: {
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   methods: {

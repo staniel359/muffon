@@ -9,9 +9,8 @@
   <BasePaginatedListContainer
     class="profile-artists-list"
     scope="artists"
-    :responsePageLimit="limit"
-    :clientPageLimit="limit"
     :responseData="profileArtistsData"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList

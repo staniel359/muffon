@@ -2,7 +2,7 @@
   <BaseVideoPageContainer
     scope="related"
     :videoId="videoId"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -18,8 +18,7 @@
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.videoData"
-          :clientPageLimit="limit"
-          :responsePageLimit="limit"
+          :limit="limit"
           isPaginationSimple
           isReset
           @fetchData="pageSlotProps.fetchData"

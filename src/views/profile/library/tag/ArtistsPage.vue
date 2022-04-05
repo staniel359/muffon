@@ -3,8 +3,7 @@
     scope="artists"
     :profileId="profileId"
     :tagId="tagId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
     isWithSearch

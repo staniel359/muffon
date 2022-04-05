@@ -2,8 +2,7 @@
   <BaseArtistPaginatedPageContainer
     scope="albums"
     :artistName="artistName"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     isWithArtistSelect
   >
     <template #default="slotProps">

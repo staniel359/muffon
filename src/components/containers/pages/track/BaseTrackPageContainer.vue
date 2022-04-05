@@ -48,7 +48,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -102,7 +102,7 @@ export default {
       return {
         ...this.requestTrackData,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

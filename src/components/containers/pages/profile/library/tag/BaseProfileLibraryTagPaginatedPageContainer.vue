@@ -4,7 +4,7 @@
     :profileId="profileId"
     :tagId="tagId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <div
@@ -34,8 +34,7 @@
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.libraryTagData"
             :scope="scope"
-            :clientPageLimit="clientPageLimit"
-            :responsePageLimit="responsePageLimit"
+            :limit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
@@ -76,8 +75,7 @@ export default {
     profileId: String,
     tagId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number
   },

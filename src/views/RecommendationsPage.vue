@@ -1,6 +1,6 @@
 <template>
   <BaseRecommendationsPageContainer
-    :responsePageLimit="limit"
+    :limit="limit"
     :filter="filter"
     :filterValue="filterValue"
   >
@@ -28,8 +28,7 @@
             :isLoading="pageSlotProps.isLoading"
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.recommendationsData"
-            :clientPageLimit="limit"
-            :responsePageLimit="limit"
+            :limit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"

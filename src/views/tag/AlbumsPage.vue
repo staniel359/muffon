@@ -1,8 +1,7 @@
 <template>
   <BaseTagPaginatedPageContainer
     scope="albums"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList

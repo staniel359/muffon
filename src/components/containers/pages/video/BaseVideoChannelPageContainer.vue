@@ -37,7 +37,7 @@ export default {
       type: String,
       required: true
     },
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -70,7 +70,7 @@ export default {
       return {
         channelId: this.channelId,
         scope: 'videos',
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

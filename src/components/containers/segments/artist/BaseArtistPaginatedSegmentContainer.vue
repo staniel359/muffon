@@ -3,7 +3,7 @@
     ref="segment"
     :artistName="artistName"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
@@ -16,8 +16,7 @@
           :error="segmentSlotProps.error"
           :responseData="segmentSlotProps.artistData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
+          :limit="limit"
           @fetchData="segmentSlotProps.fetchData"
           @refresh="segmentSlotProps.handleRefresh"
           @focus="handleFocus"
@@ -52,8 +51,7 @@ export default {
   props: {
     artistName: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   methods: {

@@ -2,8 +2,7 @@
   <BaseProfileLibraryPaginatedPageContainer
     scope="albums"
     :profileId="profileId"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     isWithSearch
   >
     <template #default="slotProps">

@@ -4,7 +4,7 @@
     :profileId="profileId"
     :albumId="albumId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
@@ -17,8 +17,7 @@
           :error="segmentSlotProps.error"
           :responseData="segmentSlotProps.libraryAlbumData"
           :scope="scope"
-          :clientPageLimit="clientPageLimit"
-          :responsePageLimit="responsePageLimit"
+          :limit="limit"
           @fetchData="segmentSlotProps.fetchData"
           @refresh="segmentSlotProps.handleRefresh"
           @focus="handleFocus"
@@ -54,8 +53,7 @@ export default {
     profileId: String,
     albumId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number,
+    limit: Number,
     headerLink: Object
   },
   methods: {

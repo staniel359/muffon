@@ -1,6 +1,6 @@
 <template>
   <BaseVideoChannelPageContainer
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -16,8 +16,7 @@
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.channelData"
-          :clientPageLimit="limit"
-          :responsePageLimit="limit"
+          :limit="limit"
           isPaginationSimple
           isReset
           @fetchData="pageSlotProps.fetchData"

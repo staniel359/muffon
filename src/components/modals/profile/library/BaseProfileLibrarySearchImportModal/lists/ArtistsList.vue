@@ -3,7 +3,7 @@
     v-if="artists.length"
     scope="artists"
     :responseData="artistsData"
-    :clientPageLimit="limit"
+    :limit="limit"
     :responsePageLimit="totalCount"
     isReset
     isWithPagination

@@ -2,8 +2,7 @@
   <BaseArtistPaginatedPageContainer
     scope="tracks"
     :artistName="artistName"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList

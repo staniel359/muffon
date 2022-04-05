@@ -1,6 +1,6 @@
 <template>
   <BaseProfilesPageContainer
-    :responsePageLimit="limit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <BaseSegmentContainer
@@ -18,8 +18,7 @@
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           :responseData="pageSlotProps.profilesData"
-          :responsePageLimit="limit"
-          :clientPageLimit="limit"
+          :limit="limit"
           @fetchData="pageSlotProps.fetchData"
           @focus="handleFocus"
           @refresh="pageSlotProps.handleRefresh"

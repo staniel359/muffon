@@ -3,7 +3,7 @@
     ref="pageContainer"
     :profileId="profileId"
     :scope="scope"
-    :responsePageLimit="responsePageLimit"
+    :limit="limit"
   >
     <template #default="pageSlotProps">
       <div
@@ -23,8 +23,7 @@
             :error="pageSlotProps.error"
             :responseData="pageSlotProps.favoritesData"
             :scope="scope"
-            :clientPageLimit="clientPageLimit"
-            :responsePageLimit="responsePageLimit"
+            :limit="limit"
             @focus="handleFocus"
             @fetchData="pageSlotProps.fetchData"
             @refresh="pageSlotProps.handleRefresh"
@@ -58,8 +57,7 @@ export default {
   props: {
     profileId: String,
     scope: String,
-    clientPageLimit: Number,
-    responsePageLimit: Number
+    limit: Number
   },
   mounted () {
     this.$refs.pageContainer.fetchData()

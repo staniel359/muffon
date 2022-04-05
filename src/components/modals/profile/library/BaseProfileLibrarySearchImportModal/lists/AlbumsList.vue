@@ -3,7 +3,7 @@
     v-if="albums.length"
     scope="albums"
     :responseData="albumsData"
-    :clientPageLimit="limit"
+    :limit="limit"
     :responsePageLimit="totalCount"
     isReset
     isWithPagination

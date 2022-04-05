@@ -43,7 +43,7 @@ export default {
       required: true
     },
     scope: String,
-    responsePageLimit: Number
+    limit: Number
   },
   data () {
     return {
@@ -100,7 +100,7 @@ export default {
         profileId: this.profileId,
         trackId: this.trackId,
         scope: this.scope,
-        limit: this.responsePageLimit
+        limit: this.limit
       }
     }
   },

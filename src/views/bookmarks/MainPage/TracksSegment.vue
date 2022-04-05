@@ -1,8 +1,7 @@
 <template>
   <BaseBookmarksPaginatedSegmentContainer
     scope="tracks"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">

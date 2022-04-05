@@ -1,8 +1,7 @@
 <template>
   <BaseProfileLibraryTagPaginatedSegmentContainer
     scope="artists"
-    :clientPageLimit="limit"
-    :responsePageLimit="limit"
+    :limit="limit"
     :profileId="profileId"
     :tagId="tagId"
     :headerLink="headerLink"

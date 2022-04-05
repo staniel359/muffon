@@ -1,7 +1,7 @@
 <template>
   <BaseTagPaginatedSegmentContainer
     scope="albums"
-    :clientPageLimit="limit"
+    :limit="limit"
     :responsePageLimit="20"
     :tagName="tagName"
     :headerLink="headerLink"

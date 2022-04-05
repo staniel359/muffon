@@ -11,7 +11,7 @@
       :error="error"
       :responseData="searchData"
       :scope="tabData.scope"
-      :clientPageLimit="tabData.clientPageLimit"
+      :limit="tabData.limit"
       :responsePageLimit="tabData.responsePageLimit"
       :isPaginationSimple="isVideos"
       :isReset="isVideos"
@@ -106,7 +106,8 @@ export default {
         sourceId: this.sourceId,
         query: this.query,
         scope: this.tabData.scope,
-        limit: this.tabData.responsePageLimit,
+        limit:
+          this.tabData.responsePageLimit,
         isWithSelfData: true
       }
     },
