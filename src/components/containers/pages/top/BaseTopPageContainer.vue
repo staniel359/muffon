@@ -1,9 +1,11 @@
 <template>
-  <BasePageContainer>
+  <BasePageContainer
+    :responseData="{}"
+  >
     <slot
+      :topData="topData"
       :isLoading="isLoading"
       :error="error"
-      :topData="topData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

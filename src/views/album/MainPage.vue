@@ -4,7 +4,7 @@
     :albumTitle="albumTitle"
     :sourceParams="sourceParams"
   >
-    <template #default="slotProps">
+    <template #default="pageSlotProps">
       <div
         :class="[
           'ui raised segments',
@@ -14,28 +14,28 @@
       >
         <BaseSegmentContainer>
           <AlbumSourceSelect
-            :albumData="slotProps.albumData"
+            :albumData="pageSlotProps.albumData"
           />
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
           class="album-segment"
-          :isLoading="slotProps.isLoading"
-          :error="slotProps.error"
+          :isLoading="pageSlotProps.isLoading"
+          :error="pageSlotProps.error"
           @init="handleInit"
-          @refresh="slotProps.handleRefresh"
+          @refresh="pageSlotProps.handleRefresh"
         >
           <template #default>
             <LeftColumn
               v-if="scrollable"
-              :albumData="slotProps.albumData"
+              :albumData="pageSlotProps.albumData"
               :scrollable="scrollable"
             />
 
             <RightColumn
-              :albumData="slotProps.albumData"
-              :requestAlbumData="slotProps.requestAlbumData"
-              :profileId="slotProps.profileId"
+              :albumData="pageSlotProps.albumData"
+              :requestAlbumData="pageSlotProps.requestAlbumData"
+              :profileId="pageSlotProps.profileId"
             />
           </template>
         </BaseSegmentContainer>

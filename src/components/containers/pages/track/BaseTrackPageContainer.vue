@@ -1,20 +1,17 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!trackData"
+    :responseData="trackData"
     :isLoading="isLoading"
-    :isError="!trackData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="trackData"
-      :isLoading="isLoading"
-      :error="error"
       :trackData="trackData"
       :requestTrackData="requestTrackData"
+      :profileId="profileId"
+      :isLoading="isLoading"
+      :error="error"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
-      :profileId="profileId"
     ></slot>
   </BasePageContainer>
 </template>

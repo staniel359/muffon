@@ -1,16 +1,14 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!profileData"
+    :responseData="playlistData"
     :isLoading="isLoading"
-    :isError="!profileData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="profileData"
+      :playlistData="playlistData"
+      :playlistTitle="playlistTitleFetched"
       :isLoading="isLoading"
       :error="error"
-      :profileData="profileData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -80,7 +78,10 @@ export default {
       return this.profileData?.nickname
     },
     playlistTitleFetched () {
-      return this.profileData?.playlist?.title
+      return this.playlistData?.title
+    },
+    playlistData () {
+      return this.profileData?.playlist
     },
     playlistArgs () {
       return {

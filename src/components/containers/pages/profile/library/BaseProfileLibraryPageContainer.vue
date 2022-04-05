@@ -1,16 +1,15 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!libraryData"
+    :responseData="libraryData"
     :isLoading="isLoading"
-    :isError="!libraryData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="libraryData"
+      :libraryData="libraryData"
+      :topTracksCount="topTracksCount"
+      :topAlbumsCount="topAlbumsCount"
       :isLoading="isLoading"
       :error="error"
-      :libraryData="libraryData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -83,6 +82,12 @@ export default {
     },
     libraryData () {
       return this.profileData?.library
+    },
+    topTracksCount () {
+      return this.libraryData.top_tracks_count
+    },
+    topAlbumsCount () {
+      return this.libraryData.top_albums_count
     }
   },
   watch: {

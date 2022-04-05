@@ -1,19 +1,16 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!albumData"
+    :responseData="albumData"
     :isLoading="isLoading"
-    :isError="!albumData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="albumData"
-      :isLoading="isLoading"
-      :error="error"
       :albumData="albumData"
       :requestAlbumData="requestAlbumData"
-      :handleRefresh="handleRefresh"
       :profileId="profileId"
+      :isLoading="isLoading"
+      :error="error"
+      :handleRefresh="handleRefresh"
     ></slot>
   </BasePageContainer>
 </template>

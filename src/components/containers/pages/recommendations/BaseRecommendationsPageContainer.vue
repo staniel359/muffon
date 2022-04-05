@@ -1,16 +1,14 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!recommendationsData"
+    :responseData="recommendationsData"
     :isLoading="isLoading"
-    :isError="!recommendationsData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="recommendationsData"
+      :recommendationsData="recommendationsData"
+      :profileId="profileId"
       :isLoading="isLoading"
       :error="error"
-      :recommendationsData="recommendationsData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -18,6 +16,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -49,6 +48,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
     navigationSections () {
       return formatRecommendationsPageNavigation()
     },
@@ -61,6 +63,9 @@ export default {
         filter: this.filter,
         filterValue: this.filterValue
       }
+    },
+    profileId () {
+      return this.profileInfo.id.toString()
     }
   },
   watch: {

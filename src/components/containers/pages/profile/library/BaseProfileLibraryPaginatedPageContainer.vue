@@ -51,8 +51,8 @@
             <template #default="slotProps">
               <slot
                 :[scope]="slotProps[scope]"
-                :topTracksCount="pageSlotProps.libraryData.top_tracks_count"
-                :topAlbumsCount="pageSlotProps.libraryData.top_albums_count"
+                :topTracksCount="pageSlotProps.topTracksCount"
+                :topAlbumsCount="pageSlotProps.topAlbumsCount"
               ></slot>
             </template>
           </BasePaginatedListContainer>

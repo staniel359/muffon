@@ -1,16 +1,13 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!libraryData"
+    :responseData="libraryTrackData"
     :isLoading="isLoading"
-    :isError="!libraryData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="libraryData"
+      :libraryTrackData="libraryTrackData"
       :isLoading="isLoading"
       :error="error"
-      :libraryTrackData="libraryTrackData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

@@ -1,16 +1,14 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!profileData"
+    :responseData="profileData"
     :isLoading="isLoading"
-    :isError="!profileData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="profileData"
+      :profileData="profileData"
+      :profileNickname="profileNicknameFetched"
       :isLoading="isLoading"
       :error="error"
-      :profileData="profileData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

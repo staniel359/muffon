@@ -1,16 +1,13 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!channelData"
+    :responseData="channelData"
     :isLoading="isLoading"
-    :isError="!channelData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="channelData"
+      :channelData="channelData"
       :isLoading="isLoading"
       :error="error"
-      :channelData="channelData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

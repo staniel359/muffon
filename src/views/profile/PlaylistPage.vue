@@ -12,7 +12,7 @@
         ]"
       >
         <InfoSegment
-          :playlistData="pageSlotProps.profileData.playlist"
+          :playlistData="pageSlotProps.playlistData"
           :profileId="profileId"
         />
 
@@ -25,7 +25,7 @@
           class="main-paginated-page-segment-container"
           :profileId="profileId"
           :playlistId="playlistId"
-          :playlistTitle="pageSlotProps.profileData.playlist.title"
+          :playlistTitle="pageSlotProps.playlistTitle"
         />
       </div>
     </template>

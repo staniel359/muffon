@@ -1,16 +1,13 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!communityData"
+    :responseData="communityData"
     :isLoading="isLoading"
-    :isError="!communityData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="communityData"
+      :communityData="communityData"
       :isLoading="isLoading"
       :error="error"
-      :communityData="communityData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

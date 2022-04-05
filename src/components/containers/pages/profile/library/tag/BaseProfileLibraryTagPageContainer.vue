@@ -1,16 +1,15 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!libraryData"
+    :responseData="libraryTagData"
     :isLoading="isLoading"
-    :isError="!libraryData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="libraryData"
+      :libraryTagData="libraryTagData"
+      :topTracksCount="topTracksCount"
+      :topAlbumsCount="topAlbumsCount"
       :isLoading="isLoading"
       :error="error"
-      :libraryTagData="libraryTagData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>
@@ -94,6 +93,12 @@ export default {
         scope: this.scope,
         limit: this.responsePageLimit
       }
+    },
+    topTracksCount () {
+      return this.libraryTagData.top_tracks_count
+    },
+    topAlbumsCount () {
+      return this.libraryTagData.top_albums_count
     }
   },
   watch: {

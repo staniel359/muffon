@@ -1,19 +1,17 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!tagData"
+    :responseData="tagData"
     :isLoading="isLoading"
-    :isError="!tagData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="tagData"
+      :tagData="tagData"
+      :tagName="tagNameFetched"
+      :profileId="profileId"
       :isLoading="isLoading"
       :error="error"
-      :tagData="tagData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
-      :profileId="profileId"
     ></slot>
   </BasePageContainer>
 </template>

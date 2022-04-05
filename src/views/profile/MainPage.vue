@@ -16,7 +16,7 @@
         <div class="main-profile-page-right-column">
           <LibrarySegment
             :profileId="profileId"
-            :profileNickname="slotProps.profileData.nickname"
+            :profileNickname="slotProps.profileNickname"
           />
 
           <PlaylistsSegment

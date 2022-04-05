@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseProfilePostsPageContainer
   from '*/components/containers/pages/profile/posts/BaseProfilePostsPageContainer.vue'
 import BaseSegmentContainer
@@ -56,17 +55,12 @@ export default {
     BasePaginatedListContainer,
     BasePostsSimpleList
   },
+  props: {
+    profileId: String
+  },
   data () {
     return {
       limit: 50
-    }
-  },
-  computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   },
   methods: {

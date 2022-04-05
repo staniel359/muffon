@@ -3,9 +3,10 @@
     <BaseErrorMessage
       v-if="isError"
       :error="error"
-      @refresh="handleRefresh"
     />
-    <slot v-else></slot>
+    <slot
+      v-else-if="responseData"
+    ></slot>
   </div>
 </template>
 
@@ -19,18 +20,21 @@ export default {
     BaseErrorMessage
   },
   props: {
-    isShowLoader: {
-      type: Boolean,
-      default: true
-    },
+    responseData: Object,
     isLoading: Boolean,
-    isError: Boolean,
     error: Error
   },
   emits: [
-    'init',
-    'refresh'
+    'init'
   ],
+  computed: {
+    isError () {
+      return !!(
+        !this.responseData &&
+          this.error
+      )
+    }
+  },
   watch: {
     isLoading: {
       immediate: true,
@@ -46,11 +50,8 @@ export default {
   methods: {
     handleIsLoadingChange (value) {
       toggleLoaderDimmer(
-        this.isShowLoader && value
+        !this.responseData && value
       )
-    },
-    handleRefresh () {
-      this.$emit('refresh')
     }
   }
 }

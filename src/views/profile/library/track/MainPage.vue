@@ -3,14 +3,14 @@
     :profileId="profileId"
     :trackId="trackId"
   >
-    <template #default="slotProps">
+    <template #default="pageSlotProps">
       <div class="main-profile-page-columns-container">
         <div :class="[
           'main-profile-page-left-column',
           'main-sticky-container'
         ]">
           <InfoSegment
-            :trackData="slotProps.libraryTrackData"
+            :trackData="pageSlotProps.libraryTrackData"
             :profileId="profileId"
             :trackId="trackId"
           />
@@ -18,7 +18,7 @@
 
         <div class="main-profile-page-right-column">
           <PlayerPanelSegment
-            :trackData="slotProps.libraryTrackData"
+            :trackData="pageSlotProps.libraryTrackData"
           />
         </div>
       </div>

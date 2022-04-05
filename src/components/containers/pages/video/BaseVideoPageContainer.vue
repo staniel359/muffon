@@ -1,16 +1,13 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!videoData"
+    :responseData="videoData"
     :isLoading="isLoading"
-    :isError="!videoData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="videoData"
+      :videoData="videoData"
       :isLoading="isLoading"
       :error="error"
-      :videoData="videoData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

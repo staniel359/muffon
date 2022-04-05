@@ -37,7 +37,7 @@
             <template #default="slotProps">
               <BaseArtistsExtendedList
                 :artists="slotProps.recommendations"
-                :profileId="profileId"
+                :profileId="pageSlotProps.profileId"
                 isWithLibraryOption
                 isWithFavoriteOption
                 isWithBookmarkOption
@@ -54,7 +54,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseRecommendationsPageContainer
   from '*/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BaseSegmentContainer
@@ -79,14 +78,6 @@ export default {
       filter: null,
       filterValue: null,
       limit: 10
-    }
-  },
-  computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   },
   methods: {

@@ -1,16 +1,13 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!playlistsData"
+    :responseData="playlistsData"
     :isLoading="isLoading"
-    :isError="!playlistsData && !!error"
     :error="error"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="playlistsData"
+      :playlistsData="playlistsData"
       :isLoading="isLoading"
       :error="error"
-      :playlistsData="playlistsData"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
     ></slot>

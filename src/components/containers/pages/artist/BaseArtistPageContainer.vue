@@ -1,22 +1,19 @@
 <template>
   <BasePageContainer
-    :isShowLoader="!artistData"
+    :responseData="artistData"
     :isLoading="isLoading"
-    :isError="!artistData && !!error"
     :error="pageError"
     @init="handleInit"
-    @refresh="handleRefresh"
   >
     <slot
-      v-if="artistData"
-      :isLoading="isLoading"
-      :error="error"
       :artistData="artistData"
       :artistName="artistNameFetched"
+      :profileId="profileId"
+      :topTrackCount="topTrackCount"
+      :isLoading="isLoading"
+      :error="error"
       :fetchData="fetchData"
       :handleRefresh="handleRefresh"
-      :topTrackCount="topTrackCount"
-      :profileId="profileId"
     ></slot>
   </BasePageContainer>
 </template>
