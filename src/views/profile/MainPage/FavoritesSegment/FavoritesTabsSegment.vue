@@ -3,6 +3,7 @@
     <BaseTabsContainer
       class="three item"
       :tabs="tabsCollection"
+      @tabClick="handleTabClick"
     >
       <template
         v-for="tabData in tabsCollection"
@@ -76,7 +77,13 @@ export default {
     }
   },
   methods: {
+    handleTabClick () {
+      this.focus()
+    },
     handleFocus () {
+      this.focus()
+    },
+    focus () {
       this.$nextTick(() => {
         this.$refs.segment.focus()
       })

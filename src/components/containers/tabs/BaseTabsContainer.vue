@@ -36,6 +36,9 @@ export default {
       }
     }
   },
+  emits: [
+    'tabClick'
+  ],
   data () {
     return {
       activeTabIndex: 0
@@ -44,6 +47,10 @@ export default {
   methods: {
     handleTabClick (index) {
       this.setActiveTab(index)
+
+      this.$emit(
+        'tabClick'
+      )
     },
     isActive (index) {
       return index === this.activeTabIndex
