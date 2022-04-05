@@ -30,7 +30,7 @@ import formatArtistPageNavigation from '*/helpers/formatters/navigation/artist'
 import formatArtistPageTab from '*/helpers/formatters/tabs/artist'
 import getArtist from '*/helpers/actions/api/artist/get'
 import getBandcampArtistId
-  from '*/helpers/actions/api/bandcamp_id/artist/get'
+  from '*/helpers/actions/api/bandcampId/artist/get'
 
 export default {
   name: 'BaseArtistPageContainer',

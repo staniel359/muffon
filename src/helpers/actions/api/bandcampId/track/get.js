@@ -1,4 +1,4 @@
-import getBandcampId from '*/helpers/actions/api/bandcamp_id/get'
+import getBandcampId from '*/helpers/actions/api/bandcampId/get'
 
 export default function ({ artist, track }) {
   this.error = null

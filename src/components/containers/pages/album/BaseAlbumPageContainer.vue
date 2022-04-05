@@ -27,7 +27,7 @@ import formatAlbumPageNavigation from '*/helpers/formatters/navigation/album'
 import formatAlbumPageTab from '*/helpers/formatters/tabs/album'
 import getAlbum from '*/helpers/actions/api/album/get'
 import getBandcampAlbumId
-  from '*/helpers/actions/api/bandcamp_id/album/get'
+  from '*/helpers/actions/api/bandcampId/album/get'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {

@@ -28,7 +28,7 @@ import formatTrackPageNavigation from '*/helpers/formatters/navigation/track'
 import formatTrackPageTab from '*/helpers/formatters/tabs/track'
 import getTrack from '*/helpers/actions/api/track/get'
 import getBandcampTrackId
-  from '*/helpers/actions/api/bandcamp_id/track/get'
+  from '*/helpers/actions/api/bandcampId/track/get'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {

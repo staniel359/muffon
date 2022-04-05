@@ -1,5 +1,5 @@
 import store from '*/plugins/store'
-import getBandcampId from '*/helpers/actions/api/bandcamp_id/track/variant/get'
+import getBandcampId from '*/helpers/actions/api/bandcampId/track/variant/get'
 import getAudio from '*/helpers/actions/api/audio/get'
 import { updateStore } from '*/helpers/actions'
 

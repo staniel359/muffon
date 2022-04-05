@@ -25,7 +25,7 @@ import formatVideoChannelPageNavigation
   from '*/helpers/formatters/navigation/videoChannel'
 import formatVideoChannelVideosPageTab
   from '*/helpers/formatters/tabs/videoChannel'
-import getVideoChannel from '*/helpers/actions/api/video_channel/get'
+import getVideoChannel from '*/helpers/actions/api/videoChannel/get'
 
 export default {
   name: 'BaseVideoChannelPageContainer',

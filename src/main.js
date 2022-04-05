@@ -8,7 +8,7 @@ import App from './App.vue'
 import router from '*/plugins/router'
 import store from '*/plugins/store'
 import i18n from '*/plugins/i18n'
-import setupI18nCountries from '*/plugins/i18n-countries'
+import setupI18nCountries from '*/plugins/i18nCountries'
 
 const isDevelopment =
   process.env.NODE_ENV === 'development'
