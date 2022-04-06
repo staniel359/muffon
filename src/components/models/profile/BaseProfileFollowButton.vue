@@ -6,6 +6,7 @@
       <BaseButton
         v-bind="$attrs"
         :class="{
+          basic: slotProps.isFollowing,
           primary: !slotProps.isFollowing,
           loading: slotProps.isLoading,
           disabled: slotProps.isLoading

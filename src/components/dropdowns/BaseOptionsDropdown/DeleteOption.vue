@@ -3,7 +3,8 @@
     class="item"
     @click="handleClick"
   >
-    <i class="red close icon"></i>
+    <i class="trash alternate outline icon"></i>
+
     {{ deleteText }}
   </div>
 </template>

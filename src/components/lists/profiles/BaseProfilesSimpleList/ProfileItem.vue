@@ -7,7 +7,7 @@
     <BaseImage
       class="circular bordered"
       model="profile"
-      :image="imageData?.small"
+      :image="imageData?.extrasmall"
     />
 
     <div class="content">

@@ -22,7 +22,14 @@
       ></small>
     </div>
 
+    <small class="joined-message">
+      <BaseCommunityJoinedMessage
+        :communityData="communityData"
+      />
+    </small>
+
     <BaseOptionsDropdown
+      :communityData="communityData"
       isWithJoinOption
     />
   </BaseLinkContainer>
@@ -33,11 +40,13 @@ import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BaseCommunityJoinedMessage
+  from '*/components/models/community/BaseCommunityJoinedMessage.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import {
-  community as formatCommunityLink
-} from '*/helpers/formatters/links/communities'
+  main as formatCommunityMainLink
+} from '*/helpers/formatters/links/community'
 import { number as formatNumber } from '*/helpers/formatters'
 
 export default {
@@ -46,8 +55,18 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
+    BaseCommunityJoinedMessage,
     BaseOptionsDropdown
   },
+  provide () {
+    return {
+      setIsMember: this.setIsMember,
+      setMembersCount: this.setMembersCount
+    }
+  },
+  inject: [
+    'findPaginationItem'
+  ],
   props: {
     communityData: {
       type: Object,
@@ -56,7 +75,7 @@ export default {
   },
   computed: {
     communityLink () {
-      return formatCommunityLink({
+      return formatCommunityMainLink({
         communityId: this.communityId
       })
     },
@@ -85,9 +104,30 @@ export default {
     },
     membersCount () {
       return this.communityData.members_count
+    },
+    paginationItem () {
+      return this.findPaginationItem({
+        uuid: this.uuid
+      })
+    },
+    uuid () {
+      return this.communityData.uuid
+    }
+  },
+  methods: {
+    setIsMember (value) {
+      this.paginationItem
+        .profile
+        .member_of_community = value
+    },
+    setMembersCount (value) {
+      this.paginationItem.members_count = value
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.joined-message
+  margin-left: 0.5em
+</style>

@@ -24,7 +24,7 @@ export default {
   computed: {
     rememberText () {
       return this.$t(
-        'forms.remember'
+        'forms.fields.remember'
       )
     }
   },

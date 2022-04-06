@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="primary import-button"
+    class="basic import-button"
     icon="headphones"
     :text="libraryText"
     @click="handleClick"

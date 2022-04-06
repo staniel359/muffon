@@ -5,6 +5,7 @@
       :key="postData.uuid"
       :postData="postData"
       :profileId="profileId"
+      :communityCreatorId="communityCreatorId"
     />
   </BaseListContainer>
 </template>
@@ -27,7 +28,8 @@ export default {
         return []
       }
     },
-    profileId: String
+    profileId: String,
+    communityCreatorId: String
   }
 }
 </script>

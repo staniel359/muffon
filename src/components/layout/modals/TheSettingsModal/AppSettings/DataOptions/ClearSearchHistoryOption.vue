@@ -2,6 +2,8 @@
   <div class="content">
     <div class="header">
       <BaseButton
+        class="basic red"
+        icon="trash alternate outline"
         :text="clearText"
         :class="{
           loading: isLoading,

@@ -5,15 +5,14 @@ export default function ({ communityId, scope = '', page, limit }) {
   this.error = null
   this.isLoading = true
 
-  const url = `/communities/${communityId}/${scope}`
+  const url =
+    `/communities/${communityId}/${scope}`
 
-  const otherProfileId =
+  const profileId =
     store.state.profile.info.id
 
   const params = {
-    ...(scope === 'members' && {
-      other_profile_id: otherProfileId
-    }),
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit })
   }

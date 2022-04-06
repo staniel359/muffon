@@ -54,7 +54,7 @@ import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 
 export default {
-  name: 'MainPage',
+  name: 'CommunitiesPage',
   components: {
     BaseCommunitiesPageContainer,
     BaseSegmentContainer,

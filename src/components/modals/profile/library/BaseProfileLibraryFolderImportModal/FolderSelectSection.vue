@@ -13,6 +13,7 @@
 
       <label for="folder-select-input">
         <BaseButton
+          class="basic"
           icon="folder open"
           :class="{ disabled: !isReset }"
           :text="selectText"

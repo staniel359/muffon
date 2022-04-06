@@ -49,9 +49,7 @@
 
   <BasePlaylistDeleteModal
     ref="deleteModal"
-    :playlistId="playlistId"
-    :playlistTitle="playlistTitle"
-    :profileId="profileId"
+    :playlistData="playlistData"
     @deleted="handleDeleted"
   />
 </template>

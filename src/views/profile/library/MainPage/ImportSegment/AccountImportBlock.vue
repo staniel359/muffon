@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="primary import-button"
+    class="basic import-button"
     icon="user circle"
     :class="{ disabled: !isAccountConnected }"
     :text="accountText"

@@ -37,3 +37,11 @@ export const playlists = () => {
     path: 'playlists'
   }
 }
+
+export const communities = () => {
+  return {
+    name: 'CommunitiesPage',
+    params: {},
+    path: 'communities'
+  }
+}

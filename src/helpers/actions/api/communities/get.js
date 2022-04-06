@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '*/plugins/store'
 
 export default function ({ page, limit }) {
   this.error = null
@@ -6,7 +7,11 @@ export default function ({ page, limit }) {
 
   const url = '/communities'
 
+  const profileId =
+    store.state.profile.info.id
+
   const params = {
+    profile_id: profileId,
     ...(page && { page }),
     ...(limit && { limit })
   }

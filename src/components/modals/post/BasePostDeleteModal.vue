@@ -10,7 +10,8 @@
 
 <script>
 import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deletePost from '*/helpers/actions/api/post/delete'
+import deleteProfilePost from '*/helpers/actions/api/profile/post/delete'
+import deleteCommunityPost from '*/helpers/actions/api/community/post/delete'
 
 export default {
   name: 'BasePostDeleteModal',
@@ -36,17 +37,22 @@ export default {
     postId () {
       return this.postData.id
     },
+    postType () {
+      return this.postData.post_type
+    },
+    communityId () {
+      return this.postData.community?.id
+    },
     deleteArgs () {
       return {
+        communityId: this.communityId,
         postId: this.postId
       }
     }
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deletePost(
-        this.deleteArgs
-      ).then(
+      this.deletePost().then(
         this.handleSuccess
       )
     },
@@ -55,7 +61,22 @@ export default {
 
       this.$emit('deleted')
     },
-    deletePost,
+    deleteProfilePost,
+    deleteCommunityPost,
+    deletePost () {
+      switch (this.postType) {
+        case 'profile':
+          return this.deleteProfilePost(
+            this.deleteArgs
+          )
+        case 'community':
+          return this.deleteCommunityPost(
+            this.deleteArgs
+          )
+        default:
+          return null
+      }
+    },
     show () {
       this.$refs.modal.show()
     }

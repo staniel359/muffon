@@ -103,6 +103,7 @@
     "post": "Post",
     "send": "Send",
     "next": "Next",
+    "upload": "Upload",
     "from": {
       "search": "From search",
       "folder": "From folder",
@@ -172,7 +173,8 @@
           "album": "Delete album from bookmarks",
           "track": "Delete track from bookmarks"
         },
-        "post": "Delete post"
+        "post": "Delete post",
+        "community": "Delete community"
       },
       "going": {
         "library": "You are going to delete {modelName} from your library.",
@@ -181,14 +183,16 @@
         "playlistTrack": "You are going to delete {modelName} from {parentModelName} playlist.",
         "favorite": "You are going to delete {modelName} from your favorites.",
         "bookmark": "You are going to delete {modelName} from your bookmarks.",
-        "post": "You are going to delete this post."
+        "post": "You are going to delete this post.",
+        "community": "You are going to delete this community."
       },
       "also": {
         "library": {
           "artist": "This will also delete all this artist's albums and tracks.",
           "album": "This will also delete all this album's tracks."
         },
-        "playlist": "This will also delete all this playlist's tracks."
+        "playlist": "This will also delete all this playlist's tracks.",
+        "community": "This will also delete all this community's posts."
       },
       "undo": "You can't undo this action!",
       "sure": "Are you sure?"
@@ -202,7 +206,6 @@
       "nickname": "Nickname",
       "title": "Title",
       "description": "Description",
-      "image": "Upload image",
       "gender": "Gender",
       "birthdate": "Birth date",
       "country": "Country",
@@ -211,9 +214,10 @@
         "male": "Male",
         "female": "Female",
         "other": "Other"
-      }
+      },
+      "remember": "Remember me",
+      "asCommunity": "As community"
     },
-    "remember": "Remember me",
     "extra": "Additional info",
     "errors": {
       "notFound": "Email or password is wrong",
@@ -250,7 +254,8 @@
     },
     "deleted": {
       "library": "{modelName} was deleted from your library",
-      "playlist": "Playlist {playlistTitle} was deleted"
+      "playlist": "Playlist {playlistTitle} was deleted",
+      "community": "Community {communityTitle} was deleted"
     }
   },
   "counters": {
@@ -383,6 +388,11 @@
     "follow": "Follow",
     "unfollow": "Unfollow"
   },
+  "memberships": {
+    "joined": "You have joined",
+    "join": "Join",
+    "leave": "Leave"
+  },
   "message": {
     "send": "Send message",
     "sent": {
@@ -402,9 +412,6 @@
   },
   "recommendation": {
     "similar": "Similar to {count} artists:"
-  },
-  "playlist": {
-    "created": "Created at {date}"
   },
   "import": {
     "active": {

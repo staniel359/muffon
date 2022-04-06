@@ -23,6 +23,7 @@
           :albumTracks="albumTracks"
           :imageUrl="imageUrl"
           :profileData="optionData.profileData"
+          :communityData="optionData.communityData"
           @click="optionData.action"
           @linkClick="handleLinkClick"
         />
@@ -45,6 +46,7 @@ import ListenedOption from './BaseOptionsDropdown/ListenedOption.vue'
 import EditOption from './BaseOptionsDropdown/EditOption.vue'
 import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
 import FollowOption from './BaseOptionsDropdown/FollowOption.vue'
+import JoinOption from './BaseOptionsDropdown/JoinOption.vue'
 import MessageOption from './BaseOptionsDropdown/MessageOption.vue'
 import { setDropdown } from '*/helpers/actions/plugins/semantic'
 import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
@@ -63,6 +65,7 @@ export default {
     EditOption,
     DeleteOption,
     FollowOption,
+    JoinOption,
     MessageOption
   },
   props: {
@@ -88,8 +91,10 @@ export default {
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithFollowOption: Boolean,
+    isWithJoinOption: Boolean,
     isWithMessageOption: Boolean,
     profileData: Object,
+    communityData: Object,
     isWhite: Boolean
   },
   emits: [
@@ -152,6 +157,10 @@ export default {
             this.followOption
         ),
         (
+          this.isWithJoinOption &&
+            this.joinOption
+        ),
+        (
           this.isWithMessageOption &&
             this.messageOption
         )
@@ -207,6 +216,13 @@ export default {
       return {
         component: 'FollowOption',
         profileData: this.profileData,
+        action: this.handleClick
+      }
+    },
+    joinOption () {
+      return {
+        component: 'joinOption',
+        communityData: this.communityData,
         action: this.handleClick
       }
     },

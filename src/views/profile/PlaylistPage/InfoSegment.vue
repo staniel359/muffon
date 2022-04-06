@@ -1,36 +1,38 @@
 <template>
   <BaseSegmentContainer>
-    <div class="info-container main-simple-list-item">
-      <BaseImage
-        class="playlist-image rounded bordered"
-        model="playlist"
-        :image="imageData?.small"
-      />
-
-      <div class="content">
-        <BaseHeader
-          tag="h3"
-          :text="playlistTitle"
+    <div class="ui list">
+      <div class="item main-simple-list-item main-playlist-info-item">
+        <BaseImage
+          class="playlist-image rounded bordered"
+          model="playlist"
+          :image="imageData?.small"
         />
 
-        <div
-          v-html="tracksCountText"
-        ></div>
+        <div class="content">
+          <BaseHeader
+            tag="h3"
+            :text="playlistTitle"
+          />
 
-        <div class="description main-small-container">
-          <small>
-            {{ createdText }}
-          </small>
+          <div
+            class="description"
+            v-html="tracksCountText"
+          ></div>
+
+          <BaseTimestamp
+            class="description playlist-timestamp"
+            :created="created"
+          />
         </div>
-      </div>
 
-      <BaseOptionsDropdown
-        class="playlist-options"
-        :isWithEditOption="isWithEditOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        @edit="handleEditOptionClick"
-        @delete="handleDeleteOptionClick"
-      />
+        <BaseOptionsDropdown
+          class="playlist-options"
+          :isWithEditOption="isWithEditOption"
+          :isWithDeleteOption="isWithDeleteOption"
+          @edit="handleEditOptionClick"
+          @delete="handleDeleteOptionClick"
+        />
+      </div>
     </div>
   </BaseSegmentContainer>
 
@@ -41,9 +43,7 @@
 
   <BasePlaylistDeleteModal
     ref="deleteModal"
-    :playlistId="playlistId"
-    :playlistTitle="playlistTitle"
-    :profileId="profileId"
+    :playlistData="playlistData"
     isDeleteWithRedirect
   />
 </template>
@@ -53,16 +53,14 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BaseTimestamp from '*/components/BaseTimestamp.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistUpdateModal
   from '*/components/modals/playlist/BasePlaylistUpdateModal.vue'
 import BasePlaylistDeleteModal
   from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
-import {
-  number as formatNumber,
-  date as formatDate
-} from '*/helpers/formatters'
+import { number as formatNumber } from '*/helpers/formatters'
 import { isCurrentProfile } from '*/helpers/utils'
 
 export default {
@@ -71,6 +69,7 @@ export default {
     BaseSegmentContainer,
     BaseImage,
     BaseHeader,
+    BaseTimestamp,
     BaseOptionsDropdown,
     BasePlaylistUpdateModal,
     BasePlaylistDeleteModal
@@ -86,9 +85,6 @@ export default {
     }
   },
   computed: {
-    playlistId () {
-      return this.playlistData.id.toString()
-    },
     imageData () {
       return this.playlistData.image
     },
@@ -118,10 +114,8 @@ export default {
         { date: this.createdDateFormatted }
       )
     },
-    createdDateFormatted () {
-      return formatDate(
-        this.playlistData.created
-      )
+    created () {
+      return this.playlistData.created
     },
     isWithEditOption () {
       return isCurrentProfile(

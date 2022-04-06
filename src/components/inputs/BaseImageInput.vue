@@ -1,5 +1,6 @@
 <template>
   <input
+    ref="input"
     class="main-image-input"
     type="file"
     name="image"
@@ -52,6 +53,9 @@ export default {
         'change',
         image
       )
+    },
+    show () {
+      this.$refs.input.click()
     },
     processImage (file) {
       const reader = new FileReader()

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item main-simple-list-item"
+    class="item main-simple-list-item main-post-item"
     :class="{ disabled: isDeleted }"
   >
     <BaseDeletedBlock
@@ -9,44 +9,26 @@
     />
     <template v-else>
       <BaseImage
-        class="small circular bordered"
-        model="profile"
+        class="small bordered"
+        :class="imageClass"
+        :model="imageModel"
         :image="imageData?.extrasmall"
       />
 
       <div class="content">
-        <div class="post-top-section">
-          <div class="post-nickname-timestamp-block">
-            <BaseProfileNickname
-              :profileData="profileData"
-            />
+        <BaseCommunityTitle
+          v-if="isByCommunity"
+          :communityData="communityData"
+        />
+        <BaseProfileNickname
+          v-else
+          :profileData="profileData"
+        />
 
-            <BaseTimestamp
-              class="description"
-              :created="created"
-            />
-          </div>
-
-          <BaseOptionsDropdown
-            v-if="isWithOptions"
-            isWithEditOption
-            isWithDeleteOption
-            @edit="handleEditOptionClick"
-            @delete="handleDeleteOptionClick"
-          />
-
-          <BasePostUpdateModal
-            ref="updateModal"
-            :postData="postData"
-            @updated="handleUpdated"
-          />
-
-          <BasePostDeleteModal
-            ref="deleteModal"
-            :postData="postData"
-            @deleted="handleDeleted"
-          />
-        </div>
+        <BaseTimestamp
+          class="description"
+          :created="created"
+        />
 
         <div class="content-container">
           <div
@@ -69,6 +51,27 @@
           />
         </div>
       </div>
+
+      <BaseOptionsDropdown
+        v-if="isWithOptions"
+        :isWithEditOption="isWithEditOption"
+        isWithDeleteOption
+        @edit="handleEditOptionClick"
+        @delete="handleDeleteOptionClick"
+      />
+
+      <BasePostUpdateModal
+        ref="updateModal"
+        :postData="postData"
+        :isWithAsCommunityOption="isCommunityCreator"
+        @updated="handleUpdated"
+      />
+
+      <BasePostDeleteModal
+        ref="deleteModal"
+        :postData="postData"
+        @deleted="handleDeleted"
+      />
     </template>
   </div>
 </template>
@@ -77,17 +80,19 @@
 import { mapState } from 'vuex'
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
+import BaseCommunityTitle
+  from '*/components/models/community/BaseCommunityTitle.vue'
 import BaseProfileNickname
   from '*/components/models/profile/BaseProfileNickname.vue'
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
+import BaseImagesSection from '*/components/BaseImagesSection.vue'
+import BaseTracksSection from '*/components/BaseTracksSection.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePostUpdateModal
   from '*/components/modals/post/BasePostUpdateModal.vue'
 import BasePostDeleteModal
   from '*/components/modals/post/BasePostDeleteModal.vue'
-import BaseImagesSection from '*/components/BaseImagesSection.vue'
-import BaseTracksSection from '*/components/BaseTracksSection.vue'
 import { setToast } from '*/helpers/actions/plugins/semantic'
 
 export default {
@@ -95,13 +100,14 @@ export default {
   components: {
     BaseDeletedBlock,
     BaseImage,
+    BaseCommunityTitle,
     BaseProfileNickname,
     BaseTimestamp,
+    BaseImagesSection,
+    BaseTracksSection,
     BaseOptionsDropdown,
     BasePostUpdateModal,
-    BasePostDeleteModal,
-    BaseImagesSection,
-    BaseTracksSection
+    BasePostDeleteModal
   },
   inject: [
     'findPaginationItem',
@@ -112,14 +118,22 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String
+    profileId: String,
+    communityCreatorId: String
   },
   computed: {
     ...mapState('profile', {
       profileInfo: 'info'
     }),
     imageData () {
-      return this.profileData.image
+      if (this.isByCommunity) {
+        return this.communityData.image
+      } else {
+        return this.profileData.image
+      }
+    },
+    communityData () {
+      return this.postData.community
     },
     profileData () {
       return this.postData.profile
@@ -129,11 +143,12 @@ export default {
     },
     isWithOptions () {
       return (
-        this.isPostOwner ||
-          this.isPageOwner
+        this.isPostCreator ||
+          this.isPageOwner ||
+          this.isCommunityCreator
       )
     },
-    isPostOwner () {
+    isPostCreator () {
       return (
         this.currentProfileId ===
           this.postProfileId
@@ -149,6 +164,12 @@ export default {
       return (
         this.currentProfileId ===
           this.profileId
+      )
+    },
+    isCommunityCreator () {
+      return (
+        this.currentProfileId ===
+          this.communityCreatorId
       )
     },
     updatedMessage () {
@@ -175,6 +196,26 @@ export default {
     },
     uuid () {
       return this.postData.uuid
+    },
+    isWithEditOption () {
+      return this.isPostCreator
+    },
+    isByCommunity () {
+      return this.postData.by_community
+    },
+    imageClass () {
+      if (this.isByCommunity) {
+        return 'rounded'
+      } else {
+        return 'circular'
+      }
+    },
+    imageModel () {
+      if (this.isByCommunity) {
+        return 'community'
+      } else {
+        return 'profile'
+      }
     }
   },
   methods: {
@@ -207,13 +248,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-simple-list-item
-  @extend .align-items-start
-
-.post-top-section
-  @extend .d-flex
-
-.post-nickname-timestamp-block
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

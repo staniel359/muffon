@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ profileId, token, scope = '' }) {
+export default function ({ profileId, token, scope = '', page, limit }) {
   this.error = null
   this.isLoading = true
 
@@ -9,11 +9,14 @@ export default function ({ profileId, token, scope = '' }) {
 
   const otherProfileId =
     store.state.profile?.info?.id
+
   const params = {
     token,
     ...(otherProfileId && {
       other_profile_id: otherProfileId
-    })
+    }),
+    ...(page && { page }),
+    ...(limit && { limit })
   }
 
   const handleSuccess = response => {

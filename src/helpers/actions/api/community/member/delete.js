@@ -1,34 +1,32 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ otherProfileId, content, tracks, images }) {
-  this.error = null
+export default function ({ communityId }) {
+  this.isError = false
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
-    `/profiles/${profileId}/posts`
+    `/communities/${communityId}/members/${profileId}`
 
   const { token } = store.state.profile
-  const params = {
-    other_profile_id: otherProfileId,
-    token,
-    content,
-    tracks,
-    images
-  }
+
+  const params = { token }
 
   const handleError = error => {
-    this.error = error
+    this.isError = true
+
+    throw error
   }
 
   const handleFinish = () => {
     this.isLoading = false
   }
 
-  return axios.post(
-    url, params
+  return axios.delete(
+    url, { params }
   ).catch(
     handleError
   ).finally(

@@ -19,7 +19,10 @@ export default function ({ postId, content, tracks, images }) {
   }
 
   const handleSuccess = response => {
-    this.postData = response.data.post
+    this.$emit(
+      'success',
+      response.data.post
+    )
   }
 
   const handleError = error => {

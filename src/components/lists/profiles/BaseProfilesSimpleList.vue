@@ -2,8 +2,9 @@
   <BaseListContainer
     class="selection"
   >
-    <ProfileItem
+    <Component
       v-for="profileData in profilesCollection"
+      :is="component"
       :key="profileData.uuid"
       :profileData="profileData"
       @linkClick="handleLinkClick"
@@ -15,13 +16,16 @@
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import ProfileItem from './BaseProfilesSimpleList/ProfileItem.vue'
+import ProfileMinimalItem
+  from './BaseProfilesSimpleList/ProfileMinimalItem.vue'
 import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfilesSimpleList',
   components: {
     BaseListContainer,
-    ProfileItem
+    ProfileItem,
+    ProfileMinimalItem
   },
   props: {
     profiles: {
@@ -29,7 +33,8 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isMinimal: Boolean
   },
   emits: [
     'linkClick'
@@ -39,11 +44,20 @@ export default {
       return formatCollection(
         this.profiles
       )
+    },
+    component () {
+      if (this.isMinimal) {
+        return 'ProfileMinimalItem'
+      } else {
+        return 'ProfileItem'
+      }
     }
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

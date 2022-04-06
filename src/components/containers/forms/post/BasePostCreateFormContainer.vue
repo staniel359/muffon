@@ -12,7 +12,8 @@
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '*/helpers/data/plugins/semantic'
-import createPost from '*/helpers/actions/api/post/create'
+import createProfilePost from '*/helpers/actions/api/profile/post/create'
+import createCommunityPost from '*/helpers/actions/api/community/post/create'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
@@ -21,7 +22,7 @@ export default {
     BaseFormContainer
   },
   props: {
-    profileId: {
+    postType: {
       type: String,
       required: true
     },
@@ -36,7 +37,9 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    profileId: String,
+    communityId: String
   },
   emits: [
     'success'
@@ -82,17 +85,25 @@ export default {
 
         this.createPost(
           createArgs
-        ).then(
-          this.handleCreateSuccess
         )
       }
     },
-    handleCreateSuccess () {
-      this.$emit(
-        'success'
-      )
+    createProfilePost,
+    createCommunityPost,
+    createPost (args) {
+      switch (this.postType) {
+        case 'profile':
+          return this.createProfilePost(
+            args
+          )
+        case 'community':
+          return this.createCommunityPost(
+            args
+          )
+        default:
+          return null
+      }
     },
-    createPost,
     formatTrack (trackData) {
       const artistName =
         formatArtistName(
@@ -112,6 +123,8 @@ export default {
     formatCreateArgs (fields) {
       return {
         otherProfileId: this.profileId,
+        communityId: this.communityId,
+        byCommunity: !!fields.community,
         content: fields.content,
         tracks: this.tracksFormatted,
         images: this.imagesFormatted

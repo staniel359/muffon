@@ -84,9 +84,7 @@ export default {
       this.focus()
     },
     focus () {
-      this.$nextTick(() => {
-        this.$refs.segment.focus()
-      })
+      this.$refs.segment.focus()
     }
   }
 }

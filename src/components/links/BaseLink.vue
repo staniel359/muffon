@@ -4,7 +4,7 @@
     :to="link"
     @click.exact.stop="handleClick"
     @click.ctrl.exact.stop="handleCtrlClick"
-    @auxclick="handleMiddleClick"
+    @auxclick.exact.stop="handleAuxClick"
   >
     <span
       v-html="text"
@@ -40,7 +40,7 @@ export default {
     handleCtrlClick () {
       this.openNewTab()
     },
-    handleMiddleClick () {
+    handleAuxClick () {
       this.openNewTab()
     },
     openNewTab () {

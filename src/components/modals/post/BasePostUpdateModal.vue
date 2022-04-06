@@ -3,14 +3,15 @@
     <div class="scrolling content">
       <BasePostUpdateFormContainer
         class="main-post-form"
-        :postId="postId"
+        :postData="postData"
         :tracks="tracks"
         :images="images"
-        @postDataChange="handlePostDataChange"
+        @success="handleSuccess"
       >
         <BaseContentField
           ref="input"
           :value="postContent"
+          @submit="handleSubmit"
         />
 
         <div
@@ -38,7 +39,13 @@
             @imagesChange="handleImagesChange"
           />
 
+          <BasePostAsCommunityField
+            v-if="isWithAsCommunityOption"
+            :isChecked="isByCommunity"
+          />
+
           <BaseSubmitButton
+            ref="submit"
             actionKey="save"
           />
         </div>
@@ -59,6 +66,8 @@ import BaseFormTracksSection
   from '*/components/forms/BaseFormTracksSection.vue'
 import BaseFormAddButtonsSection
   from '*/components/forms/BaseFormAddButtonsSection.vue'
+import BasePostAsCommunityField
+  from '*/components/fields/post/BasePostAsCommunityField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 import { generateKey } from '*/helpers/utils'
 import { collection as formatCollection } from '*/helpers/formatters'
@@ -72,13 +81,15 @@ export default {
     BaseFormImagesSection,
     BaseFormTracksSection,
     BaseFormAddButtonsSection,
+    BasePostAsCommunityField,
     BaseSubmitButton
   },
   props: {
     postData: {
       type: Object,
       required: true
-    }
+    },
+    isWithAsCommunityOption: Boolean
   },
   emits: [
     'updated'
@@ -90,9 +101,6 @@ export default {
     }
   },
   computed: {
-    postId () {
-      return this.postData.id.toString()
-    },
     postContent () {
       return this.postData.content
     },
@@ -106,6 +114,9 @@ export default {
     },
     postTracks () {
       return this.postData.tracks || []
+    },
+    isByCommunity () {
+      return this.postData.by_community
     }
   },
   mounted () {
@@ -116,13 +127,16 @@ export default {
     this.tracks = this.tracksCollection
   },
   methods: {
+    handleSubmit () {
+      this.$refs.submit.click()
+    },
     handleTracksChange (value) {
       this.tracks = value
     },
     handleImagesChange (value) {
       this.images = value
     },
-    handlePostDataChange (value) {
+    handleSuccess (value) {
       this.$emit(
         'updated',
         value

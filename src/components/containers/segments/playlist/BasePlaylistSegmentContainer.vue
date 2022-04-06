@@ -70,9 +70,7 @@ export default {
       })
     },
     focus () {
-      this.$nextTick(() => {
-        this.$refs.segment.focus()
-      })
+      this.$refs.segment.focus()
     }
   }
 }

@@ -1,7 +1,7 @@
 import i18n from '*/plugins/i18n'
 import {
-  community as formatCommunityLink
-} from '*/helpers/formatters/links/communities'
+  main as formatCommunityMainLink
+} from '*/helpers/formatters/links/community'
 
 export default function ({ communityId, communityTitle, scope }) {
   const formatTitle = () => {
@@ -18,7 +18,7 @@ export default function ({ communityId, communityTitle, scope }) {
   const formatPath = () => {
     switch (scope) {
       default:
-        return formatCommunityLink({
+        return formatCommunityMainLink({
           communityId
         }).path
     }

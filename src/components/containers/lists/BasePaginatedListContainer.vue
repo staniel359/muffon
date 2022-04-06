@@ -363,13 +363,13 @@ export default {
     handleClientPageCollectionChange (value) {
       if (value) {
         if (this.isFocusable) {
-          this.$emit('focus')
+          setTimeout(() => {
+            this.$emit('focus')
+          }, 0)
         }
 
         if (!this.isCollectionFull) {
-          this.$nextTick(() => {
-            this.fetchData()
-          })
+          this.fetchData()
         }
       }
     },

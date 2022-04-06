@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="primary message-button"
+    class="basic message-button"
     icon="envelope"
     :text="messageText"
     @click="handleClick"

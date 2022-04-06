@@ -31,7 +31,10 @@
       :isError="isError"
     />
 
-    <div class="menu">
+    <div
+      class="menu"
+      :class="menuDirection"
+    >
       <slot></slot>
     </div>
   </div>
@@ -63,7 +66,8 @@ export default {
     header: String,
     isDisabled: Boolean,
     isLoading: Boolean,
-    isError: Boolean
+    isError: Boolean,
+    menuDirection: String
   },
   emits: [
     'change'

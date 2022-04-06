@@ -9,15 +9,16 @@
 
       <label for="profile-image-input">
         <BaseButton
-          class="compact image-add-button"
-          :text="addText"
+          class="basic compact image-add-button"
+          icon="image"
+          :text="uploadText"
         />
       </label>
 
       <BaseButton
         v-if="imageUrl"
         class="red basic compact small delete-button"
-        icon="close"
+        icon="trash alternate outline"
         :text="deleteText"
         @click="handleDeleteButtonClick"
       />
@@ -54,9 +55,9 @@ export default {
     }
   },
   computed: {
-    addText () {
+    uploadText () {
       return this.$t(
-        'forms.fields.image'
+        'actions.upload'
       )
     },
     deleteText () {

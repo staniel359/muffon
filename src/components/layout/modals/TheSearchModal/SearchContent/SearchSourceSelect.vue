@@ -2,6 +2,7 @@
   <BaseDropdown
     class="floating scrolling scope-select-container"
     selected="lastfm"
+    menuDirection="left"
     :options="options"
     :isSelection="false"
     isOnlyIcon

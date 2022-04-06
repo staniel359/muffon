@@ -5,6 +5,7 @@
     rows="4"
     :placeholder="contentText"
     :value="value"
+    @keypress.ctrl.enter="handleCtrlEnter"
   ></textarea>
 </template>
 
@@ -14,6 +15,9 @@ export default {
   props: {
     value: String
   },
+  emits: [
+    'submit'
+  ],
   computed: {
     contentText () {
       return this.$t(
@@ -22,6 +26,9 @@ export default {
     }
   },
   methods: {
+    handleCtrlEnter () {
+      this.$emit('submit')
+    },
     focus () {
       this.$refs.input.focus()
     },

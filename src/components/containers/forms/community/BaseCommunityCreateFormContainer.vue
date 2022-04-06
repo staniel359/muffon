@@ -15,8 +15,8 @@ import BaseFormContainer
 import { communityFormOptions } from '*/helpers/data/plugins/semantic'
 import createCommunity from '*/helpers/actions/api/community/create'
 import {
-  community as formatCommunityLink
-} from '*/helpers/formatters/links/communities'
+  main as formatCommunityMainLink
+} from '*/helpers/formatters/links/community'
 
 export default {
   name: 'BaseCommunityCreateFormContainer',
@@ -44,7 +44,7 @@ export default {
       })
     },
     communityUrl () {
-      return formatCommunityLink({
+      return formatCommunityMainLink({
         communityId: this.communityId
       })
     }

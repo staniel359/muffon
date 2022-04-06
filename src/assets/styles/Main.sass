@@ -259,7 +259,7 @@ a
   & > .content
     @extend .flex-full, .no-padding
     .content-container
-      margin-top: 1em
+      margin-top: 0.75em
     .content-section
       margin-top: 5px !important
     .text
@@ -267,6 +267,9 @@ a
       line-height: 1.2em
     & > .description
       margin-top: 0.25em !important
+      &.main-timestamp, &.community-description
+        &:not(.playlist-timestamp)
+          @extend .no-margin
   .main-options-dropdown-container
     @extend .visibility-hidden
     margin-left: 0.5em
@@ -279,10 +282,13 @@ a
       @extend .text-color-base
     .main-options-dropdown-container
       @extend .visibility-visible
-
-.main-message-item, .main-profile-item
-  & > .image
-    align-self: start
+  &.main-post-item, &.main-message-item, &.main-profile-item, &.main-community-info-item, &.main-playlist-info-item
+    @extend .align-items-start
+  &.main-community-info-item, &.main-playlist-info-item
+    & > .image
+      margin-right: 0.75em !important
+    & > .main-options-dropdown-container
+      @extend .align-self-center
 
 .main-message
   @extend .no-shadow, .no-margin
@@ -400,8 +406,7 @@ a
         @extend .background-grey-inverted
 
 .main-pagination
-  @extend .no-margin
-  align-self: center
+  @extend .no-margin, .align-self-center
   &.inverted
     border: $borderInverted !important
   & > .item
@@ -630,8 +635,10 @@ a
   & > .buttons-container
     @extend .d-flex, .align-items-center
     margin-top: 1em
-    & > .add-buttons
+    & > .add-buttons-container
       @extend .flex-full
+    & > .main-as-community-checkbox
+      margin: 0 1em
   .images-tracks-section
     margin-top: 1em
 
@@ -655,10 +662,10 @@ a
     & > .item
       padding: 1em 0 !important
 
-.main-following-message-container
+.main-following-message-container, .main-joined-message-container
   @extend .d-flex, .flex-column, .align-items-center
 
-.main-following-message
+.main-following-message, .main-joined-message
   @extend .d-flex, .align-items-center
 
 .main-message-item

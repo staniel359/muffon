@@ -1,14 +1,14 @@
 <template>
-  <label>
-    <BaseButton
-      class="compact"
-      icon="image"
-    />
+  <BaseButton
+    class="compact"
+    icon="image"
+    @click="handleClick"
+  />
 
-    <BaseImageInput
-      @change="handleImageChange"
-    />
-  </label>
+  <BaseImageInput
+    ref="input"
+    @change="handleImageChange"
+  />
 </template>
 
 <script>
@@ -33,6 +33,9 @@ export default {
     'change'
   ],
   methods: {
+    handleClick () {
+      this.$refs.input.show()
+    },
     handleImageChange (value) {
       const images = [
         ...this.images,

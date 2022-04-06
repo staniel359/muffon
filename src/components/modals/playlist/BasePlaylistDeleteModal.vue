@@ -25,16 +25,8 @@ export default {
     BaseDeleteModal
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
-    playlistId: {
-      type: String,
-      required: true
-    },
-    playlistTitle: {
-      type: String,
+    playlistData: {
+      type: Object,
       required: true
     },
     isDeleteWithRedirect: Boolean
@@ -52,21 +44,33 @@ export default {
     deletedMessage () {
       return this.$t(
         'notifications.deleted.playlist',
-        { playlistTitle: this.playlistTitleStrong }
+        {
+          playlistTitle:
+            this.playlistTitleStrong
+        }
       )
     },
     playlistTitleStrong () {
       return `<strong>${this.playlistTitle}</strong>`
+    },
+    playlistTitle () {
+      return this.playlistData.title
     },
     profilePlaylistsLink () {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })
     },
+    profileId () {
+      return this.playlistData.profile.id
+    },
     deleteArgs () {
       return {
         playlistId: this.playlistId
       }
+    },
+    playlistId () {
+      return this.playlistData.id
     }
   },
   methods: {

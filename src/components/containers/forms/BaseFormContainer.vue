@@ -1,7 +1,7 @@
 <template>
   <form
-    class="ui form main-form"
     ref="form"
+    class="ui form main-form"
     :class="{
       loading: isLoading,
       inverted: isDarkMode

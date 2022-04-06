@@ -6,6 +6,7 @@
   >
     <slot
       :communityData="communityData"
+      :communityCreatorId="communityCreatorId"
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
@@ -33,7 +34,9 @@ export default {
   ],
   provide () {
     return {
-      setCommunityData: this.setCommunityData
+      setCommunityData: this.setCommunityData,
+      setIsMember: this.setIsMember,
+      setMembersCount: this.setMembersCount
     }
   },
   props: {
@@ -72,6 +75,9 @@ export default {
       return {
         communityId: this.communityId
       }
+    },
+    communityCreatorId () {
+      return this.communityData?.creator?.id?.toString()
     }
   },
   watch: {
@@ -92,6 +98,14 @@ export default {
     },
     setCommunityData (value) {
       this.communityData = value
+    },
+    setIsMember (value) {
+      this.communityData
+        .profile
+        .member_of_community = value
+    },
+    setMembersCount (value) {
+      this.communityData.members_count = value
     }
   }
 }

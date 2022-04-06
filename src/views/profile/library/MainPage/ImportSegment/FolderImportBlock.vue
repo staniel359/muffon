@@ -1,12 +1,14 @@
 <template>
   <BaseButton
-    class="primary import-button"
+    class="basic import-button"
     icon="folder"
     :text="folderText"
     @click="handleClick"
   />
 
-  <BaseProfileLibraryFolderImportModal ref="modal" />
+  <BaseProfileLibraryFolderImportModal
+    ref="modal"
+  />
 </template>
 
 <script>

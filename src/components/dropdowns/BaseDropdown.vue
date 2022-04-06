@@ -3,6 +3,7 @@
     ref="dropdown"
     :isSelection="isSelection"
     :isOnlyIcon="isOnlyIcon"
+    :menuDirection="menuDirection"
     @change="handleChange"
   >
     <div
@@ -39,9 +40,13 @@ export default {
       type: Array,
       required: true
     },
+    isSelection: {
+      type: Boolean,
+      default: true
+    },
     selected: String,
-    isSelection: Boolean,
-    isOnlyIcon: Boolean
+    isOnlyIcon: Boolean,
+    menuDirection: String
   },
   computed: {
     optionsCollection () {

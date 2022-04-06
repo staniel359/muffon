@@ -1,24 +1,29 @@
 <template>
-  <div class="add-buttons">
-    <TracksButton
-      :tracks="tracks"
-      @change="handleTracksChange"
-    />
+  <div class="add-buttons-container">
+    <BaseButtonsContainer class="basic">
+      <TracksButton
+        :tracks="tracks"
+        @change="handleTracksChange"
+      />
 
-    <ImagesButton
-      :images="images"
-      @change="handleImagesChange"
-    />
+      <ImagesButton
+        :images="images"
+        @change="handleImagesChange"
+      />
+    </BaseButtonsContainer>
   </div>
 </template>
 
 <script>
+import BaseButtonsContainer
+  from '*/components/containers/buttons/BaseButtonsContainer.vue'
 import TracksButton from './BaseFormAddButtonsSection/TracksButton.vue'
 import ImagesButton from './BaseFormAddButtonsSection/ImagesButton.vue'
 
 export default {
   name: 'BaseFormAddButtonsSection',
   components: {
+    BaseButtonsContainer,
     TracksButton,
     ImagesButton
   },

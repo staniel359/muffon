@@ -1,42 +1,44 @@
 <template>
-  <BaseSegmentContainer
-    class="main-simple-list-item main-message-item"
-  >
-    <BaseImage
-      class="small circular bordered"
-      model="profile"
-      :image="imageData?.extrasmall"
-    />
-
-    <div class="content">
-      <BaseProfileNickname
-        :profileData="profileData"
+  <div class="item">
+    <BaseSegmentContainer
+      class="main-simple-list-item main-message-item"
+    >
+      <BaseImage
+        class="small circular bordered"
+        model="profile"
+        :image="imageData?.extrasmall"
       />
 
-      <BaseTimestamp
-        class="description"
-        :created="created"
-      />
+      <div class="content">
+        <BaseProfileNickname
+          :profileData="profileData"
+        />
 
-      <div class="content-container">
-        <div class="text main-text-container">
-          {{ content }}
+        <BaseTimestamp
+          class="description"
+          :created="created"
+        />
+
+        <div class="content-container">
+          <div class="text main-text-container">
+            {{ content }}
+          </div>
+
+          <BaseImagesSection
+            v-if="images"
+            class="content-section"
+            :images="images"
+          />
+
+          <BaseTracksSection
+            v-if="tracks"
+            class="content-section"
+            :tracks="tracks"
+          />
         </div>
-
-        <BaseImagesSection
-          v-if="images"
-          class="content-section"
-          :images="images"
-        />
-
-        <BaseTracksSection
-          v-if="tracks"
-          class="content-section"
-          :tracks="tracks"
-        />
       </div>
-    </div>
-  </BaseSegmentContainer>
+    </BaseSegmentContainer>
+  </div>
 </template>
 
 <script>

@@ -22,12 +22,13 @@
 
     <div class="actions">
       <BaseButton
-        class="cancel"
+        class="basic cancel"
         :text="cancelText"
       />
 
       <BaseButton
         class="red"
+        icon="trash alternate outline"
         :text="deleteText"
         :class="{ loading: isLoading }"
         @click="handleDeleteButtonClick"

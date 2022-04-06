@@ -57,8 +57,8 @@ import BasePaginatedListContainer
 import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import {
-  main as formatCommunitiesLink
-} from '*/helpers/formatters/links/communities'
+  communities as formatCommunitiesLink
+} from '*/helpers/formatters/links'
 
 export default {
   name: 'PlaylistsPage',

@@ -1,9 +1,12 @@
 <template>
   <button
+    ref="button"
     type="submit"
     class="ui primary button main-submit-button"
     :class="{ inverted: isDarkMode }"
   >
+    <i class="check icon"></i>
+
     {{ actionText }}
   </button>
 </template>
@@ -27,6 +30,11 @@ export default {
       return this.$t(
         `actions.${this.actionKey}`
       )
+    }
+  },
+  methods: {
+    click () {
+      this.$refs.button.click()
     }
   }
 }

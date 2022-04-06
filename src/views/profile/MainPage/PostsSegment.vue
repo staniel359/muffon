@@ -5,7 +5,8 @@
       :link="headerLink"
     />
 
-    <FormSegment
+    <BasePostsFormSegment
+      postType="profile"
       :profileId="profileId"
       @success="handleSuccess"
     />
@@ -19,7 +20,8 @@
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
-import FormSegment from './PostsSegment/FormSegment.vue'
+import BasePostsFormSegment
+  from '*/components/segments/posts/BasePostsFormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
 import { generateKey } from '*/helpers/utils'
 import {
@@ -30,7 +32,7 @@ export default {
   name: 'PostsSegment',
   components: {
     BaseHeaderSegment,
-    FormSegment,
+    BasePostsFormSegment,
     PostsListSegment
   },
   props: {

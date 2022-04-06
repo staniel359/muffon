@@ -12,7 +12,8 @@
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
 import { postFormOptions } from '*/helpers/data/plugins/semantic'
-import updatePost from '*/helpers/actions/api/post/update'
+import updateProfilePost from '*/helpers/actions/api/profile/post/update'
+import updateCommunityPost from '*/helpers/actions/api/community/post/update'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
@@ -21,8 +22,8 @@ export default {
     BaseFormContainer
   },
   props: {
-    postId: {
-      type: String,
+    postData: {
+      type: Object,
       required: true
     },
     tracks: {
@@ -39,16 +40,24 @@ export default {
     }
   },
   emits: [
-    'postDataChange'
+    'success'
   ],
   data () {
     return {
-      postData: null,
       error: null,
       isLoading: false
     }
   },
   computed: {
+    postId () {
+      return this.postData.id
+    },
+    postType () {
+      return this.postData.post_type
+    },
+    communityId () {
+      return this.postData.community?.id
+    },
     options () {
       return postFormOptions({
         onSuccess: this.handleSuccess
@@ -60,17 +69,10 @@ export default {
       )
     },
     imagesFormatted () {
-      if (this.images.length) {
-        return this.images.map(
-          this.formatImage
-        )
-      } else {
-        return 'DELETED'
-      }
+      return this.images.map(
+        this.formatImage
+      )
     }
-  },
-  watch: {
-    postData: 'handlePostDataChange'
   },
   methods: {
     handleSuccess (event, fields) {
@@ -93,13 +95,22 @@ export default {
         )
       }
     },
-    handlePostDataChange (value) {
-      this.$emit(
-        'postDataChange',
-        value
-      )
+    updateProfilePost,
+    updateCommunityPost,
+    updatePost (args) {
+      switch (this.postType) {
+        case 'profile':
+          return this.updateProfilePost(
+            args
+          )
+        case 'community':
+          return this.updateCommunityPost(
+            args
+          )
+        default:
+          return null
+      }
     },
-    updatePost,
     formatTrack (trackData) {
       const artistName =
         formatArtistName(
@@ -119,7 +130,9 @@ export default {
     },
     formatUpdateArgs (fields) {
       return {
+        communityId: this.communityId,
         postId: this.postId,
+        byCommunity: !!fields.community,
         content: fields.content,
         tracks: this.tracksFormatted,
         images: this.imagesFormatted

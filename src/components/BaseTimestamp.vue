@@ -1,5 +1,5 @@
 <template>
-  <div class="main-small-container">
+  <div class="main-small-container main-timestamp">
     <small>
       {{ createdText }}
     </small>

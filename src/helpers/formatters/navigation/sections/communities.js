@@ -1,7 +1,7 @@
 import i18n from '*/plugins/i18n'
 import {
-  main as formatCommunitiesLink
-} from '*/helpers/formatters/links/communities'
+  communities as formatCommunitiesLink
+} from '*/helpers/formatters/links'
 
 export default function ({ isActive } = {}) {
   const formatLink = () => {

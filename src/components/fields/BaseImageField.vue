@@ -9,8 +9,9 @@
 
       <label for="image-input">
         <BaseButton
-          class="compact image-add-button"
-          :text="addText"
+          class="basic compact image-add-button"
+          icon="image"
+          :text="uploadText"
         />
       </label>
 
@@ -58,9 +59,9 @@ export default {
     }
   },
   computed: {
-    addText () {
+    uploadText () {
       return this.$t(
-        'forms.fields.image'
+        'actions.upload'
       )
     },
     deleteText () {

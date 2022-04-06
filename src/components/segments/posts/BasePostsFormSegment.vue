@@ -2,12 +2,17 @@
   <BaseSegmentContainer>
     <BasePostCreateFormContainer
       class="main-post-form"
+      :postType="postType"
       :profileId="profileId"
+      :communityId="communityId"
       :tracks="tracks"
       :images="images"
       @success="handleSuccess"
     >
-      <BaseContentField ref="input" />
+      <BaseContentField
+        ref="input"
+        @submit="handleSubmit"
+      />
 
       <div
         v-if="images.length || tracks.length"
@@ -34,7 +39,12 @@
           @imagesChange="handleImagesChange"
         />
 
+        <BasePostAsCommunityField
+          v-if="isWithAsCommunityOption"
+        />
+
         <BaseSubmitButton
+          ref="submit"
           actionKey="post"
         />
       </div>
@@ -54,10 +64,12 @@ import BaseFormTracksSection
   from '*/components/forms/BaseFormTracksSection.vue'
 import BaseFormAddButtonsSection
   from '*/components/forms/BaseFormAddButtonsSection.vue'
+import BasePostAsCommunityField
+  from '*/components/fields/post/BasePostAsCommunityField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
-  name: 'FormSegment',
+  name: 'BasePostsFormSegment',
   components: {
     BaseSegmentContainer,
     BasePostCreateFormContainer,
@@ -65,10 +77,14 @@ export default {
     BaseFormImagesSection,
     BaseFormTracksSection,
     BaseFormAddButtonsSection,
+    BasePostAsCommunityField,
     BaseSubmitButton
   },
   props: {
-    profileId: String
+    postType: String,
+    profileId: String,
+    communityId: String,
+    isWithAsCommunityOption: Boolean
   },
   emits: [
     'success'
@@ -80,6 +96,9 @@ export default {
     }
   },
   methods: {
+    handleSubmit () {
+      this.$refs.submit.click()
+    },
     handleSuccess () {
       this.$refs.input.reset()
 

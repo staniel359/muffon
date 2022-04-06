@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="primary"
+    class="basic"
     icon="plus"
     :text="createText"
     @click="handleButtonClick"

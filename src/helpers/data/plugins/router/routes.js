@@ -158,10 +158,13 @@ const ProfileCommunitiesPage = () => import(
   '*/views/profile/CommunitiesPage.vue'
 )
 const CommunitiesPage = () => import(
-  '*/views/communities/MainPage.vue'
+  '*/views/CommunitiesPage.vue'
 )
-const CommunityPage = () => import(
-  '*/views/communities/CommunityPage.vue'
+const CommunityMainPage = () => import(
+  '*/views/community/MainPage.vue'
+)
+const CommunityPostsPage = () => import(
+  '*/views/community/PostsPage.vue'
 )
 
 export default [
@@ -546,8 +549,15 @@ export default [
   {
     path: '/communities/:communityId',
     exact: true,
-    name: 'CommunityPage',
-    component: CommunityPage,
+    name: 'CommunityMainPage',
+    component: CommunityMainPage,
+    props: true
+  },
+  {
+    path: '/communities/:communityId/posts',
+    exact: true,
+    name: 'CommunityPostsPage',
+    component: CommunityPostsPage,
     props: true
   }
 ]
