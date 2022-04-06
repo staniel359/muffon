@@ -99,13 +99,11 @@ export default {
           trackData.artists
         )
 
-      const artistData = {
-        name: artistName
-      }
-
       return {
         title: trackData.title,
-        artist: artistData
+        artist: {
+          name: artistName
+        }
       }
     },
     formatImage (imageData) {
