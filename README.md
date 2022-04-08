@@ -52,8 +52,8 @@ It has **no ads** and is **absolutely free** to use.
 - Русский
 
 ### Technical stack
-- [Vue 3](https://github.com/vuejs/vue-next/)
-- [Electron 16](https://github.com/electron/electron)
+- Vue
+- Electron
 
 ### Available platforms
 - Windows 10
@@ -71,8 +71,6 @@ Create an issue [here](https://github.com/staniel359/muffon/issues)
 ## Contribute
 - Translators wanted for localization
 - Python + Ruby developers wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
-
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
 
 ## Related projects
 [muffon-api](https://github.com/staniel359/muffon-api) - REST API for client
