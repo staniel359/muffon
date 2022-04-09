@@ -30,8 +30,8 @@ import BaseSegmentContainer
 import BasePercentCircle from '*/components/BasePercentCircle.vue'
 import CompatibilityContent
   from './CompatibilitySegment/CompatibilityContent.vue'
-import getProfileLibraryCompatibility
-  from '*/helpers/actions/api/profile/library/compatibility/get'
+import getLibraryCompatibility
+  from '*/helpers/actions/api/library/compatibility/get'
 
 export default {
   name: 'CompatibilitySegment',
@@ -66,9 +66,9 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
-    getProfileLibraryCompatibility,
+    getLibraryCompatibility,
     fetchData () {
-      this.getProfileLibraryCompatibility({
+      this.getLibraryCompatibility({
         otherProfileId: this.profileId
       })
     }

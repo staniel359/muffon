@@ -12,7 +12,7 @@
 
 <script>
 import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteBookmark from '*/helpers/actions/api/bookmarks/model/delete'
+import deleteBookmark from '*/helpers/actions/api/bookmark/model/delete'
 
 export default {
   name: 'BaseBookmarkDeleteModal',

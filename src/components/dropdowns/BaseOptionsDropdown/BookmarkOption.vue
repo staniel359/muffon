@@ -20,11 +20,10 @@
 </template>
 
 <script>
-import deleteBookmark from '*/helpers/actions/api/bookmarks/model/delete'
-import createBookmarkArtist
-  from '*/helpers/actions/api/bookmarks/artist/create'
-import createBookmarkAlbum from '*/helpers/actions/api/bookmarks/album/create'
-import createBookmarkTrack from '*/helpers/actions/api/bookmarks/track/create'
+import deleteBookmark from '*/helpers/actions/api/bookmark/model/delete'
+import createBookmarkArtist from '*/helpers/actions/api/bookmark/artist/create'
+import createBookmarkAlbum from '*/helpers/actions/api/bookmark/album/create'
+import createBookmarkTrack from '*/helpers/actions/api/bookmark/track/create'
 
 export default {
   name: 'BookmarkOption',

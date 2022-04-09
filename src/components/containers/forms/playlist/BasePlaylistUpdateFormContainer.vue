@@ -13,8 +13,7 @@
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
 import { playlistFormOptions } from '*/helpers/data/plugins/semantic'
-import updateProfilePlaylist
-  from '*/helpers/actions/api/profile/playlist/update'
+import updatePlaylist from '*/helpers/actions/api/playlist/update'
 
 export default {
   name: 'BasePlaylistUpdateFormContainer',
@@ -60,11 +59,11 @@ export default {
           fields
         )
 
-      this.updateProfilePlaylist(
+      this.updatePlaylist(
         updateArgs
       )
     },
-    updateProfilePlaylist,
+    updatePlaylist,
     formatUpdateArgs (fields) {
       const { title } = fields
 

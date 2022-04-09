@@ -37,8 +37,8 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
-import getProfileLibraryCompatibility
-  from '*/helpers/actions/api/profile/library/compatibility/get'
+import getLibraryCompatibility
+  from '*/helpers/actions/api/library/compatibility/get'
 
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',
@@ -94,9 +94,9 @@ export default {
     handleFocus () {
       this.scrollable.scrollTo(0, 0)
     },
-    getProfileLibraryCompatibility,
+    getLibraryCompatibility,
     fetchData (page) {
-      this.getProfileLibraryCompatibility({
+      this.getLibraryCompatibility({
         ...this.libraryCompatibilityArgs,
         page
       })

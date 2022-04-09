@@ -12,8 +12,7 @@
 
 <script>
 import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteProfilePlaylistTrack
-  from '*/helpers/actions/api/profile/playlist/track/delete'
+import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
 
 export default {
   name: 'BasePlaylistTrackDeleteModal',
@@ -62,7 +61,7 @@ export default {
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteProfilePlaylistTrack(
+      this.deletePlaylistTrack(
         this.deleteArgs
       ).then(
         this.handleSuccess
@@ -73,7 +72,7 @@ export default {
 
       this.$emit('deleted')
     },
-    deleteProfilePlaylistTrack,
+    deletePlaylistTrack,
     show () {
       this.$refs.modal.show()
     }

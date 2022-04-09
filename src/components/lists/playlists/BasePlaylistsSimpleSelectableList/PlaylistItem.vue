@@ -47,10 +47,8 @@ import BaseLinkContainer
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import { number as formatNumber } from '*/helpers/formatters'
-import createProfilePlaylistTrack
-  from '*/helpers/actions/api/profile/playlist/track/create'
-import deleteProfilePlaylistTrack
-  from '*/helpers/actions/api/profile/playlist/track/delete'
+import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
+import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
 
 export default {
   name: 'PlaylistItem',
@@ -165,17 +163,17 @@ export default {
       this.paginationItem.tracks_count =
         response.data.playlist_tracks_count
     },
-    createProfilePlaylistTrack,
-    deleteProfilePlaylistTrack,
+    createPlaylistTrack,
+    deletePlaylistTrack,
     postData () {
-      this.createProfilePlaylistTrack(
+      this.createPlaylistTrack(
         this.createArgs
       ).then(
         this.handleSuccess
       )
     },
     deleteData () {
-      this.deleteProfilePlaylistTrack(
+      this.deletePlaylistTrack(
         this.deleteArgs
       ).then(
         this.handleSuccess

@@ -20,8 +20,7 @@
 <script>
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
-import createProfilePlaylistTrack
-  from '*/helpers/actions/api/profile/playlist/track/create'
+import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
 
 export default {
   name: 'SaveSection',
@@ -93,7 +92,7 @@ export default {
 
       this.errorTracks = []
     },
-    createProfilePlaylistTrack,
+    createPlaylistTrack,
     formatProgressActive ({ value, total }) {
       return this.$t(
         'save.active.tracks',
@@ -133,7 +132,7 @@ export default {
         }
       }
 
-      await this.createProfilePlaylistTrack(
+      await this.createPlaylistTrack(
         createArgs
       ).catch(
         handleError

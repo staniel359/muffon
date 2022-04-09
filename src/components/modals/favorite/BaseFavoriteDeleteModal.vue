@@ -12,8 +12,7 @@
 
 <script>
 import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteProfileFavorite
-  from '*/helpers/actions/api/profile/favorites/model/delete'
+import deleteFavorite from '*/helpers/actions/api/favorite/model/delete'
 
 export default {
   name: 'BaseFavoriteDeleteModal',
@@ -63,7 +62,7 @@ export default {
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteProfileFavorite(
+      this.deleteFavorite(
         this.deleteArgs
       ).then(
         this.handleSuccess
@@ -74,7 +73,7 @@ export default {
 
       this.$emit('deleted')
     },
-    deleteProfileFavorite,
+    deleteFavorite,
     show () {
       this.$refs.modal.show()
     }
