@@ -9,16 +9,21 @@ export default function ({ artistName }) {
       artistName
     )
   const url =
-    `/lastfm/artists/${artistNameEncoded}/image`
+    `/lastfm/artists/${artistNameEncoded}/images`
 
   const handleSuccess = response => {
-    const { image } = response.data.artist
+    const { image, images } =
+      response.data.artist
 
     this.image = image
+
+    this.images =
+      images.slice(0, 20)
   }
 
   const handleError = error => {
     this.error = error
+    this.images = null
   }
 
   const handleFinish = () => {

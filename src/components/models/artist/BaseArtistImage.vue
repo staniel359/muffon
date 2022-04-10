@@ -21,6 +21,7 @@ import BaseImagePlaceholder from '*/components/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import getArtistImage from '*/helpers/actions/api/artist/image/get'
+import getArtistImages from '*/helpers/actions/api/artist/images/get'
 
 export default {
   name: 'BaseArtistImage',
@@ -99,6 +100,8 @@ export default {
         value
       )
     },
+    getArtistImage,
+    getArtistImages,
     isArtistNameChanged (newValue, oldValue) {
       return (
         this.formatArtistName(newValue) !==
@@ -108,11 +111,16 @@ export default {
     formatArtistName (value) {
       return value?.trim()?.toLowerCase()
     },
-    getArtistImage,
     fetchData () {
-      this.getArtistImage(
-        this.artistImageArgs
-      )
+      if (this.isInteractive) {
+        return this.getArtistImages(
+          this.artistImageArgs
+        )
+      } else {
+        return this.getArtistImage(
+          this.artistImageArgs
+        )
+      }
     }
   }
 }
