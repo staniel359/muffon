@@ -9,16 +9,18 @@
         'main-image-modal-content'
       ]"
     >
-      <MainSlider
-        :images="imagesCollection"
-        :syncSlider="thumbsSlider"
-        @init="handleMainSliderInit"
-      />
-      <ThumbsSlider
-        :images="imagesCollection"
-        :syncSlider="mainSlider"
-        @init="handleThumbsSliderInit"
-      />
+      <div :key="key">
+        <MainSlider
+          :images="imagesCollection"
+          :syncSlider="thumbsSlider"
+          @init="handleMainSliderInit"
+        />
+        <ThumbsSlider
+          :images="imagesCollection"
+          :syncSlider="mainSlider"
+          @init="handleThumbsSliderInit"
+        />
+      </div>
     </div>
   </BaseImageModalContainer>
 </template>
@@ -33,6 +35,7 @@ import {
   setSliderPosition,
   goToSliderSlide
 } from '*/helpers/actions/plugins/slick'
+import { generateKey } from '*/helpers/utils'
 
 export default {
   name: 'BaseArtistImageModal',
@@ -55,6 +58,7 @@ export default {
   ],
   data () {
     return {
+      key: null,
       mainSlider: null,
       thumbsSlider: null
     }
@@ -65,6 +69,9 @@ export default {
         this.images
       )
     }
+  },
+  watch: {
+    images: 'handleImagesChange'
   },
   methods: {
     handleShow () {
@@ -94,6 +101,9 @@ export default {
     },
     handleThumbsSliderInit (el) {
       this.thumbsSlider = el
+    },
+    handleImagesChange () {
+      this.key = generateKey()
     }
   }
 }
