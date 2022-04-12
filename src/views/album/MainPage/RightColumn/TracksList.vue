@@ -1,5 +1,6 @@
 <template>
   <BaseTracksSimpleList
+    v-if="tracks?.length"
     :tracks="tracks"
     :albumArtistName="artistName"
     :albumTitle="albumTitle"
@@ -15,18 +16,25 @@
     isWithListenedOption
     isWithPlaylistOption
   />
+  <BaseNoCollectionMessage
+    v-else
+    scope="tracks"
+  />
 </template>
 
 <script>
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseNoCollectionMessage
+  from '*/components/messages/BaseNoCollectionMessage.vue'
 import audioSources from '*/helpers/data/audio/sources'
 import { artistName as formatArtistName } from '*/helpers/formatters'
 
 export default {
   name: 'TracksList',
   components: {
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BaseNoCollectionMessage
   },
   props: {
     albumData: {

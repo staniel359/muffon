@@ -8,7 +8,6 @@
     <BaseDivider />
 
     <TracksList
-      v-if="tracks"
       :albumData="albumData"
       :profileId="profileId"
     />
@@ -34,11 +33,6 @@ export default {
     },
     requestAlbumData: Object,
     profileId: String
-  },
-  computed: {
-    tracks () {
-      return this.albumData.tracks
-    }
   }
 }
 </script>

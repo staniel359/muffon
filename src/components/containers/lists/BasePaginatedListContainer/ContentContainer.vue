@@ -12,7 +12,7 @@
       v-if="isClientPageCollectionFiltered"
       :[scope]="clientPageCollectionFiltered"
     />
-    <NoCollectionMessage
+    <BaseNoCollectionMessage
       v-else
       :scope="scope"
     />
@@ -21,13 +21,14 @@
 
 <script>
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import NoCollectionMessage from './ContentContainer/NoCollectionMessage.vue'
+import BaseNoCollectionMessage
+  from '*/components/messages/BaseNoCollectionMessage.vue'
 
 export default {
   name: 'ContentContainer',
   components: {
     BaseErrorMessage,
-    NoCollectionMessage
+    BaseNoCollectionMessage
   },
   props: {
     responsePageCollection: {

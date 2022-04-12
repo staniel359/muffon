@@ -11,7 +11,7 @@ import { mapState } from 'vuex'
 import BaseMessage from '*/components/messages/BaseMessage.vue'
 
 export default {
-  name: 'NoCollectionMessage',
+  name: 'BaseNoCollectionMessage',
   components: {
     BaseMessage
   },
