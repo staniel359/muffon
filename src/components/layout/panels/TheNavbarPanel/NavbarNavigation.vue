@@ -1,7 +1,7 @@
 <template>
   <div class="item navigation-container">
     <div
-      class="ui large breadcrumb"
+      class="ui large breadcrumb navigation"
       :class="{ inverted: isDarkMode }"
     >
       <NavigationSection
@@ -41,4 +41,12 @@ export default {
 <style lang="sass" scoped>
 .navigation-container
   @extend .flex-full, .overflow-hidden, .white-space-no-wrap
+  padding-right: 0 !important
+  padding-left: 0 !important
+  margin: 0 1em
+
+.navigation
+  @extend .absolute
+  min-width: 100%
+  right: 0
 </style>
