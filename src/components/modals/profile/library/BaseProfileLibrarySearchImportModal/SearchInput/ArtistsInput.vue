@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
 
 export default {
@@ -18,6 +17,10 @@ export default {
     BaseSearchInput
   },
   props: {
+    profileId: {
+      type: String,
+      required: true
+    },
     artists: {
       type: Array,
       default () {
@@ -29,18 +32,12 @@ export default {
     'select'
   ],
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     url () {
       return (
         '/lastfm/search/artists' +
         '?query={query}&limit=5' +
         `&profile_id=${this.profileId}`
       )
-    },
-    profileId () {
-      return this.profileInfo.id
     },
     fields () {
       return {

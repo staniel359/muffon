@@ -3,6 +3,7 @@
     <PostsSegment
       :communityId="communityId"
       :communityCreatorId="communityCreatorId"
+      :currentProfileId="currentProfileId"
     />
   </div>
 </template>
@@ -17,7 +18,8 @@ export default {
   },
   props: {
     communityId: String,
-    communityCreatorId: String
+    communityCreatorId: String,
+    currentProfileId: String
   }
 }
 </script>

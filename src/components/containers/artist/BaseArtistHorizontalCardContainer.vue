@@ -40,7 +40,9 @@ export default {
   },
   methods: {
     handleRefresh () {
-      this.$emit('refresh')
+      this.$emit(
+        'refresh'
+      )
     }
   }
 }

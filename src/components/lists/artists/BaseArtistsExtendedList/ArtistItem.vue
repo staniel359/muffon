@@ -7,7 +7,7 @@
         :class="{ disabled: isDeleted }"
         :isLoading="slotProps.isLoading"
         :error="slotProps.error"
-        @refresh="slotProps.handleRefresh"
+        @refresh="slotProps.refresh"
       >
         <template v-if="slotProps.artistData">
           <BaseDeletedBlock

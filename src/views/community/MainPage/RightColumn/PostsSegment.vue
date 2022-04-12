@@ -9,7 +9,7 @@
       postType="community"
       :communityId="communityId"
       :isWithAsCommunityOption="isCommunityCreator"
-      @success="handleSuccess"
+      @success="handlePostCreateSuccess"
     />
 
     <PostsListSegment
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import BasePostsFormSegment
   from '*/components/segments/posts/BasePostsFormSegment.vue'
@@ -43,6 +42,10 @@ export default {
       type: String,
       required: true
     },
+    currentProfileId: {
+      type: String,
+      required: true
+    },
     communityCreatorId: String
   },
   data () {
@@ -51,9 +54,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     headerLink () {
       return formatCommunityPostsLink({
         communityId: this.communityId
@@ -64,13 +64,10 @@ export default {
         this.currentProfileId ===
           this.communityCreatorId
       )
-    },
-    currentProfileId () {
-      return this.profileInfo.id.toString()
     }
   },
   methods: {
-    handleSuccess () {
+    handlePostCreateSuccess () {
       this.key = generateKey()
     }
   }

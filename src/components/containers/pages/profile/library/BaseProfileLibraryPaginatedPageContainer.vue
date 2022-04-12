@@ -1,62 +1,32 @@
 <template>
   <BaseProfileLibraryPageContainer
-    ref="pageContainer"
     :profileId="profileId"
     :scope="scope"
     :limit="limit"
     :query="query"
   >
     <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BasePaginatedPageContainer
+        responseDataName="libraryData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+        :isWithViewChange="isWithViewChange"
+        :viewIndex="viewIndex"
+        :isLibrarySearchClearable="isSearchClearable"
+        :query="query"
+        isWithLibrarySearch
+        @searchSubmit="handleSearchSubmit"
+        @searchClear="handleSearchClear"
       >
-        <BaseSegmentContainer
-          class="search-view-buttons-segment"
-        >
-          <BaseProfileLibrarySearchInput
-            v-if="isWithSearch"
-            :isClearable="isSearchClearable"
-            :query="query"
-            @submit="handleSearchSubmit"
-            @clear="handleSearchClear"
-          />
-
-          <BaseViewChangeButtons
-            v-if="isWithViewChange"
-            :viewIndex="viewIndex"
-            @viewButtonClick="handleViewButtonClick"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
-        >
-          <BasePaginatedListContainer
-            ref="paginatedContainer"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.libraryData"
-            :scope="scope"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <slot
-                :[scope]="slotProps[scope]"
-                :topTracksCount="pageSlotProps.topTracksCount"
-                :topAlbumsCount="pageSlotProps.topAlbumsCount"
-              ></slot>
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
-      </div>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :topTracksCount="pageSlotProps.topTracksCount"
+            :topAlbumsCount="pageSlotProps.topAlbumsCount"
+          ></slot>
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseProfileLibraryPageContainer>
 </template>
@@ -64,23 +34,14 @@
 <script>
 import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseProfileLibrarySearchInput
-  from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
-import BaseViewChangeButtons
-  from '*/components/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',
   components: {
     BaseProfileLibraryPageContainer,
-    BaseSegmentContainer,
-    BaseProfileLibrarySearchInput,
-    BaseViewChangeButtons,
-    BasePaginatedListContainer
+    BasePaginatedPageContainer
   },
   props: {
     profileId: String,
@@ -90,9 +51,6 @@ export default {
     viewIndex: Number,
     isWithSearch: Boolean
   },
-  emits: [
-    'viewButtonClick'
-  ],
   data () {
     return {
       query: ''
@@ -103,42 +61,15 @@ export default {
       return !!this.query.length
     }
   },
-  watch: {
-    query: 'handleQueryChange'
-  },
   methods: {
-    handleViewButtonClick (index) {
-      this.resetPagination()
-
-      this.$emit(
-        'viewButtonClick',
-        index
-      )
-
-      this.$nextTick(() => {
-        this.$refs.pageContainer.fetchData()
-      })
-    },
-    handleFocus () {
-      window.scrollTo(0, 0)
-    },
     handleSearchSubmit (value) {
       this.query = value
     },
     handleSearchClear () {
       this.query = ''
-    },
-    handleQueryChange () {
-      this.resetPagination()
-    },
-    resetPagination () {
-      this.$refs.paginatedContainer.reset()
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.search-view-buttons-segment
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

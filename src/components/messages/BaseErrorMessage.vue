@@ -80,7 +80,9 @@ export default {
       this.setErrorData()
     },
     handleButtonClick () {
-      this.$emit('refresh')
+      this.$emit(
+        'refresh'
+      )
     },
     setErrorData () {
       if (this.error.isAxiosError) {

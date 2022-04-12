@@ -2,11 +2,15 @@
   <div
     class="ui accordion"
     ref="accordion"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div
       class="title"
-      :class="{ 'text-color-white': isTextWhite }"
+      :class="{
+        'text-color-white': isTextWhite
+      }"
     >
       <i class="dropdown icon"></i>
       {{ title }}
@@ -35,30 +39,32 @@ export default {
     isTextWhite: Boolean
   },
   emits: [
-    'init',
-    'open'
+    'open',
+    'close'
   ],
   computed: {
     ...mapState('layout', [
       'isDarkMode'
-    ])
+    ]),
+    accordionOptions () {
+      return mainAccordionOptions({
+        onOpen: this.handleOpen,
+        onClose: this.handleClose
+      })
+    }
   },
   mounted () {
     setAccordion(
       this.$refs.accordion,
-      mainAccordionOptions({
-        onOpen: this.handleOpen
-      })
-    )
-
-    this.$emit(
-      'init',
-      this.$refs.accordion
+      this.accordionOptions
     )
   },
   methods: {
     handleOpen () {
       this.$emit('open')
+    },
+    handleClose () {
+      this.$emit('close')
     }
   }
 }

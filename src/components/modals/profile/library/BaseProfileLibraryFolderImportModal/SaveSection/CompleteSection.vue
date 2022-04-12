@@ -1,20 +1,18 @@
 <template>
-  <div class="main-library-modal-complete-section">
-    <template v-if="isError">
-      <RetrySection
-        v-if="errorFiles.length"
-        :errorFiles="errorFiles"
-        @retry="handleRetryButtonClick"
-      />
-    </template>
-
-    <BaseMessage
-      v-else
-      class="success"
-      :icons="['check']"
-      :header="successText"
+  <template v-if="isError">
+    <RetrySection
+      v-if="errorFiles.length"
+      :errorFiles="errorFiles"
+      @retry="handleRetryButtonClick"
     />
-  </div>
+  </template>
+
+  <BaseMessage
+    v-else
+    class="success"
+    :icons="['check']"
+    :header="successText"
+  />
 </template>
 
 <script>
@@ -39,7 +37,7 @@ export default {
   computed: {
     successText () {
       return this.$t(
-        'save.success.tracks',
+        'save.success.library.tracks',
         { count: this.totalCountFormatted }
       )
     },

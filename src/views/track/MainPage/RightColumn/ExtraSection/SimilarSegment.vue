@@ -1,6 +1,6 @@
 <template>
   <BaseTrackPaginatedSegmentContainer
-    scope="similar"
+    :scope="scope"
     :limit="limit"
     :artistName="artistName"
     :trackTitle="trackTitle"
@@ -8,7 +8,7 @@
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.similar"
+        :tracks="slotProps[scope]"
         :profileId="slotProps.profileId"
         isWithArtistName
         isWithDuration
@@ -49,7 +49,8 @@ export default {
   },
   data () {
     return {
-      limit: 5
+      limit: 5,
+      scope: 'similar'
     }
   },
   computed: {

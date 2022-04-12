@@ -1,13 +1,13 @@
 <template>
   <BaseTopPaginatedSegmentContainer
-    scope="artists"
+    :scope="scope"
     :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
+        :artists="slotProps[scope]"
         :itemsInRow="5"
-        :artists="slotProps.artists"
         isWithListenersCount
         isWithLibraryOption
         isWithFavoriteOption
@@ -35,7 +35,9 @@ export default {
   },
   data () {
     return {
-      limit: 5
+      limit: 5,
+      itemsInRow: 5,
+      scope: 'artists'
     }
   },
   computed: {

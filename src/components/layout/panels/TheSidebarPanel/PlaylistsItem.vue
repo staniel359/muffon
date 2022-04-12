@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   playlists as formatProfilePlaylistsLink
@@ -18,10 +17,13 @@ export default {
   components: {
     BaseSidebarItem
   },
+  props: {
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     playlistsText () {
       return this.$t(
         'navigation.playlists'
@@ -31,9 +33,6 @@ export default {
       return formatProfilePlaylistsLink({
         profileId: this.profileId
       })
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   }
 }

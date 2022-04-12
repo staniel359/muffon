@@ -1,21 +1,20 @@
 <template>
   <BaseProfileLibraryTagPaginatedPageContainer
-    scope="artists"
     :profileId="profileId"
     :tagId="tagId"
+    :scope="scope"
     :limit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
     isWithSearch
-    @viewButtonClick="handleViewButtonClick"
   >
     <template #default="slotProps">
       <BaseArtistsList
-        :viewIndex="viewIndex"
-        :artists="slotProps.artists"
+        :artists="slotProps[scope]"
+        :profileId="profileId"
         :topTracksCount="slotProps.topTracksCount"
         :topAlbumsCount="slotProps.topAlbumsCount"
-        :profileId="profileId"
+        :viewIndex="viewIndex"
         :isWithFavoriteOption="isWithFavoriteOption"
         isWithLibrary
         isLinkToLibrary
@@ -29,6 +28,7 @@ import BaseProfileLibraryTagPaginatedPageContainer
   from '*/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPaginatedPageContainer.vue'
 import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
 import { isCurrentProfile } from '*/helpers/utils'
+import viewChangeMixin from '*/mixins/viewChangeMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -36,31 +36,23 @@ export default {
     BaseProfileLibraryTagPaginatedPageContainer,
     BaseArtistsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   props: {
     profileId: String,
     tagId: String
   },
   data () {
     return {
-      viewIndex: 1,
-      viewLimits: [50, 20, 10]
+      scope: 'artists'
     }
   },
   computed: {
-    limit () {
-      return this.viewLimits[
-        this.viewIndex
-      ]
-    },
     isWithFavoriteOption () {
       return isCurrentProfile(
         this.profileId
       )
-    }
-  },
-  methods: {
-    handleViewButtonClick (index) {
-      this.viewIndex = index
     }
   }
 }

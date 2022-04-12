@@ -23,7 +23,7 @@
           :isLoading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           @init="handleInit"
-          @refresh="pageSlotProps.handleRefresh"
+          @refresh="pageSlotProps.refresh"
         >
           <template #default>
             <LeftColumn

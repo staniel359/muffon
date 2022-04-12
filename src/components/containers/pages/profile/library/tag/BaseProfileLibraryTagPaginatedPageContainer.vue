@@ -1,54 +1,27 @@
 <template>
   <BaseProfileLibraryTagPageContainer
-    ref="pageContainer"
     :profileId="profileId"
     :tagId="tagId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BasePaginatedPageContainer
+        responseDataName="libraryTagData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+        :isWithViewChange="isWithViewChange"
+        :viewIndex="viewIndex"
       >
-        <BaseSegmentContainer
-          class="search-view-buttons-segment"
-        >
-          <BaseViewChangeButtons
-            v-if="isWithViewChange"
-            :viewIndex="viewIndex"
-            @viewButtonClick="handleViewButtonClick"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
-        >
-          <BasePaginatedListContainer
-            ref="paginatedContainer"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.libraryTagData"
-            :scope="scope"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <slot
-                :[scope]="slotProps[scope]"
-                :topTracksCount="pageSlotProps.topTracksCount"
-                :topAlbumsCount="pageSlotProps.topAlbumsCount"
-              ></slot>
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
-      </div>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :topTracksCount="pageSlotProps.topTracksCount"
+            :topAlbumsCount="pageSlotProps.topAlbumsCount"
+          ></slot>
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseProfileLibraryTagPageContainer>
 </template>
@@ -56,20 +29,14 @@
 <script>
 import BaseProfileLibraryTagPageContainer
   from './BaseProfileLibraryTagPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseViewChangeButtons
-  from '*/components/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
   name: 'BaseProfileLibraryTagPaginatedPageContainer',
   components: {
     BaseProfileLibraryTagPageContainer,
-    BaseSegmentContainer,
-    BaseViewChangeButtons,
-    BasePaginatedListContainer
+    BasePaginatedPageContainer
   },
   props: {
     profileId: String,
@@ -78,34 +45,8 @@ export default {
     limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number
-  },
-  emits: [
-    'viewButtonClick'
-  ],
-  methods: {
-    handleFocus () {
-      window.scrollTo(0, 0)
-    },
-    handleViewButtonClick (index) {
-      this.resetPagination()
-
-      this.$emit(
-        'viewButtonClick',
-        index
-      )
-
-      this.$nextTick(() => {
-        this.$refs.pageContainer.fetchData()
-      })
-    },
-    resetPagination () {
-      this.$refs.paginatedContainer.reset()
-    }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.search-view-buttons-segment
-  @extend .d-flex, .align-items-center
-</style>
+<style lang="sass" scoped></style>

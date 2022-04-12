@@ -29,6 +29,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'focus'
+  ],
   data () {
     return {
       error: null,
@@ -54,7 +57,8 @@ export default {
     selectedTrackData: {
       immediate: true,
       handler: 'handleSelectedTrackDataChange'
-    }
+    },
+    trackData: 'handleTrackDataChange'
   },
   methods: {
     handleSelectedTrackDataChange () {
@@ -62,6 +66,9 @@ export default {
     },
     handleRefresh () {
       this.fetchData()
+    },
+    handleTrackDataChange () {
+      this.$emit('focus')
     },
     getTrack,
     fetchData () {

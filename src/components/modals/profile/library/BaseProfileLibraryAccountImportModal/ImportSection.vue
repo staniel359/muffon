@@ -1,18 +1,16 @@
 <template>
-  <div class="main-library-modal-import-section">
-    <BaseProgress
-      v-show="isProgress"
-      ref="progress"
-      :formatActive="formatProgressActive"
-      @complete="handleProgressComplete"
-    />
+  <BaseProgress
+    v-show="isProgress"
+    ref="progress"
+    :formatActive="formatProgressActive"
+    @complete="handleProgressComplete"
+  />
 
-    <CompleteSection
-      v-if="isComplete"
-      :successTracks="successTracks"
-      :error="error"
-    />
-  </div>
+  <CompleteSection
+    v-if="isComplete"
+    :successTracks="successTracks"
+    :error="error"
+  />
 </template>
 
 <script>

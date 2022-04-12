@@ -1,9 +1,9 @@
 <template>
   <slot
+    :artistData="artistData"
     :isLoading="isLoading"
     :error="error"
-    :artistData="artistData"
-    :handleRefresh="handleRefresh"
+    :refresh="refresh"
   >
   </slot>
 </template>
@@ -30,14 +30,14 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh () {
-      this.fetchData()
-    },
     getArtist,
     fetchData () {
       this.getArtist({
         artistName: this.artistName
       })
+    },
+    refresh () {
+      this.fetchData()
     }
   }
 }

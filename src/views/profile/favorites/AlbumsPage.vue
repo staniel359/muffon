@@ -1,12 +1,12 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
-    scope="albums"
     :profileId="profileId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList
-        :albums="slotProps.albums"
+        :albums="slotProps[scope]"
         :isWithDeleteOption="isWithDeleteOption"
         isWithArtistName
         isFavorite
@@ -33,7 +33,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'albums'
     }
   },
   computed: {

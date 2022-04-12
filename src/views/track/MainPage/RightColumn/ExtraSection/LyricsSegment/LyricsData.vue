@@ -4,12 +4,14 @@
       {{ lyrics }}
     </p>
 
-    <strong
-      class="main-link"
-      @click="handleMoreClick"
-    >
-      {{ moreText }}
-    </strong>
+    <div class="more-container">
+      <strong
+        class="main-link"
+        @click="handleMoreClick"
+      >
+        {{ moreText }}
+      </strong>
+    </div>
   </div>
 
   <BaseTrackLyricsModal
@@ -47,4 +49,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.more-container
+  margin-top: 1em
+</style>

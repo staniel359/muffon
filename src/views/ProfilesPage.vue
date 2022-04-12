@@ -3,33 +3,18 @@
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
-        :class="[
-          'raised',
-          'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
-        ]"
-        :isLoading="pageSlotProps.isLoading"
-        @refresh="pageSlotProps.handleRefresh"
+      <BasePaginatedPageContainer
+        responseDataName="profilesData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
       >
-        <BasePaginatedListContainer
-          scope="profiles"
-          :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.profilesData"
-          :limit="limit"
-          @fetchData="pageSlotProps.fetchData"
-          @focus="handleFocus"
-          @refresh="pageSlotProps.handleRefresh"
-        >
-          <template #default="slotProps">
-            <BaseProfilesSimpleList
-              :profiles="slotProps.profiles"
-            />
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <BaseProfilesSimpleList
+            :profiles="slotProps[scope]"
+          />
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseProfilesPageContainer>
 </template>
@@ -37,10 +22,8 @@
 <script>
 import BaseProfilesPageContainer
   from '*/components/containers/pages/profiles/BaseProfilesPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseProfilesSimpleList
   from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 
@@ -48,18 +31,13 @@ export default {
   name: 'ProfilesPage',
   components: {
     BaseProfilesPageContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedPageContainer,
     BaseProfilesSimpleList
   },
   data () {
     return {
-      limit: 50
-    }
-  },
-  methods: {
-    handleFocus () {
-      window.scrollTo(0, 0)
+      limit: 50,
+      scope: 'profiles'
     }
   }
 }

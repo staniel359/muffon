@@ -9,12 +9,12 @@
     />
 
     <slot
+      :trackData="trackData"
+      :profileId="profileId"
       :isLoading="isLoading"
       :error="error"
-      :trackData="trackData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-      :profileId="profileId"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -73,9 +73,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getTrack,
     fetchData (page) {
       this.getTrack({
@@ -83,12 +80,13 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

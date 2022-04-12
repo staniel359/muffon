@@ -20,7 +20,6 @@
         />
 
         <MessagesSegment
-          class="main-paginated-page-segment-container"
           :key="key"
           :conversationId="conversationId"
         />

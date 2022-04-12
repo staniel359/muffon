@@ -9,7 +9,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -43,7 +43,8 @@ export default {
     return {
       error: null,
       channelData: null,
-      isLoading: false
+      isLoading: false,
+      scope: 'videos'
     }
   },
   computed: {
@@ -69,7 +70,7 @@ export default {
     videoChannelArgs () {
       return {
         channelId: this.channelId,
-        scope: 'videos',
+        scope: this.scope,
         limit: this.limit
       }
     }
@@ -81,9 +82,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getVideoChannel,
     fetchData (page) {
       if (page) {
@@ -94,6 +92,9 @@ export default {
         ...this.videoChannelArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

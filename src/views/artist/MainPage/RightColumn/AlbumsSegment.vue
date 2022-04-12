@@ -1,16 +1,16 @@
 <template>
   <BaseArtistPaginatedSegmentContainer
-    scope="albums"
-    :limit="limit"
     :artistName="artistName"
+    :scope="scope"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
-        :itemsInRow="3"
+        :albums="slotProps[scope]"
         :artistName="artistName"
-        :albums="slotProps.albums"
         :profileId="slotProps.profileId"
+        :itemsInRow="itemsInRow"
         isWithListenersCount
         isWithLibraryOption
         isWithFavoriteOption
@@ -44,7 +44,9 @@ export default {
   },
   data () {
     return {
-      limit: 3
+      limit: 3,
+      itemsInRow: 3,
+      scope: 'albums'
     }
   },
   computed: {

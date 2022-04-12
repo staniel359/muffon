@@ -1,5 +1,5 @@
 <template>
-  <div class="main-library-modal-import-section">
+  <div class="main-modal-import-section">
     <Component
       :is="component"
       :[scope]="collection"

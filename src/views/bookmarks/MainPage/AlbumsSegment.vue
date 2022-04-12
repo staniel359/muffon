@@ -1,12 +1,12 @@
 <template>
   <BaseBookmarksPaginatedSegmentContainer
-    scope="albums"
+    :scope="scope"
     :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList
-        :albums="slotProps.albums"
+        :albums="slotProps[scope]"
         isWithArtistName
         isWithDeleteOption
         isBookmark
@@ -32,7 +32,8 @@ export default {
   },
   data () {
     return {
-      limit: 5
+      limit: 5,
+      scope: 'albums'
     }
   },
   computed: {

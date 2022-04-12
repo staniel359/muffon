@@ -4,19 +4,20 @@
     :isLoading="isLoading"
     :error="error"
   >
-    <slot
-      :albumData="albumData"
-      :requestAlbumData="requestAlbumData"
-      :profileId="profileId"
-      :isLoading="isLoading"
-      :error="error"
-      :handleRefresh="handleRefresh"
-    ></slot>
+    <template #default="slotProps">
+      <slot
+        :albumData="albumData"
+        :requestAlbumData="requestAlbumData"
+        :profileId="slotProps.profileId"
+        :isLoading="isLoading"
+        :error="error"
+        :refresh="refresh"
+      ></slot>
+    </template>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -66,12 +67,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     navigationSections () {
       return formatAlbumPageNavigation(
         this.navigationData
@@ -121,9 +116,6 @@ export default {
     this.resetRequestAlbumData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     handleRequestAlbumDataChange () {
       this.fetchData()
     },
@@ -155,6 +147,9 @@ export default {
         ...this.albumArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

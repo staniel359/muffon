@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   communities as formatProfileCommunitiesLink
@@ -18,10 +17,13 @@ export default {
   components: {
     BaseSidebarItem
   },
+  props: {
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     communitiesText () {
       return this.$t(
         'navigation.communities'
@@ -31,9 +33,6 @@ export default {
       return formatProfileCommunitiesLink({
         profileId: this.profileId
       })
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   }
 }

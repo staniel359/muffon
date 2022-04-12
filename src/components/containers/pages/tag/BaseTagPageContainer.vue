@@ -4,20 +4,21 @@
     :isLoading="isLoading"
     :error="error"
   >
-    <slot
-      :tagData="tagData"
-      :tagName="tagNameFetched"
-      :profileId="profileId"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-    ></slot>
+    <template #default="slotProps">
+      <slot
+        :tagData="tagData"
+        :tagName="tagNameFetched"
+        :profileId="slotProps.profileId"
+        :isLoading="isLoading"
+        :error="error"
+        :fetchData="fetchData"
+        :refresh="refresh"
+      ></slot>
+    </template>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -49,12 +50,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     navigationSections () {
       return formatTagPageNavigation(
         this.navigationData
@@ -89,15 +84,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getTag,
     fetchData (page) {
       this.getTag({
         ...this.tagArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

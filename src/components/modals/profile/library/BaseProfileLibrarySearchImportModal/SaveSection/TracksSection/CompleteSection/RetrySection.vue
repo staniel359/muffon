@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-library-modal-retry-section"
+    class="main-modal-import-section"
     ref="scrollable"
   >
     <div class="main-library-modal-message-container">
@@ -79,7 +79,7 @@ export default {
     handleFocus () {
       this.$refs.scrollable.scrollTo(0, 0)
     },
-    handleTracksChange ({ scope }, value) {
+    handleTracksChange (value) {
       this.setErrorTracks(
         [...value]
       )

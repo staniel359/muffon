@@ -215,7 +215,7 @@ export const setToast = ({ message, icon }) => {
 
 // Utils
 
-export const numberToColumnWidth = (value = 1) => {
+export const numberToColumnWidth = value => {
   const data = {
     1: 'one',
     2: 'two',

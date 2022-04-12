@@ -37,14 +37,15 @@ export default {
     return {
       isLoading: false,
       error: null,
-      tagData: null
+      tagData: null,
+      scope: 'images'
     }
   },
   computed: {
     tagArgs () {
       return {
         tagName: this.tagName,
-        scope: 'images'
+        scope: this.scope
       }
     },
     images () {

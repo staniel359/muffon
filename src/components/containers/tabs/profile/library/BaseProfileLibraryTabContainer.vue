@@ -6,14 +6,14 @@
     }"
   >
     <BasePaginatedListContainer
-      :isLoading="isLoading"
-      :error="error"
       :responseData="libraryData"
       :scope="tabData.scope"
       :limit="tabData.limit"
+      :isLoading="isLoading"
+      :error="error"
       @fetchData="fetchData"
-      @focus="handleFocus"
       @refresh="handleRefresh"
+      @focus="handleFocus"
     >
       <template #default="slotProps">
         <Component

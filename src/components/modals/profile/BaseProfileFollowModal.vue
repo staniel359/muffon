@@ -12,11 +12,11 @@
     >
       <BasePaginatedListContainer
         v-if="profileData"
+        :responseData="profileData"
         :scope="scope"
+        :limit="limit"
         :isLoading="isLoading"
         :error="error"
-        :responseData="profileData"
-        :limit="limit"
         @fetchData="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"

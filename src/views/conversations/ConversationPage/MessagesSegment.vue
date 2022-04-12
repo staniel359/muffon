@@ -1,12 +1,13 @@
 <template>
   <BaseConversationPaginatedSegmentContainer
-    scope="messages"
+    class="main-paginated-page-segment-container"
     :conversationId="conversationId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseMessagesSimpleList
-        :messages="slotProps.messages"
+        :messages="slotProps[scope]"
       />
     </template>
   </BaseConversationPaginatedSegmentContainer>
@@ -29,7 +30,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 20,
+      scope: 'messages'
     }
   }
 }

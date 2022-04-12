@@ -2,7 +2,7 @@
   <Component
     :is="listComponent"
     :artists="artists"
-    :itemsInRow="5"
+    :itemsInRow="itemsInRow"
     :isWithListenersCount="isWithListenersCount"
     :topTracksCount="topTracksCount"
     :topAlbumsCount="topAlbumsCount"
@@ -55,6 +55,7 @@ export default {
   },
   data () {
     return {
+      itemsInRow: 5,
       listComponents: [
         'BaseArtistsSimpleList',
         'BaseArtistsTableList',

@@ -7,24 +7,24 @@
     }"
   >
     <BasePaginatedListContainer
-      :isLoading="isLoading"
-      :error="error"
       :responseData="searchData"
       :scope="tabData.scope"
       :limit="tabData.limit"
       :responsePageLimit="tabData.responsePageLimit"
+      :isLoading="isLoading"
+      :error="error"
       :isPaginationSimple="isVideos"
       :isReset="isVideos"
       @fetchData="fetchData"
-      @focus="handleFocus"
       @refresh="handleRefresh"
+      @focus="handleFocus"
     >
       <template #default="slotProps">
         <Component
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
-          :isWithListenersCount="!!tabData.isWithListenersCount"
           :profileId="profileId"
+          :isWithListenersCount="!!tabData.isWithListenersCount"
           :isWithPlaylistOption="isTracks"
           isWithImage
           isWithArtistName

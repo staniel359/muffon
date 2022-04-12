@@ -37,7 +37,8 @@ export default {
     return {
       isLoading: false,
       error: null,
-      tagData: null
+      tagData: null,
+      scope: 'similar'
     }
   },
   computed: {
@@ -55,7 +56,7 @@ export default {
     tagArgs () {
       return {
         tagName: this.tagName,
-        scope: 'similar'
+        scope: this.scope
       }
     }
   },

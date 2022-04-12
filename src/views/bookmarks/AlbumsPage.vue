@@ -1,11 +1,11 @@
 <template>
   <BaseBookmarksPaginatedPageContainer
-    scope="albums"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList
-        :albums="slotProps.albums"
+        :albums="slotProps[scope]"
         isWithArtistName
         isWithDeleteOption
         isBookmark
@@ -28,7 +28,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'albums'
     }
   }
 }

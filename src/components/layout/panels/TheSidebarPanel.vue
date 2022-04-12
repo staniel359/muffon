@@ -6,20 +6,39 @@
     <div class="sidebar-panel-content">
       <div class="sidebar-top">
         <ProfileItem />
+
         <FeedItem />
+
         <ConversationsItem />
-        <LibraryItem />
+
+        <LibraryItem
+          :profileId="profileId"
+        />
+
         <RecommendationsItem />
-        <PlaylistsItem />
-        <FavoritesItem />
+
+        <PlaylistsItem
+          :profileId="profileId"
+        />
+
+        <FavoritesItem
+          :profileId="profileId"
+        />
+
         <BookmarksItem />
+
         <TopItem />
+
         <RadioItem />
-        <CommunitiesItem />
+
+        <CommunitiesItem
+          :profileId="profileId"
+        />
       </div>
 
       <div>
         <SettingsItem />
+
         <LogoutItem />
       </div>
     </div>
@@ -62,7 +81,13 @@ export default {
   computed: {
     ...mapState('layout', [
       'isDarkMode'
-    ])
+    ]),
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    }
   }
 }
 </script>

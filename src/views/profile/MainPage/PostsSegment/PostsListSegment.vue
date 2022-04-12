@@ -1,23 +1,22 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    class="posts-list-segment"
+    class="main-paginated-segment-container"
     :isLoading="isLoading"
   >
     <BasePaginatedListContainer
-      ref="paginatedContainer"
-      scope="posts"
+      :responseData="profileData"
+      :scope="scope"
+      :limit="limit"
       :isLoading="isLoading"
       :error="error"
-      :responseData="profileData"
-      :limit="limit"
-      @focus="handleFocus"
       @fetchData="fetchData"
       @refresh="handleRefresh"
+      @focus="handleFocus"
     >
       <template #default="slotProps">
         <BasePostsSimpleList
-          :posts="slotProps.posts"
+          :posts="slotProps[scope]"
           :profileId="profileId"
         />
       </template>
@@ -52,14 +51,15 @@ export default {
       profileData: null,
       error: null,
       isLoading: false,
-      limit: 10
+      limit: 10,
+      scope: 'posts'
     }
   },
   computed: {
     postsArgs () {
       return {
         profileId: this.profileId,
-        scope: 'posts',
+        scope: this.scope,
         limit: this.limit
       }
     }
@@ -85,7 +85,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.posts-list-segment
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

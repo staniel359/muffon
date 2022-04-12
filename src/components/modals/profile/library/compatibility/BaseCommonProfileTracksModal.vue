@@ -1,12 +1,12 @@
 <template>
   <BaseProfileLibraryCommonModalContainer
     ref="modal"
-    scope="tracks"
     :profileId="profileId"
+    :scope="scope"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         :profileId="profileId"
         isWithArtistName
         isLinkToLibrary
@@ -31,6 +31,11 @@ export default {
   },
   props: {
     profileId: String
+  },
+  data () {
+    return {
+      scope: 'tracks'
+    }
   },
   methods: {
     handleLinkClick () {

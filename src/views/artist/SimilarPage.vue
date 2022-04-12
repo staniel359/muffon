@@ -1,17 +1,16 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    scope="similar"
     :artistName="artistName"
     :limit="limit"
+    :scope="scope"
     :viewIndex="viewIndex"
     isWithViewChange
-    @viewButtonClick="handleViewButtonClick"
   >
     <template #default="slotProps">
       <BaseArtistsList
-        :viewIndex="viewIndex"
-        :artists="slotProps.similar"
+        :artists="slotProps[scope]"
         :profileId="slotProps.profileId"
+        :viewIndex="viewIndex"
         isWithListenersCount
         isWithLibraryOption
         isWithFavoriteOption
@@ -26,6 +25,7 @@
 import BaseArtistPaginatedPageContainer
   from '*/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
+import viewChangeMixin from '*/mixins/viewChangeMixin'
 
 export default {
   name: 'SimilarPage',
@@ -33,26 +33,16 @@ export default {
     BaseArtistPaginatedPageContainer,
     BaseArtistsList
   },
-  props: {
-    artistName: String
-  },
+  mixins: [
+    viewChangeMixin
+  ],
   data () {
     return {
-      viewIndex: 1,
-      viewLimits: [50, 20, 10]
+      scope: 'similar'
     }
   },
-  computed: {
-    limit () {
-      return this.viewLimits[
-        this.viewIndex
-      ]
-    }
-  },
-  methods: {
-    handleViewButtonClick (index) {
-      this.viewIndex = index
-    }
+  props: {
+    artistName: String
   }
 }
 </script>

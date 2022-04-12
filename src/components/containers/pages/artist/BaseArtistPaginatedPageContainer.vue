@@ -1,86 +1,43 @@
 <template>
   <BaseArtistPageContainer
-    ref="pageContainer"
     :artistName="artistName"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BasePaginatedPageContainer
+        responseDataName="artistData"
+        :slotPropsData="pageSlotProps"
+        :artistName="pageSlotProps.artistName"
+        :isWithArtistSelect="isWithArtistSelect"
+        :isWithViewChange="isWithViewChange"
+        :viewIndex="viewIndex"
+        :scope="scope"
+        :limit="limit"
       >
-        <BaseSegmentContainer
-          v-if="isWithArtistSelect"
-        >
-          <BaseArtistSourceSelect
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
             :artistName="pageSlotProps.artistName"
-            @artistDataChange="handleArtistDataChange"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          v-if="isWithViewChange"
-        >
-          <BaseViewChangeButtons
-            v-if="isWithViewChange"
-            :viewIndex="viewIndex"
-            @viewButtonClick="handleViewButtonClick"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
-        >
-          <BasePaginatedListContainer
-            ref="paginatedContainer"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.artistData"
-            :scope="scope"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <slot
-                :[scope]="slotProps[scope]"
-                :artistName="pageSlotProps.artistName"
-                :topTrackCount="pageSlotProps.topTrackCount"
-                :profileId="pageSlotProps.profileId"
-              ></slot>
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
-      </div>
+            :topTrackCount="pageSlotProps.topTrackCount"
+            :profileId="pageSlotProps.profileId"
+          ></slot>
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseArtistPageContainer>
 </template>
 
 <script>
 import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseArtistSourceSelect
-  from '*/components/models/artist/BaseArtistSourceSelect.vue'
-import BaseViewChangeButtons
-  from '*/components/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
   name: 'BaseArtistPaginatedPageContainer',
   components: {
     BaseArtistPageContainer,
-    BaseSegmentContainer,
-    BaseArtistSourceSelect,
-    BaseViewChangeButtons,
-    BasePaginatedListContainer
+    BasePaginatedPageContainer
   },
   props: {
     artistName: String,
@@ -89,29 +46,6 @@ export default {
     isWithViewChange: Boolean,
     viewIndex: Number,
     isWithArtistSelect: Boolean
-  },
-  emits: [
-    'viewButtonClick'
-  ],
-  methods: {
-    handleViewButtonClick (index) {
-      this.$refs.paginatedContainer.reset()
-
-      this.$emit(
-        'viewButtonClick',
-        index
-      )
-
-      this.$nextTick(() => {
-        this.$refs.pageContainer.fetchData()
-      })
-    },
-    handleArtistDataChange () {
-      this.$refs.paginatedContainer.reset()
-    },
-    handleFocus () {
-      window.scrollTo(0, 0)
-    }
   }
 }
 </script>

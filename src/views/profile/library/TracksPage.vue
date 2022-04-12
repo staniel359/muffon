@@ -1,13 +1,13 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
-    scope="tracks"
     :profileId="profileId"
+    :scope="scope"
     :limit="limit"
     isWithSearch
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         :profileId="profileId"
         :isWithFavoriteOption="isWithFavoriteOption"
         :isWithDeleteOption="isWithDeleteOption"
@@ -40,7 +40,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'tracks'
     }
   },
   computed: {

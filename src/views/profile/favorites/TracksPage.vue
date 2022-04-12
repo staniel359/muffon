@@ -1,12 +1,12 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
-    scope="tracks"
     :profileId="profileId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         :isWithPlaylistOption="isWithPlaylistOption"
         :isWithDeleteOption="isWithDeleteOption"
         isWithImage
@@ -36,7 +36,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'tracks'
     }
   },
   computed: {

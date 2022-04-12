@@ -1,31 +1,33 @@
 <template>
-  <BaseAccordionContainer
-    :title="findText"
-    @init="handleInit"
-    @open="handleOpen"
-  >
-    <BaseTrackSearchContainer
-      v-if="isOpen"
-      sourceId="youtube"
-      scope="videos"
-      :query="query"
+  <div ref="segment">
+    <BaseAccordionContainer
+      :title="findText"
+      @open="handleOpen"
+      @close="handleClose"
     >
-      <template #default="slotProps">
-        <VideoSelect
-          :isLoading="slotProps.isLoading"
-          :isError="slotProps.isError"
-          :videos="slotProps.videos"
-        />
-      </template>
-    </BaseTrackSearchContainer>
+      <BaseTrackSearchContainer
+        v-if="isOpen"
+        sourceId="youtube"
+        :scope="scope"
+        :query="query"
+      >
+        <template #default="slotProps">
+          <VideoSelect
+            :isLoading="slotProps.isLoading"
+            :isError="slotProps.isError"
+            :videos="slotProps[scope]"
+          />
+        </template>
+      </BaseTrackSearchContainer>
 
-    <VideoData
-      v-if="selectedVideoData"
-      :key="key"
-      :selectedVideoData="selectedVideoData"
-      @click="handleVideoClick"
-    />
-  </BaseAccordionContainer>
+      <VideoData
+        v-if="selectedVideoData"
+        :key="key"
+        :selectedVideoData="selectedVideoData"
+        @click="handleVideoClick"
+      />
+    </BaseAccordionContainer>
+  </div>
 </template>
 
 <script>
@@ -58,7 +60,8 @@ export default {
     return {
       key: null,
       selectedVideoData: null,
-      isOpen: false
+      isOpen: false,
+      scope: 'videos'
     }
   },
   computed: {
@@ -69,29 +72,36 @@ export default {
     }
   },
   watch: {
-    selectedVideoData: 'handleSelectedVideoDataChange'
+    selectedVideoData:
+      'handleSelectedVideoDataChange'
   },
   methods: {
-    handleInit (el) {
-      this.segment = el
-    },
     handleOpen () {
       this.isOpen = true
-    },
-    handleSelectedVideoDataChange () {
-      this.key = generateKey()
 
-      focusOnSegment(
-        this.segment
-      )
+      this.focus()
+    },
+    handleClose () {
+      this.isOpen = false
+      this.selectedVideoData = null
+    },
+    handleSelectedVideoDataChange (value) {
+      if (value) {
+        this.key = generateKey()
+
+        this.focus()
+      }
     },
     handleVideoClick () {
-      focusOnSegment(
-        this.segment
-      )
+      this.focus()
     },
     setSelectedVideoData (value) {
       this.selectedVideoData = value
+    },
+    focus () {
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

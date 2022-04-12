@@ -11,18 +11,18 @@
       @init="handleInit"
     >
       <BasePaginatedListContainer
-        scope="playlists"
+        :responseData="profileData"
+        :scope="scope"
+        :limit="limit"
         :isLoading="isLoading"
         :error="error"
-        :responseData="profileData"
-        :limit="limit"
         @fetchData="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <BasePlaylistsSimpleSelectableList
-            :playlists="slotProps.playlists"
+            :playlists="slotProps[scope]"
             :profileId="profileId"
             :trackTitle="trackTitle"
             :artistName="artistName"
@@ -45,7 +45,7 @@ import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleSelectableList
   from '*/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
-import getProfilePlaylists from '*/helpers/actions/api/profile/playlists/get'
+import getProfilePlaylists from '*/helpers/actions/api/profile/get'
 
 export default {
   name: 'BasePlaylistsModal',
@@ -68,7 +68,8 @@ export default {
       profileData: null,
       isLoading: false,
       isOpen: false,
-      limit: 20
+      limit: 20,
+      scope: 'playlists'
     }
   },
   computed: {
@@ -78,6 +79,7 @@ export default {
     playlistsArgs () {
       return {
         profileId: this.profileId,
+        scope: this.scope,
         limit: this.limit,
         trackTitle: this.trackTitle,
         artistName: this.artistName

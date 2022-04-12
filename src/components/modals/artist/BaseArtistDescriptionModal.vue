@@ -1,12 +1,12 @@
 <template>
   <BaseArtistModalContainer
     ref="modal"
-    scope="description"
     :artistName="artistName"
+    :scope="scope"
   >
     <template #default="slotProps">
       <BaseDescription
-        :description="slotProps.description"
+        :description="slotProps[scope]"
         isModal
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     artistName: String
+  },
+  data () {
+    return {
+      scope: 'description'
+    }
   },
   methods: {
     show () {

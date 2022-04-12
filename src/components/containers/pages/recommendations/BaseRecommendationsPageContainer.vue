@@ -4,19 +4,20 @@
     :isLoading="isLoading"
     :error="error"
   >
-    <slot
-      :recommendationsData="recommendationsData"
-      :profileId="profileId"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-    ></slot>
+    <template #default="slotProps">
+      <slot
+        :recommendationsData="recommendationsData"
+        :profileId="slotProps.profileId"
+        :isLoading="isLoading"
+        :error="error"
+        :fetchData="fetchData"
+        :refresh="refresh"
+      ></slot>
+    </template>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -37,7 +38,7 @@ export default {
   ],
   props: {
     limit: Number,
-    filter: String,
+    filterScope: String,
     filterValue: Array
   },
   data () {
@@ -48,9 +49,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     navigationSections () {
       return formatRecommendationsPageNavigation()
     },
@@ -60,12 +58,9 @@ export default {
     recommendationsArgs () {
       return {
         limit: this.limit,
-        filter: this.filter,
+        filterScope: this.filterScope,
         filterValue: this.filterValue
       }
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   },
   watch: {
@@ -77,9 +72,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     handleFilterValueChange () {
       this.fetchData()
     },
@@ -89,6 +81,9 @@ export default {
         ...this.recommendationsArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

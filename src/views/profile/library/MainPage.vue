@@ -8,7 +8,7 @@
       />
 
       <ImportSegment
-        v-if="isCurrentProfile(profileId)"
+        v-if="isRenderImportSegment"
       />
 
       <ArtistsSegment
@@ -60,6 +60,11 @@ export default {
     profileId: String
   },
   computed: {
+    isRenderImportSegment () {
+      return isCurrentProfile(
+        this.profileId
+      )
+    },
     isWithFavoriteOption () {
       return isCurrentProfile(
         this.profileId
@@ -70,9 +75,6 @@ export default {
         this.profileId
       )
     }
-  },
-  methods: {
-    isCurrentProfile
   }
 }
 </script>

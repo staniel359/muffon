@@ -1,47 +1,23 @@
 <template>
-  <div
-    class="ui raised segments main-segment-container"
-    ref="segment"
+  <BaseProfilePaginatedSegmentContainer
+    :profileId="profileId"
+    :scope="scope"
+    :limit="limit"
+    :headerLink="headerLink"
   >
-    <BaseHeaderSegment
-      scope="communities"
-      :link="headerLink"
-    />
-
-    <BaseSegmentContainer
-      class="communities-segment"
-      :isLoading="isLoading"
-    >
-      <BasePaginatedListContainer
-        scope="communities"
-        :isLoading="isLoading"
-        :error="error"
-        :responseData="profileData"
-        :limit="limit"
-        @focus="handleFocus"
-        @fetchData="fetchData"
-        @refresh="handleRefresh"
-      >
-        <template #default="slotProps">
-          <BaseCommunitiesSimpleList
-            :communities="slotProps.communities"
-          />
-        </template>
-      </BasePaginatedListContainer>
-    </BaseSegmentContainer>
-  </div>
+    <template #default="slotProps">
+      <BaseCommunitiesSimpleList
+        :communities="slotProps[scope]"
+      />
+    </template>
+  </BaseProfilePaginatedSegmentContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BaseProfilePaginatedSegmentContainer
+  from '*/components/containers/segments/profile/BaseProfilePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
-import getProfileCommunities from '*/helpers/actions/api/profile/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
 import {
   communities as formatProfileCommunitiesLink
 } from '*/helpers/formatters/links/profile'
@@ -49,9 +25,7 @@ import {
 export default {
   name: 'CommunitiesSegment',
   components: {
-    BaseHeaderSegment,
-    BaseSegmentContainer,
-    BasePaginatedListContainer,
+    BaseProfilePaginatedSegmentContainer,
     BaseCommunitiesSimpleList
   },
   props: {
@@ -62,50 +36,18 @@ export default {
   },
   data () {
     return {
-      error: null,
-      profileData: null,
-      isLoading: false,
-      limit: 5
+      limit: 3,
+      scope: 'communities'
     }
   },
   computed: {
-    communitiesArgs () {
-      return {
-        profileId: this.profileId,
-        scope: 'communities',
-        limit: this.limit
-      }
-    },
     headerLink () {
       return formatProfileCommunitiesLink({
         profileId: this.profileId
-      })
-    }
-  },
-  mounted () {
-    this.fetchData()
-  },
-  methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
-    handleFocus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
-    },
-    getProfileCommunities,
-    fetchData (page) {
-      this.getProfileCommunities({
-        ...this.communitiesArgs,
-        page
       })
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.communities-segment
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

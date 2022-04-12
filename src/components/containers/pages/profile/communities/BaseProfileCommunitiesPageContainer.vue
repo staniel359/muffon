@@ -9,7 +9,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -43,7 +43,8 @@ export default {
     return {
       error: null,
       profileData: null,
-      isLoading: false
+      isLoading: false,
+      scope: 'communities'
     }
   },
   computed: {
@@ -57,7 +58,7 @@ export default {
         profileId: this.profileId,
         profileNickname:
           this.profileNicknameFetched,
-        scope: 'communities'
+        scope: this.scope
       }
     },
     profileNicknameFetched () {
@@ -66,7 +67,7 @@ export default {
     communitiesArgs () {
       return {
         profileId: this.profileId,
-        scope: 'communities',
+        scope: this.scope,
         limit: this.limit
       }
     },
@@ -83,15 +84,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileCommunities,
     fetchData (page) {
       this.getProfileCommunities({
         ...this.communitiesArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

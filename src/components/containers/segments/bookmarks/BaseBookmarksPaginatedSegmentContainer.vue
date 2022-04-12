@@ -6,27 +6,19 @@
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
-      <BaseSegmentContainer
-        class="segment-container"
-        :isLoading="segmentSlotProps.isLoading"
+      <BasePaginatedSegmentContainer
+        responseDataName="bookmarksData"
+        :slotPropsData="segmentSlotProps"
+        :scope="scope"
+        :limit="limit"
+        @focus="handleFocus"
       >
-        <BasePaginatedListContainer
-          :isLoading="segmentSlotProps.isLoading"
-          :error="segmentSlotProps.error"
-          :responseData="segmentSlotProps.bookmarksData"
-          :scope="scope"
-          :limit="limit"
-          @fetchData="segmentSlotProps.fetchData"
-          @refresh="segmentSlotProps.handleRefresh"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-            ></slot>
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+          ></slot>
+        </template>
+      </BasePaginatedSegmentContainer>
     </template>
   </BaseBookmarksSegmentContainer>
 </template>
@@ -34,17 +26,14 @@
 <script>
 import BaseBookmarksSegmentContainer
   from './BaseBookmarksSegmentContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
-  name: 'BaseProfileFavoritesPaginatedSegmentContainer',
+  name: 'BaseBookmarksPaginatedSegmentContainer',
   components: {
     BaseBookmarksSegmentContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer
+    BasePaginatedSegmentContainer
   },
   props: {
     scope: String,
@@ -59,7 +48,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.segment-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

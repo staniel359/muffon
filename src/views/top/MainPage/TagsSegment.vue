@@ -1,12 +1,12 @@
 <template>
   <BaseTopPaginatedSegmentContainer
-    scope="tags"
+    :scope="scope"
     :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
       />
     </template>
   </BaseTopPaginatedSegmentContainer>
@@ -28,7 +28,8 @@ export default {
   },
   data () {
     return {
-      limit: 20
+      limit: 20,
+      scope: 'tags'
     }
   },
   computed: {

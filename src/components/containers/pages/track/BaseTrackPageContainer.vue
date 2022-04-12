@@ -4,20 +4,21 @@
     :isLoading="isLoading"
     :error="error"
   >
-    <slot
-      :trackData="trackData"
-      :requestTrackData="requestTrackData"
-      :profileId="profileId"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-    ></slot>
+    <template #default="slotProps">
+      <slot
+        :trackData="trackData"
+        :requestTrackData="requestTrackData"
+        :profileId="slotProps.profileId"
+        :isLoading="isLoading"
+        :error="error"
+        :fetchData="fetchData"
+        :refresh="refresh"
+      ></slot>
+    </template>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -59,12 +60,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     navigationSections () {
       return formatTrackPageNavigation(
         this.navigationData
@@ -114,9 +109,6 @@ export default {
     this.resetRequestTrackData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     handleRequestTrackDataChange () {
       this.fetchData()
     },
@@ -148,6 +140,9 @@ export default {
         ...this.trackArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

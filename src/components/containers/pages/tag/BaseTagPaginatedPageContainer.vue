@@ -1,71 +1,39 @@
 <template>
   <BaseTagPageContainer
-    ref="pageContainer"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BasePaginatedPageContainer
+        responseDataName="tagData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+        :responsePageLimit="responsePageLimit"
+        :isWithViewChange="isWithViewChange"
+        :viewIndex="viewIndex"
       >
-        <BaseSegmentContainer
-          v-if="isWithViewChange"
-        >
-          <BaseViewChangeButtons
-            :viewIndex="viewIndex"
-            @viewButtonClick="handleViewButtonClick"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
-        >
-          <BasePaginatedListContainer
-            ref="paginatedContainer"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.tagData"
-            :scope="scope"
-            :limit="limit"
-            :responsePageLimit="responsePageLimit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <slot
-                :[scope]="slotProps[scope]"
-                :profileId="pageSlotProps.profileId"
-              ></slot>
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
-      </div>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :profileId="pageSlotProps.profileId"
+          ></slot>
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseTagPageContainer>
 </template>
 
 <script>
 import BaseTagPageContainer from './BaseTagPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseViewChangeButtons
-  from '*/components/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
   name: 'BaseTagPaginatedPageContainer',
   components: {
     BaseTagPageContainer,
-    BaseSegmentContainer,
-    BaseViewChangeButtons,
-    BasePaginatedListContainer
+    BasePaginatedPageContainer
   },
   props: {
     scope: String,
@@ -73,26 +41,6 @@ export default {
     responsePageLimit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number
-  },
-  emits: [
-    'viewButtonClick'
-  ],
-  methods: {
-    handleViewButtonClick (index) {
-      this.$refs.paginatedContainer.reset()
-
-      this.$emit(
-        'viewButtonClick',
-        index
-      )
-
-      this.$nextTick(() => {
-        this.$refs.pageContainer.fetchData()
-      })
-    },
-    handleFocus () {
-      window.scrollTo(0, 0)
-    }
   }
 }
 </script>

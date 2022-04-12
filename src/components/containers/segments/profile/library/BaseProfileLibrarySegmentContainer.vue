@@ -9,11 +9,11 @@
     />
 
     <slot
+      :libraryData="libraryData"
       :isLoading="isLoading"
       :error="error"
-      :libraryData="libraryData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -59,10 +59,10 @@ export default {
       return this.profileData?.library
     }
   },
+  mounted () {
+    this.fetchData()
+  },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileLibrary,
     fetchData (page) {
       this.getProfileLibrary({
@@ -70,16 +70,14 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
-  },
-  mounted () {
-    this.fetchData()
   }
 }
 </script>

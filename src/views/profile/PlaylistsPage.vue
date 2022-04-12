@@ -14,11 +14,9 @@
         <BaseSegmentContainer
           class="top-segment"
         >
-          <div>
-            <BasePlaylistCreateButton
-              v-if="isRenderCreateButton"
-            />
-          </div>
+          <BasePlaylistCreateButton
+            v-if="isRenderCreateButton"
+          />
 
           <BaseLink
             :link="playlistsLink"
@@ -26,27 +24,20 @@
           />
         </BaseSegmentContainer>
 
-        <BaseSegmentContainer
+        <BasePaginatedSegmentContainer
           class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
+          responseDataName="profileData"
+          :slotPropsData="pageSlotProps"
+          :scope="scope"
+          :limit="limit"
+          @focus="handleFocus"
         >
-          <BasePaginatedListContainer
-            scope="playlists"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.profileData"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <BasePlaylistsSimpleList
-                :playlists="slotProps.playlists"
-              />
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
+          <template #default="slotProps">
+            <BasePlaylistsSimpleList
+              :playlists="slotProps[scope]"
+            />
+          </template>
+        </BasePaginatedSegmentContainer>
       </div>
     </template>
   </BaseProfilePlaylistsPageContainer>
@@ -60,8 +51,8 @@ import BaseSegmentContainer
 import BasePlaylistCreateButton
   from '*/components/buttons/playlist/BasePlaylistCreateButton.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BasePlaylistsSimpleList
   from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import { isCurrentProfile } from '*/helpers/utils'
@@ -74,7 +65,7 @@ export default {
     BaseSegmentContainer,
     BasePlaylistCreateButton,
     BaseLink,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentContainer,
     BasePlaylistsSimpleList
   },
   props: {
@@ -82,7 +73,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'playlists'
     }
   },
   computed: {

@@ -4,59 +4,37 @@
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
-        :class="[
-          'raised',
-          'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
-        ]"
-        :isLoading="pageSlotProps.isLoading"
+      <BasePaginatedPageContainer
+        responseDataName="trackData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
       >
-        <BasePaginatedListContainer
-          :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.trackData"
-          :scope="scope"
-          :limit="limit"
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-              :profileId="pageSlotProps.profileId"
-            ></slot>
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :profileId="pageSlotProps.profileId"
+          ></slot>
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseTrackPageContainer>
 </template>
 
 <script>
 import BaseTrackPageContainer from './BaseTrackPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
   name: 'BaseTrackPaginatedPageContainer',
   components: {
     BaseTrackPageContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer
+    BasePaginatedPageContainer
   },
   props: {
     scope: String,
     limit: Number
-  },
-  methods: {
-    handleFocus () {
-      window.scrollTo(0, 0)
-    }
   }
 }
 </script>

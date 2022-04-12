@@ -1,7 +1,6 @@
 <template>
   <BaseModalContainer ref="modal">
     <BaseSegmentContainer
-      ref="scrollable"
       :class="[
         'scrolling content',
         'main-modal-content-full-height',
@@ -11,11 +10,11 @@
       @init="handleInit"
     >
       <BasePaginatedListContainer
+        :responseData="compatibilityData"
         :scope="scope"
+        :limit="limit"
         :isLoading="isLoading"
         :error="error"
-        :responseData="compatibilityData"
-        :limit="limit"
         @fetchData="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"

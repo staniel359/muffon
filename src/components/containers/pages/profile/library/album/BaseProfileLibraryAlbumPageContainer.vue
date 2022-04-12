@@ -10,7 +10,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -112,15 +112,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileLibraryAlbum,
     fetchData (page) {
       this.getProfileLibraryAlbum({
         ...this.libraryArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

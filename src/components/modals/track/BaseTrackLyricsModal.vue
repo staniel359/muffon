@@ -1,14 +1,14 @@
 <template>
   <BaseTrackModalContainer
     ref="modal"
-    scope="lyrics"
     sourceId="genius"
+    :scope="scope"
     :requestTrackData="requestTrackData"
   >
     <template #default="slotProps">
       <div class="main-lyrics-container">
         <p class="lyrics">
-          {{ slotProps.lyrics }}
+          {{ slotProps[scope] }}
         </p>
       </div>
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     trackId: Number
+  },
+  data () {
+    return {
+      scope: 'lyrics'
+    }
   },
   computed: {
     requestTrackData () {

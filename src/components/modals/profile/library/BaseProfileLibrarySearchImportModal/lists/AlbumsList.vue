@@ -1,8 +1,8 @@
 <template>
   <BasePaginatedListContainer
     v-if="albums.length"
-    scope="albums"
     :responseData="albumsData"
+    :scope="scope"
     :limit="limit"
     :responsePageLimit="totalCount"
     isReset
@@ -11,7 +11,7 @@
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList
-        :albums="slotProps.albums"
+        :albums="slotProps[scope]"
         isWithArtistName
         isWithDeleteOption
         isClearable
@@ -51,7 +51,8 @@ export default {
   ],
   data () {
     return {
-      limit: 20
+      limit: 20,
+      scope: 'albums'
     }
   },
   computed: {
@@ -59,13 +60,8 @@ export default {
       return {
         page: 1,
         total_pages: 1,
-        albums: this.albumsReversed
+        albums: [...this.albums]
       }
-    },
-    albumsReversed () {
-      return [
-        ...this.albums
-      ].reverse()
     },
     totalCount () {
       return this.albums.length
@@ -80,9 +76,10 @@ export default {
         return albumData.uuid !== uuid
       }
 
-      const albums = this.albums.filter(
-        isMatchedAlbum
-      )
+      const albums =
+        this.albums.filter(
+          isMatchedAlbum
+        )
 
       this.$emit(
         'change',

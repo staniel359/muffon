@@ -148,14 +148,14 @@ export default {
           file
         )
 
-      const image = {
+      const imageData = {
         uuid: generateKey(),
         url,
         data: reader.result
       }
 
       this.images.push(
-        image
+        imageData
       )
     },
     async processImage (imageData) {

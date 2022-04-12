@@ -1,5 +1,7 @@
 <template>
-  <BaseBookmarksPageContainer>
+  <BaseBookmarksPageContainer
+    :isFetchData="false"
+  >
     <ArtistsSegment />
 
     <AlbumsSegment />

@@ -1,13 +1,13 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    scope="tags"
-    :limit="limit"
     :profileId="profileId"
+    :scope="scope"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
         :profileId="profileId"
         isLinkToLibrary
       />
@@ -37,7 +37,8 @@ export default {
   },
   data () {
     return {
-      limit: 20
+      limit: 20,
+      scope: 'tags'
     }
   },
   computed: {

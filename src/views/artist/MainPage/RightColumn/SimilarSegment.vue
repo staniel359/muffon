@@ -1,15 +1,15 @@
 <template>
   <BaseArtistPaginatedSegmentContainer
-    scope="similar"
-    :limit="limit"
     :artistName="artistName"
+    :scope="scope"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
-        :itemsInRow="4"
-        :artists="slotProps.similar"
+        :artists="slotProps[scope]"
         :profileId="slotProps.profileId"
+        :itemsInRow="itemsInRow"
         isWithListenersCount
         isWithLibraryOption
         isWithFavoriteOption
@@ -43,7 +43,9 @@ export default {
   },
   data () {
     return {
-      limit: 4
+      limit: 4,
+      itemsInRow: 4,
+      scope: 'similar'
     }
   },
   computed: {

@@ -1,37 +1,41 @@
 <template>
-  <BaseAccordionContainer
-    :title="findText"
-    @init="handleInit"
-    @open="handleOpen"
-  >
-    <BaseTrackSearchContainer
-      v-if="isOpen"
-      sourceId="genius"
-      scope="tracks"
-      :query="query"
+  <div ref="segment">
+    <BaseAccordionContainer
+      :title="findText"
+      @open="handleOpen"
+      @close="handleClose"
     >
-      <template #default="slotProps">
-        <LyricsSelect
-          :isLoading="slotProps.isLoading"
-          :isError="slotProps.isError"
-          :tracks="slotProps.tracks"
-        />
-      </template>
-    </BaseTrackSearchContainer>
+      <BaseTrackSearchContainer
+        v-if="isOpen"
+        sourceId="genius"
+        :scope="scope"
+        :query="query"
+      >
+        <template #default="slotProps">
+          <LyricsSelect
+            :isLoading="slotProps.isLoading"
+            :isError="slotProps.isError"
+            :tracks="slotProps[scope]"
+          />
+        </template>
+      </BaseTrackSearchContainer>
 
-    <BaseTrackLyricsContainer
-      v-if="selectedTrackData"
-      :key="key"
-      :selectedTrackData="selectedTrackData"
-    >
-      <template #default="slotProps">
-        <LyricsData
-          :lyrics="slotProps.lyrics"
-          :trackId="slotProps.trackId"
-        />
-      </template>
-    </BaseTrackLyricsContainer>
-  </BaseAccordionContainer>
+      <BaseTrackLyricsContainer
+        v-if="selectedTrackData"
+        class="lyrics-data-segment"
+        :key="key"
+        :selectedTrackData="selectedTrackData"
+        @focus="handleFocus"
+      >
+        <template #default="slotProps">
+          <LyricsData
+            :lyrics="slotProps.lyrics"
+            :trackId="slotProps.trackId"
+          />
+        </template>
+      </BaseTrackLyricsContainer>
+    </BaseAccordionContainer>
+  </div>
 </template>
 
 <script>
@@ -65,10 +69,10 @@ export default {
   },
   data () {
     return {
-      segment: null,
       selectedTrackData: null,
       key: null,
-      isOpen: false
+      isOpen: false,
+      scope: 'tracks'
     }
   },
   computed: {
@@ -79,27 +83,42 @@ export default {
     }
   },
   watch: {
-    selectedTrackData: 'handleSelectedTrackDataChange'
+    selectedTrackData:
+      'handleSelectedTrackDataChange'
   },
   methods: {
-    handleInit (el) {
-      this.segment = el
-    },
     handleOpen () {
       this.isOpen = true
-    },
-    handleSelectedTrackDataChange () {
-      this.key = generateKey()
 
-      focusOnSegment(
-        this.segment
-      )
+      this.focus()
+    },
+    handleClose () {
+      this.isOpen = false
+      this.selectedTrackData = null
+    },
+    handleSelectedTrackDataChange (value) {
+      if (value) {
+        this.key = generateKey()
+
+        this.focus()
+      }
+    },
+    handleFocus () {
+      this.focus()
     },
     setSelectedTrackData (value) {
       this.selectedTrackData = value
+    },
+    focus () {
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.lyrics-data-segment
+  @extend .no-padding
+</style>

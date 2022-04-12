@@ -1,13 +1,13 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
-    scope="tags"
     :profileId="profileId"
+    :scope="scope"
     :limit="limit"
     isWithSearch
   >
     <template #default="slotProps">
       <BaseTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
         :profileId="profileId"
         isLinkToLibrary
       />
@@ -31,7 +31,8 @@ export default {
   },
   data () {
     return {
-      limit: 100
+      limit: 100,
+      scope: 'tags'
     }
   }
 }

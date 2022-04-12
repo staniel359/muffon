@@ -10,19 +10,18 @@
     @init="handleInit"
   >
     <BasePaginatedListContainer
-      ref="paginatedContainer"
-      scope="feed"
+      :responseData="profileData"
+      :scope="scope"
+      :limit="limit"
       :isLoading="isLoading"
       :error="error"
-      :responseData="profileData"
-      :limit="limit"
-      @focus="handleFocus"
       @fetchData="fetchData"
       @refresh="handleRefresh"
+      @focus="handleFocus"
     >
       <template #default="slotProps">
         <BasePostsSimpleList
-          :posts="slotProps.feed"
+          :posts="slotProps[scope]"
         />
       </template>
     </BasePaginatedListContainer>
@@ -51,7 +50,8 @@ export default {
       profileData: null,
       error: null,
       isLoading: false,
-      limit: 50
+      limit: 50,
+      scope: 'feed'
     }
   },
   computed: {

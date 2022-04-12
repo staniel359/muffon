@@ -39,9 +39,10 @@ export default {
   ],
   data () {
     return {
-      isLoading: false,
+      albumData: null,
       error: null,
-      albumData: null
+      isLoading: false,
+      scope: 'listeners_count'
     }
   },
   computed: {
@@ -61,7 +62,7 @@ export default {
       return {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        scope: 'listeners_count'
+        scope: this.scope
       }
     }
   },

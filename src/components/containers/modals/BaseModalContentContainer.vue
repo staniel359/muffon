@@ -37,10 +37,14 @@ export default {
   ],
   methods: {
     handleCall () {
-      this.$emit('call')
+      this.$emit(
+        'call'
+      )
     },
     handleRefresh () {
-      this.$emit('refresh')
+      this.$emit(
+        'refresh'
+      )
     },
     show () {
       this.$refs.modal.show()

@@ -38,15 +38,15 @@ export default {
     AlbumItem
   },
   props: {
-    itemsInRow: {
-      type: Number,
-      required: true
-    },
     albums: {
       type: Array,
       default () {
         return []
       }
+    },
+    itemsInRow: {
+      type: Number,
+      required: true
     },
     artistName: String,
     isWithArtistName: Boolean,

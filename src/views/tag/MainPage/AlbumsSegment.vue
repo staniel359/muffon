@@ -1,15 +1,15 @@
 <template>
   <BaseTagPaginatedSegmentContainer
-    scope="albums"
-    :limit="limit"
-    :responsePageLimit="20"
     :tagName="tagName"
+    :scope="scope"
+    :limit="limit"
+    :responsePageLimit="responsePageLimit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
-        :itemsInRow="4"
-        :albums="slotProps.albums"
+        :albums="slotProps[scope]"
+        :itemsInRow="itemsInRow"
         isWithArtistName
         isWithListenersCount
         isWithLibraryOption
@@ -42,7 +42,10 @@ export default {
   },
   data () {
     return {
-      limit: 4
+      limit: 4,
+      responsePageLimit: 20,
+      itemsInRow: 4,
+      scope: 'albums'
     }
   },
   computed: {

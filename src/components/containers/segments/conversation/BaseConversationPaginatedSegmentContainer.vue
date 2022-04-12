@@ -7,13 +7,13 @@
   >
     <template #default="segmentSlotProps">
       <BasePaginatedListContainer
-        :isLoading="segmentSlotProps.isLoading"
-        :error="segmentSlotProps.error"
         :responseData="segmentSlotProps.conversationData"
         :scope="scope"
         :limit="limit"
+        :isLoading="segmentSlotProps.isLoading"
+        :error="segmentSlotProps.error"
         @fetchData="segmentSlotProps.fetchData"
-        @refresh="segmentSlotProps.handleRefresh"
+        @refresh="segmentSlotProps.refresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
@@ -51,7 +51,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.segment-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

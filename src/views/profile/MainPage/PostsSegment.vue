@@ -1,25 +1,27 @@
 <template>
-  <div class="ui raised segments main-segment-container">
-    <BaseHeaderSegment
-      scope="posts"
-      :link="headerLink"
-    />
+  <BaseProfileSegmentContainer
+    scope="posts"
+    :headerLink="headerLink"
+    :isFetchData="false"
+  >
+    <template #default>
+      <BasePostsFormSegment
+        postType="profile"
+        :profileId="profileId"
+        @success="handlePostCreateSuccess"
+      />
 
-    <BasePostsFormSegment
-      postType="profile"
-      :profileId="profileId"
-      @success="handleSuccess"
-    />
-
-    <PostsListSegment
-      :key="key"
-      :profileId="profileId"
-    />
-  </div>
+      <PostsListSegment
+        :key="key"
+        :profileId="profileId"
+      />
+    </template>
+  </BaseProfileSegmentContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseProfileSegmentContainer
+  from '*/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import BasePostsFormSegment
   from '*/components/segments/posts/BasePostsFormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
@@ -31,7 +33,7 @@ import {
 export default {
   name: 'PostsSegment',
   components: {
-    BaseHeaderSegment,
+    BaseProfileSegmentContainer,
     BasePostsFormSegment,
     PostsListSegment
   },
@@ -54,7 +56,7 @@ export default {
     }
   },
   methods: {
-    handleSuccess () {
+    handlePostCreateSuccess () {
       this.key = generateKey()
     }
   }

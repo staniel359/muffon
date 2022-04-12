@@ -1,12 +1,12 @@
 <template>
   <BaseTrackModalContainer
     ref="modal"
-    scope="description"
+    :scope="scope"
     :requestTrackData="requestTrackData"
   >
     <template #default="slotProps">
       <BaseDescription
-        :description="slotProps.description"
+        :description="slotProps[scope]"
         isModal
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     requestTrackData: Object
+  },
+  data () {
+    return {
+      scope: 'description'
+    }
   },
   methods: {
     show () {

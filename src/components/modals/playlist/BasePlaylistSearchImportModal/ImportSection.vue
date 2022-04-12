@@ -1,5 +1,5 @@
 <template>
-  <div class="main-library-modal-import-section">
+  <div class="main-modal-import-section">
     <SearchList
       :tracks="tracks"
       @change="handleChange"

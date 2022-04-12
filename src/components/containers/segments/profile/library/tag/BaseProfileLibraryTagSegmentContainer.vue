@@ -9,11 +9,11 @@
     />
 
     <slot
+      :libraryTagData="libraryTagData"
       :isLoading="isLoading"
       :error="error"
-      :libraryTagData="libraryTagData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -65,10 +65,10 @@ export default {
       return this.profileData?.library?.tag
     }
   },
+  mounted () {
+    this.fetchData()
+  },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileLibraryTag,
     fetchData (page) {
       this.getProfileLibraryTag({
@@ -76,16 +76,14 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
-  },
-  mounted () {
-    this.fetchData()
   }
 }
 </script>

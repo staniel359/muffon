@@ -7,46 +7,35 @@
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
-      <BaseSegmentContainer
-        class="segment-container"
-        :isLoading="segmentSlotProps.isLoading"
+      <BasePaginatedSegmentContainer
+        responseDataName="artistData"
+        :slotPropsData="segmentSlotProps"
+        :scope="scope"
+        :limit="limit"
+        @focus="handleFocus"
       >
-        <BasePaginatedListContainer
-          :isLoading="segmentSlotProps.isLoading"
-          :error="segmentSlotProps.error"
-          :responseData="segmentSlotProps.artistData"
-          :scope="scope"
-          :limit="limit"
-          @fetchData="segmentSlotProps.fetchData"
-          @refresh="segmentSlotProps.handleRefresh"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-              :topTrackCount="segmentSlotProps.topTrackCount"
-              :profileId="segmentSlotProps.profileId"
-            ></slot>
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :topTrackCount="segmentSlotProps.topTrackCount"
+            :profileId="slotProps.profileId"
+          ></slot>
+        </template>
+      </BasePaginatedSegmentContainer>
     </template>
   </BaseArtistSegmentContainer>
 </template>
 
 <script>
 import BaseArtistSegmentContainer from './BaseArtistSegmentContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
   name: 'BaseArtistPaginatedSegmentContainer',
   components: {
     BaseArtistSegmentContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer
+    BasePaginatedSegmentContainer
   },
   props: {
     artistName: String,
@@ -62,7 +51,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.segment-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

@@ -1,12 +1,12 @@
 <template>
   <BaseArtistModalContainer
     ref="modal"
-    scope="tags"
     :artistName="artistName"
+    :scope="scope"
   >
     <template #default="slotProps">
       <BaseModalTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
         @tagClick="handleTagClick"
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     artistName: String
+  },
+  data () {
+    return {
+      scope: 'tags'
+    }
   },
   methods: {
     handleTagClick () {

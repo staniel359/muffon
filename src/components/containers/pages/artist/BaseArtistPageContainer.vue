@@ -5,21 +5,22 @@
     :error="pageError"
     @init="handleInit"
   >
-    <slot
-      :artistData="artistData"
-      :artistName="artistNameFetched"
-      :profileId="profileId"
-      :topTrackCount="topTrackCount"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-    ></slot>
+    <template #default="slotProps">
+      <slot
+        :artistData="artistData"
+        :artistName="artistNameFetched"
+        :profileId="slotProps.profileId"
+        :topTrackCount="topTrackCount"
+        :isLoading="isLoading"
+        :error="error"
+        :fetchData="fetchData"
+        :refresh="refresh"
+      ></slot>
+    </template>
   </BasePageContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -64,12 +65,6 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     navigationSections () {
       return formatArtistPageNavigation(
         this.navigationData
@@ -126,10 +121,10 @@ export default {
   },
   methods: {
     handleInit (el) {
-      this.$emit('init', el)
-    },
-    handleRefresh (page) {
-      this.fetchData(page)
+      this.$emit(
+        'init',
+        el
+      )
     },
     handleRequestArtistDataChange () {
       this.fetchData()
@@ -154,6 +149,9 @@ export default {
         ...this.artistArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

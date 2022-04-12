@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-library-modal-retry-section"
+    class="main-modal-import-section"
     ref="scrollable"
   >
     <div class="main-library-modal-message-container">
@@ -11,8 +11,8 @@
     </div>
 
     <BasePaginatedListContainer
-      scope="files"
       :responseData="errorFilesData"
+      :scope="scope"
       :limit="limit"
       :responsePageLimit="totalCount"
       isReset
@@ -21,7 +21,7 @@
     >
       <template #default="slotProps">
         <BaseTracksSimpleList
-          :tracks="slotProps.files"
+          :tracks="slotProps[scope]"
           isWithArtistName
           isWithAlbumTitle
           isWithImage
@@ -72,7 +72,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'files'
     }
   },
   computed: {

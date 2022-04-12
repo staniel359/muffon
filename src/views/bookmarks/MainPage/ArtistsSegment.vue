@@ -1,12 +1,12 @@
 <template>
   <BaseBookmarksPaginatedSegmentContainer
-    scope="artists"
+    :scope="scope"
     :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList
-        :artists="slotProps.artists"
+        :artists="slotProps[scope]"
         isWithDeleteOption
         isBookmark
       />
@@ -31,7 +31,8 @@ export default {
   },
   data () {
     return {
-      limit: 5
+      limit: 5,
+      scope: 'artists'
     }
   },
   computed: {

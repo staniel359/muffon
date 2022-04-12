@@ -11,19 +11,18 @@
       @init="handleInit"
     >
       <BasePaginatedListContainer
-        v-if="recommendationData"
-        scope="profile_artists"
+        :responseData="recommendationData"
+        :scope="scope"
+        :limit="limit"
         :isLoading="isLoading"
         :error="error"
-        :responseData="recommendationData"
-        :limit="limit"
         @fetchData="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <BaseArtistsSimpleList
-            :artists="slotProps.profile_artists"
+            :artists="slotProps[scope]"
             :profileId="profileId"
             isLinkToLibrary
             isImageSmall
@@ -68,7 +67,8 @@ export default {
       scrollable: null,
       isLoading: false,
       isOpen: false,
-      limit: 50
+      limit: 50,
+      scope: 'profile_artists'
     }
   },
   computed: {

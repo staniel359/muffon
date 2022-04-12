@@ -11,7 +11,7 @@ import { mapState } from 'vuex'
 import BaseMessage from '*/components/messages/BaseMessage.vue'
 
 export default {
-  name: 'BaseNoCollectionMessage',
+  name: 'NoCollectionMessage',
   components: {
     BaseMessage
   },
@@ -21,13 +21,15 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      icons: ['question']
+    }
+  },
   computed: {
     ...mapState('layout', [
       'isDarkMode'
     ]),
-    icons () {
-      return ['question']
-    },
     header () {
       return this.$t(
         `noCollection.header.${this.scope}`

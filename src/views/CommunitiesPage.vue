@@ -14,28 +14,20 @@
           <BaseCommunityCreateButton />
         </BaseSegmentContainer>
 
-        <BaseSegmentContainer
+        <BasePaginatedSegmentContainer
           class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
+          responseDataName="communitiesData"
+          :slotPropsData="pageSlotProps"
+          :scope="scope"
+          :limit="limit"
+          @focus="handleFocus"
         >
-          <BasePaginatedListContainer
-            ref="paginatedContainer"
-            scope="communities"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.communitiesData"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <BaseCommunitiesSimpleList
-                :communities="slotProps.communities"
-              />
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
+          <template #default="slotProps">
+            <BaseCommunitiesSimpleList
+              :communities="slotProps[scope]"
+            />
+          </template>
+        </BasePaginatedSegmentContainer>
       </div>
     </template>
   </BaseCommunitiesPageContainer>
@@ -48,8 +40,8 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCommunityCreateButton
   from '*/components/buttons/community/BaseCommunityCreateButton.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 
@@ -59,12 +51,13 @@ export default {
     BaseCommunitiesPageContainer,
     BaseSegmentContainer,
     BaseCommunityCreateButton,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentContainer,
     BaseCommunitiesSimpleList
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'communities'
     }
   },
   methods: {

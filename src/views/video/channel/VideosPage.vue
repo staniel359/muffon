@@ -3,32 +3,20 @@
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
-        :class="[
-          'raised',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
-        :isLoading="pageSlotProps.isLoading"
+      <BasePaginatedPageContainer
+        responseDataName="channelData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+        isPaginationSimple
+        isReset
       >
-        <BasePaginatedListContainer
-          scope="videos"
-          :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.channelData"
-          :limit="limit"
-          isPaginationSimple
-          isReset
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
-        >
-          <template #default="slotProps">
-            <BaseVideosTableList
-              :videos="slotProps.videos"
-            />
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <BaseVideosTableList
+            :videos="slotProps[scope]"
+          />
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseVideoChannelPageContainer>
 </template>
@@ -36,10 +24,8 @@
 <script>
 import BaseVideoChannelPageContainer
   from '*/components/containers/pages/video/BaseVideoChannelPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseVideosTableList
   from '*/components/lists/videos/BaseVideosTableList.vue'
 
@@ -47,13 +33,13 @@ export default {
   name: 'VideosPage',
   components: {
     BaseVideoChannelPageContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedPageContainer,
     BaseVideosTableList
   },
   data () {
     return {
-      limit: 40
+      limit: 40,
+      scope: 'videos'
     }
   }
 }

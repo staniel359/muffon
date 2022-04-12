@@ -9,11 +9,11 @@
     />
 
     <slot
+      :favoritesData="favoritesData"
       :isLoading="isLoading"
       :error="error"
-      :favoritesData="favoritesData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -63,9 +63,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileFavorites,
     fetchData (page) {
       this.getProfileFavorites({
@@ -73,12 +70,13 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

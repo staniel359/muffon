@@ -77,10 +77,20 @@ export const hideQueuePanel = () => {
 
 export const focusOnSegment = el => {
   const segmentTop = $(el).offset().top
+
   const navbarHeight = 45
   const marginTop = 20
+
   const offsetTop =
     segmentTop - navbarHeight - marginTop
 
-  window.scrollTo(0, offsetTop)
+  const scrollToSegmentTop = () => {
+    window.scrollTo(
+      0, offsetTop
+    )
+  }
+
+  setTimeout(
+    scrollToSegmentTop, 0
+  )
 }

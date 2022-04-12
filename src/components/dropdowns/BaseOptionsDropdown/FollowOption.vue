@@ -5,14 +5,18 @@
     <template #default="slotProps">
       <div
         class="item"
-        :class="{ disabled: slotProps.isLoading }"
+        :class="{
+          disabled: slotProps.isLoading
+        }"
         @click.prevent="slotProps.onClick"
       >
         <i
           v-if="slotProps.isLoading"
           class="icon"
         >
-          <div class="ui mini active inline loader"></div>
+          <div
+            class="ui mini active inline loader"
+          ></div>
         </i>
         <i
           v-else

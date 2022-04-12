@@ -20,27 +20,20 @@
           />
         </BaseSegmentContainer>
 
-        <BaseSegmentContainer
+        <BasePaginatedSegmentContainer
           class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
+          responseDataName="profileData"
+          :slotPropsData="pageSlotProps"
+          :scope="scope"
+          :limit="limit"
+          @focus="handleFocus"
         >
-          <BasePaginatedListContainer
-            scope="communities"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.profileData"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <BaseCommunitiesSimpleList
-                :communities="slotProps.communities"
-              />
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
+          <template #default="slotProps">
+            <BaseCommunitiesSimpleList
+              :communities="slotProps[scope]"
+            />
+          </template>
+        </BasePaginatedSegmentContainer>
       </div>
     </template>
   </BaseProfileCommunitiesPageContainer>
@@ -52,8 +45,8 @@ import BaseProfileCommunitiesPageContainer
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import {
@@ -66,7 +59,7 @@ export default {
     BaseProfileCommunitiesPageContainer,
     BaseSegmentContainer,
     BaseLink,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentContainer,
     BaseCommunitiesSimpleList
   },
   props: {
@@ -74,7 +67,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'communities'
     }
   },
   computed: {

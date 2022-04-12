@@ -1,13 +1,14 @@
 <template>
   <BasePlaylistPaginatedSegmentContainer
-    scope="tracks"
+    class="main-paginated-page-segment-container"
     :profileId="profileId"
     :playlistId="playlistId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         :playlistTitle="playlistTitle"
         :playlistId="playlistId"
         isWithImage
@@ -39,7 +40,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'tracks'
     }
   }
 }

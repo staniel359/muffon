@@ -54,7 +54,7 @@ export default {
             'navigation.artists'
           ),
           scope: 'artists',
-          limit: 5,
+          limit: 3,
           component: 'BaseArtistsSimpleList'
         },
         {
@@ -62,7 +62,7 @@ export default {
             'navigation.albums'
           ),
           scope: 'albums',
-          limit: 5,
+          limit: 3,
           component: 'BaseAlbumsSimpleList'
         },
         {

@@ -7,7 +7,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -29,6 +29,10 @@ export default {
     navigationMixin
   ],
   props: {
+    isFetchData: {
+      type: Boolean,
+      default: true
+    },
     scope: String,
     limit: Number
   },
@@ -64,17 +68,21 @@ export default {
   },
   mounted () {
     this.setNavigation()
+
+    if (this.isFetchData) {
+      this.fetchData()
+    }
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getTop,
     fetchData (page) {
       this.getTop({
         ...this.topArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

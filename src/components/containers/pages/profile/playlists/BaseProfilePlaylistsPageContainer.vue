@@ -9,7 +9,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -22,7 +22,7 @@ import formatProfilePageNavigation
   from '*/helpers/formatters/navigation/profile'
 import formatProfilePlaylistsPageTab
   from '*/helpers/formatters/tabs/profile/playlists'
-import getProfilePlaylists from '*/helpers/actions/api/profile/playlists/get'
+import getProfilePlaylists from '*/helpers/actions/api/profile/get'
 
 export default {
   name: 'BaseProfilePlaylistsPageContainer',
@@ -43,7 +43,8 @@ export default {
     return {
       error: null,
       profileData: null,
-      isLoading: false
+      isLoading: false,
+      scope: 'playlists'
     }
   },
   computed: {
@@ -57,7 +58,7 @@ export default {
         profileId: this.profileId,
         profileNickname:
           this.profileNicknameFetched,
-        scope: 'playlists'
+        scope: this.scope
       }
     },
     profileNicknameFetched () {
@@ -66,6 +67,7 @@ export default {
     playlistsArgs () {
       return {
         profileId: this.profileId,
+        scope: this.scope,
         limit: this.limit
       }
     },
@@ -82,15 +84,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfilePlaylists,
     fetchData (page) {
       this.getProfilePlaylists({
         ...this.playlistsArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

@@ -53,7 +53,9 @@ export default {
       }
     },
     collection () {
-      return this.searchData?.[this.scope]
+      return this.searchData?.[
+        this.scope
+      ]
     }
   },
   mounted () {

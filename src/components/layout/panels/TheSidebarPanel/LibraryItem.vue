@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   main as formatProfileLibraryMainLink
@@ -18,10 +17,13 @@ export default {
   components: {
     BaseSidebarItem
   },
+  props: {
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     profileLibraryText () {
       return this.$t(
         'navigation.library'
@@ -31,9 +33,6 @@ export default {
       return formatProfileLibraryMainLink({
         profileId: this.profileId
       })
-    },
-    profileId () {
-      return this.profileInfo.id
     }
   }
 }

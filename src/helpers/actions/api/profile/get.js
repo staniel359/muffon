@@ -1,7 +1,15 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ profileId, token, scope = '', page, limit }) {
+export default function ({
+  profileId,
+  token,
+  scope = '',
+  artistName,
+  trackTitle,
+  page,
+  limit
+}) {
   this.error = null
   this.isLoading = true
 
@@ -14,6 +22,12 @@ export default function ({ profileId, token, scope = '', page, limit }) {
     token,
     ...(otherProfileId && {
       other_profile_id: otherProfileId
+    }),
+    ...(artistName && {
+      artist_name: artistName
+    }),
+    ...(trackTitle && {
+      track_title: trackTitle
     }),
     ...(page && { page }),
     ...(limit && { limit })

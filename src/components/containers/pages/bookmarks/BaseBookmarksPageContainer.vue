@@ -9,7 +9,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -32,6 +32,10 @@ export default {
     navigationMixin
   ],
   props: {
+    isFetchData: {
+      type: Boolean,
+      default: true
+    },
     scope: String,
     limit: Number
   },
@@ -71,18 +75,22 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    if (this.isFetchData) {
+      this.fetchData()
+    } else {
+      this.profileData = {}
+    }
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getBookmarks,
     fetchData (page) {
       this.getBookmarks({
         ...this.bookmarksArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

@@ -4,11 +4,11 @@
     :isLoading="isLoading"
   >
     <slot
+      :conversationData="conversationData"
       :isLoading="isLoading"
       :error="error"
-      :conversationData="conversationData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BaseSegmentContainer>
 </template>
@@ -51,15 +51,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getConversation,
     fetchData (page) {
       this.getConversation({
         ...this.conversationArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     },
     focus () {
       this.$refs.segment.focus()

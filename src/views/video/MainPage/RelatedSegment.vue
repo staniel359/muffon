@@ -1,32 +1,26 @@
 <template>
   <BaseVideoSegmentContainer
     ref="segment"
-    scope="related"
     :videoId="videoId"
+    :scope="scope"
     :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
-        :isLoading="pageSlotProps.isLoading"
+      <BasePaginatedSegmentContainer
+        responseDataName="videoData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+        :clientPageLimit="clientPageLimit"
+        @focus="handleFocus"
       >
-        <BasePaginatedListContainer
-          scope="related"
-          :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.videoData"
-          :limit="limit"
-          :clientPageLimit="4"
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
-        >
-          <template #default="slotProps">
-            <BaseVideosTableList
-              :videos="slotProps.related"
-            />
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <BaseVideosTableList
+            :videos="slotProps[scope]"
+          />
+        </template>
+      </BasePaginatedSegmentContainer>
     </template>
   </BaseVideoSegmentContainer>
 </template>
@@ -34,10 +28,8 @@
 <script>
 import BaseVideoSegmentContainer
   from '*/components/containers/segments/video/BaseVideoSegmentContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseVideosTableList
   from '*/components/lists/videos/BaseVideosTableList.vue'
 import {
@@ -48,8 +40,7 @@ export default {
   name: 'RelatedSegment',
   components: {
     BaseVideoSegmentContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentContainer,
     BaseVideosTableList
   },
   props: {
@@ -60,7 +51,9 @@ export default {
   },
   data () {
     return {
-      limit: 40
+      limit: 40,
+      clientPageLimit: 4,
+      scope: 'related'
     }
   },
   computed: {
@@ -81,7 +74,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.segment-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

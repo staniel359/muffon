@@ -25,7 +25,8 @@ export default {
     return {
       error: null,
       searchData: null,
-      isLoading: false
+      isLoading: false,
+      scope: 'tracks'
     }
   },
   computed: {
@@ -33,7 +34,7 @@ export default {
       return {
         sourceId: this.sourceId,
         query: this.query,
-        scope: 'tracks'
+        scope: this.scope
       }
     },
     tracks () {

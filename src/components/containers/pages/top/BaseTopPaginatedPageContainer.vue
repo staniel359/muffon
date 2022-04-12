@@ -1,98 +1,43 @@
 <template>
   <BaseTopPageContainer
-    ref="pageContainer"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <div
-        :class="[
-          'ui raised segments',
-          'main-segment-container',
-          'main-page-segment-container'
-        ]"
+      <BasePaginatedPageContainer
+        responseDataName="topData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+        :isWithViewChange="isWithViewChange"
+        :viewIndex="viewIndex"
       >
-        <BaseSegmentContainer
-          v-if="isWithViewChange"
-        >
-          <BaseViewChangeButtons
-            :viewIndex="viewIndex"
-            @viewButtonClick="handleViewButtonClick"
-          />
-        </BaseSegmentContainer>
-
-        <BaseSegmentContainer
-          class="main-paginated-page-segment-container"
-          :isLoading="pageSlotProps.isLoading"
-        >
-          <BasePaginatedListContainer
-            ref="paginatedContainer"
-            :isLoading="pageSlotProps.isLoading"
-            :error="pageSlotProps.error"
-            :responseData="pageSlotProps.topData"
-            :scope="scope"
-            :limit="limit"
-            @focus="handleFocus"
-            @fetchData="pageSlotProps.fetchData"
-            @refresh="pageSlotProps.handleRefresh"
-          >
-            <template #default="slotProps">
-              <slot
-                :[scope]="slotProps[scope]"
-              ></slot>
-            </template>
-          </BasePaginatedListContainer>
-        </BaseSegmentContainer>
-      </div>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+          ></slot>
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseTopPageContainer>
 </template>
 
 <script>
 import BaseTopPageContainer from './BaseTopPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseViewChangeButtons
-  from '*/components/buttons/BaseViewChangeButtons.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
   name: 'BaseTopPaginatedPageContainer',
   components: {
     BaseTopPageContainer,
-    BaseSegmentContainer,
-    BaseViewChangeButtons,
-    BasePaginatedListContainer
+    BasePaginatedPageContainer
   },
   props: {
     scope: String,
     limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number
-  },
-  emits: [
-    'viewButtonClick'
-  ],
-  mounted () {
-    this.$refs.pageContainer.fetchData()
-  },
-  methods: {
-    handleViewButtonClick (index) {
-      this.$refs.paginatedContainer.reset()
-
-      this.$emit(
-        'viewButtonClick',
-        index
-      )
-
-      this.$nextTick(() => {
-        this.$refs.pageContainer.fetchData()
-      })
-    },
-    handleFocus () {
-      window.scrollTo(0, 0)
-    }
   }
 }
 </script>

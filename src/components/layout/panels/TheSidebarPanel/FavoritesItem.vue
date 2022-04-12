@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   main as formatProfileFavoritesMainLink
@@ -18,10 +17,13 @@ export default {
   components: {
     BaseSidebarItem
   },
+  props: {
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     favoritesText () {
       return this.$t(
         'navigation.favorites'
@@ -31,9 +33,6 @@ export default {
       return formatProfileFavoritesMainLink({
         profileId: this.profileId
       })
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   }
 }

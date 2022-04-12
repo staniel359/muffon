@@ -10,7 +10,7 @@
       :isLoading="isLoading"
       :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -44,7 +44,8 @@ export default {
     return {
       error: null,
       communityData: null,
-      isLoading: false
+      isLoading: false,
+      scope: 'posts'
     }
   },
   computed: {
@@ -58,7 +59,7 @@ export default {
         communityId: this.communityId,
         communityTitle:
           this.communityTitleFetched,
-        scope: 'posts'
+        scope: this.scope
       }
     },
     communityTitleFetched () {
@@ -67,7 +68,7 @@ export default {
     postsArgs () {
       return {
         communityId: this.communityId,
-        scope: 'posts',
+        scope: this.scope,
         limit: this.limit
       }
     },
@@ -87,15 +88,15 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getCommunityPosts,
     fetchData (page) {
       this.getCommunityPosts({
         ...this.postsArgs,
         page
       })
+    },
+    refresh (page) {
+      this.fetchData(page)
     }
   }
 }

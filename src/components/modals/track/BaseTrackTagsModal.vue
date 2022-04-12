@@ -1,12 +1,12 @@
 <template>
   <BaseTrackModalContainer
     ref="modal"
-    scope="tags"
+    :scope="scope"
     :requestTrackData="requestTrackData"
   >
     <template #default="slotProps">
       <BaseModalTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
         @tagClick="handleTagClick"
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     requestTrackData: Object
+  },
+  data () {
+    return {
+      scope: 'tags'
+    }
   },
   methods: {
     handleTagClick () {

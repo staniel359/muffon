@@ -1,6 +1,6 @@
 <template>
   <div
-    class="main-library-modal-retry-section"
+    class="main-modal-import-section"
     ref="scrollable"
   >
     <div class="main-library-modal-message-container">

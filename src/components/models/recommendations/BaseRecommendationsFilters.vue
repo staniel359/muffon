@@ -1,45 +1,42 @@
 <template>
-  <BaseSegmentContainer>
-    <BaseAccordionContainer
-      :title="filterText"
-      @open="handleOpen"
-    >
-      <div class="filters-block-container">
-        <FilterScopeSelect
-          @select="handleFilterChange"
-        />
+  <BaseAccordionContainer
+    :title="filterText"
+    @open="handleOpen"
+  >
+    <div class="filters-block-container">
+      <FilterScopeSelect
+        @select="handleFilterScopeSelect"
+      />
 
-        <Component
-          ref="filter"
-          :is="filterComponent"
-          :[filter]="filterItems"
-          @change="handleFilterItemsChange"
-        />
-      </div>
-
-      <FilterItems
-        :filterItems="filterItems"
+      <Component
+        ref="filter"
+        :is="filterComponent"
+        :[filterScope]="filterItems"
         @change="handleFilterItemsChange"
       />
-    </BaseAccordionContainer>
-  </BaseSegmentContainer>
+    </div>
+
+    <FilterItems
+      :filterItems="filterItems"
+      @change="handleFilterItemsChange"
+    />
+  </BaseAccordionContainer>
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
 import ProfileArtistsFilterBlock
-  from './FiltersSegment/ProfileArtistsFilterBlock.vue'
-import TagsFilterBlock from './FiltersSegment/TagsFilterBlock.vue'
-import FilterScopeSelect from './FiltersSegment/FilterScopeSelect.vue'
-import FilterItems from './FiltersSegment/FilterItems.vue'
+  from './BaseRecommendationsFilters/ProfileArtistsFilterBlock.vue'
+import TagsFilterBlock
+  from './BaseRecommendationsFilters/TagsFilterBlock.vue'
+import FilterScopeSelect
+  from './BaseRecommendationsFilters/FilterScopeSelect.vue'
+import FilterItems from './BaseRecommendationsFilters/FilterItems.vue'
 
 export default {
-  name: 'FiltersSegment',
+  name: 'BaseRecommendationsFilters',
   components: {
-    BaseSegmentContainer,
     BaseAccordionContainer,
     ProfileArtistsFilterBlock,
     TagsFilterBlock,
@@ -47,10 +44,10 @@ export default {
     FilterItems
   },
   props: {
-    filter: String
+    filterScope: String
   },
   emits: [
-    'filterChange',
+    'filterScopeChange',
     'filterValueChange'
   ],
   data () {
@@ -69,7 +66,9 @@ export default {
       )
     },
     filterComponent () {
-      return this.filters[this.filter]
+      return this.filters[
+        this.filterScope
+      ]
     },
     filterValue () {
       return this.filterItems.map(filterItemData => {
@@ -78,20 +77,22 @@ export default {
     }
   },
   watch: {
+    filterScope: 'handleFilterScopeChange',
     filterValue: 'handleFilterValueChange'
   },
   methods: {
     handleOpen () {
       this.$refs.filter.focusInput()
     },
-    handleFilterChange (value) {
+    handleFilterScopeSelect (value) {
       this.filterItems = []
 
       this.$emit(
-        'filterChange',
+        'filterScopeChange',
         value
       )
-
+    },
+    handleFilterScopeChange (value) {
       this.$nextTick(() => {
         this.$refs.filter.focusInput()
       })

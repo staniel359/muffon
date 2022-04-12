@@ -1,15 +1,14 @@
 <template>
   <BaseTopPaginatedPageContainer
-    scope="artists"
+    :scope="scope"
     :limit="limit"
     :viewIndex="viewIndex"
     isWithViewChange
-    @viewButtonClick="handleViewButtonClick"
   >
     <template #default="slotProps">
       <BaseArtistsList
         :viewIndex="viewIndex"
-        :artists="slotProps.artists"
+        :artists="slotProps[scope]"
         isWithListenersCount
         isWithLibraryOption
         isWithFavoriteOption
@@ -24,6 +23,7 @@
 import BaseTopPaginatedPageContainer
   from '*/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
 import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
+import viewChangeMixin from '*/mixins/viewChangeMixin'
 
 export default {
   name: 'ArtistsPage',
@@ -31,22 +31,12 @@ export default {
     BaseTopPaginatedPageContainer,
     BaseArtistsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   data () {
     return {
-      viewIndex: 1,
-      viewLimits: [50, 20, 10]
-    }
-  },
-  computed: {
-    limit () {
-      return this.viewLimits[
-        this.viewIndex
-      ]
-    }
-  },
-  methods: {
-    handleViewButtonClick (index) {
-      this.viewIndex = index
+      scope: 'artists'
     }
   }
 }

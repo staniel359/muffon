@@ -1,12 +1,12 @@
 <template>
   <BaseVideoModalContainer
     ref="modal"
-    scope="tags"
     :videoId="videoId"
+    :scope="scope"
   >
     <template #default="slotProps">
       <BaseModalTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
         @tagClick="handleTagClick"
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     videoId: String
+  },
+  data () {
+    return {
+      scope: 'tags'
+    }
   },
   methods: {
     handleTagClick () {

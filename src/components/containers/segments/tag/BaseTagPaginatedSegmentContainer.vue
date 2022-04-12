@@ -7,46 +7,35 @@
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
-      <BaseSegmentContainer
-        class="segment-container"
-        :isLoading="segmentSlotProps.isLoading"
+      <BasePaginatedSegmentContainer
+        responseDataName="tagData"
+        :slotPropsData="segmentSlotProps"
+        :scope="scope"
+        :limit="limit"
+        :responsePageLimit="responsePageLimit"
+        @focus="handleFocus"
       >
-        <BasePaginatedListContainer
-          :isLoading="segmentSlotProps.isLoading"
-          :error="segmentSlotProps.error"
-          :responseData="segmentSlotProps.tagData"
-          :scope="scope"
-          :limit="limit"
-          :responsePageLimit="responsePageLimit"
-          @fetchData="segmentSlotProps.fetchData"
-          @refresh="segmentSlotProps.handleRefresh"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-              :profileId="segmentSlotProps.profileId"
-            ></slot>
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :profileId="segmentSlotProps.profileId"
+          ></slot>
+        </template>
+      </BasePaginatedSegmentContainer>
     </template>
   </BaseTagSegmentContainer>
 </template>
 
 <script>
 import BaseTagSegmentContainer from './BaseTagSegmentContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
   name: 'BaseTagPaginatedSegmentContainer',
   components: {
     BaseTagSegmentContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer
+    BasePaginatedSegmentContainer
   },
   props: {
     tagName: String,
@@ -63,7 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.segment-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

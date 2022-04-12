@@ -1,6 +1,8 @@
 <template>
   <p
-    :class="{ 'main-text-container': isModal }"
+    :class="{
+      'main-text-container': isModal
+    }"
   >
     {{ description }}
 

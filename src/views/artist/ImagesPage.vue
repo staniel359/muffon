@@ -1,18 +1,18 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    scope="images"
     :artistName="artistName"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <ImagesList
-        :images="slotProps.images"
+        :images="slotProps[scope]"
         :modal="modal"
         :mainSlider="mainSlider"
       />
 
       <BaseArtistImageModal
-        :images="slotProps.images"
+        :images="slotProps[scope]"
         @init="handleModalInit"
         @mainSliderInit="handleMainSliderInit"
       />
@@ -41,7 +41,8 @@ export default {
     return {
       modal: null,
       mainSlider: null,
-      limit: 40
+      limit: 40,
+      scope: 'images'
     }
   },
   methods: {

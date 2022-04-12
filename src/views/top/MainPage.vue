@@ -1,5 +1,7 @@
 <template>
-  <BaseTopPageContainer>
+  <BaseTopPageContainer
+    :isFetchData="false"
+  >
     <ArtistsSegment />
 
     <TracksSegment />

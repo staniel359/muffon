@@ -1,68 +1,50 @@
 <template>
   <div class="main-paginated-list-container">
     <div class="main-paginated-list-content-container">
-      <template v-if="!isLoading">
-        <BaseErrorMessage
-          v-if="error"
-          :error="error"
-          isWithRefreshButton
-          @refresh="handleRefresh"
-        />
-        <template v-else-if="responsePageCollection">
-          <BaseNoCollectionMessage
-            v-if="!isResponseCollection"
-            :scope="scope"
-          />
+      <ContentContainer
+        v-if="!isLoading"
+        :responsePageCollection="responsePageCollection"
+        :clientPageCollection="clientPageCollection"
+        :scope="scope"
+        :error="error"
+        @refresh="handleRefresh"
+      >
+        <template #default="slotProps">
           <slot
-            v-else-if="isClientPageCollectionFiltered"
-            :[scope]="clientPageCollectionFiltered"
-          />
+            :[scope]="slotProps[scope]"
+          ></slot>
         </template>
-      </template>
+      </ContentContainer>
     </div>
 
-    <template v-if="isRenderPagination">
-      <BaseDivider />
-
-      <div class="main-pagination-container">
-        <BaseSimplePagination
-          v-if="isPaginationSimple"
-          :isWithPrevPage="!!prevPage"
-          :isWithNextPage="!!nextPage"
-          :isDisabled="isPaginationDisabled"
-          @prevPageButtonClick="handlePrevPageButtonClick"
-          @nextPageButtonClick="handleNextPageButtonClick"
-        />
-        <BasePagination
-          v-else
-          :totalPages="clientTotalPages"
-          :isDisabled="isPaginationDisabled"
-          isWithNearButtons
-          @pageChange="changeClientPage"
-        />
-      </div>
-    </template>
+    <PaginationSection
+      v-if="isRenderPagination"
+      :isLoading="isLoading"
+      :error="error"
+      :totalPagesCount="clientTotalPagesCount"
+      :isPaginationSimple="isPaginationSimple"
+      :prevPage="prevPage"
+      :nextPage="nextPage"
+      @prevPageClick="handlePrevPageClick"
+      @nextPageClick="handleNextPageClick"
+      @pageChange="handlePageChange"
+    />
   </div>
 </template>
 
 <script>
 import deepmerge from 'deepmerge'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseNoCollectionMessage
-  from '*/components/messages/BaseNoCollectionMessage.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseSimplePagination from '*/components/BaseSimplePagination.vue'
-import BasePagination from '*/components/BasePagination.vue'
+import ContentContainer
+  from './BasePaginatedListContainer/ContentContainer.vue'
+import PaginationSection
+  from './BasePaginatedListContainer/PaginationSection.vue'
 import { collection as formatCollection } from '*/helpers/formatters'
 
 export default {
   name: 'BasePaginatedListContainer',
   components: {
-    BaseErrorMessage,
-    BaseNoCollectionMessage,
-    BaseDivider,
-    BaseSimplePagination,
-    BasePagination
+    ContentContainer,
+    PaginationSection
   },
   provide () {
     return {
@@ -79,18 +61,8 @@ export default {
       type: Number,
       required: true
     },
-    responsePageLimit: {
-      type: Number,
-      default (props) {
-        return props.limit
-      }
-    },
-    clientPageLimit: {
-      type: Number,
-      default (props) {
-        return props.limit
-      }
-    },
+    responsePageLimit: Number,
+    clientPageLimit: Number,
     isLoading: Boolean,
     error: Error,
     responseData: Object,
@@ -117,12 +89,6 @@ export default {
     }
   },
   computed: {
-    isResponseCollection () {
-      return this.responsePageCollection.length
-    },
-    isClientPageCollectionFiltered () {
-      return !!this.clientPageCollectionFiltered.length
-    },
     isRenderPagination () {
       return (
         this.isWithPagination || (
@@ -153,28 +119,32 @@ export default {
     isResponsePagePageable () {
       return (
         this.responsePageCollection.length >
-          this.clientPageLimit
+          this.clientPageLimitComputed
       )
     },
-    clientTotalPages () {
+    clientPageLimitComputed () {
+      return (
+        this.clientPageLimit ||
+          this.limit
+      )
+    },
+    clientTotalPagesCount () {
       return Math.ceil(
         this.totalItems /
-          this.clientPageLimit
+          this.clientPageLimitComputed
       )
     },
     totalItems () {
       return (
         this.responseTotalPages *
-          this.responsePageLimit
+          this.responsePageLimitComputed
       )
     },
-    isPaginationDisabled () {
-      return !!this.error
-    },
-    clientPageCollectionFiltered () {
-      return this.clientPageCollection.filter(item => {
-        return item
-      })
+    responsePageLimitComputed () {
+      return (
+        this.responsePageLimit ||
+          this.limit
+      )
     },
     newClientCollectionPaginated () {
       return deepmerge(
@@ -196,7 +166,9 @@ export default {
       const collection = [
         ...this.responsePageCollection
       ]
-      collection.length = this.responsePageLimit
+
+      collection.length =
+        this.responsePageLimitComputed
 
       const newCollection = []
 
@@ -209,7 +181,7 @@ export default {
           newCollection.length ? 0 : this.pageRemainder
 
         const pageDataLength = (
-          this.clientPageLimit -
+          this.clientPageLimitComputed -
             prevPageRemainder
         )
 
@@ -230,19 +202,19 @@ export default {
     clientStartPage () {
       return Math.floor(
         this.responseOffset /
-          this.clientPageLimit
+          this.clientPageLimitComputed
       ) + 1
     },
     responseOffset () {
       return (
-        this.responsePageLimit *
+        this.responsePageLimitComputed *
           (this.responseData.page - 1)
       )
     },
     pageRemainder () {
       return (
         this.responseOffset %
-          this.clientPageLimit
+          this.clientPageLimitComputed
       )
     },
     isCollectionFull () {
@@ -257,7 +229,7 @@ export default {
     clientCurrentPageLimit () {
       return Math.min(
         this.remainingItems,
-        this.clientPageLimit
+        this.clientPageLimitComputed
       )
     },
     remainingItems () {
@@ -268,7 +240,7 @@ export default {
     },
     clientOffset () {
       return (
-        this.clientPageLimit *
+        this.clientPageLimitComputed *
           (this.clientPage - 1)
       )
     },
@@ -284,20 +256,20 @@ export default {
     forwardPage () {
       return (
         this.forwardPageOffset /
-          this.responsePageLimit
+          this.responsePageLimitComputed
       ) + 1
     },
     forwardPageOffset () {
       return (
         (this.clientPage - 1) *
-          this.clientPageLimit +
+          this.clientPageLimitComputed +
           this.clientPageCollectionLength
       )
     },
     lastPage () {
       return (
         this.lastPageOffset /
-          this.responsePageLimit
+          this.responsePageLimitComputed
       )
     },
     lastPageOffset () {
@@ -309,13 +281,13 @@ export default {
     backwardPage () {
       return (
         this.backwardPageOffset /
-          this.responsePageLimit
+          this.responsePageLimitComputed
       )
     },
     backwardPageOffset () {
       return (
         this.clientPage *
-          this.clientPageLimit
+          this.clientPageLimitComputed
       ) - this.clientPageCollectionLength
     }
   },
@@ -363,17 +335,17 @@ export default {
     handleClientPageCollectionChange (value) {
       if (value) {
         if (this.isFocusable) {
-          setTimeout(() => {
-            this.$emit('focus')
-          }, 0)
+          this.$emit('focus')
         }
 
         if (!this.isCollectionFull) {
-          this.fetchData()
+          this.$nextTick(() => {
+            this.fetchData()
+          })
         }
       }
     },
-    handlePrevPageButtonClick () {
+    handlePrevPageClick () {
       this.currentPage = this.prevPage
 
       this.$emit(
@@ -381,7 +353,7 @@ export default {
         this.prevPage
       )
     },
-    handleNextPageButtonClick () {
+    handleNextPageClick () {
       this.currentPage = this.nextPage
 
       this.$emit(
@@ -409,18 +381,18 @@ export default {
           this.clientPage
         ] || []
     },
-    changeClientPage (page) {
+    handlePageChange (value) {
       this.isLastPage = (
-        page ===
-          this.clientTotalPages
+        value ===
+          this.clientTotalPagesCount
       )
 
       this.isForward = (
-        page > this.clientPage &&
+        value > this.clientPage &&
           !this.isLastPage
       )
 
-      this.clientPage = page
+      this.clientPage = value
       this.isFocusable = true
     },
     mergeArrays (array, newArray) {
@@ -435,7 +407,7 @@ export default {
     isArrayFull (array) {
       return (
         array.length ===
-          this.clientPageLimit
+          this.clientPageLimitComputed
       )
     },
     reset () {

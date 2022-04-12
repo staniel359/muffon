@@ -9,11 +9,11 @@
     />
 
     <slot
+      :videoData="videoData"
       :isLoading="isLoading"
       :error="error"
-      :videoData="videoData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -60,9 +60,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getVideo,
     fetchData (page) {
       this.getVideo({
@@ -70,12 +67,13 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

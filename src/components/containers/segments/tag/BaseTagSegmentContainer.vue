@@ -9,12 +9,12 @@
     />
 
     <slot
+      :tagData="tagData"
+      :profileId="profileId"
       :isLoading="isLoading"
       :error="error"
-      :tagData="tagData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-      :profileId="profileId"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -69,9 +69,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getTag,
     fetchData (page) {
       this.getTag({
@@ -79,12 +76,13 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

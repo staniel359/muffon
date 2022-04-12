@@ -7,10 +7,6 @@
     <slot
       :conversationData="conversationData"
       :profileId="profileIdFetched"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -82,9 +78,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getConversation,
     fetchData (page) {
       this.getConversation({

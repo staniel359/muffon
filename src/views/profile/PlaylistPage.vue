@@ -22,7 +22,6 @@
         />
 
         <TracksSegment
-          class="main-paginated-page-segment-container"
           :profileId="profileId"
           :playlistId="playlistId"
           :playlistTitle="pageSlotProps.playlistTitle"

@@ -9,11 +9,11 @@
     />
 
     <slot
+      :topData="topData"
       :isLoading="isLoading"
       :error="error"
-      :topData="topData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -51,10 +51,10 @@ export default {
       }
     }
   },
+  mounted () {
+    this.fetchData()
+  },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getTop,
     fetchData (page) {
       this.getTop({
@@ -62,16 +62,14 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
-  },
-  mounted () {
-    this.fetchData()
   }
 }
 </script>

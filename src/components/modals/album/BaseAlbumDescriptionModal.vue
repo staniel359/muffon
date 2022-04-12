@@ -1,12 +1,12 @@
 <template>
   <BaseAlbumModalContainer
     ref="modal"
-    scope="description"
+    :scope="scope"
     :requestAlbumData="requestAlbumData"
   >
     <template #default="slotProps">
       <BaseDescription
-        :description="slotProps.description"
+        :description="slotProps[scope]"
         isModal
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     requestAlbumData: Object
+  },
+  data () {
+    return {
+      scope: 'description'
+    }
   },
   methods: {
     show () {

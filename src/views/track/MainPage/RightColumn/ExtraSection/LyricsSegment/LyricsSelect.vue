@@ -1,7 +1,9 @@
 <template>
   <div class="main-track-dropdown-container">
     <div class="main-track-dropdown-logo-container">
-      <BaseSourceIcon sourceId="genius" />
+      <BaseSourceIcon
+        sourceId="genius"
+      />
     </div>
 
     <BaseDropdownContainer
@@ -11,7 +13,9 @@
       :isError="isError"
       :isDisabled="!isAnyTracks"
     >
-      <TracksList :tracks="tracks" />
+      <TracksList
+        :tracks="tracks"
+      />
     </BaseDropdownContainer>
   </div>
 </template>

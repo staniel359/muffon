@@ -11,19 +11,18 @@
       @init="handleInit"
     >
       <BasePaginatedListContainer
-        v-if="communityData"
-        scope="members"
+        :responseData="communityData"
+        :scope="scope"
+        :limit="limit"
         :isLoading="isLoading"
         :error="error"
-        :responseData="communityData"
-        :limit="limit"
         @fetchData="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <BaseProfilesSimpleList
-            :profiles="slotProps.members"
+            :profiles="slotProps[scope]"
             @linkClick="handleLinkClick"
           />
         </template>
@@ -64,14 +63,15 @@ export default {
       scrollable: null,
       isLoading: false,
       isOpen: false,
-      limit: 50
+      limit: 50,
+      scope: 'members'
     }
   },
   computed: {
     communityArgs () {
       return {
         communityId: this.communityId,
-        scope: 'members',
+        scope: this.scope,
         limit: this.limit
       }
     }

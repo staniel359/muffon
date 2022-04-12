@@ -213,12 +213,14 @@ a
       @extend .main-link-active
 
 .main-text-container
+  @extend .word-break-break-word
   white-space: pre-wrap
 
 .main-lyrics-container
   @extend .main-text-container
   padding: 1.25em 2.5em
   & > .lyrics
+    @extend .no-margin
     font-size: 16px
 
 .main-simple-card
@@ -285,10 +287,14 @@ a
   &.main-post-item, &.main-message-item, &.main-profile-item, &.main-community-info-item, &.main-playlist-info-item
     @extend .align-items-start
   &.main-community-info-item, &.main-playlist-info-item
-    & > .image
-      margin-right: 0.75em !important
     & > .main-options-dropdown-container
       @extend .align-self-center
+  &.main-community-info-item
+    & > .image
+      margin-right: 1em !important
+  &.main-playlist-info-item
+    & > .image
+      margin-right: 0.75em !important
 
 .main-message
   @extend .no-shadow, .no-margin
@@ -559,19 +565,7 @@ a
   top: $mainContainerTopPadding
   height: fit-content
 
-.main-library-modal-import-section
-  @extend .d-flex, .flex-column, .flex-full, .overflow-hidden
-
-.main-library-modal-complete-section
-  @extend .d-flex, .flex-column, .flex-full, .overflow-hidden
-
-.main-library-modal-save-section
-  @extend .d-flex, .flex-column, .flex-full, .overflow-hidden
-
-.main-library-modal-success-section
-  @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto
-
-.main-library-modal-retry-section
+.main-modal-import-section
   @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto
 
 .main-library-modal-message-container
@@ -671,3 +665,6 @@ a
 .main-message-item
   &.inverted
     border: $borderInverted !important
+
+.main-paginated-segment-container
+  @extend .d-flex

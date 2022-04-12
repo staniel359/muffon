@@ -1,10 +1,8 @@
 <template>
-  <div class="main-library-modal-save-section">
-    <Component
-      :is="component"
-      :[scope]="collection"
-    />
-  </div>
+  <Component
+    :is="component"
+    :[scope]="collection"
+  />
 </template>
 
 <script>

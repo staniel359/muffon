@@ -7,10 +7,6 @@
     <slot
       :playlistData="playlistData"
       :playlistTitle="playlistTitleFetched"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -97,9 +93,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh () {
-      this.fetchData()
-    },
     getProfilePlaylist,
     fetchData () {
       this.getProfilePlaylist(

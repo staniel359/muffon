@@ -1,14 +1,14 @@
 <template>
   <BaseTagPaginatedSegmentContainer
-    scope="tracks"
+    :scope="scope"
     :limit="limit"
-    :responsePageLimit="50"
+    :responsePageLimit="responsePageLimit"
     :tagName="tagName"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         :profileId="slotProps.profileId"
         isWithArtistName
         isWithLibraryOption
@@ -42,7 +42,9 @@ export default {
   },
   data () {
     return {
-      limit: 10
+      limit: 10,
+      responsePageLimit: 50,
+      scope: 'tracks'
     }
   },
   computed: {

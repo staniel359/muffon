@@ -26,18 +26,20 @@
       ></small>
     </div>
 
-    <div
-      v-if="isLoading"
-      class="ui active mini inline loader"
-    ></div>
-    <i
-      v-else-if="isSuccess"
-      class="green check icon"
-    ></i>
-    <i
-      v-else-if="isError"
-      class="red close icon"
-    ></i>
+    <div class="icon-container">
+      <div
+        v-if="isLoading"
+        class="ui active mini inline loader"
+      ></div>
+      <i
+        v-else-if="isSuccess"
+        class="green check icon"
+      ></i>
+      <i
+        v-else-if="isError"
+        class="red close icon"
+      ></i>
+    </div>
   </BaseLinkContainer>
 </template>
 
@@ -183,4 +185,11 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.icon-container
+  @extend .d-flex, .align-items-center, .justify-content-center
+  width: 20px
+  height: 20px
+  &.icon
+    @extend .no-padding
+</style>

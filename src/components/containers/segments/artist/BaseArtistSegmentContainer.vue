@@ -9,13 +9,13 @@
     />
 
     <slot
+      :artistData="artistData"
+      :profileId="profileId"
+      :topTrackCount="topTrackCount"
       :isLoading="isLoading"
       :error="error"
-      :artistData="artistData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-      :topTrackCount="topTrackCount"
-      :profileId="profileId"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -66,10 +66,10 @@ export default {
       }
     }
   },
+  mounted () {
+    this.fetchData()
+  },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getArtist,
     fetchData (page) {
       this.getArtist({
@@ -77,16 +77,14 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
-  },
-  mounted () {
-    this.fetchData()
   }
 }
 </script>

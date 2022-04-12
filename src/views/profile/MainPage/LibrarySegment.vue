@@ -1,28 +1,30 @@
 <template>
-  <div class="ui raised segments main-segment-container">
-    <BaseHeaderSegment
-      scope="library"
-      :link="headerLink"
-    />
+  <BaseProfileSegmentContainer
+    scope="library"
+    :headerLink="headerLink"
+    :isFetchData="false"
+  >
+    <template #default>
+      <CompatibilitySegment
+        v-if="isRenderCompatibility"
+        :profileId="profileId"
+        :profileNickname="profileNickname"
+      />
 
-    <CompatibilitySegment
-      v-if="isRenderCompatibility"
-      :profileId="profileId"
-      :profileNickname="profileNickname"
-    />
+      <StatisticsSegment
+        :profileId="profileId"
+      />
 
-    <StatisticsSegment
-      :profileId="profileId"
-    />
-
-    <LibraryTabsSegment
-      :profileId="profileId"
-    />
-  </div>
+      <LibraryTabsSegment
+        :profileId="profileId"
+      />
+    </template>
+  </BaseProfileSegmentContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseProfileSegmentContainer
+  from '*/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
@@ -34,7 +36,7 @@ import {
 export default {
   name: 'LibrarySegment',
   components: {
-    BaseHeaderSegment,
+    BaseProfileSegmentContainer,
     CompatibilitySegment,
     StatisticsSegment,
     LibraryTabsSegment

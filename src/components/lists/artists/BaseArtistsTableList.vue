@@ -42,7 +42,10 @@ export default {
         return []
       }
     },
-    itemsInRow: Number,
+    itemsInRow: {
+      type: Number,
+      required: true
+    },
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,

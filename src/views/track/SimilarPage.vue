@@ -1,12 +1,12 @@
 <template>
   <BaseTrackPaginatedPageContainer
-    scope="similar"
+    :scope="scope"
     :limit="limit"
     :sourceParams="sourceParams"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.similar"
+        :tracks="slotProps[scope]"
         :artistName="slotProps.artistName"
         :profileId="slotProps.profileId"
         isWithArtistName
@@ -39,7 +39,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'similar'
     }
   },
   computed: {

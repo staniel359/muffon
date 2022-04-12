@@ -34,9 +34,10 @@ export default {
   ],
   data () {
     return {
-      isLoading: false,
+      artistData: null,
       error: null,
-      artistData: null
+      isLoading: false,
+      scope: 'listeners_count'
     }
   },
   computed: {
@@ -55,7 +56,7 @@ export default {
     artistArgs () {
       return {
         artistName: this.artistName,
-        scope: 'listeners_count'
+        scope: this.scope
       }
     }
   },

@@ -9,12 +9,12 @@
     />
 
     <slot
-      :isLoading="isLoading"
-      :error="error"
       :libraryAlbumData="libraryAlbumData"
       :artistName="artistNameFetched"
+      :isLoading="isLoading"
+      :error="error"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -73,9 +73,6 @@ export default {
     }
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileLibraryAlbum,
     fetchData (page) {
       this.getProfileLibraryAlbum({
@@ -83,12 +80,13 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   },
   mounted () {

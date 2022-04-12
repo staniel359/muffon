@@ -1,12 +1,12 @@
 <template>
   <BaseAlbumModalContainer
     ref="modal"
-    scope="tags"
+    :scope="scope"
     :requestAlbumData="requestAlbumData"
   >
     <template #default="slotProps">
       <BaseModalTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
         @tagClick="handleTagClick"
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     requestAlbumData: Object
+  },
+  data () {
+    return {
+      scope: 'tags'
+    }
   },
   methods: {
     handleTagClick () {

@@ -4,34 +4,19 @@
     :limit="limit"
   >
     <template #default="pageSlotProps">
-      <BaseSegmentContainer
-        :class="[
-          'raised',
-          'main-segment-container',
-          'main-page-segment-container',
-          'main-paginated-page-segment-container'
-        ]"
-        :isLoading="pageSlotProps.isLoading"
+      <BasePaginatedPageContainer
+        responseDataName="profileData"
+        :slotPropsData="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
       >
-        <BasePaginatedListContainer
-          ref="paginatedContainer"
-          scope="posts"
-          :isLoading="pageSlotProps.isLoading"
-          :error="pageSlotProps.error"
-          :responseData="pageSlotProps.profileData"
-          :limit="limit"
-          @focus="handleFocus"
-          @fetchData="pageSlotProps.fetchData"
-          @refresh="pageSlotProps.handleRefresh"
-        >
-          <template #default="slotProps">
-            <BasePostsSimpleList
-              :posts="slotProps.posts"
-              :profileId="profileId"
-            />
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <BasePostsSimpleList
+            :posts="slotProps[scope]"
+            :profileId="profileId"
+          />
+        </template>
+      </BasePaginatedPageContainer>
     </template>
   </BaseProfilePostsPageContainer>
 </template>
@@ -39,10 +24,8 @@
 <script>
 import BaseProfilePostsPageContainer
   from '*/components/containers/pages/profile/posts/BaseProfilePostsPageContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
 
@@ -50,8 +33,7 @@ export default {
   name: 'PostsPage',
   components: {
     BaseProfilePostsPageContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedPageContainer,
     BasePostsSimpleList
   },
   props: {
@@ -59,12 +41,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
-    }
-  },
-  methods: {
-    handleFocus () {
-      window.scrollTo(0, 0)
+      limit: 20,
+      scope: 'posts'
     }
   }
 }

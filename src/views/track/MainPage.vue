@@ -21,7 +21,7 @@
           :isLoading="slotProps.isLoading"
           :error="slotProps.error"
           @init="handleInit"
-          @refresh="slotProps.handleRefresh"
+          @refresh="slotProps.refresh"
         >
           <template #default>
             <LeftColumn

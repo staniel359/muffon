@@ -4,14 +4,13 @@
     :isLoading="isLoading"
     :error="error"
   >
-    <slot
-      :communityData="communityData"
-      :communityCreatorId="communityCreatorId"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
-    ></slot>
+    <template #default="slotProps">
+      <slot
+        :communityData="communityData"
+        :communityCreatorId="communityCreatorId"
+        :profileId="slotProps.profileId"
+      ></slot>
+    </template>
   </BasePageContainer>
 </template>
 
@@ -87,9 +86,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh () {
-      this.fetchData()
-    },
     getCommunity,
     fetchData () {
       this.getCommunity(
@@ -105,7 +101,8 @@ export default {
         .member_of_community = value
     },
     setMembersCount (value) {
-      this.communityData.members_count = value
+      this.communityData
+        .members_count = value
     }
   }
 }

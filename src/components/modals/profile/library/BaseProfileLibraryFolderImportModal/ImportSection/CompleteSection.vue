@@ -1,16 +1,14 @@
 <template>
-  <div class="main-library-modal-complete-section">
-    <BaseMessage
-      v-if="isError"
-      class="error"
-      :header="errorText"
-      :listItems="errorFiles"
-    />
-    <SuccessSection
-      v-else-if="successFiles.length"
-      :files="successFiles"
-    />
-  </div>
+  <BaseMessage
+    v-if="isError"
+    class="error"
+    :header="errorText"
+    :listItems="errorFiles"
+  />
+  <SuccessSection
+    v-else-if="successFiles.length"
+    :files="successFiles"
+  />
 </template>
 
 <script>

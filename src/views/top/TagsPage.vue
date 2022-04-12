@@ -1,11 +1,11 @@
 <template>
   <BaseTopPaginatedPageContainer
-    scope="tags"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTagsList
-        :tags="slotProps.tags"
+        :tags="slotProps[scope]"
       />
     </template>
   </BaseTopPaginatedPageContainer>
@@ -24,7 +24,8 @@ export default {
   },
   data () {
     return {
-      limit: 100
+      limit: 100,
+      scope: 'tags'
     }
   }
 }

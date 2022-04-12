@@ -8,45 +8,34 @@
     :headerLink="headerLink"
   >
     <template #default="segmentSlotProps">
-      <BaseSegmentContainer
-        class="segment-container"
-        :isLoading="segmentSlotProps.isLoading"
+      <BasePaginatedSegmentContainer
+        responseDataName="trackData"
+        :slotPropsData="segmentSlotProps"
+        :scope="scope"
+        :limit="limit"
+        @focus="handleFocus"
       >
-        <BasePaginatedListContainer
-          :isLoading="segmentSlotProps.isLoading"
-          :error="segmentSlotProps.error"
-          :responseData="segmentSlotProps.trackData"
-          :scope="scope"
-          :limit="limit"
-          @fetchData="segmentSlotProps.fetchData"
-          @refresh="segmentSlotProps.handleRefresh"
-          @focus="handleFocus"
-        >
-          <template #default="slotProps">
-            <slot
-              :[scope]="slotProps[scope]"
-              :profileId="segmentSlotProps.profileId"
-            />
-          </template>
-        </BasePaginatedListContainer>
-      </BaseSegmentContainer>
+        <template #default="slotProps">
+          <slot
+            :[scope]="slotProps[scope]"
+            :profileId="segmentSlotProps.profileId"
+          />
+        </template>
+      </BasePaginatedSegmentContainer>
     </template>
   </BaseTrackSegmentContainer>
 </template>
 
 <script>
 import BaseTrackSegmentContainer from './BaseTrackSegmentContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
   name: 'BaseTrackPaginatedSegmentContainer',
   components: {
     BaseTrackSegmentContainer,
-    BaseSegmentContainer,
-    BasePaginatedListContainer
+    BasePaginatedSegmentContainer
   },
   props: {
     artistName: String,
@@ -63,7 +52,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.segment-container
-  @extend .d-flex
-</style>
+<style lang="sass" scoped></style>

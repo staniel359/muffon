@@ -36,7 +36,10 @@ export default {
     TracksSegment
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   computed: {
     isWithDeleteOption () {

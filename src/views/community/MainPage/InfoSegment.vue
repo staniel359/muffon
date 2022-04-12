@@ -64,7 +64,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
@@ -98,12 +97,13 @@ export default {
     communityCreatorId: {
       type: String,
       required: true
+    },
+    currentProfileId: {
+      type: String,
+      required: true
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
     imageData () {
       return this.communityData.image
     },
@@ -138,9 +138,6 @@ export default {
         this.currentProfileId ===
           this.communityCreatorId
       )
-    },
-    currentProfileId () {
-      return this.profileInfo.id.toString()
     }
   },
   methods: {

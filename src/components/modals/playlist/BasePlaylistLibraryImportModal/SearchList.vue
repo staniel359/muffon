@@ -1,8 +1,8 @@
 <template>
   <BasePaginatedListContainer
     v-if="tracks.length"
-    scope="tracks"
     :responseData="tracksData"
+    :scope="scope"
     :limit="limit"
     :responsePageLimit="totalCount"
     isReset
@@ -11,7 +11,7 @@
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         isWithArtistName
         isWithAlbumTitle
         isWithImage
@@ -53,7 +53,8 @@ export default {
   ],
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'tracks'
     }
   },
   computed: {
@@ -61,13 +62,8 @@ export default {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.tracksReversed
+        tracks: [...this.tracks]
       }
-    },
-    tracksReversed () {
-      return [
-        ...this.tracks
-      ].reverse()
     },
     totalCount () {
       return this.tracks.length

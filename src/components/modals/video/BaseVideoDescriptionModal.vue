@@ -1,12 +1,12 @@
 <template>
   <BaseVideoModalContainer
     ref="modal"
-    scope="description"
     :videoId="videoId"
+    :scope="scope"
   >
     <template #default="slotProps">
       <BaseDescription
-        :description="slotProps.description"
+        :description="slotProps[scope]"
         isModal
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     videoId: String
+  },
+  data () {
+    return {
+      scope: 'description'
+    }
   },
   methods: {
     show () {

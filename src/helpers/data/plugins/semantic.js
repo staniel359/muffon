@@ -362,9 +362,10 @@ export const mainProgressOptions = ({ formatActive, onSuccess }) => {
   }
 }
 
-export const mainAccordionOptions = ({ onOpen }) => {
+export const mainAccordionOptions = ({ onOpen, onClose }) => {
   return {
     duration: 0,
-    onOpen
+    onOpen,
+    onClose
   }
 }

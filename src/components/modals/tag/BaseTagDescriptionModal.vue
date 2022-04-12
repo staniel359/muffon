@@ -1,12 +1,12 @@
 <template>
   <BaseTagModalContainer
     ref="modal"
-    scope="description"
     :tagName="tagName"
+    :scope="scope"
   >
     <template #default="slotProps">
       <BaseDescription
-        :description="slotProps.description"
+        :description="slotProps[scope]"
         isModal
       />
     </template>
@@ -26,6 +26,11 @@ export default {
   },
   props: {
     tagName: String
+  },
+  data () {
+    return {
+      scope: 'description'
+    }
   },
   methods: {
     show () {

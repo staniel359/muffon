@@ -3,11 +3,13 @@
     class="search-input"
     ref="input"
     :is="component"
+    :profileId="profileId"
     :[scope]="collection"
   />
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import ArtistsInput from './SearchInput/ArtistsInput.vue'
 import AlbumsInput from './SearchInput/AlbumsInput.vue'
 import TracksInput from './SearchInput/TracksInput.vue'
@@ -36,6 +38,12 @@ export default {
     }
   },
   computed: {
+    ...mapState('profile', {
+      profileInfo: 'info'
+    }),
+    profileId () {
+      return this.profileInfo.id.toString()
+    },
     component () {
       return this.components[
         this.scope

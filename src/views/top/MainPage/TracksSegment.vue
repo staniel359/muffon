@@ -1,12 +1,12 @@
 <template>
   <BaseTopPaginatedSegmentContainer
-    scope="tracks"
+    :scope="scope"
     :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         isWithArtistName
         isWithLibraryOption
         isWithFavoriteOption
@@ -35,7 +35,8 @@ export default {
   },
   data () {
     return {
-      limit: 10
+      limit: 10,
+      scope: 'tracks'
     }
   },
   computed: {

@@ -9,11 +9,11 @@
     />
 
     <slot
+      :bookmarksData="bookmarksData"
       :isLoading="isLoading"
       :error="error"
-      :bookmarksData="bookmarksData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </div>
 </template>
@@ -58,9 +58,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getBookmarks,
     fetchData (page) {
       this.getBookmarks({
@@ -68,12 +65,13 @@ export default {
         page
       })
     },
+    refresh (page) {
+      this.fetchData(page)
+    },
     focus () {
-      this.$nextTick(() => {
-        focusOnSegment(
-          this.$refs.segment
-        )
-      })
+      focusOnSegment(
+        this.$refs.segment
+      )
     }
   }
 }

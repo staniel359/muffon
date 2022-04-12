@@ -1,14 +1,12 @@
 <template>
-  <div class="main-library-modal-complete-section">
-    <BaseErrorMessage
-      v-if="error"
-      :error="error"
-    />
-    <SuccessSection
-      v-else-if="successTracks.length"
-      :tracks="successTracks"
-    />
-  </div>
+  <BaseErrorMessage
+    v-if="error"
+    :error="error"
+  />
+  <SuccessSection
+    v-else-if="successTracks.length"
+    :tracks="successTracks"
+  />
 </template>
 
 <script>

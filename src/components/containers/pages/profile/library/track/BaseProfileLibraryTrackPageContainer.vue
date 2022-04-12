@@ -6,10 +6,6 @@
   >
     <slot
       :libraryTrackData="libraryTrackData"
-      :isLoading="isLoading"
-      :error="error"
-      :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
     ></slot>
   </BasePageContainer>
 </template>
@@ -111,9 +107,6 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
-      this.fetchData(page)
-    },
     getProfileLibraryTrack,
     fetchData (page) {
       this.getProfileLibraryTrack({

@@ -1,20 +1,18 @@
 <template>
-  <div class="main-library-modal-save-section">
-    <BaseProgress
-      v-show="isProgress"
-      ref="progress"
-      :formatActive="formatProgressActive"
-      @complete="handleProgressComplete"
-    />
+  <BaseProgress
+    v-show="isProgress"
+    ref="progress"
+    :formatActive="formatProgressActive"
+    @complete="handleProgressComplete"
+  />
 
-    <CompleteSection
-      v-if="isComplete"
-      :isError="isError"
-      :totalCount="totalCount"
-      :errorArtists="errorArtists"
-      @retry="handleRetry"
-    />
-  </div>
+  <CompleteSection
+    v-if="isComplete"
+    :isError="isError"
+    :totalCount="totalCount"
+    :errorArtists="errorArtists"
+    @retry="handleRetry"
+  />
 </template>
 
 <script>

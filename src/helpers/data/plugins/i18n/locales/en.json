@@ -435,14 +435,19 @@
       "tracks": "Saving {value} of {total} tracks..."
     },
     "success": {
-      "artists": "All {count} artists were saved to library",
-      "albums": "All {count} albums were saved to library",
-      "tracks": "All {count} tracks were saved to library"
+      "library": {
+        "artists": "All {count} artists were added to library",
+        "albums": "All {count} albums were added to library",
+        "tracks": "All {count} tracks were added to library"
+      },
+      "playlist": {
+        "tracks": "All {count} tracks were added to playlist"
+      }
     },
     "error": {
-      "artists": "{count} artists could not be saved:",
-      "albums": "{count} albums could not be saved:",
-      "tracks": "{count} tracks could not be saved:"
+      "artists": "{count} artists could not be added:",
+      "albums": "{count} albums could not be added:",
+      "tracks": "{count} tracks could not be added:"
     }
   },
   "accounts": {
@@ -455,10 +460,12 @@
       "artists": "No artists",
       "albums": "No albums",
       "tracks": "No tracks",
+      "similar": "No similar",
       "tags": "No tags",
       "posts": "No posts",
       "feed": "No posts",
       "conversations": "No conversations",
+      "messages": "No messages",
       "followers": "No followers",
       "following": "No following",
       "profile_artists": "No artists",
@@ -466,7 +473,8 @@
       "playlists": "No playlists",
       "communities": "No communities",
       "members": "No members",
-      "videos": "No videos"
+      "videos": "No videos",
+      "related": "No related"
     },
     "content": "Looks like there is nothing here"
   },

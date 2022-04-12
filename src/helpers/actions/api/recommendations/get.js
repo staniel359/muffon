@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ page, limit, filter, filterValue }) {
+export default function ({ page, limit, filterScope, filterValue }) {
   this.error = null
   this.isLoading = true
 
@@ -15,8 +15,8 @@ export default function ({ page, limit, filter, filterValue }) {
     token,
     ...(page && { page }),
     ...(limit && { limit }),
-    ...(filter && filterValue?.length && {
-      filter
+    ...(filterScope && filterValue?.length && {
+      filter: filterScope
     }),
     ...(filterValue?.length && {
       filter_value: filterValue

@@ -1,11 +1,11 @@
 <template>
   <BaseTopPaginatedPageContainer
-    scope="tracks"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
-        :tracks="slotProps.tracks"
+        :tracks="slotProps[scope]"
         isWithArtistName
         isWithLibraryOption
         isWithFavoriteOption
@@ -31,7 +31,8 @@ export default {
   },
   data () {
     return {
-      limit: 50
+      limit: 50,
+      scope: 'tracks'
     }
   }
 }

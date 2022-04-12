@@ -8,13 +8,13 @@
 
   <BasePaginatedListContainer
     class="profile-artists-list"
-    scope="artists"
     :responseData="profileArtistsData"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList
-        :artists="slotProps.artists"
+        :artists="slotProps[scope]"
         :profileId="profileId"
         isImageSmall
         isLinkToLibrary
@@ -68,7 +68,8 @@ export default {
   },
   data () {
     return {
-      limit: 5
+      limit: 5,
+      scope: 'artists'
     }
   },
   computed: {
@@ -115,4 +116,5 @@ export default {
 
 .more-container
   text-align: right
+  margin-top: 0.5em
 </style>

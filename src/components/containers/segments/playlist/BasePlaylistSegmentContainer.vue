@@ -4,11 +4,11 @@
     :isLoading="isLoading"
   >
     <slot
+      :playlistData="playlistData"
       :isLoading="isLoading"
       :error="error"
-      :playlistData="playlistData"
       :fetchData="fetchData"
-      :handleRefresh="handleRefresh"
+      :refresh="refresh"
     ></slot>
   </BaseSegmentContainer>
 </template>
@@ -59,7 +59,7 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleRefresh (page) {
+    refresh (page) {
       this.fetchData(page)
     },
     getProfilePlaylist,

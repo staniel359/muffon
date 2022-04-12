@@ -34,13 +34,19 @@ export default {
   ],
   computed: {
     isActive () {
-      return this.index === this.viewIndex
+      return (
+        this.index ===
+          this.viewIndex
+      )
     }
   },
   methods: {
     handleClick () {
       if (!this.isActive) {
-        this.$emit('click', this.index)
+        this.$emit(
+          'click',
+          this.index
+        )
       }
     }
   }

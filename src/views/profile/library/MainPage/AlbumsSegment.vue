@@ -1,15 +1,15 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    scope="albums"
-    :limit="limit"
     :profileId="profileId"
+    :scope="scope"
+    :limit="limit"
     :headerLink="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
-        :itemsInRow="4"
-        :albums="slotProps.albums"
+        :albums="slotProps[scope]"
         :profileId="profileId"
+        :itemsInRow="itemsInRow"
         :isWithFavoriteOption="isWithFavoriteOption"
         isWithArtistName
         isWithLibrary
@@ -43,7 +43,9 @@ export default {
   },
   data () {
     return {
-      limit: 4
+      limit: 4,
+      itemsInRow: 4,
+      scope: 'albums'
     }
   },
   computed: {
