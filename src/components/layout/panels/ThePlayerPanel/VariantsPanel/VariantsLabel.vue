@@ -1,14 +1,19 @@
 <template>
   <BaseLabel
-    class="top attached right icon variants-label"
+    :class="[
+      'top attached right icon',
+      'variants-label'
+    ]"
     :icon="icon"
     :text="variantsText"
-    isReverse
+    is-reverse
   />
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import {
+  mapGetters
+} from 'vuex'
 import BaseLabel from '*/components/BaseLabel.vue'
 
 export default {
@@ -20,13 +25,19 @@ export default {
     isPanelVisible: Boolean
   },
   computed: {
-    ...mapGetters('player', {
-      playerVariantsCount: 'variantsCount'
-    }),
+    ...mapGetters(
+      'player',
+      {
+        playerVariantsCount: 'variantsCount'
+      }
+    ),
     variantsText () {
       return this.$t(
         'player.variants',
-        { number: this.playerVariantsCount }
+        {
+          number:
+            this.playerVariantsCount
+        }
       )
     },
     icon () {

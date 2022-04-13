@@ -1,21 +1,25 @@
 <template>
   <div
     class="ui secondary pointing menu"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <TabItem
       v-for="(tabData, index) in tabs"
       :key="tabData.uuid"
-      :tabName="tabData.name"
+      :tab-name="tabData.name"
       :index="index"
-      :activeTabIndex="activeTabIndex"
+      :active-tab-index="activeTabIndex"
       @click="handleTabClick"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import TabItem from './BaseTabs/TabItem.vue'
 
 export default {
@@ -23,9 +27,6 @@ export default {
   components: {
     TabItem
   },
-  emits: [
-    'tabClick'
-  ],
   props: {
     tabs: {
       type: Array,
@@ -35,13 +36,21 @@ export default {
     },
     activeTabIndex: Number
   },
+  emits: [
+    'tabClick'
+  ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
-    handleTabClick (index) {
+    handleTabClick (
+      index
+    ) {
       this.$emit(
         'tabClick',
         index

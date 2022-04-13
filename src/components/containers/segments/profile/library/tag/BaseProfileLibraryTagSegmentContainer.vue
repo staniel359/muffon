@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,12 +12,12 @@
     />
 
     <slot
-      :libraryTagData="libraryTagData"
-      :isLoading="isLoading"
+      :library-tag-data="libraryTagData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
@@ -22,7 +25,9 @@
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getProfileLibraryTag
   from '*/helpers/actions/api/profile/library/tag/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibraryTagSegmentContainer',
@@ -70,14 +75,22 @@ export default {
   },
   methods: {
     getProfileLibraryTag,
-    fetchData (page) {
-      this.getProfileLibraryTag({
-        ...this.libraryTagArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibraryTag(
+        {
+          ...this.libraryTagArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

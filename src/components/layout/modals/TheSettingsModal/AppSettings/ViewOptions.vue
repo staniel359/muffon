@@ -2,7 +2,7 @@
   <div class="main-settings-options-block">
     <BaseDivider
       :text="viewText"
-      isHorizontal
+      is-horizontal
     />
 
     <DarkModeOption />

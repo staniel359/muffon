@@ -1,14 +1,16 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({
-  sourceId = 'lastfm',
-  scope = '',
-  query,
-  page,
-  limit,
-  isWithSelfData = false
-}) {
+export default function (
+  {
+    sourceId = 'lastfm',
+    scope = '',
+    query,
+    page,
+    limit,
+    isWithSelfData = false
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -21,11 +23,17 @@ export default function ({
     ...(isWithSelfData && {
       profile_id: profileId
     }),
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     if (sourceId === 'youtube') {
       this.searchData = {
         page: 1,
@@ -38,7 +46,9 @@ export default function ({
     }
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -47,7 +57,10 @@ export default function ({
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

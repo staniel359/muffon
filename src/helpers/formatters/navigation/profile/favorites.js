@@ -7,19 +7,33 @@ import formatProfileFavoritesSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({ profileId, profileNickname, scope }) {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    scope
+  }
+) {
   return [
     formatProfilesSection(),
-    formatProfileSection({
-      profileId,
-      profileNickname
-    }),
-    formatProfileFavoritesSection({
-      profileId,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatProfileSection(
+      {
+        profileId,
+        profileNickname
+      }
+    ),
+    formatProfileFavoritesSection(
+      {
+        profileId,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

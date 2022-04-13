@@ -1,15 +1,16 @@
 <template>
   <BaseTrackModalContainer
     ref="modal"
-    sourceId="genius"
+    source-id="genius"
     :scope="scope"
-    :requestTrackData="requestTrackData"
+    :request-track-data="requestTrackData"
   >
     <template #default="slotProps">
       <div class="main-lyrics-container">
-        <p class="lyrics">
-          {{ slotProps[scope] }}
-        </p>
+        <p
+          class="lyrics"
+          v-text="slotProps[scope]"
+        />
       </div>
     </template>
   </BaseTrackModalContainer>
@@ -42,7 +43,9 @@ export default {
   },
   methods: {
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

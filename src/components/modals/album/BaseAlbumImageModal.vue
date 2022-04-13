@@ -29,8 +29,13 @@ export default {
     'init'
   ],
   methods: {
-    handleInit (el) {
-      this.$emit('init', el)
+    handleInit (
+      el
+    ) {
+      this.$emit(
+        'init',
+        el
+      )
     }
   }
 }

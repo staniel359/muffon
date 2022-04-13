@@ -6,13 +6,17 @@
     @click.ctrl.exact.stop="handleCtrlClick"
     @auxclick="handleMiddleClick"
   >
-    <slot></slot>
+    <slot />
   </RouterLink>
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
-import { generateKey } from '*/helpers/utils'
+import {
+  ipcRenderer
+} from 'electron'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseLinkContainer',
@@ -35,7 +39,9 @@ export default {
     }
   },
   methods: {
-    handleClick (event) {
+    handleClick (
+      event
+    ) {
       this.$emit(
         'click',
         event

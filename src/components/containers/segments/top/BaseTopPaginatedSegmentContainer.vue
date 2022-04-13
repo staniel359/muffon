@@ -3,12 +3,12 @@
     ref="segment"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        responseDataName="topData"
-        :slotPropsData="segmentSlotProps"
+        response-data-name="topData"
+        :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"
@@ -16,7 +16,7 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedSegmentContainer>
     </template>
@@ -41,7 +41,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

@@ -3,14 +3,16 @@
     ref="input"
     :url="url"
     :fields="fields"
-    :formatResponse="formatResponse"
+    :format-response="formatResponse"
     @select="handleSelect"
   />
 </template>
 
 <script>
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'SearchInput',
@@ -44,8 +46,12 @@ export default {
     }
   },
   methods: {
-    handleSelect (tag) {
-      const isTagPresent = tagData => {
+    handleSelect (
+      tag
+    ) {
+      function isTagPresent (
+        tagData
+      ) {
         return tag.id === tagData.id
       }
 
@@ -68,14 +74,20 @@ export default {
 
       this.clear()
     },
-    formatResponse (response) {
+    formatResponse (
+      response
+    ) {
       return response.search.tags
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

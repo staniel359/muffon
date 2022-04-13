@@ -1,21 +1,27 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { profileCreateFormOptions } from '*/helpers/data/plugins/semantic'
-import { stringToDate as formatStringToDate } from '*/helpers/formatters'
+import {
+  profileCreateFormOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  stringToDate as formatStringToDate
+} from '*/helpers/formatters'
 import createProfile from '*/helpers/actions/api/profile/create'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'BaseProfileCreateFormContainer',
@@ -35,19 +41,26 @@ export default {
   },
   computed: {
     options () {
-      return profileCreateFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return profileCreateFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     }
   },
   watch: {
     profileData: 'handleProfileDataChange'
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const createArgs =
@@ -59,14 +72,20 @@ export default {
         createArgs
       )
     },
-    handleProfileDataChange (value) {
-      updateStore({
-        'profile.isLoggedIn': !!value,
-        'profile.info': value
-      })
+    handleProfileDataChange (
+      value
+    ) {
+      updateStore(
+        {
+          'profile.isLoggedIn': !!value,
+          'profile.info': value
+        }
+      )
     },
     createProfile,
-    formatCreateArgs (fields) {
+    formatCreateArgs (
+      fields
+    ) {
       const {
         email,
         password,

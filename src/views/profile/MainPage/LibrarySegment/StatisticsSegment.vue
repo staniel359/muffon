@@ -1,12 +1,12 @@
 <template>
   <BaseSegmentContainer
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @refresh="handleRefresh"
   >
     <BaseProfileLibraryStatistics
       v-if="libraryData"
-      :libraryData="libraryData"
+      :library-data="libraryData"
     />
   </BaseSegmentContainer>
 </template>
@@ -51,9 +51,11 @@ export default {
     },
     getProfileLibrary,
     fetchData () {
-      this.getProfileLibrary({
-        profileId: this.profileId
-      })
+      this.getProfileLibrary(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

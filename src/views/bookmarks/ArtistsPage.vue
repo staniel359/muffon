@@ -6,8 +6,8 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        isWithDeleteOption
-        isBookmark
+        is-with-delete-option
+        is-bookmark
       />
     </template>
   </BaseBookmarksPaginatedPageContainer>

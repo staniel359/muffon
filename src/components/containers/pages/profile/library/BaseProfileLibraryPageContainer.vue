@@ -1,18 +1,18 @@
 <template>
   <BasePageContainer
-    :responseData="libraryData"
-    :isLoading="isLoading"
+    :response-data="libraryData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :libraryData="libraryData"
-      :topTracksCount="topTracksCount"
-      :topAlbumsCount="topAlbumsCount"
-      :isLoading="isLoading"
+      :library-data="libraryData"
+      :top-tracks-count="topTracksCount"
+      :top-albums-count="topAlbumsCount"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -103,22 +103,32 @@ export default {
     },
     getProfileLibrary,
     getProfileLibrarySearch,
-    fetchData (page) {
+    fetchData (
+      page
+    ) {
       if (this.query) {
-        this.getProfileLibrarySearch({
-          ...this.libraryArgs,
-          query: this.query,
-          page
-        })
+        this.getProfileLibrarySearch(
+          {
+            ...this.libraryArgs,
+            query: this.query,
+            page
+          }
+        )
       } else {
-        this.getProfileLibrary({
-          ...this.libraryArgs,
-          page
-        })
+        this.getProfileLibrary(
+          {
+            ...this.libraryArgs,
+            page
+          }
+        )
       }
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

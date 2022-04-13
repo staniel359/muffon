@@ -1,11 +1,12 @@
 <template>
   <a
     class="item"
-    :class="{ active: isActive }"
+    :class="{
+      active: isActive
+    }"
     @click="handleClick"
-  >
-    {{ tabName }}
-  </a>
+    v-text="tabName"
+  />
 </template>
 
 <script>

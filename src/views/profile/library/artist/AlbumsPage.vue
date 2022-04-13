@@ -1,19 +1,19 @@
 <template>
   <BaseProfileLibraryArtistPaginatedPageContainer
-    :profileId="profileId"
-    :artistId="artistId"
+    :profile-id="profileId"
+    :artist-id="artistId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
-        :profileId="profileId"
-        :artistName="slotProps.artistName"
-        :itemsInRow="itemsInRow"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        isWithLibrary
-        isLinkToLibrary
+        :profile-id="profileId"
+        :artist-name="slotProps.artistName"
+        :items-in-row="itemsInRow"
+        :is-with-favorite-option="isWithFavoriteOption"
+        is-with-library
+        is-link-to-library
       />
     </template>
   </BaseProfileLibraryArtistPaginatedPageContainer>
@@ -24,7 +24,9 @@ import BaseProfileLibraryArtistPaginatedPageContainer
   from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
 import BaseAlbumsTableList
   from '*/components/lists/albums/BaseAlbumsTableList.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'AlbumsPage',

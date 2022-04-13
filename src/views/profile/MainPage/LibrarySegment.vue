@@ -1,22 +1,22 @@
 <template>
   <BaseProfileSegmentContainer
     scope="library"
-    :headerLink="headerLink"
-    :isFetchData="false"
+    :header-link="headerLink"
+    :is-fetch-data="false"
   >
     <template #default>
       <CompatibilitySegment
         v-if="isRenderCompatibility"
-        :profileId="profileId"
-        :profileNickname="profileNickname"
+        :profile-id="profileId"
+        :profile-nickname="profileNickname"
       />
 
       <StatisticsSegment
-        :profileId="profileId"
+        :profile-id="profileId"
       />
 
       <LibraryTabsSegment
-        :profileId="profileId"
+        :profile-id="profileId"
       />
     </template>
   </BaseProfileSegmentContainer>
@@ -28,7 +28,9 @@ import BaseProfileSegmentContainer
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 import {
   main as formatProfileLibraryMainLink
 } from '*/helpers/formatters/links/profile/library'
@@ -55,9 +57,11 @@ export default {
       )
     },
     headerLink () {
-      return formatProfileLibraryMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileLibraryMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

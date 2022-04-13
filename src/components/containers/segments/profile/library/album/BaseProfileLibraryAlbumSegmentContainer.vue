@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,13 +12,13 @@
     />
 
     <slot
-      :libraryAlbumData="libraryAlbumData"
-      :artistName="artistNameFetched"
-      :isLoading="isLoading"
+      :library-album-data="libraryAlbumData"
+      :artist-name="artistNameFetched"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
@@ -23,7 +26,9 @@
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getProfileLibraryAlbum
   from '*/helpers/actions/api/profile/library/album/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibraryAlbumSegmentContainer',
@@ -72,25 +77,33 @@ export default {
       return this.libraryAlbumArtistData?.name
     }
   },
+  mounted () {
+    this.fetchData()
+  },
   methods: {
     getProfileLibraryAlbum,
-    fetchData (page) {
-      this.getProfileLibraryAlbum({
-        ...this.libraryAlbumArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibraryAlbum(
+        {
+          ...this.libraryAlbumArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(
         this.$refs.segment
       )
     }
-  },
-  mounted () {
-    this.fetchData()
   }
 }
 </script>

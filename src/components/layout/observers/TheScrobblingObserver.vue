@@ -1,24 +1,35 @@
 <template>
-  <div id="the-scrobbling-observer"></div>
+  <div
+    id="the-scrobbling-observer"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import createScrobblerPlay
   from '*/helpers/actions/api/lastfm/scrobbler/play/create'
 import createScrobblerSave
   from '*/helpers/actions/api/lastfm/scrobbler/save/create'
-import { updateStore } from '*/helpers/actions'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  updateStore
+} from '*/helpers/actions'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'TheScrobblingObserver',
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing',
-      isPlayerScrobbling: 'isScrobbling',
-      isPlayerToScrobble: 'isToScrobble'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing',
+        isPlayerScrobbling: 'isScrobbling',
+        isPlayerToScrobble: 'isToScrobble'
+      }
+    ),
     trackData () {
       return {
         title: this.trackTitle,
@@ -50,14 +61,20 @@ export default {
     isPlayerToScrobble: 'handleIsPlayerToScrobbleChange'
   },
   methods: {
-    handleIsPlayerScrobblingChange (value) {
+    handleIsPlayerScrobblingChange (
+      value
+    ) {
       if (value) {
-        createScrobblerPlay({
-          ...this.trackData
-        })
+        createScrobblerPlay(
+          {
+            ...this.trackData
+          }
+        )
       }
     },
-    handleIsPlayerToScrobbleChange (value) {
+    handleIsPlayerToScrobbleChange (
+      value
+    ) {
       if (value) {
         createScrobblerSave(
           this.trackData
@@ -67,9 +84,11 @@ export default {
       }
     },
     handleSuccess () {
-      updateStore({
-        'player.isScrobbled': true
-      })
+      updateStore(
+        {
+          'player.isScrobbled': true
+        }
+      )
     }
   }
 }

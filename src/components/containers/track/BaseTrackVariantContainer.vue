@@ -1,18 +1,23 @@
 <template>
   <div
-    :class="{ active: isCurrent }"
+    :class="{
+      active: isCurrent
+    }"
     @click="handleClick"
   >
     <slot
-      :isLoading="isLoading"
-      :isError="!!error"
-      :isCurrent="isCurrent"
-    ></slot>
+      :is-loading="isLoading"
+      :is-error="!!error"
+      :is-current="isCurrent"
+    />
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import {
+  mapState,
+  mapGetters
+} from 'vuex'
 import getPlayerVariant from '*/helpers/actions/player/variant/get'
 
 export default {
@@ -30,15 +35,24 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', {
-      audioElement: 'element'
-    }),
-    ...mapState('player', {
-      playerCurrentVariantId: 'currentVariantId'
-    }),
-    ...mapGetters('audio', {
-      audioAction: 'action'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioElement: 'element'
+      }
+    ),
+    ...mapState(
+      'player',
+      {
+        playerCurrentVariantId: 'currentVariantId'
+      }
+    ),
+    ...mapGetters(
+      'audio',
+      {
+        audioAction: 'action'
+      }
+    ),
     isCurrent () {
       return (
         this.variantId ===

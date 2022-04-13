@@ -1,14 +1,16 @@
 <template>
   <div class="the-visible-area-container">
     <div
-      class="the-visible-area"
       ref="visible"
-    ></div>
+      class="the-visible-area"
+    />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import {
+  mapActions
+} from 'vuex'
 
 export default {
   name: 'TheVisibleArea',
@@ -18,9 +20,12 @@ export default {
     )
   },
   methods: {
-    ...mapActions('layout', [
-      'setVisibleContext'
-    ])
+    ...mapActions(
+      'layout',
+      [
+        'setVisibleContext'
+      ]
+    )
   }
 }
 </script>

@@ -6,8 +6,11 @@
     }"
   >
     <i
-      class="ellipsis horizontal small icon direction-icon"
-    ></i>
+      :class="[
+        'ellipsis horizontal small icon',
+        'direction-icon'
+      ]"
+    />
   </div>
 </template>
 

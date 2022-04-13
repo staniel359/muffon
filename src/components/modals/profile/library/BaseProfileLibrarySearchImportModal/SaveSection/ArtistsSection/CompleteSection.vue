@@ -2,7 +2,7 @@
   <template v-if="isError">
     <RetrySection
       v-if="errorArtists.length"
-      :errorArtists="errorArtists"
+      :error-artists="errorArtists"
       @retry="handleRetryButtonClick"
     />
   </template>
@@ -10,7 +10,9 @@
   <BaseMessage
     v-else
     class="success"
-    :icons="['check']"
+    :icons="[
+      'check'
+    ]"
     :header="successText"
   />
 </template>
@@ -18,7 +20,9 @@
 <script>
 import RetrySection from './CompleteSection/RetrySection.vue'
 import BaseMessage from '*/components/messages/BaseMessage.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'CompleteSection',
@@ -38,7 +42,9 @@ export default {
     successText () {
       return this.$t(
         'save.success.library.artists',
-        { count: this.totalCountFormatted }
+        {
+          count: this.totalCountFormatted
+        }
       )
     },
     totalCountFormatted () {
@@ -49,7 +55,9 @@ export default {
   },
   methods: {
     handleRetryButtonClick () {
-      this.$emit('retry')
+      this.$emit(
+        'retry'
+      )
     }
   }
 }

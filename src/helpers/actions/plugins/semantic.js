@@ -2,38 +2,85 @@ import store from '*/plugins/store'
 
 // Dimmer
 
-export const setDimmer = (el, options) => {
-  $(el).dimmer(options)
+export function setDimmer (
+  element,
+  options
+) {
+  $(
+    element
+  ).dimmer(
+    options
+  )
 }
 
-export const toggleDimmer = (el, bool) => {
-  const value = bool ? 'show' : 'hide'
+export function toggleDimmer (
+  element,
+  boolean
+) {
+  const value = boolean
+    ? 'show'
+    : 'hide'
 
-  $(el).dimmer(value)
+  $(
+    element
+  ).dimmer(
+    value
+  )
 }
 
 // Modal
 
-export const setModal = (el, options) => {
-  $(el).modal(options)
+export function setModal (
+  element,
+  options
+) {
+  $(
+    element
+  ).modal(
+    options
+  )
 }
 
-export const showModal = el => {
-  $(el).modal('show')
+export function showModal (
+  element
+) {
+  $(
+    element
+  ).modal(
+    'show'
+  )
 }
 
-export const hideModal = el => {
-  $(el).modal('hide')
+export function hideModal (
+  element
+) {
+  $(
+    element
+  ).modal(
+    'hide'
+  )
 }
 
 // Search
 
-export const setSearch = (el, options) => {
-  $(el).search(options)
+export function setSearch (
+  element,
+  options
+) {
+  $(
+    element
+  ).search(
+    options
+  )
 }
 
-export const setSearchSource = (el, source) => {
-  $(el).search(
+export function setSearchSource (
+  element,
+  source
+) {
+  $(
+    element
+  ).search(
     'setting',
     'source',
     source
@@ -42,52 +89,108 @@ export const setSearchSource = (el, source) => {
 
 // Transition
 
-export const showTransition = el => {
-  $(el).transition({
-    animation: 'fade in',
-    duration: 150
-  })
+export function showTransition (
+  element
+) {
+  $(
+    element
+  ).transition(
+    {
+      animation: 'fade in',
+      duration: 150
+    }
+  )
 }
 
-export const hideTransition = el => {
-  $(el).transition({
-    animation: 'fade out',
-    duration: 150
-  })
+export function hideTransition (
+  element
+) {
+  $(
+    element
+  ).transition(
+    {
+      animation: 'fade out',
+      duration: 150
+    }
+  )
 }
 
 // Visibility
 
-export const setVisibility = (el, options) => {
-  $(el).visibility(options)
+export function setVisibility (
+  element,
+  options
+) {
+  $(
+    element
+  ).visibility(
+    options
+  )
 }
 
 // Sidebar
 
-export const setSidebar = (el, options) => {
-  $(el).sidebar(options)
+export function setSidebar (
+  element,
+  options
+) {
+  $(
+    element
+  ).sidebar(
+    options
+  )
 }
 
-export const showSidebar = el => {
-  $(el).sidebar('show')
+export function showSidebar (
+  element
+) {
+  $(
+    element
+  ).sidebar(
+    'show'
+  )
 }
 
-export const hideSidebar = el => {
-  $(el).sidebar('hide')
+export function hideSidebar (
+  element
+) {
+  $(
+    element
+  ).sidebar(
+    'hide'
+  )
 }
 
-export const toggleSidebar = el => {
-  $(el).sidebar('toggle')
+export function toggleSidebar (
+  element
+) {
+  $(
+    element
+  ).sidebar(
+    'toggle'
+  )
 }
 
 // Seeker
 
-export const setSeeker = (el, options) => {
-  $(el).slider(options)
+export function setSeeker (
+  element,
+  options
+) {
+  $(
+    element
+  ).slider(
+    options
+  )
 }
 
-export const setSeekerValue = (el, value) => {
-  $(el).slider(
+export function setSeekerValue (
+  element,
+  value
+) {
+  $(
+    element
+  ).slider(
     'set value',
     value
   )
@@ -95,53 +198,114 @@ export const setSeekerValue = (el, value) => {
 
 // Popup
 
-export const setPopup = (el, options) => {
-  $(el).popup(options)
+export function setPopup (
+  element,
+  options
+) {
+  $(
+    element
+  ).popup(
+    options
+  )
 }
 
 // Dropdown
 
-export const setDropdown = (el, options) => {
-  $(el).dropdown(options)
+export function setDropdown (
+  element,
+  options
+) {
+  $(
+    element
+  ).dropdown(
+    options
+  )
 }
 
-export const setDropdownValue = (el, value) => {
-  $(el).dropdown(
+export function setDropdownValue (
+  element,
+  value
+) {
+  $(
+    element
+  ).dropdown(
     'set selected',
     value
   )
 }
 
-export const resetDropdown = el => {
-  $(el).dropdown('restore defaults')
+export function resetDropdown (
+  element
+) {
+  $(
+    element
+  ).dropdown(
+    'restore defaults'
+  )
 }
 
 // Checkbox
 
-export const setCheckbox = (el, options) => {
-  $(el).checkbox(options)
+export function setCheckbox (
+  element,
+  options
+) {
+  $(
+    element
+  ).checkbox(
+    options
+  )
 }
 
-export const checkCheckbox = (el, bool) => {
-  const value = bool ? 'check' : 'uncheck'
+export function checkCheckbox (
+  element,
+  boolean
+) {
+  const value = boolean
+    ? 'check'
+    : 'uncheck'
 
-  $(el).checkbox(value)
+  $(
+    element
+  ).checkbox(
+    value
+  )
 }
 
 // Embed
 
-export const setEmbed = (el, options) => {
-  $(el).embed(options)
+export function setEmbed (
+  element,
+  options
+) {
+  $(
+    element
+  ).embed(
+    options
+  )
 }
 
 // Form
 
-export const setForm = (el, options) => {
-  $(el).form(options)
+export function setForm (
+  element,
+  options
+) {
+  $(
+    element
+  ).form(
+    options
+  )
 }
 
-export const addFormFieldError = (el, field, error) => {
-  $(el).form(
+export function addFormFieldError (
+  element,
+  field,
+  error
+) {
+  $(
+    element
+  ).form(
     'add prompt',
     field,
     error
@@ -150,12 +314,24 @@ export const addFormFieldError = (el, field, error) => {
 
 // Calendar
 
-export const setCalendar = (el, options) => {
-  $(el).calendar(options)
+export function setCalendar (
+  element,
+  options
+) {
+  $(
+    element
+  ).calendar(
+    options
+  )
 }
 
-export const setCalendarDate = (el, value) => {
-  $(el).calendar(
+export function setCalendarDate (
+  element,
+  value
+) {
+  $(
+    element
+  ).calendar(
     'set date',
     value,
     false,
@@ -165,37 +341,92 @@ export const setCalendarDate = (el, value) => {
 
 // Accordion
 
-export const setAccordion = (el, options) => {
-  $(el).accordion(options)
+export function setAccordion (
+  element,
+  options
+) {
+  $(
+    element
+  ).accordion(
+    options
+  )
 }
 
 // Progress
 
-export const setProgress = (el, options) => {
-  $(el).progress(options)
+export function setProgress (
+  element,
+  options
+) {
+  $(
+    element
+  ).progress(
+    options
+  )
 }
 
-export const resetProgress = el => {
-  $(el).progress('reset')
-  $(el).progress('remove success')
-  $(el).progress('remove error')
+export function resetProgress (
+  element
+) {
+  $(
+    element
+  ).progress(
+    'reset'
+  )
+  $(
+    element
+  ).progress(
+    'remove success'
+  )
+  $(
+    element
+  ).progress(
+    'remove error'
+  )
 }
 
-export const setProgressTotalCount = (el, value) => {
-  $(el).progress('set total', value)
+export function setProgressTotalCount (
+  element,
+  value
+) {
+  $(
+    element
+  ).progress(
+    'set total',
+    value
+  )
 }
 
-export const incrementProgress = el => {
-  $(el).progress('increment')
+export function incrementProgress (
+  element
+) {
+  $(
+    element
+  ).progress(
+    'increment'
+  )
 }
 
-export const setProgressValue = (el, value) => {
-  $(el).progress('set progress', value)
+export function setProgressValue (
+  element,
+  value
+) {
+  $(
+    element
+  ).progress(
+    'set progress',
+    value
+  )
 }
 
 // Toast
 
-export const setToast = ({ message, icon }) => {
+export function setToast (
+  {
+    message,
+    icon
+  }
+) {
   const {
     visibleContext,
     isDarkMode
@@ -205,17 +436,23 @@ export const setToast = ({ message, icon }) => {
     ? 'inverted'
     : ''
 
-  $('body').toast({
-    showIcon: icon,
-    context: visibleContext,
-    class: className,
-    message
-  })
+  $(
+    'body'
+  ).toast(
+    {
+      showIcon: icon,
+      context: visibleContext,
+      class: className,
+      message
+    }
+  )
 }
 
 // Utils
 
-export const numberToColumnWidth = value => {
+export function numberToColumnWidth (
+  value
+) {
   const data = {
     1: 'one',
     2: 'two',

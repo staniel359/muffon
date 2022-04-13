@@ -3,7 +3,7 @@
     <CommunityItem
       v-for="communityData in communitiesCollection"
       :key="communityData.uuid"
-      :communityData="communityData"
+      :community-data="communityData"
     />
   </BaseListContainer>
 </template>
@@ -12,7 +12,9 @@
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import CommunityItem from './BaseCommunitiesSimpleList/CommunityItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseCommunitiesSimpleList',

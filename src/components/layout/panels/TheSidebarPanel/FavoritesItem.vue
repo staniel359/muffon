@@ -30,9 +30,11 @@ export default {
       )
     },
     favoritesLink () {
-      return formatProfileFavoritesMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileFavoritesMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

@@ -2,13 +2,15 @@
   <ArtistItem
     v-for="artistData in artistsCollection"
     :key="artistData.uuid"
-    :artistData="artistData"
+    :artist-data="artistData"
   />
 </template>
 
 <script>
 import ArtistItem from './ArtistsList/ArtistItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'ArtistsList',

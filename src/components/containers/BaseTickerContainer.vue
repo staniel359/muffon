@@ -5,14 +5,16 @@
     @mouseleave="handleMouseLeave"
   >
     <div
-      class="ticker"
       ref="ticker"
+      class="ticker"
     >
       <div
         ref="content"
-        :style="{ 'padding-right': `${gapWidth}px` }"
+        :style="{
+          'padding-right': `${gapWidth}px`
+        }"
       >
-        <slot></slot>
+        <slot />
       </div>
     </div>
   </div>
@@ -45,7 +47,9 @@ export default {
       return this.ticker.offsetWidth
     },
     contentClone () {
-      return this.content.cloneNode(true)
+      return this.content.cloneNode(
+        true
+      )
     },
     isLoopEnd () {
       return (
@@ -55,8 +59,13 @@ export default {
     }
   },
   mounted () {
-    this.ticker = this.$refs.ticker
-    this.content = this.$refs.content
+    const {
+      ticker,
+      content
+    } = this.$refs
+
+    this.ticker = ticker
+    this.content = content
 
     if (this.isTickable) {
       this.ticker.appendChild(
@@ -67,7 +76,9 @@ export default {
   methods: {
     handleMouseEnter () {
       if (this.isTickable) {
-        this.speed = this.speedPixels / 60
+        this.speed = (
+          this.speedPixels / 60
+        )
 
         this.animate()
       }
@@ -82,6 +93,9 @@ export default {
 
       this.transformTicker()
     },
+    handleRequestAnimationFrame () {
+      this.animate()
+    },
     animate () {
       this.progress -= this.speed
 
@@ -92,9 +106,9 @@ export default {
       }
 
       this.animationFrame =
-        requestAnimationFrame(() => {
-          this.animate()
-        })
+        requestAnimationFrame(
+          this.handleRequestAnimationFrame
+        )
     },
     transformTicker () {
       this.ticker.style.transform =

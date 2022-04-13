@@ -3,13 +3,19 @@ import {
   playlists as formatProfilePlaylistsLink
 } from '*/helpers/formatters/links/profile'
 
-export default function ({ profileId }) {
+export default function (
+  {
+    profileId
+  }
+) {
   return {
     name: i18n.global.t(
       'navigation.playlists'
     ),
-    link: formatProfilePlaylistsLink({
-      profileId
-    })
+    link: formatProfilePlaylistsLink(
+      {
+        profileId
+      }
+    )
   }
 }

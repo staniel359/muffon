@@ -1,49 +1,84 @@
-import { ipcRenderer } from 'electron'
-import { camelCase } from 'camel-case'
+import {
+  ipcRenderer
+} from 'electron'
+import {
+  camelCase
+} from 'camel-case'
 import store from '*/plugins/store'
 import i18n from '*/plugins/i18n'
-import { addFormFieldError } from '*/helpers/actions/plugins/semantic'
+import {
+  addFormFieldError
+} from '*/helpers/actions/plugins/semantic'
 
-export const updateStore = data => {
+export function updateStore (
+  data
+) {
   return ipcRenderer.invoke(
     'update-store',
-    JSON.stringify(data)
+    JSON.stringify(
+      data
+    )
   )
 }
 
-export const updateTab = data => {
-  const { tabId } = store.state.layout
+export function updateTab (
+  data
+) {
+  const {
+    tabId
+  } = store.state.layout
 
   ipcRenderer.send(
     'update-tab',
-    { tabId, data }
+    {
+      tabId,
+      data
+    }
   )
 }
 
-export const setPlayerPlaying = value => {
-  updateStore({
-    'player.playing': value
-  })
+export function setPlayerPlaying (
+  value
+) {
+  updateStore(
+    {
+      'player.playing': value
+    }
+  )
 
-  const handleUpdateStore = () => {
+  function handleUpdateStore () {
     store.dispatch(
       'audio/setIsAutoplay',
       true
     )
   }
 
-  updateStore({
-    'audio.isAutoplay': false
-  }).then(
+  updateStore(
+    {
+      'audio.isAutoplay': false
+    }
+  ).then(
     handleUpdateStore
   )
 }
 
-export const addFormErrors = ({ error, fields, form }) => {
-  const { errors } = error.response.data
+export function addFormErrors (
+  {
+    error,
+    fields,
+    form
+  }
+) {
+  const {
+    errors
+  } = error.response.data
 
-  const addFieldsError = errorData => {
-    const addFieldError = field => {
+  function addFieldsError (
+    errorData
+  ) {
+    function addFieldError (
+      field
+    ) {
       if (errorData[field]) {
         const errorKey = camelCase(
           errorData[field]

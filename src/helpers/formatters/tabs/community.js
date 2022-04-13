@@ -1,26 +1,43 @@
 import i18n from '*/plugins/i18n'
 import {
-  main as formatCommunityMainLink
+  main as formatCommunityMainLink,
+  posts as formatCommunityPostsLink
 } from '*/helpers/formatters/links/community'
 
-export default function ({ communityId, communityTitle, scope }) {
-  const formatTitle = () => {
+export default function (
+  {
+    communityId,
+    communityTitle,
+    scope
+  }
+) {
+  function formatTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: communityTitle }
+        {
+          modelName: communityTitle
+        }
       )
     } else {
       return communityTitle
     }
   }
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
+      case 'posts':
+        return formatCommunityPostsLink(
+          {
+            communityId
+          }
+        ).path
       default:
-        return formatCommunityMainLink({
-          communityId
-        }).path
+        return formatCommunityMainLink(
+          {
+            communityId
+          }
+        ).path
     }
   }
 

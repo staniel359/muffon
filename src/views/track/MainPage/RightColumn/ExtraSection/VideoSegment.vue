@@ -7,14 +7,14 @@
     >
       <BaseTrackSearchContainer
         v-if="isOpen"
-        sourceId="youtube"
+        source-id="youtube"
         :scope="scope"
         :query="query"
       >
         <template #default="slotProps">
           <VideoSelect
-            :isLoading="slotProps.isLoading"
-            :isError="slotProps.isError"
+            :is-loading="slotProps.isLoading"
+            :is-error="slotProps.isError"
             :videos="slotProps[scope]"
           />
         </template>
@@ -23,7 +23,7 @@
       <VideoData
         v-if="selectedVideoData"
         :key="key"
-        :selectedVideoData="selectedVideoData"
+        :selected-video-data="selectedVideoData"
         @click="handleVideoClick"
       />
     </BaseAccordionContainer>
@@ -37,8 +37,12 @@ import BaseTrackSearchContainer
   from '*/components/containers/track/BaseTrackSearchContainer.vue'
 import VideoSelect from './VideoSegment/VideoSelect.vue'
 import VideoData from './VideoSegment/VideoData.vue'
-import { generateKey } from '*/helpers/utils'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  generateKey
+} from '*/helpers/utils'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'VideoSegment',
@@ -85,7 +89,9 @@ export default {
       this.isOpen = false
       this.selectedVideoData = null
     },
-    handleSelectedVideoDataChange (value) {
+    handleSelectedVideoDataChange (
+      value
+    ) {
       if (value) {
         this.key = generateKey()
 
@@ -95,7 +101,9 @@ export default {
     handleVideoClick () {
       this.focus()
     },
-    setSelectedVideoData (value) {
+    setSelectedVideoData (
+      value
+    ) {
       this.selectedVideoData = value
     },
     focus () {

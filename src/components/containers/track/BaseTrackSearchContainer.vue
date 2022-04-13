@@ -1,15 +1,15 @@
 <template>
   <slot
-    :isLoading="isLoading"
-    :isError="!!error"
+    :is-loading="isLoading"
+    :is-error="!!error"
     :[scope]="collection"
-  ></slot>
+  />
 
   <BaseErrorMessage
-    class="error-message"
     v-if="error"
+    class="error-message"
     :error="error"
-    isWithRefreshButton
+    is-with-refresh-button
     @refresh="handleRefresh"
   />
 </template>

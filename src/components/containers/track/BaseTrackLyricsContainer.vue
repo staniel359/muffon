@@ -1,15 +1,15 @@
 <template>
   <BaseSegmentContainer
     class="basic"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @refresh="handleRefresh"
   >
     <slot
       v-if="lyrics"
       :lyrics="lyrics"
-      :trackId="trackId"
-    ></slot>
+      :track-id="trackId"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -68,7 +68,9 @@ export default {
       this.fetchData()
     },
     handleTrackDataChange () {
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     },
     getTrack,
     fetchData () {

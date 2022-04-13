@@ -22,7 +22,7 @@
 
         <div class="submit-button-container">
           <BaseSubmitButton
-            actionKey="create"
+            action-key="create"
           />
         </div>
       </BaseCommunityCreateFormContainer>
@@ -56,16 +56,24 @@ export default {
     }
   },
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.image = value
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
-      this.$refs.title.focus()
+      this.$refs
+        .title
+        .focus()
     }
   }
 }

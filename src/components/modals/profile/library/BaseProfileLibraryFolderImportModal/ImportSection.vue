@@ -2,15 +2,15 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :isError="isError"
-    :errorFiles="errorFiles"
-    :successFiles="successFiles"
+    :is-error="isError"
+    :error-files="errorFiles"
+    :success-files="successFiles"
   />
 </template>
 
@@ -18,8 +18,12 @@
 import musicMetadata from 'music-metadata'
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
-import { tags as formatFileTags } from '*/helpers/formatters/file'
-import { generateKey } from '*/helpers/utils'
+import {
+  tags as formatFileTags
+} from '*/helpers/formatters/file'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'ImportSection',
@@ -68,37 +72,55 @@ export default {
         this.isError = true
       }
     },
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'import.active.tracks',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
     startFilesLoading () {
-      this.$refs.progress.setTotalCount(
-        this.files.length
-      )
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.files.length
+        )
     },
     formatFiles () {
       this.files.forEach(
         this.formatFile
       )
     },
-    formatFile (file) {
-      const handleSuccess = metadata => {
+    formatFile (
+      file
+    ) {
+      const handleSuccess = (
+        metadata
+      ) => {
         if (this.isMounted) {
-          this.addToSuccessFiles({
-            tags: metadata.common,
-            file
-          })
+          this.addToSuccessFiles(
+            {
+              tags: metadata.common,
+              file
+            }
+          )
         }
       }
 
       const handleError = () => {
         if (this.isMounted) {
-          this.addToErrorFiles({
-            file
-          })
+          this.addToErrorFiles(
+            {
+              file
+            }
+          )
         }
       }
 
@@ -110,11 +132,17 @@ export default {
         handleError
       )
     },
-    addToSuccessFiles ({ tags, file }) {
+    addToSuccessFiles (
+      {
+        tags,
+        file
+      }
+    ) {
       const fileData = {
         uuid: generateKey(),
         ...formatFileTags(
-          tags, file
+          tags,
+          file
         )
       }
 
@@ -122,9 +150,15 @@ export default {
         fileData
       )
 
-      this.$refs.progress.increment()
+      this.$refs
+        .progress
+        .increment()
     },
-    addToErrorFiles ({ file }) {
+    addToErrorFiles (
+      {
+        file
+      }
+    ) {
       const fileData = {
         uuid: generateKey(),
         text: file.path
@@ -134,9 +168,13 @@ export default {
         fileData
       )
 
-      this.$refs.progress.increment()
+      this.$refs
+        .progress
+        .increment()
     },
-    setSuccessFiles (value) {
+    setSuccessFiles (
+      value
+    ) {
       this.successFiles = value
     }
   }

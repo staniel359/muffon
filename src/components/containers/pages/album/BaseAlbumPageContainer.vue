@@ -1,18 +1,18 @@
 <template>
   <BasePageContainer
-    :responseData="albumData"
-    :isLoading="isLoading"
+    :response-data="albumData"
+    :is-loading="isLoading"
     :error="error"
   >
     <template #default="slotProps">
       <slot
-        :albumData="albumData"
-        :requestAlbumData="requestAlbumData"
-        :profileId="slotProps.profileId"
-        :isLoading="isLoading"
+        :album-data="albumData"
+        :request-album-data="requestAlbumData"
+        :profile-id="slotProps.profileId"
+        :is-loading="isLoading"
         :error="error"
         :refresh="refresh"
-      ></slot>
+      />
     </template>
   </BasePageContainer>
 </template>
@@ -26,7 +26,9 @@ import formatAlbumPageTab from '*/helpers/formatters/tabs/album'
 import getAlbum from '*/helpers/actions/api/album/get'
 import getBandcampAlbumId
   from '*/helpers/actions/api/bandcampId/album/get'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -43,14 +45,6 @@ export default {
     }
   },
   props: {
-    artistName: {
-      type: String,
-      required: true
-    },
-    albumTitle: {
-      type: String,
-      required: true
-    },
     sourceParams: {
       type: Object,
       required: true
@@ -126,14 +120,22 @@ export default {
         this.sourceParams
       )
     },
-    setRequestAlbumData (value) {
-      if (this.isGetBandcampAlbumId(value)) {
-        this.getBandcampAlbumId(value)
+    setRequestAlbumData (
+      value
+    ) {
+      if (this.isGetBandcampAlbumId(
+        value
+      )) {
+        this.getBandcampAlbumId(
+          value
+        )
       } else {
         this.requestAlbumData = value
       }
     },
-    isGetBandcampAlbumId (value) {
+    isGetBandcampAlbumId (
+      value
+    ) {
       return (
         value.sourceId === 'bandcamp' &&
           !(
@@ -142,14 +144,22 @@ export default {
           )
       )
     },
-    fetchData (page) {
-      this.getAlbum({
-        ...this.albumArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getAlbum(
+        {
+          ...this.albumArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

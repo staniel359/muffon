@@ -22,17 +22,15 @@
     <strong
       v-if="lastfmNickname"
       class="connect-nickname"
-    >
-      {{ lastfmNickname }}
-    </strong>
+      v-text="lastfmNickname"
+    />
   </div>
 
   <div
     v-if="isShowWaitMessage"
     class="connect-wait-message"
-  >
-    {{ waitText }}
-  </div>
+    v-text="waitText"
+  />
 </template>
 
 <script>
@@ -55,7 +53,6 @@ export default {
     return {
       error: null,
       token: null,
-      userData: null,
       isLoading: false,
       isShowWaitMessage: false
     }
@@ -88,9 +85,11 @@ export default {
       if (this.token) {
         this.isShowWaitMessage = false
 
-        this.getLastfmSession({
-          token: this.token
-        })
+        this.getLastfmSession(
+          {
+            token: this.token
+          }
+        )
       } else {
         this.getLastfmToken()
       }

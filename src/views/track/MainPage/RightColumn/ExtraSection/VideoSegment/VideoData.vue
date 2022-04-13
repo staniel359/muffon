@@ -2,7 +2,7 @@
   <div>
     <BaseEmbed
       class="video-embed"
-      :videoData="selectedVideoData"
+      :video-data="selectedVideoData"
       @click="handleClick"
     />
 
@@ -10,9 +10,10 @@
       <BaseLinkContainer
         :link="videoMainLink"
       >
-        <strong class="link">
-          {{ moreText }}
-        </strong>
+        <strong
+          class="link"
+          v-text="moreText"
+        />
       </BaseLinkContainer>
     </div>
   </div>
@@ -22,7 +23,9 @@
 import BaseEmbed from '*/components/BaseEmbed.vue'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
-import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
+import {
+  main as formatVideoMainLink
+} from '*/helpers/formatters/links/video'
 
 export default {
   name: 'VideoData',
@@ -44,17 +47,23 @@ export default {
       return this.selectedVideoData.youtube_id
     },
     videoMainLink () {
-      return formatVideoMainLink({
-        videoId: this.videoId
-      })
+      return formatVideoMainLink(
+        {
+          videoId: this.videoId
+        }
+      )
     },
     moreText () {
-      return this.$t('more')
+      return this.$t(
+        'more'
+      )
     }
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

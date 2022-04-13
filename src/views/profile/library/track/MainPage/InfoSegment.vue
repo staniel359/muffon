@@ -14,28 +14,33 @@
 
         <BaseHeader
           tag="h4"
-          :class="{ link: isHeaderLink }"
+          :class="{
+            link: isHeaderLink
+          }"
           :text="trackTitle"
         />
 
         <div
-          :class="{ link: isArtistNameActive }"
+          :class="{
+            link: isArtistNameActive
+          }"
           @mouseenter="handleArtistLinkMouseEnter"
           @mouseleave="handleArtistLinkMouseLeave"
-        >
-          {{ artistName }}
-        </div>
+          v-text="artistName"
+        />
 
         <div
           v-if="albumTitle"
           class="main-small-container"
-          :class="{ link: isAlbumTitleActive }"
+          :class="{
+            link: isAlbumTitleActive
+          }"
           @mouseenter="handleAlbumLinkMouseEnter"
           @mouseleave="handleAlbumLinkMouseLeave"
         >
-          <small>
-            {{ albumTitle }}
-          </small>
+          <small
+            v-text="albumTitle"
+          />
         </div>
       </BaseLinkContainer>
 
@@ -44,7 +49,7 @@
         class="main-self-container"
       >
         <BaseSelfIcons
-          :favoriteId="favoriteId"
+          :favorite-id="favoriteId"
         />
 
         <template
@@ -52,32 +57,32 @@
         >
           <BaseOptionsDropdown
             model="track"
-            :trackTitle="trackTitle"
-            :artistName="artistName"
-            :albumTitle="albumTitle"
-            :favoriteId="favoriteId"
-            isWithFavoriteOption
-            isWithPlaylistOption
-            isWithDeleteOption
+            :track-title="trackTitle"
+            :artist-name="artistName"
+            :album-title="albumTitle"
+            :favorite-id="favoriteId"
+            is-with-favorite-option
+            is-with-playlist-option
+            is-with-delete-option
             @delete="handleDeleteOptionClick"
             @playlist="handlePlaylistOptionClick"
           />
 
           <BasePlaylistsModal
             ref="playlistModal"
-            :trackTitle="trackTitle"
-            :artistName="artistName"
-            :albumTitle="albumTitle"
-            :imageUrl="imageData?.original"
+            :track-title="trackTitle"
+            :artist-name="artistName"
+            :album-title="albumTitle"
+            :image-url="imageData?.original"
           />
 
           <BaseProfileLibraryDeleteModal
             ref="deleteModal"
             model="track"
-            :profileId="profileId"
-            :modelId="trackId"
-            :modelName="trackFullTitle"
-            isDeleteWithRedirect
+            :profile-id="profileId"
+            :model-id="trackId"
+            :model-name="trackFullTitle"
+            is-delete-with-redirect
           />
         </template>
       </div>
@@ -85,12 +90,13 @@
       <BaseDivider />
 
       <div class="main-profile-page-info">
-        <div>
-          {{ sinceText }}
-        </div>
-        <strong>
-          {{ createdFormatted }}
-        </strong>
+        <div
+          v-text="sinceText"
+        />
+
+        <strong
+          v-text="createdFormatted"
+        />
       </div>
     </BaseSegmentContainer>
   </div>
@@ -117,9 +123,15 @@ import {
 import {
   main as formatProfileLibraryAlbumMainLink
 } from '*/helpers/formatters/links/profile/library/album'
-import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
-import { isCurrentProfile } from '*/helpers/utils'
-import { date as formatDate } from '*/helpers/formatters'
+import {
+  main as formatTrackMainLink
+} from '*/helpers/formatters/links/track'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
+import {
+  date as formatDate
+} from '*/helpers/formatters'
 import formatTrackRequestData from '*/helpers/formatters/request/track/data'
 
 export default {
@@ -169,29 +181,35 @@ export default {
       }
     },
     profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistId () {
       return this.trackData.artist.id
     },
     profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
+      return formatProfileLibraryAlbumMainLink(
+        {
+          profileId: this.profileId,
+          albumId: this.albumId
+        }
+      )
     },
     albumId () {
       return this.trackData.album.id
     },
     trackMainLink () {
-      return formatTrackMainLink({
-        trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        sourceParams: this.sourceParams
-      })
+      return formatTrackMainLink(
+        {
+          trackTitle: this.trackTitle,
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     trackTitle () {
       return this.trackData.title
@@ -200,13 +218,20 @@ export default {
       return this.trackData.artist.name
     },
     sourceParams () {
-      return formatTrackRequestData({
-        sourceId: 'lastfm',
-        trackData: this.trackData
-      })
+      return formatTrackRequestData(
+        {
+          sourceId: 'lastfm',
+          trackData: this.trackData
+        }
+      )
     },
     trackFullTitle () {
-      return `${this.artistName} - ${this.trackTitle}`
+      return [
+        this.artistName,
+        this.trackTitle
+      ].join(
+        ' - '
+      )
     },
     albumTitle () {
       return this.trackData.album?.title
@@ -251,12 +276,18 @@ export default {
       this.isAlbumTitleActive = false
     },
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     },
     handlePlaylistOptionClick () {
-      this.$refs.playlistModal.show()
+      this.$refs
+        .playlistModal
+        .show()
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     }
   }

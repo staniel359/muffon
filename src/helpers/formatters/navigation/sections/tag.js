@@ -1,11 +1,20 @@
-import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
+import {
+  main as formatTagMainLink
+} from '*/helpers/formatters/links/tag'
 
-export default function ({ tagName, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    tagName,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatTagMainLink({
-        tagName
-      })
+      return formatTagMainLink(
+        {
+          tagName
+        }
+      )
     }
   }
 

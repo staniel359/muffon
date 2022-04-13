@@ -1,14 +1,14 @@
 <template>
   <BaseProfileFavoritesPaginatedPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        :isWithDeleteOption="isWithDeleteOption"
-        isFavorite
+        :is-with-delete-option="isWithDeleteOption"
+        is-favorite
       />
     </template>
   </BaseProfileFavoritesPaginatedPageContainer>
@@ -19,7 +19,9 @@ import BaseProfileFavoritesPaginatedPageContainer
   from '*/components/containers/pages/profile/favorites/BaseProfileFavoritesPaginatedPageContainer.vue'
 import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'ArtistsPage',

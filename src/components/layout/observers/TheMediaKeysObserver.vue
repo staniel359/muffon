@@ -1,10 +1,14 @@
 <template>
-  <div id="the-media-observer"></div>
+  <div
+    id="the-media-observer"
+  />
 </template>
 
 <script>
 import getQueueTrack from '*/helpers/actions/queue/track/get'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'TheMediaKeysObserver',
@@ -33,25 +37,37 @@ export default {
   },
   methods: {
     handlePressPrev () {
-      getQueueTrack({
-        position: 'prev'
-      })
+      getQueueTrack(
+        {
+          position: 'prev'
+        }
+      )
     },
     handlePressNext () {
-      getQueueTrack({
-        position: 'next'
-      })
+      getQueueTrack(
+        {
+          position: 'next'
+        }
+      )
     },
     handlePressStop () {
-      updateStore({
-        'player.playing': null
-      })
+      updateStore(
+        {
+          'player.playing': null
+        }
+      )
     },
-    setMediaActionHandler ({ action, handler }) {
+    setMediaActionHandler (
+      {
+        action,
+        handler
+      }
+    ) {
       navigator
         .mediaSession
         .setActionHandler(
-          action, handler
+          action,
+          handler
         )
     }
   }

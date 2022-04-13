@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ui button main-simple-button"
     ref="button"
+    class="ui button main-simple-button"
     :class="{
       inverted: isDarkMode,
       icon: !!icon && !text
@@ -14,9 +14,10 @@
       :class="icon"
     />
 
-    <span v-if="text">
-      {{ text }}
-    </span>
+    <span
+      v-if="text"
+      v-text="text"
+    />
 
     <i
       v-if="icon && isReverse"
@@ -27,7 +28,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseButton',
@@ -41,9 +44,12 @@ export default {
     'click'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   mounted () {
     this.$emit(
@@ -52,7 +58,9 @@ export default {
     )
   },
   methods: {
-    handleClick (event) {
+    handleClick (
+      event
+    ) {
       this.$emit(
         'click',
         event

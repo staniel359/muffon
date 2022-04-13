@@ -21,6 +21,9 @@ export default {
     },
     selected: String
   },
+  emits: [
+    'change'
+  ],
   computed: {
     options () {
       return this.scopes.map(
@@ -29,13 +32,17 @@ export default {
     }
   },
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'change',
         value
       )
     },
-    formatOption (scope) {
+    formatOption (
+      scope
+    ) {
       return {
         id: scope,
         name: this.$t(

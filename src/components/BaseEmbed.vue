@@ -1,14 +1,18 @@
 <template>
   <div
-    class="ui embed"
     ref="video"
+    class="ui embed"
     @click="handleClick"
-  ></div>
+  />
 </template>
 
 <script>
-import { setEmbed } from '*/helpers/actions/plugins/semantic'
-import { mainEmbedOptions } from '*/helpers/data/plugins/semantic'
+import {
+  setEmbed
+} from '*/helpers/actions/plugins/semantic'
+import {
+  mainEmbedOptions
+} from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseEmbed',
@@ -23,10 +27,12 @@ export default {
   ],
   computed: {
     embedOptions () {
-      return mainEmbedOptions({
-        videoId: this.videoId,
-        placeholder: this.placeholder
-      })
+      return mainEmbedOptions(
+        {
+          videoId: this.videoId,
+          placeholder: this.placeholder
+        }
+      )
     },
     videoId () {
       return this.videoData.youtube_id
@@ -46,7 +52,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

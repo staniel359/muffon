@@ -1,19 +1,23 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { playlistFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  playlistFormOptions
+} from '*/helpers/data/plugins/semantic'
 import createPlaylist from '*/helpers/actions/api/playlist/create'
 import {
   playlist as formatProfilePlaylistLink
@@ -39,19 +43,26 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     options () {
-      return playlistFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return playlistFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     },
     playlistUrl () {
-      return formatProfilePlaylistLink({
-        profileId: this.profileId,
-        playlistId: this.playlistId
-      })
+      return formatProfilePlaylistLink(
+        {
+          profileId: this.profileId,
+          playlistId: this.playlistId
+        }
+      )
     },
     profileId () {
       return this.profileInfo.id.toString()
@@ -61,10 +72,15 @@ export default {
     playlistId: 'handlePlaylistIdChange'
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const createArgs =
@@ -89,8 +105,12 @@ export default {
         this.playlistUrl
       )
     },
-    formatCreateArgs (fields) {
-      const { title } = fields
+    formatCreateArgs (
+      fields
+    ) {
+      const {
+        title
+      } = fields
 
       const image = this.image.data
 

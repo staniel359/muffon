@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="fluid green save-button"
+    class="fluid primary save-button"
     icon="save"
     :text="saveText"
     @click="handleClick"
@@ -11,7 +11,7 @@
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'BaseProfileLibrarySaveButton',
+  name: 'BaseSaveButton',
   components: {
     BaseButton
   },
@@ -27,7 +27,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

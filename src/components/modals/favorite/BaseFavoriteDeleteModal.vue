@@ -1,12 +1,12 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="favorite"
+    model-type="favorite"
     :model="model"
-    :modelName="modelName"
-    :isLoading="isLoading"
+    :model-name="modelName"
+    :is-loading="isLoading"
     :error="error"
-    @deleteButtonClick="handleDeleteButtonClick"
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -47,7 +47,9 @@ export default {
           return [
             this.modelData.artist.name,
             this.modelData.title
-          ].join(' - ')
+          ].join(
+            ' - '
+          )
       }
     },
     favoriteId () {
@@ -69,13 +71,19 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
-      this.$emit('deleted')
+      this.$emit(
+        'deleted'
+      )
     },
     deleteFavorite,
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

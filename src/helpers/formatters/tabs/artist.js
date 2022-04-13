@@ -7,40 +7,57 @@ import {
   similar as formatArtistSimilarLink
 } from '*/helpers/formatters/links/artist'
 
-export default function ({ artistName, scope }) {
-  const formatTitle = () => {
+export default function (
+  {
+    artistName,
+    scope
+  }
+) {
+  function formatTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: artistName }
+        {
+          modelName: artistName
+        }
       )
     } else {
       return artistName
     }
   }
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'images':
-        return formatArtistImagesLink({
-          artistName
-        }).path
+        return formatArtistImagesLink(
+          {
+            artistName
+          }
+        ).path
       case 'tracks':
-        return formatArtistTracksLink({
-          artistName
-        }).path
+        return formatArtistTracksLink(
+          {
+            artistName
+          }
+        ).path
       case 'albums':
-        return formatArtistAlbumsLink({
-          artistName
-        }).path
+        return formatArtistAlbumsLink(
+          {
+            artistName
+          }
+        ).path
       case 'similar':
-        return formatArtistSimilarLink({
-          artistName
-        }).path
+        return formatArtistSimilarLink(
+          {
+            artistName
+          }
+        ).path
       default:
-        return formatArtistMainLink({
-          artistName
-        }).path
+        return formatArtistMainLink(
+          {
+            artistName
+          }
+        ).path
     }
   }
 

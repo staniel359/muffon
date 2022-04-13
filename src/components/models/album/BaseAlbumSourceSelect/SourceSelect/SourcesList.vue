@@ -1,27 +1,29 @@
 <template>
-  <div class="header">
-    {{ streamableText }}
-  </div>
+  <div
+    class="header"
+    v-text="streamableText"
+  />
 
   <SourceItem
     v-for="sourceData in streamableSourcesCollection"
     :key="sourceData.uuid"
-    :sourceData="sourceData"
+    :source-data="sourceData"
     :query="query"
-    isWithMaxBitrate
+    is-with-max-bitrate
   />
 
-  <div class="divider"></div>
+  <div class="divider" />
 
-  <div class="header">
-    {{ otherText }}
-  </div>
+  <div
+    class="header"
+    v-text="otherText"
+  />
 
   <SourceItem
     v-for="sourceData in otherSourcesWithAlbumsCollection"
     :key="sourceData.uuid"
     :query="query"
-    :sourceData="sourceData"
+    :source-data="sourceData"
   />
 </template>
 

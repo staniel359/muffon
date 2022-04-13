@@ -2,12 +2,12 @@
   <BaseTrackModalContainer
     ref="modal"
     :scope="scope"
-    :requestTrackData="requestTrackData"
+    :request-track-data="requestTrackData"
   >
     <template #default="slotProps">
       <BaseDescription
         :description="slotProps[scope]"
-        isModal
+        is-modal
       />
     </template>
   </BaseTrackModalContainer>
@@ -34,7 +34,9 @@ export default {
   },
   methods: {
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

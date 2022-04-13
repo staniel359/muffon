@@ -1,16 +1,15 @@
 <template>
   <BaseDescription
-    class="tag-description"
-    :class="{ white: isWhite }"
+    class="white tag-description"
     :description="description"
-    :isMore="isMore"
-    @moreClick="handleMoreClick"
+    :is-more="isMore"
+    @more-click="handleMoreClick"
   />
 
   <BaseTagDescriptionModal
     v-if="isMore"
     ref="modal"
-    :tagName="tagName"
+    :tag-name="tagName"
   />
 </template>
 
@@ -28,13 +27,13 @@ export default {
   props: {
     description: String,
     isMore: Boolean,
-    tagName: String,
-    trackTitle: String,
-    isWhite: Boolean
+    tagName: String
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

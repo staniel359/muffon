@@ -1,21 +1,21 @@
 <template>
   <BasePageContainer
-    :responseData="artistData"
-    :isLoading="isLoading"
+    :response-data="artistData"
+    :is-loading="isLoading"
     :error="pageError"
     @init="handleInit"
   >
     <template #default="slotProps">
       <slot
-        :artistData="artistData"
-        :artistName="artistNameFetched"
-        :profileId="slotProps.profileId"
-        :topTrackCount="topTrackCount"
-        :isLoading="isLoading"
+        :artist-data="artistData"
+        :artist-name="artistNameFetched"
+        :profile-id="slotProps.profileId"
+        :top-track-count="topTrackCount"
+        :is-loading="isLoading"
         :error="error"
-        :fetchData="fetchData"
+        :fetch-data="fetchData"
         :refresh="refresh"
-      ></slot>
+      />
     </template>
   </BasePageContainer>
 </template>
@@ -120,7 +120,9 @@ export default {
     this.resetRequestArtistData()
   },
   methods: {
-    handleInit (el) {
+    handleInit (
+      el
+    ) {
       this.$emit(
         'init',
         el
@@ -130,28 +132,42 @@ export default {
       this.fetchData()
     },
     resetRequestArtistData () {
-      this.setRequestArtistData({
-        sourceId: 'lastfm',
-        artistName: this.artistName
-      })
+      this.setRequestArtistData(
+        {
+          sourceId: 'lastfm',
+          artistName: this.artistName
+        }
+      )
     },
-    setRequestArtistData (value) {
+    setRequestArtistData (
+      value
+    ) {
       if (value.sourceId === 'bandcamp') {
-        this.getBandcampArtistId(value)
+        this.getBandcampArtistId(
+          value
+        )
       } else {
         this.requestArtistData = value
       }
     },
     getBandcampArtistId,
     getArtist,
-    fetchData (page) {
-      this.getArtist({
-        ...this.artistArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getArtist(
+        {
+          ...this.artistArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

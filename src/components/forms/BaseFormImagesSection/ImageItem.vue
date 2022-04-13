@@ -49,7 +49,9 @@ export default {
     handleDeleteButtonClick () {
       this.$emit(
         'deleteButtonClick',
-        { uuid: this.uuid }
+        {
+          uuid: this.uuid
+        }
       )
     }
   }

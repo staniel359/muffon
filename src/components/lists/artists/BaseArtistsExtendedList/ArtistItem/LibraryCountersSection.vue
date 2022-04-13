@@ -5,10 +5,11 @@
       :link="profileLibraryArtistTracksLink"
     >
       <div class="link">
-        <i class="music icon"></i>
-        <span>
-          {{ tracksCount }}
-        </span>
+        <i class="music icon" />
+
+        <span
+          v-text="tracksCount"
+        />
       </div>
     </BaseLinkContainer>
 
@@ -16,10 +17,11 @@
       :link="profileLibraryArtistAlbumsLink"
     >
       <div class="link">
-        <i class="record vinyl icon"></i>
-        <span>
-          {{ albumsCount }}
-        </span>
+        <i class="record vinyl icon" />
+
+        <span
+          v-text="albumsCount"
+        />
       </div>
     </BaseLinkContainer>
   </div>
@@ -50,10 +52,12 @@ export default {
   },
   computed: {
     profileLibraryArtistTracksLink () {
-      return formatProfileLibraryArtistTracksLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistTracksLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistId () {
       return this.artistData.id
@@ -62,10 +66,12 @@ export default {
       return this.artistData.tracks_count
     },
     profileLibraryArtistAlbumsLink () {
-      return formatProfileLibraryArtistAlbumsLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistAlbumsLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     albumsCount () {
       return this.artistData.albums_count

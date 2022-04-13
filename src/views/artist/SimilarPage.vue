@@ -1,21 +1,21 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    :artistName="artistName"
+    :artist-name="artistName"
     :limit="limit"
     :scope="scope"
-    :viewIndex="viewIndex"
-    isWithViewChange
+    :view-index="viewIndex"
+    is-with-view-change
   >
     <template #default="slotProps">
       <BaseArtistsList
         :artists="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        :viewIndex="viewIndex"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :profile-id="slotProps.profileId"
+        :view-index="viewIndex"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseArtistPaginatedPageContainer>
@@ -36,13 +36,13 @@ export default {
   mixins: [
     viewChangeMixin
   ],
+  props: {
+    artistName: String
+  },
   data () {
     return {
       scope: 'similar'
     }
-  },
-  props: {
-    artistName: String
   }
 }
 </script>

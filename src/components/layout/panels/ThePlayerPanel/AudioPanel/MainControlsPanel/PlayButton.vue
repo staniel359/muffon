@@ -1,14 +1,19 @@
 <template>
   <BaseButton
     class="basic"
-    :class="{ disabled: !isAudioPlayable }"
+    :class="{
+      disabled: !isAudioPlayable
+    }"
     :icon="audioAction"
     @click="handleClick"
   />
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import {
+  mapState,
+  mapGetters
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
@@ -17,13 +22,19 @@ export default {
     BaseButton
   },
   computed: {
-    ...mapState('audio', {
-      isAudioPlayable: 'isPlayable',
-      audioElement: 'element'
-    }),
-    ...mapGetters('audio', {
-      audioAction: 'action'
-    })
+    ...mapState(
+      'audio',
+      {
+        isAudioPlayable: 'isPlayable',
+        audioElement: 'element'
+      }
+    ),
+    ...mapGetters(
+      'audio',
+      {
+        audioAction: 'action'
+      }
+    )
   },
   methods: {
     handleClick () {

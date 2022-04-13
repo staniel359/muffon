@@ -6,40 +6,49 @@
     />
 
     <div
-      class="ui compact selection dropdown"
       ref="dropdown"
+      class="ui compact selection dropdown"
       :class="{
         inverted: isDarkMode,
         disabled: isDisabled
       }"
     >
-      <div class="default text"></div>
-      <i class="dropdown icon"></i>
+      <div class="default text" />
+
+      <i class="dropdown icon" />
+
       <div class="menu">
         <div
           v-for="scrobblePercentValue in scrobblePercentValuesCollection"
-          class="item"
           :key="scrobblePercentValue.key"
+          class="item"
           :data-value="scrobblePercentValue.name"
           @click="handleScrobblePercentSelect(scrobblePercentValue.name)"
-        >
-          {{ `${scrobblePercentValue.name}%` }}
-        </div>
+          v-text="`${scrobblePercentValue.name}%`"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 import {
   setDropdown,
   setDropdownValue
 } from '*/helpers/actions/plugins/semantic'
-import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  mainDropdownOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'ScrobblePercentOption',
@@ -52,16 +61,26 @@ export default {
   },
   data () {
     return {
-      scrobblePercentValues: [25, 50, 75]
+      scrobblePercentValues: [
+        25,
+        50,
+        75
+      ]
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    ...mapState('player', {
-      playerScrobblePercent: 'scrobblePercent'
-    }),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapState(
+      'player',
+      {
+        playerScrobblePercent: 'scrobblePercent'
+      }
+    ),
     percentText () {
       return this.$t(
         'settings.options.services.lastfm.scrobblePercent'
@@ -79,31 +98,37 @@ export default {
       )
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      setDropdown(
-        this.$refs.dropdown,
-        mainDropdownOptions()
-      )
-
-      this.$nextTick(() => {
-        setDropdownValue(
-          this.$refs.dropdown,
-          this.playerScrobblePercent
-        )
-      })
-    })
-  },
   watch: {
     playerScrobblePercent: 'handleScrobblePercentChange'
   },
+  async mounted () {
+    await this.$nextTick()
+
+    setDropdown(
+      this.$refs.dropdown,
+      mainDropdownOptions()
+    )
+
+    await this.$nextTick()
+
+    setDropdownValue(
+      this.$refs.dropdown,
+      this.playerScrobblePercent
+    )
+  },
   methods: {
-    handleScrobblePercentSelect (value) {
-      updateStore({
-        'player.scrobblePercent': value
-      })
+    handleScrobblePercentSelect (
+      value
+    ) {
+      updateStore(
+        {
+          'player.scrobblePercent': value
+        }
+      )
     },
-    handleScrobblePercentChange (value) {
+    handleScrobblePercentChange (
+      value
+    ) {
       setDropdownValue(
         this.$refs.dropdown,
         value

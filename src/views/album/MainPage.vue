@@ -1,8 +1,6 @@
 <template>
   <BaseAlbumPageContainer
-    :artistName="artistName"
-    :albumTitle="albumTitle"
-    :sourceParams="sourceParams"
+    :source-params="sourceParams"
   >
     <template #default="pageSlotProps">
       <div
@@ -14,13 +12,13 @@
       >
         <BaseSegmentContainer>
           <AlbumSourceSelect
-            :albumData="pageSlotProps.albumData"
+            :album-data="pageSlotProps.albumData"
           />
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
           class="album-segment"
-          :isLoading="pageSlotProps.isLoading"
+          :is-loading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           @init="handleInit"
           @refresh="pageSlotProps.refresh"
@@ -28,14 +26,14 @@
           <template #default>
             <LeftColumn
               v-if="scrollable"
-              :albumData="pageSlotProps.albumData"
+              :album-data="pageSlotProps.albumData"
               :scrollable="scrollable"
             />
 
             <RightColumn
-              :albumData="pageSlotProps.albumData"
-              :requestAlbumData="pageSlotProps.requestAlbumData"
-              :profileId="pageSlotProps.profileId"
+              :album-data="pageSlotProps.albumData"
+              :request-album-data="pageSlotProps.requestAlbumData"
+              :profile-id="pageSlotProps.profileId"
             />
           </template>
         </BaseSegmentContainer>
@@ -114,8 +112,10 @@ export default {
     }
   },
   methods: {
-    handleInit (el) {
-      this.scrollable = el
+    handleInit (
+      element
+    ) {
+      this.scrollable = element
     }
   }
 }

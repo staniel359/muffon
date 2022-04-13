@@ -1,7 +1,7 @@
 <template>
   <Component
-    class="item main-sidebar-item"
     :is="component"
+    class="item main-sidebar-item"
     :link="link"
     @click="handleClick"
   >
@@ -9,7 +9,7 @@
       <i
         class="grey icon"
         :class="icon"
-      ></i>
+      />
     </div>
 
     <div class="main-sidebar-item-content-container">
@@ -55,7 +55,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

@@ -1,9 +1,12 @@
 <template>
   <div
     class="ui card main-simple-card"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
-    <div></div>
+    <div />
+
     <div
       v-if="isWithImage"
       class="main-simple-card-image-container"
@@ -15,12 +18,14 @@
       />
     </div>
 
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseImage from '*/components/images/BaseImage.vue'
 
 export default {
@@ -37,9 +42,12 @@ export default {
     model: String
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

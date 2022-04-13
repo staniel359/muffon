@@ -6,7 +6,7 @@
     <div
       v-if="isLoading"
       class="ui mini active inline loader"
-    ></div>
+    />
   </i>
 </template>
 

@@ -3,23 +3,32 @@ import {
   posts as formatCommunityPostsLink
 } from '*/helpers/formatters/links/community'
 
-export default function ({ communityId, communityTitle }) {
-  const formatTitle = () => {
+export default function (
+  {
+    communityId,
+    communityTitle
+  }
+) {
+  function formatTitle () {
     return i18n.global.t(
       'navigation.model.posts',
-      { modelName: communityTitle }
+      {
+        modelName: communityTitle
+      }
     )
   }
 
-  const formatPath = () => {
-    return formatCommunityPostsLink({
+  const {
+    path
+  } = formatCommunityPostsLink(
+    {
       communityId
-    }).path
-  }
+    }
+  )
 
   return {
     icon: 'edit',
     title: formatTitle(),
-    path: formatPath()
+    path
   }
 }

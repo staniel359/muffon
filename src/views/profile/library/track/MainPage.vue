@@ -1,24 +1,26 @@
 <template>
   <BaseProfileLibraryTrackPageContainer
-    :profileId="profileId"
-    :trackId="trackId"
+    :profile-id="profileId"
+    :track-id="trackId"
   >
     <template #default="pageSlotProps">
       <div class="main-profile-page-columns-container">
-        <div :class="[
-          'main-profile-page-left-column',
-          'main-sticky-container'
-        ]">
+        <div
+          :class="[
+            'main-profile-page-left-column',
+            'main-sticky-container'
+          ]"
+        >
           <InfoSegment
-            :trackData="pageSlotProps.libraryTrackData"
-            :profileId="profileId"
-            :trackId="trackId"
+            :track-data="pageSlotProps.libraryTrackData"
+            :profile-id="profileId"
+            :track-id="trackId"
           />
         </div>
 
         <div class="main-profile-page-right-column">
           <PlayerPanelSegment
-            :trackData="pageSlotProps.libraryTrackData"
+            :track-data="pageSlotProps.libraryTrackData"
           />
         </div>
       </div>

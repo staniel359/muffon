@@ -21,7 +21,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
@@ -38,9 +40,12 @@ export default {
     BaseHeader
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     imageData () {
       return this.profileInfo.image
     },
@@ -48,9 +53,11 @@ export default {
       return this.profileInfo.nickname
     },
     profileMainLink () {
-      return formatProfileMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     },
     profileId () {
       return this.profileInfo.id

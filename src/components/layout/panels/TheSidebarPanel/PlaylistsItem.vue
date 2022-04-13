@@ -30,9 +30,11 @@ export default {
       )
     },
     playlistsLink () {
-      return formatProfilePlaylistsLink({
-        profileId: this.profileId
-      })
+      return formatProfilePlaylistsLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

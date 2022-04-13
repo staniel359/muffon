@@ -1,14 +1,22 @@
 import store from '*/plugins/store'
 import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
-export default function getQueueTrack ({ position }) {
+export default function getQueueTrack (
+  {
+    position
+  }
+) {
   const followingTrackData =
     store.getters[
       `queue/${position}Track`
     ]
 
-  const setIsQueueFetching = value => {
+  function setIsQueueFetching (
+    value
+  ) {
     switch (position) {
       case 'prev':
         return store.dispatch(
@@ -25,22 +33,26 @@ export default function getQueueTrack ({ position }) {
     }
   }
 
-  const fetchFollowingTrackAudioData = () => {
-    setIsQueueFetching(true)
+  function fetchFollowingTrackAudioData () {
+    setIsQueueFetching(
+      true
+    )
 
     const playerTrackAudioArgs = {
       trackData: followingTrackData
     }
 
-    const handleSuccess = () => {
-      setIsQueueFetching(false)
+    function handleSuccess () {
+      setIsQueueFetching(
+        false
+      )
     }
 
-    const handleError = () => {
+    function handleError () {
       retry()
     }
 
-    const retry = () => {
+    function retry () {
       const queueCurrentTrackId =
         followingTrackData.uuid
 
@@ -48,10 +60,12 @@ export default function getQueueTrack ({ position }) {
         position
       }
 
-      updateStore({
-        'queue.currentTrackId':
+      updateStore(
+        {
+          'queue.currentTrackId':
           queueCurrentTrackId
-      })
+        }
+      )
 
       getQueueTrack(
         queueTrackArgs
@@ -70,6 +84,8 @@ export default function getQueueTrack ({ position }) {
   if (followingTrackData) {
     fetchFollowingTrackAudioData()
   } else {
-    setIsQueueFetching(false)
+    setIsQueueFetching(
+      false
+    )
   }
 }

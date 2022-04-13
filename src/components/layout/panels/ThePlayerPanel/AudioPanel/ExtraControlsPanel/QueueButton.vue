@@ -11,9 +11,14 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import {
+  mapGetters,
+  mapState
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import { toggleQueuePanel } from '*/helpers/actions/layout'
+import {
+  toggleQueuePanel
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'QueueButton',
@@ -21,12 +26,18 @@ export default {
     BaseButton
   },
   computed: {
-    ...mapGetters('queue', {
-      queueTracksCount: 'tracksCount'
-    }),
-    ...mapState('layout', [
-      'isQueuePanelVisible'
-    ])
+    ...mapGetters(
+      'queue',
+      {
+        queueTracksCount: 'tracksCount'
+      }
+    ),
+    ...mapState(
+      'layout',
+      [
+        'isQueuePanelVisible'
+      ]
+    )
   },
   methods: {
     handleClick () {

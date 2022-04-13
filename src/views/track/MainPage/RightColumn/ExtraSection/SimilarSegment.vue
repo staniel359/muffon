@@ -2,21 +2,21 @@
   <BaseTrackPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :artistName="artistName"
-    :trackTitle="trackTitle"
-    :headerLink="headerLink"
+    :artist-name="artistName"
+    :track-title="trackTitle"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        isWithArtistName
-        isWithDuration
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
-        isWithPlaylistOption
+        :profile-id="slotProps.profileId"
+        is-with-artist-name
+        is-with-duration
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-playlist-option
       />
     </template>
   </BaseTrackPaginatedSegmentContainer>
@@ -55,10 +55,12 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatTrackSimilarLink({
-        artistName: this.artistName,
-        trackTitle: this.trackTitle
-      })
+      return formatTrackSimilarLink(
+        {
+          artistName: this.artistName,
+          trackTitle: this.trackTitle
+        }
+      )
     }
   }
 }

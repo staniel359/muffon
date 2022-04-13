@@ -2,16 +2,21 @@
   <div v-if="gender || age">
     <div
       v-if="gender"
-      class="ui tiny empty circular label profile-gender"
-      :class="labelColor"
-    ></div>
+      :class="[
+        'ui tiny empty circular label',
+        'profile-gender',
+        genderLabelColor
+      ]"
+    />
 
     {{ age }}
   </div>
 </template>
 
 <script>
-import { age as formatAge } from '*/helpers/formatters'
+import {
+  age as formatAge
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfileGenderAge',
@@ -31,7 +36,7 @@ export default {
     }
   },
   computed: {
-    labelColor () {
+    genderLabelColor () {
       return this.genders[
         this.gender
       ]

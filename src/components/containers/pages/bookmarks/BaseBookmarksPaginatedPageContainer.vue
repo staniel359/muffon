@@ -5,15 +5,15 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="bookmarksData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="bookmarksData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

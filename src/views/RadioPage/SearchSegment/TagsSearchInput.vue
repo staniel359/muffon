@@ -3,7 +3,7 @@
     ref="input"
     :url="url"
     :fields="fields"
-    :formatResponse="formatResponse"
+    :format-response="formatResponse"
     @select="handleSelect"
   />
 </template>
@@ -35,17 +35,25 @@ export default {
     }
   },
   methods: {
-    handleSelect (tag) {
+    handleSelect (
+      {
+        name
+      }
+    ) {
       this.$emit(
         'select',
-        tag.name
+        name
       )
     },
-    formatResponse (response) {
+    formatResponse (
+      response
+    ) {
       return response.search.tags
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

@@ -1,21 +1,21 @@
 <template>
   <BasePaginatedListContainer
     v-if="artists.length"
-    :responseData="artistsData"
+    :response-data="artistsData"
     :scope="scope"
     :limit="limit"
-    :responsePageLimit="totalCount"
-    isReset
-    isWithPagination
+    :response-page-limit="totalCount"
+    is-reset
+    is-with-pagination
     @focus="handleFocus"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        isWithDeleteOption
-        isClearable
-        @linkClick="handleLinkClick"
-        @deleteButtonClick="handleDeleteButtonClick"
+        is-with-delete-option
+        is-clearable
+        @link-click="handleLinkClick"
+        @delete-button-click="handleDeleteButtonClick"
       />
     </template>
   </BasePaginatedListContainer>
@@ -59,7 +59,9 @@ export default {
       return {
         page: 1,
         total_pages: 1,
-        artists: [...this.artists]
+        artists: [
+          ...this.artists
+        ]
       }
     },
     totalCount () {
@@ -70,8 +72,14 @@ export default {
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteButtonClick ({ uuid }) {
-      const isMatchedArtist = artistData => {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedArtist (
+        artistData
+      ) {
         return artistData.uuid !== uuid
       }
 
@@ -86,7 +94,9 @@ export default {
       )
     },
     handleFocus () {
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     }
   }
 }

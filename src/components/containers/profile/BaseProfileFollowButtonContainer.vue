@@ -3,10 +3,10 @@
     v-bind="$attrs"
     :icon="icon"
     :text="followText"
-    :isLoading="isLoading"
-    :isFollowing="isFollowing"
-    :onClick="onClick"
-  ></slot>
+    :is-loading="isLoading"
+    :is-following="isFollowing"
+    :on-click="onClick"
+  />
 </template>
 
 <script>
@@ -77,7 +77,9 @@ export default {
         this.follow()
       }
 
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     },
     follow () {
       this.createFollower(
@@ -86,10 +88,15 @@ export default {
         this.handleFollowSuccess
       )
     },
-    handleFollowSuccess (response) {
+    handleFollowSuccess (
+      response
+    ) {
       this.isFollowing = true
 
-      this.setIsFollowing(true)
+      this.setIsFollowing(
+        true
+      )
+
       this.setFollowersCount(
         response.data.other_profile_follower_profiles_count
       )
@@ -101,10 +108,15 @@ export default {
         this.handleUnfollowSuccess
       )
     },
-    handleUnfollowSuccess (response) {
+    handleUnfollowSuccess (
+      response
+    ) {
       this.isFollowing = false
 
-      this.setIsFollowing(false)
+      this.setIsFollowing(
+        false
+      )
+
       this.setFollowersCount(
         response.data.other_profile_follower_profiles_count
       )

@@ -8,7 +8,7 @@
   >
     <i
       class="chevron right icon direction-icon"
-    ></i>
+    />
   </a>
 </template>
 
@@ -23,7 +23,9 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

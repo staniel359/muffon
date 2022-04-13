@@ -1,23 +1,23 @@
 <template>
   <BaseCommunityPageContainer
-    :communityId="communityId"
+    :community-id="communityId"
   >
     <template #default="slotProps">
       <InfoSegment
-        :communityData="slotProps.communityData"
-        :communityCreatorId="slotProps.communityCreatorId"
-        :currentProfileId="slotProps.profileId"
+        :community-data="slotProps.communityData"
+        :community-creator-id="slotProps.communityCreatorId"
+        :current-profile-id="slotProps.profileId"
       />
 
       <div class="columns-container">
         <LeftColumn
-          :communityData="slotProps.communityData"
+          :community-data="slotProps.communityData"
         />
 
         <RightColumn
-          :communityId="communityId"
-          :communityCreatorId="slotProps.communityCreatorId"
-          :currentProfileId="slotProps.profileId"
+          :community-id="communityId"
+          :community-creator-id="slotProps.communityCreatorId"
+          :current-profile-id="slotProps.profileId"
         />
       </div>
     </template>

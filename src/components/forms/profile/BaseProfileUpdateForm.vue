@@ -9,12 +9,12 @@
     <BaseDivider />
 
     <ExtraSection
-      @imageChange="handleImageChange"
+      @image-change="handleImageChange"
     />
 
     <div class="submit-button-container">
       <BaseSubmitButton
-        actionKey="save"
+        action-key="save"
       />
     </div>
   </BaseProfileUpdateFormContainer>
@@ -45,7 +45,9 @@ export default {
     }
   },
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.image = value
     }
   }

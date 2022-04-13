@@ -1,15 +1,27 @@
-export const main = ({ communityId }) => {
+export function main (
+  {
+    communityId
+  }
+) {
   return {
     name: 'CommunityMainPage',
-    params: { communityId },
+    params: {
+      communityId
+    },
     path: `communities/${communityId}`
   }
 }
 
-export const posts = ({ communityId }) => {
+export function posts (
+  {
+    communityId
+  }
+) {
   return {
     name: 'CommunityPostsPage',
-    params: { communityId },
+    params: {
+      communityId
+    },
     path: `communities/${communityId}/posts`
   }
 }

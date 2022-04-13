@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,21 +12,25 @@
     />
 
     <slot
-      :tagData="tagData"
-      :profileId="profileId"
-      :isLoading="isLoading"
+      :tag-data="tagData"
+      :profile-id="profileId"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getTag from '*/helpers/actions/api/tag/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTagSegmentContainer',
@@ -46,14 +53,16 @@ export default {
     return {
       isLoading: false,
       error: null,
-      tagData: null,
-      topTrackCount: null
+      tagData: null
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     },
@@ -70,14 +79,22 @@ export default {
   },
   methods: {
     getTag,
-    fetchData (page) {
-      this.getTag({
-        ...this.tagArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getTag(
+        {
+          ...this.tagArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

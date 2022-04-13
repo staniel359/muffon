@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,19 +12,21 @@
     />
 
     <slot
-      :favoritesData="favoritesData"
-      :isLoading="isLoading"
+      :favorites-data="favoritesData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileFavoritesSegmentContainer',
@@ -64,14 +69,22 @@ export default {
   },
   methods: {
     getProfileFavorites,
-    fetchData (page) {
-      this.getProfileFavorites({
-        ...this.favoritesArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileFavorites(
+        {
+          ...this.favoritesArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

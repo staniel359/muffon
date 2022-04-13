@@ -1,19 +1,23 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { messageFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  messageFormOptions
+} from '*/helpers/data/plugins/semantic'
 import createMessage from '*/helpers/actions/api/message/create'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseMessageCreateFormContainer',
@@ -49,9 +53,11 @@ export default {
   },
   computed: {
     options () {
-      return messageFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return messageFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     },
     tracksFormatted () {
       return this.tracks.map(
@@ -65,7 +71,10 @@ export default {
     }
   },
   methods: {
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const isContentData = (
@@ -87,14 +96,18 @@ export default {
         )
       }
     },
-    handleCreateSuccess (response) {
+    handleCreateSuccess (
+      response
+    ) {
       this.$emit(
         'success',
         response.data.conversation_id
       )
     },
     createMessage,
-    formatTrack (trackData) {
+    formatTrack (
+      trackData
+    ) {
       const artistName =
         formatArtistName(
           trackData.artists
@@ -109,10 +122,14 @@ export default {
         artist: artistData
       }
     },
-    formatImage (imageData) {
+    formatImage (
+      imageData
+    ) {
       return imageData.data
     },
-    formatCreateArgs (fields) {
+    formatCreateArgs (
+      fields
+    ) {
       return {
         otherProfileId: this.profileId,
         content: fields.content,

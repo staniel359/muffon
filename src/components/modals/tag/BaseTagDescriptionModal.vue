@@ -1,13 +1,13 @@
 <template>
   <BaseTagModalContainer
     ref="modal"
-    :tagName="tagName"
+    :tag-name="tagName"
     :scope="scope"
   >
     <template #default="slotProps">
       <BaseDescription
         :description="slotProps[scope]"
-        isModal
+        is-modal
       />
     </template>
   </BaseTagModalContainer>
@@ -34,7 +34,9 @@ export default {
   },
   methods: {
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

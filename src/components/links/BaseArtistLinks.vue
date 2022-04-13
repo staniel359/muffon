@@ -2,17 +2,19 @@
   <ArtistLink
     v-for="(artistData, index) in artistsCollection"
     :key="artistData.uuid"
-    :artistData="artistData"
+    :artist-data="artistData"
     :index="index"
-    :isLinkToLibrary="isLinkToLibrary"
-    :profileId="profileId"
-    @linkClick="handleLinkClick"
+    :is-link-to-library="isLinkToLibrary"
+    :profile-id="profileId"
+    @link-click="handleLinkClick"
   />
 </template>
 
 <script>
 import ArtistLink from './BaseArtistLinks/ArtistLink.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistLinks',
@@ -36,7 +38,9 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

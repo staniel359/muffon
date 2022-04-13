@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --no-fix",
+    "lint:fix": "vue-cli-service lint",
     "build:all": "yarn build && yarn build:electron",
     "build:electron": "electron-builder --dir",
     "postinstall": "electron-builder install-app-deps",

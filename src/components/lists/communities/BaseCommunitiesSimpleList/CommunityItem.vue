@@ -19,18 +19,18 @@
       <small
         class="description"
         v-html="membersCountText"
-      ></small>
+      />
     </div>
 
     <small class="joined-message">
       <BaseCommunityJoinedMessage
-        :communityData="communityData"
+        :community-data="communityData"
       />
     </small>
 
     <BaseOptionsDropdown
-      :communityData="communityData"
-      isWithJoinOption
+      :community-data="communityData"
+      is-with-join-option
     />
   </BaseLinkContainer>
 </template>
@@ -47,7 +47,9 @@ import BaseOptionsDropdown
 import {
   main as formatCommunityMainLink
 } from '*/helpers/formatters/links/community'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'CommunityItem',
@@ -75,9 +77,11 @@ export default {
   },
   computed: {
     communityLink () {
-      return formatCommunityMainLink({
-        communityId: this.communityId
-      })
+      return formatCommunityMainLink(
+        {
+          communityId: this.communityId
+        }
+      )
     },
     communityId () {
       return this.communityData.id
@@ -91,7 +95,9 @@ export default {
     membersCountText () {
       return this.$t(
         'counters.members',
-        { count: this.membersCountStrong }
+        {
+          count: this.membersCountStrong
+        }
       )
     },
     membersCountStrong () {
@@ -106,22 +112,29 @@ export default {
       return this.communityData.members_count
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.communityData.uuid
     }
   },
   methods: {
-    setIsMember (value) {
+    setIsMember (
+      value
+    ) {
       this.paginationItem
         .profile
         .member_of_community = value
     },
-    setMembersCount (value) {
-      this.paginationItem.members_count = value
+    setMembersCount (
+      value
+    ) {
+      this.paginationItem
+        .members_count = value
     }
   }
 }

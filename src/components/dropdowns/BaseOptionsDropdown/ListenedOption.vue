@@ -1,19 +1,23 @@
 <template>
   <div
     class="item"
-    :class="{ disabled: isLoading }"
+    :class="{
+      disabled: isLoading
+    }"
     @click.prevent="handleClick"
   >
     <i
       v-if="isLoading"
       class="icon"
     >
-      <div class="ui mini active inline loader"></div>
+      <div
+        class="ui mini active inline loader"
+      />
     </i>
     <i
       v-else
       class="check icon"
-    ></i>
+    />
 
     {{ listenedText }}
   </div>
@@ -94,7 +98,9 @@ export default {
         )
       }
     },
-    handleCreateSuccess (response) {
+    handleCreateSuccess (
+      response
+    ) {
       const listenedId =
         response.data.listened_id.toString()
 
@@ -103,7 +109,9 @@ export default {
       )
     },
     handleDeleteSuccess () {
-      this.setListenedId(null)
+      this.setListenedId(
+        null
+      )
     },
     deleteListened,
     createListenedArtist,

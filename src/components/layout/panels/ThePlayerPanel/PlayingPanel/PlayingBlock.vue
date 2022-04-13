@@ -1,27 +1,31 @@
 <template>
   <div class="item track-block">
     <ImageBlock
-      :isWithImage="isFromSource"
+      :is-with-image="isFromSource"
     />
 
     <InfoBlock
       :key="key"
-      :isWithAlbum="isFromSource"
+      :is-with-album="isFromSource"
     />
 
     <BaseSourceIcon
       class="description track-source-icon"
-      :sourceId="sourceId"
+      :source-id="sourceId"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import ImageBlock from './PlayingBlock/ImageBlock.vue'
 import InfoBlock from './PlayingBlock/InfoBlock.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'PlayingBlock',
@@ -36,9 +40,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    ),
     isFromSource () {
       return !!this.playerPlaying.from_source
     },

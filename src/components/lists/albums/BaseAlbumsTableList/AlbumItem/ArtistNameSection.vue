@@ -1,12 +1,13 @@
 <template>
   <span
     class="artist-name"
-    :class="{ link: isArtistNameActive }"
+    :class="{
+      link: isArtistNameActive
+    }"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
-  >
-    {{ artistName }}
-  </span>
+    v-text="artistName"
+  />
 </template>
 
 <script>

@@ -2,20 +2,20 @@
   <BaseTagPaginatedPageContainer
     :scope="scope"
     :limit="limit"
-    :responsePageLimit="responsePageLimit"
-    :viewIndex="viewIndex"
-    isWithViewChange
+    :response-page-limit="responsePageLimit"
+    :view-index="viewIndex"
+    is-with-view-change
   >
     <template #default="slotProps">
       <BaseArtistsList
-        :viewIndex="viewIndex"
+        :view-index="viewIndex"
         :artists="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :profile-id="slotProps.profileId"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseTagPaginatedPageContainer>

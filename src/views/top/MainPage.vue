@@ -1,6 +1,6 @@
 <template>
   <BaseTopPageContainer
-    :isFetchData="false"
+    :is-fetch-data="false"
   >
     <ArtistsSegment />
 

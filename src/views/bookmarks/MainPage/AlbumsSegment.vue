@@ -2,14 +2,14 @@
   <BaseBookmarksPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
-        isWithArtistName
-        isWithDeleteOption
-        isBookmark
+        is-with-artist-name
+        is-with-delete-option
+        is-bookmark
       />
     </template>
   </BaseBookmarksPaginatedSegmentContainer>

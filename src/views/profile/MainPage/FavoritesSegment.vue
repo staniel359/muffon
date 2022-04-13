@@ -1,12 +1,12 @@
 <template>
   <BaseProfileSegmentContainer
     scope="favorites"
-    :headerLink="headerLink"
-    :isFetchData="false"
+    :header-link="headerLink"
+    :is-fetch-data="false"
   >
     <template #default>
       <FavoritesTabsSegment
-        :profileId="profileId"
+        :profile-id="profileId"
       />
     </template>
   </BaseProfileSegmentContainer>
@@ -34,9 +34,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfileFavoritesMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileFavoritesMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

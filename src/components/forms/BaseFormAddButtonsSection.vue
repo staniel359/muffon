@@ -36,13 +36,17 @@ export default {
     'imagesChange'
   ],
   methods: {
-    handleTracksChange (value) {
+    handleTracksChange (
+      value
+    ) {
       this.$emit(
         'tracksChange',
         value
       )
     },
-    handleImagesChange (value) {
+    handleImagesChange (
+      value
+    ) {
       this.$emit(
         'imagesChange',
         value

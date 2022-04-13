@@ -1,6 +1,6 @@
 <template>
   <BaseBookmarksPageContainer
-    :isFetchData="false"
+    :is-fetch-data="false"
   >
     <ArtistsSegment />
 

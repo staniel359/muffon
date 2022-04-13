@@ -3,7 +3,7 @@
     v-if="isError"
     class="error"
     :header="errorText"
-    :listItems="errorFiles"
+    :list-items="errorFiles"
   />
   <SuccessSection
     v-else-if="successFiles.length"
@@ -14,7 +14,9 @@
 <script>
 import BaseMessage from '*/components/messages/BaseMessage.vue'
 import SuccessSection from './CompleteSection/SuccessSection.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'CompleteSection',
@@ -31,7 +33,9 @@ export default {
     errorText () {
       return this.$t(
         'import.error.files',
-        { count: this.totalCountFormatted }
+        {
+          count: this.totalCountFormatted
+        }
       )
     },
     totalCountFormatted () {

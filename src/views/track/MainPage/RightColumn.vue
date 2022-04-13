@@ -1,13 +1,13 @@
 <template>
   <div class="track-page-right-column">
     <MainSection
-      :trackData="trackData"
+      :track-data="trackData"
     />
 
     <ExtraSection
       :key="key"
-      :trackData="trackData"
-      :requestTrackData="requestTrackData"
+      :track-data="trackData"
+      :request-track-data="requestTrackData"
     />
   </div>
 </template>
@@ -15,7 +15,9 @@
 <script>
 import MainSection from './RightColumn/MainSection.vue'
 import ExtraSection from './RightColumn/ExtraSection.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'RightColumn',

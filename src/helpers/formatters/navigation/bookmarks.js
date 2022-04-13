@@ -3,13 +3,23 @@ import formatBookmarksSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({ scope }) {
+export default function (
+  {
+    scope
+  }
+) {
   return [
-    formatBookmarksSection({
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatBookmarksSection(
+      {
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

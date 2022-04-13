@@ -3,10 +3,10 @@
     :icon="icon"
     :header="sourceName"
     :extra="extraText"
-    :isLoading="isLoading"
-    :isError="isError"
-    :isDisabled="isDisabled"
-    isIconColored
+    :is-loading="isLoading"
+    :is-error="isError"
+    :is-disabled="isDisabled"
+    is-icon-colored
     @click="handleClick"
   />
 </template>
@@ -65,10 +65,12 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedSourceData({
-        id: this.sourceId,
-        tracks: this.tracks
-      })
+      this.setSelectedSourceData(
+        {
+          id: this.sourceId,
+          tracks: this.tracks
+        }
+      )
     }
   }
 }

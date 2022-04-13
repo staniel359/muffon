@@ -1,9 +1,9 @@
 <template>
   <BaseProfilePaginatedSegmentContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseCommunitiesSimpleList
@@ -42,9 +42,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfileCommunitiesLink({
-        profileId: this.profileId
-      })
+      return formatProfileCommunitiesLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

@@ -12,7 +12,10 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import {
+  mapState,
+  mapGetters
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import getQueueTrack from '*/helpers/actions/queue/track/get'
 
@@ -32,15 +35,21 @@ export default {
     }
   },
   computed: {
-    ...mapState('queue', {
-      isQueueFetchingPrev: 'isFetchingPrev',
-      isQueueFetchingNext: 'isFetchingNext'
-    }),
-    ...mapGetters('queue', {
-      queueTracksCount: 'tracksCount',
-      isQueueStart: 'isStart',
-      isQueueEnd: 'isEnd'
-    }),
+    ...mapState(
+      'queue',
+      {
+        isQueueFetchingPrev: 'isFetchingPrev',
+        isQueueFetchingNext: 'isFetchingNext'
+      }
+    ),
+    ...mapGetters(
+      'queue',
+      {
+        queueTracksCount: 'tracksCount',
+        isQueueStart: 'isStart',
+        isQueueEnd: 'isEnd'
+      }
+    ),
     isDisabled () {
       return (
         !this.queueTracksCount ||

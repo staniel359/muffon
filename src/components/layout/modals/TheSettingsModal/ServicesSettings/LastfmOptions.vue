@@ -2,30 +2,32 @@
   <div class="main-settings-options-block">
     <BaseDivider
       text="Last.FM"
-      isHorizontal
+      is-horizontal
     />
 
     <ConnectOption
-      :isConnected="isConnected"
-      :lastfmNickname="lastfmNickname"
+      :is-connected="isConnected"
+      :lastfm-nickname="lastfmNickname"
     />
     <ScrobbleOption
-      :isConnected="isConnected"
-      :isPlayerWithScrobbling="isPlayerWithScrobbling"
+      :is-connected="isConnected"
+      :is-player-with-scrobbling="isPlayerWithScrobbling"
     />
     <ScrobbleNotificationsOption
-      :isConnected="isConnected"
-      :isPlayerWithScrobbling="isPlayerWithScrobbling"
+      :is-connected="isConnected"
+      :is-player-with-scrobbling="isPlayerWithScrobbling"
     />
     <ScrobblePercentOption
-      :isConnected="isConnected"
-      :isPlayerWithScrobbling="isPlayerWithScrobbling"
+      :is-connected="isConnected"
+      :is-player-with-scrobbling="isPlayerWithScrobbling"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseDivider from '*/components/BaseDivider.vue'
 import ConnectOption from './LastfmOptions/ConnectOption.vue'
 import ScrobbleOption from './LastfmOptions/ScrobbleOption.vue'
@@ -43,12 +45,18 @@ export default {
     ScrobblePercentOption
   },
   computed: {
-    ...mapState('player', {
-      isPlayerWithScrobbling: 'isWithScrobbling'
-    }),
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'player',
+      {
+        isPlayerWithScrobbling: 'isWithScrobbling'
+      }
+    ),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     isConnected () {
       return !!(
         this.lastfmNickname &&

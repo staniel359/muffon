@@ -2,11 +2,11 @@
   <BaseErrorMessage
     v-if="error"
     :error="error"
-    isWithRefreshButton
+    is-with-refresh-button
     @refresh="handleRefresh"
   />
   <template
-    v-else-if="isResponsePageCollection"
+    v-else-if="isClientPageCollection"
   >
     <slot
       v-if="isClientPageCollectionFiltered"
@@ -31,12 +31,6 @@ export default {
     BaseNoCollectionMessage
   },
   props: {
-    responsePageCollection: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
     clientPageCollection: {
       type: Array,
       default () {
@@ -50,16 +44,16 @@ export default {
     'refresh'
   ],
   computed: {
-    isResponsePageCollection () {
-      return !!this.responsePageCollection?.length
+    isClientPageCollection () {
+      return !!this.clientPageCollection?.length
     },
     isClientPageCollectionFiltered () {
       return !!this.clientPageCollectionFiltered?.length
     },
     clientPageCollectionFiltered () {
-      return this.clientPageCollection?.filter(item => {
-        return item
-      })
+      return this.clientPageCollection?.filter(
+        this.isItemPresent
+      )
     }
   },
   methods: {
@@ -67,6 +61,11 @@ export default {
       this.$emit(
         'refresh'
       )
+    },
+    isItemPresent (
+      item
+    ) {
+      return item
     }
   }
 }

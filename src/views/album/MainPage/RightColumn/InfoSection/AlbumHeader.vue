@@ -7,9 +7,9 @@
         v-if="albumExtraTitle"
         class="sub header main-extra-title"
       >
-        <strong>
-          {{ albumExtraTitle }}
-        </strong>
+        <strong
+          v-html="albumExtraTitle"
+        />
       </span>
     </BaseHeaderContainer>
 
@@ -17,7 +17,9 @@
       class="album-artist-name"
       tag="h3"
     >
-      <BaseArtistLinks :artists="artists" />
+      <BaseArtistLinks
+        :artists="artists"
+      />
     </BaseHeaderContainer>
   </div>
 </template>

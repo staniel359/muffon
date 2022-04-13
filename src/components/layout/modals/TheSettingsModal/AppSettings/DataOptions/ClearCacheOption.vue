@@ -14,16 +14,19 @@
     </div>
 
     <div v-if="isSuccess">
-      <i class="check green icon"></i>
-      <span>
-        {{ clearedText }}
-      </span>
+      <i class="check green icon" />
+
+      <span
+        v-text="clearedText"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
+import {
+  ipcRenderer
+} from 'electron'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {

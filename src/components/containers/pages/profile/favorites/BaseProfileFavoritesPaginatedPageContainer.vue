@@ -1,20 +1,20 @@
 <template>
   <BaseProfileFavoritesPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="favoritesData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="favoritesData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

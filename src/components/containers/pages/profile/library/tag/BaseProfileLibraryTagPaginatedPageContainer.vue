@@ -1,25 +1,25 @@
 <template>
   <BaseProfileLibraryTagPageContainer
-    :profileId="profileId"
-    :tagId="tagId"
+    :profile-id="profileId"
+    :tag-id="tagId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="libraryTagData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="libraryTagData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :isWithViewChange="isWithViewChange"
-        :viewIndex="viewIndex"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :topTracksCount="pageSlotProps.topTracksCount"
-            :topAlbumsCount="pageSlotProps.topAlbumsCount"
-          ></slot>
+            :top-tracks-count="pageSlotProps.topTracksCount"
+            :top-albums-count="pageSlotProps.topAlbumsCount"
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

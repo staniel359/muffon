@@ -4,14 +4,14 @@
 
     <BaseDescription
       :description="description"
-      :isMore="isMore"
-      @moreClick="handleMoreClick"
+      :is-more="isMore"
+      @more-click="handleMoreClick"
     />
 
     <BaseVideoDescriptionModal
       v-if="isMore"
       ref="modal"
-      :videoId="videoId"
+      :video-id="videoId"
     />
   </template>
 </template>
@@ -48,7 +48,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

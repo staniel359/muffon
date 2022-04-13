@@ -7,14 +7,14 @@
     >
       <BaseTrackSearchContainer
         v-if="isOpen"
-        sourceId="genius"
+        source-id="genius"
         :scope="scope"
         :query="query"
       >
         <template #default="slotProps">
           <LyricsSelect
-            :isLoading="slotProps.isLoading"
-            :isError="slotProps.isError"
+            :is-loading="slotProps.isLoading"
+            :is-error="slotProps.isError"
             :tracks="slotProps[scope]"
           />
         </template>
@@ -22,15 +22,15 @@
 
       <BaseTrackLyricsContainer
         v-if="selectedTrackData"
-        class="lyrics-data-segment"
         :key="key"
-        :selectedTrackData="selectedTrackData"
+        class="lyrics-data-segment"
+        :selected-track-data="selectedTrackData"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <LyricsData
             :lyrics="slotProps.lyrics"
-            :trackId="slotProps.trackId"
+            :track-id="slotProps.trackId"
           />
         </template>
       </BaseTrackLyricsContainer>
@@ -47,8 +47,12 @@ import LyricsSelect from './LyricsSegment/LyricsSelect.vue'
 import BaseTrackLyricsContainer
   from '*/components/containers/track/BaseTrackLyricsContainer.vue'
 import LyricsData from './LyricsSegment/LyricsData.vue'
-import { generateKey } from '*/helpers/utils'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  generateKey
+} from '*/helpers/utils'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'LyricsSegment',
@@ -96,7 +100,9 @@ export default {
       this.isOpen = false
       this.selectedTrackData = null
     },
-    handleSelectedTrackDataChange (value) {
+    handleSelectedTrackDataChange (
+      value
+    ) {
       if (value) {
         this.key = generateKey()
 
@@ -106,7 +112,9 @@ export default {
     handleFocus () {
       this.focus()
     },
-    setSelectedTrackData (value) {
+    setSelectedTrackData (
+      value
+    ) {
       this.selectedTrackData = value
     },
     focus () {

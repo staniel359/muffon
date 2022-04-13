@@ -1,31 +1,55 @@
-export const main = ({ profileId }) => {
+export function main (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfileFavoritesMainPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/favorites`
   }
 }
 
-export const artists = ({ profileId }) => {
+export function artists (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfileFavoritesArtistsPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/favorites/artists`
   }
 }
 
-export const albums = ({ profileId }) => {
+export function albums (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfileFavoritesAlbumsPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/favorites/albums`
   }
 }
 
-export const tracks = ({ profileId }) => {
+export function tracks (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfileFavoritesTracksPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/favorites/tracks`
   }
 }

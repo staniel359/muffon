@@ -1,13 +1,15 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({
-  communityId,
-  content,
-  tracks,
-  images,
-  byCommunity
-}) {
+export default function (
+  {
+    communityId,
+    content,
+    tracks,
+    images,
+    byCommunity
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -16,7 +18,10 @@ export default function ({
 
   const profileId =
     store.state.profile.info.id
-  const { token } = store.state.profile
+
+  const {
+    token
+  } = store.state.profile
 
   const params = {
     profile_id: profileId,
@@ -28,10 +33,14 @@ export default function ({
   }
 
   const handleSuccess = () => {
-    this.$emit('success')
+    this.$emit(
+      'success'
+    )
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -40,7 +49,8 @@ export default function ({
   }
 
   return axios.post(
-    url, params
+    url,
+    params
   ).then(
     handleSuccess
   ).catch(

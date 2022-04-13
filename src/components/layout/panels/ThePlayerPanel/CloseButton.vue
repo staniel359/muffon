@@ -6,7 +6,9 @@
 
 <script>
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'CloseButton',
@@ -15,9 +17,11 @@ export default {
   },
   methods: {
     handleClick () {
-      updateStore({
-        'player.playing': null
-      })
+      updateStore(
+        {
+          'player.playing': null
+        }
+      )
     }
   }
 }

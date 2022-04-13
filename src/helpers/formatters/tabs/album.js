@@ -1,17 +1,23 @@
 import i18n from '*/plugins/i18n'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
 
-export default function ({
-  artistName,
-  albumTitle,
-  sourceParams,
-  scope
-}) {
-  const formatAlbumPageTitle = () => {
+export default function (
+  {
+    artistName,
+    albumTitle,
+    sourceParams,
+    scope
+  }
+) {
+  function formatAlbumPageTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: albumTitle }
+        {
+          modelName: albumTitle
+        }
       )
     } else {
       return albumTitle
@@ -20,22 +26,28 @@ export default function ({
 
   const artistAlbumsPageName = i18n.global.t(
     'navigation.model.albums',
-    { modelName: artistName }
+    {
+      modelName: artistName
+    }
   )
 
   const title = [
     formatAlbumPageTitle(),
     artistAlbumsPageName
-  ].join(' | ')
+  ].join(
+    ' | '
+  )
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       default:
-        return formatAlbumMainLink({
-          artistName,
-          albumTitle,
-          sourceParams
-        }).path
+        return formatAlbumMainLink(
+          {
+            artistName,
+            albumTitle,
+            sourceParams
+          }
+        ).path
     }
   }
 

@@ -23,13 +23,15 @@
         :value="city"
       />
 
-      <div></div>
+      <div />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseProfileImageField
   from '*/components/fields/profile/BaseProfileImageField.vue'
 import BaseProfileGenderField
@@ -54,9 +56,12 @@ export default {
     'imageChange'
   ],
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     imageData () {
       return this.profileInfo.image
     },
@@ -74,7 +79,9 @@ export default {
     }
   },
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.$emit(
         'imageChange',
         value

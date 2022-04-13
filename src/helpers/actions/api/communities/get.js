@@ -1,7 +1,12 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ page, limit }) {
+export default function (
+  {
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -12,16 +17,24 @@ export default function ({ page, limit }) {
 
   const params = {
     profile_id: profileId,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.communitiesData =
       response.data.communities
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -30,7 +43,10 @@ export default function ({ page, limit }) {
   }
 
   axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

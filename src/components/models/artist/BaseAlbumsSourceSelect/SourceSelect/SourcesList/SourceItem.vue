@@ -1,13 +1,13 @@
 <template>
   <BaseArtistSourceItemContainer
-    :sourceId="sourceId"
+    :source-id="sourceId"
     :query="query"
   >
     <template #default="slotProps">
       <SourceItemContent
-        :sourceData="sourceData"
-        :isLoading="slotProps.isLoading"
-        :isError="slotProps.isError"
+        :source-data="sourceData"
+        :is-loading="slotProps.isLoading"
+        :is-error="slotProps.isError"
         :artists="slotProps.artists"
       />
     </template>

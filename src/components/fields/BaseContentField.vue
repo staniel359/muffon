@@ -6,7 +6,7 @@
     :placeholder="contentText"
     :value="value"
     @keypress.ctrl.enter="handleCtrlEnter"
-  ></textarea>
+  />
 </template>
 
 <script>
@@ -27,13 +27,19 @@ export default {
   },
   methods: {
     handleCtrlEnter () {
-      this.$emit('submit')
+      this.$emit(
+        'submit'
+      )
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     reset () {
-      this.$refs.input.value = ''
+      this.$refs
+        .input
+        .value = ''
     }
   }
 }

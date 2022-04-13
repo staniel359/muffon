@@ -10,9 +10,8 @@
       v-if="isMore"
       class="main-link"
       @click="handleMoreClick"
-    >
-      {{ moreText }}
-    </strong>
+      v-text="moreText"
+    />
   </p>
 </template>
 
@@ -32,12 +31,16 @@ export default {
   ],
   computed: {
     moreText () {
-      return this.$t('more')
+      return this.$t(
+        'more'
+      )
     }
   },
   methods: {
     handleMoreClick () {
-      this.$emit('moreClick')
+      this.$emit(
+        'moreClick'
+      )
     }
   }
 }

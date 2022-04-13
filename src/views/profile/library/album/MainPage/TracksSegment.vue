@@ -1,21 +1,21 @@
 <template>
   <BaseProfileLibraryAlbumPaginatedSegmentContainer
-    :profileId="profileId"
-    :albumId="albumId"
+    :profile-id="profileId"
+    :album-id="albumId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profileId="profileId"
-        :artistName="slotProps.artistName"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        isWithCreated
-        isLinkToLibrary
-        isWithPlaylistOption
+        :profile-id="profileId"
+        :artist-name="slotProps.artistName"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-delete-option="isWithDeleteOption"
+        is-with-created
+        is-link-to-library
+        is-with-playlist-option
       />
     </template>
   </BaseProfileLibraryAlbumPaginatedSegmentContainer>
@@ -31,7 +31,7 @@ import {
 } from '*/helpers/formatters/links/profile/library/album'
 
 export default {
-  name: 'AlbumsSegment',
+  name: 'TracksSegment',
   components: {
     BaseProfileLibraryAlbumPaginatedSegmentContainer,
     BaseTracksSimpleList
@@ -56,10 +56,12 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfileLibraryAlbumTracksLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
+      return formatProfileLibraryAlbumTracksLink(
+        {
+          profileId: this.profileId,
+          albumId: this.albumId
+        }
+      )
     }
   }
 }

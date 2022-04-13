@@ -1,20 +1,20 @@
 <template>
   <BaseArtistPaginatedSegmentContainer
-    :artistName="artistName"
+    :artist-name="artistName"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
         :artists="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        :itemsInRow="itemsInRow"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :profile-id="slotProps.profileId"
+        :items-in-row="itemsInRow"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseArtistPaginatedSegmentContainer>
@@ -50,9 +50,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatArtistSimilarLink({
-        artistName: this.artistName
-      })
+      return formatArtistSimilarLink(
+        {
+          artistName: this.artistName
+        }
+      )
     }
   }
 }

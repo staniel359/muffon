@@ -1,6 +1,6 @@
 <template>
   <div ref="transition">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -35,19 +35,19 @@ export default {
     )
   },
   methods: {
-    handleTopPass () {
-      this.$nextTick(() => {
-        showTransition(
-          this.$refs.transition
-        )
-      })
+    async handleTopPass () {
+      await this.$nextTick()
+
+      showTransition(
+        this.$refs.transition
+      )
     },
-    handleTopReversePass () {
-      this.$nextTick(() => {
-        hideTransition(
-          this.$refs.transition
-        )
-      })
+    async handleTopReversePass () {
+      await this.$nextTick()
+
+      hideTransition(
+        this.$refs.transition
+      )
     }
   }
 }

@@ -1,25 +1,57 @@
-export const toggleClass = (el, className, value) => {
-  $(el).toggleClass(
-    className, !!value
+export function toggleClass (
+  element,
+  className,
+  value
+) {
+  $(
+    element
+  ).toggleClass(
+    className,
+    !!value
   )
 }
 
-export const setPercentWidth = (el, value) => {
-  el.style.width = `${value}%`
+export function setPercentWidth (
+  element,
+  value
+) {
+  element.style.width = `${value}%`
 }
 
-export const clone = el => {
-  return $(el).clone()[0]
+export function clone (
+  element
+) {
+  return $(
+    element
+  ).clone()[0]
 }
 
-export const addClass = (el, value) => {
-  $(el).addClass(value)
+export function addClass (
+  element,
+  value
+) {
+  $(
+    element
+  ).addClass(
+    value
+  )
 }
 
-export const insertAfter = (el, after) => {
-  $(el).after(after)
+export function insertAfter (
+  element,
+  after
+) {
+  $(
+    element
+  ).after(
+    after
+  )
 }
 
-export const remove = el => {
-  $(el).remove()
+export function remove (
+  element
+) {
+  $(
+    element
+  ).remove()
 }

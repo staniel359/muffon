@@ -1,13 +1,13 @@
 <template>
   <BaseVideoModalContainer
     ref="modal"
-    :videoId="videoId"
+    :video-id="videoId"
     :scope="scope"
   >
     <template #default="slotProps">
       <BaseModalTagsList
         :tags="slotProps[scope]"
-        @tagClick="handleTagClick"
+        @tag-click="handleTagClick"
       />
     </template>
   </BaseVideoModalContainer>
@@ -34,10 +34,14 @@ export default {
   },
   methods: {
     handleTagClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

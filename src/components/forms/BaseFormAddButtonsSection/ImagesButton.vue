@@ -34,9 +34,13 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$refs.input.show()
+      this.$refs
+        .input
+        .show()
     },
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       const images = [
         ...this.images,
         value

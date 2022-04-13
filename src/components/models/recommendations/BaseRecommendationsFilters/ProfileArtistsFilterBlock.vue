@@ -3,7 +3,7 @@
     <SearchInput
       ref="input"
       :artists="artists"
-      @addArtist="handleAddArtist"
+      @add-artist="handleAddArtist"
     />
 
     <BaseClearButton
@@ -36,7 +36,9 @@ export default {
     'change'
   ],
   methods: {
-    handleAddArtist (value) {
+    handleAddArtist (
+      value
+    ) {
       const artists = [
         ...this.artists,
         value
@@ -47,18 +49,26 @@ export default {
       )
     },
     handleResetButtonClick () {
-      this.changeArtists([])
+      this.changeArtists(
+        []
+      )
 
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     },
-    changeArtists (value) {
+    changeArtists (
+      value
+    ) {
       this.$emit(
         'change',
         value
       )
     },
     focusInput () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

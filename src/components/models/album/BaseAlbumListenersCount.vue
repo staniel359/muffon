@@ -2,24 +2,27 @@
   <div v-if="isLoading">
     <div
       class="ui active mini inline loader"
-    ></div>
+    />
   </div>
   <div
     v-else
     class="main-small-container"
   >
     <small>
-      <i class="user icon"></i>
-      <span>
-        {{ listenersCountFormatted }}
-      </span>
+      <i class="user icon" />
+
+      <span
+        v-text="listenersCountFormatted"
+      />
     </small>
   </div>
 </template>
 
 <script>
 import getAlbum from '*/helpers/actions/api/album/get'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumListenersCount',
@@ -40,7 +43,6 @@ export default {
   data () {
     return {
       albumData: null,
-      error: null,
       isLoading: false,
       scope: 'listeners_count'
     }
@@ -75,7 +77,9 @@ export default {
     }
   },
   methods: {
-    handleListenersCountFetchedChange (value) {
+    handleListenersCountFetchedChange (
+      value
+    ) {
       this.$emit(
         'loadEnd',
         value

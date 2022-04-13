@@ -1,11 +1,17 @@
 import axios from 'axios'
 import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
-import { setPlayerPlaying } from '*/helpers/actions'
+import {
+  setPlayerPlaying
+} from '*/helpers/actions'
 
-export default function ({ trackData }) {
+export default function (
+  {
+    trackData
+  }
+) {
   const audioData = trackData.audio
 
-  const formatUrl = () => {
+  function formatUrl () {
     const sourceId = audioData.source_id
 
     const idData = audioData.id
@@ -20,17 +26,24 @@ export default function ({ trackData }) {
         idData?.bandcamp_id
     )
 
-    return formatTrackRequestUrl({
-      sourceId,
-      artistId,
-      trackId
-    })
+    return formatTrackRequestUrl(
+      {
+        sourceId,
+        artistId,
+        trackId
+      }
+    )
   }
 
   const url = formatUrl()
 
-  const handleSuccess = response => {
-    const { album, image } = trackData
+  function handleSuccess (
+    response
+  ) {
+    const {
+      album,
+      image
+    } = trackData
 
     const playingData = {
       ...trackData,

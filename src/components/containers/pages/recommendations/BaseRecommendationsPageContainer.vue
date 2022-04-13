@@ -1,18 +1,18 @@
 <template>
   <BasePageContainer
-    :responseData="recommendationsData"
-    :isLoading="isLoading"
+    :response-data="recommendationsData"
+    :is-loading="isLoading"
     :error="error"
   >
     <template #default="slotProps">
       <slot
-        :recommendationsData="recommendationsData"
-        :profileId="slotProps.profileId"
-        :isLoading="isLoading"
+        :recommendations-data="recommendationsData"
+        :profile-id="slotProps.profileId"
+        :is-loading="isLoading"
         :error="error"
-        :fetchData="fetchData"
+        :fetch-data="fetchData"
         :refresh="refresh"
-      ></slot>
+      />
     </template>
   </BasePageContainer>
 </template>
@@ -76,14 +76,22 @@ export default {
       this.fetchData()
     },
     getRecommendations,
-    fetchData (page) {
-      this.getRecommendations({
-        ...this.recommendationsArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getRecommendations(
+        {
+          ...this.recommendationsArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

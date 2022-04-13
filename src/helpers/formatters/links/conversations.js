@@ -1,4 +1,4 @@
-export const main = () => {
+export function main () {
   return {
     name: 'ConversationsPage',
     params: {},
@@ -6,10 +6,16 @@ export const main = () => {
   }
 }
 
-export const conversation = ({ conversationId }) => {
+export function conversation (
+  {
+    conversationId
+  }
+) {
   return {
     name: 'ConversationPage',
-    params: { conversationId },
+    params: {
+      conversationId
+    },
     path: `conversations/${conversationId}`
   }
 }

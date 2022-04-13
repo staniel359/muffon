@@ -7,7 +7,7 @@
     ]"
   >
     <BaseTrackPlayerPanel
-      :trackData="trackData"
+      :track-data="trackData"
     />
   </BaseSegmentContainer>
 </template>

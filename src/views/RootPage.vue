@@ -14,8 +14,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { ipcRenderer } from 'electron'
+import {
+  mapState
+} from 'vuex'
+import {
+  ipcRenderer
+} from 'electron'
 import TheScrobblingObserver
   from '*/components/layout/observers/TheScrobblingObserver.vue'
 import TheOnlineObserver
@@ -35,12 +39,18 @@ export default {
     TheAuthentication
   },
   computed: {
-    ...mapState('player', {
-      isPlayerWithScrobbling: 'isWithScrobbling'
-    }),
-    ...mapState('profile', {
-      isProfileLoggedIn: 'isLoggedIn'
-    })
+    ...mapState(
+      'player',
+      {
+        isPlayerWithScrobbling: 'isWithScrobbling'
+      }
+    ),
+    ...mapState(
+      'profile',
+      {
+        isProfileLoggedIn: 'isLoggedIn'
+      }
+    )
   },
   watch: {
     isProfileLoggedIn: {
@@ -49,7 +59,9 @@ export default {
     }
   },
   methods: {
-    handleIsProfileLoggedInChange (value) {
+    handleIsProfileLoggedInChange (
+      value
+    ) {
       if (!value) {
         this.clearTabs()
       }

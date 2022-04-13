@@ -1,9 +1,9 @@
 <template>
   <slot
-    :isLoading="!isAllLoaded"
-    :isError="isAllErrors"
-    :albumsData="albumsData"
-  ></slot>
+    :is-loading="!isAllLoaded"
+    :is-error="isAllErrors"
+    :albums-data="albumsData"
+  />
 </template>
 
 <script>
@@ -31,7 +31,6 @@ export default {
     return {
       error: null,
       searchData: null,
-      isLoading: false,
       loadedCollectionsCount: 0,
       errorCollectionsCount: 0,
       albumsData: {}
@@ -77,12 +76,16 @@ export default {
     this.fetchTypesData()
   },
   methods: {
-    handleSearchDataChange (value) {
+    handleSearchDataChange (
+      value
+    ) {
       if (value) {
         this.formatTypesData()
       }
     },
-    handleError (value) {
+    handleError (
+      value
+    ) {
       if (value) {
         this.errorCollectionsCount++
       }
@@ -93,34 +96,42 @@ export default {
         this.fetchTypeData
       )
     },
-    fetchTypeData (type) {
-      const formatScope = () => {
-        if (type === 'albumVarious') {
-          return 'albums_various'
-        } else {
-          return `${type}s`
-        }
-      }
+    fetchTypeData (
+      type
+    ) {
+      const scope =
+        this.formatScope(
+          type
+        )
 
-      this.getSearch({
-        ...this.searchArgs,
-        scope: formatScope()
-      })
+      this.getSearch(
+        {
+          ...this.searchArgs,
+          scope
+        }
+      )
+    },
+    formatScope (
+      type
+    ) {
+      if (type === 'albumVarious') {
+        return 'albums_various'
+      } else {
+        return `${type}s`
+      }
     },
     formatTypesData () {
       this.types.map(
         this.formatTypeData
       )
     },
-    formatTypeData (type) {
-      const formatScope = () => {
-        if (type === 'albumVarious') {
-          return 'albums_various'
-        } else {
-          return `${type}s`
-        }
-      }
-      const scope = formatScope()
+    formatTypeData (
+      type
+    ) {
+      const scope =
+        this.formatScope(
+          type
+        )
 
       if (this.searchData[scope]) {
         this.albumsData[scope] =

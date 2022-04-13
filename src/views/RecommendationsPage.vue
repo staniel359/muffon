@@ -1,30 +1,30 @@
 <template>
   <BaseRecommendationsPageContainer
     :limit="limit"
-    :filterScope="filterScope"
-    :filterValue="filterValue"
+    :filter-scope="filterScope"
+    :filter-value="filterValue"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="recommendationsData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="recommendationsData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :filterScope="filterScope"
-        isWithRecommendationsFilters
-        @filterScopeChange="handleFilterScopeChange"
-        @filterValueChange="handleFilterValueChange"
+        :filter-scope="filterScope"
+        is-with-recommendations-filters
+        @filter-scope-change="handleFilterScopeChange"
+        @filter-value-change="handleFilterValueChange"
       >
         <template #default="slotProps">
           <BaseArtistsExtendedList
             :artists="slotProps[scope]"
-            :profileId="pageSlotProps.profileId"
-            isWithLibraryOption
-            isWithFavoriteOption
-            isWithBookmarkOption
-            isWithListenedOption
-            isWithDeleteOption
-            isRecommendation
+            :profile-id="pageSlotProps.profileId"
+            is-with-library-option
+            is-with-favorite-option
+            is-with-bookmark-option
+            is-with-listened-option
+            is-with-delete-option
+            is-recommendation
           />
         </template>
       </BasePaginatedPageContainer>
@@ -56,10 +56,14 @@ export default {
     }
   },
   methods: {
-    handleFilterScopeChange (value) {
+    handleFilterScopeChange (
+      value
+    ) {
       this.filterScope = value
     },
-    handleFilterValueChange (value) {
+    handleFilterValueChange (
+      value
+    ) {
       this.filterValue = value
     }
   }

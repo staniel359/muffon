@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-export default function ({ artistName }) {
+export default function (
+  {
+    artistName
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -8,20 +12,30 @@ export default function ({ artistName }) {
     encodeURIComponent(
       artistName
     )
+
   const url =
     `/lastfm/artists/${artistNameEncoded}/images`
 
-  const handleSuccess = response => {
-    const { image, images } =
-      response.data.artist
+  const handleSuccess = (
+    response
+  ) => {
+    const {
+      image,
+      images
+    } = response.data.artist
 
     this.image = image
 
     this.images =
-      images.slice(0, 20)
+      images.slice(
+        0,
+        20
+      )
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
     this.images = null
   }

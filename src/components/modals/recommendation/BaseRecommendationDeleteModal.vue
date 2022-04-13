@@ -1,11 +1,11 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="recommendation"
-    :modelName="artistName"
-    :isLoading="isLoading"
+    model-type="recommendation"
+    :model-name="artistName"
+    :is-loading="isLoading"
     :error="error"
-    @deleteButtonClick="handleDeleteButtonClick"
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -55,13 +55,19 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
-      this.$emit('deleted')
+      this.$emit(
+        'deleted'
+      )
     },
     deleteRecommendation,
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

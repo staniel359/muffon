@@ -1,26 +1,26 @@
 <template>
   <BasePlaylistSegmentContainer
     ref="segment"
-    :profileId="profileId"
-    :playlistId="playlistId"
+    :profile-id="profileId"
+    :playlist-id="playlistId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedListContainer
-        :responseData="segmentSlotProps.playlistData"
+        :response-data="segmentSlotProps.playlistData"
         :scope="scope"
         :limit="limit"
-        :isLoading="segmentSlotProps.isLoading"
+        :is-loading="segmentSlotProps.isLoading"
         :error="segmentSlotProps.error"
-        @fetchData="segmentSlotProps.fetchData"
+        @fetch-data="segmentSlotProps.fetchData"
         @refresh="segmentSlotProps.refresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedListContainer>
     </template>
@@ -46,7 +46,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

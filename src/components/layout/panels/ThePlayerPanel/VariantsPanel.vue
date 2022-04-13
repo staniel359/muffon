@@ -3,10 +3,12 @@
     <div class="ui container main-container">
       <div
         class="variants-block"
-        :class="{ visible: isVisible }"
+        :class="{
+          visible: isVisible
+        }"
       >
         <VariantsLabel
-          :isPanelVisible="isVisible"
+          :is-panel-visible="isVisible"
           @mouseenter="handleMouseEnter"
           @mouseleave="handleMouseLeave"
         />

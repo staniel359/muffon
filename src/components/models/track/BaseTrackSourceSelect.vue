@@ -24,9 +24,13 @@
 import SourceSelect from './BaseTrackSourceSelect/SourceSelect.vue'
 import TrackSelect from './BaseTrackSourceSelect/TrackSelect.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 import formatTrackRequestData from '*/helpers/formatters/request/track/data'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTrackSourceSelect',
@@ -63,7 +67,9 @@ export default {
       return [
         this.artistName,
         this.trackTitle
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     },
     trackTitle () {
       return this.trackData.title
@@ -91,30 +97,46 @@ export default {
     handleSelectedSourceDataChange () {
       this.trackSelectKey = generateKey()
     },
-    handleSelectedTrackDataChange (value) {
-      this.setRequestTrackData({
-        ...value
-      })
+    handleSelectedTrackDataChange (
+      value
+    ) {
+      this.setRequestTrackData(
+        {
+          ...value
+        }
+      )
     },
     handleReset () {
-      this.$refs.source.reset()
+      this.$refs
+        .source
+        .reset()
 
       this.selectedSourceData = null
 
       this.resetRequestTrackData()
     },
-    setSelectedSourceData (value) {
+    setSelectedSourceData (
+      value
+    ) {
       this.selectedSourceData = value
     },
-    setSelectedTrackData (value) {
+    setSelectedTrackData (
+      value
+    ) {
       this.selectedTrackData =
-        this.formatSelectedTrackData(value)
+        this.formatSelectedTrackData(
+          value
+        )
     },
-    formatSelectedTrackData (value) {
-      return formatTrackRequestData({
-        sourceId: this.selectedSourceId,
-        trackData: value
-      })
+    formatSelectedTrackData (
+      value
+    ) {
+      return formatTrackRequestData(
+        {
+          sourceId: this.selectedSourceId,
+          trackData: value
+        }
+      )
     }
   }
 }

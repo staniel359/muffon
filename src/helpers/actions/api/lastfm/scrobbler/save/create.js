@@ -1,14 +1,23 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ title, artistName, albumTitle, duration }) {
+export default function (
+  {
+    title,
+    artistName,
+    albumTitle,
+    duration
+  }
+) {
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/lastfm/scrobbler/save`
 
   const token =
     store.state.profile.token
+
   const params = {
     token,
     title,
@@ -18,6 +27,7 @@ export default function ({ title, artistName, albumTitle, duration }) {
   }
 
   return axios.post(
-    url, params
+    url,
+    params
   )
 }

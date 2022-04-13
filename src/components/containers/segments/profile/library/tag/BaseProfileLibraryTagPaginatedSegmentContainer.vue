@@ -1,16 +1,16 @@
 <template>
   <BaseProfileLibraryTagSegmentContainer
     ref="segment"
-    :profileId="profileId"
-    :tagId="tagId"
+    :profile-id="profileId"
+    :tag-id="tagId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        responseDataName="libraryTagData"
-        :slotPropsData="segmentSlotProps"
+        response-data-name="libraryTagData"
+        :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"
@@ -18,7 +18,7 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedSegmentContainer>
     </template>
@@ -46,7 +46,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

@@ -1,19 +1,19 @@
 <template>
   <BaseAlbumReleaseDateLabels
-    :release_date="release_date"
+    :release-date="releaseDate"
     :labels="labels"
   />
 
   <BaseCounters
-    :listenersCount="listenersCount"
-    :playsCount="playsCount"
+    :listeners-count="listenersCount"
+    :plays-count="playsCount"
   />
 
   <BaseAlbumTags
     v-if="tags?.length"
     :tags="tags"
-    :requestAlbumData="requestAlbumData"
-    :isMore="isMoreTags"
+    :request-album-data="requestAlbumData"
+    :is-more="isMoreTags"
   />
 
   <template v-if="description">
@@ -21,8 +21,8 @@
 
     <BaseAlbumDescription
       :description="description"
-      :requestAlbumData="requestAlbumData"
-      :isMore="isMoreDescription"
+      :request-album-data="requestAlbumData"
+      :is-more="isMoreDescription"
     />
   </template>
 </template>
@@ -53,7 +53,7 @@ export default {
     requestAlbumData: Object
   },
   computed: {
-    release_date () {
+    releaseDate () {
       return this.albumData.release_date
     },
     labels () {

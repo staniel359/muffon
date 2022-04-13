@@ -3,12 +3,19 @@ import {
   main as formatProfileLibraryMainLink
 } from '*/helpers/formatters/links/profile/library'
 
-export default function ({ profileId, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    profileId,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryMainLink({
-        profileId
-      })
+      return formatProfileLibraryMainLink(
+        {
+          profileId
+        }
+      )
     }
   }
 

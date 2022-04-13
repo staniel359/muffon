@@ -4,18 +4,22 @@ import {
   artists as formatProfileLibraryTagArtistsLink
 } from '*/helpers/formatters/links/profile/library/tag'
 
-export default function ({
-  profileId,
-  profileNickname,
-  tagId,
-  tagName,
-  scope
-}) {
-  const formatProfileLibraryTagPageTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    tagId,
+    tagName,
+    scope
+  }
+) {
+  function formatProfileLibraryTagPageTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: tagName }
+        {
+          modelName: tagName
+        }
       )
     } else {
       return tagName
@@ -24,26 +28,34 @@ export default function ({
 
   const profileLibraryPageTitle = i18n.global.t(
     'navigation.model.tags',
-    { modelName: profileNickname }
+    {
+      modelName: profileNickname
+    }
   )
 
   const title = [
     formatProfileLibraryTagPageTitle(),
     profileLibraryPageTitle
-  ].join(' | ')
+  ].join(
+    ' | '
+  )
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'artists':
-        return formatProfileLibraryTagArtistsLink({
-          profileId,
-          tagId
-        }).path
+        return formatProfileLibraryTagArtistsLink(
+          {
+            profileId,
+            tagId
+          }
+        ).path
       default:
-        return formatProfileLibraryTagMainLink({
-          profileId,
-          tagId
-        }).path
+        return formatProfileLibraryTagMainLink(
+          {
+            profileId,
+            tagId
+          }
+        ).path
     }
   }
 

@@ -13,7 +13,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseProfileEmailField
   from '*/components/fields/profile/BaseProfileEmailField.vue'
 import BaseProfilePasswordField
@@ -32,9 +34,12 @@ export default {
     BaseProfileNicknameField
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     email () {
       return this.profileInfo.email
     },

@@ -1,22 +1,22 @@
 <template>
   <BaseProfileLibraryArtistPaginatedPageContainer
-    :profileId="profileId"
-    :artistId="artistId"
+    :profile-id="profileId"
+    :artist-id="artistId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profileId="profileId"
-        :artistName="slotProps.artistName"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        isWithImage
-        isWithAlbumTitle
-        isWithCreated
-        isLinkToLibrary
-        isWithPlaylistOption
+        :profile-id="profileId"
+        :artist-name="slotProps.artistName"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-delete-option="isWithDeleteOption"
+        is-with-image
+        is-with-album-title
+        is-with-created
+        is-link-to-library
+        is-with-playlist-option
       />
     </template>
   </BaseProfileLibraryArtistPaginatedPageContainer>
@@ -27,7 +27,9 @@ import BaseProfileLibraryArtistPaginatedPageContainer
   from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'TracksPage',

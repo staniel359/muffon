@@ -1,12 +1,14 @@
-export default function ({
-  sourceId,
-  artistName,
-  albumTitle,
-  artistId,
-  albumId,
-  albumType = 'album',
-  scope
-}) {
+export default function (
+  {
+    sourceId,
+    artistName,
+    albumTitle,
+    artistId,
+    albumId,
+    albumType = 'album',
+    scope
+  }
+) {
   const artistNameEncoded =
     encodeURIComponent(
       artistName
@@ -16,7 +18,7 @@ export default function ({
       albumTitle
     )
 
-  const formatScope = () => {
+  function formatScope () {
     if (albumType === 'albumVarious') {
       return 'albums'
     } else {
@@ -26,7 +28,7 @@ export default function ({
 
   const albumScope = formatScope()
 
-  const formatUrlData = () => {
+  function formatUrlData () {
     switch (sourceId) {
       case 'lastfm':
         return (

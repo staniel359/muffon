@@ -1,15 +1,18 @@
 <template>
   <Component
-    class="ui header main-header"
     :is="tag"
-    :class="{ inverted: isDarkMode }"
-  >
-    {{ text }}
-  </Component >
+    class="ui header main-header"
+    :class="{
+      inverted: isDarkMode
+    }"
+    v-text="text"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseHeader',
@@ -24,9 +27,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

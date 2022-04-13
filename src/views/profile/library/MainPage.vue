@@ -1,10 +1,10 @@
 <template>
   <BaseProfileLibraryPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
   >
     <template #default="slotProps">
       <StatisticsSegment
-        :libraryData="slotProps.libraryData"
+        :library-data="slotProps.libraryData"
       />
 
       <ImportSegment
@@ -12,23 +12,23 @@
       />
 
       <ArtistsSegment
-        :profileId="profileId"
-        :isWithFavoriteOption="isWithFavoriteOption"
+        :profile-id="profileId"
+        :is-with-favorite-option="isWithFavoriteOption"
       />
 
       <AlbumsSegment
-        :profileId="profileId"
-        :isWithFavoriteOption="isWithFavoriteOption"
+        :profile-id="profileId"
+        :is-with-favorite-option="isWithFavoriteOption"
       />
 
       <TracksSegment
-        :profileId="profileId"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
+        :profile-id="profileId"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-delete-option="isWithDeleteOption"
       />
 
       <TagsSegment
-        :profileId="profileId"
+        :profile-id="profileId"
       />
     </template>
   </BaseProfileLibraryPageContainer>
@@ -43,7 +43,9 @@ import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',

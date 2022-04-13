@@ -1,32 +1,43 @@
 import axios from 'axios'
 import store from '*/plugins/store'
-import { updateStore, addFormErrors } from '*/helpers/actions'
+import {
+  updateStore,
+  addFormErrors
+} from '*/helpers/actions'
 
-export default function ({
-  email,
-  password,
-  passwordConfirmation,
-  nickname,
-  image,
-  gender,
-  birthdate,
-  country,
-  city,
-  isRemember
-}) {
+export default function (
+  {
+    email,
+    password,
+    passwordConfirmation,
+    nickname,
+    image,
+    gender,
+    birthdate,
+    country,
+    city,
+    isRemember
+  }
+) {
   this.error = null
   this.isLoading = true
   this.isSuccess = false
 
   const profileId =
     store.state.profile.info.id
+
   const url = `/profiles/${profileId}`
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
     email,
-    ...(password && { password }),
+    ...(password && {
+      password
+    }),
     ...(passwordConfirmation && {
       password_confirmation:
         passwordConfirmation
@@ -39,17 +50,23 @@ export default function ({
     city
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     const info = response.data.profile
 
-    updateStore({
-      'profile.info': info
-    })
+    updateStore(
+      {
+        'profile.info': info
+      }
+    )
 
     this.isSuccess = true
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     const isBadRequest =
       error.response?.status === 403
 
@@ -61,11 +78,13 @@ export default function ({
         'nickname'
       ]
 
-      addFormErrors({
-        error,
-        fields,
-        form: this.form
-      })
+      addFormErrors(
+        {
+          error,
+          fields,
+          form: this.form
+        }
+      )
     } else {
       this.error = error
     }
@@ -76,7 +95,8 @@ export default function ({
   }
 
   axios.patch(
-    url, params
+    url,
+    params
   ).then(
     handleSuccess
   ).catch(

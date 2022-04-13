@@ -2,16 +2,24 @@
   <BaseButton
     class="tiny compact"
     icon="random"
-    :class="{ basic: !isQueueShuffle }"
+    :class="{
+      basic: !isQueueShuffle
+    }"
     @click="handleClick"
   />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import { updateStore } from '*/helpers/actions'
-import { shuffleArray } from '*/helpers/utils'
+import {
+  updateStore
+} from '*/helpers/actions'
+import {
+  shuffleArray
+} from '*/helpers/utils'
 
 export default {
   name: 'ShuffleButton',
@@ -19,22 +27,29 @@ export default {
     BaseButton
   },
   computed: {
-    ...mapState('queue', {
-      isQueueShuffle: 'isShuffle',
-      queueTracks: 'tracks'
-    })
+    ...mapState(
+      'queue',
+      {
+        isQueueShuffle: 'isShuffle',
+        queueTracks: 'tracks'
+      }
+    )
   },
   methods: {
     handleClick () {
       const value = !this.isQueueShuffle
       const tracks = value
-        ? shuffleArray(this.queueTracks)
+        ? shuffleArray(
+          this.queueTracks
+        )
         : []
 
-      updateStore({
-        'queue.isShuffle': value,
-        'queue.tracksShuffled': tracks
-      })
+      updateStore(
+        {
+          'queue.isShuffle': value,
+          'queue.tracksShuffled': tracks
+        }
+      )
     }
   }
 }

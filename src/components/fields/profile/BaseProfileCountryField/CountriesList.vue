@@ -3,13 +3,15 @@
     <CountryItem
       v-for="countryData in countriesList"
       :key="countryData[0]"
-      :countryData="countryData"
+      :country-data="countryData"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import countries from 'i18n-iso-countries'
 import CountryItem from './CountriesList/CountryItem.vue'
 
@@ -19,9 +21,12 @@ export default {
     CountryItem
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    ),
     countriesList () {
       return Object.entries(
         countries.getNames(

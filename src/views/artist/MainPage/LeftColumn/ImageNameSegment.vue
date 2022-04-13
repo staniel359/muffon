@@ -6,8 +6,8 @@
       <BaseArtistImage
         class="rounded bordered image-content"
         size="medium"
-        :artistName="artistName"
-        isInteractive
+        :artist-name="artistName"
+        is-interactive
       />
     </div>
 

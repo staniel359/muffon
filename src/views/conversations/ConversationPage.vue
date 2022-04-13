@@ -1,6 +1,6 @@
 <template>
   <BaseConversationPageContainer
-    :conversationId="conversationId"
+    :conversation-id="conversationId"
   >
     <template #default="slotProps">
       <div
@@ -11,17 +11,17 @@
         ]"
       >
         <ProfileSegment
-          :conversationData="slotProps.conversationData"
+          :conversation-data="slotProps.conversationData"
         />
 
         <FormSegment
-          :profileId="slotProps.profileId"
+          :profile-id="slotProps.profileId"
           @success="handleSuccess"
         />
 
         <MessagesSegment
           :key="key"
-          :conversationId="conversationId"
+          :conversation-id="conversationId"
         />
       </div>
     </template>
@@ -34,7 +34,9 @@ import BaseConversationPageContainer
 import ProfileSegment from './ConversationPage/ProfileSegment.vue'
 import FormSegment from './ConversationPage/FormSegment.vue'
 import MessagesSegment from './ConversationPage/MessagesSegment.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'ConversationPage',

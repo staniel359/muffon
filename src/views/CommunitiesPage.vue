@@ -16,8 +16,8 @@
 
         <BasePaginatedSegmentContainer
           class="main-paginated-page-segment-container"
-          responseDataName="communitiesData"
-          :slotPropsData="pageSlotProps"
+          response-data-name="communitiesData"
+          :slot-props-data="pageSlotProps"
           :scope="scope"
           :limit="limit"
           @focus="handleFocus"
@@ -62,7 +62,10 @@ export default {
   },
   methods: {
     handleFocus () {
-      window.scrollTo(0, 0)
+      window.scrollTo(
+        0,
+        0
+      )
     }
   }
 }

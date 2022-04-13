@@ -2,12 +2,12 @@
   <BaseAlbumModalContainer
     ref="modal"
     :scope="scope"
-    :requestAlbumData="requestAlbumData"
+    :request-album-data="requestAlbumData"
   >
     <template #default="slotProps">
       <BaseModalTagsList
         :tags="slotProps[scope]"
-        @tagClick="handleTagClick"
+        @tag-click="handleTagClick"
       />
     </template>
   </BaseAlbumModalContainer>
@@ -34,10 +34,14 @@ export default {
   },
   methods: {
     handleTagClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

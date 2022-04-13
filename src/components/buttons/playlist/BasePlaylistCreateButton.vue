@@ -31,7 +31,9 @@ export default {
   },
   methods: {
     handleButtonClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

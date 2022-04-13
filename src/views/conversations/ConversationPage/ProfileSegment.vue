@@ -10,7 +10,7 @@
       <div class="content">
         <BaseProfileNickname
           tag="h3"
-          :profileData="profileData"
+          :profile-data="profileData"
         />
       </div>
     </div>
@@ -43,9 +43,6 @@ export default {
     },
     imageData () {
       return this.profileData.image
-    },
-    profileId () {
-      return this.profileData.id
     }
   }
 }

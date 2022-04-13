@@ -2,26 +2,34 @@
   <BaseSeeker
     :key="key"
     :options="seekerOptions"
-    :isDisabled="!isAudioPlayable"
+    :is-disabled="!isAudioPlayable"
     @init="handleSeekerInit"
-    @mouseDown="handleMouseDown"
+    @mouse-down="handleMouseDown"
     @change="handleChange"
     @move="handleMove"
   />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseSeeker from '*/components/BaseSeeker.vue'
-import { setSeekerValue } from '*/helpers/actions/plugins/semantic'
-import { mainSeekerOptions } from '*/helpers/data/plugins/semantic'
+import {
+  setSeekerValue
+} from '*/helpers/actions/plugins/semantic'
+import {
+  mainSeekerOptions
+} from '*/helpers/data/plugins/semantic'
 import {
   clone as cloneElement,
   addClass as addElementClass,
   setPercentWidth as setElementPercentWidth,
   insertAfter as insertElementAfter
 } from '*/helpers/actions/plugins/jquery'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'SeekerPanel',
@@ -41,17 +49,23 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', {
-      audioStatus: 'status',
-      audioProgress: 'progress',
-      audioCurrentTime: 'currentTime',
-      audioDuration: 'duration',
-      isAudioPlayable: 'isPlayable',
-      audioElement: 'element'
-    }),
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioStatus: 'status',
+        audioProgress: 'progress',
+        audioCurrentTime: 'currentTime',
+        audioDuration: 'duration',
+        isAudioPlayable: 'isPlayable',
+        audioElement: 'element'
+      }
+    ),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    ),
     seekerOptions () {
       return mainSeekerOptions()
     },
@@ -88,12 +102,16 @@ export default {
     playerPlaying: 'handlePlayerPlayingChange'
   },
   methods: {
-    handleSeekerInit (el) {
-      this.seeker = el
+    handleSeekerInit (
+      element
+    ) {
+      this.seeker = element
 
       this.setProgressBar()
     },
-    handleMouseDown (event) {
+    handleMouseDown (
+      event
+    ) {
       if (this.isAudioPlayable) {
         this.isSeeking = true
 
@@ -104,15 +122,31 @@ export default {
         this.audioElement.pause()
       }
     },
-    handleMove (value) {
-      this.isSeeking && this.setAudioCurrentTime(
-        this.percentToSeconds(value)
-      )
-    },
-    handleChange (value) {
+    handleMove (
+      value
+    ) {
       if (this.isSeeking) {
+        const time =
+          this.percentToSeconds(
+            value
+          )
+
         this.setAudioCurrentTime(
-          this.percentToSeconds(value)
+          time
+        )
+      }
+    },
+    handleChange (
+      value
+    ) {
+      if (this.isSeeking) {
+        const time =
+          this.percentToSeconds(
+            value
+          )
+
+        this.setAudioCurrentTime(
+          time
         )
 
         if (this.isAudioEnded) {
@@ -124,17 +158,29 @@ export default {
         this.isSeeking = false
       }
     },
-    handleAudioProgressPercentChange (value) {
-      this.progressBar && setElementPercentWidth(
-        this.progressBar, value
-      )
+    handleAudioProgressPercentChange (
+      value
+    ) {
+      if (this.progressBar) {
+        setElementPercentWidth(
+          this.progressBar,
+          value
+        )
+      }
     },
-    handleAudioTimePercentChange (value) {
-      !this.isSeeking && setSeekerValue(
-        this.seeker, value
-      )
+    handleAudioTimePercentChange (
+      value
+    ) {
+      if (!this.isSeeking) {
+        setSeekerValue(
+          this.seeker,
+          value
+        )
+      }
     },
-    handleAudioEnd (value) {
+    handleAudioEnd (
+      value
+    ) {
       if (value && !this.isSeeking) {
         this.endAudio()
       }
@@ -143,7 +189,9 @@ export default {
       this.key = generateKey()
     },
     endAudio () {
-      this.$emit('audioEnd')
+      this.$emit(
+        'audioEnd'
+      )
     },
     callAudioAction () {
       this.audioElement[
@@ -151,25 +199,49 @@ export default {
       ]()
     },
     setProgressBar () {
-      const el = cloneElement(this.seekerMainTrack)
+      const progressBar =
+        cloneElement(
+          this.seekerMainTrack
+        )
 
-      addElementClass(el, 'track-progress')
-      setElementPercentWidth(el, 0)
-      insertElementAfter(this.seekerMainTrack, el)
+      addElementClass(
+        progressBar,
+        'track-progress'
+      )
 
-      this.progressBar = el
+      setElementPercentWidth(
+        progressBar,
+        0
+      )
+
+      insertElementAfter(
+        this.seekerMainTrack,
+        progressBar
+      )
+
+      this.progressBar = progressBar
     },
-    secondsToPercent (seconds) {
+    secondsToPercent (
+      seconds
+    ) {
       if (this.audioDuration) {
-        return seconds / this.audioDuration * 100
+        return (
+          seconds / this.audioDuration * 100
+        )
       } else {
         return 0
       }
     },
-    percentToSeconds (percent) {
-      return this.audioDuration * percent / 100
+    percentToSeconds (
+      percent
+    ) {
+      return (
+        this.audioDuration * percent / 100
+      )
     },
-    setAudioCurrentTime (value) {
+    setAudioCurrentTime (
+      value
+    ) {
       this.audioElement.currentTime = value
     }
   }

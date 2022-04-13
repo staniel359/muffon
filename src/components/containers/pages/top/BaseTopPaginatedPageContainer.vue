@@ -5,17 +5,17 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="topData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="topData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :isWithViewChange="isWithViewChange"
-        :viewIndex="viewIndex"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

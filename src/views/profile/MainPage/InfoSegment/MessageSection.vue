@@ -8,7 +8,7 @@
 
   <BaseProfileMessageModal
     ref="modal"
-    :profileData="profileData"
+    :profile-data="profileData"
   />
 </template>
 
@@ -35,7 +35,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

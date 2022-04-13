@@ -5,7 +5,9 @@
       class="inverted tag-header"
       icon="tag"
     >
-      {{ tagName }}
+      <template #default>
+        {{ tagName }}
+      </template>
     </BaseHeaderContainer>
   </div>
 </template>

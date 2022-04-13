@@ -7,7 +7,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import PlayingBlock from './PlayingPanel/PlayingBlock.vue'
@@ -19,9 +21,12 @@ export default {
     PlayingBlock
   },
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    })
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    )
   }
 }
 </script>

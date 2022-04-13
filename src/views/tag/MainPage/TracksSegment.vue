@@ -2,20 +2,20 @@
   <BaseTagPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :responsePageLimit="responsePageLimit"
-    :tagName="tagName"
-    :headerLink="headerLink"
+    :response-page-limit="responsePageLimit"
+    :tag-name="tagName"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        isWithArtistName
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
-        isWithPlaylistOption
+        :profile-id="slotProps.profileId"
+        is-with-artist-name
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-playlist-option
       />
     </template>
   </BaseTagPaginatedSegmentContainer>
@@ -26,7 +26,9 @@ import BaseTagPaginatedSegmentContainer
   from '*/components/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import { tracks as formatTagTracksLink } from '*/helpers/formatters/links/tag'
+import {
+  tracks as formatTagTracksLink
+} from '*/helpers/formatters/links/tag'
 
 export default {
   name: 'TracksSegment',
@@ -49,9 +51,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatTagTracksLink({
-        tagName: this.tagName
-      })
+      return formatTagTracksLink(
+        {
+          tagName: this.tagName
+        }
+      )
     }
   }
 }

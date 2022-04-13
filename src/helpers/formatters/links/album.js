@@ -1,10 +1,20 @@
-export const main = ({ artistName, albumTitle, sourceParams }) => {
-  const artistNameEncoded = encodeURIComponent(
-    artistName
-  )
-  const albumTitleEncoded = encodeURIComponent(
-    albumTitle
-  )
+export function main (
+  {
+    artistName,
+    albumTitle,
+    sourceParams
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
+  const albumTitleEncoded =
+    encodeURIComponent(
+      albumTitle
+    )
+
   const {
     sourceId,
     albumId,
@@ -16,7 +26,7 @@ export const main = ({ artistName, albumTitle, sourceParams }) => {
     paramsData
   } = sourceParams
 
-  const formatParamsDataString = () => {
+  function formatParamsDataString () {
     const isParamsData = Object.keys(
       paramsData || {}
     ).length
@@ -41,19 +51,26 @@ export const main = ({ artistName, albumTitle, sourceParams }) => {
     params_data: formatParamsDataString()
   }
 
-  const queryFiltered = Object.fromEntries(
-    Object.entries(
-      query
-    ).filter(a => a[1])
-  )
+  const queryFiltered =
+    Object.fromEntries(
+      Object.entries(
+        query
+      ).filter(
+        a => a[1]
+      )
+    )
 
-  const queryString = new URLSearchParams(
-    queryFiltered
-  ).toString()
+  const queryString =
+    new URLSearchParams(
+      queryFiltered
+    ).toString()
 
   return {
     name: 'AlbumMainPage',
-    params: { artistName, albumTitle },
+    params: {
+      artistName,
+      albumTitle
+    },
     path:
       `artists/${artistNameEncoded}` +
       `/albums/${albumTitleEncoded}` +

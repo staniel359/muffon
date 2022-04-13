@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="videoData"
-    :isLoading="isLoading"
+    :response-data="videoData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :videoData="videoData"
-      :isLoading="isLoading"
+      :video-data="videoData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -90,14 +90,22 @@ export default {
   },
   methods: {
     getVideo,
-    fetchData (page) {
-      this.getVideo({
-        ...this.videoArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getVideo(
+        {
+          ...this.videoArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

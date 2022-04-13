@@ -1,8 +1,8 @@
 <template>
   <div class="main-small-container main-timestamp">
-    <small>
-      {{ createdText }}
-    </small>
+    <small
+      v-text="createdText"
+    />
   </div>
 </template>
 
@@ -25,7 +25,9 @@ export default {
       return [
         this.createdDateFormatted,
         this.createdTimeFormatted
-      ].join(' ')
+      ].join(
+        ' '
+      )
     },
     createdDateFormatted () {
       return formatDate(

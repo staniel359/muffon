@@ -3,8 +3,7 @@
     <div class="main-paginated-list-content-container">
       <ContentContainer
         v-if="!isLoading"
-        :responsePageCollection="responsePageCollection"
-        :clientPageCollection="clientPageCollection"
+        :client-page-collection="clientPageCollection"
         :scope="scope"
         :error="error"
         @refresh="handleRefresh"
@@ -12,22 +11,22 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </ContentContainer>
     </div>
 
     <PaginationSection
       v-if="isRenderPagination"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       :error="error"
-      :totalPagesCount="clientTotalPagesCount"
-      :isPaginationSimple="isPaginationSimple"
-      :prevPage="prevPage"
-      :nextPage="nextPage"
-      @prevPageClick="handlePrevPageClick"
-      @nextPageClick="handleNextPageClick"
-      @pageChange="handlePageChange"
+      :total-pages-count="clientTotalPagesCount"
+      :is-pagination-simple="isPaginationSimple"
+      :prev-page="prevPage"
+      :next-page="nextPage"
+      @prev-page-click="handlePrevPageClick"
+      @next-page-click="handleNextPageClick"
+      @page-change="handlePageChange"
     />
   </div>
 </template>
@@ -38,7 +37,9 @@ import ContentContainer
   from './BasePaginatedListContainer/ContentContainer.vue'
 import PaginationSection
   from './BasePaginatedListContainer/PaginationSection.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BasePaginatedListContainer',
@@ -149,7 +150,9 @@ export default {
     newClientCollectionPaginated () {
       return deepmerge(
         ...this.clientResponsePageCollections,
-        { arrayMerge: this.mergeArrays }
+        {
+          arrayMerge: this.mergeArrays
+        }
       )
     },
     clientResponsePageCollections () {
@@ -187,11 +190,15 @@ export default {
 
         const pageData =
           collection.splice(
-            0, pageDataLength
+            0,
+            pageDataLength
           )
 
         newCollection.push(
-          [page, pageData]
+          [
+            page,
+            pageData
+          ]
         )
       }
 
@@ -316,7 +323,9 @@ export default {
         page
       )
     },
-    handleResponseDataChange (value) {
+    handleResponseDataChange (
+      value
+    ) {
       if (value) {
         this.responseTotalPages =
           value.total_pages
@@ -332,16 +341,20 @@ export default {
     handleClientPageChange () {
       this.setClientPageCollection()
     },
-    handleClientPageCollectionChange (value) {
+    async handleClientPageCollectionChange (
+      value
+    ) {
       if (value) {
         if (this.isFocusable) {
-          this.$emit('focus')
+          this.$emit(
+            'focus'
+          )
         }
 
         if (!this.isCollectionFull) {
-          this.$nextTick(() => {
-            this.fetchData()
-          })
+          await this.$nextTick()
+
+          this.fetchData()
         }
       }
     },
@@ -361,13 +374,13 @@ export default {
         this.nextPage
       )
     },
-    fetchData () {
-      this.$nextTick(() => {
-        this.$emit(
-          'fetchData',
-          this.requestPage
-        )
-      })
+    async fetchData () {
+      await this.$nextTick()
+
+      this.$emit(
+        'fetchData',
+        this.requestPage
+      )
     },
     setCollections () {
       this.clientCollectionPaginated =
@@ -381,7 +394,9 @@ export default {
           this.clientPage
         ] || []
     },
-    handlePageChange (value) {
+    handlePageChange (
+      value
+    ) {
       this.isLastPage = (
         value ===
           this.clientTotalPagesCount
@@ -395,16 +410,28 @@ export default {
       this.clientPage = value
       this.isFocusable = true
     },
-    mergeArrays (array, newArray) {
-      if (this.isArrayFull(array)) {
+    mergeArrays (
+      array,
+      newArray
+    ) {
+      if (this.isArrayFull(
+        array
+      )) {
         return array
-      } else if (this.isArrayFull(newArray)) {
+      } else if (this.isArrayFull(
+        newArray
+      )) {
         return newArray
       } else {
-        return deepmerge(array, newArray)
+        return deepmerge(
+          array,
+          newArray
+        )
       }
     },
-    isArrayFull (array) {
+    isArrayFull (
+      array
+    ) {
       return (
         array.length ===
           this.clientPageLimitComputed
@@ -413,21 +440,46 @@ export default {
     reset () {
       Object.assign(
         this.$data,
-        this.$options.data.apply(this)
+        this.$options.data.apply(
+          this
+        )
       )
     },
-    findPaginationItem ({ uuid }) {
-      return this.clientPageCollection.find(itemData => {
+    findPaginationItem (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedItem (
+        itemData
+      ) {
         return itemData.uuid === uuid
-      })
-    },
-    updatePaginationItem ({ uuid, value }) {
-      const index =
-        this.clientPageCollection.findIndex(itemData => {
-          return itemData.uuid === uuid
-        })
+      }
 
-      this.clientPageCollection[index] = value
+      return this.clientPageCollection.find(
+        isMatchedItem
+      )
+    },
+    updatePaginationItem (
+      {
+        uuid,
+        value
+      }
+    ) {
+      function isMatchedItem (
+        itemData
+      ) {
+        return itemData.uuid === uuid
+      }
+
+      const index =
+        this.clientPageCollection.findIndex(
+          isMatchedItem
+        )
+
+      this.clientPageCollection[
+        index
+      ] = value
     },
     formatCollections () {
       if (this.isReset) {
@@ -436,7 +488,9 @@ export default {
         ]
       } else {
         return [
-          { ...this.clientCollectionPaginated },
+          {
+            ...this.clientCollectionPaginated
+          },
           this.responsePageCollectionPaginated
         ]
       }

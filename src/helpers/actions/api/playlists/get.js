@@ -1,22 +1,35 @@
 import axios from 'axios'
 
-export default function ({ page, limit }) {
+export default function (
+  {
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const url = '/playlists'
 
   const params = {
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.playlistsData =
       response.data.playlists
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -25,7 +38,10 @@ export default function ({ page, limit }) {
   }
 
   axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

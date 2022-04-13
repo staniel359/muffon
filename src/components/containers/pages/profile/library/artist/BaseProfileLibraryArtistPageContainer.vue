@@ -1,17 +1,17 @@
 <template>
   <BasePageContainer
-    :responseData="libraryArtistData"
-    :isLoading="isLoading"
+    :response-data="libraryArtistData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :libraryArtistData="libraryArtistData"
-      :artistName="artistNameFetched"
-      :isLoading="isLoading"
+      :library-artist-data="libraryArtistData"
+      :artist-name="artistNameFetched"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -102,14 +102,22 @@ export default {
   },
   methods: {
     getProfileLibraryArtist,
-    fetchData (page) {
-      this.getProfileLibraryArtist({
-        ...this.libraryArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibraryArtist(
+        {
+          ...this.libraryArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

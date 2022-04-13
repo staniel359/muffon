@@ -3,7 +3,8 @@
     class="item"
     @click="handleClick"
   >
-    <i class="file audio icon"></i>
+    <i class="file audio icon" />
+
     {{ addText }}
   </div>
 </template>
@@ -23,7 +24,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

@@ -4,7 +4,7 @@
     :header="headerText"
   >
     <TypesList
-      :albumsData="albumsData"
+      :albums-data="albumsData"
       :types="types"
     />
   </BaseDropdownContainer>

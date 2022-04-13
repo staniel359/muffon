@@ -2,13 +2,13 @@
   <div class="ui four column grid">
     <div
       v-for="videoData in videosCollection"
-      class="column"
       :key="videoData.uuid"
+      class="column"
     >
       <VideoItem
-        :videoData="videoData"
-        :isWithChannelTitle="isWithChannelTitle"
-        @linkClick="handleLinkClick"
+        :video-data="videoData"
+        :is-with-channel-title="isWithChannelTitle"
+        @link-click="handleLinkClick"
       />
     </div>
   </div>
@@ -16,7 +16,9 @@
 
 <script>
 import VideoItem from './BaseVideosTableList/VideoItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseVideosTableList',
@@ -32,6 +34,9 @@ export default {
     },
     isWithChannelTitle: Boolean
   },
+  emits: [
+    'linkClick'
+  ],
   computed: {
     videosCollection () {
       return formatCollection(
@@ -41,7 +46,9 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

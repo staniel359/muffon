@@ -1,16 +1,20 @@
 <template>
   <BaseLinkContainer
     class="ui basic label"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
     :link="link"
     @click="handleClick"
   >
-    <slot></slot>
+    <slot />
   </BaseLinkContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 
@@ -26,13 +30,21 @@ export default {
     'click'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
-    handleClick () {
-      this.$emit('click')
+    handleClick (
+      event
+    ) {
+      this.$emit(
+        'click',
+        event
+      )
     }
   }
 }

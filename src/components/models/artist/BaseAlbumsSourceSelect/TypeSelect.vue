@@ -3,7 +3,9 @@
     ref="dropdown"
     class="main-source-select-type-select"
   >
-    <TypesList :types="types" />
+    <TypesList
+      :types="types"
+    />
   </BaseDropdownContainer>
 </template>
 
@@ -25,9 +27,15 @@ export default {
     types: Array
   },
   mounted () {
-    this.setSelectedTypeId('album')
+    this.setSelectedTypeId(
+      'album'
+    )
 
-    this.$refs.dropdown.setValue(0)
+    this.$refs
+      .dropdown
+      .setValue(
+        0
+      )
   }
 }
 </script>

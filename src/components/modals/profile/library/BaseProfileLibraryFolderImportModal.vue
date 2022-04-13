@@ -64,17 +64,25 @@ export default {
     }
   },
   methods: {
-    setStatus (value) {
+    setStatus (
+      value
+    ) {
       this.status = value
     },
-    setFiles (value) {
+    setFiles (
+      value
+    ) {
       this.files = value
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

@@ -5,7 +5,7 @@
   >
     <BaseAlbumSourceSelect
       v-if="isOpen"
-      :albumData="albumData"
+      :album-data="albumData"
     />
   </BaseAccordionContainer>
 </template>

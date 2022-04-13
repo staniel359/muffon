@@ -1,15 +1,15 @@
 <template>
   <div class="album-page-right-column">
     <InfoSection
-      :albumData="albumData"
-      :requestAlbumData="requestAlbumData"
+      :album-data="albumData"
+      :request-album-data="requestAlbumData"
     />
 
     <BaseDivider />
 
     <TracksList
-      :albumData="albumData"
-      :profileId="profileId"
+      :album-data="albumData"
+      :profile-id="profileId"
     />
   </div>
 </template>

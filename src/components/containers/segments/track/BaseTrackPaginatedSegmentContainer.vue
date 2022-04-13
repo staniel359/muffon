@@ -1,16 +1,16 @@
 <template>
   <BaseTrackSegmentContainer
     ref="segment"
-    :artistName="artistName"
-    :trackTitle="trackTitle"
+    :artist-name="artistName"
+    :track-title="trackTitle"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        responseDataName="trackData"
-        :slotPropsData="segmentSlotProps"
+        response-data-name="trackData"
+        :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"
@@ -18,7 +18,7 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :profileId="segmentSlotProps.profileId"
+            :profile-id="segmentSlotProps.profileId"
           />
         </template>
       </BasePaginatedSegmentContainer>
@@ -46,7 +46,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

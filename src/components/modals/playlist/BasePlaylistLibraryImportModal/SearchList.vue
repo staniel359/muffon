@@ -1,24 +1,24 @@
 <template>
   <BasePaginatedListContainer
     v-if="tracks.length"
-    :responseData="tracksData"
+    :response-data="tracksData"
     :scope="scope"
     :limit="limit"
-    :responsePageLimit="totalCount"
-    isReset
-    isWithPagination
+    :response-page-limit="totalCount"
+    is-reset
+    is-with-pagination
     @focus="handleFocus"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        isWithArtistName
-        isWithAlbumTitle
-        isWithImage
-        isWithDeleteOption
-        isClearable
-        @linkClick="handleLinkClick"
-        @deleteButtonClick="handleDeleteButtonClick"
+        is-with-artist-name
+        is-with-album-title
+        is-with-image
+        is-with-delete-option
+        is-clearable
+        @link-click="handleLinkClick"
+        @delete-button-click="handleDeleteButtonClick"
       />
     </template>
   </BasePaginatedListContainer>
@@ -62,7 +62,9 @@ export default {
       return {
         page: 1,
         total_pages: 1,
-        tracks: [...this.tracks]
+        tracks: [
+          ...this.tracks
+        ]
       }
     },
     totalCount () {
@@ -73,14 +75,21 @@ export default {
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteButtonClick ({ uuid }) {
-      const isMatchedTrack = trackData => {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedTrack (
+        trackData
+      ) {
         return trackData.uuid !== uuid
       }
 
-      const tracks = this.tracks.filter(
-        isMatchedTrack
-      )
+      const tracks =
+        this.tracks.filter(
+          isMatchedTrack
+        )
 
       this.$emit(
         'change',
@@ -88,7 +97,9 @@ export default {
       )
     },
     handleFocus () {
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     }
   }
 }

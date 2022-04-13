@@ -1,12 +1,12 @@
 <template>
   <BasePageContainer
-    :responseData="libraryTrackData"
-    :isLoading="isLoading"
+    :response-data="libraryTrackData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :libraryTrackData="libraryTrackData"
-    ></slot>
+      :library-track-data="libraryTrackData"
+    />
   </BasePageContainer>
 </template>
 
@@ -108,11 +108,15 @@ export default {
   },
   methods: {
     getProfileLibraryTrack,
-    fetchData (page) {
-      this.getProfileLibraryTrack({
-        ...this.libraryArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibraryTrack(
+        {
+          ...this.libraryArgs,
+          page
+        }
+      )
     }
   }
 }

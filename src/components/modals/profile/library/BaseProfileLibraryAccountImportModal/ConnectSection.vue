@@ -1,8 +1,8 @@
 <template>
   <div>
     <BaseErrorMessage
-      class="connect-error"
       v-if="error"
+      class="connect-error"
       :error="error"
     />
 
@@ -30,7 +30,7 @@
       <BaseDivider />
 
       <UserInfoSection
-        :userData="userData"
+        :user-data="userData"
       />
     </template>
   </div>
@@ -84,13 +84,17 @@ export default {
     handleClick () {
       this.getLastfmUser()
     },
-    handleUserDataChange (value) {
+    handleUserDataChange (
+      value
+    ) {
       this.$emit(
         'userDataChange',
         value
       )
 
-      this.setStatus('import')
+      this.setStatus(
+        'import'
+      )
     },
     handleResetButtonClick () {
       this.error = null

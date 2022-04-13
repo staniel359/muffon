@@ -10,7 +10,7 @@
 
     <div class="content">
       <BaseProfileNickname
-        :profileData="profileData"
+        :profile-data="profileData"
       />
 
       <BaseTimestamp
@@ -22,20 +22,19 @@
         <div
           v-if="content"
           class="text"
-        >
-          {{ content }}
-        </div>
+          v-text="content"
+        />
 
         <div class="content-section">
           <i
             v-if="isWithTracks"
             class="grey music icon"
-          ></i>
+          />
 
           <i
             v-if="isWithImages"
             class="grey image icon"
-          ></i>
+          />
         </div>
       </div>
     </div>

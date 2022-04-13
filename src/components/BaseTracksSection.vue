@@ -3,14 +3,16 @@
     v-if="tracks"
     class="tracks"
     :tracks="tracksCollection"
-    isWithArtistName
+    is-with-artist-name
   />
 </template>
 
 <script>
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTracksSection',

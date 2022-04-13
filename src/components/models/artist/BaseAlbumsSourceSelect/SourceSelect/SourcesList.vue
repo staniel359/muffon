@@ -2,7 +2,7 @@
   <SourceItem
     v-for="sourceData in sourcesWithAlbumsCollection"
     :key="sourceData.uuid"
-    :sourceData="sourceData"
+    :source-data="sourceData"
     :query="query"
   />
 </template>

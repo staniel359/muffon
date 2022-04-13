@@ -2,14 +2,16 @@
   <TrackItem
     v-for="(trackData, index) in tracksCollection"
     :key="trackData.uuid"
-    :trackData="trackData"
+    :track-data="trackData"
     :index="index"
   />
 </template>
 
 <script>
 import TrackItem from './TracksList/TrackItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'TracksList',

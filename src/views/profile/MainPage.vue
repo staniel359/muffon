@@ -1,38 +1,40 @@
 <template>
   <BaseProfilePageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
   >
     <template #default="slotProps">
       <div class="main-profile-page-columns-container">
-        <div :class="[
-          'main-profile-page-left-column',
-          'main-sticky-container'
-        ]">
+        <div
+          :class="[
+            'main-profile-page-left-column',
+            'main-sticky-container'
+          ]"
+        >
           <InfoSegment
-            :profileData="slotProps.profileData"
+            :profile-data="slotProps.profileData"
           />
         </div>
 
         <div class="main-profile-page-right-column">
           <LibrarySegment
-            :profileId="profileId"
-            :profileNickname="slotProps.profileNickname"
+            :profile-id="profileId"
+            :profile-nickname="slotProps.profileNickname"
           />
 
           <PlaylistsSegment
-            :profileId="profileId"
+            :profile-id="profileId"
           />
 
           <FavoritesSegment
-            :profileId="profileId"
+            :profile-id="profileId"
           />
 
           <CommunitiesSegment
-            :profileId="profileId"
+            :profile-id="profileId"
           />
 
           <PostsSegment
-            :profileId="profileId"
+            :profile-id="profileId"
           />
         </div>
       </div>

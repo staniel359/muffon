@@ -1,15 +1,15 @@
 <template>
   <BaseTagsList
     :tags="tags"
-    :isMore="isMore"
-    isWithIcon
-    @moreClick="handleMoreClick"
+    :is-more="isMore"
+    is-with-icon
+    @more-click="handleMoreClick"
   />
 
   <BaseAlbumTagsModal
     v-if="isMore"
     ref="modal"
-    :requestAlbumData="requestAlbumData"
+    :request-album-data="requestAlbumData"
   />
 </template>
 
@@ -31,7 +31,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

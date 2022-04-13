@@ -2,12 +2,12 @@
   <BaseSegmentContainer>
     <BaseCommunityJoinedMessage
       class="joined-message"
-      :communityData="communityData"
+      :community-data="communityData"
     />
 
     <BaseCommunityJoinButton
       class="fluid"
-      :communityData="communityData"
+      :community-data="communityData"
     />
   </BaseSegmentContainer>
 </template>

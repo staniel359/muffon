@@ -1,13 +1,13 @@
 <template>
   <BasePageContainer
-    :responseData="playlistData"
-    :isLoading="isLoading"
+    :response-data="playlistData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :playlistData="playlistData"
-      :playlistTitle="playlistTitleFetched"
-    ></slot>
+      :playlist-data="playlistData"
+      :playlist-title="playlistTitleFetched"
+    />
   </BasePageContainer>
 </template>
 
@@ -99,7 +99,9 @@ export default {
         this.playlistArgs
       )
     },
-    setProfileData (value) {
+    setProfileData (
+      value
+    ) {
       this.profileData = value
     }
   }

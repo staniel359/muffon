@@ -1,11 +1,12 @@
 <template>
   <div class="field">
     <div
-      class="ui calendar"
       ref="calendar"
+      class="ui calendar"
     >
       <div class="ui input left icon">
-        <i class="calendar icon"></i>
+        <i class="calendar icon" />
+
         <input
           type="text"
           name="birthdate"
@@ -21,7 +22,9 @@ import {
   setCalendar,
   setCalendarDate
 } from '*/helpers/actions/plugins/semantic'
-import { birthdateCalendarOptions } from '*/helpers/data/plugins/semantic'
+import {
+  birthdateCalendarOptions
+} from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseProfileBirthdateField',
@@ -35,18 +38,18 @@ export default {
       )
     }
   },
-  mounted () {
+  async mounted () {
     setCalendarDate(
       this.$refs.calendar,
       this.value
     )
 
-    this.$nextTick(() => {
-      setCalendar(
-        this.$refs.calendar,
-        birthdateCalendarOptions()
-      )
-    })
+    await this.$nextTick()
+
+    setCalendar(
+      this.$refs.calendar,
+      birthdateCalendarOptions()
+    )
   }
 }
 </script>

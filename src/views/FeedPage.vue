@@ -22,7 +22,9 @@ import navigationMixin from '*/mixins/navigationMixin'
 import {
   feed as formatFeedPageNavigation
 } from '*/helpers/formatters/navigation'
-import { feed as formatFeedPageTab } from '*/helpers/formatters/tabs'
+import {
+  feed as formatFeedPageTab
+} from '*/helpers/formatters/tabs'
 
 export default {
   name: 'FeedPage',

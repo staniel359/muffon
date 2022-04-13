@@ -1,7 +1,7 @@
 <template>
   <div
-    class="main-modal-import-section"
     ref="scrollable"
+    class="main-modal-import-section"
   >
     <div class="main-library-modal-message-container">
       <BaseMessage
@@ -26,7 +26,9 @@
 import BaseMessage from '*/components/messages/BaseMessage.vue'
 import AlbumsList from '../../../lists/AlbumsList.vue'
 import BaseRetryButton from '*/components/buttons/BaseRetryButton.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'RetrySection',
@@ -51,7 +53,9 @@ export default {
     errorText () {
       return this.$t(
         'save.error.albums',
-        { count: this.totalCountFormatted }
+        {
+          count: this.totalCountFormatted
+        }
       )
     },
     totalCountFormatted () {
@@ -59,27 +63,31 @@ export default {
         this.totalCount
       )
     },
-    errorAlbumsData () {
-      return {
-        page: 1,
-        total_pages: 1,
-        albums: this.errorAlbums
-      }
-    },
     totalCount () {
       return this.errorAlbums.length
     }
   },
   methods: {
     handleRetryButtonClick () {
-      this.$emit('retry')
+      this.$emit(
+        'retry'
+      )
     },
     handleFocus () {
-      this.$refs.scrollable.scrollTo(0, 0)
+      this.$refs
+        .scrollable
+        .scrollTo(
+          0,
+          0
+        )
     },
-    handleAlbumsChange (value) {
+    handleAlbumsChange (
+      value
+    ) {
       this.setErrorAlbums(
-        [...value]
+        [
+          ...value
+        ]
       )
     }
   }

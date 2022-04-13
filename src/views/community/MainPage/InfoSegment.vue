@@ -1,9 +1,17 @@
 <template>
   <BaseSegmentContainer
-    class="raised community-info-segment main-segment-container"
+    :class="[
+      'raised community-info-segment',
+      'main-segment-container'
+    ]"
   >
     <div class="ui list">
-      <div class="item main-simple-list-item main-community-info-item">
+      <div
+        :class="[
+          'item main-simple-list-item',
+          'main-community-info-item'
+        ]"
+      >
         <BaseImage
           class="community-image rounded bordered"
           model="community"
@@ -18,10 +26,12 @@
 
           <div
             v-if="description"
-            class="community-description description main-text-container"
-          >
-            {{ description }}
-          </div>
+            :class="[
+              'community-description description',
+              'main-text-container'
+            ]"
+            v-text="description"
+          />
 
           <div
             class="description"
@@ -30,20 +40,20 @@
             <span
               class="main-link"
               v-html="membersCountText"
-            ></span>
+            />
           </div>
 
           <BaseCommunityMembersModal
             ref="membersModal"
-            :communityId="communityId"
+            :community-id="communityId"
           />
         </div>
 
         <BaseOptionsDropdown
           v-if="isCommunityCreator"
           class="community-options"
-          :isWithEditOption="isCommunityCreator"
-          :isWithDeleteOption="isCommunityCreator"
+          :is-with-edit-option="isCommunityCreator"
+          :is-with-delete-option="isCommunityCreator"
           @edit="handleEditOptionClick"
           @delete="handleDeleteOptionClick"
         />
@@ -53,13 +63,13 @@
 
   <BaseCommunityUpdateModal
     ref="editModal"
-    :communityData="communityData"
+    :community-data="communityData"
   />
 
   <BaseCommunityDeleteModal
     ref="deleteModal"
-    :communityData="communityData"
-    isDeleteWithRedirect
+    :community-data="communityData"
+    is-delete-with-redirect
   />
 </template>
 
@@ -76,7 +86,9 @@ import BaseCommunityUpdateModal
   from '*/components/modals/community/BaseCommunityUpdateModal.vue'
 import BaseCommunityDeleteModal
   from '*/components/modals/community/BaseCommunityDeleteModal.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'InfoSegment',
@@ -116,7 +128,9 @@ export default {
     membersCountText () {
       return this.$t(
         'counters.members',
-        { count: this.membersCountStrong }
+        {
+          count: this.membersCountStrong
+        }
       )
     },
     membersCountStrong () {
@@ -142,13 +156,19 @@ export default {
   },
   methods: {
     handleMembersCountClick () {
-      this.$refs.membersModal.show()
+      this.$refs
+        .membersModal
+        .show()
     },
     handleEditOptionClick () {
-      this.$refs.editModal.show()
+      this.$refs
+        .editModal
+        .show()
     },
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

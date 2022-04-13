@@ -9,7 +9,7 @@
         :title="extraText"
       >
         <ExtraSection
-          @imageChange="handleImageChange"
+          @image-change="handleImageChange"
         />
       </BaseAccordionContainer>
 
@@ -17,7 +17,7 @@
         <BaseProfileRememberField />
 
         <BaseProfileSubmitButton
-          actionKey="signup"
+          action-key="signup"
         />
       </div>
     </BaseProfileCreateFormContainer>
@@ -62,7 +62,9 @@ export default {
     }
   },
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.image = value
     }
   }

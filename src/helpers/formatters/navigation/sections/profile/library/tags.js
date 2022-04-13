@@ -3,13 +3,19 @@ import {
   tags as formatProfileLibraryTagsLink
 } from '*/helpers/formatters/links/profile/library'
 
-export default function ({ profileId }) {
+export default function (
+  {
+    profileId
+  }
+) {
   return {
     name: i18n.global.t(
       'navigation.tags'
     ),
-    link: formatProfileLibraryTagsLink({
-      profileId
-    })
+    link: formatProfileLibraryTagsLink(
+      {
+        profileId
+      }
+    )
   }
 }

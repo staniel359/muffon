@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="playlistsData"
-    :isLoading="isLoading"
+    :response-data="playlistsData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :playlistsData="playlistsData"
-      :isLoading="isLoading"
+      :playlists-data="playlistsData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -62,14 +62,22 @@ export default {
   },
   methods: {
     getPlaylists,
-    fetchData (page) {
-      this.getPlaylists({
-        ...this.playlistsArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getPlaylists(
+        {
+          ...this.playlistsArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

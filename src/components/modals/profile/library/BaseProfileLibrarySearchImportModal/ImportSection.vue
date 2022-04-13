@@ -33,6 +33,10 @@ export default {
     },
     collection: Array
   },
+  emits: [
+    'change',
+    'save'
+  ],
   data () {
     return {
       components: {
@@ -42,10 +46,6 @@ export default {
       }
     }
   },
-  emits: [
-    'change',
-    'save'
-  ],
   computed: {
     component () {
       return this.components[
@@ -54,14 +54,18 @@ export default {
     }
   },
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'change',
         value
       )
     },
     handleSaveButtonClick () {
-      this.$emit('save')
+      this.$emit(
+        'save'
+      )
     }
   }
 }

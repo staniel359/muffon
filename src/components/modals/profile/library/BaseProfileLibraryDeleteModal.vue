@@ -1,13 +1,13 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="library"
+    model-type="library"
     :model="model"
-    :modelName="modelName"
-    :isLoading="isLoading"
+    :model-name="modelName"
+    :is-loading="isLoading"
     :error="error"
-    :isWithAlsoText="isWithAlsoText"
-    @deleteButtonClick="handleDeleteButtonClick"
+    :is-with-also-text="isWithAlsoText"
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -17,7 +17,9 @@ import deleteLibraryModel from '*/helpers/actions/api/library/model/delete'
 import {
   main as formatProfileLibraryMainLink
 } from '*/helpers/formatters/links/profile/library'
-import { setToast } from '*/helpers/actions/plugins/semantic'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseProfileLibraryDeleteModal',
@@ -56,16 +58,20 @@ export default {
     deletedMessage () {
       return this.$t(
         'notifications.deleted.library',
-        { modelName: this.modelNameStrong }
+        {
+          modelName: this.modelNameStrong
+        }
       )
     },
     modelNameStrong () {
       return `<strong>${this.modelName}</strong>`
     },
     profileLibraryMainLink () {
-      return formatProfileLibraryMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileLibraryMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     },
     isWithAlsoText () {
       return (
@@ -89,13 +95,18 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
       if (this.isDeleteWithRedirect) {
         this.redirect()
+
         this.notify()
       } else {
-        this.$emit('deleted')
+        this.$emit(
+          'deleted'
+        )
       }
     },
     deleteLibraryModel,
@@ -105,13 +116,17 @@ export default {
       )
     },
     notify () {
-      setToast({
-        message: this.deletedMessage,
-        icon: 'green check'
-      })
+      setToast(
+        {
+          message: this.deletedMessage,
+          icon: 'green check'
+        }
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

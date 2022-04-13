@@ -1,13 +1,14 @@
 <template>
   <div
     class="ui basic label main-label"
-    :class="{ inverted: isDarkMode }"
-    @click="handleClick"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div
       v-if="isLoading"
       class="ui mini active inline loader"
-    ></div>
+    />
 
     <template v-else>
       <i
@@ -20,9 +21,8 @@
       <span
         v-if="text"
         class="label-text"
-      >
-        {{ text }}
-      </span>
+        v-text="text"
+      />
 
       <i
         v-if="icon && isReverse"
@@ -35,7 +35,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseLabel',
@@ -46,20 +48,21 @@ export default {
     isLoading: Boolean
   },
   emits: [
-    'click',
     'iconClick'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
-    handleClick () {
-      this.$emit('click')
-    },
     handleIconClick () {
-      this.$emit('iconClick')
+      this.$emit(
+        'iconClick'
+      )
     }
   }
 }

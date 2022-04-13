@@ -3,7 +3,7 @@
     :link="link"
     @click="handleLinkClick"
   >
-    <slot></slot>
+    <slot />
   </BaseLinkContainer>
 </template>
 
@@ -52,30 +52,38 @@ export default {
       }
     },
     profileLibraryArtistTracksLink () {
-      return formatProfileLibraryArtistTracksLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistTracksLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistId () {
       return this.artistData.id.toString()
     },
     profileLibraryArtistAlbumsLink () {
-      return formatProfileLibraryArtistAlbumsLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistAlbumsLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+      return formatArtistMainLink(
+        {
+          artistName: this.artistName
+        }
+      )
     },
     artistName () {
       return this.artistData.name

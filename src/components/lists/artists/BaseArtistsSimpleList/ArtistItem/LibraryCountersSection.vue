@@ -1,18 +1,18 @@
 <template>
   <CounterBar
     scope="tracks"
-    :artistData="artistData"
-    :topCount="topTracksCount"
-    :isActive="isTracksActive"
-    @activeChange="handleTracksActiveChange"
+    :artist-data="artistData"
+    :top-count="topTracksCount"
+    :is-active="isTracksActive"
+    @active-change="handleTracksActiveChange"
   />
 
   <CounterBar
     scope="albums"
-    :artistData="artistData"
-    :topCount="topAlbumsCount"
-    :isActive="isAlbumsActive"
-    @activeChange="handleAlbumsActiveChange"
+    :artist-data="artistData"
+    :top-count="topAlbumsCount"
+    :is-active="isAlbumsActive"
+    @active-change="handleAlbumsActiveChange"
   />
 </template>
 
@@ -36,13 +36,17 @@ export default {
     'albumsActiveChange'
   ],
   methods: {
-    handleTracksActiveChange (value) {
+    handleTracksActiveChange (
+      value
+    ) {
       this.$emit(
         'tracksActiveChange',
         value
       )
     },
-    handleAlbumsActiveChange (value) {
+    handleAlbumsActiveChange (
+      value
+    ) {
       this.$emit(
         'albumsActiveChange',
         value

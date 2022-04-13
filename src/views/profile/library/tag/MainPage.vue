@@ -1,28 +1,30 @@
 <template>
   <BaseProfileLibraryTagPageContainer
-    :profileId="profileId"
-    :tagId="tagId"
+    :profile-id="profileId"
+    :tag-id="tagId"
   >
     <template #default="slotProps">
       <div class="main-profile-page-columns-container">
-        <div :class="[
-          'main-profile-page-left-column',
-          'main-sticky-container'
-        ]">
+        <div
+          :class="[
+            'main-profile-page-left-column',
+            'main-sticky-container'
+          ]"
+        >
           <InfoSegment
-            :tagData="slotProps.libraryTagData"
+            :tag-data="slotProps.libraryTagData"
           />
         </div>
 
         <div class="main-profile-page-right-column">
           <StatisticsSegment
-            :tagData="slotProps.libraryTagData"
+            :tag-data="slotProps.libraryTagData"
           />
 
           <ArtistsSegment
-            :profileId="profileId"
-            :tagId="tagId"
-            :isWithFavoriteOption="isWithFavoriteOption"
+            :profile-id="profileId"
+            :tag-id="tagId"
+            :is-with-favorite-option="isWithFavoriteOption"
           />
         </div>
       </div>
@@ -36,7 +38,9 @@ import BaseProfileLibraryTagPageContainer
 import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',

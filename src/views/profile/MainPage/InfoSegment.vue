@@ -3,20 +3,20 @@
     class="raised main-segment-container"
   >
     <MainInfoSection
-      :profileData="profileData"
+      :profile-data="profileData"
     />
 
     <ExtraInfoSection
-      :profileData="profileData"
+      :profile-data="profileData"
     />
 
     <template v-if="isRenderProfileSection">
       <FollowSection
-        :profileData="profileData"
+        :profile-data="profileData"
       />
 
       <MessageSection
-        :profileData="profileData"
+        :profile-data="profileData"
       />
     </template>
   </BaseSegmentContainer>
@@ -29,7 +29,9 @@ import MainInfoSection from './InfoSegment/MainInfoSection.vue'
 import ExtraInfoSection from './InfoSegment/ExtraInfoSection.vue'
 import FollowSection from './InfoSegment/FollowSection.vue'
 import MessageSection from './InfoSegment/MessageSection.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'InfoSegment',

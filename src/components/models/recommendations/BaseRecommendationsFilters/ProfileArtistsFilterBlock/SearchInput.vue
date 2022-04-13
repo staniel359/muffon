@@ -3,15 +3,19 @@
     ref="input"
     :url="url"
     :fields="fields"
-    :formatResponse="formatResponse"
+    :format-response="formatResponse"
     @select="handleSelect"
   />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'SearchInput',
@@ -30,9 +34,12 @@ export default {
     'addArtist'
   ],
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     url () {
       return (
         `/profiles/${this.profileId}` +
@@ -52,8 +59,12 @@ export default {
     }
   },
   methods: {
-    handleSelect (artist) {
-      const isArtistPresent = artistData => {
+    handleSelect (
+      artist
+    ) {
+      function isArtistPresent (
+        artistData
+      ) {
         return (
           artist.id ===
             artistData.id
@@ -79,17 +90,23 @@ export default {
 
       this.clear()
     },
-    formatResponse (response) {
+    formatResponse (
+      response
+    ) {
       return response
         .profile
         .library
         .artists
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

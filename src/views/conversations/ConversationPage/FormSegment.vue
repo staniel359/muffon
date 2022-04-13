@@ -2,7 +2,7 @@
   <BaseSegmentContainer>
     <BaseMessageCreateFormContainer
       class="main-message-form"
-      :profileId="profileId"
+      :profile-id="profileId"
       :tracks="tracks"
       :images="images"
       @success="handleSuccess"
@@ -16,13 +16,13 @@
         <BaseFormImagesSection
           v-if="images.length"
           :images="images"
-          @imagesChange="handleImagesChange"
+          @images-change="handleImagesChange"
         />
 
         <BaseFormTracksSection
           v-if="tracks.length"
           :tracks="tracks"
-          @tracksChange="handleTracksChange"
+          @tracks-change="handleTracksChange"
         />
       </div>
 
@@ -30,12 +30,12 @@
         <BaseFormAddButtonsSection
           :tracks="tracks"
           :images="images"
-          @tracksChange="handleTracksChange"
-          @imagesChange="handleImagesChange"
+          @tracks-change="handleTracksChange"
+          @images-change="handleImagesChange"
         />
 
         <BaseSubmitButton
-          actionKey="send"
+          action-key="send"
         />
       </div>
     </BaseMessageCreateFormContainer>
@@ -80,11 +80,15 @@ export default {
     }
   },
   mounted () {
-    this.$refs.input.focus()
+    this.$refs
+      .input
+      .focus()
   },
   methods: {
     handleSuccess () {
-      this.$refs.input.reset()
+      this.$refs
+        .input
+        .reset()
 
       this.tracks = []
       this.images = []
@@ -93,10 +97,14 @@ export default {
         'success'
       )
     },
-    handleTracksChange (value) {
+    handleTracksChange (
+      value
+    ) {
       this.tracks = value
     },
-    handleImagesChange (value) {
+    handleImagesChange (
+      value
+    ) {
       this.images = value
     }
   }

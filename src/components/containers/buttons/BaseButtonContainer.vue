@@ -1,26 +1,33 @@
 <template>
   <div
-    class="ui button main-simple-button"
     ref="button"
-    :class="{ inverted: isDarkMode }"
+    class="ui button main-simple-button"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseButtonContainer',
-  computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
-  },
   emits: [
     'init'
   ],
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
+  },
   mounted () {
     this.$emit(
       'init',

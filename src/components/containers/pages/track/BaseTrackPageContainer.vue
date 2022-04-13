@@ -1,19 +1,19 @@
 <template>
   <BasePageContainer
-    :responseData="trackData"
-    :isLoading="isLoading"
+    :response-data="trackData"
+    :is-loading="isLoading"
     :error="error"
   >
     <template #default="slotProps">
       <slot
-        :trackData="trackData"
-        :requestTrackData="requestTrackData"
-        :profileId="slotProps.profileId"
-        :isLoading="isLoading"
+        :track-data="trackData"
+        :request-track-data="requestTrackData"
+        :profile-id="slotProps.profileId"
+        :is-loading="isLoading"
         :error="error"
-        :fetchData="fetchData"
+        :fetch-data="fetchData"
         :refresh="refresh"
-      ></slot>
+      />
     </template>
   </BasePageContainer>
 </template>
@@ -27,7 +27,9 @@ import formatTrackPageTab from '*/helpers/formatters/tabs/track'
 import getTrack from '*/helpers/actions/api/track/get'
 import getBandcampTrackId
   from '*/helpers/actions/api/bandcampId/track/get'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTrackPageContainer',
@@ -119,14 +121,22 @@ export default {
         this.sourceParams
       )
     },
-    setRequestTrackData (value) {
-      if (this.isGetBandcampTrackId(value)) {
-        this.getBandcampTrackId(value)
+    setRequestTrackData (
+      value
+    ) {
+      if (this.isGetBandcampTrackId(
+        value
+      )) {
+        this.getBandcampTrackId(
+          value
+        )
       } else {
         this.requestTrackData = value
       }
     },
-    isGetBandcampTrackId (value) {
+    isGetBandcampTrackId (
+      value
+    ) {
       return (
         value.sourceId === 'bandcamp' &&
           !(
@@ -135,14 +145,22 @@ export default {
           )
       )
     },
-    fetchData (page) {
-      this.getTrack({
-        ...this.trackArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getTrack(
+        {
+          ...this.trackArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

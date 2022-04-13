@@ -5,7 +5,9 @@
 </template>
 
 <script>
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'TheView',

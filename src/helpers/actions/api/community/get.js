@@ -1,7 +1,14 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ communityId, scope = '', page, limit }) {
+export default function (
+  {
+    communityId,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -13,16 +20,24 @@ export default function ({ communityId, scope = '', page, limit }) {
 
   const params = {
     profile_id: profileId,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.communityData =
       response.data.community
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -31,7 +46,10 @@ export default function ({ communityId, scope = '', page, limit }) {
   }
 
   axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

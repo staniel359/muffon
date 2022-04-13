@@ -1,5 +1,11 @@
-export default function ({ sourceId, artistData, albumType = '' }) {
-  const formatArtistData = () => {
+export default function (
+  {
+    sourceId,
+    artistData,
+    albumType = ''
+  }
+) {
+  function formatArtistData () {
     switch (sourceId) {
       case 'lastfm':
         return {

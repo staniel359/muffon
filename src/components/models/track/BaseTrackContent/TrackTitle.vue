@@ -8,11 +8,12 @@
 
     <span
       v-if="trackExtraTitle"
-      class="sub header description main-extra-title"
-    >
-      {{ &nbsp; }}
-      {{ trackExtraTitle }}
-    </span>
+      :class="[
+        'sub header description',
+        'main-extra-title'
+      ]"
+      v-text="trackExtraTitle"
+    />
   </BaseHeaderContainer>
 </template>
 
@@ -20,7 +21,9 @@
 import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
+import {
+  main as formatTrackMainLink
+} from '*/helpers/formatters/links/track'
 import {
   main as formatProfileLibraryTrackMainLink
 } from '*/helpers/formatters/links/profile/library/track'
@@ -60,28 +63,36 @@ export default {
       }
     },
     profileLibraryTrackMainLink () {
-      return formatProfileLibraryTrackMainLink({
-        profileId: this.profileId,
-        trackId: this.trackId
-      })
+      return formatProfileLibraryTrackMainLink(
+        {
+          profileId: this.profileId,
+          trackId: this.trackId
+        }
+      )
     },
     trackMainLink () {
-      return formatTrackMainLink({
-        trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        sourceParams: this.sourceParams
-      })
+      return formatTrackMainLink(
+        {
+          trackTitle: this.trackTitle,
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     sourceParams () {
-      return formatTrackRequestData({
-        sourceId: this.trackData.source_id,
-        trackData: this.trackData
-      })
+      return formatTrackRequestData(
+        {
+          sourceId: this.trackData.source_id,
+          trackData: this.trackData
+        }
+      )
     }
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

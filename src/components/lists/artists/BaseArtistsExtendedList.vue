@@ -3,23 +3,25 @@
     <ArtistItem
       v-for="artistData in artistsCollection"
       :key="artistData.uuid"
-      :artistData="artistData"
-      :isWithLibrary="isWithLibrary"
-      :isLinkToLibrary="isLinkToLibrary"
-      :profileId="profileId"
-      :isWithLibraryOption="isWithLibraryOption"
-      :isWithFavoriteOption="isWithFavoriteOption"
-      :isWithBookmarkOption="isWithBookmarkOption"
-      :isWithListenedOption="isWithListenedOption"
-      :isWithDeleteOption="isWithDeleteOption"
-      :isRecommendation="isRecommendation"
+      :artist-data="artistData"
+      :is-with-library="isWithLibrary"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
+      :is-with-library-option="isWithLibraryOption"
+      :is-with-favorite-option="isWithFavoriteOption"
+      :is-with-bookmark-option="isWithBookmarkOption"
+      :is-with-listened-option="isWithListenedOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-recommendation="isRecommendation"
     />
   </div>
 </template>
 
 <script>
 import ArtistItem from './BaseArtistsExtendedList/ArtistItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistsExtendedList',

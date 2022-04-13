@@ -11,7 +11,9 @@
           tag="h2"
           icon="tag"
         >
-          {{ tagName }}
+          <template #default>
+            {{ tagName }}
+          </template>
         </BaseHeaderContainer>
       </BaseLinkContainer>
     </BaseSegmentContainer>
@@ -25,7 +27,9 @@ import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
-import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
+import {
+  main as formatTagMainLink
+} from '*/helpers/formatters/links/tag'
 
 export default {
   name: 'InfoSegment',
@@ -42,9 +46,11 @@ export default {
   },
   computed: {
     tagMainLink () {
-      return formatTagMainLink({
-        tagName: this.tagName
-      })
+      return formatTagMainLink(
+        {
+          tagName: this.tagName
+        }
+      )
     },
     tagName () {
       return this.tagData.name

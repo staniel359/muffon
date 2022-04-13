@@ -46,18 +46,22 @@ export default {
       }
     },
     profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistId () {
       return this.artistData.id
     },
     artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+      return formatArtistMainLink(
+        {
+          artistName: this.artistName
+        }
+      )
     },
     artistName () {
       return this.artistData.name
@@ -65,7 +69,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

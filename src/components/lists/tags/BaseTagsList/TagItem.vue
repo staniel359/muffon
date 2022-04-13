@@ -2,15 +2,17 @@
   <BaseLabelLinkContainer
     :link="link"
   >
-    <span class="link">
-      {{ tagName }}
-    </span>
+    <span
+      class="link"
+      v-text="tagName"
+    />
 
     <div
       v-if="tagCount"
       class="detail"
     >
-      <i class="microphone icon"></i>
+      <i class="microphone icon" />
+
       {{ tagCount }}
     </div>
   </BaseLabelLinkContainer>
@@ -19,7 +21,9 @@
 <script>
 import BaseLabelLinkContainer
   from '*/components/containers/links/BaseLabelLinkContainer.vue'
-import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
+import {
+  main as formatTagMainLink
+} from '*/helpers/formatters/links/tag'
 import {
   main as formatProfileLibraryTagMainLink
 } from '*/helpers/formatters/links/profile/library/tag'
@@ -40,14 +44,18 @@ export default {
   computed: {
     link () {
       if (this.isLinkToLibrary) {
-        return formatProfileLibraryTagMainLink({
-          profileId: this.profileId,
-          tagId: this.tagId
-        })
+        return formatProfileLibraryTagMainLink(
+          {
+            profileId: this.profileId,
+            tagId: this.tagId
+          }
+        )
       } else {
-        return formatTagMainLink({
-          tagName: this.tagName
-        })
+        return formatTagMainLink(
+          {
+            tagName: this.tagName
+          }
+        )
       }
     },
     tagId () {

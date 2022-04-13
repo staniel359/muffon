@@ -2,19 +2,19 @@
   <BaseTracksSimpleList
     v-if="tracks?.length"
     :tracks="tracks"
-    :albumArtistName="artistName"
-    :albumTitle="albumTitle"
-    :imageData="imageData"
-    :isWithSource="isWithSource"
-    :profileId="profileId"
-    isWithIndex
-    isWithArtistName
-    isWithDuration
-    isWithLibraryOption
-    isWithFavoriteOption
-    isWithBookmarkOption
-    isWithListenedOption
-    isWithPlaylistOption
+    :album-artist-name="artistName"
+    :album-title="albumTitle"
+    :image-data="imageData"
+    :is-with-source="isWithSource"
+    :profile-id="profileId"
+    is-with-index
+    is-with-artist-name
+    is-with-duration
+    is-with-library-option
+    is-with-favorite-option
+    is-with-bookmark-option
+    is-with-listened-option
+    is-with-playlist-option
   />
   <BaseNoCollectionMessage
     v-else
@@ -28,7 +28,9 @@ import BaseTracksSimpleList
 import BaseNoCollectionMessage
   from '*/components/messages/BaseNoCollectionMessage.vue'
 import audioSources from '*/helpers/data/audio/sources'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'TracksList',
@@ -65,15 +67,22 @@ export default {
       return !!this.sourceData?.isStreamable
     },
     sourceData () {
-      return audioSources.find(sourceData => {
-        return (
-          sourceData.id ===
-            this.sourceId
-        )
-      })
+      return audioSources.find(
+        this.isMatchedSource
+      )
     },
     sourceId () {
       return this.albumData.source_id
+    }
+  },
+  methods: {
+    isMatchedSource (
+      sourceData
+    ) {
+      return (
+        sourceData.id ===
+        this.sourceId
+      )
     }
   }
 }

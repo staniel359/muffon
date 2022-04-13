@@ -33,9 +33,11 @@ export default {
   },
   computed: {
     profileMainLink () {
-      return formatProfileMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     },
     profileId () {
       return this.profileData.id

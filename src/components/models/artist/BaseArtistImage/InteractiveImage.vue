@@ -1,7 +1,7 @@
 <template>
   <div class="image-container">
     <MoreLinkButton
-      :artistName="artistName"
+      :artist-name="artistName"
     />
 
     <BaseImage
@@ -12,9 +12,9 @@
 
     <BaseArtistImageModal
       :images="images"
-      isReset
+      is-reset
       @init="handleModalInit"
-      @mainSliderInit="handleMainSliderInit"
+      @main-slider-init="handleMainSliderInit"
     />
   </div>
 </template>
@@ -24,7 +24,9 @@ import MoreLinkButton from './InteractiveImage/MoreLinkButton.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseArtistImageModal
   from '*/components/modals/artist/BaseArtistImageModal.vue'
-import { showModal } from '*/helpers/actions/plugins/semantic'
+import {
+  showModal
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'InteractiveImage',
@@ -48,14 +50,20 @@ export default {
     }
   },
   methods: {
-    handleModalInit (el) {
-      this.modal = el
+    handleModalInit (
+      element
+    ) {
+      this.modal = element
     },
-    handleMainSliderInit (el) {
-      this.mainSlider = el
+    handleMainSliderInit (
+      element
+    ) {
+      this.mainSlider = element
     },
     handleClick () {
-      showModal(this.modal)
+      showModal(
+        this.modal
+      )
     }
   }
 }

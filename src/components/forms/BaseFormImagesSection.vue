@@ -3,8 +3,8 @@
     <ImageItem
       v-for="imageData in images"
       :key="imageData.uuid"
-      :imageData="imageData"
-      @deleteButtonClick="handleDeleteButtonClick"
+      :image-data="imageData"
+      @delete-button-click="handleDeleteButtonClick"
     />
   </div>
 </template>
@@ -27,14 +27,21 @@ export default {
     'imagesChange'
   ],
   methods: {
-    handleDeleteButtonClick ({ uuid }) {
-      const isMatchedImage = imageData => {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedImage (
+        imageData
+      ) {
         return imageData.uuid !== uuid
       }
 
-      const images = this.images.filter(
-        isMatchedImage
-      )
+      const images =
+        this.images.filter(
+          isMatchedImage
+        )
 
       this.$emit(
         'imagesChange',

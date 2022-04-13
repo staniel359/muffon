@@ -5,7 +5,7 @@
         <SearchInput
           ref="input"
           :tracks="tracks"
-          :playlistId="playlistId"
+          :playlist-id="playlistId"
           @select="handleSelect"
         />
 
@@ -25,8 +25,8 @@
         @save="handleSave"
       />
       <SaveSection
-        v-else-if="isSave && tracks.length"
-        :playlistId="playlistId"
+        v-else-if="isSave"
+        :playlist-id="playlistId"
         :tracks="tracks"
       />
     </div>
@@ -34,7 +34,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BasePlaylistLibraryImportModal/SearchInput.vue'
@@ -42,7 +44,9 @@ import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import ImportSection from './BasePlaylistLibraryImportModal/ImportSection.vue'
 import SaveSection from './BasePlaylistLibraryImportModal/SaveSection.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BasePlaylistLibraryImportModal',
@@ -72,9 +76,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    ),
     isImport () {
       return (
         this.status === 'import' &&
@@ -82,33 +89,49 @@ export default {
       )
     },
     isSave () {
-      return this.status === 'save'
+      return (
+        this.status === 'save' &&
+          this.tracks.length
+      )
     }
   },
   watch: {
     profileLanguage: 'handleProfileLanguageChange'
   },
   methods: {
-    handleSelect (value) {
+    handleSelect (
+      value
+    ) {
       if (this.status === 'save') {
         this.reset()
       }
 
-      this.tracks.push({
-        uuid: generateKey(),
-        ...value
-      })
+      this.tracks.push(
+        {
+          uuid: generateKey(),
+          ...value
+        }
+      )
 
       this.isReset = false
     },
-    handleChange (value) {
-      this.tracks = [...value]
+    handleChange (
+      value
+    ) {
+      this.tracks = [
+        ...value
+      ]
     },
     handleResetButtonClick () {
       this.reset()
 
-      this.$refs.input.clear()
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .clear()
+
+      this.$refs
+        .input
+        .focus()
 
       this.isReset = true
     },
@@ -124,13 +147,22 @@ export default {
       this.tracks = []
     },
     show () {
-      this.$refs.modal.show()
-      this.$refs.input.focus()
+      this.$refs
+        .modal
+        .show()
+
+      this.$refs
+        .input
+        .focus()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
-    setTracks (value) {
+    setTracks (
+      value
+    ) {
       this.tracks = value
     }
   }

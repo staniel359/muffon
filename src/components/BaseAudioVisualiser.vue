@@ -1,9 +1,12 @@
 <template>
-  <canvas ref="canvas"></canvas>
+  <canvas ref="canvas" />
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import {
+  mapState,
+  mapActions
+} from 'vuex'
 
 export default {
   name: 'BaseAudioVisualiser',
@@ -17,12 +20,15 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', {
-      audioElement: 'element',
-      audioContext: 'context',
-      audioSource: 'source',
-      audioStatus: 'status'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioElement: 'element',
+        audioContext: 'context',
+        audioSource: 'source',
+        audioStatus: 'status'
+      }
+    ),
     canvasWidth () {
       return this.barsCount * (
         this.barWidth + this.barGapWidth
@@ -32,13 +38,19 @@ export default {
       return this.fftSize / 2
     },
     canvasContext () {
-      return this.$refs.canvas.getContext('2d')
+      return this.$refs
+        .canvas
+        .getContext(
+          '2d'
+        )
     },
     analyser () {
       return this.audioContext.createAnalyser()
     },
     barsArray () {
-      return new Uint8Array(this.barsCount)
+      return new Uint8Array(
+        this.barsCount
+      )
     }
   },
   watch: {
@@ -59,31 +71,56 @@ export default {
     this.stopAnimation()
   },
   methods: {
-    ...mapActions('audio', {
-      setAudioContext: 'setContext',
-      setAudioSource: 'setSource'
-    }),
-    handleAudioStatusChange (value) {
+    ...mapActions(
+      'audio',
+      {
+        setAudioContext: 'setContext',
+        setAudioSource: 'setSource'
+      }
+    ),
+    handleAudioStatusChange (
+      value
+    ) {
       if (value === 'play') {
         this.setAnimation()
       } else {
         this.stopAnimation()
       }
     },
+    handleRequestAnimationFrame () {
+      this.setFrame()
+      this.setAnimation()
+    },
     setCanvasData () {
-      this.$refs.canvas.width = this.canvasWidth
-      this.$refs.canvas.height = this.canvasHeight
+      this.$refs
+        .canvas
+        .width = this.canvasWidth
+
+      this.$refs
+        .canvas
+        .height = this.canvasHeight
     },
     setCanvasContextData () {
-      const gradient = this.canvasContext.createLinearGradient(
-        0, 0, 0, this.canvasHeight
-      )
+      const gradient =
+        this.canvasContext.createLinearGradient(
+          0,
+          0,
+          0,
+          this.canvasHeight
+        )
 
       const colorPale = '#b589d6'
       const colorBase = '#804fb3'
 
-      gradient.addColorStop(0, colorPale)
-      gradient.addColorStop(1, colorBase)
+      gradient.addColorStop(
+        0,
+        colorPale
+      )
+
+      gradient.addColorStop(
+        1,
+        colorBase
+      )
 
       this.canvasContext.fillStyle = gradient
     },
@@ -91,20 +128,28 @@ export default {
       if (!this.audioContext) {
         const context = new AudioContext()
 
-        this.setAudioContext(context)
+        this.setAudioContext(
+          context
+        )
       }
     },
     setAudioSourceData () {
       if (!this.audioSource) {
-        const source = this.audioContext.createMediaElementSource(
-          this.audioElement
-        )
+        const source =
+          this.audioContext.createMediaElementSource(
+            this.audioElement
+          )
 
-        this.setAudioSource(source)
+        this.setAudioSource(
+          source
+        )
       }
     },
     setAudioSourceConnections () {
-      this.audioSource.connect(this.analyser)
+      this.audioSource.connect(
+        this.analyser
+      )
+
       this.audioSource.connect(
         this.audioContext.destination
       )
@@ -113,10 +158,10 @@ export default {
       this.analyser.fftSize = this.fftSize
     },
     setAnimation () {
-      this.animationFrame = requestAnimationFrame(() => {
-        this.setFrame()
-        this.setAnimation()
-      })
+      this.animationFrame =
+        requestAnimationFrame(
+          this.handleRequestAnimationFrame
+        )
     },
     setFrame () {
       this.clearCanvas()
@@ -125,31 +170,54 @@ export default {
     },
     clearCanvas () {
       this.canvasContext.clearRect(
-        0, 0, this.canvasWidth, this.canvasHeight
+        0,
+        0,
+        this.canvasWidth,
+        this.canvasHeight
       )
     },
     setFrequencyData () {
-      this.analyser.getByteFrequencyData(this.barsArray)
+      this.analyser.getByteFrequencyData(
+        this.barsArray
+      )
     },
     setBars () {
-      this.barsArray.forEach(this.setBar)
+      this.barsArray.forEach(
+        this.setBar
+      )
     },
-    setBar (value, index) {
+    setBar (
+      value,
+      index
+    ) {
       return this.canvasContext.fillRect(
-        this.getBarStartX(index),
-        this.getBarStartY(value),
+        this.getBarStartX(
+          index
+        ),
+        this.getBarStartY(
+          value
+        ),
         this.barWidth,
         value
       )
     },
-    getBarStartX (index) {
-      return index * (this.barWidth + this.barGapWidth)
+    getBarStartX (
+      index
+    ) {
+      return index * (
+        this.barWidth +
+          this.barGapWidth
+      )
     },
-    getBarStartY (value) {
+    getBarStartY (
+      value
+    ) {
       return this.canvasHeight - value
     },
     stopAnimation () {
-      cancelAnimationFrame(this.animationFrame)
+      cancelAnimationFrame(
+        this.animationFrame
+      )
     }
   }
 }

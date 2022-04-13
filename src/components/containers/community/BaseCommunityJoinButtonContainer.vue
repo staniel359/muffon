@@ -3,10 +3,10 @@
     v-bind="$attrs"
     :icon="icon"
     :text="membershipText"
-    :isLoading="isLoading"
-    :isMember="isMember"
-    :onClick="onClick"
-  ></slot>
+    :is-loading="isLoading"
+    :is-member="isMember"
+    :on-click="onClick"
+  />
 </template>
 
 <script>
@@ -70,18 +70,28 @@ export default {
         .member_of_community
   },
   methods: {
-    handleJoinSuccess (response) {
+    handleJoinSuccess (
+      response
+    ) {
       this.isMember = true
 
-      this.setIsMember(true)
+      this.setIsMember(
+        true
+      )
+
       this.setMembersCount(
         response.data.community_members_count
       )
     },
-    handleLeaveSuccess (response) {
+    handleLeaveSuccess (
+      response
+    ) {
       this.isMember = false
 
-      this.setIsMember(false)
+      this.setIsMember(
+        false
+      )
+
       this.setMembersCount(
         response.data.community_members_count
       )
@@ -95,7 +105,9 @@ export default {
         this.join()
       }
 
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     },
     join () {
       this.createMember(

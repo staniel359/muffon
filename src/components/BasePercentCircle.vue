@@ -5,7 +5,9 @@
   >
     <path
       class="background"
-      :class="{ inverted: isDarkMode }"
+      :class="{
+        inverted: isDarkMode
+      }"
       :d="pathData"
       :stroke-width="width"
     />
@@ -20,15 +22,18 @@
     <text
       x="20"
       y="25"
-      :class="{ inverted: isDarkMode }"
-    >
-      {{ percent }}
-    </text>
+      :class="{
+        inverted: isDarkMode
+      }"
+      v-text="percent"
+    />
   </svg>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BasePercentCircle',
@@ -47,18 +52,25 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     viewBox () {
       return `0 0 ${this.side} ${this.side}`
     },
     pathData () {
       return [
         `M ${this.side / 2} ${this.width}`,
-        `a ${this.radius} ${this.radius} 0 0 1 0 ${this.radius * 2}`,
-        `a ${this.radius} ${this.radius} 0 0 1 0 ${this.radius * -2}`
-      ].join(' ')
+        `a ${this.radius} ${this.radius}`,
+        `0 0 1 0 ${this.radius * 2}`,
+        `a ${this.radius} ${this.radius}`,
+        `0 0 1 0 ${this.radius * -2}`
+      ].join(
+        ' '
+      )
     },
     radius () {
       return (

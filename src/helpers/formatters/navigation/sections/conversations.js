@@ -3,8 +3,12 @@ import {
   main as formatConversationsLink
 } from '*/helpers/formatters/links/conversations'
 
-export default function ({ isActive } = {}) {
-  const formatLink = () => {
+export default function (
+  {
+    isActive
+  } = {}
+) {
+  function formatLink () {
     if (!isActive) {
       return formatConversationsLink()
     }

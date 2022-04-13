@@ -9,28 +9,40 @@ import formatVideoSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({
-  videoId,
-  videoTitle,
-  channelId,
-  channelTitle,
-  scope
-}) {
+export default function (
+  {
+    videoId,
+    videoTitle,
+    channelId,
+    channelTitle,
+    scope
+  }
+) {
   return [
     formatVideoChannelsSection(),
-    formatVideoChannelSection({
-      channelTitle
-    }),
-    formatVideosSection({
-      channelId
-    }),
-    formatVideoSection({
-      videoId,
-      videoTitle,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatVideoChannelSection(
+      {
+        channelTitle
+      }
+    ),
+    formatVideosSection(
+      {
+        channelId
+      }
+    ),
+    formatVideoSection(
+      {
+        videoId,
+        videoTitle,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

@@ -1,15 +1,31 @@
-export const main = ({ profileId, albumId }) => {
+export function main (
+  {
+    profileId,
+    albumId
+  }
+) {
   return {
     name: 'ProfileLibraryAlbumMainPage',
-    params: { profileId, albumId },
+    params: {
+      profileId,
+      albumId
+    },
     path: `profiles/${profileId}/library/albums/${albumId}`
   }
 }
 
-export const tracks = ({ profileId, albumId }) => {
+export function tracks (
+  {
+    profileId,
+    albumId
+  }
+) {
   return {
     name: 'ProfileLibraryAlbumTracksPage',
-    params: { profileId, albumId },
+    params: {
+      profileId,
+      albumId
+    },
     path: `profiles/${profileId}/library/albums/${albumId}/tracks`
   }
 }

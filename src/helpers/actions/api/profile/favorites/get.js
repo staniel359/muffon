@@ -1,6 +1,13 @@
 import axios from 'axios'
 
-export default function ({ profileId, scope = '', page, limit }) {
+export default function (
+  {
+    profileId,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -8,15 +15,23 @@ export default function ({ profileId, scope = '', page, limit }) {
     `/profiles/${profileId}/favorites/${scope}`
 
   const params = {
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.profileData = response.data.profile
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -25,7 +40,10 @@ export default function ({ profileId, scope = '', page, limit }) {
   }
 
   axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

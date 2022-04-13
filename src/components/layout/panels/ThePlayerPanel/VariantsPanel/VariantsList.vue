@@ -6,21 +6,21 @@
     <BaseListContainer class="selection">
       <BaseTrackVariantContainer
         v-for="variantData in variantsCollection"
-        class="item main-simple-list-item"
         :key="variantData.uuid"
-        :variantData="variantData"
+        class="item main-simple-list-item"
+        :variant-data="variantData"
       >
         <template #default="slotProps">
           <BaseTrackContent
-            :trackData="variantData"
-            :isLoading="slotProps.isLoading"
-            :isError="slotProps.isError"
-            :isCurrent="slotProps.isCurrent"
-            :isWithSelfIcons="false"
-            isWithImage
-            isWithArtistName
-            isWithAlbumTitle
-            isWithDuration
+            :track-data="variantData"
+            :is-loading="slotProps.isLoading"
+            :is-error="slotProps.isError"
+            :is-current="slotProps.isCurrent"
+            :is-with-self-icons="false"
+            is-with-image
+            is-with-artist-name
+            is-with-album-title
+            is-with-duration
           />
         </template>
       </BaseTrackVariantContainer>
@@ -29,7 +29,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListContainer
@@ -37,7 +39,9 @@ import BaseListContainer
 import BaseTrackVariantContainer
   from '*/components/containers/track/BaseTrackVariantContainer.vue'
 import BaseTrackContent from '*/components/models/track/BaseTrackContent.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'VariantsList',
@@ -53,9 +57,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('player', {
-      playerVariants: 'variants'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerVariants: 'variants'
+      }
+    ),
     variantsCollection () {
       return formatCollection(
         this.playerVariants
@@ -66,14 +73,19 @@ export default {
     playerVariants: 'handleVariantsChange'
   },
   methods: {
-    handleSegmentInit (el) {
-      this.segment = el
+    handleSegmentInit (
+      element
+    ) {
+      this.segment = element
     },
     handleVariantsChange () {
       this.scrollToListTop()
     },
     scrollToListTop () {
-      this.segment.scrollTo(0, 0)
+      this.segment.scrollTo(
+        0,
+        0
+      )
     }
   }
 }

@@ -5,7 +5,7 @@
   >
     <BaseTrackSourceSelect
       v-if="isOpen"
-      :trackData="trackData"
+      :track-data="trackData"
     />
   </BaseAccordionContainer>
 </template>

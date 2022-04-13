@@ -4,7 +4,7 @@
     @init="handleInit"
     @show="handleShow"
   >
-    <slot></slot>
+    <slot />
   </BaseModalContainer>
 </template>
 
@@ -22,11 +22,18 @@ export default {
     'show'
   ],
   methods: {
-    handleInit (el) {
-      this.$emit('init', el)
+    handleInit (
+      el
+    ) {
+      this.$emit(
+        'init',
+        el
+      )
     },
     handleShow () {
-      this.$emit('show')
+      this.$emit(
+        'show'
+      )
     }
   }
 }

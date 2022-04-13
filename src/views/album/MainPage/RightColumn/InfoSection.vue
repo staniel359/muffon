@@ -1,13 +1,13 @@
 <template>
   <AlbumHeader
-    :albumTitle="albumTitle"
-    :albumExtraTitle="albumExtraTitle"
+    :album-title="albumTitle"
+    :album-extra-title="albumExtraTitle"
     :artists="artists"
   />
 
   <SecondarySection
-    :albumData="albumData"
-    :requestAlbumData="requestAlbumData"
+    :album-data="albumData"
+    :request-album-data="requestAlbumData"
   />
 </template>
 

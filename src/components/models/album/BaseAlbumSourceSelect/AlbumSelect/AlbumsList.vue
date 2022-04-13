@@ -2,13 +2,15 @@
   <AlbumItem
     v-for="albumData in albumsCollection"
     :key="albumData.uuid"
-    :albumData="albumData"
+    :album-data="albumData"
   />
 </template>
 
 <script>
 import AlbumItem from './AlbumsList/AlbumItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsList',

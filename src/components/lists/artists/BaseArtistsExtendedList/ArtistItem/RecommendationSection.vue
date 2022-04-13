@@ -1,12 +1,12 @@
 <template>
   <ProfileArtistsSection
-    :recommendationData="artistData"
-    :profileId="profileId"
+    :recommendation-data="artistData"
+    :profile-id="profileId"
   />
 
   <BaseRecommendationDeleteModal
     ref="deleteModal"
-    :recommendationData="artistData"
+    :recommendation-data="artistData"
     @deleted="handleDeleted"
   />
 </template>
@@ -35,9 +35,11 @@ export default {
   },
   computed: {
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.artistData.uuid
@@ -45,10 +47,13 @@ export default {
   },
   methods: {
     handleDeleted () {
-      this.paginationItem.isDeleted = true
+      this.paginationItem
+        .isDeleted = true
     },
     showDeleteModal () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

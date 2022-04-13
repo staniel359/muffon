@@ -3,12 +3,12 @@
 
   <BaseProfileFollowingMessage
     class="following-message"
-    :otherProfileData="otherProfileData"
+    :other-profile-data="otherProfileData"
   />
 
   <BaseProfileFollowButton
     class="fluid"
-    :profileData="profileData"
+    :profile-data="profileData"
   />
 </template>
 

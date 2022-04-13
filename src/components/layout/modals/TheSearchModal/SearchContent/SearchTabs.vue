@@ -10,10 +10,10 @@
       <BaseSearchTabContainer
         :key="searchKey"
         :class="slotProps.class"
-        :isActive="slotProps.isActive"
-        :sourceId="sourceId"
+        :is-active="slotProps.isActive"
+        :source-id="sourceId"
         :query="query"
-        :tabData="tabData"
+        :tab-data="tabData"
       />
     </template>
   </BaseTabsContainer>
@@ -24,7 +24,9 @@ import BaseTabsContainer
   from '*/components/containers/tabs/BaseTabsContainer.vue'
 import BaseSearchTabContainer
   from '*/components/containers/tabs/BaseSearchTabContainer.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'SearchTabs',

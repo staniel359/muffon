@@ -1,22 +1,29 @@
 <template>
   <div
-    class="ui popup main-popup"
     ref="popup"
+    class="ui popup main-popup"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { toggleClass } from '*/helpers/actions/plugins/jquery'
+import {
+  mapState
+} from 'vuex'
+import {
+  toggleClass
+} from '*/helpers/actions/plugins/jquery'
 
 export default {
   name: 'BasePopupContainer',
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   watch: {
     isDarkMode: {
@@ -25,14 +32,16 @@ export default {
     }
   },
   methods: {
-    handleIsDarkModeChange (value) {
-      this.$nextTick(() => {
-        toggleClass(
-          this.$refs.popup,
-          'inverted',
-          value
-        )
-      })
+    async handleIsDarkModeChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      toggleClass(
+        this.$refs.popup,
+        'inverted',
+        value
+      )
     }
   }
 }

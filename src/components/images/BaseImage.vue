@@ -1,14 +1,18 @@
 <template>
   <img
     class="ui image main-image"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
     :[attribute]="imageConditional"
     @click="handleClick"
-  />
+  >
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseImage',
@@ -34,9 +38,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     attribute () {
       return this.isLazy
         ? 'data-lazy'
@@ -56,7 +63,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

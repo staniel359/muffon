@@ -6,12 +6,12 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        isWithImage
-        isWithArtistName
-        isWithAlbumTitle
-        isWithPlaylistOption
-        isWithDeleteOption
-        isBookmark
+        is-with-image
+        is-with-artist-name
+        is-with-album-title
+        is-with-playlist-option
+        is-with-delete-option
+        is-bookmark
       />
     </template>
   </BaseBookmarksPaginatedPageContainer>

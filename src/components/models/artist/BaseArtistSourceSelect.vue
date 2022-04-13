@@ -5,8 +5,8 @@
   >
     <BaseArtistAlbumsSourceSelect
       v-if="isOpen"
-      :artistName="artistName"
-      @artistDataChange="handleArtistDataChange"
+      :artist-name="artistName"
+      @artist-data-change="handleArtistDataChange"
     />
   </BaseAccordionContainer>
 </template>

@@ -4,28 +4,34 @@
     class="main-options-dropdown-container"
   >
     <BaseButtonContainer
-      class="compact basic circular top right pointing floating dropdown icon main-options-dropdown-button"
-      :class="buttonColor"
+      :class="[
+        'compact basic circular',
+        'top right pointing',
+        'floating dropdown icon',
+        'main-options-dropdown-button',
+        buttonColor
+      ]"
       @click.prevent
       @init="handleDropdownInit"
     >
-      <i class="ellipsis vertical icon"></i>
+      <i class="ellipsis vertical icon" />
+
       <div class="menu">
         <Component
+          :is="optionData.component"
           v-for="optionData in optionsCollection"
           :key="optionData.uuid"
-          :is="optionData.component"
           :model="model"
-          :modelId="optionData.modelId"
-          :artistName="artistName"
-          :trackTitle="trackTitle"
-          :albumTitle="albumTitle"
-          :albumTracks="albumTracks"
-          :imageUrl="imageUrl"
-          :profileData="optionData.profileData"
-          :communityData="optionData.communityData"
+          :model-id="optionData.modelId"
+          :artist-name="artistName"
+          :track-title="trackTitle"
+          :album-title="albumTitle"
+          :album-tracks="albumTracks"
+          :image-url="imageUrl"
+          :profile-data="optionData.profileData"
+          :community-data="optionData.communityData"
           @click="optionData.action"
-          @linkClick="handleLinkClick"
+          @link-click="handleLinkClick"
         />
       </div>
     </BaseButtonContainer>
@@ -33,7 +39,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseButtonContainer
@@ -48,9 +56,15 @@ import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
 import FollowOption from './BaseOptionsDropdown/FollowOption.vue'
 import JoinOption from './BaseOptionsDropdown/JoinOption.vue'
 import MessageOption from './BaseOptionsDropdown/MessageOption.vue'
-import { setDropdown } from '*/helpers/actions/plugins/semantic'
-import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  setDropdown
+} from '*/helpers/actions/plugins/semantic'
+import {
+  mainDropdownOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseOptionsDropdown',
@@ -94,8 +108,7 @@ export default {
     isWithJoinOption: Boolean,
     isWithMessageOption: Boolean,
     profileData: Object,
-    communityData: Object,
-    isWhite: Boolean
+    communityData: Object
   },
   emits: [
     'click',
@@ -111,13 +124,18 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     dropdownOptions () {
-      return mainDropdownOptions({
-        action: 'nothing'
-      })
+      return mainDropdownOptions(
+        {
+          action: 'nothing'
+        }
+      )
     },
     isAnyOptions () {
       return this.options.length
@@ -164,7 +182,9 @@ export default {
           this.isWithMessageOption &&
             this.messageOption
         )
-      ].filter(e => e)
+      ].filter(
+        e => e
+      )
     },
     libraryOption () {
       return {
@@ -256,26 +276,40 @@ export default {
     )
   },
   methods: {
-    handleDropdownInit (el) {
-      this.dropdown = el
+    handleDropdownInit (
+      element
+    ) {
+      this.dropdown = element
     },
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     },
     handlePlaylistOptionClick () {
-      this.$emit('playlist')
+      this.$emit(
+        'playlist'
+      )
     },
     handleEditOptionClick () {
-      this.$emit('edit')
+      this.$emit(
+        'edit'
+      )
     },
     handleDeleteOptionClick () {
-      this.$emit('delete')
+      this.$emit(
+        'delete'
+      )
     },
     handleMessageOptionClick () {
-      this.$emit('message')
+      this.$emit(
+        'message'
+      )
     },
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

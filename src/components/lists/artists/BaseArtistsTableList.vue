@@ -1,25 +1,23 @@
 <template>
-  <div :class="[
-    'ui',
-    columnWidth,
-    'column grid'
-  ]">
+  <div
+    :class="tableClass"
+  >
     <div
       v-for="artistData in artistsCollection"
-      class="column"
       :key="artistData.uuid"
+      class="column"
     >
       <ArtistItem
-        :artistData="artistData"
-        :isWithListenersCount="isWithListenersCount"
-        :isWithLibrary="isWithLibrary"
-        :isLinkToLibrary="isLinkToLibrary"
-        :profileId="profileId"
-        :isWithLibraryOption="isWithLibraryOption"
-        :isWithListenedOption="isWithListenedOption"
-        :isWithBookmarkOption="isWithBookmarkOption"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
+        :artist-data="artistData"
+        :is-with-listeners-count="isWithListenersCount"
+        :is-with-library="isWithLibrary"
+        :is-link-to-library="isLinkToLibrary"
+        :profile-id="profileId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-delete-option="isWithDeleteOption"
       />
     </div>
   </div>
@@ -27,8 +25,12 @@
 
 <script>
 import ArtistItem from './BaseArtistsTableList/ArtistItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
-import { numberToColumnWidth } from '*/helpers/actions/plugins/semantic'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
+import {
+  numberToColumnWidth
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseArtistsTableList',
@@ -57,14 +59,17 @@ export default {
     isWithDeleteOption: Boolean
   },
   computed: {
-    artistsCollection () {
-      return formatCollection(
-        this.artists
-      )
+    tableClass () {
+      return `ui ${this.columnWidth} column grid`
     },
     columnWidth () {
       return numberToColumnWidth(
         this.itemsInRow
+      )
+    },
+    artistsCollection () {
+      return formatCollection(
+        this.artists
       )
     }
   }

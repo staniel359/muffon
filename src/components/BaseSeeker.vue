@@ -1,18 +1,22 @@
 <template>
   <div
-    class="ui small slider main-seeker"
     ref="seeker"
+    class="ui small slider main-seeker"
     :class="{
       disabled: isDisabled,
       inverted: isDarkMode
     }"
     @mousedown.capture="handleMouseDown"
-  ></div>
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { setSeeker } from '*/helpers/actions/plugins/semantic'
+import {
+  mapState
+} from 'vuex'
+import {
+  setSeeker
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseSeeker',
@@ -38,9 +42,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     seekerOptions () {
       return {
         ...this.options,
@@ -62,26 +69,40 @@ export default {
     )
   },
   methods: {
-    handleIsDisabledChange (value) {
+    async handleIsDisabledChange (
+      value
+    ) {
       if (!value) {
-        this.$nextTick(() => {
-          this.setSeekerData()
-        })
+        await this.$nextTick()
+
+        this.setSeekerData()
       }
     },
     handleMouseDown () {
       this.isMouseUp = false
 
-      this.$emit('mouseDown')
+      this.$emit(
+        'mouseDown'
+      )
     },
     handleMouseUp () {
       this.isMouseUp = true
     },
-    handleMove (value) {
-      this.$emit('move', value)
+    handleMove (
+      value
+    ) {
+      this.$emit(
+        'move',
+        value
+      )
     },
-    handleChange (value) {
-      this.$emit('change', value)
+    handleChange (
+      value
+    ) {
+      this.$emit(
+        'change',
+        value
+      )
 
       if (this.isMouseUp) {
         this.$emit(
@@ -90,7 +111,9 @@ export default {
         )
       }
     },
-    handleIsMouseUpChange (value) {
+    handleIsMouseUpChange (
+      value
+    ) {
       if (value) {
         document.removeEventListener(
           'mouseup',

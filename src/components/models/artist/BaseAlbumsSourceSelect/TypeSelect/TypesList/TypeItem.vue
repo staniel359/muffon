@@ -2,7 +2,7 @@
   <BaseDropdownItem
     :data-value="index"
     :header="headerText"
-    :isDisabled="isDisabled"
+    :is-disabled="isDisabled"
     @click="handleClick"
   />
 </template>

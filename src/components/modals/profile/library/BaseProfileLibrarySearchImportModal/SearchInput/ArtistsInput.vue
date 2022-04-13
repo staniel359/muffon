@@ -3,7 +3,7 @@
     ref="input"
     :url="url"
     :fields="fields"
-    :formatResponse="formatResponse"
+    :format-response="formatResponse"
     @select="handleSelect"
   />
 </template>
@@ -48,8 +48,12 @@ export default {
     }
   },
   methods: {
-    handleSelect (artist) {
-      const isArtistPresent = artistData => {
+    handleSelect (
+      artist
+    ) {
+      function isArtistPresent (
+        artistData
+      ) {
         return (
           artist.name ===
             artistData.name
@@ -77,14 +81,20 @@ export default {
 
       this.clear()
     },
-    formatResponse (response) {
+    formatResponse (
+      response
+    ) {
       return response.search.artists
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

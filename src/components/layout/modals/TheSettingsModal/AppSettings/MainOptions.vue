@@ -2,7 +2,7 @@
   <div class="main-settings-options-block">
     <BaseDivider
       :text="mainText"
-      isHorizontal
+      is-horizontal
     />
 
     <LanguageOption />

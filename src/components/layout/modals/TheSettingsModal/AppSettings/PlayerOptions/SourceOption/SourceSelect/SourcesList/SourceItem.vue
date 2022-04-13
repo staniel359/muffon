@@ -16,16 +16,19 @@
       />
     </div>
 
-    <div class="description extra">
-      {{ bitrateText }}
-    </div>
+    <div
+      class="description extra"
+      v-text="bitrateText"
+    />
   </div>
 </template>
 
 <script>
 import BaseIcon from '*/components/BaseIcon.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'SourceItem',
@@ -58,9 +61,11 @@ export default {
   },
   methods: {
     handleClick () {
-      updateStore({
-        'player.sourceId': this.sourceId
-      })
+      updateStore(
+        {
+          'player.sourceId': this.sourceId
+        }
+      )
     }
   }
 }

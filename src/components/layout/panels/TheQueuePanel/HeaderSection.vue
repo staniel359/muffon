@@ -1,20 +1,30 @@
 <template>
-  <BaseSegmentContainer class="header-section">
-    <div class="left-block"></div>
+  <BaseSegmentContainer
+    class="header-section"
+  >
+    <div class="left-block" />
 
-    <h4 class="ui header main-header central-block">
-      {{ tracksText }}
-    </h4>
+    <h4
+      :class="[
+        'ui header main-header',
+        'central-block'
+      ]"
+      v-text="tracksText"
+    />
 
-    <div class="right-block"></div>
+    <div class="right-block" />
   </BaseSegmentContainer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import {
+  mapGetters
+} from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',
@@ -22,13 +32,19 @@ export default {
     BaseSegmentContainer
   },
   computed: {
-    ...mapGetters('queue', {
-      queueTracksCount: 'tracksCount'
-    }),
+    ...mapGetters(
+      'queue',
+      {
+        queueTracksCount: 'tracksCount'
+      }
+    ),
     tracksText () {
       return this.$t(
         'counters.tracks',
-        { count: this.queueTracksCountFormatted }
+        {
+          count:
+            this.queueTracksCountFormatted
+        }
       )
     },
     queueTracksCountFormatted () {

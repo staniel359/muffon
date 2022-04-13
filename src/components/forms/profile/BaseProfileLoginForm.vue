@@ -2,7 +2,7 @@
   <FormSegment />
 
   <SignupSegment
-    @signupLinkClick="handleSignupLinkClick"
+    @signup-link-click="handleSignupLinkClick"
   />
 </template>
 

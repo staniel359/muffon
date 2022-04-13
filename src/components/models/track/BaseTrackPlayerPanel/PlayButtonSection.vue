@@ -1,16 +1,16 @@
 <template>
   <BaseTrackContainer
-    :trackData="firstTrackData"
-    :queueTracks="tracksCollection"
+    :track-data="firstTrackData"
+    :queue-tracks="tracksCollection"
   >
     <template #default="slotProps">
       <BaseButtonContainer
         class="basic main-button track-play-button"
       >
         <BaseTrackAudioIcon
-          :isLoading="slotProps.isLoading"
-          :isError="slotProps.isError"
-          :isCurrent="slotProps.isCurrent"
+          :is-loading="slotProps.isLoading"
+          :is-error="slotProps.isError"
+          :is-current="slotProps.isCurrent"
         />
       </BaseButtonContainer>
     </template>
@@ -24,7 +24,9 @@ import BaseTrackContainer
   from '*/components/containers/track/BaseTrackContainer.vue'
 import BaseTrackAudioIcon
   from '*/components/models/track/BaseTrackAudioIcon.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'PlayButtonSection',
@@ -45,7 +47,9 @@ export default {
     },
     tracksCollection () {
       return formatCollection(
-        [this.trackData]
+        [
+          this.trackData
+        ]
       )
     }
   }

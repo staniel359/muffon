@@ -1,19 +1,23 @@
 <template>
   <div
     class="item"
-    :class="{ disabled: isLoading }"
+    :class="{
+      disabled: isLoading
+    }"
     @click.prevent="handleClick"
   >
     <i
       v-if="isLoading"
       class="icon"
     >
-      <div class="ui mini active inline loader"></div>
+      <div
+        class="ui mini active inline loader"
+      />
     </i>
     <i
       v-else
       class="bookmark icon"
-    ></i>
+    />
 
     {{ bookmarkText }}
   </div>
@@ -98,7 +102,9 @@ export default {
         )
       }
     },
-    handleCreateSuccess (response) {
+    handleCreateSuccess (
+      response
+    ) {
       const bookmarkId =
         response.data.bookmark_id.toString()
 
@@ -107,7 +113,9 @@ export default {
       )
     },
     handleDeleteSuccess () {
-      this.setBookmarkId(null)
+      this.setBookmarkId(
+        null
+      )
     },
     deleteBookmark,
     createBookmarkArtist,

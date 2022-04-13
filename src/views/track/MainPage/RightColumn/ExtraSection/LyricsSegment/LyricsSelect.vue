@@ -2,16 +2,16 @@
   <div class="main-track-dropdown-container">
     <div class="main-track-dropdown-logo-container">
       <BaseSourceIcon
-        sourceId="genius"
+        source-id="genius"
       />
     </div>
 
     <BaseDropdownContainer
       class="main-source-select-track-select"
       :header="headerText"
-      :isLoading="isLoading"
-      :isError="isError"
-      :isDisabled="!isAnyTracks"
+      :is-loading="isLoading"
+      :is-error="isError"
+      :is-disabled="!isAnyTracks"
     >
       <TracksList
         :tracks="tracks"

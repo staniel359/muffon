@@ -1,9 +1,20 @@
 <template>
   <div class="artist-page-right-column">
-    <InfoSegment :artistData="artistData" />
-    <TracksSegment :artistName="artistName" />
-    <AlbumsSegment :artistName="artistName" />
-    <SimilarSegment :artistName="artistName" />
+    <InfoSegment
+      :artist-data="artistData"
+    />
+
+    <TracksSegment
+      :artist-name="artistName"
+    />
+
+    <AlbumsSegment
+      :artist-name="artistName"
+    />
+
+    <SimilarSegment
+      :artist-name="artistName"
+    />
   </div>
 </template>
 

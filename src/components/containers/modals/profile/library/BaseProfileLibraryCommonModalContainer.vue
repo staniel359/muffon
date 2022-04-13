@@ -6,23 +6,23 @@
         'main-modal-content-full-height',
         'main-segment-container'
       ]"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       @init="handleInit"
     >
       <BasePaginatedListContainer
-        :responseData="compatibilityData"
+        :response-data="compatibilityData"
         :scope="scope"
         :limit="limit"
-        :isLoading="isLoading"
+        :is-loading="isLoading"
         :error="error"
-        @fetchData="fetchData"
+        @fetch-data="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedListContainer>
     </BaseSegmentContainer>
@@ -79,34 +79,53 @@ export default {
     isOpen: 'handleIsOpenChange'
   },
   methods: {
-    handleInit (el) {
-      this.scrollable = el
+    handleInit (
+      element
+    ) {
+      this.scrollable = element
     },
-    handleIsOpenChange (value) {
+    handleIsOpenChange (
+      value
+    ) {
       if (value) {
         this.fetchData()
       }
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     handleFocus () {
-      this.scrollable.scrollTo(0, 0)
+      this.scrollable.scrollTo(
+        0,
+        0
+      )
     },
     getLibraryCompatibility,
-    fetchData (page) {
-      this.getLibraryCompatibility({
-        ...this.libraryCompatibilityArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getLibraryCompatibility(
+        {
+          ...this.libraryCompatibilityArgs,
+          page
+        }
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
       this.isOpen = true
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

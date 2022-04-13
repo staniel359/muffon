@@ -5,15 +5,24 @@ import formatVideoChannelSection
 import formatVideosSection
   from '*/helpers/formatters/navigation/sections/videos'
 
-export default function ({ channelId, channelTitle }) {
+export default function (
+  {
+    channelId,
+    channelTitle
+  }
+) {
   return [
     formatVideoChannelsSection(),
-    formatVideoChannelSection({
-      channelTitle
-    }),
-    formatVideosSection({
-      channelId,
-      isActive: true
-    })
+    formatVideoChannelSection(
+      {
+        channelTitle
+      }
+    ),
+    formatVideosSection(
+      {
+        channelId,
+        isActive: true
+      }
+    )
   ]
 }

@@ -2,7 +2,9 @@
   <BaseButton
     class="basic import-button"
     icon="user circle"
-    :class="{ disabled: !isAccountConnected }"
+    :class="{
+      disabled: !isAccountConnected
+    }"
     :text="accountText"
     @click="handleClick"
   />
@@ -14,7 +16,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseProfileLibraryAccountImportModal
   from '*/components/modals/profile/library/BaseProfileLibraryAccountImportModal.vue'
@@ -26,9 +30,12 @@ export default {
     BaseProfileLibraryAccountImportModal
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     accountText () {
       return this.$t(
         'actions.from.account'
@@ -43,7 +50,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

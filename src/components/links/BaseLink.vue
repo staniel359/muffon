@@ -8,13 +8,17 @@
   >
     <span
       v-html="text"
-    ></span>
+    />
   </RouterLink>
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
-import { generateKey } from '*/helpers/utils'
+import {
+  ipcRenderer
+} from 'electron'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseLink',
@@ -35,7 +39,9 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     },
     handleCtrlClick () {
       this.openNewTab()

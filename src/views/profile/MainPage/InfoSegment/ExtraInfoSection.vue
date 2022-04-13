@@ -1,33 +1,33 @@
 <template>
-  <BaseDivider/>
+  <BaseDivider />
 
   <div class="main-profile-page-info">
     <BaseProfileGenderAge
-      :profileData="profileData"
+      :profile-data="profileData"
     />
 
     <BaseProfileCityCountry
-      :profileData="profileData"
+      :profile-data="profileData"
     />
 
     <BaseProfileFollowCounters
       class="follow-counters"
-      :profileData="profileData"
-      isClickable
-      @followersLinkClick="handleFollowersLinkClick"
-      @followingLinkClick="handleFollowingLinkClick"
+      :profile-data="profileData"
+      is-clickable
+      @followers-link-click="handleFollowersLinkClick"
+      @following-link-click="handleFollowingLinkClick"
     />
 
     <BaseProfileFollowModal
       ref="followersModal"
       scope="followers"
-      :profileId="profileId"
+      :profile-id="profileId"
     />
 
     <BaseProfileFollowModal
       ref="followingModal"
       scope="following"
-      :profileId="profileId"
+      :profile-id="profileId"
     />
   </div>
 </template>
@@ -65,10 +65,14 @@ export default {
   },
   methods: {
     handleFollowersLinkClick () {
-      this.$refs.followersModal.show()
+      this.$refs
+        .followersModal
+        .show()
     },
     handleFollowingLinkClick () {
-      this.$refs.followingModal.show()
+      this.$refs
+        .followingModal
+        .show()
     }
   }
 }

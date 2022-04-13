@@ -6,7 +6,7 @@
       rows="4"
       :placeholder="descriptionText"
       :value="value"
-    ></textarea>
+    />
   </div>
 </template>
 

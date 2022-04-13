@@ -1,4 +1,8 @@
-export default function ({ channelTitle }) {
+export default function (
+  {
+    channelTitle
+  }
+) {
   return {
     name: channelTitle
   }

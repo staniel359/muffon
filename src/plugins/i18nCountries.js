@@ -9,7 +9,9 @@ const locales = [
   ru
 ]
 
-const registerLocale = locale => {
+function registerLocale (
+  locale
+) {
   countries.registerLocale(
     locale
   )

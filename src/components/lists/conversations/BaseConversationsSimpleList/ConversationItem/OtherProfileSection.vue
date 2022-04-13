@@ -8,7 +8,7 @@
 
     <div class="content">
       <BaseProfileNickname
-        :profileData="otherProfileData"
+        :profile-data="otherProfileData"
       />
     </div>
   </div>

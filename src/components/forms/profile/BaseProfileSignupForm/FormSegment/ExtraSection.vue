@@ -14,7 +14,7 @@
 
       <BaseProfileCityField />
 
-      <div></div>
+      <div />
     </div>
   </div>
 </template>
@@ -44,7 +44,9 @@ export default {
     'imageChange'
   ],
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.$emit(
         'imageChange',
         value

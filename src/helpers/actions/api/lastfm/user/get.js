@@ -7,14 +7,19 @@ export default function () {
 
   const nickname =
     store.state.profile.info.lastfm_nickname
+
   const url = `/lastfm/users/${nickname}`
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.isReset = false
     this.userData = response.data.user
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 

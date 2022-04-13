@@ -32,7 +32,9 @@ import SearchInput from './BaseAddTracksModal/SearchInput.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import SearchList from './BaseAddTracksModal/SearchList.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseAddTracksModal',
@@ -60,7 +62,9 @@ export default {
     'change'
   ],
   methods: {
-    handleSelect (value) {
+    handleSelect (
+      value
+    ) {
       const trackData = {
         uuid: generateKey(),
         ...value
@@ -75,29 +79,46 @@ export default {
         tracks
       )
     },
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.changeTracks(
         value
       )
     },
     handleResetButtonClick () {
-      this.changeTracks([])
+      this.changeTracks(
+        []
+      )
 
-      this.$refs.input.focus()
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .focus()
+
+      this.$refs
+        .input
+        .clear()
     },
-    changeTracks (value) {
+    changeTracks (
+      value
+    ) {
       this.$emit(
         'change',
         value
       )
     },
     show () {
-      this.$refs.modal.show()
-      this.$refs.input.focus()
+      this.$refs
+        .modal
+        .show()
+      this.$refs
+        .input
+        .focus()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

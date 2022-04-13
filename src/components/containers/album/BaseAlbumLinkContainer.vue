@@ -3,7 +3,7 @@
     :link="link"
     @click="handleLinkClick"
   >
-    <slot></slot>
+    <slot />
   </BaseLinkContainer>
 </template>
 
@@ -20,7 +20,9 @@ import {
   main as formatProfileLibraryAlbumMainLink,
   tracks as formatProfileLibraryAlbumTracksLink
 } from '*/helpers/formatters/links/profile/library/album'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
@@ -64,55 +66,69 @@ export default {
       }
     },
     profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistId () {
       return this.albumData.artist.id
     },
     artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+      return formatArtistMainLink(
+        {
+          artistName: this.artistName
+        }
+      )
     },
     profileLibraryAlbumTracksLink () {
-      return formatProfileLibraryAlbumTracksLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
+      return formatProfileLibraryAlbumTracksLink(
+        {
+          profileId: this.profileId,
+          albumId: this.albumId
+        }
+      )
     },
     albumId () {
       return this.albumData.id?.toString()
     },
     profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
+      return formatProfileLibraryAlbumMainLink(
+        {
+          profileId: this.profileId,
+          albumId: this.albumId
+        }
+      )
     },
     albumMainLink () {
-      return formatAlbumMainLink({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        sourceParams: this.sourceParams
-      })
+      return formatAlbumMainLink(
+        {
+          artistName: this.artistName,
+          albumTitle: this.albumTitle,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     albumTitle () {
       return this.albumData.title
     },
     sourceParams () {
-      return formatAlbumRequestData({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.artistName
-      })
+      return formatAlbumRequestData(
+        {
+          sourceId: this.albumData.source_id,
+          albumData: this.albumData,
+          artistName: this.artistName
+        }
+      )
     }
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

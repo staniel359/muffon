@@ -3,16 +3,16 @@
     class="scrolling fluid"
     :scope="scope"
     :item="query"
-    :isDistinct="isInput"
+    :is-distinct="isInput"
     @select="handleSelect"
   >
     <BaseInput
-      class="fluid"
       ref="input"
-      icon="search"
       v-model.trim="input"
+      class="fluid"
+      icon="search"
       :placeholder="searchText"
-      @enterPress="handleEnterPress"
+      @enter-press="handleEnterPress"
     />
   </BaseHistoryInputContainer>
 </template>
@@ -52,7 +52,9 @@ export default {
     }
   },
   methods: {
-    handleSelect (value) {
+    handleSelect (
+      value
+    ) {
       this.input = value
 
       this.submit()
@@ -71,17 +73,21 @@ export default {
       )
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     unfocus () {
-      this.$refs.input.unfocus()
+      this.$refs
+        .input
+        .unfocus()
     },
-    clear () {
+    async clear () {
       this.input = ''
 
-      this.$nextTick(() => {
-        this.focus()
-      })
+      await this.$nextTick()
+
+      this.focus()
     }
   }
 }

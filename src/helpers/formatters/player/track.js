@@ -1,14 +1,18 @@
-export const track = ({
-  trackData,
-  artistName,
-  albumTitle,
-  imageData,
-  isFromSource
-}) => {
+export function track (
+  {
+    trackData,
+    artistName,
+    albumTitle,
+    imageData,
+    isFromSource
+  }
+) {
   const trackArtistsData = artistName && {
-    artists: [{
-      name: artistName
-    }]
+    artists: [
+      {
+        name: artistName
+      }
+    ]
   }
 
   const trackAlbumData = albumTitle && {

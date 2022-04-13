@@ -12,16 +12,17 @@
     >
       <i
         v-for="(icon, index) in icons"
-        class="icon"
         :key="index"
+        class="icon"
         :class="icon"
       />
     </i>
 
     <div class="content">
-      <div class="header">
-        {{ header }}
-      </div>
+      <div
+        class="header"
+        v-text="header"
+      />
 
       <p v-if="content">
         <BaseLink
@@ -42,9 +43,8 @@
         <li
           v-for="listItemData in listItems"
           :key="listItemData.key"
-        >
-          {{ listItemData.text }}
-        </li>
+          v-text="listItemData.text"
+        />
       </ul>
     </div>
 
@@ -58,7 +58,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 
@@ -82,9 +84,12 @@ export default {
     'linkClick'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
     handleClick () {

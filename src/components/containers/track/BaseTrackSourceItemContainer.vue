@@ -1,9 +1,9 @@
 <template>
   <slot
-    :isLoading="isLoading"
-    :isError="!!error"
+    :is-loading="isLoading"
+    :is-error="!!error"
     :tracks="tracks"
-  ></slot>
+  />
 </template>
 
 <script>

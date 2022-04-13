@@ -1,6 +1,6 @@
 <template>
   <BaseProfileCommunitiesPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -22,8 +22,8 @@
 
         <BasePaginatedSegmentContainer
           class="main-paginated-page-segment-container"
-          responseDataName="profileData"
-          :slotPropsData="pageSlotProps"
+          response-data-name="profileData"
+          :slot-props-data="pageSlotProps"
           :scope="scope"
           :limit="limit"
           @focus="handleFocus"
@@ -54,7 +54,7 @@ import {
 } from '*/helpers/formatters/links'
 
 export default {
-  name: 'PlaylistsPage',
+  name: 'CommunitiesPage',
   components: {
     BaseProfileCommunitiesPageContainer,
     BaseSegmentContainer,
@@ -83,7 +83,10 @@ export default {
   },
   methods: {
     handleFocus () {
-      window.scrollTo(0, 0)
+      window.scrollTo(
+        0,
+        0
+      )
     }
   }
 }

@@ -1,13 +1,18 @@
 <template>
   <div
-    class="ui top fixed menu browser-tabs-panel"
-    :class="{ inverted: isDarkMode }"
+    :class="[
+      'ui top fixed menu',
+      'browser-tabs-panel',
+      {
+        inverted: isDarkMode
+      }
+    ]"
   >
     <BrowserTab
       v-for="tabData in tabs"
       :key="tabData.uuid"
-      :tabData="tabData"
-      :activeTabId="activeTabId"
+      :tab-data="tabData"
+      :active-tab-id="activeTabId"
     />
 
     <BaseButton
@@ -19,12 +24,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { ipcRenderer } from 'electron'
+import {
+  mapState
+} from 'vuex'
+import {
+  ipcRenderer
+} from 'electron'
 import electronStore from '*/plugins/electronStore'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'TheBrowserTabs',
@@ -39,9 +50,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     electronStoreTabs () {
       return electronStore.get(
         'layout.tabs'
@@ -92,7 +106,9 @@ export default {
     )
   },
   methods: {
-    handleTabsChange (value) {
+    handleTabsChange (
+      value
+    ) {
       if (!value.length) {
         this.addNewTab()
       }
@@ -105,12 +121,19 @@ export default {
     handleAddTabButtonClick () {
       this.addNewTab()
     },
-    handleAddTab (_, value) {
-      const tabs = [...this.tabs, value]
-
-      this.tabs = tabs
+    handleAddTab (
+      _,
+      value
+    ) {
+      this.tabs = [
+        ...this.tabs,
+        value
+      ]
     },
-    handleSetTopTab (_, tabId) {
+    handleSetTopTab (
+      _,
+      tabId
+    ) {
       this.activeTabId = tabId
 
       electronStore.set(
@@ -118,40 +141,68 @@ export default {
         tabId
       )
     },
-    handleRemoveTab (_, tabId) {
-      const tabs = this.tabs.filter(tabData => {
+    handleRemoveTab (
+      _,
+      tabId
+    ) {
+      function isMatchedTab (
+        tabData
+      ) {
         return tabData.uuid !== tabId
-      })
+      }
 
-      this.tabs = tabs
+      this.tabs =
+        this.tabs.filter(
+          isMatchedTab
+        )
     },
-    handleUpdateTab (_, { tabId, data }) {
-      const isMatchedTab = tabData => {
+    handleUpdateTab (
+      _,
+      {
+        tabId,
+        data
+      }
+    ) {
+      function isMatchedTab (
+        tabData
+      ) {
         return tabData.uuid === tabId
       }
 
-      const tab = this.tabs.find(
-        isMatchedTab
-      )
+      const tab =
+        this.tabs.find(
+          isMatchedTab
+        )
+
+      function updateTabKeyValue (
+        [
+          key,
+          value
+        ]
+      ) {
+        tab[key] = value
+      }
 
       if (tab) {
-        const updateTabKeyValue = ([key, value]) => {
-          tab[key] = value
-        }
-
-        Object.entries(data).forEach(
+        Object.entries(
+          data
+        ).forEach(
           updateTabKeyValue
         )
       }
 
-      this.tabs = [...this.tabs]
+      this.tabs = [
+        ...this.tabs
+      ]
     },
     addTabsFromElectronStore () {
       this.electronStoreTabs.forEach(
         this.addTab
       )
     },
-    addTab (tabData) {
+    addTab (
+      tabData
+    ) {
       ipcRenderer.send(
         'add-tab',
         tabData
@@ -166,7 +217,9 @@ export default {
     addNewTab () {
       const tab = this.getNewTabData()
 
-      this.addTab(tab)
+      this.addTab(
+        tab
+      )
 
       ipcRenderer.send(
         'set-top-tab',

@@ -2,21 +2,22 @@
   <div class="content">
     <p
       v-html="goingText"
-    ></p>
+    />
 
-    <p v-if="isWithAlsoText">
-      {{ alsoText }}
-    </p>
-
-    <p>
-      <strong>
-        {{ undoText }}
-      </strong>
-    </p>
+    <p
+      v-if="isWithAlsoText"
+      v-text="alsoText"
+    />
 
     <p>
-      {{ sureText }}
+      <strong
+        v-text="undoText"
+      />
     </p>
+
+    <p
+      v-text="sureText"
+    />
   </div>
 </template>
 
@@ -52,9 +53,14 @@ export default {
     alsoText () {
       return this.$t(
         [
-          `modals.delete.also.${this.modelType}`,
+          'modals.delete.also',
+          this.modelType,
           this.model
-        ].filter(e => e).join('.')
+        ].filter(
+          e => e
+        ).join(
+          '.'
+        )
       )
     },
     undoText () {

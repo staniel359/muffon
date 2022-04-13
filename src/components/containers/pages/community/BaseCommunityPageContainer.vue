@@ -1,15 +1,15 @@
 <template>
   <BasePageContainer
-    :responseData="communityData"
-    :isLoading="isLoading"
+    :response-data="communityData"
+    :is-loading="isLoading"
     :error="error"
   >
     <template #default="slotProps">
       <slot
-        :communityData="communityData"
-        :communityCreatorId="communityCreatorId"
-        :profileId="slotProps.profileId"
-      ></slot>
+        :community-data="communityData"
+        :community-creator-id="communityCreatorId"
+        :profile-id="slotProps.profileId"
+      />
     </template>
   </BasePageContainer>
 </template>
@@ -92,15 +92,21 @@ export default {
         this.communityArgs
       )
     },
-    setCommunityData (value) {
+    setCommunityData (
+      value
+    ) {
       this.communityData = value
     },
-    setIsMember (value) {
+    setIsMember (
+      value
+    ) {
       this.communityData
         .profile
         .member_of_community = value
     },
-    setMembersCount (value) {
+    setMembersCount (
+      value
+    ) {
       this.communityData
         .members_count = value
     }

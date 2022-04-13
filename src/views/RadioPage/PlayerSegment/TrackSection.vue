@@ -2,9 +2,9 @@
   <BaseListContainer class="selection">
     <TrackItem
       ref="track"
-      :trackData="firstTrackData"
-      :queueTracks="tracksCollection"
-      isWithArtistName
+      :track-data="firstTrackData"
+      :queue-tracks="tracksCollection"
+      is-with-artist-name
     />
   </BaseListContainer>
 </template>
@@ -14,7 +14,9 @@ import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import TrackItem
   from '*/components/lists/tracks/BaseTracksSimpleList/TrackItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'TrackSection',
@@ -34,13 +36,17 @@ export default {
     },
     tracksCollection () {
       return formatCollection(
-        [this.trackData]
+        [
+          this.trackData
+        ]
       )
     }
   },
   methods: {
     fetchAudio () {
-      this.$refs.track.fetchAudio()
+      this.$refs
+        .track
+        .fetchAudio()
     }
   }
 }

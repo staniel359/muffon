@@ -1,22 +1,22 @@
 <template>
   <BaseProfileLibraryAlbumPageContainer
-    :profileId="profileId"
-    :albumId="albumId"
+    :profile-id="profileId"
+    :album-id="albumId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="libraryAlbumData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="libraryAlbumData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :artistName="pageSlotProps.artistName"
-          ></slot>
+            :artist-name="pageSlotProps.artistName"
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

@@ -2,12 +2,20 @@ import {
   main as formatProfileMainLink
 } from '*/helpers/formatters/links/profile'
 
-export default function ({ profileId, profileNickname, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatProfileMainLink({
-        profileId
-      })
+      return formatProfileMainLink(
+        {
+          profileId
+        }
+      )
     }
   }
 

@@ -1,15 +1,14 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    isWithSearch
   >
     <template #default="slotProps">
       <BaseTagsList
         :tags="slotProps[scope]"
-        :profileId="profileId"
-        isLinkToLibrary
+        :profile-id="profileId"
+        is-link-to-library
       />
     </template>
   </BaseProfileLibraryPaginatedPageContainer>

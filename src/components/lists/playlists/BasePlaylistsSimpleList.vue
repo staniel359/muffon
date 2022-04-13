@@ -3,8 +3,8 @@
     <PlaylistItem
       v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"
-      :playlistData="playlistData"
-      :isWithProfile="isWithProfile"
+      :playlist-data="playlistData"
+      :is-with-profile="isWithProfile"
     />
   </BaseListContainer>
 </template>
@@ -13,7 +13,9 @@
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import PlaylistItem from './BasePlaylistsSimpleList/PlaylistItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BasePlaylistsSimpleList',

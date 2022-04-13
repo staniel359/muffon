@@ -1,11 +1,10 @@
 <template>
   <slot
-    :artistData="artistData"
-    :isLoading="isLoading"
+    :artist-data="artistData"
+    :is-loading="isLoading"
     :error="error"
     :refresh="refresh"
-  >
-  </slot>
+  />
 </template>
 
 <script>
@@ -26,15 +25,22 @@ export default {
       isLoading: true
     }
   },
+  computed: {
+    artistArgs () {
+      return {
+        artistName: this.artistName
+      }
+    }
+  },
   mounted () {
     this.fetchData()
   },
   methods: {
     getArtist,
     fetchData () {
-      this.getArtist({
-        artistName: this.artistName
-      })
+      this.getArtist(
+        this.artistArgs
+      )
     },
     refresh () {
       this.fetchData()

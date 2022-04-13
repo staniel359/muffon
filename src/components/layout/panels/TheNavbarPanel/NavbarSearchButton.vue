@@ -9,7 +9,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
@@ -18,9 +20,12 @@ export default {
     BaseButton
   },
   computed: {
-    ...mapState('layout', [
-      'searchModal'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'searchModal'
+      ]
+    )
   },
   methods: {
     handleClick () {

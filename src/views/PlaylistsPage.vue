@@ -4,15 +4,15 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="playlistsData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="playlistsData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <BasePlaylistsSimpleList
             :playlists="slotProps[scope]"
-            isWithProfile
+            is-with-profile
           />
         </template>
       </BasePaginatedPageContainer>

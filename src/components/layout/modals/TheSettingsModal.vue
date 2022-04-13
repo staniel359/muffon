@@ -10,8 +10,8 @@
           #[tabData.scope]="slotProps"
         >
           <Component
-            class="settings-container"
             :is="tabData.component"
+            class="settings-container"
             :class="slotProps.class"
           />
         </template>
@@ -28,7 +28,9 @@ import BaseTabsContainer
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
 import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'TheSettingsModal',
@@ -73,7 +75,9 @@ export default {
   },
   methods: {
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

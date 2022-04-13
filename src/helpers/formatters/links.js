@@ -1,4 +1,4 @@
-export const feed = () => {
+export function feed () {
   return {
     name: 'FeedPage',
     params: {},
@@ -6,7 +6,7 @@ export const feed = () => {
   }
 }
 
-export const profiles = () => {
+export function profiles () {
   return {
     name: 'ProfilesPage',
     params: {},
@@ -14,7 +14,7 @@ export const profiles = () => {
   }
 }
 
-export const recommendations = () => {
+export function recommendations () {
   return {
     name: 'RecommendationsPage',
     params: {},
@@ -22,7 +22,7 @@ export const recommendations = () => {
   }
 }
 
-export const radio = () => {
+export function radio () {
   return {
     name: 'RadioPage',
     params: {},
@@ -30,7 +30,7 @@ export const radio = () => {
   }
 }
 
-export const playlists = () => {
+export function playlists () {
   return {
     name: 'PlaylistsPage',
     params: {},
@@ -38,7 +38,7 @@ export const playlists = () => {
   }
 }
 
-export const communities = () => {
+export function communities () {
   return {
     name: 'CommunitiesPage',
     params: {},

@@ -5,15 +5,26 @@ import formatTagSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({ tagName, scope }) {
+export default function (
+  {
+    tagName,
+    scope
+  }
+) {
   return [
     formatTagsSection(),
-    formatTagSection({
-      tagName,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatTagSection(
+      {
+        tagName,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

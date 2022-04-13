@@ -1,19 +1,31 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ otherProfileId }) {
+export default function (
+  {
+    otherProfileId
+  }
+) {
   this.isError = false
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/followers/${otherProfileId}`
 
-  const { token } = store.state.profile
-  const params = { token }
+  const {
+    token
+  } = store.state.profile
 
-  const handleError = error => {
+  const params = {
+    token
+  }
+
+  const handleError = (
+    error
+  ) => {
     this.isError = true
 
     throw error
@@ -24,7 +36,10 @@ export default function ({ otherProfileId }) {
   }
 
   return axios.delete(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).catch(
     handleError
   ).finally(

@@ -1,30 +1,29 @@
 <template>
   <BaseModalContainer ref="modal">
     <BaseSegmentContainer
-      ref="scrollable"
       :class="[
         'scrolling content',
         'main-modal-content-full-height',
         'main-segment-container'
       ]"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       @init="handleInit"
     >
       <BasePaginatedListContainer
         v-if="profileData"
-        :responseData="profileData"
+        :response-data="profileData"
         :scope="scope"
         :limit="limit"
-        :isLoading="isLoading"
+        :is-loading="isLoading"
         :error="error"
-        @fetchData="fetchData"
+        @fetch-data="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <BaseProfilesSimpleList
             :profiles="slotProps[scope]"
-            @linkClick="handleLinkClick"
+            @link-click="handleLinkClick"
           />
         </template>
       </BasePaginatedListContainer>
@@ -84,32 +83,51 @@ export default {
     isOpen: 'handleIsOpenChange'
   },
   methods: {
-    handleInit (el) {
-      this.scrollable = el
+    handleInit (
+      element
+    ) {
+      this.scrollable = element
     },
-    handleIsOpenChange (value) {
+    handleIsOpenChange (
+      value
+    ) {
       if (value) {
         this.fetchData()
       }
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     handleFocus () {
-      this.scrollable.scrollTo(0, 0)
+      this.scrollable.scrollTo(
+        0,
+        0
+      )
     },
     handleLinkClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     getProfileFollow,
-    fetchData (page) {
-      this.getProfileFollow({
-        ...this.followArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileFollow(
+        {
+          ...this.followArgs,
+          page
+        }
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
       this.isOpen = true
     }

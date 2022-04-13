@@ -1,11 +1,11 @@
 <template>
   <div class="ui raised segments main-segment-container left-column">
     <JoinSegment
-      :communityData="communityData"
+      :community-data="communityData"
     />
 
     <CreatorSegment
-      :creatorData="creatorData"
+      :creator-data="creatorData"
     />
   </div>
 </template>

@@ -4,12 +4,12 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="channelData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="channelData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        isPaginationSimple
-        isReset
+        is-pagination-simple
+        is-reset
       >
         <template #default="slotProps">
           <BaseVideosTableList

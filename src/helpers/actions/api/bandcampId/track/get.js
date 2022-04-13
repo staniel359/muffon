@@ -1,6 +1,11 @@
 import getBandcampId from '*/helpers/actions/api/bandcampId/get'
 
-export default function ({ artist, track }) {
+export default function (
+  {
+    artist,
+    track
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -10,7 +15,9 @@ export default function ({ artist, track }) {
     title: track
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.isLoading = false
 
     const idData = response.id
@@ -25,7 +32,9 @@ export default function ({ artist, track }) {
     }
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.isLoading = false
     this.error = error
   }

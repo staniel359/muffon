@@ -8,10 +8,13 @@ import {
   hideSidebar
 } from '*/helpers/actions/plugins/semantic'
 
-export const setLoaderDimmer = (el, options) => {
+export function setLoaderDimmer (
+  element,
+  options
+) {
   store.dispatch(
     'layout/setLoaderDimmer',
-    el
+    element
   )
 
   setDimmer(
@@ -20,17 +23,22 @@ export const setLoaderDimmer = (el, options) => {
   )
 }
 
-export const toggleLoaderDimmer = bool => {
+export function toggleLoaderDimmer (
+  bool
+) {
   toggleDimmer(
     store.state.layout.loaderDimmer,
     bool
   )
 }
 
-export const setPlayerPanel = (el, options) => {
+export function setPlayerPanel (
+  element,
+  options
+) {
   store.dispatch(
     'layout/setPlayerPanel',
-    el
+    element
   )
 
   setSidebar(
@@ -39,22 +47,25 @@ export const setPlayerPanel = (el, options) => {
   )
 }
 
-export const showPlayerPanel = () => {
+export function showPlayerPanel () {
   showSidebar(
     store.state.layout.playerPanel
   )
 }
 
-export const hidePlayerPanel = () => {
+export function hidePlayerPanel () {
   hideSidebar(
     store.state.layout.playerPanel
   )
 }
 
-export const setQueuePanel = (el, options) => {
+export function setQueuePanel (
+  element,
+  options
+) {
   store.dispatch(
     'layout/setQueuePanel',
-    el
+    element
   )
 
   setSidebar(
@@ -63,20 +74,24 @@ export const setQueuePanel = (el, options) => {
   )
 }
 
-export const toggleQueuePanel = () => {
+export function toggleQueuePanel () {
   toggleSidebar(
     store.state.layout.queuePanel
   )
 }
 
-export const hideQueuePanel = () => {
+export function hideQueuePanel () {
   hideSidebar(
     store.state.layout.queuePanel
   )
 }
 
-export const focusOnSegment = el => {
-  const segmentTop = $(el).offset().top
+export function focusOnSegment (
+  element
+) {
+  const segmentTop = $(
+    element
+  ).offset().top
 
   const navbarHeight = 45
   const marginTop = 20
@@ -84,13 +99,15 @@ export const focusOnSegment = el => {
   const offsetTop =
     segmentTop - navbarHeight - marginTop
 
-  const scrollToSegmentTop = () => {
+  function scrollToSegmentTop () {
     window.scrollTo(
-      0, offsetTop
+      0,
+      offsetTop
     )
   }
 
   setTimeout(
-    scrollToSegmentTop, 0
+    scrollToSegmentTop,
+    0
   )
 }

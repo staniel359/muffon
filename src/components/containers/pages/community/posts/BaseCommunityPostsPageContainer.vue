@@ -1,17 +1,17 @@
 <template>
   <BasePageContainer
-    :responseData="communityData"
-    :isLoading="isLoading"
+    :response-data="communityData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :communityData="communityData"
-      :communityCreatorId="communityCreatorId"
-      :isLoading="isLoading"
+      :community-data="communityData"
+      :community-creator-id="communityCreatorId"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -89,14 +89,22 @@ export default {
   },
   methods: {
     getCommunityPosts,
-    fetchData (page) {
-      this.getCommunityPosts({
-        ...this.postsArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getCommunityPosts(
+        {
+          ...this.postsArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

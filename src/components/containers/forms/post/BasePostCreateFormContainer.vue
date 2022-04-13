@@ -1,20 +1,24 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { postFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  postFormOptions
+} from '*/helpers/data/plugins/semantic'
 import createProfilePost from '*/helpers/actions/api/profile/post/create'
 import createCommunityPost from '*/helpers/actions/api/community/post/create'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BasePostCreateFormContainer',
@@ -52,9 +56,11 @@ export default {
   },
   computed: {
     options () {
-      return postFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return postFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     },
     tracksFormatted () {
       return this.tracks.map(
@@ -68,7 +74,10 @@ export default {
     }
   },
   methods: {
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const isContentData = (
@@ -90,7 +99,9 @@ export default {
     },
     createProfilePost,
     createCommunityPost,
-    createPost (args) {
+    createPost (
+      args
+    ) {
       switch (this.postType) {
         case 'profile':
           return this.createProfilePost(
@@ -104,7 +115,9 @@ export default {
           return null
       }
     },
-    formatTrack (trackData) {
+    formatTrack (
+      trackData
+    ) {
       const artistName =
         formatArtistName(
           trackData.artists
@@ -117,10 +130,14 @@ export default {
         }
       }
     },
-    formatImage (imageData) {
+    formatImage (
+      imageData
+    ) {
       return imageData.data
     },
-    formatCreateArgs (fields) {
+    formatCreateArgs (
+      fields
+    ) {
       return {
         otherProfileId: this.profileId,
         communityId: this.communityId,

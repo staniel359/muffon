@@ -3,7 +3,7 @@
     <div class="content">
       <BaseCommunityUpdateFormContainer
         class="main-community-form"
-        :communityId="communityId"
+        :community-id="communityId"
         :image="image"
         @success="handleSuccess"
       >
@@ -29,7 +29,7 @@
 
         <div class="submit-button-container">
           <BaseSubmitButton
-            actionKey="save"
+            action-key="save"
           />
         </div>
       </BaseCommunityUpdateFormContainer>
@@ -83,16 +83,24 @@ export default {
     }
   },
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.image = value
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
-      this.$refs.title.focus()
+      this.$refs
+        .title
+        .focus()
     }
   }
 }

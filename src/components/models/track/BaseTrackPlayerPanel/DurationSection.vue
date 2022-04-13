@@ -1,7 +1,8 @@
 <template>
-  <div class="track-duration">
-    {{ duration }}
-  </div>
+  <div
+    class="track-duration"
+    v-text="duration"
+  />
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <div
-    class="main-modal-import-section"
     ref="scrollable"
+    class="main-modal-import-section"
   >
     <div class="main-library-modal-message-container">
       <BaseMessage
@@ -11,25 +11,25 @@
     </div>
 
     <BasePaginatedListContainer
-      :responseData="errorTracksData"
+      :response-data="errorTracksData"
       :scope="scope"
       :limit="limit"
-      :responsePageLimit="totalCount"
-      isReset
-      isWithPagination
+      :response-page-limit="totalCount"
+      is-reset
+      is-with-pagination
       @focus="handleFocus"
     >
       <template #default="slotProps">
         <BaseTracksSimpleList
           :tracks="slotProps[scope]"
-          isWithArtistName
-          isWithAlbumTitle
-          isWithImage
-          isWithCreated
-          isWithDeleteOption
-          isClearable
-          @linkClick="handleLinkClick"
-          @deleteButtonClick="handleDeleteButtonClick"
+          is-with-artist-name
+          is-with-album-title
+          is-with-image
+          is-with-created
+          is-with-delete-option
+          is-clearable
+          @link-click="handleLinkClick"
+          @delete-button-click="handleDeleteButtonClick"
         />
       </template>
     </BasePaginatedListContainer>
@@ -47,7 +47,9 @@ import BasePaginatedListContainer
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseRetryButton from '*/components/buttons/BaseRetryButton.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'RetrySection',
@@ -80,7 +82,9 @@ export default {
     errorText () {
       return this.$t(
         'save.error.tracks',
-        { count: this.totalCountFormatted }
+        {
+          count: this.totalCountFormatted
+        }
       )
     },
     totalCountFormatted () {
@@ -101,25 +105,41 @@ export default {
   },
   methods: {
     handleRetryButtonClick () {
-      this.$emit('retry')
+      this.$emit(
+        'retry'
+      )
     },
     handleFocus () {
-      this.$refs.scrollable.scrollTo(0, 0)
+      this.$refs
+        .scrollable
+        .scrollTo(
+          0,
+          0
+        )
     },
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteButtonClick ({ uuid }) {
-      const isMatchedTrack = trackData => {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedTrack (
+        trackData
+      ) {
         return trackData.uuid !== uuid
       }
 
-      const errorTracks = this.errorTracks.filter(
-        isMatchedTrack
-      )
+      const errorTracks =
+        this.errorTracks.filter(
+          isMatchedTrack
+        )
 
       this.setErrorTracks(
-        [...errorTracks]
+        [
+          ...errorTracks
+        ]
       )
     }
   }

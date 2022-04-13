@@ -2,8 +2,8 @@
   <div class="ui four column grid">
     <div
       v-for="(imageData, index) in imagesCollection"
-      class="column"
       :key="imageData.uuid"
+      class="column"
     >
       <div class="main-image-container">
         <BaseImage
@@ -18,9 +18,15 @@
 
 <script>
 import BaseImage from '*/components/images/BaseImage.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
-import { goToSliderSlide } from '*/helpers/actions/plugins/slick'
-import { showModal } from '*/helpers/actions/plugins/semantic'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
+import {
+  goToSliderSlide
+} from '*/helpers/actions/plugins/slick'
+import {
+  showModal
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ImagesList',
@@ -45,15 +51,19 @@ export default {
     }
   },
   methods: {
-    handleImageClick (index) {
+    async handleImageClick (
+      index
+    ) {
       goToSliderSlide(
         this.mainSlider,
         index
       )
 
-      this.$nextTick(() => {
-        showModal(this.modal)
-      })
+      await this.$nextTick()
+
+      showModal(
+        this.modal
+      )
     }
   }
 }

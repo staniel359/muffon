@@ -2,14 +2,14 @@
   <BaseModalContainer ref="modal">
     <div class="content main-modal-content-full-height">
       <ConnectSection
-        @userDataChange="handleUserDataChange"
+        @user-data-change="handleUserDataChange"
       />
 
       <BaseDivider />
 
       <ImportSection
         v-if="isImport"
-        :userData="userData"
+        :user-data="userData"
       />
       <SaveSection
         v-if="isSave"
@@ -68,20 +68,30 @@ export default {
     }
   },
   methods: {
-    handleUserDataChange (value) {
+    handleUserDataChange (
+      value
+    ) {
       this.userData = value
     },
-    setStatus (value) {
+    setStatus (
+      value
+    ) {
       this.status = value
     },
-    setTracks (value) {
+    setTracks (
+      value
+    ) {
       this.tracks = value
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

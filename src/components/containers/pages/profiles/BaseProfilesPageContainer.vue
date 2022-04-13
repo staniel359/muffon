@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="profilesData"
-    :isLoading="isLoading"
+    :response-data="profilesData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :profilesData="profilesData"
-      :isLoading="isLoading"
+      :profiles-data="profilesData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -62,14 +62,22 @@ export default {
   },
   methods: {
     getProfiles,
-    fetchData (page) {
-      this.getProfiles({
-        ...this.profilesArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfiles(
+        {
+          ...this.profilesArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui fluid search main-search-input"
     ref="search"
+    :class="[
+      'ui fluid search',
+      'main-search-input'
+    ]"
   >
     <div class="ui icon fluid input">
       <input
@@ -10,14 +13,17 @@
         type="text"
         :placeholder="searchText"
       >
-      <i class="search icon"></i>
+
+      <i class="search icon" />
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import { setSearch } from '*/helpers/actions/plugins/semantic'
+import {
+  setSearch
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseSearchInput',
@@ -69,7 +75,9 @@ export default {
       return [
         axios.defaults.baseURL,
         this.url
-      ].join('')
+      ].join(
+        ''
+      )
     },
     errorData () {
       return {
@@ -86,17 +94,23 @@ export default {
     )
   },
   methods: {
-    handleSelect (value) {
+    handleSelect (
+      value
+    ) {
       this.$emit(
         'select',
         value
       )
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.value = ''
+      this.$refs
+        .input
+        .value = ''
     }
   }
 }

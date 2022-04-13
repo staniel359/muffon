@@ -10,8 +10,8 @@
       v-if="isWithArtistSelect"
     >
       <BaseArtistSourceSelect
-        :artistName="artistName"
-        @artistDataChange="handleArtistDataChange"
+        :artist-name="artistName"
+        @artist-data-change="handleArtistDataChange"
       />
     </BaseSegmentContainer>
 
@@ -19,9 +19,9 @@
       v-if="isWithRecommendationsFilters"
     >
       <BaseRecommendationsFilters
-        :filterScope="filterScope"
-        @filterScopeChange="handleFilterScopeChange"
-        @filterValueChange="handleFilterValueChange"
+        :filter-scope="filterScope"
+        @filter-scope-change="handleFilterScopeChange"
+        @filter-value-change="handleFilterValueChange"
       />
     </BaseSegmentContainer>
 
@@ -31,7 +31,7 @@
     >
       <BaseProfileLibrarySearchInput
         v-if="isWithLibrarySearch"
-        :isClearable="isLibrarySearchClearable"
+        :is-clearable="isLibrarySearchClearable"
         :query="query"
         @submit="handleSearchSubmit"
         @clear="handleSearchClear"
@@ -39,28 +39,28 @@
 
       <BaseViewChangeButtons
         v-if="isWithViewChange"
-        :viewIndex="viewIndex"
-        @viewButtonClick="handleViewButtonClick"
+        :view-index="viewIndex"
+        @view-button-click="handleViewButtonClick"
       />
     </BaseSegmentContainer>
 
     <BasePaginatedSegmentContainer
       ref="segment"
       class="main-paginated-page-segment-container"
-      :slotPropsData="slotPropsData"
-      :responseDataName="responseDataName"
+      :slot-props-data="slotPropsData"
+      :response-data-name="responseDataName"
       :scope="scope"
       :limit="limit"
-      :clientPageLimit="clientPageLimit"
-      :responsePageLimit="responsePageLimit"
-      :isPaginationSimple="isPaginationSimple"
-      :isReset="isReset"
+      :client-page-limit="clientPageLimit"
+      :response-page-limit="responsePageLimit"
+      :is-pagination-simple="isPaginationSimple"
+      :is-reset="isReset"
       @focus="handleFocus"
     >
       <template #default="slotProps">
         <slot
           :[scope]="slotProps[scope]"
-        ></slot>
+        />
       </template>
     </BasePaginatedSegmentContainer>
   </div>
@@ -132,8 +132,12 @@ export default {
     handleArtistDataChange () {
       this.reset()
     },
-    handleViewButtonClick (value) {
-      this.setViewIndex(value)
+    handleViewButtonClick (
+      value
+    ) {
+      this.setViewIndex(
+        value
+      )
 
       this.reset()
     },
@@ -144,11 +148,18 @@ export default {
       this.reset()
     },
     handleFocus () {
-      window.scrollTo(0, 0)
+      window.scrollTo(
+        0,
+        0
+      )
 
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     },
-    handleSearchSubmit (value) {
+    handleSearchSubmit (
+      value
+    ) {
       this.$emit(
         'searchSubmit',
         value
@@ -159,13 +170,17 @@ export default {
         'searchClear'
       )
     },
-    handleFilterScopeChange (value) {
+    handleFilterScopeChange (
+      value
+    ) {
       this.$emit(
         'filterScopeChange',
         value
       )
     },
-    handleFilterValueChange (value) {
+    handleFilterValueChange (
+      value
+    ) {
       this.reset()
 
       this.$emit(
@@ -174,7 +189,9 @@ export default {
       )
     },
     reset () {
-      this.$refs.segment.reset()
+      this.$refs
+        .segment
+        .reset()
     }
   }
 }

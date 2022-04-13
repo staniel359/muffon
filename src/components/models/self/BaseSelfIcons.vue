@@ -3,22 +3,22 @@
     <i
       v-if="libraryId"
       class="headphones primary icon main-simple-self-icon"
-    ></i>
+    />
 
     <i
       v-if="favoriteId"
       class="star primary icon main-simple-self-icon"
-    ></i>
+    />
 
     <i
       v-if="bookmarkId"
       class="bookmark primary icon main-simple-self-icon"
-    ></i>
+    />
 
     <i
       v-if="listenedId"
       class="check primary icon main-simple-self-icon"
-    ></i>
+    />
   </div>
 </template>
 

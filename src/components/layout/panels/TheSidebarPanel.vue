@@ -1,7 +1,13 @@
 <template>
   <div
-    class="ui vertical menu left overlay visible sidebar the-sidebar-panel"
-    :class="{ inverted: isDarkMode }"
+    :class="[
+      'ui vertical menu',
+      'left overlay visible sidebar',
+      'the-sidebar-panel',
+      {
+        inverted: isDarkMode
+      }
+    ]"
   >
     <div class="sidebar-panel-content">
       <div class="sidebar-top">
@@ -12,17 +18,17 @@
         <ConversationsItem />
 
         <LibraryItem
-          :profileId="profileId"
+          :profile-id="profileId"
         />
 
         <RecommendationsItem />
 
         <PlaylistsItem
-          :profileId="profileId"
+          :profile-id="profileId"
         />
 
         <FavoritesItem
-          :profileId="profileId"
+          :profile-id="profileId"
         />
 
         <BookmarksItem />
@@ -32,7 +38,7 @@
         <RadioItem />
 
         <CommunitiesItem
-          :profileId="profileId"
+          :profile-id="profileId"
         />
       </div>
 
@@ -46,7 +52,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
 import ConversationsItem from './TheSidebarPanel/ConversationsItem.vue'
@@ -79,12 +87,18 @@ export default {
     LogoutItem
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     }

@@ -1,18 +1,18 @@
 <template>
   <BaseVideoSegmentContainer
     ref="segment"
-    :videoId="videoId"
+    :video-id="videoId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="pageSlotProps">
       <BasePaginatedSegmentContainer
-        responseDataName="videoData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="videoData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :clientPageLimit="clientPageLimit"
+        :client-page-limit="clientPageLimit"
         @focus="handleFocus"
       >
         <template #default="slotProps">
@@ -61,14 +61,18 @@ export default {
       return this.videoData.youtube_id.toString()
     },
     headerLink () {
-      return formatVideoRelatedLink({
-        videoId: this.videoId
-      })
+      return formatVideoRelatedLink(
+        {
+          videoId: this.videoId
+        }
+      )
     }
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

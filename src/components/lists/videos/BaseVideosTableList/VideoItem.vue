@@ -4,7 +4,7 @@
     @click="handleLinkClick"
   >
     <BaseSimpleCardContainer
-      :isWithImage="false"
+      :is-with-image="false"
     >
       <div class="main-simple-card-image-container">
         <BaseImage
@@ -22,9 +22,9 @@
         />
 
         <div class="description main-small-container">
-          <small>
-            {{ publishDate }}
-          </small>
+          <small
+            v-text="publishDate"
+          />
         </div>
       </div>
     </BaseSimpleCardContainer>
@@ -38,7 +38,9 @@ import BaseSimpleCardContainer
   from '*/components/containers/BaseSimpleCardContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
+import {
+  main as formatVideoMainLink
+} from '*/helpers/formatters/links/video'
 
 export default {
   name: 'VideoItem',
@@ -62,9 +64,11 @@ export default {
       return this.videoData.image
     },
     videoMainLink () {
-      return formatVideoMainLink({
-        videoId: this.videoId
-      })
+      return formatVideoMainLink(
+        {
+          videoId: this.videoId
+        }
+      )
     },
     videoId () {
       return this.videoData.youtube_id
@@ -78,7 +82,9 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

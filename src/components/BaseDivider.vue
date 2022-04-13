@@ -6,14 +6,14 @@
       horizontal: isHorizontal
     }"
   >
-    <template v-if="text">
-      {{ text }}
-    </template>
+    {{ text }}
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseDivider',
@@ -23,9 +23,12 @@ export default {
     text: String
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

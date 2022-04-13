@@ -1,11 +1,13 @@
 <template>
   <BaseArtistContainer
-    :artistName="artistName"
+    :artist-name="artistName"
   >
     <template #default="slotProps">
       <BaseArtistHorizontalCardContainer
-        :class="{ disabled: isDeleted }"
-        :isLoading="slotProps.isLoading"
+        :class="{
+          disabled: isDeleted
+        }"
+        :is-loading="slotProps.isLoading"
         :error="slotProps.error"
         @refresh="slotProps.refresh"
       >
@@ -19,38 +21,38 @@
               <BaseArtistImage
                 class="circular bordered artist-image"
                 size="medium"
-                :imageData="imageData"
-                :artistName="artistName"
-                @loadEnd="handleImageLoadEnd"
+                :image-data="imageData"
+                :artist-name="artistName"
+                @load-end="handleImageLoadEnd"
               />
 
               <LibraryCountersSection
                 v-if="isWithLibrary"
-                :artistData="artistData"
-                :profileId="profileId"
+                :artist-data="artistData"
+                :profile-id="profileId"
               />
 
               <div class="main-self-container">
                 <BaseSelfIcons
                   v-if="isWithSelfIcons"
-                  :libraryId="libraryId"
-                  :favoriteId="favoriteId"
-                  :bookmarkId="bookmarkId"
-                  :listenedId="listenedId"
+                  :library-id="libraryId"
+                  :favorite-id="favoriteId"
+                  :bookmark-id="bookmarkId"
+                  :listened-id="listenedId"
                 />
 
                 <BaseOptionsDropdown
                   model="artist"
-                  :artistName="artistName"
-                  :libraryId="libraryId"
-                  :favoriteId="favoriteId"
-                  :bookmarkId="bookmarkId"
-                  :listenedId="listenedId"
-                  :isWithLibraryOption="isWithLibraryOption"
-                  :isWithFavoriteOption="isWithFavoriteOption"
-                  :isWithBookmarkOption="isWithBookmarkOption"
-                  :isWithListenedOption="isWithListenedOption"
-                  :isWithDeleteOption="isWithDeleteOption"
+                  :artist-name="artistName"
+                  :library-id="libraryId"
+                  :favorite-id="favoriteId"
+                  :bookmark-id="bookmarkId"
+                  :listened-id="listenedId"
+                  :is-with-library-option="isWithLibraryOption"
+                  :is-with-favorite-option="isWithFavoriteOption"
+                  :is-with-bookmark-option="isWithBookmarkOption"
+                  :is-with-listened-option="isWithListenedOption"
+                  :is-with-delete-option="isWithDeleteOption"
                   @delete="handleDeleteOptionClick"
                 />
               </div>
@@ -58,33 +60,33 @@
 
             <div class="artist-info">
               <HeaderSection
-                :artistData="artistData"
-                :profileId="profileId"
-                :isLinkToLibrary="isLinkToLibrary"
+                :artist-data="artistData"
+                :profile-id="profileId"
+                :is-link-to-library="isLinkToLibrary"
               />
 
               <BaseCounters
-                :listenersCount="slotProps.artistData.listeners_count"
-                :playsCount="slotProps.artistData.plays_count"
+                :listeners-count="slotProps.artistData.listeners_count"
+                :plays-count="slotProps.artistData.plays_count"
               />
 
               <BaseArtistTags
-                :artistData="slotProps.artistData"
+                :artist-data="slotProps.artistData"
               />
 
               <template v-if="slotProps.artistData.description">
                 <BaseDivider />
 
                 <BaseArtistDescription
-                  :artistData="slotProps.artistData"
+                  :artist-data="slotProps.artistData"
                 />
               </template>
 
               <RecommendationSection
                 v-if="isRecommendation"
                 ref="recommendation"
-                :artistData="artistData"
-                :profileId="profileId"
+                :artist-data="artistData"
+                :profile-id="profileId"
               />
             </div>
           </template>
@@ -187,24 +189,36 @@ export default {
       this.artistData.listened_id?.toString()
   },
   methods: {
-    handleImageLoadEnd (value) {
+    handleImageLoadEnd (
+      value
+    ) {
       if (this.paginationItem) {
         this.paginationItem.image = value
       }
     },
     handleDeleteOptionClick () {
-      this.$refs.recommendation.showDeleteModal()
+      this.$refs
+        .recommendation
+        .showDeleteModal()
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

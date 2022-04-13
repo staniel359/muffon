@@ -8,7 +8,9 @@ export default function () {
     'navigation.communities'
   )
 
-  const { path } = formatCommunitiesLink()
+  const {
+    path
+  } = formatCommunitiesLink()
 
   return {
     icon: 'users',

@@ -1,7 +1,7 @@
 <template>
   <Component
-    class="ui item"
     :is="component"
+    class="ui item"
     :class="{
       disabled: isLoading,
       'main-link': modelId
@@ -13,19 +13,23 @@
       v-if="isLoading"
       class="icon"
     >
-      <div class="ui mini active inline loader"></div>
+      <div
+        class="ui mini active inline loader"
+      />
     </i>
     <i
       v-else
       class="headphones icon"
-    ></i>
+    />
 
     {{ libraryText }}
   </Component>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import createLibraryArtist from '*/helpers/actions/api/library/artist/create'
@@ -40,10 +44,12 @@ import {
 import {
   main as formatProfileLibraryTrackMainLink
 } from '*/helpers/formatters/links/profile/library/track'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
-  name: 'FavoriteOption',
+  name: 'LibraryOption',
   components: {
     BaseLinkContainer
   },
@@ -76,9 +82,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     link () {
       switch (this.model) {
         case 'artist':
@@ -92,25 +101,31 @@ export default {
       }
     },
     profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.modelId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          artistId: this.modelId
+        }
+      )
     },
     profileId () {
       return this.profileInfo.id.toString()
     },
     profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink({
-        profileId: this.profileId,
-        albumId: this.modelId
-      })
+      return formatProfileLibraryAlbumMainLink(
+        {
+          profileId: this.profileId,
+          albumId: this.modelId
+        }
+      )
     },
     profileLibraryTrackMainLink () {
-      return formatProfileLibraryTrackMainLink({
-        profileId: this.profileId,
-        trackId: this.modelId
-      })
+      return formatProfileLibraryTrackMainLink(
+        {
+          profileId: this.profileId,
+          trackId: this.modelId
+        }
+      )
     },
     libraryText () {
       return this.$t(
@@ -157,9 +172,13 @@ export default {
     }
   },
   methods: {
-    handleClick (event) {
+    handleClick (
+      event
+    ) {
       if (this.modelId) {
-        this.$emit('linkClick')
+        this.$emit(
+          'linkClick'
+        )
       } else {
         event.preventDefault()
 
@@ -168,7 +187,9 @@ export default {
         )
       }
     },
-    handleCreateSuccess (response) {
+    handleCreateSuccess (
+      response
+    ) {
       const libraryId =
         response.data.library_id.toString()
 
@@ -197,7 +218,9 @@ export default {
           return null
       }
     },
-    formatAlbumTrack (trackData) {
+    formatAlbumTrack (
+      trackData
+    ) {
       const artistName =
         formatArtistName(
           trackData.artists

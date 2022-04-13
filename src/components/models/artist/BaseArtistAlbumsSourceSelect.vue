@@ -32,7 +32,9 @@ import SourceSelect from './BaseAlbumsSourceSelect/SourceSelect.vue'
 import ArtistSelect from './BaseAlbumsSourceSelect/ArtistSelect.vue'
 import TypeSelect from './BaseAlbumsSourceSelect/TypeSelect.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 import formatArtistRequestData from '*/helpers/formatters/request/artist/data'
 
 export default {
@@ -93,16 +95,24 @@ export default {
       this.selectedArtistData = null
       this.selectedTypeId = null
     },
-    handleSelectedArtistDataChange (value) {
+    handleSelectedArtistDataChange (
+      value
+    ) {
       if (value) {
-        this.setRequestArtistData({
-          ...value
-        })
+        this.setRequestArtistData(
+          {
+            ...value
+          }
+        )
 
-        this.$emit('artistDataChange')
+        this.$emit(
+          'artistDataChange'
+        )
       }
     },
-    handleSelectedTypeIdChange (value) {
+    handleSelectedTypeIdChange (
+      value
+    ) {
       if (this.selectedArtistData) {
         this.selectedArtistData = {
           ...this.selectedArtistData,
@@ -111,30 +121,46 @@ export default {
       }
     },
     handleReset () {
-      this.$refs.source.reset()
+      this.$refs
+        .source
+        .reset()
 
       this.selectedSourceData = null
 
       this.resetRequestArtistData()
 
-      this.$emit('artistDataChange')
+      this.$emit(
+        'artistDataChange'
+      )
     },
-    setSelectedSourceData (value) {
+    setSelectedSourceData (
+      value
+    ) {
       this.selectedSourceData = value
     },
-    setSelectedArtistData (value) {
+    setSelectedArtistData (
+      value
+    ) {
       this.selectedArtistData =
-        this.formatSelectedArtistData(value)
+        this.formatSelectedArtistData(
+          value
+        )
     },
-    setSelectedTypeId (value) {
+    setSelectedTypeId (
+      value
+    ) {
       this.selectedTypeId = value
     },
-    formatSelectedArtistData (value) {
-      return formatArtistRequestData({
-        artistData: value,
-        sourceId: this.selectedSourceId,
-        albumType: this.selectedTypeId
-      })
+    formatSelectedArtistData (
+      value
+    ) {
+      return formatArtistRequestData(
+        {
+          artistData: value,
+          sourceId: this.selectedSourceId,
+          albumType: this.selectedTypeId
+        }
+      )
     }
   }
 }

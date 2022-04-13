@@ -6,15 +6,19 @@
     :subheader="trackExtraTitle"
     :content="artistName"
     :extra="duration"
-    isWithImage
+    is-with-image
     @click="handleClick"
   />
 </template>
 
 <script>
 import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
-import { generateKey } from '*/helpers/utils'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  generateKey
+} from '*/helpers/utils'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'TrackItem',
@@ -54,10 +58,12 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedTrackData({
-        ...this.trackData,
-        uuid: generateKey()
-      })
+      this.setSelectedTrackData(
+        {
+          ...this.trackData,
+          uuid: generateKey()
+        }
+      )
     }
   }
 }

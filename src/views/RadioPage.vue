@@ -8,19 +8,18 @@
   >
     <SearchSegment
       :scope="scope"
-      :modelName="modelName"
-      :modelScope="modelScope"
-      @scopeChange="handleScopeChange"
-      @modelNameChange="handleModelNameChange"
-      @modelScopeChange="handleModelScopeChange"
+      :model-name="modelName"
+      @scope-change="handleScopeChange"
+      @model-name-change="handleModelNameChange"
+      @model-scope-change="handleModelScopeChange"
     />
 
     <PlayerSegment
       v-if="scope && modelScope"
       :key="key"
       :scope="scope"
-      :modelName="modelName"
-      :modelScope="modelScope"
+      :model-name="modelName"
+      :model-scope="modelScope"
     />
   </div>
 </template>
@@ -33,7 +32,9 @@ import {
   radio as formatRadioPageNavigation
 } from '*/helpers/formatters/navigation'
 import formatRadioPageTab from '*/helpers/formatters/tabs/radio'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'RadioPage',
@@ -64,15 +65,21 @@ export default {
     this.setNavigation()
   },
   methods: {
-    handleScopeChange (value) {
+    handleScopeChange (
+      value
+    ) {
       this.scope = value
     },
-    handleModelNameChange (value) {
+    handleModelNameChange (
+      value
+    ) {
       this.modelName = value
 
       this.key = generateKey()
     },
-    handleModelScopeChange (value) {
+    handleModelScopeChange (
+      value
+    ) {
       this.modelScope = value
 
       this.key = generateKey()

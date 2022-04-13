@@ -6,39 +6,57 @@ import {
   tracks as formatProfileLibraryTracksLink
 } from '*/helpers/formatters/links/profile/library'
 
-export default function ({ profileId, profileNickname, scope }) {
-  const formatTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    scope
+  }
+) {
+  function formatTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: profileNickname }
+        {
+          modelName: profileNickname
+        }
       )
     } else {
       return i18n.global.t(
         'navigation.model.library',
-        { modelName: profileNickname }
+        {
+          modelName: profileNickname
+        }
       )
     }
   }
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'artists':
-        return formatProfileLibraryArtistsLink({
-          profileId
-        }).path
+        return formatProfileLibraryArtistsLink(
+          {
+            profileId
+          }
+        ).path
       case 'albums':
-        return formatProfileLibraryAlbumsLink({
-          profileId
-        }).path
+        return formatProfileLibraryAlbumsLink(
+          {
+            profileId
+          }
+        ).path
       case 'tracks':
-        return formatProfileLibraryTracksLink({
-          profileId
-        }).path
+        return formatProfileLibraryTracksLink(
+          {
+            profileId
+          }
+        ).path
       default:
-        return formatProfileLibraryMainLink({
-          profileId
-        }).path
+        return formatProfileLibraryMainLink(
+          {
+            profileId
+          }
+        ).path
     }
   }
 

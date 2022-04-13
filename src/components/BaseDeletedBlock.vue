@@ -1,8 +1,8 @@
 <template>
   <div class="main-deleted-container">
-    <span>
-      {{ deletedText }}
-    </span>
+    <span
+      v-text="deletedText"
+    />
   </div>
 </template>
 

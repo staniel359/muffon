@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,19 +12,21 @@
     />
 
     <slot
-      :topData="topData"
-      :isLoading="isLoading"
+      :top-data="topData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getTop from '*/helpers/actions/api/top/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTopSegmentContainer',
@@ -56,14 +61,22 @@ export default {
   },
   methods: {
     getTop,
-    fetchData (page) {
-      this.getTop({
-        ...this.topArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getTop(
+        {
+          ...this.topArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

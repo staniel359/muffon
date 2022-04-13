@@ -1,20 +1,26 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
-    :class="{ success: isSuccess }"
+    :class="{
+      success: isSuccess
+    }"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { profileUpdateFormOptions } from '*/helpers/data/plugins/semantic'
-import { stringToDate as formatStringToDate } from '*/helpers/formatters'
+import {
+  profileUpdateFormOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  stringToDate as formatStringToDate
+} from '*/helpers/formatters'
 import patchProfile from '*/helpers/actions/api/profile/update'
 
 export default {
@@ -35,16 +41,23 @@ export default {
   },
   computed: {
     options () {
-      return profileUpdateFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return profileUpdateFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     }
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const updateArgs =
@@ -57,7 +70,9 @@ export default {
       )
     },
     patchProfile,
-    formatUpdateArgs (fields) {
+    formatUpdateArgs (
+      fields
+    ) {
       const {
         email,
         password,

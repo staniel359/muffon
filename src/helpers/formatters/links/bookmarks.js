@@ -1,4 +1,4 @@
-export const main = () => {
+export function main () {
   return {
     name: 'BookmarksMainPage',
     params: {},
@@ -6,7 +6,7 @@ export const main = () => {
   }
 }
 
-export const artists = () => {
+export function artists () {
   return {
     name: 'BookmarksArtistsPage',
     params: {},
@@ -14,7 +14,7 @@ export const artists = () => {
   }
 }
 
-export const albums = () => {
+export function albums () {
   return {
     name: 'BookmarksAlbumsPage',
     params: {},
@@ -22,7 +22,7 @@ export const albums = () => {
   }
 }
 
-export const tracks = () => {
+export function tracks () {
   return {
     name: 'BookmarksTracksPage',
     params: {},

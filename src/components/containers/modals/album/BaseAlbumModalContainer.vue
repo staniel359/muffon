@@ -2,14 +2,16 @@
   <BaseModalContentContainer
     ref="modal"
     :key="key"
-    :isLoading="isLoading"
+    :response-data="albumData"
+    :is-loading="isLoading"
     :error="error"
-    :responseData="albumData"
     @call="handleModalCall"
     @refresh="handleModalRefresh"
   >
     <template #default>
-      <slot :[scope]="albumData[scope]"></slot>
+      <slot
+        :[scope]="albumData[scope]"
+      />
     </template>
   </BaseModalContentContainer>
 </template>
@@ -18,7 +20,9 @@
 import BaseModalContentContainer
   from '*/components/containers/modals/BaseModalContentContainer.vue'
 import getAlbum from '*/helpers/actions/api/album/get'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseAlbumModalContainer',
@@ -73,10 +77,14 @@ export default {
       )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

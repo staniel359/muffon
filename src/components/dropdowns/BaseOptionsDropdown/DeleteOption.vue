@@ -3,7 +3,9 @@
     class="item"
     @click="handleClick"
   >
-    <i class="trash alternate outline icon"></i>
+    <i
+      class="trash alternate outline icon"
+    />
 
     {{ deleteText }}
   </div>
@@ -24,7 +26,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

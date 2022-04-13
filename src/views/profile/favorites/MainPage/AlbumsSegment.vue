@@ -1,16 +1,16 @@
 <template>
   <BaseProfileFavoritesPaginatedSegmentContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
-        :isWithDeleteOption="isWithDeleteOption"
-        isWithArtistName
-        isFavorite
+        :is-with-delete-option="isWithDeleteOption"
+        is-with-artist-name
+        is-favorite
       />
     </template>
   </BaseProfileFavoritesPaginatedSegmentContainer>
@@ -46,9 +46,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfileFavoriteAlbumsLink({
-        profileId: this.profileId
-      })
+      return formatProfileFavoriteAlbumsLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

@@ -2,15 +2,15 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :isError="isError"
-    :totalCount="totalCount"
-    :errorArtists="errorArtists"
+    :is-error="isError"
+    :total-count="totalCount"
+    :error-artists="errorArtists"
     @retry="handleRetry"
   />
 </template>
@@ -54,6 +54,9 @@ export default {
       return this.artists.length
     }
   },
+  watch: {
+    artists: 'handleArtistsChange'
+  },
   mounted () {
     this.isMounted = true
 
@@ -62,12 +65,11 @@ export default {
   beforeUnmount () {
     this.isMounted = false
   },
-  watch: {
-    artists: 'handleArtistsChange'
-  },
   methods: {
     handleArtistsChange () {
-      this.$refs.progress.reset()
+      this.$refs
+        .progress
+        .reset()
 
       this.saveArtists()
     },
@@ -81,22 +83,34 @@ export default {
       this.isProgress = true
 
       this.setCollection(
-        [...this.errorArtists]
+        [
+          ...this.errorArtists
+        ]
       )
 
       this.errorArtists = []
     },
     createLibraryArtist,
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'save.active.artists',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
     async saveArtists () {
-      this.$refs.progress.setTotalCount(
-        this.totalCount
-      )
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
 
       for (const artistData of this.artists) {
         if (this.isMounted) {
@@ -106,7 +120,9 @@ export default {
         }
       }
     },
-    async saveArtist (artistData) {
+    async saveArtist (
+      artistData
+    ) {
       const artistFormatted =
         this.formatArtist(
           artistData
@@ -122,7 +138,9 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs.progress.increment()
+          this.$refs
+            .progress
+            .increment()
         }
       }
 
@@ -134,12 +152,16 @@ export default {
         handleFinish
       )
     },
-    formatArtist (artistData) {
+    formatArtist (
+      artistData
+    ) {
       return {
         artistName: artistData.name
       }
     },
-    setErrorArtists (value) {
+    setErrorArtists (
+      value
+    ) {
       this.errorArtists = value
     }
   }

@@ -2,16 +2,19 @@
   <BaseLabelLinkContainer
     :link="tagMainLink"
   >
-    <span class="link">
-      {{ tagName }}
-    </span>
+    <span
+      class="link"
+      v-text="tagName"
+    />
   </BaseLabelLinkContainer>
 </template>
 
 <script>
 import BaseLabelLinkContainer
   from '*/components/containers/links/BaseLabelLinkContainer.vue'
-import { main as formatTagMainLink } from '*/helpers/formatters/links/tag'
+import {
+  main as formatTagMainLink
+} from '*/helpers/formatters/links/tag'
 
 export default {
   name: 'TagItem',
@@ -26,9 +29,11 @@ export default {
   },
   computed: {
     tagMainLink () {
-      return formatTagMainLink({
-        tagName: this.tagName
-      })
+      return formatTagMainLink(
+        {
+          tagName: this.tagName
+        }
+      )
     },
     tagName () {
       return this.tagData.name

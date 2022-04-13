@@ -3,15 +3,17 @@
     model="artist"
     :image="imageData?.extrasmall"
     :header="artistName"
-    isWithImage
-    isImageCircular
+    is-with-image
+    is-image-circular
     @click="handleClick"
   />
 </template>
 
 <script>
 import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'ArtistItem',
@@ -37,10 +39,12 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedArtistData({
-        ...this.artistData,
-        uuid: generateKey()
-      })
+      this.setSelectedArtistData(
+        {
+          ...this.artistData,
+          uuid: generateKey()
+        }
+      )
     }
   }
 }

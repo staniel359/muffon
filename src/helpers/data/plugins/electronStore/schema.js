@@ -4,7 +4,10 @@ export default {
     default: 1
   },
   'layout.activeTabId': {
-    type: ['null', 'string'],
+    type: [
+      'null',
+      'string'
+    ],
     default: null
   },
   'layout.isDarkMode': {
@@ -24,11 +27,17 @@ export default {
     default: []
   },
   'player.currentTrackId': {
-    type: ['null', 'string'],
+    type: [
+      'null',
+      'string'
+    ],
     default: null
   },
   'player.currentVariantId': {
-    type: ['null', 'string'],
+    type: [
+      'null',
+      'string'
+    ],
     default: null
   },
   'player.isWithScrobbling': {
@@ -36,7 +45,10 @@ export default {
     default: false
   },
   'player.playing': {
-    type: ['null', 'object'],
+    type: [
+      'null',
+      'object'
+    ],
     default: null
   },
   'player.sourceId': {
@@ -48,7 +60,10 @@ export default {
     default: []
   },
   'profile.info': {
-    type: ['null', 'object'],
+    type: [
+      'null',
+      'object'
+    ],
     default: null
   },
   'profile.isLoggedIn': {
@@ -64,11 +79,17 @@ export default {
     default: 'en'
   },
   'profile.token': {
-    type: ['null', 'string'],
+    type: [
+      'null',
+      'string'
+    ],
     default: null
   },
   'queue.currentTrackId': {
-    type: ['null', 'string'],
+    type: [
+      'null',
+      'string'
+    ],
     default: null
   },
   'queue.isAutoplay': {

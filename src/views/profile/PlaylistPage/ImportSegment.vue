@@ -4,10 +4,10 @@
       :title="addTracksText"
     >
       <SearchImportBlock
-        :playlistId="playlistId"
+        :playlist-id="playlistId"
       />
       <LibraryImportBlock
-        :playlistId="playlistId"
+        :playlist-id="playlistId"
       />
     </BaseAccordionContainer>
   </BaseSegmentContainer>

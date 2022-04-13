@@ -3,36 +3,36 @@
     <TrackItem
       v-for="(trackData, index) in tracksCollection"
       :key="trackData.uuid"
-      :trackData="trackData"
-      :queueTracks="tracksCollection"
-      :isWithImage="isWithImage"
-      :isWithIndex="isWithIndex"
+      :track-data="trackData"
+      :queue-tracks="tracksCollection"
+      :is-with-image="isWithImage"
+      :is-with-index="isWithIndex"
       :index="index"
-      :isWithArtistName="isWithArtistName"
-      :albumArtistName="albumArtistName"
-      :isWithAlbumTitle="isWithAlbumTitle"
-      :isWithListenersCount="isWithListenersCount"
-      :topTrackCount="topTrackCount"
-      :isWithDuration="isWithDuration"
-      :isWithSource="isWithSource"
-      :isLinkToLibrary="isLinkToLibrary"
-      :profileId="profileId"
-      :isWithLibraryOption="isWithLibraryOption"
-      :isWithFavoriteOption="isWithFavoriteOption"
-      :isWithBookmarkOption="isWithBookmarkOption"
-      :isWithListenedOption="isWithListenedOption"
-      :isWithPlaylistOption="isWithPlaylistOption"
-      :isWithDeleteOption="isWithDeleteOption"
-      :isClearable="isClearable"
-      :isWithCreated="isWithCreated"
-      :isWithSelfIcons="isWithSelfIcons"
-      :isBookmark="isBookmark"
-      :isFavorite="isFavorite"
-      :isPlaylistTrack="isPlaylistTrack"
-      :playlistId="playlistId"
-      :playlistTitle="playlistTitle"
-      @linkClick="handleLinkClick"
-      @deleteButtonClick="handleDeleteButtonClick"
+      :is-with-artist-name="isWithArtistName"
+      :album-artist-name="albumArtistName"
+      :is-with-album-title="isWithAlbumTitle"
+      :is-with-listeners-count="isWithListenersCount"
+      :top-track-count="topTrackCount"
+      :is-with-duration="isWithDuration"
+      :is-with-source="isWithSource"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
+      :is-with-library-option="isWithLibraryOption"
+      :is-with-favorite-option="isWithFavoriteOption"
+      :is-with-bookmark-option="isWithBookmarkOption"
+      :is-with-listened-option="isWithListenedOption"
+      :is-with-playlist-option="isWithPlaylistOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-clearable="isClearable"
+      :is-with-created="isWithCreated"
+      :is-with-self-icons="isWithSelfIcons"
+      :is-bookmark="isBookmark"
+      :is-favorite="isFavorite"
+      :is-playlist-track="isPlaylistTrack"
+      :playlist-id="playlistId"
+      :playlist-title="playlistTitle"
+      @link-click="handleLinkClick"
+      @delete-button-click="handleDeleteButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -41,8 +41,12 @@
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import TrackItem from './BaseTracksSimpleList/TrackItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
-import { track as formatTrack } from '*/helpers/formatters/track'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
+import {
+  track as formatPlayerTrack
+} from '*/helpers/formatters/player/track'
 
 export default {
   name: 'BaseTracksSimpleList',
@@ -102,27 +106,42 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
-    handleDeleteButtonClick ({ uuid }) {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
       this.$emit(
         'deleteButtonClick',
-        { uuid }
+        {
+          uuid
+        }
       )
     },
     formatTracks () {
-      return this.tracks.map(trackData => {
-        const isFromSource =
-          trackData.audio?.present
+      return this.tracks.map(
+        this.formatTrack
+      )
+    },
+    formatTrack (
+      trackData
+    ) {
+      const isFromSource =
+        trackData.audio?.present
 
-        return formatTrack({
+      return formatPlayerTrack(
+        {
           trackData,
           artistName: this.artistName,
           albumTitle: this.albumTitle,
           imageData: this.imageData,
           isFromSource
-        })
-      })
+        }
+      )
     }
   }
 }

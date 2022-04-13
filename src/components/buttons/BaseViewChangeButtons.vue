@@ -6,7 +6,7 @@
         :key="index"
         :button="button"
         :index="index"
-        :viewIndex="viewIndex"
+        :view-index="viewIndex"
         @click="handleViewButtonClick"
       />
     </BaseButtonsContainer>
@@ -29,7 +29,11 @@ export default {
     buttons: {
       type: Array,
       default () {
-        return ['ul list', 'th', 'th list']
+        return [
+          'ul list',
+          'th',
+          'th list'
+        ]
       }
     },
     viewIndex: Number
@@ -38,7 +42,9 @@ export default {
     'viewButtonClick'
   ],
   methods: {
-    handleViewButtonClick (index) {
+    handleViewButtonClick (
+      index
+    ) {
       this.$emit(
         'viewButtonClick',
         index

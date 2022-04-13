@@ -1,30 +1,38 @@
 <template>
-  <div :class="[
-    'description',
-    'library-counters-container',
-    'main-small-container'
-  ]">
+  <div
+    :class="[
+      'description',
+      'library-counters-container',
+      'main-small-container'
+    ]"
+  >
     <small
       class="tracks-counter"
-      :class="{ link: isTracksActive }"
+      :class="{
+        link: isTracksActive
+      }"
       @mouseenter="handleTracksMouseEnter"
       @mouseleave="handleTracksMouseLeave"
     >
-      <i class="music icon class"></i>
-      <span>
-        {{ tracksCount }}
-      </span>
+      <i class="music icon" />
+
+      <span
+        v-text="tracksCount"
+      />
     </small>
 
     <small
-      :class="{ link: isAlbumsActive }"
+      :class="{
+        link: isAlbumsActive
+      }"
       @mouseenter="handleAlbumsMouseEnter"
       @mouseleave="handleAlbumsMouseLeave"
     >
-      <i class="record vinyl icon class"></i>
-      <span>
-        {{ albumsCount }}
-      </span>
+      <i class="record vinyl icon" />
+
+      <span
+        v-text="albumsCount"
+      />
     </small>
   </div>
 </template>

@@ -14,10 +14,11 @@
     </div>
 
     <div v-if="isSuccess">
-      <i class="check green icon"></i>
-      <span>
-        {{ clearedText }}
-      </span>
+      <i class="check green icon" />
+
+      <span
+        v-text="clearedText"
+      />
     </div>
   </div>
 </template>

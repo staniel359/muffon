@@ -10,7 +10,7 @@
         <TypeSelect
           v-if="isSelectedSourceWithMultipleTypes"
           :key="typeSelectKey"
-          :albumsData="selectedSourceAlbumsData"
+          :albums-data="selectedSourceAlbumsData"
           :types="selectedSourceTypes"
         />
 
@@ -18,7 +18,7 @@
           v-if="selectedTypeId"
           :key="albumSelectKey"
           :albums="selectedTypeAlbums"
-          :typeId="selectedTypeId"
+          :type-id="selectedTypeId"
         />
       </template>
     </div>
@@ -36,9 +36,13 @@ import SourceSelect from './BaseAlbumSourceSelect/SourceSelect.vue'
 import TypeSelect from './BaseAlbumSourceSelect/TypeSelect.vue'
 import AlbumSelect from './BaseAlbumSourceSelect/AlbumSelect.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumSourceSelect',
@@ -79,7 +83,9 @@ export default {
       return [
         this.artistName,
         this.albumTitle
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     },
     albumTitle () {
       return this.albumData.title
@@ -134,20 +140,28 @@ export default {
     handleSelectedTypeIdChange () {
       this.albumSelectKey = generateKey()
     },
-    handleSelectedAlbumDataChange (value) {
-      this.setRequestAlbumData({
-        ...value,
-        albumType: this.selectedTypeId
-      })
+    handleSelectedAlbumDataChange (
+      value
+    ) {
+      this.setRequestAlbumData(
+        {
+          ...value,
+          albumType: this.selectedTypeId
+        }
+      )
     },
     handleReset () {
-      this.$refs.source.reset()
+      this.$refs
+        .source
+        .reset()
 
       this.selectedSourceData = null
 
       this.resetRequestAlbumData()
     },
-    setSelectedSourceData (value) {
+    setSelectedSourceData (
+      value
+    ) {
       this.selectedSourceData = value
 
       if (this.isSelectedSourceWithMultipleTypes) {
@@ -156,15 +170,21 @@ export default {
         this.selectedTypeId = 'album'
       }
     },
-    setSelectedTypeId (value) {
+    setSelectedTypeId (
+      value
+    ) {
       this.selectedTypeId = value
     },
-    setSelectedAlbumData (value) {
+    setSelectedAlbumData (
+      value
+    ) {
       this.selectedAlbumData =
-        formatAlbumRequestData({
-          sourceId: this.selectedSourceId,
-          albumData: value
-        })
+        formatAlbumRequestData(
+          {
+            sourceId: this.selectedSourceId,
+            albumData: value
+          }
+        )
     }
   }
 }

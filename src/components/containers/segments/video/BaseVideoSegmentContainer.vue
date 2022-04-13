@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ui basic segments"
     ref="segment"
+    class="ui basic segments"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,19 +9,21 @@
     />
 
     <slot
-      :videoData="videoData"
-      :isLoading="isLoading"
+      :video-data="videoData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getVideo from '*/helpers/actions/api/video/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseVideoSegmentContainer',
@@ -61,14 +63,22 @@ export default {
   },
   methods: {
     getVideo,
-    fetchData (page) {
-      this.getVideo({
-        ...this.videoArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getVideo(
+        {
+          ...this.videoArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

@@ -2,7 +2,7 @@
   <BaseTopPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseTagsList

@@ -1,19 +1,19 @@
 <template>
   <BaseProfilePostsPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="profileData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="profileData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <BasePostsSimpleList
             :posts="slotProps[scope]"
-            :profileId="profileId"
+            :profile-id="profileId"
           />
         </template>
       </BasePaginatedPageContainer>

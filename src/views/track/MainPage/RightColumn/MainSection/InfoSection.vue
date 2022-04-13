@@ -3,25 +3,29 @@
     <BaseHeaderContainer
       tag="h3"
     >
-      {{ trackTitle }}
+      <template #default>
+        {{ trackTitle }}
 
-      <span
-        v-if="trackExtraTitle"
-        class="sub header main-extra-title"
-      >
-        <strong>
-          {{ trackExtraTitle }}
-        </strong>
-      </span>
+        <span
+          v-if="trackExtraTitle"
+          class="sub header main-extra-title"
+        >
+          <strong
+            v-html="trackExtraTitle"
+          />
+        </span>
+      </template>
     </BaseHeaderContainer>
 
     <BaseHeaderContainer
       class="track-artist-name"
       tag="h4"
     >
-      <BaseArtistLinks
-        :artists="artists"
-      />
+      <template #default>
+        <BaseArtistLinks
+          :artists="artists"
+        />
+      </template>
     </BaseHeaderContainer>
 
     <div
@@ -43,8 +47,12 @@ import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
@@ -68,11 +76,13 @@ export default {
       return this.trackData.artists
     },
     albumMainLink () {
-      return formatAlbumMainLink({
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        sourceParams: this.sourceParams
-      })
+      return formatAlbumMainLink(
+        {
+          albumTitle: this.albumTitle,
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     albumTitle () {
       return this.albumData?.title
@@ -86,11 +96,13 @@ export default {
       )
     },
     sourceParams () {
-      return formatAlbumRequestData({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.artistName
-      })
+      return formatAlbumRequestData(
+        {
+          sourceId: this.albumData.source_id,
+          albumData: this.albumData,
+          artistName: this.artistName
+        }
+      )
     },
     trackExtraTitle () {
       return this.trackData.extra_title

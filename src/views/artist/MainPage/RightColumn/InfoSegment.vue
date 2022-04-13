@@ -9,19 +9,19 @@
     />
 
     <BaseCounters
-      :listenersCount="listenersCount"
-      :playsCount="playsCount"
+      :listeners-count="listenersCount"
+      :plays-count="playsCount"
     />
 
     <BaseArtistTags
-      :artistData="artistData"
+      :artist-data="artistData"
     />
 
     <template v-if="description">
       <BaseDivider />
 
       <BaseArtistDescription
-        :artistData="artistData"
+        :artist-data="artistData"
       />
     </template>
   </BaseSegmentContainer>

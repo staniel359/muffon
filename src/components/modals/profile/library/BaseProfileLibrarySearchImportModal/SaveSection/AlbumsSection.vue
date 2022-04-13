@@ -2,15 +2,15 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :isError="isError"
-    :totalCount="totalCount"
-    :errorAlbums="errorAlbums"
+    :is-error="isError"
+    :total-count="totalCount"
+    :error-albums="errorAlbums"
     @retry="handleRetry"
   />
 </template>
@@ -19,7 +19,9 @@
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './AlbumsSection/CompleteSection.vue'
 import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsSection',
@@ -55,6 +57,9 @@ export default {
       return this.albums.length
     }
   },
+  watch: {
+    albums: 'handleAlbumsChange'
+  },
   mounted () {
     this.isMounted = true
 
@@ -63,12 +68,11 @@ export default {
   beforeUnmount () {
     this.isMounted = false
   },
-  watch: {
-    albums: 'handleAlbumsChange'
-  },
   methods: {
     handleAlbumsChange () {
-      this.$refs.progress.reset()
+      this.$refs
+        .progress
+        .reset()
 
       this.saveAlbums()
     },
@@ -82,22 +86,34 @@ export default {
       this.isProgress = true
 
       this.setCollection(
-        [...this.errorAlbums]
+        [
+          ...this.errorAlbums
+        ]
       )
 
       this.errorAlbums = []
     },
     createLibraryAlbum,
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'save.active.albums',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
     async saveAlbums () {
-      this.$refs.progress.setTotalCount(
-        this.totalCount
-      )
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
 
       for (const albumData of this.albums) {
         if (this.isMounted) {
@@ -107,7 +123,9 @@ export default {
         }
       }
     },
-    async saveAlbum (albumData) {
+    async saveAlbum (
+      albumData
+    ) {
       const albumFormatted =
         this.formatAlbum(
           albumData
@@ -123,7 +141,9 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs.progress.increment()
+          this.$refs
+            .progress
+            .increment()
         }
       }
 
@@ -135,7 +155,9 @@ export default {
         handleFinish
       )
     },
-    formatAlbum (albumData) {
+    formatAlbum (
+      albumData
+    ) {
       const artistName =
         formatArtistName(
           albumData.artists
@@ -144,10 +166,13 @@ export default {
       return {
         albumTitle: albumData.title,
         artistName,
-        imageUrl: albumData.image?.original
+        imageUrl:
+          albumData.image?.original
       }
     },
-    setErrorAlbums (value) {
+    setErrorAlbums (
+      value
+    ) {
       this.errorAlbums = value
     }
   }

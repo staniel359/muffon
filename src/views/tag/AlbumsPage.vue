@@ -6,14 +6,14 @@
     <template #default="slotProps">
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        :itemsInRow="itemsInRow"
-        isWithArtistName
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :profile-id="slotProps.profileId"
+        :items-in-row="itemsInRow"
+        is-with-artist-name
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseTagPaginatedPageContainer>

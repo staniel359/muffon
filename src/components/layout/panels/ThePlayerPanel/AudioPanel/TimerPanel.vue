@@ -1,25 +1,35 @@
 <template>
-  <div class="player-timer">
-    {{ audioTime }}
-  </div>
+  <div
+    class="player-timer"
+    v-text="audioTime"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { seconds as formatSeconds } from '*/helpers/formatters'
+import {
+  mapState
+} from 'vuex'
+import {
+  seconds as formatSeconds
+} from '*/helpers/formatters'
 
 export default {
   name: 'TimerPanel',
   computed: {
-    ...mapState('audio', {
-      audioCurrentTime: 'currentTime',
-      audioDuration: 'duration'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioCurrentTime: 'currentTime',
+        audioDuration: 'duration'
+      }
+    ),
     audioTime () {
       return [
         this.audioCurrentTimeSeconds,
         this.audioDurationSeconds
-      ].join(' / ')
+      ].join(
+        ' / '
+      )
     },
     audioCurrentTimeSeconds () {
       return formatSeconds(

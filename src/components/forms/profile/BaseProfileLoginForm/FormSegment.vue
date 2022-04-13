@@ -11,7 +11,7 @@
         <BaseProfileRememberField />
 
         <BaseProfileSubmitButton
-          actionKey="login"
+          action-key="login"
         />
       </div>
     </BaseProfileLoginFormContainer>
@@ -43,7 +43,9 @@ export default {
     BaseProfileSubmitButton
   },
   mounted () {
-    this.$refs.email.focus()
+    this.$refs
+      .email
+      .focus()
   }
 }
 </script>

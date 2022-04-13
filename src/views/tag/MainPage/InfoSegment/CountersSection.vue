@@ -1,7 +1,7 @@
 <template>
   <BaseCounters
-    :taggersCount="taggersCount"
-    :taggingsCount="taggingsCount"
+    :taggers-count="taggersCount"
+    :taggings-count="taggingsCount"
   />
 </template>
 

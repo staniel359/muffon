@@ -2,13 +2,13 @@
   <template v-if="isRenderPage">
     <EmptyPageItem
       v-if="isPageEmpty"
-      :isDisabled="isDisabled"
+      :is-disabled="isDisabled"
     />
     <NumberPageItem
       v-else
       :page="page"
-      :activePage="activePage"
-      :isDisabled="isDisabled"
+      :active-page="activePage"
+      :is-disabled="isDisabled"
       @click="handleClick"
     />
   </template>
@@ -96,7 +96,9 @@ export default {
     }
   },
   methods: {
-    handleClick (value) {
+    handleClick (
+      value
+    ) {
       this.$emit(
         'click',
         value

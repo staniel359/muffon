@@ -79,7 +79,9 @@ export default {
   },
   methods: {
     refresh () {
-      this.$refs.view.refresh()
+      this.$refs
+        .view
+        .refresh()
     }
   }
 }

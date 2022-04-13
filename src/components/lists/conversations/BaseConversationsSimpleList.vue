@@ -3,7 +3,7 @@
     <ConversationItem
       v-for="conversationData in conversations"
       :key="conversationData.uuid"
-      :conversationData="conversationData"
+      :conversation-data="conversationData"
     />
   </BaseListContainer>
 </template>

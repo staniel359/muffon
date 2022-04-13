@@ -1,44 +1,70 @@
 import audioSources from '*/helpers/data/audio/sources'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
-const streamable = () => {
-  return audioSources.filter(sourceData => {
-    return sourceData.isStreamable
-  })
-}
-
-export const streamableCollection = () => {
+export function streamableCollection () {
   return formatCollection(
     streamable()
   )
 }
 
-const other = () => {
-  return audioSources.filter(sourceData => {
-    return !sourceData.isStreamable
-  })
+function streamable () {
+  return audioSources.filter(
+    isSourceStreamable
+  )
 }
 
-const otherCollection = () => {
+function isSourceStreamable (
+  sourceData
+) {
+  return sourceData.isStreamable
+}
+
+function otherCollection () {
   return formatCollection(
     other()
   )
 }
 
-export const otherWithAlbumsCollection = () => {
-  return otherCollection().filter(sourceData => {
-    return sourceData.isWithAlbums
-  })
+function other () {
+  return audioSources.filter(
+    isSourceNotStreamable
+  )
 }
 
-export const otherWithTracksCollection = () => {
-  return otherCollection().filter(sourceData => {
-    return sourceData.isWithTracks
-  })
+function isSourceNotStreamable (
+  sourceData
+) {
+  return !sourceData.isStreamable
 }
 
-export const allWithAlbumsCollection = () => {
-  return audioSources.filter(sourceData => {
-    return sourceData.isWithAlbums
-  })
+export function otherWithAlbumsCollection () {
+  return otherCollection().filter(
+    isSourceWithAlbums
+  )
+}
+
+function isSourceWithAlbums (
+  sourceData
+) {
+  return sourceData.isWithAlbums
+}
+
+export function otherWithTracksCollection () {
+  return otherCollection().filter(
+    isSourceWithTracks
+  )
+}
+
+function isSourceWithTracks (
+  sourceData
+) {
+  return sourceData.isWithTracks
+}
+
+export function allWithAlbumsCollection () {
+  return audioSources.filter(
+    isSourceWithAlbums
+  )
 }

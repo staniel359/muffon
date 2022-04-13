@@ -2,10 +2,10 @@
   <BaseTracksSimpleList
     class="tracks-list"
     :tracks="tracks"
-    isWithArtistName
-    isWithDeleteOption
-    isClearable
-    @deleteButtonClick="handleDeleteButtonClick"
+    is-with-artist-name
+    is-with-delete-option
+    is-clearable
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -25,8 +25,14 @@ export default {
     'tracksChange'
   ],
   methods: {
-    handleDeleteButtonClick ({ uuid }) {
-      const isMatchedTrack = trackData => {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedTrack (
+        trackData
+      ) {
         return trackData.uuid !== uuid
       }
 

@@ -1,19 +1,26 @@
 <template>
   <div
     class="the-background"
-    :class="{ dark: isDarkMode }"
-  ></div>
+    :class="{
+      dark: isDarkMode
+    }"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'TheBackground',
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

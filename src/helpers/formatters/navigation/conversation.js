@@ -5,16 +5,28 @@ import formatConversationSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({ profileNickname, conversationId, scope }) {
+export default function (
+  {
+    profileNickname,
+    conversationId,
+    scope
+  }
+) {
   return [
     formatConversationsSection(),
-    formatConversationSection({
-      profileNickname,
-      conversationId,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatConversationSection(
+      {
+        profileNickname,
+        conversationId,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

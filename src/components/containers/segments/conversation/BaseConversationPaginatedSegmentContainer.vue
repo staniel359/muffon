@@ -1,25 +1,25 @@
 <template>
   <BaseConversationSegmentContainer
     ref="segment"
-    :conversationId="conversationId"
+    :conversation-id="conversationId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedListContainer
-        :responseData="segmentSlotProps.conversationData"
+        :response-data="segmentSlotProps.conversationData"
         :scope="scope"
         :limit="limit"
-        :isLoading="segmentSlotProps.isLoading"
+        :is-loading="segmentSlotProps.isLoading"
         :error="segmentSlotProps.error"
-        @fetchData="segmentSlotProps.fetchData"
+        @fetch-data="segmentSlotProps.fetchData"
         @refresh="segmentSlotProps.refresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedListContainer>
     </template>
@@ -45,7 +45,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

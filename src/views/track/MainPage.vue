@@ -1,6 +1,6 @@
 <template>
   <BaseTrackPageContainer
-    :sourceParams="sourceParams"
+    :source-params="sourceParams"
   >
     <template #default="slotProps">
       <div
@@ -12,13 +12,13 @@
       >
         <BaseSegmentContainer>
           <TrackSourceSelect
-            :trackData="slotProps.trackData"
+            :track-data="slotProps.trackData"
           />
         </BaseSegmentContainer>
 
         <BaseSegmentContainer
           class="track-segment"
-          :isLoading="slotProps.isLoading"
+          :is-loading="slotProps.isLoading"
           :error="slotProps.error"
           @init="handleInit"
           @refresh="slotProps.refresh"
@@ -26,13 +26,13 @@
           <template #default>
             <LeftColumn
               v-if="scrollable"
-              :trackData="slotProps.trackData"
+              :track-data="slotProps.trackData"
               :scrollable="scrollable"
             />
 
             <RightColumn
-              :trackData="slotProps.trackData"
-              :requestTrackData="slotProps.requestTrackData"
+              :track-data="slotProps.trackData"
+              :request-track-data="slotProps.requestTrackData"
             />
           </template>
         </BaseSegmentContainer>
@@ -97,8 +97,10 @@ export default {
     }
   },
   methods: {
-    handleInit (el) {
-      this.scrollable = el
+    handleInit (
+      element
+    ) {
+      this.scrollable = element
     }
   }
 }

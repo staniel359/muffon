@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,22 +12,26 @@
     />
 
     <slot
-      :artistData="artistData"
-      :profileId="profileId"
-      :topTrackCount="topTrackCount"
-      :isLoading="isLoading"
+      :artist-data="artistData"
+      :profile-id="profileId"
+      :top-track-count="topTrackCount"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getArtist from '*/helpers/actions/api/artist/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseArtistSegmentContainer',
@@ -52,9 +59,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     },
@@ -71,14 +81,22 @@ export default {
   },
   methods: {
     getArtist,
-    fetchData (page) {
-      this.getArtist({
-        ...this.artistArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getArtist(
+        {
+          ...this.artistArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

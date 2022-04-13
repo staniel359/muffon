@@ -2,7 +2,7 @@
   <SourceItem
     v-for="sourceData in streamableSourcesCollection"
     :key="sourceData.uuid"
-    :sourceData="sourceData"
+    :source-data="sourceData"
   />
 </template>
 

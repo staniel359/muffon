@@ -8,16 +8,16 @@
 
   <BasePaginatedListContainer
     class="profile-artists-list"
-    :responseData="profileArtistsData"
+    :response-data="profileArtistsData"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        :profileId="profileId"
-        isImageSmall
-        isLinkToLibrary
+        :profile-id="profileId"
+        is-image-small
+        is-link-to-library
       />
     </template>
   </BasePaginatedListContainer>
@@ -29,13 +29,12 @@
     <strong
       class="main-link"
       @click="handleMoreClick"
-    >
-      {{ moreText }}
-    </strong>
+      v-text="moreText"
+    />
 
     <BaseRecommendationProfileArtistsModal
       ref="modal"
-      :recommendationId="recommendationId"
+      :recommendation-id="recommendationId"
     />
   </div>
 </template>
@@ -76,7 +75,9 @@ export default {
     similarText () {
       return this.$t(
         'recommendation.similar',
-        { count: this.profileArtistsCount }
+        {
+          count: this.profileArtistsCount
+        }
       )
     },
     profileArtistsCount () {
@@ -96,7 +97,9 @@ export default {
       return this.profileArtistsCount > 5
     },
     moreText () {
-      return this.$t('more')
+      return this.$t(
+        'more'
+      )
     },
     recommendationId () {
       return this.recommendationData.id.toString()
@@ -104,7 +107,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

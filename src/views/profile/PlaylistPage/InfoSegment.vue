@@ -17,7 +17,7 @@
           <div
             class="description"
             v-html="tracksCountText"
-          ></div>
+          />
 
           <BaseTimestamp
             class="description playlist-timestamp"
@@ -27,8 +27,8 @@
 
         <BaseOptionsDropdown
           class="playlist-options"
-          :isWithEditOption="isWithEditOption"
-          :isWithDeleteOption="isWithDeleteOption"
+          :is-with-edit-option="isWithEditOption"
+          :is-with-delete-option="isWithDeleteOption"
           @edit="handleEditOptionClick"
           @delete="handleDeleteOptionClick"
         />
@@ -38,13 +38,13 @@
 
   <BasePlaylistUpdateModal
     ref="editModal"
-    :playlistData="playlistData"
+    :playlist-data="playlistData"
   />
 
   <BasePlaylistDeleteModal
     ref="deleteModal"
-    :playlistData="playlistData"
-    isDeleteWithRedirect
+    :playlist-data="playlistData"
+    is-delete-with-redirect
   />
 </template>
 
@@ -60,8 +60,12 @@ import BasePlaylistUpdateModal
   from '*/components/modals/playlist/BasePlaylistUpdateModal.vue'
 import BasePlaylistDeleteModal
   from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
-import { number as formatNumber } from '*/helpers/formatters'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'InfoSegment',
@@ -94,7 +98,9 @@ export default {
     tracksCountText () {
       return this.$t(
         'counters.tracks',
-        { count: this.tracksCountStrong }
+        {
+          count: this.tracksCountStrong
+        }
       )
     },
     tracksCountStrong () {
@@ -107,12 +113,6 @@ export default {
     },
     tracksCount () {
       return this.playlistData.tracks_count
-    },
-    createdText () {
-      return this.$t(
-        'playlist.created',
-        { date: this.createdDateFormatted }
-      )
     },
     created () {
       return this.playlistData.created
@@ -130,10 +130,14 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
-      this.$refs.editModal.show()
+      this.$refs
+        .editModal
+        .show()
     },
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

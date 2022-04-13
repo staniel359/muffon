@@ -3,12 +3,12 @@
     class="small main-pagination"
   >
     <PreviousPageItem
-      :isDisabled="isPreviousPageDisabled"
+      :is-disabled="isPreviousPageDisabled"
       @click="handlePrevPageClick"
     />
 
     <NextPageItem
-      :isDisabled="isNextPageDisabled"
+      :is-disabled="isNextPageDisabled"
       @click="handleNextPageClick"
     />
   </BaseMenuContainer>

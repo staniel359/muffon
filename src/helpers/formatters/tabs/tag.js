@@ -6,36 +6,51 @@ import {
   tracks as formatTagTracksLink
 } from '*/helpers/formatters/links/tag'
 
-export default function ({ tagName, scope }) {
-  const formatTitle = () => {
+export default function (
+  {
+    tagName,
+    scope
+  }
+) {
+  function formatTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: tagName }
+        {
+          modelName: tagName
+        }
       )
     } else {
       return tagName
     }
   }
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'artists':
-        return formatTagArtistsLink({
-          tagName
-        }).path
+        return formatTagArtistsLink(
+          {
+            tagName
+          }
+        ).path
       case 'albums':
-        return formatTagAlbumsLink({
-          tagName
-        }).path
+        return formatTagAlbumsLink(
+          {
+            tagName
+          }
+        ).path
       case 'tracks':
-        return formatTagTracksLink({
-          tagName
-        }).path
+        return formatTagTracksLink(
+          {
+            tagName
+          }
+        ).path
       default:
-        return formatTagMainLink({
-          tagName
-        }).path
+        return formatTagMainLink(
+          {
+            tagName
+          }
+        ).path
     }
   }
 

@@ -1,22 +1,22 @@
 <template>
   <div class="main-lyrics-container">
-    <p class="lyrics">
-      {{ lyrics }}
-    </p>
+    <p
+      class="lyrics"
+      v-text="lyrics"
+    />
 
     <div class="more-container">
       <strong
         class="main-link"
         @click="handleMoreClick"
-      >
-        {{ moreText }}
-      </strong>
+        v-text="moreText"
+      />
     </div>
   </div>
 
   <BaseTrackLyricsModal
     ref="modal"
-    :trackId="trackId"
+    :track-id="trackId"
   />
 </template>
 
@@ -38,12 +38,16 @@ export default {
   },
   computed: {
     moreText () {
-      return this.$t('more')
+      return this.$t(
+        'more'
+      )
     }
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

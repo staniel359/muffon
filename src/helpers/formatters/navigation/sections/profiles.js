@@ -1,8 +1,14 @@
 import i18n from '*/plugins/i18n'
-import { profiles as formatProfilesLink } from '*/helpers/formatters/links'
+import {
+  profiles as formatProfilesLink
+} from '*/helpers/formatters/links'
 
-export default function ({ isActive } = {}) {
-  const formatLink = () => {
+export default function (
+  {
+    isActive
+  } = {}
+) {
+  function formatLink () {
     if (!isActive) {
       return formatProfilesLink()
     }

@@ -8,7 +8,9 @@
 
 <script>
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
-import { feed as formatFeedLink } from '*/helpers/formatters/links'
+import {
+  feed as formatFeedLink
+} from '*/helpers/formatters/links'
 
 export default {
   name: 'FeedItem',

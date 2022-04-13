@@ -4,20 +4,25 @@
 
     <div class="audio-top-section">
       <TimerPanel />
+
       <MainControlsPanel />
+
       <ExtraControlsPanel />
     </div>
 
     <div class="audio-bottom-section">
       <SeekerPanel
-        @audioEnd="handleAudioEnd"
+        @audio-end="handleAudioEnd"
       />
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import {
+  mapGetters,
+  mapState
+} from 'vuex'
 import AudioElement from './AudioPanel/AudioElement.vue'
 import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
@@ -35,15 +40,24 @@ export default {
     SeekerPanel
   },
   computed: {
-    ...mapState('audio', {
-      audioElement: 'element'
-    }),
-    ...mapState('queue', {
-      isQueueAutoplay: 'isAutoplay'
-    }),
-    ...mapGetters('queue', {
-      isQueueEnd: 'isEnd'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioElement: 'element'
+      }
+    ),
+    ...mapState(
+      'queue',
+      {
+        isQueueAutoplay: 'isAutoplay'
+      }
+    ),
+    ...mapGetters(
+      'queue',
+      {
+        isQueueEnd: 'isEnd'
+      }
+    ),
     isPlayNext () {
       return (
         this.isQueueAutoplay &&

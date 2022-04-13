@@ -2,25 +2,29 @@ import axios from 'axios'
 import store from '*/plugins/store'
 import formatArtistRequestUrl from '*/helpers/formatters/request/artist/url'
 
-export default function ({
-  artistName,
-  artistId,
-  sourceId = 'lastfm',
-  albumType = '',
-  scope = '',
-  page,
-  limit
-}) {
+export default function (
+  {
+    artistName,
+    artistId,
+    sourceId = 'lastfm',
+    albumType = '',
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const url =
-    formatArtistRequestUrl({
-      sourceId,
-      artistName,
-      artistId,
-      scope
-    })
+    formatArtistRequestUrl(
+      {
+        sourceId,
+        artistName,
+        artistId,
+        scope
+      }
+    )
 
   const profileId =
     store.state.profile.info.id
@@ -30,15 +34,23 @@ export default function ({
   const params = {
     profile_id: profileId,
     lang,
-    ...(page && { page }),
-    ...(limit && { limit }),
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    }),
     ...(albumType && {
       album_type: albumType
     })
   }
 
-  const handleSuccess = response => {
-    const { artist } = response.data
+  const handleSuccess = (
+    response
+  ) => {
+    const {
+      artist
+    } = response.data
 
     this.artistData = artist
 
@@ -48,7 +60,9 @@ export default function ({
     }
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -57,7 +71,10 @@ export default function ({
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

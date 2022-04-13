@@ -8,7 +8,7 @@
 
   <BasePlaylistSearchImportModal
     ref="modal"
-    :playlistId="playlistId"
+    :playlist-id="playlistId"
   />
 </template>
 
@@ -35,7 +35,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

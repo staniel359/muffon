@@ -1,15 +1,15 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
   >
     <slot
-      :conversationData="conversationData"
-      :isLoading="isLoading"
+      :conversation-data="conversationData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -52,17 +52,27 @@ export default {
   },
   methods: {
     getConversation,
-    fetchData (page) {
-      this.getConversation({
-        ...this.conversationArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getConversation(
+        {
+          ...this.conversationArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <div class="right-column">
     <PostsSegment
-      :communityId="communityId"
-      :communityCreatorId="communityCreatorId"
-      :currentProfileId="currentProfileId"
+      :community-id="communityId"
+      :community-creator-id="communityCreatorId"
+      :current-profile-id="currentProfileId"
     />
   </div>
 </template>

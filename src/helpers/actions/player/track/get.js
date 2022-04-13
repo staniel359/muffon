@@ -1,7 +1,14 @@
 import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
-export default function ({ trackData, queueTracks }) {
+export default function (
+  {
+    trackData,
+    queueTracks
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -9,7 +16,9 @@ export default function ({ trackData, queueTracks }) {
     trackData
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -17,9 +26,11 @@ export default function ({ trackData, queueTracks }) {
     this.isLoading = false
 
     if (queueTracks) {
-      updateStore({
-        'queue.tracks': queueTracks
-      })
+      updateStore(
+        {
+          'queue.tracks': queueTracks
+        }
+      )
     }
   }
 

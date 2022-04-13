@@ -1,7 +1,12 @@
 import store from '*/plugins/store'
 import i18n from '*/plugins/i18n'
 
-export const mainModalOptions = ({ onShow, onVisible } = {}) => {
+export function mainModalOptions (
+  {
+    onShow,
+    onVisible
+  } = {}
+) {
   return {
     autofocus: false,
     allowMultiple: true,
@@ -15,14 +20,19 @@ export const mainModalOptions = ({ onShow, onVisible } = {}) => {
   }
 }
 
-export const mainLoaderOptions = () => {
+export function mainLoaderOptions () {
   return {
     closable: false,
     duration: 0
   }
 }
 
-export const mainHistoryInputOptions = ({ source, onSelect }) => {
+export function mainHistoryInputOptions (
+  {
+    source,
+    onSelect
+  }
+) {
   return {
     maxResults: 20,
     minCharacters: 0,
@@ -35,7 +45,13 @@ export const mainHistoryInputOptions = ({ source, onSelect }) => {
   }
 }
 
-export const mainSidebarOptions = ({ onShow, onVisible, onHide } = {}) => {
+export function mainSidebarOptions (
+  {
+    onShow,
+    onVisible,
+    onHide
+  } = {}
+) {
   return {
     closable: false,
     dimPage: false,
@@ -45,7 +61,12 @@ export const mainSidebarOptions = ({ onShow, onVisible, onHide } = {}) => {
   }
 }
 
-export const mainSeekerOptions = ({ onMove, onChange } = {}) => {
+export function mainSeekerOptions (
+  {
+    onMove,
+    onChange
+  } = {}
+) {
   return {
     max: 100,
     step: 0.25,
@@ -54,7 +75,11 @@ export const mainSeekerOptions = ({ onMove, onChange } = {}) => {
   }
 }
 
-export const mainVolumeSeekerOptions = ({ start } = {}) => {
+export function mainVolumeSeekerOptions (
+  {
+    start
+  } = {}
+) {
   return {
     max: 1,
     step: 0.01,
@@ -62,7 +87,7 @@ export const mainVolumeSeekerOptions = ({ start } = {}) => {
   }
 }
 
-export const mainPopupOptions = () => {
+export function mainPopupOptions () {
   return {
     duration: 0,
     position: 'top center',
@@ -73,11 +98,19 @@ export const mainPopupOptions = () => {
   }
 }
 
-export const sourcePopupOptions = ({ isDarkMode }) => {
+export function sourcePopupOptions (
+  {
+    isDarkMode
+  }
+) {
   const variation = [
     'basic small',
     (isDarkMode && 'inverted')
-  ].filter(e => e).join(' ')
+  ].filter(
+    e => e
+  ).join(
+    ' '
+  )
 
   return {
     duration: 0,
@@ -89,8 +122,15 @@ export const sourcePopupOptions = ({ isDarkMode }) => {
   }
 }
 
-export const mainDropdownOptions = ({ onChange, action } = {}) => {
-  const { visibleContext } = store.state.layout
+export function mainDropdownOptions (
+  {
+    onChange,
+    action
+  } = {}
+) {
+  const {
+    visibleContext
+  } = store.state.layout
 
   const context = visibleContext || 'body'
 
@@ -107,15 +147,26 @@ export const mainDropdownOptions = ({ onChange, action } = {}) => {
   }
 }
 
-export const mainCheckboxOptions = ({ onChecked, onUnchecked } = {}) => {
+export function mainCheckboxOptions (
+  {
+    onChecked,
+    onUnchecked
+  } = {}
+) {
   return {
     onChecked,
     onUnchecked
   }
 }
 
-export const mainEmbedOptions = ({ videoId, placeholder }) => {
-  const url = `https://www.youtube.com/embed/${videoId}`
+export function mainEmbedOptions (
+  {
+    videoId,
+    placeholder
+  }
+) {
+  const url =
+    `https://www.youtube.com/embed/${videoId}`
 
   return {
     url,
@@ -126,7 +177,11 @@ export const mainEmbedOptions = ({ videoId, placeholder }) => {
   }
 }
 
-export const loginFormOptions = ({ onSuccess }) => {
+export function loginFormOptions (
+  {
+    onSuccess
+  }
+) {
   const emptyEmailPrompt = i18n.global.t(
     'forms.errors.empty.email'
   )
@@ -161,7 +216,11 @@ export const loginFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const profileCreateFormOptions = ({ onSuccess }) => {
+export function profileCreateFormOptions (
+  {
+    onSuccess
+  }
+) {
   const emptyEmailPrompt = i18n.global.t(
     'forms.errors.empty.email'
   )
@@ -220,7 +279,11 @@ export const profileCreateFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const profileUpdateFormOptions = ({ onSuccess }) => {
+export function profileUpdateFormOptions (
+  {
+    onSuccess
+  }
+) {
   const emptyEmailPrompt = i18n.global.t(
     'forms.errors.empty.email'
   )
@@ -272,7 +335,11 @@ export const profileUpdateFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const playlistFormOptions = ({ onSuccess }) => {
+export function playlistFormOptions (
+  {
+    onSuccess
+  }
+) {
   const emptyTitlePrompt = i18n.global.t(
     'forms.errors.empty.title'
   )
@@ -295,15 +362,31 @@ export const playlistFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const postFormOptions = ({ onSuccess }) => {
-  return { onSuccess }
+export function postFormOptions (
+  {
+    onSuccess
+  }
+) {
+  return {
+    onSuccess
+  }
 }
 
-export const messageFormOptions = ({ onSuccess }) => {
-  return { onSuccess }
+export function messageFormOptions (
+  {
+    onSuccess
+  }
+) {
+  return {
+    onSuccess
+  }
 }
 
-export const communityFormOptions = ({ onSuccess }) => {
+export function communityFormOptions (
+  {
+    onSuccess
+  }
+) {
   const emptyTitlePrompt = i18n.global.t(
     'forms.errors.empty.title'
   )
@@ -326,7 +409,7 @@ export const communityFormOptions = ({ onSuccess }) => {
   }
 }
 
-export const birthdateCalendarOptions = () => {
+export function birthdateCalendarOptions () {
   const today = new Date()
   const minDate = new Date(
     today.getFullYear() - 100,
@@ -348,7 +431,12 @@ export const birthdateCalendarOptions = () => {
   }
 }
 
-export const mainProgressOptions = ({ formatActive, onSuccess }) => {
+export function mainProgressOptions (
+  {
+    formatActive,
+    onSuccess
+  }
+) {
   return {
     text: {
       active: formatActive(
@@ -362,7 +450,12 @@ export const mainProgressOptions = ({ formatActive, onSuccess }) => {
   }
 }
 
-export const mainAccordionOptions = ({ onOpen, onClose }) => {
+export function mainAccordionOptions (
+  {
+    onOpen,
+    onClose
+  }
+) {
   return {
     duration: 0,
     onOpen,

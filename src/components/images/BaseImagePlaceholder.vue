@@ -1,19 +1,26 @@
 <template>
   <div
     class="ui image placeholder"
-    :class="{ inverted: isDarkMode }"
-  ></div>
+    :class="{
+      inverted: isDarkMode
+    }"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseImagePlaceholder',
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

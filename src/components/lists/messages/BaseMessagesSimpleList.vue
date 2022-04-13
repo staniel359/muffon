@@ -3,7 +3,7 @@
     <MessageItem
       v-for="messageData in messages"
       :key="messageData.uuid"
-      :messageData="messageData"
+      :message-data="messageData"
     />
   </BaseListContainer>
 </template>

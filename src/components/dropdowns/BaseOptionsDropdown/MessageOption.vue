@@ -3,7 +3,8 @@
     class="item"
     @click="handleClick"
   >
-    <i class="envelope icon"></i>
+    <i class="envelope icon" />
+
     {{ messageText }}
   </div>
 </template>
@@ -23,7 +24,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

@@ -1,21 +1,26 @@
 <template>
   <div
-    class="ui small progress main-progress"
-    :class="{ inverted: isDarkMode }"
     ref="progress"
+    class="ui small progress main-progress"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div class="bar base">
-      <div class="progress"></div>
+      <div class="progress" />
     </div>
 
-    <div class="label">
-      {{ status }}
-    </div>
+    <div
+      class="label"
+      v-text="status"
+    />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import {
   setProgress,
   setProgressTotalCount,
@@ -23,7 +28,9 @@ import {
   resetProgress,
   setProgressValue
 } from '*/helpers/actions/plugins/semantic'
-import { mainProgressOptions } from '*/helpers/data/plugins/semantic'
+import {
+  mainProgressOptions
+} from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseProgress',
@@ -38,32 +45,41 @@ export default {
     'complete'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    options () {
-      return mainProgressOptions({
-        formatActive: this.formatActive,
-        onSuccess: this.handleSuccess
-      })
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    progressOptions () {
+      return mainProgressOptions(
+        {
+          formatActive: this.formatActive,
+          onSuccess: this.handleSuccess
+        }
+      )
     }
   },
   mounted () {
     setProgress(
       this.$refs.progress,
-      this.options
+      this.progressOptions
     )
   },
   methods: {
     handleSuccess () {
-      this.$emit('complete')
+      this.$emit(
+        'complete'
+      )
     },
     reset () {
       resetProgress(
         this.$refs.progress
       )
     },
-    setTotalCount (value) {
+    setTotalCount (
+      value
+    ) {
       setProgressTotalCount(
         this.$refs.progress,
         value
@@ -74,7 +90,9 @@ export default {
         this.$refs.progress
       )
     },
-    setValue (value) {
+    setValue (
+      value
+    ) {
       setProgressValue(
         this.$refs.progress,
         value

@@ -3,13 +3,12 @@
     <div class="scrolling content">
       <BasePostUpdateFormContainer
         class="main-post-form"
-        :postData="postData"
+        :post-data="postData"
         :tracks="tracks"
         :images="images"
         @success="handleSuccess"
       >
         <BaseContentField
-          ref="input"
           :value="postContent"
           @submit="handleSubmit"
         />
@@ -21,13 +20,13 @@
           <BaseFormImagesSection
             v-if="images.length"
             :images="images"
-            @imagesChange="handleImagesChange"
+            @images-change="handleImagesChange"
           />
 
           <BaseFormTracksSection
             v-if="tracks.length"
             :tracks="tracks"
-            @tracksChange="handleTracksChange"
+            @tracks-change="handleTracksChange"
           />
         </div>
 
@@ -35,18 +34,18 @@
           <BaseFormAddButtonsSection
             :tracks="tracks"
             :images="images"
-            @tracksChange="handleTracksChange"
-            @imagesChange="handleImagesChange"
+            @tracks-change="handleTracksChange"
+            @images-change="handleImagesChange"
           />
 
           <BasePostAsCommunityField
             v-if="isWithAsCommunityOption"
-            :isChecked="isByCommunity"
+            :is-checked="isByCommunity"
           />
 
           <BaseSubmitButton
             ref="submit"
-            actionKey="save"
+            action-key="save"
           />
         </div>
       </BasePostUpdateFormContainer>
@@ -69,8 +68,12 @@ import BaseFormAddButtonsSection
 import BasePostAsCommunityField
   from '*/components/fields/post/BasePostAsCommunityField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
-import { generateKey } from '*/helpers/utils'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  generateKey
+} from '*/helpers/utils'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BasePostUpdateModal',
@@ -128,21 +131,34 @@ export default {
   },
   methods: {
     handleSubmit () {
-      this.$refs.submit.click()
+      this.$refs
+        .submit
+        .click()
     },
-    handleTracksChange (value) {
+    handleTracksChange (
+      value
+    ) {
       this.tracks = value
     },
-    handleImagesChange (value) {
+    handleImagesChange (
+      value
+    ) {
       this.images = value
     },
-    handleSuccess (value) {
+    handleSuccess (
+      value
+    ) {
       this.$emit(
         'updated',
         value
       )
     },
-    handleImageLoadEnd ({ reader, file }) {
+    handleImageLoadEnd (
+      {
+        reader,
+        file
+      }
+    ) {
       const url =
         URL.createObjectURL(
           file
@@ -158,7 +174,9 @@ export default {
         imageData
       )
     },
-    async processImage (imageData) {
+    async processImage (
+      imageData
+    ) {
       const data = await fetch(
         imageData.original
       )
@@ -168,18 +186,27 @@ export default {
       const reader = new FileReader()
 
       reader.onloadend = () => {
-        this.handleImageLoadEnd({
-          reader, file
-        })
+        this.handleImageLoadEnd(
+          {
+            reader,
+            file
+          }
+        )
       }
 
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(
+        file
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

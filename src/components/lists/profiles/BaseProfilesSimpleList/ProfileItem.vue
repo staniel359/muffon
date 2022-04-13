@@ -20,7 +20,7 @@
 
         <BaseProfileOnlineLabel
           class="online-label"
-          :profileData="profileData"
+          :profile-data="profileData"
         />
 
         <BaseLabel
@@ -33,16 +33,16 @@
       <div class="description">
         <small>
           <BaseProfileGenderAge
-            :profileData="profileData"
+            :profile-data="profileData"
           />
 
           <BaseProfileCityCountry
-            :profileData="profileData"
+            :profile-data="profileData"
           />
 
           <BaseProfileFollowCounters
             class="follow-counters"
-            :profileData="profileData"
+            :profile-data="profileData"
           />
         </small>
       </div>
@@ -50,21 +50,21 @@
 
     <small class="following-message">
       <BaseProfileFollowingMessage
-        :otherProfileData="otherProfileData"
+        :other-profile-data="otherProfileData"
       />
     </small>
 
     <template v-if="isRenderOptions">
       <BaseOptionsDropdown
-        :profileData="profileData"
-        isWithFollowOption
-        isWithMessageOption
+        :profile-data="profileData"
+        is-with-follow-option
+        is-with-message-option
         @message="handleMessageOptionClick"
       />
 
       <BaseProfileMessageModal
         ref="messageModal"
-        :profileData="profileData"
+        :profile-data="profileData"
       />
     </template>
   </BaseLinkContainer>
@@ -93,7 +93,9 @@ import BaseProfileMessageModal
 import {
   main as formatProfileMainLink
 } from '*/helpers/formatters/links/profile'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'ProfileItem',
@@ -130,9 +132,11 @@ export default {
   ],
   computed: {
     profileMainLink () {
-      return formatProfileMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     },
     profileId () {
       return this.profileData.id.toString()
@@ -163,9 +167,11 @@ export default {
       return this.profileData.other_profile
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.profileData.uuid
@@ -173,16 +179,25 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
     handleMessageOptionClick () {
-      this.$refs.messageModal.show()
+      this.$refs
+        .messageModal
+        .show()
     },
-    setIsFollowing (value) {
+    setIsFollowing (
+      value
+    ) {
       this.paginationItem
-        .other_profile.follower_of_profile = value
+        .other_profile
+        .follower_of_profile = value
     },
-    setFollowersCount (value) {
+    setFollowersCount (
+      value
+    ) {
       this.paginationItem
         .follower_profiles_count = value
     }

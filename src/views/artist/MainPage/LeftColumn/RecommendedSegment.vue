@@ -1,7 +1,7 @@
 <template>
   <BaseSegmentContainer>
     <div class="recommended-block">
-      <i class="volume up icon"></i>
+      <i class="volume up icon" />
 
       <div class="content">
         <BaseHeader
@@ -9,9 +9,10 @@
           :text="headerText"
         />
 
-        <div class="based-text">
-          {{ basedText }}
-        </div>
+        <div
+          class="based-text"
+          v-text="basedText"
+        />
 
         <BaseButton
           class="basic compact fluid"
@@ -22,7 +23,7 @@
 
         <BaseRecommendationProfileArtistsModal
           ref="artistsModal"
-          :recommendationId="recommendationId"
+          :recommendation-id="recommendationId"
         />
       </div>
     </div>
@@ -65,7 +66,9 @@ export default {
     artistsText () {
       return this.$t(
         'counters.artists',
-        { count: this.profileArtistsCount }
+        {
+          count: this.profileArtistsCount
+        }
       )
     },
     profileArtistsCount () {
@@ -77,7 +80,9 @@ export default {
   },
   methods: {
     handleArtistsButtonClick () {
-      this.$refs.artistsModal.show()
+      this.$refs
+        .artistsModal
+        .show()
     }
   }
 }

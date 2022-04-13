@@ -3,7 +3,7 @@
     <div class="content">
       <BasePlaylistUpdateFormContainer
         class="main-playlist-form"
-        :playlistId="playlistId"
+        :playlist-id="playlistId"
         :image="image"
         @success="handleSuccess"
       >
@@ -25,7 +25,7 @@
 
         <div class="submit-button-container">
           <BaseSubmitButton
-            actionKey="save"
+            action-key="save"
           />
         </div>
       </BasePlaylistUpdateFormContainer>
@@ -74,16 +74,24 @@ export default {
     }
   },
   methods: {
-    handleImageChange (value) {
+    handleImageChange (
+      value
+    ) {
       this.image = value
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
-      this.$refs.title.focus()
+      this.$refs
+        .title
+        .focus()
     }
   }
 }

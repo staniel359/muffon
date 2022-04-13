@@ -1,4 +1,8 @@
-export const artistImagesModalMainSliderOptions = ({ syncSlider } = {}) => {
+export function artistImagesModalMainSliderOptions (
+  {
+    syncSlider
+  } = {}
+) {
   return {
     asNavFor: syncSlider,
     draggable: false,
@@ -6,7 +10,11 @@ export const artistImagesModalMainSliderOptions = ({ syncSlider } = {}) => {
   }
 }
 
-export const artistImagesModalThumbsSliderOptions = ({ syncSlider } = {}) => {
+export function artistImagesModalThumbsSliderOptions (
+  {
+    syncSlider
+  } = {}
+) {
   return {
     arrows: false,
     asNavFor: syncSlider,

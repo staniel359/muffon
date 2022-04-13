@@ -1,32 +1,31 @@
 <template>
   <BaseModalContainer ref="modal">
     <BaseSegmentContainer
-      ref="scrollable"
       :class="[
         'scrolling content',
         'main-modal-content-full-height',
         'main-segment-container'
       ]"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       @init="handleInit"
     >
       <BasePaginatedListContainer
-        :responseData="recommendationData"
+        :response-data="recommendationData"
         :scope="scope"
         :limit="limit"
-        :isLoading="isLoading"
+        :is-loading="isLoading"
         :error="error"
-        @fetchData="fetchData"
+        @fetch-data="fetchData"
         @refresh="handleRefresh"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <BaseArtistsSimpleList
             :artists="slotProps[scope]"
-            :profileId="profileId"
-            isLinkToLibrary
-            isImageSmall
-            @linkClick="handleLinkClick"
+            :profile-id="profileId"
+            is-link-to-library
+            is-image-small
+            @link-click="handleLinkClick"
           />
         </template>
       </BasePaginatedListContainer>
@@ -35,7 +34,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
 import BaseSegmentContainer
@@ -72,9 +73,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     },
@@ -90,32 +94,51 @@ export default {
     isOpen: 'handleIsOpenChange'
   },
   methods: {
-    handleInit (el) {
-      this.scrollable = el
+    handleInit (
+      element
+    ) {
+      this.scrollable = element
     },
-    handleIsOpenChange (value) {
+    handleIsOpenChange (
+      value
+    ) {
       if (value) {
         this.fetchData()
       }
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     handleFocus () {
-      this.scrollable.scrollTo(0, 0)
+      this.scrollable.scrollTo(
+        0,
+        0
+      )
     },
     handleLinkClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     getRecommendation,
-    fetchData (page) {
-      this.getRecommendation({
-        ...this.recommendationArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getRecommendation(
+        {
+          ...this.recommendationArgs,
+          page
+        }
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
       this.isOpen = true
     }

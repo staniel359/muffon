@@ -1,19 +1,28 @@
 <template>
-  <div id="the-online-observer"></div>
+  <div
+    id="the-online-observer"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { ipcRenderer } from 'electron'
+import {
+  mapState
+} from 'vuex'
+import {
+  ipcRenderer
+} from 'electron'
 import updateOnline from '*/helpers/actions/api/online/update'
 
 export default {
   name: 'TheOnlineObserver',
   computed: {
-    ...mapState('profile', {
-      isProfileLoggedIn: 'isLoggedIn',
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        isProfileLoggedIn: 'isLoggedIn',
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo?.id
     }
@@ -31,7 +40,9 @@ export default {
     )
   },
   methods: {
-    handleIsProfileLoggedInChange (value) {
+    handleIsProfileLoggedInChange (
+      value
+    ) {
       if (this.profileId) {
         const online = value ? 1 : 0
 
@@ -41,7 +52,9 @@ export default {
       }
     },
     handleExit () {
-      this.setOnline(0).finally(
+      this.setOnline(
+        0
+      ).finally(
         this.handleOnlineFinish
       )
     },
@@ -50,10 +63,14 @@ export default {
         'exit'
       )
     },
-    setOnline (value) {
-      return updateOnline({
-        isOnline: value
-      })
+    setOnline (
+      value
+    ) {
+      return updateOnline(
+        {
+          isOnline: value
+        }
+      )
     }
   }
 }

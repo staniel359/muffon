@@ -1,17 +1,19 @@
 <template>
   <input
     ref="input"
+    :key="key"
     class="main-image-input"
     type="file"
     name="image"
     accept="image/jpeg,image/png,image/gif"
-    :key="key"
     @change="handleChange"
   >
 </template>
 
 <script>
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseImageInput',
@@ -24,8 +26,12 @@ export default {
     }
   },
   methods: {
-    handleChange (event) {
-      const { files } = event.target
+    handleChange (
+      event
+    ) {
+      const {
+        files
+      } = event.target
 
       const file = files[0]
 
@@ -35,7 +41,12 @@ export default {
         )
       }
     },
-    handleLoadEnd ({ reader, file }) {
+    handleLoadEnd (
+      {
+        reader,
+        file
+      }
+    ) {
       const url =
         URL.createObjectURL(
           file
@@ -55,18 +66,27 @@ export default {
       )
     },
     show () {
-      this.$refs.input.click()
+      this.$refs
+        .input
+        .click()
     },
-    processImage (file) {
+    processImage (
+      file
+    ) {
       const reader = new FileReader()
 
       reader.onloadend = () => {
-        this.handleLoadEnd({
-          reader, file
-        })
+        this.handleLoadEnd(
+          {
+            reader,
+            file
+          }
+        )
       }
 
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(
+        file
+      )
     }
   }
 }

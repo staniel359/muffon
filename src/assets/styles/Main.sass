@@ -99,7 +99,8 @@ a
     top: 10px
     right: 10px
 
-.ui.card.main-simple-card, .ui.card.main-horizontal-card
+.ui.card.main-simple-card,
+.ui.card.main-horizontal-card
   & > .content .star.icon
     opacity: 1
     cursor: unset
@@ -269,7 +270,8 @@ a
       line-height: 1.2em
     & > .description
       margin-top: 0.25em !important
-      &.main-timestamp, &.community-description
+      &.main-timestamp,
+      &.community-description
         &:not(.playlist-timestamp)
           @extend .no-margin
   .main-options-dropdown-container
@@ -284,9 +286,15 @@ a
       @extend .text-color-base
     .main-options-dropdown-container
       @extend .visibility-visible
-  &.main-post-item, &.main-message-item, &.main-profile-item, &.main-community-info-item, &.main-playlist-info-item
+  &.main-post-item,
+  &.main-message-item,
+  &.main-profile-item,
+  &.main-community-info-item,
+  &.main-playlist-info-item
     @extend .align-items-start
-  &.main-community-info-item, &.main-playlist-info-item
+  &.main-profile-item,
+  &.main-community-info-item,
+  &.main-playlist-info-item
     & > .main-options-dropdown-container
       @extend .align-self-center
   &.main-community-info-item
@@ -448,6 +456,7 @@ a
 
 .main-extra-title
   @extend .d-inline
+  margin-left: 0.25em !important
 
 .main-image
   @extend .object-fit-cover
@@ -616,7 +625,8 @@ a
 .main-image-input
   @extend .d-none
 
-.main-playlist-form, .main-community-form
+.main-playlist-form,
+.main-community-form
   & > .fields-container
     @extend .d-flex
     & > .image-field
@@ -625,7 +635,8 @@ a
     & > .fields-right-column
       @extend .flex-full
 
-.main-post-form, .main-message-form
+.main-post-form,
+.main-message-form
   & > .buttons-container
     @extend .d-flex, .align-items-center
     margin-top: 1em
@@ -656,10 +667,12 @@ a
     & > .item
       padding: 1em 0 !important
 
-.main-following-message-container, .main-joined-message-container
+.main-following-message-container,
+.main-joined-message-container
   @extend .d-flex, .flex-column, .align-items-center
 
-.main-following-message, .main-joined-message
+.main-following-message,
+.main-joined-message
   @extend .d-flex, .align-items-center
 
 .main-message-item

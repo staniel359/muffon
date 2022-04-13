@@ -2,15 +2,15 @@
   <div class="ui basic segments">
     <BaseSegmentContainer>
       <BaseCounters
-        :listenersCount="listenersCount"
-        :playsCount="playsCount"
+        :listeners-count="listenersCount"
+        :plays-count="playsCount"
       />
 
       <BaseTrackTags
         v-if="isAnyTags"
         :tags="tags"
-        :requestTrackData="requestTrackData"
-        :isMore="isMoreTags"
+        :request-track-data="requestTrackData"
+        :is-more="isMoreTags"
       />
 
       <template v-if="description">
@@ -18,8 +18,8 @@
 
         <BaseTrackDescription
           :description="description"
-          :requestTrackData="requestTrackData"
-          :isMore="isMoreDescription"
+          :request-track-data="requestTrackData"
+          :is-more="isMoreDescription"
         />
       </template>
     </BaseSegmentContainer>

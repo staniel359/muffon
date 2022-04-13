@@ -1,16 +1,17 @@
 <template>
   <BaseModalContainer ref="modal">
-    <div class="header">
-      {{ headerText }}
-    </div>
+    <div
+      class="header"
+      v-text="headerText"
+    />
 
     <div class="content">
       <TextSection
-        :modelType="modelType"
+        :model-type="modelType"
         :model="model"
-        :modelName="modelName"
-        :parentModelName="parentModelName"
-        :isWithAlsoText="isWithAlsoText"
+        :model-name="modelName"
+        :parent-model-name="parentModelName"
+        :is-with-also-text="isWithAlsoText"
       />
 
       <BaseErrorMessage
@@ -30,7 +31,9 @@
         class="red"
         icon="trash alternate outline"
         :text="deleteText"
-        :class="{ loading: isLoading }"
+        :class="{
+          loading: isLoading
+        }"
         @click="handleDeleteButtonClick"
       />
     </div>
@@ -71,9 +74,14 @@ export default {
     headerText () {
       return this.$t(
         [
-          `modals.delete.header.${this.modelType}`,
+          'modals.delete.header',
+          this.modelType,
           this.model
-        ].filter(e => e).join('.')
+        ].filter(
+          e => e
+        ).join(
+          '.'
+        )
       )
     },
     cancelText () {
@@ -94,10 +102,14 @@ export default {
       )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

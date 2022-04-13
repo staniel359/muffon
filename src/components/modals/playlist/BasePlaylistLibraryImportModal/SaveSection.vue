@@ -2,15 +2,15 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :isError="isError"
-    :totalCount="totalCount"
-    :errorTracks="errorTracks"
+    :is-error="isError"
+    :total-count="totalCount"
+    :error-tracks="errorTracks"
     @retry="handleRetry"
   />
 </template>
@@ -58,6 +58,9 @@ export default {
       return this.tracks.length
     }
   },
+  watch: {
+    tracks: 'handleTracksChange'
+  },
   mounted () {
     this.isMounted = true
 
@@ -66,12 +69,11 @@ export default {
   beforeUnmount () {
     this.isMounted = false
   },
-  watch: {
-    tracks: 'handleTracksChange'
-  },
   methods: {
     handleTracksChange () {
-      this.$refs.progress.reset()
+      this.$refs
+        .progress
+        .reset()
 
       this.saveTracks()
     },
@@ -85,22 +87,34 @@ export default {
       this.isProgress = true
 
       this.setTracks(
-        [...this.errorTracks]
+        [
+          ...this.errorTracks
+        ]
       )
 
       this.errorTracks = []
     },
     createPlaylistTrack,
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'save.active.tracks',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
     async saveTracks () {
-      this.$refs.progress.setTotalCount(
-        this.totalCount
-      )
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
 
       for (const trackData of this.tracks) {
         if (this.isMounted) {
@@ -110,7 +124,9 @@ export default {
         }
       }
     },
-    async saveTrack (trackData) {
+    async saveTrack (
+      trackData
+    ) {
       const createArgs =
         this.formatTrack(
           trackData
@@ -126,7 +142,9 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs.progress.increment()
+          this.$refs
+            .progress
+            .increment()
         }
       }
 
@@ -138,7 +156,9 @@ export default {
         handleFinish
       )
     },
-    formatTrack (trackData) {
+    formatTrack (
+      trackData
+    ) {
       return {
         playlistId: this.playlistId,
         trackTitle: trackData.title,
@@ -147,7 +167,9 @@ export default {
         imageUrl: trackData.image?.original
       }
     },
-    setErrorTracks (value) {
+    setErrorTracks (
+      value
+    ) {
       this.errorTracks = value
     }
   }

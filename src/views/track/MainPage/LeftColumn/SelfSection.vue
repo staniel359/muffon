@@ -1,37 +1,37 @@
 <template>
   <div class="main-self-container">
     <BaseSelfIcons
-      :libraryId="libraryId"
-      :favoriteId="favoriteId"
-      :bookmarkId="bookmarkId"
-      :listenedId="listenedId"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
     />
 
     <BaseOptionsDropdown
       model="track"
-      :trackTitle="trackTitle"
-      :artistName="artistName"
-      :albumTitle="albumTitle"
-      :imageUrl="imageData?.original"
-      :libraryId="libraryId"
-      :favoriteId="favoriteId"
-      :bookmarkId="bookmarkId"
-      :listenedId="listenedId"
-      isWithLibraryOption
-      isWithFavoriteOption
-      isWithBookmarkOption
-      isWithListenedOption
-      isWithPlaylistOption
+      :track-title="trackTitle"
+      :artist-name="artistName"
+      :album-title="albumTitle"
+      :image-url="imageData?.original"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+      is-with-library-option
+      is-with-favorite-option
+      is-with-bookmark-option
+      is-with-listened-option
+      is-with-playlist-option
       @playlist="handlePlaylistOptionClick"
     />
   </div>
 
   <BasePlaylistsModal
     ref="playlistModal"
-    :trackTitle="trackTitle"
-    :artistName="artistName"
-    :albumTitle="albumTitle"
-    :imageUrl="imageData?.original"
+    :track-title="trackTitle"
+    :artist-name="artistName"
+    :album-title="albumTitle"
+    :image-url="imageData?.original"
   />
 </template>
 
@@ -41,7 +41,9 @@ import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'SelfSection',
@@ -81,7 +83,9 @@ export default {
   },
   methods: {
     handlePlaylistOptionClick () {
-      this.$refs.playlistModal.show()
+      this.$refs
+        .playlistModal
+        .show()
     }
   }
 }

@@ -12,11 +12,13 @@
       v-if="isOnlyIcon"
       class="icon colored main-dropdown-icon"
       :class="selected"
-    ></i>
+    />
     <div
       v-else
       class="text main-dropdown-item"
-      :class="{ inverted: isDarkMode }"
+      :class="{
+        inverted: isDarkMode
+      }"
     >
       <BaseHeader
         v-if="header"
@@ -27,24 +29,28 @@
 
     <BaseIcon
       icon="dropdown"
-      :isLoading="isLoading"
-      :isError="isError"
+      :is-loading="isLoading"
+      :is-error="isError"
     />
 
     <div
       class="menu"
       :class="menuDirection"
     >
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseIcon from '*/components/BaseIcon.vue'
-import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
+import {
+  mainDropdownOptions
+} from '*/helpers/data/plugins/semantic'
 import {
   setDropdown,
   setDropdownValue,
@@ -78,25 +84,32 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     dropdownOptions () {
-      return mainDropdownOptions({
-        onChange: this.handleChange
-      })
+      return mainDropdownOptions(
+        {
+          onChange: this.handleChange
+        }
+      )
     }
   },
-  mounted () {
-    this.$nextTick(() => {
-      setDropdown(
-        this.$refs.dropdown,
-        this.dropdownOptions
-      )
-    })
+  async mounted () {
+    await this.$nextTick()
+
+    setDropdown(
+      this.$refs.dropdown,
+      this.dropdownOptions
+    )
   },
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'change',
         value
@@ -104,13 +117,15 @@ export default {
 
       this.selected = value
     },
-    setValue (value) {
-      this.$nextTick(() => {
-        setDropdownValue(
-          this.$refs.dropdown,
-          value
-        )
-      })
+    async setValue (
+      value
+    ) {
+      await this.$nextTick()
+
+      setDropdownValue(
+        this.$refs.dropdown,
+        value
+      )
     },
     reset () {
       resetDropdown(

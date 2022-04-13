@@ -1,7 +1,9 @@
 <template>
   <div
     class="item main-simple-list-item main-post-item"
-    :class="{ disabled: isDeleted }"
+    :class="{
+      disabled: isDeleted
+    }"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -18,11 +20,12 @@
       <div class="content">
         <BaseCommunityTitle
           v-if="isByCommunity"
-          :communityData="communityData"
+          :community-data="communityData"
         />
+
         <BaseProfileNickname
           v-else
-          :profileData="profileData"
+          :profile-data="profileData"
         />
 
         <BaseTimestamp
@@ -34,9 +37,8 @@
           <div
             v-if="content"
             class="text main-text-container"
-          >
-            {{ content }}
-          </div>
+            v-text="content"
+          />
 
           <BaseImagesSection
             v-if="images"
@@ -54,22 +56,22 @@
 
       <BaseOptionsDropdown
         v-if="isWithOptions"
-        :isWithEditOption="isWithEditOption"
-        isWithDeleteOption
+        :is-with-edit-option="isWithEditOption"
+        is-with-delete-option
         @edit="handleEditOptionClick"
         @delete="handleDeleteOptionClick"
       />
 
       <BasePostUpdateModal
         ref="updateModal"
-        :postData="postData"
-        :isWithAsCommunityOption="isCommunityCreator"
+        :post-data="postData"
+        :is-with-as-community-option="isCommunityCreator"
         @updated="handleUpdated"
       />
 
       <BasePostDeleteModal
         ref="deleteModal"
-        :postData="postData"
+        :post-data="postData"
         @deleted="handleDeleted"
       />
     </template>
@@ -77,7 +79,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseCommunityTitle
@@ -93,7 +97,9 @@ import BasePostUpdateModal
   from '*/components/modals/post/BasePostUpdateModal.vue'
 import BasePostDeleteModal
   from '*/components/modals/post/BasePostDeleteModal.vue'
-import { setToast } from '*/helpers/actions/plugins/semantic'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'PostItem',
@@ -122,9 +128,12 @@ export default {
     communityCreatorId: String
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     imageData () {
       if (this.isByCommunity) {
         return this.communityData.image
@@ -190,9 +199,11 @@ export default {
       return this.postData.tracks
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.postData.uuid
@@ -220,29 +231,42 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
-      this.$refs.updateModal.show()
+      this.$refs
+        .updateModal
+        .show()
     },
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     },
-    handleUpdated (value) {
-      this.$refs.updateModal.hide()
+    handleUpdated (
+      value
+    ) {
+      this.$refs
+        .updateModal
+        .hide()
 
-      this.updatePaginationItem({
-        uuid: this.uuid,
-        value
-      })
+      this.updatePaginationItem(
+        {
+          uuid: this.uuid,
+          value
+        }
+      )
 
       this.notify()
     },
     handleDeleted () {
-      this.paginationItem.isDeleted = true
+      this.paginationItem
+        .isDeleted = true
     },
     notify () {
-      setToast({
-        message: this.updatedMessage,
-        icon: 'green check'
-      })
+      setToast(
+        {
+          message: this.updatedMessage,
+          icon: 'green check'
+        }
+      )
     }
   }
 }

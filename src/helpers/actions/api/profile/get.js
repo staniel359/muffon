@@ -1,15 +1,17 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({
-  profileId,
-  token,
-  scope = '',
-  artistName,
-  trackTitle,
-  page,
-  limit
-}) {
+export default function (
+  {
+    profileId,
+    token,
+    scope = '',
+    artistName,
+    trackTitle,
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -29,16 +31,24 @@ export default function ({
     ...(trackTitle && {
       track_title: trackTitle
     }),
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.profileData =
       response.data.profile
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -47,7 +57,10 @@ export default function ({
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

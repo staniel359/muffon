@@ -1,7 +1,14 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ tagName, scope = '', page, limit }) {
+export default function (
+  {
+    tagName,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -9,26 +16,36 @@ export default function ({ tagName, scope = '', page, limit }) {
     encodeURIComponent(
       tagName
     )
+
   const url =
     `/lastfm/tags/${tagNameEncoded}/${scope}`
 
   const profileId =
     store.state.profile.info.id
+
   const lang =
     store.state.profile.language
 
   const params = {
     profile_id: profileId,
     lang,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.tagData = response.data.tag
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -37,7 +54,10 @@ export default function ({ tagName, scope = '', page, limit }) {
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

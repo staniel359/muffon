@@ -1,16 +1,16 @@
 <template>
   <BaseAlbumSourceItemContainer
-    :sourceId="sourceId"
+    :source-id="sourceId"
     :types="types"
     :query="query"
   >
     <template #default="slotProps">
       <SourceItemContent
-        :sourceData="sourceData"
-        :isLoading="slotProps.isLoading"
-        :isError="slotProps.isError"
-        :albumsData="slotProps.albumsData"
-        :isWithMaxBitrate="isWithMaxBitrate"
+        :source-data="sourceData"
+        :is-loading="slotProps.isLoading"
+        :is-error="slotProps.isError"
+        :albums-data="slotProps.albumsData"
+        :is-with-max-bitrate="isWithMaxBitrate"
       />
     </template>
   </BaseAlbumSourceItemContainer>

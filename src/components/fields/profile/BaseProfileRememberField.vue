@@ -1,23 +1,25 @@
 <template>
   <div class="field remember-field">
     <div
-      class="ui checkbox"
       ref="checkbox"
+      class="ui checkbox"
     >
       <input
         type="checkbox"
         name="remember"
       >
 
-      <label>
-        {{ rememberText }}
-      </label>
+      <label
+        v-text="rememberText"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { setCheckbox } from '*/helpers/actions/plugins/semantic'
+import {
+  setCheckbox
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseProfileRememberField',

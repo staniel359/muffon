@@ -2,12 +2,12 @@
   <BaseAlbumModalContainer
     ref="modal"
     :scope="scope"
-    :requestAlbumData="requestAlbumData"
+    :request-album-data="requestAlbumData"
   >
     <template #default="slotProps">
       <BaseDescription
         :description="slotProps[scope]"
-        isModal
+        is-modal
       />
     </template>
   </BaseAlbumModalContainer>
@@ -34,7 +34,9 @@ export default {
   },
   methods: {
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

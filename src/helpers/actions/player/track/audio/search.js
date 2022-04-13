@@ -1,15 +1,24 @@
 import store from '*/plugins/store'
 import getSearch from '*/helpers/actions/api/player/search/get'
 import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
-import { updateStore } from '*/helpers/actions'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  updateStore
+} from '*/helpers/actions'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
-export default function ({ trackData }) {
-  const artistData = trackData.artist
-
-  const artists = artistData
-    ? [artistData]
-    : trackData.artists
+export default function (
+  {
+    trackData
+  }
+) {
+  const artists = (
+    trackData.artists ||
+      [
+        trackData.artist
+      ]
+  )
 
   const artistName =
     formatArtistName(
@@ -18,12 +27,18 @@ export default function ({ trackData }) {
 
   const trackTitle = trackData.title
 
-  const query =
-    `${artistName} - ${trackTitle}`
+  const query = [
+    artistName,
+    trackTitle
+  ].join(
+    ' - '
+  )
 
-  const searchArgs = { query }
+  const searchArgs = {
+    query
+  }
 
-  const getFirstVariantId = () => {
+  function getFirstVariantId () {
     return store
       .state
       .player
@@ -31,28 +46,32 @@ export default function ({ trackData }) {
       .uuid
   }
 
-  const setCurrentTrackIds = () => {
+  function setCurrentTrackIds () {
     const trackId = trackData.player_id
     const queueTrackId = trackData.uuid
 
-    updateStore({
-      'player.currentTrackId':
+    updateStore(
+      {
+        'player.currentTrackId':
         trackId,
-      'queue.currentTrackId':
+        'queue.currentTrackId':
         queueTrackId
-    })
+      }
+    )
   }
 
-  const handleVariantSuccess = () => {
+  function handleVariantSuccess () {
     setCurrentTrackIds()
 
-    updateStore({
-      'player.currentVariantId':
+    updateStore(
+      {
+        'player.currentVariantId':
         getFirstVariantId()
-    })
+      }
+    )
   }
 
-  const handleSearchSuccess = () => {
+  function handleSearchSuccess () {
     const playerVariantAudioArgs = {
       variantId: getFirstVariantId()
     }

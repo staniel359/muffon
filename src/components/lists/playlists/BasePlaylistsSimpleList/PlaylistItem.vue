@@ -1,7 +1,9 @@
 <template>
   <BaseLinkContainer
     class="item main-simple-list-item"
-    :class="{ disabled: isDeleted }"
+    :class="{
+      disabled: isDeleted
+    }"
     :link="link"
   >
     <BaseDeletedBlock
@@ -18,7 +20,9 @@
       <div class="content">
         <BaseHeader
           tag="h4"
-          :class="{ link: isMainLinkActive }"
+          :class="{
+            link: isMainLinkActive
+          }"
           :text="playlistTitle"
         />
 
@@ -37,11 +41,11 @@
         <small
           class="description"
           v-html="tracksCountText"
-        ></small>
+        />
       </div>
 
       <BaseOptionsDropdown
-        :isWithDeleteOption="isWithDeleteOption"
+        :is-with-delete-option="isWithDeleteOption"
         @delete="handleDeleteOptionClick"
       />
     </template>
@@ -49,7 +53,7 @@
 
   <BasePlaylistDeleteModal
     ref="deleteModal"
-    :playlistData="playlistData"
+    :playlist-data="playlistData"
     @deleted="handleDeleted"
   />
 </template>
@@ -69,8 +73,12 @@ import {
   main as formatProfileMainLink,
   playlist as formatProfilePlaylistLink
 } from '*/helpers/formatters/links/profile'
-import { number as formatNumber } from '*/helpers/formatters'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'PlaylistItem',
@@ -107,10 +115,12 @@ export default {
       }
     },
     profilePlaylistLink () {
-      return formatProfilePlaylistLink({
-        profileId: this.profileId,
-        playlistId: this.playlistId
-      })
+      return formatProfilePlaylistLink(
+        {
+          profileId: this.profileId,
+          playlistId: this.playlistId
+        }
+      )
     },
     profileId () {
       return this.profileData.id.toString()
@@ -119,9 +129,11 @@ export default {
       return this.playlistData.profile
     },
     profileMainLink () {
-      return formatProfileMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     },
     playlistId () {
       return this.playlistData.id.toString()
@@ -135,7 +147,9 @@ export default {
     tracksCountText () {
       return this.$t(
         'counters.tracks',
-        { count: this.tracksCountStrong }
+        {
+          count: this.tracksCountStrong
+        }
       )
     },
     tracksCountStrong () {
@@ -153,9 +167,11 @@ export default {
       return !!this.playlistData.isDeleted
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.playlistData.uuid
@@ -171,10 +187,13 @@ export default {
   },
   methods: {
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     },
     handleDeleted () {
-      this.paginationItem.isDeleted = true
+      this.paginationItem
+        .isDeleted = true
     },
     handleProfileNicknameMouseEnter () {
       this.isMainLinkActive = false

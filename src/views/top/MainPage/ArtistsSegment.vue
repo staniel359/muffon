@@ -2,17 +2,17 @@
   <BaseTopPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
         :artists="slotProps[scope]"
-        :itemsInRow="5"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :items-in-row="itemsInRow"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseTopPaginatedSegmentContainer>

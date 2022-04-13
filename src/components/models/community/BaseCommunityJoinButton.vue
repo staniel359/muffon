@@ -1,6 +1,6 @@
 <template>
   <BaseCommunityJoinButtonContainer
-    :communityData="communityData"
+    :community-data="communityData"
   >
     <template #default="slotProps">
       <BaseButton

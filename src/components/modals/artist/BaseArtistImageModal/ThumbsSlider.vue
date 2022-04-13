@@ -9,7 +9,7 @@
       <div class="image-container main-image-container">
         <BaseImage
           :image="slotProps.image"
-          isLazy
+          is-lazy
         />
       </div>
     </template>
@@ -39,14 +39,21 @@ export default {
   ],
   computed: {
     sliderOptions () {
-      return artistImagesModalThumbsSliderOptions({
-        syncSlider: this.syncSlider
-      })
+      return artistImagesModalThumbsSliderOptions(
+        {
+          syncSlider: this.syncSlider
+        }
+      )
     }
   },
   methods: {
-    handleInit (el) {
-      this.$emit('init', el)
+    handleInit (
+      el
+    ) {
+      this.$emit(
+        'init',
+        el
+      )
     }
   }
 }

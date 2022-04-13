@@ -9,28 +9,40 @@ import formatTrackSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({
-  artistName,
-  trackTitle,
-  sourceParams,
-  scope
-}) {
+export default function (
+  {
+    artistName,
+    trackTitle,
+    sourceParams,
+    scope
+  }
+) {
   return [
     formatArtistsSection(),
-    formatArtistSection({
-      artistName
-    }),
-    formatArtistTracksSection({
-      artistName
-    }),
-    formatTrackSection({
-      artistName,
-      trackTitle,
-      sourceParams,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatArtistSection(
+      {
+        artistName
+      }
+    ),
+    formatArtistTracksSection(
+      {
+        artistName
+      }
+    ),
+    formatTrackSection(
+      {
+        artistName,
+        trackTitle,
+        sourceParams,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

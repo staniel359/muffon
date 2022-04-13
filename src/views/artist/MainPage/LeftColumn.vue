@@ -7,21 +7,21 @@
     ]"
   >
     <ImageNameSegment
-      :artistName="artistName"
+      :artist-name="artistName"
       :scrollable="scrollable"
     />
 
     <SelfSegment
-      :artistName="artistName"
-      :libraryId="libraryId"
-      :favoriteId="favoriteId"
-      :bookmarkId="bookmarkId"
-      :listenedId="listenedId"
+      :artist-name="artistName"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
     />
 
     <RecommendedSegment
       v-if="recommendationData"
-      :recommendationData="recommendationData"
+      :recommendation-data="recommendationData"
     />
   </div>
 </template>
@@ -80,16 +80,24 @@ export default {
       this.artistData.listened_id?.toString()
   },
   methods: {
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

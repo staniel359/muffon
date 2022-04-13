@@ -3,7 +3,7 @@
     class="item"
     :data-value="code"
   >
-    <i :class="icon"></i>
+    <i :class="icon" />
 
     {{ name }}
   </div>

@@ -2,23 +2,23 @@
   <BaseSegmentContainer
     ref="segment"
     class="main-paginated-segment-container"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
   >
     <BasePaginatedListContainer
-      :responseData="communityData"
+      :response-data="communityData"
       :scope="scope"
       :limit="limit"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       :error="error"
-      @fetchData="fetchData"
+      @fetch-data="fetchData"
       @refresh="handleRefresh"
       @focus="handleFocus"
     >
       <template #default="slotProps">
         <BasePostsSimpleList
           :posts="slotProps[scope]"
-          :communityId="communityId"
-          :communityCreatorId="communityCreatorId"
+          :community-id="communityId"
+          :community-creator-id="communityCreatorId"
         />
       </template>
     </BasePaginatedListContainer>
@@ -71,17 +71,27 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     getCommunityPosts,
-    fetchData (page) {
-      this.getCommunityPosts({
-        ...this.postsArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getCommunityPosts(
+        {
+          ...this.postsArgs,
+          page
+        }
+      )
     }
   }
 }

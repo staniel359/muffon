@@ -8,8 +8,8 @@
         <BaseArtistImage
           class="circular bordered main-profile-page-image"
           size="medium"
-          :imageData="imageData"
-          :artistName="artistName"
+          :image-data="imageData"
+          :artist-name="artistName"
         />
 
         <BaseHeader
@@ -24,7 +24,7 @@
         class="main-self-container"
       >
         <BaseSelfIcons
-          :favoriteId="favoriteId"
+          :favorite-id="favoriteId"
         />
 
         <template
@@ -32,20 +32,20 @@
         >
           <BaseOptionsDropdown
             model="artist"
-            :artistName="artistName"
-            :favoriteId="favoriteId"
-            isWithFavoriteOption
-            isWithDeleteOption
+            :artist-name="artistName"
+            :favorite-id="favoriteId"
+            is-with-favorite-option
+            is-with-delete-option
             @delete="handleDeleteOptionClick"
           />
 
           <BaseProfileLibraryDeleteModal
             ref="deleteModal"
             model="artist"
-            :profileId="profileId"
-            :modelId="artistId"
-            :modelName="artistName"
-            isDeleteWithRedirect
+            :profile-id="profileId"
+            :model-id="artistId"
+            :model-name="artistName"
+            is-delete-with-redirect
           />
         </template>
       </div>
@@ -53,12 +53,13 @@
       <BaseDivider />
 
       <div class="main-profile-page-info">
-        <div>
-          {{ sinceText }}
-        </div>
-        <strong>
-          {{ createdFormatted }}
-        </strong>
+        <div
+          v-text="sinceText"
+        />
+
+        <strong
+          v-text="createdFormatted"
+        />
       </div>
     </BaseSegmentContainer>
   </div>
@@ -80,8 +81,12 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
-import { isCurrentProfile } from '*/helpers/utils'
-import { date as formatDate } from '*/helpers/formatters'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
+import {
+  date as formatDate
+} from '*/helpers/formatters'
 
 export default {
   name: 'InfoSegment',
@@ -112,9 +117,11 @@ export default {
   },
   computed: {
     artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+      return formatArtistMainLink(
+        {
+          artistName: this.artistName
+        }
+      )
     },
     artistName () {
       return this.artistData.name
@@ -147,9 +154,13 @@ export default {
   },
   methods: {
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     }
   }

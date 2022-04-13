@@ -1,58 +1,123 @@
-export const main = ({ artistName }) => {
+export function main (
+  {
+    artistName
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
   return {
     name: 'ArtistMainPage',
-    params: { artistName },
+    params: {
+      artistName
+    },
     path: [
       'artists',
-      encodeURIComponent(artistName)
-    ].join('/')
+      artistNameEncoded
+    ].join(
+      '/'
+    )
   }
 }
 
-export const images = ({ artistName }) => {
+export function images (
+  {
+    artistName
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
   return {
     name: 'ArtistImagesPage',
-    params: { artistName },
+    params: {
+      artistName
+    },
     path: [
       'artists',
-      encodeURIComponent(artistName),
+      artistNameEncoded,
       'images'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }
 
-export const tracks = ({ artistName }) => {
+export function tracks (
+  {
+    artistName
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
   return {
     name: 'ArtistTracksPage',
-    params: { artistName },
+    params: {
+      artistName
+    },
     path: [
       'artists',
-      encodeURIComponent(artistName),
+      artistNameEncoded,
       'tracks'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }
 
-export const albums = ({ artistName }) => {
+export function albums (
+  {
+    artistName
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
   return {
     name: 'ArtistAlbumsPage',
-    params: { artistName },
+    params: {
+      artistName
+    },
     path: [
       'artists',
-      encodeURIComponent(artistName),
+      artistNameEncoded,
       'albums'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }
 
-export const similar = ({ artistName }) => {
+export function similar (
+  {
+    artistName
+  }
+) {
+  const artistNameEncoded =
+    encodeURIComponent(
+      artistName
+    )
+
   return {
     name: 'ArtistSimilarPage',
-    params: { artistName },
+    params: {
+      artistName
+    },
     path: [
       'artists',
-      encodeURIComponent(artistName),
+      artistNameEncoded,
       'similar'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }

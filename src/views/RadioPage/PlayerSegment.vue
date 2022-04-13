@@ -1,13 +1,13 @@
 <template>
   <BaseSegmentContainer
     class="track-segment"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
   >
     <template v-if="modelName">
       <PlayerLabel
         :scope="scope"
-        :modelName="modelName"
-        :modelScope="modelScope"
+        :model-name="modelName"
+        :model-scope="modelScope"
       />
 
       <BaseErrorMessage
@@ -19,7 +19,7 @@
       <TrackSection
         v-if="trackData"
         ref="track"
-        :trackData="trackData"
+        :track-data="trackData"
       />
 
       <div class="next-button-container">
@@ -27,7 +27,7 @@
           class="compact"
           icon="right arrow"
           :text="nextText"
-          isReverse
+          is-reverse
           @click="handleNextButtonClick"
         />
       </div>
@@ -107,7 +107,9 @@ export default {
     },
     fetchAudio () {
       if (!this.error) {
-        this.$refs.track.fetchAudio()
+        this.$refs
+          .track
+          .fetchAudio()
       }
     }
   }

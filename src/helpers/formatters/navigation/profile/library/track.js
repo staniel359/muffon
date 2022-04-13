@@ -15,44 +15,62 @@ import formatProfileLibraryTrackSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({
-  profileId,
-  profileNickname,
-  artistId,
-  artistName,
-  trackId,
-  trackTitle,
-  scope
-}) {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    artistId,
+    artistName,
+    trackId,
+    trackTitle,
+    scope
+  }
+) {
   return [
     formatProfilesSection(),
-    formatProfileSection({
-      profileId,
-      profileNickname
-    }),
-    formatProfileLibrarySection({
-      profileId
-    }),
-    formatProfileLibraryArtistsSection({
-      profileId
-    }),
-    formatProfileLibraryArtistSection({
-      profileId,
-      artistId,
-      artistName
-    }),
-    formatProfileLibraryArtistTracksSection({
-      profileId,
-      artistId
-    }),
-    formatProfileLibraryTrackSection({
-      profileId,
-      trackId,
-      trackTitle,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatProfileSection(
+      {
+        profileId,
+        profileNickname
+      }
+    ),
+    formatProfileLibrarySection(
+      {
+        profileId
+      }
+    ),
+    formatProfileLibraryArtistsSection(
+      {
+        profileId
+      }
+    ),
+    formatProfileLibraryArtistSection(
+      {
+        profileId,
+        artistId,
+        artistName
+      }
+    ),
+    formatProfileLibraryArtistTracksSection(
+      {
+        profileId,
+        artistId
+      }
+    ),
+    formatProfileLibraryTrackSection(
+      {
+        profileId,
+        trackId,
+        trackTitle,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

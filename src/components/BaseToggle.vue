@@ -1,17 +1,29 @@
 <template>
   <div
-    class="ui toggle checkbox main-toggle-checkbox"
-    :class="{ inverted: isDarkMode }"
     ref="checkbox"
+    :class="[
+      'ui toggle checkbox',
+      'main-toggle-checkbox',
+      {
+        inverted: isDarkMode
+      }
+    ]"
   >
     <input type="checkbox">
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { mainCheckboxOptions } from '*/helpers/data/plugins/semantic'
-import { setCheckbox, checkCheckbox } from '*/helpers/actions/plugins/semantic'
+import {
+  mapState
+} from 'vuex'
+import {
+  mainCheckboxOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  setCheckbox,
+  checkCheckbox
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseToggle',
@@ -23,14 +35,19 @@ export default {
     'off'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     checkboxOptions () {
-      return mainCheckboxOptions({
-        onChecked: this.handleOn,
-        onUnchecked: this.handleOff
-      })
+      return mainCheckboxOptions(
+        {
+          onChecked: this.handleOn,
+          onUnchecked: this.handleOff
+        }
+      )
     }
   },
   watch: {
@@ -46,19 +63,25 @@ export default {
     )
   },
   methods: {
-    handleIsChecked (value) {
-      this.$nextTick(() => {
-        checkCheckbox(
-          this.$refs.checkbox,
-          value
-        )
-      })
+    async handleIsChecked (
+      value
+    ) {
+      await this.$nextTick()
+
+      checkCheckbox(
+        this.$refs.checkbox,
+        value
+      )
     },
     handleOn () {
-      this.$emit('on')
+      this.$emit(
+        'on'
+      )
     },
     handleOff () {
-      this.$emit('off')
+      this.$emit(
+        'off'
+      )
     }
   }
 }

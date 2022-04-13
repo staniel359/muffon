@@ -1,13 +1,13 @@
 <template>
   <BasePageContainer
-    :responseData="profileData"
-    :isLoading="isLoading"
+    :response-data="profileData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :profileData="profileData"
-      :profileNickname="profileNicknameFetched"
-    ></slot>
+      :profile-data="profileData"
+      :profile-nickname="profileNicknameFetched"
+    />
   </BasePageContainer>
 </template>
 
@@ -84,18 +84,26 @@ export default {
   },
   methods: {
     getProfile,
-    fetchData (page) {
-      this.getProfile({
-        ...this.profileArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfile(
+        {
+          ...this.profileArgs,
+          page
+        }
+      )
     },
-    setIsFollowing (value) {
+    setIsFollowing (
+      value
+    ) {
       this.profileData
         .other_profile
         .follower_of_profile = value
     },
-    setFollowersCount (value) {
+    setFollowersCount (
+      value
+    ) {
       this.profileData
         .follower_profiles_count = value
     }

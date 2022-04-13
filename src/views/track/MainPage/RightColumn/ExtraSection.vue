@@ -1,8 +1,8 @@
 <template>
   <div class="main-basic-segments-container">
     <InfoSegment
-      :trackData="trackData"
-      :requestTrackData="requestTrackData"
+      :track-data="trackData"
+      :request-track-data="requestTrackData"
     />
 
     <BaseDivider />
@@ -16,8 +16,8 @@
     <BaseDivider />
 
     <SimilarSegment
-      :artistName="artistName"
-      :trackTitle="trackTitle"
+      :artist-name="artistName"
+      :track-title="trackTitle"
     />
   </div>
 </template>
@@ -28,7 +28,9 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
 import SimilarSegment from './ExtraSection/SimilarSegment.vue'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'ExtraSection',
@@ -59,7 +61,9 @@ export default {
       return [
         this.artistName,
         this.trackTitle
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     }
   }
 }

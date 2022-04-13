@@ -1,37 +1,39 @@
 <template>
   <div
-    class="main-modal-import-section"
     ref="scrollable"
+    class="main-modal-import-section"
   >
     <div class="main-library-modal-message-container">
       <BaseMessage
         class="success"
-        :icons="['check']"
+        :icons="[
+          'check'
+        ]"
         :header="successHeaderText"
         :content="successContentText"
       />
     </div>
 
     <BasePaginatedListContainer
-      :responseData="tracksData"
+      :response-data="tracksData"
       :scope="scope"
       :limit="limit"
-      :responsePageLimit="totalCount"
-      isReset
-      isWithPagination
+      :response-page-limit="totalCount"
+      is-reset
+      is-with-pagination
       @focus="handleFocus"
     >
       <template #default="slotProps">
         <BaseTracksSimpleList
           :tracks="slotProps[scope]"
-          isWithArtistName
-          isWithAlbumTitle
-          isWithImage
-          isWithCreated
-          isWithDeleteOption
-          isClearable
-          @linkClick="handleLinkClick"
-          @deleteButtonClick="handleDeleteButtonClick"
+          is-with-artist-name
+          is-with-album-title
+          is-with-image
+          is-with-created
+          is-with-delete-option
+          is-clearable
+          @link-click="handleLinkClick"
+          @delete-button-click="handleDeleteButtonClick"
         />
       </template>
     </BasePaginatedListContainer>
@@ -49,7 +51,9 @@ import BasePaginatedListContainer
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseSaveButton from '*/components/buttons/BaseSaveButton.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'SuccessSection',
@@ -81,7 +85,9 @@ export default {
     successHeaderText () {
       return this.$t(
         'import.success.tracks.header',
-        { count: this.totalCountFormatted }
+        {
+          count: this.totalCountFormatted
+        }
       )
     },
     totalCountFormatted () {
@@ -107,28 +113,47 @@ export default {
   },
   methods: {
     handleSaveButtonClick () {
-      this.setStatus('save')
+      this.setStatus(
+        'save'
+      )
+
       this.setTracks(
-        [...this.tracks]
+        [
+          ...this.tracks
+        ]
       )
     },
     handleFocus () {
-      this.$refs.scrollable.scrollTo(0, 0)
+      this.$refs
+        .scrollable
+        .scrollTo(
+          0,
+          0
+        )
     },
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteButtonClick ({ uuid }) {
-      const isMatchedTrack = trackData => {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
+      function isMatchedTrack (
+        trackData
+      ) {
         return trackData.uuid !== uuid
       }
 
-      const tracks = this.tracks.filter(
-        isMatchedTrack
-      )
+      const tracks =
+        this.tracks.filter(
+          isMatchedTrack
+        )
 
       this.setSuccessTracks(
-        [...tracks]
+        [
+          ...tracks
+        ]
       )
     }
   }

@@ -1,19 +1,19 @@
 <template>
   <BasePageContainer
-    :responseData="tagData"
-    :isLoading="isLoading"
+    :response-data="tagData"
+    :is-loading="isLoading"
     :error="error"
   >
     <template #default="slotProps">
       <slot
-        :tagData="tagData"
-        :tagName="tagNameFetched"
-        :profileId="slotProps.profileId"
-        :isLoading="isLoading"
+        :tag-data="tagData"
+        :tag-name="tagNameFetched"
+        :profile-id="slotProps.profileId"
+        :is-loading="isLoading"
         :error="error"
-        :fetchData="fetchData"
+        :fetch-data="fetchData"
         :refresh="refresh"
-      ></slot>
+      />
     </template>
   </BasePageContainer>
 </template>
@@ -85,14 +85,22 @@ export default {
   },
   methods: {
     getTag,
-    fetchData (page) {
-      this.getTag({
-        ...this.tagArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getTag(
+        {
+          ...this.tagArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

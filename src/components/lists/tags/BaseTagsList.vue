@@ -9,35 +9,41 @@
     <TagItem
       v-for="(tagData, index) in tags"
       :key="index"
-      :tagData="tagData"
-      :isLinkToLibrary="isLinkToLibrary"
-      :profileId="profileId"
+      :tag-data="tagData"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
       @click="handleClick"
     />
 
-    <div
+    <BaseLabelLinkContainer
       v-if="isMore"
-      class="ui basic label main-link-container"
-      :class="{ inverted: isDarkMode }"
+      class="more-container"
       @click.prevent="handleMoreClick"
     >
-      <span class="link">
-        ...
-      </span>
-    </div>
+      <template #default>
+        <i
+          class="ellipsis horizontal small icon link"
+        />
+      </template>
+    </BaseLabelLinkContainer>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
 import TagItem from './BaseTagsList/TagItem.vue'
+import BaseLabelLinkContainer
+  from '*/components/containers/links/BaseLabelLinkContainer.vue'
 
 export default {
   name: 'BaseTagsList',
   components: {
     BaseIcon,
-    TagItem
+    TagItem,
+    BaseLabelLinkContainer
   },
   props: {
     tags: {
@@ -56,9 +62,12 @@ export default {
     'moreClick'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
     handleClick () {
@@ -81,4 +90,8 @@ export default {
 
 .tags-list
   @extend .d-inline
+
+.more-container
+  & > .icon
+    @extend .no-margin
 </style>

@@ -10,7 +10,9 @@
 
 <script>
 import BaseImage from '*/components/images/BaseImage.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseImagesSection',

@@ -9,7 +9,7 @@
     <div>
       <BaseProfilesSimpleList
         :profiles="profiles"
-        isMinimal
+        is-minimal
       />
     </div>
   </BaseSegmentContainer>
@@ -37,7 +37,9 @@ export default {
   },
   computed: {
     profiles () {
-      return [this.creatorData]
+      return [
+        this.creatorData
+      ]
     }
   }
 }

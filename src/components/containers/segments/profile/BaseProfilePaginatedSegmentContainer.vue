@@ -1,15 +1,15 @@
 <template>
   <BaseProfileSegmentContainer
     ref="segment"
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        responseDataName="profileData"
-        :slotPropsData="segmentSlotProps"
+        response-data-name="profileData"
+        :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"
@@ -17,7 +17,7 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-          ></slot>
+          />
         </template>
       </BasePaginatedSegmentContainer>
     </template>
@@ -43,7 +43,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

@@ -3,7 +3,7 @@
     <SearchInput
       ref="input"
       :tags="tags"
-      @addTag="handleAddTag"
+      @add-tag="handleAddTag"
     />
 
     <BaseClearButton
@@ -36,7 +36,9 @@ export default {
     'change'
   ],
   methods: {
-    handleAddTag (value) {
+    handleAddTag (
+      value
+    ) {
       const tags = [
         ...this.tags,
         value
@@ -47,18 +49,26 @@ export default {
       )
     },
     handleResetButtonClick () {
-      this.changeTags([])
+      this.changeTags(
+        []
+      )
 
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     },
-    changeTags (value) {
+    changeTags (
+      value
+    ) {
       this.$emit(
         'change',
         value
       )
     },
     focusInput () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

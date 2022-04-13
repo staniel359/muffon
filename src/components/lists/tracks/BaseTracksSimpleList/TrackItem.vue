@@ -2,46 +2,46 @@
   <BaseTrackContainer
     ref="container"
     class="item main-simple-list-item"
-    :trackData="trackData"
-    :queueTracks="queueTracks"
-    :isDisabled="isDeleted"
-    isWithActiveClass
+    :track-data="trackData"
+    :queue-tracks="queueTracks"
+    :is-disabled="isDeleted"
+    is-with-active-class
   >
     <template #default="slotProps">
       <BaseTrackContent
-        :trackData="trackData"
-        :isLoading="slotProps.isLoading"
-        :isError="slotProps.isError"
-        :isCurrent="slotProps.isCurrent"
-        :isWithImage="isWithImage"
-        :isWithIndex="isWithIndex"
+        :track-data="trackData"
+        :is-loading="slotProps.isLoading"
+        :is-error="slotProps.isError"
+        :is-current="slotProps.isCurrent"
+        :is-with-image="isWithImage"
+        :is-with-index="isWithIndex"
         :index="index"
-        :isWithArtistName="isWithArtistName"
-        :albumArtistName="albumArtistName"
-        :isWithAlbumTitle="isWithAlbumTitle"
-        :isWithListenersCount="isWithListenersCount"
-        :topTrackCount="topTrackCount"
-        :isWithDuration="isWithDuration"
-        :isWithSource="isWithSource"
-        :isLinkToLibrary="isLinkToLibrary"
-        :profileId="profileId"
-        :isWithLibraryOption="isWithLibraryOption"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithBookmarkOption="isWithBookmarkOption"
-        :isWithListenedOption="isWithListenedOption"
-        :isWithPlaylistOption="isWithPlaylistOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        :isClearable="isClearable"
-        :isWithCreated="isWithCreated"
-        :isWithSelfIcons="isWithSelfIcons"
-        :isBookmark="isBookmark"
-        :isFavorite="isFavorite"
-        :isPlaylistTrack="isPlaylistTrack"
-        :playlistId="playlistId"
-        :playlistTitle="playlistTitle"
-        :isDeleted="isDeleted"
-        @linkClick="handleLinkClick"
-        @deleteButtonClick="handleDeleteButtonClick"
+        :is-with-artist-name="isWithArtistName"
+        :album-artist-name="albumArtistName"
+        :is-with-album-title="isWithAlbumTitle"
+        :is-with-listeners-count="isWithListenersCount"
+        :top-track-count="topTrackCount"
+        :is-with-duration="isWithDuration"
+        :is-with-source="isWithSource"
+        :is-link-to-library="isLinkToLibrary"
+        :profile-id="profileId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-playlist-option="isWithPlaylistOption"
+        :is-with-delete-option="isWithDeleteOption"
+        :is-clearable="isClearable"
+        :is-with-created="isWithCreated"
+        :is-with-self-icons="isWithSelfIcons"
+        :is-bookmark="isBookmark"
+        :is-favorite="isFavorite"
+        :is-playlist-track="isPlaylistTrack"
+        :playlist-id="playlistId"
+        :playlist-title="playlistTitle"
+        :is-deleted="isDeleted"
+        @link-click="handleLinkClick"
+        @delete-button-click="handleDeleteButtonClick"
         @deleted="handleDeleted"
       />
     </template>
@@ -68,7 +68,6 @@ export default {
     trackData: Object,
     queueTracks: Array,
     isWithImage: Boolean,
-    imageData: Object,
     isWithIndex: Boolean,
     index: Number,
     albumArtistName: String,
@@ -104,9 +103,11 @@ export default {
       return !!this.trackData.isDeleted
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.trackData.uuid
@@ -114,19 +115,30 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
-    handleDeleteButtonClick ({ uuid }) {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
       this.$emit(
         'deleteButtonClick',
-        { uuid }
+        {
+          uuid
+        }
       )
     },
     handleDeleted () {
-      this.paginationItem.isDeleted = true
+      this.paginationItem
+        .isDeleted = true
     },
     fetchAudio () {
-      this.$refs.container.fetchAudio()
+      this.$refs
+        .container
+        .fetchAudio()
     }
   }
 }

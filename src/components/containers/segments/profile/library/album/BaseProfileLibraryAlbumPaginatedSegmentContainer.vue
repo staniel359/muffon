@@ -1,16 +1,16 @@
 <template>
   <BaseProfileLibraryAlbumSegmentContainer
     ref="segment"
-    :profileId="profileId"
-    :albumId="albumId"
+    :profile-id="profileId"
+    :album-id="albumId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        responseDataName="libraryAlbumData"
-        :slotPropsData="segmentSlotProps"
+        response-data-name="libraryAlbumData"
+        :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"
@@ -18,8 +18,8 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :artistName="segmentSlotProps.artistName"
-          ></slot>
+            :artist-name="segmentSlotProps.artistName"
+          />
         </template>
       </BasePaginatedSegmentContainer>
     </template>
@@ -47,7 +47,9 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

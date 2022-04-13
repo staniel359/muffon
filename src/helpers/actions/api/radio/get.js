@@ -1,18 +1,28 @@
 import axios from 'axios'
 
-export default function ({ scope, modelName, modelScope }) {
+export default function (
+  {
+    scope,
+    modelName,
+    modelScope
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const url =
     `/radio/${scope}/${modelName}/${modelScope}`
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.radioData =
       response.data.radio
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 

@@ -1,11 +1,23 @@
 import axios from 'axios'
 
-export default function getPlays ({ nickname, page = 1 }) {
+export default function getPlays (
+  {
+    nickname,
+    page = 1
+  }
+) {
   const url = `/lastfm/users/${nickname}/plays`
-  const params = { page }
 
-  const handleSuccess = response => {
-    const { plays } = response.data.user
+  const params = {
+    page
+  }
+
+  const handleSuccess = (
+    response
+  ) => {
+    const {
+      plays
+    } = response.data.user
 
     const totalPages =
       response.data.user.total_pages
@@ -26,7 +38,9 @@ export default function getPlays ({ nickname, page = 1 }) {
         page: page + 1
       }
 
-      return getPlays.bind(this)(
+      return getPlays.bind(
+        this
+      )(
         playsArgs
       )
     }
@@ -38,19 +52,25 @@ export default function getPlays ({ nickname, page = 1 }) {
       page
     }
 
-    getPlays.bind(this)(
+    getPlays.bind(
+      this
+    )(
       playsArgs
     )
   }
 
-  const handleError = () => {
+  function handleError () {
     setTimeout(
-      retry, 2000
+      retry,
+      2000
     )
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

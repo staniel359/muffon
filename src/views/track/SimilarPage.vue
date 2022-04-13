@@ -2,20 +2,20 @@
   <BaseTrackPaginatedPageContainer
     :scope="scope"
     :limit="limit"
-    :sourceParams="sourceParams"
+    :source-params="sourceParams"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artistName="slotProps.artistName"
-        :profileId="slotProps.profileId"
-        isWithArtistName
-        isWithDuration
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
-        isWithPlaylistOption
+        :artist-name="slotProps.artistName"
+        :profile-id="slotProps.profileId"
+        is-with-artist-name
+        is-with-duration
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-playlist-option
       />
     </template>
   </BaseTrackPaginatedPageContainer>

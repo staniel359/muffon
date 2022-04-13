@@ -1,12 +1,15 @@
 <template>
-  <template v-if="description">
-    <BaseDivider isInverted />
+  <template
+    v-if="description"
+  >
+    <BaseDivider
+      is-inverted
+    />
 
     <BaseTagDescription
       :description="description"
-      :tagName="tagName"
-      :isMore="isMore"
-      isWhite
+      :tag-name="tagName"
+      :is-more="isMore"
     />
   </template>
 </template>

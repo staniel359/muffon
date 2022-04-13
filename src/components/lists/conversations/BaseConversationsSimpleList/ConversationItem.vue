@@ -4,11 +4,11 @@
     :link="conversationLink"
   >
     <OtherProfileSection
-      :otherProfileData="otherProfileData"
+      :other-profile-data="otherProfileData"
     />
 
     <LastMessageSegment
-      :lastMessageData="lastMessageData"
+      :last-message-data="lastMessageData"
     />
   </BaseLinkContainer>
 </template>
@@ -37,9 +37,11 @@ export default {
   },
   computed: {
     conversationLink () {
-      return formatConversationLink({
-        conversationId: this.conversationId
-      })
+      return formatConversationLink(
+        {
+          conversationId: this.conversationId
+        }
+      )
     },
     conversationId () {
       return this.conversationData.id

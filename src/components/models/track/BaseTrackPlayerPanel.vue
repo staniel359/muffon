@@ -1,14 +1,16 @@
 <template>
   <div
     class="track-player-panel"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <PlayButtonSection
-      :trackData="trackData"
+      :track-data="trackData"
     />
 
     <VisualizerSection
-      :trackId="trackId"
+      :track-id="trackId"
     />
 
     <DurationSection
@@ -18,13 +20,15 @@
 
     <SourceSection
       v-if="isAudioPresent"
-      :sourceId="sourceId"
+      :source-id="sourceId"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import PlayButtonSection from './BaseTrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './BaseTrackPlayerPanel/VisualizerSection.vue'
 import DurationSection from './BaseTrackPlayerPanel/DurationSection.vue'
@@ -42,9 +46,12 @@ export default {
     trackData: Object
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     trackId () {
       return this.trackData.player_id
     },

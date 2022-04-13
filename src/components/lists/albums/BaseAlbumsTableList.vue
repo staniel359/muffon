@@ -1,27 +1,25 @@
 <template>
-  <div :class="[
-    'ui',
-    columnWidth,
-    'column grid'
-  ]">
+  <div
+    :class="tableClass"
+  >
     <div
       v-for="albumData in albumsCollection"
-      class="column"
       :key="albumData.uuid"
+      class="column"
     >
       <AlbumItem
-        :albumData="albumData"
-        :artistName="artistName"
-        :isWithArtistName="isWithArtistName"
-        :isWithListenersCount="isWithListenersCount"
-        :isWithLibrary="isWithLibrary"
-        :isLinkToLibrary="isLinkToLibrary"
-        :profileId="profileId"
-        :isWithLibraryOption="isWithLibraryOption"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithBookmarkOption="isWithBookmarkOption"
-        :isWithListenedOption="isWithListenedOption"
-        :isWithDeleteOption="isWithDeleteOption"
+        :album-data="albumData"
+        :artist-name="artistName"
+        :is-with-artist-name="isWithArtistName"
+        :is-with-listeners-count="isWithListenersCount"
+        :is-with-library="isWithLibrary"
+        :is-link-to-library="isLinkToLibrary"
+        :profile-id="profileId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-delete-option="isWithDeleteOption"
       />
     </div>
   </div>
@@ -29,8 +27,12 @@
 
 <script>
 import AlbumItem from './BaseAlbumsTableList/AlbumItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
-import { numberToColumnWidth } from '*/helpers/actions/plugins/semantic'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
+import {
+  numberToColumnWidth
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseAlbumsTableList',
@@ -61,14 +63,17 @@ export default {
     isWithDeleteOption: Boolean
   },
   computed: {
-    albumsCollection () {
-      return formatCollection(
-        this.albums
-      )
+    tableClass () {
+      return `ui ${this.columnWidth} column grid`
     },
     columnWidth () {
       return numberToColumnWidth(
         this.itemsInRow
+      )
+    },
+    albumsCollection () {
+      return formatCollection(
+        this.albums
       )
     }
   }

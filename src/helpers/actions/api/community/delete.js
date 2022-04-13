@@ -1,7 +1,11 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ communityId }) {
+export default function (
+  {
+    communityId
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -10,14 +14,18 @@ export default function ({ communityId }) {
   const profileId =
     store.state.profile.info.id
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
 
   const params = {
     profile_id: profileId,
     token
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
 
     throw error
@@ -28,7 +36,10 @@ export default function ({ communityId }) {
   }
 
   return axios.delete(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).catch(
     handleError
   ).finally(

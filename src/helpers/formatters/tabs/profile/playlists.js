@@ -3,23 +3,32 @@ import {
   playlists as formatProfilePlaylistsLink
 } from '*/helpers/formatters/links/profile'
 
-export default function ({ profileId, profileNickname }) {
-  const formatTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname
+  }
+) {
+  function formatTitle () {
     return i18n.global.t(
       'navigation.model.playlists',
-      { modelName: profileNickname }
+      {
+        modelName: profileNickname
+      }
     )
   }
 
-  const formatPath = () => {
-    return formatProfilePlaylistsLink({
+  const {
+    path
+  } = formatProfilePlaylistsLink(
+    {
       profileId
-    }).path
-  }
+    }
+  )
 
   return {
     icon: 'file audio',
     title: formatTitle(),
-    path: formatPath()
+    path
   }
 }

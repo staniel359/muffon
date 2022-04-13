@@ -3,8 +3,12 @@ import {
   communities as formatCommunitiesLink
 } from '*/helpers/formatters/links'
 
-export default function ({ isActive } = {}) {
-  const formatLink = () => {
+export default function (
+  {
+    isActive
+  } = {}
+) {
+  function formatLink () {
     if (!isActive) {
       return formatCommunitiesLink()
     }

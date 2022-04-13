@@ -5,16 +5,16 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="trackData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="trackData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :profileId="pageSlotProps.profileId"
-          ></slot>
+            :profile-id="pageSlotProps.profileId"
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

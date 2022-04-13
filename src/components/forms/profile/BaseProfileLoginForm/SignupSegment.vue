@@ -8,9 +8,9 @@
       class="main-link"
       @click="handleSignupLinkClick"
     >
-      <strong>
-        {{ linkText }}
-      </strong>
+      <strong
+        v-text="linkText"
+      />
     </span>
   </BaseSegmentContainer>
 </template>

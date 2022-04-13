@@ -7,15 +7,15 @@
     }"
   >
     <BasePaginatedListContainer
-      :responseData="searchData"
+      :response-data="searchData"
       :scope="tabData.scope"
       :limit="tabData.limit"
-      :responsePageLimit="tabData.responsePageLimit"
-      :isLoading="isLoading"
+      :response-page-limit="tabData.responsePageLimit"
+      :is-loading="isLoading"
       :error="error"
-      :isPaginationSimple="isVideos"
-      :isReset="isVideos"
-      @fetchData="fetchData"
+      :is-pagination-simple="isVideos"
+      :is-reset="isVideos"
+      @fetch-data="fetchData"
       @refresh="handleRefresh"
       @focus="handleFocus"
     >
@@ -23,20 +23,20 @@
         <Component
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
-          :profileId="profileId"
-          :isWithListenersCount="!!tabData.isWithListenersCount"
-          :isWithPlaylistOption="isTracks"
-          isWithImage
-          isWithArtistName
-          isWithAlbumTitle
-          isWithDuration
-          isWithSource
-          isWithLibraryOption
-          isWithListenedOption
-          isWithBookmarkOption
-          isWithChannelTitle
-          isWithFavoriteOption
-          @linkClick="handleLinkClick"
+          :profile-id="profileId"
+          :is-with-listeners-count="!!tabData.isWithListenersCount"
+          :is-with-playlist-option="isTracks"
+          is-with-image
+          is-with-artist-name
+          is-with-album-title
+          is-with-duration
+          is-with-source
+          is-with-library-option
+          is-with-listened-option
+          is-with-bookmark-option
+          is-with-channel-title
+          is-with-favorite-option
+          @link-click="handleLinkClick"
         />
       </template>
     </BasePaginatedListContainer>
@@ -44,7 +44,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
@@ -95,12 +97,18 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     searchArgs () {
       return {
         sourceId: this.sourceId,
@@ -138,31 +146,48 @@ export default {
     }
   },
   methods: {
-    handleIsActive (value) {
+    handleIsActive (
+      value
+    ) {
       if (value) {
         this.isActivated = true
       }
     },
-    handleIsActivated (value) {
+    handleIsActivated (
+      value
+    ) {
       if (value) {
         this.fetchData()
       }
     },
     handleFocus () {
-      this.$refs.tab.scrollTo(0, 0)
+      this.$refs
+        .tab
+        .scrollTo(
+          0,
+          0
+        )
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     handleLinkClick () {
       this.hideSearch()
     },
     getSearch,
-    fetchData (page) {
-      this.getSearch({
-        ...this.searchArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getSearch(
+        {
+          ...this.searchArgs,
+          page
+        }
+      )
     }
   }
 }

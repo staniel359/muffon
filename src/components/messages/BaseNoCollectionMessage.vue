@@ -7,7 +7,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseMessage from '*/components/messages/BaseMessage.vue'
 
 export default {
@@ -23,13 +25,18 @@ export default {
   },
   data () {
     return {
-      icons: ['question']
+      icons: [
+        'question'
+      ]
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     header () {
       return this.$t(
         `noCollection.header.${this.scope}`

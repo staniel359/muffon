@@ -13,7 +13,9 @@
     <div class="content">
       <BaseHeader
         tag="h4"
-        :class="{ link: isMainLinkActive }"
+        :class="{
+          link: isMainLinkActive
+        }"
         :text="videoTitle"
       />
 
@@ -27,9 +29,9 @@
       />
 
       <div class="description main-small-container">
-        <small>
-          {{ publishDate }}
-        </small>
+        <small
+          v-text="publishDate"
+        />
       </div>
     </div>
   </BaseLinkContainer>
@@ -41,7 +43,9 @@ import BaseLinkContainer
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import { main as formatVideoMainLink } from '*/helpers/formatters/links/video'
+import {
+  main as formatVideoMainLink
+} from '*/helpers/formatters/links/video'
 import {
   videos as formatVideoChannelVideosLink
 } from '*/helpers/formatters/links/videoChannel'
@@ -61,19 +65,21 @@ export default {
     },
     isWithChannelTitle: Boolean
   },
+  emits: [
+    'linkClick'
+  ],
   data () {
     return {
       isMainLinkActive: true
     }
   },
-  emits: [
-    'linkClick'
-  ],
   computed: {
     videoMainLink () {
-      return formatVideoMainLink({
-        videoId: this.videoId
-      })
+      return formatVideoMainLink(
+        {
+          videoId: this.videoId
+        }
+      )
     },
     videoId () {
       return this.videoData.youtube_id
@@ -91,10 +97,12 @@ export default {
       return this.videoData.channel
     },
     videoChannelVideosLink () {
-      return formatVideoChannelVideosLink({
-        channelId: this.channelId,
-        channelTitle: this.channelTitle
-      })
+      return formatVideoChannelVideosLink(
+        {
+          channelId: this.channelId,
+          channelTitle: this.channelTitle
+        }
+      )
     },
     channelId () {
       return this.channelData.youtube_id
@@ -105,7 +113,9 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
     handleChannelLinkMouseEnter () {
       this.isMainLinkActive = false

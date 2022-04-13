@@ -1,21 +1,21 @@
 <template>
   <BasePlaylistPaginatedSegmentContainer
     class="main-paginated-page-segment-container"
-    :profileId="profileId"
-    :playlistId="playlistId"
+    :profile-id="profileId"
+    :playlist-id="playlistId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :playlistTitle="playlistTitle"
-        :playlistId="playlistId"
-        isWithImage
-        isWithArtistName
-        isWithAlbumTitle
-        isPlaylistTrack
-        isWithDeleteOption
+        :playlist-title="playlistTitle"
+        :playlist-id="playlistId"
+        is-with-image
+        is-with-artist-name
+        is-with-album-title
+        is-playlist-track
+        is-with-delete-option
       />
     </template>
   </BasePlaylistPaginatedSegmentContainer>

@@ -2,14 +2,16 @@
   <TypeItem
     v-for="(typeData, index) in typesCollection"
     :key="typeData.uuid"
-    :typeId="typeData.name"
+    :type-id="typeData.name"
     :index="index"
   />
 </template>
 
 <script>
 import TypeItem from './TypesList/TypeItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'TypesList',

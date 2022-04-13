@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ui basic segments"
     ref="segment"
+    class="ui basic segments"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,21 +9,25 @@
     />
 
     <slot
-      :trackData="trackData"
-      :profileId="profileId"
-      :isLoading="isLoading"
+      :track-data="trackData"
+      :profile-id="profileId"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getTrack from '*/helpers/actions/api/track/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackSegmentContainer',
@@ -54,9 +58,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     },
@@ -74,14 +81,22 @@ export default {
   },
   methods: {
     getTrack,
-    fetchData (page) {
-      this.getTrack({
-        ...this.trackArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getTrack(
+        {
+          ...this.trackArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

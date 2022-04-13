@@ -4,8 +4,8 @@
       <FilterItem
         v-for="filterItemData in filterItems"
         :key="filterItemData.uuid"
-        :filterItemData="filterItemData"
-        @deleteButtonClick="handleFilterItemDeleteButtonClick"
+        :filter-item-data="filterItemData"
+        @delete-button-click="handleFilterItemDeleteButtonClick"
       />
     </div>
   </div>
@@ -31,8 +31,12 @@ export default {
     'change'
   ],
   methods: {
-    handleFilterItemDeleteButtonClick (uuid) {
-      const isMatchedItem = itemData => {
+    handleFilterItemDeleteButtonClick (
+      uuid
+    ) {
+      function isMatchedItem (
+        itemData
+      ) {
         return itemData.uuid !== uuid
       }
 

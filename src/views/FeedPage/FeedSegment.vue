@@ -6,16 +6,16 @@
       'main-paginated-page-segment-container',
       'feed-segment'
     ]"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     @init="handleInit"
   >
     <BasePaginatedListContainer
-      :responseData="profileData"
+      :response-data="profileData"
       :scope="scope"
       :limit="limit"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       :error="error"
-      @fetchData="fetchData"
+      @fetch-data="fetchData"
       @refresh="handleRefresh"
       @focus="handleFocus"
     >
@@ -59,30 +59,40 @@ export default {
       return {
         limit: this.limit
       }
-    },
-    feedData () {
-      return this.profileData?.feed
     }
   },
   mounted () {
     this.fetchData()
   },
   methods: {
-    handleInit (el) {
-      this.segment = el
+    handleInit (
+      element
+    ) {
+      this.segment = element
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     handleFocus () {
-      this.segment.scrollTo(0, 0)
+      this.segment.scrollTo(
+        0,
+        0
+      )
     },
     getFeed,
-    fetchData (page) {
-      this.getFeed({
-        ...this.feedArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getFeed(
+        {
+          ...this.feedArgs,
+          page
+        }
+      )
     }
   }
 }

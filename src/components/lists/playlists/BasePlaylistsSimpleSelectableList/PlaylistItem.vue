@@ -23,22 +23,22 @@
       <small
         class="description"
         v-html="tracksCountText"
-      ></small>
+      />
     </div>
 
     <div class="icon-container">
       <div
         v-if="isLoading"
         class="ui active mini inline loader"
-      ></div>
+      />
       <i
         v-else-if="isSuccess"
         class="green check icon"
-      ></i>
+      />
       <i
         v-else-if="isError"
         class="red close icon"
-      ></i>
+      />
     </div>
   </BaseLinkContainer>
 </template>
@@ -48,7 +48,9 @@ import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
 import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
 
@@ -65,10 +67,6 @@ export default {
   props: {
     playlistData: {
       type: Object,
-      required: true
-    },
-    profileId: {
-      type: String,
       required: true
     },
     trackTitle: {
@@ -103,7 +101,9 @@ export default {
     tracksCountText () {
       return this.$t(
         'counters.tracks',
-        { count: this.tracksCountStrong }
+        {
+          count: this.tracksCountStrong
+        }
       )
     },
     tracksCountStrong () {
@@ -130,9 +130,11 @@ export default {
       }
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.playlistData.uuid
@@ -156,14 +158,16 @@ export default {
         this.postData()
       }
     },
-    handleSuccess (response) {
+    handleSuccess (
+      response
+    ) {
       this.isSuccess = true
 
       this.playlistTrackId =
         response.data.playlist_track_id
 
-      this.paginationItem.tracks_count =
-        response.data.playlist_tracks_count
+      this.paginationItem
+        .tracks_count = response.data.playlist_tracks_count
     },
     createPlaylistTrack,
     deletePlaylistTrack,

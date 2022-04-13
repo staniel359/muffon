@@ -1,13 +1,15 @@
 <template>
   <BaseArtistLinkContainer
     class="item main-simple-list-item"
-    :class="{ disabled: isDeleted }"
-    :artistData="artistData"
-    :profileId="profileId"
-    :isLinkToLibrary="isLinkToLibrary"
-    :isTracksActive="isTracksActive"
-    :isAlbumsActive="isAlbumsActive"
-    @linkClick="handleLinkClick"
+    :class="{
+      disabled: isDeleted
+    }"
+    :artist-data="artistData"
+    :profile-id="profileId"
+    :is-link-to-library="isLinkToLibrary"
+    :is-tracks-active="isTracksActive"
+    :is-albums-active="isAlbumsActive"
+    @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -17,75 +19,79 @@
       <BaseArtistImage
         class="circular bordered"
         size="extrasmall"
-        :class="{ small: isImageSmall }"
-        :imageData="imageData"
-        :artistName="artistName"
-        @loadEnd="handleImageLoadEnd"
+        :class="{
+          small: isImageSmall
+        }"
+        :image-data="imageData"
+        :artist-name="artistName"
+        @load-end="handleImageLoadEnd"
       />
 
       <div class="content">
         <BaseHeader
           tag="h4"
-          :class="{ link: isHeaderLink }"
+          :class="{
+            link: isHeaderLink
+          }"
           :text="artistName"
         />
 
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
           class="description"
-          :artistName="artistName"
-          :listenersCount="listenersCount"
-          @loadEnd="handleListenersCountLoadEnd"
+          :artist-name="artistName"
+          :listeners-count="listenersCount"
+          @load-end="handleListenersCountLoadEnd"
         />
 
         <LibraryCountersSection
           v-if="isWithLibrary"
-          :artistData="artistData"
-          :topTracksCount="topTracksCount"
-          :topAlbumsCount="topAlbumsCount"
-          :isTracksActive="isTracksActive"
-          :isAlbumsActive="isAlbumsActive"
-          @tracksActiveChange="handleTracksActiveChange"
-          @albumsActiveChange="handleAlbumsActiveChange"
+          :artist-data="artistData"
+          :top-tracks-count="topTracksCount"
+          :top-albums-count="topAlbumsCount"
+          :is-tracks-active="isTracksActive"
+          :is-albums-active="isAlbumsActive"
+          @tracks-active-change="handleTracksActiveChange"
+          @albums-active-change="handleAlbumsActiveChange"
         />
       </div>
 
       <BaseSelfIcons
         v-if="isWithSelfIcons"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
       />
 
       <BaseOptionsDropdown
         model="artist"
-        :artistName="artistName"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-        :isWithLibraryOption="isWithLibraryOption"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithBookmarkOption="isWithBookmarkOption"
-        :isWithListenedOption="isWithListenedOption"
-        :isWithDeleteOption="isWithDeleteOption"
+        :artist-name="artistName"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-delete-option="isWithDeleteOption"
         @delete="handleDeleteOptionClick"
-        @linkClick="handleLinkClick"
+        @link-click="handleLinkClick"
       />
 
       <BaseBookmarkDeleteModal
         v-if="isBookmark"
         ref="deleteModal"
         model="artist"
-        :modelData="artistData"
+        :model-data="artistData"
         @deleted="handleDeleted"
       />
       <BaseFavoriteDeleteModal
         v-else-if="isFavorite"
         ref="deleteModal"
         model="artist"
-        :modelData="artistData"
+        :model-data="artistData"
         @deleted="handleDeleted"
       />
     </template>
@@ -193,9 +199,11 @@ export default {
       return !!this.artistData.isDeleted
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.artistData.uuid
@@ -213,43 +221,67 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
-    handleImageLoadEnd (value) {
+    handleImageLoadEnd (
+      value
+    ) {
       this.paginationItem.image = value
     },
-    handleListenersCountLoadEnd (value) {
-      this.paginationItem.listeners_count = value
+    handleListenersCountLoadEnd (
+      value
+    ) {
+      this.paginationItem
+        .listeners_count = value
     },
-    handleTracksActiveChange (value) {
+    handleTracksActiveChange (
+      value
+    ) {
       this.isTracksActive = value
     },
-    handleAlbumsActiveChange (value) {
+    handleAlbumsActiveChange (
+      value
+    ) {
       this.isAlbumsActive = value
     },
     handleDeleteOptionClick () {
       if (this.isClearable) {
         this.$emit(
           'deleteButtonClick',
-          { uuid: this.uuid }
+          {
+            uuid: this.uuid
+          }
         )
       } else {
-        this.$refs.deleteModal.show()
+        this.$refs
+          .deleteModal
+          .show()
       }
     },
     handleDeleted () {
-      this.paginationItem.isDeleted = true
+      this.paginationItem
+        .isDeleted = true
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

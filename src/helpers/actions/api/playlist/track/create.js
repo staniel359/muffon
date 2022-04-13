@@ -1,24 +1,30 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({
-  playlistId,
-  trackTitle,
-  artistName,
-  albumTitle,
-  image,
-  imageUrl,
-  created
-}) {
+export default function (
+  {
+    playlistId,
+    trackTitle,
+    artistName,
+    albumTitle,
+    image,
+    imageUrl,
+    created
+  }
+) {
   this.isError = false
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/playlists/${playlistId}/tracks`
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
     title: trackTitle,
@@ -29,7 +35,9 @@ export default function ({
     created_at: created
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.isError = true
 
     throw error
@@ -40,7 +48,8 @@ export default function ({
   }
 
   return axios.post(
-    url, params
+    url,
+    params
   ).catch(
     handleError
   ).finally(

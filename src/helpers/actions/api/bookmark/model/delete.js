@@ -1,20 +1,33 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ model, bookmarkId }) {
+export default function (
+  {
+    model,
+    bookmarkId
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}` +
     `/bookmarks/${model}s/${bookmarkId}`
 
-  const { token } = store.state.profile
-  const params = { token }
+  const {
+    token
+  } = store.state.profile
 
-  const handleError = error => {
+  const params = {
+    token
+  }
+
+  const handleError = (
+    error
+  ) => {
     this.error = error
 
     throw error
@@ -25,7 +38,10 @@ export default function ({ model, bookmarkId }) {
   }
 
   return axios.delete(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).catch(
     handleError
   ).finally(

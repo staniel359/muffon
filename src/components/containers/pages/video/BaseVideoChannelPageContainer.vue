@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="channelData"
-    :isLoading="isLoading"
+    :response-data="channelData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :channelData="channelData"
-      :isLoading="isLoading"
+      :channel-data="channelData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -83,18 +83,26 @@ export default {
   },
   methods: {
     getVideoChannel,
-    fetchData (page) {
+    fetchData (
+      page
+    ) {
       if (page) {
         this.channelData.videos = []
       }
 
-      this.getVideoChannel({
-        ...this.videoChannelArgs,
-        page
-      })
+      this.getVideoChannel(
+        {
+          ...this.videoChannelArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

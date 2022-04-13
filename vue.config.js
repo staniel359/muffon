@@ -1,5 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require(
+  'path'
+)
+const webpack = require(
+  'webpack'
+)
 
 module.exports = {
   configureWebpack: {
@@ -7,15 +11,18 @@ module.exports = {
       'react-native-fs': 'reactNativeFs'
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery'
-      })
+      new webpack.ProvidePlugin(
+        {
+          $: 'jquery',
+          jQuery: 'jquery'
+        }
+      )
     ],
     resolve: {
       alias: {
         '*': path.resolve(
-          __dirname, './src'
+          __dirname,
+          './src'
         )
       }
     },

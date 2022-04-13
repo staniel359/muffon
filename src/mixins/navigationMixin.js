@@ -1,19 +1,30 @@
-import { mapState, mapActions } from 'vuex'
-import { updateTab } from '*/helpers/actions'
+import {
+  mapState,
+  mapActions
+} from 'vuex'
+import {
+  updateTab
+} from '*/helpers/actions'
 
 export default {
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    })
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    )
   },
   watch: {
     profileLanguage: 'handleProfileLanguageChange'
   },
   methods: {
-    ...mapActions('layout', [
-      'setNavigationSections'
-    ]),
+    ...mapActions(
+      'layout',
+      [
+        'setNavigationSections'
+      ]
+    ),
     handleNavigationDataChange () {
       this.setNavigation()
     },

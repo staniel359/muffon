@@ -6,8 +6,10 @@
     />
 
     <BaseToggle
-      :class="{ disabled: isDisabled }"
-      :isChecked="isChecked"
+      :class="{
+        disabled: isDisabled
+      }"
+      :is-checked="isChecked"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -17,7 +19,9 @@
 <script>
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'ScrobbleOption',
@@ -47,14 +51,18 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      updateStore({
-        'player.isWithScrobbling': true
-      })
+      updateStore(
+        {
+          'player.isWithScrobbling': true
+        }
+      )
     },
     handleToggleOff () {
-      updateStore({
-        'player.isWithScrobbling': false
-      })
+      updateStore(
+        {
+          'player.isWithScrobbling': false
+        }
+      )
     }
   }
 }

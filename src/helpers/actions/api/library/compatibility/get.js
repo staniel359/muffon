@@ -1,27 +1,43 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ otherProfileId, scope = '', page, limit }) {
+export default function (
+  {
+    otherProfileId,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/library/compatibility/${scope}`
 
   const params = {
     other_profile_id: otherProfileId,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.compatibilityData =
       response.data.compatibility
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -30,7 +46,10 @@ export default function ({ otherProfileId, scope = '', page, limit }) {
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

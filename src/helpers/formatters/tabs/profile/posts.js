@@ -3,23 +3,32 @@ import {
   posts as formatProfilePostsLink
 } from '*/helpers/formatters/links/profile'
 
-export default function ({ profileId, profileNickname }) {
-  const formatTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname
+  }
+) {
+  function formatTitle () {
     return i18n.global.t(
       'navigation.model.posts',
-      { modelName: profileNickname }
+      {
+        modelName: profileNickname
+      }
     )
   }
 
-  const formatPath = () => {
-    return formatProfilePostsLink({
+  const {
+    path
+  } = formatProfilePostsLink(
+    {
       profileId
-    }).path
-  }
+    }
+  )
 
   return {
     icon: 'edit',
     title: formatTitle(),
-    path: formatPath()
+    path
   }
 }

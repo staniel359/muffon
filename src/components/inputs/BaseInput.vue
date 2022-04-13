@@ -7,13 +7,13 @@
     }"
   >
     <input
-      class="prompt"
       ref="input"
+      class="prompt"
       :value="modelValue"
       :placeholder="placeholder"
       @input="handleInput"
       @keypress.enter="handleEnterPress"
-    />
+    >
 
     <i
       v-if="icon"
@@ -24,7 +24,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseInput',
@@ -38,25 +40,40 @@ export default {
     'enterPress'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
-    handleInput (event) {
+    handleInput (
+      event
+    ) {
+      const {
+        value
+      } = event.target
+
       this.$emit(
         'update:modelValue',
-        event.target.value
+        value
       )
     },
     handleEnterPress () {
-      this.$emit('enterPress')
+      this.$emit(
+        'enterPress'
+      )
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     unfocus () {
-      this.$refs.input.blur()
+      this.$refs
+        .input
+        .blur()
     }
   }
 }

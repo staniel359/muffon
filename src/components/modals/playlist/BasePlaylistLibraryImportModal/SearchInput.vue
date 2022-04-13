@@ -4,13 +4,15 @@
     class="search-input"
     :url="url"
     :fields="fields"
-    :formatResponse="formatResponse"
+    :format-response="formatResponse"
     @select="handleSelect"
   />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
 
 export default {
@@ -34,9 +36,12 @@ export default {
     'select'
   ],
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     url () {
       return (
         `/profiles/${this.profileId}` +
@@ -58,8 +63,12 @@ export default {
     }
   },
   methods: {
-    handleSelect (track) {
-      const isTrackPresent = trackData => {
+    handleSelect (
+      track
+    ) {
+      function isTrackPresent (
+        trackData
+      ) {
         const isSameTitle = (
           track.title ===
             trackData.title
@@ -97,15 +106,20 @@ export default {
 
       this.clear()
     },
-    formatResponse (response) {
-      const { tracks } =
-        response.profile.library
+    formatResponse (
+      response
+    ) {
+      const {
+        tracks
+      } = response.profile.library
 
       return tracks.map(
         this.formatTrack
       )
     },
-    formatTrack (trackData) {
+    formatTrack (
+      trackData
+    ) {
       return {
         ...trackData,
         artistName:
@@ -113,10 +127,14 @@ export default {
       }
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

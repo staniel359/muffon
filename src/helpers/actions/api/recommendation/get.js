@@ -1,36 +1,50 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({
-  recommendationId,
-  scope = '',
-  page,
-  limit
-}) {
+export default function (
+  {
+    recommendationId,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url = (
     `/profiles/${profileId}` +
     `/recommendations/${recommendationId}` +
     `/${scope}`
   )
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.recommendationData =
       response.data.recommendation
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -39,7 +53,10 @@ export default function ({
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

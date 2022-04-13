@@ -1,6 +1,10 @@
 import getBandcampId from '*/helpers/actions/api/bandcampId/get'
 
-export default async function ({ trackData }) {
+export default async function (
+  {
+    trackData
+  }
+) {
   const bandcampIdArgs = {
     model:
       trackData.bandcamp_model,

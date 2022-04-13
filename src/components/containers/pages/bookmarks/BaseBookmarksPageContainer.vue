@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="profileData"
-    :isLoading="isLoading"
+    :response-data="profileData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :bookmarksData="bookmarksData"
-      :isLoading="isLoading"
+      :bookmarks-data="bookmarksData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -83,14 +83,22 @@ export default {
   },
   methods: {
     getBookmarks,
-    fetchData (page) {
-      this.getBookmarks({
-        ...this.bookmarksArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getBookmarks(
+        {
+          ...this.bookmarksArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

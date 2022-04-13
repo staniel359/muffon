@@ -7,8 +7,11 @@
     @click="handleClick"
   >
     <i
-      class="angle right icon direction-icon"
-    ></i>
+      :class="[
+        'angle right icon',
+        'direction-icon'
+      ]"
+    />
   </a>
 </template>
 
@@ -23,7 +26,9 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

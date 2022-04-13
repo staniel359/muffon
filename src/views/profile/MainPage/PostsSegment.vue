@@ -1,19 +1,19 @@
 <template>
   <BaseProfileSegmentContainer
     scope="posts"
-    :headerLink="headerLink"
-    :isFetchData="false"
+    :header-link="headerLink"
+    :is-fetch-data="false"
   >
     <template #default>
       <BasePostsFormSegment
-        postType="profile"
-        :profileId="profileId"
+        post-type="profile"
+        :profile-id="profileId"
         @success="handlePostCreateSuccess"
       />
 
       <PostsListSegment
         :key="key"
-        :profileId="profileId"
+        :profile-id="profileId"
       />
     </template>
   </BaseProfileSegmentContainer>
@@ -25,7 +25,9 @@ import BaseProfileSegmentContainer
 import BasePostsFormSegment
   from '*/components/segments/posts/BasePostsFormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 import {
   posts as formatProfilePostsLink
 } from '*/helpers/formatters/links/profile'
@@ -50,9 +52,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfilePostsLink({
-        profileId: this.profileId
-      })
+      return formatProfilePostsLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   },
   methods: {

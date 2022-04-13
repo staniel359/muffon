@@ -5,16 +5,28 @@ import formatCommunitySection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({ communityId, communityTitle, scope }) {
+export default function (
+  {
+    communityId,
+    communityTitle,
+    scope
+  }
+) {
   return [
     formatCommunitiesSection(),
-    formatCommunitySection({
-      communityId,
-      communityTitle,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatCommunitySection(
+      {
+        communityId,
+        communityTitle,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

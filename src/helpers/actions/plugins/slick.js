@@ -2,20 +2,36 @@ import 'slick-carousel'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-export const setSlider = (el, options) => {
-  $(el).slick(options)
+export function setSlider (
+  element,
+  options
+) {
+  $(
+    element
+  ).slick(
+    options
+  )
 }
 
-export const setSliderOptions = (el, options) => {
-  $(el).slick(
+export function setSliderOptions (
+  element,
+  options
+) {
+  $(
+    element
+  ).slick(
     'slickSetOption',
     options,
     true
   )
 }
 
-export const clearSliderPrevImages = el => {
-  $(el).slick(
+export function clearSliderPrevImages (
+  element
+) {
+  $(
+    element
+  ).slick(
     'slickRemove',
     null,
     null,
@@ -23,16 +39,33 @@ export const clearSliderPrevImages = el => {
   )
 }
 
-export const refreshSlider = el => {
-  $(el).slick('refresh')
+export function refreshSlider (
+  element
+) {
+  $(
+    element
+  ).slick(
+    'refresh'
+  )
 }
 
-export const setSliderPosition = el => {
-  $(el).slick('setPosition')
+export function setSliderPosition (
+  element
+) {
+  $(
+    element
+  ).slick(
+    'setPosition'
+  )
 }
 
-export const goToSliderSlide = (el, index) => {
-  $(el).slick(
+export function goToSliderSlide (
+  element,
+  index
+) {
+  $(
+    element
+  ).slick(
     'slickGoTo',
     index,
     true

@@ -31,7 +31,9 @@ export default {
   },
   methods: {
     reset () {
-      this.$refs.dropdown.reset()
+      this.$refs
+        .dropdown
+        .reset()
     }
   }
 }

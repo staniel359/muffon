@@ -1,10 +1,18 @@
 import store from '*/plugins/store'
 import getBandcampId from '*/helpers/actions/api/bandcampId/track/variant/get'
 import getAudio from '*/helpers/actions/api/audio/get'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
-export default async function ({ variantId }) {
-  const isMatchedVariant = variantData => {
+export default async function (
+  {
+    variantId
+  }
+) {
+  function isMatchedVariant (
+    variantData
+  ) {
     return (
       variantData.uuid ===
         variantId
@@ -20,7 +28,7 @@ export default async function ({ variantId }) {
         isMatchedVariant
       )
 
-  const getAudioArgs = () => {
+  function getAudioArgs () {
     const isBandcampVariant = (
       trackData.audio.source_id ===
         'bandcamp'
@@ -46,13 +54,18 @@ export default async function ({ variantId }) {
     }
   }
 
-  const handleSuccess = () => {
-    updateStore({
-      'player.currentVariantId':
+  function handleSuccess () {
+    updateStore(
+      {
+        'player.currentVariantId':
         variantId
-    })
+      }
+    )
   }
 
-  return getAudio(audioArgs)
-    .then(handleSuccess)
+  return getAudio(
+    audioArgs
+  ).then(
+    handleSuccess
+  )
 }

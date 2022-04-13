@@ -2,14 +2,16 @@
   <VideoItem
     v-for="(videoData, index) in videosCollection"
     :key="videoData.uuid"
-    :videoData="videoData"
+    :video-data="videoData"
     :index="index"
   />
 </template>
 
 <script>
 import VideoItem from './VideosList/VideoItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'VideosList',

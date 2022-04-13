@@ -2,23 +2,23 @@
   <BaseSegmentContainer>
     <div class="main-self-container">
       <BaseSelfIcons
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
       />
 
       <BaseOptionsDropdown
         model="artist"
-        :artistName="artistName"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :artist-name="artistName"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </div>
   </BaseSegmentContainer>

@@ -1,17 +1,17 @@
 <template>
   <BaseVideoPageContainer
-    :videoId="videoId"
+    :video-id="videoId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="videoData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="videoData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        isPaginationSimple
-        isReset
+        is-pagination-simple
+        is-reset
       >
         <template #default="slotProps">
           <BaseVideosTableList
@@ -32,7 +32,7 @@ import BaseVideosTableList
   from '*/components/lists/videos/BaseVideosTableList.vue'
 
 export default {
-  name: 'VideosPage',
+  name: 'RelatedPage',
   components: {
     BaseVideoPageContainer,
     BasePaginatedPageContainer,

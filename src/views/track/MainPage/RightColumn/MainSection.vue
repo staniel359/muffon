@@ -3,11 +3,11 @@
     class="track-card"
   >
     <InfoSection
-      :trackData="trackData"
+      :track-data="trackData"
     />
 
     <BaseTrackPlayerPanel
-      :trackData="trackData"
+      :track-data="trackData"
     />
   </BaseTrackHorizontalCardContainer>
 </template>

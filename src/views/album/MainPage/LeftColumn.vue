@@ -1,21 +1,21 @@
 <template>
   <div class="album-page-left-column main-sticky-container">
     <ImageSection
-      :albumData="albumData"
+      :album-data="albumData"
     />
 
     <div class="left-column-extra">
       <HeaderSection
-        :albumData="albumData"
+        :album-data="albumData"
         :scrollable="scrollable"
       />
 
       <SelfSection
-        :albumData="albumData"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
+        :album-data="albumData"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
       />
     </div>
   </div>
@@ -73,16 +73,24 @@ export default {
       this.listenedId =
         this.albumData.listened_id?.toString()
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

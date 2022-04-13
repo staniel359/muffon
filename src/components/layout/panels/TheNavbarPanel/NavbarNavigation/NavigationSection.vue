@@ -7,17 +7,20 @@
   <BaseLink
     v-if="link"
     class="section"
-    :class="{ active: isActive }"
+    :class="{
+      active: isActive
+    }"
     :link="link"
     :text="sectionName"
   />
   <div
     v-else
     class="section"
-    :class="{ active: isActive }"
-  >
-    {{ sectionName }}
-  </div>
+    :class="{
+      active: isActive
+    }"
+    v-text="sectionName"
+  />
 </template>
 
 <script>

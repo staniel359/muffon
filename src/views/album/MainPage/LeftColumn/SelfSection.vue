@@ -1,26 +1,26 @@
 <template>
   <div class="main-self-container">
     <BaseSelfIcons
-      :libraryId="libraryId"
-      :favoriteId="favoriteId"
-      :bookmarkId="bookmarkId"
-      :listenedId="listenedId"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
     />
 
     <BaseOptionsDropdown
       model="album"
-      :albumTitle="albumTitle"
-      :artistName="artistName"
-      :albumTracks="tracks"
-      :imageUrl="imageData?.original"
-      :libraryId="libraryId"
-      :favoriteId="favoriteId"
-      :bookmarkId="bookmarkId"
-      :listenedId="listenedId"
-      isWithLibraryOption
-      isWithFavoriteOption
-      isWithBookmarkOption
-      isWithListenedOption
+      :album-title="albumTitle"
+      :artist-name="artistName"
+      :album-tracks="tracks"
+      :image-url="imageData?.original"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+      is-with-library-option
+      is-with-favorite-option
+      is-with-bookmark-option
+      is-with-listened-option
     />
   </div>
 </template>
@@ -29,7 +29,9 @@
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'SelfSection',

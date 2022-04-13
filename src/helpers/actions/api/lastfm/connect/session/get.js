@@ -1,8 +1,14 @@
 import axios from 'axios'
 import store from '*/plugins/store'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
-export default function ({ token }) {
+export default function (
+  {
+    token
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -15,13 +21,12 @@ export default function ({ token }) {
     token
   }
 
-  const handleError = error => {
-    this.error = error
-  }
-
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     const storeProfileInfo =
       store.state.profile.info
+
     const profileData =
       response.data.profile
 
@@ -30,9 +35,17 @@ export default function ({ token }) {
       ...profileData
     }
 
-    updateStore({
-      'profile.info': newProfileInfo
-    })
+    updateStore(
+      {
+        'profile.info': newProfileInfo
+      }
+    )
+  }
+
+  const handleError = (
+    error
+  ) => {
+    this.error = error
   }
 
   const handleFinish = () => {
@@ -40,7 +53,10 @@ export default function ({ token }) {
   }
 
   axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

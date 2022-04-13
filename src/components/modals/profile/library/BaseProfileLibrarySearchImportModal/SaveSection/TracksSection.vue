@@ -2,15 +2,15 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :isError="isError"
-    :totalCount="totalCount"
-    :errorTracks="errorTracks"
+    :is-error="isError"
+    :total-count="totalCount"
+    :error-tracks="errorTracks"
     @retry="handleRetry"
   />
 </template>
@@ -19,7 +19,9 @@
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './TracksSection/CompleteSection.vue'
 import createLibraryTrack from '*/helpers/actions/api/library/track/create'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'TracksSection',
@@ -55,6 +57,9 @@ export default {
       return this.tracks.length
     }
   },
+  watch: {
+    tracks: 'handleTracksChange'
+  },
   mounted () {
     this.isMounted = true
 
@@ -63,12 +68,11 @@ export default {
   beforeUnmount () {
     this.isMounted = false
   },
-  watch: {
-    tracks: 'handleTracksChange'
-  },
   methods: {
     handleTracksChange () {
-      this.$refs.progress.reset()
+      this.$refs
+        .progress
+        .reset()
 
       this.saveTracks()
     },
@@ -82,22 +86,34 @@ export default {
       this.isProgress = true
 
       this.setCollection(
-        [...this.errorTracks]
+        [
+          ...this.errorTracks
+        ]
       )
 
       this.errorTracks = []
     },
     createLibraryTrack,
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'save.active.tracks',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
     async saveTracks () {
-      this.$refs.progress.setTotalCount(
-        this.totalCount
-      )
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
 
       for (const trackData of this.tracks) {
         if (this.isMounted) {
@@ -107,7 +123,9 @@ export default {
         }
       }
     },
-    async saveTrack (trackData) {
+    async saveTrack (
+      trackData
+    ) {
       const trackFormatted =
         this.formatTrack(
           trackData
@@ -123,7 +141,9 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs.progress.increment()
+          this.$refs
+            .progress
+            .increment()
         }
       }
 
@@ -135,7 +155,9 @@ export default {
         handleFinish
       )
     },
-    formatTrack (trackData) {
+    formatTrack (
+      trackData
+    ) {
       const artistName =
         formatArtistName(
           trackData.artists
@@ -146,7 +168,9 @@ export default {
         artistName
       }
     },
-    setErrorTracks (value) {
+    setErrorTracks (
+      value
+    ) {
       this.errorTracks = value
     }
   }

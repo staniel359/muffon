@@ -3,34 +3,42 @@ import {
   playlist as formatProfilePlaylistLink
 } from '*/helpers/formatters/links/profile'
 
-export default function ({
-  profileId,
-  profileNickname,
-  playlistId,
-  playlistTitle
-}) {
-  const formatProfilePlaylistsPageTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    playlistId,
+    playlistTitle
+  }
+) {
+  function formatProfilePlaylistsPageTitle () {
     return i18n.global.t(
       'navigation.model.playlists',
-      { modelName: profileNickname }
+      {
+        modelName: profileNickname
+      }
     )
   }
 
   const title = [
     playlistTitle,
     formatProfilePlaylistsPageTitle()
-  ].join(' | ')
+  ].join(
+    ' | '
+  )
 
-  const formatPath = () => {
-    return formatProfilePlaylistLink({
+  const {
+    path
+  } = formatProfilePlaylistLink(
+    {
       profileId,
       playlistId
-    }).path
-  }
+    }
+  )
 
   return {
     icon: 'file audio',
     title,
-    path: formatPath()
+    path
   }
 }

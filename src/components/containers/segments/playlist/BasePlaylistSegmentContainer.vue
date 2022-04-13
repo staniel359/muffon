@@ -1,15 +1,15 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
   >
     <slot
-      :playlistData="playlistData"
-      :isLoading="isLoading"
+      :playlist-data="playlistData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -59,18 +59,28 @@ export default {
     this.fetchData()
   },
   methods: {
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     getProfilePlaylist,
-    fetchData (page) {
-      this.getProfilePlaylist({
-        ...this.playlistArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfilePlaylist(
+        {
+          ...this.playlistArgs,
+          page
+        }
+      )
     },
     focus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

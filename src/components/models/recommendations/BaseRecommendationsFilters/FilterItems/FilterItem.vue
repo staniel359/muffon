@@ -2,8 +2,8 @@
   <BaseLabel
     icon="close"
     :text="filterItemData.name"
-    isReverse
-    @iconClick="handleDeleteButtonClick"
+    is-reverse
+    @icon-click="handleDeleteButtonClick"
   />
 </template>
 

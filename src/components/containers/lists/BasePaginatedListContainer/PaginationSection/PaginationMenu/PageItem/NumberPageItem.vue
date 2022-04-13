@@ -6,9 +6,8 @@
       active: isPageActive
     }"
     @click="handleClick"
-  >
-    {{ page }}
-  </a>
+    v-text="page"
+  />
 </template>
 
 <script>

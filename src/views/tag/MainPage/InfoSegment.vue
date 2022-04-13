@@ -1,26 +1,31 @@
 <template>
-  <div class="ui raised segments main-segment-container">
+  <div
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
+  >
     <CoverSegment
-      :tagName="tagName"
+      :tag-name="tagName"
     />
 
     <BaseSegmentContainer
       class="tag-info-segment"
     >
       <HeaderSection
-        :tagName="tagName"
+        :tag-name="tagName"
       />
 
       <CountersSection
-        :tagData="tagData"
+        :tag-data="tagData"
       />
 
       <SimilarSection
-        :tagName="tagName"
+        :tag-name="tagName"
       />
 
       <DescriptionSection
-        :tagData="tagData"
+        :tag-data="tagData"
       />
     </BaseSegmentContainer>
   </div>

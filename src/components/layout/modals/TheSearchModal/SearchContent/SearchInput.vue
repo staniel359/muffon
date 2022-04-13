@@ -1,8 +1,8 @@
 <template>
   <div class="search-input-container">
     <BaseHistoryInput
-      class="search-input"
       ref="input"
+      class="search-input"
       scope="search"
       :query="query"
       @submit="handleSubmit"
@@ -35,16 +35,27 @@ export default {
     'clear'
   ],
   methods: {
-    handleSubmit (value) {
-      this.$emit('submit', value)
+    handleSubmit (
+      value
+    ) {
+      this.$emit(
+        'submit',
+        value
+      )
     },
     handleClearButtonClick () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
 
-      this.$emit('clear')
+      this.$emit(
+        'clear'
+      )
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

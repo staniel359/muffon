@@ -4,7 +4,12 @@ import {
   conversation as formatConversationLink
 } from '*/helpers/formatters/links/conversations'
 
-export default function ({ conversationId, profileNickname } = {}) {
+export default function (
+  {
+    conversationId,
+    profileNickname
+  } = {}
+) {
   const conversationsTitle = i18n.global.t(
     'navigation.conversations'
   )
@@ -12,13 +17,19 @@ export default function ({ conversationId, profileNickname } = {}) {
   const title = [
     profileNickname,
     conversationsTitle
-  ].filter(e => e).join(' | ')
+  ].filter(
+    e => e
+  ).join(
+    ' | '
+  )
 
-  const formatPath = () => {
+  function formatPath () {
     if (profileNickname) {
-      return formatConversationLink({
-        conversationId
-      }).path
+      return formatConversationLink(
+        {
+          conversationId
+        }
+      ).path
     } else {
       return formatConversationsLink().path
     }

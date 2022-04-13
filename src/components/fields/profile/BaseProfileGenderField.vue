@@ -1,36 +1,41 @@
 <template>
   <div class="field">
     <div
-      class="ui selection dropdown"
       ref="dropdown"
+      class="ui selection dropdown"
     >
       <input
         type="hidden"
         name="gender"
       >
 
-      <div class="default text">
-        {{ genderText }}
-      </div>
-      <i class="dropdown icon"></i>
+      <div
+        class="default text"
+        v-text="genderText"
+      />
+
+      <i class="dropdown icon" />
 
       <div class="menu">
         <div
           v-for="optionData in optionsCollection"
-          class="item"
           :key="optionData.uuid"
+          class="item"
           :data-value="optionData.name"
-        >
-          {{ formatOptionText(optionData.name) }}
-        </div>
+          v-text="formatOptionText(optionData.name)"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { setDropdownValue } from '*/helpers/actions/plugins/semantic'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  setDropdownValue
+} from '*/helpers/actions/plugins/semantic'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfileGenderField',
@@ -65,7 +70,9 @@ export default {
     )
   },
   methods: {
-    formatOptionText (option) {
+    formatOptionText (
+      option
+    ) {
       return this.$t(
         `forms.fields.genders.${option}`
       )

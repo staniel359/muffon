@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="communitiesData"
-    :isLoading="isLoading"
+    :response-data="communitiesData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :communitiesData="communitiesData"
-      :isLoading="isLoading"
+      :communities-data="communitiesData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -62,14 +62,22 @@ export default {
   },
   methods: {
     getCommunities,
-    fetchData (page) {
-      this.getCommunities({
-        ...this.communitiesArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getCommunities(
+        {
+          ...this.communitiesArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

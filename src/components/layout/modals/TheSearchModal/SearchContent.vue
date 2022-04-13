@@ -1,13 +1,15 @@
 <template>
   <div
     class="content"
-    :class="{ 'main-modal-content-full-height': query }"
+    :class="{
+      'main-modal-content-full-height': query
+    }"
   >
     <div class="search-inputs-container">
       <SearchInput
         ref="input"
         :query="query"
-        :isClearable="isClearable"
+        :is-clearable="isClearable"
         @submit="handleSubmit"
         @clear="handleClear"
       />
@@ -21,8 +23,8 @@
       v-if="query"
       class="search-tabs"
       :query="query"
-      :searchKey="key"
-      :sourceId="sourceId"
+      :search-key="key"
+      :source-id="sourceId"
     />
   </div>
 </template>
@@ -31,7 +33,9 @@
 import SearchInput from './SearchContent/SearchInput.vue'
 import SearchSourceSelect from './SearchContent/SearchSourceSelect.vue'
 import SearchTabs from './SearchContent/SearchTabs.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'SearchContent',
@@ -53,18 +57,24 @@ export default {
     }
   },
   methods: {
-    handleSubmit (value) {
+    handleSubmit (
+      value
+    ) {
       this.query = value
       this.key = generateKey()
     },
     handleClear () {
       this.query = ''
     },
-    handleSourceSelect (value) {
+    handleSourceSelect (
+      value
+    ) {
       this.sourceId = value
     },
     focusInput () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

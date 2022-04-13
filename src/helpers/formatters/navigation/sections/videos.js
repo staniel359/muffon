@@ -3,12 +3,19 @@ import {
   videos as formatVideoChannelVideosLink
 } from '*/helpers/formatters/links/videoChannel'
 
-export default function ({ channelId, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    channelId,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatVideoChannelVideosLink({
-        channelId
-      })
+      return formatVideoChannelVideosLink(
+        {
+          channelId
+        }
+      )
     }
   }
 

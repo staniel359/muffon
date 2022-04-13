@@ -34,10 +34,12 @@ export default {
       return this.videoData.title
     },
     videoChannelVideosLink () {
-      return formatVideoChannelVideosLink({
-        channelId: this.channelId,
-        channelTitle: this.channelTitle
-      })
+      return formatVideoChannelVideosLink(
+        {
+          channelId: this.channelId,
+          channelTitle: this.channelTitle
+        }
+      )
     },
     channelId () {
       return this.channelData.youtube_id

@@ -3,7 +3,8 @@
     class="item"
     @click="handleClick"
   >
-    <i class="edit icon"></i>
+    <i class="edit icon" />
+
     {{ editText }}
   </div>
 </template>
@@ -23,7 +24,9 @@ export default {
   },
   methods: {
     handleClick () {
-      this.$emit('click')
+      this.$emit(
+        'click'
+      )
     }
   }
 }

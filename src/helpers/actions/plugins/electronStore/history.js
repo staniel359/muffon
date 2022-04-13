@@ -1,30 +1,56 @@
 import electronStore from '*/plugins/electronStore'
-import { getDistinctArray } from '*/helpers/utils'
+import {
+  getDistinctArray
+} from '*/helpers/utils'
 
-export const get = (key, { isDistinct }) => {
+export function get (
+  key,
+  {
+    isDistinct
+  }
+) {
   const historyKey = `history.${key}`
-  const history = electronStore.get(
-    historyKey
-  )
 
-  const getScopedHistory = () => {
+  const history =
+    electronStore.get(
+      historyKey
+    )
+
+  function getScopedHistory () {
     if (isDistinct) {
-      return getDistinctArray(history)
+      return getDistinctArray(
+        history
+      )
     } else {
-      return [...history]
+      return [
+        ...history
+      ]
     }
   }
 
-  return getScopedHistory().map(item => {
-    return { title: item }
-  })
+  function formatHistoryItem (
+    item
+  ) {
+    return {
+      title: item
+    }
+  }
+
+  return getScopedHistory().map(
+    formatHistoryItem
+  )
 }
 
-export const update = (key, item) => {
+export function update (
+  key,
+  item
+) {
   const historyKey = `history.${key}`
-  const history = electronStore.get(
-    historyKey
-  )
+
+  const history =
+    electronStore.get(
+      historyKey
+    )
 
   const isNewItem =
     item && (
@@ -39,7 +65,8 @@ export const update = (key, item) => {
 
   if (isNewItem) {
     electronStore.set(
-      historyKey, newHistory
+      historyKey,
+      newHistory
     )
   }
 }

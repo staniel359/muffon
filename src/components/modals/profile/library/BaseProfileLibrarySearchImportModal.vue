@@ -50,7 +50,9 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import ImportSection
   from './BaseProfileLibrarySearchImportModal/ImportSection.vue'
 import SaveSection from './BaseProfileLibrarySearchImportModal/SaveSection.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileLibrarySearchImportModal',
@@ -94,33 +96,50 @@ export default {
     }
   },
   methods: {
-    handleScopeSelect (value) {
+    async handleScopeSelect (
+      value
+    ) {
       this.scope = value
 
       this.reset()
 
-      this.$nextTick(() => {
-        this.$refs.input.focus()
-      })
+      await this.$nextTick()
+
+      this.$refs
+        .input
+        .focus()
     },
-    handleSelect (value) {
+    handleSelect (
+      value
+    ) {
       if (this.status === 'save') {
         this.reset()
       }
 
-      this.collection.push({
-        uuid: generateKey(),
-        ...value
-      })
+      this.collection.push(
+        {
+          uuid: generateKey(),
+          ...value
+        }
+      )
     },
-    handleChange (value) {
-      this.collection = [...value]
+    handleChange (
+      value
+    ) {
+      this.collection = [
+        ...value
+      ]
     },
     handleResetButtonClick () {
       this.reset()
 
-      this.$refs.input.clear()
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .clear()
+
+      this.$refs
+        .input
+        .focus()
     },
     handleSave () {
       this.status = 'save'
@@ -131,13 +150,22 @@ export default {
       this.collection = []
     },
     show () {
-      this.$refs.modal.show()
-      this.$refs.input.focus()
+      this.$refs
+        .modal
+        .show()
+
+      this.$refs
+        .input
+        .focus()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
-    setCollection (value) {
+    setCollection (
+      value
+    ) {
       this.collection = value
     }
   }

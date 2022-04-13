@@ -4,11 +4,13 @@
     tag="h2"
   >
     <BaseArtistLinkContainer
-      :artistData="artistData"
-      :profileId="profileId"
-      :isLinkToLibrary="isLinkToLibrary"
+      :artist-data="artistData"
+      :profile-id="profileId"
+      :is-link-to-library="isLinkToLibrary"
     >
-      {{ artistName }}
+      <template #default>
+        {{ artistName }}
+      </template>
     </BaseArtistLinkContainer>
   </BaseHeaderContainer>
 </template>

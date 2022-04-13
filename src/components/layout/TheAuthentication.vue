@@ -15,11 +15,11 @@
     >
       <BaseProfileLoginForm
         v-if="isLogin"
-        @signupLinkClick="handleSignupLinkClick"
+        @signup-link-click="handleSignupLinkClick"
       />
       <BaseProfileSignupForm
         v-else-if="isSignup"
-        @loginLinkClick="handleLoginLinkClick"
+        @login-link-click="handleLoginLinkClick"
       />
 
       <BaseSegmentContainer

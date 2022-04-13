@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,19 +12,21 @@
     />
 
     <slot
-      :libraryData="libraryData"
-      :isLoading="isLoading"
+      :library-data="libraryData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibrarySegmentContainer',
@@ -64,14 +69,22 @@ export default {
   },
   methods: {
     getProfileLibrary,
-    fetchData (page) {
-      this.getProfileLibrary({
-        ...this.libraryArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibrary(
+        {
+          ...this.libraryArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

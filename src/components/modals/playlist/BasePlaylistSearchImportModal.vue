@@ -5,7 +5,7 @@
         <SearchInput
           ref="input"
           :tracks="tracks"
-          :playlistId="playlistId"
+          :playlist-id="playlistId"
           @select="handleSelect"
         />
 
@@ -26,7 +26,7 @@
       />
       <SaveSection
         v-else-if="isSave"
-        :playlistId="playlistId"
+        :playlist-id="playlistId"
         :tracks="tracks"
       />
     </div>
@@ -41,7 +41,9 @@ import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import ImportSection from './BasePlaylistSearchImportModal/ImportSection.vue'
 import SaveSection from './BasePlaylistSearchImportModal/SaveSection.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BasePlaylistSearchImportModal',
@@ -84,26 +86,39 @@ export default {
     }
   },
   methods: {
-    handleSelect (value) {
+    handleSelect (
+      value
+    ) {
       if (this.status === 'save') {
         this.reset()
       }
 
-      this.tracks.push({
-        uuid: generateKey(),
-        ...value
-      })
+      this.tracks.push(
+        {
+          uuid: generateKey(),
+          ...value
+        }
+      )
 
       this.isReset = false
     },
-    handleChange (value) {
-      this.tracks = [...value]
+    handleChange (
+      value
+    ) {
+      this.tracks = [
+        ...value
+      ]
     },
     handleResetButtonClick () {
       this.reset()
 
-      this.$refs.input.clear()
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .clear()
+
+      this.$refs
+        .input
+        .focus()
 
       this.isReset = true
     },
@@ -116,13 +131,22 @@ export default {
       this.tracks = []
     },
     show () {
-      this.$refs.modal.show()
-      this.$refs.input.focus()
+      this.$refs
+        .modal
+        .show()
+
+      this.$refs
+        .input
+        .focus()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
-    setTracks (value) {
+    setTracks (
+      value
+    ) {
       this.tracks = value
     }
   }

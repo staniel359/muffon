@@ -8,7 +8,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseAudioVisualiser from '*/components/BaseAudioVisualiser.vue'
 
 export default {
@@ -23,9 +25,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('player', {
-      playerCurrentTrackId: 'currentTrackId'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerCurrentTrackId: 'currentTrackId'
+      }
+    ),
     isCurrent () {
       return (
         this.trackId ===

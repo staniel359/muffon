@@ -8,16 +8,20 @@
   <BaseArtistImage
     v-else
     class="circular bordered playing-image"
-    :artistName="artistName"
+    :artist-name="artistName"
     :size="size"
   />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'ImageBlock',
@@ -34,9 +38,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    ),
     imageData () {
       return this.playerPlaying.image
     },

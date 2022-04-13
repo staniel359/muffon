@@ -6,8 +6,10 @@
     />
 
     <BaseToggle
-      :class="{ disabled: isDisabled }"
-      :isChecked="isChecked"
+      :class="{
+        disabled: isDisabled
+      }"
+      :is-checked="isChecked"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -15,10 +17,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'ScrobbleNotificationsOption',
@@ -31,10 +37,13 @@ export default {
     isPlayerWithScrobbling: Boolean
   },
   computed: {
-    ...mapState('player', {
-      isPlayerWithScrobbleNotifications:
+    ...mapState(
+      'player',
+      {
+        isPlayerWithScrobbleNotifications:
         'isWithScrobbleNotifications'
-    }),
+      }
+    ),
     scrobbleNotificationsText () {
       return this.$t(
         'settings.options.services.lastfm.scrobbleNotifications'
@@ -56,14 +65,18 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      updateStore({
-        'player.isWithScrobbleNotifications': true
-      })
+      updateStore(
+        {
+          'player.isWithScrobbleNotifications': true
+        }
+      )
     },
     handleToggleOff () {
-      updateStore({
-        'player.isWithScrobbleNotifications': false
-      })
+      updateStore(
+        {
+          'player.isWithScrobbleNotifications': false
+        }
+      )
     }
   }
 }

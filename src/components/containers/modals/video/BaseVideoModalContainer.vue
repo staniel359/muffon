@@ -1,14 +1,16 @@
 <template>
   <BaseModalContentContainer
     ref="modal"
-    :isLoading="isLoading"
+    :response-data="videoData"
+    :is-loading="isLoading"
     :error="error"
-    :responseData="videoData"
     @call="handleModalCall"
     @refresh="handleModalRefresh"
   >
     <template #default>
-      <slot :[scope]="videoData[scope]"></slot>
+      <slot
+        :[scope]="videoData[scope]"
+      />
     </template>
   </BaseModalContentContainer>
 </template>
@@ -62,10 +64,14 @@ export default {
       )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

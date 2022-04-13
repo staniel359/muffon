@@ -13,14 +13,18 @@
       :error="error"
     />
 
-    <slot></slot>
+    <slot />
   </form>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import { setForm } from '*/helpers/actions/plugins/semantic'
+import {
+  setForm
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseFormContainer',
@@ -40,10 +44,16 @@ export default {
     },
     error: Error
   },
+  emits: [
+    'init'
+  ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   mounted () {
     setForm(

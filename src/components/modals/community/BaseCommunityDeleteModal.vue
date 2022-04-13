@@ -1,12 +1,12 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="community"
-    :modelName="communityTitle"
-    :isLoading="isLoading"
+    model-type="community"
+    :model-name="communityTitle"
+    :is-loading="isLoading"
     :error="error"
-    isWithAlsoText
-    @deleteButtonClick="handleDeleteButtonClick"
+    is-with-also-text
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -16,7 +16,9 @@ import deleteCommunity from '*/helpers/actions/api/community/delete'
 import {
   communities as formatCommunitiesLink
 } from '*/helpers/formatters/links'
-import { setToast } from '*/helpers/actions/plugins/semantic'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseCommunityDeleteModal',
@@ -76,13 +78,18 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
       if (this.isDeleteWithRedirect) {
         this.redirect()
+
         this.notify()
       } else {
-        this.$emit('deleted')
+        this.$emit(
+          'deleted'
+        )
       }
     },
     deleteCommunity,
@@ -92,13 +99,17 @@ export default {
       )
     },
     notify () {
-      setToast({
-        message: this.deletedMessage,
-        icon: 'green check'
-      })
+      setToast(
+        {
+          message: this.deletedMessage,
+          icon: 'green check'
+        }
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

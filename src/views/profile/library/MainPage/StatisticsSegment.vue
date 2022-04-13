@@ -3,7 +3,7 @@
     class="raised main-segment-container"
   >
     <BaseProfileLibraryStatistics
-      :libraryData="libraryData"
+      :library-data="libraryData"
     />
   </BaseSegmentContainer>
 </template>

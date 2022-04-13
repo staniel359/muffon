@@ -1,11 +1,13 @@
-export default function ({
-  sourceId,
-  artistName,
-  trackTitle,
-  artistId,
-  trackId,
-  scope
-}) {
+export default function (
+  {
+    sourceId,
+    artistName,
+    trackTitle,
+    artistId,
+    trackId,
+    scope
+  }
+) {
   const artistNameEncoded =
     encodeURIComponent(
       artistName

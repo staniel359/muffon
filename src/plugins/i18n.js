@@ -1,4 +1,6 @@
-import { createI18n } from 'vue-i18n'
+import {
+  createI18n
+} from 'vue-i18n'
 import electronStore from '*/plugins/electronStore'
 import en from '*/helpers/data/plugins/i18n/locales/en.json'
 import it from '*/helpers/data/plugins/i18n/locales/it.json'
@@ -15,8 +17,10 @@ const messages = {
   ru
 }
 
-export default createI18n({
-  locale,
-  fallbackLocale: 'en',
-  messages
-})
+export default createI18n(
+  {
+    locale,
+    fallbackLocale: 'en',
+    messages
+  }
+)

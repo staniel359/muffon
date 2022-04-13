@@ -1,4 +1,4 @@
-export const main = () => {
+export function main () {
   return {
     name: 'TopMainPage',
     params: {},
@@ -6,7 +6,7 @@ export const main = () => {
   }
 }
 
-export const artists = () => {
+export function artists () {
   return {
     name: 'TopArtistsPage',
     params: {},
@@ -14,7 +14,7 @@ export const artists = () => {
   }
 }
 
-export const tracks = () => {
+export function tracks () {
   return {
     name: 'TopTracksPage',
     params: {},
@@ -22,7 +22,7 @@ export const tracks = () => {
   }
 }
 
-export const tags = () => {
+export function tags () {
   return {
     name: 'TopTagsPage',
     params: {},

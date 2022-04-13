@@ -2,18 +2,22 @@ import {
   main as formatProfileLibraryArtistMainLink
 } from '*/helpers/formatters/links/profile/library/artist'
 
-export default function ({
-  profileId,
-  artistId,
-  artistName,
-  isActive
-}) {
-  const formatLink = () => {
+export default function (
+  {
+    profileId,
+    artistId,
+    artistName,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatProfileLibraryArtistMainLink({
-        profileId,
-        artistId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId,
+          artistId
+        }
+      )
     }
   }
 

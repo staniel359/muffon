@@ -1,21 +1,21 @@
 <template>
   <div class="track-page-left-column main-sticky-container">
     <ImageSection
-      :trackData="trackData"
+      :track-data="trackData"
     />
 
     <div class="left-column-extra">
       <HeaderSection
-        :trackData="trackData"
+        :track-data="trackData"
         :scrollable="scrollable"
       />
 
       <SelfSection
-        :trackData="trackData"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
+        :track-data="trackData"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
       />
     </div>
   </div>
@@ -73,16 +73,24 @@ export default {
       this.listenedId =
         this.trackData.listened_id?.toString()
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

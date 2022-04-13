@@ -12,7 +12,9 @@
 
 <script>
 import BaseLink from '*/components/links/BaseLink.vue'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
 import {
   main as formatProfileLibraryAlbumMainLink
 } from '*/helpers/formatters/links/profile/library/album'
@@ -45,27 +47,33 @@ export default {
       }
     },
     profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink({
-        profileId: this.profileId,
-        albumId: this.albumId
-      })
+      return formatProfileLibraryAlbumMainLink(
+        {
+          profileId: this.profileId,
+          albumId: this.albumId
+        }
+      )
     },
     albumMainLink () {
-      return formatAlbumMainLink({
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        sourceParams: this.sourceParams
-      })
+      return formatAlbumMainLink(
+        {
+          albumTitle: this.albumTitle,
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     albumTitle () {
       return this.albumData.title
     },
     sourceParams () {
-      return formatAlbumRequestData({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.artistName
-      })
+      return formatAlbumRequestData(
+        {
+          sourceId: this.albumData.source_id,
+          albumData: this.albumData,
+          artistName: this.artistName
+        }
+      )
     }
   },
   methods: {

@@ -2,12 +2,14 @@
   <div class="item navigation-container">
     <div
       class="ui large breadcrumb navigation"
-      :class="{ inverted: isDarkMode }"
+      :class="{
+        inverted: isDarkMode
+      }"
     >
       <NavigationSection
         v-for="(sectionData, index) in navigationSectionsCollection"
         :key="sectionData.uuid"
-        :sectionData="sectionData"
+        :section-data="sectionData"
         :index="index"
       />
     </div>
@@ -15,9 +17,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import NavigationSection from './NavbarNavigation/NavigationSection.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'NavbarNavigation',
@@ -25,10 +31,13 @@ export default {
     NavigationSection
   },
   computed: {
-    ...mapState('layout', [
-      'navigationSections',
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'navigationSections',
+        'isDarkMode'
+      ]
+    ),
     navigationSectionsCollection () {
       return formatCollection(
         this.navigationSections

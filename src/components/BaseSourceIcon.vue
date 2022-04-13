@@ -1,11 +1,13 @@
 <template>
   <i
-    class="icon source-icon"
     ref="icon"
+    class="icon source-icon"
     :class="[
       sourceId,
       size,
-      { colored: isActive }
+      {
+        colored: isActive
+      }
     ]"
     :data-content="popupText"
     @mouseenter="handleMouseEnter"
@@ -14,9 +16,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { setPopup } from '*/helpers/actions/plugins/semantic'
-import { sourcePopupOptions } from '*/helpers/data/plugins/semantic'
+import {
+  mapState
+} from 'vuex'
+import {
+  setPopup
+} from '*/helpers/actions/plugins/semantic'
+import {
+  sourcePopupOptions
+} from '*/helpers/data/plugins/semantic'
 import audioSources from '*/helpers/data/audio/sources'
 
 export default {
@@ -31,14 +39,19 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     popupText () {
       if (this.sourceName) {
         return this.$t(
           'track.source',
-          { source: this.sourceName }
+          {
+            source: this.sourceName
+          }
         )
       } else {
         return null
@@ -48,17 +61,16 @@ export default {
       return this.sourceData?.name
     },
     sourceData () {
-      return audioSources.find(sourceData => {
-        return (
-          sourceData.id ===
-            this.sourceId
-        )
-      })
+      return audioSources.find(
+        this.isMatchedSource
+      )
     },
     popupOptions () {
-      return sourcePopupOptions({
-        isDarkMode: this.isDarkMode
-      })
+      return sourcePopupOptions(
+        {
+          isDarkMode: this.isDarkMode
+        }
+      )
     }
   },
   watch: {
@@ -81,6 +93,14 @@ export default {
       setPopup(
         this.$refs.icon,
         this.popupOptions
+      )
+    },
+    isMatchedSource (
+      sourceData
+    ) {
+      return (
+        sourceData.id ===
+          this.sourceId
       )
     }
   }

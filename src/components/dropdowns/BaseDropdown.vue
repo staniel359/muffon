@@ -1,15 +1,15 @@
 <template>
   <BaseDropdownContainer
     ref="dropdown"
-    :isSelection="isSelection"
-    :isOnlyIcon="isOnlyIcon"
-    :menuDirection="menuDirection"
+    :is-selection="isSelection"
+    :is-only-icon="isOnlyIcon"
+    :menu-direction="menuDirection"
     @change="handleChange"
   >
     <div
       v-for="optionData in optionsCollection"
-      class="item main-dropdown-item"
       :key="optionData.uuid"
+      class="item main-dropdown-item"
       :data-value="optionData.id"
     >
       <BaseIcon
@@ -27,7 +27,9 @@
 import BaseDropdownContainer
   from '*/components/containers/BaseDropdownContainer.vue'
 import BaseIcon from '*/components/BaseIcon.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseDropdown',
@@ -48,6 +50,9 @@ export default {
     isOnlyIcon: Boolean,
     menuDirection: String
   },
+  emits: [
+    'change'
+  ],
   computed: {
     optionsCollection () {
       return formatCollection(
@@ -57,13 +62,17 @@ export default {
   },
   mounted () {
     if (this.selected) {
-      this.$refs.dropdown.setValue(
-        this.selected
-      )
+      this.$refs
+        .dropdown
+        .setValue(
+          this.selected
+        )
     }
   },
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'change',
         value

@@ -1,15 +1,17 @@
 <template>
   <Component
-    class="search-input"
-    ref="input"
     :is="component"
-    :profileId="profileId"
+    ref="input"
+    class="search-input"
+    :profile-id="profileId"
     :[scope]="collection"
   />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import ArtistsInput from './SearchInput/ArtistsInput.vue'
 import AlbumsInput from './SearchInput/AlbumsInput.vue'
 import TracksInput from './SearchInput/TracksInput.vue'
@@ -38,9 +40,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     },
@@ -52,10 +57,14 @@ export default {
   },
   methods: {
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

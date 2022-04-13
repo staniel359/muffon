@@ -10,11 +10,18 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import {
+  mapState,
+  mapActions
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import VolumePopup from './VolumeButton/VolumePopup.vue'
-import { setPopup } from '*/helpers/actions/plugins/semantic'
-import { mainPopupOptions } from '*/helpers/data/plugins/semantic'
+import {
+  setPopup
+} from '*/helpers/actions/plugins/semantic'
+import {
+  mainPopupOptions
+} from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'VolumeButton',
@@ -28,11 +35,14 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', {
-      isAudioMuted: 'isMuted',
-      audioVolume: 'volume',
-      audioElement: 'element'
-    }),
+    ...mapState(
+      'audio',
+      {
+        isAudioMuted: 'isMuted',
+        audioVolume: 'volume',
+        audioElement: 'element'
+      }
+    ),
     icon () {
       return `volume ${this.volumeIcon}`
     },
@@ -61,11 +71,16 @@ export default {
     )
   },
   methods: {
-    ...mapActions('audio', {
-      setIsAudioMuted: 'setIsMuted'
-    }),
-    handleButtonInit (el) {
-      this.button = el
+    ...mapActions(
+      'audio',
+      {
+        setIsAudioMuted: 'setIsMuted'
+      }
+    ),
+    handleButtonInit (
+      element
+    ) {
+      this.button = element
     },
     handleClick () {
       const value = !this.isAudioMuted
@@ -74,7 +89,9 @@ export default {
       this.audioElement.volume =
         this.audioVolume
 
-      this.setIsAudioMuted(value)
+      this.setIsAudioMuted(
+        value
+      )
     }
   }
 }

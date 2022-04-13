@@ -6,9 +6,9 @@
   <template v-else>
     <BaseTrackAudioIcon
       class="track-play-button"
-      :isLoading="isLoading"
-      :isError="isError"
-      :isCurrent="isCurrent"
+      :is-loading="isLoading"
+      :is-error="isError"
+      :is-current="isCurrent"
     />
 
     <div class="track-image-container">
@@ -30,47 +30,47 @@
 
           <div class="track-main-info">
             <TrackTitle
-              :trackData="trackData"
-              :artistName="artistName"
-              :isLinkToLibrary="isLinkToLibrary"
-              :profileId="profileId"
-              :trackId="trackId"
-              @linkClick="handleLinkClick"
+              :track-data="trackData"
+              :artist-name="artistName"
+              :is-link-to-library="isLinkToLibrary"
+              :profile-id="profileId"
+              :track-id="trackId"
+              @link-click="handleLinkClick"
             />
 
             <TrackArtistName
               v-if="isRenderArtistName"
               :artists="artists"
-              :isLinkToLibrary="isLinkToLibrary"
-              :profileId="profileId"
-              @linkClick="handleLinkClick"
+              :is-link-to-library="isLinkToLibrary"
+              :profile-id="profileId"
+              @link-click="handleLinkClick"
             />
 
             <TrackAlbumTitle
               v-if="isRenderAlbumTitle"
-              :albumData="albumData"
-              :artistName="artistName"
-              :isLinkToLibrary="isLinkToLibrary"
-              :profileId="profileId"
-              :albumId="albumId"
-              @linkClick="handleLinkClick"
+              :album-data="albumData"
+              :artist-name="artistName"
+              :is-link-to-library="isLinkToLibrary"
+              :profile-id="profileId"
+              :album-id="albumId"
+              @link-click="handleLinkClick"
             />
           </div>
         </div>
 
         <TrackListenersCount
           v-if="isRenderListenersCount"
-          :listenersCount="listenersCount"
-          :topTrackCount="topTrackCount"
+          :listeners-count="listenersCount"
+          :top-track-count="topTrackCount"
         />
       </div>
 
       <BaseSelfIcons
         v-if="isWithSelfIcons"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
       />
     </div>
 
@@ -82,7 +82,7 @@
     <BaseSourceIcon
       v-if="isWithSource"
       class="track-source-icon"
-      :sourceId="sourceId"
+      :source-id="sourceId"
     />
 
     <div
@@ -90,76 +90,76 @@
       class="main-small-container created-container"
     >
       <div>
-        <small>
-          {{ createdDateFormatted }}
-        </small>
+        <small
+          v-text="createdDateFormatted"
+        />
       </div>
 
       <div>
-        <small>
-          {{ createdTimeFormatted }}
-        </small>
+        <small
+          v-text="createdTimeFormatted"
+        />
       </div>
     </div>
 
     <BaseOptionsDropdown
       model="track"
-      :trackTitle="trackTitle"
-      :artistName="artistName"
-      :albumTitle="albumTitle"
-      :imageUrl="imageData?.original"
-      :libraryId="libraryId"
-      :favoriteId="favoriteId"
-      :bookmarkId="bookmarkId"
-      :listenedId="listenedId"
-      :isWithLibraryOption="isWithLibraryOption"
-      :isWithFavoriteOption="isWithFavoriteOption"
-      :isWithBookmarkOption="isWithBookmarkOption"
-      :isWithListenedOption="isWithListenedOption"
-      :isWithPlaylistOption="isWithPlaylistOption"
-      :isWithDeleteOption="isWithDeleteOption"
+      :track-title="trackTitle"
+      :artist-name="artistName"
+      :album-title="albumTitle"
+      :image-url="imageData?.original"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+      :is-with-library-option="isWithLibraryOption"
+      :is-with-favorite-option="isWithFavoriteOption"
+      :is-with-bookmark-option="isWithBookmarkOption"
+      :is-with-listened-option="isWithListenedOption"
+      :is-with-playlist-option="isWithPlaylistOption"
+      :is-with-delete-option="isWithDeleteOption"
       @delete="handleDeleteOptionClick"
       @playlist="handlePlaylistOptionClick"
-      @linkClick="handleLinkClick"
+      @link-click="handleLinkClick"
     />
 
     <BasePlaylistsModal
       ref="playlistModal"
-      :trackTitle="trackTitle"
-      :artistName="artistName"
-      :albumTitle="albumTitle"
-      :imageUrl="imageData?.original"
+      :track-title="trackTitle"
+      :artist-name="artistName"
+      :album-title="albumTitle"
+      :image-url="imageData?.original"
     />
 
     <BaseBookmarkDeleteModal
       v-if="isBookmark"
       ref="deleteModal"
       model="track"
-      :modelData="trackData"
+      :model-data="trackData"
       @deleted="handleDeleted"
     />
     <BaseFavoriteDeleteModal
       v-else-if="isFavorite"
       ref="deleteModal"
       model="track"
-      :modelData="trackData"
+      :model-data="trackData"
       @deleted="handleDeleted"
     />
     <BasePlaylistTrackDeleteModal
       v-else-if="isPlaylistTrack"
       ref="deleteModal"
-      :playlistTrackData="trackData"
-      :playlistId="playlistId"
-      :playlistTitle="playlistTitle"
+      :playlist-track-data="trackData"
+      :playlist-id="playlistId"
+      :playlist-title="playlistTitle"
       @deleted="handleDeleted"
     />
     <BaseProfileLibraryDeleteModal
       v-else-if="isLinkToLibrary"
       ref="deleteModal"
       model="track"
-      :profileId="profileId"
-      :modelId="trackId"
-      :modelName="trackFullTitle"
+      :profile-id="profileId"
+      :model-id="trackId"
+      :model-name="trackFullTitle"
       @deleted="handleDeleted"
     />
   </template>
@@ -290,9 +290,6 @@ export default {
     trackTitle () {
       return this.trackData.title
     },
-    trackExtraTitle () {
-      return this.trackData.extra_title
-    },
     isRenderArtistName () {
       return (
         this.isWithArtistName && (
@@ -314,7 +311,9 @@ export default {
     },
     artists () {
       if (this.artistData) {
-        return [this.artistData]
+        return [
+          this.artistData
+        ]
       } else {
         return this.trackData.artists
       }
@@ -366,9 +365,6 @@ export default {
     trackId () {
       return this.trackData.id?.toString()
     },
-    artistId () {
-      return this.trackData.artist.id?.toString()
-    },
     albumId () {
       return this.albumData?.id?.toString()
     },
@@ -392,7 +388,9 @@ export default {
       return [
         this.artistName,
         this.trackTitle
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     }
   },
   mounted () {
@@ -407,34 +405,52 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
     handleDeleteOptionClick () {
       if (this.isClearable) {
         this.$emit(
           'deleteButtonClick',
-          { uuid: this.uuid }
+          {
+            uuid: this.uuid
+          }
         )
       } else {
-        this.$refs.deleteModal.show()
+        this.$refs
+          .deleteModal
+          .show()
       }
     },
     handlePlaylistOptionClick () {
-      this.$refs.playlistModal.show()
+      this.$refs
+        .playlistModal
+        .show()
     },
     handleDeleted () {
-      this.$emit('deleted')
+      this.$emit(
+        'deleted'
+      )
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

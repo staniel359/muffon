@@ -13,58 +13,72 @@ import formatConversationsSection
 import formatCommunitiesSection
   from '*/helpers/formatters/navigation/sections/communities'
 
-export const feed = () => {
+export function feed () {
   return [
-    formatFeedSection({
-      isActive: true
-    })
+    formatFeedSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }
 
-export const profiles = () => {
+export function profiles () {
   return [
-    formatProfilesSection({
-      isActive: true
-    })
+    formatProfilesSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }
 
-export const recommendations = () => {
+export function recommendations () {
   return [
-    formatRecomendationsSection({
-      isActive: true
-    })
+    formatRecomendationsSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }
 
-export const radio = () => {
+export function radio () {
   return [
-    formatRadioSection({
-      isActive: true
-    })
+    formatRadioSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }
 
-export const playlists = () => {
+export function playlists () {
   return [
-    formatPlaylistsSection({
-      isActive: true
-    })
+    formatPlaylistsSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }
 
-export const conversations = () => {
+export function conversations () {
   return [
-    formatConversationsSection({
-      isActive: true
-    })
+    formatConversationsSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }
 
-export const communities = () => {
+export function communities () {
   return [
-    formatCommunitiesSection({
-      isActive: true
-    })
+    formatCommunitiesSection(
+      {
+        isActive: true
+      }
+    )
   ]
 }

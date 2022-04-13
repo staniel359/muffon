@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ui accordion"
     ref="accordion"
+    class="ui accordion"
     :class="{
       inverted: isDarkMode
     }"
@@ -12,22 +12,29 @@
         'text-color-white': isTextWhite
       }"
     >
-      <i class="dropdown icon"></i>
+      <i class="dropdown icon" />
+
       {{ title }}
     </div>
 
     <div class="content">
       <div>
-        <slot></slot>
+        <slot />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { setAccordion } from '*/helpers/actions/plugins/semantic'
-import { mainAccordionOptions } from '*/helpers/data/plugins/semantic'
+import {
+  mapState
+} from 'vuex'
+import {
+  setAccordion
+} from '*/helpers/actions/plugins/semantic'
+import {
+  mainAccordionOptions
+} from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseAccordionContainer',
@@ -43,14 +50,19 @@ export default {
     'close'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     accordionOptions () {
-      return mainAccordionOptions({
-        onOpen: this.handleOpen,
-        onClose: this.handleClose
-      })
+      return mainAccordionOptions(
+        {
+          onOpen: this.handleOpen,
+          onClose: this.handleClose
+        }
+      )
     }
   },
   mounted () {
@@ -61,10 +73,14 @@ export default {
   },
   methods: {
     handleOpen () {
-      this.$emit('open')
+      this.$emit(
+        'open'
+      )
     },
     handleClose () {
-      this.$emit('close')
+      this.$emit(
+        'close'
+      )
     }
   }
 }

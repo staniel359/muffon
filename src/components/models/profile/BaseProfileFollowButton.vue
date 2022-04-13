@@ -1,6 +1,6 @@
 <template>
   <BaseProfileFollowButtonContainer
-    :profileData="profileData"
+    :profile-data="profileData"
   >
     <template #default="slotProps">
       <BaseButton

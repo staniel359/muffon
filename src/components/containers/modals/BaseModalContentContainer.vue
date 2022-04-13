@@ -5,11 +5,13 @@
   >
     <BaseSegmentContainer
       class="basic scrolling content"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       :error="error"
       @refresh="handleRefresh"
     >
-      <slot v-if="responseData"></slot>
+      <slot
+        v-if="responseData"
+      />
     </BaseSegmentContainer>
   </BaseModalContainer>
 </template>
@@ -47,10 +49,14 @@ export default {
       )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

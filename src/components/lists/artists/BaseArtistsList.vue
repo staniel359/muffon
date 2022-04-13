@@ -2,17 +2,17 @@
   <Component
     :is="listComponent"
     :artists="artists"
-    :itemsInRow="itemsInRow"
-    :isWithListenersCount="isWithListenersCount"
-    :topTracksCount="topTracksCount"
-    :topAlbumsCount="topAlbumsCount"
-    :isWithLibrary="isWithLibrary"
-    :isLinkToLibrary="isLinkToLibrary"
-    :profileId="profileId"
-    :isWithLibraryOption="isWithLibraryOption"
-    :isWithListenedOption="isWithListenedOption"
-    :isWithBookmarkOption="isWithBookmarkOption"
-    :isWithFavoriteOption="isWithFavoriteOption"
+    :items-in-row="itemsInRow"
+    :is-with-listeners-count="isWithListenersCount"
+    :top-tracks-count="topTracksCount"
+    :top-albums-count="topAlbumsCount"
+    :is-with-library="isWithLibrary"
+    :is-link-to-library="isLinkToLibrary"
+    :profile-id="profileId"
+    :is-with-library-option="isWithLibraryOption"
+    :is-with-listened-option="isWithListenedOption"
+    :is-with-bookmark-option="isWithBookmarkOption"
+    :is-with-favorite-option="isWithFavoriteOption"
   />
 </template>
 

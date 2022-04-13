@@ -1,23 +1,27 @@
 <template>
   <div
     class="ui horizontal card main-horizontal-card"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div class="content main-basic-segments-container">
       <BaseSegmentContainer
         class="basic segment-container"
-        :isLoading="isLoading"
+        :is-loading="isLoading"
         :error="error"
         @refresh="handleRefresh"
       >
-        <slot></slot>
+        <slot />
       </BaseSegmentContainer>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 
@@ -34,9 +38,12 @@ export default {
     'refresh'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   methods: {
     handleRefresh () {

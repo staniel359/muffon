@@ -1,10 +1,10 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="post"
-    :isLoading="isLoading"
+    model-type="post"
+    :is-loading="isLoading"
     :error="error"
-    @deleteButtonClick="handleDeleteButtonClick"
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -57,9 +57,13 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
-      this.$emit('deleted')
+      this.$emit(
+        'deleted'
+      )
     },
     deleteProfilePost,
     deleteCommunityPost,
@@ -78,7 +82,9 @@ export default {
       }
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

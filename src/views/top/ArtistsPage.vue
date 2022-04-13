@@ -2,18 +2,18 @@
   <BaseTopPaginatedPageContainer
     :scope="scope"
     :limit="limit"
-    :viewIndex="viewIndex"
-    isWithViewChange
+    :view-index="viewIndex"
+    is-with-view-change
   >
     <template #default="slotProps">
       <BaseArtistsList
-        :viewIndex="viewIndex"
+        :view-index="viewIndex"
         :artists="slotProps[scope]"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseTopPaginatedPageContainer>

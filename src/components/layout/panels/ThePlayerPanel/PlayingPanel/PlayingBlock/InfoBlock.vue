@@ -10,11 +10,12 @@
 
           <span
             v-if="trackExtraTitle"
-            class="sub header description main-extra-title"
-          >
-            {{ &nbsp; }}
-            {{ trackExtraTitle }}
-          </span>
+            :class="[
+              'sub header description',
+              'main-extra-title'
+            ]"
+            v-text="trackExtraTitle"
+          />
         </BaseHeaderContainer>
       </BaseTickerContainer>
 
@@ -41,18 +42,26 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
 import BaseTickerContainer
   from '*/components/containers/BaseTickerContainer.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
-import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import {
+  main as formatTrackMainLink
+} from '*/helpers/formatters/links/track'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 import formatTrackRequestData from '*/helpers/formatters/request/track/data'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'InfoBlock',
@@ -66,9 +75,12 @@ export default {
     isWithAlbum: Boolean
   },
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    ),
     trackTitle () {
       return this.playerPlaying.title
     },
@@ -76,11 +88,13 @@ export default {
       return this.playerPlaying.extra_title
     },
     trackMainLink () {
-      return formatTrackMainLink({
-        artistName: this.artistName,
-        trackTitle: this.trackTitle,
-        sourceParams: this.trackSourceParams
-      })
+      return formatTrackMainLink(
+        {
+          artistName: this.artistName,
+          trackTitle: this.trackTitle,
+          sourceParams: this.trackSourceParams
+        }
+      )
     },
     artistName () {
       return formatArtistName(
@@ -91,10 +105,12 @@ export default {
       return this.playerPlaying.artists
     },
     trackSourceParams () {
-      return formatTrackRequestData({
-        sourceId: this.playerPlaying.source_id,
-        trackData: this.playerPlaying
-      })
+      return formatTrackRequestData(
+        {
+          sourceId: this.playerPlaying.source_id,
+          trackData: this.playerPlaying
+        }
+      )
     },
     isRenderAlbumTitle () {
       return (
@@ -109,18 +125,22 @@ export default {
       return this.playerPlaying.album
     },
     albumMainLink () {
-      return formatAlbumMainLink({
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        sourceParams: this.albumSourceParams
-      })
+      return formatAlbumMainLink(
+        {
+          artistName: this.artistName,
+          albumTitle: this.albumTitle,
+          sourceParams: this.albumSourceParams
+        }
+      )
     },
     albumSourceParams () {
-      return formatAlbumRequestData({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.artistName
-      })
+      return formatAlbumRequestData(
+        {
+          sourceId: this.albumData.source_id,
+          albumData: this.albumData,
+          artistName: this.artistName
+        }
+      )
     }
   }
 }

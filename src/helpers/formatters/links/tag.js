@@ -1,46 +1,98 @@
-export const main = ({ tagName }) => {
+export function main (
+  {
+    tagName
+  }
+) {
+  const tagNameEncoded =
+    encodeURIComponent(
+      tagName
+    )
+
   return {
     name: 'TagMainPage',
-    params: { tagName },
+    params: {
+      tagName
+    },
     path: [
       'tags',
-      encodeURIComponent(tagName)
-    ].join('/')
+      tagNameEncoded
+    ].join(
+      '/'
+    )
   }
 }
 
-export const artists = ({ tagName }) => {
+export function artists (
+  {
+    tagName
+  }
+) {
+  const tagNameEncoded =
+    encodeURIComponent(
+      tagName
+    )
+
   return {
     name: 'TagArtistsPage',
-    params: { tagName },
+    params: {
+      tagName
+    },
     path: [
       'tags',
-      encodeURIComponent(tagName),
+      tagNameEncoded,
       'artists'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }
 
-export const albums = ({ tagName }) => {
+export function albums (
+  {
+    tagName
+  }
+) {
+  const tagNameEncoded =
+    encodeURIComponent(
+      tagName
+    )
+
   return {
     name: 'TagAlbumsPage',
-    params: { tagName },
+    params: {
+      tagName
+    },
     path: [
       'tags',
-      encodeURIComponent(tagName),
+      tagNameEncoded,
       'albums'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }
 
-export const tracks = ({ tagName }) => {
+export function tracks (
+  {
+    tagName
+  }
+) {
+  const tagNameEncoded =
+    encodeURIComponent(
+      tagName
+    )
+
   return {
     name: 'TagTracksPage',
-    params: { tagName },
+    params: {
+      tagName
+    },
     path: [
       'tags',
-      encodeURIComponent(tagName),
+      tagNameEncoded,
       'tracks'
-    ].join('/')
+    ].join(
+      '/'
+    )
   }
 }

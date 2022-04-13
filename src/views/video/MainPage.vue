@@ -10,30 +10,30 @@
       >
         <BaseEmbed
           class="video-embed"
-          :videoData="slotProps.videoData"
+          :video-data="slotProps.videoData"
         />
 
         <TitleSection
-          :videoData="slotProps.videoData"
+          :video-data="slotProps.videoData"
         />
 
         <BaseDivider />
 
         <CountersDateSection
-          :videoData="slotProps.videoData"
+          :video-data="slotProps.videoData"
         />
 
         <TagsSection
-          :videoData="slotProps.videoData"
+          :video-data="slotProps.videoData"
         />
 
         <DescriptionSection
-          :videoData="slotProps.videoData"
+          :video-data="slotProps.videoData"
         />
 
         <div class="main-basic-segments-container">
           <RelatedSegment
-            :videoData="slotProps.videoData"
+            :video-data="slotProps.videoData"
           />
         </div>
       </BaseSegmentContainer>

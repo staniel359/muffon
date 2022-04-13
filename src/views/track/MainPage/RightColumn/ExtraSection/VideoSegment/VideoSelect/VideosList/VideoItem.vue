@@ -5,14 +5,16 @@
     :header="videoTitle"
     :content="channelTitle"
     :image="imageData?.extrasmall"
-    isWithImage
+    is-with-image
     @click="handleClick"
   />
 </template>
 
 <script>
 import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'VideoItem',
@@ -45,10 +47,12 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedVideoData({
-        ...this.videoData,
-        uuid: generateKey()
-      })
+      this.setSelectedVideoData(
+        {
+          ...this.videoData,
+          uuid: generateKey()
+        }
+      )
     }
   }
 }

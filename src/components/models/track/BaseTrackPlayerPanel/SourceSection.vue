@@ -2,7 +2,7 @@
   <div class="track-source">
     <BaseSourceIcon
       class="track-source-icon"
-      :sourceId="sourceId"
+      :source-id="sourceId"
     />
   </div>
 </template>

@@ -1,22 +1,22 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profileId="profileId"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        isWithImage
-        isWithArtistName
-        isWithAlbumTitle
-        isWithCreated
-        isLinkToLibrary
-        isWithPlaylistOption
+        :profile-id="profileId"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-delete-option="isWithDeleteOption"
+        is-with-image
+        is-with-artist-name
+        is-with-album-title
+        is-with-created
+        is-link-to-library
+        is-with-playlist-option
       />
     </template>
   </BaseProfileLibraryPaginatedSegmentContainer>
@@ -53,9 +53,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfileLibraryTracksLink({
-        profileId: this.profileId
-      })
+      return formatProfileLibraryTracksLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

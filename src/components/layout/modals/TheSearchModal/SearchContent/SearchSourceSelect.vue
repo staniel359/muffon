@@ -2,10 +2,10 @@
   <BaseDropdown
     class="floating scrolling scope-select-container"
     selected="lastfm"
-    menuDirection="left"
+    menu-direction="left"
     :options="options"
-    :isSelection="false"
-    isOnlyIcon
+    :is-selection="false"
+    is-only-icon
     @change="handleChange"
   />
 </template>
@@ -28,7 +28,9 @@ export default {
     }
   },
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'select',
         value

@@ -3,7 +3,7 @@
     <BaseTabsContainer
       class="three item"
       :tabs="tabsCollection"
-      @tabClick="handleTabClick"
+      @tab-click="handleTabClick"
     >
       <template
         v-for="tabData in tabsCollection"
@@ -13,9 +13,9 @@
         <BaseProfileFavoriteTabContainer
           class="main-relative-tab"
           :class="slotProps.class"
-          :isActive="slotProps.isActive"
-          :profileId="profileId"
-          :tabData="tabData"
+          :is-active="slotProps.isActive"
+          :profile-id="profileId"
+          :tab-data="tabData"
           @focus="handleFocus"
         />
       </template>
@@ -29,10 +29,12 @@ import BaseSegmentContainer
 import BaseTabsContainer from '*/components/containers/tabs/BaseTabsContainer.vue'
 import BaseProfileFavoriteTabContainer
   from '*/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
-  name: 'LibraryTabsSegment',
+  name: 'FavoritesTabsSegment',
   components: {
     BaseSegmentContainer,
     BaseTabsContainer,
@@ -84,7 +86,9 @@ export default {
       this.focus()
     },
     focus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

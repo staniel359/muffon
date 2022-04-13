@@ -2,22 +2,28 @@
   <div>
     <span
       class="followers"
-      v-html="followersText"
-      :class="{ 'main-link': isClickable }"
+      :class="{
+        'main-link': isClickable
+      }"
       @click="handleFollowersLinkClick"
-    ></span>
+      v-html="followersText"
+    />
 
     <span
       class="following"
-      v-html="followingText"
-      :class="{ 'main-link': isClickable }"
+      :class="{
+        'main-link': isClickable
+      }"
       @click="handleFollowingLinkClick"
-    ></span>
+      v-html="followingText"
+    />
   </div>
 </template>
 
 <script>
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfileFollowCounters',
@@ -36,7 +42,9 @@ export default {
     followersText () {
       return this.$t(
         'counters.followers',
-        { count: this.followersCountStrong }
+        {
+          count: this.followersCountStrong
+        }
       )
     },
     followersCountStrong () {
@@ -53,7 +61,9 @@ export default {
     followingText () {
       return this.$t(
         'counters.following',
-        { count: this.followingCountStrong }
+        {
+          count: this.followingCountStrong
+        }
       )
     },
     followingCountStrong () {

@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-export default function ({ artistName }) {
+export default function (
+  {
+    artistName
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -11,13 +15,19 @@ export default function ({ artistName }) {
   const url =
     `/lastfm/artists/${artistNameEncoded}/image`
 
-  const handleSuccess = response => {
-    const { image } = response.data.artist
+  const handleSuccess = (
+    response
+  ) => {
+    const {
+      image
+    } = response.data.artist
 
     this.image = image
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 

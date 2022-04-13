@@ -3,12 +3,19 @@ import {
   main as formatProfileFavoritesMainLink
 } from '*/helpers/formatters/links/profile/favorites'
 
-export default function ({ profileId, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    profileId,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatProfileFavoritesMainLink({
-        profileId
-      })
+      return formatProfileFavoritesMainLink(
+        {
+          profileId
+        }
+      )
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
   <BaseCommunityJoinButtonContainer
-    :communityData="communityData"
+    :community-data="communityData"
   >
     <template #default="slotProps">
       <div
@@ -16,13 +16,13 @@
         >
           <div
             class="ui mini active inline loader"
-          ></div>
+          />
         </i>
         <i
           v-else
           class="icon"
           :class="slotProps.icon"
-        ></i>
+        />
 
         {{ slotProps.text }}
       </div>

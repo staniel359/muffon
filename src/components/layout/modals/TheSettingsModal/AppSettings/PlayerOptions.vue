@@ -2,7 +2,7 @@
   <div class="main-settings-options-block">
     <BaseDivider
       :text="playerText"
-      isHorizontal
+      is-horizontal
     />
 
     <SourceOption />

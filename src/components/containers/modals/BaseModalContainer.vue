@@ -1,21 +1,28 @@
 <template>
   <div
-    class="ui page modal main-modal"
     ref="modal"
+    class="ui page modal main-modal"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { mainModalOptions } from '*/helpers/data/plugins/semantic'
+import {
+  mapState
+} from 'vuex'
+import {
+  mainModalOptions
+} from '*/helpers/data/plugins/semantic'
 import {
   setModal,
   showModal,
   hideModal
 } from '*/helpers/actions/plugins/semantic'
-import { toggleClass, remove } from '*/helpers/actions/plugins/jquery'
+import {
+  toggleClass,
+  remove
+} from '*/helpers/actions/plugins/jquery'
 
 export default {
   name: 'BaseModalContainer',
@@ -25,14 +32,19 @@ export default {
     'visible'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     modalOptions () {
-      return mainModalOptions({
-        onShow: this.handleShow,
-        onVisible: this.handleVisible
-      })
+      return mainModalOptions(
+        {
+          onShow: this.handleShow,
+          onVisible: this.handleVisible
+        }
+      )
     }
   },
   watch: {
@@ -58,16 +70,20 @@ export default {
     )
   },
   methods: {
-    handleIsDarkModeChange () {
-      this.$nextTick(() => {
-        this.toggleInvertedClass()
-      })
+    async handleIsDarkModeChange () {
+      await this.$nextTick()
+
+      this.toggleInvertedClass()
     },
     handleShow () {
-      this.$emit('show')
+      this.$emit(
+        'show'
+      )
     },
     handleVisible () {
-      this.$emit('visible')
+      this.$emit(
+        'visible'
+      )
     },
     toggleInvertedClass () {
       toggleClass(

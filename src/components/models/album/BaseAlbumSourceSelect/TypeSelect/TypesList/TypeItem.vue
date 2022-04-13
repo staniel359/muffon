@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownItem
     :header="headerText"
-    :isDisabled="isDisabled"
+    :is-disabled="isDisabled"
     @click="handleClick"
   />
 </template>

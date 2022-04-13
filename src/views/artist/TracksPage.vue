@@ -1,21 +1,21 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    :artistName="artistName"
+    :artist-name="artistName"
     :scope="scope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artistName="slotProps.artistName"
-        :profileId="slotProps.profileId"
-        :topTrackCount="slotProps.topTrackCount"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
-        isWithPlaylistOption
+        :artist-name="slotProps.artistName"
+        :profile-id="slotProps.profileId"
+        :top-track-count="slotProps.topTrackCount"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-playlist-option
       />
     </template>
   </BaseArtistPaginatedPageContainer>

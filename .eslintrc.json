@@ -5,15 +5,103 @@
     "node": true
   },
   "extends": [
-    "plugin:vue/vue3-essential",
+    "eslint:recommended",
+    "plugin:vue/vue3-recommended",
     "standard"
   ],
   "ignorePatterns": [
     "semantic/**/*"
   ],
   "parserOptions": {
-    "ecmaVersion": 12,
+    "ecmaVersion": "latest",
     "parser": "@babel/eslint-parser",
     "sourceType": "module"
+  },
+  "rules": {
+    "array-bracket-newline": [
+      "error",
+      {
+        "minItems": 1
+      }
+    ],
+    "array-element-newline": [
+      "error",
+      {
+        "minItems": 1
+      }
+    ],
+    "function-call-argument-newline": "error",
+    "function-paren-newline": [
+      "error",
+      {
+        "minItems": 1
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "minProperties": 1
+        },
+        "ObjectPattern": "always",
+        "ImportDeclaration": "always"
+      }
+    ],
+    "object-property-newline": [
+      "error",
+      {
+        "allowAllPropertiesOnSameLine": false
+      }
+    ],
+    "vue/array-bracket-newline": [
+      "error",
+      {
+        "minItems": 1
+      }
+    ],
+    "vue/custom-event-name-casing": [
+      "error",
+      "camelCase"
+    ],
+    "vue/key-spacing": "error",
+    "vue/match-component-file-name": [
+      "error",
+      {
+        "extensions": ["vue"],
+        "shouldMatchCase": true
+      }
+    ],
+    "vue/no-unused-properties": [
+      "off",
+      {
+        "groups": [
+          "props",
+          "data"
+        ],
+        "deepData": true
+      }
+    ],
+    "vue/no-unused-refs": "error",
+    "vue/no-v-html": "off",
+    "vue/object-curly-newline": [
+      "error",
+      {
+        "minProperties": 1
+      }
+    ],
+    "vue/object-property-newline": [
+      "error",
+      {
+        "allowAllPropertiesOnSameLine": false
+      }
+    ],
+    "vue/require-default-prop": "off",
+    "vue/v-on-event-hyphenation": [
+      "error",
+      "always",
+      {
+        "autofix": true
+      }
+    ]
   }
 }

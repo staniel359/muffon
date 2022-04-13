@@ -3,23 +3,32 @@ import {
   communities as formatProfileCommunitiesLink
 } from '*/helpers/formatters/links/profile'
 
-export default function ({ profileId, profileNickname }) {
-  const formatTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname
+  }
+) {
+  function formatTitle () {
     return i18n.global.t(
       'navigation.model.communities',
-      { modelName: profileNickname }
+      {
+        modelName: profileNickname
+      }
     )
   }
 
-  const formatPath = () => {
-    return formatProfileCommunitiesLink({
+  const {
+    path
+  } = formatProfileCommunitiesLink(
+    {
       profileId
-    }).path
-  }
+    }
+  )
 
   return {
     icon: 'users',
     title: formatTitle(),
-    path: formatPath()
+    path
   }
 }

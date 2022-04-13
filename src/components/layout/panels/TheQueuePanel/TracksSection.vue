@@ -5,22 +5,27 @@
     <BaseTracksSimpleList
       class="queue-tracks"
       :tracks="queueTracksConditional"
-      :isWithSelfIcons="false"
-      isWithImage
-      isWithArtistName
-      isWithAlbumTitle
-      isWithSource
+      :is-with-self-icons="false"
+      is-with-image
+      is-with-artist-name
+      is-with-album-title
+      is-with-source
     />
   </BaseSegmentContainer>
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import {
+  mapGetters,
+  mapState
+} from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'TracksSection',
@@ -29,22 +34,32 @@ export default {
     BaseTracksSimpleList
   },
   computed: {
-    ...mapGetters('queue', {
-      queueTracksConditional:
+    ...mapGetters(
+      'queue',
+      {
+        queueTracksConditional:
         'tracksConditional'
-    }),
-    ...mapState('queue', {
-      queueTracks: 'tracks'
-    })
+      }
+    ),
+    ...mapState(
+      'queue',
+      {
+        queueTracks: 'tracks'
+      }
+    )
   },
   watch: {
     queueTracks: 'handleQueueTracksChange'
   },
   methods: {
-    handleQueueTracksChange (value) {
-      updateStore({
-        'queue.isShuffle': false
-      })
+    handleQueueTracksChange (
+      value
+    ) {
+      updateStore(
+        {
+          'queue.isShuffle': false
+        }
+      )
     }
   }
 }

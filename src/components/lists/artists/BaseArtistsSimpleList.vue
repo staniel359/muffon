@@ -3,24 +3,24 @@
     <ArtistItem
       v-for="artistData in artistsCollection"
       :key="artistData.uuid"
-      :artistData="artistData"
-      :isWithListenersCount="isWithListenersCount"
-      :topTracksCount="topTracksCount"
-      :topAlbumsCount="topAlbumsCount"
-      :isWithLibrary="isWithLibrary"
-      :isLinkToLibrary="isLinkToLibrary"
-      :profileId="profileId"
-      :isWithLibraryOption="isWithLibraryOption"
-      :isWithFavoriteOption="isWithFavoriteOption"
-      :isWithBookmarkOption="isWithBookmarkOption"
-      :isWithListenedOption="isWithListenedOption"
-      :isWithDeleteOption="isWithDeleteOption"
-      :isClearable="isClearable"
-      :isImageSmall="isImageSmall"
-      :isBookmark="isBookmark"
-      :isFavorite="isFavorite"
-      @linkClick="handleLinkClick"
-      @deleteButtonClick="handleDeleteButtonClick"
+      :artist-data="artistData"
+      :is-with-listeners-count="isWithListenersCount"
+      :top-tracks-count="topTracksCount"
+      :top-albums-count="topAlbumsCount"
+      :is-with-library="isWithLibrary"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
+      :is-with-library-option="isWithLibraryOption"
+      :is-with-favorite-option="isWithFavoriteOption"
+      :is-with-bookmark-option="isWithBookmarkOption"
+      :is-with-listened-option="isWithListenedOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-clearable="isClearable"
+      :is-image-small="isImageSmall"
+      :is-bookmark="isBookmark"
+      :is-favorite="isFavorite"
+      @link-click="handleLinkClick"
+      @delete-button-click="handleDeleteButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -29,7 +29,9 @@
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import ArtistItem from './BaseArtistsSimpleList/ArtistItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistsSimpleList',
@@ -77,10 +79,16 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteButtonClick ({ uuid }) {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
       this.$emit(
         'deleteButtonClick',
-        { uuid }
+        {
+          uuid
+        }
       )
     }
   }

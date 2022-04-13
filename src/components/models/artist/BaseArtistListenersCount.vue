@@ -2,23 +2,26 @@
   <div
     v-if="isLoading"
     class="ui active mini inline loader"
-  ></div>
+  />
   <div
     v-else
     class="main-small-container"
   >
     <small>
-      <i class="user icon"></i>
-      <span>
-        {{ listenersCountFormatted }}
-      </span>
+      <i class="user icon" />
+
+      <span
+        v-text="listenersCountFormatted"
+      />
     </small>
   </div>
 </template>
 
 <script>
 import getArtist from '*/helpers/actions/api/artist/get'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseArtistListenersCount',
@@ -35,7 +38,6 @@ export default {
   data () {
     return {
       artistData: null,
-      error: null,
       isLoading: false,
       scope: 'listeners_count'
     }
@@ -69,8 +71,13 @@ export default {
     }
   },
   methods: {
-    handleListenersCountFetchedChange (value) {
-      this.$emit('loadEnd', value)
+    handleListenersCountFetchedChange (
+      value
+    ) {
+      this.$emit(
+        'loadEnd',
+        value
+      )
     },
     getArtist,
     fetchData () {

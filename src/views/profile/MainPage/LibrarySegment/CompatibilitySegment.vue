@@ -1,6 +1,6 @@
 <template>
   <BaseSegmentContainer
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @refresh="handleRefresh"
   >
@@ -16,9 +16,9 @@
       />
 
       <CompatibilityContent
-        :profileId="profileId"
-        :profileNickname="profileNickname"
-        :compatibilityData="compatibilityData"
+        :profile-id="profileId"
+        :profile-nickname="profileNickname"
+        :compatibility-data="compatibilityData"
       />
     </div>
   </BaseSegmentContainer>
@@ -68,9 +68,11 @@ export default {
     },
     getLibraryCompatibility,
     fetchData () {
-      this.getLibraryCompatibility({
-        otherProfileId: this.profileId
-      })
+      this.getLibraryCompatibility(
+        {
+          otherProfileId: this.profileId
+        }
+      )
     }
   }
 }

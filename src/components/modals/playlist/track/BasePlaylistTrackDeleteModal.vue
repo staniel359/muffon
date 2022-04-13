@@ -1,12 +1,12 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="playlistTrack"
-    :modelName="playlistTrackFullTitle"
-    :parentModelName="playlistTitle"
-    :isLoading="isLoading"
+    model-type="playlistTrack"
+    :model-name="playlistTrackFullTitle"
+    :parent-model-name="playlistTitle"
+    :is-loading="isLoading"
     :error="error"
-    @deleteButtonClick="handleDeleteButtonClick"
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -47,7 +47,9 @@ export default {
       return [
         this.playlistTrackData.artist.name,
         this.playlistTrackData.title
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     },
     playlistTrackId () {
       return this.playlistTrackData.id
@@ -68,13 +70,19 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
-      this.$emit('deleted')
+      this.$emit(
+        'deleted'
+      )
     },
     deletePlaylistTrack,
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

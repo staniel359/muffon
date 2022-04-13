@@ -2,24 +2,33 @@
   <div class="track-listeners-count">
     <div
       class="track-listeners-count-bar"
-      :class="{ inverted: isDarkMode }"
-      :style="{ width: listenersCounterBarWidthPercent }"
-    ></div>
+      :class="{
+        inverted: isDarkMode
+      }"
+      :style="{
+        width: listenersCounterBarWidthPercent
+      }"
+    />
 
     <div class="description">
       <small>
         <i class="user icon" />
-        <span>
-          {{ listenersCountFormatted }}
-        </span>
+
+        <span
+          v-html="listenersCountFormatted"
+        />
       </small>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  mapState
+} from 'vuex'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'TrackListenersCount',
@@ -34,9 +43,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     listenersCounterBarWidthPercent () {
       return `${this.listenersCounterBarWidth}%`
     },

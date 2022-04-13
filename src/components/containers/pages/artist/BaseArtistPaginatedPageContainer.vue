@@ -1,27 +1,27 @@
 <template>
   <BaseArtistPageContainer
-    :artistName="artistName"
+    :artist-name="artistName"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="artistData"
-        :slotPropsData="pageSlotProps"
-        :artistName="pageSlotProps.artistName"
-        :isWithArtistSelect="isWithArtistSelect"
-        :isWithViewChange="isWithViewChange"
-        :viewIndex="viewIndex"
+        response-data-name="artistData"
+        :slot-props-data="pageSlotProps"
+        :artist-name="pageSlotProps.artistName"
+        :is-with-artist-select="isWithArtistSelect"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :artistName="pageSlotProps.artistName"
-            :topTrackCount="pageSlotProps.topTrackCount"
-            :profileId="pageSlotProps.profileId"
-          ></slot>
+            :artist-name="pageSlotProps.artistName"
+            :top-track-count="pageSlotProps.topTrackCount"
+            :profile-id="pageSlotProps.profileId"
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

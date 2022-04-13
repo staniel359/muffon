@@ -5,16 +5,18 @@
   >
     <BaseButton
       class="basic compact compatibility-common-button"
-      :class="{ disabled: buttonData.isDisabled }"
+      :class="{
+        disabled: buttonData.isDisabled
+      }"
       :icon="buttonData.icon"
       :text="buttonData.text"
       @click="buttonData.onClick"
     />
 
     <Component
-      :ref="buttonData.modal.ref"
       :is="buttonData.modal.name"
-      :profileId="profileId"
+      :ref="buttonData.modal.ref"
+      :profile-id="profileId"
     />
   </template>
 </template>
@@ -27,7 +29,9 @@ import BaseCommonProfileAlbumsModal
   from '*/components/modals/profile/library/compatibility/BaseCommonProfileAlbumsModal.vue'
 import BaseCommonProfileTracksModal
   from '*/components/modals/profile/library/compatibility/BaseCommonProfileTracksModal.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'CommonButtons',
@@ -76,22 +80,29 @@ export default {
     }
   },
   methods: {
-    handleClick (scope) {
+    handleClick (
+      scope
+    ) {
       this.$refs[
         `${scope}Modal`
       ][0].show()
     },
-    formatButtonData (scope) {
+    formatButtonData (
+      scope
+    ) {
       const icon = this.icons[scope]
       const text = this.formatText(
         scope
       )
-      const isDisabled = !this.formatCount(
-        scope
-      )
+      const isDisabled =
+        !this.formatCount(
+          scope
+        )
 
-      const onClick = () => {
-        this.handleClick(scope)
+      function onClick () {
+        this.handleClick(
+          scope
+        )
       }
 
       const modal = {
@@ -107,13 +118,21 @@ export default {
         modal
       }
     },
-    formatText (scope) {
+    formatText (
+      scope
+    ) {
       return this.$t(
         `counters.${scope}`,
-        { count: this.formatCount(scope) }
+        {
+          count: this.formatCount(
+            scope
+          )
+        }
       )
     },
-    formatCount (scope) {
+    formatCount (
+      scope
+    ) {
       return this.compatibilityData[
         `${scope}_count`
       ]

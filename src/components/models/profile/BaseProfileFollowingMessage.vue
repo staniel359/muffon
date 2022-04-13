@@ -7,20 +7,22 @@
       v-if="isFollowing"
       class="main-following-message"
     >
-      <i class="green left arrow icon"></i>
-      <div>
-        {{ followingText }}
-      </div>
+      <i class="green left arrow icon" />
+
+      <div
+        v-text="followingText"
+      />
     </div>
 
     <div
       v-if="isFollowed"
       class="main-following-message"
     >
-      <i class="green right arrow icon"></i>
-      <div>
-        {{ followedText }}
-      </div>
+      <i class="green right arrow icon" />
+
+      <div
+        v-text="followedText"
+      />
     </div>
   </div>
 </template>

@@ -1,15 +1,19 @@
 <template>
   <div
     class="item main-dropdown-item"
-    :class="{ disabled: isDisabled }"
+    :class="{
+      disabled: isDisabled
+    }"
   >
     <BaseIcon
       v-if="icon"
       class="main-dropdown-icon"
-      :class="{ colored: isIconColored }"
+      :class="{
+        colored: isIconColored
+      }"
       :icon="icon"
-      :isLoading="isLoading"
-      :isError="isError"
+      :is-loading="isLoading"
+      :is-error="isError"
     />
 
     <div

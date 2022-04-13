@@ -1,10 +1,12 @@
-export default function ({
-  sourceId,
-  artistName,
-  artistId,
-  scope
-}) {
-  const formatArtistId = () => {
+export default function (
+  {
+    sourceId,
+    artistName,
+    artistId,
+    scope
+  }
+) {
+  function formatArtistId () {
     if (sourceId === 'lastfm') {
       return encodeURIComponent(
         artistName

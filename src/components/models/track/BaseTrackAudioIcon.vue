@@ -1,14 +1,16 @@
 <template>
   <BaseIcon
-    :isLoading="isLoading"
-    :isError="isError"
+    :is-loading="isLoading"
+    :is-error="isError"
     :icon="icon"
   />
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'BaseTrackAudioIcon',
@@ -21,9 +23,12 @@ export default {
     isCurrent: Boolean
   },
   computed: {
-    ...mapGetters('audio', {
-      audioAction: 'action'
-    }),
+    ...mapGetters(
+      'audio',
+      {
+        audioAction: 'action'
+      }
+    ),
     icon () {
       if (this.isCurrent) {
         return this.audioAction

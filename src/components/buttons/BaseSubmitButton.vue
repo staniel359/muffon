@@ -2,17 +2,24 @@
   <button
     ref="button"
     type="submit"
-    class="ui primary button main-submit-button"
-    :class="{ inverted: isDarkMode }"
+    :class="[
+      'ui primary button',
+      'main-submit-button',
+      {
+        inverted: isDarkMode
+      }
+    ]"
   >
-    <i class="check icon"></i>
+    <i class="check icon" />
 
     {{ actionText }}
   </button>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseSubmitButton',
@@ -23,9 +30,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     actionText () {
       return this.$t(
         `actions.${this.actionKey}`
@@ -34,7 +44,9 @@ export default {
   },
   methods: {
     click () {
-      this.$refs.button.click()
+      this.$refs
+        .button
+        .click()
     }
   }
 }

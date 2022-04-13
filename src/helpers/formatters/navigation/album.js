@@ -9,28 +9,40 @@ import formatAlbumSection
 import formatSubpageSection
   from '*/helpers/formatters/navigation/sections/subpage'
 
-export default function ({
-  artistName,
-  albumTitle,
-  sourceParams,
-  scope
-}) {
+export default function (
+  {
+    artistName,
+    albumTitle,
+    sourceParams,
+    scope
+  }
+) {
   return [
     formatArtistsSection(),
-    formatArtistSection({
-      artistName
-    }),
-    formatArtistAlbumsSection({
-      artistName
-    }),
-    formatAlbumSection({
-      artistName,
-      albumTitle,
-      sourceParams,
-      isActive: !scope
-    }),
-    scope && formatSubpageSection({
-      scope
-    })
-  ].filter(e => e)
+    formatArtistSection(
+      {
+        artistName
+      }
+    ),
+    formatArtistAlbumsSection(
+      {
+        artistName
+      }
+    ),
+    formatAlbumSection(
+      {
+        artistName,
+        albumTitle,
+        sourceParams,
+        isActive: !scope
+      }
+    ),
+    scope && formatSubpageSection(
+      {
+        scope
+      }
+    )
+  ].filter(
+    e => e
+  )
 }

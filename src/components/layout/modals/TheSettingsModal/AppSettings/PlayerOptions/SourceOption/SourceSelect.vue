@@ -8,7 +8,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseDropdownContainer
   from '*/components/containers/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
@@ -20,9 +22,12 @@ export default {
     SourcesList
   },
   computed: {
-    ...mapState('player', {
-      playerSourceId: 'sourceId'
-    })
+    ...mapState(
+      'player',
+      {
+        playerSourceId: 'sourceId'
+      }
+    )
   },
   watch: {
     playerSourceId: {
@@ -31,12 +36,16 @@ export default {
     }
   },
   methods: {
-    handlePlayerSourceIdChange (value) {
-      this.$nextTick(() => {
-        this.$refs.dropdown.setValue(
+    async handlePlayerSourceIdChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      this.$refs
+        .dropdown
+        .setValue(
           value
         )
-      })
     }
   }
 }

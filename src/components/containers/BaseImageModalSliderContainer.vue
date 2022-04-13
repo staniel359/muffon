@@ -6,7 +6,7 @@
     >
       <slot
         :image="imageData[size]"
-      ></slot>
+      />
     </template>
   </div>
 </template>
@@ -58,18 +58,20 @@ export default {
     )
   },
   methods: {
-    handleImagesChange () {
+    async handleImagesChange () {
       clearSliderPrevImages(
         this.$refs.slider
       )
 
-      this.$nextTick(() => {
-        refreshSlider(
-          this.$refs.slider
-        )
-      })
+      await this.$nextTick()
+
+      refreshSlider(
+        this.$refs.slider
+      )
     },
-    handleOptionsChange (value) {
+    handleOptionsChange (
+      value
+    ) {
       setSliderOptions(
         this.$refs.slider,
         value

@@ -5,15 +5,19 @@
     :header="albumTitle"
     :subheader="albumExtraTitle"
     :content="artistName"
-    isWithImage
+    is-with-image
     @click="handleClick"
   />
 </template>
 
 <script>
 import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
-import { generateKey } from '*/helpers/utils'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  generateKey
+} from '*/helpers/utils'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',
@@ -50,10 +54,12 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedAlbumData({
-        ...this.albumData,
-        uuid: generateKey()
-      })
+      this.setSelectedAlbumData(
+        {
+          ...this.albumData,
+          uuid: generateKey()
+        }
+      )
     }
   }
 }

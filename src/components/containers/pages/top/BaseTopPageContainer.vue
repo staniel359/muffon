@@ -1,14 +1,14 @@
 <template>
   <BasePageContainer
-    :responseData="{}"
+    :response-data="responseData"
   >
     <slot
-      :topData="topData"
-      :isLoading="isLoading"
+      :top-data="topData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -40,7 +40,8 @@ export default {
     return {
       error: null,
       topData: null,
-      isLoading: false
+      isLoading: false,
+      responseData: {}
     }
   },
   computed: {
@@ -75,14 +76,22 @@ export default {
   },
   methods: {
     getTop,
-    fetchData (page) {
-      this.getTop({
-        ...this.topArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getTop(
+        {
+          ...this.topArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

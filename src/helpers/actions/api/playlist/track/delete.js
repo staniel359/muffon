@@ -1,7 +1,12 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ playlistId, playlistTrackId }) {
+export default function (
+  {
+    playlistId,
+    playlistTrackId
+  }
+) {
   this.error = null
   this.isSuccess = false
   this.isError = false
@@ -9,15 +14,23 @@ export default function ({ playlistId, playlistTrackId }) {
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}` +
     `/playlists/${playlistId}` +
     `/tracks/${playlistTrackId}`
 
-  const { token } = store.state.profile
-  const params = { token }
+  const {
+    token
+  } = store.state.profile
 
-  const handleError = error => {
+  const params = {
+    token
+  }
+
+  const handleError = (
+    error
+  ) => {
     this.error = error
     this.isError = true
 
@@ -29,7 +42,10 @@ export default function ({ playlistId, playlistTrackId }) {
   }
 
   return axios.delete(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).catch(
     handleError
   ).finally(

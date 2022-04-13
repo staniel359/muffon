@@ -1,18 +1,18 @@
 <template>
   <BasePageContainer
-    :responseData="libraryTagData"
-    :isLoading="isLoading"
+    :response-data="libraryTagData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :libraryTagData="libraryTagData"
-      :topTracksCount="topTracksCount"
-      :topAlbumsCount="topAlbumsCount"
-      :isLoading="isLoading"
+      :library-tag-data="libraryTagData"
+      :top-tracks-count="topTracksCount"
+      :top-albums-count="topAlbumsCount"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -109,14 +109,22 @@ export default {
   },
   methods: {
     getProfileLibraryTag,
-    fetchData (page) {
-      this.getProfileLibraryTag({
-        ...this.libraryTagArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibraryTag(
+        {
+          ...this.libraryTagArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

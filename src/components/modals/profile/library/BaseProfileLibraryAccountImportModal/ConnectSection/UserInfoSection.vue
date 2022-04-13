@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="user-info-section">
+  <BaseListContainer
+    class="user-info-section"
+  >
     <div class="item main-simple-list-item">
       <BaseImage
         class="circular bordered"
@@ -15,10 +17,11 @@
 
         <div class="description main-small-container">
           <small>
-            <i class="play icon"></i>
-            <span>
-              {{ playsCountFomatted }}
-            </span>
+            <i class="play icon" />
+
+            <span
+              v-text="playsCountFomatted"
+            />
           </small>
         </div>
       </div>
@@ -31,7 +34,9 @@ import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import { number as formatNumber } from '*/helpers/formatters'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'UserInfoSection',

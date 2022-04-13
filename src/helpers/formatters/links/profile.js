@@ -1,39 +1,71 @@
-export const main = ({ profileId }) => {
+export function main (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfileMainPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}`
   }
 }
 
-export const playlists = ({ profileId }) => {
+export function playlists (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfilePlaylistsPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/playlists`
   }
 }
 
-export const playlist = ({ profileId, playlistId }) => {
+export function playlist (
+  {
+    profileId,
+    playlistId
+  }
+) {
   return {
     name: 'ProfilePlaylistPage',
-    params: { profileId, playlistId },
+    params: {
+      profileId,
+      playlistId
+    },
     path: `profiles/${profileId}/playlists/${playlistId}`
   }
 }
 
-export const posts = ({ profileId }) => {
+export function posts (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfilePostsPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/posts`
   }
 }
 
-export const communities = ({ profileId }) => {
+export function communities (
+  {
+    profileId
+  }
+) {
   return {
     name: 'ProfileCommunitiesPage',
-    params: { profileId },
+    params: {
+      profileId
+    },
     path: `profiles/${profileId}/communities`
   }
 }

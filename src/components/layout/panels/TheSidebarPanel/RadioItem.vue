@@ -8,7 +8,9 @@
 
 <script>
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
-import { radio as formatRadioLink } from '*/helpers/formatters/links'
+import {
+  radio as formatRadioLink
+} from '*/helpers/formatters/links'
 
 export default {
   name: 'RadioItem',

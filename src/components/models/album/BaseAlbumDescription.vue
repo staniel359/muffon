@@ -1,14 +1,14 @@
 <template>
   <BaseDescription
     :description="description"
-    :isMore="isMore"
-    @moreClick="handleMoreClick"
+    :is-more="isMore"
+    @more-click="handleMoreClick"
   />
 
   <BaseAlbumDescriptionModal
     v-if="isMore"
     ref="modal"
-    :requestAlbumData="requestAlbumData"
+    :request-album-data="requestAlbumData"
   />
 </template>
 
@@ -30,7 +30,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

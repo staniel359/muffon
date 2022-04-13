@@ -1,20 +1,24 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { postFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  postFormOptions
+} from '*/helpers/data/plugins/semantic'
 import updateProfilePost from '*/helpers/actions/api/profile/post/update'
 import updateCommunityPost from '*/helpers/actions/api/community/post/update'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'BasePostUpdateFormContainer',
@@ -59,9 +63,11 @@ export default {
       return this.postData.community?.id
     },
     options () {
-      return postFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return postFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     },
     tracksFormatted () {
       return this.tracks.map(
@@ -75,7 +81,10 @@ export default {
     }
   },
   methods: {
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const isContentData = (
@@ -97,7 +106,9 @@ export default {
     },
     updateProfilePost,
     updateCommunityPost,
-    updatePost (args) {
+    updatePost (
+      args
+    ) {
       switch (this.postType) {
         case 'profile':
           return this.updateProfilePost(
@@ -111,11 +122,15 @@ export default {
           return null
       }
     },
-    formatTrack (trackData) {
+    formatTrack (
+      trackData
+    ) {
       const artistName =
         formatArtistName(
           trackData.artists ||
-            [trackData.artist]
+            [
+              trackData.artist
+            ]
         )
 
       return {
@@ -125,10 +140,14 @@ export default {
         }
       }
     },
-    formatImage (imageData) {
+    formatImage (
+      imageData
+    ) {
       return imageData.data
     },
-    formatUpdateArgs (fields) {
+    formatUpdateArgs (
+      fields
+    ) {
       return {
         communityId: this.communityId,
         postId: this.postId,

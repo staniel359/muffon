@@ -3,11 +3,11 @@
     class="selection"
   >
     <Component
-      v-for="profileData in profilesCollection"
       :is="component"
+      v-for="profileData in profilesCollection"
       :key="profileData.uuid"
-      :profileData="profileData"
-      @linkClick="handleLinkClick"
+      :profile-data="profileData"
+      @link-click="handleLinkClick"
     />
   </BaseListContainer>
 </template>
@@ -18,7 +18,9 @@ import BaseListContainer
 import ProfileItem from './BaseProfilesSimpleList/ProfileItem.vue'
 import ProfileMinimalItem
   from './BaseProfilesSimpleList/ProfileMinimalItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseProfilesSimpleList',

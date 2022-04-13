@@ -1,18 +1,20 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { playlistFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  playlistFormOptions
+} from '*/helpers/data/plugins/semantic'
 import updatePlaylist from '*/helpers/actions/api/playlist/update'
 
 export default {
@@ -42,16 +44,23 @@ export default {
   },
   computed: {
     options () {
-      return playlistFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return playlistFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     }
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const updateArgs =
@@ -64,8 +73,12 @@ export default {
       )
     },
     updatePlaylist,
-    formatUpdateArgs (fields) {
-      const { title } = fields
+    formatUpdateArgs (
+      fields
+    ) {
+      const {
+        title
+      } = fields
 
       const image = this.image.data
 

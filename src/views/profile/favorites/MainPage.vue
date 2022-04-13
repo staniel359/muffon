@@ -1,20 +1,20 @@
 <template>
   <BaseProfileFavoritesPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
   >
     <ArtistsSegment
-      :profileId="profileId"
-      :isWithDeleteOption="isWithDeleteOption"
+      :profile-id="profileId"
+      :is-with-delete-option="isWithDeleteOption"
     />
 
     <AlbumsSegment
-      :profileId="profileId"
-      :isWithDeleteOption="isWithDeleteOption"
+      :profile-id="profileId"
+      :is-with-delete-option="isWithDeleteOption"
     />
 
     <TracksSegment
-      :profileId="profileId"
-      :isWithDeleteOption="isWithDeleteOption"
+      :profile-id="profileId"
+      :is-with-delete-option="isWithDeleteOption"
     />
   </BaseProfileFavoritesPageContainer>
 </template>
@@ -25,7 +25,9 @@ import BaseProfileFavoritesPageContainer
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',

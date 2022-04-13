@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="profileData"
-    :isLoading="isLoading"
+    :response-data="profileData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :favoritesData="favoritesData"
-      :isLoading="isLoading"
+      :favorites-data="favoritesData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -87,14 +87,22 @@ export default {
   },
   methods: {
     getProfileFavorites,
-    fetchData (page) {
-      this.getProfileFavorites({
-        ...this.favoritesArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileFavorites(
+        {
+          ...this.favoritesArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

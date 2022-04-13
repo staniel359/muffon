@@ -1,16 +1,27 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ postId, content, tracks, images }) {
+export default function (
+  {
+    postId,
+    content,
+    tracks,
+    images
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/posts/${postId}`
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
     content,
@@ -18,14 +29,18 @@ export default function ({ postId, content, tracks, images }) {
     images
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.$emit(
       'success',
       response.data.post
     )
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -34,7 +49,8 @@ export default function ({ postId, content, tracks, images }) {
   }
 
   axios.patch(
-    url, params
+    url,
+    params
   ).then(
     handleSuccess
   ).catch(

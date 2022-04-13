@@ -1,19 +1,19 @@
 <template>
   <BaseProfileLibraryPaginatedSegmentContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
-        :profileId="profileId"
-        :itemsInRow="itemsInRow"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        isWithArtistName
-        isWithLibrary
-        isLinkToLibrary
+        :profile-id="profileId"
+        :items-in-row="itemsInRow"
+        :is-with-favorite-option="isWithFavoriteOption"
+        is-with-artist-name
+        is-with-library
+        is-link-to-library
       />
     </template>
   </BaseProfileLibraryPaginatedSegmentContainer>
@@ -50,9 +50,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfileLibraryAlbumsLink({
-        profileId: this.profileId
-      })
+      return formatProfileLibraryAlbumsLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

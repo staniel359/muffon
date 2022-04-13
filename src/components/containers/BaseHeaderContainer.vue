@@ -1,8 +1,10 @@
 <template>
   <Component
-    class="ui header main-header"
     :is="tag"
-    :class="{ inverted: isDarkMode }"
+    class="ui header main-header"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <i
       v-if="icon"
@@ -10,12 +12,14 @@
       :class="icon"
     />
 
-    <slot></slot>
-  </Component >
+    <slot />
+  </Component>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseHeaderContainer',
@@ -27,9 +31,12 @@ export default {
     icon: String
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

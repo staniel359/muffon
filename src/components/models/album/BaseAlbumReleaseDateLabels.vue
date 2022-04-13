@@ -1,9 +1,9 @@
 <template>
   <div class="ui labels large">
     <BaseLabel
-      v-if="release_date"
+      v-if="releaseDate"
       icon="calendar outline"
-      :text="release_date"
+      :text="releaseDate"
     />
 
     <template v-if="labels">
@@ -18,7 +18,9 @@
 
 <script>
 import BaseLabel from '*/components/BaseLabel.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumReleaseDateLabels',
@@ -26,7 +28,7 @@ export default {
     BaseLabel
   },
   props: {
-    release_date: String,
+    releaseDate: String,
     labels: Array
   },
   computed: {

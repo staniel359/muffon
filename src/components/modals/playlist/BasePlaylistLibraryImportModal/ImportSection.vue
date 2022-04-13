@@ -29,14 +29,18 @@ export default {
     'save'
   ],
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'change',
         value
       )
     },
     handleSaveButtonClick () {
-      this.$emit('save')
+      this.$emit(
+        'save'
+      )
     }
   }
 }

@@ -1,30 +1,30 @@
 <template>
   <BaseProfileLibraryPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
     :query="query"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="libraryData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="libraryData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :isWithViewChange="isWithViewChange"
-        :viewIndex="viewIndex"
-        :isLibrarySearchClearable="isSearchClearable"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
+        :is-library-search-clearable="isSearchClearable"
         :query="query"
-        isWithLibrarySearch
-        @searchSubmit="handleSearchSubmit"
-        @searchClear="handleSearchClear"
+        is-with-library-search
+        @search-submit="handleSearchSubmit"
+        @search-clear="handleSearchClear"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :topTracksCount="pageSlotProps.topTracksCount"
-            :topAlbumsCount="pageSlotProps.topAlbumsCount"
-          ></slot>
+            :top-tracks-count="pageSlotProps.topTracksCount"
+            :top-albums-count="pageSlotProps.topAlbumsCount"
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>
@@ -48,8 +48,7 @@ export default {
     scope: String,
     limit: Number,
     isWithViewChange: Boolean,
-    viewIndex: Number,
-    isWithSearch: Boolean
+    viewIndex: Number
   },
   data () {
     return {
@@ -62,7 +61,9 @@ export default {
     }
   },
   methods: {
-    handleSearchSubmit (value) {
+    handleSearchSubmit (
+      value
+    ) {
       this.query = value
     },
     handleSearchClear () {

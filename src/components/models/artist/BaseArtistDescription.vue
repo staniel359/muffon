@@ -2,14 +2,14 @@
   <template v-if="description">
     <BaseDescription
       :description="description"
-      :isMore="isMore"
-      @moreClick="handleMoreClick"
+      :is-more="isMore"
+      @more-click="handleMoreClick"
     />
 
     <BaseArtistDescriptionModal
       v-if="isMore"
       ref="modal"
-      :artistName="artistName"
+      :artist-name="artistName"
     />
   </template>
 </template>
@@ -44,7 +44,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

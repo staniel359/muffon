@@ -2,34 +2,39 @@ import axios from 'axios'
 import store from '*/plugins/store'
 import formatAlbumRequestUrl from '*/helpers/formatters/request/album/url'
 
-export default function ({
-  sourceId = 'lastfm',
-  artistName,
-  albumTitle,
-  artistId,
-  albumId,
-  albumType = 'album',
-  paramsData,
-  scope = '',
-  page,
-  limit
-}) {
+export default function (
+  {
+    sourceId = 'lastfm',
+    artistName,
+    albumTitle,
+    artistId,
+    albumId,
+    albumType = 'album',
+    paramsData,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const url =
-    formatAlbumRequestUrl({
-      sourceId,
-      artistName,
-      albumTitle,
-      artistId,
-      albumId,
-      albumType,
-      scope
-    })
+    formatAlbumRequestUrl(
+      {
+        sourceId,
+        artistName,
+        albumTitle,
+        artistId,
+        albumId,
+        albumType,
+        scope
+      }
+    )
 
   const profileId =
     store.state.profile.info.id
+
   const lang =
     store.state.profile.language
 
@@ -37,12 +42,20 @@ export default function ({
     ...paramsData,
     profile_id: profileId,
     lang,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
-    const formatAlbumType = () => {
+  const handleSuccess = (
+    response
+  ) => {
+    const scope = formatAlbumType()
+
+    function formatAlbumType () {
       if (albumType === 'albumVarious') {
         return 'album'
       } else {
@@ -50,12 +63,15 @@ export default function ({
       }
     }
 
-    this.albumData = response.data[
-      formatAlbumType()
-    ]
+    this.albumData =
+      response.data[
+        scope
+      ]
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -64,7 +80,10 @@ export default function ({
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

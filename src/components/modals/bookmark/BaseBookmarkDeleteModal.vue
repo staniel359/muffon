@@ -1,12 +1,12 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="bookmark"
+    model-type="bookmark"
     :model="model"
-    :modelName="modelName"
-    :isLoading="isLoading"
+    :model-name="modelName"
+    :is-loading="isLoading"
     :error="error"
-    @deleteButtonClick="handleDeleteButtonClick"
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -47,7 +47,9 @@ export default {
           return [
             this.modelData.artist.name,
             this.modelData.title
-          ].join(' - ')
+          ].join(
+            ' - '
+          )
       }
     },
     deleteArgs () {
@@ -69,13 +71,19 @@ export default {
       )
     },
     handleSuccess () {
-      this.$emit('deleted')
+      this.$emit(
+        'deleted'
+      )
 
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     deleteBookmark,
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

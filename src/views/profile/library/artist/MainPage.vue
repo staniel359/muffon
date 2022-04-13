@@ -1,38 +1,40 @@
 <template>
   <BaseProfileLibraryArtistPageContainer
-    :profileId="profileId"
-    :artistId="artistId"
+    :profile-id="profileId"
+    :artist-id="artistId"
   >
     <template #default="slotProps">
       <div class="main-profile-page-columns-container">
-        <div :class="[
-          'main-profile-page-left-column',
-          'main-sticky-container'
-        ]">
+        <div
+          :class="[
+            'main-profile-page-left-column',
+            'main-sticky-container'
+          ]"
+        >
           <InfoSegment
-            :artistData="slotProps.libraryArtistData"
-            :profileId="profileId"
-            :artistId="artistId"
+            :artist-data="slotProps.libraryArtistData"
+            :profile-id="profileId"
+            :artist-id="artistId"
           />
         </div>
 
         <div class="main-profile-page-right-column">
           <StatisticsSegment
-            :artistData="slotProps.libraryArtistData"
+            :artist-data="slotProps.libraryArtistData"
           />
 
           <AlbumsSegment
-            :profileId="profileId"
-            :artistId="artistId"
-            :isWithFavoriteOption="isWithFavoriteOption"
+            :profile-id="profileId"
+            :artist-id="artistId"
+            :is-with-favorite-option="isWithFavoriteOption"
           />
 
           <TracksSegment
-            :profileId="profileId"
-            :artistId="artistId"
-            :artistName="slotProps.artistName"
-            :isWithFavoriteOption="isWithFavoriteOption"
-            :isWithDeleteOption="isWithDeleteOption"
+            :profile-id="profileId"
+            :artist-id="artistId"
+            :artist-name="slotProps.artistName"
+            :is-with-favorite-option="isWithFavoriteOption"
+            :is-with-delete-option="isWithDeleteOption"
           />
         </div>
       </div>
@@ -47,7 +49,9 @@ import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',

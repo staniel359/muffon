@@ -2,12 +2,20 @@ import {
   conversation as formatConversationLink
 } from '*/helpers/formatters/links/conversations'
 
-export default function ({ profileNickname, conversationId, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    profileNickname,
+    conversationId,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatConversationLink({
-        conversationId
-      })
+      return formatConversationLink(
+        {
+          conversationId
+        }
+      )
     }
   }
 

@@ -17,9 +17,9 @@
       :link="albumMainLink"
     >
       <div class="link main-small-container">
-        <small>
-          {{ albumTitle }}
-        </small>
+        <small
+          v-text="albumTitle"
+        />
       </div>
     </BaseLinkContainer>
   </BaseTransitionContainer>
@@ -32,9 +32,13 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',
@@ -59,11 +63,13 @@ export default {
       return this.trackData.artists
     },
     albumMainLink () {
-      return formatAlbumMainLink({
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        sourceParams: this.sourceParams
-      })
+      return formatAlbumMainLink(
+        {
+          albumTitle: this.albumTitle,
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     albumTitle () {
       return this.albumData?.title
@@ -77,11 +83,13 @@ export default {
       )
     },
     sourceParams () {
-      return formatAlbumRequestData({
-        sourceId: this.albumData.source_id,
-        albumData: this.albumData,
-        artistName: this.artistName
-      })
+      return formatAlbumRequestData(
+        {
+          sourceId: this.albumData.source_id,
+          albumData: this.albumData,
+          artistName: this.artistName
+        }
+      )
     }
   }
 }

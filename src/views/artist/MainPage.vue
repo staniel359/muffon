@@ -1,16 +1,16 @@
 <template>
   <BaseArtistPageContainer
     class="page-container"
-    :artistName="artistName"
+    :artist-name="artistName"
     @init="handleContainerInit"
   >
     <template #default="slotProps">
       <LeftColumn
-        :artistData="slotProps.artistData"
+        :artist-data="slotProps.artistData"
         :scrollable="container"
       />
       <RightColumn
-        :artistData="slotProps.artistData"
+        :artist-data="slotProps.artistData"
       />
     </template>
   </BaseArtistPageContainer>
@@ -38,8 +38,10 @@ export default {
     }
   },
   methods: {
-    handleContainerInit (el) {
-      this.container = el
+    handleContainerInit (
+      element
+    ) {
+      this.container = element
     }
   }
 }

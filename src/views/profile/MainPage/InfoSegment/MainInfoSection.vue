@@ -19,7 +19,7 @@
 
     <BaseProfileOnlineLabel
       class="online-label"
-      :profileData="profileData"
+      :profile-data="profileData"
     />
   </div>
 </template>

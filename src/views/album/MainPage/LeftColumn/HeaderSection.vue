@@ -23,7 +23,9 @@ import BaseLink from '*/components/links/BaseLink.vue'
 import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',
@@ -44,9 +46,11 @@ export default {
       return this.albumData.title
     },
     artistMainLink () {
-      return formatArtistMainLink({
-        artistName: this.artistName
-      })
+      return formatArtistMainLink(
+        {
+          artistName: this.artistName
+        }
+      )
     },
     artistName () {
       return formatArtistName(

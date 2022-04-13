@@ -1,9 +1,9 @@
 <template>
   <BaseProfilePaginatedSegmentContainer
     :scope="scope"
-    :profileId="profileId"
+    :profile-id="profileId"
     :limit="limit"
-    :headerLink="headerLink"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BasePlaylistsSimpleList
@@ -42,9 +42,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatProfilePlaylistsLink({
-        profileId: this.profileId
-      })
+      return formatProfilePlaylistsLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

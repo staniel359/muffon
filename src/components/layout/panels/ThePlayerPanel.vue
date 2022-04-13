@@ -4,19 +4,28 @@
   />
 
   <div
-    class="ui bottom overlay segment sidebar the-player-panel"
     ref="playerPanel"
+    :class="[
+      'ui bottom overlay segment sidebar',
+      'the-player-panel'
+    ]"
   >
     <div class="ui container main-container">
       <PlayingPanel />
+
       <AudioPanel />
+
       <CloseButton />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import {
+  mapState,
+  mapGetters,
+  mapActions
+} from 'vuex'
 import VariantsPanel from './ThePlayerPanel/VariantsPanel.vue'
 import PlayingPanel from './ThePlayerPanel/PlayingPanel.vue'
 import AudioPanel from './ThePlayerPanel/AudioPanel.vue'
@@ -26,11 +35,21 @@ import {
   showPlayerPanel,
   hidePlayerPanel
 } from '*/helpers/actions/layout'
-import { updateStore } from '*/helpers/actions'
-import { mainSidebarOptions } from '*/helpers/data/plugins/semantic'
-import { toggleClass } from '*/helpers/actions/plugins/jquery'
-import { setToast } from '*/helpers/actions/plugins/semantic'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  updateStore
+} from '*/helpers/actions'
+import {
+  mainSidebarOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  toggleClass
+} from '*/helpers/actions/plugins/jquery'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'ThePlayerPanel',
@@ -46,17 +65,26 @@ export default {
     }
   },
   computed: {
-    ...mapState('player', {
-      isPlayerScrobbled: 'isScrobbled',
-      isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications',
-      playerPlaying: 'playing'
-    }),
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    ...mapGetters('player', {
-      playerVariantsCount: 'variantsCount'
-    }),
+    ...mapState(
+      'player',
+      {
+        isPlayerScrobbled: 'isScrobbled',
+        isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications',
+        playerPlaying: 'playing'
+      }
+    ),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapGetters(
+      'player',
+      {
+        playerVariantsCount: 'variantsCount'
+      }
+    ),
     isRenderVariantsPanel () {
       return (
         this.isVisible &&
@@ -64,15 +92,20 @@ export default {
       )
     },
     playerPanelOptions () {
-      return mainSidebarOptions({
-        onShow: this.handleShow,
-        onHide: this.handleHide
-      })
+      return mainSidebarOptions(
+        {
+          onShow: this.handleShow,
+          onHide: this.handleHide
+        }
+      )
     },
     scrobbledMessage () {
       return this.$t(
         'notifications.scrobbled',
-        { trackFullTitle: this.trackFullTitleStrong }
+        {
+          trackFullTitle:
+            this.trackFullTitleStrong
+        }
       )
     },
     trackFullTitleStrong () {
@@ -82,7 +115,9 @@ export default {
       return [
         this.trackTitle,
         this.artistName
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     },
     trackTitle () {
       return this.playerPlaying.title
@@ -101,7 +136,8 @@ export default {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
     },
-    isPlayerScrobbled: 'handleIsPlayerScrobbledChange',
+    isPlayerScrobbled:
+      'handleIsPlayerScrobbledChange',
     isDarkMode: {
       immediate: true,
       handler: 'handleIsDarkModeChange'
@@ -114,26 +150,33 @@ export default {
     )
   },
   methods: {
-    ...mapActions('audio', {
-      setIsAudioLoop: 'setIsLoop'
-    }),
-    handlePlayerPlayingChange (value) {
+    ...mapActions(
+      'audio',
+      {
+        setIsAudioLoop: 'setIsLoop'
+      }
+    ),
+    async handlePlayerPlayingChange (
+      value
+    ) {
       if (value) {
-        this.$nextTick(() => {
-          showPlayerPanel()
-        })
+        await this.$nextTick()
+
+        showPlayerPanel()
       } else {
         this.clearPlayer()
 
         hidePlayerPanel()
       }
 
-      this.setIsAudioLoop(false)
+      this.setIsAudioLoop(
+        false
+      )
     },
-    handleIsDarkModeChange () {
-      this.$nextTick(() => {
-        this.toggleInvertedClass()
-      })
+    async handleIsDarkModeChange () {
+      await this.$nextTick()
+
+      this.toggleInvertedClass()
     },
     handleShow () {
       this.isVisible = true
@@ -141,7 +184,9 @@ export default {
     handleHide () {
       this.isVisible = false
     },
-    handleIsPlayerScrobbledChange (value) {
+    handleIsPlayerScrobbledChange (
+      value
+    ) {
       if (
         this.isPlayerWithScrobbleNotifications &&
           value
@@ -150,10 +195,12 @@ export default {
       }
     },
     notify () {
-      setToast({
-        message: this.scrobbledMessage,
-        icon: 'green check'
-      })
+      setToast(
+        {
+          message: this.scrobbledMessage,
+          icon: 'green check'
+        }
+      )
     },
     toggleInvertedClass () {
       toggleClass(
@@ -163,11 +210,13 @@ export default {
       )
     },
     clearPlayer () {
-      updateStore({
-        'player.currentTrackId': null,
-        'player.currentVariantId': null,
-        'player.variants': []
-      })
+      updateStore(
+        {
+          'player.currentTrackId': null,
+          'player.currentVariantId': null,
+          'player.variants': []
+        }
+      )
     }
   }
 }

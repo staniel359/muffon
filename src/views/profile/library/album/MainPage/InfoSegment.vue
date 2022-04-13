@@ -14,17 +14,20 @@
 
         <BaseHeader
           tag="h3"
-          :class="{ link: !isArtistNameActive }"
+          :class="{
+            link: !isArtistNameActive
+          }"
           :text="albumTitle"
         />
 
         <div
-          :class="{ link: isArtistNameActive }"
+          :class="{
+            link: isArtistNameActive
+          }"
           @mouseenter="handleArtistLinkMouseEnter"
           @mouseleave="handleArtistLinkMouseLeave"
-        >
-          {{ artistName }}
-        </div>
+          v-text="artistName"
+        />
       </BaseLinkContainer>
 
       <div
@@ -32,7 +35,7 @@
         class="main-self-container"
       >
         <BaseSelfIcons
-          :favoriteId="favoriteId"
+          :favorite-id="favoriteId"
         />
 
         <template
@@ -40,21 +43,21 @@
         >
           <BaseOptionsDropdown
             model="album"
-            :albumTitle="albumTitle"
-            :artistName="artistName"
-            :favoriteId="favoriteId"
-            isWithFavoriteOption
-            isWithDeleteOption
+            :album-title="albumTitle"
+            :artist-name="artistName"
+            :favorite-id="favoriteId"
+            is-with-favorite-option
+            is-with-delete-option
             @delete="handleDeleteOptionClick"
           />
 
           <BaseProfileLibraryDeleteModal
             ref="deleteModal"
             model="album"
-            :profileId="profileId"
-            :modelId="albumId"
-            :modelName="albumFullTitle"
-            isDeleteWithRedirect
+            :profile-id="profileId"
+            :model-id="albumId"
+            :model-name="albumFullTitle"
+            is-delete-with-redirect
           />
         </template>
       </div>
@@ -62,12 +65,13 @@
       <BaseDivider />
 
       <div class="main-profile-page-info">
-        <div>
-          {{ sinceText }}
-        </div>
-        <strong>
-          {{ createdFormatted }}
-        </strong>
+        <div
+          v-text="sinceText"
+        />
+
+        <strong
+          v-text="createdFormatted"
+        />
       </div>
     </BaseSegmentContainer>
   </div>
@@ -89,9 +93,15 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import {
   main as formatProfileLibraryArtistMainLink
 } from '*/helpers/formatters/links/profile/library/artist'
-import { main as formatAlbumMainLink } from '*/helpers/formatters/links/album'
-import { isCurrentProfile } from '*/helpers/utils'
-import { date as formatDate } from '*/helpers/formatters'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
+import {
+  date as formatDate
+} from '*/helpers/formatters'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
@@ -131,20 +141,24 @@ export default {
       }
     },
     profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink({
-        profileId: this.profileId,
-        artistId: this.artistId
-      })
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          artistId: this.artistId
+        }
+      )
     },
     artistId () {
       return this.albumData.artist.id
     },
     albumMainLink () {
-      return formatAlbumMainLink({
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        sourceParams: this.sourceParams
-      })
+      return formatAlbumMainLink(
+        {
+          albumTitle: this.albumTitle,
+          artistName: this.artistName,
+          sourceParams: this.sourceParams
+        }
+      )
     },
     albumTitle () {
       return this.albumData.title
@@ -153,13 +167,20 @@ export default {
       return this.albumData.artist.name
     },
     sourceParams () {
-      return formatAlbumRequestData({
-        sourceId: 'lastfm',
-        albumData: this.albumData
-      })
+      return formatAlbumRequestData(
+        {
+          sourceId: 'lastfm',
+          albumData: this.albumData
+        }
+      )
     },
     albumFullTitle () {
-      return `${this.artistName} - ${this.albumTitle}`
+      return [
+        this.artistName,
+        this.albumTitle
+      ].join(
+        ' - '
+      )
     },
     imageData () {
       return this.albumData.image
@@ -195,9 +216,13 @@ export default {
       this.isArtistNameActive = false
     },
     handleDeleteOptionClick () {
-      this.$refs.deleteModal.show()
+      this.$refs
+        .deleteModal
+        .show()
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     }
   }

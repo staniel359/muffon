@@ -2,10 +2,10 @@
   <BaseDropdownItem
     :icon="icon"
     :header="sourceName"
-    :isLoading="isLoading"
-    :isError="isError"
-    :isDisabled="isDisabled"
-    isIconColored
+    :is-loading="isLoading"
+    :is-error="isError"
+    :is-disabled="isDisabled"
+    is-icon-colored
     @click="handleClick"
   />
 </template>
@@ -56,11 +56,13 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedSourceData({
-        id: this.sourceId,
-        types: this.types,
-        artists: this.artists
-      })
+      this.setSelectedSourceData(
+        {
+          id: this.sourceId,
+          types: this.types,
+          artists: this.artists
+        }
+      )
     }
   }
 }

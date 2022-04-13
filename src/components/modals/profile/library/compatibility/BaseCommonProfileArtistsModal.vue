@@ -1,15 +1,15 @@
 <template>
   <BaseProfileLibraryCommonModalContainer
     ref="modal"
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
   >
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        :profileId="profileId"
-        isLinkToLibrary
-        @linkClick="handleLinkClick"
+        :profile-id="profileId"
+        is-link-to-library
+        @link-click="handleLinkClick"
       />
     </template>
   </BaseProfileLibraryCommonModalContainer>
@@ -37,10 +37,14 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

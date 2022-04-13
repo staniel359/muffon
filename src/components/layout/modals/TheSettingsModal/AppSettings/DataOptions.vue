@@ -2,7 +2,7 @@
   <div class="main-settings-options-block">
     <BaseDivider
       :text="dataText"
-      isHorizontal
+      is-horizontal
     />
 
     <ClearCacheOption />

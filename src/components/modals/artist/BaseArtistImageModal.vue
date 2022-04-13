@@ -12,12 +12,13 @@
       <div :key="key">
         <MainSlider
           :images="imagesCollection"
-          :syncSlider="thumbsSlider"
+          :sync-slider="thumbsSlider"
           @init="handleMainSliderInit"
         />
+
         <ThumbsSlider
           :images="imagesCollection"
-          :syncSlider="mainSlider"
+          :sync-slider="mainSlider"
           @init="handleThumbsSliderInit"
         />
       </div>
@@ -30,12 +31,16 @@ import BaseImageModalContainer
   from '*/components/containers/modals/BaseImageModalContainer.vue'
 import MainSlider from './BaseArtistImageModal/MainSlider.vue'
 import ThumbsSlider from './BaseArtistImageModal/ThumbsSlider.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 import {
   setSliderPosition,
   goToSliderSlide
 } from '*/helpers/actions/plugins/slick'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseArtistImageModal',
@@ -74,33 +79,38 @@ export default {
     images: 'handleImagesChange'
   },
   methods: {
-    handleShow () {
-      this.$nextTick(() => {
-        if (this.isReset) {
-          goToSliderSlide(
-            this.mainSlider, 0
-          )
-        } else {
-          setSliderPosition(
-            this.mainSlider
-          )
-        }
+    async handleShow () {
+      await this.$nextTick()
 
-        setSliderPosition(
-          this.thumbsSlider
+      if (this.isReset) {
+        goToSliderSlide(
+          this.mainSlider,
+          0
         )
-      })
+      } else {
+        setSliderPosition(
+          this.mainSlider
+        )
+      }
+
+      setSliderPosition(
+        this.thumbsSlider
+      )
     },
-    handleMainSliderInit (el) {
-      this.mainSlider = el
+    handleMainSliderInit (
+      element
+    ) {
+      this.mainSlider = element
 
       this.$emit(
         'mainSliderInit',
-        el
+        element
       )
     },
-    handleThumbsSliderInit (el) {
-      this.thumbsSlider = el
+    handleThumbsSliderInit (
+      element
+    ) {
+      this.thumbsSlider = element
     },
     handleImagesChange () {
       this.key = generateKey()

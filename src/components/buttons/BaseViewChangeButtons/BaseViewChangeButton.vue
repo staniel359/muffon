@@ -2,7 +2,9 @@
   <BaseButton
     class="compact"
     :icon="button"
-    :class="{ active: isActive }"
+    :class="{
+      active: isActive
+    }"
     @click="handleClick"
   />
 </template>

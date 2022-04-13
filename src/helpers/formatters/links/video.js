@@ -1,15 +1,27 @@
-export const main = ({ videoId }) => {
+export function main (
+  {
+    videoId
+  }
+) {
   return {
     name: 'VideoMainPage',
-    params: { videoId },
+    params: {
+      videoId
+    },
     path: `video/videos/${videoId}`
   }
 }
 
-export const related = ({ videoId }) => {
+export function related (
+  {
+    videoId
+  }
+) {
   return {
     name: 'VideoRelatedPage',
-    params: { videoId },
+    params: {
+      videoId
+    },
     path: `video/videos/${videoId}/related`
   }
 }

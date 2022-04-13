@@ -1,7 +1,9 @@
 <template>
   <BaseButtonContainer
     class="basic browser-tab"
-    :class="{ active: isActiveClass }"
+    :class="{
+      active: isActiveClass
+    }"
     @click="handleClick"
   >
     <div class="browser-tab-content">
@@ -12,14 +14,18 @@
       />
       <span
         class="browser-tab-name"
-        :class="{ active: isActive }"
-      >
-        {{ tabTitle }}
-      </span>
+        :class="{
+          active: isActive
+        }"
+        v-text="tabTitle"
+      />
     </div>
 
     <BaseButton
-      class="basic mini compact circular browser-tab-close-button"
+      :class="[
+        'basic mini compact circular',
+        'browser-tab-close-button'
+      ]"
       icon="close"
       @click.stop="handleRemoveButtonClick"
     />
@@ -27,8 +33,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { ipcRenderer } from 'electron'
+import {
+  mapState
+} from 'vuex'
+import {
+  ipcRenderer
+} from 'electron'
 import BaseButtonContainer
   from '*/components/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '*/components/BaseIcon.vue'
@@ -49,9 +59,12 @@ export default {
     activeTabId: String
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     tabId () {
       return this.tabData.uuid
     },

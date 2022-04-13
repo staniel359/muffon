@@ -30,9 +30,13 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
-    handleTracksChange (value) {
+    handleTracksChange (
+      value
+    ) {
       this.$emit(
         'change',
         value

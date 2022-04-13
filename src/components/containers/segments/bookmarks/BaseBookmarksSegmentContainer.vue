@@ -1,7 +1,10 @@
 <template>
   <div
-    class="ui raised segments main-segment-container"
     ref="segment"
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
   >
     <BaseHeaderSegment
       :scope="scope"
@@ -9,19 +12,21 @@
     />
 
     <slot
-      :bookmarksData="bookmarksData"
-      :isLoading="isLoading"
+      :bookmarks-data="bookmarksData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </div>
 </template>
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
 import getBookmarks from '*/helpers/actions/api/bookmarks/get'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseBookmarksSegmentContainer',
@@ -59,14 +64,22 @@ export default {
   },
   methods: {
     getBookmarks,
-    fetchData (page) {
-      this.getBookmarks({
-        ...this.bookmarksArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getBookmarks(
+        {
+          ...this.bookmarksArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     focus () {
       focusOnSegment(

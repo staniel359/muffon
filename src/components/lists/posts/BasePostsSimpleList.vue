@@ -3,9 +3,9 @@
     <PostItem
       v-for="postData in posts"
       :key="postData.uuid"
-      :postData="postData"
-      :profileId="profileId"
-      :communityCreatorId="communityCreatorId"
+      :post-data="postData"
+      :profile-id="profileId"
+      :community-creator-id="communityCreatorId"
     />
   </BaseListContainer>
 </template>

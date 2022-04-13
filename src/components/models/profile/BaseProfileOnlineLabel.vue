@@ -1,8 +1,11 @@
 <template>
   <div
-    class="ui tiny empty circular label main-profile-online-label"
-    :class="labelColor"
-  ></div>
+    :class="[
+      'ui tiny empty circular label',
+      'main-profile-online-label',
+      onlineLabelColor
+    ]"
+  />
 </template>
 
 <script>
@@ -15,7 +18,7 @@ export default {
     }
   },
   computed: {
-    labelColor () {
+    onlineLabelColor () {
       return this.isOnline ? 'green' : 'red'
     },
     isOnline () {

@@ -3,14 +3,16 @@
     ref="input"
     :url="url"
     :fields="fields"
-    :formatResponse="formatResponse"
+    :format-response="formatResponse"
     @select="handleSelect"
   />
 </template>
 
 <script>
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsInput',
@@ -50,8 +52,12 @@ export default {
     }
   },
   methods: {
-    handleSelect (album) {
-      const isAlbumPresent = albumData => {
+    handleSelect (
+      album
+    ) {
+      function isAlbumPresent (
+        albumData
+      ) {
         const isSameTitle = (
           album.title ===
             albumData.title
@@ -89,14 +95,20 @@ export default {
 
       this.clear()
     },
-    formatResponse (response) {
-      const { albums } = response.search
+    formatResponse (
+      response
+    ) {
+      const {
+        albums
+      } = response.search
 
       return albums.map(
         this.formatAlbum
       )
     },
-    formatAlbum (albumData) {
+    formatAlbum (
+      albumData
+    ) {
       const artistName =
         formatArtistName(
           albumData.artists
@@ -108,10 +120,14 @@ export default {
       }
     },
     focus () {
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     },
     clear () {
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

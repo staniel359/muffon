@@ -2,13 +2,19 @@
   <div class="description counter-section">
     <div
       class="count-bar"
-      :class="{ inverted: isDarkMode }"
-      :style="{ width: countBarWidthPercent }"
-    ></div>
+      :class="{
+        inverted: isDarkMode
+      }"
+      :style="{
+        width: countBarWidthFormatted
+      }"
+    />
 
     <div
       class="main-small-container"
-      :class="{ link: isActive }"
+      :class="{
+        link: isActive
+      }"
       @mouseenter="handleMouseEnter"
       @mouseleave="handleMouseLeave"
     >
@@ -17,19 +23,22 @@
           class="icon"
           :class="icon"
         />
-        <span>
-          {{ countFormatted }}
-        </span>
+
+        <span
+          v-text="countFormatted"
+        />
       </small>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { number as formatNumber } from '*/helpers/formatters'
-
-const widthMaxPercent = 70
+import {
+  mapState
+} from 'vuex'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'CounterBar',
@@ -53,6 +62,7 @@ export default {
   ],
   data () {
     return {
+      widthMaxPercent: 70,
       icons: {
         tracks: 'music',
         albums: 'record vinyl'
@@ -60,15 +70,18 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    countBarWidthPercent () {
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    countBarWidthFormatted () {
       return `${this.countBarWidth}%`
     },
     countBarWidth () {
       return (
-        this.count * widthMaxPercent /
+        this.count * this.widthMaxPercent /
           this.topCount
       )
     },

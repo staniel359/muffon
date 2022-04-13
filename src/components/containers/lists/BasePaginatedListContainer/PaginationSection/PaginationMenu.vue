@@ -3,7 +3,7 @@
     class="small main-pagination"
   >
     <PreviousPageItem
-      :isDisabled="isPreviousPageDisabled"
+      :is-disabled="isPreviousPageDisabled"
       @click="handlePreviousPageClick"
     />
 
@@ -11,14 +11,14 @@
       v-for="page in totalPagesCount"
       :key="page"
       :page="page"
-      :totalPagesCount="totalPagesCount"
-      :activePage="activePage"
-      :isDisabled="isDisabled"
+      :total-pages-count="totalPagesCount"
+      :active-page="activePage"
+      :is-disabled="isDisabled"
       @click="handlePageClick"
     />
 
     <NextPageItem
-      :isDisabled="isNextPageDisabled"
+      :is-disabled="isNextPageDisabled"
       @click="handleNextPageClick"
     />
   </BaseMenuContainer>
@@ -83,13 +83,17 @@ export default {
     handlePreviousPageClick () {
       this.activePage--
     },
-    handlePageClick (value) {
+    handlePageClick (
+      value
+    ) {
       this.activePage = value
     },
     handleNextPageClick () {
       this.activePage++
     },
-    handleActivePageChange (value) {
+    handleActivePageChange (
+      value
+    ) {
       this.$emit(
         'pageChange',
         value

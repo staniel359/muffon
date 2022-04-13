@@ -1,6 +1,6 @@
 <template>
   <BaseProfilePlaylistsPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -26,8 +26,8 @@
 
         <BasePaginatedSegmentContainer
           class="main-paginated-page-segment-container"
-          responseDataName="profileData"
-          :slotPropsData="pageSlotProps"
+          response-data-name="profileData"
+          :slot-props-data="pageSlotProps"
           :scope="scope"
           :limit="limit"
           @focus="handleFocus"
@@ -55,8 +55,12 @@ import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BasePlaylistsSimpleList
   from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
-import { isCurrentProfile } from '*/helpers/utils'
-import { playlists as formatPlaylistsLink } from '*/helpers/formatters/links'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
+import {
+  playlists as formatPlaylistsLink
+} from '*/helpers/formatters/links'
 
 export default {
   name: 'PlaylistsPage',
@@ -94,7 +98,10 @@ export default {
   },
   methods: {
     handleFocus () {
-      window.scrollTo(0, 0)
+      window.scrollTo(
+        0,
+        0
+      )
     }
   }
 }

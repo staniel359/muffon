@@ -1,20 +1,24 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { loginFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  loginFormOptions
+} from '*/helpers/data/plugins/semantic'
 import getLogin from '*/helpers/actions/api/login/get'
-import { updateStore } from '*/helpers/actions'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'BaseProfileLoginFormContainer',
@@ -31,19 +35,26 @@ export default {
   },
   computed: {
     options () {
-      return loginFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return loginFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     }
   },
   watch: {
     profileData: 'handleProfileDataChange'
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const loginArgs =
@@ -55,14 +66,20 @@ export default {
         loginArgs
       )
     },
-    handleProfileDataChange (value) {
-      updateStore({
-        'profile.isLoggedIn': !!value,
-        'profile.info': value
-      })
+    handleProfileDataChange (
+      value
+    ) {
+      updateStore(
+        {
+          'profile.isLoggedIn': !!value,
+          'profile.info': value
+        }
+      )
     },
     getLogin,
-    formatLoginArgs (fields) {
+    formatLoginArgs (
+      fields
+    ) {
       const {
         email,
         password,

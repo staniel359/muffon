@@ -2,27 +2,27 @@
   <BaseSegmentContainer
     ref="segment"
     class="main-paginated-segment-container"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
   >
     <BasePaginatedListContainer
       ref="list"
-      :responseData="responseData"
+      :response-data="responseData"
       :scope="scope"
       :limit="limit"
-      :clientPageLimit="clientPageLimit"
-      :responsePageLimit="responsePageLimit"
-      :isLoading="isLoading"
+      :client-page-limit="clientPageLimit"
+      :response-page-limit="responsePageLimit"
+      :is-loading="isLoading"
       :error="error"
-      :isPaginationSimple="isPaginationSimple"
-      :isReset="isReset"
-      @fetchData="fetchData"
+      :is-pagination-simple="isPaginationSimple"
+      :is-reset="isReset"
+      @fetch-data="fetchData"
       @refresh="refresh"
       @focus="handleFocus"
     >
       <template #default="slotProps">
         <slot
           :[scope]="slotProps[scope]"
-        ></slot>
+        />
       </template>
     </BasePaginatedListContainer>
   </BaseSegmentContainer>
@@ -83,13 +83,19 @@ export default {
   },
   methods: {
     handleFocus () {
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     },
     reset () {
-      this.$refs.list.reset()
+      this.$refs
+        .list
+        .reset()
     },
     focus () {
-      this.$refs.segment.focus()
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

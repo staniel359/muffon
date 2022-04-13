@@ -1,15 +1,18 @@
 <template>
   <button
     class="ui primary button"
-    :class="{ inverted: isDarkMode }"
+    :class="{
+      inverted: isDarkMode
+    }"
     type="submit"
-  >
-    {{ actionText }}
-  </button>
+    v-text="actionText"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 
 export default {
   name: 'BaseProfileSubmitButton',
@@ -20,9 +23,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     actionText () {
       return this.$t(
         `actions.${this.actionKey}`

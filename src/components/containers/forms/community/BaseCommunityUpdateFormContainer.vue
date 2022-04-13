@@ -1,18 +1,20 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { communityFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  communityFormOptions
+} from '*/helpers/data/plugins/semantic'
 import updateCommunity from '*/helpers/actions/api/community/update'
 
 export default {
@@ -42,16 +44,23 @@ export default {
   },
   computed: {
     options () {
-      return communityFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return communityFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     }
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const updateArgs =
@@ -64,8 +73,13 @@ export default {
       )
     },
     updateCommunity,
-    formatUpdateArgs (fields) {
-      const { title, description } = fields
+    formatUpdateArgs (
+      fields
+    ) {
+      const {
+        title,
+        description
+      } = fields
 
       const image = this.image.data
 

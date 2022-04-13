@@ -2,12 +2,19 @@ import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
 
-export default function ({ artistName, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    artistName,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatArtistMainLink({
-        artistName
-      })
+      return formatArtistMainLink(
+        {
+          artistName
+        }
+      )
     }
   }
 

@@ -8,9 +8,9 @@
       class="main-link"
       @click="handleLoginLinkClick"
     >
-      <strong>
-        {{ linkText }}
-      </strong>
+      <strong
+        v-text="linkText"
+      />
     </span>
   </BaseSegmentContainer>
 </template>
@@ -41,7 +41,9 @@ export default {
   },
   methods: {
     handleLoginLinkClick () {
-      this.$emit('loginLinkClick')
+      this.$emit(
+        'loginLinkClick'
+      )
     }
   }
 }

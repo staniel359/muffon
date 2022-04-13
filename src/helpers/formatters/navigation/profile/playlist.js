@@ -5,16 +5,26 @@ import formatProfileSection
 import formatProfilePlaylistsSection
   from '*/helpers/formatters/navigation/sections/profile/playlists'
 
-export default function ({ profileId, profileNickname, playlistTitle }) {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    playlistTitle
+  }
+) {
   return [
     formatProfilesSection(),
-    formatProfileSection({
-      profileId,
-      profileNickname
-    }),
-    formatProfilePlaylistsSection({
-      profileId
-    }),
+    formatProfileSection(
+      {
+        profileId,
+        profileNickname
+      }
+    ),
+    formatProfilePlaylistsSection(
+      {
+        profileId
+      }
+    ),
     {
       name: playlistTitle,
       isActive: true

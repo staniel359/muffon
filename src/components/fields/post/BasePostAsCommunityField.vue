@@ -9,14 +9,16 @@
       :checked="isChecked"
     >
 
-    <label>
-      {{ asCommunityText }}
-    </label>
+    <label
+      v-text="asCommunityText"
+    />
   </div>
 </template>
 
 <script>
-import { setCheckbox } from '*/helpers/actions/plugins/semantic'
+import {
+  setCheckbox
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BasePostAsCommunityField',

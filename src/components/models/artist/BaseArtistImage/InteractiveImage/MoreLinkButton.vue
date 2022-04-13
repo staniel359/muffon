@@ -8,7 +8,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import {
   images as formatArtistImagesLink
@@ -26,13 +28,18 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     artistImagesLink () {
-      return formatArtistImagesLink({
-        artistName: this.artistName
-      })
+      return formatArtistImagesLink(
+        {
+          artistName: this.artistName
+        }
+      )
     },
     buttonClass () {
       return this.isDarkMode ? 'black' : 'white'

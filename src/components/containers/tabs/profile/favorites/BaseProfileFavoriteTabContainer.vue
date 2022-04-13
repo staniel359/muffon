@@ -6,12 +6,12 @@
     }"
   >
     <BasePaginatedListContainer
-      :responseData="favoritesData"
+      :response-data="favoritesData"
       :scope="tabData.scope"
       :limit="tabData.limit"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       :error="error"
-      @fetchData="fetchData"
+      @fetch-data="fetchData"
       @refresh="handleRefresh"
       @focus="handleFocus"
     >
@@ -19,13 +19,13 @@
         <Component
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
-          :profileId="profileId"
-          :isWithPlaylistOption="isWithPlaylistOption"
-          :isWithDeleteOption="isWithDeleteOption"
-          isWithImage
-          isWithArtistName
-          isWithAlbumTitle
-          isFavorite
+          :profile-id="profileId"
+          :is-with-playlist-option="isWithPlaylistOption"
+          :is-with-delete-option="isWithDeleteOption"
+          is-with-image
+          is-with-artist-name
+          is-with-album-title
+          is-favorite
         />
       </template>
     </BasePaginatedListContainer>
@@ -33,7 +33,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
@@ -43,7 +45,9 @@ import BaseAlbumsSimpleList
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileFavoriteTabContainer',
@@ -73,9 +77,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     favoritesArgs () {
       return {
         profileId: this.profileId,
@@ -108,28 +115,42 @@ export default {
     }
   },
   methods: {
-    handleIsActive (value) {
+    handleIsActive (
+      value
+    ) {
       if (value) {
         this.isActivated = true
       }
     },
-    handleIsActivated (value) {
+    handleIsActivated (
+      value
+    ) {
       if (value) {
         this.fetchData()
       }
     },
     handleFocus () {
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     getProfileFavorites,
-    fetchData (page) {
-      this.getProfileFavorites({
-        ...this.favoritesArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileFavorites(
+        {
+          ...this.favoritesArgs,
+          page
+        }
+      )
     }
   }
 }

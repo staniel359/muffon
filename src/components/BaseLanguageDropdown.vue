@@ -1,36 +1,45 @@
 <template>
   <div
-    class="ui compact selection dropdown"
     ref="dropdown"
-    :class="{ inverted: isDarkMode }"
+    class="ui compact selection dropdown"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
-    <div class="default text"></div>
+    <div class="default text" />
 
-    <i class="dropdown icon"></i>
+    <i class="dropdown icon" />
 
     <div class="menu">
       <div
         v-for="(languageData, index) in languages"
-        class="item"
         :key="index"
+        class="item"
         :data-value="languageData.code"
         @click="handleLanguageSelect(languageData.code)"
-      >
-        {{ languageData.text }}
-      </div>
+        v-text="languageData.text"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { ipcRenderer } from 'electron'
-import { updateStore } from '*/helpers/actions'
+import {
+  mapState
+} from 'vuex'
+import {
+  ipcRenderer
+} from 'electron'
+import {
+  updateStore
+} from '*/helpers/actions'
 import {
   setDropdown,
   setDropdownValue
 } from '*/helpers/actions/plugins/semantic'
-import { mainDropdownOptions } from '*/helpers/data/plugins/semantic'
+import {
+  mainDropdownOptions
+} from '*/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseLanguageDropdown',
@@ -53,43 +62,56 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    })
-  },
-  mounted () {
-    this.$nextTick(() => {
-      setDropdown(
-        this.$refs.dropdown,
-        mainDropdownOptions()
-      )
-
-      this.$nextTick(() => {
-        setDropdownValue(
-          this.$refs.dropdown,
-          this.profileLanguage
-        )
-      })
-    })
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    )
   },
   watch: {
-    profileLanguage: 'handleProfileLanguageChange'
+    profileLanguage:
+      'handleProfileLanguageChange'
+  },
+  async mounted () {
+    await this.$nextTick()
+
+    setDropdown(
+      this.$refs.dropdown,
+      mainDropdownOptions()
+    )
+
+    await this.$nextTick()
+
+    setDropdownValue(
+      this.$refs.dropdown,
+      this.profileLanguage
+    )
   },
   methods: {
-    handleLanguageSelect (value) {
+    handleLanguageSelect (
+      value
+    ) {
       ipcRenderer.send(
         'set-language',
         value
       )
 
-      updateStore({
-        'profile.language': value
-      })
+      updateStore(
+        {
+          'profile.language': value
+        }
+      )
     },
-    handleProfileLanguageChange (value) {
+    handleProfileLanguageChange (
+      value
+    ) {
       setDropdownValue(
         this.$refs.dropdown,
         value

@@ -7,9 +7,9 @@
 
       <template v-if="scope">
         <Component
+          :is="searchComponent"
           ref="input"
           class="search-container"
-          :is="searchComponent"
           @select="handleSearchSelect"
         />
 
@@ -20,8 +20,8 @@
         />
 
         <Component
-          class="model-scope-select-container"
           :is="modelScopeSelectComponent"
+          class="model-scope-select-container"
           @select="handleModelScopeSelect"
         />
       </template>
@@ -52,7 +52,6 @@ export default {
   },
   props: {
     scope: String,
-    modelScope: String,
     modelName: String
   },
   emits: [
@@ -85,7 +84,9 @@ export default {
     }
   },
   methods: {
-    handleScopeSelect (value) {
+    async handleScopeSelect (
+      value
+    ) {
       this.$emit(
         'scopeChange',
         value
@@ -96,11 +97,15 @@ export default {
         null
       )
 
-      this.$nextTick(() => {
-        this.$refs.input.focus()
-      })
+      await this.$nextTick()
+
+      this.$refs
+        .input
+        .focus()
     },
-    handleSearchSelect (value) {
+    handleSearchSelect (
+      value
+    ) {
       this.$emit(
         'modelNameChange',
         value
@@ -112,9 +117,13 @@ export default {
         null
       )
 
-      this.$refs.input.clear()
+      this.$refs
+        .input
+        .clear()
     },
-    handleModelScopeSelect (value) {
+    handleModelScopeSelect (
+      value
+    ) {
       this.$emit(
         'modelScopeChange',
         value

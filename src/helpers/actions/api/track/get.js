@@ -2,28 +2,32 @@ import axios from 'axios'
 import store from '*/plugins/store'
 import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
 
-export default function ({
-  sourceId = 'lastfm',
-  artistName,
-  trackTitle,
-  artistId,
-  trackId,
-  scope = '',
-  page,
-  limit
-}) {
+export default function (
+  {
+    sourceId = 'lastfm',
+    artistName,
+    trackTitle,
+    artistId,
+    trackId,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const url =
-    formatTrackRequestUrl({
-      sourceId,
-      artistName,
-      trackTitle,
-      artistId,
-      trackId,
-      scope
-    })
+    formatTrackRequestUrl(
+      {
+        sourceId,
+        artistName,
+        trackTitle,
+        artistId,
+        trackId,
+        scope
+      }
+    )
 
   const profileId =
     store.state.profile.info.id
@@ -33,16 +37,24 @@ export default function ({
   const params = {
     profile_id: profileId,
     lang,
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.trackData =
       response.data.track
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -51,7 +63,10 @@ export default function ({
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

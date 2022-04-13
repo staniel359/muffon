@@ -2,12 +2,12 @@
   <BaseTrackModalContainer
     ref="modal"
     :scope="scope"
-    :requestTrackData="requestTrackData"
+    :request-track-data="requestTrackData"
   >
     <template #default="slotProps">
       <BaseModalTagsList
         :tags="slotProps[scope]"
-        @tagClick="handleTagClick"
+        @tag-click="handleTagClick"
       />
     </template>
   </BaseTrackModalContainer>
@@ -34,10 +34,14 @@ export default {
   },
   methods: {
     handleTagClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

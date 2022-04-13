@@ -1,18 +1,20 @@
 <template>
   <div class="field">
     <div
-      class="ui fluid search selection dropdown"
       ref="dropdown"
+      class="ui fluid search selection dropdown"
     >
       <input
         type="hidden"
         name="country"
       >
 
-      <div class="default text">
-        {{ countryText }}
-      </div>
-      <i class="dropdown icon"></i>
+      <div
+        class="default text"
+        v-text="countryText"
+      />
+
+      <i class="dropdown icon" />
 
       <CountriesList />
     </div>
@@ -39,12 +41,17 @@ export default {
       return this.$t(
         'forms.fields.country'
       )
+    },
+    dropdownOptions () {
+      return {
+        forceSelection: false
+      }
     }
   },
   mounted () {
     setDropdown(
       this.$refs.dropdown,
-      { forceSelection: false }
+      this.dropdownOptions
     )
 
     setDropdownValue(

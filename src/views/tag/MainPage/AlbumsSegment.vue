@@ -1,21 +1,21 @@
 <template>
   <BaseTagPaginatedSegmentContainer
-    :tagName="tagName"
+    :tag-name="tagName"
     :scope="scope"
     :limit="limit"
-    :responsePageLimit="responsePageLimit"
-    :headerLink="headerLink"
+    :response-page-limit="responsePageLimit"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
-        :itemsInRow="itemsInRow"
-        isWithArtistName
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :items-in-row="itemsInRow"
+        is-with-artist-name
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseTagPaginatedSegmentContainer>
@@ -26,7 +26,9 @@ import BaseTagPaginatedSegmentContainer
   from '*/components/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList
   from '*/components/lists/albums/BaseAlbumsTableList.vue'
-import { albums as formatTagAlbumsLink } from '*/helpers/formatters/links/tag'
+import {
+  albums as formatTagAlbumsLink
+} from '*/helpers/formatters/links/tag'
 
 export default {
   name: 'AlbumsSegment',
@@ -50,9 +52,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatTagAlbumsLink({
-        tagName: this.tagName
-      })
+      return formatTagAlbumsLink(
+        {
+          tagName: this.tagName
+        }
+      )
     }
   }
 }

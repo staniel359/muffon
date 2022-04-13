@@ -1,22 +1,42 @@
 <template>
   <div
-    class="ui right overlay sidebar the-queue-panel"
     ref="queuePanel"
+    :class="[
+      'ui right overlay sidebar',
+      'the-queue-panel'
+    ]"
   >
-    <div class="ui raised segments main-segment-container">
+    <div
+      :class="[
+        'ui raised segments',
+        'main-segment-container'
+      ]"
+    >
       <HeaderSection />
+
       <TracksSection />
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import {
+  mapState,
+  mapGetters,
+  mapActions
+} from 'vuex'
 import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
-import { mainSidebarOptions } from '*/helpers/data/plugins/semantic'
-import { setQueuePanel, hideQueuePanel } from '*/helpers/actions/layout'
-import { updateStore } from '*/helpers/actions'
+import {
+  mainSidebarOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  setQueuePanel,
+  hideQueuePanel
+} from '*/helpers/actions/layout'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'TheQueuePanel',
@@ -25,17 +45,25 @@ export default {
     TracksSection
   },
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    }),
-    ...mapGetters('queue', {
-      queueTracksCount: 'tracksCount'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    ),
+    ...mapGetters(
+      'queue',
+      {
+        queueTracksCount: 'tracksCount'
+      }
+    ),
     queuePanelOptions () {
-      return mainSidebarOptions({
-        onVisible: this.handleVisible,
-        onHide: this.handleHide
-      })
+      return mainSidebarOptions(
+        {
+          onVisible: this.handleVisible,
+          onHide: this.handleHide
+        }
+      )
     }
   },
   watch: {
@@ -49,31 +77,44 @@ export default {
     )
   },
   methods: {
-    ...mapActions('layout', [
-      'setIsQueuePanelVisible'
-    ]),
+    ...mapActions(
+      'layout',
+      [
+        'setIsQueuePanelVisible'
+      ]
+    ),
     handleVisible () {
-      this.setIsQueuePanelVisible(true)
+      this.setIsQueuePanelVisible(
+        true
+      )
     },
     handleHide () {
-      this.setIsQueuePanelVisible(false)
+      this.setIsQueuePanelVisible(
+        false
+      )
     },
-    handleQueueTracksCountChange (value) {
+    handleQueueTracksCountChange (
+      value
+    ) {
       if (!value) {
         hideQueuePanel()
       }
     },
-    handlePlayerPlayingChange (value) {
+    handlePlayerPlayingChange (
+      value
+    ) {
       if (!value) {
         this.clearQueue()
       }
     },
     clearQueue () {
-      updateStore({
-        'queue.currentTrackId': null,
-        'queue.tracks': [],
-        'queue.tracksShuffled': []
-      })
+      updateStore(
+        {
+          'queue.currentTrackId': null,
+          'queue.tracks': [],
+          'queue.tracksShuffled': []
+        }
+      )
     }
   }
 }

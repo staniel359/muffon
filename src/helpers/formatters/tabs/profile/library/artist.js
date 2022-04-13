@@ -5,18 +5,22 @@ import {
   tracks as formatProfileLibraryArtistTracksLink
 } from '*/helpers/formatters/links/profile/library/artist'
 
-export default function ({
-  profileId,
-  profileNickname,
-  artistId,
-  artistName,
-  scope
-}) {
-  const formatProfileLibraryArtistPageTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    artistId,
+    artistName,
+    scope
+  }
+) {
+  function formatProfileLibraryArtistPageTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: artistName }
+        {
+          modelName: artistName
+        }
       )
     } else {
       return artistName
@@ -25,31 +29,41 @@ export default function ({
 
   const profileLibraryPageTitle = i18n.global.t(
     'navigation.model.artists',
-    { modelName: profileNickname }
+    {
+      modelName: profileNickname
+    }
   )
 
   const title = [
     formatProfileLibraryArtistPageTitle(),
     profileLibraryPageTitle
-  ].join(' | ')
+  ].join(
+    ' | '
+  )
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'albums':
-        return formatProfileLibraryArtistAlbumsLink({
-          profileId,
-          artistId
-        }).path
+        return formatProfileLibraryArtistAlbumsLink(
+          {
+            profileId,
+            artistId
+          }
+        ).path
       case 'tracks':
-        return formatProfileLibraryArtistTracksLink({
-          profileId,
-          artistId
-        }).path
+        return formatProfileLibraryArtistTracksLink(
+          {
+            profileId,
+            artistId
+          }
+        ).path
       default:
-        return formatProfileLibraryArtistMainLink({
-          profileId,
-          artistId
-        }).path
+        return formatProfileLibraryArtistMainLink(
+          {
+            profileId,
+            artistId
+          }
+        ).path
     }
   }
 

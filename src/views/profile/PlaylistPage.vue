@@ -1,7 +1,7 @@
 <template>
   <BaseProfilePlaylistPageContainer
-    :profileId="profileId"
-    :playlistId="playlistId"
+    :profile-id="profileId"
+    :playlist-id="playlistId"
   >
     <template #default="pageSlotProps">
       <div
@@ -12,19 +12,19 @@
         ]"
       >
         <InfoSegment
-          :playlistData="pageSlotProps.playlistData"
-          :profileId="profileId"
+          :playlist-data="pageSlotProps.playlistData"
+          :profile-id="profileId"
         />
 
         <ImportSegment
           v-if="isRenderImport"
-          :playlistId="playlistId"
+          :playlist-id="playlistId"
         />
 
         <TracksSegment
-          :profileId="profileId"
-          :playlistId="playlistId"
-          :playlistTitle="pageSlotProps.playlistTitle"
+          :profile-id="profileId"
+          :playlist-id="playlistId"
+          :playlist-title="pageSlotProps.playlistTitle"
         />
       </div>
     </template>
@@ -37,7 +37,9 @@ import BaseProfilePlaylistPageContainer
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'PlaylistPage',

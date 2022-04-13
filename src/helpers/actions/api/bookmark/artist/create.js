@@ -1,22 +1,32 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ artistName }) {
+export default function (
+  {
+    artistName
+  }
+) {
   this.isError = false
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/bookmarks/artists`
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
     name: artistName
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.isError = true
 
     throw error
@@ -27,7 +37,8 @@ export default function ({ artistName }) {
   }
 
   return axios.post(
-    url, params
+    url,
+    params
   ).catch(
     handleError
   ).finally(

@@ -1,18 +1,20 @@
 <template>
   <BaseFormContainer
     :options="options"
-    :isLoading="isLoading"
+    :is-loading="isLoading"
     :error="error"
     @init="handleInit"
   >
-    <slot></slot>
+    <slot />
   </BaseFormContainer>
 </template>
 
 <script>
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
-import { communityFormOptions } from '*/helpers/data/plugins/semantic'
+import {
+  communityFormOptions
+} from '*/helpers/data/plugins/semantic'
 import createCommunity from '*/helpers/actions/api/community/create'
 import {
   main as formatCommunityMainLink
@@ -39,24 +41,33 @@ export default {
   },
   computed: {
     options () {
-      return communityFormOptions({
-        onSuccess: this.handleSuccess
-      })
+      return communityFormOptions(
+        {
+          onSuccess: this.handleSuccess
+        }
+      )
     },
     communityUrl () {
-      return formatCommunityMainLink({
-        communityId: this.communityId
-      })
+      return formatCommunityMainLink(
+        {
+          communityId: this.communityId
+        }
+      )
     }
   },
   watch: {
     communityId: 'handleCommunityIdChange'
   },
   methods: {
-    handleInit (el) {
-      this.form = el
+    handleInit (
+      element
+    ) {
+      this.form = element
     },
-    handleSuccess (event, fields) {
+    handleSuccess (
+      event,
+      fields
+    ) {
       event.preventDefault()
 
       const createArgs =
@@ -81,8 +92,13 @@ export default {
         this.communityUrl
       )
     },
-    formatCreateArgs (fields) {
-      const { title, description } = fields
+    formatCreateArgs (
+      fields
+    ) {
+      const {
+        title,
+        description
+      } = fields
 
       const image = this.image.data
 

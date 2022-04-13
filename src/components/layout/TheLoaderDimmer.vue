@@ -1,24 +1,35 @@
 <template>
   <div
-    class="ui page dimmer"
     ref="loader"
+    class="ui page dimmer"
   >
-    <div class="ui loader"></div>
+    <div class="ui loader" />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { setLoaderDimmer } from '*/helpers/actions/layout'
-import { mainLoaderOptions } from '*/helpers/data/plugins/semantic'
-import { toggleClass } from '*/helpers/actions/plugins/jquery'
+import {
+  mapState
+} from 'vuex'
+import {
+  setLoaderDimmer
+} from '*/helpers/actions/layout'
+import {
+  mainLoaderOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  toggleClass
+} from '*/helpers/actions/plugins/jquery'
 
 export default {
   name: 'TheLoaderDimmer',
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   watch: {
     isDarkMode: {
@@ -33,14 +44,16 @@ export default {
     )
   },
   methods: {
-    handleIsDarkModeChange (value) {
-      this.$nextTick(() => {
-        toggleClass(
-          this.$refs.loader,
-          'inverted',
-          !value
-        )
-      })
+    async handleIsDarkModeChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      toggleClass(
+        this.$refs.loader,
+        'inverted',
+        !value
+      )
     }
   }
 }

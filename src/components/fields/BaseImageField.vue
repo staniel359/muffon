@@ -77,10 +77,14 @@ export default {
     }
   },
   methods: {
-    handleValueChange (value) {
+    handleValueChange (
+      value
+    ) {
       this.imageUrl = this.value
     },
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.imageUrl = value.url
 
       this.changeImage(
@@ -90,11 +94,15 @@ export default {
     handleDeleteButtonClick () {
       this.imageUrl = null
 
-      this.changeImage({
-        data: 'DELETED'
-      })
+      this.changeImage(
+        {
+          data: 'DELETED'
+        }
+      )
     },
-    changeImage (value) {
+    changeImage (
+      value
+    ) {
       this.$emit(
         'change',
         value

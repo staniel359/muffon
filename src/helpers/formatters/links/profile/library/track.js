@@ -1,7 +1,15 @@
-export const main = ({ profileId, trackId }) => {
+export function main (
+  {
+    profileId,
+    trackId
+  }
+) {
   return {
     name: 'ProfileLibraryTrackMainPage',
-    params: { profileId, trackId },
+    params: {
+      profileId,
+      trackId
+    },
     path: `profiles/${profileId}/library/tracks/${trackId}`
   }
 }

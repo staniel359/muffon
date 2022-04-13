@@ -7,7 +7,11 @@ export default {
   data () {
     return {
       viewIndex: 1,
-      viewLimits: [50, 20, 10]
+      viewLimits: [
+        50,
+        20,
+        10
+      ]
     }
   },
   computed: {
@@ -18,7 +22,9 @@ export default {
     }
   },
   methods: {
-    setViewIndex (value) {
+    setViewIndex (
+      value
+    ) {
       this.viewIndex = value
     }
   }

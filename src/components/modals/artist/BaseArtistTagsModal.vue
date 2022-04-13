@@ -1,13 +1,13 @@
 <template>
   <BaseArtistModalContainer
     ref="modal"
-    :artistName="artistName"
+    :artist-name="artistName"
     :scope="scope"
   >
     <template #default="slotProps">
       <BaseModalTagsList
         :tags="slotProps[scope]"
-        @tagClick="handleTagClick"
+        @tag-click="handleTagClick"
       />
     </template>
   </BaseArtistModalContainer>
@@ -34,10 +34,14 @@ export default {
   },
   methods: {
     handleTagClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

@@ -30,9 +30,11 @@ export default {
       )
     },
     profileLibraryMainLink () {
-      return formatProfileLibraryMainLink({
-        profileId: this.profileId
-      })
+      return formatProfileLibraryMainLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

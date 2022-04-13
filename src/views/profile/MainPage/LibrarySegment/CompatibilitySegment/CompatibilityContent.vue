@@ -6,13 +6,14 @@
       :text="headerText"
     />
 
-    <div class="compatibility-common-text">
-      {{ commonText }}
-    </div>
+    <div
+      class="compatibility-common-text"
+      v-text="commonText"
+    />
 
     <CommonButtons
-      :profileId="profileId"
-      :compatibilityData="compatibilityData"
+      :profile-id="profileId"
+      :compatibility-data="compatibilityData"
     />
   </div>
 </template>
@@ -39,7 +40,9 @@ export default {
     headerText () {
       return this.$t(
         'compatibility.header',
-        { profileNickname: this.profileNickname }
+        {
+          profileNickname: this.profileNickname
+        }
       )
     },
     commonText () {

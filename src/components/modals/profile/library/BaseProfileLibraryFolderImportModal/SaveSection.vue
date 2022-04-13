@@ -2,15 +2,15 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :isError="isError"
-    :totalCount="totalCount"
-    :errorFiles="errorFiles"
+    :is-error="isError"
+    :total-count="totalCount"
+    :error-files="errorFiles"
     @retry="handleRetry"
   />
 </template>
@@ -54,6 +54,9 @@ export default {
       return this.files.length
     }
   },
+  watch: {
+    files: 'handleFilesChange'
+  },
   mounted () {
     this.isMounted = true
 
@@ -62,12 +65,11 @@ export default {
   beforeUnmount () {
     this.isMounted = false
   },
-  watch: {
-    files: 'handleFilesChange'
-  },
   methods: {
     handleFilesChange () {
-      this.$refs.progress.reset()
+      this.$refs
+        .progress
+        .reset()
 
       this.saveFiles()
     },
@@ -87,24 +89,38 @@ export default {
       this.errorFiles = []
     },
     createLibraryTrack,
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'save.active.tracks',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
     async saveFiles () {
-      this.$refs.progress.setTotalCount(
-        this.totalCount
-      )
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
 
       for (const fileData of this.files) {
         if (this.isMounted) {
-          await this.saveFile(fileData)
+          await this.saveFile(
+            fileData
+          )
         }
       }
     },
-    async saveFile (fileData) {
+    async saveFile (
+      fileData
+    ) {
       const fileFormatted =
         this.formatFile(
           fileData
@@ -120,7 +136,9 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs.progress.increment()
+          this.$refs
+            .progress
+            .increment()
         }
       }
 
@@ -132,7 +150,9 @@ export default {
         handleFinish
       )
     },
-    formatFile (fileData) {
+    formatFile (
+      fileData
+    ) {
       return {
         trackTitle: fileData.title,
         artistName: fileData.artist.name,
@@ -141,7 +161,9 @@ export default {
         created: fileData.created
       }
     },
-    setErrorFiles (value) {
+    setErrorFiles (
+      value
+    ) {
       this.errorFiles = value
     }
   }

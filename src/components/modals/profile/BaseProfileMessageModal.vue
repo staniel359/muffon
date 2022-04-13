@@ -3,17 +3,17 @@
     <div class="scrolling content">
       <SuccessMessage
         v-if="conversationId"
-        :conversationId="conversationId"
-        @linkClick="handleLinkClick"
+        :conversation-id="conversationId"
+        @link-click="handleLinkClick"
       />
       <template v-else>
         <OtherProfileSection
-          :profileData="profileData"
+          :profile-data="profileData"
         />
 
         <BaseMessageCreateFormContainer
           class="main-message-form"
-          :profileId="profileId"
+          :profile-id="profileId"
           :tracks="tracks"
           :images="images"
           @success="handleSuccess"
@@ -27,13 +27,13 @@
             <BaseFormImagesSection
               v-if="images.length"
               :images="images"
-              @imagesChange="handleImagesChange"
+              @images-change="handleImagesChange"
             />
 
             <BaseFormTracksSection
               v-if="tracks.length"
               :tracks="tracks"
-              @tracksChange="handleTracksChange"
+              @tracks-change="handleTracksChange"
             />
           </div>
 
@@ -41,12 +41,12 @@
             <BaseFormAddButtonsSection
               :tracks="tracks"
               :images="images"
-              @tracksChange="handleTracksChange"
-              @imagesChange="handleImagesChange"
+              @tracks-change="handleTracksChange"
+              @images-change="handleImagesChange"
             />
 
             <BaseSubmitButton
-              actionKey="send"
+              action-key="send"
             />
           </div>
         </BaseMessageCreateFormContainer>
@@ -104,23 +104,35 @@ export default {
     }
   },
   methods: {
-    handleSuccess (conversationId) {
+    handleSuccess (
+      conversationId
+    ) {
       this.conversationId =
         conversationId.toString()
     },
     handleLinkClick () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     },
-    handleTracksChange (value) {
+    handleTracksChange (
+      value
+    ) {
       this.tracks = value
     },
-    handleImagesChange (value) {
+    handleImagesChange (
+      value
+    ) {
       this.images = value
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
 
-      this.$refs.input.focus()
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

@@ -28,7 +28,9 @@ export default {
     }
   },
   methods: {
-    handleChange (value) {
+    handleChange (
+      value
+    ) {
       this.$emit(
         'select',
         value

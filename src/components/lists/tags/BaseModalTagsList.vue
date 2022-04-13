@@ -3,7 +3,7 @@
     <TagItem
       v-for="tagData in tagsCollection"
       :key="tagData.uuid"
-      :tagData="tagData"
+      :tag-data="tagData"
       @click="handleTagClick"
     />
   </div>
@@ -11,7 +11,9 @@
 
 <script>
 import TagItem from './BaseModalTagsList/TagItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseModalTagsList',

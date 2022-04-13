@@ -2,9 +2,9 @@
   <BaseSegmentContainer>
     <BasePostCreateFormContainer
       class="main-post-form"
-      :postType="postType"
-      :profileId="profileId"
-      :communityId="communityId"
+      :post-type="postType"
+      :profile-id="profileId"
+      :community-id="communityId"
       :tracks="tracks"
       :images="images"
       @success="handleSuccess"
@@ -21,13 +21,13 @@
         <BaseFormImagesSection
           v-if="images.length"
           :images="images"
-          @imagesChange="handleImagesChange"
+          @images-change="handleImagesChange"
         />
 
         <BaseFormTracksSection
           v-if="tracks.length"
           :tracks="tracks"
-          @tracksChange="handleTracksChange"
+          @tracks-change="handleTracksChange"
         />
       </div>
 
@@ -35,8 +35,8 @@
         <BaseFormAddButtonsSection
           :tracks="tracks"
           :images="images"
-          @tracksChange="handleTracksChange"
-          @imagesChange="handleImagesChange"
+          @tracks-change="handleTracksChange"
+          @images-change="handleImagesChange"
         />
 
         <BasePostAsCommunityField
@@ -45,7 +45,7 @@
 
         <BaseSubmitButton
           ref="submit"
-          actionKey="post"
+          action-key="post"
         />
       </div>
     </BasePostCreateFormContainer>
@@ -97,10 +97,14 @@ export default {
   },
   methods: {
     handleSubmit () {
-      this.$refs.submit.click()
+      this.$refs
+        .submit
+        .click()
     },
     handleSuccess () {
-      this.$refs.input.reset()
+      this.$refs
+        .input
+        .reset()
 
       this.tracks = []
       this.images = []
@@ -109,10 +113,14 @@ export default {
         'success'
       )
     },
-    handleTracksChange (value) {
+    handleTracksChange (
+      value
+    ) {
       this.tracks = value
     },
-    handleImagesChange (value) {
+    handleImagesChange (
+      value
+    ) {
       this.images = value
     }
   }

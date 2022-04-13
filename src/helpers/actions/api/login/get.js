@@ -1,34 +1,60 @@
 import axios from 'axios'
 import i18n from '*/plugins/i18n'
-import { updateStore } from '*/helpers/actions'
-import { addFormFieldError } from '*/helpers/actions/plugins/semantic'
+import {
+  updateStore
+} from '*/helpers/actions'
+import {
+  addFormFieldError
+} from '*/helpers/actions/plugins/semantic'
 import getProfile from '*/helpers/actions/api/profile/get'
 
-export default function ({ email, password, isRemember }) {
+export default function (
+  {
+    email,
+    password,
+    isRemember
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const url = '/sessions'
-  const params = { email, password }
 
-  const handleSuccess = response => {
-    const { token } = response.data.profile
+  const params = {
+    email,
+    password
+  }
 
-    updateStore({
-      'profile.token': token,
-      'profile.isRemember': isRemember
-    })
+  const handleSuccess = (
+    response
+  ) => {
+    const {
+      token
+    } = response.data.profile
+
+    updateStore(
+      {
+        'profile.token': token,
+        'profile.isRemember': isRemember
+      }
+    )
 
     const profileId =
       response.data.profile.id
 
-    return getProfile.bind(this)({
-      profileId,
-      token
-    })
+    return getProfile.bind(
+      this
+    )(
+      {
+        profileId,
+        token
+      }
+    )
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     const isNotFound =
       error.response?.status === 404
 
@@ -37,11 +63,15 @@ export default function ({ email, password, isRemember }) {
         'email',
         'password'
       ]
-      const notFoundError = i18n.global.t(
-        'forms.errors.notFound'
-      )
 
-      const addFieldError = field => {
+      const addFieldError = (
+        field
+      ) => {
+        const notFoundError =
+          i18n.global.t(
+            'forms.errors.notFound'
+          )
+
         addFormFieldError(
           this.form,
           field,
@@ -62,7 +92,8 @@ export default function ({ email, password, isRemember }) {
   }
 
   axios.post(
-    url, params
+    url,
+    params
   ).then(
     handleSuccess
   ).catch(

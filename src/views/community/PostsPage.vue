@@ -1,19 +1,19 @@
 <template>
   <BaseCommunityPostsPageContainer
-    :communityId="communityId"
+    :community-id="communityId"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="communityData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="communityData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
       >
         <template #default="slotProps">
           <BasePostsSimpleList
             :posts="slotProps[scope]"
-            :communityCreatorId="pageSlotProps.communityCreatorId"
+            :community-creator-id="pageSlotProps.communityCreatorId"
           />
         </template>
       </BasePaginatedPageContainer>

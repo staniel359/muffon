@@ -1,13 +1,24 @@
-import { main as formatTrackMainLink } from '*/helpers/formatters/links/track'
+import {
+  main as formatTrackMainLink
+} from '*/helpers/formatters/links/track'
 
-export default function ({ artistName, trackTitle, sourceParams, isActive }) {
-  const formatLink = () => {
+export default function (
+  {
+    artistName,
+    trackTitle,
+    sourceParams,
+    isActive
+  }
+) {
+  function formatLink () {
     if (!isActive) {
-      return formatTrackMainLink({
-        artistName,
-        trackTitle,
-        sourceParams
-      })
+      return formatTrackMainLink(
+        {
+          artistName,
+          trackTitle,
+          sourceParams
+        }
+      )
     }
   }
 

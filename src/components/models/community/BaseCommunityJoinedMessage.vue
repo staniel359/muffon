@@ -4,11 +4,11 @@
     class="main-joined-message-container"
   >
     <div class="main-joined-message">
-      <i class="green left arrow icon"></i>
+      <i class="green left arrow icon" />
 
-      <div>
-        {{ joinedText }}
-      </div>
+      <div
+        v-text="joinedText"
+      />
     </div>
   </div>
 </template>

@@ -4,14 +4,16 @@
       :icons="icons"
       :header="header"
       :content="content"
-      :buttonData="buttonData"
-      @buttonClick="handleButtonClick"
+      :button-data="buttonData"
+      @button-click="handleButtonClick"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseMessage from '*/components/messages/BaseMessage.vue'
 import errorsData from '*/helpers/data/errors'
 
@@ -40,9 +42,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    ),
     icons () {
       return this.errorData.icons
     },
@@ -67,6 +72,18 @@ export default {
     },
     isErrorRefreshable () {
       return this.errorData.isRefreshable
+    },
+    responseErrorData () {
+      return {
+        ...Object.values(
+          errorsData
+        ).find(
+          this.isMatchedError
+        )
+      }
+    },
+    errorCode () {
+      return this.error.response.status
     }
   },
   watch: {
@@ -103,16 +120,16 @@ export default {
       }
     },
     setResponseErrorData () {
-      const errorCode = this.error.response.status
-      const isMatchedError = error => {
-        return error.code === errorCode
-      }
-
-      this.errorData = {
-        ...Object.values(errorsData).find(
-          isMatchedError
-        )
-      }
+      this.errorData =
+        this.responseErrorData
+    },
+    isMatchedError (
+      error
+    ) {
+      return (
+        error.code ===
+          this.errorCode
+      )
     }
   }
 }

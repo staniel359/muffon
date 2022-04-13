@@ -1,13 +1,15 @@
 <template>
   <BaseAlbumLinkContainer
     class="item main-simple-list-item"
-    :class="{ disabled: isDeleted }"
-    :albumData="albumData"
-    :artistName="artistName"
-    :profileId="profileId"
-    :isLinkToLibrary="isLinkToLibrary"
-    :isNoLink="isArtistNameActive"
-    @linkClick="handleLinkClick"
+    :class="{
+      disabled: isDeleted
+    }"
+    :album-data="albumData"
+    :artist-name="artistName"
+    :profile-id="profileId"
+    :is-link-to-library="isLinkToLibrary"
+    :is-no-link="isArtistNameActive"
+    @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -23,64 +25,66 @@
       <div class="content">
         <BaseHeader
           tag="h4"
-          :class="{ link: isHeaderActive }"
+          :class="{
+            link: isHeaderActive
+          }"
           :text="albumTitle"
         />
 
         <ArtistNameSection
           v-if="isWithArtistName"
           :artists="artists"
-          @activeChange="handleArtistNameActiveChange"
+          @active-change="handleArtistNameActiveChange"
         />
 
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
           class="description"
-          :albumTitle="albumTitle"
-          :artistName="artistName"
-          :listenersCount="listenersCount"
-          @loadEnd="handleListenersCountLoadEnd"
+          :album-title="albumTitle"
+          :artist-name="artistName"
+          :listeners-count="listenersCount"
+          @load-end="handleListenersCountLoadEnd"
         />
       </div>
 
       <BaseSelfIcons
         v-if="isWithSelfIcons"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
       />
 
       <BaseOptionsDropdown
         model="album"
-        :artistName="artistName"
-        :albumTitle="albumTitle"
-        :imageUrl="imageData?.original"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-        :isWithLibraryOption="isWithLibraryOption"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithBookmarkOption="isWithBookmarkOption"
-        :isWithListenedOption="isWithListenedOption"
-        :isWithDeleteOption="isWithDeleteOption"
+        :artist-name="artistName"
+        :album-title="albumTitle"
+        :image-url="imageData?.original"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-delete-option="isWithDeleteOption"
         @delete="handleDeleteOptionClick"
-        @linkClick="handleLinkClick"
+        @link-click="handleLinkClick"
       />
 
       <BaseBookmarkDeleteModal
         v-if="isBookmark"
         ref="modal"
         model="album"
-        :modelData="albumData"
+        :model-data="albumData"
         @deleted="handleDeleted"
       />
       <BaseFavoriteDeleteModal
         v-else-if="isFavorite"
         ref="modal"
         model="album"
-        :modelData="albumData"
+        :model-data="albumData"
         @deleted="handleDeleted"
       />
     </template>
@@ -103,7 +107,9 @@ import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',
@@ -177,7 +183,9 @@ export default {
     },
     artists () {
       if (this.artistData) {
-        return [this.artistData]
+        return [
+          this.artistData
+        ]
       } else {
         return this.albumData.artists
       }
@@ -195,9 +203,11 @@ export default {
       return this.albumData.listeners_count
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.albumData.uuid
@@ -229,31 +239,49 @@ export default {
       if (this.isClearable) {
         this.$emit(
           'deleteButtonClick',
-          { uuid: this.uuid }
+          {
+            uuid: this.uuid
+          }
         )
       } else {
-        this.$refs.modal.show()
+        this.$refs
+          .modal
+          .show()
       }
     },
     handleDeleted () {
-      this.paginationItem.isDeleted = true
+      this.paginationItem
+        .isDeleted = true
     },
-    handleListenersCountLoadEnd (value) {
-      this.paginationItem.listeners_count = value
+    handleListenersCountLoadEnd (
+      value
+    ) {
+      this.paginationItem
+        .listeners_count = value
     },
-    handleArtistNameActiveChange (value) {
+    handleArtistNameActiveChange (
+      value
+    ) {
       this.isArtistNameActive = value
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

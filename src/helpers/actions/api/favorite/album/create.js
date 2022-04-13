@@ -1,16 +1,26 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 
-export default function ({ albumTitle, artistName, imageUrl }) {
+export default function (
+  {
+    albumTitle,
+    artistName,
+    imageUrl
+  }
+) {
   this.isError = false
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/favorites/albums`
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
     title: albumTitle,
@@ -18,7 +28,9 @@ export default function ({ albumTitle, artistName, imageUrl }) {
     image_url: imageUrl
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.isError = true
 
     throw error
@@ -29,7 +41,8 @@ export default function ({ albumTitle, artistName, imageUrl }) {
   }
 
   return axios.post(
-    url, params
+    url,
+    params
   ).catch(
     handleError
   ).finally(

@@ -1,15 +1,23 @@
 <template>
   <div
-    class="ui local search inverted main-history-input"
     ref="search"
+    :class="[
+      'ui local search inverted',
+      'main-history-input'
+    ]"
   >
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
-import { mainHistoryInputOptions } from '*/helpers/data/plugins/semantic'
-import { setSearch, setSearchSource } from '*/helpers/actions/plugins/semantic'
+import {
+  mainHistoryInputOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  setSearch,
+  setSearchSource
+} from '*/helpers/actions/plugins/semantic'
 import {
   get as getElectronStoreHistory,
   update as updateElectronStoreHistory
@@ -30,10 +38,12 @@ export default {
   ],
   computed: {
     searchOptions () {
-      return mainHistoryInputOptions({
-        source: this.getHistory(),
-        onSelect: this.handleSelect
-      })
+      return mainHistoryInputOptions(
+        {
+          source: this.getHistory(),
+          onSelect: this.handleSelect
+        }
+      )
     }
   },
   watch: {
@@ -54,13 +64,22 @@ export default {
       this.updateHistory()
       this.updateInput()
     },
-    handleSelect ({ title }) {
-      this.$emit('select', title)
+    handleSelect (
+      {
+        title
+      }
+    ) {
+      this.$emit(
+        'select',
+        title
+      )
     },
     getHistory () {
       return getElectronStoreHistory(
         this.scope,
-        { isDistinct: this.isDistinct }
+        {
+          isDistinct: this.isDistinct
+        }
       )
     },
     updateHistory () {

@@ -1,7 +1,7 @@
 <template>
   <div
-    class="ui segment main-segment"
     ref="segment"
+    class="ui segment main-segment"
     :class="{
       loading: isLoading,
       inverted: isDarkMode
@@ -10,17 +10,21 @@
     <BaseErrorMessage
       v-if="error"
       :error="error"
-      isWithRefreshButton
+      is-with-refresh-button
       @refresh="handleRefresh"
     />
-    <slot v-else></slot>
+    <slot v-else />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import { focusOnSegment } from '*/helpers/actions/layout'
+import {
+  focusOnSegment
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseSegmentContainer',
@@ -36,9 +40,12 @@ export default {
     'refresh'
   ],
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   },
   mounted () {
     this.$emit(

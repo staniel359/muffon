@@ -9,15 +9,15 @@
       />
 
       <Component
-        ref="filter"
         :is="filterComponent"
+        ref="filter"
         :[filterScope]="filterItems"
         @change="handleFilterItemsChange"
       />
     </div>
 
     <FilterItems
-      :filterItems="filterItems"
+      :filter-items="filterItems"
       @change="handleFilterItemsChange"
     />
   </BaseAccordionContainer>
@@ -71,9 +71,9 @@ export default {
       ]
     },
     filterValue () {
-      return this.filterItems.map(filterItemData => {
-        return filterItemData.id
-      })
+      return this.filterItems.map(
+        this.formatFilterItem
+      )
     }
   },
   watch: {
@@ -82,9 +82,13 @@ export default {
   },
   methods: {
     handleOpen () {
-      this.$refs.filter.focusInput()
+      this.$refs
+        .filter
+        .focusInput()
     },
-    handleFilterScopeSelect (value) {
+    handleFilterScopeSelect (
+      value
+    ) {
       this.filterItems = []
 
       this.$emit(
@@ -92,18 +96,31 @@ export default {
         value
       )
     },
-    handleFilterScopeChange (value) {
-      this.$nextTick(() => {
-        this.$refs.filter.focusInput()
-      })
+    async handleFilterScopeChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      this.$refs
+        .filter
+        .focusInput()
     },
-    handleFilterItemsChange (value) {
+    handleFilterItemsChange (
+      value
+    ) {
       this.filterItems = value
     },
-    handleFilterValueChange (newValue, oldValue) {
+    handleFilterValueChange (
+      newValue,
+      oldValue
+    ) {
       const isChanged = (
-        JSON.stringify(newValue) !==
-          JSON.stringify(oldValue)
+        JSON.stringify(
+          newValue
+        ) !==
+          JSON.stringify(
+            oldValue
+          )
       )
 
       if (isChanged) {
@@ -112,6 +129,11 @@ export default {
           newValue
         )
       }
+    },
+    formatFilterItem (
+      filterItemData
+    ) {
+      return filterItemData.id
     }
   }
 }

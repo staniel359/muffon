@@ -6,8 +6,12 @@ import {
   tracks as formatBookmarksTracksLink
 } from '*/helpers/formatters/links/bookmarks'
 
-export default function ({ scope }) {
-  const formatTitle = () => {
+export default function (
+  {
+    scope
+  }
+) {
+  function formatTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.bookmarkModels.${scope}`
@@ -19,7 +23,7 @@ export default function ({ scope }) {
     }
   }
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'artists':
         return formatBookmarksArtistsLink().path

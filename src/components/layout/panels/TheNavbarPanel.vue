@@ -1,16 +1,25 @@
 <template>
   <div
-    class="ui top fixed borderless menu the-navbar-panel"
-    :class="{ inverted: isDarkMode }"
+    :class="[
+      'ui top fixed borderless menu',
+      'the-navbar-panel',
+      {
+        inverted: isDarkMode
+      }
+    ]"
   >
     <div class="ui container main-container">
-      <NavbarSearchButton/>
+      <NavbarSearchButton />
 
-      <NavbarHistoryButton direction="back" />
+      <NavbarHistoryButton
+        direction="back"
+      />
 
       <NavbarNavigation />
 
-      <NavbarHistoryButton direction="forward" />
+      <NavbarHistoryButton
+        direction="forward"
+      />
 
       <NavbarRefreshButton />
     </div>
@@ -18,7 +27,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
@@ -33,9 +44,12 @@ export default {
     NavbarRefreshButton
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ])
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    )
   }
 }
 </script>

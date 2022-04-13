@@ -2,15 +2,15 @@
   <template v-if="tags">
     <BaseTagsList
       :tags="tags"
-      :isMore="isMore"
-      isWithIcon
-      @moreClick="handleMoreClick"
+      :is-more="isMore"
+      is-with-icon
+      @more-click="handleMoreClick"
     />
 
     <BaseVideoTagsModal
       v-if="isMore"
       ref="modal"
-      :videoId="videoId"
+      :video-id="videoId"
     />
   </template>
 </template>
@@ -45,7 +45,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

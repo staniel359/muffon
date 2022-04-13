@@ -4,14 +4,16 @@
       v-if="country"
       class="profile-country-flag"
       :class="iconClassName"
-    ></i>
+    />
 
-    {{ cityWithCountry }}
+    {{ cityWithCountryFormatted }}
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import countries from 'i18n-iso-countries'
 
 export default {
@@ -23,20 +25,27 @@ export default {
     }
   },
   computed: {
-    ...mapState('profile', {
-      profileLanguage: 'language'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    ),
     iconClassName () {
       return `${this.country} flag`
     },
     country () {
       return this.profileData.country
     },
-    cityWithCountry () {
+    cityWithCountryFormatted () {
       return [
         this.city,
         this.countryName
-      ].filter(e => e).join(', ')
+      ].filter(
+        e => e
+      ).join(
+        ', '
+      )
     },
     city () {
       return this.profileData.city

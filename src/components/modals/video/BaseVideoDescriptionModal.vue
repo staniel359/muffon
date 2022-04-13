@@ -1,13 +1,13 @@
 <template>
   <BaseVideoModalContainer
     ref="modal"
-    :videoId="videoId"
+    :video-id="videoId"
     :scope="scope"
   >
     <template #default="slotProps">
       <BaseDescription
         :description="slotProps[scope]"
-        isModal
+        is-modal
       />
     </template>
   </BaseVideoModalContainer>
@@ -34,7 +34,9 @@ export default {
   },
   methods: {
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

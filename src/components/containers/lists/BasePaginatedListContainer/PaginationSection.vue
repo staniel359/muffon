@@ -4,17 +4,17 @@
   <div class="main-pagination-container">
     <PaginationSimpleMenu
       v-if="isPaginationSimple"
-      :isDisabled="isDisabled"
-      :prevPage="prevPage"
-      :nextPage="nextPage"
-      @prevPageClick="handlePrevPageClick"
-      @nextPageClick="handleNextPageClick"
+      :is-disabled="isDisabled"
+      :prev-page="prevPage"
+      :next-page="nextPage"
+      @prev-page-click="handlePrevPageClick"
+      @next-page-click="handleNextPageClick"
     />
     <PaginationMenu
       v-else
-      :totalPagesCount="totalPagesCount"
-      :isDisabled="isDisabled"
-      @pageChange="handlePageChange"
+      :total-pages-count="totalPagesCount"
+      :is-disabled="isDisabled"
+      @page-change="handlePageChange"
     />
   </div>
 </template>
@@ -63,7 +63,9 @@ export default {
         'nextPageClick'
       )
     },
-    handlePageChange (value) {
+    handlePageChange (
+      value
+    ) {
       this.$emit(
         'pageChange',
         value

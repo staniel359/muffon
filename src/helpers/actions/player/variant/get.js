@@ -1,6 +1,10 @@
 import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
 
-export default function ({ variantId }) {
+export default function (
+  {
+    variantId
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -8,7 +12,9 @@ export default function ({ variantId }) {
     variantId
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 

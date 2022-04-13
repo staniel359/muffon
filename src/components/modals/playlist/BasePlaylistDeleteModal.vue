@@ -1,12 +1,12 @@
 <template>
   <BaseDeleteModal
     ref="modal"
-    modelType="playlist"
-    :modelName="playlistTitle"
-    :isLoading="isLoading"
+    model-type="playlist"
+    :model-name="playlistTitle"
+    :is-loading="isLoading"
     :error="error"
-    isWithAlsoText
-    @deleteButtonClick="handleDeleteButtonClick"
+    is-with-also-text
+    @delete-button-click="handleDeleteButtonClick"
   />
 </template>
 
@@ -16,7 +16,9 @@ import deletePlaylist from '*/helpers/actions/api/playlist/delete'
 import {
   playlists as formatProfilePlaylistsLink
 } from '*/helpers/formatters/links/profile'
-import { setToast } from '*/helpers/actions/plugins/semantic'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BasePlaylistDeleteModal',
@@ -56,9 +58,11 @@ export default {
       return this.playlistData.title
     },
     profilePlaylistsLink () {
-      return formatProfilePlaylistsLink({
-        profileId: this.profileId
-      })
+      return formatProfilePlaylistsLink(
+        {
+          profileId: this.profileId
+        }
+      )
     },
     profileId () {
       return this.playlistData.profile.id
@@ -81,13 +85,17 @@ export default {
       )
     },
     handleSuccess () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
 
       if (this.isDeleteWithRedirect) {
         this.redirect()
         this.notify()
       } else {
-        this.$emit('deleted')
+        this.$emit(
+          'deleted'
+        )
       }
     },
     deletePlaylist,
@@ -97,13 +105,17 @@ export default {
       )
     },
     notify () {
-      setToast({
-        message: this.deletedMessage,
-        icon: 'green check'
-      })
+      setToast(
+        {
+          message: this.deletedMessage,
+          icon: 'green check'
+        }
+      )
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

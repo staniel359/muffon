@@ -8,7 +8,9 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import {
+  mapActions
+} from 'vuex'
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
 import SearchContent from './TheSearchModal/SearchContent.vue'
@@ -30,17 +32,26 @@ export default {
     )
   },
   methods: {
-    ...mapActions('layout', [
-      'setSearchModal'
-    ]),
+    ...mapActions(
+      'layout',
+      [
+        'setSearchModal'
+      ]
+    ),
     handleVisible () {
-      this.$refs.search.focusInput()
+      this.$refs
+        .search
+        .focusInput()
     },
     show () {
-      this.$refs.modal.show()
+      this.$refs
+        .modal
+        .show()
     },
     hide () {
-      this.$refs.modal.hide()
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

@@ -1,16 +1,16 @@
 <template>
   <BasePageContainer
-    :responseData="conversationsData"
-    :isLoading="isLoading"
+    :response-data="conversationsData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :conversationsData="conversationsData"
-      :isLoading="isLoading"
+      :conversations-data="conversationsData"
+      :is-loading="isLoading"
       :error="error"
-      :fetchData="fetchData"
+      :fetch-data="fetchData"
       :refresh="refresh"
-    ></slot>
+    />
   </BasePageContainer>
 </template>
 
@@ -63,14 +63,22 @@ export default {
   },
   methods: {
     getConversations,
-    fetchData (page) {
-      this.getConversations({
-        ...this.conversationsArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getConversations(
+        {
+          ...this.conversationsArgs,
+          page
+        }
+      )
     },
-    refresh (page) {
-      this.fetchData(page)
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     }
   }
 }

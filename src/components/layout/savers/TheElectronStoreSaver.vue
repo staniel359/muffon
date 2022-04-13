@@ -1,9 +1,13 @@
 <template>
-  <div id="the-electron-store-saver"></div>
+  <div
+    id="the-electron-store-saver"
+  />
 </template>
 
 <script>
-import { ipcRenderer } from 'electron'
+import {
+  ipcRenderer
+} from 'electron'
 import electronStore from '*/plugins/electronStore'
 
 export default {
@@ -15,19 +19,32 @@ export default {
     )
   },
   methods: {
-    handleUpdateStore (_, data) {
-      const storeKeysValues = Object.entries(
-        JSON.parse(data)
-      )
+    handleUpdateStore (
+      _,
+      data
+    ) {
+      const storeKeysValues =
+        Object.entries(
+          JSON.parse(
+            data
+          )
+        )
 
       storeKeysValues.forEach(
         this.setElectronStoreKeyValue
       )
     },
-    setElectronStoreKeyValue ([key, value]) {
-      electronStore.set({
-        [key]: value
-      })
+    setElectronStoreKeyValue (
+      [
+        key,
+        value
+      ]
+    ) {
+      electronStore.set(
+        {
+          [key]: value
+        }
+      )
     }
   }
 }

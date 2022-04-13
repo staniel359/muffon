@@ -1,7 +1,8 @@
 <template>
-  <div class="description track-index">
-    {{ indexText }}
-  </div>
+  <div
+    class="description track-index"
+    v-text="indexText"
+  />
 </template>
 
 <script>

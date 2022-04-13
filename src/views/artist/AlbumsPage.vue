@@ -1,21 +1,21 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    :artistName="artistName"
+    :artist-name="artistName"
     :scope="scope"
     :limit="limit"
-    isWithArtistSelect
+    is-with-artist-select
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
-        :artistName="slotProps.artistName"
-        :profileId="slotProps.profileId"
-        :itemsInRow="itemsInRow"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :artist-name="slotProps.artistName"
+        :profile-id="slotProps.profileId"
+        :items-in-row="itemsInRow"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseArtistPaginatedPageContainer>

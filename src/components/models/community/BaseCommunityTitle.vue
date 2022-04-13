@@ -33,9 +33,11 @@ export default {
   },
   computed: {
     communityMainLink () {
-      return formatCommunityMainLink({
-        communityId: this.communityId
-      })
+      return formatCommunityMainLink(
+        {
+          communityId: this.communityId
+        }
+      )
     },
     communityId () {
       return this.communityData.id

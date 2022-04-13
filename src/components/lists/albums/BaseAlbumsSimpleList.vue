@@ -3,21 +3,21 @@
     <AlbumItem
       v-for="albumData in albumsCollection"
       :key="albumData.uuid"
-      :albumData="albumData"
-      :isWithArtistName="isWithArtistName"
-      :isLinkToLibrary="isLinkToLibrary"
-      :isWithListenersCount="isWithListenersCount"
-      :isWithLibraryOption="isWithLibraryOption"
-      :isWithFavoriteOption="isWithFavoriteOption"
-      :isWithBookmarkOption="isWithBookmarkOption"
-      :isWithListenedOption="isWithListenedOption"
-      :isWithDeleteOption="isWithDeleteOption"
-      :isClearable="isClearable"
-      :isBookmark="isBookmark"
-      :isFavorite="isFavorite"
-      :profileId="profileId"
-      @linkClick="handleLinkClick"
-      @deleteButtonClick="handleDeleteButtonClick"
+      :album-data="albumData"
+      :is-with-artist-name="isWithArtistName"
+      :is-link-to-library="isLinkToLibrary"
+      :is-with-listeners-count="isWithListenersCount"
+      :is-with-library-option="isWithLibraryOption"
+      :is-with-favorite-option="isWithFavoriteOption"
+      :is-with-bookmark-option="isWithBookmarkOption"
+      :is-with-listened-option="isWithListenedOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-clearable="isClearable"
+      :is-bookmark="isBookmark"
+      :is-favorite="isFavorite"
+      :profile-id="profileId"
+      @link-click="handleLinkClick"
+      @delete-button-click="handleDeleteButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -26,7 +26,9 @@
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import AlbumItem from './BaseAlbumsSimpleList/AlbumItem.vue'
-import { collection as formatCollection } from '*/helpers/formatters'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumsSimpleList',
@@ -80,12 +82,20 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
-    handleDeleteButtonClick ({ uuid }) {
+    handleDeleteButtonClick (
+      {
+        uuid
+      }
+    ) {
       this.$emit(
         'deleteButtonClick',
-        { uuid }
+        {
+          uuid
+        }
       )
     }
   }

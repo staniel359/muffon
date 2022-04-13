@@ -2,13 +2,13 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :formatActive="formatProgressActive"
+    :format-active="formatProgressActive"
     @complete="handleProgressComplete"
   />
 
   <CompleteSection
     v-if="isComplete"
-    :successTracks="successTracks"
+    :success-tracks="successTracks"
     :error="error"
   />
 </template>
@@ -60,23 +60,31 @@ export default {
   mounted () {
     this.isMounted = true
 
-    this.$refs.progress.setTotalCount(
-      this.userData.plays_count
-    )
+    this.$refs
+      .progress
+      .setTotalCount(
+        this.userData.plays_count
+      )
 
-    this.getLastfmUserPlays({
-      nickname: this.nickname
-    })
+    this.getLastfmUserPlays(
+      {
+        nickname: this.nickname
+      }
+    )
   },
   beforeUnmount () {
     this.isMounted = false
   },
   methods: {
     getLastfmUserPlays,
-    handlePlaysChange (value) {
-      this.$refs.progress.setValue(
-        value.length
-      )
+    handlePlaysChange (
+      value
+    ) {
+      this.$refs
+        .progress
+        .setValue(
+          value.length
+        )
     },
     handleProgressComplete () {
       this.isComplete = true
@@ -89,13 +97,23 @@ export default {
           )
         )
     },
-    formatProgressActive ({ value, total }) {
+    formatProgressActive (
+      {
+        value,
+        total
+      }
+    ) {
       return this.$t(
         'import.active.plays',
-        { value, total }
+        {
+          value,
+          total
+        }
       )
     },
-    setSuccessTracks (value) {
+    setSuccessTracks (
+      value
+    ) {
       this.successTracks = value
     }
   }

@@ -12,19 +12,27 @@
       :options="seekerOptions"
       @init="handleInit"
       @move="handleMove"
-      @mouseUp="handleMouseUp"
+      @mouse-up="handleMouseUp"
     />
   </BasePopupContainer>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BasePopupContainer from '*/components/containers/BasePopupContainer.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseSeeker from '*/components/BaseSeeker.vue'
-import { mainVolumeSeekerOptions } from '*/helpers/data/plugins/semantic'
-import { updateStore } from '*/helpers/actions'
-import { setSeekerValue } from '*/helpers/actions/plugins/semantic'
+import {
+  mainVolumeSeekerOptions
+} from '*/helpers/data/plugins/semantic'
+import {
+  updateStore
+} from '*/helpers/actions'
+import {
+  setSeekerValue
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'VolumePopup',
@@ -39,19 +47,24 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', {
-      audioVolume: 'volume',
-      audioElement: 'element'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioVolume: 'volume',
+        audioElement: 'element'
+      }
+    ),
     volumeText () {
       return Math.floor(
         this.audioVolume * 100
       ).toString()
     },
     seekerOptions () {
-      return mainVolumeSeekerOptions({
-        start: this.audioVolume
-      })
+      return mainVolumeSeekerOptions(
+        {
+          start: this.audioVolume
+        }
+      )
     }
   },
   watch: {
@@ -61,20 +74,30 @@ export default {
     }
   },
   methods: {
-    handleInit (el) {
-      this.seeker = el
+    handleInit (
+      element
+    ) {
+      this.seeker = element
     },
-    handleMove (value) {
+    handleMove (
+      value
+    ) {
       this.setAudioVolume(
         value
       )
     },
-    handleMouseUp (value) {
-      updateStore({
-        'audio.volume': value
-      })
+    handleMouseUp (
+      value
+    ) {
+      updateStore(
+        {
+          'audio.volume': value
+        }
+      )
     },
-    handleAudioVolumeChange (value) {
+    handleAudioVolumeChange (
+      value
+    ) {
       setSeekerValue(
         this.seeker,
         value
@@ -84,10 +107,12 @@ export default {
         value
       )
     },
-    setAudioVolume (value) {
-      this.$nextTick(() => {
-        this.audioElement.volume = value
-      })
+    async setAudioVolume (
+      value
+    ) {
+      await this.$nextTick()
+
+      this.audioElement.volume = value
     }
   }
 }

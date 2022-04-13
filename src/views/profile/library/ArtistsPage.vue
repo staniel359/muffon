@@ -1,22 +1,21 @@
 <template>
   <BaseProfileLibraryPaginatedPageContainer
-    :profileId="profileId"
+    :profile-id="profileId"
     :scope="scope"
     :limit="limit"
-    :viewIndex="viewIndex"
-    isWithViewChange
-    isWithSearch
+    :view-index="viewIndex"
+    is-with-view-change
   >
     <template #default="slotProps">
       <BaseArtistsList
         :artists="slotProps[scope]"
-        :profileId="profileId"
-        :topTracksCount="slotProps.topTracksCount"
-        :topAlbumsCount="slotProps.topAlbumsCount"
-        :viewIndex="viewIndex"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        isWithLibrary
-        isLinkToLibrary
+        :profile-id="profileId"
+        :top-tracks-count="slotProps.topTracksCount"
+        :top-albums-count="slotProps.topAlbumsCount"
+        :view-index="viewIndex"
+        :is-with-favorite-option="isWithFavoriteOption"
+        is-with-library
+        is-link-to-library
       />
     </template>
   </BaseProfileLibraryPaginatedPageContainer>
@@ -26,7 +25,9 @@
 import BaseProfileLibraryPaginatedPageContainer
   from '*/components/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
 import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 import viewChangeMixin from '*/mixins/viewChangeMixin'
 
 export default {

@@ -1,13 +1,13 @@
 <template>
   <BasePageContainer
-    :responseData="conversationData"
-    :isLoading="isLoading"
+    :response-data="conversationData"
+    :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :conversationData="conversationData"
-      :profileId="profileIdFetched"
-    ></slot>
+      :conversation-data="conversationData"
+      :profile-id="profileIdFetched"
+    />
   </BasePageContainer>
 </template>
 
@@ -79,11 +79,15 @@ export default {
   },
   methods: {
     getConversation,
-    fetchData (page) {
-      this.getConversation({
-        ...this.conversationArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getConversation(
+        {
+          ...this.conversationArgs,
+          page
+        }
+      )
     }
   }
 }

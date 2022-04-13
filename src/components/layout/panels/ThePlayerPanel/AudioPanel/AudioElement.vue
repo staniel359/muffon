@@ -1,7 +1,7 @@
 <template>
   <audio
-    class="audio-element"
     ref="audio"
+    class="audio-element"
     crossorigin="anonymous"
     controls
     :autoplay="isAudioAutoplay"
@@ -19,8 +19,13 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import { updateStore } from '*/helpers/actions'
+import {
+  mapState,
+  mapActions
+} from 'vuex'
+import {
+  updateStore
+} from '*/helpers/actions'
 
 export default {
   name: 'AudioElement',
@@ -32,18 +37,24 @@ export default {
     }
   },
   computed: {
-    ...mapState('audio', {
-      audioElement: 'element',
-      audioStatus: 'status',
-      isAudioAutoplay: 'isAutoplay',
-      audioDuration: 'duration',
-      audioCurrentTime: 'currentTime'
-    }),
-    ...mapState('player', {
-      isPlayerWithScrobbling: 'isWithScrobbling',
-      playerPlaying: 'playing',
-      playerScrobblePercent: 'scrobblePercent'
-    }),
+    ...mapState(
+      'audio',
+      {
+        audioElement: 'element',
+        audioStatus: 'status',
+        isAudioAutoplay: 'isAutoplay',
+        audioDuration: 'duration',
+        audioCurrentTime: 'currentTime'
+      }
+    ),
+    ...mapState(
+      'player',
+      {
+        isPlayerWithScrobbling: 'isWithScrobbling',
+        playerPlaying: 'playing',
+        playerScrobblePercent: 'scrobblePercent'
+      }
+    ),
     isToScrobble () {
       return (
         this.isPlayerWithScrobbling &&
@@ -83,56 +94,88 @@ export default {
     )
   },
   methods: {
-    ...mapActions('audio', {
-      setAudioElement: 'setElement',
-      setAudioDuration: 'setDuration',
-      setAudioProgress: 'setProgress',
-      setIsAudioPlayable: 'setIsPlayable',
-      setAudioStatus: 'setStatus',
-      setAudioCurrentTime: 'setCurrentTime',
-      setAudioVolume: 'setVolume'
-    }),
-    handlePlayerPlayingChange (value) {
-      this.$nextTick(() => {
-        if (value) {
-          this.loadAudio()
-        } else {
-          this.stopAudio()
-        }
-      })
+    ...mapActions(
+      'audio',
+      {
+        setAudioElement: 'setElement',
+        setAudioDuration: 'setDuration',
+        setAudioProgress: 'setProgress',
+        setIsAudioPlayable: 'setIsPlayable',
+        setAudioStatus: 'setStatus',
+        setAudioCurrentTime: 'setCurrentTime',
+        setAudioVolume: 'setVolume'
+      }
+    ),
+    async handlePlayerPlayingChange (
+      value
+    ) {
+      await this.$nextTick()
+
+      if (value) {
+        this.loadAudio()
+      } else {
+        this.stopAudio()
+      }
     },
     handleLoadStart () {
-      this.setIsAudioPlayable(false)
+      this.setIsAudioPlayable(
+        false
+      )
 
-      this.setAudioDuration(0)
-      this.setAudioProgress(0)
+      this.setAudioDuration(
+        0
+      )
+
+      this.setAudioProgress(
+        0
+      )
     },
-    handleDurationChange (event) {
-      const { duration } = event.target
+    handleDurationChange (
+      event
+    ) {
+      const {
+        duration
+      } = event.target
 
       this.setAudioDuration(
         duration
       )
 
-      this.setProgress(event)
+      this.setProgress(
+        event
+      )
     },
-    handleProgress (event) {
-      this.setProgress(event)
+    handleProgress (
+      event
+    ) {
+      this.setProgress(
+        event
+      )
     },
     handleCanPlay () {
-      this.setIsAudioPlayable(true)
+      this.setIsAudioPlayable(
+        true
+      )
     },
     handlePlay () {
-      this.setAudioStatus('play')
+      this.setAudioStatus(
+        'play'
+      )
 
       if (this.isPlayerWithScrobbling) {
-        updateStore({
-          'player.isScrobbling': true
-        })
+        updateStore(
+          {
+            'player.isScrobbling': true
+          }
+        )
       }
     },
-    handleTimeUpdate (event) {
-      const { currentTime } = event.target
+    async handleTimeUpdate (
+      event
+    ) {
+      const {
+        currentTime
+      } = event.target
 
       this.setAudioCurrentTime(
         currentTime
@@ -141,27 +184,37 @@ export default {
       if (currentTime === 0) {
         this.isScrobbled = false
 
-        updateStore({
-          'player.isScrobbled': false,
-          'player.isScrobbling': false
-        })
+        updateStore(
+          {
+            'player.isScrobbled': false,
+            'player.isScrobbling': false
+          }
+        )
       }
 
       this.currentPercent =
-        this.getCurrentPercent()
+        await this.getCurrentPercent()
     },
     handlePause () {
-      this.setAudioStatus('pause')
+      this.setAudioStatus(
+        'pause'
+      )
     },
-    handleVolumeChange (event) {
-      const { volume } = event.target
+    handleVolumeChange (
+      event
+    ) {
+      const {
+        volume
+      } = event.target
 
       this.setAudioVolume(
         volume
       )
     },
     handleEmptied () {
-      this.setIsAudioPlayable(false)
+      this.setIsAudioPlayable(
+        false
+      )
     },
     handleSeeking () {
       this.updateScrobblePercent()
@@ -169,25 +222,37 @@ export default {
     handlePlayerScrobblePercentChange () {
       this.updateScrobblePercent()
     },
-    handleIsToScrobbleChange (value) {
+    handleIsToScrobbleChange (
+      value
+    ) {
       if (value) {
         this.isScrobbled = true
       }
     },
-    handleIsScrobbledChange (value) {
-      updateStore({
-        'player.isToScrobble': value
-      })
+    handleIsScrobbledChange (
+      value
+    ) {
+      updateStore(
+        {
+          'player.isToScrobble': value
+        }
+      )
     },
-    handleIsPlayerWithScrobblingChange (value) {
+    handleIsPlayerWithScrobblingChange (
+      value
+    ) {
       if (!value) {
-        updateStore({
-          'player.isScrobbling': false
-        })
+        updateStore(
+          {
+            'player.isScrobbling': false
+          }
+        )
       }
     },
     loadAudio () {
-      this.setAudioStatus('pause')
+      this.setAudioStatus(
+        'pause'
+      )
 
       this.audioElement.src =
         this.playerPlaying.audio.link
@@ -195,17 +260,21 @@ export default {
       this.audioElement.load()
     },
     stopAudio () {
-      this.setAudioStatus('stop')
+      this.setAudioStatus(
+        'stop'
+      )
 
       this.audioElement.src = ''
 
-      updateStore({
-        'player.isScrobbling': false
-      })
+      updateStore(
+        {
+          'player.isScrobbling': false
+        }
+      )
     },
-    updateScrobblePercent () {
+    async updateScrobblePercent () {
       const currentPercent =
-        this.getCurrentPercent()
+        await this.getCurrentPercent()
 
       this.scrobblePercent =
         this.playerScrobblePercent +
@@ -213,22 +282,28 @@ export default {
 
       this.currentPercent = currentPercent
     },
-    getCurrentPercent () {
-      this.$nextTick(() => {
-        if (this.audioDuration === 0) {
-          return 0
-        } else {
-          const { currentTime } = this.$refs.audio
+    async getCurrentPercent () {
+      await this.$nextTick()
 
-          return (
-            currentTime * 100 /
-              this.audioDuration
-          )
-        }
-      })
+      if (this.audioDuration === 0) {
+        return 0
+      } else {
+        const {
+          currentTime
+        } = this.$refs.audio
+
+        return (
+          currentTime * 100 /
+          this.audioDuration
+        )
+      }
     },
-    setProgress (event) {
-      const { buffered } = event.target
+    setProgress (
+      event
+    ) {
+      const {
+        buffered
+      } = event.target
 
       if (buffered.length) {
         const progress =

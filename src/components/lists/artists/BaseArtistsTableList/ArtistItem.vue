@@ -1,44 +1,46 @@
 <template>
   <BaseArtistLinkContainer
-    :artistData="artistData"
-    :profileId="profileId"
-    :isLinkToLibrary="isLinkToLibrary"
-    :isTracksActive="isTracksActive"
-    :isAlbumsActive="isAlbumsActive"
+    :artist-data="artistData"
+    :profile-id="profileId"
+    :is-link-to-library="isLinkToLibrary"
+    :is-tracks-active="isTracksActive"
+    :is-albums-active="isAlbumsActive"
     @click="handleLinkClick"
   >
     <BaseSimpleCardContainer
-      :isWithImage="false"
+      :is-with-image="false"
     >
       <div class="main-simple-card-image-container">
         <BaseArtistImage
           class="circular bordered"
           size="small"
-          :imageData="imageData"
-          :artistName="artistName"
-          @loadEnd="handleImageLoadEnd"
+          :image-data="imageData"
+          :artist-name="artistName"
+          @load-end="handleImageLoadEnd"
         />
       </div>
 
       <BaseOptionsDropdown
         model="artist"
-        :artistName="artistName"
-        :libraryId="libraryId"
-        :favoriteId="favoriteId"
-        :bookmarkId="bookmarkId"
-        :listenedId="listenedId"
-        :isWithLibraryOption="isWithLibraryOption"
-        :isWithFavoriteOption="isWithFavoriteOption"
-        :isWithBookmarkOption="isWithBookmarkOption"
-        :isWithListenedOption="isWithListenedOption"
-        :isWithDeleteOption="isWithDeleteOption"
-        :isTransparent="false"
-        @linkClick="handleLinkClick"
+        :artist-name="artistName"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-delete-option="isWithDeleteOption"
+        :is-transparent="false"
+        @link-click="handleLinkClick"
       />
 
       <div class="content">
         <BaseHeader
-          :class="{ link: isHeaderActive }"
+          :class="{
+            link: isHeaderActive
+          }"
           tag="h4"
           :text="artistName"
         />
@@ -46,26 +48,26 @@
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
           class="description"
-          :artistName="artistName"
-          :listenersCount="listenersCount"
-          @loadEnd="handleListenersCountLoadEnd"
+          :artist-name="artistName"
+          :listeners-count="listenersCount"
+          @load-end="handleListenersCountLoadEnd"
         />
 
         <LibraryCountersSection
           v-if="isWithLibrary"
-          :artistData="artistData"
-          :isTracksActive="isTracksActive"
-          :isAlbumsActive="isAlbumsActive"
-          @tracksActiveChange="handleTracksActiveChange"
-          @albumsActiveChange="handleAlbumsActiveChange"
+          :artist-data="artistData"
+          :is-tracks-active="isTracksActive"
+          :is-albums-active="isAlbumsActive"
+          @tracks-active-change="handleTracksActiveChange"
+          @albums-active-change="handleAlbumsActiveChange"
         />
 
         <BaseSelfIcons
           v-if="isWithSelfIcons"
-          :libraryId="libraryId"
-          :favoriteId="favoriteId"
-          :bookmarkId="bookmarkId"
-          :listenedId="listenedId"
+          :library-id="libraryId"
+          :favorite-id="favoriteId"
+          :bookmark-id="bookmarkId"
+          :listened-id="listenedId"
         />
       </div>
     </BaseSimpleCardContainer>
@@ -158,9 +160,11 @@ export default {
       )
     },
     paginationItem () {
-      return this.findPaginationItem({
-        uuid: this.uuid
-      })
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
     },
     uuid () {
       return this.artistData.uuid
@@ -178,30 +182,50 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     },
-    handleImageLoadEnd (value) {
-      this.paginationItem.image = value
+    handleImageLoadEnd (
+      value
+    ) {
+      this.paginationItem
+        .image = value
     },
-    handleListenersCountLoadEnd (value) {
-      this.paginationItem.listeners_count = value
+    handleListenersCountLoadEnd (
+      value
+    ) {
+      this.paginationItem
+        .listeners_count = value
     },
-    handleTracksActiveChange (value) {
+    handleTracksActiveChange (
+      value
+    ) {
       this.isTracksActive = value
     },
-    handleAlbumsActiveChange (value) {
+    handleAlbumsActiveChange (
+      value
+    ) {
       this.isAlbumsActive = value
     },
-    setLibraryId (value) {
+    setLibraryId (
+      value
+    ) {
       this.libraryId = value
     },
-    setFavoriteId (value) {
+    setFavoriteId (
+      value
+    ) {
       this.favoriteId = value
     },
-    setBookmarkId (value) {
+    setBookmarkId (
+      value
+    ) {
       this.bookmarkId = value
     },
-    setListenedId (value) {
+    setListenedId (
+      value
+    ) {
       this.listenedId = value
     }
   }

@@ -6,15 +6,19 @@
     />
     <slot
       v-else-if="responseData"
-      :profileId="profileId"
-    ></slot>
+      :profile-id="profileId"
+    />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import { toggleLoaderDimmer } from '*/helpers/actions/layout'
+import {
+  toggleLoaderDimmer
+} from '*/helpers/actions/layout'
 
 export default {
   name: 'BasePageContainer',
@@ -30,9 +34,12 @@ export default {
     'init'
   ],
   computed: {
-    ...mapState('profile', {
-      profileInfo: 'info'
-    }),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     profileId () {
       return this.profileInfo.id.toString()
     },
@@ -56,7 +63,9 @@ export default {
     )
   },
   methods: {
-    handleIsLoadingChange (value) {
+    handleIsLoadingChange (
+      value
+    ) {
       toggleLoaderDimmer(
         !this.responseData && value
       )

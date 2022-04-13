@@ -1,7 +1,7 @@
 <template>
   <BaseConversationPaginatedSegmentContainer
     class="main-paginated-page-segment-container"
-    :conversationId="conversationId"
+    :conversation-id="conversationId"
     :scope="scope"
     :limit="limit"
   >

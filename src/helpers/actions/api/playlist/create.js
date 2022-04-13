@@ -1,29 +1,44 @@
 import axios from 'axios'
 import store from '*/plugins/store'
-import { addFormErrors } from '*/helpers/actions'
+import {
+  addFormErrors
+} from '*/helpers/actions'
 
-export default function ({ title, image }) {
+export default function (
+  {
+    title,
+    image
+  }
+) {
   this.error = null
   this.isLoading = true
 
   const profileId =
     store.state.profile.info.id
+
   const url =
     `/profiles/${profileId}/playlists`
 
-  const { token } = store.state.profile
+  const {
+    token
+  } = store.state.profile
+
   const params = {
     token,
     title,
     image
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.playlistId =
       response.data.playlist_id
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     const isBadRequest =
       error.response?.status === 403
 
@@ -32,11 +47,13 @@ export default function ({ title, image }) {
         'title'
       ]
 
-      addFormErrors({
-        error,
-        fields,
-        form: this.form
-      })
+      addFormErrors(
+        {
+          error,
+          fields,
+          form: this.form
+        }
+      )
     } else {
       this.error = error
     }
@@ -47,7 +64,8 @@ export default function ({ title, image }) {
   }
 
   axios.post(
-    url, params
+    url,
+    params
   ).then(
     handleSuccess
   ).catch(

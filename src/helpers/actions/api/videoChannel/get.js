@@ -1,6 +1,13 @@
 import axios from 'axios'
 
-export default function ({ channelId, scope = '', page, limit }) {
+export default function (
+  {
+    channelId,
+    scope = '',
+    page,
+    limit
+  }
+) {
   this.error = null
   this.isLoading = true
 
@@ -8,11 +15,17 @@ export default function ({ channelId, scope = '', page, limit }) {
     `/youtube/channels/${channelId}/${scope}`
 
   const params = {
-    ...(page && { page }),
-    ...(limit && { limit })
+    ...(page && {
+      page
+    }),
+    ...(limit && {
+      limit
+    })
   }
 
-  const handleSuccess = response => {
+  const handleSuccess = (
+    response
+  ) => {
     this.channelData = {
       page: 1,
       total_pages: 1,
@@ -20,7 +33,9 @@ export default function ({ channelId, scope = '', page, limit }) {
     }
   }
 
-  const handleError = error => {
+  const handleError = (
+    error
+  ) => {
     this.error = error
   }
 
@@ -29,7 +44,10 @@ export default function ({ channelId, scope = '', page, limit }) {
   }
 
   return axios.get(
-    url, { params }
+    url,
+    {
+      params
+    }
   ).then(
     handleSuccess
   ).catch(

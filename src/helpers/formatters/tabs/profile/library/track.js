@@ -3,19 +3,23 @@ import {
   main as formatProfileLibraryTrackMainLink
 } from '*/helpers/formatters/links/profile/library/track'
 
-export default function ({
-  profileId,
-  profileNickname,
-  artistName,
-  trackId,
-  trackTitle,
-  scope
-}) {
-  const formatProfileLibraryTrackPageTitle = () => {
+export default function (
+  {
+    profileId,
+    profileNickname,
+    artistName,
+    trackId,
+    trackTitle,
+    scope
+  }
+) {
+  function formatProfileLibraryTrackPageTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: trackTitle }
+        {
+          modelName: trackTitle
+        }
       )
     } else {
       return trackTitle
@@ -24,27 +28,35 @@ export default function ({
 
   const profileLibraryArtistPageTitle = i18n.global.t(
     'navigation.model.tracks',
-    { modelName: artistName }
+    {
+      modelName: artistName
+    }
   )
 
   const profileLibraryPageTitle = i18n.global.t(
     'navigation.model.artists',
-    { modelName: profileNickname }
+    {
+      modelName: profileNickname
+    }
   )
 
   const title = [
     formatProfileLibraryTrackPageTitle(),
     profileLibraryArtistPageTitle,
     profileLibraryPageTitle
-  ].join(' | ')
+  ].join(
+    ' | '
+  )
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       default:
-        return formatProfileLibraryTrackMainLink({
-          profileId,
-          trackId
-        }).path
+        return formatProfileLibraryTrackMainLink(
+          {
+            profileId,
+            trackId
+          }
+        ).path
     }
   }
 

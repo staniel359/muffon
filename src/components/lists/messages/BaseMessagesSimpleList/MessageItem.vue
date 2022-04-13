@@ -11,7 +11,7 @@
 
       <div class="content">
         <BaseProfileNickname
-          :profileData="profileData"
+          :profile-data="profileData"
         />
 
         <BaseTimestamp
@@ -20,9 +20,10 @@
         />
 
         <div class="content-container">
-          <div class="text main-text-container">
-            {{ content }}
-          </div>
+          <div
+            class="text main-text-container"
+            v-text="content"
+          />
 
           <BaseImagesSection
             v-if="images"

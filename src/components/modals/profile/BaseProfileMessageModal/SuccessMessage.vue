@@ -1,12 +1,14 @@
 <template>
   <BaseMessage
     class="success"
-    :icons="['check']"
+    :icons="[
+      'check'
+    ]"
     :header="headerText"
     :content="contentText"
     :link="conversationLink"
-    isContentLink
-    @linkClick="handleLinkClick"
+    is-content-link
+    @link-click="handleLinkClick"
   />
 </template>
 
@@ -42,14 +44,18 @@ export default {
       )
     },
     conversationLink () {
-      return formatConversationLink({
-        conversationId: this.conversationId
-      })
+      return formatConversationLink(
+        {
+          conversationId: this.conversationId
+        }
+      )
     }
   },
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

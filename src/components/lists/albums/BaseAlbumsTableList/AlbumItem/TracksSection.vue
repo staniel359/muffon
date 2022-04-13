@@ -1,15 +1,18 @@
 <template>
   <div
     class="description main-small-container"
-    :class="{ link: isTracksActive }"
+    :class="{
+      link: isTracksActive
+    }"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
     <small>
-      <i class="music icon"></i>
-      <span>
-        {{ tracksCount }}
-      </span>
+      <i class="music icon" />
+
+      <span
+        v-text="tracksCount"
+      />
     </small>
   </div>
 </template>

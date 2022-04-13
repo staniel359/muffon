@@ -1,4 +1,6 @@
-import { createApp } from 'vue'
+import {
+  createApp
+} from 'vue'
 import axios from 'axios'
 import '../semantic/dist/semantic.min.js'
 import '../semantic/dist/semantic.min.css'
@@ -20,12 +22,22 @@ const serverUrl = isDevelopment
 axios.defaults.baseURL =
   `${serverUrl}/api/v2/`
 
-const app = createApp(App)
+const app = createApp(
+  App
+)
 
 app
-  .use(router)
-  .use(store)
-  .use(i18n)
-  .mount('#app')
+  .use(
+    router
+  )
+  .use(
+    store
+  )
+  .use(
+    i18n
+  )
+  .mount(
+    '#app'
+  )
 
 setupI18nCountries()

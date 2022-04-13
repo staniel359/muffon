@@ -1,58 +1,103 @@
 import store from '*/plugins/store'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
-export const collection = collection => {
-  const formatCollectionItemData = item => {
-    const isString = typeof item === 'string'
-    const isNumber = typeof item === 'number'
+export function collection (
+  value
+) {
+  function formatCollectionItemData (
+    item
+  ) {
+    const isString =
+      typeof item === 'string'
+
+    const isNumber =
+      typeof item === 'number'
 
     if (isString || isNumber) {
-      return { name: item }
+      return {
+        name: item
+      }
     } else {
       return item
     }
   }
 
-  const formatCollectionItem = item => {
+  function formatCollectionItem (
+    item
+  ) {
     return {
       uuid: generateKey(),
-      ...formatCollectionItemData(item)
+      ...formatCollectionItemData(
+        item
+      )
     }
   }
 
-  return [...collection].map(
+  return [
+    ...value
+  ].map(
     formatCollectionItem
   )
 }
 
-export const number = value => {
-  return value.toLocaleString('eu')
+export function number (
+  value
+) {
+  return value.toLocaleString(
+    'eu'
+  )
 }
 
-export const seconds = value => {
-  return new Date(value * 1000)
+export function seconds (
+  value
+) {
+  const date = new Date(
+    value * 1000
+  )
+
+  return date
     .toISOString()
-    .substr(14, 5)
+    .substr(
+      14,
+      5
+    )
 }
 
-export const stringToDate = value => {
+export function stringToDate (
+  value
+) {
   if (value) {
     const day = value.getDate()
     const month = value.getMonth()
     const year = value.getFullYear()
 
     const utcDate = Date.UTC(
-      year, month, day
+      year,
+      month,
+      day
     )
 
-    return new Date(utcDate)
+    const date = new Date(
+      utcDate
+    )
+
+    return date
       .toISOString()
-      .substr(0, 10)
+      .substr(
+        0,
+        10
+      )
   }
 }
 
-export const date = date => {
-  const { language } = store.state.profile
+export function date (
+  value
+) {
+  const {
+    language
+  } = store.state.profile
 
   const options = {
     year: 'numeric',
@@ -60,40 +105,67 @@ export const date = date => {
     day: 'numeric'
   }
 
-  return new Date(date)
+  const date = new Date(
+    value
+  )
+
+  return date
     .toLocaleDateString(
-      language, options
+      language,
+      options
     )
 }
 
-export const time = date => {
-  return new Date(date)
+export function time (
+  value
+) {
+  const date = new Date(
+    value
+  )
+
+  return date
     .toString()
-    .substr(16, 8)
+    .substr(
+      16,
+      8
+    )
 }
 
-export const age = birthdate => {
+export function age (
+  value
+) {
   const ageInMilliseconds = (
     new Date() -
-      new Date(birthdate)
+      new Date(
+        value
+      )
   )
 
-  const ageInDatetime = new Date(
-    ageInMilliseconds
-  )
+  const ageInDatetime =
+    new Date(
+      ageInMilliseconds
+    )
 
   return Math.abs(
     ageInDatetime.getUTCFullYear() - 1970
   )
 }
 
-export const playsToTracks = plays => {
-  const formatPlay = playData => {
+export function playsToTracks (
+  value
+) {
+  function formatPlay (
+    playData
+  ) {
     const playId = [
       playData.title,
       playData.artist.name,
       playData.album?.title
-    ].filter(e => e).join(':')
+    ].filter(
+      e => e
+    ).join(
+      ':'
+    )
 
     return [
       playId,
@@ -102,31 +174,47 @@ export const playsToTracks = plays => {
   }
 
   const playsFormatted =
-    plays.map(
+    value.map(
       formatPlay
     )
 
-  const tracks = [...new Map(
-    playsFormatted
-  ).values()]
+  const tracks = [
+    ...new Map(
+      playsFormatted
+    ).values()
+  ]
 
-  const tracksSorted =
-    tracks.sort((a, b) => {
-      return (
-        new Date(b.created) -
-          new Date(a.created)
+  function sortTracks (
+    first,
+    second
+  ) {
+    return (
+      new Date(
+        second.created
+      ) -
+      new Date(
+        first.created
       )
-    })
+    )
+  }
 
-  return tracksSorted
+  return tracks.sort(
+    sortTracks
+  )
 }
 
-export const artistName = artists => {
-  const getArtistName = artistData => {
+export function artistName (
+  value
+) {
+  function getArtistName (
+    artistData
+  ) {
     return artistData.name
   }
 
-  return artists.map(
+  return value.map(
     getArtistName
-  ).join(', ')
+  ).join(
+    ', '
+  )
 }

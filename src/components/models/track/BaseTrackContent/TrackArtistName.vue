@@ -2,9 +2,9 @@
   <div>
     <BaseArtistLinks
       :artists="artists"
-      :isLinkToLibrary="isLinkToLibrary"
-      :profileId="profileId"
-      @linkClick="handleLinkClick"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
+      @link-click="handleLinkClick"
     />
   </div>
 </template>
@@ -27,7 +27,9 @@ export default {
   ],
   methods: {
     handleLinkClick () {
-      this.$emit('linkClick')
+      this.$emit(
+        'linkClick'
+      )
     }
   }
 }

@@ -5,19 +5,19 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        responseDataName="tagData"
-        :slotPropsData="pageSlotProps"
+        response-data-name="tagData"
+        :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :responsePageLimit="responsePageLimit"
-        :isWithViewChange="isWithViewChange"
-        :viewIndex="viewIndex"
+        :response-page-limit="responsePageLimit"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :profileId="pageSlotProps.profileId"
-          ></slot>
+            :profile-id="pageSlotProps.profileId"
+          />
         </template>
       </BasePaginatedPageContainer>
     </template>

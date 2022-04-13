@@ -2,20 +2,20 @@
   <BaseTagPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
-    :responsePageLimit="responsePageLimit"
-    :tagName="tagName"
-    :headerLink="headerLink"
+    :response-page-limit="responsePageLimit"
+    :tag-name="tagName"
+    :header-link="headerLink"
   >
     <template #default="slotProps">
       <BaseArtistsTableList
         :artists="slotProps[scope]"
-        :profileId="slotProps.profileId"
-        :itemsInRow="itemsInRow"
-        isWithListenersCount
-        isWithLibraryOption
-        isWithFavoriteOption
-        isWithBookmarkOption
-        isWithListenedOption
+        :profile-id="slotProps.profileId"
+        :items-in-row="itemsInRow"
+        is-with-listeners-count
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
       />
     </template>
   </BaseTagPaginatedSegmentContainer>
@@ -52,9 +52,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatTagArtistsLink({
-        tagName: this.tagName
-      })
+      return formatTagArtistsLink(
+        {
+          tagName: this.tagName
+        }
+      )
     }
   }
 }

@@ -2,7 +2,7 @@
   <div class="main-track-dropdown-container">
     <div class="main-track-dropdown-logo-container">
       <BaseSourceIcon
-        sourceId="youtube"
+        source-id="youtube"
         size="large"
       />
     </div>
@@ -10,9 +10,9 @@
     <BaseDropdownContainer
       class="main-source-select-track-select"
       :header="headerText"
-      :isLoading="isLoading"
-      :isError="isError"
-      :isDisabled="!isAnyVideos"
+      :is-loading="isLoading"
+      :is-error="isError"
+      :is-disabled="!isAnyVideos"
     >
       <VideosList :videos="videos" />
     </BaseDropdownContainer>

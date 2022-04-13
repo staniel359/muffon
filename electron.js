@@ -7,8 +7,12 @@ const {
   nativeImage,
   session,
   Tray
-} = require('electron')
-const path = require('path')
+} = require(
+  'electron'
+)
+const path = require(
+  'path'
+)
 const ElectronStore = require(
   'electron-store'
 )
@@ -39,7 +43,9 @@ const icon =
     iconPath
   )
 
-const getBaseUrl = () => {
+const baseUrl = getBaseUrl()
+
+function getBaseUrl () {
   if (isDevelopment) {
     return 'http://localhost:3000/'
   } else {
@@ -51,8 +57,6 @@ const getBaseUrl = () => {
     return `file://${productionPath}`
   }
 }
-
-const baseUrl = getBaseUrl()
 
 const i18n = {
   en: {
@@ -73,10 +77,11 @@ const i18n = {
 }
 
 if (isDevelopment) {
-  const userDataPath = path.join(
-    __dirname,
-    'electron_data'
-  )
+  const userDataPath =
+    path.join(
+      __dirname,
+      'electron_data'
+    )
 
   app.setPath(
     'userData',
@@ -84,172 +89,25 @@ if (isDevelopment) {
   )
 }
 
-const electronStore = new ElectronStore({
-  accessPropertiesByDotNotation: false
-})
+const electronStore =
+  new ElectronStore(
+    {
+      accessPropertiesByDotNotation: false
+    }
+  )
 
-let language = electronStore.get(
-  'profile.language', 'en'
-)
+let language =
+  electronStore.get(
+    'profile.language',
+    'en'
+  )
 
 let mainWindow
 let tray
 
 let tabs = []
 
-const setTrayMenu = () => {
-  const showHideText =
-    mainWindow.isVisible() ? 'hide' : 'show'
-
-  const showHideAction =
-    mainWindow.isVisible() ? hide : show
-
-  const menu = Menu.buildFromTemplate([
-    {
-      type: 'normal',
-      label: i18n[language][showHideText],
-      click: showHideAction
-    },
-    {
-      type: 'normal',
-      label: i18n[language].exit,
-      click: exit
-    }
-  ])
-
-  tray.setContextMenu(menu)
-
-  if (isMac) {
-    app.dock.setMenu(menu)
-  }
-}
-
-const show = () => {
-  mainWindow.show()
-
-  setTrayMenu()
-}
-
-const hide = () => {
-  mainWindow.hide()
-
-  setTrayMenu()
-}
-
-const createWindow = () => {
-  const mainWindowIcon =
-    icon.resize({
-      width: 64,
-      height: 64
-    })
-
-  mainWindow = new BrowserWindow({
-    width,
-    height,
-    icon: mainWindowIcon,
-    autoHideMenuBar: true,
-    show: false,
-    webPreferences: {
-      contextIsolation: false,
-      devTools: isDevelopment,
-      nodeIntegration: true
-    }
-  })
-
-  mainWindow.loadURL(baseUrl)
-  mainWindow.setMenu(null)
-
-  const handleReadyToShow = () => {
-    mainWindow.setMinimumSize(
-      width, height
-    )
-
-    show()
-  }
-
-  mainWindow.on(
-    'ready-to-show',
-    handleReadyToShow
-  )
-
-  const handleClose = event => {
-    event.preventDefault()
-
-    hide()
-  }
-
-  mainWindow.on(
-    'close',
-    handleClose
-  )
-}
-
-const exit = () => {
-  const isRememberProfile = electronStore.get(
-    'profile.isRemember'
-  )
-
-  if (!isRememberProfile) {
-    electronStore.set(
-      'profile.isLoggedIn',
-      false
-    )
-  }
-
-  mainWindow.webContents.send(
-    'handle-exit'
-  )
-}
-
-const createTray = () => {
-  const trayIcon =
-    icon.resize({
-      width: 16,
-      height: 16
-    })
-
-  tray = new Tray(trayIcon)
-
-  setTrayMenu()
-
-  tray.setToolTip(appName)
-
-  const handleClick = () => {
-    mainWindow.show()
-  }
-
-  tray.on(
-    'click',
-    handleClick
-  )
-}
-
-const createHeadersHandler = () => {
-  const filter = {
-    urls: ['https://*.youtube.com/*']
-  }
-
-  session
-    .defaultSession
-    .webRequest
-    .onBeforeSendHeaders(filter, (details, request) => {
-      details.requestHeaders.Referer =
-        'https://www.youtube.com'
-
-      request({
-        cancel: false,
-        requestHeaders: details.requestHeaders
-      })
-    })
-}
-
-const setup = () => {
-  ElectronStore.initRenderer()
-
-  createWindow()
-  createTray()
-  createHeadersHandler()
-}
+//
 
 app.whenReady().then(
   setup
@@ -259,100 +117,178 @@ app.setAppUserModelId(
   appName
 )
 
-// App event handlers
-
-const handleAllWindowsClose = event => {
-  event.preventDefault()
-}
+//
 
 app.on(
   'window-all-closed',
   handleAllWindowsClose
 )
 
-const handleActivate = () => {
-  const isAnyWindowsOpen =
-    !!BrowserWindow.getAllWindows().length
-
-  if (!isAnyWindowsOpen) {
-    createWindow()
-  }
-}
-
 app.on(
   'activate',
   handleActivate
 )
 
-// IPC event handlers
-
-// Set title
-
-const handleSetTitle = (_, value) => {
-  mainWindow.setTitle(
-    value || appName
-  )
-}
+//
 
 ipcMain.on(
   'set-title',
   handleSetTitle
 )
 
-// Set tray tooltip
-
-const handleSetTrayTooltip = (_, value) => {
-  tray.setToolTip(value)
-}
-
 ipcMain.on(
   'set-tray-tooltip',
   handleSetTrayTooltip
 )
 
-// Add tab
+ipcMain.on(
+  'add-tab',
+  handleAddTab
+)
 
-const handleAddTab = (_, value) => {
-  const { uuid, path } = value
+ipcMain.on(
+  'set-top-tab',
+  handleSetTopTab
+)
 
-  const tab = new BrowserView({
-    webPreferences: {
-      contextIsolation: false,
-      nodeIntegration: true
-    }
-  })
+ipcMain.on(
+  'remove-tab',
+  handleRemoveTab
+)
+
+ipcMain.on(
+  'clear-tabs',
+  handleClearTabs
+)
+
+ipcMain.handle(
+  'update-store',
+  handleUpdateStore
+)
+
+ipcMain.on(
+  'update-tab',
+  handleUpdateTab
+)
+
+ipcMain.handle(
+  'clear-cache',
+  handleClearCache
+)
+
+ipcMain.on(
+  'set-language',
+  handleSetLanguage
+)
+
+ipcMain.on(
+  'exit',
+  handleExit
+)
+
+//
+
+function handleAllWindowsClose (
+  event
+) {
+  event.preventDefault()
+}
+
+function handleActivate () {
+  const isAnyWindowsOpen =
+    !!BrowserWindow
+      .getAllWindows()
+      .length
+
+  if (!isAnyWindowsOpen) {
+    createWindow()
+  }
+}
+
+//
+
+function handleSetTitle (
+  _,
+  value
+) {
+  mainWindow.setTitle(
+    value || appName
+  )
+}
+
+function handleSetTrayTooltip (
+  _,
+  value
+) {
+  tray.setToolTip(
+    value
+  )
+}
+
+function handleAddTab (
+  _,
+  value
+) {
+  const {
+    uuid,
+    path
+  } = value
+
+  const tab =
+    new BrowserView(
+      {
+        webPreferences: {
+          contextIsolation: false,
+          nodeIntegration: true
+        }
+      }
+    )
 
   tab.uuid = uuid
 
-  mainWindow.addBrowserView(tab)
+  mainWindow.addBrowserView(
+    tab
+  )
 
-  prependTabToTabs(tab)
+  prependTabToTabs(
+    tab
+  )
 
-  const [width, height] =
-    mainWindow.getContentSize()
+  const [
+    width,
+    height
+  ] = mainWindow.getContentSize()
 
   const tabsPanelHeight = 45
 
-  tab.setBounds({
-    x: 0,
-    y: tabsPanelHeight,
-    width,
-    height: height - tabsPanelHeight
-  })
+  tab.setBounds(
+    {
+      x: 0,
+      y: tabsPanelHeight,
+      width,
+      height: (
+        height - tabsPanelHeight
+      )
+    }
+  )
 
-  tab.setAutoResize({
-    width: true,
-    height: true
-  })
+  tab.setAutoResize(
+    {
+      width: true,
+      height: true
+    }
+  )
 
   tab.webContents.loadURL(
     `${baseUrl}#/${path}`
   )
 
   if (isDevelopment) {
-    tab.webContents.openDevTools({
-      mode: 'right'
-    })
+    tab.webContents.openDevTools(
+      {
+        mode: 'right'
+      }
+    )
   }
 
   mainWindow.webContents.send(
@@ -360,11 +296,13 @@ const handleAddTab = (_, value) => {
     value
   )
 
-  const handleNewWindow = event => {
+  function handleNewWindow (
+    event
+  ) {
     event.preventDefault()
   }
 
-  const handleDidStartNavigation = () => {
+  function handleDidStartNavigation () {
     tab.webContents.send(
       'set-tab-id',
       uuid
@@ -382,18 +320,10 @@ const handleAddTab = (_, value) => {
   )
 }
 
-const prependTabToTabs = tab => {
-  tabs = [tab, ...tabs]
-}
-
-ipcMain.on(
-  'add-tab',
-  handleAddTab
-)
-
-// Set top tab
-
-const handleSetTopTab = (_, tabId) => {
+function handleSetTopTab (
+  _,
+  tabId
+) {
   const tab = findTab(
     tabId
   )
@@ -405,6 +335,7 @@ const handleSetTopTab = (_, tabId) => {
   removeTabFromTabs(
     tabId
   )
+
   prependTabToTabs(
     tab
   )
@@ -415,43 +346,21 @@ const handleSetTopTab = (_, tabId) => {
   )
 }
 
-const findTab = tabId => {
-  const isMatchedTab = tabData => {
-    return tabData.uuid === tabId
-  }
-
-  return getTabs().find(
-    isMatchedTab
+function handleRemoveTab (
+  _,
+  tabId
+) {
+  const tab = findTab(
+    tabId
   )
-}
 
-const getTabs = () => {
-  return mainWindow.getBrowserViews()
-}
-
-const removeTabFromTabs = tabId => {
-  const isMatchedTab = tabData => {
-    return tabData.uuid !== tabId
-  }
-
-  tabs = tabs.filter(
-    isMatchedTab
-  )
-}
-
-ipcMain.on(
-  'set-top-tab',
-  handleSetTopTab
-)
-
-// Remove tab
-
-const handleRemoveTab = (_, tabId) => {
   removeTab(
-    findTab(tabId)
+    tab
   )
 
-  removeTabFromTabs(tabId)
+  removeTabFromTabs(
+    tabId
+  )
 
   mainWindow.webContents.send(
     'handle-remove-tab',
@@ -459,47 +368,30 @@ const handleRemoveTab = (_, tabId) => {
   )
 
   if (tabs.length) {
+    const {
+      uuid
+    } = tabs[0]
+
     mainWindow.webContents.send(
       'handle-set-top-tab',
-      tabs[0].uuid
+      uuid
     )
   }
 }
 
-const removeTab = tab => {
-  if (tab) {
-    mainWindow.removeBrowserView(tab)
-
-    if (isDevelopment) {
-      tab.webContents.closeDevTools()
-    }
-
-    tab.webContents.destroy()
-  }
-}
-
-ipcMain.on(
-  'remove-tab',
-  handleRemoveTab
-)
-
-// Clear tabs
-
-const handleClearTabs = () => {
+function handleClearTabs () {
   getTabs().forEach(
     removeTab
   )
 }
 
-ipcMain.on(
-  'clear-tabs',
-  handleClearTabs
-)
-
-// Update store
-
-const handleUpdateStore = (_, data) => {
-  const updateViewStore = view => {
+function handleUpdateStore (
+  _,
+  data
+) {
+  function updateViewStore (
+    view
+  ) {
     view.webContents.send(
       'handle-update-store',
       data
@@ -516,59 +408,304 @@ const handleUpdateStore = (_, data) => {
   )
 }
 
-ipcMain.handle(
-  'update-store',
-  handleUpdateStore
-)
-
-// Update tab
-
-const handleUpdateTab = (_, { tabId, data }) => {
+function handleUpdateTab (
+  _,
+  {
+    tabId,
+    data
+  }
+) {
   mainWindow.webContents.send(
     'handle-update-tab',
-    { tabId, data }
+    {
+      tabId,
+      data
+    }
   )
 }
 
-ipcMain.on(
-  'update-tab',
-  handleUpdateTab
-)
-
-// Clear cache
-
-const handleClearCache = () => {
+function handleClearCache () {
   return mainWindow
     .webContents
     .session
     .clearCache()
 }
 
-ipcMain.handle(
-  'clear-cache',
-  handleClearCache
-)
-
-// Set language
-
-const handleSetLanguage = (_, value) => {
+function handleSetLanguage (
+  _,
+  value
+) {
   language = value
 
   setTrayMenu()
 }
 
-ipcMain.on(
-  'set-language',
-  handleSetLanguage
-)
-
-// Exit
-
-const handleExit = () => {
+function handleExit () {
   app.exit()
 }
 
-ipcMain.on(
-  'exit',
-  handleExit
-)
+//
+
+function setup () {
+  ElectronStore.initRenderer()
+
+  createWindow()
+
+  createTray()
+
+  createHeadersHandler()
+}
+
+function createWindow () {
+  const mainWindowIcon =
+    icon.resize(
+      {
+        width: 64,
+        height: 64
+      }
+    )
+
+  mainWindow =
+    new BrowserWindow(
+      {
+        width,
+        height,
+        icon: mainWindowIcon,
+        autoHideMenuBar: true,
+        show: false,
+        webPreferences: {
+          contextIsolation: false,
+          devTools: isDevelopment,
+          nodeIntegration: true
+        }
+      }
+    )
+
+  mainWindow.loadURL(
+    baseUrl
+  )
+
+  mainWindow.setMenu(
+    null
+  )
+
+  function handleReadyToShow () {
+    mainWindow.setMinimumSize(
+      width,
+      height
+    )
+
+    show()
+  }
+
+  mainWindow.on(
+    'ready-to-show',
+    handleReadyToShow
+  )
+
+  function handleClose (
+    event
+  ) {
+    event.preventDefault()
+
+    hide()
+  }
+
+  mainWindow.on(
+    'close',
+    handleClose
+  )
+}
+
+function createTray () {
+  const trayIcon =
+    icon.resize(
+      {
+        width: 16,
+        height: 16
+      }
+    )
+
+  tray = new Tray(
+    trayIcon
+  )
+
+  setTrayMenu()
+
+  tray.setToolTip(
+    appName
+  )
+
+  function handleClick () {
+    mainWindow.show()
+  }
+
+  tray.on(
+    'click',
+    handleClick
+  )
+}
+
+function createHeadersHandler () {
+  const filter = {
+    urls: [
+      'https://*.youtube.com/*'
+    ]
+  }
+
+  function handleBeforeSendHeaders (
+    details,
+    request
+  ) {
+    details
+      .requestHeaders
+      .Referer = 'https://www.youtube.com'
+
+    const {
+      requestHeaders
+    } = details
+
+    request(
+      {
+        cancel: false,
+        requestHeaders
+      }
+    )
+  }
+
+  session
+    .defaultSession
+    .webRequest
+    .onBeforeSendHeaders(
+      filter,
+      handleBeforeSendHeaders
+    )
+}
+
+function setTrayMenu () {
+  const showHideKey =
+    mainWindow.isVisible() ? 'hide' : 'show'
+
+  const showHideText =
+    i18n[language][showHideKey]
+
+  const showHideAction =
+    mainWindow.isVisible() ? hide : show
+
+  const exitText = i18n[language].exit
+
+  const menuItems = [
+    {
+      type: 'normal',
+      label: showHideText,
+      click: showHideAction
+    },
+    {
+      type: 'normal',
+      label: exitText,
+      click: exit
+    }
+  ]
+
+  const menu =
+    Menu.buildFromTemplate(
+      menuItems
+    )
+
+  tray.setContextMenu(
+    menu
+  )
+
+  if (isMac) {
+    app.dock.setMenu(
+      menu
+    )
+  }
+}
+
+function show () {
+  mainWindow.show()
+
+  setTrayMenu()
+}
+
+function hide () {
+  mainWindow.hide()
+
+  setTrayMenu()
+}
+
+function exit () {
+  const isRememberProfile =
+    electronStore.get(
+      'profile.isRemember'
+    )
+
+  if (!isRememberProfile) {
+    electronStore.set(
+      'profile.isLoggedIn',
+      false
+    )
+  }
+
+  mainWindow.webContents.send(
+    'handle-exit'
+  )
+}
+
+function prependTabToTabs (
+  tab
+) {
+  tabs = [
+    tab,
+    ...tabs
+  ]
+}
+
+function findTab (
+  tabId
+) {
+  function isMatchedTab (
+    tabData
+  ) {
+    return tabData.uuid === tabId
+  }
+
+  return getTabs().find(
+    isMatchedTab
+  )
+}
+
+function getTabs () {
+  return mainWindow.getBrowserViews()
+}
+
+function removeTab (
+  tab
+) {
+  if (tab) {
+    mainWindow.removeBrowserView(
+      tab
+    )
+
+    if (isDevelopment) {
+      tab.webContents.closeDevTools()
+    }
+
+    tab.webContents.destroy()
+  }
+}
+
+function removeTabFromTabs (
+  tabId
+) {
+  function isMatchedTab (
+    tabData
+  ) {
+    return tabData.uuid !== tabId
+  }
+
+  tabs = tabs.filter(
+    isMatchedTab
+  )
+}

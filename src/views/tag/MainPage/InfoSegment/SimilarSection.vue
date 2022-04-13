@@ -2,7 +2,7 @@
   <div class="ui large labels">
     <BaseLabel
       v-if="isLoading"
-      isLoading
+      is-loading
     />
     <template v-else-if="isAnySimilar">
       <BaseLabel
@@ -36,7 +36,6 @@ export default {
   data () {
     return {
       isLoading: false,
-      error: null,
       tagData: null,
       scope: 'similar'
     }

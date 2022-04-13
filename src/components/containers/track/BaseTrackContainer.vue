@@ -7,18 +7,26 @@
     @click="handleClick"
   >
     <slot
-      :isLoading="isLoading"
-      :isError="!!error"
-      :isCurrent="isCurrent"
-    ></slot>
+      :is-loading="isLoading"
+      :is-error="!!error"
+      :is-current="isCurrent"
+    />
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import {
+  mapState,
+  mapGetters
+} from 'vuex'
 import getPlayerTrack from '*/helpers/actions/player/track/get'
-import { updateStore, setPlayerPlaying } from '*/helpers/actions'
-import { track as formatTrack } from '*/helpers/formatters/track'
+import {
+  updateStore,
+  setPlayerPlaying
+} from '*/helpers/actions'
+import {
+  track as formatPlayerTrack
+} from '*/helpers/formatters/player/track'
 
 export default {
   name: 'BaseTrackContainer',
@@ -43,15 +51,24 @@ export default {
     }
   },
   computed: {
-    ...mapState('player', {
-      playerCurrentTrackId: 'currentTrackId'
-    }),
-    ...mapState('audio', {
-      audioElement: 'element'
-    }),
-    ...mapGetters('audio', {
-      audioAction: 'action'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerCurrentTrackId: 'currentTrackId'
+      }
+    ),
+    ...mapState(
+      'audio',
+      {
+        audioElement: 'element'
+      }
+    ),
+    ...mapGetters(
+      'audio',
+      {
+        audioAction: 'action'
+      }
+    ),
     isActive () {
       return (
         this.isWithActiveClass &&
@@ -75,10 +92,12 @@ export default {
       }
     },
     trackFormatted () {
-      return formatTrack({
-        trackData: this.trackData,
-        isFromSource: true
-      })
+      return formatPlayerTrack(
+        {
+          trackData: this.trackData,
+          isFromSource: true
+        }
+      )
     },
     trackAudioLink () {
       return this.trackData.audio?.link
@@ -100,11 +119,13 @@ export default {
       ]()
     },
     setAudio () {
-      updateStore({
-        'player.currentTrackId': this.trackId,
-        'player.variants': [],
-        'queue.tracks': this.queueTracks
-      })
+      updateStore(
+        {
+          'player.currentTrackId': this.trackId,
+          'player.variants': [],
+          'queue.tracks': this.queueTracks
+        }
+      )
 
       setPlayerPlaying(
         this.trackFormatted

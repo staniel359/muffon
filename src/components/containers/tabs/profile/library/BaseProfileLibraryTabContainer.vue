@@ -6,12 +6,12 @@
     }"
   >
     <BasePaginatedListContainer
-      :responseData="libraryData"
+      :response-data="libraryData"
       :scope="tabData.scope"
       :limit="tabData.limit"
-      :isLoading="isLoading"
+      :is-loading="isLoading"
       :error="error"
-      @fetchData="fetchData"
+      @fetch-data="fetchData"
       @refresh="handleRefresh"
       @focus="handleFocus"
     >
@@ -19,17 +19,17 @@
         <Component
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
-          :itemsInRow="tabData.itemsInRow"
-          :profileId="profileId"
-          :isWithPlaylistOption="isWithPlaylistOption"
-          :isWithFavoriteOption="isWithFavoriteOption"
-          :isWithDeleteOption="isWithDeleteOption(tabData.scope)"
-          isWithImage
-          isWithArtistName
-          isWithAlbumTitle
-          isWithCreated
-          isWithLibrary
-          isLinkToLibrary
+          :items-in-row="tabData.itemsInRow"
+          :profile-id="profileId"
+          :is-with-playlist-option="isWithPlaylistOption"
+          :is-with-favorite-option="isWithFavoriteOption"
+          :is-with-delete-option="isWithDeleteOption(tabData.scope)"
+          is-with-image
+          is-with-artist-name
+          is-with-album-title
+          is-with-created
+          is-with-library
+          is-link-to-library
         />
       </template>
     </BasePaginatedListContainer>
@@ -37,7 +37,9 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {
+  mapState
+} from 'vuex'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsTableList
@@ -48,7 +50,9 @@ import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
 import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
-import { isCurrentProfile } from '*/helpers/utils'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',
@@ -82,9 +86,12 @@ export default {
     }
   },
   computed: {
-    ...mapState('layout', [
-      'isDarkMode'
-    ]),
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     libraryArgs () {
       return {
         profileId: this.profileId,
@@ -117,30 +124,46 @@ export default {
     }
   },
   methods: {
-    handleIsActive (value) {
+    handleIsActive (
+      value
+    ) {
       if (value) {
         this.isActivated = true
       }
     },
-    handleIsActivated (value) {
+    handleIsActivated (
+      value
+    ) {
       if (value) {
         this.fetchData()
       }
     },
     handleFocus () {
-      this.$emit('focus')
+      this.$emit(
+        'focus'
+      )
     },
-    handleRefresh (page) {
-      this.fetchData(page)
+    handleRefresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
     },
     getProfileLibrary,
-    fetchData (page) {
-      this.getProfileLibrary({
-        ...this.libraryArgs,
-        page
-      })
+    fetchData (
+      page
+    ) {
+      this.getProfileLibrary(
+        {
+          ...this.libraryArgs,
+          page
+        }
+      )
     },
-    isWithDeleteOption (scope) {
+    isWithDeleteOption (
+      scope
+    ) {
       return (
         scope === 'tracks' &&
           isCurrentProfile(

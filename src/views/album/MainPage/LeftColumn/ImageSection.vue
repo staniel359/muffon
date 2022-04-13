@@ -18,7 +18,9 @@
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseAlbumImageModal
   from '*/components/modals/album/BaseAlbumImageModal.vue'
-import { showModal } from '*/helpers/actions/plugins/semantic'
+import {
+  showModal
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ImageSection',
@@ -43,11 +45,15 @@ export default {
     }
   },
   methods: {
-    handleModalInit (el) {
-      this.modal = el
+    handleModalInit (
+      element
+    ) {
+      this.modal = element
     },
     handleImageClick () {
-      showModal(this.modal)
+      showModal(
+        this.modal
+      )
     }
   }
 }

@@ -30,9 +30,11 @@ export default {
       )
     },
     profileCommunitiesLink () {
-      return formatProfileCommunitiesLink({
-        profileId: this.profileId
-      })
+      return formatProfileCommunitiesLink(
+        {
+          profileId: this.profileId
+        }
+      )
     }
   }
 }

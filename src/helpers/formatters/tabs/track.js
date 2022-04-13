@@ -4,17 +4,21 @@ import {
   similar as formatTrackSimilarLink
 } from '*/helpers/formatters/links/track'
 
-export default function ({
-  artistName,
-  trackTitle,
-  sourceParams,
-  scope
-}) {
-  const formatTrackPageTitle = () => {
+export default function (
+  {
+    artistName,
+    trackTitle,
+    sourceParams,
+    scope
+  }
+) {
+  function formatTrackPageTitle () {
     if (scope) {
       return i18n.global.t(
         `navigation.model.${scope}`,
-        { modelName: trackTitle }
+        {
+          modelName: trackTitle
+        }
       )
     } else {
       return trackTitle
@@ -23,27 +27,35 @@ export default function ({
 
   const artistPageTitle = i18n.global.t(
     'navigation.model.tracks',
-    { modelName: artistName }
+    {
+      modelName: artistName
+    }
   )
 
   const title = [
     formatTrackPageTitle(),
     artistPageTitle
-  ].join(' | ')
+  ].join(
+    ' | '
+  )
 
-  const formatPath = () => {
+  function formatPath () {
     switch (scope) {
       case 'similar':
-        return formatTrackSimilarLink({
-          artistName,
-          trackTitle
-        }).path
+        return formatTrackSimilarLink(
+          {
+            artistName,
+            trackTitle
+          }
+        ).path
       default:
-        return formatTrackMainLink({
-          artistName,
-          trackTitle,
-          sourceParams
-        }).path
+        return formatTrackMainLink(
+          {
+            artistName,
+            trackTitle,
+            sourceParams
+          }
+        ).path
     }
   }
 

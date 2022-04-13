@@ -1,6 +1,6 @@
 <template>
   <BaseArtistPaginatedPageContainer
-    :artistName="artistName"
+    :artist-name="artistName"
     :scope="scope"
     :limit="limit"
   >
@@ -8,13 +8,13 @@
       <ImagesList
         :images="slotProps[scope]"
         :modal="modal"
-        :mainSlider="mainSlider"
+        :main-slider="mainSlider"
       />
 
       <BaseArtistImageModal
         :images="slotProps[scope]"
         @init="handleModalInit"
-        @mainSliderInit="handleMainSliderInit"
+        @main-slider-init="handleMainSliderInit"
       />
     </template>
   </BaseArtistPaginatedPageContainer>
@@ -46,11 +46,15 @@ export default {
     }
   },
   methods: {
-    handleModalInit (el) {
-      this.modal = el
+    handleModalInit (
+      element
+    ) {
+      this.modal = element
     },
-    handleMainSliderInit (el) {
-      this.mainSlider = el
+    handleMainSliderInit (
+      element
+    ) {
+      this.mainSlider = element
     }
   }
 }

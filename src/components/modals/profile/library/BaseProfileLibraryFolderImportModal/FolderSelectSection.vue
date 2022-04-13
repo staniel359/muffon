@@ -2,20 +2,22 @@
   <div class="folder-select-container">
     <div class="folder-select-input-container">
       <input
-        class="folder-select-input"
         id="folder-select-input"
-        type="file"
         :key="key"
+        class="folder-select-input"
+        type="file"
         :disabled="!isReset"
         webkitdirectory
         @change="handleChange"
-      />
+      >
 
       <label for="folder-select-input">
         <BaseButton
           class="basic"
           icon="folder open"
-          :class="{ disabled: !isReset }"
+          :class="{
+            disabled: !isReset
+          }"
           :text="selectText"
         />
       </label>
@@ -31,7 +33,9 @@
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import { generateKey } from '*/helpers/utils'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'FolderSelectSection',
@@ -57,7 +61,9 @@ export default {
     }
   },
   methods: {
-    handleChange (event) {
+    handleChange (
+      event
+    ) {
       this.isReset = false
       this.key = generateKey()
 
@@ -67,16 +73,28 @@ export default {
         this.checkIfAudio
       )
 
-      this.setStatus('import')
-      this.setFiles(files)
+      this.setStatus(
+        'import'
+      )
+
+      this.setFiles(
+        files
+      )
     },
     handleResetButtonClick () {
       this.isReset = true
 
-      this.setStatus(null)
-      this.setFiles([])
+      this.setStatus(
+        null
+      )
+
+      this.setFiles(
+        []
+      )
     },
-    checkIfAudio (file) {
+    checkIfAudio (
+      file
+    ) {
       return file.type.startsWith(
         'audio'
       )

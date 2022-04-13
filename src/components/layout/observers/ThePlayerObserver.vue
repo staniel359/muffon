@@ -1,18 +1,29 @@
 <template>
-  <div id="the-player-observer"></div>
+  <div
+    id="the-player-observer"
+  />
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { ipcRenderer } from 'electron'
-import { artistName as formatArtistName } from '*/helpers/formatters'
+import {
+  mapState
+} from 'vuex'
+import {
+  ipcRenderer
+} from 'electron'
+import {
+  artistName as formatArtistName
+} from '*/helpers/formatters'
 
 export default {
   name: 'ThePlayerObserver',
   computed: {
-    ...mapState('player', {
-      playerPlaying: 'playing'
-    }),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
+      }
+    ),
     title () {
       if (this.playerPlaying) {
         return this.playerTitle
@@ -24,7 +35,9 @@ export default {
       return [
         this.artistName,
         this.trackFullTitle
-      ].join(' - ')
+      ].join(
+        ' - '
+      )
     },
     artistName () {
       return formatArtistName(
@@ -38,7 +51,11 @@ export default {
       return [
         this.trackTitle,
         this.trackExtraTitleConditional
-      ].filter(e => e).join(' ')
+      ].filter(
+        e => e
+      ).join(
+        ' '
+      )
     },
     trackTitle () {
       return this.playerPlaying.title
@@ -67,9 +84,11 @@ export default {
         title: this.trackTitle,
         artist: this.artistName,
         album: this.albumTitle,
-        artwork: [{
-          src: this.playerImage
-        }]
+        artwork: [
+          {
+            src: this.playerImage
+          }
+        ]
       }
     },
     albumTitle () {
