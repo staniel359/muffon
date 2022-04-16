@@ -69,7 +69,8 @@ export default {
       'player',
       {
         isPlayerScrobbled: 'isScrobbled',
-        isPlayerWithScrobbleNotifications: 'isWithScrobbleNotifications',
+        isPlayerWithScrobbleNotifications:
+          'isWithScrobbleNotifications',
         playerPlaying: 'playing'
       }
     ),

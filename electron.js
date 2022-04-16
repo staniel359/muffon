@@ -221,7 +221,7 @@ function handleSetTrayTooltip (
   value
 ) {
   tray.setToolTip(
-    value
+    value || appName
   )
 }
 
