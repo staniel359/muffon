@@ -57,7 +57,8 @@ export default {
     ),
     isToScrobble () {
       return (
-        this.isPlayerWithScrobbling &&
+        this.playerPlaying &&
+          this.isPlayerWithScrobbling &&
           !this.isScrobbled &&
           this.isPastScrobblePercent
       )
