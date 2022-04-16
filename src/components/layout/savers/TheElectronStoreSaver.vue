@@ -14,12 +14,12 @@ export default {
   name: 'TheElectronStoreSaver',
   mounted () {
     ipcRenderer.on(
-      'handle-update-store',
-      this.handleUpdateStore
+      'handle-update-electron-store',
+      this.handleUpdateElectronStore
     )
   },
   methods: {
-    handleUpdateStore (
+    handleUpdateElectronStore (
       _,
       data
     ) {

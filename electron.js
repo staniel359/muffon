@@ -387,7 +387,10 @@ function handleClearTabs () {
 
 function handleUpdateStore (
   _,
-  data
+  data,
+  {
+    isSave
+  }
 ) {
   function updateViewStore (
     view
@@ -406,6 +409,13 @@ function handleUpdateStore (
   views.forEach(
     updateViewStore
   )
+
+  if (isSave) {
+    mainWindow.webContents.send(
+      'handle-update-electron-store',
+      data
+    )
+  }
 }
 
 function handleUpdateTab (

@@ -57,8 +57,10 @@ export default {
     }
   },
   watch: {
-    isPlayerScrobbling: 'handleIsPlayerScrobblingChange',
-    isPlayerToScrobble: 'handleIsPlayerToScrobbleChange'
+    isPlayerScrobbling:
+      'handleIsPlayerScrobblingChange',
+    isPlayerToScrobble:
+      'handleIsPlayerToScrobbleChange'
   },
   methods: {
     handleIsPlayerScrobblingChange (
@@ -87,6 +89,9 @@ export default {
       updateStore(
         {
           'player.isScrobbled': true
+        },
+        {
+          isSave: false
         }
       )
     }

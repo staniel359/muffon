@@ -166,6 +166,9 @@ export default {
         updateStore(
           {
             'player.isScrobbling': true
+          },
+          {
+            isSave: false
           }
         )
       }
@@ -188,6 +191,9 @@ export default {
           {
             'player.isScrobbled': false,
             'player.isScrobbling': false
+          },
+          {
+            isSave: false
           }
         )
       }
@@ -235,6 +241,9 @@ export default {
       updateStore(
         {
           'player.isToScrobble': value
+        },
+        {
+          isSave: false
         }
       )
     },
@@ -245,6 +254,9 @@ export default {
         updateStore(
           {
             'player.isScrobbling': false
+          },
+          {
+            isSave: false
           }
         )
       }
@@ -269,6 +281,9 @@ export default {
       updateStore(
         {
           'player.isScrobbling': false
+        },
+        {
+          isSave: false
         }
       )
     },

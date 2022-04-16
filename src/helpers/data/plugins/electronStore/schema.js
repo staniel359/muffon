@@ -40,9 +40,17 @@ export default {
     ],
     default: null
   },
+  'player.isWithScrobbleNotifications': {
+    type: 'boolean',
+    default: false
+  },
   'player.isWithScrobbling': {
     type: 'boolean',
     default: false
+  },
+  'player.scrobblePercent': {
+    type: 'number',
+    default: 50
   },
   'player.playing': {
     type: [

@@ -11,13 +11,19 @@ import {
 } from '*/helpers/actions/plugins/semantic'
 
 export function updateStore (
-  data
+  data,
+  {
+    isSave = true
+  } = {}
 ) {
   return ipcRenderer.invoke(
     'update-store',
     JSON.stringify(
       data
-    )
+    ),
+    {
+      isSave
+    }
   )
 }
 
@@ -56,6 +62,9 @@ export function setPlayerPlaying (
   updateStore(
     {
       'audio.isAutoplay': false
+    },
+    {
+      isSave: false
     }
   ).then(
     handleUpdateStore

@@ -1,7 +1,7 @@
 <template>
-  <TheStoreObserver />
-
   <TheElectronStoreObserver />
+
+  <TheStoreObserver />
 
   <TheMediaKeysObserver />
 
