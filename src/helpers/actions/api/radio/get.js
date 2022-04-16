@@ -24,6 +24,8 @@ export default function (
     error
   ) => {
     this.error = error
+
+    throw error
   }
 
   const handleFinish = () => {

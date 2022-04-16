@@ -24,8 +24,8 @@
 
       <div class="next-button-container">
         <BaseButton
-          class="compact"
-          icon="right arrow"
+          class="basic compact next-button"
+          icon="forward right"
           :text="nextText"
           is-reverse
           @click="handleNextButtonClick"
@@ -106,7 +106,7 @@ export default {
       )
     },
     fetchAudio () {
-      if (!this.error) {
+      if (this.trackData) {
         this.$refs
           .track
           .fetchAudio()
@@ -125,4 +125,6 @@ export default {
 
 .next-button-container
   @extend .d-flex, .justify-content-flex-end
+  .next-button
+    @extend .no-margin
 </style>
