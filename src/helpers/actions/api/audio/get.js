@@ -1,8 +1,8 @@
 import axios from 'axios'
 import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
 import {
-  setPlayerPlaying
-} from '*/helpers/actions'
+  setPlaying as setPlayerPlaying
+} from '*/helpers/actions/player'
 
 export default function (
   {

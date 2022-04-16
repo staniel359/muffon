@@ -43,34 +43,6 @@ export function updateTab (
   )
 }
 
-export function setPlayerPlaying (
-  value
-) {
-  updateStore(
-    {
-      'player.playing': value
-    }
-  )
-
-  function handleUpdateStore () {
-    store.dispatch(
-      'audio/setIsAutoplay',
-      true
-    )
-  }
-
-  updateStore(
-    {
-      'audio.isAutoplay': false
-    },
-    {
-      isSave: false
-    }
-  ).then(
-    handleUpdateStore
-  )
-}
-
 export function addFormErrors (
   {
     error,

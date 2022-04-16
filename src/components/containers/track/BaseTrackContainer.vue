@@ -21,9 +21,11 @@ import {
 } from 'vuex'
 import getPlayerTrack from '*/helpers/actions/player/track/get'
 import {
-  updateStore,
-  setPlayerPlaying
+  updateStore
 } from '*/helpers/actions'
+import {
+  setPlaying as setPlayerPlaying
+} from '*/helpers/actions/player'
 import {
   track as formatPlayerTrack
 } from '*/helpers/formatters/player/track'
