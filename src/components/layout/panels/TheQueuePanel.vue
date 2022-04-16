@@ -35,8 +35,8 @@ import {
   hideQueuePanel
 } from '*/helpers/actions/layout'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'TheQueuePanel',
@@ -108,7 +108,7 @@ export default {
       }
     },
     clearQueue () {
-      updateStore(
+      updateGlobalStore(
         {
           'queue.currentTrackId': null,
           'queue.tracks': [],

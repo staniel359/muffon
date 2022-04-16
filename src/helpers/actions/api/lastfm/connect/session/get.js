@@ -1,8 +1,8 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default function (
   {
@@ -35,7 +35,7 @@ export default function (
       ...profileData
     }
 
-    updateStore(
+    updateGlobalStore(
       {
         'profile.info': newProfileInfo
       }

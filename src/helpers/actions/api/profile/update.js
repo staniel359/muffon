@@ -1,9 +1,11 @@
 import axios from 'axios'
 import store from '*/plugins/store'
 import {
-  updateStore,
   addFormErrors
 } from '*/helpers/actions'
+import {
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default function (
   {
@@ -55,7 +57,7 @@ export default function (
   ) => {
     const info = response.data.profile
 
-    updateStore(
+    updateGlobalStore(
       {
         'profile.info': info
       }

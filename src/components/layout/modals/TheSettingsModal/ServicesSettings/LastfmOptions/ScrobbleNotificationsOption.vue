@@ -23,8 +23,8 @@ import {
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'ScrobbleNotificationsOption',
@@ -65,14 +65,14 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.isWithScrobbleNotifications': true
         }
       )
     },
     handleToggleOff () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.isWithScrobbleNotifications': false
         }

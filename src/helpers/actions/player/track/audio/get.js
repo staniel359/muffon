@@ -2,8 +2,8 @@ import getAudio from '*/helpers/actions/api/audio/get'
 import searchPlayerTrackAudio
   from '*/helpers/actions/player/track/audio/search'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default function (
   {
@@ -21,7 +21,7 @@ export default function (
     const trackId = trackData.player_id
     const queueTrackId = trackData.uuid
 
-    updateStore(
+    updateGlobalStore(
       {
         'player.currentTrackId':
         trackId,
@@ -32,7 +32,7 @@ export default function (
   }
 
   function handleSuccess () {
-    updateStore(
+    updateGlobalStore(
       {
         'player.variants': []
       }

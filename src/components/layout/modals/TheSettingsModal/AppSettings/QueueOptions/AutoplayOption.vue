@@ -20,8 +20,8 @@ import {
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'AutoplayOption',
@@ -44,14 +44,14 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      updateStore(
+      updateGlobalStore(
         {
           'queue.isAutoplay': true
         }
       )
     },
     handleToggleOff () {
-      updateStore(
+      updateGlobalStore(
         {
           'queue.isAutoplay': false
         }

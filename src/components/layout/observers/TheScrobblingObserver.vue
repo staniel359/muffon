@@ -13,8 +13,8 @@ import createScrobblerPlay
 import createScrobblerSave
   from '*/helpers/actions/api/lastfm/scrobbler/save/create'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   artistName as formatArtistName
 } from '*/helpers/formatters'
@@ -86,7 +86,7 @@ export default {
       }
     },
     handleSuccess () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.isScrobbled': true
         },

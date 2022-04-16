@@ -24,8 +24,8 @@ import BaseSegmentContainer
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'TracksSection',
@@ -55,7 +55,7 @@ export default {
     handleQueueTracksChange (
       value
     ) {
-      updateStore(
+      updateGlobalStore(
         {
           'queue.isShuffle': false
         }

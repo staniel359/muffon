@@ -2,8 +2,8 @@ import store from '*/plugins/store'
 import getBandcampId from '*/helpers/actions/api/bandcampId/track/variant/get'
 import getAudio from '*/helpers/actions/api/audio/get'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default async function (
   {
@@ -55,10 +55,9 @@ export default async function (
   }
 
   function handleSuccess () {
-    updateStore(
+    updateGlobalStore(
       {
-        'player.currentVariantId':
-        variantId
+        'player.currentVariantId': variantId
       }
     )
   }

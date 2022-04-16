@@ -9,8 +9,8 @@
 <script>
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'LogoutItem',
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     handleClick () {
-      updateStore(
+      updateGlobalStore(
         {
           'profile.isLoggedIn': false,
           'profile.isRemember': false

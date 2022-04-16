@@ -7,8 +7,8 @@
 <script>
 import getQueueTrack from '*/helpers/actions/queue/track/get'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'TheMediaKeysObserver',
@@ -51,7 +51,7 @@ export default {
       )
     },
     handlePressStop () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.playing': null
         }

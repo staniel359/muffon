@@ -27,8 +27,8 @@
 import BaseIcon from '*/components/BaseIcon.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'SourceItem',
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     handleClick () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.sourceId': this.sourceId
         }

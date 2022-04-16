@@ -17,8 +17,8 @@ import {
 } from '*/helpers/data/plugins/semantic'
 import getLogin from '*/helpers/actions/api/login/get'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'BaseProfileLoginFormContainer',
@@ -69,7 +69,7 @@ export default {
     handleProfileDataChange (
       value
     ) {
-      updateStore(
+      updateGlobalStore(
         {
           'profile.isLoggedIn': !!value,
           'profile.info': value

@@ -20,8 +20,8 @@ import {
 } from '*/helpers/formatters'
 import createProfile from '*/helpers/actions/api/profile/create'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'BaseProfileCreateFormContainer',
@@ -75,9 +75,9 @@ export default {
     handleProfileDataChange (
       value
     ) {
-      updateStore(
+      updateGlobalStore(
         {
-          'profile.isLoggedIn': !!value,
+          'profile/store.isLoggedIn': !!value,
           'profile.info': value
         }
       )

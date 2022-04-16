@@ -1,7 +1,7 @@
 import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default function (
   {
@@ -26,7 +26,7 @@ export default function (
     this.isLoading = false
 
     if (queueTracks) {
-      updateStore(
+      updateGlobalStore(
         {
           'queue.tracks': queueTracks
         }

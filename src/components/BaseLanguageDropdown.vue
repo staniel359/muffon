@@ -31,8 +31,8 @@ import {
   ipcRenderer
 } from 'electron'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   setDropdown,
   setDropdownValue
@@ -103,7 +103,7 @@ export default {
         value
       )
 
-      updateStore(
+      updateGlobalStore(
         {
           'profile.language': value
         }

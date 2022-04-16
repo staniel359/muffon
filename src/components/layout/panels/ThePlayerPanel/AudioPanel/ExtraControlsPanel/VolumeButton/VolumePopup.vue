@@ -28,8 +28,8 @@ import {
   mainVolumeSeekerOptions
 } from '*/helpers/data/plugins/semantic'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   setSeekerValue
 } from '*/helpers/actions/plugins/semantic'
@@ -89,7 +89,7 @@ export default {
     handleMouseUp (
       value
     ) {
-      updateStore(
+      updateGlobalStore(
         {
           'audio.volume': value
         }

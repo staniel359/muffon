@@ -24,8 +24,8 @@ import {
   mapActions
 } from 'vuex'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'AudioElement',
@@ -164,7 +164,7 @@ export default {
       )
 
       if (this.isPlayerWithScrobbling) {
-        updateStore(
+        updateGlobalStore(
           {
             'player.isScrobbling': true
           },
@@ -188,7 +188,7 @@ export default {
       if (currentTime === 0) {
         this.isScrobbled = false
 
-        updateStore(
+        updateGlobalStore(
           {
             'player.isScrobbled': false,
             'player.isScrobbling': false
@@ -239,7 +239,7 @@ export default {
     handleIsScrobbledChange (
       value
     ) {
-      updateStore(
+      updateGlobalStore(
         {
           'player.isToScrobble': value
         },
@@ -252,7 +252,7 @@ export default {
       value
     ) {
       if (!value) {
-        updateStore(
+        updateGlobalStore(
           {
             'player.isScrobbling': false
           },
@@ -279,7 +279,7 @@ export default {
 
       this.audioElement.src = ''
 
-      updateStore(
+      updateGlobalStore(
         {
           'player.isScrobbling': false
         },

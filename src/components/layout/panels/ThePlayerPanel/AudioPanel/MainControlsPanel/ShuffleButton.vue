@@ -15,8 +15,8 @@ import {
 } from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   shuffleArray
 } from '*/helpers/utils'
@@ -44,7 +44,7 @@ export default {
         )
         : []
 
-      updateStore(
+      updateGlobalStore(
         {
           'queue.isShuffle': value,
           'queue.tracksShuffled': tracks

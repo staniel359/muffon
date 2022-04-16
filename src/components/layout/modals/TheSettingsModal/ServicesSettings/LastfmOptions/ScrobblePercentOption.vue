@@ -37,8 +37,8 @@ import {
 } from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   setDropdown,
   setDropdownValue
@@ -120,7 +120,7 @@ export default {
     handleScrobblePercentSelect (
       value
     ) {
-      updateStore(
+      updateGlobalStore(
         {
           'player.scrobblePercent': value
         }

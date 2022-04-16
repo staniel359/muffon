@@ -1,13 +1,13 @@
 import store from '*/plugins/store'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export function setPlaying (
   value
 ) {
   function setPlayerPlaying () {
-    return updateStore(
+    return updateGlobalStore(
       {
         'player.playing': value
       }
@@ -22,7 +22,7 @@ export function setPlaying (
 }
 
 function disableGlobalAudioAutoplay () {
-  return updateStore(
+  return updateGlobalStore(
     {
       'audio.isAutoplay': false
     },

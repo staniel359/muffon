@@ -1,8 +1,8 @@
 import axios from 'axios'
 import i18n from '*/plugins/i18n'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   addFormFieldError
 } from '*/helpers/actions/plugins/semantic'
@@ -32,7 +32,7 @@ export default function (
       token
     } = response.data.profile
 
-    updateStore(
+    updateGlobalStore(
       {
         'profile.token': token,
         'profile.isRemember': isRemember

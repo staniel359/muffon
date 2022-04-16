@@ -1,8 +1,8 @@
 import store from '*/plugins/store'
 import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default function getQueueTrack (
   {
@@ -60,10 +60,10 @@ export default function getQueueTrack (
         position
       }
 
-      updateStore(
+      updateGlobalStore(
         {
           'queue.currentTrackId':
-          queueCurrentTrackId
+            queueCurrentTrackId
         }
       )
 

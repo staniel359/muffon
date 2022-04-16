@@ -21,8 +21,8 @@ import {
 } from 'vuex'
 import getPlayerTrack from '*/helpers/actions/player/track/get'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   setPlaying as setPlayerPlaying
 } from '*/helpers/actions/player'
@@ -121,7 +121,7 @@ export default {
       ]()
     },
     setAudio () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.currentTrackId': this.trackId,
           'player.variants': [],

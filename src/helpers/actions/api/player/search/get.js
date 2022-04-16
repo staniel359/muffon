@@ -4,8 +4,8 @@ import {
   collection as formatCollection
 } from '*/helpers/formatters'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default function (
   {
@@ -42,7 +42,7 @@ export default function (
       tracksCollection
     )
 
-    updateStore(
+    updateGlobalStore(
       {
         'player.variants': tracksCollection
       }

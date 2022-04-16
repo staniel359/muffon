@@ -499,6 +499,12 @@ function createWindow () {
     null
   )
 
+  // mainWindow.webContents.openDevTools(
+  //   {
+  //     mode: 'detach'
+  //   }
+  // )
+
   function handleReadyToShow () {
     mainWindow.setMinimumSize(
       width,

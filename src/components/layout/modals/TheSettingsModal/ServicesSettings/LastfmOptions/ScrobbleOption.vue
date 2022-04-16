@@ -20,8 +20,8 @@
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'ScrobbleOption',
@@ -51,14 +51,14 @@ export default {
   },
   methods: {
     handleToggleOn () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.isWithScrobbling': true
         }
       )
     },
     handleToggleOff () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.isWithScrobbling': false
         }

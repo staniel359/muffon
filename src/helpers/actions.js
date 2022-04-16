@@ -10,23 +10,6 @@ import {
   addFormFieldError
 } from '*/helpers/actions/plugins/semantic'
 
-export function updateStore (
-  data,
-  {
-    isSave = true
-  } = {}
-) {
-  return ipcRenderer.invoke(
-    'update-store',
-    JSON.stringify(
-      data
-    ),
-    {
-      isSave
-    }
-  )
-}
-
 export function updateTab (
   data
 ) {

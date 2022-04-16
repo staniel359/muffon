@@ -36,8 +36,8 @@ import {
   hidePlayerPanel
 } from '*/helpers/actions/layout'
 import {
-  updateStore
-} from '*/helpers/actions'
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 import {
   mainSidebarOptions
 } from '*/helpers/data/plugins/semantic'
@@ -211,7 +211,7 @@ export default {
       )
     },
     clearPlayer () {
-      updateStore(
+      updateGlobalStore(
         {
           'player.currentTrackId': null,
           'player.currentVariantId': null,
