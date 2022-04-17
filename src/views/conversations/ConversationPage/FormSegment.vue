@@ -7,7 +7,10 @@
       :images="images"
       @success="handleSuccess"
     >
-      <BaseContentField ref="input" />
+      <BaseContentField
+        ref="input"
+        @submit="handleSubmit"
+      />
 
       <div
         v-if="images.length || tracks.length"
@@ -35,6 +38,7 @@
         />
 
         <BaseSubmitButton
+          ref="submit"
           action-key="send"
         />
       </div>
@@ -106,6 +110,11 @@ export default {
       value
     ) {
       this.images = value
+    },
+    handleSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

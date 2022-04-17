@@ -11,7 +11,7 @@
         ]"
       >
         <BaseSegmentContainer>
-          <AlbumSourceSelect
+          <SourceSelect
             :album-data="pageSlotProps.albumData"
           />
         </BaseSegmentContainer>
@@ -47,7 +47,7 @@ import BaseAlbumPageContainer
   from '*/components/containers/pages/album/BaseAlbumPageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import AlbumSourceSelect from './MainPage/AlbumSourceSelect.vue'
+import SourceSelect from './MainPage/SourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
@@ -56,7 +56,7 @@ export default {
   components: {
     BaseAlbumPageContainer,
     BaseSegmentContainer,
-    AlbumSourceSelect,
+    SourceSelect,
     LeftColumn,
     RightColumn
   },

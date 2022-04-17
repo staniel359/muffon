@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="scrolling content">
       <SuccessMessage
         v-if="conversationId"
@@ -18,7 +21,10 @@
           :images="images"
           @success="handleSuccess"
         >
-          <BaseContentField ref="input" />
+          <BaseContentField
+            ref="input"
+            @submit="handleSubmit"
+          />
 
           <div
             v-if="images.length || tracks.length"
@@ -46,6 +52,7 @@
             />
 
             <BaseSubmitButton
+              ref="submit"
               action-key="send"
             />
           </div>
@@ -104,6 +111,9 @@ export default {
     }
   },
   methods: {
+    handleVisible () {
+      this.focusInput()
+    },
     handleSuccess (
       conversationId
     ) {
@@ -111,9 +121,7 @@ export default {
         conversationId.toString()
     },
     handleLinkClick () {
-      this.$refs
-        .modal
-        .hide()
+      this.hide()
     },
     handleTracksChange (
       value
@@ -125,14 +133,28 @@ export default {
     ) {
       this.images = value
     },
+    handleSubmit () {
+      this.clickSubmit()
+    },
     show () {
       this.$refs
         .modal
         .show()
-
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
+    },
+    focusInput () {
       this.$refs
         .input
         .focus()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

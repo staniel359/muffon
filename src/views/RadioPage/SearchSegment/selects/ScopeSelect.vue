@@ -1,5 +1,6 @@
 <template>
   <BaseScopesDropdown
+    class="scope-select"
     selected="tag"
     :scopes="scopes"
     @change="handleChange"
@@ -38,4 +39,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.scope-select
+  width: 150px
+</style>

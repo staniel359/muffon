@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="content">
       <BasePlaylistUpdateFormContainer
         class="main-playlist-form"
@@ -74,6 +77,9 @@ export default {
     }
   },
   methods: {
+    handleVisible () {
+      this.focusTitleInput()
+    },
     handleImageChange (
       value
     ) {
@@ -88,7 +94,8 @@ export default {
       this.$refs
         .modal
         .show()
-
+    },
+    focusTitleInput () {
       this.$refs
         .title
         .focus()

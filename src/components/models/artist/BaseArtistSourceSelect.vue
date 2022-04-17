@@ -2,6 +2,7 @@
   <BaseAccordionContainer
     :title="findText"
     @open="handleOpen"
+    @close="handleClose"
   >
     <BaseArtistAlbumsSourceSelect
       v-if="isOpen"
@@ -44,6 +45,9 @@ export default {
   methods: {
     handleOpen () {
       this.isOpen = true
+    },
+    handleClose () {
+      this.isOpen = false
     },
     handleArtistDataChange () {
       this.$emit(

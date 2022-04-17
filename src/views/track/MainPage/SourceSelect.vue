@@ -2,6 +2,7 @@
   <BaseAccordionContainer
     :title="findText"
     @open="handleOpen"
+    @close="handleClose"
   >
     <BaseTrackSourceSelect
       v-if="isOpen"
@@ -17,7 +18,7 @@ import BaseTrackSourceSelect
   from '*/components/models/track/BaseTrackSourceSelect.vue'
 
 export default {
-  name: 'TrackSourceSelect',
+  name: 'SourceSelect',
   components: {
     BaseAccordionContainer,
     BaseTrackSourceSelect
@@ -40,6 +41,9 @@ export default {
   methods: {
     handleOpen () {
       this.isOpen = true
+    },
+    handleClose () {
+      this.isOpen = false
     }
   }
 }

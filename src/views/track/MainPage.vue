@@ -11,7 +11,7 @@
         ]"
       >
         <BaseSegmentContainer>
-          <TrackSourceSelect
+          <SourceSelect
             :track-data="slotProps.trackData"
           />
         </BaseSegmentContainer>
@@ -46,7 +46,7 @@ import BaseTrackPageContainer
   from '*/components/containers/pages/track/BaseTrackPageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import TrackSourceSelect from './MainPage/TrackSourceSelect.vue'
+import SourceSelect from './MainPage/SourceSelect.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 
@@ -55,7 +55,7 @@ export default {
   components: {
     BaseTrackPageContainer,
     BaseSegmentContainer,
-    TrackSourceSelect,
+    SourceSelect,
     LeftColumn,
     RightColumn
   },

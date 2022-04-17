@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="content">
       <BaseCommunityUpdateFormContainer
         class="main-community-form"
@@ -23,12 +26,14 @@
 
             <BaseDescriptionField
               :value="description"
+              @submit="handleSubmit"
             />
           </div>
         </div>
 
         <div class="submit-button-container">
           <BaseSubmitButton
+            ref="submit"
             action-key="save"
           />
         </div>
@@ -83,24 +88,39 @@ export default {
     }
   },
   methods: {
+    handleVisible () {
+      this.focusTitleInput()
+    },
     handleImageChange (
       value
     ) {
       this.image = value
     },
+    handleSubmit () {
+      this.clickSubmit()
+    },
     handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+      this.hide()
     },
     show () {
       this.$refs
         .modal
         .show()
-
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
+    },
+    focusTitleInput () {
       this.$refs
         .title
         .focus()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

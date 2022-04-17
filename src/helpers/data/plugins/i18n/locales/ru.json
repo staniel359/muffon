@@ -250,7 +250,9 @@
   "notifications": {
     "scrobbled": "{trackFullTitle} был заскробблена",
     "updated": {
-      "post": "Публикация была обновлена"
+      "post": "Публикация была обновлена",
+      "playlist": "Список {playlistTitle} был обновлён",
+      "community": "Сообщество {communityTitle} было обновлено"
     },
     "deleted": {
       "library": "{modelName} был удалён из Вашей библиотеки",

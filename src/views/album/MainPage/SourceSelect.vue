@@ -2,6 +2,7 @@
   <BaseAccordionContainer
     :title="findText"
     @open="handleOpen"
+    @close="handleClose"
   >
     <BaseAlbumSourceSelect
       v-if="isOpen"
@@ -17,7 +18,7 @@ import BaseAlbumSourceSelect
   from '*/components/models/album/BaseAlbumSourceSelect.vue'
 
 export default {
-  name: 'AlbumSourceSelect',
+  name: 'SourceSelect',
   components: {
     BaseAccordionContainer,
     BaseAlbumSourceSelect
@@ -40,6 +41,9 @@ export default {
   methods: {
     handleOpen () {
       this.isOpen = true
+    },
+    handleClose () {
+      this.isOpen = false
     }
   }
 }

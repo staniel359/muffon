@@ -250,7 +250,9 @@
   "notifications": {
     "scrobbled": "{trackFullTitle} was scrobbled",
     "updated": {
-      "post": "Post was updated"
+      "post": "Post was updated",
+      "playlist": "Playlist {playlistTitle} was updated",
+      "community": "Community {communityTitle} was updated"
     },
     "deleted": {
       "library": "{modelName} was deleted from your library",

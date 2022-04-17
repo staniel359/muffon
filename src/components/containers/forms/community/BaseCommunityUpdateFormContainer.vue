@@ -16,6 +16,9 @@ import {
   communityFormOptions
 } from '*/helpers/data/plugins/semantic'
 import updateCommunity from '*/helpers/actions/api/community/update'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseCommunityUpdateFormContainer',
@@ -54,6 +57,21 @@ export default {
           onSuccess: this.handleSuccess
         }
       )
+    },
+    updatedMessage () {
+      return this.$t(
+        'notifications.updated.community',
+        {
+          communityTitle:
+            this.communityTitleStrong
+        }
+      )
+    },
+    communityTitleStrong () {
+      return `<strong>${this.communityTitle}</strong>`
+    },
+    communityTitle () {
+      return this.communityData.title
     }
   },
   watch: {
@@ -92,6 +110,8 @@ export default {
         this.$emit(
           'success'
         )
+
+        this.notify()
       }
     },
     formatUpdateArgs (
@@ -110,6 +130,14 @@ export default {
         description,
         image
       }
+    },
+    notify () {
+      setToast(
+        {
+          message: this.updatedMessage,
+          icon: 'green check'
+        }
+      )
     }
   }
 }

@@ -6,18 +6,18 @@
     />
 
     <div class="content">
+      <BaseErrorMessage
+        v-if="error"
+        class="error-message"
+        :error="error"
+      />
+
       <TextSection
         :model-type="modelType"
         :model="model"
         :model-name="modelName"
         :parent-model-name="parentModelName"
         :is-with-also-text="isWithAlsoText"
-      />
-
-      <BaseErrorMessage
-        v-if="error"
-        class="error-message"
-        :error="error"
       />
     </div>
 
@@ -43,16 +43,16 @@
 <script>
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
-import TextSection from './BaseDeleteModal/TextSection.vue'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import TextSection from './BaseDeleteModal/TextSection.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseDeleteModal',
   components: {
     BaseModalContainer,
-    TextSection,
     BaseErrorMessage,
+    TextSection,
     BaseButton
   },
   props: {
@@ -117,5 +117,5 @@ export default {
 
 <style lang="sass" scoped>
 .error-message
-  margin-top: 1em !important
+  margin-bottom: 1em !important
 </style>

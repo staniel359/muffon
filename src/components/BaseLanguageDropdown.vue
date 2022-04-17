@@ -1,10 +1,14 @@
 <template>
   <div
     ref="dropdown"
-    class="ui compact selection dropdown"
-    :class="{
-      inverted: isDarkMode
-    }"
+    class=""
+    :class="[
+      'ui compact selection dropdown',
+      'main-language-dropdown',
+      {
+        inverted: isDarkMode
+      }
+    ]"
   >
     <div class="default text" />
 

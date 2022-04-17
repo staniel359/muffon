@@ -114,8 +114,8 @@ export default {
     },
     trackFullTitle () {
       return [
-        this.trackTitle,
-        this.artistName
+        this.artistName,
+        this.trackTitle
       ].join(
         ' - '
       )
