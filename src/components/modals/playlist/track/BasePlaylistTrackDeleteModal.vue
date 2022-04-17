@@ -34,12 +34,13 @@ export default {
     }
   },
   emits: [
-    'deleted'
+    'success'
   ],
   data () {
     return {
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
@@ -61,28 +62,36 @@ export default {
       }
     }
   },
+  watch: {
+    isSuccess: 'handleIsSuccessChange'
+  },
   methods: {
+    deletePlaylistTrack,
     handleDeleteButtonClick () {
       this.deletePlaylistTrack(
         this.deleteArgs
-      ).then(
-        this.handleSuccess
       )
     },
-    handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.hide()
 
-      this.$emit(
-        'deleted'
-      )
+        this.$emit(
+          'success'
+        )
+      }
     },
-    deletePlaylistTrack,
     show () {
       this.$refs
         .modal
         .show()
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

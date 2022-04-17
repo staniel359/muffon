@@ -1,12 +1,6 @@
-import axios from 'axios'
-import {
-  shell
-} from 'electron'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function () {
-  this.error = null
-  this.isLoading = true
-
   const url = '/lastfm/connect/token'
 
   const handleSuccess = (
@@ -18,30 +12,15 @@ export default function () {
     } = response.data.connect
 
     this.token = token
-    this.isShowWaitMessage = true
-
-    shell.openExternal(
-      link
-    )
+    this.link = link
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.get(
-    url
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return getRequest.bind(
+    this
+  )(
+    {
+      url,
+      onSuccess: handleSuccess
+    }
   )
 }

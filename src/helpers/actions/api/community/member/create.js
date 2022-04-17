@@ -1,14 +1,11 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
   {
     communityId
   }
 ) {
-  this.isError = false
-  this.isLoading = true
-
   const url =
     `/communities/${communityId}/members`
 
@@ -24,24 +21,12 @@ export default function (
     token
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.isError = true
-
-    throw error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.post(
-    url,
-    params
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return postRequest.bind(
+    this
+  )(
+    {
+      url,
+      params
+    }
   )
 }

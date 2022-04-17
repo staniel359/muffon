@@ -39,7 +39,11 @@ export default {
     return {
       form: null,
       error: null,
-      isLoading: false
+      profileData: null,
+      isLoading: false,
+      fields: [
+        'title'
+      ]
     }
   },
   computed: {
@@ -51,7 +55,11 @@ export default {
       )
     }
   },
+  watch: {
+    profileData: 'handleProfileDataChange'
+  },
   methods: {
+    updatePlaylist,
     handleInit (
       element
     ) {
@@ -72,7 +80,19 @@ export default {
         updateArgs
       )
     },
-    updatePlaylist,
+    handleProfileDataChange (
+      value
+    ) {
+      if (value) {
+        this.setProfileData(
+          value
+        )
+
+        this.$emit(
+          'success'
+        )
+      }
+    },
     formatUpdateArgs (
       fields
     ) {

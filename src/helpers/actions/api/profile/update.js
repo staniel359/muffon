@@ -1,11 +1,8 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import patchRequest from '*/helpers/actions/api/request/patch'
 import {
-  addFormErrors
-} from '*/helpers/actions'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+  handleError as handleFormError
+} from '*/helpers/actions/form'
 
 export default function (
   {
@@ -21,9 +18,7 @@ export default function (
     isRemember
   }
 ) {
-  this.error = null
-  this.isLoading = true
-  this.isSuccess = false
+  this.profileData = null
 
   const profileId =
     store.state.profile.info.id
@@ -55,55 +50,30 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    const info = response.data.profile
-
-    updateGlobalStore(
-      {
-        'profile.info': info
-      }
-    )
-
-    this.isSuccess = true
+    this.profileData =
+      response.data.profile
   }
 
   const handleError = (
     error
   ) => {
-    const isBadRequest =
-      error.response?.status === 403
+    handleFormError.bind(
+      this
+    )(
+      {
+        error
+      }
+    )
+  }
 
-    if (isBadRequest) {
-      const fields = [
-        'email',
-        'password',
-        'password_confirmation',
-        'nickname'
-      ]
-
-      addFormErrors(
-        {
-          error,
-          fields,
-          form: this.form
-        }
-      )
-    } else {
-      this.error = error
+  return patchRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onSuccess: handleSuccess,
+      onError: handleError
     }
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.patch(
-    url,
-    params
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

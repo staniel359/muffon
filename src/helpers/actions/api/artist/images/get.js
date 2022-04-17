@@ -1,13 +1,10 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
     artistName
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const artistNameEncoded =
     encodeURIComponent(
       artistName
@@ -33,24 +30,12 @@ export default function (
       )
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-    this.images = null
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return getRequest.bind(
+    this
+  )(
+    {
+      url,
+      onSuccess: handleSuccess
+    }
   )
 }

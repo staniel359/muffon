@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
   {
@@ -26,8 +26,10 @@ export default function (
     duration
   }
 
-  axios.post(
-    url,
-    params
+  return postRequest(
+    {
+      url,
+      params
+    }
   )
 }

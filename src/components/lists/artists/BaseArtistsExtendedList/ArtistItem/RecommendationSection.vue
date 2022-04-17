@@ -7,7 +7,7 @@
   <BaseRecommendationDeleteModal
     ref="deleteModal"
     :recommendation-data="artistData"
-    @deleted="handleDeleted"
+    @success="handleDeleted"
   />
 </template>
 

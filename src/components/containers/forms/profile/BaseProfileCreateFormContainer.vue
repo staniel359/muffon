@@ -19,6 +19,7 @@ import {
   stringToDate as formatStringToDate
 } from '*/helpers/formatters'
 import createProfile from '*/helpers/actions/api/profile/create'
+import getProfile from '*/helpers/actions/api/profile/get'
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
@@ -35,8 +36,17 @@ export default {
     return {
       form: null,
       error: null,
+      token: null,
+      profileId: null,
       profileData: null,
-      isLoading: false
+      isRemember: false,
+      isLoading: false,
+      fields: [
+        'email',
+        'password',
+        'password_confirmation',
+        'nickname'
+      ]
     }
   },
   computed: {
@@ -46,12 +56,20 @@ export default {
           onSuccess: this.handleSuccess
         }
       )
+    },
+    profileArgs () {
+      return {
+        profileId: this.profileId
+      }
     }
   },
   watch: {
+    profileId: 'handleProfileIdChange',
     profileData: 'handleProfileDataChange'
   },
   methods: {
+    createProfile,
+    getProfile,
     handleInit (
       element
     ) {
@@ -72,6 +90,15 @@ export default {
         createArgs
       )
     },
+    async handleProfileIdChange (
+      value
+    ) {
+      if (value) {
+        await this.setSessionData()
+
+        this.fetchData()
+      }
+    },
     handleProfileDataChange (
       value
     ) {
@@ -82,7 +109,6 @@ export default {
         }
       )
     },
-    createProfile,
     formatCreateArgs (
       fields
     ) {
@@ -117,6 +143,19 @@ export default {
         city,
         isRemember
       }
+    },
+    setSessionData () {
+      updateGlobalStore(
+        {
+          'profile.token': this.token,
+          'profile.isRemember': this.isRemember
+        }
+      )
+    },
+    fetchData () {
+      this.getProfile(
+        this.profileArgs
+      )
     }
   }
 }

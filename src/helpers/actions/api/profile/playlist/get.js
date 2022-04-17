@@ -1,4 +1,4 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -9,20 +9,8 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url =
     `/profiles/${profileId}/playlists/${playlistId}/${scope}`
-
-  const params = {
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
-    })
-  }
 
   const handleSuccess = (
     response
@@ -31,26 +19,14 @@ export default function (
       response.data.profile
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

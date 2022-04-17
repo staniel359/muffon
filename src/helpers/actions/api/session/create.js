@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import postRequest from '*/helpers/actions/api/request/post'
 import {
   handleError as handleFormError
@@ -6,33 +5,31 @@ import {
 
 export default function (
   {
-    title,
-    description,
-    image
+    email,
+    password,
+    isRemember
   }
 ) {
-  const url = '/communities'
-
-  const profileId =
-    store.state.profile.info.id
-
-  const {
-    token
-  } = store.state.profile
+  const url = '/sessions'
 
   const params = {
-    profile_id: profileId,
-    token,
-    title,
-    description,
-    image
+    email,
+    password
   }
 
   const handleSuccess = (
     response
   ) => {
-    this.communityId =
-      response.data.community_id
+    const {
+      token
+    } = response.data.profile
+
+    const profileId =
+      response.data.profile.id
+
+    this.token = token
+    this.profileId = profileId
+    this.isRemember = isRemember
   }
 
   const handleError = (

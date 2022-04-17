@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
   {
@@ -10,9 +10,6 @@ export default function (
     byCommunity
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url =
     `/communities/${communityId}/posts`
 
@@ -32,30 +29,19 @@ export default function (
     by_community: byCommunity
   }
 
-  const handleSuccess = () => {
-    this.$emit(
-      'success'
-    )
-  }
-
   const handleError = (
     error
   ) => {
     this.error = error
   }
 
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.post(
-    url,
-    params
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return postRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onError: handleError
+    }
   )
 }

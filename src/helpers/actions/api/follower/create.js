@@ -1,18 +1,16 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
   {
     otherProfileId
   }
 ) {
-  this.isError = false
-  this.isLoading = true
-
   const profileId =
     store.state.profile.info.id
 
-  const url = `/profiles/${profileId}/followers`
+  const url =
+    `/profiles/${profileId}/followers`
 
   const {
     token
@@ -23,24 +21,12 @@ export default function (
     other_profile_id: otherProfileId
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.isError = true
-
-    throw error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.post(
-    url,
-    params
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return postRequest.bind(
+    this
+  )(
+    {
+      url,
+      params
+    }
   )
 }

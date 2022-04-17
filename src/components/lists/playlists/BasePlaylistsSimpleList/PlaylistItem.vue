@@ -54,7 +54,7 @@
   <BasePlaylistDeleteModal
     ref="deleteModal"
     :playlist-data="playlistData"
-    @deleted="handleDeleted"
+    @success="handleDeleted"
   />
 </template>
 

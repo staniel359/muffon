@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -9,9 +9,6 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const tagNameEncoded =
     encodeURIComponent(
       tagName
@@ -28,41 +25,25 @@ export default function (
 
   const params = {
     profile_id: profileId,
-    lang,
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
-    })
+    lang
   }
 
   const handleSuccess = (
     response
   ) => {
-    this.tagData = response.data.tag
+    this.tagData =
+      response.data.tag
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

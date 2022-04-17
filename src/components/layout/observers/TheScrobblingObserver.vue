@@ -81,11 +81,11 @@ export default {
         createScrobblerSave(
           this.trackData
         ).then(
-          this.handleSuccess
+          this.handleScrobbleSaveSuccess
         )
       }
     },
-    handleSuccess () {
+    handleScrobbleSaveSuccess () {
       updateGlobalStore(
         {
           'player.isScrobbled': true

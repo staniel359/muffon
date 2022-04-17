@@ -48,6 +48,7 @@ export default {
   data () {
     return {
       error: null,
+      conversationId: null,
       isLoading: false
     }
   },
@@ -70,7 +71,11 @@ export default {
       )
     }
   },
+  watch: {
+    conversationId: 'handleConversationIdChange'
+  },
   methods: {
+    createMessage,
     handleSuccess (
       event,
       fields
@@ -91,20 +96,19 @@ export default {
 
         this.createMessage(
           createArgs
-        ).then(
-          this.handleCreateSuccess
         )
       }
     },
-    handleCreateSuccess (
-      response
+    handleConversationIdChange (
+      value
     ) {
-      this.$emit(
-        'success',
-        response.data.conversation_id
-      )
+      if (value) {
+        this.$emit(
+          'success',
+          value
+        )
+      }
     },
-    createMessage,
     formatTrack (
       trackData
     ) {

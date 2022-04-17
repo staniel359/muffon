@@ -39,7 +39,12 @@ export default {
     return {
       form: null,
       error: null,
-      isLoading: false
+      communityData: null,
+      isLoading: false,
+      fields: [
+        'title',
+        'description'
+      ]
     }
   },
   computed: {
@@ -51,7 +56,11 @@ export default {
       )
     }
   },
+  watch: {
+    communityData: 'handleCommunityDataChange'
+  },
   methods: {
+    updateCommunity,
     handleInit (
       element
     ) {
@@ -72,7 +81,19 @@ export default {
         updateArgs
       )
     },
-    updateCommunity,
+    handleCommunityDataChange (
+      value
+    ) {
+      if (value) {
+        this.setCommunityData(
+          value
+        )
+
+        this.$emit(
+          'success'
+        )
+      }
+    },
     formatUpdateArgs (
       fields
     ) {

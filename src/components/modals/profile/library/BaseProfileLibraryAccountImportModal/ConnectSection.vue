@@ -21,7 +21,7 @@
       </div>
 
       <BaseClearButton
-        v-if="!isReset"
+        v-if="userData"
         @click="handleResetButtonClick"
       />
     </div>
@@ -63,8 +63,7 @@ export default {
     return {
       error: null,
       userData: null,
-      isLoading: false,
-      isReset: true
+      isLoading: false
     }
   },
   computed: {
@@ -99,7 +98,6 @@ export default {
     handleResetButtonClick () {
       this.error = null
       this.userData = null
-      this.isReset = true
     },
     getLastfmUser
   }

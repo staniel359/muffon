@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import patchRequest from '*/helpers/actions/api/request/patch'
 
 export default function (
   {
@@ -21,8 +21,10 @@ export default function (
     online: isOnline
   }
 
-  return axios.patch(
-    url,
-    params
+  return patchRequest(
+    {
+      url,
+      params
+    }
   )
 }

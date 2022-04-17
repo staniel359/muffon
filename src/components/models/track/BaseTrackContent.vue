@@ -151,7 +151,7 @@
       :playlist-track-data="trackData"
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
-      @deleted="handleDeleted"
+      @success="handleDeleted"
     />
     <BaseProfileLibraryDeleteModal
       v-else-if="isLinkToLibrary"
@@ -160,7 +160,7 @@
       :profile-id="profileId"
       :model-id="trackId"
       :model-name="trackFullTitle"
-      @deleted="handleDeleted"
+      @success="handleDeleted"
     />
   </template>
 </template>

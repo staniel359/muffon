@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import patchRequest from '*/helpers/actions/api/request/patch'
 
 export default function (
   {
@@ -9,8 +9,7 @@ export default function (
     images
   }
 ) {
-  this.error = null
-  this.isLoading = true
+  this.newPostData = null
 
   const profileId =
     store.state.profile.info.id
@@ -32,10 +31,8 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.$emit(
-      'success',
+    this.newPostData =
       response.data.post
-    )
   }
 
   const handleError = (
@@ -44,18 +41,14 @@ export default function (
     this.error = error
   }
 
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.patch(
-    url,
-    params
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return patchRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onSuccess: handleSuccess,
+      onError: handleError
+    }
   )
 }

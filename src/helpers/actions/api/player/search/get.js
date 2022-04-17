@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import getRequest from '*/helpers/actions/api/request/get'
 import {
   collection as formatCollection
 } from '*/helpers/formatters'
@@ -9,52 +9,45 @@ import {
 
 export default function (
   {
-    query
+    query,
+    limit = 20
   }
 ) {
-  const {
-    sourceId
-  } = store.state.player
+  const playerSourceId =
+    store.state.player.sourceId
 
-  const url = `/${sourceId}/search/tracks`
-
-  const limit = 20
+  const url =
+    `/${playerSourceId}/search/tracks`
 
   const params = {
-    query,
-    limit
+    query
   }
 
-  function handleSuccess (
+  async function handleSuccess (
     response
   ) {
     const {
       tracks
     } = response.data.search
 
-    const tracksCollection =
+    const variants =
       formatCollection(
         tracks
       )
 
-    store.dispatch(
-      'player/setVariants',
-      tracksCollection
-    )
-
-    updateGlobalStore(
+    await updateGlobalStore(
       {
-        'player.variants': tracksCollection
+        'player.variants': variants
       }
     )
   }
 
-  return axios.get(
-    url,
+  return getRequest(
     {
-      params
+      url,
+      params,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
   )
 }

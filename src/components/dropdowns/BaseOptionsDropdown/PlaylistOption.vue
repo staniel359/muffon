@@ -3,15 +3,22 @@
     class="item"
     @click="handleClick"
   >
-    <i class="file audio icon" />
+    <BaseIcon
+      icon="file audio"
+    />
 
     {{ addText }}
   </div>
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'PlaylistOption',
+  components: {
+    BaseIcon
+  },
   emits: [
     'click'
   ],

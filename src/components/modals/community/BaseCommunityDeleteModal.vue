@@ -38,7 +38,8 @@ export default {
   data () {
     return {
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
@@ -69,30 +70,33 @@ export default {
       return this.communityData.id
     }
   },
+  watch: {
+    isSuccess: 'handleIsSuccessChange'
+  },
   methods: {
+    deleteCommunity,
     handleDeleteButtonClick () {
       this.deleteCommunity(
         this.deleteArgs
-      ).then(
-        this.handleSuccess
       )
     },
-    handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.hide()
 
-      if (this.isDeleteWithRedirect) {
-        this.redirect()
+        if (this.isDeleteWithRedirect) {
+          this.redirect()
 
-        this.notify()
-      } else {
-        this.$emit(
-          'deleted'
-        )
+          this.notify()
+        } else {
+          this.$emit(
+            'deleted'
+          )
+        }
       }
     },
-    deleteCommunity,
     redirect () {
       this.$router.push(
         this.communitiesLink
@@ -110,6 +114,11 @@ export default {
       this.$refs
         .modal
         .show()
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

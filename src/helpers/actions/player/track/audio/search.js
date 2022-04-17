@@ -1,5 +1,5 @@
 import store from '*/plugins/store'
-import getSearch from '*/helpers/actions/api/player/search/get'
+import getPlayerSearch from '*/helpers/actions/api/player/search/get'
 import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
 import {
   updateGlobal as updateGlobalStore
@@ -83,7 +83,7 @@ export default function (
     )
   }
 
-  return getSearch(
+  return getPlayerSearch(
     searchArgs
   ).then(
     handleSearchSuccess

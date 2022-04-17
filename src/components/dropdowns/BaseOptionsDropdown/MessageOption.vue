@@ -3,15 +3,22 @@
     class="item"
     @click="handleClick"
   >
-    <i class="envelope icon" />
+    <BaseIcon
+      icon="envelope"
+    />
 
     {{ messageText }}
   </div>
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'MessageOption',
+  components: {
+    BaseIcon
+  },
   emits: [
     'click'
   ],

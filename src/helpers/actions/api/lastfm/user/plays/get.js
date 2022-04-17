@@ -1,79 +1,42 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 
-export default function getPlays (
+export default function (
   {
-    nickname,
-    page = 1
-  }
-) {
-  const url = `/lastfm/users/${nickname}/plays`
-
-  const params = {
+    lastfmNickname,
     page
   }
+) {
+  const url =
+    `/lastfm/users/${lastfmNickname}/plays`
 
   const handleSuccess = (
     response
   ) => {
+    const userData = response.data.user
+
     const {
       plays
-    } = response.data.user
-
-    const totalPages =
-      response.data.user.total_pages
+    } = userData
 
     this.plays = [
       ...this.plays,
       ...plays
     ]
 
-    const isGetPlays = (
-      this.isMounted &&
-        page < totalPages
-    )
+    const totalPagesCount =
+      userData.total_pages
 
-    if (isGetPlays) {
-      const playsArgs = {
-        nickname,
-        page: page + 1
-      }
-
-      return getPlays.bind(
-        this
-      )(
-        playsArgs
-      )
-    }
+    this.totalPagesCount =
+      totalPagesCount
   }
 
-  const retry = () => {
-    const playsArgs = {
-      nickname,
-      page
-    }
-
-    getPlays.bind(
-      this
-    )(
-      playsArgs
-    )
-  }
-
-  function handleError () {
-    setTimeout(
-      retry,
-      2000
-    )
-  }
-
-  return axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      page,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
   )
 }

@@ -1,13 +1,19 @@
 import {
+  ipcRenderer
+} from 'electron'
+import {
   mapState,
   mapActions
 } from 'vuex'
-import {
-  updateTab
-} from '*/helpers/actions'
 
 export default {
   computed: {
+    ...mapState(
+      'layout',
+      [
+        'tabId'
+      ]
+    ),
     ...mapState(
       'profile',
       {
@@ -36,8 +42,15 @@ export default {
         this.navigationSections
       )
 
-      updateTab(
-        this.tabData
+      this.updateTab()
+    },
+    updateTab () {
+      ipcRenderer.send(
+        'update-tab',
+        {
+          tabId: this.tabId,
+          data: this.tabData
+        }
       )
     }
   }

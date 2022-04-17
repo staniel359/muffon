@@ -8,9 +8,6 @@ export default function (
     paramsData
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const bandcampIdArgs = {
     model,
     artist,
@@ -18,33 +15,27 @@ export default function (
   }
 
   const handleSuccess = (
-    response
+    data
   ) => {
-    this.isLoading = false
+    const idData = data.id
 
-    const idData = response.id
+    const albumId = idData.bandcamp_id
+    const artistId =
+      idData.artists[0].bandcamp_id
 
     this.requestAlbumData = {
       sourceId: 'bandcamp',
-      albumId: idData.bandcamp_id,
-      artistId:
-        idData.artists[0].bandcamp_id,
+      albumId,
+      artistId,
       paramsData
     }
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.isLoading = false
-    this.error = error
-  }
-
-  return getBandcampId(
+  return getBandcampId.bind(
+    this
+  )(
     bandcampIdArgs
   ).then(
     handleSuccess
-  ).catch(
-    handleError
   )
 }

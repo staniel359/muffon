@@ -1,9 +1,7 @@
-import axios from 'axios'
-import electronStore from '*/plugins/electronStore'
-import getProfile from '*/helpers/actions/api/profile/get'
+import postRequest from '*/helpers/actions/api/request/post'
 import {
-  addFormErrors
-} from '*/helpers/actions'
+  handleError as handleFormError
+} from '*/helpers/actions/form'
 
 export default function (
   {
@@ -19,9 +17,6 @@ export default function (
     isRemember
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url = '/profiles'
 
   const params = {
@@ -44,64 +39,34 @@ export default function (
       token
     } = response.data.profile
 
-    electronStore.set(
-      {
-        'profile.token': token,
-        'profile.isRemember': isRemember
-      }
-    )
-
     const profileId =
       response.data.profile.id
 
-    return getProfile.bind(
-      this
-    )(
-      {
-        profileId,
-        token
-      }
-    )
+    this.token = token
+    this.profileId = profileId
+    this.isRemember = isRemember
   }
 
   const handleError = (
     error
   ) => {
-    const isBadRequest =
-      error.response?.status === 403
+    handleFormError.bind(
+      this
+    )(
+      {
+        error
+      }
+    )
+  }
 
-    if (isBadRequest) {
-      const fields = [
-        'email',
-        'password',
-        'password_confirmation',
-        'nickname'
-      ]
-
-      addFormErrors(
-        {
-          error,
-          fields,
-          form: this.form
-        }
-      )
-    } else {
-      this.error = error
+  return postRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onSuccess: handleSuccess,
+      onError: handleError
     }
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.post(
-    url,
-    params
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

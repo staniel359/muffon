@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import deleteRequest from '*/helpers/actions/api/request/delete'
 
 export default function (
   {
@@ -7,9 +7,6 @@ export default function (
     modelId
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const profileId =
     store.state.profile.info.id
 
@@ -25,26 +22,13 @@ export default function (
     token
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-
-    throw error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.delete(
-    url,
+  return deleteRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      isSaveError: true
     }
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

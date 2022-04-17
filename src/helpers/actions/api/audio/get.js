@@ -1,4 +1,4 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
 import {
   setPlaying as setPlayerPlaying
@@ -57,9 +57,10 @@ export default function (
     )
   }
 
-  return axios.get(
-    url
-  ).then(
-    handleSuccess
+  return getRequest(
+    {
+      url,
+      onSuccess: handleSuccess
+    }
   )
 }

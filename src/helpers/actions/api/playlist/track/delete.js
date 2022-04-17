@@ -1,17 +1,13 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import deleteRequest from '*/helpers/actions/api/request/delete'
 
 export default function (
   {
     playlistId,
-    playlistTrackId
+    playlistTrackId,
+    isSelectable
   }
 ) {
-  this.error = null
-  this.isSuccess = false
-  this.isError = false
-  this.isLoading = true
-
   const profileId =
     store.state.profile.info.id
 
@@ -28,27 +24,26 @@ export default function (
     token
   }
 
-  const handleError = (
-    error
+  const handleSuccess = (
+    response
   ) => {
-    this.error = error
-    this.isError = true
+    if (isSelectable) {
+      this.playlistTrackId =
+          response.data.playlist_track_id
 
-    throw error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.delete(
-    url,
-    {
-      params
+      this.paginationItem
+        .tracks_count = response.data.playlist_tracks_count
     }
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  }
+
+  return deleteRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onSuccess: handleSuccess,
+      isSaveError: true
+    }
   )
 }

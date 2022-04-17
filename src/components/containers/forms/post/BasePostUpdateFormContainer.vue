@@ -49,6 +49,7 @@ export default {
   data () {
     return {
       error: null,
+      newPostData: null,
       isLoading: false
     }
   },
@@ -80,7 +81,12 @@ export default {
       )
     }
   },
+  watch: {
+    newPostData: 'handleNewPostDataChange'
+  },
   methods: {
+    updateProfilePost,
+    updateCommunityPost,
     handleSuccess (
       event,
       fields
@@ -104,8 +110,16 @@ export default {
         )
       }
     },
-    updateProfilePost,
-    updateCommunityPost,
+    handleNewPostDataChange (
+      value
+    ) {
+      if (value) {
+        this.$emit(
+          'success',
+          value
+        )
+      }
+    },
     updatePost (
       args
     ) {

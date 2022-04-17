@@ -36,7 +36,11 @@ export default {
       form: null,
       error: null,
       communityId: null,
-      isLoading: false
+      isLoading: false,
+      fields: [
+        'title',
+        'description'
+      ]
     }
   },
   computed: {

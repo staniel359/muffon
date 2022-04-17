@@ -1,4 +1,4 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -7,9 +7,6 @@ export default function (
     modelScope
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url =
     `/radio/${scope}/${modelName}/${modelScope}`
 
@@ -20,25 +17,12 @@ export default function (
       response.data.radio
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-
-    throw error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return getRequest.bind(
+    this
+  )(
+    {
+      url,
+      onSuccess: handleSuccess
+    }
   )
 }

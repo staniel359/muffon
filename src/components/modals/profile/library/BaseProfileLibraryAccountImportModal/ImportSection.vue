@@ -1,4 +1,12 @@
 <template>
+  <BaseErrorMessage
+    v-if="error"
+    class="error-message"
+    :error="error"
+    is-with-refresh-button
+    @refresh="handleRefresh"
+  />
+
   <BaseProgress
     v-show="isProgress"
     ref="progress"
@@ -14,6 +22,7 @@
 </template>
 
 <script>
+import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './ImportSection/CompleteSection.vue'
 import getLastfmUserPlays from '*/helpers/actions/api/lastfm/user/plays/get'
@@ -25,6 +34,7 @@ import {
 export default {
   name: 'ImportSection',
   components: {
+    BaseErrorMessage,
     BaseProgress,
     CompleteSection
   },
@@ -42,6 +52,8 @@ export default {
   data () {
     return {
       error: null,
+      totalPagesCount: null,
+      page: 1,
       plays: [],
       successTracks: [],
       isComplete: false,
@@ -50,8 +62,25 @@ export default {
     }
   },
   computed: {
-    nickname () {
+    playsCount () {
+      return this.userData.plays_count
+    },
+    playsArgs () {
+      return {
+        lastfmNickname:
+          this.lastfmNickname
+      }
+    },
+    lastfmNickname () {
       return this.userData.nickname
+    },
+    isGetPlays () {
+      return (
+        this.isMounted && (
+          this.page <
+            this.totalPagesCount
+        )
+      )
     }
   },
   watch: {
@@ -63,14 +92,10 @@ export default {
     this.$refs
       .progress
       .setTotalCount(
-        this.userData.plays_count
+        this.playsCount
       )
 
-    this.getLastfmUserPlays(
-      {
-        nickname: this.nickname
-      }
-    )
+    this.fetchData()
   },
   beforeUnmount () {
     this.isMounted = false
@@ -85,6 +110,15 @@ export default {
         .setValue(
           value.length
         )
+
+      if (this.isGetPlays) {
+        this.page += 1
+
+        this.fetchData()
+      }
+    },
+    handleRefresh () {
+      this.fetchData()
     },
     handleProgressComplete () {
       this.isComplete = true
@@ -96,6 +130,11 @@ export default {
             this.plays
           )
         )
+    },
+    fetchData () {
+      this.getLastfmUserPlays(
+        this.playsArgs
+      )
     },
     formatProgressActive (
       {
@@ -120,4 +159,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.error-message
+  margin-bottom: 1em
+</style>

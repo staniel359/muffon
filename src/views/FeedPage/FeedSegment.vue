@@ -10,7 +10,7 @@
     @init="handleInit"
   >
     <BasePaginatedListContainer
-      :response-data="profileData"
+      :response-data="feedData"
       :scope="scope"
       :limit="limit"
       :is-loading="isLoading"
@@ -47,7 +47,7 @@ export default {
   data () {
     return {
       segment: null,
-      profileData: null,
+      feedData: null,
       error: null,
       isLoading: false,
       limit: 50,

@@ -1,8 +1,8 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import patchRequest from '*/helpers/actions/api/request/patch'
 import {
-  addFormErrors
-} from '*/helpers/actions'
+  handleError as handleFormError
+} from '*/helpers/actions/form'
 
 export default function (
   {
@@ -12,8 +12,7 @@ export default function (
     image
   }
 ) {
-  this.error = null
-  this.isLoading = true
+  this.communityData = null
 
   const url = `/communities/${communityId}`
 
@@ -35,51 +34,30 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.setCommunityData(
+    this.communityData =
       response.data.community
-    )
-
-    this.$emit(
-      'success'
-    )
   }
 
   const handleError = (
     error
   ) => {
-    const isBadRequest =
-      error.response?.status === 403
+    handleFormError.bind(
+      this
+    )(
+      {
+        error
+      }
+    )
+  }
 
-    if (isBadRequest) {
-      const fields = [
-        'title',
-        'description'
-      ]
-
-      addFormErrors(
-        {
-          error,
-          fields,
-          form: this.form
-        }
-      )
-    } else {
-      this.error = error
+  return patchRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onSuccess: handleSuccess,
+      onError: handleError
     }
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.patch(
-    url,
-    params
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

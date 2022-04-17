@@ -126,7 +126,8 @@ export default {
         trackTitle: this.trackTitle,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageUrl,
+        isSelectable: true
       }
     },
     paginationItem () {
@@ -142,7 +143,8 @@ export default {
     deleteArgs () {
       return {
         playlistId: this.playlistId,
-        playlistTrackId: this.playlistTrackId
+        playlistTrackId: this.playlistTrackId,
+        isSelectable: true
       }
     }
   },
@@ -151,6 +153,8 @@ export default {
       this.playlistData.playlist_track_id
   },
   methods: {
+    createPlaylistTrack,
+    deletePlaylistTrack,
     handleClick () {
       if (this.playlistTrackId) {
         this.deleteData()
@@ -158,31 +162,14 @@ export default {
         this.postData()
       }
     },
-    handleSuccess (
-      response
-    ) {
-      this.isSuccess = true
-
-      this.playlistTrackId =
-        response.data.playlist_track_id
-
-      this.paginationItem
-        .tracks_count = response.data.playlist_tracks_count
-    },
-    createPlaylistTrack,
-    deletePlaylistTrack,
     postData () {
       this.createPlaylistTrack(
         this.createArgs
-      ).then(
-        this.handleSuccess
       )
     },
     deleteData () {
       this.deletePlaylistTrack(
         this.deleteArgs
-      ).then(
-        this.handleSuccess
       )
     }
   }

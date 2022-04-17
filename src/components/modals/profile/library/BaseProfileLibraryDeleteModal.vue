@@ -46,12 +46,13 @@ export default {
     isDeleteWithRedirect: Boolean
   },
   emits: [
-    'deleted'
+    'success'
   ],
   data () {
     return {
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
@@ -86,30 +87,33 @@ export default {
       }
     }
   },
+  watch: {
+    isSuccess: 'handleIsSuccessChange'
+  },
   methods: {
+    deleteLibraryModel,
     handleDeleteButtonClick () {
       this.deleteLibraryModel(
         this.deleteArgs
-      ).then(
-        this.handleSuccess
       )
     },
-    handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.hide()
 
-      if (this.isDeleteWithRedirect) {
-        this.redirect()
+        if (this.isDeleteWithRedirect) {
+          this.redirect()
 
-        this.notify()
-      } else {
-        this.$emit(
-          'deleted'
-        )
+          this.notify()
+        } else {
+          this.$emit(
+            'success'
+          )
+        }
       }
     },
-    deleteLibraryModel,
     redirect () {
       this.$router.push(
         this.profileLibraryMainLink
@@ -127,6 +131,11 @@ export default {
       this.$refs
         .modal
         .show()
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

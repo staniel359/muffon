@@ -51,7 +51,8 @@ export default {
   data () {
     return {
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
@@ -72,6 +73,9 @@ export default {
         this.formatImage
       )
     }
+  },
+  watch: {
+    isSuccess: 'handleIsSuccessChange'
   },
   methods: {
     handleSuccess (
@@ -94,6 +98,15 @@ export default {
 
         this.createPost(
           createArgs
+        )
+      }
+    },
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.$emit(
+          'success'
         )
       }
     },

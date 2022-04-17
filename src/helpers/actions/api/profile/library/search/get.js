@@ -1,4 +1,4 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -9,20 +9,11 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url =
     `/profiles/${profileId}/library/search/${scope}`
 
   const params = {
-    query,
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
-    })
+    query
   }
 
   const handleSuccess = (
@@ -32,26 +23,15 @@ export default function (
       response.data.profile
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

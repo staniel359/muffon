@@ -1,14 +1,11 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import deleteRequest from '*/helpers/actions/api/request/delete'
 
 export default function (
   {
     communityId
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url = `/communities/${communityId}`
 
   const profileId =
@@ -27,22 +24,15 @@ export default function (
     error
   ) => {
     this.error = error
-
-    throw error
   }
 
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.delete(
-    url,
+  return deleteRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      onError: handleError
     }
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

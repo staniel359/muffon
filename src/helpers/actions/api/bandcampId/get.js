@@ -1,4 +1,4 @@
-import axios from 'axios'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -7,14 +7,14 @@ export default function (
     title
   }
 ) {
-  function formatModelUrl () {
-    const isAlbumOrTrack = [
-      'album',
-      'track'
-    ].includes(
-      model
-    )
+  const isAlbumOrTrack = [
+    'album',
+    'track'
+  ].includes(
+    model
+  )
 
+  function formatModelUrl () {
     if (isAlbumOrTrack) {
       return `${model}s/${title}`
     } else {
@@ -31,9 +31,12 @@ export default function (
     return response.data
   }
 
-  return axios.get(
-    url
-  ).then(
-    handleSuccess
+  return getRequest.bind(
+    this
+  )(
+    {
+      url,
+      onSuccess: handleSuccess
+    }
   )
 }

@@ -39,7 +39,10 @@ export default {
       form: null,
       error: null,
       playlistId: null,
-      isLoading: false
+      isLoading: false,
+      fields: [
+        'title'
+      ]
     }
   },
   computed: {

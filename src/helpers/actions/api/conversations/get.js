@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -7,9 +7,6 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const profileId =
     store.state.profile.info.id
 
@@ -21,13 +18,7 @@ export default function (
   } = store.state.profile
 
   const params = {
-    token,
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
-    })
+    token
   }
 
   const handleSuccess = (
@@ -37,26 +28,15 @@ export default function (
       response.data.profile
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

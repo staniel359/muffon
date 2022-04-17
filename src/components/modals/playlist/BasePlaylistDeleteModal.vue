@@ -33,12 +33,13 @@ export default {
     isDeleteWithRedirect: Boolean
   },
   emits: [
-    'deleted'
+    'success'
   ],
   data () {
     return {
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
@@ -76,29 +77,33 @@ export default {
       return this.playlistData.id
     }
   },
+  watch: {
+    isSuccess: 'handleIsSuccessChange'
+  },
   methods: {
+    deletePlaylist,
     handleDeleteButtonClick () {
       this.deletePlaylist(
         this.deleteArgs
-      ).then(
-        this.handleSuccess
       )
     },
-    handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.hide()
 
-      if (this.isDeleteWithRedirect) {
-        this.redirect()
-        this.notify()
-      } else {
-        this.$emit(
-          'deleted'
-        )
+        if (this.isDeleteWithRedirect) {
+          this.redirect()
+
+          this.notify()
+        } else {
+          this.$emit(
+            'success'
+          )
+        }
       }
     },
-    deletePlaylist,
     redirect () {
       this.$router.push(
         this.profilePlaylistsLink
@@ -116,6 +121,11 @@ export default {
       this.$refs
         .modal
         .show()
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

@@ -34,10 +34,16 @@
 </template>
 
 <script>
+import {
+  shell
+} from 'electron'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import getLastfmToken from '*/helpers/actions/api/lastfm/connect/token/get'
 import getLastfmSession from '*/helpers/actions/api/lastfm/connect/session/get'
+import {
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'ConnectOption',
@@ -53,6 +59,8 @@ export default {
     return {
       error: null,
       token: null,
+      link: null,
+      profileData: null,
       isLoading: false,
       isShowWaitMessage: false
     }
@@ -80,7 +88,27 @@ export default {
       )
     }
   },
+  watch: {
+    token: 'handleTokenChange',
+    profileData: 'handleProfileDataChange'
+  },
   methods: {
+    handleTokenChange () {
+      this.isShowWaitMessage = true
+
+      shell.openExternal(
+        this.link
+      )
+    },
+    handleProfileDataChange (
+      value
+    ) {
+      updateGlobalStore(
+        {
+          'profile.info': value
+        }
+      )
+    },
     handleClick () {
       if (this.token) {
         this.isShowWaitMessage = false

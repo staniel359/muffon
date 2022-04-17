@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
@@ -9,9 +9,6 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url =
     `/communities/${communityId}/${scope}`
 
@@ -19,13 +16,7 @@ export default function (
     store.state.profile.info.id
 
   const params = {
-    profile_id: profileId,
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
-    })
+    profile_id: profileId
   }
 
   const handleSuccess = (
@@ -35,26 +26,15 @@ export default function (
       response.data.community
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

@@ -1,10 +1,9 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
     profileId,
-    token,
     scope = '',
     artistName,
     trackTitle,
@@ -12,10 +11,11 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url = `/profiles/${profileId}/${scope}`
+
+  const {
+    token
+  } = store.state.profile
 
   const otherProfileId =
     store.state.profile?.info?.id
@@ -30,12 +30,6 @@ export default function (
     }),
     ...(trackTitle && {
       track_title: trackTitle
-    }),
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
     })
   }
 
@@ -46,26 +40,15 @@ export default function (
       response.data.profile
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

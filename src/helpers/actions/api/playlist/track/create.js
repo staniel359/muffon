@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
   {
@@ -9,12 +9,10 @@ export default function (
     albumTitle,
     image,
     imageUrl,
-    created
+    created,
+    isSelectable
   }
 ) {
-  this.isError = false
-  this.isLoading = true
-
   const profileId =
     store.state.profile.info.id
 
@@ -35,24 +33,25 @@ export default function (
     created_at: created
   }
 
-  const handleError = (
-    error
+  const handleSuccess = (
+    response
   ) => {
-    this.isError = true
+    if (isSelectable) {
+      this.playlistTrackId =
+          response.data.playlist_track_id
 
-    throw error
+      this.paginationItem
+        .tracks_count = response.data.playlist_tracks_count
+    }
   }
 
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.post(
-    url,
-    params
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
+  return postRequest.bind(
+    this
+  )(
+    {
+      url,
+      params,
+      onSuccess: handleSuccess
+    }
   )
 }

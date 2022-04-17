@@ -1,5 +1,5 @@
-import axios from 'axios'
 import store from '*/plugins/store'
+import getRequest from '*/helpers/actions/api/request/get'
 import formatArtistRequestUrl from '*/helpers/formatters/request/artist/url'
 
 export default function (
@@ -13,9 +13,6 @@ export default function (
     limit
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const url =
     formatArtistRequestUrl(
       {
@@ -28,18 +25,13 @@ export default function (
 
   const profileId =
     store.state.profile.info.id
+
   const lang =
     store.state.profile.language
 
   const params = {
     profile_id: profileId,
     lang,
-    ...(page && {
-      page
-    }),
-    ...(limit && {
-      limit
-    }),
     ...(albumType && {
       album_type: albumType
     })
@@ -60,26 +52,15 @@ export default function (
     }
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
-  const handleFinish = () => {
-    this.isLoading = false
-  }
-
-  return axios.get(
-    url,
+  return getRequest.bind(
+    this
+  )(
     {
-      params
+      url,
+      params,
+      page,
+      limit,
+      onSuccess: handleSuccess
     }
-  ).then(
-    handleSuccess
-  ).catch(
-    handleError
-  ).finally(
-    handleFinish
   )
 }

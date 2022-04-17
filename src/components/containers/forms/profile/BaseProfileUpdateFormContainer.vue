@@ -21,7 +21,10 @@ import {
 import {
   stringToDate as formatStringToDate
 } from '*/helpers/formatters'
-import patchProfile from '*/helpers/actions/api/profile/update'
+import updateProfile from '*/helpers/actions/api/profile/update'
+import {
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'BaseProfileUpdateFormContainer',
@@ -35,8 +38,15 @@ export default {
     return {
       form: null,
       error: null,
+      profileData: null,
       isLoading: false,
-      isSuccess: false
+      isSuccess: false,
+      fields: [
+        'email',
+        'password',
+        'password_confirmation',
+        'nickname'
+      ]
     }
   },
   computed: {
@@ -48,7 +58,11 @@ export default {
       )
     }
   },
+  watch: {
+    profileData: 'handleProfileDataChange'
+  },
   methods: {
+    updateProfile,
     handleInit (
       element
     ) {
@@ -65,11 +79,21 @@ export default {
           fields
         )
 
-      this.patchProfile(
+      this.updateProfile(
         updateArgs
       )
     },
-    patchProfile,
+    handleProfileDataChange (
+      value
+    ) {
+      if (value) {
+        updateGlobalStore(
+          {
+            'profile.info': value
+          }
+        )
+      }
+    },
     formatUpdateArgs (
       fields
     ) {
