@@ -54,6 +54,11 @@ export default {
       this.$refs
         .input
         .focus()
+    },
+    clear () {
+      this.$refs
+        .input
+        .clear()
     }
   }
 }
