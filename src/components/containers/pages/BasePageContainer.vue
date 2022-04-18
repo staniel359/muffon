@@ -1,5 +1,5 @@
 <template>
-  <div ref="container">
+  <div ref="page">
     <BaseErrorMessage
       v-if="isError"
       :error="error"
@@ -64,7 +64,7 @@ export default {
 
     this.$emit(
       'init',
-      this.$refs.container
+      this.$refs.page
     )
   },
   methods: {

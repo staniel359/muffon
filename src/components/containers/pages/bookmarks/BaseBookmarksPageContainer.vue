@@ -1,6 +1,6 @@
 <template>
   <BasePageContainer
-    :response-data="profileData"
+    :response-data="bookmarksData"
     :is-loading="isLoading"
     :error="error"
   >
@@ -69,7 +69,11 @@ export default {
       }
     },
     bookmarksData () {
-      return this.profileData?.bookmarks
+      if (this.isFetchData) {
+        return this.profileData?.bookmarks
+      } else {
+        return {}
+      }
     }
   },
   mounted () {
@@ -77,8 +81,6 @@ export default {
 
     if (this.isFetchData) {
       this.fetchData()
-    } else {
-      this.profileData = {}
     }
   },
   methods: {

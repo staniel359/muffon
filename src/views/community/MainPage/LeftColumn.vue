@@ -1,5 +1,10 @@
 <template>
-  <div class="ui raised segments main-segment-container left-column">
+  <div
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
+  >
     <JoinSegment
       :community-data="communityData"
     />

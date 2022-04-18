@@ -1,6 +1,6 @@
 <template>
   <BasePageContainer
-    :response-data="profileData"
+    :response-data="favoritesData"
     :is-loading="isLoading"
     :error="error"
   >

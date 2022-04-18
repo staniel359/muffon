@@ -5,6 +5,7 @@
     :is-loading="isLoading"
   >
     <BasePaginatedListContainer
+      v-if="responseData"
       ref="list"
       :response-data="responseData"
       :scope="scope"
