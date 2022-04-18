@@ -82,13 +82,13 @@ export default {
         sessionArgs
       )
     },
-    handleProfileIdChange (
+    async handleProfileIdChange (
       value
     ) {
       if (value) {
-        this.setSessionData().then(
-          this.fetchData
-        )
+        await this.setSessionData()
+
+        this.fetchData()
       }
     },
     handleProfileDataChange (
@@ -118,9 +118,8 @@ export default {
     setSessionData () {
       updateGlobalStore(
         {
-          'profile.isLoggedIn': true,
-          'profile.isRemember': this.isRemember,
-          'profile.token': this.token
+          'profile.token': this.token,
+          'profile.isRemember': this.isRemember
         }
       )
     },

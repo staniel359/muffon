@@ -16,9 +16,11 @@ export default function (
     token
   } = store.state.profile
 
+  const online = isOnline ? 1 : 0
+
   const params = {
     token,
-    online: isOnline
+    online
   }
 
   return patchRequest(

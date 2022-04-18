@@ -3,12 +3,14 @@
     v-if="isPlayerWithScrobbling"
   />
 
-  <TheOnlineObserver />
+  <TheSessionObserver />
+
+  <TheExitObserver />
 
   <TheElectronStoreSaver />
 
   <TheBrowserTabs
-    v-if="isProfileLoggedIn"
+    v-if="profileInfo"
   />
   <TheAuthentication v-else />
 </template>
@@ -17,13 +19,12 @@
 import {
   mapState
 } from 'vuex'
-import {
-  ipcRenderer
-} from 'electron'
 import TheScrobblingObserver
   from '*/components/layout/observers/TheScrobblingObserver.vue'
-import TheOnlineObserver
-  from '*/components/layout/observers/TheOnlineObserver.vue'
+import TheSessionObserver
+  from '*/components/layout/observers/TheSessionObserver.vue'
+import TheExitObserver
+  from '*/components/layout/observers/TheExitObserver.vue'
 import TheElectronStoreSaver
   from '*/components/layout/savers/TheElectronStoreSaver.vue'
 import TheBrowserTabs from '*/components/layout/TheBrowserTabs.vue'
@@ -33,7 +34,8 @@ export default {
   name: 'RootPage',
   components: {
     TheScrobblingObserver,
-    TheOnlineObserver,
+    TheSessionObserver,
+    TheExitObserver,
     TheElectronStoreSaver,
     TheBrowserTabs,
     TheAuthentication
@@ -48,29 +50,9 @@ export default {
     ...mapState(
       'profile',
       {
-        isProfileLoggedIn: 'isLoggedIn'
+        profileInfo: 'info'
       }
     )
-  },
-  watch: {
-    isProfileLoggedIn: {
-      immediate: true,
-      handler: 'handleIsProfileLoggedInChange'
-    }
-  },
-  methods: {
-    handleIsProfileLoggedInChange (
-      value
-    ) {
-      if (!value) {
-        this.clearTabs()
-      }
-    },
-    clearTabs () {
-      ipcRenderer.send(
-        'clear-tabs'
-      )
-    }
   }
 }
 </script>

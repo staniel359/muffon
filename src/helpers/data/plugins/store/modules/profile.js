@@ -3,7 +3,6 @@ export default {
   state: {
     info: null,
     token: null,
-    isLoggedIn: false,
     isRemember: false,
     language: null
   },
@@ -19,12 +18,6 @@ export default {
       value
     ) {
       state.token = value
-    },
-    SET_IS_LOGGED_IN (
-      state,
-      value
-    ) {
-      state.isLoggedIn = value
     },
     SET_IS_REMEMBER (
       state,
@@ -59,17 +52,6 @@ export default {
     ) {
       commit(
         'SET_TOKEN',
-        value
-      )
-    },
-    setIsLoggedIn (
-      {
-        commit
-      },
-      value
-    ) {
-      commit(
-        'SET_IS_LOGGED_IN',
         value
       )
     },

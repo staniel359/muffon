@@ -71,9 +71,7 @@ export default {
     tabs: 'handleTabsChange'
   },
   mounted () {
-    ipcRenderer.send(
-      'clear-tabs'
-    )
+    this.clearTabs()
 
     if (this.electronStoreTabs.length) {
       this.addTabsFromElectronStore()
@@ -104,6 +102,9 @@ export default {
       'handle-update-tab',
       this.handleUpdateTab
     )
+  },
+  unmounted () {
+    this.clearTabs()
   },
   methods: {
     handleTabsChange (
@@ -194,6 +195,11 @@ export default {
       this.tabs = [
         ...this.tabs
       ]
+    },
+    clearTabs () {
+      ipcRenderer.send(
+        'clear-tabs'
+      )
     },
     addTabsFromElectronStore () {
       this.electronStoreTabs.forEach(

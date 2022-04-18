@@ -182,6 +182,11 @@ ipcMain.on(
 )
 
 ipcMain.on(
+  'logout',
+  handleLogout
+)
+
+ipcMain.on(
   'exit',
   handleExit
 )
@@ -450,6 +455,12 @@ function handleSetLanguage (
   setTrayMenu()
 }
 
+function handleLogout () {
+  mainWindow.webContents.send(
+    'handle-logout'
+  )
+}
+
 function handleExit () {
   app.exit()
 }
@@ -652,18 +663,6 @@ function hide () {
 }
 
 function exit () {
-  const isRememberProfile =
-    electronStore.get(
-      'profile.isRemember'
-    )
-
-  if (!isRememberProfile) {
-    electronStore.set(
-      'profile.isLoggedIn',
-      false
-    )
-  }
-
   mainWindow.webContents.send(
     'handle-exit'
   )

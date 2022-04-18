@@ -104,7 +104,6 @@ export default {
     ) {
       updateGlobalStore(
         {
-          'profile/store.isLoggedIn': !!value,
           'profile.info': value
         }
       )

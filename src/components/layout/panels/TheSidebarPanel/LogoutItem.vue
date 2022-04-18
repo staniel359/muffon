@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+  ipcRenderer
+} from 'electron'
+import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 
 export default {
   name: 'LogoutItem',
@@ -26,11 +26,11 @@ export default {
   },
   methods: {
     handleClick () {
-      updateGlobalStore(
-        {
-          'profile.isLoggedIn': false,
-          'profile.isRemember': false
-        }
+      this.logout()
+    },
+    logout () {
+      ipcRenderer.send(
+        'logout'
       )
     }
   }

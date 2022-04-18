@@ -31,8 +31,6 @@ export const keysActions = {
     'profile/setInfo',
   'profile.token':
     'profile/setToken',
-  'profile.isLoggedIn':
-    'profile/setIsLoggedIn',
   'profile.isRemember':
     'profile/setIsRemember',
   'profile.language':

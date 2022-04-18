@@ -74,10 +74,6 @@ export default {
     ],
     default: null
   },
-  'profile.isLoggedIn': {
-    type: 'boolean',
-    default: false
-  },
   'profile.isRemember': {
     type: 'boolean',
     default: false
