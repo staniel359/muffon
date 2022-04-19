@@ -1,76 +1,49 @@
 <template>
   <Component
-    :is="component"
-    class="ui item"
-    :class="{
-      disabled: isLoading,
-      'main-link': modelId
-    }"
-    :link="link"
-    @click="handleClick"
-  >
-    <i
-      v-if="isLoading"
-      class="icon"
-    >
-      <div
-        class="ui mini active inline loader"
-      />
-    </i>
-    <i
-      v-else
-      class="headphones icon"
-    />
-
-    {{ libraryText }}
-  </Component>
+    :is="linkComponent"
+    v-if="modelId"
+    :model-id="modelId"
+    @click="handleLinkClick"
+  />
+  <Component
+    :is="addComponent"
+    v-else
+    :artist-name="artistName"
+    :album-title="albumTitle"
+    :track-title="trackTitle"
+    :tracks="albumTracks"
+    :image-url="imageUrl"
+  />
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import createLibraryArtist from '*/helpers/actions/api/library/artist/create'
-import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
-import createLibraryTrack from '*/helpers/actions/api/library/track/create'
-import {
-  main as formatProfileLibraryArtistMainLink
-} from '*/helpers/formatters/links/profile/library/artist'
-import {
-  main as formatProfileLibraryAlbumMainLink
-} from '*/helpers/formatters/links/profile/library/album'
-import {
-  main as formatProfileLibraryTrackMainLink
-} from '*/helpers/formatters/links/profile/library/track'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
+import ArtistLink from './LibraryOption/links/ArtistLink.vue'
+import AlbumLink from './LibraryOption/links/AlbumLink.vue'
+import TrackLink from './LibraryOption/links/TrackLink.vue'
+import ArtistOption from './LibraryOption/ArtistOption.vue'
+import AlbumOption from './LibraryOption/AlbumOption.vue'
+import TrackOption from './LibraryOption/TrackOption.vue'
 
 export default {
   name: 'LibraryOption',
   components: {
-    BaseLinkContainer
+    ArtistLink,
+    AlbumLink,
+    TrackLink,
+    ArtistOption,
+    AlbumOption,
+    TrackOption
   },
-  inject: [
-    'setLibraryId'
-  ],
   props: {
     model: {
       type: String,
       required: true
     },
-    albumTracks: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
     modelId: String,
     artistName: String,
     albumTitle: String,
     trackTitle: String,
+    albumTracks: Array,
     imageUrl: String
   },
   emits: [
@@ -78,162 +51,35 @@ export default {
   ],
   data () {
     return {
-      isLoading: false
+      linkComponents: {
+        artist: 'ArtistLink',
+        album: 'AlbumLink',
+        track: 'TrackLink'
+      },
+      addComponents: {
+        artist: 'ArtistOption',
+        album: 'AlbumOption',
+        track: 'TrackOption'
+      }
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
-    link () {
-      switch (this.model) {
-        case 'artist':
-          return this.profileLibraryArtistMainLink
-        case 'album':
-          return this.profileLibraryAlbumMainLink
-        case 'track':
-          return this.profileLibraryTrackMainLink
-        default:
-          return {}
-      }
+    linkComponent () {
+      return this.linkComponents[
+        this.model
+      ]
     },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink(
-        {
-          profileId: this.profileId,
-          artistId: this.modelId
-        }
-      )
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
-    profileLibraryAlbumMainLink () {
-      return formatProfileLibraryAlbumMainLink(
-        {
-          profileId: this.profileId,
-          albumId: this.modelId
-        }
-      )
-    },
-    profileLibraryTrackMainLink () {
-      return formatProfileLibraryTrackMainLink(
-        {
-          profileId: this.profileId,
-          trackId: this.modelId
-        }
-      )
-    },
-    libraryText () {
-      return this.$t(
-        `actions.${this.libraryTextKey}.library`
-      )
-    },
-    libraryTextKey () {
-      return this.modelId
-        ? 'show'
-        : 'addTo'
-    },
-    albumTracksFormatted () {
-      return this.albumTracks.map(
-        this.formatAlbumTrack
-      )
-    },
-    component () {
-      if (this.modelId) {
-        return 'BaseLinkContainer'
-      } else {
-        return 'div'
-      }
-    },
-    artistCreateArgs () {
-      return {
-        artistName: this.artistName
-      }
-    },
-    albumCreateArgs () {
-      return {
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        albumTracks: this.albumTracksFormatted,
-        imageUrl: this.imageUrl
-      }
-    },
-    trackCreateArgs () {
-      return {
-        trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
-      }
+    addComponent () {
+      return this.addComponents[
+        this.model
+      ]
     }
   },
   methods: {
-    handleClick (
-      event
-    ) {
-      if (this.modelId) {
-        this.$emit(
-          'linkClick'
-        )
-      } else {
-        event.preventDefault()
-
-        this.addToLibrary().then(
-          this.handleCreateSuccess
-        )
-      }
-    },
-    handleCreateSuccess (
-      response
-    ) {
-      const libraryId =
-        response.data.library_id.toString()
-
-      this.setLibraryId(
-        libraryId
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
       )
-    },
-    createLibraryArtist,
-    createLibraryAlbum,
-    createLibraryTrack,
-    addToLibrary () {
-      switch (this.model) {
-        case 'artist':
-          return this.createLibraryArtist(
-            this.artistCreateArgs
-          )
-        case 'album':
-          return this.createLibraryAlbum(
-            this.albumCreateArgs
-          )
-        case 'track':
-          return this.createLibraryTrack(
-            this.trackCreateArgs
-          )
-        default:
-          return null
-      }
-    },
-    formatAlbumTrack (
-      trackData
-    ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists
-        )
-
-      const artistData = {
-        name: artistName
-      }
-
-      return {
-        title: trackData.title,
-        artist: artistData
-      }
     }
   }
 }

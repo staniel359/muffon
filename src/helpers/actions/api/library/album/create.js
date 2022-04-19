@@ -5,10 +5,12 @@ export default function (
   {
     albumTitle,
     artistName,
-    albumTracks,
+    tracks,
     imageUrl
   }
 ) {
+  this.libraryId = null
+
   const profileId =
     store.state.profile.info.id
 
@@ -23,8 +25,15 @@ export default function (
     token,
     title: albumTitle,
     artist_name: artistName,
-    tracks: albumTracks,
+    tracks,
     image_url: imageUrl
+  }
+
+  const handleSuccess = (
+    response
+  ) => {
+    this.libraryId =
+      response.data.library_id.toString()
   }
 
   return postRequest.bind(
@@ -32,7 +41,8 @@ export default function (
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

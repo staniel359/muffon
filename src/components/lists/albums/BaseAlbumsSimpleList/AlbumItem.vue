@@ -69,7 +69,7 @@
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-delete-option="isWithDeleteOption"
-        @delete="handleDeleteOptionClick"
+        @delete-option-click="handleDeleteOptionClick"
         @link-click="handleLinkClick"
       />
 
@@ -78,14 +78,14 @@
         ref="modal"
         model="album"
         :model-data="albumData"
-        @deleted="handleDeleted"
+        @success="handleDeleted"
       />
       <BaseFavoriteDeleteModal
         v-else-if="isFavorite"
         ref="modal"
         model="album"
         :model-data="albumData"
-        @deleted="handleDeleted"
+        @success="handleDeleted"
       />
     </template>
   </BaseAlbumLinkContainer>

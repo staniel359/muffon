@@ -69,8 +69,8 @@
             is-with-favorite-option
             is-with-playlist-option
             is-with-delete-option
-            @delete="handleDeleteOptionClick"
-            @playlist="handlePlaylistOptionClick"
+            @delete-option-click="handleDeleteOptionClick"
+            @playlist-option-click="handlePlaylistOptionClick"
           />
 
           <BasePlaylistsModal

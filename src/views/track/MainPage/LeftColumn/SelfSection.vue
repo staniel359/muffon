@@ -22,7 +22,7 @@
       is-with-bookmark-option
       is-with-listened-option
       is-with-playlist-option
-      @playlist="handlePlaylistOptionClick"
+      @playlist-option-click="handlePlaylistOptionClick"
     />
   </div>
 

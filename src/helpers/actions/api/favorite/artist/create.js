@@ -6,6 +6,8 @@ export default function (
     artistName
   }
 ) {
+  this.favoriteId = null
+
   const profileId =
     store.state.profile.info.id
 
@@ -21,12 +23,20 @@ export default function (
     name: artistName
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.favoriteId =
+      response.data.favorite_id.toString()
+  }
+
   return postRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

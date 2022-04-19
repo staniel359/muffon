@@ -9,6 +9,8 @@ export default function (
     imageUrl
   }
 ) {
+  this.bookmarkId = null
+
   const profileId =
     store.state.profile.info.id
 
@@ -27,12 +29,20 @@ export default function (
     image_url: imageUrl
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.bookmarkId =
+      response.data.bookmark_id.toString()
+  }
+
   return postRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

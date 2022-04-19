@@ -1,39 +1,33 @@
 <template>
-  <div
-    class="item"
-    :class="{
-      disabled: isLoading
-    }"
-    @click.prevent="handleClick"
-  >
-    <i
-      v-if="isLoading"
-      class="icon"
-    >
-      <div
-        class="ui mini active inline loader"
-      />
-    </i>
-    <i
-      v-else
-      class="bookmark icon"
-    />
-
-    {{ bookmarkText }}
-  </div>
+  <DeleteOption
+    v-if="modelId"
+    :model="model"
+    :model-id="modelId"
+  />
+  <Component
+    :is="component"
+    v-else
+    :artist-name="artistName"
+    :album-title="albumTitle"
+    :track-title="trackTitle"
+    :image-url="imageUrl"
+  />
 </template>
 
 <script>
-import deleteBookmark from '*/helpers/actions/api/bookmark/model/delete'
-import createBookmarkArtist from '*/helpers/actions/api/bookmark/artist/create'
-import createBookmarkAlbum from '*/helpers/actions/api/bookmark/album/create'
-import createBookmarkTrack from '*/helpers/actions/api/bookmark/track/create'
+import DeleteOption from './BookmarkOption/DeleteOption.vue'
+import ArtistOption from './BookmarkOption/ArtistOption.vue'
+import AlbumOption from './BookmarkOption/AlbumOption.vue'
+import TrackOption from './BookmarkOption/TrackOption.vue'
 
 export default {
   name: 'BookmarkOption',
-  inject: [
-    'setBookmarkId'
-  ],
+  components: {
+    DeleteOption,
+    ArtistOption,
+    AlbumOption,
+    TrackOption
+  },
   props: {
     model: {
       type: String,
@@ -47,97 +41,18 @@ export default {
   },
   data () {
     return {
-      isLoading: false
+      components: {
+        artist: 'ArtistOption',
+        album: 'AlbumOption',
+        track: 'TrackOption'
+      }
     }
   },
   computed: {
-    bookmarkText () {
-      return this.$t(
-        `actions.${this.bookmarkTextKey}.bookmarks`
-      )
-    },
-    bookmarkTextKey () {
-      return this.modelId
-        ? 'deleteFrom'
-        : 'addTo'
-    },
-    artistCreateArgs () {
-      return {
-        artistName: this.artistName
-      }
-    },
-    albumCreateArgs () {
-      return {
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        imageUrl: this.imageUrl
-      }
-    },
-    trackCreateArgs () {
-      return {
-        trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
-      }
-    },
-    deleteArgs () {
-      return {
-        model: this.model,
-        bookmarkId: this.modelId
-      }
-    }
-  },
-  methods: {
-    handleClick () {
-      if (this.modelId) {
-        this.deleteBookmark(
-          this.deleteArgs
-        ).then(
-          this.handleDeleteSuccess
-        )
-      } else {
-        this.createBookmark().then(
-          this.handleCreateSuccess
-        )
-      }
-    },
-    handleCreateSuccess (
-      response
-    ) {
-      const bookmarkId =
-        response.data.bookmark_id.toString()
-
-      this.setBookmarkId(
-        bookmarkId
-      )
-    },
-    handleDeleteSuccess () {
-      this.setBookmarkId(
-        null
-      )
-    },
-    deleteBookmark,
-    createBookmarkArtist,
-    createBookmarkAlbum,
-    createBookmarkTrack,
-    createBookmark () {
-      switch (this.model) {
-        case 'artist':
-          return this.createBookmarkArtist(
-            this.artistCreateArgs
-          )
-        case 'album':
-          return this.createBookmarkAlbum(
-            this.albumCreateArgs
-          )
-        case 'track':
-          return this.createBookmarkTrack(
-            this.trackCreateArgs
-          )
-        default:
-          return null
-      }
+    component () {
+      return this.components[
+        this.model
+      ]
     }
   }
 }

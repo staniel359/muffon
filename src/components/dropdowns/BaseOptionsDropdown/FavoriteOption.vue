@@ -1,39 +1,33 @@
 <template>
-  <div
-    class="item"
-    :class="{
-      disabled: isLoading
-    }"
-    @click.prevent="handleClick"
-  >
-    <i
-      v-if="isLoading"
-      class="icon"
-    >
-      <div
-        class="ui mini active inline loader"
-      />
-    </i>
-    <i
-      v-else
-      class="star icon"
-    />
-
-    {{ favoriteText }}
-  </div>
+  <DeleteOption
+    v-if="modelId"
+    :model="model"
+    :model-id="modelId"
+  />
+  <Component
+    :is="component"
+    v-else
+    :artist-name="artistName"
+    :album-title="albumTitle"
+    :track-title="trackTitle"
+    :image-url="imageUrl"
+  />
 </template>
 
 <script>
-import deleteFavorite from '*/helpers/actions/api/favorite/model/delete'
-import createFavoriteArtist from '*/helpers/actions/api/favorite/artist/create'
-import createFavoriteAlbum from '*/helpers/actions/api/favorite/album/create'
-import createFavoriteTrack from '*/helpers/actions/api/favorite/track/create'
+import DeleteOption from './FavoriteOption/DeleteOption.vue'
+import ArtistOption from './FavoriteOption/ArtistOption.vue'
+import AlbumOption from './FavoriteOption/AlbumOption.vue'
+import TrackOption from './FavoriteOption/TrackOption.vue'
 
 export default {
   name: 'FavoriteOption',
-  inject: [
-    'setFavoriteId'
-  ],
+  components: {
+    DeleteOption,
+    ArtistOption,
+    AlbumOption,
+    TrackOption
+  },
   props: {
     model: {
       type: String,
@@ -47,97 +41,18 @@ export default {
   },
   data () {
     return {
-      isLoading: false
+      components: {
+        artist: 'ArtistOption',
+        album: 'AlbumOption',
+        track: 'TrackOption'
+      }
     }
   },
   computed: {
-    favoriteText () {
-      return this.$t(
-        `actions.${this.favoriteTextKey}.favorites`
-      )
-    },
-    favoriteTextKey () {
-      return this.modelId
-        ? 'deleteFrom'
-        : 'addTo'
-    },
-    artistCreateArgs () {
-      return {
-        artistName: this.artistName
-      }
-    },
-    albumCreateArgs () {
-      return {
-        albumTitle: this.albumTitle,
-        artistName: this.artistName,
-        imageUrl: this.imageUrl
-      }
-    },
-    trackCreateArgs () {
-      return {
-        trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
-      }
-    },
-    deleteArgs () {
-      return {
-        model: this.model,
-        favoriteId: this.modelId
-      }
-    }
-  },
-  methods: {
-    handleClick () {
-      if (this.modelId) {
-        this.deleteFavorite(
-          this.deleteArgs
-        ).then(
-          this.handleDeleteSuccess
-        )
-      } else {
-        this.createFavorite().then(
-          this.handleCreateSuccess
-        )
-      }
-    },
-    handleCreateSuccess (
-      response
-    ) {
-      const favoriteId =
-        response.data.favorite_id.toString()
-
-      this.setFavoriteId(
-        favoriteId
-      )
-    },
-    handleDeleteSuccess () {
-      this.setFavoriteId(
-        null
-      )
-    },
-    deleteFavorite,
-    createFavoriteArtist,
-    createFavoriteAlbum,
-    createFavoriteTrack,
-    createFavorite () {
-      switch (this.model) {
-        case 'artist':
-          return this.createFavoriteArtist(
-            this.artistCreateArgs
-          )
-        case 'album':
-          return this.createFavoriteAlbum(
-            this.albumCreateArgs
-          )
-        case 'track':
-          return this.createFavoriteTrack(
-            this.trackCreateArgs
-          )
-        default:
-          return null
-      }
+    component () {
+      return this.components[
+        this.model
+      ]
     }
   }
 }

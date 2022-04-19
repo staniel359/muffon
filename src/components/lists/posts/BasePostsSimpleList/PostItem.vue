@@ -58,21 +58,21 @@
         v-if="isWithOptions"
         :is-with-edit-option="isWithEditOption"
         is-with-delete-option
-        @edit="handleEditOptionClick"
-        @delete="handleDeleteOptionClick"
+        @edit-option-click="handleEditOptionClick"
+        @delete-option-click="handleDeleteOptionClick"
       />
 
       <BasePostUpdateModal
         ref="updateModal"
         :post-data="postData"
         :is-with-as-community-option="isCommunityCreator"
-        @updated="handleUpdated"
+        @success="handleUpdated"
       />
 
       <BasePostDeleteModal
         ref="deleteModal"
         :post-data="postData"
-        @deleted="handleDeleted"
+        @success="handleDeleted"
       />
     </template>
   </div>

@@ -3,8 +3,8 @@
     class="item"
     @click="handleClick"
   >
-    <i
-      class="trash alternate outline icon"
+    <BaseIcon
+      icon="trash alternate outline"
     />
 
     {{ deleteText }}
@@ -12,8 +12,13 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'DeleteOption',
+  components: {
+    BaseIcon
+  },
   emits: [
     'click'
   ],

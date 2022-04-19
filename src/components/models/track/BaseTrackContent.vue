@@ -118,8 +118,8 @@
       :is-with-listened-option="isWithListenedOption"
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-delete-option="isWithDeleteOption"
-      @delete="handleDeleteOptionClick"
-      @playlist="handlePlaylistOptionClick"
+      @delete-option-click="handleDeleteOptionClick"
+      @playlist-option-click="handlePlaylistOptionClick"
       @link-click="handleLinkClick"
     />
 
@@ -136,14 +136,14 @@
       ref="deleteModal"
       model="track"
       :model-data="trackData"
-      @deleted="handleDeleted"
+      @success="handleDeleted"
     />
     <BaseFavoriteDeleteModal
       v-else-if="isFavorite"
       ref="deleteModal"
       model="track"
       :model-data="trackData"
-      @deleted="handleDeleted"
+      @success="handleDeleted"
     />
     <BasePlaylistTrackDeleteModal
       v-else-if="isPlaylistTrack"

@@ -6,6 +6,8 @@ export default function (
     artistName
   }
 ) {
+  this.bookmarkId = null
+
   const profileId =
     store.state.profile.info.id
 
@@ -21,12 +23,20 @@ export default function (
     name: artistName
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.bookmarkId =
+      response.data.bookmark_id.toString()
+  }
+
   return postRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

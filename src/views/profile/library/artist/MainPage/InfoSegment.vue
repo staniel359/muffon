@@ -41,7 +41,7 @@
             :favorite-id="favoriteId"
             is-with-favorite-option
             is-with-delete-option
-            @delete="handleDeleteOptionClick"
+            @delete-option-click="handleDeleteOptionClick"
           />
 
           <BaseProfileLibraryDeleteModal

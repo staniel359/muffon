@@ -8,6 +8,8 @@ export default function (
     imageUrl
   }
 ) {
+  this.listenedId = null
+
   const profileId =
     store.state.profile.info.id
 
@@ -25,12 +27,20 @@ export default function (
     image_url: imageUrl
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.listenedId =
+      response.data.listened_id.toString()
+  }
+
   return postRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

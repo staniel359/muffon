@@ -46,7 +46,7 @@
 
       <BaseOptionsDropdown
         :is-with-delete-option="isWithDeleteOption"
-        @delete="handleDeleteOptionClick"
+        @delete-option-click="handleDeleteOptionClick"
       />
     </template>
   </BaseLinkContainer>

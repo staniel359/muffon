@@ -30,12 +30,13 @@ export default {
     }
   },
   emits: [
-    'deleted'
+    'success'
   ],
   data () {
     return {
       error: null,
-      isLoading: false
+      isLoading: false,
+      isSuccess: false
     }
   },
   computed: {
@@ -62,28 +63,36 @@ export default {
       return this.modelData.id
     }
   },
+  watch: {
+    isSuccess: 'handleIsSuccessChange'
+  },
   methods: {
+    deleteBookmark,
     handleDeleteButtonClick () {
       this.deleteBookmark(
         this.deleteArgs
-      ).then(
-        this.handleSuccess
       )
     },
-    handleSuccess () {
-      this.$emit(
-        'deleted'
-      )
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.hide()
 
-      this.$refs
-        .modal
-        .hide()
+        this.$emit(
+          'success'
+        )
+      }
     },
-    deleteBookmark,
     show () {
       this.$refs
         .modal
         .show()
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

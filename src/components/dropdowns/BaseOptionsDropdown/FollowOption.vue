@@ -3,29 +3,12 @@
     :profile-data="profileData"
   >
     <template #default="slotProps">
-      <div
-        class="item"
-        :class="{
-          disabled: slotProps.isLoading
-        }"
-        @click.prevent="slotProps.onClick"
-      >
-        <i
-          v-if="slotProps.isLoading"
-          class="icon"
-        >
-          <div
-            class="ui mini active inline loader"
-          />
-        </i>
-        <i
-          v-else
-          class="icon"
-          :class="slotProps.icon"
-        />
-
-        {{ slotProps.text }}
-      </div>
+      <BaseOption
+        :text="slotProps.text"
+        :icon="slotProps.icon"
+        :is-loading="slotProps.isLoading"
+        @click="slotProps.onClick"
+      />
     </template>
   </BaseProfileFollowButtonContainer>
 </template>
@@ -33,11 +16,13 @@
 <script>
 import BaseProfileFollowButtonContainer
   from '*/components/containers/profile/BaseProfileFollowButtonContainer.vue'
+import BaseOption from './options/BaseOption.vue'
 
 export default {
   name: 'FollowOption',
   components: {
-    BaseProfileFollowButtonContainer
+    BaseProfileFollowButtonContainer,
+    BaseOption
   },
   props: {
     profileData: Object

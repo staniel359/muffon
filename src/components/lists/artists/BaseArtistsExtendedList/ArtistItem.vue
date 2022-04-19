@@ -53,7 +53,7 @@
                   :is-with-bookmark-option="isWithBookmarkOption"
                   :is-with-listened-option="isWithListenedOption"
                   :is-with-delete-option="isWithDeleteOption"
-                  @delete="handleDeleteOptionClick"
+                  @delete-option-click="handleDeleteOptionClick"
                 />
               </div>
             </div>

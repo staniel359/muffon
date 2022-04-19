@@ -54,8 +54,8 @@
           class="community-options"
           :is-with-edit-option="isCommunityCreator"
           :is-with-delete-option="isCommunityCreator"
-          @edit="handleEditOptionClick"
-          @delete="handleDeleteOptionClick"
+          @edit-option-click="handleEditOptionClick"
+          @delete-option-click="handleDeleteOptionClick"
         />
       </div>
     </div>

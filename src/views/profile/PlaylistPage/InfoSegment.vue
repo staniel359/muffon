@@ -29,8 +29,8 @@
           class="playlist-options"
           :is-with-edit-option="isWithEditOption"
           :is-with-delete-option="isWithDeleteOption"
-          @edit="handleEditOptionClick"
-          @delete="handleDeleteOptionClick"
+          @edit-option-click="handleEditOptionClick"
+          @delete-option-click="handleDeleteOptionClick"
         />
       </div>
     </div>

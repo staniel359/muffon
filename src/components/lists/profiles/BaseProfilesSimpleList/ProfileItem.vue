@@ -59,7 +59,7 @@
         :profile-data="profileData"
         is-with-follow-option
         is-with-message-option
-        @message="handleMessageOptionClick"
+        @message-option-click="handleMessageOptionClick"
       />
 
       <BaseProfileMessageModal

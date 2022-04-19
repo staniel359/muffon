@@ -22,21 +22,13 @@ export default function (
     token
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-
-    throw error
-  }
-
   return deleteRequest.bind(
     this
   )(
     {
       url,
       params,
-      onError: handleError
+      isSaveError: true
     }
   )
 }

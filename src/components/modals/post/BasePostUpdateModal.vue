@@ -95,7 +95,7 @@ export default {
     isWithAsCommunityOption: Boolean
   },
   emits: [
-    'updated'
+    'success'
   ],
   data () {
     return {
@@ -149,7 +149,7 @@ export default {
       value
     ) {
       this.$emit(
-        'updated',
+        'success',
         value
       )
     },

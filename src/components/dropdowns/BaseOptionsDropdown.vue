@@ -30,7 +30,7 @@
           :image-url="imageUrl"
           :profile-data="optionData.profileData"
           :community-data="optionData.communityData"
-          @click="optionData.action"
+          @click="optionData.onClick"
           @link-click="handleLinkClick"
         />
       </div>
@@ -111,12 +111,11 @@ export default {
     communityData: Object
   },
   emits: [
-    'click',
-    'playlist',
-    'edit',
-    'delete',
-    'message',
-    'linkClick'
+    'linkClick',
+    'playlistOptionClick',
+    'editOptionClick',
+    'deleteOptionClick',
+    'messageOptionClick'
   ],
   data () {
     return {
@@ -189,67 +188,61 @@ export default {
     libraryOption () {
       return {
         component: 'LibraryOption',
-        modelId: this.libraryId,
-        action: this.handleClick
+        modelId: this.libraryId
       }
     },
     playlistOption () {
       return {
         component: 'PlaylistOption',
-        action: this.handlePlaylistOptionClick
+        onClick: this.handlePlaylistOptionClick
       }
     },
     favoriteOption () {
       return {
         component: 'FavoriteOption',
-        modelId: this.favoriteId,
-        action: this.handleClick
+        modelId: this.favoriteId
       }
     },
     bookmarkOption () {
       return {
         component: 'BookmarkOption',
-        modelId: this.bookmarkId,
-        action: this.handleClick
+        modelId: this.bookmarkId
       }
     },
     listenedOption () {
       return {
         component: 'ListenedOption',
-        modelId: this.listenedId,
-        action: this.handleClick
+        modelId: this.listenedId
       }
     },
     editOption () {
       return {
         component: 'EditOption',
-        action: this.handleEditOptionClick
+        onClick: this.handleEditOptionClick
       }
     },
     deleteOption () {
       return {
         component: 'DeleteOption',
-        action: this.handleDeleteOptionClick
+        onClick: this.handleDeleteOptionClick
       }
     },
     followOption () {
       return {
         component: 'FollowOption',
-        profileData: this.profileData,
-        action: this.handleClick
+        profileData: this.profileData
       }
     },
     joinOption () {
       return {
         component: 'joinOption',
-        communityData: this.communityData,
-        action: this.handleClick
+        communityData: this.communityData
       }
     },
     messageOption () {
       return {
         component: 'MessageOption',
-        action: this.handleMessageOptionClick
+        onClick: this.handleMessageOptionClick
       }
     },
     optionsCollection () {
@@ -281,29 +274,24 @@ export default {
     ) {
       this.dropdown = element
     },
-    handleClick () {
-      this.$emit(
-        'click'
-      )
-    },
     handlePlaylistOptionClick () {
       this.$emit(
-        'playlist'
+        'playlistOptionClick'
       )
     },
     handleEditOptionClick () {
       this.$emit(
-        'edit'
+        'editOptionClick'
       )
     },
     handleDeleteOptionClick () {
       this.$emit(
-        'delete'
+        'deleteOptionClick'
       )
     },
     handleMessageOptionClick () {
       this.$emit(
-        'message'
+        'messageOptionClick'
       )
     },
     handleLinkClick () {
