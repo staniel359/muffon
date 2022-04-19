@@ -25,6 +25,7 @@
     "axios": "^0.26.1",
     "camel-case": "^4.1.2",
     "core-js": "^3.22.0",
+    "dayjs": "^1.11.1",
     "deepmerge": "^4.2.2",
     "electron-store": "^8.0.1",
     "fomantic-ui": "^2.8.8",

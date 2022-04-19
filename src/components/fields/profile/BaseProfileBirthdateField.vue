@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
 import {
   setCalendar,
@@ -38,24 +41,41 @@ export default {
     value: String
   },
   computed: {
+    ...mapState(
+      'profile',
+      {
+        profileLanguage: 'language'
+      }
+    ),
     birthdateText () {
       return this.$t(
         'forms.fields.birthdate'
       )
     }
   },
-  async mounted () {
-    setCalendarDate(
-      this.$refs.calendar,
-      this.value
-    )
+  watch: {
+    profileLanguage: 'handleProfileLanguageChange'
+  },
+  mounted () {
+    this.initialize()
+  },
+  methods: {
+    handleProfileLanguageChange () {
+      this.initialize()
+    },
+    async initialize () {
+      setCalendarDate(
+        this.$refs.calendar,
+        this.value
+      )
 
-    await this.$nextTick()
+      await this.$nextTick()
 
-    setCalendar(
-      this.$refs.calendar,
-      birthdateCalendarOptions()
-    )
+      setCalendar(
+        this.$refs.calendar,
+        birthdateCalendarOptions()
+      )
+    }
   }
 }
 </script>

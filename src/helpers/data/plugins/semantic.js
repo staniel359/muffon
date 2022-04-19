@@ -1,3 +1,8 @@
+import dayjs from 'dayjs'
+import localeData from 'dayjs/plugin/localeData'
+import 'dayjs/locale/en'
+import 'dayjs/locale/it'
+import 'dayjs/locale/ru'
 import store from '*/plugins/store'
 import i18n from '*/plugins/i18n'
 
@@ -105,7 +110,10 @@ export function sourcePopupOptions (
 ) {
   const variation = [
     'basic small',
-    (isDarkMode && 'inverted')
+    (
+      isDarkMode &&
+        'inverted'
+    )
   ].filter(
     e => e
   ).join(
@@ -132,7 +140,9 @@ export function mainDropdownOptions (
     visibleContext
   } = store.state.layout
 
-  const context = visibleContext || 'body'
+  const context = (
+    visibleContext || 'body'
+  )
 
   return {
     on: 'hover',
@@ -182,12 +192,15 @@ export function loginFormOptions (
     onSuccess
   }
 ) {
-  const emptyEmailPrompt = i18n.global.t(
-    'forms.errors.empty.email'
-  )
-  const emptyPasswordPrompt = i18n.global.t(
-    'forms.errors.empty.password'
-  )
+  const emptyEmailPrompt =
+    i18n.global.t(
+      'forms.errors.empty.email'
+    )
+
+  const emptyPasswordPrompt =
+    i18n.global.t(
+      'forms.errors.empty.password'
+    )
 
   return {
     duration: 0,
@@ -221,18 +234,25 @@ export function profileCreateFormOptions (
     onSuccess
   }
 ) {
-  const emptyEmailPrompt = i18n.global.t(
-    'forms.errors.empty.email'
-  )
-  const emptyPasswordPrompt = i18n.global.t(
-    'forms.errors.empty.password'
-  )
-  const emptyPasswordConfirmationPrompt = i18n.global.t(
-    'forms.errors.empty.passwordConfirmation'
-  )
-  const emptyNicknamePrompt = i18n.global.t(
-    'forms.errors.empty.nickname'
-  )
+  const emptyEmailPrompt =
+    i18n.global.t(
+      'forms.errors.empty.email'
+    )
+
+  const emptyPasswordPrompt =
+    i18n.global.t(
+      'forms.errors.empty.password'
+    )
+
+  const emptyPasswordConfirmationPrompt =
+    i18n.global.t(
+      'forms.errors.empty.passwordConfirmation'
+    )
+
+  const emptyNicknamePrompt =
+    i18n.global.t(
+      'forms.errors.empty.nickname'
+    )
 
   return {
     duration: 0,
@@ -284,15 +304,20 @@ export function profileUpdateFormOptions (
     onSuccess
   }
 ) {
-  const emptyEmailPrompt = i18n.global.t(
-    'forms.errors.empty.email'
-  )
-  const emptyPasswordConfirmationPrompt = i18n.global.t(
-    'forms.errors.empty.passwordConfirmation'
-  )
-  const emptyNicknamePrompt = i18n.global.t(
-    'forms.errors.empty.nickname'
-  )
+  const emptyEmailPrompt =
+    i18n.global.t(
+      'forms.errors.empty.email'
+    )
+
+  const emptyPasswordConfirmationPrompt =
+    i18n.global.t(
+      'forms.errors.empty.passwordConfirmation'
+    )
+
+  const emptyNicknamePrompt =
+    i18n.global.t(
+      'forms.errors.empty.nickname'
+    )
 
   return {
     duration: 0,
@@ -340,9 +365,10 @@ export function playlistFormOptions (
     onSuccess
   }
 ) {
-  const emptyTitlePrompt = i18n.global.t(
-    'forms.errors.empty.title'
-  )
+  const emptyTitlePrompt =
+    i18n.global.t(
+      'forms.errors.empty.title'
+    )
 
   return {
     duration: 0,
@@ -387,9 +413,10 @@ export function communityFormOptions (
     onSuccess
   }
 ) {
-  const emptyTitlePrompt = i18n.global.t(
-    'forms.errors.empty.title'
-  )
+  const emptyTitlePrompt =
+    i18n.global.t(
+      'forms.errors.empty.title'
+    )
 
   return {
     duration: 0,
@@ -410,22 +437,53 @@ export function communityFormOptions (
 }
 
 export function birthdateCalendarOptions () {
-  const today = new Date()
-  const minDate = new Date(
-    today.getFullYear() - 100,
-    today.getMonth() + 1,
-    today.getDate()
+  const {
+    language
+  } = store.state.profile
+
+  dayjs.extend(
+    localeData
   )
+
+  dayjs.locale(
+    language
+  )
+
+  const days = dayjs.weekdaysMin()
+  const months = dayjs.months()
+  const monthsShort = dayjs.monthsShort()
+
+  const today = new Date()
+
+  const year = today.getFullYear()
+  const month = today.getMonth()
+  const day = today.getDate()
+
+  const minDate = new Date(
+    year - 100,
+    month,
+    day
+  )
+
   const maxDate = new Date(
-    today.getFullYear(),
-    today.getMonth() + 1,
-    today.getDate()
+    year,
+    month,
+    day
   )
 
   return {
-    type: 'date',
+    firstDayOfWeek: 1,
     monthFirst: false,
     startMode: 'year',
+    type: 'date',
+    popupOptions: {
+      position: 'top left'
+    },
+    text: {
+      days,
+      months,
+      monthsShort
+    },
     minDate,
     maxDate
   }
