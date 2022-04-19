@@ -5,8 +5,8 @@
   <InteractiveImage
     v-else-if="isRenderInteractive"
     :artist-name="artistName"
-    :images="images"
-    :image-data="image"
+    :images="imagesFetched"
+    :image-data="imageFetched"
   />
   <BaseImage
     v-else
@@ -20,8 +20,7 @@
 import BaseImagePlaceholder from '*/components/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
-import getArtistImage from '*/helpers/actions/api/artist/image/get'
-import getArtistImages from '*/helpers/actions/api/artist/images/get'
+import getArtist from '*/helpers/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistImage',
@@ -44,8 +43,7 @@ export default {
   ],
   data () {
     return {
-      image: null,
-      images: null,
+      artistData: null,
       isLoading: false
     }
   },
@@ -53,20 +51,33 @@ export default {
     isRenderInteractive () {
       return (
         this.isInteractive &&
-          this.image &&
-          this.images?.length
+          this.imageFetched &&
+          this.imagesFetched?.length
       )
+    },
+    imageFetched () {
+      return this.artistData?.image
+    },
+    imagesFetched () {
+      return this.artistData?.images
     },
     artistImageArgs () {
       return {
         artistName: this.artistName,
-        isInteractive: this.isInteractive
+        scope: this.scope
+      }
+    },
+    scope () {
+      if (this.isInteractive) {
+        return 'images'
+      } else {
+        return 'image'
       }
     },
     imageConditional () {
       return (
         this.imageData ||
-          this.image
+          this.imageFetched
       )?.[this.size]
     }
   },
@@ -75,9 +86,10 @@ export default {
       immediate: true,
       handler: 'handleArtistNameChange'
     },
-    image: 'handleImageChange'
+    imageFetched: 'handleImageFetchedChange'
   },
   methods: {
+    getArtist,
     handleArtistNameChange (
       newValue,
       oldValue
@@ -97,7 +109,7 @@ export default {
         this.fetchData()
       }
     },
-    handleImageChange (
+    handleImageFetchedChange (
       value
     ) {
       this.$emit(
@@ -105,8 +117,6 @@ export default {
         value
       )
     },
-    getArtistImage,
-    getArtistImages,
     isArtistNameChanged (
       newValue,
       oldValue
@@ -126,15 +136,9 @@ export default {
       return value?.trim()?.toLowerCase()
     },
     fetchData () {
-      if (this.isInteractive) {
-        return this.getArtistImages(
-          this.artistImageArgs
-        )
-      } else {
-        return this.getArtistImage(
-          this.artistImageArgs
-        )
-      }
+      this.getArtist(
+        this.artistImageArgs
+      )
     }
   }
 }
