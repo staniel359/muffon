@@ -27,8 +27,8 @@
 
         <BaseOptionsDropdown
           class="playlist-options"
-          :is-with-edit-option="isWithEditOption"
-          :is-with-delete-option="isWithDeleteOption"
+          :is-with-edit-option="isSelf"
+          :is-with-delete-option="isSelf"
           @edit-option-click="handleEditOptionClick"
           @delete-option-click="handleDeleteOptionClick"
         />
@@ -117,12 +117,7 @@ export default {
     created () {
       return this.playlistData.created
     },
-    isWithEditOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

@@ -6,7 +6,7 @@
   >
     <template #default>
       <CompatibilitySegment
-        v-if="isRenderCompatibility"
+        v-if="!isSelf"
         :profile-id="profileId"
         :profile-nickname="profileNickname"
       />
@@ -51,8 +51,8 @@ export default {
     profileNickname: String
   },
   computed: {
-    isRenderCompatibility () {
-      return !isCurrentProfile(
+    isSelf () {
+      return isCurrentProfile(
         this.profileId
       )
     },

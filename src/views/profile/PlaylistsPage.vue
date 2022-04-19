@@ -15,7 +15,7 @@
           class="top-segment"
         >
           <BasePlaylistCreateButton
-            v-if="isRenderCreateButton"
+            v-if="isSelf"
           />
 
           <BaseLink
@@ -73,7 +73,10 @@ export default {
     BasePlaylistsSimpleList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -82,7 +85,7 @@ export default {
     }
   },
   computed: {
-    isRenderCreateButton () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

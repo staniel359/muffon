@@ -50,7 +50,7 @@
       </BaseLinkContainer>
 
       <div
-        v-if="favoriteId || isRenderOptions"
+        v-if="favoriteId || isSelf"
         class="main-self-container"
       >
         <BaseSelfIcons
@@ -58,7 +58,7 @@
         />
 
         <template
-          v-if="isRenderOptions"
+          v-if="isSelf"
         >
           <BaseOptionsDropdown
             model="track"
@@ -158,8 +158,11 @@ export default {
     }
   },
   props: {
+    profileId: {
+      type: String,
+      required: true
+    },
     trackData: Object,
-    profileId: String,
     trackId: String
   },
   data () {
@@ -257,7 +260,7 @@ export default {
     created () {
       return this.trackData.created
     },
-    isRenderOptions () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

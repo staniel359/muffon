@@ -17,7 +17,7 @@
         />
 
         <ImportSegment
-          v-if="isRenderImport"
+          v-if="isSelf"
           :playlist-id="playlistId"
         />
 
@@ -50,11 +50,14 @@ export default {
     TracksSegment
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     playlistId: String
   },
   computed: {
-    isRenderImport () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

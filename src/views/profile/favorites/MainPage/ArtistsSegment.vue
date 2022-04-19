@@ -8,7 +8,7 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-delete-option="isSelf"
         is-favorite
       />
     </template>
@@ -23,6 +23,9 @@ import BaseArtistsSimpleList
 import {
   artists as formatProfileFavoriteArtistsLink
 } from '*/helpers/formatters/links/profile/favorites'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'ArtistsSegment',
@@ -34,8 +37,7 @@ export default {
     profileId: {
       type: String,
       required: true
-    },
-    isWithDeleteOption: Boolean
+    }
   },
   data () {
     return {
@@ -49,6 +51,11 @@ export default {
         {
           profileId: this.profileId
         }
+      )
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
       )
     }
   }

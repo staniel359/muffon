@@ -45,7 +45,7 @@
       </div>
 
       <BaseOptionsDropdown
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-delete-option="isSelf"
         @delete-option-click="handleDeleteOptionClick"
       />
     </template>
@@ -176,7 +176,7 @@ export default {
     uuid () {
       return this.playlistData.uuid
     },
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

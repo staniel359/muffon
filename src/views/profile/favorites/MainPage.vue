@@ -4,17 +4,14 @@
   >
     <ArtistsSegment
       :profile-id="profileId"
-      :is-with-delete-option="isWithDeleteOption"
     />
 
     <AlbumsSegment
       :profile-id="profileId"
-      :is-with-delete-option="isWithDeleteOption"
     />
 
     <TracksSegment
       :profile-id="profileId"
-      :is-with-delete-option="isWithDeleteOption"
     />
   </BaseProfileFavoritesPageContainer>
 </template>
@@ -25,9 +22,6 @@ import BaseProfileFavoritesPageContainer
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
-import {
-  isCurrentProfile
-} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',
@@ -41,13 +35,6 @@ export default {
     profileId: {
       type: String,
       required: true
-    }
-  },
-  computed: {
-    isWithDeleteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
     }
   }
 }

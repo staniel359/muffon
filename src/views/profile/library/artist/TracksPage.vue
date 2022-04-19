@@ -10,8 +10,8 @@
         :tracks="slotProps[scope]"
         :profile-id="profileId"
         :artist-name="slotProps.artistName"
-        :is-with-favorite-option="isWithFavoriteOption"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-favorite-option="isSelf"
+        :is-with-delete-option="isSelf"
         is-with-image
         is-with-album-title
         is-with-created
@@ -38,7 +38,10 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     artistId: String
   },
   data () {
@@ -48,12 +51,7 @@ export default {
     }
   },
   computed: {
-    isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

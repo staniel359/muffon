@@ -7,8 +7,8 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :is-with-playlist-option="isWithPlaylistOption"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-playlist-option="isSelf"
+        :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -34,7 +34,10 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -43,12 +46,7 @@ export default {
     }
   },
   computed: {
-    isWithPlaylistOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

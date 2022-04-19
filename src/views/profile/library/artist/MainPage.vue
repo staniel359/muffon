@@ -26,15 +26,12 @@
           <AlbumsSegment
             :profile-id="profileId"
             :artist-id="artistId"
-            :is-with-favorite-option="isWithFavoriteOption"
           />
 
           <TracksSegment
             :profile-id="profileId"
             :artist-id="artistId"
             :artist-name="slotProps.artistName"
-            :is-with-favorite-option="isWithFavoriteOption"
-            :is-with-delete-option="isWithDeleteOption"
           />
         </div>
       </div>
@@ -49,9 +46,6 @@ import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
-import {
-  isCurrentProfile
-} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',
@@ -65,18 +59,6 @@ export default {
   props: {
     profileId: String,
     artistId: String
-  },
-  computed: {
-    isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    }
   }
 }
 </script>

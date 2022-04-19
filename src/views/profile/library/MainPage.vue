@@ -8,23 +8,19 @@
       />
 
       <ImportSegment
-        v-if="isRenderImportSegment"
+        v-if="isSelf"
       />
 
       <ArtistsSegment
         :profile-id="profileId"
-        :is-with-favorite-option="isWithFavoriteOption"
       />
 
       <AlbumsSegment
         :profile-id="profileId"
-        :is-with-favorite-option="isWithFavoriteOption"
       />
 
       <TracksSegment
         :profile-id="profileId"
-        :is-with-favorite-option="isWithFavoriteOption"
-        :is-with-delete-option="isWithDeleteOption"
       />
 
       <TagsSegment
@@ -59,20 +55,13 @@ export default {
     TagsSegment
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   computed: {
-    isRenderImportSegment () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

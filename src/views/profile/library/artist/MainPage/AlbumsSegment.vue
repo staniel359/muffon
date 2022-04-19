@@ -12,7 +12,7 @@
         :profile-id="profileId"
         :artist-name="slotProps.artistName"
         :items-in-row="itemsInRow"
-        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-favorite-option="isSelf"
         is-with-library
         is-link-to-library
       />
@@ -28,6 +28,9 @@ import BaseAlbumsTableList
 import {
   albums as formatProfileLibraryArtistAlbumsLink
 } from '*/helpers/formatters/links/profile/library/artist'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'AlbumsSegment',
@@ -43,8 +46,7 @@ export default {
     artistId: {
       type: String,
       required: true
-    },
-    isWithFavoriteOption: Boolean
+    }
   },
   data () {
     return {
@@ -60,6 +62,11 @@ export default {
           profileId: this.profileId,
           artistId: this.artistId
         }
+      )
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
       )
     }
   }

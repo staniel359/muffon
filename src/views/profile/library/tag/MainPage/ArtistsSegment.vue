@@ -11,7 +11,7 @@
         :artists="slotProps[scope]"
         :profile-id="profileId"
         :items-in-row="itemsInRow"
-        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-favorite-option="isSelf"
         is-link-to-library
         is-with-library
       />
@@ -27,6 +27,9 @@ import BaseArtistsTableList
 import {
   artists as formatProfileLibraryTagArtistsLink
 } from '*/helpers/formatters/links/profile/library/tag'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'ArtistsSegment',
@@ -42,8 +45,7 @@ export default {
     tagId: {
       type: String,
       required: true
-    },
-    isWithFavoriteOption: Boolean
+    }
   },
   data () {
     return {
@@ -59,6 +61,11 @@ export default {
           profileId: this.profileId,
           tagId: this.tagId
         }
+      )
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
       )
     }
   }

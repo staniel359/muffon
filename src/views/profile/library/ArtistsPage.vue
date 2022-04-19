@@ -13,7 +13,7 @@
         :top-tracks-count="slotProps.topTracksCount"
         :top-albums-count="slotProps.topAlbumsCount"
         :view-index="viewIndex"
-        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-favorite-option="isSelf"
         is-with-library
         is-link-to-library
       />
@@ -40,7 +40,10 @@ export default {
     viewChangeMixin
   ],
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -48,7 +51,7 @@ export default {
     }
   },
   computed: {
-    isWithFavoriteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

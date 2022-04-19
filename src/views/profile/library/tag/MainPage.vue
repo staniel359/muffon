@@ -24,7 +24,6 @@
           <ArtistsSegment
             :profile-id="profileId"
             :tag-id="tagId"
-            :is-with-favorite-option="isWithFavoriteOption"
           />
         </div>
       </div>
@@ -38,9 +37,6 @@ import BaseProfileLibraryTagPageContainer
 import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
-import {
-  isCurrentProfile
-} from '*/helpers/utils'
 
 export default {
   name: 'MainPage',
@@ -53,13 +49,6 @@ export default {
   props: {
     profileId: String,
     tagId: String
-  },
-  computed: {
-    isWithFavoriteOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    }
   }
 }
 </script>

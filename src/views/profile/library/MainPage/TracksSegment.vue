@@ -9,8 +9,8 @@
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :profile-id="profileId"
-        :is-with-favorite-option="isWithFavoriteOption"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-favorite-option="isSelf"
+        :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -30,6 +30,9 @@ import BaseTracksSimpleList
 import {
   tracks as formatProfileLibraryTracksLink
 } from '*/helpers/formatters/links/profile/library'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'TracksSegment',
@@ -41,9 +44,7 @@ export default {
     profileId: {
       type: String,
       required: true
-    },
-    isWithFavoriteOption: Boolean,
-    isWithDeleteOption: Boolean
+    }
   },
   data () {
     return {
@@ -57,6 +58,11 @@ export default {
         {
           profileId: this.profileId
         }
+      )
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
       )
     }
   }

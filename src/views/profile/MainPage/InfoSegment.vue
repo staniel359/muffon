@@ -10,7 +10,7 @@
       :profile-data="profileData"
     />
 
-    <template v-if="isRenderProfileSection">
+    <template v-if="!isSelf">
       <FollowSection
         :profile-data="profileData"
       />
@@ -46,8 +46,8 @@ export default {
     profileData: Object
   },
   computed: {
-    isRenderProfileSection () {
-      return !isCurrentProfile(
+    isSelf () {
+      return isCurrentProfile(
         this.profileId
       )
     },

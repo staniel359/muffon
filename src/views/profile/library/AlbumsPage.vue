@@ -9,7 +9,7 @@
         :albums="slotProps[scope]"
         :profile-id="profileId"
         :items-in-row="itemsInRow"
-        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-favorite-option="isSelf"
         is-with-artist-name
         is-with-library
         is-link-to-library
@@ -34,7 +34,10 @@ export default {
     BaseAlbumsTableList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -44,7 +47,7 @@ export default {
     }
   },
   computed: {
-    isWithFavoriteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

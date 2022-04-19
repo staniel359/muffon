@@ -25,7 +25,7 @@
       </BaseLinkContainer>
 
       <div
-        v-if="favoriteId || isRenderOptions"
+        v-if="favoriteId || isSelf"
         class="main-self-container"
       >
         <BaseSelfIcons
@@ -33,7 +33,7 @@
         />
 
         <template
-          v-if="isRenderOptions"
+          v-if="isSelf"
         >
           <BaseOptionsDropdown
             model="artist"
@@ -111,8 +111,11 @@ export default {
     }
   },
   props: {
+    profileId: {
+      type: String,
+      required: true
+    },
     artistData: Object,
-    profileId: String,
     artistId: String
   },
   data () {
@@ -147,7 +150,7 @@ export default {
     created () {
       return this.artistData.created
     },
-    isRenderOptions () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

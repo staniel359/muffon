@@ -7,7 +7,7 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        :is-with-delete-option="isWithDeleteOption"
+        :is-with-delete-option="isSelf"
         is-favorite
       />
     </template>
@@ -30,7 +30,10 @@ export default {
     BaseArtistsSimpleList
   },
   props: {
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
@@ -39,7 +42,7 @@ export default {
     }
   },
   computed: {
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

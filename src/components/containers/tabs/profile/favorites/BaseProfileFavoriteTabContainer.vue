@@ -20,8 +20,8 @@
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :profile-id="profileId"
-          :is-with-playlist-option="isWithPlaylistOption"
-          :is-with-delete-option="isWithDeleteOption"
+          :is-with-playlist-option="isSelf"
+          :is-with-delete-option="isSelf"
           is-with-image
           is-with-artist-name
           is-with-album-title
@@ -62,8 +62,11 @@ export default {
       type: Object,
       required: true
     },
-    isActive: Boolean,
-    profileId: String
+    profileId: {
+      type: String,
+      required: true
+    },
+    isActive: Boolean
   },
   emits: [
     'focus'
@@ -93,12 +96,7 @@ export default {
     favoritesData () {
       return this.profileData?.favorites
     },
-    isWithPlaylistOption () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    isWithDeleteOption () {
+    isSelf () {
       return isCurrentProfile(
         this.profileId
       )

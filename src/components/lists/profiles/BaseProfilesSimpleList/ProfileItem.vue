@@ -54,7 +54,7 @@
       />
     </small>
 
-    <template v-if="isRenderOptions">
+    <template v-if="!isSelf">
       <BaseOptionsDropdown
         :profile-data="profileData"
         is-with-follow-option
@@ -158,8 +158,8 @@ export default {
         `roles.${this.role}`
       )
     },
-    isRenderOptions () {
-      return !isCurrentProfile(
+    isSelf () {
+      return isCurrentProfile(
         this.profileId
       )
     },
