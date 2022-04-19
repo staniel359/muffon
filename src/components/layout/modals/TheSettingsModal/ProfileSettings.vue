@@ -1,6 +1,8 @@
 <template>
   <div>
-    <InfoOptions />
+    <InfoOptions
+      :is-active="isActive"
+    />
   </div>
 </template>
 
@@ -11,6 +13,9 @@ export default {
   name: 'ProfileSettings',
   components: {
     InfoOptions
+  },
+  props: {
+    isActive: Boolean
   }
 }
 </script>

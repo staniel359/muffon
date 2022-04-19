@@ -5,7 +5,9 @@
       is-horizontal
     />
 
-    <BaseProfileUpdateForm />
+    <BaseProfileUpdateForm
+      :is-active="isActive"
+    />
   </div>
 </template>
 
@@ -19,6 +21,9 @@ export default {
   components: {
     BaseDivider,
     BaseProfileUpdateForm
+  },
+  props: {
+    isActive: Boolean
   },
   computed: {
     infoText () {

@@ -12,6 +12,7 @@
       />
 
       <BaseProfileBirthdateField
+        :key="key"
         :value="birthdate"
       />
 
@@ -42,6 +43,9 @@ import BaseProfileCountryField
   from '*/components/fields/profile/BaseProfileCountryField.vue'
 import BaseProfileCityField
   from '*/components/fields/profile/BaseProfileCityField.vue'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'ExtraSection',
@@ -52,9 +56,17 @@ export default {
     BaseProfileCountryField,
     BaseProfileCityField
   },
+  props: {
+    isActive: Boolean
+  },
   emits: [
     'imageChange'
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
   computed: {
     ...mapState(
       'profile',
@@ -78,6 +90,9 @@ export default {
       return this.profileInfo.city
     }
   },
+  watch: {
+    isActive: 'handleIsActiveChange'
+  },
   methods: {
     handleImageChange (
       value
@@ -86,6 +101,13 @@ export default {
         'imageChange',
         value
       )
+    },
+    handleIsActiveChange (
+      value
+    ) {
+      if (value) {
+        this.key = generateKey()
+      }
     }
   }
 }

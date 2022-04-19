@@ -9,6 +9,7 @@
     <BaseDivider />
 
     <ExtraSection
+      :is-active="isActive"
       @image-change="handleImageChange"
     />
 
@@ -38,6 +39,9 @@ export default {
     BaseDivider,
     ExtraSection,
     BaseSubmitButton
+  },
+  props: {
+    isActive: Boolean
   },
   data () {
     return {
