@@ -21,8 +21,9 @@
       @click.prevent="handleMoreClick"
     >
       <template #default>
-        <i
-          class="ellipsis horizontal small icon link"
+        <BaseIcon
+          class="link"
+          icon="small ellipsis horizontal"
         />
       </template>
     </BaseLabelLinkContainer>

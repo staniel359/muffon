@@ -11,10 +11,9 @@
     />
 
     <template v-else>
-      <i
+      <BaseIcon
         v-if="icon && !isReverse"
-        class="icon"
-        :class="icon"
+        :icon="icon"
         @click="handleIconClick"
       />
 
@@ -24,10 +23,9 @@
         v-text="text"
       />
 
-      <i
+      <BaseIcon
         v-if="icon && isReverse"
-        class="icon"
-        :class="icon"
+        :icon="icon"
         @click="handleIconClick"
       />
     </template>
@@ -38,9 +36,13 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseLabel',
+  components: {
+    BaseIcon
+  },
   props: {
     icon: String,
     text: String,

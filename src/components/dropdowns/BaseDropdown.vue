@@ -14,7 +14,7 @@
     >
       <BaseIcon
         v-if="optionData.icon"
-        class="main-dropdown-icon colored"
+        class="colored main-dropdown-icon"
         :icon="optionData.icon"
       />
 

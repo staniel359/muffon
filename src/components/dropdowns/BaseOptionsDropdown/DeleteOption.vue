@@ -4,7 +4,7 @@
     @click="handleClick"
   >
     <BaseIcon
-      icon="trash alternate outline"
+      icon="red trash alternate outline"
     />
 
     {{ deleteText }}

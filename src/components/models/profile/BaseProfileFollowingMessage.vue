@@ -7,7 +7,9 @@
       v-if="isFollowing"
       class="main-following-message"
     >
-      <i class="green left arrow icon" />
+      <BaseIcon
+        icon="green left arrow"
+      />
 
       <div
         v-text="followingText"
@@ -18,7 +20,9 @@
       v-if="isFollowed"
       class="main-following-message"
     >
-      <i class="green right arrow icon" />
+      <BaseIcon
+        icon="green right arrow"
+      />
 
       <div
         v-text="followedText"
@@ -28,8 +32,13 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'BaseProfileFollowingMessage',
+  components: {
+    BaseIcon
+  },
   props: {
     otherProfileData: {
       type: Object,

@@ -4,7 +4,9 @@
     class="main-joined-message-container"
   >
     <div class="main-joined-message">
-      <i class="green left arrow icon" />
+      <BaseIcon
+        icon="green left arrow"
+      />
 
       <div
         v-text="joinedText"
@@ -14,8 +16,13 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'BaseCommunityJoinedMessage',
+  components: {
+    BaseIcon
+  },
   props: {
     communityData: {
       type: Object,

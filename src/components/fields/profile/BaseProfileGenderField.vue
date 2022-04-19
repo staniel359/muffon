@@ -14,7 +14,9 @@
         v-text="genderText"
       />
 
-      <i class="dropdown icon" />
+      <BaseIcon
+        icon="dropdown"
+      />
 
       <div class="menu">
         <div
@@ -30,6 +32,7 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   setDropdownValue
 } from '*/helpers/actions/plugins/semantic'
@@ -39,6 +42,9 @@ import {
 
 export default {
   name: 'BaseProfileGenderField',
+  components: {
+    BaseIcon
+  },
   props: {
     value: String
   },

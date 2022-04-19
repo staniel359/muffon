@@ -8,10 +8,10 @@
       selection: isSelection
     }"
   >
-    <i
+    <BaseIcon
       v-if="isOnlyIcon"
-      class="icon colored main-dropdown-icon"
-      :class="selected"
+      class="colored main-dropdown-icon"
+      :icon="selected"
     />
     <div
       v-else

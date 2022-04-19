@@ -27,17 +27,9 @@
     </div>
 
     <div class="icon-container">
-      <div
-        v-if="isLoading"
-        class="ui active mini inline loader"
-      />
-      <i
-        v-else-if="isSuccess"
-        class="green check icon"
-      />
-      <i
-        v-else-if="isError"
-        class="red close icon"
+      <BaseIcon
+        :is-loading="isLoading"
+        :icon="icon"
       />
     </div>
   </BaseLinkContainer>
@@ -48,6 +40,7 @@ import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -59,7 +52,8 @@ export default {
   components: {
     BaseLinkContainer,
     BaseImage,
-    BaseHeader
+    BaseHeader,
+    BaseIcon
   },
   inject: [
     'findPaginationItem'
@@ -145,6 +139,15 @@ export default {
         playlistId: this.playlistId,
         playlistTrackId: this.playlistTrackId,
         isSelectable: true
+      }
+    },
+    icon () {
+      if (this.isSuccess) {
+        return 'green check'
+      } else if (this.isError) {
+        return 'red close'
+      } else {
+        return null
       }
     }
   },

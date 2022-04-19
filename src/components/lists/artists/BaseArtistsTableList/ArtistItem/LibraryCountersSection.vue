@@ -14,7 +14,9 @@
       @mouseenter="handleTracksMouseEnter"
       @mouseleave="handleTracksMouseLeave"
     >
-      <i class="music icon" />
+      <BaseIcon
+        icon="music"
+      />
 
       <span
         v-text="tracksCount"
@@ -28,7 +30,9 @@
       @mouseenter="handleAlbumsMouseEnter"
       @mouseleave="handleAlbumsMouseLeave"
     >
-      <i class="record vinyl icon" />
+      <BaseIcon
+        icon="record vinyl"
+      />
 
       <span
         v-text="albumsCount"
@@ -38,8 +42,13 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'LibraryCountersSection',
+  components: {
+    BaseIcon
+  },
   props: {
     artistData: {
       type: Object,

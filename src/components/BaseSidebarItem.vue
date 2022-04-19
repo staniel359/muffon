@@ -6,9 +6,8 @@
     @click="handleClick"
   >
     <div class="main-sidebar-item-icon-container">
-      <i
-        class="grey icon"
-        :class="icon"
+      <BaseIcon
+        :icon="`grey ${icon}`"
       />
     </div>
 
@@ -24,12 +23,14 @@
 <script>
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 
 export default {
   name: 'BaseSidebarItem',
   components: {
     BaseLinkContainer,
+    BaseIcon,
     BaseHeader
   },
   props: {
@@ -48,9 +49,11 @@ export default {
   ],
   computed: {
     component () {
-      return this.link
-        ? 'BaseLinkContainer'
-        : 'div'
+      if (this.link) {
+        return 'BaseLinkContainer'
+      } else {
+        return 'div'
+      }
     }
   },
   methods: {

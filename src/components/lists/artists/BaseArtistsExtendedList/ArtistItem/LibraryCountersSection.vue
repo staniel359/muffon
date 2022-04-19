@@ -5,7 +5,9 @@
       :link="profileLibraryArtistTracksLink"
     >
       <div class="link">
-        <i class="music icon" />
+        <BaseIcon
+          icon="music"
+        />
 
         <span
           v-text="tracksCount"
@@ -17,7 +19,9 @@
       :link="profileLibraryArtistAlbumsLink"
     >
       <div class="link">
-        <i class="record vinyl icon" />
+        <BaseIcon
+          icon="record vinyl"
+        />
 
         <span
           v-text="albumsCount"
@@ -30,6 +34,7 @@
 <script>
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   tracks as formatProfileLibraryArtistTracksLink,
   albums as formatProfileLibraryArtistAlbumsLink
@@ -38,7 +43,8 @@ import {
 export default {
   name: 'LibraryCountersSection',
   components: {
-    BaseLinkContainer
+    BaseLinkContainer,
+    BaseIcon
   },
   props: {
     artistData: {

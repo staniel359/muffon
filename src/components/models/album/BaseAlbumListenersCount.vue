@@ -9,7 +9,9 @@
     class="main-small-container"
   >
     <small>
-      <i class="user icon" />
+      <BaseIcon
+        icon="user"
+      />
 
       <span
         v-text="listenersCountFormatted"
@@ -19,6 +21,7 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
 import getAlbum from '*/helpers/actions/api/album/get'
 import {
   number as formatNumber
@@ -26,6 +29,9 @@ import {
 
 export default {
   name: 'BaseAlbumListenersCount',
+  components: {
+    BaseIcon
+  },
   props: {
     artistName: {
       type: String,

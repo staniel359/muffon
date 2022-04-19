@@ -19,9 +19,8 @@
       @mouseleave="handleMouseLeave"
     >
       <small>
-        <i
-          class="icon"
-          :class="icon"
+        <BaseIcon
+          :icon="icon"
         />
 
         <span
@@ -36,12 +35,16 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
 
 export default {
   name: 'CounterBar',
+  components: {
+    BaseIcon
+  },
   props: {
     artistData: {
       type: Object,

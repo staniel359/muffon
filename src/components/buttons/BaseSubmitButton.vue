@@ -10,7 +10,9 @@
       }
     ]"
   >
-    <i class="check icon" />
+    <BaseIcon
+      icon="check"
+    />
 
     {{ actionText }}
   </button>
@@ -20,9 +22,13 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseSubmitButton',
+  components: {
+    BaseIcon
+  },
   props: {
     actionKey: {
       type: String,

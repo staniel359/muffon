@@ -12,7 +12,9 @@
         'text-color-white': isTextWhite
       }"
     >
-      <i class="dropdown icon" />
+      <BaseIcon
+        icon="dropdown"
+      />
 
       {{ title }}
     </div>
@@ -29,6 +31,7 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   setAccordion
 } from '*/helpers/actions/plugins/semantic'
@@ -38,6 +41,9 @@ import {
 
 export default {
   name: 'BaseAccordionContainer',
+  components: {
+    BaseIcon
+  },
   props: {
     title: {
       type: String,

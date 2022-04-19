@@ -8,7 +8,9 @@
     @mouseleave="handleMouseLeave"
   >
     <small>
-      <i class="music icon" />
+      <BaseIcon
+        icon="music"
+      />
 
       <span
         v-text="tracksCount"
@@ -18,8 +20,13 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'TracksSection',
+  components: {
+    BaseIcon
+  },
   props: {
     albumData: {
       type: Object,

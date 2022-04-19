@@ -1,5 +1,7 @@
 <template>
-  <BaseHeaderContainer :tag="tag">
+  <BaseHeaderContainer
+    :tag="tag"
+  >
     <BaseLink
       :link="profileMainLink"
       :text="profileNickname"

@@ -6,10 +6,9 @@
       inverted: isDarkMode
     }"
   >
-    <i
+    <BaseIcon
       v-if="icon"
-      class="icon"
-      :class="icon"
+      :icon="icon"
     />
 
     <slot />
@@ -20,9 +19,13 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseHeaderContainer',
+  components: {
+    BaseIcon
+  },
   props: {
     tag: {
       type: String,

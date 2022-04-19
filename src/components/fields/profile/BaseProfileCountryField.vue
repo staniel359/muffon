@@ -14,7 +14,9 @@
         v-text="countryText"
       />
 
-      <i class="dropdown icon" />
+      <BaseIcon
+        icon="dropdown"
+      />
 
       <CountriesList />
     </div>
@@ -22,6 +24,7 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
 import CountriesList from './BaseProfileCountryField/CountriesList.vue'
 import {
   setDropdown,
@@ -31,6 +34,7 @@ import {
 export default {
   name: 'BaseProfileCountryField',
   components: {
+    BaseIcon,
     CountriesList
   },
   props: {

@@ -1,7 +1,9 @@
 <template>
   <BaseSegmentContainer>
     <div class="recommended-block">
-      <i class="volume up icon" />
+      <BaseIcon
+        icon="volume up"
+      />
 
       <div class="content">
         <BaseHeader
@@ -33,6 +35,7 @@
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseRecommendationProfileArtistsModal
@@ -42,6 +45,7 @@ export default {
   name: 'RecommendedSegment',
   components: {
     BaseSegmentContainer,
+    BaseIcon,
     BaseHeader,
     BaseButton,
     BaseRecommendationProfileArtistsModal

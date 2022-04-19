@@ -17,7 +17,9 @@
 
         <div class="description main-small-container">
           <small>
-            <i class="play icon" />
+            <BaseIcon
+              icon="play"
+            />
 
             <span
               v-text="playsCountFomatted"
@@ -34,6 +36,7 @@ import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -43,7 +46,8 @@ export default {
   components: {
     BaseListContainer,
     BaseImage,
-    BaseHeader
+    BaseHeader,
+    BaseIcon
   },
   props: {
     userData: {

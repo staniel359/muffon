@@ -14,7 +14,9 @@
       @click.prevent
       @init="handleDropdownInit"
     >
-      <i class="ellipsis vertical icon" />
+      <BaseIcon
+        icon="ellipsis vertical"
+      />
 
       <div class="menu">
         <Component
@@ -46,6 +48,7 @@ import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseButtonContainer
   from '*/components/containers/buttons/BaseButtonContainer.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import LibraryOption from './BaseOptionsDropdown/LibraryOption.vue'
 import PlaylistOption from './BaseOptionsDropdown/PlaylistOption.vue'
 import FavoriteOption from './BaseOptionsDropdown/FavoriteOption.vue'
@@ -71,6 +74,7 @@ export default {
   components: {
     BaseLinkContainer,
     BaseButtonContainer,
+    BaseIcon,
     LibraryOption,
     PlaylistOption,
     FavoriteOption,

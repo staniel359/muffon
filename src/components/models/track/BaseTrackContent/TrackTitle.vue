@@ -1,5 +1,7 @@
 <template>
-  <BaseHeaderContainer tag="h4">
+  <BaseHeaderContainer
+    tag="h4"
+  >
     <BaseLink
       :link="link"
       :text="trackTitle"

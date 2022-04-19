@@ -3,7 +3,7 @@
     <i
       v-if="country"
       class="profile-country-flag"
-      :class="iconClassName"
+      :class="`${country} flag`"
     />
 
     {{ cityWithCountryFormatted }}
@@ -31,9 +31,6 @@ export default {
         profileLanguage: 'language'
       }
     ),
-    iconClassName () {
-      return `${this.country} flag`
-    },
     country () {
       return this.profileData.country
     },

@@ -1,8 +1,8 @@
 <template>
   <div class="tag-header-container">
     <BaseHeaderContainer
-      tag="h1"
       class="inverted tag-header"
+      tag="h1"
       icon="tag"
     >
       <template #default>

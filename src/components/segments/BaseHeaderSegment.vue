@@ -1,6 +1,8 @@
 <template>
   <BaseSegmentContainer>
-    <BaseHeaderContainer tag="h3">
+    <BaseHeaderContainer
+      tag="h3"
+    >
       <BaseLink
         :link="link"
         :text="headerText"

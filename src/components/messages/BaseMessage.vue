@@ -10,11 +10,10 @@
       v-if="icons"
       class="icons icon-group"
     >
-      <i
+      <BaseIcon
         v-for="(icon, index) in icons"
         :key="index"
-        class="icon"
-        :class="icon"
+        :icon="icon"
       />
     </i>
 
@@ -61,12 +60,14 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 
 export default {
   name: 'BaseMessage',
   components: {
+    BaseIcon,
     BaseButton,
     BaseLink
   },

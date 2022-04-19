@@ -8,10 +8,9 @@
     }"
     @click="handleClick"
   >
-    <i
+    <BaseIcon
       v-if="icon && !isReverse"
-      class="icon"
-      :class="icon"
+      :icon="icon"
     />
 
     <span
@@ -19,10 +18,9 @@
       v-text="text"
     />
 
-    <i
+    <BaseIcon
       v-if="icon && isReverse"
-      class="icon"
-      :class="icon"
+      :icon="icon"
     />
   </div>
 </template>
@@ -31,9 +29,13 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseButton',
+  components: {
+    BaseIcon
+  },
   props: {
     icon: String,
     text: String,

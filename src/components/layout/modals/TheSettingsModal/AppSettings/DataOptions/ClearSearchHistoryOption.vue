@@ -14,7 +14,9 @@
     </div>
 
     <div v-if="isSuccess">
-      <i class="check green icon" />
+      <BaseIcon
+        icon="green check"
+      />
 
       <span
         v-text="clearedText"
@@ -26,11 +28,13 @@
 <script>
 import electronStore from '*/plugins/electronStore'
 import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'ClearSearchHistoryOption',
   components: {
-    BaseButton
+    BaseButton,
+    BaseIcon
   },
   data () {
     return {

@@ -2,6 +2,7 @@
   <i
     class="icon"
     :class="iconConditional"
+    @click="handleClick"
   >
     <div
       v-if="isLoading"
@@ -18,6 +19,9 @@ export default {
     isError: Boolean,
     icon: String
   },
+  emits: [
+    'click'
+  ],
   computed: {
     iconConditional () {
       if (this.isLoading) {
@@ -27,6 +31,13 @@ export default {
       } else {
         return this.icon
       }
+    }
+  },
+  methods: {
+    handleClick () {
+      this.$emit(
+        'click'
+      )
     }
   }
 }

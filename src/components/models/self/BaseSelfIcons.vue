@@ -1,30 +1,39 @@
 <template>
   <div class="main-self-icons">
-    <i
+    <BaseIcon
       v-if="libraryId"
-      class="headphones primary icon main-simple-self-icon"
+      class="main-simple-self-icon"
+      icon="primary headphones"
     />
 
-    <i
+    <BaseIcon
       v-if="favoriteId"
-      class="star primary icon main-simple-self-icon"
+      class="main-simple-self-icon"
+      icon="primary star"
     />
 
-    <i
+    <BaseIcon
       v-if="bookmarkId"
-      class="bookmark primary icon main-simple-self-icon"
+      class="main-simple-self-icon"
+      icon="primary bookmark"
     />
 
-    <i
+    <BaseIcon
       v-if="listenedId"
-      class="check primary icon main-simple-self-icon"
+      class="main-simple-self-icon"
+      icon="primary check"
     />
   </div>
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'BaseSelfIcons',
+  components: {
+    BaseIcon
+  },
   props: {
     libraryId: String,
     favoriteId: String,

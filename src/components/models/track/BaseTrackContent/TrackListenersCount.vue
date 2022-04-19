@@ -12,7 +12,9 @@
 
     <div class="description">
       <small>
-        <i class="user icon" />
+        <BaseIcon
+          icon="user"
+        />
 
         <span
           v-html="listenersCountFormatted"
@@ -26,12 +28,16 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
 
 export default {
   name: 'TrackListenersCount',
+  components: {
+    BaseIcon
+  },
   props: {
     listenersCount: {
       type: Number,

@@ -6,15 +6,21 @@
     }"
     @click="handleClick"
   >
-    <i
-      class="chevron right icon direction-icon"
+    <BaseIcon
+      class="direction-icon"
+      icon="chevron right"
     />
   </a>
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'NextPageItem',
+  components: {
+    BaseIcon
+  },
   props: {
     isDisabled: Boolean
   },

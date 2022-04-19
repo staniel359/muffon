@@ -1,7 +1,7 @@
 <template>
-  <i
+  <BaseIcon
     v-if="!isFirstSection"
-    class="right chevron icon divider"
+    icon="right chevron divider"
   />
 
   <BaseLink
@@ -24,11 +24,13 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 
 export default {
   name: 'NavigationSection',
   components: {
+    BaseIcon,
     BaseLink
   },
   props: {

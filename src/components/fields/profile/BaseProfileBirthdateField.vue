@@ -5,7 +5,9 @@
       class="ui calendar"
     >
       <div class="ui input left icon">
-        <i class="calendar icon" />
+        <BaseIcon
+          icon="calendar"
+        />
 
         <input
           type="text"
@@ -18,6 +20,7 @@
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   setCalendar,
   setCalendarDate
@@ -28,6 +31,9 @@ import {
 
 export default {
   name: 'BaseProfileBirthdateField',
+  components: {
+    BaseIcon
+  },
   props: {
     value: String
   },

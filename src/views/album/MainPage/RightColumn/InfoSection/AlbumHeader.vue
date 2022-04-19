@@ -1,6 +1,8 @@
 <template>
   <div class="album-header">
-    <BaseHeaderContainer tag="h2">
+    <BaseHeaderContainer
+      tag="h2"
+    >
       {{ albumTitle }}
 
       <span

@@ -13,9 +13,13 @@
         disabled: isDisabled
       }"
     >
-      <div class="default text" />
+      <div
+        class="default text"
+      />
 
-      <i class="dropdown icon" />
+      <BaseIcon
+        icon="dropdown"
+      />
 
       <div class="menu">
         <div
@@ -36,6 +40,7 @@ import {
   mapState
 } from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
@@ -53,7 +58,8 @@ import {
 export default {
   name: 'ScrobblePercentOption',
   components: {
-    BaseHeader
+    BaseHeader,
+    BaseIcon
   },
   props: {
     isConnected: Boolean,

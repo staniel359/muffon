@@ -2,7 +2,9 @@
   <div class="content">
     <div class="info-block-content">
       <BaseTickerContainer>
-        <BaseHeaderContainer tag="h4">
+        <BaseHeaderContainer
+          tag="h4"
+        >
           <BaseLink
             :link="trackMainLink"
             :text="trackTitle"

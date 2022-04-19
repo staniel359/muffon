@@ -5,18 +5,21 @@
       disabled: isDisabled
     }"
   >
-    <i
-      :class="[
-        'ellipsis horizontal small icon',
-        'direction-icon'
-      ]"
+    <BaseIcon
+      class="direction-icon"
+      icon="small ellipsis horizontal"
     />
   </div>
 </template>
 
 <script>
+import BaseIcon from '*/components/BaseIcon.vue'
+
 export default {
   name: 'EmptyPageItem',
+  components: {
+    BaseIcon
+  },
   props: {
     isDisabled: Boolean
   }

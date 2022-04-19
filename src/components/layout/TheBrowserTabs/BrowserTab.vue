@@ -12,6 +12,7 @@
         class="browser-tab-icon"
         :icon="icon"
       />
+
       <span
         class="browser-tab-name"
         :class="{

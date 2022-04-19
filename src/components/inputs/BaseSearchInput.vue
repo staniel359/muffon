@@ -14,19 +14,25 @@
         :placeholder="searchText"
       >
 
-      <i class="search icon" />
+      <BaseIcon
+        icon="search"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   setSearch
 } from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseSearchInput',
+  components: {
+    BaseIcon
+  },
   props: {
     url: {
       type: String,

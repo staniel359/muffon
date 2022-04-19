@@ -11,7 +11,9 @@
       v-if="tagCount"
       class="detail"
     >
-      <i class="microphone icon" />
+      <BaseIcon
+        icon="microphone"
+      />
 
       {{ tagCount }}
     </div>
@@ -21,6 +23,7 @@
 <script>
 import BaseLabelLinkContainer
   from '*/components/containers/links/BaseLabelLinkContainer.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import {
   main as formatTagMainLink
 } from '*/helpers/formatters/links/tag'
@@ -31,7 +34,8 @@ import {
 export default {
   name: 'TagItem',
   components: {
-    BaseLabelLinkContainer
+    BaseLabelLinkContainer,
+    BaseIcon
   },
   props: {
     tagData: {

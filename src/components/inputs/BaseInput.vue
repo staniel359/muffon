@@ -15,10 +15,9 @@
       @keypress.enter="handleEnterPress"
     >
 
-    <i
+    <BaseIcon
       v-if="icon"
-      class="icon"
-      :class="icon"
+      :icon="icon"
     />
   </div>
 </template>
@@ -27,9 +26,13 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseInput',
+  components: {
+    BaseIcon
+  },
   props: {
     modelValue: String,
     icon: String,

@@ -14,7 +14,9 @@
     </div>
 
     <div v-if="isSuccess">
-      <i class="check green icon" />
+      <BaseIcon
+        icon="green check"
+      />
 
       <span
         v-text="clearedText"
@@ -28,11 +30,13 @@ import {
   ipcRenderer
 } from 'electron'
 import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'ClearCacheOption',
   components: {
-    BaseButton
+    BaseButton,
+    BaseIcon
   },
   data () {
     return {
