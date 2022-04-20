@@ -78,7 +78,7 @@
 import BaseArtistLinkContainer
   from '*/components/containers/artist/BaseArtistLinkContainer.vue'
 import BaseSimpleCardContainer
-  from '*/components/containers/BaseSimpleCardContainer.vue'
+  from '*/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'

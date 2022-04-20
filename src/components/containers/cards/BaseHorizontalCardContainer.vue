@@ -11,8 +11,6 @@
     <div class="content">
       <slot />
     </div>
-
-    <div />
   </div>
 </template>
 
@@ -22,7 +20,7 @@ import {
 } from 'vuex'
 
 export default {
-  name: 'BaseTrackHorizontalCardContainer',
+  name: 'BaseHorizontalCardContainer',
   computed: {
     ...mapState(
       'layout',
@@ -34,7 +32,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.content
-  @extend .d-flex, .no-border
-</style>
+<style lang="sass" scoped></style>

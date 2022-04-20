@@ -35,7 +35,7 @@
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseSimpleCardContainer
-  from '*/components/containers/BaseSimpleCardContainer.vue'
+  from '*/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {

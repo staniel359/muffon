@@ -2,7 +2,7 @@
   <div
     :class="[
       'ui top fixed menu',
-      'browser-tabs-panel',
+      'the-browser-tabs',
       {
         inverted: isDarkMode
       }
@@ -243,10 +243,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.browser-tabs-panel
-  @extend .no-shadow, .d-flex, .align-items-center
+.the-browser-tabs
+  @extend .no-shadow, .d-flex, .align-items-center, .overflow-y-auto
   height: 45px
   padding: 0 0.5em
   &.inverted
     border-bottom: $borderInverted !important
+  &::-webkit-scrollbar
+    @extend .d-none
 </style>

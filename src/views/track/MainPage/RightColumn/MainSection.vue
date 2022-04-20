@@ -1,20 +1,22 @@
 <template>
-  <BaseTrackHorizontalCardContainer
+  <BaseHorizontalCardContainer
     class="track-card"
   >
-    <InfoSection
-      :track-data="trackData"
-    />
+    <template #default>
+      <InfoSection
+        :track-data="trackData"
+      />
 
-    <BaseTrackPlayerPanel
-      :track-data="trackData"
-    />
-  </BaseTrackHorizontalCardContainer>
+      <BaseTrackPlayerPanel
+        :track-data="trackData"
+      />
+    </template>
+  </BaseHorizontalCardContainer>
 </template>
 
 <script>
-import BaseTrackHorizontalCardContainer
-  from '*/components/containers/track/BaseTrackHorizontalCardContainer.vue'
+import BaseHorizontalCardContainer
+  from '*/components/containers/cards/BaseHorizontalCardContainer.vue'
 import InfoSection from './MainSection/InfoSection.vue'
 import BaseTrackPlayerPanel
   from '*/components/models/track/BaseTrackPlayerPanel.vue'
@@ -22,7 +24,7 @@ import BaseTrackPlayerPanel
 export default {
   name: 'MainSection',
   components: {
-    BaseTrackHorizontalCardContainer,
+    BaseHorizontalCardContainer,
     InfoSection,
     BaseTrackPlayerPanel
   },

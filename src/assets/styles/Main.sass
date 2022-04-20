@@ -10,6 +10,8 @@ html
 
 a
   outline: none
+  -webkit-user-drag: none
+  user-select: text
 
 ::-webkit-scrollbar
   width: 10px
@@ -516,7 +518,7 @@ a
   z-index: 1
 
 .main-sidebar-item
-  @extend .no-padding, .d-flex, .cursor-pointer
+  @extend .no-padding, .no-margin, .d-flex
   &:hover
     .main-sidebar-item-icon-container
       & > .icon

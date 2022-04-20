@@ -1,11 +1,6 @@
 <template>
-  <div
-    class="ui horizontal card main-horizontal-card"
-    :class="{
-      inverted: isDarkMode
-    }"
-  >
-    <div class="content main-basic-segments-container">
+  <BaseHorizontalCardContainer>
+    <template #default>
       <BaseSegmentContainer
         class="basic segment-container"
         :is-loading="isLoading"
@@ -14,20 +9,20 @@
       >
         <slot />
       </BaseSegmentContainer>
-    </div>
-  </div>
+    </template>
+  </BaseHorizontalCardContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
+import BaseHorizontalCardContainer
+  from '*/components/containers/cards/BaseHorizontalCardContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 
 export default {
   name: 'BaseArtistHorizontalCardContainer',
   components: {
+    BaseHorizontalCardContainer,
     BaseSegmentContainer
   },
   props: {
@@ -37,14 +32,6 @@ export default {
   emits: [
     'refresh'
   ],
-  computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    )
-  },
   methods: {
     handleRefresh () {
       this.$emit(

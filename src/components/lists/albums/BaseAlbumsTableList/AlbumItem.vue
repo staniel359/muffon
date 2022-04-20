@@ -85,7 +85,7 @@
 import BaseAlbumLinkContainer
   from '*/components/containers/album/BaseAlbumLinkContainer.vue'
 import BaseSimpleCardContainer
-  from '*/components/containers/BaseSimpleCardContainer.vue'
+  from '*/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
