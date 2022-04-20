@@ -1,148 +1,37 @@
 <template>
-  <template
-    v-for="buttonData in buttonsCollection"
-    :key="buttonData.uuid"
-  >
-    <BaseButton
-      class="basic compact compatibility-common-button"
-      :class="{
-        disabled: buttonData.isDisabled
-      }"
-      :icon="buttonData.icon"
-      :text="buttonData.text"
-      @click="buttonData.onClick"
-    />
+  <ArtistsButton
+    :compatibility-data="compatibilityData"
+    :profile-id="profileId"
+  />
 
-    <Component
-      :is="buttonData.modal.name"
-      :ref="buttonData.modal.ref"
-      :profile-id="profileId"
-    />
-  </template>
+  <AlbumsButton
+    :compatibility-data="compatibilityData"
+    :profile-id="profileId"
+  />
+
+  <TracksButton
+    :compatibility-data="compatibilityData"
+    :profile-id="profileId"
+  />
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseCommonProfileArtistsModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonProfileArtistsModal.vue'
-import BaseCommonProfileAlbumsModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonProfileAlbumsModal.vue'
-import BaseCommonProfileTracksModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonProfileTracksModal.vue'
-import {
-  collection as formatCollection
-} from '*/helpers/formatters'
+import ArtistsButton from './CommonButtons/ArtistsButton.vue'
+import AlbumsButton from './CommonButtons/AlbumsButton.vue'
+import TracksButton from './CommonButtons/TracksButton.vue'
 
 export default {
   name: 'CommonButtons',
   components: {
-    BaseButton,
-    BaseCommonProfileArtistsModal,
-    BaseCommonProfileAlbumsModal,
-    BaseCommonProfileTracksModal
+    ArtistsButton,
+    AlbumsButton,
+    TracksButton
   },
   props: {
-    compatibilityData: {
-      type: Object,
-      required: true
-    },
+    compatibilityData: Object,
     profileId: String
-  },
-  data () {
-    return {
-      scopes: [
-        'artists',
-        'albums',
-        'tracks'
-      ],
-      icons: {
-        artists: 'microphone alternate',
-        albums: 'record vinyl',
-        tracks: 'music'
-      },
-      modals: {
-        artists: 'BaseCommonProfileArtistsModal',
-        albums: 'BaseCommonProfileAlbumsModal',
-        tracks: 'BaseCommonProfileTracksModal'
-      }
-    }
-  },
-  computed: {
-    buttonsCollection () {
-      return formatCollection(
-        this.buttons
-      )
-    },
-    buttons () {
-      return this.scopes.map(
-        this.formatButtonData
-      )
-    }
-  },
-  methods: {
-    handleClick (
-      scope
-    ) {
-      this.$refs[
-        `${scope}Modal`
-      ][0].show()
-    },
-    formatButtonData (
-      scope
-    ) {
-      const icon = this.icons[scope]
-      const text = this.formatText(
-        scope
-      )
-      const isDisabled =
-        !this.formatCount(
-          scope
-        )
-
-      function onClick () {
-        this.handleClick(
-          scope
-        )
-      }
-
-      const modal = {
-        ref: `${scope}Modal`,
-        name: this.modals[scope]
-      }
-
-      return {
-        icon,
-        text,
-        isDisabled,
-        onClick,
-        modal
-      }
-    },
-    formatText (
-      scope
-    ) {
-      return this.$t(
-        `counters.${scope}`,
-        {
-          count: this.formatCount(
-            scope
-          )
-        }
-      )
-    },
-    formatCount (
-      scope
-    ) {
-      return this.compatibilityData[
-        `${scope}_count`
-      ]
-    }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.compatibility-common-button
-  margin-right: 0.5em !important
-  margin-bottom: 0.5em !important
-</style>
+<style lang="sass" scoped></style>
