@@ -1,14 +1,13 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <BaseSegmentContainer
-      :class="[
-        'scrolling content',
-        'main-modal-content-full-height',
-        'main-segment-container'
-      ]"
-      :is-loading="isLoading"
-      @init="handleInit"
-    >
+  <BaseModalContentContainer
+    ref="modal"
+    :response-data="profileData"
+    :is-loading="isLoading"
+    :error="error"
+    @call="handleCall"
+    @refresh="handleRefresh"
+  >
+    <template #default>
       <BasePaginatedListContainer
         :response-data="profileData"
         :scope="scope"
@@ -29,18 +28,16 @@
           />
         </template>
       </BasePaginatedListContainer>
-    </BaseSegmentContainer>
-  </BaseModalContainer>
+    </template>
+  </BaseModalContentContainer>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseModalContentContainer
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BasePlaylistsSimpleSelectableList
@@ -50,8 +47,7 @@ import getProfilePlaylists from '*/helpers/actions/api/profile/get'
 export default {
   name: 'BasePlaylistsModal',
   components: {
-    BaseModalContainer,
-    BaseSegmentContainer,
+    BaseModalContentContainer,
     BasePaginatedListContainer,
     BasePlaylistsSimpleSelectableList
   },
@@ -63,11 +59,9 @@ export default {
   },
   data () {
     return {
-      error: null,
-      scrollable: null,
       profileData: null,
+      error: null,
       isLoading: false,
-      isOpen: false,
       limit: 20,
       scope: 'playlists'
     }
@@ -79,7 +73,7 @@ export default {
         profileInfo: 'info'
       }
     ),
-    playlistsArgs () {
+    profilePlaylistsArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
@@ -92,21 +86,10 @@ export default {
       return this.profileInfo.id.toString()
     }
   },
-  watch: {
-    isOpen: 'handleIsOpenChange'
-  },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.scrollable = element
-    },
-    handleIsOpenChange (
-      value
-    ) {
-      if (value) {
-        this.fetchData()
-      }
+    getProfilePlaylists,
+    handleCall () {
+      this.fetchData()
     },
     handleRefresh (
       page
@@ -116,18 +99,14 @@ export default {
       )
     },
     handleFocus () {
-      this.scrollable.scrollTo(
-        0,
-        0
-      )
+      this.scrollToTop()
     },
-    getProfilePlaylists,
     fetchData (
       page
     ) {
       this.getProfilePlaylists(
         {
-          ...this.playlistsArgs,
+          ...this.profilePlaylistsArgs,
           page
         }
       )
@@ -136,8 +115,11 @@ export default {
       this.$refs
         .modal
         .show()
-
-      this.isOpen = true
+    },
+    scrollToTop () {
+      this.$refs
+        .modal
+        .scrollToTop()
     }
   }
 }

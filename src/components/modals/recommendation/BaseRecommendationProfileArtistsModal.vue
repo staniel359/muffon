@@ -1,14 +1,13 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <BaseSegmentContainer
-      :class="[
-        'scrolling content',
-        'main-modal-content-full-height',
-        'main-segment-container'
-      ]"
-      :is-loading="isLoading"
-      @init="handleInit"
-    >
+  <BaseModalContentContainer
+    ref="modal"
+    :response-data="recommendationData"
+    :is-loading="isLoading"
+    :error="error"
+    @call="handleCall"
+    @refresh="handleRefresh"
+  >
+    <template #default>
       <BasePaginatedListContainer
         :response-data="recommendationData"
         :scope="scope"
@@ -24,23 +23,20 @@
             :artists="slotProps[scope]"
             :profile-id="profileId"
             is-link-to-library
-            is-image-small
             @link-click="handleLinkClick"
           />
         </template>
       </BasePaginatedListContainer>
-    </BaseSegmentContainer>
-  </BaseModalContainer>
+    </template>
+  </BaseModalContentContainer>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseModalContentContainer
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
@@ -50,8 +46,7 @@ import getRecommendation from '*/helpers/actions/api/recommendation/get'
 export default {
   name: 'BaseRecommendationProfileArtistsModal',
   components: {
-    BaseModalContainer,
-    BaseSegmentContainer,
+    BaseModalContentContainer,
     BasePaginatedListContainer,
     BaseArtistsSimpleList
   },
@@ -63,11 +58,9 @@ export default {
   },
   data () {
     return {
-      error: null,
       recommendationData: null,
-      scrollable: null,
+      error: null,
       isLoading: false,
-      isOpen: false,
       limit: 50,
       scope: 'profile_artists'
     }
@@ -90,21 +83,10 @@ export default {
       }
     }
   },
-  watch: {
-    isOpen: 'handleIsOpenChange'
-  },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.scrollable = element
-    },
-    handleIsOpenChange (
-      value
-    ) {
-      if (value) {
-        this.fetchData()
-      }
+    getRecommendation,
+    handleCall () {
+      this.fetchData()
     },
     handleRefresh (
       page
@@ -114,17 +96,11 @@ export default {
       )
     },
     handleFocus () {
-      this.scrollable.scrollTo(
-        0,
-        0
-      )
+      this.scrollToTop()
     },
     handleLinkClick () {
-      this.$refs
-        .modal
-        .hide()
+      this.hide()
     },
-    getRecommendation,
     fetchData (
       page
     ) {
@@ -139,8 +115,16 @@ export default {
       this.$refs
         .modal
         .show()
-
-      this.isOpen = true
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
+    },
+    scrollToTop () {
+      this.$refs
+        .modal
+        .scrollToTop()
     }
   }
 }

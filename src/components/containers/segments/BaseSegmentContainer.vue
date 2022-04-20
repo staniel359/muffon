@@ -13,7 +13,9 @@
       is-with-refresh-button
       @refresh="handleRefresh"
     />
-    <slot v-else />
+    <slot
+      v-else
+    />
   </div>
 </template>
 
@@ -63,6 +65,14 @@ export default {
       focusOnSegment(
         this.$refs.segment
       )
+    },
+    scrollToTop () {
+      this.$refs
+        .segment
+        .scrollTo(
+          0,
+          0
+        )
     }
   }
 }

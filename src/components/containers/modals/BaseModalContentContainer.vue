@@ -4,9 +4,17 @@
     @show.once="handleCall"
   >
     <BaseSegmentContainer
-      class="basic scrolling content"
+      ref="segment"
+      :class="[
+        'basic scrolling content',
+        'main-scrolling-segment',
+        {
+          'main-modal-content-full-height':
+            responseData
+        }
+      ]"
       :is-loading="isLoading"
-      :error="error"
+      :error="errorConditional"
       @refresh="handleRefresh"
     >
       <slot
@@ -37,6 +45,21 @@ export default {
     'call',
     'refresh'
   ],
+  computed: {
+    errorConditional () {
+      if (this.isError) {
+        return this.error
+      } else {
+        return null
+      }
+    },
+    isError () {
+      return !!(
+        !this.responseData &&
+          this.error
+      )
+    }
+  },
   methods: {
     handleCall () {
       this.$emit(
@@ -57,6 +80,11 @@ export default {
       this.$refs
         .modal
         .hide()
+    },
+    scrollToTop () {
+      this.$refs
+        .segment
+        .scrollToTop()
     }
   }
 }

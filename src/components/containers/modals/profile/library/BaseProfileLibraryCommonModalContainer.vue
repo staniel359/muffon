@@ -1,14 +1,13 @@
 <template>
-  <BaseModalContainer ref="modal">
-    <BaseSegmentContainer
-      :class="[
-        'scrolling content',
-        'main-modal-content-full-height',
-        'main-segment-container'
-      ]"
-      :is-loading="isLoading"
-      @init="handleInit"
-    >
+  <BaseModalContentContainer
+    ref="modal"
+    :response-data="compatibilityData"
+    :is-loading="isLoading"
+    :error="error"
+    @call="handleCall"
+    @refresh="handleRefresh"
+  >
+    <template #default>
       <BasePaginatedListContainer
         :response-data="compatibilityData"
         :scope="scope"
@@ -25,15 +24,13 @@
           />
         </template>
       </BasePaginatedListContainer>
-    </BaseSegmentContainer>
-  </BaseModalContainer>
+    </template>
+  </BaseModalContentContainer>
 </template>
 
 <script>
-import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseModalContentContainer
+  from '*/components/containers/modals/BaseModalContentContainer.vue'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import getLibraryCompatibility
@@ -42,8 +39,7 @@ import getLibraryCompatibility
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',
   components: {
-    BaseModalContainer,
-    BaseSegmentContainer,
+    BaseModalContentContainer,
     BasePaginatedListContainer
   },
   props: {
@@ -59,9 +55,7 @@ export default {
   data () {
     return {
       compatibilityData: null,
-      scrollable: null,
       error: null,
-      isOpen: false,
       isLoading: false,
       limit: 50
     }
@@ -75,21 +69,10 @@ export default {
       }
     }
   },
-  watch: {
-    isOpen: 'handleIsOpenChange'
-  },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.scrollable = element
-    },
-    handleIsOpenChange (
-      value
-    ) {
-      if (value) {
-        this.fetchData()
-      }
+    getLibraryCompatibility,
+    handleCall () {
+      this.fetchData()
     },
     handleRefresh (
       page
@@ -99,12 +82,8 @@ export default {
       )
     },
     handleFocus () {
-      this.scrollable.scrollTo(
-        0,
-        0
-      )
+      this.scrollToTop()
     },
-    getLibraryCompatibility,
     fetchData (
       page
     ) {
@@ -119,13 +98,16 @@ export default {
       this.$refs
         .modal
         .show()
-
-      this.isOpen = true
     },
     hide () {
       this.$refs
         .modal
         .hide()
+    },
+    scrollToTop () {
+      this.$refs
+        .modal
+        .scrollToTop()
     }
   }
 }
