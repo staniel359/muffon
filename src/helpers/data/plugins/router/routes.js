@@ -1,6 +1,9 @@
 const RootPage = () => import(
   '*/views/RootPage.vue'
 )
+const HomePage = () => import(
+  '*/views/HomePage.vue'
+)
 const FeedPage = () => import(
   '*/views/FeedPage.vue'
 )
@@ -173,6 +176,13 @@ export default [
     exact: true,
     name: 'RootPage',
     component: RootPage,
+    props: true
+  },
+  {
+    path: '/home',
+    exact: true,
+    name: 'HomePage',
+    component: HomePage,
     props: true
   },
   {

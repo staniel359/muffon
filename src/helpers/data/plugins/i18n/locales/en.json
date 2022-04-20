@@ -1,5 +1,6 @@
 {
   "navigation": {
+    "home": "Home page",
     "artists": "Artists",
     "artist": "Artist",
     "albums": "Albums",

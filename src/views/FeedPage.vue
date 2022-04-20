@@ -1,57 +1,46 @@
 <template>
-  <div
-    :class="[
-      'feed-page-container',
-      'main-page-segment-container'
-    ]"
+  <BaseFeedPageContainer
+    :limit="limit"
   >
-    <BaseHeader
-      class="main-app-title"
-      tag="h1"
-      text="muffon"
-    />
-
-    <FeedSegment />
-  </div>
+    <template #default="pageSlotProps">
+      <BasePaginatedPageContainer
+        response-data-name="feedData"
+        :slot-props-data="pageSlotProps"
+        :scope="scope"
+        :limit="limit"
+      >
+        <template #default="slotProps">
+          <BasePostsSimpleList
+            :posts="slotProps[scope]"
+          />
+        </template>
+      </BasePaginatedPageContainer>
+    </template>
+  </BaseFeedPageContainer>
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
-import FeedSegment from './FeedPage/FeedSegment.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import {
-  feed as formatFeedPageNavigation
-} from '*/helpers/formatters/navigation'
-import {
-  feed as formatFeedPageTab
-} from '*/helpers/formatters/tabs'
+import BaseFeedPageContainer
+  from '*/components/containers/pages/feed/BaseFeedPageContainer.vue'
+import BasePaginatedPageContainer
+  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import BasePostsSimpleList
+  from '*/components/lists/posts/BasePostsSimpleList.vue'
 
 export default {
   name: 'FeedPage',
   components: {
-    BaseHeader,
-    FeedSegment
+    BaseFeedPageContainer,
+    BasePaginatedPageContainer,
+    BasePostsSimpleList
   },
-  mixins: [
-    navigationMixin
-  ],
-  computed: {
-    navigationSections () {
-      return formatFeedPageNavigation()
-    },
-    tabData () {
-      return formatFeedPageTab()
+  data () {
+    return {
+      limit: 50,
+      scope: 'feed'
     }
-  },
-  mounted () {
-    this.setNavigation()
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.feed-page-container
-  @extend .d-flex, .flex-column, .align-items-center
-  padding-top: 5vh
-  height: 70vh
-</style>
+<style lang="sass" scoped></style>

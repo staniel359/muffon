@@ -1,3 +1,5 @@
+import formatHomeSection
+  from '*/helpers/formatters/navigation/sections/home'
 import formatFeedSection
   from '*/helpers/formatters/navigation/sections/feed'
 import formatProfilesSection
@@ -12,6 +14,16 @@ import formatConversationsSection
   from '*/helpers/formatters/navigation/sections/conversations'
 import formatCommunitiesSection
   from '*/helpers/formatters/navigation/sections/communities'
+
+export function home () {
+  return [
+    formatHomeSection(
+      {
+        isActive: true
+      }
+    )
+  ]
+}
 
 export function feed () {
   return [
