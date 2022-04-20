@@ -50,6 +50,11 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      baseUrl: axios.defaults.baseURL
+    }
+  },
   computed: {
     searchText () {
       return this.$t(
@@ -58,8 +63,11 @@ export default {
     },
     searchOptions () {
       return {
-        apiSettings:
-          this.apiSettingsData,
+        apiSettings: {
+          base: this.baseUrl,
+          onResponse: this.formatResponse,
+          url: this.url
+        },
         cache: false,
         error: this.errorData,
         fields: this.fields,
@@ -70,25 +78,16 @@ export default {
         searchOnFocus: false
       }
     },
-    apiSettingsData () {
-      return {
-        url: this.urlFormatted,
-        onResponse:
-          this.formatResponse
-      }
-    },
-    urlFormatted () {
-      return [
-        axios.defaults.baseURL,
-        this.url
-      ].join(
-        ''
-      )
-    },
     errorData () {
       return {
+        noResultsHeader: this.$t(
+          'errors.notFound.header'
+        ),
+        noResults: this.$t(
+          'errors.notFound.content'
+        ),
         serverError: this.$t(
-          'error'
+          'errors.internalServer.header'
         )
       }
     }
