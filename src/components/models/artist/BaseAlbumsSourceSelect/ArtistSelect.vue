@@ -3,7 +3,9 @@
     class="main-source-select-item-select"
     :header="headerText"
   >
-    <ArtistsList :artists="artists" />
+    <ArtistsList
+      :artists="artists"
+    />
   </BaseDropdownContainer>
 </template>
 

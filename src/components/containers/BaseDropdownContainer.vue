@@ -76,7 +76,7 @@ export default {
     menuDirection: String
   },
   emits: [
-    'change'
+    'select'
   ],
   data () {
     return {
@@ -93,7 +93,7 @@ export default {
     dropdownOptions () {
       return mainDropdownOptions(
         {
-          onChange: this.handleChange
+          onChange: this.handleSelect
         }
       )
     }
@@ -107,15 +107,15 @@ export default {
     )
   },
   methods: {
-    handleChange (
+    handleSelect (
       value
     ) {
+      this.selected = value
+
       this.$emit(
-        'change',
+        'select',
         value
       )
-
-      this.selected = value
     },
     async setValue (
       value

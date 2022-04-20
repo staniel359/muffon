@@ -31,7 +31,7 @@ export default {
     }
   },
   emits: [
-    'addArtist'
+    'select'
   ],
   computed: {
     ...mapState(
@@ -83,7 +83,7 @@ export default {
         }
 
         this.$emit(
-          'addArtist',
+          'select',
           artistData
         )
       }

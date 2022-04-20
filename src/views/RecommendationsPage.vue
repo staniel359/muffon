@@ -1,20 +1,21 @@
 <template>
   <BaseRecommendationsPageContainer
     :limit="limit"
-    :filter-scope="filterScope"
-    :filter-value="filterValue"
+    @reset="handleReset"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
+        ref="page"
         response-data-name="recommendationsData"
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        :filter-scope="filterScope"
-        is-with-recommendations-filters
-        @filter-scope-change="handleFilterScopeChange"
-        @filter-value-change="handleFilterValueChange"
+        is-with-filter
       >
+        <template #filter>
+          <FilterSection />
+        </template>
+
         <template #default="slotProps">
           <BaseArtistsExtendedList
             :artists="slotProps[scope]"
@@ -37,6 +38,7 @@ import BaseRecommendationsPageContainer
   from '*/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import FilterSection from './RecommendationsPage/FilterSection.vue'
 import BaseArtistsExtendedList
   from '*/components/lists/artists/BaseArtistsExtendedList.vue'
 
@@ -45,26 +47,23 @@ export default {
   components: {
     BaseRecommendationsPageContainer,
     BasePaginatedPageContainer,
+    FilterSection,
     BaseArtistsExtendedList
   },
   data () {
     return {
-      filterScope: null,
-      filterValue: null,
       limit: 10,
       scope: 'recommendations'
     }
   },
   methods: {
-    handleFilterScopeChange (
-      value
-    ) {
-      this.filterScope = value
+    handleReset () {
+      this.reset()
     },
-    handleFilterValueChange (
-      value
-    ) {
-      this.filterValue = value
+    reset () {
+      this.$refs
+        .page
+        .reset()
     }
   }
 }

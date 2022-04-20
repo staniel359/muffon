@@ -2,7 +2,7 @@
   <BaseDropdown
     :options="options"
     :selected="selected"
-    @change="handleChange"
+    @select="handleSelect"
   />
 </template>
 
@@ -22,7 +22,7 @@ export default {
     selected: String
   },
   emits: [
-    'change'
+    'select'
   ],
   computed: {
     options () {
@@ -32,11 +32,11 @@ export default {
     }
   },
   methods: {
-    handleChange (
+    handleSelect (
       value
     ) {
       this.$emit(
-        'change',
+        'select',
         value
       )
     },

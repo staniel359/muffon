@@ -28,7 +28,7 @@ export default {
     }
   },
   emits: [
-    'addTag'
+    'select'
   ],
   computed: {
     url () {
@@ -67,7 +67,7 @@ export default {
         }
 
         this.$emit(
-          'addTag',
+          'select',
           tagData
         )
       }

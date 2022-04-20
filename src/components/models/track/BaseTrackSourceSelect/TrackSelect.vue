@@ -3,7 +3,9 @@
     class="main-source-select-track-select"
     :header="headerText"
   >
-    <TracksList :tracks="tracks" />
+    <TracksList
+      :tracks="tracks"
+    />
   </BaseDropdownContainer>
 </template>
 

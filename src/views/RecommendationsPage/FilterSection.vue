@@ -27,15 +27,18 @@
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
 import ProfileArtistsFilterBlock
-  from './BaseRecommendationsFilters/ProfileArtistsFilterBlock.vue'
+  from './FilterSection/ProfileArtistsFilterBlock.vue'
 import TagsFilterBlock
-  from './BaseRecommendationsFilters/TagsFilterBlock.vue'
+  from './FilterSection/TagsFilterBlock.vue'
 import FilterScopeSelect
-  from './BaseRecommendationsFilters/FilterScopeSelect.vue'
-import FilterItems from './BaseRecommendationsFilters/FilterItems.vue'
+  from './FilterSection/FilterScopeSelect.vue'
+import FilterItems from './FilterSection/FilterItems.vue'
+import {
+  isObjectChanged
+} from '*/helpers/utils'
 
 export default {
-  name: 'BaseRecommendationsFilters',
+  name: 'FilterSection',
   components: {
     BaseAccordionContainer,
     ProfileArtistsFilterBlock,
@@ -43,17 +46,15 @@ export default {
     FilterScopeSelect,
     FilterItems
   },
-  props: {
-    filterScope: String
-  },
-  emits: [
-    'filterScopeChange',
-    'filterValueChange'
+  inject: [
+    'setFilterScope',
+    'setFilterValue'
   ],
   data () {
     return {
+      filterScope: null,
       filterItems: [],
-      filters: {
+      filterComponents: {
         artists: 'ProfileArtistsFilterBlock',
         tags: 'TagsFilterBlock'
       }
@@ -66,7 +67,7 @@ export default {
       )
     },
     filterComponent () {
-      return this.filters[
+      return this.filterComponents[
         this.filterScope
       ]
     },
@@ -82,28 +83,25 @@ export default {
   },
   methods: {
     handleOpen () {
-      this.$refs
-        .filter
-        .focusInput()
+      this.focusInput()
     },
     handleFilterScopeSelect (
       value
     ) {
-      this.filterItems = []
-
-      this.$emit(
-        'filterScopeChange',
-        value
-      )
+      this.filterScope = value
     },
     async handleFilterScopeChange (
       value
     ) {
+      this.filterItems = []
+
+      this.setFilterScope(
+        value
+      )
+
       await this.$nextTick()
 
-      this.$refs
-        .filter
-        .focusInput()
+      this.focusInput()
     },
     handleFilterItemsChange (
       value
@@ -111,22 +109,18 @@ export default {
       this.filterItems = value
     },
     handleFilterValueChange (
-      newValue,
+      value,
       oldValue
     ) {
-      const isChanged = (
-        JSON.stringify(
-          newValue
-        ) !==
-          JSON.stringify(
-            oldValue
-          )
-      )
+      const isChanged =
+        isObjectChanged(
+          value,
+          oldValue
+        )
 
       if (isChanged) {
-        this.$emit(
-          'filterValueChange',
-          newValue
+        this.setFilterValue(
+          value
         )
       }
     },
@@ -134,6 +128,11 @@ export default {
       filterItemData
     ) {
       return filterItemData.id
+    },
+    focusInput () {
+      this.$refs
+        .filter
+        .focusInput()
     }
   }
 }

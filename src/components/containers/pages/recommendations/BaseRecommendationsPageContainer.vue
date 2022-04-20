@@ -36,14 +36,23 @@ export default {
   mixins: [
     navigationMixin
   ],
-  props: {
-    limit: Number,
-    filterScope: String,
-    filterValue: Array
+  provide () {
+    return {
+      setFilterScope: this.setFilterScope,
+      setFilterValue: this.setFilterValue
+    }
   },
+  props: {
+    limit: Number
+  },
+  emits: [
+    'reset'
+  ],
   data () {
     return {
       recommendationsData: null,
+      filterScope: null,
+      filterValue: null,
       error: null,
       isLoading: false
     }
@@ -72,10 +81,14 @@ export default {
     this.fetchData()
   },
   methods: {
+    getRecommendations,
     handleFilterValueChange () {
       this.fetchData()
+
+      this.$emit(
+        'reset'
+      )
     },
-    getRecommendations,
     fetchData (
       page
     ) {
@@ -92,6 +105,16 @@ export default {
       this.fetchData(
         page
       )
+    },
+    setFilterScope (
+      value
+    ) {
+      this.filterScope = value
+    },
+    setFilterValue (
+      value
+    ) {
+      this.filterValue = value
     }
   }
 }

@@ -1,9 +1,9 @@
 <template>
   <BaseLabel
     icon="close"
-    :text="filterItemData.name"
+    :text="name"
     is-reverse
-    @icon-click="handleDeleteButtonClick"
+    @icon-click="handleDeleteIconClick"
   />
 </template>
 
@@ -22,13 +22,23 @@ export default {
     }
   },
   emits: [
-    'deleteButtonClick'
+    'deleteIconClick'
   ],
+  computed: {
+    name () {
+      return this.filterItemData.name
+    },
+    uuid () {
+      return this.filterItemData.uuid
+    }
+  },
   methods: {
-    handleDeleteButtonClick () {
+    handleDeleteIconClick () {
       this.$emit(
-        'deleteButtonClick',
-        this.filterItemData.uuid
+        'deleteIconClick',
+        {
+          uuid: this.uuid
+        }
       )
     }
   }

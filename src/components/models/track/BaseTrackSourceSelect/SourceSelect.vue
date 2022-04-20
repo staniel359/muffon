@@ -4,7 +4,9 @@
     class="main-source-select"
     :header="headerText"
   >
-    <SourcesList :query="query" />
+    <SourcesList
+      :query="query"
+    />
   </BaseDropdownContainer>
 </template>
 

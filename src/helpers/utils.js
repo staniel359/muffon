@@ -53,3 +53,23 @@ export function isCurrentProfile (
       )
   )
 }
+
+export function isObjectChanged (
+  newValue,
+  oldValue
+) {
+  const newString =
+    JSON.stringify(
+      newValue
+    )
+
+  const oldString =
+    JSON.stringify(
+      oldValue
+    )
+
+  return (
+    newString !==
+      oldString
+  )
+}

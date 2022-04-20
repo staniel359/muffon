@@ -5,7 +5,7 @@
         v-for="filterItemData in filterItems"
         :key="filterItemData.uuid"
         :filter-item-data="filterItemData"
-        @delete-button-click="handleFilterItemDeleteButtonClick"
+        @delete-icon-click="handleDeleteIconClick"
       />
     </div>
   </div>
@@ -31,8 +31,10 @@ export default {
     'change'
   ],
   methods: {
-    handleFilterItemDeleteButtonClick (
-      uuid
+    handleDeleteIconClick (
+      {
+        uuid
+      }
     ) {
       function isMatchedItem (
         itemData

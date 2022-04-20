@@ -1,31 +1,31 @@
 <template>
-  <div class="profile-artists-search-container">
+  <div class="tags-search-container">
     <SearchInput
       ref="input"
-      :artists="artists"
-      @add-artist="handleAddArtist"
+      :tags="tags"
+      @select="handleSelect"
     />
 
     <BaseClearButton
-      v-if="artists.length"
+      v-if="tags.length"
       class="reset-button"
-      @click="handleResetButtonClick"
+      @click="handleClearButtonClick"
     />
   </div>
 </template>
 
 <script>
-import SearchInput from './ProfileArtistsFilterBlock/SearchInput.vue'
+import SearchInput from './TagsFilterBlock/SearchInput.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 
 export default {
-  name: 'ProfileArtistsFilterBlock',
+  name: 'TagsFilterBlock',
   components: {
     SearchInput,
     BaseClearButton
   },
   props: {
-    artists: {
+    tags: {
       type: Array,
       default () {
         return []
@@ -36,28 +36,26 @@ export default {
     'change'
   ],
   methods: {
-    handleAddArtist (
+    handleSelect (
       value
     ) {
-      const artists = [
-        ...this.artists,
+      const tags = [
+        ...this.tags,
         value
       ]
 
-      this.changeArtists(
-        artists
+      this.changeTags(
+        tags
       )
     },
-    handleResetButtonClick () {
-      this.changeArtists(
+    handleClearButtonClick () {
+      this.changeTags(
         []
       )
 
-      this.$refs
-        .input
-        .clear()
+      this.clearInput()
     },
-    changeArtists (
+    changeTags (
       value
     ) {
       this.$emit(
@@ -69,13 +67,18 @@ export default {
       this.$refs
         .input
         .focus()
+    },
+    clearInput () {
+      this.$refs
+        .input
+        .clear()
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.profile-artists-search-container
+.tags-search-container
   @extend .d-flex, .align-items-center
 
 .reset-button

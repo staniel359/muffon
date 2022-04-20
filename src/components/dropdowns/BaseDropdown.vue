@@ -4,7 +4,7 @@
     :is-selection="isSelection"
     :is-only-icon="isOnlyIcon"
     :menu-direction="menuDirection"
-    @change="handleChange"
+    @select="handleSelect"
   >
     <div
       v-for="optionData in optionsCollection"
@@ -51,7 +51,7 @@ export default {
     menuDirection: String
   },
   emits: [
-    'change'
+    'select'
   ],
   computed: {
     optionsCollection () {
@@ -70,11 +70,11 @@ export default {
     }
   },
   methods: {
-    handleChange (
+    handleSelect (
       value
     ) {
       this.$emit(
-        'change',
+        'select',
         value
       )
     }

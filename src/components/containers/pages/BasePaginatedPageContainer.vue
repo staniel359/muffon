@@ -16,12 +16,10 @@
     </BaseSegmentContainer>
 
     <BaseSegmentContainer
-      v-if="isWithRecommendationsFilters"
+      v-if="isWithFilter"
     >
-      <BaseRecommendationsFilters
-        :filter-scope="filterScope"
-        @filter-scope-change="handleFilterScopeChange"
-        @filter-value-change="handleFilterValueChange"
+      <slot
+        name="filter"
       />
     </BaseSegmentContainer>
 
@@ -71,8 +69,6 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseArtistSourceSelect
   from '*/components/models/artist/BaseArtistSourceSelect.vue'
-import BaseRecommendationsFilters
-  from '*/components/models/recommendations/BaseRecommendationsFilters.vue'
 import BaseProfileLibrarySearchInput
   from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import BaseViewChangeButtons
@@ -85,7 +81,6 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseArtistSourceSelect,
-    BaseRecommendationsFilters,
     BaseProfileLibrarySearchInput,
     BaseViewChangeButtons,
     BasePaginatedSegmentContainer
@@ -109,8 +104,7 @@ export default {
     isLibrarySearchClearable: Boolean,
     query: String,
     isWithArtistSelect: Boolean,
-    isWithRecommendationsFilters: Boolean,
-    filterScope: String,
+    isWithFilter: Boolean,
     isWithViewChange: Boolean,
     viewIndex: Number,
     artistName: String,
@@ -120,9 +114,7 @@ export default {
   emits: [
     'focus',
     'searchSubmit',
-    'searchClear',
-    'filterScopeChange',
-    'filterValueChange'
+    'searchClear'
   ],
   watch: {
     viewIndex: 'handleViewIndexChange',
@@ -168,24 +160,6 @@ export default {
     handleSearchClear () {
       this.$emit(
         'searchClear'
-      )
-    },
-    handleFilterScopeChange (
-      value
-    ) {
-      this.$emit(
-        'filterScopeChange',
-        value
-      )
-    },
-    handleFilterValueChange (
-      value
-    ) {
-      this.reset()
-
-      this.$emit(
-        'filterValueChange',
-        value
       )
     },
     reset () {

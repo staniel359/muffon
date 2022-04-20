@@ -14,7 +14,9 @@
       :is-error="isError"
       :is-disabled="!isAnyVideos"
     >
-      <VideosList :videos="videos" />
+      <VideosList
+        :videos="videos"
+      />
     </BaseDropdownContainer>
   </div>
 </template>
