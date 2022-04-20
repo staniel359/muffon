@@ -37,14 +37,17 @@ export default {
   },
   methods: {
     handleLinkClick () {
-      this.$refs
-        .modal
-        .hide()
+      this.hide()
     },
     show () {
       this.$refs
         .modal
         .show()
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
     }
   }
 }

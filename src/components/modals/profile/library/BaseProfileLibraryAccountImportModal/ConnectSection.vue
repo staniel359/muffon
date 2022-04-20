@@ -73,7 +73,10 @@ export default {
       )
     },
     isDisabled () {
-      return !!this.userData
+      return (
+        this.isLoading ||
+          !!this.userData
+      )
     }
   },
   watch: {

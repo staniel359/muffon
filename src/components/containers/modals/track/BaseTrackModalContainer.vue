@@ -1,29 +1,27 @@
 <template>
-  <BaseModalContentContainer
+  <BaseSegmentModalContainer
     ref="modal"
     :is-loading="isLoading"
     :error="error"
     :response-data="trackData"
-    @call="handleModalCall"
-    @refresh="handleModalRefresh"
+    @call="handleCall"
+    @refresh="handleRefresh"
   >
-    <template #default>
-      <slot
-        :[scope]="trackData[scope]"
-      />
-    </template>
-  </BaseModalContentContainer>
+    <slot
+      :[scope]="trackData[scope]"
+    />
+  </BaseSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import BaseSegmentModalContainer
+  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getTrack from '*/helpers/actions/api/track/get'
 
 export default {
   name: 'BaseTrackModalContainer',
   components: {
-    BaseModalContentContainer
+    BaseSegmentModalContainer
   },
   props: {
     requestTrackData: {
@@ -51,13 +49,13 @@ export default {
     }
   },
   methods: {
-    handleModalCall () {
-      this.fetchData()
-    },
-    handleModalRefresh () {
-      this.fetchData()
-    },
     getTrack,
+    handleCall () {
+      this.fetchData()
+    },
+    handleRefresh () {
+      this.fetchData()
+    },
     fetchData () {
       this.getTrack(
         this.trackArgs

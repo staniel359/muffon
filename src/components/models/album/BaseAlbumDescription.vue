@@ -30,6 +30,9 @@ export default {
   },
   methods: {
     handleMoreClick () {
+      this.showModal()
+    },
+    showModal () {
       this.$refs
         .modal
         .show()

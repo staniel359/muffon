@@ -1,24 +1,25 @@
 <template>
-  <BaseButton
-    class="compact"
+  <BaseButtonContainer
+    class="basic compact"
     icon="image"
     @click="handleClick"
-  />
-
-  <BaseImageInput
-    ref="input"
-    @change="handleImageChange"
-  />
+  >
+    <BaseImageInput
+      ref="input"
+      @change="handleImageChange"
+    />
+  </BaseButtonContainer>
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButtonContainer
+  from '*/components/containers/buttons/BaseButtonContainer.vue'
 import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
 
 export default {
   name: 'ImagesButton',
   components: {
-    BaseButton,
+    BaseButtonContainer,
     BaseImageInput
   },
   props: {
@@ -34,9 +35,7 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$refs
-        .input
-        .show()
+      this.showInput()
     },
     handleImageChange (
       value
@@ -50,6 +49,11 @@ export default {
         'change',
         images
       )
+    },
+    showInput () {
+      this.$refs
+        .input
+        .show()
     }
   }
 }

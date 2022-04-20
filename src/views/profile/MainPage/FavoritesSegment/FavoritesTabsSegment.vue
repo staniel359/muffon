@@ -1,5 +1,7 @@
 <template>
-  <BaseSegmentContainer ref="segment">
+  <BaseSegmentContainer
+    ref="segment"
+  >
     <BaseTabsContainer
       class="three item"
       :tabs="tabsCollection"

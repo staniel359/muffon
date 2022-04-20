@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="content main-modal-content-full-height">
       <div class="top-section-container">
         <SearchInput
@@ -62,6 +65,9 @@ export default {
     'change'
   ],
   methods: {
+    handleVisible () {
+      this.focusInput()
+    },
     handleSelect (
       value
     ) {
@@ -91,13 +97,9 @@ export default {
         []
       )
 
-      this.$refs
-        .input
-        .focus()
+      this.focusInput()
 
-      this.$refs
-        .input
-        .clear()
+      this.clearInput()
     },
     changeTracks (
       value
@@ -111,14 +113,21 @@ export default {
       this.$refs
         .modal
         .show()
-      this.$refs
-        .input
-        .focus()
     },
     hide () {
       this.$refs
         .modal
         .hide()
+    },
+    focusInput () {
+      this.$refs
+        .input
+        .focus()
+    },
+    clearInput () {
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

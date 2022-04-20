@@ -212,10 +212,13 @@ export default {
   mounted () {
     this.libraryId =
       this.artistData.library_id?.toString()
+
     this.favoriteId =
       this.artistData.favorite_id?.toString()
+
     this.bookmarkId =
       this.artistData.bookmark_id?.toString()
+
     this.listenedId =
       this.artistData.listened_id?.toString()
   },
@@ -255,9 +258,7 @@ export default {
           }
         )
       } else {
-        this.$refs
-          .deleteModal
-          .show()
+        this.showDeleteModal()
       }
     },
     handleDeleted () {
@@ -283,6 +284,11 @@ export default {
       value
     ) {
       this.listenedId = value
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

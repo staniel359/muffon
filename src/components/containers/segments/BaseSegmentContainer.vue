@@ -8,7 +8,7 @@
     }"
   >
     <BaseErrorMessage
-      v-if="error"
+      v-if="isError"
       :error="error"
       is-with-refresh-button
       @refresh="handleRefresh"
@@ -34,6 +34,7 @@ export default {
     BaseErrorMessage
   },
   props: {
+    responseData: Object,
     isLoading: Boolean,
     error: Error
   },
@@ -47,7 +48,13 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    isError () {
+      return !!(
+        !this.responseData &&
+          this.error
+      )
+    }
   },
   mounted () {
     this.$emit(

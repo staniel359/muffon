@@ -6,16 +6,10 @@
       icon: icons
     }"
   >
-    <i
+    <IconsBlock
       v-if="icons"
-      class="icons icon-group"
-    >
-      <BaseIcon
-        v-for="(icon, index) in icons"
-        :key="index"
-        :icon="icon"
-      />
-    </i>
+      :icons="icons"
+    />
 
     <div class="content">
       <div
@@ -23,35 +17,25 @@
         v-text="header"
       />
 
-      <p v-if="content">
-        <BaseLink
-          v-if="isContentLink"
-          :link="link"
-          :text="content"
-          @click="handleLinkClick"
-        />
-        <template v-else>
-          {{ content }}
-        </template>
-      </p>
+      <ContentBlock
+        v-if="content"
+        :content="content"
+        :is-content-link="isContentLink"
+        :link="link"
+        @link-click="handleLinkClick"
+      />
 
-      <ul
+      <ListBlock
         v-if="listItems"
-        class="list"
-      >
-        <li
-          v-for="listItemData in listItems"
-          :key="listItemData.key"
-          v-text="listItemData.text"
-        />
-      </ul>
+        :list-items="listItems"
+      />
     </div>
 
     <BaseButton
       v-if="buttonData"
       :class="buttonData.class"
       :icon="buttonData.icon"
-      @click="handleClick"
+      @click="handleButtonClick"
     />
   </div>
 </template>
@@ -60,25 +44,27 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '*/components/BaseIcon.vue'
+import IconsBlock from './BaseMessage/IconsBlock.vue'
+import ContentBlock from './BaseMessage/ContentBlock.vue'
+import ListBlock from './BaseMessage/ListBlock.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
 
 export default {
   name: 'BaseMessage',
   components: {
-    BaseIcon,
-    BaseButton,
-    BaseLink
+    IconsBlock,
+    ContentBlock,
+    ListBlock,
+    BaseButton
   },
   props: {
     icons: Array,
-    buttonData: Object,
     header: String,
     content: String,
-    listItems: Array,
     isContentLink: Boolean,
-    link: Object
+    link: Object,
+    listItems: Array,
+    buttonData: Object
   },
   emits: [
     'buttonClick',
@@ -93,7 +79,7 @@ export default {
     )
   },
   methods: {
-    handleClick () {
+    handleButtonClick () {
       this.$emit(
         'buttonClick'
       )
@@ -107,8 +93,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.icon-group
-  font-size: 3em
-  margin-right: 0.5em
-</style>
+<style lang="sass" scoped></style>

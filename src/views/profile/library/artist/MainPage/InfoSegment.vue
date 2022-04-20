@@ -162,14 +162,17 @@ export default {
   },
   methods: {
     handleDeleteOptionClick () {
-      this.$refs
-        .deleteModal
-        .show()
+      this.showDeleteModal()
     },
     setFavoriteId (
       value
     ) {
       this.favoriteId = value
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

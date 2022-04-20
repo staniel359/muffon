@@ -3,12 +3,15 @@
     <BaseAccordionContainer
       :title="addTracksText"
     >
-      <SearchImportBlock
-        :playlist-id="playlistId"
-      />
-      <LibraryImportBlock
-        :playlist-id="playlistId"
-      />
+      <div class="ui buttons">
+        <SearchImportButton
+          :playlist-id="playlistId"
+        />
+
+        <LibraryImportButton
+          :playlist-id="playlistId"
+        />
+      </div>
     </BaseAccordionContainer>
   </BaseSegmentContainer>
 </template>
@@ -18,16 +21,16 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
-import SearchImportBlock from './ImportSegment/SearchImportBlock.vue'
-import LibraryImportBlock from './ImportSegment/LibraryImportBlock.vue'
+import SearchImportButton from './ImportSegment/SearchImportButton.vue'
+import LibraryImportButton from './ImportSegment/LibraryImportButton.vue'
 
 export default {
   name: 'ImportSegment',
   components: {
     BaseSegmentContainer,
     BaseAccordionContainer,
-    SearchImportBlock,
-    LibraryImportBlock
+    SearchImportButton,
+    LibraryImportButton
   },
   props: {
     playlistId: String
@@ -42,9 +45,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-::v-deep(.import-button)
-  @extend .no-margin
-  &:not(:first-child)
-    margin-left: 1em !important
-</style>
+<style lang="sass" scoped></style>

@@ -2,7 +2,10 @@
   <BaseSegmentContainer
     ref="segment"
     class="main-paginated-segment-container"
+    :response-data="responseData"
     :is-loading="isLoading"
+    :error="error"
+    @refresh="handleRefresh"
   >
     <BasePaginatedListContainer
       v-if="responseData"
@@ -83,6 +86,9 @@ export default {
     }
   },
   methods: {
+    handleRefresh () {
+      this.refresh()
+    },
     handleFocus () {
       this.$emit(
         'focus'
@@ -97,6 +103,11 @@ export default {
       this.$refs
         .segment
         .focus()
+    },
+    scrollToTop () {
+      this.$refs
+        .segment
+        .scrollToTop()
     }
   }
 }

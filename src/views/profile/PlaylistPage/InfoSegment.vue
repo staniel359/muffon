@@ -1,7 +1,12 @@
 <template>
   <BaseSegmentContainer>
     <div class="ui list">
-      <div class="item main-simple-list-item main-playlist-info-item">
+      <div
+        :class="[
+          'item main-simple-list-item',
+          'main-playlist-info-item'
+        ]"
+      >
         <BaseImage
           class="playlist-image rounded bordered"
           model="playlist"
@@ -125,11 +130,17 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
+      this.showEditModal()
+    },
+    handleDeleteOptionClick () {
+      this.showDeleteModal()
+    },
+    showEditModal () {
       this.$refs
         .editModal
         .show()
     },
-    handleDeleteOptionClick () {
+    showDeleteModal () {
       this.$refs
         .deleteModal
         .show()

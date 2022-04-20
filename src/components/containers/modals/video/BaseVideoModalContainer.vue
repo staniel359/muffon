@@ -1,29 +1,27 @@
 <template>
-  <BaseModalContentContainer
+  <BaseSegmentModalContainer
     ref="modal"
     :response-data="videoData"
     :is-loading="isLoading"
     :error="error"
-    @call="handleModalCall"
-    @refresh="handleModalRefresh"
+    @call="handleCall"
+    @refresh="handleRefresh"
   >
-    <template #default>
-      <slot
-        :[scope]="videoData[scope]"
-      />
-    </template>
-  </BaseModalContentContainer>
+    <slot
+      :[scope]="videoData[scope]"
+    />
+  </BaseSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import BaseSegmentModalContainer
+  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getVideo from '*/helpers/actions/api/video/get'
 
 export default {
   name: 'BaseVideoModalContainer',
   components: {
-    BaseModalContentContainer
+    BaseSegmentModalContainer
   },
   props: {
     videoId: {
@@ -51,13 +49,13 @@ export default {
     }
   },
   methods: {
-    handleModalCall () {
-      this.fetchData()
-    },
-    handleModalRefresh () {
-      this.fetchData()
-    },
     getVideo,
+    handleCall () {
+      this.fetchData()
+    },
+    handleRefresh () {
+      this.fetchData()
+    },
     fetchData () {
       this.getVideo(
         this.videoArgs

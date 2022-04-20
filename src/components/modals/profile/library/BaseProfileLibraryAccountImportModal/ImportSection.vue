@@ -68,7 +68,8 @@ export default {
     playsArgs () {
       return {
         lastfmNickname:
-          this.lastfmNickname
+          this.lastfmNickname,
+        page: this.page
       }
     },
     lastfmNickname () {
@@ -89,11 +90,7 @@ export default {
   mounted () {
     this.isMounted = true
 
-    this.$refs
-      .progress
-      .setTotalCount(
-        this.playsCount
-      )
+    this.setProgressTotalCount()
 
     this.fetchData()
   },
@@ -105,16 +102,28 @@ export default {
     handlePlaysChange (
       value
     ) {
-      this.$refs
-        .progress
-        .setValue(
-          value.length
-        )
+      this.setProgressValue(
+        value.length
+      )
 
       if (this.isGetPlays) {
         this.page += 1
 
         this.fetchData()
+      } else {
+        const tracks =
+          formatPlaysToTracks(
+            this.plays
+          )
+
+        const tracksFormatted =
+          formatCollection(
+            tracks
+          )
+
+        this.setSuccessTracks(
+          tracksFormatted
+        )
       }
     },
     handleRefresh () {
@@ -123,13 +132,6 @@ export default {
     handleProgressComplete () {
       this.isComplete = true
       this.isProgress = false
-
-      this.successTracks =
-        formatCollection(
-          formatPlaysToTracks(
-            this.plays
-          )
-        )
     },
     fetchData () {
       this.getLastfmUserPlays(
@@ -154,6 +156,22 @@ export default {
       value
     ) {
       this.successTracks = value
+    },
+    setProgressTotalCount () {
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.playsCount
+        )
+    },
+    setProgressValue (
+      value
+    ) {
+      this.$refs
+        .progress
+        .setValue(
+          value
+        )
     }
   }
 }

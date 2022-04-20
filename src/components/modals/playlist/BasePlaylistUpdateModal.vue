@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     handleVisible () {
-      this.focusTitleInput()
+      this.focusTitle()
     },
     handleImageChange (
       value
@@ -86,16 +86,19 @@ export default {
       this.image = value
     },
     handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+      this.hide()
     },
     show () {
       this.$refs
         .modal
         .show()
     },
-    focusTitleInput () {
+    hide () {
+      this.$refs
+        .modal
+        .hide()
+    },
+    focusTitle () {
       this.$refs
         .title
         .focus()

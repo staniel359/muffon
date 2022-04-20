@@ -1,15 +1,13 @@
 <template>
   <BaseHorizontalCardContainer>
-    <template #default>
-      <BaseSegmentContainer
-        class="basic segment-container"
-        :is-loading="isLoading"
-        :error="error"
-        @refresh="handleRefresh"
-      >
-        <slot />
-      </BaseSegmentContainer>
-    </template>
+    <BaseSegmentContainer
+      class="basic segment-container"
+      :is-loading="isLoading"
+      :error="error"
+      @refresh="handleRefresh"
+    >
+      <slot />
+    </BaseSegmentContainer>
   </BaseHorizontalCardContainer>
 </template>
 

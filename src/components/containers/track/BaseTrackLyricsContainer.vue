@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     class="basic"
+    :response-data="trackData"
     :is-loading="isLoading"
     :error="error"
     @refresh="handleRefresh"
@@ -61,6 +62,7 @@ export default {
     trackData: 'handleTrackDataChange'
   },
   methods: {
+    getTrack,
     handleSelectedTrackDataChange () {
       this.fetchData()
     },
@@ -72,7 +74,6 @@ export default {
         'focus'
       )
     },
-    getTrack,
     fetchData () {
       this.getTrack(
         this.trackArgs

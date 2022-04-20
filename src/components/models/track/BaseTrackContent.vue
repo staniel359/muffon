@@ -124,7 +124,7 @@
     />
 
     <BasePlaylistsModal
-      ref="playlistModal"
+      ref="playlistsModal"
       :track-title="trackTitle"
       :artist-name="artistName"
       :album-title="albumTitle"
@@ -418,15 +418,11 @@ export default {
           }
         )
       } else {
-        this.$refs
-          .deleteModal
-          .show()
+        this.showDeleteModal()
       }
     },
     handlePlaylistOptionClick () {
-      this.$refs
-        .playlistModal
-        .show()
+      this.showPlaylistsModal()
     },
     handleDeleted () {
       this.$emit(
@@ -452,6 +448,16 @@ export default {
       value
     ) {
       this.listenedId = value
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
+    },
+    showPlaylistsModal () {
+      this.$refs
+        .playlistsModal
+        .show()
     }
   }
 }

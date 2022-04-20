@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="compact"
+    class="basic compact"
     icon="music"
     @click="handleClick"
   />
@@ -30,9 +30,7 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.$refs
-        .modal
-        .show()
+      this.showModal()
     },
     handleTracksChange (
       value
@@ -41,6 +39,11 @@ export default {
         'change',
         value
       )
+    },
+    showModal () {
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

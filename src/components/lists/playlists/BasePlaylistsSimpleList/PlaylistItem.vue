@@ -187,9 +187,7 @@ export default {
   },
   methods: {
     handleDeleteOptionClick () {
-      this.$refs
-        .deleteModal
-        .show()
+      this.showDeleteModal()
     },
     handleDeleted () {
       this.paginationItem
@@ -200,6 +198,11 @@ export default {
     },
     handleProfileNicknameMouseLeave () {
       this.isMainLinkActive = true
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

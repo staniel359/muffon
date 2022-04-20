@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="content main-modal-content-full-height">
       <div class="top-section-container">
         <SearchInput
@@ -96,6 +99,9 @@ export default {
     }
   },
   methods: {
+    handleVisible () {
+      this.focusInput()
+    },
     async handleScopeSelect (
       value
     ) {
@@ -105,9 +111,7 @@ export default {
 
       await this.$nextTick()
 
-      this.$refs
-        .input
-        .focus()
+      this.focusInput()
     },
     handleSelect (
       value
@@ -133,16 +137,17 @@ export default {
     handleResetButtonClick () {
       this.reset()
 
-      this.$refs
-        .input
-        .clear()
+      this.clearInput()
 
-      this.$refs
-        .input
-        .focus()
+      this.focusInput()
     },
     handleSave () {
       this.status = 'save'
+    },
+    setCollection (
+      value
+    ) {
+      this.collection = value
     },
     reset () {
       this.status = 'import'
@@ -153,20 +158,21 @@ export default {
       this.$refs
         .modal
         .show()
-
-      this.$refs
-        .input
-        .focus()
     },
     hide () {
       this.$refs
         .modal
         .hide()
     },
-    setCollection (
-      value
-    ) {
-      this.collection = value
+    focusInput () {
+      this.$refs
+        .input
+        .focus()
+    },
+    clearInput () {
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

@@ -20,12 +20,23 @@ export default function (
     token
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.isFollowing = false
+    this.followersCount =
+      response
+        .data
+        .other_profile_follower_profiles_count
+  }
+
   return deleteRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

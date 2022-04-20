@@ -131,9 +131,7 @@ export default {
   },
   methods: {
     handleSubmit () {
-      this.$refs
-        .submit
-        .click()
+      this.clickSubmit()
     },
     handleTracksChange (
       value
@@ -207,6 +205,11 @@ export default {
       this.$refs
         .modal
         .hide()
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
     }
   }
 }

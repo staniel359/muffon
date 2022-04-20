@@ -1,6 +1,8 @@
 <template>
   <BaseSegmentContainer>
-    <div class="main-self-container">
+    <div
+      class="main-self-container"
+    >
       <BaseSelfIcons
         :library-id="libraryId"
         :favorite-id="favoriteId"

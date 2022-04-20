@@ -1,6 +1,8 @@
 <template>
   <BaseSegmentContainer>
-    <div class="recommended-block">
+    <div
+      class="recommended-block"
+    >
       <BaseIcon
         icon="volume up"
       />
@@ -84,6 +86,9 @@ export default {
   },
   methods: {
     handleArtistsButtonClick () {
+      this.showArtistsModal()
+    },
+    showArtistsModal () {
       this.$refs
         .artistsModal
         .show()

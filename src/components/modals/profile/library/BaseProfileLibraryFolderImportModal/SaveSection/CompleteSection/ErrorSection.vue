@@ -1,15 +1,9 @@
 <template>
-  <div
-    ref="scrollable"
-    class="main-modal-import-section"
+  <BaseImportErrorSection
+    ref="section"
+    scope="tracks"
+    :error-collection="errorFiles"
   >
-    <div class="main-library-modal-message-container">
-      <BaseMessage
-        class="error"
-        :header="errorText"
-      />
-    </div>
-
     <BasePaginatedListContainer
       :response-data="errorFilesData"
       :scope="scope"
@@ -33,31 +27,23 @@
         />
       </template>
     </BasePaginatedListContainer>
-  </div>
-
-  <BaseRetryButton
-    @click="handleRetryButtonClick"
-  />
+  </BaseImportErrorSection>
 </template>
 
 <script>
-import BaseMessage from '*/components/messages/BaseMessage.vue'
+import BaseImportErrorSection
+  from '*/components/sections/import/BaseImportErrorSection.vue'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import BaseRetryButton from '*/components/buttons/BaseRetryButton.vue'
-import {
-  number as formatNumber
-} from '*/helpers/formatters'
 
 export default {
-  name: 'RetrySection',
+  name: 'ErrorSection',
   components: {
-    BaseMessage,
+    BaseImportErrorSection,
     BasePaginatedListContainer,
-    BaseTracksSimpleList,
-    BaseRetryButton
+    BaseTracksSimpleList
   },
   inject: [
     'setErrorFiles',
@@ -69,9 +55,6 @@ export default {
       required: true
     }
   },
-  emits: [
-    'retry'
-  ],
   data () {
     return {
       limit: 50,
@@ -79,19 +62,6 @@ export default {
     }
   },
   computed: {
-    errorText () {
-      return this.$t(
-        'save.error.tracks',
-        {
-          count: this.totalCountFormatted
-        }
-      )
-    },
-    totalCountFormatted () {
-      return formatNumber(
-        this.totalCount
-      )
-    },
     errorFilesData () {
       return {
         page: 1,
@@ -104,18 +74,8 @@ export default {
     }
   },
   methods: {
-    handleRetryButtonClick () {
-      this.$emit(
-        'retry'
-      )
-    },
     handleFocus () {
-      this.$refs
-        .scrollable
-        .scrollTo(
-          0,
-          0
-        )
+      this.focus()
     },
     handleLinkClick () {
       this.hideModal()
@@ -141,6 +101,11 @@ export default {
           ...errorFiles
         ]
       )
+    },
+    focus () {
+      this.$refs
+        .section
+        .focus()
     }
   }
 }

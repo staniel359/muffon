@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="content main-modal-content-full-height">
       <div class="top-section-container">
         <SearchInput
@@ -99,6 +102,9 @@ export default {
     profileLanguage: 'handleProfileLanguageChange'
   },
   methods: {
+    handleVisible () {
+      this.focusInput()
+    },
     handleSelect (
       value
     ) {
@@ -125,13 +131,9 @@ export default {
     handleResetButtonClick () {
       this.reset()
 
-      this.$refs
-        .input
-        .clear()
+      this.clearInput()
 
-      this.$refs
-        .input
-        .focus()
+      this.focusInput()
 
       this.isReset = true
     },
@@ -140,6 +142,11 @@ export default {
     },
     handleProfileLanguageChange () {
       this.key = generateKey()
+    },
+    setTracks (
+      value
+    ) {
+      this.tracks = value
     },
     reset () {
       this.status = 'import'
@@ -150,20 +157,21 @@ export default {
       this.$refs
         .modal
         .show()
-
-      this.$refs
-        .input
-        .focus()
     },
     hide () {
       this.$refs
         .modal
         .hide()
     },
-    setTracks (
-      value
-    ) {
-      this.tracks = value
+    clearInput () {
+      this.$refs
+        .input
+        .clear()
+    },
+    focusInput () {
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

@@ -1,6 +1,9 @@
 <template>
   <BaseSegmentContainer
-    class="raised image-segment main-segment-container"
+    :class="[
+      'raised image-segment',
+      'main-segment-container'
+    ]"
   >
     <div class="main-image-container">
       <BaseArtistImage

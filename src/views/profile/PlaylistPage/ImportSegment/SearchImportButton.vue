@@ -1,26 +1,30 @@
 <template>
   <BaseButton
-    class="basic import-button"
+    class="basic"
     icon="search"
     :text="searchText"
     @click="handleClick"
   />
 
-  <BaseProfileLibrarySearchImportModal
+  <BasePlaylistSearchImportModal
     ref="modal"
+    :playlist-id="playlistId"
   />
 </template>
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseProfileLibrarySearchImportModal
-  from '*/components/modals/profile/library/BaseProfileLibrarySearchImportModal.vue'
+import BasePlaylistSearchImportModal
+  from '*/components/modals/playlist/BasePlaylistSearchImportModal.vue'
 
 export default {
-  name: 'SearchImportBlock',
+  name: 'SearchImportButton',
   components: {
     BaseButton,
-    BaseProfileLibrarySearchImportModal
+    BasePlaylistSearchImportModal
+  },
+  props: {
+    playlistId: String
   },
   computed: {
     searchText () {
@@ -31,6 +35,9 @@ export default {
   },
   methods: {
     handleClick () {
+      this.showModal()
+    },
+    showModal () {
       this.$refs
         .modal
         .show()

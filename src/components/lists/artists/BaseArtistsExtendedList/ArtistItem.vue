@@ -197,9 +197,7 @@ export default {
       }
     },
     handleDeleteOptionClick () {
-      this.$refs
-        .recommendation
-        .showDeleteModal()
+      this.showRecommendationDeleteModal()
     },
     setLibraryId (
       value
@@ -220,6 +218,11 @@ export default {
       value
     ) {
       this.listenedId = value
+    },
+    showRecommendationDeleteModal () {
+      this.$refs
+        .recommendation
+        .showDeleteModal()
     }
   }
 }

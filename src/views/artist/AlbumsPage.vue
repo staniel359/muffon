@@ -1,10 +1,18 @@
 <template>
   <BaseArtistPaginatedPageContainer
+    ref="page"
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
-    is-with-artist-select
+    is-with-top-segment
   >
+    <template #top="topSlotProps">
+      <BaseArtistSourceSelect
+        :artist-name="topSlotProps.artistName"
+        @change="handleArtistChange"
+      />
+    </template>
+
     <template #default="slotProps">
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
@@ -24,6 +32,8 @@
 <script>
 import BaseArtistPaginatedPageContainer
   from '*/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
+import BaseArtistSourceSelect
+  from '*/components/models/artist/BaseArtistSourceSelect.vue'
 import BaseAlbumsTableList
   from '*/components/lists/albums/BaseAlbumsTableList.vue'
 
@@ -31,6 +41,7 @@ export default {
   name: 'AlbumsPage',
   components: {
     BaseArtistPaginatedPageContainer,
+    BaseArtistSourceSelect,
     BaseAlbumsTableList
   },
   props: {
@@ -41,6 +52,16 @@ export default {
       limit: 20,
       itemsInRow: 4,
       scope: 'albums'
+    }
+  },
+  methods: {
+    handleArtistChange () {
+      this.reset()
+    },
+    reset () {
+      this.$refs
+        .page
+        .reset()
     }
   }
 }

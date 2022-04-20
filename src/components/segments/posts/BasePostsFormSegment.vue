@@ -97,14 +97,10 @@ export default {
   },
   methods: {
     handleSubmit () {
-      this.$refs
-        .submit
-        .click()
+      this.clickSubmit()
     },
     handleSuccess () {
-      this.$refs
-        .input
-        .reset()
+      this.resetInput()
 
       this.tracks = []
       this.images = []
@@ -122,6 +118,16 @@ export default {
       value
     ) {
       this.images = value
+    },
+    clickSubmit () {
+      this.$refs
+        .submit
+        .click()
+    },
+    resetInput () {
+      this.$refs
+        .input
+        .reset()
     }
   }
 }

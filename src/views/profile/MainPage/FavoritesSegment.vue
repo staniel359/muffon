@@ -4,11 +4,9 @@
     :header-link="headerLink"
     :is-fetch-data="false"
   >
-    <template #default>
-      <FavoritesTabsSegment
-        :profile-id="profileId"
-      />
-    </template>
+    <FavoritesTabsSegment
+      :profile-id="profileId"
+    />
   </BaseProfileSegmentContainer>
 </template>
 

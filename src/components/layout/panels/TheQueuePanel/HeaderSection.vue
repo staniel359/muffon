@@ -2,7 +2,9 @@
   <BaseSegmentContainer
     class="header-section"
   >
-    <div class="left-block" />
+    <div
+      class="left-block"
+    />
 
     <h4
       :class="[
@@ -12,7 +14,9 @@
       v-text="tracksText"
     />
 
-    <div class="right-block" />
+    <div
+      class="right-block"
+    />
   </BaseSegmentContainer>
 </template>
 

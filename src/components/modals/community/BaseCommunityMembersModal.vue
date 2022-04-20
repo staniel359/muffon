@@ -1,39 +1,24 @@
 <template>
-  <BaseModalContentContainer
+  <BasePaginatedSegmentModalContainer
     ref="modal"
-    :response-data="communityData"
-    :is-loading="isLoading"
-    :error="error"
+    response-data-name="communityData"
+    :slot-props-data="slotPropsData"
+    :scope="scope"
+    :limit="limit"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
-    <template #default>
-      <BasePaginatedListContainer
-        :response-data="communityData"
-        :scope="scope"
-        :limit="limit"
-        :is-loading="isLoading"
-        :error="error"
-        @fetch-data="fetchData"
-        @refresh="handleRefresh"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <BaseProfilesSimpleList
-            :profiles="slotProps[scope]"
-            @link-click="handleLinkClick"
-          />
-        </template>
-      </BasePaginatedListContainer>
+    <template #default="slotProps">
+      <BaseProfilesSimpleList
+        :profiles="slotProps[scope]"
+        @link-click="handleLinkClick"
+      />
     </template>
-  </BaseModalContentContainer>
+  </BasePaginatedSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentModalContainer
+  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseProfilesSimpleList
   from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 import getCommunityMembers from '*/helpers/actions/api/community/get'
@@ -41,8 +26,7 @@ import getCommunityMembers from '*/helpers/actions/api/community/get'
 export default {
   name: 'BaseCommunityMembersModal',
   components: {
-    BaseModalContentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentModalContainer,
     BaseProfilesSimpleList
   },
   props: {
@@ -67,22 +51,21 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    slotPropsData () {
+      return {
+        communityData: this.communityData,
+        isLoading: this.isLoading,
+        error: this.error,
+        fetchData: this.fetchData,
+        refresh: this.refresh
+      }
     }
   },
   methods: {
     getCommunityMembers,
     handleCall () {
       this.fetchData()
-    },
-    handleRefresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    handleFocus () {
-      this.scrollToTop()
     },
     handleLinkClick () {
       this.hide()
@@ -97,6 +80,13 @@ export default {
         }
       )
     },
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
+    },
     show () {
       this.$refs
         .modal
@@ -106,11 +96,6 @@ export default {
       this.$refs
         .modal
         .hide()
-    },
-    scrollToTop () {
-      this.$refs
-        .modal
-        .scrollToTop()
     }
   }
 }

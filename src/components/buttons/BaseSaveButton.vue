@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     class="fluid primary save-button"
-    icon="save"
+    icon="check"
     :text="saveText"
     @click="handleClick"
   />

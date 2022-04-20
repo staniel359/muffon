@@ -1,44 +1,29 @@
 <template>
-  <BaseModalContentContainer
+  <BasePaginatedSegmentModalContainer
     ref="modal"
-    :response-data="recommendationData"
-    :is-loading="isLoading"
-    :error="error"
+    response-data-name="recommendationData"
+    :slot-props-data="slotPropsData"
+    :scope="scope"
+    :limit="limit"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
-    <template #default>
-      <BasePaginatedListContainer
-        :response-data="recommendationData"
-        :scope="scope"
-        :limit="limit"
-        :is-loading="isLoading"
-        :error="error"
-        @fetch-data="fetchData"
-        @refresh="handleRefresh"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <BaseArtistsSimpleList
-            :artists="slotProps[scope]"
-            :profile-id="profileId"
-            is-link-to-library
-            @link-click="handleLinkClick"
-          />
-        </template>
-      </BasePaginatedListContainer>
+    <template #default="slotProps">
+      <BaseArtistsSimpleList
+        :artists="slotProps[scope]"
+        :profile-id="profileId"
+        is-link-to-library
+        @link-click="handleLinkClick"
+      />
     </template>
-  </BaseModalContentContainer>
+  </BasePaginatedSegmentModalContainer>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentModalContainer
+  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 import getRecommendation from '*/helpers/actions/api/recommendation/get'
@@ -46,8 +31,7 @@ import getRecommendation from '*/helpers/actions/api/recommendation/get'
 export default {
   name: 'BaseRecommendationProfileArtistsModal',
   components: {
-    BaseModalContentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentModalContainer,
     BaseArtistsSimpleList
   },
   props: {
@@ -81,22 +65,21 @@ export default {
         scope: 'artists',
         limit: this.limit
       }
+    },
+    slotPropsData () {
+      return {
+        recommendationData: this.recommendationData,
+        isLoading: this.isLoading,
+        error: this.error,
+        fetchData: this.fetchData,
+        refresh: this.refresh
+      }
     }
   },
   methods: {
     getRecommendation,
     handleCall () {
       this.fetchData()
-    },
-    handleRefresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    handleFocus () {
-      this.scrollToTop()
     },
     handleLinkClick () {
       this.hide()
@@ -111,6 +94,13 @@ export default {
         }
       )
     },
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
+    },
     show () {
       this.$refs
         .modal
@@ -120,11 +110,6 @@ export default {
       this.$refs
         .modal
         .hide()
-    },
-    scrollToTop () {
-      this.$refs
-        .modal
-        .scrollToTop()
     }
   }
 }

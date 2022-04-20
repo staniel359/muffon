@@ -8,9 +8,7 @@
       :profile-id="profileId"
       :is-link-to-library="isLinkToLibrary"
     >
-      <template #default>
-        {{ artistName }}
-      </template>
+      {{ artistName }}
     </BaseArtistLinkContainer>
   </BaseHeaderContainer>
 </template>

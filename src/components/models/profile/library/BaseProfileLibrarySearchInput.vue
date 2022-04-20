@@ -44,9 +44,7 @@ export default {
       )
     },
     handleClearButtonClick () {
-      this.$refs
-        .input
-        .clear()
+      this.clear()
 
       this.$emit(
         'clear'
@@ -56,6 +54,11 @@ export default {
       this.$refs
         .input
         .focus()
+    },
+    clear () {
+      this.$refs
+        .input
+        .clear()
     }
   }
 }

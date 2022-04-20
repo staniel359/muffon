@@ -8,10 +8,8 @@
 
   <CompleteSection
     v-if="isComplete"
-    :is-error="isError"
     :total-count="totalCount"
     :error-albums="errorAlbums"
-    @retry="handleRetry"
   />
 </template>
 
@@ -31,7 +29,8 @@ export default {
   },
   provide () {
     return {
-      setErrorAlbums: this.setErrorAlbums
+      setErrorAlbums: this.setErrorAlbums,
+      retry: this.retry
     }
   },
   inject: [
@@ -46,7 +45,6 @@ export default {
   data () {
     return {
       isComplete: false,
-      isError: false,
       isMounted: false,
       isProgress: true,
       errorAlbums: []
@@ -69,10 +67,9 @@ export default {
     this.isMounted = false
   },
   methods: {
+    createLibraryAlbum,
     handleAlbumsChange () {
-      this.$refs
-        .progress
-        .reset()
+      this.resetProgress()
 
       this.saveAlbums()
     },
@@ -80,9 +77,8 @@ export default {
       this.isComplete = true
       this.isProgress = false
     },
-    handleRetry () {
+    retry () {
       this.isComplete = false
-      this.isError = false
       this.isProgress = true
 
       this.setCollection(
@@ -93,7 +89,6 @@ export default {
 
       this.errorAlbums = []
     },
-    createLibraryAlbum,
     formatProgressActive (
       {
         value,
@@ -109,11 +104,7 @@ export default {
       )
     },
     async saveAlbums () {
-      this.$refs
-        .progress
-        .setTotalCount(
-          this.totalCount
-        )
+      this.setProgressTotalCount()
 
       for (const albumData of this.albums) {
         if (this.isMounted) {
@@ -141,9 +132,7 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs
-            .progress
-            .increment()
+          this.incrementProgress()
         }
       }
 
@@ -174,6 +163,23 @@ export default {
       value
     ) {
       this.errorAlbums = value
+    },
+    resetProgress () {
+      this.$refs
+        .progress
+        .reset()
+    },
+    setProgressTotalCount () {
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
+    },
+    incrementProgress () {
+      this.$refs
+        .progress
+        .increment()
     }
   }
 }

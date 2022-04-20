@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="compact"
+    class="basic compact"
     :icon="button"
     :class="{
       active: isActive

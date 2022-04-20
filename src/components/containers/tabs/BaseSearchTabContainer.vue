@@ -146,6 +146,7 @@ export default {
     }
   },
   methods: {
+    getSearch,
     handleIsActive (
       value
     ) {
@@ -161,12 +162,7 @@ export default {
       }
     },
     handleFocus () {
-      this.$refs
-        .tab
-        .scrollTo(
-          0,
-          0
-        )
+      this.focus()
     },
     handleRefresh (
       page
@@ -178,7 +174,6 @@ export default {
     handleLinkClick () {
       this.hideSearch()
     },
-    getSearch,
     fetchData (
       page
     ) {
@@ -188,6 +183,14 @@ export default {
           page
         }
       )
+    },
+    focus () {
+      this.$refs
+        .tab
+        .scrollTo(
+          0,
+          0
+        )
     }
   }
 }

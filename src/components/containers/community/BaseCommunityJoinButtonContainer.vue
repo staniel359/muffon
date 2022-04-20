@@ -30,6 +30,7 @@ export default {
   ],
   data () {
     return {
+      membersCount: null,
       isMember: false,
       isLoading: false
     }
@@ -63,6 +64,10 @@ export default {
       return this.communityData.id.toString()
     }
   },
+  watch: {
+    isMember: 'handleIsMemberChange',
+    membersCount: 'handleMembersCountChange'
+  },
   mounted () {
     this.isMember =
       this.communityData
@@ -70,34 +75,22 @@ export default {
         .member_of_community
   },
   methods: {
-    handleJoinSuccess (
-      response
-    ) {
-      this.isMember = true
-
-      this.setIsMember(
-        true
-      )
-
-      this.setMembersCount(
-        response.data.community_members_count
-      )
-    },
-    handleLeaveSuccess (
-      response
-    ) {
-      this.isMember = false
-
-      this.setIsMember(
-        false
-      )
-
-      this.setMembersCount(
-        response.data.community_members_count
-      )
-    },
     createMember,
     deleteMember,
+    handleIsMemberChange (
+      value
+    ) {
+      this.setIsMember(
+        value
+      )
+    },
+    handleMembersCountChange (
+      value
+    ) {
+      this.setMembersCount(
+        value
+      )
+    },
     onClick () {
       if (this.isMember) {
         this.leave()
@@ -112,15 +105,11 @@ export default {
     join () {
       this.createMember(
         this.memberData
-      ).then(
-        this.handleJoinSuccess
       )
     },
     leave () {
       this.deleteMember(
         this.memberData
-      ).then(
-        this.handleLeaveSuccess
       )
     }
   }

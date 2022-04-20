@@ -20,12 +20,10 @@
       class="more-container"
       @click.prevent="handleMoreClick"
     >
-      <template #default>
-        <BaseIcon
-          class="link"
-          icon="small ellipsis horizontal"
-        />
-      </template>
+      <BaseIcon
+        class="link"
+        icon="small ellipsis horizontal"
+      />
     </BaseLabelLinkContainer>
   </div>
 </template>

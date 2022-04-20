@@ -31,11 +31,20 @@ export default {
       'album'
     )
 
-    this.$refs
-      .dropdown
-      .setValue(
-        0
-      )
+    this.setDropdownValue(
+      0
+    )
+  },
+  methods: {
+    setDropdownValue (
+      value
+    ) {
+      this.$refs
+        .dropdown
+        .setValue(
+          value
+        )
+    }
   }
 }
 </script>

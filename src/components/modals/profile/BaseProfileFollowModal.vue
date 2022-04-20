@@ -1,39 +1,24 @@
 <template>
-  <BaseModalContentContainer
+  <BasePaginatedSegmentModalContainer
     ref="modal"
-    :response-data="profileData"
-    :is-loading="isLoading"
-    :error="error"
+    response-data-name="profileData"
+    :slot-props-data="slotPropsData"
+    :scope="scope"
+    :limit="limit"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
-    <template #default>
-      <BasePaginatedListContainer
-        :response-data="profileData"
-        :scope="scope"
-        :limit="limit"
-        :is-loading="isLoading"
-        :error="error"
-        @fetch-data="fetchData"
-        @refresh="handleRefresh"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <BaseProfilesSimpleList
-            :profiles="slotProps[scope]"
-            @link-click="handleLinkClick"
-          />
-        </template>
-      </BasePaginatedListContainer>
+    <template #default="slotProps">
+      <BaseProfilesSimpleList
+        :profiles="slotProps[scope]"
+        @link-click="handleLinkClick"
+      />
     </template>
-  </BaseModalContentContainer>
+  </BasePaginatedSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentModalContainer
+  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseProfilesSimpleList
   from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 import getProfileFollow from '*/helpers/actions/api/profile/get'
@@ -41,8 +26,7 @@ import getProfileFollow from '*/helpers/actions/api/profile/get'
 export default {
   name: 'BaseProfileFollowModal',
   components: {
-    BaseModalContentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentModalContainer,
     BaseProfilesSimpleList
   },
   props: {
@@ -64,11 +48,20 @@ export default {
     }
   },
   computed: {
-    followArgs () {
+    profileFollowArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
         limit: this.limit
+      }
+    },
+    slotPropsData () {
+      return {
+        profileData: this.profileData,
+        isLoading: this.isLoading,
+        error: this.error,
+        fetchData: this.fetchData,
+        refresh: this.refresh
       }
     }
   },
@@ -76,16 +69,6 @@ export default {
     getProfileFollow,
     handleCall () {
       this.fetchData()
-    },
-    handleRefresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    handleFocus () {
-      this.scrollToTop()
     },
     handleLinkClick () {
       this.hide()
@@ -95,9 +78,16 @@ export default {
     ) {
       this.getProfileFollow(
         {
-          ...this.followArgs,
+          ...this.profileFollowArgs,
           page
         }
+      )
+    },
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
       )
     },
     show () {
@@ -109,11 +99,6 @@ export default {
       this.$refs
         .modal
         .hide()
-    },
-    scrollToTop () {
-      this.$refs
-        .modal
-        .scrollToTop()
     }
   }
 }

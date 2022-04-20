@@ -1,34 +1,24 @@
 <template>
-  <BaseSegmentContainer
+  <BasePaginatedSegmentContainer
     ref="segment"
-    class="main-paginated-segment-container"
-    :is-loading="isLoading"
+    response-data-name="profileData"
+    :slot-props-data="slotPropsData"
+    :scope="scope"
+    :limit="limit"
+    @focus="handleFocus"
   >
-    <BasePaginatedListContainer
-      :response-data="profileData"
-      :scope="scope"
-      :limit="limit"
-      :is-loading="isLoading"
-      :error="error"
-      @fetch-data="fetchData"
-      @refresh="handleRefresh"
-      @focus="handleFocus"
-    >
-      <template #default="slotProps">
-        <BasePostsSimpleList
-          :posts="slotProps[scope]"
-          :profile-id="profileId"
-        />
-      </template>
-    </BasePaginatedListContainer>
-  </BaseSegmentContainer>
+    <template #default="slotProps">
+      <BasePostsSimpleList
+        :posts="slotProps[scope]"
+        :profile-id="profileId"
+      />
+    </template>
+  </BasePaginatedSegmentContainer>
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
 import getProfilePosts from '*/helpers/actions/api/profile/get'
@@ -36,8 +26,7 @@ import getProfilePosts from '*/helpers/actions/api/profile/get'
 export default {
   name: 'PostsListSegment',
   components: {
-    BaseSegmentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentContainer,
     BasePostsSimpleList
   },
   props: {
@@ -56,11 +45,20 @@ export default {
     }
   },
   computed: {
-    postsArgs () {
+    profilePostsArgs () {
       return {
         profileId: this.profileId,
         scope: this.scope,
         limit: this.limit
+      }
+    },
+    slotPropsData () {
+      return {
+        profileData: this.profileData,
+        isLoading: this.isLoading,
+        error: this.error,
+        fetchData: this.fetchData,
+        refresh: this.refresh
       }
     }
   },
@@ -68,28 +66,31 @@ export default {
     this.fetchData()
   },
   methods: {
+    getProfilePosts,
     handleFocus () {
-      this.$refs
-        .segment
-        .focus()
+      this.focus()
     },
-    handleRefresh (
+    fetchData (
+      page
+    ) {
+      this.getProfilePosts(
+        {
+          ...this.profilePostsArgs,
+          page
+        }
+      )
+    },
+    refresh (
       page
     ) {
       this.fetchData(
         page
       )
     },
-    getProfilePosts,
-    fetchData (
-      page
-    ) {
-      this.getProfilePosts(
-        {
-          ...this.postsArgs,
-          page
-        }
-      )
+    focus () {
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

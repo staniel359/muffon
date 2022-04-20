@@ -27,7 +27,7 @@
   </div>
 
   <BasePlaylistsModal
-    ref="playlistModal"
+    ref="playlistsModal"
     :track-title="trackTitle"
     :artist-name="artistName"
     :album-title="albumTitle"
@@ -83,8 +83,11 @@ export default {
   },
   methods: {
     handlePlaylistOptionClick () {
+      this.showPlaylistsModal()
+    },
+    showPlaylistsModal () {
       this.$refs
-        .playlistModal
+        .playlistsModal
         .show()
     }
   }

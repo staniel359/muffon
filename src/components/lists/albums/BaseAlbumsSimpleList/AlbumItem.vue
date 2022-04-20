@@ -75,14 +75,14 @@
 
       <BaseBookmarkDeleteModal
         v-if="isBookmark"
-        ref="modal"
+        ref="deleteModal"
         model="album"
         :model-data="albumData"
         @success="handleDeleted"
       />
       <BaseFavoriteDeleteModal
         v-else-if="isFavorite"
-        ref="modal"
+        ref="deleteModal"
         model="album"
         :model-data="albumData"
         @success="handleDeleted"
@@ -222,10 +222,13 @@ export default {
   mounted () {
     this.libraryId =
       this.albumData.library_id?.toString()
+
     this.favoriteId =
       this.albumData.favorite_id?.toString()
+
     this.bookmarkId =
       this.albumData.bookmark_id?.toString()
+
     this.listenedId =
       this.albumData.listened_id?.toString()
   },
@@ -244,9 +247,7 @@ export default {
           }
         )
       } else {
-        this.$refs
-          .modal
-          .show()
+        this.showDeleteModal()
       }
     },
     handleDeleted () {
@@ -283,6 +284,11 @@ export default {
       value
     ) {
       this.listenedId = value
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

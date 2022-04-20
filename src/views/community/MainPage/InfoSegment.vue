@@ -156,16 +156,25 @@ export default {
   },
   methods: {
     handleMembersCountClick () {
+      this.showMembersModal()
+    },
+    handleEditOptionClick () {
+      this.showEditModal()
+    },
+    handleDeleteOptionClick () {
+      this.showDeleteModal()
+    },
+    showMembersModal () {
       this.$refs
         .membersModal
         .show()
     },
-    handleEditOptionClick () {
+    showEditModal () {
       this.$refs
         .editModal
         .show()
     },
-    handleDeleteOptionClick () {
+    showDeleteModal () {
       this.$refs
         .deleteModal
         .show()

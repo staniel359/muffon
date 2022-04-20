@@ -1,5 +1,6 @@
 <template>
   <BaseSegmentContainer
+    :response-data="compatibilityData"
     :is-loading="isLoading"
     :error="error"
     @refresh="handleRefresh"
@@ -63,10 +64,10 @@ export default {
     this.fetchData()
   },
   methods: {
+    getLibraryCompatibility,
     handleRefresh () {
       this.fetchData()
     },
-    getLibraryCompatibility,
     fetchData () {
       this.getLibraryCompatibility(
         {

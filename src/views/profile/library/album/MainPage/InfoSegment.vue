@@ -224,14 +224,17 @@ export default {
       this.isArtistNameActive = false
     },
     handleDeleteOptionClick () {
-      this.$refs
-        .deleteModal
-        .show()
+      this.showDeleteModal()
     },
     setFavoriteId (
       value
     ) {
       this.favoriteId = value
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

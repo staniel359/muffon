@@ -43,9 +43,14 @@ export default {
     BaseProfileSubmitButton
   },
   mounted () {
-    this.$refs
-      .email
-      .focus()
+    this.focusEmail()
+  },
+  methods: {
+    focusEmail () {
+      this.$refs
+        .email
+        .focus()
+    }
   }
 }
 </script>

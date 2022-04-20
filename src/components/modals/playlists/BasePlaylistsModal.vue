@@ -1,45 +1,30 @@
 <template>
-  <BaseModalContentContainer
+  <BasePaginatedSegmentModalContainer
     ref="modal"
-    :response-data="profileData"
-    :is-loading="isLoading"
-    :error="error"
+    response-data-name="profileData"
+    :slot-props-data="slotPropsData"
+    :scope="scope"
+    :limit="limit"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
-    <template #default>
-      <BasePaginatedListContainer
-        :response-data="profileData"
-        :scope="scope"
-        :limit="limit"
-        :is-loading="isLoading"
-        :error="error"
-        @fetch-data="fetchData"
-        @refresh="handleRefresh"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <BasePlaylistsSimpleSelectableList
-            :playlists="slotProps[scope]"
-            :track-title="trackTitle"
-            :artist-name="artistName"
-            :album-title="albumTitle"
-            :image-url="imageUrl"
-          />
-        </template>
-      </BasePaginatedListContainer>
+    <template #default="slotProps">
+      <BasePlaylistsSimpleSelectableList
+        :playlists="slotProps[scope]"
+        :track-title="trackTitle"
+        :artist-name="artistName"
+        :album-title="albumTitle"
+        :image-url="imageUrl"
+      />
     </template>
-  </BaseModalContentContainer>
+  </BasePaginatedSegmentModalContainer>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentModalContainer
+  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BasePlaylistsSimpleSelectableList
   from '*/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
 import getProfilePlaylists from '*/helpers/actions/api/profile/get'
@@ -47,8 +32,7 @@ import getProfilePlaylists from '*/helpers/actions/api/profile/get'
 export default {
   name: 'BasePlaylistsModal',
   components: {
-    BaseModalContentContainer,
-    BasePaginatedListContainer,
+    BasePaginatedSegmentModalContainer,
     BasePlaylistsSimpleSelectableList
   },
   props: {
@@ -84,22 +68,21 @@ export default {
     },
     profileId () {
       return this.profileInfo.id.toString()
+    },
+    slotPropsData () {
+      return {
+        profileData: this.profileData,
+        isLoading: this.isLoading,
+        error: this.error,
+        fetchData: this.fetchData,
+        refresh: this.refresh
+      }
     }
   },
   methods: {
     getProfilePlaylists,
     handleCall () {
       this.fetchData()
-    },
-    handleRefresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    handleFocus () {
-      this.scrollToTop()
     },
     fetchData (
       page
@@ -111,15 +94,17 @@ export default {
         }
       )
     },
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
+    },
     show () {
       this.$refs
         .modal
         .show()
-    },
-    scrollToTop () {
-      this.$refs
-        .modal
-        .scrollToTop()
     }
   }
 }

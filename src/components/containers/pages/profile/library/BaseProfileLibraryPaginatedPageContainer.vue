@@ -7,18 +7,26 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
+        ref="page"
         response-data-name="libraryData"
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
-        :is-library-search-clearable="isSearchClearable"
-        :query="query"
-        is-with-library-search
+        is-with-top-segment
         @search-submit="handleSearchSubmit"
         @search-clear="handleSearchClear"
       >
+        <template #top>
+          <BaseProfileLibrarySearchInput
+            :is-clearable="isSearchClearable"
+            :query="query"
+            @submit="handleSearchSubmit"
+            @clear="handleSearchClear"
+          />
+        </template>
+
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
@@ -36,12 +44,15 @@ import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import BaseProfileLibrarySearchInput
+  from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',
   components: {
     BaseProfileLibraryPageContainer,
-    BasePaginatedPageContainer
+    BasePaginatedPageContainer,
+    BaseProfileLibrarySearchInput
   },
   props: {
     profileId: String,
@@ -60,6 +71,9 @@ export default {
       return !!this.query.length
     }
   },
+  watch: {
+    query: 'handleQueryChange'
+  },
   methods: {
     handleSearchSubmit (
       value
@@ -68,6 +82,14 @@ export default {
     },
     handleSearchClear () {
       this.query = ''
+    },
+    handleQueryChange () {
+      this.reset()
+    },
+    reset () {
+      this.$refs
+        .page
+        .reset()
     }
   }
 }

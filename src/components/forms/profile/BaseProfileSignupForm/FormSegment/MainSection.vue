@@ -29,9 +29,14 @@ export default {
     BaseProfileNicknameField
   },
   mounted () {
-    this.$refs
-      .email
-      .focus()
+    this.focusEmail()
+  },
+  methods: {
+    focusEmail () {
+      this.$refs
+        .email
+        .focus()
+    }
   }
 }
 </script>

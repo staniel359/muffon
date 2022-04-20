@@ -57,6 +57,7 @@ export default {
 
     if (this.files.length) {
       this.startFilesLoading()
+
       this.formatFiles()
     }
   },
@@ -67,10 +68,6 @@ export default {
     handleProgressComplete () {
       this.isComplete = true
       this.isProgress = false
-
-      if (this.errorFiles.length) {
-        this.isError = true
-      }
     },
     formatProgressActive (
       {
@@ -87,18 +84,18 @@ export default {
       )
     },
     startFilesLoading () {
-      this.$refs
-        .progress
-        .setTotalCount(
-          this.files.length
-        )
+      this.setProgressTotalCount()
     },
-    formatFiles () {
-      this.files.forEach(
-        this.formatFile
-      )
+    async formatFiles () {
+      for (const file of this.files) {
+        if (this.isMounted) {
+          await this.formatFile(
+            file
+          )
+        }
+      }
     },
-    formatFile (
+    async formatFile (
       file
     ) {
       const handleSuccess = (
@@ -116,6 +113,8 @@ export default {
 
       const handleError = () => {
         if (this.isMounted) {
+          this.isError = true
+
           this.addToErrorFiles(
             {
               file
@@ -124,7 +123,7 @@ export default {
         }
       }
 
-      musicMetadata.parseFile(
+      await musicMetadata.parseFile(
         file.path
       ).then(
         handleSuccess
@@ -150,9 +149,7 @@ export default {
         fileData
       )
 
-      this.$refs
-        .progress
-        .increment()
+      this.incrementProgress()
     },
     addToErrorFiles (
       {
@@ -168,14 +165,24 @@ export default {
         fileData
       )
 
-      this.$refs
-        .progress
-        .increment()
+      this.incrementProgress()
     },
     setSuccessFiles (
       value
     ) {
       this.successFiles = value
+    },
+    setProgressTotalCount () {
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.files.length
+        )
+    },
+    incrementProgress () {
+      this.$refs
+        .progress
+        .increment()
     }
   }
 }

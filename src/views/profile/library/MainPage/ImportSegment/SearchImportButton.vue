@@ -1,36 +1,39 @@
 <template>
   <BaseButton
-    class="basic import-button"
-    icon="folder"
-    :text="folderText"
+    class="basic"
+    icon="search"
+    :text="searchText"
     @click="handleClick"
   />
 
-  <BaseProfileLibraryFolderImportModal
+  <BaseProfileLibrarySearchImportModal
     ref="modal"
   />
 </template>
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseProfileLibraryFolderImportModal
-  from '*/components/modals/profile/library/BaseProfileLibraryFolderImportModal.vue'
+import BaseProfileLibrarySearchImportModal
+  from '*/components/modals/profile/library/BaseProfileLibrarySearchImportModal.vue'
 
 export default {
-  name: 'FolderImportBlock',
+  name: 'SearchImportButton',
   components: {
     BaseButton,
-    BaseProfileLibraryFolderImportModal
+    BaseProfileLibrarySearchImportModal
   },
   computed: {
-    folderText () {
+    searchText () {
       return this.$t(
-        'actions.from.folder'
+        'actions.from.search'
       )
     }
   },
   methods: {
     handleClick () {
+      this.showModal()
+    },
+    showModal () {
       this.$refs
         .modal
         .show()

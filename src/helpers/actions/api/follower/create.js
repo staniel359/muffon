@@ -21,12 +21,23 @@ export default function (
     other_profile_id: otherProfileId
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.isFollowing = true
+    this.followersCount =
+      response
+        .data
+        .other_profile_follower_profiles_count
+  }
+
   return postRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

@@ -1,9 +1,13 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
+    :response-data="playlistData"
     :is-loading="isLoading"
+    :error="error"
+    @refresh="handleRefresh"
   >
     <slot
+      v-if="playlistData"
       :playlist-data="playlistData"
       :is-loading="isLoading"
       :error="error"
@@ -59,14 +63,10 @@ export default {
     this.fetchData()
   },
   methods: {
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     getProfilePlaylist,
+    handleRefresh () {
+      this.refresh()
+    },
     fetchData (
       page
     ) {
@@ -75,6 +75,13 @@ export default {
           ...this.playlistArgs,
           page
         }
+      )
+    },
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
       )
     },
     focus () {

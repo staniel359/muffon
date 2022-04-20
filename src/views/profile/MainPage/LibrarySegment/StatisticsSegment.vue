@@ -1,5 +1,6 @@
 <template>
   <BaseSegmentContainer
+    :response-data="libraryData"
     :is-loading="isLoading"
     :error="error"
     @refresh="handleRefresh"
@@ -46,10 +47,10 @@ export default {
     this.fetchData()
   },
   methods: {
+    getProfileLibrary,
     handleRefresh () {
       this.fetchData()
     },
-    getProfileLibrary,
     fetchData () {
       this.getProfileLibrary(
         {

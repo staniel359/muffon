@@ -1,6 +1,6 @@
 <template>
   <div class="view-change-buttons-container">
-    <BaseButtonsContainer class="basic">
+    <div class="ui buttons">
       <BaseViewChangeButton
         v-for="(button, index) in buttons"
         :key="index"
@@ -9,20 +9,17 @@
         :view-index="viewIndex"
         @click="handleViewButtonClick"
       />
-    </BaseButtonsContainer>
+    </div>
   </div>
 </template>
 
 <script>
-import BaseButtonsContainer
-  from '*/components/containers/buttons/BaseButtonsContainer.vue'
 import BaseViewChangeButton
   from './BaseViewChangeButtons/BaseViewChangeButton.vue'
 
 export default {
   name: 'BaseViewChangeButtons',
   components: {
-    BaseButtonsContainer,
     BaseViewChangeButton
   },
   props: {

@@ -1,46 +1,30 @@
 <template>
-  <BaseModalContentContainer
+  <BasePaginatedSegmentModalContainer
     ref="modal"
-    :response-data="compatibilityData"
-    :is-loading="isLoading"
-    :error="error"
+    response-data-name="compatibilityData"
+    :slot-props-data="slotPropsData"
+    :scope="scope"
+    :limit="limit"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
-    <template #default>
-      <BasePaginatedListContainer
-        :response-data="compatibilityData"
-        :scope="scope"
-        :limit="limit"
-        :is-loading="isLoading"
-        :error="error"
-        @fetch-data="fetchData"
-        @refresh="handleRefresh"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <slot
-            :[scope]="slotProps[scope]"
-          />
-        </template>
-      </BasePaginatedListContainer>
+    <template #default="slotProps">
+      <slot
+        :[scope]="slotProps[scope]"
+      />
     </template>
-  </BaseModalContentContainer>
+  </BasePaginatedSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+import BasePaginatedSegmentModalContainer
+  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import getLibraryCompatibility
   from '*/helpers/actions/api/library/compatibility/get'
 
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',
   components: {
-    BaseModalContentContainer,
-    BasePaginatedListContainer
+    BasePaginatedSegmentModalContainer
   },
   props: {
     profileId: {
@@ -67,22 +51,21 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    slotPropsData () {
+      return {
+        compatibilityData: this.compatibilityData,
+        isLoading: this.isLoading,
+        error: this.error,
+        fetchData: this.fetchData,
+        refresh: this.refresh
+      }
     }
   },
   methods: {
     getLibraryCompatibility,
     handleCall () {
       this.fetchData()
-    },
-    handleRefresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    handleFocus () {
-      this.scrollToTop()
     },
     fetchData (
       page
@@ -94,6 +77,13 @@ export default {
         }
       )
     },
+    refresh (
+      page
+    ) {
+      this.fetchData(
+        page
+      )
+    },
     show () {
       this.$refs
         .modal
@@ -103,11 +93,6 @@ export default {
       this.$refs
         .modal
         .hide()
-    },
-    scrollToTop () {
-      this.$refs
-        .modal
-        .scrollToTop()
     }
   }
 }

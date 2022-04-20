@@ -2,15 +2,13 @@
   <BaseHorizontalCardContainer
     class="track-card"
   >
-    <template #default>
-      <InfoSection
-        :track-data="trackData"
-      />
+    <InfoSection
+      :track-data="trackData"
+    />
 
-      <BaseTrackPlayerPanel
-        :track-data="trackData"
-      />
-    </template>
+    <BaseTrackPlayerPanel
+      :track-data="trackData"
+    />
   </BaseHorizontalCardContainer>
 </template>
 

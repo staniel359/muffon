@@ -3,9 +3,15 @@
     ref="button"
     class="ui button main-simple-button"
     :class="{
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      icon
     }"
   >
+    <BaseIcon
+      v-if="icon"
+      :icon="icon"
+    />
+
     <slot />
   </div>
 </template>
@@ -14,9 +20,16 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseButtonContainer',
+  components: {
+    BaseIcon
+  },
+  props: {
+    icon: String
+  },
   emits: [
     'init'
   ],

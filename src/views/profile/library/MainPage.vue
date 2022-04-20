@@ -3,13 +3,20 @@
     :profile-id="profileId"
   >
     <template #default="slotProps">
-      <StatisticsSegment
-        :library-data="slotProps.libraryData"
-      />
+      <div
+        :class="[
+          'ui raised segments',
+          'main-segment-container'
+        ]"
+      >
+        <StatisticsSegment
+          :library-data="slotProps.libraryData"
+        />
 
-      <ImportSegment
-        v-if="isSelf"
-      />
+        <ImportSegment
+          v-if="isSelf"
+        />
+      </div>
 
       <ArtistsSegment
         :profile-id="profileId"

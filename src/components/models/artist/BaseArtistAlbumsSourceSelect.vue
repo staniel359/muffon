@@ -2,7 +2,7 @@
   <div class="main-source-select-container">
     <div class="main-source-select-content">
       <SourceSelect
-        ref="source"
+        ref="select"
         :query="artistName"
       />
 
@@ -63,7 +63,7 @@ export default {
     }
   },
   emits: [
-    'artistDataChange'
+    'change'
   ],
   data () {
     return {
@@ -106,7 +106,7 @@ export default {
         )
 
         this.$emit(
-          'artistDataChange'
+          'change'
         )
       }
     },
@@ -121,16 +121,14 @@ export default {
       }
     },
     handleReset () {
-      this.$refs
-        .source
-        .reset()
+      this.resetSelect()
 
       this.selectedSourceData = null
 
       this.resetRequestArtistData()
 
       this.$emit(
-        'artistDataChange'
+        'change'
       )
     },
     setSelectedSourceData (
@@ -161,6 +159,11 @@ export default {
           albumType: this.selectedTypeId
         }
       )
+    },
+    resetSelect () {
+      this.$refs
+        .select
+        .reset()
     }
   }
 }

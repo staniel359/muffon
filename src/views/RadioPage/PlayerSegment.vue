@@ -1,7 +1,10 @@
 <template>
   <BaseSegmentContainer
     class="track-segment"
+    :response-data="radioData"
     :is-loading="isLoading"
+    :error="error"
+    @refresh="handleRefresh"
   >
     <template v-if="modelName">
       <PlayerLabel
@@ -94,10 +97,13 @@ export default {
     }
   },
   methods: {
+    getRadio,
     handleNextButtonClick () {
       this.fetchData()
     },
-    getRadio,
+    handleRefresh () {
+      this.fetchData()
+    },
     fetchData () {
       this.getRadio(
         this.radioArgs

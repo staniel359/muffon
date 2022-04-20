@@ -1,9 +1,13 @@
 <template>
   <BaseSegmentContainer
     ref="segment"
+    :response-data="conversationData"
     :is-loading="isLoading"
+    :error="error"
+    @refresh="handleRefresh"
   >
     <slot
+      v-if="conversationData"
       :conversation-data="conversationData"
       :is-loading="isLoading"
       :error="error"
@@ -52,6 +56,9 @@ export default {
   },
   methods: {
     getConversation,
+    handleRefresh () {
+      this.refresh()
+    },
     fetchData (
       page
     ) {

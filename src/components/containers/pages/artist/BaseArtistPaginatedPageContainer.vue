@@ -6,15 +6,23 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
+        ref="page"
         response-data-name="artistData"
         :slot-props-data="pageSlotProps"
         :artist-name="pageSlotProps.artistName"
-        :is-with-artist-select="isWithArtistSelect"
+        :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
         :scope="scope"
         :limit="limit"
       >
+        <template #top>
+          <slot
+            name="top"
+            :artist-name="pageSlotProps.artistName"
+          />
+        </template>
+
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
@@ -45,7 +53,14 @@ export default {
     limit: Number,
     isWithViewChange: Boolean,
     viewIndex: Number,
-    isWithArtistSelect: Boolean
+    isWithTopSegment: Boolean
+  },
+  methods: {
+    reset () {
+      this.$refs
+        .page
+        .reset()
+    }
   }
 }
 </script>

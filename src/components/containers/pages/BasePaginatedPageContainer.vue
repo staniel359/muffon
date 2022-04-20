@@ -7,32 +7,11 @@
     ]"
   >
     <BaseSegmentContainer
-      v-if="isWithArtistSelect"
-    >
-      <BaseArtistSourceSelect
-        :artist-name="artistName"
-        @artist-data-change="handleArtistDataChange"
-      />
-    </BaseSegmentContainer>
-
-    <BaseSegmentContainer
-      v-if="isWithFilter"
+      v-if="isWithTopSegment"
+      class="top-segment"
     >
       <slot
-        name="filter"
-      />
-    </BaseSegmentContainer>
-
-    <BaseSegmentContainer
-      v-if="isWithViewChange || isWithLibrarySearch"
-      class="search-view-buttons-segment"
-    >
-      <BaseProfileLibrarySearchInput
-        v-if="isWithLibrarySearch"
-        :is-clearable="isLibrarySearchClearable"
-        :query="query"
-        @submit="handleSearchSubmit"
-        @clear="handleSearchClear"
+        name="top"
       />
 
       <BaseViewChangeButtons
@@ -67,10 +46,6 @@
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseArtistSourceSelect
-  from '*/components/models/artist/BaseArtistSourceSelect.vue'
-import BaseProfileLibrarySearchInput
-  from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
 import BaseViewChangeButtons
   from '*/components/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedSegmentContainer
@@ -80,8 +55,6 @@ export default {
   name: 'BasePaginatedPageContainer',
   components: {
     BaseSegmentContainer,
-    BaseArtistSourceSelect,
-    BaseProfileLibrarySearchInput,
     BaseViewChangeButtons,
     BasePaginatedSegmentContainer
   },
@@ -100,30 +73,16 @@ export default {
     limit: Number,
     clientPageLimit: Number,
     responsePageLimit: Number,
-    isWithLibrarySearch: Boolean,
-    isLibrarySearchClearable: Boolean,
-    query: String,
-    isWithArtistSelect: Boolean,
-    isWithFilter: Boolean,
-    isWithViewChange: Boolean,
-    viewIndex: Number,
-    artistName: String,
     isPaginationSimple: Boolean,
-    isReset: Boolean
+    isReset: Boolean,
+    isWithTopSegment: Boolean,
+    isWithViewChange: Boolean,
+    viewIndex: Number
   },
-  emits: [
-    'focus',
-    'searchSubmit',
-    'searchClear'
-  ],
   watch: {
-    viewIndex: 'handleViewIndexChange',
-    query: 'handleQueryChange'
+    viewIndex: 'handleViewIndexChange'
   },
   methods: {
-    handleArtistDataChange () {
-      this.reset()
-    },
     handleViewButtonClick (
       value
     ) {
@@ -136,31 +95,13 @@ export default {
     handleViewIndexChange () {
       this.slotPropsData.fetchData()
     },
-    handleQueryChange () {
-      this.reset()
-    },
     handleFocus () {
-      window.scrollTo(
-        0,
-        0
-      )
-
-      this.$emit(
-        'focus'
-      )
+      this.focus()
     },
-    handleSearchSubmit (
-      value
-    ) {
-      this.$emit(
-        'searchSubmit',
-        value
-      )
-    },
-    handleSearchClear () {
-      this.$emit(
-        'searchClear'
-      )
+    focus () {
+      this.$refs
+        .segment
+        .focus()
     },
     reset () {
       this.$refs
@@ -172,6 +113,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.search-view-buttons-segment
-  @extend .d-flex, .align-items-center
+.top-segment
+  @extend .d-flex, .align-items-center, .justify-content-space-between
+  ::v-deep(.main-accordion)
+    @extend .flex-full
 </style>

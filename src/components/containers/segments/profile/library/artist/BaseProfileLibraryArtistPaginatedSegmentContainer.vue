@@ -47,6 +47,9 @@ export default {
   },
   methods: {
     handleFocus () {
+      this.focus()
+    },
+    focus () {
       this.$refs
         .segment
         .focus()

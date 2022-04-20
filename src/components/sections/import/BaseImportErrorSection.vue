@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="scrollable"
+    ref="section"
     class="main-modal-import-section"
   >
     <div class="main-library-modal-message-container">
@@ -10,49 +10,48 @@
       />
     </div>
 
-    <AlbumsList
-      :albums="errorAlbums"
-      @change="handleAlbumsChange"
-      @focus="handleFocus"
-    />
+    <slot />
   </div>
 
   <BaseRetryButton
+    class="fluid retry-button"
+    icon="redo alternate"
     @click="handleRetryButtonClick"
   />
 </template>
 
 <script>
 import BaseMessage from '*/components/messages/BaseMessage.vue'
-import AlbumsList from '../../../lists/AlbumsList.vue'
 import BaseRetryButton from '*/components/buttons/BaseRetryButton.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
 
 export default {
-  name: 'RetrySection',
+  name: 'BaseImportErrorSection',
   components: {
     BaseMessage,
-    AlbumsList,
     BaseRetryButton
   },
   inject: [
-    'setErrorAlbums'
-  ],
-  props: {
-    errorAlbums: {
-      type: Array,
-      required: true
-    }
-  },
-  emits: [
     'retry'
   ],
+  props: {
+    scope: {
+      type: String,
+      required: true
+    },
+    errorCollection: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
   computed: {
     errorText () {
       return this.$t(
-        'save.error.albums',
+        `save.error.${this.scope}`,
         {
           count: this.totalCountFormatted
         }
@@ -64,31 +63,20 @@ export default {
       )
     },
     totalCount () {
-      return this.errorAlbums.length
+      return this.errorCollection.length
     }
   },
   methods: {
     handleRetryButtonClick () {
-      this.$emit(
-        'retry'
-      )
+      this.retry()
     },
-    handleFocus () {
+    focus () {
       this.$refs
-        .scrollable
+        .section
         .scrollTo(
           0,
           0
         )
-    },
-    handleAlbumsChange (
-      value
-    ) {
-      this.setErrorAlbums(
-        [
-          ...value
-        ]
-      )
     }
   }
 }

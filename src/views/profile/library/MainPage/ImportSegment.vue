@@ -1,13 +1,15 @@
 <template>
-  <BaseSegmentContainer
-    class="raised main-segment-container"
-  >
+  <BaseSegmentContainer>
     <BaseAccordionContainer
       :title="addText"
     >
-      <SearchImportBlock />
-      <AccountImportBlock />
-      <FolderImportBlock />
+      <div class="ui buttons">
+        <SearchImportButton />
+
+        <AccountImportButton />
+
+        <FolderImportButton />
+      </div>
     </BaseAccordionContainer>
   </BaseSegmentContainer>
 </template>
@@ -17,18 +19,18 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
-import SearchImportBlock from './ImportSegment/SearchImportBlock.vue'
-import AccountImportBlock from './ImportSegment/AccountImportBlock.vue'
-import FolderImportBlock from './ImportSegment/FolderImportBlock.vue'
+import SearchImportButton from './ImportSegment/SearchImportButton.vue'
+import AccountImportButton from './ImportSegment/AccountImportButton.vue'
+import FolderImportButton from './ImportSegment/FolderImportButton.vue'
 
 export default {
   name: 'ImportSegment',
   components: {
     BaseSegmentContainer,
     BaseAccordionContainer,
-    SearchImportBlock,
-    AccountImportBlock,
-    FolderImportBlock
+    SearchImportButton,
+    AccountImportButton,
+    FolderImportButton
   },
   computed: {
     addText () {
@@ -40,9 +42,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-::v-deep(.import-button)
-  @extend .no-margin
-  &:not(:first-child)
-    margin-left: 1em !important
-</style>
+<style lang="sass" scoped></style>

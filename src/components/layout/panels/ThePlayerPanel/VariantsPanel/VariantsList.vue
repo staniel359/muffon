@@ -1,9 +1,11 @@
 <template>
   <BaseSegmentContainer
+    ref="segment"
     class="raised top attached variants-list"
-    @init="handleSegmentInit"
   >
-    <BaseListContainer class="selection">
+    <BaseListContainer
+      class="selection"
+    >
       <BaseTrackVariantContainer
         v-for="variantData in variantsCollection"
         :key="variantData.uuid"
@@ -51,11 +53,6 @@ export default {
     BaseTrackVariantContainer,
     BaseTrackContent
   },
-  data () {
-    return {
-      segment: null
-    }
-  },
   computed: {
     ...mapState(
       'player',
@@ -73,19 +70,13 @@ export default {
     playerVariants: 'handleVariantsChange'
   },
   methods: {
-    handleSegmentInit (
-      element
-    ) {
-      this.segment = element
-    },
     handleVariantsChange () {
-      this.scrollToListTop()
+      this.scrollToTop()
     },
-    scrollToListTop () {
-      this.segment.scrollTo(
-        0,
-        0
-      )
+    scrollToTop () {
+      this.$refs
+        .segment
+        .scrollToTop()
     }
   }
 }

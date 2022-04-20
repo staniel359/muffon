@@ -3,7 +3,7 @@
     class="scope-select"
     selected="tag"
     :scopes="scopes"
-    @change="handleChange"
+    @select="handleSelect"
   />
 </template>
 
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    handleChange (
+    handleSelect (
       value
     ) {
       this.$emit(

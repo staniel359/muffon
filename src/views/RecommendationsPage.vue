@@ -10,9 +10,9 @@
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
-        is-with-filter
+        is-with-top-segment
       >
-        <template #filter>
+        <template #top>
           <FilterSection />
         </template>
 

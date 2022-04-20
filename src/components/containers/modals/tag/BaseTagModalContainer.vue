@@ -1,29 +1,27 @@
 <template>
-  <BaseModalContentContainer
+  <BaseSegmentModalContainer
     ref="modal"
     :response-data="tagData"
     :is-loading="isLoading"
     :error="error"
-    @call="handleModalCall"
-    @refresh="handleModalRefresh"
+    @call="handleCall"
+    @refresh="handleRefresh"
   >
-    <template #default>
-      <slot
-        :[scope]="tagData[scope]"
-      />
-    </template>
-  </BaseModalContentContainer>
+    <slot
+      :[scope]="tagData[scope]"
+    />
+  </BaseSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import BaseSegmentModalContainer
+  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getTag from '*/helpers/actions/api/tag/get'
 
 export default {
   name: 'BaseTagModalContainer',
   components: {
-    BaseModalContentContainer
+    BaseSegmentModalContainer
   },
   props: {
     tagName: {
@@ -51,13 +49,13 @@ export default {
     }
   },
   methods: {
-    handleModalCall () {
-      this.fetchData()
-    },
-    handleModalRefresh () {
-      this.fetchData()
-    },
     getTag,
+    handleCall () {
+      this.fetchData()
+    },
+    handleRefresh () {
+      this.fetchData()
+    },
     fetchData () {
       this.getTag(
         this.tagArgs

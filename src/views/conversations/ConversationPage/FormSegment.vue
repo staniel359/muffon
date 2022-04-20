@@ -84,15 +84,11 @@ export default {
     }
   },
   mounted () {
-    this.$refs
-      .input
-      .focus()
+    this.focusInput()
   },
   methods: {
     handleSuccess () {
-      this.$refs
-        .input
-        .reset()
+      this.resetInput()
 
       this.tracks = []
       this.images = []
@@ -112,6 +108,19 @@ export default {
       this.images = value
     },
     handleSubmit () {
+      this.clickSubmit()
+    },
+    focusInput () {
+      this.$refs
+        .input
+        .focus()
+    },
+    resetInput () {
+      this.$refs
+        .input
+        .reset()
+    },
+    clickSubmit () {
       this.$refs
         .submit
         .click()

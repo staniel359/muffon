@@ -30,6 +30,7 @@ export default {
   ],
   data () {
     return {
+      followersCount: null,
       isFollowing: false,
       isLoading: false
     }
@@ -66,10 +67,30 @@ export default {
       return this.profileData.id.toString()
     }
   },
+  watch: {
+    isFollowing: 'handleIsFollowingChange',
+    followersCount: 'handleFollowersCountChange'
+  },
   mounted () {
     this.isFollowing = this.isFollower
   },
   methods: {
+    createFollower,
+    deleteFollower,
+    handleIsFollowingChange (
+      value
+    ) {
+      this.setIsFollowing(
+        value
+      )
+    },
+    handleFollowersCountChange (
+      value
+    ) {
+      this.setFollowersCount(
+        value
+      )
+    },
     onClick () {
       if (this.isFollowing) {
         this.unfollow()
@@ -84,45 +105,13 @@ export default {
     follow () {
       this.createFollower(
         this.followerData
-      ).then(
-        this.handleFollowSuccess
-      )
-    },
-    handleFollowSuccess (
-      response
-    ) {
-      this.isFollowing = true
-
-      this.setIsFollowing(
-        true
-      )
-
-      this.setFollowersCount(
-        response.data.other_profile_follower_profiles_count
       )
     },
     unfollow () {
       this.deleteFollower(
         this.followerData
-      ).then(
-        this.handleUnfollowSuccess
       )
-    },
-    handleUnfollowSuccess (
-      response
-    ) {
-      this.isFollowing = false
-
-      this.setIsFollowing(
-        false
-      )
-
-      this.setFollowersCount(
-        response.data.other_profile_follower_profiles_count
-      )
-    },
-    createFollower,
-    deleteFollower
+    }
   }
 }
 </script>

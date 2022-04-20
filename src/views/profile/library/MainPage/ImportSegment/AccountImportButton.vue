@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic import-button"
+    class="basic"
     icon="user circle"
     :class="{
       disabled: !isAccountConnected
@@ -24,7 +24,7 @@ import BaseProfileLibraryAccountImportModal
   from '*/components/modals/profile/library/BaseProfileLibraryAccountImportModal.vue'
 
 export default {
-  name: 'AccountImportBlock',
+  name: 'AccountImportButton',
   components: {
     BaseButton,
     BaseProfileLibraryAccountImportModal
@@ -50,6 +50,9 @@ export default {
   },
   methods: {
     handleClick () {
+      this.showModal()
+    },
+    showModal () {
       this.$refs
         .modal
         .show()

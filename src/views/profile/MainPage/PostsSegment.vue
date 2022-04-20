@@ -4,18 +4,16 @@
     :header-link="headerLink"
     :is-fetch-data="false"
   >
-    <template #default>
-      <BasePostsFormSegment
-        post-type="profile"
-        :profile-id="profileId"
-        @success="handlePostCreateSuccess"
-      />
+    <BasePostsFormSegment
+      post-type="profile"
+      :profile-id="profileId"
+      @success="handlePostCreateSuccess"
+    />
 
-      <PostsListSegment
-        :key="key"
-        :profile-id="profileId"
-      />
-    </template>
+    <PostsListSegment
+      :key="key"
+      :profile-id="profileId"
+    />
   </BaseProfileSegmentContainer>
 </template>
 

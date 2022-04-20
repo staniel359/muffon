@@ -4,21 +4,19 @@
     :header-link="headerLink"
     :is-fetch-data="false"
   >
-    <template #default>
-      <CompatibilitySegment
-        v-if="!isSelf"
-        :profile-id="profileId"
-        :profile-nickname="profileNickname"
-      />
+    <CompatibilitySegment
+      v-if="!isSelf"
+      :profile-id="profileId"
+      :profile-nickname="profileNickname"
+    />
 
-      <StatisticsSegment
-        :profile-id="profileId"
-      />
+    <StatisticsSegment
+      :profile-id="profileId"
+    />
 
-      <LibraryTabsSegment
-        :profile-id="profileId"
-      />
-    </template>
+    <LibraryTabsSegment
+      :profile-id="profileId"
+    />
   </BaseProfileSegmentContainer>
 </template>
 

@@ -8,10 +8,8 @@
 
   <CompleteSection
     v-if="isComplete"
-    :is-error="isError"
     :total-count="totalCount"
     :error-files="errorFiles"
-    @retry="handleRetry"
   />
 </template>
 
@@ -28,7 +26,8 @@ export default {
   },
   provide () {
     return {
-      setErrorFiles: this.setErrorFiles
+      setErrorFiles: this.setErrorFiles,
+      retry: this.retry
     }
   },
   inject: [
@@ -43,7 +42,6 @@ export default {
   data () {
     return {
       isComplete: false,
-      isError: false,
       isMounted: false,
       isProgress: true,
       errorFiles: []
@@ -66,10 +64,9 @@ export default {
     this.isMounted = false
   },
   methods: {
+    createLibraryTrack,
     handleFilesChange () {
-      this.$refs
-        .progress
-        .reset()
+      this.resetProgress()
 
       this.saveFiles()
     },
@@ -77,9 +74,8 @@ export default {
       this.isComplete = true
       this.isProgress = false
     },
-    handleRetry () {
+    retry () {
       this.isComplete = false
-      this.isError = false
       this.isProgress = true
 
       this.setFiles(
@@ -88,7 +84,6 @@ export default {
 
       this.errorFiles = []
     },
-    createLibraryTrack,
     formatProgressActive (
       {
         value,
@@ -104,41 +99,35 @@ export default {
       )
     },
     async saveFiles () {
-      this.$refs
-        .progress
-        .setTotalCount(
-          this.totalCount
-        )
+      this.setProgressTotalCount()
 
-      for (const fileData of this.files) {
+      for (const file of this.files) {
         if (this.isMounted) {
           await this.saveFile(
-            fileData
+            file
           )
         }
       }
     },
     async saveFile (
-      fileData
+      file
     ) {
       const fileFormatted =
         this.formatFile(
-          fileData
+          file
         )
 
       const handleError = () => {
         if (this.isMounted) {
           this.errorFiles.push(
-            fileData
+            file
           )
         }
       }
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs
-            .progress
-            .increment()
+          this.incrementProgress()
         }
       }
 
@@ -151,20 +140,37 @@ export default {
       )
     },
     formatFile (
-      fileData
+      file
     ) {
       return {
-        trackTitle: fileData.title,
-        artistName: fileData.artist.name,
-        albumTitle: fileData.album?.title,
-        image: fileData.image?.original,
-        created: fileData.created
+        trackTitle: file.title,
+        artistName: file.artist.name,
+        albumTitle: file.album?.title,
+        image: file.image?.original,
+        created: file.created
       }
     },
     setErrorFiles (
       value
     ) {
       this.errorFiles = value
+    },
+    resetProgress () {
+      this.$refs
+        .progress
+        .reset()
+    },
+    setProgressTotalCount () {
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
+    },
+    incrementProgress () {
+      this.$refs
+        .progress
+        .increment()
     }
   }
 }

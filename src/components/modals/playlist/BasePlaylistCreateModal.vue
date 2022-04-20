@@ -1,5 +1,8 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+    @visible="handleVisible"
+  >
     <div class="content">
       <BasePlaylistCreateFormContainer
         class="main-playlist-form"
@@ -52,21 +55,28 @@ export default {
     }
   },
   methods: {
+    handleVisible () {
+      this.focusTitle()
+    },
     handleImageChange (
       value
     ) {
       this.image = value
     },
     handleSuccess () {
-      this.$refs
-        .modal
-        .hide()
+      this.hide()
     },
     show () {
       this.$refs
         .modal
         .show()
-
+    },
+    hide () {
+      this.$refs
+        .modal
+        .hide()
+    },
+    focusTitle () {
       this.$refs
         .title
         .focus()

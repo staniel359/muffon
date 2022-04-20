@@ -3,61 +3,56 @@
     ref="modal"
     @show.once="handleCall"
   >
-    <BaseSegmentContainer
+    <BasePaginatedSegmentContainer
       ref="segment"
       :class="[
         'basic scrolling content',
-        'main-scrolling-segment',
         {
           'main-modal-content-full-height':
             responseData
         }
       ]"
-      :is-loading="isLoading"
-      :error="errorConditional"
-      @refresh="handleRefresh"
+      :slot-props-data="slotPropsData"
+      :response-data-name="responseDataName"
+      :scope="scope"
+      :limit="limit"
+      @focus="handleFocus"
     >
-      <slot
-        v-if="responseData"
-      />
-    </BaseSegmentContainer>
+      <template #default="slotProps">
+        <slot
+          :[scope]="slotProps[scope]"
+        />
+      </template>
+    </BasePaginatedSegmentContainer>
   </BaseModalContainer>
 </template>
 
 <script>
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
-  name: 'BaseModalContentContainer',
+  name: 'BasePaginatedSegmentModalContainer',
   components: {
     BaseModalContainer,
-    BaseSegmentContainer
+    BasePaginatedSegmentContainer
   },
   props: {
-    isLoading: Boolean,
-    error: Error,
-    responseData: Object
+    slotPropsData: Object,
+    responseDataName: String,
+    scope: String,
+    limit: Number
   },
   emits: [
-    'call',
-    'refresh'
+    'call'
   ],
   computed: {
-    errorConditional () {
-      if (this.isError) {
-        return this.error
-      } else {
-        return null
-      }
-    },
-    isError () {
-      return !!(
-        !this.responseData &&
-          this.error
-      )
+    responseData () {
+      return this.slotPropsData[
+        this.responseDataName
+      ]
     }
   },
   methods: {
@@ -66,10 +61,8 @@ export default {
         'call'
       )
     },
-    handleRefresh () {
-      this.$emit(
-        'refresh'
-      )
+    handleFocus () {
+      this.scrollToTop()
     },
     show () {
       this.$refs

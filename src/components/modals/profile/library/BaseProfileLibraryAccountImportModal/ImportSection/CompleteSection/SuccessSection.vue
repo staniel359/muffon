@@ -1,6 +1,6 @@
 <template>
   <div
-    ref="scrollable"
+    ref="section"
     class="main-modal-import-section"
   >
     <div class="main-library-modal-message-container">
@@ -124,12 +124,7 @@ export default {
       )
     },
     handleFocus () {
-      this.$refs
-        .scrollable
-        .scrollTo(
-          0,
-          0
-        )
+      this.focus()
     },
     handleLinkClick () {
       this.hideModal()
@@ -155,6 +150,14 @@ export default {
           ...tracks
         ]
       )
+    },
+    focus () {
+      this.$refs
+        .section
+        .scrollTo(
+          0,
+          0
+        )
     }
   }
 }

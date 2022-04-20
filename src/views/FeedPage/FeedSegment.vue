@@ -1,15 +1,18 @@
 <template>
   <BaseSegmentContainer
+    ref="segment"
     :class="[
-      'raised',
+      'raised feed-segment',
       'main-segment-container',
-      'main-paginated-page-segment-container',
-      'feed-segment'
+      'main-paginated-page-segment-container'
     ]"
+    :response-data="feedData"
     :is-loading="isLoading"
-    @init="handleInit"
+    :error="error"
+    @refresh="handleRefresh"
   >
     <BasePaginatedListContainer
+      v-if="feedData"
       :response-data="feedData"
       :scope="scope"
       :limit="limit"
@@ -46,7 +49,6 @@ export default {
   },
   data () {
     return {
-      segment: null,
       feedData: null,
       error: null,
       isLoading: false,
@@ -65,11 +67,7 @@ export default {
     this.fetchData()
   },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.segment = element
-    },
+    getFeed,
     handleRefresh (
       page
     ) {
@@ -78,12 +76,10 @@ export default {
       )
     },
     handleFocus () {
-      this.segment.scrollTo(
-        0,
-        0
-      )
+      this.$refs
+        .segment
+        .scrollToTop()
     },
-    getFeed,
     fetchData (
       page
     ) {

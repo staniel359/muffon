@@ -52,6 +52,9 @@ a
       border-bottom: $borderInverted
     & > .actions
       border-top: $borderInverted
+  & > .content
+    &.scrolling
+      scroll-behavior: smooth
 
 .ui.checkbox
   &.main-toggle-checkbox
@@ -579,6 +582,7 @@ a
 
 .main-modal-import-section
   @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto
+  scroll-behavior: smooth
 
 .main-library-modal-message-container
   margin-bottom: 1em
@@ -691,6 +695,3 @@ a
 .main-compatibility-common-button
   margin-right: 0.5em !important
   margin-bottom: 0.5em !important
-
-.main-scrolling-segment
-  scroll-behavior: smooth

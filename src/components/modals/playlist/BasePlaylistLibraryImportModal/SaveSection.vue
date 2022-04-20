@@ -8,10 +8,8 @@
 
   <CompleteSection
     v-if="isComplete"
-    :is-error="isError"
     :total-count="totalCount"
     :error-tracks="errorTracks"
-    @retry="handleRetry"
   />
 </template>
 
@@ -28,7 +26,8 @@ export default {
   },
   provide () {
     return {
-      setErrorTracks: this.setErrorTracks
+      setErrorTracks: this.setErrorTracks,
+      retry: this.retry
     }
   },
   inject: [
@@ -47,7 +46,6 @@ export default {
   data () {
     return {
       isComplete: false,
-      isError: false,
       isMounted: false,
       isProgress: true,
       errorTracks: []
@@ -70,10 +68,9 @@ export default {
     this.isMounted = false
   },
   methods: {
+    createPlaylistTrack,
     handleTracksChange () {
-      this.$refs
-        .progress
-        .reset()
+      this.resetProgress()
 
       this.saveTracks()
     },
@@ -81,9 +78,8 @@ export default {
       this.isComplete = true
       this.isProgress = false
     },
-    handleRetry () {
+    retry () {
       this.isComplete = false
-      this.isError = false
       this.isProgress = true
 
       this.setTracks(
@@ -94,7 +90,6 @@ export default {
 
       this.errorTracks = []
     },
-    createPlaylistTrack,
     formatProgressActive (
       {
         value,
@@ -110,11 +105,7 @@ export default {
       )
     },
     async saveTracks () {
-      this.$refs
-        .progress
-        .setTotalCount(
-          this.totalCount
-        )
+      this.setProgressTotalCount()
 
       for (const trackData of this.tracks) {
         if (this.isMounted) {
@@ -142,9 +133,7 @@ export default {
 
       const handleFinish = () => {
         if (this.isMounted) {
-          this.$refs
-            .progress
-            .increment()
+          this.incrementProgress()
         }
       }
 
@@ -171,6 +160,23 @@ export default {
       value
     ) {
       this.errorTracks = value
+    },
+    setProgressTotalCount () {
+      this.$refs
+        .progress
+        .setTotalCount(
+          this.totalCount
+        )
+    },
+    incrementProgress () {
+      this.$refs
+        .progress
+        .increment()
+    },
+    resetProgress () {
+      this.$refs
+        .progress
+        .reset()
     }
   }
 }

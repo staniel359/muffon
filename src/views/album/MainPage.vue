@@ -23,19 +23,17 @@
           @init="handleInit"
           @refresh="pageSlotProps.refresh"
         >
-          <template #default>
-            <LeftColumn
-              v-if="scrollable"
-              :album-data="pageSlotProps.albumData"
-              :scrollable="scrollable"
-            />
+          <LeftColumn
+            v-if="scrollable"
+            :album-data="pageSlotProps.albumData"
+            :scrollable="scrollable"
+          />
 
-            <RightColumn
-              :album-data="pageSlotProps.albumData"
-              :request-album-data="pageSlotProps.requestAlbumData"
-              :profile-id="pageSlotProps.profileId"
-            />
-          </template>
+          <RightColumn
+            :album-data="pageSlotProps.albumData"
+            :request-album-data="pageSlotProps.requestAlbumData"
+            :profile-id="pageSlotProps.profileId"
+          />
         </BaseSegmentContainer>
       </div>
     </template>

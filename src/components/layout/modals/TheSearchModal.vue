@@ -39,9 +39,7 @@ export default {
       ]
     ),
     handleVisible () {
-      this.$refs
-        .search
-        .focusInput()
+      this.focusInput()
     },
     show () {
       this.$refs
@@ -52,6 +50,11 @@ export default {
       this.$refs
         .modal
         .hide()
+    },
+    focusInput () {
+      this.$refs
+        .search
+        .focusInput()
     }
   }
 }

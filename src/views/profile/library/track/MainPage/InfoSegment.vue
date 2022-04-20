@@ -74,7 +74,7 @@
           />
 
           <BasePlaylistsModal
-            ref="playlistModal"
+            ref="playlistsModal"
             :track-title="trackTitle"
             :artist-name="artistName"
             :album-title="albumTitle"
@@ -284,19 +284,25 @@ export default {
       this.isAlbumTitleActive = false
     },
     handleDeleteOptionClick () {
-      this.$refs
-        .deleteModal
-        .show()
+      this.showDeleteModal()
     },
     handlePlaylistOptionClick () {
-      this.$refs
-        .playlistModal
-        .show()
+      this.showPlaylistsModal()
     },
     setFavoriteId (
       value
     ) {
       this.favoriteId = value
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
+    },
+    showPlaylistsModal () {
+      this.$refs
+        .playlistsModal
+        .show()
     }
   }
 }

@@ -231,21 +231,15 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
-      this.$refs
-        .updateModal
-        .show()
+      this.showUpdateModal()
     },
     handleDeleteOptionClick () {
-      this.$refs
-        .deleteModal
-        .show()
+      this.showDeleteModal()
     },
     handleUpdated (
       value
     ) {
-      this.$refs
-        .updateModal
-        .hide()
+      this.hideUpdateModal()
 
       this.updatePaginationItem(
         {
@@ -267,6 +261,21 @@ export default {
           icon: 'green check'
         }
       )
+    },
+    showUpdateModal () {
+      this.$refs
+        .updateModal
+        .show()
+    },
+    hideUpdateModal () {
+      this.$refs
+        .updateModal
+        .hide()
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

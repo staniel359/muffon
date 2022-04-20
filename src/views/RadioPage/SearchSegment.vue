@@ -99,9 +99,7 @@ export default {
 
       await this.$nextTick()
 
-      this.$refs
-        .input
-        .focus()
+      this.focusInput()
     },
     handleSearchSelect (
       value
@@ -117,9 +115,9 @@ export default {
         null
       )
 
-      this.$refs
-        .input
-        .clear()
+      this.clearInput()
+
+      this.focusInput()
     },
     handleModelScopeSelect (
       value
@@ -128,6 +126,16 @@ export default {
         'modelScopeChange',
         value
       )
+    },
+    clearInput () {
+      this.$refs
+        .input
+        .clear()
+    },
+    focusInput () {
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

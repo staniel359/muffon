@@ -23,18 +23,16 @@
           @init="handleInit"
           @refresh="slotProps.refresh"
         >
-          <template #default>
-            <LeftColumn
-              v-if="scrollable"
-              :track-data="slotProps.trackData"
-              :scrollable="scrollable"
-            />
+          <LeftColumn
+            v-if="scrollable"
+            :track-data="slotProps.trackData"
+            :scrollable="scrollable"
+          />
 
-            <RightColumn
-              :track-data="slotProps.trackData"
-              :request-track-data="slotProps.requestTrackData"
-            />
-          </template>
+          <RightColumn
+            :track-data="slotProps.trackData"
+            :request-track-data="slotProps.requestTrackData"
+          />
         </BaseSegmentContainer>
       </div>
     </template>

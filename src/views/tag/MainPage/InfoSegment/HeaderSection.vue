@@ -5,9 +5,7 @@
       tag="h1"
       icon="tag"
     >
-      <template #default>
-        {{ tagName }}
-      </template>
+      {{ tagName }}
     </BaseHeaderContainer>
   </div>
 </template>

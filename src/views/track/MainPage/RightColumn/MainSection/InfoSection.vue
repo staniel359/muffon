@@ -3,29 +3,25 @@
     <BaseHeaderContainer
       tag="h3"
     >
-      <template #default>
-        {{ trackTitle }}
+      {{ trackTitle }}
 
-        <span
-          v-if="trackExtraTitle"
-          class="sub header main-extra-title"
-        >
-          <strong
-            v-html="trackExtraTitle"
-          />
-        </span>
-      </template>
+      <span
+        v-if="trackExtraTitle"
+        class="sub header main-extra-title"
+      >
+        <strong
+          v-html="trackExtraTitle"
+        />
+      </span>
     </BaseHeaderContainer>
 
     <BaseHeaderContainer
       class="track-artist-name"
       tag="h4"
     >
-      <template #default>
-        <BaseArtistLinks
-          :artists="artists"
-        />
-      </template>
+      <BaseArtistLinks
+        :artists="artists"
+      />
     </BaseHeaderContainer>
 
     <div

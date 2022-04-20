@@ -65,11 +65,17 @@ export default {
   },
   methods: {
     handleFollowersLinkClick () {
+      this.showFollowersModal()
+    },
+    handleFollowingLinkClick () {
+      this.showFollowingModal()
+    },
+    showFollowersModal () {
       this.$refs
         .followersModal
         .show()
     },
-    handleFollowingLinkClick () {
+    showFollowingModal () {
       this.$refs
         .followingModal
         .show()

@@ -20,12 +20,23 @@ export default function (
     token
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.isMember = false
+    this.membersCount =
+      response
+        .data
+        .community_members_count
+  }
+
   return deleteRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }

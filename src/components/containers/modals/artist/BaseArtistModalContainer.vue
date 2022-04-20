@@ -1,29 +1,27 @@
 <template>
-  <BaseModalContentContainer
+  <BaseSegmentModalContainer
     ref="modal"
     :response-data="artistData"
     :is-loading="isLoading"
     :error="error"
-    @call="handleModalCall"
-    @refresh="handleModalRefresh"
+    @call="handleCall"
+    @refresh="handleRefresh"
   >
-    <template #default>
-      <slot
-        :[scope]="artistData[scope]"
-      />
-    </template>
-  </BaseModalContentContainer>
+    <slot
+      :[scope]="artistData[scope]"
+    />
+  </BaseSegmentModalContainer>
 </template>
 
 <script>
-import BaseModalContentContainer
-  from '*/components/containers/modals/BaseModalContentContainer.vue'
+import BaseSegmentModalContainer
+  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getArtist from '*/helpers/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistModalContainer',
   components: {
-    BaseModalContentContainer
+    BaseSegmentModalContainer
   },
   props: {
     artistName: {
@@ -51,13 +49,13 @@ export default {
     }
   },
   methods: {
-    handleModalCall () {
-      this.fetchData()
-    },
-    handleModalRefresh () {
-      this.fetchData()
-    },
     getArtist,
+    handleCall () {
+      this.fetchData()
+    },
+    handleRefresh () {
+      this.fetchData()
+    },
     fetchData () {
       this.getArtist(
         this.artistArgs

@@ -1,40 +1,39 @@
 <template>
   <BaseButton
     class="basic import-button"
-    icon="headphones"
-    :text="libraryText"
+    icon="folder"
+    :text="folderText"
     @click="handleClick"
   />
 
-  <BasePlaylistLibraryImportModal
+  <BaseProfileLibraryFolderImportModal
     ref="modal"
-    :playlist-id="playlistId"
   />
 </template>
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BasePlaylistLibraryImportModal
-  from '*/components/modals/playlist/BasePlaylistLibraryImportModal.vue'
+import BaseProfileLibraryFolderImportModal
+  from '*/components/modals/profile/library/BaseProfileLibraryFolderImportModal.vue'
 
 export default {
-  name: 'LibraryImportBlock',
+  name: 'FolderImportButton',
   components: {
     BaseButton,
-    BasePlaylistLibraryImportModal
-  },
-  props: {
-    playlistId: String
+    BaseProfileLibraryFolderImportModal
   },
   computed: {
-    libraryText () {
+    folderText () {
       return this.$t(
-        'actions.from.library'
+        'actions.from.folder'
       )
     }
   },
   methods: {
     handleClick () {
+      this.showModal()
+    },
+    showModal () {
       this.$refs
         .modal
         .show()

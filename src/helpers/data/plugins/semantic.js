@@ -496,6 +496,9 @@ export function mainProgressOptions (
   }
 ) {
   return {
+    className: {
+      success: 'active'
+    },
     text: {
       active: formatActive(
         {

@@ -16,9 +16,7 @@
           tag="h2"
           icon="tag"
         >
-          <template #default>
-            {{ tagName }}
-          </template>
+          {{ tagName }}
         </BaseHeaderContainer>
       </BaseLinkContainer>
     </BaseSegmentContainer>

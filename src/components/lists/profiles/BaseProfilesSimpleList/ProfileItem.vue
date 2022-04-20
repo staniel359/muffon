@@ -184,9 +184,7 @@ export default {
       )
     },
     handleMessageOptionClick () {
-      this.$refs
-        .messageModal
-        .show()
+      this.showMessageModal()
     },
     setIsFollowing (
       value
@@ -200,6 +198,11 @@ export default {
     ) {
       this.paginationItem
         .follower_profiles_count = value
+    },
+    showMessageModal () {
+      this.$refs
+        .messageModal
+        .show()
     }
   }
 }

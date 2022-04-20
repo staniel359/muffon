@@ -1,63 +1,39 @@
 <template>
-  <template v-if="isError">
-    <RetrySection
-      v-if="errorTracks.length"
+  <BaseImportCompleteSectionContainer
+    model="playlist"
+    scope="tracks"
+    :is-error="isError"
+    :total-count="totalCount"
+  >
+    <ErrorSection
       :error-tracks="errorTracks"
-      @retry="handleRetryButtonClick"
     />
-  </template>
-
-  <BaseMessage
-    v-else
-    class="success"
-    :icons="[
-      'check'
-    ]"
-    :header="successText"
-  />
+  </BaseImportCompleteSectionContainer>
 </template>
 
 <script>
-import RetrySection from './CompleteSection/RetrySection.vue'
-import BaseMessage from '*/components/messages/BaseMessage.vue'
-import {
-  number as formatNumber
-} from '*/helpers/formatters'
+import BaseImportCompleteSectionContainer
+  from '*/components/containers/sections/import/BaseImportCompleteSectionContainer.vue'
+import ErrorSection from './CompleteSection/ErrorSection.vue'
 
 export default {
   name: 'CompleteSection',
   components: {
-    RetrySection,
-    BaseMessage
+    BaseImportCompleteSectionContainer,
+    ErrorSection
   },
   props: {
-    isError: Boolean,
-    totalCount: Number,
-    errorTracks: Array
-  },
-  emits: [
-    'retry'
-  ],
-  computed: {
-    successText () {
-      return this.$t(
-        'save.success.playlist.tracks',
-        {
-          count: this.totalCountFormatted
-        }
-      )
+    errorTracks: {
+      type: Array,
+      default () {
+        return []
+      }
     },
-    totalCountFormatted () {
-      return formatNumber(
-        this.totalCount
-      )
-    }
+    totalCount: Number
   },
-  methods: {
-    handleRetryButtonClick () {
-      this.$emit(
-        'retry'
-      )
+  computed: {
+    isError () {
+      return !!this.errorTracks.length
     }
   }
 }

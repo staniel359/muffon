@@ -21,12 +21,23 @@ export default function (
     token
   }
 
+  const handleSuccess = (
+    response
+  ) => {
+    this.isMember = true
+    this.membersCount =
+      response
+        .data
+        .community_members_count
+  }
+
   return postRequest.bind(
     this
   )(
     {
       url,
-      params
+      params,
+      onSuccess: handleSuccess
     }
   )
 }
