@@ -10,7 +10,7 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :format-active="formatProgressActive"
+    :active-text-key="activeTextKey"
     @complete="handleProgressComplete"
   />
 
@@ -58,7 +58,8 @@ export default {
       successTracks: [],
       isComplete: false,
       isMounted: false,
-      isProgress: true
+      isProgress: true,
+      activeTextKey: 'import.active.plays'
     }
   },
   computed: {
@@ -136,20 +137,6 @@ export default {
     fetchData () {
       this.getLastfmUserPlays(
         this.playsArgs
-      )
-    },
-    formatProgressActive (
-      {
-        value,
-        total
-      }
-    ) {
-      return this.$t(
-        'import.active.plays',
-        {
-          value,
-          total
-        }
       )
     },
     setSuccessTracks (

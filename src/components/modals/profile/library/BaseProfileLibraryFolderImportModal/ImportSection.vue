@@ -2,7 +2,7 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :format-active="formatProgressActive"
+    :active-text-key="activeTextKey"
     @complete="handleProgressComplete"
   />
 
@@ -49,7 +49,8 @@ export default {
       isComplete: false,
       isError: false,
       isMounted: false,
-      isProgress: true
+      isProgress: true,
+      activeTextKey: 'import.active.tracks'
     }
   },
   mounted () {
@@ -68,20 +69,6 @@ export default {
     handleProgressComplete () {
       this.isComplete = true
       this.isProgress = false
-    },
-    formatProgressActive (
-      {
-        value,
-        total
-      }
-    ) {
-      return this.$t(
-        'import.active.tracks',
-        {
-          value,
-          total
-        }
-      )
     },
     startFilesLoading () {
       this.setProgressTotalCount()

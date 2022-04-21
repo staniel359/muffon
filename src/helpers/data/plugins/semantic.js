@@ -491,7 +491,7 @@ export function birthdateCalendarOptions () {
 
 export function mainProgressOptions (
   {
-    formatActive,
+    formatActiveText,
     onSuccess
   }
 ) {
@@ -500,7 +500,7 @@ export function mainProgressOptions (
       success: 'active'
     },
     text: {
-      active: formatActive(
+      active: formatActiveText(
         {
           value: '{value}',
           total: '{total}'

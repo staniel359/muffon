@@ -2,7 +2,7 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :format-active="formatProgressActive"
+    :active-text-key="activeTextKey"
     @complete="handleProgressComplete"
   />
 
@@ -44,7 +44,8 @@ export default {
       isMounted: false,
       isComplete: false,
       isProgress: true,
-      errorTracks: []
+      errorTracks: [],
+      activeTextKey: 'save.active.tracks'
     }
   },
   computed: {
@@ -85,20 +86,6 @@ export default {
       )
 
       this.errorTracks = []
-    },
-    formatProgressActive (
-      {
-        value,
-        total
-      }
-    ) {
-      return this.$t(
-        'save.active.tracks',
-        {
-          value,
-          total
-        }
-      )
     },
     async saveTracks () {
       this.setProgressTotalCount()

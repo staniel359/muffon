@@ -35,8 +35,8 @@ import {
 export default {
   name: 'BaseProgress',
   props: {
-    formatActive: {
-      type: Function,
+    activeTextKey: {
+      type: String,
       required: true
     },
     status: String
@@ -54,7 +54,8 @@ export default {
     progressOptions () {
       return mainProgressOptions(
         {
-          formatActive: this.formatActive,
+          formatActiveText:
+            this.formatActiveText,
           onSuccess: this.handleSuccess
         }
       )
@@ -70,6 +71,20 @@ export default {
     handleSuccess () {
       this.$emit(
         'complete'
+      )
+    },
+    formatActiveText (
+      {
+        value,
+        total
+      }
+    ) {
+      return this.$t(
+        this.activeTextKey,
+        {
+          value,
+          total
+        }
       )
     },
     reset () {
