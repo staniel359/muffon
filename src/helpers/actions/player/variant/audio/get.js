@@ -10,6 +10,10 @@ export default async function (
     variantId
   }
 ) {
+  const {
+    variants
+  } = store.state.player
+
   function isMatchedVariant (
     variantData
   ) {
@@ -20,13 +24,9 @@ export default async function (
   }
 
   const trackData =
-    store
-      .state
-      .player
-      .variants
-      .find(
-        isMatchedVariant
-      )
+    variants.find(
+      isMatchedVariant
+    )
 
   function getAudioArgs () {
     const isBandcampVariant = (
@@ -50,14 +50,16 @@ export default async function (
   const audioArgs = {
     trackData: {
       ...trackData,
-      audio: await getAudioArgs()
+      audio:
+        await getAudioArgs()
     }
   }
 
   function handleSuccess () {
     updateGlobalStore(
       {
-        'player.currentVariantId': variantId
+        'player.currentVariantId':
+          variantId
       }
     )
   }

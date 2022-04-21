@@ -53,9 +53,6 @@ export default function getQueueTrack (
     }
 
     function retry () {
-      const queueCurrentTrackId =
-        followingTrackData.uuid
-
       const queueTrackArgs = {
         position
       }
@@ -63,7 +60,7 @@ export default function getQueueTrack (
       updateGlobalStore(
         {
           'queue.currentTrackId':
-            queueCurrentTrackId
+            followingTrackData.uuid
         }
       )
 

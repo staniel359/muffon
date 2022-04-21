@@ -3,22 +3,16 @@ import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
 
-export function setPlaying (
+export async function setPlaying (
   value
 ) {
-  function setPlayerPlaying () {
-    return updateGlobalStore(
-      {
-        'player.playing': value
-      }
-    )
-  }
+  await disableGlobalAudioAutoplay()
 
-  disableGlobalAudioAutoplay().then(
-    setPlayerPlaying
-  ).then(
-    enableLocalAudioAutoplay
+  await setPlayerPlaying(
+    value
   )
+
+  enableLocalAudioAutoplay()
 }
 
 function disableGlobalAudioAutoplay () {
@@ -28,6 +22,16 @@ function disableGlobalAudioAutoplay () {
     },
     {
       isSave: false
+    }
+  )
+}
+
+function setPlayerPlaying (
+  value
+) {
+  return updateGlobalStore(
+    {
+      'player.playing': value
     }
   )
 }

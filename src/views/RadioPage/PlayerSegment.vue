@@ -91,6 +91,9 @@ export default {
       }
     }
   },
+  watch: {
+    trackData: 'handleTrackDataChange'
+  },
   mounted () {
     if (this.modelName) {
       this.fetchData()
@@ -104,19 +107,24 @@ export default {
     handleRefresh () {
       this.fetchData()
     },
+    async handleTrackDataChange (
+      value
+    ) {
+      if (value) {
+        await this.$nextTick()
+
+        this.fetchAudio()
+      }
+    },
     fetchData () {
       this.getRadio(
         this.radioArgs
-      ).then(
-        this.fetchAudio
       )
     },
     fetchAudio () {
-      if (this.trackData) {
-        this.$refs
-          .track
-          .fetchAudio()
-      }
+      this.$refs
+        .track
+        .fetchAudio()
     }
   }
 }

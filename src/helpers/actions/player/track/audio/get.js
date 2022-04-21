@@ -18,15 +18,12 @@ export default function (
   }
 
   function setCurrentTrackIds () {
-    const trackId = trackData.player_id
-    const queueTrackId = trackData.uuid
-
     updateGlobalStore(
       {
         'player.currentTrackId':
-        trackId,
+          trackData.player_id,
         'queue.currentTrackId':
-        queueTrackId
+          trackData.uuid
       }
     )
   }

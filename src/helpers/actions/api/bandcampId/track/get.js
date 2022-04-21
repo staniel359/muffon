@@ -6,9 +6,6 @@ export default function (
     track
   }
 ) {
-  this.error = null
-  this.isLoading = true
-
   const bandcampIdArgs = {
     model: 'track',
     artist,
@@ -18,8 +15,6 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.isLoading = false
-
     const idData = response.id
     const artistId =
       idData.artists[0].bandcamp_id
@@ -32,18 +27,11 @@ export default function (
     }
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.isLoading = false
-    this.error = error
-  }
-
-  return getBandcampId(
+  return getBandcampId.bind(
+    this
+  )(
     bandcampIdArgs
   ).then(
     handleSuccess
-  ).catch(
-    handleError
   )
 }

@@ -110,11 +110,11 @@ export default {
     this.resetRequestAlbumData()
   },
   methods: {
+    getBandcampAlbumId,
+    getAlbum,
     handleRequestAlbumDataChange () {
       this.fetchData()
     },
-    getBandcampAlbumId,
-    getAlbum,
     resetRequestAlbumData () {
       this.setRequestAlbumData(
         this.sourceParams

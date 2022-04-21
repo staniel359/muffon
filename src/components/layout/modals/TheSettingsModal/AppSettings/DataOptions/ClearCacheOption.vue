@@ -58,24 +58,18 @@ export default {
   },
   methods: {
     handleClick () {
+      this.clearCache()
+    },
+    async clearCache () {
       this.isSuccess = false
       this.isLoading = true
 
-      const handleSuccess = () => {
-        this.isSuccess = true
-      }
-
-      const handleFinish = () => {
-        this.isLoading = false
-      }
-
-      ipcRenderer.invoke(
+      await ipcRenderer.invoke(
         'clear-cache'
-      ).then(
-        handleSuccess
-      ).finally(
-        handleFinish
       )
+
+      this.isSuccess = true
+      this.isLoading = false
     }
   }
 }
