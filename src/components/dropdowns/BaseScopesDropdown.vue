@@ -1,5 +1,6 @@
 <template>
   <BaseDropdown
+    class="main-scopes-dropdown"
     :options="options"
     :selected="selected"
     @select="handleSelect"

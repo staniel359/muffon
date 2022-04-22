@@ -1,9 +1,6 @@
 <template>
   <div
-    class="content"
-    :class="{
-      'main-modal-content-full-height': query
-    }"
+    class="content main-modal-content-full-height"
   >
     <div class="search-inputs-container">
       <SearchInput
@@ -14,25 +11,33 @@
         @clear="handleClear"
       />
 
-      <SearchSourceSelect
+      <ScopeSelect
+        @select="handleScopeSelect"
+      />
+
+      <SourceSelect
         @select="handleSourceSelect"
       />
     </div>
 
-    <SearchTabs
+    <BaseDivider />
+
+    <SearchSection
       v-if="query"
-      class="search-tabs"
+      :key="key"
       :query="query"
-      :search-key="key"
       :source-id="sourceId"
+      :scope="scope"
     />
   </div>
 </template>
 
 <script>
 import SearchInput from './SearchContent/SearchInput.vue'
-import SearchSourceSelect from './SearchContent/SearchSourceSelect.vue'
-import SearchTabs from './SearchContent/SearchTabs.vue'
+import ScopeSelect from './SearchContent/ScopeSelect.vue'
+import SourceSelect from './SearchContent/SourceSelect.vue'
+import BaseDivider from '*/components/BaseDivider.vue'
+import SearchSection from './SearchContent/SearchSection.vue'
 import {
   generateKey
 } from '*/helpers/utils'
@@ -41,13 +46,16 @@ export default {
   name: 'SearchContent',
   components: {
     SearchInput,
-    SearchSourceSelect,
-    SearchTabs
+    ScopeSelect,
+    SourceSelect,
+    BaseDivider,
+    SearchSection
   },
   data () {
     return {
       key: null,
       sourceId: null,
+      scope: null,
       query: ''
     }
   },
@@ -57,6 +65,18 @@ export default {
     }
   },
   methods: {
+    handleSourceSelect (
+      value
+    ) {
+      this.sourceId = value
+      this.key = generateKey()
+    },
+    handleScopeSelect (
+      value
+    ) {
+      this.scope = value
+      this.key = generateKey()
+    },
     handleSubmit (
       value
     ) {
@@ -65,11 +85,6 @@ export default {
     },
     handleClear () {
       this.query = ''
-    },
-    handleSourceSelect (
-      value
-    ) {
-      this.sourceId = value
     },
     focusInput () {
       this.$refs
@@ -83,7 +98,4 @@ export default {
 <style lang="sass" scoped>
 .search-inputs-container
   @extend .d-flex, .align-items-center
-
-.search-tabs
-  margin-top: 0.5em
 </style>

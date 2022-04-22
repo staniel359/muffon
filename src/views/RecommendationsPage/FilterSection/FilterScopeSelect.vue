@@ -42,5 +42,4 @@ export default {
 <style lang="sass" scoped>
 .scope-select-container
   margin-right: 1em
-  width: 150px
 </style>

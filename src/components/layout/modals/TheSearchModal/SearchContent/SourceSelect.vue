@@ -15,7 +15,7 @@ import BaseDropdown from '*/components/dropdowns/BaseDropdown.vue'
 import audioSources from '*/helpers/data/audio/sources'
 
 export default {
-  name: 'SearchSourceSelect',
+  name: 'SourceSelect',
   components: {
     BaseDropdown
   },

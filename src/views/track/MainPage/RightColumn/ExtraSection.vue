@@ -7,11 +7,15 @@
 
     <BaseDivider />
 
-    <VideoSegment :query="query" />
+    <VideoSegment
+      :query="query"
+    />
 
     <BaseDivider />
 
-    <LyricsSegment :query="query" />
+    <LyricsSegment
+      :query="query"
+    />
 
     <BaseDivider />
 

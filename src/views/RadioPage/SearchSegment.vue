@@ -153,5 +153,4 @@ export default {
 
 .model-scope-select-container
   margin-left: 1em
-  width: 150px
 </style>

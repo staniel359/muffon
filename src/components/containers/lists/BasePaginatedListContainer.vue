@@ -304,8 +304,10 @@ export default {
       handler: 'handleResponseDataChange'
     },
     clientPage: 'handleClientPageChange',
-    clientPageCollection:
-      'handleClientPageCollectionChange'
+    clientPageCollection: {
+      immediate: true,
+      handler: 'handleClientPageCollectionChange'
+    }
   },
   mounted () {
     if (this.isPaginationSimple) {

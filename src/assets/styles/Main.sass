@@ -3,7 +3,7 @@
   src: $fontPath format('truetype')
 
 html
-  scroll-behavior: smooth
+  @extend .scroll-smooth
 
 *:not(i)
   font-family: Lato, LatoDefault, Helvetica Neue, Arial, Helvetica, sans-serif !important
@@ -57,7 +57,7 @@ p
       border-top: $borderInverted
   & > .content
     &.scrolling
-      scroll-behavior: smooth
+      @extend .scroll-smooth
 
 .ui.checkbox
   &.main-toggle-checkbox
@@ -586,8 +586,7 @@ p
   height: fit-content
 
 .main-modal-import-section
-  @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto
-  scroll-behavior: smooth
+  @extend .d-flex, .flex-column, .flex-full, .overflow-y-auto, .scroll-smooth
 
 .main-library-modal-message-container
   margin-bottom: 1em
@@ -700,3 +699,6 @@ p
 .main-compatibility-common-button
   margin-right: 0.5em !important
   margin-bottom: 0.5em !important
+
+.main-scopes-dropdown
+  width: 140px

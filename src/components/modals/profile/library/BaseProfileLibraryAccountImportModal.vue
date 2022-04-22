@@ -1,6 +1,11 @@
 <template>
   <BaseModalContainer ref="modal">
-    <div class="content main-modal-content-full-height">
+    <div
+      :class="[
+        'content',
+        'main-modal-content-full-height'
+      ]"
+    >
       <ConnectSection
         @user-data-change="handleUserDataChange"
       />

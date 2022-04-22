@@ -3,7 +3,9 @@
     ref="modal"
     @visible="handleVisible"
   >
-    <SearchContent ref="search" />
+    <SearchContent
+      ref="search"
+    />
   </BaseModalContainer>
 </template>
 

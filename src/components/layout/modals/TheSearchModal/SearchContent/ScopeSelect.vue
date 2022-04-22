@@ -1,6 +1,7 @@
 <template>
   <BaseScopesDropdown
-    selected="tag"
+    class="scope-select-container"
+    selected="artists"
     :scopes="scopes"
     @select="handleSelect"
   />
@@ -20,8 +21,12 @@ export default {
   data () {
     return {
       scopes: [
-        'tag',
-        'artist'
+        'artists',
+        'albums',
+        'albumGroups',
+        'tracks',
+        'tags',
+        'videos'
       ]
     }
   },
@@ -38,4 +43,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.scope-select-container
+  margin-left: 1em !important
+</style>

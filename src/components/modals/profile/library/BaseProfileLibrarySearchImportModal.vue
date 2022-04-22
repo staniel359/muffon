@@ -3,7 +3,12 @@
     ref="modal"
     @visible="handleVisible"
   >
-    <div class="content main-modal-content-full-height">
+    <div
+      :class="[
+        'content',
+        'main-modal-content-full-height'
+      ]"
+    >
       <div class="top-section-container">
         <SearchInput
           v-if="scope"
