@@ -52,7 +52,7 @@ export default {
       if (this.link) {
         return 'BaseLinkContainer'
       } else {
-        return 'a'
+        return 'div'
       }
     }
   },

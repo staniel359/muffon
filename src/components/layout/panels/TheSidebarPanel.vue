@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'ui vertical secondary menu',
+      'ui vertical menu',
       'left overlay visible sidebar',
       'the-sidebar-panel',
       {
@@ -113,14 +113,12 @@ export default {
   width: 40px !important
   overflow-x: hidden
   transition: width 0.35s !important
-  background: $colorWhite !important
   &:hover
     width: 240px !important
     & > .sidebar-top
       @extend .overflow-y-auto
   &.inverted
     border-right: $borderInverted !important
-    background: $colorBlack !important
   & > .item
     &:first-child
       @extend .no-border-radius

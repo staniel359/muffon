@@ -5,7 +5,7 @@
       'main-segment-container'
     ]"
   >
-    <div class="ui list">
+    <BaseListContainer>
       <div
         :class="[
           'item main-simple-list-item',
@@ -58,7 +58,7 @@
           @delete-option-click="handleDeleteOptionClick"
         />
       </div>
-    </div>
+    </BaseListContainer>
   </BaseSegmentContainer>
 
   <BaseCommunityUpdateModal
@@ -76,6 +76,8 @@
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseListContainer
+  from '*/components/containers/lists/BaseListContainer.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseCommunityMembersModal
@@ -93,9 +95,10 @@ import {
 export default {
   name: 'InfoSegment',
   components: {
+    BaseSegmentContainer,
+    BaseListContainer,
     BaseImage,
     BaseHeader,
-    BaseSegmentContainer,
     BaseCommunityMembersModal,
     BaseOptionsDropdown,
     BaseCommunityUpdateModal,

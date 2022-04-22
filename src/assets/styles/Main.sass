@@ -13,6 +13,9 @@ a
   -webkit-user-drag: none
   user-select: text
 
+p
+  @extend .no-margin
+
 ::-webkit-scrollbar
   width: 10px
   height: 10px
@@ -521,7 +524,9 @@ a
   z-index: 1
 
 .main-sidebar-item
-  @extend .no-padding, .no-margin, .d-flex
+  @extend .no-padding, .d-flex, .cursor-pointer
+  &:before
+    background: none !important
   &:hover
     .main-sidebar-item-icon-container
       & > .icon
