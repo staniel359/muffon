@@ -27,7 +27,6 @@ import {
 export default {
   name: 'BaseModalContainer',
   emits: [
-    'init',
     'show',
     'visible'
   ],
@@ -57,11 +56,6 @@ export default {
     setModal(
       this.$refs.modal,
       this.modalOptions
-    )
-
-    this.$emit(
-      'init',
-      this.$refs.modal
     )
   },
   beforeUnmount () {

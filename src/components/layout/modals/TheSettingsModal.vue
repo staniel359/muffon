@@ -1,5 +1,7 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+  >
     <div
       :class="[
         'content',

@@ -1,5 +1,6 @@
 <template>
   <BaseImageModalContainer
+    ref="modal"
     @show="handleShow"
   >
     <div
@@ -58,9 +59,6 @@ export default {
     },
     isReset: Boolean
   },
-  emits: [
-    'mainSliderInit'
-  ],
   data () {
     return {
       key: null,
@@ -83,8 +81,7 @@ export default {
       await this.$nextTick()
 
       if (this.isReset) {
-        goToSliderSlide(
-          this.mainSlider,
+        this.goToSlide(
           0
         )
       } else {
@@ -101,11 +98,6 @@ export default {
       element
     ) {
       this.mainSlider = element
-
-      this.$emit(
-        'mainSliderInit',
-        element
-      )
     },
     handleThumbsSliderInit (
       element
@@ -114,6 +106,19 @@ export default {
     },
     handleImagesChange () {
       this.key = generateKey()
+    },
+    show () {
+      this.$refs
+        .modal
+        .show()
+    },
+    goToSlide (
+      index
+    ) {
+      goToSliderSlide(
+        this.mainSlider,
+        index
+      )
     }
   }
 }

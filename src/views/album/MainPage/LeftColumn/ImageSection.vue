@@ -8,8 +8,8 @@
     />
 
     <BaseAlbumImageModal
+      ref="modal"
       :image="imageData?.original"
-      @init="handleModalInit"
     />
   </div>
 </template>
@@ -18,9 +18,6 @@
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseAlbumImageModal
   from '*/components/modals/album/BaseAlbumImageModal.vue'
-import {
-  showModal
-} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ImageSection',
@@ -34,26 +31,19 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      modal: null
-    }
-  },
   computed: {
     imageData () {
       return this.albumData.image
     }
   },
   methods: {
-    handleModalInit (
-      element
-    ) {
-      this.modal = element
-    },
     handleImageClick () {
-      showModal(
-        this.modal
-      )
+      this.showModal()
+    },
+    showModal () {
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

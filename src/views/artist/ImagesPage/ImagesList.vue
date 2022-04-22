@@ -21,12 +21,6 @@ import BaseImage from '*/components/images/BaseImage.vue'
 import {
   collection as formatCollection
 } from '*/helpers/formatters'
-import {
-  goToSliderSlide
-} from '*/helpers/actions/plugins/slick'
-import {
-  showModal
-} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ImagesList',
@@ -39,10 +33,11 @@ export default {
       default () {
         return []
       }
-    },
-    modal: HTMLDivElement,
-    mainSlider: HTMLDivElement
+    }
   },
+  emits: [
+    'imageClick'
+  ],
   computed: {
     imagesCollection () {
       return formatCollection(
@@ -51,18 +46,12 @@ export default {
     }
   },
   methods: {
-    async handleImageClick (
+    handleImageClick (
       index
     ) {
-      goToSliderSlide(
-        this.mainSlider,
+      this.$emit(
+        'imageClick',
         index
-      )
-
-      await this.$nextTick()
-
-      showModal(
-        this.modal
       )
     }
   }

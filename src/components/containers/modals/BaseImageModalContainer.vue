@@ -1,7 +1,7 @@
 <template>
   <BaseModalContainer
+    ref="modal"
     class="main-image-modal"
-    @init="handleInit"
     @show="handleShow"
   >
     <slot />
@@ -18,22 +18,18 @@ export default {
     BaseModalContainer
   },
   emits: [
-    'init',
     'show'
   ],
   methods: {
-    handleInit (
-      el
-    ) {
-      this.$emit(
-        'init',
-        el
-      )
-    },
     handleShow () {
       this.$emit(
         'show'
       )
+    },
+    show () {
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

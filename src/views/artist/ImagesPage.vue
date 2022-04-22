@@ -7,14 +7,12 @@
     <template #default="slotProps">
       <ImagesList
         :images="slotProps[scope]"
-        :modal="modal"
-        :main-slider="mainSlider"
+        @image-click="handleImageClick"
       />
 
       <BaseArtistImageModal
+        ref="modal"
         :images="slotProps[scope]"
-        @init="handleModalInit"
-        @main-slider-init="handleMainSliderInit"
       />
     </template>
   </BaseArtistPaginatedPageContainer>
@@ -39,22 +37,35 @@ export default {
   },
   data () {
     return {
-      modal: null,
-      mainSlider: null,
       limit: 40,
       scope: 'images'
     }
   },
   methods: {
-    handleModalInit (
-      element
+    async handleImageClick (
+      index
     ) {
-      this.modal = element
+      this.goToSlide(
+        index
+      )
+
+      await this.$nextTick()
+
+      this.showModal()
     },
-    handleMainSliderInit (
-      element
+    goToSlide (
+      index
     ) {
-      this.mainSlider = element
+      this.$refs
+        .modal
+        .goToSlide(
+          index
+        )
+    },
+    showModal () {
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

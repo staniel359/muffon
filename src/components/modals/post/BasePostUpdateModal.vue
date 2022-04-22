@@ -1,5 +1,7 @@
 <template>
-  <BaseModalContainer ref="modal">
+  <BaseModalContainer
+    ref="modal"
+  >
     <div class="scrolling content">
       <BasePostUpdateFormContainer
         class="main-post-form"

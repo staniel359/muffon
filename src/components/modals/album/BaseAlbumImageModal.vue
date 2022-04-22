@@ -1,6 +1,6 @@
 <template>
   <BaseImageModalContainer
-    @init="handleInit"
+    ref="modal"
   >
     <div class="main-image-modal-content">
       <BaseImage
@@ -25,17 +25,11 @@ export default {
   props: {
     image: String
   },
-  emits: [
-    'init'
-  ],
   methods: {
-    handleInit (
-      el
-    ) {
-      this.$emit(
-        'init',
-        el
-      )
+    show () {
+      this.$refs
+        .modal
+        .show()
     }
   }
 }

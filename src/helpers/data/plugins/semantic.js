@@ -10,7 +10,7 @@ export function mainModalOptions (
   {
     onShow,
     onVisible
-  } = {}
+  }
 ) {
   return {
     autofocus: false,
