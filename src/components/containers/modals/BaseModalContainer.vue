@@ -30,6 +30,11 @@ export default {
     'show',
     'visible'
   ],
+  data () {
+    return {
+      isCalled: false
+    }
+  },
   computed: {
     ...mapState(
       'layout',
@@ -51,12 +56,6 @@ export default {
       immediate: true,
       handler: 'handleIsDarkModeChange'
     }
-  },
-  mounted () {
-    setModal(
-      this.$refs.modal,
-      this.modalOptions
-    )
   },
   beforeUnmount () {
     remove(
@@ -87,6 +86,15 @@ export default {
       )
     },
     show () {
+      if (!this.isCalled) {
+        this.isCalled = true
+
+        setModal(
+          this.$refs.modal,
+          this.modalOptions
+        )
+      }
+
       showModal(
         this.$refs.modal
       )
