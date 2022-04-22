@@ -22,7 +22,9 @@ export default {
     )
   },
   watch: {
-    profileLanguage: 'handleProfileLanguageChange'
+    profileLanguage: 'handleProfileLanguageChange',
+    isLoading: 'handleIsLoadingChange',
+    error: 'handleErrorChange'
   },
   methods: {
     ...mapActions(
@@ -37,6 +39,12 @@ export default {
     handleProfileLanguageChange () {
       this.setNavigation()
     },
+    handleIsLoadingChange () {
+      this.updateTabLoading()
+    },
+    handleErrorChange () {
+      this.updateTabError()
+    },
     setNavigation () {
       this.setNavigationSections(
         this.navigationSections
@@ -50,6 +58,24 @@ export default {
         {
           tabId: this.tabId,
           data: this.tabData
+        }
+      )
+    },
+    updateTabLoading () {
+      ipcRenderer.send(
+        'update-tab',
+        {
+          tabId: this.tabId,
+          isLoading: this.isLoading
+        }
+      )
+    },
+    updateTabError () {
+      ipcRenderer.send(
+        'update-tab',
+        {
+          tabId: this.tabId,
+          isError: !!this.error
         }
       )
     }

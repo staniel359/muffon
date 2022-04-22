@@ -65,7 +65,8 @@ export default {
     getTabData () {
       return {
         uuid: generateKey(),
-        path: this.link.path
+        path: this.link.path,
+        isLoading: true
       }
     }
   }

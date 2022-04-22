@@ -161,7 +161,9 @@ export default {
       _,
       {
         tabId,
-        data
+        data = {},
+        isLoading,
+        isError
       }
     ) {
       function isMatchedTab (
@@ -190,6 +192,9 @@ export default {
         ).forEach(
           updateTabKeyValue
         )
+
+        tab.isLoading = isLoading
+        tab.isError = isError
       }
 
       this.tabs = [
@@ -235,7 +240,8 @@ export default {
     getNewTabData () {
       return {
         uuid: generateKey(),
-        path: 'home'
+        path: 'home',
+        isLoading: true
       }
     }
   }

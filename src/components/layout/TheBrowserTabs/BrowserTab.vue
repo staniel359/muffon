@@ -6,21 +6,20 @@
     }"
     @click="handleClick"
   >
-    <div class="browser-tab-content">
-      <BaseIcon
-        v-if="icon"
-        class="browser-tab-icon"
-        :icon="icon"
-      />
+    <BaseIcon
+      class="browser-tab-icon"
+      :is-loading="isLoading"
+      :is-error="isError"
+      :icon="icon"
+    />
 
-      <span
-        class="browser-tab-name"
-        :class="{
-          active: isActive
-        }"
-        v-text="tabTitle"
-      />
-    </div>
+    <span
+      class="browser-tab-name"
+      :class="{
+        active: isActive
+      }"
+      v-text="tabTitle"
+    />
 
     <BaseButton
       :class="[
@@ -70,15 +69,17 @@ export default {
       return this.tabData.uuid
     },
     tabTitle () {
-      return (
-        this.tabData.title ||
-          this.loadingText
-      )
-    },
-    loadingText () {
-      return this.$t(
-        'loading'
-      )
+      if (this.isLoading) {
+        return this.$t(
+          'loading'
+        )
+      } else if (this.isError) {
+        return this.$t(
+          'error'
+        )
+      } else {
+        return this.tabData.title
+      }
     },
     isActive () {
       return (
@@ -92,6 +93,12 @@ export default {
       } else {
         return !this.isActive
       }
+    },
+    isLoading () {
+      return this.tabData.isLoading
+    },
+    isError () {
+      return this.tabData.isError
     },
     icon () {
       return this.tabData.icon
@@ -119,18 +126,17 @@ export default {
   @extend .d-flex, .align-items-center, .cursor-pointer, .no-margin
   padding: 0.5em
   margin-right: 0.5em !important
-  max-width: 250px
-
-.browser-tab-content
-  @extend .overflow-hidden, .d-flex, .align-items-center
+  max-width: 210px
 
 .browser-tab-icon
   @extend .no-margin
-  margin-left: 0.5em !important
+  margin-left: 0.25em !important
 
 .browser-tab-name
-  @extend .white-space-no-wrap
+  @extend .white-space-no-wrap, .overflow-hidden
+  width: 100%
   margin-left: 0.5em
+  flex: 1 0
   &.active
     font-weight: 700
 

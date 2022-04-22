@@ -427,14 +427,18 @@ function handleUpdateTab (
   _,
   {
     tabId,
-    data
+    data,
+    isLoading,
+    isError
   }
 ) {
   mainWindow.webContents.send(
     'handle-update-tab',
     {
       tabId,
-      data
+      data,
+      isLoading,
+      isError
     }
   )
 }
