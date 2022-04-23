@@ -28,7 +28,6 @@
             :[scope]="slotProps[scope]"
             :artist-name="pageSlotProps.artistName"
             :top-track-count="pageSlotProps.topTrackCount"
-            :profile-id="pageSlotProps.profileId"
           />
         </template>
       </BasePaginatedPageContainer>

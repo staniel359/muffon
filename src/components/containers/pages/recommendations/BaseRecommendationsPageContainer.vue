@@ -4,16 +4,13 @@
     :is-loading="isLoading"
     :error="error"
   >
-    <template #default="slotProps">
-      <slot
-        :recommendations-data="recommendationsData"
-        :profile-id="slotProps.profileId"
-        :is-loading="isLoading"
-        :error="error"
-        :fetch-data="fetchData"
-        :refresh="refresh"
-      />
-    </template>
+    <slot
+      :recommendations-data="recommendationsData"
+      :is-loading="isLoading"
+      :error="error"
+      :fetch-data="fetchData"
+      :refresh="refresh"
+    />
   </BasePageContainer>
 </template>
 

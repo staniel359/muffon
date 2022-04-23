@@ -1,30 +1,30 @@
 <template>
   <BaseSidebarItem
-    icon="arrow alternate circle up"
-    :text="topText"
-    :link="topLink"
+    icon="record vinyl"
+    :text="releasesText"
+    :link="releasesLink"
   />
 </template>
 
 <script>
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
-  main as formatTopMainLink
-} from '*/helpers/formatters/links/top'
+  main as formatReleasesMainLink
+} from '*/helpers/formatters/links/releases'
 
 export default {
-  name: 'TopItem',
+  name: 'ReleasesItem',
   components: {
     BaseSidebarItem
   },
   computed: {
-    topText () {
+    releasesText () {
       return this.$t(
-        'navigation.top'
+        'navigation.releases'
       )
     },
-    topLink () {
-      return formatTopMainLink()
+    releasesLink () {
+      return formatReleasesMainLink()
     }
   }
 }

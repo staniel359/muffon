@@ -1,12 +1,11 @@
 <template>
   <BasePageContainer
-    :response-data="tagData"
+    :response-data="releasesData"
     :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :tag-data="tagData"
-      :tag-name="tagNameFetched"
+      :releases-data="releasesData"
       :is-loading="isLoading"
       :error="error"
       :fetch-data="fetchData"
@@ -19,12 +18,13 @@
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
-import formatTagPageNavigation from '*/helpers/formatters/navigation/tag'
-import formatTagPageTab from '*/helpers/formatters/tabs/tag'
-import getTag from '*/helpers/actions/api/tag/get'
+import formatReleasesPageNavigation
+  from '*/helpers/formatters/navigation/releases'
+import formatReleasesPageTab from '*/helpers/formatters/tabs/releases'
+import getReleases from '*/helpers/actions/api/releases/get'
 
 export default {
-  name: 'BaseTagPageContainer',
+  name: 'BaseReleasesPageContainer',
   components: {
     BasePageContainer
   },
@@ -32,62 +32,60 @@ export default {
     navigationMixin
   ],
   props: {
-    tagName: {
-      type: String,
-      required: true
+    isFetchData: {
+      type: Boolean,
+      default: true
     },
     scope: String,
     limit: Number
   },
   data () {
     return {
-      isLoading: false,
+      releasesData: null,
       error: null,
-      tagData: null
+      isLoading: false
     }
   },
   computed: {
     navigationSections () {
-      return formatTagPageNavigation(
+      return formatReleasesPageNavigation(
         this.navigationData
       )
     },
     navigationData () {
       return {
-        tagName: this.tagNameFetched,
         scope: this.scope
       }
     },
     tabData () {
-      return formatTagPageTab(
+      return formatReleasesPageTab(
         this.navigationData
       )
     },
-    tagNameFetched () {
-      return this.tagData?.name
-    },
-    tagArgs () {
+    releasesArgs () {
       return {
-        tagName: this.tagName,
         scope: this.scope,
         limit: this.limit
       }
     }
   },
-  watch: {
-    tagData: 'handleNavigationDataChange'
-  },
   mounted () {
-    this.fetchData()
+    this.setNavigation()
+
+    if (this.isFetchData) {
+      this.fetchData()
+    } else {
+      this.releasesData = {}
+    }
   },
   methods: {
-    getTag,
+    getReleases,
     fetchData (
       page
     ) {
-      this.getTag(
+      this.getReleases(
         {
-          ...this.tagArgs,
+          ...this.releasesArgs,
           page
         }
       )

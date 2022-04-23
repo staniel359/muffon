@@ -9,7 +9,6 @@
     <template #default="slotProps">
       <BaseArtistsList
         :artists="slotProps[scope]"
-        :profile-id="slotProps.profileId"
         :view-index="viewIndex"
         is-with-listeners-count
         is-with-library-option

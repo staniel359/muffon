@@ -13,7 +13,10 @@
     "videoChannels": "Video channels",
     "videos": "Videos",
     "related": "Related",
-    "tops": "Top",
+    "top": "Top",
+    "releases": "Releases",
+    "new": "New",
+    "upcoming": "Upcoming",
     "radio": "Radio",
     "profiles": "Profiles",
     "feed": "Feed",
@@ -51,10 +54,14 @@
       },
       "communities": "{modelName} communities"
     },
-    "top": {
+    "topCollection": {
       "artists": "Top artists",
       "tracks": "Top tracks",
       "tags": "Top tags"
+    },
+    "releasesCollection": {
+      "new": "New releases",
+      "upcoming": "Upcoming releases"
     }
   },
   "errors": {

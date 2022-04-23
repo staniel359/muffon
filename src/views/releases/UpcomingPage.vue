@@ -1,11 +1,12 @@
 <template>
-  <BaseTagPaginatedPageContainer
+  <BaseReleasesPaginatedPageContainer
     :scope="scope"
+    :list-scope="listScope"
     :limit="limit"
   >
     <template #default="slotProps">
       <BaseAlbumsTableList
-        :albums="slotProps[scope]"
+        :albums="slotProps[listScope]"
         :items-in-row="itemsInRow"
         is-with-artist-name
         is-with-listeners-count
@@ -15,26 +16,27 @@
         is-with-listened-option
       />
     </template>
-  </BaseTagPaginatedPageContainer>
+  </BaseReleasesPaginatedPageContainer>
 </template>
 
 <script>
-import BaseTagPaginatedPageContainer
-  from '*/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
+import BaseReleasesPaginatedPageContainer
+  from '*/components/containers/pages/releases/BaseReleasesPaginatedPageContainer.vue'
 import BaseAlbumsTableList
   from '*/components/lists/albums/BaseAlbumsTableList.vue'
 
 export default {
-  name: 'AlbumsPage',
+  name: 'UpcomingPage',
   components: {
-    BaseTagPaginatedPageContainer,
+    BaseReleasesPaginatedPageContainer,
     BaseAlbumsTableList
   },
   data () {
     return {
       limit: 20,
       itemsInRow: 4,
-      scope: 'albums'
+      scope: 'upcoming',
+      listScope: 'albums'
     }
   }
 }

@@ -10,9 +10,9 @@
     ]"
   >
     <div class="sidebar-panel-content">
-      <div class="sidebar-top">
-        <ProfileItem />
+      <ProfileItem />
 
+      <div class="sidebar-top">
         <FeedItem />
 
         <ConversationsItem />
@@ -35,6 +35,8 @@
 
         <TopItem />
 
+        <ReleasesItem />
+
         <RadioItem />
 
         <CommunitiesItem
@@ -42,7 +44,7 @@
         />
       </div>
 
-      <div>
+      <div class="sidebar-bottom">
         <SettingsItem />
 
         <LogoutItem />
@@ -64,6 +66,7 @@ import PlaylistsItem from './TheSidebarPanel/PlaylistsItem.vue'
 import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
 import TopItem from './TheSidebarPanel/TopItem.vue'
+import ReleasesItem from './TheSidebarPanel/ReleasesItem.vue'
 import RadioItem from './TheSidebarPanel/RadioItem.vue'
 import CommunitiesItem from './TheSidebarPanel/CommunitiesItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
@@ -81,6 +84,7 @@ export default {
     FavoritesItem,
     BookmarksItem,
     TopItem,
+    ReleasesItem,
     RadioItem,
     CommunitiesItem,
     SettingsItem,
@@ -115,17 +119,22 @@ export default {
   transition: width 0.35s !important
   &:hover
     width: 240px !important
-    & > .sidebar-top
+    .sidebar-top
       @extend .overflow-y-auto
   &.inverted
     border-right: $borderInverted !important
-  & > .item
-    &:first-child
-      @extend .no-border-radius
+    .sidebar-bottom
+      border-top: $borderInverted
 
 .sidebar-panel-content
   @extend .h-100, .d-flex, .flex-column
 
 .sidebar-top
-  @extend .flex-full, .overflow-hidden
+  @extend .flex-full, .overflow-y-auto
+  overflow-x: hidden
+  &::-webkit-scrollbar
+    @extend .d-none
+
+.sidebar-bottom
+  border-top: $border
 </style>

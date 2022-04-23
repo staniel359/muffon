@@ -1,43 +1,45 @@
 <template>
-  <BaseTagSegmentContainer
+  <BaseReleasesSegmentContainer
     ref="segment"
-    :tag-name="tagName"
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="tagData"
+        response-data-name="releasesData"
         :slot-props-data="segmentSlotProps"
-        :scope="scope"
+        :scope="listScope"
         :limit="limit"
         :response-page-limit="responsePageLimit"
         @focus="handleFocus"
       >
         <template #default="slotProps">
           <slot
-            :[scope]="slotProps[scope]"
+            :[listScope]="slotProps[listScope]"
           />
         </template>
       </BasePaginatedSegmentContainer>
     </template>
-  </BaseTagSegmentContainer>
+  </BaseReleasesSegmentContainer>
 </template>
 
 <script>
-import BaseTagSegmentContainer from './BaseTagSegmentContainer.vue'
+import BaseReleasesSegmentContainer from './BaseReleasesSegmentContainer.vue'
 import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
-  name: 'BaseTagPaginatedSegmentContainer',
+  name: 'BaseReleasesPaginatedSegmentContainer',
   components: {
-    BaseTagSegmentContainer,
+    BaseReleasesSegmentContainer,
     BasePaginatedSegmentContainer
   },
   props: {
-    tagName: String,
+    listScope: {
+      type: String,
+      required: true
+    },
     scope: String,
     limit: Number,
     responsePageLimit: Number,

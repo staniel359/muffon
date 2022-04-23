@@ -14,11 +14,11 @@ export default function (
   function formatTitle () {
     if (scope) {
       return i18n.global.t(
-        `navigation.top.${scope}`
+        `navigation.topCollection.${scope}`
       )
     } else {
       return i18n.global.t(
-        'navigation.tops'
+        'navigation.top'
       )
     }
   }

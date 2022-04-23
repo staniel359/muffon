@@ -1,6 +1,12 @@
 <template>
   <BaseLinkContainer
-    class="item main-sidebar-item"
+    :class="[
+      'item profile-item',
+      'main-sidebar-item',
+      {
+        inverted: isDarkMode
+      }
+    ]"
     :link="profileMainLink"
   >
     <div class="main-sidebar-item-icon-container">
@@ -41,6 +47,12 @@ export default {
   },
   computed: {
     ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapState(
       'profile',
       {
         profileInfo: 'info'
@@ -67,6 +79,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.profile-item
+  border-bottom: $border
+  &.inverted
+    border-bottom: $borderInverted
+
 .profile-image
   width: 25px
   height: 25px

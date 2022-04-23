@@ -13,7 +13,10 @@
     "videoChannels": "Видео-каналы",
     "videos": "Видео",
     "related": "Связанные",
-    "tops": "Популярное",
+    "top": "Популярное",
+    "releases": "Релизы",
+    "new": "Новые",
+    "upcoming": "Ожидаемые",
     "radio": "Радио",
     "profiles": "Профили",
     "feed": "Лента",
@@ -51,10 +54,14 @@
       },
       "communities": "Сообщества {modelName}"
     },
-    "top": {
+    "topCollection": {
       "artists": "Популярные исполнители",
       "tracks": "Популярные композиции",
       "tags": "Популярные метки"
+    },
+    "releasesCollection": {
+      "new": "Новые релизы",
+      "upcoming": "Ожидаемые релизы"
     }
   },
   "errors": {

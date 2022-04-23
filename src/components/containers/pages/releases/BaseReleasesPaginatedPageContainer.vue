@@ -1,39 +1,45 @@
 <template>
-  <BaseTrackPageContainer
+  <BaseReleasesPageContainer
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="trackData"
+        response-data-name="releasesData"
         :slot-props-data="pageSlotProps"
-        :scope="scope"
+        :scope="listScope"
         :limit="limit"
+        :response-page-limit="responsePageLimit"
       >
         <template #default="slotProps">
           <slot
-            :[scope]="slotProps[scope]"
+            :[listScope]="slotProps[listScope]"
           />
         </template>
       </BasePaginatedPageContainer>
     </template>
-  </BaseTrackPageContainer>
+  </BaseReleasesPageContainer>
 </template>
 
 <script>
-import BaseTrackPageContainer from './BaseTrackPageContainer.vue'
+import BaseReleasesPageContainer from './BaseReleasesPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 
 export default {
-  name: 'BaseTrackPaginatedPageContainer',
+  name: 'BaseReleasesPaginatedPageContainer',
   components: {
-    BaseTrackPageContainer,
+    BaseReleasesPageContainer,
     BasePaginatedPageContainer
   },
   props: {
+    listScope: {
+      type: String,
+      required: true
+    },
     scope: String,
-    limit: Number
+    limit: Number,
+    responsePageLimit: Number
   }
 }
 </script>

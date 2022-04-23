@@ -10,7 +10,6 @@
       <BaseArtistsList
         :view-index="viewIndex"
         :artists="slotProps[scope]"
-        :profile-id="slotProps.profileId"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

@@ -12,7 +12,7 @@
     />
 
     <slot
-      :tag-data="tagData"
+      :releases-data="releasesData"
       :is-loading="isLoading"
       :error="error"
       :fetch-data="fetchData"
@@ -23,21 +23,17 @@
 
 <script>
 import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
-import getTag from '*/helpers/actions/api/tag/get'
+import getReleases from '*/helpers/actions/api/releases/get'
 import {
   focusOnSegment
 } from '*/helpers/actions/layout'
 
 export default {
-  name: 'BaseTagSegmentContainer',
+  name: 'BaseReleasesSegmentContainer',
   components: {
     BaseHeaderSegment
   },
   props: {
-    tagName: {
-      type: String,
-      required: true
-    },
     scope: {
       type: String,
       required: true
@@ -47,15 +43,14 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      releasesData: null,
       error: null,
-      tagData: null
+      isLoading: false
     }
   },
   computed: {
-    tagArgs () {
+    releasesArgs () {
       return {
-        tagName: this.tagName,
         scope: this.scope,
         limit: this.limit
       }
@@ -65,13 +60,13 @@ export default {
     this.fetchData()
   },
   methods: {
-    getTag,
+    getReleases,
     fetchData (
       page
     ) {
-      this.getTag(
+      this.getReleases(
         {
-          ...this.tagArgs,
+          ...this.releasesArgs,
           page
         }
       )

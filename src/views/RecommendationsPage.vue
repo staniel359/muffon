@@ -19,7 +19,6 @@
         <template #default="slotProps">
           <BaseArtistsExtendedList
             :artists="slotProps[scope]"
-            :profile-id="pageSlotProps.profileId"
             is-with-library-option
             is-with-favorite-option
             is-with-bookmark-option

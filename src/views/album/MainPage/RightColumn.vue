@@ -9,7 +9,6 @@
 
     <TracksList
       :album-data="albumData"
-      :profile-id="profileId"
     />
   </div>
 </template>
@@ -31,8 +30,7 @@ export default {
       type: Object,
       required: true
     },
-    requestAlbumData: Object,
-    profileId: String
+    requestAlbumData: Object
   }
 }
 </script>

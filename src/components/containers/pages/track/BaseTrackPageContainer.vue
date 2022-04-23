@@ -4,17 +4,14 @@
     :is-loading="isLoading"
     :error="error"
   >
-    <template #default="slotProps">
-      <slot
-        :track-data="trackData"
-        :request-track-data="requestTrackData"
-        :profile-id="slotProps.profileId"
-        :is-loading="isLoading"
-        :error="error"
-        :fetch-data="fetchData"
-        :refresh="refresh"
-      />
-    </template>
+    <slot
+      :track-data="trackData"
+      :request-track-data="requestTrackData"
+      :is-loading="isLoading"
+      :error="error"
+      :fetch-data="fetchData"
+      :refresh="refresh"
+    />
   </BasePageContainer>
 </template>
 

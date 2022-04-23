@@ -6,7 +6,6 @@
     :album-title="albumTitle"
     :image-data="imageData"
     :is-with-source="isWithSource"
-    :profile-id="profileId"
     is-with-index
     is-with-artist-name
     is-with-duration
@@ -42,8 +41,7 @@ export default {
     albumData: {
       type: Object,
       required: true
-    },
-    profileId: String
+    }
   },
   computed: {
     tracks () {

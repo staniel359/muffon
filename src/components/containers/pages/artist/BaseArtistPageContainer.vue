@@ -5,18 +5,15 @@
     :error="pageError"
     @init="handleInit"
   >
-    <template #default="slotProps">
-      <slot
-        :artist-data="artistData"
-        :artist-name="artistNameFetched"
-        :profile-id="slotProps.profileId"
-        :top-track-count="topTrackCount"
-        :is-loading="isLoading"
-        :error="error"
-        :fetch-data="fetchData"
-        :refresh="refresh"
-      />
-    </template>
+    <slot
+      :artist-data="artistData"
+      :artist-name="artistNameFetched"
+      :top-track-count="topTrackCount"
+      :is-loading="isLoading"
+      :error="error"
+      :fetch-data="fetchData"
+      :refresh="refresh"
+    />
   </BasePageContainer>
 </template>
 

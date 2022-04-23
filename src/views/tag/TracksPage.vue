@@ -6,7 +6,6 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profile-id="slotProps.profileId"
         is-with-artist-name
         is-with-library-option
         is-with-favorite-option

@@ -4,16 +4,13 @@
     :is-loading="isLoading"
     :error="error"
   >
-    <template #default="slotProps">
-      <slot
-        :album-data="albumData"
-        :request-album-data="requestAlbumData"
-        :profile-id="slotProps.profileId"
-        :is-loading="isLoading"
-        :error="error"
-        :refresh="refresh"
-      />
-    </template>
+    <slot
+      :album-data="albumData"
+      :request-album-data="requestAlbumData"
+      :is-loading="isLoading"
+      :error="error"
+      :refresh="refresh"
+    />
   </BasePageContainer>
 </template>
 

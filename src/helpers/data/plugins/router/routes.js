@@ -169,6 +169,15 @@ const CommunityMainPage = () => import(
 const CommunityPostsPage = () => import(
   '*/views/community/PostsPage.vue'
 )
+const ReleasesMainPage = () => import(
+  '*/views/releases/MainPage.vue'
+)
+const ReleasesNewPage = () => import(
+  '*/views/releases/NewPage.vue'
+)
+const ReleasesUpcomingPage = () => import(
+  '*/views/releases/UpcomingPage.vue'
+)
 
 export default [
   {
@@ -568,6 +577,27 @@ export default [
     exact: true,
     name: 'CommunityPostsPage',
     component: CommunityPostsPage,
+    props: true
+  },
+  {
+    path: '/releases',
+    exact: true,
+    name: 'ReleasesMainPage',
+    component: ReleasesMainPage,
+    props: true
+  },
+  {
+    path: '/releases/new',
+    exact: true,
+    name: 'ReleasesNewPage',
+    component: ReleasesNewPage,
+    props: true
+  },
+  {
+    path: '/releases/upcoming',
+    exact: true,
+    name: 'ReleasesUpcomingPage',
+    component: ReleasesUpcomingPage,
     props: true
   }
 ]

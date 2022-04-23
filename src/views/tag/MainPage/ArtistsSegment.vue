@@ -9,7 +9,6 @@
     <template #default="slotProps">
       <BaseArtistsTableList
         :artists="slotProps[scope]"
-        :profile-id="slotProps.profileId"
         :items-in-row="itemsInRow"
         is-with-listeners-count
         is-with-library-option

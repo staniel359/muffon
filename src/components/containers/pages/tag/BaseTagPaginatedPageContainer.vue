@@ -16,7 +16,6 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :profile-id="pageSlotProps.profileId"
           />
         </template>
       </BasePaginatedPageContainer>

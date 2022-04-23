@@ -1,7 +1,7 @@
 import i18n from '*/plugins/i18n'
 import {
-  main as formatTopMainLink
-} from '*/helpers/formatters/links/top'
+  main as formatReleasesMainLink
+} from '*/helpers/formatters/links/releases'
 
 export default function (
   {
@@ -10,13 +10,13 @@ export default function (
 ) {
   function formatLink () {
     if (!isActive) {
-      return formatTopMainLink()
+      return formatReleasesMainLink()
     }
   }
 
   return {
     name: i18n.global.t(
-      'navigation.top'
+      'navigation.releases'
     ),
     isActive,
     link: formatLink()

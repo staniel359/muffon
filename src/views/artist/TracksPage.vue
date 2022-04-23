@@ -8,7 +8,6 @@
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :artist-name="slotProps.artistName"
-        :profile-id="slotProps.profileId"
         :top-track-count="slotProps.topTrackCount"
         is-with-listeners-count
         is-with-library-option

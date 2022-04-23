@@ -32,7 +32,6 @@
           <RightColumn
             :album-data="pageSlotProps.albumData"
             :request-album-data="pageSlotProps.requestAlbumData"
-            :profile-id="pageSlotProps.profileId"
           />
         </BaseSegmentContainer>
       </div>

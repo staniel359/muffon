@@ -17,7 +17,6 @@
       <BaseAlbumsTableList
         :albums="slotProps[scope]"
         :artist-name="slotProps.artistName"
-        :profile-id="slotProps.profileId"
         :items-in-row="itemsInRow"
         is-with-listeners-count
         is-with-library-option
