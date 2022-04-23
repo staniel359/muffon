@@ -35,7 +35,8 @@ export default {
     }
   },
   inject: [
-    'setTracks'
+    'setTracks',
+    'refreshTracksList'
   ],
   props: {
     playlistId: {
@@ -49,9 +50,10 @@ export default {
   },
   data () {
     return {
-      isComplete: false,
       isMounted: false,
       isProgress: true,
+      isComplete: false,
+      isSuccess: false,
       errorTracks: [],
       status: 'save',
       scope: 'tracks'
@@ -60,10 +62,14 @@ export default {
   computed: {
     totalCount () {
       return this.tracks.length
+    },
+    isErrorTracks () {
+      return !!this.errorTracks.length
     }
   },
   watch: {
-    tracks: 'handleTracksChange'
+    tracks: 'handleTracksChange',
+    isSuccess: 'handleIsSuccessChange'
   },
   mounted () {
     this.isMounted = true
@@ -83,9 +89,21 @@ export default {
     handleProgressComplete () {
       this.isComplete = true
       this.isProgress = false
+
+      if (!this.isErrorTracks) {
+        this.isSuccess = true
+      }
+    },
+    handleIsSuccessChange (
+      value
+    ) {
+      if (value) {
+        this.refreshTracksList()
+      }
     },
     retry () {
       this.isComplete = false
+      this.isSuccess = false
       this.isProgress = true
 
       this.setTracks(
