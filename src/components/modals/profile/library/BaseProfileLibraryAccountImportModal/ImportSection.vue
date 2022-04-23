@@ -10,7 +10,8 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :active-text-key="activeTextKey"
+    :status="status"
+    :scope="scope"
     @complete="handleProgressComplete"
   />
 
@@ -59,7 +60,8 @@ export default {
       isComplete: false,
       isMounted: false,
       isProgress: true,
-      activeTextKey: 'import.active.plays'
+      status: 'import',
+      scope: 'plays'
     }
   },
   computed: {

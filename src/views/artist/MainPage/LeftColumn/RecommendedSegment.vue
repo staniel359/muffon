@@ -42,6 +42,9 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseRecommendationProfileArtistsModal
   from '*/components/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'RecommendedSegment',
@@ -70,11 +73,17 @@ export default {
       )
     },
     artistsText () {
-      return this.$t(
-        'counters.artists',
+      return this.$tc(
+        'counters.genitive.artists',
+        this.profileArtistsCount,
         {
-          count: this.profileArtistsCount
+          count: this.profileArtistsCountFormatted
         }
+      )
+    },
+    profileArtistsCountFormatted () {
+      return formatNumber(
+        this.profileArtistsCount
       )
     },
     profileArtistsCount () {

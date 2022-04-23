@@ -40,8 +40,9 @@ export default {
   ],
   computed: {
     followersText () {
-      return this.$t(
-        'counters.followers',
+      return this.$tc(
+        'counters.nominative.followers',
+        this.followersCount,
         {
           count: this.followersCountStrong
         }
@@ -59,8 +60,9 @@ export default {
       return this.profileData.follower_profiles_count
     },
     followingText () {
-      return this.$t(
-        'counters.following',
+      return this.$tc(
+        'counters.nominative.following',
+        this.followingCount,
         {
           count: this.followingCountStrong
         }

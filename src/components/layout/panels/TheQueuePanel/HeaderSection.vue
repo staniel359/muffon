@@ -43,8 +43,9 @@ export default {
       }
     ),
     tracksText () {
-      return this.$t(
-        'counters.tracks',
+      return this.$tc(
+        'counters.nominative.tracks',
+        this.queueTracksCount,
         {
           count:
             this.queueTracksCountFormatted

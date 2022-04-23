@@ -22,6 +22,9 @@
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseCommonProfileAlbumsModal
   from '*/components/modals/profile/library/compatibility/BaseCommonProfileAlbumsModal.vue'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsButton',
@@ -44,11 +47,17 @@ export default {
       return this.compatibilityData.albums_count
     },
     albumsText () {
-      return this.$t(
-        'counters.albums',
+      return this.$tc(
+        'counters.nominative.albums',
+        this.albumsCount,
         {
-          count: this.albumsCount
+          count: this.albumsCountFormatted
         }
+      )
+    },
+    albumsCountFormatted () {
+      return formatNumber(
+        this.albumsCount
       )
     }
   },

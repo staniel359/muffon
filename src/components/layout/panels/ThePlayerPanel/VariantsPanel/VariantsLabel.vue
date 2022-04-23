@@ -35,7 +35,7 @@ export default {
       return this.$t(
         'player.variants',
         {
-          number:
+          count:
             this.playerVariantsCount
         }
       )

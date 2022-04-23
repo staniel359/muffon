@@ -34,6 +34,15 @@ export default {
       return this.$t(
         'import.error.files',
         {
+          counter: this.counterText
+        }
+      )
+    },
+    counterText () {
+      return this.$tc(
+        'counters.nominative.files',
+        this.totalCount,
+        {
           count: this.totalCountFormatted
         }
       )

@@ -2,7 +2,8 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :active-text-key="activeTextKey"
+    :status="status"
+    :scope="scope"
     @complete="handleProgressComplete"
   />
 
@@ -45,7 +46,8 @@ export default {
       isComplete: false,
       isProgress: true,
       errorTracks: [],
-      activeTextKey: 'save.active.tracks'
+      status: 'save',
+      scope: 'tracks'
     }
   },
   computed: {

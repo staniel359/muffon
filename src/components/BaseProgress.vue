@@ -12,7 +12,7 @@
 
     <div
       class="label"
-      v-text="status"
+      v-text="activeTextConditional"
     />
   </div>
 </template>
@@ -31,19 +31,31 @@ import {
 import {
   mainProgressOptions
 } from '*/helpers/data/plugins/semantic'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseProgress',
   props: {
-    activeTextKey: {
+    status: {
       type: String,
       required: true
     },
-    status: String
+    scope: {
+      type: String,
+      required: true
+    }
   },
   emits: [
     'complete'
   ],
+  data () {
+    return {
+      count: 0,
+      totalCount: 0
+    }
+  },
   computed: {
     ...mapState(
       'layout',
@@ -54,10 +66,44 @@ export default {
     progressOptions () {
       return mainProgressOptions(
         {
-          formatActiveText:
-            this.formatActiveText,
-          onSuccess: this.handleSuccess
+          onChange: this.handleChange,
+          onSuccess: this.handleComplete
         }
+      )
+    },
+    activeTextConditional () {
+      if (this.count) {
+        return this.activeText
+      } else {
+        return this.loadingText
+      }
+    },
+    activeText () {
+      return this.$t(
+        `${this.status}.active`,
+        {
+          count: this.count,
+          counter: this.counterText
+        }
+      )
+    },
+    counterText () {
+      return this.$tc(
+        `counters.genitive.${this.scope}`,
+        this.totalCount,
+        {
+          count: this.totalCountFormatted
+        }
+      )
+    },
+    totalCountFormatted () {
+      return formatNumber(
+        this.totalCount
+      )
+    },
+    loadingText () {
+      return this.$t(
+        'loading'
       )
     }
   },
@@ -68,23 +114,19 @@ export default {
     )
   },
   methods: {
-    handleSuccess () {
+    handleChange (
+      _,
+      [
+        count
+      ],
+      totalCount
+    ) {
+      this.count = count
+      this.totalCount = totalCount
+    },
+    handleComplete () {
       this.$emit(
         'complete'
-      )
-    },
-    formatActiveText (
-      {
-        value,
-        total
-      }
-    ) {
-      return this.$t(
-        this.activeTextKey,
-        {
-          value,
-          total
-        }
       )
     },
     reset () {

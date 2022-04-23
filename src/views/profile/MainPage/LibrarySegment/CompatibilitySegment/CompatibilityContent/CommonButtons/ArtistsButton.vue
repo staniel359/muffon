@@ -22,6 +22,9 @@
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseCommonProfileArtistsModal
   from '*/components/modals/profile/library/compatibility/BaseCommonProfileArtistsModal.vue'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'ArtistsButton',
@@ -44,11 +47,17 @@ export default {
       return this.compatibilityData.artists_count
     },
     artistsText () {
-      return this.$t(
-        'counters.artists',
+      return this.$tc(
+        'counters.nominative.artists',
+        this.artistsCount,
         {
-          count: this.artistsCount
+          count: this.artistsCountFormatted
         }
+      )
+    },
+    artistsCountFormatted () {
+      return formatNumber(
+        this.artistsCount
       )
     }
   },

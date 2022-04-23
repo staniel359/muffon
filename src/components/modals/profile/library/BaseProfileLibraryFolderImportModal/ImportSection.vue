@@ -2,7 +2,8 @@
   <BaseProgress
     v-show="isProgress"
     ref="progress"
-    :active-text-key="activeTextKey"
+    :status="status"
+    :scope="scope"
     @complete="handleProgressComplete"
   />
 
@@ -50,7 +51,8 @@ export default {
       isError: false,
       isMounted: false,
       isProgress: true,
-      activeTextKey: 'import.active.tracks'
+      status: 'import',
+      scope: 'tracks'
     }
   },
   mounted () {

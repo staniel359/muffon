@@ -83,8 +83,18 @@ export default {
   },
   computed: {
     successHeaderText () {
-      return this.$t(
+      return this.$tc(
         'import.success.tracks.header',
+        this.totalCount,
+        {
+          counter: this.counterText
+        }
+      )
+    },
+    counterText () {
+      return this.$tc(
+        'counters.nominative.tracks',
+        this.totalCount,
         {
           count: this.totalCountFormatted
         }

@@ -262,12 +262,26 @@
     }
   },
   "counters": {
-    "artists": "{count} artists",
-    "albums": "{count} albums",
-    "tracks": "{count} tracks",
-    "followers": "{count} followers",
-    "following": "{count} following",
-    "members": "{count} members"
+    "nominative": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files",
+      "followers": "{count} follower | {count} followers",
+      "following": "{count} following",
+      "members": "{count} member | {count} members"
+    },
+    "genitive": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks",
+      "plays": "{count} play | {count} plays"
+    },
+    "accusative": {
+      "artists": "{count} artist | {count} artists",
+      "albums": "{count} album | {count} albums",
+      "tracks": "{count} track | {count} tracks"
+    }
   },
   "sources": {
     "select": {
@@ -298,7 +312,7 @@
     }
   },
   "player": {
-    "variants": "Variants ({number})"
+    "variants": "Variants ({count})"
   },
   "settings": {
     "tabs": {
@@ -414,44 +428,35 @@
     "filter": "Filter"
   },
   "recommendation": {
-    "similar": "Similar to {count} artists:"
+    "similar": "Similar to {counter}:"
   },
   "import": {
-    "active": {
-      "tracks": "Importing {value} of {total} tracks...",
-      "plays": "Importing {value} of {total} plays..."
-    },
+    "active": "Importing {count} of {counter}...",
     "success": {
       "tracks": {
-        "header": "All {count} tracks have been imported",
-        "content": "You may want to check them before saving to library"
+        "header": "{counter} has been imported | {counter} have been imported",
+        "content": "You may want to check data before saving to library"
       }
     },
     "error": {
-      "files": "{count} tracks could not be imported. Please ensure they have metadata defined:"
+      "files": "{counter} could not be imported. Please ensure these files have metadata defined:"
     }
   },
   "save": {
-    "active": {
-      "artists": "Saving {value} of {total} artists...",
-      "albums": "Saving {value} of {total} albums...",
-      "tracks": "Saving {value} of {total} tracks..."
-    },
+    "active": "Saving {count} of {counter}...",
     "success": {
       "library": {
-        "artists": "All {count} artists were added to library",
-        "albums": "All {count} albums were added to library",
-        "tracks": "All {count} tracks were added to library"
+        "artists": "{counter} was added to library | {counter} were added to library",
+        "albums": "{counter} was added to library | {counter} were added to library",
+        "tracks": "{counter} was added to library | {counter} were added to library"
       },
       "playlist": {
-        "tracks": "All {count} tracks were added to playlist"
+        "artists": "{counter} was added to playlist | {counter} were added to playlist",
+        "albums": "{counter} was added to playlist | {counter} were added to playlist",
+        "tracks": "{counter} was added to playlist | {counter} were added to playlist"
       }
     },
-    "error": {
-      "artists": "{count} artists could not be added:",
-      "albums": "{count} albums could not be added:",
-      "tracks": "{count} tracks could not be added:"
-    }
+    "error": "{counter} could not be added:"
   },
   "accounts": {
     "connect": "Connect account",

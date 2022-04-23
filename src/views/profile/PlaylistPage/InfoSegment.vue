@@ -104,8 +104,9 @@ export default {
       return this.playlistData.title
     },
     tracksCountText () {
-      return this.$t(
-        'counters.tracks',
+      return this.$tc(
+        'counters.nominative.tracks',
+        this.tracksCount,
         {
           count: this.tracksCountStrong
         }

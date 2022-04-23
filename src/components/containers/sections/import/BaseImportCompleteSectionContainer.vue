@@ -31,22 +31,21 @@ export default {
   },
   computed: {
     successText () {
-      return this.$t(
-        this.successTextKey,
+      return this.$tc(
+        `save.success.${this.model}.${this.scope}`,
+        this.totalCount,
         {
-          count: this.totalCountFormatted
+          counter: this.counterText
         }
       )
     },
-    successTextKey () {
-      return [
-        'save.success',
-        this.model,
-        this.scope
-      ].filter(
-        e => e
-      ).join(
-        '.'
+    counterText () {
+      return this.$tc(
+        `counters.nominative.${this.scope}`,
+        this.totalCount,
+        {
+          count: this.totalCountFormatted
+        }
       )
     },
     totalCountFormatted () {

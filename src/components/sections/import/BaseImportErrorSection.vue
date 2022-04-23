@@ -51,7 +51,16 @@ export default {
   computed: {
     errorText () {
       return this.$t(
-        `save.error.${this.scope}`,
+        'save.error',
+        {
+          counter: this.counterText
+        }
+      )
+    },
+    counterText () {
+      return this.$tc(
+        `counters.accusative.${this.scope}`,
+        this.totalCount,
         {
           count: this.totalCountFormatted
         }

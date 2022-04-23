@@ -45,9 +45,9 @@
       "playlists": "Списки {modelName}",
       "favorites": "Избранное {modelName}",
       "favoritesModels": {
-        "artists": "{modelName} избранные исполнители",
-        "albums": "{modelName} избранные альбомы",
-        "tracks": "{modelName} избранные композиции"
+        "artists": "Избранные исполнители {modelName}",
+        "albums": "Избранные альбомы {modelName}",
+        "tracks": "Избранные композиции {modelName}"
       },
       "communities": "Сообщества {modelName}"
     },
@@ -261,13 +261,27 @@
       "community": "Сообщество {communityTitle} было удалено"
     }
   },
-  "counters": {
-    "artists": "{count} исполнителей",
-    "albums": "{count} альбомов",
-    "tracks": "{count} композиций",
-    "followers": "{count} подписчиков",
-    "following": "{count} подписок",
-    "members": "{count} участников"
+  "counters" : {
+    "nominative": {
+      "artists": "{count} исполнителей | {count} исполнитель | {count} исполнителя",
+      "albums": "{count} альбомов | {count} альбом | {count} альбома",
+      "tracks": "{count} композиций | {count} композиция | {count} композиции",
+      "files": "{count} файлов | {count} файл | {count} файла",
+      "followers": "{count} подписчиков | {count} подписчик | {count} подписчика",
+      "following": "{count} подписок | {count} подписка | {count} подписки",
+      "members": "{count} участников | {count} участник | {count} участника"
+    },
+    "genitive": {
+      "artists": "{count} исполнителей | {count} исполнителя",
+      "albums": "{count} альбомов | {count} альбома",
+      "tracks": "{count} композиций | {count} композиции",
+      "plays": "{count} воспроизведений | {count} воспроизведения"
+    },
+    "accusative": {
+      "artists": "{count} исполнителей | {count} исполнителя | {count} исполнителей",
+      "albums": "{count} альбомов | {count} альбом | {count} альбома",
+      "tracks": "{count} композиций | {count} композицию | {count} композиции"
+    }
   },
   "sources": {
     "select": {
@@ -298,7 +312,7 @@
     }
   },
   "player": {
-    "variants": "Варианты ({number})"
+    "variants": "Варианты ({count})"
   },
   "settings": {
     "tabs": {
@@ -414,44 +428,35 @@
     "filter": "Фильтр"
   },
   "recommendation": {
-    "similar": "В похожих у {count} исполнителей:"
+    "similar": "В похожих у {counter}:"
   },
   "import": {
-    "active": {
-      "tracks": "Загрузка {value} из {total} композиций...",
-      "plays": "Загрузка {value} из {total} воспроизведений..."
-    },
+    "active": "Загрузка {count} из {counter}...",
     "success": {
       "tracks": {
-        "header": "Все {count} композиций были загружены",
-        "content": "Возможно, Вы захотите их проверить перед тем, как сохранить в библиотеку"
+        "header": "{counter} было загружено | {counter} была загружена | {counter} было загружено",
+        "content": "Возможно, Вы захотите проверить данные перед сохранением в библиотеку"
       }
     },
     "error": {
-      "files": "{count} файлов не смогли быть загружены. Пожалуйста, убедитесь, что в них присутствуют метаданные:"
+      "files": "{counter} не удалось загрузить. Пожалуйста, убедитесь, что в этих файлах присутствуют метаданные:"
     }
   },
   "save": {
-    "active": {
-      "artists": "Сохранение {value} из {total} исполнителей...",
-      "albums": "Сохранение {value} из {total} альбомов...",
-      "tracks": "Сохранение {value} из {total} композиций..."
-    },
+    "active": "Сохранение {count} из {counter}...",
     "success": {
       "library": {
-        "artists": "Все {count} исполнителей были добавлены в библиотеку",
-        "albums": "Все {count} альбомов были добавлены в библиотеку",
-        "tracks": "Все {count} композиций были добавлены в библиотеку"
+        "artists": "{counter} было добавлено в библиотеку | {counter} был добавлен в библиотеку | {counter} было добавлено в библиотеку",
+        "albums": "{counter} было добавлено в библиотеку | {counter} был добавлен в библиотеку | {counter} было добавлено в библиотеку",
+        "tracks": "{counter} было добавлено в библиотеку | {counter} была добавлена в библиотеку | {counter} было добавлено в библиотеку"
       },
       "playlist": {
-        "tracks": "Все {count} композиций были добавлены в список"
+        "artists": "{counter} было добавлено в список | {counter} был добавлен в список | {counter} было добавлено в список",
+        "albums": "{counter} было добавлено в список | {counter} был добавлен в список | {counter} было добавлено в список",
+        "tracks": "{counter} было добавлено в список | {counter} была добавлена в список | {counter} было добавлено в список"
       }
     },
-    "error": {
-      "artists": "{count} исполнителей не смогли быть добавлены:",
-      "albums": "{count} альбомов не смогли быть добавлены:",
-      "tracks": "{count} композиций не смогли быть добавлены:"
-    }
+    "error": "{counter} не удалось добавить:"
   },
   "accounts": {
     "connect": "Подключить учётную запись",

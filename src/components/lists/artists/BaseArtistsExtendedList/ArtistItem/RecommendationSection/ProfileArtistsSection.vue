@@ -48,6 +48,9 @@ import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseRecommendationProfileArtistsModal
   from '*/components/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'ProfileArtistsSection',
@@ -76,8 +79,22 @@ export default {
       return this.$t(
         'recommendation.similar',
         {
-          count: this.profileArtistsCount
+          counter: this.counterText
         }
+      )
+    },
+    counterText () {
+      return this.$tc(
+        'counters.genitive.artists',
+        this.profileArtistsCount,
+        {
+          count: this.profileArtistsCountFormatted
+        }
+      )
+    },
+    profileArtistsCountFormatted () {
+      return formatNumber(
+        this.profileArtistsCount
       )
     },
     profileArtistsCount () {

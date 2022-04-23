@@ -129,8 +129,9 @@ export default {
       return this.communityData.description
     },
     membersCountText () {
-      return this.$t(
-        'counters.members',
+      return this.$tc(
+        'counters.nominative.members',
+        this.membersCount,
         {
           count: this.membersCountStrong
         }

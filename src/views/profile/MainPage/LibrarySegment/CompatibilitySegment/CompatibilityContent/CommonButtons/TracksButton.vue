@@ -22,6 +22,9 @@
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BaseCommonProfileTracksModal
   from '*/components/modals/profile/library/compatibility/BaseCommonProfileTracksModal.vue'
+import {
+  number as formatNumber
+} from '*/helpers/formatters'
 
 export default {
   name: 'TracksButton',
@@ -44,11 +47,17 @@ export default {
       return this.compatibilityData.tracks_count
     },
     tracksText () {
-      return this.$t(
-        'counters.tracks',
+      return this.$tc(
+        'counters.nominative.tracks',
+        this.tracksCount,
         {
-          count: this.tracksCount
+          count: this.tracksCountFormatted
         }
+      )
+    },
+    tracksCountFormatted () {
+      return formatNumber(
+        this.tracksCount
       )
     }
   },
