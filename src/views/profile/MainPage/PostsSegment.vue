@@ -2,7 +2,7 @@
   <BaseProfileSegmentContainer
     scope="posts"
     :header-link="headerLink"
-    :is-fetch-data="false"
+    :is-get-data="false"
   >
     <BasePostsFormSegment
       post-type="profile"

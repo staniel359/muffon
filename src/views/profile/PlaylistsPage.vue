@@ -1,6 +1,8 @@
 <template>
-  <BaseProfilePlaylistsPageContainer
+  <BaseProfilePageContainer
+    ref="page"
     :profile-id="profileId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -25,6 +27,7 @@
         </BaseSegmentContainer>
 
         <BasePaginatedSegmentContainer
+          ref="pagination"
           class="main-paginated-page-segment-container"
           response-data-name="profileData"
           :slot-props-data="pageSlotProps"
@@ -40,12 +43,12 @@
         </BasePaginatedSegmentContainer>
       </div>
     </template>
-  </BaseProfilePlaylistsPageContainer>
+  </BaseProfilePageContainer>
 </template>
 
 <script>
-import BaseProfilePlaylistsPageContainer
-  from '*/components/containers/pages/profile/playlists/BaseProfilePlaylistsPageContainer.vue'
+import BaseProfilePageContainer
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BasePlaylistCreateButton
@@ -61,17 +64,21 @@ import {
 import {
   playlists as formatPlaylistsLink
 } from '*/helpers/formatters/links'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'PlaylistsPage',
   components: {
-    BaseProfilePlaylistsPageContainer,
+    BaseProfilePageContainer,
     BaseSegmentContainer,
     BasePlaylistCreateButton,
     BaseLink,
     BasePaginatedSegmentContainer,
     BasePlaylistsSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -96,14 +103,6 @@ export default {
     playlistsLinkText () {
       return this.$t(
         'links.playlists'
-      )
-    }
-  },
-  methods: {
-    handleFocus () {
-      window.scrollTo(
-        0,
-        0
       )
     }
   }

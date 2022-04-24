@@ -74,9 +74,10 @@ export default {
     isQueueAutoplay: 'handleIsQueueAutoplayChange'
   },
   methods: {
+    getQueueTrack,
     handleAudioEnd () {
       if (this.isPlayNext) {
-        this.fetchQueueNextTrack()
+        this.getQueueNextTrack()
       }
     },
     handleIsQueueAutoplayChange () {
@@ -84,11 +85,10 @@ export default {
         this.isPlayNext &&
           this.audioElement.ended
       ) {
-        this.fetchQueueNextTrack()
+        this.getQueueNextTrack()
       }
     },
-    getQueueTrack,
-    fetchQueueNextTrack () {
+    getQueueNextTrack () {
       this.getQueueTrack(
         this.queueTrackArgs
       )

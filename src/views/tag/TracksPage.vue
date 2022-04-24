@@ -1,5 +1,6 @@
 <template>
   <BaseTagPaginatedPageContainer
+    :tag-name="tagName"
     :scope="scope"
     :limit="limit"
   >
@@ -28,6 +29,9 @@ export default {
   components: {
     BaseTagPaginatedPageContainer,
     BaseTracksSimpleList
+  },
+  props: {
+    tagName: String
   },
   data () {
     return {

@@ -1,5 +1,6 @@
 <template>
   <BaseFeedPageContainer
+    ref="page"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -26,6 +27,7 @@ import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'FeedPage',
@@ -34,6 +36,9 @@ export default {
     BasePaginatedPageContainer,
     BasePostsSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 50,

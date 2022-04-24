@@ -1,39 +1,28 @@
 <template>
-  <div
+  <BaseHeaderSegmentsContainer
     ref="segment"
-    :class="[
-      'ui raised segments',
-      'main-segment-container'
-    ]"
+    :scope="scope"
+    :header-link="headerLink"
   >
-    <BaseHeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
-
     <slot
       :library-artist-data="libraryArtistData"
       :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getProfileLibraryArtist
   from '*/helpers/actions/api/profile/library/artist/get'
-import {
-  focusOnSegment
-} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibraryArtistSegmentContainer',
   components: {
-    BaseHeaderSegment
+    BaseHeaderSegmentsContainer
   },
   props: {
     profileId: {
@@ -53,8 +42,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -75,12 +64,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibraryArtist,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileLibraryArtist(
         {
@@ -89,17 +80,10 @@ export default {
         }
       )
     },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     focus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

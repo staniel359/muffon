@@ -8,8 +8,6 @@
       :communities-data="communitiesData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -58,25 +56,20 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getCommunities,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getCommunities(
         {
           ...this.communitiesArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

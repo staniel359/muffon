@@ -13,7 +13,7 @@
     <slot />
   </div>
 
-  <BaseRetryButton
+  <RetryButton
     class="fluid retry-button"
     icon="redo alternate"
     @click="handleRetryButtonClick"
@@ -22,7 +22,7 @@
 
 <script>
 import BaseMessage from '*/components/messages/BaseMessage.vue'
-import BaseRetryButton from '*/components/buttons/BaseRetryButton.vue'
+import RetryButton from './BaseImportErrorSection/RetryButton.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -31,7 +31,7 @@ export default {
   name: 'BaseImportErrorSection',
   components: {
     BaseMessage,
-    BaseRetryButton
+    RetryButton
   },
   inject: [
     'retry'

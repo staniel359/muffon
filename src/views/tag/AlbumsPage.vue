@@ -1,5 +1,6 @@
 <template>
   <BaseTagPaginatedPageContainer
+    :tag-name="tagName"
     :scope="scope"
     :limit="limit"
   >
@@ -29,6 +30,9 @@ export default {
   components: {
     BaseTagPaginatedPageContainer,
     BaseAlbumsTableList
+  },
+  props: {
+    tagName: String
   },
   data () {
     return {

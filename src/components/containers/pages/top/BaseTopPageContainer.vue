@@ -1,13 +1,13 @@
 <template>
   <BasePageContainer
-    :response-data="responseData"
+    :response-data="topData"
+    :is-loading="isLoading"
+    :error="error"
   >
     <slot
       :top-data="topData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -29,7 +29,7 @@ export default {
     navigationMixin
   ],
   props: {
-    isFetchData: {
+    isGetData: {
       type: Boolean,
       default: true
     },
@@ -38,10 +38,9 @@ export default {
   },
   data () {
     return {
-      error: null,
       topData: null,
-      isLoading: false,
-      responseData: {}
+      error: null,
+      isLoading: false
     }
   },
   computed: {
@@ -70,27 +69,24 @@ export default {
   mounted () {
     this.setNavigation()
 
-    if (this.isFetchData) {
-      this.fetchData()
+    if (this.isGetData) {
+      this.getData()
+    } else {
+      this.topData = {}
     }
   },
   methods: {
     getTop,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getTop(
         {
           ...this.topArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

@@ -8,8 +8,7 @@
     @refresh="handleRefresh"
   >
     <BasePaginatedListContainer
-      v-if="responseData"
-      ref="list"
+      ref="pagination"
       :response-data="responseData"
       :scope="scope"
       :limit="limit"
@@ -19,8 +18,6 @@
       :error="error"
       :is-pagination-simple="isPaginationSimple"
       :is-reset="isReset"
-      @fetch-data="fetchData"
-      @refresh="refresh"
       @focus="handleFocus"
     >
       <template #default="slotProps">
@@ -44,6 +41,9 @@ export default {
     BaseSegmentContainer,
     BasePaginatedListContainer
   },
+  inject: [
+    'getData'
+  ],
   props: {
     slotPropsData: {
       type: Object,
@@ -77,17 +77,11 @@ export default {
       return this.slotPropsData[
         this.responseDataName
       ]
-    },
-    fetchData () {
-      return this.slotPropsData.fetchData
-    },
-    refresh () {
-      return this.slotPropsData.refresh
     }
   },
   methods: {
     handleRefresh () {
-      this.refresh()
+      this.getData()
     },
     handleFocus () {
       this.$emit(
@@ -96,7 +90,7 @@ export default {
     },
     reset () {
       this.$refs
-        .list
+        .pagination
         .reset()
     },
     focus () {

@@ -1,6 +1,8 @@
 <template>
-  <BaseProfileCommunitiesPageContainer
+  <BaseProfilePageContainer
+    ref="page"
     :profile-id="profileId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -21,6 +23,7 @@
         </BaseSegmentContainer>
 
         <BasePaginatedSegmentContainer
+          ref="pagination"
           class="main-paginated-page-segment-container"
           response-data-name="profileData"
           :slot-props-data="pageSlotProps"
@@ -36,12 +39,12 @@
         </BasePaginatedSegmentContainer>
       </div>
     </template>
-  </BaseProfileCommunitiesPageContainer>
+  </BaseProfilePageContainer>
 </template>
 
 <script>
-import BaseProfileCommunitiesPageContainer
-  from '*/components/containers/pages/profile/communities/BaseProfileCommunitiesPageContainer.vue'
+import BaseProfilePageContainer
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
@@ -52,16 +55,20 @@ import BaseCommunitiesSimpleList
 import {
   communities as formatCommunitiesLink
 } from '*/helpers/formatters/links'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'CommunitiesPage',
   components: {
-    BaseProfileCommunitiesPageContainer,
+    BaseProfilePageContainer,
     BaseSegmentContainer,
     BaseLink,
     BasePaginatedSegmentContainer,
     BaseCommunitiesSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: String
   },
@@ -78,14 +85,6 @@ export default {
     communitiesLinkText () {
       return this.$t(
         'links.communities'
-      )
-    }
-  },
-  methods: {
-    handleFocus () {
-      window.scrollTo(
-        0,
-        0
       )
     }
   }

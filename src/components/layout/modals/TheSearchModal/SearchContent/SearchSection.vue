@@ -78,6 +78,11 @@ export default {
     BaseTagsList,
     BaseVideosSimpleList
   },
+  provide () {
+    return {
+      getData: this.getData
+    }
+  },
   inject: [
     'hideSearch'
   ],
@@ -223,9 +228,7 @@ export default {
       return {
         searchData: this.searchData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     },
     limit () {
@@ -257,7 +260,7 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getSearch,
@@ -272,21 +275,16 @@ export default {
     handleLinkClick () {
       this.hideSearch()
     },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getSearch(
         {
           ...this.searchArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

@@ -5,7 +5,6 @@
     :is-loading="isLoading"
     :error="error"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
     <slot
       :[scope]="tagData[scope]"
@@ -17,12 +16,16 @@
 import BaseSegmentModalContainer
   from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getTag from '*/helpers/actions/api/tag/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseTagModalContainer',
   components: {
     BaseSegmentModalContainer
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     tagName: {
       type: String,
@@ -35,9 +38,9 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      tagData: null,
       error: null,
-      tagData: null
+      isLoading: false
     }
   },
   computed: {
@@ -50,26 +53,10 @@ export default {
   },
   methods: {
     getTag,
-    handleCall () {
-      this.fetchData()
-    },
-    handleRefresh () {
-      this.fetchData()
-    },
-    fetchData () {
+    getData () {
       this.getTag(
         this.tagArgs
       )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

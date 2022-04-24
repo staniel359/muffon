@@ -1,6 +1,6 @@
 <template>
   <BaseReleasesPageContainer
-    :is-fetch-data="false"
+    :is-get-data="false"
   >
     <NewSegment />
 

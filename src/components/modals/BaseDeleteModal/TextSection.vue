@@ -1,15 +1,19 @@
 <template>
   <div class="content">
     <p
+      class="text-section"
       v-html="goingText"
     />
 
     <p
       v-if="isWithAlsoText"
+      class="text-section"
       v-text="alsoText"
     />
 
-    <p>
+    <p
+      class="text-section"
+    >
       <strong
         v-text="undoText"
       />
@@ -77,4 +81,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.text-section
+  margin-bottom: 0.5em !important
+</style>

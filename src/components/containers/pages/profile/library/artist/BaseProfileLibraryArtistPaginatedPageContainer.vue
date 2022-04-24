@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryArtistPageContainer
+    ref="page"
     :profile-id="profileId"
     :artist-id="artistId"
     :scope="scope"
@@ -28,6 +29,7 @@ import BaseProfileLibraryArtistPageContainer
   from './BaseProfileLibraryArtistPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseProfileLibraryArtistPaginatedPageContainer',
@@ -35,6 +37,9 @@ export default {
     BaseProfileLibraryArtistPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: String,
     artistId: String,

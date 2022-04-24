@@ -81,7 +81,6 @@
         "deepData": true
       }
     ],
-    "vue/no-unused-refs": "error",
     "vue/no-v-html": "off",
     "vue/object-curly-newline": [
       "error",

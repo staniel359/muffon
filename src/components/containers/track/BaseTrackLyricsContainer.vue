@@ -35,8 +35,8 @@ export default {
   ],
   data () {
     return {
-      error: null,
       trackData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -64,17 +64,17 @@ export default {
   methods: {
     getTrack,
     handleSelectedTrackDataChange () {
-      this.fetchData()
+      this.getData()
     },
     handleRefresh () {
-      this.fetchData()
+      this.getData()
     },
     handleTrackDataChange () {
       this.$emit(
         'focus'
       )
     },
-    fetchData () {
+    getData () {
       this.getTrack(
         this.trackArgs
       )

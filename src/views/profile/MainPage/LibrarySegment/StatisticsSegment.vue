@@ -33,8 +33,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -44,14 +44,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibrary,
     handleRefresh () {
-      this.fetchData()
+      this.getData()
     },
-    fetchData () {
+    getData () {
       this.getProfileLibrary(
         {
           profileId: this.profileId

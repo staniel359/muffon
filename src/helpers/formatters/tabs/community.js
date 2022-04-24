@@ -11,6 +11,15 @@ export default function (
     scope
   }
 ) {
+  function formatIcon () {
+    switch (scope) {
+      case 'posts':
+        return 'edit'
+      default:
+        return 'users'
+    }
+  }
+
   function formatTitle () {
     if (scope) {
       return i18n.global.t(
@@ -42,7 +51,7 @@ export default function (
   }
 
   return {
-    icon: 'users',
+    icon: formatIcon(),
     title: formatTitle(),
     path: formatPath()
   }

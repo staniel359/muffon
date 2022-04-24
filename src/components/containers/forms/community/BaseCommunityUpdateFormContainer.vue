@@ -41,8 +41,8 @@ export default {
   data () {
     return {
       form: null,
-      error: null,
       communityData: null,
+      error: null,
       isLoading: false,
       fields: [
         'title',

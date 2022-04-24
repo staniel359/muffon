@@ -2,6 +2,7 @@
   <BaseModalContainer
     ref="modal"
     class="main-image-modal"
+    is-image-modal
     @show="handleShow"
   >
     <slot />

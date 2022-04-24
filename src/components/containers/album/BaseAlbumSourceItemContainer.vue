@@ -29,8 +29,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       searchData: null,
+      error: null,
       loadedCollectionsCount: 0,
       errorCollectionsCount: 0,
       albumsData: {}
@@ -73,9 +73,10 @@ export default {
     error: 'handleError'
   },
   mounted () {
-    this.fetchTypesData()
+    this.getTypesData()
   },
   methods: {
+    getSearch,
     handleSearchDataChange (
       value
     ) {
@@ -90,13 +91,12 @@ export default {
         this.errorCollectionsCount++
       }
     },
-    getSearch,
-    fetchTypesData () {
+    getTypesData () {
       this.types.map(
-        this.fetchTypeData
+        this.getTypeData
       )
     },
-    fetchTypeData (
+    getTypeData (
       type
     ) {
       const scope =

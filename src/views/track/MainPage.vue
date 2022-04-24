@@ -1,5 +1,6 @@
 <template>
   <BaseTrackPageContainer
+    ref="page"
     :source-params="sourceParams"
   >
     <template #default="slotProps">
@@ -21,7 +22,7 @@
           :is-loading="slotProps.isLoading"
           :error="slotProps.error"
           @init="handleInit"
-          @refresh="slotProps.refresh"
+          @refresh="handleRefresh"
         >
           <LeftColumn
             v-if="scrollable"
@@ -95,6 +96,11 @@ export default {
     }
   },
   methods: {
+    handleRefresh () {
+      this.$refs
+        .page
+        .getData()
+    },
     handleInit (
       element
     ) {

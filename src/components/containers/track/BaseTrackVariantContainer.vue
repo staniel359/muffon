@@ -73,7 +73,7 @@ export default {
       if (this.isCurrent) {
         this.callAudioAction()
       } else if (!this.isLoading) {
-        this.fetchAudio()
+        this.getAudio()
       }
     },
     callAudioAction () {
@@ -82,7 +82,7 @@ export default {
       ]()
     },
     getPlayerVariant,
-    fetchAudio () {
+    getAudio () {
       this.getPlayerVariant(
         this.playerVariantArgs
       )

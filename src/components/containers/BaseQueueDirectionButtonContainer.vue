@@ -4,8 +4,8 @@
     :icon="icon"
     :class="{
       disabled: isDisabled,
-      loading: isFetching,
-      basic: !isFetching
+      loading: isGetting,
+      basic: !isGetting
     }"
     @click="handleClick"
   />
@@ -38,8 +38,8 @@ export default {
     ...mapState(
       'queue',
       {
-        isQueueFetchingPrev: 'isFetchingPrev',
-        isQueueFetchingNext: 'isFetchingNext'
+        isQueueGettingPrev: 'isGettingPrev',
+        isQueueGettingNext: 'isGettingNext'
       }
     ),
     ...mapGetters(
@@ -54,7 +54,7 @@ export default {
       return (
         !this.queueTracksCount ||
           this.isEdge ||
-          this.isFetching
+          this.isGetting
       )
     },
     isEdge () {
@@ -67,12 +67,12 @@ export default {
           return false
       }
     },
-    isFetching () {
+    isGetting () {
       switch (this.position) {
         case 'prev':
-          return this.isQueueFetchingPrev
+          return this.isQueueGettingPrev
         case 'next':
-          return this.isQueueFetchingNext
+          return this.isQueueGettingNext
         default:
           return false
       }

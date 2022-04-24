@@ -1,6 +1,6 @@
 <template>
   <BaseTrackContainer
-    ref="container"
+    ref="track"
     class="item main-simple-list-item"
     :track-data="trackData"
     :queue-tracks="queueTracks"
@@ -135,10 +135,10 @@ export default {
       this.paginationItem
         .isDeleted = true
     },
-    fetchAudio () {
+    getAudio () {
       this.$refs
-        .container
-        .fetchAudio()
+        .track
+        .getAudio()
     }
   }
 }

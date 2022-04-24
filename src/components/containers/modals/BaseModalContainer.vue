@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="isRender"
     ref="modal"
     class="ui page modal main-modal"
   >
@@ -26,6 +27,9 @@ import {
 
 export default {
   name: 'BaseModalContainer',
+  props: {
+    isImageModal: Boolean
+  },
   emits: [
     'show',
     'visible'
@@ -42,6 +46,12 @@ export default {
         'isDarkMode'
       ]
     ),
+    isRender () {
+      return (
+        this.isCalled ||
+          this.isImageModal
+      )
+    },
     modalOptions () {
       return mainModalOptions(
         {
@@ -85,9 +95,11 @@ export default {
         this.isDarkMode
       )
     },
-    show () {
+    async show () {
       if (!this.isCalled) {
         this.isCalled = true
+
+        await this.$nextTick()
 
         setModal(
           this.$refs.modal,

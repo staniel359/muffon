@@ -8,8 +8,6 @@
       :playlists-data="playlistsData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -58,25 +56,20 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getPlaylists,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getPlaylists(
         {
           ...this.playlistsArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

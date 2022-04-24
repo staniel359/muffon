@@ -5,8 +5,8 @@
   <InteractiveImage
     v-else-if="isRenderInteractive"
     :artist-name="artistName"
-    :images="imagesFetched"
-    :image-data="imageFetched"
+    :images="responseImages"
+    :image-data="responseImage"
   />
   <BaseImage
     v-else
@@ -51,14 +51,14 @@ export default {
     isRenderInteractive () {
       return (
         this.isInteractive &&
-          this.imageFetched &&
-          this.imagesFetched?.length
+          this.responseImage &&
+          this.responseImages?.length
       )
     },
-    imageFetched () {
+    responseImage () {
       return this.artistData?.image
     },
-    imagesFetched () {
+    responseImages () {
       return this.artistData?.images
     },
     artistImageArgs () {
@@ -77,7 +77,7 @@ export default {
     imageConditional () {
       return (
         this.imageData ||
-          this.imageFetched
+          this.responseImage
       )?.[this.size]
     }
   },
@@ -86,7 +86,7 @@ export default {
       immediate: true,
       handler: 'handleArtistNameChange'
     },
-    imageFetched: 'handleImageFetchedChange'
+    responseImage: 'handleResponseImageChange'
   },
   methods: {
     getArtist,
@@ -100,16 +100,16 @@ export default {
           oldValue
         )
 
-      const isFetchImage = (
+      const isGetImage = (
         !this.imageData &&
           isNewArtist
       )
 
-      if (isFetchImage) {
-        this.fetchData()
+      if (isGetImage) {
+        this.getData()
       }
     },
-    handleImageFetchedChange (
+    handleResponseImageChange (
       value
     ) {
       this.$emit(
@@ -135,7 +135,7 @@ export default {
     ) {
       return value?.trim()?.toLowerCase()
     },
-    fetchData () {
+    getData () {
       this.getArtist(
         this.artistImageArgs
       )

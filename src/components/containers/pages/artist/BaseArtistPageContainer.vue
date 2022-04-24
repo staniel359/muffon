@@ -2,17 +2,15 @@
   <BasePageContainer
     :response-data="artistData"
     :is-loading="isLoading"
-    :error="pageError"
+    :error="error"
     @init="handleInit"
   >
     <slot
       :artist-data="artistData"
-      :artist-name="artistNameFetched"
+      :artist-name="responseArtistName"
       :top-track-count="topTrackCount"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -54,10 +52,10 @@ export default {
   ],
   data () {
     return {
-      error: null,
       artistData: null,
       requestArtistData: null,
       topTrackCount: null,
+      error: null,
       isLoading: false
     }
   },
@@ -69,7 +67,7 @@ export default {
     },
     navigationData () {
       return {
-        artistName: this.artistNameFetched,
+        artistName: this.responseArtistName,
         scope: this.scope
       }
     },
@@ -78,7 +76,7 @@ export default {
         this.navigationData
       )
     },
-    artistNameFetched () {
+    responseArtistName () {
       return this.artistData?.name
     },
     artistArgs () {
@@ -100,13 +98,6 @@ export default {
         this.requestArtistData.sourceId ===
           'discogs'
       )
-    },
-    pageError () {
-      if (this.artistData) {
-        return null
-      } else {
-        return this.error
-      }
     }
   },
   watch: {
@@ -117,16 +108,30 @@ export default {
     this.resetRequestArtistData()
   },
   methods: {
+    getArtist,
+    getBandcampArtistId,
     handleInit (
-      el
+      element
     ) {
       this.$emit(
         'init',
-        el
+        element
       )
     },
     handleRequestArtistDataChange () {
-      this.fetchData()
+      this.getData()
+    },
+    getData (
+      {
+        page
+      } = {}
+    ) {
+      this.getArtist(
+        {
+          ...this.artistArgs,
+          page
+        }
+      )
     },
     resetRequestArtistData () {
       this.setRequestArtistData(
@@ -146,25 +151,6 @@ export default {
       } else {
         this.requestArtistData = value
       }
-    },
-    getBandcampArtistId,
-    getArtist,
-    fetchData (
-      page
-    ) {
-      this.getArtist(
-        {
-          ...this.artistArgs,
-          page
-        }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
     }
   }
 }

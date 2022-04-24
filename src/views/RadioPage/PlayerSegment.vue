@@ -96,16 +96,16 @@ export default {
   },
   mounted () {
     if (this.modelName) {
-      this.fetchData()
+      this.getData()
     }
   },
   methods: {
     getRadio,
     handleNextButtonClick () {
-      this.fetchData()
+      this.getData()
     },
     handleRefresh () {
-      this.fetchData()
+      this.getData()
     },
     async handleTrackDataChange (
       value
@@ -113,18 +113,18 @@ export default {
       if (value) {
         await this.$nextTick()
 
-        this.fetchAudio()
+        this.getAudio()
       }
     },
-    fetchData () {
+    getData () {
       this.getRadio(
         this.radioArgs
       )
     },
-    fetchAudio () {
+    getAudio () {
       this.$refs
         .track
-        .fetchAudio()
+        .getAudio()
     }
   }
 }

@@ -146,10 +146,6 @@ export default {
       this.$refs
         .modal
         .show()
-
-      this.$refs
-        .input
-        .focus()
     },
     hide () {
       this.$refs

@@ -53,6 +53,11 @@ export default {
       updatePaginationItem: this.updatePaginationItem
     }
   },
+  inject: {
+    getData: {
+      default: () => false
+    }
+  },
   props: {
     scope: {
       type: String,
@@ -72,9 +77,7 @@ export default {
     isPaginationSimple: Boolean
   },
   emits: [
-    'focus',
-    'fetchData',
-    'refresh'
+    'focus'
   ],
   data () {
     return {
@@ -224,6 +227,15 @@ export default {
           this.clientPageLimitComputed
       )
     },
+    isGetData () {
+      return (
+        this.isResponsePageCollection &&
+          !this.isCollectionFull
+      )
+    },
+    isResponsePageCollection () {
+      return !!this.responsePageCollection.length
+    },
     isCollectionFull () {
       return (
         this.clientPageCollectionLength >=
@@ -296,6 +308,13 @@ export default {
         this.clientPage *
           this.clientPageLimitComputed
       ) - this.clientPageCollectionLength
+    },
+    currentPageConditional () {
+      if (this.isPaginationSimple) {
+        return this.currentPage
+      } else {
+        return this.requestPage
+      }
     }
   },
   watch: {
@@ -316,13 +335,10 @@ export default {
   },
   methods: {
     handleRefresh () {
-      const page = this.isPaginationSimple
-        ? this.currentPage
-        : this.requestPage
-
-      this.$emit(
-        'refresh',
-        page
+      this.getData(
+        {
+          page: this.currentPageConditional
+        }
       )
     },
     handleResponseDataChange (
@@ -353,35 +369,33 @@ export default {
           )
         }
 
-        if (!this.isCollectionFull) {
+        if (this.isGetData) {
           await this.$nextTick()
 
-          this.fetchData()
+          this.getData(
+            {
+              page: this.requestPage
+            }
+          )
         }
       }
     },
     handlePrevPageClick () {
       this.currentPage = this.prevPage
 
-      this.$emit(
-        'fetchData',
-        this.prevPage
+      this.getData(
+        {
+          page: this.prevPage
+        }
       )
     },
     handleNextPageClick () {
       this.currentPage = this.nextPage
 
-      this.$emit(
-        'fetchData',
-        this.nextPage
-      )
-    },
-    async fetchData () {
-      await this.$nextTick()
-
-      this.$emit(
-        'fetchData',
-        this.requestPage
+      this.getData(
+        {
+          page: this.nextPage
+        }
       )
     },
     setCollections () {

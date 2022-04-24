@@ -1,5 +1,6 @@
 <template>
   <BaseVideoChannelPageContainer
+    ref="page"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -28,6 +29,7 @@ import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseVideosTableList
   from '*/components/lists/videos/BaseVideosTableList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'VideosPage',
@@ -36,6 +38,9 @@ export default {
     BasePaginatedPageContainer,
     BaseVideosTableList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 40,

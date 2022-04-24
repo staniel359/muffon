@@ -31,6 +31,7 @@ import BaseProfileLibraryAlbumSegmentContainer
   from './BaseProfileLibraryAlbumSegmentContainer.vue'
 import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'BaseProfileLibraryAlbumPaginatedSegmentContainer',
@@ -38,22 +39,15 @@ export default {
     BaseProfileLibraryAlbumSegmentContainer,
     BasePaginatedSegmentContainer
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     profileId: String,
     albumId: String,
     scope: String,
     limit: Number,
     headerLink: Object
-  },
-  methods: {
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
-    }
   }
 }
 </script>

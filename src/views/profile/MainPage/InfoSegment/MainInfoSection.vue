@@ -68,10 +68,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-profile-page-image
-  width: 120px
-  height: 120px
-
 .role-label
   margin: 0.25em 0
 

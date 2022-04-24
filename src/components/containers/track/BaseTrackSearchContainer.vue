@@ -39,8 +39,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       searchData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -59,14 +59,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
-    handleRefresh () {
-      this.fetchData()
-    },
     getSearch,
-    fetchData () {
+    handleRefresh () {
+      this.getData()
+    },
+    getData () {
       this.getSearch(
         this.searchArgs
       )

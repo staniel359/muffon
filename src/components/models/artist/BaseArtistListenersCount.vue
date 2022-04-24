@@ -49,16 +49,19 @@ export default {
     }
   },
   computed: {
-    listenersCountFetched () {
+    responseListenersCount () {
       return (
         this.listenersCount ||
-          this.artistData?.listeners_count ||
-            0
+          this.artistListenersCount ||
+          0
       )
+    },
+    artistListenersCount () {
+      return this.artistData?.listeners_count
     },
     listenersCountFormatted () {
       return formatNumber(
-        this.listenersCountFetched
+        this.responseListenersCount
       )
     },
     artistArgs () {
@@ -69,15 +72,16 @@ export default {
     }
   },
   watch: {
-    listenersCountFetched: 'handleListenersCountFetchedChange'
+    responseListenersCount: 'handleResponseListenersCountChange'
   },
   mounted () {
     if (!this.listenersCount) {
-      this.fetchData()
+      this.getData()
     }
   },
   methods: {
-    handleListenersCountFetchedChange (
+    getArtist,
+    handleResponseListenersCountChange (
       value
     ) {
       this.$emit(
@@ -85,8 +89,7 @@ export default {
         value
       )
     },
-    getArtist,
-    fetchData () {
+    getData () {
       this.getArtist(
         this.artistArgs
       )

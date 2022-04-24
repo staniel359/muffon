@@ -6,11 +6,9 @@
   >
     <slot
       :library-artist-data="libraryArtistData"
-      :artist-name="artistNameFetched"
+      :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -48,8 +46,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -62,9 +60,9 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
+        profileNickname: this.profileNickname,
         artistId: this.artistId,
-        artistName: this.artistNameFetched,
+        artistName: this.artistName,
         scope: this.scope
       }
     },
@@ -73,10 +71,10 @@ export default {
         this.navigationData
       )
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
-    artistNameFetched () {
+    artistName () {
       return this.libraryArtistData?.name
     },
     libraryArtistData () {
@@ -85,7 +83,7 @@ export default {
     libraryData () {
       return this.profileData?.library
     },
-    libraryArgs () {
+    profileLibraryArtistArgs () {
       return {
         profileId: this.profileId,
         artistId: this.artistId,
@@ -98,25 +96,20 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibraryArtist,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileLibraryArtist(
         {
-          ...this.libraryArgs,
+          ...this.profileLibraryArtistArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

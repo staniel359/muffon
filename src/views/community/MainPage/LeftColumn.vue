@@ -1,17 +1,19 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments',
-      'main-segment-container'
-    ]"
-  >
-    <JoinSegment
-      :community-data="communityData"
-    />
+  <div class="left-column">
+    <div
+      :class="[
+        'ui raised segments',
+        'main-segment-container'
+      ]"
+    >
+      <JoinSegment
+        :community-data="communityData"
+      />
 
-    <CreatorSegment
-      :creator-data="creatorData"
-    />
+      <CreatorSegment
+        :creator-data="creatorData"
+      />
+    </div>
   </div>
 </template>
 

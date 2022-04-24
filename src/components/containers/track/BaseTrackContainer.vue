@@ -112,7 +112,7 @@ export default {
       } else if (this.trackAudioLink) {
         this.setAudio()
       } else if (!this.isLoading) {
-        this.fetchAudio()
+        this.getAudio()
       }
     },
     callAudioAction () {
@@ -134,7 +134,7 @@ export default {
       )
     },
     getPlayerTrack,
-    fetchAudio () {
+    getAudio () {
       this.getPlayerTrack(
         this.playerTrackArgs
       )

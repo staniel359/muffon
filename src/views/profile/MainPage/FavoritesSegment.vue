@@ -2,7 +2,7 @@
   <BaseProfileSegmentContainer
     scope="favorites"
     :header-link="headerLink"
-    :is-fetch-data="false"
+    :is-get-data="false"
   >
     <FavoritesTabsSegment
       :profile-id="profileId"

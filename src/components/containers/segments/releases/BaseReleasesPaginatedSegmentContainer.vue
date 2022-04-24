@@ -28,6 +28,7 @@
 import BaseReleasesSegmentContainer from './BaseReleasesSegmentContainer.vue'
 import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'BaseReleasesPaginatedSegmentContainer',
@@ -35,6 +36,9 @@ export default {
     BaseReleasesSegmentContainer,
     BasePaginatedSegmentContainer
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     listScope: {
       type: String,
@@ -44,16 +48,6 @@ export default {
     limit: Number,
     responsePageLimit: Number,
     headerLink: Object
-  },
-  methods: {
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
-    }
   }
 }
 </script>

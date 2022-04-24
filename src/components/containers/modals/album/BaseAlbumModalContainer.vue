@@ -6,7 +6,6 @@
     :is-loading="isLoading"
     :error="error"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
     <slot
       :[scope]="albumData[scope]"
@@ -21,12 +20,16 @@ import getAlbum from '*/helpers/actions/api/album/get'
 import {
   generateKey
 } from '*/helpers/utils'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseAlbumModalContainer',
   components: {
     BaseSegmentModalContainer
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     requestAlbumData: {
       type: Object,
@@ -40,9 +43,9 @@ export default {
   data () {
     return {
       key: null,
-      isLoading: false,
+      albumData: null,
       error: null,
-      albumData: null
+      isLoading: false
     }
   },
   computed: {
@@ -58,31 +61,15 @@ export default {
   },
   methods: {
     getAlbum,
-    handleCall () {
-      this.fetchData()
-    },
-    handleRefresh () {
-      this.fetchData()
-    },
     handleRequestAlbumDataChange () {
       this.albumData = null
 
       this.key = generateKey()
     },
-    fetchData () {
+    getData () {
       this.getAlbum(
         this.albumArgs
       )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

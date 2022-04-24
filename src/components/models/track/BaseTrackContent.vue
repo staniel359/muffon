@@ -195,6 +195,7 @@ import {
   time as formatTime,
   artistName as formatArtistName
 } from '*/helpers/formatters'
+import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'BaseTrackContent',
@@ -217,14 +218,9 @@ export default {
     BasePlaylistTrackDeleteModal,
     BaseProfileLibraryDeleteModal
   },
-  provide () {
-    return {
-      setLibraryId: this.setLibraryId,
-      setFavoriteId: this.setFavoriteId,
-      setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId
-    }
-  },
+  mixins: [
+    selfMixin
+  ],
   props: {
     trackData: {
       type: Object,
@@ -269,15 +265,10 @@ export default {
     'deleteButtonClick',
     'deleted'
   ],
-  data () {
-    return {
-      libraryId: null,
-      favoriteId: null,
-      bookmarkId: null,
-      listenedId: null
-    }
-  },
   computed: {
+    modelData () {
+      return this.trackData
+    },
     imageData () {
       return this.trackData.image
     },
@@ -393,16 +384,6 @@ export default {
       )
     }
   },
-  mounted () {
-    this.libraryId =
-      this.trackData.library_id?.toString()
-    this.favoriteId =
-      this.trackData.favorite_id?.toString()
-    this.bookmarkId =
-      this.trackData.bookmark_id?.toString()
-    this.listenedId =
-      this.trackData.listened_id?.toString()
-  },
   methods: {
     handleLinkClick () {
       this.$emit(
@@ -428,26 +409,6 @@ export default {
       this.$emit(
         'deleted'
       )
-    },
-    setLibraryId (
-      value
-    ) {
-      this.libraryId = value
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
-    },
-    setBookmarkId (
-      value
-    ) {
-      this.bookmarkId = value
-    },
-    setListenedId (
-      value
-    ) {
-      this.listenedId = value
     },
     showDeleteModal () {
       this.$refs

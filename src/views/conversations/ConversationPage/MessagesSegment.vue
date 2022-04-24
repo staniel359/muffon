@@ -1,37 +1,85 @@
 <template>
-  <BaseConversationPaginatedSegmentContainer
+  <BasePaginatedSegmentContainer
+    ref="segment"
     class="main-paginated-page-segment-container"
-    :conversation-id="conversationId"
+    response-data-name="conversationData"
+    :slot-props-data="slotPropsData"
     :scope="scope"
     :limit="limit"
+    @focus="handleFocus"
   >
     <template #default="slotProps">
       <BaseMessagesSimpleList
         :messages="slotProps[scope]"
       />
     </template>
-  </BaseConversationPaginatedSegmentContainer>
+  </BasePaginatedSegmentContainer>
 </template>
 
 <script>
-import BaseConversationPaginatedSegmentContainer
-  from '*/components/containers/segments/conversation/BaseConversationPaginatedSegmentContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseMessagesSimpleList
   from '*/components/lists/messages/BaseMessagesSimpleList.vue'
+import getConversation from '*/helpers/actions/api/conversation/get'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'MessagesSegment',
   components: {
-    BaseConversationPaginatedSegmentContainer,
+    BasePaginatedSegmentContainer,
     BaseMessagesSimpleList
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
-    conversationId: String
+    conversationId: {
+      type: String,
+      required: true
+    }
   },
   data () {
     return {
+      conversationData: null,
+      error: null,
+      isLoading: false,
       limit: 20,
       scope: 'messages'
+    }
+  },
+  computed: {
+    slotPropsData () {
+      return {
+        conversationData: this.conversationData,
+        isLoading: this.isLoading,
+        error: this.error
+      }
+    },
+    conversationArgs () {
+      return {
+        conversationId: this.conversationId,
+        scope: this.scope,
+        limit: this.limit
+      }
+    }
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    getConversation,
+    getData (
+      {
+        page
+      } = {}
+    ) {
+      this.getConversation(
+        {
+          ...this.conversationArgs,
+          page
+        }
+      )
     }
   }
 }

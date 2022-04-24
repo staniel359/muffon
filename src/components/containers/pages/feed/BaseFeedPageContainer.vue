@@ -8,8 +8,6 @@
       :feed-data="feedData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -60,25 +58,20 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getFeed,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getFeed(
         {
           ...this.feedArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

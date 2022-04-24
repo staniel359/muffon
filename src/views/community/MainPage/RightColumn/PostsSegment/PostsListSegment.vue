@@ -23,6 +23,7 @@ import BasePaginatedSegmentContainer
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
 import getCommunityPosts from '*/helpers/actions/api/community/get'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'PostsListSegment',
@@ -30,6 +31,9 @@ export default {
     BasePaginatedSegmentContainer,
     BasePostsSimpleList
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     communityId: {
       type: String,
@@ -58,22 +62,19 @@ export default {
       return {
         communityData: this.communityData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getCommunityPosts,
-    handleFocus () {
-      this.focus()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getCommunityPosts(
         {
@@ -81,18 +82,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
     }
   }
 }

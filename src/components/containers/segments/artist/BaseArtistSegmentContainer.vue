@@ -1,42 +1,27 @@
 <template>
-  <div
+  <BaseHeaderSegmentsContainer
     ref="segment"
-    :class="[
-      'ui raised segments',
-      'main-segment-container'
-    ]"
+    :scope="scope"
+    :header-link="headerLink"
   >
-    <BaseHeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
-
     <slot
       :artist-data="artistData"
-      :profile-id="profileId"
       :top-track-count="topTrackCount"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getArtist from '*/helpers/actions/api/artist/get'
-import {
-  focusOnSegment
-} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseArtistSegmentContainer',
   components: {
-    BaseHeaderSegment
+    BaseHeaderSegmentsContainer
   },
   props: {
     artistName: {
@@ -52,22 +37,13 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
-      error: null,
       artistData: null,
-      topTrackCount: null
+      topTrackCount: null,
+      error: null,
+      isLoading: false
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     artistArgs () {
       return {
         artistName: this.artistName,
@@ -77,12 +53,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getArtist,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getArtist(
         {
@@ -91,17 +69,10 @@ export default {
         }
       )
     },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     focus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

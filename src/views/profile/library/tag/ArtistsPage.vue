@@ -5,6 +5,7 @@
     :scope="scope"
     :limit="limit"
     :view-index="viewIndex"
+    is-with-top-segment
     is-with-view-change
     is-with-search
   >

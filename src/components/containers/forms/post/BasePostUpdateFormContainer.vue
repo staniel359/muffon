@@ -48,8 +48,8 @@ export default {
   ],
   data () {
     return {
-      error: null,
       newPostData: null,
+      error: null,
       isLoading: false
     }
   },

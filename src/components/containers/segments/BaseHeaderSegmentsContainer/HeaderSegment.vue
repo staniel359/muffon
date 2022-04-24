@@ -19,7 +19,7 @@ import BaseHeaderContainer
 import BaseLink from '*/components/links/BaseLink.vue'
 
 export default {
-  name: 'BaseHeaderSegment',
+  name: 'HeaderSegment',
   components: {
     BaseSegmentContainer,
     BaseHeaderContainer,

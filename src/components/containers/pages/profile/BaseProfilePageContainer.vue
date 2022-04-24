@@ -6,7 +6,9 @@
   >
     <slot
       :profile-data="profileData"
-      :profile-nickname="profileNicknameFetched"
+      :profile-nickname="profileNickname"
+      :is-loading="isLoading"
+      :error="error"
     />
   </BasePageContainer>
 </template>
@@ -39,12 +41,13 @@ export default {
       type: String,
       required: true
     },
+    scope: String,
     limit: Number
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -57,16 +60,17 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname:
-          this.profileNicknameFetched
+        profileNickname: this.profileNickname,
+        scope: this.scope
       }
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
     profileArgs () {
       return {
         profileId: this.profileId,
+        scope: this.scope,
         limit: this.limit
       }
     },
@@ -80,12 +84,14 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfile,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfile(
         {

@@ -37,8 +37,8 @@ export default {
   data () {
     return {
       form: null,
-      error: null,
       playlistId: null,
+      error: null,
       isLoading: false,
       fields: [
         'title'

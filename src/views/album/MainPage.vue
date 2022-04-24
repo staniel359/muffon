@@ -1,5 +1,6 @@
 <template>
   <BaseAlbumPageContainer
+    ref="page"
     :source-params="sourceParams"
   >
     <template #default="pageSlotProps">
@@ -21,7 +22,7 @@
           :is-loading="pageSlotProps.isLoading"
           :error="pageSlotProps.error"
           @init="handleInit"
-          @refresh="pageSlotProps.refresh"
+          @refresh="handleRefresh"
         >
           <LeftColumn
             v-if="scrollable"
@@ -113,6 +114,11 @@ export default {
       element
     ) {
       this.scrollable = element
+    },
+    handleRefresh () {
+      this.$refs
+        .page
+        .getData()
     }
   }
 }

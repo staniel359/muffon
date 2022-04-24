@@ -1,5 +1,6 @@
 <template>
   <BaseBookmarksPageContainer
+    ref="page"
     :scope="scope"
     :limit="limit"
   >
@@ -24,6 +25,7 @@
 import BaseBookmarksPageContainer from './BaseBookmarksPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseBookmarksPaginatedPageContainer',
@@ -31,6 +33,9 @@ export default {
     BaseBookmarksPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     scope: String,
     limit: Number

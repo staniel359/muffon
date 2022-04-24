@@ -1,5 +1,6 @@
 <template>
   <BaseConversationsPageContainer
+    ref="page"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -26,6 +27,7 @@ import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseConversationsSimpleList
   from '*/components/lists/conversations/BaseConversationsSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'MainPage',
@@ -34,6 +36,9 @@ export default {
     BasePaginatedPageContainer,
     BaseConversationsSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 10,

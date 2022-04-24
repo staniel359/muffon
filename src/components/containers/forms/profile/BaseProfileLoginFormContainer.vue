@@ -29,12 +29,12 @@ export default {
   data () {
     return {
       form: null,
-      error: null,
       token: null,
       profileId: null,
       profileData: null,
-      isRemember: false,
+      error: null,
       isLoading: false,
+      isRemember: false,
       fields: [
         'email',
         'password'
@@ -88,7 +88,7 @@ export default {
       if (value) {
         await this.setSessionData()
 
-        this.fetchData()
+        this.getData()
       }
     },
     handleProfileDataChange (
@@ -123,7 +123,7 @@ export default {
         }
       )
     },
-    fetchData () {
+    getData () {
       this.getProfile(
         this.profileArgs
       )

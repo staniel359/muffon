@@ -1,9 +1,11 @@
 <template>
   <BaseTagPaginatedPageContainer
+    :tag-name="tagName"
     :scope="scope"
     :limit="limit"
     :response-page-limit="responsePageLimit"
     :view-index="viewIndex"
+    is-with-top-segment
     is-with-view-change
   >
     <template #default="slotProps">
@@ -35,6 +37,9 @@ export default {
   mixins: [
     viewChangeMixin
   ],
+  props: {
+    tagName: String
+  },
   data () {
     return {
       responsePageLimit: 21,

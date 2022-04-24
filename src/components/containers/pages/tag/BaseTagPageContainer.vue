@@ -6,11 +6,9 @@
   >
     <slot
       :tag-data="tagData"
-      :tag-name="tagNameFetched"
+      :tag-name="responseTagName"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -41,9 +39,9 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      tagData: null,
       error: null,
-      tagData: null
+      isLoading: false
     }
   },
   computed: {
@@ -54,7 +52,7 @@ export default {
     },
     navigationData () {
       return {
-        tagName: this.tagNameFetched,
+        tagName: this.responseTagName,
         scope: this.scope
       }
     },
@@ -63,7 +61,7 @@ export default {
         this.navigationData
       )
     },
-    tagNameFetched () {
+    responseTagName () {
       return this.tagData?.name
     },
     tagArgs () {
@@ -78,25 +76,20 @@ export default {
     tagData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getTag,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getTag(
         {
           ...this.tagArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

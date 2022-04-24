@@ -1,6 +1,8 @@
 <template>
-  <BaseCommunityPostsPageContainer
+  <BaseCommunityPageContainer
+    ref="page"
     :community-id="communityId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -18,24 +20,28 @@
         </template>
       </BasePaginatedPageContainer>
     </template>
-  </BaseCommunityPostsPageContainer>
+  </BaseCommunityPageContainer>
 </template>
 
 <script>
-import BaseCommunityPostsPageContainer
-  from '*/components/containers/pages/community/posts/BaseCommunityPostsPageContainer.vue'
+import BaseCommunityPageContainer
+  from '*/components/containers/pages/community/BaseCommunityPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'PostsPage',
   components: {
-    BaseCommunityPostsPageContainer,
+    BaseCommunityPageContainer,
     BasePaginatedPageContainer,
     BasePostsSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     communityId: String
   },

@@ -28,6 +28,7 @@ import BasePaginatedSegmentModalContainer
 import BasePlaylistsSimpleSelectableList
   from '*/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
 import getProfilePlaylists from '*/helpers/actions/api/profile/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BasePlaylistsModal',
@@ -35,6 +36,9 @@ export default {
     BasePaginatedSegmentModalContainer,
     BasePlaylistsSimpleSelectableList
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     trackTitle: String,
     artistName: String,
@@ -46,7 +50,7 @@ export default {
       profileData: null,
       error: null,
       isLoading: false,
-      limit: 20,
+      limit: 50,
       scope: 'playlists'
     }
   },
@@ -73,19 +77,16 @@ export default {
       return {
         profileData: this.profileData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   methods: {
     getProfilePlaylists,
-    handleCall () {
-      this.fetchData()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfilePlaylists(
         {
@@ -93,18 +94,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
     }
   }
 }

@@ -11,8 +11,6 @@
       :limit="tabData.limit"
       :is-loading="isLoading"
       :error="error"
-      @fetch-data="fetchData"
-      @refresh="handleRefresh"
       @focus="handleFocus"
     >
       <template #default="slotProps">
@@ -57,6 +55,11 @@ export default {
     BaseAlbumsSimpleList,
     BaseTracksSimpleList
   },
+  provide () {
+    return {
+      getData: this.getData
+    }
+  },
   props: {
     tabData: {
       type: Object,
@@ -73,10 +76,10 @@ export default {
   ],
   data () {
     return {
-      error: null,
       profileData: null,
-      isActivated: false,
-      isLoading: false
+      error: null,
+      isLoading: false,
+      isActivated: false
     }
   },
   computed: {
@@ -113,6 +116,7 @@ export default {
     }
   },
   methods: {
+    getProfileFavorites,
     handleIsActive (
       value
     ) {
@@ -124,7 +128,7 @@ export default {
       value
     ) {
       if (value) {
-        this.fetchData()
+        this.getData()
       }
     },
     handleFocus () {
@@ -132,16 +136,10 @@ export default {
         'focus'
       )
     },
-    handleRefresh (
-      page
-    ) {
-      this.fetchData(
+    getData (
+      {
         page
-      )
-    },
-    getProfileFavorites,
-    fetchData (
-      page
+      } = {}
     ) {
       this.getProfileFavorites(
         {

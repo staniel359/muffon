@@ -8,8 +8,6 @@
       :conversations-data="conversationsData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -59,25 +57,20 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getConversations,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getConversations(
         {
           ...this.conversationsArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

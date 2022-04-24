@@ -22,7 +22,7 @@
     </BaseSegmentContainer>
 
     <BasePaginatedSegmentContainer
-      ref="segment"
+      ref="pagination"
       class="main-paginated-page-segment-container"
       :slot-props-data="slotPropsData"
       :response-data-name="responseDataName"
@@ -61,6 +61,9 @@ export default {
   inject: {
     setViewIndex: {
       default: () => false
+    },
+    getData: {
+      default: () => false
     }
   },
   props: {
@@ -93,19 +96,19 @@ export default {
       this.reset()
     },
     handleViewIndexChange () {
-      this.slotPropsData.fetchData()
+      this.getData()
     },
     handleFocus () {
       this.focus()
     },
     focus () {
       this.$refs
-        .segment
+        .pagination
         .focus()
     },
     reset () {
       this.$refs
-        .segment
+        .pagination
         .reset()
     }
   }

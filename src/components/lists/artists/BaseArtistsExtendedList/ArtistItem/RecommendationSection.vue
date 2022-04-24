@@ -1,7 +1,6 @@
 <template>
   <ProfileArtistsSection
     :recommendation-data="artistData"
-    :profile-id="profileId"
   />
 
   <BaseRecommendationDeleteModal
@@ -30,8 +29,7 @@ export default {
     artistData: {
       type: Object,
       required: true
-    },
-    profileId: String
+    }
   },
   computed: {
     paginationItem () {

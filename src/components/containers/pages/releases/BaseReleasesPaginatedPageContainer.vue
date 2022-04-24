@@ -1,5 +1,6 @@
 <template>
   <BaseReleasesPageContainer
+    ref="page"
     :scope="scope"
     :limit="limit"
   >
@@ -25,6 +26,7 @@
 import BaseReleasesPageContainer from './BaseReleasesPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseReleasesPaginatedPageContainer',
@@ -32,6 +34,9 @@ export default {
     BaseReleasesPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     listScope: {
       type: String,

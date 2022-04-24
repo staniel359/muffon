@@ -1,6 +1,8 @@
 <template>
-  <BaseProfilePostsPageContainer
+  <BaseProfilePageContainer
+    ref="page"
     :profile-id="profileId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -18,24 +20,28 @@
         </template>
       </BasePaginatedPageContainer>
     </template>
-  </BaseProfilePostsPageContainer>
+  </BaseProfilePageContainer>
 </template>
 
 <script>
-import BaseProfilePostsPageContainer
-  from '*/components/containers/pages/profile/posts/BaseProfilePostsPageContainer.vue'
+import BaseProfilePageContainer
+  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'PostsPage',
   components: {
-    BaseProfilePostsPageContainer,
+    BaseProfilePageContainer,
     BasePaginatedPageContainer,
     BasePostsSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: String
   },

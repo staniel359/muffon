@@ -1,39 +1,28 @@
 <template>
-  <div
+  <BaseHeaderSegmentsContainer
     ref="segment"
-    :class="[
-      'ui raised segments',
-      'main-segment-container'
-    ]"
+    :scope="scope"
+    :header-link="headerLink"
   >
-    <BaseHeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
-
     <slot
       :library-album-data="libraryAlbumData"
-      :artist-name="artistNameFetched"
+      :artist-name="responseArtistName"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getProfileLibraryAlbum
   from '*/helpers/actions/api/profile/library/album/get'
-import {
-  focusOnSegment
-} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileLibraryAlbumSegmentContainer',
   components: {
-    BaseHeaderSegment
+    BaseHeaderSegmentsContainer
   },
   props: {
     profileId: {
@@ -53,8 +42,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -73,17 +62,19 @@ export default {
     libraryAlbumArtistData () {
       return this.libraryAlbumData?.artist
     },
-    artistNameFetched () {
+    responseArtistName () {
       return this.libraryAlbumArtistData?.name
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibraryAlbum,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileLibraryAlbum(
         {
@@ -92,17 +83,10 @@ export default {
         }
       )
     },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     focus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

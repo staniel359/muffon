@@ -1,5 +1,6 @@
 <template>
   <BaseProfileFavoritesPageContainer
+    ref="page"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -25,6 +26,7 @@
 import BaseProfileFavoritesPageContainer from './BaseProfileFavoritesPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseProfileFavoritesPaginatedPageContainer',
@@ -32,6 +34,9 @@ export default {
     BaseProfileFavoritesPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: String,
     scope: String,

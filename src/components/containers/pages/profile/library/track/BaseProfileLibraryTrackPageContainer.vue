@@ -43,8 +43,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -57,11 +57,11 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
-        artistId: this.artistIdFetched,
-        artistName: this.artistNameFetched,
+        profileNickname: this.profileNickname,
+        artistId: this.artistId,
+        artistName: this.artistName,
         trackId: this.trackId,
-        trackTitle: this.trackTitleFetched,
+        trackTitle: this.trackTitle,
         scope: this.scope
       }
     },
@@ -70,10 +70,10 @@ export default {
         this.navigationData
       )
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
-    artistIdFetched () {
+    artistId () {
       return this.libraryTrackArtistData?.id?.toString()
     },
     libraryTrackArtistData () {
@@ -85,13 +85,13 @@ export default {
     libraryData () {
       return this.profileData?.library
     },
-    artistNameFetched () {
+    artistName () {
       return this.libraryTrackArtistData?.name
     },
-    trackTitleFetched () {
+    trackTitle () {
       return this.libraryTrackData?.title
     },
-    libraryArgs () {
+    profileLibraryTrackArgs () {
       return {
         profileId: this.profileId,
         trackId: this.trackId,
@@ -104,18 +104,13 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibraryTrack,
-    fetchData (
-      page
-    ) {
+    getData () {
       this.getProfileLibraryTrack(
-        {
-          ...this.libraryArgs,
-          page
-        }
+        this.profileLibraryTrackArgs
       )
     }
   }

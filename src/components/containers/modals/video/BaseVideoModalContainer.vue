@@ -5,7 +5,6 @@
     :is-loading="isLoading"
     :error="error"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
     <slot
       :[scope]="videoData[scope]"
@@ -17,12 +16,16 @@
 import BaseSegmentModalContainer
   from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getVideo from '*/helpers/actions/api/video/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseVideoModalContainer',
   components: {
     BaseSegmentModalContainer
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     videoId: {
       type: String,
@@ -35,8 +38,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       videoData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -50,26 +53,10 @@ export default {
   },
   methods: {
     getVideo,
-    handleCall () {
-      this.fetchData()
-    },
-    handleRefresh () {
-      this.fetchData()
-    },
-    fetchData () {
+    getData () {
       this.getVideo(
         this.videoArgs
       )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

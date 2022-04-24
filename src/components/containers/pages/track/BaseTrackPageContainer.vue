@@ -9,8 +9,6 @@
       :request-track-data="requestTrackData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -52,9 +50,9 @@ export default {
   },
   data () {
     return {
-      error: null,
-      requestTrackData: null,
       trackData: null,
+      requestTrackData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -66,8 +64,8 @@ export default {
     },
     navigationData () {
       return {
-        artistName: this.artistNameFetched,
-        trackTitle: this.trackTitleFetched,
+        artistName: this.artistName,
+        trackTitle: this.trackTitle,
         sourceParams: this.sourceParams,
         scope: this.scope
       }
@@ -77,7 +75,7 @@ export default {
         this.navigationData
       )
     },
-    artistNameFetched () {
+    artistName () {
       if (this.artists) {
         return formatArtistName(
           this.artists
@@ -89,7 +87,7 @@ export default {
     artists () {
       return this.trackData?.artists
     },
-    trackTitleFetched () {
+    trackTitle () {
       return this.trackData?.title
     },
     trackArgs () {
@@ -108,14 +106,21 @@ export default {
     this.resetRequestTrackData()
   },
   methods: {
-    handleRequestTrackDataChange () {
-      this.fetchData()
-    },
-    getBandcampTrackId,
     getTrack,
-    resetRequestTrackData () {
-      this.setRequestTrackData(
-        this.sourceParams
+    getBandcampTrackId,
+    handleRequestTrackDataChange () {
+      this.getData()
+    },
+    getData (
+      {
+        page
+      } = {}
+    ) {
+      this.getTrack(
+        {
+          ...this.trackArgs,
+          page
+        }
       )
     },
     setRequestTrackData (
@@ -142,21 +147,9 @@ export default {
           )
       )
     },
-    fetchData (
-      page
-    ) {
-      this.getTrack(
-        {
-          ...this.trackArgs,
-          page
-        }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
+    resetRequestTrackData () {
+      this.setRequestTrackData(
+        this.sourceParams
       )
     }
   }

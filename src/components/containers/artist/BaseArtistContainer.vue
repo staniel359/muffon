@@ -3,7 +3,6 @@
     :artist-data="artistData"
     :is-loading="isLoading"
     :error="error"
-    :refresh="refresh"
   />
 </template>
 
@@ -20,8 +19,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       artistData: null,
+      error: null,
       isLoading: true
     }
   },
@@ -33,17 +32,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getArtist,
-    fetchData () {
+    getData () {
       this.getArtist(
         this.artistArgs
       )
-    },
-    refresh () {
-      this.fetchData()
     }
   }
 }

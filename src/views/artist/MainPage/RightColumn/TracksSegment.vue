@@ -10,7 +10,6 @@
         :tracks="slotProps[scope]"
         :artist-name="artistName"
         :top-track-count="slotProps.topTrackCount"
-        :profile-id="slotProps.profileId"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

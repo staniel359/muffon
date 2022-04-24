@@ -1,28 +1,35 @@
 <template>
-  <BaseVideoSegmentContainer
-    ref="segment"
-    :video-id="videoId"
-    :scope="scope"
-    :limit="limit"
-    :header-link="headerLink"
+  <div
+    :class="[
+      'related-segment',
+      'main-basic-segments-container'
+    ]"
   >
-    <template #default="pageSlotProps">
-      <BasePaginatedSegmentContainer
-        response-data-name="videoData"
-        :slot-props-data="pageSlotProps"
-        :scope="scope"
-        :limit="limit"
-        :client-page-limit="clientPageLimit"
-        @focus="handleFocus"
-      >
-        <template #default="slotProps">
-          <BaseVideosTableList
-            :videos="slotProps[scope]"
-          />
-        </template>
-      </BasePaginatedSegmentContainer>
-    </template>
-  </BaseVideoSegmentContainer>
+    <BaseVideoSegmentContainer
+      ref="segment"
+      :video-id="videoId"
+      :scope="scope"
+      :limit="limit"
+      :header-link="headerLink"
+    >
+      <template #default="pageSlotProps">
+        <BasePaginatedSegmentContainer
+          response-data-name="videoData"
+          :slot-props-data="pageSlotProps"
+          :scope="scope"
+          :limit="limit"
+          :client-page-limit="clientPageLimit"
+          @focus="handleFocus"
+        >
+          <template #default="slotProps">
+            <BaseVideosTableList
+              :videos="slotProps[scope]"
+            />
+          </template>
+        </BasePaginatedSegmentContainer>
+      </template>
+    </BaseVideoSegmentContainer>
+  </div>
 </template>
 
 <script>
@@ -35,6 +42,7 @@ import BaseVideosTableList
 import {
   related as formatVideoRelatedLink
 } from '*/helpers/formatters/links/video'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'RelatedSegment',
@@ -43,6 +51,9 @@ export default {
     BasePaginatedSegmentContainer,
     BaseVideosTableList
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     videoData: {
       type: Object,
@@ -67,18 +78,11 @@ export default {
         }
       )
     }
-  },
-  methods: {
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
-    }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.related-segment
+  margin-top: 1.5em
+</style>

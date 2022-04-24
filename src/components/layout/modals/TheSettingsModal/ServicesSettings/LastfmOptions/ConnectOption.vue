@@ -57,10 +57,10 @@ export default {
   },
   data () {
     return {
-      error: null,
       token: null,
       link: null,
       profileData: null,
+      error: null,
       isLoading: false,
       isShowWaitMessage: false
     }

@@ -11,7 +11,7 @@
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
-  name: 'BaseRetryButton',
+  name: 'RetryButton',
   components: {
     BaseButton
   },

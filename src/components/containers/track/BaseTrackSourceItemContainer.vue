@@ -23,8 +23,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       searchData: null,
+      error: null,
       isLoading: false,
       scope: 'tracks'
     }
@@ -42,11 +42,11 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getSearch,
-    fetchData () {
+    getData () {
       this.getSearch(
         this.searchArgs
       )

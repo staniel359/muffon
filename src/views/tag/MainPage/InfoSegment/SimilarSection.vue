@@ -60,11 +60,11 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getTag,
-    fetchData () {
+    getData () {
       this.getTag(
         this.tagArgs
       )

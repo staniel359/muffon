@@ -61,8 +61,8 @@ export default {
   ],
   data () {
     return {
-      error: null,
       userData: null,
+      error: null,
       isLoading: false
     }
   },

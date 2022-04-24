@@ -5,7 +5,6 @@
     :error="error"
     :response-data="trackData"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
     <slot
       :[scope]="trackData[scope]"
@@ -17,12 +16,16 @@
 import BaseSegmentModalContainer
   from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getTrack from '*/helpers/actions/api/track/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseTrackModalContainer',
   components: {
     BaseSegmentModalContainer
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     requestTrackData: {
       type: Object,
@@ -35,9 +38,9 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      trackData: null,
       error: null,
-      trackData: null
+      isLoading: false
     }
   },
   computed: {
@@ -50,26 +53,10 @@ export default {
   },
   methods: {
     getTrack,
-    handleCall () {
-      this.fetchData()
-    },
-    handleRefresh () {
-      this.fetchData()
-    },
-    fetchData () {
+    getData () {
       this.getTrack(
         this.trackArgs
       )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

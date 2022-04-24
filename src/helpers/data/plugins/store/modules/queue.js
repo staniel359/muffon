@@ -3,8 +3,8 @@ export default {
   state: {
     currentTrackId: null,
     isAutoplay: true,
-    isFetchingPrev: false,
-    isFetchingNext: false,
+    isGettingPrev: false,
+    isGettingNext: false,
     isShuffle: false,
     tracks: [],
     tracksShuffled: []
@@ -91,17 +91,17 @@ export default {
     ) {
       state.currentTrackId = value
     },
-    SET_IS_FETCHING_PREV (
+    SET_IS_GETTING_PREV (
       state,
       value
     ) {
-      state.isFetchingPrev = value
+      state.isGettingPrev = value
     },
-    SET_IS_FETCHING_NEXT (
+    SET_IS_GETTING_NEXT (
       state,
       value
     ) {
-      state.isFetchingNext = value
+      state.isGettingNext = value
     },
     SET_IS_AUTOPLAY (
       state,
@@ -155,25 +155,25 @@ export default {
         value
       )
     },
-    setIsFetchingPrev (
+    setIsGettingPrev (
       {
         commit
       },
       value
     ) {
       commit(
-        'SET_IS_FETCHING_PREV',
+        'SET_IS_GETTING_PREV',
         value
       )
     },
-    setIsFetchingNext (
+    setIsGettingNext (
       {
         commit
       },
       value
     ) {
       commit(
-        'SET_IS_FETCHING_NEXT',
+        'SET_IS_GETTING_NEXT',
         value
       )
     },

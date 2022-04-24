@@ -29,6 +29,7 @@
 import BaseTagSegmentContainer from './BaseTagSegmentContainer.vue'
 import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'BaseTagPaginatedSegmentContainer',
@@ -36,22 +37,15 @@ export default {
     BaseTagSegmentContainer,
     BasePaginatedSegmentContainer
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     tagName: String,
     scope: String,
     limit: Number,
     responsePageLimit: Number,
     headerLink: Object
-  },
-  methods: {
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
-    }
   }
 }
 </script>

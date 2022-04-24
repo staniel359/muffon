@@ -3,6 +3,8 @@
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
+    is-with-top-segment
+    is-with-search
   >
     <template #default="slotProps">
       <BaseTracksSimpleList

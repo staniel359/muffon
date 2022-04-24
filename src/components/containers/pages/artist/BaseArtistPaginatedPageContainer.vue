@@ -1,12 +1,13 @@
 <template>
   <BaseArtistPageContainer
+    ref="page"
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        ref="page"
+        ref="pagination"
         response-data-name="artistData"
         :slot-props-data="pageSlotProps"
         :artist-name="pageSlotProps.artistName"
@@ -39,6 +40,7 @@
 import BaseArtistPageContainer from './BaseArtistPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseArtistPaginatedPageContainer',
@@ -46,20 +48,16 @@ export default {
     BaseArtistPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     artistName: String,
     scope: String,
     limit: Number,
+    isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
-    viewIndex: Number,
-    isWithTopSegment: Boolean
-  },
-  methods: {
-    reset () {
-      this.$refs
-        .page
-        .reset()
-    }
+    viewIndex: Number
   }
 }
 </script>

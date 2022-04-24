@@ -9,7 +9,6 @@
       :request-album-data="requestAlbumData"
       :is-loading="isLoading"
       :error="error"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -52,8 +51,8 @@ export default {
   data () {
     return {
       albumData: null,
-      error: null,
       requestAlbumData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -65,8 +64,8 @@ export default {
     },
     navigationData () {
       return {
-        artistName: this.artistNameFetched,
-        albumTitle: this.albumTitleFetched,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
         sourceParams: this.sourceParams,
         scope: this.scope
       }
@@ -76,7 +75,7 @@ export default {
         this.navigationData
       )
     },
-    artistNameFetched () {
+    artistName () {
       if (this.artists) {
         return formatArtistName(
           this.artists
@@ -88,7 +87,7 @@ export default {
     artists () {
       return this.albumData?.artists
     },
-    albumTitleFetched () {
+    albumTitle () {
       return this.albumData?.title
     },
     albumArgs () {
@@ -110,11 +109,11 @@ export default {
     getBandcampAlbumId,
     getAlbum,
     handleRequestAlbumDataChange () {
-      this.fetchData()
+      this.getData()
     },
-    resetRequestAlbumData () {
-      this.setRequestAlbumData(
-        this.sourceParams
+    getData () {
+      this.getAlbum(
+        this.albumArgs
       )
     },
     setRequestAlbumData (
@@ -141,21 +140,9 @@ export default {
           )
       )
     },
-    fetchData (
-      page
-    ) {
-      this.getAlbum(
-        {
-          ...this.albumArgs,
-          page
-        }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
+    resetRequestAlbumData () {
+      this.setRequestAlbumData(
+        this.sourceParams
       )
     }
   }

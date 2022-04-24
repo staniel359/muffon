@@ -308,8 +308,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.main-profile-page-image
-  width: 120px
-  height: 120px
-</style>
+<style lang="sass" scoped></style>

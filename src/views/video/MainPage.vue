@@ -31,11 +31,9 @@
           :video-data="slotProps.videoData"
         />
 
-        <div class="main-basic-segments-container">
-          <RelatedSegment
-            :video-data="slotProps.videoData"
-          />
-        </div>
+        <RelatedSegment
+          :video-data="slotProps.videoData"
+        />
       </BaseSegmentContainer>
     </template>
   </BaseVideoPageContainer>

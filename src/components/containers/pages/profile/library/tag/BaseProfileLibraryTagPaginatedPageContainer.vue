@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryTagPageContainer
+    ref="page"
     :profile-id="profileId"
     :tag-id="tagId"
     :scope="scope"
@@ -11,6 +12,7 @@
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
+        :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
       >
@@ -31,6 +33,7 @@ import BaseProfileLibraryTagPageContainer
   from './BaseProfileLibraryTagPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseProfileLibraryTagPaginatedPageContainer',
@@ -38,11 +41,15 @@ export default {
     BaseProfileLibraryTagPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: String,
     tagId: String,
     scope: String,
     limit: Number,
+    isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
     viewIndex: Number
   }

@@ -8,8 +8,6 @@
       :bookmarks-data="bookmarksData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -32,7 +30,7 @@ export default {
     navigationMixin
   ],
   props: {
-    isFetchData: {
+    isGetData: {
       type: Boolean,
       default: true
     },
@@ -41,8 +39,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -69,7 +67,7 @@ export default {
       }
     },
     bookmarksData () {
-      if (this.isFetchData) {
+      if (this.isGetData) {
         return this.profileData?.bookmarks
       } else {
         return {}
@@ -79,27 +77,22 @@ export default {
   mounted () {
     this.setNavigation()
 
-    if (this.isFetchData) {
-      this.fetchData()
+    if (this.isGetData) {
+      this.getData()
     }
   },
   methods: {
     getBookmarks,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getBookmarks(
         {
           ...this.bookmarksArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

@@ -20,12 +20,16 @@ import BasePaginatedSegmentModalContainer
   from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import getLibraryCompatibility
   from '*/helpers/actions/api/library/compatibility/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',
   components: {
     BasePaginatedSegmentModalContainer
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -56,19 +60,16 @@ export default {
       return {
         compatibilityData: this.compatibilityData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   methods: {
     getLibraryCompatibility,
-    handleCall () {
-      this.fetchData()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getLibraryCompatibility(
         {
@@ -76,23 +77,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

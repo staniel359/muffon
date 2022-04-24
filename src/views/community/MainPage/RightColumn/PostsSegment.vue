@@ -1,15 +1,8 @@
 <template>
-  <div
-    :class="[
-      'ui raised segments',
-      'main-segment-container'
-    ]"
+  <BaseHeaderSegmentsContainer
+    scope="posts"
+    :header-link="headerLink"
   >
-    <BaseHeaderSegment
-      scope="posts"
-      :link="headerLink"
-    />
-
     <BasePostsFormSegment
       post-type="community"
       :community-id="communityId"
@@ -22,11 +15,12 @@
       :community-id="communityId"
       :community-creator-id="communityCreatorId"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import BasePostsFormSegment
   from '*/components/segments/posts/BasePostsFormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
@@ -40,7 +34,7 @@ import {
 export default {
   name: 'PostsSegment',
   components: {
-    BaseHeaderSegment,
+    BaseHeaderSegmentsContainer,
     BasePostsFormSegment,
     PostsListSegment
   },
@@ -83,6 +77,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-
-</style>
+<style lang="sass" scoped></style>

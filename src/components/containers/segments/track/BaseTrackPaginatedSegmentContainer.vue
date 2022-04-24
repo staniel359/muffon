@@ -18,7 +18,6 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
-            :profile-id="segmentSlotProps.profileId"
           />
         </template>
       </BasePaginatedSegmentContainer>
@@ -30,6 +29,7 @@
 import BaseTrackSegmentContainer from './BaseTrackSegmentContainer.vue'
 import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'BaseTrackPaginatedSegmentContainer',
@@ -37,22 +37,15 @@ export default {
     BaseTrackSegmentContainer,
     BasePaginatedSegmentContainer
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     artistName: String,
     trackTitle: String,
     scope: String,
     limit: Number,
     headerLink: Object
-  },
-  methods: {
-    handleFocus () {
-      this.focus()
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
-    }
   }
 }
 </script>

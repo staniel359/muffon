@@ -27,6 +27,7 @@ import BasePaginatedSegmentModalContainer
 import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 import getRecommendation from '*/helpers/actions/api/recommendation/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseRecommendationProfileArtistsModal',
@@ -34,6 +35,9 @@ export default {
     BasePaginatedSegmentModalContainer,
     BaseArtistsSimpleList
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     recommendationId: {
       type: String,
@@ -70,22 +74,16 @@ export default {
       return {
         recommendationData: this.recommendationData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   methods: {
     getRecommendation,
-    handleCall () {
-      this.fetchData()
-    },
-    handleLinkClick () {
-      this.hide()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getRecommendation(
         {
@@ -93,23 +91,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

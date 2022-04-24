@@ -8,8 +8,6 @@
       :channel-data="channelData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -41,8 +39,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       channelData: null,
+      error: null,
       isLoading: false,
       scope: 'videos'
     }
@@ -56,7 +54,7 @@ export default {
     navigationData () {
       return {
         channelId: this.channelId,
-        channelTitle: this.channelTitleFetched
+        channelTitle: this.channelTitle
       }
     },
     tabData () {
@@ -64,7 +62,7 @@ export default {
         this.navigationData
       )
     },
-    channelTitleFetched () {
+    channelTitle () {
       return this.channelData?.title
     },
     videoChannelArgs () {
@@ -79,12 +77,14 @@ export default {
     channelData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getVideoChannel,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       if (page) {
         this.channelData.videos = []
@@ -95,13 +95,6 @@ export default {
           ...this.videoChannelArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

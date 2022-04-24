@@ -25,6 +25,7 @@
 import ImageSection from './LeftColumn/ImageSection.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
+import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'LeftColumn',
@@ -33,14 +34,9 @@ export default {
     HeaderSection,
     SelfSection
   },
-  provide () {
-    return {
-      setLibraryId: this.setLibraryId,
-      setFavoriteId: this.setFavoriteId,
-      setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId
-    }
-  },
+  mixins: [
+    selfMixin
+  ],
   props: {
     albumData: {
       type: Object,
@@ -48,50 +44,17 @@ export default {
     },
     scrollable: HTMLDivElement
   },
-  data () {
-    return {
-      libraryId: null,
-      favoriteId: null,
-      bookmarkId: null,
-      listenedId: null
+  computed: {
+    modelData () {
+      return this.albumData
     }
   },
   watch: {
-    albumData: {
-      immediate: true,
-      handler: 'handleAlbumDataChange'
-    }
+    albumData: 'handleAlbumDataChange'
   },
   methods: {
     handleAlbumDataChange () {
-      this.libraryId =
-        this.albumData.library_id?.toString()
-      this.favoriteId =
-        this.albumData.favorite_id?.toString()
-      this.bookmarkId =
-        this.albumData.bookmark_id?.toString()
-      this.listenedId =
-        this.albumData.listened_id?.toString()
-    },
-    setLibraryId (
-      value
-    ) {
-      this.libraryId = value
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
-    },
-    setBookmarkId (
-      value
-    ) {
-      this.bookmarkId = value
-    },
-    setListenedId (
-      value
-    ) {
-      this.listenedId = value
+      this.setSelfData()
     }
   }
 }

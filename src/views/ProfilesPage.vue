@@ -1,5 +1,6 @@
 <template>
   <BaseProfilesPageContainer
+    ref="page"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -26,6 +27,7 @@ import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseProfilesSimpleList
   from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'ProfilesPage',
@@ -34,6 +36,9 @@ export default {
     BasePaginatedPageContainer,
     BaseProfilesSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 50,

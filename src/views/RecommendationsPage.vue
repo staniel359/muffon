@@ -1,11 +1,12 @@
 <template>
   <BaseRecommendationsPageContainer
+    ref="page"
     :limit="limit"
     @reset="handleReset"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        ref="page"
+        ref="pagination"
         response-data-name="recommendationsData"
         :slot-props-data="pageSlotProps"
         :scope="scope"
@@ -40,6 +41,7 @@ import BasePaginatedPageContainer
 import FilterSection from './RecommendationsPage/FilterSection.vue'
 import BaseArtistsExtendedList
   from '*/components/lists/artists/BaseArtistsExtendedList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'RecommendationsPage',
@@ -49,6 +51,9 @@ export default {
     FilterSection,
     BaseArtistsExtendedList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 10,
@@ -58,11 +63,6 @@ export default {
   methods: {
     handleReset () {
       this.reset()
-    },
-    reset () {
-      this.$refs
-        .page
-        .reset()
     }
   }
 }

@@ -1,44 +1,33 @@
 <template>
-  <div
+  <BaseHeaderSegmentsContainer
     ref="segment"
-    :class="[
-      'ui raised segments',
-      'main-segment-container'
-    ]"
+    :scope="scope"
+    :header-link="headerLink"
   >
-    <BaseHeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
-
     <slot
       :profile-data="profileData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getProfile from '*/helpers/actions/api/profile/get'
-import {
-  focusOnSegment
-} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseProfileSegmentContainer',
   components: {
-    BaseHeaderSegment
+    BaseHeaderSegmentsContainer
   },
   props: {
     scope: {
       type: String,
       required: true
     },
-    isFetchData: {
+    isGetData: {
       type: Boolean,
       default: true
     },
@@ -63,14 +52,16 @@ export default {
     }
   },
   mounted () {
-    if (this.isFetchData) {
-      this.fetchData()
+    if (this.isGetData) {
+      this.getData()
     }
   },
   methods: {
     getProfile,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfile(
         {
@@ -79,17 +70,10 @@ export default {
         }
       )
     },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     focus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

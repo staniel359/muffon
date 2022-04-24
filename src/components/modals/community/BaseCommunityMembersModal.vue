@@ -22,6 +22,7 @@ import BasePaginatedSegmentModalContainer
 import BaseProfilesSimpleList
   from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 import getCommunityMembers from '*/helpers/actions/api/community/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseCommunityMembersModal',
@@ -29,6 +30,9 @@ export default {
     BasePaginatedSegmentModalContainer,
     BaseProfilesSimpleList
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     communityId: {
       type: String,
@@ -56,22 +60,16 @@ export default {
       return {
         communityData: this.communityData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   methods: {
     getCommunityMembers,
-    handleCall () {
-      this.fetchData()
-    },
-    handleLinkClick () {
-      this.hide()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getCommunityMembers(
         {
@@ -79,23 +77,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

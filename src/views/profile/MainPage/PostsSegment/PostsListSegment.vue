@@ -22,6 +22,7 @@ import BasePaginatedSegmentContainer
 import BasePostsSimpleList
   from '*/components/lists/posts/BasePostsSimpleList.vue'
 import getProfilePosts from '*/helpers/actions/api/profile/get'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'PostsListSegment',
@@ -29,6 +30,9 @@ export default {
     BasePaginatedSegmentContainer,
     BasePostsSimpleList
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -56,22 +60,19 @@ export default {
       return {
         profileData: this.profileData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfilePosts,
-    handleFocus () {
-      this.focus()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfilePosts(
         {
@@ -79,18 +80,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    focus () {
-      this.$refs
-        .segment
-        .focus()
     }
   }
 }

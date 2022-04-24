@@ -1,5 +1,6 @@
 <template>
   <BasePlaylistsPageContainer
+    ref="page"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -27,6 +28,7 @@ import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BasePlaylistsSimpleList
   from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'PlaylistsPage',
@@ -35,6 +37,9 @@ export default {
     BasePaginatedPageContainer,
     BasePlaylistsSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 50,

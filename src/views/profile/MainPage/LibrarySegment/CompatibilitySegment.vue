@@ -61,14 +61,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getLibraryCompatibility,
     handleRefresh () {
-      this.fetchData()
+      this.getData()
     },
-    fetchData () {
+    getData () {
       this.getLibraryCompatibility(
         {
           otherProfileId: this.profileId

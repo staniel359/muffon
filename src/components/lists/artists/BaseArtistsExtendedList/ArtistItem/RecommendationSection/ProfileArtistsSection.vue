@@ -6,21 +6,13 @@
     :text="similarText"
   />
 
-  <BasePaginatedListContainer
+  <BaseArtistsSimpleList
     class="profile-artists-list"
-    :response-data="profileArtistsData"
-    :scope="scope"
-    :limit="limit"
-  >
-    <template #default="slotProps">
-      <BaseArtistsSimpleList
-        :artists="slotProps[scope]"
-        :profile-id="profileId"
-        is-image-small
-        is-link-to-library
-      />
-    </template>
-  </BasePaginatedListContainer>
+    :artists="profileArtists"
+    :profile-id="profileId"
+    is-image-small
+    is-link-to-library
+  />
 
   <div
     v-if="isMore"
@@ -40,10 +32,11 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseDivider from '*/components/BaseDivider.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseRecommendationProfileArtistsModal
@@ -57,7 +50,6 @@ export default {
   components: {
     BaseDivider,
     BaseHeader,
-    BasePaginatedListContainer,
     BaseArtistsSimpleList,
     BaseRecommendationProfileArtistsModal
   },
@@ -65,8 +57,7 @@ export default {
     recommendationData: {
       type: Object,
       required: true
-    },
-    profileId: String
+    }
   },
   data () {
     return {
@@ -75,6 +66,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     similarText () {
       return this.$t(
         'recommendation.similar',
@@ -100,15 +97,11 @@ export default {
     profileArtistsCount () {
       return this.recommendationData.profile_artists_count
     },
-    profileArtistsData () {
-      return {
-        page: 1,
-        total_pages: 1,
-        artists: this.profileArtists
-      }
-    },
     profileArtists () {
       return this.recommendationData.profile_artists
+    },
+    profileId () {
+      return this.profileInfo.id.toString()
     },
     isMore () {
       return this.profileArtistsCount > 5

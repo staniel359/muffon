@@ -22,6 +22,7 @@ import BasePaginatedSegmentModalContainer
 import BaseProfilesSimpleList
   from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
 import getProfileFollow from '*/helpers/actions/api/profile/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseProfileFollowModal',
@@ -29,6 +30,9 @@ export default {
     BasePaginatedSegmentModalContainer,
     BaseProfilesSimpleList
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -59,22 +63,16 @@ export default {
       return {
         profileData: this.profileData,
         isLoading: this.isLoading,
-        error: this.error,
-        fetchData: this.fetchData,
-        refresh: this.refresh
+        error: this.error
       }
     }
   },
   methods: {
     getProfileFollow,
-    handleCall () {
-      this.fetchData()
-    },
-    handleLinkClick () {
-      this.hide()
-    },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileFollow(
         {
@@ -82,23 +80,6 @@ export default {
           page
         }
       )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

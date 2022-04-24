@@ -6,11 +6,9 @@
   >
     <slot
       :library-album-data="libraryAlbumData"
-      :artist-name="artistNameFetched"
+      :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -48,8 +46,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -62,11 +60,11 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
-        artistId: this.artistIdFetched,
-        artistName: this.artistNameFetched,
+        profileNickname: this.profileNickname,
+        artistId: this.artistId,
+        artistName: this.artistName,
         albumId: this.albumId,
-        albumTitle: this.albumTitleFetched,
+        albumTitle: this.albumTitle,
         scope: this.scope
       }
     },
@@ -75,10 +73,10 @@ export default {
         this.navigationData
       )
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
-    artistIdFetched () {
+    artistId () {
       return this.libraryAlbumArtistData?.id?.toString()
     },
     libraryAlbumArtistData () {
@@ -90,13 +88,13 @@ export default {
     libraryData () {
       return this.profileData?.library
     },
-    artistNameFetched () {
+    artistName () {
       return this.libraryAlbumArtistData?.name
     },
-    albumTitleFetched () {
+    albumTitle () {
       return this.libraryAlbumData?.title
     },
-    libraryArgs () {
+    profileLibraryAlbumArgs () {
       return {
         profileId: this.profileId,
         albumId: this.albumId,
@@ -109,25 +107,20 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibraryAlbum,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileLibraryAlbum(
         {
-          ...this.libraryArgs,
+          ...this.profileLibraryAlbumArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

@@ -6,7 +6,7 @@
   >
     <slot
       :playlist-data="playlistData"
-      :playlist-title="playlistTitleFetched"
+      :playlist-title="playlistTitle"
     />
   </BasePageContainer>
 </template>
@@ -46,8 +46,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -60,9 +60,9 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
+        profileNickname: this.profileNickname,
         playlistId: this.playlistId,
-        playlistTitle: this.playlistTitleFetched
+        playlistTitle: this.playlistTitle
       }
     },
     tabData () {
@@ -70,10 +70,10 @@ export default {
         this.navigationData
       )
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
-    playlistTitleFetched () {
+    playlistTitle () {
       return this.playlistData?.title
     },
     playlistData () {
@@ -90,11 +90,11 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfilePlaylist,
-    fetchData () {
+    getData () {
       this.getProfilePlaylist(
         this.playlistArgs
       )

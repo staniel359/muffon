@@ -1,5 +1,6 @@
 <template>
   <BaseCommunitiesPageContainer
+    ref="page"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -15,6 +16,7 @@
         </BaseSegmentContainer>
 
         <BasePaginatedSegmentContainer
+          ref="pagination"
           class="main-paginated-page-segment-container"
           response-data-name="communitiesData"
           :slot-props-data="pageSlotProps"
@@ -44,6 +46,7 @@ import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
   from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'CommunitiesPage',
@@ -54,18 +57,13 @@ export default {
     BasePaginatedSegmentContainer,
     BaseCommunitiesSimpleList
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   data () {
     return {
       limit: 50,
       scope: 'communities'
-    }
-  },
-  methods: {
-    handleFocus () {
-      window.scrollTo(
-        0,
-        0
-      )
     }
   }
 }

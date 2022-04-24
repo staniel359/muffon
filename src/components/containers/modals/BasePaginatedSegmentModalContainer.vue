@@ -64,6 +64,11 @@ export default {
     handleFocus () {
       this.scrollToTop()
     },
+    scrollToTop () {
+      this.$refs
+        .segment
+        .scrollToTop()
+    },
     show () {
       this.$refs
         .modal
@@ -73,11 +78,6 @@ export default {
       this.$refs
         .modal
         .hide()
-    },
-    scrollToTop () {
-      this.$refs
-        .segment
-        .scrollToTop()
     }
   }
 }

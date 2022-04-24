@@ -1,5 +1,6 @@
 <template>
   <BaseArtistContainer
+    ref="artist"
     :artist-name="artistName"
   >
     <template #default="slotProps">
@@ -9,7 +10,7 @@
         }"
         :is-loading="slotProps.isLoading"
         :error="slotProps.error"
-        @refresh="slotProps.refresh"
+        @refresh="handleRefresh"
       >
         <template v-if="slotProps.artistData">
           <BaseDeletedBlock
@@ -86,7 +87,6 @@
                 v-if="isRecommendation"
                 ref="recommendation"
                 :artist-data="artistData"
-                :profile-id="profileId"
               />
             </div>
           </template>
@@ -114,6 +114,7 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import BaseArtistDescription
   from '*/components/models/artist/BaseArtistDescription.vue'
 import RecommendationSection from './ArtistItem/RecommendationSection.vue'
+import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',
@@ -132,14 +133,9 @@ export default {
     BaseArtistDescription,
     RecommendationSection
   },
-  provide () {
-    return {
-      setLibraryId: this.setLibraryId,
-      setFavoriteId: this.setFavoriteId,
-      setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId
-    }
-  },
+  mixins: [
+    selfMixin
+  ],
   props: {
     artistData: {
       type: Object,
@@ -159,15 +155,10 @@ export default {
     isWithDeleteOption: Boolean,
     isRecommendation: Boolean
   },
-  data () {
-    return {
-      libraryId: null,
-      favoriteId: null,
-      bookmarkId: null,
-      listenedId: null
-    }
-  },
   computed: {
+    modelData () {
+      return this.artistData
+    },
     artistName () {
       return this.artistData.name
     },
@@ -178,17 +169,12 @@ export default {
       return !!this.artistData.isDeleted
     }
   },
-  mounted () {
-    this.libraryId =
-      this.artistData.library_id?.toString()
-    this.favoriteId =
-      this.artistData.favorite_id?.toString()
-    this.bookmarkId =
-      this.artistData.bookmark_id?.toString()
-    this.listenedId =
-      this.artistData.listened_id?.toString()
-  },
   methods: {
+    handleRefresh () {
+      this.$refs
+        .artist
+        .getData()
+    },
     handleImageLoadEnd (
       value
     ) {
@@ -198,26 +184,6 @@ export default {
     },
     handleDeleteOptionClick () {
       this.showRecommendationDeleteModal()
-    },
-    setLibraryId (
-      value
-    ) {
-      this.libraryId = value
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
-    },
-    setBookmarkId (
-      value
-    ) {
-      this.bookmarkId = value
-    },
-    setListenedId (
-      value
-    ) {
-      this.listenedId = value
     },
     showRecommendationDeleteModal () {
       this.$refs
@@ -233,8 +199,8 @@ export default {
   margin-right: 1em
 
 .artist-image
-  width: 145px
-  height: 145px
+  width: 140px
+  height: 140px
 
 .main-self-icons
   @extend .text-align-center

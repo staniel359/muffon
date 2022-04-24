@@ -2,7 +2,7 @@
   <BaseProfileSegmentContainer
     scope="library"
     :header-link="headerLink"
-    :is-fetch-data="false"
+    :is-get-data="false"
   >
     <CompatibilitySegment
       v-if="!isSelf"

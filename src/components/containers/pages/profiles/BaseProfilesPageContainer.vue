@@ -8,8 +8,6 @@
       :profiles-data="profilesData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -37,8 +35,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profilesData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -58,25 +56,20 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfiles,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfiles(
         {
           ...this.profilesArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

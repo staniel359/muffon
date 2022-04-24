@@ -1,38 +1,27 @@
 <template>
-  <div
+  <BaseHeaderSegmentsContainer
     ref="segment"
-    class="ui basic segments"
+    :scope="scope"
+    :header-link="headerLink"
+    is-basic
   >
-    <BaseHeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
-
     <slot
       :track-data="trackData"
-      :profile-id="profileId"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getTrack from '*/helpers/actions/api/track/get'
-import {
-  focusOnSegment
-} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseTrackSegmentContainer',
   components: {
-    BaseHeaderSegment
+    BaseHeaderSegmentsContainer
   },
   props: {
     artistName: {
@@ -52,21 +41,12 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      trackData: null,
       error: null,
-      trackData: null
+      isLoading: false
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     trackArgs () {
       return {
         artistName: this.artistName,
@@ -77,12 +57,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getTrack,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getTrack(
         {
@@ -91,17 +73,10 @@ export default {
         }
       )
     },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     focus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

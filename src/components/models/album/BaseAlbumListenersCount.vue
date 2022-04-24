@@ -54,16 +54,19 @@ export default {
     }
   },
   computed: {
-    listenersCountFetched () {
+    responseListenersCount () {
       return (
         this.listenersCount ||
-          this.albumData?.listeners_count ||
-            0
+          this.albumListenersCount ||
+          0
       )
+    },
+    albumListenersCount () {
+      return this.albumData?.listeners_count
     },
     listenersCountFormatted () {
       return formatNumber(
-        this.listenersCountFetched
+        this.responseListenersCount
       )
     },
     albumArgs () {
@@ -75,15 +78,16 @@ export default {
     }
   },
   watch: {
-    listenersCountFetched: 'handleListenersCountFetchedChange'
+    responseListenersCount: 'handleResponseListenersCountChange'
   },
   mounted () {
     if (!this.listenersCount) {
-      this.fetchData()
+      this.getData()
     }
   },
   methods: {
-    handleListenersCountFetchedChange (
+    getAlbum,
+    handleResponseListenersCountChange (
       value
     ) {
       this.$emit(
@@ -91,8 +95,7 @@ export default {
         value
       )
     },
-    getAlbum,
-    fetchData () {
+    getData () {
       this.getAlbum(
         this.albumArgs
       )

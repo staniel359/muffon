@@ -8,8 +8,6 @@
       :releases-data="releasesData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -32,7 +30,7 @@ export default {
     navigationMixin
   ],
   props: {
-    isFetchData: {
+    isGetData: {
       type: Boolean,
       default: true
     },
@@ -72,29 +70,24 @@ export default {
   mounted () {
     this.setNavigation()
 
-    if (this.isFetchData) {
-      this.fetchData()
+    if (this.isGetData) {
+      this.getData()
     } else {
       this.releasesData = {}
     }
   },
   methods: {
     getReleases,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getReleases(
         {
           ...this.releasesArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

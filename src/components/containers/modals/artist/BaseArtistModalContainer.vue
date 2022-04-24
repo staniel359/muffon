@@ -5,7 +5,6 @@
     :is-loading="isLoading"
     :error="error"
     @call="handleCall"
-    @refresh="handleRefresh"
   >
     <slot
       :[scope]="artistData[scope]"
@@ -17,12 +16,16 @@
 import BaseSegmentModalContainer
   from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getArtist from '*/helpers/actions/api/artist/get'
+import modalMixin from '*/mixins/modalMixin'
 
 export default {
   name: 'BaseArtistModalContainer',
   components: {
     BaseSegmentModalContainer
   },
+  mixins: [
+    modalMixin
+  ],
   props: {
     artistName: {
       type: String,
@@ -35,9 +38,9 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      artistData: null,
       error: null,
-      artistData: null
+      isLoading: false
     }
   },
   computed: {
@@ -50,26 +53,10 @@ export default {
   },
   methods: {
     getArtist,
-    handleCall () {
-      this.fetchData()
-    },
-    handleRefresh () {
-      this.fetchData()
-    },
-    fetchData () {
+    getData () {
       this.getArtist(
         this.artistArgs
       )
-    },
-    show () {
-      this.$refs
-        .modal
-        .show()
-    },
-    hide () {
-      this.$refs
-        .modal
-        .hide()
     }
   }
 }

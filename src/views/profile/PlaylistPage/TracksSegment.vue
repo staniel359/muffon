@@ -1,10 +1,12 @@
 <template>
-  <BasePlaylistPaginatedSegmentContainer
+  <BasePaginatedSegmentContainer
+    ref="segment"
     class="main-paginated-page-segment-container"
-    :profile-id="profileId"
-    :playlist-id="playlistId"
+    response-data-name="playlistData"
+    :slot-props-data="slotPropsData"
     :scope="scope"
     :limit="limit"
+    @focus="handleFocus"
   >
     <template #default="slotProps">
       <BaseTracksSimpleList
@@ -18,30 +20,82 @@
         is-with-delete-option
       />
     </template>
-  </BasePlaylistPaginatedSegmentContainer>
+  </BasePaginatedSegmentContainer>
 </template>
 
 <script>
-import BasePlaylistPaginatedSegmentContainer
-  from '*/components/containers/segments/playlist/BasePlaylistPaginatedSegmentContainer.vue'
+import BasePaginatedSegmentContainer
+  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import getProfilePlaylist from '*/helpers/actions/api/profile/playlist/get'
+import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'TracksSegment',
   components: {
-    BasePlaylistPaginatedSegmentContainer,
+    BasePaginatedSegmentContainer,
     BaseTracksSimpleList
   },
+  mixins: [
+    paginatedSegmentMixin
+  ],
   props: {
-    profileId: String,
-    playlistId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
+    playlistId: {
+      type: String,
+      required: true
+    },
     playlistTitle: String
   },
   data () {
     return {
+      profileData: null,
+      error: null,
+      isLoading: false,
       limit: 50,
       scope: 'tracks'
+    }
+  },
+  computed: {
+    slotPropsData () {
+      return {
+        playlistData: this.playlistData,
+        isLoading: this.isLoading,
+        error: this.error
+      }
+    },
+    playlistData () {
+      return this.profileData?.playlist
+    },
+    playlistArgs () {
+      return {
+        profileId: this.profileId,
+        playlistId: this.playlistId,
+        scope: this.scope,
+        limit: this.limit
+      }
+    }
+  },
+  mounted () {
+    this.getData()
+  },
+  methods: {
+    getProfilePlaylist,
+    getData (
+      {
+        page
+      } = {}
+    ) {
+      this.getProfilePlaylist(
+        {
+          ...this.playlistArgs,
+          page
+        }
+      )
     }
   }
 }

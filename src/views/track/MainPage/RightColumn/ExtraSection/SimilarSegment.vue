@@ -9,7 +9,6 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :profile-id="slotProps.profileId"
         is-with-artist-name
         is-with-duration
         is-with-library-option

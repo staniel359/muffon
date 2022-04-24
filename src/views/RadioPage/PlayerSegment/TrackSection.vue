@@ -43,10 +43,10 @@ export default {
     }
   },
   methods: {
-    fetchAudio () {
+    getAudio () {
       this.$refs
         .track
-        .fetchAudio()
+        .getAudio()
     }
   }
 }

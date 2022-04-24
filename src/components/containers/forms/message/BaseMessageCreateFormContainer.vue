@@ -47,8 +47,8 @@ export default {
   ],
   data () {
     return {
-      error: null,
       conversationId: null,
+      error: null,
       isLoading: false
     }
   },

@@ -8,8 +8,6 @@
       :favorites-data="favoritesData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -42,8 +40,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -56,11 +54,11 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
+        profileNickname: this.profileNickname,
         scope: this.scope
       }
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
     tabData () {
@@ -83,25 +81,20 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileFavorites,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileFavorites(
         {
           ...this.favoritesArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

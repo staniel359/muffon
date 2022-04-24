@@ -10,8 +10,6 @@
       :top-albums-count="topAlbumsCount"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -49,8 +47,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -63,9 +61,9 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
+        profileNickname: this.profileNickname,
         tagId: this.tagId,
-        tagName: this.tagNameFetched,
+        tagName: this.tagName,
         scope: this.scope
       }
     },
@@ -74,10 +72,10 @@ export default {
         this.navigationData
       )
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
-    tagNameFetched () {
+    tagName () {
       return this.libraryTagData?.name
     },
     libraryTagData () {
@@ -105,25 +103,20 @@ export default {
     profileData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getProfileLibraryTag,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getProfileLibraryTag(
         {
           ...this.libraryTagArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     }
   }

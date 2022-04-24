@@ -8,8 +8,6 @@
       :recommendations-data="recommendationsData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -75,32 +73,27 @@ export default {
   mounted () {
     this.setNavigation()
 
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getRecommendations,
     handleFilterValueChange () {
-      this.fetchData()
+      this.getData()
 
       this.$emit(
         'reset'
       )
     },
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getRecommendations(
         {
           ...this.recommendationsArgs,
           page
         }
-      )
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
       )
     },
     setFilterScope (

@@ -29,14 +29,16 @@ export default {
     BaseModalContainer,
     BaseSegmentContainer
   },
+  inject: [
+    'getData'
+  ],
   props: {
     isLoading: Boolean,
     error: Error,
     responseData: Object
   },
   emits: [
-    'call',
-    'refresh'
+    'call'
   ],
   methods: {
     handleCall () {
@@ -45,9 +47,7 @@ export default {
       )
     },
     handleRefresh () {
-      this.$emit(
-        'refresh'
-      )
+      this.getData()
     },
     show () {
       this.$refs

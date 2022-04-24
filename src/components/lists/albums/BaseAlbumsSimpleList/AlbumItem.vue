@@ -110,6 +110,7 @@ import BaseFavoriteDeleteModal
 import {
   artistName as formatArtistName
 } from '*/helpers/formatters'
+import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'AlbumItem',
@@ -125,14 +126,9 @@ export default {
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal
   },
-  provide () {
-    return {
-      setLibraryId: this.setLibraryId,
-      setFavoriteId: this.setFavoriteId,
-      setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId
-    }
-  },
+  mixins: [
+    selfMixin
+  ],
   inject: [
     'findPaginationItem'
   ],
@@ -164,14 +160,13 @@ export default {
   ],
   data () {
     return {
-      libraryId: null,
-      favoriteId: null,
-      bookmarkId: null,
-      listenedId: null,
       isArtistNameActive: false
     }
   },
   computed: {
+    modelData () {
+      return this.albumData
+    },
     artistName () {
       if (this.artists) {
         return formatArtistName(
@@ -219,19 +214,6 @@ export default {
       return !this.isArtistNameActive
     }
   },
-  mounted () {
-    this.libraryId =
-      this.albumData.library_id?.toString()
-
-    this.favoriteId =
-      this.albumData.favorite_id?.toString()
-
-    this.bookmarkId =
-      this.albumData.bookmark_id?.toString()
-
-    this.listenedId =
-      this.albumData.listened_id?.toString()
-  },
   methods: {
     handleLinkClick () {
       this.$emit(
@@ -264,26 +246,6 @@ export default {
       value
     ) {
       this.isArtistNameActive = value
-    },
-    setLibraryId (
-      value
-    ) {
-      this.libraryId = value
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
-    },
-    setBookmarkId (
-      value
-    ) {
-      this.bookmarkId = value
-    },
-    setListenedId (
-      value
-    ) {
-      this.listenedId = value
     },
     showDeleteModal () {
       this.$refs

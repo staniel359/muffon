@@ -14,18 +14,18 @@ export default function getQueueTrack (
       `queue/${position}Track`
     ]
 
-  function setIsQueueFetching (
+  function setIsQueueGetting (
     value
   ) {
     switch (position) {
       case 'prev':
         return store.dispatch(
-          'queue/setIsFetchingPrev',
+          'queue/setIsGettingPrev',
           value
         )
       case 'next':
         return store.dispatch(
-          'queue/setIsFetchingNext',
+          'queue/setIsGettingNext',
           value
         )
       default:
@@ -33,8 +33,8 @@ export default function getQueueTrack (
     }
   }
 
-  function fetchFollowingTrackAudioData () {
-    setIsQueueFetching(
+  function getFollowingTrackAudioData () {
+    setIsQueueGetting(
       true
     )
 
@@ -43,7 +43,7 @@ export default function getQueueTrack (
     }
 
     function handleSuccess () {
-      setIsQueueFetching(
+      setIsQueueGetting(
         false
       )
     }
@@ -79,9 +79,9 @@ export default function getQueueTrack (
   }
 
   if (followingTrackData) {
-    fetchFollowingTrackAudioData()
+    getFollowingTrackAudioData()
   } else {
-    setIsQueueFetching(
+    setIsQueueGetting(
       false
     )
   }

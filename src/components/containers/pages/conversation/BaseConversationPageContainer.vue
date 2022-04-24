@@ -6,7 +6,7 @@
   >
     <slot
       :conversation-data="conversationData"
-      :profile-id="profileIdFetched"
+      :profile-id="responseProfileId"
     />
   </BasePageContainer>
 </template>
@@ -51,13 +51,13 @@ export default {
     navigationData () {
       return {
         conversationId: this.conversationId,
-        profileNickname: this.profileNicknameFetched
+        profileNickname: this.profileNickname
       }
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.conversationData?.profile?.nickname
     },
-    profileIdFetched () {
+    responseProfileId () {
       return this.conversationData?.profile?.id?.toString()
     },
     tabData () {
@@ -75,18 +75,13 @@ export default {
     conversationData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getConversation,
-    fetchData (
-      page
-    ) {
+    getData () {
       this.getConversation(
-        {
-          ...this.conversationArgs,
-          page
-        }
+        this.conversationArgs
       )
     }
   }

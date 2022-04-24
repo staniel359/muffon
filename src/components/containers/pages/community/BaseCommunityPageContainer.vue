@@ -9,6 +9,8 @@
         :community-data="communityData"
         :community-creator-id="communityCreatorId"
         :profile-id="slotProps.profileId"
+        :is-loading="isLoading"
+        :error="error"
       />
     </template>
   </BasePageContainer>
@@ -39,8 +41,12 @@ export default {
     }
   },
   props: {
-    communityId: String,
-    scope: String
+    communityId: {
+      type: String,
+      required: true
+    },
+    scope: String,
+    limit: Number
   },
   data () {
     return {
@@ -58,7 +64,7 @@ export default {
     navigationData () {
       return {
         communityId: this.communityId,
-        communityTitle: this.communityTitleFetched,
+        communityTitle: this.communityTitle,
         scope: this.scope
       }
     },
@@ -67,12 +73,14 @@ export default {
         this.navigationData
       )
     },
-    communityTitleFetched () {
+    communityTitle () {
       return this.communityData?.title
     },
     communityArgs () {
       return {
-        communityId: this.communityId
+        communityId: this.communityId,
+        scope: this.scope,
+        limit: this.limit
       }
     },
     communityCreatorId () {
@@ -83,13 +91,20 @@ export default {
     communityData: 'handleNavigationDataChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getCommunity,
-    fetchData () {
+    getData (
+      {
+        page
+      } = {}
+    ) {
       this.getCommunity(
-        this.communityArgs
+        {
+          ...this.communityArgs,
+          page
+        }
       )
     },
     setCommunityData (

@@ -1,5 +1,6 @@
 <template>
   <BaseProfileLibraryPageContainer
+    ref="page"
     :profile-id="profileId"
     :scope="scope"
     :limit="limit"
@@ -7,19 +8,20 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        ref="page"
+        ref="pagination"
         response-data-name="libraryData"
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
+        :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
-        is-with-top-segment
         @search-submit="handleSearchSubmit"
         @search-clear="handleSearchClear"
       >
         <template #top>
           <BaseProfileLibrarySearchInput
+            v-if="isWithSearch"
             :is-clearable="isSearchClearable"
             :query="query"
             @submit="handleSearchSubmit"
@@ -46,6 +48,7 @@ import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseProfileLibrarySearchInput
   from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',
@@ -54,10 +57,15 @@ export default {
     BasePaginatedPageContainer,
     BaseProfileLibrarySearchInput
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     profileId: String,
     scope: String,
     limit: Number,
+    isWithTopSegment: Boolean,
+    isWithSearch: Boolean,
     isWithViewChange: Boolean,
     viewIndex: Number
   },
@@ -85,11 +93,6 @@ export default {
     },
     handleQueryChange () {
       this.reset()
-    },
-    reset () {
-      this.$refs
-        .page
-        .reset()
     }
   }
 }

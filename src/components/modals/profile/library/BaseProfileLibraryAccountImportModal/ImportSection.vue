@@ -52,14 +52,14 @@ export default {
   },
   data () {
     return {
-      error: null,
       totalPagesCount: null,
+      error: null,
       page: 1,
       plays: [],
       successTracks: [],
-      isComplete: false,
       isMounted: false,
       isProgress: true,
+      isComplete: false,
       status: 'import',
       scope: 'plays'
     }
@@ -95,7 +95,7 @@ export default {
 
     this.setProgressTotalCount()
 
-    this.fetchData()
+    this.getData()
   },
   beforeUnmount () {
     this.isMounted = false
@@ -112,7 +112,7 @@ export default {
       if (this.isGetPlays) {
         this.page += 1
 
-        this.fetchData()
+        this.getData()
       } else {
         const tracks =
           formatPlaysToTracks(
@@ -130,13 +130,13 @@ export default {
       }
     },
     handleRefresh () {
-      this.fetchData()
+      this.getData()
     },
     handleProgressComplete () {
       this.isComplete = true
       this.isProgress = false
     },
-    fetchData () {
+    getData () {
       this.getLastfmUserPlays(
         this.playsArgs
       )

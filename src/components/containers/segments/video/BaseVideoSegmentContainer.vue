@@ -1,34 +1,27 @@
 <template>
-  <div
+  <BaseHeaderSegmentsContainer
     ref="segment"
-    class="ui basic segments"
+    :scope="scope"
+    :header-link="headerLink"
+    is-basic
   >
-    <BaseHeaderSegment
-      :scope="scope"
-      :link="headerLink"
-    />
-
     <slot
       :video-data="videoData"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
-  </div>
+  </BaseHeaderSegmentsContainer>
 </template>
 
 <script>
-import BaseHeaderSegment from '*/components/segments/BaseHeaderSegment.vue'
+import BaseHeaderSegmentsContainer
+  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getVideo from '*/helpers/actions/api/video/get'
-import {
-  focusOnSegment
-} from '*/helpers/actions/layout'
 
 export default {
   name: 'BaseVideoSegmentContainer',
   components: {
-    BaseHeaderSegment
+    BaseHeaderSegmentsContainer
   },
   props: {
     videoId: {
@@ -44,9 +37,9 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      videoData: null,
       error: null,
-      videoData: null
+      isLoading: false
     }
   },
   computed: {
@@ -59,12 +52,14 @@ export default {
     }
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
     getVideo,
-    fetchData (
-      page
+    getData (
+      {
+        page
+      } = {}
     ) {
       this.getVideo(
         {
@@ -73,17 +68,10 @@ export default {
         }
       )
     },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
-    },
     focus () {
-      focusOnSegment(
-        this.$refs.segment
-      )
+      this.$refs
+        .segment
+        .focus()
     }
   }
 }

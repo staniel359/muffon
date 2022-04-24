@@ -4,6 +4,7 @@
     :limit="limit"
     :scope="scope"
     :view-index="viewIndex"
+    is-with-top-segment
     is-with-view-change
   >
     <template #default="slotProps">

@@ -10,8 +10,6 @@
       :top-albums-count="topAlbumsCount"
       :is-loading="isLoading"
       :error="error"
-      :fetch-data="fetchData"
-      :refresh="refresh"
     />
   </BasePageContainer>
 </template>
@@ -47,8 +45,8 @@ export default {
   },
   data () {
     return {
-      error: null,
       profileData: null,
+      error: null,
       isLoading: false
     }
   },
@@ -61,7 +59,7 @@ export default {
     navigationData () {
       return {
         profileId: this.profileId,
-        profileNickname: this.profileNicknameFetched,
+        profileNickname: this.profileNickname,
         scope: this.scope
       }
     },
@@ -70,7 +68,7 @@ export default {
         this.navigationData
       )
     },
-    profileNicknameFetched () {
+    profileNickname () {
       return this.profileData?.nickname
     },
     libraryArgs () {
@@ -95,16 +93,18 @@ export default {
     query: 'handleQueryChange'
   },
   mounted () {
-    this.fetchData()
+    this.getData()
   },
   methods: {
-    handleQueryChange () {
-      this.fetchData()
-    },
     getProfileLibrary,
     getProfileLibrarySearch,
-    fetchData (
-      page
+    handleQueryChange () {
+      this.getData()
+    },
+    getData (
+      {
+        page
+      } = {}
     ) {
       if (this.query) {
         this.getProfileLibrarySearch(
@@ -122,13 +122,6 @@ export default {
           }
         )
       }
-    },
-    refresh (
-      page
-    ) {
-      this.fetchData(
-        page
-      )
     }
   }
 }

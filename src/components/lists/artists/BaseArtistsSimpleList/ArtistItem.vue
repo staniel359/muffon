@@ -114,6 +114,7 @@ import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',
@@ -129,17 +130,17 @@ export default {
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal
   },
-  provide () {
-    return {
-      setLibraryId: this.setLibraryId,
-      setFavoriteId: this.setFavoriteId,
-      setBookmarkId: this.setBookmarkId,
-      setListenedId: this.setListenedId
+  mixins: [
+    selfMixin
+  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    },
+    findListItem: {
+      default: () => false
     }
   },
-  inject: [
-    'findPaginationItem'
-  ],
   props: {
     artistData: {
       type: Object,
@@ -171,15 +172,14 @@ export default {
   ],
   data () {
     return {
-      libraryId: null,
-      favoriteId: null,
-      bookmarkId: null,
-      listenedId: null,
       isTracksActive: false,
       isAlbumsActive: false
     }
   },
   computed: {
+    modelData () {
+      return this.artistData
+    },
     artistName () {
       return this.artistData.name
     },
@@ -198,6 +198,12 @@ export default {
     isDeleted () {
       return !!this.artistData.isDeleted
     },
+    item () {
+      return (
+        this.paginationItem ||
+          this.listItem
+      )
+    },
     paginationItem () {
       return this.findPaginationItem(
         {
@@ -207,20 +213,14 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    listItem () {
+      return this.findListItem(
+        {
+          uuid: this.uuid
+        }
+      )
     }
-  },
-  mounted () {
-    this.libraryId =
-      this.artistData.library_id?.toString()
-
-    this.favoriteId =
-      this.artistData.favorite_id?.toString()
-
-    this.bookmarkId =
-      this.artistData.bookmark_id?.toString()
-
-    this.listenedId =
-      this.artistData.listened_id?.toString()
   },
   methods: {
     handleLinkClick () {
@@ -231,13 +231,12 @@ export default {
     handleImageLoadEnd (
       value
     ) {
-      this.paginationItem.image = value
+      this.item.image = value
     },
     handleListenersCountLoadEnd (
       value
     ) {
-      this.paginationItem
-        .listeners_count = value
+      this.item.listeners_count = value
     },
     handleTracksActiveChange (
       value
@@ -262,28 +261,7 @@ export default {
       }
     },
     handleDeleted () {
-      this.paginationItem
-        .isDeleted = true
-    },
-    setLibraryId (
-      value
-    ) {
-      this.libraryId = value
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
-    },
-    setBookmarkId (
-      value
-    ) {
-      this.bookmarkId = value
-    },
-    setListenedId (
-      value
-    ) {
-      this.listenedId = value
+      this.item.isDeleted = true
     },
     showDeleteModal () {
       this.$refs

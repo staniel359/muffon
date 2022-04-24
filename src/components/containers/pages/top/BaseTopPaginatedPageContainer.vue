@@ -1,5 +1,6 @@
 <template>
   <BaseTopPageContainer
+    ref="page"
     :scope="scope"
     :limit="limit"
   >
@@ -9,6 +10,7 @@
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
+        :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
       >
@@ -26,6 +28,7 @@
 import BaseTopPageContainer from './BaseTopPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseTopPaginatedPageContainer',
@@ -33,9 +36,13 @@ export default {
     BaseTopPageContainer,
     BasePaginatedPageContainer
   },
+  mixins: [
+    paginatedPageMixin
+  ],
   props: {
     scope: String,
     limit: Number,
+    isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
     viewIndex: Number
   }
