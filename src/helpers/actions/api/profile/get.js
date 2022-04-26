@@ -13,15 +13,10 @@ export default function (
 ) {
   const url = `/profiles/${profileId}/${scope}`
 
-  const {
-    token
-  } = store.state.profile
-
   const otherProfileId =
-    store.state.profile?.info?.id
+    store.getters['profile/id']
 
   const params = {
-    token,
     ...(otherProfileId && {
       other_profile_id: otherProfileId
     }),
@@ -46,6 +41,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       page,
       limit,
       onSuccess: handleSuccess

@@ -12,17 +12,12 @@ export default function (
   this.libraryId = null
 
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/library/albums`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     title: albumTitle,
     artist_name: artistName,
     tracks,
@@ -42,6 +37,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

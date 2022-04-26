@@ -9,17 +9,12 @@ export default function (
   this.listenedId = null
 
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/listened/artists`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     name: artistName
   }
 
@@ -36,6 +31,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

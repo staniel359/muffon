@@ -8,7 +8,7 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url = `/profiles/${profileId}/feed`
 
@@ -24,6 +24,7 @@ export default function (
   )(
     {
       url,
+      isWithSelfToken: true,
       page,
       limit,
       onSuccess: handleSuccess

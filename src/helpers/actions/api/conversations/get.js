@@ -8,18 +8,10 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/conversations`
-
-  const {
-    token
-  } = store.state.profile
-
-  const params = {
-    token
-  }
 
   const handleSuccess = (
     response
@@ -33,7 +25,7 @@ export default function (
   )(
     {
       url,
-      params,
+      isWithSelfToken: true,
       page,
       limit,
       onSuccess: handleSuccess

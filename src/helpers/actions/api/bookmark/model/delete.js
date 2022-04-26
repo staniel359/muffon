@@ -8,26 +8,18 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}` +
     `/bookmarks/${model}s/${bookmarkId}`
-
-  const {
-    token
-  } = store.state.profile
-
-  const params = {
-    token
-  }
 
   return deleteRequest.bind(
     this
   )(
     {
       url,
-      params,
+      isWithSelfToken: true,
       isSaveError: true
     }
   )

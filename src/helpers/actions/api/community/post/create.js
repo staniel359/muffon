@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
@@ -13,16 +12,7 @@ export default function (
   const url =
     `/communities/${communityId}/posts`
 
-  const profileId =
-    store.state.profile.info.id
-
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    profile_id: profileId,
-    token,
     content,
     tracks,
     images,
@@ -41,6 +31,8 @@ export default function (
     {
       url,
       params,
+      isWithSelfId: true,
+      isWithSelfToken: true,
       onError: handleError
     }
   )

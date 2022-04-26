@@ -7,26 +7,22 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/online`
 
-  const {
-    token
-  } = store.state.profile
-
   const online = isOnline ? 1 : 0
 
   const params = {
-    token,
     online
   }
 
   return patchRequest(
     {
       url,
-      params
+      params,
+      isWithSelfToken: true
     }
   )
 }

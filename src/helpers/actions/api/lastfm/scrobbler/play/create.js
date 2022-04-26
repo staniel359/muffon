@@ -10,16 +10,12 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/lastfm/scrobbler/play`
 
-  const token =
-    store.state.profile.token
-
   const params = {
-    token,
     title,
     artist_name: artistName,
     album_title: albumTitle,
@@ -29,7 +25,8 @@ export default function (
   return postRequest(
     {
       url,
-      params
+      params,
+      isWithSelfToken: true
     }
   )
 }

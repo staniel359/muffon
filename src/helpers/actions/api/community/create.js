@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import postRequest from '*/helpers/actions/api/request/post'
 import {
   handleError as handleFormError
@@ -13,16 +12,7 @@ export default function (
 ) {
   const url = '/communities'
 
-  const profileId =
-    store.state.profile.info.id
-
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    profile_id: profileId,
-    token,
     title,
     description,
     image
@@ -53,6 +43,8 @@ export default function (
     {
       url,
       params,
+      isWithSelfId: true,
+      isWithSelfToken: true,
       onSuccess: handleSuccess,
       onError: handleError
     }

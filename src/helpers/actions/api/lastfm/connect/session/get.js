@@ -8,11 +8,7 @@ export default function (
 ) {
   const url = '/lastfm/connect/session'
 
-  const profileId =
-    store.state.profile.info.id
-
   const params = {
-    profile_id: profileId,
     token
   }
 
@@ -37,6 +33,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfId: true,
       onSuccess: handleSuccess
     }
   )

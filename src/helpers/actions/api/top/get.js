@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
@@ -9,13 +8,6 @@ export default function (
   }
 ) {
   const url = `/lastfm/top/${scope}`
-
-  const profileId =
-    store.state.profile.info.id
-
-  const params = {
-    profile_id: profileId
-  }
 
   const handleSuccess = (
     response
@@ -29,7 +21,7 @@ export default function (
   )(
     {
       url,
-      params,
+      isWithSelfId: true,
       page,
       limit,
       onSuccess: handleSuccess

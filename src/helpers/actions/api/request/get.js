@@ -1,9 +1,13 @@
 import axios from 'axios'
+import store from '*/plugins/store'
 
 export default function (
   {
     url,
     params = {},
+    isWithSelfId,
+    isWithSelfToken,
+    isWithSelfLanguage,
     page,
     limit,
     onComplete,
@@ -16,8 +20,25 @@ export default function (
     this.isLoading = true
   }
 
+  const profileId =
+    store.getters['profile/id']
+
+  const {
+    token,
+    language
+  } = store.state.profile
+
   const paramsData = {
     ...params,
+    ...(isWithSelfId && {
+      profile_id: profileId
+    }),
+    ...(isWithSelfToken && {
+      token
+    }),
+    ...(isWithSelfLanguage && {
+      language
+    }),
     ...(page && {
       page
     }),

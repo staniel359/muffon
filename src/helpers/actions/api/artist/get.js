@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import getRequest from '*/helpers/actions/api/request/get'
 import formatArtistRequestUrl from '*/helpers/formatters/request/artist/url'
 
@@ -23,15 +22,7 @@ export default function (
       }
     )
 
-  const profileId =
-    store.state.profile.info.id
-
-  const lang =
-    store.state.profile.language
-
   const params = {
-    profile_id: profileId,
-    lang,
     ...(albumType && {
       album_type: albumType
     })
@@ -58,6 +49,8 @@ export default function (
     {
       url,
       params,
+      isWithSelfId: true,
+      isWithSelfLanguage: true,
       page,
       limit,
       onSuccess: handleSuccess

@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
 import getRequest from '*/helpers/actions/api/request/get'
 
@@ -26,17 +25,6 @@ export default function (
       }
     )
 
-  const profileId =
-    store.state.profile.info.id
-
-  const lang =
-    store.state.profile.language
-
-  const params = {
-    profile_id: profileId,
-    lang
-  }
-
   const handleSuccess = (
     response
   ) => {
@@ -49,7 +37,8 @@ export default function (
   )(
     {
       url,
-      params,
+      isWithSelfId: true,
+      isWithSelfLanguage: true,
       page,
       limit,
       onSuccess: handleSuccess

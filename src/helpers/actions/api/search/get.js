@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
@@ -13,14 +12,8 @@ export default function (
 ) {
   const url = `/${sourceId}/search/${scope}`
 
-  const profileId =
-    store.state.profile.info.id
-
   const params = {
-    query,
-    ...(isWithSelfData && {
-      profile_id: profileId
-    })
+    query
   }
 
   const handleSuccess = (
@@ -44,6 +37,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfId: isWithSelfData,
       page,
       limit,
       onSuccess: handleSuccess

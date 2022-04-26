@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import patchRequest from '*/helpers/actions/api/request/patch'
 
 export default function (
@@ -16,16 +15,7 @@ export default function (
   const url =
     `/communities/${communityId}/posts/${postId}`
 
-  const profileId =
-    store.state.profile.info.id
-
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    profile_id: profileId,
-    token,
     content,
     tracks,
     images,
@@ -51,6 +41,8 @@ export default function (
     {
       url,
       params,
+      isWithSelfId: true,
+      isWithSelfToken: true,
       onSuccess: handleSuccess,
       onError: handleError
     }

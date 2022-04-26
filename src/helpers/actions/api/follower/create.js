@@ -7,17 +7,12 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/followers`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     other_profile_id: otherProfileId
   }
 
@@ -37,6 +32,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

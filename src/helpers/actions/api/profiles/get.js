@@ -10,7 +10,7 @@ export default function (
   const url = '/profiles'
 
   const otherProfileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const params = {
     other_profile_id: otherProfileId

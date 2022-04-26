@@ -10,10 +10,11 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
-    `/profiles/${profileId}/library/compatibility/${scope}`
+    `/profiles/${profileId}/library` +
+    `/compatibility/${scope}`
 
   const params = {
     other_profile_id: otherProfileId

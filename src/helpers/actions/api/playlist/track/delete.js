@@ -9,20 +9,11 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
-    `/profiles/${profileId}` +
-    `/playlists/${playlistId}` +
-    `/tracks/${playlistTrackId}`
-
-  const {
-    token
-  } = store.state.profile
-
-  const params = {
-    token
-  }
+    `/profiles/${profileId}/playlists` +
+    `/${playlistId}/tracks/${playlistTrackId}`
 
   const handleSuccess = (
     response
@@ -41,9 +32,9 @@ export default function (
   )(
     {
       url,
-      params,
-      onSuccess: handleSuccess,
-      isSaveError: true
+      isWithSelfToken: true,
+      isSaveError: true,
+      onSuccess: handleSuccess
     }
   )
 }

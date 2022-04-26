@@ -12,17 +12,12 @@ export default function (
   this.newPostData = null
 
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/posts/${postId}`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     content,
     tracks,
     images
@@ -47,6 +42,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess,
       onError: handleError
     }

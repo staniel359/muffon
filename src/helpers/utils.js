@@ -42,7 +42,7 @@ export function isCurrentProfile (
   value
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   return (
     parseInt(

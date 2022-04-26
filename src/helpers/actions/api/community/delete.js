@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import deleteRequest from '*/helpers/actions/api/request/delete'
 
 export default function (
@@ -7,18 +6,6 @@ export default function (
   }
 ) {
   const url = `/communities/${communityId}`
-
-  const profileId =
-    store.state.profile.info.id
-
-  const {
-    token
-  } = store.state.profile
-
-  const params = {
-    profile_id: profileId,
-    token
-  }
 
   const handleError = (
     error
@@ -31,7 +18,8 @@ export default function (
   )(
     {
       url,
-      params,
+      isWithSelfId: true,
+      isWithSelfToken: true,
       onError: handleError
     }
   )

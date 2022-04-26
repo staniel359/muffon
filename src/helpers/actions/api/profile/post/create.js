@@ -10,18 +10,13 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/posts`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
     other_profile_id: otherProfileId,
-    token,
     content,
     tracks,
     images
@@ -39,6 +34,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onError: handleError
     }
   )

@@ -1,9 +1,12 @@
 import axios from 'axios'
+import store from '*/plugins/store'
 
 export default function (
   {
     url,
     params = {},
+    isWithSelfId,
+    isWithSelfToken,
     onComplete,
     onSuccess,
     onError,
@@ -15,6 +18,23 @@ export default function (
     this.isError = false
     this.isSuccess = false
     this.isLoading = true
+  }
+
+  const profileId =
+    store.getters['profile/id']
+
+  const {
+    token
+  } = store.state.profile
+
+  const paramsData = {
+    ...params,
+    ...(isWithSelfId && {
+      profile_id: profileId
+    }),
+    ...(isWithSelfToken && {
+      token
+    })
   }
 
   const handleComplete = () => {
@@ -66,7 +86,7 @@ export default function (
   return axios.delete(
     url,
     {
-      params
+      params: paramsData
     }
   ).finally(
     handleComplete

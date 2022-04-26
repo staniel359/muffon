@@ -21,16 +21,11 @@ export default function (
   this.profileData = null
 
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url = `/profiles/${profileId}`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     email,
     ...(password && {
       password
@@ -72,6 +67,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess,
       onError: handleError
     }

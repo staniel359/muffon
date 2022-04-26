@@ -12,17 +12,12 @@ export default function (
   this.bookmarkId = null
 
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/bookmarks/tracks`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     title: trackTitle,
     artist_name: artistName,
     album_title: albumTitle,
@@ -42,6 +37,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       onSuccess: handleSuccess
     }
   )

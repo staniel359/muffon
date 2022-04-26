@@ -1,4 +1,3 @@
-import store from '*/plugins/store'
 import getRequest from '*/helpers/actions/api/request/get'
 import formatAlbumRequestUrl from '*/helpers/formatters/request/album/url'
 
@@ -29,18 +28,6 @@ export default function (
       }
     )
 
-  const profileId =
-    store.state.profile.info.id
-
-  const lang =
-    store.state.profile.language
-
-  const params = {
-    ...paramsData,
-    profile_id: profileId,
-    lang
-  }
-
   function formatAlbumType () {
     if (albumType === 'albumVarious') {
       return 'album'
@@ -65,7 +52,9 @@ export default function (
   )(
     {
       url,
-      params,
+      params: paramsData,
+      isWithSelfId: true,
+      isWithSelfLanguage: true,
       page,
       limit,
       onSuccess: handleSuccess

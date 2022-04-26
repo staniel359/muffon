@@ -10,17 +10,12 @@ export default function (
   }
 ) {
   const profileId =
-    store.state.profile.info.id
+    store.getters['profile/id']
 
   const url =
     `/profiles/${profileId}/recommendations`
 
-  const {
-    token
-  } = store.state.profile
-
   const params = {
-    token,
     ...(
       filterScope &&
         filterValue?.length &&
@@ -48,6 +43,7 @@ export default function (
     {
       url,
       params,
+      isWithSelfToken: true,
       page,
       limit,
       onSuccess: handleSuccess

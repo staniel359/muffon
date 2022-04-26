@@ -6,6 +6,13 @@ export default {
     isRemember: false,
     language: null
   },
+  getters: {
+    id (
+      state
+    ) {
+      return state.info?.id
+    }
+  },
   mutations: {
     SET_INFO (
       state,
