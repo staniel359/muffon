@@ -1,8 +1,8 @@
 # muffon
 [![main](https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/staniel359/muffon/actions/workflows/main.yml)
 
-### Important!
-The alpha versions don't work anymore. Please download [latest](#download) version.
+### Announcement
+The server is not working now due to technical difficulties. My apologies.
 
 ![muffon](https://i.ibb.co/M8GsTfr/2021-12-30-16-47-24.png)
 
