@@ -10,6 +10,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
 import {
@@ -50,6 +53,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      'profile',
+      {
+        profileToken: 'token'
+      }
+    ),
     options () {
       return profileCreateFormOptions(
         {
@@ -65,6 +74,7 @@ export default {
   },
   watch: {
     profileId: 'handleProfileIdChange',
+    profileToken: 'handleProfileTokenChange',
     profileData: 'handleProfileDataChange'
   },
   methods: {
@@ -90,13 +100,20 @@ export default {
         createArgs
       )
     },
-    async handleProfileIdChange (
+    handleProfileIdChange (
       value
     ) {
       if (value) {
-        await this.setSessionData()
-
-        this.getData()
+        this.setSessionData()
+      }
+    },
+    handleProfileTokenChange (
+      value
+    ) {
+      if (value) {
+        this.getProfile(
+          this.profileArgs
+        )
       }
     },
     handleProfileDataChange (
@@ -149,11 +166,6 @@ export default {
           'profile.token': this.token,
           'profile.isRemember': this.isRemember
         }
-      )
-    },
-    getData () {
-      this.getProfile(
-        this.profileArgs
       )
     }
   }

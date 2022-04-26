@@ -8,12 +8,10 @@
 import {
   ipcRenderer
 } from 'electron'
+import electronStore from '*/plugins/electronStore'
 import {
   mapState
 } from 'vuex'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 import updateOnline from '*/helpers/actions/api/online/update'
 
 export default {
@@ -22,12 +20,19 @@ export default {
     ...mapState(
       'profile',
       {
-        isRememberProfile: 'isRemember',
-        profileInfo: 'info'
+        profileInfo: 'info',
+        profileToken: 'token',
+        isRememberProfile: 'isRemember'
       }
     ),
     profileId () {
       return this.profileInfo?.id
+    },
+    isProfileData () {
+      return (
+        this.profileInfo ||
+          this.profileToken
+      )
     }
   },
   mounted () {
@@ -38,29 +43,56 @@ export default {
   },
   methods: {
     async handleExit () {
-      await this.setOffline()
+      if (this.profileId) {
+        await this.setOffline()
+      }
 
-      await this.setExitData()
+      if (this.isRememberProfile) {
+        this.exit()
+      } else {
+        if (this.isProfileData) {
+          this.resetProfileDataThenExit()
+        } else {
+          this.exit()
+        }
+      }
+    },
+    handleElectronStoreChange (
+      value
+    ) {
+      const isNoInfo =
+        !value['profile.info']
 
-      this.exit()
+      const isNoToken =
+        !value['profile.token']
+
+      const isReset = (
+        isNoInfo &&
+          isNoToken
+      )
+
+      if (isReset) {
+        this.exit()
+      }
     },
     setOffline () {
-      if (this.profileId) {
-        return updateOnline(
-          {
-            isOnline: false
-          }
-        )
-      }
+      updateOnline(
+        {
+          isOnline: false
+        }
+      )
     },
-    setExitData () {
-      if (!this.isRememberProfile) {
-        return updateGlobalStore(
-          {
-            'profile.info': null
-          }
-        )
-      }
+    resetProfileDataThenExit () {
+      electronStore.onDidAnyChange(
+        this.handleElectronStoreChange
+      )
+
+      electronStore.set(
+        {
+          'profile.info': null,
+          'profile.token': null
+        }
+      )
     },
     exit () {
       ipcRenderer.send(

@@ -27,12 +27,15 @@ export default {
     ),
     profileId () {
       return this.profileInfo?.id
+    },
+    isLoggedIn () {
+      return !!this.profileInfo
     }
   },
   watch: {
-    profileInfo: {
+    isLoggedIn: {
       immediate: true,
-      handler: 'handleProfileInfoChange'
+      handler: 'handleIsLoggedInChange'
     }
   },
   mounted () {
@@ -42,7 +45,7 @@ export default {
     )
   },
   methods: {
-    handleProfileInfoChange (
+    handleIsLoggedInChange (
       value
     ) {
       this.setOnline(
@@ -71,6 +74,7 @@ export default {
       updateGlobalStore(
         {
           'profile.info': null,
+          'profile.token': null,
           'profile.isRemember': false
         }
       )
