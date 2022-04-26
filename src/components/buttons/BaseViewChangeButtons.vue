@@ -54,4 +54,5 @@ export default {
 <style lang="sass" scoped>
 .view-change-buttons-container
   @extend .d-flex, .justify-content-flex-end, .flex-full
+  margin-left: 1em
 </style>

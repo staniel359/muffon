@@ -45,3 +45,11 @@ export function communities () {
     path: 'communities'
   }
 }
+
+export function multitag () {
+  return {
+    name: 'MultitagPage',
+    params: {},
+    path: 'multitag'
+  }
+}

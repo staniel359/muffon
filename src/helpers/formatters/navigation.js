@@ -14,6 +14,8 @@ import formatConversationsSection
   from '*/helpers/formatters/navigation/sections/conversations'
 import formatCommunitiesSection
   from '*/helpers/formatters/navigation/sections/communities'
+import formatMultitagSection
+  from '*/helpers/formatters/navigation/sections/multitag'
 
 export function home () {
   return [
@@ -88,6 +90,16 @@ export function conversations () {
 export function communities () {
   return [
     formatCommunitiesSection(
+      {
+        isActive: true
+      }
+    )
+  ]
+}
+
+export function multitag () {
+  return [
+    formatMultitagSection(
       {
         isActive: true
       }

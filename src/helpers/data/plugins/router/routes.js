@@ -178,6 +178,9 @@ const ReleasesNewPage = () => import(
 const ReleasesUpcomingPage = () => import(
   '*/views/releases/UpcomingPage.vue'
 )
+const MultitagPage = () => import(
+  '*/views/MultitagPage.vue'
+)
 
 export default [
   {
@@ -598,6 +601,13 @@ export default [
     exact: true,
     name: 'ReleasesUpcomingPage',
     component: ReleasesUpcomingPage,
+    props: true
+  },
+  {
+    path: '/multitag',
+    exact: true,
+    name: 'MultitagPage',
+    component: MultitagPage,
     props: true
   }
 ]

@@ -41,6 +41,8 @@
 
         <RadioItem />
 
+        <MultitagItem />
+
         <CommunitiesItem
           :profile-id="profileId"
         />
@@ -71,6 +73,7 @@ import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
 import TopItem from './TheSidebarPanel/TopItem.vue'
 import ReleasesItem from './TheSidebarPanel/ReleasesItem.vue'
 import RadioItem from './TheSidebarPanel/RadioItem.vue'
+import MultitagItem from './TheSidebarPanel/MultitagItem.vue'
 import CommunitiesItem from './TheSidebarPanel/CommunitiesItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
@@ -89,6 +92,7 @@ export default {
     TopItem,
     ReleasesItem,
     RadioItem,
+    MultitagItem,
     CommunitiesItem,
     SettingsItem,
     LogoutItem
