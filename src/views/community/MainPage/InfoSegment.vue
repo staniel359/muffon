@@ -34,7 +34,7 @@
           />
 
           <div
-            class="description"
+            class="description community-members-count"
             @click="handleMembersCountClick"
           >
             <span
@@ -197,4 +197,7 @@ export default {
 
 .community-options
   @extend .visibility-visible
+
+.community-members-count
+  @extend .width-fit-content
 </style>

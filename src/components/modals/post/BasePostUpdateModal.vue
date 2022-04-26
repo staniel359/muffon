@@ -1,6 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    @visible="handleVisible"
   >
     <div class="scrolling content">
       <BasePostUpdateFormContainer
@@ -11,6 +12,7 @@
         @success="handleSuccess"
       >
         <BaseContentField
+          ref="content"
           :value="postContent"
           @submit="handleSubmit"
         />
@@ -132,6 +134,9 @@ export default {
     this.tracks = this.tracksCollection
   },
   methods: {
+    handleVisible () {
+      this.focusInput()
+    },
     handleSubmit () {
       this.clickSubmit()
     },
@@ -207,6 +212,11 @@ export default {
       this.$refs
         .modal
         .hide()
+    },
+    focusInput () {
+      this.$refs
+        .content
+        .focus()
     },
     clickSubmit () {
       this.$refs

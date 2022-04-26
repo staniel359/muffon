@@ -49,7 +49,7 @@
 
         <div
           v-if="releaseDate"
-          class="description release-date"
+          class="description"
           v-text="releaseDate"
         />
 
@@ -230,7 +230,4 @@ export default {
 <style lang="sass" scoped>
 .content
   @extend .d-flex, .flex-column, .align-items-center
-
-.release-date
-  line-height: 1em
 </style>
