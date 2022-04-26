@@ -4,19 +4,19 @@
     :is-loading="isLoading"
     :error="error"
   >
-    <template #default="slotProps">
-      <slot
-        :community-data="communityData"
-        :community-creator-id="communityCreatorId"
-        :profile-id="slotProps.profileId"
-        :is-loading="isLoading"
-        :error="error"
-      />
-    </template>
+    <slot
+      :community-data="communityData"
+      :is-community-creator="isCommunityCreator"
+      :is-loading="isLoading"
+      :error="error"
+    />
   </BasePageContainer>
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -56,6 +56,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     navigationSections () {
       return formatCommunityPageNavigation(
         this.navigationData
@@ -82,6 +88,12 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    isCommunityCreator () {
+      return (
+        this.profileId ===
+          this.communityCreatorId
+      )
     },
     communityCreatorId () {
       return this.communityData?.creator?.id?.toString()

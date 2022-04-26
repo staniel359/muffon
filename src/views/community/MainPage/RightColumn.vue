@@ -2,8 +2,7 @@
   <div class="right-column">
     <PostsSegment
       :community-id="communityId"
-      :community-creator-id="communityCreatorId"
-      :current-profile-id="currentProfileId"
+      :is-community-creator="isCommunityCreator"
     />
   </div>
 </template>
@@ -18,8 +17,7 @@ export default {
   },
   props: {
     communityId: String,
-    communityCreatorId: String,
-    currentProfileId: String
+    isCommunityCreator: Boolean
   }
 }
 </script>

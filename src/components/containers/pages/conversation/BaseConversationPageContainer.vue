@@ -6,7 +6,7 @@
   >
     <slot
       :conversation-data="conversationData"
-      :profile-id="responseProfileId"
+      :profile-id="profileId"
     />
   </BasePageContainer>
 </template>
@@ -57,7 +57,7 @@ export default {
     profileNickname () {
       return this.conversationData?.profile?.nickname
     },
-    responseProfileId () {
+    profileId () {
       return this.conversationData?.profile?.id?.toString()
     },
     tabData () {

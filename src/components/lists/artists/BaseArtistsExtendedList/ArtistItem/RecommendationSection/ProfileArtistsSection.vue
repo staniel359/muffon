@@ -33,7 +33,7 @@
 
 <script>
 import {
-  mapState
+  mapGetters
 } from 'vuex'
 import BaseDivider from '*/components/BaseDivider.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
@@ -66,10 +66,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
     ),
     similarText () {
@@ -99,9 +99,6 @@ export default {
     },
     profileArtists () {
       return this.recommendationData.profile_artists
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     },
     isMore () {
       return this.profileArtistsCount > 5

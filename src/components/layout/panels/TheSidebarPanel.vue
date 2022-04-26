@@ -10,7 +10,9 @@
     ]"
   >
     <div class="sidebar-panel-content">
-      <ProfileItem />
+      <ProfileItem
+        :profile-id="profileId"
+      />
 
       <div class="sidebar-top">
         <FeedItem />
@@ -55,7 +57,8 @@
 
 <script>
 import {
-  mapState
+  mapState,
+  mapGetters
 } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
@@ -97,15 +100,12 @@ export default {
         'isDarkMode'
       ]
     ),
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
-    ),
-    profileId () {
-      return this.profileInfo.id.toString()
-    }
+    )
   }
 }
 </script>

@@ -20,7 +20,7 @@
 
 <script>
 import {
-  mapState
+  mapGetters
 } from 'vuex'
 import BasePaginatedSegmentModalContainer
   from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
@@ -54,15 +54,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
     ),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     recommendationArgs () {
       return {
         recommendationId: this.recommendationId,

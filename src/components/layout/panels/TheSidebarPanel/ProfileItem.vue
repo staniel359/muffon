@@ -45,6 +45,12 @@ export default {
     BaseImage,
     BaseHeader
   },
+  props: {
+    profileId: {
+      type: String,
+      required: true
+    }
+  },
   computed: {
     ...mapState(
       'layout',
@@ -70,9 +76,6 @@ export default {
           profileId: this.profileId
         }
       )
-    },
-    profileId () {
-      return this.profileInfo.id
     }
   }
 }

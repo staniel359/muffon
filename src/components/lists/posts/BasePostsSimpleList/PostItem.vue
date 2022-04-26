@@ -80,7 +80,8 @@
 
 <script>
 import {
-  mapState
+  mapState,
+  mapGetters
 } from 'vuex'
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
@@ -125,13 +126,19 @@ export default {
       required: true
     },
     profileId: String,
-    communityCreatorId: String
+    isCommunityCreator: Boolean
   },
   computed: {
     ...mapState(
       'profile',
       {
         profileInfo: 'info'
+      }
+    ),
+    ...mapGetters(
+      'profile',
+      {
+        currentProfileId: 'id'
       }
     ),
     imageData () {
@@ -163,9 +170,6 @@ export default {
           this.postProfileId
       )
     },
-    currentProfileId () {
-      return this.profileInfo.id.toString()
-    },
     postProfileId () {
       return this.profileData.id.toString()
     },
@@ -173,12 +177,6 @@ export default {
       return (
         this.currentProfileId ===
           this.profileId
-      )
-    },
-    isCommunityCreator () {
-      return (
-        this.currentProfileId ===
-          this.communityCreatorId
       )
     },
     updatedMessage () {

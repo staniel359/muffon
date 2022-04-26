@@ -11,7 +11,7 @@
 
 <script>
 import {
-  mapState
+  mapGetters
 } from 'vuex'
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
 
@@ -36,10 +36,10 @@ export default {
     'select'
   ],
   computed: {
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
     ),
     url () {
@@ -49,9 +49,6 @@ export default {
         '?query={query}&limit=5' +
         `&playlist_id=${this.playlistId}`
       )
-    },
-    profileId () {
-      return this.profileInfo.id
     },
     fields () {
       return {

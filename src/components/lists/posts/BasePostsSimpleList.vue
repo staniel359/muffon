@@ -5,7 +5,7 @@
       :key="postData.uuid"
       :post-data="postData"
       :profile-id="profileId"
-      :community-creator-id="communityCreatorId"
+      :is-community-creator="isCommunityCreator"
     />
   </BaseListContainer>
 </template>
@@ -29,7 +29,7 @@ export default {
       }
     },
     profileId: String,
-    communityCreatorId: String
+    isCommunityCreator: Boolean
   }
 }
 </script>

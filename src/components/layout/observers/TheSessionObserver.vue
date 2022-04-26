@@ -9,7 +9,8 @@ import {
   ipcRenderer
 } from 'electron'
 import {
-  mapState
+  mapState,
+  mapGetters
 } from 'vuex'
 import updateOnline from '*/helpers/actions/api/online/update'
 import {
@@ -25,9 +26,12 @@ export default {
         profileInfo: 'info'
       }
     ),
-    profileId () {
-      return this.profileInfo?.id
-    },
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isLoggedIn () {
       return !!this.profileInfo
     }

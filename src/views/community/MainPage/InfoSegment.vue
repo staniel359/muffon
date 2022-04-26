@@ -109,14 +109,7 @@ export default {
       type: Object,
       required: true
     },
-    communityCreatorId: {
-      type: String,
-      required: true
-    },
-    currentProfileId: {
-      type: String,
-      required: true
-    }
+    isCommunityCreator: Boolean
   },
   computed: {
     imageData () {
@@ -150,12 +143,6 @@ export default {
     },
     communityId () {
       return this.communityData.id.toString()
-    },
-    isCommunityCreator () {
-      return (
-        this.currentProfileId ===
-          this.communityCreatorId
-      )
     }
   },
   methods: {

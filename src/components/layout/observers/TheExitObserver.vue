@@ -10,7 +10,8 @@ import {
 } from 'electron'
 import electronStore from '*/plugins/electronStore'
 import {
-  mapState
+  mapState,
+  mapGetters
 } from 'vuex'
 import updateOnline from '*/helpers/actions/api/online/update'
 
@@ -25,9 +26,12 @@ export default {
         isRememberProfile: 'isRemember'
       }
     ),
-    profileId () {
-      return this.profileInfo?.id
-    },
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isProfileData () {
       return (
         this.profileInfo ||

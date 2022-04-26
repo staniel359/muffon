@@ -8,7 +8,7 @@
 
 <script>
 import {
-  mapState
+  mapGetters
 } from 'vuex'
 import BaseLibraryOption from '../../options/BaseLibraryOption.vue'
 import {
@@ -30,10 +30,10 @@ export default {
     'click'
   ],
   computed: {
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
     ),
     link () {
@@ -43,9 +43,6 @@ export default {
           artistId: this.modelId
         }
       )
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   },
   methods: {

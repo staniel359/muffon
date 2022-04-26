@@ -11,7 +11,7 @@
 
 <script>
 import {
-  mapState
+  mapGetters
 } from 'vuex'
 import BaseFormContainer
   from '*/components/containers/forms/BaseFormContainer.vue'
@@ -46,10 +46,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
     ),
     options () {
@@ -66,9 +66,6 @@ export default {
           playlistId: this.playlistId
         }
       )
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     }
   },
   watch: {

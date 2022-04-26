@@ -13,7 +13,7 @@
     <PostsListSegment
       :key="key"
       :community-id="communityId"
-      :community-creator-id="communityCreatorId"
+      :is-community-creator="isCommunityCreator"
     />
   </BaseHeaderSegmentsContainer>
 </template>
@@ -43,11 +43,7 @@ export default {
       type: String,
       required: true
     },
-    currentProfileId: {
-      type: String,
-      required: true
-    },
-    communityCreatorId: String
+    isCommunityCreator: Boolean
   },
   data () {
     return {
@@ -60,12 +56,6 @@ export default {
         {
           communityId: this.communityId
         }
-      )
-    },
-    isCommunityCreator () {
-      return (
-        this.currentProfileId ===
-          this.communityCreatorId
       )
     }
   },

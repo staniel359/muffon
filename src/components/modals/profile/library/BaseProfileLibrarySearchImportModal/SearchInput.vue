@@ -10,7 +10,7 @@
 
 <script>
 import {
-  mapState
+  mapGetters
 } from 'vuex'
 import ArtistsInput from './SearchInput/ArtistsInput.vue'
 import AlbumsInput from './SearchInput/AlbumsInput.vue'
@@ -40,15 +40,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(
+    ...mapGetters(
       'profile',
       {
-        profileInfo: 'info'
+        profileId: 'id'
       }
     ),
-    profileId () {
-      return this.profileInfo.id.toString()
-    },
     component () {
       return this.components[
         this.scope

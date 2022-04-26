@@ -5,8 +5,7 @@
     <template #default="slotProps">
       <InfoSegment
         :community-data="slotProps.communityData"
-        :community-creator-id="slotProps.communityCreatorId"
-        :current-profile-id="slotProps.profileId"
+        :is-community-creator="slotProps.isCommunityCreator"
       />
 
       <div class="columns-container">
@@ -16,8 +15,7 @@
 
         <RightColumn
           :community-id="communityId"
-          :community-creator-id="slotProps.communityCreatorId"
-          :current-profile-id="slotProps.profileId"
+          :is-community-creator="slotProps.isCommunityCreator"
         />
       </div>
     </template>

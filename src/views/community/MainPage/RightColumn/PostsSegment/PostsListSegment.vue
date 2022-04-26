@@ -11,7 +11,7 @@
       <BasePostsSimpleList
         :posts="slotProps[scope]"
         :community-id="communityId"
-        :community-creator-id="communityCreatorId"
+        :is-community-creator="isCommunityCreator"
       />
     </template>
   </BasePaginatedSegmentContainer>
@@ -39,7 +39,7 @@ export default {
       type: String,
       required: true
     },
-    communityCreatorId: String
+    isCommunityCreator: Boolean
   },
   data () {
     return {

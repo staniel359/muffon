@@ -10,7 +10,7 @@ export default {
     id (
       state
     ) {
-      return state.info?.id
+      return state.info?.id?.toString()
     }
   },
   mutations: {

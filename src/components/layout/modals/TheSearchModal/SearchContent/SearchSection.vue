@@ -30,7 +30,6 @@
           <Component
             :is="component"
             :[listScope]="slotProps[searchScope]"
-            :profile-id="profileId"
             :is-with-listeners-count="isWithListenersCount"
             :is-with-playlist-option="isTracks"
             is-with-image
@@ -52,9 +51,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
 import BasePaginatedSegmentContainer
   from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
@@ -108,12 +104,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
     searchArgs () {
       return {
         query: this.query,
@@ -248,9 +238,6 @@ export default {
         this.scopeData.listScope ||
           this.scope
       )
-    },
-    profileId () {
-      return this.profileInfo.id.toString()
     },
     isWithListenersCount () {
       return !!this.scopeData.isWithListenersCount
