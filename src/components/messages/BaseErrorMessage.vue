@@ -84,6 +84,9 @@ export default {
     },
     errorCode () {
       return this.error.response.status
+    },
+    isServerError () {
+      return this.error.isAxiosError
     }
   },
   watch: {
@@ -102,26 +105,20 @@ export default {
       )
     },
     setErrorData () {
-      if (this.error.isAxiosError) {
-        this.setAxiosErrorData()
-      } else {
-        this.errorData = {
-          ...errorsData.client
-        }
-      }
-    },
-    setAxiosErrorData () {
-      if (this.error.response) {
+      if (this.isServerError) {
         this.setResponseErrorData()
       } else {
-        this.errorData = {
-          ...errorsData.connection
-        }
+        this.setClientErrorData()
       }
     },
     setResponseErrorData () {
       this.errorData =
         this.responseErrorData
+    },
+    setClientErrorData () {
+      this.errorData = {
+        ...errorsData.client
+      }
     },
     isMatchedError (
       error

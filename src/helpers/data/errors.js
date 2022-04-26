@@ -86,6 +86,7 @@ export default {
     isRefreshable: true
   },
   connection: {
+    code: 0,
     icons: [
       'wifi',
       redCloseCornerIcon
