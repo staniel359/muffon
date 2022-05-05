@@ -31,12 +31,6 @@ export default function (
       response.data.conversation_id
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
   return postRequest.bind(
     this
   )(
@@ -44,8 +38,8 @@ export default function (
       url,
       params,
       isWithSelfToken: true,
-      onSuccess: handleSuccess,
-      onError: handleError
+      isSaveError: true,
+      onSuccess: handleSuccess
     }
   )
 }

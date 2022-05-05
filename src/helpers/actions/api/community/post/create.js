@@ -19,12 +19,6 @@ export default function (
     by_community: byCommunity
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
   return postRequest.bind(
     this
   )(
@@ -33,7 +27,7 @@ export default function (
       params,
       isWithSelfId: true,
       isWithSelfToken: true,
-      onError: handleError
+      isSaveError: true
     }
   )
 }

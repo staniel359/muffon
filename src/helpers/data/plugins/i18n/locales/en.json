@@ -469,7 +469,7 @@
   "accounts": {
     "connect": "Connect account",
     "wait": "Your browser will now open. Confirm connection there and click this button again.",
-    "connected": "Account connected"
+    "disconnect": "Disconnect account"
   },
   "noCollection": {
     "header": {

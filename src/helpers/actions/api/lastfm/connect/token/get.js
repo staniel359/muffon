@@ -6,13 +6,8 @@ export default function () {
   const handleSuccess = (
     response
   ) => {
-    const {
-      token,
-      link
-    } = response.data.connect
-
-    this.token = token
-    this.link = link
+    this.connectData =
+      response.data.connect
   }
 
   return getRequest.bind(

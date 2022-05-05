@@ -22,12 +22,6 @@ export default function (
     images
   }
 
-  const handleError = (
-    error
-  ) => {
-    this.error = error
-  }
-
   return postRequest.bind(
     this
   )(
@@ -35,7 +29,7 @@ export default function (
       url,
       params,
       isWithSelfToken: true,
-      onError: handleError
+      isSaveError: true
     }
   )
 }

@@ -9,7 +9,8 @@ export default function (
     isWithSelfToken,
     onComplete,
     onSuccess,
-    onError
+    onError,
+    isSaveError
   }
 ) {
   if (this) {
@@ -67,6 +68,10 @@ export default function (
   ) => {
     if (this) {
       this.isError = true
+
+      if (isSaveError) {
+        this.error = error
+      }
     }
 
     if (onError) {

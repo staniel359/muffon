@@ -9,14 +9,17 @@
       :is-connected="isConnected"
       :lastfm-nickname="lastfmNickname"
     />
+
     <ScrobbleOption
       :is-connected="isConnected"
       :is-player-with-scrobbling="isPlayerWithScrobbling"
     />
+
     <ScrobbleNotificationsOption
       :is-connected="isConnected"
       :is-player-with-scrobbling="isPlayerWithScrobbling"
     />
+
     <ScrobblePercentOption
       :is-connected="isConnected"
       :is-player-with-scrobbling="isPlayerWithScrobbling"

@@ -1,55 +1,32 @@
 <template>
-  <BaseErrorMessage
-    v-if="error"
-    class="connect-error-message"
-    :error="error"
-  />
-
   <div class="content">
-    <div class="connect-button-container">
-      <BaseButton
-        class="lastfm"
-        icon="lastfm"
-        :class="{
-          loading: isLoading,
-          disabled: isDisabled
-        }"
-        :text="connectText"
-        @click="handleClick"
-      />
-    </div>
-
-    <strong
-      v-if="lastfmNickname"
-      class="connect-nickname"
-      v-text="lastfmNickname"
+    <DisconnectButton
+      v-if="isConnected"
+      :lastfm-nickname="lastfmNickname"
+      @success="handleDisconnect"
+    />
+    <ConnectButton
+      v-else-if="token"
+      :token="token"
+    />
+    <TokenButton
+      v-else
+      @token-change="handleTokenChange"
     />
   </div>
-
-  <div
-    v-if="isShowWaitMessage"
-    class="connect-wait-message"
-    v-text="waitText"
-  />
 </template>
 
 <script>
-import {
-  shell
-} from 'electron'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import getLastfmToken from '*/helpers/actions/api/lastfm/connect/token/get'
-import getLastfmSession from '*/helpers/actions/api/lastfm/connect/session/get'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+import DisconnectButton from './ConnectOption/DisconnectButton.vue'
+import ConnectButton from './ConnectOption/ConnectButton.vue'
+import TokenButton from './ConnectOption/TokenButton.vue'
 
 export default {
   name: 'ConnectOption',
   components: {
-    BaseErrorMessage,
-    BaseButton
+    DisconnectButton,
+    ConnectButton,
+    TokenButton
   },
   props: {
     isConnected: Boolean,
@@ -57,87 +34,23 @@ export default {
   },
   data () {
     return {
-      token: null,
-      link: null,
-      profileData: null,
-      error: null,
-      isLoading: false,
-      isShowWaitMessage: false
+      token: null
     }
-  },
-  computed: {
-    connectText () {
-      return this.$t(
-        `accounts.${this.connectTextKey}`
-      )
-    },
-    connectTextKey () {
-      return this.isConnected
-        ? 'connected'
-        : 'connect'
-    },
-    waitText () {
-      return this.$t(
-        'accounts.wait'
-      )
-    },
-    isDisabled () {
-      return (
-        this.isLoading ||
-          this.isConnected
-      )
-    }
-  },
-  watch: {
-    token: 'handleTokenChange',
-    profileData: 'handleProfileDataChange'
   },
   methods: {
-    handleTokenChange () {
-      this.isShowWaitMessage = true
-
-      shell.openExternal(
-        this.link
-      )
-    },
-    handleProfileDataChange (
+    handleTokenChange (
       value
     ) {
-      updateGlobalStore(
-        {
-          'profile.info': value
-        }
-      )
+      this.token = value
     },
-    handleClick () {
-      if (this.token) {
-        this.isShowWaitMessage = false
-
-        this.getLastfmSession(
-          {
-            token: this.token
-          }
-        )
-      } else {
-        this.getLastfmToken()
-      }
-    },
-    getLastfmToken,
-    getLastfmSession
+    handleDisconnect () {
+      this.token = null
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.connect-error-message
-  margin-bottom: 0.5em
-
-.connect-button-container
-  @extend .flex-full
-
-.connect-nickname
-  margin-left: 1em
-
-.connect-wait-message
-  margin-top: 0.5em
+::v-deep(.error-message)
+  margin-bottom: 1em
 </style>

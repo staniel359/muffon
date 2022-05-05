@@ -36,8 +36,8 @@ export default function (
       this.playlistTrackId =
           response.data.playlist_track_id
 
-      this.paginationItem
-        .tracks_count = response.data.playlist_tracks_count
+      this.paginationItem.tracks_count =
+        response.data.playlist_tracks_count
     }
   }
 

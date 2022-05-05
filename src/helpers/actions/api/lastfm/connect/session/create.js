@@ -1,15 +1,15 @@
 import store from '*/plugins/store'
-import getRequest from '*/helpers/actions/api/request/get'
+import postRequest from '*/helpers/actions/api/request/post'
 
 export default function (
   {
-    token
+    lastfmToken
   }
 ) {
-  const url = '/lastfm/connect/session'
+  const url = '/lastfm/connect/sessions'
 
   const params = {
-    token
+    lastfm_token: lastfmToken
   }
 
   const handleSuccess = (
@@ -18,22 +18,24 @@ export default function (
     const profileInfo =
       store.state.profile.info
 
-    const profileLastFMData =
+    const profileLastFmData =
       response.data.profile
 
     this.profileData = {
       ...profileInfo,
-      ...profileLastFMData
+      ...profileLastFmData
     }
   }
 
-  return getRequest.bind(
+  return postRequest.bind(
     this
   )(
     {
       url,
       params,
       isWithSelfId: true,
+      isWithSelfToken: true,
+      isSaveError: true,
       onSuccess: handleSuccess
     }
   )
