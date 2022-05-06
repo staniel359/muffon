@@ -17,7 +17,7 @@ const isDevelopment =
 
 const serverUrl = isDevelopment
   ? 'http://localhost:4000'
-  : 'https://muffon.endorphine.by'
+  : 'https://178-79-138-81.ip.linodeusercontent.com'
 
 axios.defaults.baseURL =
   `${serverUrl}/api/v2/`
