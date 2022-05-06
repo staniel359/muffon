@@ -234,7 +234,7 @@ export default {
       )
     },
     isResponsePageCollection () {
-      return !!this.responsePageCollection.length
+      return !!this.responsePageCollection?.length
     },
     isCollectionFull () {
       return (
