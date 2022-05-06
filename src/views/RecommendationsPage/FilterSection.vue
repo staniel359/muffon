@@ -26,12 +26,9 @@
 <script>
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
-import ProfileArtistsFilterBlock
-  from './FilterSection/ProfileArtistsFilterBlock.vue'
-import TagsFilterBlock
-  from './FilterSection/TagsFilterBlock.vue'
-import FilterScopeSelect
-  from './FilterSection/FilterScopeSelect.vue'
+import ArtistsFilterBlock from './FilterSection/ArtistsFilterBlock.vue'
+import TagsFilterBlock from './FilterSection/TagsFilterBlock.vue'
+import FilterScopeSelect from './FilterSection/FilterScopeSelect.vue'
 import FilterItems from './FilterSection/FilterItems.vue'
 import {
   isObjectChanged
@@ -41,7 +38,7 @@ export default {
   name: 'FilterSection',
   components: {
     BaseAccordionContainer,
-    ProfileArtistsFilterBlock,
+    ArtistsFilterBlock,
     TagsFilterBlock,
     FilterScopeSelect,
     FilterItems
@@ -55,7 +52,7 @@ export default {
       filterScope: null,
       filterItems: [],
       filterComponents: {
-        artists: 'ProfileArtistsFilterBlock',
+        artists: 'ArtistsFilterBlock',
         tags: 'TagsFilterBlock'
       }
     }

@@ -30,7 +30,7 @@ import getRecommendation from '*/helpers/actions/api/recommendation/get'
 import modalMixin from '*/mixins/modalMixin'
 
 export default {
-  name: 'BaseRecommendationProfileArtistsModal',
+  name: 'BaseRecommendationArtistsModal',
   components: {
     BasePaginatedSegmentModalContainer,
     BaseArtistsSimpleList
@@ -50,7 +50,7 @@ export default {
       error: null,
       isLoading: false,
       limit: 50,
-      scope: 'profile_artists'
+      scope: 'artists'
     }
   },
   computed: {
@@ -63,7 +63,7 @@ export default {
     recommendationArgs () {
       return {
         recommendationId: this.recommendationId,
-        scope: 'artists',
+        scope: this.scope,
         limit: this.limit
       }
     },

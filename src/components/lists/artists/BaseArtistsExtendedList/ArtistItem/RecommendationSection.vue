@@ -1,5 +1,5 @@
 <template>
-  <ProfileArtistsSection
+  <ArtistsSection
     :recommendation-data="artistData"
   />
 
@@ -11,15 +11,14 @@
 </template>
 
 <script>
-import ProfileArtistsSection
-  from './RecommendationSection/ProfileArtistsSection.vue'
+import ArtistsSection from './RecommendationSection/ArtistsSection.vue'
 import BaseRecommendationDeleteModal
   from '*/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
 
 export default {
   name: 'RecommendationSection',
   components: {
-    ProfileArtistsSection,
+    ArtistsSection,
     BaseRecommendationDeleteModal
   },
   inject: [

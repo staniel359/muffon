@@ -7,8 +7,8 @@
   />
 
   <BaseArtistsSimpleList
-    class="profile-artists-list"
-    :artists="profileArtists"
+    class="artists-list"
+    :artists="artists"
     :profile-id="profileId"
     is-image-small
     is-link-to-library
@@ -24,7 +24,7 @@
       v-text="moreText"
     />
 
-    <BaseRecommendationProfileArtistsModal
+    <BaseRecommendationArtistsModal
       ref="modal"
       :recommendation-id="recommendationId"
     />
@@ -39,19 +39,19 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
-import BaseRecommendationProfileArtistsModal
-  from '*/components/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
+import BaseRecommendationArtistsModal
+  from '*/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
 
 export default {
-  name: 'ProfileArtistsSection',
+  name: 'ArtistsSection',
   components: {
     BaseDivider,
     BaseHeader,
     BaseArtistsSimpleList,
-    BaseRecommendationProfileArtistsModal
+    BaseRecommendationArtistsModal
   },
   props: {
     recommendationData: {
@@ -83,25 +83,25 @@ export default {
     counterText () {
       return this.$tc(
         'counters.genitive.artists',
-        this.profileArtistsCount,
+        this.artistsCount,
         {
-          count: this.profileArtistsCountFormatted
+          count: this.artistsCountFormatted
         }
       )
     },
-    profileArtistsCountFormatted () {
+    artistsCountFormatted () {
       return formatNumber(
-        this.profileArtistsCount
+        this.artistsCount
       )
     },
-    profileArtistsCount () {
-      return this.recommendationData.profile_artists_count
+    artistsCount () {
+      return this.recommendationData.artists_count
     },
-    profileArtists () {
-      return this.recommendationData.profile_artists
+    artists () {
+      return this.recommendationData.artists
     },
     isMore () {
-      return this.profileArtistsCount > 5
+      return this.artistsCount > 5
     },
     moreText () {
       return this.$t(
@@ -126,7 +126,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.profile-artists-list
+.artists-list
   margin-top: 0.5em
 
 .more-container

@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-artists-search-container">
+  <div class="artists-search-container">
     <SearchInput
       ref="input"
       :artists="artists"
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import SearchInput from './ProfileArtistsFilterBlock/SearchInput.vue'
+import SearchInput from './ArtistsFilterBlock/SearchInput.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 
 export default {
-  name: 'ProfileArtistsFilterBlock',
+  name: 'ArtistsFilterBlock',
   components: {
     SearchInput,
     BaseClearButton
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.profile-artists-search-container
+.artists-search-container
   @extend .d-flex, .align-items-center
 
 .reset-button

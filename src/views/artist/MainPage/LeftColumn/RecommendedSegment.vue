@@ -25,7 +25,7 @@
           @click="handleArtistsButtonClick"
         />
 
-        <BaseRecommendationProfileArtistsModal
+        <BaseRecommendationArtistsModal
           ref="artistsModal"
           :recommendation-id="recommendationId"
         />
@@ -40,8 +40,8 @@ import BaseSegmentContainer
 import BaseIcon from '*/components/BaseIcon.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseRecommendationProfileArtistsModal
-  from '*/components/modals/recommendation/BaseRecommendationProfileArtistsModal.vue'
+import BaseRecommendationArtistsModal
+  from '*/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -53,7 +53,7 @@ export default {
     BaseIcon,
     BaseHeader,
     BaseButton,
-    BaseRecommendationProfileArtistsModal
+    BaseRecommendationArtistsModal
   },
   props: {
     recommendationData: {
@@ -75,19 +75,19 @@ export default {
     artistsText () {
       return this.$tc(
         'counters.genitive.artists',
-        this.profileArtistsCount,
+        this.artistsCount,
         {
-          count: this.profileArtistsCountFormatted
+          count: this.artistsCountFormatted
         }
       )
     },
-    profileArtistsCountFormatted () {
+    artistsCountFormatted () {
       return formatNumber(
-        this.profileArtistsCount
+        this.artistsCount
       )
     },
-    profileArtistsCount () {
-      return this.recommendationData.profile_artists_count
+    artistsCount () {
+      return this.recommendationData.artists_count
     },
     recommendationId () {
       return this.recommendationData.id.toString()
