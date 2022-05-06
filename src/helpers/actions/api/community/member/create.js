@@ -13,9 +13,7 @@ export default function (
   ) => {
     this.isMember = true
     this.membersCount =
-      response
-        .data
-        .community_members_count
+      response.data.community.members_count
   }
 
   return postRequest.bind(

@@ -17,9 +17,7 @@ export default function (
   ) => {
     this.isFollowing = false
     this.followersCount =
-      response
-        .data
-        .other_profile_follower_profiles_count
+      response.data.other_profile.followers_count
   }
 
   return deleteRequest.bind(

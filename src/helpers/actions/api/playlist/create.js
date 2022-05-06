@@ -25,7 +25,7 @@ export default function (
     response
   ) => {
     this.playlistId =
-      response.data.playlist_id
+      response.data.playlist.id
   }
 
   const handleError = (

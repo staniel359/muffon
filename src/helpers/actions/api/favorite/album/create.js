@@ -26,7 +26,7 @@ export default function (
     response
   ) => {
     this.favoriteId =
-      response.data.favorite_id.toString()
+      response.data.favorite_album.id.toString()
   }
 
   return postRequest.bind(

@@ -22,7 +22,7 @@ export default function (
     response
   ) => {
     this.communityId =
-      response.data.community_id
+      response.data.community.id
   }
 
   const handleError = (

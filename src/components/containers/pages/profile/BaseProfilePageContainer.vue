@@ -110,8 +110,7 @@ export default {
     setFollowersCount (
       value
     ) {
-      this.profileData
-        .follower_profiles_count = value
+      this.profileData.followers_count = value
     }
   }
 }

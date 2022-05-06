@@ -24,7 +24,7 @@ export default function (
     response
   ) => {
     this.listenedId =
-      response.data.listened_id.toString()
+      response.data.listened_track.id.toString()
   }
 
   return postRequest.bind(

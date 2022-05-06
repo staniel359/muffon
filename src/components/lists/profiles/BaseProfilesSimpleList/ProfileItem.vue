@@ -196,8 +196,7 @@ export default {
     setFollowersCount (
       value
     ) {
-      this.paginationItem
-        .follower_profiles_count = value
+      this.paginationItem.followers_count = value
     },
     showMessageModal () {
       this.$refs

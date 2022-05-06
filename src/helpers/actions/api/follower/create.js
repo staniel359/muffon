@@ -21,9 +21,7 @@ export default function (
   ) => {
     this.isFollowing = true
     this.followersCount =
-      response
-        .data
-        .other_profile_follower_profiles_count
+      response.data.other_profile.followers_count
   }
 
   return postRequest.bind(

@@ -31,7 +31,7 @@ export default {
   ],
   provide () {
     return {
-      setProfileData: this.setProfileData
+      setPlaylistData: this.setPlaylistData
     }
   },
   props: {
@@ -99,10 +99,10 @@ export default {
         this.playlistArgs
       )
     },
-    setProfileData (
+    setPlaylistData (
       value
     ) {
-      this.profileData = value
+      this.profileData.playlist = value
     }
   }
 }

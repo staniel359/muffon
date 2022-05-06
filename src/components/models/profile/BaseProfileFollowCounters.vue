@@ -57,7 +57,7 @@ export default {
       )
     },
     followersCount () {
-      return this.profileData.follower_profiles_count
+      return this.profileData.followers_count
     },
     followingText () {
       return this.$tc(
@@ -72,7 +72,7 @@ export default {
       return `<strong>${this.followingCount}</strong>`
     },
     followingCount () {
-      return this.profileData.following_profiles_count
+      return this.profileData.following_count
     }
   },
   methods: {

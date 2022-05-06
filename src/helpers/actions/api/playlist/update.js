@@ -11,7 +11,7 @@ export default function (
     image
   }
 ) {
-  this.profileData = null
+  this.playlistData = null
 
   const profileId =
     store.getters['profile/id']
@@ -27,8 +27,8 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.profileData =
-      response.data.profile
+    this.playlistData =
+      response.data.playlist
   }
 
   const handleError = (

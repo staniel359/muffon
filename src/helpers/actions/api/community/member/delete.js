@@ -17,9 +17,7 @@ export default function (
   ) => {
     this.isMember = false
     this.membersCount =
-      response
-        .data
-        .community_members_count
+      response.data.community.members_count
   }
 
   return deleteRequest.bind(

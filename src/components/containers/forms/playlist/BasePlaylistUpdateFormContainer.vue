@@ -26,7 +26,7 @@ export default {
     BaseFormContainer
   },
   inject: [
-    'setProfileData'
+    'setPlaylistData'
   ],
   props: {
     playlistId: {
@@ -41,7 +41,7 @@ export default {
   data () {
     return {
       form: null,
-      profileData: null,
+      playlistData: null,
       error: null,
       isLoading: false,
       fields: [
@@ -71,13 +71,10 @@ export default {
     },
     playlistTitle () {
       return this.playlistData.title
-    },
-    playlistData () {
-      return this.profileData.playlist
     }
   },
   watch: {
-    profileData: 'handleProfileDataChange'
+    playlistData: 'handlePlaylistDataChange'
   },
   methods: {
     updatePlaylist,
@@ -101,11 +98,11 @@ export default {
         updateArgs
       )
     },
-    handleProfileDataChange (
+    handlePlaylistDataChange (
       value
     ) {
       if (value) {
-        this.setProfileData(
+        this.setPlaylistData(
           value
         )
 

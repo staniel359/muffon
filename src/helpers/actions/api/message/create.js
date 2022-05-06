@@ -28,7 +28,7 @@ export default function (
     response
   ) => {
     this.conversationId =
-      response.data.conversation_id
+      response.data.conversation.id
   }
 
   return postRequest.bind(

@@ -34,10 +34,10 @@ export default function (
   ) => {
     if (isSelectable) {
       this.playlistTrackId =
-          response.data.playlist_track_id
+          response.data.playlist_track.id
 
       this.paginationItem.tracks_count =
-        response.data.playlist_tracks_count
+        response.data.playlist.tracks_count
     }
   }
 
