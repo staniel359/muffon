@@ -26,25 +26,34 @@ It retrieves metadata, audio, and video from various Internet sources, such as:
 It has **no ads** and is **absolutely free** to use.
 
 ### Features
-- listen to tracks/artists/whole albums
-- listen to tag/artist radio
-- scrobble tracks
-- watch videos
-- view tracks' lyrics
-- view tags and their top artists/albums/tracks
-- view top artists/tracks/tags
-- search through sources above
-- create your music library
-- view your library compatibility with others
-- get personal recommendations (based on your library)
-- create playlists
-- add to favorites
-- add to bookmarks
-- add to listened
-- create posts
-- follow other profiles
-- send messages
-- view feed
+- listening (artists / albums / tracks)
+- music library (and compatibility with others)
+- recommendations (based on your library)
+- search (through all of the sources above)
+- radio (tags / artists)
+- scrobbling (Last.FM)
+- videos (YouTube)
+- lyrics (Genius)
+- tags (with top artists / albums / tracks)
+- top (artists / tracks / tags)
+- playlists
+- favorites (artists / albums / tracks)
+- bookmarks (artists / albums / tracks)
+- listened (artists / albums / tracks)
+- posting
+- following
+- messaging
+- feed
+
+### Upcoming features
+- communities
+- new / upcoming releases
+- multitag search
+- offline listening
+- top (based on location)
+- sharing (artists / albums / tracks / playlists / videos)
+- messenger
+- ??? (your suggestions)
 
 ### Languages
 - English
@@ -56,9 +65,9 @@ It has **no ads** and is **absolutely free** to use.
 - Electron
 
 ### Available platforms
-- Windows 10
-- Linux
+- Windows
 - MacOS
+- Linux
 
 ## Download
 [Latest (v0.1.0-beta.1)](https://github.com/staniel359/muffon/releases/tag/v0.1.0-beta.1)
@@ -71,6 +80,8 @@ Create an issue [here](https://github.com/staniel359/muffon/issues)
 ## Contribute
 - Translators wanted for localization
 - Python + Ruby developers wanted for [Spotify library](https://github.com/kokarare1212/librespot-python) reverse engineering
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/staniel359)
 
 ## Related projects
 [muffon-api](https://github.com/staniel359/muffon-api) - REST API for client
