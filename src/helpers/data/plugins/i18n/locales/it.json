@@ -1,5 +1,6 @@
 {
   "navigation": {
+    "home": "Home page",
     "artists": "Artisti",
     "artist": "Artista",
     "albums": "Album",
@@ -13,7 +14,11 @@
     "videos": "Video",
     "related": "Correlati",
     "tops": "In evidenza",
+    "releases": "Pubblicati",
+    "new": "Nuovi",
+    "upcoming": "In arrivo",
     "radio": "Radio",
+    "multitag": "Cerca tag multipli",
     "profiles": "Profili",
     "feed": "Feed",
     "posts": "Post",
@@ -23,11 +28,18 @@
     "playlists": "Playlist",
     "favorites": "Preferiti",
     "bookmarks": "Salvati",
-    "settings": "Impostazioni",
+    "bookmarkModels": {
+      "artists": "Salva artisti",
+      "albums": "Salva album",
+      "tracks": "Salva brani"
+    },
+    "communities": "Communities",
+    "settings": "Settings",
     "model": {
       "artists": "Artisti {modelName}",
       "albums": "Album {modelName}",
       "tracks": "Brani {modelName}",
+      "tags": "{modelName} tags",
       "similar": "Simile a {modelName}",
       "images": "Immagini {modelName}",
       "videos": "Video {modelName}",
@@ -36,11 +48,21 @@
       "library": "Libreria {modelName}",
       "playlists": "Playlist {nickname}",
       "favorites": "Preferiti {nickname}"
+      "favoritesModels": {
+        "artists": "{modelName} artisti preferiti",
+        "albums": "{modelName} album preferiti",
+        "tracks": "{modelName} brani preferiti"
+      },
+      "communities": "{modelName} communities"
     },
-    "top": {
+    "topCollection": {
       "artists": "Artisti in evidenza",
       "tracks": "Brani in evidenza",
       "tags": "Tag in evidenza"
+    },
+    "releasesCollection": {
+      "new": "Nuove uscite",
+      "upcoming": "Uscite in arrivo"
     }
   },
   "errors": {
@@ -90,6 +112,7 @@
     "post": "Post",
     "send": "Invia",
     "next": "Prossimo",
+    "upload": "Caricamento",
     "from": {
       "search": "dalla ricerca",
       "folder": "dalla cartella",
@@ -112,6 +135,7 @@
     "add": {
       "playlist": "Aggiungi playlist",
       "tracks": "Aggiungi brani"
+      "community": "Aggiungi comunità"
     },
     "addTo": {
       "library": "Aggiungi alla libreria",
@@ -128,6 +152,10 @@
       "bookmarks": "Cancella dai salvati",
       "listened": "Cancella dagli ascolti"
     }
+  },
+  "links": {
+    "playlists": "Tutte le playlist",
+    "communities": "Tutte le comunità"
   },
   "inputs": {
     "search": "Ricerca...",
@@ -154,7 +182,8 @@
           "album": "Cancella album dai salvati",
           "track": "Cancella brano dai salvati"
         },
-        "post": "Cancella post"
+        "post": "Cancella post",
+        "community": "Cancella comunità"
       },
       "going": {
         "library": "Stai per cancellare {modelName} dalla libreria.",
@@ -164,6 +193,7 @@
         "favorite": "Stai per cancellare {modelName} dai preferiti.",
         "bookmark": "Stai per cancellare {modelName} dai salvati.",
         "post": "Stai per cancellare questo post."
+        "community": "Stai per cancellare questa comunit."
       },
       "also": {
         "library": {
@@ -171,6 +201,7 @@
           "album": "Verranno inoltre cancellati tutti i brani di questo album."
         },
         "playlist": "Verranno inoltre cancellati tutti i brani nella playlist."
+        "community": "Verranno inoltre cancellati tutti i post della comunità."
       },
       "undo": "Questa azione non potrà essere annullata.",
       "sure": "Continuare?"
@@ -192,9 +223,10 @@
         "male": "Maschio",
         "female": "Femmina",
         "other": "Altro"
-      }
+      },
+      "remember": "Ricordami",
+      "asCommunity": "Come comunità"
     },
-    "remember": "Ricorda dati",
     "extra": "Altre informazioni",
     "errors": {
       "notFound": "Email o password errati",
@@ -228,18 +260,36 @@
     "scrobbled": "Scrobble di {trackFullTitle} completato",
     "updated": {
       "post": "Il post è stato aggiornato"
+      "playlist": "La playlist {playlistTitle} è stata aggiornata",
+      "community": "La comunità {communityTitle} è stata aggiornata"
     },
     "deleted": {
       "library": "{modelName} è stato cancellato dalla libreria",
       "playlist": "La playlist {playlistTitle} è stata cancellata"
+      "community": "La comunità {communityTitle} è stata cancellata"
     }
   },
   "counters": {
-    "artists": "{count} artisti",
-    "albums": "{count} album",
-    "tracks": "{count} brani",
-    "followers": "{count} follower",
-    "following": "{count} following"
+    "nominative": {
+      "artists": "{count} artista | {count} artisti",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} brano | {count} brani",
+      "files": "{count} file | {count} file",
+      "followers": "{count} follower | {count} follower",
+      "following": "{count} following",
+      "members": "{count} membro | {count} membri"
+    },
+    "genitive": {
+      "artists": "{count} artista | {count} artisti",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} brano | {count} brani",
+      "plays": "{count} riproduzione | {count} riproduzioni"
+    },
+    "accusative": {
+      "artists": "{count} artista | {count} artisti",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} brano | {count} brani"
+    }
   },
   "sources": {
     "select": {
@@ -363,6 +413,11 @@
     "follow": "Segui",
     "unfollow": "Smetti di seguire"
   },
+  "memberships": {
+    "joined": "Ti sei unito",
+    "join": "Unisciti",
+    "leave": "Abbandona"
+  },
   "message": {
     "send": "Invia messaggio",
     "sent": {
@@ -383,14 +438,8 @@
   "recommendation": {
     "similar": "Simile a {count} artisti:"
   },
-  "playlist": {
-    "created": "Creata il {date}"
-  },
   "import": {
-    "active": {
-      "tracks": "Sono stati importati {value} su {total} brani...",
-      "plays": "Sono state importate {value} di {total} riproduzioni..."
-    },
+    "active": "Importing {count} of {counter}...",
     "success": {
       "tracks": {
         "header": "Tutti i {count} brani sono stati importati con successo",
@@ -402,21 +451,20 @@
     }
   },
   "save": {
-    "active": {
-      "artists": "Salvataggio di {value} su {total} artisti...",
-      "albums": "Salvataggio di {value} su {total} album...",
-      "tracks": "Salvataggio di {value} su {total} brani..."
-    },
+    "active": "Salvataggio di {count} su {counter}...",
     "success": {
-      "artists": "{count} artisti salvati con successo nella libreria",
-      "albums": "{count} album salvati con successo nella libreria",
-      "tracks": "{count} brani salvati con successo nella libreria"
+      "library": {
+        "artists": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
+        "albums": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
+        "tracks": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria"
+      },
+      "playlist": {
+        "artists": "{counter} was added to playlist | {counter} were added to playlist",
+        "albums": "{counter} was added to playlist | {counter} were added to playlist",
+        "tracks": "{counter} was added to playlist | {counter} were added to playlist"
+      }
     },
-    "error": {
-      "artists": "Impossibile salvare {count} artisti:",
-      "albums": "Impossibile salvare {count} album:",
-      "tracks": "Impossibile salvare {count} brani:"
-    }
+    "error": "{counter} could not be added:"
   },
   "accounts": {
     "connect": "Connetti account",
@@ -428,14 +476,20 @@
       "artists": "Nessun artista",
       "albums": "Nessun album",
       "tracks": "Nessun brano",
+      "similar": "Nessun vicino",
+      "tags": "Nessun tag",
       "posts": "Nessun post",
       "feed": "Nessun post",
       "conversations": "Nessuna conversazione",
-      "followers": "Non ti segue nessuno",
-      "following": "Non stai seguendo nessuno",
+      "messages": "Nessun messaggio",
+      "followers": "Nessun follower",
+      "following": "Nessun following",
       "recommendations": "Nessun consiglio",
       "playlists": "Nessuna playlist",
-      "videos": "Nessun video"
+      "communities": "Nessuna communità",
+      "members": "Nessun membro",
+      "videos": "Nessun video",
+      "related": "Nessun correlato"
     },
     "content": "Non c'è ancora nulla qui"
   },
