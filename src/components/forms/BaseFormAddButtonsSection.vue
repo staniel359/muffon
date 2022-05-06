@@ -10,6 +10,10 @@
         :images="images"
         @change="handleImagesChange"
       />
+
+      <EmojiButton
+        @select="handleEmojiSelect"
+      />
     </div>
   </div>
 </template>
@@ -17,12 +21,14 @@
 <script>
 import TracksButton from './BaseFormAddButtonsSection/TracksButton.vue'
 import ImagesButton from './BaseFormAddButtonsSection/ImagesButton.vue'
+import EmojiButton from './BaseFormAddButtonsSection/EmojiButton.vue'
 
 export default {
   name: 'BaseFormAddButtonsSection',
   components: {
     TracksButton,
-    ImagesButton
+    ImagesButton,
+    EmojiButton
   },
   props: {
     tracks: Array,
@@ -30,7 +36,8 @@ export default {
   },
   emits: [
     'tracksChange',
-    'imagesChange'
+    'imagesChange',
+    'emojiSelect'
   ],
   methods: {
     handleTracksChange (
@@ -46,6 +53,14 @@ export default {
     ) {
       this.$emit(
         'imagesChange',
+        value
+      )
+    },
+    handleEmojiSelect (
+      value
+    ) {
+      this.$emit(
+        'emojiSelect',
         value
       )
     }

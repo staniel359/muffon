@@ -8,7 +8,7 @@
       @success="handleSuccess"
     >
       <BaseContentField
-        ref="input"
+        ref="content"
         @submit="handleSubmit"
       />
 
@@ -35,6 +35,7 @@
           :images="images"
           @tracks-change="handleTracksChange"
           @images-change="handleImagesChange"
+          @emoji-select="handleEmojiSelect"
         />
 
         <BaseSubmitButton
@@ -84,11 +85,11 @@ export default {
     }
   },
   mounted () {
-    this.focusInput()
+    this.focusContent()
   },
   methods: {
     handleSuccess () {
-      this.resetInput()
+      this.resetContent()
 
       this.tracks = []
       this.images = []
@@ -107,23 +108,39 @@ export default {
     ) {
       this.images = value
     },
+    handleEmojiSelect (
+      value
+    ) {
+      this.updateContentValue(
+        value
+      )
+    },
     handleSubmit () {
       this.clickSubmit()
     },
-    focusInput () {
+    focusContent () {
       this.$refs
-        .input
+        .content
         .focus()
     },
-    resetInput () {
+    resetContent () {
       this.$refs
-        .input
+        .content
         .reset()
     },
     clickSubmit () {
       this.$refs
         .submit
         .click()
+    },
+    updateContentValue (
+      value
+    ) {
+      this.$refs
+        .content
+        .updateValue(
+          value
+        )
     }
   }
 }

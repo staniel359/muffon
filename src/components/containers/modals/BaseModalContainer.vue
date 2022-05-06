@@ -62,10 +62,7 @@ export default {
     }
   },
   watch: {
-    isDarkMode: {
-      immediate: true,
-      handler: 'handleIsDarkModeChange'
-    }
+    isDarkMode: 'handleIsDarkModeChange'
   },
   beforeUnmount () {
     remove(
@@ -73,9 +70,7 @@ export default {
     )
   },
   methods: {
-    async handleIsDarkModeChange () {
-      await this.$nextTick()
-
+    handleIsDarkModeChange () {
       this.toggleInvertedClass()
     },
     handleShow () {
@@ -105,6 +100,8 @@ export default {
           this.$refs.modal,
           this.modalOptions
         )
+
+        this.toggleInvertedClass()
       }
 
       showModal(

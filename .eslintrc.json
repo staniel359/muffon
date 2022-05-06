@@ -37,6 +37,7 @@
         "minItems": 1
       }
     ],
+    "no-new": "off",
     "object-curly-newline": [
       "error",
       {

@@ -10,7 +10,7 @@
       @success="handleSuccess"
     >
       <BaseContentField
-        ref="input"
+        ref="content"
         @submit="handleSubmit"
       />
 
@@ -37,6 +37,7 @@
           :images="images"
           @tracks-change="handleTracksChange"
           @images-change="handleImagesChange"
+          @emoji-select="handleEmojiSelect"
         />
 
         <BasePostAsCommunityField
@@ -100,7 +101,7 @@ export default {
       this.clickSubmit()
     },
     handleSuccess () {
-      this.resetInput()
+      this.resetContent()
 
       this.tracks = []
       this.images = []
@@ -119,15 +120,31 @@ export default {
     ) {
       this.images = value
     },
+    handleEmojiSelect (
+      value
+    ) {
+      this.updateContentValue(
+        value
+      )
+    },
     clickSubmit () {
       this.$refs
         .submit
         .click()
     },
-    resetInput () {
+    resetContent () {
       this.$refs
-        .input
+        .content
         .reset()
+    },
+    updateContentValue (
+      value
+    ) {
+      this.$refs
+        .content
+        .updateValue(
+          value
+        )
     }
   }
 }

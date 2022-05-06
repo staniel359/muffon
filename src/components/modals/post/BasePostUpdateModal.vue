@@ -40,6 +40,7 @@
             :images="images"
             @tracks-change="handleTracksChange"
             @images-change="handleImagesChange"
+            @emoji-select="handleEmojiSelect"
           />
 
           <BasePostAsCommunityField
@@ -135,7 +136,7 @@ export default {
   },
   methods: {
     handleVisible () {
-      this.focusInput()
+      this.focusContent()
     },
     handleSubmit () {
       this.clickSubmit()
@@ -149,6 +150,13 @@ export default {
       value
     ) {
       this.images = value
+    },
+    handleEmojiSelect (
+      value
+    ) {
+      this.updateContentValue(
+        value
+      )
     },
     handleSuccess (
       value
@@ -213,7 +221,7 @@ export default {
         .modal
         .hide()
     },
-    focusInput () {
+    focusContent () {
       this.$refs
         .content
         .focus()
@@ -222,6 +230,15 @@ export default {
       this.$refs
         .submit
         .click()
+    },
+    updateContentValue (
+      value
+    ) {
+      this.$refs
+        .content
+        .updateValue(
+          value
+        )
     }
   }
 }

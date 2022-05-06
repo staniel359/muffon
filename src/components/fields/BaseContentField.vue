@@ -40,6 +40,13 @@ export default {
       this.$refs
         .input
         .value = ''
+    },
+    updateValue (
+      value
+    ) {
+      this.$refs
+        .input
+        .value += value
     }
   }
 }

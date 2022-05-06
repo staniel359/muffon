@@ -22,7 +22,7 @@
           @success="handleSuccess"
         >
           <BaseContentField
-            ref="input"
+            ref="content"
             @submit="handleSubmit"
           />
 
@@ -49,6 +49,7 @@
               :images="images"
               @tracks-change="handleTracksChange"
               @images-change="handleImagesChange"
+              @emoji-select="handleEmojiSelect"
             />
 
             <BaseSubmitButton
@@ -112,7 +113,7 @@ export default {
   },
   methods: {
     handleVisible () {
-      this.focusInput()
+      this.focusContent()
     },
     handleSuccess (
       conversationId
@@ -133,6 +134,13 @@ export default {
     ) {
       this.images = value
     },
+    handleEmojiSelect (
+      value
+    ) {
+      this.updateContentValue(
+        value
+      )
+    },
     handleSubmit () {
       this.clickSubmit()
     },
@@ -146,15 +154,24 @@ export default {
         .modal
         .hide()
     },
-    focusInput () {
+    focusContent () {
       this.$refs
-        .input
+        .content
         .focus()
     },
     clickSubmit () {
       this.$refs
         .submit
         .click()
+    },
+    updateContentValue (
+      value
+    ) {
+      this.$refs
+        .content
+        .updateValue(
+          value
+        )
     }
   }
 }

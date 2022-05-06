@@ -6,6 +6,7 @@
       inverted: isDarkMode,
       icon
     }"
+    @click="handleClick"
   >
     <BaseIcon
       v-if="icon"
@@ -31,7 +32,8 @@ export default {
     icon: String
   },
   emits: [
-    'init'
+    'init',
+    'click'
   ],
   computed: {
     ...mapState(
@@ -46,6 +48,16 @@ export default {
       'init',
       this.$refs.button
     )
+  },
+  methods: {
+    handleClick (
+      event
+    ) {
+      this.$emit(
+        'click',
+        event
+      )
+    }
   }
 }
 </script>

@@ -131,6 +131,12 @@ p
       &:not(:first-child)
         border-top: $borderInverted
 
+.ui.list
+  &.inverted
+    & > .item
+      & >.content
+        color: $colorWhite
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -472,14 +478,6 @@ p
     &.bordered
       border: $borderInverted !important
 
-.main-code
-  @extend .background-grey
-  padding: 3px 9px
-  border-radius: 6px
-  font-weight: 700
-  &.inverted
-    @extend .background-grey-inverted
-
 .main-source-select-container
   @extend .d-flex, .align-items-center
 
@@ -503,6 +501,7 @@ p
   margin-right: 1em !important
 
 .main-form
+  position: unset !important
   & > .submit-button-container
     @extend .d-flex, .justify-content-flex-end
     margin-top: 1em
