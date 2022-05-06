@@ -23,7 +23,7 @@ import BaseAlbumsSimpleList
   from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
 
 export default {
-  name: 'BaseCommonProfileAlbumsModal',
+  name: 'BaseCommonAlbumsModal',
   components: {
     BaseProfileLibraryCommonModalContainer,
     BaseAlbumsSimpleList

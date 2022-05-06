@@ -12,7 +12,7 @@
     @click="handleClick"
   />
 
-  <BaseCommonProfileAlbumsModal
+  <BaseCommonAlbumsModal
     ref="modal"
     :profile-id="profileId"
   />
@@ -20,8 +20,8 @@
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseCommonProfileAlbumsModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonProfileAlbumsModal.vue'
+import BaseCommonAlbumsModal
+  from '*/components/modals/profile/library/compatibility/BaseCommonAlbumsModal.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -30,7 +30,7 @@ export default {
   name: 'AlbumsButton',
   components: {
     BaseButton,
-    BaseCommonProfileAlbumsModal
+    BaseCommonAlbumsModal
   },
   props: {
     compatibilityData: {

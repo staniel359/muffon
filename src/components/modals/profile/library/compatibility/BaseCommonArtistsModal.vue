@@ -5,12 +5,10 @@
     :scope="scope"
   >
     <template #default="slotProps">
-      <BaseTracksSimpleList
-        :tracks="slotProps[scope]"
+      <BaseArtistsSimpleList
+        :artists="slotProps[scope]"
         :profile-id="profileId"
-        is-with-artist-name
         is-link-to-library
-        is-with-image
         @link-click="handleLinkClick"
       />
     </template>
@@ -20,21 +18,21 @@
 <script>
 import BaseProfileLibraryCommonModalContainer
   from '*/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
-import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
-  name: 'BaseCommonProfileTracksModal',
+  name: 'BaseCommonArtistsModal',
   components: {
     BaseProfileLibraryCommonModalContainer,
-    BaseTracksSimpleList
+    BaseArtistsSimpleList
   },
   props: {
     profileId: String
   },
   data () {
     return {
-      scope: 'tracks'
+      scope: 'artists'
     }
   },
   methods: {

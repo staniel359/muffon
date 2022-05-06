@@ -12,7 +12,7 @@
     @click="handleClick"
   />
 
-  <BaseCommonProfileArtistsModal
+  <BaseCommonArtistsModal
     ref="modal"
     :profile-id="profileId"
   />
@@ -20,8 +20,8 @@
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseCommonProfileArtistsModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonProfileArtistsModal.vue'
+import BaseCommonArtistsModal
+  from '*/components/modals/profile/library/compatibility/BaseCommonArtistsModal.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -30,7 +30,7 @@ export default {
   name: 'ArtistsButton',
   components: {
     BaseButton,
-    BaseCommonProfileArtistsModal
+    BaseCommonArtistsModal
   },
   props: {
     compatibilityData: {

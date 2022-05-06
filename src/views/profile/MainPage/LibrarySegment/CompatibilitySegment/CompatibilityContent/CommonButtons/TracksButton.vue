@@ -12,7 +12,7 @@
     @click="handleClick"
   />
 
-  <BaseCommonProfileTracksModal
+  <BaseCommonTracksModal
     ref="modal"
     :profile-id="profileId"
   />
@@ -20,8 +20,8 @@
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseCommonProfileTracksModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonProfileTracksModal.vue'
+import BaseCommonTracksModal
+  from '*/components/modals/profile/library/compatibility/BaseCommonTracksModal.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -30,7 +30,7 @@ export default {
   name: 'TracksButton',
   components: {
     BaseButton,
-    BaseCommonProfileTracksModal
+    BaseCommonTracksModal
   },
   props: {
     compatibilityData: {
