@@ -47,7 +47,7 @@ export default {
       fields: [
         'email',
         'password',
-        'password_confirmation',
+        'password-confirmation',
         'nickname'
       ]
     }
@@ -131,7 +131,6 @@ export default {
       const {
         email,
         password,
-        passwordConfirmation,
         nickname,
         gender,
         birthdate,
@@ -139,11 +138,17 @@ export default {
         city
       } = fields
 
+      const passwordConfirmation =
+        fields[
+          'password-confirmation'
+        ]
+
       const image = this.image.data
 
-      const birthdateToDate = formatStringToDate(
-        birthdate
-      )
+      const birthdateToDate =
+        formatStringToDate(
+          birthdate
+        )
 
       const isRemember = !!fields.remember
 

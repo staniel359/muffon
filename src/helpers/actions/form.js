@@ -3,6 +3,9 @@ import {
   camelCase
 } from 'camel-case'
 import {
+  snakeCase
+} from 'snake-case'
+import {
   addFormFieldError
 } from '*/helpers/actions/plugins/semantic'
 
@@ -67,10 +70,20 @@ function addErrors (
     function addFieldError (
       field
     ) {
-      if (errorData[field]) {
+      const fieldToResponseField =
+        snakeCase(
+          field
+        )
+
+      const fieldError =
+        errorData[
+          fieldToResponseField
+        ]
+
+      if (fieldError) {
         const errorKey =
           camelCase(
-            errorData[field]
+            fieldError
           )
 
         const fieldKey =
@@ -84,7 +97,7 @@ function addErrors (
 
         addFormFieldError(
           form,
-          fieldKey,
+          field,
           error
         )
       }

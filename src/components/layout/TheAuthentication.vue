@@ -16,6 +16,11 @@
       <BaseProfileLoginForm
         v-if="isLogin"
         @signup-link-click="handleSignupLinkClick"
+        @password-reset-link-click="handlePasswordResetLinkClick"
+      />
+      <BaseProfilePasswordResetForm
+        v-else-if="isPasswordReset"
+        @back-link-click="handleBackLinkClick"
       />
       <BaseProfileSignupForm
         v-else-if="isSignup"
@@ -35,6 +40,8 @@
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseProfileLoginForm
   from '*/components/forms/profile/BaseProfileLoginForm.vue'
+import BaseProfilePasswordResetForm
+  from '*/components/forms/profile/BaseProfilePasswordResetForm.vue'
 import BaseProfileSignupForm
   from '*/components/forms/profile/BaseProfileSignupForm.vue'
 import BaseSegmentContainer
@@ -46,6 +53,7 @@ export default {
   components: {
     BaseHeader,
     BaseProfileLoginForm,
+    BaseProfilePasswordResetForm,
     BaseProfileSignupForm,
     BaseSegmentContainer,
     BaseLanguageDropdown
@@ -62,6 +70,12 @@ export default {
           'login'
       )
     },
+    isPasswordReset () {
+      return (
+        this.activeForm ===
+          'passwordReset'
+      )
+    },
     isSignup () {
       return (
         this.activeForm ===
@@ -73,7 +87,13 @@ export default {
     handleSignupLinkClick () {
       this.activeForm = 'signup'
     },
+    handlePasswordResetLinkClick () {
+      this.activeForm = 'passwordReset'
+    },
     handleLoginLinkClick () {
+      this.activeForm = 'login'
+    },
+    handleBackLinkClick () {
       this.activeForm = 'login'
     }
   }

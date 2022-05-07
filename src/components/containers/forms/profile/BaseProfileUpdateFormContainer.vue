@@ -44,7 +44,7 @@ export default {
       fields: [
         'email',
         'password',
-        'password_confirmation',
+        'password-confirmation',
         'nickname'
       ]
     }
@@ -100,13 +100,17 @@ export default {
       const {
         email,
         password,
-        passwordConfirmation,
         nickname,
         gender,
         birthdate,
         country,
         city
       } = fields
+
+      const passwordConfirmation =
+        fields[
+          'password-confirmation'
+        ]
 
       const image = this.image.data
 
