@@ -8,7 +8,7 @@ export default function (
     profileId,
     profileNickname,
     artistName,
-    trackId,
+    libraryTrackId,
     trackTitle,
     scope
   }
@@ -54,7 +54,7 @@ export default function (
         return formatProfileLibraryTrackMainLink(
           {
             profileId,
-            trackId
+            libraryTrackId
           }
         ).path
     }

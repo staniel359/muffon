@@ -15,7 +15,7 @@ export default function (
   {
     profileId,
     profileNickname,
-    tagId,
+    libraryTagId,
     tagName,
     scope
   }
@@ -41,7 +41,7 @@ export default function (
     formatProfileLibraryTagSection(
       {
         profileId,
-        tagId,
+        libraryTagId,
         tagName,
         isActive: !scope
       }

@@ -48,7 +48,7 @@
             ref="deleteModal"
             model="artist"
             :profile-id="profileId"
-            :model-id="artistId"
+            :model-id="libraryArtistId"
             :model-name="artistName"
             is-delete-with-redirect
           />
@@ -115,8 +115,10 @@ export default {
       type: String,
       required: true
     },
-    artistData: Object,
-    artistId: String
+    artistData: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
@@ -154,6 +156,9 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
+    },
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
     }
   },
   mounted () {

@@ -6,7 +6,7 @@ import {
 export default function (
   {
     profileId,
-    artistId
+    libraryArtistId
   }
 ) {
   return {
@@ -16,7 +16,7 @@ export default function (
     link: formatProfileLibraryArtistTracksLink(
       {
         profileId,
-        artistId
+        libraryArtistId
       }
     )
   }

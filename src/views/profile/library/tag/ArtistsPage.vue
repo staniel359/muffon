@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryTagPaginatedPageContainer
     :profile-id="profileId"
-    :tag-id="tagId"
+    :library-tag-id="libraryTagId"
     :scope="scope"
     :limit="limit"
     :view-index="viewIndex"
@@ -43,11 +43,8 @@ export default {
     viewChangeMixin
   ],
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
-    tagId: String
+    profileId: String,
+    libraryTagId: String
   },
   data () {
     return {

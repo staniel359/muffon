@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryAlbumPaginatedPageContainer
     :profile-id="profileId"
-    :album-id="albumId"
+    :library-album-id="libraryAlbumId"
     :scope="scope"
     :limit="limit"
   >
@@ -40,7 +40,7 @@ export default {
       type: String,
       required: true
     },
-    albumId: String
+    libraryAlbumId: String
   },
   data () {
     return {

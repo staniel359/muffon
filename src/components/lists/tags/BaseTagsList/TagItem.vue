@@ -51,7 +51,7 @@ export default {
         return formatProfileLibraryTagMainLink(
           {
             profileId: this.profileId,
-            tagId: this.tagId
+            libraryTagId: this.libraryTagId
           }
         )
       } else {
@@ -62,8 +62,8 @@ export default {
         )
       }
     },
-    tagId () {
-      return this.tagData.id
+    libraryTagId () {
+      return this.tagData.library.id
     },
     tagName () {
       return this.tagData.name

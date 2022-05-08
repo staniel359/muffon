@@ -2,13 +2,13 @@
   <BaseProfileLibraryAlbumPageContainer
     ref="page"
     :profile-id="profileId"
-    :album-id="albumId"
+    :library-album-id="libraryAlbumId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="libraryAlbumData"
+        response-data-name="albumData"
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
@@ -42,7 +42,7 @@ export default {
   ],
   props: {
     profileId: String,
-    albumId: String,
+    libraryAlbumId: String,
     scope: String,
     limit: Number
   }

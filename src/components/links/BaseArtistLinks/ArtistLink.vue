@@ -13,9 +13,6 @@ import BaseLink from '*/components/links/BaseLink.vue'
 import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
-import {
-  main as formatProfileLibraryArtistMainLink
-} from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'ArtistLink',
@@ -27,36 +24,13 @@ export default {
       type: Object,
       required: true
     },
-    index: {
-      type: Number,
-      required: true
-    },
-    isLinkToLibrary: Boolean,
-    profileId: String
+    index: Number
   },
   emits: [
     'linkClick'
   ],
   computed: {
     link () {
-      if (this.isLinkToLibrary) {
-        return this.profileLibraryArtistMainLink
-      } else {
-        return this.artistMainLink
-      }
-    },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink(
-        {
-          profileId: this.profileId,
-          artistId: this.artistId
-        }
-      )
-    },
-    artistId () {
-      return this.artistData.id
-    },
-    artistMainLink () {
       return formatArtistMainLink(
         {
           artistName: this.artistName

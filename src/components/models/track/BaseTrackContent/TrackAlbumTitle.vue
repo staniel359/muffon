@@ -26,14 +26,12 @@ export default {
     BaseLink
   },
   props: {
-    albumData: {
+    trackData: {
       type: Object,
       required: true
     },
-    artistName: String,
     isLinkToLibrary: Boolean,
-    profileId: String,
-    albumId: String
+    profileId: String
   },
   emits: [
     'linkClick'
@@ -50,9 +48,12 @@ export default {
       return formatProfileLibraryAlbumMainLink(
         {
           profileId: this.profileId,
-          albumId: this.albumId
+          libraryAlbumId: this.libraryAlbumId
         }
       )
+    },
+    libraryAlbumId () {
+      return this.trackData.library.album.id
     },
     albumMainLink () {
       return formatAlbumMainLink(
@@ -65,6 +66,12 @@ export default {
     },
     albumTitle () {
       return this.albumData.title
+    },
+    albumData () {
+      return this.trackData.album
+    },
+    artistName () {
+      return this.trackData.artist.name
     },
     sourceParams () {
       return formatAlbumRequestData(

@@ -5,8 +5,8 @@
     :header-link="headerLink"
   >
     <slot
-      :library-album-data="libraryAlbumData"
-      :artist-name="responseArtistName"
+      :album-data="albumData"
+      :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
     />
@@ -29,7 +29,7 @@ export default {
       type: String,
       required: true
     },
-    albumId: {
+    libraryAlbumId: {
       type: String,
       required: true
     },
@@ -51,19 +51,16 @@ export default {
     libraryAlbumArgs () {
       return {
         profileId: this.profileId,
-        albumId: this.albumId,
+        libraryAlbumId: this.libraryAlbumId,
         scope: this.scope,
         limit: this.limit
       }
     },
-    libraryAlbumData () {
+    albumData () {
       return this.profileData?.library?.album
     },
-    libraryAlbumArtistData () {
-      return this.libraryAlbumData?.artist
-    },
-    responseArtistName () {
-      return this.libraryAlbumArtistData?.name
+    artistName () {
+      return this.albumData?.artist?.name
     }
   },
   mounted () {

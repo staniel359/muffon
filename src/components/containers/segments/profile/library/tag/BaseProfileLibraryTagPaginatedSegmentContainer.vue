@@ -2,14 +2,14 @@
   <BaseProfileLibraryTagSegmentContainer
     ref="segment"
     :profile-id="profileId"
-    :tag-id="tagId"
+    :library-tag-id="libraryTagId"
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="libraryTagData"
+        response-data-name="tagData"
         :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
@@ -43,7 +43,7 @@ export default {
   ],
   props: {
     profileId: String,
-    tagId: String,
+    libraryTagId: String,
     scope: String,
     limit: Number,
     headerLink: Object

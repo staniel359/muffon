@@ -1,15 +1,15 @@
 export function main (
   {
     profileId,
-    trackId
+    libraryTrackId
   }
 ) {
   return {
     name: 'ProfileLibraryTrackMainPage',
     params: {
       profileId,
-      trackId
+      libraryTrackId
     },
-    path: `profiles/${profileId}/library/tracks/${trackId}`
+    path: `profiles/${profileId}/library/tracks/${libraryTrackId}`
   }
 }

@@ -69,12 +69,12 @@ export default {
       return formatProfileLibraryArtistMainLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },
-    artistId () {
-      return this.albumData.artist.id
+    libraryArtistId () {
+      return this.albumData.library.artist.id
     },
     artistMainLink () {
       return formatArtistMainLink(
@@ -87,18 +87,18 @@ export default {
       return formatProfileLibraryAlbumTracksLink(
         {
           profileId: this.profileId,
-          albumId: this.albumId
+          libraryAlbumId: this.libraryAlbumId
         }
       )
     },
-    albumId () {
-      return this.albumData.id?.toString()
+    libraryAlbumId () {
+      return this.albumData.library.id
     },
     profileLibraryAlbumMainLink () {
       return formatProfileLibraryAlbumMainLink(
         {
           profileId: this.profileId,
-          albumId: this.albumId
+          libraryAlbumId: this.libraryAlbumId
         }
       )
     },

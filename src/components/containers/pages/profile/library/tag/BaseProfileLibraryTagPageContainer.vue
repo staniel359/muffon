@@ -1,11 +1,11 @@
 <template>
   <BasePageContainer
-    :response-data="libraryTagData"
+    :response-data="tagData"
     :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :library-tag-data="libraryTagData"
+      :tag-data="tagData"
       :top-tracks-count="topTracksCount"
       :top-albums-count="topAlbumsCount"
       :is-loading="isLoading"
@@ -38,7 +38,7 @@ export default {
       type: String,
       required: true
     },
-    tagId: {
+    libraryTagId: {
       type: String,
       required: true
     },
@@ -62,7 +62,7 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNickname,
-        tagId: this.tagId,
+        libraryTagId: this.libraryTagId,
         tagName: this.tagName,
         scope: this.scope
       }
@@ -76,27 +76,24 @@ export default {
       return this.profileData?.nickname
     },
     tagName () {
-      return this.libraryTagData?.name
+      return this.tagData?.name
     },
-    libraryTagData () {
-      return this.libraryData?.tag
-    },
-    libraryData () {
-      return this.profileData?.library
+    tagData () {
+      return this.profileData?.library?.tag
     },
     libraryTagArgs () {
       return {
         profileId: this.profileId,
-        tagId: this.tagId,
+        libraryTagId: this.libraryTagId,
         scope: this.scope,
         limit: this.limit
       }
     },
     topTracksCount () {
-      return this.libraryTagData.top_tracks_count
+      return this.tagData.top_tracks_count
     },
     topAlbumsCount () {
-      return this.libraryTagData.top_albums_count
+      return this.tagData.top_albums_count
     }
   },
   watch: {

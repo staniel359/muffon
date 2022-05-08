@@ -2,13 +2,13 @@
   <BaseProfileLibraryTagPageContainer
     ref="page"
     :profile-id="profileId"
-    :tag-id="tagId"
+    :library-tag-id="libraryTagId"
     :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="libraryTagData"
+        response-data-name="tagData"
         :slot-props-data="pageSlotProps"
         :scope="scope"
         :limit="limit"
@@ -46,7 +46,7 @@ export default {
   ],
   props: {
     profileId: String,
-    tagId: String,
+    libraryTagId: String,
     scope: String,
     limit: Number,
     isWithTopSegment: Boolean,

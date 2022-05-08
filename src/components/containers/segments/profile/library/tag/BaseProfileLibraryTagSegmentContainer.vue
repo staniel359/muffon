@@ -5,7 +5,7 @@
     :header-link="headerLink"
   >
     <slot
-      :library-tag-data="libraryTagData"
+      :tag-data="tagData"
       :is-loading="isLoading"
       :error="error"
     />
@@ -28,7 +28,7 @@ export default {
       type: String,
       required: true
     },
-    tagId: {
+    libraryTagId: {
       type: String,
       required: true
     },
@@ -50,12 +50,12 @@ export default {
     libraryTagArgs () {
       return {
         profileId: this.profileId,
-        tagId: this.tagId,
+        libraryTagId: this.libraryTagId,
         scope: this.scope,
         limit: this.limit
       }
     },
-    libraryTagData () {
+    tagData () {
       return this.profileData?.library?.tag
     }
   },

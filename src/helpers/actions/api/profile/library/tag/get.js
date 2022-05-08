@@ -3,7 +3,7 @@ import getRequest from '*/helpers/actions/api/request/get'
 export default function (
   {
     profileId,
-    tagId,
+    libraryTagId,
     scope = '',
     page,
     limit
@@ -11,7 +11,7 @@ export default function (
 ) {
   const url =
     `/profiles/${profileId}/library` +
-    `/tags/${tagId}/${scope}`
+    `/tags/${libraryTagId}/${scope}`
 
   const handleSuccess = (
     response

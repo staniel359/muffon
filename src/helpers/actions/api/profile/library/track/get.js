@@ -3,7 +3,7 @@ import getRequest from '*/helpers/actions/api/request/get'
 export default function (
   {
     profileId,
-    trackId,
+    libraryTrackId,
     scope = '',
     page,
     limit
@@ -11,7 +11,7 @@ export default function (
 ) {
   const url =
     `/profiles/${profileId}/library` +
-    `/tracks/${trackId}/${scope}`
+    `/tracks/${libraryTrackId}/${scope}`
 
   const handleSuccess = (
     response

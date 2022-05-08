@@ -2,14 +2,14 @@
   <BaseProfileLibraryArtistSegmentContainer
     ref="segment"
     :profile-id="profileId"
-    :artist-id="artistId"
+    :library-artist-id="libraryArtistId"
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="libraryArtistData"
+        response-data-name="artistData"
         :slot-props-data="segmentSlotProps"
         :scope="scope"
         :limit="limit"
@@ -44,7 +44,7 @@ export default {
   ],
   props: {
     profileId: String,
-    artistId: String,
+    libraryArtistId: String,
     scope: String,
     limit: Number,
     headerLink: Object

@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryTrackPageContainer
     :profile-id="profileId"
-    :track-id="trackId"
+    :library-track-id="libraryTrackId"
   >
     <template #default="pageSlotProps">
       <div class="main-profile-page-columns-container">
@@ -12,15 +12,14 @@
           ]"
         >
           <InfoSegment
-            :track-data="pageSlotProps.libraryTrackData"
+            :track-data="pageSlotProps.trackData"
             :profile-id="profileId"
-            :track-id="trackId"
           />
         </div>
 
         <div class="main-profile-page-right-column">
           <PlayerPanelSegment
-            :track-data="pageSlotProps.libraryTrackData"
+            :track-data="pageSlotProps.trackData"
           />
         </div>
       </div>
@@ -43,7 +42,7 @@ export default {
   },
   props: {
     profileId: String,
-    trackId: String
+    libraryTrackId: String
   }
 }
 </script>

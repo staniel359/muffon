@@ -1,47 +1,47 @@
 export function main (
   {
     profileId,
-    artistId
+    libraryArtistId
   }
 ) {
   return {
     name: 'ProfileLibraryArtistMainPage',
     params: {
       profileId,
-      artistId
+      libraryArtistId
     },
-    path: `profiles/${profileId}/library/artists/${artistId}`
+    path: `profiles/${profileId}/library/artists/${libraryArtistId}`
   }
 }
 
 export function albums (
   {
     profileId,
-    artistId
+    libraryArtistId
   }
 ) {
   return {
     name: 'ProfileLibraryArtistAlbumsPage',
     params: {
       profileId,
-      artistId
+      libraryArtistId
     },
-    path: `profiles/${profileId}/library/artists/${artistId}/albums`
+    path: `profiles/${profileId}/library/artists/${libraryArtistId}/albums`
   }
 }
 
 export function tracks (
   {
     profileId,
-    artistId
+    libraryArtistId
   }
 ) {
   return {
     name: 'ProfileLibraryArtistTracksPage',
     params: {
       profileId,
-      artistId
+      libraryArtistId
     },
-    path: `profiles/${profileId}/library/artists/${artistId}/tracks`
+    path: `profiles/${profileId}/library/artists/${libraryArtistId}/tracks`
   }
 }

@@ -15,7 +15,7 @@ export default function (
   {
     profileId,
     profileNickname,
-    artistId,
+    libraryArtistId,
     artistName,
     scope
   }
@@ -41,7 +41,7 @@ export default function (
     formatProfileLibraryArtistSection(
       {
         profileId,
-        artistId,
+        libraryArtistId,
         artistName,
         isActive: !scope
       }

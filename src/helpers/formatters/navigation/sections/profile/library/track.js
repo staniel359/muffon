@@ -5,7 +5,7 @@ import {
 export default function (
   {
     profileId,
-    trackId,
+    libraryTrackId,
     trackTitle,
     isActive
   }
@@ -15,7 +15,7 @@ export default function (
       return formatProfileLibraryTrackMainLink(
         {
           profileId,
-          trackId
+          libraryTrackId
         }
       )
     }

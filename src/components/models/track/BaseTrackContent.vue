@@ -34,13 +34,12 @@
               :artist-name="artistName"
               :is-link-to-library="isLinkToLibrary"
               :profile-id="profileId"
-              :track-id="trackId"
               @link-click="handleLinkClick"
             />
 
             <TrackArtistName
               v-if="isRenderArtistName"
-              :artists="artists"
+              :track-data="trackData"
               :is-link-to-library="isLinkToLibrary"
               :profile-id="profileId"
               @link-click="handleLinkClick"
@@ -48,11 +47,9 @@
 
             <TrackAlbumTitle
               v-if="isRenderAlbumTitle"
-              :album-data="albumData"
-              :artist-name="artistName"
+              :track-data="trackData"
               :is-link-to-library="isLinkToLibrary"
               :profile-id="profileId"
-              :album-id="albumId"
               @link-click="handleLinkClick"
             />
           </div>
@@ -158,7 +155,7 @@
       ref="deleteModal"
       model="track"
       :profile-id="profileId"
-      :model-id="trackId"
+      :model-id="libraryTrackId"
       :model-name="trackFullTitle"
       @success="handleDeleted"
     />
@@ -192,8 +189,7 @@ import BaseProfileLibraryDeleteModal
   from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
 import {
   date as formatDate,
-  time as formatTime,
-  artistName as formatArtistName
+  time as formatTime
 } from '*/helpers/formatters'
 import selfMixin from '*/mixins/selfMixin'
 
@@ -296,21 +292,7 @@ export default {
       )
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      if (this.artistData) {
-        return [
-          this.artistData
-        ]
-      } else {
-        return this.trackData.artists
-      }
-    },
-    artistData () {
-      return this.trackData.artist
+      return this.trackData.artist.name
     },
     isRenderAlbumTitle () {
       return (
@@ -319,10 +301,7 @@ export default {
       )
     },
     albumTitle () {
-      return this.albumData?.title
-    },
-    albumData () {
-      return this.trackData.album
+      return this.trackData.album?.title
     },
     isRenderListenersCount () {
       return (
@@ -353,11 +332,8 @@ export default {
     audioData () {
       return this.trackData.audio
     },
-    trackId () {
-      return this.trackData.id?.toString()
-    },
-    albumId () {
-      return this.albumData?.id?.toString()
+    libraryTrackId () {
+      return this.trackData.library.id.toString()
     },
     createdDateFormatted () {
       return formatDate(

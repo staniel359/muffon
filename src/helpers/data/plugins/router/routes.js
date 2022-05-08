@@ -352,21 +352,21 @@ export default [
     props: true
   },
   {
-    path: '/profiles/:profileId/library/artists/:artistId',
+    path: '/profiles/:profileId/library/artists/:libraryArtistId',
     exact: true,
     name: 'ProfileLibraryArtistMainPage',
     component: ProfileLibraryArtistMainPage,
     props: true
   },
   {
-    path: '/profiles/:profileId/library/artists/:artistId/albums',
+    path: '/profiles/:profileId/library/artists/:libraryArtistId/albums',
     exact: true,
     name: 'ProfileLibraryArtistAlbumsPage',
     component: ProfileLibraryArtistAlbumsPage,
     props: true
   },
   {
-    path: '/profiles/:profileId/library/artists/:artistId/tracks',
+    path: '/profiles/:profileId/library/artists/:libraryArtistId/tracks',
     exact: true,
     name: 'ProfileLibraryArtistTracksPage',
     component: ProfileLibraryArtistTracksPage,
@@ -380,14 +380,14 @@ export default [
     props: true
   },
   {
-    path: '/profiles/:profileId/library/albums/:albumId',
+    path: '/profiles/:profileId/library/albums/:libraryAlbumId',
     exact: true,
     name: 'ProfileLibraryAlbumMainPage',
     component: ProfileLibraryAlbumMainPage,
     props: true
   },
   {
-    path: '/profiles/:profileId/library/albums/:albumId/tracks',
+    path: '/profiles/:profileId/library/albums/:libraryAlbumId/tracks',
     exact: true,
     name: 'ProfileLibraryAlbumTracksPage',
     component: ProfileLibraryAlbumTracksPage,
@@ -401,7 +401,7 @@ export default [
     props: true
   },
   {
-    path: '/profiles/:profileId/library/tracks/:trackId',
+    path: '/profiles/:profileId/library/tracks/:libraryTrackId',
     exact: true,
     name: 'ProfileLibraryTrackMainPage',
     component: ProfileLibraryTrackMainPage,
@@ -415,14 +415,14 @@ export default [
     props: true
   },
   {
-    path: '/profiles/:profileId/library/tags/:tagId',
+    path: '/profiles/:profileId/library/tags/:libraryTagId',
     exact: true,
     name: 'ProfileLibraryTagMainPage',
     component: ProfileLibraryTagMainPage,
     props: true
   },
   {
-    path: '/profiles/:profileId/library/tags/:tagId/artists',
+    path: '/profiles/:profileId/library/tags/:libraryTagId/artists',
     exact: true,
     name: 'ProfileLibraryTagArtistsPage',
     component: ProfileLibraryTagArtistsPage,

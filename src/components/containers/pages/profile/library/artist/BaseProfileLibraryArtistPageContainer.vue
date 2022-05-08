@@ -1,11 +1,11 @@
 <template>
   <BasePageContainer
-    :response-data="libraryArtistData"
+    :response-data="artistData"
     :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :library-artist-data="libraryArtistData"
+      :artist-data="artistData"
       :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
@@ -37,7 +37,7 @@ export default {
       type: String,
       required: true
     },
-    artistId: {
+    libraryArtistId: {
       type: String,
       required: true
     },
@@ -61,7 +61,7 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNickname,
-        artistId: this.artistId,
+        libraryArtistId: this.libraryArtistId,
         artistName: this.artistName,
         scope: this.scope
       }
@@ -75,18 +75,15 @@ export default {
       return this.profileData?.nickname
     },
     artistName () {
-      return this.libraryArtistData?.name
+      return this.artistData?.name
     },
-    libraryArtistData () {
-      return this.libraryData?.artist
-    },
-    libraryData () {
-      return this.profileData?.library
+    artistData () {
+      return this.profileData?.library?.artist
     },
     profileLibraryArtistArgs () {
       return {
         profileId: this.profileId,
-        artistId: this.artistId,
+        libraryArtistId: this.libraryArtistId,
         scope: this.scope,
         limit: this.limit
       }

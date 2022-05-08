@@ -8,7 +8,7 @@ export default function (
   {
     profileId,
     profileNickname,
-    tagId,
+    libraryTagId,
     tagName,
     scope
   }
@@ -26,12 +26,13 @@ export default function (
     }
   }
 
-  const profileLibraryPageTitle = i18n.global.t(
-    'navigation.model.tags',
-    {
-      modelName: profileNickname
-    }
-  )
+  const profileLibraryPageTitle =
+    i18n.global.t(
+      'navigation.model.tags',
+      {
+        modelName: profileNickname
+      }
+    )
 
   const title = [
     formatProfileLibraryTagPageTitle(),
@@ -46,14 +47,14 @@ export default function (
         return formatProfileLibraryTagArtistsLink(
           {
             profileId,
-            tagId
+            libraryTagId
           }
         ).path
       default:
         return formatProfileLibraryTagMainLink(
           {
             profileId,
-            tagId
+            libraryTagId
           }
         ).path
     }

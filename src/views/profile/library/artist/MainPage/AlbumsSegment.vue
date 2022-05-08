@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryArtistPaginatedSegmentContainer
     :profile-id="profileId"
-    :artist-id="artistId"
+    :library-artist-id="libraryArtistId"
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
@@ -43,7 +43,7 @@ export default {
       type: String,
       required: true
     },
-    artistId: {
+    libraryArtistId: {
       type: String,
       required: true
     }
@@ -60,7 +60,7 @@ export default {
       return formatProfileLibraryArtistAlbumsLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },

@@ -4,8 +4,6 @@
     :key="artistData.uuid"
     :artist-data="artistData"
     :index="index"
-    :is-link-to-library="isLinkToLibrary"
-    :profile-id="profileId"
     @link-click="handleLinkClick"
   />
 </template>
@@ -22,9 +20,7 @@ export default {
     ArtistLink
   },
   props: {
-    artists: Array,
-    isLinkToLibrary: Boolean,
-    profileId: String
+    artists: Array
   },
   emits: [
     'linkClick'

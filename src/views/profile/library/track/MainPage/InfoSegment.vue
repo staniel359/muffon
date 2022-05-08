@@ -85,7 +85,7 @@
             ref="deleteModal"
             model="track"
             :profile-id="profileId"
-            :model-id="trackId"
+            :model-id="libraryTrackId"
             :model-name="trackFullTitle"
             is-delete-with-redirect
           />
@@ -162,8 +162,10 @@ export default {
       type: String,
       required: true
     },
-    trackData: Object,
-    trackId: String
+    trackData: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
@@ -192,23 +194,23 @@ export default {
       return formatProfileLibraryArtistMainLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },
-    artistId () {
-      return this.trackData.artist.id
+    libraryArtistId () {
+      return this.trackData.library.artist.id
     },
     profileLibraryAlbumMainLink () {
       return formatProfileLibraryAlbumMainLink(
         {
           profileId: this.profileId,
-          albumId: this.albumId
+          libraryAlbumId: this.libraryAlbumId
         }
       )
     },
-    albumId () {
-      return this.trackData.album.id
+    libraryAlbumId () {
+      return this.trackData.library.album.id
     },
     trackMainLink () {
       return formatTrackMainLink(
@@ -264,6 +266,9 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
+    },
+    libraryTrackId () {
+      return this.trackData.library.id.toString()
     }
   },
   mounted () {

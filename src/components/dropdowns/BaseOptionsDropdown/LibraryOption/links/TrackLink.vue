@@ -40,7 +40,7 @@ export default {
       return formatProfileLibraryTrackMainLink(
         {
           profileId: this.profileId,
-          trackId: this.modelId
+          libraryTrackId: this.modelId
         }
       )
     }

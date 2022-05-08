@@ -5,7 +5,7 @@ import {
 export default function (
   {
     profileId,
-    albumId,
+    libraryAlbumId,
     albumTitle,
     isActive
   }
@@ -15,7 +15,7 @@ export default function (
       return formatProfileLibraryAlbumMainLink(
         {
           profileId,
-          albumId
+          libraryAlbumId
         }
       )
     }

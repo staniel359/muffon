@@ -55,18 +55,18 @@ export default {
       return formatProfileLibraryArtistTracksLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },
-    artistId () {
-      return this.artistData.id.toString()
+    libraryArtistId () {
+      return this.artistData.library.id
     },
     profileLibraryArtistAlbumsLink () {
       return formatProfileLibraryArtistAlbumsLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },
@@ -74,7 +74,7 @@ export default {
       return formatProfileLibraryArtistMainLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },

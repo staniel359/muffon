@@ -1,30 +1,62 @@
 <template>
   <div>
+    <BaseLink
+      v-if="isLinkToLibrary"
+      :link="link"
+      :text="artistName"
+      @click="handleLinkClick"
+    />
     <BaseArtistLinks
+      v-else
       :artists="artists"
-      :is-link-to-library="isLinkToLibrary"
-      :profile-id="profileId"
       @link-click="handleLinkClick"
     />
   </div>
 </template>
 
 <script>
+import BaseLink from '*/components/links/BaseLink.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+import {
+  main as formatProfileLibraryArtistMainLink
+} from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'TrackArtistName',
   components: {
+    BaseLink,
     BaseArtistLinks
   },
   props: {
-    artists: Array,
+    trackData: {
+      type: Object,
+      required: true
+    },
     isLinkToLibrary: Boolean,
     profileId: String
   },
   emits: [
     'linkClick'
   ],
+  computed: {
+    link () {
+      return formatProfileLibraryArtistMainLink(
+        {
+          profileId: this.profileId,
+          libraryArtistId: this.libraryArtistId
+        }
+      )
+    },
+    libraryArtistId () {
+      return this.trackData.library.artist.id
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    artists () {
+      return this.trackData.artists
+    }
+  },
   methods: {
     handleLinkClick () {
       this.$emit(

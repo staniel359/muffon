@@ -1,11 +1,11 @@
 <template>
   <BasePageContainer
-    :response-data="libraryTrackData"
+    :response-data="trackData"
     :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :library-track-data="libraryTrackData"
+      :track-data="trackData"
     />
   </BasePageContainer>
 </template>
@@ -34,7 +34,7 @@ export default {
       type: String,
       required: true
     },
-    trackId: {
+    libraryTrackId: {
       type: String,
       required: true
     },
@@ -58,9 +58,9 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNickname,
-        artistId: this.artistId,
+        libraryArtistId: this.libraryArtistId,
         artistName: this.artistName,
-        trackId: this.trackId,
+        libraryTrackId: this.libraryTrackId,
         trackTitle: this.trackTitle,
         scope: this.scope
       }
@@ -73,28 +73,22 @@ export default {
     profileNickname () {
       return this.profileData?.nickname
     },
-    artistId () {
-      return this.libraryTrackArtistData?.id?.toString()
+    libraryArtistId () {
+      return this.trackData?.library?.artist?.id
     },
-    libraryTrackArtistData () {
-      return this.libraryTrackData?.artist
-    },
-    libraryTrackData () {
-      return this.libraryData?.track
-    },
-    libraryData () {
-      return this.profileData?.library
+    trackData () {
+      return this.profileData?.library?.track
     },
     artistName () {
-      return this.libraryTrackArtistData?.name
+      return this.trackData?.artist?.name
     },
     trackTitle () {
-      return this.libraryTrackData?.title
+      return this.trackData?.title
     },
     profileLibraryTrackArgs () {
       return {
         profileId: this.profileId,
-        trackId: this.trackId,
+        libraryTrackId: this.libraryTrackId,
         scope: this.scope,
         limit: this.limit
       }

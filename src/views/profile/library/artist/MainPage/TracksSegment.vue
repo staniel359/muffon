@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryArtistPaginatedSegmentContainer
     :profile-id="profileId"
-    :artist-id="artistId"
+    :library-artist-id="libraryArtistId"
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
@@ -10,7 +10,7 @@
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         :profile-id="profileId"
-        :artist-name="artistName"
+        :artist-name="slotProps.artistName"
         :is-with-favorite-option="isSelf"
         :is-with-delete-option="isSelf"
         is-with-image
@@ -46,11 +46,10 @@ export default {
       type: String,
       required: true
     },
-    artistId: {
+    libraryArtistId: {
       type: String,
       required: true
-    },
-    artistName: String
+    }
   },
   data () {
     return {
@@ -63,7 +62,7 @@ export default {
       return formatProfileLibraryArtistTracksLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },

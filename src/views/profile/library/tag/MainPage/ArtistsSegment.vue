@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryTagPaginatedSegmentContainer
     :profile-id="profileId"
-    :tag-id="tagId"
+    :library-tag-id="libraryTagId"
     :scope="scope"
     :limit="limit"
     :header-link="headerLink"
@@ -42,7 +42,7 @@ export default {
       type: String,
       required: true
     },
-    tagId: {
+    libraryTagId: {
       type: String,
       required: true
     }
@@ -59,7 +59,7 @@ export default {
       return formatProfileLibraryTagArtistsLink(
         {
           profileId: this.profileId,
-          tagId: this.tagId
+          libraryTagId: this.libraryTagId
         }
       )
     },

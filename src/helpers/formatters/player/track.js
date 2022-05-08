@@ -8,6 +8,9 @@ export function track (
   }
 ) {
   const trackArtistsData = artistName && {
+    artist: {
+      name: artistName
+    },
     artists: [
       {
         name: artistName

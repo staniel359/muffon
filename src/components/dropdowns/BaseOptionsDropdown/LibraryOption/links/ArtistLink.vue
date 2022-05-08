@@ -40,7 +40,7 @@ export default {
       return formatProfileLibraryArtistMainLink(
         {
           profileId: this.profileId,
-          artistId: this.modelId
+          libraryArtistId: this.modelId
         }
       )
     }

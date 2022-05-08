@@ -5,7 +5,7 @@ import {
 export default function (
   {
     profileId,
-    tagId,
+    libraryTagId,
     tagName,
     isActive
   }
@@ -15,7 +15,7 @@ export default function (
       return formatProfileLibraryTagMainLink(
         {
           profileId,
-          tagId
+          libraryTagId
         }
       )
     }

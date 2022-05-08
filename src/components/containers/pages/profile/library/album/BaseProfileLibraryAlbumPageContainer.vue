@@ -1,11 +1,11 @@
 <template>
   <BasePageContainer
-    :response-data="libraryAlbumData"
+    :response-data="albumData"
     :is-loading="isLoading"
     :error="error"
   >
     <slot
-      :library-album-data="libraryAlbumData"
+      :album-data="albumData"
       :artist-name="artistName"
       :is-loading="isLoading"
       :error="error"
@@ -37,7 +37,7 @@ export default {
       type: String,
       required: true
     },
-    albumId: {
+    libraryAlbumId: {
       type: String,
       required: true
     },
@@ -61,9 +61,9 @@ export default {
       return {
         profileId: this.profileId,
         profileNickname: this.profileNickname,
-        artistId: this.artistId,
+        libraryArtistId: this.libraryArtistId,
         artistName: this.artistName,
-        albumId: this.albumId,
+        libraryAlbumId: this.libraryAlbumId,
         albumTitle: this.albumTitle,
         scope: this.scope
       }
@@ -76,28 +76,22 @@ export default {
     profileNickname () {
       return this.profileData?.nickname
     },
-    artistId () {
-      return this.libraryAlbumArtistData?.id?.toString()
+    libraryArtistId () {
+      return this.albumData?.library?.artist?.id
     },
-    libraryAlbumArtistData () {
-      return this.libraryAlbumData?.artist
-    },
-    libraryAlbumData () {
-      return this.libraryData?.album
-    },
-    libraryData () {
-      return this.profileData?.library
+    albumData () {
+      return this.profileData?.library?.album
     },
     artistName () {
-      return this.libraryAlbumArtistData?.name
+      return this.albumData?.artist?.name
     },
     albumTitle () {
-      return this.libraryAlbumData?.title
+      return this.albumData?.title
     },
     profileLibraryAlbumArgs () {
       return {
         profileId: this.profileId,
-        albumId: this.albumId,
+        libraryAlbumId: this.libraryAlbumId,
         scope: this.scope,
         limit: this.limit
       }

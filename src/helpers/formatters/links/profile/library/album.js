@@ -1,31 +1,31 @@
 export function main (
   {
     profileId,
-    albumId
+    libraryAlbumId
   }
 ) {
   return {
     name: 'ProfileLibraryAlbumMainPage',
     params: {
       profileId,
-      albumId
+      libraryAlbumId
     },
-    path: `profiles/${profileId}/library/albums/${albumId}`
+    path: `profiles/${profileId}/library/albums/${libraryAlbumId}`
   }
 }
 
 export function tracks (
   {
     profileId,
-    albumId
+    libraryAlbumId
   }
 ) {
   return {
     name: 'ProfileLibraryAlbumTracksPage',
     params: {
       profileId,
-      albumId
+      libraryAlbumId
     },
-    path: `profiles/${profileId}/library/albums/${albumId}/tracks`
+    path: `profiles/${profileId}/library/albums/${libraryAlbumId}/tracks`
   }
 }

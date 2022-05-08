@@ -9,7 +9,7 @@ export default function (
   {
     profileId,
     profileNickname,
-    artistId,
+    libraryArtistId,
     artistName,
     scope
   }
@@ -27,12 +27,13 @@ export default function (
     }
   }
 
-  const profileLibraryPageTitle = i18n.global.t(
-    'navigation.model.artists',
-    {
-      modelName: profileNickname
-    }
-  )
+  const profileLibraryPageTitle =
+    i18n.global.t(
+      'navigation.model.artists',
+      {
+        modelName: profileNickname
+      }
+    )
 
   const title = [
     formatProfileLibraryArtistPageTitle(),
@@ -47,21 +48,21 @@ export default function (
         return formatProfileLibraryArtistAlbumsLink(
           {
             profileId,
-            artistId
+            libraryArtistId
           }
         ).path
       case 'tracks':
         return formatProfileLibraryArtistTracksLink(
           {
             profileId,
-            artistId
+            libraryArtistId
           }
         ).path
       default:
         return formatProfileLibraryArtistMainLink(
           {
             profileId,
-            artistId
+            libraryArtistId
           }
         ).path
     }

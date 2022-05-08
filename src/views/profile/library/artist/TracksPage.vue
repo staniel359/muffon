@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryArtistPaginatedPageContainer
     :profile-id="profileId"
-    :artist-id="artistId"
+    :library-artist-id="libraryArtistId"
     :scope="scope"
     :limit="limit"
   >
@@ -38,11 +38,8 @@ export default {
     BaseTracksSimpleList
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
-    artistId: String
+    profileId: String,
+    libraryArtistId: String
   },
   data () {
     return {

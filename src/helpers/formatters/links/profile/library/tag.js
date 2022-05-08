@@ -1,31 +1,31 @@
 export function main (
   {
     profileId,
-    tagId
+    libraryTagId
   }
 ) {
   return {
     name: 'ProfileLibraryTagMainPage',
     params: {
       profileId,
-      tagId
+      libraryTagId
     },
-    path: `profiles/${profileId}/library/tags/${tagId}`
+    path: `profiles/${profileId}/library/tags/${libraryTagId}`
   }
 }
 
 export function artists (
   {
     profileId,
-    tagId
+    libraryTagId
   }
 ) {
   return {
     name: 'ProfileLibraryTagArtistsPage',
     params: {
       profileId,
-      tagId
+      libraryTagId
     },
-    path: `profiles/${profileId}/library/tags/${tagId}/artists`
+    path: `profiles/${profileId}/library/tags/${libraryTagId}/artists`
   }
 }

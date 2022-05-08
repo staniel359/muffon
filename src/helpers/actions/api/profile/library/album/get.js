@@ -3,7 +3,7 @@ import getRequest from '*/helpers/actions/api/request/get'
 export default function (
   {
     profileId,
-    albumId,
+    libraryAlbumId,
     scope = '',
     page,
     limit
@@ -11,7 +11,7 @@ export default function (
 ) {
   const url =
     `/profiles/${profileId}/library` +
-    `/albums/${albumId}/${scope}`
+    `/albums/${libraryAlbumId}/${scope}`
 
   const handleSuccess = (
     response

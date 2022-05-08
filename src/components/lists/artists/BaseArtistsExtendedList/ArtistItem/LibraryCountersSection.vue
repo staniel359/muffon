@@ -61,12 +61,12 @@ export default {
       return formatProfileLibraryArtistTracksLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },
-    artistId () {
-      return this.artistData.id
+    libraryArtistId () {
+      return this.artistData.library.id
     },
     tracksCount () {
       return this.artistData.tracks_count
@@ -75,7 +75,7 @@ export default {
       return formatProfileLibraryArtistAlbumsLink(
         {
           profileId: this.profileId,
-          artistId: this.artistId
+          libraryArtistId: this.libraryArtistId
         }
       )
     },

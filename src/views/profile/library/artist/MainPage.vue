@@ -1,7 +1,7 @@
 <template>
   <BaseProfileLibraryArtistPageContainer
     :profile-id="profileId"
-    :artist-id="artistId"
+    :library-artist-id="libraryArtistId"
   >
     <template #default="slotProps">
       <div class="main-profile-page-columns-container">
@@ -12,26 +12,24 @@
           ]"
         >
           <InfoSegment
-            :artist-data="slotProps.libraryArtistData"
+            :artist-data="slotProps.artistData"
             :profile-id="profileId"
-            :artist-id="artistId"
           />
         </div>
 
         <div class="main-profile-page-right-column">
           <StatisticsSegment
-            :artist-data="slotProps.libraryArtistData"
+            :artist-data="slotProps.artistData"
           />
 
           <AlbumsSegment
             :profile-id="profileId"
-            :artist-id="artistId"
+            :library-artist-id="libraryArtistId"
           />
 
           <TracksSegment
             :profile-id="profileId"
-            :artist-id="artistId"
-            :artist-name="slotProps.artistName"
+            :library-artist-id="libraryArtistId"
           />
         </div>
       </div>
@@ -58,7 +56,7 @@ export default {
   },
   props: {
     profileId: String,
-    artistId: String
+    libraryArtistId: String
   }
 }
 </script>
