@@ -2,7 +2,7 @@
   <div class="field">
     <input
       type="password"
-      name="passwordConfirmation"
+      name="password-confirmation"
       :placeholder="passwordConfirmationText"
     >
   </div>

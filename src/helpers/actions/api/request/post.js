@@ -7,6 +7,7 @@ export default function (
     params = {},
     isWithSelfId,
     isWithSelfToken,
+    isWithSelfLanguage,
     onComplete,
     onSuccess,
     onError,
@@ -24,7 +25,8 @@ export default function (
     store.getters['profile/id']
 
   const {
-    token
+    token,
+    language
   } = store.state.profile
 
   const paramsData = {
@@ -34,6 +36,9 @@ export default function (
     }),
     ...(isWithSelfToken && {
       token
+    }),
+    ...(isWithSelfLanguage && {
+      language
     })
   }
 

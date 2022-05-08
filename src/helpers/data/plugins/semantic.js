@@ -229,6 +229,34 @@ export function loginFormOptions (
   }
 }
 
+export function passwordResetFormOptions (
+  {
+    onSuccess
+  }
+) {
+  const emptyEmailPrompt =
+    i18n.global.t(
+      'forms.errors.empty.email'
+    )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      email: {
+        identifier: 'email',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyEmailPrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
 export function profileCreateFormOptions (
   {
     onSuccess
@@ -277,7 +305,7 @@ export function profileCreateFormOptions (
         ]
       },
       passwordConfirmation: {
-        identifier: 'passwordConfirmation',
+        identifier: 'password-confirmation',
         rules: [
           {
             type: 'empty',
@@ -337,7 +365,7 @@ export function profileUpdateFormOptions (
         optional: true
       },
       passwordConfirmation: {
-        identifier: 'passwordConfirmation',
+        identifier: 'password-confirmation',
         depends: 'password',
         rules: [
           {
@@ -352,6 +380,62 @@ export function profileUpdateFormOptions (
           {
             type: 'empty',
             prompt: emptyNicknamePrompt
+          }
+        ]
+      }
+    },
+    onSuccess
+  }
+}
+
+export function passwordUpdateFormOptions (
+  {
+    onSuccess
+  }
+) {
+  const emptyPasswordResetCodePrompt =
+    i18n.global.t(
+      'forms.errors.empty.passwordResetCode'
+    )
+
+  const emptyPasswordPrompt =
+    i18n.global.t(
+      'forms.errors.empty.password'
+    )
+
+  const emptyPasswordConfirmationPrompt =
+    i18n.global.t(
+      'forms.errors.empty.passwordConfirmation'
+    )
+
+  return {
+    duration: 0,
+    inline: true,
+    fields: {
+      passwordResetCode: {
+        identifier: 'password-reset-code',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordResetCodePrompt
+          }
+        ]
+      },
+      password: {
+        identifier: 'password',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordPrompt
+          }
+        ]
+      },
+      passwordConfirmation: {
+        identifier: 'password-confirmation',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyPasswordConfirmationPrompt
           }
         ]
       }
