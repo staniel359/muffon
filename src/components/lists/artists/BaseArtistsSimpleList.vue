@@ -14,6 +14,7 @@
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
       :is-with-listened-option="isWithListenedOption"
+      :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-clearable="isClearable"
       :is-image-small="isImageSmall"
@@ -61,6 +62,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isClearable: Boolean,
     isImageSmall: Boolean,

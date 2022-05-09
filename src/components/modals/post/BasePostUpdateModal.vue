@@ -144,12 +144,16 @@ export default {
     handleTracksChange (
       value
     ) {
-      this.tracks = value
+      this.tracks = [
+        ...value
+      ]
     },
     handleImagesChange (
       value
     ) {
-      this.images = value
+      this.images = [
+        ...value
+      ]
     },
     handleEmojiSelect (
       value

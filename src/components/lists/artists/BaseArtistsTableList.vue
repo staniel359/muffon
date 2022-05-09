@@ -17,6 +17,7 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
       />
     </div>
@@ -56,6 +57,7 @@ export default {
     isWithListenedOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithFavoriteOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean
   },
   computed: {

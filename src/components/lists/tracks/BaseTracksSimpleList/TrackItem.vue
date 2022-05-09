@@ -30,6 +30,7 @@
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-playlist-option="isWithPlaylistOption"
+        :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         :is-clearable="isClearable"
         :is-with-created="isWithCreated"
@@ -84,6 +85,7 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithPlaylistOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isClearable: Boolean,
     isWithCreated: Boolean,

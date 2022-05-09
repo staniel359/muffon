@@ -25,6 +25,7 @@
           :key="optionData.uuid"
           :model="model"
           :model-id="optionData.modelId"
+          :share-data="optionData.shareData"
           :artist-name="artistName"
           :track-title="trackTitle"
           :album-title="albumTitle"
@@ -59,6 +60,7 @@ import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
 import FollowOption from './BaseOptionsDropdown/FollowOption.vue'
 import JoinOption from './BaseOptionsDropdown/JoinOption.vue'
 import MessageOption from './BaseOptionsDropdown/MessageOption.vue'
+import ShareOption from './BaseOptionsDropdown/ShareOption.vue'
 import {
   setDropdown
 } from '*/helpers/actions/plugins/semantic'
@@ -84,7 +86,8 @@ export default {
     DeleteOption,
     FollowOption,
     JoinOption,
-    MessageOption
+    MessageOption,
+    ShareOption
   },
   props: {
     isTransparent: {
@@ -92,6 +95,7 @@ export default {
       default: true
     },
     model: String,
+    shareData: Object,
     artistName: String,
     trackTitle: String,
     albumTitle: String,
@@ -111,6 +115,7 @@ export default {
     isWithFollowOption: Boolean,
     isWithJoinOption: Boolean,
     isWithMessageOption: Boolean,
+    isWithShareOption: Boolean,
     profileData: Object,
     communityData: Object
   },
@@ -170,10 +175,6 @@ export default {
             this.editOption
         ),
         (
-          this.isWithDeleteOption &&
-            this.deleteOption
-        ),
-        (
           this.isWithFollowOption &&
             this.followOption
         ),
@@ -184,6 +185,14 @@ export default {
         (
           this.isWithMessageOption &&
             this.messageOption
+        ),
+        (
+          this.isWithShareOption &&
+            this.shareOption
+        ),
+        (
+          this.isWithDeleteOption &&
+            this.deleteOption
         )
       ].filter(
         e => e
@@ -225,12 +234,6 @@ export default {
         onClick: this.handleEditOptionClick
       }
     },
-    deleteOption () {
-      return {
-        component: 'DeleteOption',
-        onClick: this.handleDeleteOptionClick
-      }
-    },
     followOption () {
       return {
         component: 'FollowOption',
@@ -239,7 +242,7 @@ export default {
     },
     joinOption () {
       return {
-        component: 'joinOption',
+        component: 'JoinOption',
         communityData: this.communityData
       }
     },
@@ -247,6 +250,18 @@ export default {
       return {
         component: 'MessageOption',
         onClick: this.handleMessageOptionClick
+      }
+    },
+    shareOption () {
+      return {
+        component: 'ShareOption',
+        shareData: this.shareData
+      }
+    },
+    deleteOption () {
+      return {
+        component: 'DeleteOption',
+        onClick: this.handleDeleteOptionClick
       }
     },
     optionsCollection () {

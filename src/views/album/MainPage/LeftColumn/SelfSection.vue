@@ -17,10 +17,12 @@
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
+      :share-data="shareData"
       is-with-library-option
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
+      is-with-share-option
     />
   </div>
 </template>
@@ -29,6 +31,9 @@
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import {
+  album as formatAlbumShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'SelfSection',
@@ -58,6 +63,11 @@ export default {
     },
     imageData () {
       return this.albumData.image
+    },
+    shareData () {
+      return formatAlbumShareData(
+        this.albumData
+      )
     }
   }
 }

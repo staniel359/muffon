@@ -13,6 +13,7 @@
     :is-with-listened-option="isWithListenedOption"
     :is-with-bookmark-option="isWithBookmarkOption"
     :is-with-favorite-option="isWithFavoriteOption"
+    :is-with-share-option="isWithShareOption"
   />
 </template>
 
@@ -51,7 +52,8 @@ export default {
     isWithLibraryOption: Boolean,
     isWithListenedOption: Boolean,
     isWithBookmarkOption: Boolean,
-    isWithFavoriteOption: Boolean
+    isWithFavoriteOption: Boolean,
+    isWithShareOption: Boolean
   },
   data () {
     return {

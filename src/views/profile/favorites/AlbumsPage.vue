@@ -9,6 +9,7 @@
         :albums="slotProps[scope]"
         :is-with-delete-option="isSelf"
         is-with-artist-name
+        is-with-share-option
         is-favorite
       />
     </template>

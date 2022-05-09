@@ -7,6 +7,7 @@
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
         is-with-artist-name
+        is-with-share-option
         is-with-delete-option
         is-bookmark
       />

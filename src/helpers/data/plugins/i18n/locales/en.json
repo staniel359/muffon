@@ -116,6 +116,7 @@
     "upload": "Upload",
     "back": "Go back",
     "sendCode": "Send code",
+    "share": "Share",
     "from": {
       "search": "From search",
       "folder": "From folder",
@@ -273,7 +274,8 @@
       "library": "{modelName} was deleted from your library",
       "playlist": "Playlist {playlistTitle} was deleted",
       "community": "Community {communityTitle} was deleted"
-    }
+    },
+    "copied": "Link is copied to clipboard"
   },
   "counters": {
     "nominative": {

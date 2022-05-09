@@ -30,13 +30,23 @@
 
         <div class="content-section">
           <BaseIcon
-            v-if="isWithTracks"
-            icon="grey music"
+            v-if="isWithImages"
+            icon="grey image"
           />
 
           <BaseIcon
-            v-if="isWithImages"
-            icon="grey image"
+            v-if="isWithArtists"
+            icon="grey microphone alternate"
+          />
+
+          <BaseIcon
+            v-if="isWithAlbums"
+            icon="grey record vinyl"
+          />
+
+          <BaseIcon
+            v-if="isWithTracks"
+            icon="grey music"
           />
         </div>
       </div>
@@ -80,6 +90,12 @@ export default {
     },
     content () {
       return this.lastMessageData.content
+    },
+    isWithArtists () {
+      return this.lastMessageData.with_artists
+    },
+    isWithAlbums () {
+      return this.lastMessageData.with_albums
     },
     isWithTracks () {
       return this.lastMessageData.with_tracks

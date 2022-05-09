@@ -67,10 +67,12 @@
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
+        :share-data="shareData"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
+        :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         @delete-option-click="handleDeleteOptionClick"
         @link-click="handleLinkClick"
@@ -112,6 +114,9 @@ import BaseBookmarkDeleteModal
 import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import selfMixin from '*/mixins/selfMixin'
+import {
+  album as formatAlbumShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'AlbumItem',
@@ -149,6 +154,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isClearable: Boolean,
     isBookmark: Boolean,
@@ -198,6 +204,11 @@ export default {
     },
     isMainLinkActive () {
       return !this.isArtistLinkActive
+    },
+    shareData () {
+      return formatAlbumShareData(
+        this.albumData
+      )
     }
   },
   methods: {
@@ -225,8 +236,10 @@ export default {
     handleListenersCountLoadEnd (
       value
     ) {
-      this.paginationItem
-        .listeners_count = value
+      if (this.paginationItem) {
+        this.paginationItem
+          .listeners_count = value
+      }
     },
     handleArtistLinkActiveChange (
       value

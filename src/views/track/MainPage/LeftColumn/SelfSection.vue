@@ -1,6 +1,7 @@
 <template>
   <div class="main-self-container">
     <BaseSelfIcons
+      class="track-self-icons"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -17,11 +18,13 @@
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
+      :share-data="shareData"
       is-with-library-option
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
       is-with-playlist-option
+      is-with-share-option
       @playlist-option-click="handlePlaylistOptionClick"
     />
   </div>
@@ -41,6 +44,9 @@ import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
+import {
+  track as formatTrackShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'SelfSection',
@@ -71,6 +77,11 @@ export default {
     },
     imageData () {
       return this.trackData.image
+    },
+    shareData () {
+      return formatTrackShareData(
+        this.trackData
+      )
     }
   },
   methods: {
@@ -86,4 +97,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.track-self-icons
+  @extend .text-align-center
+  max-width: 75px
+</style>

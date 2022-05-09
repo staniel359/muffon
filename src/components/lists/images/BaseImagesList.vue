@@ -1,5 +1,5 @@
 <template>
-  <div v-if="images">
+  <div>
     <BaseImage
       v-for="imageData in imagesCollection"
       :key="imageData.uuid"
@@ -15,7 +15,7 @@ import {
 } from '*/helpers/formatters'
 
 export default {
-  name: 'BaseImagesSection',
+  name: 'BaseImagesList',
   components: {
     BaseImage
   },

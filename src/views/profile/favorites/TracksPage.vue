@@ -12,6 +12,7 @@
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-share-option
         is-favorite
       />
     </template>

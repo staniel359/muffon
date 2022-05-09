@@ -12,11 +12,7 @@
     />
 
     <SelfSegment
-      :artist-name="artistName"
-      :library-id="libraryId"
-      :favorite-id="favoriteId"
-      :bookmark-id="bookmarkId"
-      :listened-id="listenedId"
+      :artist-data="artistData"
     />
 
     <RecommendedSegment
@@ -30,7 +26,6 @@
 import ImageNameSegment from './LeftColumn/ImageNameSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
 import RecommendedSegment from './LeftColumn/RecommendedSegment.vue'
-import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'LeftColumn',
@@ -39,9 +34,6 @@ export default {
     SelfSegment,
     RecommendedSegment
   },
-  mixins: [
-    selfMixin
-  ],
   props: {
     artistData: {
       type: Object,
@@ -50,9 +42,6 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
-    modelData () {
-      return this.artistData
-    },
     artistName () {
       return this.artistData.name
     },

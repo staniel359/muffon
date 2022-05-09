@@ -20,6 +20,7 @@
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
+        :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
       />
     </div>
@@ -62,6 +63,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean
   },
   computed: {

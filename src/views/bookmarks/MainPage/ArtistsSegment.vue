@@ -7,6 +7,7 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
+        is-with-share-option
         is-with-delete-option
         is-bookmark
       />

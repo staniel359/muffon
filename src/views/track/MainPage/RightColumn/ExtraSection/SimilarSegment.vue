@@ -16,6 +16,7 @@
         is-with-bookmark-option
         is-with-listened-option
         is-with-playlist-option
+        is-with-share-option
       />
     </template>
   </BaseTrackPaginatedSegmentContainer>

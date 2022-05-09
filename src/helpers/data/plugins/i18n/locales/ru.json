@@ -116,6 +116,7 @@
     "upload": "Загрузить",
     "back": "Назад",
     "sendCode": "Отправить код",
+    "share": "Поделиться",
     "from": {
       "search": "Из поиска",
       "folder": "Из папки",
@@ -273,7 +274,8 @@
       "library": "{modelName} был удалён из Вашей библиотеки",
       "playlist": "Список {playlistTitle} был удалён",
       "community": "Сообщество {communityTitle} было удалено"
-    }
+    },
+    "copied": "Ссылка скопирована в буфер обмена"
   },
   "counters" : {
     "nominative": {

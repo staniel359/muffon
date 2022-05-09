@@ -33,25 +33,9 @@
           :created="created"
         />
 
-        <div class="content-container">
-          <div
-            v-if="content"
-            class="text main-text-container"
-            v-text="content"
-          />
-
-          <BaseImagesSection
-            v-if="images"
-            class="content-section"
-            :images="images"
-          />
-
-          <BaseTracksSection
-            v-if="tracks"
-            class="content-section"
-            :tracks="tracks"
-          />
-        </div>
+        <BaseSendableContentSection
+          :model-data="postData"
+        />
       </div>
 
       <BaseOptionsDropdown
@@ -90,8 +74,8 @@ import BaseCommunityTitle
 import BaseProfileNickname
   from '*/components/models/profile/BaseProfileNickname.vue'
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
-import BaseImagesSection from '*/components/BaseImagesSection.vue'
-import BaseTracksSection from '*/components/BaseTracksSection.vue'
+import BaseSendableContentSection
+  from '*/components/models/sendable/BaseSendableContentSection.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePostUpdateModal
@@ -110,8 +94,7 @@ export default {
     BaseCommunityTitle,
     BaseProfileNickname,
     BaseTimestamp,
-    BaseImagesSection,
-    BaseTracksSection,
+    BaseSendableContentSection,
     BaseOptionsDropdown,
     BasePostUpdateModal,
     BasePostDeleteModal
@@ -154,9 +137,6 @@ export default {
     profileData () {
       return this.postData.profile
     },
-    content () {
-      return this.postData.content
-    },
     isWithOptions () {
       return (
         this.isPostCreator ||
@@ -189,12 +169,6 @@ export default {
     },
     created () {
       return this.postData.created
-    },
-    images () {
-      return this.postData.images
-    },
-    tracks () {
-      return this.postData.tracks
     },
     paginationItem () {
       return this.findPaginationItem(

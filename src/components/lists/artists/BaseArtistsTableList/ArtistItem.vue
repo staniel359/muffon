@@ -26,10 +26,12 @@
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
+        :share-data="shareData"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
+        :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         :is-transparent="false"
         @link-click="handleLinkClick"
@@ -85,6 +87,9 @@ import BaseArtistListenersCount
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import selfMixin from '*/mixins/selfMixin'
+import {
+  artist as formatArtistShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'ArtistItem',
@@ -121,6 +126,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean
   },
   emits: [
@@ -156,6 +162,11 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    shareData () {
+      return formatArtistShareData(
+        this.artistData
+      )
     }
   },
   methods: {

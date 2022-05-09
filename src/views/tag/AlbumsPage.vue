@@ -14,6 +14,7 @@
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
+        is-with-share-option
       />
     </template>
   </BaseTagPaginatedPageContainer>

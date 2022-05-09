@@ -10,6 +10,7 @@
         is-with-artist-name
         is-with-album-title
         is-with-playlist-option
+        is-with-share-option
         is-with-delete-option
         is-bookmark
       />

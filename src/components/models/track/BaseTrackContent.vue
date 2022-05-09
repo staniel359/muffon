@@ -97,11 +97,13 @@
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
+      :share-data="shareData"
       :is-with-library-option="isWithLibraryOption"
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
       :is-with-listened-option="isWithListenedOption"
       :is-with-playlist-option="isWithPlaylistOption"
+      :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
       @delete-option-click="handleDeleteOptionClick"
       @playlist-option-click="handlePlaylistOptionClick"
@@ -177,6 +179,9 @@ import BasePlaylistTrackDeleteModal
 import BaseProfileLibraryDeleteModal
   from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
 import selfMixin from '*/mixins/selfMixin'
+import {
+  track as formatTrackShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'BaseTrackContent',
@@ -232,6 +237,7 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithPlaylistOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isClearable: Boolean,
     isWithCreated: Boolean,
@@ -330,6 +336,11 @@ export default {
         this.trackTitle
       ].join(
         ' - '
+      )
+    },
+    shareData () {
+      return formatTrackShareData(
+        this.trackData
       )
     }
   },

@@ -68,10 +68,12 @@
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
+        :share-data="shareData"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
+        :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         @delete-option-click="handleDeleteOptionClick"
         @link-click="handleLinkClick"
@@ -112,6 +114,9 @@ import BaseBookmarkDeleteModal
 import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import selfMixin from '*/mixins/selfMixin'
+import {
+  artist as formatArtistShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'ArtistItem',
@@ -157,6 +162,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isClearable: Boolean,
     isImageSmall: Boolean,
@@ -212,6 +218,11 @@ export default {
         {
           uuid: this.uuid
         }
+      )
+    },
+    shareData () {
+      return formatArtistShareData(
+        this.artistData
       )
     }
   },

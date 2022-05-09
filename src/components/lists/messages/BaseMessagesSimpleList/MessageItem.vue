@@ -22,24 +22,9 @@
           :created="created"
         />
 
-        <div class="content-container">
-          <div
-            class="text main-text-container"
-            v-text="content"
-          />
-
-          <BaseImagesSection
-            v-if="images"
-            class="content-section"
-            :images="images"
-          />
-
-          <BaseTracksSection
-            v-if="tracks"
-            class="content-section"
-            :tracks="tracks"
-          />
-        </div>
+        <BaseSendableContentSection
+          :model-data="messageData"
+        />
       </div>
     </BaseSegmentContainer>
   </div>
@@ -52,8 +37,8 @@ import BaseImage from '*/components/images/BaseImage.vue'
 import BaseProfileNickname
   from '*/components/models/profile/BaseProfileNickname.vue'
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
-import BaseImagesSection from '*/components/BaseImagesSection.vue'
-import BaseTracksSection from '*/components/BaseTracksSection.vue'
+import BaseSendableContentSection
+  from '*/components/models/sendable/BaseSendableContentSection.vue'
 
 export default {
   name: 'MessageItem',
@@ -62,8 +47,7 @@ export default {
     BaseImage,
     BaseProfileNickname,
     BaseTimestamp,
-    BaseImagesSection,
-    BaseTracksSection
+    BaseSendableContentSection
   },
   props: {
     messageData: {
@@ -78,17 +62,8 @@ export default {
     profileData () {
       return this.messageData.profile
     },
-    content () {
-      return this.messageData.content
-    },
     created () {
       return this.messageData.created
-    },
-    images () {
-      return this.messageData.images
-    },
-    tracks () {
-      return this.messageData.tracks
     }
   }
 }

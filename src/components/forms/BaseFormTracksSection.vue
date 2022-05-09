@@ -2,7 +2,9 @@
   <BaseTracksSimpleList
     class="tracks-list"
     :tracks="tracks"
+    is-with-image
     is-with-artist-name
+    is-with-album-title
     is-with-delete-option
     is-clearable
     @delete-button-click="handleDeleteButtonClick"

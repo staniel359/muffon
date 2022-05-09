@@ -23,6 +23,7 @@
         is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
+        is-with-share-option
         is-with-multiple-artist-names
       />
     </template>
