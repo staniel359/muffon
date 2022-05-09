@@ -10,9 +10,6 @@
 
 <script>
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsInput',
@@ -64,8 +61,8 @@ export default {
         )
 
         const isSameArtistName = (
-          album.artistName ===
-            albumData.artistName
+          album.artist.name ===
+            albumData.artist.name
         )
 
         return (
@@ -109,14 +106,10 @@ export default {
     formatAlbum (
       albumData
     ) {
-      const artistName =
-        formatArtistName(
-          albumData.artists
-        )
-
       return {
         ...albumData,
-        artistName
+        artistName:
+          albumData.artist.name
       }
     },
     focus () {

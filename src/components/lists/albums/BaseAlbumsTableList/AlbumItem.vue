@@ -1,11 +1,10 @@
 <template>
   <BaseAlbumLinkContainer
     :album-data="albumData"
-    :profile-id="profileId"
     :artist-name="albumArtistName"
     :is-link-to-library="isLinkToLibrary"
-    :is-artist-name-active="isArtistNameActive"
-    :is-tracks-active="isTracksActive"
+    :profile-id="profileId"
+    :is-link-active="isMainLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseSimpleCardContainer
@@ -35,16 +34,18 @@
         <BaseHeader
           tag="h4"
           :class="{
-            link: isHeaderActive
+            link: isMainLinkActive
           }"
           :text="albumTitle"
         />
 
-        <ArtistNameSection
-          v-if="isWithArtistName"
-          :artist-name="albumArtistName"
-          :is-artist-name-active="isArtistNameActive"
-          @active-change="handleArtistNameActiveChange"
+        <BaseAlbumArtistNamesSection
+          v-if="isRenderArtistName"
+          class="extra"
+          :album-data="albumData"
+          :is-link-to-library="isLinkToLibrary"
+          :profile-id="profileId"
+          @link-active-change="handleArtistNameActiveChange"
         />
 
         <div
@@ -65,8 +66,8 @@
         <TracksSection
           v-if="isWithLibrary"
           :album-data="albumData"
-          :is-tracks-active="isTracksActive"
-          @active-change="handleTracksActiveChange"
+          :profile-id="profileId"
+          @link-active-change="handleTracksLinkActiveChange"
         />
 
         <BaseSelfIcons
@@ -89,14 +90,12 @@ import BaseSimpleCardContainer
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import ArtistNameSection from './AlbumItem/ArtistNameSection.vue'
+import BaseAlbumArtistNamesSection
+  from '*/components/models/album/BaseAlbumArtistNamesSection.vue'
 import BaseAlbumListenersCount
   from '*/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 import selfMixin from '*/mixins/selfMixin'
 
 export default {
@@ -106,7 +105,7 @@ export default {
     BaseSimpleCardContainer,
     BaseOptionsDropdown,
     BaseHeader,
-    ArtistNameSection,
+    BaseAlbumArtistNamesSection,
     BaseAlbumListenersCount,
     TracksSection,
     BaseSelfIcons
@@ -128,6 +127,7 @@ export default {
     },
     artistName: String,
     isWithArtistName: Boolean,
+    isWithMultipleArtistNames: Boolean,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
@@ -144,7 +144,7 @@ export default {
   data () {
     return {
       isArtistNameActive: false,
-      isTracksActive: false
+      isTracksLinkActive: false
     }
   },
   computed: {
@@ -152,25 +152,10 @@ export default {
       return this.albumData
     },
     albumArtistName () {
-      if (this.artists) {
-        return formatArtistName(
-          this.artists
-        )
-      } else {
-        return this.artistName
-      }
-    },
-    artists () {
-      if (this.artistData) {
-        return [
-          this.artistData
-        ]
-      } else {
-        return this.albumData.artists
-      }
-    },
-    artistData () {
-      return this.albumData.artist
+      return (
+        this.albumData.artist?.name ||
+          this.artistName
+      )
     },
     albumTitle () {
       return this.albumData.title
@@ -178,10 +163,10 @@ export default {
     imageData () {
       return this.albumData.image
     },
-    isHeaderActive () {
+    isMainLinkActive () {
       return !(
         this.isArtistNameActive ||
-          this.isTracksActive
+          this.isTracksLinkActive
       )
     },
     releaseDate () {
@@ -199,6 +184,17 @@ export default {
     },
     uuid () {
       return this.albumData.uuid
+    },
+    isRenderArtistName () {
+      return (
+        this.isWithArtistName || (
+          this.isWithMultipleArtistNames &&
+            this.artists?.length > 1
+        )
+      )
+    },
+    artists () {
+      return this.albumData.artists
     }
   },
   methods: {
@@ -212,10 +208,10 @@ export default {
     ) {
       this.isArtistNameActive = value
     },
-    handleTracksActiveChange (
+    handleTracksLinkActiveChange (
       value
     ) {
-      this.isTracksActive = value
+      this.isTracksLinkActive = value
     },
     handleListenersCountLoadEnd (
       value

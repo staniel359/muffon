@@ -15,9 +15,6 @@ import createScrobblerSave
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'TheScrobblingObserver',
@@ -42,12 +39,7 @@ export default {
       return this.playerPlaying.title
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.playerPlaying.artists
+      return this.playerPlaying.artist.name
     },
     albumTitle () {
       return this.playerPlaying.album?.title

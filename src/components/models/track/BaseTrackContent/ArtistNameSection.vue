@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <span>
     <BaseLink
       v-if="isLinkToLibrary"
       :link="link"
@@ -11,7 +11,7 @@
       :artists="artists"
       @link-click="handleLinkClick"
     />
-  </div>
+  </span>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ import {
 } from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
-  name: 'TrackArtistName',
+  name: 'ArtistNameSection',
   components: {
     BaseLink,
     BaseArtistLinks

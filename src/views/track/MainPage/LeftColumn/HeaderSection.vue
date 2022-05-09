@@ -8,20 +8,24 @@
       :text="trackTitle"
     />
 
-    <BaseArtistLinks
-      :artists="artists"
-    />
+    <div class="track-artist-name">
+      <BaseArtistLinks
+        :artists="artists"
+      />
+    </div>
 
-    <BaseLinkContainer
-      v-if="albumTitle"
-      :link="albumMainLink"
-    >
-      <div class="link main-small-container">
-        <small
-          v-text="albumTitle"
-        />
-      </div>
-    </BaseLinkContainer>
+    <div class="track-album-title">
+      <BaseLinkContainer
+        v-if="albumTitle"
+        :link="albumMainLink"
+      >
+        <div class="link main-small-container">
+          <small
+            v-text="albumTitle"
+          />
+        </div>
+      </BaseLinkContainer>
+    </div>
   </BaseTransitionContainer>
 </template>
 
@@ -36,9 +40,6 @@ import {
   main as formatAlbumMainLink
 } from '*/helpers/formatters/links/album'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',
@@ -78,9 +79,7 @@ export default {
       return this.trackData.album
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
+      return this.trackData.artist.name
     },
     sourceParams () {
       return formatAlbumRequestData(
@@ -98,4 +97,11 @@ export default {
 <style lang="sass" scoped>
 .track-full-title
   @extend .text-align-center
+
+.track-artist-name
+  line-height: 1.2em
+  margin-top: 0.2em
+
+.track-album-title
+  margin-top: 0.2em
 </style>

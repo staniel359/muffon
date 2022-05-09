@@ -9,9 +9,6 @@
 <script>
 import BaseLibraryOption from '../options/BaseLibraryOption.vue'
 import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumOption',
@@ -50,14 +47,9 @@ export default {
       return {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        tracks: this.tracksFormatted,
+        tracks: this.tracks,
         imageUrl: this.imageUrl
       }
-    },
-    tracksFormatted () {
-      return this.tracks.map(
-        this.formatTrack
-      )
     }
   },
   watch: {
@@ -77,23 +69,6 @@ export default {
         this.setLibraryId(
           this.libraryId
         )
-      }
-    },
-    formatTrack (
-      trackData
-    ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists
-        )
-
-      const artistData = {
-        name: artistName
-      }
-
-      return {
-        title: trackData.title,
-        artist: artistData
       }
     }
   }

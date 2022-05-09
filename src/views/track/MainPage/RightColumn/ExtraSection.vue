@@ -32,9 +32,6 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
 import SimilarSegment from './ExtraSection/SimilarSegment.vue'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'ExtraSection',
@@ -51,12 +48,7 @@ export default {
   },
   computed: {
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.trackData.artists
+      return this.trackData.artist.name
     },
     trackTitle () {
       return this.trackData.title

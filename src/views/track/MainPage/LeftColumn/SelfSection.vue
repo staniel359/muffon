@@ -41,9 +41,6 @@ import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'SelfSection',
@@ -67,12 +64,7 @@ export default {
       return this.trackData.title
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.trackData.artists
+      return this.trackData.artist.name
     },
     albumTitle () {
       return this.trackData.album?.title

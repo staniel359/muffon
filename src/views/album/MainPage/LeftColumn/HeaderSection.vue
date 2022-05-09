@@ -8,10 +8,11 @@
       :text="albumTitle"
     />
 
-    <BaseLink
-      :link="artistMainLink"
-      :text="artistName"
-    />
+    <div class="album-artist-name">
+      <BaseArtistLinks
+        :artists="artists"
+      />
+    </div>
   </BaseTransitionContainer>
 </template>
 
@@ -19,20 +20,17 @@
 import BaseTransitionContainer
   from '*/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'HeaderSection',
   components: {
     BaseTransitionContainer,
     BaseHeader,
-    BaseLink
+    BaseArtistLinks
   },
   props: {
     albumData: {
@@ -53,9 +51,7 @@ export default {
       )
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
+      return this.albumData.artist.name
     },
     artists () {
       return this.albumData.artists
@@ -67,4 +63,8 @@ export default {
 <style lang="sass" scoped>
 .album-full-title
   @extend .text-align-center
+
+.album-artist-name
+  line-height: 1.2em
+  margin-top: 0.2em
 </style>

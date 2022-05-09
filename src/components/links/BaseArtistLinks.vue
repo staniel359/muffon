@@ -4,6 +4,7 @@
     :key="artistData.uuid"
     :artist-data="artistData"
     :index="index"
+    @link-active-change="handleLinkActiveChange"
     @link-click="handleLinkClick"
   />
 </template>
@@ -23,6 +24,7 @@ export default {
     artists: Array
   },
   emits: [
+    'linkActiveChange',
     'linkClick'
   ],
   computed: {
@@ -33,6 +35,14 @@ export default {
     }
   },
   methods: {
+    handleLinkActiveChange (
+      value
+    ) {
+      this.$emit(
+        'linkActiveChange',
+        value
+      )
+    },
     handleLinkClick () {
       this.$emit(
         'linkClick'

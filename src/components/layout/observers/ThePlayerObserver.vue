@@ -11,9 +11,6 @@ import {
 import {
   ipcRenderer
 } from 'electron'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'ThePlayerObserver',
@@ -40,12 +37,7 @@ export default {
       )
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.playerPlaying.artists
+      return this.playerPlaying.artist.name
     },
     trackFullTitle () {
       return [

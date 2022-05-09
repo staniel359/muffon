@@ -4,7 +4,8 @@
   <BaseLink
     :link="link"
     :text="artistName"
-    @click="handleClick"
+    @active-change="handleLinkActiveChange"
+    @click="handleLinkClick"
   />
 </template>
 
@@ -27,6 +28,7 @@ export default {
     index: Number
   },
   emits: [
+    'linkActiveChange',
     'linkClick'
   ],
   computed: {
@@ -42,7 +44,15 @@ export default {
     }
   },
   methods: {
-    handleClick () {
+    handleLinkActiveChange (
+      value
+    ) {
+      this.$emit(
+        'linkActiveChange',
+        value
+      )
+    },
+    handleLinkClick () {
       this.$emit(
         'linkClick'
       )

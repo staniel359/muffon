@@ -61,9 +61,6 @@ import {
 } from '*/helpers/formatters/links/album'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 import formatTrackRequestData from '*/helpers/formatters/request/track/data'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'InfoBlock',
@@ -99,9 +96,7 @@ export default {
       )
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
+      return this.playerPlaying.artist.name
     },
     artists () {
       return this.playerPlaying.artists

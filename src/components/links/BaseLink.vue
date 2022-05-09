@@ -2,6 +2,8 @@
   <RouterLink
     class="ui main-link"
     :to="link"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
     @click.ctrl.exact.stop="handleCtrlClick"
     @auxclick.exact.stop="handleAuxClick"
@@ -35,9 +37,22 @@ export default {
     }
   },
   emits: [
-    'click'
+    'click',
+    'activeChange'
   ],
   methods: {
+    handleMouseEnter () {
+      this.$emit(
+        'activeChange',
+        true
+      )
+    },
+    handleMouseLeave () {
+      this.$emit(
+        'activeChange',
+        false
+      )
+    },
     handleClick () {
       this.$emit(
         'click'

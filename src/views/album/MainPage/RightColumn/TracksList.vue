@@ -27,9 +27,6 @@ import BaseTracksSimpleList
 import BaseNoCollectionMessage
   from '*/components/messages/BaseNoCollectionMessage.vue'
 import audioSources from '*/helpers/data/audio/sources'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'TracksList',
@@ -48,12 +45,7 @@ export default {
       return this.albumData.tracks
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.albumData.artists
+      return this.albumData.artist.name
     },
     albumTitle () {
       return this.albumData.title

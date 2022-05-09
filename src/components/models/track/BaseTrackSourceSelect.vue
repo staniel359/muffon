@@ -28,9 +28,6 @@ import {
   generateKey
 } from '*/helpers/utils'
 import formatTrackRequestData from '*/helpers/formatters/request/track/data'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTrackSourceSelect',
@@ -75,12 +72,7 @@ export default {
       return this.trackData.title
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.trackData.artists
+      return this.trackData.artist.name
     },
     selectedSourceTracks () {
       return this.selectedSourceData.tracks

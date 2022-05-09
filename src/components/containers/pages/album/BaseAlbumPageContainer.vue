@@ -22,9 +22,6 @@ import formatAlbumPageTab from '*/helpers/formatters/tabs/album'
 import getAlbum from '*/helpers/actions/api/album/get'
 import getBandcampAlbumId
   from '*/helpers/actions/api/bandcampId/album/get'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -70,25 +67,16 @@ export default {
         scope: this.scope
       }
     },
+    artistName () {
+      return this.albumData?.artist?.name
+    },
+    albumTitle () {
+      return this.albumData?.title
+    },
     tabData () {
       return formatAlbumPageTab(
         this.navigationData
       )
-    },
-    artistName () {
-      if (this.artists) {
-        return formatArtistName(
-          this.artists
-        )
-      } else {
-        return null
-      }
-    },
-    artists () {
-      return this.albumData?.artists
-    },
-    albumTitle () {
-      return this.albumData?.title
     },
     albumArgs () {
       return {

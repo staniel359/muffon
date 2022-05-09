@@ -242,8 +242,12 @@ p
   @extend .no-shadow, .text-align-center, .text-color-unset
   & > .content
     @extend .no-padding, .no-border
+    & > .extra
+      line-height: 1.2em
+      margin-top: 0.2em
     & > .description
-      margin-top: 0.25em !important
+      line-height: 1.2em
+      margin-top: 0.2em !important
     & > .main-self-icons
       margin-top: 0.25em
   & > .main-options-dropdown-container
@@ -494,10 +498,6 @@ p
 
 .main-source-select-item-select
   width: 200px
-  margin-right: 1em !important
-
-.main-source-select-track-select
-  width: 250px
   margin-right: 1em !important
 
 .main-form

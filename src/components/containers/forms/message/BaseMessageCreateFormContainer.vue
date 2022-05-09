@@ -15,9 +15,6 @@ import {
   messageFormOptions
 } from '*/helpers/data/plugins/semantic'
 import createMessage from '*/helpers/actions/api/message/create'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BaseMessageCreateFormContainer',
@@ -58,11 +55,6 @@ export default {
         {
           onSuccess: this.handleSuccess
         }
-      )
-    },
-    tracksFormatted () {
-      return this.tracks.map(
-        this.formatTrack
       )
     },
     imagesFormatted () {
@@ -109,23 +101,6 @@ export default {
         )
       }
     },
-    formatTrack (
-      trackData
-    ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists
-        )
-
-      const artistData = {
-        name: artistName
-      }
-
-      return {
-        title: trackData.title,
-        artist: artistData
-      }
-    },
     formatImage (
       imageData
     ) {
@@ -137,7 +112,7 @@ export default {
       return {
         otherProfileId: this.profileId,
         content: fields.content,
-        tracks: this.tracksFormatted,
+        tracks: this.tracks,
         images: this.imagesFormatted
       }
     }

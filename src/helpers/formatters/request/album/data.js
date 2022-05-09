@@ -1,7 +1,3 @@
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
-
 export default function (
   {
     sourceId,
@@ -9,25 +5,14 @@ export default function (
     artistName
   }
 ) {
-  const artistData = albumData.artist
-
-  const artists = artistData
-    ? [
-        artistData
-      ]
-    : albumData.artists
-
-  const artistNameConditional = artists
-    ? formatArtistName(
-      artists
-    )
-    : artistName
-
   function formatAlbumData () {
     switch (sourceId) {
       case 'lastfm':
         return {
-          artistName: artistNameConditional,
+          artistName: (
+            albumData.artist?.name ||
+              artistName
+          ),
           albumTitle: albumData.title
         }
       case 'vk':

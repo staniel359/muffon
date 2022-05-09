@@ -18,9 +18,6 @@
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './SaveSection/CompleteSection.vue'
 import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'SaveSection',
@@ -158,15 +155,11 @@ export default {
     formatTrack (
       trackData
     ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists
-        )
-
       return {
         playlistId: this.playlistId,
         trackTitle: trackData.title,
-        artistName
+        artistName:
+          trackData.artist.name
       }
     },
     setErrorTracks (

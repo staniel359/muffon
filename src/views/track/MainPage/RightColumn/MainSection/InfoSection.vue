@@ -46,9 +46,6 @@ import BaseLink from '*/components/links/BaseLink.vue'
 import {
   main as formatAlbumMainLink
 } from '*/helpers/formatters/links/album'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
@@ -87,9 +84,7 @@ export default {
       return this.trackData.album
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
+      return this.trackData.artist.name
     },
     sourceParams () {
       return formatAlbumRequestData(

@@ -22,9 +22,6 @@ import formatTrackPageTab from '*/helpers/formatters/tabs/track'
 import getTrack from '*/helpers/actions/api/track/get'
 import getBandcampTrackId
   from '*/helpers/actions/api/bandcampId/track/get'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BaseTrackPageContainer',
@@ -70,25 +67,16 @@ export default {
         scope: this.scope
       }
     },
+    artistName () {
+      return this.trackData?.artist?.name
+    },
+    trackTitle () {
+      return this.trackData?.title
+    },
     tabData () {
       return formatTrackPageTab(
         this.navigationData
       )
-    },
-    artistName () {
-      if (this.artists) {
-        return formatArtistName(
-          this.artists
-        )
-      } else {
-        return null
-      }
-    },
-    artists () {
-      return this.trackData?.artists
-    },
-    trackTitle () {
-      return this.trackData?.title
     },
     trackArgs () {
       return {

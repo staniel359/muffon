@@ -32,7 +32,7 @@ import {
 import formatTrackRequestData from '*/helpers/formatters/request/track/data'
 
 export default {
-  name: 'TrackTitle',
+  name: 'TitleSection',
   components: {
     BaseHeaderContainer,
     BaseLink

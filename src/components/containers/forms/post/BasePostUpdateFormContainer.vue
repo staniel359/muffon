@@ -16,9 +16,6 @@ import {
 } from '*/helpers/data/plugins/semantic'
 import updateProfilePost from '*/helpers/actions/api/profile/post/update'
 import updateCommunityPost from '*/helpers/actions/api/community/post/update'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BasePostUpdateFormContainer',
@@ -68,11 +65,6 @@ export default {
         {
           onSuccess: this.handleSuccess
         }
-      )
-    },
-    tracksFormatted () {
-      return this.tracks.map(
-        this.formatTrack
       )
     },
     imagesFormatted () {
@@ -136,24 +128,6 @@ export default {
           return null
       }
     },
-    formatTrack (
-      trackData
-    ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists ||
-            [
-              trackData.artist
-            ]
-        )
-
-      return {
-        title: trackData.title,
-        artist: {
-          name: artistName
-        }
-      }
-    },
     formatImage (
       imageData
     ) {
@@ -167,7 +141,7 @@ export default {
         postId: this.postId,
         byCommunity: !!fields.community,
         content: fields.content,
-        tracks: this.tracksFormatted,
+        tracks: this.tracks,
         images: this.imagesFormatted
       }
     }

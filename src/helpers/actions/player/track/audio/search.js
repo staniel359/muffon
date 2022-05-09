@@ -4,27 +4,14 @@ import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default function (
   {
     trackData
   }
 ) {
-  const artists = (
-    trackData.artists ||
-      [
-        trackData.artist
-      ]
-  )
-
   const artistName =
-    formatArtistName(
-      artists
-    )
-
+    trackData.artist.name
   const trackTitle = trackData.title
 
   const query = [

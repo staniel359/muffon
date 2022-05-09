@@ -1,97 +1,44 @@
 <template>
-  <div
-    :class="[
-      'description',
-      'library-counters-container',
-      'main-small-container'
-    ]"
-  >
-    <small
-      class="tracks-counter"
-      :class="{
-        link: isTracksActive
-      }"
-      @mouseenter="handleTracksMouseEnter"
-      @mouseleave="handleTracksMouseLeave"
-    >
-      <BaseIcon
-        icon="music"
-      />
+  <div class="description library-counters-section">
+    <TracksCounter
+      class="tracks-link"
+      :artist-data="artistData"
+      :profile-id="profileId"
+      @active-change="handleLinkActiveChange"
+    />
 
-      <span
-        v-text="tracksCount"
-      />
-    </small>
-
-    <small
-      :class="{
-        link: isAlbumsActive
-      }"
-      @mouseenter="handleAlbumsMouseEnter"
-      @mouseleave="handleAlbumsMouseLeave"
-    >
-      <BaseIcon
-        icon="record vinyl"
-      />
-
-      <span
-        v-text="albumsCount"
-      />
-    </small>
+    <AlbumsCounter
+      :artist-data="artistData"
+      :profile-id="profileId"
+      @active-change="handleLinkActiveChange"
+    />
   </div>
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
+import TracksCounter from './LibraryCountersSection/TracksCounter.vue'
+import AlbumsCounter from './LibraryCountersSection/AlbumsCounter.vue'
 
 export default {
   name: 'LibraryCountersSection',
   components: {
-    BaseIcon
+    TracksCounter,
+    AlbumsCounter
   },
   props: {
-    artistData: {
-      type: Object,
-      required: true
-    },
-    isTracksActive: Boolean,
-    isAlbumsActive: Boolean
+    artistData: Object,
+    profileId: String
   },
   emits: [
-    'tracksActiveChange',
-    'albumsActiveChange'
+    'linkActiveChange'
   ],
-  computed: {
-    tracksCount () {
-      return this.artistData.tracks_count
-    },
-    albumsCount () {
-      return this.artistData.albums_count
-    }
-  },
   methods: {
-    handleTracksMouseEnter () {
+    handleLinkActiveChange (
+      value
+    ) {
       this.$emit(
-        'tracksActiveChange',
-        true
-      )
-    },
-    handleTracksMouseLeave () {
-      this.$emit(
-        'tracksActiveChange',
-        false
-      )
-    },
-    handleAlbumsMouseEnter () {
-      this.$emit(
-        'albumsActiveChange',
-        true
-      )
-    },
-    handleAlbumsMouseLeave () {
-      this.$emit(
-        'albumsActiveChange',
-        false
+        'linkActiveChange',
+        value
       )
     }
   }
@@ -99,8 +46,9 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.library-counters-container
+.library-counters-section
   @extend .d-flex, .justify-content-center
-  .tracks-counter
-    margin-right: 0.5em
+
+.tracks-link
+  margin-right: 0.5em
 </style>

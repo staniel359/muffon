@@ -16,9 +16,6 @@ import {
 } from '*/helpers/data/plugins/semantic'
 import createProfilePost from '*/helpers/actions/api/profile/post/create'
 import createCommunityPost from '*/helpers/actions/api/community/post/create'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BasePostCreateFormContainer',
@@ -61,11 +58,6 @@ export default {
         {
           onSuccess: this.handleSuccess
         }
-      )
-    },
-    tracksFormatted () {
-      return this.tracks.map(
-        this.formatTrack
       )
     },
     imagesFormatted () {
@@ -128,21 +120,6 @@ export default {
           return null
       }
     },
-    formatTrack (
-      trackData
-    ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists
-        )
-
-      return {
-        title: trackData.title,
-        artist: {
-          name: artistName
-        }
-      }
-    },
     formatImage (
       imageData
     ) {
@@ -156,7 +133,7 @@ export default {
         communityId: this.communityId,
         byCommunity: !!fields.community,
         content: fields.content,
-        tracks: this.tracksFormatted,
+        tracks: this.tracks,
         images: this.imagesFormatted
       }
     }

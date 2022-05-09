@@ -34,7 +34,7 @@ import {
 } from '*/helpers/formatters'
 
 export default {
-  name: 'TrackListenersCount',
+  name: 'ListenersCountSection',
   components: {
     BaseIcon
   },

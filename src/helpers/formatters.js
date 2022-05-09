@@ -202,19 +202,3 @@ export function playsToTracks (
     sortTracks
   )
 }
-
-export function artistName (
-  value
-) {
-  function getArtistName (
-    artistData
-  ) {
-    return artistData.name
-  }
-
-  return value.map(
-    getArtistName
-  ).join(
-    ', '
-  )
-}

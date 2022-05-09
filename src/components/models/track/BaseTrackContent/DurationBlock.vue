@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'TrackDuration',
+  name: 'DurationBlock',
   props: {
     duration: {
       type: String,

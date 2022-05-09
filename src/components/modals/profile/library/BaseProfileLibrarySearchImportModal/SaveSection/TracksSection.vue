@@ -18,9 +18,6 @@
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './TracksSection/CompleteSection.vue'
 import createLibraryTrack from '*/helpers/actions/api/library/track/create'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'TracksSection',
@@ -136,14 +133,10 @@ export default {
     formatTrack (
       trackData
     ) {
-      const artistName =
-        formatArtistName(
-          trackData.artists
-        )
-
       return {
         trackTitle: trackData.title,
-        artistName
+        artistName:
+          trackData.artist.name
       }
     },
     setErrorTracks (

@@ -40,9 +40,6 @@ import {
   generateKey
 } from '*/helpers/utils'
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'BaseAlbumSourceSelect',
@@ -91,12 +88,7 @@ export default {
       return this.albumData.title
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.albumData.artists
+      return this.albumData.artist.name
     },
     isSelectedSourceWithMultipleTypes () {
       return this.selectedSourceTypes.length > 1

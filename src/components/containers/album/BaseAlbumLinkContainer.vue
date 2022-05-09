@@ -11,14 +11,7 @@
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import {
-  main as formatProfileLibraryArtistMainLink
-} from '*/helpers/formatters/links/profile/library/artist'
-import {
-  main as formatArtistMainLink
-} from '*/helpers/formatters/links/artist'
-import {
-  main as formatProfileLibraryAlbumMainLink,
-  tracks as formatProfileLibraryAlbumTracksLink
+  main as formatProfileLibraryAlbumMainLink
 } from '*/helpers/formatters/links/profile/library/album'
 import {
   main as formatAlbumMainLink
@@ -38,61 +31,22 @@ export default {
     profileId: String,
     artistName: String,
     isLinkToLibrary: Boolean,
-    isArtistNameActive: Boolean,
-    isTracksActive: Boolean,
-    isNoLink: Boolean
+    isLinkActive: Boolean
   },
   emits: [
     'linkClick'
   ],
   computed: {
     link () {
-      if (this.isNoLink) {
-        return {}
-      } else if (this.isArtistNameActive) {
-        if (this.isLinkToLibrary) {
-          return this.profileLibraryArtistMainLink
-        } else {
-          return this.artistMainLink
-        }
-      } else if (this.isTracksActive) {
-        return this.profileLibraryAlbumTracksLink
-      } else {
+      if (this.isLinkActive) {
         if (this.isLinkToLibrary) {
           return this.profileLibraryAlbumMainLink
         } else {
           return this.albumMainLink
         }
+      } else {
+        return {}
       }
-    },
-    profileLibraryArtistMainLink () {
-      return formatProfileLibraryArtistMainLink(
-        {
-          profileId: this.profileId,
-          libraryArtistId: this.libraryArtistId
-        }
-      )
-    },
-    libraryArtistId () {
-      return this.albumData.library.artist.id
-    },
-    artistMainLink () {
-      return formatArtistMainLink(
-        {
-          artistName: this.artistName
-        }
-      )
-    },
-    profileLibraryAlbumTracksLink () {
-      return formatProfileLibraryAlbumTracksLink(
-        {
-          profileId: this.profileId,
-          libraryAlbumId: this.libraryAlbumId
-        }
-      )
-    },
-    libraryAlbumId () {
-      return this.albumData.library.id
     },
     profileLibraryAlbumMainLink () {
       return formatProfileLibraryAlbumMainLink(
@@ -101,6 +55,9 @@ export default {
           libraryAlbumId: this.libraryAlbumId
         }
       )
+    },
+    libraryAlbumId () {
+      return this.albumData.library.id
     },
     albumMainLink () {
       return formatAlbumMainLink(

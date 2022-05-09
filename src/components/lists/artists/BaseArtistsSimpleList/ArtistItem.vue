@@ -5,10 +5,9 @@
       disabled: isDeleted
     }"
     :artist-data="artistData"
-    :profile-id="profileId"
     :is-link-to-library="isLinkToLibrary"
-    :is-tracks-active="isTracksActive"
-    :is-albums-active="isAlbumsActive"
+    :profile-id="profileId"
+    :is-link-active="isMainLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -31,14 +30,14 @@
         <BaseHeader
           tag="h4"
           :class="{
-            link: isHeaderLink
+            link: isMainLinkActive
           }"
           :text="artistName"
         />
 
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
-          class="description"
+          class="description main-small-container"
           :artist-name="artistName"
           :listeners-count="listenersCount"
           @load-end="handleListenersCountLoadEnd"
@@ -47,12 +46,10 @@
         <LibraryCountersSection
           v-if="isWithLibrary"
           :artist-data="artistData"
+          :profile-id="profileId"
           :top-tracks-count="topTracksCount"
           :top-albums-count="topAlbumsCount"
-          :is-tracks-active="isTracksActive"
-          :is-albums-active="isAlbumsActive"
-          @tracks-active-change="handleTracksActiveChange"
-          @albums-active-change="handleAlbumsActiveChange"
+          @link-active-change="handleCounterLinkActiveChange"
         />
       </div>
 
@@ -172,8 +169,7 @@ export default {
   ],
   data () {
     return {
-      isTracksActive: false,
-      isAlbumsActive: false
+      isCounterLinkActive: false
     }
   },
   computed: {
@@ -189,11 +185,8 @@ export default {
     listenersCount () {
       return this.artistData.listeners_count
     },
-    isHeaderLink () {
-      return (
-        !this.isTracksActive &&
-          !this.isAlbumsActive
-      )
+    isMainLinkActive () {
+      return !this.isCounterLinkActive
     },
     isDeleted () {
       return !!this.artistData.isDeleted
@@ -238,15 +231,10 @@ export default {
     ) {
       this.item.listeners_count = value
     },
-    handleTracksActiveChange (
+    handleCounterLinkActiveChange (
       value
     ) {
-      this.isTracksActive = value
-    },
-    handleAlbumsActiveChange (
-      value
-    ) {
-      this.isAlbumsActive = value
+      this.isCounterLinkActive = value
     },
     handleDeleteOptionClick () {
       if (this.isClearable) {

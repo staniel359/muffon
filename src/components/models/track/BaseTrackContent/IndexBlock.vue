@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: 'TrackIndex',
+  name: 'IndexBlock',
   props: {
     index: {
       type: Number,

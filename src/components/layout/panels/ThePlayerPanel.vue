@@ -47,9 +47,6 @@ import {
 import {
   setToast
 } from '*/helpers/actions/plugins/semantic'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'ThePlayerPanel',
@@ -124,12 +121,7 @@ export default {
       return this.playerPlaying.title
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.playerPlaying.artists
+      return this.playerPlaying.artist.name
     }
   },
   watch: {

@@ -11,9 +11,7 @@
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import {
-  main as formatProfileLibraryArtistMainLink,
-  tracks as formatProfileLibraryArtistTracksLink,
-  albums as formatProfileLibraryArtistAlbumsLink
+  main as formatProfileLibraryArtistMainLink
 } from '*/helpers/formatters/links/profile/library/artist'
 import {
   main as formatArtistMainLink
@@ -31,44 +29,22 @@ export default {
     },
     profileId: String,
     isLinkToLibrary: Boolean,
-    isTracksActive: Boolean,
-    isAlbumsActive: Boolean
+    isLinkActive: Boolean
   },
   emits: [
     'linkClick'
   ],
   computed: {
     link () {
-      if (this.isLinkToLibrary) {
-        if (this.isTracksActive) {
-          return this.profileLibraryArtistTracksLink
-        } else if (this.isAlbumsActive) {
-          return this.profileLibraryArtistAlbumsLink
-        } else {
+      if (this.isLinkActive) {
+        if (this.isLinkToLibrary) {
           return this.profileLibraryArtistMainLink
+        } else {
+          return this.artistMainLink
         }
       } else {
-        return this.artistMainLink
+        return {}
       }
-    },
-    profileLibraryArtistTracksLink () {
-      return formatProfileLibraryArtistTracksLink(
-        {
-          profileId: this.profileId,
-          libraryArtistId: this.libraryArtistId
-        }
-      )
-    },
-    libraryArtistId () {
-      return this.artistData.library.id
-    },
-    profileLibraryArtistAlbumsLink () {
-      return formatProfileLibraryArtistAlbumsLink(
-        {
-          profileId: this.profileId,
-          libraryArtistId: this.libraryArtistId
-        }
-      )
     },
     profileLibraryArtistMainLink () {
       return formatProfileLibraryArtistMainLink(
@@ -77,6 +53,9 @@ export default {
           libraryArtistId: this.libraryArtistId
         }
       )
+    },
+    libraryArtistId () {
+      return this.artistData.library.id
     },
     artistMainLink () {
       return formatArtistMainLink(

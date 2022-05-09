@@ -15,9 +15,6 @@ import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
 import {
   generateKey
 } from '*/helpers/utils'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',
@@ -44,12 +41,7 @@ export default {
       return this.albumData.extra_title
     },
     artistName () {
-      return formatArtistName(
-        this.artists
-      )
-    },
-    artists () {
-      return this.albumData.artists
+      return this.albumData.artist.name
     }
   },
   methods: {

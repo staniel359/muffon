@@ -6,9 +6,9 @@
     }"
     :album-data="albumData"
     :artist-name="artistName"
-    :profile-id="profileId"
     :is-link-to-library="isLinkToLibrary"
-    :is-no-link="isArtistNameActive"
+    :profile-id="profileId"
+    :is-link-active="isMainLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -26,20 +26,23 @@
         <BaseHeader
           tag="h4"
           :class="{
-            link: isHeaderActive
+            link: isMainLinkActive
           }"
           :text="albumTitle"
         />
 
-        <ArtistNameSection
+        <BaseAlbumArtistNamesSection
           v-if="isWithArtistName"
-          :artists="artists"
-          @active-change="handleArtistNameActiveChange"
+          :album-data="albumData"
+          :is-link-to-library="isLinkToLibrary"
+          :profile-id="profileId"
+          @link-active-change="handleArtistLinkActiveChange"
+          @link-click="handleLinkClick"
         />
 
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
-          class="description"
+          class="description main-small-container"
           :album-title="albumTitle"
           :artist-name="artistName"
           :listeners-count="listenersCount"
@@ -97,7 +100,8 @@ import BaseAlbumLinkContainer
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import ArtistNameSection from './AlbumItem/ArtistNameSection.vue'
+import BaseAlbumArtistNamesSection
+  from '*/components/models/album/BaseAlbumArtistNamesSection.vue'
 import BaseAlbumListenersCount
   from '*/components/models/album/BaseAlbumListenersCount.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
@@ -107,9 +111,6 @@ import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 import selfMixin from '*/mixins/selfMixin'
 
 export default {
@@ -119,7 +120,7 @@ export default {
     BaseDeletedBlock,
     BaseImage,
     BaseHeader,
-    ArtistNameSection,
+    BaseAlbumArtistNamesSection,
     BaseAlbumListenersCount,
     BaseSelfIcons,
     BaseOptionsDropdown,
@@ -160,7 +161,7 @@ export default {
   ],
   data () {
     return {
-      isArtistNameActive: false
+      isArtistLinkActive: false
     }
   },
   computed: {
@@ -168,25 +169,10 @@ export default {
       return this.albumData
     },
     artistName () {
-      if (this.artists) {
-        return formatArtistName(
-          this.artists
-        )
-      } else {
-        return null
-      }
+      return this.albumData.artist?.name
     },
     artists () {
-      if (this.artistData) {
-        return [
-          this.artistData
-        ]
-      } else {
-        return this.albumData.artists
-      }
-    },
-    artistData () {
-      return this.albumData.artist
+      return this.albumData.artists
     },
     albumTitle () {
       return this.albumData.title
@@ -210,8 +196,8 @@ export default {
     isDeleted () {
       return !!this.albumData.isDeleted
     },
-    isHeaderActive () {
-      return !this.isArtistNameActive
+    isMainLinkActive () {
+      return !this.isArtistLinkActive
     }
   },
   methods: {
@@ -242,10 +228,10 @@ export default {
       this.paginationItem
         .listeners_count = value
     },
-    handleArtistNameActiveChange (
+    handleArtistLinkActiveChange (
       value
     ) {
-      this.isArtistNameActive = value
+      this.isArtistLinkActive = value
     },
     showDeleteModal () {
       this.$refs

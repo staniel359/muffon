@@ -23,13 +23,13 @@
     <div class="content">
       <div class="track-index-main-info-listeners">
         <div class="track-index-main-info">
-          <TrackIndex
+          <IndexBlock
             v-if="isRenderIndex"
             :index="index"
           />
 
           <div class="track-main-info">
-            <TrackTitle
+            <TitleSection
               :track-data="trackData"
               :artist-name="artistName"
               :is-link-to-library="isLinkToLibrary"
@@ -37,7 +37,7 @@
               @link-click="handleLinkClick"
             />
 
-            <TrackArtistName
+            <ArtistNameSection
               v-if="isRenderArtistName"
               :track-data="trackData"
               :is-link-to-library="isLinkToLibrary"
@@ -45,7 +45,7 @@
               @link-click="handleLinkClick"
             />
 
-            <TrackAlbumTitle
+            <AlbumTitleSection
               v-if="isRenderAlbumTitle"
               :track-data="trackData"
               :is-link-to-library="isLinkToLibrary"
@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <TrackListenersCount
+        <ListenersCountSection
           v-if="isRenderListenersCount"
           :listeners-count="listenersCount"
           :top-track-count="topTrackCount"
@@ -71,7 +71,7 @@
       />
     </div>
 
-    <TrackDuration
+    <DurationBlock
       v-if="isRenderDuration"
       :duration="duration"
     />
@@ -82,22 +82,10 @@
       :source-id="sourceId"
     />
 
-    <div
+    <CreatedBlock
       v-if="isWithCreated"
-      class="main-small-container created-container"
-    >
-      <div>
-        <small
-          v-text="createdDateFormatted"
-        />
-      </div>
-
-      <div>
-        <small
-          v-text="createdTimeFormatted"
-        />
-      </div>
-    </div>
+      :track-data="trackData"
+    />
 
     <BaseOptionsDropdown
       model="track"
@@ -167,14 +155,15 @@ import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseTrackAudioIcon
   from '*/components/models/track/BaseTrackAudioIcon.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
-import TrackIndex from './BaseTrackContent/TrackIndex.vue'
-import TrackTitle from './BaseTrackContent/TrackTitle.vue'
-import TrackArtistName from './BaseTrackContent/TrackArtistName.vue'
-import TrackAlbumTitle from './BaseTrackContent/TrackAlbumTitle.vue'
-import TrackListenersCount from './BaseTrackContent/TrackListenersCount.vue'
-import TrackDuration from './BaseTrackContent/TrackDuration.vue'
+import IndexBlock from './BaseTrackContent/IndexBlock.vue'
+import TitleSection from './BaseTrackContent/TitleSection.vue'
+import ArtistNameSection from './BaseTrackContent/ArtistNameSection.vue'
+import AlbumTitleSection from './BaseTrackContent/AlbumTitleSection.vue'
+import ListenersCountSection from './BaseTrackContent/ListenersCountSection.vue'
+import DurationBlock from './BaseTrackContent/DurationBlock.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistsModal
@@ -187,10 +176,6 @@ import BasePlaylistTrackDeleteModal
   from '*/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
 import BaseProfileLibraryDeleteModal
   from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
-import {
-  date as formatDate,
-  time as formatTime
-} from '*/helpers/formatters'
 import selfMixin from '*/mixins/selfMixin'
 
 export default {
@@ -199,14 +184,15 @@ export default {
     BaseDeletedBlock,
     BaseTrackAudioIcon,
     BaseImage,
-    TrackIndex,
-    TrackTitle,
-    TrackArtistName,
-    TrackAlbumTitle,
-    TrackListenersCount,
-    TrackDuration,
+    IndexBlock,
+    TitleSection,
+    ArtistNameSection,
+    AlbumTitleSection,
+    ListenersCountSection,
+    DurationBlock,
     BaseSourceIcon,
     BaseSelfIcons,
+    CreatedBlock,
     BaseOptionsDropdown,
     BasePlaylistsModal,
     BaseBookmarkDeleteModal,
@@ -335,19 +321,6 @@ export default {
     libraryTrackId () {
       return this.trackData.library.id.toString()
     },
-    createdDateFormatted () {
-      return formatDate(
-        this.created
-      )
-    },
-    created () {
-      return this.trackData.created
-    },
-    createdTimeFormatted () {
-      return formatTime(
-        this.created
-      )
-    },
     uuid () {
       return this.trackData.uuid
     },
@@ -432,8 +405,4 @@ export default {
   @extend .no-padding
   min-width: unset !important
   margin-left: 0.5em !important
-
-.created-container
-  margin-left: 0.5em !important
-  text-align: right
 </style>

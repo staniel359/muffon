@@ -21,7 +21,7 @@ import {
 import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
-  name: 'TrackAlbumTitle',
+  name: 'AlbumTitleSection',
   components: {
     BaseLink
   },

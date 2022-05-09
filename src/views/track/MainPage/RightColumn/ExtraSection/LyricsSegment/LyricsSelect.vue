@@ -7,7 +7,7 @@
     </div>
 
     <BaseDropdownContainer
-      class="main-source-select-track-select"
+      class="main-source-select"
       :header="headerText"
       :is-loading="isLoading"
       :is-error="isError"

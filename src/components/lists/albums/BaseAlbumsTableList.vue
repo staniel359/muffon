@@ -11,6 +11,7 @@
         :album-data="albumData"
         :artist-name="artistName"
         :is-with-artist-name="isWithArtistName"
+        :is-with-multiple-artist-names="isWithMultipleArtistNames"
         :is-with-listeners-count="isWithListenersCount"
         :is-with-library="isWithLibrary"
         :is-link-to-library="isLinkToLibrary"
@@ -52,6 +53,7 @@ export default {
     },
     artistName: String,
     isWithArtistName: Boolean,
+    isWithMultipleArtistNames: Boolean,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,

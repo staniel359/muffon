@@ -18,9 +18,6 @@
 import BaseProgress from '*/components/BaseProgress.vue'
 import CompleteSection from './AlbumsSection/CompleteSection.vue'
 import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
-import {
-  artistName as formatArtistName
-} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumsSection',
@@ -136,14 +133,10 @@ export default {
     formatAlbum (
       albumData
     ) {
-      const artistName =
-        formatArtistName(
-          albumData.artists
-        )
-
       return {
         albumTitle: albumData.title,
-        artistName,
+        artistName:
+          albumData.artist.name,
         imageUrl:
           albumData.image?.original
       }

@@ -1,10 +1,9 @@
 <template>
   <BaseArtistLinkContainer
     :artist-data="artistData"
-    :profile-id="profileId"
     :is-link-to-library="isLinkToLibrary"
-    :is-tracks-active="isTracksActive"
-    :is-albums-active="isAlbumsActive"
+    :profile-id="profileId"
+    :is-link-active="isMainLinkActive"
     @click="handleLinkClick"
   >
     <BaseSimpleCardContainer
@@ -39,7 +38,7 @@
       <div class="content">
         <BaseHeader
           :class="{
-            link: isHeaderActive
+            link: isMainLinkActive
           }"
           tag="h4"
           :text="artistName"
@@ -56,10 +55,8 @@
         <LibraryCountersSection
           v-if="isWithLibrary"
           :artist-data="artistData"
-          :is-tracks-active="isTracksActive"
-          :is-albums-active="isAlbumsActive"
-          @tracks-active-change="handleTracksActiveChange"
-          @albums-active-change="handleAlbumsActiveChange"
+          :profile-id="profileId"
+          @link-active-change="handleCounterLinkActiveChange"
         />
 
         <BaseSelfIcons
@@ -131,8 +128,7 @@ export default {
   ],
   data () {
     return {
-      isTracksActive: false,
-      isAlbumsActive: false
+      isCounterLinkActive: false
     }
   },
   computed: {
@@ -148,11 +144,8 @@ export default {
     listenersCount () {
       return this.artistData.listeners_count
     },
-    isHeaderActive () {
-      return !(
-        this.isTracksActive ||
-          this.isAlbumsActive
-      )
+    isMainLinkActive () {
+      return !this.isCounterLinkActive
     },
     paginationItem () {
       return this.findPaginationItem(
@@ -183,15 +176,10 @@ export default {
       this.paginationItem
         .listeners_count = value
     },
-    handleTracksActiveChange (
+    handleCounterLinkActiveChange (
       value
     ) {
-      this.isTracksActive = value
-    },
-    handleAlbumsActiveChange (
-      value
-    ) {
-      this.isAlbumsActive = value
+      this.isCounterLinkActive = value
     }
   }
 }

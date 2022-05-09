@@ -5,8 +5,8 @@
   >
     <BaseArtistLinkContainer
       :artist-data="artistData"
-      :profile-id="profileId"
       :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
     >
       {{ artistName }}
     </BaseArtistLinkContainer>
