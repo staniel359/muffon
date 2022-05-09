@@ -49,9 +49,10 @@ It has **no ads** and is **absolutely free** to use.
 - communities
 - new / upcoming releases
 - multitag search
-- offline listening
-- top (based on location)
 - sharing (artists / albums / tracks / playlists / videos)
+- top (based on location)
+- music labels (artists / albums)
+- offline listening
 - messenger
 - ??? (your suggestions)
 
