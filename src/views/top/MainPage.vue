@@ -4,6 +4,8 @@
   >
     <ArtistsSegment />
 
+    <AlbumsSegment />
+
     <TracksSegment />
 
     <TagsSegment />
@@ -14,6 +16,7 @@
 import BaseTopPageContainer
   from '*/components/containers/pages/top/BaseTopPageContainer.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
+import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'
 
@@ -22,6 +25,7 @@ export default {
   components: {
     BaseTopPageContainer,
     ArtistsSegment,
+    AlbumsSegment,
     TracksSegment,
     TagsSegment
   }

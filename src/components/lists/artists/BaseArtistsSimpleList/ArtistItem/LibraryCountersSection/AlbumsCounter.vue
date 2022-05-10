@@ -11,7 +11,7 @@
     />
 
     <BaseLinkContainer
-      class="ui main-link main-small-container"
+      class="ui main-link"
       :link="link"
       @active-change="handleLinkActiveChange"
     >

@@ -14,6 +14,14 @@ export function artists () {
   }
 }
 
+export function albums () {
+  return {
+    name: 'TopAlbumsPage',
+    params: {},
+    path: 'top/albums'
+  }
+}
+
 export function tracks () {
   return {
     name: 'TopTracksPage',

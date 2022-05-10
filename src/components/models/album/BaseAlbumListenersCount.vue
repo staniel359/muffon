@@ -1,10 +1,12 @@
 <template>
-  <div v-if="isLoading">
-    <div
-      class="ui active mini inline loader"
-    />
-  </div>
-  <div v-else>
+  <div
+    v-if="isLoading"
+    class="ui active mini inline loader"
+  />
+  <div
+    v-else
+    class="main-small-container"
+  >
     <small>
       <BaseIcon
         icon="user"

@@ -3,7 +3,10 @@
     v-if="isLoading"
     class="ui active mini inline loader"
   />
-  <div v-else>
+  <div
+    v-else
+    class="main-small-container"
+  >
     <small>
       <BaseIcon
         icon="user"

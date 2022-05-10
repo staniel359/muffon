@@ -136,6 +136,9 @@ const TopMainPage = () => import(
 const TopArtistsPage = () => import(
   '*/views/top/ArtistsPage.vue'
 )
+const TopAlbumsPage = () => import(
+  '*/views/top/AlbumsPage.vue'
+)
 const TopTracksPage = () => import(
   '*/views/top/TracksPage.vue'
 )
@@ -503,6 +506,13 @@ export default [
     exact: true,
     name: 'TopArtistsPage',
     component: TopArtistsPage,
+    props: true
+  },
+  {
+    path: '/top/albums',
+    exact: true,
+    name: 'TopAlbumsPage',
+    component: TopAlbumsPage,
     props: true
   },
   {

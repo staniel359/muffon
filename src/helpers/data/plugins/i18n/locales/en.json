@@ -57,6 +57,7 @@
     },
     "topCollection": {
       "artists": "Top artists",
+      "albums": "Top albums",
       "tracks": "Top tracks",
       "tags": "Top tags"
     },

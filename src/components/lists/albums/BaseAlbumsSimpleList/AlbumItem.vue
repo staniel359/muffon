@@ -42,7 +42,7 @@
 
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
-          class="description main-small-container"
+          class="description"
           :album-title="albumTitle"
           :artist-name="artistName"
           :listeners-count="listenersCount"

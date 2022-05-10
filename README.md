@@ -35,7 +35,7 @@ It has **no ads** and is **absolutely free** to use.
 - videos (YouTube)
 - lyrics (Genius)
 - tags (with top artists / albums / tracks)
-- top (artists / tracks / tags)
+- top (artists / albums/ tracks / tags)
 - playlists
 - favorites (artists / albums / tracks)
 - bookmarks (artists / albums / tracks)

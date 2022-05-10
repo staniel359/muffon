@@ -2,6 +2,7 @@ import i18n from '*/plugins/i18n'
 import {
   main as formatTopMainLink,
   artists as formatTopArtistsLink,
+  albums as formatTopAlbumsLink,
   tracks as formatTopTracksLink,
   tags as formatTopTagsLink
 } from '*/helpers/formatters/links/top'
@@ -27,6 +28,8 @@ export default function (
     switch (scope) {
       case 'artists':
         return formatTopArtistsLink().path
+      case 'albums':
+        return formatTopAlbumsLink().path
       case 'tracks':
         return formatTopTracksLink().path
       case 'tags':

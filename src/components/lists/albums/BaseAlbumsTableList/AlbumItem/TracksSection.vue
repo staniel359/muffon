@@ -1,5 +1,5 @@
 <template>
-  <span class="description">
+  <span class="description main-small-container">
     <BaseLinkContainer
       class="main-link"
       :link="link"

@@ -37,7 +37,7 @@
 
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
-          class="description main-small-container"
+          class="description"
           :artist-name="artistName"
           :listeners-count="listenersCount"
           @load-end="handleListenersCountLoadEnd"

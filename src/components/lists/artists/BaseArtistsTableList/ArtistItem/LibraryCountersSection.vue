@@ -1,5 +1,10 @@
 <template>
-  <div class="description library-counters-section">
+  <div
+    :class="[
+      'description main-small-container',
+      'library-counters-section'
+    ]"
+  >
     <TracksCounter
       class="tracks-link"
       :artist-data="artistData"
