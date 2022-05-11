@@ -55,9 +55,11 @@ export default {
     BaseHeader,
     BaseIcon
   },
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     playlistData: {
       type: Object,

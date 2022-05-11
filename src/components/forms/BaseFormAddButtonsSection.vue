@@ -1,69 +1,36 @@
 <template>
   <div class="add-buttons-container">
     <div class="ui buttons">
-      <TracksButton
+      <MusicButton
+        :artists="artists"
+        :albums="albums"
         :tracks="tracks"
-        @change="handleTracksChange"
       />
 
-      <ImagesButton
-        :images="images"
-        @change="handleImagesChange"
-      />
+      <ImagesButton />
 
-      <EmojiButton
-        @select="handleEmojiSelect"
-      />
+      <EmojiButton />
     </div>
   </div>
 </template>
 
 <script>
-import TracksButton from './BaseFormAddButtonsSection/TracksButton.vue'
+import MusicButton from './BaseFormAddButtonsSection/MusicButton.vue'
 import ImagesButton from './BaseFormAddButtonsSection/ImagesButton.vue'
 import EmojiButton from './BaseFormAddButtonsSection/EmojiButton.vue'
 
 export default {
   name: 'BaseFormAddButtonsSection',
   components: {
-    TracksButton,
+    MusicButton,
     ImagesButton,
     EmojiButton
   },
   props: {
+    artists: Array,
+    albums: Array,
     tracks: Array,
     images: Array
-  },
-  emits: [
-    'tracksChange',
-    'imagesChange',
-    'emojiSelect'
-  ],
-  methods: {
-    handleTracksChange (
-      value
-    ) {
-      this.$emit(
-        'tracksChange',
-        value
-      )
-    },
-    handleImagesChange (
-      value
-    ) {
-      this.$emit(
-        'imagesChange',
-        value
-      )
-    },
-    handleEmojiSelect (
-      value
-    ) {
-      this.$emit(
-        'emojiSelect',
-        value
-      )
-    }
   }
 }
 </script>

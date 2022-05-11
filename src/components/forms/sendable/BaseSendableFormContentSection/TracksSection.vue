@@ -1,12 +1,12 @@
 <template>
   <BaseTracksSimpleList
-    class="tracks-list"
     :tracks="tracks"
     is-with-image
     is-with-artist-name
     is-with-album-title
     is-with-delete-option
     is-clearable
+    @link-click="handleLinkClick"
     @delete-button-click="handleDeleteButtonClick"
   />
 </template>
@@ -16,43 +16,39 @@ import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
-  name: 'BaseFormTracksSection',
+  name: 'TracksSection',
   components: {
     BaseTracksSimpleList
   },
+  inject: [
+    'deleteModel'
+  ],
   props: {
     tracks: Array
   },
   emits: [
-    'tracksChange'
+    'linkClick'
   ],
   methods: {
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
+    },
     handleDeleteButtonClick (
       {
         uuid
       }
     ) {
-      function isMatchedTrack (
-        trackData
-      ) {
-        return trackData.uuid !== uuid
-      }
-
-      const tracks =
-        this.tracks.filter(
-          isMatchedTrack
-        )
-
-      this.$emit(
-        'tracksChange',
-        tracks
+      this.deleteModel(
+        {
+          uuid,
+          scope: 'tracks'
+        }
       )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.tracks-list
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

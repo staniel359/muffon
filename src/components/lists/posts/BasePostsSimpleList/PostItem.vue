@@ -48,6 +48,7 @@
 
       <BasePostUpdateModal
         ref="updateModal"
+        :key="key"
         :post-data="postData"
         :is-with-as-community-option="isCommunityCreator"
         @success="handleUpdated"
@@ -85,6 +86,9 @@ import BasePostDeleteModal
 import {
   setToast
 } from '*/helpers/actions/plugins/semantic'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'PostItem',
@@ -99,10 +103,14 @@ export default {
     BasePostUpdateModal,
     BasePostDeleteModal
   },
-  inject: [
-    'findPaginationItem',
-    'updatePaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    },
+    updatePaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     postData: {
       type: Object,
@@ -110,6 +118,11 @@ export default {
     },
     profileId: String,
     isCommunityCreator: Boolean
+  },
+  data () {
+    return {
+      key: null
+    }
   },
   computed: {
     ...mapState(
@@ -223,8 +236,7 @@ export default {
       this.notify()
     },
     handleDeleted () {
-      this.paginationItem
-        .isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     notify () {
       setToast(
@@ -234,7 +246,11 @@ export default {
         }
       )
     },
-    showUpdateModal () {
+    async showUpdateModal () {
+      this.key = generateKey()
+
+      await this.$nextTick()
+
       this.$refs
         .updateModal
         .show()

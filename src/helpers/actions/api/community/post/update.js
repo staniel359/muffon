@@ -4,9 +4,11 @@ export default function (
   {
     communityId,
     postId,
-    content,
-    tracks,
+    text,
     images,
+    artists,
+    albums,
+    tracks,
     byCommunity
   }
 ) {
@@ -16,9 +18,11 @@ export default function (
     `/communities/${communityId}/posts/${postId}`
 
   const params = {
-    content,
-    tracks,
+    text,
     images,
+    artists,
+    albums,
+    tracks,
     by_community: byCommunity
   }
 

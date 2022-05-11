@@ -27,13 +27,25 @@ export default {
       type: String,
       required: true
     },
-    tracks: {
+    images: {
       type: Array,
       default () {
         return []
       }
     },
-    images: {
+    artists: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    albums: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    tracks: {
       type: Array,
       default () {
         return []
@@ -78,8 +90,10 @@ export default {
 
       const isContentData = (
         fields.content ||
-          this.tracks.length ||
-          this.images.length
+          this.images.length ||
+          this.artists.length ||
+          this.albums.length ||
+          this.tracks.length
       )
 
       if (isContentData) {
@@ -132,9 +146,11 @@ export default {
         otherProfileId: this.profileId,
         communityId: this.communityId,
         byCommunity: !!fields.community,
-        content: fields.content,
-        tracks: this.tracks,
-        images: this.imagesFormatted
+        text: fields.content,
+        images: this.imagesFormatted,
+        artists: this.artists,
+        albums: this.albums,
+        tracks: this.tracks
       }
     }
   }

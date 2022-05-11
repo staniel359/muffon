@@ -12,22 +12,21 @@
       <div class="top-section-container">
         <SearchInput
           ref="input"
-          :tracks="tracks"
-          @select="handleSelect"
+          :scope="scope"
+          :collection="this[scope]"
         />
 
-        <BaseClearButton
-          v-if="tracks.length"
-          class="reset-button"
-          @click="handleResetButtonClick"
+        <SearchScopeSelect
+          :scope="scope"
+          @select="handleScopeSelect"
         />
       </div>
 
       <BaseDivider />
 
       <SearchList
-        :tracks="tracks"
-        @change="handleChange"
+        :scope="scope"
+        :collection="this[scope]"
       />
     </div>
   </BaseModalContainer>
@@ -36,20 +35,17 @@
 <script>
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
-import SearchInput from './BaseAddTracksModal/SearchInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import SearchInput from './SearchModal/SearchInput.vue'
+import SearchScopeSelect from './SearchModal/SearchScopeSelect.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
-import SearchList from './BaseAddTracksModal/SearchList.vue'
-import {
-  generateKey
-} from '*/helpers/utils'
+import SearchList from './SearchModal/SearchList.vue'
 
 export default {
-  name: 'BaseAddTracksModal',
+  name: 'SearchModal',
   components: {
     BaseModalContainer,
     SearchInput,
-    BaseClearButton,
+    SearchScopeSelect,
     BaseDivider,
     SearchList
   },
@@ -59,60 +55,29 @@ export default {
     }
   },
   props: {
-    tracks: {
-      type: Array,
-      default () {
-        return []
-      }
+    artists: Array,
+    albums: Array,
+    tracks: Array
+  },
+  data () {
+    return {
+      scope: 'artists'
     }
   },
-  emits: [
-    'change'
-  ],
   methods: {
     handleVisible () {
       this.focusInput()
     },
-    handleSelect (
+    async handleScopeSelect (
       value
     ) {
-      const trackData = {
-        uuid: generateKey(),
-        ...value
-      }
+      this.scope = value
 
-      const tracks = [
-        ...this.tracks,
-        trackData
-      ]
-
-      this.changeTracks(
-        tracks
-      )
-    },
-    handleChange (
-      value
-    ) {
-      this.changeTracks(
-        value
-      )
-    },
-    handleResetButtonClick () {
-      this.changeTracks(
-        []
-      )
+      await this.$nextTick()
 
       this.focusInput()
 
       this.clearInput()
-    },
-    changeTracks (
-      value
-    ) {
-      this.$emit(
-        'change',
-        value
-      )
     },
     show () {
       this.$refs
@@ -142,6 +107,9 @@ export default {
 .top-section-container
   @extend .d-flex, .align-items-center
 
-.reset-button
+::v-deep(.search-input)
+  @extend .flex-full
+
+::v-deep(.reset-button)
   margin-left: 1em !important
 </style>

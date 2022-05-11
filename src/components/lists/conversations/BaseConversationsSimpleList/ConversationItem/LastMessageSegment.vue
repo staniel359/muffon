@@ -21,34 +21,32 @@
         :created="created"
       />
 
-      <div class="content-container">
-        <div
-          v-if="content"
-          class="text"
-          v-text="content"
+      <div
+        v-if="text"
+        class="text main-content-section"
+        v-text="text"
+      />
+
+      <div class="main-content-section">
+        <BaseIcon
+          v-if="isWithImages"
+          icon="grey image"
         />
 
-        <div class="content-section">
-          <BaseIcon
-            v-if="isWithImages"
-            icon="grey image"
-          />
+        <BaseIcon
+          v-if="isWithArtists"
+          icon="grey microphone alternate"
+        />
 
-          <BaseIcon
-            v-if="isWithArtists"
-            icon="grey microphone alternate"
-          />
+        <BaseIcon
+          v-if="isWithAlbums"
+          icon="grey record vinyl"
+        />
 
-          <BaseIcon
-            v-if="isWithAlbums"
-            icon="grey record vinyl"
-          />
-
-          <BaseIcon
-            v-if="isWithTracks"
-            icon="grey music"
-          />
-        </div>
+        <BaseIcon
+          v-if="isWithTracks"
+          icon="grey music"
+        />
       </div>
     </div>
   </BaseSegmentContainer>
@@ -88,20 +86,20 @@ export default {
     created () {
       return this.lastMessageData.created
     },
-    content () {
-      return this.lastMessageData.content
-    },
-    isWithArtists () {
-      return this.lastMessageData.with_artists
-    },
-    isWithAlbums () {
-      return this.lastMessageData.with_albums
-    },
-    isWithTracks () {
-      return this.lastMessageData.with_tracks
+    text () {
+      return this.lastMessageData.text
     },
     isWithImages () {
-      return this.lastMessageData.with_images
+      return this.lastMessageData.attachments.with_images
+    },
+    isWithArtists () {
+      return this.lastMessageData.attachments.with_artists
+    },
+    isWithAlbums () {
+      return this.lastMessageData.attachments.with_albums
+    },
+    isWithTracks () {
+      return this.lastMessageData.attachments.with_tracks
     }
   }
 }

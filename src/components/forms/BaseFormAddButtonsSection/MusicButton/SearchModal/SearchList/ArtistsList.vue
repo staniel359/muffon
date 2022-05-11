@@ -1,7 +1,7 @@
 <template>
   <BasePaginatedListContainer
-    v-if="tracks.length"
-    :response-data="tracksData"
+    v-if="artists.length"
+    :response-data="artistsData"
     :scope="scope"
     :limit="limit"
     :response-page-limit="totalCount"
@@ -10,9 +10,8 @@
     @focus="handleFocus"
   >
     <template #default="slotProps">
-      <BaseTracksSimpleList
-        :tracks="slotProps[scope]"
-        is-with-artist-name
+      <BaseArtistsSimpleList
+        :artists="slotProps[scope]"
         is-with-delete-option
         is-clearable
         @link-click="handleLinkClick"
@@ -25,20 +24,21 @@
 <script>
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
-import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseArtistsSimpleList
+  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
-  name: 'SearchList',
+  name: 'ArtistsList',
   components: {
     BasePaginatedListContainer,
-    BaseTracksSimpleList
+    BaseArtistsSimpleList
   },
   inject: [
+    'deleteModel',
     'hideModal'
   ],
   props: {
-    tracks: {
+    artists: {
       type: Array,
       default () {
         return []
@@ -46,25 +46,24 @@ export default {
     }
   },
   emits: [
-    'change',
     'focus'
   ],
   data () {
     return {
-      limit: 50,
-      scope: 'tracks'
+      limit: 20,
+      scope: 'artists'
     }
   },
   computed: {
-    tracksData () {
+    artistsData () {
       return {
         page: 1,
         total_pages: 1,
-        tracks: this.tracks
+        artists: this.artists
       }
     },
     totalCount () {
-      return this.tracks.length
+      return this.artists.length
     }
   },
   methods: {
@@ -76,20 +75,11 @@ export default {
         uuid
       }
     ) {
-      function isMatchedTrack (
-        trackData
-      ) {
-        return trackData.uuid !== uuid
-      }
-
-      const tracks =
-        this.tracks.filter(
-          isMatchedTrack
-        )
-
-      this.$emit(
-        'change',
-        tracks
+      this.deleteModel(
+        {
+          uuid,
+          scope: 'artists'
+        }
       )
     },
     handleFocus () {

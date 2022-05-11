@@ -7,40 +7,31 @@
       <BasePostUpdateFormContainer
         class="main-post-form"
         :post-data="postData"
-        :tracks="tracks"
         :images="images"
+        :artists="artists"
+        :albums="albums"
+        :tracks="tracks"
         @success="handleSuccess"
       >
         <BaseContentField
           ref="content"
-          :value="postContent"
+          :value="text"
           @submit="handleSubmit"
         />
 
-        <div
-          v-if="images.length || tracks.length"
-          class="images-tracks-section"
-        >
-          <BaseFormImagesSection
-            v-if="images.length"
-            :images="images"
-            @images-change="handleImagesChange"
-          />
-
-          <BaseFormTracksSection
-            v-if="tracks.length"
-            :tracks="tracks"
-            @tracks-change="handleTracksChange"
-          />
-        </div>
+        <BaseSendableFormContentSection
+          :images="images"
+          :artists="artists"
+          :albums="albums"
+          :tracks="tracks"
+          @link-click="handleLinkClick"
+        />
 
         <div class="buttons-container">
           <BaseFormAddButtonsSection
+            :artists="artists"
+            :albums="albums"
             :tracks="tracks"
-            :images="images"
-            @tracks-change="handleTracksChange"
-            @images-change="handleImagesChange"
-            @emoji-select="handleEmojiSelect"
           />
 
           <BasePostAsCommunityField
@@ -64,15 +55,14 @@ import BaseModalContainer
 import BasePostUpdateFormContainer
   from '*/components/containers/forms/post/BasePostUpdateFormContainer.vue'
 import BaseContentField from '*/components/fields/BaseContentField.vue'
-import BaseFormImagesSection
-  from '*/components/forms/BaseFormImagesSection.vue'
-import BaseFormTracksSection
-  from '*/components/forms/BaseFormTracksSection.vue'
+import BaseSendableFormContentSection
+  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
   from '*/components/forms/BaseFormAddButtonsSection.vue'
 import BasePostAsCommunityField
   from '*/components/fields/post/BasePostAsCommunityField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+import sendableFormMixin from '*/mixins/sendableFormMixin'
 import {
   generateKey
 } from '*/helpers/utils'
@@ -86,12 +76,14 @@ export default {
     BaseModalContainer,
     BasePostUpdateFormContainer,
     BaseContentField,
-    BaseFormImagesSection,
-    BaseFormTracksSection,
+    BaseSendableFormContentSection,
     BaseFormAddButtonsSection,
     BasePostAsCommunityField,
     BaseSubmitButton
   },
+  mixins: [
+    sendableFormMixin
+  ],
   props: {
     postData: {
       type: Object,
@@ -102,26 +94,36 @@ export default {
   emits: [
     'success'
   ],
-  data () {
-    return {
-      tracks: [],
-      images: []
-    }
-  },
   computed: {
-    postContent () {
-      return this.postData.content
+    text () {
+      return this.postData.text
     },
     postImages () {
-      return this.postData.images || []
+      return this.postData.attachments?.images || []
     },
-    tracksCollection () {
+    postArtistsFormatted () {
+      return formatCollection(
+        this.postArtists
+      )
+    },
+    postArtists () {
+      return this.postData.attachments?.artists || []
+    },
+    postAlbumsFormatted () {
+      return formatCollection(
+        this.postAlbums
+      )
+    },
+    postAlbums () {
+      return this.postData.attachments?.albums || []
+    },
+    postTracksFormatted () {
       return formatCollection(
         this.postTracks
       )
     },
     postTracks () {
-      return this.postData.tracks || []
+      return this.postData.attachments?.tracks || []
     },
     isByCommunity () {
       return this.postData.by_community
@@ -132,7 +134,12 @@ export default {
       this.processImage
     )
 
-    this.tracks = this.tracksCollection
+    this.artists =
+      this.postArtistsFormatted
+    this.albums =
+      this.postAlbumsFormatted
+    this.tracks =
+      this.postTracksFormatted
   },
   methods: {
     handleVisible () {
@@ -141,26 +148,8 @@ export default {
     handleSubmit () {
       this.clickSubmit()
     },
-    handleTracksChange (
-      value
-    ) {
-      this.tracks = [
-        ...value
-      ]
-    },
-    handleImagesChange (
-      value
-    ) {
-      this.images = [
-        ...value
-      ]
-    },
-    handleEmojiSelect (
-      value
-    ) {
-      this.updateContentValue(
-        value
-      )
+    handleLinkClick () {
+      this.hide()
     },
     handleSuccess (
       value
@@ -234,15 +223,6 @@ export default {
       this.$refs
         .submit
         .click()
-    },
-    updateContentValue (
-      value
-    ) {
-      this.$refs
-        .content
-        .updateValue(
-          value
-        )
     }
   }
 }

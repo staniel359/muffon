@@ -137,6 +137,18 @@ p
       & >.content
         color: $colorWhite
 
+.ui.search
+  & >.results
+    & > .result
+      @extend .d-flex, .align-items-center
+      & > .image
+        float: none
+        width: 40px
+        height: 40px
+        margin-right: 0.5em
+      & > .content
+        @extend .no-margin, .flex-full
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -279,11 +291,6 @@ p
       height: 35px
   & > .content
     @extend .flex-full, .no-padding
-    .content-container
-      margin-top: 0.75em
-    .content-section
-      @extend .no-padding
-      margin-top: 5px !important
     .text
       font-size: 18px
       line-height: 1.2em
@@ -657,8 +664,6 @@ p
       @extend .flex-full
     & > .main-as-community-checkbox
       margin: 0 1em
-  .images-tracks-section
-    margin-top: 1em
 
 .main-percent-circle
   & > path
@@ -704,3 +709,11 @@ p
 
 .main-scopes-dropdown
   width: 140px
+
+.main-content-container
+  margin-top: 1em
+
+.main-content-section
+  @extend .no-padding, .no-margin
+  &:not(:first-child)
+    margin-top: 0.75em !important

@@ -5,40 +5,32 @@
     @click="handleClick"
   />
 
-  <BaseAddTracksModal
+  <SearchModal
     ref="modal"
+    :artists="artists"
+    :albums="albums"
     :tracks="tracks"
-    @change="handleTracksChange"
   />
 </template>
 
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseAddTracksModal from '*/components/modals/BaseAddTracksModal.vue'
+import SearchModal from './MusicButton/SearchModal.vue'
 
 export default {
-  name: 'TracksButton',
+  name: 'MusicButton',
   components: {
     BaseButton,
-    BaseAddTracksModal
+    SearchModal
   },
   props: {
+    artists: Array,
+    albums: Array,
     tracks: Array
   },
-  emits: [
-    'change'
-  ],
   methods: {
     handleClick () {
       this.showModal()
-    },
-    handleTracksChange (
-      value
-    ) {
-      this.$emit(
-        'change',
-        value
-      )
     },
     showModal () {
       this.$refs

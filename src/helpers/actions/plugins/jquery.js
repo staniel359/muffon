@@ -47,11 +47,3 @@ export function insertAfter (
     after
   )
 }
-
-export function remove (
-  element
-) {
-  $(
-    element
-  ).remove()
-}

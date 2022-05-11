@@ -3,9 +3,11 @@ import postRequest from '*/helpers/actions/api/request/post'
 export default function (
   {
     communityId,
-    content,
-    tracks,
+    text,
     images,
+    artists,
+    albums,
+    tracks,
     byCommunity
   }
 ) {
@@ -13,9 +15,11 @@ export default function (
     `/communities/${communityId}/posts`
 
   const params = {
-    content,
-    tracks,
+    text,
     images,
+    artists,
+    albums,
+    tracks,
     by_community: byCommunity
   }
 

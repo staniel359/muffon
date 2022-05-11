@@ -91,9 +91,11 @@ export default {
     BaseOptionsDropdown,
     BasePlaylistDeleteModal
   },
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     playlistData: {
       type: Object,

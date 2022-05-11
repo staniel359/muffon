@@ -22,16 +22,8 @@ export default {
     BaseButtonContainer,
     BaseImageInput
   },
-  props: {
-    images: {
-      type: Array,
-      default () {
-        return []
-      }
-    }
-  },
-  emits: [
-    'change'
+  inject: [
+    'addModel'
   ],
   methods: {
     handleClick () {
@@ -40,14 +32,11 @@ export default {
     handleImageChange (
       value
     ) {
-      const images = [
-        ...this.images,
-        value
-      ]
-
-      this.$emit(
-        'change',
-        images
+      this.addModel(
+        {
+          model: value,
+          scope: 'images'
+        }
       )
     },
     showInput () {

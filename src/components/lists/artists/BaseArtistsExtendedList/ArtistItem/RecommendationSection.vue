@@ -21,9 +21,11 @@ export default {
     ArtistsSection,
     BaseRecommendationDeleteModal
   },
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     artistData: {
       type: Object,

@@ -4,9 +4,11 @@ import postRequest from '*/helpers/actions/api/request/post'
 export default function (
   {
     otherProfileId,
-    content,
-    tracks,
-    images
+    text,
+    images,
+    artists,
+    albums,
+    tracks
   }
 ) {
   this.conversationId = null
@@ -19,9 +21,11 @@ export default function (
 
   const params = {
     other_profile_id: otherProfileId,
-    content,
-    tracks,
-    images
+    text,
+    images,
+    artists,
+    albums,
+    tracks
   }
 
   const handleSuccess = (

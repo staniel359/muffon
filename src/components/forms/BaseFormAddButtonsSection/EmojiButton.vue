@@ -22,8 +22,8 @@ export default {
     BaseButtonContainer,
     EmojiPicker
   },
-  emits: [
-    'select'
+  inject: [
+    'addEmoji'
   ],
   methods: {
     handleClick () {
@@ -32,8 +32,7 @@ export default {
     handleSelect (
       value
     ) {
-      this.$emit(
-        'select',
+      this.addEmoji(
         value.native
       )
     },

@@ -5,8 +5,10 @@
       :post-type="postType"
       :profile-id="profileId"
       :community-id="communityId"
-      :tracks="tracks"
       :images="images"
+      :artists="artists"
+      :albums="albums"
+      :tracks="tracks"
       @success="handleSuccess"
     >
       <BaseContentField
@@ -14,30 +16,18 @@
         @submit="handleSubmit"
       />
 
-      <div
-        v-if="images.length || tracks.length"
-        class="images-tracks-section"
-      >
-        <BaseFormImagesSection
-          v-if="images.length"
-          :images="images"
-          @images-change="handleImagesChange"
-        />
-
-        <BaseFormTracksSection
-          v-if="tracks.length"
-          :tracks="tracks"
-          @tracks-change="handleTracksChange"
-        />
-      </div>
+      <BaseSendableFormContentSection
+        :images="images"
+        :artists="artists"
+        :albums="albums"
+        :tracks="tracks"
+      />
 
       <div class="buttons-container">
         <BaseFormAddButtonsSection
+          :artists="artists"
+          :albums="albums"
           :tracks="tracks"
-          :images="images"
-          @tracks-change="handleTracksChange"
-          @images-change="handleImagesChange"
-          @emoji-select="handleEmojiSelect"
         />
 
         <BasePostAsCommunityField
@@ -59,15 +49,14 @@ import BaseSegmentContainer
 import BasePostCreateFormContainer
   from '*/components/containers/forms/post/BasePostCreateFormContainer.vue'
 import BaseContentField from '*/components/fields/BaseContentField.vue'
-import BaseFormImagesSection
-  from '*/components/forms/BaseFormImagesSection.vue'
-import BaseFormTracksSection
-  from '*/components/forms/BaseFormTracksSection.vue'
+import BaseSendableFormContentSection
+  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
   from '*/components/forms/BaseFormAddButtonsSection.vue'
 import BasePostAsCommunityField
   from '*/components/fields/post/BasePostAsCommunityField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+import sendableFormMixin from '*/mixins/sendableFormMixin'
 
 export default {
   name: 'BasePostsFormSegment',
@@ -75,12 +64,14 @@ export default {
     BaseSegmentContainer,
     BasePostCreateFormContainer,
     BaseContentField,
-    BaseFormImagesSection,
-    BaseFormTracksSection,
+    BaseSendableFormContentSection,
     BaseFormAddButtonsSection,
     BasePostAsCommunityField,
     BaseSubmitButton
   },
+  mixins: [
+    sendableFormMixin
+  ],
   props: {
     postType: String,
     profileId: String,
@@ -90,61 +81,19 @@ export default {
   emits: [
     'success'
   ],
-  data () {
-    return {
-      tracks: [],
-      images: []
-    }
-  },
   methods: {
     handleSubmit () {
       this.clickSubmit()
     },
     handleSuccess () {
-      this.resetContent()
-
-      this.tracks = []
-      this.images = []
-
       this.$emit(
         'success'
-      )
-    },
-    handleTracksChange (
-      value
-    ) {
-      this.tracks = value
-    },
-    handleImagesChange (
-      value
-    ) {
-      this.images = value
-    },
-    handleEmojiSelect (
-      value
-    ) {
-      this.updateContentValue(
-        value
       )
     },
     clickSubmit () {
       this.$refs
         .submit
         .click()
-    },
-    resetContent () {
-      this.$refs
-        .content
-        .reset()
-    },
-    updateContentValue (
-      value
-    ) {
-      this.$refs
-        .content
-        .updateValue(
-          value
-        )
     }
   }
 }

@@ -23,15 +23,15 @@ export default {
     BaseImage,
     BaseButton
   },
+  inject: [
+    'deleteModel'
+  ],
   props: {
     imageData: {
       type: Object,
       required: true
     }
   },
-  emits: [
-    'deleteButtonClick'
-  ],
   computed: {
     imageUrl () {
       return this.imageData.url
@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     handleDeleteButtonClick () {
-      this.$emit(
-        'deleteButtonClick',
+      this.deleteModel(
         {
-          uuid: this.uuid
+          uuid: this.uuid,
+          scope: 'images'
         }
       )
     }
@@ -61,7 +61,7 @@ export default {
 <style lang="sass" scoped>
 .post-image-container
   @extend .text-align-center, .d-inline-block
-  margin: 0.5em 1em 0.5em 0
+  margin: 0em 1em 1em 0
   & > .image
     max-height: 100px
     margin-bottom: 0.5em

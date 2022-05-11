@@ -106,9 +106,11 @@ export default {
   mixins: [
     selfMixin
   ],
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     artistData: {
       type: Object,

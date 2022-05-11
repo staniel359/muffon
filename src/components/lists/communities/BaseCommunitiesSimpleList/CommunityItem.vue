@@ -66,9 +66,11 @@ export default {
       setMembersCount: this.setMembersCount
     }
   },
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     communityData: {
       type: Object,

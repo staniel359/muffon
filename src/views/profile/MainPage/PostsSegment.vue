@@ -5,6 +5,7 @@
     :is-get-data="false"
   >
     <BasePostsFormSegment
+      :key="key"
       post-type="profile"
       :profile-id="profileId"
       @success="handlePostCreateSuccess"

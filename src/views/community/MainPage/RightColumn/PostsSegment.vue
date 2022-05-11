@@ -4,6 +4,7 @@
     :header-link="headerLink"
   >
     <BasePostsFormSegment
+      :key="key"
       post-type="community"
       :community-id="communityId"
       :is-with-as-community-option="isCommunityCreator"

@@ -15,6 +15,7 @@
         />
 
         <FormSegment
+          :key="key"
           :profile-id="slotProps.profileId"
           @success="handleSuccess"
         />

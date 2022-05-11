@@ -21,8 +21,7 @@ import {
   hideModal
 } from '*/helpers/actions/plugins/semantic'
 import {
-  toggleClass,
-  remove
+  toggleClass
 } from '*/helpers/actions/plugins/jquery'
 
 export default {
@@ -63,11 +62,6 @@ export default {
   },
   watch: {
     isDarkMode: 'handleIsDarkModeChange'
-  },
-  beforeUnmount () {
-    remove(
-      this.$refs.modal
-    )
   },
   methods: {
     handleIsDarkModeChange () {

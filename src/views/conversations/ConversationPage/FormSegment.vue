@@ -3,8 +3,10 @@
     <BaseMessageCreateFormContainer
       class="main-message-form"
       :profile-id="profileId"
-      :tracks="tracks"
       :images="images"
+      :artists="artists"
+      :albums="albums"
+      :tracks="tracks"
       @success="handleSuccess"
     >
       <BaseContentField
@@ -12,30 +14,18 @@
         @submit="handleSubmit"
       />
 
-      <div
-        v-if="images.length || tracks.length"
-        class="images-tracks-section"
-      >
-        <BaseFormImagesSection
-          v-if="images.length"
-          :images="images"
-          @images-change="handleImagesChange"
-        />
-
-        <BaseFormTracksSection
-          v-if="tracks.length"
-          :tracks="tracks"
-          @tracks-change="handleTracksChange"
-        />
-      </div>
+      <BaseSendableFormContentSection
+        :images="images"
+        :artists="artists"
+        :albums="albums"
+        :tracks="tracks"
+      />
 
       <div class="buttons-container">
         <BaseFormAddButtonsSection
+          :artists="artists"
+          :albums="albums"
           :tracks="tracks"
-          :images="images"
-          @tracks-change="handleTracksChange"
-          @images-change="handleImagesChange"
-          @emoji-select="handleEmojiSelect"
         />
 
         <BaseSubmitButton
@@ -53,13 +43,12 @@ import BaseSegmentContainer
 import BaseMessageCreateFormContainer
   from '*/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
 import BaseContentField from '*/components/fields/BaseContentField.vue'
-import BaseFormImagesSection
-  from '*/components/forms/BaseFormImagesSection.vue'
-import BaseFormTracksSection
-  from '*/components/forms/BaseFormTracksSection.vue'
+import BaseSendableFormContentSection
+  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
   from '*/components/forms/BaseFormAddButtonsSection.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+import sendableFormMixin from '*/mixins/sendableFormMixin'
 
 export default {
   name: 'FormSegment',
@@ -67,52 +56,26 @@ export default {
     BaseSegmentContainer,
     BaseMessageCreateFormContainer,
     BaseContentField,
-    BaseFormImagesSection,
-    BaseFormTracksSection,
+    BaseSendableFormContentSection,
     BaseFormAddButtonsSection,
     BaseSubmitButton
   },
+  mixins: [
+    sendableFormMixin
+  ],
   props: {
     profileId: String
   },
   emits: [
     'success'
   ],
-  data () {
-    return {
-      tracks: [],
-      images: []
-    }
-  },
   mounted () {
     this.focusContent()
   },
   methods: {
     handleSuccess () {
-      this.resetContent()
-
-      this.tracks = []
-      this.images = []
-
       this.$emit(
         'success'
-      )
-    },
-    handleTracksChange (
-      value
-    ) {
-      this.tracks = value
-    },
-    handleImagesChange (
-      value
-    ) {
-      this.images = value
-    },
-    handleEmojiSelect (
-      value
-    ) {
-      this.updateContentValue(
-        value
       )
     },
     handleSubmit () {
@@ -123,24 +86,10 @@ export default {
         .content
         .focus()
     },
-    resetContent () {
-      this.$refs
-        .content
-        .reset()
-    },
     clickSubmit () {
       this.$refs
         .submit
         .click()
-    },
-    updateContentValue (
-      value
-    ) {
-      this.$refs
-        .content
-        .updateValue(
-          value
-        )
     }
   }
 }

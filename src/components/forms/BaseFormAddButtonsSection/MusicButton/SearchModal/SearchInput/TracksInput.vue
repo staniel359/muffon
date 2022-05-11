@@ -7,16 +7,28 @@
     :format-response="formatResponse"
     @select="handleSelect"
   />
+
+  <BaseClearButton
+    v-if="tracks.length"
+    class="reset-button"
+    @click="handleResetButtonClick"
+  />
 </template>
 
 <script>
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 
 export default {
-  name: 'SearchInput',
+  name: 'TracksInput',
   components: {
-    BaseSearchInput
+    BaseSearchInput,
+    BaseClearButton
   },
+  inject: [
+    'addModel',
+    'resetCollection'
+  ],
   props: {
     tracks: {
       type: Array,
@@ -25,9 +37,6 @@ export default {
       }
     }
   },
-  emits: [
-    'select'
-  ],
   computed: {
     url () {
       return (
@@ -73,13 +82,24 @@ export default {
         )
 
       if (!isPresent) {
-        this.$emit(
-          'select',
-          track
+        this.addModel(
+          {
+            model: track,
+            scope: 'tracks'
+          }
         )
       }
 
       this.clear()
+    },
+    handleResetButtonClick () {
+      this.resetCollection(
+        'tracks'
+      )
+
+      this.clear()
+
+      this.focus()
     },
     formatResponse (
       response
@@ -115,7 +135,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.search-input
-  @extend .flex-full
-</style>
+<style lang="sass" scoped></style>

@@ -118,9 +118,11 @@ export default {
   mixins: [
     selfMixin
   ],
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     albumData: {
       type: Object,

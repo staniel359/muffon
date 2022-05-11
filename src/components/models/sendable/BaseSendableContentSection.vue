@@ -1,35 +1,35 @@
 <template>
-  <div class="content-container">
+  <div class="main-content-container">
     <div
-      v-if="content"
-      class="text main-text-container"
-      v-text="content"
+      v-if="text"
+      class="text main-text-container main-content-section"
+      v-text="text"
     />
 
     <BaseImagesList
-      v-if="images.length"
-      class="content-section"
+      v-if="images?.length"
+      class="main-content-section images-list"
       :images="images"
     />
 
     <BaseArtistsSimpleList
-      v-if="artists.length"
-      class="content-section"
+      v-if="artists?.length"
+      class="main-content-section"
       :artists="artists"
       is-with-listeners-count
     />
 
     <BaseAlbumsSimpleList
-      v-if="albums.length"
-      class="content-section"
+      v-if="albums?.length"
+      class="main-content-section"
       :albums="albums"
       is-with-artist-name
       is-with-listeners-count
     />
 
     <BaseTracksSimpleList
-      v-if="tracks.length"
-      class="content-section"
+      v-if="tracks?.length"
+      class="main-content-section"
       :tracks="tracks"
       is-with-image
       is-with-artist-name
@@ -62,23 +62,28 @@ export default {
     }
   },
   computed: {
-    content () {
-      return this.modelData.content
+    text () {
+      return this.modelData.text
     },
     images () {
-      return this.modelData.images
+      return this.modelData.attachments?.images
     },
     artists () {
-      return this.modelData.artists
+      return this.modelData.attachments?.artists
     },
     albums () {
-      return this.modelData.albums
+      return this.modelData.attachments?.albums
     },
     tracks () {
-      return this.modelData.tracks
+      return this.modelData.attachments?.tracks
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.images-list
+  ::v-deep(.image)
+    &:not(:first-child)
+      margin-top: 0.75em
+</style>

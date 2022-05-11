@@ -4,7 +4,9 @@ import patchRequest from '*/helpers/actions/api/request/patch'
 export default function (
   {
     postId,
-    content,
+    text,
+    artists,
+    albums,
     tracks,
     images
   }
@@ -18,9 +20,11 @@ export default function (
     `/profiles/${profileId}/posts/${postId}`
 
   const params = {
-    content,
-    tracks,
-    images
+    text,
+    images,
+    artists,
+    albums,
+    tracks
   }
 
   const handleSuccess = (

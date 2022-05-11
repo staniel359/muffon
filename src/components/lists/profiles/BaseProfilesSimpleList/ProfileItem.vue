@@ -118,9 +118,11 @@ export default {
       setFollowersCount: this.setFollowersCount
     }
   },
-  inject: [
-    'findPaginationItem'
-  ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     profileData: {
       type: Object,

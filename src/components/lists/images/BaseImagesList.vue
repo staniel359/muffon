@@ -37,8 +37,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.image
-  @extend .d-inline-block
-  margin: 0.5em 1em 0.5em 0
-</style>
+<style lang="sass" scoped></style>
