@@ -16,6 +16,21 @@ const path = require(
 const ElectronStore = require(
   'electron-store'
 )
+const {
+  i18n
+} = require(
+  './src/helpers/data/plugins/electron'
+)
+const {
+  appLanguage
+} = require(
+  './src/helpers/actions/plugins/electronStore'
+)
+const {
+  checkForUpdates
+} = require(
+  './src/helpers/actions/plugins/electron'
+)
 
 const appName = 'muffon'
 
@@ -58,24 +73,6 @@ function getBaseUrl () {
   }
 }
 
-const i18n = {
-  en: {
-    show: 'Show',
-    hide: 'Hide',
-    exit: 'Exit'
-  },
-  it: {
-    show: 'Mostra',
-    hide: 'Nascondi',
-    exit: 'Esci'
-  },
-  ru: {
-    show: 'Открыть',
-    hide: 'Скрыть',
-    exit: 'Выйти'
-  }
-}
-
 if (isDevelopment) {
   const userDataPath =
     path.join(
@@ -89,18 +86,7 @@ if (isDevelopment) {
   )
 }
 
-const electronStore =
-  new ElectronStore(
-    {
-      accessPropertiesByDotNotation: false
-    }
-  )
-
-let language =
-  electronStore.get(
-    'profile.language',
-    'en'
-  )
+let language = appLanguage
 
 let mainWindow
 let tray
@@ -527,6 +513,12 @@ function createWindow () {
     )
 
     show()
+
+    checkForUpdates(
+      {
+        mainWindow
+      }
+    )
   }
 
   mainWindow.on(
