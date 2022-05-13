@@ -83,6 +83,8 @@ export default {
 
 <style lang="sass" scoped>
 .profile-item
+  @extend .align-items-center
+  height: $navbarHeight
   border-bottom: $border
   &.inverted
     border-bottom: $borderInverted

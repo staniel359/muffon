@@ -82,9 +82,14 @@ export default {
       return this.$t(
         `${this.status}.active`,
         {
-          count: this.count,
+          count: this.countFormatted,
           counter: this.counterText
         }
+      )
+    },
+    countFormatted () {
+      return formatNumber(
+        this.count
       )
     },
     counterText () {
