@@ -86,6 +86,15 @@ export default {
       return this.$t(
         'import.success.tracks.header',
         {
+          counter: this.counterText
+        }
+      )
+    },
+    counterText () {
+      return this.$tc(
+        `counters.nominative.${this.scope}`,
+        this.totalCount,
+        {
           count: this.totalCountFormatted
         }
       )

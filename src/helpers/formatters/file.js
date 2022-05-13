@@ -5,6 +5,10 @@ export function tags (
   tags,
   file
 ) {
+  const artistData = {
+    name: tags.artist
+  }
+
   const cover =
     musicMetadata.selectCover(
       tags.picture
@@ -18,9 +22,10 @@ export function tags (
 
   return {
     title: tags.title,
-    artist: {
-      name: tags.artist
-    },
+    artist: artistData,
+    artists: [
+      artistData
+    ],
     album: {
       title: tags.album
     },
