@@ -21,7 +21,7 @@
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
       @link-click="handleLinkClick"
-      @delete-button-click="handleDeleteButtonClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseListContainer>
 </template>
@@ -71,7 +71,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteButtonClick'
+    'deleteOptionClick'
   ],
   computed: {
     artistsCollection () {
@@ -86,13 +86,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteButtonClick (
+    handleDeleteOptionClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteButtonClick',
+        'deleteOptionClick',
         {
           uuid
         }

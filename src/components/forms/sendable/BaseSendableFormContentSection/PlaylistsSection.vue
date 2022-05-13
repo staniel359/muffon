@@ -1,7 +1,7 @@
 <template>
-  <BaseAlbumsSimpleList
-    :albums="albums"
-    is-with-artist-name
+  <BasePlaylistsSimpleList
+    :playlists="playlists"
+    is-with-profile-nickname
     is-with-delete-option
     is-clearable
     @link-click="handleLinkClick"
@@ -10,19 +10,19 @@
 </template>
 
 <script>
-import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BasePlaylistsSimpleList
+  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
 
 export default {
-  name: 'AlbumsSection',
+  name: 'PlaylistsSection',
   components: {
-    BaseAlbumsSimpleList
+    BasePlaylistsSimpleList
   },
   inject: [
     'deleteModel'
   ],
   props: {
-    albums: Array
+    playlists: Array
   },
   emits: [
     'linkClick'
@@ -41,7 +41,7 @@ export default {
       this.deleteModel(
         {
           uuid,
-          scope: 'albums'
+          scope: 'playlists'
         }
       )
     }

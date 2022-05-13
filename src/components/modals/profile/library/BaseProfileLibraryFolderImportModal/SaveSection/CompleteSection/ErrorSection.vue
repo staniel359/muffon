@@ -23,7 +23,7 @@
           is-with-delete-option
           is-clearable
           @link-click="handleLinkClick"
-          @delete-button-click="handleDeleteButtonClick"
+          @delete-option-click="handleDeleteOptionClick"
         />
       </template>
     </BasePaginatedListContainer>
@@ -80,7 +80,7 @@ export default {
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteButtonClick (
+    handleDeleteOptionClick (
       {
         uuid
       }

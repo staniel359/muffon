@@ -35,6 +35,19 @@
       is-with-artist-name
       is-with-album-title
     />
+
+    <BasePlaylistsSimpleList
+      v-if="playlists?.length"
+      class="main-content-section"
+      :playlists="playlists"
+      is-with-profile-nickname
+    />
+
+    <BaseCommunitiesSimpleList
+      v-if="communities?.length"
+      class="main-content-section"
+      :communities="communities"
+    />
   </div>
 </template>
 
@@ -46,6 +59,10 @@ import BaseAlbumsSimpleList
   from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+import BasePlaylistsSimpleList
+  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+import BaseCommunitiesSimpleList
+  from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 
 export default {
   name: 'BaseSendableContentSection',
@@ -53,7 +70,9 @@ export default {
     BaseImagesList,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
-    BaseTracksSimpleList
+    BaseTracksSimpleList,
+    BasePlaylistsSimpleList,
+    BaseCommunitiesSimpleList
   },
   props: {
     modelData: {
@@ -76,6 +95,12 @@ export default {
     },
     tracks () {
       return this.modelData.attachments?.tracks
+    },
+    playlists () {
+      return this.modelData.attachments?.playlists
+    },
+    communities () {
+      return this.modelData.attachments?.communities
     }
   }
 }

@@ -5,11 +5,13 @@ export default function (
     communityId,
     postId,
     text,
+    byCommunity,
     images,
     artists,
     albums,
     tracks,
-    byCommunity
+    playlists,
+    communities
   }
 ) {
   this.newPostData = null
@@ -19,11 +21,13 @@ export default function (
 
   const params = {
     text,
+    by_community: byCommunity,
     images,
     artists,
     albums,
     tracks,
-    by_community: byCommunity
+    playlists,
+    communities
   }
 
   const handleSuccess = (

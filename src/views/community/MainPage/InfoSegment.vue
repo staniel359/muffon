@@ -52,8 +52,10 @@
         <BaseOptionsDropdown
           v-if="isCommunityCreator"
           class="community-options"
+          :share-data="shareData"
           :is-with-edit-option="isCommunityCreator"
           :is-with-delete-option="isCommunityCreator"
+          is-with-share-option
           @edit-option-click="handleEditOptionClick"
           @delete-option-click="handleDeleteOptionClick"
         />
@@ -91,6 +93,9 @@ import BaseCommunityDeleteModal
 import {
   number as formatNumber
 } from '*/helpers/formatters'
+import {
+  community as formatCommunityShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'InfoSegment',
@@ -143,6 +148,11 @@ export default {
     },
     communityId () {
       return this.communityData.id.toString()
+    },
+    shareData () {
+      return formatCommunityShareData(
+        this.communityData
+      )
     }
   },
   methods: {

@@ -4,7 +4,12 @@
       v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"
       :playlist-data="playlistData"
-      :is-with-profile="isWithProfile"
+      :is-with-profile-nickname="isWithProfileNickname"
+      :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-clearable="isClearable"
+      @link-click="handleLinkClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseListContainer>
 </template>
@@ -30,12 +35,38 @@ export default {
         return []
       }
     },
-    isWithProfile: Boolean
+    isWithProfileNickname: Boolean,
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean
   },
+  emits: [
+    'linkClick',
+    'deleteOptionClick'
+  ],
   computed: {
     playlistsCollection () {
       return formatCollection(
         this.playlists
+      )
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
+    },
+    handleDeleteOptionClick (
+      {
+        uuid
+      }
+    ) {
+      this.$emit(
+        'deleteOptionClick',
+        {
+          uuid
+        }
       )
     }
   }

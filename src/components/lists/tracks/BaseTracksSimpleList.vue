@@ -33,7 +33,7 @@
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
       @link-click="handleLinkClick"
-      @delete-button-click="handleDeleteButtonClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseListContainer>
 </template>
@@ -97,7 +97,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteButtonClick'
+    'deleteOptionClick'
   ],
   computed: {
     tracksCollection () {
@@ -112,13 +112,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteButtonClick (
+    handleDeleteOptionClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteButtonClick',
+        'deleteOptionClick',
         {
           uuid
         }

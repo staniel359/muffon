@@ -23,15 +23,15 @@
         :tracks="tracks"
       />
 
+      <BasePostAsCommunityField
+        v-if="isWithAsCommunityOption"
+      />
+
       <div class="buttons-container">
         <BaseFormAddButtonsSection
           :artists="artists"
           :albums="albums"
           :tracks="tracks"
-        />
-
-        <BasePostAsCommunityField
-          v-if="isWithAsCommunityOption"
         />
 
         <BaseSubmitButton

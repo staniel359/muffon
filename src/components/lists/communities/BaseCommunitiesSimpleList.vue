@@ -4,6 +4,12 @@
       v-for="communityData in communitiesCollection"
       :key="communityData.uuid"
       :community-data="communityData"
+      :is-with-join-option="isWithJoinOption"
+      :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-clearable="isClearable"
+      @link-click="handleLinkClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseListContainer>
 </template>
@@ -28,12 +34,39 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isWithJoinOption: Boolean,
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean
   },
+  emits: [
+    'linkClick',
+    'deleteOptionClick'
+  ],
   computed: {
     communitiesCollection () {
       return formatCollection(
         this.communities
+      )
+    }
+  },
+  methods: {
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
+    },
+    handleDeleteOptionClick (
+      {
+        uuid
+      }
+    ) {
+      this.$emit(
+        'deleteOptionClick',
+        {
+          uuid
+        }
       )
     }
   }

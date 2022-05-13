@@ -2,6 +2,7 @@
   <BaseLinkContainer
     class="item main-simple-list-item"
     :link="communityLink"
+    @click="handleLinkClick"
   >
     <BaseImage
       class="rounded bordered"
@@ -22,7 +23,10 @@
       />
     </div>
 
-    <small class="joined-message">
+    <small
+      v-if="isWithJoinOption"
+      class="joined-message"
+    >
       <BaseCommunityJoinedMessage
         :community-data="communityData"
       />
@@ -30,7 +34,11 @@
 
     <BaseOptionsDropdown
       :community-data="communityData"
-      is-with-join-option
+      :share-data="shareData"
+      :is-with-join-option="isWithJoinOption"
+      :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseLinkContainer>
 </template>
@@ -50,6 +58,9 @@ import {
 import {
   number as formatNumber
 } from '*/helpers/formatters'
+import {
+  community as formatCommunityShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'CommunityItem',
@@ -75,8 +86,16 @@ export default {
     communityData: {
       type: Object,
       required: true
-    }
+    },
+    isWithJoinOption: Boolean,
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean
   },
+  emits: [
+    'linkClick',
+    'deleteOptionClick'
+  ],
   computed: {
     communityLink () {
       return formatCommunityMainLink(
@@ -123,9 +142,29 @@ export default {
     },
     uuid () {
       return this.communityData.uuid
+    },
+    shareData () {
+      return formatCommunityShareData(
+        this.communityData
+      )
     }
   },
   methods: {
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
+    },
+    handleDeleteOptionClick () {
+      if (this.isClearable) {
+        this.$emit(
+          'deleteOptionClick',
+          {
+            uuid: this.uuid
+          }
+        )
+      }
+    },
     setIsMember (
       value
     ) {

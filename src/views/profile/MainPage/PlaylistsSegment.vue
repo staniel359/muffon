@@ -8,6 +8,8 @@
     <template #default="slotProps">
       <BasePlaylistsSimpleList
         :playlists="slotProps[scope]"
+        is-with-share-option
+        is-with-delete-option
       />
     </template>
   </BaseProfilePaginatedSegmentContainer>

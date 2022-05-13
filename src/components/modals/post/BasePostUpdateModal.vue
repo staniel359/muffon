@@ -11,6 +11,8 @@
         :artists="artists"
         :albums="albums"
         :tracks="tracks"
+        :playlists="playlists"
+        :communities="communities"
         @success="handleSuccess"
       >
         <BaseContentField
@@ -24,6 +26,8 @@
           :artists="artists"
           :albums="albums"
           :tracks="tracks"
+          :playlists="playlists"
+          :communities="communities"
           @link-click="handleLinkClick"
         />
 
@@ -94,6 +98,12 @@ export default {
   emits: [
     'success'
   ],
+  data () {
+    return {
+      playlists: [],
+      communities: []
+    }
+  },
   computed: {
     text () {
       return this.postData.text
@@ -125,6 +135,22 @@ export default {
     postTracks () {
       return this.postData.attachments?.tracks || []
     },
+    postPlaylistsFormatted () {
+      return formatCollection(
+        this.postPlaylists
+      )
+    },
+    postPlaylists () {
+      return this.postData.attachments?.playlists || []
+    },
+    postCommunitiesFormatted () {
+      return formatCollection(
+        this.postCommunities
+      )
+    },
+    postCommunities () {
+      return this.postData.attachments?.communities || []
+    },
     isByCommunity () {
       return this.postData.by_community
     }
@@ -140,6 +166,10 @@ export default {
       this.postAlbumsFormatted
     this.tracks =
       this.postTracksFormatted
+    this.playlists =
+      this.postPlaylistsFormatted
+    this.communities =
+      this.postCommunitiesFormatted
   },
   methods: {
     handleVisible () {

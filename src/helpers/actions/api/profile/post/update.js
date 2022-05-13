@@ -5,10 +5,12 @@ export default function (
   {
     postId,
     text,
+    images,
     artists,
     albums,
     tracks,
-    images
+    playlists,
+    communities
   }
 ) {
   this.newPostData = null
@@ -24,7 +26,9 @@ export default function (
     images,
     artists,
     albums,
-    tracks
+    tracks,
+    playlists,
+    communities
   }
 
   const handleSuccess = (

@@ -13,7 +13,9 @@
         <template #default="slotProps">
           <BasePlaylistsSimpleList
             :playlists="slotProps[scope]"
-            is-with-profile
+            is-with-profile-nickname
+            is-with-share-option
+            is-with-delete-option
           />
         </template>
       </BasePaginatedPageContainer>

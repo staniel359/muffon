@@ -32,8 +32,10 @@
 
         <BaseOptionsDropdown
           class="playlist-options"
+          :share-data="shareData"
           :is-with-edit-option="isSelf"
           :is-with-delete-option="isSelf"
+          is-with-share-option
           @edit-option-click="handleEditOptionClick"
           @delete-option-click="handleDeleteOptionClick"
         />
@@ -73,6 +75,9 @@ import {
 import {
   isCurrentProfile
 } from '*/helpers/utils'
+import {
+  playlist as formatPlaylistShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'InfoSegment',
@@ -129,6 +134,11 @@ export default {
     isSelf () {
       return isCurrentProfile(
         this.profileId
+      )
+    },
+    shareData () {
+      return formatPlaylistShareData(
+        this.playlistData
       )
     }
   },

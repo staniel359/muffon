@@ -5,6 +5,7 @@
       disabled: isDeleted
     }"
     :link="link"
+    @click="handleLinkClick"
   >
     <BaseDeletedBlock
       v-if="isDeleted"
@@ -27,7 +28,7 @@
         />
 
         <span
-          v-if="isWithProfile"
+          v-if="isWithProfileNickname"
           class="description profile-nickname"
           @mouseenter="handleProfileNicknameMouseEnter"
           @mouseleave="handleProfileNicknameMouseLeave"
@@ -35,6 +36,7 @@
           <BaseLink
             :text="profileNickname"
             :link="profileMainLink"
+            @click="handleLinkClick"
           />
         </span>
 
@@ -45,7 +47,9 @@
       </div>
 
       <BaseOptionsDropdown
-        :is-with-delete-option="isSelf"
+        :share-data="shareData"
+        :is-with-share-option="isWithShareOption"
+        :is-with-delete-option="isWithDeleteOption && isSelf"
         @delete-option-click="handleDeleteOptionClick"
       />
     </template>
@@ -79,6 +83,9 @@ import {
 import {
   isCurrentProfile
 } from '*/helpers/utils'
+import {
+  playlist as formatPlaylistShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'PlaylistItem',
@@ -101,8 +108,15 @@ export default {
       type: Object,
       required: true
     },
-    isWithProfile: Boolean
+    isWithProfileNickname: Boolean,
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean
   },
+  emits: [
+    'linkClick',
+    'deleteOptionClick'
+  ],
   data () {
     return {
       isMainLinkActive: true
@@ -186,11 +200,30 @@ export default {
     },
     profileNickname () {
       return this.profileData.nickname
+    },
+    shareData () {
+      return formatPlaylistShareData(
+        this.playlistData
+      )
     }
   },
   methods: {
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
+    },
     handleDeleteOptionClick () {
-      this.showDeleteModal()
+      if (this.isClearable) {
+        this.$emit(
+          'deleteOptionClick',
+          {
+            uuid: this.uuid
+          }
+        )
+      } else {
+        this.showDeleteModal()
+      }
     },
     handleDeleted () {
       this.paginationItem

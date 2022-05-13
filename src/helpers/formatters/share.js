@@ -60,3 +60,21 @@ export function track (
     image: imageData
   }
 }
+
+export function playlist (
+  playlistData
+) {
+  return {
+    model: 'playlist',
+    id: playlistData.id
+  }
+}
+
+export function community (
+  communityData
+) {
+  return {
+    model: 'community',
+    id: communityData.id
+  }
+}

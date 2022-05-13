@@ -50,6 +50,18 @@ export default {
       default () {
         return []
       }
+    },
+    playlists: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    communities: {
+      type: Array,
+      default () {
+        return []
+      }
     }
   },
   emits: [
@@ -102,7 +114,9 @@ export default {
           this.images.length ||
           this.artists.length ||
           this.albums.length ||
-          this.tracks.length
+          this.tracks.length ||
+          this.playlists.length ||
+          this.communities.length
       )
 
       if (isContentData) {
@@ -158,7 +172,9 @@ export default {
         images: this.imagesFormatted,
         artists: this.artists,
         albums: this.albums,
-        tracks: this.tracks
+        tracks: this.tracks,
+        playlists: this.playlists,
+        communities: this.communities
       }
     }
   }

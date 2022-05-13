@@ -250,7 +250,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteButtonClick',
+    'deleteOptionClick',
     'deleted'
   ],
   computed: {
@@ -353,7 +353,7 @@ export default {
     handleDeleteOptionClick () {
       if (this.isClearable) {
         this.$emit(
-          'deleteButtonClick',
+          'deleteOptionClick',
           {
             uuid: this.uuid
           }

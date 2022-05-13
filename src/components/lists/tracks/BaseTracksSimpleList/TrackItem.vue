@@ -42,7 +42,7 @@
         :playlist-title="playlistTitle"
         :is-deleted="isDeleted"
         @link-click="handleLinkClick"
-        @delete-button-click="handleDeleteButtonClick"
+        @delete-option-click="handleDeleteOptionClick"
         @deleted="handleDeleted"
       />
     </template>
@@ -98,7 +98,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteButtonClick'
+    'deleteOptionClick'
   ],
   computed: {
     isDeleted () {
@@ -121,13 +121,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteButtonClick (
+    handleDeleteOptionClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteButtonClick',
+        'deleteOptionClick',
         {
           uuid
         }

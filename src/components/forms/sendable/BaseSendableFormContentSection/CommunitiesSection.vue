@@ -1,7 +1,6 @@
 <template>
-  <BaseAlbumsSimpleList
-    :albums="albums"
-    is-with-artist-name
+  <BaseCommunitiesSimpleList
+    :communities="communities"
     is-with-delete-option
     is-clearable
     @link-click="handleLinkClick"
@@ -10,19 +9,19 @@
 </template>
 
 <script>
-import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+import BaseCommunitiesSimpleList
+  from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
 
 export default {
-  name: 'AlbumsSection',
+  name: 'CommunitiesSection',
   components: {
-    BaseAlbumsSimpleList
+    BaseCommunitiesSimpleList
   },
   inject: [
     'deleteModel'
   ],
   props: {
-    albums: Array
+    communities: Array
   },
   emits: [
     'linkClick'
@@ -41,7 +40,7 @@ export default {
       this.deleteModel(
         {
           uuid,
-          scope: 'albums'
+          scope: 'communities'
         }
       )
     }

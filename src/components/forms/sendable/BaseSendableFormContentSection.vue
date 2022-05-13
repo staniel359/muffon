@@ -26,6 +26,20 @@
       :tracks="tracks"
       @link-click="handleLinkClick"
     />
+
+    <PlaylistsSection
+      v-if="playlists.length"
+      class="main-content-section"
+      :playlists="playlists"
+      @link-click="handleLinkClick"
+    />
+
+    <CommunitiesSection
+      v-if="communities.length"
+      class="main-content-section"
+      :communities="communities"
+      @link-click="handleLinkClick"
+    />
   </div>
 </template>
 
@@ -38,6 +52,10 @@ import AlbumsSection
   from './BaseSendableFormContentSection/AlbumsSection.vue'
 import TracksSection
   from './BaseSendableFormContentSection/TracksSection.vue'
+import PlaylistsSection
+  from './BaseSendableFormContentSection/PlaylistsSection.vue'
+import CommunitiesSection
+  from './BaseSendableFormContentSection/CommunitiesSection.vue'
 
 export default {
   name: 'BaseSendableFormContentSection',
@@ -45,7 +63,9 @@ export default {
     ImagesSection,
     ArtistsSection,
     AlbumsSection,
-    TracksSection
+    TracksSection,
+    PlaylistsSection,
+    CommunitiesSection
   },
   props: {
     images: {
@@ -60,13 +80,25 @@ export default {
         return []
       }
     },
+    albums: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     tracks: {
       type: Array,
       default () {
         return []
       }
     },
-    albums: {
+    playlists: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    communities: {
       type: Array,
       default () {
         return []
