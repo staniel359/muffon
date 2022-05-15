@@ -20,7 +20,7 @@ const serverUrl = isDevelopment
   : 'https://178-79-138-81.ip.linodeusercontent.com'
 
 axios.defaults.baseURL =
-  `${serverUrl}/api/v2/`
+  `${serverUrl}/api/v3/`
 
 const app = createApp(
   App
