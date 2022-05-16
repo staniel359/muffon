@@ -6,6 +6,13 @@
       :images="images"
     />
 
+    <VideosSection
+      v-if="videos.length"
+      class="main-content-section"
+      :videos="videos"
+      @link-click="handleLinkClick"
+    />
+
     <ArtistsSection
       v-if="artists.length"
       class="main-content-section"
@@ -46,6 +53,8 @@
 <script>
 import ImagesSection
   from './BaseSendableFormContentSection/ImagesSection.vue'
+import VideosSection
+  from './BaseSendableFormContentSection/VideosSection.vue'
 import ArtistsSection
   from './BaseSendableFormContentSection/ArtistsSection.vue'
 import AlbumsSection
@@ -61,6 +70,7 @@ export default {
   name: 'BaseSendableFormContentSection',
   components: {
     ImagesSection,
+    VideosSection,
     ArtistsSection,
     AlbumsSection,
     TracksSection,
@@ -69,6 +79,12 @@ export default {
   },
   props: {
     images: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
+    videos: {
       type: Array,
       default () {
         return []

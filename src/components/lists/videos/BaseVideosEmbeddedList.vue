@@ -1,27 +1,21 @@
 <template>
-  <div class="ui four column grid">
-    <div
+  <div>
+    <VideoItem
       v-for="videoData in videosCollection"
       :key="videoData.uuid"
-      class="column"
-    >
-      <VideoItem
-        :video-data="videoData"
-        :is-with-share-option="isWithShareOption"
-        @link-click="handleLinkClick"
-      />
-    </div>
+      :video-data="videoData"
+    />
   </div>
 </template>
 
 <script>
-import VideoItem from './BaseVideosTableList/VideoItem.vue'
+import VideoItem from './BaseVideosEmbeddedList/VideoItem.vue'
 import {
   collection as formatCollection
 } from '*/helpers/formatters'
 
 export default {
-  name: 'BaseVideosTableList',
+  name: 'BaseVideosEmbeddedList',
   components: {
     VideoItem
   },
@@ -31,23 +25,12 @@ export default {
       default () {
         return []
       }
-    },
-    isWithShareOption: Boolean
+    }
   },
-  emits: [
-    'linkClick'
-  ],
   computed: {
     videosCollection () {
       return formatCollection(
         this.videos
-      )
-    }
-  },
-  methods: {
-    handleLinkClick () {
-      this.$emit(
-        'linkClick'
       )
     }
   }

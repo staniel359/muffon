@@ -1,9 +1,16 @@
 <template>
   <BaseSimpleCardContainer>
     <BaseLinkContainer
+      class="card-link"
       :link="videoMainLink"
       @click="handleLinkClick"
     >
+      <BaseOptionsDropdown
+        :share-data="shareData"
+        :is-with-share-option="isWithShareOption"
+        :is-transparent="false"
+      />
+
       <div class="main-simple-card-image-container">
         <BaseImage
           class="rounded bordered"
@@ -30,21 +37,27 @@
 </template>
 
 <script>
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseSimpleCardContainer
   from '*/components/containers/cards/BaseSimpleCardContainer.vue'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {
   main as formatVideoMainLink
 } from '*/helpers/formatters/links/video'
+import {
+  video as formatVideoShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'VideoItem',
   components: {
-    BaseLinkContainer,
     BaseSimpleCardContainer,
+    BaseLinkContainer,
+    BaseOptionsDropdown,
     BaseImage,
     BaseHeader
   },
@@ -52,7 +65,8 @@ export default {
     videoData: {
       type: Object,
       required: true
-    }
+    },
+    isWithShareOption: Boolean
   },
   emits: [
     'linkClick'
@@ -76,6 +90,11 @@ export default {
     },
     publishDate () {
       return this.videoData.publish_date
+    },
+    shareData () {
+      return formatVideoShareData(
+        this.videoData
+      )
     }
   },
   methods: {

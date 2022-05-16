@@ -33,6 +33,12 @@ export default {
         return []
       }
     },
+    videos: {
+      type: Array,
+      default () {
+        return []
+      }
+    },
     artists: {
       type: Array,
       default () {
@@ -112,6 +118,7 @@ export default {
       const isContentData = (
         fields.content ||
           this.images.length ||
+          this.videos.length ||
           this.artists.length ||
           this.albums.length ||
           this.tracks.length ||
@@ -170,6 +177,7 @@ export default {
         byCommunity: !!fields.community,
         text: fields.content,
         images: this.imagesFormatted,
+        videos: this.videos,
         artists: this.artists,
         albums: this.albums,
         tracks: this.tracks,

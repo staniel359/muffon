@@ -8,6 +8,7 @@
         class="main-post-form"
         :post-data="postData"
         :images="images"
+        :videos="videos"
         :artists="artists"
         :albums="albums"
         :tracks="tracks"
@@ -23,6 +24,7 @@
 
         <BaseSendableFormContentSection
           :images="images"
+          :videos="videos"
           :artists="artists"
           :albums="albums"
           :tracks="tracks"
@@ -100,6 +102,7 @@ export default {
   ],
   data () {
     return {
+      videos: [],
       playlists: [],
       communities: []
     }
@@ -110,6 +113,14 @@ export default {
     },
     postImages () {
       return this.postData.attachments?.images || []
+    },
+    postVideosFormatted () {
+      return formatCollection(
+        this.postVideos
+      )
+    },
+    postVideos () {
+      return this.postData.attachments?.videos || []
     },
     postArtistsFormatted () {
       return formatCollection(
@@ -160,6 +171,8 @@ export default {
       this.processImage
     )
 
+    this.videos =
+      this.postVideosFormatted
     this.artists =
       this.postArtistsFormatted
     this.albums =

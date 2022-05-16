@@ -8,8 +8,14 @@
 
     <BaseImagesList
       v-if="images?.length"
-      class="main-content-section images-list"
+      class="main-content-section"
       :images="images"
+    />
+
+    <BaseVideosEmbeddedList
+      v-if="videos?.length"
+      class="main-content-section"
+      :videos="videos"
     />
 
     <BaseArtistsSimpleList
@@ -58,6 +64,8 @@
 
 <script>
 import BaseImagesList from '*/components/lists/images/BaseImagesList.vue'
+import BaseVideosEmbeddedList
+  from '*/components/lists/videos/BaseVideosEmbeddedList.vue'
 import BaseArtistsSimpleList
   from '*/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList
@@ -73,6 +81,7 @@ export default {
   name: 'BaseSendableContentSection',
   components: {
     BaseImagesList,
+    BaseVideosEmbeddedList,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
     BaseTracksSimpleList,
@@ -91,6 +100,9 @@ export default {
     },
     images () {
       return this.modelData.attachments?.images
+    },
+    videos () {
+      return this.modelData.attachments?.videos
     },
     artists () {
       return this.modelData.attachments?.artists
@@ -111,9 +123,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.images-list
-  ::v-deep(.image)
-    &:not(:first-child)
-      margin-top: 0.75em
-</style>
+<style lang="sass" scoped></style>

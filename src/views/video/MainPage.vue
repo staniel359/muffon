@@ -1,5 +1,7 @@
 <template>
-  <BaseVideoPageContainer>
+  <BaseVideoPageContainer
+    :video-id="videoId"
+  >
     <template #default="slotProps">
       <BaseSegmentContainer
         :class="[
@@ -13,7 +15,7 @@
           :video-data="slotProps.videoData"
         />
 
-        <TitleSection
+        <TitleOptionsSection
           :video-data="slotProps.videoData"
         />
 
@@ -45,7 +47,7 @@ import BaseVideoPageContainer
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseEmbed from '*/components/BaseEmbed.vue'
-import TitleSection from './MainPage/TitleSection.vue'
+import TitleOptionsSection from './MainPage/TitleOptionsSection.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import CountersDateSection from './MainPage/CountersDateSection.vue'
 import TagsSection from './MainPage/TagsSection.vue'
@@ -58,12 +60,15 @@ export default {
     BaseVideoPageContainer,
     BaseSegmentContainer,
     BaseEmbed,
-    TitleSection,
+    TitleOptionsSection,
     BaseDivider,
     CountersDateSection,
     TagsSection,
     DescriptionSection,
     RelatedSegment
+  },
+  props: {
+    videoId: String
   }
 }
 </script>

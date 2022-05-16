@@ -34,6 +34,13 @@
         />
       </div>
     </div>
+
+    <BaseOptionsDropdown
+      :share-data="shareData"
+      :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
+      @delete-option-click="handleDeleteOptionClick"
+    />
   </BaseLinkContainer>
 </template>
 
@@ -43,12 +50,17 @@ import BaseLinkContainer
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
+import BaseOptionsDropdown
+  from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import {
   main as formatVideoMainLink
 } from '*/helpers/formatters/links/video'
 import {
   videos as formatVideoChannelVideosLink
 } from '*/helpers/formatters/links/videoChannel'
+import {
+  video as formatVideoShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'VideoItem',
@@ -56,17 +68,22 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
-    BaseLink
+    BaseLink,
+    BaseOptionsDropdown
   },
   props: {
     videoData: {
       type: Object,
       required: true
     },
-    isWithChannelTitle: Boolean
+    isWithChannelTitle: Boolean,
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteOptionClick'
   ],
   data () {
     return {
@@ -109,6 +126,14 @@ export default {
     },
     channelTitle () {
       return this.channelData.title
+    },
+    shareData () {
+      return formatVideoShareData(
+        this.videoData
+      )
+    },
+    uuid () {
+      return this.videoData.uuid
     }
   },
   methods: {
@@ -116,6 +141,16 @@ export default {
       this.$emit(
         'linkClick'
       )
+    },
+    handleDeleteOptionClick () {
+      if (this.isClearable) {
+        this.$emit(
+          'deleteOptionClick',
+          {
+            uuid: this.uuid
+          }
+        )
+      }
     },
     handleChannelLinkMouseEnter () {
       this.isMainLinkActive = false

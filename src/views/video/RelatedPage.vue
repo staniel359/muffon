@@ -17,6 +17,7 @@
         <template #default="slotProps">
           <BaseVideosTableList
             :videos="slotProps[scope]"
+            is-with-share-option
           />
         </template>
       </BasePaginatedPageContainer>

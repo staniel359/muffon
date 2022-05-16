@@ -5,7 +5,11 @@
       :key="videoData.uuid"
       :video-data="videoData"
       :is-with-channel-title="isWithChannelTitle"
+      :is-with-share-option="isWithShareOption"
+      :is-with-delete-option="isWithDeleteOption"
+      :is-clearable="isClearable"
       @link-click="handleLinkClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseListContainer>
 </template>
@@ -31,10 +35,14 @@ export default {
         return []
       }
     },
-    isWithChannelTitle: Boolean
+    isWithChannelTitle: Boolean,
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean,
+    isClearable: Boolean
   },
   emits: [
-    'linkClick'
+    'linkClick',
+    'deleteOptionClick'
   ],
   computed: {
     videosCollection () {
@@ -47,6 +55,18 @@ export default {
     handleLinkClick () {
       this.$emit(
         'linkClick'
+      )
+    },
+    handleDeleteOptionClick (
+      {
+        uuid
+      }
+    ) {
+      this.$emit(
+        'deleteOptionClick',
+        {
+          uuid
+        }
       )
     }
   }

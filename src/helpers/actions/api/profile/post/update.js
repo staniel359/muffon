@@ -6,6 +6,7 @@ export default function (
     postId,
     text,
     images,
+    videos,
     artists,
     albums,
     tracks,
@@ -24,6 +25,7 @@ export default function (
   const params = {
     text,
     images,
+    videos,
     artists,
     albums,
     tracks,

@@ -3,6 +3,7 @@
     <BaseImage
       v-for="imageData in imagesCollection"
       :key="imageData.uuid"
+      class="image-item"
       :image="imageData.original"
     />
   </div>
@@ -37,4 +38,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.image-item
+  &:not(:first-child)
+    margin-top: 0.75em
+</style>
