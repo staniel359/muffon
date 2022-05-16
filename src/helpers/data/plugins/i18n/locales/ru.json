@@ -266,6 +266,7 @@
   "notifications": {
     "scrobbled": "{trackFullTitle} был заскробблена",
     "updated": {
+      "profile": "Профиль был обновлён",
       "post": "Публикация была обновлена",
       "playlist": "Список {playlistTitle} был обновлён",
       "community": "Сообщество {communityTitle} было обновлено"
@@ -419,9 +420,6 @@
       "header": "Ваш пароль был обновлён",
       "content": "Теперь можете вернуться и войти"
     }
-  },
-  "profile": {
-    "updated": "Профиль был обновлён"
   },
   "roles": {
     "creator": "Создатель"

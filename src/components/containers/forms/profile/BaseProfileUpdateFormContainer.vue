@@ -3,9 +3,6 @@
     :options="options"
     :is-loading="isLoading"
     :error="error"
-    :class="{
-      success: isSuccess
-    }"
     @init="handleInit"
   >
     <slot />
@@ -25,6 +22,9 @@ import updateProfile from '*/helpers/actions/api/profile/update'
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
+import {
+  setToast
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseProfileUpdateFormContainer',
@@ -55,6 +55,11 @@ export default {
         {
           onSuccess: this.handleSuccess
         }
+      )
+    },
+    updatedMessage () {
+      return this.$t(
+        'notifications.updated.profile'
       )
     }
   },
@@ -92,6 +97,8 @@ export default {
             'profile.info': value
           }
         )
+
+        this.notify()
       }
     },
     formatUpdateArgs (
@@ -130,6 +137,14 @@ export default {
         country,
         city
       }
+    },
+    notify () {
+      setToast(
+        {
+          message: this.updatedMessage,
+          icon: 'green check'
+        }
+      )
     }
   }
 }

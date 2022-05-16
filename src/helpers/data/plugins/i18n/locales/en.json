@@ -266,6 +266,7 @@
   "notifications": {
     "scrobbled": "{trackFullTitle} was scrobbled",
     "updated": {
+      "profile": "Profile was updated",
       "post": "Post was updated",
       "playlist": "Playlist {playlistTitle} was updated",
       "community": "Community {communityTitle} was updated"
@@ -419,9 +420,6 @@
       "header": "Your password was updated",
       "content": "Now you may go back and login"
     }
-  },
-  "profile": {
-    "updated": "Profile was updated"
   },
   "roles": {
     "creator": "Creator"

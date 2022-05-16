@@ -35,7 +35,7 @@ export default {
   @extend .w-100, .fixed, .pointer-events-none
   height: calc(100vh - #{$navbarHeight} - #{$playerPanelHeight})
   top: $navbarHeight
-  z-index: 10
+  z-index: 10000
 
 .the-visible-area
   @extend .w-100, .h-100, .relative

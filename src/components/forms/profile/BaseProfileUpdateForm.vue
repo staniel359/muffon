@@ -2,8 +2,6 @@
   <BaseProfileUpdateFormContainer
     :image="image"
   >
-    <SuccessMessage />
-
     <MainSection />
 
     <BaseDivider />
@@ -24,7 +22,6 @@
 <script>
 import BaseProfileUpdateFormContainer
   from '*/components/containers/forms/profile/BaseProfileUpdateFormContainer.vue'
-import SuccessMessage from './BaseProfileUpdateForm/SuccessMessage.vue'
 import MainSection from './BaseProfileUpdateForm/MainSection.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import ExtraSection from './BaseProfileUpdateForm/ExtraSection.vue'
@@ -34,7 +31,6 @@ export default {
   name: 'BaseProfileUpdateForm',
   components: {
     BaseProfileUpdateFormContainer,
-    SuccessMessage,
     MainSection,
     BaseDivider,
     ExtraSection,
