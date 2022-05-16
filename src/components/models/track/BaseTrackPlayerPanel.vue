@@ -18,9 +18,8 @@
       :duration="duration"
     />
 
-    <SourceSection
+    <AudioIconSection
       v-if="isAudioPresent"
-      :source-id="sourceId"
     />
   </div>
 </template>
@@ -32,7 +31,7 @@ import {
 import PlayButtonSection from './BaseTrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './BaseTrackPlayerPanel/VisualizerSection.vue'
 import DurationSection from './BaseTrackPlayerPanel/DurationSection.vue'
-import SourceSection from './BaseTrackPlayerPanel/SourceSection.vue'
+import AudioIconSection from './BaseTrackPlayerPanel/AudioIconSection.vue'
 
 export default {
   name: 'BaseTrackPlayerPanel',
@@ -40,7 +39,7 @@ export default {
     PlayButtonSection,
     VisualizerSection,
     DurationSection,
-    SourceSection
+    AudioIconSection
   },
   props: {
     trackData: Object
@@ -66,9 +65,6 @@ export default {
     },
     isAudioPresent () {
       return !!this.trackData.audio?.present
-    },
-    sourceId () {
-      return this.trackData.audio.source_id
     }
   }
 }
@@ -78,18 +74,9 @@ export default {
 .track-player-panel
   @extend .d-flex
   height: $trackPagePlayerPanelHeight
-  ::v-deep(.track-visualiser-container)
-    border-left: $border
-  ::v-deep(.track-duration)
-    border-left: $border
-  ::v-deep(.track-source)
+  ::v-deep(.track-section)
     border-left: $border
   &.inverted
-    border-top: $borderInverted
-    ::v-deep(.track-visualiser-container)
-      border-left: $borderInverted !important
-    ::v-deep(.track-duration)
-      border-left: $borderInverted !important
-    ::v-deep(.track-source)
+    ::v-deep(.track-section)
       border-left: $borderInverted !important
 </style>

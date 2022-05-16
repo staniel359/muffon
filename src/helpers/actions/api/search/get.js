@@ -2,7 +2,7 @@ import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
-    sourceId = 'lastfm',
+    source = 'lastfm',
     scope = '',
     query,
     page,
@@ -10,7 +10,7 @@ export default function (
     isWithSelfData = false
   }
 ) {
-  const url = `/${sourceId}/search/${scope}`
+  const url = `/${source}/search/${scope}`
 
   const params = {
     query
@@ -19,7 +19,7 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    if (sourceId === 'youtube') {
+    if (source === 'youtube') {
       this.searchData = {
         page: 1,
         total_pages: 1,

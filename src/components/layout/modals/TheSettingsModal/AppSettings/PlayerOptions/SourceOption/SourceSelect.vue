@@ -25,18 +25,18 @@ export default {
     ...mapState(
       'player',
       {
-        playerSourceId: 'sourceId'
+        playerSource: 'source'
       }
     )
   },
   watch: {
-    playerSourceId: {
+    playerSource: {
       immediate: true,
-      handler: 'handlePlayerSourceIdChange'
+      handler: 'handlePlayerSourceChange'
     }
   },
   methods: {
-    async handlePlayerSourceIdChange (
+    async handlePlayerSourceChange (
       value
     ) {
       await this.$nextTick()

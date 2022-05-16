@@ -3,8 +3,8 @@ import getRequest from '*/helpers/actions/api/request/get'
 export default function (
   {
     model,
-    artist,
-    title
+    slug,
+    artistSlug
   }
 ) {
   const isAlbumOrTrack = [
@@ -16,19 +16,19 @@ export default function (
 
   function formatModelUrl () {
     if (isAlbumOrTrack) {
-      return `${model}s/${title}`
+      return `${model}s/${slug}`
     } else {
       return ''
     }
   }
 
   const url =
-    `/bandcamp/id/${artist}/${formatModelUrl()}`
+    `/bandcamp/id/${artistSlug}/${formatModelUrl()}`
 
   function handleSuccess (
     response
   ) {
-    return response.data
+    return response.data.id
   }
 
   return getRequest.bind(

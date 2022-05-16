@@ -15,6 +15,7 @@ export function album (
   albumData
 ) {
   const {
+    source,
     title,
     artist,
     artists,
@@ -27,6 +28,7 @@ export function album (
 
   return {
     model: 'album',
+    source,
     title,
     artist,
     artists,
@@ -38,11 +40,13 @@ export function track (
   trackData
 ) {
   const {
+    source,
     title,
     artist,
     artists,
     album,
-    image
+    image,
+    audio
   } = trackData
 
   const imageData = image && {
@@ -51,13 +55,15 @@ export function track (
 
   return {
     model: 'track',
+    source,
     player_id:
       trackData.player_id,
     title,
     artist,
     artists,
     album,
-    image: imageData
+    image: imageData,
+    audio
   }
 }
 

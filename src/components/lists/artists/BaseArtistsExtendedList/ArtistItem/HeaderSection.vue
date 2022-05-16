@@ -17,7 +17,7 @@
 import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
 import BaseArtistLinkContainer
-  from '*/components/containers/artist/BaseArtistLinkContainer.vue'
+  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
 
 export default {
   name: 'HeaderSection',

@@ -3,7 +3,7 @@ import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
   {
-    sourceId = 'lastfm',
+    source = 'lastfm',
     artistName,
     trackTitle,
     artistId,
@@ -16,7 +16,7 @@ export default function (
   const url =
     formatTrackRequestUrl(
       {
-        sourceId,
+        source,
         artistName,
         trackTitle,
         artistId,

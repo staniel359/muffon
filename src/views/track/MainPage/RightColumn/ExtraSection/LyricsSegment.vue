@@ -7,7 +7,7 @@
     >
       <BaseTrackSearchContainer
         v-if="isOpen"
-        source-id="genius"
+        source="genius"
         :scope="scope"
         :query="query"
       >

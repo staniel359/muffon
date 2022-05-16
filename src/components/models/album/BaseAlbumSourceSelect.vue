@@ -39,7 +39,6 @@ import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   generateKey
 } from '*/helpers/utils'
-import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
 
 export default {
   name: 'BaseAlbumSourceSelect',
@@ -51,9 +50,12 @@ export default {
   },
   provide () {
     return {
-      setSelectedSourceData: this.setSelectedSourceData,
-      setSelectedTypeId: this.setSelectedTypeId,
-      setSelectedAlbumData: this.setSelectedAlbumData
+      setSelectedSourceData:
+        this.setSelectedSourceData,
+      setSelectedTypeId:
+        this.setSelectedTypeId,
+      setSelectedAlbumData:
+        this.setSelectedAlbumData
     }
   },
   inject: [
@@ -106,7 +108,10 @@ export default {
     },
     selectedScope () {
       if (this.selectedTypeId) {
-        if (this.selectedTypeId === 'albumVarious') {
+        if (
+          this.selectedTypeId ===
+            'albumVarious'
+        ) {
           return 'albums_various'
         } else {
           return `${this.selectedTypeId}s`
@@ -114,15 +119,15 @@ export default {
       } else {
         return null
       }
-    },
-    selectedSourceId () {
-      return this.selectedSourceData.id
     }
   },
   watch: {
-    selectedSourceData: 'handleSelectedSourceDataChange',
-    selectedTypeId: 'handleSelectedTypeIdChange',
-    selectedAlbumData: 'handleSelectedAlbumDataChange'
+    selectedSourceData:
+      'handleSelectedSourceDataChange',
+    selectedTypeId:
+      'handleSelectedTypeIdChange',
+    selectedAlbumData:
+      'handleSelectedAlbumDataChange'
   },
   methods: {
     handleSelectedSourceDataChange () {
@@ -136,10 +141,7 @@ export default {
       value
     ) {
       this.setRequestAlbumData(
-        {
-          ...value,
-          albumType: this.selectedTypeId
-        }
+        value
       )
     },
     handleReset () {
@@ -168,13 +170,10 @@ export default {
     setSelectedAlbumData (
       value
     ) {
-      this.selectedAlbumData =
-        formatAlbumRequestData(
-          {
-            sourceId: this.selectedSourceId,
-            albumData: value
-          }
-        )
+      this.selectedAlbumData = {
+        ...value,
+        albumType: this.selectedTypeId
+      }
     },
     resetSelect () {
       this.$refs

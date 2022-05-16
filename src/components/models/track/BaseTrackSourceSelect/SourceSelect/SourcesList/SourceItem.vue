@@ -1,6 +1,6 @@
 <template>
   <BaseTrackSourceItemContainer
-    :source-id="sourceId"
+    :source="source"
     :query="query"
   >
     <template #default="slotProps">
@@ -35,7 +35,7 @@ export default {
     isWithMaxBitrate: Boolean
   },
   computed: {
-    sourceId () {
+    source () {
       return this.sourceData.id
     }
   }

@@ -1,7 +1,6 @@
 <template>
   <BaseTrackModalContainer
     ref="modal"
-    source-id="genius"
     :scope="scope"
     :request-track-data="requestTrackData"
   >
@@ -36,7 +35,7 @@ export default {
   computed: {
     requestTrackData () {
       return {
-        sourceId: 'genius',
+        source: 'genius',
         trackId: this.trackId
       }
     }

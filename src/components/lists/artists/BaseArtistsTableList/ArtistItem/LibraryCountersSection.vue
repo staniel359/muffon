@@ -9,13 +9,11 @@
       class="tracks-link"
       :artist-data="artistData"
       :profile-id="profileId"
-      @active-change="handleLinkActiveChange"
     />
 
     <AlbumsCounter
       :artist-data="artistData"
       :profile-id="profileId"
-      @active-change="handleLinkActiveChange"
     />
   </div>
 </template>
@@ -33,19 +31,6 @@ export default {
   props: {
     artistData: Object,
     profileId: String
-  },
-  emits: [
-    'linkActiveChange'
-  ],
-  methods: {
-    handleLinkActiveChange (
-      value
-    ) {
-      this.$emit(
-        'linkActiveChange',
-        value
-      )
-    }
   }
 }
 </script>

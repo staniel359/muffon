@@ -70,7 +70,7 @@ export default {
   computed: {
     sourceParams () {
       return {
-        sourceId: this.sourceId,
+        source: this.source,
         artistName: this.artistName,
         trackTitle: this.trackTitle,
         trackId: this.trackId,
@@ -79,8 +79,8 @@ export default {
         artist: this.artist
       }
     },
-    sourceId () {
-      return this.$route.query.source_id
+    source () {
+      return this.$route.query.source
     },
     trackId () {
       return this.$route.query.track_id

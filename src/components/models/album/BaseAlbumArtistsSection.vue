@@ -1,32 +1,35 @@
 <template>
-  <span>
-    <BaseLink
+  <div>
+    <BaseArtistLinkContainer
       v-if="isLinkToLibrary"
-      :link="link"
-      :text="artistName"
-      @active-change="handleLinkActiveChange"
-      @click="handleLinkClick"
-    />
+      class="main-link"
+      :artist-data="artistData"
+      :profile-id="profileId"
+      :library-artist-id="libraryArtistId"
+      is-link-to-library
+      @link-active-change="handleLinkActiveChange"
+      @link-click="handleLinkClick"
+    >
+      {{ artistName }}
+    </BaseArtistLinkContainer>
     <BaseArtistLinks
       v-else
       :artists="artists"
       @link-active-change="handleLinkActiveChange"
       @link-click="handleLinkClick"
     />
-  </span>
+  </div>
 </template>
 
 <script>
-import BaseLink from '*/components/links/BaseLink.vue'
+import BaseArtistLinkContainer
+  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
-import {
-  main as formatProfileLibraryArtistMainLink
-} from '*/helpers/formatters/links/profile/library/artist'
 
 export default {
-  name: 'BaseAlbumArtistNamesSection',
+  name: 'BaseAlbumArtistsSection',
   components: {
-    BaseLink,
+    BaseArtistLinkContainer,
     BaseArtistLinks
   },
   props: {
@@ -42,19 +45,14 @@ export default {
     'linkClick'
   ],
   computed: {
-    link () {
-      return formatProfileLibraryArtistMainLink(
-        {
-          profileId: this.profileId,
-          libraryArtistId: this.libraryArtistId
-        }
-      )
+    artistData () {
+      return this.albumData.artist
     },
     libraryArtistId () {
-      return this.albumData.library.artist.id
+      return this.albumData.library.artist.id.toString()
     },
     artistName () {
-      return this.albumData.artist.name
+      return this.artistData.name
     },
     artists () {
       return this.albumData.artists

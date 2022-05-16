@@ -1,9 +1,14 @@
 <template>
-  <AlbumHeader
-    :album-title="albumTitle"
-    :album-extra-title="albumExtraTitle"
-    :artists="artists"
-  />
+  <div class="header-source-section">
+    <HeaderBlock
+      class="album-header-block"
+      :album-data="albumData"
+    />
+
+    <BaseSourceIcon
+      :source="source"
+    />
+  </div>
 
   <SecondarySection
     :album-data="albumData"
@@ -12,13 +17,15 @@
 </template>
 
 <script>
-import AlbumHeader from './InfoSection/AlbumHeader.vue'
+import HeaderBlock from './InfoSection/HeaderBlock.vue'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import SecondarySection from './InfoSection/SecondarySection.vue'
 
 export default {
   name: 'InfoSection',
   components: {
-    AlbumHeader,
+    HeaderBlock,
+    BaseSourceIcon,
     SecondarySection
   },
   props: {
@@ -29,17 +36,14 @@ export default {
     requestAlbumData: Object
   },
   computed: {
-    albumTitle () {
-      return this.albumData.title
-    },
-    albumExtraTitle () {
-      return this.albumData.extra_title
-    },
-    artists () {
-      return this.albumData.artists
+    source () {
+      return this.albumData.source.name
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.header-source-section
+  @extend .d-flex
+</style>

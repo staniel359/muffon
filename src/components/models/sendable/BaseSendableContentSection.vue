@@ -16,6 +16,7 @@
       v-if="artists?.length"
       class="main-content-section"
       :artists="artists"
+      :is-with-self-icons="false"
       is-with-listeners-count
     />
 
@@ -23,17 +24,21 @@
       v-if="albums?.length"
       class="main-content-section"
       :albums="albums"
+      :is-with-self-icons="false"
       is-with-artist-name
       is-with-listeners-count
+      is-with-source
     />
 
     <BaseTracksSimpleList
       v-if="tracks?.length"
       class="main-content-section"
       :tracks="tracks"
+      :is-with-self-icons="false"
       is-with-image
       is-with-artist-name
       is-with-album-title
+      is-with-source
     />
 
     <BasePlaylistsSimpleList

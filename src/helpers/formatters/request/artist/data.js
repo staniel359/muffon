@@ -1,66 +1,58 @@
 export default function (
   {
-    sourceId,
-    artistData,
-    albumType = ''
+    artistData
   }
 ) {
+  const source = (
+    artistData.source?.name ||
+      'lastfm'
+  )
+
   function formatArtistData () {
-    switch (sourceId) {
+    switch (source) {
       case 'lastfm':
         return {
-          artistName:
-            artistData.name
+          artistName: artistData.name
         }
       case 'vk':
         return {
-          artistId:
-            artistData.vk_id
+          artistId: artistData.source.id
         }
       case 'odnoklassniki':
         return {
-          artistId:
-            artistData.odnoklassniki_id
+          artistId: artistData.source.id
         }
       case 'yandexmusic':
         return {
-          artistId:
-            artistData.yandex_music_id
+          artistId: artistData.source.id
         }
       case 'deezer':
         return {
-          artistId:
-            artistData.deezer_id
+          artistId: artistData.source.id
         }
       case 'bandcamp':
         return {
-          artistName:
-            artistData.bandcamp_slug
+          artistId: artistData.source.id
         }
       case 'soundcloud':
         return {
-          artistId:
-            artistData.soundcloud_id
+          artistId: artistData.source.id
         }
       case 'discogs':
         return {
-          artistId:
-            artistData.discogs_id
+          artistId: artistData.source.id
         }
       case 'spotify':
         return {
-          artistId:
-            artistData.spotify_id
+          artistId: artistData.source.id
         }
       case 'genius':
         return {
-          artistId:
-            artistData.genius_id
+          artistId: artistData.source.id
         }
       case 'rateyourmusic':
         return {
-          artistId:
-            artistData.rateyourmusic_id
+          artistId: artistData.source.id
         }
       default:
         return {}
@@ -68,8 +60,9 @@ export default function (
   }
 
   return {
-    sourceId,
+    source,
     ...formatArtistData(),
-    albumType
+    albumType:
+      artistData.albumType
   }
 }

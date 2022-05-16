@@ -8,23 +8,23 @@
       :text="trackTitle"
     />
 
-    <div class="track-artist-name">
-      <BaseArtistLinks
-        :artists="artists"
-      />
-    </div>
+    <BaseArtistLinks
+      :artists="artists"
+    />
 
-    <div class="track-album-title">
-      <BaseLinkContainer
-        v-if="albumTitle"
-        :link="albumMainLink"
-      >
-        <div class="link main-small-container">
-          <small
-            v-text="albumTitle"
-          />
-        </div>
-      </BaseLinkContainer>
+    <div
+      v-if="albumData"
+      class="main-small-container"
+    >
+      <small>
+        <BaseAlbumLinkContainer
+          class="main-link"
+          :album-data="albumData"
+          :artist-name="artistName"
+        >
+          {{ albumTitle }}
+        </BaseAlbumLinkContainer>
+      </small>
     </div>
   </BaseTransitionContainer>
 </template>
@@ -34,12 +34,8 @@ import BaseTransitionContainer
   from '*/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import {
-  main as formatAlbumMainLink
-} from '*/helpers/formatters/links/album'
-import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
+import BaseAlbumLinkContainer
+  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
 
 export default {
   name: 'HeaderSection',
@@ -47,7 +43,7 @@ export default {
     BaseTransitionContainer,
     BaseHeader,
     BaseArtistLinks,
-    BaseLinkContainer
+    BaseAlbumLinkContainer
   },
   props: {
     trackData: {
@@ -63,32 +59,14 @@ export default {
     artists () {
       return this.trackData.artists
     },
-    albumMainLink () {
-      return formatAlbumMainLink(
-        {
-          albumTitle: this.albumTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        }
-      )
-    },
-    albumTitle () {
-      return this.albumData?.title
-    },
     albumData () {
       return this.trackData.album
     },
     artistName () {
       return this.trackData.artist.name
     },
-    sourceParams () {
-      return formatAlbumRequestData(
-        {
-          sourceId: this.albumData.source_id,
-          albumData: this.albumData,
-          artistName: this.artistName
-        }
-      )
+    albumTitle () {
+      return this.albumData?.title
     }
   }
 }
@@ -97,11 +75,4 @@ export default {
 <style lang="sass" scoped>
 .track-full-title
   @extend .text-align-center
-
-.track-artist-name
-  line-height: 1.2em
-  margin-top: 0.2em
-
-.track-album-title
-  margin-top: 0.2em
 </style>

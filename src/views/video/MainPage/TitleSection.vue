@@ -42,7 +42,7 @@ export default {
       )
     },
     channelId () {
-      return this.channelData.youtube_id
+      return this.channelData.source.id
     },
     channelData () {
       return this.videoData.channel

@@ -1,6 +1,6 @@
 export default function (
   {
-    sourceId,
+    source,
     artistName,
     albumTitle,
     artistId,
@@ -29,7 +29,7 @@ export default function (
   const albumScope = formatScope()
 
   function formatUrlData () {
-    switch (sourceId) {
+    switch (source) {
       case 'lastfm':
         return (
           `artists/${artistNameEncoded}` +
@@ -45,5 +45,5 @@ export default function (
     }
   }
 
-  return `/${sourceId}/${formatUrlData()}`
+  return `/${source}/${formatUrlData()}`
 }

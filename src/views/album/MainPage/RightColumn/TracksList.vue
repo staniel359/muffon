@@ -3,7 +3,7 @@
     v-if="tracks?.length"
     :tracks="tracks"
     :album-artist-name="artistName"
-    :album-title="albumTitle"
+    :album-data="albumData"
     :image-data="imageData"
     :is-with-source="isWithSource"
     is-with-index
@@ -48,9 +48,6 @@ export default {
     artistName () {
       return this.albumData.artist.name
     },
-    albumTitle () {
-      return this.albumData.title
-    },
     imageData () {
       return this.albumData.image
     },
@@ -62,8 +59,8 @@ export default {
         this.isMatchedSource
       )
     },
-    sourceId () {
-      return this.albumData.source_id
+    source () {
+      return this.albumData.source.name
     }
   },
   methods: {
@@ -72,7 +69,7 @@ export default {
     ) {
       return (
         sourceData.id ===
-        this.sourceId
+          this.source
       )
     }
   }

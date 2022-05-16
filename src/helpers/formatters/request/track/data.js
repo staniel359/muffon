@@ -1,64 +1,67 @@
 export default function (
   {
-    sourceId,
-    trackData
+    trackData,
+    artistName
   }
 ) {
+  const source = (
+    trackData.source?.name ||
+      'lastfm'
+  )
+
   function formatTrackData () {
-    switch (sourceId) {
+    switch (source) {
       case 'lastfm':
         return {
-          artistName:
-            trackData.artist?.name,
+          artistName: (
+            trackData.artist?.name ||
+              artistName
+          ),
           trackTitle: trackData.title
         }
       case 'vk':
         return {
-          trackId: trackData.vk_id
+          trackId: trackData.source.id
         }
       case 'odnoklassniki':
         return {
-          trackId:
-            trackData.odnoklassniki_id
+          trackId: trackData.source.id
         }
       case 'yandexmusic':
         return {
-          trackId:
-            trackData.yandex_music_id
+          trackId: trackData.source.id
         }
       case 'deezer':
         return {
-          trackId: trackData.deezer_id
+          trackId: trackData.source.id
         }
       case 'bandcamp':
         return {
-          trackId: trackData.bandcamp_id,
-          artistId:
-            trackData.artists[0].bandcamp_id,
-          track: trackData.bandcamp_slug,
-          artist:
-            trackData.artists[0].bandcamp_slug
+          trackId: trackData.source.id,
+          artistId: trackData.source.artist_id,
+          track: trackData.source.slug,
+          artist: trackData.source.artist_slug
         }
       case 'soundcloud':
         return {
-          trackId: trackData.soundcloud_id
+          trackId: trackData.source.id
         }
       case 'discogs':
         return {
-          trackId: trackData.discogs_id
+          trackId: trackData.source.id
         }
       case 'spotify':
         return {
-          trackId: trackData.spotify_id
+          trackId: trackData.source.id
         }
       case 'genius':
         return {
-          trackId: trackData.genius_id
+          trackId: trackData.source.id
         }
       case 'rateyourmusic':
         return {
           trackId: encodeURIComponent(
-            trackData.rateyourmusic_slug
+            trackData.source.slug
           )
         }
       default:
@@ -67,7 +70,7 @@ export default function (
   }
 
   return {
-    sourceId,
+    source,
     ...formatTrackData()
   }
 }

@@ -1,24 +1,11 @@
 <template>
-  <BaseArtistLinkContainer
-    :artist-data="artistData"
-    :is-link-to-library="isLinkToLibrary"
-    :profile-id="profileId"
-    :is-link-active="isMainLinkActive"
-    @click="handleLinkClick"
-  >
-    <BaseSimpleCardContainer
-      :is-with-image="false"
+  <BaseSimpleCardContainer>
+    <BaseArtistLinkContainer
+      class="card-link"
+      :artist-data="artistData"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
     >
-      <div class="main-simple-card-image-container">
-        <BaseArtistImage
-          class="circular bordered"
-          size="small"
-          :image-data="imageData"
-          :artist-name="artistName"
-          @load-end="handleImageLoadEnd"
-        />
-      </div>
-
       <BaseOptionsDropdown
         model="artist"
         :artist-name="artistName"
@@ -34,53 +21,59 @@
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
         :is-transparent="false"
-        @link-click="handleLinkClick"
       />
 
-      <div class="content">
-        <BaseHeader
-          :class="{
-            link: isMainLinkActive
-          }"
-          tag="h4"
-          :text="artistName"
-        />
-
-        <BaseArtistListenersCount
-          v-if="isWithListenersCount"
-          class="description"
+      <div class="main-simple-card-image-container">
+        <BaseArtistImage
+          class="circular bordered"
+          size="small"
+          :image-data="imageData"
           :artist-name="artistName"
-          :listeners-count="listenersCount"
-          @load-end="handleListenersCountLoadEnd"
-        />
-
-        <LibraryCountersSection
-          v-if="isWithLibrary"
-          :artist-data="artistData"
-          :profile-id="profileId"
-          @link-active-change="handleCounterLinkActiveChange"
-        />
-
-        <BaseSelfIcons
-          v-if="isWithSelfIcons"
-          :library-id="libraryId"
-          :favorite-id="favoriteId"
-          :bookmark-id="bookmarkId"
-          :listened-id="listenedId"
+          @load-end="handleImageLoadEnd"
         />
       </div>
-    </BaseSimpleCardContainer>
-  </BaseArtistLinkContainer>
+
+      <BaseHeader
+        class="link"
+        tag="h4"
+        :text="artistName"
+      />
+    </BaseArtistLinkContainer>
+
+    <div class="content">
+      <BaseArtistListenersCount
+        v-if="isWithListenersCount"
+        class="description"
+        :artist-name="artistName"
+        :listeners-count="listenersCount"
+        @load-end="handleListenersCountLoadEnd"
+      />
+
+      <LibraryCountersSection
+        v-if="isWithLibrary"
+        :artist-data="artistData"
+        :profile-id="profileId"
+      />
+
+      <BaseSelfIcons
+        v-if="isWithSelfIcons"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+      />
+    </div>
+  </BaseSimpleCardContainer>
 </template>
 
 <script>
-import BaseArtistLinkContainer
-  from '*/components/containers/artist/BaseArtistLinkContainer.vue'
 import BaseSimpleCardContainer
   from '*/components/containers/cards/BaseSimpleCardContainer.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+import BaseArtistLinkContainer
+  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseArtistListenersCount
   from '*/components/models/artist/BaseArtistListenersCount.vue'
@@ -94,10 +87,10 @@ import {
 export default {
   name: 'ArtistItem',
   components: {
-    BaseArtistLinkContainer,
     BaseSimpleCardContainer,
-    BaseArtistImage,
+    BaseArtistLinkContainer,
     BaseOptionsDropdown,
+    BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
@@ -131,14 +124,6 @@ export default {
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean
   },
-  emits: [
-    'linkClick'
-  ],
-  data () {
-    return {
-      isCounterLinkActive: false
-    }
-  },
   computed: {
     modelData () {
       return this.artistData
@@ -151,9 +136,6 @@ export default {
     },
     listenersCount () {
       return this.artistData.listeners_count
-    },
-    isMainLinkActive () {
-      return !this.isCounterLinkActive
     },
     paginationItem () {
       return this.findPaginationItem(
@@ -172,11 +154,6 @@ export default {
     }
   },
   methods: {
-    handleLinkClick () {
-      this.$emit(
-        'linkClick'
-      )
-    },
     handleImageLoadEnd (
       value
     ) {
@@ -188,11 +165,6 @@ export default {
     ) {
       this.paginationItem
         .listeners_count = value
-    },
-    handleCounterLinkActiveChange (
-      value
-    ) {
-      this.isCounterLinkActive = value
     }
   }
 }

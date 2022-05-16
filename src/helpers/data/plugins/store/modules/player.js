@@ -4,7 +4,7 @@ export default {
     playing: null,
     currentTrackId: null,
     currentVariantId: null,
-    sourceId: null,
+    source: null,
     isWithScrobbling: false,
     isScrobbling: false,
     isToScrobble: false,
@@ -45,11 +45,11 @@ export default {
     ) {
       state.currentVariantId = value
     },
-    SET_SOURCE_ID (
+    SET_SOURCE (
       state,
       value
     ) {
-      state.sourceId = value
+      state.source = value
     },
     SET_IS_WITH_SCROBBLING (
       state,
@@ -133,14 +133,14 @@ export default {
         value
       )
     },
-    setSourceId (
+    setSource (
       {
         commit
       },
       value
     ) {
       commit(
-        'SET_SOURCE_ID',
+        'SET_SOURCE',
         value
       )
     },

@@ -5,6 +5,8 @@
       :key="albumData.uuid"
       :album-data="albumData"
       :is-with-artist-name="isWithArtistName"
+      :is-with-source="isWithSource"
+      :is-with-self-icons="isWithSelfIcons"
       :is-link-to-library="isLinkToLibrary"
       :is-with-listeners-count="isWithListenersCount"
       :is-with-library-option="isWithLibraryOption"
@@ -51,6 +53,8 @@ export default {
       }
     },
     isWithArtistName: Boolean,
+    isWithSource: Boolean,
+    isWithSelfIcons: Boolean,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
     isWithLibraryOption: Boolean,

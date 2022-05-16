@@ -5,10 +5,8 @@
       disabled: isDeleted
     }"
     :album-data="albumData"
-    :artist-name="artistName"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
-    :is-link-active="isMainLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -31,7 +29,7 @@
           :text="albumTitle"
         />
 
-        <BaseAlbumArtistNamesSection
+        <BaseAlbumArtistsSection
           v-if="isWithArtistName"
           :album-data="albumData"
           :is-link-to-library="isLinkToLibrary"
@@ -49,6 +47,12 @@
           @load-end="handleListenersCountLoadEnd"
         />
       </div>
+
+      <BaseSourceIcon
+        v-if="isWithSource"
+        class="album-source-icon"
+        :source="source"
+      />
 
       <BaseSelfIcons
         v-if="isWithSelfIcons"
@@ -98,14 +102,15 @@
 
 <script>
 import BaseAlbumLinkContainer
-  from '*/components/containers/album/BaseAlbumLinkContainer.vue'
+  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseAlbumArtistNamesSection
-  from '*/components/models/album/BaseAlbumArtistNamesSection.vue'
+import BaseAlbumArtistsSection
+  from '*/components/models/album/BaseAlbumArtistsSection.vue'
 import BaseAlbumListenersCount
   from '*/components/models/album/BaseAlbumListenersCount.vue'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
@@ -125,8 +130,9 @@ export default {
     BaseDeletedBlock,
     BaseImage,
     BaseHeader,
-    BaseAlbumArtistNamesSection,
+    BaseAlbumArtistsSection,
     BaseAlbumListenersCount,
+    BaseSourceIcon,
     BaseSelfIcons,
     BaseOptionsDropdown,
     BaseBookmarkDeleteModal,
@@ -161,6 +167,7 @@ export default {
     isClearable: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
+    isWithSource: Boolean,
     profileId: String
   },
   emits: [
@@ -177,7 +184,7 @@ export default {
       return this.albumData
     },
     artistName () {
-      return this.albumData.artist?.name
+      return this.albumData.artist.name
     },
     artists () {
       return this.albumData.artists
@@ -211,6 +218,9 @@ export default {
       return formatAlbumShareData(
         this.albumData
       )
+    },
+    source () {
+      return this.albumData.source.name
     }
   },
   methods: {
@@ -257,4 +267,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.album-source-icon
+  margin-left: 0.5em !important
+</style>

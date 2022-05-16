@@ -1,6 +1,6 @@
 <template>
   <BaseImage
-    v-if="isWithImage"
+    v-if="isFromSource"
     model="track"
     class="rounded bordered playing-image"
     :image="imageData?.[size]"
@@ -26,9 +26,6 @@ export default {
     BaseImage,
     BaseArtistImage
   },
-  props: {
-    isWithImage: Boolean
-  },
   data () {
     return {
       size: 'extrasmall'
@@ -41,6 +38,9 @@ export default {
         playerPlaying: 'playing'
       }
     ),
+    isFromSource () {
+      return !!this.playerPlaying.from_source
+    },
     imageData () {
       return this.playerPlaying.image
     },

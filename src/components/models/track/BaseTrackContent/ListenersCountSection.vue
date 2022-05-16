@@ -17,7 +17,7 @@
         />
 
         <span
-          v-html="listenersCountFormatted"
+          v-text="listenersCountFormatted"
         />
       </small>
     </div>

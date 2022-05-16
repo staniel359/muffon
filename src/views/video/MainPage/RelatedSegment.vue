@@ -69,7 +69,7 @@ export default {
   },
   computed: {
     videoId () {
-      return this.videoData.youtube_id.toString()
+      return this.videoData.source.id
     },
     headerLink () {
       return formatVideoRelatedLink(

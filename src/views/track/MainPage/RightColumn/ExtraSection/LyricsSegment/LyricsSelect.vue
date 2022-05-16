@@ -2,7 +2,7 @@
   <div class="main-track-dropdown-container">
     <div class="main-track-dropdown-logo-container">
       <BaseSourceIcon
-        source-id="genius"
+        source="genius"
       />
     </div>
 

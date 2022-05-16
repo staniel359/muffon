@@ -1,7 +1,7 @@
 <template>
   <div
     class="item main-dropdown-item"
-    :data-value="sourceId"
+    :data-value="source"
     @click="handleClick"
   >
     <BaseIcon
@@ -43,7 +43,7 @@ export default {
     }
   },
   computed: {
-    sourceId () {
+    source () {
       return this.sourceData.id
     },
     icon () {
@@ -63,7 +63,7 @@ export default {
     handleClick () {
       updateGlobalStore(
         {
-          'player.sourceId': this.sourceId
+          'player.source': this.source
         }
       )
     }

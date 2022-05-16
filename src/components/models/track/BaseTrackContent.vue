@@ -31,13 +31,12 @@
           <div class="track-main-info">
             <TitleSection
               :track-data="trackData"
-              :artist-name="artistName"
               :is-link-to-library="isLinkToLibrary"
               :profile-id="profileId"
               @link-click="handleLinkClick"
             />
 
-            <ArtistNameSection
+            <ArtistsSection
               v-if="isRenderArtistName"
               :track-data="trackData"
               :is-link-to-library="isLinkToLibrary"
@@ -45,7 +44,7 @@
               @link-click="handleLinkClick"
             />
 
-            <AlbumTitleSection
+            <AlbumSection
               v-if="isRenderAlbumTitle"
               :track-data="trackData"
               :is-link-to-library="isLinkToLibrary"
@@ -79,7 +78,7 @@
     <BaseSourceIcon
       v-if="isWithSource"
       class="track-source-icon"
-      :source-id="sourceId"
+      :source="source"
     />
 
     <CreatedBlock
@@ -159,9 +158,10 @@ import BaseTrackAudioIcon
 import BaseImage from '*/components/images/BaseImage.vue'
 import IndexBlock from './BaseTrackContent/IndexBlock.vue'
 import TitleSection from './BaseTrackContent/TitleSection.vue'
-import ArtistNameSection from './BaseTrackContent/ArtistNameSection.vue'
-import AlbumTitleSection from './BaseTrackContent/AlbumTitleSection.vue'
-import ListenersCountSection from './BaseTrackContent/ListenersCountSection.vue'
+import ArtistsSection from './BaseTrackContent/ArtistsSection.vue'
+import AlbumSection from './BaseTrackContent/AlbumSection.vue'
+import ListenersCountSection
+  from './BaseTrackContent/ListenersCountSection.vue'
 import DurationBlock from './BaseTrackContent/DurationBlock.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
@@ -191,8 +191,8 @@ export default {
     BaseImage,
     IndexBlock,
     TitleSection,
-    ArtistNameSection,
-    AlbumTitleSection,
+    ArtistsSection,
+    AlbumSection,
     ListenersCountSection,
     DurationBlock,
     BaseSourceIcon,
@@ -314,9 +314,9 @@ export default {
     duration () {
       return this.trackData.duration
     },
-    sourceId () {
+    source () {
       if (this.audioData?.present) {
-        return this.audioData.source_id
+        return this.trackData.source.name
       } else {
         return null
       }
@@ -413,7 +413,5 @@ export default {
   margin-left: 0.5em
 
 .track-source-icon
-  @extend .no-padding
-  min-width: unset !important
   margin-left: 0.5em !important
 </style>

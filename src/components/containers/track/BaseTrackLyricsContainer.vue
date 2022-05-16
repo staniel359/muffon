@@ -43,12 +43,12 @@ export default {
   computed: {
     trackArgs () {
       return {
-        sourceId: 'genius',
+        source: 'genius',
         trackId: this.trackId
       }
     },
     trackId () {
-      return this.selectedTrackData.genius_id
+      return this.selectedTrackData.source.id
     },
     lyrics () {
       return this.trackData?.lyrics

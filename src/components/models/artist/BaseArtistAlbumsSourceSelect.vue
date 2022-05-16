@@ -35,7 +35,6 @@ import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   generateKey
 } from '*/helpers/utils'
-import formatArtistRequestData from '*/helpers/formatters/request/artist/data'
 
 export default {
   name: 'BaseArtistAlbumsSourceSelect',
@@ -47,9 +46,12 @@ export default {
   },
   provide () {
     return {
-      setSelectedSourceData: this.setSelectedSourceData,
-      setSelectedArtistData: this.setSelectedArtistData,
-      setSelectedTypeId: this.setSelectedTypeId
+      setSelectedSourceData:
+        this.setSelectedSourceData,
+      setSelectedArtistData:
+        this.setSelectedArtistData,
+      setSelectedTypeId:
+        this.setSelectedTypeId
     }
   },
   inject: [
@@ -77,9 +79,6 @@ export default {
   computed: {
     selectedSourceArtists () {
       return this.selectedSourceData.artists
-    },
-    selectedSourceId () {
-      return this.selectedSourceData.id
     }
   },
   watch: {
@@ -100,9 +99,7 @@ export default {
     ) {
       if (value) {
         this.setRequestArtistData(
-          {
-            ...value
-          }
+          value
         )
 
         this.$emit(
@@ -139,26 +136,15 @@ export default {
     setSelectedArtistData (
       value
     ) {
-      this.selectedArtistData =
-        this.formatSelectedArtistData(
-          value
-        )
+      this.selectedArtistData = {
+        ...value,
+        albumType: this.selectedTypeId
+      }
     },
     setSelectedTypeId (
       value
     ) {
       this.selectedTypeId = value
-    },
-    formatSelectedArtistData (
-      value
-    ) {
-      return formatArtistRequestData(
-        {
-          artistData: value,
-          sourceId: this.selectedSourceId,
-          albumType: this.selectedTypeId
-        }
-      )
     },
     resetSelect () {
       this.$refs

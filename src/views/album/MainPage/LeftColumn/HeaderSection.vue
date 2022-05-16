@@ -8,11 +8,9 @@
       :text="albumTitle"
     />
 
-    <div class="album-artist-name">
-      <BaseArtistLinks
-        :artists="artists"
-      />
-    </div>
+    <BaseArtistLinks
+      :artists="artists"
+    />
   </BaseTransitionContainer>
 </template>
 
@@ -63,8 +61,4 @@ export default {
 <style lang="sass" scoped>
 .album-full-title
   @extend .text-align-center
-
-.album-artist-name
-  line-height: 1.2em
-  margin-top: 0.2em
 </style>

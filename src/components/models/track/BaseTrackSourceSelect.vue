@@ -27,7 +27,6 @@ import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   generateKey
 } from '*/helpers/utils'
-import formatTrackRequestData from '*/helpers/formatters/request/track/data'
 
 export default {
   name: 'BaseTrackSourceSelect',
@@ -38,8 +37,10 @@ export default {
   },
   provide () {
     return {
-      setSelectedSourceData: this.setSelectedSourceData,
-      setSelectedTrackData: this.setSelectedTrackData
+      setSelectedSourceData:
+        this.setSelectedSourceData,
+      setSelectedTrackData:
+        this.setSelectedTrackData
     }
   },
   inject: [
@@ -76,14 +77,13 @@ export default {
     },
     selectedSourceTracks () {
       return this.selectedSourceData.tracks
-    },
-    selectedSourceId () {
-      return this.selectedSourceData.id
     }
   },
   watch: {
-    selectedSourceData: 'handleSelectedSourceDataChange',
-    selectedTrackData: 'handleSelectedTrackDataChange'
+    selectedSourceData:
+      'handleSelectedSourceDataChange',
+    selectedTrackData:
+      'handleSelectedTrackDataChange'
   },
   methods: {
     handleSelectedSourceDataChange () {
@@ -93,9 +93,7 @@ export default {
       value
     ) {
       this.setRequestTrackData(
-        {
-          ...value
-        }
+        value
       )
     },
     handleReset () {
@@ -113,20 +111,7 @@ export default {
     setSelectedTrackData (
       value
     ) {
-      this.selectedTrackData =
-        this.formatSelectedTrackData(
-          value
-        )
-    },
-    formatSelectedTrackData (
-      value
-    ) {
-      return formatTrackRequestData(
-        {
-          sourceId: this.selectedSourceId,
-          trackData: value
-        }
-      )
+      this.selectedTrackData = value
     },
     resetSelect () {
       this.$refs

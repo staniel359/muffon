@@ -58,16 +58,12 @@ export default {
     },
     maxBitrate () {
       return this.sourceData.maxBitrate
-    },
-    sourceId () {
-      return this.sourceData.id
     }
   },
   methods: {
     handleClick () {
       this.setSelectedSourceData(
         {
-          id: this.sourceId,
           tracks: this.tracks
         }
       )

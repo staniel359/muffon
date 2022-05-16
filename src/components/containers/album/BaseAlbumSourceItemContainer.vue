@@ -12,7 +12,7 @@ import getSearch from '*/helpers/actions/api/search/get'
 export default {
   name: 'BaseAlbumSourceItemContainer',
   props: {
-    sourceId: {
+    source: {
       type: String,
       required: true
     },
@@ -60,7 +60,7 @@ export default {
     },
     searchArgs () {
       return {
-        sourceId: this.sourceId,
+        source: this.source,
         query: this.query
       }
     }

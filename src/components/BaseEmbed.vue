@@ -35,7 +35,7 @@ export default {
       )
     },
     videoId () {
-      return this.videoData.youtube_id
+      return this.videoData.source.id
     },
     placeholder () {
       return this.imageData.small

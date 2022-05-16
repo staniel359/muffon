@@ -7,7 +7,6 @@
     :artist-data="artistData"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
-    :is-link-active="isMainLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -99,7 +98,7 @@
 
 <script>
 import BaseArtistLinkContainer
-  from '*/components/containers/artist/BaseArtistLinkContainer.vue'
+  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'

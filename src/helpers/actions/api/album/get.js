@@ -3,7 +3,7 @@ import formatAlbumRequestUrl from '*/helpers/formatters/request/album/url'
 
 export default function (
   {
-    sourceId = 'lastfm',
+    source = 'lastfm',
     artistName,
     albumTitle,
     artistId,
@@ -18,7 +18,7 @@ export default function (
   const url =
     formatAlbumRequestUrl(
       {
-        sourceId,
+        source,
         artistName,
         albumTitle,
         artistId,

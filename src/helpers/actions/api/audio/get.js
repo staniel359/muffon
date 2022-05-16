@@ -9,33 +9,15 @@ export default function (
     trackData
   }
 ) {
-  const audioData = trackData.audio
+  const sourceData = trackData.source
 
-  function formatUrl () {
-    const sourceId = audioData.source_id
-
-    const idData = audioData.id
-
-    const artistId = (
-      audioData.artist_id ||
-        idData?.artists?.[0]?.bandcamp_id
-    )
-
-    const trackId = (
-      audioData.track_id ||
-        idData?.bandcamp_id
-    )
-
-    return formatTrackRequestUrl(
-      {
-        sourceId,
-        artistId,
-        trackId
-      }
-    )
-  }
-
-  const url = formatUrl()
+  const url = formatTrackRequestUrl(
+    {
+      source: sourceData.name,
+      artistId: sourceData.artist_id,
+      trackId: sourceData.id
+    }
+  )
 
   function handleSuccess (
     response

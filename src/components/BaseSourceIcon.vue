@@ -3,7 +3,7 @@
     ref="icon"
     class="icon source-icon"
     :class="[
-      sourceId,
+      source,
       size,
       {
         colored: isActive
@@ -30,7 +30,7 @@ import audioSources from '*/helpers/data/audio/sources'
 export default {
   name: 'BaseSourceIcon',
   props: {
-    sourceId: String,
+    source: String,
     size: String
   },
   data () {
@@ -100,7 +100,7 @@ export default {
     ) {
       return (
         sourceData.id ===
-          this.sourceId
+          this.source
       )
     }
   }
@@ -110,4 +110,5 @@ export default {
 <style lang="sass" scoped>
 .source-icon
   @extend .no-padding, .no-margin
+  min-width: unset !important
 </style>

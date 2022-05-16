@@ -53,7 +53,7 @@ export default {
 <style lang="sass" scoped>
 .variants-label
   @extend .d-flex, .align-items-center, .justify-content-center, .width-fit-content, .pointer-events-auto
-  min-width: 120px
+  padding: 0.5em 1.5em !important
   left: 30px !important
   height: 30px
   border-bottom: 0 !important

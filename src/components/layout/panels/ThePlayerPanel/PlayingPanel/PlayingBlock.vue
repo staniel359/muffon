@@ -1,18 +1,12 @@
 <template>
-  <div class="item track-block">
-    <ImageBlock
-      :is-with-image="isFromSource"
-    />
+  <div class="item playing-block">
+    <ImageBlock />
 
     <InfoBlock
       :key="key"
-      :is-with-album="isFromSource"
     />
 
-    <BaseSourceIcon
-      class="description track-source-icon"
-      :source-id="sourceId"
-    />
+    <SourceIconBlock />
   </div>
 </template>
 
@@ -22,7 +16,7 @@ import {
 } from 'vuex'
 import ImageBlock from './PlayingBlock/ImageBlock.vue'
 import InfoBlock from './PlayingBlock/InfoBlock.vue'
-import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
+import SourceIconBlock from './PlayingBlock/SourceIconBlock.vue'
 import {
   generateKey
 } from '*/helpers/utils'
@@ -32,7 +26,7 @@ export default {
   components: {
     ImageBlock,
     InfoBlock,
-    BaseSourceIcon
+    SourceIconBlock
   },
   data () {
     return {
@@ -45,13 +39,7 @@ export default {
       {
         playerPlaying: 'playing'
       }
-    ),
-    isFromSource () {
-      return !!this.playerPlaying.from_source
-    },
-    sourceId () {
-      return this.playerPlaying.audio.source_id
-    }
+    )
   },
   watch: {
     playerPlaying: 'handlePlayerPlayingChange'
@@ -65,9 +53,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-block
+.playing-block
   @extend .d-flex, .align-items-center
-
-.track-source-icon
-  margin-left: 0.5em !important
 </style>

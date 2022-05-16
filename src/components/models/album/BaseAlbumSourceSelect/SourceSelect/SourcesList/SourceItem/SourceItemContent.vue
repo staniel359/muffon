@@ -56,9 +56,6 @@ export default {
     maxBitrate () {
       return this.sourceData.maxBitrate
     },
-    sourceId () {
-      return this.sourceData.id
-    },
     types () {
       return this.sourceData.albumTypes
     }
@@ -67,7 +64,6 @@ export default {
     handleClick () {
       this.setSelectedSourceData(
         {
-          id: this.sourceId,
           types: this.types,
           albumsData: this.albumsData
         }

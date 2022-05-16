@@ -19,9 +19,9 @@ import BasePageContainer
 import navigationMixin from '*/mixins/navigationMixin'
 import formatTrackPageNavigation from '*/helpers/formatters/navigation/track'
 import formatTrackPageTab from '*/helpers/formatters/tabs/track'
+import formatRequestTrackData from '*/helpers/formatters/request/track/data'
 import getTrack from '*/helpers/actions/api/track/get'
-import getBandcampTrackId
-  from '*/helpers/actions/api/bandcampId/track/get'
+import getBandcampId from '*/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseTrackPageContainer',
@@ -33,8 +33,10 @@ export default {
   ],
   provide () {
     return {
-      setRequestTrackData: this.setRequestTrackData,
-      resetRequestTrackData: this.resetRequestTrackData
+      setRequestTrackData:
+        this.setRequestTrackData,
+      resetRequestTrackData:
+        this.resetRequestTrackData
     }
   },
   props: {
@@ -87,17 +89,23 @@ export default {
     }
   },
   watch: {
-    requestTrackData: 'handleRequestTrackDataChange',
-    trackData: 'handleNavigationDataChange'
+    requestTrackData:
+      'handleRequestTrackDataChange',
+    trackData:
+      'handleNavigationDataChange'
   },
   mounted () {
     this.resetRequestTrackData()
   },
   methods: {
     getTrack,
-    getBandcampTrackId,
+    getBandcampId,
     handleRequestTrackDataChange () {
       this.getData()
+    },
+    resetRequestTrackData () {
+      this.requestTrackData =
+        this.sourceParams
     },
     getData (
       {
@@ -114,31 +122,46 @@ export default {
     setRequestTrackData (
       value
     ) {
-      if (this.isGetBandcampTrackId(
-        value
-      )) {
-        this.getBandcampTrackId(
+      const isBandcampSource = (
+        value.source.name ===
+          'bandcamp'
+      )
+
+      if (isBandcampSource) {
+        this.getBandcampTrackData(
           value
         )
       } else {
-        this.requestTrackData = value
+        this.setFormattedRequestTrackData(
+          value
+        )
       }
     },
-    isGetBandcampTrackId (
+    getBandcampTrackData (
       value
     ) {
-      return (
-        value.sourceId === 'bandcamp' &&
-          !(
-            value.trackId &&
-              value.artistId
-          )
+      const bandcampIdArgs = {
+        model: 'track',
+        slug: value.source.slug,
+        artistSlug:
+          value.source.artist_slug
+      }
+
+      this.getBandcampId(
+        bandcampIdArgs
+      ).then(
+        this.setFormattedRequestTrackData
       )
     },
-    resetRequestTrackData () {
-      this.setRequestTrackData(
-        this.sourceParams
-      )
+    setFormattedRequestTrackData (
+      value
+    ) {
+      this.requestTrackData =
+        formatRequestTrackData(
+          {
+            trackData: value
+          }
+        )
     }
   }
 }

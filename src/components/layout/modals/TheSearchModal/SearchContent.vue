@@ -26,7 +26,7 @@
       v-if="query"
       :key="key"
       :query="query"
-      :source-id="sourceId"
+      :source="source"
       :scope="scope"
     />
   </div>
@@ -54,7 +54,7 @@ export default {
   data () {
     return {
       key: null,
-      sourceId: null,
+      source: null,
       scope: null,
       query: ''
     }
@@ -68,7 +68,7 @@ export default {
     handleSourceSelect (
       value
     ) {
-      this.sourceId = value
+      this.source = value
       this.key = generateKey()
     },
     handleScopeSelect (

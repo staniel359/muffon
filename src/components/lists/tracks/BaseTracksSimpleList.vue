@@ -73,7 +73,7 @@ export default {
     artistName: String,
     albumArtistName: String,
     isWithAlbumTitle: Boolean,
-    albumTitle: String,
+    albumData: Object,
     isWithDuration: Boolean,
     isWithSource: Boolean,
     isWithListenersCount: Boolean,
@@ -139,7 +139,10 @@ export default {
         {
           trackData,
           artistName: this.artistName,
-          albumTitle: this.albumTitle,
+          albumData: this.albumData && {
+            source: this.albumData.source,
+            title: this.albumData.title
+          },
           imageData: this.imageData,
           isFromSource
         }

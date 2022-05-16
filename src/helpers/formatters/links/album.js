@@ -16,7 +16,7 @@ export function main (
     )
 
   const {
-    sourceId,
+    source,
     albumId,
     artistId,
     album,
@@ -41,7 +41,7 @@ export function main (
   }
 
   const query = {
-    source_id: sourceId,
+    source,
     album_id: albumId,
     artist_id: artistId,
     album,

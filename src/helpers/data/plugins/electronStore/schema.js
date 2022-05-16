@@ -59,7 +59,7 @@ export default {
     ],
     default: null
   },
-  'player.sourceId': {
+  'player.source': {
     type: 'string',
     default: 'vk'
   },

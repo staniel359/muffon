@@ -1,59 +1,48 @@
 <template>
-  <div class="track-main-info">
-    <BaseHeaderContainer
-      tag="h3"
-    >
-      {{ trackTitle }}
-
-      <span
-        v-if="trackExtraTitle"
-        class="sub header main-extra-title"
-      >
-        <strong
-          v-html="trackExtraTitle"
-        />
-      </span>
-    </BaseHeaderContainer>
-
-    <BaseHeaderContainer
-      class="track-artist-name"
-      tag="h4"
-    >
-      <BaseArtistLinks
-        :artists="artists"
+  <div
+    class="info-section"
+    :class="{
+      inverted: isDarkMode
+    }"
+  >
+    <div class="track-info-block">
+      <TitleSection
+        :track-data="trackData"
       />
-    </BaseHeaderContainer>
 
-    <div
-      v-if="albumData"
-      class="main-header"
-    >
-      <small>
-        <BaseLink
-          :link="albumMainLink"
-          :text="albumTitle"
-        />
-      </small>
+      <ArtistsSection
+        :track-data="trackData"
+      />
+
+      <AlbumSection
+        v-if="albumData"
+        :track-data="trackData"
+      />
     </div>
+
+    <BaseSourceIcon
+      class="source-icon-block"
+      :source="source"
+    />
   </div>
 </template>
 
 <script>
-import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
-import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
 import {
-  main as formatAlbumMainLink
-} from '*/helpers/formatters/links/album'
-import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
+  mapState
+} from 'vuex'
+import TitleSection from './InfoSection/TitleSection.vue'
+import ArtistsSection from './InfoSection/ArtistsSection.vue'
+import AlbumSection from './InfoSection/AlbumSection.vue'
+import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 
 export default {
   name: 'InfoSection',
   components: {
-    BaseHeaderContainer,
-    BaseArtistLinks,
-    BaseLink
+    TitleSection,
+    ArtistsSection,
+    AlbumSection,
+    BaseSourceIcon
   },
   props: {
     trackData: {
@@ -62,54 +51,33 @@ export default {
     }
   },
   computed: {
-    trackTitle () {
-      return this.trackData.title
-    },
-    artists () {
-      return this.trackData.artists
-    },
-    albumMainLink () {
-      return formatAlbumMainLink(
-        {
-          albumTitle: this.albumTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        }
-      )
-    },
-    albumTitle () {
-      return this.albumData?.title
-    },
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     albumData () {
       return this.trackData.album
     },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    sourceParams () {
-      return formatAlbumRequestData(
-        {
-          sourceId: this.albumData.source_id,
-          albumData: this.albumData,
-          artistName: this.artistName
-        }
-      )
-    },
-    trackExtraTitle () {
-      return this.trackData.extra_title
+    source () {
+      return this.trackData.source.name
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.track-main-info
-  @extend .flex-full
+.info-section
+  @extend .d-flex
   border-bottom: $border
   padding: 1em
-  .description
-    @extend .no-margin
+  &.inverted
+    border-bottom: $borderInverted
 
-.track-artist-name
-  @extend .text-medium-light
+.track-info-block
+  @extend .flex-full
+
+.source-icon-block
+  margin-left: 0.5em !important
 </style>

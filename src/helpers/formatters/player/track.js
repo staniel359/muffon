@@ -2,7 +2,7 @@ export function track (
   {
     trackData,
     artistName,
-    albumTitle,
+    albumData,
     imageData,
     isFromSource
   }
@@ -18,10 +18,8 @@ export function track (
     ]
   }
 
-  const trackAlbumData = albumTitle && {
-    album: {
-      title: albumTitle
-    }
+  const trackAlbumData = albumData && {
+    album: albumData
   }
 
   const trackImageData = imageData && {

@@ -13,11 +13,11 @@ export default function (
     limit = 20
   }
 ) {
-  const playerSourceId =
-    store.state.player.sourceId
+  const playerSource =
+    store.state.player.source
 
   const url =
-    `/${playerSourceId}/search/tracks`
+    `/${playerSource}/search/tracks`
 
   const params = {
     query

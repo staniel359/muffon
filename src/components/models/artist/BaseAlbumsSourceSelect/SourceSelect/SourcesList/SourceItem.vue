@@ -1,6 +1,6 @@
 <template>
   <BaseArtistSourceItemContainer
-    :source-id="sourceId"
+    :source="source"
     :query="query"
   >
     <template #default="slotProps">
@@ -33,7 +33,7 @@ export default {
     query: String
   },
   computed: {
-    sourceId () {
+    source () {
       return this.sourceData.id
     }
   }

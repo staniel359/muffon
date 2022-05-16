@@ -21,9 +21,9 @@ import BasePageContainer
 import navigationMixin from '*/mixins/navigationMixin'
 import formatArtistPageNavigation from '*/helpers/formatters/navigation/artist'
 import formatArtistPageTab from '*/helpers/formatters/tabs/artist'
+import formatRequestArtistData from '*/helpers/formatters/request/artist/data'
 import getArtist from '*/helpers/actions/api/artist/get'
-import getBandcampArtistId
-  from '*/helpers/actions/api/bandcampId/artist/get'
+import getBandcampId from '*/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseArtistPageContainer',
@@ -35,8 +35,10 @@ export default {
   ],
   provide () {
     return {
-      setRequestArtistData: this.setRequestArtistData,
-      resetRequestArtistData: this.resetRequestArtistData
+      setRequestArtistData:
+        this.setRequestArtistData,
+      resetRequestArtistData:
+        this.resetRequestArtistData
     }
   },
   props: {
@@ -95,21 +97,23 @@ export default {
     },
     isDiscogsSource () {
       return (
-        this.requestArtistData.sourceId ===
+        this.requestArtistData.source?.name ===
           'discogs'
       )
     }
   },
   watch: {
-    requestArtistData: 'handleRequestArtistDataChange',
-    artistData: 'handleNavigationDataChange'
+    requestArtistData:
+      'handleRequestArtistDataChange',
+    artistData:
+      'handleNavigationDataChange'
   },
   mounted () {
     this.resetRequestArtistData()
   },
   methods: {
     getArtist,
-    getBandcampArtistId,
+    getBandcampId,
     handleInit (
       element
     ) {
@@ -120,6 +124,11 @@ export default {
     },
     handleRequestArtistDataChange () {
       this.getData()
+    },
+    resetRequestArtistData () {
+      this.requestArtistData = {
+        artistName: this.artistName
+      }
     },
     getData (
       {
@@ -133,24 +142,50 @@ export default {
         }
       )
     },
-    resetRequestArtistData () {
-      this.setRequestArtistData(
-        {
-          sourceId: 'lastfm',
-          artistName: this.artistName
-        }
-      )
-    },
     setRequestArtistData (
       value
     ) {
-      if (value.sourceId === 'bandcamp') {
-        this.getBandcampArtistId(
+      const isBandcampSource = (
+        value.source.name ===
+          'bandcamp'
+      )
+
+      if (isBandcampSource) {
+        this.getBandcampArtistData(
           value
         )
       } else {
-        this.requestArtistData = value
+        this.setFormattedRequestArtistData(
+          value
+        )
       }
+    },
+    getBandcampArtistData (
+      value
+    ) {
+      const artistSlug =
+        value.source.slug
+
+      const bandcampIdArgs = {
+        model: 'artist',
+        artistSlug
+      }
+
+      this.getBandcampId(
+        bandcampIdArgs
+      ).then(
+        this.setFormattedRequestArtistData
+      )
+    },
+    setFormattedRequestArtistData (
+      value
+    ) {
+      this.requestArtistData =
+        formatRequestArtistData(
+          {
+            artistData: value
+          }
+        )
     }
   }
 }

@@ -1,20 +1,16 @@
 <template>
-  <BaseAlbumLinkContainer
-    :album-data="albumData"
-    :artist-name="albumArtistName"
-    :is-link-to-library="isLinkToLibrary"
-    :profile-id="profileId"
-    :is-link-active="isMainLinkActive"
-    @link-click="handleLinkClick"
-  >
-    <BaseSimpleCardContainer
-      model="album"
-      :image="imageData?.medium"
+  <BaseSimpleCardContainer>
+    <BaseAlbumLinkContainer
+      class="card-link"
+      :album-data="albumData"
+      :artist-name="artistNameComputed"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
+      @link-click="handleLinkClick"
     >
       <BaseOptionsDropdown
-        class="options"
         model="album"
-        :artist-name="albumArtistName"
+        :artist-name="artistNameComputed"
         :album-title="albumTitle"
         :image-url="imageData?.original"
         :library-id="libraryId"
@@ -32,68 +28,73 @@
         @link-click="handleLinkClick"
       />
 
-      <div class="content">
-        <BaseHeader
-          tag="h4"
-          :class="{
-            link: isMainLinkActive
-          }"
-          :text="albumTitle"
-        />
-
-        <BaseAlbumArtistNamesSection
-          v-if="isRenderArtistName"
-          class="extra"
-          :album-data="albumData"
-          :is-link-to-library="isLinkToLibrary"
-          :profile-id="profileId"
-          @link-active-change="handleArtistNameActiveChange"
-        />
-
-        <div
-          v-if="releaseDate"
-          class="description"
-          v-text="releaseDate"
-        />
-
-        <BaseAlbumListenersCount
-          v-if="isWithListenersCount"
-          class="description"
-          :album-title="albumTitle"
-          :artist-name="albumArtistName"
-          :listeners-count="listenersCount"
-          @load-end="handleListenersCountLoadEnd"
-        />
-
-        <TracksSection
-          v-if="isWithLibrary"
-          :album-data="albumData"
-          :profile-id="profileId"
-          @link-active-change="handleTracksLinkActiveChange"
-        />
-
-        <BaseSelfIcons
-          v-if="isWithSelfIcons"
-          :library-id="libraryId"
-          :favorite-id="favoriteId"
-          :bookmark-id="bookmarkId"
-          :listened-id="listenedId"
+      <div class="main-simple-card-image-container">
+        <BaseImage
+          class="rounded bordered"
+          model="album"
+          :image="imageData?.medium"
         />
       </div>
-    </BaseSimpleCardContainer>
-  </BaseAlbumLinkContainer>
+
+      <BaseHeader
+        class="link"
+        tag="h4"
+        :text="albumTitle"
+      />
+    </BaseAlbumLinkContainer>
+
+    <div class="content">
+      <BaseAlbumArtistsSection
+        v-if="isRenderArtistName"
+        class="extra"
+        :album-data="albumData"
+        :is-link-to-library="isLinkToLibrary"
+        :profile-id="profileId"
+      />
+
+      <div
+        v-if="releaseDate"
+        class="description"
+        v-text="releaseDate"
+      />
+
+      <BaseAlbumListenersCount
+        v-if="isWithListenersCount"
+        class="description"
+        :album-title="albumTitle"
+        :artist-name="artistNameComputed"
+        :listeners-count="listenersCount"
+        @load-end="handleListenersCountLoadEnd"
+      />
+
+      <TracksSection
+        v-if="isWithLibrary"
+        :album-data="albumData"
+        :profile-id="profileId"
+      />
+
+      <BaseSelfIcons
+        v-if="isWithSelfIcons"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+      />
+    </div>
+  </BaseSimpleCardContainer>
 </template>
 
 <script>
-import BaseAlbumLinkContainer
-  from '*/components/containers/album/BaseAlbumLinkContainer.vue'
 import BaseSimpleCardContainer
   from '*/components/containers/cards/BaseSimpleCardContainer.vue'
+import BaseAlbumLinkContainer
+  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseAlbumArtistNamesSection
-  from '*/components/models/album/BaseAlbumArtistNamesSection.vue'
+import BaseAlbumArtistsSection
+  from '*/components/models/album/BaseAlbumArtistsSection.vue'
 import BaseAlbumListenersCount
   from '*/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
@@ -106,11 +107,12 @@ import {
 export default {
   name: 'AlbumItem',
   components: {
-    BaseAlbumLinkContainer,
     BaseSimpleCardContainer,
+    BaseAlbumLinkContainer,
     BaseOptionsDropdown,
+    BaseImage,
     BaseHeader,
-    BaseAlbumArtistNamesSection,
+    BaseAlbumArtistsSection,
     BaseAlbumListenersCount,
     TracksSection,
     BaseSelfIcons
@@ -149,17 +151,11 @@ export default {
   emits: [
     'linkClick'
   ],
-  data () {
-    return {
-      isArtistNameActive: false,
-      isTracksLinkActive: false
-    }
-  },
   computed: {
     modelData () {
       return this.albumData
     },
-    albumArtistName () {
+    artistNameComputed () {
       return (
         this.albumData.artist?.name ||
           this.artistName
@@ -170,12 +166,6 @@ export default {
     },
     imageData () {
       return this.albumData.image
-    },
-    isMainLinkActive () {
-      return !(
-        this.isArtistNameActive ||
-          this.isTracksLinkActive
-      )
     },
     releaseDate () {
       return this.albumData.release_date
@@ -215,16 +205,6 @@ export default {
       this.$emit(
         'linkClick'
       )
-    },
-    handleArtistNameActiveChange (
-      value
-    ) {
-      this.isArtistNameActive = value
-    },
-    handleTracksLinkActiveChange (
-      value
-    ) {
-      this.isTracksLinkActive = value
     },
     handleListenersCountLoadEnd (
       value

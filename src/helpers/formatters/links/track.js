@@ -1,7 +1,7 @@
 export function main (
   {
-    artistName,
     trackTitle,
+    artistName,
     sourceParams
   }
 ) {
@@ -16,7 +16,7 @@ export function main (
     )
 
   const {
-    sourceId,
+    source,
     trackId,
     artistId,
     track,
@@ -24,7 +24,7 @@ export function main (
   } = sourceParams
 
   const query = {
-    source_id: sourceId,
+    source,
     track_id: trackId,
     artist_id: artistId,
     track,

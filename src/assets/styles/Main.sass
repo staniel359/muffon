@@ -252,6 +252,11 @@ p
 
 .main-simple-card
   @extend .no-shadow, .text-align-center, .text-color-unset
+  .main-options-dropdown-container
+    @extend .absolute, .no-margin, .visibility-hidden
+    z-index: 10
+    top: 10px
+    right: 10px
   & > .content
     @extend .no-padding, .no-border
     & > .extra
@@ -262,14 +267,10 @@ p
       margin-top: 0.2em !important
     & > .main-self-icons
       margin-top: 0.25em
-  & > .main-options-dropdown-container
-    @extend .absolute, .no-margin, .visibility-hidden
-    top: 10px
-    right: 10px
-  &:hover
-    transform: none
-    & > .main-options-dropdown-container
-      @extend .visibility-visible
+  & > .card-link
+    &:hover
+      .main-options-dropdown-container
+        @extend .visibility-visible
 
 .main-simple-card-image-container
   @extend .main-image-container

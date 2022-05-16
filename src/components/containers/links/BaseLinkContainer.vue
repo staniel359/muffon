@@ -6,7 +6,7 @@
     @mouseleave="handleMouseLeave"
     @click.exact.stop="handleClick"
     @click.ctrl.exact.stop="handleCtrlClick"
-    @auxclick="handleMiddleClick"
+    @auxclick.exact.stop="handleMiddleClick"
   >
     <slot />
   </RouterLink>

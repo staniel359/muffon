@@ -28,7 +28,7 @@ export default {
       type: String,
       required: true
     },
-    sourceId: {
+    source: {
       type: String,
       required: true
     },
@@ -47,7 +47,7 @@ export default {
   computed: {
     searchArgs () {
       return {
-        sourceId: this.sourceId,
+        source: this.source,
         scope: this.scope,
         query: this.query
       }

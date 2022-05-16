@@ -67,7 +67,7 @@ export default {
       return this.videoData?.title
     },
     channelId () {
-      return this.videoData?.channel?.youtube_id
+      return this.videoData?.channel?.source?.id
     },
     channelTitle () {
       return this.videoData?.channel?.title

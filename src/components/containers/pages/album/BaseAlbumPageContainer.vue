@@ -19,9 +19,9 @@ import BasePageContainer
 import navigationMixin from '*/mixins/navigationMixin'
 import formatAlbumPageNavigation from '*/helpers/formatters/navigation/album'
 import formatAlbumPageTab from '*/helpers/formatters/tabs/album'
+import formatRequestAlbumData from '*/helpers/formatters/request/album/data'
 import getAlbum from '*/helpers/actions/api/album/get'
-import getBandcampAlbumId
-  from '*/helpers/actions/api/bandcampId/album/get'
+import getBandcampId from '*/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseAlbumPageContainer',
@@ -87,17 +87,23 @@ export default {
     }
   },
   watch: {
-    requestAlbumData: 'handleRequestAlbumDataChange',
-    albumData: 'handleNavigationDataChange'
+    requestAlbumData:
+      'handleRequestAlbumDataChange',
+    albumData:
+      'handleNavigationDataChange'
   },
   mounted () {
     this.resetRequestAlbumData()
   },
   methods: {
-    getBandcampAlbumId,
     getAlbum,
+    getBandcampId,
     handleRequestAlbumDataChange () {
       this.getData()
+    },
+    resetRequestAlbumData () {
+      this.requestAlbumData =
+        this.sourceParams
     },
     getData () {
       this.getAlbum(
@@ -107,31 +113,46 @@ export default {
     setRequestAlbumData (
       value
     ) {
-      if (this.isGetBandcampAlbumId(
-        value
-      )) {
-        this.getBandcampAlbumId(
+      const isBandcampSource = (
+        value.source.name ===
+          'bandcamp'
+      )
+
+      if (isBandcampSource) {
+        this.getBandcampAlbumData(
           value
         )
       } else {
-        this.requestAlbumData = value
+        this.setFormattedRequestAlbumData(
+          value
+        )
       }
     },
-    isGetBandcampAlbumId (
+    getBandcampAlbumData (
       value
     ) {
-      return (
-        value.sourceId === 'bandcamp' &&
-          !(
-            value.albumId &&
-              value.artistId
-          )
+      const bandcampIdArgs = {
+        model: value.source.model,
+        slug: value.source.slug,
+        artistSlug:
+          value.source.artist_slug
+      }
+
+      this.getBandcampId(
+        bandcampIdArgs
+      ).then(
+        this.setFormattedRequestAlbumData
       )
     },
-    resetRequestAlbumData () {
-      this.setRequestAlbumData(
-        this.sourceParams
-      )
+    setFormattedRequestAlbumData (
+      value
+    ) {
+      this.requestAlbumData =
+        formatRequestAlbumData(
+          {
+            albumData: value
+          }
+        )
     }
   }
 }

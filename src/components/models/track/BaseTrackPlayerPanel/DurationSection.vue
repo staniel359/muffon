@@ -1,6 +1,6 @@
 <template>
   <div
-    class="track-duration"
+    class="track-section"
     v-text="duration"
   />
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-duration
+.track-section
   @extend .d-flex, .align-items-center
   padding: 0 1em
 </style>

@@ -1,12 +1,16 @@
 export default function (
   {
-    sourceId,
     albumData,
     artistName
   }
 ) {
+  const source = (
+    albumData.source?.name ||
+      'lastfm'
+  )
+
   function formatAlbumData () {
-    switch (sourceId) {
+    switch (source) {
       case 'lastfm':
         return {
           artistName: (
@@ -17,63 +21,58 @@ export default function (
         }
       case 'vk':
         return {
-          albumId: albumData.vk_id,
+          albumId: albumData.source.id,
           paramsData: {
             owner_id:
-              albumData.vk_owner_id,
+              albumData.source.owner_id,
             access_key:
-              albumData.vk_access_key
+              albumData.source.access_key
           }
         }
       case 'odnoklassniki':
         return {
-          albumId:
-            albumData.odnoklassniki_id
+          albumId: albumData.source.id
         }
       case 'yandexmusic':
         return {
-          albumId:
-            albumData.yandex_music_id
+          albumId: albumData.source.id
         }
       case 'deezer':
         return {
-          albumId: albumData.deezer_id
+          albumId: albumData.source.id
         }
       case 'bandcamp':
         return {
-          albumId: albumData.bandcamp_id,
-          artistId:
-            albumData.artists[0].bandcamp_id,
-          album: albumData.bandcamp_slug,
-          artist:
-            albumData.artists[0].bandcamp_slug,
-          model: albumData.bandcamp_model,
+          albumId: albumData.source.id,
+          artistId: albumData.source.artist_id,
+          album: albumData.source.slug,
+          artist: albumData.source.artist_slug,
+          model: albumData.source.model,
           paramsData: {
-            album_type:
-              albumData.bandcamp_model
+            album_type: albumData.source.model
           }
         }
       case 'soundcloud':
         return {
-          albumId: albumData.soundcloud_id
+          albumId: albumData.source.id
         }
       case 'discogs':
         return {
-          albumId: albumData.discogs_id,
-          albumType: albumData.discogs_type
+          albumId: albumData.source.id,
+          albumType: albumData.source.model
         }
       case 'spotify':
         return {
-          albumId: albumData.spotify_id
+          albumId: albumData.source.id
         }
       case 'genius':
         return {
-          albumId: albumData.genius_id
+          albumId: albumData.source.id
         }
       case 'rateyourmusic':
         return {
           albumId: encodeURIComponent(
-            albumData.rateyourmusic_slug
+            albumData.source.slug
           )
         }
       default:
@@ -82,7 +81,7 @@ export default function (
   }
 
   return {
-    sourceId,
+    source,
     ...formatAlbumData()
   }
 }

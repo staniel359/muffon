@@ -70,7 +70,7 @@ export default {
   computed: {
     sourceParams () {
       return {
-        sourceId: this.sourceId,
+        source: this.source,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
         albumId: this.albumId,
@@ -82,8 +82,8 @@ export default {
         paramsData: this.paramsData
       }
     },
-    sourceId () {
-      return this.$route.query.source_id
+    source () {
+      return this.$route.query.source
     },
     albumId () {
       return this.$route.query.album_id

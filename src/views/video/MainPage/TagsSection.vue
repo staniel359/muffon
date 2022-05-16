@@ -40,7 +40,7 @@ export default {
       return this.videoData.with_more?.tags
     },
     videoId () {
-      return this.videoData.youtube_id
+      return this.videoData.source.id
     }
   },
   methods: {

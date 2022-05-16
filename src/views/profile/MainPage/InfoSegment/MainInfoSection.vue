@@ -1,7 +1,7 @@
 <template>
   <div class="main-profile-page-info">
     <BaseImage
-      class="main-profile-page-image circular bordered"
+      class="circular bordered main-profile-page-image"
       model="profile"
       :image="imageData?.medium"
     />

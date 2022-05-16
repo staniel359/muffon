@@ -1,13 +1,13 @@
 export default function (
   {
-    sourceId,
+    source,
     artistName,
     artistId,
     scope
   }
 ) {
   function formatArtistId () {
-    if (sourceId === 'lastfm') {
+    if (source === 'lastfm') {
       return encodeURIComponent(
         artistName
       )
@@ -16,5 +16,5 @@ export default function (
     }
   }
 
-  return `/${sourceId}/artists/${formatArtistId()}/${scope}`
+  return `/${source}/artists/${formatArtistId()}/${scope}`
 }

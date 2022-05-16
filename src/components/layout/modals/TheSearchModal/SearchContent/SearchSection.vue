@@ -31,17 +31,18 @@
             :is="component"
             :[listScope]="slotProps[searchScope]"
             :is-with-listeners-count="isWithListenersCount"
+            :is-with-source="isTracks"
             :is-with-playlist-option="isTracks"
             is-with-image
             is-with-artist-name
             is-with-album-title
             is-with-duration
-            is-with-source
             is-with-library-option
             is-with-listened-option
             is-with-bookmark-option
             is-with-channel-title
             is-with-favorite-option
+            is-with-share-option
             @link-click="handleLinkClick"
           />
         </template>
@@ -87,7 +88,7 @@ export default {
       type: String,
       required: true
     },
-    sourceId: {
+    source: {
       type: String,
       required: true
     },
@@ -107,7 +108,7 @@ export default {
     searchArgs () {
       return {
         query: this.query,
-        sourceId: this.sourceId,
+        source: this.source,
         scope: this.searchScope,
         limit: this.limit,
         isWithSelfData: true
@@ -144,7 +145,7 @@ export default {
       }
     },
     artistsResponsePageLimit () {
-      switch (this.sourceId) {
+      switch (this.source) {
         case 'bandcamp':
           return 10
         case 'yandexmusic':
@@ -163,7 +164,7 @@ export default {
       }
     },
     albumsResponsePageLimit () {
-      switch (this.sourceId) {
+      switch (this.source) {
         case 'bandcamp':
           return 10
         case 'yandexmusic':
@@ -190,7 +191,7 @@ export default {
       }
     },
     tracksResponsePageLimit () {
-      switch (this.sourceId) {
+      switch (this.source) {
         case 'bandcamp':
           return 10
         case 'yandexmusic':

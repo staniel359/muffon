@@ -12,7 +12,7 @@ import getSearch from '*/helpers/actions/api/search/get'
 export default {
   name: 'BaseArtistSourceItemContainer',
   props: {
-    sourceId: {
+    source: {
       type: String,
       required: true
     },
@@ -32,7 +32,7 @@ export default {
   computed: {
     searchArgs () {
       return {
-        sourceId: this.sourceId,
+        source: this.source,
         query: this.query,
         scope: this.scope
       }

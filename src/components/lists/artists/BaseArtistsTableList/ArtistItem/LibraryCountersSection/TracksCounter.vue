@@ -2,7 +2,6 @@
   <BaseLinkContainer
     class="main-link"
     :link="link"
-    @active-change="handleLinkActiveChange"
   >
     <small>
       <BaseIcon
@@ -43,9 +42,6 @@ export default {
       required: true
     }
   },
-  emits: [
-    'linkActiveChange'
-  ],
   computed: {
     link () {
       return formatProfileLibraryArtistTracksLink(
@@ -65,16 +61,6 @@ export default {
     },
     tracksCount () {
       return this.artistData.tracks_count
-    }
-  },
-  methods: {
-    handleLinkActiveChange (
-      value
-    ) {
-      this.$emit(
-        'linkActiveChange',
-        value
-      )
     }
   }
 }

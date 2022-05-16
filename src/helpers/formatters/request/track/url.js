@@ -1,6 +1,6 @@
 export default function (
   {
-    sourceId,
+    source,
     artistName,
     trackTitle,
     artistId,
@@ -17,23 +17,17 @@ export default function (
       trackTitle
     )
 
-  switch (sourceId) {
+  switch (source) {
     case 'lastfm':
       return (
-        `/${sourceId}` +
-        `/artists/${artistNameEncoded}` +
-        `/tracks/${trackTitleEncoded}` +
-        `/${scope}`
+        `/${source}/artists/${artistNameEncoded}` +
+        `/tracks/${trackTitleEncoded}/${scope}`
       )
     case 'bandcamp':
-      return (
-        `/${sourceId}` +
-        `/artists/${artistId}` +
-        `/tracks/${trackId}`
-      )
+      return `/${source}/artists/${artistId}/tracks/${trackId}`
     case 'genius':
-      return `/${sourceId}/tracks/${trackId}/${scope}`
+      return `/${source}/tracks/${trackId}/${scope}`
     default:
-      return `/${sourceId}/tracks/${trackId}`
+      return `/${source}/tracks/${trackId}`
   }
 }

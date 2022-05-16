@@ -1,5 +1,5 @@
 <template>
-  <div class="album-header">
+  <div class="header-block">
     <BaseHeaderContainer
       tag="h2"
     >
@@ -10,7 +10,7 @@
         class="sub header main-extra-title"
       >
         <strong
-          v-html="albumExtraTitle"
+          v-text="albumExtraTitle"
         />
       </span>
     </BaseHeaderContainer>
@@ -32,24 +32,34 @@ import BaseHeaderContainer
 import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
 
 export default {
-  name: 'AlbumHeader',
+  name: 'HeaderBlock',
   components: {
     BaseHeaderContainer,
     BaseArtistLinks
   },
   props: {
-    albumTitle: {
-      type: String,
+    albumData: {
+      type: Object,
       required: true
+    }
+  },
+  computed: {
+    albumTitle () {
+      return this.albumData.title
     },
-    artists: Array,
-    albumExtraTitle: String
+    albumExtraTitle () {
+      return this.albumData.extra_title
+    },
+    artists () {
+      return this.albumData.artists
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.album-header
+.header-block
+  @extend .flex-full
   margin-bottom: 0.75em
 
 .album-artist-name

@@ -47,9 +47,6 @@ export default {
     sourceName () {
       return this.sourceData.name
     },
-    sourceId () {
-      return this.sourceData.id
-    },
     types () {
       return this.sourceData.albumsTypes
     }
@@ -58,7 +55,6 @@ export default {
     handleClick () {
       this.setSelectedSourceData(
         {
-          id: this.sourceId,
           types: this.types,
           artists: this.artists
         }

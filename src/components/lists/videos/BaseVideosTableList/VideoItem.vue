@@ -1,10 +1,8 @@
 <template>
-  <BaseLinkContainer
-    :link="videoMainLink"
-    @click="handleLinkClick"
-  >
-    <BaseSimpleCardContainer
-      :is-with-image="false"
+  <BaseSimpleCardContainer>
+    <BaseLinkContainer
+      :link="videoMainLink"
+      @click="handleLinkClick"
     >
       <div class="main-simple-card-image-container">
         <BaseImage
@@ -14,21 +12,21 @@
         />
       </div>
 
-      <div class="content">
-        <BaseHeader
-          class="link"
-          tag="h4"
-          :text="videoTitle"
-        />
+      <BaseHeader
+        class="link"
+        tag="h4"
+        :text="videoTitle"
+      />
+    </BaseLinkContainer>
 
-        <div class="description main-small-container">
-          <small
-            v-text="publishDate"
-          />
-        </div>
+    <div class="content">
+      <div class="description main-small-container">
+        <small
+          v-text="publishDate"
+        />
       </div>
-    </BaseSimpleCardContainer>
-  </BaseLinkContainer>
+    </div>
+  </BaseSimpleCardContainer>
 </template>
 
 <script>
@@ -71,7 +69,7 @@ export default {
       )
     },
     videoId () {
-      return this.videoData.youtube_id
+      return this.videoData.source.id
     },
     videoTitle () {
       return this.videoData.title

@@ -7,7 +7,7 @@
     >
       <BaseTrackSearchContainer
         v-if="isOpen"
-        source-id="youtube"
+        source="youtube"
         :scope="scope"
         :query="query"
       >

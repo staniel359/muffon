@@ -2,11 +2,15 @@
   <BaseHeaderContainer
     tag="h4"
   >
-    <BaseLink
-      :link="link"
-      :text="trackTitle"
+    <BaseTrackLinkContainer
+      class="main-link"
+      :track-data="trackData"
+      :is-link-to-library="isLinkToLibrary"
+      :profile-id="profileId"
       @click="handleLinkClick"
-    />
+    >
+      {{ trackTitle }}
+    </BaseTrackLinkContainer>
 
     <span
       v-if="trackExtraTitle"
@@ -22,27 +26,20 @@
 <script>
 import BaseHeaderContainer
   from '*/components/containers/BaseHeaderContainer.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
-import {
-  main as formatTrackMainLink
-} from '*/helpers/formatters/links/track'
-import {
-  main as formatProfileLibraryTrackMainLink
-} from '*/helpers/formatters/links/profile/library/track'
-import formatTrackRequestData from '*/helpers/formatters/request/track/data'
+import BaseTrackLinkContainer
+  from '*/components/containers/links/track/BaseTrackLinkContainer.vue'
 
 export default {
   name: 'TitleSection',
   components: {
     BaseHeaderContainer,
-    BaseLink
+    BaseTrackLinkContainer
   },
   props: {
     trackData: {
       type: Object,
       required: true
     },
-    artistName: String,
     isLinkToLibrary: Boolean,
     profileId: String
   },
@@ -55,41 +52,6 @@ export default {
     },
     trackExtraTitle () {
       return this.trackData.extra_title
-    },
-    link () {
-      if (this.isLinkToLibrary) {
-        return this.profileLibraryTrackMainLink
-      } else {
-        return this.trackMainLink
-      }
-    },
-    profileLibraryTrackMainLink () {
-      return formatProfileLibraryTrackMainLink(
-        {
-          profileId: this.profileId,
-          libraryTrackId: this.libraryTrackId
-        }
-      )
-    },
-    libraryTrackId () {
-      return this.trackData.library.id
-    },
-    trackMainLink () {
-      return formatTrackMainLink(
-        {
-          trackTitle: this.trackTitle,
-          artistName: this.artistName,
-          sourceParams: this.sourceParams
-        }
-      )
-    },
-    sourceParams () {
-      return formatTrackRequestData(
-        {
-          sourceId: this.trackData.source_id,
-          trackData: this.trackData
-        }
-      )
     }
   },
   methods: {

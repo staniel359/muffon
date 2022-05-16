@@ -1,37 +1,37 @@
 <template>
-  <div class="description main-small-container">
-    <small>
-      <BaseLink
-        :link="link"
-        :text="albumTitle"
-        @click="handleLinkClick"
-      />
-    </small>
-  </div>
+  <BaseLinkContainer
+    :link="link"
+    @click="handleLinkClick"
+  >
+    <slot />
+  </BaseLinkContainer>
 </template>
 
 <script>
-import BaseLink from '*/components/links/BaseLink.vue'
-import {
-  main as formatAlbumMainLink
-} from '*/helpers/formatters/links/album'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
 import {
   main as formatProfileLibraryAlbumMainLink
 } from '*/helpers/formatters/links/profile/library/album'
-import formatAlbumRequestData from '*/helpers/formatters/request/album/data'
+import {
+  main as formatAlbumMainLink
+} from '*/helpers/formatters/links/album'
+import formatRequestAlbumData from '*/helpers/formatters/request/album/data'
 
 export default {
-  name: 'AlbumTitleSection',
+  name: 'BaseAlbumLinkContainer',
   components: {
-    BaseLink
+    BaseLinkContainer
   },
   props: {
-    trackData: {
+    albumData: {
       type: Object,
       required: true
     },
+    artistName: String,
     isLinkToLibrary: Boolean,
-    profileId: String
+    profileId: String,
+    libraryAlbumId: String
   },
   emits: [
     'linkClick'
@@ -48,18 +48,22 @@ export default {
       return formatProfileLibraryAlbumMainLink(
         {
           profileId: this.profileId,
-          libraryAlbumId: this.libraryAlbumId
+          libraryAlbumId:
+            this.libraryAlbumIdComputed
         }
       )
     },
-    libraryAlbumId () {
-      return this.trackData.library.album.id
+    libraryAlbumIdComputed () {
+      return (
+        this.albumData.library?.id ||
+          this.libraryAlbumId
+      )
     },
     albumMainLink () {
       return formatAlbumMainLink(
         {
           albumTitle: this.albumTitle,
-          artistName: this.artistName,
+          artistName: this.artistNameComputed,
           sourceParams: this.sourceParams
         }
       )
@@ -67,18 +71,17 @@ export default {
     albumTitle () {
       return this.albumData.title
     },
-    albumData () {
-      return this.trackData.album
-    },
-    artistName () {
-      return this.trackData.artist.name
+    artistNameComputed () {
+      return (
+        this.albumData.artist?.name ||
+          this.artistName
+      )
     },
     sourceParams () {
-      return formatAlbumRequestData(
+      return formatRequestAlbumData(
         {
-          sourceId: this.albumData.source_id,
           albumData: this.albumData,
-          artistName: this.artistName
+          artistName: this.artistNameComputed
         }
       )
     }

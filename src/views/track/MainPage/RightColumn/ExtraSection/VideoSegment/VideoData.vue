@@ -44,7 +44,7 @@ export default {
   ],
   computed: {
     videoId () {
-      return this.selectedVideoData.youtube_id
+      return this.selectedVideoData.source.id
     },
     videoMainLink () {
       return formatVideoMainLink(

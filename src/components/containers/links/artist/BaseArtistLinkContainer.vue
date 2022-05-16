@@ -1,6 +1,7 @@
 <template>
   <BaseLinkContainer
     :link="link"
+    @active-change="handleLinkActiveChange"
     @click="handleLinkClick"
   >
     <slot />
@@ -27,35 +28,36 @@ export default {
       type: Object,
       required: true
     },
-    profileId: String,
     isLinkToLibrary: Boolean,
-    isLinkActive: Boolean
+    profileId: String,
+    libraryArtistId: String
   },
   emits: [
+    'linkActiveChange',
     'linkClick'
   ],
   computed: {
     link () {
-      if (this.isLinkActive) {
-        if (this.isLinkToLibrary) {
-          return this.profileLibraryArtistMainLink
-        } else {
-          return this.artistMainLink
-        }
+      if (this.isLinkToLibrary) {
+        return this.profileLibraryArtistMainLink
       } else {
-        return {}
+        return this.artistMainLink
       }
     },
     profileLibraryArtistMainLink () {
       return formatProfileLibraryArtistMainLink(
         {
           profileId: this.profileId,
-          libraryArtistId: this.libraryArtistId
+          libraryArtistId:
+            this.libraryArtistIdComputed
         }
       )
     },
-    libraryArtistId () {
-      return this.artistData.library.id
+    libraryArtistIdComputed () {
+      return (
+        this.artistData.library?.id ||
+          this.libraryArtistId
+      )
     },
     artistMainLink () {
       return formatArtistMainLink(
@@ -69,6 +71,14 @@ export default {
     }
   },
   methods: {
+    handleLinkActiveChange (
+      value
+    ) {
+      this.$emit(
+        'linkActiveChange',
+        value
+      )
+    },
     handleLinkClick () {
       this.$emit(
         'linkClick'

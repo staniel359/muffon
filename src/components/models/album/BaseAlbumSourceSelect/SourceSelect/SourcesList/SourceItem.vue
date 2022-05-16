@@ -1,6 +1,6 @@
 <template>
   <BaseAlbumSourceItemContainer
-    :source-id="sourceId"
+    :source="source"
     :types="types"
     :query="query"
   >
@@ -36,7 +36,7 @@ export default {
     isWithMaxBitrate: Boolean
   },
   computed: {
-    sourceId () {
+    source () {
       return this.sourceData.id
     },
     types () {

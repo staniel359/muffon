@@ -23,8 +23,8 @@ export const keysActions = {
     'player/setScrobblePercent',
   'player.playing':
     'player/setPlaying',
-  'player.sourceId':
-    'player/setSourceId',
+  'player.source':
+    'player/setSource',
   'player.variants':
     'player/setVariants',
   'profile.info':
