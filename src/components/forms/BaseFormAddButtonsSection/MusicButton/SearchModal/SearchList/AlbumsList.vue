@@ -34,7 +34,7 @@ export default {
     BaseAlbumsSimpleList
   },
   inject: [
-    'deleteModel',
+    'deleteCollectionItem',
     'hideModal'
   ],
   props: {
@@ -75,10 +75,10 @@ export default {
         uuid
       }
     ) {
-      this.deleteModel(
+      this.deleteCollectionItem(
         {
-          uuid,
-          scope: 'albums'
+          collection: 'albums',
+          uuid
         }
       )
     },

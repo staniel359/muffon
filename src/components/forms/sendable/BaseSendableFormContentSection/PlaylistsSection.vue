@@ -18,7 +18,7 @@ export default {
     BasePlaylistsSimpleList
   },
   inject: [
-    'deleteModel'
+    'deleteCollectionItem'
   ],
   props: {
     playlists: Array
@@ -37,10 +37,10 @@ export default {
         uuid
       }
     ) {
-      this.deleteModel(
+      this.deleteCollectionItem(
         {
-          uuid,
-          scope: 'playlists'
+          collection: 'playlists',
+          uuid
         }
       )
     }

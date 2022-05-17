@@ -24,7 +24,7 @@ export default {
     BaseButton
   },
   inject: [
-    'deleteModel'
+    'deleteCollectionItem'
   ],
   props: {
     imageData: {
@@ -47,10 +47,10 @@ export default {
   },
   methods: {
     handleDeleteButtonClick () {
-      this.deleteModel(
+      this.deleteCollectionItem(
         {
-          uuid: this.uuid,
-          scope: 'images'
+          collection: 'images',
+          uuid: this.uuid
         }
       )
     }

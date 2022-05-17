@@ -17,7 +17,7 @@ export default {
     BaseVideosSimpleList
   },
   inject: [
-    'deleteModel'
+    'deleteCollectionItem'
   ],
   props: {
     videos: Array
@@ -36,10 +36,10 @@ export default {
         uuid
       }
     ) {
-      this.deleteModel(
+      this.deleteCollectionItem(
         {
-          uuid,
-          scope: 'videos'
+          collection: 'videos',
+          uuid
         }
       )
     }

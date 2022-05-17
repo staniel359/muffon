@@ -17,7 +17,7 @@ export default {
     BaseCommunitiesSimpleList
   },
   inject: [
-    'deleteModel'
+    'deleteCollectionItem'
   ],
   props: {
     communities: Array
@@ -36,10 +36,10 @@ export default {
         uuid
       }
     ) {
-      this.deleteModel(
+      this.deleteCollectionItem(
         {
-          uuid,
-          scope: 'communities'
+          collection: 'communities',
+          uuid
         }
       )
     }

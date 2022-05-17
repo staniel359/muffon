@@ -23,7 +23,7 @@ export default {
     BaseImageInput
   },
   inject: [
-    'addModel'
+    'addCollectionItem'
   ],
   methods: {
     handleClick () {
@@ -32,10 +32,10 @@ export default {
     handleImageChange (
       value
     ) {
-      this.addModel(
+      this.addCollectionItem(
         {
-          model: value,
-          scope: 'images'
+          collection: 'images',
+          item: value
         }
       )
     },

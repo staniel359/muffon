@@ -25,7 +25,7 @@ export default {
     BaseClearButton
   },
   inject: [
-    'addModel',
+    'addCollectionItem',
     'resetCollection'
   ],
   props: {
@@ -70,10 +70,10 @@ export default {
         )
 
       if (!isPresent) {
-        this.addModel(
+        this.addCollectionItem(
           {
-            model: artist,
-            scope: 'artists'
+            collection: 'artists',
+            item: artist
           }
         )
       }

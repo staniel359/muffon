@@ -1,13 +1,11 @@
-import {
-  generateKey
-} from '*/helpers/utils'
+import collectionMixin from './collectionMixin'
 
 export default {
+  mixins: [
+    collectionMixin
+  ],
   provide () {
     return {
-      addModel: this.addModel,
-      deleteModel: this.deleteModel,
-      resetCollection: this.resetCollection,
       addEmoji: this.addEmoji
     }
   },
@@ -20,45 +18,6 @@ export default {
     }
   },
   methods: {
-    addModel (
-      {
-        model,
-        scope
-      }
-    ) {
-      const modelFormatted = {
-        uuid: generateKey(),
-        ...model
-      }
-
-      this[scope] = [
-        ...this[scope],
-        modelFormatted
-      ]
-    },
-    deleteModel (
-      {
-        uuid,
-        scope
-      }
-    ) {
-      function isMatchedModel (
-        modelData
-      ) {
-        return modelData.uuid !== uuid
-      }
-
-      this[scope] = [
-        ...this[scope].filter(
-          isMatchedModel
-        )
-      ]
-    },
-    resetCollection (
-      scope
-    ) {
-      this[scope] = []
-    },
     addEmoji (
       value
     ) {

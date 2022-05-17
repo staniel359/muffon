@@ -20,7 +20,7 @@ export default {
     BaseTracksSimpleList
   },
   inject: [
-    'deleteModel'
+    'deleteCollectionItem'
   ],
   props: {
     tracks: Array
@@ -39,10 +39,10 @@ export default {
         uuid
       }
     ) {
-      this.deleteModel(
+      this.deleteCollectionItem(
         {
-          uuid,
-          scope: 'tracks'
+          collection: 'tracks',
+          uuid
         }
       )
     }

@@ -25,7 +25,7 @@ export default {
     BaseClearButton
   },
   inject: [
-    'addModel',
+    'addCollectionItem',
     'resetCollection'
   ],
   props: {
@@ -81,10 +81,10 @@ export default {
         )
 
       if (!isPresent) {
-        this.addModel(
+        this.addCollectionItem(
           {
-            model: album,
-            scope: 'albums'
+            collection: 'albums',
+            item: album
           }
         )
       }
