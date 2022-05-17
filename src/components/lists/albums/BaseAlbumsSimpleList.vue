@@ -15,12 +15,12 @@
       :is-with-listened-option="isWithListenedOption"
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
-      :is-clearable="isClearable"
+      :is-with-clear-button="isWithClearButton"
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
       :profile-id="profileId"
       @link-click="handleLinkClick"
-      @delete-option-click="handleDeleteOptionClick"
+      @clear-button-click="handleClearButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -63,14 +63,14 @@ export default {
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean,
+    isWithClearButton: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
     profileId: String
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   computed: {
     albumsCollection () {
@@ -92,13 +92,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteOptionClick',
+        'clearButtonClick',
         {
           uuid
         }

@@ -12,10 +12,9 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        is-with-delete-option
-        is-clearable
+        is-with-clear-button
         @link-click="handleLinkClick"
-        @delete-option-click="handleDeleteOptionClick"
+        @clear-button-click="handleClearButtonClick"
       />
     </template>
   </BasePaginatedListContainer>
@@ -72,7 +71,7 @@ export default {
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }

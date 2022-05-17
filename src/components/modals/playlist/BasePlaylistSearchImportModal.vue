@@ -19,8 +19,7 @@
 
         <BaseClearButton
           v-if="!isReset"
-          class="reset-button"
-          @click="handleResetButtonClick"
+          @click="handleClearButtonClick"
         />
       </div>
 
@@ -120,7 +119,7 @@ export default {
         ...value
       ]
     },
-    handleResetButtonClick () {
+    handleClearButtonClick () {
       this.reset()
 
       this.clearInput()
@@ -169,7 +168,4 @@ export default {
 <style lang="sass" scoped>
 .top-section-container
   @extend .d-flex, .align-items-center
-
-.reset-button
-  margin-left: 1em !important
 </style>

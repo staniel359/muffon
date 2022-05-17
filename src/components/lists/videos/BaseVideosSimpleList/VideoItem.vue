@@ -38,8 +38,11 @@
     <BaseOptionsDropdown
       :share-data="shareData"
       :is-with-share-option="isWithShareOption"
-      :is-with-delete-option="isWithDeleteOption"
-      @delete-option-click="handleDeleteOptionClick"
+    />
+
+    <BaseClearButton
+      v-if="isWithClearButton"
+      @click="handleClearButtonClick"
     />
   </BaseLinkContainer>
 </template>
@@ -52,6 +55,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoMainLink
 } from '*/helpers/formatters/links/video'
@@ -69,7 +73,8 @@ export default {
     BaseImage,
     BaseHeader,
     BaseLink,
-    BaseOptionsDropdown
+    BaseOptionsDropdown,
+    BaseClearButton
   },
   props: {
     videoData: {
@@ -78,12 +83,11 @@ export default {
     },
     isWithChannelTitle: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean,
-    isClearable: Boolean
+    isWithClearButton: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   data () {
     return {
@@ -142,15 +146,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick () {
-      if (this.isClearable) {
-        this.$emit(
-          'deleteOptionClick',
-          {
-            uuid: this.uuid
-          }
-        )
-      }
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick',
+        {
+          uuid: this.uuid
+        }
+      )
     },
     handleChannelLinkMouseEnter () {
       this.isMainLinkActive = false

@@ -7,7 +7,6 @@
 
     <BaseClearButton
       v-if="tags.length"
-      class="search-clear-button"
       @click="handleClearButtonClick"
     />
   </div>
@@ -54,7 +53,4 @@ export default {
 <style lang="sass" scoped>
 .search-section
   @extend .d-flex, .align-items-center
-
-.search-clear-button
-  margin-left: 1em
 </style>

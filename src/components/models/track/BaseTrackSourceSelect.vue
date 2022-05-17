@@ -15,7 +15,7 @@
 
     <BaseClearButton
       v-if="selectedSourceData"
-      @click="handleReset"
+      @click="handleClearButtonClick"
     />
   </div>
 </template>
@@ -96,7 +96,7 @@ export default {
         value
       )
     },
-    handleReset () {
+    handleClearButtonClick () {
       this.resetSelect()
 
       this.selectedSourceData = null

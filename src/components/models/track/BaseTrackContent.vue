@@ -109,6 +109,11 @@
       @link-click="handleLinkClick"
     />
 
+    <BaseClearButton
+      v-if="isWithClearButton"
+      @click="handleClearButtonClick"
+    />
+
     <BasePlaylistsModal
       ref="playlistsModal"
       :track-title="trackTitle"
@@ -168,6 +173,7 @@ import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import BaseBookmarkDeleteModal
@@ -199,6 +205,7 @@ export default {
     BaseSelfIcons,
     CreatedBlock,
     BaseOptionsDropdown,
+    BaseClearButton,
     BasePlaylistsModal,
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal,
@@ -239,7 +246,7 @@ export default {
     isWithPlaylistOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean,
+    isWithClearButton: Boolean,
     isWithCreated: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
@@ -250,7 +257,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteOptionClick',
+    'clearButtonClick',
     'deleted'
   ],
   computed: {
@@ -351,16 +358,15 @@ export default {
       )
     },
     handleDeleteOptionClick () {
-      if (this.isClearable) {
-        this.$emit(
-          'deleteOptionClick',
-          {
-            uuid: this.uuid
-          }
-        )
-      } else {
-        this.showDeleteModal()
-      }
+      this.showDeleteModal()
+    },
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick',
+        {
+          uuid: this.uuid
+        }
+      )
     },
     handlePlaylistOptionClick () {
       this.showPlaylistsModal()

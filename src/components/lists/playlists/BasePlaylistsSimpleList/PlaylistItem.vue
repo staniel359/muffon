@@ -52,6 +52,11 @@
         :is-with-delete-option="isWithDeleteOption && isSelf"
         @delete-option-click="handleDeleteOptionClick"
       />
+
+      <BaseClearButton
+        v-if="isWithClearButton"
+        @click="handleClearButtonClick"
+      />
     </template>
   </BaseLinkContainer>
 
@@ -71,6 +76,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BasePlaylistDeleteModal
   from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
@@ -96,6 +102,7 @@ export default {
     BaseHeader,
     BaseLink,
     BaseOptionsDropdown,
+    BaseClearButton,
     BasePlaylistDeleteModal
   },
   inject: {
@@ -111,11 +118,11 @@ export default {
     isWithProfileNickname: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean
+    isWithClearButton: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   data () {
     return {
@@ -214,16 +221,15 @@ export default {
       )
     },
     handleDeleteOptionClick () {
-      if (this.isClearable) {
-        this.$emit(
-          'deleteOptionClick',
-          {
-            uuid: this.uuid
-          }
-        )
-      } else {
-        this.showDeleteModal()
-      }
+      this.showDeleteModal()
+    },
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick',
+        {
+          uuid: this.uuid
+        }
+      )
     },
     handleDeleted () {
       this.paginationItem

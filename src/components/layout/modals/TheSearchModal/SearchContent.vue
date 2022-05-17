@@ -6,9 +6,9 @@
       <SearchInput
         ref="input"
         :query="query"
-        :is-clearable="isClearable"
+        :is-with-clear-button="isWithClearButton"
         @submit="handleSubmit"
-        @clear="handleClear"
+        @clear-button-click="handleClearButtonClick"
       />
 
       <ScopeSelect
@@ -60,7 +60,7 @@ export default {
     }
   },
   computed: {
-    isClearable () {
+    isWithClearButton () {
       return !!this.query.length
     }
   },
@@ -83,7 +83,7 @@ export default {
       this.query = value
       this.key = generateKey()
     },
-    handleClear () {
+    handleClearButtonClick () {
       this.query = ''
     },
     focusInput () {

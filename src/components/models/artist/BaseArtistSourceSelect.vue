@@ -7,7 +7,6 @@
     <BaseArtistAlbumsSourceSelect
       v-if="isOpen"
       :artist-name="artistName"
-      @change="handleChange"
     />
   </BaseAccordionContainer>
 </template>
@@ -27,9 +26,6 @@ export default {
   props: {
     artistName: String
   },
-  emits: [
-    'change'
-  ],
   data () {
     return {
       isOpen: false
@@ -48,11 +44,6 @@ export default {
     },
     handleClose () {
       this.isOpen = false
-    },
-    handleChange () {
-      this.$emit(
-        'change'
-      )
     }
   }
 }

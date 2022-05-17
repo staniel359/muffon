@@ -6,10 +6,9 @@
       :community-data="communityData"
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
-      :is-with-delete-option="isWithDeleteOption"
-      :is-clearable="isClearable"
+      :is-with-clear-button="isWithClearButton"
       @link-click="handleLinkClick"
-      @delete-option-click="handleDeleteOptionClick"
+      @clear-button-click="handleClearButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -37,12 +36,11 @@ export default {
     },
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean,
-    isClearable: Boolean
+    isWithClearButton: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   computed: {
     communitiesCollection () {
@@ -57,13 +55,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteOptionClick',
+        'clearButtonClick',
         {
           uuid
         }

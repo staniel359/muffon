@@ -29,7 +29,7 @@ export default {
     reset () {
       this.$refs
         .pagination
-        .reset()
+        ?.reset()
     }
   }
 }

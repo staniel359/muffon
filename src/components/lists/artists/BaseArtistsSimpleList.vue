@@ -16,12 +16,12 @@
       :is-with-listened-option="isWithListenedOption"
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
-      :is-clearable="isClearable"
+      :is-with-clear-button="isWithClearButton"
       :is-image-small="isImageSmall"
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
       @link-click="handleLinkClick"
-      @delete-option-click="handleDeleteOptionClick"
+      @clear-button-click="handleClearButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -64,14 +64,14 @@ export default {
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean,
+    isWithClearButton: Boolean,
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   computed: {
     artistsCollection () {
@@ -86,13 +86,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteOptionClick',
+        'clearButtonClick',
         {
           uuid
         }

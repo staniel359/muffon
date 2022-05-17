@@ -1,6 +1,6 @@
 <template>
   <BaseClearButton
-    @click="handleClick"
+    @click="handleClearButtonClick"
   />
 </template>
 
@@ -16,7 +16,7 @@ export default {
     BaseClearButton
   },
   methods: {
-    handleClick () {
+    handleClearButtonClick () {
       updateGlobalStore(
         {
           'player.playing': null

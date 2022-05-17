@@ -25,7 +25,7 @@
 
     <BaseClearButton
       v-if="!isReset"
-      @click="handleResetButtonClick"
+      @click="handleClearButtonClick"
     />
   </div>
 </template>
@@ -81,7 +81,7 @@ export default {
         files
       )
     },
-    handleResetButtonClick () {
+    handleClearButtonClick () {
       this.isReset = true
 
       this.setStatus(

@@ -22,7 +22,7 @@
 
     <BaseClearButton
       v-if="selectedSourceData"
-      @click="handleReset"
+      @click="handleClearButtonClick"
     />
   </div>
 </template>
@@ -64,9 +64,6 @@ export default {
       required: true
     }
   },
-  emits: [
-    'change'
-  ],
   data () {
     return {
       artistSelectKey: null,
@@ -82,9 +79,12 @@ export default {
     }
   },
   watch: {
-    selectedSourceData: 'handleSelectedSourceDataChange',
-    selectedArtistData: 'handleSelectedArtistDataChange',
-    selectedTypeId: 'handleSelectedTypeIdChange'
+    selectedSourceData:
+      'handleSelectedSourceDataChange',
+    selectedArtistData:
+      'handleSelectedArtistDataChange',
+    selectedTypeId:
+      'handleSelectedTypeIdChange'
   },
   methods: {
     handleSelectedSourceDataChange () {
@@ -101,10 +101,6 @@ export default {
         this.setRequestArtistData(
           value
         )
-
-        this.$emit(
-          'change'
-        )
       }
     },
     handleSelectedTypeIdChange (
@@ -117,16 +113,12 @@ export default {
         }
       }
     },
-    handleReset () {
+    handleClearButtonClick () {
       this.resetSelect()
 
       this.selectedSourceData = null
 
       this.resetRequestArtistData()
-
-      this.$emit(
-        'change'
-      )
     },
     setSelectedSourceData (
       value

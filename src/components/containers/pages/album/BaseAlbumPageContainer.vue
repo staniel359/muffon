@@ -33,8 +33,10 @@ export default {
   ],
   provide () {
     return {
-      setRequestAlbumData: this.setRequestAlbumData,
-      resetRequestAlbumData: this.resetRequestAlbumData
+      setRequestAlbumData:
+        this.setRequestAlbumData,
+      resetRequestAlbumData:
+        this.resetRequestAlbumData
     }
   },
   props: {

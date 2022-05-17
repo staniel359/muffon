@@ -44,7 +44,7 @@ export default {
         results: 'albums',
         title: 'title',
         description: 'artistName',
-        image: null
+        image: 'imageExtrasmall'
       }
     }
   },
@@ -109,7 +109,9 @@ export default {
       return {
         ...albumData,
         artistName:
-          albumData.artist.name
+          albumData.artist.name,
+        imageExtrasmall:
+          albumData.image?.extrasmall
       }
     },
     focus () {

@@ -10,8 +10,7 @@
 
   <BaseClearButton
     v-if="tracks.length"
-    class="reset-button"
-    @click="handleResetButtonClick"
+    @click="handleClearButtonClick"
   />
 </template>
 
@@ -92,7 +91,7 @@ export default {
 
       this.clear()
     },
-    handleResetButtonClick () {
+    handleClearButtonClick () {
       this.resetCollection(
         'tracks'
       )

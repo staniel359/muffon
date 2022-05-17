@@ -100,7 +100,7 @@ export default {
 <style lang="sass" scoped>
 .audio-panel
   @extend .flex-full, .d-flex, .flex-column, .align-items-center, .justify-content-center
-  padding: 0 0.5em
+  margin-left: 1em
 
 .audio-top-section
   @extend .d-flex, .align-items-center, .w-100

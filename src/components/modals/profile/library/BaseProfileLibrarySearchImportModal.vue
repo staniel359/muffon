@@ -20,8 +20,7 @@
 
         <BaseClearButton
           v-if="isRenderClearButton"
-          class="reset-button"
-          @click="handleResetButtonClick"
+          @click="handleClearButtonClick"
         />
 
         <SearchScopeSelect
@@ -139,7 +138,7 @@ export default {
         ...value
       ]
     },
-    handleResetButtonClick () {
+    handleClearButtonClick () {
       this.reset()
 
       this.clearInput()
@@ -186,7 +185,4 @@ export default {
 <style lang="sass" scoped>
 .top-section-container
   @extend .d-flex, .align-items-center
-
-.reset-button
-  margin-left: 1em !important
 </style>

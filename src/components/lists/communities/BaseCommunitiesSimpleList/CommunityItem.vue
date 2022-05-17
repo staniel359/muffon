@@ -37,8 +37,11 @@
       :share-data="shareData"
       :is-with-join-option="isWithJoinOption"
       :is-with-share-option="isWithShareOption"
-      :is-with-delete-option="isWithDeleteOption"
-      @delete-option-click="handleDeleteOptionClick"
+    />
+
+    <BaseClearButton
+      v-if="isWithClearButton"
+      @click="handleClearButtonClick"
     />
   </BaseLinkContainer>
 </template>
@@ -52,6 +55,7 @@ import BaseCommunityJoinedMessage
   from '*/components/models/community/BaseCommunityJoinedMessage.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   main as formatCommunityMainLink
 } from '*/helpers/formatters/links/community'
@@ -69,7 +73,8 @@ export default {
     BaseImage,
     BaseHeader,
     BaseCommunityJoinedMessage,
-    BaseOptionsDropdown
+    BaseOptionsDropdown,
+    BaseClearButton
   },
   provide () {
     return {
@@ -89,12 +94,11 @@ export default {
     },
     isWithJoinOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean,
-    isClearable: Boolean
+    isWithClearButton: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   computed: {
     communityLink () {
@@ -155,15 +159,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick () {
-      if (this.isClearable) {
-        this.$emit(
-          'deleteOptionClick',
-          {
-            uuid: this.uuid
-          }
-        )
-      }
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick',
+        {
+          uuid: this.uuid
+        }
+      )
     },
     setIsMember (
       value

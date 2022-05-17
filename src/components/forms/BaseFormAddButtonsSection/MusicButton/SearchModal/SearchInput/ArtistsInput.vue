@@ -10,8 +10,7 @@
 
   <BaseClearButton
     v-if="artists.length"
-    class="reset-button"
-    @click="handleResetButtonClick"
+    @click="handleClearButtonClick"
   />
 </template>
 
@@ -81,7 +80,7 @@ export default {
 
       this.clear()
     },
-    handleResetButtonClick () {
+    handleClearButtonClick () {
       this.resetCollection(
         'artists'
       )

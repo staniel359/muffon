@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="scope-search-section">
-      <ScopeSelect
-        :selected="scope"
-      />
-
       <SearchSection
         :tags="tags"
+      />
+
+      <ScopeSelect
+        :selected="scope"
       />
     </div>
 
@@ -18,15 +18,15 @@
 </template>
 
 <script>
-import ScopeSelect from './FilterBlock/ScopeSelect.vue'
 import SearchSection from './FilterBlock/SearchSection.vue'
+import ScopeSelect from './FilterBlock/ScopeSelect.vue'
 import TagsSection from './FilterBlock/TagsSection.vue'
 
 export default {
   name: 'FilterBlock',
   components: {
-    ScopeSelect,
     SearchSection,
+    ScopeSelect,
     TagsSection
   },
   props: {

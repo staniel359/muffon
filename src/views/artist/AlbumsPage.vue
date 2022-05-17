@@ -9,7 +9,6 @@
     <template #top="topSlotProps">
       <BaseArtistSourceSelect
         :artist-name="topSlotProps.artistName"
-        @change="handleArtistChange"
       />
     </template>
 
@@ -53,16 +52,6 @@ export default {
       limit: 20,
       itemsInRow: 4,
       scope: 'albums'
-    }
-  },
-  methods: {
-    handleArtistChange () {
-      this.reset()
-    },
-    reset () {
-      this.$refs
-        .page
-        .reset()
     }
   }
 }

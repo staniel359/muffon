@@ -2,10 +2,9 @@
   <BaseArtistsSimpleList
     :artists="artists"
     is-with-image
-    is-with-delete-option
-    is-clearable
+    is-with-clear-button
     @link-click="handleLinkClick"
-    @delete-option-click="handleDeleteOptionClick"
+    @clear-button-click="handleClearButtonClick"
   />
 </template>
 
@@ -33,7 +32,7 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }

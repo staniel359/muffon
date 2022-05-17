@@ -9,8 +9,7 @@
     />
 
     <BaseClearButton
-      v-if="isClearable"
-      class="clear-button"
+      v-if="isWithClearButton"
       @click="handleClearButtonClick"
     />
   </div>
@@ -28,11 +27,11 @@ export default {
   },
   props: {
     query: String,
-    isClearable: Boolean
+    isWithClearButton: Boolean
   },
   emits: [
-    'submit',
-    'clear'
+    'clearButtonClick',
+    'submit'
   ],
   methods: {
     handleSubmit (
@@ -47,7 +46,7 @@ export default {
       this.clear()
 
       this.$emit(
-        'clear'
+        'clearButtonClick'
       )
     },
     focus () {
@@ -67,7 +66,4 @@ export default {
 <style lang="sass" scoped>
 .search-container
   @extend .d-flex, .align-items-center
-
-.clear-button
-  margin-left: 1em !important
 </style>

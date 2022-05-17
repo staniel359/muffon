@@ -24,7 +24,7 @@
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
-      :is-clearable="isClearable"
+      :is-with-clear-button="isWithClearButton"
       :is-with-created="isWithCreated"
       :is-with-self-icons="isWithSelfIcons"
       :is-bookmark="isBookmark"
@@ -33,7 +33,7 @@
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
       @link-click="handleLinkClick"
-      @delete-option-click="handleDeleteOptionClick"
+      @clear-button-click="handleClearButtonClick"
     />
   </BaseListContainer>
 </template>
@@ -87,7 +87,7 @@ export default {
     isWithPlaylistOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean,
+    isWithClearButton: Boolean,
     isWithCreated: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean,
@@ -97,7 +97,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   computed: {
     tracksCollection () {
@@ -112,13 +112,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteOptionClick',
+        'clearButtonClick',
         {
           uuid
         }

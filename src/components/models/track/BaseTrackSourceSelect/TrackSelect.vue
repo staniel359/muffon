@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="main-source-select"
+    class="main-source-select-item-select"
     :header="headerText"
   >
     <TracksList

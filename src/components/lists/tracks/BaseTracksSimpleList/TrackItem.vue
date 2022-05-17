@@ -32,7 +32,7 @@
         :is-with-playlist-option="isWithPlaylistOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
-        :is-clearable="isClearable"
+        :is-with-clear-button="isWithClearButton"
         :is-with-created="isWithCreated"
         :is-with-self-icons="isWithSelfIcons"
         :is-bookmark="isBookmark"
@@ -42,7 +42,7 @@
         :playlist-title="playlistTitle"
         :is-deleted="isDeleted"
         @link-click="handleLinkClick"
-        @delete-option-click="handleDeleteOptionClick"
+        @clear-button-click="handleClearButtonClick"
         @deleted="handleDeleted"
       />
     </template>
@@ -87,7 +87,7 @@ export default {
     isWithPlaylistOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean,
+    isWithClearButton: Boolean,
     isWithCreated: Boolean,
     isWithSelfIcons: Boolean,
     isBookmark: Boolean,
@@ -98,7 +98,7 @@ export default {
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   computed: {
     isDeleted () {
@@ -121,13 +121,13 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }
     ) {
       this.$emit(
-        'deleteOptionClick',
+        'clearButtonClick',
         {
           uuid
         }

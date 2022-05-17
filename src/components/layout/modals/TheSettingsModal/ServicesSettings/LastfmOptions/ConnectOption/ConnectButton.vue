@@ -17,9 +17,9 @@
       @click="handleClick"
     />
 
-    <div
+    <BaseMessage
       class="wait-message"
-      v-text="waitText"
+      :content="waitText"
     />
   </div>
 </template>
@@ -27,6 +27,7 @@
 <script>
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseMessage from '*/components/messages/BaseMessage.vue'
 import createLastfmSession
   from '*/helpers/actions/api/lastfm/connect/session/create'
 import {
@@ -37,7 +38,8 @@ export default {
   name: 'ConnectButton',
   components: {
     BaseErrorMessage,
-    BaseButton
+    BaseButton,
+    BaseMessage
   },
   props: {
     token: {
@@ -96,5 +98,5 @@ export default {
 
 <style lang="sass" scoped>
 .wait-message
-  margin-top: 0.5em
+  margin-top: 0.5em !important
 </style>

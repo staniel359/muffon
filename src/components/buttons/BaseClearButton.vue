@@ -1,7 +1,7 @@
 <template>
   <BaseLinkContainer>
     <BaseButton
-      class="basic red mini compact circular clear-button"
+      class="basic red mini compact circular main-clear-button"
       icon="close"
       @click.prevent="handleClick"
     />
@@ -32,7 +32,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.clear-button
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

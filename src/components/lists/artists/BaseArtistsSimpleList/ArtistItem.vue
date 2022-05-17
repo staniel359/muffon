@@ -78,6 +78,11 @@
         @link-click="handleLinkClick"
       />
 
+      <BaseClearButton
+        v-if="isWithClearButton"
+        @click="handleClearButtonClick"
+      />
+
       <BaseBookmarkDeleteModal
         v-if="isBookmark"
         ref="deleteModal"
@@ -108,6 +113,7 @@ import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
@@ -128,6 +134,7 @@ export default {
     LibraryCountersSection,
     BaseSelfIcons,
     BaseOptionsDropdown,
+    BaseClearButton,
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal
   },
@@ -163,14 +170,14 @@ export default {
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isClearable: Boolean,
+    isWithClearButton: Boolean,
     isImageSmall: Boolean,
     isBookmark: Boolean,
     isFavorite: Boolean
   },
   emits: [
     'linkClick',
-    'deleteOptionClick'
+    'clearButtonClick'
   ],
   data () {
     return {
@@ -247,16 +254,15 @@ export default {
       this.isCounterLinkActive = value
     },
     handleDeleteOptionClick () {
-      if (this.isClearable) {
-        this.$emit(
-          'deleteOptionClick',
-          {
-            uuid: this.uuid
-          }
-        )
-      } else {
-        this.showDeleteModal()
-      }
+      this.showDeleteModal()
+    },
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick',
+        {
+          uuid: this.uuid
+        }
+      )
     },
     handleDeleted () {
       this.item.isDeleted = true

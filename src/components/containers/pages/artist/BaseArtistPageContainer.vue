@@ -50,7 +50,8 @@ export default {
     limit: Number
   },
   emits: [
-    'init'
+    'init',
+    'requestArtistDataChange'
   ],
   data () {
     return {
@@ -100,6 +101,11 @@ export default {
         this.requestArtistData.source?.name ===
           'discogs'
       )
+    },
+    sourceParams () {
+      return {
+        artistName: this.artistName
+      }
     }
   },
   watch: {
@@ -123,12 +129,15 @@ export default {
       )
     },
     handleRequestArtistDataChange () {
+      this.$emit(
+        'requestArtistDataChange'
+      )
+
       this.getData()
     },
     resetRequestArtistData () {
-      this.requestArtistData = {
-        artistName: this.artistName
-      }
+      this.requestArtistData =
+        this.sourceParams
     },
     getData (
       {

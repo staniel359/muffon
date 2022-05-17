@@ -16,16 +16,14 @@
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
-        @search-submit="handleSearchSubmit"
-        @search-clear="handleSearchClear"
       >
         <template #top>
           <BaseProfileLibrarySearchInput
             v-if="isWithSearch"
-            :is-clearable="isSearchClearable"
             :query="query"
+            :is-with-clear-button="isWithClearButton"
+            @clear-button-click="handleClearButtonClick"
             @submit="handleSearchSubmit"
-            @clear="handleSearchClear"
           />
         </template>
 
@@ -75,7 +73,7 @@ export default {
     }
   },
   computed: {
-    isSearchClearable () {
+    isWithClearButton () {
       return !!this.query.length
     }
   },
@@ -88,7 +86,7 @@ export default {
     ) {
       this.query = value
     },
-    handleSearchClear () {
+    handleClearButtonClick () {
       this.query = ''
     },
     handleQueryChange () {

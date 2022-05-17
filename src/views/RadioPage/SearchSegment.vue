@@ -15,7 +15,6 @@
 
         <BaseClearButton
           v-if="modelName"
-          class="clear-button"
           @click="handleClearButtonClick"
         />
 
@@ -147,9 +146,6 @@ export default {
 
 .search-container
   margin-left: 1em
-
-.clear-button
-  margin-left: 1em !important
 
 .model-scope-select-container
   margin-left: 1em

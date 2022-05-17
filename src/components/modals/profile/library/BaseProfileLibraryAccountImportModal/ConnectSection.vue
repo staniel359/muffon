@@ -22,7 +22,7 @@
 
       <BaseClearButton
         v-if="userData"
-        @click="handleResetButtonClick"
+        @click="handleClearButtonClick"
       />
     </div>
 
@@ -83,6 +83,7 @@ export default {
     userData: 'handleUserDataChange'
   },
   methods: {
+    getLastfmUser,
     handleClick () {
       this.getLastfmUser()
     },
@@ -98,11 +99,10 @@ export default {
         'import'
       )
     },
-    handleResetButtonClick () {
+    handleClearButtonClick () {
       this.error = null
       this.userData = null
-    },
-    getLastfmUser
+    }
   }
 }
 </script>

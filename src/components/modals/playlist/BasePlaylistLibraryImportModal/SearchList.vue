@@ -15,10 +15,9 @@
         is-with-artist-name
         is-with-album-title
         is-with-image
-        is-with-delete-option
-        is-clearable
+        is-with-clear-button
         @link-click="handleLinkClick"
-        @delete-option-click="handleDeleteOptionClick"
+        @clear-button-click="handleClearButtonClick"
       />
     </template>
   </BasePaginatedListContainer>
@@ -75,7 +74,7 @@ export default {
     handleLinkClick () {
       this.hideModal()
     },
-    handleDeleteOptionClick (
+    handleClearButtonClick (
       {
         uuid
       }

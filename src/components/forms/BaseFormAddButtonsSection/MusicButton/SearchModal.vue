@@ -109,7 +109,4 @@ export default {
 
 ::v-deep(.search-input)
   @extend .flex-full
-
-::v-deep(.reset-button)
-  margin-left: 1em !important
 </style>

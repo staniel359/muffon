@@ -8,7 +8,6 @@
 
     <BaseClearButton
       v-if="artists.length"
-      class="reset-button"
       @click="handleClearButtonClick"
     />
   </div>
@@ -80,7 +79,4 @@ export default {
 <style lang="sass" scoped>
 .artists-search-container
   @extend .d-flex, .align-items-center
-
-.reset-button
-  margin-left: 1em
 </style>
