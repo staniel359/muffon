@@ -31,7 +31,7 @@
         :image-url="imageData?.original"
       />
 
-      <BaseProfileLibraryDeleteModal
+      <BaseLibraryDeleteModal
         ref="deleteModal"
         model="track"
         :profile-id="profileId"
@@ -49,8 +49,8 @@ import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
-import BaseProfileLibraryDeleteModal
-  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
   isCurrentProfile
 } from '*/helpers/utils'
@@ -61,7 +61,7 @@ export default {
     BaseSelfIcons,
     BaseOptionsDropdown,
     BasePlaylistsModal,
-    BaseProfileLibraryDeleteModal
+    BaseLibraryDeleteModal
   },
   provide () {
     return {

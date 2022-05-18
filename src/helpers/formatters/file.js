@@ -2,8 +2,10 @@ import fs from 'fs'
 import musicMetadata from 'music-metadata'
 
 export function tags (
-  tags,
-  file
+  {
+    file,
+    tags
+  }
 ) {
   const artistData = {
     name: tags.artist
@@ -14,11 +16,10 @@ export function tags (
       tags.picture
     )
 
-  const image = cover
-    ? formatImage(
+  const image =
+    formatImage(
       cover
     )
-    : null
 
   return {
     title: tags.title,
@@ -29,7 +30,7 @@ export function tags (
     album: {
       title: tags.album
     },
-    image: {
+    image: image && {
       extrasmall: image,
       original: image
     },
@@ -40,16 +41,18 @@ export function tags (
 }
 
 function formatImage (
-  cover
+  image
 ) {
-  const {
-    format
-  } = cover
+  if (image) {
+    const {
+      format
+    } = image
 
-  const base64 =
-    cover.data.toString(
-      'base64'
-    )
+    const base64 =
+      image.data.toString(
+        'base64'
+      )
 
-  return `data:${format};base64,${base64}`
+    return `data:${format};base64,${base64}`
+  }
 }

@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="created"
     :class="[
       'main-small-container',
       'created-block'

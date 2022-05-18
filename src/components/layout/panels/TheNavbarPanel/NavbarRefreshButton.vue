@@ -17,11 +17,11 @@ export default {
     BaseButton
   },
   inject: [
-    'refresh'
+    'refreshPage'
   ],
   methods: {
     handleClick () {
-      this.refresh()
+      this.refreshPage()
     }
   }
 }

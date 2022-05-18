@@ -292,12 +292,14 @@
       "artists": "{count} artist | {count} artists",
       "albums": "{count} album | {count} albums",
       "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files",
       "plays": "{count} play | {count} plays"
     },
     "accusative": {
       "artists": "{count} artist | {count} artists",
       "albums": "{count} album | {count} albums",
-      "tracks": "{count} track | {count} tracks"
+      "tracks": "{count} track | {count} tracks",
+      "files": "{count} file | {count} files"
     }
   },
   "sources": {
@@ -458,10 +460,8 @@
   "import": {
     "active": "Importing {count} of {counter}...",
     "success": {
-      "tracks": {
-        "header": "{counter} has been imported | {counter} have been imported",
-        "content": "You may want to check data before saving to library"
-      }
+      "header": "{counter} has been imported | {counter} have been imported",
+      "content": "You may want to check data before saving to library"
     },
     "error": {
       "files": "{counter} could not be imported. Please ensure these files have metadata defined:"

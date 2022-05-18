@@ -9,7 +9,7 @@
     @click="handleClick"
   />
 
-  <BaseProfileLibraryAccountImportModal
+  <BaseLibraryAccountImportModal
     v-if="isAccountConnected"
     ref="modal"
   />
@@ -20,14 +20,14 @@ import {
   mapState
 } from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseProfileLibraryAccountImportModal
-  from '*/components/modals/profile/library/BaseProfileLibraryAccountImportModal.vue'
+import BaseLibraryAccountImportModal
+  from '*/components/modals/library/import/BaseLibraryAccountImportModal.vue'
 
 export default {
   name: 'AccountImportButton',
   components: {
     BaseButton,
-    BaseProfileLibraryAccountImportModal
+    BaseLibraryAccountImportModal
   },
   computed: {
     ...mapState(

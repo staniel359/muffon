@@ -15,7 +15,7 @@
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BasePlaylistSearchImportModal
-  from '*/components/modals/playlist/BasePlaylistSearchImportModal.vue'
+  from '*/components/modals/playlist/import/BasePlaylistSearchImportModal.vue'
 
 export default {
   name: 'SearchImportButton',

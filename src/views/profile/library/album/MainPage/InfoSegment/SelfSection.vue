@@ -20,7 +20,7 @@
         @delete-option-click="handleDeleteOptionClick"
       />
 
-      <BaseProfileLibraryDeleteModal
+      <BaseLibraryDeleteModal
         ref="deleteModal"
         model="album"
         :profile-id="profileId"
@@ -36,8 +36,8 @@
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
-import BaseProfileLibraryDeleteModal
-  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
   isCurrentProfile
 } from '*/helpers/utils'
@@ -47,7 +47,7 @@ export default {
   components: {
     BaseSelfIcons,
     BaseOptionsDropdown,
-    BaseProfileLibraryDeleteModal
+    BaseLibraryDeleteModal
   },
   provide () {
     return {

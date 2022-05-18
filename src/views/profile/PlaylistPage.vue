@@ -22,7 +22,6 @@
         />
 
         <TracksSegment
-          :key="key"
           :profile-id="profileId"
           :playlist-id="playlistId"
           :playlist-title="pageSlotProps.playlistTitle"
@@ -39,8 +38,7 @@ import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'
 import {
-  isCurrentProfile,
-  generateKey
+  isCurrentProfile
 } from '*/helpers/utils'
 
 export default {
@@ -51,12 +49,6 @@ export default {
     ImportSegment,
     TracksSegment
   },
-  provide () {
-    return {
-      refreshTracksList:
-        this.refreshTracksList
-    }
-  },
   props: {
     profileId: {
       type: String,
@@ -64,21 +56,11 @@ export default {
     },
     playlistId: String
   },
-  data () {
-    return {
-      key: null
-    }
-  },
   computed: {
     isSelf () {
       return isCurrentProfile(
         this.profileId
       )
-    }
-  },
-  methods: {
-    refreshTracksList () {
-      this.key = generateKey()
     }
   }
 }

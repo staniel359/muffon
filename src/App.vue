@@ -69,7 +69,7 @@ export default {
   },
   provide () {
     return {
-      refresh: this.refresh
+      refreshPage: this.refreshPage
     }
   },
   computed: {
@@ -78,7 +78,7 @@ export default {
     }
   },
   methods: {
-    refresh () {
+    refreshPage () {
       this.$refs
         .view
         .refresh()

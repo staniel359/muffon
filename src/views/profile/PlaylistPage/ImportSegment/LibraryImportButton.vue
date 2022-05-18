@@ -15,7 +15,7 @@
 <script>
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import BasePlaylistLibraryImportModal
-  from '*/components/modals/playlist/BasePlaylistLibraryImportModal.vue'
+  from '*/components/modals/playlist/import/BasePlaylistLibraryImportModal.vue'
 
 export default {
   name: 'LibraryImportButton',

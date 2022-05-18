@@ -144,7 +144,7 @@
       :playlist-title="playlistTitle"
       @success="handleDeleted"
     />
-    <BaseProfileLibraryDeleteModal
+    <BaseLibraryDeleteModal
       v-else-if="isLinkToLibrary"
       ref="deleteModal"
       model="track"
@@ -182,8 +182,8 @@ import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import BasePlaylistTrackDeleteModal
   from '*/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
-import BaseProfileLibraryDeleteModal
-  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '*/mixins/selfMixin'
 import {
   track as formatTrackShareData
@@ -210,7 +210,7 @@ export default {
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal,
     BasePlaylistTrackDeleteModal,
-    BaseProfileLibraryDeleteModal
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin

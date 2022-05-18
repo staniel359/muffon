@@ -169,7 +169,10 @@ export function playsToTracks (
 
     return [
       playId,
-      playData
+      {
+        uuid: generateKey(),
+        ...playData
+      }
     ]
   }
 

@@ -44,7 +44,7 @@
             @delete-option-click="handleDeleteOptionClick"
           />
 
-          <BaseProfileLibraryDeleteModal
+          <BaseLibraryDeleteModal
             ref="deleteModal"
             model="artist"
             :profile-id="profileId"
@@ -80,8 +80,8 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
-import BaseProfileLibraryDeleteModal
-  from '*/components/modals/profile/library/BaseProfileLibraryDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import {
   main as formatArtistMainLink
@@ -103,7 +103,7 @@ export default {
     BaseSelfIcons,
     BaseDivider,
     BaseOptionsDropdown,
-    BaseProfileLibraryDeleteModal
+    BaseLibraryDeleteModal
   },
   provide () {
     return {
