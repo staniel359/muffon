@@ -44,7 +44,7 @@ export default {
       return (
         `/profiles/${this.profileId}` +
         '/library/search/artists' +
-        '?query={query}&limit=5'
+        '?query={query}&limit=5&minimal=true'
       )
     },
     fields () {

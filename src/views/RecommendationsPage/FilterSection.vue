@@ -124,7 +124,7 @@ export default {
     formatFilterItem (
       filterItemData
     ) {
-      return filterItemData.id
+      return filterItemData.name
     },
     focusInput () {
       this.$refs
