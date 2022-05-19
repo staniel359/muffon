@@ -13,6 +13,7 @@
         :is-with-library="isWithLibrary"
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
+        :is-with-self-icons="isWithSelfIcons"
         :is-with-library-option="isWithLibraryOption"
         :is-with-listened-option="isWithListenedOption"
         :is-with-bookmark-option="isWithBookmarkOption"
@@ -48,6 +49,10 @@ export default {
     itemsInRow: {
       type: Number,
       required: true
+    },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
     },
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,

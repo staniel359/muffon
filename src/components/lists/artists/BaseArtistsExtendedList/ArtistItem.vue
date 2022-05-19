@@ -146,13 +146,10 @@ export default {
       type: Object,
       required: true
     },
-    isWithSelfIcons: {
-      type: Boolean,
-      default: true
-    },
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithSelfIcons: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

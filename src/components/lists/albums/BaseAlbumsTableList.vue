@@ -20,6 +20,7 @@
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
         :is-with-listened-option="isWithListenedOption"
+        :is-with-self-icons="isWithSelfIcons"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
       />
@@ -51,6 +52,10 @@ export default {
     itemsInRow: {
       type: Number,
       required: true
+    },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
     },
     artistName: String,
     isWithArtistName: Boolean,

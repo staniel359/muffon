@@ -154,10 +154,7 @@ export default {
       type: Object,
       required: true
     },
-    isWithSelfIcons: {
-      type: Boolean,
-      default: true
-    },
+    isWithSelfIcons: Boolean,
     isWithListenersCount: Boolean,
     topTracksCount: Number,
     topAlbumsCount: Number,

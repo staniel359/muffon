@@ -158,13 +158,10 @@ export default {
       type: Object,
       required: true
     },
-    isWithSelfIcons: {
-      type: Boolean,
-      default: true
-    },
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
+    isWithSelfIcons: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

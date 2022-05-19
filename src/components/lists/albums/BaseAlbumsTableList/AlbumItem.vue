@@ -130,10 +130,6 @@ export default {
       type: Object,
       required: true
     },
-    isWithSelfIcons: {
-      type: Boolean,
-      default: true
-    },
     artistName: String,
     isWithArtistName: Boolean,
     isWithMultipleArtistNames: Boolean,
@@ -141,6 +137,7 @@ export default {
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
+    isWithSelfIcons: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,

@@ -52,9 +52,12 @@ export default {
         return []
       }
     },
+    isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
     isWithArtistName: Boolean,
     isWithSource: Boolean,
-    isWithSelfIcons: Boolean,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
     isWithLibraryOption: Boolean,

@@ -109,10 +109,7 @@ export default {
       type: Object,
       required: true
     },
-    isWithSelfIcons: {
-      type: Boolean,
-      default: true
-    },
+    isWithSelfIcons: Boolean,
     isWithListenersCount: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
