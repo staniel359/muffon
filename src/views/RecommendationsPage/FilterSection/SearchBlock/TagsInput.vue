@@ -10,15 +10,15 @@
 
 <script>
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import {
-  generateKey
-} from '*/helpers/utils'
 
 export default {
-  name: 'SearchInput',
+  name: 'TagsInput',
   components: {
     BaseSearchInput
   },
+  inject: [
+    'addCollectionItem'
+  ],
   props: {
     tags: {
       type: Array,
@@ -27,9 +27,6 @@ export default {
       }
     }
   },
-  emits: [
-    'select'
-  ],
   computed: {
     url () {
       return (
@@ -52,7 +49,10 @@ export default {
       function isTagPresent (
         tagData
       ) {
-        return tag.id === tagData.id
+        return (
+          tag.name ===
+            tagData.name
+        )
       }
 
       const isPresent =
@@ -61,14 +61,11 @@ export default {
         )
 
       if (!isPresent) {
-        const tagData = {
-          uuid: generateKey(),
-          ...tag
-        }
-
-        this.$emit(
-          'select',
-          tagData
+        this.addCollectionItem(
+          {
+            collection: 'collection',
+            item: tag
+          }
         )
       }
 

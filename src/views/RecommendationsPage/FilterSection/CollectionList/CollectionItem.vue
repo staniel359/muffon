@@ -11,32 +11,32 @@
 import BaseLabel from '*/components/BaseLabel.vue'
 
 export default {
-  name: 'FilterItem',
+  name: 'CollectionItem',
   components: {
     BaseLabel
   },
+  inject: [
+    'deleteCollectionItem'
+  ],
   props: {
-    filterItemData: {
+    collectionItemData: {
       type: Object,
       required: true
     }
   },
-  emits: [
-    'deleteIconClick'
-  ],
   computed: {
     name () {
-      return this.filterItemData.name
+      return this.collectionItemData.name
     },
     uuid () {
-      return this.filterItemData.uuid
+      return this.collectionItemData.uuid
     }
   },
   methods: {
     handleDeleteIconClick () {
-      this.$emit(
-        'deleteIconClick',
+      this.deleteCollectionItem(
         {
+          collection: 'collection',
           uuid: this.uuid
         }
       )

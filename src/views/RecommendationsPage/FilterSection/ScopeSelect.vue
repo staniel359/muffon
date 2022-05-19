@@ -1,8 +1,8 @@
 <template>
   <BaseScopesDropdown
     class="scope-select-container"
-    selected="artists"
     :scopes="scopes"
+    :selected="selected"
     @select="handleSelect"
   />
 </template>
@@ -11,13 +11,19 @@
 import BaseScopesDropdown from '*/components/dropdowns/BaseScopesDropdown.vue'
 
 export default {
-  name: 'FilterScopeSelect',
+  name: 'ScopeSelect',
   components: {
     BaseScopesDropdown
   },
-  emits: [
-    'select'
+  inject: [
+    'setScope'
   ],
+  props: {
+    selected: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       scopes: [
@@ -30,8 +36,7 @@ export default {
     handleSelect (
       value
     ) {
-      this.$emit(
-        'select',
+      this.setScope(
         value
       )
     }

@@ -13,15 +13,15 @@ import {
   mapGetters
 } from 'vuex'
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import {
-  generateKey
-} from '*/helpers/utils'
 
 export default {
-  name: 'SearchInput',
+  name: 'ArtistsInput',
   components: {
     BaseSearchInput
   },
+  inject: [
+    'addCollectionItem'
+  ],
   props: {
     artists: {
       type: Array,
@@ -30,9 +30,6 @@ export default {
       }
     }
   },
-  emits: [
-    'select'
-  ],
   computed: {
     ...mapGetters(
       'profile',
@@ -63,8 +60,8 @@ export default {
         artistData
       ) {
         return (
-          artist.id ===
-            artistData.id
+          artist.name ===
+            artistData.name
         )
       }
 
@@ -74,14 +71,11 @@ export default {
         )
 
       if (!isPresent) {
-        const artistData = {
-          uuid: generateKey(),
-          ...artist
-        }
-
-        this.$emit(
-          'select',
-          artistData
+        this.addCollectionItem(
+          {
+            collection: 'collection',
+            item: artist
+          }
         )
       }
 

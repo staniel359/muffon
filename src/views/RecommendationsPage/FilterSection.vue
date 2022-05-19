@@ -3,22 +3,20 @@
     :title="filterText"
     @open="handleOpen"
   >
-    <div class="filters-block-container">
-      <FilterScopeSelect
-        @select="handleFilterScopeSelect"
+    <div class="filter-section">
+      <ScopeSelect
+        :selected="scope"
       />
 
-      <Component
-        :is="filterComponent"
-        ref="filter"
-        :[filterScope]="filterItems"
-        @change="handleFilterItemsChange"
+      <SearchBlock
+        ref="search"
+        :scope="scope"
+        :collection="collection"
       />
     </div>
 
-    <FilterItems
-      :filter-items="filterItems"
-      @change="handleFilterItemsChange"
+    <CollectionList
+      :collection="collection"
     />
   </BaseAccordionContainer>
 </template>
@@ -26,10 +24,10 @@
 <script>
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
-import ArtistsFilterBlock from './FilterSection/ArtistsFilterBlock.vue'
-import TagsFilterBlock from './FilterSection/TagsFilterBlock.vue'
-import FilterScopeSelect from './FilterSection/FilterScopeSelect.vue'
-import FilterItems from './FilterSection/FilterItems.vue'
+import ScopeSelect from './FilterSection/ScopeSelect.vue'
+import SearchBlock from './FilterSection/SearchBlock.vue'
+import CollectionList from './FilterSection/CollectionList.vue'
+import collectionMixin from '*/mixins/collectionMixin'
 import {
   isObjectChanged
 } from '*/helpers/utils'
@@ -38,10 +36,18 @@ export default {
   name: 'FilterSection',
   components: {
     BaseAccordionContainer,
-    ArtistsFilterBlock,
-    TagsFilterBlock,
-    FilterScopeSelect,
-    FilterItems
+    ScopeSelect,
+    SearchBlock,
+    CollectionList
+  },
+  mixins: [
+    collectionMixin
+  ],
+  provide () {
+    return {
+      setScope: this.setScope,
+      reset: this.reset
+    }
   },
   inject: [
     'setFilterScope',
@@ -49,12 +55,8 @@ export default {
   ],
   data () {
     return {
-      filterScope: null,
-      filterItems: [],
-      filterComponents: {
-        artists: 'ArtistsFilterBlock',
-        tags: 'TagsFilterBlock'
-      }
+      scope: 'artists',
+      collection: []
     }
   },
   computed: {
@@ -63,49 +65,34 @@ export default {
         'recommendations.filter'
       )
     },
-    filterComponent () {
-      return this.filterComponents[
-        this.filterScope
-      ]
-    },
-    filterValue () {
-      return this.filterItems.map(
-        this.formatFilterItem
+    collectionFormatted () {
+      return this.collection.map(
+        this.formatCollectionItem
       )
     }
   },
   watch: {
-    filterScope: 'handleFilterScopeChange',
-    filterValue: 'handleFilterValueChange'
+    scope: 'handleScopeChange',
+    collection: 'handleCollectionChange'
   },
   methods: {
     handleOpen () {
       this.focusInput()
     },
-    handleFilterScopeSelect (
+    async handleScopeChange (
       value
     ) {
-      this.filterScope = value
-    },
-    async handleFilterScopeChange (
-      value
-    ) {
-      this.filterItems = []
-
       this.setFilterScope(
         value
       )
+
+      this.reset()
 
       await this.$nextTick()
 
       this.focusInput()
     },
-    handleFilterItemsChange (
-      value
-    ) {
-      this.filterItems = value
-    },
-    handleFilterValueChange (
+    handleCollectionChange (
       value,
       oldValue
     ) {
@@ -117,18 +104,26 @@ export default {
 
       if (isChanged) {
         this.setFilterValue(
-          value
+          this.collectionFormatted
         )
       }
     },
-    formatFilterItem (
-      filterItemData
+    setScope (
+      value
     ) {
-      return filterItemData.name
+      this.scope = value
+    },
+    formatCollectionItem (
+      collectionItemData
+    ) {
+      return collectionItemData.name
+    },
+    reset () {
+      this.collection = []
     },
     focusInput () {
       this.$refs
-        .filter
+        .search
         .focusInput()
     }
   }
@@ -136,6 +131,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.filters-block-container
+.filter-section
   @extend .d-flex, .align-items-center
 </style>
