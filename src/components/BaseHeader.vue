@@ -5,8 +5,9 @@
     :class="{
       inverted: isDarkMode
     }"
-    v-text="text"
-  />
+  >
+    {{ text }}
+  </Component>
 </template>
 
 <script>

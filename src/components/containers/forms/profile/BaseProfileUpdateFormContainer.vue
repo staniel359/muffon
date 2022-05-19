@@ -131,7 +131,7 @@ export default {
         password,
         passwordConfirmation,
         nickname,
-        image: image,
+        image,
         gender,
         birthdate: birthdateToDate,
         country,
