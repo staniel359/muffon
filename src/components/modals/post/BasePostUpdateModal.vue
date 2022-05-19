@@ -33,16 +33,18 @@
           @link-click="handleLinkClick"
         />
 
+        <div class="as-community-container">
+          <BasePostAsCommunityField
+            v-if="isWithAsCommunityOption"
+            :is-checked="isByCommunity"
+          />
+        </div>
+
         <div class="buttons-container">
           <BaseFormAddButtonsSection
             :artists="artists"
             :albums="albums"
             :tracks="tracks"
-          />
-
-          <BasePostAsCommunityField
-            v-if="isWithAsCommunityOption"
-            :is-checked="isByCommunity"
           />
 
           <BaseSubmitButton

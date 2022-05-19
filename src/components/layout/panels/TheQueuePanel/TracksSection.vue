@@ -3,6 +3,7 @@
     class="queue-tracks-container"
   >
     <BaseTracksSimpleList
+      :key="key"
       class="queue-tracks"
       :tracks="queueTracksConditional"
       :is-with-self-icons="false"
@@ -26,12 +27,20 @@ import BaseTracksSimpleList
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'TracksSection',
   components: {
     BaseSegmentContainer,
     BaseTracksSimpleList
+  },
+  data () {
+    return {
+      key: null
+    }
   },
   computed: {
     ...mapGetters(
@@ -49,7 +58,10 @@ export default {
     )
   },
   watch: {
-    queueTracks: 'handleQueueTracksChange'
+    queueTracks:
+      'handleQueueTracksChange',
+    queueTracksConditional:
+      'handleQueueTracksConditionalChange'
   },
   methods: {
     handleQueueTracksChange (
@@ -60,6 +72,9 @@ export default {
           'queue.isShuffle': false
         }
       )
+    },
+    handleQueueTracksConditionalChange () {
+      this.key = generateKey()
     }
   }
 }

@@ -1,5 +1,8 @@
 <template>
-  <div class="main-content-container">
+  <div
+    v-if="isRender"
+    class="main-content-container"
+  >
     <ImagesSection
       v-if="images.length"
       class="main-content-section"
@@ -124,6 +127,19 @@ export default {
   emits: [
     'linkClick'
   ],
+  computed: {
+    isRender () {
+      return (
+        this.images.length ||
+          this.videos.length ||
+          this.artists.length ||
+          this.albums.length ||
+          this.tracks.length ||
+          this.playlists.length ||
+          this.communities.length
+      )
+    }
+  },
   methods: {
     handleLinkClick () {
       this.$emit(

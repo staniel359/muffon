@@ -23,9 +23,11 @@
         :tracks="tracks"
       />
 
-      <BasePostAsCommunityField
-        v-if="isWithAsCommunityOption"
-      />
+      <div class="as-community-container">
+        <BasePostAsCommunityField
+          v-if="isWithAsCommunityOption"
+        />
+      </div>
 
       <div class="buttons-container">
         <BaseFormAddButtonsSection

@@ -30,7 +30,10 @@ export default {
     ) {
       return getters.tracksConditional.findIndex(
         track => {
-          return track.uuid === state.currentTrackId
+          return (
+            track.uuid ===
+              state.currentTrackId
+          )
         }
       )
     },

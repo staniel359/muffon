@@ -122,7 +122,7 @@ export default {
 
 <style lang="sass" scoped>
 .the-queue-panel
-  width: 300px !important
+  width: 320px !important
 
 .main-segment-container
   @extend .d-flex, .h-100
