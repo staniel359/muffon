@@ -9,7 +9,8 @@ export default function (
     albumType = '',
     scope = '',
     page,
-    limit
+    limit,
+    update
   }
 ) {
   const url =
@@ -25,6 +26,9 @@ export default function (
   const params = {
     ...(albumType && {
       album_type: albumType
+    }),
+    ...(update && {
+      update
     })
   }
 

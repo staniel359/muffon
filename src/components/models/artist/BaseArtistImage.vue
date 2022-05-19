@@ -64,7 +64,8 @@ export default {
     artistImageArgs () {
       return {
         artistName: this.artistName,
-        scope: this.scope
+        scope: this.scope,
+        update: this.isInteractive
       }
     },
     scope () {
