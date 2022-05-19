@@ -18,6 +18,7 @@ import {
 } from 'emoji-mart'
 import data from '@emoji-mart/data'
 import en from '@emoji-mart/data/i18n/en.json'
+import it from '*/helpers/data/plugins/emojiMart/locales/it.json'
 import ru from '*/helpers/data/plugins/emojiMart/locales/ru.json'
 
 export default {
@@ -30,6 +31,7 @@ export default {
       isOpen: false,
       locales: {
         en,
+        it,
         ru
       }
     }
