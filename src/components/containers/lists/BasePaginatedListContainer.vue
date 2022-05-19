@@ -229,7 +229,8 @@ export default {
     },
     isGetData () {
       return (
-        this.isResponsePageCollection &&
+        this.clientPageCollection &&
+          this.isResponsePageCollection &&
           !this.isCollectionFull
       )
     },
@@ -354,30 +355,29 @@ export default {
           )
 
         this.setCollections()
+
+        const isFocus = (
+          this.isFocusable &&
+            !this.isReset
+        )
+
+        if (isFocus) {
+          this.focus()
+        }
       }
     },
     handleClientPageChange () {
       this.setClientPageCollection()
     },
-    async handleClientPageCollectionChange (
-      value
-    ) {
-      if (value) {
-        if (this.isFocusable) {
-          this.$emit(
-            'focus'
-          )
-        }
+    async handleClientPageCollectionChange () {
+      if (this.isGetData) {
+        await this.$nextTick()
 
-        if (this.isGetData) {
-          await this.$nextTick()
-
-          this.getData(
-            {
-              page: this.requestPage
-            }
-          )
-        }
+        this.getData(
+          {
+            page: this.requestPage
+          }
+        )
       }
     },
     handlePrevPageClick () {
@@ -425,6 +425,8 @@ export default {
 
       this.clientPage = value
       this.isFocusable = true
+
+      this.focus()
     },
     mergeArrays (
       array,
@@ -510,6 +512,11 @@ export default {
           this.responsePageCollectionPaginated
         ]
       }
+    },
+    focus () {
+      this.$emit(
+        'focus'
+      )
     }
   }
 }
