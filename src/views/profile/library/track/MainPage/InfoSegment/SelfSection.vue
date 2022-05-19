@@ -28,7 +28,7 @@
         :track-title="trackTitle"
         :artist-name="artistName"
         :album-title="albumTitle"
-        :image-url="imageData?.original"
+        :image-url="imageData?.large"
       />
 
       <BaseLibraryDeleteModal

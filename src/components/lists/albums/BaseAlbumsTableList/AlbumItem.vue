@@ -12,7 +12,7 @@
         model="album"
         :artist-name="artistNameComputed"
         :album-title="albumTitle"
-        :image-url="imageData?.original"
+        :image-url="imageData?.large"
         :library-id="libraryId"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"

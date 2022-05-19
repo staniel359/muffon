@@ -12,7 +12,7 @@
       :album-title="albumTitle"
       :artist-name="artistName"
       :album-tracks="tracks"
-      :image-url="imageData?.original"
+      :image-url="imageData?.large"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"

@@ -32,7 +32,7 @@ export function tags (
     },
     image: image && {
       extrasmall: image,
-      original: image
+      large: image
     },
     created: fs.statSync(
       file.path

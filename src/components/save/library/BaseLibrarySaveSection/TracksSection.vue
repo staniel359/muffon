@@ -144,7 +144,7 @@ export default {
         trackTitle: track.title,
         artistName: track.artist.name,
         albumTitle: track.album?.title,
-        image: track.image?.original,
+        image: track.image?.large,
         created: track.created
       }
     },
