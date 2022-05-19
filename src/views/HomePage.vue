@@ -11,11 +11,18 @@
       text="muffon"
     />
 
-    home page
+    <BaseHeader
+      class="welcome-message"
+      tag="h2"
+      :text="welcomeText"
+    />
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {
   home as formatHomePageNavigation
@@ -34,11 +41,29 @@ export default {
     navigationMixin
   ],
   computed: {
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
+      }
+    ),
     navigationSections () {
       return formatHomePageNavigation()
     },
     tabData () {
       return formatHomePageTab()
+    },
+    welcomeText () {
+      return this.$t(
+        'messages.welcome',
+        {
+          profileNickname:
+            this.profileNickname
+        }
+      )
+    },
+    profileNickname () {
+      return this.profileInfo.nickname
     }
   },
   mounted () {
@@ -52,4 +77,8 @@ export default {
   @extend .d-flex, .flex-column, .align-items-center
   padding-top: 5vh
   height: 70vh
+
+.welcome-message
+  @extend .text-color-white
+  margin-top: 0.5em !important
 </style>

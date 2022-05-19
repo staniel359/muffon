@@ -518,6 +518,9 @@
     "playlist": "Playlist was deleted",
     "post": "Post was deleted"
   },
+  "messages": {
+    "welcome": "Welcome, {profileNickname}"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."
