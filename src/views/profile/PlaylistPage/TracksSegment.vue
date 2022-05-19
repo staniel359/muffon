@@ -2,8 +2,9 @@
   <BasePaginatedSegmentContainer
     ref="segment"
     class="main-paginated-page-segment-container"
-    response-data-name="playlistData"
-    :slot-props-data="slotPropsData"
+    :response-data="playlistData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     @focus="handleFocus"
@@ -61,13 +62,6 @@ export default {
     }
   },
   computed: {
-    slotPropsData () {
-      return {
-        playlistData: this.playlistData,
-        isLoading: this.isLoading,
-        error: this.error
-      }
-    },
     playlistData () {
       return this.profileData?.playlist
     },

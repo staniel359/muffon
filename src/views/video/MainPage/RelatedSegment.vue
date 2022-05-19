@@ -14,8 +14,9 @@
     >
       <template #default="pageSlotProps">
         <BasePaginatedSegmentContainer
-          response-data-name="videoData"
-          :slot-props-data="pageSlotProps"
+          :response-data="pageSlotProps.videoData"
+          :is-loading="pageSlotProps.isLoading"
+          :error="pageSlotProps.error"
           :scope="scope"
           :limit="limit"
           :client-page-limit="clientPageLimit"

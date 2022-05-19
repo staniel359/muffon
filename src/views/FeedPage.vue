@@ -5,8 +5,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="feedData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.feedData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
       >

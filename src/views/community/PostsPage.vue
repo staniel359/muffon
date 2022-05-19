@@ -7,8 +7,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="communityData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.communityData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
       >

@@ -1,8 +1,9 @@
 <template>
   <BasePaginatedSegmentContainer
     ref="segment"
-    response-data-name="profileData"
-    :slot-props-data="slotPropsData"
+    :response-data="profileData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     @focus="handleFocus"
@@ -54,13 +55,6 @@ export default {
         profileId: this.profileId,
         scope: this.scope,
         limit: this.limit
-      }
-    },
-    slotPropsData () {
-      return {
-        profileData: this.profileData,
-        isLoading: this.isLoading,
-        error: this.error
       }
     }
   },

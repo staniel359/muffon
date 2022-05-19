@@ -8,8 +8,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="tagData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.tagData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"

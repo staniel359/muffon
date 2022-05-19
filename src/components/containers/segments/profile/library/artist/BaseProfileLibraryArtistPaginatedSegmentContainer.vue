@@ -9,8 +9,9 @@
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="artistData"
-        :slot-props-data="segmentSlotProps"
+        :response-data="segmentSlotProps.artistData"
+        :is-loading="segmentSlotProps.isLoading"
+        :error="segmentSlotProps.error"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"

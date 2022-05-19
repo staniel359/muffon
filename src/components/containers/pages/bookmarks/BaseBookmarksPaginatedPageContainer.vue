@@ -6,8 +6,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="bookmarksData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.bookmarksData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
       >

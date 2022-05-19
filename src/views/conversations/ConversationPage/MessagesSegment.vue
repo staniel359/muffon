@@ -2,8 +2,9 @@
   <BasePaginatedSegmentContainer
     ref="segment"
     class="main-paginated-page-segment-container"
-    response-data-name="conversationData"
-    :slot-props-data="slotPropsData"
+    :response-data="conversationData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     @focus="handleFocus"
@@ -49,13 +50,6 @@ export default {
     }
   },
   computed: {
-    slotPropsData () {
-      return {
-        conversationData: this.conversationData,
-        isLoading: this.isLoading,
-        error: this.error
-      }
-    },
     conversationArgs () {
       return {
         conversationId: this.conversationId,

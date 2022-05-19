@@ -5,8 +5,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="conversationsData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.conversationsData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
       >

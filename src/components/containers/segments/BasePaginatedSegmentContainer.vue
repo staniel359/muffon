@@ -45,18 +45,13 @@ export default {
     'getData'
   ],
   props: {
-    slotPropsData: {
-      type: Object,
-      required: true
-    },
-    responseDataName: {
-      type: String,
-      required: true
-    },
     scope: {
       type: String,
       required: true
     },
+    responseData: Object,
+    isLoading: Boolean,
+    error: Error,
     limit: Number,
     clientPageLimit: Number,
     responsePageLimit: Number,
@@ -66,19 +61,6 @@ export default {
   emits: [
     'focus'
   ],
-  computed: {
-    isLoading () {
-      return this.slotPropsData.isLoading
-    },
-    error () {
-      return this.slotPropsData.error
-    },
-    responseData () {
-      return this.slotPropsData[
-        this.responseDataName
-      ]
-    }
-  },
   methods: {
     handleRefresh () {
       this.getData()

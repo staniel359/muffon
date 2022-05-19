@@ -1,8 +1,9 @@
 <template>
   <BasePaginatedSegmentModalContainer
     ref="modal"
-    response-data-name="profileData"
-    :slot-props-data="slotPropsData"
+    :response-data="profileData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     @call="handleCall"
@@ -68,13 +69,6 @@ export default {
         limit: this.limit,
         trackTitle: this.trackTitle,
         artistName: this.artistName
-      }
-    },
-    slotPropsData () {
-      return {
-        profileData: this.profileData,
-        isLoading: this.isLoading,
-        error: this.error
       }
     }
   },

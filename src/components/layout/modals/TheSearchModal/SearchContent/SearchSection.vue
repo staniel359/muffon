@@ -13,12 +13,13 @@
       ]"
     >
       <BasePaginatedSegmentContainer
-        response-data-name="searchData"
         :class="[
           'search-segment',
           'main-paginated-segment-container'
         ]"
-        :slot-props-data="slotPropsData"
+        :response-data="searchData"
+        :is-loading="isLoading"
+        :error="error"
         :scope="searchScope"
         :limit="limit"
         :response-page-limit="responsePageLimit"
@@ -213,13 +214,6 @@ export default {
       return {
         component: 'BaseVideosSimpleList',
         limit: 20
-      }
-    },
-    slotPropsData () {
-      return {
-        searchData: this.searchData,
-        isLoading: this.isLoading,
-        error: this.error
       }
     },
     limit () {

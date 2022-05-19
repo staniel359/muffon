@@ -9,8 +9,9 @@
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
         ref="pagination"
-        response-data-name="artistData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.artistData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :artist-name="pageSlotProps.artistName"
         :is-with-top-segment="isWithTopSegment"
         :is-with-view-change="isWithViewChange"

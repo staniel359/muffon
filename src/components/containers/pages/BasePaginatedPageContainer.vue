@@ -24,8 +24,9 @@
     <BasePaginatedSegmentContainer
       ref="pagination"
       class="main-paginated-page-segment-container"
-      :slot-props-data="slotPropsData"
-      :response-data-name="responseDataName"
+      :response-data="responseData"
+      :is-loading="isLoading"
+      :error="error"
       :scope="scope"
       :limit="limit"
       :client-page-limit="clientPageLimit"
@@ -71,8 +72,9 @@ export default {
       type: String,
       required: true
     },
-    slotPropsData: Object,
-    responseDataName: String,
+    responseData: Object,
+    isLoading: Boolean,
+    error: Error,
     limit: Number,
     clientPageLimit: Number,
     responsePageLimit: Number,

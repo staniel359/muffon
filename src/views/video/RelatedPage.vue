@@ -7,8 +7,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="videoData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.videoData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
         is-pagination-simple

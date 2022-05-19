@@ -1,8 +1,9 @@
 <template>
   <BasePaginatedPageContainer
     ref="page"
-    response-data-name="multitagData"
-    :slot-props-data="slotPropsData"
+    :response-data="multitagData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     :view-index="viewIndex"
@@ -77,13 +78,6 @@ export default {
     },
     tabData () {
       return formatMultitagPageTab()
-    },
-    slotPropsData () {
-      return {
-        multitagData: this.multitagData,
-        error: this.error,
-        isLoading: this.isLoading
-      }
     },
     multitagArgs () {
       return {

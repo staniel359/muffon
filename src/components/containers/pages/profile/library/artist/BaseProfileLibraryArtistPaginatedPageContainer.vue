@@ -8,8 +8,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="artistData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.artistData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
       >

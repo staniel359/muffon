@@ -9,8 +9,9 @@
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
         ref="pagination"
-        response-data-name="libraryData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.libraryData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
         :is-with-top-segment="isWithTopSegment"

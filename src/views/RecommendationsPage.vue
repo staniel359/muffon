@@ -7,8 +7,9 @@
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
         ref="pagination"
-        response-data-name="recommendationsData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.recommendationsData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
         is-with-top-segment

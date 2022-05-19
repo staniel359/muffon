@@ -6,8 +6,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="releasesData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.releasesData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="listScope"
         :limit="limit"
         :response-page-limit="responsePageLimit"

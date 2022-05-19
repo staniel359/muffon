@@ -7,8 +7,9 @@
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="releasesData"
-        :slot-props-data="segmentSlotProps"
+        :response-data="segmentSlotProps.releasesData"
+        :is-loading="segmentSlotProps.isLoading"
+        :error="segmentSlotProps.error"
         :scope="listScope"
         :limit="limit"
         :response-page-limit="responsePageLimit"

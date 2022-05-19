@@ -1,8 +1,9 @@
 <template>
   <BasePaginatedSegmentModalContainer
     ref="modal"
-    response-data-name="compatibilityData"
-    :slot-props-data="slotPropsData"
+    :response-data="compatibilityData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     @call="handleCall"
@@ -54,13 +55,6 @@ export default {
         otherProfileId: this.profileId,
         scope: this.scope,
         limit: this.limit
-      }
-    },
-    slotPropsData () {
-      return {
-        compatibilityData: this.compatibilityData,
-        isLoading: this.isLoading,
-        error: this.error
       }
     }
   },

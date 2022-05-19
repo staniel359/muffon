@@ -7,8 +7,9 @@
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="bookmarksData"
-        :slot-props-data="segmentSlotProps"
+        :response-data="segmentSlotProps.bookmarksData"
+        :is-loading="segmentSlotProps.isLoading"
+        :error="segmentSlotProps.error"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"

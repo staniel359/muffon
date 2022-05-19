@@ -1,8 +1,9 @@
 <template>
   <BasePaginatedSegmentModalContainer
     ref="modal"
-    response-data-name="recommendationData"
-    :slot-props-data="slotPropsData"
+    :response-data="recommendationData"
+    :is-loading="isLoading"
+    :error="error"
     :scope="scope"
     :limit="limit"
     @call="handleCall"
@@ -65,13 +66,6 @@ export default {
         recommendationId: this.recommendationId,
         scope: this.scope,
         limit: this.limit
-      }
-    },
-    slotPropsData () {
-      return {
-        recommendationData: this.recommendationData,
-        isLoading: this.isLoading,
-        error: this.error
       }
     }
   },

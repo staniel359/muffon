@@ -29,8 +29,9 @@
         <BasePaginatedSegmentContainer
           ref="pagination"
           class="main-paginated-page-segment-container"
-          response-data-name="profileData"
-          :slot-props-data="pageSlotProps"
+          :response-data="pageSlotProps.profileData"
+          :is-loading="pageSlotProps.isLoading"
+          :error="pageSlotProps.error"
           :scope="scope"
           :limit="limit"
           @focus="handleFocus"

@@ -8,8 +8,9 @@
   >
     <template #default="segmentSlotProps">
       <BasePaginatedSegmentContainer
-        response-data-name="favoritesData"
-        :slot-props-data="segmentSlotProps"
+        :response-data="segmentSlotProps.favoritesData"
+        :is-loading="segmentSlotProps.isLoading"
+        :error="segmentSlotProps.error"
         :scope="scope"
         :limit="limit"
         @focus="handleFocus"

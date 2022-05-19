@@ -5,8 +5,9 @@
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
-        response-data-name="channelData"
-        :slot-props-data="pageSlotProps"
+        :response-data="pageSlotProps.channelData"
+        :is-loading="pageSlotProps.isLoading"
+        :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
         is-pagination-simple

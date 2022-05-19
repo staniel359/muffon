@@ -12,8 +12,9 @@
             responseData
         }
       ]"
-      :slot-props-data="slotPropsData"
-      :response-data-name="responseDataName"
+      :response-data="responseData"
+      :is-loading="isLoading"
+      :error="error"
       :scope="scope"
       :limit="limit"
       @focus="handleFocus"
@@ -40,21 +41,15 @@ export default {
     BasePaginatedSegmentContainer
   },
   props: {
-    slotPropsData: Object,
-    responseDataName: String,
+    responseData: Object,
+    isLoading: Boolean,
+    error: Error,
     scope: String,
     limit: Number
   },
   emits: [
     'call'
   ],
-  computed: {
-    responseData () {
-      return this.slotPropsData[
-        this.responseDataName
-      ]
-    }
-  },
   methods: {
     handleCall () {
       this.$emit(
