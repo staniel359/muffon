@@ -2,10 +2,12 @@ const {
   app,
   BrowserView,
   BrowserWindow,
+  dialog,
   ipcMain,
   Menu,
   nativeImage,
   session,
+  shell,
   Tray
 } = require(
   'electron'
@@ -16,20 +18,8 @@ const path = require(
 const ElectronStore = require(
   'electron-store'
 )
-const {
-  i18n
-} = require(
-  './src/helpers/data/plugins/electron'
-)
-const {
-  appLanguage
-} = require(
-  './src/helpers/actions/plugins/electronStore'
-)
-const {
-  checkForUpdates
-} = require(
-  './src/helpers/actions/plugins/electron'
+const axios = require(
+  'axios'
 )
 
 const appName = 'muffon'
@@ -86,10 +76,64 @@ if (isDevelopment) {
   )
 }
 
-let language = appLanguage
+const i18n = {
+  en: {
+    show: 'Show',
+    hide: 'Hide',
+    exit: 'Exit',
+    update: {
+      message (
+        version
+      ) {
+        return `Version ${version} is available!`
+      },
+      buttons: {
+        download: 'Download',
+        close: 'Close'
+      }
+    }
+  },
+  it: {
+    show: 'Mostra',
+    hide: 'Nascondi',
+    exit: 'Esci'
+  },
+  ru: {
+    show: 'Открыть',
+    hide: 'Скрыть',
+    exit: 'Выйти',
+    update: {
+      message (
+        version
+      ) {
+        return `Доступна версия ${version}!`
+      },
+      buttons: {
+        download: 'Скачать',
+        close: 'Закрыть'
+      }
+    }
+  }
+}
+
+const electronStore =
+  new ElectronStore(
+    {
+      accessPropertiesByDotNotation: false
+    }
+  )
+
+let language =
+  electronStore.get(
+    'profile.language',
+    'en'
+  )
 
 let mainWindow
 let tray
+
+let latestRelease
+let latestVersion
 
 let tabs = []
 
@@ -514,14 +558,10 @@ function createWindow () {
 
     show()
 
-    checkForUpdates(
-      {
-        mainWindow
-      }
-    )
+    checkForUpdates()
   }
 
-  mainWindow.on(
+  mainWindow.once(
     'ready-to-show',
     handleReadyToShow
   )
@@ -662,6 +702,76 @@ function exit () {
   mainWindow.webContents.send(
     'handle-exit'
   )
+}
+
+function checkForUpdates () {
+  const releasesUrl =
+    'https://api.github.com/repos/staniel359/muffon/releases'
+
+  axios.get(
+    releasesUrl
+  ).then(
+    handleUpdateCheckSuccess
+  )
+}
+
+function handleUpdateCheckSuccess (
+  response
+) {
+  latestRelease = response.data[0]
+  latestVersion = latestRelease.name
+
+  const currentVersion =
+    app.getVersion()
+
+  const isNewVersionAvailable = (
+    latestVersion !==
+      currentVersion
+  )
+
+  if (isNewVersionAvailable) {
+    showNewVersionNotification()
+  }
+}
+
+function showNewVersionNotification () {
+  const localeData =
+    i18n[language].update
+
+  const options = {
+    type: 'info',
+    message: localeData.message(
+      latestVersion
+    ),
+    buttons: [
+      localeData.buttons.download,
+      localeData.buttons.close
+    ],
+    defaultId: 0,
+    cancelId: 1
+  }
+
+  dialog.showMessageBox(
+    mainWindow,
+    options
+  ).then(
+    handleNewVersionNotificationButtonClick
+  )
+}
+
+function handleNewVersionNotificationButtonClick (
+  {
+    response
+  }
+) {
+  if (response === 0) {
+    const latestReleaseLink =
+      latestRelease.html_url
+
+    shell.openExternal(
+      latestReleaseLink
+    )
+  }
 }
 
 function prependTabToTabs (
