@@ -15,15 +15,15 @@ export default {
   components: {
     BaseLabel
   },
+  inject: [
+    'deleteCollectionItem'
+  ],
   props: {
     tagData: {
       type: Object,
       required: true
     }
   },
-  emits: [
-    'deleteIconClick'
-  ],
   computed: {
     name () {
       return this.tagData.name
@@ -34,9 +34,9 @@ export default {
   },
   methods: {
     handleDeleteIconClick () {
-      this.$emit(
-        'deleteIconClick',
+      this.deleteCollectionItem(
         {
+          collection: 'tags',
           uuid: this.uuid
         }
       )

@@ -39,6 +39,7 @@ import FilterBlock from './MultitagPage/FilterBlock.vue'
 import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
 import navigationMixin from '*/mixins/navigationMixin'
 import viewChangeMixin from '*/mixins/viewChangeMixin'
+import collectionMixin from '*/mixins/collectionMixin'
 import {
   multitag as formatMultitagPageNavigation
 } from '*/helpers/formatters/navigation'
@@ -54,13 +55,14 @@ export default {
   },
   mixins: [
     navigationMixin,
-    viewChangeMixin
+    viewChangeMixin,
+    collectionMixin
   ],
   provide () {
     return {
       getData: this.getData,
       setScope: this.setScope,
-      setTags: this.setTags
+      reset: this.reset
     }
   },
   data () {
@@ -106,7 +108,7 @@ export default {
     handleTagsChange (
       value
     ) {
-      this.reset()
+      this.resetPage()
 
       if (value.length) {
         this.getData()
@@ -131,17 +133,15 @@ export default {
     ) {
       this.scope = value
     },
-    setTags (
-      value
-    ) {
-      this.tags = value
+    reset () {
+      this.tags = []
     },
     formatTag (
       tagData
     ) {
       return tagData.name
     },
-    reset () {
+    resetPage () {
       this.$refs
         .page
         .reset()

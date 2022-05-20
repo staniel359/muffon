@@ -10,9 +10,6 @@
 
 <script>
 import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import {
-  collection as formatCollection
-} from '*/helpers/formatters'
 
 export default {
   name: 'SearchInput',
@@ -20,12 +17,14 @@ export default {
     BaseSearchInput
   },
   inject: [
-    'setTags'
+    'addCollectionItem'
   ],
   props: {
     tags: {
       type: Array,
-      required: true
+      default () {
+        return []
+      }
     }
   },
   computed: {
@@ -43,22 +42,10 @@ export default {
       }
     }
   },
-  watch: {
-    tags: {
-      immediate: true,
-      handler: 'handleTagsChange'
-    }
+  mounted () {
+    this.focus()
   },
   methods: {
-    async handleTagsChange (
-      value
-    ) {
-      if (!value.length) {
-        await this.$nextTick()
-
-        this.focus()
-      }
-    },
     handleSelect (
       tag
     ) {
@@ -66,8 +53,8 @@ export default {
         tagData
       ) {
         return (
-          tag.id ===
-            tagData.id
+          tag.name ===
+            tagData.name
         )
       }
 
@@ -77,18 +64,11 @@ export default {
         )
 
       if (!isPresent) {
-        const tags = [
-          ...this.tags,
-          tag
-        ]
-
-        const tagsFormatted =
-          formatCollection(
-            tags
-          )
-
-        this.setTags(
-          tagsFormatted
+        this.addCollectionItem(
+          {
+            collection: 'tags',
+            item: tag
+          }
         )
       }
 

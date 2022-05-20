@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="scope-search-section">
+    <div class="search-scope-section">
       <SearchSection
         :tags="tags"
       />
@@ -42,6 +42,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.scope-search-section
+.search-scope-section
   @extend .d-flex, .align-items-center
 </style>

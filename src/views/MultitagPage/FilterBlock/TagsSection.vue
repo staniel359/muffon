@@ -5,7 +5,6 @@
         v-for="tagData in tags"
         :key="tagData.uuid"
         :tag-data="tagData"
-        @delete-icon-click="handleDeleteIconClick"
       />
     </div>
   </div>
@@ -19,41 +18,12 @@ export default {
   components: {
     TagItem
   },
-  inject: [
-    'setTags'
-  ],
   props: {
     tags: {
       type: Array,
       default () {
         return []
       }
-    }
-  },
-  methods: {
-    handleDeleteIconClick (
-      {
-        uuid
-      }
-    ) {
-      function isMatchedTag (
-        tagData
-      ) {
-        return (
-          tagData.uuid !==
-            uuid
-        )
-      }
-
-      const tags = [
-        ...this.tags.filter(
-          isMatchedTag
-        )
-      ]
-
-      this.setTags(
-        tags
-      )
     }
   }
 }
