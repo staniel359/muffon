@@ -60,16 +60,18 @@ export default {
       this.reset()
 
       this.clearInput()
-    },
-    focusInput () {
-      this.$refs
-        .input
-        .focus()
+
+      this.focusInput()
     },
     clearInput () {
       this.$refs
         .input
         .clear()
+    },
+    focusInput () {
+      this.$refs
+        .input
+        .focus()
     }
   }
 }

@@ -72,7 +72,10 @@ export default {
     }
   },
   watch: {
-    scope: 'handleScopeChange',
+    scope: {
+      immediate: true,
+      handler: 'handleScopeChange'
+    },
     collection: 'handleCollectionChange'
   },
   methods: {
