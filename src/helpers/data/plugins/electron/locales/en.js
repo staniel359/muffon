@@ -3,7 +3,6 @@ module.exports = {
   hide: 'Hide',
   exit: 'Exit',
   update: {
-    title: 'New version',
     message (
       version
     ) {

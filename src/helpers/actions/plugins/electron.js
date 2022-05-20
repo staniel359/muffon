@@ -40,9 +40,11 @@ function checkForUpdates (
   )
 }
 
-function handleSuccess (response) {
+function handleSuccess (
+  response
+) {
   latestRelease = response.data[0]
-  latestVersion = latestRelease['name']
+  latestVersion = latestRelease.name
 
   const currentVersion =
     app.getVersion()
@@ -63,7 +65,6 @@ function showNotification () {
 
   const options = {
     type: 'info',
-    title: localeData.title,
     message: localeData.message(
       latestVersion
     ),
@@ -90,7 +91,7 @@ function handleDialogButtonClick (
 ) {
   if (response === 0) {
     const latestReleaseLink =
-      latestRelease['html_url']
+      latestRelease.html_url
 
     shell.openExternal(
       latestReleaseLink
