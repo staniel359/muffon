@@ -21,6 +21,7 @@
       :is-image-small="isImageSmall"
       :is-bookmark="isBookmark"
       :is-favorite="isFavorite"
+      :is-paginated="isPaginated"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
     />
@@ -54,6 +55,10 @@ export default {
       }
     },
     isWithSelfIcons: {
+      type: Boolean,
+      default: true
+    },
+    isPaginated: {
       type: Boolean,
       default: true
     },

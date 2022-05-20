@@ -23,6 +23,7 @@
       class="main-content-section"
       :artists="artists"
       :is-with-self-icons="false"
+      :is-paginated="false"
       is-with-listeners-count
     />
 

@@ -10,6 +10,7 @@
     class="artists-list"
     :artists="artists"
     :profile-id="profileId"
+    :is-paginated="false"
     is-image-small
     is-link-to-library
   />

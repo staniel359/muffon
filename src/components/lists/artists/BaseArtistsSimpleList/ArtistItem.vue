@@ -170,7 +170,8 @@ export default {
     isWithClearButton: Boolean,
     isImageSmall: Boolean,
     isBookmark: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isPaginated: Boolean
   },
   emits: [
     'linkClick',
@@ -201,10 +202,11 @@ export default {
       return !!this.artistData.isDeleted
     },
     item () {
-      return (
-        this.paginationItem ||
-          this.listItem
-      )
+      if (this.isPaginated) {
+        return this.paginationItem
+      } else {
+        return this.listItem
+      }
     },
     paginationItem () {
       return this.findPaginationItem(
