@@ -1,29 +1,47 @@
 <template>
   <div class="tags-section">
     <div class="ui labels">
-      <TagItem
+      <BaseFilterItemLabel
         v-for="tagData in tags"
         :key="tagData.uuid"
-        :tag-data="tagData"
+        :filter-item-data="tagData"
+        @delete-icon-click="handleDeleteIconClick"
       />
     </div>
   </div>
 </template>
 
 <script>
-import TagItem from './TagsSection/TagItem.vue'
+import BaseFilterItemLabel from '*/components/BaseFilterItemLabel.vue'
 
 export default {
   name: 'TagsSection',
   components: {
-    TagItem
+    BaseFilterItemLabel
   },
+  inject: [
+    'deleteCollectionItem'
+  ],
   props: {
     tags: {
       type: Array,
       default () {
         return []
       }
+    }
+  },
+  methods: {
+    handleDeleteIconClick (
+      {
+        uuid
+      }
+    ) {
+      this.deleteCollectionItem(
+        {
+          collection: 'tags',
+          uuid
+        }
+      )
     }
   }
 }

@@ -1,7 +1,11 @@
 <template>
   <BaseLabel
+    class="primary large main-filter-item-label"
     icon="close"
     :text="name"
+    :is-basic="false"
+    :is-inverted="false"
+    is-circular
     is-reverse
     @icon-click="handleDeleteIconClick"
   />
@@ -11,32 +15,32 @@
 import BaseLabel from '*/components/BaseLabel.vue'
 
 export default {
-  name: 'CollectionItem',
+  name: 'BaseFilterItemLabel',
   components: {
     BaseLabel
   },
-  inject: [
-    'deleteCollectionItem'
-  ],
   props: {
-    collectionItemData: {
+    filterItemData: {
       type: Object,
       required: true
     }
   },
+  emits: [
+    'deleteIconClick'
+  ],
   computed: {
     name () {
-      return this.collectionItemData.name
+      return this.filterItemData.name
     },
     uuid () {
-      return this.collectionItemData.uuid
+      return this.filterItemData.uuid
     }
   },
   methods: {
     handleDeleteIconClick () {
-      this.deleteCollectionItem(
+      this.$emit(
+        'deleteIconClick',
         {
-          collection: 'collection',
           uuid: this.uuid
         }
       )

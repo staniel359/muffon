@@ -1,29 +1,47 @@
 <template>
   <div class="collection-list">
     <div class="ui labels">
-      <CollectionItem
+      <BaseFilterItemLabel
         v-for="collectionItemData in collection"
         :key="collectionItemData.uuid"
-        :collection-item-data="collectionItemData"
+        :filter-item-data="collectionItemData"
+        @delete-icon-click="handleDeleteIconClick"
       />
     </div>
   </div>
 </template>
 
 <script>
-import CollectionItem from './CollectionList/CollectionItem.vue'
+import BaseFilterItemLabel from '*/components/BaseFilterItemLabel.vue'
 
 export default {
   name: 'CollectionList',
   components: {
-    CollectionItem
+    BaseFilterItemLabel
   },
+  inject: [
+    'deleteCollectionItem'
+  ],
   props: {
     collection: {
       type: Array,
       default () {
         return []
       }
+    }
+  },
+  methods: {
+    handleDeleteIconClick (
+      {
+        uuid
+      }
+    ) {
+      this.deleteCollectionItem(
+        {
+          collection: 'collection',
+          uuid
+        }
+      )
     }
   }
 }

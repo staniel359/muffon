@@ -1,8 +1,10 @@
 <template>
   <div
-    class="ui basic label main-label"
+    class="ui label main-label"
     :class="{
-      inverted: isDarkMode
+      inverted: isInverted && isDarkMode,
+      basic: isBasic,
+      circular: isCircular
     }"
   >
     <div
@@ -44,6 +46,15 @@ export default {
     BaseIcon
   },
   props: {
+    isBasic: {
+      type: Boolean,
+      default: true
+    },
+    isInverted: {
+      type: Boolean,
+      default: true
+    },
+    isCircular: Boolean,
     icon: String,
     text: String,
     isReverse: Boolean,
