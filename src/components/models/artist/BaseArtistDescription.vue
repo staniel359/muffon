@@ -1,17 +1,15 @@
 <template>
-  <template v-if="description">
-    <BaseDescription
-      :description="description"
-      :is-more="isMore"
-      @more-click="handleMoreClick"
-    />
+  <BaseDescription
+    :description="description"
+    :is-more="isMore"
+    @more-click="handleMoreClick"
+  />
 
-    <BaseArtistDescriptionModal
-      v-if="isMore"
-      ref="modal"
-      :artist-name="artistName"
-    />
-  </template>
+  <BaseArtistDescriptionModal
+    v-if="isMore"
+    ref="modal"
+    :artist-name="artistName"
+  />
 </template>
 
 <script>

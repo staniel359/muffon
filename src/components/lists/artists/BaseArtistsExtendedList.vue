@@ -4,6 +4,7 @@
       v-for="artistData in artistsCollection"
       :key="artistData.uuid"
       :artist-data="artistData"
+      :response-data="artistData.responseData"
       :is-with-library="isWithLibrary"
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"

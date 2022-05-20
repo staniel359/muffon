@@ -1,7 +1,8 @@
 <template>
   <BaseArtistContainer
     ref="artist"
-    :artist-name="artistName"
+    :is-get-data="!responseData"
+    :request-artist-data="artistData"
   >
     <template #default="slotProps">
       <BaseArtistHorizontalCardContainer
@@ -12,7 +13,7 @@
         :error="slotProps.error"
         @refresh="handleRefresh"
       >
-        <template v-if="slotProps.artistData">
+        <template v-if="responseData">
           <BaseDeletedBlock
             v-if="isDeleted"
             model="recommendation"
@@ -69,19 +70,19 @@
               />
 
               <BaseCounters
-                :listeners-count="slotProps.artistData.listeners_count"
-                :plays-count="slotProps.artistData.plays_count"
+                :listeners-count="listenersCount"
+                :plays-count="playsCount"
               />
 
               <BaseArtistTags
-                :artist-data="slotProps.artistData"
+                :artist-data="responseData"
               />
 
-              <template v-if="slotProps.artistData.description">
+              <template v-if="description">
                 <BaseDivider />
 
                 <BaseArtistDescription
-                  :artist-data="slotProps.artistData"
+                  :artist-data="responseData"
                 />
               </template>
 
@@ -141,11 +142,17 @@ export default {
   mixins: [
     selfMixin
   ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     artistData: {
       type: Object,
       required: true
     },
+    responseData: Object,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -163,7 +170,7 @@ export default {
       return this.artistData
     },
     artistName () {
-      return this.artistData.name
+      return this.responseData.name
     },
     imageData () {
       return this.artistData.image
@@ -173,8 +180,27 @@ export default {
     },
     shareData () {
       return formatArtistShareData(
-        this.artistData
+        this.responseData
       )
+    },
+    paginationItem () {
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
+    },
+    uuid () {
+      return this.artistData.uuid
+    },
+    listenersCount () {
+      return this.responseData.listeners_count
+    },
+    playsCount () {
+      return this.responseData.plays_count
+    },
+    description () {
+      return this.responseData.description
     }
   },
   methods: {
@@ -186,9 +212,7 @@ export default {
     handleImageLoadEnd (
       value
     ) {
-      if (this.paginationItem) {
-        this.paginationItem.image = value
-      }
+      this.paginationItem.image = value
     },
     handleDeleteOptionClick () {
       this.showRecommendationDeleteModal()
