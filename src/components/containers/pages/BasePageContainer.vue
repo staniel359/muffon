@@ -1,7 +1,7 @@
 <template>
   <div ref="page">
     <BaseErrorMessage
-      v-if="isError"
+      v-if="isPageError"
       :error="error"
     />
     <slot
@@ -11,6 +11,12 @@
 </template>
 
 <script>
+import {
+  ipcRenderer
+} from 'electron'
+import {
+  mapState
+} from 'vuex'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import {
   toggleLoaderDimmer
@@ -30,24 +36,37 @@ export default {
     'init'
   ],
   computed: {
-    isError () {
-      return !!(
+    ...mapState(
+      'layout',
+      [
+        'tabId'
+      ]
+    ),
+    isPageLoading () {
+      return (
         !this.responseData &&
-          this.error
+          this.isLoading
+      )
+    },
+    isPageError () {
+      return (
+        !this.responseData &&
+          !!this.error
       )
     }
   },
   watch: {
-    isLoading: {
+    isPageLoading: {
       immediate: true,
-      handler: 'handleIsLoadingChange'
+      handler: 'handleIsPageLoadingChange'
+    },
+    isPageError: {
+      immediate: true,
+      handler: 'handleIsPageErrorChange'
     }
   },
   mounted () {
-    window.scrollTo(
-      0,
-      0
-    )
+    this.scrollToTop()
 
     this.$emit(
       'init',
@@ -55,11 +74,43 @@ export default {
     )
   },
   methods: {
-    handleIsLoadingChange (
+    handleIsPageLoadingChange (
       value
     ) {
       toggleLoaderDimmer(
-        !this.responseData && value
+        value
+      )
+
+      this.updateTabLoading()
+    },
+    handleIsPageErrorChange (
+      value
+    ) {
+      this.updateTabError()
+    },
+    scrollToTop () {
+      window.scrollTo(
+        0,
+        0
+      )
+    },
+    updateTabLoading () {
+      ipcRenderer.send(
+        'update-tab',
+        {
+          tabId: this.tabId,
+          isLoading:
+            this.isPageLoading
+        }
+      )
+    },
+    updateTabError () {
+      ipcRenderer.send(
+        'update-tab',
+        {
+          tabId: this.tabId,
+          isError: this.isPageError
+        }
       )
     }
   }
