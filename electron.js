@@ -78,9 +78,11 @@ if (isDevelopment) {
 
 const i18n = {
   en: {
-    show: 'Show',
-    hide: 'Hide',
-    exit: 'Exit',
+    tray: {
+      show: 'Show',
+      hide: 'Hide',
+      exit: 'Exit'
+    },
     update: {
       message (
         version
@@ -94,14 +96,18 @@ const i18n = {
     }
   },
   it: {
-    show: 'Mostra',
-    hide: 'Nascondi',
-    exit: 'Esci'
+    tray: {
+      show: 'Mostra',
+      hide: 'Nascondi',
+      exit: 'Esci'
+    }
   },
   ru: {
-    show: 'Открыть',
-    hide: 'Скрыть',
-    exit: 'Выйти',
+    tray: {
+      show: 'Открыть',
+      hide: 'Скрыть',
+      exit: 'Выйти'
+    },
     update: {
       message (
         version
@@ -646,26 +652,27 @@ function createHeadersHandler () {
 }
 
 function setTrayMenu () {
-  const showHideKey =
-    mainWindow.isVisible() ? 'hide' : 'show'
+  const localeData =
+    i18n[language].tray
 
-  const showHideText =
-    i18n[language][showHideKey]
+  const isVisible =
+    mainWindow.isVisible()
 
-  const showHideAction =
-    mainWindow.isVisible() ? hide : show
+  const toggleKey =
+    isVisible ? 'hide' : 'show'
 
-  const exitText = i18n[language].exit
+  const toggleAction =
+    isVisible ? hide : show
 
   const menuItems = [
     {
       type: 'normal',
-      label: showHideText,
-      click: showHideAction
+      label: localeData[toggleKey],
+      click: toggleAction
     },
     {
       type: 'normal',
-      label: exitText,
+      label: localeData.exit,
       click: exit
     }
   ]
@@ -721,8 +728,7 @@ function handleUpdateCheckSuccess (
   latestRelease = response.data[0]
   latestVersion = latestRelease.name
 
-  const currentVersion =
-    app.getVersion()
+  const currentVersion = app.getVersion()
 
   const isNewVersionAvailable = (
     latestVersion !==
@@ -735,8 +741,10 @@ function handleUpdateCheckSuccess (
 }
 
 function showNewVersionNotification () {
-  const localeData =
-    i18n[language].update
+  const localeData = (
+    i18n[language].update ||
+      i18n.en.update
+  )
 
   const options = {
     type: 'info',
