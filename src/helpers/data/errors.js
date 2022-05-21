@@ -1,115 +1,73 @@
-import i18n from '*/plugins/i18n'
-
 const redCloseCornerIcon =
   'red bottom right corner close'
 
 export default {
   badRequest: {
+    id: 'badRequest',
     code: 400,
     icons: [
       'ban'
     ],
-    header: i18n.global.t(
-      'errors.badRequest.header'
-    ),
-    content: i18n.global.t(
-      'errors.badRequest.content'
-    ),
     isRefreshable: false
   },
   forbidden: {
+    id: 'forbidden',
     code: 403,
     icons: [
       'close'
     ],
-    header: i18n.global.t(
-      'errors.forbidden.header'
-    ),
-    content: i18n.global.t(
-      'errors.forbidden.content'
-    ),
     isRefreshable: false
   },
   notFound: {
+    id: 'notFound',
     code: 404,
     icons: [
       'search'
     ],
-    header: i18n.global.t(
-      'errors.notFound.header'
-    ),
-    content: i18n.global.t(
-      'errors.notFound.content'
-    ),
     isRefreshable: false
   },
   internalServer: {
+    id: 'internalServer',
     code: 500,
     icons: [
       'server',
       redCloseCornerIcon
     ],
-    header: i18n.global.t(
-      'errors.internalServer.header'
-    ),
-    content: i18n.global.t(
-      'errors.internalServer.content'
-    ),
     isRefreshable: false
   },
   badGateway: {
+    id: 'badGateway',
     code: 502,
     icons: [
       'server',
       redCloseCornerIcon
     ],
-    header: i18n.global.t(
-      'errors.badGateway.header'
-    ),
-    content: i18n.global.t(
-      'errors.badGateway.content'
-    ),
     isRefreshable: true
   },
   gatewayTimeout: {
+    id: 'gatewayTimeout',
     code: 504,
     icons: [
       'hourglass end',
       redCloseCornerIcon
     ],
-    header: i18n.global.t(
-      'errors.gatewayTimeout.header'
-    ),
-    content: i18n.global.t(
-      'errors.gatewayTimeout.content'
-    ),
     isRefreshable: true
   },
   connection: {
+    id: 'connection',
     code: 0,
     icons: [
       'wifi',
       redCloseCornerIcon
     ],
-    header: i18n.global.t(
-      'errors.connection.header'
-    ),
-    content: i18n.global.t(
-      'errors.connection.content'
-    ),
     isRefreshable: true
   },
   client: {
+    id: 'client',
     icons: [
       'window maximize outline',
       redCloseCornerIcon
     ],
-    header: i18n.global.t(
-      'errors.client.header'
-    ),
-    content: i18n.global.t(
-      'errors.client.content'
-    ),
     isRefreshable: false
   }
 }

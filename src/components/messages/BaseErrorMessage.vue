@@ -52,10 +52,17 @@ export default {
       return this.errorData.icons
     },
     header () {
-      return this.errorData.header
+      return this.$t(
+        `errors.${this.errorId}.header`
+      )
+    },
+    errorId () {
+      return this.errorData.id
     },
     content () {
-      return this.errorData.content
+      return this.$t(
+        `errors.${this.errorId}.content`
+      )
     },
     buttonData () {
       if (this.isRenderRefreshButton) {
