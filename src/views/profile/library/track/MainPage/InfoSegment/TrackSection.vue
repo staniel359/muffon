@@ -1,6 +1,6 @@
 <template>
   <BaseTrackLinkContainer
-    class="main-link"
+    class="main-link main-profile-page-info"
     :track-data="trackData"
   >
     <BaseImage

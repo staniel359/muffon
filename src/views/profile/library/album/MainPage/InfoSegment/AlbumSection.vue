@@ -1,6 +1,6 @@
 <template>
   <BaseAlbumLinkContainer
-    class="main-link"
+    class="main-link main-profile-page-info"
     :album-data="albumData"
   >
     <BaseImage
