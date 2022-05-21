@@ -1,10 +1,18 @@
 # muffon
 [![main](https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/staniel359/muffon/actions/workflows/main.yml)
 
-### Announcement
-The server is not working now due to technical difficulties. My apologies.
+### Good news
+The server is working. 🎉
 
-![muffon](https://i.ibb.co/M8GsTfr/2021-12-30-16-47-24.png)
+I'm really sorry that you had to wait for quite a long time. There were certain difficulties that didn't allow to restart the project in time.
+
+But now everything's set up and the [new version](https://github.com/staniel359/muffon/releases/tag/v0.1.0) with new features is available now!
+
+And I'm finally coming out of beta, but there may be some bugs, of course.
+
+Also old versions won't work anymore. Please download the newest one.
+
+![muffon](https://i.ibb.co/b2fLF6V/2022-05-20-23-12-01.png)
 
 ## Description
 **muffon** is a desktop music streaming browser.
@@ -44,12 +52,12 @@ It has **no ads** and is **absolutely free** to use.
 - following
 - messaging
 - feed
-
-### Upcoming features
 - communities
 - new / upcoming releases
 - multitag search
-- sharing (artists / albums / tracks / playlists / videos)
+- sharing (artists / albums / tracks / videos / playlists / communities)
+
+### Upcoming features
 - top (based on location)
 - music labels (artists / albums)
 - offline listening
@@ -71,7 +79,7 @@ It has **no ads** and is **absolutely free** to use.
 - Linux
 
 ## Download
-[Latest (v0.1.0-beta.1)](https://github.com/staniel359/muffon/releases/tag/v0.1.0-beta.1)
+[Latest (v0.1.0)](https://github.com/staniel359/muffon/releases/tag/v0.1.0)
 
 ## Support
 
