@@ -40,7 +40,7 @@ const iconPath =
   path.join(
     __dirname,
     publicPath,
-    'icon.png'
+    'logo.png'
   )
 
 const icon =
