@@ -34,6 +34,7 @@ export default {
       default: true
     },
     scope: String,
+    country: String,
     limit: Number
   },
   data () {
@@ -62,9 +63,13 @@ export default {
     topArgs () {
       return {
         scope: this.scope,
+        country: this.country,
         limit: this.limit
       }
     }
+  },
+  watch: {
+    country: 'handleCountryChange'
   },
   mounted () {
     this.setNavigation()
@@ -77,6 +82,9 @@ export default {
   },
   methods: {
     getTop,
+    handleCountryChange () {
+      this.getData()
+    },
     getData (
       {
         page

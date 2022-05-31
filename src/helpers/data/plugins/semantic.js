@@ -145,6 +145,7 @@ export function mainDropdownOptions (
   )
 
   return {
+    forceSelection: false,
     on: 'hover',
     duration: 150,
     context,

@@ -2,6 +2,8 @@
   <BaseTopPaginatedPageContainer
     :scope="scope"
     :limit="limit"
+    is-with-top-segment
+    is-with-country-select
   >
     <template #default="slotProps">
       <BaseTagsList

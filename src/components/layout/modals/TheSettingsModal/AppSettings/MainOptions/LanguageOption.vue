@@ -11,7 +11,8 @@
 
 <script>
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseLanguageDropdown from '*/components/BaseLanguageDropdown.vue'
+import BaseLanguageDropdown
+  from '*/components/dropdowns/BaseLanguageDropdown.vue'
 
 export default {
   name: 'LanguageOption',

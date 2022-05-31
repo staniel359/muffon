@@ -11,20 +11,27 @@
     <BaseIcon
       v-if="isOnlyIcon"
       class="colored main-dropdown-icon"
-      :icon="selected"
+      :icon="value"
     />
     <div
       v-else
       class="text main-dropdown-item"
       :class="{
-        inverted: isDarkMode
+        inverted: isDarkMode,
+        default: isFormField
       }"
     >
-      <BaseHeader
-        v-if="header"
-        tag="h5"
-        :text="header"
-      />
+      <template v-if="header">
+        <div
+          v-if="isFormField"
+          v-text="header"
+        />
+        <BaseHeader
+          v-else
+          tag="h5"
+          :text="header"
+        />
+      </template>
     </div>
 
     <BaseIcon
@@ -32,6 +39,8 @@
       :is-loading="isLoading"
       :is-error="isError"
     />
+
+    <slot name="input" />
 
     <div
       class="menu"
@@ -68,19 +77,21 @@ export default {
       type: Boolean,
       default: true
     },
+    selected: String,
     isOnlyIcon: Boolean,
     header: String,
     isDisabled: Boolean,
     isLoading: Boolean,
     isError: Boolean,
-    menuDirection: String
+    menuDirection: String,
+    isFormField: Boolean
   },
   emits: [
     'select'
   ],
   data () {
     return {
-      selected: null
+      value: null
     }
   },
   computed: {
@@ -98,32 +109,36 @@ export default {
       )
     }
   },
-  async mounted () {
-    await this.$nextTick()
-
+  watch: {
+    selected: {
+      immediate: true,
+      handler: 'handleSelectedChange'
+    }
+  },
+  mounted () {
     setDropdown(
       this.$refs.dropdown,
       this.dropdownOptions
     )
   },
   methods: {
-    handleSelect (
-      value
-    ) {
-      this.selected = value
-
-      this.$emit(
-        'select',
-        value
-      )
-    },
-    async setValue (
+    async handleSelectedChange (
       value
     ) {
       await this.$nextTick()
 
       setDropdownValue(
         this.$refs.dropdown,
+        value
+      )
+    },
+    handleSelect (
+      value
+    ) {
+      this.value = value
+
+      this.$emit(
+        'select',
         value
       )
     },

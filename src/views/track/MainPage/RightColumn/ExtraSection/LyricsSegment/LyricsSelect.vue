@@ -45,29 +45,19 @@ export default {
   },
   computed: {
     headerText () {
-      if (this.isError) {
-        return this.errorText
-      } else {
-        return this.headerKeyText
-      }
-    },
-    errorText () {
       return this.$t(
-        'error'
-      )
-    },
-    headerKeyText () {
-      return this.$t(
-        `lyrics.${this.headerKey}`
+        this.headerKey
       )
     },
     headerKey () {
-      if (this.isLoading) {
+      if (this.isError) {
+        return 'error'
+      } else if (this.isLoading) {
         return 'loading'
       } else if (!this.isAnyTracks) {
-        return 'empty'
+        return 'noCollection.header.lyrics'
       } else {
-        return 'select'
+        return 'select.lyrics'
       }
     },
     isAnyTracks () {

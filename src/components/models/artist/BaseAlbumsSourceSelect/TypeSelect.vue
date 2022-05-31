@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
-    ref="dropdown"
     class="main-source-select-type-select"
+    selected="0"
   >
     <TypesList
       :types="types"
@@ -30,21 +30,6 @@ export default {
     this.setSelectedTypeId(
       'album'
     )
-
-    this.setDropdownValue(
-      0
-    )
-  },
-  methods: {
-    setDropdownValue (
-      value
-    ) {
-      this.$refs
-        .dropdown
-        .setValue(
-          value
-        )
-    }
   }
 }
 </script>

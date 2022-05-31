@@ -302,16 +302,19 @@
       "files": "{count} file | {count} files"
     }
   },
+  "select": {
+    "source": "Select source:",
+    "type": "Select type:",
+    "album": "Select album:",
+    "albumVarious": "Select V/A album:",
+    "group": "Select album group:",
+    "artist": "Select artist:",
+    "track": "Select track:",
+    "country": "Select country:",
+    "video": "Select video:",
+    "lyrics": "Select lyrics:"
+  },
   "sources": {
-    "select": {
-      "source": "Select source:",
-      "type": "Select type:",
-      "album": "Select album:",
-      "albumVarious": "Select V/A album:",
-      "group": "Select album group:",
-      "artist": "Select artist:",
-      "track": "Select track:"
-    },
     "streamable": "Streamable",
     "other": "Other",
     "albumTypes": {
@@ -389,16 +392,6 @@
   },
   "track": {
     "source": "Via {source}"
-  },
-  "videos": {
-    "loading": "Loading videos...",
-    "select": "Select video:",
-    "empty": "No videos"
-  },
-  "lyrics": {
-    "loading": "Loading lyrics...",
-    "select": "Select lyrics:",
-    "empty": "No lyrics"
   },
   "recommended": {
     "header": "Recommended to you",
@@ -506,7 +499,8 @@
       "communities": "No communities",
       "members": "No members",
       "videos": "No videos",
-      "related": "No related"
+      "related": "No related",
+      "lyrics": "No lyrics"
     },
     "content": "Looks like there is nothing here"
   },

@@ -46,7 +46,8 @@ import BaseProfileSignupForm
   from '*/components/forms/profile/BaseProfileSignupForm.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseLanguageDropdown from '*/components/BaseLanguageDropdown.vue'
+import BaseLanguageDropdown
+  from '*/components/dropdowns/BaseLanguageDropdown.vue'
 
 export default {
   name: 'TheAuthentication',

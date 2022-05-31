@@ -3,11 +3,16 @@ import getRequest from '*/helpers/actions/api/request/get'
 export default function (
   {
     scope,
+    country,
     page,
     limit
   }
 ) {
   const url = `/lastfm/top/${scope}`
+
+  const params = {
+    country
+  }
 
   const handleSuccess = (
     response
@@ -21,6 +26,7 @@ export default function (
   )(
     {
       url,
+      params,
       isWithSelfId: true,
       page,
       limit,

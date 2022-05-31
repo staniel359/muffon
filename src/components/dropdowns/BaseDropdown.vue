@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    ref="dropdown"
+    :selected="selected"
     :is-selection="isSelection"
     :is-only-icon="isOnlyIcon"
     :menu-direction="menuDirection"
@@ -58,15 +58,6 @@ export default {
       return formatCollection(
         this.options
       )
-    }
-  },
-  mounted () {
-    if (this.selected) {
-      this.$refs
-        .dropdown
-        .setValue(
-          this.selected
-        )
     }
   },
   methods: {

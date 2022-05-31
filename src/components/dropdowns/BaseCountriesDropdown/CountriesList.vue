@@ -1,11 +1,9 @@
 <template>
-  <div class="menu">
-    <CountryItem
-      v-for="countryData in countriesList"
-      :key="countryData[0]"
-      :country-data="countryData"
-    />
-  </div>
+  <CountryItem
+    v-for="countryData in countriesList"
+    :key="countryData[0]"
+    :country-data="countryData"
+  />
 </template>
 
 <script>

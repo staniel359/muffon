@@ -2,10 +2,12 @@
   <BaseTopPageContainer
     ref="page"
     :scope="scope"
+    :country="country"
     :limit="limit"
   >
     <template #default="pageSlotProps">
       <BasePaginatedPageContainer
+        ref="pagination"
         :response-data="pageSlotProps.topData"
         :is-loading="pageSlotProps.isLoading"
         :error="pageSlotProps.error"
@@ -15,6 +17,17 @@
         :is-with-view-change="isWithViewChange"
         :view-index="viewIndex"
       >
+        <template
+          v-if="isWithCountrySelect"
+          #top
+        >
+          <CountrySelectBlock
+            :country="country"
+            @select="handleCountrySelect"
+            @clear-button-click="handleCountryClearButtonClick"
+          />
+        </template>
+
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
@@ -29,13 +42,16 @@
 import BaseTopPageContainer from './BaseTopPageContainer.vue'
 import BasePaginatedPageContainer
   from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+import CountrySelectBlock
+  from './BaseTopPaginatedPageContainer/CountrySelectBlock.vue'
 import paginatedPageMixin from '*/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseTopPaginatedPageContainer',
   components: {
     BaseTopPageContainer,
-    BasePaginatedPageContainer
+    BasePaginatedPageContainer,
+    CountrySelectBlock
   },
   mixins: [
     paginatedPageMixin
@@ -44,8 +60,30 @@ export default {
     scope: String,
     limit: Number,
     isWithTopSegment: Boolean,
+    isWithCountrySelect: Boolean,
     isWithViewChange: Boolean,
     viewIndex: Number
+  },
+  data () {
+    return {
+      country: null
+    }
+  },
+  watch: {
+    country: 'handleCountryChange'
+  },
+  methods: {
+    handleCountrySelect (
+      value
+    ) {
+      this.country = value
+    },
+    handleCountryClearButtonClick () {
+      this.country = null
+    },
+    handleCountryChange () {
+      this.reset()
+    }
   }
 }
 </script>

@@ -30,7 +30,7 @@ export default {
   computed: {
     headerText () {
       return this.$t(
-        `sources.select.${this.typeId}`
+        `select.${this.typeId}`
       )
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <BaseDropdownContainer
-    ref="dropdown"
     class="main-source-select"
+    :selected="playerSource"
   >
     <SourcesList />
   </BaseDropdownContainer>
@@ -28,25 +28,6 @@ export default {
         playerSource: 'source'
       }
     )
-  },
-  watch: {
-    playerSource: {
-      immediate: true,
-      handler: 'handlePlayerSourceChange'
-    }
-  },
-  methods: {
-    async handlePlayerSourceChange (
-      value
-    ) {
-      await this.$nextTick()
-
-      this.$refs
-        .dropdown
-        .setValue(
-          value
-        )
-    }
   }
 }
 </script>
