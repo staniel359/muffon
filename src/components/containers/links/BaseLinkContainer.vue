@@ -1,6 +1,6 @@
 <template>
   <RouterLink
-    class="main-link-container"
+    class="ui main-link-container"
     :to="link"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"

@@ -154,6 +154,10 @@ p
     &.circular
       padding: 0.5em 1em !important
 
+.ui.toast
+  &.inverted
+    border: $borderInverted
+
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center
 
@@ -231,18 +235,15 @@ p
 .main-link
   @extend .cursor-pointer
   &:hover
-    @extend .main-link-active
+    @extend .text-color-base
   &:not(.label)
     @extend .text-color-unset
-
-.main-link-active
-  @extend .text-color-base
 
 .main-link-container
   @extend .text-color-unset, .cursor-pointer
   &:hover
     .link
-      @extend .main-link-active
+      @extend .text-color-base
 
 .main-text-container
   @extend .word-break-break-word
@@ -410,6 +411,7 @@ p
     height: 20px
 
 .main-settings-options-block
+  @extend .relative
   &:not(:first-child)
     margin-top: 1em
   & > .divider.horizontal

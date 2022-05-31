@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-source-select-track-select
+.main-source-select
   @extend .no-margin
   ::v-deep(.image)
     width: 40px
