@@ -79,8 +79,8 @@ export default {
         this.exit()
       }
     },
-    setOffline () {
-      updateOnline(
+    async setOffline () {
+      await updateOnline(
         {
           isOnline: false
         }
