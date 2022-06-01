@@ -4,7 +4,7 @@
     :class="{
       disabled: isLoading
     }"
-    @click.prevent="handleClick"
+    @click="handleClick"
   >
     <BaseIcon
       :icon="icon"

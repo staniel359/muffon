@@ -5,7 +5,7 @@
       disabled: isLoading,
       active: isActive
     }"
-    @click.prevent="handleClick"
+    @click="handleClick"
   >
     <BaseImage
       class="rounded bordered"

@@ -1,5 +1,6 @@
 <template>
-  <RouterLink
+  <Component
+    :is="component"
     class="ui main-link-container"
     :to="link"
     @mouseenter="handleMouseEnter"
@@ -9,7 +10,7 @@
     @auxclick.exact.stop="handleMiddleClick"
   >
     <slot />
-  </RouterLink>
+  </Component>
 </template>
 
 <script>
@@ -23,22 +24,19 @@ import {
 export default {
   name: 'BaseLinkContainer',
   props: {
-    link: {
-      type: Object,
-      default () {
-        return {}
-      }
-    }
+    link: Object
   },
   emits: [
     'click',
     'activeChange'
   ],
   computed: {
-    isLinkPresent () {
-      return Object.keys(
-        this.link
-      ).length
+    component () {
+      if (this.link) {
+        return 'RouterLink'
+      } else {
+        return 'a'
+      }
     }
   },
   methods: {
@@ -54,12 +52,9 @@ export default {
         false
       )
     },
-    handleClick (
-      event
-    ) {
+    handleClick () {
       this.$emit(
-        'click',
-        event
+        'click'
       )
     },
     handleCtrlClick () {
@@ -69,7 +64,7 @@ export default {
       this.openNewTab()
     },
     openNewTab () {
-      if (this.isLinkPresent) {
+      if (this.link) {
         const tab = this.getTabData()
 
         ipcRenderer.send(

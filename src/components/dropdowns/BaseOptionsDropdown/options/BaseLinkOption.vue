@@ -2,7 +2,7 @@
   <BaseLinkContainer
     class="item main-link"
     :link="link"
-    @click.prevent="handleClick"
+    @click="handleClick"
   >
     <BaseIcon
       :icon="icon"

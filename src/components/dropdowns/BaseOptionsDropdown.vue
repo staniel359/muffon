@@ -11,7 +11,6 @@
         'main-options-dropdown-button',
         buttonColor
       ]"
-      @click.prevent
       @init="handleDropdownInit"
     >
       <BaseIcon

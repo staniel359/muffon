@@ -18,7 +18,7 @@
     <BaseLabelLinkContainer
       v-if="isMore"
       class="more-container"
-      @click.prevent="handleMoreClick"
+      @click="handleMoreClick"
     >
       <BaseIcon
         class="link"
