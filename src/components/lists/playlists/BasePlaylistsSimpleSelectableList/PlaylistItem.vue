@@ -65,16 +65,10 @@ export default {
       type: Object,
       required: true
     },
-    trackTitle: {
-      type: String,
+    trackData: {
+      type: Object,
       required: true
-    },
-    artistName: {
-      type: String,
-      required: true
-    },
-    albumTitle: String,
-    imageUrl: String
+    }
   },
   data () {
     return {
@@ -121,11 +115,23 @@ export default {
       return {
         playlistId: this.playlistId,
         trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl,
+        artistName: this.trackArtistName,
+        albumTitle: this.trackAlbumTitle,
+        imageUrl: this.trackImageUrl,
         isSelectable: true
       }
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
+    trackArtistName () {
+      return this.trackData.artist.name
+    },
+    trackAlbumTitle () {
+      return this.trackData.album?.title
+    },
+    trackImageUrl () {
+      return this.trackData.image?.large
     },
     paginationItem () {
       return this.findPaginationItem(

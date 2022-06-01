@@ -11,10 +11,7 @@
     <template #default="slotProps">
       <BasePlaylistsSimpleSelectableList
         :playlists="slotProps[scope]"
-        :track-title="trackTitle"
-        :artist-name="artistName"
-        :album-title="albumTitle"
-        :image-url="imageUrl"
+        :track-data="trackData"
       />
     </template>
   </BasePaginatedSegmentModalContainer>
@@ -41,10 +38,7 @@ export default {
     modalMixin
   ],
   props: {
-    trackTitle: String,
-    artistName: String,
-    albumTitle: String,
-    imageUrl: String
+    trackData: Object
   },
   data () {
     return {
@@ -70,6 +64,12 @@ export default {
         trackTitle: this.trackTitle,
         artistName: this.artistName
       }
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
+    artistName () {
+      return this.trackData.artist.name
     }
   },
   methods: {

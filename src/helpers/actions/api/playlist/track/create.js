@@ -7,9 +7,7 @@ export default function (
     trackTitle,
     artistName,
     albumTitle,
-    image,
     imageUrl,
-    created,
     isSelectable
   }
 ) {
@@ -24,9 +22,7 @@ export default function (
     title: trackTitle,
     artist_name: artistName,
     album_title: albumTitle,
-    image,
-    image_url: imageUrl,
-    created_at: created
+    image_url: imageUrl
   }
 
   const handleSuccess = (

@@ -4,10 +4,7 @@
       v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"
       :playlist-data="playlistData"
-      :track-title="trackTitle"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageUrl"
+      :track-data="trackData"
     />
   </BaseListContainer>
 </template>
@@ -33,10 +30,7 @@ export default {
         return []
       }
     },
-    trackTitle: String,
-    artistName: String,
-    albumTitle: String,
-    imageUrl: String
+    trackData: Object
   },
   computed: {
     playlistsCollection () {

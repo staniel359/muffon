@@ -14,6 +14,7 @@
         model="album"
         :album-title="albumTitle"
         :artist-name="artistName"
+        :image-url="imageData?.large"
         :favorite-id="favoriteId"
         is-with-favorite-option
         is-with-delete-option
@@ -91,6 +92,9 @@ export default {
       ].join(
         ' - '
       )
+    },
+    imageData () {
+      return this.albumData.image
     }
   },
   mounted () {

@@ -15,6 +15,7 @@
         :track-title="trackTitle"
         :artist-name="artistName"
         :album-title="albumTitle"
+        :image-url="imageData?.large"
         :favorite-id="favoriteId"
         is-with-favorite-option
         is-with-playlist-option
@@ -25,10 +26,7 @@
 
       <BasePlaylistsModal
         ref="playlistsModal"
-        :track-title="trackTitle"
-        :artist-name="artistName"
-        :album-title="albumTitle"
-        :image-url="imageData?.large"
+        :track-data="trackData"
       />
 
       <BaseLibraryDeleteModal
