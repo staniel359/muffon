@@ -18,8 +18,8 @@ import {
 } from 'emoji-mart'
 import data from '@emoji-mart/data'
 import en from '@emoji-mart/data/i18n/en.json'
-import it from '*/helpers/data/plugins/emojiMart/locales/it.json'
-import ru from '*/helpers/data/plugins/emojiMart/locales/ru.json'
+import it from '@emoji-mart/data/i18n/it.json'
+import ru from '@emoji-mart/data/i18n/ru.json'
 
 export default {
   name: 'EmojiPicker',
