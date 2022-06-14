@@ -9,6 +9,7 @@
         :tracks="slotProps[scope]"
         :profile-id="profileId"
         is-with-artist-name
+        is-with-album-title
         is-link-to-library
         is-with-image
         @link-click="handleLinkClick"
