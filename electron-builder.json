@@ -8,7 +8,7 @@
   "mac": {
     "category": "public.app-category.music",
     "icon": "build/unix-icon.icns",
-    "target": "pkg"
+    "target": "dmg"
   },
   "linux": {
     "category": "Audio",
