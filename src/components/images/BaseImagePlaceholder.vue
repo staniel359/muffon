@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui image placeholder"
+    class="ui image placeholder main-image-placeholder"
     :class="{
       inverted: isDarkMode
     }"

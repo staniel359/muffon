@@ -1,7 +1,9 @@
 <template>
   <div class="album-page-left-column main-sticky-container">
-    <ImageSection
-      :album-data="albumData"
+    <BaseZoomableImage
+      model="album"
+      size="medium"
+      :image-data="imageData"
     />
 
     <div class="left-column-extra">
@@ -22,7 +24,7 @@
 </template>
 
 <script>
-import ImageSection from './LeftColumn/ImageSection.vue'
+import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
 import selfMixin from '*/mixins/selfMixin'
@@ -30,7 +32,7 @@ import selfMixin from '*/mixins/selfMixin'
 export default {
   name: 'LeftColumn',
   components: {
-    ImageSection,
+    BaseZoomableImage,
     HeaderSection,
     SelfSection
   },
@@ -47,6 +49,9 @@ export default {
   computed: {
     modelData () {
       return this.albumData
+    },
+    imageData () {
+      return this.albumData.image
     }
   },
   watch: {

@@ -25,7 +25,6 @@
 
       <div class="main-simple-card-image-container">
         <BaseArtistImage
-          class="circular bordered"
           size="small"
           :image-data="imageData"
           :artist-name="artistName"

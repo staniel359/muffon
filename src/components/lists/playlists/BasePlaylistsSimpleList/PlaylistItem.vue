@@ -256,5 +256,4 @@ export default {
     & > .description
       &.profile-nickname
         @extend .width-fit-content
-        margin-top: 0 !important
 </style>

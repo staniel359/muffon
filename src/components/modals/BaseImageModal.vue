@@ -17,7 +17,7 @@ import BaseImageModalContainer
 import BaseImage from '*/components/images/BaseImage.vue'
 
 export default {
-  name: 'BaseAlbumImageModal',
+  name: 'BaseImageModal',
   components: {
     BaseImageModalContainer,
     BaseImage

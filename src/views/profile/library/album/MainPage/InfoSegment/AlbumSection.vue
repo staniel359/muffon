@@ -1,15 +1,16 @@
 <template>
+  <div class="main-profile-page-image-container">
+    <BaseZoomableImage
+      model="album"
+      size="medium"
+      :image-data="imageData"
+    />
+  </div>
+
   <BaseAlbumLinkContainer
     class="main-link main-profile-page-info"
     :album-data="albumData"
   >
-    <BaseImage
-      class="rounded bordered main-profile-page-image"
-      model="album"
-      size="small"
-      :image="imageData?.medium"
-    />
-
     <BaseHeader
       class="link"
       tag="h3"
@@ -21,14 +22,14 @@
 <script>
 import BaseAlbumLinkContainer
   from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 
 export default {
   name: 'AlbumSection',
   components: {
     BaseAlbumLinkContainer,
-    BaseImage,
+    BaseZoomableImage,
     BaseHeader
   },
   props: {

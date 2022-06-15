@@ -1,24 +1,34 @@
 <template>
   <BaseImagePlaceholder
     v-if="isLoading"
+    :class="imageClass"
   />
   <InteractiveImage
     v-else-if="isRenderInteractive"
-    :artist-name="artistName"
+    :class="imageClass"
+    :image-data="responseImageData"
     :images="responseImages"
-    :image-data="responseImage"
+    :artist-name="artistName"
+  />
+  <BaseZoomableImage
+    v-else-if="isZoomable"
+    model="artist"
+    :image-data="imageDataComputed"
+    :size="size"
+    :is-circular="isCircular"
   />
   <BaseImage
     v-else
-    class="artist-image"
+    :class="imageClass"
     model="artist"
-    :image="imageConditional"
+    :image="imageComputed"
   />
 </template>
 
 <script>
 import BaseImagePlaceholder from '*/components/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
+import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import getArtist from '*/helpers/actions/api/artist/get'
 
@@ -27,6 +37,7 @@ export default {
   components: {
     BaseImagePlaceholder,
     InteractiveImage,
+    BaseZoomableImage,
     BaseImage
   },
   props: {
@@ -34,9 +45,14 @@ export default {
       type: String,
       required: true
     },
+    isCircular: {
+      type: Boolean,
+      default: true
+    },
     imageData: Object,
     artistName: String,
-    isInteractive: Boolean
+    isInteractive: Boolean,
+    isZoomable: Boolean
   },
   emits: [
     'loadEnd'
@@ -51,11 +67,11 @@ export default {
     isRenderInteractive () {
       return (
         this.isInteractive &&
-          this.responseImage &&
+          this.responseImageData &&
           this.responseImages?.length
       )
     },
-    responseImage () {
+    responseImageData () {
       return this.artistData?.image
     },
     responseImages () {
@@ -75,11 +91,23 @@ export default {
         return 'image'
       }
     },
-    imageConditional () {
+    imageComputed () {
+      return this.imageDataComputed?.[
+        this.size
+      ]
+    },
+    imageDataComputed () {
       return (
         this.imageData ||
-          this.responseImage
-      )?.[this.size]
+          this.responseImageData
+      )
+    },
+    imageClass () {
+      return {
+        bordered: true,
+        circular: this.isCircular,
+        rounded: !this.isCircular
+      }
     }
   },
   watch: {
@@ -87,7 +115,8 @@ export default {
       immediate: true,
       handler: 'handleArtistNameChange'
     },
-    responseImage: 'handleResponseImageChange'
+    responseImageData:
+      'handleResponseImageDataChange'
   },
   methods: {
     getArtist,
@@ -110,7 +139,7 @@ export default {
         this.getData()
       }
     },
-    handleResponseImageChange (
+    handleResponseImageDataChange (
       value
     ) {
       this.$emit(
@@ -145,7 +174,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.artist-image
-  @extend .object-fit-cover
-</style>
+<style lang="sass" scoped></style>

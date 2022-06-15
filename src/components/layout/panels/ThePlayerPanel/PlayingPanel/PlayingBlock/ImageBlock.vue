@@ -7,7 +7,7 @@
   />
   <BaseArtistImage
     v-else
-    class="circular bordered playing-image"
+    class="playing-image"
     :artist-name="artistName"
     :size="size"
   />

@@ -6,23 +6,26 @@
     ]"
   >
     <BaseSegmentContainer>
-      <BaseLinkContainer
-        class="main-profile-page-info"
-        :link="artistMainLink"
-      >
-        <BaseArtistImage
-          class="circular bordered main-profile-page-image"
-          size="medium"
-          :image-data="imageData"
-          :artist-name="artistName"
-        />
+      <div class="main-profile-page-info">
+        <div class="main-profile-page-image-container">
+          <BaseArtistImage
+            size="medium"
+            :image-data="imageData"
+            :artist-name="artistName"
+            is-zoomable
+          />
+        </div>
 
-        <BaseHeader
-          class="link"
-          tag="h3"
-          :text="artistName"
-        />
-      </BaseLinkContainer>
+        <BaseLinkContainer
+          :link="artistMainLink"
+        >
+          <BaseHeader
+            class="link"
+            tag="h3"
+            :text="artistName"
+          />
+        </BaseLinkContainer>
+      </div>
 
       <div
         v-if="favoriteId || isSelf"

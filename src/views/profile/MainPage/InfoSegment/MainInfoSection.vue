@@ -1,10 +1,13 @@
 <template>
   <div class="main-profile-page-info">
-    <BaseImage
-      class="circular bordered main-profile-page-image"
-      model="profile"
-      :image="imageData?.medium"
-    />
+    <div class="main-profile-page-image-container">
+      <BaseZoomableImage
+        model="profile"
+        size="medium"
+        :image-data="imageData"
+        is-circular
+      />
+    </div>
 
     <BaseHeader
       tag="h3"
@@ -25,7 +28,7 @@
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseProfileOnlineLabel
   from '*/components/models/profile/BaseProfileOnlineLabel.vue'
@@ -34,7 +37,7 @@ import BaseLabel from '*/components/BaseLabel.vue'
 export default {
   name: 'MainInfoSection',
   components: {
-    BaseImage,
+    BaseZoomableImage,
     BaseHeader,
     BaseProfileOnlineLabel,
     BaseLabel

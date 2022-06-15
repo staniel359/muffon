@@ -7,9 +7,10 @@
   >
     <div class="main-image-container">
       <BaseArtistImage
-        class="rounded bordered image-content"
+        class="image-content"
         size="medium"
         :artist-name="artistName"
+        :is-circular="false"
         is-interactive
       />
     </div>
@@ -53,6 +54,9 @@ export default {
 .image-segment
   @extend .no-margin
   padding: 0.5em
+
+::v-deep(.image-content)
+  @extend .h-100, .w-100
 
 .artist-name
   @extend .text-align-center

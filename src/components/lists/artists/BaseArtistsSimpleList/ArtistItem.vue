@@ -15,7 +15,6 @@
     />
     <template v-else>
       <BaseArtistImage
-        class="circular bordered"
         size="extrasmall"
         :class="{
           small: isImageSmall

@@ -7,11 +7,13 @@
           'main-playlist-info-item'
         ]"
       >
-        <BaseImage
-          class="playlist-image rounded bordered"
-          model="playlist"
-          :image="imageData?.small"
-        />
+        <div class="playlist-image-container">
+          <BaseZoomableImage
+            model="playlist"
+            size="small"
+            :image-data="imageData"
+          />
+        </div>
 
         <div class="content">
           <BaseHeader
@@ -60,7 +62,7 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
 import BaseOptionsDropdown
@@ -84,7 +86,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseListContainer,
-    BaseImage,
+    BaseZoomableImage,
     BaseHeader,
     BaseTimestamp,
     BaseOptionsDropdown,
@@ -164,7 +166,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.playlist-image
+.playlist-image-container
   width: 60px
   height: 60px
 

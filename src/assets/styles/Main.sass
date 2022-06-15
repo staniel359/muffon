@@ -42,6 +42,10 @@ p
     &:after
       @extend .background-transparent
 
+.scrolling.dimmable
+  & > .dimmer
+    justify-content: center
+
 .ui.modals
   @extend .no-padding
 
@@ -224,7 +228,6 @@ p
 
 .main-image-modal-content
   @extend .d-flex, .flex-column, .justify-content-center
-  height: 100vh
 
 .main-image-container
   @extend .relative
@@ -330,12 +333,10 @@ p
   &.main-playlist-info-item
     & > .main-options-dropdown-container
       @extend .align-self-center
-  &.main-community-info-item
-    & > .image
-      margin-right: 1em !important
+  &.main-community-info-item,
   &.main-playlist-info-item
-    & > .image
-      margin-right: 0.75em !important
+    & > .content
+      margin-left: 0.75em !important
 
 .main-message
   @extend .no-shadow, .no-margin
@@ -587,10 +588,12 @@ p
   width: 175px
   .main-profile-page-info
     @extend .d-flex, .flex-column, .align-items-center, .text-align-center, .word-break-break-word
-  .main-profile-page-image
+  .main-profile-page-image-container
     margin-bottom: 0.5em
     width: 120px
     height: 120px
+    & > .image
+      @extend .w-100, .h-100
 
 .main-profile-page-right-column
   @extend .flex-full
@@ -730,3 +733,10 @@ p
 .main-clear-button
   @extend .no-margin
   margin-left: 1em !important
+
+.main-zoomable-image
+  @extend .cursor-zoom-in
+
+.main-image-placeholder
+  &.bordered
+    border: 1px solid rgba(0,0,0,.1)

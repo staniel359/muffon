@@ -21,10 +21,11 @@
           <template v-else>
             <div class="artist-left-column">
               <BaseArtistImage
-                class="circular bordered artist-image"
+                class="artist-image"
                 size="medium"
                 :image-data="imageData"
                 :artist-name="artistName"
+                is-zoomable
                 @load-end="handleImageLoadEnd"
               />
 

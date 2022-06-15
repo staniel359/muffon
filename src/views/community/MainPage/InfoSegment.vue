@@ -12,11 +12,13 @@
           'main-community-info-item'
         ]"
       >
-        <BaseImage
-          class="community-image rounded bordered"
-          model="community"
-          :image="imageData?.small"
-        />
+        <div class="community-image-container">
+          <BaseZoomableImage
+            model="community"
+            size="small"
+            :image-data="imageData"
+          />
+        </div>
 
         <div class="content">
           <BaseHeader
@@ -80,7 +82,7 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseCommunityMembersModal
   from '*/components/modals/community/BaseCommunityMembersModal.vue'
@@ -102,7 +104,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseListContainer,
-    BaseImage,
+    BaseZoomableImage,
     BaseHeader,
     BaseCommunityMembersModal,
     BaseOptionsDropdown,
@@ -188,7 +190,7 @@ export default {
 .community-info-segment
   margin-bottom: 1.5em
 
-.community-image
+.community-image-container
   width: 75px
   height: 75px
 
