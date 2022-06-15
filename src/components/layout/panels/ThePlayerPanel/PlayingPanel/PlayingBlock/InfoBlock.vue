@@ -50,5 +50,6 @@ export default {
 
 <style lang="sass" scoped>
 .info-block
-  @extend .no-padding, .flex-full, .overflow-hidden
+  @extend .no-padding, .flex-full, .overflow-hidden, .d-flex, .flex-column, .justify-content-center
+  height: 60px
 </style>
