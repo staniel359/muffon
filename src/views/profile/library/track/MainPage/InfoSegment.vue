@@ -17,6 +17,7 @@
         />
 
         <AlbumSection
+          v-if="albumData"
           :track-data="trackData"
           :profile-id="profileId"
         />
@@ -60,6 +61,11 @@ export default {
   props: {
     profileId: String,
     trackData: Object
+  },
+  computed: {
+    albumData () {
+      return this.trackData.album
+    }
   }
 }
 </script>
