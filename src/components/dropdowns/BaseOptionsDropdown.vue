@@ -1,7 +1,8 @@
 <template>
-  <BaseLinkContainer
+  <div
     v-if="isAnyOptions"
     class="main-options-dropdown-container"
+    @click.prevent.stop
   >
     <BaseButtonContainer
       :class="[
@@ -37,15 +38,13 @@
         />
       </div>
     </BaseButtonContainer>
-  </BaseLinkContainer>
+  </div>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseButtonContainer
   from '*/components/containers/buttons/BaseButtonContainer.vue'
 import BaseIcon from '*/components/BaseIcon.vue'
@@ -73,7 +72,6 @@ import {
 export default {
   name: 'BaseOptionsDropdown',
   components: {
-    BaseLinkContainer,
     BaseButtonContainer,
     BaseIcon,
     LibraryOption,
