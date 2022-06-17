@@ -14,6 +14,7 @@
         is-with-artist-name
         is-with-library
         is-link-to-library
+        is-with-share-option
       />
     </template>
   </BaseProfileLibraryPaginatedSegmentContainer>

@@ -19,7 +19,6 @@
           :[tabData.scope]="slotProps[tabData.scope]"
           :items-in-row="tabData.itemsInRow"
           :profile-id="profileId"
-          :is-with-playlist-option="isSelf"
           :is-with-favorite-option="isSelf"
           :is-with-delete-option="isWithDeleteOption(tabData.scope)"
           is-with-image
@@ -28,6 +27,9 @@
           is-with-created
           is-with-library
           is-link-to-library
+          is-with-playlist-option
+          is-with-share-option
+          is-with-queue-option
         />
       </template>
     </BasePaginatedListContainer>

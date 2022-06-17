@@ -5,12 +5,16 @@
     <BaseTracksSimpleList
       :key="key"
       class="queue-tracks"
-      :tracks="queueTracksConditional"
+      :tracks="queueTracksComputed"
       :is-with-self-icons="false"
       is-with-image
       is-with-artist-name
       is-with-album-title
       is-with-source
+      is-with-playlist-option
+      is-with-share-option
+      is-with-clear-button
+      @clear-button-click="handleClearButtonClick"
     />
   </BaseSegmentContainer>
 </template>
@@ -46,35 +50,54 @@ export default {
     ...mapGetters(
       'queue',
       {
-        queueTracksConditional:
-        'tracksConditional'
+        queueTracksComputed: 'tracksComputed'
       }
     ),
     ...mapState(
       'queue',
       {
-        queueTracks: 'tracks'
+        queueTracks: 'tracks',
+        queueTracksShuffled: 'tracksShuffled'
       }
     )
   },
   watch: {
-    queueTracks:
-      'handleQueueTracksChange',
-    queueTracksConditional:
-      'handleQueueTracksConditionalChange'
+    queueTracksComputed:
+      'handleQueueTracksComputedChange'
   },
   methods: {
-    handleQueueTracksChange (
-      value
+    handleQueueTracksComputedChange () {
+      this.key = generateKey()
+    },
+    handleClearButtonClick (
+      {
+        uuid
+      }
     ) {
+      const isMatchedTrack = (
+        trackData
+      ) => {
+        return trackData.uuid !== uuid
+      }
+
+      const tracks = [
+        ...this.queueTracks.filter(
+          isMatchedTrack
+        )
+      ]
+
+      const tracksShuffled = [
+        ...this.queueTracksShuffled.filter(
+          isMatchedTrack
+        )
+      ]
+
       updateGlobalStore(
         {
-          'queue.isShuffle': false
+          'queue.tracks': tracks,
+          'queue.tracksShuffled': tracksShuffled
         }
       )
-    },
-    handleQueueTracksConditionalChange () {
-      this.key = generateKey()
     }
   }
 }

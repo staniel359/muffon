@@ -25,6 +25,7 @@
       :is-with-self-icons="false"
       :is-paginated="false"
       is-with-listeners-count
+      is-with-share-option
     />
 
     <BaseAlbumsSimpleList
@@ -35,6 +36,7 @@
       is-with-artist-name
       is-with-listeners-count
       is-with-source
+      is-with-share-option
     />
 
     <BaseTracksSimpleList
@@ -46,6 +48,9 @@
       is-with-artist-name
       is-with-album-title
       is-with-source
+      is-with-playlist-option
+      is-with-share-option
+      is-with-queue-option
     />
 
     <BasePlaylistsSimpleList
@@ -53,12 +58,14 @@
       class="main-content-section"
       :playlists="playlists"
       is-with-profile-nickname
+      is-with-share-option
     />
 
     <BaseCommunitiesSimpleList
       v-if="communities?.length"
       class="main-content-section"
       :communities="communities"
+      is-with-share-option
     />
   </div>
 </template>

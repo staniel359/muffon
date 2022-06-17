@@ -7,12 +7,13 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :is-with-playlist-option="isSelf"
         :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-playlist-option
         is-with-share-option
+        is-with-queue-option
         is-favorite
       />
     </template>

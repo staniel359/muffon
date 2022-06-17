@@ -12,6 +12,7 @@
     >
       <BaseOptionsDropdown
         model="track"
+        :track-data="trackData"
         :track-title="trackTitle"
         :artist-name="artistName"
         :album-title="albumTitle"
@@ -19,6 +20,7 @@
         :favorite-id="favoriteId"
         is-with-favorite-option
         is-with-playlist-option
+        is-with-queue-option
         is-with-delete-option
         @delete-option-click="handleDeleteOptionClick"
         @playlist-option-click="handlePlaylistOptionClick"

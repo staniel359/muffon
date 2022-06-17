@@ -10,7 +10,7 @@ export default {
     tracksShuffled: []
   },
   getters: {
-    tracksConditional (
+    tracksComputed (
       state
     ) {
       if (state.isShuffle) {
@@ -28,7 +28,7 @@ export default {
       state,
       getters
     ) {
-      return getters.tracksConditional.findIndex(
+      return getters.tracksComputed.findIndex(
         track => {
           return (
             track.uuid ===
@@ -56,7 +56,7 @@ export default {
       state,
       getters
     ) {
-      return getters.tracksConditional[
+      return getters.tracksComputed[
         getters.currentTrackIndex - 1
       ]
     },
@@ -64,7 +64,7 @@ export default {
       state,
       getters
     ) {
-      return getters.tracksConditional[
+      return getters.tracksComputed[
         getters.currentTrackIndex + 1
       ]
     }

@@ -10,6 +10,7 @@
         :profile-id="profileId"
         is-with-artist-name
         is-link-to-library
+        is-with-share-option
         @link-click="handleLinkClick"
       />
     </template>

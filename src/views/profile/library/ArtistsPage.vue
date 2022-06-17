@@ -18,6 +18,7 @@
         :is-with-favorite-option="isSelf"
         is-with-library
         is-link-to-library
+        is-with-share-option
       />
     </template>
   </BaseProfileLibraryPaginatedPageContainer>

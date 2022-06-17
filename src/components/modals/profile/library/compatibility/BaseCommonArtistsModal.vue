@@ -9,6 +9,7 @@
         :artists="slotProps[scope]"
         :profile-id="profileId"
         is-link-to-library
+        is-with-share-option
         @link-click="handleLinkClick"
       />
     </template>

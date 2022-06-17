@@ -10,6 +10,7 @@
 
     <BaseOptionsDropdown
       model="track"
+      :track-data="trackData"
       :track-title="trackTitle"
       :artist-name="artistName"
       :album-title="albumTitle"
@@ -25,6 +26,7 @@
       is-with-listened-option
       is-with-playlist-option
       is-with-share-option
+      is-with-queue-option
       @playlist-option-click="handlePlaylistOptionClick"
     />
   </div>

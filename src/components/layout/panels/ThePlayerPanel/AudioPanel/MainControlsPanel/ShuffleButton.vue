@@ -37,18 +37,18 @@ export default {
   },
   methods: {
     handleClick () {
-      const value = !this.isQueueShuffle
-      const tracks = value
-        ? shuffleArray(
-          this.queueTracks
-        )
-        : []
-
       updateGlobalStore(
         {
-          'queue.isShuffle': value,
-          'queue.tracksShuffled': tracks
+          'queue.isShuffle':
+            !this.isQueueShuffle,
+          'queue.tracksShuffled':
+            this.shuffleTracks()
         }
+      )
+    },
+    shuffleTracks () {
+      return shuffleArray(
+        this.queueTracks
       )
     }
   }

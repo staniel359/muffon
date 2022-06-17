@@ -33,7 +33,6 @@
             :[listScope]="slotProps[searchScope]"
             :is-with-listeners-count="isWithListenersCount"
             :is-with-source="isTracks"
-            :is-with-playlist-option="isTracks"
             is-with-image
             is-with-artist-name
             is-with-album-title
@@ -43,7 +42,9 @@
             is-with-bookmark-option
             is-with-channel-title
             is-with-favorite-option
+            is-with-playlist-option
             is-with-share-option
+            is-with-queue-option
             @link-click="handleLinkClick"
           />
         </template>

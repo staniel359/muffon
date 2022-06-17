@@ -14,6 +14,7 @@
         is-with-listened-option
         is-with-playlist-option
         is-with-share-option
+        is-with-queue-option
       />
     </template>
   </BaseTopPaginatedSegmentContainer>

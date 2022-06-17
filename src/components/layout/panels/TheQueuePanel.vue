@@ -112,7 +112,8 @@ export default {
         {
           'queue.currentTrackId': null,
           'queue.tracks': [],
-          'queue.tracksShuffled': []
+          'queue.tracksShuffled': [],
+          'queue.isShuffle': false
         }
       )
     }

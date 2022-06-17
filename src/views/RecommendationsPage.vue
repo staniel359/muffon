@@ -25,6 +25,7 @@
             is-with-favorite-option
             is-with-bookmark-option
             is-with-listened-option
+            is-with-share-option
             is-with-delete-option
             is-recommendation
           />

@@ -146,7 +146,8 @@
       "playlist": "Add to playlist",
       "favorites": "Add to favorites",
       "bookmarks": "Add to bookmarks",
-      "listened": "Add to listened"
+      "listened": "Add to listened",
+      "queue": "Add to queue"
     },
     "show": {
       "library": "Show in library"
@@ -265,6 +266,11 @@
   },
   "notifications": {
     "scrobbled": "{trackFullTitle} was scrobbled",
+    "added": {
+      "queue": {
+        "track": "Track {trackFullTitle} was added to queue"
+      }
+    },
     "updated": {
       "profile": "Profile was updated",
       "post": "Post was updated",

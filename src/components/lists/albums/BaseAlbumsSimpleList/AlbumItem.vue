@@ -224,7 +224,7 @@ export default {
       )
     },
     source () {
-      return this.albumData.source.name
+      return this.albumData.source?.name
     }
   },
   methods: {

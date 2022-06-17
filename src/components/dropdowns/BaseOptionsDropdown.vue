@@ -32,6 +32,7 @@
           :album-tracks="albumTracks"
           :image-url="imageUrl"
           :profile-data="optionData.profileData"
+          :track-data="optionData.trackData"
           :community-data="optionData.communityData"
           @click="optionData.onClick"
           @link-click="handleLinkClick"
@@ -53,6 +54,7 @@ import PlaylistOption from './BaseOptionsDropdown/PlaylistOption.vue'
 import FavoriteOption from './BaseOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseOptionsDropdown/ListenedOption.vue'
+import QueueOption from './BaseOptionsDropdown/QueueOption.vue'
 import EditOption from './BaseOptionsDropdown/EditOption.vue'
 import DeleteOption from './BaseOptionsDropdown/DeleteOption.vue'
 import FollowOption from './BaseOptionsDropdown/FollowOption.vue'
@@ -79,6 +81,7 @@ export default {
     FavoriteOption,
     BookmarkOption,
     ListenedOption,
+    QueueOption,
     EditOption,
     DeleteOption,
     FollowOption,
@@ -107,6 +110,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithQueueOption: Boolean,
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithFollowOption: Boolean,
@@ -114,6 +118,7 @@ export default {
     isWithMessageOption: Boolean,
     isWithShareOption: Boolean,
     profileData: Object,
+    trackData: Object,
     communityData: Object
   },
   emits: [
@@ -166,6 +171,10 @@ export default {
         (
           this.isWithListenedOption &&
             this.listenedOption
+        ),
+        (
+          this.isWithQueueOption &&
+            this.queueOption
         ),
         (
           this.isWithEditOption &&
@@ -223,6 +232,12 @@ export default {
       return {
         component: 'ListenedOption',
         modelId: this.listenedId
+      }
+    },
+    queueOption () {
+      return {
+        component: 'QueueOption',
+        trackData: this.trackData
       }
     },
     editOption () {

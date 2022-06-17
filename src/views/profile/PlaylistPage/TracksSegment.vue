@@ -18,6 +18,9 @@
         is-with-artist-name
         is-with-album-title
         is-playlist-track
+        is-with-playlist-option
+        is-with-share-option
+        is-with-queue-option
         is-with-delete-option
       />
     </template>

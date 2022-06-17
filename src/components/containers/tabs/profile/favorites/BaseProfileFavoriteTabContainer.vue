@@ -18,12 +18,14 @@
           :is="tabData.component"
           :[tabData.scope]="slotProps[tabData.scope]"
           :profile-id="profileId"
-          :is-with-playlist-option="isSelf"
           :is-with-delete-option="isSelf"
           is-with-image
           is-with-artist-name
           is-with-album-title
           is-favorite
+          is-with-playlist-option
+          is-with-share-option
+          is-with-queue-option
         />
       </template>
     </BasePaginatedListContainer>

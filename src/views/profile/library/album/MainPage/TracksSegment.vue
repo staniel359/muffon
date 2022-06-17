@@ -16,6 +16,8 @@
         is-with-created
         is-link-to-library
         is-with-playlist-option
+        is-with-share-option
+        is-with-queue-option
       />
     </template>
   </BaseProfileLibraryAlbumPaginatedSegmentContainer>

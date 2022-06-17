@@ -21,6 +21,7 @@
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
       :is-with-listened-option="isWithListenedOption"
+      :is-with-queue-option="isWithQueueOption"
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
@@ -84,6 +85,7 @@ export default {
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
+    isWithQueueOption: Boolean,
     isWithPlaylistOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,

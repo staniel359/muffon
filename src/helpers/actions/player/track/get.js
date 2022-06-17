@@ -28,7 +28,8 @@ export default function (
     if (queueTracks) {
       updateGlobalStore(
         {
-          'queue.tracks': queueTracks
+          'queue.tracks': queueTracks,
+          'queue.isShuffle': false
         }
       )
     }

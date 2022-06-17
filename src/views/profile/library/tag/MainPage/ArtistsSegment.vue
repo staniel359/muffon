@@ -14,6 +14,7 @@
         :is-with-favorite-option="isSelf"
         is-link-to-library
         is-with-library
+        is-with-share-option
       />
     </template>
   </BaseProfileLibraryTagPaginatedSegmentContainer>

@@ -125,7 +125,8 @@ export default {
         {
           'player.currentTrackId': this.trackId,
           'player.variants': [],
-          'queue.tracks': this.queueTracks
+          'queue.tracks': this.queueTracks,
+          'queue.isShuffle': false
         }
       )
 
