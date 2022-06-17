@@ -1,6 +1,6 @@
 <template>
   <BaseTransitionContainer
-    class="transition hidden track-full-title"
+    class="track-full-title"
     :scrollable="scrollable"
   >
     <BaseHeader

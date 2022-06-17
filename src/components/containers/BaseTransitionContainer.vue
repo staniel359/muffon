@@ -1,14 +1,14 @@
 <template>
-  <div ref="transition">
-    <slot />
-  </div>
+  <Transition>
+    <div v-if="isShow">
+      <slot />
+    </div>
+  </Transition>
 </template>
 
 <script>
 import {
-  setVisibility,
-  showTransition,
-  hideTransition
+  setVisibility
 } from '*/helpers/actions/plugins/semantic'
 
 export default {
@@ -19,12 +19,18 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      isShow: false
+    }
+  },
   computed: {
     visibilityOptions () {
       return {
         once: false,
         onTopPassed: this.handleTopPass,
-        onTopPassedReverse: this.handleTopReversePass
+        onTopPassedReverse:
+          this.handleTopReversePass
       }
     }
   },
@@ -35,22 +41,22 @@ export default {
     )
   },
   methods: {
-    async handleTopPass () {
-      await this.$nextTick()
-
-      showTransition(
-        this.$refs.transition
-      )
+    handleTopPass () {
+      this.isShow = true
     },
-    async handleTopReversePass () {
-      await this.$nextTick()
-
-      hideTransition(
-        this.$refs.transition
-      )
+    handleTopReversePass () {
+      this.isShow = false
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.v-enter-active,
+.v-leave-active
+  transition: opacity 0.15s ease
+
+.v-enter-from,
+.v-leave-to
+  opacity: 0
+</style>

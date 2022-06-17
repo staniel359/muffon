@@ -87,34 +87,6 @@ export function setSearchSource (
   )
 }
 
-// Transition
-
-export function showTransition (
-  element
-) {
-  $(
-    element
-  ).transition(
-    {
-      animation: 'fade in',
-      duration: 150
-    }
-  )
-}
-
-export function hideTransition (
-  element
-) {
-  $(
-    element
-  ).transition(
-    {
-      animation: 'fade out',
-      duration: 150
-    }
-  )
-}
-
 // Visibility
 
 export function setVisibility (
