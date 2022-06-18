@@ -1,28 +1,32 @@
 <template>
   <div class="player-main-controls">
-    <ShuffleButton />
-    <BackwardButton />
-    <PlayButton />
-    <ForwardButton />
     <LoopButton />
+
+    <BackwardButton />
+
+    <PlayButton />
+
+    <ForwardButton />
+
+    <VolumeButton />
   </div>
 </template>
 
 <script>
-import ShuffleButton from './MainControlsPanel/ShuffleButton.vue'
+import LoopButton from './MainControlsPanel/LoopButton.vue'
 import BackwardButton from './MainControlsPanel/BackwardButton.vue'
 import PlayButton from './MainControlsPanel/PlayButton.vue'
 import ForwardButton from './MainControlsPanel/ForwardButton.vue'
-import LoopButton from './MainControlsPanel/LoopButton.vue'
+import VolumeButton from './MainControlsPanel/VolumeButton.vue'
 
 export default {
   name: 'MainControlsPanel',
   components: {
-    ShuffleButton,
+    LoopButton,
     BackwardButton,
     PlayButton,
     ForwardButton,
-    LoopButton
+    VolumeButton
   }
 }
 </script>
@@ -30,7 +34,5 @@ export default {
 <style lang="sass" scoped>
 .player-main-controls
   @extend .d-flex, .align-items-center, .justify-content-center
-  flex: 0.5
-  & > :last-child
-    @extend .no-margin
+  flex: 0.4
 </style>

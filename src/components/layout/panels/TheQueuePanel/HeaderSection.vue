@@ -2,20 +2,21 @@
   <BaseSegmentContainer
     class="header-section"
   >
-    <div
-      class="left-block"
+    <ShuffleButton
+      v-if="queueTracksCount"
     />
 
     <h4
       :class="[
         'ui header main-header',
-        'central-block'
+        'tracks-count-block'
       ]"
       v-text="tracksText"
     />
 
-    <div
-      class="right-block"
+    <BaseClearButton
+      v-if="queueTracksCount"
+      @click="handleClearButtonClick"
     />
   </BaseSegmentContainer>
 </template>
@@ -26,14 +27,21 @@ import {
 } from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
+import ShuffleButton from './HeaderSection/ShuffleButton.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
+import {
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'HeaderSection',
   components: {
-    BaseSegmentContainer
+    BaseSegmentContainer,
+    ShuffleButton,
+    BaseClearButton
   },
   computed: {
     ...mapGetters(
@@ -57,6 +65,18 @@ export default {
         this.queueTracksCount
       )
     }
+  },
+  methods: {
+    handleClearButtonClick () {
+      updateGlobalStore(
+        {
+          'queue.currentTrackId': null,
+          'queue.tracks': [],
+          'queue.tracksShuffled': [],
+          'queue.isShuffle': false
+        }
+      )
+    }
   }
 }
 </script>
@@ -66,15 +86,6 @@ export default {
   @extend .d-flex, .align-items-center
   padding: calc(#{$navbarHeight} + 1em) 1em 1em 1em
 
-.left-block
-  @extend .d-flex, .align-items-center
-  flex: 0.25
-
-.central-block
-  @extend .d-flex, .align-items-center, .justify-content-center
-  flex: 0.5
-
-.right-block
-  @extend .d-flex, .align-items-center, .justify-content-flex-end
-  flex: 0.25
+.tracks-count-block
+  @extend .flex-full, .text-align-center
 </style>

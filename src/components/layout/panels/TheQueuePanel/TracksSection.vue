@@ -1,6 +1,9 @@
 <template>
   <BaseSegmentContainer
     class="queue-tracks-container"
+    :class="{
+      'player-panel-padded': playerPlaying
+    }"
   >
     <BaseTracksSimpleList
       :key="key"
@@ -51,6 +54,12 @@ export default {
       'queue',
       {
         queueTracksComputed: 'tracksComputed'
+      }
+    ),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
       }
     ),
     ...mapState(
@@ -106,8 +115,10 @@ export default {
 <style lang="sass" scoped>
 .queue-tracks-container
   @extend .overflow-hidden, .flex-full
-  padding: 1em 1em calc(#{$playerPanelHeight} + 1em) 1em
-
+  padding: 1em
+  transition: padding 0.5s
+  &.player-panel-padded
+    padding-bottom: calc(#{$playerPanelHeight} + 1em)
 .queue-tracks
   @extend .h-100, .overflow-y-auto
 </style>

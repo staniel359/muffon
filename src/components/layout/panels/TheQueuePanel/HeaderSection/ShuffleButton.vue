@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny compact"
+    class="tiny compact shuffle-button"
     icon="random"
     :class="{
       basic: !isQueueShuffle
@@ -55,4 +55,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.shuffle-button
+  @extend .no-margin
+  margin-right: 1em !important
+</style>

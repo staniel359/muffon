@@ -21,7 +21,6 @@
 
 <script>
 import {
-  mapState,
   mapGetters,
   mapActions
 } from 'vuex'
@@ -34,9 +33,6 @@ import {
   setQueuePanel,
   hideQueuePanel
 } from '*/helpers/actions/layout'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'TheQueuePanel',
@@ -45,12 +41,6 @@ export default {
     TracksSection
   },
   computed: {
-    ...mapState(
-      'player',
-      {
-        playerPlaying: 'playing'
-      }
-    ),
     ...mapGetters(
       'queue',
       {
@@ -67,8 +57,7 @@ export default {
     }
   },
   watch: {
-    queueTracksCount: 'handleQueueTracksCountChange',
-    playerPlaying: 'handlePlayerPlayingChange'
+    queueTracksCount: 'handleQueueTracksCountChange'
   },
   mounted () {
     setQueuePanel(
@@ -99,23 +88,6 @@ export default {
       if (!value) {
         hideQueuePanel()
       }
-    },
-    handlePlayerPlayingChange (
-      value
-    ) {
-      if (!value) {
-        this.clearQueue()
-      }
-    },
-    clearQueue () {
-      updateGlobalStore(
-        {
-          'queue.currentTrackId': null,
-          'queue.tracks': [],
-          'queue.tracksShuffled': [],
-          'queue.isShuffle': false
-        }
-      )
     }
   }
 }

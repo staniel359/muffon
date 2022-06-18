@@ -22,6 +22,8 @@
       />
 
       <NavbarRefreshButton />
+
+      <NavbarQueueButton />
     </div>
   </div>
 </template>
@@ -34,6 +36,7 @@ import NavbarHistoryButton from './TheNavbarPanel/NavbarHistoryButton.vue'
 import NavbarSearchButton from './TheNavbarPanel/NavbarSearchButton.vue'
 import NavbarNavigation from './TheNavbarPanel/NavbarNavigation.vue'
 import NavbarRefreshButton from './TheNavbarPanel/NavbarRefreshButton.vue'
+import NavbarQueueButton from './TheNavbarPanel/NavbarQueueButton.vue'
 
 export default {
   name: 'TheNavbarPanel',
@@ -41,7 +44,8 @@ export default {
     NavbarHistoryButton,
     NavbarSearchButton,
     NavbarNavigation,
-    NavbarRefreshButton
+    NavbarRefreshButton,
+    NavbarQueueButton
   },
   computed: {
     ...mapState(

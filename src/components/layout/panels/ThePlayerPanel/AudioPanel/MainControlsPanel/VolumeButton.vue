@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny basic compact"
+    class="tiny basic compact volume-button"
     :icon="icon"
     @init="handleButtonInit"
     @click="handleClick"
@@ -97,4 +97,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.volume-button
+  @extend .no-margin
+</style>

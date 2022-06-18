@@ -1,5 +1,7 @@
 <template>
-  <BasePopupContainer class="volume-popup">
+  <BasePopupContainer
+    class="volume-popup"
+  >
     <div class="volume-header-container">
       <BaseHeader
         tag="h4"

@@ -1,18 +1,18 @@
 <template>
-  <BaseButton
-    class="tiny compact"
-    icon="list ul"
-    :class="{
-      disabled: !queueTracksCount,
-      basic: !isQueuePanelVisible
-    }"
-    @click="handleClick"
-  />
+  <div class="fitted item">
+    <BaseButton
+      class="basic large main-navbar-button"
+      icon="list ul"
+      :class="{
+        active: isQueuePanelVisible
+      }"
+      @click="handleClick"
+    />
+  </div>
 </template>
 
 <script>
 import {
-  mapGetters,
   mapState
 } from 'vuex'
 import BaseButton from '*/components/buttons/BaseButton.vue'
@@ -21,17 +21,11 @@ import {
 } from '*/helpers/actions/layout'
 
 export default {
-  name: 'QueueButton',
+  name: 'NavbarQueueButton',
   components: {
     BaseButton
   },
   computed: {
-    ...mapGetters(
-      'queue',
-      {
-        queueTracksCount: 'tracksCount'
-      }
-    ),
     ...mapState(
       'layout',
       [

@@ -1,7 +1,11 @@
 <template>
   <div class="track-panel">
-    <BaseListContainer class="track-container">
-      <PlayingBlock v-if="playerPlaying" />
+    <BaseListContainer
+      class="track-container"
+    >
+      <PlayingBlock
+        v-if="playerPlaying"
+      />
     </BaseListContainer>
   </div>
 </template>
