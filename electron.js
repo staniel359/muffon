@@ -6,6 +6,7 @@ const {
   ipcMain,
   Menu,
   nativeImage,
+  screen,
   session,
   shell,
   Tray
@@ -32,6 +33,8 @@ const isDevelopment =
 
 const isMac =
   process.platform === 'darwin'
+const isLinux =
+  process.platform === 'linux'
 
 const publicPath =
   isDevelopment ? 'public' : ''
@@ -142,6 +145,8 @@ let latestRelease
 let latestVersion
 
 let tabs = []
+
+let isMaximized = false
 
 //
 
@@ -584,6 +589,42 @@ function createWindow () {
     'close',
     handleClose
   )
+
+  function maximize () {
+    const {
+      width,
+      height
+    } = screen.getPrimaryDisplay().size
+
+    mainWindow.setSize(
+      width,
+      height
+    )
+  }
+
+  function handleMaximizeChange () {
+    if (!isMaximized) {
+      isMaximized = true
+
+      maximize()
+    }
+  }
+
+  function handleUnmaximizeChange () {
+    isMaximized = false
+  }
+
+  if (isLinux) {
+    mainWindow.on(
+      'maximize',
+      handleMaximizeChange
+    )
+
+    mainWindow.on(
+      'unmaximize',
+      handleUnmaximizeChange
+    )
+  }
 }
 
 function createTray () {
