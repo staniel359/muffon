@@ -78,6 +78,7 @@ export default {
 <style lang="sass" scoped>
 .title-options-section
   @extend .d-flex, .align-items-center
+  margin-top: 0.75em
 
 .title-section
   @extend .flex-full

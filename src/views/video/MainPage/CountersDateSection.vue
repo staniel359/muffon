@@ -1,19 +1,23 @@
 <template>
-  <div class="ui large labels">
-    <BaseLabel
-      icon="calendar outline"
-      :text="publishDate"
-    />
+  <div class="counters-date-section">
+    <div class="ui large labels">
+      <BaseLabel
+        icon="eye outline"
+        :text="viewsCountFormatted"
+      />
 
-    <BaseLabel
-      icon="eye outline"
-      :text="viewsCountFormatted"
-    />
+      <BaseLabel
+        icon="thumbs up outline"
+        :text="likesCountFormatted"
+      />
+    </div>
 
-    <BaseLabel
-      icon="thumbs up outline"
-      :text="likesCountFormatted"
-    />
+    <div class="ui large labels">
+      <BaseLabel
+        icon="calendar outline"
+        :text="publishDate"
+      />
+    </div>
   </div>
 </template>
 
@@ -35,9 +39,6 @@ export default {
     }
   },
   computed: {
-    publishDate () {
-      return this.videoData.publish_date
-    },
     viewsCountFormatted () {
       return formatNumber(
         this.videoData.views_count
@@ -47,9 +48,15 @@ export default {
       return formatNumber(
         this.videoData.likes_count
       )
+    },
+    publishDate () {
+      return this.videoData.publish_date
     }
   }
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.counters-date-section
+  @extend .d-flex, .justify-content-space-between
+</style>
