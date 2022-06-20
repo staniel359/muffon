@@ -98,13 +98,6 @@ const i18n = {
       }
     }
   },
-  it: {
-    tray: {
-      show: 'Mostra',
-      hide: 'Nascondi',
-      exit: 'Esci'
-    }
-  },
   ru: {
     tray: {
       show: 'Открыть',

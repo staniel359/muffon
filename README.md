@@ -66,7 +66,6 @@ It has **no ads** and is **absolutely free** to use.
 
 ### Languages
 - English
-- Italiano
 - Русский
 
 ### Technical stack
