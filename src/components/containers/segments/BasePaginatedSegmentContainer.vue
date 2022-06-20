@@ -41,9 +41,11 @@ export default {
     BaseSegmentContainer,
     BasePaginatedListContainer
   },
-  inject: [
-    'getData'
-  ],
+  inject: {
+    getData: {
+      default: () => false
+    }
+  },
   props: {
     scope: {
       type: String,

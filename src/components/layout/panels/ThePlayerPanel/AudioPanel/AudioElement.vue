@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import fs from 'fs'
 import {
   mapState,
   mapActions
@@ -26,6 +27,9 @@ import {
 import {
   updateGlobal as updateGlobalStore
 } from '*/helpers/actions/store'
+import {
+  decrypt as decryptFile
+} from '*/helpers/actions/file'
 
 export default {
   name: 'AudioElement',
@@ -67,6 +71,49 @@ export default {
       return (
         this.currentPercent >=
           this.scrobblePercent
+      )
+    },
+    audioLink () {
+      const {
+        local,
+        link
+      } = this.playerPlaying.audio
+
+      if (local) {
+        return this.filePath
+      } else {
+        return link
+      }
+    },
+    filePath () {
+      if (this.isFileExist) {
+        return this.fileLink
+      } else {
+        return ''
+      }
+    },
+    isFileExist () {
+      const {
+        path
+      } = this.playerPlaying.audio.local
+
+      return fs.existsSync(
+        path
+      )
+    },
+    fileLink () {
+      const {
+        path,
+        key,
+        iv
+      } = this.playerPlaying.audio.local
+
+      return decryptFile(
+        {
+          filePath: path,
+          key,
+          iv
+        }
       )
     }
   },
@@ -267,8 +314,7 @@ export default {
         'pause'
       )
 
-      this.audioElement.src =
-        this.playerPlaying.audio.link
+      this.audioElement.src = this.audioLink
 
       this.audioElement.load()
     },

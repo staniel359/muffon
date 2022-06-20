@@ -25,6 +25,8 @@
 
         <RecommendationsItem />
 
+        <SavedTracksItem />
+
         <PlaylistsItem
           :profile-id="profileId"
         />
@@ -67,6 +69,7 @@ import FeedItem from './TheSidebarPanel/FeedItem.vue'
 import ConversationsItem from './TheSidebarPanel/ConversationsItem.vue'
 import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
 import RecommendationsItem from './TheSidebarPanel/RecommendationsItem.vue'
+import SavedTracksItem from './TheSidebarPanel/SavedTracksItem.vue'
 import PlaylistsItem from './TheSidebarPanel/PlaylistsItem.vue'
 import FavoritesItem from './TheSidebarPanel/FavoritesItem.vue'
 import BookmarksItem from './TheSidebarPanel/BookmarksItem.vue'
@@ -86,6 +89,7 @@ export default {
     ConversationsItem,
     LibraryItem,
     RecommendationsItem,
+    SavedTracksItem,
     PlaylistsItem,
     FavoritesItem,
     BookmarksItem,

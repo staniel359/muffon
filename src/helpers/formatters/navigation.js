@@ -6,6 +6,8 @@ import formatProfilesSection
   from '*/helpers/formatters/navigation/sections/profiles'
 import formatRecomendationsSection
   from '*/helpers/formatters/navigation/sections/recommendations'
+import formatSavedTracksSection
+  from '*/helpers/formatters/navigation/sections/savedTracks'
 import formatRadioSection
   from '*/helpers/formatters/navigation/sections/radio'
 import formatPlaylistsSection
@@ -50,6 +52,16 @@ export function profiles () {
 export function recommendations () {
   return [
     formatRecomendationsSection(
+      {
+        isActive: true
+      }
+    )
+  ]
+}
+
+export function savedTracks () {
+  return [
+    formatSavedTracksSection(
       {
         isActive: true
       }

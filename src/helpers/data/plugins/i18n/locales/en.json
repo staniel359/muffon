@@ -25,6 +25,7 @@
     "conversations": "Conversations",
     "library": "Library",
     "recommendations": "Recommendations",
+    "savedTracks": "Saved tracks",
     "playlists": "Playlists",
     "favorites": "Favorites",
     "bookmarks": "Bookmarks",
@@ -177,6 +178,7 @@
         "recommendation": "Delete recommendation",
         "playlist": "Delete playlist",
         "playlistTrack": "Delete track from playlist",
+        "savedTrack": "Delete track from saved tracks",
         "favorite": {
           "artist": "Delete artist from favorites",
           "album": "Delete album from favorites",
@@ -195,6 +197,7 @@
         "recommendation": "You are going to delete {modelName} from your recommendations.",
         "playlist": "You are going to delete {modelName} from your playlists.",
         "playlistTrack": "You are going to delete {modelName} from {parentModelName} playlist.",
+        "savedTrack": "You are going to delete {modelName} from your saved tracks.",
         "favorite": "You are going to delete {modelName} from your favorites.",
         "bookmark": "You are going to delete {modelName} from your bookmarks.",
         "post": "You are going to delete this post.",
@@ -269,6 +272,9 @@
     "added": {
       "queue": {
         "track": "Track {trackFullTitle} was added to queue"
+      },
+      "savedTracks": {
+        "track": "Track {trackFullTitle} was added to saved tracks"
       }
     },
     "updated": {

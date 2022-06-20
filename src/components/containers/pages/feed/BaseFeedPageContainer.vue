@@ -19,9 +19,7 @@ import navigationMixin from '*/mixins/navigationMixin'
 import {
   feed as formatFeedPageNavigation
 } from '*/helpers/formatters/navigation'
-import {
-  feed as formatFeedPageTab
-} from '*/helpers/formatters/tabs'
+import formatFeedPageTab from '*/helpers/formatters/tabs/feed'
 import getFeed from '*/helpers/actions/api/feed/get'
 
 export default {

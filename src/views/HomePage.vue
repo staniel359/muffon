@@ -27,9 +27,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import {
   home as formatHomePageNavigation
 } from '*/helpers/formatters/navigation'
-import {
-  home as formatHomePageTab
-} from '*/helpers/formatters/tabs'
+import formatHomePageTab from '*/helpers/formatters/tabs/home'
 import navigationMixin from '*/mixins/navigationMixin'
 
 export default {

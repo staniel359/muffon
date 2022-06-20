@@ -28,6 +28,7 @@
     "core-js": "^3.23.2",
     "dayjs": "^1.11.3",
     "deepmerge": "^4.2.2",
+    "electron-dl": "^3.3.1",
     "electron-store": "^8.0.2",
     "emoji-mart": "^5.1.0",
     "fomantic-ui": "^2.8.8",

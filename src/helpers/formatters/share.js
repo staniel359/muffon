@@ -49,6 +49,8 @@ export function track (
     audio
   } = trackData
 
+  delete audio?.local
+
   const imageData = image && {
     extrasmall: image.extrasmall
   }

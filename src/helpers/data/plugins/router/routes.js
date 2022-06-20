@@ -184,6 +184,9 @@ const ReleasesUpcomingPage = () => import(
 const MultitagPage = () => import(
   '*/views/MultitagPage.vue'
 )
+const SavedTracksPage = () => import(
+  '*/views/SavedTracksPage.vue'
+)
 
 export default [
   {
@@ -618,6 +621,13 @@ export default [
     exact: true,
     name: 'MultitagPage',
     component: MultitagPage,
+    props: true
+  },
+  {
+    path: '/saved_tracks',
+    exact: true,
+    name: 'SavedTracksPage',
+    component: SavedTracksPage,
     props: true
   }
 ]

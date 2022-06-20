@@ -1,4 +1,6 @@
 import musicMetadata from 'music-metadata'
+import fs from 'fs'
+import crypto from 'crypto'
 import {
   tags as formatFileTags
 } from '*/helpers/formatters/file'
@@ -50,5 +52,45 @@ export function formatTags (
     handleError
   ).finally(
     handleFinish
+  )
+}
+
+export function decrypt (
+  {
+    filePath,
+    key,
+    iv
+  }
+) {
+  const file =
+    fs.readFileSync(
+      filePath
+    )
+
+  const decipher =
+    crypto.createDecipheriv(
+      'aes-256-cbc',
+      key,
+      iv
+    )
+
+  const decryptedFile =
+    Buffer.concat(
+      [
+        decipher.update(
+          file
+        ),
+        decipher.final()
+      ]
+    )
+
+  const blob = new Blob(
+    [
+      decryptedFile
+    ]
+  )
+
+  return URL.createObjectURL(
+    blob
   )
 }

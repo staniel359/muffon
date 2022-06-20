@@ -1,3 +1,11 @@
+export function home () {
+  return {
+    name: 'HomePage',
+    params: {},
+    path: 'home'
+  }
+}
+
 export function feed () {
   return {
     name: 'FeedPage',
@@ -19,6 +27,14 @@ export function recommendations () {
     name: 'RecommendationsPage',
     params: {},
     path: 'recommendations'
+  }
+}
+
+export function savedTracks () {
+  return {
+    name: 'SavedTracksPage',
+    params: {},
+    path: 'saved_tracks'
   }
 }
 

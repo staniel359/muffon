@@ -89,6 +89,10 @@ export default {
     ],
     default: null
   },
+  'profile.savedTracks': {
+    type: 'array',
+    default: []
+  },
   'queue.currentTrackId': {
     type: [
       'null',

@@ -28,13 +28,17 @@ export default {
       state,
       getters
     ) {
+      function isMatchedTrack (
+        trackData
+      ) {
+        return (
+          trackData.uuid ===
+            state.currentTrackId
+        )
+      }
+
       return getters.tracksComputed.findIndex(
-        track => {
-          return (
-            track.uuid ===
-              state.currentTrackId
-          )
-        }
+        isMatchedTrack
       )
     },
     isStart (

@@ -102,7 +102,13 @@ export default {
       )
     },
     trackAudioLink () {
-      return this.trackData.audio?.link
+      return (
+        this.trackData.audio?.link ||
+          this.trackData.audio?.path
+      )
+    },
+    uuid () {
+      return this.trackData.uuid
     }
   },
   methods: {
@@ -125,6 +131,7 @@ export default {
         {
           'player.currentTrackId': this.trackId,
           'player.variants': [],
+          'queue.currentTrackId': this.uuid,
           'queue.tracks': this.queueTracks,
           'queue.isShuffle': false
         }

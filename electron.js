@@ -16,12 +16,29 @@ const {
 const path = require(
   'path'
 )
+const fs = require(
+  'fs'
+)
 const ElectronStore = require(
   'electron-store'
+)
+const {
+  download
+} = require(
+  'electron-dl'
 )
 const axios = require(
   'axios'
 )
+const generateKey = require(
+  'uuid'
+).v4
+const crypto = require(
+  'crypto'
+)
+
+process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY =
+  'secretKey'
 
 const appName = 'muffon'
 
@@ -33,6 +50,7 @@ const isDevelopment =
 
 const isMac =
   process.platform === 'darwin'
+
 const isLinux =
   process.platform === 'linux'
 
@@ -79,6 +97,17 @@ if (isDevelopment) {
   )
 }
 
+const userDataPath =
+  app.getPath(
+    'userData'
+  )
+
+const audioFolderPath =
+  path.join(
+    userDataPath,
+    'audio'
+  )
+
 const i18n = {
   en: {
     tray: {
@@ -118,10 +147,14 @@ const i18n = {
   }
 }
 
+const electronStoreEncryptionKey =
+  process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY
+
 const electronStore =
   new ElectronStore(
     {
-      accessPropertiesByDotNotation: false
+      accessPropertiesByDotNotation: false,
+      encryptionKey: electronStoreEncryptionKey
     }
   )
 
@@ -213,6 +246,16 @@ ipcMain.handle(
 ipcMain.on(
   'set-language',
   handleSetLanguage
+)
+
+ipcMain.on(
+  'save-audio',
+  handleSaveAudio
+)
+
+ipcMain.on(
+  'delete-audio',
+  handleDeleteAudio
 )
 
 ipcMain.on(
@@ -491,6 +534,105 @@ function handleSetLanguage (
   language = value
 
   setTrayMenu()
+}
+
+function handleSaveAudio (
+  _,
+  {
+    track,
+    tabId
+  }
+) {
+  const trackData =
+    JSON.parse(
+      track
+    )
+
+  const url = trackData.audio.link
+
+  const fileName = generateKey()
+
+  const tempFileName = `${fileName}-temp`
+
+  const options = {
+    directory: audioFolderPath,
+    filename: tempFileName
+  }
+
+  const tab =
+    findTab(
+      tabId
+    )
+
+  function formatTrackData (
+    key,
+    iv
+  ) {
+    trackData.uuid = fileName
+
+    const filePath =
+      path.join(
+        audioFolderPath,
+        fileName
+      )
+
+    trackData.audio.local = {
+      path: filePath,
+      key,
+      iv
+    }
+  }
+
+  function handleSuccess (
+    downloadItem
+  ) {
+    const {
+      key,
+      iv
+    } = encryptAudioFile(
+      tempFileName,
+      fileName
+    )
+
+    formatTrackData(
+      key,
+      iv
+    )
+
+    tab.webContents.send(
+      'save-audio-complete',
+      {
+        trackData
+      }
+    )
+  }
+
+  function handleError () {
+    tab.webContents.send(
+      'save-audio-error'
+    )
+  }
+
+  download(
+    mainWindow,
+    url,
+    options
+  ).then(
+    handleSuccess
+  ).catch(
+    handleError
+  )
+}
+
+function handleDeleteAudio (
+  _,
+  {
+    fileName
+  }
+) {
+  deleteAudioFile(
+    fileName
+  )
 }
 
 function handleLogout () {
@@ -870,5 +1012,128 @@ function removeTabFromTabs (
 
   tabs = tabs.filter(
     isMatchedTab
+  )
+}
+
+function encryptAudioFile (
+  tempFileName,
+  fileName
+) {
+  const file =
+    openAudioFile(
+      tempFileName
+    )
+
+  const {
+    key,
+    iv,
+    encryptedFile
+  } = encryptFile(
+    file
+  )
+
+  createAudioFile(
+    fileName,
+    encryptedFile
+  )
+
+  deleteAudioFile(
+    tempFileName
+  )
+
+  return {
+    key,
+    iv
+  }
+}
+
+function encryptFile (
+  file
+) {
+  function getRandomKey (
+    bytesSize
+  ) {
+    return crypto.randomBytes(
+      bytesSize
+    ).toString(
+      'hex'
+    )
+  }
+
+  const key =
+    getRandomKey(
+      16
+    )
+
+  const iv =
+    getRandomKey(
+      8
+    )
+
+  const cipher =
+    crypto.createCipheriv(
+      'aes-256-cbc',
+      key,
+      iv
+    )
+
+  const encryptedFile = Buffer.concat(
+    [
+      cipher.update(
+        file
+      ),
+      cipher.final()
+    ]
+  )
+
+  return {
+    key,
+    iv,
+    encryptedFile
+  }
+}
+
+function openAudioFile (
+  fileName
+) {
+  const filePath =
+    path.join(
+      audioFolderPath,
+      fileName
+    )
+
+  return fs.readFileSync(
+    filePath
+  )
+}
+
+function createAudioFile (
+  fileName,
+  data
+) {
+  const filePath =
+    path.join(
+      audioFolderPath,
+      fileName
+    )
+
+  fs.writeFileSync(
+    filePath,
+    data
+  )
+}
+
+function deleteAudioFile (
+  fileName
+) {
+  const filePath =
+    path.join(
+      audioFolderPath,
+      fileName
+    )
+
+  fs.unlinkSync(
+    filePath,
+    () => true
   )
 }
