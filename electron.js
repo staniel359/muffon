@@ -36,6 +36,9 @@ const generateKey = require(
 const crypto = require(
   'crypto'
 )
+const i18n = require(
+  'i18n'
+)
 
 process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY =
   'secretKey'
@@ -108,44 +111,10 @@ const audioFolderPath =
     'audio'
   )
 
-const i18n = {
-  en: {
-    tray: {
-      show: 'Show',
-      hide: 'Hide',
-      exit: 'Exit'
-    },
-    update: {
-      message (
-        version
-      ) {
-        return `Version ${version} is available!`
-      },
-      buttons: {
-        download: 'Download',
-        close: 'Close'
-      }
-    }
-  },
-  ru: {
-    tray: {
-      show: 'Открыть',
-      hide: 'Скрыть',
-      exit: 'Выйти'
-    },
-    update: {
-      message (
-        version
-      ) {
-        return `Доступна версия ${version}!`
-      },
-      buttons: {
-        download: 'Скачать',
-        close: 'Закрыть'
-      }
-    }
-  }
-}
+const localesPath = path.join(
+  __dirname,
+  'src/helpers/data/plugins/i18n/locales'
+)
 
 const electronStoreEncryptionKey =
   process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY
@@ -158,11 +127,25 @@ const electronStore =
     }
   )
 
-let language =
+const defaultLocale =
   electronStore.get(
     'profile.language',
     'en'
   )
+
+i18n.configure(
+  {
+    directory: localesPath,
+    defaultLocale,
+    mustacheConfig: {
+      tags: [
+        '{',
+        '}'
+      ]
+    },
+    objectNotation: true
+  }
+)
 
 let mainWindow
 let tray
@@ -531,7 +514,9 @@ function handleSetLanguage (
   _,
   value
 ) {
-  language = value
+  i18n.setLocale(
+    value
+  )
 
   setTrayMenu()
 }
@@ -828,9 +813,6 @@ function createHeadersHandler () {
 }
 
 function setTrayMenu () {
-  const localeData =
-    i18n[language].tray
-
   const isVisible =
     mainWindow.isVisible()
 
@@ -843,12 +825,16 @@ function setTrayMenu () {
   const menuItems = [
     {
       type: 'normal',
-      label: localeData[toggleKey],
+      label: i18n.__(
+        `electron.tray.${toggleKey}`
+      ),
       click: toggleAction
     },
     {
       type: 'normal',
-      label: localeData.exit,
+      label: i18n.__(
+        'electron.tray.exit'
+      ),
       click: exit
     }
   ]
@@ -917,19 +903,21 @@ function handleUpdateCheckSuccess (
 }
 
 function showNewVersionNotification () {
-  const localeData = (
-    i18n[language].update ||
-      i18n.en.update
-  )
-
   const options = {
     type: 'info',
-    message: localeData.message(
-      latestVersion
+    message: i18n.__(
+      'electron.update.message',
+      {
+        version: latestVersion
+      }
     ),
     buttons: [
-      localeData.buttons.download,
-      localeData.buttons.close
+      i18n.__(
+        'electron.update.buttons.download'
+      ),
+      i18n.__(
+        'electron.update.buttons.close'
+      )
     ],
     defaultId: 0,
     cancelId: 1

@@ -1,17 +1,17 @@
 import countries from 'i18n-iso-countries'
-import en from 'i18n-iso-countries/langs/en.json'
-import ru from 'i18n-iso-countries/langs/ru.json'
-
-const locales = [
-  en,
-  ru
-]
+import locales from '*/helpers/data/locales'
 
 function registerLocale (
-  locale
+  {
+    code
+  }
 ) {
+  const importLocaleFile = require(
+    `i18n-iso-countries/langs/${code}.json`
+  )
+
   countries.registerLocale(
-    locale
+    importLocaleFile
   )
 }
 

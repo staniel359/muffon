@@ -17,8 +17,9 @@ import {
   Picker
 } from 'emoji-mart'
 import data from '@emoji-mart/data'
-import en from '@emoji-mart/data/i18n/en.json'
-import ru from '@emoji-mart/data/i18n/ru.json'
+import {
+  formatLocales
+} from '*/helpers/actions/locales'
 
 export default {
   name: 'EmojiPicker',
@@ -27,11 +28,7 @@ export default {
   ],
   data () {
     return {
-      isOpen: false,
-      locales: {
-        en,
-        ru
-      }
+      isOpen: false
     }
   },
   computed: {
@@ -66,6 +63,13 @@ export default {
         this.profileLanguage
       ]
     },
+    locales () {
+      return formatLocales(
+        {
+          importLocaleFile: this.importLocaleFile
+        }
+      )
+    },
     theme () {
       if (this.isDarkMode) {
         return 'dark'
@@ -93,6 +97,15 @@ export default {
     },
     show () {
       this.isOpen = true
+    },
+    importLocaleFile (
+      {
+        code
+      }
+    ) {
+      return require(
+        `@emoji-mart/data/i18n/${code}.json`
+      )
     }
   }
 }

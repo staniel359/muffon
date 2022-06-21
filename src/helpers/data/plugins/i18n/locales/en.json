@@ -1,4 +1,18 @@
 {
+  "electron": {
+    "tray": {
+      "show": "Show",
+      "hide": "Hide",
+      "exit": "Exit"
+    },
+    "update": {
+      "message": "Version {version} is available",
+      "buttons": {
+        "download": "Download",
+        "close": "Close"
+      }
+    }
+  },
   "navigation": {
     "home": "Home page",
     "artists": "Artists",

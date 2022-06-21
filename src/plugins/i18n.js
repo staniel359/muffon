@@ -2,8 +2,9 @@ import {
   createI18n
 } from 'vue-i18n'
 import electronStore from '*/plugins/electronStore'
-import en from '*/helpers/data/plugins/i18n/locales/en.json'
-import ru from '*/helpers/data/plugins/i18n/locales/ru.json'
+import {
+  formatLocales
+} from '*/helpers/actions/locales'
 import russianPluralizationRule
   from '*/helpers/data/plugins/i18n/rules/pluralization/ru'
 
@@ -12,10 +13,22 @@ const locale =
     'profile.language'
   )
 
-const messages = {
-  en,
-  ru
+function importLocaleFile (
+  {
+    code
+  }
+) {
+  return require(
+    `*/helpers/data/plugins/i18n/locales/${code}.json`
+  )
 }
+
+const messages =
+  formatLocales(
+    {
+      importLocaleFile
+    }
+  )
 
 const pluralizationRules = {
   ru: russianPluralizationRule
