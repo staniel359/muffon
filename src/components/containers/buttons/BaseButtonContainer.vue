@@ -50,9 +50,12 @@ export default {
     )
   },
   methods: {
-    handleClick () {
+    handleClick (
+      event
+    ) {
       this.$emit(
-        'click'
+        'click',
+        event
       )
     }
   }
