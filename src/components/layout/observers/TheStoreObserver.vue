@@ -16,7 +16,7 @@ export default {
   name: 'TheStoreObserver',
   mounted () {
     ipcRenderer.on(
-      'handle-update-store',
+      'update-store',
       this.handleUpdateStore
     )
   },

@@ -84,22 +84,22 @@ export default {
     }
 
     ipcRenderer.on(
-      'handle-add-tab',
+      'add-tab',
       this.handleAddTab
     )
 
     ipcRenderer.on(
-      'handle-set-top-tab',
-      this.handleSetTopTab
+      'set-active-tab',
+      this.handleSetActiveTab
     )
 
     ipcRenderer.on(
-      'handle-remove-tab',
+      'remove-tab',
       this.handleRemoveTab
     )
 
     ipcRenderer.on(
-      'handle-update-tab',
+      'update-tab',
       this.handleUpdateTab
     )
   },
@@ -115,8 +115,9 @@ export default {
       }
 
       electronStore.set(
-        'layout.tabs',
-        value
+        {
+          'layout.tabs': value
+        }
       )
     },
     handleAddTabButtonClick () {
@@ -131,15 +132,16 @@ export default {
         value
       ]
     },
-    handleSetTopTab (
+    handleSetActiveTab (
       _,
       tabId
     ) {
       this.activeTabId = tabId
 
       electronStore.set(
-        'layout.activeTabId',
-        tabId
+        {
+          'layout.activeTabId': tabId
+        }
       )
     },
     handleRemoveTab (
@@ -221,7 +223,7 @@ export default {
     },
     setActiveTab () {
       ipcRenderer.send(
-        'set-top-tab',
+        'set-active-tab',
         this.electronStoreActiveTabId
       )
     },
@@ -233,7 +235,7 @@ export default {
       )
 
       ipcRenderer.send(
-        'set-top-tab',
+        'set-active-tab',
         tab.uuid
       )
     },

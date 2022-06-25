@@ -1,14 +1,14 @@
 <template>
-  <div class="disconnect-button-container">
-    <BaseErrorMessage
-      v-if="error"
-      class="error-message"
-      :error="error"
-    />
+  <BaseErrorMessage
+    v-if="error"
+    class="error-message"
+    :error="error"
+  />
 
-    <div class="button-block-container">
+  <div class="option">
+    <div class="option-header">
       <BaseButton
-        class="basic red"
+        class="basic red option-button"
         icon="lastfm"
         :class="{
           loading: isLoading,
@@ -17,18 +17,16 @@
         :text="disconnectText"
         @click="handleClick"
       />
+    </div>
 
-      <div>
-        <strong
-          class="nickname-block"
-          v-text="lastfmNickname"
-        />
+    <div>
+      <BaseIcon
+        icon="green check"
+      />
 
-        <BaseIcon
-          class="green nickname-icon"
-          icon="check"
-        />
-      </div>
+      <strong
+        v-text="lastfmNickname"
+      />
     </div>
   </div>
 </template>
@@ -101,16 +99,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.disconnect-button-container
-  @extend .d-flex, .flex-column, .flex-full
-
-.button-block-container
-  @extend .d-flex, .align-items-center, .justify-content-space-between
-
-.nickname-block
-  margin-left: 1em
-
-.nickname-icon
-  margin-left: 0.5em
-</style>
+<style lang="sass" scoped></style>

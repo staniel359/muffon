@@ -5,16 +5,20 @@
     :error="error"
   />
 
-  <BaseButton
-    class="lastfm"
-    icon="lastfm"
-    :class="{
-      loading: isLoading,
-      disabled: isLoading
-    }"
-    :text="connectText"
-    @click="handleClick"
-  />
+  <div class="option">
+    <div class="option-header">
+      <BaseButton
+        class="lastfm option-button"
+        icon="lastfm"
+        :class="{
+          loading: isLoading,
+          disabled: isLoading
+        }"
+        :text="connectText"
+        @click="handleClick"
+      />
+    </div>
+  </div>
 </template>
 
 <script>

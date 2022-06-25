@@ -370,7 +370,6 @@
     },
     "sections": {
       "app": {
-        "main": "Main",
         "view": "View",
         "player": "Player",
         "queue": "Queue",
@@ -382,11 +381,10 @@
     },
     "options": {
       "app": {
-        "main": {
-          "language": "Language"
-        },
         "view": {
-          "darkMode": "Dark mode"
+          "language": "Language",
+          "darkMode": "Dark mode",
+          "newTabSwitch": "Switch to new tab"
         },
         "player": {
           "audioSource": "Audio source"

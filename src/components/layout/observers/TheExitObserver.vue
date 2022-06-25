@@ -41,7 +41,7 @@ export default {
   },
   mounted () {
     ipcRenderer.on(
-      'handle-exit',
+      'exit',
       this.handleExit
     )
   },

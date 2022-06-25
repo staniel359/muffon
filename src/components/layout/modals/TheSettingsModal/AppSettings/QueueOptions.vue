@@ -5,7 +5,9 @@
       is-horizontal
     />
 
-    <AutoplayOption />
+    <div>
+      <AutoplayOption />
+    </div>
   </div>
 </template>
 

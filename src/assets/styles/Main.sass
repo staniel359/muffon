@@ -419,13 +419,21 @@ p
   @extend .relative
   &:not(:first-child)
     margin-top: 1em
-  & > .divider.horizontal
-    margin: 1.5em 0
-  & > .content
+  & > .divider
+    &.horizontal
+      margin: 1.5em 0
+  .option
     @extend .d-flex, .align-items-center
-    margin-top: 1em
-    & > .header
+    &:not(:first-child)
+      margin-top: 1em
+    .option-header
       @extend .flex-full
+      margin-right: 1em !important
+      .option-button
+        @extend .no-margin
+        max-width: 200px
+    .option-text
+      @extend .flex-full, .text-align-center
 
 .main-seeker
   @extend .no-padding

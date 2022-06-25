@@ -8,6 +8,7 @@ export default {
     tabId: null,
     visibleContext: null,
     isDarkMode: false,
+    isSwitchToNewTab: true,
     isQueuePanelVisible: false,
     navigationSections: []
   },
@@ -65,6 +66,12 @@ export default {
       value
     ) {
       state.searchModal = value
+    },
+    SET_IS_SWITCH_TO_NEW_TAB (
+      state,
+      value
+    ) {
+      state.isSwitchToNewTab = value
     }
   },
   actions: {
@@ -164,6 +171,17 @@ export default {
     ) {
       commit(
         'SET_SEARCH_MODAL',
+        value
+      )
+    },
+    setIsSwitchToNewTab (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_SWITCH_TO_NEW_TAB',
         value
       )
     }

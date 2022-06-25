@@ -5,8 +5,11 @@
       is-horizontal
     />
 
-    <ClearCacheOption />
-    <ClearSearchHistoryOption />
+    <div>
+      <ClearCacheOption />
+
+      <ClearSearchHistoryOption />
+    </div>
   </div>
 </template>
 

@@ -1,25 +1,27 @@
 <template>
-  <div>
-    <BaseErrorMessage
-      v-if="error"
-      class="error-message"
-      :error="error"
-    />
+  <BaseErrorMessage
+    v-if="error"
+    class="error-message"
+    :error="error"
+  />
 
-    <BaseButton
-      class="lastfm"
-      icon="lastfm"
-      :class="{
-        loading: isLoading,
-        disabled: isLoading
-      }"
-      :text="connectText"
-      @click="handleClick"
-    />
+  <div class="option">
+    <div class="option-header">
+      <BaseButton
+        class="lastfm option-button"
+        icon="lastfm"
+        :class="{
+          loading: isLoading,
+          disabled: isLoading
+        }"
+        :text="connectText"
+        @click="handleClick"
+      />
+    </div>
 
-    <BaseMessage
-      class="wait-message"
-      :content="waitText"
+    <div
+      class="option-text"
+      v-text="waitText"
     />
   </div>
 </template>
@@ -27,7 +29,6 @@
 <script>
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseMessage from '*/components/messages/BaseMessage.vue'
 import createLastfmSession
   from '*/helpers/actions/api/lastfm/connect/session/create'
 import {
@@ -38,8 +39,7 @@ export default {
   name: 'ConnectButton',
   components: {
     BaseErrorMessage,
-    BaseButton,
-    BaseMessage
+    BaseButton
   },
   props: {
     token: {
@@ -96,7 +96,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.wait-message
-  margin-top: 0.5em !important
-</style>
+<style lang="sass" scoped></style>

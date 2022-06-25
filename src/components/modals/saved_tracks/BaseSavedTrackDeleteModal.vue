@@ -61,8 +61,9 @@ export default {
       ]
 
       electronStore.set(
-        'profile.savedTracks',
-        tracks
+        {
+          'profile.savedTracks': tracks
+        }
       )
 
       ipcRenderer.send(

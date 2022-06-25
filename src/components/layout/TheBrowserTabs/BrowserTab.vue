@@ -107,7 +107,7 @@ export default {
   methods: {
     handleClick () {
       ipcRenderer.send(
-        'set-top-tab',
+        'set-active-tab',
         this.tabId
       )
     },

@@ -5,7 +5,9 @@
       is-horizontal
     />
 
-    <SourceOption />
+    <div>
+      <SourceOption />
+    </div>
   </div>
 </template>
 

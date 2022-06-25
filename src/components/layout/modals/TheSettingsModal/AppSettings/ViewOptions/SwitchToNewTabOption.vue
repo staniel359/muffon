@@ -3,11 +3,11 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="autoplayText"
+      :text="newTabSwitchText"
     />
 
     <BaseToggle
-      :is-checked="isQueueAutoplay"
+      :is-checked="isSwitchToNewTab"
       @on="handleToggleOn"
       @off="handleToggleOff"
     />
@@ -25,21 +25,21 @@ import {
 } from '*/helpers/actions/store'
 
 export default {
-  name: 'AutoplayOption',
+  name: 'SwitchToNewTabOption',
   components: {
     BaseHeader,
     BaseToggle
   },
   computed: {
     ...mapState(
-      'queue',
-      {
-        isQueueAutoplay: 'isAutoplay'
-      }
+      'layout',
+      [
+        'isSwitchToNewTab'
+      ]
     ),
-    autoplayText () {
+    newTabSwitchText () {
       return this.$t(
-        'settings.options.app.queue.autoplay'
+        'settings.options.app.view.newTabSwitch'
       )
     }
   },
@@ -47,14 +47,14 @@ export default {
     handleToggleOn () {
       updateGlobalStore(
         {
-          'queue.isAutoplay': true
+          'layout.isSwitchToNewTab': true
         }
       )
     },
     handleToggleOff () {
       updateGlobalStore(
         {
-          'queue.isAutoplay': false
+          'layout.isSwitchToNewTab': false
         }
       )
     }

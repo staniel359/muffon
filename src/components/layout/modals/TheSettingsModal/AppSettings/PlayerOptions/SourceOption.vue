@@ -1,6 +1,7 @@
 <template>
-  <div class="content">
+  <div class="option">
     <BaseHeader
+      class="option-header"
       tag="h4"
       :text="sourceText"
     />

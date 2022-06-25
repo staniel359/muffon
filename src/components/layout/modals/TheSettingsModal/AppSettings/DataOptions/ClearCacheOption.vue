@@ -1,8 +1,8 @@
 <template>
-  <div class="content">
-    <div class="header">
+  <div class="option">
+    <div class="option-header">
       <BaseButton
-        class="basic red"
+        class="basic red option-button"
         icon="trash alternate outline"
         :text="clearText"
         :class="{
@@ -13,7 +13,10 @@
       />
     </div>
 
-    <div v-if="isSuccess">
+    <div
+      v-if="isSuccess"
+      class="option-text"
+    >
       <BaseIcon
         icon="green check"
       />

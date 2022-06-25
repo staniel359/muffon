@@ -5,19 +5,29 @@
       is-horizontal
     />
 
-    <DarkModeOption />
+    <div>
+      <LanguageOption />
+
+      <DarkModeOption />
+
+      <SwitchToNewTabOption />
+    </div>
   </div>
 </template>
 
 <script>
 import BaseDivider from '*/components/BaseDivider.vue'
+import LanguageOption from './ViewOptions/LanguageOption.vue'
 import DarkModeOption from './ViewOptions/DarkModeOption.vue'
+import SwitchToNewTabOption from './ViewOptions/SwitchToNewTabOption.vue'
 
 export default {
   name: 'ViewOptions',
   components: {
     BaseDivider,
-    DarkModeOption
+    LanguageOption,
+    DarkModeOption,
+    SwitchToNewTabOption
   },
   computed: {
     viewText () {

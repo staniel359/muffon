@@ -14,7 +14,7 @@ export default {
   name: 'TheElectronStoreSaver',
   mounted () {
     ipcRenderer.on(
-      'handle-update-electron-store',
+      'update-electron-store',
       this.handleUpdateElectronStore
     )
   },

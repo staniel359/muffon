@@ -1,19 +1,17 @@
 <template>
-  <div class="content">
-    <DisconnectButton
-      v-if="isConnected"
-      :lastfm-nickname="lastfmNickname"
-      @success="handleDisconnect"
-    />
-    <ConnectButton
-      v-else-if="token"
-      :token="token"
-    />
-    <TokenButton
-      v-else
-      @token-change="handleTokenChange"
-    />
-  </div>
+  <DisconnectButton
+    v-if="isConnected"
+    :lastfm-nickname="lastfmNickname"
+    @success="handleDisconnect"
+  />
+  <ConnectButton
+    v-else-if="token"
+    :token="token"
+  />
+  <TokenButton
+    v-else
+    @token-change="handleTokenChange"
+  />
 </template>
 
 <script>

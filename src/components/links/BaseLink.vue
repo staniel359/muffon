@@ -19,6 +19,9 @@ import {
   ipcRenderer
 } from 'electron'
 import {
+  mapState
+} from 'vuex'
+import {
   generateKey
 } from '*/helpers/utils'
 
@@ -40,6 +43,14 @@ export default {
     'click',
     'activeChange'
   ],
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'isSwitchToNewTab'
+      ]
+    )
+  },
   methods: {
     handleMouseEnter () {
       this.$emit(
@@ -72,10 +83,12 @@ export default {
         tab
       )
 
-      ipcRenderer.send(
-        'set-top-tab',
-        tab.uuid
-      )
+      if (this.isSwitchToNewTab) {
+        ipcRenderer.send(
+          'set-active-tab',
+          tab.uuid
+        )
+      }
     },
     getTabData () {
       return {

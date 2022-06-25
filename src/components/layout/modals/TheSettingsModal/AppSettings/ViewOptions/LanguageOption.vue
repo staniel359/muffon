@@ -1,6 +1,7 @@
 <template>
-  <div class="content">
+  <div class="option">
     <BaseHeader
+      class="option-header"
       tag="h4"
       :text="languageText"
     />
@@ -23,7 +24,7 @@ export default {
   computed: {
     languageText () {
       return this.$t(
-        'settings.options.app.main.language'
+        'settings.options.app.view.language'
       )
     }
   }

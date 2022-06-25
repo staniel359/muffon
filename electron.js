@@ -153,11 +153,9 @@ let tray
 let latestRelease
 let latestVersion
 
-let tabs = []
-
 let isMaximized = false
 
-//
+// App initialization
 
 app.whenReady().then(
   setup
@@ -167,11 +165,11 @@ app.setAppUserModelId(
   appName
 )
 
-//
+// App events
 
 app.on(
   'window-all-closed',
-  handleAllWindowsClose
+  handleAllWindowsClosed
 )
 
 app.on(
@@ -179,7 +177,7 @@ app.on(
   handleActivate
 )
 
-//
+// IPC events
 
 ipcMain.on(
   'set-title',
@@ -197,8 +195,8 @@ ipcMain.on(
 )
 
 ipcMain.on(
-  'set-top-tab',
-  handleSetTopTab
+  'set-active-tab',
+  handleSetActiveTab
 )
 
 ipcMain.on(
@@ -251,9 +249,9 @@ ipcMain.on(
   handleExit
 )
 
-//
+// App event handlers
 
-function handleAllWindowsClose (
+function handleAllWindowsClosed (
   event
 ) {
   event.preventDefault()
@@ -270,7 +268,7 @@ function handleActivate () {
   }
 }
 
-//
+// IPC event handlers
 
 function handleSetTitle (
   _,
@@ -315,9 +313,16 @@ function handleAddTab (
     tab
   )
 
-  prependTabToTabs(
-    tab
-  )
+  const isSwitchToNewTab =
+    electronStore.get(
+      'layout.isSwitchToNewTab'
+    )
+
+  if (!isSwitchToNewTab) {
+    setActiveTab(
+      getActiveTabId()
+    )
+  }
 
   const [
     width,
@@ -357,7 +362,7 @@ function handleAddTab (
   }
 
   mainWindow.webContents.send(
-    'handle-add-tab',
+    'add-tab',
     value
   )
 
@@ -385,28 +390,11 @@ function handleAddTab (
   )
 }
 
-function handleSetTopTab (
+function handleSetActiveTab (
   _,
   tabId
 ) {
-  const tab = findTab(
-    tabId
-  )
-
-  mainWindow.setTopBrowserView(
-    tab
-  )
-
-  removeTabFromTabs(
-    tabId
-  )
-
-  prependTabToTabs(
-    tab
-  )
-
-  mainWindow.webContents.send(
-    'handle-set-top-tab',
+  setActiveTab(
     tabId
   )
 }
@@ -415,37 +403,34 @@ function handleRemoveTab (
   _,
   tabId
 ) {
-  const tab = findTab(
-    tabId
-  )
-
-  removeTab(
-    tab
-  )
-
-  removeTabFromTabs(
-    tabId
-  )
-
-  mainWindow.webContents.send(
-    'handle-remove-tab',
-    tabId
-  )
-
-  if (tabs.length) {
-    const {
-      uuid
-    } = tabs[0]
-
-    mainWindow.webContents.send(
-      'handle-set-top-tab',
-      uuid
+  if (
+    isReplaceActiveTab(
+      tabId
+    )
+  ) {
+    replaceActiveTab(
+      tabId
     )
   }
+
+  removeTab(
+    tabId
+  )
 }
 
 function handleClearTabs () {
-  getTabs().forEach(
+  function getTabId (
+    tabData
+  ) {
+    return tabData.uuid
+  }
+
+  const tabIds =
+    getTabs().map(
+      getTabId
+    )
+
+  tabIds.forEach(
     removeTab
   )
 }
@@ -461,7 +446,7 @@ function handleUpdateStore (
     view
   ) {
     view.webContents.send(
-      'handle-update-store',
+      'update-store',
       data
     )
   }
@@ -477,7 +462,7 @@ function handleUpdateStore (
 
   if (isSave) {
     mainWindow.webContents.send(
-      'handle-update-electron-store',
+      'update-electron-store',
       data
     )
   }
@@ -493,7 +478,7 @@ function handleUpdateTab (
   }
 ) {
   mainWindow.webContents.send(
-    'handle-update-tab',
+    'update-tab',
     {
       tabId,
       data,
@@ -622,7 +607,7 @@ function handleDeleteAudio (
 
 function handleLogout () {
   mainWindow.webContents.send(
-    'handle-logout'
+    'logout'
   )
 }
 
@@ -630,7 +615,7 @@ function handleExit () {
   app.exit()
 }
 
-//
+// Functions
 
 function setup () {
   ElectronStore.initRenderer()
@@ -869,7 +854,7 @@ function hide () {
 
 function exit () {
   mainWindow.webContents.send(
-    'handle-exit'
+    'exit'
   )
 }
 
@@ -946,15 +931,6 @@ function handleNewVersionNotificationButtonClick (
   }
 }
 
-function prependTabToTabs (
-  tab
-) {
-  tabs = [
-    tab,
-    ...tabs
-  ]
-}
-
 function findTab (
   tabId
 ) {
@@ -969,13 +945,31 @@ function findTab (
   )
 }
 
+function findTabIndex (
+  tabId
+) {
+  function isMatchedTab (
+    tabData
+  ) {
+    return tabData.uuid === tabId
+  }
+
+  return getTabs().findIndex(
+    isMatchedTab
+  )
+}
+
 function getTabs () {
   return mainWindow.getBrowserViews()
 }
 
 function removeTab (
-  tab
+  tabId
 ) {
+  const tab = findTab(
+    tabId
+  )
+
   if (tab) {
     mainWindow.removeBrowserView(
       tab
@@ -986,20 +980,71 @@ function removeTab (
     }
 
     tab.webContents.destroy()
+
+    mainWindow.webContents.send(
+      'remove-tab',
+      tabId
+    )
   }
 }
 
-function removeTabFromTabs (
+function getActiveTabId () {
+  return electronStore.get(
+    'layout.activeTabId'
+  )
+}
+
+function setActiveTab (
   tabId
 ) {
-  function isMatchedTab (
-    tabData
-  ) {
-    return tabData.uuid !== tabId
-  }
+  const tab = findTab(
+    tabId
+  )
 
-  tabs = tabs.filter(
-    isMatchedTab
+  mainWindow.setTopBrowserView(
+    tab
+  )
+
+  mainWindow.webContents.send(
+    'set-active-tab',
+    tabId
+  )
+}
+
+function isReplaceActiveTab (
+  tabId
+) {
+  const isMultipleTabs =
+    getTabs().length > 1
+
+  const isActive = (
+    tabId === getActiveTabId()
+  )
+
+  return (
+    isMultipleTabs &&
+      isActive
+  )
+}
+
+function replaceActiveTab (
+  tabId
+) {
+  const tabIndex =
+    findTabIndex(
+      tabId
+    )
+
+  const newActiveTabIndex =
+    tabIndex ? (tabIndex - 1) : 1
+
+  const newActiveTabId =
+    getTabs()[
+      newActiveTabIndex
+    ].uuid
+
+  setActiveTab(
+    newActiveTabId
   )
 }
 

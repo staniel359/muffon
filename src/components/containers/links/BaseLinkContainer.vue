@@ -18,6 +18,9 @@ import {
   ipcRenderer
 } from 'electron'
 import {
+  mapState
+} from 'vuex'
+import {
   generateKey
 } from '*/helpers/utils'
 
@@ -31,6 +34,12 @@ export default {
     'activeChange'
   ],
   computed: {
+    ...mapState(
+      'layout',
+      [
+        'isSwitchToNewTab'
+      ]
+    ),
     component () {
       if (this.link) {
         return 'RouterLink'
@@ -72,10 +81,12 @@ export default {
           tab
         )
 
-        ipcRenderer.send(
-          'set-top-tab',
-          tab.uuid
-        )
+        if (this.isSwitchToNewTab) {
+          ipcRenderer.send(
+            'set-active-tab',
+            tab.uuid
+          )
+        }
       }
     },
     getTabData () {

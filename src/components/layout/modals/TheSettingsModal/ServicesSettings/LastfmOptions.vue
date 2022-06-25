@@ -5,25 +5,27 @@
       is-horizontal
     />
 
-    <ConnectOption
-      :is-connected="isConnected"
-      :lastfm-nickname="lastfmNickname"
-    />
+    <div>
+      <ConnectOption
+        :is-connected="isConnected"
+        :lastfm-nickname="lastfmNickname"
+      />
 
-    <ScrobbleOption
-      :is-connected="isConnected"
-      :is-player-with-scrobbling="isPlayerWithScrobbling"
-    />
+      <ScrobbleOption
+        :is-connected="isConnected"
+        :is-player-with-scrobbling="isPlayerWithScrobbling"
+      />
 
-    <ScrobbleNotificationsOption
-      :is-connected="isConnected"
-      :is-player-with-scrobbling="isPlayerWithScrobbling"
-    />
+      <ScrobbleNotificationsOption
+        :is-connected="isConnected"
+        :is-player-with-scrobbling="isPlayerWithScrobbling"
+      />
 
-    <ScrobblePercentOption
-      :is-connected="isConnected"
-      :is-player-with-scrobbling="isPlayerWithScrobbling"
-    />
+      <ScrobblePercentOption
+        :is-connected="isConnected"
+        :is-player-with-scrobbling="isPlayerWithScrobbling"
+      />
+    </div>
   </div>
 </template>
 

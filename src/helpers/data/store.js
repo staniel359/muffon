@@ -5,6 +5,8 @@ export const keysActions = {
     'audio/setVolume',
   'layout.isDarkMode':
     'layout/setIsDarkMode',
+  'layout.isSwitchToNewTab':
+    'layout/setIsSwitchToNewTab',
   'player.currentTrackId':
     'player/setCurrentTrackId',
   'player.currentVariantId':

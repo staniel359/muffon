@@ -370,7 +370,6 @@
     },
     "sections": {
       "app": {
-        "main": "Главное",
         "view": "Вид",
         "player": "Проигрыватель",
         "queue": "Очередь",
@@ -382,11 +381,10 @@
     },
     "options": {
       "app": {
-        "main": {
-          "language": "Язык"
-        },
         "view": {
-          "darkMode": "Тёмный режим"
+          "language": "Язык",
+          "darkMode": "Тёмный режим",
+          "newTabSwitch": "Переключаться на новую вкладку"
         },
         "player": {
           "audioSource": "Источник аудио"

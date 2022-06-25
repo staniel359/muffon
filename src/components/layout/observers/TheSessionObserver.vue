@@ -44,7 +44,7 @@ export default {
   },
   mounted () {
     ipcRenderer.on(
-      'handle-logout',
+      'logout',
       this.handleLogout
     )
   },

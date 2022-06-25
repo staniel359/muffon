@@ -65,8 +65,9 @@ export function update (
 
   if (isNewItem) {
     electronStore.set(
-      historyKey,
-      newHistory
+      {
+        [historyKey]: newHistory
+      }
     )
   }
 }

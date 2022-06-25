@@ -14,6 +14,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'layout.isSwitchToNewTab': {
+    type: 'boolean',
+    default: true
+  },
   'layout.tabs': {
     type: 'array',
     default: []
