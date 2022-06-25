@@ -111,34 +111,16 @@ export default {
     }
   },
   watch: {
-    artistName: {
-      immediate: true,
-      handler: 'handleArtistNameChange'
-    },
     responseImageData:
       'handleResponseImageDataChange'
   },
+  mounted () {
+    if (!this.imageData) {
+      this.getData()
+    }
+  },
   methods: {
     getArtist,
-    handleArtistNameChange (
-      newValue,
-      oldValue
-    ) {
-      const isNewArtist =
-        this.isArtistNameChanged(
-          newValue,
-          oldValue
-        )
-
-      const isGetImage = (
-        !this.imageData &&
-          isNewArtist
-      )
-
-      if (isGetImage) {
-        this.getData()
-      }
-    },
     handleResponseImageDataChange (
       value
     ) {
@@ -146,24 +128,6 @@ export default {
         'loadEnd',
         value
       )
-    },
-    isArtistNameChanged (
-      newValue,
-      oldValue
-    ) {
-      return (
-        this.formatArtistName(
-          newValue
-        ) !==
-          this.formatArtistName(
-            oldValue
-          )
-      )
-    },
-    formatArtistName (
-      value
-    ) {
-      return value?.trim()?.toLowerCase()
     },
     getData () {
       this.getArtist(

@@ -73,3 +73,19 @@ export function isObjectChanged (
       oldString
   )
 }
+
+export function isStringChanged (
+  newValue,
+  oldValue
+) {
+  const newString =
+    newValue.trim().toLowerCase()
+
+  const oldString =
+    oldValue.trim().toLowerCase()
+
+  return (
+    newString !==
+      oldString
+  )
+}

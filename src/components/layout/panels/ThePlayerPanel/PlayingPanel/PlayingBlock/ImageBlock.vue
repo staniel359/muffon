@@ -7,6 +7,7 @@
   />
   <BaseArtistImage
     v-else
+    :key="key"
     class="playing-image"
     :artist-name="artistName"
     :size="size"
@@ -19,6 +20,10 @@ import {
 } from 'vuex'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+import {
+  isStringChanged,
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'ImageBlock',
@@ -28,6 +33,7 @@ export default {
   },
   data () {
     return {
+      key: null,
       size: 'extrasmall'
     }
   },
@@ -45,7 +51,31 @@ export default {
       return this.playerPlaying.image
     },
     artistName () {
-      return this.playerPlaying.artist.name
+      return this.playerPlaying?.artist?.name
+    }
+  },
+  watch: {
+    artistName: 'handleArtistNameChange'
+  },
+  methods: {
+    handleArtistNameChange (
+      newValue,
+      oldValue
+    ) {
+      if (newValue) {
+        const isChanged =
+          isStringChanged(
+            newValue,
+            oldValue
+          )
+
+        if (
+          !this.isFromSource &&
+            isChanged
+        ) {
+          this.key = generateKey()
+        }
+      }
     }
   }
 }
