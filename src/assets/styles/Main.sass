@@ -266,6 +266,12 @@ p
     z-index: 10
     top: 10px
     right: 10px
+    &.background
+      border-radius: 50%
+      &.white
+        background: $colorWhite
+      &.black
+        background: $colorBlack
   & > .content
     @extend .no-padding, .no-border
     & > .extra

@@ -2,6 +2,7 @@
   <div
     v-if="isAnyOptions"
     class="main-options-dropdown-container"
+    :class="dropdownClass"
     @click.prevent.stop
   >
     <BaseButtonContainer
@@ -9,8 +10,7 @@
         'compact basic circular',
         'top right pointing',
         'floating dropdown icon',
-        'main-options-dropdown-button',
-        buttonColor
+        'main-options-dropdown-button'
       ]"
       @init="handleDropdownInit"
     >
@@ -281,14 +281,14 @@ export default {
         this.options
       )
     },
-    buttonColor () {
+    dropdownClass () {
       if (this.isTransparent) {
         return null
       } else {
         if (this.isDarkMode) {
-          return 'black'
+          return 'background black'
         } else {
-          return 'white'
+          return 'background white'
         }
       }
     }
