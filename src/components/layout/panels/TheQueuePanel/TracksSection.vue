@@ -10,14 +10,16 @@
       class="queue-tracks"
       :tracks="queueTracksComputed"
       :is-with-self-icons="false"
+      is-with-index
       is-with-image
       is-with-artist-name
       is-with-album-title
       is-with-source
       is-with-playlist-option
       is-with-share-option
-      is-with-clear-button
-      @clear-button-click="handleClearButtonClick"
+      is-with-delete-option
+      is-clearable
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseSegmentContainer>
 </template>
@@ -78,7 +80,7 @@ export default {
     handleQueueTracksComputedChange () {
       this.key = generateKey()
     },
-    handleClearButtonClick (
+    handleDeleteOptionClick (
       {
         uuid
       }

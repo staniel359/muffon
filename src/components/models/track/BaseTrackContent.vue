@@ -263,11 +263,13 @@ export default {
     isSavedTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
-    isDeleted: Boolean
+    isDeleted: Boolean,
+    isClearable: Boolean
   },
   emits: [
     'linkClick',
     'clearButtonClick',
+    'deleteOptionClick',
     'deleted'
   ],
   computed: {
@@ -368,7 +370,16 @@ export default {
       )
     },
     handleDeleteOptionClick () {
-      this.showDeleteModal()
+      if (this.isClearable) {
+        this.$emit(
+          'deleteOptionClick',
+          {
+            uuid: this.uuid
+          }
+        )
+      } else {
+        this.showDeleteModal()
+      }
     },
     handleClearButtonClick () {
       this.$emit(

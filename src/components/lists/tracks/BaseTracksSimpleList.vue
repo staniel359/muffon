@@ -34,8 +34,10 @@
       :is-saved-track="isSavedTrack"
       :playlist-id="playlistId"
       :playlist-title="playlistTitle"
+      :is-clearable="isClearable"
       @link-click="handleLinkClick"
       @clear-button-click="handleClearButtonClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
   </BaseListContainer>
 </template>
@@ -97,11 +99,13 @@ export default {
     isPlaylistTrack: Boolean,
     isSavedTrack: Boolean,
     playlistId: String,
-    playlistTitle: String
+    playlistTitle: String,
+    isClearable: Boolean
   },
   emits: [
     'linkClick',
-    'clearButtonClick'
+    'clearButtonClick',
+    'deleteOptionClick'
   ],
   computed: {
     tracksCollection () {
@@ -123,6 +127,18 @@ export default {
     ) {
       this.$emit(
         'clearButtonClick',
+        {
+          uuid
+        }
+      )
+    },
+    handleDeleteOptionClick (
+      {
+        uuid
+      }
+    ) {
+      this.$emit(
+        'deleteOptionClick',
         {
           uuid
         }
