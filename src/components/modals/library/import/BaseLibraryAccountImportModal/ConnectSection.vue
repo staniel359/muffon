@@ -19,6 +19,12 @@
       />
     </div>
 
+    <BaseMessage
+      v-if="!userData"
+      class="history-visible-message"
+      :content="historyVisibleText"
+    />
+
     <template v-if="userData">
       <BaseDivider />
 
@@ -33,6 +39,7 @@
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import ImportButton from './ConnectSection/ImportButton.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseMessage from '*/components/messages/BaseMessage.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import UserInfoSection from './ConnectSection/UserInfoSection.vue'
 import getLastfmUser from '*/helpers/actions/api/lastfm/user/get'
@@ -43,6 +50,7 @@ export default {
     BaseErrorMessage,
     ImportButton,
     BaseClearButton,
+    BaseMessage,
     BaseDivider,
     UserInfoSection
   },
@@ -55,6 +63,13 @@ export default {
       userData: null,
       error: null,
       isLoading: false
+    }
+  },
+  computed: {
+    historyVisibleText () {
+      return this.$t(
+        'import.lastfm.historyVisible'
+      )
     }
   },
   watch: {
@@ -88,4 +103,7 @@ export default {
 
 .connect-block-container
   @extend .d-flex, .align-items-center
+
+.history-visible-message
+  margin-top: 1em !important
 </style>

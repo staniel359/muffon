@@ -143,10 +143,8 @@
       "videos": "Найти видео",
       "lyrics": "Найти текст"
     },
-    "account": {
-      "import": {
-        "lastfm": "Загрузить данные Last.FM"
-      }
+    "import": {
+      "lastfm": "Загрузить данные Last.FM"
     },
     "folder": {
       "select": "Выбрать папку"
@@ -475,6 +473,9 @@
     "similar": "В похожих у {counter}:"
   },
   "import": {
+    "lastfm": {
+      "historyVisible": "Перед загрузкой убедитесь, что Ваша история прослушиваний на Last.FM открыта."
+    },
     "active": "Загрузка {count} из {counter}...",
     "success": {
       "header": "{counter} было загружено | {counter} была загружена | {counter} было загружено",

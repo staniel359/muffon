@@ -37,7 +37,7 @@ export default {
     },
     importText () {
       return this.$t(
-        'actions.account.import.lastfm'
+        'actions.import.lastfm'
       )
     }
   },

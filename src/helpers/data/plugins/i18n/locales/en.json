@@ -143,10 +143,8 @@
       "videos": "Find video",
       "lyrics": "Find lyrics"
     },
-    "account": {
-      "import": {
-        "lastfm": "Import Last.FM data"
-      }
+    "import": {
+      "lastfm": "Import Last.FM data"
     },
     "folder": {
       "select": "Select folder"
@@ -475,6 +473,9 @@
     "similar": "Similar to {counter}:"
   },
   "import": {
+    "lastfm": {
+      "historyVisible": "Before import make sure that your Last.FM listening history is visible."
+    },
     "active": "Importing {count} of {counter}...",
     "success": {
       "header": "{counter} has been imported | {counter} have been imported",
