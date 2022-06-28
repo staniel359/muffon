@@ -12,7 +12,9 @@
   <TheBrowserTabs
     v-if="profileInfo"
   />
-  <TheAuthentication v-else />
+  <TheAuthentication
+    v-else
+  />
 </template>
 
 <script>

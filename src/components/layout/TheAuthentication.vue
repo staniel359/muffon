@@ -104,7 +104,7 @@ export default {
 <style lang="sass" scoped>
 .form-container
   @extend .d-flex, .flex-column, .align-items-center
-  margin-top: 5vh
+  margin-top: 3vh
 
 .form-segment-container
   width: 400px

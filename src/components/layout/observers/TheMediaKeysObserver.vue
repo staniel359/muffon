@@ -1,6 +1,6 @@
 <template>
   <div
-    id="the-media-observer"
+    id="the-media-keys-observer"
   />
 </template>
 

@@ -7,7 +7,9 @@
 
   <TheBackground />
 
-  <TheView v-if="isRootPage" />
+  <TheView
+    v-if="isRootPage"
+  />
   <template v-else>
     <ThePlayerObserver />
 
@@ -26,7 +28,9 @@
     <div class="pusher">
       <TheLoaderDimmer />
 
-      <TheView ref="view" />
+      <TheView
+        ref="view"
+      />
     </div>
   </template>
 </template>

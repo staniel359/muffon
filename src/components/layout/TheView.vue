@@ -1,6 +1,8 @@
 <template>
   <div class="ui container main-container the-view">
-    <RouterView :key="key" />
+    <RouterView
+      :key="key"
+    />
   </div>
 </template>
 
