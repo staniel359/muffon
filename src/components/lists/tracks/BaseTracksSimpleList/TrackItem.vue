@@ -14,6 +14,7 @@
         :is-error="slotProps.isError"
         :is-current="slotProps.isCurrent"
         :is-with-image="isWithImage"
+        :is-with-artist-image="isWithArtistImage"
         :is-with-index="isWithIndex"
         :index="index"
         :is-with-artist-name="isWithArtistName"
@@ -73,6 +74,7 @@ export default {
     trackData: Object,
     queueTracks: Array,
     isWithImage: Boolean,
+    isWithArtistImage: Boolean,
     isWithIndex: Boolean,
     index: Number,
     albumArtistName: String,

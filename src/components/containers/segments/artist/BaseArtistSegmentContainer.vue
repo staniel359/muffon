@@ -6,6 +6,7 @@
   >
     <slot
       :artist-data="artistData"
+      :artist-name="responseArtistName"
       :top-track-count="topTrackCount"
       :is-loading="isLoading"
       :error="error"
@@ -50,6 +51,9 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    responseArtistName () {
+      return this.artistData?.name
     }
   },
   mounted () {

@@ -11,47 +11,54 @@
       :is-current="isCurrent"
     />
 
-    <div class="track-image-container">
+    <IndexBlock
+      v-if="isRenderIndex"
+      :index="index"
+    />
+
+    <div
+      v-if="isRenderImage"
+      class="track-image-container"
+    >
       <BaseImage
         v-if="isWithImage"
         class="rounded bordered"
         model="track"
         :image="imageData?.extrasmall"
       />
+      <BaseArtistImage
+        v-else-if="isWithArtistImage"
+        size="extrasmall"
+        :artist-name="artistName"
+        :image-data="artistImageData"
+      />
     </div>
 
     <div class="content">
-      <div class="track-index-main-info-listeners">
-        <div class="track-index-main-info">
-          <IndexBlock
-            v-if="isRenderIndex"
-            :index="index"
+      <div class="track-main-info-block">
+        <div>
+          <TitleSection
+            :track-data="trackData"
+            :is-link-to-library="isLinkToLibrary"
+            :profile-id="profileId"
+            @link-click="handleLinkClick"
           />
 
-          <div class="track-main-info">
-            <TitleSection
-              :track-data="trackData"
-              :is-link-to-library="isLinkToLibrary"
-              :profile-id="profileId"
-              @link-click="handleLinkClick"
-            />
+          <ArtistsSection
+            v-if="isRenderArtistName"
+            :track-data="trackData"
+            :is-link-to-library="isLinkToLibrary"
+            :profile-id="profileId"
+            @link-click="handleLinkClick"
+          />
 
-            <ArtistsSection
-              v-if="isRenderArtistName"
-              :track-data="trackData"
-              :is-link-to-library="isLinkToLibrary"
-              :profile-id="profileId"
-              @link-click="handleLinkClick"
-            />
-
-            <AlbumSection
-              v-if="isRenderAlbumTitle"
-              :track-data="trackData"
-              :is-link-to-library="isLinkToLibrary"
-              :profile-id="profileId"
-              @link-click="handleLinkClick"
-            />
-          </div>
+          <AlbumSection
+            v-if="isRenderAlbumTitle"
+            :track-data="trackData"
+            :is-link-to-library="isLinkToLibrary"
+            :profile-id="profileId"
+            @link-click="handleLinkClick"
+          />
         </div>
 
         <ListenersCountSection
@@ -166,6 +173,7 @@ import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseTrackAudioIcon
   from '*/components/models/track/BaseTrackAudioIcon.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
+import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import IndexBlock from './BaseTrackContent/IndexBlock.vue'
 import TitleSection from './BaseTrackContent/TitleSection.vue'
 import ArtistsSection from './BaseTrackContent/ArtistsSection.vue'
@@ -202,6 +210,7 @@ export default {
     BaseDeletedBlock,
     BaseTrackAudioIcon,
     BaseImage,
+    BaseArtistImage,
     IndexBlock,
     TitleSection,
     ArtistsSection,
@@ -236,6 +245,7 @@ export default {
     isError: Boolean,
     isCurrent: Boolean,
     isWithImage: Boolean,
+    isWithArtistImage: Boolean,
     isWithIndex: Boolean,
     index: Number,
     isWithArtistName: Boolean,
@@ -303,7 +313,10 @@ export default {
       )
     },
     artistName () {
-      return this.trackData.artist.name
+      return this.artistData.name
+    },
+    artistData () {
+      return this.trackData.artist
     },
     isRenderAlbumTitle () {
       return (
@@ -360,6 +373,15 @@ export default {
     shareData () {
       return formatTrackShareData(
         this.trackData
+      )
+    },
+    artistImageData () {
+      return this.artistData.image
+    },
+    isRenderImage () {
+      return (
+        this.isWithImage ||
+          this.isWithArtistImage
       )
     }
   },
@@ -419,7 +441,7 @@ export default {
 
 .track-image-container
   margin-left: 0.5em
-  .image
+  & > .image
     width: 30px
     height: 30px
 
@@ -427,13 +449,7 @@ export default {
   @extend .d-flex, .align-items-center
   margin-left: 0.5em
 
-.track-index-main-info-listeners
-  @extend .flex-full
-
-.track-index-main-info
-  @extend .d-flex, .align-items-center
-
-.track-main-info
+.track-main-info-block
   @extend .flex-full
 
 .main-simple-self-buttons-container

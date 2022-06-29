@@ -9,6 +9,7 @@
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
         is-with-artist-name
+        is-with-artist-image
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option

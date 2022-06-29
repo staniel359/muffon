@@ -21,6 +21,7 @@
 
       <TrackSection
         v-if="trackData"
+        :key="key"
         ref="track"
         :track-data="trackData"
       />
@@ -46,6 +47,9 @@ import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 import getRadio from '*/helpers/actions/api/radio/get'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'PlayerSegment',
@@ -69,6 +73,7 @@ export default {
   },
   data () {
     return {
+      key: null,
       radioData: null,
       error: null,
       isLoading: false
@@ -111,6 +116,8 @@ export default {
       value
     ) {
       if (value) {
+        this.key = generateKey()
+
         await this.$nextTick()
 
         this.getAudio()

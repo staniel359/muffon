@@ -6,6 +6,7 @@
       :track-data="trackData"
       :queue-tracks="tracksCollection"
       :is-with-image="isWithImage"
+      :is-with-artist-image="isWithArtistImage"
       :is-with-index="isWithIndex"
       :index="index"
       :is-with-artist-name="isWithArtistName"
@@ -71,6 +72,7 @@ export default {
       default: true
     },
     isWithImage: Boolean,
+    isWithArtistImage: Boolean,
     imageData: Object,
     isWithIndex: Boolean,
     isWithArtistName: Boolean,

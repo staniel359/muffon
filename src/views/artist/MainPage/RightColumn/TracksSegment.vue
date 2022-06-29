@@ -8,7 +8,7 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
-        :artist-name="artistName"
+        :artist-name="slotProps.artistName"
         :top-track-count="slotProps.topTrackCount"
         is-with-listeners-count
         is-with-library-option

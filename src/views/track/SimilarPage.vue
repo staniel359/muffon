@@ -9,6 +9,7 @@
         :tracks="slotProps[scope]"
         :artist-name="slotProps.artistName"
         is-with-artist-name
+        is-with-artist-image
         is-with-duration
         is-with-library-option
         is-with-favorite-option

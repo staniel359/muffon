@@ -18,6 +18,7 @@
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
+            :artist-name="segmentSlotProps.artistName"
             :top-track-count="segmentSlotProps.topTrackCount"
           />
         </template>

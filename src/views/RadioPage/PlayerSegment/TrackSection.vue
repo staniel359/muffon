@@ -4,6 +4,7 @@
       ref="track"
       :track-data="firstTrackData"
       :queue-tracks="tracksCollection"
+      is-with-artist-image
       is-with-artist-name
     />
   </BaseListContainer>
