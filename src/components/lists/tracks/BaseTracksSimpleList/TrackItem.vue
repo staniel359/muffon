@@ -5,6 +5,7 @@
     :track-data="trackData"
     :queue-tracks="queueTracks"
     :is-disabled="isDeleted"
+    :is-from-radio="isFromRadio"
     is-with-active-class
   >
     <template #default="slotProps">
@@ -103,7 +104,8 @@ export default {
     isSavedTrack: Boolean,
     playlistId: String,
     playlistTitle: String,
-    isClearable: Boolean
+    isClearable: Boolean,
+    isFromRadio: Boolean
   },
   emits: [
     'linkClick',

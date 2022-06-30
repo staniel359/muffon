@@ -7,7 +7,8 @@ import {
 
 export default async function (
   {
-    variantId
+    variantId,
+    isFromRadio
   }
 ) {
   const {
@@ -27,6 +28,8 @@ export default async function (
     variants.find(
       isMatchedVariant
     )
+
+  trackData.from_radio = isFromRadio
 
   function getTrackData () {
     const isBandcampVariant = (

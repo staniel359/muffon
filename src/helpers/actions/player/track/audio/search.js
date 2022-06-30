@@ -57,7 +57,8 @@ export default function (
 
   function handleSearchSuccess () {
     const playerVariantAudioArgs = {
-      variantId: getFirstVariantId()
+      variantId: getFirstVariantId(),
+      isFromRadio: trackData.from_radio
     }
 
     return getPlayerVariantAudio(

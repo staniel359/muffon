@@ -4,7 +4,8 @@ export function track (
     artistName,
     albumData,
     imageData,
-    isFromSource
+    isFromSource,
+    isFromRadio
   }
 ) {
   const trackArtistsData = artistName && {
@@ -27,7 +28,8 @@ export function track (
   }
 
   const trackOtherData = {
-    from_source: !!isFromSource
+    from_source: !!isFromSource,
+    from_radio: !!isFromRadio
   }
 
   return {

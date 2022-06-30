@@ -44,7 +44,8 @@ export default {
       }
     },
     isWithActiveClass: Boolean,
-    isDisabled: Boolean
+    isDisabled: Boolean,
+    isFromRadio: Boolean
   },
   data () {
     return {
@@ -97,7 +98,8 @@ export default {
       return formatPlayerTrack(
         {
           trackData: this.trackData,
-          isFromSource: true
+          isFromSource: this.trackAudioLink,
+          isFromRadio: this.isFromRadio
         }
       )
     },
