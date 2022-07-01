@@ -1,5 +1,8 @@
 <template>
-  <div class="ui large labels tags-list">
+  <div
+    v-if="tags?.length"
+    class="ui large labels tags-list"
+  >
     <BaseIcon
       v-if="isWithIcon"
       class="tags-icon"

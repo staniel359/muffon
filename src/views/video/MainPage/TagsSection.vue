@@ -1,18 +1,16 @@
 <template>
-  <template v-if="tags?.length">
-    <BaseTagsList
-      :tags="tags"
-      :is-more="isMore"
-      is-with-icon
-      @more-click="handleMoreClick"
-    />
+  <BaseTagsList
+    :tags="tags"
+    :is-more="isMore"
+    is-with-icon
+    @more-click="handleMoreClick"
+  />
 
-    <BaseVideoTagsModal
-      v-if="isMore"
-      ref="modal"
-      :video-id="videoId"
-    />
-  </template>
+  <BaseVideoTagsModal
+    v-if="isMore"
+    ref="modal"
+    :video-id="videoId"
+  />
 </template>
 
 <script>

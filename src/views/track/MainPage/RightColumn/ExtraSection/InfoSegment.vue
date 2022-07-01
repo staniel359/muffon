@@ -7,7 +7,6 @@
       />
 
       <BaseTrackTags
-        v-if="isAnyTags"
         :tags="tags"
         :request-track-data="requestTrackData"
         :is-more="isMoreTags"
@@ -57,9 +56,6 @@ export default {
     },
     playsCount () {
       return this.trackData.plays_count
-    },
-    isAnyTags () {
-      return this.tags?.length
     },
     tags () {
       return this.trackData.tags
