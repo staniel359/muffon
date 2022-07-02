@@ -1,5 +1,22 @@
 export default [
   {
+    id: 'lastfm',
+    icon: 'lastfm',
+    name: 'Last.FM',
+    isStreamable: false,
+    isWithAlbums: true,
+    isWithTracks: true,
+    albumTypes: [
+      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks',
+      'tags'
+    ]
+  },
+  {
     id: 'vk',
     icon: 'vk',
     name: 'VK',
@@ -8,6 +25,11 @@ export default [
     maxBitrate: 320,
     albumTypes: [
       'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -19,6 +41,11 @@ export default [
     maxBitrate: 320,
     albumTypes: [
       'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -30,6 +57,11 @@ export default [
     maxBitrate: 192,
     albumTypes: [
       'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -48,6 +80,11 @@ export default [
       'single',
       'compilation',
       'appearance'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -60,6 +97,11 @@ export default [
     albumTypes: [
       'album',
       'track'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -75,6 +117,11 @@ export default [
     albumsTypes: [
       'album',
       'single'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -86,6 +133,11 @@ export default [
     maxBitrate: 128,
     albumTypes: [
       'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   {
@@ -105,6 +157,12 @@ export default [
       'compilation',
       'video',
       'misc'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'albumGroups',
+      'tracks'
     ]
   },
   {
@@ -116,17 +174,11 @@ export default [
     isWithTracks: true,
     albumTypes: [
       'album'
-    ]
-  },
-  {
-    id: 'lastfm',
-    icon: 'lastfm',
-    name: 'Last.FM',
-    isStreamable: false,
-    isWithAlbums: true,
-    isWithTracks: true,
-    albumTypes: [
-      'album'
+    ],
+    searchScopes: [
+      'artists',
+      'albums',
+      'tracks'
     ]
   },
   // {
@@ -158,6 +210,9 @@ export default [
     name: 'YouTube',
     isStreamable: false,
     isWithAlbums: false,
-    isWithTracks: false
+    isWithTracks: false,
+    searchScopes: [
+      'videos'
+    ]
   }
 ]

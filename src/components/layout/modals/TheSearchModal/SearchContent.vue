@@ -16,6 +16,8 @@
       />
 
       <SourceSelect
+        v-if="scope"
+        :scope="scope"
         @select="handleSourceSelect"
       />
     </div>
@@ -65,16 +67,16 @@ export default {
     }
   },
   methods: {
-    handleSourceSelect (
-      value
-    ) {
-      this.source = value
-      this.key = generateKey()
-    },
     handleScopeSelect (
       value
     ) {
       this.scope = value
+      this.key = generateKey()
+    },
+    handleSourceSelect (
+      value
+    ) {
+      this.source = value
       this.key = generateKey()
     },
     handleSubmit (

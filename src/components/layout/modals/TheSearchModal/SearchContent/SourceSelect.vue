@@ -1,9 +1,9 @@
 <template>
   <BaseDropdown
     class="floating scrolling scope-select-container"
-    selected="lastfm"
     menu-direction="left"
-    :options="options"
+    :options="sources"
+    :selected="selectedSource"
     :is-selection="false"
     is-only-icon
     @select="handleSelect"
@@ -19,12 +19,23 @@ export default {
   components: {
     BaseDropdown
   },
+  props: {
+    scope: {
+      type: String,
+      required: true
+    }
+  },
   emits: [
     'select'
   ],
   computed: {
-    options () {
-      return audioSources
+    sources () {
+      return audioSources.filter(
+        this.isMatchedSource
+      )
+    },
+    selectedSource () {
+      return this.sources[0].id
     }
   },
   methods: {
@@ -34,6 +45,13 @@ export default {
       this.$emit(
         'select',
         value
+      )
+    },
+    isMatchedSource (
+      sourceData
+    ) {
+      return sourceData.searchScopes.includes(
+        this.scope
       )
     }
   }
