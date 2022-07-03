@@ -49,12 +49,20 @@ export function track (
     audio
   } = trackData
 
-  delete artist.image
-
-  delete audio?.local
+  const {
+    image: artistImage,
+    ...artistData
+  } = artist
 
   const imageData = image && {
     extrasmall: image.extrasmall
+  }
+
+  const {
+    local: audioLocal,
+    ...audioData
+  } = {
+    ...audio
   }
 
   return {
@@ -63,11 +71,13 @@ export function track (
     player_id:
       trackData.player_id,
     title,
-    artist,
+    artist: artistData,
     artists,
     album,
     image: imageData,
-    audio
+    audio: (
+      audio && audioData
+    )
   }
 }
 
