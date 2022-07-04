@@ -31,6 +31,7 @@
         size="extrasmall"
         :artist-name="artistName"
         :image-data="artistImageData"
+        @load-end="handleArtistImageLoadEnd"
       />
     </div>
 
@@ -232,6 +233,11 @@ export default {
   mixins: [
     selfMixin
   ],
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
+  },
   props: {
     trackData: {
       type: Object,
@@ -383,6 +389,17 @@ export default {
         this.isWithImage ||
           this.isWithArtistImage
       )
+    },
+    paginationItem () {
+      if (this.findPaginationItem) {
+        return this.findPaginationItem(
+          {
+            uuid: this.uuid
+          }
+        )
+      } else {
+        return null
+      }
     }
   },
   methods: {
@@ -418,6 +435,13 @@ export default {
       this.$emit(
         'deleted'
       )
+    },
+    handleArtistImageLoadEnd (
+      value
+    ) {
+      if (this.paginationItem) {
+        this.paginationItem.artist.image = value
+      }
     },
     showDeleteModal () {
       this.$refs
