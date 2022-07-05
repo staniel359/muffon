@@ -31,9 +31,10 @@
           <Component
             :is="component"
             :[listScope]="slotProps[searchScope]"
+            :is-with-artist-image="isLastfmSource"
+            :is-with-image="!isLastfmSource"
             :is-with-listeners-count="isWithListenersCount"
             :is-with-source="isTracks"
-            is-with-image
             is-with-artist-name
             is-with-album-title
             is-with-duration
@@ -240,6 +241,9 @@ export default {
     },
     isTracks () {
       return this.scope === 'tracks'
+    },
+    isLastfmSource () {
+      return this.source === 'lastfm'
     }
   },
   mounted () {
