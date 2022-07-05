@@ -7,8 +7,15 @@ export default function (
     modelScope
   }
 ) {
-  const url =
-    `/radio/${scope}/${modelName}/${modelScope}`
+  function formatUrl () {
+    if (scope === 'top') {
+      return `/radio/${scope}/${modelScope}`
+    } else {
+      return `/radio/${scope}/${modelName}/${modelScope}`
+    }
+  }
+
+  const url = formatUrl()
 
   const handleSuccess = (
     response

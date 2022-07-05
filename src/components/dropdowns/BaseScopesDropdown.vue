@@ -3,6 +3,7 @@
     class="main-scopes-dropdown"
     :options="options"
     :selected="selected"
+    :header="header"
     @select="handleSelect"
   />
 </template>
@@ -20,7 +21,8 @@ export default {
       type: Array,
       required: true
     },
-    selected: String
+    selected: String,
+    header: String
   },
   emits: [
     'select'

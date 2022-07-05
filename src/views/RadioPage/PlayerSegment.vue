@@ -6,7 +6,7 @@
     :error="error"
     @refresh="handleRefresh"
   >
-    <template v-if="modelName">
+    <template v-if="isGetData">
       <PlayerLabel
         :scope="scope"
         :model-name="modelName"
@@ -69,10 +69,7 @@ export default {
       type: String,
       required: true
     },
-    modelScope: {
-      type: String,
-      required: true
-    },
+    modelScope: String,
     modelName: String
   },
   data () {
@@ -98,13 +95,23 @@ export default {
         modelName: this.modelName,
         modelScope: this.modelScope
       }
+    },
+    isGetData () {
+      if (this.scope === 'top') {
+        return !!this.modelScope
+      } else {
+        return !!(
+          this.modelName &&
+            this.modelScope
+        )
+      }
     }
   },
   watch: {
     trackData: 'handleTrackDataChange'
   },
   mounted () {
-    if (this.modelName) {
+    if (this.isGetData) {
       this.getData()
     }
   },

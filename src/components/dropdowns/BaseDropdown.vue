@@ -4,6 +4,7 @@
     :is-selection="isSelection"
     :is-only-icon="isOnlyIcon"
     :menu-direction="menuDirection"
+    :header="header"
     @select="handleSelect"
   >
     <div
@@ -48,7 +49,8 @@ export default {
     },
     selected: String,
     isOnlyIcon: Boolean,
-    menuDirection: String
+    menuDirection: String,
+    header: String
   },
   emits: [
     'select'

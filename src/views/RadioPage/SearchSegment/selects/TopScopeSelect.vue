@@ -1,7 +1,7 @@
 <template>
   <BaseScopesDropdown
+    header="..."
     :scopes="scopes"
-    :selected="selectedScope"
     @select="handleSelect"
   />
 </template>
@@ -10,7 +10,7 @@
 import BaseScopesDropdown from '*/components/dropdowns/BaseScopesDropdown.vue'
 
 export default {
-  name: 'ArtistScopeSelect',
+  name: 'TopScopeSelect',
   components: {
     BaseScopesDropdown
   },
@@ -20,14 +20,9 @@ export default {
   data () {
     return {
       scopes: [
-        'tracks',
-        'similar'
+        'artists',
+        'tracks'
       ]
-    }
-  },
-  computed: {
-    selectedScope () {
-      return this.scopes[0]
     }
   },
   methods: {

@@ -1,7 +1,7 @@
 <template>
   <BaseScopesDropdown
-    selected="tag"
     :scopes="scopes"
+    :selected="selectedScope"
     @select="handleSelect"
   />
 </template>
@@ -20,9 +20,15 @@ export default {
   data () {
     return {
       scopes: [
+        'top',
         'tag',
         'artist'
       ]
+    }
+  },
+  computed: {
+    selectedScope () {
+      return this.scopes[0]
     }
   },
   methods: {

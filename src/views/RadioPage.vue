@@ -15,7 +15,7 @@
     />
 
     <PlayerSegment
-      v-if="scope && modelScope"
+      v-if="scope"
       :key="key"
       :scope="scope"
       :model-name="modelName"
@@ -69,6 +69,10 @@ export default {
       value
     ) {
       this.scope = value
+
+      if (this.scope === 'top') {
+        this.modelScope = null
+      }
     },
     handleModelNameChange (
       value

@@ -8,6 +8,7 @@
       <template v-if="scope">
         <Component
           :is="searchComponent"
+          v-if="scope !== 'top'"
           ref="input"
           class="search-container"
           @select="handleSearchSelect"
@@ -32,6 +33,7 @@
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import ScopeSelect from './SearchSegment/selects/ScopeSelect.vue'
+import TopScopeSelect from './SearchSegment/selects/TopScopeSelect.vue'
 import TagScopeSelect from './SearchSegment/selects/TagScopeSelect.vue'
 import ArtistScopeSelect from './SearchSegment/selects/ArtistScopeSelect.vue'
 import TagsSearchInput from './SearchSegment/inputs/TagsSearchInput.vue'
@@ -43,6 +45,7 @@ export default {
   components: {
     BaseSegmentContainer,
     ScopeSelect,
+    TopScopeSelect,
     TagScopeSelect,
     ArtistScopeSelect,
     TagsSearchInput,
@@ -65,6 +68,7 @@ export default {
         artist: 'ArtistsSearchInput'
       },
       modelScopeSelectComponents: {
+        top: 'TopScopeSelect',
         tag: 'TagScopeSelect',
         artist: 'ArtistScopeSelect'
       }
@@ -134,7 +138,7 @@ export default {
     focusInput () {
       this.$refs
         .input
-        .focus()
+        ?.focus()
     }
   }
 }

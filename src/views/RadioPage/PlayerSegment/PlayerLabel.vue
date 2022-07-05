@@ -19,18 +19,16 @@ export default {
       type: String,
       required: true
     },
-    modelName: {
-      type: String,
-      required: true
-    },
     modelScope: {
       type: String,
       required: true
-    }
+    },
+    modelName: String
   },
   data () {
     return {
       icons: {
+        top: 'arrow alternate circle up',
         tag: 'tag',
         artist: 'microphone alternate'
       }
@@ -43,12 +41,18 @@ export default {
       ]
     },
     text () {
-      return this.$t(
-        `navigation.model.${this.modelScope}`,
-        {
-          modelName: this.modelName
-        }
-      )
+      if (this.scope === 'top') {
+        return this.$t(
+          `navigation.topCollection.${this.modelScope}`
+        )
+      } else {
+        return this.$t(
+          `navigation.model.${this.modelScope}`,
+          {
+            modelName: this.modelName
+          }
+        )
+      }
     }
   }
 }

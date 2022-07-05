@@ -1,7 +1,7 @@
 <template>
   <BaseScopesDropdown
-    selected="artists"
     :scopes="scopes"
+    :selected="selectedScope"
     @select="handleSelect"
   />
 </template>
@@ -23,6 +23,11 @@ export default {
         'artists',
         'tracks'
       ]
+    }
+  },
+  computed: {
+    selectedScope () {
+      return this.scopes[0]
     }
   },
   methods: {
