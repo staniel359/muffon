@@ -15,9 +15,13 @@ export default function (
         return {
           artistName: (
             trackData.artist?.name ||
+              trackData.artistName ||
               artistName
           ),
-          trackTitle: trackData.title
+          trackTitle: (
+            trackData.title ||
+              trackData.trackTitle
+          )
         }
       case 'vk':
         return {
@@ -39,8 +43,8 @@ export default function (
         return {
           trackId: trackData.source.id,
           artistId: trackData.source.artist_id,
-          track: trackData.source.slug,
-          artist: trackData.source.artist_slug
+          slug: trackData.source.slug,
+          artistSlug: trackData.source.artist_slug
         }
       case 'soundcloud':
         return {

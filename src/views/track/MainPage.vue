@@ -70,29 +70,23 @@ export default {
   computed: {
     sourceParams () {
       return {
-        source: this.source,
+        source: this.sourceData,
         artistName: this.artistName,
-        trackTitle: this.trackTitle,
-        trackId: this.trackId,
-        artistId: this.artistId,
-        track: this.track,
-        artist: this.artist
+        trackTitle: this.trackTitle
       }
     },
-    source () {
-      return this.$route.query.source
-    },
-    trackId () {
-      return this.$route.query.track_id
-    },
-    artistId () {
-      return this.$route.query.artist_id
-    },
-    track () {
-      return this.$route.query.track
-    },
-    artist () {
-      return this.$route.query.artist
+    sourceData () {
+      const {
+        query
+      } = this.$route
+
+      return {
+        name: query.source,
+        id: query.track_id,
+        artist_id: query.artist_id,
+        slug: query.slug,
+        artist_slug: query.artist_slug
+      }
     }
   },
   methods: {

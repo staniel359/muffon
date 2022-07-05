@@ -70,35 +70,26 @@ export default {
   computed: {
     sourceParams () {
       return {
-        source: this.source,
+        source: this.sourceData,
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        albumId: this.albumId,
-        artistId: this.artistId,
-        album: this.album,
-        artist: this.artist,
-        model: this.model,
         albumType: this.albumType,
         paramsData: this.paramsData
       }
     },
-    source () {
-      return this.$route.query.source
-    },
-    albumId () {
-      return this.$route.query.album_id
-    },
-    artistId () {
-      return this.$route.query.artist_id
-    },
-    album () {
-      return this.$route.query.album
-    },
-    artist () {
-      return this.$route.query.artist
-    },
-    model () {
-      return this.$route.query.model
+    sourceData () {
+      const {
+        query
+      } = this.$route
+
+      return {
+        name: query.source,
+        id: query.album_id,
+        artist_id: query.artist_id,
+        slug: query.slug,
+        artist_slug: query.artist_slug,
+        model: query.model
+      }
     },
     albumType () {
       return this.$route.query.album_type

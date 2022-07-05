@@ -19,8 +19,8 @@ export function main (
     source,
     albumId,
     artistId,
-    album,
-    artist,
+    slug,
+    artistSlug,
     model,
     albumType,
     paramsData
@@ -44,8 +44,8 @@ export function main (
     source,
     album_id: albumId,
     artist_id: artistId,
-    album,
-    artist,
+    slug,
+    artist_slug: artistSlug,
     model,
     album_type: albumType,
     params_data: formatParamsDataString()

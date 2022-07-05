@@ -15,9 +15,13 @@ export default function (
         return {
           artistName: (
             albumData.artist?.name ||
+              albumData.artistName ||
               artistName
           ),
-          albumTitle: albumData.title
+          albumTitle: (
+            albumData.title ||
+              albumData.albumTitle
+          )
         }
       case 'vk':
         return {
@@ -45,8 +49,8 @@ export default function (
         return {
           albumId: albumData.source.id,
           artistId: albumData.source.artist_id,
-          album: albumData.source.slug,
-          artist: albumData.source.artist_slug,
+          slug: albumData.source.slug,
+          artistSlug: albumData.source.artist_slug,
           model: albumData.source.model,
           paramsData: {
             album_type: albumData.source.model

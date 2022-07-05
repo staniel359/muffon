@@ -104,8 +104,9 @@ export default {
       this.getData()
     },
     resetRequestAlbumData () {
-      this.requestAlbumData =
+      this.setRequestAlbumData(
         this.sourceParams
+      )
     },
     getData () {
       this.getAlbum(
@@ -116,11 +117,21 @@ export default {
       value
     ) {
       const isBandcampSource = (
-        value.source.name ===
+        value.source?.name ===
           'bandcamp'
       )
 
-      if (isBandcampSource) {
+      const isBandcampAlbumIdPresent = (
+        value.source?.id &&
+          value.source?.artist_id
+      )
+
+      const isGetBandcampId = (
+        isBandcampSource &&
+          !isBandcampAlbumIdPresent
+      )
+
+      if (isGetBandcampId) {
         this.getBandcampAlbumData(
           value
         )

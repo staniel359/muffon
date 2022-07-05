@@ -104,8 +104,9 @@ export default {
       this.getData()
     },
     resetRequestTrackData () {
-      this.requestTrackData =
+      this.setRequestTrackData(
         this.sourceParams
+      )
     },
     getData (
       {
@@ -123,7 +124,7 @@ export default {
       value
     ) {
       const isBandcampSource = (
-        value.source.name ===
+        value.source?.name ===
           'bandcamp'
       )
 
