@@ -5,13 +5,11 @@
     >
       <MainSection />
 
-      <BaseAccordionContainer
-        :title="extraText"
-      >
-        <ExtraSection
-          @image-change="handleImageChange"
-        />
-      </BaseAccordionContainer>
+      <ExtraSection
+        @image-change="handleImageChange"
+      />
+
+      <LegalSection />
 
       <div class="remember-submit-button-container">
         <BaseProfileRememberField />
@@ -30,9 +28,8 @@ import BaseSegmentContainer
 import BaseProfileCreateFormContainer
   from '*/components/containers/forms/profile/BaseProfileCreateFormContainer.vue'
 import MainSection from './FormSegment/MainSection.vue'
-import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
 import ExtraSection from './FormSegment/ExtraSection.vue'
+import LegalSection from './FormSegment/LegalSection.vue'
 import BaseProfileRememberField
   from '*/components/fields/profile/BaseProfileRememberField.vue'
 import BaseProfileSubmitButton
@@ -44,21 +41,14 @@ export default {
     BaseSegmentContainer,
     BaseProfileCreateFormContainer,
     MainSection,
-    BaseAccordionContainer,
     ExtraSection,
+    LegalSection,
     BaseProfileRememberField,
     BaseProfileSubmitButton
   },
   data () {
     return {
       image: {}
-    }
-  },
-  computed: {
-    extraText () {
-      return this.$t(
-        'forms.extra'
-      )
     }
   },
   methods: {

@@ -283,6 +283,11 @@ export function profileCreateFormOptions (
       'forms.errors.empty.nickname'
     )
 
+  const emptyLegalPrompt =
+    i18n.global.t(
+      'forms.errors.empty.legal'
+    )
+
   return {
     duration: 0,
     inline: true,
@@ -320,6 +325,15 @@ export function profileCreateFormOptions (
           {
             type: 'empty',
             prompt: emptyNicknamePrompt
+          }
+        ]
+      },
+      legal: {
+        identifier: 'legal',
+        rules: [
+          {
+            type: 'empty',
+            prompt: emptyLegalPrompt
           }
         ]
       }

@@ -1,25 +1,31 @@
 <template>
   <div class="extra-section">
-    <BaseProfileImageField
-      class="image-field"
-      @change="handleImageChange"
-    />
+    <BaseAccordionContainer
+      :title="extraText"
+    >
+      <div class="extra-section-content">
+        <BaseProfileImageField
+          class="image-field"
+          @change="handleImageChange"
+        />
 
-    <div class="extra-fields">
-      <BaseProfileGenderField />
+        <div class="extra-fields">
+          <BaseProfileGenderField />
 
-      <BaseProfileBirthdateField />
+          <BaseProfileBirthdateField />
 
-      <BaseProfileCountryField />
+          <BaseProfileCountryField />
 
-      <BaseProfileCityField />
-
-      <div />
-    </div>
+          <BaseProfileCityField />
+        </div>
+      </div>
+    </BaseAccordionContainer>
   </div>
 </template>
 
 <script>
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
 import BaseProfileImageField
   from '*/components/fields/profile/BaseProfileImageField.vue'
 import BaseProfileGenderField
@@ -34,6 +40,7 @@ import BaseProfileCityField
 export default {
   name: 'ExtraSection',
   components: {
+    BaseAccordionContainer,
     BaseProfileImageField,
     BaseProfileGenderField,
     BaseProfileBirthdateField,
@@ -43,6 +50,13 @@ export default {
   emits: [
     'imageChange'
   ],
+  computed: {
+    extraText () {
+      return this.$t(
+        'forms.extra'
+      )
+    }
+  },
   methods: {
     handleImageChange (
       value
@@ -58,6 +72,9 @@ export default {
 
 <style lang="sass" scoped>
 .extra-section
+  margin-bottom: 1em
+
+.extra-section-content
   @extend .d-flex
 
 .image-field

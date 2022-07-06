@@ -366,12 +366,6 @@ function handleAddTab (
     value
   )
 
-  function handleNewWindow (
-    event
-  ) {
-    event.preventDefault()
-  }
-
   function handleDidStartNavigation () {
     tab.webContents.send(
       'set-tab-id',
@@ -693,6 +687,11 @@ function createWindow () {
   mainWindow.on(
     'close',
     handleClose
+  )
+
+  mainWindow.webContents.on(
+    'new-window',
+    handleNewWindow
   )
 
   function maximize () {
@@ -1169,4 +1168,10 @@ function deleteAudioFile (
     filePath,
     () => true
   )
+}
+
+function handleNewWindow (
+  event
+) {
+  event.preventDefault()
 }

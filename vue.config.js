@@ -10,6 +10,14 @@ module.exports = {
     externals: {
       'react-native-fs': 'reactNativeFs'
     },
+    module: {
+      rules: [
+        {
+          test: /\.txt$/i,
+          use: 'raw-loader'
+        }
+      ]
+    },
     plugins: [
       new webpack.ProvidePlugin(
         {

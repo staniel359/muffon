@@ -38,4 +38,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.remember-field
+  @extend .no-margin
+</style>

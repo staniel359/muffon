@@ -1,13 +1,15 @@
 <template>
-  <BaseProfileEmailField
-    ref="email"
-  />
+  <div class="main-section">
+    <BaseProfileEmailField
+      ref="email"
+    />
 
-  <BaseProfilePasswordField />
+    <BaseProfilePasswordField />
 
-  <BaseProfilePasswordConfirmationField />
+    <BaseProfilePasswordConfirmationField />
 
-  <BaseProfileNicknameField />
+    <BaseProfileNicknameField />
+  </div>
 </template>
 
 <script>
@@ -41,4 +43,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.main-section
+  margin-bottom: 1em
+</style>
