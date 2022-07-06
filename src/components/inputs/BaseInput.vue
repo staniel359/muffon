@@ -2,7 +2,6 @@
   <div
     class="ui input"
     :class="{
-      inverted: isDarkMode,
       icon
     }"
   >
@@ -23,9 +22,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
@@ -42,14 +38,6 @@ export default {
     'update:modelValue',
     'enterPress'
   ],
-  computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    )
-  },
   methods: {
     handleInput (
       event

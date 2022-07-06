@@ -3,6 +3,9 @@
     <div
       ref="calendar"
       class="ui calendar"
+      :class="{
+        inverted: isDarkMode
+      }"
     >
       <div class="ui input left icon">
         <BaseIcon
@@ -41,6 +44,12 @@ export default {
     value: String
   },
   computed: {
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     ...mapState(
       'profile',
       {

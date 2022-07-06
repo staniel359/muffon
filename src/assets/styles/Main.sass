@@ -122,10 +122,12 @@ p
   & > .item
     padding: 0.5em !important
 
-.ui.inverted.pointing.upward.dropdown
-  & > .menu:after
-    box-shadow: 1px 1px 0 0 rgb(255 255 255 / 15%)
-    margin: -0.3em 0 0
+.ui.dropdown
+  &.pointing.upward
+    &.inverted
+      & > .menu:after
+        box-shadow: 1px 1px 0 0 #ffffff26
+        margin: -0.3em 0 0
 
 .ui.segments
   .main-segment
@@ -150,6 +152,24 @@ p
         margin-right: 0.5em
       & > .content
         @extend .no-margin, .flex-full
+  &.inverted
+    .ui.input
+      input
+        @extend .background-black, .text-color-white
+        border: $borderInverted
+      .icon
+        @extend .text-color-white
+    .results
+      @extend .background-black
+      border: $borderInverted
+      .result
+        border-bottom: $borderInverted
+        .title
+          @extend .text-color-white
+        &:hover
+          background: #ffffff14
+        &.active
+          @extend .background-grey-inverted
 
 .ui.label
   &.main-filter-item-label
@@ -159,6 +179,27 @@ p
 .ui.toast
   &.inverted
     border: $borderInverted
+
+.ui.form
+  &.inverted
+    input[type=text],
+    input[type=password],
+    textarea
+      @extend .background-black, .text-color-white
+      border: $borderInverted
+
+.ui.calendar
+  &:before
+    box-shadow: 1px 1px 0 0 $colorGrey !important
+  &.inverted
+    .ui.input
+      .icon
+        @extend .text-color-white
+    table
+      border: $borderInverted
+    &:before
+      background: #333 !important
+      box-shadow: 1px 1px 0 0 $colorGreyInverted !important
 
 .main-button
   @extend .no-padding, .no-shadow, .no-border-radius, .d-flex, .align-items-center, .justify-content-center

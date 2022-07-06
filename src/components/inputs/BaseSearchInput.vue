@@ -1,10 +1,10 @@
 <template>
   <div
     ref="search"
-    :class="[
-      'ui fluid search',
-      'main-search-input'
-    ]"
+    class="ui fluid search main-search-input"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <div class="ui icon fluid input">
       <input
@@ -22,6 +22,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import axios from 'axios'
 import BaseIcon from '*/components/BaseIcon.vue'
 import {
@@ -56,6 +59,12 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     searchText () {
       return this.$t(
         'inputs.search'

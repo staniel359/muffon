@@ -1,16 +1,19 @@
 <template>
   <div
     ref="search"
-    :class="[
-      'ui local search inverted',
-      'main-history-input'
-    ]"
+    class="ui local search main-history-input"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <slot />
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import {
   mainHistoryInputOptions
 } from '*/helpers/data/plugins/semantic'
@@ -37,6 +40,12 @@ export default {
     'select'
   ],
   computed: {
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     searchOptions () {
       return mainHistoryInputOptions(
         {

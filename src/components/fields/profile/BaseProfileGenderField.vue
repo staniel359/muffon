@@ -1,49 +1,37 @@
 <template>
   <div class="field">
-    <div
-      ref="dropdown"
-      class="ui selection dropdown"
+    <BaseDropdownContainer
+      :header="genderText"
+      :selected="value"
     >
-      <input
-        type="hidden"
-        name="gender"
-      >
+      <template #input>
+        <input
+          type="hidden"
+          name="gender"
+        >
+      </template>
 
-      <div
-        class="default text"
-        v-text="genderText"
-      />
-
-      <BaseIcon
-        icon="dropdown"
-      />
-
-      <div class="menu">
+      <template #default>
         <div
-          v-for="optionData in optionsCollection"
-          :key="optionData.uuid"
+          v-for="option in options"
+          :key="option"
           class="item"
-          :data-value="optionData.name"
-          v-text="formatOptionText(optionData.name)"
+          :data-value="option"
+          v-text="formatOptionText(option)"
         />
-      </div>
-    </div>
+      </template>
+    </BaseDropdownContainer>
   </div>
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
-import {
-  setDropdownValue
-} from '*/helpers/actions/plugins/semantic'
-import {
-  collection as formatCollection
-} from '*/helpers/formatters'
+import BaseDropdownContainer
+  from '*/components/containers/BaseDropdownContainer.vue'
 
 export default {
   name: 'BaseProfileGenderField',
   components: {
-    BaseIcon
+    BaseDropdownContainer
   },
   props: {
     value: String
@@ -62,18 +50,7 @@ export default {
       return this.$t(
         'forms.fields.gender'
       )
-    },
-    optionsCollection () {
-      return formatCollection(
-        this.options
-      )
     }
-  },
-  mounted () {
-    setDropdownValue(
-      this.$refs.dropdown,
-      this.value
-    )
   },
   methods: {
     formatOptionText (
