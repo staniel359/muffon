@@ -1,18 +1,12 @@
 <template>
-  <div class="form-container">
+  <div class="the-authentication">
     <BaseHeader
       class="main-app-title"
       tag="h1"
       text="muffon"
     />
 
-    <div
-      :class="[
-        'ui raised segments',
-        'main-segment-container',
-        'form-segment-container'
-      ]"
-    >
+    <div class="form-segment-container">
       <BaseProfileLoginForm
         v-if="isLogin"
         @signup-link-click="handleSignupLinkClick"
@@ -26,12 +20,6 @@
         v-else-if="isSignup"
         @login-link-click="handleLoginLinkClick"
       />
-
-      <BaseSegmentContainer
-        class="form-language-container"
-      >
-        <BaseLanguageDropdown />
-      </BaseSegmentContainer>
     </div>
   </div>
 </template>
@@ -44,10 +32,6 @@ import BaseProfilePasswordResetForm
   from '*/components/forms/profile/BaseProfilePasswordResetForm.vue'
 import BaseProfileSignupForm
   from '*/components/forms/profile/BaseProfileSignupForm.vue'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseLanguageDropdown
-  from '*/components/dropdowns/BaseLanguageDropdown.vue'
 
 export default {
   name: 'TheAuthentication',
@@ -55,9 +39,7 @@ export default {
     BaseHeader,
     BaseProfileLoginForm,
     BaseProfilePasswordResetForm,
-    BaseProfileSignupForm,
-    BaseSegmentContainer,
-    BaseLanguageDropdown
+    BaseProfileSignupForm
   },
   data () {
     return {
@@ -102,13 +84,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.form-container
+.the-authentication
   @extend .d-flex, .flex-column, .align-items-center
   margin-top: 3vh
 
 .form-segment-container
   width: 400px
-
-.form-language-container
-  @extend .d-flex, .justify-content-center
+  margin-top: 1.5em
 </style>

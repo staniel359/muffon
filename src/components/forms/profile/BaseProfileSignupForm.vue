@@ -1,9 +1,16 @@
 <template>
-  <FormSegment />
+  <div
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
+  >
+    <FormSegment />
 
-  <LoginSegment
-    @login-link-click="handleLoginLinkClick"
-  />
+    <LoginSegment
+      @login-link-click="handleLoginLinkClick"
+    />
+  </div>
 </template>
 
 <script>

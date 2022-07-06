@@ -1,18 +1,25 @@
 <template>
-  <BackSegment
-    @back-link-click="handleBackLinkClick"
-  />
+  <div
+    :class="[
+      'ui raised segments',
+      'main-segment-container'
+    ]"
+  >
+    <BackSegment
+      @back-link-click="handleBackLinkClick"
+    />
 
-  <SuccessSegment
-    v-if="isSuccess"
-  />
-  <ResetFormSegment
-    v-else-if="isReset"
-  />
-  <UpdateFormSegment
-    v-else-if="isUpdate"
-    :email="email"
-  />
+    <SuccessSegment
+      v-if="isSuccess"
+    />
+    <ResetFormSegment
+      v-else-if="isReset"
+    />
+    <UpdateFormSegment
+      v-else-if="isUpdate"
+      :email="email"
+    />
+  </div>
 </template>
 
 <script>

@@ -1,9 +1,8 @@
 <template>
-  <div class="option">
-    <BaseHeader
-      class="option-header"
-      tag="h4"
-      :text="darkModeText"
+  <div class="dark-mode-block">
+    <div
+      class="dark-mode-text"
+      v-text="darkModeText"
     />
 
     <BaseDarkModeToggle />
@@ -11,13 +10,11 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
 import BaseDarkModeToggle from '*/components/toggles/BaseDarkModeToggle.vue'
 
 export default {
-  name: 'DarkModeOption',
+  name: 'DarkModeBlock',
   components: {
-    BaseHeader,
     BaseDarkModeToggle
   },
   computed: {
@@ -30,4 +27,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.dark-mode-block
+  @extend .d-flex, .align-items-center
+
+.dark-mode-text
+  margin-right: 1em
+</style>
