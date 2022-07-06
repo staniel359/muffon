@@ -34,9 +34,22 @@ export default function (
       image
     }
 
-    setPlayerPlaying(
-      playingData
+    const {
+      audio
+    } = response.data.track
+
+    const isAudioPresent = (
+      audio.present &&
+        audio.link
     )
+
+    if (isAudioPresent) {
+      setPlayerPlaying(
+        playingData
+      )
+    } else {
+      throw new Error()
+    }
   }
 
   return getRequest(
