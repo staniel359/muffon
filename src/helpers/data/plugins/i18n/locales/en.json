@@ -389,7 +389,8 @@
         "view": {
           "language": "Language",
           "darkMode": "Dark mode",
-          "newTabSwitch": "Switch to new tab"
+          "newTabSwitch": "Switch to new tab",
+          "infiniteScroll": "Infinite scroll"
         },
         "player": {
           "audioSource": "Audio source"

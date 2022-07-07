@@ -11,6 +11,8 @@
       <DarkModeOption />
 
       <SwitchToNewTabOption />
+
+      <InfiniteScrollOption />
     </div>
   </div>
 </template>
@@ -20,6 +22,7 @@ import BaseDivider from '*/components/BaseDivider.vue'
 import LanguageOption from './ViewOptions/LanguageOption.vue'
 import DarkModeOption from './ViewOptions/DarkModeOption.vue'
 import SwitchToNewTabOption from './ViewOptions/SwitchToNewTabOption.vue'
+import InfiniteScrollOption from './ViewOptions/InfiniteScrollOption.vue'
 
 export default {
   name: 'ViewOptions',
@@ -27,7 +30,8 @@ export default {
     BaseDivider,
     LanguageOption,
     DarkModeOption,
-    SwitchToNewTabOption
+    SwitchToNewTabOption,
+    InfiniteScrollOption
   },
   computed: {
     viewText () {

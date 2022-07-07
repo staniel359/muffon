@@ -388,7 +388,8 @@
         "view": {
           "language": "Язык",
           "darkMode": "Тёмный режим",
-          "newTabSwitch": "Переключаться на новую вкладку"
+          "newTabSwitch": "Переключаться на новую вкладку",
+          "infiniteScroll": "Бесконечная прокрутка"
         },
         "player": {
           "audioSource": "Источник аудио"

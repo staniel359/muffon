@@ -2,10 +2,10 @@
   <div class="main-paginated-list-container">
     <div class="main-paginated-list-content-container">
       <ContentContainer
-        v-if="!isLoading"
+        v-show="isRenderContent"
         :client-page-collection="clientPageCollection"
         :scope="scope"
-        :error="error"
+        :error="errorComputed"
         @refresh="handleRefresh"
       >
         <template #default="slotProps">
@@ -16,14 +16,29 @@
       </ContentContainer>
     </div>
 
+    <template
+      v-if="isWithInfiniteScroll"
+    >
+      <ScrollObserver
+        v-if="isRenderScrollObserver"
+        :key="key"
+        :is-loading="isLoading"
+        :error="error"
+        @bottom-scroll="handleBottomScroll"
+        @refresh="handleRefresh"
+      />
+      <ListEndLabel
+        v-else
+      />
+    </template>
     <PaginationSection
-      v-if="isRenderPagination"
+      v-else-if="isRenderPagination"
       :is-loading="isLoading"
       :error="error"
       :total-pages-count="clientTotalPagesCount"
       :is-pagination-simple="isPaginationSimple"
-      :prev-page="prevPage"
-      :next-page="nextPage"
+      :prev-page="responsePrevPage"
+      :next-page="responseNextPage"
       @prev-page-click="handlePrevPageClick"
       @next-page-click="handleNextPageClick"
       @page-change="handlePageChange"
@@ -35,22 +50,33 @@
 import deepmerge from 'deepmerge'
 import ContentContainer
   from './BasePaginatedListContainer/ContentContainer.vue'
+import ScrollObserver from './BasePaginatedListContainer/ScrollObserver.vue'
+import ListEndLabel from './BasePaginatedListContainer/ListEndLabel.vue'
 import PaginationSection
   from './BasePaginatedListContainer/PaginationSection.vue'
 import {
   collection as formatCollection
 } from '*/helpers/formatters'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BasePaginatedListContainer',
   components: {
     ContentContainer,
+    ScrollObserver,
+    ListEndLabel,
     PaginationSection
   },
   provide () {
     return {
-      findPaginationItem: this.findPaginationItem,
-      updatePaginationItem: this.updatePaginationItem
+      findPaginationItem:
+        this.findPaginationItem,
+      updatePaginationItem:
+        this.updatePaginationItem,
+      resetInfiniteScrollObserver:
+        this.resetInfiniteScrollObserver
     }
   },
   inject: {
@@ -74,32 +100,35 @@ export default {
     responseData: Object,
     isReset: Boolean,
     isWithPagination: Boolean,
-    isPaginationSimple: Boolean
+    isPaginationSimple: Boolean,
+    isWithInfiniteScroll: Boolean
   },
   emits: [
     'focus'
   ],
   data () {
     return {
-      responsePageCollection: null,
-      clientPageCollection: null,
-      currentPage: null,
+      key: null,
       responseTotalPages: 0,
       clientPage: 1,
+      responsePageCollection: [],
+      clientPageCollection: [],
       clientCollectionPaginated: {},
       isForward: true,
-      isFocusable: false,
-      isLastPage: false
+      isFocusable: false
     }
   },
   computed: {
     isRenderPagination () {
       return (
         this.isWithPagination || (
-          this.responsePageCollection &&
+          this.isResponsePageCollection &&
             this.isPageable
         )
       )
+    },
+    isResponsePageCollection () {
+      return !!this.responsePageCollection?.length
     },
     isPageable () {
       return (
@@ -110,14 +139,14 @@ export default {
     isResponsePageable () {
       return (
         this.responseTotalPages > 1 ||
-          this.nextPage ||
-            this.prevPage
+          this.responseNextPage ||
+            this.responsePrevPage
       )
     },
-    nextPage () {
+    responseNextPage () {
       return this.responseData?.next_page
     },
-    prevPage () {
+    responsePrevPage () {
       return this.responseData?.prev_page
     },
     isResponsePagePageable () {
@@ -218,8 +247,11 @@ export default {
     responseOffset () {
       return (
         this.responsePageLimitComputed *
-          (this.responseData.page - 1)
+          (this.responsePage - 1)
       )
+    },
+    responsePage () {
+      return this.responseData?.page || 1
     },
     pageRemainder () {
       return (
@@ -227,24 +259,27 @@ export default {
           this.clientPageLimitComputed
       )
     },
-    isGetData () {
+    isGetNextPageData () {
       return (
-        this.clientPageCollection &&
-          this.isResponsePageCollection &&
+        this.isResponsePageCollection &&
           !this.isCollectionFull
       )
     },
-    isResponsePageCollection () {
-      return !!this.responsePageCollection?.length
-    },
     isCollectionFull () {
-      return (
-        this.clientPageCollectionLength >=
-          this.clientCurrentPageLimit
-      )
+      if (this.isWithInfiniteScroll) {
+        return (
+          this.newClientPageCollectionLength >=
+            this.clientCurrentPageLimit
+        )
+      } else {
+        return (
+          this.clientPageCollectionLength >=
+            this.clientCurrentPageLimit
+        )
+      }
     },
-    clientPageCollectionLength () {
-      return this.clientPageCollection?.length || 0
+    newClientPageCollectionLength () {
+      return this.newClientPageCollection?.length || 0
     },
     clientCurrentPageLimit () {
       return Math.min(
@@ -264,6 +299,9 @@ export default {
           (this.clientPage - 1)
       )
     },
+    clientPageCollectionLength () {
+      return this.clientPageCollection?.length || 0
+    },
     requestPage () {
       if (this.isForward) {
         return this.forwardPage
@@ -274,10 +312,16 @@ export default {
       }
     },
     forwardPage () {
-      return (
-        this.forwardPageOffset /
-          this.responsePageLimitComputed
-      ) + 1
+      if (this.isPaginationSimple) {
+        return this.responseNextPage
+      } else if (this.isWithInfiniteScroll) {
+        return this.responsePage + 1
+      } else {
+        return (
+          this.forwardPageOffset /
+            this.responsePageLimitComputed
+        ) + 1
+      }
     },
     forwardPageOffset () {
       return (
@@ -285,6 +329,16 @@ export default {
           this.clientPageLimitComputed +
           this.clientPageCollectionLength
       )
+    },
+    isLastPage () {
+      if (this.isPaginationSimple) {
+        return !this.responseNextPage
+      } else {
+        return (
+          this.clientPage ===
+            this.clientTotalPagesCount
+        )
+      }
     },
     lastPage () {
       return (
@@ -299,10 +353,14 @@ export default {
       )
     },
     backwardPage () {
-      return (
-        this.backwardPageOffset /
-          this.responsePageLimitComputed
-      )
+      if (this.isPaginationSimple) {
+        return this.responsePrevPage
+      } else {
+        return (
+          this.backwardPageOffset /
+            this.responsePageLimitComputed
+        )
+      }
     },
     backwardPageOffset () {
       return (
@@ -310,12 +368,35 @@ export default {
           this.clientPageLimitComputed
       ) - this.clientPageCollectionLength
     },
-    currentPageConditional () {
-      if (this.isPaginationSimple) {
-        return this.currentPage
+    newClientPageCollection () {
+      return this.clientCollectionPaginated[
+        this.clientPage
+      ] || []
+    },
+    isRenderContent () {
+      return (
+        this.isWithInfiniteScroll ||
+          !this.isLoading
+      )
+    },
+    errorComputed () {
+      if (this.isWithInfiniteScroll) {
+        return null
       } else {
-        return this.requestPage
+        return this.error
       }
+    },
+    isRenderScrollObserver () {
+      return (
+        this.isResponsePageCollection &&
+          !this.isLastPage
+      )
+    },
+    clientCollection () {
+      return deepmerge(
+        this.clientPageCollection,
+        this.newClientPageCollection
+      )
     }
   },
   watch: {
@@ -327,20 +408,16 @@ export default {
     clientPageCollection: {
       immediate: true,
       handler: 'handleClientPageCollectionChange'
+    },
+    newClientPageCollection: {
+      immediate: true,
+      handler: 'handleNewClientPageCollectionChange'
     }
   },
-  mounted () {
-    if (this.isPaginationSimple) {
-      this.currentPage = this.nextPage
-    }
-  },
+
   methods: {
     handleRefresh () {
-      this.getData(
-        {
-          page: this.currentPageConditional
-        }
-      )
+      this.getNextPageData()
     },
     handleResponseDataChange (
       value
@@ -369,32 +446,49 @@ export default {
     handleClientPageChange () {
       this.setClientPageCollection()
     },
-    async handleClientPageCollectionChange () {
-      if (this.isGetData) {
-        await this.$nextTick()
-
-        this.getData(
-          {
-            page: this.requestPage
-          }
-        )
+    handleClientPageCollectionChange () {
+      if (this.isWithInfiniteScroll) {
+        this.resetInfiniteScrollObserver()
+      } else {
+        if (this.isGetNextPageData) {
+          this.getNextPageData()
+        }
+      }
+    },
+    handleNewClientPageCollectionChange () {
+      if (
+        this.isWithInfiniteScroll &&
+          this.isGetNextPageData
+      ) {
+        this.getNextPageData()
       }
     },
     handlePrevPageClick () {
-      this.currentPage = this.prevPage
-
-      this.getData(
-        {
-          page: this.prevPage
-        }
-      )
+      this.goToPrevPage()
     },
     handleNextPageClick () {
-      this.currentPage = this.nextPage
-
+      this.goToNextPage()
+    },
+    handleBottomScroll () {
+      if (this.isPaginationSimple) {
+        this.goToNextPage()
+      } else {
+        this.setClientPage(
+          this.clientPage + 1
+        )
+      }
+    },
+    handlePageChange (
+      value
+    ) {
+      this.setClientPage(
+        value
+      )
+    },
+    getNextPageData () {
       this.getData(
         {
-          page: this.nextPage
+          page: this.requestPage
         }
       )
     },
@@ -405,28 +499,31 @@ export default {
       this.setClientPageCollection()
     },
     setClientPageCollection () {
-      this.clientPageCollection =
-        this.clientCollectionPaginated[
-          this.clientPage
-        ] || []
+      if (this.isWithInfiniteScroll) {
+        if (this.isCollectionFull) {
+          this.clientPageCollection =
+            this.clientCollection
+        }
+      } else {
+        this.clientPageCollection =
+          this.newClientPageCollection
+      }
     },
-    handlePageChange (
+    setClientPage (
       value
     ) {
-      this.isLastPage = (
-        value ===
-          this.clientTotalPagesCount
-      )
-
       this.isForward = (
         value > this.clientPage &&
           !this.isLastPage
       )
 
       this.clientPage = value
-      this.isFocusable = true
 
-      this.focus()
+      if (!this.isWithInfiniteScroll) {
+        this.isFocusable = true
+
+        this.focus()
+      }
     },
     mergeArrays (
       array,
@@ -517,6 +614,21 @@ export default {
       this.$emit(
         'focus'
       )
+    },
+    async resetInfiniteScrollObserver () {
+      await this.$nextTick()
+
+      this.key = generateKey()
+    },
+    goToPrevPage () {
+      this.isForward = false
+
+      this.getNextPageData()
+    },
+    goToNextPage () {
+      this.isForward = true
+
+      this.getNextPageData()
     }
   }
 }

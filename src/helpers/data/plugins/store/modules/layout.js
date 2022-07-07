@@ -10,6 +10,7 @@ export default {
     isDarkMode: false,
     isSwitchToNewTab: true,
     isQueuePanelVisible: false,
+    isWithInfiniteScroll: false,
     navigationSections: []
   },
   mutations: {
@@ -72,6 +73,12 @@ export default {
       value
     ) {
       state.isSwitchToNewTab = value
+    },
+    SET_IS_WITH_INFINITE_SCROLL (
+      state,
+      value
+    ) {
+      state.isWithInfiniteScroll = value
     }
   },
   actions: {
@@ -182,6 +189,17 @@ export default {
     ) {
       commit(
         'SET_IS_SWITCH_TO_NEW_TAB',
+        value
+      )
+    },
+    setIsWithInfiniteScroll (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_WITH_INFINITE_SCROLL',
         value
       )
     }

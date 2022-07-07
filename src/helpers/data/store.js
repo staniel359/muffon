@@ -7,6 +7,8 @@ export const keysActions = {
     'layout/setIsDarkMode',
   'layout.isSwitchToNewTab':
     'layout/setIsSwitchToNewTab',
+  'layout.isWithInfiniteScroll':
+    'layout/setIsWithInfiniteScroll',
   'player.currentTrackId':
     'player/setCurrentTrackId',
   'player.currentVariantId':

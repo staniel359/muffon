@@ -146,6 +146,9 @@ export default {
   inject: {
     findPaginationItem: {
       default: () => false
+    },
+    resetInfiniteScrollObserver: {
+      default: () => false
     }
   },
   props: {
@@ -204,6 +207,9 @@ export default {
       return this.responseData.description
     }
   },
+  watch: {
+    responseData: 'handleResponseDataChange'
+  },
   methods: {
     handleRefresh () {
       this.$refs
@@ -217,6 +223,13 @@ export default {
     },
     handleDeleteOptionClick () {
       this.showRecommendationDeleteModal()
+    },
+    handleResponseDataChange (
+      value
+    ) {
+      if (value) {
+        this.resetInfiniteScrollObserver()
+      }
     },
     showRecommendationDeleteModal () {
       this.$refs

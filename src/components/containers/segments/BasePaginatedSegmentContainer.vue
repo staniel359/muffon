@@ -3,7 +3,7 @@
     ref="segment"
     class="main-paginated-segment-container"
     :response-data="responseData"
-    :is-loading="isLoading"
+    :is-loading="isSegmentLoading"
     :error="error"
     @refresh="handleRefresh"
   >
@@ -18,6 +18,7 @@
       :error="error"
       :is-pagination-simple="isPaginationSimple"
       :is-reset="isReset"
+      :is-with-infinite-scroll="isWithInfiniteScroll"
       @focus="handleFocus"
     >
       <template #default="slotProps">
@@ -58,11 +59,24 @@ export default {
     clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
-    isReset: Boolean
+    isReset: Boolean,
+    isWithInfiniteScroll: Boolean
   },
   emits: [
     'focus'
   ],
+  computed: {
+    isSegmentLoading () {
+      if (this.isWithInfiniteScroll) {
+        return (
+          !this.responseData &&
+            this.isLoading
+        )
+      } else {
+        return this.isLoading
+      }
+    }
+  },
   methods: {
     handleRefresh () {
       this.getData()

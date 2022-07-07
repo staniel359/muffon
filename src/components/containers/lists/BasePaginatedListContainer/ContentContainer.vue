@@ -1,22 +1,24 @@
 <template>
-  <BaseErrorMessage
-    v-if="error"
-    :error="error"
-    is-with-refresh-button
-    @refresh="handleRefresh"
-  />
-  <template
-    v-else-if="isClientPageCollection"
-  >
-    <slot
-      v-if="isClientPageCollectionFiltered"
-      :[scope]="clientPageCollectionFiltered"
+  <div>
+    <BaseErrorMessage
+      v-if="error"
+      :error="error"
+      is-with-refresh-button
+      @refresh="handleRefresh"
     />
-    <BaseNoCollectionMessage
-      v-else
-      :scope="scope"
-    />
-  </template>
+    <template
+      v-else-if="isClientPageCollection"
+    >
+      <slot
+        v-if="isClientPageCollectionFiltered"
+        :[scope]="clientPageCollectionFiltered"
+      />
+      <BaseNoCollectionMessage
+        v-else
+        :scope="scope"
+      />
+    </template>
+  </div>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
   <BaseHorizontalCardContainer>
     <BaseSegmentContainer
-      class="basic segment-container"
+      class="basic segment-container artist-segment"
       :is-loading="isLoading"
       :error="error"
       @refresh="handleRefresh"
@@ -41,6 +41,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.segment-container
+.artist-segment
   @extend .d-flex, .no-padding
 </style>

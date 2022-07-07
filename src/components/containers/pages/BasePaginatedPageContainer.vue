@@ -24,7 +24,7 @@
     <BasePaginatedSegmentContainer
       ref="pagination"
       class="main-paginated-page-segment-container"
-      :response-data="responseData"
+      :response-data="responseDataComputed"
       :is-loading="isLoading"
       :error="error"
       :scope="scope"
@@ -33,6 +33,7 @@
       :response-page-limit="responsePageLimit"
       :is-pagination-simple="isPaginationSimple"
       :is-reset="isReset"
+      :is-with-infinite-scroll="isWithInfiniteScroll"
       @focus="handleFocus"
     >
       <template #default="slotProps">
@@ -45,6 +46,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseViewChangeButtons
@@ -84,24 +88,58 @@ export default {
     isWithViewChange: Boolean,
     viewIndex: Number
   },
+  data () {
+    return {
+      responseDataComputed: null
+    }
+  },
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'isWithInfiniteScroll'
+      ]
+    )
+  },
   watch: {
-    viewIndex: 'handleViewIndexChange'
+    responseData: {
+      immediate: true,
+      handler: 'handleResponseDataChange'
+    },
+    viewIndex: 'handleViewIndexChange',
+    isWithInfiniteScroll:
+      'handleIsWithInfiniteScrollChange'
   },
   methods: {
+    handleResponseDataChange (
+      value
+    ) {
+      this.responseDataComputed = value
+    },
     handleViewButtonClick (
       value
     ) {
+      this.responseDataComputed = null
+
       this.setViewIndex(
         value
       )
-
-      this.reset()
     },
     handleViewIndexChange () {
-      this.getData()
+      this.refresh()
+    },
+    handleIsWithInfiniteScrollChange () {
+      this.refresh()
     },
     handleFocus () {
       this.focus()
+    },
+    async refresh () {
+      this.reset()
+
+      await this.$nextTick()
+
+      this.getData()
     },
     focus () {
       this.$refs

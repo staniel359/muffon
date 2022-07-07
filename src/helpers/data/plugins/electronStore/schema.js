@@ -18,6 +18,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'layout.isWithInfiniteScroll': {
+    type: 'boolean',
+    default: false
+  },
   'layout.tabs': {
     type: 'array',
     default: []

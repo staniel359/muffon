@@ -11,7 +11,6 @@
       v-if="isLoading"
       class="ui mini active inline loader"
     />
-
     <template v-else>
       <BaseIcon
         v-if="icon && !isReverse"
