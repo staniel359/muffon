@@ -14,11 +14,8 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.channelData = {
-      page: 1,
-      total_pages: 1,
-      ...response.data.channel
-    }
+    this.channelData =
+      response.data.channel
   }
 
   return getRequest.bind(

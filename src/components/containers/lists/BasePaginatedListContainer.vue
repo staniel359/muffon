@@ -34,14 +34,15 @@
     <PaginationSection
       v-else-if="isRenderPagination"
       :is-loading="isLoading"
-      :error="error"
+      :is-error="!!error"
+      :client-page="clientPage"
       :total-pages-count="clientTotalPagesCount"
       :is-pagination-simple="isPaginationSimple"
-      :prev-page="responsePrevPage"
-      :next-page="responseNextPage"
+      :is-first-page="isFirstPage"
+      :is-last-page="isLastPage"
+      @page-click="handlePageClick"
       @prev-page-click="handlePrevPageClick"
       @next-page-click="handleNextPageClick"
-      @page-change="handlePageChange"
     />
   </div>
 </template>
@@ -239,10 +240,14 @@ export default {
       )
     },
     clientStartPage () {
-      return Math.floor(
-        this.responseOffset /
-          this.clientPageLimitComputed
-      ) + 1
+      if (this.isPaginationSimple) {
+        return this.clientPage
+      } else {
+        return Math.floor(
+          this.responseOffset /
+            this.clientPageLimitComputed
+        ) + 1
+      }
     },
     responseOffset () {
       return (
@@ -282,10 +287,14 @@ export default {
       return this.newClientPageCollection?.length || 0
     },
     clientCurrentPageLimit () {
-      return Math.min(
-        this.remainingItems,
-        this.clientPageLimitComputed
-      )
+      if (this.isPaginationSimple) {
+        return this.clientPageLimitComputed
+      } else {
+        return Math.min(
+          this.remainingItems,
+          this.clientPageLimitComputed
+        )
+      }
     },
     remainingItems () {
       return (
@@ -332,7 +341,10 @@ export default {
     },
     isLastPage () {
       if (this.isPaginationSimple) {
-        return !this.responseNextPage
+        return (
+          !this.responseNextPage &&
+            !this.newNextClientPageCollection
+        )
       } else {
         return (
           this.clientPage ===
@@ -397,6 +409,14 @@ export default {
         this.clientPageCollection,
         this.newClientPageCollection
       )
+    },
+    isFirstPage () {
+      return this.clientPage === 1
+    },
+    newNextClientPageCollection () {
+      return this.clientCollectionPaginated[
+        this.clientPage + 1
+      ]
     }
   },
   watch: {
@@ -466,24 +486,18 @@ export default {
     handlePrevPageClick () {
       this.goToPrevPage()
     },
-    handleNextPageClick () {
-      this.goToNextPage()
-    },
-    handleBottomScroll () {
-      if (this.isPaginationSimple) {
-        this.goToNextPage()
-      } else {
-        this.setClientPage(
-          this.clientPage + 1
-        )
-      }
-    },
-    handlePageChange (
+    handlePageClick (
       value
     ) {
       this.setClientPage(
         value
       )
+    },
+    handleNextPageClick () {
+      this.goToNextPage()
+    },
+    handleBottomScroll () {
+      this.goToNextPage()
     },
     getNextPageData () {
       this.getData(
@@ -621,14 +635,14 @@ export default {
       this.key = generateKey()
     },
     goToPrevPage () {
-      this.isForward = false
-
-      this.getNextPageData()
+      this.setClientPage(
+        this.clientPage - 1
+      )
     },
     goToNextPage () {
-      this.isForward = true
-
-      this.getNextPageData()
+      this.setClientPage(
+        this.clientPage + 1
+      )
     }
   }
 }

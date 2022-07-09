@@ -14,16 +14,8 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    if (scope === 'related') {
-      this.videoData = {
-        page: 1,
-        total_pages: 1,
-        ...response.data.video
-      }
-    } else {
-      this.videoData =
-        response.data.video
-    }
+    this.videoData =
+      response.data.video
   }
 
   return getRequest.bind(

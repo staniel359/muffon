@@ -24,7 +24,6 @@
         :limit="limit"
         :response-page-limit="responsePageLimit"
         :is-pagination-simple="isVideos"
-        :is-reset="isVideos"
         @focus="handleFocus"
       >
         <template #default="slotProps">

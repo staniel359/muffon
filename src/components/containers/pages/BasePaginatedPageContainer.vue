@@ -32,7 +32,6 @@
       :client-page-limit="clientPageLimit"
       :response-page-limit="responsePageLimit"
       :is-pagination-simple="isPaginationSimple"
-      :is-reset="isReset"
       :is-with-infinite-scroll="isWithInfiniteScroll"
       @focus="handleFocus"
     >
@@ -83,7 +82,6 @@ export default {
     clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
-    isReset: Boolean,
     isWithTopSegment: Boolean,
     isWithViewChange: Boolean,
     viewIndex: Number
@@ -119,8 +117,6 @@ export default {
     handleViewButtonClick (
       value
     ) {
-      this.responseDataComputed = null
-
       this.setViewIndex(
         value
       )
@@ -135,6 +131,8 @@ export default {
       this.focus()
     },
     async refresh () {
+      this.responseDataComputed = null
+
       this.reset()
 
       await this.$nextTick()

@@ -13,7 +13,6 @@
         :scope="scope"
         :limit="limit"
         is-pagination-simple
-        is-reset
       >
         <template #default="slotProps">
           <BaseVideosTableList

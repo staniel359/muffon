@@ -22,7 +22,7 @@ export default {
 <style lang="sass" scoped>
 .list-end-label-container
   @extend .w-100, .text-align-center
-  margin: 0.5em 0
+  margin-top: 1em
 
 .list-end-label
   @extend .background-grey

@@ -17,7 +17,6 @@
       :is-loading="isLoading"
       :error="error"
       :is-pagination-simple="isPaginationSimple"
-      :is-reset="isReset"
       :is-with-infinite-scroll="isWithInfiniteScroll"
       @focus="handleFocus"
     >
@@ -59,7 +58,6 @@ export default {
     clientPageLimit: Number,
     responsePageLimit: Number,
     isPaginationSimple: Boolean,
-    isReset: Boolean,
     isWithInfiniteScroll: Boolean
   },
   emits: [

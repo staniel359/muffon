@@ -20,6 +20,7 @@
           :scope="scope"
           :limit="limit"
           :client-page-limit="clientPageLimit"
+          is-pagination-simple
           @focus="handleFocus"
         >
           <template #default="slotProps">
