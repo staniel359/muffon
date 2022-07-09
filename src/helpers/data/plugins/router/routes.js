@@ -49,8 +49,11 @@ const TagAlbumsPage = () => import(
 const TagTracksPage = () => import(
   '*/views/tag/TracksPage.vue'
 )
+const VideoChannelMainPage = () => import(
+  '*/views/videoChannel/MainPage.vue'
+)
 const VideoChannelVideosPage = () => import(
-  '*/views/video/channel/VideosPage.vue'
+  '*/views/videoChannel/VideosPage.vue'
 )
 const VideoMainPage = () => import(
   '*/views/video/MainPage.vue'
@@ -306,6 +309,13 @@ export default [
     exact: true,
     name: 'TagTracksPage',
     component: TagTracksPage,
+    props: true
+  },
+  {
+    path: '/video/channels/:channelId',
+    exact: true,
+    name: 'VideoChannelMainPage',
+    component: VideoChannelMainPage,
     props: true
   },
   {

@@ -2,8 +2,8 @@ import formatVideoChannelsSection
   from '*/helpers/formatters/navigation/sections/videoChannels'
 import formatVideoChannelSection
   from '*/helpers/formatters/navigation/sections/videoChannel'
-import formatVideosSection
-  from '*/helpers/formatters/navigation/sections/videos'
+import formatVideoChannelVideosSection
+  from '*/helpers/formatters/navigation/sections/videoChannel/videos'
 import formatVideoSection
   from '*/helpers/formatters/navigation/sections/video'
 import formatSubpageSection
@@ -22,10 +22,11 @@ export default function (
     formatVideoChannelsSection(),
     formatVideoChannelSection(
       {
+        channelId,
         channelTitle
       }
     ),
-    formatVideosSection(
+    formatVideoChannelVideosSection(
       {
         channelId
       }

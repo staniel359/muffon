@@ -21,7 +21,7 @@
 
       <BaseLink
         v-if="isWithChannelTitle"
-        :link="videoChannelVideosLink"
+        :link="videoChannelMainLink"
         :text="channelTitle"
         @click="handleLinkClick"
         @mouseenter="handleChannelLinkMouseEnter"
@@ -60,7 +60,7 @@ import {
   main as formatVideoMainLink
 } from '*/helpers/formatters/links/video'
 import {
-  videos as formatVideoChannelVideosLink
+  main as formatVideoChannelMainLink
 } from '*/helpers/formatters/links/videoChannel'
 import {
   video as formatVideoShareData
@@ -117,11 +117,10 @@ export default {
     channelData () {
       return this.videoData.channel
     },
-    videoChannelVideosLink () {
-      return formatVideoChannelVideosLink(
+    videoChannelMainLink () {
+      return formatVideoChannelMainLink(
         {
-          channelId: this.channelId,
-          channelTitle: this.channelTitle
+          channelId: this.channelId
         }
       )
     },

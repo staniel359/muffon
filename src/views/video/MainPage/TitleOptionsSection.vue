@@ -26,7 +26,7 @@ import BaseLink from '*/components/links/BaseLink.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import {
-  videos as formatVideoChannelVideosLink
+  main as formatVideoChannelMainLink
 } from '*/helpers/formatters/links/videoChannel'
 import {
   video as formatVideoShareData
@@ -50,10 +50,9 @@ export default {
       return this.videoData.title
     },
     videoChannelVideosLink () {
-      return formatVideoChannelVideosLink(
+      return formatVideoChannelMainLink(
         {
-          channelId: this.channelId,
-          channelTitle: this.channelTitle
+          channelId: this.channelId
         }
       )
     },

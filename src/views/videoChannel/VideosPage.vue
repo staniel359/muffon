@@ -1,6 +1,8 @@
 <template>
   <BaseVideoChannelPageContainer
     ref="page"
+    :channel-id="channelId"
+    :scope="scope"
     :limit="limit"
   >
     <template #default="pageSlotProps">
@@ -11,7 +13,6 @@
         :scope="scope"
         :limit="limit"
         is-pagination-simple
-        is-reset
       >
         <template #default="slotProps">
           <BaseVideosTableList
@@ -43,6 +44,9 @@ export default {
   mixins: [
     paginatedPageMixin
   ],
+  props: {
+    channelId: String
+  },
   data () {
     return {
       limit: 40,

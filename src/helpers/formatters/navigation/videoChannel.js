@@ -2,27 +2,31 @@ import formatVideoChannelsSection
   from '*/helpers/formatters/navigation/sections/videoChannels'
 import formatVideoChannelSection
   from '*/helpers/formatters/navigation/sections/videoChannel'
-import formatVideosSection
-  from '*/helpers/formatters/navigation/sections/videos'
+import formatSubpageSection
+  from '*/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {
     channelId,
-    channelTitle
+    channelTitle,
+    scope
   }
 ) {
   return [
     formatVideoChannelsSection(),
     formatVideoChannelSection(
       {
-        channelTitle
+        channelId,
+        channelTitle,
+        isActive: !scope
       }
     ),
-    formatVideosSection(
+    scope && formatSubpageSection(
       {
-        channelId,
-        isActive: true
+        scope
       }
     )
-  ]
+  ].filter(
+    e => e
+  )
 }

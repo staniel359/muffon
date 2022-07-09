@@ -18,7 +18,7 @@ import BasePageContainer
 import navigationMixin from '*/mixins/navigationMixin'
 import formatVideoChannelPageNavigation
   from '*/helpers/formatters/navigation/videoChannel'
-import formatVideoChannelVideosPageTab
+import formatVideoChannelPageTab
   from '*/helpers/formatters/tabs/videoChannel'
 import getVideoChannel from '*/helpers/actions/api/videoChannel/get'
 
@@ -35,14 +35,14 @@ export default {
       type: String,
       required: true
     },
+    scope: String,
     limit: Number
   },
   data () {
     return {
       channelData: null,
       error: null,
-      isLoading: false,
-      scope: 'videos'
+      isLoading: false
     }
   },
   computed: {
@@ -54,11 +54,12 @@ export default {
     navigationData () {
       return {
         channelId: this.channelId,
-        channelTitle: this.channelTitle
+        channelTitle: this.channelTitle,
+        scope: this.scope
       }
     },
     tabData () {
-      return formatVideoChannelVideosPageTab(
+      return formatVideoChannelPageTab(
         this.navigationData
       )
     },
