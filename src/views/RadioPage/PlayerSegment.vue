@@ -7,36 +7,26 @@
     @refresh="handleRefresh"
   >
     <template v-if="isGetData">
-      <PlayerLabel
-        :scope="scope"
-        :model-name="modelName"
-        :model-scope="modelScope"
-      />
-
       <BaseErrorMessage
         v-if="error"
-        class="error-message"
         :error="error"
       />
 
       <PlayingSection />
 
-      <TrackSection
+      <template
         v-if="trackData"
-        :key="key"
-        ref="track"
-        :track-data="trackData"
-      />
+      >
+        <TrackSection
+          :key="key"
+          ref="track"
+          :track-data="trackData"
+        />
 
-      <div class="next-button-container">
-        <BaseButton
-          class="basic compact next-button"
-          icon="forward right"
-          :text="nextText"
-          is-reverse
+        <NextButton
           @click="handleNextButtonClick"
         />
-      </div>
+      </template>
     </template>
   </BaseSegmentContainer>
 </template>
@@ -44,11 +34,10 @@
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import PlayerLabel from './PlayerSegment/PlayerLabel.vue'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import PlayingSection from './PlayerSegment/PlayingSection.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import NextButton from './PlayerSegment/NextButton.vue'
 import getRadio from '*/helpers/actions/api/radio/get'
 import {
   generateKey
@@ -58,11 +47,10 @@ export default {
   name: 'PlayerSegment',
   components: {
     BaseSegmentContainer,
-    PlayerLabel,
     BaseErrorMessage,
     PlayingSection,
     TrackSection,
-    BaseButton
+    NextButton
   },
   props: {
     scope: {
@@ -83,11 +71,6 @@ export default {
   computed: {
     trackData () {
       return this.radioData?.track
-    },
-    nextText () {
-      return this.$t(
-        'actions.next'
-      )
     },
     radioArgs () {
       return {
@@ -151,12 +134,4 @@ export default {
 <style lang="sass" scoped>
 .track-segment
   @extend .flex-full
-
-.error-message
-  margin: 1em 0
-
-.next-button-container
-  @extend .d-flex, .justify-content-flex-end
-  .next-button
-    @extend .no-margin
 </style>

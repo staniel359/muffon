@@ -60,7 +60,6 @@ export default {
 <style lang="sass" scoped>
 .playing-section
   @extend .relative, .overflow-hidden
-  margin-top: 1em
   border: $borderInverted
   border-radius: 5px
 </style>
