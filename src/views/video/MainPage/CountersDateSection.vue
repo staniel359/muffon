@@ -1,36 +1,24 @@
 <template>
   <div class="counters-date-section">
-    <div class="ui large labels">
-      <BaseLabel
-        icon="eye outline"
-        :text="viewsCountFormatted"
-      />
+    <BaseCounterLabels
+      :counters="counters"
+    />
 
-      <BaseLabel
-        icon="thumbs up outline"
-        :text="likesCountFormatted"
-      />
-    </div>
-
-    <div class="ui large labels">
-      <BaseLabel
-        icon="calendar outline"
-        :text="publishDate"
-      />
-    </div>
+    <BaseDateLabel
+      :date="publishDate"
+    />
   </div>
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
-import {
-  number as formatNumber
-} from '*/helpers/formatters'
+import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
+import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
 
 export default {
   name: 'CountersDateSection',
   components: {
-    BaseLabel
+    BaseCounterLabels,
+    BaseDateLabel
   },
   props: {
     videoData: {
@@ -39,15 +27,23 @@ export default {
     }
   },
   computed: {
-    viewsCountFormatted () {
-      return formatNumber(
-        this.videoData.views_count
-      )
+    counters () {
+      return [
+        {
+          scope: 'views',
+          count: this.viewsCount
+        },
+        {
+          scope: 'likes',
+          count: this.likesCount
+        }
+      ]
     },
-    likesCountFormatted () {
-      return formatNumber(
-        this.videoData.likes_count
-      )
+    viewsCount () {
+      return this.videoData.views_count
+    },
+    likesCount () {
+      return this.videoData.likes_count
     },
     publishDate () {
       return this.videoData.publish_date

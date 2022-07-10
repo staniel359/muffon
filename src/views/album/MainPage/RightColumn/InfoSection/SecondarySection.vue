@@ -1,13 +1,23 @@
 <template>
-  <BaseAlbumReleaseDateLabels
-    :release-date="releaseDate"
-    :labels="labels"
+  <BaseCounterLabels
+    :counters="counters"
   />
 
-  <BaseCounters
-    :listeners-count="listenersCount"
-    :plays-count="playsCount"
+  <BaseDateLabel
+    v-if="releaseDate"
+    :date="releaseDate"
   />
+
+  <div
+    v-if="labels"
+    class="ui labels large"
+  >
+    <BaseLabel
+      v-for="(label, index) in labels"
+      :key="index"
+      :text="label"
+    />
+  </div>
 
   <BaseAlbumTags
     :tags="tags"
@@ -27,10 +37,10 @@
 </template>
 
 <script>
-import BaseAlbumReleaseDateLabels
-  from '*/components/models/album/BaseAlbumReleaseDateLabels.vue'
+import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
+import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 import BaseAlbumTags from '*/components/models/album/BaseAlbumTags.vue'
-import BaseCounters from '*/components/BaseCounters.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import BaseAlbumDescription
   from '*/components/models/album/BaseAlbumDescription.vue'
@@ -38,9 +48,10 @@ import BaseAlbumDescription
 export default {
   name: 'SecondarySection',
   components: {
-    BaseAlbumReleaseDateLabels,
+    BaseCounterLabels,
+    BaseDateLabel,
+    BaseLabel,
     BaseAlbumTags,
-    BaseCounters,
     BaseDivider,
     BaseAlbumDescription
   },
@@ -57,6 +68,18 @@ export default {
     },
     labels () {
       return this.albumData.labels
+    },
+    counters () {
+      return [
+        {
+          scope: 'listeners',
+          count: this.listenersCount
+        },
+        {
+          scope: 'plays',
+          count: this.playsCount
+        }
+      ]
     },
     listenersCount () {
       return this.albumData.listeners_count

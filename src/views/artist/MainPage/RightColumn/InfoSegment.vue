@@ -8,9 +8,8 @@
       :text="artistName"
     />
 
-    <BaseCounters
-      :listeners-count="listenersCount"
-      :plays-count="playsCount"
+    <BaseCounterLabels
+      :counters="counters"
     />
 
     <BaseArtistTags
@@ -32,7 +31,7 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseArtistTags from '*/components/models/artist/BaseArtistTags.vue'
-import BaseCounters from '*/components/BaseCounters.vue'
+import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import BaseArtistDescription
   from '*/components/models/artist/BaseArtistDescription.vue'
@@ -43,7 +42,7 @@ export default {
     BaseSegmentContainer,
     BaseHeader,
     BaseArtistTags,
-    BaseCounters,
+    BaseCounterLabels,
     BaseDivider,
     BaseArtistDescription
   },
@@ -56,6 +55,18 @@ export default {
   computed: {
     artistName () {
       return this.artistData.name
+    },
+    counters () {
+      return [
+        {
+          scope: 'listeners',
+          count: this.listenersCount
+        },
+        {
+          scope: 'plays',
+          count: this.playsCount
+        }
+      ]
     },
     listenersCount () {
       return this.artistData.listeners_count

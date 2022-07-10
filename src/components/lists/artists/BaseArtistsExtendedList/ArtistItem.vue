@@ -70,9 +70,8 @@
                 :is-link-to-library="isLinkToLibrary"
               />
 
-              <BaseCounters
-                :listeners-count="listenersCount"
-                :plays-count="playsCount"
+              <BaseCounterLabels
+                :counters="counters"
               />
 
               <BaseArtistTags
@@ -112,7 +111,7 @@ import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseOptionsDropdown
   from '*/components/dropdowns/BaseOptionsDropdown.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
-import BaseCounters from '*/components/BaseCounters.vue'
+import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 import BaseArtistTags from '*/components/models/artist/BaseArtistTags.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import BaseArtistDescription
@@ -134,7 +133,7 @@ export default {
     BaseSelfIcons,
     BaseOptionsDropdown,
     HeaderSection,
-    BaseCounters,
+    BaseCounterLabels,
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
@@ -196,6 +195,18 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    counters () {
+      return [
+        {
+          scope: 'listeners',
+          count: this.listenersCount
+        },
+        {
+          scope: 'plays',
+          count: this.playsCount
+        }
+      ]
     },
     listenersCount () {
       return this.responseData.listeners_count

@@ -1,17 +1,16 @@
 <template>
-  <BaseCounters
-    :taggers-count="taggersCount"
-    :taggings-count="taggingsCount"
+  <BaseCounterLabels
+    :counters="counters"
   />
 </template>
 
 <script>
-import BaseCounters from '*/components/BaseCounters.vue'
+import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 
 export default {
   name: 'CountersSection',
   components: {
-    BaseCounters
+    BaseCounterLabels
   },
   props: {
     tagData: {
@@ -20,6 +19,18 @@ export default {
     }
   },
   computed: {
+    counters () {
+      return [
+        {
+          scope: 'taggers',
+          count: this.taggersCount
+        },
+        {
+          scope: 'taggings',
+          count: this.taggingsCount
+        }
+      ]
+    },
     taggersCount () {
       return this.tagData.taggers_count
     },

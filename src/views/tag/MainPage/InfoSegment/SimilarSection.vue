@@ -4,12 +4,14 @@
       v-if="isLoading"
       is-loading
     />
-    <template v-else-if="isAnySimilar">
+    <template
+      v-else-if="similar?.length"
+    >
       <BaseLabel
         :text="similarText"
       />
+
       <BaseTagsList
-        v-if="similar.length"
         :tags="similar"
       />
     </template>
@@ -41,9 +43,6 @@ export default {
     }
   },
   computed: {
-    isAnySimilar () {
-      return this.similar?.length
-    },
     similar () {
       return this.tagData?.similar
     },

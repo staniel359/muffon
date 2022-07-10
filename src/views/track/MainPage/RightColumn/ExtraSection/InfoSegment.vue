@@ -1,9 +1,8 @@
 <template>
   <div class="ui basic segments">
     <BaseSegmentContainer>
-      <BaseCounters
-        :listeners-count="listenersCount"
-        :plays-count="playsCount"
+      <BaseCounterLabels
+        :counters="counters"
       />
 
       <BaseTrackTags
@@ -28,7 +27,7 @@
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseCounters from '*/components/BaseCounters.vue'
+import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 import BaseTrackTags from '*/components/models/track/BaseTrackTags.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import BaseTrackDescription
@@ -38,7 +37,7 @@ export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
-    BaseCounters,
+    BaseCounterLabels,
     BaseTrackTags,
     BaseDivider,
     BaseTrackDescription
@@ -51,6 +50,18 @@ export default {
     requestTrackData: Object
   },
   computed: {
+    counters () {
+      return [
+        {
+          scope: 'listeners',
+          count: this.listenersCount
+        },
+        {
+          scope: 'plays',
+          count: this.playsCount
+        }
+      ]
+    },
     listenersCount () {
       return this.trackData.listeners_count
     },
