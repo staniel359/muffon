@@ -3,7 +3,7 @@
     class="floating scrolling scope-select-container"
     menu-direction="left"
     :options="sources"
-    :selected="selectedSource"
+    :selected="selected"
     :is-selection="false"
     is-only-icon
     @select="handleSelect"
@@ -28,20 +28,36 @@ export default {
   emits: [
     'select'
   ],
+  data () {
+    return {
+      selected: null
+    }
+  },
   computed: {
     sources () {
       return audioSources.filter(
         this.isMatchedSource
       )
     },
-    selectedSource () {
+    firstSource () {
       return this.sources[0].id
     }
   },
+  watch: {
+    scope: {
+      immediate: true,
+      handler: 'handleScopeChange'
+    }
+  },
   methods: {
+    handleScopeChange () {
+      this.selected = this.firstSource
+    },
     handleSelect (
       value
     ) {
+      this.selected = value
+
       this.$emit(
         'select',
         value
