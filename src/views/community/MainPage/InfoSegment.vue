@@ -28,10 +28,7 @@
 
           <div
             v-if="description"
-            :class="[
-              'community-description description',
-              'main-text-container'
-            ]"
+            class="description main-text-container"
             v-text="description"
           />
 

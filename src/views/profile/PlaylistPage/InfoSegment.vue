@@ -27,7 +27,7 @@
           />
 
           <BaseTimestamp
-            class="description playlist-timestamp"
+            class="description"
             :created="created"
           />
         </div>

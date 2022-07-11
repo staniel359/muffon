@@ -1,5 +1,5 @@
 <template>
-  <div class="main-small-container main-timestamp">
+  <div class="main-small-container">
     <small
       v-text="createdText"
     />
