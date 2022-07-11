@@ -378,6 +378,7 @@
         "view": "View",
         "player": "Player",
         "queue": "Queue",
+        "recommendations": "Recommendations",
         "data": "Data"
       },
       "profile": {
@@ -397,6 +398,10 @@
         },
         "queue": {
           "autoplay": "Autoplay"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Hide library artists",
+          "tracksCount": "with tracks count"
         },
         "data": {
           "cache": {

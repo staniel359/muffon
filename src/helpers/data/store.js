@@ -39,6 +39,10 @@ export const keysActions = {
     'profile/setIsRemember',
   'profile.language':
     'profile/setLanguage',
+  'recommendations.isHideLibraryArtists':
+    'recommendations/setIsHideLibraryArtists',
+  'recommendations.tracksCount':
+    'recommendations/setTracksCount',
   'queue.currentTrackId':
     'queue/setCurrentTrackId',
   'queue.isAutoplay':

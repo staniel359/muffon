@@ -6,7 +6,9 @@ export default function (
     page,
     limit,
     filterScope,
-    filterValue
+    filterValue,
+    isHideLibraryArtists,
+    tracksCount
   }
 ) {
   const profileId =
@@ -26,6 +28,12 @@ export default function (
     ...(
       filterValue?.length && {
         filter_value: filterValue
+      }
+    ),
+    ...(
+      isHideLibraryArtists && {
+        hide_library_artists: 1,
+        tracks_count: tracksCount
       }
     )
   }

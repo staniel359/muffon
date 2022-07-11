@@ -6,6 +6,8 @@
 
     <QueueOptions />
 
+    <RecommendationsOptions />
+
     <DataOptions />
   </div>
 </template>
@@ -14,6 +16,7 @@
 import ViewOptions from './AppSettings/ViewOptions.vue'
 import PlayerOptions from './AppSettings/PlayerOptions.vue'
 import QueueOptions from './AppSettings/QueueOptions.vue'
+import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
 import DataOptions from './AppSettings/DataOptions.vue'
 
 export default {
@@ -22,6 +25,7 @@ export default {
     ViewOptions,
     PlayerOptions,
     QueueOptions,
+    RecommendationsOptions,
     DataOptions
   }
 }

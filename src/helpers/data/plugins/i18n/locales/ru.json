@@ -377,6 +377,7 @@
         "view": "Вид",
         "player": "Проигрыватель",
         "queue": "Очередь",
+        "recommendations": "Рекомендации",
         "data": "Данные"
       },
       "profile": {
@@ -396,6 +397,10 @@
         },
         "queue": {
           "autoplay": "Автовоспроизведение"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Скрыть исполнителей из библиотеки",
+          "tracksCount": "с количеством композиций"
         },
         "data": {
           "cache": {

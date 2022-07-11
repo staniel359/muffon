@@ -13,6 +13,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BasePageContainer
   from '*/components/containers/pages/BasePageContainer.vue'
 import navigationMixin from '*/mixins/navigationMixin'
@@ -53,6 +56,15 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      'recommendations',
+      {
+        isRecommendationsHideLibraryArtists:
+          'isHideLibraryArtists',
+        recommendationsTracksCount:
+          'tracksCount'
+      }
+    ),
     navigationSections () {
       return formatRecommendationsPageNavigation()
     },
@@ -63,11 +75,19 @@ export default {
       return {
         limit: this.limit,
         filterScope: this.filterScope,
-        filterValue: this.filterValue
+        filterValue: this.filterValue,
+        isHideLibraryArtists:
+          this.isRecommendationsHideLibraryArtists,
+        tracksCount:
+          this.recommendationsTracksCount
       }
     }
   },
   watch: {
+    isRecommendationsHideLibraryArtists:
+      'handleIsRecommendationsHideLibraryArtists',
+    recommendationsTracksCount:
+      'handleRecommendationsTracksCount',
     filterValue: 'handleFilterValueChange'
   },
   mounted () {
@@ -78,6 +98,15 @@ export default {
   methods: {
     getRecommendations,
     handleFilterValueChange () {
+      this.refresh()
+    },
+    handleIsRecommendationsHideLibraryArtists () {
+      this.refresh()
+    },
+    handleRecommendationsTracksCount () {
+      this.refresh()
+    },
+    refresh () {
       this.getData()
 
       this.$emit(

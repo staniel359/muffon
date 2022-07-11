@@ -23,8 +23,6 @@
       <BaseProfileCityField
         :value="city"
       />
-
-      <div />
     </div>
   </div>
 </template>

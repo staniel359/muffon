@@ -101,6 +101,14 @@ export default {
     type: 'array',
     default: []
   },
+  'recommendations.isHideLibraryArtists': {
+    type: 'boolean',
+    default: false
+  },
+  'recommendations.tracksCount': {
+    type: 'number',
+    default: 0
+  },
   'queue.currentTrackId': {
     type: [
       'null',
