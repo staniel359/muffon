@@ -84,7 +84,7 @@
     />
 
     <BaseSourceIcon
-      v-if="isWithSource"
+      v-if="isRenderSource"
       class="track-source-icon"
       :source="source"
     />
@@ -352,15 +352,20 @@ export default {
     duration () {
       return this.trackData.duration
     },
-    source () {
-      if (this.audioData?.present) {
-        return this.trackData.source.name
-      } else {
-        return null
-      }
+    isRenderSource () {
+      return (
+        this.isWithSource &&
+          this.isAudioPresent
+      )
+    },
+    isAudioPresent () {
+      return this.audioData?.present
     },
     audioData () {
       return this.trackData.audio
+    },
+    source () {
+      return this.trackData.source.name
     },
     libraryTrackId () {
       return this.trackData.library.id.toString()

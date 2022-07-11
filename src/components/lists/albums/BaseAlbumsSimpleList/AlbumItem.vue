@@ -49,7 +49,7 @@
       </div>
 
       <BaseSourceIcon
-        v-if="isWithSource"
+        v-if="isRenderSource"
         class="album-source-icon"
         :source="source"
       />
@@ -221,6 +221,12 @@ export default {
     shareData () {
       return formatAlbumShareData(
         this.albumData
+      )
+    },
+    isRenderSource () {
+      return (
+        this.isWithSource &&
+          this.source !== 'lastfm'
       )
     },
     source () {
