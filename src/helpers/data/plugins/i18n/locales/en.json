@@ -365,7 +365,10 @@
     }
   },
   "player": {
-    "variants": "Variants ({count})"
+    "variants": "Variants ({count})",
+    "audio": {
+      "bitrate": "~ {value} kbit/s"
+    }
   },
   "settings": {
     "tabs": {
@@ -394,7 +397,8 @@
           "infiniteScroll": "Infinite scroll"
         },
         "player": {
-          "audioSource": "Audio source"
+          "audioSource": "Audio source",
+          "bitrate": "Show audio bitrate"
         },
         "queue": {
           "autoplay": "Autoplay"

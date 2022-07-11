@@ -13,6 +13,8 @@ export const keysActions = {
     'player/setCurrentTrackId',
   'player.currentVariantId':
     'player/setCurrentVariantId',
+  'player.isWithBitrate':
+    'player/setIsWithBitrate',
   'player.isWithScrobbling':
     'player/setIsWithScrobbling',
   'player.isScrobbling':

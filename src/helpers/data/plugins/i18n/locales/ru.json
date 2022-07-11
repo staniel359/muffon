@@ -364,7 +364,10 @@
     }
   },
   "player": {
-    "variants": "Варианты ({count})"
+    "variants": "Варианты ({count})",
+    "audio": {
+      "bitrate": "~ {value} кбит/с"
+    }
   },
   "settings": {
     "tabs": {
@@ -393,7 +396,8 @@
           "infiniteScroll": "Бесконечная прокрутка"
         },
         "player": {
-          "audioSource": "Источник аудио"
+          "audioSource": "Источник аудио",
+          "bitrate": "Показывать битрейт аудио"
         },
         "queue": {
           "autoplay": "Автовоспроизведение"

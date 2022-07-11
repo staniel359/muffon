@@ -1,5 +1,10 @@
 <template>
   <div class="player-extra-controls">
+    <BitrateBlock
+      v-if="isRenderBitrateBlock"
+      :key="key"
+    />
+
     <SaveButton
       :key="key"
     />
@@ -10,6 +15,7 @@
 import {
   mapState
 } from 'vuex'
+import BitrateBlock from './ExtraControlsPanel/BitrateBlock.vue'
 import SaveButton from './ExtraControlsPanel/SaveButton.vue'
 import {
   generateKey
@@ -18,6 +24,7 @@ import {
 export default {
   name: 'ExtraControlsPanel',
   components: {
+    BitrateBlock,
     SaveButton
   },
   data () {
@@ -29,9 +36,16 @@ export default {
     ...mapState(
       'player',
       {
+        isPlayerWithBitrate: 'isWithBitrate',
         playerPlaying: 'playing'
       }
-    )
+    ),
+    isRenderBitrateBlock () {
+      return (
+        this.isPlayerWithBitrate &&
+          this.playerPlaying
+      )
+    }
   },
   watch: {
     playerPlaying: 'handlePlayerPlayingChange'

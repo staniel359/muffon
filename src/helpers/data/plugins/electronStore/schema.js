@@ -48,6 +48,10 @@ export default {
     ],
     default: null
   },
+  'player.isWithBitrate': {
+    type: 'boolean',
+    default: false
+  },
   'player.isWithScrobbleNotifications': {
     type: 'boolean',
     default: false

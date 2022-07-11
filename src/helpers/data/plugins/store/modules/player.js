@@ -5,6 +5,7 @@ export default {
     currentTrackId: null,
     currentVariantId: null,
     source: null,
+    isWithBitrate: false,
     isWithScrobbling: false,
     isScrobbling: false,
     isToScrobble: false,
@@ -86,6 +87,12 @@ export default {
       value
     ) {
       state.isScrobbling = value
+    },
+    SET_IS_WITH_BITRATE (
+      state,
+      value
+    ) {
+      state.isWithBitrate = value
     }
   },
   actions: {
@@ -207,6 +214,17 @@ export default {
     ) {
       commit(
         'SET_IS_SCROBBLING',
+        value
+      )
+    },
+    setIsWithBitrate (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_WITH_BITRATE',
         value
       )
     }

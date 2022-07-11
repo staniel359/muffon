@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic tiny compact"
+    class="basic tiny compact save-button"
     :class="{
       loading: isLoading,
       disabled: isDisabled
@@ -50,7 +50,8 @@ export default {
     ),
     isDisabled () {
       return (
-        this.isLoading ||
+        !this.playerPlaying ||
+          this.isLoading ||
           this.isPlayerPlayingAudioLocal
       )
     },
@@ -175,4 +176,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.save-button
+  @extend .no-margin
+</style>
