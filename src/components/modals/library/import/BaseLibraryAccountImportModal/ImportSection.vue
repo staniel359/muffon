@@ -152,5 +152,5 @@ export default {
 
 <style lang="sass" scoped>
 .error-message
-  margin-bottom: 1em
+  margin-bottom: 1em !important
 </style>

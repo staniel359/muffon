@@ -1,5 +1,5 @@
 <template>
-  <div class="main-error-container">
+  <div class="main-error-message">
     <BaseMessage
       :icons="icons"
       :header="header"

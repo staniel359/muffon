@@ -50,5 +50,5 @@ export default {
 
 <style lang="sass" scoped>
 ::v-deep(.error-message)
-  margin-bottom: 1em
+  margin-bottom: 1em !important
 </style>
