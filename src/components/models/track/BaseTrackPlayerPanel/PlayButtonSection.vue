@@ -58,7 +58,7 @@ export default {
 
 <style lang="sass" scoped>
 .track-play-button
-  @extend .h-100, .no-margin
+  @extend .h-100
   width: $trackPagePlayerPanelHeight
   .icon
     @extend .no-margin

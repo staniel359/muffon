@@ -57,6 +57,5 @@ export default {
 
 <style lang="sass" scoped>
 .shuffle-button
-  @extend .no-margin
   margin-right: 1em !important
 </style>

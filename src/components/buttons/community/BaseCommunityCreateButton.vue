@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic create-button"
+    class="basic"
     icon="plus"
     :text="createText"
     @click="handleButtonClick"
@@ -42,7 +42,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.create-button
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

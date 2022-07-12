@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="fluid primary save-button"
+    class="fluid primary main-save-button"
     icon="check"
     :text="saveText"
     @click="handleClick"
@@ -35,8 +35,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.save-button
-  @extend .no-margin
-  margin-top: 1em !important
-</style>
+<style lang="sass" scoped></style>

@@ -1,12 +1,9 @@
 <template>
   <BaseLinkContainer
-    :class="[
-      'item profile-item',
-      'main-sidebar-item',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="item profile-item main-sidebar-item"
+    :class="{
+      inverted: isDarkMode
+    }"
     :link="profileMainLink"
   >
     <div class="main-sidebar-item-icon-container">

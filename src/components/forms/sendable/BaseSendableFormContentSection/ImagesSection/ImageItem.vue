@@ -5,7 +5,7 @@
     />
 
     <BaseButton
-      class="red basic compact small delete-button"
+      class="red basic compact small"
       icon="close"
       :text="deleteText"
       @click="handleDeleteButtonClick"
@@ -65,7 +65,4 @@ export default {
   & > .image
     max-height: 100px
     margin-bottom: 0.5em
-
-.delete-button
-  @extend .no-margin
 </style>

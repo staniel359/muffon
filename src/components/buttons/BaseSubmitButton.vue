@@ -2,13 +2,10 @@
   <button
     ref="button"
     type="submit"
-    :class="[
-      'ui primary button',
-      'main-submit-button',
-      {
-        inverted: isDarkMode
-      }
-    ]"
+    class="ui primary button main-simple-button"
+    :class="{
+      inverted: isDarkMode
+    }"
   >
     <BaseIcon
       icon="check"

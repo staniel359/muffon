@@ -35,4 +35,7 @@ export default {
 .player-main-controls
   @extend .d-flex, .align-items-center, .justify-content-center
   flex: 0.4
+  .button
+    &:not(:last-child)
+      margin-right: 0.25em !important
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="import-button-container">
     <BaseButton
-      class="lastfm import-button"
+      class="lastfm"
       icon="lastfm"
       :class="{
         loading: isLoading,
@@ -54,7 +54,4 @@ export default {
 <style lang="sass" scoped>
 .import-button-container
   @extend .flex-full
-
-.import-button
-  @extend .no-margin
 </style>

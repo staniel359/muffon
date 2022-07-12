@@ -48,6 +48,5 @@ export default {
 
 <style lang="sass" scoped>
 .message-button
-  @extend .no-margin
   margin-top: 0.5em !important
 </style>

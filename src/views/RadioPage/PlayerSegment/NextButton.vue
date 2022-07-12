@@ -1,7 +1,7 @@
 <template>
   <div class="next-button-container">
     <BaseButton
-      class="basic compact next-button"
+      class="basic compact"
       icon="forward right"
       :text="nextText"
       is-reverse
@@ -41,7 +41,4 @@ export default {
 <style lang="sass" scoped>
 .next-button-container
   @extend .d-flex, .justify-content-flex-end
-
-.next-button
-  @extend .no-margin
 </style>

@@ -229,6 +229,5 @@ export default {
   margin-left: 0.5em
 
 .follow-button
-  @extend .no-margin
   margin-left: 0.5em !important
 </style>

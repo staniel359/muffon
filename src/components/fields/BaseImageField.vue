@@ -9,7 +9,7 @@
 
       <label for="image-input">
         <BaseButton
-          class="basic compact image-add-button"
+          class="basic compact"
           icon="image"
           :text="uploadText"
         />
@@ -121,10 +121,6 @@ export default {
   height: 100px
   margin-bottom: 1em
 
-.image-add-button
-  @extend .no-margin
-
 .delete-button
-  @extend .no-margin
   margin-top: 0.5em !important
 </style>

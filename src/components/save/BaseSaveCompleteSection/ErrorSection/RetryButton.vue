@@ -37,6 +37,5 @@ export default {
 
 <style lang="sass" scoped>
 .retry-button
-  @extend .no-margin
   margin-top: 1em !important
 </style>

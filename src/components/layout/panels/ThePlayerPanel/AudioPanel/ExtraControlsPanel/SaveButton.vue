@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic tiny compact save-button"
+    class="basic tiny compact"
     :class="{
       loading: isLoading,
       disabled: isDisabled
@@ -176,7 +176,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.save-button
-  @extend .no-margin
-</style>
+<style lang="sass" scoped></style>

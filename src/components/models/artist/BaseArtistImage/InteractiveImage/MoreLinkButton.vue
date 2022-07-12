@@ -57,7 +57,7 @@ export default {
 
 <style lang="sass" scoped>
 .more-link-button
-  @extend .no-margin, .absolute
+  @extend .absolute
   bottom: 10px
   right: 10px
   z-index: 1

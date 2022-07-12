@@ -1,22 +1,17 @@
 <template>
-  <BaseLinkContainer>
-    <BaseButton
-      class="basic red mini compact circular main-clear-button"
-      icon="close"
-      @click="handleClick"
-    />
-  </BaseLinkContainer>
+  <BaseButton
+    class="basic red mini compact circular main-clear-button"
+    icon="close"
+    @click.prevent="handleClick"
+  />
 </template>
 
 <script>
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseClearButton',
   components: {
-    BaseLinkContainer,
     BaseButton
   },
   emits: [

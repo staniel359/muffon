@@ -1,6 +1,6 @@
 <template>
   <button
-    class="ui primary button main-profile-submit-button"
+    class="ui primary button main-simple-button"
     :class="{
       inverted: isDarkMode
     }"

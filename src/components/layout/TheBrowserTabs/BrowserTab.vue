@@ -123,7 +123,7 @@ export default {
 
 <style lang="sass" scoped>
 .browser-tab
-  @extend .d-flex, .align-items-center, .cursor-pointer, .no-margin
+  @extend .d-flex, .align-items-center, .cursor-pointer
   padding: 0.5em
   margin-right: 0.5em !important
   max-width: 210px
@@ -141,7 +141,6 @@ export default {
     font-weight: 700
 
 .browser-tab-close-button
-  @extend .no-margin
   margin-left: 0.5em !important
   padding: 4px !important
 </style>
