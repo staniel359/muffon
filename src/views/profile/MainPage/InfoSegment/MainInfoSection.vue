@@ -75,5 +75,5 @@ export default {
   margin: 0.25em 0
 
 .online-label
-  margin-top: 0.5em
+  margin-top: 0.5em !important
 </style>

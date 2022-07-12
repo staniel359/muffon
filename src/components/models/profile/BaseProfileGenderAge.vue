@@ -1,15 +1,22 @@
 <template>
-  <div v-if="gender || age">
+  <div
+    v-if="gender || age"
+  >
     <div
       v-if="gender"
-      :class="[
-        'ui tiny empty circular label',
-        'profile-gender',
-        genderLabelColor
-      ]"
+      class="ui tiny empty circular label gender-block"
+      :class="genderLabelColor"
     />
 
-    {{ age }}
+    <div
+      v-if="gender && age"
+      class="gender-age-separator"
+    />
+
+    <div
+      class="age-block"
+      v-text="age"
+    />
   </div>
 </template>
 
@@ -61,6 +68,13 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.profile-gender
-  margin-right: 0.25em !important
+.gender-block
+  @extend .no-margin, .d-inline-block
+
+.gender-age-separator
+  @extend .d-inline-block
+  width: 0.25em
+
+.age-block
+  @extend .d-inline-block
 </style>

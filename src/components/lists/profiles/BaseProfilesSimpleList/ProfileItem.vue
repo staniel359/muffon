@@ -214,7 +214,7 @@ export default {
   @extend .d-flex, .align-items-center
 
 .online-label
-  margin-left: 0.5em
+  margin-left: 0.5em !important
 
 .role-label
   margin-left: 0.5em

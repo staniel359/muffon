@@ -1,10 +1,7 @@
 <template>
   <div
-    :class="[
-      'ui tiny empty circular label',
-      'main-profile-online-label',
-      onlineLabelColor
-    ]"
+    class="ui tiny empty circular label main-profile-online-label"
+    :class="onlineLabelColor"
   />
 </template>
 
