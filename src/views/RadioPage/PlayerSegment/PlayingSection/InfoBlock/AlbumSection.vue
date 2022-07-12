@@ -1,6 +1,6 @@
 <template>
   <BaseHeaderContainer
-    v-if="albumData"
+    v-if="albumData && albumTitle"
     class="playing-header playing-album-title"
     tag="h6"
   >
