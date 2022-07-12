@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import BaseFilterItemLabel from '*/components/BaseFilterItemLabel.vue'
+import BaseFilterItemLabel from '*/components/labels/BaseFilterItemLabel.vue'
 
 export default {
   name: 'TagsSection',

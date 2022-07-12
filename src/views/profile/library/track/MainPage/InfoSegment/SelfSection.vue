@@ -10,8 +10,7 @@
     <template
       v-if="isSelf"
     >
-      <BaseOptionsDropdown
-        model="track"
+      <BaseTrackOptionsDropdown
         :track-data="trackData"
         :track-title="trackTitle"
         :artist-name="artistName"
@@ -22,8 +21,8 @@
         is-with-playlist-option
         is-with-queue-option
         is-with-delete-option
-        @delete-option-click="handleDeleteOptionClick"
         @playlist-option-click="handlePlaylistOptionClick"
+        @delete-option-click="handleDeleteOptionClick"
       />
 
       <BasePlaylistsModal
@@ -45,8 +44,8 @@
 
 <script>
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseTrackOptionsDropdown
+  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import BaseLibraryDeleteModal
@@ -59,7 +58,7 @@ export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseOptionsDropdown,
+    BaseTrackOptionsDropdown,
     BasePlaylistsModal,
     BaseLibraryDeleteModal
   },

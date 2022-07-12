@@ -59,8 +59,7 @@
         :listened-id="listenedId"
       />
 
-      <BaseOptionsDropdown
-        model="artist"
+      <BaseArtistOptionsDropdown
         :artist-name="artistName"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -73,8 +72,8 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
-        @delete-option-click="handleDeleteOptionClick"
         @link-click="handleLinkClick"
+        @delete-option-click="handleDeleteOptionClick"
       />
 
       <BaseClearButton
@@ -110,8 +109,8 @@ import BaseArtistListenersCount
   from '*/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseArtistOptionsDropdown
+  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
@@ -132,7 +131,7 @@ export default {
     BaseArtistListenersCount,
     LibraryCountersSection,
     BaseSelfIcons,
-    BaseOptionsDropdown,
+    BaseArtistOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal

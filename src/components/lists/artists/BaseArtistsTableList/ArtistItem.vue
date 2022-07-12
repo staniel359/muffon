@@ -6,8 +6,7 @@
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"
     >
-      <BaseOptionsDropdown
-        model="artist"
+      <BaseArtistOptionsDropdown
         :artist-name="artistName"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -20,7 +19,6 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
-        :is-transparent="false"
       />
 
       <div class="main-simple-card-image-container">
@@ -70,8 +68,8 @@ import BaseSimpleCardContainer
   from '*/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseArtistLinkContainer
   from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseArtistOptionsDropdown
+  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseArtistListenersCount
@@ -88,7 +86,7 @@ export default {
   components: {
     BaseSimpleCardContainer,
     BaseArtistLinkContainer,
-    BaseOptionsDropdown,
+    BaseArtistOptionsDropdown,
     BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,

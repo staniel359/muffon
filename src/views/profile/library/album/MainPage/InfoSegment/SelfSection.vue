@@ -10,8 +10,7 @@
     <template
       v-if="isSelf"
     >
-      <BaseOptionsDropdown
-        model="album"
+      <BaseAlbumOptionsDropdown
         :album-title="albumTitle"
         :artist-name="artistName"
         :image-url="imageData?.large"
@@ -35,8 +34,8 @@
 
 <script>
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseAlbumOptionsDropdown
+  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import BaseLibraryDeleteModal
   from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
@@ -47,7 +46,7 @@ export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseOptionsDropdown,
+    BaseAlbumOptionsDropdown,
     BaseLibraryDeleteModal
   },
   provide () {

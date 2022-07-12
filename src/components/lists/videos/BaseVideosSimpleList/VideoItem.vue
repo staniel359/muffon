@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <BaseOptionsDropdown
+    <BaseVideoOptionsDropdown
       :share-data="shareData"
       :is-with-share-option="isWithShareOption"
     />
@@ -53,8 +53,8 @@ import BaseLinkContainer
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseVideoOptionsDropdown
+  from '*/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoMainLink
@@ -73,7 +73,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseLink,
-    BaseOptionsDropdown,
+    BaseVideoOptionsDropdown,
     BaseClearButton
   },
   props: {

@@ -62,8 +62,7 @@
         :listened-id="listenedId"
       />
 
-      <BaseOptionsDropdown
-        model="album"
+      <BaseAlbumOptionsDropdown
         :artist-name="artistName"
         :album-title="albumTitle"
         :image-url="imageData?.large"
@@ -78,8 +77,8 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
-        @delete-option-click="handleDeleteOptionClick"
         @link-click="handleLinkClick"
+        @delete-option-click="handleDeleteOptionClick"
       />
 
       <BaseClearButton
@@ -117,8 +116,8 @@ import BaseAlbumListenersCount
   from '*/components/models/album/BaseAlbumListenersCount.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseAlbumOptionsDropdown
+  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
@@ -140,7 +139,7 @@ export default {
     BaseAlbumListenersCount,
     BaseSourceIcon,
     BaseSelfIcons,
-    BaseOptionsDropdown,
+    BaseAlbumOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal

@@ -55,7 +55,7 @@
     </small>
 
     <template v-if="!isSelf">
-      <BaseOptionsDropdown
+      <BaseProfileOptionsDropdown
         :profile-data="profileData"
         is-with-follow-option
         is-with-message-option
@@ -86,8 +86,8 @@ import BaseProfileFollowCounters
   from '*/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowingMessage
   from '*/components/models/profile/BaseProfileFollowingMessage.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseProfileOptionsDropdown
+  from '*/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
 import BaseProfileMessageModal
   from '*/components/modals/profile/BaseProfileMessageModal.vue'
 import {
@@ -109,7 +109,7 @@ export default {
     BaseProfileCityCountry,
     BaseProfileFollowCounters,
     BaseProfileFollowingMessage,
-    BaseOptionsDropdown,
+    BaseProfileOptionsDropdown,
     BaseProfileMessageModal
   },
   provide () {

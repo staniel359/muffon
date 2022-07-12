@@ -7,11 +7,10 @@
       :listened-id="listenedId"
     />
 
-    <BaseOptionsDropdown
-      model="album"
+    <BaseAlbumOptionsDropdown
       :album-title="albumTitle"
       :artist-name="artistName"
-      :album-tracks="tracks"
+      :tracks="tracks"
       :image-url="imageData?.large"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -29,8 +28,8 @@
 
 <script>
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseAlbumOptionsDropdown
+  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import {
   album as formatAlbumShareData
 } from '*/helpers/formatters/share'
@@ -39,7 +38,7 @@ export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseOptionsDropdown
+    BaseAlbumOptionsDropdown
   },
   props: {
     albumData: {

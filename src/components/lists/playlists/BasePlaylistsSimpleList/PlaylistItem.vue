@@ -46,7 +46,7 @@
         />
       </div>
 
-      <BaseOptionsDropdown
+      <BasePlaylistOptionsDropdown
         :share-data="shareData"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption && isSelf"
@@ -74,8 +74,8 @@ import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistOptionsDropdown
+  from '*/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BasePlaylistDeleteModal
   from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
@@ -101,7 +101,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseLink,
-    BaseOptionsDropdown,
+    BasePlaylistOptionsDropdown,
     BaseClearButton,
     BasePlaylistDeleteModal
   },

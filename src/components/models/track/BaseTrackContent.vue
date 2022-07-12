@@ -94,8 +94,7 @@
       :track-data="trackData"
     />
 
-    <BaseOptionsDropdown
-      model="track"
+    <BaseTrackOptionsDropdown
       :track-data="trackData"
       :track-title="trackTitle"
       :artist-name="artistName"
@@ -114,9 +113,9 @@
       :is-with-playlist-option="isWithPlaylistOption"
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
-      @delete-option-click="handleDeleteOptionClick"
-      @playlist-option-click="handlePlaylistOptionClick"
       @link-click="handleLinkClick"
+      @playlist-option-click="handlePlaylistOptionClick"
+      @delete-option-click="handleDeleteOptionClick"
     />
 
     <BaseClearButton
@@ -185,8 +184,8 @@ import DurationBlock from './BaseTrackContent/DurationBlock.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseTrackOptionsDropdown
+  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
@@ -221,7 +220,7 @@ export default {
     BaseSourceIcon,
     BaseSelfIcons,
     CreatedBlock,
-    BaseOptionsDropdown,
+    BaseTrackOptionsDropdown,
     BaseClearButton,
     BasePlaylistsModal,
     BaseBookmarkDeleteModal,

@@ -8,8 +8,7 @@
       :profile-id="profileId"
       @link-click="handleLinkClick"
     >
-      <BaseOptionsDropdown
-        model="album"
+      <BaseAlbumOptionsDropdown
         :artist-name="artistNameComputed"
         :album-title="albumTitle"
         :image-url="imageData?.large"
@@ -24,7 +23,6 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
-        :is-transparent="false"
         @link-click="handleLinkClick"
       />
 
@@ -89,8 +87,8 @@ import BaseSimpleCardContainer
   from '*/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseAlbumLinkContainer
   from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseAlbumOptionsDropdown
+  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
@@ -109,7 +107,7 @@ export default {
   components: {
     BaseSimpleCardContainer,
     BaseAlbumLinkContainer,
-    BaseOptionsDropdown,
+    BaseAlbumOptionsDropdown,
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,

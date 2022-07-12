@@ -32,7 +32,7 @@
       />
     </small>
 
-    <BaseOptionsDropdown
+    <BaseCommunityOptionsDropdown
       :community-data="communityData"
       :share-data="shareData"
       :is-with-join-option="isWithJoinOption"
@@ -53,8 +53,8 @@ import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseCommunityJoinedMessage
   from '*/components/models/community/BaseCommunityJoinedMessage.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseCommunityOptionsDropdown
+  from '*/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import {
   main as formatCommunityMainLink
@@ -73,7 +73,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseCommunityJoinedMessage,
-    BaseOptionsDropdown,
+    BaseCommunityOptionsDropdown,
     BaseClearButton
   },
   provide () {

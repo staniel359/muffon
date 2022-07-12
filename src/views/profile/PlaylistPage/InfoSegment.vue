@@ -32,7 +32,7 @@
           />
         </div>
 
-        <BaseOptionsDropdown
+        <BasePlaylistOptionsDropdown
           class="playlist-options"
           :share-data="shareData"
           :is-with-edit-option="isSelf"
@@ -65,8 +65,8 @@ import BaseListContainer
 import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePlaylistOptionsDropdown
+  from '*/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 import BasePlaylistUpdateModal
   from '*/components/modals/playlist/BasePlaylistUpdateModal.vue'
 import BasePlaylistDeleteModal
@@ -89,7 +89,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BaseTimestamp,
-    BaseOptionsDropdown,
+    BasePlaylistOptionsDropdown,
     BasePlaylistUpdateModal,
     BasePlaylistDeleteModal
   },

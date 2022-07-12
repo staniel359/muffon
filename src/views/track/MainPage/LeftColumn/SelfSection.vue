@@ -8,8 +8,7 @@
       :listened-id="listenedId"
     />
 
-    <BaseOptionsDropdown
-      model="track"
+    <BaseTrackOptionsDropdown
       :track-data="trackData"
       :track-title="trackTitle"
       :artist-name="artistName"
@@ -39,8 +38,8 @@
 
 <script>
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseTrackOptionsDropdown
+  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import {
@@ -51,7 +50,7 @@ export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseOptionsDropdown,
+    BaseTrackOptionsDropdown,
     BasePlaylistsModal
   },
   props: {

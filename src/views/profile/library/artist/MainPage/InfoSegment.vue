@@ -38,8 +38,7 @@
         <template
           v-if="isSelf"
         >
-          <BaseOptionsDropdown
-            model="artist"
+          <BaseArtistOptionsDropdown
             :artist-name="artistName"
             :favorite-id="favoriteId"
             is-with-favorite-option
@@ -81,8 +80,8 @@ import BaseLinkContainer
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseArtistOptionsDropdown
+  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseLibraryDeleteModal
   from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
@@ -105,7 +104,7 @@ export default {
     BaseHeader,
     BaseSelfIcons,
     BaseDivider,
-    BaseOptionsDropdown,
+    BaseArtistOptionsDropdown,
     BaseLibraryDeleteModal
   },
   provide () {

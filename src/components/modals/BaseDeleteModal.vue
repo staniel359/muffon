@@ -25,7 +25,7 @@
 
     <div class="actions">
       <BaseButton
-        class="basic cancel"
+        class="basic cancel cancel-button"
         :text="cancelText"
       />
 
@@ -120,4 +120,7 @@ export default {
 <style lang="sass" scoped>
 .error-message
   margin-bottom: 1em !important
+
+.cancel-button
+  margin-right: 1em !important
 </style>

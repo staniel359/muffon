@@ -10,8 +10,7 @@
         :listened-id="listenedId"
       />
 
-      <BaseOptionsDropdown
-        model="artist"
+      <BaseArtistOptionsDropdown
         :artist-name="artistName"
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -32,8 +31,8 @@
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseArtistOptionsDropdown
+  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import selfMixin from '*/mixins/selfMixin'
 import {
   artist as formatArtistShareData
@@ -44,7 +43,7 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseSelfIcons,
-    BaseOptionsDropdown
+    BaseArtistOptionsDropdown
   },
   mixins: [
     selfMixin

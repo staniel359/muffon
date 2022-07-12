@@ -48,7 +48,7 @@
           />
         </div>
 
-        <BaseOptionsDropdown
+        <BaseCommunityOptionsDropdown
           v-if="isCommunityCreator"
           class="community-options"
           :share-data="shareData"
@@ -83,8 +83,8 @@ import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseCommunityMembersModal
   from '*/components/modals/community/BaseCommunityMembersModal.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseCommunityOptionsDropdown
+  from '*/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 import BaseCommunityUpdateModal
   from '*/components/modals/community/BaseCommunityUpdateModal.vue'
 import BaseCommunityDeleteModal
@@ -104,7 +104,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BaseCommunityMembersModal,
-    BaseOptionsDropdown,
+    BaseCommunityOptionsDropdown,
     BaseCommunityUpdateModal,
     BaseCommunityDeleteModal
   },

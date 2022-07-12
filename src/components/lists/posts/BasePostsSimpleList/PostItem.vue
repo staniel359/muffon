@@ -38,7 +38,7 @@
         />
       </div>
 
-      <BaseOptionsDropdown
+      <BasePostOptionsDropdown
         v-if="isWithOptions"
         :is-with-edit-option="isWithEditOption"
         is-with-delete-option
@@ -77,8 +77,8 @@ import BaseProfileNickname
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
 import BaseSendableContentSection
   from '*/components/models/sendable/BaseSendableContentSection.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BasePostOptionsDropdown
+  from '*/components/dropdowns/post/BasePostOptionsDropdown.vue'
 import BasePostUpdateModal
   from '*/components/modals/post/BasePostUpdateModal.vue'
 import BasePostDeleteModal
@@ -99,7 +99,7 @@ export default {
     BaseProfileNickname,
     BaseTimestamp,
     BaseSendableContentSection,
-    BaseOptionsDropdown,
+    BasePostOptionsDropdown,
     BasePostUpdateModal,
     BasePostDeleteModal
   },

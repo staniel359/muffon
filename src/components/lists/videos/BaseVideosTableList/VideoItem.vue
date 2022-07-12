@@ -5,10 +5,9 @@
       :link="videoMainLink"
       @click="handleLinkClick"
     >
-      <BaseOptionsDropdown
+      <BaseVideoOptionsDropdown
         :share-data="shareData"
         :is-with-share-option="isWithShareOption"
-        :is-transparent="false"
       />
 
       <div class="main-simple-card-image-container">
@@ -41,8 +40,8 @@ import BaseSimpleCardContainer
   from '*/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseVideoOptionsDropdown
+  from '*/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {
@@ -57,7 +56,7 @@ export default {
   components: {
     BaseSimpleCardContainer,
     BaseLinkContainer,
-    BaseOptionsDropdown,
+    BaseVideoOptionsDropdown,
     BaseImage,
     BaseHeader
   },

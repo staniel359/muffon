@@ -44,8 +44,7 @@
                   :listened-id="listenedId"
                 />
 
-                <BaseOptionsDropdown
-                  model="artist"
+                <BaseArtistOptionsDropdown
                   :artist-name="artistName"
                   :library-id="libraryId"
                   :favorite-id="favoriteId"
@@ -108,8 +107,8 @@ import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseOptionsDropdown
-  from '*/components/dropdowns/BaseOptionsDropdown.vue'
+import BaseArtistOptionsDropdown
+  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
 import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 import BaseArtistTags from '*/components/models/artist/BaseArtistTags.vue'
@@ -131,7 +130,7 @@ export default {
     BaseArtistImage,
     LibraryCountersSection,
     BaseSelfIcons,
-    BaseOptionsDropdown,
+    BaseArtistOptionsDropdown,
     HeaderSection,
     BaseCounterLabels,
     BaseArtistTags,
