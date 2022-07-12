@@ -13,7 +13,7 @@
       >
         <BaseHeaderContainer
           class="link tag-header"
-          tag="h2"
+          tag="h3"
           icon="tag"
         >
           {{ tagName }}

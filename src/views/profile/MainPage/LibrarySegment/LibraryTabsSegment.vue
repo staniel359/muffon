@@ -3,21 +3,22 @@
     ref="segment"
   >
     <BaseTabsContainer
-      class="four item"
-      :tabs="tabsCollection"
+      class="item"
+      :class="columnWidth"
+      :tabs="tabs"
       @tab-click="handleTabClick"
     >
       <template
-        v-for="tabData in tabsCollection"
-        :key="tabData.uuid"
-        #[tabData.scope]="slotProps"
+        v-for="(tabData, index) in tabs"
+        :key="index"
+        #[index]="slotProps"
       >
-        <BaseProfileLibraryTabContainer
+        <Component
+          :is="tabData.component"
           class="main-relative-tab"
           :class="slotProps.class"
           :is-active="slotProps.isActive"
           :profile-id="profileId"
-          :tab-data="tabData"
           @focus="handleFocus"
         />
       </template>
@@ -30,26 +31,31 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseTabsContainer
   from '*/components/containers/tabs/BaseTabsContainer.vue'
-import BaseProfileLibraryTabContainer
-  from '*/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
+import ArtistsTab from './LibraryTabsSegment/ArtistsTab.vue'
+import AlbumsTab from './LibraryTabsSegment/AlbumsTab.vue'
+import TracksTab from './LibraryTabsSegment/TracksTab.vue'
+import TagsTab from './LibraryTabsSegment/TagsTab.vue'
 import {
-  collection as formatCollection
-} from '*/helpers/formatters'
+  numberToColumnWidth
+} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'LibraryTabsSegment',
   components: {
     BaseSegmentContainer,
     BaseTabsContainer,
-    BaseProfileLibraryTabContainer
+    ArtistsTab,
+    AlbumsTab,
+    TracksTab,
+    TagsTab
   },
   props: {
     profileId: String
   },
   computed: {
-    tabsCollection () {
-      return formatCollection(
-        this.tabs
+    columnWidth () {
+      return numberToColumnWidth(
+        this.tabs.length
       )
     },
     tabs () {
@@ -58,35 +64,25 @@ export default {
           name: this.$t(
             'navigation.artists'
           ),
-          scope: 'artists',
-          limit: 4,
-          component: 'BaseArtistsTableList',
-          itemsInRow: 4
+          component: 'ArtistsTab'
         },
         {
           name: this.$t(
             'navigation.albums'
           ),
-          scope: 'albums',
-          limit: 3,
-          component: 'BaseAlbumsTableList',
-          itemsInRow: 3
+          component: 'AlbumsTab'
         },
         {
           name: this.$t(
             'navigation.tracks'
           ),
-          scope: 'tracks',
-          limit: 5,
-          component: 'BaseTracksSimpleList'
+          component: 'TracksTab'
         },
         {
           name: this.$t(
             'navigation.tags'
           ),
-          scope: 'tags',
-          limit: 10,
-          component: 'BaseTagsList'
+          component: 'TagsTab'
         }
       ]
     }

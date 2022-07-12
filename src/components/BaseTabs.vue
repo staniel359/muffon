@@ -7,7 +7,7 @@
   >
     <TabItem
       v-for="(tabData, index) in tabs"
-      :key="tabData.uuid"
+      :key="index"
       :tab-name="tabData.name"
       :index="index"
       :active-tab-index="activeTabIndex"

@@ -10,9 +10,8 @@
     <div class="main-tab-container">
       <slot
         v-for="(tabData, index) in tabs"
-        :key="tabData.uuid"
         class="ui segment main-tab main-segment"
-        :name="tabData.scope"
+        :name="index"
         :class="{
           active: isActive(index)
         }"

@@ -7,25 +7,15 @@
   >
     <BasePaginatedListContainer
       :response-data="favoritesData"
-      :scope="tabData.scope"
-      :limit="tabData.limit"
+      :scope="scope"
+      :limit="limit"
       :is-loading="isLoading"
       :error="error"
       @focus="handleFocus"
     >
       <template #default="slotProps">
-        <Component
-          :is="tabData.component"
-          :[tabData.scope]="slotProps[tabData.scope]"
-          :profile-id="profileId"
-          :is-with-delete-option="isSelf"
-          is-with-image
-          is-with-artist-name
-          is-with-album-title
-          is-favorite
-          is-with-playlist-option
-          is-with-share-option
-          is-with-queue-option
+        <slot
+          :[scope]="slotProps[scope]"
         />
       </template>
     </BasePaginatedListContainer>
@@ -38,24 +28,12 @@ import {
 } from 'vuex'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
-import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
-import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
-import {
-  isCurrentProfile
-} from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileFavoriteTabContainer',
   components: {
-    BasePaginatedListContainer,
-    BaseArtistsSimpleList,
-    BaseAlbumsSimpleList,
-    BaseTracksSimpleList
+    BasePaginatedListContainer
   },
   provide () {
     return {
@@ -63,12 +41,16 @@ export default {
     }
   },
   props: {
-    tabData: {
-      type: Object,
-      required: true
-    },
     profileId: {
       type: String,
+      required: true
+    },
+    scope: {
+      type: String,
+      required: true
+    },
+    limit: {
+      type: Number,
       required: true
     },
     isActive: Boolean
@@ -94,17 +76,12 @@ export default {
     favoritesArgs () {
       return {
         profileId: this.profileId,
-        scope: this.tabData.scope,
-        limit: this.tabData.limit
+        scope: this.scope,
+        limit: this.limit
       }
     },
     favoritesData () {
       return this.profileData?.favorites
-    },
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
     }
   },
   watch: {

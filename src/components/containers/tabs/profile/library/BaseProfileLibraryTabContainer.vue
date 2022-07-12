@@ -7,29 +7,15 @@
   >
     <BasePaginatedListContainer
       :response-data="libraryData"
-      :scope="tabData.scope"
-      :limit="tabData.limit"
+      :scope="scope"
+      :limit="limit"
       :is-loading="isLoading"
       :error="error"
       @focus="handleFocus"
     >
       <template #default="slotProps">
-        <Component
-          :is="tabData.component"
-          :[tabData.scope]="slotProps[tabData.scope]"
-          :items-in-row="tabData.itemsInRow"
-          :profile-id="profileId"
-          :is-with-favorite-option="isSelf"
-          :is-with-delete-option="isWithDeleteOption(tabData.scope)"
-          is-with-image
-          is-with-artist-name
-          is-with-album-title
-          is-with-created
-          is-with-library
-          is-link-to-library
-          is-with-playlist-option
-          is-with-share-option
-          is-with-queue-option
+        <slot
+          :[scope]="slotProps[scope]"
         />
       </template>
     </BasePaginatedListContainer>
@@ -42,26 +28,12 @@ import {
 } from 'vuex'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
-import BaseArtistsTableList
-  from '*/components/lists/artists/BaseArtistsTableList.vue'
-import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
-import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
 import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
-import {
-  isCurrentProfile
-} from '*/helpers/utils'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',
   components: {
-    BasePaginatedListContainer,
-    BaseArtistsTableList,
-    BaseAlbumsTableList,
-    BaseTracksSimpleList,
-    BaseTagsList
+    BasePaginatedListContainer
   },
   provide () {
     return {
@@ -73,8 +45,12 @@ export default {
       type: String,
       required: true
     },
-    tabData: {
-      type: Object,
+    scope: {
+      type: String,
+      required: true
+    },
+    limit: {
+      type: Number,
       required: true
     },
     isActive: Boolean
@@ -100,17 +76,12 @@ export default {
     libraryArgs () {
       return {
         profileId: this.profileId,
-        scope: this.tabData.scope,
-        limit: this.tabData.limit
+        scope: this.scope,
+        limit: this.limit
       }
     },
     libraryData () {
       return this.profileData?.library
-    },
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
     }
   },
   watch: {
@@ -154,14 +125,6 @@ export default {
           ...this.libraryArgs,
           page
         }
-      )
-    },
-    isWithDeleteOption (
-      scope
-    ) {
-      return (
-        scope === 'tracks' &&
-          this.isSelf
       )
     }
   }

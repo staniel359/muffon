@@ -9,12 +9,12 @@
       ]"
     >
       <BaseTabsContainer
-        :tabs="tabsCollection"
+        :tabs="tabs"
       >
         <template
-          v-for="tabData in tabsCollection"
-          :key="tabData.uuid"
-          #[tabData.scope]="slotProps"
+          v-for="(tabData, index) in tabs"
+          :key="index"
+          #[index]="slotProps"
         >
           <Component
             :is="tabData.component"
@@ -36,9 +36,6 @@ import BaseTabsContainer
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
 import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'
-import {
-  collection as formatCollection
-} from '*/helpers/formatters'
 
 export default {
   name: 'TheSettingsModal',
@@ -50,11 +47,6 @@ export default {
     ServicesSettings
   },
   computed: {
-    tabsCollection () {
-      return formatCollection(
-        this.tabs
-      )
-    },
     tabs () {
       return [
         {
