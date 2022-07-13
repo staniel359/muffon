@@ -1,35 +1,24 @@
 <template>
-  <BaseButtonContainer
-    class="basic compact"
-    icon="image"
-    @click="handleClick"
-  >
-    <BaseImageInput
-      ref="input"
-      @change="handleImageChange"
-    />
-  </BaseButtonContainer>
+  <BaseImageUploadButton
+    :is-with-text="false"
+    @change="handleUploadChange"
+  />
 </template>
 
 <script>
-import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
-import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
+import BaseImageUploadButton
+  from '*/components/buttons/BaseImageUploadButton.vue'
 
 export default {
   name: 'ImagesButton',
   components: {
-    BaseButtonContainer,
-    BaseImageInput
+    BaseImageUploadButton
   },
   inject: [
     'addCollectionItem'
   ],
   methods: {
-    handleClick () {
-      this.showInput()
-    },
-    handleImageChange (
+    handleUploadChange (
       value
     ) {
       this.addCollectionItem(
@@ -38,11 +27,6 @@ export default {
           item: value
         }
       )
-    },
-    showInput () {
-      this.$refs
-        .input
-        .show()
     }
   }
 }

@@ -7,13 +7,9 @@
         :image="imageUrl"
       />
 
-      <label for="profile-image-input">
-        <BaseButton
-          class="basic compact"
-          icon="image"
-          :text="uploadText"
-        />
-      </label>
+      <BaseImageUploadButton
+        @change="handleUploadChange"
+      />
 
       <BaseButton
         v-if="imageUrl"
@@ -22,26 +18,22 @@
         :text="deleteText"
         @click="handleDeleteButtonClick"
       />
-
-      <BaseImageInput
-        id="profile-image-input"
-        @change="handleChange"
-      />
     </div>
   </div>
 </template>
 
 <script>
 import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImageUploadButton
+  from '*/components/buttons/BaseImageUploadButton.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
 
 export default {
   name: 'BaseProfileImageField',
   components: {
     BaseImage,
-    BaseButton,
-    BaseImageInput
+    BaseImageUploadButton,
+    BaseButton
   },
   props: {
     value: String
@@ -55,11 +47,6 @@ export default {
     }
   },
   computed: {
-    uploadText () {
-      return this.$t(
-        'actions.upload'
-      )
-    },
     deleteText () {
       return this.$t(
         'actions.delete'
@@ -73,12 +60,7 @@ export default {
     }
   },
   methods: {
-    handleValueChange (
-      value
-    ) {
-      this.imageUrl = this.value
-    },
-    handleChange (
+    handleUploadChange (
       value
     ) {
       this.imageUrl = value.url
@@ -86,6 +68,11 @@ export default {
       this.changeImage(
         value
       )
+    },
+    handleValueChange (
+      value
+    ) {
+      this.imageUrl = this.value
     },
     handleDeleteButtonClick () {
       this.imageUrl = null

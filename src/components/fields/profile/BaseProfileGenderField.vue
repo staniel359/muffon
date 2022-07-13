@@ -3,6 +3,7 @@
     <BaseDropdownContainer
       :header="genderText"
       :selected="value"
+      is-form-field
     >
       <template #input>
         <input

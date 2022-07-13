@@ -4,24 +4,22 @@
       :image="imageUrl"
     />
 
-    <BaseButton
-      class="red basic compact small"
-      icon="close"
-      :text="deleteText"
-      @click="handleDeleteButtonClick"
+    <BaseClearButton
+      class="clear-button"
+      @click="handleClearButtonClick"
     />
   </div>
 </template>
 
 <script>
 import BaseImage from '*/components/images/BaseImage.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'ImageItem',
   components: {
     BaseImage,
-    BaseButton
+    BaseClearButton
   },
   inject: [
     'deleteCollectionItem'
@@ -36,17 +34,12 @@ export default {
     imageUrl () {
       return this.imageData.url
     },
-    deleteText () {
-      return this.$t(
-        'actions.delete'
-      )
-    },
     uuid () {
       return this.imageData.uuid
     }
   },
   methods: {
-    handleDeleteButtonClick () {
+    handleClearButtonClick () {
       this.deleteCollectionItem(
         {
           collection: 'images',
@@ -64,5 +57,8 @@ export default {
   margin: 0em 1em 1em 0
   & > .image
     max-height: 100px
-    margin-bottom: 0.5em
+
+.clear-button
+  @extend .no-margin
+  margin-top: 0.5em !important
 </style>

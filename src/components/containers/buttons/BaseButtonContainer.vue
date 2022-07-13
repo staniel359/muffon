@@ -4,13 +4,18 @@
     class="ui button main-simple-button"
     :class="{
       inverted: isDarkMode,
-      icon
+      icon: !!icon && !text
     }"
     @click="handleClick"
   >
     <BaseIcon
       v-if="icon"
       :icon="icon"
+    />
+
+    <span
+      v-if="text"
+      v-text="text"
     />
 
     <slot />
@@ -29,7 +34,8 @@ export default {
     BaseIcon
   },
   props: {
-    icon: String
+    icon: String,
+    text: String
   },
   emits: [
     'init',
