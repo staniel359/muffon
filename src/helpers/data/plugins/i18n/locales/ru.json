@@ -393,7 +393,8 @@
           "language": "Язык",
           "darkMode": "Тёмный режим",
           "newTabSwitch": "Переключаться на новую вкладку",
-          "infiniteScroll": "Бесконечная прокрутка"
+          "infiniteScroll": "Бесконечная прокрутка",
+          "background": "Фоновое изображение"
         },
         "player": {
           "audioSource": "Источник аудио",

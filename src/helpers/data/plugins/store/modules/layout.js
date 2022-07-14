@@ -11,7 +11,10 @@ export default {
     isSwitchToNewTab: true,
     isQueuePanelVisible: false,
     isWithInfiniteScroll: false,
-    navigationSections: []
+    navigationSections: [],
+    backgroundImages: [],
+    backgroundImageId: 0,
+    backgroundImagePath: null
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -79,6 +82,24 @@ export default {
       value
     ) {
       state.isWithInfiniteScroll = value
+    },
+    SET_BACKGROUND_IMAGES (
+      state,
+      value
+    ) {
+      state.backgroundImages = value
+    },
+    SET_BACKGROUND_IMAGE_ID (
+      state,
+      value
+    ) {
+      state.backgroundImageId = value
+    },
+    SET_BACKGROUND_IMAGE_PATH (
+      state,
+      value
+    ) {
+      state.backgroundImagePath = value
     }
   },
   actions: {
@@ -200,6 +221,39 @@ export default {
     ) {
       commit(
         'SET_IS_WITH_INFINITE_SCROLL',
+        value
+      )
+    },
+    setBackgroundImages (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_BACKGROUND_IMAGES',
+        value
+      )
+    },
+    setBackgroundImageId (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_BACKGROUND_IMAGE_ID',
+        value
+      )
+    },
+    setBackgroundImagePath (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_BACKGROUND_IMAGE_PATH',
         value
       )
     }

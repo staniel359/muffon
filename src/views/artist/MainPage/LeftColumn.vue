@@ -1,8 +1,9 @@
 <template>
   <div
     :class="[
-      'ui segments',
+      'ui raised segments',
       'artist-page-left-column',
+      'main-segment-container',
       'main-sticky-container'
     ]"
   >

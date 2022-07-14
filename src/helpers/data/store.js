@@ -3,6 +3,12 @@ export const keysActions = {
     'audio/setIsAutoplay',
   'audio.volume':
     'audio/setVolume',
+  'layout.backgroundImages':
+    'layout/setBackgroundImages',
+  'layout.backgroundImageId':
+    'layout/setBackgroundImageId',
+  'layout.backgroundImagePath':
+    'layout/setBackgroundImagePath',
   'layout.isDarkMode':
     'layout/setIsDarkMode',
   'layout.isSwitchToNewTab':

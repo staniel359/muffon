@@ -111,6 +111,12 @@ const audioFolderPath =
     'audio'
   )
 
+const backgroundImagesFolderPath =
+  path.join(
+    userDataPath,
+    'background_images'
+  )
+
 const localesPath = path.join(
   __dirname,
   'src/helpers/data/plugins/i18n/locales'
@@ -237,6 +243,21 @@ ipcMain.on(
 ipcMain.on(
   'delete-audio',
   handleDeleteAudio
+)
+
+ipcMain.on(
+  'change-background-image',
+  handleChangeBackgroundImage
+)
+
+ipcMain.on(
+  'reset-background-image',
+  handleResetBackgroundImage
+)
+
+ipcMain.on(
+  'delete-background-image',
+  handleDeleteBackgroundImage
 )
 
 ipcMain.on(
@@ -596,6 +617,78 @@ function handleDeleteAudio (
 ) {
   deleteAudioFile(
     fileName
+  )
+}
+
+function handleChangeBackgroundImage (
+  _,
+  {
+    imageId,
+    imageUrl
+  }
+) {
+  const fileName = imageId.toString()
+
+  const imagePath = path.join(
+    backgroundImagesFolderPath,
+    fileName
+  )
+
+  const isFileExist =
+    fs.existsSync(
+      imagePath
+    )
+
+  function handleSuccess () {
+    mainWindow.webContents.send(
+      'change-background-image',
+      {
+        imageId,
+        imagePath
+      }
+    )
+  }
+
+  function downloadImage () {
+    const options = {
+      directory:
+        backgroundImagesFolderPath,
+      filename: fileName
+    }
+
+    download(
+      mainWindow,
+      imageUrl,
+      options
+    ).then(
+      handleSuccess
+    )
+  }
+
+  if (isFileExist) {
+    handleSuccess()
+  } else {
+    downloadImage()
+  }
+}
+
+function handleResetBackgroundImage () {
+  mainWindow.webContents.send(
+    'reset-background-image'
+  )
+}
+
+function handleDeleteBackgroundImage (
+  _,
+  {
+    imageId
+  }
+) {
+  mainWindow.webContents.send(
+    'delete-background-image',
+    {
+      imageId
+    }
   )
 }
 

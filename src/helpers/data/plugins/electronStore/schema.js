@@ -10,6 +10,21 @@ export default {
     ],
     default: null
   },
+  'layout.backgroundImages': {
+    type: 'array',
+    default: []
+  },
+  'layout.backgroundImageId': {
+    type: 'number',
+    default: 0
+  },
+  'layout.backgroundImagePath': {
+    type: [
+      'null',
+      'string'
+    ],
+    default: null
+  },
   'layout.isDarkMode': {
     type: 'boolean',
     default: false

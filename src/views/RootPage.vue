@@ -5,6 +5,8 @@
 
   <TheSessionObserver />
 
+  <TheBackgroundObserver />
+
   <TheExitObserver />
 
   <TheElectronStoreSaver />
@@ -25,6 +27,8 @@ import TheScrobblingObserver
   from '*/components/layout/observers/TheScrobblingObserver.vue'
 import TheSessionObserver
   from '*/components/layout/observers/TheSessionObserver.vue'
+import TheBackgroundObserver
+  from '*/components/layout/observers/TheBackgroundObserver.vue'
 import TheExitObserver
   from '*/components/layout/observers/TheExitObserver.vue'
 import TheElectronStoreSaver
@@ -37,6 +41,7 @@ export default {
   components: {
     TheScrobblingObserver,
     TheSessionObserver,
+    TheBackgroundObserver,
     TheExitObserver,
     TheElectronStoreSaver,
     TheBrowserTabs,
