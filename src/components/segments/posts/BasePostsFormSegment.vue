@@ -1,79 +1,38 @@
 <template>
   <BaseSegmentContainer>
-    <BasePostCreateFormContainer
-      class="main-post-form"
-      :post-type="postType"
-      :profile-id="profileId"
-      :community-id="communityId"
-      :images="images"
-      :artists="artists"
-      :albums="albums"
-      :tracks="tracks"
-      @success="handleSuccess"
+    <BaseAccordionContainer
+      :title="addPostText"
+      @open="handleOpen"
     >
-      <BaseContentField
-        ref="content"
-        @submit="handleSubmit"
+      <FormSection
+        :key="key"
+        :post-type="postType"
+        :profile-id="profileId"
+        :community-id="communityId"
+        :is-with-as-community-option="isWithAsCommunityOption"
+        @success="handleSuccess"
       />
-
-      <BaseSendableFormContentSection
-        :images="images"
-        :artists="artists"
-        :albums="albums"
-        :tracks="tracks"
-      />
-
-      <div class="as-community-container">
-        <BasePostAsCommunityField
-          v-if="isWithAsCommunityOption"
-        />
-      </div>
-
-      <div class="buttons-container">
-        <BaseFormAddButtonsSection
-          :artists="artists"
-          :albums="albums"
-          :tracks="tracks"
-        />
-
-        <BaseSubmitButton
-          ref="submit"
-          action-key="post"
-        />
-      </div>
-    </BasePostCreateFormContainer>
+    </BaseAccordionContainer>
   </BaseSegmentContainer>
 </template>
 
 <script>
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePostCreateFormContainer
-  from '*/components/containers/forms/post/BasePostCreateFormContainer.vue'
-import BaseContentField from '*/components/fields/BaseContentField.vue'
-import BaseSendableFormContentSection
-  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
-import BaseFormAddButtonsSection
-  from '*/components/forms/BaseFormAddButtonsSection.vue'
-import BasePostAsCommunityField
-  from '*/components/fields/post/BasePostAsCommunityField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
-import sendableFormMixin from '*/mixins/sendableFormMixin'
+import BaseAccordionContainer
+  from '*/components/containers/BaseAccordionContainer.vue'
+import FormSection from './BasePostsFormSegment/FormSection.vue'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'BasePostsFormSegment',
   components: {
     BaseSegmentContainer,
-    BasePostCreateFormContainer,
-    BaseContentField,
-    BaseSendableFormContentSection,
-    BaseFormAddButtonsSection,
-    BasePostAsCommunityField,
-    BaseSubmitButton
+    BaseAccordionContainer,
+    FormSection
   },
-  mixins: [
-    sendableFormMixin
-  ],
   props: {
     postType: String,
     profileId: String,
@@ -83,19 +42,26 @@ export default {
   emits: [
     'success'
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
+  computed: {
+    addPostText () {
+      return this.$t(
+        'actions.add.post'
+      )
+    }
+  },
   methods: {
-    handleSubmit () {
-      this.clickSubmit()
+    handleOpen () {
+      this.key = generateKey()
     },
     handleSuccess () {
       this.$emit(
         'success'
       )
-    },
-    clickSubmit () {
-      this.$refs
-        .submit
-        .click()
     }
   }
 }

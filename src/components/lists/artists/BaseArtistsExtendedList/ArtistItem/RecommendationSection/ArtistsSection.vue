@@ -129,9 +129,8 @@ export default {
 
 <style lang="sass" scoped>
 .artists-list
-  margin-top: 0.5em
+  margin: 0.5em 0
 
 .more-container
   text-align: right
-  margin-top: 0.5em
 </style>

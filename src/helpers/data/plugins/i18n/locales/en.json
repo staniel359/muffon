@@ -152,7 +152,8 @@
     "add": {
       "playlist": "Add playlist",
       "tracks": "Add tracks",
-      "community": "Add community"
+      "community": "Add community",
+      "post": "Add post"
     },
     "addTo": {
       "library": "Add to library",
