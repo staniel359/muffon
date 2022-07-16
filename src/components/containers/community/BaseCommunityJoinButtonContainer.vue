@@ -68,7 +68,7 @@ export default {
     isMember: 'handleIsMemberChange',
     membersCount: 'handleMembersCountChange'
   },
-  mounted () {
+  beforeMount () {
     this.isMember =
       this.communityData
         .profile

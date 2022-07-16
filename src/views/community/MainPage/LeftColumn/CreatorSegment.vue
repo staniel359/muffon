@@ -3,7 +3,7 @@
     <BaseHeader
       class="creator-header"
       tag="h4"
-      text="Creator:"
+      :text="creatorTextFormatted"
     />
 
     <div>
@@ -40,6 +40,14 @@ export default {
       return [
         this.creatorData
       ]
+    },
+    creatorTextFormatted () {
+      return `${this.creatorText}:`
+    },
+    creatorText () {
+      return this.$t(
+        'roles.creator'
+      )
     }
   }
 }
@@ -47,5 +55,5 @@ export default {
 
 <style lang="sass" scoped>
 .creator-header
-  margin-bottom: 0.25em !important
+  margin-bottom: 0.5em !important
 </style>

@@ -32,19 +32,9 @@
             v-text="description"
           />
 
-          <div
-            class="description community-members-count"
-            @click="handleMembersCountClick"
-          >
-            <span
-              class="main-link"
-              v-html="membersCountText"
-            />
-          </div>
-
-          <BaseCommunityMembersModal
-            ref="membersModal"
-            :community-id="communityId"
+          <BaseTimestamp
+            class="description"
+            :created="created"
           />
         </div>
 
@@ -81,17 +71,13 @@ import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseCommunityMembersModal
-  from '*/components/modals/community/BaseCommunityMembersModal.vue'
+import BaseTimestamp from '*/components/BaseTimestamp.vue'
 import BaseCommunityOptionsDropdown
   from '*/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 import BaseCommunityUpdateModal
   from '*/components/modals/community/BaseCommunityUpdateModal.vue'
 import BaseCommunityDeleteModal
   from '*/components/modals/community/BaseCommunityDeleteModal.vue'
-import {
-  number as formatNumber
-} from '*/helpers/formatters'
 import {
   community as formatCommunityShareData
 } from '*/helpers/formatters/share'
@@ -103,7 +89,7 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
-    BaseCommunityMembersModal,
+    BaseTimestamp,
     BaseCommunityOptionsDropdown,
     BaseCommunityUpdateModal,
     BaseCommunityDeleteModal
@@ -125,49 +111,21 @@ export default {
     description () {
       return this.communityData.description
     },
-    membersCountText () {
-      return this.$tc(
-        'counters.nominative.members',
-        this.membersCount,
-        {
-          count: this.membersCountStrong
-        }
-      )
-    },
-    membersCountStrong () {
-      return `<strong>${this.membersCountFormatted}</strong>`
-    },
-    membersCountFormatted () {
-      return formatNumber(
-        this.membersCount
-      )
-    },
-    membersCount () {
-      return this.communityData.members_count
-    },
-    communityId () {
-      return this.communityData.id.toString()
-    },
     shareData () {
       return formatCommunityShareData(
         this.communityData
       )
+    },
+    created () {
+      return this.communityData.created
     }
   },
   methods: {
-    handleMembersCountClick () {
-      this.showMembersModal()
-    },
     handleEditOptionClick () {
       this.showEditModal()
     },
     handleDeleteOptionClick () {
       this.showDeleteModal()
-    },
-    showMembersModal () {
-      this.$refs
-        .membersModal
-        .show()
     },
     showEditModal () {
       this.$refs
@@ -193,7 +151,4 @@ export default {
 
 .community-options
   @extend .visibility-visible
-
-.community-members-count
-  @extend .width-fit-content
 </style>

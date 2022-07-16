@@ -6,6 +6,10 @@
         'main-segment-container'
       ]"
     >
+      <MembersSegment
+        :community-data="communityData"
+      />
+
       <JoinSegment
         :community-data="communityData"
       />
@@ -18,12 +22,14 @@
 </template>
 
 <script>
+import MembersSegment from './LeftColumn/MembersSegment.vue'
 import JoinSegment from './LeftColumn/JoinSegment.vue'
 import CreatorSegment from './LeftColumn/CreatorSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
+    MembersSegment,
     JoinSegment,
     CreatorSegment
   },
