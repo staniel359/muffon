@@ -14,7 +14,8 @@ export default {
     navigationSections: [],
     backgroundImages: [],
     backgroundImageId: 0,
-    backgroundImagePath: null
+    backgroundImagePath: null,
+    transparency: 0
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -100,6 +101,12 @@ export default {
       value
     ) {
       state.backgroundImagePath = value
+    },
+    SET_TRANSPARENCY (
+      state,
+      value
+    ) {
+      state.transparency = value
     }
   },
   actions: {
@@ -254,6 +261,17 @@ export default {
     ) {
       commit(
         'SET_BACKGROUND_IMAGE_PATH',
+        value
+      )
+    },
+    setTransparency (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_TRANSPARENCY',
         value
       )
     }

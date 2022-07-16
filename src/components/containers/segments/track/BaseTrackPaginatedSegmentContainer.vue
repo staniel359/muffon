@@ -14,6 +14,7 @@
         :error="segmentSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :is-change-transparency="false"
         @focus="handleFocus"
       >
         <template #default="slotProps">

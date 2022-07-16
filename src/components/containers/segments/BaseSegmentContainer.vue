@@ -6,6 +6,9 @@
       loading: isLoading,
       inverted: isDarkMode
     }"
+    :style="isChangeTransparency && {
+      background: backgroundStyle
+    }"
   >
     <BaseErrorMessage
       v-if="isError"
@@ -34,6 +37,10 @@ export default {
     BaseErrorMessage
   },
   props: {
+    isChangeTransparency: {
+      type: Boolean,
+      default: true
+    },
     responseData: Object,
     isLoading: Boolean,
     error: Error
@@ -42,17 +49,46 @@ export default {
     'init',
     'refresh'
   ],
+  data () {
+    return {
+      colorCodes: {
+        light: '255 255 255',
+        dark: '27 28 29'
+      }
+    }
+  },
   computed: {
     ...mapState(
       'layout',
       [
-        'isDarkMode'
+        'isDarkMode',
+        'transparency'
       ]
     ),
     isError () {
       return !!(
         !this.responseData &&
           this.error
+      )
+    },
+    backgroundStyle () {
+      return `rgb(${this.colorCode} / ${this.opacity}%) !important`
+    },
+    colorCode () {
+      return this.colorCodes[
+        this.color
+      ]
+    },
+    color () {
+      if (this.isDarkMode) {
+        return 'dark'
+      } else {
+        return 'light'
+      }
+    },
+    opacity () {
+      return (
+        100 - this.transparency
       )
     }
   },

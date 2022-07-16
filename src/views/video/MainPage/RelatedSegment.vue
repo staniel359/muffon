@@ -20,6 +20,7 @@
           :scope="scope"
           :limit="limit"
           :client-page-limit="clientPageLimit"
+          :is-change-transparency="false"
           is-pagination-simple
           @focus="handleFocus"
         >

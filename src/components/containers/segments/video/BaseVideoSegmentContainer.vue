@@ -1,8 +1,10 @@
 <template>
   <BaseHeaderSegmentsContainer
     ref="segment"
+    class="main-transparent-segment-container"
     :scope="scope"
     :header-link="headerLink"
+    :is-change-transparency="false"
     is-basic
   >
     <slot

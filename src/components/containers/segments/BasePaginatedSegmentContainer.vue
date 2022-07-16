@@ -5,6 +5,7 @@
     :response-data="responseData"
     :is-loading="isSegmentLoading"
     :error="error"
+    :is-change-transparency="isChangeTransparency"
     @refresh="handleRefresh"
   >
     <BasePaginatedListContainer
@@ -50,6 +51,10 @@ export default {
     scope: {
       type: String,
       required: true
+    },
+    isChangeTransparency: {
+      type: Boolean,
+      default: true
     },
     responseData: Object,
     isLoading: Boolean,

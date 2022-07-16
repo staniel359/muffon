@@ -15,6 +15,8 @@ export const keysActions = {
     'layout/setIsSwitchToNewTab',
   'layout.isWithInfiniteScroll':
     'layout/setIsWithInfiniteScroll',
+  'layout.transparency':
+    'layout/setTransparency',
   'player.currentTrackId':
     'player/setCurrentTrackId',
   'player.currentVariantId':

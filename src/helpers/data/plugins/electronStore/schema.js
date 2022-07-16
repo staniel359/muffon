@@ -41,6 +41,10 @@ export default {
     type: 'array',
     default: []
   },
+  'layout.transparency': {
+    type: 'number',
+    default: 0
+  },
   'history.search': {
     type: 'array',
     default: []

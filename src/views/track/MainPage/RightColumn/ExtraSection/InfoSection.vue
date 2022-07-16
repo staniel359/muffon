@@ -1,32 +1,26 @@
 <template>
-  <div class="ui basic segments">
-    <BaseSegmentContainer>
-      <BaseCounterLabels
-        :counters="counters"
-      />
+  <BaseCounterLabels
+    :counters="counters"
+  />
 
-      <BaseTrackTags
-        :tags="tags"
-        :request-track-data="requestTrackData"
-        :is-more="isMoreTags"
-      />
+  <BaseTrackTags
+    :tags="tags"
+    :request-track-data="requestTrackData"
+    :is-more="isMoreTags"
+  />
 
-      <template v-if="description">
-        <BaseDivider />
+  <template v-if="description">
+    <BaseDivider />
 
-        <BaseTrackDescription
-          :description="description"
-          :request-track-data="requestTrackData"
-          :is-more="isMoreDescription"
-        />
-      </template>
-    </BaseSegmentContainer>
-  </div>
+    <BaseTrackDescription
+      :description="description"
+      :request-track-data="requestTrackData"
+      :is-more="isMoreDescription"
+    />
+  </template>
 </template>
 
 <script>
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 import BaseTrackTags from '*/components/models/track/BaseTrackTags.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
@@ -34,9 +28,8 @@ import BaseTrackDescription
   from '*/components/models/track/BaseTrackDescription.vue'
 
 export default {
-  name: 'InfoSegment',
+  name: 'InfoSection',
   components: {
-    BaseSegmentContainer,
     BaseCounterLabels,
     BaseTrackTags,
     BaseDivider,

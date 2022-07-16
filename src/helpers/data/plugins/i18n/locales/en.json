@@ -396,7 +396,8 @@
           "darkMode": "Dark mode",
           "newTabSwitch": "Switch to new tab",
           "infiniteScroll": "Infinite scroll",
-          "background": "Background image"
+          "background": "Background image",
+          "transparency": "Transparency"
         },
         "player": {
           "audioSource": "Audio source",

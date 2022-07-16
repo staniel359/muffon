@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'ui horizontal card',
+      'ui raised horizontal card',
       'main-horizontal-card',
       {
         inverted: isDarkMode

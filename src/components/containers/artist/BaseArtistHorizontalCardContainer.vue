@@ -4,6 +4,7 @@
       class="basic segment-container artist-segment"
       :is-loading="isLoading"
       :error="error"
+      :is-change-transparency="false"
       @refresh="handleRefresh"
     >
       <slot />

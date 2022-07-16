@@ -395,7 +395,8 @@
           "darkMode": "Тёмный режим",
           "newTabSwitch": "Переключаться на новую вкладку",
           "infiniteScroll": "Бесконечная прокрутка",
-          "background": "Фоновое изображение"
+          "background": "Фоновое изображение",
+          "transparency": "Прозрачность"
         },
         "player": {
           "audioSource": "Источник аудио",

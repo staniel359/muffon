@@ -242,6 +242,9 @@ p
   &.loading
     min-height: 150px
     z-index: 1
+    &:before
+      @extend .background-white-transparent
+      border-radius: inherit !important
     &.inverted
       &:before
         @extend .background-black-transparent
@@ -323,7 +326,7 @@ p
     font-size: 16px
 
 .main-simple-card
-  @extend .no-shadow, .text-align-center, .text-color-unset
+  @extend .no-shadow, .text-align-center, .text-color-unset, .background-transparent
   .main-options-dropdown-container
     @extend .absolute, .no-margin, .visibility-hidden
     z-index: 10
@@ -357,7 +360,7 @@ p
     left: 0
 
 .main-horizontal-card
-  @extend .w-100
+  @extend .w-100, .background-transparent
 
 .main-simple-list-item
   @extend .d-flex, .align-items-center, .word-break-break-word
@@ -525,9 +528,13 @@ p
     & > .inner
       & > .track-progress
         @extend .background-grey-inverted
+  &.with-thumb
+    & > .inner
+      & > .thumb
+        @extend .d-block
 
 .main-pagination
-  @extend .no-margin, .align-self-center
+  @extend .no-margin, .align-self-center, .background-transparent
   &.inverted
     border: $borderInverted !important
   & > .item
@@ -549,6 +556,8 @@ p
     @extend .visibility-visible
   &:not(.active)
     @extend .d-none
+  &.main-segment
+    @extend .background-transparent
 
 .main-relative-tab
   @extend .relative
@@ -822,3 +831,7 @@ p
 
 .main-images-table-list
   @extend .no-margin
+
+.main-transparent-segment-container
+  .main-segment
+    @extend .background-transparent

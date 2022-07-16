@@ -15,6 +15,8 @@
       <InfiniteScrollOption />
 
       <BackgroundOption />
+
+      <TransparencyOption />
     </div>
   </div>
 </template>
@@ -26,6 +28,7 @@ import DarkModeOption from './ViewOptions/DarkModeOption.vue'
 import SwitchToNewTabOption from './ViewOptions/SwitchToNewTabOption.vue'
 import InfiniteScrollOption from './ViewOptions/InfiniteScrollOption.vue'
 import BackgroundOption from './ViewOptions/BackgroundOption.vue'
+import TransparencyOption from './ViewOptions/TransparencyOption.vue'
 
 export default {
   name: 'ViewOptions',
@@ -35,7 +38,8 @@ export default {
     DarkModeOption,
     SwitchToNewTabOption,
     InfiniteScrollOption,
-    BackgroundOption
+    BackgroundOption,
+    TransparencyOption
   },
   computed: {
     viewText () {

@@ -4,6 +4,7 @@
     :class="{
       'player-panel-padded': playerPlaying
     }"
+    :is-change-transparency="false"
   >
     <BaseTracksSimpleList
       :key="key"

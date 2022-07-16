@@ -1,6 +1,7 @@
 <template>
   <BaseSegmentContainer
     class="header-section"
+    :is-change-transparency="false"
   >
     <ShuffleButton
       v-if="queueTracksCount"

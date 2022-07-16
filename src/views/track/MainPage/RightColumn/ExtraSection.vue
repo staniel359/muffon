@@ -1,6 +1,6 @@
 <template>
   <div class="main-basic-segments-container">
-    <InfoSegment
+    <InfoSection
       :track-data="trackData"
       :request-track-data="requestTrackData"
     />
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import InfoSegment from './ExtraSection/InfoSegment.vue'
+import InfoSection from './ExtraSection/InfoSection.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
@@ -36,7 +36,7 @@ import SimilarSegment from './ExtraSection/SimilarSegment.vue'
 export default {
   name: 'ExtraSection',
   components: {
-    InfoSegment,
+    InfoSection,
     BaseDivider,
     VideoSegment,
     LyricsSegment,

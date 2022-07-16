@@ -1,13 +1,11 @@
 <template>
-  <div class="counters-date-section">
-    <BaseCounterLabels
-      :counters="counters"
-    />
+  <BaseCounterLabels
+    :counters="counters"
+  />
 
-    <BaseDateLabel
-      :date="publishDate"
-    />
-  </div>
+  <BaseDateLabel
+    :date="publishDate"
+  />
 </template>
 
 <script>
@@ -52,7 +50,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.counters-date-section
-  @extend .d-flex, .justify-content-space-between
-</style>
+<style lang="sass" scoped></style>

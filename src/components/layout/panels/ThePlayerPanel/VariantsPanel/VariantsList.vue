@@ -2,6 +2,7 @@
   <BaseSegmentContainer
     ref="segment"
     class="raised top attached variants-list"
+    :is-change-transparency="false"
   >
     <BaseListContainer
       class="selection"

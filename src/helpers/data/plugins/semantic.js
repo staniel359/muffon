@@ -92,6 +92,18 @@ export function mainVolumeSeekerOptions (
   }
 }
 
+export function mainTransparencySeekerOptions (
+  {
+    start
+  } = {}
+) {
+  return {
+    max: 100,
+    step: 10,
+    start
+  }
+}
+
 export function mainPopupOptions () {
   return {
     duration: 0,

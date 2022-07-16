@@ -11,6 +11,7 @@
 
     <BaseSegmentContainer
       class="tag-info-segment"
+      :is-change-transparency="false"
     >
       <HeaderSection
         :tag-name="tagName"
