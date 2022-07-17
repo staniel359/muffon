@@ -9,8 +9,12 @@
         :albums="slotProps[scope]"
         :is-with-delete-option="isSelf"
         is-with-artist-name
-        is-with-share-option
         is-favorite
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-share-option
       />
     </template>
   </BaseProfileFavoritesPaginatedPageContainer>

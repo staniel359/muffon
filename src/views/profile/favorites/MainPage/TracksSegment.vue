@@ -12,10 +12,14 @@
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-favorite
+        is-with-library-option
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
         is-with-playlist-option
         is-with-share-option
         is-with-queue-option
-        is-favorite
       />
     </template>
   </BaseProfileFavoritesPaginatedSegmentContainer>
