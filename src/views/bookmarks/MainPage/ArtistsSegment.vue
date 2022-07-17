@@ -7,10 +7,12 @@
     <template #default="slotProps">
       <BaseArtistsSimpleList
         :artists="slotProps[scope]"
-        :is-with-self-icons="false"
+        is-bookmark
+        is-with-library-option
+        is-with-favorite-option
+        is-with-listened-option
         is-with-share-option
         is-with-delete-option
-        is-bookmark
       />
     </template>
   </BaseBookmarksPaginatedSegmentContainer>

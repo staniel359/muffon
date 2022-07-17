@@ -68,15 +68,15 @@
           :top-track-count="topTrackCount"
         />
       </div>
-
-      <BaseSelfIcons
-        v-if="isWithSelfIcons"
-        :library-id="libraryId"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :listened-id="listenedId"
-      />
     </div>
+
+    <BaseSelfIcons
+      v-if="isWithSelfIcons"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+    />
 
     <DurationBlock
       v-if="isRenderDuration"
