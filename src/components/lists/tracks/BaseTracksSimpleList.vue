@@ -16,6 +16,7 @@
       :top-track-count="topTrackCount"
       :is-with-duration="isWithDuration"
       :is-with-source="isWithSource"
+      :is-with-saved-icon="isWithSavedIcon"
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"
       :is-with-library-option="isWithLibraryOption"
@@ -82,6 +83,7 @@ export default {
     albumData: Object,
     isWithDuration: Boolean,
     isWithSource: Boolean,
+    isWithSavedIcon: Boolean,
     isWithListenersCount: Boolean,
     topTrackCount: Number,
     isLinkToLibrary: Boolean,

@@ -25,6 +25,7 @@
         :top-track-count="topTrackCount"
         :is-with-duration="isWithDuration"
         :is-with-source="isWithSource"
+        :is-with-saved-icon="isWithSavedIcon"
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
         :is-with-library-option="isWithLibraryOption"
@@ -85,6 +86,7 @@ export default {
     topTrackCount: Number,
     isWithDuration: Boolean,
     isWithSource: Boolean,
+    isWithSavedIcon: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryOption: Boolean,

@@ -83,6 +83,12 @@
       :duration="duration"
     />
 
+    <BaseIcon
+      v-if="isRenderSavedIcon"
+      class="track-saved-icon"
+      icon="save"
+    />
+
     <BaseSourceIcon
       v-if="isRenderSource"
       class="track-source-icon"
@@ -181,6 +187,7 @@ import AlbumSection from './BaseTrackContent/AlbumSection.vue'
 import ListenersCountSection
   from './BaseTrackContent/ListenersCountSection.vue'
 import DurationBlock from './BaseTrackContent/DurationBlock.vue'
+import BaseIcon from '*/components/BaseIcon.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
@@ -217,6 +224,7 @@ export default {
     AlbumSection,
     ListenersCountSection,
     DurationBlock,
+    BaseIcon,
     BaseSourceIcon,
     BaseSelfIcons,
     CreatedBlock,
@@ -260,6 +268,7 @@ export default {
     topTrackCount: Number,
     isWithDuration: Boolean,
     isWithSource: Boolean,
+    isWithSavedIcon: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
     isWithLibraryOption: Boolean,
@@ -404,6 +413,12 @@ export default {
       } else {
         return null
       }
+    },
+    isRenderSavedIcon () {
+      return (
+        this.isWithSavedIcon &&
+          this.audioData?.local
+      )
     }
   },
   methods: {
@@ -482,6 +497,9 @@ export default {
 
 .main-simple-self-buttons-container
   margin-left: 0.5em
+
+.track-saved-icon
+  margin-left: 0.5em !important
 
 .track-source-icon
   margin-left: 0.5em !important
