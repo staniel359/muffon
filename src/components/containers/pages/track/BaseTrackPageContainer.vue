@@ -128,7 +128,17 @@ export default {
           'bandcamp'
       )
 
-      if (isBandcampSource) {
+      const isBandcampTrackIdPresent = (
+        value.source?.id &&
+          value.source?.artist_id
+      )
+
+      const isGetBandcampId = (
+        isBandcampSource &&
+          !isBandcampTrackIdPresent
+      )
+
+      if (isGetBandcampId) {
         this.getBandcampTrackData(
           value
         )
