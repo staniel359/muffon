@@ -5,7 +5,8 @@ export default function (
   {
     albumTitle,
     artistName,
-    imageUrl
+    imageUrl,
+    sourceData
   }
 ) {
   this.bookmarkId = null
@@ -19,7 +20,8 @@ export default function (
   const params = {
     title: albumTitle,
     artist_name: artistName,
-    image_url: imageUrl
+    image_url: imageUrl,
+    source_data: sourceData
   }
 
   const handleSuccess = (

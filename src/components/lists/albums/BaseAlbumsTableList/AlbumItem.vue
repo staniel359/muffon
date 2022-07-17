@@ -12,6 +12,7 @@
         :artist-name="artistNameComputed"
         :album-title="albumTitle"
         :image-url="imageData?.large"
+        :source-data="sourceData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
@@ -193,6 +194,9 @@ export default {
       return formatAlbumShareData(
         this.albumData
       )
+    },
+    sourceData () {
+      return this.albumData.source
     }
   },
   methods: {

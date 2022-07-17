@@ -106,6 +106,9 @@
       :artist-name="artistName"
       :album-title="albumTitle"
       :image-url="imageData?.large"
+      :source-data="sourceData"
+      :audio-data="audioData"
+      :album-source-data="albumSourceData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -339,7 +342,10 @@ export default {
       )
     },
     albumTitle () {
-      return this.trackData.album?.title
+      return this.albumData?.title
+    },
+    albumData () {
+      return this.trackData.album
     },
     isRenderListenersCount () {
       return (
@@ -373,7 +379,13 @@ export default {
       return this.trackData.audio
     },
     source () {
-      return this.trackData.source.name
+      return this.sourceData?.name
+    },
+    sourceData () {
+      return this.trackData.source
+    },
+    albumSourceData () {
+      return this.albumData?.source
     },
     libraryTrackId () {
       return this.trackData.library.id.toString()

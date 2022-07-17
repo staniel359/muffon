@@ -14,6 +14,9 @@
       :artist-name="artistName"
       :album-title="albumTitle"
       :image-url="imageData?.large"
+      :source-data="sourceData"
+      :audio-data="audioData"
+      :album-source-data="albumSourceData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -71,7 +74,10 @@ export default {
       return this.trackData.artist.name
     },
     albumTitle () {
-      return this.trackData.album?.title
+      return this.albumData?.title
+    },
+    albumData () {
+      return this.trackData.album
     },
     imageData () {
       return this.trackData.image
@@ -80,6 +86,15 @@ export default {
       return formatTrackShareData(
         this.trackData
       )
+    },
+    sourceData () {
+      return this.trackData.source
+    },
+    audioData () {
+      return this.trackData.audio
+    },
+    albumSourceData () {
+      return this.albumData?.source
     }
   },
   methods: {

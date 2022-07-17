@@ -6,9 +6,11 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
+        :is-with-self-icons="false"
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-source
         is-with-playlist-option
         is-with-share-option
         is-with-queue-option

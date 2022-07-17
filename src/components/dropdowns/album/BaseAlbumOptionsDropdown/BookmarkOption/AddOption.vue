@@ -28,7 +28,8 @@ export default {
       type: String,
       required: true
     },
-    imageUrl: String
+    imageUrl: String,
+    sourceData: Object
   },
   data () {
     return {
@@ -42,7 +43,8 @@ export default {
       return {
         artistName: this.artistName,
         albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageUrl,
+        sourceData: this.sourceData
       }
     }
   },

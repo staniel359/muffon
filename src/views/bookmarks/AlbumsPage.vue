@@ -6,7 +6,9 @@
     <template #default="slotProps">
       <BaseAlbumsSimpleList
         :albums="slotProps[scope]"
+        :is-with-self-icons="false"
         is-with-artist-name
+        is-with-source
         is-with-share-option
         is-with-delete-option
         is-bookmark

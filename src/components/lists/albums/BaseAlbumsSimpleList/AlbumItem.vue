@@ -66,6 +66,7 @@
         :artist-name="artistName"
         :album-title="albumTitle"
         :image-url="imageData?.large"
+        :source-data="sourceData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
@@ -229,7 +230,10 @@ export default {
       )
     },
     source () {
-      return this.albumData.source?.name
+      return this.sourceData?.name
+    },
+    sourceData () {
+      return this.albumData.source
     }
   },
   methods: {

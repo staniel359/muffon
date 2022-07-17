@@ -26,6 +26,7 @@
       :artist-name="artistName"
       :album-title="albumTitle"
       :image-url="imageUrl"
+      :source-data="sourceData"
     />
 
     <ListenedOption
@@ -75,6 +76,7 @@ export default {
     albumTitle: String,
     tracks: Array,
     imageUrl: String,
+    sourceData: Object,
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,

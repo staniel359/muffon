@@ -10,6 +10,9 @@
     :track-title="trackTitle"
     :album-title="albumTitle"
     :image-url="imageUrl"
+    :source-data="sourceData"
+    :audio-data="audioData"
+    :album-source-data="albumSourceData"
   />
 </template>
 
@@ -29,7 +32,10 @@ export default {
     artistName: String,
     trackTitle: String,
     albumTitle: String,
-    imageUrl: String
+    imageUrl: String,
+    sourceData: Object,
+    audioData: Object,
+    albumSourceData: Object
   }
 }
 </script>

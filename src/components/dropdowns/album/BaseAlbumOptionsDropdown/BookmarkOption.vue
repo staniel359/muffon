@@ -9,6 +9,7 @@
     :artist-name="artistName"
     :album-title="albumTitle"
     :image-url="imageUrl"
+    :source-data="sourceData"
   />
 </template>
 
@@ -27,7 +28,8 @@ export default {
     bookmarkId: String,
     artistName: String,
     albumTitle: String,
-    imageUrl: String
+    imageUrl: String,
+    sourceData: Object
   }
 }
 </script>

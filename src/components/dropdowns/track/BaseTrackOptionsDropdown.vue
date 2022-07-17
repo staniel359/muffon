@@ -33,6 +33,9 @@
       :track-title="trackTitle"
       :album-title="albumTitle"
       :image-url="imageUrl"
+      :source-data="sourceData"
+      :audio-data="audioData"
+      :album-source-data="albumSourceData"
     />
 
     <ListenedOption
@@ -92,6 +95,9 @@ export default {
     trackTitle: String,
     albumTitle: String,
     imageUrl: String,
+    sourceData: Object,
+    audioData: Object,
+    albumSourceData: Object,
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,

@@ -29,7 +29,10 @@ export default {
       required: true
     },
     albumTitle: String,
-    imageUrl: String
+    imageUrl: String,
+    sourceData: Object,
+    audioData: Object,
+    albumSourceData: Object
   },
   data () {
     return {
@@ -44,7 +47,15 @@ export default {
         artistName: this.artistName,
         trackTitle: this.trackTitle,
         albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl
+        imageUrl: this.imageUrl,
+        sourceData: this.sourceData,
+        audioData: this.audioDataFormatted,
+        albumSourceData: this.albumSourceData
+      }
+    },
+    audioDataFormatted () {
+      return this.audioData && {
+        present: this.audioData.present
       }
     }
   },
