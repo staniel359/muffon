@@ -17,6 +17,7 @@
         is-with-image
         is-with-artist-name
         is-with-album-title
+        is-with-source
         is-playlist-track
         is-with-playlist-option
         is-with-share-option

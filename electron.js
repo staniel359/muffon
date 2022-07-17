@@ -553,6 +553,8 @@ function handleSaveAudio (
     key,
     iv
   ) {
+    delete trackData.audio.link
+
     trackData.uuid = fileName
 
     const filePath =

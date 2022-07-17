@@ -22,17 +22,13 @@ export function album (
     image
   } = albumData
 
-  const imageData = image && {
-    extrasmall: image.extrasmall
-  }
-
   return {
     model: 'album',
     source,
     title,
     artist,
     artists,
-    image: imageData
+    image
   }
 }
 
@@ -54,15 +50,8 @@ export function track (
     ...artistData
   } = artist
 
-  const imageData = image && {
-    extrasmall: image.extrasmall
-  }
-
-  const {
-    local: audioLocal,
-    ...audioData
-  } = {
-    ...audio
+  const audioData = audio && {
+    present: audio.present
   }
 
   return {
@@ -74,10 +63,8 @@ export function track (
     artist: artistData,
     artists,
     album,
-    image: imageData,
-    audio: (
-      audio && audioData
-    )
+    image,
+    audio: audioData
   }
 }
 

@@ -98,10 +98,16 @@ export default function getQueueTrack (
   }
 
   if (followingTrackData) {
-    const isFollowingTrackLocal =
+    const isAudioLink =
+      followingTrackData.audio?.link
+
+    const isAudioLocal =
       followingTrackData.audio?.local
 
-    if (isFollowingTrackLocal) {
+    if (
+      isAudioLink ||
+        isAudioLocal
+    ) {
       setFollowingTrackPlaying()
     } else {
       getFollowingTrackAudioData()

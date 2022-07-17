@@ -8,6 +8,9 @@ export default function (
     artistName,
     albumTitle,
     imageUrl,
+    sourceData,
+    audioData,
+    albumSourceData,
     isSelectable
   }
 ) {
@@ -22,7 +25,10 @@ export default function (
     title: trackTitle,
     artist_name: artistName,
     album_title: albumTitle,
-    image_url: imageUrl
+    image_url: imageUrl,
+    source_data: sourceData,
+    audio_data: audioData,
+    album_source_data: albumSourceData
   }
 
   const handleSuccess = (

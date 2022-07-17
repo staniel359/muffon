@@ -98,15 +98,21 @@ export default {
       return formatPlayerTrack(
         {
           trackData: this.trackData,
-          isFromSource: this.trackAudioLink,
+          isFromSource: this.isAudioPresent,
           isFromRadio: this.isFromRadio
         }
       )
     },
-    trackAudioLink () {
+    isAudioPresent () {
+      return this.audioData?.present
+    },
+    audioData () {
+      return this.trackData.audio
+    },
+    audioLink () {
       return (
-        this.trackData.audio?.link ||
-          this.trackData.audio?.path
+        this.audioData?.local?.path ||
+          this.audioData?.link
       )
     },
     uuid () {
@@ -114,10 +120,11 @@ export default {
     }
   },
   methods: {
+    getPlayerTrack,
     handleClick () {
       if (this.isCurrent) {
         this.callAudioAction()
-      } else if (this.trackAudioLink) {
+      } else if (this.audioLink) {
         this.setAudio()
       } else if (!this.isLoading) {
         this.getAudio()
@@ -143,7 +150,6 @@ export default {
         this.trackFormatted
       )
     },
-    getPlayerTrack,
     getAudio () {
       this.getPlayerTrack(
         this.playerTrackArgs

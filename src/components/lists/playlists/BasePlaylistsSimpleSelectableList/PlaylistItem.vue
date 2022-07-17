@@ -115,23 +115,43 @@ export default {
       return {
         playlistId: this.playlistId,
         trackTitle: this.trackTitle,
-        artistName: this.trackArtistName,
-        albumTitle: this.trackAlbumTitle,
-        imageUrl: this.trackImageUrl,
+        artistName: this.artistName,
+        albumTitle: this.albumTitle,
+        imageUrl: this.imageUrl,
+        sourceData: this.sourceData,
+        audioData: this.audioDataFormatted,
+        albumSourceData: this.albumSourceData,
         isSelectable: true
       }
     },
     trackTitle () {
       return this.trackData.title
     },
-    trackArtistName () {
+    artistName () {
       return this.trackData.artist.name
     },
-    trackAlbumTitle () {
-      return this.trackData.album?.title
+    albumTitle () {
+      return this.albumData?.title
     },
-    trackImageUrl () {
+    albumData () {
+      return this.trackData.album
+    },
+    imageUrl () {
       return this.trackData.image?.large
+    },
+    sourceData () {
+      return this.trackData.source
+    },
+    audioDataFormatted () {
+      return this.audioData && {
+        present: this.audioData.present
+      }
+    },
+    audioData () {
+      return this.trackData.audio
+    },
+    albumSourceData () {
+      return this.albumData?.source
     },
     paginationItem () {
       return this.findPaginationItem(
