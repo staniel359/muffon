@@ -103,6 +103,9 @@ const ProfileLibraryTracksPage = () => import(
 const ProfileLibraryTrackMainPage = () => import(
   '*/views/profile/library/track/MainPage.vue'
 )
+const ProfileLibraryTrackAlbumsPage = () => import(
+  '*/views/profile/library/track/AlbumsPage.vue'
+)
 const ProfileLibraryTrackPlaylistsPage = () => import(
   '*/views/profile/library/track/PlaylistsPage.vue'
 )
@@ -444,6 +447,13 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackMainPage',
     component: ProfileLibraryTrackMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tracks/:libraryTrackId/albums',
+    exact: true,
+    name: 'ProfileLibraryTrackAlbumsPage',
+    component: ProfileLibraryTrackAlbumsPage,
     props: true
   },
   {

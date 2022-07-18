@@ -14,6 +14,22 @@ export function main (
   }
 }
 
+export function albums (
+  {
+    profileId,
+    libraryTrackId
+  }
+) {
+  return {
+    name: 'ProfileLibraryTrackAlbumsPage',
+    params: {
+      profileId,
+      libraryTrackId
+    },
+    path: `profiles/${profileId}/library/tracks/${libraryTrackId}/albums`
+  }
+}
+
 export function playlists (
   {
     profileId,
