@@ -3,7 +3,7 @@
     :profile-id="profileId"
     :library-track-id="libraryTrackId"
   >
-    <template #default="pageSlotProps">
+    <template #default="slotProps">
       <div class="main-profile-page-columns-container">
         <div
           :class="[
@@ -12,14 +12,19 @@
           ]"
         >
           <InfoSegment
-            :track-data="pageSlotProps.trackData"
+            :track-data="slotProps.trackData"
             :profile-id="profileId"
           />
         </div>
 
         <div class="main-profile-page-right-column">
-          <PlayerPanelSegment
-            :track-data="pageSlotProps.trackData"
+          <StatisticsSegment
+            :track-data="slotProps.trackData"
+          />
+
+          <PlaylistsSegment
+            :profile-id="profileId"
+            :library-track-id="libraryTrackId"
           />
         </div>
       </div>
@@ -31,14 +36,16 @@
 import BaseProfileLibraryTrackPageContainer
   from '*/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
-import PlayerPanelSegment from './MainPage/PlayerPanelSegment.vue'
+import StatisticsSegment from './MainPage/StatisticsSegment.vue'
+import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseProfileLibraryTrackPageContainer,
     InfoSegment,
-    PlayerPanelSegment
+    StatisticsSegment,
+    PlaylistsSegment
   },
   props: {
     profileId: String,

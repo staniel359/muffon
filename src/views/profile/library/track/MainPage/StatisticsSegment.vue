@@ -3,7 +3,7 @@
     class="raised main-segment-container"
   >
     <BaseStatistics
-      class="three small"
+      class="one small"
       :statistics="statistics"
     />
   </BaseSegmentContainer>
@@ -21,7 +21,7 @@ export default {
     BaseStatistics
   },
   props: {
-    artistData: {
+    trackData: {
       type: Object,
       required: true
     }
@@ -31,32 +31,14 @@ export default {
       return [
         {
           text: this.$t(
-            'navigation.albums'
-          ),
-          value: this.albumsCount
-        },
-        {
-          text: this.$t(
-            'navigation.tracks'
-          ),
-          value: this.tracksCount
-        },
-        {
-          text: this.$t(
             'navigation.playlists'
           ),
           value: this.playlistsCount
         }
       ]
     },
-    albumsCount () {
-      return this.artistData.albums_count
-    },
-    tracksCount () {
-      return this.artistData.tracks_count
-    },
     playlistsCount () {
-      return this.artistData.playlists_count
+      return this.trackData.playlists_count
     }
   }
 }

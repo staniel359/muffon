@@ -45,3 +45,19 @@ export function tracks (
     path: `profiles/${profileId}/library/artists/${libraryArtistId}/tracks`
   }
 }
+
+export function playlists (
+  {
+    profileId,
+    libraryArtistId
+  }
+) {
+  return {
+    name: 'ProfileLibraryArtistPlaylistsPage',
+    params: {
+      profileId,
+      libraryArtistId
+    },
+    path: `profiles/${profileId}/library/artists/${libraryArtistId}/playlists`
+  }
+}

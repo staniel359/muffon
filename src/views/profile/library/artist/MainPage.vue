@@ -31,6 +31,11 @@
             :profile-id="profileId"
             :library-artist-id="libraryArtistId"
           />
+
+          <PlaylistsSegment
+            :profile-id="profileId"
+            :library-artist-id="libraryArtistId"
+          />
         </div>
       </div>
     </template>
@@ -44,6 +49,7 @@ import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'
+import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'
 
 export default {
   name: 'MainPage',
@@ -52,7 +58,8 @@ export default {
     InfoSegment,
     StatisticsSegment,
     AlbumsSegment,
-    TracksSegment
+    TracksSegment,
+    PlaylistsSegment
   },
   props: {
     profileId: String,

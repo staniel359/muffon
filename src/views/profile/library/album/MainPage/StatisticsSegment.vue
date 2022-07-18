@@ -3,7 +3,7 @@
     class="raised main-segment-container"
   >
     <BaseStatistics
-      class="one small"
+      class="two small"
       :statistics="statistics"
     />
   </BaseSegmentContainer>
@@ -34,11 +34,20 @@ export default {
             'navigation.tracks'
           ),
           value: this.tracksCount
+        },
+        {
+          text: this.$t(
+            'navigation.playlists'
+          ),
+          value: this.playlistsCount
         }
       ]
     },
     tracksCount () {
       return this.albumData.tracks_count
+    },
+    playlistsCount () {
+      return this.albumData.playlists_count
     }
   }
 }

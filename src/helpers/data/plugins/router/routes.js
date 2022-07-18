@@ -82,6 +82,9 @@ const ProfileLibraryArtistAlbumsPage = () => import(
 const ProfileLibraryArtistTracksPage = () => import(
   '*/views/profile/library/artist/TracksPage.vue'
 )
+const ProfileLibraryArtistPlaylistsPage = () => import(
+  '*/views/profile/library/artist/PlaylistsPage.vue'
+)
 const ProfileLibraryAlbumsPage = () => import(
   '*/views/profile/library/AlbumsPage.vue'
 )
@@ -91,11 +94,17 @@ const ProfileLibraryAlbumMainPage = () => import(
 const ProfileLibraryAlbumTracksPage = () => import(
   '*/views/profile/library/album/TracksPage.vue'
 )
+const ProfileLibraryAlbumPlaylistsPage = () => import(
+  '*/views/profile/library/album/PlaylistsPage.vue'
+)
 const ProfileLibraryTracksPage = () => import(
   '*/views/profile/library/TracksPage.vue'
 )
 const ProfileLibraryTrackMainPage = () => import(
   '*/views/profile/library/track/MainPage.vue'
+)
+const ProfileLibraryTrackPlaylistsPage = () => import(
+  '*/views/profile/library/track/PlaylistsPage.vue'
 )
 const ProfileLibraryTagsPage = () => import(
   '*/views/profile/library/TagsPage.vue'
@@ -389,6 +398,13 @@ export default [
     props: true
   },
   {
+    path: '/profiles/:profileId/library/artists/:libraryArtistId/playlists',
+    exact: true,
+    name: 'ProfileLibraryArtistPlaylistsPage',
+    component: ProfileLibraryArtistPlaylistsPage,
+    props: true
+  },
+  {
     path: '/profiles/:profileId/library/albums',
     exact: true,
     name: 'ProfileLibraryAlbumsPage',
@@ -410,6 +426,13 @@ export default [
     props: true
   },
   {
+    path: '/profiles/:profileId/library/albums/:libraryAlbumId/playlists',
+    exact: true,
+    name: 'ProfileLibraryAlbumPlaylistsPage',
+    component: ProfileLibraryAlbumPlaylistsPage,
+    props: true
+  },
+  {
     path: '/profiles/:profileId/library/tracks',
     exact: true,
     name: 'ProfileLibraryTracksPage',
@@ -421,6 +444,13 @@ export default [
     exact: true,
     name: 'ProfileLibraryTrackMainPage',
     component: ProfileLibraryTrackMainPage,
+    props: true
+  },
+  {
+    path: '/profiles/:profileId/library/tracks/:libraryTrackId/playlists',
+    exact: true,
+    name: 'ProfileLibraryTrackPlaylistsPage',
+    component: ProfileLibraryTrackPlaylistsPage,
     props: true
   },
   {

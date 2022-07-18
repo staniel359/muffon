@@ -29,3 +29,19 @@ export function tracks (
     path: `profiles/${profileId}/library/albums/${libraryAlbumId}/tracks`
   }
 }
+
+export function playlists (
+  {
+    profileId,
+    libraryAlbumId
+  }
+) {
+  return {
+    name: 'ProfileLibraryAlbumPlaylistsPage',
+    params: {
+      profileId,
+      libraryAlbumId
+    },
+    path: `profiles/${profileId}/library/albums/${libraryAlbumId}/playlists`
+  }
+}
