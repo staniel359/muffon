@@ -1,34 +1,38 @@
 <template>
-  <div
-    v-if="favoriteId || isSelf"
-    class="main-self-container"
-  >
+  <div class="main-self-container">
     <BaseSelfIcons
+      :library-id="libraryId"
       :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+      :is-with-library-icon="!isSelf"
     />
 
-    <template
-      v-if="isSelf"
-    >
-      <BaseAlbumOptionsDropdown
-        :album-title="albumTitle"
-        :artist-name="artistName"
-        :image-url="imageData?.large"
-        :favorite-id="favoriteId"
-        is-with-favorite-option
-        is-with-delete-option
-        @delete-option-click="handleDeleteOptionClick"
-      />
+    <BaseAlbumOptionsDropdown
+      :album-title="albumTitle"
+      :artist-name="artistName"
+      :image-url="imageData?.large"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+      :is-with-library-option="!isSelf"
+      :is-with-delete-option="isSelf"
+      is-with-favorite-option
+      is-with-bookmark-option
+      is-with-listened-option
+      @delete-option-click="handleDeleteOptionClick"
+    />
 
-      <BaseLibraryDeleteModal
-        ref="deleteModal"
-        model="album"
-        :profile-id="profileId"
-        :model-id="libraryAlbumId"
-        :model-name="albumFullTitle"
-        is-delete-with-redirect
-      />
-    </template>
+    <BaseLibraryDeleteModal
+      v-if="isSelf"
+      ref="deleteModal"
+      model="album"
+      :profile-id="profileId"
+      :model-id="libraryAlbumId"
+      :model-name="albumFullTitle"
+      is-delete-with-redirect
+    />
   </div>
 </template>
 
@@ -41,6 +45,7 @@ import BaseLibraryDeleteModal
 import {
   isCurrentProfile
 } from '*/helpers/utils'
+import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'SelfSection',
@@ -49,11 +54,9 @@ export default {
     BaseAlbumOptionsDropdown,
     BaseLibraryDeleteModal
   },
-  provide () {
-    return {
-      setFavoriteId: this.setFavoriteId
-    }
-  },
+  mixins: [
+    selfMixin
+  ],
   props: {
     albumData: {
       type: Object,
@@ -64,12 +67,10 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-      favoriteId: null
-    }
-  },
   computed: {
+    modelData () {
+      return this.albumData
+    },
     isSelf () {
       return isCurrentProfile(
         this.profileId
@@ -96,18 +97,9 @@ export default {
       return this.albumData.image
     }
   },
-  mounted () {
-    this.favoriteId =
-      this.albumData.favorite_id?.toString()
-  },
   methods: {
     handleDeleteOptionClick () {
       this.showDeleteModal()
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
     },
     showDeleteModal () {
       this.$refs

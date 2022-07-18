@@ -12,9 +12,12 @@
         :profile-id="profileId"
         :artist-name="slotProps.artistName"
         :items-in-row="itemsInRow"
-        :is-with-favorite-option="isSelf"
+        :is-with-library-option="!isSelf"
         is-with-library
         is-link-to-library
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
         is-with-share-option
       />
     </template>

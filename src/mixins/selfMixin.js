@@ -1,3 +1,7 @@
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
+
 export default {
   provide () {
     return {
@@ -13,6 +17,19 @@ export default {
       favoriteId: null,
       bookmarkId: null,
       listenedId: null
+    }
+  },
+  computed: {
+    isWithLibraryIcon () {
+      return !(
+        this.isLinkToLibrary &&
+          this.isSelf
+      )
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
+      )
     }
   },
   mounted () {

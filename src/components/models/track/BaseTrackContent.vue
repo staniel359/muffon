@@ -76,6 +76,7 @@
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
+      :is-with-library-icon="isWithLibraryIcon"
     />
 
     <DurationBlock

@@ -13,11 +13,15 @@
         :[scope]="slotProps[scope]"
         :items-in-row="itemsInRow"
         :profile-id="profileId"
-        :is-with-favorite-option="isSelf"
+        :is-with-library-option="!isSelf"
         is-with-image
         is-with-artist-name
         is-with-library
         is-link-to-library
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
+        is-with-share-option
       />
     </template>
   </BaseProfileLibraryTabContainer>
@@ -39,7 +43,10 @@ export default {
     BaseAlbumsTableList
   },
   props: {
-    profileId: String,
+    profileId: {
+      type: String,
+      required: true
+    },
     isActive: Boolean
   },
   emits: [

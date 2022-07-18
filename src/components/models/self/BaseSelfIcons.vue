@@ -1,7 +1,7 @@
 <template>
   <div class="main-self-icons">
     <BaseIcon
-      v-if="libraryId"
+      v-if="isRenderLibraryIcon"
       class="main-simple-self-icon"
       icon="primary headphones"
     />
@@ -35,10 +35,22 @@ export default {
     BaseIcon
   },
   props: {
+    isWithLibraryIcon: {
+      type: Boolean,
+      default: true
+    },
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
     listenedId: String
+  },
+  computed: {
+    isRenderLibraryIcon () {
+      return (
+        this.isWithLibraryIcon &&
+          !!this.libraryId
+      )
+    }
   }
 }
 </script>

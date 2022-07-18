@@ -16,9 +16,12 @@
         :top-tracks-count="slotProps.topTracksCount"
         :top-albums-count="slotProps.topAlbumsCount"
         :view-index="viewIndex"
-        :is-with-favorite-option="isSelf"
+        :is-with-library-option="!isSelf"
         is-with-library
         is-link-to-library
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
         is-with-share-option
       />
     </template>

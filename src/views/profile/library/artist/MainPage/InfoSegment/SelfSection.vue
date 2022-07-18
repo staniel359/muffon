@@ -8,39 +8,27 @@
       :is-with-library-icon="!isSelf"
     />
 
-    <BaseTrackOptionsDropdown
-      :track-data="trackData"
-      :track-title="trackTitle"
+    <BaseArtistOptionsDropdown
       :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageData?.large"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
       :is-with-library-option="!isSelf"
       :is-with-delete-option="isSelf"
-      is-with-playlist-option
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
-      is-with-queue-option
-      @playlist-option-click="handlePlaylistOptionClick"
       @delete-option-click="handleDeleteOptionClick"
-    />
-
-    <BasePlaylistsModal
-      ref="playlistsModal"
-      :track-data="trackData"
     />
 
     <BaseLibraryDeleteModal
       v-if="isSelf"
       ref="deleteModal"
-      model="track"
+      model="artist"
       :profile-id="profileId"
-      :model-id="libraryTrackId"
-      :model-name="trackFullTitle"
+      :model-id="libraryArtistId"
+      :model-name="artistName"
       is-delete-with-redirect
     />
   </div>
@@ -48,10 +36,8 @@
 
 <script>
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseTrackOptionsDropdown
-  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
+import BaseArtistOptionsDropdown
+  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import BaseLibraryDeleteModal
   from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
@@ -63,71 +49,45 @@ export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseTrackOptionsDropdown,
-    BasePlaylistsModal,
+    BaseArtistOptionsDropdown,
     BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
   ],
   props: {
-    trackData: {
-      type: Object,
-      required: true
-    },
     profileId: {
       type: String,
+      required: true
+    },
+    artistData: {
+      type: Object,
       required: true
     }
   },
   computed: {
     modelData () {
-      return this.trackData
+      return this.artistData
     },
     isSelf () {
       return isCurrentProfile(
         this.profileId
       )
     },
-    trackTitle () {
-      return this.trackData.title
-    },
     artistName () {
-      return this.trackData.artist.name
+      return this.artistData.name
     },
-    albumTitle () {
-      return this.trackData.album?.title
-    },
-    imageData () {
-      return this.trackData.image
-    },
-    libraryTrackId () {
-      return this.trackData.library.id.toString()
-    },
-    trackFullTitle () {
-      return [
-        this.artistName,
-        this.trackTitle
-      ].join(
-        ' - '
-      )
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
     }
   },
   methods: {
     handleDeleteOptionClick () {
       this.showDeleteModal()
     },
-    handlePlaylistOptionClick () {
-      this.showPlaylistsModal()
-    },
     showDeleteModal () {
       this.$refs
         .deleteModal
-        .show()
-    },
-    showPlaylistsModal () {
-      this.$refs
-        .playlistsModal
         .show()
     }
   }

@@ -27,35 +27,10 @@
         </BaseLinkContainer>
       </div>
 
-      <div
-        v-if="favoriteId || isSelf"
-        class="main-self-container"
-      >
-        <BaseSelfIcons
-          :favorite-id="favoriteId"
-        />
-
-        <template
-          v-if="isSelf"
-        >
-          <BaseArtistOptionsDropdown
-            :artist-name="artistName"
-            :favorite-id="favoriteId"
-            is-with-favorite-option
-            is-with-delete-option
-            @delete-option-click="handleDeleteOptionClick"
-          />
-
-          <BaseLibraryDeleteModal
-            ref="deleteModal"
-            model="artist"
-            :profile-id="profileId"
-            :model-id="libraryArtistId"
-            :model-name="artistName"
-            is-delete-with-redirect
-          />
-        </template>
-      </div>
+      <SelfSection
+        :profile-id="profileId"
+        :artist-data="artistData"
+      />
 
       <BaseDivider />
 
@@ -79,18 +54,11 @@ import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import BaseArtistOptionsDropdown
-  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
-import BaseLibraryDeleteModal
-  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
+import SelfSection from './InfoSegment/SelfSection.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import {
   main as formatArtistMainLink
 } from '*/helpers/formatters/links/artist'
-import {
-  isCurrentProfile
-} from '*/helpers/utils'
 import {
   date as formatDate
 } from '*/helpers/formatters'
@@ -102,30 +70,15 @@ export default {
     BaseLinkContainer,
     BaseArtistImage,
     BaseHeader,
-    BaseSelfIcons,
-    BaseDivider,
-    BaseArtistOptionsDropdown,
-    BaseLibraryDeleteModal
-  },
-  provide () {
-    return {
-      setFavoriteId: this.setFavoriteId
-    }
+    SelfSection,
+    BaseDivider
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
     artistData: {
       type: Object,
       required: true
-    }
-  },
-  data () {
-    return {
-      favoriteId: null
-    }
+    },
+    profileId: String
   },
   computed: {
     artistMainLink () {
@@ -153,33 +106,6 @@ export default {
     },
     created () {
       return this.artistData.created
-    },
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
-    },
-    libraryArtistId () {
-      return this.artistData.library.id.toString()
-    }
-  },
-  mounted () {
-    this.favoriteId =
-      this.artistData.favorite_id?.toString()
-  },
-  methods: {
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
-    setFavoriteId (
-      value
-    ) {
-      this.favoriteId = value
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

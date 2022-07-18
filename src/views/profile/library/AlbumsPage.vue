@@ -11,10 +11,13 @@
         :albums="slotProps[scope]"
         :profile-id="profileId"
         :items-in-row="itemsInRow"
-        :is-with-favorite-option="isSelf"
+        :is-with-library-option="!isSelf"
         is-with-artist-name
         is-with-library
         is-link-to-library
+        is-with-favorite-option
+        is-with-bookmark-option
+        is-with-listened-option
         is-with-share-option
       />
     </template>
