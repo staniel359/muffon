@@ -68,9 +68,6 @@ export default {
       }
     }
   },
-  watch: {
-    country: 'handleCountryChange'
-  },
   mounted () {
     this.setNavigation()
 
@@ -82,9 +79,6 @@ export default {
   },
   methods: {
     getTop,
-    handleCountryChange () {
-      this.getData()
-    },
     getData (
       {
         page

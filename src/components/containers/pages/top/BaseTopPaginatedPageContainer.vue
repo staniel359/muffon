@@ -82,7 +82,9 @@ export default {
       this.country = null
     },
     handleCountryChange () {
-      this.reset()
+      this.$refs
+        .pagination
+        .refresh()
     }
   }
 }
