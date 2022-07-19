@@ -1,17 +1,6 @@
 # muffon
 [![main](https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/staniel359/muffon/actions/workflows/main.yml)
 
-### Good news
-The server is working. 🎉
-
-I'm really sorry that you had to wait for quite a long time. There were certain difficulties that didn't allow to restart the project in time.
-
-But now everything's set up and the [new version](https://github.com/staniel359/muffon/releases/tag/v0.1.0) with new features is available now!
-
-And I'm finally coming out of beta, but there may be some bugs, of course.
-
-Also old versions won't work anymore. Please download the newest one.
-
 ![muffon](https://i.ibb.co/b2fLF6V/2022-05-20-23-12-01.png)
 
 ## Description
@@ -35,15 +24,17 @@ It has **no ads** and is **absolutely free** to use.
 
 ### Features
 - listening (artists / albums / tracks)
+- queue
 - music library (and compatibility with others)
+- music services integration (Last.FM)
 - recommendations (based on your library)
 - search (through all of the sources above)
-- radio (tags / artists)
+- radio (tags / artists / top)
 - scrobbling (Last.FM)
-- videos (YouTube)
+- videos (YouTube) (with channels)
 - lyrics (Genius)
 - tags (with top artists / albums / tracks)
-- top (artists / albums / tracks / tags)
+- top (artists / albums / tracks / tags) (with country select)
 - playlists
 - favorites (artists / albums / tracks)
 - bookmarks (artists / albums / tracks)
@@ -56,11 +47,21 @@ It has **no ads** and is **absolutely free** to use.
 - new / upcoming releases
 - multitag search
 - sharing (artists / albums / tracks / videos / playlists / communities)
+- offline listening
+- background / transparency change
 
 ### Upcoming features
-- top (based on location)
+- profiles privacy
+- artists continuous queue
+- add album to playlist
+- global feed
+- player fallback source
+- Yandex Music / Deezer / Spotify integration
 - music labels (artists / albums)
-- offline listening
+- profiles 'Listening now' section
+- playlists import
+- posts likes / comments
+- videos favorites / bookmarks / watched
 - messenger
 - ??? (your suggestions)
 
@@ -78,7 +79,7 @@ It has **no ads** and is **absolutely free** to use.
 - Linux
 
 ## Download
-[Latest (v0.1.0)](https://github.com/staniel359/muffon/releases/tag/v0.1.0)
+[Latest (v0.2.0)](https://github.com/staniel359/muffon/releases/tag/v0.2.0)
 
 ## Support
 

@@ -1,6 +1,6 @@
 {
   "name": "muffon",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Desktop music streaming browser",
   "author": {
     "name": "Aleksey Shpakovsky",
@@ -8,17 +8,17 @@
     "url": "https://github.com/staniel359"
   },
   "scripts": {
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint --no-fix",
-    "build:all": "yarn build && yarn build:electron",
-    "build:electron": "electron-builder --dir",
-    "lint:fix": "vue-cli-service lint",
-    "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps",
-    "release": "yarn build && yarn release:electron",
-    "release:electron": "electron-builder -mwl -p always",
     "start": "vue-cli-service serve",
-    "start:electron": "NODE_ENV=development electron ."
+    "start:electron": "NODE_ENV=development electron .",
+    "lint": "vue-cli-service lint --no-fix",
+    "lint:fix": "vue-cli-service lint",
+    "build": "vue-cli-service build",
+    "build:electron": "electron-builder --dir",
+    "build:all": "yarn build && yarn build:electron",
+    "release:electron": "electron-builder -mwl -p always",
+    "release": "yarn build && yarn release:electron",
+    "postinstall": "electron-builder install-app-deps",
+    "postuninstall": "electron-builder install-app-deps"
   },
   "main": "electron.js",
   "dependencies": {
