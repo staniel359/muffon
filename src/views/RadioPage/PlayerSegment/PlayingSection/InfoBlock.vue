@@ -41,5 +41,4 @@ export default {
 
 ::v-deep(.playing-header)
   @extend .text-color-white
-  line-height: 1.3em !important
 </style>
