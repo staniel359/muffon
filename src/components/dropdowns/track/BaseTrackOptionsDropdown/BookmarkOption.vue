@@ -6,13 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
-    :track-title="trackTitle"
-    :album-title="albumTitle"
-    :image-url="imageUrl"
-    :source-data="sourceData"
-    :audio-data="audioData"
-    :album-source-data="albumSourceData"
+    :track-data="trackData"
   />
 </template>
 
@@ -29,13 +23,7 @@ export default {
   },
   props: {
     bookmarkId: String,
-    artistName: String,
-    trackTitle: String,
-    albumTitle: String,
-    imageUrl: String,
-    sourceData: Object,
-    audioData: Object,
-    albumSourceData: Object
+    trackData: Object
   }
 }
 </script>

@@ -20,12 +20,8 @@ export default {
     'setListenedId'
   ],
   props: {
-    artistName: {
-      type: String,
-      required: true
-    },
-    trackTitle: {
-      type: String,
+    trackData: {
+      type: Object,
       required: true
     }
   },
@@ -42,6 +38,12 @@ export default {
         artistName: this.artistName,
         trackTitle: this.trackTitle
       }
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
     }
   },
   watch: {

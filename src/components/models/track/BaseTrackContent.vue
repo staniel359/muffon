@@ -103,18 +103,10 @@
 
     <BaseTrackOptionsDropdown
       :track-data="trackData"
-      :track-title="trackTitle"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageData?.large"
-      :source-data="sourceData"
-      :audio-data="audioData"
-      :album-source-data="albumSourceData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
-      :share-data="shareData"
       :is-with-library-option="isWithLibraryOption"
       :is-with-favorite-option="isWithFavoriteOption"
       :is-with-bookmark-option="isWithBookmarkOption"
@@ -211,9 +203,6 @@ import BaseSavedTrackDeleteModal
 import BaseLibraryDeleteModal
   from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '*/mixins/selfMixin'
-import {
-  track as formatTrackShareData
-} from '*/helpers/formatters/share'
 
 export default {
   name: 'BaseTrackContent',
@@ -343,10 +332,7 @@ export default {
       )
     },
     albumTitle () {
-      return this.albumData?.title
-    },
-    albumData () {
-      return this.trackData.album
+      return this.trackData.album?.title
     },
     isRenderListenersCount () {
       return (
@@ -380,13 +366,7 @@ export default {
       return this.trackData.audio
     },
     source () {
-      return this.sourceData?.name
-    },
-    sourceData () {
-      return this.trackData.source
-    },
-    albumSourceData () {
-      return this.albumData?.source
+      return this.trackData.source?.name
     },
     libraryTrackId () {
       return this.trackData.library.id.toString()
@@ -400,11 +380,6 @@ export default {
         this.trackTitle
       ].join(
         ' - '
-      )
-    },
-    shareData () {
-      return formatTrackShareData(
-        this.trackData
       )
     },
     artistImageData () {

@@ -10,10 +10,6 @@
 
     <BaseTrackOptionsDropdown
       :track-data="trackData"
-      :track-title="trackTitle"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageData?.large"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -25,6 +21,7 @@
       is-with-bookmark-option
       is-with-listened-option
       is-with-queue-option
+      is-with-share-option
       @playlist-option-click="handlePlaylistOptionClick"
       @delete-option-click="handleDeleteOptionClick"
     />
@@ -89,18 +86,6 @@ export default {
         this.profileId
       )
     },
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    albumTitle () {
-      return this.trackData.album?.title
-    },
-    imageData () {
-      return this.trackData.image
-    },
     libraryTrackId () {
       return this.trackData.library.id.toString()
     },
@@ -111,6 +96,12 @@ export default {
       ].join(
         ' - '
       )
+    },
+    trackTitle () {
+      return this.trackData.title
+    },
+    artistName () {
+      return this.trackData.artist.name
     }
   },
   methods: {

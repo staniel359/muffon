@@ -5,10 +5,7 @@
     <LibraryOption
       v-if="isWithLibraryOption"
       :library-id="libraryId"
-      :artist-name="artistName"
-      :track-title="trackTitle"
-      :album-title="albumTitle"
-      :image-url="imageUrl"
+      :track-data="trackData"
       @link-click="handleLinkClick"
     />
 
@@ -20,29 +17,19 @@
     <FavoriteOption
       v-if="isWithFavoriteOption"
       :favorite-id="favoriteId"
-      :artist-name="artistName"
-      :track-title="trackTitle"
-      :album-title="albumTitle"
-      :image-url="imageUrl"
+      :track-data="trackData"
     />
 
     <BookmarkOption
       v-if="isWithBookmarkOption"
       :bookmark-id="bookmarkId"
-      :artist-name="artistName"
-      :track-title="trackTitle"
-      :album-title="albumTitle"
-      :image-url="imageUrl"
-      :source-data="sourceData"
-      :audio-data="audioData"
-      :album-source-data="albumSourceData"
+      :track-data="trackData"
     />
 
     <ListenedOption
       v-if="isWithListenedOption"
       :listened-id="listenedId"
-      :artist-name="artistName"
-      :track-title="trackTitle"
+      :track-data="trackData"
     />
 
     <QueueOption
@@ -75,6 +62,9 @@ import BaseShareOption
   from '*/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '*/components/dropdowns/options/BaseDeleteOption.vue'
+import {
+  track as formatTrackShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'BaseTrackOptionsDropdown',
@@ -90,19 +80,14 @@ export default {
     BaseDeleteOption
   },
   props: {
-    trackData: Object,
-    artistName: String,
-    trackTitle: String,
-    albumTitle: String,
-    imageUrl: String,
-    sourceData: Object,
-    audioData: Object,
-    albumSourceData: Object,
+    trackData: {
+      type: Object,
+      required: true
+    },
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
     listenedId: String,
-    shareData: Object,
     isWithLibraryOption: Boolean,
     isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
@@ -128,6 +113,11 @@ export default {
           this.isWithQueueOption ||
           this.isWithShareOption ||
           this.isWithDeleteOption
+      )
+    },
+    shareData () {
+      return formatTrackShareData(
+        this.trackData
       )
     }
   },

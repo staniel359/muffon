@@ -6,10 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
-    :track-title="trackTitle"
-    :album-title="albumTitle"
-    :image-url="imageUrl"
+    :track-data="trackData"
   />
 </template>
 
@@ -26,10 +23,7 @@ export default {
   },
   props: {
     favoriteId: String,
-    artistName: String,
-    trackTitle: String,
-    albumTitle: String,
-    imageUrl: String
+    trackData: Object
   }
 }
 </script>

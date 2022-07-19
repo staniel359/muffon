@@ -10,18 +10,10 @@
 
     <BaseTrackOptionsDropdown
       :track-data="trackData"
-      :track-title="trackTitle"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageData?.large"
-      :source-data="sourceData"
-      :audio-data="audioData"
-      :album-source-data="albumSourceData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
-      :share-data="shareData"
       is-with-library-option
       is-with-favorite-option
       is-with-bookmark-option
@@ -45,9 +37,6 @@ import BaseTrackOptionsDropdown
   from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
-import {
-  track as formatTrackShareData
-} from '*/helpers/formatters/share'
 
 export default {
   name: 'SelfSection',
@@ -57,45 +46,11 @@ export default {
     BasePlaylistsModal
   },
   props: {
-    trackData: {
-      type: Object,
-      required: true
-    },
+    trackData: Object,
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
     listenedId: String
-  },
-  computed: {
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    albumTitle () {
-      return this.albumData?.title
-    },
-    albumData () {
-      return this.trackData.album
-    },
-    imageData () {
-      return this.trackData.image
-    },
-    shareData () {
-      return formatTrackShareData(
-        this.trackData
-      )
-    },
-    sourceData () {
-      return this.trackData.source
-    },
-    audioData () {
-      return this.trackData.audio
-    },
-    albumSourceData () {
-      return this.albumData?.source
-    }
   },
   methods: {
     handlePlaylistOptionClick () {
