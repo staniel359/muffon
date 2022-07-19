@@ -18,16 +18,21 @@ export default {
     created: {
       type: String,
       required: true
-    }
+    },
+    isOnlyDate: Boolean
   },
   computed: {
     createdText () {
-      return [
-        this.createdDateFormatted,
-        this.createdTimeFormatted
-      ].join(
-        ' '
-      )
+      if (this.isOnlyDate) {
+        return this.createdDateFormatted
+      } else {
+        return [
+          this.createdDateFormatted,
+          this.createdTimeFormatted
+        ].join(
+          ' '
+        )
+      }
     },
     createdDateFormatted () {
       return formatDate(
