@@ -62,6 +62,8 @@ export default {
       )
 
       this.setLogoutData()
+
+      this.resetTitle()
     },
     setOnline (
       value
@@ -81,6 +83,12 @@ export default {
           'profile.token': null,
           'profile.isRemember': false
         }
+      )
+    },
+    resetTitle () {
+      ipcRenderer.send(
+        'set-title',
+        null
       )
     }
   }
