@@ -117,11 +117,6 @@ const backgroundImagesFolderPath =
     'background_images'
   )
 
-const localesPath = path.join(
-  __dirname,
-  'src/helpers/data/plugins/i18n/locales'
-)
-
 const electronStoreEncryptionKey =
   process.env.MUFFON_ELECTRON_STORE_ENCRYPTION_KEY
 
@@ -139,10 +134,45 @@ const defaultLocale =
     'en'
   )
 
+const locales = {
+  en: {
+    tray: {
+      show: 'Show',
+      hide: 'Hide',
+      exit: 'Exit'
+    },
+    update: {
+      message: 'Version {version} is available',
+      buttons: {
+        download: 'Download',
+        close: 'Close'
+      }
+    }
+  },
+  ru: {
+    tray: {
+      show: 'Показать',
+      hide: 'Скрыть',
+      exit: 'Выйти'
+    },
+    update: {
+      message: 'Доступна версия {version}',
+      buttons: {
+        download: 'Скачать',
+        close: 'Закрыть'
+      }
+    }
+  }
+}
+
 i18n.configure(
   {
-    directory: localesPath,
+    locales: [
+      'en',
+      'ru'
+    ],
     defaultLocale,
+    staticCatalog: locales,
     mustacheConfig: {
       tags: [
         '{',
@@ -905,14 +935,14 @@ function setTrayMenu () {
     {
       type: 'normal',
       label: i18n.__(
-        `electron.tray.${toggleKey}`
+        `tray.${toggleKey}`
       ),
       click: toggleAction
     },
     {
       type: 'normal',
       label: i18n.__(
-        'electron.tray.exit'
+        'tray.exit'
       ),
       click: exit
     }
@@ -985,17 +1015,17 @@ function showNewVersionNotification () {
   const options = {
     type: 'info',
     message: i18n.__(
-      'electron.update.message',
+      'update.message',
       {
         version: latestVersion
       }
     ),
     buttons: [
       i18n.__(
-        'electron.update.buttons.download'
+        'update.buttons.download'
       ),
       i18n.__(
-        'electron.update.buttons.close'
+        'update.buttons.close'
       )
     ],
     defaultId: 0,
