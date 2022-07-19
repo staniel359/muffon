@@ -6,7 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
+    :artist-data="artistData"
   />
 </template>
 
@@ -23,7 +23,7 @@ export default {
   },
   props: {
     listenedId: String,
-    artistName: String
+    artistData: Object
   }
 }
 </script>

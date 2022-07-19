@@ -46,12 +46,11 @@
                 />
 
                 <BaseArtistOptionsDropdown
-                  :artist-name="artistName"
+                  :artist-data="artistData"
                   :library-id="libraryId"
                   :favorite-id="favoriteId"
                   :bookmark-id="bookmarkId"
                   :listened-id="listenedId"
-                  :share-data="shareData"
                   :is-with-library-option="isWithLibraryOption"
                   :is-with-favorite-option="isWithFavoriteOption"
                   :is-with-bookmark-option="isWithBookmarkOption"
@@ -118,9 +117,6 @@ import BaseArtistDescription
   from '*/components/models/artist/BaseArtistDescription.vue'
 import RecommendationSection from './ArtistItem/RecommendationSection.vue'
 import selfMixin from '*/mixins/selfMixin'
-import {
-  artist as formatArtistShareData
-} from '*/helpers/formatters/share'
 
 export default {
   name: 'ArtistItem',
@@ -180,11 +176,6 @@ export default {
     },
     isDeleted () {
       return !!this.artistData.isDeleted
-    },
-    shareData () {
-      return formatArtistShareData(
-        this.responseData
-      )
     },
     paginationItem () {
       return this.findPaginationItem(

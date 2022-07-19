@@ -9,7 +9,7 @@
     />
 
     <BaseArtistOptionsDropdown
-      :artist-name="artistName"
+      :artist-data="artistData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -19,6 +19,7 @@
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
+      is-with-share-option
       @delete-option-click="handleDeleteOptionClick"
     />
 

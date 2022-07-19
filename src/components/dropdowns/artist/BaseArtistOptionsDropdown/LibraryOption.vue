@@ -6,7 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
+    :artist-data="artistData"
   />
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   props: {
     libraryId: String,
-    artistName: String
+    artistData: Object
   },
   emits: [
     'linkClick'

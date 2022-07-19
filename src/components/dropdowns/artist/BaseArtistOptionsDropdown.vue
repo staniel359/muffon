@@ -5,26 +5,26 @@
     <LibraryOption
       v-if="isWithLibraryOption"
       :library-id="libraryId"
-      :artist-name="artistName"
+      :artist-data="artistData"
       @link-click="handleLinkClick"
     />
 
     <FavoriteOption
       v-if="isWithFavoriteOption"
       :favorite-id="favoriteId"
-      :artist-name="artistName"
+      :artist-data="artistData"
     />
 
     <BookmarkOption
       v-if="isWithBookmarkOption"
       :bookmark-id="bookmarkId"
-      :artist-name="artistName"
+      :artist-data="artistData"
     />
 
     <ListenedOption
       v-if="isWithListenedOption"
       :listened-id="listenedId"
-      :artist-name="artistName"
+      :artist-data="artistData"
     />
 
     <BaseShareOption
@@ -50,6 +50,9 @@ import BaseShareOption
   from '*/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '*/components/dropdowns/options/BaseDeleteOption.vue'
+import {
+  artist as formatArtistShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'BaseArtistOptionsDropdown',
@@ -63,12 +66,14 @@ export default {
     BaseDeleteOption
   },
   props: {
-    artistName: String,
+    artistData: {
+      type: Object,
+      required: true
+    },
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
     listenedId: String,
-    shareData: Object,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -89,6 +94,11 @@ export default {
           this.isWithListenedOption ||
           this.isWithShareOption ||
           this.isWithDeleteOption
+      )
+    },
+    shareData () {
+      return formatArtistShareData(
+        this.artistData
       )
     }
   },

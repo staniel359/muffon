@@ -20,8 +20,8 @@ export default {
     'setBookmarkId'
   ],
   props: {
-    artistName: {
-      type: String,
+    artistData: {
+      type: Object,
       required: true
     }
   },
@@ -37,6 +37,9 @@ export default {
       return {
         artistName: this.artistName
       }
+    },
+    artistName () {
+      return this.artistData.name
     }
   },
   watch: {

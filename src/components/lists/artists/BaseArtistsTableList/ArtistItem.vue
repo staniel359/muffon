@@ -7,12 +7,11 @@
       :profile-id="profileId"
     >
       <BaseArtistOptionsDropdown
-        :artist-name="artistName"
+        :artist-data="artistData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
-        :share-data="shareData"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
@@ -78,9 +77,6 @@ import BaseArtistListenersCount
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import selfMixin from '*/mixins/selfMixin'
-import {
-  artist as formatArtistShareData
-} from '*/helpers/formatters/share'
 
 export default {
   name: 'ArtistItem',
@@ -141,11 +137,6 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
-    },
-    shareData () {
-      return formatArtistShareData(
-        this.artistData
-      )
     }
   },
   methods: {

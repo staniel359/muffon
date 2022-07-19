@@ -1,8 +1,6 @@
 <template>
   <BaseSegmentContainer>
-    <div
-      class="main-self-container"
-    >
+    <div class="main-self-container">
       <BaseSelfIcons
         :library-id="libraryId"
         :favorite-id="favoriteId"
@@ -11,12 +9,11 @@
       />
 
       <BaseArtistOptionsDropdown
-        :artist-name="artistName"
+        :artist-data="artistData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
-        :share-data="shareData"
         is-with-library-option
         is-with-favorite-option
         is-with-bookmark-option
@@ -34,9 +31,6 @@ import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsDropdown
   from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import selfMixin from '*/mixins/selfMixin'
-import {
-  artist as formatArtistShareData
-} from '*/helpers/formatters/share'
 
 export default {
   name: 'SelfSegment',
@@ -57,14 +51,6 @@ export default {
   computed: {
     modelData () {
       return this.artistData
-    },
-    artistName () {
-      return this.artistData.name
-    },
-    shareData () {
-      return formatArtistShareData(
-        this.artistData
-      )
     }
   }
 }
