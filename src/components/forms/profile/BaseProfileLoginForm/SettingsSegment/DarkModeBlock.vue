@@ -32,5 +32,5 @@ export default {
   @extend .d-flex, .align-items-center
 
 .dark-mode-text
-  margin-right: 1em
+  margin-right: 0.5em
 </style>
