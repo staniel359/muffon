@@ -14,7 +14,7 @@
           v-text="agreeText"
         />
 
-        <span
+        <strong
           class="main-link"
           @click.stop="handlePrivacyPolicyTextClick"
           v-text="privacyPolicyText"
@@ -24,7 +24,7 @@
           v-text="andText"
         />
 
-        <span
+        <strong
           class="main-link"
           @click.stop="handleTermsAndConditionsTextClick"
           v-text="termsAndConditionsText"
