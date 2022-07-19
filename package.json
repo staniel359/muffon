@@ -22,10 +22,10 @@
   },
   "main": "electron.js",
   "dependencies": {
-    "@emoji-mart/data": "^1.0.2",
+    "@emoji-mart/data": "^1.0.3",
     "axios": "^0.27.2",
     "camel-case": "^4.1.2",
-    "core-js": "^3.23.4",
+    "core-js": "^3.23.5",
     "dayjs": "^1.11.3",
     "deepmerge": "^4.2.2",
     "electron-dl": "^3.3.1",
@@ -46,7 +46,7 @@
     "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.9",
     "@intlify/vue-i18n-loader": "^4.2.0",
     "@vue/cli-plugin-babel": "~5.0.8",
     "@vue/cli-plugin-eslint": "~5.0.8",
@@ -57,7 +57,7 @@
     "@vue/eslint-config-standard": "^7.0.0",
     "electron": "^19.0.8",
     "electron-builder": "^23.1.0",
-    "eslint": "^8.19.0",
+    "eslint": "^8.20.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.4",
     "eslint-plugin-node": "^11.1.0",
