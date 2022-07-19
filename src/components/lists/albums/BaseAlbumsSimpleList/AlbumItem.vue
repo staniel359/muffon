@@ -64,15 +64,11 @@
       />
 
       <BaseAlbumOptionsDropdown
-        :artist-name="artistName"
-        :album-title="albumTitle"
-        :image-url="imageData?.large"
-        :source-data="sourceData"
+        :album-data="albumData"
         :library-id="libraryId"
         :favorite-id="favoriteId"
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
-        :share-data="shareData"
         :is-with-library-option="isWithLibraryOption"
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-bookmark-option="isWithBookmarkOption"
@@ -126,9 +122,6 @@ import BaseBookmarkDeleteModal
 import BaseFavoriteDeleteModal
   from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import selfMixin from '*/mixins/selfMixin'
-import {
-  album as formatAlbumShareData
-} from '*/helpers/formatters/share'
 
 export default {
   name: 'AlbumItem',
@@ -218,11 +211,6 @@ export default {
     },
     isMainLinkActive () {
       return !this.isArtistLinkActive
-    },
-    shareData () {
-      return formatAlbumShareData(
-        this.albumData
-      )
     },
     isRenderSource () {
       return (

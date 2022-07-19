@@ -20,15 +20,10 @@ export default {
     'setFavoriteId'
   ],
   props: {
-    artistName: {
-      type: String,
+    albumData: {
+      type: Object,
       required: true
-    },
-    albumTitle: {
-      type: String,
-      required: true
-    },
-    imageUrl: String
+    }
   },
   data () {
     return {
@@ -44,6 +39,15 @@ export default {
         albumTitle: this.albumTitle,
         imageUrl: this.imageUrl
       }
+    },
+    artistName () {
+      return this.albumData.artist.name
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    imageUrl () {
+      return this.albumData.image?.large
     }
   },
   watch: {

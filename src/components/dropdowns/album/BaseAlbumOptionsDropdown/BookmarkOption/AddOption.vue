@@ -20,16 +20,10 @@ export default {
     'setBookmarkId'
   ],
   props: {
-    artistName: {
-      type: String,
+    albumData: {
+      type: Object,
       required: true
-    },
-    albumTitle: {
-      type: String,
-      required: true
-    },
-    imageUrl: String,
-    sourceData: Object
+    }
   },
   data () {
     return {
@@ -46,6 +40,18 @@ export default {
         imageUrl: this.imageUrl,
         sourceData: this.sourceData
       }
+    },
+    artistName () {
+      return this.albumData.artist.name
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    imageUrl () {
+      return this.albumData.image?.large
+    },
+    sourceData () {
+      return this.albumData.source
     }
   },
   watch: {

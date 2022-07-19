@@ -6,10 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
-    :album-title="albumTitle"
-    :tracks="tracks"
-    :image-url="imageUrl"
+    :album-data="albumData"
   />
 </template>
 
@@ -25,10 +22,7 @@ export default {
   },
   props: {
     libraryId: String,
-    artistName: String,
-    albumTitle: String,
-    tracks: Array,
-    imageUrl: String
+    albumData: Object
   },
   emits: [
     'linkClick'

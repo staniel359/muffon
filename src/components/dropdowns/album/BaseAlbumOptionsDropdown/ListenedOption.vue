@@ -6,8 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
-    :album-title="albumTitle"
+    :album-data="albumData"
   />
 </template>
 
@@ -24,8 +23,7 @@ export default {
   },
   props: {
     listenedId: String,
-    artistName: String,
-    albumTitle: String
+    albumData: Object
   }
 }
 </script>

@@ -20,21 +20,10 @@ export default {
     'setLibraryId'
   ],
   props: {
-    artistName: {
-      type: String,
+    albumData: {
+      type: Object,
       required: true
-    },
-    albumTitle: {
-      type: String,
-      required: true
-    },
-    tracks: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
-    imageUrl: String
+    }
   },
   data () {
     return {
@@ -51,6 +40,18 @@ export default {
         tracks: this.tracks,
         imageUrl: this.imageUrl
       }
+    },
+    artistName () {
+      return this.albumData.artist.name
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    tracks () {
+      return this.albumData.tracks
+    },
+    imageUrl () {
+      return this.albumData.image?.large
     }
   },
   watch: {

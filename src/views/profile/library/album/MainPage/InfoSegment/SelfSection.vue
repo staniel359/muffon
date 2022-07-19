@@ -9,9 +9,7 @@
     />
 
     <BaseAlbumOptionsDropdown
-      :album-title="albumTitle"
-      :artist-name="artistName"
-      :image-url="imageData?.large"
+      :album-data="albumData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
       :bookmark-id="bookmarkId"
@@ -21,6 +19,7 @@
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
+      is-with-share-option
       @delete-option-click="handleDeleteOptionClick"
     />
 
@@ -76,12 +75,6 @@ export default {
         this.profileId
       )
     },
-    albumTitle () {
-      return this.albumData.title
-    },
-    artistName () {
-      return this.albumData.artist.name
-    },
     libraryAlbumId () {
       return this.albumData.library.id.toString()
     },
@@ -93,8 +86,11 @@ export default {
         ' - '
       )
     },
-    imageData () {
-      return this.albumData.image
+    albumTitle () {
+      return this.albumData.title
+    },
+    artistName () {
+      return this.albumData.artist.name
     }
   },
   methods: {

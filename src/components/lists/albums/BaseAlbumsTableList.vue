@@ -9,7 +9,6 @@
     >
       <AlbumItem
         :album-data="albumData"
-        :artist-name="artistName"
         :is-with-artist-name="isWithArtistName"
         :is-with-multiple-artist-names="isWithMultipleArtistNames"
         :is-with-listeners-count="isWithListenersCount"
@@ -84,6 +83,25 @@ export default {
       return formatCollection(
         this.albums
       )
+    }
+  },
+  beforeMount () {
+    this.formatAlbums()
+  },
+  methods: {
+    formatAlbums () {
+      this.albums.forEach(
+        this.formatAlbum
+      )
+    },
+    formatAlbum (
+      albumData
+    ) {
+      if (this.artistName) {
+        albumData.artist = {
+          name: this.artistName
+        }
+      }
     }
   }
 }

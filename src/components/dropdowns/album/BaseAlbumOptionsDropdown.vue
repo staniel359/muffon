@@ -5,35 +5,26 @@
     <LibraryOption
       v-if="isWithLibraryOption"
       :library-id="libraryId"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :tracks="tracks"
-      :image-url="imageUrl"
+      :album-data="albumData"
       @link-click="handleLinkClick"
     />
 
     <FavoriteOption
       v-if="isWithFavoriteOption"
       :favorite-id="favoriteId"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageUrl"
+      :album-data="albumData"
     />
 
     <BookmarkOption
       v-if="isWithBookmarkOption"
       :bookmark-id="bookmarkId"
-      :artist-name="artistName"
-      :album-title="albumTitle"
-      :image-url="imageUrl"
-      :source-data="sourceData"
+      :album-data="albumData"
     />
 
     <ListenedOption
       v-if="isWithListenedOption"
       :listened-id="listenedId"
-      :artist-name="artistName"
-      :album-title="albumTitle"
+      :album-data="albumData"
     />
 
     <BaseShareOption
@@ -59,6 +50,9 @@ import BaseShareOption
   from '*/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '*/components/dropdowns/options/BaseDeleteOption.vue'
+import {
+  album as formatAlbumShareData
+} from '*/helpers/formatters/share'
 
 export default {
   name: 'BaseAlbumOptionsDropdown',
@@ -72,16 +66,14 @@ export default {
     BaseDeleteOption
   },
   props: {
-    artistName: String,
-    albumTitle: String,
-    tracks: Array,
-    imageUrl: String,
-    sourceData: Object,
+    albumData: {
+      type: Object,
+      required: true
+    },
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
     listenedId: String,
-    shareData: Object,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
@@ -102,6 +94,11 @@ export default {
           this.isWithListenedOption ||
           this.isWithShareOption ||
           this.isWithDeleteOption
+      )
+    },
+    shareData () {
+      return formatAlbumShareData(
+        this.albumData
       )
     }
   },

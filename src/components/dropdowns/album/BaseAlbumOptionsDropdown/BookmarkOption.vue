@@ -6,10 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
-    :album-title="albumTitle"
-    :image-url="imageUrl"
-    :source-data="sourceData"
+    :album-data="albumData"
   />
 </template>
 
@@ -26,10 +23,7 @@ export default {
   },
   props: {
     bookmarkId: String,
-    artistName: String,
-    albumTitle: String,
-    imageUrl: String,
-    sourceData: Object
+    albumData: Object
   }
 }
 </script>

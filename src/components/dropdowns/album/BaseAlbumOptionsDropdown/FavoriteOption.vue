@@ -6,9 +6,7 @@
   />
   <AddOption
     v-else
-    :artist-name="artistName"
-    :album-title="albumTitle"
-    :image-url="imageUrl"
+    :album-data="albumData"
   />
 </template>
 
@@ -25,9 +23,7 @@ export default {
   },
   props: {
     favoriteId: String,
-    artistName: String,
-    albumTitle: String,
-    imageUrl: String
+    albumData: Object
   }
 }
 </script>
