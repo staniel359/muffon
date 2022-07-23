@@ -81,6 +81,18 @@ It has **no ads** and is **absolutely free** to use.
 ## Download
 [Latest (v0.2.0)](https://github.com/staniel359/muffon/releases/tag/v0.2.0)
 
+## Build
+
+1. Download source code of the [latest release](#download)
+2. Unzip the file: `tar -xzf muffon-{version}.tar.gz` or `unzip muffon-{version}.zip`
+3. Go to project folder: `cd muffon-{version}`
+4. Install Node.js and Yarn
+5. Install dependencies: `yarn`
+6. Compile project: `yarn build:all`
+7. Go to compiled project folder: `cd build_electron/linux-unpacked`
+8. Run application: `./muffon` or double-click `muffon` file in folder
+
+
 ## Support
 
 #### Have a question/suggestion/bug report?
