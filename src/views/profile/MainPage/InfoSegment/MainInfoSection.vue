@@ -24,23 +24,30 @@
       class="online-label"
       :profile-data="profileData"
     />
+
+    <WasOnlineSection
+      v-if="wasOnline"
+      :was-online="wasOnline"
+    />
   </div>
 </template>
 
 <script>
 import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 import BaseProfileOnlineLabel
   from '*/components/models/profile/BaseProfileOnlineLabel.vue'
-import BaseLabel from '*/components/BaseLabel.vue'
+import WasOnlineSection from './MainInfoSection/WasOnlineSection.vue'
 
 export default {
   name: 'MainInfoSection',
   components: {
     BaseZoomableImage,
     BaseHeader,
+    BaseLabel,
     BaseProfileOnlineLabel,
-    BaseLabel
+    WasOnlineSection
   },
   props: {
     profileData: {
@@ -65,6 +72,9 @@ export default {
       return this.$t(
         `roles.${this.role}`
       )
+    },
+    wasOnline () {
+      return this.profileData.was_online
     }
   }
 }

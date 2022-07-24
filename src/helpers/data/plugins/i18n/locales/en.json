@@ -546,6 +546,9 @@
   "messages": {
     "welcome": "Welcome, {profileNickname}"
   },
+  "profile": {
+    "wasOnline": "Was online"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."

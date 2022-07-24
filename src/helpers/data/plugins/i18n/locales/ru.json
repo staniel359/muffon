@@ -545,6 +545,9 @@
   "messages": {
     "welcome": "Добро пожаловать, {profileNickname}"
   },
+  "profile": {
+    "wasOnline": "Был(-а) в сети"
+  },
   "error": "Ошибка",
   "more": "Ещё...",
   "loading": "Загрузка..."
