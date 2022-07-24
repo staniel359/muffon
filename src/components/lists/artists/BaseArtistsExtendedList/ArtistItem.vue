@@ -44,6 +44,7 @@
                   :listened-id="listenedId"
                   :is-with-library-icon="isWithLibraryIcon"
                   :is-with-favorite-icon="isWithFavoriteIcon"
+                  :is-with-bookmark-icon="isWithBookmarkIcon"
                 />
 
                 <BaseArtistOptionsDropdown
@@ -164,7 +165,8 @@ export default {
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
     isRecommendation: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isBookmark: Boolean
   },
   computed: {
     modelData () {

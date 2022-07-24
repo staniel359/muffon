@@ -59,6 +59,7 @@
         :listened-id="listenedId"
         :is-with-library-icon="isWithLibraryIcon"
         :is-with-favorite-icon="isWithFavoriteIcon"
+        :is-with-bookmark-icon="isWithBookmarkIcon"
       />
     </div>
   </BaseSimpleCardContainer>
@@ -115,7 +116,8 @@ export default {
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean,
-    isFavorite: Boolean
+    isFavorite: Boolean,
+    isBookmark: Boolean
   },
   computed: {
     modelData () {

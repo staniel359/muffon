@@ -13,7 +13,7 @@
     />
 
     <BaseIcon
-      v-if="bookmarkId"
+      v-if="isRenderBookmarkIcon"
       class="main-simple-self-icon"
       icon="primary bookmark"
     />
@@ -43,6 +43,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isWithBookmarkIcon: {
+      type: Boolean,
+      default: true
+    },
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
@@ -59,6 +63,12 @@ export default {
       return (
         this.isWithFavoriteIcon &&
           !!this.favoriteId
+      )
+    },
+    isRenderBookmarkIcon () {
+      return (
+        this.isWithBookmarkIcon &&
+          !!this.bookmarkId
       )
     }
   }

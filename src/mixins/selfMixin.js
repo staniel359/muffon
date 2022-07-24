@@ -36,6 +36,9 @@ export default {
         this.isFavorite &&
           this.isSelf
       )
+    },
+    isWithBookmarkIcon () {
+      return !this.isBookmark
     }
   },
   mounted () {
