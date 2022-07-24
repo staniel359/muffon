@@ -58,6 +58,7 @@
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
         :is-with-library-icon="isWithLibraryIcon"
+        :is-with-favorite-icon="isWithFavoriteIcon"
       />
 
       <BaseArtistOptionsDropdown

@@ -12,11 +12,11 @@
       <BaseArtistsSimpleList
         :[scope]="slotProps[scope]"
         :profile-id="profileId"
+        :is-with-favorite-option="!isSelf"
         :is-with-delete-option="isSelf"
         is-with-image
         is-favorite
         is-with-library-option
-        is-with-favorite-option
         is-with-bookmark-option
         is-with-listened-option
         is-with-share-option

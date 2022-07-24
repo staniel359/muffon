@@ -7,7 +7,7 @@
     />
 
     <BaseIcon
-      v-if="favoriteId"
+      v-if="isRenderFavoriteIcon"
       class="main-simple-self-icon"
       icon="primary star"
     />
@@ -39,6 +39,10 @@ export default {
       type: Boolean,
       default: true
     },
+    isWithFavoriteIcon: {
+      type: Boolean,
+      default: true
+    },
     libraryId: String,
     favoriteId: String,
     bookmarkId: String,
@@ -49,6 +53,12 @@ export default {
       return (
         this.isWithLibraryIcon &&
           !!this.libraryId
+      )
+    },
+    isRenderFavoriteIcon () {
+      return (
+        this.isWithFavoriteIcon &&
+          !!this.favoriteId
       )
     }
   }

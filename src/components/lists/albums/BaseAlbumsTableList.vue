@@ -22,6 +22,7 @@
         :is-with-self-icons="isWithSelfIcons"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
+        :is-favorite="isFavorite"
       />
     </div>
   </div>
@@ -68,7 +69,8 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isFavorite: Boolean
   },
   computed: {
     tableClass () {

@@ -20,6 +20,7 @@
         :is-with-favorite-option="isWithFavoriteOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
+        :is-favorite="isFavorite"
       />
     </div>
   </div>
@@ -63,7 +64,8 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isFavorite: Boolean
   },
   computed: {
     tableClass () {

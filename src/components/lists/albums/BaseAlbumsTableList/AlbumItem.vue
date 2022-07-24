@@ -75,6 +75,7 @@
         :bookmark-id="bookmarkId"
         :listened-id="listenedId"
         :is-with-library-icon="isWithLibraryIcon"
+        :is-with-favorite-icon="isWithFavoriteIcon"
       />
     </div>
   </BaseSimpleCardContainer>
@@ -135,7 +136,8 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithShareOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isFavorite: Boolean
   },
   emits: [
     'linkClick'

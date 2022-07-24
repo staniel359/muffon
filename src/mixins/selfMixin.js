@@ -30,6 +30,12 @@ export default {
       return isCurrentProfile(
         this.profileId
       )
+    },
+    isWithFavoriteIcon () {
+      return !(
+        this.isFavorite &&
+          this.isSelf
+      )
     }
   },
   mounted () {
