@@ -1,3 +1,4 @@
+import store from '*/plugins/store'
 import getRequest from '*/helpers/actions/api/request/get'
 
 export default function (
@@ -13,6 +14,13 @@ export default function (
     `/profiles/${profileId}/library` +
     `/tags/${libraryTagId}/${scope}`
 
+  const otherProfileId =
+    store.getters['profile/id']
+
+  const params = {
+    other_profile_id: otherProfileId
+  }
+
   const handleSuccess = (
     response
   ) => {
@@ -25,6 +33,7 @@ export default function (
   )(
     {
       url,
+      params,
       page,
       limit,
       onSuccess: handleSuccess
