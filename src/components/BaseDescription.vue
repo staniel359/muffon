@@ -1,5 +1,6 @@
 <template>
   <p
+    class="main-description"
     :class="{
       'main-text-container': isModal
     }"
