@@ -1,15 +1,7 @@
 <template>
-  <BaseDivider />
-
-  <div class="main-profile-page-info">
-    <BaseProfileGenderAge
-      :profile-data="profileData"
-    />
-
-    <BaseProfileCityCountry
-      :profile-data="profileData"
-    />
-
+  <BaseSegmentContainer
+    class="main-profile-page-info"
+  >
     <BaseProfileFollowCounters
       class="follow-counters"
       :profile-data="profileData"
@@ -29,26 +21,21 @@
       scope="following"
       :profile-id="profileId"
     />
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseProfileGenderAge
-  from '*/components/models/profile/BaseProfileGenderAge.vue'
-import BaseProfileCityCountry
-  from '*/components/models/profile/BaseProfileCityCountry.vue'
+import BaseSegmentContainer
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileFollowCounters
   from '*/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowModal
   from '*/components/modals/profile/BaseProfileFollowModal.vue'
 
 export default {
-  name: 'ExtraInfoSection',
+  name: 'FollowSegment',
   components: {
-    BaseDivider,
-    BaseProfileGenderAge,
-    BaseProfileCityCountry,
+    BaseSegmentContainer,
     BaseProfileFollowCounters,
     BaseProfileFollowModal
   },

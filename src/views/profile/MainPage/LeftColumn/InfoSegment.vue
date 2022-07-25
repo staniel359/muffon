@@ -1,6 +1,13 @@
 <template>
-  <div class="main-profile-page-info">
+  <BaseSegmentContainer
+    class="main-profile-page-info"
+  >
     <div class="main-profile-page-image-container">
+      <BaseProfileOnlineLabel
+        class="online-label"
+        :profile-data="profileData"
+      />
+
       <BaseZoomableImage
         model="profile"
         size="medium"
@@ -20,33 +27,30 @@
       :text="roleText"
     />
 
-    <BaseProfileOnlineLabel
-      class="online-label"
+    <WasOnlineSection
       :profile-data="profileData"
     />
-
-    <WasOnlineSection
-      v-if="wasOnline"
-      :was-online="wasOnline"
-    />
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
+import BaseProfileOnlineLabel
+  from '*/components/models/profile/BaseProfileOnlineLabel.vue'
 import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseLabel from '*/components/BaseLabel.vue'
-import BaseProfileOnlineLabel
-  from '*/components/models/profile/BaseProfileOnlineLabel.vue'
-import WasOnlineSection from './MainInfoSection/WasOnlineSection.vue'
+import WasOnlineSection from './InfoSegment/WasOnlineSection.vue'
 
 export default {
-  name: 'MainInfoSection',
+  name: 'InfoSegment',
   components: {
+    BaseSegmentContainer,
+    BaseProfileOnlineLabel,
     BaseZoomableImage,
     BaseHeader,
     BaseLabel,
-    BaseProfileOnlineLabel,
     WasOnlineSection
   },
   props: {
@@ -72,9 +76,6 @@ export default {
       return this.$t(
         `roles.${this.role}`
       )
-    },
-    wasOnline () {
-      return this.profileData.was_online
     }
   }
 }
@@ -85,5 +86,7 @@ export default {
   margin: 0.25em 0
 
 .online-label
-  margin-top: 0.5em !important
+  @extend .absolute
+  top: 0.25em
+  right: 0.25em
 </style>

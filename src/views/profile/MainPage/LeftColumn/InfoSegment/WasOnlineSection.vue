@@ -1,10 +1,15 @@
 <template>
-  <div class="main-profile-page-info was-online-section">
+  <div
+    v-if="wasOnline"
+    class="main-profile-page-info"
+  >
     <small
       v-text="wasOnlineText"
     />
 
-    <strong class="main-small-container">
+    <strong
+      class="main-small-container"
+    >
       <small
         v-text="wasOnlineFormatted"
       />
@@ -21,12 +26,15 @@ import {
 export default {
   name: 'WasOnlineSection',
   props: {
-    wasOnline: {
-      type: String,
+    profileData: {
+      type: Object,
       required: true
     }
   },
   computed: {
+    wasOnline () {
+      return this.profileData.was_online
+    },
     wasOnlineText () {
       return this.$t(
         'profile.wasOnline'
@@ -54,7 +62,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.was-online-section
-  margin-top: 0.5em
-</style>
+<style lang="sass" scoped></style>

@@ -1,6 +1,4 @@
 <template>
-  <BaseDivider />
-
   <BaseProfileFollowingMessage
     class="following-message"
     :other-profile-data="otherProfileData"
@@ -13,7 +11,6 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
 import BaseProfileFollowingMessage
   from '*/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseProfileFollowButton
@@ -22,7 +19,6 @@ import BaseProfileFollowButton
 export default {
   name: 'FollowSection',
   components: {
-    BaseDivider,
     BaseProfileFollowingMessage,
     BaseProfileFollowButton
   },
