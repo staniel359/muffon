@@ -5,38 +5,16 @@
   >
     <template #default="slotProps">
       <div class="main-profile-page-columns-container">
-        <div
-          :class="[
-            'main-profile-page-left-column',
-            'main-sticky-container'
-          ]"
-        >
-          <InfoSegment
-            :artist-data="slotProps.artistData"
-            :profile-id="profileId"
-          />
-        </div>
+        <LeftColumn
+          :artist-data="slotProps.artistData"
+          :profile-id="profileId"
+        />
 
-        <div class="main-profile-page-right-column">
-          <StatisticsSegment
-            :artist-data="slotProps.artistData"
-          />
-
-          <AlbumsSegment
-            :profile-id="profileId"
-            :library-artist-id="libraryArtistId"
-          />
-
-          <TracksSegment
-            :profile-id="profileId"
-            :library-artist-id="libraryArtistId"
-          />
-
-          <PlaylistsSegment
-            :profile-id="profileId"
-            :library-artist-id="libraryArtistId"
-          />
-        </div>
+        <RightColumn
+          :artist-data="slotProps.artistData"
+          :profile-id="profileId"
+          :library-artist-id="libraryArtistId"
+        />
       </div>
     </template>
   </BaseProfileLibraryArtistPageContainer>
@@ -45,21 +23,15 @@
 <script>
 import BaseProfileLibraryArtistPageContainer
   from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPageContainer.vue'
-import InfoSegment from './MainPage/InfoSegment.vue'
-import StatisticsSegment from './MainPage/StatisticsSegment.vue'
-import AlbumsSegment from './MainPage/AlbumsSegment.vue'
-import TracksSegment from './MainPage/TracksSegment.vue'
-import PlaylistsSegment from './MainPage/PlaylistsSegment.vue'
+import LeftColumn from './MainPage/LeftColumn.vue'
+import RightColumn from './MainPage/RightColumn.vue'
 
 export default {
   name: 'MainPage',
   components: {
     BaseProfileLibraryArtistPageContainer,
-    InfoSegment,
-    StatisticsSegment,
-    AlbumsSegment,
-    TracksSegment,
-    PlaylistsSegment
+    LeftColumn,
+    RightColumn
   },
   props: {
     profileId: String,

@@ -1,5 +1,8 @@
 <template>
-  <div class="main-small-container">
+  <div
+    v-if="albumData"
+    class="main-small-container"
+  >
     <small>
       <BaseAlbumLinkContainer
         class="main-link"

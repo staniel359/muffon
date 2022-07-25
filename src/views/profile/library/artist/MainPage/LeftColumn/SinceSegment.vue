@@ -1,5 +1,7 @@
 <template>
-  <div class="main-profile-page-info">
+  <BaseSegmentContainer
+    class="main-profile-page-info"
+  >
     <div
       v-text="sinceText"
     />
@@ -7,18 +9,23 @@
     <strong
       v-text="createdFormatted"
     />
-  </div>
+  </BaseSegmentContainer>
 </template>
 
 <script>
+import BaseSegmentContainer
+  from '*/components/containers/segments/BaseSegmentContainer.vue'
 import {
   date as formatDate
 } from '*/helpers/formatters'
 
 export default {
-  name: 'SinceSection',
+  name: 'SinceSegment',
+  components: {
+    BaseSegmentContainer
+  },
   props: {
-    trackData: {
+    artistData: {
       type: Object,
       required: true
     }
@@ -35,7 +42,7 @@ export default {
       )
     },
     created () {
-      return this.trackData.created
+      return this.artistData.created
     }
   }
 }
