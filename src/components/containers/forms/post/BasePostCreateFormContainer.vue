@@ -16,6 +16,9 @@ import {
 } from '*/helpers/data/plugins/semantic'
 import createProfilePost from '*/helpers/actions/api/profile/post/create'
 import createCommunityPost from '*/helpers/actions/api/community/post/create'
+import {
+  decryptTextWithLinks
+} from '*/helpers/utils'
 
 export default {
   name: 'BasePostCreateFormContainer',
@@ -142,11 +145,16 @@ export default {
     formatCreateArgs (
       fields
     ) {
+      const text =
+        decryptTextWithLinks(
+          fields.content
+        )
+
       return {
         otherProfileId: this.profileId,
         communityId: this.communityId,
         byCommunity: !!fields.community,
-        text: fields.content,
+        text,
         images: this.imagesFormatted,
         artists: this.artists,
         albums: this.albums,

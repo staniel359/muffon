@@ -26,6 +26,7 @@
     "axios": "^0.27.2",
     "camel-case": "^4.1.2",
     "core-js": "^3.23.5",
+    "crypto-js": "^4.1.1",
     "dayjs": "^1.11.4",
     "deepmerge": "^4.2.2",
     "electron-dl": "^3.3.1",

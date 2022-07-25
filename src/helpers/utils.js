@@ -1,4 +1,8 @@
 import store from '*/plugins/store'
+import {
+  AES,
+  enc
+} from 'crypto-js'
 
 export { v4 as generateKey } from 'uuid'
 
@@ -87,5 +91,30 @@ export function isStringChanged (
   return (
     newString !==
       oldString
+  )
+}
+
+export function decryptTextWithLinks (
+  text
+) {
+  function decryptMatchedString (
+    _,
+    matchedString
+  ) {
+    try {
+      return AES.decrypt(
+        matchedString,
+        'secret'
+      ).toString(
+        enc.Utf8
+      )
+    } catch {
+      return ''
+    }
+  }
+
+  return text.replace(
+    /(?<=\[link\])(.+?)(?=\[\/link\])/g,
+    decryptMatchedString
   )
 }

@@ -16,6 +16,9 @@ import {
 } from '*/helpers/data/plugins/semantic'
 import updateProfilePost from '*/helpers/actions/api/profile/post/update'
 import updateCommunityPost from '*/helpers/actions/api/community/post/update'
+import {
+  decryptTextWithLinks
+} from '*/helpers/utils'
 
 export default {
   name: 'BasePostUpdateFormContainer',
@@ -171,11 +174,16 @@ export default {
     formatUpdateArgs (
       fields
     ) {
+      const text =
+        decryptTextWithLinks(
+          fields.content
+        )
+
       return {
         communityId: this.communityId,
         postId: this.postId,
         byCommunity: !!fields.community,
-        text: fields.content,
+        text,
         images: this.imagesFormatted,
         videos: this.videos,
         artists: this.artists,

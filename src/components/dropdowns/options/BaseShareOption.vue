@@ -12,6 +12,9 @@
 </template>
 
 <script>
+import {
+  AES
+} from 'crypto-js'
 import BaseIcon from '*/components/BaseIcon.vue'
 import {
   setToast
@@ -37,11 +40,17 @@ export default {
     shareDataFormatted () {
       return [
         '[link]',
-        this.shareDataString,
+        this.shareDataStringEncrypted,
         '[/link]'
       ].join(
         ''
       )
+    },
+    shareDataStringEncrypted () {
+      return AES.encrypt(
+        this.shareDataString,
+        'secret'
+      ).toString()
     },
     shareDataString () {
       return JSON.stringify(

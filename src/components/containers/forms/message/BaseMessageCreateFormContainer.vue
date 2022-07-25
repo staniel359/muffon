@@ -15,6 +15,9 @@ import {
   messageFormOptions
 } from '*/helpers/data/plugins/semantic'
 import createMessage from '*/helpers/actions/api/message/create'
+import {
+  decryptTextWithLinks
+} from '*/helpers/utils'
 
 export default {
   name: 'BaseMessageCreateFormContainer',
@@ -123,9 +126,14 @@ export default {
     formatCreateArgs (
       fields
     ) {
+      const text =
+        decryptTextWithLinks(
+          fields.content
+        )
+
       return {
         otherProfileId: this.profileId,
-        text: fields.content,
+        text,
         images: this.imagesFormatted,
         artists: this.artists,
         albums: this.albums,
