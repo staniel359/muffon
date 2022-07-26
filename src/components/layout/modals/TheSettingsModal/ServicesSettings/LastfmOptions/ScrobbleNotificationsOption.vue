@@ -7,12 +7,11 @@
     />
 
     <BaseToggle
+      store-key="player.isWithScrobbleNotifications"
       :class="{
         disabled: isDisabled
       }"
       :is-checked="isChecked"
-      @on="handleToggleOn"
-      @off="handleToggleOff"
     />
   </div>
 </template>
@@ -23,9 +22,6 @@ import {
 } from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'ScrobbleNotificationsOption',
@@ -61,22 +57,6 @@ export default {
       return !(
         this.isConnected &&
           this.isPlayerWithScrobbling
-      )
-    }
-  },
-  methods: {
-    handleToggleOn () {
-      updateGlobalStore(
-        {
-          'player.isWithScrobbleNotifications': true
-        }
-      )
-    },
-    handleToggleOff () {
-      updateGlobalStore(
-        {
-          'player.isWithScrobbleNotifications': false
-        }
       )
     }
   }

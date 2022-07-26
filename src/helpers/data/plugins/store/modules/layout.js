@@ -15,7 +15,8 @@ export default {
     backgroundImages: [],
     backgroundImageId: 0,
     backgroundImagePath: null,
-    transparency: 0
+    transparency: 0,
+    isMaximizeOnStart: false
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -107,6 +108,12 @@ export default {
       value
     ) {
       state.transparency = value
+    },
+    SET_IS_MAXIMIZE_ON_START (
+      state,
+      value
+    ) {
+      state.isMaximizeOnStart = value
     }
   },
   actions: {
@@ -272,6 +279,17 @@ export default {
     ) {
       commit(
         'SET_TRANSPARENCY',
+        value
+      )
+    },
+    setIsMaximizeOnStart (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_MAXIMIZE_ON_START',
         value
       )
     }

@@ -24,16 +24,19 @@ import {
   setCheckbox,
   checkCheckbox
 } from '*/helpers/actions/plugins/semantic'
+import {
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'BaseToggle',
   props: {
+    storeKey: {
+      type: String,
+      required: true
+    },
     isChecked: Boolean
   },
-  emits: [
-    'on',
-    'off'
-  ],
   computed: {
     ...mapState(
       'layout',
@@ -74,13 +77,17 @@ export default {
       )
     },
     handleOn () {
-      this.$emit(
-        'on'
+      updateGlobalStore(
+        {
+          [this.storeKey]: true
+        }
       )
     },
     handleOff () {
-      this.$emit(
-        'off'
+      updateGlobalStore(
+        {
+          [this.storeKey]: false
+        }
       )
     }
   }

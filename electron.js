@@ -791,6 +791,15 @@ function createWindow () {
       height
     )
 
+    const isMaximize =
+      electronStore.get(
+        'layout.isMaximizeOnStart'
+      )
+
+    if (isMaximize) {
+      mainWindow.maximize()
+    }
+
     show()
 
     checkForUpdates()

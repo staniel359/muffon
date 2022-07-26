@@ -7,9 +7,8 @@
     />
 
     <BaseToggle
+      store-key="recommendations.isHideLibraryArtists"
       :is-checked="isRecommendationsHideLibraryArtists"
-      @on="handleToggleOn"
-      @off="handleToggleOff"
     />
   </div>
 </template>
@@ -20,9 +19,6 @@ import {
 } from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'HideLibraryArtistsOption',
@@ -41,22 +37,6 @@ export default {
     hideLibraryArtistsText () {
       return this.$t(
         'settings.options.app.recommendations.hideLibraryArtists'
-      )
-    }
-  },
-  methods: {
-    handleToggleOn () {
-      updateGlobalStore(
-        {
-          'recommendations.isHideLibraryArtists': true
-        }
-      )
-    },
-    handleToggleOff () {
-      updateGlobalStore(
-        {
-          'recommendations.isHideLibraryArtists': false
-        }
       )
     }
   }

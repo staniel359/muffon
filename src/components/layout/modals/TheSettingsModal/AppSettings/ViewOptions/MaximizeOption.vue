@@ -3,12 +3,12 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="infiniteScrollText"
+      :text="maximizeText"
     />
 
     <BaseToggle
-      store-key="layout.isWithInfiniteScroll"
-      :is-checked="isWithInfiniteScroll"
+      store-key="layout.isMaximizeOnStart"
+      :is-checked="isMaximizeOnStart"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 
 export default {
-  name: 'InfiniteScrollOption',
+  name: 'MaximizeOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -30,12 +30,12 @@ export default {
     ...mapState(
       'layout',
       [
-        'isWithInfiniteScroll'
+        'isMaximizeOnStart'
       ]
     ),
-    infiniteScrollText () {
+    maximizeText () {
       return this.$t(
-        'settings.options.app.view.infiniteScroll'
+        'settings.options.app.view.maximize'
       )
     }
   }

@@ -1,8 +1,7 @@
 <template>
   <BaseToggle
+    store-key="layout.isDarkMode"
     :is-checked="isDarkMode"
-    @on="handleToggleOn"
-    @off="handleToggleOff"
   />
 </template>
 
@@ -11,9 +10,6 @@ import {
   mapState
 } from 'vuex'
 import BaseToggle from '*/components/BaseToggle.vue'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'BaseDarkModeToggle',
@@ -27,22 +23,6 @@ export default {
         'isDarkMode'
       ]
     )
-  },
-  methods: {
-    handleToggleOn () {
-      updateGlobalStore(
-        {
-          'layout.isDarkMode': true
-        }
-      )
-    },
-    handleToggleOff () {
-      updateGlobalStore(
-        {
-          'layout.isDarkMode': false
-        }
-      )
-    }
   }
 }
 </script>

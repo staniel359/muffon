@@ -14,6 +14,8 @@
 
       <InfiniteScrollOption />
 
+      <MaximizeOption />
+
       <BackgroundOption />
 
       <TransparencyOption />
@@ -27,6 +29,7 @@ import LanguageOption from './ViewOptions/LanguageOption.vue'
 import DarkModeOption from './ViewOptions/DarkModeOption.vue'
 import SwitchToNewTabOption from './ViewOptions/SwitchToNewTabOption.vue'
 import InfiniteScrollOption from './ViewOptions/InfiniteScrollOption.vue'
+import MaximizeOption from './ViewOptions/MaximizeOption.vue'
 import BackgroundOption from './ViewOptions/BackgroundOption.vue'
 import TransparencyOption from './ViewOptions/TransparencyOption.vue'
 
@@ -38,6 +41,7 @@ export default {
     DarkModeOption,
     SwitchToNewTabOption,
     InfiniteScrollOption,
+    MaximizeOption,
     BackgroundOption,
     TransparencyOption
   },

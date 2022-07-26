@@ -29,6 +29,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'layout.isMaximizeOnStart': {
+    type: 'boolean',
+    default: false
+  },
   'layout.isSwitchToNewTab': {
     type: 'boolean',
     default: true

@@ -382,6 +382,7 @@
           "darkMode": "Dark mode",
           "newTabSwitch": "Switch to new tab",
           "infiniteScroll": "Infinite scroll",
+          "maximize": "Maximize window on start",
           "background": "Background image",
           "transparency": "Transparency"
         },

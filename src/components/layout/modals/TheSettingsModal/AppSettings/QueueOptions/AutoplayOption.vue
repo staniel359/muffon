@@ -7,9 +7,8 @@
     />
 
     <BaseToggle
+      store-key="queue.isAutoplay"
       :is-checked="isQueueAutoplay"
-      @on="handleToggleOn"
-      @off="handleToggleOff"
     />
   </div>
 </template>
@@ -20,9 +19,6 @@ import {
 } from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'AutoplayOption',
@@ -40,22 +36,6 @@ export default {
     autoplayText () {
       return this.$t(
         'settings.options.app.queue.autoplay'
-      )
-    }
-  },
-  methods: {
-    handleToggleOn () {
-      updateGlobalStore(
-        {
-          'queue.isAutoplay': true
-        }
-      )
-    },
-    handleToggleOff () {
-      updateGlobalStore(
-        {
-          'queue.isAutoplay': false
-        }
       )
     }
   }

@@ -7,9 +7,8 @@
     />
 
     <BaseToggle
+      store-key="layout.isSwitchToNewTab"
       :is-checked="isSwitchToNewTab"
-      @on="handleToggleOn"
-      @off="handleToggleOff"
     />
   </div>
 </template>
@@ -20,9 +19,6 @@ import {
 } from 'vuex'
 import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'SwitchToNewTabOption',
@@ -40,22 +36,6 @@ export default {
     newTabSwitchText () {
       return this.$t(
         'settings.options.app.view.newTabSwitch'
-      )
-    }
-  },
-  methods: {
-    handleToggleOn () {
-      updateGlobalStore(
-        {
-          'layout.isSwitchToNewTab': true
-        }
-      )
-    },
-    handleToggleOff () {
-      updateGlobalStore(
-        {
-          'layout.isSwitchToNewTab': false
-        }
       )
     }
   }
