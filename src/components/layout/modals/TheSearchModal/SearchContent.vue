@@ -16,7 +16,6 @@
       />
 
       <SourceSelect
-        v-if="scope"
         :scope="scope"
         @select="handleSourceSelect"
       />
@@ -25,7 +24,7 @@
     <BaseDivider />
 
     <SearchSection
-      v-if="query"
+      v-if="query && scope"
       :key="key"
       :query="query"
       :source="source"

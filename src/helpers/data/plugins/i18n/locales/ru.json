@@ -366,6 +366,7 @@
     "sections": {
       "app": {
         "view": "Вид",
+        "search": "Поиск",
         "player": "Проигрыватель",
         "queue": "Очередь",
         "recommendations": "Рекомендации",
@@ -385,6 +386,9 @@
           "maximize": "Развернуть окно на весь экран при запуске",
           "background": "Фоновое изображение",
           "transparency": "Прозрачность"
+        },
+        "search": {
+          "source": "Источник"
         },
         "player": {
           "audioSource": "Источник аудио",

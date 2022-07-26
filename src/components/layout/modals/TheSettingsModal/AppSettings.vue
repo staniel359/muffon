@@ -2,6 +2,8 @@
   <div>
     <ViewOptions />
 
+    <SearchOptions />
+
     <PlayerOptions />
 
     <QueueOptions />
@@ -14,6 +16,7 @@
 
 <script>
 import ViewOptions from './AppSettings/ViewOptions.vue'
+import SearchOptions from './AppSettings/SearchOptions.vue'
 import PlayerOptions from './AppSettings/PlayerOptions.vue'
 import QueueOptions from './AppSettings/QueueOptions.vue'
 import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
@@ -23,6 +26,7 @@ export default {
   name: 'AppSettings',
   components: {
     ViewOptions,
+    SearchOptions,
     PlayerOptions,
     QueueOptions,
     RecommendationsOptions,

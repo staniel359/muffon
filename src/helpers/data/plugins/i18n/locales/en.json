@@ -366,6 +366,7 @@
     "sections": {
       "app": {
         "view": "View",
+        "search": "Search",
         "player": "Player",
         "queue": "Queue",
         "recommendations": "Recommendations",
@@ -385,6 +386,9 @@
           "maximize": "Maximize window on start",
           "background": "Background image",
           "transparency": "Transparency"
+        },
+        "search": {
+          "source": "Source"
         },
         "player": {
           "audioSource": "Audio source",

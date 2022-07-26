@@ -393,10 +393,12 @@ p
   &.main-post-item,
   &.main-message-item,
   &.main-profile-item,
+  &.main-video-item,
   &.main-community-info-item,
   &.main-playlist-info-item
     @extend .align-items-start
   &.main-profile-item,
+  &.main-video-item,
   &.main-community-info-item,
   &.main-playlist-info-item
     & > .main-options-dropdown-container
@@ -840,3 +842,9 @@ p
 
 .main-description
   @extend .word-break-break-word
+
+.main-options-dropdown-container
+  .item
+    &:hover
+      .icon
+        @extend .text-color-base

@@ -128,14 +128,6 @@ export default {
     type: 'array',
     default: []
   },
-  'recommendations.isHideLibraryArtists': {
-    type: 'boolean',
-    default: false
-  },
-  'recommendations.tracksCount': {
-    type: 'number',
-    default: 0
-  },
   'queue.currentTrackId': {
     type: [
       'null',
@@ -158,5 +150,17 @@ export default {
   'queue.tracksShuffled': {
     type: 'array',
     default: []
+  },
+  'recommendations.isHideLibraryArtists': {
+    type: 'boolean',
+    default: false
+  },
+  'recommendations.tracksCount': {
+    type: 'number',
+    default: 0
+  },
+  'search.source': {
+    type: 'string',
+    default: 'lastfm'
   }
 }

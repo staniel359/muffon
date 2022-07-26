@@ -5,9 +5,10 @@ import audio from '*/helpers/data/plugins/store/modules/audio'
 import layout from '*/helpers/data/plugins/store/modules/layout'
 import player from '*/helpers/data/plugins/store/modules/player'
 import profile from '*/helpers/data/plugins/store/modules/profile'
+import queue from '*/helpers/data/plugins/store/modules/queue'
 import recommendations
   from '*/helpers/data/plugins/store/modules/recommendations'
-import queue from '*/helpers/data/plugins/store/modules/queue'
+import search from '*/helpers/data/plugins/store/modules/search'
 
 export default createStore(
   {
@@ -16,8 +17,9 @@ export default createStore(
       layout,
       player,
       profile,
+      queue,
       recommendations,
-      queue
+      search
     }
   }
 )

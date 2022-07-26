@@ -11,6 +11,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseDropdown from '*/components/dropdowns/BaseDropdown.vue'
 import audioSources from '*/helpers/data/audio/sources'
 
@@ -20,10 +23,7 @@ export default {
     BaseDropdown
   },
   props: {
-    scope: {
-      type: String,
-      required: true
-    }
+    scope: String
   },
   emits: [
     'select'
@@ -34,22 +34,38 @@ export default {
     }
   },
   computed: {
+    ...mapState(
+      'search',
+      {
+        searchSource: 'source'
+      }
+    ),
     sources () {
-      return audioSources.filter(
-        this.isMatchedSource
-      )
+      if (this.scope) {
+        return audioSources.filter(
+          this.isMatchedSource
+        )
+      } else {
+        return audioSources
+      }
     },
     firstSource () {
       return this.sources[0].id
     }
   },
   watch: {
-    scope: {
+    searchSource: {
       immediate: true,
-      handler: 'handleScopeChange'
-    }
+      handler: 'handleSearchSourceChange'
+    },
+    scope: 'handleScopeChange'
   },
   methods: {
+    handleSearchSourceChange (
+      value
+    ) {
+      this.selected = value
+    },
     handleScopeChange () {
       this.selected = this.firstSource
     },

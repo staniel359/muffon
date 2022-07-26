@@ -64,5 +64,7 @@ export const keysActions = {
   'queue.tracks':
     'queue/setTracks',
   'queue.tracksShuffled':
-    'queue/setTracksShuffled'
+    'queue/setTracksShuffled',
+  'search.source':
+    'search/setSource'
 }

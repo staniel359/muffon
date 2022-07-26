@@ -1,7 +1,7 @@
 <template>
   <BaseScopesDropdown
+    header="..."
     class="scope-select-container"
-    selected="artists"
     :scopes="scopes"
     @select="handleSelect"
   />
