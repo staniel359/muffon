@@ -15,6 +15,10 @@
       :profile-data="profileData"
     />
 
+    <SinceSegment
+      :profile-data="profileData"
+    />
+
     <FollowSegment
       :profile-data="profileData"
     />
@@ -29,6 +33,7 @@
 <script>
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import ExtraInfoSegment from './LeftColumn/ExtraInfoSegment.vue'
+import SinceSegment from './LeftColumn/SinceSegment.vue'
 import FollowSegment from './LeftColumn/FollowSegment.vue'
 import FollowMessageSegment from './LeftColumn/FollowMessageSegment.vue'
 import {
@@ -40,6 +45,7 @@ export default {
   components: {
     InfoSegment,
     ExtraInfoSegment,
+    SinceSegment,
     FollowSegment,
     FollowMessageSegment
   },

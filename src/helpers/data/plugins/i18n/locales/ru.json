@@ -547,7 +547,8 @@
     "welcome": "Добро пожаловать, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Был(-а) в сети"
+    "wasOnline": "Был(-а) в сети",
+    "since": "На muffon'е с"
   },
   "error": "Ошибка",
   "more": "Ещё...",

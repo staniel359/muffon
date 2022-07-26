@@ -547,7 +547,8 @@
     "welcome": "Welcome, {profileNickname}"
   },
   "profile": {
-    "wasOnline": "Was online"
+    "wasOnline": "Was online",
+    "since": "On muffon since"
   },
   "error": "Error",
   "more": "More...",
