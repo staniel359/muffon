@@ -54,19 +54,12 @@
       />
     </small>
 
-    <template v-if="!isSelf">
-      <BaseProfileOptionsDropdown
-        :profile-data="profileData"
-        is-with-follow-option
-        is-with-message-option
-        @message-option-click="handleMessageOptionClick"
-      />
-
-      <BaseProfileMessageModal
-        ref="messageModal"
-        :profile-data="profileData"
-      />
-    </template>
+    <BaseProfileOptionsDropdown
+      v-if="!isSelf"
+      :profile-data="profileData"
+      is-with-follow-option
+      is-with-message-option
+    />
   </BaseLinkContainer>
 </template>
 
@@ -88,8 +81,6 @@ import BaseProfileFollowingMessage
   from '*/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseProfileOptionsDropdown
   from '*/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
-import BaseProfileMessageModal
-  from '*/components/modals/profile/BaseProfileMessageModal.vue'
 import {
   main as formatProfileMainLink
 } from '*/helpers/formatters/links/profile'
@@ -109,8 +100,7 @@ export default {
     BaseProfileCityCountry,
     BaseProfileFollowCounters,
     BaseProfileFollowingMessage,
-    BaseProfileOptionsDropdown,
-    BaseProfileMessageModal
+    BaseProfileOptionsDropdown
   },
   provide () {
     return {
@@ -185,9 +175,6 @@ export default {
         'linkClick'
       )
     },
-    handleMessageOptionClick () {
-      this.showMessageModal()
-    },
     setIsFollowing (
       value
     ) {
@@ -199,11 +186,6 @@ export default {
       value
     ) {
       this.paginationItem.followers_count = value
-    },
-    showMessageModal () {
-      this.$refs
-        .messageModal
-        .show()
     }
   }
 }

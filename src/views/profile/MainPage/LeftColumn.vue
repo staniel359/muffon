@@ -15,16 +15,16 @@
       :profile-data="profileData"
     />
 
-    <SinceSegment
-      :profile-data="profileData"
-    />
-
     <FollowSegment
       :profile-data="profileData"
     />
 
-    <FollowMessageSegment
+    <OptionsSegment
       v-if="!isSelf"
+      :profile-data="profileData"
+    />
+
+    <SinceSegment
       :profile-data="profileData"
     />
   </div>
@@ -33,9 +33,9 @@
 <script>
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import ExtraInfoSegment from './LeftColumn/ExtraInfoSegment.vue'
-import SinceSegment from './LeftColumn/SinceSegment.vue'
 import FollowSegment from './LeftColumn/FollowSegment.vue'
-import FollowMessageSegment from './LeftColumn/FollowMessageSegment.vue'
+import OptionsSegment from './LeftColumn/OptionsSegment.vue'
+import SinceSegment from './LeftColumn/SinceSegment.vue'
 import {
   isCurrentProfile
 } from '*/helpers/utils'
@@ -45,9 +45,9 @@ export default {
   components: {
     InfoSegment,
     ExtraInfoSegment,
-    SinceSegment,
     FollowSegment,
-    FollowMessageSegment
+    OptionsSegment,
+    SinceSegment
   },
   props: {
     profileData: {

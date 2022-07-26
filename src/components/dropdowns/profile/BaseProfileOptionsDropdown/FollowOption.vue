@@ -1,35 +1,120 @@
 <template>
-  <BaseProfileFollowButtonContainer
-    :profile-data="profileData"
-  >
-    <template #default="slotProps">
-      <BaseOption
-        :text="slotProps.text"
-        :icon="slotProps.icon"
-        :is-loading="slotProps.isLoading"
-        @click="slotProps.onClick"
-      />
-    </template>
-  </BaseProfileFollowButtonContainer>
+  <BaseOption
+    :icon="icon"
+    :text="followText"
+    :is-loading="isLoading"
+    @click="handleClick"
+  />
 </template>
 
 <script>
-import BaseProfileFollowButtonContainer
-  from '*/components/containers/profile/BaseProfileFollowButtonContainer.vue'
 import BaseOption from '*/components/dropdowns/options/BaseOption.vue'
+import createFollower from '*/helpers/actions/api/follower/create'
+import deleteFollower from '*/helpers/actions/api/follower/delete'
 
 export default {
   name: 'FollowOption',
   components: {
-    BaseProfileFollowButtonContainer,
     BaseOption
   },
+  inject: [
+    'setIsFollowing',
+    'setFollowersCount'
+  ],
   props: {
-    profileData: Object
+    profileData: {
+      type: Object,
+      required: true
+    }
   },
   emits: [
     'click'
-  ]
+  ],
+  data () {
+    return {
+      followersCount: null,
+      isFollowing: false,
+      isLoading: false
+    }
+  },
+  computed: {
+    icon () {
+      if (this.isFollowing) {
+        return 'minus'
+      } else {
+        return 'plus'
+      }
+    },
+    followText () {
+      return this.$t(
+        `relationships.${this.followTextKey}`
+      )
+    },
+    followTextKey () {
+      if (this.isFollowing) {
+        return 'unfollow'
+      } else {
+        return 'follow'
+      }
+    },
+    isFollower () {
+      return this.profileData.other_profile.follower_of_profile
+    },
+    followerData () {
+      return {
+        otherProfileId: this.otherProfileId
+      }
+    },
+    otherProfileId () {
+      return this.profileData.id.toString()
+    }
+  },
+  watch: {
+    isFollowing: 'handleIsFollowingChange',
+    followersCount: 'handleFollowersCountChange'
+  },
+  mounted () {
+    this.isFollowing = this.isFollower
+  },
+  methods: {
+    createFollower,
+    deleteFollower,
+    handleIsFollowingChange (
+      value
+    ) {
+      this.setIsFollowing(
+        value
+      )
+    },
+    handleFollowersCountChange (
+      value
+    ) {
+      this.setFollowersCount(
+        value
+      )
+    },
+    handleClick () {
+      if (this.isFollowing) {
+        this.unfollow()
+      } else {
+        this.follow()
+      }
+
+      this.$emit(
+        'click'
+      )
+    },
+    follow () {
+      this.createFollower(
+        this.followerData
+      )
+    },
+    unfollow () {
+      this.deleteFollower(
+        this.followerData
+      )
+    }
+  }
 }
 </script>
 

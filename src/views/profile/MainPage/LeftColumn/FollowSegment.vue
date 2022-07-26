@@ -21,6 +21,11 @@
       scope="following"
       :profile-id="profileId"
     />
+
+    <BaseProfileFollowingMessage
+      class="following-message"
+      :other-profile-data="otherProfileData"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -31,13 +36,16 @@ import BaseProfileFollowCounters
   from '*/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowModal
   from '*/components/modals/profile/BaseProfileFollowModal.vue'
+import BaseProfileFollowingMessage
+  from '*/components/models/profile/BaseProfileFollowingMessage.vue'
 
 export default {
   name: 'FollowSegment',
   components: {
     BaseSegmentContainer,
     BaseProfileFollowCounters,
-    BaseProfileFollowModal
+    BaseProfileFollowModal,
+    BaseProfileFollowingMessage
   },
   props: {
     profileData: {
@@ -48,6 +56,9 @@ export default {
   computed: {
     profileId () {
       return this.profileData.id.toString()
+    },
+    otherProfileData () {
+      return this.profileData.other_profile
     }
   },
   methods: {
@@ -74,4 +85,7 @@ export default {
 <style lang="sass" scoped>
 .follow-counters
   @extend .d-flex, .flex-column, .align-items-center
+
+.following-message
+  margin-top: 0.5em
 </style>

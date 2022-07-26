@@ -12,6 +12,12 @@
       @click="handleMessageOptionClick"
     />
   </BaseOptionsDropdownContainer>
+
+  <BaseProfileMessageModal
+    v-if="isWithMessageOption"
+    ref="messageModal"
+    :profile-data="profileData"
+  />
 </template>
 
 <script>
@@ -19,22 +25,22 @@ import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import FollowOption from './BaseProfileOptionsDropdown/FollowOption.vue'
 import MessageOption from './BaseProfileOptionsDropdown/MessageOption.vue'
+import BaseProfileMessageModal
+  from '*/components/modals/profile/BaseProfileMessageModal.vue'
 
 export default {
   name: 'BaseProfileOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
     FollowOption,
-    MessageOption
+    MessageOption,
+    BaseProfileMessageModal
   },
   props: {
     profileData: Object,
     isWithFollowOption: Boolean,
     isWithMessageOption: Boolean
   },
-  emits: [
-    'messageOptionClick'
-  ],
   computed: {
     isRender () {
       return (
@@ -45,9 +51,12 @@ export default {
   },
   methods: {
     handleMessageOptionClick () {
-      this.$emit(
-        'messageOptionClick'
-      )
+      this.showMessageModal()
+    },
+    showMessageModal () {
+      this.$refs
+        .messageModal
+        .show()
     }
   }
 }
