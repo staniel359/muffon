@@ -28,8 +28,7 @@ import {
 } from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
 import {
-  setCalendar,
-  setCalendarDate
+  setCalendar
 } from '*/helpers/actions/plugins/semantic'
 import {
   birthdateCalendarOptions
@@ -60,29 +59,28 @@ export default {
       return this.$t(
         'forms.fields.birthdate'
       )
+    },
+    calendarOptions () {
+      return birthdateCalendarOptions(
+        {
+          startDate: this.value
+        }
+      )
     }
   },
   watch: {
-    profileLanguage: 'handleProfileLanguageChange'
-  },
-  mounted () {
-    this.initialize()
+    profileLanguage: {
+      immediate: true,
+      handler: 'handleProfileLanguageChange'
+    }
   },
   methods: {
-    handleProfileLanguageChange () {
-      this.initialize()
-    },
-    async initialize () {
-      setCalendarDate(
-        this.$refs.calendar,
-        this.value
-      )
-
+    async handleProfileLanguageChange () {
       await this.$nextTick()
 
       setCalendar(
         this.$refs.calendar,
-        birthdateCalendarOptions()
+        this.calendarOptions
       )
     }
   }

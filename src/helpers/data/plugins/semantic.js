@@ -547,7 +547,11 @@ export function communityFormOptions (
   }
 }
 
-export function birthdateCalendarOptions () {
+export function birthdateCalendarOptions (
+  {
+    startDate
+  }
+) {
   const {
     language
   } = store.state.profile
@@ -582,6 +586,13 @@ export function birthdateCalendarOptions () {
     day
   )
 
+  const initialDate = (
+    startDate &&
+      new Date(
+        startDate
+      )
+  )
+
   return {
     firstDayOfWeek: 1,
     monthFirst: false,
@@ -596,7 +607,8 @@ export function birthdateCalendarOptions () {
       monthsShort
     },
     minDate,
-    maxDate
+    maxDate,
+    initialDate
   }
 }
 

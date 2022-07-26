@@ -121,7 +121,7 @@ export default {
 
       const image = this.image.data
 
-      const birthdateToDate =
+      const birthdateFormatted =
         formatStringToDate(
           birthdate
         )
@@ -133,7 +133,7 @@ export default {
         nickname,
         image,
         gender,
-        birthdate: birthdateToDate,
+        birthdate: birthdateFormatted,
         country,
         city
       }

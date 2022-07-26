@@ -297,20 +297,6 @@ export function setCalendar (
   )
 }
 
-export function setCalendarDate (
-  element,
-  value
-) {
-  $(
-    element
-  ).calendar(
-    'set date',
-    value,
-    false,
-    false
-  )
-}
-
 // Accordion
 
 export function setAccordion (

@@ -89,6 +89,8 @@ export function stringToDate (
         0,
         10
       )
+  } else {
+    return null
   }
 }
 

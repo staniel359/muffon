@@ -20,7 +20,6 @@
             :is="tabData.component"
             class="settings-container"
             :class="slotProps.class"
-            :is-active="slotProps.isActive"
           />
         </template>
       </BaseTabsContainer>
