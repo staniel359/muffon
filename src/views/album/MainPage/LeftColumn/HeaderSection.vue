@@ -1,16 +1,17 @@
 <template>
   <BaseTransitionContainer
-    class="album-full-title"
     :scrollable="scrollable"
   >
-    <BaseHeader
-      tag="h3"
-      :text="albumTitle"
-    />
+    <div class="album-full-title">
+      <BaseHeader
+        tag="h3"
+        :text="albumTitle"
+      />
 
-    <BaseArtistLinks
-      :artists="artists"
-    />
+      <BaseArtistLinks
+        :artists="artists"
+      />
+    </div>
   </BaseTransitionContainer>
 </template>
 

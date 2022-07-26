@@ -1,30 +1,31 @@
 <template>
   <BaseTransitionContainer
-    class="track-full-title"
     :scrollable="scrollable"
   >
-    <BaseHeader
-      tag="h4"
-      :text="trackTitle"
-    />
+    <div class="track-full-title">
+      <BaseHeader
+        tag="h4"
+        :text="trackTitle"
+      />
 
-    <BaseArtistLinks
-      :artists="artists"
-    />
+      <BaseArtistLinks
+        :artists="artists"
+      />
 
-    <div
-      v-if="albumData"
-      class="main-small-container"
-    >
-      <small>
-        <BaseAlbumLinkContainer
-          class="main-link"
-          :album-data="albumData"
-          :artist-name="artistName"
-        >
-          {{ albumTitle }}
-        </BaseAlbumLinkContainer>
-      </small>
+      <div
+        v-if="albumData"
+        class="main-small-container"
+      >
+        <small>
+          <BaseAlbumLinkContainer
+            class="main-link"
+            :album-data="albumData"
+            :artist-name="artistName"
+          >
+            {{ albumTitle }}
+          </BaseAlbumLinkContainer>
+        </small>
+      </div>
     </div>
   </BaseTransitionContainer>
 </template>

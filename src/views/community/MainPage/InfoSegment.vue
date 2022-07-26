@@ -40,11 +40,12 @@
         </div>
 
         <BaseCommunityOptionsDropdown
-          v-if="isCommunityCreator"
           class="community-options"
+          :community-data="communityData"
           :share-data="shareData"
           :is-with-edit-option="isCommunityCreator"
           :is-with-delete-option="isCommunityCreator"
+          is-with-join-option
           is-with-share-option
           @edit-option-click="handleEditOptionClick"
           @delete-option-click="handleDeleteOptionClick"

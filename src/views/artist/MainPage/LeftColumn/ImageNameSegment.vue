@@ -13,10 +13,10 @@
     </div>
 
     <BaseTransitionContainer
-      class="artist-name"
       :scrollable="scrollable"
     >
       <BaseHeader
+        class="artist-name"
         tag="h3"
         :text="artistName"
       />
@@ -57,5 +57,5 @@ export default {
 
 .artist-name
   @extend .text-align-center
-  margin-top: 0.5em
+  margin-top: 0.5em !important
 </style>

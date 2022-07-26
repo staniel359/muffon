@@ -1,6 +1,7 @@
 <template>
   <BaseCommunityPageContainer
     :community-id="communityId"
+    @init="handleContainerInit"
   >
     <template #default="slotProps">
       <InfoSegment
@@ -11,6 +12,7 @@
       <div class="columns-container">
         <LeftColumn
           :community-data="slotProps.communityData"
+          :scrollable="container"
         />
 
         <RightColumn
@@ -39,6 +41,18 @@ export default {
   },
   props: {
     communityId: String
+  },
+  data () {
+    return {
+      container: null
+    }
+  },
+  methods: {
+    handleContainerInit (
+      element
+    ) {
+      this.container = element
+    }
   }
 }
 </script>

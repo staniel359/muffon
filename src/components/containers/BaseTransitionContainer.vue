@@ -1,8 +1,8 @@
 <template>
   <Transition>
-    <div v-if="isShow">
-      <slot />
-    </div>
+    <slot
+      v-if="isShow"
+    />
   </Transition>
 </template>
 

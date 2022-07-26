@@ -12,6 +12,11 @@
       ref="modal"
       :community-id="communityId"
     />
+
+    <BaseCommunityJoinedMessage
+      class="joined-message"
+      :community-data="communityData"
+    />
   </BaseSegmentContainer>
 </template>
 
@@ -20,6 +25,8 @@ import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCommunityMembersModal
   from '*/components/modals/community/BaseCommunityMembersModal.vue'
+import BaseCommunityJoinedMessage
+  from '*/components/models/community/BaseCommunityJoinedMessage.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
@@ -28,7 +35,8 @@ export default {
   name: 'MembersSegment',
   components: {
     BaseSegmentContainer,
-    BaseCommunityMembersModal
+    BaseCommunityMembersModal,
+    BaseCommunityJoinedMessage
   },
   props: {
     communityData: Object
@@ -74,4 +82,7 @@ export default {
 <style lang="sass" scoped>
 .members-segment
   @extend .text-align-center
+
+.joined-message
+  margin-top: 0.5em
 </style>

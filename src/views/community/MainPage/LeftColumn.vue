@@ -1,40 +1,42 @@
 <template>
-  <div class="left-column">
-    <div
-      :class="[
-        'ui raised segments',
-        'main-segment-container'
-      ]"
-    >
-      <MembersSegment
-        :community-data="communityData"
-      />
+  <div
+    :class="[
+      'ui raised segments',
+      'main-segment-container',
+      'main-sticky-container',
+      'left-column'
+    ]"
+  >
+    <InfoSegment
+      :community-data="communityData"
+      :scrollable="scrollable"
+    />
 
-      <JoinSegment
-        :community-data="communityData"
-      />
+    <MembersSegment
+      :community-data="communityData"
+    />
 
-      <CreatorSegment
-        :creator-data="creatorData"
-      />
-    </div>
+    <CreatorSegment
+      :creator-data="creatorData"
+    />
   </div>
 </template>
 
 <script>
+import InfoSegment from './LeftColumn/InfoSegment.vue'
 import MembersSegment from './LeftColumn/MembersSegment.vue'
-import JoinSegment from './LeftColumn/JoinSegment.vue'
 import CreatorSegment from './LeftColumn/CreatorSegment.vue'
 
 export default {
   name: 'LeftColumn',
   components: {
+    InfoSegment,
     MembersSegment,
-    JoinSegment,
     CreatorSegment
   },
   props: {
-    communityData: Object
+    communityData: Object,
+    scrollable: HTMLDivElement
   },
   computed: {
     creatorData () {
