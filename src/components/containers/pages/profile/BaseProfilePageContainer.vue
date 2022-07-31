@@ -6,7 +6,6 @@
   >
     <slot
       :profile-data="profileData"
-      :profile-nickname="profileNickname"
       :is-loading="isLoading"
       :error="error"
     />

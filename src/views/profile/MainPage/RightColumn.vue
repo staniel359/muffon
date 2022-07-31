@@ -1,5 +1,10 @@
 <template>
   <div class="main-profile-page-right-column">
+    <PlayingSegment
+      v-if="playing"
+      :playing="playing"
+    />
+
     <LibrarySegment
       :profile-id="profileId"
       :profile-nickname="profileNickname"
@@ -24,6 +29,7 @@
 </template>
 
 <script>
+import PlayingSegment from './RightColumn/PlayingSegment.vue'
 import LibrarySegment from './RightColumn/LibrarySegment.vue'
 import PlaylistsSegment from './RightColumn/PlaylistsSegment.vue'
 import FavoritesSegment from './RightColumn/FavoritesSegment.vue'
@@ -33,6 +39,7 @@ import PostsSegment from './RightColumn/PostsSegment.vue'
 export default {
   name: 'RightColumn',
   components: {
+    PlayingSegment,
     LibrarySegment,
     PlaylistsSegment,
     FavoritesSegment,
@@ -40,8 +47,19 @@ export default {
     PostsSegment
   },
   props: {
-    profileId: String,
-    profileNickname: String
+    profileData: {
+      type: Object,
+      required: true
+    },
+    profileId: String
+  },
+  computed: {
+    profileNickname () {
+      return this.profileData.nickname
+    },
+    playing () {
+      return this.profileData.playing
+    }
   }
 }
 </script>

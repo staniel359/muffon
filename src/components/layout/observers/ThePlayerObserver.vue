@@ -73,7 +73,7 @@ export default {
     },
     mediaMetadataOptions () {
       return {
-        title: this.trackTitle,
+        title: this.trackFullTitle,
         artist: this.artistName,
         album: this.albumTitle,
         artwork: [

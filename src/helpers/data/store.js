@@ -49,6 +49,8 @@ export const keysActions = {
     'profile/setToken',
   'profile.isRemember':
     'profile/setIsRemember',
+  'profile.isShowPlaying':
+    'profile/setIsShowPlaying',
   'profile.language':
     'profile/setLanguage',
   'recommendations.isHideLibraryArtists':

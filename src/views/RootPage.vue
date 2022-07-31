@@ -1,18 +1,24 @@
 <template>
-  <TheScrobblingObserver
-    v-if="isPlayerWithScrobbling"
-  />
-
   <TheSessionObserver />
 
   <TheBackgroundObserver />
+
+  <TheMediaKeysObserver />
+
+  <ThePlayerObserver />
+
+  <ThePlayingObserver />
+
+  <TheScrobblingObserver
+    v-if="isPlayerWithScrobbling"
+  />
 
   <TheExitObserver />
 
   <TheElectronStoreSaver />
 
   <TheBrowserTabs
-    v-if="profileInfo"
+    v-if="profileId"
   />
   <TheAuthentication
     v-else
@@ -21,14 +27,21 @@
 
 <script>
 import {
+  mapGetters,
   mapState
 } from 'vuex'
-import TheScrobblingObserver
-  from '*/components/layout/observers/TheScrobblingObserver.vue'
 import TheSessionObserver
   from '*/components/layout/observers/TheSessionObserver.vue'
 import TheBackgroundObserver
   from '*/components/layout/observers/TheBackgroundObserver.vue'
+import TheMediaKeysObserver
+  from '*/components/layout/observers/TheMediaKeysObserver.vue'
+import ThePlayerObserver
+  from '*/components/layout/observers/ThePlayerObserver.vue'
+import ThePlayingObserver
+  from '*/components/layout/observers/ThePlayingObserver.vue'
+import TheScrobblingObserver
+  from '*/components/layout/observers/TheScrobblingObserver.vue'
 import TheExitObserver
   from '*/components/layout/observers/TheExitObserver.vue'
 import TheElectronStoreSaver
@@ -39,25 +52,28 @@ import TheAuthentication from '*/components/layout/TheAuthentication.vue'
 export default {
   name: 'RootPage',
   components: {
-    TheScrobblingObserver,
     TheSessionObserver,
     TheBackgroundObserver,
+    TheMediaKeysObserver,
+    ThePlayerObserver,
+    ThePlayingObserver,
+    TheScrobblingObserver,
     TheExitObserver,
     TheElectronStoreSaver,
     TheBrowserTabs,
     TheAuthentication
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     ...mapState(
       'player',
       {
         isPlayerWithScrobbling: 'isWithScrobbling'
-      }
-    ),
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
       }
     )
   }

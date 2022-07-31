@@ -10,7 +10,7 @@
 
         <RightColumn
           :profile-id="profileId"
-          :profile-nickname="slotProps.profileNickname"
+          :profile-data="slotProps.profileData"
         />
       </div>
     </template>

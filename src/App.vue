@@ -3,16 +3,12 @@
 
   <TheStoreObserver />
 
-  <TheMediaKeysObserver />
-
   <TheBackground />
 
   <TheView
     v-if="isRootPage"
   />
   <template v-else>
-    <ThePlayerObserver />
-
     <TheNavbarPanel />
 
     <TheSidebarPanel />
@@ -36,16 +32,12 @@
 </template>
 
 <script>
-import TheStoreObserver
-  from '*/components/layout/observers/TheStoreObserver.vue'
 import TheElectronStoreObserver
   from '*/components/layout/observers/TheElectronStoreObserver.vue'
-import TheMediaKeysObserver
-  from '*/components/layout/observers/TheMediaKeysObserver.vue'
+import TheStoreObserver
+  from '*/components/layout/observers/TheStoreObserver.vue'
 import TheBackground from '*/components/layout/TheBackground.vue'
 import TheView from '*/components/layout/TheView.vue'
-import ThePlayerObserver
-  from '*/components/layout/observers/ThePlayerObserver.vue'
 import TheNavbarPanel from '*/components/layout/panels/TheNavbarPanel.vue'
 import TheSidebarPanel from '*/components/layout/panels/TheSidebarPanel.vue'
 import TheQueuePanel from '*/components/layout/panels/TheQueuePanel.vue'
@@ -57,12 +49,10 @@ import TheLoaderDimmer from '*/components/layout/TheLoaderDimmer.vue'
 export default {
   name: 'App',
   components: {
-    TheStoreObserver,
     TheElectronStoreObserver,
-    TheMediaKeysObserver,
+    TheStoreObserver,
     TheBackground,
     TheView,
-    ThePlayerObserver,
     TheNavbarPanel,
     TheSidebarPanel,
     TheQueuePanel,

@@ -4,7 +4,8 @@ export default {
     info: null,
     token: null,
     isRemember: false,
-    language: null
+    language: null,
+    isShowPlaying: false
   },
   getters: {
     id (
@@ -37,6 +38,12 @@ export default {
       value
     ) {
       state.language = value
+    },
+    SET_IS_SHOW_PLAYING (
+      state,
+      value
+    ) {
+      state.isShowPlaying = value
     }
   },
   actions: {
@@ -81,6 +88,17 @@ export default {
     ) {
       commit(
         'SET_LANGUAGE',
+        value
+      )
+    },
+    setIsShowPlaying (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_SHOW_PLAYING',
         value
       )
     }

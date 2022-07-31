@@ -414,6 +414,11 @@
           }
         }
       },
+      "profile": {
+        "player": {
+          "playing": "Show current track on page"
+        }
+      },
       "services": {
         "lastfm": {
           "scrobbling": "Scrobbling",

@@ -113,6 +113,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'profile.isShowPlaying': {
+    type: 'boolean',
+    default: false
+  },
   'profile.language': {
     type: 'string',
     default: 'en'
