@@ -7,6 +7,11 @@ import {
 } from 'vuex'
 
 export default {
+  data () {
+    return {
+      isRefreshNavigation: false
+    }
+  },
   computed: {
     ...mapState(
       'layout',
@@ -24,6 +29,14 @@ export default {
   watch: {
     profileLanguage:
       'handleProfileLanguageChange'
+  },
+  activated () {
+    if (this.isRefreshNavigation) {
+      this.setNavigation()
+    }
+  },
+  deactivated () {
+    this.isRefreshNavigation = true
   },
   methods: {
     ...mapActions(

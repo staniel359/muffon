@@ -1,8 +1,17 @@
 <template>
   <div class="ui container main-container the-view">
     <RouterView
-      :key="key"
-    />
+      v-slot="{
+        Component
+      }"
+    >
+      <KeepAlive>
+        <Component
+          :is="Component"
+          :key="key"
+        />
+      </KeepAlive>
+    </RouterView>
   </div>
 </template>
 
@@ -19,11 +28,16 @@ export default {
     }
   },
   watch: {
-    $route: 'handleRouteChange'
+    $route: {
+      immediate: true,
+      handler: 'handleRouteChange'
+    }
   },
   methods: {
-    handleRouteChange () {
-      this.refresh()
+    handleRouteChange (
+      value
+    ) {
+      this.key = value.fullPath
     },
     refresh () {
       this.key = generateKey()
