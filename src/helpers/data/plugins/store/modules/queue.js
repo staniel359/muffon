@@ -7,7 +7,8 @@ export default {
     isGettingNext: false,
     isShuffle: false,
     tracks: [],
-    tracksShuffled: []
+    tracksShuffled: [],
+    isClearOnPlayerClose: false
   },
   getters: {
     tracksComputed (
@@ -115,6 +116,12 @@ export default {
       value
     ) {
       state.isAutoplay = value
+    },
+    SET_IS_CLEAR_ON_PLAYER_CLOSE (
+      state,
+      value
+    ) {
+      state.isClearOnPlayerClose = value
     }
   },
   actions: {
@@ -192,6 +199,17 @@ export default {
     ) {
       commit(
         'SET_IS_AUTOPLAY',
+        value
+      )
+    },
+    setIsClearOnPlayerClose (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_CLEAR_ON_PLAYER_CLOSE',
         value
       )
     }

@@ -7,6 +7,8 @@
 
     <div>
       <AutoplayOption />
+
+      <ClearOption />
     </div>
   </div>
 </template>
@@ -14,12 +16,14 @@
 <script>
 import BaseDivider from '*/components/BaseDivider.vue'
 import AutoplayOption from './QueueOptions/AutoplayOption.vue'
+import ClearOption from './QueueOptions/ClearOption.vue'
 
 export default {
   name: 'QueueOptions',
   components: {
     BaseDivider,
-    AutoplayOption
+    AutoplayOption,
+    ClearOption
   },
   computed: {
     queueText () {

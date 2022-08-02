@@ -63,6 +63,8 @@ export const keysActions = {
     'queue/setCurrentTrackId',
   'queue.isAutoplay':
     'queue/setIsAutoplay',
+  'queue.isClearOnPlayerClose':
+    'queue/setIsClearOnPlayerClose',
   'queue.isShuffle':
     'queue/setIsShuffle',
   'queue.tracks':

@@ -147,6 +147,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'queue.isClearOnPlayerClose': {
+    type: 'boolean',
+    default: false
+  },
   'queue.isShuffle': {
     type: 'boolean',
     default: true

@@ -1,0 +1,46 @@
+<template>
+  <div class="option">
+    <BaseHeader
+      class="option-header"
+      tag="h4"
+      :text="clearText"
+    />
+
+    <BaseToggle
+      store-key="queue.isClearOnPlayerClose"
+      :is-checked="isClearQueueOnPlayerClose"
+    />
+  </div>
+</template>
+
+<script>
+import {
+  mapState
+} from 'vuex'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseToggle from '*/components/BaseToggle.vue'
+
+export default {
+  name: 'ClearOption',
+  components: {
+    BaseHeader,
+    BaseToggle
+  },
+  computed: {
+    ...mapState(
+      'queue',
+      {
+        isClearQueueOnPlayerClose:
+          'isClearOnPlayerClose'
+      }
+    ),
+    clearText () {
+      return this.$t(
+        'settings.options.app.queue.clear'
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

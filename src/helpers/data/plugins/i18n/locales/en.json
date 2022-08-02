@@ -396,7 +396,8 @@
           "bitrate": "Show audio bitrate"
         },
         "queue": {
-          "autoplay": "Autoplay"
+          "autoplay": "Autoplay",
+          "clear": "Clear on player close"
         },
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
