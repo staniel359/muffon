@@ -11,6 +11,8 @@ export const keysActions = {
     'layout/setBackgroundImagePath',
   'layout.isDarkMode':
     'layout/setIsDarkMode',
+  'layout.isExitOnClose':
+    'layout/setIsExitOnClose',
   'layout.isMaximizeOnStart':
     'layout/setIsMaximizeOnStart',
   'layout.isSwitchToNewTab':

@@ -1,0 +1,45 @@
+<template>
+  <div class="option">
+    <BaseHeader
+      class="option-header"
+      tag="h4"
+      :text="exitText"
+    />
+
+    <BaseToggle
+      store-key="layout.isExitOnClose"
+      :is-checked="isExitOnClose"
+    />
+  </div>
+</template>
+
+<script>
+import {
+  mapState
+} from 'vuex'
+import BaseHeader from '*/components/BaseHeader.vue'
+import BaseToggle from '*/components/BaseToggle.vue'
+
+export default {
+  name: 'ExitOption',
+  components: {
+    BaseHeader,
+    BaseToggle
+  },
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'isExitOnClose'
+      ]
+    ),
+    exitText () {
+      return this.$t(
+        'settings.options.app.other.exit'
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

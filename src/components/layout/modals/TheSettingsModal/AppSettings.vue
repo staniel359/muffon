@@ -11,6 +11,8 @@
     <RecommendationsOptions />
 
     <DataOptions />
+
+    <OtherOptions />
   </div>
 </template>
 
@@ -21,6 +23,7 @@ import PlayerOptions from './AppSettings/PlayerOptions.vue'
 import QueueOptions from './AppSettings/QueueOptions.vue'
 import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
 import DataOptions from './AppSettings/DataOptions.vue'
+import OtherOptions from './AppSettings/OtherOptions.vue'
 
 export default {
   name: 'AppSettings',
@@ -30,7 +33,8 @@ export default {
     PlayerOptions,
     QueueOptions,
     RecommendationsOptions,
-    DataOptions
+    DataOptions,
+    OtherOptions
   }
 }
 </script>

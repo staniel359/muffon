@@ -370,7 +370,8 @@
         "player": "Player",
         "queue": "Queue",
         "recommendations": "Recommendations",
-        "data": "Data"
+        "data": "Data",
+        "other": "Other"
       },
       "profile": {
         "info": "Info"
@@ -412,6 +413,9 @@
               "cleared": "Search history was cleared"
             }
           }
+        },
+        "other": {
+          "exit": "Exit on window close"
         }
       },
       "profile": {

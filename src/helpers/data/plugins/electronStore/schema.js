@@ -25,6 +25,10 @@ export default {
     ],
     default: null
   },
+  'layout.isExitOnClose': {
+    type: 'boolean',
+    default: false
+  },
   'layout.isDarkMode': {
     type: 'boolean',
     default: false

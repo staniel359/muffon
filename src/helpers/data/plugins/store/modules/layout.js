@@ -16,7 +16,8 @@ export default {
     backgroundImageId: 0,
     backgroundImagePath: null,
     transparency: 0,
-    isMaximizeOnStart: false
+    isMaximizeOnStart: false,
+    isExitOnClose: false
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -114,6 +115,12 @@ export default {
       value
     ) {
       state.isMaximizeOnStart = value
+    },
+    SET_IS_EXIT_ON_CLOSE (
+      state,
+      value
+    ) {
+      state.isExitOnClose = value
     }
   },
   actions: {
@@ -290,6 +297,17 @@ export default {
     ) {
       commit(
         'SET_IS_MAXIMIZE_ON_START',
+        value
+      )
+    },
+    setIsExitOnClose (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_EXIT_ON_CLOSE',
         value
       )
     }

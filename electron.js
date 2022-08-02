@@ -815,7 +815,16 @@ function createWindow () {
   ) {
     event.preventDefault()
 
-    hide()
+    const isExitOnClose =
+      electronStore.get(
+        'layout.isExitOnClose'
+      )
+
+    if (isExitOnClose) {
+      exit()
+    } else {
+      hide()
+    }
   }
 
   mainWindow.on(
