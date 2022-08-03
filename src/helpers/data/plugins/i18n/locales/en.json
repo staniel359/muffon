@@ -416,7 +416,8 @@
           }
         },
         "other": {
-          "exit": "Exit on window close"
+          "exit": "Exit on window close",
+          "closeTabs": "Close tabs on exit"
         }
       },
       "profile": {

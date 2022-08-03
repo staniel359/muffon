@@ -7,6 +7,8 @@
 
     <div>
       <ExitOption />
+
+      <CloseTabsOption />
     </div>
   </div>
 </template>
@@ -14,12 +16,14 @@
 <script>
 import BaseDivider from '*/components/BaseDivider.vue'
 import ExitOption from './OtherOptions/ExitOption.vue'
+import CloseTabsOption from './OtherOptions/CloseTabsOption.vue'
 
 export default {
   name: 'OtherOptions',
   components: {
     BaseDivider,
-    ExitOption
+    ExitOption,
+    CloseTabsOption
   },
   computed: {
     otherText () {

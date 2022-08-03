@@ -19,10 +19,14 @@ export default {
   name: 'TheExitObserver',
   computed: {
     ...mapState(
+      'layout',
+      [
+        'isCloseTabsOnExit'
+      ]
+    ),
+    ...mapState(
       'profile',
       {
-        profileInfo: 'info',
-        profileToken: 'token',
         isRememberProfile: 'isRemember'
       }
     ),
@@ -31,13 +35,7 @@ export default {
       {
         profileId: 'id'
       }
-    ),
-    isProfileData () {
-      return (
-        this.profileInfo ||
-          this.profileToken
-      )
-    }
+    )
   },
   mounted () {
     ipcRenderer.on(
@@ -48,53 +46,44 @@ export default {
   methods: {
     async handleExit () {
       if (this.profileId) {
-        await this.setOffline()
+        this.setOffline()
+
+        await this.$nextTick()
       }
 
-      if (this.isRememberProfile) {
-        this.exit()
-      } else {
-        if (this.isProfileData) {
-          this.resetProfileDataThenExit()
-        } else {
-          this.exit()
-        }
+      if (!this.isRememberProfile) {
+        this.clearProfileData()
+
+        await this.$nextTick()
       }
+
+      if (this.isCloseTabsOnExit) {
+        this.clearTabs()
+
+        await this.$nextTick()
+      }
+
+      this.exit()
     },
-    handleElectronStoreChange (
-      value
-    ) {
-      const isNoInfo =
-        !value['profile.info']
-
-      const isNoToken =
-        !value['profile.token']
-
-      const isReset = (
-        isNoInfo &&
-          isNoToken
-      )
-
-      if (isReset) {
-        this.exit()
-      }
-    },
-    async setOffline () {
-      await updateOnline(
+    setOffline () {
+      updateOnline(
         {
           isOnline: false
         }
       )
     },
-    resetProfileDataThenExit () {
-      electronStore.onDidAnyChange(
-        this.handleElectronStoreChange
-      )
-
+    clearProfileData () {
       electronStore.set(
         {
           'profile.info': null,
           'profile.token': null
+        }
+      )
+    },
+    clearTabs () {
+      electronStore.set(
+        {
+          'layout.tabs': []
         }
       )
     },

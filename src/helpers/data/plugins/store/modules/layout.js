@@ -17,7 +17,8 @@ export default {
     backgroundImagePath: null,
     transparency: 0,
     isMaximizeOnStart: false,
-    isExitOnClose: false
+    isExitOnClose: false,
+    isCloseTabsOnExit: false
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -121,6 +122,12 @@ export default {
       value
     ) {
       state.isExitOnClose = value
+    },
+    SET_IS_CLOSE_TABS_ON_EXIT (
+      state,
+      value
+    ) {
+      state.isCloseTabsOnExit = value
     }
   },
   actions: {
@@ -308,6 +315,17 @@ export default {
     ) {
       commit(
         'SET_IS_EXIT_ON_CLOSE',
+        value
+      )
+    },
+    setIsCloseTabsOnExit (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_CLOSE_TABS_ON_EXIT',
         value
       )
     }

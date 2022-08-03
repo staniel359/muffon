@@ -9,6 +9,8 @@ export const keysActions = {
     'layout/setBackgroundImageId',
   'layout.backgroundImagePath':
     'layout/setBackgroundImagePath',
+  'layout.isCloseTabsOnExit':
+    'layout/setIsCloseTabsOnExit',
   'layout.isDarkMode':
     'layout/setIsDarkMode',
   'layout.isExitOnClose':

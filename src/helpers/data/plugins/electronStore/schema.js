@@ -10,13 +10,13 @@ export default {
     ],
     default: null
   },
-  'layout.backgroundImages': {
-    type: 'array',
-    default: []
-  },
   'layout.backgroundImageId': {
     type: 'number',
     default: 0
+  },
+  'layout.backgroundImages': {
+    type: 'array',
+    default: []
   },
   'layout.backgroundImagePath': {
     type: [
@@ -25,11 +25,15 @@ export default {
     ],
     default: null
   },
-  'layout.isExitOnClose': {
+  'layout.isCloseTabsOnExit': {
     type: 'boolean',
     default: false
   },
   'layout.isDarkMode': {
+    type: 'boolean',
+    default: false
+  },
+  'layout.isExitOnClose': {
     type: 'boolean',
     default: false
   },
@@ -53,11 +57,11 @@ export default {
     type: 'number',
     default: 0
   },
-  'history.search': {
+  'history.librarySearch': {
     type: 'array',
     default: []
   },
-  'history.librarySearch': {
+  'history.search': {
     type: 'array',
     default: []
   },
@@ -87,16 +91,16 @@ export default {
     type: 'boolean',
     default: false
   },
-  'player.scrobblePercent': {
-    type: 'number',
-    default: 50
-  },
   'player.playing': {
     type: [
       'null',
       'object'
     ],
     default: null
+  },
+  'player.scrobblePercent': {
+    type: 'number',
+    default: 50
   },
   'player.source': {
     type: 'string',
@@ -125,16 +129,16 @@ export default {
     type: 'string',
     default: 'en'
   },
+  'profile.savedTracks': {
+    type: 'array',
+    default: []
+  },
   'profile.token': {
     type: [
       'null',
       'string'
     ],
     default: null
-  },
-  'profile.savedTracks': {
-    type: 'array',
-    default: []
   },
   'queue.currentTrackId': {
     type: [
