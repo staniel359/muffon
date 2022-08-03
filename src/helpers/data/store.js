@@ -27,6 +27,8 @@ export const keysActions = {
     'player/setCurrentTrackId',
   'player.currentVariantId':
     'player/setCurrentVariantId',
+  'player.isWithAlbum':
+    'player/setIsWithAlbum',
   'player.isWithBitrate':
     'player/setIsWithBitrate',
   'player.isWithScrobbling':

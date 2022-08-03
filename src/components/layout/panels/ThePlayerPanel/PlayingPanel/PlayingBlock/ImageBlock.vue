@@ -1,6 +1,6 @@
 <template>
   <BaseImage
-    v-if="isFromSource"
+    v-if="isWithAlbum"
     model="track"
     class="rounded bordered playing-image"
     :image="imageData?.[size]"
@@ -41,9 +41,16 @@ export default {
     ...mapState(
       'player',
       {
-        playerPlaying: 'playing'
+        playerPlaying: 'playing',
+        isPlayerWithAlbum: 'isWithAlbum'
       }
     ),
+    isWithAlbum () {
+      return (
+        this.isPlayerWithAlbum ||
+          this.isFromSource
+      )
+    },
     isFromSource () {
       return !!this.playerPlaying.from_source
     },

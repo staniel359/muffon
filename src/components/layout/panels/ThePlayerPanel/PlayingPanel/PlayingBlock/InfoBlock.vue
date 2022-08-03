@@ -29,13 +29,20 @@ export default {
     ...mapState(
       'player',
       {
-        playerPlaying: 'playing'
+        playerPlaying: 'playing',
+        isPlayerWithAlbum: 'isWithAlbum'
       }
     ),
     isRenderAlbum () {
       return (
-        this.isFromSource &&
+        this.isWithAlbum &&
           !!this.albumData
+      )
+    },
+    isWithAlbum () {
+      return (
+        this.isPlayerWithAlbum ||
+          this.isFromSource
       )
     },
     isFromSource () {

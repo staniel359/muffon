@@ -12,7 +12,8 @@ export default {
     isScrobbled: false,
     isWithScrobbleNotifications: false,
     scrobblePercent: 50,
-    variants: []
+    variants: [],
+    isWithAlbum: false
   },
   getters: {
     variantsCount (
@@ -93,6 +94,12 @@ export default {
       value
     ) {
       state.isWithBitrate = value
+    },
+    SET_IS_WITH_ALBUM (
+      state,
+      value
+    ) {
+      state.isWithAlbum = value
     }
   },
   actions: {
@@ -225,6 +232,17 @@ export default {
     ) {
       commit(
         'SET_IS_WITH_BITRATE',
+        value
+      )
+    },
+    setIsWithAlbum (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_WITH_ALBUM',
         value
       )
     }

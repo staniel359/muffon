@@ -79,6 +79,10 @@ export default {
     ],
     default: null
   },
+  'player.isWithAlbum': {
+    type: 'boolean',
+    default: false
+  },
   'player.isWithBitrate': {
     type: 'boolean',
     default: false

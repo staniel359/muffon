@@ -393,7 +393,8 @@
         },
         "player": {
           "audioSource": "Audio source",
-          "bitrate": "Show audio bitrate"
+          "bitrate": "Show audio bitrate",
+          "album": "Show album"
         },
         "queue": {
           "autoplay": "Autoplay",
