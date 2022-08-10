@@ -1,4 +1,6 @@
-import musicMetadata from 'music-metadata'
+import {
+  parseFile
+} from 'music-metadata'
 import fs from 'fs'
 import crypto from 'crypto'
 import {
@@ -44,7 +46,7 @@ export function formatTags (
     this.incrementProgress()
   }
 
-  return musicMetadata.parseFile(
+  return parseFile(
     file.path
   ).then(
     handleSuccess

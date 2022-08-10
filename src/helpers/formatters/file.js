@@ -1,5 +1,7 @@
 import fs from 'fs'
-import musicMetadata from 'music-metadata'
+import {
+  selectCover
+} from 'music-metadata'
 
 export function tags (
   {
@@ -12,7 +14,7 @@ export function tags (
   }
 
   const cover =
-    musicMetadata.selectCover(
+    selectCover(
       tags.picture
     )
 
