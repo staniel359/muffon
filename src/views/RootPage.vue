@@ -1,6 +1,8 @@
 <template>
   <TheSessionObserver />
 
+  <TheNativeThemeObserver />
+
   <TheBackgroundObserver />
 
   <TheMediaKeysObserver />
@@ -32,6 +34,8 @@ import {
 } from 'vuex'
 import TheSessionObserver
   from '*/components/layout/observers/TheSessionObserver.vue'
+import TheNativeThemeObserver
+  from '*/components/layout/observers/TheNativeThemeObserver.vue'
 import TheBackgroundObserver
   from '*/components/layout/observers/TheBackgroundObserver.vue'
 import TheMediaKeysObserver
@@ -53,6 +57,7 @@ export default {
   name: 'RootPage',
   components: {
     TheSessionObserver,
+    TheNativeThemeObserver,
     TheBackgroundObserver,
     TheMediaKeysObserver,
     ThePlayerObserver,

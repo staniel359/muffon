@@ -1,6 +1,9 @@
 <template>
   <BaseToggle
     store-key="layout.isDarkMode"
+    :class="{
+      disabled: isWithSystemTheme
+    }"
     :is-checked="isDarkMode"
   />
 </template>
@@ -20,7 +23,8 @@ export default {
     ...mapState(
       'layout',
       [
-        'isDarkMode'
+        'isDarkMode',
+        'isWithSystemTheme'
       ]
     )
   }

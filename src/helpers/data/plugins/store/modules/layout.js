@@ -18,7 +18,8 @@ export default {
     transparency: 0,
     isMaximizeOnStart: false,
     isExitOnClose: false,
-    isCloseTabsOnExit: false
+    isCloseTabsOnExit: false,
+    isWithSystemTheme: false
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -128,6 +129,12 @@ export default {
       value
     ) {
       state.isCloseTabsOnExit = value
+    },
+    SET_IS_WITH_SYSTEM_THEME (
+      state,
+      value
+    ) {
+      state.isWithSystemTheme = value
     }
   },
   actions: {
@@ -326,6 +333,17 @@ export default {
     ) {
       commit(
         'SET_IS_CLOSE_TABS_ON_EXIT',
+        value
+      )
+    },
+    setIsWithSystemTheme (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_WITH_SYSTEM_THEME',
         value
       )
     }

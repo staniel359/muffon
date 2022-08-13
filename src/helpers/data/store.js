@@ -21,6 +21,8 @@ export const keysActions = {
     'layout/setIsSwitchToNewTab',
   'layout.isWithInfiniteScroll':
     'layout/setIsWithInfiniteScroll',
+  'layout.isWithSystemTheme':
+    'layout/setIsWithSystemTheme',
   'layout.transparency':
     'layout/setTransparency',
   'player.currentTrackId':

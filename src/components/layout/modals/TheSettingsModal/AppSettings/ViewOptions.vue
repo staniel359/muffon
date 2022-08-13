@@ -10,6 +10,8 @@
 
       <DarkModeOption />
 
+      <SystemThemeOption />
+
       <SwitchToNewTabOption />
 
       <InfiniteScrollOption />
@@ -27,6 +29,7 @@
 import BaseDivider from '*/components/BaseDivider.vue'
 import LanguageOption from './ViewOptions/LanguageOption.vue'
 import DarkModeOption from './ViewOptions/DarkModeOption.vue'
+import SystemThemeOption from './ViewOptions/SystemThemeOption.vue'
 import SwitchToNewTabOption from './ViewOptions/SwitchToNewTabOption.vue'
 import InfiniteScrollOption from './ViewOptions/InfiniteScrollOption.vue'
 import MaximizeOption from './ViewOptions/MaximizeOption.vue'
@@ -39,6 +42,7 @@ export default {
     BaseDivider,
     LanguageOption,
     DarkModeOption,
+    SystemThemeOption,
     SwitchToNewTabOption,
     InfiniteScrollOption,
     MaximizeOption,

@@ -49,6 +49,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'layout.isWithSystemTheme': {
+    type: 'boolean',
+    default: false
+  },
   'layout.tabs': {
     type: 'array',
     default: []

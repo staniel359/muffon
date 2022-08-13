@@ -6,6 +6,7 @@ const {
   ipcMain,
   Menu,
   nativeImage,
+  nativeTheme,
   screen,
   session,
   shell,
@@ -213,6 +214,13 @@ app.on(
   handleActivate
 )
 
+// Native theme events
+
+nativeTheme.on(
+  'updated',
+  handleNativeThemeUpdated
+)
+
 // IPC events
 
 ipcMain.on(
@@ -291,6 +299,11 @@ ipcMain.on(
 )
 
 ipcMain.on(
+  'check-native-theme',
+  handleCheckNativeTheme
+)
+
+ipcMain.on(
   'logout',
   handleLogout
 )
@@ -316,6 +329,19 @@ function handleActivate () {
 
   if (!isAnyWindowsOpen) {
     createWindow()
+  }
+}
+
+// Native theme event handlers
+
+function handleNativeThemeUpdated () {
+  const isWithSystemTheme =
+    electronStore.get(
+      'layout.isWithSystemTheme'
+    )
+
+  if (isWithSystemTheme) {
+    updateTheme()
   }
 }
 
@@ -722,6 +748,10 @@ function handleDeleteBackgroundImage (
       imageId
     }
   )
+}
+
+function handleCheckNativeTheme () {
+  updateTheme()
 }
 
 function handleLogout () {
@@ -1317,4 +1347,16 @@ function handleNewWindow (
   event
 ) {
   event.preventDefault()
+}
+
+function updateTheme () {
+  const isDarkMode =
+    nativeTheme.shouldUseDarkColors
+
+  mainWindow.webContents.send(
+    'update-native-theme',
+    {
+      isDarkMode
+    }
+  )
 }

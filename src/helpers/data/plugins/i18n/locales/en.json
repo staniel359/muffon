@@ -383,6 +383,7 @@
         "view": {
           "language": "Language",
           "darkMode": "Dark mode",
+          "systemTheme": "System theme",
           "newTabSwitch": "Switch to new tab",
           "infiniteScroll": "Infinite scroll",
           "maximize": "Maximize window on start",
