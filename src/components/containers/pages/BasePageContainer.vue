@@ -15,12 +15,17 @@ import {
   ipcRenderer
 } from 'electron'
 import {
-  mapState
+  mapState,
+  mapActions
 } from 'vuex'
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import {
   toggleLoaderDimmer
 } from '*/helpers/actions/layout'
+import {
+  loading as formatLoadingPageNavigation,
+  error as formatErrorPageNavigation
+} from '*/helpers/formatters/navigation'
 
 export default {
   name: 'BasePageContainer',
@@ -74,6 +79,12 @@ export default {
     )
   },
   methods: {
+    ...mapActions(
+      'layout',
+      [
+        'setNavigationSections'
+      ]
+    ),
     handleIsPageLoadingChange (
       value
     ) {
@@ -81,11 +92,19 @@ export default {
         value
       )
 
+      this.setNavigationSections(
+        formatLoadingPageNavigation()
+      )
+
       this.updateTabLoading()
     },
     handleIsPageErrorChange (
       value
     ) {
+      this.setNavigationSections(
+        formatErrorPageNavigation()
+      )
+
       this.updateTabError()
     },
     scrollToTop () {

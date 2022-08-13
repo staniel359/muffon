@@ -53,9 +53,10 @@ export default {
       }
     }
   },
+  watch: {
+    profilesData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     this.getData()
   },
   methods: {

@@ -39,7 +39,7 @@ export default {
   },
   data () {
     return {
-      profileData: null,
+      bookmarksData: null,
       error: null,
       isLoading: false
     }
@@ -65,20 +65,16 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
-    },
-    bookmarksData () {
-      if (this.isGetData) {
-        return this.profileData?.bookmarks
-      } else {
-        return {}
-      }
     }
   },
+  watch: {
+    bookmarksData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     if (this.isGetData) {
       this.getData()
+    } else {
+      this.bookmarksData = {}
     }
   },
   methods: {

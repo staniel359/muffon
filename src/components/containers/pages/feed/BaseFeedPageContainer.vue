@@ -53,9 +53,10 @@ export default {
       }
     }
   },
+  watch: {
+    feedData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     this.getData()
   },
   methods: {

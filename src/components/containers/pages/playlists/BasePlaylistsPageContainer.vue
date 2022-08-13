@@ -53,9 +53,10 @@ export default {
       }
     }
   },
+  watch: {
+    playlistsData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     this.getData()
   },
   methods: {

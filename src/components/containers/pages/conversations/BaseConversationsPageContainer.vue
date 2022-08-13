@@ -54,9 +54,10 @@ export default {
       }
     }
   },
+  watch: {
+    conversationsData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     this.getData()
   },
   methods: {

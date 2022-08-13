@@ -1,3 +1,7 @@
+import formatLoadingSection
+  from '*/helpers/formatters/navigation/sections/loading'
+import formatErrorSection
+  from '*/helpers/formatters/navigation/sections/error'
 import formatHomeSection
   from '*/helpers/formatters/navigation/sections/home'
 import formatFeedSection
@@ -18,6 +22,18 @@ import formatCommunitiesSection
   from '*/helpers/formatters/navigation/sections/communities'
 import formatMultitagSection
   from '*/helpers/formatters/navigation/sections/multitag'
+
+export function loading () {
+  return [
+    formatLoadingSection()
+  ]
+}
+
+export function error () {
+  return [
+    formatErrorSection()
+  ]
+}
 
 export function home () {
   return [

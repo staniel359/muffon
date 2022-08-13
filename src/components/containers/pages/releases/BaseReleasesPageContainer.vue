@@ -67,9 +67,10 @@ export default {
       }
     }
   },
+  watch: {
+    releasesData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     if (this.isGetData) {
       this.getData()
     } else {

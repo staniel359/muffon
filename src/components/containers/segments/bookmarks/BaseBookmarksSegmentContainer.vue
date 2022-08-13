@@ -32,7 +32,7 @@ export default {
   },
   data () {
     return {
-      profileData: null,
+      bookmarksData: null,
       error: null,
       isLoading: false
     }
@@ -43,9 +43,6 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
-    },
-    bookmarksData () {
-      return this.profileData?.bookmarks
     }
   },
   mounted () {

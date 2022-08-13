@@ -68,9 +68,10 @@ export default {
       }
     }
   },
+  watch: {
+    topData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     if (this.isGetData) {
       this.getData()
     } else {

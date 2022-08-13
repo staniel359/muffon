@@ -53,9 +53,10 @@ export default {
       }
     }
   },
+  watch: {
+    communitiesData: 'handleNavigationDataChange'
+  },
   mounted () {
-    this.setNavigation()
-
     this.getData()
   },
   methods: {

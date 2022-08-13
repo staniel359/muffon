@@ -17,8 +17,8 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    this.profileData =
-      response.data.profile
+    this.bookmarksData =
+      response.data.profile.bookmarks
   }
 
   return getRequest.bind(

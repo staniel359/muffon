@@ -84,6 +84,7 @@ export default {
     }
   },
   watch: {
+    recommendationsData: 'handleNavigationDataChange',
     isRecommendationsHideLibraryArtists:
       'handleIsRecommendationsHideLibraryArtists',
     recommendationsTracksCount:
@@ -91,8 +92,6 @@ export default {
     filterValue: 'handleFilterValueChange'
   },
   mounted () {
-    this.setNavigation()
-
     this.getData()
   },
   methods: {
