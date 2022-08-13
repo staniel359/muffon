@@ -182,5 +182,9 @@ export default {
   'search.source': {
     type: 'string',
     default: 'lastfm'
+  },
+  'video.isAutoplay': {
+    type: 'boolean',
+    default: false
   }
 }

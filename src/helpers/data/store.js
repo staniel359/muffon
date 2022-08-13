@@ -76,5 +76,7 @@ export const keysActions = {
   'queue.tracksShuffled':
     'queue/setTracksShuffled',
   'search.source':
-    'search/setSource'
+    'search/setSource',
+  'video.isAutoplay':
+    'video/setIsAutoplay'
 }

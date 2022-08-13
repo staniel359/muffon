@@ -1,6 +1,6 @@
 <template>
   <div class="video-item">
-    <BaseEmbed
+    <BaseVideo
       :video-data="videoData"
     />
 
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import BaseEmbed from '*/components/BaseEmbed.vue'
+import BaseVideo from '*/components/BaseVideo.vue'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
@@ -28,7 +28,7 @@ import {
 export default {
   name: 'VideoItem',
   components: {
-    BaseEmbed,
+    BaseVideo,
     BaseLinkContainer,
     BaseHeader
   },

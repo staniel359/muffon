@@ -1,8 +1,9 @@
 <template>
   <div>
-    <BaseEmbed
-      class="video-embed"
+    <BaseVideo
+      class="video-section"
       :video-data="selectedVideoData"
+      is-with-autoplay
       @click="handleClick"
     />
 
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import BaseEmbed from '*/components/BaseEmbed.vue'
+import BaseVideo from '*/components/BaseVideo.vue'
 import BaseLinkContainer
   from '*/components/containers/links/BaseLinkContainer.vue'
 import {
@@ -30,7 +31,7 @@ import {
 export default {
   name: 'VideoData',
   components: {
-    BaseEmbed,
+    BaseVideo,
     BaseLinkContainer
   },
   props: {
@@ -70,7 +71,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.video-embed
+.video-section
   margin: 1em 0
 
 .video-more-container

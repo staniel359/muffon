@@ -244,9 +244,9 @@ export function checkCheckbox (
   )
 }
 
-// Embed
+// Video
 
-export function setEmbed (
+export function setVideo (
   element,
   options
 ) {
@@ -254,6 +254,16 @@ export function setEmbed (
     element
   ).embed(
     options
+  )
+}
+
+export function resetVideo (
+  element
+) {
+  $(
+    element
+  ).embed(
+    'reset'
   )
 }
 

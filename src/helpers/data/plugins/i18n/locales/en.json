@@ -369,6 +369,7 @@
         "search": "Search",
         "player": "Player",
         "queue": "Queue",
+        "video": "Video",
         "recommendations": "Recommendations",
         "data": "Data",
         "other": "Other"
@@ -399,6 +400,9 @@
         "queue": {
           "autoplay": "Autoplay",
           "clear": "Clear on player close"
+        },
+        "video": {
+          "autoplay": "Autoplay"
         },
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",

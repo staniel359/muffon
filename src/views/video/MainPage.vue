@@ -10,8 +10,9 @@
           'main-page-segment-container'
         ]"
       >
-        <BaseEmbed
+        <BaseVideo
           :video-data="slotProps.videoData"
+          is-with-autoplay
         />
 
         <TitleOptionsSection
@@ -45,7 +46,7 @@ import BaseVideoPageContainer
   from '*/components/containers/pages/video/BaseVideoPageContainer.vue'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseEmbed from '*/components/BaseEmbed.vue'
+import BaseVideo from '*/components/BaseVideo.vue'
 import TitleOptionsSection from './MainPage/TitleOptionsSection.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import CountersDateSection from './MainPage/CountersDateSection.vue'
@@ -58,7 +59,7 @@ export default {
   components: {
     BaseVideoPageContainer,
     BaseSegmentContainer,
-    BaseEmbed,
+    BaseVideo,
     TitleOptionsSection,
     BaseDivider,
     CountersDateSection,

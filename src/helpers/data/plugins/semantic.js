@@ -182,7 +182,7 @@ export function mainCheckboxOptions (
   }
 }
 
-export function mainEmbedOptions (
+export function mainVideoOptions (
   {
     videoId,
     placeholder
