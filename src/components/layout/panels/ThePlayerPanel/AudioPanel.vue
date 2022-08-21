@@ -7,7 +7,10 @@
 
       <MainControlsPanel />
 
-      <ExtraControlsPanel />
+      <ExtraControlsPanel
+        v-if="playerPlaying"
+        :key="key"
+      />
     </div>
 
     <div class="audio-bottom-section">
@@ -29,6 +32,9 @@ import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
 import getQueueTrack from '*/helpers/actions/queue/track/get'
+import {
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'AudioPanel',
@@ -39,11 +45,22 @@ export default {
     ExtraControlsPanel,
     SeekerPanel
   },
+  data () {
+    return {
+      key: null
+    }
+  },
   computed: {
     ...mapState(
       'audio',
       {
         audioElement: 'element'
+      }
+    ),
+    ...mapState(
+      'player',
+      {
+        playerPlaying: 'playing'
       }
     ),
     ...mapState(
@@ -71,7 +88,8 @@ export default {
     }
   },
   watch: {
-    isQueueAutoplay: 'handleIsQueueAutoplayChange'
+    isQueueAutoplay: 'handleIsQueueAutoplayChange',
+    playerPlaying: 'handlePlayerPlayingChange'
   },
   methods: {
     getQueueTrack,
@@ -87,6 +105,9 @@ export default {
       ) {
         this.getQueueNextTrack()
       }
+    },
+    handlePlayerPlayingChange () {
+      this.key = generateKey()
     },
     getQueueNextTrack () {
       this.getQueueTrack(

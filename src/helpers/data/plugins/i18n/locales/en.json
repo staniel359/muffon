@@ -147,7 +147,8 @@
       "favorites": "Add to favorites",
       "bookmarks": "Add to bookmarks",
       "listened": "Add to listened",
-      "queue": "Add to queue"
+      "queue": "Add to queue",
+      "savedTracks": "Add to saved tracks"
     },
     "show": {
       "library": "Show in library"

@@ -1,11 +1,9 @@
 <template>
-  <BaseButton
-    class="basic tiny compact"
-    :class="{
-      loading: isLoading,
-      disabled: isDisabled
-    }"
-    :icon="icon"
+  <BaseOption
+    icon="save"
+    :text="saveText"
+    :is-loading="isLoading"
+    :is-error="isError"
     @click="handleClick"
   />
 </template>
@@ -18,19 +16,25 @@ import electronStore from '*/plugins/electronStore'
 import {
   mapState
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseOption from '*/components/dropdowns/options/BaseOption.vue'
 import {
   setToast
 } from '*/helpers/actions/plugins/semantic'
 
 export default {
-  name: 'SaveButton',
+  name: 'SaveOption',
   components: {
-    BaseButton
+    BaseOption
+  },
+  props: {
+    trackData: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
-      trackData: null,
+      savedTrackData: null,
       isLoading: false,
       isError: false
     }
@@ -42,33 +46,15 @@ export default {
         'tabId'
       ]
     ),
-    ...mapState(
-      'player',
-      {
-        playerPlaying: 'playing'
-      }
-    ),
-    isDisabled () {
-      return (
-        !this.playerPlaying ||
-          this.isLoading ||
-          this.isPlayerPlayingAudioLocal
+    saveText () {
+      return this.$t(
+        'actions.addTo.savedTracks'
       )
     },
-    isPlayerPlayingAudioLocal () {
-      return !!this.playerPlaying?.audio?.local
-    },
-    playerPlayingString () {
+    trackDataString () {
       return JSON.stringify(
-        this.playerPlaying
+        this.trackData
       )
-    },
-    icon () {
-      if (this.isError) {
-        return 'close'
-      } else {
-        return 'save'
-      }
     },
     addedMessage () {
       return this.$t(
@@ -91,14 +77,14 @@ export default {
       )
     },
     artistName () {
-      return this.trackData.artist.name
+      return this.savedTrackData.artist.name
     },
     trackTitle () {
-      return this.trackData.title
+      return this.savedTrackData.title
     }
   },
   watch: {
-    trackData: 'handleTrackDataChange'
+    savedTrackData: 'handleSavedTrackDataChange'
   },
   mounted () {
     ipcRenderer.on(
@@ -119,7 +105,7 @@ export default {
       ipcRenderer.send(
         'save-audio',
         {
-          track: this.playerPlayingString,
+          track: this.trackDataString,
           tabId: this.tabId
         }
       )
@@ -130,13 +116,13 @@ export default {
         trackData
       }
     ) {
-      this.trackData = trackData
+      this.savedTrackData = trackData
     },
     handleSaveAudioError () {
       this.isLoading = false
       this.isError = true
     },
-    handleTrackDataChange (
+    handleSavedTrackDataChange (
       value
     ) {
       if (value) {
@@ -155,7 +141,7 @@ export default {
 
       const newTracks = [
         ...tracks,
-        this.trackData
+        this.savedTrackData
       ]
 
       electronStore.set(

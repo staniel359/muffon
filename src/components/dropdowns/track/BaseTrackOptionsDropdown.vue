@@ -37,6 +37,11 @@
       :track-data="trackData"
     />
 
+    <SaveOption
+      v-if="isRenderSaveOption"
+      :track-data="trackData"
+    />
+
     <BaseShareOption
       v-if="isWithShareOption"
       :share-data="shareData"
@@ -58,6 +63,7 @@ import FavoriteOption from './BaseTrackOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseTrackOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseTrackOptionsDropdown/ListenedOption.vue'
 import QueueOption from './BaseTrackOptionsDropdown/QueueOption.vue'
+import SaveOption from './BaseTrackOptionsDropdown/SaveOption.vue'
 import BaseShareOption
   from '*/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
@@ -76,6 +82,7 @@ export default {
     BookmarkOption,
     ListenedOption,
     QueueOption,
+    SaveOption,
     BaseShareOption,
     BaseDeleteOption
   },
@@ -94,6 +101,7 @@ export default {
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
     isWithQueueOption: Boolean,
+    isWithSaveOption: Boolean,
     isWithShareOption: Boolean,
     isWithDeleteOption: Boolean
   },
@@ -111,9 +119,19 @@ export default {
           this.isWithBookmarkOption ||
           this.isWithListenedOption ||
           this.isWithQueueOption ||
+          this.isWithSaveOption ||
           this.isWithShareOption ||
           this.isWithDeleteOption
       )
+    },
+    isRenderSaveOption () {
+      return (
+        this.isWithSaveOption &&
+          !this.isSavedTrack
+      )
+    },
+    isSavedTrack () {
+      return !!this.trackData.audio?.local
     },
     shareData () {
       return formatTrackShareData(

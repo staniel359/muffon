@@ -846,7 +846,8 @@ p
   .item
     &:hover
       .icon
-        @extend .text-color-base
+        &:not(.trash)
+          @extend .text-color-base
 
 .main-video
   .video.play.icon

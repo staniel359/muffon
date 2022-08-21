@@ -9,6 +9,7 @@
     <BaseIcon
       :icon="icon"
       :is-loading="isLoading"
+      :is-error="isError"
     />
 
     {{ text }}
@@ -29,7 +30,8 @@ export default {
       required: true
     },
     icon: String,
-    isLoading: Boolean
+    isLoading: Boolean,
+    isError: Boolean
   },
   emits: [
     'click'
