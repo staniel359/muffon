@@ -31,12 +31,16 @@ import {
 export default {
   name: 'BaseToggle',
   props: {
-    storeKey: {
-      type: String,
-      required: true
+    isUpdateGlobalStore: {
+      type: Boolean,
+      default: true
     },
+    storeKey: String,
     isChecked: Boolean
   },
+  emits: [
+    'isCheckedChange'
+  ],
   computed: {
     ...mapState(
       'layout',
@@ -77,18 +81,30 @@ export default {
       )
     },
     handleOn () {
-      updateGlobalStore(
-        {
-          [this.storeKey]: true
-        }
+      this.handleChange(
+        true
       )
     },
     handleOff () {
-      updateGlobalStore(
-        {
-          [this.storeKey]: false
-        }
+      this.handleChange(
+        false
       )
+    },
+    handleChange (
+      value
+    ) {
+      if (this.isUpdateGlobalStore) {
+        updateGlobalStore(
+          {
+            [this.storeKey]: value
+          }
+        )
+      } else {
+        this.$emit(
+          'isCheckedChange',
+          value
+        )
+      }
     }
   }
 }

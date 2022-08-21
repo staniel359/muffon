@@ -4,13 +4,20 @@ import getRequest from '*/helpers/actions/api/request/get'
 export default function (
   {
     page,
-    limit
+    limit,
+    isGlobal
   }
 ) {
   const profileId =
     store.getters['profile/id']
 
   const url = `/profiles/${profileId}/feed`
+
+  const params = {
+    ...(isGlobal && {
+      global: 1
+    })
+  }
 
   const handleSuccess = (
     response
@@ -24,6 +31,7 @@ export default function (
   )(
     {
       url,
+      params,
       isWithSelfToken: true,
       page,
       limit,

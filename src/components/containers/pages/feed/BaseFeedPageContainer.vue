@@ -30,6 +30,11 @@ export default {
   mixins: [
     navigationMixin
   ],
+  provide () {
+    return {
+      setIsGlobal: this.setIsGlobal
+    }
+  },
   props: {
     limit: Number
   },
@@ -37,6 +42,7 @@ export default {
     return {
       feedData: null,
       error: null,
+      isGlobal: false,
       isLoading: false
     }
   },
@@ -49,18 +55,23 @@ export default {
     },
     feedArgs () {
       return {
-        limit: this.limit
+        limit: this.limit,
+        isGlobal: this.isGlobal
       }
     }
   },
   watch: {
-    feedData: 'handleNavigationDataChange'
+    feedData: 'handleNavigationDataChange',
+    isGlobal: 'handleIsGlobalChange'
   },
   mounted () {
     this.getData()
   },
   methods: {
     getFeed,
+    handleIsGlobalChange () {
+      this.getData()
+    },
     getData (
       {
         page
@@ -72,6 +83,11 @@ export default {
           page
         }
       )
+    },
+    setIsGlobal (
+      value
+    ) {
+      this.isGlobal = value
     }
   }
 }

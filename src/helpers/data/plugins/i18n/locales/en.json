@@ -572,6 +572,9 @@
     "wasOnline": "Was online",
     "since": "On muffon since"
   },
+  "feed": {
+    "global": "Global feed"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."
