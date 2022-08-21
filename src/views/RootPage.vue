@@ -7,8 +7,6 @@
 
   <TheMediaKeysObserver />
 
-  <ThePlayerObserver />
-
   <ThePlayingObserver />
 
   <TheScrobblingObserver
@@ -40,8 +38,6 @@ import TheBackgroundObserver
   from '*/components/layout/observers/TheBackgroundObserver.vue'
 import TheMediaKeysObserver
   from '*/components/layout/observers/TheMediaKeysObserver.vue'
-import ThePlayerObserver
-  from '*/components/layout/observers/ThePlayerObserver.vue'
 import ThePlayingObserver
   from '*/components/layout/observers/ThePlayingObserver.vue'
 import TheScrobblingObserver
@@ -60,7 +56,6 @@ export default {
     TheNativeThemeObserver,
     TheBackgroundObserver,
     TheMediaKeysObserver,
-    ThePlayerObserver,
     ThePlayingObserver,
     TheScrobblingObserver,
     TheExitObserver,
