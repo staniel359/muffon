@@ -13,12 +13,6 @@
     is-with-queue-option
     is-with-save-option
     is-with-share-option
-    @playlist-option-click="handlePlaylistOptionClick"
-  />
-
-  <BasePlaylistsModal
-    ref="playlistsModal"
-    :track-data="playerPlaying"
   />
 </template>
 
@@ -28,15 +22,12 @@ import {
 } from 'vuex'
 import BaseTrackOptionsDropdown
   from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import selfMixin from '*/mixins/selfMixin'
 
 export default {
   name: 'OptionsBlock',
   components: {
-    BaseTrackOptionsDropdown,
-    BasePlaylistsModal
+    BaseTrackOptionsDropdown
   },
   mixins: [
     selfMixin
@@ -50,16 +41,6 @@ export default {
     ),
     modelData () {
       return this.playerPlaying
-    }
-  },
-  methods: {
-    handlePlaylistOptionClick () {
-      this.showPlaylistsModal()
-    },
-    showPlaylistsModal () {
-      this.$refs
-        .playlistsModal
-        .show()
     }
   }
 }

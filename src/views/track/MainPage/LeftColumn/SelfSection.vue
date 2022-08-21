@@ -21,29 +21,20 @@
       is-with-playlist-option
       is-with-share-option
       is-with-queue-option
-      @playlist-option-click="handlePlaylistOptionClick"
     />
   </div>
-
-  <BasePlaylistsModal
-    ref="playlistsModal"
-    :track-data="trackData"
-  />
 </template>
 
 <script>
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseTrackOptionsDropdown
   from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 
 export default {
   name: 'SelfSection',
   components: {
     BaseSelfIcons,
-    BaseTrackOptionsDropdown,
-    BasePlaylistsModal
+    BaseTrackOptionsDropdown
   },
   props: {
     trackData: Object,
@@ -51,16 +42,6 @@ export default {
     favoriteId: String,
     bookmarkId: String,
     listenedId: String
-  },
-  methods: {
-    handlePlaylistOptionClick () {
-      this.showPlaylistsModal()
-    },
-    showPlaylistsModal () {
-      this.$refs
-        .playlistsModal
-        .show()
-    }
   }
 }
 </script>

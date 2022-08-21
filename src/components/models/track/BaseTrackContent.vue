@@ -118,18 +118,12 @@
       :is-with-share-option="isWithShareOption"
       :is-with-delete-option="isWithDeleteOption"
       @link-click="handleLinkClick"
-      @playlist-option-click="handlePlaylistOptionClick"
       @delete-option-click="handleDeleteOptionClick"
     />
 
     <BaseClearButton
       v-if="isWithClearButton"
       @click="handleClearButtonClick"
-    />
-
-    <BasePlaylistsModal
-      ref="playlistsModal"
-      :track-data="trackData"
     />
 
     <BaseBookmarkDeleteModal
@@ -192,8 +186,6 @@ import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
 import BaseTrackOptionsDropdown
   from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import BaseBookmarkDeleteModal
   from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
@@ -225,7 +217,6 @@ export default {
     CreatedBlock,
     BaseTrackOptionsDropdown,
     BaseClearButton,
-    BasePlaylistsModal,
     BaseBookmarkDeleteModal,
     BaseFavoriteDeleteModal,
     BasePlaylistTrackDeleteModal,
@@ -437,9 +428,6 @@ export default {
         }
       )
     },
-    handlePlaylistOptionClick () {
-      this.showPlaylistsModal()
-    },
     handleDeleted () {
       this.$emit(
         'deleted'
@@ -455,11 +443,6 @@ export default {
     showDeleteModal () {
       this.$refs
         .deleteModal
-        .show()
-    },
-    showPlaylistsModal () {
-      this.$refs
-        .playlistsModal
         .show()
     }
   }

@@ -25,13 +25,7 @@
         is-with-listened-option
         is-with-queue-option
         is-with-share-option
-        @playlist-option-click="handlePlaylistOptionClick"
         @delete-option-click="handleDeleteOptionClick"
-      />
-
-      <BasePlaylistsModal
-        ref="playlistsModal"
-        :track-data="trackData"
       />
 
       <BaseLibraryDeleteModal
@@ -53,8 +47,6 @@ import BaseSegmentContainer
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseTrackOptionsDropdown
   from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import BaseLibraryDeleteModal
   from '*/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
@@ -68,7 +60,6 @@ export default {
     BaseSegmentContainer,
     BaseSelfIcons,
     BaseTrackOptionsDropdown,
-    BasePlaylistsModal,
     BaseLibraryDeleteModal
   },
   mixins: [
@@ -115,17 +106,9 @@ export default {
     handleDeleteOptionClick () {
       this.showDeleteModal()
     },
-    handlePlaylistOptionClick () {
-      this.showPlaylistsModal()
-    },
     showDeleteModal () {
       this.$refs
         .deleteModal
-        .show()
-    },
-    showPlaylistsModal () {
-      this.$refs
-        .playlistsModal
         .show()
     }
   }

@@ -9,10 +9,18 @@
       @link-click="handleLinkClick"
     />
 
-    <PlaylistOption
+    <template
       v-if="isWithPlaylistOption"
-      @click="handlePlaylistOptionClick"
-    />
+    >
+      <PlaylistOption
+        @click="handlePlaylistOptionClick"
+      />
+
+      <BasePlaylistsModal
+        ref="playlistsModal"
+        :track-data="trackData"
+      />
+    </template>
 
     <FavoriteOption
       v-if="isWithFavoriteOption"
@@ -68,6 +76,8 @@ import BaseShareOption
   from '*/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '*/components/dropdowns/options/BaseDeleteOption.vue'
+import BasePlaylistsModal
+  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import {
   track as formatTrackShareData
 } from '*/helpers/formatters/share'
@@ -84,7 +94,8 @@ export default {
     QueueOption,
     SaveOption,
     BaseShareOption,
-    BaseDeleteOption
+    BaseDeleteOption,
+    BasePlaylistsModal
   },
   props: {
     trackData: {
@@ -107,7 +118,6 @@ export default {
   },
   emits: [
     'linkClick',
-    'playlistOptionClick',
     'deleteOptionClick'
   ],
   computed: {
@@ -146,14 +156,17 @@ export default {
       )
     },
     handlePlaylistOptionClick () {
-      this.$emit(
-        'playlistOptionClick'
-      )
+      this.showPlaylistsModal()
     },
     handleDeleteOptionClick () {
       this.$emit(
         'deleteOptionClick'
       )
+    },
+    showPlaylistsModal () {
+      this.$refs
+        .playlistsModal
+        .show()
     }
   }
 }
