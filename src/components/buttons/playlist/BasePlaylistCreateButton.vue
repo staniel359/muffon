@@ -25,7 +25,7 @@ export default {
   computed: {
     createText () {
       return this.$t(
-        'actions.add.playlist'
+        'actions.addModel.playlist'
       )
     }
   },

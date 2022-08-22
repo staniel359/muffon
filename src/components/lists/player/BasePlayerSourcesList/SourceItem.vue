@@ -26,9 +26,6 @@
 <script>
 import BaseIcon from '*/components/BaseIcon.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'SourceItem',
@@ -42,6 +39,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'select'
+  ],
   computed: {
     source () {
       return this.sourceData.id
@@ -61,10 +61,9 @@ export default {
   },
   methods: {
     handleClick () {
-      updateGlobalStore(
-        {
-          'player.source': this.source
-        }
+      this.$emit(
+        'select',
+        this.source
       )
     }
   }

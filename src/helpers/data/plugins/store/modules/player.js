@@ -13,7 +13,8 @@ export default {
     isWithScrobbleNotifications: false,
     scrobblePercent: 50,
     variants: [],
-    isWithAlbum: false
+    isWithAlbum: false,
+    fallbackSources: []
   },
   getters: {
     variantsCount (
@@ -100,6 +101,12 @@ export default {
       value
     ) {
       state.isWithAlbum = value
+    },
+    SET_FALLBACK_SOURCES (
+      state,
+      value
+    ) {
+      state.fallbackSources = value
     }
   },
   actions: {
@@ -243,6 +250,17 @@ export default {
     ) {
       commit(
         'SET_IS_WITH_ALBUM',
+        value
+      )
+    },
+    setFallbackSources (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_FALLBACK_SOURCES',
         value
       )
     }

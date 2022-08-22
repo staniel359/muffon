@@ -9,7 +9,7 @@ export function streamableCollection () {
   )
 }
 
-function streamable () {
+export function streamable () {
   return audioSources.filter(
     isSourceStreamable
   )

@@ -3,7 +3,9 @@
     class="main-source-select"
     :selected="playerSource"
   >
-    <SourcesList />
+    <BasePlayerSourcesList
+      @select="handleSelect"
+    />
   </BaseDropdownContainer>
 </template>
 
@@ -13,13 +15,17 @@ import {
 } from 'vuex'
 import BaseDropdownContainer
   from '*/components/containers/BaseDropdownContainer.vue'
-import SourcesList from './SourceSelect/SourcesList.vue'
+import BasePlayerSourcesList
+  from '*/components/lists/player/BasePlayerSourcesList.vue'
+import {
+  updateGlobal as updateGlobalStore
+} from '*/helpers/actions/store'
 
 export default {
   name: 'SourceSelect',
   components: {
     BaseDropdownContainer,
-    SourcesList
+    BasePlayerSourcesList
   },
   computed: {
     ...mapState(
@@ -28,14 +34,22 @@ export default {
         playerSource: 'source'
       }
     )
+  },
+  methods: {
+    handleSelect (
+      value
+    ) {
+      updateGlobalStore(
+        {
+          'player.source': value
+        }
+      )
+    }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.main-source-select
-  @extend .no-margin
-
 ::v-deep(.menu)
   max-height: 200px !important
 </style>

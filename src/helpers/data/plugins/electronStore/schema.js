@@ -83,6 +83,10 @@ export default {
     ],
     default: null
   },
+  'player.fallbackSources': {
+    type: 'array',
+    default: []
+  },
   'player.isWithAlbum': {
     type: 'boolean',
     default: false

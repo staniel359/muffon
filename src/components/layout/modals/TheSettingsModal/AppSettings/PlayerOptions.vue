@@ -8,6 +8,8 @@
     <div>
       <SourceOption />
 
+      <FallbackSourcesOption />
+
       <BitrateOption />
 
       <AlbumOption />
@@ -18,6 +20,7 @@
 <script>
 import BaseDivider from '*/components/BaseDivider.vue'
 import SourceOption from './PlayerOptions/SourceOption.vue'
+import FallbackSourcesOption from './PlayerOptions/FallbackSourcesOption.vue'
 import BitrateOption from './PlayerOptions/BitrateOption.vue'
 import AlbumOption from './PlayerOptions/AlbumOption.vue'
 
@@ -26,6 +29,7 @@ export default {
   components: {
     BaseDivider,
     SourceOption,
+    FallbackSourcesOption,
     BitrateOption,
     AlbumOption
   },

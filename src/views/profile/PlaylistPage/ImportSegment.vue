@@ -38,7 +38,7 @@ export default {
   computed: {
     addTracksText () {
       return this.$t(
-        'actions.add.tracks'
+        'actions.addCollection.tracks'
       )
     }
   }

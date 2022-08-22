@@ -50,7 +50,7 @@ export default {
   computed: {
     addPostText () {
       return this.$t(
-        'actions.add.post'
+        'actions.addModel.post'
       )
     }
   },

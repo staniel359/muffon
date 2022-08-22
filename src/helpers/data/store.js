@@ -29,6 +29,8 @@ export const keysActions = {
     'player/setCurrentTrackId',
   'player.currentVariantId':
     'player/setCurrentVariantId',
+  'player.fallbackSources':
+    'player/setFallbackSources',
   'player.isWithAlbum':
     'player/setIsWithAlbum',
   'player.isWithBitrate':
