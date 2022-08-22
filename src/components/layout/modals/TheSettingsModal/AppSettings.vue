@@ -2,6 +2,8 @@
   <div>
     <ViewOptions />
 
+    <SidebarOptions />
+
     <SearchOptions />
 
     <PlayerOptions />
@@ -20,6 +22,7 @@
 
 <script>
 import ViewOptions from './AppSettings/ViewOptions.vue'
+import SidebarOptions from './AppSettings/SidebarOptions.vue'
 import SearchOptions from './AppSettings/SearchOptions.vue'
 import PlayerOptions from './AppSettings/PlayerOptions.vue'
 import QueueOptions from './AppSettings/QueueOptions.vue'
@@ -32,6 +35,7 @@ export default {
   name: 'AppSettings',
   components: {
     ViewOptions,
+    SidebarOptions,
     SearchOptions,
     PlayerOptions,
     QueueOptions,

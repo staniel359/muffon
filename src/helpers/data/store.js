@@ -81,6 +81,32 @@ export const keysActions = {
     'queue/setTracksShuffled',
   'search.source':
     'search/setSource',
+  'sidebar.isWithFeedItem':
+    'sidebar/setIsWithFeedItem',
+  'sidebar.isWithConversationsItem':
+    'sidebar/setIsWithConversationsItem',
+  'sidebar.isWithLibraryItem':
+    'sidebar/setIsWithLibraryItem',
+  'sidebar.isWithRecommendationsItem':
+    'sidebar/setIsWithRecommendationsItem',
+  'sidebar.isWithSavedTracksItem':
+    'sidebar/setIsWithSavedTracksItem',
+  'sidebar.isWithPlaylistsItem':
+    'sidebar/setIsWithPlaylistsItem',
+  'sidebar.isWithFavoritesItem':
+    'sidebar/setIsWithFavoritesItem',
+  'sidebar.isWithBookmarksItem':
+    'sidebar/setIsWithBookmarksItem',
+  'sidebar.isWithTopItem':
+    'sidebar/setIsWithTopItem',
+  'sidebar.isWithReleasesItem':
+    'sidebar/setIsWithReleasesItem',
+  'sidebar.isWithRadioItem':
+    'sidebar/setIsWithRadioItem',
+  'sidebar.isWithMultitagItem':
+    'sidebar/setIsWithMultitagItem',
+  'sidebar.isWithCommunitiesItem':
+    'sidebar/setIsWithCommunitiesItem',
   'video.isAutoplay':
     'video/setIsAutoplay'
 }

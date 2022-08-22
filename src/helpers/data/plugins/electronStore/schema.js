@@ -191,6 +191,58 @@ export default {
     type: 'string',
     default: 'lastfm'
   },
+  'sidebar.isWithFeedItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithConversationsItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithLibraryItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithRecommendationsItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithSavedTracksItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithPlaylistsItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithFavoritesItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithBookmarksItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithTopItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithReleasesItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithRadioItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithMultitagItem': {
+    type: 'boolean',
+    default: true
+  },
+  'sidebar.isWithCommunitiesItem': {
+    type: 'boolean',
+    default: true
+  },
   'video.isAutoplay': {
     type: 'boolean',
     default: false

@@ -370,6 +370,7 @@
     "sections": {
       "app": {
         "view": "View",
+        "sidebar": "Sidebar",
         "search": "Search",
         "player": "Player",
         "queue": "Queue",

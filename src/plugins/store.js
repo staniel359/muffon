@@ -9,6 +9,7 @@ import queue from '*/helpers/data/plugins/store/modules/queue'
 import recommendations
   from '*/helpers/data/plugins/store/modules/recommendations'
 import search from '*/helpers/data/plugins/store/modules/search'
+import sidebar from '*/helpers/data/plugins/store/modules/sidebar'
 import video from '*/helpers/data/plugins/store/modules/video'
 
 export default createStore(
@@ -21,6 +22,7 @@ export default createStore(
       queue,
       recommendations,
       search,
+      sidebar,
       video
     }
   }

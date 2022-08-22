@@ -15,37 +15,59 @@
       />
 
       <div class="sidebar-top">
-        <FeedItem />
+        <FeedItem
+          v-if="isWithFeedItem"
+        />
 
-        <ConversationsItem />
+        <ConversationsItem
+          v-if="isWithConversationsItem"
+        />
 
         <LibraryItem
+          v-if="isWithLibraryItem"
           :profile-id="profileId"
         />
 
-        <RecommendationsItem />
+        <RecommendationsItem
+          v-if="isWithRecommendationsItem"
+        />
 
-        <SavedTracksItem />
+        <SavedTracksItem
+          v-if="isWithSavedTracksItem"
+        />
 
         <PlaylistsItem
+          v-if="isWithPlaylistsItem"
           :profile-id="profileId"
         />
 
         <FavoritesItem
+          v-if="isWithFavoritesItem"
           :profile-id="profileId"
         />
 
-        <BookmarksItem />
+        <BookmarksItem
+          v-if="isWithBookmarksItem"
+        />
 
-        <TopItem />
+        <TopItem
+          v-if="isWithTopItem"
+        />
 
-        <ReleasesItem />
+        <ReleasesItem
+          v-if="isWithReleasesItem"
+        />
 
-        <RadioItem />
+        <RadioItem
+          v-if="isWithRadioItem"
+        />
 
-        <MultitagItem />
+        <MultitagItem
+          v-if="isWithMultitagItem"
+        />
 
         <CommunitiesItem
+          v-if="isWithCommunitiesItem"
           :profile-id="profileId"
         />
       </div>
@@ -106,6 +128,24 @@ export default {
       'layout',
       [
         'isDarkMode'
+      ]
+    ),
+    ...mapState(
+      'sidebar',
+      [
+        'isWithFeedItem',
+        'isWithConversationsItem',
+        'isWithLibraryItem',
+        'isWithRecommendationsItem',
+        'isWithSavedTracksItem',
+        'isWithPlaylistsItem',
+        'isWithFavoritesItem',
+        'isWithBookmarksItem',
+        'isWithTopItem',
+        'isWithReleasesItem',
+        'isWithRadioItem',
+        'isWithMultitagItem',
+        'isWithCommunitiesItem'
       ]
     ),
     ...mapGetters(
