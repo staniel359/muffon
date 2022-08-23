@@ -20,7 +20,7 @@ export default {
   computed: {
     darkModeText () {
       return this.$t(
-        'settings.options.app.view.darkMode'
+        'settings.options.app.theme.dark'
       )
     }
   }

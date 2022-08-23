@@ -3,12 +3,12 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="systemThemeText"
+      :text="maximizeText"
     />
 
     <BaseToggle
-      store-key="layout.isWithSystemTheme"
-      :is-checked="isWithSystemTheme"
+      store-key="layout.isMaximizeOnStart"
+      :is-checked="isMaximizeOnStart"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 
 export default {
-  name: 'SystemThemeOption',
+  name: 'MaximizeOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -30,12 +30,12 @@ export default {
     ...mapState(
       'layout',
       [
-        'isWithSystemTheme'
+        'isMaximizeOnStart'
       ]
     ),
-    systemThemeText () {
+    maximizeText () {
       return this.$t(
-        'settings.options.app.view.systemTheme'
+        'settings.options.app.window.maximize'
       )
     }
   }

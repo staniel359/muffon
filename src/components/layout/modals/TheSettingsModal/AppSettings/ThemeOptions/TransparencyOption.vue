@@ -60,7 +60,7 @@ export default {
     },
     transparencyText () {
       return this.$t(
-        'settings.options.app.view.transparency'
+        'settings.options.app.theme.transparency'
       )
     }
   },

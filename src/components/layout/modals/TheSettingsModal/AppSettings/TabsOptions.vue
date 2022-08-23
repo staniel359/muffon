@@ -1,34 +1,34 @@
 <template>
   <div class="main-settings-options-block">
     <BaseDivider
-      :text="otherText"
+      :text="tabsText"
       is-horizontal
     />
 
     <div>
-      <ExitOption />
+      <SwitchToNewTabOption />
 
-      <CloseTabsOption />
+      <CloseOnExitOption />
     </div>
   </div>
 </template>
 
 <script>
 import BaseDivider from '*/components/BaseDivider.vue'
-import ExitOption from './OtherOptions/ExitOption.vue'
-import CloseTabsOption from './OtherOptions/CloseTabsOption.vue'
+import SwitchToNewTabOption from './TabsOptions/SwitchToNewTabOption.vue'
+import CloseOnExitOption from './TabsOptions/CloseOnExitOption.vue'
 
 export default {
-  name: 'OtherOptions',
+  name: 'TabsOptions',
   components: {
     BaseDivider,
-    ExitOption,
-    CloseTabsOption
+    SwitchToNewTabOption,
+    CloseOnExitOption
   },
   computed: {
-    otherText () {
+    tabsText () {
       return this.$t(
-        'settings.sections.app.other'
+        'settings.sections.app.tabs'
       )
     }
   }

@@ -3,12 +3,12 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="infiniteScrollText"
+      :text="systemThemeText"
     />
 
     <BaseToggle
-      store-key="layout.isWithInfiniteScroll"
-      :is-checked="isWithInfiniteScroll"
+      store-key="layout.isWithSystemTheme"
+      :is-checked="isWithSystemTheme"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 
 export default {
-  name: 'InfiniteScrollOption',
+  name: 'SystemThemeOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -30,12 +30,12 @@ export default {
     ...mapState(
       'layout',
       [
-        'isWithInfiniteScroll'
+        'isWithSystemTheme'
       ]
     ),
-    infiniteScrollText () {
+    systemThemeText () {
       return this.$t(
-        'settings.options.app.view.infiniteScroll'
+        'settings.options.app.theme.system'
       )
     }
   }

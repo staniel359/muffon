@@ -107,6 +107,7 @@ export default {
   align-self: center
   &.active
     border: 1px solid $colorBaseLight
+    border-radius: 5px
   &:hover
     .clear-button
       @extend .d-block

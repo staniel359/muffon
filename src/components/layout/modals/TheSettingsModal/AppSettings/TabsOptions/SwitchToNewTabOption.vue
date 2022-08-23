@@ -35,7 +35,7 @@ export default {
     ),
     newTabSwitchText () {
       return this.$t(
-        'settings.options.app.view.newTabSwitch'
+        'settings.options.app.tabs.newTabSwitch'
       )
     }
   }

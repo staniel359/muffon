@@ -3,27 +3,28 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="darkModeText"
+      :text="languageText"
     />
 
-    <BaseDarkModeToggle />
+    <BaseLanguageDropdown />
   </div>
 </template>
 
 <script>
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseDarkModeToggle from '*/components/toggles/BaseDarkModeToggle.vue'
+import BaseLanguageDropdown
+  from '*/components/dropdowns/BaseLanguageDropdown.vue'
 
 export default {
-  name: 'DarkModeOption',
+  name: 'LanguageOption',
   components: {
     BaseHeader,
-    BaseDarkModeToggle
+    BaseLanguageDropdown
   },
   computed: {
-    darkModeText () {
+    languageText () {
       return this.$t(
-        'settings.options.app.view.darkMode'
+        'settings.options.app.interface.language'
       )
     }
   }

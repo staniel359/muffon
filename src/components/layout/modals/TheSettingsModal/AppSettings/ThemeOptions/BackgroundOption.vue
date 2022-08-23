@@ -3,28 +3,31 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="languageText"
+      :text="backgroundText"
     />
 
-    <BaseLanguageDropdown />
+    <UploadButton />
   </div>
+
+  <ImagesSection />
 </template>
 
 <script>
 import BaseHeader from '*/components/BaseHeader.vue'
-import BaseLanguageDropdown
-  from '*/components/dropdowns/BaseLanguageDropdown.vue'
+import UploadButton from './BackgroundOption/UploadButton.vue'
+import ImagesSection from './BackgroundOption/ImagesSection.vue'
 
 export default {
-  name: 'LanguageOption',
+  name: 'BackgroundOption',
   components: {
     BaseHeader,
-    BaseLanguageDropdown
+    UploadButton,
+    ImagesSection
   },
   computed: {
-    languageText () {
+    backgroundText () {
       return this.$t(
-        'settings.options.app.view.language'
+        'settings.options.app.theme.background'
       )
     }
   }

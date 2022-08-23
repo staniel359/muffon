@@ -3,31 +3,27 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="backgroundText"
+      :text="darkModeText"
     />
 
-    <UploadButton />
+    <BaseDarkModeToggle />
   </div>
-
-  <ImagesSection />
 </template>
 
 <script>
 import BaseHeader from '*/components/BaseHeader.vue'
-import UploadButton from './BackgroundOption/UploadButton.vue'
-import ImagesSection from './BackgroundOption/ImagesSection.vue'
+import BaseDarkModeToggle from '*/components/toggles/BaseDarkModeToggle.vue'
 
 export default {
-  name: 'BackgroundOption',
+  name: 'DarkModeOption',
   components: {
     BaseHeader,
-    UploadButton,
-    ImagesSection
+    BaseDarkModeToggle
   },
   computed: {
-    backgroundText () {
+    darkModeText () {
       return this.$t(
-        'settings.options.app.view.background'
+        'settings.options.app.theme.dark'
       )
     }
   }

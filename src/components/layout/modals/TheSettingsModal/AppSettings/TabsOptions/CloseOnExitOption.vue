@@ -3,12 +3,12 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="maximizeText"
+      :text="closeTabsText"
     />
 
     <BaseToggle
-      store-key="layout.isMaximizeOnStart"
-      :is-checked="isMaximizeOnStart"
+      store-key="layout.isCloseTabsOnExit"
+      :is-checked="isCloseTabsOnExit"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 
 export default {
-  name: 'MaximizeOption',
+  name: 'CloseOnExitOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -30,12 +30,12 @@ export default {
     ...mapState(
       'layout',
       [
-        'isMaximizeOnStart'
+        'isCloseTabsOnExit'
       ]
     ),
-    maximizeText () {
+    closeTabsText () {
       return this.$t(
-        'settings.options.app.view.maximize'
+        'settings.options.app.tabs.closeOnExit'
       )
     }
   }

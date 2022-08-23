@@ -35,7 +35,7 @@ export default {
     ),
     exitText () {
       return this.$t(
-        'settings.options.app.other.exit'
+        'settings.options.app.window.exit'
       )
     }
   }

@@ -3,12 +3,12 @@
     <BaseHeader
       class="option-header"
       tag="h4"
-      :text="closeTabsText"
+      :text="infiniteScrollText"
     />
 
     <BaseToggle
-      store-key="layout.isCloseTabsOnExit"
-      :is-checked="isCloseTabsOnExit"
+      store-key="layout.isWithInfiniteScroll"
+      :is-checked="isWithInfiniteScroll"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ import BaseHeader from '*/components/BaseHeader.vue'
 import BaseToggle from '*/components/BaseToggle.vue'
 
 export default {
-  name: 'CloseTabsOption',
+  name: 'InfiniteScrollOption',
   components: {
     BaseHeader,
     BaseToggle
@@ -30,12 +30,12 @@ export default {
     ...mapState(
       'layout',
       [
-        'isCloseTabsOnExit'
+        'isWithInfiniteScroll'
       ]
     ),
-    closeTabsText () {
+    infiniteScrollText () {
       return this.$t(
-        'settings.options.app.other.closeTabs'
+        'settings.options.app.interface.infiniteScroll'
       )
     }
   }

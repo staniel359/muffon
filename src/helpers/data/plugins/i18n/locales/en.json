@@ -369,15 +369,17 @@
     },
     "sections": {
       "app": {
-        "view": "View",
+        "interface": "Interface",
+        "theme": "Theme",
+        "window": "Window",
+        "tabs": "Tabs",
         "sidebar": "Sidebar",
         "search": "Search",
         "player": "Player",
         "queue": "Queue",
         "video": "Video",
         "recommendations": "Recommendations",
-        "data": "Data",
-        "other": "Other"
+        "data": "Data"
       },
       "profile": {
         "info": "Info"
@@ -385,15 +387,23 @@
     },
     "options": {
       "app": {
-        "view": {
+        "interface": {
           "language": "Language",
-          "darkMode": "Dark mode",
-          "systemTheme": "System theme",
-          "newTabSwitch": "Switch to new tab",
-          "infiniteScroll": "Infinite scroll",
-          "maximize": "Maximize window on start",
-          "background": "Background image",
+          "infiniteScroll": "Infinite scroll"
+        },
+        "theme": {
+          "dark": "Dark mode",
+          "system": "System theme",
+          "background": "Background",
           "transparency": "Transparency"
+        },
+        "window": {
+          "maximize": "Maximize on start",
+          "exit": "Exit on close"
+        },
+        "tabs": {
+          "newTabSwitch": "Switch to new tab",
+          "closeOnExit": "Close tabs on exit"
         },
         "search": {
           "source": "Source"
@@ -426,10 +436,6 @@
               "cleared": "Search history was cleared"
             }
           }
-        },
-        "other": {
-          "exit": "Exit on window close",
-          "closeTabs": "Close tabs on exit"
         }
       },
       "profile": {
