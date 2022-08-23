@@ -3,33 +3,42 @@
 
   <TheStoreObserver />
 
-  <ThePlayerObserver />
-
-  <TheBackground />
-
-  <TheView
-    v-if="isRootPage"
+  <RouterView
+    v-if="isAboutPage"
   />
-  <template v-else>
-    <TheNavbarPanel />
+  <template
+    v-else
+  >
+    <ThePlayerObserver />
 
-    <TheSidebarPanel />
+    <TheBackground />
 
-    <TheQueuePanel />
+    <TheView
+      v-if="isRootPage"
+    />
+    <template
+      v-else
+    >
+      <TheNavbarPanel />
 
-    <ThePlayerPanel />
+      <TheSidebarPanel />
 
-    <TheVisibleArea />
+      <TheQueuePanel />
 
-    <TheSearchModal />
+      <ThePlayerPanel />
 
-    <div class="pusher">
-      <TheLoaderDimmer />
+      <TheVisibleArea />
 
-      <TheView
-        ref="view"
-      />
-    </div>
+      <TheSearchModal />
+
+      <div class="pusher">
+        <TheLoaderDimmer />
+
+        <TheView
+          ref="view"
+        />
+      </div>
+    </template>
   </template>
 </template>
 
@@ -74,6 +83,9 @@ export default {
   computed: {
     isRootPage () {
       return this.$route.path === '/'
+    },
+    isAboutPage () {
+      return this.$route.path === '/about'
     }
   },
   methods: {

@@ -202,6 +202,9 @@ const MultitagPage = () => import(
 const SavedTracksPage = () => import(
   '*/views/SavedTracksPage.vue'
 )
+const AboutPage = () => import(
+  '*/views/AboutPage.vue'
+)
 
 export default [
   {
@@ -678,6 +681,13 @@ export default [
     exact: true,
     name: 'SavedTracksPage',
     component: SavedTracksPage,
+    props: true
+  },
+  {
+    path: '/about',
+    exact: true,
+    name: 'AboutPage',
+    component: AboutPage,
     props: true
   }
 ]

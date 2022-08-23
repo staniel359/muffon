@@ -587,6 +587,10 @@
   "feed": {
     "global": "Global feed"
   },
+  "about": {
+    "license": "{license} license",
+    "homepage": "Home page"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."

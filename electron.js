@@ -73,6 +73,14 @@ const icon =
     iconPath
   )
 
+const windowIcon =
+  icon.resize(
+    {
+      width: 64,
+      height: 64
+    }
+  )
+
 const baseUrl = getBaseUrl()
 
 function getBaseUrl () {
@@ -137,11 +145,10 @@ const defaultLocale =
 
 const locales = {
   en: {
-    tray: {
-      show: 'Show',
-      hide: 'Hide',
-      exit: 'Exit'
-    },
+    show: 'Show',
+    hide: 'Hide',
+    about: 'About',
+    exit: 'Exit',
     update: {
       message: 'Version {version} is available',
       buttons: {
@@ -151,11 +158,10 @@ const locales = {
     }
   },
   ru: {
-    tray: {
-      show: 'Показать',
-      hide: 'Скрыть',
-      exit: 'Выйти'
-    },
+    show: 'Показать',
+    hide: 'Скрыть',
+    about: 'О программе',
+    exit: 'Выход',
     update: {
       message: 'Доступна версия {version}',
       buttons: {
@@ -185,6 +191,8 @@ i18n.configure(
 )
 
 let mainWindow
+let aboutWindow
+
 let tray
 
 let latestRelease
@@ -524,6 +532,7 @@ function handleUpdateStore (
 
   const views = [
     mainWindow,
+    aboutWindow,
     ...getTabs()
   ]
 
@@ -575,6 +584,8 @@ function handleSetLanguage (
   )
 
   setTrayMenu()
+
+  setAboutWindowTitle()
 }
 
 function handleSaveAudio (
@@ -771,27 +782,20 @@ function setup () {
 
   createWindow()
 
+  createAboutWindow()
+
   createTray()
 
   createHeadersHandler()
 }
 
 function createWindow () {
-  const mainWindowIcon =
-    icon.resize(
-      {
-        width: 64,
-        height: 64
-      }
-    )
-
   mainWindow =
     new BrowserWindow(
       {
         width,
         height,
-        icon: mainWindowIcon,
-        autoHideMenuBar: true,
+        icon: windowIcon,
         show: false,
         webPreferences: {
           contextIsolation: false,
@@ -983,14 +987,21 @@ function setTrayMenu () {
     {
       type: 'normal',
       label: i18n.__(
-        `tray.${toggleKey}`
+        toggleKey
       ),
       click: toggleAction
     },
     {
       type: 'normal',
       label: i18n.__(
-        'tray.exit'
+        'about'
+      ),
+      click: showAboutWindow
+    },
+    {
+      type: 'normal',
+      label: i18n.__(
+        'exit'
       ),
       click: exit
     }
@@ -1020,6 +1031,8 @@ function show () {
 
 function hide () {
   mainWindow.hide()
+
+  aboutWindow.hide()
 
   setTrayMenu()
 }
@@ -1358,5 +1371,71 @@ function updateTheme () {
     {
       isDarkMode
     }
+  )
+}
+
+function createAboutWindow () {
+  const aboutWindowWidth = 450
+  const aboutWindowHeight = 230
+
+  aboutWindow =
+    new BrowserWindow(
+      {
+        width: aboutWindowWidth,
+        height: aboutWindowHeight,
+        icon: windowIcon,
+        show: false,
+        alwaysOnTop: true,
+        resizable: false,
+        maximizable: false,
+        fullscreenable: false,
+        webPreferences: {
+          contextIsolation: false,
+          nodeIntegration: true
+        }
+      }
+    )
+
+  aboutWindow.setMinimumSize(
+    aboutWindowWidth,
+    aboutWindowHeight
+  )
+
+  aboutWindow.setMenu(
+    null
+  )
+
+  aboutWindow.loadURL(
+    `${baseUrl}#/about`
+  )
+
+  function handleClose (
+    event
+  ) {
+    event.preventDefault()
+
+    aboutWindow.hide()
+  }
+
+  aboutWindow.on(
+    'close',
+    handleClose
+  )
+}
+
+function showAboutWindow () {
+  setAboutWindowTitle()
+
+  aboutWindow.show()
+}
+
+function setAboutWindowTitle () {
+  const title =
+    i18n.__(
+      'about'
+    )
+
+  aboutWindow.setTitle(
+    title
   )
 }
