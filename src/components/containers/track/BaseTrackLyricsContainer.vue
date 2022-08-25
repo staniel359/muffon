@@ -4,6 +4,7 @@
     :response-data="trackData"
     :is-loading="isLoading"
     :error="error"
+    :is-change-transparency="false"
     @refresh="handleRefresh"
   >
     <slot
