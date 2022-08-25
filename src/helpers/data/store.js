@@ -63,6 +63,8 @@ export const keysActions = {
     'profile/setIsShowPlaying',
   'profile.language':
     'profile/setLanguage',
+  'profile.timezone':
+    'profile/setTimezone',
   'recommendations.isHideLibraryArtists':
     'recommendations/setIsHideLibraryArtists',
   'recommendations.tracksCount':

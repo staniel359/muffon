@@ -2,6 +2,7 @@ import store from '*/plugins/store'
 import {
   generateKey
 } from '*/helpers/utils'
+import moment from 'moment-timezone'
 
 export function collection (
   value
@@ -98,39 +99,35 @@ export function date (
   value
 ) {
   const {
+    timezone,
     language
   } = store.state.profile
 
-  const options = {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  }
-
-  const date = new Date(
+  return moment.utc(
     value
+  ).tz(
+    timezone
+  ).locale(
+    language
+  ).format(
+    'll'
   )
-
-  return date
-    .toLocaleDateString(
-      language,
-      options
-    )
 }
 
 export function time (
   value
 ) {
-  const date = new Date(
-    value
-  )
+  const {
+    timezone
+  } = store.state.profile
 
-  return date
-    .toString()
-    .substr(
-      16,
-      8
-    )
+  return moment.utc(
+    value
+  ).tz(
+    timezone
+  ).format(
+    'HH:mm:ss'
+  )
 }
 
 export function age (

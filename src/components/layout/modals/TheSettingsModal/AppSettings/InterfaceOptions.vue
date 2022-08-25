@@ -8,6 +8,8 @@
     <div>
       <LanguageOption />
 
+      <TimezoneOption />
+
       <InfiniteScrollOption />
     </div>
   </div>
@@ -16,6 +18,7 @@
 <script>
 import BaseDivider from '*/components/BaseDivider.vue'
 import LanguageOption from './InterfaceOptions/LanguageOption.vue'
+import TimezoneOption from './InterfaceOptions/TimezoneOption.vue'
 import InfiniteScrollOption from './InterfaceOptions/InfiniteScrollOption.vue'
 
 export default {
@@ -23,6 +26,7 @@ export default {
   components: {
     BaseDivider,
     LanguageOption,
+    TimezoneOption,
     InfiniteScrollOption
   },
   computed: {

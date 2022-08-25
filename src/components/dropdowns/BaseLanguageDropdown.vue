@@ -2,7 +2,6 @@
   <BaseDropdownContainer
     class="main-language-dropdown"
     :selected="profileLanguage"
-    is-selection
   >
     <LanguageOption
       v-for="(localeData, index) in locales"

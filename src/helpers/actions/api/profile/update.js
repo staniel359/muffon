@@ -14,8 +14,7 @@ export default function (
     gender,
     birthdate,
     country,
-    city,
-    isRemember
+    city
   }
 ) {
   this.profileData = null

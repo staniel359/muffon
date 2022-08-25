@@ -4,8 +4,9 @@ export default {
     info: null,
     token: null,
     isRemember: false,
-    language: null,
-    isShowPlaying: false
+    language: 'en',
+    isShowPlaying: false,
+    timezone: 'UTC'
   },
   getters: {
     id (
@@ -44,6 +45,12 @@ export default {
       value
     ) {
       state.isShowPlaying = value
+    },
+    SET_TIMEZONE (
+      state,
+      value
+    ) {
+      state.timezone = value
     }
   },
   actions: {
@@ -99,6 +106,17 @@ export default {
     ) {
       commit(
         'SET_IS_SHOW_PLAYING',
+        value
+      )
+    },
+    setTimezone (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_TIMEZONE',
         value
       )
     }

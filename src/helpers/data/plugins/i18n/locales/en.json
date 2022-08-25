@@ -389,6 +389,7 @@
       "app": {
         "interface": {
           "language": "Language",
+          "timezone": "Time zone",
           "infiniteScroll": "Infinite scroll"
         },
         "theme": {

@@ -145,6 +145,10 @@ export default {
     type: 'array',
     default: []
   },
+  'profile.timezone': {
+    type: 'string',
+    default: 'UTC'
+  },
   'profile.token': {
     type: [
       'null',

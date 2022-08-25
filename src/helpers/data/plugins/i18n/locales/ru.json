@@ -389,6 +389,7 @@
       "app": {
         "interface": {
           "language": "Язык",
+          "timezone": "Часовой пояс",
           "infiniteScroll": "Бесконечная прокрутка"
         },
         "theme": {
