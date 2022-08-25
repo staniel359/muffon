@@ -27,7 +27,6 @@
     "camel-case": "^4.1.2",
     "core-js": "^3.24.1",
     "crypto-js": "^4.1.1",
-    "dayjs": "^1.11.5",
     "deepmerge": "^4.2.2",
     "electron-dl": "^3.3.1",
     "electron-store": "^8.1.0",

@@ -1,10 +1,6 @@
-import dayjs from 'dayjs'
-import localeData from 'dayjs/plugin/localeData'
-import 'dayjs/locale/en'
-import 'dayjs/locale/it'
-import 'dayjs/locale/ru'
 import store from '*/plugins/store'
 import i18n from '*/plugins/i18n'
+import moment from 'moment-timezone'
 
 export function mainModalOptions (
   {
@@ -557,41 +553,30 @@ export function birthdateCalendarOptions (
     language
   } = store.state.profile
 
-  dayjs.extend(
-    localeData
-  )
-
-  dayjs.locale(
+  moment.locale(
     language
   )
 
-  const days = dayjs.weekdaysMin()
-  const months = dayjs.months()
-  const monthsShort = dayjs.monthsShort()
+  const days =
+    moment.weekdaysShort()
+  const months =
+    moment.months()
+  const monthsShort =
+    moment.monthsShort()
 
-  const today = new Date()
+  const minDate =
+    moment().subtract(
+      100,
+      'years'
+    ).toDate()
 
-  const year = today.getFullYear()
-  const month = today.getMonth()
-  const day = today.getDate()
-
-  const minDate = new Date(
-    year - 100,
-    month,
-    day
-  )
-
-  const maxDate = new Date(
-    year,
-    month,
-    day
-  )
+  const maxDate = moment().toDate()
 
   const initialDate = (
     startDate &&
-      new Date(
+      moment(
         startDate
-      )
+      ).toDate()
   )
 
   return {

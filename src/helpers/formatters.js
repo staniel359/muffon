@@ -54,42 +54,22 @@ export function number (
 export function seconds (
   value
 ) {
-  const date = new Date(
+  return moment(
     value * 1000
+  ).format(
+    'mm:ss'
   )
-
-  return date
-    .toISOString()
-    .substr(
-      14,
-      5
-    )
 }
 
 export function stringToDate (
   value
 ) {
   if (value) {
-    const day = value.getDate()
-    const month = value.getMonth()
-    const year = value.getFullYear()
-
-    const utcDate = Date.UTC(
-      year,
-      month,
-      day
+    return moment(
+      value
+    ).format(
+      'YYYY-MM-DD'
     )
-
-    const date = new Date(
-      utcDate
-    )
-
-    return date
-      .toISOString()
-      .substr(
-        0,
-        10
-      )
   } else {
     return null
   }
@@ -133,20 +113,9 @@ export function time (
 export function age (
   value
 ) {
-  const ageInMilliseconds = (
-    new Date() -
-      new Date(
-        value
-      )
-  )
-
-  const ageInDatetime =
-    new Date(
-      ageInMilliseconds
-    )
-
-  return Math.abs(
-    ageInDatetime.getUTCFullYear() - 1970
+  return moment().diff(
+    value,
+    'years'
   )
 }
 
@@ -190,13 +159,19 @@ export function playsToTracks (
     first,
     second
   ) {
-    return (
-      new Date(
-        second.created
-      ) -
-      new Date(
+    const firstCreated =
+      moment(
         first.created
-      )
+      ).toDate()
+
+    const secondCreated =
+      moment(
+        second.created
+      ).toDate()
+
+    return (
+      secondCreated -
+        firstCreated
     )
   }
 
