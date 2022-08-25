@@ -4,13 +4,14 @@ import moment from 'moment-timezone'
 
 export function mainModalOptions (
   {
+    isMultiple,
     onShow,
     onVisible
   }
 ) {
   return {
     autofocus: false,
-    allowMultiple: true,
+    allowMultiple: isMultiple,
     duration: 100,
     transition: 'fade',
     dimmerSettings: {

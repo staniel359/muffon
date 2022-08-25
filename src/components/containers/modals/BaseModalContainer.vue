@@ -27,7 +27,8 @@ import {
 export default {
   name: 'BaseModalContainer',
   props: {
-    isImageModal: Boolean
+    isImageModal: Boolean,
+    isMultiple: Boolean
   },
   emits: [
     'show',
@@ -54,6 +55,7 @@ export default {
     modalOptions () {
       return mainModalOptions(
         {
+          isMultiple: this.isMultiple,
           onShow: this.handleShow,
           onVisible: this.handleVisible
         }

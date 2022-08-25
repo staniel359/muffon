@@ -5,7 +5,9 @@
     @click="handleClick"
   />
 
-  <TheSettingsModal ref="modal" />
+  <TheSettingsModal
+    ref="modal"
+  />
 </template>
 
 <script>

@@ -1,6 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    is-multiple
     @visible="handleVisible"
   >
     <div
