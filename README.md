@@ -17,7 +17,7 @@ It retrieves metadata, audio, and video from various Internet sources, such as:
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
 - <img src="https://open.scdn.co/cdn/images/favicon32.8e66b099.png" height="16"> **Spotify**
 - <img src="https://www.youtube.com/s/desktop/18069be1/img/favicon_32x32.png" height="16"> **YouTube**
-- <img src="https://s.discogs.com/2e8a72413add0d361c89da1fe431d0c725e90504/images/favicon-32x32.png" height="16"> **Discogs**
+- <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
 
 It has **no ads** and is **absolutely free** to use.
