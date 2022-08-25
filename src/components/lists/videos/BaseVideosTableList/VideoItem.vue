@@ -28,7 +28,7 @@
     <div class="content">
       <div class="description main-small-container">
         <small
-          v-text="publishDate"
+          v-text="publishDateFormatted"
         />
       </div>
     </div>
@@ -50,6 +50,9 @@ import {
 import {
   video as formatVideoShareData
 } from '*/helpers/formatters/share'
+import {
+  date as formatDate
+} from '*/helpers/formatters'
 
 export default {
   name: 'VideoItem',
@@ -86,6 +89,11 @@ export default {
     },
     videoTitle () {
       return this.videoData.title
+    },
+    publishDateFormatted () {
+      return formatDate(
+        this.publishDate
+      )
     },
     publishDate () {
       return this.videoData.publish_date
