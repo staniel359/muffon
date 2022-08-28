@@ -35,10 +35,10 @@ export default {
     }
   },
   mounted () {
-    setVisibility(
-      this.scrollable,
-      this.visibilityOptions
-    )
+    this.initialize()
+  },
+  activated () {
+    this.initialize()
   },
   methods: {
     handleTopPass () {
@@ -46,6 +46,12 @@ export default {
     },
     handleTopReversePass () {
       this.isShow = false
+    },
+    initialize () {
+      setVisibility(
+        this.scrollable,
+        this.visibilityOptions
+      )
     }
   }
 }
