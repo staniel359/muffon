@@ -12,6 +12,18 @@
   "ignorePatterns": [
     "semantic/**/*"
   ],
+  "overrides": [
+    {
+      "files": [
+        "electron.js",
+        "electron/**/*"
+      ],
+      "rules": {
+        "no-undef": "off",
+        "no-unused-expressions": "off"
+      }
+    }
+  ],
   "parserOptions": {
     "ecmaVersion": "latest",
     "parser": "@babel/eslint-parser",

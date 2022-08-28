@@ -28,7 +28,8 @@
     "output": "build_electron"
   },
   "files": [
-    "electron.js",
+    "./electron.js",
+    "./electron/**/*",
     {
       "from": "./build",
       "to": "./"
