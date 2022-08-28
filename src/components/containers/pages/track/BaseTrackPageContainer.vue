@@ -65,7 +65,8 @@ export default {
       return {
         artistName: this.artistName,
         trackTitle: this.trackTitle,
-        sourceParams: this.sourceParams,
+        sourceParams:
+          this.requestTrackData,
         scope: this.scope
       }
     },
