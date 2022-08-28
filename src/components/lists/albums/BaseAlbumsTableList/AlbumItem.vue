@@ -50,7 +50,7 @@
       <div
         v-if="releaseDate"
         class="description"
-        v-text="releaseDate"
+        v-text="releaseDateFormatted"
       />
 
       <BaseAlbumListenersCount
@@ -98,6 +98,9 @@ import BaseAlbumListenersCount
 import TracksSection from './AlbumItem/TracksSection.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import selfMixin from '*/mixins/selfMixin'
+import {
+  date as formatDate
+} from '*/helpers/formatters'
 
 export default {
   name: 'AlbumItem',
@@ -156,6 +159,11 @@ export default {
     },
     imageData () {
       return this.albumData.image
+    },
+    releaseDateFormatted () {
+      return formatDate(
+        this.releaseDate
+      )
     },
     releaseDate () {
       return this.albumData.release_date
