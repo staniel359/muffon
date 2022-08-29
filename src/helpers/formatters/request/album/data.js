@@ -73,12 +73,6 @@ export default function (
         return {
           albumId: albumData.source.id
         }
-      case 'rateyourmusic':
-        return {
-          albumId: encodeURIComponent(
-            albumData.source.slug
-          )
-        }
       default:
         return {}
     }

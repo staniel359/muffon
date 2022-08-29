@@ -62,12 +62,6 @@ export default function (
         return {
           trackId: trackData.source.id
         }
-      case 'rateyourmusic':
-        return {
-          trackId: encodeURIComponent(
-            trackData.source.slug
-          )
-        }
       default:
         return {}
     }

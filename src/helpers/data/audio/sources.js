@@ -181,29 +181,6 @@ export default [
       'tracks'
     ]
   },
-  // {
-  //   id: 'rateyourmusic',
-  //   icon: 'rateyourmusic',
-  //   name: 'Rate Your Music',
-  //   isStreamable: false,
-  //   isWithAlbums: true,
-  //   isWithTracks: false,
-  //   albumTypes: [
-  //     'album',
-  //     'albumVarious'
-  //   ],
-  //   albumsTypes: [
-  //     'album',
-  //     'ep',
-  //     'single',
-  //     'live',
-  //     'compilation',
-  //     'appearance',
-  //     'unofficial',
-  //     'various',
-  //     'video'
-  //   ]
-  // },
   {
     id: 'youtube',
     icon: 'youtube',

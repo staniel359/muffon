@@ -50,10 +50,6 @@ export default function (
         return {
           artistId: artistData.source.id
         }
-      case 'rateyourmusic':
-        return {
-          artistId: artistData.source.id
-        }
       default:
         return {}
     }
