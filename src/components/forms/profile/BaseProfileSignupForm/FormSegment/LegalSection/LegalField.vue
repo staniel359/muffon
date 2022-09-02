@@ -1,59 +1,36 @@
 <template>
   <div class="field">
-    <div
-      ref="checkbox"
-      class="ui checkbox"
+    <BaseCheckbox
+      name="legal"
     >
-      <input
-        type="checkbox"
-        name="legal"
-      >
-
-      <label>
+      <template #text>
         <span
           v-text="agreeText"
         />
 
-        <strong
-          class="main-link"
-          @click.stop="handlePrivacyPolicyTextClick"
-          v-text="privacyPolicyText"
-        />
+        <PrivacyPolicyText />
 
         <span
           v-text="andText"
         />
 
-        <strong
-          class="main-link"
-          @click.stop="handleTermsAndConditionsTextClick"
-          v-text="termsAndConditionsText"
-        />
-      </label>
-    </div>
-
-    <PrivacyPolicyModal
-      ref="privacyPolicyModal"
-    />
-
-    <TermsAndConditionsModal
-      ref="termsAndConditionsModal"
-    />
+        <TermsAndConditionsText />
+      </template>
+    </BaseCheckbox>
   </div>
 </template>
 
 <script>
-import PrivacyPolicyModal from './LegalField/PrivacyPolicyModal.vue'
-import TermsAndConditionsModal from './LegalField/TermsAndConditionsModal.vue'
-import {
-  setCheckbox
-} from '*/helpers/actions/plugins/semantic'
+import BaseCheckbox from '*/components/BaseCheckbox.vue'
+import PrivacyPolicyText from './LegalField/PrivacyPolicyText.vue'
+import TermsAndConditionsText from './LegalField/TermsAndConditionsText.vue'
 
 export default {
   name: 'LegalField',
   components: {
-    PrivacyPolicyModal,
-    TermsAndConditionsModal
+    BaseCheckbox,
+    PrivacyPolicyText,
+    TermsAndConditionsText
   },
   computed: {
     agreeText () {
@@ -61,37 +38,10 @@ export default {
         'forms.fields.legal.agree'
       )
     },
-    privacyPolicyText () {
-      return this.$t(
-        'forms.fields.legal.privacyPolicy'
-      )
-    },
     andText () {
       return this.$t(
         'forms.fields.legal.and'
       )
-    },
-    termsAndConditionsText () {
-      return this.$t(
-        'forms.fields.legal.termsAndConditions'
-      )
-    }
-  },
-  mounted () {
-    setCheckbox(
-      this.$refs.checkbox
-    )
-  },
-  methods: {
-    handlePrivacyPolicyTextClick () {
-      this.$refs
-        .privacyPolicyModal
-        .show()
-    },
-    handleTermsAndConditionsTextClick () {
-      this.$refs
-        .termsAndConditionsModal
-        .show()
     }
   }
 }

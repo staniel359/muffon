@@ -1,27 +1,20 @@
 <template>
-  <div
-    ref="checkbox"
-    class="ui checkbox main-as-community-checkbox"
-  >
-    <input
-      type="checkbox"
-      name="community"
-      :checked="isChecked"
-    >
-
-    <label
-      v-text="asCommunityText"
-    />
-  </div>
+  <BaseCheckbox
+    class="main-as-community-checkbox"
+    name="community"
+    :is-checked="isChecked"
+    :text="asCommunityText"
+  />
 </template>
 
 <script>
-import {
-  setCheckbox
-} from '*/helpers/actions/plugins/semantic'
+import BaseCheckbox from '*/components/BaseCheckbox.vue'
 
 export default {
   name: 'BasePostAsCommunityField',
+  components: {
+    BaseCheckbox
+  },
   props: {
     isChecked: Boolean
   },
@@ -31,11 +24,6 @@ export default {
         'forms.fields.asCommunity'
       )
     }
-  },
-  mounted () {
-    setCheckbox(
-      this.$refs.checkbox
-    )
   }
 }
 </script>

@@ -1,39 +1,26 @@
 <template>
   <div class="field remember-field">
-    <div
-      ref="checkbox"
-      class="ui checkbox"
-    >
-      <input
-        type="checkbox"
-        name="remember"
-      >
-
-      <label
-        v-text="rememberText"
-      />
-    </div>
+    <BaseCheckbox
+      name="remember"
+      :text="rememberText"
+    />
   </div>
 </template>
 
 <script>
-import {
-  setCheckbox
-} from '*/helpers/actions/plugins/semantic'
+import BaseCheckbox from '*/components/BaseCheckbox.vue'
 
 export default {
   name: 'BaseProfileRememberField',
+  components: {
+    BaseCheckbox
+  },
   computed: {
     rememberText () {
       return this.$t(
         'forms.fields.remember'
       )
     }
-  },
-  mounted () {
-    setCheckbox(
-      this.$refs.checkbox
-    )
   }
 }
 </script>
