@@ -27,6 +27,7 @@
           <LeftColumn
             v-if="scrollable"
             :track-data="slotProps.trackData"
+            :request-track-data="slotProps.requestTrackData"
             :scrollable="scrollable"
           />
 

@@ -592,6 +592,7 @@
     "license": "Лицензия {license}",
     "homepage": "Домашняя страница"
   },
+  "listeners": "{count} слушателей | {count} слушатель | {count} слушателя",
   "error": "Ошибка",
   "more": "Ещё...",
   "loading": "Загрузка..."

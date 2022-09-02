@@ -1,19 +1,24 @@
 <template>
-  <BaseSegmentModalContainer
+  <Component
+    :is="component"
     ref="modal"
     :key="key"
     :response-data="albumData"
     :is-loading="isLoading"
     :error="error"
+    :scope="scope"
+    :limit="limit"
     @call="handleCall"
   >
     <slot
       :[scope]="albumData[scope]"
     />
-  </BaseSegmentModalContainer>
+  </Component>
 </template>
 
 <script>
+import BasePaginatedSegmentModalContainer
+  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseSegmentModalContainer
   from '*/components/containers/modals/BaseSegmentModalContainer.vue'
 import getAlbum from '*/helpers/actions/api/album/get'
@@ -25,6 +30,7 @@ import modalMixin from '*/mixins/modalMixin'
 export default {
   name: 'BaseAlbumModalContainer',
   components: {
+    BasePaginatedSegmentModalContainer,
     BaseSegmentModalContainer
   },
   mixins: [
@@ -38,7 +44,9 @@ export default {
     scope: {
       type: String,
       required: true
-    }
+    },
+    limit: Number,
+    isPaginated: Boolean
   },
   data () {
     return {
@@ -49,10 +57,18 @@ export default {
     }
   },
   computed: {
+    component () {
+      if (this.isPaginated) {
+        return 'BasePaginatedSegmentModalContainer'
+      } else {
+        return 'BaseSegmentModalContainer'
+      }
+    },
     albumArgs () {
       return {
         ...this.requestAlbumData,
-        scope: this.scope
+        scope: this.scope,
+        limit: this.limit
       }
     }
   },

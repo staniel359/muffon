@@ -1,4 +1,6 @@
 <template>
+  <BaseDivider />
+
   <div class="main-self-container">
     <BaseSelfIcons
       class="track-self-icons"
@@ -26,6 +28,7 @@
 </template>
 
 <script>
+import BaseDivider from '*/components/BaseDivider.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
 import BaseTrackOptionsDropdown
   from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
@@ -33,6 +36,7 @@ import BaseTrackOptionsDropdown
 export default {
   name: 'SelfSection',
   components: {
+    BaseDivider,
     BaseSelfIcons,
     BaseTrackOptionsDropdown
   },

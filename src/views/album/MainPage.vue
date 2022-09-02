@@ -27,6 +27,7 @@
           <LeftColumn
             v-if="scrollable"
             :album-data="pageSlotProps.albumData"
+            :request-album-data="pageSlotProps.requestAlbumData"
             :scrollable="scrollable"
           />
 

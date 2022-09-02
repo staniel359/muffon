@@ -9,6 +9,7 @@
         :artist-data="slotProps.artistData"
         :scrollable="container"
       />
+
       <RightColumn
         :artist-data="slotProps.artistData"
       />
