@@ -593,6 +593,9 @@
     "homepage": "Home page"
   },
   "listeners": "{count} listener | {count} listeners",
+  "private": {
+    "playlist": "Private"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."

@@ -23,6 +23,11 @@
               ref="title"
               :value="playlistTitle"
             />
+
+            <BasePrivateField
+              model="playlist"
+              :is-checked="isPrivate"
+            />
           </div>
         </div>
 
@@ -43,6 +48,7 @@ import BasePlaylistUpdateFormContainer
   from '*/components/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
 import BaseImageField from '*/components/fields/BaseImageField.vue'
 import BaseTitleField from '*/components/fields/BaseTitleField.vue'
+import BasePrivateField from '*/components/fields/BasePrivateField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
@@ -52,6 +58,7 @@ export default {
     BasePlaylistUpdateFormContainer,
     BaseImageField,
     BaseTitleField,
+    BasePrivateField,
     BaseSubmitButton
   },
   props: {
@@ -74,6 +81,9 @@ export default {
     },
     imageData () {
       return this.playlistData.image
+    },
+    isPrivate () {
+      return this.playlistData.private
     }
   },
   methods: {

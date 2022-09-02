@@ -27,6 +27,12 @@
           :text="playlistTitle"
         />
 
+        <BasePrivateSection
+          v-if="isPrivate"
+          class="description"
+          model="playlist"
+        />
+
         <span
           v-if="isWithProfileNickname"
           class="description profile-nickname"
@@ -73,6 +79,7 @@ import BaseLinkContainer
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BasePrivateSection from '*/components/BasePrivateSection.vue'
 import BaseLink from '*/components/links/BaseLink.vue'
 import BasePlaylistOptionsDropdown
   from '*/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -100,6 +107,7 @@ export default {
     BaseDeletedBlock,
     BaseImage,
     BaseHeader,
+    BasePrivateSection,
     BaseLink,
     BasePlaylistOptionsDropdown,
     BaseClearButton,
@@ -212,6 +220,9 @@ export default {
       return formatPlaylistShareData(
         this.playlistData
       )
+    },
+    isPrivate () {
+      return this.playlistData.private
     }
   },
   methods: {

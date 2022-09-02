@@ -116,7 +116,9 @@ export default {
 
       return {
         title,
-        image
+        image,
+        isPrivate:
+          fields.private
       }
     }
   }

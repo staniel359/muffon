@@ -12,10 +12,10 @@ export default function (
   const url =
     `/profiles/${profileId}/online`
 
-  const online = isOnline ? 1 : 0
-
   const params = {
-    online
+    online: (
+      isOnline ? 1 : 0
+    )
   }
 
   return patchRequest(

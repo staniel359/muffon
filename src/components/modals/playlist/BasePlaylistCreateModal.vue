@@ -17,7 +17,13 @@
           />
 
           <div class="fields-right-column">
-            <BaseTitleField ref="title" />
+            <BaseTitleField
+              ref="title"
+            />
+
+            <BasePrivateField
+              model="playlist"
+            />
           </div>
         </div>
 
@@ -38,6 +44,7 @@ import BasePlaylistCreateFormContainer
   from '*/components/containers/forms/playlist/BasePlaylistCreateFormContainer.vue'
 import BaseImageField from '*/components/fields/BaseImageField.vue'
 import BaseTitleField from '*/components/fields/BaseTitleField.vue'
+import BasePrivateField from '*/components/fields/BasePrivateField.vue'
 import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
@@ -47,6 +54,7 @@ export default {
     BasePlaylistCreateFormContainer,
     BaseImageField,
     BaseTitleField,
+    BasePrivateField,
     BaseSubmitButton
   },
   data () {

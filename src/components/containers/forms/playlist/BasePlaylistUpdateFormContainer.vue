@@ -123,9 +123,12 @@ export default {
       const image = this.image.data
 
       return {
-        playlistId: this.playlistId,
+        playlistId:
+          this.playlistId,
         title,
-        image
+        image,
+        isPrivate:
+          fields.private
       }
     },
     notify () {

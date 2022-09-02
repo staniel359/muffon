@@ -21,6 +21,12 @@
             :text="playlistTitle"
           />
 
+          <BasePrivateSection
+            v-if="isPrivate"
+            class="description"
+            model="playlist"
+          />
+
           <div
             class="description"
             v-html="tracksCountText"
@@ -65,6 +71,7 @@ import BaseListContainer
   from '*/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
+import BasePrivateSection from '*/components/BasePrivateSection.vue'
 import BaseTimestamp from '*/components/BaseTimestamp.vue'
 import BasePlaylistOptionsDropdown
   from '*/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -89,6 +96,7 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
+    BasePrivateSection,
     BaseTimestamp,
     BasePlaylistOptionsDropdown,
     BasePlaylistUpdateModal,
@@ -143,6 +151,9 @@ export default {
       return formatPlaylistShareData(
         this.playlistData
       )
+    },
+    isPrivate () {
+      return this.playlistData.private
     }
   },
   methods: {

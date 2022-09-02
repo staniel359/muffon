@@ -593,6 +593,9 @@
     "homepage": "Домашняя страница"
   },
   "listeners": "{count} слушателей | {count} слушатель | {count} слушателя",
+  "private": {
+    "playlist": "Приватный"
+  },
   "error": "Ошибка",
   "more": "Ещё...",
   "loading": "Загрузка..."

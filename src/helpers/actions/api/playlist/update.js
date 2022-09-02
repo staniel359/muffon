@@ -8,7 +8,8 @@ export default function (
   {
     playlistId,
     title,
-    image
+    image,
+    isPrivate
   }
 ) {
   this.playlistData = null
@@ -21,7 +22,10 @@ export default function (
 
   const params = {
     title,
-    image
+    image,
+    private: (
+      isPrivate ? 1 : 0
+    )
   }
 
   const handleSuccess = (
