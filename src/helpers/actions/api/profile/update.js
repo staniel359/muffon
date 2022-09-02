@@ -14,7 +14,8 @@ export default function (
     gender,
     birthdate,
     country,
-    city
+    city,
+    isPrivate
   }
 ) {
   this.profileData = null
@@ -38,7 +39,10 @@ export default function (
     gender,
     birthdate,
     country,
-    city
+    city,
+    private: (
+      isPrivate ? 1 : 0
+    )
   }
 
   const handleSuccess = (

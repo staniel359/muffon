@@ -159,9 +159,12 @@ export default {
         nickname,
         image,
         gender,
-        birthdate: birthdateFormatted,
+        birthdate:
+          birthdateFormatted,
         country,
         city,
+        isPrivate:
+          fields.private,
         isRemember
       }
     },

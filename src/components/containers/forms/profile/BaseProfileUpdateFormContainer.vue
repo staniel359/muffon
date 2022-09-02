@@ -133,9 +133,12 @@ export default {
         nickname,
         image,
         gender,
-        birthdate: birthdateFormatted,
+        birthdate:
+          birthdateFormatted,
         country,
-        city
+        city,
+        isPrivate:
+          fields.private
       }
     },
     notify () {

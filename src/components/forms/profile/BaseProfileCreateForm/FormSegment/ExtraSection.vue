@@ -17,6 +17,10 @@
           <BaseProfileCountryField />
 
           <BaseProfileCityField />
+
+          <BasePrivateField
+            model="profile"
+          />
         </div>
       </div>
     </BaseAccordionContainer>
@@ -36,6 +40,7 @@ import BaseProfileCountryField
   from '*/components/fields/profile/BaseProfileCountryField.vue'
 import BaseProfileCityField
   from '*/components/fields/profile/BaseProfileCityField.vue'
+import BasePrivateField from '*/components/fields/BasePrivateField.vue'
 
 export default {
   name: 'ExtraSection',
@@ -45,7 +50,8 @@ export default {
     BaseProfileGenderField,
     BaseProfileBirthdateField,
     BaseProfileCountryField,
-    BaseProfileCityField
+    BaseProfileCityField,
+    BasePrivateField
   },
   emits: [
     'imageChange'

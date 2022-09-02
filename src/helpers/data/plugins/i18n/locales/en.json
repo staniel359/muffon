@@ -594,7 +594,8 @@
   },
   "listeners": "{count} listener | {count} listeners",
   "private": {
-    "playlist": "Private"
+    "playlist": "Private",
+    "profile": "Private"
   },
   "error": "Error",
   "more": "More...",

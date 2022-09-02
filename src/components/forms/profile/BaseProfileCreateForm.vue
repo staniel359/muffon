@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import FormSegment from './BaseProfileSignupForm/FormSegment.vue'
-import LoginSegment from './BaseProfileSignupForm/LoginSegment.vue'
+import FormSegment from './BaseProfileCreateForm/FormSegment.vue'
+import LoginSegment from './BaseProfileCreateForm/LoginSegment.vue'
 
 export default {
-  name: 'BaseProfileSignupForm',
+  name: 'BaseProfileCreateForm',
   components: {
     FormSegment,
     LoginSegment

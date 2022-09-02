@@ -594,7 +594,8 @@
   },
   "listeners": "{count} слушателей | {count} слушатель | {count} слушателя",
   "private": {
-    "playlist": "Приватный"
+    "playlist": "Приватный",
+    "profile": "Приватный"
   },
   "error": "Ошибка",
   "more": "Ещё...",

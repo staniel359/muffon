@@ -22,6 +22,11 @@
       <BaseProfileCityField
         :value="city"
       />
+
+      <BasePrivateField
+        model="profile"
+        :is-checked="isPrivate"
+      />
     </div>
   </div>
 </template>
@@ -40,6 +45,7 @@ import BaseProfileCountryField
   from '*/components/fields/profile/BaseProfileCountryField.vue'
 import BaseProfileCityField
   from '*/components/fields/profile/BaseProfileCityField.vue'
+import BasePrivateField from '*/components/fields/BasePrivateField.vue'
 
 export default {
   name: 'ExtraSection',
@@ -48,7 +54,8 @@ export default {
     BaseProfileGenderField,
     BaseProfileBirthdateField,
     BaseProfileCountryField,
-    BaseProfileCityField
+    BaseProfileCityField,
+    BasePrivateField
   },
   emits: [
     'imageChange'
@@ -74,6 +81,9 @@ export default {
     },
     city () {
       return this.profileInfo.city
+    },
+    isPrivate () {
+      return this.profileInfo.private
     }
   },
   methods: {

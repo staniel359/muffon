@@ -16,7 +16,7 @@
         v-else-if="isPasswordReset"
         @back-link-click="handleBackLinkClick"
       />
-      <BaseProfileSignupForm
+      <BaseProfileCreateForm
         v-else-if="isSignup"
         @login-link-click="handleLoginLinkClick"
       />
@@ -30,8 +30,8 @@ import BaseProfileLoginForm
   from '*/components/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfilePasswordResetForm
   from '*/components/forms/profile/BaseProfilePasswordResetForm.vue'
-import BaseProfileSignupForm
-  from '*/components/forms/profile/BaseProfileSignupForm.vue'
+import BaseProfileCreateForm
+  from '*/components/forms/profile/BaseProfileCreateForm.vue'
 
 export default {
   name: 'TheAuthentication',
@@ -39,7 +39,7 @@ export default {
     BaseHeader,
     BaseProfileLoginForm,
     BaseProfilePasswordResetForm,
-    BaseProfileSignupForm
+    BaseProfileCreateForm
   },
   data () {
     return {

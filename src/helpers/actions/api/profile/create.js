@@ -14,6 +14,7 @@ export default function (
     birthdate,
     country,
     city,
+    isPrivate,
     isRemember
   }
 ) {
@@ -29,7 +30,10 @@ export default function (
     gender,
     birthdate,
     country,
-    city
+    city,
+    private: (
+      isPrivate ? 1 : 0
+    )
   }
 
   const handleSuccess = (
