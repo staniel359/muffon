@@ -31,6 +31,8 @@
 
       <TheSearchModal />
 
+      <TheScrollToTopButton />
+
       <div class="pusher">
         <TheLoaderDimmer />
 
@@ -57,6 +59,7 @@ import TheQueuePanel from '*/components/layout/panels/TheQueuePanel.vue'
 import ThePlayerPanel from '*/components/layout/panels/ThePlayerPanel.vue'
 import TheVisibleArea from '*/components/layout/TheVisibleArea.vue'
 import TheSearchModal from '*/components/layout/modals/TheSearchModal.vue'
+import TheScrollToTopButton from '*/components/layout/TheScrollToTopButton.vue'
 import TheLoaderDimmer from '*/components/layout/TheLoaderDimmer.vue'
 
 export default {
@@ -73,6 +76,7 @@ export default {
     ThePlayerPanel,
     TheVisibleArea,
     TheSearchModal,
+    TheScrollToTopButton,
     TheLoaderDimmer
   },
   provide () {

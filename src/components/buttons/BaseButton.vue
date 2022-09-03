@@ -2,10 +2,10 @@
   <div
     ref="button"
     class="ui button main-simple-button"
-    :class="{
-      inverted: isDarkMode,
-      icon: !!icon && !text
-    }"
+    :class="[
+      buttonColorClass,
+      buttonIconClass
+    ]"
     @click="handleClick"
   >
     <BaseIcon
@@ -39,7 +39,8 @@ export default {
   props: {
     icon: String,
     text: String,
-    isReverse: Boolean
+    isReverse: Boolean,
+    isPlain: Boolean
   },
   emits: [
     'init',
@@ -51,7 +52,32 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    buttonColorClass () {
+      if (this.isPlain) {
+        if (this.isDarkMode) {
+          return 'black'
+        } else {
+          return 'white'
+        }
+      } else {
+        if (this.isDarkMode) {
+          return 'inverted'
+        } else {
+          return null
+        }
+      }
+    },
+    buttonIconClass () {
+      if (
+        !!this.icon &&
+          !this.text
+      ) {
+        return 'icon'
+      } else {
+        return null
+      }
+    }
   },
   mounted () {
     this.$emit(
