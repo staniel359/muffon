@@ -2,11 +2,19 @@
   "name": "muffon",
   "version": "0.2.0",
   "description": "Desktop music streaming browser",
+  "homepage": "https://github.com/staniel359/muffon",
+  "bugs": {
+    "url": "https://github.com/staniel359/muffon/issues",
+    "email": "staniel359@gmail.com"
+  },
+  "license": "MIT",
   "author": {
     "name": "Aleksey Shpakovsky",
     "email": "staniel359@gmail.com",
     "url": "https://github.com/staniel359"
   },
+  "main": "electron.js",
+  "repository": "github:staniel359/muffon",
   "scripts": {
     "start": "vue-cli-service serve",
     "start:electron": "NODE_ENV=development electron .",
@@ -20,7 +28,6 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
-  "main": "electron.js",
   "dependencies": {
     "@emoji-mart/data": "^1.0.5",
     "axios": "^0.27.2",
@@ -68,6 +75,12 @@
     "sass-loader": "^13.0.2",
     "vue-cli-plugin-i18n": "^2.3.1"
   },
-  "homepage": "https://github.com/staniel359/muffon",
-  "license": "MIT"
+  "os": [
+    "win32",
+    "darwin",
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ]
 }
