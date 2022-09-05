@@ -23,7 +23,7 @@ It retrieves metadata, audio, and video from various Internet sources, such as:
 It has **no ads** and is **absolutely free** to use.
 
 ### Features
-- listening (artists / albums / tracks)
+- listening (artists / albums / tracks) (also offline)
 - queue
 - music library (and compatibility with others)
 - music services integration (Last.FM)
@@ -35,6 +35,8 @@ It has **no ads** and is **absolutely free** to use.
 - lyrics (Genius)
 - tags (with top artists / albums / tracks)
 - top (artists / albums / tracks / tags) (with country select)
+- new / upcoming releases
+- multitag search
 - playlists
 - favorites (artists / albums / tracks)
 - bookmarks (artists / albums / tracks)
@@ -42,27 +44,18 @@ It has **no ads** and is **absolutely free** to use.
 - posting
 - following
 - messaging
-- feed
+- feed (also global)
 - communities
-- new / upcoming releases
-- multitag search
 - sharing (artists / albums / tracks / videos / playlists / communities)
-- offline listening
-- background / transparency change
+- theming (dark mode / background change / transparency change)
 
 ### Upcoming features
-- profiles privacy
-- artists continuous queue
-- add album to playlist
-- global feed
-- player fallback source
+- add album / queue to playlist
 - Yandex Music / Deezer / Spotify integration
 - music labels (artists / albums)
-- profiles 'Listening now' section
 - playlists import
-- posts likes / comments
 - videos favorites / bookmarks / watched
-- messenger
+- new messenger
 - ??? (your suggestions)
 
 ### Languages
@@ -79,7 +72,7 @@ It has **no ads** and is **absolutely free** to use.
 - Linux
 
 ## Download
-[Latest (v0.2.0)](https://github.com/staniel359/muffon/releases/tag/v0.2.0)
+[Latest (v0.3.0)](https://github.com/staniel359/muffon/releases/tag/v0.3.0)
 
 ## Build
 
@@ -92,10 +85,9 @@ It has **no ads** and is **absolutely free** to use.
 7. Go to compiled project folder: `cd build_electron/linux-unpacked`
 8. Run application: `./muffon` or double-click `muffon` file in folder
 
-
 ## Support
 
-#### Have a question/suggestion/bug report?
+#### Have a question / suggestion / bug report?
 Create an issue [here](https://github.com/staniel359/muffon/issues)
 
 ## Contribute
