@@ -20,6 +20,8 @@
       <BaseDivider />
 
       <HomepageSection />
+
+      <DonateSection />
     </div>
   </BaseSegmentContainer>
 </template>
@@ -33,6 +35,7 @@ import VersionSection from './AboutPage/VersionSection.vue'
 import CopyrightLicenseSection from './AboutPage/CopyrightLicenseSection.vue'
 import BaseDivider from '*/components/BaseDivider.vue'
 import HomepageSection from './AboutPage/HomepageSection.vue'
+import DonateSection from './AboutPage/DonateSection.vue'
 
 export default {
   name: 'AboutPage',
@@ -43,7 +46,8 @@ export default {
     VersionSection,
     CopyrightLicenseSection,
     BaseDivider,
-    HomepageSection
+    HomepageSection,
+    DonateSection
   }
 }
 </script>
