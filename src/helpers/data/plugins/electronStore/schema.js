@@ -41,6 +41,10 @@ export default {
     type: 'boolean',
     default: false
   },
+  'layout.isShowDonateModal': {
+    type: 'boolean',
+    default: true
+  },
   'layout.isSwitchToNewTab': {
     type: 'boolean',
     default: true

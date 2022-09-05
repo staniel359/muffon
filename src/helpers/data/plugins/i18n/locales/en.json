@@ -597,6 +597,18 @@
     "playlist": "Private",
     "profile": "Private"
   },
+  "donate": {
+    "header": "Donate",
+    "content": {
+      "nonProfit": "muffon is a non-profit project that has nor ads, neither any paid features or content.",
+      "funds": "But, of course, it cannot exist without funds, that are needed for its development and infrastructure.",
+      "timeEffort": "A lot of time and effort were put into creating this project, and it would be good if all of the invested would pay off.",
+      "help": "So I ask for your help in muffon's support.",
+      "would": "Would you like to make a donation?"
+    },
+    "decline": "No, thanks",
+    "accept": "Yeah, sure"
+  },
   "error": "Error",
   "more": "More...",
   "loading": "Loading..."

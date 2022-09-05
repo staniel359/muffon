@@ -1,4 +1,4 @@
-export const keysActions = {
+export default {
   'audio.isAutoplay':
     'audio/setIsAutoplay',
   'audio.volume':

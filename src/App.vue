@@ -33,6 +33,8 @@
 
       <TheScrollToTopButton />
 
+      <TheDonateModal />
+
       <div class="pusher">
         <TheLoaderDimmer />
 
@@ -60,6 +62,7 @@ import ThePlayerPanel from '*/components/layout/panels/ThePlayerPanel.vue'
 import TheVisibleArea from '*/components/layout/TheVisibleArea.vue'
 import TheSearchModal from '*/components/layout/modals/TheSearchModal.vue'
 import TheScrollToTopButton from '*/components/layout/TheScrollToTopButton.vue'
+import TheDonateModal from '*/components/layout/modals/TheDonateModal.vue'
 import TheLoaderDimmer from '*/components/layout/TheLoaderDimmer.vue'
 
 export default {
@@ -77,6 +80,7 @@ export default {
     TheVisibleArea,
     TheSearchModal,
     TheScrollToTopButton,
+    TheDonateModal,
     TheLoaderDimmer
   },
   provide () {
