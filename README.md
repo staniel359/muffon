@@ -15,7 +15,7 @@ It retrieves metadata, audio, and video from various Internet sources, such as:
 - <img src="https://s4.bcbits.com/img/favicon/favicon-32x32.png" height="16"> **Bandcamp**
 - <img src="https://e-cdns-files.dzcdn.net/cache/images/common/favicon/favicon.a6a53d55264841165a904dbea19d5d73.ico" height="16"> **Deezer**
 - <img src="https://a-v2.sndcdn.com/assets/images/sc-icons/favicon-2cadd14bdb.ico" height="16"> **SoundCloud**
-- <img src="https://open.scdn.co/cdn/images/favicon32.8e66b099.png" height="16"> **Spotify**
+- <img src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png" height="16"> **Spotify**
 - <img src="https://www.youtube.com/s/desktop/18069be1/img/favicon_32x32.png" height="16"> **YouTube**
 - <img src="https://st.discogs.com/94414fa553c3f284a04c3da67024dd6574b8ab6f/images/favicon.ico" height="16"> **Discogs**
 - <img src="https://assets.genius.com/images/apple-touch-icon.png" height="16"> **Genius**
