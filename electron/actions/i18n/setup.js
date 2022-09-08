@@ -7,6 +7,9 @@ const electronStore = require(
 const en = require(
   '../../data/locales/en.json'
 )
+const it = require(
+  '../../data/locales/it.json'
+)
 const ru = require(
   '../../data/locales/ru.json'
 )
@@ -20,11 +23,13 @@ const defaultLocale =
 const i18nData = {
   locales: [
     'en',
+    'it',
     'ru'
   ],
   defaultLocale,
   staticCatalog: {
     en,
+    it,
     ru
   },
   mustacheConfig: {
