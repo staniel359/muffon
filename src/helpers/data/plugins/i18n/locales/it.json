@@ -1,0 +1,615 @@
+{
+  "navigation": {
+    "home": "Pagina principale",
+    "artists": "Artisti",
+    "artist": "Artista",
+    "albums": "Album",
+    "albumGroups": "Gruppi album",
+    "tracks": "Brani",
+    "tags": "Tag",
+    "tag": "Tag",
+    "similar": "Simili",
+    "images": "Immagini",
+    "videoChannels": "Canali video",
+    "videos": "Video",
+    "related": "Correlati",
+    "top": "Top",
+    "releases": "Rilasci",
+    "new": "Novità",
+    "upcoming": "In arrivo",
+    "radio": "Radio",
+    "multitag": "Ricerca multi-tag",
+    "profiles": "Profili",
+    "feed": "Feed",
+    "posts": "Post",
+    "conversations": "Conversazioni",
+    "library": "Libreria",
+    "recommendations": "Suggerimenti",
+    "savedTracks": "Brani salvati",
+    "playlists": "Playlist",
+    "favorites": "Preferiti",
+    "bookmarks": "Segnalibri",
+    "bookmarkModels": {
+      "artists": "Aggiungi artisti ai segnalibri",
+      "albums": "Aggiungi album ai segnalibri",
+      "tracks": "Aggiungi brani ai segnalibri"
+    },
+    "communities": "Community",
+    "settings": "Impostazioni",
+    "model": {
+      "artists": "{modelName} artista",
+      "albums": "{modelName} album",
+      "tracks": "{modelName} brani",
+      "tags": "{modelName} tag",
+      "similar": "{modelName} simili",
+      "images": "{modelName} immagini",
+      "videos": "{modelName} video",
+      "related": "{modelName} correlati",
+      "posts": "{modelName} post",
+      "library": "{modelName} library",
+      "playlists": "{modelName} playlist",
+      "favorites": "{modelName} preferiti",
+      "favoritesModels": {
+        "artists": "{modelName} artisti preferiti",
+        "albums": "{modelName} album preferiti",
+        "tracks": "{modelName} brani preferiti"
+      },
+      "communities": "{modelName} community"
+    },
+    "topCollection": {
+      "artists": "Top artisti",
+      "albums": "Top album",
+      "tracks": "Top brani",
+      "tags": "Top tag"
+    },
+    "releasesCollection": {
+      "new": "Novità",
+      "upcoming": "In arrivo"
+    }
+  },
+  "errors": {
+    "badRequest": {
+      "header": "Richiesta non conforme",
+      "content": "Per favore, effettua una richiesta con dati validi"
+    },
+    "forbidden": {
+      "header": "Proibito",
+      "content": "Non hai i permessi per effettuare quest’azione"
+    },
+    "notFound": {
+      "header": "Non è stato trovato nulla",
+      "content": "Per favore, prova a cercare qualcos’altro"
+    },
+    "internalServer": {
+      "header": "Errore server interno",
+      "content": "Per favore, contattaci per maggiori informazioni"
+    },
+    "badGateway": {
+      "header": "Errore server remoto",
+      "content": "Per favore, riprova tra un istante"
+    },
+    "gatewayTimeout": {
+      "header": "Timeout server remoto",
+      "content": "Per favore, riprova tra un istante"
+    },
+    "connection": {
+      "header": "Connessione interrotta",
+      "content": "Per favore, riprova tra un istante"
+    },
+    "client": {
+      "header": "Errore del client",
+      "content": "Per favore, contattaci per maggiori informazioni"
+    }
+  },
+  "actions": {
+    "login": "Accedi",
+    "logout": "Esci",
+    "signup": "Registrati",
+    "add": "Aggiungi",
+    "create": "Crea",
+    "edit": "Modifica",
+    "save": "Salva",
+    "cancel": "Annulla",
+    "delete": "Cancella",
+    "retry": "Riprova",
+    "post": "Posta",
+    "send": "Invia",
+    "next": "Successivo",
+    "upload": "Carica",
+    "back": "Precedente",
+    "sendCode": "Invia codice",
+    "share": "Condividi",
+    "from": {
+      "search": "Da ricerca",
+      "folder": "Da cartella",
+      "account": "Da account",
+      "library": "Da libreria"
+    },
+    "find": {
+      "sources": "Cerca nelle fonti",
+      "videos": "Cerca video",
+      "lyrics": "Cerca testi"
+    },
+    "import": {
+      "lastfm": "Importa dati da Last.FM"
+    },
+    "folder": {
+      "select": "Seleziona cartella"
+    },
+    "addModel": {
+      "playlist": "Aggiungi playlist",
+      "community": "Aggiungi community",
+      "post": "Aggiungi post"
+    },
+    "addCollection": {
+      "tracks": "Aggiungi brani"
+    },
+    "addTo": {
+      "library": "Aggiungi alla libreria",
+      "playlist": "Aggiungi alla playlist",
+      "favorites": "Aggiungi ai preferiti",
+      "bookmarks": "Aggiungi ai segnalibri",
+      "listened": "Aggiungi agli ascoltati",
+      "queue": "Aggiungi in coda",
+      "savedTracks": "Aggiungi ai brani salvati"
+    },
+    "show": {
+      "library": "Mostra nella libreria"
+    },
+    "deleteFrom": {
+      "favorites": "Rimuovi dai preferiti",
+      "bookmarks": "Rimuovi dai segnalibri",
+      "listened": "Rimuovi dagli ascolti"
+    }
+  },
+  "links": {
+    "playlists": "Tutte le playlist",
+    "communities": "Tutte le community"
+  },
+  "inputs": {
+    "search": "Cerca...",
+    "content": "Scrivi qualcosa..."
+  },
+  "modals": {
+    "delete": {
+      "header": {
+        "library": {
+          "artist": "Rimuovi artista dalla libreria",
+          "album": "Rimuovi album dalla libreria",
+          "track": "Rimuovi brano dalla libreria"
+        },
+        "recommendation": "Rimuovi suggerimento",
+        "playlist": "Rimuovi playlist",
+        "playlistTrack": "Rimuovi brano dalla playlist",
+        "savedTrack": "Rimuovi brano dai brani salvati",
+        "favorite": {
+          "artist": "Rimuovi artista dai preferiti",
+          "album": "Rimuovi album dai preferiti",
+          "track": "Rimuovi brano dai preferiti"
+        },
+        "bookmark": {
+          "artist": "Rimuovi artista dai segnalibri",
+          "album": "Rimuovi album dai segnalibri",
+          "track": "Rimuovi brano dai segnalibri"
+        },
+        "post": "Rimuovi post",
+        "community": "Rimuovi community"
+      },
+      "going": {
+        "library": "Stai per rimuovere {modelName} dalla libreria.",
+        "recommendation": "Stai per rimuovere {modelName} dai suggerimenti.",
+        "playlist": "Stai per rimuovere {modelName} dalle tue playlist.",
+        "playlistTrack": "Stai per rimuovere {modelName} dalla playlist {parentModelName}.",
+        "savedTrack": "Stai per rimuovere {modelName} dai tuoi brani salvati.",
+        "favorite": "Stai per rimuovere {modelName} dai tuoi preferiti.",
+        "bookmark": "Stai per rimuovere {modelName} dai tuoi segnalibri.",
+        "post": "Stai per rimuovere questo post.",
+        "community": "Stai per rimuovere questa community."
+      },
+      "also": {
+        "library": {
+          "artist": "Saranno rimossi anche gli album e i brani di quest’artista.",
+          "album": "Saranno rimossi anche tutti i brani di quest’album."
+        },
+        "playlist": "Saranno rimossi anche tutti i brani di questa playlist.",
+        "community": "Saranno cancellati anche tutti i post di questa community."
+      },
+      "undo": "Quest’azione non può essere annullata!",
+      "sure": "Procedere?"
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Conferma password",
+      "passwordResetCode": "Codice di reset password",
+      "nickname": "Nome utente",
+      "title": "Titolo",
+      "description": "Descrizione",
+      "gender": "Genere",
+      "birthdate": "Data di nascita",
+      "country": "Nazione",
+      "city": "Città",
+      "genders": {
+        "male": "Maschio",
+        "female": "Femmina",
+        "other": "Altro"
+      },
+      "legal": {
+        "agree": "Sottoscrivo la ",
+        "privacyPolicy": "Privacy Policy",
+        "and": " e i ",
+        "termsAndConditions": "Termini e Condizioni d’uso"
+      },
+      "remember": "Ricordami",
+      "asCommunity": "Come community"
+    },
+    "extra": "Informazioni aggiuntive",
+    "errors": {
+      "notFound": "L’email o la password sono sbagliate",
+      "empty": {
+        "email": "L’email è vuota",
+        "password": "La password è vuota",
+        "passwordConfirmation": "La conferma password è vuota",
+        "passwordResetCode": "Il codice reset password è vuoto",
+        "nickname": "Il nome utente è vuoto",
+        "title": "Il titolo è vuoto",
+        "legal": "Devi sottoscrivere la Privacy Policy e i Termini e Condizioni d’uso"
+      },
+      "invalid": {
+        "email": "L’email non è valida",
+        "passwordResetCode": "Il codice reset password non è valido"
+      },
+      "taken": {
+        "email": "Indirizzo email già in uso",
+        "nickname": "Nome utente già in uso",
+        "title": "Titolo già in uso"
+      },
+      "tooShort": {
+        "password": "La password è troppo corta"
+      },
+      "tooLong": {
+        "nickname": "Il nome utente è troppo lungo"
+      },
+      "confirmation": {
+        "passwordConfirmation": "La password e la conferma differiscono"
+      }
+    }
+  },
+  "notifications": {
+    "scrobbled": "{trackFullTitle} segnato con scrobble",
+    "added": {
+      "queue": {
+        "track": "Brano {trackFullTitle} aggiunto alla coda"
+      },
+      "savedTracks": {
+        "track": "{trackFullTitle} aggiunto ai brani salvati"
+      }
+    },
+    "updated": {
+      "profile": "Profilo aggiornato",
+      "post": "Post aggiornato",
+      "playlist": "Playlist {playlistTitle} aggiornata",
+      "community": "Community {communityTitle} aggiornata"
+    },
+    "deleted": {
+      "library": "{modelName} rimossa dalla libreria",
+      "playlist": "Playlist {playlistTitle} rimossa",
+      "community": "Community {communityTitle} cancellata"
+    },
+    "copied": "Link copiato negli Appunti"
+  },
+  "counters": {
+    "nominative": {
+      "artists": "{count} artista | {count} artisti",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} brano | {count} brani",
+      "files": "{count} file | {count} file",
+      "followers": "{count} follower | {count} follower",
+      "following": "{count} following",
+      "members": "{count} membro | {count} membri"
+    },
+    "genitive": {
+      "artists": "{count} artista | {count} artisti",
+      "albums": "{count} album | {count} album",
+      "tracks": "{count} brano | {count} brani",
+      "files": "{count} file | {count} file",
+      "plays": "{count} ascolto | {count} ascolti"
+    },
+    "accusative": {
+      "artists": "{count} artista | {count} artisti",
+      "albums": "{count} album | {count} albumi",
+      "tracks": "{count} brano | {count} brani",
+      "files": "{count} file | {count} file"
+    }
+  },
+  "select": {
+    "source": "Seleziona fonte:",
+    "type": "Seleziona tipo:",
+    "album": "Seleziona album:",
+    "albumVarious": "Seleziona album V/A:",
+    "group": "Seleziona gruppo album:",
+    "artist": "Seleziona artista:",
+    "track": "Seleziona brano:",
+    "country": "Seleziona nazione:",
+    "video": "Seleziona video:",
+    "lyrics": "Seleziona testi:"
+  },
+  "sources": {
+    "streamable": "Trasmissibile",
+    "other": "Altro",
+    "albumTypes": {
+      "album": "Album",
+      "albumVarious": "Album V/A",
+      "group": "Gruppo album",
+      "track": "Brano"
+    },
+    "albumsTypes": {
+      "album": "Album",
+      "single": "Singoli",
+      "single_ep": "Singoli / EP",
+      "compilation": "Compilation",
+      "video": "Video",
+      "misc": "Miscellanei",
+      "appearance": "Apparizioni"
+    }
+  },
+  "player": {
+    "variants": "Varianti ({count})",
+    "audio": {
+      "bitrate": "~ {value} kbit/s"
+    }
+  },
+  "settings": {
+    "tabs": {
+      "app": "App",
+      "profile": "Profilo",
+      "services": "Servizi"
+    },
+    "sections": {
+      "app": {
+        "interface": "Interfaccia",
+        "theme": "Tema",
+        "window": "Finestra",
+        "tabs": "Schede",
+        "sidebar": "Barra laterale",
+        "search": "Ricerca",
+        "player": "Player",
+        "queue": "Coda",
+        "video": "Video",
+        "recommendations": "Suggerimenti",
+        "data": "Dati"
+      },
+      "profile": {
+        "info": "Info"
+      }
+    },
+    "options": {
+      "app": {
+        "interface": {
+          "language": "Lingua",
+          "timezone": "Fuso orario",
+          "infiniteScroll": "Scroll infinito"
+        },
+        "theme": {
+          "dark": "Modalità scura",
+          "system": "Tema di sistema",
+          "background": "Sfondo",
+          "transparency": "Trasparenza"
+        },
+        "window": {
+          "maximize": "Massimizza all’avvio",
+          "exit": "Esci quando la finestra è chiusa"
+        },
+        "tabs": {
+          "newTabSwitch": "Vai a nuova scheda",
+          "closeOnExit": "Chiudi schede all’uscita"
+        },
+        "search": {
+          "source": "Fonte"
+        },
+        "player": {
+          "audioSource": "Sorgente audio",
+          "fallbackSources": "Fonti secondarie",
+          "bitrate": "Mostra bitrate audio",
+          "album": "Mostra album"
+        },
+        "queue": {
+          "autoplay": "Autoplay",
+          "clear": "Pulisci alla chiusura del player"
+        },
+        "video": {
+          "autoplay": "Autoplay"
+        },
+        "recommendations": {
+          "hideLibraryArtists": "Nascondi artisti della libreria",
+          "tracksCount": "con conteggio brani"
+        },
+        "data": {
+          "cache": {
+            "clear": "Svuota cache",
+            "cleared": "Cache svuotata"
+          },
+          "history": {
+            "search": {
+              "clear": "Cancella cronologia ricerche",
+              "cleared": "Cronologia ricerche cancellata"
+            }
+          }
+        }
+      },
+      "profile": {
+        "player": {
+          "playing": "Mostra brano attuale sulla pagina"
+        }
+      },
+      "services": {
+        "lastfm": {
+          "scrobbling": "Scrobbling",
+          "scrobbleNotifications": "Notifiche di scrobble",
+          "scrobblePercent": "Fai scroblle dopo"
+        }
+      }
+    }
+  },
+  "track": {
+    "source": "Via {source}"
+  },
+  "recommended": {
+    "header": "Suggeriti per te",
+    "based": "Basato su:"
+  },
+  "signup": {
+    "text": "Non hai un account?",
+    "link": "Registrati"
+  },
+  "login": {
+    "text": "Hai già un account?",
+    "link": "Accedi"
+  },
+  "passwordReset": {
+    "text": "Password dimenticata?",
+    "link": "Reset",
+    "code": {
+      "sent": "Codice di reset password inviato alla tua email"
+    },
+    "updated": {
+      "header": "La password è stata aggiornata",
+      "content": "Ora puoi tornare indietro e accedere"
+    }
+  },
+  "roles": {
+    "creator": "Creatore"
+  },
+  "relationships": {
+    "followed": "Ti segue",
+    "following": "Stai seguendo",
+    "follow": "Segui",
+    "unfollow": "Smetti di seguire"
+  },
+  "memberships": {
+    "joined": "Sei entrato in",
+    "join": "Entra",
+    "leave": "Lascia"
+  },
+  "message": {
+    "send": "Invia messaggio",
+    "sent": {
+      "header": "Messaggio inviato",
+      "content": "Vai alla conversazione"
+    }
+  },
+  "library": {
+    "since": "Nella libreria da"
+  },
+  "compatibility": {
+    "header": "La tua compatiblità con {profileNickname}",
+    "common": "Avete in comune:"
+  },
+  "recommendations": {
+    "filter": "Filtra"
+  },
+  "recommendation": {
+    "similar": "Simile a {counter}:"
+  },
+  "import": {
+    "lastfm": {
+      "historyVisible": "Prima di importare, assicurati che la tua cronologia ascolti di Last.FM sia visibile."
+    },
+    "active": "Importazione {count} di {counter}...",
+    "success": {
+      "header": "{counter} importato | {counter} importati",
+      "content": "Potresti voler controllare i dati prima di salvare in libreria"
+    },
+    "error": {
+      "files": "{counter} non importato. Controlla che questi file abbiano i metadati corretti:"
+    }
+  },
+  "save": {
+    "active": "Salvataggio {count} di {counter}...",
+    "success": {
+      "library": {
+        "artists": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
+        "albums": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
+        "tracks": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria"
+      },
+      "playlist": {
+        "artists": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
+        "albums": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria",
+        "tracks": "{counter} aggiunto alla libreria | {counter} aggiunti alla libreria"
+      }
+    },
+    "error": "{counter} non aggiunto:"
+  },
+  "accounts": {
+    "connect": "Connetti account",
+    "wait": "Sarà aperto il browser. Conferma la connessione e clicca di nuovo questo pulsante.",
+    "disconnect": "Disconnetti account"
+  },
+  "noCollection": {
+    "header": {
+      "artists": "Nessun artista",
+      "albums": "Nessun album",
+      "tracks": "Nessun brano",
+      "similar": "Nessun simile",
+      "tags": "Nessun tag",
+      "posts": "Nessun post",
+      "feed": "Nessun post",
+      "conversations": "Nessuna conversazione",
+      "messages": "Nessun messagggio",
+      "followers": "Nessun follower",
+      "following": "Nessun seguito",
+      "recommendations": "Nessun suggerimento",
+      "playlists": "Nessuna playlist",
+      "communities": "Nessuna community",
+      "members": "Nessun membro",
+      "videos": "Nessun video",
+      "related": "Nessun correlato",
+      "lyrics": "Nessun testo"
+    },
+    "content": "Sembra che qui non ci sia alcunché"
+  },
+  "deleted": {
+    "artist": "Artista rimosso",
+    "album": "Album rimosso",
+    "track": "Brano rimosso",
+    "recommendation": "Suggerimento rimosso",
+    "playlist": "Playlist rimossa",
+    "post": "Post rimosso"
+  },
+  "messages": {
+    "welcome": "Benvenuto, {profileNickname}"
+  },
+  "profile": {
+    "wasOnline": "Era online",
+    "since": "Su muffon dal"
+  },
+  "feed": {
+    "global": "Feed globale"
+  },
+  "about": {
+    "license": "Licenza {license}",
+    "homepage": "Pagina principale"
+  },
+  "listeners": "{count} ascoltatore | {count} ascoltatori",
+  "private": {
+    "playlist": "Privata",
+    "profile": "Privato"
+  },
+  "donate": {
+    "header": "Dona",
+    "content": {
+      "nonProfit": "muffon è un progetto no-profit privo di pubblicità e di funzionalità o contenuti a pagamento.",
+      "funds": "Senza i fondi necessari allo sviluppo e alla manutenzione dell’infrastruttura, muffon non potrebbe affatto esistere.",
+      "timeEffort": "Questo progetto ha richiesto tempo ed energie, e sarebbe fantastico avere qualcosina in cambio.",
+      "help": "Per questo motivo, ti chiedo un piccolo contributo per il futuro di muffon.",
+      "would": "Vorresti effettuare una donazione?"
+    },
+    "decline": "No, grazie",
+    "accept": "Sí, certamente!"
+  },
+  "error": "Errore",
+  "more": "Altro...",
+  "loading": "Caricamento..."
+}

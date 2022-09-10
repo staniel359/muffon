@@ -1,0 +1,13 @@
+{
+  "show": "Mostra",
+  "hide": "Nascondi",
+  "about": "Informazioni",
+  "exit": "Esci",
+  "update": {
+    "message": "È disponibile la versione {version}",
+    "buttons": {
+      "download": "Scarica",
+      "close": "Chiudi"
+    }
+  }
+}
