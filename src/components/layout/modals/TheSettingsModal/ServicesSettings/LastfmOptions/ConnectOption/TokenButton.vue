@@ -50,36 +50,26 @@ export default {
       return this.$t(
         'accounts.connect'
       )
-    },
-    token () {
-      return this.connectData?.token
-    },
-    link () {
-      return this.connectData?.link
     }
   },
   watch: {
-    token: 'handleTokenChange',
-    link: 'handleLinkChange'
+    connectData: 'handleConnectDataChange'
   },
   methods: {
     getLastfmToken,
     handleClick () {
       this.getLastfmToken()
     },
-    handleTokenChange (
-      value
-    ) {
-      this.$emit(
-        'tokenChange',
-        value
-      )
-    },
-    handleLinkChange (
+    handleConnectDataChange (
       value
     ) {
       shell.openExternal(
-        value
+        value.link
+      )
+
+      this.$emit(
+        'tokenChange',
+        value.token
       )
     }
   }
