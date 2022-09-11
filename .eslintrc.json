@@ -1,6 +1,6 @@
 {
   "env": {
-    "es2021": true,
+    "es2022": true,
     "jquery": true,
     "node": true
   },
