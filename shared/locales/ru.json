@@ -1,4 +1,17 @@
 {
+  "electron": {
+    "show": "Показать",
+    "hide": "Скрыть",
+    "about": "О программе",
+    "exit": "Выход",
+    "update": {
+      "message": "Доступна версия {version}",
+      "buttons": {
+        "download": "Скачать",
+        "close": "Закрыть"
+      }
+    }
+  },
   "navigation": {
     "home": "Домашняя страница",
     "artists": "Исполнители",

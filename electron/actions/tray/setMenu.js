@@ -52,21 +52,21 @@ function setMenu () {
     {
       type: 'normal',
       label: i18n.__(
-        toggleKey
+        `electron.${toggleKey}`
       ),
       click: handleToggleActionClick
     },
     {
       type: 'normal',
       label: i18n.__(
-        'about'
+        'electron.about'
       ),
       click: handleAboutActionClick
     },
     {
       type: 'normal',
       label: i18n.__(
-        'exit'
+        'electron.exit'
       ),
       click: handleExitActionClick
     }

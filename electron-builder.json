@@ -30,6 +30,7 @@
   "files": [
     "./electron.js",
     "./electron/**/*",
+    "./shared/**/*",
     {
       "from": "./build",
       "to": "./"

@@ -4,14 +4,11 @@ const i18n = require(
 const electronStore = require(
   '../../electronStore'
 )
-const en = require(
-  '../../data/locales/en.json'
-)
-const it = require(
-  '../../data/locales/it.json'
-)
-const ru = require(
-  '../../data/locales/ru.json'
+const {
+  locales,
+  formatLocales
+} = require(
+  '../../../shared/locales'
 )
 
 const defaultLocale =
@@ -20,18 +17,27 @@ const defaultLocale =
     'en'
   )
 
+function importLocaleFile (
+  {
+    code
+  }
+) {
+  return require(
+    `../../../shared/locales/${code}.json`
+  )
+}
+
+const localesData =
+  formatLocales(
+    {
+      importLocaleFile
+    }
+  )
+
 const i18nData = {
-  locales: [
-    'en',
-    'it',
-    'ru'
-  ],
+  locales,
   defaultLocale,
-  staticCatalog: {
-    en,
-    it,
-    ru
-  },
+  staticCatalog: localesData,
   mustacheConfig: {
     tags: [
       '{',

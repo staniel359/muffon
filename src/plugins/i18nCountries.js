@@ -1,22 +1,25 @@
 import countries from 'i18n-iso-countries'
-import locales from '*/helpers/data/locales'
+import {
+  locales
+} from '*/../shared/locales'
 
-function registerLocale (
+function addLocale (
   {
     code
   }
 ) {
-  const importLocaleFile = require(
-    `i18n-iso-countries/langs/${code}.json`
-  )
+  const locale =
+    require(
+      `i18n-iso-countries/langs/${code}.json`
+    )
 
   countries.registerLocale(
-    importLocaleFile
+    locale
   )
 }
 
 export default function () {
   locales.forEach(
-    registerLocale
+    addLocale
   )
 }

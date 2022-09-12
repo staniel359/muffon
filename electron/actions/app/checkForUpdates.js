@@ -32,7 +32,7 @@ function handleNotificationButtonClick (
 
 function showNotification () {
   const message = i18n.__(
-    'update.message',
+    'electron.update.message',
     {
       version: latestVersion
     }
@@ -40,10 +40,10 @@ function showNotification () {
 
   const buttons = [
     i18n.__(
-      'update.buttons.download'
+      'electron.update.buttons.download'
     ),
     i18n.__(
-      'update.buttons.close'
+      'electron.update.buttons.close'
     )
   ]
 

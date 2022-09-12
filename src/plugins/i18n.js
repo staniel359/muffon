@@ -4,7 +4,7 @@ import {
 import electronStore from '*/plugins/electronStore'
 import {
   formatLocales
-} from '*/helpers/actions/locales'
+} from '*/../shared/locales'
 import russianPluralizationRule
   from '*/helpers/data/plugins/i18n/rules/pluralization/ru'
 
@@ -19,7 +19,7 @@ function importLocaleFile (
   }
 ) {
   return require(
-    `*/helpers/data/plugins/i18n/locales/${code}.json`
+    `*/../shared/locales/${code}.json`
   )
 }
 

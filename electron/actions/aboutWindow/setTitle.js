@@ -5,7 +5,7 @@ const i18n = require(
 function setTitle () {
   const title =
     i18n.__(
-      'about'
+      'electron.about'
     )
 
   aboutWindow.setTitle(

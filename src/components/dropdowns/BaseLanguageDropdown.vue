@@ -18,7 +18,9 @@ import {
 import BaseDropdownContainer
   from '*/components/containers/BaseDropdownContainer.vue'
 import LanguageOption from './BaseLanguageDropdown/LanguageOption.vue'
-import locales from '*/helpers/data/locales'
+import {
+  locales
+} from '*/../shared/locales'
 
 export default {
   name: 'BaseLanguageDropdown',

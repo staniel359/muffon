@@ -19,7 +19,7 @@ import {
 import data from '@emoji-mart/data'
 import {
   formatLocales
-} from '*/helpers/actions/locales'
+} from '*/../shared/locales'
 
 export default {
   name: 'EmojiPicker',
