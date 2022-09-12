@@ -1,11 +1,13 @@
 <template>
   <div
     ref="picker"
+    :key="key"
     class="emoji-picker"
     :class="{
       open: isOpen,
       inverted: isDarkMode
     }"
+    @click.stop
   />
 </template>
 
@@ -18,8 +20,8 @@ import {
 } from 'emoji-mart'
 import data from '@emoji-mart/data'
 import {
-  formatLocales
-} from '*/../shared/locales'
+  generateKey
+} from '*/helpers/utils'
 
 export default {
   name: 'EmojiPicker',
@@ -28,6 +30,7 @@ export default {
   ],
   data () {
     return {
+      key: null,
       isOpen: false
     }
   },
@@ -47,7 +50,7 @@ export default {
     pickerData () {
       return {
         data,
-        i18n: this.locale,
+        locale: this.profileLanguage,
         parent: this.$refs.picker,
         previewPosition: 'none',
         set: 'native',
@@ -58,18 +61,6 @@ export default {
           this.handleClickOutside
       }
     },
-    locale () {
-      return this.locales[
-        this.profileLanguage
-      ]
-    },
-    locales () {
-      return formatLocales(
-        {
-          importLocaleFile: this.importLocaleFile
-        }
-      )
-    },
     theme () {
       if (this.isDarkMode) {
         return 'dark'
@@ -78,12 +69,20 @@ export default {
       }
     }
   },
+  watch: {
+    profileLanguage: 'handleProfileLanguageChange',
+    isDarkMode: 'handleIsDarkModeChange'
+  },
   mounted () {
-    new Picker(
-      this.pickerData
-    )
+    this.initialize()
   },
   methods: {
+    handleProfileLanguageChange () {
+      this.initialize()
+    },
+    handleIsDarkModeChange () {
+      this.initialize()
+    },
     handleEmojiSelect (
       value
     ) {
@@ -95,17 +94,17 @@ export default {
     handleClickOutside () {
       this.isOpen = false
     },
-    show () {
-      this.isOpen = true
-    },
-    importLocaleFile (
-      {
-        code
-      }
-    ) {
-      return require(
-        `@emoji-mart/data/i18n/${code}.json`
+    async initialize () {
+      this.key = generateKey()
+
+      await this.$nextTick()
+
+      new Picker(
+        this.pickerData
       )
+    },
+    toggle () {
+      this.isOpen = !this.isOpen
     }
   }
 }
@@ -120,7 +119,7 @@ export default {
   ::v-deep(em-emoji-picker)
     max-height: 300px
     border: $border
-    --font-family: LatoDefault
+    --font-family: Lato, LatoDefault
   &.inverted
     ::v-deep(em-emoji-picker)
       border: $borderInverted

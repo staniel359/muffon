@@ -27,7 +27,7 @@ export default {
   ],
   methods: {
     handleClick () {
-      this.showPicker()
+      this.togglePicker()
     },
     handleSelect (
       value
@@ -36,10 +36,10 @@ export default {
         value.native
       )
     },
-    showPicker () {
+    togglePicker () {
       this.$refs
         .picker
-        .show()
+        .toggle()
     }
   }
 }
