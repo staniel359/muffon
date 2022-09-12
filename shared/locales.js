@@ -1,5 +1,9 @@
 const locales = [
   {
+    code: 'be',
+    text: 'Беларуская'
+  },
+  {
     code: 'en',
     text: 'English'
   },

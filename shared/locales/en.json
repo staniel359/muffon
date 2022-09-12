@@ -291,7 +291,7 @@
     }
   },
   "notifications": {
-    "scrobbled": "{trackFullTitle} was scrobbled",
+    "scrobbled": "Track {trackFullTitle} was scrobbled",
     "added": {
       "queue": {
         "track": "Track {trackFullTitle} was added to queue"

@@ -291,13 +291,13 @@
     }
   },
   "notifications": {
-    "scrobbled": "{trackFullTitle} segnato con scrobble",
+    "scrobbled": "Brano {trackFullTitle} segnato con scrobble",
     "added": {
       "queue": {
         "track": "Brano {trackFullTitle} aggiunto alla coda"
       },
       "savedTracks": {
-        "track": "{trackFullTitle} aggiunto ai brani salvati"
+        "track": "Brano {trackFullTitle} aggiunto ai brani salvati"
       }
     },
     "updated": {

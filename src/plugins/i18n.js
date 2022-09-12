@@ -5,8 +5,8 @@ import electronStore from '*/plugins/electronStore'
 import {
   formatLocales
 } from '*/../shared/locales'
-import russianPluralizationRule
-  from '*/helpers/data/plugins/i18n/rules/pluralization/ru'
+import belarusianRussianPluralizationRule
+  from '*/helpers/data/plugins/i18n/rules/pluralization/beRu'
 
 const locale =
   electronStore.get(
@@ -31,7 +31,8 @@ const messages =
   )
 
 const pluralizationRules = {
-  ru: russianPluralizationRule
+  be: belarusianRussianPluralizationRule,
+  ru: belarusianRussianPluralizationRule
 }
 
 export default createI18n(
