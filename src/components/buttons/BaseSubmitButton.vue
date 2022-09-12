@@ -3,9 +3,6 @@
     ref="button"
     type="submit"
     class="ui primary button main-simple-button"
-    :class="{
-      inverted: isDarkMode
-    }"
   >
     <BaseIcon
       icon="check"
@@ -16,9 +13,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
@@ -33,12 +27,6 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    ),
     actionText () {
       return this.$t(
         `actions.${this.actionKey}`

@@ -2,6 +2,7 @@
   <BaseButton
     class="basic red mini compact circular main-clear-button"
     icon="close"
+    :is-invertable="false"
     @click.prevent="handleClick"
   />
 </template>

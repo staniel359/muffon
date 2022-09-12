@@ -37,6 +37,10 @@ export default {
     BaseIcon
   },
   props: {
+    isInvertable: {
+      type: Boolean,
+      default: true
+    },
     icon: String,
     text: String,
     isReverse: Boolean,
@@ -62,7 +66,11 @@ export default {
         }
       } else {
         if (this.isDarkMode) {
-          return 'inverted'
+          if (this.isInvertable) {
+            return 'inverted'
+          } else {
+            return null
+          }
         } else {
           return null
         }
