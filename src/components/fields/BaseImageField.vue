@@ -1,24 +1,24 @@
 <template>
-  <div class="field">
-    <div class="image-field-content">
+  <div class="field image-field">
+    <div class="image-container">
       <BaseImage
-        class="rounded bordered image-preview"
+        class="bordered"
+        :class="imageClass"
         :model="model"
         :image="imageUrl"
       />
 
-      <BaseImageUploadButton
-        @change="handleUploadChange"
-      />
-
-      <BaseButton
+      <BaseClearButton
         v-if="imageUrl"
-        class="red basic compact small delete-button"
-        icon="close"
-        :text="deleteText"
-        @click="handleDeleteButtonClick"
+        class="clear-button"
+        @click="handleClearButtonClick"
       />
     </div>
+
+    <BaseImageUploadButton
+      class="upload-button"
+      @change="handleUploadChange"
+    />
   </div>
 </template>
 
@@ -26,21 +26,22 @@
 import BaseImage from '*/components/images/BaseImage.vue'
 import BaseImageUploadButton
   from '*/components/buttons/BaseImageUploadButton.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'BaseImageField',
   components: {
     BaseImage,
-    BaseButton,
-    BaseImageUploadButton
+    BaseImageUploadButton,
+    BaseClearButton
   },
   props: {
     model: {
       type: String,
       required: true
     },
-    value: String
+    value: String,
+    isCircular: Boolean
   },
   emits: [
     'change'
@@ -51,14 +52,16 @@ export default {
     }
   },
   computed: {
+    imageClass () {
+      if (this.isCircular) {
+        return 'circular'
+      } else {
+        return 'rounded'
+      }
+    },
     uploadText () {
       return this.$t(
         'actions.upload'
-      )
-    },
-    deleteText () {
-      return this.$t(
-        'actions.delete'
       )
     }
   },
@@ -83,7 +86,7 @@ export default {
     ) {
       this.imageUrl = this.value
     },
-    handleDeleteButtonClick () {
+    handleClearButtonClick () {
       this.imageUrl = null
 
       this.changeImage(
@@ -105,14 +108,22 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.image-field-content
+.image-field
   @extend .d-flex, .flex-column, .align-items-center
 
-.image-preview
+.image-container
+  @extend .relative
   width: 100px
   height: 100px
-  margin-bottom: 1em
+  &:hover
+    .clear-button
+      @extend .d-block
 
-.delete-button
-  margin-top: 0.5em !important
+.clear-button
+  @extend .absolute, .no-margin, .d-none
+  top: 5px
+  right: 5px
+
+.upload-button
+  margin-top: 1em !important
 </style>

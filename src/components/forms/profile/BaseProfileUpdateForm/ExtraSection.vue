@@ -1,8 +1,10 @@
 <template>
   <div class="extra-section">
-    <BaseProfileImageField
+    <BaseImageField
       class="image-field"
+      model="profile"
       :value="imageData?.medium"
+      is-circular
       @change="handleImageChange"
     />
 
@@ -35,8 +37,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseProfileImageField
-  from '*/components/fields/profile/BaseProfileImageField.vue'
+import BaseImageField from '*/components/fields/BaseImageField.vue'
 import BaseProfileGenderField
   from '*/components/fields/profile/BaseProfileGenderField.vue'
 import BaseProfileBirthdateField
@@ -50,7 +51,7 @@ import BasePrivateField from '*/components/fields/BasePrivateField.vue'
 export default {
   name: 'ExtraSection',
   components: {
-    BaseProfileImageField,
+    BaseImageField,
     BaseProfileGenderField,
     BaseProfileBirthdateField,
     BaseProfileCountryField,

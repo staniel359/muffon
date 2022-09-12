@@ -4,8 +4,10 @@
       :title="extraText"
     >
       <div class="extra-section-content">
-        <BaseProfileImageField
+        <BaseImageField
           class="image-field"
+          model="profile"
+          is-circular
           @change="handleImageChange"
         />
 
@@ -30,8 +32,7 @@
 <script>
 import BaseAccordionContainer
   from '*/components/containers/BaseAccordionContainer.vue'
-import BaseProfileImageField
-  from '*/components/fields/profile/BaseProfileImageField.vue'
+import BaseImageField from '*/components/fields/BaseImageField.vue'
 import BaseProfileGenderField
   from '*/components/fields/profile/BaseProfileGenderField.vue'
 import BaseProfileBirthdateField
@@ -46,7 +47,7 @@ export default {
   name: 'ExtraSection',
   components: {
     BaseAccordionContainer,
-    BaseProfileImageField,
+    BaseImageField,
     BaseProfileGenderField,
     BaseProfileBirthdateField,
     BaseProfileCountryField,
