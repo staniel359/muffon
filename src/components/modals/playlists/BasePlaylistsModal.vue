@@ -38,18 +38,9 @@ export default {
     modalMixin
   ],
   props: {
-    model: {
-      type: String,
-      required: true
-    },
-    modelData: {
-      type: Object,
-      required: true
-    },
-    tracks: {
-      type: Array,
-      required: true
-    }
+    model: String,
+    modelData: Object,
+    tracks: Array
   },
   data () {
     return {
@@ -73,14 +64,28 @@ export default {
         scope: this.scope,
         limit: this.limit,
         playlistsModelData:
-          this.playlistsModelData
+          this.playlistsModelDataConditional
       }
+    },
+    playlistsModelDataConditional () {
+      if (this.isModel) {
+        return this.playlistsModelData
+      } else {
+        return null
+      }
+    },
+    isModel () {
+      return (
+        this.model &&
+          this.modelData
+      )
     },
     playlistsModelData () {
       return {
         model: this.model,
         title: this.modelTitle,
-        artistName: this.modelArtistName
+        artistName:
+          this.modelArtistName
       }
     },
     modelTitle () {

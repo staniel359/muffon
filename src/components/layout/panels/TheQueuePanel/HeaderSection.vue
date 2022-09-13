@@ -8,16 +8,12 @@
     />
 
     <h4
-      :class="[
-        'ui header main-header',
-        'tracks-count-block'
-      ]"
-      v-text="tracksText"
+      class="ui header main-header tracks-count-block"
+      v-text="tracksCountText"
     />
 
-    <BaseClearButton
+    <BaseQueueOptionsDropdown
       v-if="queueTracksCount"
-      @click="handleClearButtonClick"
     />
   </BaseSegmentContainer>
 </template>
@@ -29,20 +25,18 @@ import {
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import ShuffleButton from './HeaderSection/ShuffleButton.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseQueueOptionsDropdown
+  from '*/components/dropdowns/queue/BaseQueueOptionsDropdown.vue'
 import {
   number as formatNumber
 } from '*/helpers/formatters'
-import {
-  updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
 
 export default {
   name: 'HeaderSection',
   components: {
     BaseSegmentContainer,
     ShuffleButton,
-    BaseClearButton
+    BaseQueueOptionsDropdown
   },
   computed: {
     ...mapGetters(
@@ -51,7 +45,7 @@ export default {
         queueTracksCount: 'tracksCount'
       }
     ),
-    tracksText () {
+    tracksCountText () {
       return this.$tc(
         'counters.nominative.tracks',
         this.queueTracksCount,
@@ -64,18 +58,6 @@ export default {
     queueTracksCountFormatted () {
       return formatNumber(
         this.queueTracksCount
-      )
-    }
-  },
-  methods: {
-    handleClearButtonClick () {
-      updateGlobalStore(
-        {
-          'queue.currentTrackId': null,
-          'queue.tracks': [],
-          'queue.tracksShuffled': [],
-          'queue.isShuffle': false
-        }
       )
     }
   }
