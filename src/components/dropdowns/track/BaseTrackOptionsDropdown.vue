@@ -12,7 +12,7 @@
     <template
       v-if="isWithPlaylistOption"
     >
-      <PlaylistOption
+      <BasePlaylistOption
         @click="handlePlaylistOptionClick"
       />
 
@@ -68,7 +68,8 @@
 import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseTrackOptionsDropdown/LibraryOption.vue'
-import PlaylistOption from './BaseTrackOptionsDropdown/PlaylistOption.vue'
+import BasePlaylistOption
+  from '*/components/dropdowns/options/BasePlaylistOption.vue'
 import BasePlaylistsModal
   from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import FavoriteOption from './BaseTrackOptionsDropdown/FavoriteOption.vue'
@@ -89,7 +90,7 @@ export default {
   components: {
     BaseOptionsDropdownContainer,
     LibraryOption,
-    PlaylistOption,
+    BasePlaylistOption,
     FavoriteOption,
     BookmarkOption,
     ListenedOption,

@@ -15,7 +15,7 @@
 import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
-  name: 'PlaylistOption',
+  name: 'BasePlaylistOption',
   components: {
     BaseIcon
   },

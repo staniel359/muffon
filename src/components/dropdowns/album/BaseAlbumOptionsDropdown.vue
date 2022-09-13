@@ -9,6 +9,21 @@
       @link-click="handleLinkClick"
     />
 
+    <template
+      v-if="isWithPlaylistOption"
+    >
+      <BasePlaylistOption
+        @click="handlePlaylistOptionClick"
+      />
+
+      <BasePlaylistsModal
+        ref="playlistsModal"
+        model="album"
+        :model-data="albumData"
+        :tracks="playlistTracks"
+      />
+    </template>
+
     <FavoriteOption
       v-if="isWithFavoriteOption"
       :favorite-id="favoriteId"
@@ -43,6 +58,10 @@
 import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseAlbumOptionsDropdown/LibraryOption.vue'
+import BasePlaylistOption
+  from '*/components/dropdowns/options/BasePlaylistOption.vue'
+import BasePlaylistsModal
+  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import FavoriteOption from './BaseAlbumOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseAlbumOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseAlbumOptionsDropdown/ListenedOption.vue'
@@ -53,12 +72,17 @@ import BaseDeleteOption
 import {
   album as formatAlbumShareData
 } from '*/helpers/formatters/share'
+import {
+  track as formatPlayerTrack
+} from '*/helpers/formatters/player/track'
 
 export default {
   name: 'BaseAlbumOptionsDropdown',
   components: {
     BaseOptionsDropdownContainer,
     LibraryOption,
+    BasePlaylistOption,
+    BasePlaylistsModal,
     FavoriteOption,
     BookmarkOption,
     ListenedOption,
@@ -75,6 +99,7 @@ export default {
     bookmarkId: String,
     listenedId: String,
     isWithLibraryOption: Boolean,
+    isWithPlaylistOption: Boolean,
     isWithFavoriteOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithListenedOption: Boolean,
@@ -100,6 +125,23 @@ export default {
       return formatAlbumShareData(
         this.albumData
       )
+    },
+    playlistTracks () {
+      return this.tracks.map(
+        this.formatTrack
+      )
+    },
+    tracks () {
+      return this.albumData.tracks
+    },
+    albumTitle () {
+      return this.albumData.title
+    },
+    source () {
+      return this.albumData.source
+    },
+    imageData () {
+      return this.albumData.image
     }
   },
   methods: {
@@ -108,9 +150,31 @@ export default {
         'linkClick'
       )
     },
+    handlePlaylistOptionClick () {
+      this.showPlaylistsModal()
+    },
     handleDeleteOptionClick () {
       this.$emit(
         'deleteOptionClick'
+      )
+    },
+    showPlaylistsModal () {
+      this.$refs
+        .playlistsModal
+        .show()
+    },
+    formatTrack (
+      trackData
+    ) {
+      return formatPlayerTrack(
+        {
+          trackData,
+          albumData: {
+            title: this.albumTitle,
+            source: this.source
+          },
+          imageData: this.imageData
+        }
       )
     }
   }

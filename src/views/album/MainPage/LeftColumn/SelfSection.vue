@@ -16,6 +16,7 @@
       :bookmark-id="bookmarkId"
       :listened-id="listenedId"
       is-with-library-option
+      is-with-playlist-option
       is-with-favorite-option
       is-with-bookmark-option
       is-with-listened-option
