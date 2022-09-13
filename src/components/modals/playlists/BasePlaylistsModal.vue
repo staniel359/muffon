@@ -11,7 +11,7 @@
     <template #default="slotProps">
       <BasePlaylistsSimpleSelectableList
         :playlists="slotProps[scope]"
-        :track-data="trackData"
+        :tracks="tracks"
       />
     </template>
   </BasePaginatedSegmentModalContainer>
@@ -38,7 +38,18 @@ export default {
     modalMixin
   ],
   props: {
-    trackData: Object
+    model: {
+      type: String,
+      required: true
+    },
+    modelData: {
+      type: Object,
+      required: true
+    },
+    tracks: {
+      type: Array,
+      required: true
+    }
   },
   data () {
     return {
@@ -61,15 +72,22 @@ export default {
         profileId: this.profileId,
         scope: this.scope,
         limit: this.limit,
-        trackTitle: this.trackTitle,
-        artistName: this.artistName
+        playlistsModelData:
+          this.playlistsModelData
       }
     },
-    trackTitle () {
-      return this.trackData.title
+    playlistsModelData () {
+      return {
+        model: this.model,
+        title: this.modelTitle,
+        artistName: this.modelArtistName
+      }
     },
-    artistName () {
-      return this.trackData.artist.name
+    modelTitle () {
+      return this.modelData.title
+    },
+    modelArtistName () {
+      return this.modelData.artist.name
     }
   },
   methods: {

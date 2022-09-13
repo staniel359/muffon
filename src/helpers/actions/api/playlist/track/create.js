@@ -35,8 +35,10 @@ export default function (
     response
   ) => {
     if (isSelectable) {
-      this.playlistTrackId =
-          response.data.playlist_track.id
+      this.playlistTrackIds = [
+        ...this.playlistTrackIds,
+        response.data.playlist_track.id
+      ]
 
       this.paginationItem.tracks_count =
         response.data.playlist.tracks_count
@@ -50,6 +52,7 @@ export default function (
       url,
       params,
       isWithSelfToken: true,
+      isSaveError: true,
       onSuccess: handleSuccess
     }
   )

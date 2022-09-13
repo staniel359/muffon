@@ -18,7 +18,9 @@
 
       <BasePlaylistsModal
         ref="playlistsModal"
-        :track-data="trackData"
+        model="track"
+        :model-data="trackData"
+        :tracks="playlistTracks"
       />
     </template>
 
@@ -67,6 +69,8 @@ import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseTrackOptionsDropdown/LibraryOption.vue'
 import PlaylistOption from './BaseTrackOptionsDropdown/PlaylistOption.vue'
+import BasePlaylistsModal
+  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import FavoriteOption from './BaseTrackOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseTrackOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseTrackOptionsDropdown/ListenedOption.vue'
@@ -76,8 +80,6 @@ import BaseShareOption
   from '*/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
   from '*/components/dropdowns/options/BaseDeleteOption.vue'
-import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
 import {
   track as formatTrackShareData
 } from '*/helpers/formatters/share'
@@ -147,6 +149,11 @@ export default {
       return formatTrackShareData(
         this.trackData
       )
+    },
+    playlistTracks () {
+      return [
+        this.trackData
+      ]
     }
   },
   methods: {

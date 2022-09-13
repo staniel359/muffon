@@ -19,8 +19,6 @@ export default function (
     response
   ) => {
     if (isSelectable) {
-      this.playlistTrackId = null
-
       this.paginationItem.tracks_count =
         response.data.playlist.tracks_count
     }

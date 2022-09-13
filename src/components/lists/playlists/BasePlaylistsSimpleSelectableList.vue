@@ -4,7 +4,7 @@
       v-for="playlistData in playlistsCollection"
       :key="playlistData.uuid"
       :playlist-data="playlistData"
-      :track-data="trackData"
+      :tracks="tracks"
     />
   </BaseListContainer>
 </template>
@@ -30,7 +30,7 @@ export default {
         return []
       }
     },
-    trackData: Object
+    tracks: Array
   },
   computed: {
     playlistsCollection () {

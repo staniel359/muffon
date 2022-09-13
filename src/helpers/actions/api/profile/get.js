@@ -5,8 +5,7 @@ export default function (
   {
     profileId,
     scope = '',
-    artistName,
-    trackTitle,
+    playlistsModelData,
     page,
     limit
   }
@@ -16,16 +15,18 @@ export default function (
   const otherProfileId =
     store.getters['profile/id']
 
+  const playlistsModelDataParams =
+    playlistsModelData && {
+      model: playlistsModelData.model,
+      title: playlistsModelData.title,
+      artist: playlistsModelData.artistName
+    }
+
   const params = {
     ...(otherProfileId && {
       other_profile_id: otherProfileId
     }),
-    ...(artistName && {
-      artist_name: artistName
-    }),
-    ...(trackTitle && {
-      track_title: trackTitle
-    })
+    ...playlistsModelDataParams
   }
 
   const handleSuccess = (

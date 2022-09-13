@@ -1,59 +1,39 @@
 <template>
-  <BaseLinkContainer
-    class="item main-simple-list-item"
-    :class="{
-      disabled: isLoading,
-      active: isActive
-    }"
-    @click="handleClick"
+  <Component
+    :is="component"
+    :playlist-id="playlistId"
+    :tracks="tracks"
+    :playlist-track-ids="playlistTrackIds"
+    :pagination-item="paginationItem"
+    @success="handleSuccess"
+    @error="handleError"
   >
-    <BaseImage
-      class="rounded bordered"
-      model="playlist"
-      :image="imageData?.extrasmall"
-    />
-
-    <div class="content">
-      <BaseHeader
-        class="link"
-        tag="h4"
-        :text="playlistTitle"
+    <template
+      #default="slotProps"
+    >
+      <ContentBlock
+        :playlist-data="playlistData"
+        :is-loading="slotProps.isLoading"
+        :is-success="isSuccess"
+        :is-error="isError"
       />
-
-      <small
-        class="description"
-        v-html="tracksCountText"
-      />
-    </div>
-
-    <div class="icon-container">
-      <BaseIcon
-        :is-loading="isLoading"
-        :icon="icon"
-      />
-    </div>
-  </BaseLinkContainer>
+    </template>
+  </Component>
 </template>
 
 <script>
-import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
-import {
-  number as formatNumber
-} from '*/helpers/formatters'
-import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
-import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
+import BaseCreatePlaylistTracksContainer
+  from '*/components/containers/playlist/tracks/BaseCreatePlaylistTracksContainer.vue'
+import BaseDeletePlaylistTracksContainer
+  from '*/components/containers/playlist/tracks/BaseDeletePlaylistTracksContainer.vue'
+import ContentBlock from './PlaylistItem/ContentBlock.vue'
 
 export default {
   name: 'PlaylistItem',
   components: {
-    BaseLinkContainer,
-    BaseImage,
-    BaseHeader,
-    BaseIcon
+    BaseCreatePlaylistTracksContainer,
+    BaseDeletePlaylistTracksContainer,
+    ContentBlock
   },
   inject: {
     findPaginationItem: {
@@ -65,93 +45,25 @@ export default {
       type: Object,
       required: true
     },
-    trackData: {
-      type: Object,
-      required: true
-    }
+    tracks: Array
   },
   data () {
     return {
-      playlistTrackId: null,
-      isLoading: false,
       isSuccess: false,
-      isError: false
+      isError: false,
+      playlistTrackIds: []
     }
   },
   computed: {
+    component () {
+      if (this.playlistTrackIds.length) {
+        return 'BaseDeletePlaylistTracksContainer'
+      } else {
+        return 'BaseCreatePlaylistTracksContainer'
+      }
+    },
     playlistId () {
-      return this.playlistData.id
-    },
-    imageData () {
-      return this.playlistData.image
-    },
-    playlistTitle () {
-      return this.playlistData.title
-    },
-    tracksCountText () {
-      return this.$tc(
-        'counters.nominative.tracks',
-        this.tracksCount,
-        {
-          count: this.tracksCountStrong
-        }
-      )
-    },
-    tracksCountStrong () {
-      return `<strong>${this.tracksCountFormatted}</strong>`
-    },
-    tracksCountFormatted () {
-      return formatNumber(
-        this.tracksCount
-      )
-    },
-    tracksCount () {
-      return this.playlistData.tracks_count
-    },
-    isActive () {
-      return !!this.playlistTrackId
-    },
-    createArgs () {
-      return {
-        playlistId: this.playlistId,
-        trackTitle: this.trackTitle,
-        artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        imageUrl: this.imageUrl,
-        sourceData: this.sourceData,
-        audioData: this.audioDataFormatted,
-        albumSourceData: this.albumSourceData,
-        isSelectable: true
-      }
-    },
-    trackTitle () {
-      return this.trackData.title
-    },
-    artistName () {
-      return this.trackData.artist.name
-    },
-    albumTitle () {
-      return this.albumData?.title
-    },
-    albumData () {
-      return this.trackData.album
-    },
-    imageUrl () {
-      return this.trackData.image?.large
-    },
-    sourceData () {
-      return this.trackData.source
-    },
-    audioDataFormatted () {
-      return this.audioData && {
-        present: this.audioData.present
-      }
-    },
-    audioData () {
-      return this.trackData.audio
-    },
-    albumSourceData () {
-      return this.albumData?.source
+      return this.playlistData.id.toString()
     },
     paginationItem () {
       return this.findPaginationItem(
@@ -162,57 +74,34 @@ export default {
     },
     uuid () {
       return this.playlistData.uuid
-    },
-    deleteArgs () {
-      return {
-        playlistId: this.playlistId,
-        playlistTrackId: this.playlistTrackId,
-        isSelectable: true
-      }
-    },
-    icon () {
-      if (this.isSuccess) {
-        return 'green check'
-      } else if (this.isError) {
-        return 'red close'
-      } else {
-        return null
-      }
     }
   },
   mounted () {
-    this.playlistTrackId =
-      this.playlistData.playlist_track_id
+    this.playlistTrackIds = (
+      this.playlistData.playlist_track_ids || []
+    )
   },
   methods: {
-    createPlaylistTrack,
-    deletePlaylistTrack,
-    handleClick () {
-      if (this.playlistTrackId) {
-        this.deleteData()
-      } else {
-        this.postData()
-      }
+    handleSuccess (
+      value
+    ) {
+      this.isSuccess = true
+      this.isError = false
+
+      this.playlistTrackIds = value
     },
-    postData () {
-      this.createPlaylistTrack(
-        this.createArgs
-      )
-    },
-    deleteData () {
-      this.deletePlaylistTrack(
-        this.deleteArgs
-      )
+    handleError () {
+      this.isError = true
+      this.isSuccess = false
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.icon-container
-  @extend .d-flex, .align-items-center, .justify-content-center
-  width: 20px
-  height: 20px
-  &.icon
-    @extend .no-padding
+::v-deep(.progress)
+  margin-top: 1em !important
+
+::v-deep(.error-message)
+  margin-top: 1em !important
 </style>
