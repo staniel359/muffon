@@ -98,3 +98,5 @@ Create an issue [here](https://github.com/staniel359/muffon/issues)
 
 ## Related projects
 [muffon-api](https://github.com/staniel359/muffon-api) - REST API for client
+
+[muffon-website](https://github.com/staniel359/muffon-website) - Website
