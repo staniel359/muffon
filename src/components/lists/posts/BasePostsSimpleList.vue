@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="divided">
+  <BaseListContainer
+    class="divided"
+  >
     <PostItem
       v-for="postData in posts"
       :key="postData.uuid"
