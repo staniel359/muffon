@@ -45,27 +45,21 @@ export default {
     ProfileSettings,
     ServicesSettings
   },
-  computed: {
-    tabs () {
-      return [
+  data () {
+    return {
+      tabs: [
         {
-          name: this.$t(
-            'settings.tabs.app'
-          ),
+          nameCode: 'settings.tabs.app',
           scope: 'app',
           component: 'AppSettings'
         },
         {
-          name: this.$t(
-            'settings.tabs.profile'
-          ),
+          nameCode: 'settings.tabs.profile',
           scope: 'profile',
           component: 'ProfileSettings'
         },
         {
-          name: this.$t(
-            'settings.tabs.services'
-          ),
+          nameCode: 'settings.tabs.services',
           scope: 'services',
           component: 'ServicesSettings'
         }

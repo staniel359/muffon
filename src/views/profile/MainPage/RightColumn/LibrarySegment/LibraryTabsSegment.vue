@@ -3,9 +3,8 @@
     ref="segment"
   >
     <BaseTabsContainer
-      class="item"
-      :class="columnWidth"
       :tabs="tabs"
+      is-fluid
       @tab-click="handleTabClick"
     >
       <template
@@ -35,9 +34,6 @@ import ArtistsTab from './LibraryTabsSegment/ArtistsTab.vue'
 import AlbumsTab from './LibraryTabsSegment/AlbumsTab.vue'
 import TracksTab from './LibraryTabsSegment/TracksTab.vue'
 import TagsTab from './LibraryTabsSegment/TagsTab.vue'
-import {
-  numberToColumnWidth
-} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'LibraryTabsSegment',
@@ -53,35 +49,22 @@ export default {
     profileId: String
   },
   computed: {
-    columnWidth () {
-      return numberToColumnWidth(
-        this.tabs.length
-      )
-    },
     tabs () {
       return [
         {
-          name: this.$t(
-            'navigation.artists'
-          ),
+          nameCode: 'navigation.artists',
           component: 'ArtistsTab'
         },
         {
-          name: this.$t(
-            'navigation.albums'
-          ),
+          nameCode: 'navigation.albums',
           component: 'AlbumsTab'
         },
         {
-          name: this.$t(
-            'navigation.tracks'
-          ),
+          nameCode: 'navigation.tracks',
           component: 'TracksTab'
         },
         {
-          name: this.$t(
-            'navigation.tags'
-          ),
+          nameCode: 'navigation.tags',
           component: 'TagsTab'
         }
       ]

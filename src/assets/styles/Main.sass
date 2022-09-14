@@ -546,7 +546,9 @@ p
       @extend .no-margin
 
 .main-tabs-container
-  @extend .flex-full, .d-flex, .flex-column
+  @extend .flex-full, .d-flex
+  &:not(.vertical)
+    @extend .flex-column
 
 .main-tab-container
   @extend .flex-full, .d-flex, .flex-column, .relative
