@@ -1,20 +1,12 @@
 <template>
   <div class="main-settings-options-block">
-    <BaseDivider
-      :text="dataText"
-      is-horizontal
-    />
+    <ClearCacheOption />
 
-    <div>
-      <ClearCacheOption />
-
-      <ClearSearchHistoryOption />
-    </div>
+    <ClearSearchHistoryOption />
   </div>
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
 import ClearCacheOption from './DataOptions/ClearCacheOption.vue'
 import ClearSearchHistoryOption
   from './DataOptions/ClearSearchHistoryOption.vue'
@@ -22,16 +14,8 @@ import ClearSearchHistoryOption
 export default {
   name: 'DataOptions',
   components: {
-    BaseDivider,
     ClearCacheOption,
     ClearSearchHistoryOption
-  },
-  computed: {
-    dataText () {
-      return this.$t(
-        'settings.sections.app.data'
-      )
-    }
   }
 }
 </script>

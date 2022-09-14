@@ -1,6 +1,6 @@
 <template>
   <div
-    class="image-item"
+    class="column image-item"
     :class="{
       active: isActive
     }"
@@ -105,6 +105,7 @@ export default {
 .image-item
   @extend .d-flex, .flex-column
   align-self: center
+  padding: 0.75em !important
   &.active
     border: 1px solid $colorBaseLight
     border-radius: 5px

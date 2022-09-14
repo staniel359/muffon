@@ -3,7 +3,6 @@
     <ImageItem
       v-for="imageData in images"
       :key="imageData.id"
-      class="column"
       :image-data="imageData"
       :size="size"
       :is-with-clear-button="isWithClearButton"

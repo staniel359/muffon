@@ -1,13 +1,9 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    size="small"
   >
-    <div
-      :class="[
-        'content',
-        'main-modal-content-full-height'
-      ]"
-    >
+    <div class="content main-modal-content-full-height">
       <BaseTabsContainer
         :tabs="tabs"
       >
@@ -18,7 +14,6 @@
         >
           <Component
             :is="tabData.component"
-            class="settings-container"
             :class="slotProps.class"
           />
         </template>
@@ -77,7 +72,16 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.settings-container
-  &.active
-    @extend .d-flex, .flex-column
+::v-deep(.settings-group-tabs-container)
+  .main-tabs
+    @extend .no-margin, .overflow-y-auto
+    flex: 0.3
+    margin-right: 1em !important
+  .main-tab-container
+    flex: 0.7 !important
+
+::v-deep(.settings-group-tab)
+  @extend .d-flex, .flex-column
+  &:not(.active)
+    @extend .visibility-hidden
 </style>

@@ -1,42 +1,34 @@
 <template>
   <div class="main-settings-options-block">
-    <BaseDivider
-      :text="sidebarText"
-      is-horizontal
-    />
+    <FeedOption />
 
-    <div>
-      <FeedOption />
+    <ConversationsOption />
 
-      <ConversationsOption />
+    <LibraryOption />
 
-      <LibraryOption />
+    <RecommendationsOption />
 
-      <RecommendationsOption />
+    <SavedTracksOption />
 
-      <SavedTracksOption />
+    <PlaylistsOption />
 
-      <PlaylistsOption />
+    <FavoritesOption />
 
-      <FavoritesOption />
+    <BookmarksOption />
 
-      <BookmarksOption />
+    <TopOption />
 
-      <TopOption />
+    <ReleasesOption />
 
-      <ReleasesOption />
+    <RadioOption />
 
-      <RadioOption />
+    <MultitagOption />
 
-      <MultitagOption />
-
-      <CommunitiesOption />
-    </div>
+    <CommunitiesOption />
   </div>
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
 import FeedOption from './SidebarOptions/FeedOption.vue'
 import ConversationsOption from './SidebarOptions/ConversationsOption.vue'
 import LibraryOption from './SidebarOptions/LibraryOption.vue'
@@ -54,7 +46,6 @@ import CommunitiesOption from './SidebarOptions/CommunitiesOption.vue'
 export default {
   name: 'SidebarOptions',
   components: {
-    BaseDivider,
     FeedOption,
     ConversationsOption,
     LibraryOption,
@@ -68,13 +59,6 @@ export default {
     RadioOption,
     MultitagOption,
     CommunitiesOption
-  },
-  computed: {
-    sidebarText () {
-      return this.$t(
-        'settings.sections.app.sidebar'
-      )
-    }
   }
 }
 </script>

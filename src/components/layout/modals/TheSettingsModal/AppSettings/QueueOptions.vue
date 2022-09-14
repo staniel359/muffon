@@ -1,36 +1,20 @@
 <template>
   <div class="main-settings-options-block">
-    <BaseDivider
-      :text="queueText"
-      is-horizontal
-    />
+    <AutoplayOption />
 
-    <div>
-      <AutoplayOption />
-
-      <ClearOption />
-    </div>
+    <ClearOption />
   </div>
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
 import AutoplayOption from './QueueOptions/AutoplayOption.vue'
 import ClearOption from './QueueOptions/ClearOption.vue'
 
 export default {
   name: 'QueueOptions',
   components: {
-    BaseDivider,
     AutoplayOption,
     ClearOption
-  },
-  computed: {
-    queueText () {
-      return this.$t(
-        'settings.sections.app.queue'
-      )
-    }
   }
 }
 </script>

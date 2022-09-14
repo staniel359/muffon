@@ -48,8 +48,6 @@ p
   @extend .no-padding
 
 .ui.modal
-  &.main-modal
-    width: 500px
   &.main-image-modal
     @extend .background-transparent
   &.inverted
@@ -482,18 +480,14 @@ p
     height: 20px
 
 .main-settings-options-block
-  @extend .relative
-  margin-bottom: 1em
-  & > .divider
-    &.horizontal
-      margin: 1.5em 0
+  padding: 1em !important
   .option
     @extend .d-flex, .align-items-center
     &:not(:first-child)
       margin-top: 1.5em
     .option-header
       @extend .flex-full
-      margin-right: 1em !important
+      margin-right: 1.5em !important
       .option-button
         max-width: 200px
     .option-text
@@ -590,7 +584,7 @@ p
   @extend .d-flex, .align-items-center, .flex-full
 
 .main-source-select
-  width: 220px
+  width: 210px
 
 .main-source-select-type-select
   width: 150px
@@ -601,7 +595,6 @@ p
   margin-left: 1em !important
 
 .main-form
-  position: unset !important
   & > .submit-button-container
     @extend .d-flex, .justify-content-flex-end
     margin-top: 1em

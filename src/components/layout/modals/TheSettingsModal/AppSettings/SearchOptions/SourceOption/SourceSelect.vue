@@ -1,6 +1,6 @@
 <template>
   <BaseDropdownContainer
-    class="main-source-select"
+    class="main-source-select source-select"
     :selected="searchSource"
   >
     <SourcesList />
@@ -33,8 +33,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-source-select
-  @extend .no-margin
+.source-select
+  width: 170px !important
 
 ::v-deep(.menu)
   max-height: 200px !important

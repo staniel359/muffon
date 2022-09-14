@@ -3,6 +3,7 @@
     v-if="isRender"
     ref="modal"
     class="ui page modal main-modal"
+    :class="size"
   >
     <slot />
   </div>
@@ -28,7 +29,11 @@ export default {
   name: 'BaseModalContainer',
   props: {
     isImageModal: Boolean,
-    isMultiple: Boolean
+    isMultiple: Boolean,
+    size: {
+      type: String,
+      default: 'tiny'
+    }
   },
   emits: [
     'show',

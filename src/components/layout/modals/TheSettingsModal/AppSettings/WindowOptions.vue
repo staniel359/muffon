@@ -1,36 +1,20 @@
 <template>
   <div class="main-settings-options-block">
-    <BaseDivider
-      :text="windowText"
-      is-horizontal
-    />
+    <MaximizeOption />
 
-    <div>
-      <MaximizeOption />
-
-      <ExitOption />
-    </div>
+    <ExitOption />
   </div>
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
 import MaximizeOption from './WindowOptions/MaximizeOption.vue'
 import ExitOption from './WindowOptions/ExitOption.vue'
 
 export default {
   name: 'WindowOptions',
   components: {
-    BaseDivider,
     MaximizeOption,
     ExitOption
-  },
-  computed: {
-    windowText () {
-      return this.$t(
-        'settings.sections.app.window'
-      )
-    }
   }
 }
 </script>
