@@ -81,8 +81,9 @@
       :is-with-bookmark-icon="isWithBookmarkIcon"
     />
 
-    <DurationBlock
+    <BaseDurationBlock
       v-if="isRenderDuration"
+      class="description track-duration"
       :duration="duration"
     />
 
@@ -178,7 +179,7 @@ import ArtistsSection from './BaseTrackContent/ArtistsSection.vue'
 import AlbumSection from './BaseTrackContent/AlbumSection.vue'
 import ListenersCountSection
   from './BaseTrackContent/ListenersCountSection.vue'
-import DurationBlock from './BaseTrackContent/DurationBlock.vue'
+import BaseDurationBlock from '*/components/BaseDurationBlock.vue'
 import BaseIcon from '*/components/BaseIcon.vue'
 import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
@@ -210,7 +211,7 @@ export default {
     ArtistsSection,
     AlbumSection,
     ListenersCountSection,
-    DurationBlock,
+    BaseDurationBlock,
     BaseIcon,
     BaseSourceIcon,
     BaseSelfIcons,
@@ -339,12 +340,11 @@ export default {
     isRenderDuration () {
       return (
         this.isWithDuration &&
-          this.duration &&
-            this.duration !== '00:00'
+          this.duration
       )
     },
     duration () {
-      return this.trackData.duration
+      return this.trackData.duration_seconds
     },
     isRenderSource () {
       return (
@@ -476,4 +476,7 @@ export default {
 
 .track-source-icon
   margin-left: 0.5em !important
+
+.track-duration
+  margin-left: 0.5em
 </style>

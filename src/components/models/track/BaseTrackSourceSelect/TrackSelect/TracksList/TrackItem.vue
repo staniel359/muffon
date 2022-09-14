@@ -5,7 +5,7 @@
     :header="trackTitle"
     :subheader="trackExtraTitle"
     :content="artistName"
-    :extra="duration"
+    :extra="durationFormatted"
     is-with-image
     @click="handleClick"
   />
@@ -16,6 +16,9 @@ import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
 import {
   generateKey
 } from '*/helpers/utils'
+import {
+  seconds as formatSeconds
+} from '*/helpers/formatters'
 
 export default {
   name: 'TrackItem',
@@ -44,8 +47,17 @@ export default {
     artistName () {
       return this.trackData.artist.name
     },
+    durationFormatted () {
+      if (this.duration) {
+        return formatSeconds(
+          this.duration
+        )
+      } else {
+        return null
+      }
+    },
     duration () {
-      return this.trackData.duration
+      return this.trackData.duration_seconds
     }
   },
   methods: {
