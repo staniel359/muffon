@@ -76,4 +76,5 @@ export default {
 <style lang="sass" scoped>
 .track-full-title
   @extend .text-align-center
+  margin-top: 0.5em
 </style>

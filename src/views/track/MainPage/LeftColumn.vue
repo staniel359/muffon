@@ -6,25 +6,23 @@
       :image-data="imageData"
     />
 
-    <div class="left-column-extra">
-      <HeaderSection
-        :track-data="trackData"
-        :scrollable="scrollable"
-      />
+    <HeaderSection
+      :track-data="trackData"
+      :scrollable="scrollable"
+    />
 
-      <SelfSection
-        :track-data="trackData"
-        :library-id="libraryId"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :listened-id="listenedId"
-      />
+    <SelfSection
+      :track-data="trackData"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+    />
 
-      <ListenersSection
-        :track-data="trackData"
-        :request-track-data="requestTrackData"
-      />
-    </div>
+    <ListenersSection
+      :track-data="trackData"
+      :request-track-data="requestTrackData"
+    />
   </div>
 </template>
 
@@ -76,11 +74,4 @@ export default {
 <style lang="sass" scoped>
 .track-page-left-column
   width: 150px
-
-.left-column-extra
-  margin-top: 0.5em
-
-.main-self-icons
-  @extend .text-align-center
-  max-width: 80px
 </style>
