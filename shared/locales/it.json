@@ -124,6 +124,7 @@
     "save": "Salva",
     "cancel": "Annulla",
     "delete": "Cancella",
+    "clear": "Svuota",
     "retry": "Riprova",
     "post": "Posta",
     "send": "Invia",
@@ -554,6 +555,9 @@
       }
     },
     "error": "{counter} non aggiunto:"
+  },
+  "delete": {
+    "active": "Rimozione di {count} di {counter}..."
   },
   "accounts": {
     "connect": "Connetti account",
