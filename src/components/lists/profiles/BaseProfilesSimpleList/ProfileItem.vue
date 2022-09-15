@@ -207,7 +207,7 @@ export default {
     margin-left: 0.5em
 
 .following-message
-  align-self: center
+  @extend .align-self-center
   margin-left: 0.5em
 
 .follow-button

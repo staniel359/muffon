@@ -1,18 +1,18 @@
 <template>
-  <div>
+  <div class="ui four column compact grid">
     <ImageItem
       v-for="imageData in images"
-      :key="imageData.uuid"
+      :key="imageData.id"
       :image-data="imageData"
     />
   </div>
 </template>
 
 <script>
-import ImageItem from './ImagesSection/ImageItem.vue'
+import ImageItem from './BaseBackgroundImagesTableList/ImageItem.vue'
 
 export default {
-  name: 'ImagesSection',
+  name: 'BaseBackgroundImagesTableList',
   components: {
     ImageItem
   },

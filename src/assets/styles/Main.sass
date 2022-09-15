@@ -827,9 +827,6 @@ p
 .main-profile-online-label
   @extend .no-margin
 
-.main-images-table-list
-  @extend .no-margin
-
 .main-transparent-segment-container
   .main-segment
     @extend .background-transparent
@@ -850,3 +847,14 @@ p
 
 .main-timezone-dropdown
   min-width: 200px !important
+
+.main-image-item
+  @extend .relative, .align-self-center
+  &:hover
+    .main-image-clear-button
+      @extend .d-block
+
+.main-image-clear-button
+  @extend .no-margin, .absolute, .d-none
+  top: 7px,
+  right: 7px

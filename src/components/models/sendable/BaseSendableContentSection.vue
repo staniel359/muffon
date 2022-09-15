@@ -6,7 +6,7 @@
       v-text="text"
     />
 
-    <BaseImagesList
+    <BaseImagesSimpleList
       v-if="images?.length"
       class="main-content-section"
       :images="images"
@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import BaseImagesList from '*/components/lists/images/BaseImagesList.vue'
+import BaseImagesSimpleList from '*/components/lists/images/BaseImagesSimpleList.vue'
 import BaseVideosEmbeddedList
   from '*/components/lists/videos/BaseVideosEmbeddedList.vue'
 import BaseArtistsSimpleList
@@ -88,7 +88,7 @@ import BaseCommunitiesSimpleList
 export default {
   name: 'BaseSendableContentSection',
   components: {
-    BaseImagesList,
+    BaseImagesSimpleList,
     BaseVideosEmbeddedList,
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,

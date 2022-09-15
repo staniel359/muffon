@@ -1,18 +1,18 @@
 <template>
-  <div class="ui four column grid main-images-table-list">
+  <div class="ui four column compact grid">
     <ImageItem
-      v-for="imageData in images"
-      :key="imageData.id"
+      v-for="imageData in imagesCollection"
+      :key="imageData.uuid"
       :image-data="imageData"
-      :size="size"
-      :is-with-clear-button="isWithClearButton"
-      :is-clickable="isClickable"
     />
   </div>
 </template>
 
 <script>
 import ImageItem from './BaseImagesTableList/ImageItem.vue'
+import {
+  collection as formatCollection
+} from '*/helpers/formatters'
 
 export default {
   name: 'BaseImagesTableList',
@@ -22,13 +22,15 @@ export default {
   props: {
     images: {
       type: Array,
-      default () {
-        return []
-      }
-    },
-    size: String,
-    isWithClearButton: Boolean,
-    isClickable: Boolean
+      required: true
+    }
+  },
+  computed: {
+    imagesCollection () {
+      return formatCollection(
+        this.images
+      )
+    }
   }
 }
 </script>

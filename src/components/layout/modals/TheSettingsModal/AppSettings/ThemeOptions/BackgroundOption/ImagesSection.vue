@@ -1,10 +1,7 @@
 <template>
   <div class="images-section">
-    <BaseImagesTableList
-      size="original"
-      :images="backgroundImagesWithDefault"
-      is-with-clear-button
-      is-clickable
+    <BaseBackgroundImagesTableList
+      :images="images"
     />
   </div>
 </template>
@@ -13,13 +10,13 @@
 import {
   mapState
 } from 'vuex'
-import BaseImagesTableList
-  from '*/components/lists/images/BaseImagesTableList.vue'
+import BaseBackgroundImagesTableList
+  from '*/components/lists/backgroundImages/BaseBackgroundImagesTableList.vue'
 
 export default {
   name: 'ImagesSection',
   components: {
-    BaseImagesTableList
+    BaseBackgroundImagesTableList
   },
   computed: {
     ...mapState(
@@ -28,7 +25,7 @@ export default {
         'backgroundImages'
       ]
     ),
-    backgroundImagesWithDefault () {
+    images () {
       return [
         this.defaultImageData,
         ...this.backgroundImages

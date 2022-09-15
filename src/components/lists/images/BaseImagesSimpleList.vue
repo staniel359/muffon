@@ -3,7 +3,7 @@
     <BaseImage
       v-for="imageData in imagesCollection"
       :key="imageData.uuid"
-      class="image-item"
+      class="rounded bordered image-item"
       :image="imageData.original"
     />
   </div>
@@ -16,16 +16,14 @@ import {
 } from '*/helpers/formatters'
 
 export default {
-  name: 'BaseImagesList',
+  name: 'BaseImagesSimpleList',
   components: {
     BaseImage
   },
   props: {
     images: {
       type: Array,
-      default () {
-        return []
-      }
+      required: true
     }
   },
   computed: {
