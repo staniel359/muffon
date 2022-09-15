@@ -13,7 +13,9 @@
         :tracks="slotProps[scope]"
         :profile-id="profileId"
         :is-link-to-library="isLinkToLibrary"
+        is-with-image
         is-with-artist-name
+        is-with-album-title
         is-with-clear-button
         @link-click="handleLinkClick"
         @clear-button-click="handleClearButtonClick"
