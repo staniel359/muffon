@@ -11,6 +11,8 @@
     <template #default="slotProps">
       <BaseTracksSimpleList
         :tracks="slotProps[scope]"
+        :profile-id="profileId"
+        :is-link-to-library="isLinkToLibrary"
         is-with-artist-name
         is-with-clear-button
         @link-click="handleLinkClick"
@@ -21,6 +23,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BasePaginatedListContainer
   from '*/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseTracksSimpleList
@@ -42,7 +47,8 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isLinkToLibrary: Boolean
   },
   emits: [
     'focus'
@@ -54,6 +60,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     tracksData () {
       return {
         page: 1,

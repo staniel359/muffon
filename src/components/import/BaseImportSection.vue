@@ -3,6 +3,7 @@
     <Component
       :is="component"
       :[scope]="collection"
+      :is-link-to-library="isLinkToLibrary"
     />
   </div>
 
@@ -33,7 +34,8 @@ export default {
       type: String,
       required: true
     },
-    collection: Array
+    collection: Array,
+    isLinkToLibrary: Boolean
   },
   data () {
     return {

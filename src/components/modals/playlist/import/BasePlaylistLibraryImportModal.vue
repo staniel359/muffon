@@ -29,6 +29,7 @@
         v-if="isImport"
         scope="tracks"
         :collection="collection"
+        is-link-to-library
       />
       <BasePlaylistSaveSection
         v-else-if="isSave"
