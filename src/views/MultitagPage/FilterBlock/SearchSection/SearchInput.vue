@@ -30,7 +30,7 @@ export default {
   computed: {
     url () {
       return (
-        '/lastfm/search/tags' +
+        'lastfm/search/tags' +
         '?query={query}&limit=5'
       )
     },

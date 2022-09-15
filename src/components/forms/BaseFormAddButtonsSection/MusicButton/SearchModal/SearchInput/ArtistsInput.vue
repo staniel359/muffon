@@ -39,7 +39,7 @@ export default {
   computed: {
     url () {
       return (
-        '/lastfm/search/artists' +
+        'lastfm/search/artists' +
         '?query={query}&limit=5'
       )
     },
