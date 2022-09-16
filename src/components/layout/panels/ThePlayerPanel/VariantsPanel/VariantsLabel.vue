@@ -1,9 +1,6 @@
 <template>
   <BaseLabel
-    :class="[
-      'top attached right icon',
-      'variants-label'
-    ]"
+    class="basic top attached variants-label"
     :icon="icon"
     :text="variantsText"
     is-reverse

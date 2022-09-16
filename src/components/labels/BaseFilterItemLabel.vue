@@ -1,11 +1,9 @@
 <template>
   <BaseLabel
-    class="primary large main-filter-item-label"
+    class="primary circular large"
     icon="close"
     :text="name"
-    :is-basic="false"
-    :is-inverted="false"
-    is-circular
+    :is-invertable="false"
     is-reverse
     @icon-click="handleDeleteIconClick"
   />

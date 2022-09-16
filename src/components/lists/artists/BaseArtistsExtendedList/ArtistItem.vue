@@ -71,13 +71,18 @@
                 :is-link-to-library="isLinkToLibrary"
               />
 
-              <BaseCounterLabels
-                :counters="counters"
-              />
+              <div>
+                <div class="main-labels-section">
+                  <BaseCounterLabels
+                    :counters="counters"
+                  />
+                </div>
 
-              <BaseArtistTags
-                :artist-data="responseData"
-              />
+                <BaseArtistTags
+                  class="main-labels-section"
+                  :artist-data="responseData"
+                />
+              </div>
 
               <template v-if="description">
                 <BaseDivider />

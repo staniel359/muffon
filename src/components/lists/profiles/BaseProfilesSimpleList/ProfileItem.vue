@@ -25,8 +25,9 @@
 
         <BaseLabel
           v-if="isStaff"
-          class="small primary role-label"
+          class="primary circular small role-label"
           :text="roleText"
+          :is-invertable="false"
         />
       </div>
 
@@ -199,7 +200,7 @@ export default {
   margin-left: 0.5em !important
 
 .role-label
-  margin-left: 0.5em
+  margin-left: 1em
 
 .follow-counters
   @extend .d-flex

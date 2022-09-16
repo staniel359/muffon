@@ -8,13 +8,18 @@
       :text="artistName"
     />
 
-    <BaseCounterLabels
-      :counters="counters"
-    />
+    <div>
+      <div class="main-labels-section">
+        <BaseCounterLabels
+          :counters="counters"
+        />
+      </div>
 
-    <BaseArtistTags
-      :artist-data="artistData"
-    />
+      <BaseArtistTags
+        class="main-labels-section"
+        :artist-data="artistData"
+      />
+    </div>
 
     <template v-if="description">
       <BaseDivider />

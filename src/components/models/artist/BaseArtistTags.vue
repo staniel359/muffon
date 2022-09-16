@@ -1,7 +1,8 @@
 <template>
-  <template v-if="tags">
+  <div
+    v-if="tags"
+  >
     <BaseTagsList
-      v-bind="$attrs"
       :tags="tags"
       :is-more="isMore"
       is-with-icon
@@ -13,7 +14,7 @@
       ref="modal"
       :artist-name="artistName"
     />
-  </template>
+  </div>
 </template>
 
 <script>

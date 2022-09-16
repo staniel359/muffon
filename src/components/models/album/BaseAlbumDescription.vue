@@ -1,18 +1,25 @@
 <template>
-  <BaseDescription
-    :description="description"
-    :is-more="isMore"
-    @more-click="handleMoreClick"
-  />
+  <template
+    v-if="description"
+  >
+    <BaseDivider />
 
-  <BaseAlbumDescriptionModal
-    v-if="isMore"
-    ref="modal"
-    :request-album-data="requestAlbumData"
-  />
+    <BaseDescription
+      :description="description"
+      :is-more="isMore"
+      @more-click="handleMoreClick"
+    />
+
+    <BaseAlbumDescriptionModal
+      v-if="isMore"
+      ref="modal"
+      :request-album-data="requestAlbumData"
+    />
+  </template>
 </template>
 
 <script>
+import BaseDivider from '*/components/BaseDivider.vue'
 import BaseDescription from '*/components/BaseDescription.vue'
 import BaseAlbumDescriptionModal
   from '*/components/modals/album/BaseAlbumDescriptionModal.vue'
@@ -20,13 +27,24 @@ import BaseAlbumDescriptionModal
 export default {
   name: 'BaseAlbumDescription',
   components: {
+    BaseDivider,
     BaseDescription,
     BaseAlbumDescriptionModal
   },
   props: {
-    description: String,
-    isMore: Boolean,
+    albumData: {
+      type: Object,
+      required: true
+    },
     requestAlbumData: Object
+  },
+  computed: {
+    description () {
+      return this.albumData.description
+    },
+    isMore () {
+      return this.albumData.with_more?.description
+    }
   },
   methods: {
     handleMoreClick () {

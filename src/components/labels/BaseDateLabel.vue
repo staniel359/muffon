@@ -1,6 +1,7 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui labels">
     <BaseLabel
+      class="basic circular large"
       icon="calendar outline"
       :text="dateFormatted"
     />

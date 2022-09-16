@@ -1,5 +1,5 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui labels">
     <CounterLabel
       v-for="(counterData, index) in counters"
       :key="index"

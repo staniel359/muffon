@@ -1,29 +1,27 @@
 <template>
-  <BaseCounterLabels
-    :counters="counters"
-  />
+  <div>
+    <div class="main-labels-section">
+      <BaseCounterLabels
+        :counters="counters"
+      />
+    </div>
 
-  <BaseTrackTags
-    :tags="tags"
-    :request-track-data="requestTrackData"
-    :is-more="isMoreTags"
-  />
-
-  <template v-if="description">
-    <BaseDivider />
-
-    <BaseTrackDescription
-      :description="description"
+    <BaseTrackTags
+      class="main-labels-section"
+      :track-data="trackData"
       :request-track-data="requestTrackData"
-      :is-more="isMoreDescription"
     />
-  </template>
+  </div>
+
+  <BaseTrackDescription
+    :track-data="trackData"
+    :request-track-data="requestTrackData"
+  />
 </template>
 
 <script>
 import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
 import BaseTrackTags from '*/components/models/track/BaseTrackTags.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
 import BaseTrackDescription
   from '*/components/models/track/BaseTrackDescription.vue'
 
@@ -32,7 +30,6 @@ export default {
   components: {
     BaseCounterLabels,
     BaseTrackTags,
-    BaseDivider,
     BaseTrackDescription
   },
   props: {
@@ -60,18 +57,6 @@ export default {
     },
     playsCount () {
       return this.trackData.plays_count
-    },
-    tags () {
-      return this.trackData.tags
-    },
-    isMoreTags () {
-      return this.trackData.with_more?.tags
-    },
-    description () {
-      return this.trackData.description
-    },
-    isMoreDescription () {
-      return this.trackData.with_more?.description
     }
   }
 }

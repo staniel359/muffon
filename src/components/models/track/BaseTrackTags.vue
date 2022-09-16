@@ -1,16 +1,20 @@
 <template>
-  <BaseTagsList
-    :tags="tags"
-    :is-more="isMore"
-    is-with-icon
-    @more-click="handleMoreClick"
-  />
+  <div
+    v-if="tags"
+  >
+    <BaseTagsList
+      :tags="tags"
+      :is-more="isMore"
+      is-with-icon
+      @more-click="handleMoreClick"
+    />
 
-  <BaseTrackTagsModal
-    v-if="isMore"
-    ref="modal"
-    :request-track-data="requestTrackData"
-  />
+    <BaseTrackTagsModal
+      v-if="isMore"
+      ref="modal"
+      :request-track-data="requestTrackData"
+    />
+  </div>
 </template>
 
 <script>
@@ -25,9 +29,19 @@ export default {
     BaseTrackTagsModal
   },
   props: {
-    tags: Array,
-    isMore: Boolean,
+    trackData: {
+      type: Object,
+      required: true
+    },
     requestTrackData: Object
+  },
+  computed: {
+    tags () {
+      return this.trackData.tags
+    },
+    isMore () {
+      return this.trackData.with_more?.tags
+    }
   },
   methods: {
     handleMoreClick () {

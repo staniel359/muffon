@@ -1,17 +1,23 @@
 <template>
-  <div
+  <Component
+    :is="component"
     class="ui label main-label"
     :class="{
-      inverted: isInverted && isDarkMode,
-      basic: isBasic,
-      circular: isCircular
+      inverted: isInvertable && isDarkMode,
+      icon: icon && !text,
+      'right icon': icon && text && isReverse,
+      'with-text': text,
+      clickable: isClickable || link
     }"
+    :link="link"
   >
     <div
       v-if="isLoading"
       class="ui mini active inline loader"
     />
-    <template v-else>
+    <template
+      v-else
+    >
       <BaseIcon
         v-if="icon && !isReverse"
         :icon="icon"
@@ -20,7 +26,6 @@
 
       <span
         v-if="text"
-        class="label-text"
         v-text="text"
       />
 
@@ -29,35 +34,49 @@
         :icon="icon"
         @click="handleIconClick"
       />
+
+      <div
+        v-if="counter"
+        class="detail"
+      >
+        <BaseIcon
+          icon="microphone"
+        />
+
+        <span
+          v-text="counter"
+        />
+      </div>
     </template>
-  </div>
+  </Component>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
+import BaseLinkContainer
+  from '*/components/containers/links/BaseLinkContainer.vue'
 import BaseIcon from '*/components/BaseIcon.vue'
 
 export default {
   name: 'BaseLabel',
   components: {
+    BaseLinkContainer,
     BaseIcon
   },
   props: {
-    isBasic: {
+    isInvertable: {
       type: Boolean,
       default: true
     },
-    isInverted: {
-      type: Boolean,
-      default: true
-    },
-    isCircular: Boolean,
     icon: String,
     text: String,
     isReverse: Boolean,
-    isLoading: Boolean
+    isLoading: Boolean,
+    link: Object,
+    isClickable: Boolean,
+    counter: Number
   },
   emits: [
     'iconClick'
@@ -68,7 +87,14 @@ export default {
       [
         'isDarkMode'
       ]
-    )
+    ),
+    component () {
+      if (this.link) {
+        return 'BaseLinkContainer'
+      } else {
+        return 'div'
+      }
+    }
   },
   methods: {
     handleIconClick () {
@@ -80,7 +106,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.label-text
-  @extend .cursor-default
-</style>
+<style lang="sass" scoped></style>

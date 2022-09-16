@@ -178,9 +178,9 @@ p
           @extend .text-color-white
 
 .ui.label
-  &.main-filter-item-label
-    &.circular
-      padding: 0.5em 1em !important
+  &.circular
+    &.with-text
+      padding: 0.6em 1.1em !important
 
 .ui.toast
   &.inverted
@@ -300,14 +300,14 @@ p
     @extend .absolute, .w-100, .h-100
 
 .main-link
-  @extend .cursor-pointer
+  @extend .text-color-unset, .cursor-pointer
   &:hover
     @extend .text-color-base
-  &:not(.label)
-    @extend .text-color-unset
 
 .main-link-container
-  @extend .text-color-unset, .cursor-pointer
+  @extend .cursor-pointer
+  &:not(.main-label)
+    @extend .text-color-unset
   &:hover
     .link
       @extend .text-color-base
@@ -562,10 +562,17 @@ p
     height: 0px !important
 
 .main-label
-  &.basic
-    &.inverted
+  &:not(.clickable)
+    @extend .cursor-default
+    &.basic
+      &.inverted
+        &:hover
+          color: $colorWhiteInverted !important
+  &.clickable
+    @extend .cursor-pointer
+    &:not(.primary)
       &:hover
-        color: $colorWhiteInverted !important
+        @extend .text-color-base
 
 .main-extra-title
   @extend .d-inline
@@ -858,3 +865,7 @@ p
   @extend .no-margin, .absolute, .d-none
   top: 7px,
   right: 7px
+
+.main-labels-section
+  &:not(:last-child)
+    margin-bottom: 0.25em

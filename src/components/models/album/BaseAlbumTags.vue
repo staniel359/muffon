@@ -1,16 +1,20 @@
 <template>
-  <BaseTagsList
-    :tags="tags"
-    :is-more="isMore"
-    is-with-icon
-    @more-click="handleMoreClick"
-  />
+  <div
+    v-if="tags"
+  >
+    <BaseTagsList
+      :tags="tags"
+      :is-more="isMore"
+      is-with-icon
+      @more-click="handleMoreClick"
+    />
 
-  <BaseAlbumTagsModal
-    v-if="isMore"
-    ref="modal"
-    :request-album-data="requestAlbumData"
-  />
+    <BaseAlbumTagsModal
+      v-if="isMore"
+      ref="modal"
+      :request-album-data="requestAlbumData"
+    />
+  </div>
 </template>
 
 <script>
@@ -25,9 +29,19 @@ export default {
     BaseAlbumTagsModal
   },
   props: {
-    tags: Array,
-    isMore: Boolean,
+    albumData: {
+      type: Object,
+      required: true
+    },
     requestAlbumData: Object
+  },
+  computed: {
+    tags () {
+      return this.albumData.tags
+    },
+    isMore () {
+      return this.albumData.with_more?.tags
+    }
   },
   methods: {
     handleMoreClick () {

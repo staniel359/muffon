@@ -1,5 +1,6 @@
 <template>
   <BaseLabel
+    class="basic circular large"
     :icon="iconFormatted"
     :text="countFormatted"
   />
@@ -51,7 +52,9 @@ export default {
       )
     },
     count () {
-      return this.counterData.count || 0
+      return (
+        this.counterData.count || 0
+      )
     }
   }
 }

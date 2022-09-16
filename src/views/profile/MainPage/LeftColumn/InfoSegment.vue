@@ -23,7 +23,8 @@
 
     <BaseLabel
       v-if="isStaff"
-      class="primary role-label"
+      class="primary circular role-label"
+      :is-invertable="false"
       :text="roleText"
     />
 
@@ -83,7 +84,7 @@ export default {
 
 <style lang="sass" scoped>
 .role-label
-  margin: 0.25em 0
+  margin-top: 0.5em
 
 .online-label
   @extend .absolute

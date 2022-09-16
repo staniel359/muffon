@@ -1,17 +1,13 @@
 <template>
-  <BaseButton
-    class="basic compact circular small more-link-button"
+  <BaseLabel
+    class="basic circular large more-link-button"
     icon="ellipsis horizontal"
-    :class="buttonClass"
-    @click="handleClick"
+    :link="artistImagesLink"
   />
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 import {
   images as formatArtistImagesLink
 } from '*/helpers/formatters/links/artist'
@@ -19,7 +15,7 @@ import {
 export default {
   name: 'MoreLinkButton',
   components: {
-    BaseButton
+    BaseLabel
   },
   props: {
     artistName: {
@@ -28,27 +24,11 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    ),
     artistImagesLink () {
       return formatArtistImagesLink(
         {
           artistName: this.artistName
         }
-      )
-    },
-    buttonClass () {
-      return this.isDarkMode ? 'black' : 'white'
-    }
-  },
-  methods: {
-    handleClick () {
-      this.$router.push(
-        this.artistImagesLink
       )
     }
   }

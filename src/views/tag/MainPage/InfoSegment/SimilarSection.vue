@@ -1,20 +1,15 @@
 <template>
   <div class="ui large labels">
     <BaseLabel
-      v-if="isLoading"
-      is-loading
+      class="basic circular"
+      :is-loading="isLoading"
+      :text="similarText"
     />
-    <template
-      v-else-if="similar?.length"
-    >
-      <BaseLabel
-        :text="similarText"
-      />
 
-      <BaseTagsList
-        :tags="similar"
-      />
-    </template>
+    <BaseTagsList
+      v-if="similar?.length"
+      :tags="similar"
+    />
   </div>
 </template>
 
