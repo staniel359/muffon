@@ -1,8 +1,11 @@
 <template>
   <BaseButton
-    class="basic red mini compact circular main-clear-button"
+    class="basic mini compact circular main-clear-button"
     icon="close"
-    :is-invertable="false"
+    :class="{
+      red: isRed
+    }"
+    :is-invertable="isInvertable"
     @click.prevent="handleClick"
   />
 </template>
@@ -15,13 +18,23 @@ export default {
   components: {
     BaseButton
   },
+  props: {
+    isRed: {
+      type: Boolean,
+      default: true
+    },
+    isInvertable: Boolean
+  },
   emits: [
     'click'
   ],
   methods: {
-    handleClick () {
+    handleClick (
+      event
+    ) {
       this.$emit(
-        'click'
+        'click',
+        event
       )
     }
   }

@@ -16,7 +16,7 @@
     />
 
     <BaseButton
-      class="mini basic compact"
+      class="mini basic circular compact"
       icon="plus"
       @click="handleAddTabButtonClick"
     />
