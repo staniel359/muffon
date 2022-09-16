@@ -24,12 +24,17 @@
       class="option-text"
       v-text="waitText"
     />
+
+    <BaseClearButton
+      @click="handleClearButtonClick"
+    />
   </div>
 </template>
 
 <script>
 import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
 import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
 import createLastfmSession
   from '*/helpers/actions/api/lastfm/connect/session/create'
 import {
@@ -40,7 +45,8 @@ export default {
   name: 'ConnectButton',
   components: {
     BaseErrorMessage,
-    BaseButton
+    BaseButton,
+    BaseClearButton
   },
   props: {
     token: {
@@ -48,6 +54,9 @@ export default {
       required: true
     }
   },
+  emits: [
+    'clearButtonClick'
+  ],
   data () {
     return {
       profileData: null,
@@ -80,6 +89,11 @@ export default {
     handleClick () {
       this.createLastfmSession(
         this.sessionArgs
+      )
+    },
+    handleClearButtonClick () {
+      this.$emit(
+        'clearButtonClick'
       )
     },
     handleProfileDataChange (

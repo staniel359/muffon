@@ -7,6 +7,7 @@
   <ConnectButton
     v-else-if="token"
     :token="token"
+    @clear-button-click="handleTokenClearButtonClick"
   />
   <TokenButton
     v-else
@@ -42,6 +43,9 @@ export default {
       this.token = value
     },
     handleDisconnect () {
+      this.token = null
+    },
+    handleTokenClearButtonClick () {
       this.token = null
     }
   }
