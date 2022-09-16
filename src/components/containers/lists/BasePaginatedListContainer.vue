@@ -443,23 +443,33 @@ export default {
       value
     ) {
       if (value) {
-        this.responseTotalPages =
-          value.total_pages
+        const totalPages = value.total_pages
 
-        this.responsePageCollection =
-          formatCollection(
-            value[this.scope]
+        if (totalPages) {
+          this.responseTotalPages = totalPages
+        }
+
+        const collection =
+          value[
+            this.scope
+          ]
+
+        if (collection) {
+          this.responsePageCollection =
+            formatCollection(
+              collection
+            )
+
+          this.setCollections()
+
+          const isFocus = (
+            this.isFocusable &&
+              !this.isReset
           )
 
-        this.setCollections()
-
-        const isFocus = (
-          this.isFocusable &&
-            !this.isReset
-        )
-
-        if (isFocus) {
-          this.focus()
+          if (isFocus) {
+            this.focus()
+          }
         }
       }
     },
