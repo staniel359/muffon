@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic import-button"
+    class="basic circular import-button"
     icon="folder"
     :text="folderText"
     @click="handleClick"

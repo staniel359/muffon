@@ -25,17 +25,18 @@
 
     <div class="actions">
       <BaseButton
-        class="basic cancel cancel-button"
+        class="basic cancel circular cancel-button"
         :text="cancelText"
       />
 
       <BaseButton
-        class="red"
+        class="red circular"
         icon="trash alternate outline"
         :text="deleteText"
         :class="{
           loading: isLoading
         }"
+        :is-invertable="false"
         @click="handleDeleteButtonClick"
       />
     </div>

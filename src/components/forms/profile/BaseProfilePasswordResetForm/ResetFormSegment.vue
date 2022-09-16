@@ -6,8 +6,9 @@
       />
 
       <div class="submit-button-container">
-        <BaseProfileSubmitButton
+        <BaseSubmitButton
           action-key="sendCode"
+          :is-with-icon="false"
         />
       </div>
     </BaseProfilePasswordResetFormContainer>
@@ -21,8 +22,7 @@ import BaseProfilePasswordResetFormContainer
   from '*/components/containers/forms/profile/BaseProfilePasswordResetFormContainer.vue'
 import BaseProfileEmailField
   from '*/components/fields/profile/BaseProfileEmailField.vue'
-import BaseProfileSubmitButton
-  from '*/components/forms/profile/BaseProfileSubmitButton.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'ResetFormSegment',
@@ -30,7 +30,7 @@ export default {
     BaseSegmentContainer,
     BaseProfilePasswordResetFormContainer,
     BaseProfileEmailField,
-    BaseProfileSubmitButton
+    BaseSubmitButton
   },
   mounted () {
     this.focusEmail()

@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny basic compact"
+    class="tiny basic circular compact"
     :icon="icon"
     @init="handleButtonInit"
     @click="handleClick"

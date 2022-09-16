@@ -1,8 +1,9 @@
 <template>
   <BaseButton
-    class="fluid primary main-save-button"
+    class="primary circular fluid main-save-button"
     icon="check"
     :text="saveText"
+    :is-invertable="false"
     @click="handleClick"
   />
 </template>

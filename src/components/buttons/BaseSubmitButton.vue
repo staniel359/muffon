@@ -2,9 +2,10 @@
   <button
     ref="button"
     type="submit"
-    class="ui primary button main-simple-button"
+    class="ui primary circular button main-simple-button"
   >
     <BaseIcon
+      v-if="isWithIcon"
       icon="check"
     />
 
@@ -24,6 +25,10 @@ export default {
     actionKey: {
       type: String,
       required: true
+    },
+    isWithIcon: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {

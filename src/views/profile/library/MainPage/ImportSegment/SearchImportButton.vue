@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic"
+    class="basic circular import-button"
     icon="search"
     :text="searchText"
     @click="handleClick"

@@ -3,7 +3,7 @@
     <BaseAccordionContainer
       :title="addTracksText"
     >
-      <div class="ui buttons">
+      <div>
         <SearchImportButton
           :playlist-id="playlistId"
         />
@@ -45,4 +45,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+::v-deep(.import-button)
+  &:not(:first-child)
+    margin-left: 1em !important
+</style>

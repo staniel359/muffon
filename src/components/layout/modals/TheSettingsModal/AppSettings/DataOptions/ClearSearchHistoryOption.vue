@@ -2,7 +2,7 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="red option-button"
+        class="red circular option-button"
         icon="trash alternate outline"
         :class="{
           loading: isLoading,

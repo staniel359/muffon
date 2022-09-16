@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="basic compact"
+    class="small basic circular add-button"
     icon="smile outline"
     @click.stop="handleClick"
   >

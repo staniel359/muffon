@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     :class="[
-      'basic compact',
+      'basic circular compact',
       'main-compatibility-common-button',
       {
         disabled: isDisabled

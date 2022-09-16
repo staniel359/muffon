@@ -3,7 +3,7 @@
     <BaseAccordionContainer
       :title="addText"
     >
-      <div class="ui buttons">
+      <div>
         <SearchImportButton />
 
         <AccountImportButton />
@@ -42,4 +42,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+::v-deep(.import-button)
+  &:not(:first-child)
+    margin-left: 1em !important
+</style>

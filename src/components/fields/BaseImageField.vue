@@ -16,7 +16,7 @@
     </div>
 
     <BaseImageUploadButton
-      class="upload-button"
+      class="compact upload-button"
       @change="handleUploadChange"
     />
   </div>

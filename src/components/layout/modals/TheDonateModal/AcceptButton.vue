@@ -1,7 +1,8 @@
 <template>
   <BaseButton
-    class="cancel primary"
+    class="primary circular cancel"
     :text="acceptText"
+    :is-invertable="false"
     @click="handleClick"
   />
 </template>

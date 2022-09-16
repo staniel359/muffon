@@ -14,7 +14,7 @@
       <div class="remember-submit-button-container">
         <BaseProfileRememberField />
 
-        <BaseProfileSubmitButton
+        <BaseSubmitButton
           action-key="signup"
         />
       </div>
@@ -32,8 +32,7 @@ import ExtraSection from './FormSegment/ExtraSection.vue'
 import LegalSection from './FormSegment/LegalSection.vue'
 import BaseProfileRememberField
   from '*/components/fields/profile/BaseProfileRememberField.vue'
-import BaseProfileSubmitButton
-  from '*/components/forms/profile/BaseProfileSubmitButton.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FormSegment',
@@ -44,7 +43,7 @@ export default {
     ExtraSection,
     LegalSection,
     BaseProfileRememberField,
-    BaseProfileSubmitButton
+    BaseSubmitButton
   },
   data () {
     return {

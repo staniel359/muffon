@@ -10,7 +10,7 @@
       <div class="remember-submit-button-container">
         <BaseProfileRememberField />
 
-        <BaseProfileSubmitButton
+        <BaseSubmitButton
           action-key="login"
         />
       </div>
@@ -29,8 +29,7 @@ import BaseProfilePasswordField
   from '*/components/fields/profile/BaseProfilePasswordField.vue'
 import BaseProfileRememberField
   from '*/components/fields/profile/BaseProfileRememberField.vue'
-import BaseProfileSubmitButton
-  from '*/components/forms/profile/BaseProfileSubmitButton.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FormSegment',
@@ -40,7 +39,7 @@ export default {
     BaseProfileEmailField,
     BaseProfilePasswordField,
     BaseProfileRememberField,
-    BaseProfileSubmitButton
+    BaseSubmitButton
   },
   mounted () {
     this.focusEmail()

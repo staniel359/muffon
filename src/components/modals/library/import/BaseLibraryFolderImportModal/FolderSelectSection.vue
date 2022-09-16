@@ -2,7 +2,7 @@
   <div class="folder-select-container">
     <div class="folder-select-input-container">
       <BaseButton
-        class="basic"
+        class="basic circular"
         icon="folder open"
         :class="{
           disabled: !isReset

@@ -1,5 +1,6 @@
 <template>
   <BaseImageUploadButton
+    class="compact"
     @change="handleUploadChange"
   />
 </template>

@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny compact"
+    class="tiny circular compact"
     :icon="icon"
     :class="{
       disabled: isDisabled,

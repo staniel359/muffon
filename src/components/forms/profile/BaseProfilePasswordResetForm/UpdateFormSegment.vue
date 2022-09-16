@@ -20,7 +20,7 @@
       <BaseProfilePasswordConfirmationField />
 
       <div class="submit-button-container">
-        <BaseProfileSubmitButton
+        <BaseSubmitButton
           action-key="save"
         />
       </div>
@@ -40,8 +40,7 @@ import BaseProfilePasswordField
   from '*/components/fields/profile/BaseProfilePasswordField.vue'
 import BaseProfilePasswordConfirmationField
   from '*/components/fields/profile/BaseProfilePasswordConfirmationField.vue'
-import BaseProfileSubmitButton
-  from '*/components/forms/profile/BaseProfileSubmitButton.vue'
+import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'UpdateFormSegment',
@@ -52,7 +51,7 @@ export default {
     BaseProfilePasswordResetCodeField,
     BaseProfilePasswordField,
     BaseProfilePasswordConfirmationField,
-    BaseProfileSubmitButton
+    BaseSubmitButton
   },
   props: {
     email: String

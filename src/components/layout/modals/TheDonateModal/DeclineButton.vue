@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic cancel decline-button"
+    class="basic circular cancel decline-button"
     :text="declineText"
     @click="handleClick"
   />

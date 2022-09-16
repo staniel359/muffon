@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic fluid retry-button"
+    class="basic circular fluid retry-button"
     icon="redo alternate"
     :text="retryText"
     @click="handleClick"

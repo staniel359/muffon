@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny compact"
+    class="small circular"
     icon="random"
     :class="{
       basic: !isQueueShuffle

@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     v-if="isRender"
-    class="basic compact add-button"
+    class="basic circular compact add-button"
     icon="plus"
     :text="addText"
     @click="handleClick"

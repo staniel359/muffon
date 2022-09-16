@@ -8,13 +8,14 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="lastfm option-button"
+        class="lastfm circular option-button"
         icon="lastfm"
         :class="{
           loading: isLoading,
           disabled: isLoading
         }"
         :text="connectText"
+        :is-invertable="false"
         @click="handleClick"
       />
     </div>

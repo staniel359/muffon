@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="basic compact"
+    class="basic circular"
     icon="image"
     :text="uploadText"
     @click="handleClick"

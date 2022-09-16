@@ -1,13 +1,14 @@
 <template>
   <div class="import-button-container">
     <BaseButton
-      class="lastfm"
+      class="lastfm circular"
       icon="lastfm"
       :class="{
         loading: isLoading,
         disabled: isDisabled
       }"
       :text="importText"
+      :is-invertable="false"
       @click="handleClick"
     />
   </div>

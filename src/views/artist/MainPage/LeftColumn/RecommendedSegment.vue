@@ -19,7 +19,7 @@
         />
 
         <BaseButton
-          class="basic compact fluid"
+          class="basic circular compact fluid"
           icon="microphone alternate"
           :text="artistsText"
           @click="handleArtistsButtonClick"
