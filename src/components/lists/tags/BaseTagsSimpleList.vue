@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="tags?.length"
-    class="ui large labels tags-list"
+    class="ui labels"
   >
     <BaseIcon
       v-if="isWithIcon"
@@ -18,16 +18,13 @@
       @click="handleClick"
     />
 
-    <BaseLabelLinkContainer
+    <BaseLabel
       v-if="isMore"
-      class="more-container"
+      class="basic circular large"
+      icon="ellipsis horizontal"
+      is-clickable
       @click="handleMoreClick"
-    >
-      <BaseIcon
-        class="link"
-        icon="small ellipsis horizontal"
-      />
-    </BaseLabelLinkContainer>
+    />
   </div>
 </template>
 
@@ -36,16 +33,15 @@ import {
   mapState
 } from 'vuex'
 import BaseIcon from '*/components/BaseIcon.vue'
-import TagItem from './BaseTagsList/TagItem.vue'
-import BaseLabelLinkContainer
-  from '*/components/containers/links/BaseLabelLinkContainer.vue'
+import TagItem from './BaseTagsSimpleList/TagItem.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 
 export default {
-  name: 'BaseTagsList',
+  name: 'BaseTagsSimpleList',
   components: {
     BaseIcon,
     TagItem,
-    BaseLabelLinkContainer
+    BaseLabel
   },
   props: {
     tags: {
@@ -88,12 +84,5 @@ export default {
 
 <style lang="sass" scoped>
 .tags-icon
-  margin-right: 0.5em
-
-.tags-list
-  @extend .d-inline
-
-.more-container
-  & > .icon
-    @extend .no-margin
+  margin-right: 0.75em
 </style>

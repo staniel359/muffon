@@ -6,7 +6,7 @@
       :text="similarText"
     />
 
-    <BaseTagsList
+    <BaseTagsSimpleList
       v-if="similar?.length"
       :tags="similar"
     />
@@ -15,14 +15,14 @@
 
 <script>
 import BaseLabel from '*/components/BaseLabel.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 import getTag from '*/helpers/actions/api/tag/get'
 
 export default {
   name: 'SimilarSection',
   components: {
     BaseLabel,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   props: {
     tagName: {

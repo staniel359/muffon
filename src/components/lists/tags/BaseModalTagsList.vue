@@ -1,5 +1,5 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui labels">
     <TagItem
       v-for="tagData in tagsCollection"
       :key="tagData.uuid"

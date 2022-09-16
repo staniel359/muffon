@@ -9,7 +9,7 @@
     <template
       #default="slotProps"
     >
-      <BaseTagsList
+      <BaseTagsSimpleList
         :[scope]="slotProps[scope]"
         :profile-id="profileId"
         is-link-to-library
@@ -21,13 +21,13 @@
 <script>
 import BaseProfileLibraryTabContainer
   from '*/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 
 export default {
   name: 'TagsTab',
   components: {
     BaseProfileLibraryTabContainer,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   props: {
     profileId: String,

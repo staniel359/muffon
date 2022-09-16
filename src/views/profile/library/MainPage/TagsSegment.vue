@@ -6,7 +6,7 @@
     :header-link="headerLink"
   >
     <template #default="slotProps">
-      <BaseTagsList
+      <BaseTagsSimpleList
         :tags="slotProps[scope]"
         :profile-id="profileId"
         is-link-to-library
@@ -18,7 +18,7 @@
 <script>
 import BaseProfileLibraryPaginatedSegmentContainer
   from '*/components/containers/segments/profile/library/BaseProfileLibraryPaginatedSegmentContainer.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 import {
   tags as formatProfileLibraryTagsLink
 } from '*/helpers/formatters/links/profile/library'
@@ -27,7 +27,7 @@ export default {
   name: 'TagsSegment',
   components: {
     BaseProfileLibraryPaginatedSegmentContainer,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   props: {
     profileId: {

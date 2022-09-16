@@ -2,7 +2,7 @@
   <div
     v-if="tags"
   >
-    <BaseTagsList
+    <BaseTagsSimpleList
       :tags="tags"
       :is-more="isMore"
       is-with-icon
@@ -18,14 +18,14 @@
 </template>
 
 <script>
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseAlbumTagsModal
   from '*/components/modals/album/BaseAlbumTagsModal.vue'
 
 export default {
   name: 'BaseAlbumTags',
   components: {
-    BaseTagsList,
+    BaseTagsSimpleList,
     BaseAlbumTagsModal
   },
   props: {

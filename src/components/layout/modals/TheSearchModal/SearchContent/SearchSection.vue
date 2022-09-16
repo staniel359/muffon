@@ -62,7 +62,7 @@ import BaseAlbumsSimpleList
   from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideosSimpleList
   from '*/components/lists/videos/BaseVideosSimpleList.vue'
 import getSearch from '*/helpers/actions/api/search/get'
@@ -74,7 +74,7 @@ export default {
     BaseArtistsSimpleList,
     BaseAlbumsSimpleList,
     BaseTracksSimpleList,
-    BaseTagsList,
+    BaseTagsSimpleList,
     BaseVideosSimpleList
   },
   provide () {
@@ -206,7 +206,7 @@ export default {
     },
     tagsData () {
       return {
-        component: 'BaseTagsList',
+        component: 'BaseTagsSimpleList',
         limit: 20,
         responsePageLimit: 10
       }

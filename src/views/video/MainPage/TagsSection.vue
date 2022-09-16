@@ -1,5 +1,5 @@
 <template>
-  <BaseTagsList
+  <BaseTagsSimpleList
     :tags="tags"
     :is-more="isMore"
     is-with-icon
@@ -14,14 +14,14 @@
 </template>
 
 <script>
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideoTagsModal
   from '*/components/modals/video/BaseVideoTagsModal.vue'
 
 export default {
   name: 'TagsSection',
   components: {
-    BaseTagsList,
+    BaseTagsSimpleList,
     BaseVideoTagsModal
   },
   props: {

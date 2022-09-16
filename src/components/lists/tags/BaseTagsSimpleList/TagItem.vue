@@ -1,29 +1,15 @@
 <template>
-  <BaseLabelLinkContainer
+  <BaseLabel
+    class="primary circular large"
+    :text="tagName"
+    :counter="tagCount"
     :link="link"
-  >
-    <span
-      class="link"
-      v-text="tagName"
-    />
-
-    <div
-      v-if="tagCount"
-      class="detail"
-    >
-      <BaseIcon
-        icon="microphone"
-      />
-
-      {{ tagCount }}
-    </div>
-  </BaseLabelLinkContainer>
+    :is-invertable="false"
+  />
 </template>
 
 <script>
-import BaseLabelLinkContainer
-  from '*/components/containers/links/BaseLabelLinkContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseLabel from '*/components/BaseLabel.vue'
 import {
   main as formatTagMainLink
 } from '*/helpers/formatters/links/tag'
@@ -34,8 +20,7 @@ import {
 export default {
   name: 'TagItem',
   components: {
-    BaseLabelLinkContainer,
-    BaseIcon
+    BaseLabel
   },
   props: {
     tagData: {

@@ -7,7 +7,7 @@
     is-with-search
   >
     <template #default="slotProps">
-      <BaseTagsList
+      <BaseTagsSimpleList
         :tags="slotProps[scope]"
         :profile-id="profileId"
         is-link-to-library
@@ -19,13 +19,13 @@
 <script>
 import BaseProfileLibraryPaginatedPageContainer
   from '*/components/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
 
 export default {
   name: 'TagsPage',
   components: {
     BaseProfileLibraryPaginatedPageContainer,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   props: {
     profileId: String
