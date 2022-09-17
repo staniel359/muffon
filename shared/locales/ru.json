@@ -5,7 +5,7 @@
     "about": "О программе",
     "exit": "Выход",
     "update": {
-      "message": "Доступна версия {version}",
+      "message": "Доступна новая версия",
       "buttons": {
         "download": "Скачать",
         "close": "Закрыть"

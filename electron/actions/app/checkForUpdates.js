@@ -32,10 +32,7 @@ function handleNotificationButtonClick (
 
 function showNotification () {
   const message = i18n.__(
-    'electron.update.message',
-    {
-      version: latestVersion
-    }
+    'electron.update.message'
   )
 
   const buttons = [
@@ -50,9 +47,11 @@ function showNotification () {
   const options = {
     type: 'info',
     message,
+    detail: latestVersion,
     buttons,
     defaultId: 0,
-    cancelId: 1
+    cancelId: 1,
+    noLink: true
   }
 
   dialog.showMessageBox(
@@ -66,13 +65,13 @@ function showNotification () {
 function handleSuccess (
   response
 ) {
-  latestRelease = response.data[0]
+  latestRelease = response.data
   latestVersion = latestRelease.name
 
   const currentVersion = app.getVersion()
 
   const isNewVersionAvailable = (
-    latestVersion !==
+    latestVersion >
       currentVersion
   )
 
@@ -83,7 +82,7 @@ function handleSuccess (
 
 function checkForUpdates () {
   const releasesUrl =
-    'https://api.github.com/repos/staniel359/muffon/releases'
+    'https://api.github.com/repos/staniel359/muffon/releases/latest'
 
   axios.get(
     releasesUrl

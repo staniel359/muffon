@@ -5,7 +5,7 @@
     "about": "Аб праграме",
     "exit": "Выхад",
     "update": {
-      "message": "Даступная версія {version}",
+      "message": "Даступная новая версія",
       "buttons": {
         "download": "Спампаваць",
         "close": "Закрыць"

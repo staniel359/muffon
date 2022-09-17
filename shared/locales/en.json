@@ -5,7 +5,7 @@
     "about": "About",
     "exit": "Exit",
     "update": {
-      "message": "Version {version} is available",
+      "message": "New version is available",
       "buttons": {
         "download": "Download",
         "close": "Close"
