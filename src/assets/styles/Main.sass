@@ -612,11 +612,6 @@ p
       &:before
         @extend .background-black-transparent
 
-.main-app-title
-  @extend .text-color-white, .text-medium-light
-  font-size: 3.5em !important
-  z-index: 1
-
 .main-sidebar-item
   @extend .no-padding, .d-flex
   &:before
@@ -869,3 +864,15 @@ p
 .main-labels-section
   &:not(:last-child)
     margin-bottom: 0.25em
+
+.main-logo-title-section
+  @extend .d-flex, .align-items-center, .pointer-events-none
+  z-index: 1
+  .logo-block
+    width: 80px
+  .title-block
+    margin-left: 0.75em
+    .title
+      @extend .text-color-white, .text-medium-light
+      font-size: 3.5em !important
+      margin-bottom: 0.2em !important

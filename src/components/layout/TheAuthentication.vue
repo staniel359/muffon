@@ -1,10 +1,6 @@
 <template>
   <div class="the-authentication">
-    <BaseHeader
-      class="main-app-title"
-      tag="h1"
-      text="muffon"
-    />
+    <BaseLogoTitleSection />
 
     <div class="form-segment-container">
       <BaseProfileLoginForm
@@ -25,7 +21,7 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLogoTitleSection from '*/components/BaseLogoTitleSection.vue'
 import BaseProfileLoginForm
   from '*/components/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfilePasswordResetForm
@@ -36,7 +32,7 @@ import BaseProfileCreateForm
 export default {
   name: 'TheAuthentication',
   components: {
-    BaseHeader,
+    BaseLogoTitleSection,
     BaseProfileLoginForm,
     BaseProfilePasswordResetForm,
     BaseProfileCreateForm
@@ -86,7 +82,7 @@ export default {
 <style lang="sass" scoped>
 .the-authentication
   @extend .d-flex, .flex-column, .align-items-center
-  margin-top: 3vh
+  margin-top: 2.5vh
 
 .form-segment-container
   width: 400px

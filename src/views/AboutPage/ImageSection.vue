@@ -1,6 +1,6 @@
 <template>
   <BaseImage
-    :image="image"
+    :image="logo"
   />
 </template>
 
@@ -13,7 +13,7 @@ export default {
     BaseImage
   },
   computed: {
-    image () {
+    logo () {
       return require(
         '*/../public/logo.png'
       )

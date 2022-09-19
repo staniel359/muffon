@@ -5,11 +5,7 @@
       'main-page-segment-container'
     ]"
   >
-    <BaseHeader
-      class="main-app-title"
-      tag="h1"
-      text="muffon"
-    />
+    <BaseLogoTitleSection />
 
     <BaseHeader
       class="welcome-message"
@@ -23,6 +19,7 @@
 import {
   mapState
 } from 'vuex'
+import BaseLogoTitleSection from '*/components/BaseLogoTitleSection.vue'
 import BaseHeader from '*/components/BaseHeader.vue'
 import {
   home as formatHomePageNavigation
@@ -33,6 +30,7 @@ import navigationMixin from '*/mixins/navigationMixin'
 export default {
   name: 'HomePage',
   components: {
+    BaseLogoTitleSection,
     BaseHeader
   },
   mixins: [
