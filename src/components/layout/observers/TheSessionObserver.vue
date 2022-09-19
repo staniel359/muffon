@@ -9,7 +9,6 @@ import {
   ipcRenderer
 } from 'electron'
 import {
-  mapState,
   mapGetters
 } from 'vuex'
 import updateOnline from '*/helpers/actions/api/online/update'
@@ -20,12 +19,6 @@ import {
 export default {
   name: 'TheSessionObserver',
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
     ...mapGetters(
       'profile',
       {
@@ -33,7 +26,7 @@ export default {
       }
     ),
     isLoggedIn () {
-      return !!this.profileInfo
+      return !!this.profileId
     }
   },
   watch: {
