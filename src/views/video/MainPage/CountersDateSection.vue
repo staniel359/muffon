@@ -1,11 +1,15 @@
 <template>
-  <BaseCounterLabels
-    :counters="counters"
-  />
+  <div class="main-labels-section">
+    <BaseCounterLabels
+      :counters="counters"
+    />
+  </div>
 
-  <BaseDateLabel
-    :date="publishDate"
-  />
+  <div class="main-labels-section">
+    <BaseDateLabel
+      :date="publishDate"
+    />
+  </div>
 </template>
 
 <script>

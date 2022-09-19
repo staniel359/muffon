@@ -1,16 +1,21 @@
 <template>
-  <BaseTagsSimpleList
-    :tags="tags"
-    :is-more="isMore"
-    is-with-icon
-    @more-click="handleMoreClick"
-  />
+  <div
+    v-if="tags"
+    class="main-labels-section"
+  >
+    <BaseTagsSimpleList
+      :tags="tags"
+      :is-more="isMore"
+      is-with-icon
+      @more-click="handleMoreClick"
+    />
 
-  <BaseVideoTagsModal
-    v-if="isMore"
-    ref="modal"
-    :video-id="videoId"
-  />
+    <BaseVideoTagsModal
+      v-if="isMore"
+      ref="modal"
+      :video-id="videoId"
+    />
+  </div>
 </template>
 
 <script>

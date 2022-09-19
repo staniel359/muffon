@@ -54,12 +54,23 @@ export default {
         'messages.welcome',
         {
           profileNickname:
-            this.profileNickname
+            this.profileNicknameConditional
         }
       )
     },
+    profileNicknameConditional () {
+      return (
+        this.profileNickname ||
+          this.anonymousNickname
+      )
+    },
     profileNickname () {
-      return this.profileInfo.nickname
+      return this.profileInfo?.nickname
+    },
+    anonymousNickname () {
+      return this.$t(
+        'anonymous.nickname'
+      )
     }
   },
   mounted () {

@@ -15,6 +15,8 @@
       @signup-link-click="handleSignupLinkClick"
     />
 
+    <AnonymousSegment />
+
     <SettingsSegment />
   </div>
 </template>
@@ -25,6 +27,7 @@ import PasswordResetSegment
   from './BaseProfileLoginForm/PasswordResetSegment.vue'
 import SignupSegment from './BaseProfileLoginForm/SignupSegment.vue'
 import SettingsSegment from './BaseProfileLoginForm/SettingsSegment.vue'
+import AnonymousSegment from './BaseProfileLoginForm/AnonymousSegment.vue'
 
 export default {
   name: 'BaseProfileLoginForm',
@@ -32,7 +35,8 @@ export default {
     FormSegment,
     PasswordResetSegment,
     SignupSegment,
-    SettingsSegment
+    SettingsSegment,
+    AnonymousSegment
   },
   emits: [
     'signupLinkClick',

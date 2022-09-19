@@ -7,10 +7,16 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
 import {
   playlists as formatProfilePlaylistsLink
 } from '*/helpers/formatters/links/profile'
+import {
+  playlists as formatPlaylistsLink
+} from '*/helpers/formatters/links'
 
 export default {
   name: 'PlaylistsItem',
@@ -18,23 +24,30 @@ export default {
     BaseSidebarItem
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    }
+    profileId: String
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        currentProfileId: 'id'
+      }
+    ),
     playlistsText () {
       return this.$t(
         'navigation.playlists'
       )
     },
     playlistsLink () {
-      return formatProfilePlaylistsLink(
-        {
-          profileId: this.profileId
-        }
-      )
+      if (this.currentProfileId) {
+        return formatProfilePlaylistsLink(
+          {
+            profileId: this.profileId
+          }
+        )
+      } else {
+        return formatPlaylistsLink()
+      }
     }
   }
 }

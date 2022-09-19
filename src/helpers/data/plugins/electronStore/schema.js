@@ -133,6 +133,10 @@ export default {
     ],
     default: null
   },
+  'profile.isAnonymous': {
+    type: 'boolean',
+    default: false
+  },
   'profile.isRemember': {
     type: 'boolean',
     default: false

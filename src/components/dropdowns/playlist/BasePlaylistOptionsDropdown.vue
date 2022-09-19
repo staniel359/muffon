@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseShareOption
@@ -48,7 +51,19 @@ export default {
     'deleteOptionClick'
   ],
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
+      return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
       return (
         this.isWithShareOption ||
           this.isWithEditOption ||

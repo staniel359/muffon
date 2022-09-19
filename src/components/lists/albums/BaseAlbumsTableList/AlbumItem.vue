@@ -47,7 +47,7 @@
         :profile-id="profileId"
       />
 
-      <div
+      <small
         v-if="releaseDate"
         class="description"
         v-text="releaseDateFormatted"

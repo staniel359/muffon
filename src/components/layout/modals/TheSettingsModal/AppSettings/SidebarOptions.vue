@@ -1,20 +1,32 @@
 <template>
   <div class="main-settings-options-block">
-    <FeedOption />
+    <FeedOption
+      v-if="profileId"
+    />
 
-    <ConversationsOption />
+    <ConversationsOption
+      v-if="profileId"
+    />
 
-    <LibraryOption />
+    <LibraryOption
+      v-if="profileId"
+    />
 
-    <RecommendationsOption />
+    <RecommendationsOption
+      v-if="profileId"
+    />
 
     <SavedTracksOption />
 
     <PlaylistsOption />
 
-    <FavoritesOption />
+    <FavoritesOption
+      v-if="profileId"
+    />
 
-    <BookmarksOption />
+    <BookmarksOption
+      v-if="profileId"
+    />
 
     <TopOption />
 
@@ -29,6 +41,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import FeedOption from './SidebarOptions/FeedOption.vue'
 import ConversationsOption from './SidebarOptions/ConversationsOption.vue'
 import LibraryOption from './SidebarOptions/LibraryOption.vue'
@@ -59,6 +74,14 @@ export default {
     RadioOption,
     MultitagOption,
     CommunitiesOption
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

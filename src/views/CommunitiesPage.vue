@@ -11,7 +11,9 @@
           'main-page-segment-container'
         ]"
       >
-        <BaseSegmentContainer>
+        <BaseSegmentContainer
+          v-if="profileId"
+        >
           <BaseCommunityCreateButton />
         </BaseSegmentContainer>
 
@@ -39,6 +41,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseCommunitiesPageContainer
   from '*/components/containers/pages/communities/BaseCommunitiesPageContainer.vue'
 import BaseSegmentContainer
@@ -68,6 +73,14 @@ export default {
       limit: 50,
       scope: 'communities'
     }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

@@ -13,6 +13,7 @@
     />
 
     <SelfSegment
+      v-if="currentProfileId"
       :album-data="albumData"
       :profile-id="profileId"
     />
@@ -24,6 +25,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import SelfSegment from './LeftColumn/SelfSegment.vue'
 import SinceSegment from './LeftColumn/SinceSegment.vue'
@@ -38,6 +42,14 @@ export default {
   props: {
     albumData: Object,
     profileId: String
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        currentProfileId: 'id'
+      }
+    )
   }
 }
 </script>

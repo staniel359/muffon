@@ -15,6 +15,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseEditOption
@@ -38,7 +41,19 @@ export default {
     'deleteOptionClick'
   ],
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
+      return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
       return (
         this.isWithEditOption ||
           this.isWithDeleteOption

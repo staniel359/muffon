@@ -55,6 +55,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseAlbumOptionsDropdown/LibraryOption.vue'
@@ -111,9 +114,22 @@ export default {
     'deleteOptionClick'
   ],
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
       return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
+      return (
         this.isWithLibraryOption ||
+          this.isWithPlaylistOption ||
           this.isWithFavoriteOption ||
           this.isWithBookmarkOption ||
           this.isWithListenedOption ||

@@ -1,13 +1,17 @@
 <template>
   <BaseOptionsDropdownContainer>
-    <BasePlaylistOption
-      @click="handlePlaylistOptionClick"
-    />
+    <template
+      v-if="profileId"
+    >
+      <BasePlaylistOption
+        @click="handlePlaylistOptionClick"
+      />
 
-    <BasePlaylistsModal
-      ref="playlistsModal"
-      :tracks="queueTracksComputed"
-    />
+      <BasePlaylistsModal
+        ref="playlistsModal"
+        :tracks="queueTracksComputed"
+      />
+    </template>
 
     <ClearOption />
   </BaseOptionsDropdownContainer>
@@ -34,6 +38,12 @@ export default {
     ClearOption
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     ...mapGetters(
       'queue',
       {

@@ -23,6 +23,7 @@
     />
 
     <BaseProfileFollowingMessage
+      v-if="otherProfileData"
       class="following-message"
       :other-profile-data="otherProfileData"
     />

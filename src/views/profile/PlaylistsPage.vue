@@ -16,9 +16,11 @@
         <BaseSegmentContainer
           class="top-segment"
         >
-          <BasePlaylistCreateButton
-            v-if="isSelf"
-          />
+          <div>
+            <BasePlaylistCreateButton
+              v-if="isSelf"
+            />
+          </div>
 
           <BaseLink
             :link="playlistsLink"

@@ -11,25 +11,26 @@
   >
     <div class="sidebar-panel-content">
       <ProfileItem
+        v-if="profileId"
         :profile-id="profileId"
       />
 
       <div class="sidebar-top">
         <FeedItem
-          v-if="isWithFeedItem"
+          v-if="isRenderFeedItem"
         />
 
         <ConversationsItem
-          v-if="isWithConversationsItem"
+          v-if="isRenderConversationsItem"
         />
 
         <LibraryItem
-          v-if="isWithLibraryItem"
+          v-if="isRenderLibraryItem"
           :profile-id="profileId"
         />
 
         <RecommendationsItem
-          v-if="isWithRecommendationsItem"
+          v-if="isRenderRecommendationsItem"
         />
 
         <SavedTracksItem
@@ -42,12 +43,12 @@
         />
 
         <FavoritesItem
-          v-if="isWithFavoritesItem"
+          v-if="isRenderFavoritesItem"
           :profile-id="profileId"
         />
 
         <BookmarksItem
-          v-if="isWithBookmarksItem"
+          v-if="isRenderBookmarksItem"
         />
 
         <TopItem
@@ -75,7 +76,12 @@
       <div class="sidebar-bottom">
         <SettingsItem />
 
-        <LogoutItem />
+        <LogoutItem
+          v-if="profileId"
+        />
+        <LoginItem
+          v-else
+        />
       </div>
     </div>
   </div>
@@ -83,8 +89,8 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
+  mapGetters,
+  mapState
 } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
@@ -102,6 +108,7 @@ import MultitagItem from './TheSidebarPanel/MultitagItem.vue'
 import CommunitiesItem from './TheSidebarPanel/CommunitiesItem.vue'
 import SettingsItem from './TheSidebarPanel/SettingsItem.vue'
 import LogoutItem from './TheSidebarPanel/LogoutItem.vue'
+import LoginItem from './TheSidebarPanel/LoginItem.vue'
 
 export default {
   name: 'TheSidebarPanel',
@@ -121,9 +128,16 @@ export default {
     MultitagItem,
     CommunitiesItem,
     SettingsItem,
-    LogoutItem
+    LogoutItem,
+    LoginItem
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     ...mapState(
       'layout',
       [
@@ -148,12 +162,42 @@ export default {
         'isWithCommunitiesItem'
       ]
     ),
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    )
+    isRenderFeedItem () {
+      return (
+        this.profileId &&
+          this.isWithFeedItem
+      )
+    },
+    isRenderConversationsItem () {
+      return (
+        this.profileId &&
+          this.isWithConversationsItem
+      )
+    },
+    isRenderLibraryItem () {
+      return (
+        this.profileId &&
+          this.isWithLibraryItem
+      )
+    },
+    isRenderRecommendationsItem () {
+      return (
+        this.profileId &&
+          this.isWithRecommendationsItem
+      )
+    },
+    isRenderFavoritesItem () {
+      return (
+        this.profileId &&
+          this.isWithFavoritesItem
+      )
+    },
+    isRenderBookmarksItem () {
+      return (
+        this.profileId &&
+          this.isWithBookmarksItem
+      )
+    }
   }
 }
 </script>

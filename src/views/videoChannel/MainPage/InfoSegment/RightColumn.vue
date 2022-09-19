@@ -1,6 +1,7 @@
 <template>
   <div class="right-column">
     <BaseHeader
+      class="channel-title"
       tag="h2"
       :text="channelTitle"
     />
@@ -9,9 +10,11 @@
       :channel-data="channelData"
     />
 
-    <BaseDateLabel
-      :date="created"
-    />
+    <div class="main-labels-section">
+      <BaseDateLabel
+        :date="created"
+      />
+    </div>
 
     <DescriptionSection
       :channel-data="channelData"
@@ -54,4 +57,7 @@ export default {
 .right-column
   @extend .flex-full
   margin-left: 1em
+
+.channel-title
+  margin-bottom: 0.4em !important
 </style>

@@ -5,10 +5,10 @@
   >
     <div class="content main-modal-content-full-height">
       <BaseTabsContainer
-        :tabs="tabs"
+        :tabs="tabsFormatted"
       >
         <template
-          v-for="(tabData, index) in tabs"
+          v-for="(tabData, index) in tabsFormatted"
           :key="index"
           #[index]="slotProps"
         >
@@ -23,6 +23,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseModalContainer
   from '*/components/containers/modals/BaseModalContainer.vue'
 import BaseTabsContainer
@@ -46,19 +49,42 @@ export default {
         {
           nameCode: 'settings.tabs.app',
           scope: 'app',
-          component: 'AppSettings'
+          component: 'AppSettings',
+          isAnonymous: true
         },
         {
           nameCode: 'settings.tabs.profile',
           scope: 'profile',
-          component: 'ProfileSettings'
+          component: 'ProfileSettings',
+          isAnonymous: false
         },
         {
           nameCode: 'settings.tabs.services',
           scope: 'services',
-          component: 'ServicesSettings'
+          component: 'ServicesSettings',
+          isAnonymous: false
         }
       ]
+    }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
+    tabsFormatted () {
+      if (this.profileId) {
+        return this.tabs
+      } else {
+        return this.anonymousTabs
+      }
+    },
+    anonymousTabs () {
+      return this.tabs.filter(
+        this.isAnonymousTab
+      )
     }
   },
   methods: {
@@ -66,6 +92,11 @@ export default {
       this.$refs
         .modal
         .show()
+    },
+    isAnonymousTab (
+      tabData
+    ) {
+      return tabData.isAnonymous
     }
   }
 }

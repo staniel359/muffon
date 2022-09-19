@@ -1,12 +1,12 @@
 <template>
   <BaseTabsContainer
     class="settings-group-tabs-container"
-    :tabs="tabs"
+    :tabs="tabsFormatted"
     :is-pointing="false"
     is-vertical
   >
     <template
-      v-for="(tabData, index) in tabs"
+      v-for="(tabData, index) in tabsFormatted"
       :key="index"
       #[index]="slotProps"
     >
@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseTabsContainer
   from '*/components/containers/tabs/BaseTabsContainer.vue'
 import InterfaceOptions from './AppSettings/InterfaceOptions.vue'
@@ -57,69 +60,107 @@ export default {
           nameCode:
             'settings.sections.app.interface',
           scope: 'interface',
-          component: 'InterfaceOptions'
+          component: 'InterfaceOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.theme',
           scope: 'theme',
-          component: 'ThemeOptions'
+          component: 'ThemeOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.window',
           scope: 'window',
-          component: 'WindowOptions'
+          component: 'WindowOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.tabs',
           scope: 'tabs',
-          component: 'TabsOptions'
+          component: 'TabsOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.sidebar',
           scope: 'sidebar',
-          component: 'SidebarOptions'
+          component: 'SidebarOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.search',
           scope: 'search',
-          component: 'SearchOptions'
+          component: 'SearchOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.player',
           scope: 'player',
-          component: 'PlayerOptions'
+          component: 'PlayerOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.queue',
           scope: 'queue',
-          component: 'QueueOptions'
+          component: 'QueueOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.video',
           scope: 'video',
-          component: 'VideoOptions'
+          component: 'VideoOptions',
+          isAnonymous: true
         },
         {
           nameCode:
             'settings.sections.app.recommendations',
           scope: 'recommendations',
-          component: 'RecommendationsOptions'
+          component: 'RecommendationsOptions',
+          isAnonymous: false
         },
         {
           nameCode:
             'settings.sections.app.data',
           scope: 'data',
-          component: 'DataOptions'
+          component: 'DataOptions',
+          isAnonymous: true
         }
       ]
+    }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
+    tabsFormatted () {
+      if (this.profileId) {
+        return this.tabs
+      } else {
+        return this.anonymousTabs
+      }
+    },
+    anonymousTabs () {
+      return this.tabs.filter(
+        this.isAnonymousTab
+      )
+    }
+  },
+  methods: {
+    isAnonymousTab (
+      tabData
+    ) {
+      return tabData.isAnonymous
     }
   }
 }

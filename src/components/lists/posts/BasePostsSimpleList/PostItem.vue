@@ -65,8 +65,8 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
+  mapGetters,
+  mapState
 } from 'vuex'
 import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
 import BaseImage from '*/components/images/BaseImage.vue'
@@ -125,16 +125,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
     ...mapGetters(
       'profile',
       {
         currentProfileId: 'id'
+      }
+    ),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
       }
     ),
     imageData () {

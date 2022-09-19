@@ -1,13 +1,14 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui labels">
     <BaseLabel
-      class="basic circular"
+      class="basic circular large"
       :is-loading="isLoading"
       :text="similarText"
     />
 
     <BaseTagsSimpleList
       v-if="similar?.length"
+      class="similar-list"
       :tags="similar"
     />
   </div>
@@ -67,4 +68,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.similar-list
+  @extend .d-inline
+</style>

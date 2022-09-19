@@ -18,7 +18,7 @@
   <TheElectronStoreSaver />
 
   <TheBrowserTabs
-    v-if="profileId"
+    v-if="isRenderBrowserTabs"
   />
   <TheAuthentication
     v-else
@@ -75,7 +75,19 @@ export default {
       {
         isPlayerWithScrobbling: 'isWithScrobbling'
       }
-    )
+    ),
+    ...mapState(
+      'profile',
+      {
+        isProfileAnonymous: 'isAnonymous'
+      }
+    ),
+    isRenderBrowserTabs () {
+      return (
+        this.isProfileAnonymous ||
+          this.profileId
+      )
+    }
   }
 }
 </script>

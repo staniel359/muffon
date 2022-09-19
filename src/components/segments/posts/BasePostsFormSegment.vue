@@ -1,5 +1,7 @@
 <template>
-  <BaseSegmentContainer>
+  <BaseSegmentContainer
+    v-if="currentProfileId"
+  >
     <BaseAccordionContainer
       :title="addPostText"
       @open="handleOpen"
@@ -17,6 +19,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseSegmentContainer
   from '*/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
@@ -48,6 +53,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        currentProfileId: 'id'
+      }
+    ),
     addPostText () {
       return this.$t(
         'actions.addModel.post'

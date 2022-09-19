@@ -82,7 +82,7 @@ export default {
 <style lang="sass" scoped>
 .the-authentication
   @extend .d-flex, .flex-column, .align-items-center
-  margin-top: 2.5vh
+  margin-top: 5vh
 
 .form-segment-container
   width: 400px

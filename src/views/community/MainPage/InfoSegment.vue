@@ -50,20 +50,24 @@
           @edit-option-click="handleEditOptionClick"
           @delete-option-click="handleDeleteOptionClick"
         />
+
+        <template
+          v-if="isCommunityCreator"
+        >
+          <BaseCommunityUpdateModal
+            ref="editModal"
+            :community-data="communityData"
+          />
+
+          <BaseCommunityDeleteModal
+            ref="deleteModal"
+            :community-data="communityData"
+            is-delete-with-redirect
+          />
+        </template>
       </div>
     </BaseListContainer>
   </BaseSegmentContainer>
-
-  <BaseCommunityUpdateModal
-    ref="editModal"
-    :community-data="communityData"
-  />
-
-  <BaseCommunityDeleteModal
-    ref="deleteModal"
-    :community-data="communityData"
-    is-delete-with-redirect
-  />
 </template>
 
 <script>

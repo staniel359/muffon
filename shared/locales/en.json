@@ -493,6 +493,10 @@
       "content": "Now you may go back and login"
     }
   },
+  "anonymous": {
+    "continue": "Continue anonymously",
+    "nickname": "Anonymous"
+  },
   "roles": {
     "creator": "Creator"
   },

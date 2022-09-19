@@ -49,11 +49,12 @@
       </div>
     </div>
 
-    <small class="following-message">
-      <BaseProfileFollowingMessage
-        :other-profile-data="otherProfileData"
-      />
-    </small>
+    <BaseProfileFollowingMessage
+      v-if="otherProfileData"
+      class="following-message"
+      :other-profile-data="otherProfileData"
+      is-small
+    />
 
     <BaseProfileOptionsDropdown
       v-if="!isSelf"

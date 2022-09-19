@@ -12,6 +12,7 @@
     />
 
     <SelfSection
+      v-if="profileId"
       :album-data="albumData"
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -27,6 +28,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
@@ -53,6 +57,12 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     modelData () {
       return this.albumData
     },

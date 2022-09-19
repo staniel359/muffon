@@ -21,6 +21,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
   from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import FollowOption from './BaseProfileOptionsDropdown/FollowOption.vue'
@@ -42,7 +45,19 @@ export default {
     isWithMessageOption: Boolean
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
+      return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
       return (
         this.isWithFollowOption ||
           this.isWithMessageOption

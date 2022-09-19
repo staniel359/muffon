@@ -23,14 +23,12 @@
       />
     </div>
 
-    <small
+    <BaseCommunityJoinedMessage
       v-if="isWithJoinOption"
       class="joined-message"
-    >
-      <BaseCommunityJoinedMessage
-        :community-data="communityData"
-      />
-    </small>
+      :community-data="communityData"
+      is-small
+    />
 
     <BaseCommunityOptionsDropdown
       :community-data="communityData"
