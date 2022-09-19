@@ -14,6 +14,7 @@
         :tracks="slotProps[scope]"
         :playlist-title="playlistTitle"
         :playlist-id="playlistId"
+        :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
         is-with-album-title
@@ -26,7 +27,6 @@
         is-with-playlist-option
         is-with-share-option
         is-with-queue-option
-        is-with-delete-option
       />
     </template>
   </BasePaginatedSegmentContainer>
@@ -39,6 +39,9 @@ import BaseTracksSimpleList
   from '*/components/lists/tracks/BaseTracksSimpleList.vue'
 import getProfilePlaylist from '*/helpers/actions/api/profile/playlist/get'
 import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+import {
+  isCurrentProfile
+} from '*/helpers/utils'
 
 export default {
   name: 'TracksSegment',
@@ -80,6 +83,11 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    isSelf () {
+      return isCurrentProfile(
+        this.profileId
+      )
     }
   },
   mounted () {
