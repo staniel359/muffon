@@ -1,23 +1,22 @@
 <template>
   <BaseLinkContainer
-    class="item profile-item main-sidebar-item"
+    class="item main-sidebar-item top-item"
     :class="{
       inverted: isDarkMode
     }"
     :link="profileMainLink"
   >
-    <div class="main-sidebar-item-icon-container">
+    <div class="icon-container">
       <BaseImage
-        class="profile-image circular bordered"
+        class="circular bordered"
         model="profile"
         :image="imageData?.extrasmall"
       />
     </div>
 
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="nickname"
+    <div class="content-container">
+      <span
+        v-text="nickname"
       />
     </div>
   </BaseLinkContainer>
@@ -30,7 +29,6 @@ import {
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
-import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatProfileMainLink
 } from '@/helpers/formatters/links/profile'
@@ -39,8 +37,7 @@ export default {
   name: 'ProfileItem',
   components: {
     BaseLinkContainer,
-    BaseImage,
-    BaseHeader
+    BaseImage
   },
   props: {
     profileId: {
@@ -78,15 +75,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.profile-item
-  @extend .align-items-center
-  height: $navbarHeight
-  border-bottom: $border
-  &.inverted
-    border-bottom: $borderInverted
-
-.profile-image
-  width: 25px
-  height: 25px
-</style>
+<style lang="sass" scoped></style>

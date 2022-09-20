@@ -306,7 +306,7 @@ p
 
 .main-link-container
   @extend .cursor-pointer
-  &:not(.main-label)
+  &:not(.main-label, .main-sidebar-item)
     @extend .text-color-unset
   &:hover
     .link
@@ -614,27 +614,34 @@ p
 
 .main-sidebar-item
   @extend .no-padding, .d-flex
+  &.top-item
+    @extend .align-items-center
+    height: $navbarHeight
+    border-bottom: $border
+    &.inverted
+      border-bottom: $borderInverted
+    .image
+      width: 25px
+      height: 25px
   &:before
     background: none !important
   &:hover
-    .main-sidebar-item-icon-container
-      & > .icon
+    .icon-container
+      .icon
         color: $colorBase !important
-
-.main-sidebar-item-icon-container
-  @extend .d-flex, .align-items-center, .justify-content-center
-  width: 40px
-  height: 40px
-  flex-shrink: 0
-  & > .icon
-    @extend .no-margin
-    font-size: 1.25em
-
-.main-sidebar-item-content-container
-  @extend .d-flex, .align-items-center
-  width: 200px
-  padding: 0 0.5em
-  flex-shrink: 0
+  .icon-container
+    @extend .d-flex, .align-items-center, .justify-content-center
+    width: 40px
+    height: 40px
+    flex-shrink: 0
+    .icon
+      @extend .no-margin
+      font-size: 16px
+  .content-container
+    @extend .d-flex, .align-items-center
+    width: 200px
+    flex-shrink: 0
+    font-size: 15px
 
 .main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column

@@ -14,6 +14,9 @@
         v-if="profileId"
         :profile-id="profileId"
       />
+      <RootItem
+        v-else
+      />
 
       <div class="sidebar-top">
         <FeedItem
@@ -93,6 +96,7 @@ import {
   mapState
 } from 'vuex'
 import ProfileItem from './TheSidebarPanel/ProfileItem.vue'
+import RootItem from './TheSidebarPanel/RootItem.vue'
 import FeedItem from './TheSidebarPanel/FeedItem.vue'
 import ConversationsItem from './TheSidebarPanel/ConversationsItem.vue'
 import LibraryItem from './TheSidebarPanel/LibraryItem.vue'
@@ -114,6 +118,7 @@ export default {
   name: 'TheSidebarPanel',
   components: {
     ProfileItem,
+    RootItem,
     FeedItem,
     ConversationsItem,
     LibraryItem,
