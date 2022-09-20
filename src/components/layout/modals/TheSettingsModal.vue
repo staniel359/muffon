@@ -27,9 +27,9 @@ import {
   mapGetters
 } from 'vuex'
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import BaseTabsContainer
-  from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/tabs/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
 import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'

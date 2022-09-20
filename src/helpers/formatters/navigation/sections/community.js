@@ -1,6 +1,6 @@
 import {
   main as formatCommunityMainLink
-} from '*/helpers/formatters/links/community'
+} from '@/helpers/formatters/links/community'
 
 export default function (
   {

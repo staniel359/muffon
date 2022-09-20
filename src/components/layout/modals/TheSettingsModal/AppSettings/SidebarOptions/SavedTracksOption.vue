@@ -21,9 +21,9 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseToggle from '*/components/BaseToggle.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseToggle from '@/components/BaseToggle.vue'
 
 export default {
   name: 'SavedTracksOption',

@@ -24,15 +24,15 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileCreateFormContainer
-  from '*/components/containers/forms/profile/BaseProfileCreateFormContainer.vue'
+  from '@/components/containers/forms/profile/BaseProfileCreateFormContainer.vue'
 import MainSection from './FormSegment/MainSection.vue'
 import ExtraSection from './FormSegment/ExtraSection.vue'
 import LegalSection from './FormSegment/LegalSection.vue'
 import BaseProfileRememberField
-  from '*/components/fields/profile/BaseProfileRememberField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+  from '@/components/fields/profile/BaseProfileRememberField.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'FormSegment',

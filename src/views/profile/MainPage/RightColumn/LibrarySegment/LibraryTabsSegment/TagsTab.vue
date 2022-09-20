@@ -20,8 +20,8 @@
 
 <script>
 import BaseProfileLibraryTabContainer
-  from '*/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+  from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 
 export default {
   name: 'TagsTab',

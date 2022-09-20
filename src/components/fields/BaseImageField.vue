@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import BaseImageUploadButton
-  from '*/components/buttons/BaseImageUploadButton.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/buttons/BaseImageUploadButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'BaseImageField',

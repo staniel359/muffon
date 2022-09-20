@@ -17,10 +17,10 @@
 
 <script>
 import BaseTrackModalContainer
-  from '*/components/containers/modals/track/BaseTrackModalContainer.vue'
+  from '@/components/containers/modals/track/BaseTrackModalContainer.vue'
 import BaseProfilesSimpleList
-  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseTrackListenersModal',

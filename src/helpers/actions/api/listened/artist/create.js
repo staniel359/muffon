@@ -1,5 +1,5 @@
-import store from '*/plugins/store'
-import postRequest from '*/helpers/actions/api/request/post'
+import store from '@/plugins/store'
+import postRequest from '@/helpers/actions/api/request/post'
 
 export default function (
   {

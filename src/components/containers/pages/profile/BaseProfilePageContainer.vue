@@ -14,12 +14,12 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatProfilePageNavigation
-  from '*/helpers/formatters/navigation/profile'
-import formatProfilePageTab from '*/helpers/formatters/tabs/profile'
-import getProfile from '*/helpers/actions/api/profile/get'
+  from '@/helpers/formatters/navigation/profile'
+import formatProfilePageTab from '@/helpers/formatters/tabs/profile'
+import getProfile from '@/helpers/actions/api/profile/get'
 
 export default {
   name: 'BaseProfilePageContainer',

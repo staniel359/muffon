@@ -13,9 +13,9 @@
 
 <script>
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import BaseTrackSourceSelect
-  from '*/components/models/track/BaseTrackSourceSelect.vue'
+  from '@/components/models/track/BaseTrackSourceSelect.vue'
 
 export default {
   name: 'SourceSelect',

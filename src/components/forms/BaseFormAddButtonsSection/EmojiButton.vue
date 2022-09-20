@@ -13,7 +13,7 @@
 
 <script>
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
 import EmojiPicker from './EmojiButton/EmojiPicker.vue'
 
 export default {

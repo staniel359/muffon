@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import {
   main as formatTagMainLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default {
   name: 'TagItem',

@@ -8,8 +8,8 @@
 
 <script>
 import BaseListenedOption
-  from '*/components/dropdowns/options/listened/BaseListenedOption.vue'
-import createListenedTrack from '*/helpers/actions/api/listened/track/create'
+  from '@/components/dropdowns/options/listened/BaseListenedOption.vue'
+import createListenedTrack from '@/helpers/actions/api/listened/track/create'
 
 export default {
   name: 'AddOption',

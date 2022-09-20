@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import {
   date as formatDate
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseDateLabel',

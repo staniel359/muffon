@@ -18,7 +18,7 @@
 
 <script>
 import BaseProfileFavoritesPageContainer
-  from '*/components/containers/pages/profile/favorites/BaseProfileFavoritesPageContainer.vue'
+  from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPageContainer.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'

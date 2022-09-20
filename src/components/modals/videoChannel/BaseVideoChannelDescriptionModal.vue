@@ -15,8 +15,8 @@
 
 <script>
 import BaseVideoChannelModalContainer
-  from '*/components/containers/modals/videoChannel/BaseVideoChannelModalContainer.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+  from '@/components/containers/modals/videoChannel/BaseVideoChannelModalContainer.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 
 export default {
   name: 'BaseVideoChannelDescriptionModal',

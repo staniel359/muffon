@@ -1,11 +1,11 @@
-import store from '*/plugins/store'
-import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
+import store from '@/plugins/store'
+import getPlayerTrackAudio from '@/helpers/actions/player/track/audio/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setPlaying as setPlayerPlaying
-} from '*/helpers/actions/player'
+} from '@/helpers/actions/player'
 
 export default function getQueueTrack (
   {

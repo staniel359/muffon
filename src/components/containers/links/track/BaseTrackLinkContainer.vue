@@ -9,14 +9,14 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 import {
   main as formatProfileLibraryTrackMainLink
-} from '*/helpers/formatters/links/profile/library/track'
+} from '@/helpers/formatters/links/profile/library/track'
 import {
   main as formatTrackMainLink
-} from '*/helpers/formatters/links/track'
-import formatRequestTrackData from '*/helpers/formatters/request/track/data'
+} from '@/helpers/formatters/links/track'
+import formatRequestTrackData from '@/helpers/formatters/request/track/data'
 
 export default {
   name: 'BaseTrackLinkContainer',

@@ -26,13 +26,13 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   setCalendar
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   birthdateCalendarOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseProfileBirthdateField',

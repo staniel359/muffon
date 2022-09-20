@@ -17,12 +17,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfilePasswordResetFormContainer
-  from '*/components/containers/forms/profile/BaseProfilePasswordResetFormContainer.vue'
+  from '@/components/containers/forms/profile/BaseProfilePasswordResetFormContainer.vue'
 import BaseProfileEmailField
-  from '*/components/fields/profile/BaseProfileEmailField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+  from '@/components/fields/profile/BaseProfileEmailField.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'ResetFormSegment',

@@ -44,13 +44,13 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import BaseCommunityUpdateFormContainer
-  from '*/components/containers/forms/community/BaseCommunityUpdateFormContainer.vue'
-import BaseImageField from '*/components/fields/BaseImageField.vue'
-import BaseTitleField from '*/components/fields/BaseTitleField.vue'
-import BaseDescriptionField from '*/components/fields/BaseDescriptionField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+  from '@/components/containers/forms/community/BaseCommunityUpdateFormContainer.vue'
+import BaseImageField from '@/components/fields/BaseImageField.vue'
+import BaseTitleField from '@/components/fields/BaseTitleField.vue'
+import BaseDescriptionField from '@/components/fields/BaseDescriptionField.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'BaseCommunityUpdateModal',

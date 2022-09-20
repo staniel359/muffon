@@ -14,12 +14,12 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatBookmarksPageNavigation
-  from '*/helpers/formatters/navigation/bookmarks'
-import formatBookmarksPageTab from '*/helpers/formatters/tabs/bookmarks'
-import getBookmarks from '*/helpers/actions/api/bookmarks/get'
+  from '@/helpers/formatters/navigation/bookmarks'
+import formatBookmarksPageTab from '@/helpers/formatters/tabs/bookmarks'
+import getBookmarks from '@/helpers/actions/api/bookmarks/get'
 
 export default {
   name: 'BaseBookmarksPageContainer',

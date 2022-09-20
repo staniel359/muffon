@@ -1,7 +1,7 @@
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import {
   getDistinctArray
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export function get (
   key,

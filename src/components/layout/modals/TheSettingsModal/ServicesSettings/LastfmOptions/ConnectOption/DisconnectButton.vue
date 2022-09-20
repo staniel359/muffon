@@ -33,14 +33,14 @@
 </template>
 
 <script>
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import deleteLastfmSession
-  from '*/helpers/actions/api/lastfm/connect/session/delete'
+  from '@/helpers/actions/api/lastfm/connect/session/delete'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'DisconnectButton',

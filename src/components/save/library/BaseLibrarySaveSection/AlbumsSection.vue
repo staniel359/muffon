@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import BaseProgress from '*/components/BaseProgress.vue'
+import BaseProgress from '@/components/BaseProgress.vue'
 import BaseSaveCompleteSection from '../../BaseSaveCompleteSection.vue'
-import createLibraryAlbum from '*/helpers/actions/api/library/album/create'
-import collectionMixin from '*/mixins/collectionMixin'
+import createLibraryAlbum from '@/helpers/actions/api/library/album/create'
+import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'AlbumsSection',

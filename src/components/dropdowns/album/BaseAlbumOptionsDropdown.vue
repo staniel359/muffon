@@ -59,25 +59,25 @@ import {
   mapGetters
 } from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseAlbumOptionsDropdown/LibraryOption.vue'
 import BasePlaylistOption
-  from '*/components/dropdowns/options/BasePlaylistOption.vue'
+  from '@/components/dropdowns/options/BasePlaylistOption.vue'
 import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
+  from '@/components/modals/playlists/BasePlaylistsModal.vue'
 import FavoriteOption from './BaseAlbumOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseAlbumOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseAlbumOptionsDropdown/ListenedOption.vue'
 import BaseShareOption
-  from '*/components/dropdowns/options/BaseShareOption.vue'
+  from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
-  from '*/components/dropdowns/options/BaseDeleteOption.vue'
+  from '@/components/dropdowns/options/BaseDeleteOption.vue'
 import {
   album as formatAlbumShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 import {
   track as formatPlayerTrack
-} from '*/helpers/formatters/player/track'
+} from '@/helpers/formatters/player/track'
 
 export default {
   name: 'BaseAlbumOptionsDropdown',

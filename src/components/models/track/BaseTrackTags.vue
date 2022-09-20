@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseTrackTagsModal
-  from '*/components/modals/track/BaseTrackTagsModal.vue'
+  from '@/components/modals/track/BaseTrackTagsModal.vue'
 
 export default {
   name: 'BaseTrackTags',

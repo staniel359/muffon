@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import SourcesList from './FallbackSourcesOption/SourcesList.vue'
 import AddButton from './FallbackSourcesOption/AddButton.vue'
 

@@ -20,8 +20,8 @@
 import {
   mapState
 } from 'vuex'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseToggle from '*/components/BaseToggle.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseToggle from '@/components/BaseToggle.vue'
 
 export default {
   name: 'ScrobbleNotificationsOption',

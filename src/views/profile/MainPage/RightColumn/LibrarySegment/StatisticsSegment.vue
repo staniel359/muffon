@@ -14,10 +14,10 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileLibraryStatistics
-  from '*/components/models/profile/library/BaseProfileLibraryStatistics.vue'
-import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
+  from '@/components/models/profile/library/BaseProfileLibraryStatistics.vue'
+import getProfileLibrary from '@/helpers/actions/api/profile/library/get'
 
 export default {
   name: 'StatisticsSegment',

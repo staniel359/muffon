@@ -34,19 +34,19 @@ import {
   setPlayerPanel,
   showPlayerPanel,
   hidePlayerPanel
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   mainSidebarOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   toggleClass
-} from '*/helpers/actions/plugins/jquery'
+} from '@/helpers/actions/plugins/jquery'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ThePlayerPanel',

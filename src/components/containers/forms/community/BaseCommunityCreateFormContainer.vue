@@ -11,14 +11,14 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   communityFormOptions
-} from '*/helpers/data/plugins/semantic'
-import createCommunity from '*/helpers/actions/api/community/create'
+} from '@/helpers/data/plugins/semantic'
+import createCommunity from '@/helpers/actions/api/community/create'
 import {
   main as formatCommunityMainLink
-} from '*/helpers/formatters/links/community'
+} from '@/helpers/formatters/links/community'
 
 export default {
   name: 'BaseCommunityCreateFormContainer',

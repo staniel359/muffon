@@ -11,11 +11,11 @@
 
 <script>
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import {
   main as formatProfileMainLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default {
   name: 'BaseProfileNickname',

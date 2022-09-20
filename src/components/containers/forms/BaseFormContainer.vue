@@ -21,10 +21,10 @@
 import {
   mapState
 } from 'vuex'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   setForm
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseFormContainer',

@@ -5,7 +5,7 @@ import fs from 'fs'
 import crypto from 'crypto'
 import {
   tags as formatFileTags
-} from '*/helpers/formatters/file'
+} from '@/helpers/formatters/file'
 
 export function formatTags (
   file

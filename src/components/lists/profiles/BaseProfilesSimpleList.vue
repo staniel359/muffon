@@ -14,13 +14,13 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import ProfileItem from './BaseProfilesSimpleList/ProfileItem.vue'
 import ProfileMinimalItem
   from './BaseProfilesSimpleList/ProfileMinimalItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseProfilesSimpleList',

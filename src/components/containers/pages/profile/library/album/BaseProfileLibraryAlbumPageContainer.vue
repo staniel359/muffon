@@ -15,14 +15,14 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatProfileLibraryAlbumPageNavigation
-  from '*/helpers/formatters/navigation/profile/library/album'
+  from '@/helpers/formatters/navigation/profile/library/album'
 import formatProfileLibraryAlbumPageTab
-  from '*/helpers/formatters/tabs/profile/library/album'
+  from '@/helpers/formatters/tabs/profile/library/album'
 import getProfileLibraryAlbum
-  from '*/helpers/actions/api/profile/library/album/get'
+  from '@/helpers/actions/api/profile/library/album/get'
 
 export default {
   name: 'BaseProfileLibraryAlbumPageContainer',

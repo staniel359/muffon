@@ -10,7 +10,7 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import ConversationItem
   from './BaseConversationsSimpleList/ConversationItem.vue'
 

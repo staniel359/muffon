@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
-import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
 
 export default {
   name: 'CountersDateSection',

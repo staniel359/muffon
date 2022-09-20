@@ -13,8 +13,8 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseMessage from '*/components/messages/BaseMessage.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
 
 export default {
   name: 'SuccessSegment',

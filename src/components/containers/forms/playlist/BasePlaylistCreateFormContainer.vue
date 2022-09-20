@@ -14,14 +14,14 @@ import {
   mapGetters
 } from 'vuex'
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   playlistFormOptions
-} from '*/helpers/data/plugins/semantic'
-import createPlaylist from '*/helpers/actions/api/playlist/create'
+} from '@/helpers/data/plugins/semantic'
+import createPlaylist from '@/helpers/actions/api/playlist/create'
 import {
   playlist as formatProfilePlaylistLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default {
   name: 'BasePlaylistCreateFormContainer',

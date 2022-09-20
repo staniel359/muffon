@@ -15,8 +15,8 @@
 
 <script>
 import BaseTopPaginatedPageContainer
-  from '*/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+  from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 
 export default {
   name: 'TagsPage',

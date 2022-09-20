@@ -32,15 +32,15 @@ import {
   mapState
 } from 'vuex'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TracksSection',

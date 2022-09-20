@@ -30,12 +30,12 @@
 
 <script>
 import BaseProfileLibraryPaginatedPageContainer
-  from '*/components/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
+  from '@/components/containers/pages/profile/library/BaseProfileLibraryPaginatedPageContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TracksPage',

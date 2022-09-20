@@ -15,8 +15,8 @@
 
 <script>
 import BaseAlbumModalContainer
-  from '*/components/containers/modals/album/BaseAlbumModalContainer.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+  from '@/components/containers/modals/album/BaseAlbumModalContainer.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 
 export default {
   name: 'BaseAlbumDescriptionModal',

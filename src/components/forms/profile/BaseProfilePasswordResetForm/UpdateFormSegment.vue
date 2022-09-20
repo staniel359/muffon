@@ -30,17 +30,17 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseMessage from '*/components/messages/BaseMessage.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
 import BaseProfilePasswordUpdateFormContainer
-  from '*/components/containers/forms/profile/BaseProfilePasswordUpdateFormContainer.vue'
+  from '@/components/containers/forms/profile/BaseProfilePasswordUpdateFormContainer.vue'
 import BaseProfilePasswordResetCodeField
-  from '*/components/fields/profile/BaseProfilePasswordResetCodeField.vue'
+  from '@/components/fields/profile/BaseProfilePasswordResetCodeField.vue'
 import BaseProfilePasswordField
-  from '*/components/fields/profile/BaseProfilePasswordField.vue'
+  from '@/components/fields/profile/BaseProfilePasswordField.vue'
 import BaseProfilePasswordConfirmationField
-  from '*/components/fields/profile/BaseProfilePasswordConfirmationField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+  from '@/components/fields/profile/BaseProfilePasswordConfirmationField.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'UpdateFormSegment',

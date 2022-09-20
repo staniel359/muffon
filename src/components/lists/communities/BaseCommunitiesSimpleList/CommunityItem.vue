@@ -46,23 +46,23 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseCommunityJoinedMessage
-  from '*/components/models/community/BaseCommunityJoinedMessage.vue'
+  from '@/components/models/community/BaseCommunityJoinedMessage.vue'
 import BaseCommunityOptionsDropdown
-  from '*/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatCommunityMainLink
-} from '*/helpers/formatters/links/community'
+} from '@/helpers/formatters/links/community'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   community as formatCommunityShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'CommunityItem',

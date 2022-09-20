@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
-import getAlbum from '*/helpers/actions/api/album/get'
+import BaseIcon from '@/components/BaseIcon.vue'
+import getAlbum from '@/helpers/actions/api/album/get'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseAlbumListenersCount',

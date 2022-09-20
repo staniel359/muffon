@@ -15,7 +15,7 @@ import {
   mapState
 } from 'vuex'
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import PlayingBlock from './PlayingPanel/PlayingBlock.vue'
 
 export default {

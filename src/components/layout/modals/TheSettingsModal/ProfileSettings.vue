@@ -21,7 +21,7 @@
 
 <script>
 import BaseTabsContainer
-  from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/tabs/BaseTabsContainer.vue'
 import InfoOptions from './ProfileSettings/InfoOptions.vue'
 import PlayerOptions from './ProfileSettings/PlayerOptions.vue'
 

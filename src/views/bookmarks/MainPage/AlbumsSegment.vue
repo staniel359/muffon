@@ -22,12 +22,12 @@
 
 <script>
 import BaseBookmarksPaginatedSegmentContainer
-  from '*/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 import {
   albums as formatBookmarkAlbumsLink
-} from '*/helpers/formatters/links/bookmarks'
+} from '@/helpers/formatters/links/bookmarks'
 
 export default {
   name: 'AlbumsSegment',

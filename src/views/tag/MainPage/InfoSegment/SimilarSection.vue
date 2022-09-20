@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
-import getTag from '*/helpers/actions/api/tag/get'
+import BaseLabel from '@/components/BaseLabel.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+import getTag from '@/helpers/actions/api/tag/get'
 
 export default {
   name: 'SimilarSection',

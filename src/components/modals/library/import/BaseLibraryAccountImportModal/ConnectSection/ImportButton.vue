@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'ImportButton',

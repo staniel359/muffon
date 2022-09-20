@@ -19,9 +19,9 @@
 import {
   mapState
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseLibraryAccountImportModal
-  from '*/components/modals/library/import/BaseLibraryAccountImportModal.vue'
+  from '@/components/modals/library/import/BaseLibraryAccountImportModal.vue'
 
 export default {
   name: 'AccountImportButton',

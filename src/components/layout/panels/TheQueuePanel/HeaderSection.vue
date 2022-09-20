@@ -23,13 +23,13 @@ import {
   mapGetters
 } from 'vuex'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ShuffleButton from './HeaderSection/ShuffleButton.vue'
 import BaseQueueOptionsDropdown
-  from '*/components/dropdowns/queue/BaseQueueOptionsDropdown.vue'
+  from '@/components/dropdowns/queue/BaseQueueOptionsDropdown.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'HeaderSection',

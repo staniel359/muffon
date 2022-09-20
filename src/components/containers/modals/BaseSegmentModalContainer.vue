@@ -19,9 +19,9 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 
 export default {
   name: 'BaseSegmentModalContainer',

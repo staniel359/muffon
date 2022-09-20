@@ -25,9 +25,9 @@
 
 <script>
 import BaseTrackPaginatedPageContainer
-  from '*/components/containers/pages/track/BaseTrackPaginatedPageContainer.vue'
+  from '@/components/containers/pages/track/BaseTrackPaginatedPageContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'SimilarPage',

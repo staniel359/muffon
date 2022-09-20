@@ -42,14 +42,14 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BasePlaylistLibraryImportModal/SearchInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseImportSection from '*/components/import/BaseImportSection.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseImportSection from '@/components/import/BaseImportSection.vue'
 import BasePlaylistSaveSection
-  from '*/components/save/playlist/BasePlaylistSaveSection.vue'
-import collectionMixin from '*/mixins/collectionMixin'
+  from '@/components/save/playlist/BasePlaylistSaveSection.vue'
+import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'BasePlaylistLibraryImportModal',

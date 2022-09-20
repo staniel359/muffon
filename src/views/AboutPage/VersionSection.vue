@@ -16,7 +16,7 @@ export default {
     },
     info () {
       return require(
-        '*/../package.json'
+        '@/../package.json'
       )
     }
   }

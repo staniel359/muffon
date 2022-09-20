@@ -18,12 +18,12 @@
 import {
   mapState
 } from 'vuex'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import {
   isStringChanged,
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ImageBlock',

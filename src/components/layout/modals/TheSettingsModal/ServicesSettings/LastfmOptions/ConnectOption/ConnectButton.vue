@@ -32,14 +32,14 @@
 </template>
 
 <script>
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import createLastfmSession
-  from '*/helpers/actions/api/lastfm/connect/session/create'
+  from '@/helpers/actions/api/lastfm/connect/session/create'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'ConnectButton',

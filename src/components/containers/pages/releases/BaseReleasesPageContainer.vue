@@ -14,12 +14,12 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatReleasesPageNavigation
-  from '*/helpers/formatters/navigation/releases'
-import formatReleasesPageTab from '*/helpers/formatters/tabs/releases'
-import getReleases from '*/helpers/actions/api/releases/get'
+  from '@/helpers/formatters/navigation/releases'
+import formatReleasesPageTab from '@/helpers/formatters/tabs/releases'
+import getReleases from '@/helpers/actions/api/releases/get'
 
 export default {
   name: 'BaseReleasesPageContainer',

@@ -17,12 +17,12 @@
 
 <script>
 import BaseTransitionContainer
-  from '*/components/containers/BaseTransitionContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+  from '@/components/containers/BaseTransitionContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 import {
   main as formatArtistMainLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'HeaderSection',

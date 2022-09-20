@@ -30,8 +30,8 @@
 <script>
 import BaseTrackSegmentContainer from './BaseTrackSegmentContainer.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
-import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'BaseTrackPaginatedSegmentContainer',

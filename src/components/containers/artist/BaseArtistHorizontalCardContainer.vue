@@ -14,9 +14,9 @@
 
 <script>
 import BaseHorizontalCardContainer
-  from '*/components/containers/cards/BaseHorizontalCardContainer.vue'
+  from '@/components/containers/cards/BaseHorizontalCardContainer.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 
 export default {
   name: 'BaseArtistHorizontalCardContainer',

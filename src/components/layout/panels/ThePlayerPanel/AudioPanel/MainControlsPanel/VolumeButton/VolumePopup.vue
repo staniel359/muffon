@@ -23,18 +23,18 @@
 import {
   mapState
 } from 'vuex'
-import BasePopupContainer from '*/components/containers/BasePopupContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseSeeker from '*/components/BaseSeeker.vue'
+import BasePopupContainer from '@/components/containers/BasePopupContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainVolumeSeekerOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setSeekerValue
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'VolumePopup',

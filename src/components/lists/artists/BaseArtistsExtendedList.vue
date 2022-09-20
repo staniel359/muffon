@@ -26,7 +26,7 @@
 import ArtistItem from './BaseArtistsExtendedList/ArtistItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseArtistsExtendedList',

@@ -12,11 +12,11 @@
 
 <script>
 import BaseProfileSegmentContainer
-  from '*/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
+  from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import FavoritesTabsSegment from './FavoritesSegment/FavoritesTabsSegment.vue'
 import {
   main as formatProfileFavoritesMainLink
-} from '*/helpers/formatters/links/profile/favorites'
+} from '@/helpers/formatters/links/profile/favorites'
 
 export default {
   name: 'FavoritesSegment',

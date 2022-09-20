@@ -1,9 +1,9 @@
-import getAudio from '*/helpers/actions/api/audio/get'
+import getAudio from '@/helpers/actions/api/audio/get'
 import searchPlayerTrackAudio
-  from '*/helpers/actions/player/track/audio/search'
+  from '@/helpers/actions/player/track/audio/search'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default function (
   {

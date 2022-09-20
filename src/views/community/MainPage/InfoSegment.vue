@@ -72,21 +72,21 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseTimestamp from '*/components/BaseTimestamp.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BaseCommunityOptionsDropdown
-  from '*/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
+  from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 import BaseCommunityUpdateModal
-  from '*/components/modals/community/BaseCommunityUpdateModal.vue'
+  from '@/components/modals/community/BaseCommunityUpdateModal.vue'
 import BaseCommunityDeleteModal
-  from '*/components/modals/community/BaseCommunityDeleteModal.vue'
+  from '@/components/modals/community/BaseCommunityDeleteModal.vue'
 import {
   community as formatCommunityShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'InfoSegment',

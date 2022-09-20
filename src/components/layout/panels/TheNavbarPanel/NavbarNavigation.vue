@@ -23,7 +23,7 @@ import {
 import NavigationSection from './NavbarNavigation/NavigationSection.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'NavbarNavigation',

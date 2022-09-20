@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import BaseImagePlaceholder from '*/components/images/BaseImagePlaceholder.vue'
+import BaseImagePlaceholder from '@/components/images/BaseImagePlaceholder.vue'
 import InteractiveImage from './BaseArtistImage/InteractiveImage.vue'
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import getArtist from '*/helpers/actions/api/artist/get'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import getArtist from '@/helpers/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistImage',

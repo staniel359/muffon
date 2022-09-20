@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 
 export default {
   name: 'LeftColumn',

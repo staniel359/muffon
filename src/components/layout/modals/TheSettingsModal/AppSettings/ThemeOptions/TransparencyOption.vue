@@ -21,17 +21,17 @@
 import {
   mapState
 } from 'vuex'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseSeeker from '*/components/BaseSeeker.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   mainTransparencySeekerOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setSeekerValue
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'TransparencyOption',

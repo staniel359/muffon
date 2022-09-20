@@ -22,12 +22,12 @@
 
 <script>
 import BaseProfileFavoritesPaginatedPageContainer
-  from '*/components/containers/pages/profile/favorites/BaseProfileFavoritesPaginatedPageContainer.vue'
+  from '@/components/containers/pages/profile/favorites/BaseProfileFavoritesPaginatedPageContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ArtistsPage',

@@ -31,7 +31,7 @@ import {
 } from 'vuex'
 import PlayButtonSection from './BaseTrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './BaseTrackPlayerPanel/VisualizerSection.vue'
-import BaseDurationBlock from '*/components/BaseDurationBlock.vue'
+import BaseDurationBlock from '@/components/BaseDurationBlock.vue'
 import AudioIconSection from './BaseTrackPlayerPanel/AudioIconSection.vue'
 
 export default {

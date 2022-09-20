@@ -15,9 +15,9 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getProfileLibraryAlbum
-  from '*/helpers/actions/api/profile/library/album/get'
+  from '@/helpers/actions/api/profile/library/album/get'
 
 export default {
   name: 'BaseProfileLibraryAlbumSegmentContainer',

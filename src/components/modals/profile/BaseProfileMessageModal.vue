@@ -56,19 +56,19 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import SuccessMessage from './BaseProfileMessageModal/SuccessMessage.vue'
 import OtherProfileSection
   from './BaseProfileMessageModal/OtherProfileSection.vue'
 import BaseMessageCreateFormContainer
-  from '*/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
-import BaseContentField from '*/components/fields/BaseContentField.vue'
+  from '@/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
+import BaseContentField from '@/components/fields/BaseContentField.vue'
 import BaseSendableFormContentSection
-  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
+  from '@/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
-  from '*/components/forms/BaseFormAddButtonsSection.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
-import sendableFormMixin from '*/mixins/sendableFormMixin'
+  from '@/components/forms/BaseFormAddButtonsSection.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
+import sendableFormMixin from '@/mixins/sendableFormMixin'
 
 export default {
   name: 'BaseProfileMessageModal',

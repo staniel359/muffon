@@ -1,11 +1,11 @@
 import formatProfilesSection
-  from '*/helpers/formatters/navigation/sections/profiles'
+  from '@/helpers/formatters/navigation/sections/profiles'
 import formatProfileSection
-  from '*/helpers/formatters/navigation/sections/profile'
+  from '@/helpers/formatters/navigation/sections/profile'
 import formatProfileLibrarySection
-  from '*/helpers/formatters/navigation/sections/profile/library'
+  from '@/helpers/formatters/navigation/sections/profile/library'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

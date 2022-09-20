@@ -28,8 +28,8 @@
 
 <script>
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
-import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
+import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'HeaderBlock',

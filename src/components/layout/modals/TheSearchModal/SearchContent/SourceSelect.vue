@@ -14,8 +14,8 @@
 import {
   mapState
 } from 'vuex'
-import BaseDropdown from '*/components/dropdowns/BaseDropdown.vue'
-import audioSources from '*/helpers/data/audio/sources'
+import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
+import audioSources from '@/helpers/data/audio/sources'
 
 export default {
   name: 'SourceSelect',

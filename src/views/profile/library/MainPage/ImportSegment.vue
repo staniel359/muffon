@@ -16,9 +16,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import SearchImportButton from './ImportSegment/SearchImportButton.vue'
 import AccountImportButton from './ImportSegment/AccountImportButton.vue'
 import FolderImportButton from './ImportSegment/FolderImportButton.vue'

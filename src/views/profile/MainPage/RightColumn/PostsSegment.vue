@@ -20,16 +20,16 @@
 
 <script>
 import BaseProfileSegmentContainer
-  from '*/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
+  from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import BasePostsFormSegment
-  from '*/components/segments/posts/BasePostsFormSegment.vue'
+  from '@/components/segments/posts/BasePostsFormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   posts as formatProfilePostsLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default {
   name: 'PostsSegment',

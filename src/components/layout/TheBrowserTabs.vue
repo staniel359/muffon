@@ -30,12 +30,12 @@ import {
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import BrowserTab from './TheBrowserTabs/BrowserTab.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TheBrowserTabs',

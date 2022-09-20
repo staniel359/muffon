@@ -32,17 +32,17 @@
 
 <script>
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import BaseTrackSearchContainer
-  from '*/components/containers/track/BaseTrackSearchContainer.vue'
+  from '@/components/containers/track/BaseTrackSearchContainer.vue'
 import VideoSelect from './VideoSegment/VideoSelect.vue'
 import VideoData from './VideoSegment/VideoData.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   focusOnSegment
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'VideoSegment',

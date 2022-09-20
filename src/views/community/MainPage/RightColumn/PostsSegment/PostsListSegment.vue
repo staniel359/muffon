@@ -20,11 +20,11 @@
 
 <script>
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BasePostsSimpleList
-  from '*/components/lists/posts/BasePostsSimpleList.vue'
-import getCommunityPosts from '*/helpers/actions/api/community/get'
-import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+  from '@/components/lists/posts/BasePostsSimpleList.vue'
+import getCommunityPosts from '@/helpers/actions/api/community/get'
+import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'PostsListSegment',

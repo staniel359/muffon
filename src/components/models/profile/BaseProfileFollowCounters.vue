@@ -23,7 +23,7 @@
 <script>
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseProfileFollowCounters',

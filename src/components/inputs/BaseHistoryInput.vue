@@ -19,8 +19,8 @@
 
 <script>
 import BaseHistoryInputContainer
-  from '*/components/containers/BaseHistoryInputContainer.vue'
-import BaseInput from '*/components/inputs/BaseInput.vue'
+  from '@/components/containers/BaseHistoryInputContainer.vue'
+import BaseInput from '@/components/inputs/BaseInput.vue'
 
 export default {
   name: 'BaseHistoryInput',

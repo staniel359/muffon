@@ -21,7 +21,7 @@
 import {
   date as formatDate,
   time as formatTime
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'WasOnlineSection',

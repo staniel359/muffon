@@ -11,7 +11,7 @@
 import SourceItem from './BasePlayerSourcesList/SourceItem.vue'
 import {
   streamableCollection as getStreamableSourcesCollection
-} from '*/helpers/formatters/sources'
+} from '@/helpers/formatters/sources'
 
 export default {
   name: 'BasePlayerSourcesList',

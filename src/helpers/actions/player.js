@@ -1,7 +1,7 @@
-import store from '*/plugins/store'
+import store from '@/plugins/store'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export async function setPlaying (
   value

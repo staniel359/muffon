@@ -28,11 +28,11 @@ import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
   mainSidebarOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   setQueuePanel,
   hideQueuePanel
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'TheQueuePanel',

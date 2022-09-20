@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
 import ListenersSection from './LeftColumn/ListenersSection.vue'
-import selfMixin from '*/mixins/selfMixin'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'LeftColumn',

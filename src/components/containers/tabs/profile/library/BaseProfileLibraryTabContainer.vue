@@ -27,8 +27,8 @@ import {
   mapState
 } from 'vuex'
 import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
-import getProfileLibrary from '*/helpers/actions/api/profile/library/get'
+  from '@/components/containers/lists/BasePaginatedListContainer.vue'
+import getProfileLibrary from '@/helpers/actions/api/profile/library/get'
 
 export default {
   name: 'BaseProfileLibraryTabContainer',

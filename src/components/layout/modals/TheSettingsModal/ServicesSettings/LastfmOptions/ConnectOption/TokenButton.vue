@@ -26,9 +26,9 @@
 import {
   shell
 } from 'electron'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import getLastfmToken from '*/helpers/actions/api/lastfm/connect/token/get'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import getLastfmToken from '@/helpers/actions/api/lastfm/connect/token/get'
 
 export default {
   name: 'TokenButton',

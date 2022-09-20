@@ -32,13 +32,13 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileFollowCounters
-  from '*/components/models/profile/BaseProfileFollowCounters.vue'
+  from '@/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowModal
-  from '*/components/modals/profile/BaseProfileFollowModal.vue'
+  from '@/components/modals/profile/BaseProfileFollowModal.vue'
 import BaseProfileFollowingMessage
-  from '*/components/models/profile/BaseProfileFollowingMessage.vue'
+  from '@/components/models/profile/BaseProfileFollowingMessage.vue'
 
 export default {
   name: 'FollowSegment',

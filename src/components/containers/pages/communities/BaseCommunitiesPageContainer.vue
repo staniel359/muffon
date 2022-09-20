@@ -14,13 +14,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import {
   communities as formatCommunitiesPageNavigation
-} from '*/helpers/formatters/navigation'
-import formatCommunitiesPageTab from '*/helpers/formatters/tabs/communities'
-import getCommunities from '*/helpers/actions/api/communities/get'
+} from '@/helpers/formatters/navigation'
+import formatCommunitiesPageTab from '@/helpers/formatters/tabs/communities'
+import getCommunities from '@/helpers/actions/api/communities/get'
 
 export default {
   name: 'BaseCommunitiesPageContainer',

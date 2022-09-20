@@ -67,18 +67,18 @@
 
 <script>
 import BaseSimpleCardContainer
-  from '*/components/containers/cards/BaseSimpleCardContainer.vue'
+  from '@/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseArtistLinkContainer
-  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
+  from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseArtistOptionsDropdown
-  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistListenersCount
-  from '*/components/models/artist/BaseArtistListenersCount.vue'
+  from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import selfMixin from '*/mixins/selfMixin'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',

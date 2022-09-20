@@ -13,8 +13,8 @@
 
 <script>
 import BaseImageModalContainer
-  from '*/components/containers/modals/BaseImageModalContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+  from '@/components/containers/modals/BaseImageModalContainer.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 
 export default {
   name: 'BaseImageModal',

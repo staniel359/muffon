@@ -13,7 +13,7 @@
 <script>
 import ArtistsSection from './RecommendationSection/ArtistsSection.vue'
 import BaseRecommendationDeleteModal
-  from '*/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
+  from '@/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
 
 export default {
   name: 'RecommendationSection',

@@ -11,11 +11,11 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   passwordResetFormOptions
-} from '*/helpers/data/plugins/semantic'
-import resetPassword from '*/helpers/actions/api/password/reset'
+} from '@/helpers/data/plugins/semantic'
+import resetPassword from '@/helpers/actions/api/password/reset'
 
 export default {
   name: 'BaseProfilePasswordResetFormContainer',

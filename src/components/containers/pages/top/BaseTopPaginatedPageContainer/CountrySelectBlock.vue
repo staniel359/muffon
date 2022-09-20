@@ -15,8 +15,8 @@
 
 <script>
 import BaseCountriesDropdown
-  from '*/components/dropdowns/BaseCountriesDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/BaseCountriesDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'CountrySelectBlock',

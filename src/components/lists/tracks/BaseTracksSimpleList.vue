@@ -46,14 +46,14 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import TrackItem from './BaseTracksSimpleList/TrackItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   track as formatPlayerTrack
-} from '*/helpers/formatters/player/track'
+} from '@/helpers/formatters/player/track'
 
 export default {
   name: 'BaseTracksSimpleList',

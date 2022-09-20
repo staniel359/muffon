@@ -19,13 +19,13 @@
 import {
   mapState
 } from 'vuex'
-import BaseLogoTitleSection from '*/components/BaseLogoTitleSection.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLogoTitleSection from '@/components/BaseLogoTitleSection.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   home as formatHomePageNavigation
-} from '*/helpers/formatters/navigation'
-import formatHomePageTab from '*/helpers/formatters/tabs/home'
-import navigationMixin from '*/mixins/navigationMixin'
+} from '@/helpers/formatters/navigation'
+import formatHomePageTab from '@/helpers/formatters/tabs/home'
+import navigationMixin from '@/mixins/navigationMixin'
 
 export default {
   name: 'HomePage',

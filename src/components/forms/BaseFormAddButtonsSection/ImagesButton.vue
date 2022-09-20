@@ -8,7 +8,7 @@
 
 <script>
 import BaseImageUploadButton
-  from '*/components/buttons/BaseImageUploadButton.vue'
+  from '@/components/buttons/BaseImageUploadButton.vue'
 
 export default {
   name: 'ImagesButton',

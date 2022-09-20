@@ -35,10 +35,10 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './SearchModal/SearchInput.vue'
 import SearchScopeSelect from './SearchModal/SearchScopeSelect.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import SearchList from './SearchModal/SearchList.vue'
 
 export default {

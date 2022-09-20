@@ -1,7 +1,7 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   tags as formatProfileLibraryTagsLink
-} from '*/helpers/formatters/links/profile/library'
+} from '@/helpers/formatters/links/profile/library'
 
 export default function (
   {

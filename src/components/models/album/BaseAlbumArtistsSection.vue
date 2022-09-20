@@ -23,8 +23,8 @@
 
 <script>
 import BaseArtistLinkContainer
-  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
-import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+  from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
+import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'BaseAlbumArtistsSection',

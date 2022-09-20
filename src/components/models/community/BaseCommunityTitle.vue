@@ -11,11 +11,11 @@
 
 <script>
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import {
   main as formatCommunityMainLink
-} from '*/helpers/formatters/links/community'
+} from '@/helpers/formatters/links/community'
 
 export default {
   name: 'BaseCommunityTitle',

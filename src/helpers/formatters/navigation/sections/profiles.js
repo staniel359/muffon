@@ -1,7 +1,7 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   profiles as formatProfilesLink
-} from '*/helpers/formatters/links'
+} from '@/helpers/formatters/links'
 
 export default function (
   {

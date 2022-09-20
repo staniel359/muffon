@@ -21,9 +21,9 @@
 
 <script>
 import BaseAlbumLinkContainer
-  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 
 export default {
   name: 'AlbumSection',

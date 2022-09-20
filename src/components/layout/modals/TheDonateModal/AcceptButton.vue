@@ -11,10 +11,10 @@
 import {
   shell
 } from 'electron'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   donate as donateLink
-} from '*/helpers/data/links'
+} from '@/helpers/data/links'
 
 export default {
   name: 'AcceptButton',

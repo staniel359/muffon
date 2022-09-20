@@ -13,7 +13,7 @@ import {
 } from 'vuex'
 import {
   toggleClass
-} from '*/helpers/actions/plugins/jquery'
+} from '@/helpers/actions/plugins/jquery'
 
 export default {
   name: 'BasePopupContainer',

@@ -22,14 +22,14 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import FolderSelectSection
   from './BaseLibraryFolderImportModal/FolderSelectSection.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import ImportSection
   from './BaseLibraryFolderImportModal/ImportSection.vue'
 import BaseLibrarySaveSection
-  from '*/components/save/library/BaseLibrarySaveSection.vue'
+  from '@/components/save/library/BaseLibrarySaveSection.vue'
 
 export default {
   name: 'BaseLibraryFolderImportModal',

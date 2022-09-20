@@ -25,11 +25,11 @@ import {
   mapGetters
 } from 'vuex'
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
-import getRecommendation from '*/helpers/actions/api/recommendation/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
+import getRecommendation from '@/helpers/actions/api/recommendation/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseRecommendationArtistsModal',

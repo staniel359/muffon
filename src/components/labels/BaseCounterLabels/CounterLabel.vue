@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'CounterLabel',

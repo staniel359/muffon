@@ -49,25 +49,25 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import BaseVideoOptionsDropdown
-  from '*/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   main as formatVideoMainLink
-} from '*/helpers/formatters/links/video'
+} from '@/helpers/formatters/links/video'
 import {
   main as formatVideoChannelMainLink
-} from '*/helpers/formatters/links/videoChannel'
+} from '@/helpers/formatters/links/videoChannel'
 import {
   video as formatVideoShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 import {
   date as formatDate
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'VideoItem',

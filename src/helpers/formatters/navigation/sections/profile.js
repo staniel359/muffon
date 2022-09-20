@@ -1,6 +1,6 @@
 import {
   main as formatProfileMainLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default function (
   {

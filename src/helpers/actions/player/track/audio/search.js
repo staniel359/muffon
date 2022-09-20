@@ -1,9 +1,9 @@
-import store from '*/plugins/store'
-import getPlayerSearch from '*/helpers/actions/api/player/search/get'
-import getPlayerVariantAudio from '*/helpers/actions/player/variant/audio/get'
+import store from '@/plugins/store'
+import getPlayerSearch from '@/helpers/actions/api/player/search/get'
+import getPlayerVariantAudio from '@/helpers/actions/player/variant/audio/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default function (
   {

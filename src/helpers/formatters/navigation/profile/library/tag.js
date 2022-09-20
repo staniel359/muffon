@@ -1,15 +1,15 @@
 import formatProfilesSection
-  from '*/helpers/formatters/navigation/sections/profiles'
+  from '@/helpers/formatters/navigation/sections/profiles'
 import formatProfileSection
-  from '*/helpers/formatters/navigation/sections/profile'
+  from '@/helpers/formatters/navigation/sections/profile'
 import formatProfileLibrarySection
-  from '*/helpers/formatters/navigation/sections/profile/library'
+  from '@/helpers/formatters/navigation/sections/profile/library'
 import formatProfileLibraryTagsSection
-  from '*/helpers/formatters/navigation/sections/profile/library/tags'
+  from '@/helpers/formatters/navigation/sections/profile/library/tags'
 import formatProfileLibraryTagSection
-  from '*/helpers/formatters/navigation/sections/profile/library/tag'
+  from '@/helpers/formatters/navigation/sections/profile/library/tag'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

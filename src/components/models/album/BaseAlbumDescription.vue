@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 import BaseAlbumDescriptionModal
-  from '*/components/modals/album/BaseAlbumDescriptionModal.vue'
+  from '@/components/modals/album/BaseAlbumDescriptionModal.vue'
 
 export default {
   name: 'BaseAlbumDescription',

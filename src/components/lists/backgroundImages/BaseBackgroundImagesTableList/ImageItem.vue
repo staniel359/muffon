@@ -25,7 +25,7 @@ import {
 import {
   ipcRenderer
 } from 'electron'
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import ClearButton from './ImageItem/ClearButton.vue'
 
 export default {

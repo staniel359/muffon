@@ -54,7 +54,7 @@ export default {
     },
     defaultBackgroundImage () {
       return require(
-        '*/assets/images/Background.jpg'
+        '@/assets/images/Background.jpg'
       )
     }
   }

@@ -12,9 +12,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileOptionsDropdown
-  from '*/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
+  from '@/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
 
 export default {
   name: 'OptionsSegment',

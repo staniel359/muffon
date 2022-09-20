@@ -8,8 +8,8 @@
 
 <script>
 import BaseFavoriteOption
-  from '*/components/dropdowns/options/favorite/BaseFavoriteOption.vue'
-import createFavoriteTrack from '*/helpers/actions/api/favorite/track/create'
+  from '@/components/dropdowns/options/favorite/BaseFavoriteOption.vue'
+import createFavoriteTrack from '@/helpers/actions/api/favorite/track/create'
 
 export default {
   name: 'AddOption',

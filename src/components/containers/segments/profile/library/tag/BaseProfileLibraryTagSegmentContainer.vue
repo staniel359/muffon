@@ -14,9 +14,9 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import getProfileLibraryTag
-  from '*/helpers/actions/api/profile/library/tag/get'
+  from '@/helpers/actions/api/profile/library/tag/get'
 
 export default {
   name: 'BaseProfileLibraryTagSegmentContainer',

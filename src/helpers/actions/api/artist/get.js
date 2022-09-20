@@ -1,5 +1,5 @@
-import getRequest from '*/helpers/actions/api/request/get'
-import formatArtistRequestUrl from '*/helpers/formatters/request/artist/url'
+import getRequest from '@/helpers/actions/api/request/get'
+import formatArtistRequestUrl from '@/helpers/formatters/request/artist/url'
 
 export default function (
   {

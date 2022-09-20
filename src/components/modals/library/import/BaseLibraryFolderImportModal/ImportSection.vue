@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import BaseProgress from '*/components/BaseProgress.vue'
+import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
-  from '*/components/import/BaseImportCompleteSection.vue'
+  from '@/components/import/BaseImportCompleteSection.vue'
 import {
   formatTags as formatFileTags
-} from '*/helpers/actions/file'
-import collectionMixin from '*/mixins/collectionMixin'
+} from '@/helpers/actions/file'
+import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'ImportSection',

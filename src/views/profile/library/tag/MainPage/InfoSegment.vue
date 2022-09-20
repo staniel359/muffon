@@ -24,13 +24,13 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatTagMainLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default {
   name: 'InfoSegment',

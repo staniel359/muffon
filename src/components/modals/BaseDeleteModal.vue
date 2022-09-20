@@ -45,10 +45,10 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import TextSection from './BaseDeleteModal/TextSection.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseDeleteModal',

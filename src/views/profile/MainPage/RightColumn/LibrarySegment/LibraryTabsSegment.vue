@@ -27,9 +27,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseTabsContainer
-  from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/tabs/BaseTabsContainer.vue'
 import ArtistsTab from './LibraryTabsSegment/ArtistsTab.vue'
 import AlbumsTab from './LibraryTabsSegment/AlbumsTab.vue'
 import TracksTab from './LibraryTabsSegment/TracksTab.vue'

@@ -1,5 +1,5 @@
-import store from '*/plugins/store'
-import i18n from '*/plugins/i18n'
+import store from '@/plugins/store'
+import i18n from '@/plugins/i18n'
 import moment from 'moment-timezone'
 
 export function mainModalOptions (

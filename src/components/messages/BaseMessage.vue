@@ -47,7 +47,7 @@ import {
 import IconsBlock from './BaseMessage/IconsBlock.vue'
 import ContentBlock from './BaseMessage/ContentBlock.vue'
 import ListBlock from './BaseMessage/ListBlock.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseMessage',

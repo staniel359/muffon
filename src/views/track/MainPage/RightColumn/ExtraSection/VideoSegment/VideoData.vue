@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import BaseVideo from '*/components/BaseVideo.vue'
+import BaseVideo from '@/components/BaseVideo.vue'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 import {
   main as formatVideoMainLink
-} from '*/helpers/formatters/links/video'
+} from '@/helpers/formatters/links/video'
 
 export default {
   name: 'VideoData',

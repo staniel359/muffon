@@ -31,12 +31,12 @@
 
 <script>
 import BaseProfileFavoriteTabContainer
-  from '*/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
+  from '@/components/containers/tabs/profile/favorites/BaseProfileFavoriteTabContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TracksTab',

@@ -66,28 +66,28 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BasePrivateSection from '*/components/BasePrivateSection.vue'
-import BaseTimestamp from '*/components/BaseTimestamp.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BasePrivateSection from '@/components/BasePrivateSection.vue'
+import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BasePlaylistOptionsDropdown
-  from '*/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
+  from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 import BasePlaylistUpdateModal
-  from '*/components/modals/playlist/BasePlaylistUpdateModal.vue'
+  from '@/components/modals/playlist/BasePlaylistUpdateModal.vue'
 import BasePlaylistDeleteModal
-  from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
+  from '@/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   playlist as formatPlaylistShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'InfoSegment',

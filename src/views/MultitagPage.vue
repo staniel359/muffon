@@ -34,17 +34,17 @@
 
 <script>
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import FilterBlock from './MultitagPage/FilterBlock.vue'
-import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import viewChangeMixin from '*/mixins/viewChangeMixin'
-import collectionMixin from '*/mixins/collectionMixin'
+import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
+import navigationMixin from '@/mixins/navigationMixin'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
+import collectionMixin from '@/mixins/collectionMixin'
 import {
   multitag as formatMultitagPageNavigation
-} from '*/helpers/formatters/navigation'
-import formatMultitagPageTab from '*/helpers/formatters/tabs/multitag'
-import getMultitag from '*/helpers/actions/api/multitag/get'
+} from '@/helpers/formatters/navigation'
+import formatMultitagPageTab from '@/helpers/formatters/tabs/multitag'
+import getMultitag from '@/helpers/actions/api/multitag/get'
 
 export default {
   name: 'MultitagPage',

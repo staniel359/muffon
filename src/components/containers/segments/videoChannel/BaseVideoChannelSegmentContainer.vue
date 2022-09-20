@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getVideoChannel from '*/helpers/actions/api/videoChannel/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getVideoChannel from '@/helpers/actions/api/videoChannel/get'
 
 export default {
   name: 'BaseVideoChannelSegmentContainer',

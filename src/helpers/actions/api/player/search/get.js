@@ -1,11 +1,11 @@
-import store from '*/plugins/store'
-import getRequest from '*/helpers/actions/api/request/get'
+import store from '@/plugins/store'
+import getRequest from '@/helpers/actions/api/request/get'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default function getPlayerSearch (
   {

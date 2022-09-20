@@ -1,7 +1,7 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatReleasesMainLink
-} from '*/helpers/formatters/links/releases'
+} from '@/helpers/formatters/links/releases'
 
 export default function (
   {

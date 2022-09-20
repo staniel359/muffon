@@ -17,12 +17,12 @@
 
 <script>
 import BaseProfileLibraryTrackPaginatedPageContainer
-  from '*/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPaginatedPageContainer.vue'
+  from '@/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPaginatedPageContainer.vue'
 import BasePlaylistsSimpleList
-  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+  from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistsPage',

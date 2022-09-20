@@ -7,7 +7,7 @@
 <script>
 import {
   seconds as formatSeconds
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseDurationBlock',

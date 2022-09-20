@@ -21,7 +21,7 @@
 
 <script>
 import BaseTabsContainer
-  from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/tabs/BaseTabsContainer.vue'
 import LastfmOptions from './ServicesSettings/LastfmOptions.vue'
 
 export default {

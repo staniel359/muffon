@@ -18,7 +18,7 @@ import {
   mapState,
   mapGetters
 } from 'vuex'
-import getPlayerVariant from '*/helpers/actions/player/variant/get'
+import getPlayerVariant from '@/helpers/actions/player/variant/get'
 
 export default {
   name: 'BaseTrackVariantContainer',

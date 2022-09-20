@@ -24,7 +24,7 @@
 import HeaderSegment from './BaseHeaderSegmentsContainer/HeaderSegment.vue'
 import {
   focusOnSegment
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseHeaderSegmentsContainer',

@@ -19,14 +19,14 @@
 
 <script>
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
 import BaseTrackContainer
-  from '*/components/containers/track/BaseTrackContainer.vue'
+  from '@/components/containers/track/BaseTrackContainer.vue'
 import BaseTrackAudioIcon
-  from '*/components/models/track/BaseTrackAudioIcon.vue'
+  from '@/components/models/track/BaseTrackAudioIcon.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'PlayButtonSection',

@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   main as formatReleasesMainLink
-} from '*/helpers/formatters/links/releases'
+} from '@/helpers/formatters/links/releases'
 
 export default {
   name: 'ReleasesItem',

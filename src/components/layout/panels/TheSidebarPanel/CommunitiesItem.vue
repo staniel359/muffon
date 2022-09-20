@@ -10,13 +10,13 @@
 import {
   mapGetters
 } from 'vuex'
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   communities as formatProfileCommunitiesLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 import {
   communities as formatCommunitiesLink
-} from '*/helpers/formatters/links'
+} from '@/helpers/formatters/links'
 
 export default {
   name: 'CommunitiesItem',

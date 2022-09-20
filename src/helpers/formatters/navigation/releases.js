@@ -1,7 +1,7 @@
 import formatReleasesSection
-  from '*/helpers/formatters/navigation/sections/releases'
+  from '@/helpers/formatters/navigation/sections/releases'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

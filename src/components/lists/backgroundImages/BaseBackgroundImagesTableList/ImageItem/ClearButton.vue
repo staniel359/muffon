@@ -9,9 +9,9 @@
 import {
   ipcRenderer
 } from 'electron'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import deleteBackgroundImage
-  from '*/helpers/actions/api/backgroundImage/delete'
+  from '@/helpers/actions/api/backgroundImage/delete'
 
 export default {
   name: 'ClearButton',

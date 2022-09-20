@@ -34,12 +34,12 @@
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
-import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
-import BaseAlbumLabels from '*/components/models/album/BaseAlbumLabels.vue'
-import BaseAlbumTags from '*/components/models/album/BaseAlbumTags.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
+import BaseAlbumLabels from '@/components/models/album/BaseAlbumLabels.vue'
+import BaseAlbumTags from '@/components/models/album/BaseAlbumTags.vue'
 import BaseAlbumDescription
-  from '*/components/models/album/BaseAlbumDescription.vue'
+  from '@/components/models/album/BaseAlbumDescription.vue'
 
 export default {
   name: 'SecondarySection',

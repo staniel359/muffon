@@ -1,9 +1,9 @@
 import formatProfilesSection
-  from '*/helpers/formatters/navigation/sections/profiles'
+  from '@/helpers/formatters/navigation/sections/profiles'
 import formatProfileSection
-  from '*/helpers/formatters/navigation/sections/profile'
+  from '@/helpers/formatters/navigation/sections/profile'
 import formatProfilePlaylistsSection
-  from '*/helpers/formatters/navigation/sections/profile/playlists'
+  from '@/helpers/formatters/navigation/sections/profile/playlists'
 
 export default function (
   {

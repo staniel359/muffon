@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseAlbumTagsModal
-  from '*/components/modals/album/BaseAlbumTagsModal.vue'
+  from '@/components/modals/album/BaseAlbumTagsModal.vue'
 
 export default {
   name: 'BaseAlbumTags',

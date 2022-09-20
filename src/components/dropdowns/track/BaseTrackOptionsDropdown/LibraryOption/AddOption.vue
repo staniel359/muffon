@@ -8,8 +8,8 @@
 
 <script>
 import BaseLibraryOption
-  from '*/components/dropdowns/options/library/BaseLibraryOption.vue'
-import createLibraryTrack from '*/helpers/actions/api/library/track/create'
+  from '@/components/dropdowns/options/library/BaseLibraryOption.vue'
+import createLibraryTrack from '@/helpers/actions/api/library/track/create'
 
 export default {
   name: 'AddOption',

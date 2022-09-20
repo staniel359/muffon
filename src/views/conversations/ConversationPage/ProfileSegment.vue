@@ -19,10 +19,10 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import BaseProfileNickname
-  from '*/components/models/profile/BaseProfileNickname.vue'
+  from '@/components/models/profile/BaseProfileNickname.vue'
 
 export default {
   name: 'ProfileSegment',

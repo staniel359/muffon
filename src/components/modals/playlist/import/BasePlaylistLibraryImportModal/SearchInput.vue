@@ -14,7 +14,7 @@ import {
   mapGetters,
   mapState
 } from 'vuex'
-import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'SearchInput',

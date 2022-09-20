@@ -11,10 +11,10 @@ import {
   mapGetters
 } from 'vuex'
 import BaseLibraryOption
-  from '*/components/dropdowns/options/library/BaseLibraryOption.vue'
+  from '@/components/dropdowns/options/library/BaseLibraryOption.vue'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '*/helpers/formatters/links/profile/library/artist'
+} from '@/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'LinkOption',

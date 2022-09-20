@@ -1,5 +1,5 @@
-import store from '*/plugins/store'
-import patchRequest from '*/helpers/actions/api/request/patch'
+import store from '@/plugins/store'
+import patchRequest from '@/helpers/actions/api/request/patch'
 
 export default function (
   {

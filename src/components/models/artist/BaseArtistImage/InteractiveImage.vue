@@ -20,9 +20,9 @@
 
 <script>
 import MoreLinkButton from './InteractiveImage/MoreLinkButton.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import BaseArtistImageModal
-  from '*/components/modals/artist/BaseArtistImageModal.vue'
+  from '@/components/modals/artist/BaseArtistImageModal.vue'
 
 export default {
   name: 'InteractiveImage',

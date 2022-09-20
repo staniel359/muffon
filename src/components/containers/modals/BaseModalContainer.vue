@@ -15,15 +15,15 @@ import {
 } from 'vuex'
 import {
   mainModalOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   setModal,
   showModal,
   hideModal
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   toggleClass
-} from '*/helpers/actions/plugins/jquery'
+} from '@/helpers/actions/plugins/jquery'
 
 export default {
   name: 'BaseModalContainer',

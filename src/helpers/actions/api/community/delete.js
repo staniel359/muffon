@@ -1,4 +1,4 @@
-import deleteRequest from '*/helpers/actions/api/request/delete'
+import deleteRequest from '@/helpers/actions/api/request/delete'
 
 export default function (
   {

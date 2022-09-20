@@ -55,7 +55,7 @@
 
 <script>
 import BaseImagesTableList
-  from '*/components/lists/images/BaseImagesTableList.vue'
+  from '@/components/lists/images/BaseImagesTableList.vue'
 import VideosSection
   from './BaseSendableFormContentSection/VideosSection.vue'
 import ArtistsSection

@@ -14,13 +14,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import {
   playlists as formatPlaylistsPageNavigation
-} from '*/helpers/formatters/navigation'
-import formatPlaylistsPageTab from '*/helpers/formatters/tabs/playlists'
-import getPlaylists from '*/helpers/actions/api/playlists/get'
+} from '@/helpers/formatters/navigation'
+import formatPlaylistsPageTab from '@/helpers/formatters/tabs/playlists'
+import getPlaylists from '@/helpers/actions/api/playlists/get'
 
 export default {
   name: 'BasePlaylistsPageContainer',

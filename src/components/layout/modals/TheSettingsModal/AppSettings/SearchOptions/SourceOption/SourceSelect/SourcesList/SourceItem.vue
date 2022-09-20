@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'SourceItem',

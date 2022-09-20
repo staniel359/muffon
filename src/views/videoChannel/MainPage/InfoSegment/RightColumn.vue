@@ -23,9 +23,9 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import CountersSection from './RightColumn/CountersSection.vue'
-import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
+import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
 import DescriptionSection from './RightColumn/DescriptionSection.vue'
 
 export default {

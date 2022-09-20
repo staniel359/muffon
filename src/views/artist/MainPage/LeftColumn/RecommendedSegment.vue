@@ -36,15 +36,15 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseRecommendationArtistsModal
-  from '*/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
+  from '@/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'RecommendedSegment',

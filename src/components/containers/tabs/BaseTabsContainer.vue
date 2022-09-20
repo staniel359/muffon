@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import BaseTabs from '*/components/BaseTabs.vue'
+import BaseTabs from '@/components/BaseTabs.vue'
 import {
   numberToColumnWidth
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseTabsContainer',

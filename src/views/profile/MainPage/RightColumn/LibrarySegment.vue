@@ -25,16 +25,16 @@ import {
   mapGetters
 } from 'vuex'
 import BaseProfileSegmentContainer
-  from '*/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
+  from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   main as formatProfileLibraryMainLink
-} from '*/helpers/formatters/links/profile/library'
+} from '@/helpers/formatters/links/profile/library'
 
 export default {
   name: 'LibrarySegment',

@@ -25,16 +25,16 @@
 </template>
 
 <script>
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import {
   savedTracks as formatSavedTracksPageNavigation
-} from '*/helpers/formatters/navigation'
-import formatSavedTracksPageTab from '*/helpers/formatters/tabs/savedTracks'
+} from '@/helpers/formatters/navigation'
+import formatSavedTracksPageTab from '@/helpers/formatters/tabs/savedTracks'
 
 export default {
   name: 'SavedTracksPage',

@@ -14,10 +14,10 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import {
   date as formatDate
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'SinceSegment',

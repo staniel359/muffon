@@ -23,13 +23,13 @@ import {
   mapGetters
 } from 'vuex'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import FormSection from './BasePostsFormSegment/FormSection.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePostsFormSegment',

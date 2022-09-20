@@ -20,7 +20,7 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import TrackSection from './InfoSegment/TrackSection.vue'
 import ArtistSection from './InfoSegment/ArtistSection.vue'
 import AlbumSection from './InfoSegment/AlbumSection.vue'

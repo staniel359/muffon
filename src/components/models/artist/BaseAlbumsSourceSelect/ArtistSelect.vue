@@ -11,7 +11,7 @@
 
 <script>
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import ArtistsList from './ArtistSelect/ArtistsList.vue'
 
 export default {

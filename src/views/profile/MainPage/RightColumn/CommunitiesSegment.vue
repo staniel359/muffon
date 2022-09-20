@@ -17,12 +17,12 @@
 
 <script>
 import BaseProfilePaginatedSegmentContainer
-  from '*/components/containers/segments/profile/BaseProfilePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/BaseProfilePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
-  from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
+  from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import {
   communities as formatProfileCommunitiesLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default {
   name: 'CommunitiesSegment',

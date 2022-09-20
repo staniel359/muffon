@@ -29,19 +29,19 @@
 
 <script>
 import BaseImageModalContainer
-  from '*/components/containers/modals/BaseImageModalContainer.vue'
+  from '@/components/containers/modals/BaseImageModalContainer.vue'
 import MainSlider from './BaseArtistImageModal/MainSlider.vue'
 import ThumbsSlider from './BaseArtistImageModal/ThumbsSlider.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   setSliderPosition,
   goToSliderSlide
-} from '*/helpers/actions/plugins/slick'
+} from '@/helpers/actions/plugins/slick'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseArtistImageModal',

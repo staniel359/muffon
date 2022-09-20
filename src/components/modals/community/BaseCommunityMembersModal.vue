@@ -19,11 +19,11 @@
 
 <script>
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseProfilesSimpleList
-  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
-import getCommunityMembers from '*/helpers/actions/api/community/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
+import getCommunityMembers from '@/helpers/actions/api/community/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseCommunityMembersModal',

@@ -12,7 +12,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseToggle from '*/components/BaseToggle.vue'
+import BaseToggle from '@/components/BaseToggle.vue'
 
 export default {
   name: 'BaseDarkModeToggle',

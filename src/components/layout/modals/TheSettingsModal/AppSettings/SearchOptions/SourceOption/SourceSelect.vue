@@ -12,7 +12,7 @@ import {
   mapState
 } from 'vuex'
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import SourcesList from './SourceSelect/SourcesList.vue'
 
 export default {

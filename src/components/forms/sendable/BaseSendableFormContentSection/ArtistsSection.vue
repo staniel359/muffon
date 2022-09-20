@@ -11,7 +11,7 @@
 
 <script>
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
   name: 'ArtistsSection',

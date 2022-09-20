@@ -27,14 +27,14 @@
 <script>
 import SearchSegment from './RadioPage/SearchSegment.vue'
 import PlayerSegment from './RadioPage/PlayerSegment.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+import navigationMixin from '@/mixins/navigationMixin'
 import {
   radio as formatRadioPageNavigation
-} from '*/helpers/formatters/navigation'
-import formatRadioPageTab from '*/helpers/formatters/tabs/radio'
+} from '@/helpers/formatters/navigation'
+import formatRadioPageTab from '@/helpers/formatters/tabs/radio'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'RadioPage',

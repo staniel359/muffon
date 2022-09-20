@@ -31,11 +31,11 @@
 
 <script>
 import BaseArtistPaginatedPageContainer
-  from '*/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
+  from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import BaseArtistSourceSelect
-  from '*/components/models/artist/BaseArtistSourceSelect.vue'
+  from '@/components/models/artist/BaseArtistSourceSelect.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 
 export default {
   name: 'AlbumsPage',

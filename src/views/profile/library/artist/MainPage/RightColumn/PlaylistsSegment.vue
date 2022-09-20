@@ -18,15 +18,15 @@
 
 <script>
 import BaseProfileLibraryArtistPaginatedSegmentContainer
-  from '*/components/containers/segments/profile/library/artist/BaseProfileLibraryArtistPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/library/artist/BaseProfileLibraryArtistPaginatedSegmentContainer.vue'
 import BasePlaylistsSimpleList
-  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+  from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
   playlists as formatProfileLibraryArtistPlaylistsLink
-} from '*/helpers/formatters/links/profile/library/artist'
+} from '@/helpers/formatters/links/profile/library/artist'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistsSegment',

@@ -12,7 +12,7 @@
 
 <script>
 import BaseBookmarkDeleteOption
-  from '*/components/dropdowns/options/bookmark/BaseBookmarkDeleteOption.vue'
+  from '@/components/dropdowns/options/bookmark/BaseBookmarkDeleteOption.vue'
 import AddOption from './BookmarkOption/AddOption.vue'
 
 export default {

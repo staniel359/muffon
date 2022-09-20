@@ -20,10 +20,10 @@ import {
 } from 'vuex'
 import moment from 'moment-timezone'
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'BaseTimezoneDropdown',

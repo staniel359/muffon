@@ -25,7 +25,7 @@
 
 <script>
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import CountriesList from './BaseCountriesDropdown/CountriesList.vue'
 
 export default {

@@ -11,7 +11,7 @@ import {
   mapState
 } from 'vuex'
 import BaseBackgroundImagesTableList
-  from '*/components/lists/backgroundImages/BaseBackgroundImagesTableList.vue'
+  from '@/components/lists/backgroundImages/BaseBackgroundImagesTableList.vue'
 
 export default {
   name: 'ImagesSection',
@@ -39,7 +39,7 @@ export default {
     },
     defaultImage () {
       return require(
-        '*/assets/images/Background.jpg'
+        '@/assets/images/Background.jpg'
       )
     }
   }

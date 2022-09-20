@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseLibraryFolderImportModal
-  from '*/components/modals/library/import/BaseLibraryFolderImportModal.vue'
+  from '@/components/modals/library/import/BaseLibraryFolderImportModal.vue'
 
 export default {
   name: 'FolderImportButton',

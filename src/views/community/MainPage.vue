@@ -26,7 +26,7 @@
 
 <script>
 import BaseCommunityPageContainer
-  from '*/components/containers/pages/community/BaseCommunityPageContainer.vue'
+  from '@/components/containers/pages/community/BaseCommunityPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'

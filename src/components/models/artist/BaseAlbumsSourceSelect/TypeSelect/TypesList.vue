@@ -11,7 +11,7 @@
 import TypeItem from './TypesList/TypeItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'TypesList',

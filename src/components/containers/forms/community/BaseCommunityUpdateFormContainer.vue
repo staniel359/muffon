@@ -11,14 +11,14 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   communityFormOptions
-} from '*/helpers/data/plugins/semantic'
-import updateCommunity from '*/helpers/actions/api/community/update'
+} from '@/helpers/data/plugins/semantic'
+import updateCommunity from '@/helpers/actions/api/community/update'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseCommunityUpdateFormContainer',

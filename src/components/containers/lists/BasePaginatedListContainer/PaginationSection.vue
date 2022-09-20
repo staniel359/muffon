@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseMenuContainer from '*/components/containers/BaseMenuContainer.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseMenuContainer from '@/components/containers/BaseMenuContainer.vue'
 import PreviousPageItem from './PaginationSection/PreviousPageItem.vue'
 import PageItem from './PaginationSection/PageItem.vue'
 import NextPageItem from './PaginationSection/NextPageItem.vue'

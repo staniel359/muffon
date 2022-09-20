@@ -23,9 +23,9 @@
 
 <script>
 import BaseCreatePlaylistTracksContainer
-  from '*/components/containers/playlist/tracks/BaseCreatePlaylistTracksContainer.vue'
+  from '@/components/containers/playlist/tracks/BaseCreatePlaylistTracksContainer.vue'
 import BaseDeletePlaylistTracksContainer
-  from '*/components/containers/playlist/tracks/BaseDeletePlaylistTracksContainer.vue'
+  from '@/components/containers/playlist/tracks/BaseDeletePlaylistTracksContainer.vue'
 import ContentBlock from './PlaylistItem/ContentBlock.vue'
 
 export default {

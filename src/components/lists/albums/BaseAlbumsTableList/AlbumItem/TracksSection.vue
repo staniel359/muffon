@@ -19,11 +19,11 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   tracks as formatProfileLibraryAlbumTracksLink
-} from '*/helpers/formatters/links/profile/library/album'
+} from '@/helpers/formatters/links/profile/library/album'
 
 export default {
   name: 'TracksSection',

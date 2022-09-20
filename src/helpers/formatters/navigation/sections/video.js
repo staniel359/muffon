@@ -1,6 +1,6 @@
 import {
   main as formatVideoMainLink
-} from '*/helpers/formatters/links/video'
+} from '@/helpers/formatters/links/video'
 
 export default function (
   {

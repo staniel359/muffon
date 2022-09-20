@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideoTagsModal
-  from '*/components/modals/video/BaseVideoTagsModal.vue'
+  from '@/components/modals/video/BaseVideoTagsModal.vue'
 
 export default {
   name: 'TagsSection',

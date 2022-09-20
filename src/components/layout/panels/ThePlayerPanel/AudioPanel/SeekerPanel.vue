@@ -14,22 +14,22 @@
 import {
   mapState
 } from 'vuex'
-import BaseSeeker from '*/components/BaseSeeker.vue'
+import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
   setSeekerValue
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   mainSeekerOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   clone as cloneElement,
   addClass as addElementClass,
   setPercentWidth as setElementPercentWidth,
   insertAfter as insertElementAfter
-} from '*/helpers/actions/plugins/jquery'
+} from '@/helpers/actions/plugins/jquery'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'SeekerPanel',

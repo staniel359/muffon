@@ -22,7 +22,7 @@
 
 <script>
 import BaseProfileLibraryArtistPageContainer
-  from '*/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPageContainer.vue'
+  from '@/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 

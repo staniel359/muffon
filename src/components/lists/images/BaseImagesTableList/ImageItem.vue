@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'ImageItem',

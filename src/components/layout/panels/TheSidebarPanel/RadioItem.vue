@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   radio as formatRadioLink
-} from '*/helpers/formatters/links'
+} from '@/helpers/formatters/links'
 
 export default {
   name: 'RadioItem',

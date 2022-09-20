@@ -15,8 +15,8 @@
 
 <script>
 import BaseArtistModalContainer
-  from '*/components/containers/modals/artist/BaseArtistModalContainer.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+  from '@/components/containers/modals/artist/BaseArtistModalContainer.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 
 export default {
   name: 'BaseArtistDescriptionModal',

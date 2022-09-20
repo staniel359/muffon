@@ -14,7 +14,7 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import PostItem from './BasePostsSimpleList/PostItem.vue'
 
 export default {

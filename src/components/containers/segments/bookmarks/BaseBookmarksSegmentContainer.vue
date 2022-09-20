@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getBookmarks from '*/helpers/actions/api/bookmarks/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getBookmarks from '@/helpers/actions/api/bookmarks/get'
 
 export default {
   name: 'BaseBookmarksSegmentContainer',

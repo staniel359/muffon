@@ -12,13 +12,13 @@
 import {
   mapState
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   streamable as getStreamableSources
-} from '*/helpers/formatters/sources'
+} from '@/helpers/formatters/sources'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'AddButton',

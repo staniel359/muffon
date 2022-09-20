@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 
 export default {
   name: 'NavigationSection',

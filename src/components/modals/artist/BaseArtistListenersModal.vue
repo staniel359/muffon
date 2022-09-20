@@ -17,10 +17,10 @@
 
 <script>
 import BaseArtistModalContainer
-  from '*/components/containers/modals/artist/BaseArtistModalContainer.vue'
+  from '@/components/containers/modals/artist/BaseArtistModalContainer.vue'
 import BaseProfilesSimpleList
-  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseArtistListenersModal',

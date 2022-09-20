@@ -26,10 +26,10 @@
 import {
   mapState
 } from 'vuex'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   focusOnSegment
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'BaseSegmentContainer',

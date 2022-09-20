@@ -33,12 +33,12 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   tracks as formatProfileLibraryArtistTracksLink,
   albums as formatProfileLibraryArtistAlbumsLink
-} from '*/helpers/formatters/links/profile/library/artist'
+} from '@/helpers/formatters/links/profile/library/artist'
 
 export default {
   name: 'LibraryCountersSection',

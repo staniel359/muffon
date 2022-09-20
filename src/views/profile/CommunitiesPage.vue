@@ -47,18 +47,18 @@
 
 <script>
 import BaseProfilePageContainer
-  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '@/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
-  from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
+  from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 import {
   communities as formatCommunitiesLink
-} from '*/helpers/formatters/links'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+} from '@/helpers/formatters/links'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'CommunitiesPage',

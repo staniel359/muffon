@@ -28,15 +28,15 @@
 
 <script>
 import BaseProfileFavoritesPaginatedSegmentContainer
-  from '*/components/containers/segments/profile/favorites/BaseProfileFavoritesPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/favorites/BaseProfileFavoritesPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   tracks as formatProfileFavoriteTracksLink
-} from '*/helpers/formatters/links/profile/favorites'
+} from '@/helpers/formatters/links/profile/favorites'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TracksSegment',

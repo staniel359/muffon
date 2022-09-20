@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 import BaseVideoDescriptionModal
-  from '*/components/modals/video/BaseVideoDescriptionModal.vue'
+  from '@/components/modals/video/BaseVideoDescriptionModal.vue'
 
 export default {
   name: 'DescriptionSection',

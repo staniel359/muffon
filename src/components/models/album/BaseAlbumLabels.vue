@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 
 export default {
   name: 'BaseAlbumLabels',

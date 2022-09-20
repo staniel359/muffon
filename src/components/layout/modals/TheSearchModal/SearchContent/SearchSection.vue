@@ -55,17 +55,17 @@
 
 <script>
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideosSimpleList
-  from '*/components/lists/videos/BaseVideosSimpleList.vue'
-import getSearch from '*/helpers/actions/api/search/get'
+  from '@/components/lists/videos/BaseVideosSimpleList.vue'
+import getSearch from '@/helpers/actions/api/search/get'
 
 export default {
   name: 'SearchSection',

@@ -1,9 +1,9 @@
 import {
   ipcRenderer
 } from 'electron'
-import store from '*/plugins/store'
-import i18n from '*/plugins/i18n'
-import storeKeysActions from '*/helpers/data/store'
+import store from '@/plugins/store'
+import i18n from '@/plugins/i18n'
+import storeKeysActions from '@/helpers/data/store'
 
 export function updateLocal (
   key,

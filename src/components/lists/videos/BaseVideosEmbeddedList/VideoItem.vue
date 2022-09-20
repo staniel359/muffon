@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import BaseVideo from '*/components/BaseVideo.vue'
+import BaseVideo from '@/components/BaseVideo.vue'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatVideoMainLink
-} from '*/helpers/formatters/links/video'
+} from '@/helpers/formatters/links/video'
 
 export default {
   name: 'VideoItem',

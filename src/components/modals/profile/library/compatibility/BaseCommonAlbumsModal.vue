@@ -19,9 +19,9 @@
 
 <script>
 import BaseProfileLibraryCommonModalContainer
-  from '*/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
+  from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
 import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 
 export default {
   name: 'BaseCommonAlbumsModal',

@@ -41,7 +41,7 @@ import OptionsSegment from './LeftColumn/OptionsSegment.vue'
 import SinceSegment from './LeftColumn/SinceSegment.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'LeftColumn',

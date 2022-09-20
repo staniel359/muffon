@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 import BaseTrackDescriptionModal
-  from '*/components/modals/track/BaseTrackDescriptionModal.vue'
+  from '@/components/modals/track/BaseTrackDescriptionModal.vue'
 
 export default {
   name: 'BaseTrackDescription',

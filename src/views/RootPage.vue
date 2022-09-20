@@ -31,23 +31,23 @@ import {
   mapState
 } from 'vuex'
 import TheSessionObserver
-  from '*/components/layout/observers/TheSessionObserver.vue'
+  from '@/components/layout/observers/TheSessionObserver.vue'
 import TheNativeThemeObserver
-  from '*/components/layout/observers/TheNativeThemeObserver.vue'
+  from '@/components/layout/observers/TheNativeThemeObserver.vue'
 import TheBackgroundObserver
-  from '*/components/layout/observers/TheBackgroundObserver.vue'
+  from '@/components/layout/observers/TheBackgroundObserver.vue'
 import TheMediaKeysObserver
-  from '*/components/layout/observers/TheMediaKeysObserver.vue'
+  from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import ThePlayingObserver
-  from '*/components/layout/observers/ThePlayingObserver.vue'
+  from '@/components/layout/observers/ThePlayingObserver.vue'
 import TheScrobblingObserver
-  from '*/components/layout/observers/TheScrobblingObserver.vue'
+  from '@/components/layout/observers/TheScrobblingObserver.vue'
 import TheExitObserver
-  from '*/components/layout/observers/TheExitObserver.vue'
+  from '@/components/layout/observers/TheExitObserver.vue'
 import TheElectronStoreSaver
-  from '*/components/layout/savers/TheElectronStoreSaver.vue'
-import TheBrowserTabs from '*/components/layout/TheBrowserTabs.vue'
-import TheAuthentication from '*/components/layout/TheAuthentication.vue'
+  from '@/components/layout/savers/TheElectronStoreSaver.vue'
+import TheBrowserTabs from '@/components/layout/TheBrowserTabs.vue'
+import TheAuthentication from '@/components/layout/TheAuthentication.vue'
 
 export default {
   name: 'RootPage',

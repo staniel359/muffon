@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import BaseListenersCountSection
-  from '*/components/BaseListenersCountSection.vue'
+  from '@/components/BaseListenersCountSection.vue'
 import BaseTrackListenersModal
-  from '*/components/modals/track/BaseTrackListenersModal.vue'
+  from '@/components/modals/track/BaseTrackListenersModal.vue'
 
 export default {
   name: 'ListenersSection',

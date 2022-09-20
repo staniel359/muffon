@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
+import BaseDropdownItem from '@/components/dropdowns/BaseDropdownItem.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   seconds as formatSeconds
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'TrackItem',

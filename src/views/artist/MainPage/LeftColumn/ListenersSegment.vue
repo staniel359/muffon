@@ -17,11 +17,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListenersCountSection
-  from '*/components/BaseListenersCountSection.vue'
+  from '@/components/BaseListenersCountSection.vue'
 import BaseArtistListenersModal
-  from '*/components/modals/artist/BaseArtistListenersModal.vue'
+  from '@/components/modals/artist/BaseArtistListenersModal.vue'
 
 export default {
   name: 'ListenersSegment',

@@ -9,14 +9,14 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 import {
   main as formatProfileLibraryAlbumMainLink
-} from '*/helpers/formatters/links/profile/library/album'
+} from '@/helpers/formatters/links/profile/library/album'
 import {
   main as formatAlbumMainLink
-} from '*/helpers/formatters/links/album'
-import formatRequestAlbumData from '*/helpers/formatters/request/album/data'
+} from '@/helpers/formatters/links/album'
+import formatRequestAlbumData from '@/helpers/formatters/request/album/data'
 
 export default {
   name: 'BaseAlbumLinkContainer',

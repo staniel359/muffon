@@ -28,7 +28,7 @@
 
 <script>
 import InfoSection from './ExtraSection/InfoSection.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import VideoSegment from './ExtraSection/VideoSegment.vue'
 import LyricsSegment from './ExtraSection/LyricsSegment.vue'
 import SimilarSegment from './ExtraSection/SimilarSegment.vue'

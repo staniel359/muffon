@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 
 export default {
   name: 'NameSection',
@@ -19,7 +19,7 @@ export default {
     },
     info () {
       return require(
-        '*/../package.json'
+        '@/../package.json'
       )
     }
   }

@@ -11,7 +11,7 @@
 import TrackItem from './TracksList/TrackItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'TracksList',

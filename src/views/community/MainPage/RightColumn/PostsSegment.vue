@@ -21,16 +21,16 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
 import BasePostsFormSegment
-  from '*/components/segments/posts/BasePostsFormSegment.vue'
+  from '@/components/segments/posts/BasePostsFormSegment.vue'
 import PostsListSegment from './PostsSegment/PostsListSegment.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   posts as formatCommunityPostsLink
-} from '*/helpers/formatters/links/community'
+} from '@/helpers/formatters/links/community'
 
 export default {
   name: 'PostsSegment',

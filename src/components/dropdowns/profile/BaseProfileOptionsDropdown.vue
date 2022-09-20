@@ -25,11 +25,11 @@ import {
   mapGetters
 } from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import FollowOption from './BaseProfileOptionsDropdown/FollowOption.vue'
 import MessageOption from './BaseProfileOptionsDropdown/MessageOption.vue'
 import BaseProfileMessageModal
-  from '*/components/modals/profile/BaseProfileMessageModal.vue'
+  from '@/components/modals/profile/BaseProfileMessageModal.vue'
 
 export default {
   name: 'BaseProfileOptionsDropdown',

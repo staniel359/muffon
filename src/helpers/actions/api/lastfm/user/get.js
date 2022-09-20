@@ -1,5 +1,5 @@
-import store from '*/plugins/store'
-import getRequest from '*/helpers/actions/api/request/get'
+import store from '@/plugins/store'
+import getRequest from '@/helpers/actions/api/request/get'
 
 export default function () {
   const lastfmNickname =

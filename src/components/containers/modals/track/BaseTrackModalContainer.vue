@@ -18,14 +18,14 @@
 
 <script>
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseSegmentModalContainer
-  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
-import getTrack from '*/helpers/actions/api/track/get'
+  from '@/components/containers/modals/BaseSegmentModalContainer.vue'
+import getTrack from '@/helpers/actions/api/track/get'
 import {
   generateKey
-} from '*/helpers/utils'
-import modalMixin from '*/mixins/modalMixin'
+} from '@/helpers/utils'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseTrackModalContainer',

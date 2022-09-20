@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
-import BaseTrackTags from '*/components/models/track/BaseTrackTags.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseTrackTags from '@/components/models/track/BaseTrackTags.vue'
 import BaseTrackDescription
-  from '*/components/models/track/BaseTrackDescription.vue'
+  from '@/components/models/track/BaseTrackDescription.vue'
 
 export default {
   name: 'InfoSection',

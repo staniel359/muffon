@@ -37,11 +37,11 @@
 import SearchInput from './SearchContent/SearchInput.vue'
 import ScopeSelect from './SearchContent/ScopeSelect.vue'
 import SourceSelect from './SearchContent/SourceSelect.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import SearchSection from './SearchContent/SearchSection.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'SearchContent',

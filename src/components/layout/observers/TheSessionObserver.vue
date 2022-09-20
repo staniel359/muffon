@@ -11,10 +11,10 @@ import {
 import {
   mapGetters
 } from 'vuex'
-import updateOnline from '*/helpers/actions/api/online/update'
+import updateOnline from '@/helpers/actions/api/online/update'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'TheSessionObserver',

@@ -1,4 +1,4 @@
-import postRequest from '*/helpers/actions/api/request/post'
+import postRequest from '@/helpers/actions/api/request/post'
 
 export default function (
   {

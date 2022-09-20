@@ -27,11 +27,11 @@ import {
   mapState
 } from 'vuex'
 import BaseTickerContainer
-  from '*/components/containers/BaseTickerContainer.vue'
+  from '@/components/containers/BaseTickerContainer.vue'
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
 import BaseTrackLinkContainer
-  from '*/components/containers/links/track/BaseTrackLinkContainer.vue'
+  from '@/components/containers/links/track/BaseTrackLinkContainer.vue'
 
 export default {
   name: 'TitleSection',

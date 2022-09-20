@@ -21,11 +21,11 @@
 import {
   mapState
 } from 'vuex'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseNumberInput from '*/components/inputs/BaseNumberInput.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseNumberInput from '@/components/inputs/BaseNumberInput.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'TracksCountOption',

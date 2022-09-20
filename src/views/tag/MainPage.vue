@@ -24,7 +24,7 @@
 
 <script>
 import BaseTagPageContainer
-  from '*/components/containers/pages/tag/BaseTagPageContainer.vue'
+  from '@/components/containers/pages/tag/BaseTagPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'

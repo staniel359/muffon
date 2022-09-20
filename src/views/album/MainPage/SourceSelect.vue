@@ -13,9 +13,9 @@
 
 <script>
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import BaseAlbumSourceSelect
-  from '*/components/models/album/BaseAlbumSourceSelect.vue'
+  from '@/components/models/album/BaseAlbumSourceSelect.vue'
 
 export default {
   name: 'SourceSelect',

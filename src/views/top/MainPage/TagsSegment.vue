@@ -14,11 +14,11 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
-import BaseTagsSimpleList from '*/components/lists/tags/BaseTagsSimpleList.vue'
+  from '@/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import {
   tags as formatTopTagsLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default {
   name: 'TagsSegment',

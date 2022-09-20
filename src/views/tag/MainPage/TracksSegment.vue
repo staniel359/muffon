@@ -25,12 +25,12 @@
 
 <script>
 import BaseTagPaginatedSegmentContainer
-  from '*/components/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   tracks as formatTagTracksLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default {
   name: 'TracksSegment',

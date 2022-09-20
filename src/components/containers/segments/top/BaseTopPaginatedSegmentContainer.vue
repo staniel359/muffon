@@ -27,8 +27,8 @@
 <script>
 import BaseTopSegmentContainer from './BaseTopSegmentContainer.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
-import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
+import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'BaseTopPaginatedSegmentContainer',

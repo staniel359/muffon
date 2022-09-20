@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseCommunityCreateModal
-  from '*/components/modals/community/BaseCommunityCreateModal.vue'
+  from '@/components/modals/community/BaseCommunityCreateModal.vue'
 
 export default {
   name: 'BaseCommunityCreateButton',

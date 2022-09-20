@@ -15,11 +15,11 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import formatTagPageNavigation from '*/helpers/formatters/navigation/tag'
-import formatTagPageTab from '*/helpers/formatters/tabs/tag'
-import getTag from '*/helpers/actions/api/tag/get'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
+import formatTagPageNavigation from '@/helpers/formatters/navigation/tag'
+import formatTagPageTab from '@/helpers/formatters/tabs/tag'
+import getTag from '@/helpers/actions/api/tag/get'
 
 export default {
   name: 'BaseTagPageContainer',

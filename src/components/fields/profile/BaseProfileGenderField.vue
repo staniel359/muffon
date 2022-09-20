@@ -27,7 +27,7 @@
 
 <script>
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 
 export default {
   name: 'BaseProfileGenderField',

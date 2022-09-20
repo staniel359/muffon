@@ -9,7 +9,7 @@
 <script>
 import {
   setVisibility
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseTransitionContainer',

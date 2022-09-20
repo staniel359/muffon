@@ -14,7 +14,7 @@ import {
   mapState,
   mapActions
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'LoopButton',

@@ -1,7 +1,7 @@
-import store from '*/plugins/store'
+import store from '@/plugins/store'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import moment from 'moment-timezone'
 
 export function collection (

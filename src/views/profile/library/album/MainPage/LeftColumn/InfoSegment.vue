@@ -15,7 +15,7 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import AlbumSection from './InfoSegment/AlbumSection.vue'
 import ArtistSection from './InfoSegment/ArtistSection.vue'
 

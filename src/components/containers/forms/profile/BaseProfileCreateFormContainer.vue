@@ -14,18 +14,18 @@ import {
   mapState
 } from 'vuex'
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   profileCreateFormOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   stringToDate as formatStringToDate
-} from '*/helpers/formatters'
-import createProfile from '*/helpers/actions/api/profile/create'
-import getProfile from '*/helpers/actions/api/profile/get'
+} from '@/helpers/formatters'
+import createProfile from '@/helpers/actions/api/profile/create'
+import getProfile from '@/helpers/actions/api/profile/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'BaseProfileCreateFormContainer',

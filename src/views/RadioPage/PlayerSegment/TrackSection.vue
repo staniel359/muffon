@@ -16,12 +16,12 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import TrackItem
-  from '*/components/lists/tracks/BaseTracksSimpleList/TrackItem.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList/TrackItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'TrackSection',

@@ -14,7 +14,7 @@
 
 <script>
 import BaseAlbumLinkContainer
-  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
+  from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 
 export default {
   name: 'AlbumSection',

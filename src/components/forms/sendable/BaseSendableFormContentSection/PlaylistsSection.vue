@@ -10,7 +10,7 @@
 
 <script>
 import BasePlaylistsSimpleList
-  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+  from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 
 export default {
   name: 'PlaylistsSection',

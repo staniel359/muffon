@@ -24,7 +24,7 @@ import {
   mapGetters
 } from 'vuex'
 import BaseTabsContainer
-  from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/tabs/BaseTabsContainer.vue'
 import InterfaceOptions from './AppSettings/InterfaceOptions.vue'
 import ThemeOptions from './AppSettings/ThemeOptions.vue'
 import WindowOptions from './AppSettings/WindowOptions.vue'

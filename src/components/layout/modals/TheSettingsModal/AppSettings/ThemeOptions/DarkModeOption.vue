@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseDarkModeToggle from '*/components/toggles/BaseDarkModeToggle.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseDarkModeToggle from '@/components/toggles/BaseDarkModeToggle.vue'
 
 export default {
   name: 'DarkModeOption',

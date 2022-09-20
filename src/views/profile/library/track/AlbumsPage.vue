@@ -25,12 +25,12 @@
 
 <script>
 import BaseProfileLibraryTrackPaginatedPageContainer
-  from '*/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPaginatedPageContainer.vue'
+  from '@/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPaginatedPageContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'AlbumsPage',

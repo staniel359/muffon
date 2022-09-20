@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   main as formatTopMainLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default {
   name: 'TopItem',

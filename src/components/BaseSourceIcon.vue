@@ -21,11 +21,11 @@ import {
 } from 'vuex'
 import {
   setPopup
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   sourcePopupOptions
-} from '*/helpers/data/plugins/semantic'
-import audioSources from '*/helpers/data/audio/sources'
+} from '@/helpers/data/plugins/semantic'
+import audioSources from '@/helpers/data/audio/sources'
 
 export default {
   name: 'BaseSourceIcon',

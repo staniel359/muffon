@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import BaseProgress from '*/components/BaseProgress.vue'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import deletePlaylistTrack from '*/helpers/actions/api/playlist/track/delete'
+import BaseProgress from '@/components/BaseProgress.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import deletePlaylistTrack from '@/helpers/actions/api/playlist/track/delete'
 
 export default {
   name: 'BaseDeletePlaylistTracksContainer',

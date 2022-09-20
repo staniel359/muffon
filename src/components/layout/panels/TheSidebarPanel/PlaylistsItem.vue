@@ -10,13 +10,13 @@
 import {
   mapGetters
 } from 'vuex'
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   playlists as formatProfilePlaylistsLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 import {
   playlists as formatPlaylistsLink
-} from '*/helpers/formatters/links'
+} from '@/helpers/formatters/links'
 
 export default {
   name: 'PlaylistsItem',

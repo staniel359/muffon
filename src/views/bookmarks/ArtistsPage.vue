@@ -19,9 +19,9 @@
 
 <script>
 import BaseBookmarksPaginatedPageContainer
-  from '*/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
+  from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
   name: 'ArtistsPage',

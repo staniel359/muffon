@@ -9,7 +9,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
+import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
 
 export default {
   name: 'SourceIconBlock',

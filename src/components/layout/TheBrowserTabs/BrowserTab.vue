@@ -38,9 +38,9 @@ import {
   ipcRenderer
 } from 'electron'
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'BrowserTab',

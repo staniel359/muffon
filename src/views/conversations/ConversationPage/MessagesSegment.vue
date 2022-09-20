@@ -19,11 +19,11 @@
 
 <script>
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseMessagesSimpleList
-  from '*/components/lists/messages/BaseMessagesSimpleList.vue'
-import getConversation from '*/helpers/actions/api/conversation/get'
-import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+  from '@/components/lists/messages/BaseMessagesSimpleList.vue'
+import getConversation from '@/helpers/actions/api/conversation/get'
+import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'MessagesSegment',

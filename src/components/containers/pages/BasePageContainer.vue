@@ -18,14 +18,14 @@ import {
   mapState,
   mapActions
 } from 'vuex'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import {
   toggleLoaderDimmer
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 import {
   loading as formatLoadingPageNavigation,
   error as formatErrorPageNavigation
-} from '*/helpers/formatters/navigation'
+} from '@/helpers/formatters/navigation'
 
 export default {
   name: 'BasePageContainer',

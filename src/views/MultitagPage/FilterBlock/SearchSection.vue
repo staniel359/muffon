@@ -14,7 +14,7 @@
 
 <script>
 import SearchInput from './SearchSection/SearchInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'SearchSection',

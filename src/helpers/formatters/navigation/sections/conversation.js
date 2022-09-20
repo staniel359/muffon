@@ -1,6 +1,6 @@
 import {
   conversation as formatConversationLink
-} from '*/helpers/formatters/links/conversations'
+} from '@/helpers/formatters/links/conversations'
 
 export default function (
   {

@@ -32,11 +32,11 @@
 
 <script>
 import BaseTransitionContainer
-  from '*/components/containers/BaseTransitionContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+  from '@/components/containers/BaseTransitionContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 import BaseAlbumLinkContainer
-  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
+  from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 
 export default {
   name: 'HeaderSection',

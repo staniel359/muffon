@@ -17,12 +17,12 @@
 
 <script>
 import BaseProfilePaginatedSegmentContainer
-  from '*/components/containers/segments/profile/BaseProfilePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/BaseProfilePaginatedSegmentContainer.vue'
 import BasePlaylistsSimpleList
-  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+  from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
   playlists as formatProfilePlaylistsLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default {
   name: 'PlaylistsSegment',

@@ -1,7 +1,7 @@
-import audioSources from '*/helpers/data/audio/sources'
+import audioSources from '@/helpers/data/audio/sources'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export function streamableCollection () {
   return formatCollection(

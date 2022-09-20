@@ -56,8 +56,8 @@ import {
   mapState
 } from 'vuex'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseLabel',

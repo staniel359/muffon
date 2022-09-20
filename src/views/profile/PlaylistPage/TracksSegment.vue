@@ -34,14 +34,14 @@
 
 <script>
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
-import getProfilePlaylist from '*/helpers/actions/api/profile/playlist/get'
-import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
+import getProfilePlaylist from '@/helpers/actions/api/profile/playlist/get'
+import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TracksSegment',

@@ -19,16 +19,16 @@ import {
   mapState,
   mapGetters
 } from 'vuex'
-import getPlayerTrack from '*/helpers/actions/player/track/get'
+import getPlayerTrack from '@/helpers/actions/player/track/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setPlaying as setPlayerPlaying
-} from '*/helpers/actions/player'
+} from '@/helpers/actions/player'
 import {
   track as formatPlayerTrack
-} from '*/helpers/formatters/player/track'
+} from '@/helpers/formatters/player/track'
 
 export default {
   name: 'BaseTrackContainer',

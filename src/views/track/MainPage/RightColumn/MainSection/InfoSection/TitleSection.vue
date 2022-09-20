@@ -17,7 +17,7 @@
 
 <script>
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
 
 export default {
   name: 'TitleSection',

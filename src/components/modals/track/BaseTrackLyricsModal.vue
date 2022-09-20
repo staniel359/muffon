@@ -17,7 +17,7 @@
 
 <script>
 import BaseTrackModalContainer
-  from '*/components/containers/modals/track/BaseTrackModalContainer.vue'
+  from '@/components/containers/modals/track/BaseTrackModalContainer.vue'
 
 export default {
   name: 'BaseTrackLyricsModal',

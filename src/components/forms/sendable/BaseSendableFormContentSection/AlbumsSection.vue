@@ -10,7 +10,7 @@
 
 <script>
 import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 
 export default {
   name: 'AlbumsSection',

@@ -1,6 +1,6 @@
 import {
   main as formatAlbumMainLink
-} from '*/helpers/formatters/links/album'
+} from '@/helpers/formatters/links/album'
 
 export default function (
   {

@@ -6,7 +6,7 @@
 
 <script>
 import BaseProfileUpdateForm
-  from '*/components/forms/profile/BaseProfileUpdateForm.vue'
+  from '@/components/forms/profile/BaseProfileUpdateForm.vue'
 
 export default {
   name: 'InfoOptions',

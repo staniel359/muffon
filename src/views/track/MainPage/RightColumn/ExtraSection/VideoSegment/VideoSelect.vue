@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
+import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import VideosList from './VideoSelect/VideosList.vue'
 
 export default {

@@ -15,10 +15,10 @@
 import {
   AES
 } from 'crypto-js'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseShareOption',

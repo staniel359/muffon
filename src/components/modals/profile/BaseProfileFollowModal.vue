@@ -19,11 +19,11 @@
 
 <script>
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseProfilesSimpleList
-  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
-import getProfileFollow from '*/helpers/actions/api/profile/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
+import getProfileFollow from '@/helpers/actions/api/profile/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseProfileFollowModal',

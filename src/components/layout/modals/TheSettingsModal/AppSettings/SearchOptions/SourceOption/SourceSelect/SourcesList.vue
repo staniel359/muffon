@@ -8,7 +8,7 @@
 
 <script>
 import SourceItem from './SourcesList/SourceItem.vue'
-import audioSources from '*/helpers/data/audio/sources'
+import audioSources from '@/helpers/data/audio/sources'
 
 export default {
   name: 'SourcesList',

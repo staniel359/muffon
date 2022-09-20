@@ -59,24 +59,24 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import BasePostUpdateFormContainer
-  from '*/components/containers/forms/post/BasePostUpdateFormContainer.vue'
-import BaseContentField from '*/components/fields/BaseContentField.vue'
+  from '@/components/containers/forms/post/BasePostUpdateFormContainer.vue'
+import BaseContentField from '@/components/fields/BaseContentField.vue'
 import BaseSendableFormContentSection
-  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
+  from '@/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
-  from '*/components/forms/BaseFormAddButtonsSection.vue'
+  from '@/components/forms/BaseFormAddButtonsSection.vue'
 import BasePostAsCommunityField
-  from '*/components/fields/post/BasePostAsCommunityField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
-import sendableFormMixin from '*/mixins/sendableFormMixin'
+  from '@/components/fields/post/BasePostAsCommunityField.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
+import sendableFormMixin from '@/mixins/sendableFormMixin'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BasePostUpdateModal',

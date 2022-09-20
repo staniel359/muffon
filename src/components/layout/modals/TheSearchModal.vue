@@ -14,7 +14,7 @@ import {
   mapActions
 } from 'vuex'
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchContent from './TheSearchModal/SearchContent.vue'
 
 export default {

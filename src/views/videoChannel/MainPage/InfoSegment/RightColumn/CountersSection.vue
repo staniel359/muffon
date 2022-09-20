@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
 
 export default {
   name: 'CountersSection',

@@ -57,10 +57,10 @@ import PaginationSection
   from './BasePaginatedListContainer/PaginationSection.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePaginatedListContainer',

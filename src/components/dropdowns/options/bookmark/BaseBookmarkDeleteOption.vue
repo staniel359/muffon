@@ -8,7 +8,7 @@
 
 <script>
 import BaseBookmarkOption from './BaseBookmarkOption.vue'
-import deleteBookmark from '*/helpers/actions/api/bookmark/model/delete'
+import deleteBookmark from '@/helpers/actions/api/bookmark/model/delete'
 
 export default {
   name: 'BaseBookmarkDeleteOption',

@@ -14,9 +14,9 @@ import {
   mapGetters
 } from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseShareOption
-  from '*/components/dropdowns/options/BaseShareOption.vue'
+  from '@/components/dropdowns/options/BaseShareOption.vue'
 
 export default {
   name: 'BaseVideoOptionsDropdown',

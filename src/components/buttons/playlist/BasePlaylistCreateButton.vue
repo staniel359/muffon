@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BasePlaylistCreateModal
-  from '*/components/modals/playlist/BasePlaylistCreateModal.vue'
+  from '@/components/modals/playlist/BasePlaylistCreateModal.vue'
 
 export default {
   name: 'BasePlaylistCreateButton',

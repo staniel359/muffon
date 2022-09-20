@@ -16,11 +16,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'AnonymousSegment',

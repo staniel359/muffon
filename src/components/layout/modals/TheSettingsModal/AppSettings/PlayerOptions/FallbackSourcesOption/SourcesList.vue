@@ -14,7 +14,7 @@ import {
 import SourceSelect from './SourcesList/SourceSelect.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'SourcesList',

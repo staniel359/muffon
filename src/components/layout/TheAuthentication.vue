@@ -21,13 +21,13 @@
 </template>
 
 <script>
-import BaseLogoTitleSection from '*/components/BaseLogoTitleSection.vue'
+import BaseLogoTitleSection from '@/components/BaseLogoTitleSection.vue'
 import BaseProfileLoginForm
-  from '*/components/forms/profile/BaseProfileLoginForm.vue'
+  from '@/components/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfilePasswordResetForm
-  from '*/components/forms/profile/BaseProfilePasswordResetForm.vue'
+  from '@/components/forms/profile/BaseProfilePasswordResetForm.vue'
 import BaseProfileCreateForm
-  from '*/components/forms/profile/BaseProfileCreateForm.vue'
+  from '@/components/forms/profile/BaseProfileCreateForm.vue'
 
 export default {
   name: 'TheAuthentication',

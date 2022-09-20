@@ -9,7 +9,7 @@
 
 <script>
 import BaseCommunitiesSimpleList
-  from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
+  from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
 
 export default {
   name: 'CommunitiesSection',

@@ -22,11 +22,11 @@ import {
   mapGetters
 } from 'vuex'
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BasePlaylistsSimpleSelectableList
-  from '*/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
-import getProfilePlaylists from '*/helpers/actions/api/profile/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
+import getProfilePlaylists from '@/helpers/actions/api/profile/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BasePlaylistsModal',

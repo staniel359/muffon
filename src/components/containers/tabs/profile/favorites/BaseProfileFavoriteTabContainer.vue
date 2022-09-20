@@ -27,8 +27,8 @@ import {
   mapState
 } from 'vuex'
 import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
-import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
+  from '@/components/containers/lists/BasePaginatedListContainer.vue'
+import getProfileFavorites from '@/helpers/actions/api/profile/favorites/get'
 
 export default {
   name: 'BaseProfileFavoriteTabContainer',

@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseLibrarySearchImportModal
-  from '*/components/modals/library/import/BaseLibrarySearchImportModal.vue'
+  from '@/components/modals/library/import/BaseLibrarySearchImportModal.vue'
 
 export default {
   name: 'SearchImportButton',

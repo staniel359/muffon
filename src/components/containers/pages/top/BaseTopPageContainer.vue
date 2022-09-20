@@ -14,11 +14,11 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import formatTopPageNavigation from '*/helpers/formatters/navigation/top'
-import formatTopPageTab from '*/helpers/formatters/tabs/top'
-import getTop from '*/helpers/actions/api/top/get'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
+import formatTopPageNavigation from '@/helpers/formatters/navigation/top'
+import formatTopPageTab from '@/helpers/formatters/tabs/top'
+import getTop from '@/helpers/actions/api/top/get'
 
 export default {
   name: 'BaseTopPageContainer',

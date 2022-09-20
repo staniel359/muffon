@@ -13,12 +13,12 @@ import {
   ipcRenderer
 } from 'electron'
 import BaseImageUploadButton
-  from '*/components/buttons/BaseImageUploadButton.vue'
+  from '@/components/buttons/BaseImageUploadButton.vue'
 import createBackgroundImage
-  from '*/helpers/actions/api/backgroundImage/create'
+  from '@/helpers/actions/api/backgroundImage/create'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'UploadButton',

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import getArtist from '*/helpers/actions/api/artist/get'
+import getArtist from '@/helpers/actions/api/artist/get'
 
 export default {
   name: 'BaseArtistContainer',
