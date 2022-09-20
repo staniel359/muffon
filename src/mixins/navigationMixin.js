@@ -35,9 +35,6 @@ export default {
       this.setNavigation()
     }
   },
-  deactivated () {
-    this.isRefreshNavigation = true
-  },
   methods: {
     ...mapActions(
       'layout',
@@ -47,6 +44,8 @@ export default {
     ),
     handleNavigationDataChange () {
       this.setNavigation()
+
+      this.isRefreshNavigation = true
     },
     handleProfileLanguageChange () {
       this.setNavigation()

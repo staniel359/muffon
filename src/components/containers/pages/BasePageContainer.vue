@@ -78,6 +78,11 @@ export default {
       this.$refs.page
     )
   },
+  activated () {
+    if (this.isPageError) {
+      this.setPageError()
+    }
+  },
   methods: {
     ...mapActions(
       'layout',
@@ -85,33 +90,39 @@ export default {
         'setNavigationSections'
       ]
     ),
-    handleIsPageLoadingChange (
-      value
-    ) {
-      toggleLoaderDimmer(
-        value
-      )
-
-      this.setNavigationSections(
-        formatLoadingPageNavigation()
-      )
-
-      this.updateTabLoading()
+    handleIsPageLoadingChange () {
+      this.setPageLoading()
     },
-    handleIsPageErrorChange (
-      value
-    ) {
-      this.setNavigationSections(
-        formatErrorPageNavigation()
-      )
-
-      this.updateTabError()
+    handleIsPageErrorChange () {
+      this.setPageError()
     },
     scrollToTop () {
       window.scrollTo(
         0,
         0
       )
+    },
+    setPageLoading () {
+      toggleLoaderDimmer(
+        this.isPageLoading
+      )
+
+      if (this.isPageLoading) {
+        this.setNavigationSections(
+          formatLoadingPageNavigation()
+        )
+      }
+
+      this.updateTabLoading()
+    },
+    setPageError () {
+      if (this.isPageError) {
+        this.setNavigationSections(
+          formatErrorPageNavigation()
+        )
+      }
+
+      this.updateTabError()
     },
     updateTabLoading () {
       ipcRenderer.send(
