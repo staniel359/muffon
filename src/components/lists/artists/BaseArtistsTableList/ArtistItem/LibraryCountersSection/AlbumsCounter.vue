@@ -17,14 +17,14 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   albums as formatProfileLibraryArtistAlbumsLink
-} from '*/helpers/formatters/links/profile/library/artist'
+} from '@/helpers/formatters/links/profile/library/artist'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'AlbumsCounter',

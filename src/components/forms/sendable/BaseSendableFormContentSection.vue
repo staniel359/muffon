@@ -3,7 +3,7 @@
     v-if="isRender"
     class="main-content-container"
   >
-    <ImagesSection
+    <BaseImagesTableList
       v-if="images.length"
       class="main-content-section"
       :images="images"
@@ -54,8 +54,8 @@
 </template>
 
 <script>
-import ImagesSection
-  from './BaseSendableFormContentSection/ImagesSection.vue'
+import BaseImagesTableList
+  from '@/components/lists/images/BaseImagesTableList.vue'
 import VideosSection
   from './BaseSendableFormContentSection/VideosSection.vue'
 import ArtistsSection
@@ -72,7 +72,7 @@ import CommunitiesSection
 export default {
   name: 'BaseSendableFormContentSection',
   components: {
-    ImagesSection,
+    BaseImagesTableList,
     VideosSection,
     ArtistsSection,
     AlbumsSection,

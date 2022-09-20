@@ -1,7 +1,7 @@
-import patchRequest from '*/helpers/actions/api/request/patch'
+import patchRequest from '@/helpers/actions/api/request/patch'
 import {
   handleError as handleFormError
-} from '*/helpers/actions/form'
+} from '@/helpers/actions/form'
 
 export default function (
   {

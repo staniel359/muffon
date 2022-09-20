@@ -30,12 +30,12 @@
 
 <script>
 import BaseProfileLibraryTagPaginatedPageContainer
-  from '*/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPaginatedPageContainer.vue'
-import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
+  from '@/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPaginatedPageContainer.vue'
+import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
-import viewChangeMixin from '*/mixins/viewChangeMixin'
+} from '@/helpers/utils'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'ArtistsPage',

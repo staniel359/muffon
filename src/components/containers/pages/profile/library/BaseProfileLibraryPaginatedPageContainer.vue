@@ -44,10 +44,10 @@
 import BaseProfileLibraryPageContainer
   from './BaseProfileLibraryPageContainer.vue'
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseProfileLibrarySearchInput
-  from '*/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+  from '@/components/models/profile/library/BaseProfileLibrarySearchInput.vue'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseProfileLibraryPaginatedPageContainer',

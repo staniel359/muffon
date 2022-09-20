@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   savedTracks as formatSavedTracksLink
-} from '*/helpers/formatters/links'
+} from '@/helpers/formatters/links'
 
 export default {
   name: 'SavedTracksItem',

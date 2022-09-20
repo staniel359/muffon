@@ -103,22 +103,22 @@
 
 <script>
 import BaseArtistLinkContainer
-  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
-import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistListenersCount
-  from '*/components/models/artist/BaseArtistListenersCount.vue'
+  from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsDropdown
-  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseBookmarkDeleteModal
-  from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
-  from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import selfMixin from '*/mixins/selfMixin'
+  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',

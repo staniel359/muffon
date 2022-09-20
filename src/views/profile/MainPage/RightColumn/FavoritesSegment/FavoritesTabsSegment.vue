@@ -3,9 +3,8 @@
     ref="segment"
   >
     <BaseTabsContainer
-      class="item"
-      :class="columnWidth"
       :tabs="tabs"
+      is-fluid
       @tab-click="handleTabClick"
     >
       <template
@@ -28,14 +27,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseTabsContainer from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseTabsContainer from '@/components/containers/tabs/BaseTabsContainer.vue'
 import ArtistsTab from './FavoritesTabsSegment/ArtistsTab.vue'
 import AlbumsTab from './FavoritesTabsSegment/AlbumsTab.vue'
 import TracksTab from './FavoritesTabsSegment/TracksTab.vue'
-import {
-  numberToColumnWidth
-} from '*/helpers/actions/plugins/semantic'
 
 export default {
   name: 'FavoritesTabsSegment',
@@ -49,30 +45,19 @@ export default {
   props: {
     profileId: String
   },
-  computed: {
-    columnWidth () {
-      return numberToColumnWidth(
-        this.tabs.length
-      )
-    },
-    tabs () {
-      return [
+  data () {
+    return {
+      tabs: [
         {
-          name: this.$t(
-            'navigation.artists'
-          ),
+          nameCode: 'navigation.artists',
           component: 'ArtistsTab'
         },
         {
-          name: this.$t(
-            'navigation.albums'
-          ),
+          nameCode: 'navigation.albums',
           component: 'AlbumsTab'
         },
         {
-          name: this.$t(
-            'navigation.tracks'
-          ),
+          nameCode: 'navigation.tracks',
           component: 'TracksTab'
         }
       ]

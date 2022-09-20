@@ -25,12 +25,12 @@
 
 <script>
 import BaseArtistPaginatedSegmentContainer
-  from '*/components/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   tracks as formatArtistTracksLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'TracksSegment',

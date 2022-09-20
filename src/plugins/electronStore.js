@@ -1,5 +1,5 @@
 import ElectronStore from 'electron-store'
-import schema from '*/helpers/data/plugins/electronStore/schema'
+import schema from '@/helpers/data/plugins/electronStore/schema'
 
 const encryptionKey =
   window

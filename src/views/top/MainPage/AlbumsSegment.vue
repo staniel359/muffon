@@ -22,12 +22,12 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   albums as formatTopAlbumsLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default {
   name: 'AlbumsSegment',

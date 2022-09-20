@@ -1,6 +1,6 @@
 <template>
   <div
-    class="ui secondary pointing menu"
+    class="ui secondary menu main-tabs"
     :class="{
       inverted: isDarkMode
     }"
@@ -8,7 +8,7 @@
     <TabItem
       v-for="(tabData, index) in tabs"
       :key="index"
-      :tab-name="tabData.name"
+      :tab-data="tabData"
       :index="index"
       :active-tab-index="activeTabIndex"
       @click="handleTabClick"

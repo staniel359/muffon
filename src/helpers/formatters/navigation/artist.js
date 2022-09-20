@@ -1,9 +1,9 @@
 import formatArtistsSection
-  from '*/helpers/formatters/navigation/sections/artists'
+  from '@/helpers/formatters/navigation/sections/artists'
 import formatArtistSection
-  from '*/helpers/formatters/navigation/sections/artist'
+  from '@/helpers/formatters/navigation/sections/artist'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

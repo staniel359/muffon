@@ -26,11 +26,11 @@
 
 <script>
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseDropdown',

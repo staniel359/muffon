@@ -40,21 +40,21 @@
 import {
   mapState
 } from 'vuex'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setDropdown,
   setDropdownValue
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   mainDropdownOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'ScrobblePercentOption',

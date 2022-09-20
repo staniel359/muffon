@@ -106,24 +106,24 @@
 
 <script>
 import BaseAlbumLinkContainer
-  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
-  from '*/components/models/album/BaseAlbumArtistsSection.vue'
+  from '@/components/models/album/BaseAlbumArtistsSection.vue'
 import BaseAlbumListenersCount
-  from '*/components/models/album/BaseAlbumListenersCount.vue'
-import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+  from '@/components/models/album/BaseAlbumListenersCount.vue'
+import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseAlbumOptionsDropdown
-  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseBookmarkDeleteModal
-  from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
-  from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
-import selfMixin from '*/mixins/selfMixin'
+  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'AlbumItem',

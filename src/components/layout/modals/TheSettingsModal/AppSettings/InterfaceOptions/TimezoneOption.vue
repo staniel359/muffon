@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseTimezoneDropdown
-  from '*/components/dropdowns/BaseTimezoneDropdown.vue'
+  from '@/components/dropdowns/BaseTimezoneDropdown.vue'
 
 export default {
   name: 'TimezoneOption',

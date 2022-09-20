@@ -31,10 +31,10 @@
 import ArtistItem from './BaseArtistsTableList/ArtistItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   numberToColumnWidth
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseArtistsTableList',

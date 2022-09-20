@@ -8,7 +8,7 @@
 
 <script>
 import BaseFavoriteOption from './BaseFavoriteOption.vue'
-import deleteFavorite from '*/helpers/actions/api/favorite/model/delete'
+import deleteFavorite from '@/helpers/actions/api/favorite/model/delete'
 
 export default {
   name: 'BaseFavoriteDeleteOption',

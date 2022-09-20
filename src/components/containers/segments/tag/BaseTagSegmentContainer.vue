@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getTag from '*/helpers/actions/api/tag/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getTag from '@/helpers/actions/api/tag/get'
 
 export default {
   name: 'BaseTagSegmentContainer',

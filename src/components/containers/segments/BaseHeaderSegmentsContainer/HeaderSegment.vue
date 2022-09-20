@@ -15,10 +15,10 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 
 export default {
   name: 'HeaderSegment',

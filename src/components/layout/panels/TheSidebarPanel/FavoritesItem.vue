@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   main as formatProfileFavoritesMainLink
-} from '*/helpers/formatters/links/profile/favorites'
+} from '@/helpers/formatters/links/profile/favorites'
 
 export default {
   name: 'FavoritesItem',

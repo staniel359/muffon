@@ -27,12 +27,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BasePercentCircle from '*/components/BasePercentCircle.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BasePercentCircle from '@/components/BasePercentCircle.vue'
 import CompatibilityContent
   from './CompatibilitySegment/CompatibilityContent.vue'
 import getLibraryCompatibility
-  from '*/helpers/actions/api/library/compatibility/get'
+  from '@/helpers/actions/api/library/compatibility/get'
 
 export default {
   name: 'CompatibilitySegment',

@@ -1,6 +1,7 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui labels">
     <BaseLabel
+      class="basic circular large"
       icon="calendar outline"
       :text="dateFormatted"
     />
@@ -8,10 +9,10 @@
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import {
   date as formatDate
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseDateLabel',

@@ -1,4 +1,4 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   camelCase
 } from 'camel-case'
@@ -7,7 +7,7 @@ import {
 } from 'snake-case'
 import {
   addFormFieldError
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export function handleError (
   {

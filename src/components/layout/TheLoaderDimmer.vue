@@ -13,13 +13,13 @@ import {
 } from 'vuex'
 import {
   setLoaderDimmer
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 import {
   mainLoaderOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   toggleClass
-} from '*/helpers/actions/plugins/jquery'
+} from '@/helpers/actions/plugins/jquery'
 
 export default {
   name: 'TheLoaderDimmer',

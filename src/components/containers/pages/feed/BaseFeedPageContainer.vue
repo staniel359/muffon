@@ -14,13 +14,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import {
   feed as formatFeedPageNavigation
-} from '*/helpers/formatters/navigation'
-import formatFeedPageTab from '*/helpers/formatters/tabs/feed'
-import getFeed from '*/helpers/actions/api/feed/get'
+} from '@/helpers/formatters/navigation'
+import formatFeedPageTab from '@/helpers/formatters/tabs/feed'
+import getFeed from '@/helpers/actions/api/feed/get'
 
 export default {
   name: 'BaseFeedPageContainer',

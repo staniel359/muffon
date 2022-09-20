@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'AlbumsInput',
@@ -39,7 +39,7 @@ export default {
   computed: {
     url () {
       return (
-        '/lastfm/search/albums' +
+        'lastfm/search/albums' +
         '?query={query}&limit=5'
       )
     },

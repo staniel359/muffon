@@ -17,10 +17,10 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseProfilesSimpleList
-  from '*/components/lists/profiles/BaseProfilesSimpleList.vue'
+  from '@/components/lists/profiles/BaseProfilesSimpleList.vue'
 
 export default {
   name: 'CreatorSegment',

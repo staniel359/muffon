@@ -26,7 +26,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseButtonContainer',

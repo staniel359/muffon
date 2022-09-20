@@ -12,7 +12,7 @@
 
 <script>
 import BaseFavoriteDeleteOption
-  from '*/components/dropdowns/options/favorite/BaseFavoriteDeleteOption.vue'
+  from '@/components/dropdowns/options/favorite/BaseFavoriteDeleteOption.vue'
 import AddOption from './FavoriteOption/AddOption.vue'
 
 export default {

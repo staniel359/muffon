@@ -39,16 +39,16 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseMessageCreateFormContainer
-  from '*/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
-import BaseContentField from '*/components/fields/BaseContentField.vue'
+  from '@/components/containers/forms/message/BaseMessageCreateFormContainer.vue'
+import BaseContentField from '@/components/fields/BaseContentField.vue'
 import BaseSendableFormContentSection
-  from '*/components/forms/sendable/BaseSendableFormContentSection.vue'
+  from '@/components/forms/sendable/BaseSendableFormContentSection.vue'
 import BaseFormAddButtonsSection
-  from '*/components/forms/BaseFormAddButtonsSection.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
-import sendableFormMixin from '*/mixins/sendableFormMixin'
+  from '@/components/forms/BaseFormAddButtonsSection.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
+import sendableFormMixin from '@/mixins/sendableFormMixin'
 
 export default {
   name: 'FormSegment',

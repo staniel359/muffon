@@ -1,16 +1,20 @@
 <template>
-  <BaseCounterLabels
-    :counters="counters"
-  />
+  <div class="main-labels-section">
+    <BaseCounterLabels
+      :counters="counters"
+    />
+  </div>
 
-  <BaseDateLabel
-    :date="publishDate"
-  />
+  <div class="main-labels-section">
+    <BaseDateLabel
+      :date="publishDate"
+    />
+  </div>
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
-import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
 
 export default {
   name: 'CountersDateSection',

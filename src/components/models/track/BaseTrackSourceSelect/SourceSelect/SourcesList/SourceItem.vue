@@ -17,7 +17,7 @@
 
 <script>
 import BaseTrackSourceItemContainer
-  from '*/components/containers/track/BaseTrackSourceItemContainer.vue'
+  from '@/components/containers/track/BaseTrackSourceItemContainer.vue'
 import SourceItemContent from './SourceItem/SourceItemContent.vue'
 
 export default {

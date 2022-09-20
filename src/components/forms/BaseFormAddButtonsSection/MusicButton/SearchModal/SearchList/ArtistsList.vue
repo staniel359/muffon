@@ -22,9 +22,9 @@
 
 <script>
 import BasePaginatedListContainer
-  from '*/components/containers/lists/BasePaginatedListContainer.vue'
+  from '@/components/containers/lists/BasePaginatedListContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
   name: 'ArtistsList',

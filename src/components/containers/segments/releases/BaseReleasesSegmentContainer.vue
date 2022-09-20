@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getReleases from '*/helpers/actions/api/releases/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getReleases from '@/helpers/actions/api/releases/get'
 
 export default {
   name: 'BaseReleasesSegmentContainer',

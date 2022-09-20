@@ -1,117 +1,55 @@
 <template>
-  <div
-    class="image-item"
-    :class="{
-      active: isActive
-    }"
-  >
+  <div class="column main-image-item">
     <BaseImage
-      class="rounded"
-      :class="{
-        clickable: isClickable
-      }"
-      :image="imageData[size]"
-      @click="handleClick"
+      class="rounded bordered"
+      :image="imageUrl"
     />
 
-    <ClearButton
-      v-if="isRenderClearButton"
-      :image-id="imageId"
+    <BaseClearButton
+      class="main-image-clear-button"
+      @click="handleClearButtonClick"
     />
   </div>
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
-import {
-  ipcRenderer
-} from 'electron'
-import BaseImage from '*/components/images/BaseImage.vue'
-import ClearButton from './ImageItem/ClearButton.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'ImageItem',
   components: {
     BaseImage,
-    ClearButton
+    BaseClearButton
   },
+  inject: [
+    'deleteCollectionItem'
+  ],
   props: {
     imageData: {
       type: Object,
       required: true
-    },
-    size: {
-      type: String,
-      required: true
-    },
-    isWithClearButton: Boolean,
-    isClickable: Boolean
+    }
   },
   computed: {
-    ...mapState(
-      'layout',
-      [
-        'backgroundImageId'
-      ]
-    ),
-    isActive () {
-      return (
-        this.imageId ===
-          this.backgroundImageId
-      )
-    },
-    imageId () {
-      return this.imageData.id
-    },
     imageUrl () {
-      return this.imageData.original
+      return this.imageData.url
     },
-    isRenderClearButton () {
-      return (
-        this.isWithClearButton &&
-          this.imageId
-      )
+    uuid () {
+      return this.imageData.uuid
     }
   },
   methods: {
-    handleClick () {
-      if (this.imageId) {
-        this.setBackgroundImage()
-      } else {
-        this.setDefaultBackgroundImage()
-      }
-    },
-    setBackgroundImage () {
-      ipcRenderer.send(
-        'change-background-image',
+    handleClearButtonClick () {
+      this.deleteCollectionItem(
         {
-          imageId: this.imageId,
-          imageUrl: this.imageUrl
+          collection: 'images',
+          uuid: this.uuid
         }
-      )
-    },
-    setDefaultBackgroundImage () {
-      ipcRenderer.send(
-        'reset-background-image'
       )
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
-.image-item
-  @extend .d-flex, .flex-column
-  align-self: center
-  &.active
-    border: 1px solid $colorBaseLight
-    border-radius: 5px
-  &:hover
-    .clear-button
-      @extend .d-block
-  .image
-    &.clickable
-      @extend .cursor-pointer
-</style>
+<style lang="sass" scoped></style>

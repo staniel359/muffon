@@ -10,13 +10,13 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 import {
   main as formatProfileLibraryArtistMainLink
-} from '*/helpers/formatters/links/profile/library/artist'
+} from '@/helpers/formatters/links/profile/library/artist'
 import {
   main as formatArtistMainLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'BaseArtistLinkContainer',

@@ -25,9 +25,9 @@
 
 <script>
 import BaseBookmarksPaginatedPageContainer
-  from '*/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
+  from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'TracksPage',

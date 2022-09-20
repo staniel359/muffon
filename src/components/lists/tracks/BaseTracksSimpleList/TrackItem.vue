@@ -58,8 +58,8 @@
 
 <script>
 import BaseTrackContainer
-  from '*/components/containers/track/BaseTrackContainer.vue'
-import BaseTrackContent from '*/components/models/track/BaseTrackContent.vue'
+  from '@/components/containers/track/BaseTrackContainer.vue'
+import BaseTrackContent from '@/components/models/track/BaseTrackContent.vue'
 
 export default {
   name: 'TrackItem',

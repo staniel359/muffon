@@ -12,7 +12,7 @@
 
 <script>
 import BaseArtistLinkContainer
-  from '*/components/containers/links/artist/BaseArtistLinkContainer.vue'
+  from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 
 export default {
   name: 'ArtistSection',

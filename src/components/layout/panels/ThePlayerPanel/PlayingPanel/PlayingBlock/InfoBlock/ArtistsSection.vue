@@ -11,8 +11,8 @@ import {
   mapState
 } from 'vuex'
 import BaseTickerContainer
-  from '*/components/containers/BaseTickerContainer.vue'
-import BaseArtistLinks from '*/components/links/BaseArtistLinks.vue'
+  from '@/components/containers/BaseTickerContainer.vue'
+import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
 
 export default {
   name: 'ArtistsSection',

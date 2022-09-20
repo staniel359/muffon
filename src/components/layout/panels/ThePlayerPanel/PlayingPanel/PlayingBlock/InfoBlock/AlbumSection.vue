@@ -19,9 +19,9 @@ import {
   mapState
 } from 'vuex'
 import BaseTickerContainer
-  from '*/components/containers/BaseTickerContainer.vue'
+  from '@/components/containers/BaseTickerContainer.vue'
 import BaseAlbumLinkContainer
-  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
+  from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 
 export default {
   name: 'AlbumSection',

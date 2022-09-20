@@ -1,6 +1,6 @@
 import {
   main as formatVideoChannelMainLink
-} from '*/helpers/formatters/links/videoChannel'
+} from '@/helpers/formatters/links/videoChannel'
 
 export default function (
   {

@@ -12,7 +12,7 @@ import {
 import {
   ipcRenderer
 } from 'electron'
-import updatePlaying from '*/helpers/actions/api/playing/update'
+import updatePlaying from '@/helpers/actions/api/playing/update'
 
 export default {
   name: 'ThePlayingObserver',

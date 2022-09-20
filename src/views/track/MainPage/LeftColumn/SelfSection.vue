@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseTrackOptionsDropdown
-  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
 
 export default {
   name: 'SelfSection',

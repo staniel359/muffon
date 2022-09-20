@@ -15,14 +15,14 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatProfileLibraryArtistPageNavigation
-  from '*/helpers/formatters/navigation/profile/library/artist'
+  from '@/helpers/formatters/navigation/profile/library/artist'
 import formatProfileLibraryArtistPageTab
-  from '*/helpers/formatters/tabs/profile/library/artist'
+  from '@/helpers/formatters/tabs/profile/library/artist'
 import getProfileLibraryArtist
-  from '*/helpers/actions/api/profile/library/artist/get'
+  from '@/helpers/actions/api/profile/library/artist/get'
 
 export default {
   name: 'BaseProfileLibraryArtistPageContainer',

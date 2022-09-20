@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseTagDescription from '*/components/models/tag/BaseTagDescription.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseTagDescription from '@/components/models/tag/BaseTagDescription.vue'
 
 export default {
   name: 'DescriptionSection',

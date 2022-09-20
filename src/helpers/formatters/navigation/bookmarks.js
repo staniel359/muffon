@@ -1,7 +1,7 @@
 import formatBookmarksSection
-  from '*/helpers/formatters/navigation/sections/bookmarks'
+  from '@/helpers/formatters/navigation/sections/bookmarks'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

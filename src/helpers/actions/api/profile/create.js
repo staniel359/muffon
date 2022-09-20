@@ -1,7 +1,7 @@
-import postRequest from '*/helpers/actions/api/request/post'
+import postRequest from '@/helpers/actions/api/request/post'
 import {
   handleError as handleFormError
-} from '*/helpers/actions/form'
+} from '@/helpers/actions/form'
 
 export default function (
   {

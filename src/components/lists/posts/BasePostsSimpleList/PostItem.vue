@@ -65,30 +65,30 @@
 
 <script>
 import {
-  mapState,
-  mapGetters
+  mapGetters,
+  mapState
 } from 'vuex'
-import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import BaseCommunityTitle
-  from '*/components/models/community/BaseCommunityTitle.vue'
+  from '@/components/models/community/BaseCommunityTitle.vue'
 import BaseProfileNickname
-  from '*/components/models/profile/BaseProfileNickname.vue'
-import BaseTimestamp from '*/components/BaseTimestamp.vue'
+  from '@/components/models/profile/BaseProfileNickname.vue'
+import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BaseSendableContentSection
-  from '*/components/models/sendable/BaseSendableContentSection.vue'
+  from '@/components/models/sendable/BaseSendableContentSection.vue'
 import BasePostOptionsDropdown
-  from '*/components/dropdowns/post/BasePostOptionsDropdown.vue'
+  from '@/components/dropdowns/post/BasePostOptionsDropdown.vue'
 import BasePostUpdateModal
-  from '*/components/modals/post/BasePostUpdateModal.vue'
+  from '@/components/modals/post/BasePostUpdateModal.vue'
 import BasePostDeleteModal
-  from '*/components/modals/post/BasePostDeleteModal.vue'
+  from '@/components/modals/post/BasePostDeleteModal.vue'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'PostItem',
@@ -125,16 +125,16 @@ export default {
     }
   },
   computed: {
-    ...mapState(
-      'profile',
-      {
-        profileInfo: 'info'
-      }
-    ),
     ...mapGetters(
       'profile',
       {
         currentProfileId: 'id'
+      }
+    ),
+    ...mapState(
+      'profile',
+      {
+        profileInfo: 'info'
       }
     ),
     imageData () {

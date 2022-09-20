@@ -25,8 +25,9 @@
 
         <BaseLabel
           v-if="isStaff"
-          class="small primary role-label"
+          class="primary circular small role-label"
           :text="roleText"
+          :is-invertable="false"
         />
       </div>
 
@@ -48,11 +49,12 @@
       </div>
     </div>
 
-    <small class="following-message">
-      <BaseProfileFollowingMessage
-        :other-profile-data="otherProfileData"
-      />
-    </small>
+    <BaseProfileFollowingMessage
+      v-if="otherProfileData"
+      class="following-message"
+      :other-profile-data="otherProfileData"
+      is-small
+    />
 
     <BaseProfileOptionsDropdown
       v-if="!isSelf"
@@ -65,28 +67,28 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseProfileOnlineLabel
-  from '*/components/models/profile/BaseProfileOnlineLabel.vue'
-import BaseLabel from '*/components/BaseLabel.vue'
+  from '@/components/models/profile/BaseProfileOnlineLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import BaseProfileGenderAge
-  from '*/components/models/profile/BaseProfileGenderAge.vue'
+  from '@/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
-  from '*/components/models/profile/BaseProfileCityCountry.vue'
+  from '@/components/models/profile/BaseProfileCityCountry.vue'
 import BaseProfileFollowCounters
-  from '*/components/models/profile/BaseProfileFollowCounters.vue'
+  from '@/components/models/profile/BaseProfileFollowCounters.vue'
 import BaseProfileFollowingMessage
-  from '*/components/models/profile/BaseProfileFollowingMessage.vue'
+  from '@/components/models/profile/BaseProfileFollowingMessage.vue'
 import BaseProfileOptionsDropdown
-  from '*/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
+  from '@/components/dropdowns/profile/BaseProfileOptionsDropdown.vue'
 import {
   main as formatProfileMainLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ProfileItem',
@@ -199,7 +201,7 @@ export default {
   margin-left: 0.5em !important
 
 .role-label
-  margin-left: 0.5em
+  margin-left: 1em
 
 .follow-counters
   @extend .d-flex
@@ -207,7 +209,7 @@ export default {
     margin-left: 0.5em
 
 .following-message
-  align-self: center
+  @extend .align-self-center
   margin-left: 0.5em
 
 .follow-button

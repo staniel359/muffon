@@ -14,13 +14,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatProfileFavoritesPageNavigation
-  from '*/helpers/formatters/navigation/profile/favorites'
+  from '@/helpers/formatters/navigation/profile/favorites'
 import formatProfileFavoritesPageTab
-  from '*/helpers/formatters/tabs/profile/favorites'
-import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
+  from '@/helpers/formatters/tabs/profile/favorites'
+import getProfileFavorites from '@/helpers/actions/api/profile/favorites/get'
 
 export default {
   name: 'BaseProfileFavoritesPageContainer',

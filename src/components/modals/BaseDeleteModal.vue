@@ -25,17 +25,18 @@
 
     <div class="actions">
       <BaseButton
-        class="basic cancel cancel-button"
+        class="basic cancel circular cancel-button"
         :text="cancelText"
       />
 
       <BaseButton
-        class="red"
+        class="red circular"
         icon="trash alternate outline"
         :text="deleteText"
         :class="{
           loading: isLoading
         }"
+        :is-invertable="false"
         @click="handleDeleteButtonClick"
       />
     </div>
@@ -44,10 +45,10 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import TextSection from './BaseDeleteModal/TextSection.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseDeleteModal',

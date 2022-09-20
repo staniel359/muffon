@@ -1,6 +1,7 @@
 <template>
-  <div
-    v-if="isMember"
+  <Component
+    :is="component"
+    v-if="isRender"
     class="main-joined-message-container"
   >
     <div class="main-joined-message">
@@ -12,11 +13,14 @@
         v-text="joinedText"
       />
     </div>
-  </div>
+  </Component>
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
+import {
+  mapGetters
+} from 'vuex'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseCommunityJoinedMessage',
@@ -27,9 +31,29 @@ export default {
     communityData: {
       type: Object,
       required: true
-    }
+    },
+    isSmall: Boolean
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
+    component () {
+      if (this.isSmall) {
+        return 'small'
+      } else {
+        return 'div'
+      }
+    },
+    isRender () {
+      return (
+        this.profileId &&
+          this.isMember
+      )
+    },
     isMember () {
       return this.communityData
         .profile

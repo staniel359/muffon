@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import getQueueTrack from '*/helpers/actions/queue/track/get'
+import getQueueTrack from '@/helpers/actions/queue/track/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'TheMediaKeysObserver',

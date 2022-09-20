@@ -12,7 +12,7 @@
 
 <script>
 import BaseListenedDeleteOption
-  from '*/components/dropdowns/options/listened/BaseListenedDeleteOption.vue'
+  from '@/components/dropdowns/options/listened/BaseListenedDeleteOption.vue'
 import AddOption from './ListenedOption/AddOption.vue'
 
 export default {

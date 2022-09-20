@@ -49,11 +49,11 @@ import {
   mapState
 } from 'vuex'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseViewChangeButtons
-  from '*/components/buttons/BaseViewChangeButtons.vue'
+  from '@/components/buttons/BaseViewChangeButtons.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 
 export default {
   name: 'BasePaginatedPageContainer',

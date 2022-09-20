@@ -21,12 +21,12 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseArtistsTableList
-  from '*/components/lists/artists/BaseArtistsTableList.vue'
+  from '@/components/lists/artists/BaseArtistsTableList.vue'
 import {
   artists as formatTopArtistsLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default {
   name: 'ArtistsSegment',

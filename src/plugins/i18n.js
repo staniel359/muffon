@@ -1,12 +1,12 @@
 import {
   createI18n
 } from 'vue-i18n'
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import {
   formatLocales
-} from '*/../shared/locales'
+} from '@/../shared/locales'
 import belarusianRussianPluralizationRule
-  from '*/helpers/data/plugins/i18n/rules/pluralization/beRu'
+  from '@/helpers/data/plugins/i18n/rules/pluralization/beRu'
 
 const locale =
   electronStore.get(
@@ -19,7 +19,7 @@ function importLocaleFile (
   }
 ) {
   return require(
-    `*/../shared/locales/${code}.json`
+    `@/../shared/locales/${code}.json`
   )
 }
 

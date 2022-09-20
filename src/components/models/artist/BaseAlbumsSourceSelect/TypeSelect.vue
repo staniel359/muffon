@@ -11,7 +11,7 @@
 
 <script>
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import TypesList from './TypeSelect/TypesList.vue'
 
 export default {

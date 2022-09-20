@@ -15,8 +15,8 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BackSegment',

@@ -21,12 +21,15 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import FollowOption from './BaseProfileOptionsDropdown/FollowOption.vue'
 import MessageOption from './BaseProfileOptionsDropdown/MessageOption.vue'
 import BaseProfileMessageModal
-  from '*/components/modals/profile/BaseProfileMessageModal.vue'
+  from '@/components/modals/profile/BaseProfileMessageModal.vue'
 
 export default {
   name: 'BaseProfileOptionsDropdown',
@@ -42,7 +45,19 @@ export default {
     isWithMessageOption: Boolean
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
+      return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
       return (
         this.isWithFollowOption ||
           this.isWithMessageOption

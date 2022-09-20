@@ -23,9 +23,9 @@
 
 <script>
 import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
+  from '@/components/containers/BaseHeaderContainer.vue'
 import BaseTrackLinkContainer
-  from '*/components/containers/links/track/BaseTrackLinkContainer.vue'
+  from '@/components/containers/links/track/BaseTrackLinkContainer.vue'
 
 export default {
   name: 'TitleSection',

@@ -10,7 +10,7 @@
 import {
   ipcRenderer
 } from 'electron'
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 
 export default {
   name: 'LogoutItem',

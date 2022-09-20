@@ -29,7 +29,7 @@
 <script>
 import {
   setCheckbox
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseCheckbox',

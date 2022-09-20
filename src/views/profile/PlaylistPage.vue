@@ -33,13 +33,13 @@
 
 <script>
 import BaseProfilePlaylistPageContainer
-  from '*/components/containers/pages/profile/playlist/BaseProfilePlaylistPageContainer.vue'
+  from '@/components/containers/pages/profile/playlist/BaseProfilePlaylistPageContainer.vue'
 import InfoSegment from './PlaylistPage/InfoSegment.vue'
 import ImportSegment from './PlaylistPage/ImportSegment.vue'
 import TracksSegment from './PlaylistPage/TracksSegment.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistPage',

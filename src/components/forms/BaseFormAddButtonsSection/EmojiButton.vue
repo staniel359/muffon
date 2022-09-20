@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="basic compact"
+    class="small basic circular add-button"
     icon="smile outline"
     @click.stop="handleClick"
   >
@@ -13,7 +13,7 @@
 
 <script>
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
 import EmojiPicker from './EmojiButton/EmojiPicker.vue'
 
 export default {

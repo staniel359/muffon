@@ -5,7 +5,7 @@
     :is-get-data="false"
   >
     <CompatibilitySegment
-      v-if="!isSelf"
+      v-if="isRenderCompatibility"
       :profile-id="profileId"
       :profile-nickname="profileNickname"
     />
@@ -21,17 +21,20 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseProfileSegmentContainer
-  from '*/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
+  from '@/components/containers/segments/profile/BaseProfileSegmentContainer.vue'
 import CompatibilitySegment from './LibrarySegment/CompatibilitySegment.vue'
 import StatisticsSegment from './LibrarySegment/StatisticsSegment.vue'
 import LibraryTabsSegment from './LibrarySegment/LibraryTabsSegment.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   main as formatProfileLibraryMainLink
-} from '*/helpers/formatters/links/profile/library'
+} from '@/helpers/formatters/links/profile/library'
 
 export default {
   name: 'LibrarySegment',
@@ -49,6 +52,12 @@ export default {
     profileNickname: String
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        currentProfileId: 'id'
+      }
+    ),
     isSelf () {
       return isCurrentProfile(
         this.profileId
@@ -59,6 +68,12 @@ export default {
         {
           profileId: this.profileId
         }
+      )
+    },
+    isRenderCompatibility () {
+      return (
+        this.currentProfileId &&
+          !this.isSelf
       )
     }
   }

@@ -36,15 +36,15 @@ import {
   mapState
 } from 'vuex'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import BaseTrackVariantContainer
-  from '*/components/containers/track/BaseTrackVariantContainer.vue'
-import BaseTrackContent from '*/components/models/track/BaseTrackContent.vue'
+  from '@/components/containers/track/BaseTrackVariantContainer.vue'
+import BaseTrackContent from '@/components/models/track/BaseTrackContent.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'VariantsList',

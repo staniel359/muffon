@@ -5,11 +5,7 @@
       'main-page-segment-container'
     ]"
   >
-    <BaseHeader
-      class="main-app-title"
-      tag="h1"
-      text="muffon"
-    />
+    <BaseLogoTitleSection />
 
     <BaseHeader
       class="welcome-message"
@@ -23,16 +19,18 @@
 import {
   mapState
 } from 'vuex'
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseLogoTitleSection from '@/components/BaseLogoTitleSection.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   home as formatHomePageNavigation
-} from '*/helpers/formatters/navigation'
-import formatHomePageTab from '*/helpers/formatters/tabs/home'
-import navigationMixin from '*/mixins/navigationMixin'
+} from '@/helpers/formatters/navigation'
+import formatHomePageTab from '@/helpers/formatters/tabs/home'
+import navigationMixin from '@/mixins/navigationMixin'
 
 export default {
   name: 'HomePage',
   components: {
+    BaseLogoTitleSection,
     BaseHeader
   },
   mixins: [
@@ -56,12 +54,23 @@ export default {
         'messages.welcome',
         {
           profileNickname:
-            this.profileNickname
+            this.profileNicknameConditional
         }
       )
     },
+    profileNicknameConditional () {
+      return (
+        this.profileNickname ||
+          this.anonymousNickname
+      )
+    },
     profileNickname () {
-      return this.profileInfo.nickname
+      return this.profileInfo?.nickname
+    },
+    anonymousNickname () {
+      return this.$t(
+        'anonymous.nickname'
+      )
     }
   },
   mounted () {

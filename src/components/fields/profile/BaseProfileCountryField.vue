@@ -9,7 +9,7 @@
 
 <script>
 import BaseCountriesDropdown
-  from '*/components/dropdowns/BaseCountriesDropdown.vue'
+  from '@/components/dropdowns/BaseCountriesDropdown.vue'
 
 export default {
   name: 'BaseProfileCountryField',

@@ -5,7 +5,7 @@
     "about": "About",
     "exit": "Exit",
     "update": {
-      "message": "Version {version} is available",
+      "message": "New version is available",
       "buttons": {
         "download": "Download",
         "close": "Close"
@@ -492,6 +492,10 @@
       "header": "Your password was updated",
       "content": "Now you may go back and login"
     }
+  },
+  "anonymous": {
+    "continue": "Continue anonymously",
+    "nickname": "Anonymous"
   },
   "roles": {
     "creator": "Creator"

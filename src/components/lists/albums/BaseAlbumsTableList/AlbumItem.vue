@@ -47,7 +47,7 @@
         :profile-id="profileId"
       />
 
-      <div
+      <small
         v-if="releaseDate"
         class="description"
         v-text="releaseDateFormatted"
@@ -84,23 +84,23 @@
 
 <script>
 import BaseSimpleCardContainer
-  from '*/components/containers/cards/BaseSimpleCardContainer.vue'
+  from '@/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseAlbumLinkContainer
-  from '*/components/containers/links/album/BaseAlbumLinkContainer.vue'
+  from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 import BaseAlbumOptionsDropdown
-  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
-  from '*/components/models/album/BaseAlbumArtistsSection.vue'
+  from '@/components/models/album/BaseAlbumArtistsSection.vue'
 import BaseAlbumListenersCount
-  from '*/components/models/album/BaseAlbumListenersCount.vue'
+  from '@/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
-import selfMixin from '*/mixins/selfMixin'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import selfMixin from '@/mixins/selfMixin'
 import {
   date as formatDate
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'AlbumItem',

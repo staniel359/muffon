@@ -1,209 +1,209 @@
 const RootPage = () => import(
-  '*/views/RootPage.vue'
+  '@/views/RootPage.vue'
 )
 const HomePage = () => import(
-  '*/views/HomePage.vue'
+  '@/views/HomePage.vue'
 )
 const FeedPage = () => import(
-  '*/views/FeedPage.vue'
+  '@/views/FeedPage.vue'
 )
 const ConversationsPage = () => import(
-  '*/views/conversations/MainPage.vue'
+  '@/views/conversations/MainPage.vue'
 )
 const ConversationPage = () => import(
-  '*/views/conversations/ConversationPage.vue'
+  '@/views/conversations/ConversationPage.vue'
 )
 const ArtistMainPage = () => import(
-  '*/views/artist/MainPage.vue'
+  '@/views/artist/MainPage.vue'
 )
 const ArtistImagesPage = () => import(
-  '*/views/artist/ImagesPage.vue'
+  '@/views/artist/ImagesPage.vue'
 )
 const ArtistTracksPage = () => import(
-  '*/views/artist/TracksPage.vue'
+  '@/views/artist/TracksPage.vue'
 )
 const ArtistAlbumsPage = () => import(
-  '*/views/artist/AlbumsPage.vue'
+  '@/views/artist/AlbumsPage.vue'
 )
 const ArtistSimilarPage = () => import(
-  '*/views/artist/SimilarPage.vue'
+  '@/views/artist/SimilarPage.vue'
 )
 const AlbumMainPage = () => import(
-  '*/views/album/MainPage.vue'
+  '@/views/album/MainPage.vue'
 )
 const TrackMainPage = () => import(
-  '*/views/track/MainPage.vue'
+  '@/views/track/MainPage.vue'
 )
 const TrackSimilarPage = () => import(
-  '*/views/track/SimilarPage.vue'
+  '@/views/track/SimilarPage.vue'
 )
 const TagMainPage = () => import(
-  '*/views/tag/MainPage.vue'
+  '@/views/tag/MainPage.vue'
 )
 const TagArtistsPage = () => import(
-  '*/views/tag/ArtistsPage.vue'
+  '@/views/tag/ArtistsPage.vue'
 )
 const TagAlbumsPage = () => import(
-  '*/views/tag/AlbumsPage.vue'
+  '@/views/tag/AlbumsPage.vue'
 )
 const TagTracksPage = () => import(
-  '*/views/tag/TracksPage.vue'
+  '@/views/tag/TracksPage.vue'
 )
 const VideoChannelMainPage = () => import(
-  '*/views/videoChannel/MainPage.vue'
+  '@/views/videoChannel/MainPage.vue'
 )
 const VideoChannelVideosPage = () => import(
-  '*/views/videoChannel/VideosPage.vue'
+  '@/views/videoChannel/VideosPage.vue'
 )
 const VideoMainPage = () => import(
-  '*/views/video/MainPage.vue'
+  '@/views/video/MainPage.vue'
 )
 const VideoRelatedPage = () => import(
-  '*/views/video/RelatedPage.vue'
+  '@/views/video/RelatedPage.vue'
 )
 const ProfilesPage = () => import(
-  '*/views/ProfilesPage.vue'
+  '@/views/ProfilesPage.vue'
 )
 const ProfileMainPage = () => import(
-  '*/views/profile/MainPage.vue'
+  '@/views/profile/MainPage.vue'
 )
 const ProfileLibraryMainPage = () => import(
-  '*/views/profile/library/MainPage.vue'
+  '@/views/profile/library/MainPage.vue'
 )
 const ProfileLibraryArtistsPage = () => import(
-  '*/views/profile/library/ArtistsPage.vue'
+  '@/views/profile/library/ArtistsPage.vue'
 )
 const ProfileLibraryArtistMainPage = () => import(
-  '*/views/profile/library/artist/MainPage.vue'
+  '@/views/profile/library/artist/MainPage.vue'
 )
 const ProfileLibraryArtistAlbumsPage = () => import(
-  '*/views/profile/library/artist/AlbumsPage.vue'
+  '@/views/profile/library/artist/AlbumsPage.vue'
 )
 const ProfileLibraryArtistTracksPage = () => import(
-  '*/views/profile/library/artist/TracksPage.vue'
+  '@/views/profile/library/artist/TracksPage.vue'
 )
 const ProfileLibraryArtistPlaylistsPage = () => import(
-  '*/views/profile/library/artist/PlaylistsPage.vue'
+  '@/views/profile/library/artist/PlaylistsPage.vue'
 )
 const ProfileLibraryAlbumsPage = () => import(
-  '*/views/profile/library/AlbumsPage.vue'
+  '@/views/profile/library/AlbumsPage.vue'
 )
 const ProfileLibraryAlbumMainPage = () => import(
-  '*/views/profile/library/album/MainPage.vue'
+  '@/views/profile/library/album/MainPage.vue'
 )
 const ProfileLibraryAlbumTracksPage = () => import(
-  '*/views/profile/library/album/TracksPage.vue'
+  '@/views/profile/library/album/TracksPage.vue'
 )
 const ProfileLibraryAlbumPlaylistsPage = () => import(
-  '*/views/profile/library/album/PlaylistsPage.vue'
+  '@/views/profile/library/album/PlaylistsPage.vue'
 )
 const ProfileLibraryTracksPage = () => import(
-  '*/views/profile/library/TracksPage.vue'
+  '@/views/profile/library/TracksPage.vue'
 )
 const ProfileLibraryTrackMainPage = () => import(
-  '*/views/profile/library/track/MainPage.vue'
+  '@/views/profile/library/track/MainPage.vue'
 )
 const ProfileLibraryTrackAlbumsPage = () => import(
-  '*/views/profile/library/track/AlbumsPage.vue'
+  '@/views/profile/library/track/AlbumsPage.vue'
 )
 const ProfileLibraryTrackPlaylistsPage = () => import(
-  '*/views/profile/library/track/PlaylistsPage.vue'
+  '@/views/profile/library/track/PlaylistsPage.vue'
 )
 const ProfileLibraryTagsPage = () => import(
-  '*/views/profile/library/TagsPage.vue'
+  '@/views/profile/library/TagsPage.vue'
 )
 const ProfileLibraryTagMainPage = () => import(
-  '*/views/profile/library/tag/MainPage.vue'
+  '@/views/profile/library/tag/MainPage.vue'
 )
 const ProfileLibraryTagArtistsPage = () => import(
-  '*/views/profile/library/tag/ArtistsPage.vue'
+  '@/views/profile/library/tag/ArtistsPage.vue'
 )
 const RecommendationsPage = () => import(
-  '*/views/RecommendationsPage.vue'
+  '@/views/RecommendationsPage.vue'
 )
 const BookmarksMainPage = () => import(
-  '*/views/bookmarks/MainPage.vue'
+  '@/views/bookmarks/MainPage.vue'
 )
 const BookmarksArtistsPage = () => import(
-  '*/views/bookmarks/ArtistsPage.vue'
+  '@/views/bookmarks/ArtistsPage.vue'
 )
 const BookmarksAlbumsPage = () => import(
-  '*/views/bookmarks/AlbumsPage.vue'
+  '@/views/bookmarks/AlbumsPage.vue'
 )
 const BookmarksTracksPage = () => import(
-  '*/views/bookmarks/TracksPage.vue'
+  '@/views/bookmarks/TracksPage.vue'
 )
 const ProfileFavoritesMainPage = () => import(
-  '*/views/profile/favorites/MainPage.vue'
+  '@/views/profile/favorites/MainPage.vue'
 )
 const ProfileFavoritesArtistsPage = () => import(
-  '*/views/profile/favorites/ArtistsPage.vue'
+  '@/views/profile/favorites/ArtistsPage.vue'
 )
 const ProfileFavoritesAlbumsPage = () => import(
-  '*/views/profile/favorites/AlbumsPage.vue'
+  '@/views/profile/favorites/AlbumsPage.vue'
 )
 const ProfileFavoritesTracksPage = () => import(
-  '*/views/profile/favorites/TracksPage.vue'
+  '@/views/profile/favorites/TracksPage.vue'
 )
 const TopMainPage = () => import(
-  '*/views/top/MainPage.vue'
+  '@/views/top/MainPage.vue'
 )
 const TopArtistsPage = () => import(
-  '*/views/top/ArtistsPage.vue'
+  '@/views/top/ArtistsPage.vue'
 )
 const TopAlbumsPage = () => import(
-  '*/views/top/AlbumsPage.vue'
+  '@/views/top/AlbumsPage.vue'
 )
 const TopTracksPage = () => import(
-  '*/views/top/TracksPage.vue'
+  '@/views/top/TracksPage.vue'
 )
 const TopTagsPage = () => import(
-  '*/views/top/TagsPage.vue'
+  '@/views/top/TagsPage.vue'
 )
 const ProfilePlaylistsPage = () => import(
-  '*/views/profile/PlaylistsPage.vue'
+  '@/views/profile/PlaylistsPage.vue'
 )
 const ProfilePlaylistPage = () => import(
-  '*/views/profile/PlaylistPage.vue'
+  '@/views/profile/PlaylistPage.vue'
 )
 const RadioPage = () => import(
-  '*/views/RadioPage.vue'
+  '@/views/RadioPage.vue'
 )
 const ProfilePostsPage = () => import(
-  '*/views/profile/PostsPage.vue'
+  '@/views/profile/PostsPage.vue'
 )
 const PlaylistsPage = () => import(
-  '*/views/PlaylistsPage.vue'
+  '@/views/PlaylistsPage.vue'
 )
 const ProfileCommunitiesPage = () => import(
-  '*/views/profile/CommunitiesPage.vue'
+  '@/views/profile/CommunitiesPage.vue'
 )
 const CommunitiesPage = () => import(
-  '*/views/CommunitiesPage.vue'
+  '@/views/CommunitiesPage.vue'
 )
 const CommunityMainPage = () => import(
-  '*/views/community/MainPage.vue'
+  '@/views/community/MainPage.vue'
 )
 const CommunityPostsPage = () => import(
-  '*/views/community/PostsPage.vue'
+  '@/views/community/PostsPage.vue'
 )
 const ReleasesMainPage = () => import(
-  '*/views/releases/MainPage.vue'
+  '@/views/releases/MainPage.vue'
 )
 const ReleasesNewPage = () => import(
-  '*/views/releases/NewPage.vue'
+  '@/views/releases/NewPage.vue'
 )
 const ReleasesUpcomingPage = () => import(
-  '*/views/releases/UpcomingPage.vue'
+  '@/views/releases/UpcomingPage.vue'
 )
 const MultitagPage = () => import(
-  '*/views/MultitagPage.vue'
+  '@/views/MultitagPage.vue'
 )
 const SavedTracksPage = () => import(
-  '*/views/SavedTracksPage.vue'
+  '@/views/SavedTracksPage.vue'
 )
 const AboutPage = () => import(
-  '*/views/AboutPage.vue'
+  '@/views/AboutPage.vue'
 )
 
 export default [

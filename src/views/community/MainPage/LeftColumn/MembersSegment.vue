@@ -22,14 +22,14 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCommunityMembersModal
-  from '*/components/modals/community/BaseCommunityMembersModal.vue'
+  from '@/components/modals/community/BaseCommunityMembersModal.vue'
 import BaseCommunityJoinedMessage
-  from '*/components/models/community/BaseCommunityJoinedMessage.vue'
+  from '@/components/models/community/BaseCommunityJoinedMessage.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'MembersSegment',

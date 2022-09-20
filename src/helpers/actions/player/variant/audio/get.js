@@ -1,9 +1,9 @@
-import store from '*/plugins/store'
-import getBandcampId from '*/helpers/actions/api/bandcampId/get'
-import getAudio from '*/helpers/actions/api/audio/get'
+import store from '@/plugins/store'
+import getBandcampId from '@/helpers/actions/api/bandcampId/get'
+import getAudio from '@/helpers/actions/api/audio/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default async function (
   {

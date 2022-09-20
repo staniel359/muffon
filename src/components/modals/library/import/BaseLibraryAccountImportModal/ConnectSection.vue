@@ -36,13 +36,13 @@
 </template>
 
 <script>
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import ImportButton from './ConnectSection/ImportButton.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
-import BaseMessage from '*/components/messages/BaseMessage.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import UserInfoSection from './ConnectSection/UserInfoSection.vue'
-import getLastfmUser from '*/helpers/actions/api/lastfm/user/get'
+import getLastfmUser from '@/helpers/actions/api/lastfm/user/get'
 
 export default {
   name: 'ConnectSection',

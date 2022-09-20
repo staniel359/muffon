@@ -43,13 +43,13 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import BasePlaylistUpdateFormContainer
-  from '*/components/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
-import BaseImageField from '*/components/fields/BaseImageField.vue'
-import BaseTitleField from '*/components/fields/BaseTitleField.vue'
-import BasePrivateField from '*/components/fields/BasePrivateField.vue'
-import BaseSubmitButton from '*/components/buttons/BaseSubmitButton.vue'
+  from '@/components/containers/forms/playlist/BasePlaylistUpdateFormContainer.vue'
+import BaseImageField from '@/components/fields/BaseImageField.vue'
+import BaseTitleField from '@/components/fields/BaseTitleField.vue'
+import BasePrivateField from '@/components/fields/BasePrivateField.vue'
+import BaseSubmitButton from '@/components/buttons/BaseSubmitButton.vue'
 
 export default {
   name: 'BasePlaylistUpdateModal',

@@ -31,14 +31,14 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ScopeSelect from './SearchSegment/selects/ScopeSelect.vue'
 import TopScopeSelect from './SearchSegment/selects/TopScopeSelect.vue'
 import TagScopeSelect from './SearchSegment/selects/TagScopeSelect.vue'
 import ArtistScopeSelect from './SearchSegment/selects/ArtistScopeSelect.vue'
 import TagsSearchInput from './SearchSegment/inputs/TagsSearchInput.vue'
 import ArtistsSearchInput from './SearchSegment/inputs/ArtistsSearchInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'SearchSegment',

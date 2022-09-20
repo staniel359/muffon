@@ -1,30 +1,22 @@
 <template>
-  <BaseSegmentContainer
-    class="basic images-section"
-  >
-    <BaseImagesTableList
-      size="original"
-      :images="backgroundImagesWithDefault"
-      is-with-clear-button
-      is-clickable
+  <div class="images-section">
+    <BaseBackgroundImagesTableList
+      :images="images"
     />
-  </BaseSegmentContainer>
+  </div>
 </template>
 
 <script>
 import {
   mapState
 } from 'vuex'
-import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseImagesTableList
-  from '*/components/lists/images/BaseImagesTableList.vue'
+import BaseBackgroundImagesTableList
+  from '@/components/lists/backgroundImages/BaseBackgroundImagesTableList.vue'
 
 export default {
   name: 'ImagesSection',
   components: {
-    BaseSegmentContainer,
-    BaseImagesTableList
+    BaseBackgroundImagesTableList
   },
   computed: {
     ...mapState(
@@ -33,7 +25,7 @@ export default {
         'backgroundImages'
       ]
     ),
-    backgroundImagesWithDefault () {
+    images () {
       return [
         this.defaultImageData,
         ...this.backgroundImages
@@ -47,7 +39,7 @@ export default {
     },
     defaultImage () {
       return require(
-        '*/assets/images/Background.jpg'
+        '@/assets/images/Background.jpg'
       )
     }
   }
@@ -56,5 +48,5 @@ export default {
 
 <style lang="sass" scoped>
 .images-section
-  @extend .no-padding
+  margin-top: 1em
 </style>

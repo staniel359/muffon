@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic"
+    class="basic circular"
     icon="plus"
     :text="createText"
     @click="handleButtonClick"
@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BasePlaylistCreateModal
-  from '*/components/modals/playlist/BasePlaylistCreateModal.vue'
+  from '@/components/modals/playlist/BasePlaylistCreateModal.vue'
 
 export default {
   name: 'BasePlaylistCreateButton',

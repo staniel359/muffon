@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import BaseDescription from '*/components/BaseDescription.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 import BaseVideoChannelDescriptionModal
-  from '*/components/modals/videoChannel/BaseVideoChannelDescriptionModal.vue'
+  from '@/components/modals/videoChannel/BaseVideoChannelDescriptionModal.vue'
 
 export default {
   name: 'BaseVideoChannelDescription',

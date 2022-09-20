@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getTop from '*/helpers/actions/api/top/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getTop from '@/helpers/actions/api/top/get'
 
 export default {
   name: 'BaseTopSegmentContainer',

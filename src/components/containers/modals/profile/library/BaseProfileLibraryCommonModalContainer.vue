@@ -18,10 +18,10 @@
 
 <script>
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import getLibraryCompatibility
-  from '*/helpers/actions/api/library/compatibility/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/helpers/actions/api/library/compatibility/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseProfileLibraryCommonModalContainer',

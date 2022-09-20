@@ -23,15 +23,15 @@
 
 <script>
 import BaseProfileFavoritesPaginatedSegmentContainer
-  from '*/components/containers/segments/profile/favorites/BaseProfileFavoritesPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/favorites/BaseProfileFavoritesPaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import {
   artists as formatProfileFavoriteArtistsLink
-} from '*/helpers/formatters/links/profile/favorites'
+} from '@/helpers/formatters/links/profile/favorites'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ArtistsSegment',

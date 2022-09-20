@@ -2,13 +2,14 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="basic red option-button"
+        class="red circular option-button"
         icon="trash alternate outline"
-        :text="clearText"
         :class="{
           loading: isLoading,
           disabled: isLoading
         }"
+        :text="clearText"
+        :is-invertable="false"
         @click="handleClick"
       />
     </div>
@@ -29,9 +30,9 @@
 </template>
 
 <script>
-import electronStore from '*/plugins/electronStore'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+import electronStore from '@/plugins/electronStore'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'ClearSearchHistoryOption',

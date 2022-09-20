@@ -1,18 +1,20 @@
 <template>
-  <ArtistsButton
-    :compatibility-data="compatibilityData"
-    :profile-id="profileId"
-  />
+  <div>
+    <ArtistsButton
+      :compatibility-data="compatibilityData"
+      :profile-id="profileId"
+    />
 
-  <AlbumsButton
-    :compatibility-data="compatibilityData"
-    :profile-id="profileId"
-  />
+    <AlbumsButton
+      :compatibility-data="compatibilityData"
+      :profile-id="profileId"
+    />
 
-  <TracksButton
-    :compatibility-data="compatibilityData"
-    :profile-id="profileId"
-  />
+    <TracksButton
+      :compatibility-data="compatibilityData"
+      :profile-id="profileId"
+    />
+  </div>
 </template>
 
 <script>

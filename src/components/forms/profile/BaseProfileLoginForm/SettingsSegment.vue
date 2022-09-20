@@ -10,9 +10,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLanguageDropdown
-  from '*/components/dropdowns/BaseLanguageDropdown.vue'
+  from '@/components/dropdowns/BaseLanguageDropdown.vue'
 import DarkModeBlock from './SettingsSegment/DarkModeBlock.vue'
 
 export default {

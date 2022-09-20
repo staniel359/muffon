@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseNoCollectionMessage
-  from '*/components/messages/BaseNoCollectionMessage.vue'
+  from '@/components/messages/BaseNoCollectionMessage.vue'
 
 export default {
   name: 'ContentContainer',

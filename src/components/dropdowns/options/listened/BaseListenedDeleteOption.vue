@@ -8,7 +8,7 @@
 
 <script>
 import BaseListenedOption from './BaseListenedOption.vue'
-import deleteListened from '*/helpers/actions/api/listened/model/delete'
+import deleteListened from '@/helpers/actions/api/listened/model/delete'
 
 export default {
   name: 'BaseListenedDeleteOption',

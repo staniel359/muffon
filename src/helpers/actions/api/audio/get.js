@@ -1,8 +1,8 @@
-import getRequest from '*/helpers/actions/api/request/get'
-import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
+import getRequest from '@/helpers/actions/api/request/get'
+import formatTrackRequestUrl from '@/helpers/formatters/request/track/url'
 import {
   setPlaying as setPlayerPlaying
-} from '*/helpers/actions/player'
+} from '@/helpers/actions/player'
 
 export default function (
   {

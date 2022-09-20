@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BaseLink from '*/components/links/BaseLink.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 
 export default {
   name: 'ContentBlock',

@@ -33,13 +33,13 @@
 
 <script>
 import BaseFeedPageContainer
-  from '*/components/containers/pages/feed/BaseFeedPageContainer.vue'
+  from '@/components/containers/pages/feed/BaseFeedPageContainer.vue'
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import GlobalToggle from './FeedPage/GlobalToggle.vue'
 import BasePostsSimpleList
-  from '*/components/lists/posts/BasePostsSimpleList.vue'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+  from '@/components/lists/posts/BasePostsSimpleList.vue'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'FeedPage',

@@ -1,4 +1,4 @@
-import patchRequest from '*/helpers/actions/api/request/patch'
+import patchRequest from '@/helpers/actions/api/request/patch'
 
 export default function (
   {

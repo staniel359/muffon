@@ -1,7 +1,7 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatTopMainLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default function (
   {

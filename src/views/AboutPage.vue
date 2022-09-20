@@ -28,12 +28,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import ImageSection from './AboutPage/ImageSection.vue'
 import NameSection from './AboutPage/NameSection.vue'
 import VersionSection from './AboutPage/VersionSection.vue'
 import CopyrightLicenseSection from './AboutPage/CopyrightLicenseSection.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import HomepageSection from './AboutPage/HomepageSection.vue'
 import DonateSection from './AboutPage/DonateSection.vue'
 

@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import ContentSection from './TheDonateModal/ContentSection.vue'
 import DeclineButton from './TheDonateModal/DeclineButton.vue'
 import AcceptButton from './TheDonateModal/AcceptButton.vue'

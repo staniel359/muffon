@@ -14,15 +14,15 @@ import {
   mapState
 } from 'vuex'
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   loginFormOptions
-} from '*/helpers/data/plugins/semantic'
-import createSession from '*/helpers/actions/api/session/create'
-import getProfile from '*/helpers/actions/api/profile/get'
+} from '@/helpers/data/plugins/semantic'
+import createSession from '@/helpers/actions/api/session/create'
+import getProfile from '@/helpers/actions/api/profile/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'BaseProfileLoginFormContainer',

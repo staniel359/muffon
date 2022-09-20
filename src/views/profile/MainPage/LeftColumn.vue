@@ -20,7 +20,7 @@
     />
 
     <OptionsSegment
-      v-if="!isSelf"
+      v-if="isRenderOptions"
       :profile-data="profileData"
     />
 
@@ -31,6 +31,9 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import InfoSegment from './LeftColumn/InfoSegment.vue'
 import ExtraInfoSegment from './LeftColumn/ExtraInfoSegment.vue'
 import FollowSegment from './LeftColumn/FollowSegment.vue'
@@ -38,7 +41,7 @@ import OptionsSegment from './LeftColumn/OptionsSegment.vue'
 import SinceSegment from './LeftColumn/SinceSegment.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'LeftColumn',
@@ -56,6 +59,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        currentProfileId: 'id'
+      }
+    ),
     isSelf () {
       return isCurrentProfile(
         this.profileId
@@ -63,6 +72,12 @@ export default {
     },
     profileId () {
       return this.profileData.id
+    },
+    isRenderOptions () {
+      return (
+        this.currentProfileId &&
+          !this.isSelf
+      )
     }
   }
 }

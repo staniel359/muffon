@@ -23,14 +23,14 @@
 
 <script>
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import ScopeSelect from './FilterSection/ScopeSelect.vue'
 import SearchBlock from './FilterSection/SearchBlock.vue'
 import CollectionList from './FilterSection/CollectionList.vue'
-import collectionMixin from '*/mixins/collectionMixin'
+import collectionMixin from '@/mixins/collectionMixin'
 import {
   isObjectChanged
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'FilterSection',

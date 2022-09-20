@@ -2,7 +2,7 @@
   <div class="folder-select-container">
     <div class="folder-select-input-container">
       <BaseButton
-        class="basic"
+        class="basic circular"
         icon="folder open"
         :class="{
           disabled: !isReset
@@ -29,11 +29,11 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'FolderSelectSection',

@@ -14,9 +14,9 @@
 
 <script>
 import BaseSegmentModalContainer
-  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
-import getTag from '*/helpers/actions/api/tag/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/containers/modals/BaseSegmentModalContainer.vue'
+import getTag from '@/helpers/actions/api/tag/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseTagModalContainer',

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseCheckbox from '*/components/BaseCheckbox.vue'
+import BaseCheckbox from '@/components/BaseCheckbox.vue'
 
 export default {
   name: 'BaseProfileRememberField',

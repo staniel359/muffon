@@ -1,8 +1,8 @@
-import store from '*/plugins/store'
-import patchRequest from '*/helpers/actions/api/request/patch'
+import store from '@/plugins/store'
+import patchRequest from '@/helpers/actions/api/request/patch'
 import {
   handleError as handleFormError
-} from '*/helpers/actions/form'
+} from '@/helpers/actions/form'
 
 export default function (
   {

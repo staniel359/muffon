@@ -1,13 +1,13 @@
 <template>
   <BaseButton
-    class="basic cancel decline-button"
+    class="basic circular cancel decline-button"
     :text="declineText"
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'DeclineButton',

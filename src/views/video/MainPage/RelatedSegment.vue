@@ -38,15 +38,15 @@
 
 <script>
 import BaseVideoSegmentContainer
-  from '*/components/containers/segments/video/BaseVideoSegmentContainer.vue'
+  from '@/components/containers/segments/video/BaseVideoSegmentContainer.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseVideosTableList
-  from '*/components/lists/videos/BaseVideosTableList.vue'
+  from '@/components/lists/videos/BaseVideosTableList.vue'
 import {
   related as formatVideoRelatedLink
-} from '*/helpers/formatters/links/video'
-import paginatedSegmentMixin from '*/mixins/paginatedSegmentMixin'
+} from '@/helpers/formatters/links/video'
+import paginatedSegmentMixin from '@/mixins/paginatedSegmentMixin'
 
 export default {
   name: 'RelatedSegment',

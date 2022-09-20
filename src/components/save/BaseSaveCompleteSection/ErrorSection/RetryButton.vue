@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic fluid retry-button"
+    class="basic circular fluid retry-button"
     icon="redo alternate"
     :text="retryText"
     @click="handleClick"
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'RetryButton',

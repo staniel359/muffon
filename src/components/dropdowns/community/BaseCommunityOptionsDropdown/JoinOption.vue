@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import BaseOption from '*/components/dropdowns/options/BaseOption.vue'
-import createMember from '*/helpers/actions/api/community/member/create'
-import deleteMember from '*/helpers/actions/api/community/member/delete'
+import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
+import createMember from '@/helpers/actions/api/community/member/create'
+import deleteMember from '@/helpers/actions/api/community/member/delete'
 
 export default {
   name: 'JoinOption',

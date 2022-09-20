@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import UploadButton from './BackgroundOption/UploadButton.vue'
 import ImagesSection from './BackgroundOption/ImagesSection.vue'
 

@@ -22,7 +22,7 @@
 <script>
 import SuccessMessage from './SuccessSection/SuccessMessage.vue'
 import TracksList from './SuccessSection/TracksList.vue'
-import BaseSaveButton from '*/components/buttons/BaseSaveButton.vue'
+import BaseSaveButton from '@/components/buttons/BaseSaveButton.vue'
 
 export default {
   name: 'SuccessSection',

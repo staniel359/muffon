@@ -15,11 +15,11 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileGenderAge
-  from '*/components/models/profile/BaseProfileGenderAge.vue'
+  from '@/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry
-  from '*/components/models/profile/BaseProfileCityCountry.vue'
+  from '@/components/models/profile/BaseProfileCityCountry.vue'
 
 export default {
   name: 'ExtraInfoSegment',

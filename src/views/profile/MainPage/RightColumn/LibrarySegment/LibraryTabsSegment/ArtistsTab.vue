@@ -28,12 +28,12 @@
 
 <script>
 import BaseProfileLibraryTabContainer
-  from '*/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
+  from '@/components/containers/tabs/profile/library/BaseProfileLibraryTabContainer.vue'
 import BaseArtistsTableList
-  from '*/components/lists/artists/BaseArtistsTableList.vue'
+  from '@/components/lists/artists/BaseArtistsTableList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ArtistsTab',

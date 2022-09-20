@@ -11,7 +11,7 @@ import {
 } from 'vuex'
 import {
   seconds as formatSeconds
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'TimerPanel',
@@ -47,6 +47,6 @@ export default {
 
 <style lang="sass" scoped>
 .player-timer
-  @extend .d-flex, .align-items-center, .cursor-default
+  @extend .cursor-default
   flex: 0.3
 </style>

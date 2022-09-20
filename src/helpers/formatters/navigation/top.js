@@ -1,7 +1,7 @@
 import formatTopSection
-  from '*/helpers/formatters/navigation/sections/top'
+  from '@/helpers/formatters/navigation/sections/top'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

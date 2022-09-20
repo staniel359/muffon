@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
+import BaseDropdownItem from '@/components/dropdowns/BaseDropdownItem.vue'
 
 export default {
   name: 'TypeItem',

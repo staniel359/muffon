@@ -23,12 +23,12 @@
 
 <script>
 import BaseArtistPaginatedSegmentContainer
-  from '*/components/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/artist/BaseArtistPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   albums as formatArtistAlbumsLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'AlbumsSegment',

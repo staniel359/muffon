@@ -25,10 +25,10 @@
 
 <script>
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import BaseNoCollectionMessage
-  from '*/components/messages/BaseNoCollectionMessage.vue'
-import audioSources from '*/helpers/data/audio/sources'
+  from '@/components/messages/BaseNoCollectionMessage.vue'
+import audioSources from '@/helpers/data/audio/sources'
 
 export default {
   name: 'TracksList',

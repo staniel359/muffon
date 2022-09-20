@@ -24,15 +24,15 @@
 
 <script>
 import BaseProfileFavoritesPaginatedSegmentContainer
-  from '*/components/containers/segments/profile/favorites/BaseProfileFavoritesPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/favorites/BaseProfileFavoritesPaginatedSegmentContainer.vue'
 import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 import {
   albums as formatProfileFavoriteAlbumsLink
-} from '*/helpers/formatters/links/profile/favorites'
+} from '@/helpers/formatters/links/profile/favorites'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'AlbumsSegment',

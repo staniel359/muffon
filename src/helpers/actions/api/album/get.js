@@ -1,5 +1,5 @@
-import getRequest from '*/helpers/actions/api/request/get'
-import formatAlbumRequestUrl from '*/helpers/formatters/request/album/url'
+import getRequest from '@/helpers/actions/api/request/get'
+import formatAlbumRequestUrl from '@/helpers/formatters/request/album/url'
 
 export default function (
   {

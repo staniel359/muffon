@@ -1,15 +1,9 @@
-const path = require(
-  'path'
-)
 const webpack = require(
   'webpack'
 )
 
 module.exports = {
   configureWebpack: {
-    externals: {
-      'react-native-fs': 'reactNativeFs'
-    },
     module: {
       rules: [
         {
@@ -26,14 +20,6 @@ module.exports = {
         }
       )
     ],
-    resolve: {
-      alias: {
-        '*': path.resolve(
-          __dirname,
-          './src'
-        )
-      }
-    },
     target: 'electron-renderer'
   },
   css: {
@@ -49,11 +35,7 @@ module.exports = {
   outputDir: 'build',
   pluginOptions: {
     i18n: {
-      locale: 'en',
-      fallbackLocale: 'en',
-      localeDir: 'locales',
-      enableLegacy: true,
-      fullInstall: false
+      enableLegacy: true
     }
   },
   publicPath: './'

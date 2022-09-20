@@ -22,9 +22,9 @@
 
 <script>
 import BaseTagPaginatedPageContainer
-  from '*/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
+  from '@/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 
 export default {
   name: 'AlbumsPage',

@@ -1,6 +1,6 @@
 import {
   main as formatTrackMainLink
-} from '*/helpers/formatters/links/track'
+} from '@/helpers/formatters/links/track'
 
 export default function (
   {

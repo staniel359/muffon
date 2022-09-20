@@ -23,12 +23,12 @@
 
 <script>
 import BaseTagPaginatedSegmentContainer
-  from '*/components/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/tag/BaseTagPaginatedSegmentContainer.vue'
 import BaseArtistsTableList
-  from '*/components/lists/artists/BaseArtistsTableList.vue'
+  from '@/components/lists/artists/BaseArtistsTableList.vue'
 import {
   artists as formatTagArtistsLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default {
   name: 'ArtistsSegment',

@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import BaseSidebarItem from '*/components/BaseSidebarItem.vue'
+import BaseSidebarItem from '@/components/BaseSidebarItem.vue'
 import {
   main as formatBookmarksMainLink
-} from '*/helpers/formatters/links/bookmarks'
+} from '@/helpers/formatters/links/bookmarks'
 
 export default {
   name: 'BookmarksItem',

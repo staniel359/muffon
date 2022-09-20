@@ -17,7 +17,7 @@ import {
   clearSliderPrevImages,
   refreshSlider,
   setSliderOptions
-} from '*/helpers/actions/plugins/slick'
+} from '@/helpers/actions/plugins/slick'
 
 export default {
   name: 'BaseImageModalSliderContainer',

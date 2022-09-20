@@ -1,12 +1,13 @@
 <template>
-  <BaseCounterLabels
-    class="counters-section"
-    :counters="counters"
-  />
+  <div class="main-labels-section">
+    <BaseCounterLabels
+      :counters="counters"
+    />
+  </div>
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
 
 export default {
   name: 'CountersSection',
@@ -52,7 +53,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.counters-section
-  margin-top: 0.5em
-</style>
+<style lang="sass" scoped></style>

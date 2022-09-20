@@ -33,7 +33,7 @@
 
 <script>
 import BaseProfileLibraryTagPageContainer
-  from '*/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPageContainer.vue'
+  from '@/components/containers/pages/profile/library/tag/BaseProfileLibraryTagPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'

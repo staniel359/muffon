@@ -10,7 +10,7 @@
 
 <script>
 import BaseReleasesPageContainer
-  from '*/components/containers/pages/releases/BaseReleasesPageContainer.vue'
+  from '@/components/containers/pages/releases/BaseReleasesPageContainer.vue'
 import NewSegment from './MainPage/NewSegment.vue'
 import UpcomingSegment from './MainPage/UpcomingSegment.vue'
 

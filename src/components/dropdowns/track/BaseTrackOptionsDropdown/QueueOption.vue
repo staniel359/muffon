@@ -15,16 +15,16 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'QueueOption',

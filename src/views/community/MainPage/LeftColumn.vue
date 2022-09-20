@@ -48,5 +48,5 @@ export default {
 
 <style lang="sass" scoped>
 .left-column
-  width: 175px
+  width: 180px
 </style>

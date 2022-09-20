@@ -1,7 +1,7 @@
-import getPlayerTrackAudio from '*/helpers/actions/player/track/audio/get'
+import getPlayerTrackAudio from '@/helpers/actions/player/track/audio/get'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default function (
   {

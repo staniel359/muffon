@@ -1,33 +1,47 @@
 <template>
-  <BaseTagsList
-    :tags="tags"
-    :is-more="isMore"
-    is-with-icon
-    @more-click="handleMoreClick"
-  />
+  <div
+    v-if="tags"
+  >
+    <BaseTagsSimpleList
+      :tags="tags"
+      :is-more="isMore"
+      is-with-icon
+      @more-click="handleMoreClick"
+    />
 
-  <BaseTrackTagsModal
-    v-if="isMore"
-    ref="modal"
-    :request-track-data="requestTrackData"
-  />
+    <BaseTrackTagsModal
+      v-if="isMore"
+      ref="modal"
+      :request-track-data="requestTrackData"
+    />
+  </div>
 </template>
 
 <script>
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseTrackTagsModal
-  from '*/components/modals/track/BaseTrackTagsModal.vue'
+  from '@/components/modals/track/BaseTrackTagsModal.vue'
 
 export default {
   name: 'BaseTrackTags',
   components: {
-    BaseTagsList,
+    BaseTagsSimpleList,
     BaseTrackTagsModal
   },
   props: {
-    tags: Array,
-    isMore: Boolean,
+    trackData: {
+      type: Object,
+      required: true
+    },
     requestTrackData: Object
+  },
+  computed: {
+    tags () {
+      return this.trackData.tags
+    },
+    isMore () {
+      return this.trackData.with_more?.tags
+    }
   },
   methods: {
     handleMoreClick () {

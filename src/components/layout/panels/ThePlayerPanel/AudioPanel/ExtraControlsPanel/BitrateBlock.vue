@@ -26,7 +26,7 @@ import {
 } from 'vuex'
 import axios from 'axios'
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 
 export default {
   name: 'BitrateBlock',

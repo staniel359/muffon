@@ -17,13 +17,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import formatArtistPageNavigation from '*/helpers/formatters/navigation/artist'
-import formatArtistPageTab from '*/helpers/formatters/tabs/artist'
-import formatRequestArtistData from '*/helpers/formatters/request/artist/data'
-import getArtist from '*/helpers/actions/api/artist/get'
-import getBandcampId from '*/helpers/actions/api/bandcampId/get'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
+import formatArtistPageNavigation from '@/helpers/formatters/navigation/artist'
+import formatArtistPageTab from '@/helpers/formatters/tabs/artist'
+import formatRequestArtistData from '@/helpers/formatters/request/artist/data'
+import getArtist from '@/helpers/actions/api/artist/get'
+import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseArtistPageContainer',

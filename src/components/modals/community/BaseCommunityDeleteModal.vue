@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteCommunity from '*/helpers/actions/api/community/delete'
+import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
+import deleteCommunity from '@/helpers/actions/api/community/delete'
 import {
   communities as formatCommunitiesLink
-} from '*/helpers/formatters/links'
+} from '@/helpers/formatters/links'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseCommunityDeleteModal',

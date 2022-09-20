@@ -31,17 +31,17 @@
 
 <script>
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
-import BaseImageField from '*/components/fields/BaseImageField.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
+import BaseImageField from '@/components/fields/BaseImageField.vue'
 import BaseProfileGenderField
-  from '*/components/fields/profile/BaseProfileGenderField.vue'
+  from '@/components/fields/profile/BaseProfileGenderField.vue'
 import BaseProfileBirthdateField
-  from '*/components/fields/profile/BaseProfileBirthdateField.vue'
+  from '@/components/fields/profile/BaseProfileBirthdateField.vue'
 import BaseProfileCountryField
-  from '*/components/fields/profile/BaseProfileCountryField.vue'
+  from '@/components/fields/profile/BaseProfileCountryField.vue'
 import BaseProfileCityField
-  from '*/components/fields/profile/BaseProfileCityField.vue'
-import BasePrivateField from '*/components/fields/BasePrivateField.vue'
+  from '@/components/fields/profile/BaseProfileCityField.vue'
+import BasePrivateField from '@/components/fields/BasePrivateField.vue'
 
 export default {
   name: 'ExtraSection',

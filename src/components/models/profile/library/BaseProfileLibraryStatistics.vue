@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import BaseStatistics from '*/components/BaseStatistics.vue'
+import BaseStatistics from '@/components/BaseStatistics.vue'
 
 export default {
   name: 'BaseProfileLibraryStatistics',

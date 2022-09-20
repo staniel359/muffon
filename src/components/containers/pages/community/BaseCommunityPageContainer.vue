@@ -19,12 +19,12 @@ import {
   mapGetters
 } from 'vuex'
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatCommunityPageNavigation
-  from '*/helpers/formatters/navigation/community'
-import formatCommunityPageTab from '*/helpers/formatters/tabs/community'
-import getCommunity from '*/helpers/actions/api/community/get'
+  from '@/helpers/formatters/navigation/community'
+import formatCommunityPageTab from '@/helpers/formatters/tabs/community'
+import getCommunity from '@/helpers/actions/api/community/get'
 
 export default {
   name: 'BaseCommunityPageContainer',

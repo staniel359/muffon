@@ -1,9 +1,6 @@
 <template>
   <BaseLabel
-    :class="[
-      'top attached right icon',
-      'variants-label'
-    ]"
+    class="basic top attached variants-label"
     :icon="icon"
     :text="variantsText"
     is-reverse
@@ -14,7 +11,7 @@
 import {
   mapGetters
 } from 'vuex'
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 
 export default {
   name: 'VariantsLabel',

@@ -28,11 +28,11 @@ import HeaderSection from './TheQueuePanel/HeaderSection.vue'
 import TracksSection from './TheQueuePanel/TracksSection.vue'
 import {
   mainSidebarOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   setQueuePanel,
   hideQueuePanel
-} from '*/helpers/actions/layout'
+} from '@/helpers/actions/layout'
 
 export default {
   name: 'TheQueuePanel',
@@ -95,7 +95,7 @@ export default {
 
 <style lang="sass" scoped>
 .the-queue-panel
-  width: 330px !important
+  width: 320px !important
 
 .main-segment-container
   @extend .d-flex, .h-100

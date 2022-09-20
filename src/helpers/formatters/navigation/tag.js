@@ -1,9 +1,9 @@
 import formatTagsSection
-  from '*/helpers/formatters/navigation/sections/tags'
+  from '@/helpers/formatters/navigation/sections/tags'
 import formatTagSection
-  from '*/helpers/formatters/navigation/sections/tag'
+  from '@/helpers/formatters/navigation/sections/tag'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

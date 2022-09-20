@@ -14,13 +14,13 @@
 
 <script>
 import BaseProfileEmailField
-  from '*/components/fields/profile/BaseProfileEmailField.vue'
+  from '@/components/fields/profile/BaseProfileEmailField.vue'
 import BaseProfilePasswordField
-  from '*/components/fields/profile/BaseProfilePasswordField.vue'
+  from '@/components/fields/profile/BaseProfilePasswordField.vue'
 import BaseProfilePasswordConfirmationField
-  from '*/components/fields/profile/BaseProfilePasswordConfirmationField.vue'
+  from '@/components/fields/profile/BaseProfilePasswordConfirmationField.vue'
 import BaseProfileNicknameField
-  from '*/components/fields/profile/BaseProfileNicknameField.vue'
+  from '@/components/fields/profile/BaseProfileNicknameField.vue'
 
 export default {
   name: 'MainSection',

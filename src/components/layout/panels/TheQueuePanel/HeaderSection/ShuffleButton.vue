@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="tiny compact shuffle-button"
+    class="small circular"
     icon="random"
     :class="{
       basic: !isQueueShuffle
@@ -13,13 +13,13 @@
 import {
   mapState
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   shuffleArray
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'ShuffleButton',
@@ -55,7 +55,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.shuffle-button
-  margin-right: 1em !important
-</style>
+<style lang="sass" scoped></style>

@@ -20,12 +20,12 @@
 
 <script>
 import BaseBookmarksPaginatedSegmentContainer
-  from '*/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import {
   artists as formatBookmarkArtistsLink
-} from '*/helpers/formatters/links/bookmarks'
+} from '@/helpers/formatters/links/bookmarks'
 
 export default {
   name: 'ArtistsSegment',

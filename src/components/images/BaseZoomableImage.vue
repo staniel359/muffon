@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseImageModal from '*/components/modals/BaseImageModal.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseImageModal from '@/components/modals/BaseImageModal.vue'
 
 export default {
   name: 'BaseZoomableImage',

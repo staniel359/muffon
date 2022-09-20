@@ -37,15 +37,15 @@
 import {
   mapGetters
 } from 'vuex'
-import BaseDivider from '*/components/BaseDivider.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseRecommendationArtistsModal
-  from '*/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
+  from '@/components/modals/recommendation/BaseRecommendationArtistsModal.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'ArtistsSection',

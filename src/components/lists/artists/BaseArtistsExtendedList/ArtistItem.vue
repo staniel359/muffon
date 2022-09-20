@@ -71,13 +71,18 @@
                 :is-link-to-library="isLinkToLibrary"
               />
 
-              <BaseCounterLabels
-                :counters="counters"
-              />
+              <div>
+                <div class="main-labels-section">
+                  <BaseCounterLabels
+                    :counters="counters"
+                  />
+                </div>
 
-              <BaseArtistTags
-                :artist-data="responseData"
-              />
+                <BaseArtistTags
+                  class="main-labels-section"
+                  :artist-data="responseData"
+                />
+              </div>
 
               <template v-if="description">
                 <BaseDivider />
@@ -102,23 +107,23 @@
 
 <script>
 import BaseArtistContainer
-  from '*/components/containers/artist/BaseArtistContainer.vue'
+  from '@/components/containers/artist/BaseArtistContainer.vue'
 import BaseArtistHorizontalCardContainer
-  from '*/components/containers/artist/BaseArtistHorizontalCardContainer.vue'
-import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+  from '@/components/containers/artist/BaseArtistHorizontalCardContainer.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsDropdown
-  from '*/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
+  from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
-import BaseArtistTags from '*/components/models/artist/BaseArtistTags.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
-  from '*/components/models/artist/BaseArtistDescription.vue'
+  from '@/components/models/artist/BaseArtistDescription.vue'
 import RecommendationSection from './ArtistItem/RecommendationSection.vue'
-import selfMixin from '*/mixins/selfMixin'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',

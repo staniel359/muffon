@@ -18,12 +18,12 @@
 
 <script>
 import BaseVideoChannelPaginatedSegmentContainer
-  from '*/components/containers/segments/videoChannel/BaseVideoChannelPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/videoChannel/BaseVideoChannelPaginatedSegmentContainer.vue'
 import BaseVideosTableList
-  from '*/components/lists/videos/BaseVideosTableList.vue'
+  from '@/components/lists/videos/BaseVideosTableList.vue'
 import {
   videos as formatVideoChannelVideosLink
-} from '*/helpers/formatters/links/videoChannel'
+} from '@/helpers/formatters/links/videoChannel'
 
 export default {
   name: 'VideosSegment',

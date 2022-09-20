@@ -11,13 +11,12 @@
       <BaseLinkContainer
         :link="tagMainLink"
       >
-        <BaseHeaderContainer
+        <BaseHeader
           class="link tag-header"
           tag="h3"
           icon="tag"
-        >
-          {{ tagName }}
-        </BaseHeaderContainer>
+          :text="tagName"
+        />
       </BaseLinkContainer>
     </BaseSegmentContainer>
   </div>
@@ -25,21 +24,20 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseHeaderContainer
-  from '*/components/containers/BaseHeaderContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatTagMainLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default {
   name: 'InfoSegment',
   components: {
     BaseSegmentContainer,
     BaseLinkContainer,
-    BaseHeaderContainer
+    BaseHeader
   },
   props: {
     tagData: {

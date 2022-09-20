@@ -1,27 +1,32 @@
 <template>
-  <BaseTagsList
-    :tags="tags"
-    :is-more="isMore"
-    is-with-icon
-    @more-click="handleMoreClick"
-  />
+  <div
+    v-if="tags"
+    class="main-labels-section"
+  >
+    <BaseTagsSimpleList
+      :tags="tags"
+      :is-more="isMore"
+      is-with-icon
+      @more-click="handleMoreClick"
+    />
 
-  <BaseVideoTagsModal
-    v-if="isMore"
-    ref="modal"
-    :video-id="videoId"
-  />
+    <BaseVideoTagsModal
+      v-if="isMore"
+      ref="modal"
+      :video-id="videoId"
+    />
+  </div>
 </template>
 
 <script>
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseVideoTagsModal
-  from '*/components/modals/video/BaseVideoTagsModal.vue'
+  from '@/components/modals/video/BaseVideoTagsModal.vue'
 
 export default {
   name: 'TagsSection',
   components: {
-    BaseTagsList,
+    BaseTagsSimpleList,
     BaseVideoTagsModal
   },
   props: {

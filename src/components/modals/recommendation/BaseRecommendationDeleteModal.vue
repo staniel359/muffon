@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteRecommendation from '*/helpers/actions/api/recommendation/delete'
+import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
+import deleteRecommendation from '@/helpers/actions/api/recommendation/delete'
 
 export default {
   name: 'BaseRecommendationDeleteModal',

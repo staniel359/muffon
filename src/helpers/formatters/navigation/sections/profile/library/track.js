@@ -1,6 +1,6 @@
 import {
   main as formatProfileLibraryTrackMainLink
-} from '*/helpers/formatters/links/profile/library/track'
+} from '@/helpers/formatters/links/profile/library/track'
 
 export default function (
   {

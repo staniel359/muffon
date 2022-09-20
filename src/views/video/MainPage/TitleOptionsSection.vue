@@ -21,16 +21,16 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import BaseVideoOptionsDropdown
-  from '*/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
 import {
   main as formatVideoChannelMainLink
-} from '*/helpers/formatters/links/videoChannel'
+} from '@/helpers/formatters/links/videoChannel'
 import {
   video as formatVideoShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'TitleOptionsSection',

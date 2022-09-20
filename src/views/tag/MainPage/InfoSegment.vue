@@ -35,7 +35,7 @@
 <script>
 import CoverSegment from './InfoSegment/CoverSegment.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import HeaderSection from './InfoSegment/HeaderSection.vue'
 import CountersSection from './InfoSegment/CountersSection.vue'
 import SimilarSection from './InfoSegment/SimilarSection.vue'

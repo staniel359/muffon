@@ -9,7 +9,7 @@
 
 <script>
 import BaseVideosSimpleList
-  from '*/components/lists/videos/BaseVideosSimpleList.vue'
+  from '@/components/lists/videos/BaseVideosSimpleList.vue'
 
 export default {
   name: 'VideosSection',

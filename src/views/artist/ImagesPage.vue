@@ -20,10 +20,10 @@
 
 <script>
 import BaseArtistPaginatedPageContainer
-  from '*/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
+  from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import ImagesList from './ImagesPage/ImagesList.vue'
 import BaseArtistImageModal
-  from '*/components/modals/artist/BaseArtistImageModal.vue'
+  from '@/components/modals/artist/BaseArtistImageModal.vue'
 
 export default {
   name: 'ImagesPage',

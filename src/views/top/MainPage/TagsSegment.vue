@@ -5,7 +5,7 @@
     :header-link="headerLink"
   >
     <template #default="slotProps">
-      <BaseTagsList
+      <BaseTagsSimpleList
         :tags="slotProps[scope]"
       />
     </template>
@@ -14,17 +14,17 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+  from '@/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import {
   tags as formatTopTagsLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default {
   name: 'TagsSegment',
   components: {
     BaseTopPaginatedSegmentContainer,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   data () {
     return {

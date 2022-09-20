@@ -19,11 +19,11 @@
 
 <script>
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 import BaseArtistsTableList
-  from '*/components/lists/artists/BaseArtistsTableList.vue'
+  from '@/components/lists/artists/BaseArtistsTableList.vue'
 import BaseArtistsExtendedList
-  from '*/components/lists/artists/BaseArtistsExtendedList.vue'
+  from '@/components/lists/artists/BaseArtistsExtendedList.vue'
 
 export default {
   name: 'BaseArtistsList',

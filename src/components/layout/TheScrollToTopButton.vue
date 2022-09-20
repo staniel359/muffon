@@ -29,8 +29,8 @@ import {
   mapState
 } from 'vuex'
 import BaseTransitionContainer
-  from '*/components/containers/BaseTransitionContainer.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+  from '@/components/containers/BaseTransitionContainer.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'TheScrollToTopButton',

@@ -8,10 +8,10 @@
 import {
   mapState
 } from 'vuex'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'CloseButton',

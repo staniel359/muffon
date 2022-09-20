@@ -11,7 +11,7 @@
 import SourceItem from './SourcesList/SourceItem.vue'
 import {
   allWithAlbumsCollection as getSourcesWithAlbumsCollection
-} from '*/helpers/formatters/sources'
+} from '@/helpers/formatters/sources'
 
 export default {
   name: 'SourcesList',

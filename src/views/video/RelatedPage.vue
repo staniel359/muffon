@@ -27,12 +27,12 @@
 
 <script>
 import BaseVideoPageContainer
-  from '*/components/containers/pages/video/BaseVideoPageContainer.vue'
+  from '@/components/containers/pages/video/BaseVideoPageContainer.vue'
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import BaseVideosTableList
-  from '*/components/lists/videos/BaseVideosTableList.vue'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+  from '@/components/lists/videos/BaseVideosTableList.vue'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'RelatedPage',

@@ -12,14 +12,14 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import {
   mapState
 } from 'vuex'
-import BaseOption from '*/components/dropdowns/options/BaseOption.vue'
+import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'SaveOption',

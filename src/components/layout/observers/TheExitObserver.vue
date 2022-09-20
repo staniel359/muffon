@@ -8,12 +8,12 @@
 import {
   ipcRenderer
 } from 'electron'
-import electronStore from '*/plugins/electronStore'
+import electronStore from '@/plugins/electronStore'
 import {
   mapState,
   mapGetters
 } from 'vuex'
-import updateOnline from '*/helpers/actions/api/online/update'
+import updateOnline from '@/helpers/actions/api/online/update'
 
 export default {
   name: 'TheExitObserver',

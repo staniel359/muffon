@@ -1,10 +1,10 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatBookmarksMainLink,
   artists as formatBookmarksArtistsLink,
   albums as formatBookmarksAlbumsLink,
   tracks as formatBookmarksTracksLink
-} from '*/helpers/formatters/links/bookmarks'
+} from '@/helpers/formatters/links/bookmarks'
 
 export default function (
   {

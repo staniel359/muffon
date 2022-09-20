@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import BaseDescription from '*/components/BaseDescription.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 import BaseTagDescriptionModal
-  from '*/components/modals/tag/BaseTagDescriptionModal.vue'
+  from '@/components/modals/tag/BaseTagDescriptionModal.vue'
 
 export default {
   name: 'BaseTagDescription',

@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getProfileFavorites from '*/helpers/actions/api/profile/favorites/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getProfileFavorites from '@/helpers/actions/api/profile/favorites/get'
 
 export default {
   name: 'BaseProfileFavoritesSegmentContainer',

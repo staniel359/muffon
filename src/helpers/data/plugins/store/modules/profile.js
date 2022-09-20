@@ -6,7 +6,8 @@ export default {
     isRemember: false,
     language: 'en',
     isShowPlaying: false,
-    timezone: 'UTC'
+    timezone: 'UTC',
+    isAnonymous: false
   },
   getters: {
     id (
@@ -51,6 +52,12 @@ export default {
       value
     ) {
       state.timezone = value
+    },
+    SET_IS_ANONYMOUS (
+      state,
+      value
+    ) {
+      state.isAnonymous = value
     }
   },
   actions: {
@@ -117,6 +124,17 @@ export default {
     ) {
       commit(
         'SET_TIMEZONE',
+        value
+      )
+    },
+    setIsAnonymous (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_ANONYMOUS',
         value
       )
     }

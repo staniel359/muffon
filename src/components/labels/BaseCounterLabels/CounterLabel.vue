@@ -1,15 +1,16 @@
 <template>
   <BaseLabel
+    class="basic circular large"
     :icon="iconFormatted"
     :text="countFormatted"
   />
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'CounterLabel',
@@ -51,7 +52,9 @@ export default {
       )
     },
     count () {
-      return this.counterData.count || 0
+      return (
+        this.counterData.count || 0
+      )
     }
   }
 }

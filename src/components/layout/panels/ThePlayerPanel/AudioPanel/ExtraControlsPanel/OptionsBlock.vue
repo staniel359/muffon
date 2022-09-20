@@ -21,8 +21,8 @@ import {
   mapState
 } from 'vuex'
 import BaseTrackOptionsDropdown
-  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import selfMixin from '*/mixins/selfMixin'
+  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'OptionsBlock',

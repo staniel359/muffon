@@ -25,11 +25,11 @@
 
 <script>
 import BaseTransitionContainer
-  from '*/components/containers/BaseTransitionContainer.vue'
+  from '@/components/containers/BaseTransitionContainer.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 
 export default {
   name: 'InfoSegment',

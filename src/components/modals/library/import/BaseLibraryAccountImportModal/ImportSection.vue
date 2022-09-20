@@ -22,15 +22,15 @@
 </template>
 
 <script>
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseProgress from '*/components/BaseProgress.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import BaseProgress from '@/components/BaseProgress.vue'
 import BaseImportCompleteSection
-  from '*/components/import/BaseImportCompleteSection.vue'
-import getLastfmUserPlays from '*/helpers/actions/api/lastfm/user/plays/get'
+  from '@/components/import/BaseImportCompleteSection.vue'
+import getLastfmUserPlays from '@/helpers/actions/api/lastfm/user/plays/get'
 import {
   playsToTracks as formatPlaysToTracks
-} from '*/helpers/formatters'
-import collectionMixin from '*/mixins/collectionMixin'
+} from '@/helpers/formatters'
+import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'ImportSection',

@@ -16,7 +16,7 @@ import {
   mapState
 } from 'vuex'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 
 export default {
   name: 'BaseLabelLinkContainer',

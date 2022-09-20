@@ -12,7 +12,7 @@
 
 <script>
 import BaseBookmarksPageContainer
-  from '*/components/containers/pages/bookmarks/BaseBookmarksPageContainer.vue'
+  from '@/components/containers/pages/bookmarks/BaseBookmarksPageContainer.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
 import AlbumsSegment from './MainPage/AlbumsSegment.vue'
 import TracksSegment from './MainPage/TracksSegment.vue'

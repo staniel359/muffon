@@ -33,15 +33,15 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import PlayingSection from './PlayerSegment/PlayingSection.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
 import NextButton from './PlayerSegment/NextButton.vue'
-import getRadio from '*/helpers/actions/api/radio/get'
+import getRadio from '@/helpers/actions/api/radio/get'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'PlayerSegment',

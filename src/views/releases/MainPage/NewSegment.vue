@@ -24,12 +24,12 @@
 
 <script>
 import BaseReleasesPaginatedSegmentContainer
-  from '*/components/containers/segments/releases/BaseReleasesPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/releases/BaseReleasesPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   newReleases as formatReleasesNewLink
-} from '*/helpers/formatters/links/releases'
+} from '@/helpers/formatters/links/releases'
 
 export default {
   name: 'NewSegment',

@@ -40,19 +40,22 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseArtistOptionsDropdown/LibraryOption.vue'
 import FavoriteOption from './BaseArtistOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseArtistOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseArtistOptionsDropdown/ListenedOption.vue'
 import BaseShareOption
-  from '*/components/dropdowns/options/BaseShareOption.vue'
+  from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
-  from '*/components/dropdowns/options/BaseDeleteOption.vue'
+  from '@/components/dropdowns/options/BaseDeleteOption.vue'
 import {
   artist as formatArtistShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'BaseArtistOptionsDropdown',
@@ -86,7 +89,19 @@ export default {
     'deleteOptionClick'
   ],
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
+      return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
       return (
         this.isWithLibraryOption ||
           this.isWithFavoriteOption ||

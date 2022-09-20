@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'TagsInput',
@@ -30,7 +30,7 @@ export default {
   computed: {
     url () {
       return (
-        '/lastfm/search/tags' +
+        'lastfm/search/tags' +
         '?query={query}&limit=5'
       )
     },

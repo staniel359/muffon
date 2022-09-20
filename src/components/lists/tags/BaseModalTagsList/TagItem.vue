@@ -1,25 +1,22 @@
 <template>
-  <BaseLabelLinkContainer
-    :link="tagMainLink"
-  >
-    <span
-      class="link"
-      v-text="tagName"
-    />
-  </BaseLabelLinkContainer>
+  <BaseLabel
+    class="primary circular large"
+    :text="tagName"
+    :link="link"
+    :is-invertable="false"
+  />
 </template>
 
 <script>
-import BaseLabelLinkContainer
-  from '*/components/containers/links/BaseLabelLinkContainer.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import {
   main as formatTagMainLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default {
   name: 'TagItem',
   components: {
-    BaseLabelLinkContainer
+    BaseLabel
   },
   props: {
     tagData: {
@@ -28,7 +25,7 @@ export default {
     }
   },
   computed: {
-    tagMainLink () {
+    link () {
       return formatTagMainLink(
         {
           tagName: this.tagName

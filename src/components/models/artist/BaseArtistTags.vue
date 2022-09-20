@@ -1,7 +1,8 @@
 <template>
-  <template v-if="tags">
-    <BaseTagsList
-      v-bind="$attrs"
+  <div
+    v-if="tags"
+  >
+    <BaseTagsSimpleList
       :tags="tags"
       :is-more="isMore"
       is-with-icon
@@ -13,18 +14,18 @@
       ref="modal"
       :artist-name="artistName"
     />
-  </template>
+  </div>
 </template>
 
 <script>
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import BaseArtistTagsModal
-  from '*/components/modals/artist/BaseArtistTagsModal.vue'
+  from '@/components/modals/artist/BaseArtistTagsModal.vue'
 
 export default {
   name: 'BaseArtistTags',
   components: {
-    BaseTagsList,
+    BaseTagsSimpleList,
     BaseArtistTagsModal
   },
   props: {

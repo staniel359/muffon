@@ -21,7 +21,7 @@ import {
 import data from '@emoji-mart/data'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'EmojiPicker',

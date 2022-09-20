@@ -17,11 +17,11 @@
 
 <script>
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseSegmentModalContainer
-  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
-import getArtist from '*/helpers/actions/api/artist/get'
-import modalMixin from '*/mixins/modalMixin'
+  from '@/components/containers/modals/BaseSegmentModalContainer.vue'
+import getArtist from '@/helpers/actions/api/artist/get'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseArtistModalContainer',

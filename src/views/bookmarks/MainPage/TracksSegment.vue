@@ -26,12 +26,12 @@
 
 <script>
 import BaseBookmarksPaginatedSegmentContainer
-  from '*/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/bookmarks/BaseBookmarksPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   tracks as formatBookmarkTracksLink
-} from '*/helpers/formatters/links/bookmarks'
+} from '@/helpers/formatters/links/bookmarks'
 
 export default {
   name: 'TracksSegment',

@@ -1,6 +1,6 @@
 <template>
   <BaseButton
-    class="basic"
+    class="basic circular"
     :class="{
       disabled: !isAudioPlayable
     }"
@@ -14,7 +14,7 @@ import {
   mapState,
   mapGetters
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'PlayButton',

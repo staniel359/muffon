@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="wasOnline"
-    class="main-profile-page-info"
+    class="main-profile-page-info was-online-section"
   >
     <small
       v-text="wasOnlineText"
@@ -21,7 +21,7 @@
 import {
   date as formatDate,
   time as formatTime
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'WasOnlineSection',
@@ -62,4 +62,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.was-online-section
+  margin-top: 0.5em
+</style>

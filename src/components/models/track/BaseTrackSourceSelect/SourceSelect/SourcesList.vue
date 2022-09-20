@@ -32,7 +32,7 @@ import SourceItem from './SourcesList/SourceItem.vue'
 import {
   streamableCollection as getStreamableSourcesCollection,
   otherWithTracksCollection as getOtherSourcesWithTracksCollection
-} from '*/helpers/formatters/sources'
+} from '@/helpers/formatters/sources'
 
 export default {
   name: 'SourcesList',

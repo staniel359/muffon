@@ -1,13 +1,13 @@
 import formatArtistsSection
-  from '*/helpers/formatters/navigation/sections/artists'
+  from '@/helpers/formatters/navigation/sections/artists'
 import formatArtistSection
-  from '*/helpers/formatters/navigation/sections/artist'
+  from '@/helpers/formatters/navigation/sections/artist'
 import formatArtistAlbumsSection
-  from '*/helpers/formatters/navigation/sections/artist/albums'
+  from '@/helpers/formatters/navigation/sections/artist/albums'
 import formatAlbumSection
-  from '*/helpers/formatters/navigation/sections/album'
+  from '@/helpers/formatters/navigation/sections/album'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

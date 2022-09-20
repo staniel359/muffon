@@ -81,8 +81,9 @@
       :is-with-bookmark-icon="isWithBookmarkIcon"
     />
 
-    <DurationBlock
+    <BaseDurationBlock
       v-if="isRenderDuration"
+      class="description track-duration"
       :duration="duration"
     />
 
@@ -167,36 +168,36 @@
 </template>
 
 <script>
-import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
 import BaseTrackAudioIcon
-  from '*/components/models/track/BaseTrackAudioIcon.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+  from '@/components/models/track/BaseTrackAudioIcon.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import IndexBlock from './BaseTrackContent/IndexBlock.vue'
 import TitleSection from './BaseTrackContent/TitleSection.vue'
 import ArtistsSection from './BaseTrackContent/ArtistsSection.vue'
 import AlbumSection from './BaseTrackContent/AlbumSection.vue'
 import ListenersCountSection
   from './BaseTrackContent/ListenersCountSection.vue'
-import DurationBlock from './BaseTrackContent/DurationBlock.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseSourceIcon from '*/components/BaseSourceIcon.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+import BaseDurationBlock from '@/components/BaseDurationBlock.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
 import BaseTrackOptionsDropdown
-  from '*/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/track/BaseTrackOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseBookmarkDeleteModal
-  from '*/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
+  from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
-  from '*/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+  from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
 import BasePlaylistTrackDeleteModal
-  from '*/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
+  from '@/components/modals/playlist/track/BasePlaylistTrackDeleteModal.vue'
 import BaseSavedTrackDeleteModal
-  from '*/components/modals/saved_tracks/BaseSavedTrackDeleteModal.vue'
+  from '@/components/modals/saved_tracks/BaseSavedTrackDeleteModal.vue'
 import BaseLibraryDeleteModal
-  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
-import selfMixin from '*/mixins/selfMixin'
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'BaseTrackContent',
@@ -210,7 +211,7 @@ export default {
     ArtistsSection,
     AlbumSection,
     ListenersCountSection,
-    DurationBlock,
+    BaseDurationBlock,
     BaseIcon,
     BaseSourceIcon,
     BaseSelfIcons,
@@ -339,12 +340,11 @@ export default {
     isRenderDuration () {
       return (
         this.isWithDuration &&
-          this.duration &&
-            this.duration !== '00:00'
+          this.duration
       )
     },
     duration () {
-      return this.trackData.duration
+      return this.trackData.duration_seconds
     },
     isRenderSource () {
       return (
@@ -476,4 +476,7 @@ export default {
 
 .track-source-icon
   margin-left: 0.5em !important
+
+.track-duration
+  margin-left: 0.5em
 </style>

@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import BaseHistoryInput from '*/components/inputs/BaseHistoryInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseHistoryInput from '@/components/inputs/BaseHistoryInput.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'SearchInput',

@@ -26,10 +26,10 @@ import {
 } from 'vuex'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   decrypt as decryptFile
-} from '*/helpers/actions/file'
+} from '@/helpers/actions/file'
 
 export default {
   name: 'AudioElement',

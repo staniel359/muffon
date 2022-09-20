@@ -1,13 +1,17 @@
 <template>
   <BaseOptionsDropdownContainer>
-    <BasePlaylistOption
-      @click="handlePlaylistOptionClick"
-    />
+    <template
+      v-if="profileId"
+    >
+      <BasePlaylistOption
+        @click="handlePlaylistOptionClick"
+      />
 
-    <BasePlaylistsModal
-      ref="playlistsModal"
-      :tracks="queueTracksComputed"
-    />
+      <BasePlaylistsModal
+        ref="playlistsModal"
+        :tracks="queueTracksComputed"
+      />
+    </template>
 
     <ClearOption />
   </BaseOptionsDropdownContainer>
@@ -18,11 +22,11 @@ import {
   mapGetters
 } from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BasePlaylistOption
-  from '*/components/dropdowns/options/BasePlaylistOption.vue'
+  from '@/components/dropdowns/options/BasePlaylistOption.vue'
 import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
+  from '@/components/modals/playlists/BasePlaylistsModal.vue'
 import ClearOption from './BaseQueueOptionsDropdown/ClearOption.vue'
 
 export default {
@@ -34,6 +38,12 @@ export default {
     ClearOption
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     ...mapGetters(
       'queue',
       {

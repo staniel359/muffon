@@ -9,12 +9,12 @@ import {
   mapState
 } from 'vuex'
 import createScrobblerPlay
-  from '*/helpers/actions/api/lastfm/scrobbler/play/create'
+  from '@/helpers/actions/api/lastfm/scrobbler/play/create'
 import createScrobblerSave
-  from '*/helpers/actions/api/lastfm/scrobbler/save/create'
+  from '@/helpers/actions/api/lastfm/scrobbler/save/create'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'TheScrobblingObserver',

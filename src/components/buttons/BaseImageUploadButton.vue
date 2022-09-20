@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="basic compact"
+    class="basic circular"
     icon="image"
     :text="uploadText"
     @click="handleClick"
@@ -14,8 +14,8 @@
 
 <script>
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
-import BaseImageInput from '*/components/inputs/BaseImageInput.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
+import BaseImageInput from '@/components/inputs/BaseImageInput.vue'
 
 export default {
   name: 'BaseImageUploadButton',

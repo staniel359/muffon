@@ -13,8 +13,9 @@
       :track-id="trackId"
     />
 
-    <DurationSection
-      v-if="isRenderDuration"
+    <BaseDurationBlock
+      v-if="duration"
+      class="track-section track-duration"
       :duration="duration"
     />
 
@@ -30,7 +31,7 @@ import {
 } from 'vuex'
 import PlayButtonSection from './BaseTrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './BaseTrackPlayerPanel/VisualizerSection.vue'
-import DurationSection from './BaseTrackPlayerPanel/DurationSection.vue'
+import BaseDurationBlock from '@/components/BaseDurationBlock.vue'
 import AudioIconSection from './BaseTrackPlayerPanel/AudioIconSection.vue'
 
 export default {
@@ -38,7 +39,7 @@ export default {
   components: {
     PlayButtonSection,
     VisualizerSection,
-    DurationSection,
+    BaseDurationBlock,
     AudioIconSection
   },
   props: {
@@ -54,14 +55,8 @@ export default {
     trackId () {
       return this.trackData.player_id
     },
-    isRenderDuration () {
-      return (
-        this.duration &&
-          this.duration !== '00:00'
-      )
-    },
     duration () {
-      return this.trackData.duration
+      return this.trackData.duration_seconds
     },
     isAudioPresent () {
       return !!this.trackData.audio?.present
@@ -79,4 +74,8 @@ export default {
   &.inverted
     ::v-deep(.track-section)
       border-left: $borderInverted !important
+
+.track-duration
+  @extend .d-flex, .align-items-center
+  padding: 0 1em
 </style>

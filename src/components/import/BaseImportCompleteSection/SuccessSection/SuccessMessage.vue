@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import BaseMessage from '*/components/messages/BaseMessage.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'SuccessMessage',

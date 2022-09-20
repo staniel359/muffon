@@ -18,7 +18,7 @@
 import VideoItem from './BaseVideosTableList/VideoItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseVideosTableList',

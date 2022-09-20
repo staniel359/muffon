@@ -1,10 +1,10 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatProfileFavoritesMainLink,
   artists as formatProfileFavoritesArtistsLink,
   albums as formatProfileFavoritesAlbumsLink,
   tracks as formatProfileFavoritesTracksLink
-} from '*/helpers/formatters/links/profile/favorites'
+} from '@/helpers/formatters/links/profile/favorites'
 
 export default function (
   {

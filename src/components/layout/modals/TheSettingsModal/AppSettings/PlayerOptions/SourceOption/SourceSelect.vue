@@ -14,12 +14,12 @@ import {
   mapState
 } from 'vuex'
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import BasePlayerSourcesList
-  from '*/components/lists/player/BasePlayerSourcesList.vue'
+  from '@/components/lists/player/BasePlayerSourcesList.vue'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'SourceSelect',

@@ -1,9 +1,9 @@
 import formatConversationsSection
-  from '*/helpers/formatters/navigation/sections/conversations'
+  from '@/helpers/formatters/navigation/sections/conversations'
 import formatConversationSection
-  from '*/helpers/formatters/navigation/sections/conversation'
+  from '@/helpers/formatters/navigation/sections/conversation'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

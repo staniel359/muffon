@@ -16,7 +16,7 @@
 <script>
 import ArtistsInput from './SearchBlock/ArtistsInput.vue'
 import TagsInput from './SearchBlock/TagsInput.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'SearchBlock',

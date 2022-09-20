@@ -6,34 +6,36 @@
       :image-data="imageData"
     />
 
-    <div class="left-column-extra">
-      <HeaderSection
-        :album-data="albumData"
-        :scrollable="scrollable"
-      />
+    <HeaderSection
+      :album-data="albumData"
+      :scrollable="scrollable"
+    />
 
-      <SelfSection
-        :album-data="albumData"
-        :library-id="libraryId"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :listened-id="listenedId"
-      />
+    <SelfSection
+      v-if="profileId"
+      :album-data="albumData"
+      :library-id="libraryId"
+      :favorite-id="favoriteId"
+      :bookmark-id="bookmarkId"
+      :listened-id="listenedId"
+    />
 
-      <ListenersSection
-        :album-data="albumData"
-        :request-album-data="requestAlbumData"
-      />
-    </div>
+    <ListenersSection
+      :album-data="albumData"
+      :request-album-data="requestAlbumData"
+    />
   </div>
 </template>
 
 <script>
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
+import {
+  mapGetters
+} from 'vuex'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import HeaderSection from './LeftColumn/HeaderSection.vue'
 import SelfSection from './LeftColumn/SelfSection.vue'
 import ListenersSection from './LeftColumn/ListenersSection.vue'
-import selfMixin from '*/mixins/selfMixin'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'LeftColumn',
@@ -55,6 +57,12 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     modelData () {
       return this.albumData
     },
@@ -76,7 +84,4 @@ export default {
 <style lang="sass" scoped>
 .album-page-left-column
   width: 190px
-
-.left-column-extra
-  margin-top: 0.5em
 </style>

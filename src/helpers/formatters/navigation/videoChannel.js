@@ -1,9 +1,9 @@
 import formatVideoChannelsSection
-  from '*/helpers/formatters/navigation/sections/videoChannels'
+  from '@/helpers/formatters/navigation/sections/videoChannels'
 import formatVideoChannelSection
-  from '*/helpers/formatters/navigation/sections/videoChannel'
+  from '@/helpers/formatters/navigation/sections/videoChannel'
 import formatSubpageSection
-  from '*/helpers/formatters/navigation/sections/subpage'
+  from '@/helpers/formatters/navigation/sections/subpage'
 
 export default function (
   {

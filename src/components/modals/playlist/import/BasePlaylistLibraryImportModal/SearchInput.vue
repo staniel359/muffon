@@ -11,9 +11,10 @@
 
 <script>
 import {
-  mapGetters
+  mapGetters,
+  mapState
 } from 'vuex'
-import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'SearchInput',
@@ -44,12 +45,19 @@ export default {
         profileId: 'id'
       }
     ),
+    ...mapState(
+      'profile',
+      {
+        profileToken: 'token'
+      }
+    ),
     url () {
       return (
-        `/profiles/${this.profileId}` +
+        `profiles/${this.profileId}` +
         '/library/search/tracks' +
         '?query={query}&limit=5' +
-        `&playlist_id=${this.playlistId}`
+        `&playlist_id=${this.playlistId}` +
+        `&token=${this.profileToken}`
       )
     },
     fields () {

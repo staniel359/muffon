@@ -1,10 +1,10 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatProfileMainLink,
   posts as formatProfilePostsLink,
   playlists as formatProfilePlaylistsLink,
   communities as formatProfileCommunitiesLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 
 export default function (
   {

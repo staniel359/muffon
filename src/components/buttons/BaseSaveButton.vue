@@ -1,14 +1,15 @@
 <template>
   <BaseButton
-    class="fluid primary main-save-button"
+    class="primary circular fluid main-save-button"
     icon="check"
     :text="saveText"
+    :is-invertable="false"
     @click="handleClick"
   />
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'BaseSaveButton',

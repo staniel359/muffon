@@ -75,30 +75,30 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseDeletedBlock from '*/components/BaseDeletedBlock.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BasePrivateSection from '*/components/BasePrivateSection.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BasePrivateSection from '@/components/BasePrivateSection.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import BasePlaylistOptionsDropdown
-  from '*/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+  from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BasePlaylistDeleteModal
-  from '*/components/modals/playlist/BasePlaylistDeleteModal.vue'
+  from '@/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   main as formatProfileMainLink,
   playlist as formatProfilePlaylistLink
-} from '*/helpers/formatters/links/profile'
+} from '@/helpers/formatters/links/profile'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   playlist as formatPlaylistShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'PlaylistItem',

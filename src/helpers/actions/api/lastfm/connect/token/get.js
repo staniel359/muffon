@@ -1,4 +1,4 @@
-import getRequest from '*/helpers/actions/api/request/get'
+import getRequest from '@/helpers/actions/api/request/get'
 
 export default function () {
   const url = '/lastfm/connect/token'

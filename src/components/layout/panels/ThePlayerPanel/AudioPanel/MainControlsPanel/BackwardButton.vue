@@ -7,7 +7,7 @@
 
 <script>
 import BaseQueueDirectionButtonContainer
-  from '*/components/containers/BaseQueueDirectionButtonContainer.vue'
+  from '@/components/containers/BaseQueueDirectionButtonContainer.vue'
 
 export default {
   name: 'BackwardButton',

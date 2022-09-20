@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteProfilePost from '*/helpers/actions/api/profile/post/delete'
-import deleteCommunityPost from '*/helpers/actions/api/community/post/delete'
+import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
+import deleteProfilePost from '@/helpers/actions/api/profile/post/delete'
+import deleteCommunityPost from '@/helpers/actions/api/community/post/delete'
 
 export default {
   name: 'BasePostDeleteModal',

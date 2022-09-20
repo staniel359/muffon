@@ -15,12 +15,15 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import BaseEditOption
-  from '*/components/dropdowns/options/BaseEditOption.vue'
+  from '@/components/dropdowns/options/BaseEditOption.vue'
 import BaseDeleteOption
-  from '*/components/dropdowns/options/BaseDeleteOption.vue'
+  from '@/components/dropdowns/options/BaseDeleteOption.vue'
 
 export default {
   name: 'BasePostOptionsDropdown',
@@ -38,7 +41,19 @@ export default {
     'deleteOptionClick'
   ],
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
+      return (
+        this.profileId &&
+          this.isWithProfileOptions
+      )
+    },
+    isWithProfileOptions () {
       return (
         this.isWithEditOption ||
           this.isWithDeleteOption

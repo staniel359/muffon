@@ -16,9 +16,11 @@
         <BaseSegmentContainer
           class="top-segment"
         >
-          <BasePlaylistCreateButton
-            v-if="isSelf"
-          />
+          <div>
+            <BasePlaylistCreateButton
+              v-if="isSelf"
+            />
+          </div>
 
           <BaseLink
             :link="playlistsLink"
@@ -51,23 +53,23 @@
 
 <script>
 import BaseProfilePageContainer
-  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '@/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BasePlaylistCreateButton
-  from '*/components/buttons/playlist/BasePlaylistCreateButton.vue'
-import BaseLink from '*/components/links/BaseLink.vue'
+  from '@/components/buttons/playlist/BasePlaylistCreateButton.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BasePlaylistsSimpleList
-  from '*/components/lists/playlists/BasePlaylistsSimpleList.vue'
+  from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import {
   playlists as formatPlaylistsLink
-} from '*/helpers/formatters/links'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+} from '@/helpers/formatters/links'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'PlaylistsPage',

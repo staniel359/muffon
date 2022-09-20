@@ -1,7 +1,16 @@
 <template>
-  <div class="main-tabs-container">
+  <div
+    class="main-tabs-container"
+    :class="{
+      vertical: isVertical
+    }"
+  >
     <BaseTabs
-      v-bind="$attrs"
+      :class="{
+        pointing: isPointing,
+        [columnWidthFormatted]: isFluid,
+        vertical: isVertical
+      }"
       :tabs="tabs"
       :active-tab-index="activeTabIndex"
       @tab-click="handleTabClick"
@@ -22,7 +31,10 @@
 </template>
 
 <script>
-import BaseTabs from '*/components/BaseTabs.vue'
+import BaseTabs from '@/components/BaseTabs.vue'
+import {
+  numberToColumnWidth
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseTabsContainer',
@@ -35,7 +47,13 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    isPointing: {
+      type: Boolean,
+      default: true
+    },
+    isFluid: Boolean,
+    isVertical: Boolean
   },
   emits: [
     'tabClick'
@@ -43,6 +61,19 @@ export default {
   data () {
     return {
       activeTabIndex: 0
+    }
+  },
+  computed: {
+    columnWidthFormatted () {
+      return `${this.columnWidth} item`
+    },
+    columnWidth () {
+      return numberToColumnWidth(
+        this.tabsCount
+      )
+    },
+    tabsCount () {
+      return this.tabs.length
     }
   },
   methods: {

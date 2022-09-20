@@ -1,5 +1,7 @@
 <template>
-  <BaseListContainer class="divided">
+  <BaseListContainer
+    class="divided"
+  >
     <PostItem
       v-for="postData in posts"
       :key="postData.uuid"
@@ -12,7 +14,7 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import PostItem from './BasePostsSimpleList/PostItem.vue'
 
 export default {

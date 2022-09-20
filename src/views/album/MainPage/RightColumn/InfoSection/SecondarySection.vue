@@ -1,58 +1,53 @@
 <template>
-  <BaseCounterLabels
-    :counters="counters"
-  />
+  <div>
+    <div class="main-labels-section">
+      <BaseCounterLabels
+        :counters="counters"
+      />
+    </div>
 
-  <BaseDateLabel
-    v-if="releaseDate"
-    :date="releaseDate"
-  />
+    <div
+      v-if="releaseDate"
+      class="main-labels-section"
+    >
+      <BaseDateLabel
+        :date="releaseDate"
+      />
+    </div>
 
-  <div
-    v-if="labels"
-    class="ui labels large"
-  >
-    <BaseLabel
-      v-for="(label, index) in labels"
-      :key="index"
-      :text="label"
+    <BaseAlbumLabels
+      class="main-labels-section"
+      :album-data="albumData"
+    />
+
+    <BaseAlbumTags
+      class="main-labels-section"
+      :album-data="albumData"
+      :request-album-data="requestAlbumData"
     />
   </div>
 
-  <BaseAlbumTags
-    :tags="tags"
+  <BaseAlbumDescription
+    :album-data="albumData"
     :request-album-data="requestAlbumData"
-    :is-more="isMoreTags"
   />
-
-  <template v-if="description">
-    <BaseDivider />
-
-    <BaseAlbumDescription
-      :description="description"
-      :request-album-data="requestAlbumData"
-      :is-more="isMoreDescription"
-    />
-  </template>
 </template>
 
 <script>
-import BaseCounterLabels from '*/components/labels/BaseCounterLabels.vue'
-import BaseDateLabel from '*/components/labels/BaseDateLabel.vue'
-import BaseLabel from '*/components/BaseLabel.vue'
-import BaseAlbumTags from '*/components/models/album/BaseAlbumTags.vue'
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
+import BaseAlbumLabels from '@/components/models/album/BaseAlbumLabels.vue'
+import BaseAlbumTags from '@/components/models/album/BaseAlbumTags.vue'
 import BaseAlbumDescription
-  from '*/components/models/album/BaseAlbumDescription.vue'
+  from '@/components/models/album/BaseAlbumDescription.vue'
 
 export default {
   name: 'SecondarySection',
   components: {
     BaseCounterLabels,
     BaseDateLabel,
-    BaseLabel,
+    BaseAlbumLabels,
     BaseAlbumTags,
-    BaseDivider,
     BaseAlbumDescription
   },
   props: {
@@ -65,9 +60,6 @@ export default {
   computed: {
     releaseDate () {
       return this.albumData.release_date
-    },
-    labels () {
-      return this.albumData.labels
     },
     counters () {
       return [
@@ -86,18 +78,6 @@ export default {
     },
     playsCount () {
       return this.albumData.plays_count
-    },
-    tags () {
-      return this.albumData.tags
-    },
-    isMoreTags () {
-      return this.albumData.with_more?.tags
-    },
-    description () {
-      return this.albumData.description
-    },
-    isMoreDescription () {
-      return this.albumData.with_more?.description
     }
   }
 }

@@ -10,15 +10,15 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   postFormOptions
-} from '*/helpers/data/plugins/semantic'
-import updateProfilePost from '*/helpers/actions/api/profile/post/update'
-import updateCommunityPost from '*/helpers/actions/api/community/post/update'
+} from '@/helpers/data/plugins/semantic'
+import updateProfilePost from '@/helpers/actions/api/profile/post/update'
+import updateCommunityPost from '@/helpers/actions/api/community/post/update'
 import {
   decryptTextWithLinks
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePostUpdateFormContainer',

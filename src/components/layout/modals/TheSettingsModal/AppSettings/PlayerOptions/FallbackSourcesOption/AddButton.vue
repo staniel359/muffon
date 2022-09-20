@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     v-if="isRender"
-    class="basic compact add-button"
+    class="basic circular compact add-button"
     icon="plus"
     :text="addText"
     @click="handleClick"
@@ -12,13 +12,13 @@
 import {
   mapState
 } from 'vuex'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import {
   streamable as getStreamableSources
-} from '*/helpers/formatters/sources'
+} from '@/helpers/formatters/sources'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'AddButton',

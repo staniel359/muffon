@@ -57,6 +57,8 @@ export default {
     'profile/setInfo',
   'profile.token':
     'profile/setToken',
+  'profile.isAnonymous':
+    'profile/setIsAnonymous',
   'profile.isRemember':
     'profile/setIsRemember',
   'profile.isShowPlaying':

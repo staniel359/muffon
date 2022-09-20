@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 
 export default {
   name: 'ImageSection',

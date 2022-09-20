@@ -13,8 +13,8 @@
 export default {
   name: 'TabItem',
   props: {
-    tabName: {
-      type: String,
+    tabData: {
+      type: Object,
       required: true
     },
     index: {
@@ -35,6 +35,20 @@ export default {
         this.index ===
           this.activeTabIndex
       )
+    },
+    tabName () {
+      return (
+        this.tabData.name ||
+          this.tabNameFormatted
+      )
+    },
+    tabNameFormatted () {
+      return this.$t(
+        this.tabNameCode
+      )
+    },
+    tabNameCode () {
+      return this.tabData.nameCode
     }
   },
   methods: {

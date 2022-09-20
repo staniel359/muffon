@@ -1,5 +1,6 @@
 <template>
   <BaseImageUploadButton
+    class="small add-button"
     :is-with-text="false"
     @change="handleUploadChange"
   />
@@ -7,7 +8,7 @@
 
 <script>
 import BaseImageUploadButton
-  from '*/components/buttons/BaseImageUploadButton.vue'
+  from '@/components/buttons/BaseImageUploadButton.vue'
 
 export default {
   name: 'ImagesButton',

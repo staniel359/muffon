@@ -48,8 +48,6 @@ p
   @extend .no-padding
 
 .ui.modal
-  &.main-modal
-    width: 500px
   &.main-image-modal
     @extend .background-transparent
   &.inverted
@@ -180,9 +178,9 @@ p
           @extend .text-color-white
 
 .ui.label
-  &.main-filter-item-label
-    &.circular
-      padding: 0.5em 1em !important
+  &.circular
+    &.with-text
+      padding: 0.6em 1.1em !important
 
 .ui.toast
   &.inverted
@@ -302,14 +300,14 @@ p
     @extend .absolute, .w-100, .h-100
 
 .main-link
-  @extend .cursor-pointer
+  @extend .text-color-unset, .cursor-pointer
   &:hover
     @extend .text-color-base
-  &:not(.label)
-    @extend .text-color-unset
 
 .main-link-container
-  @extend .text-color-unset, .cursor-pointer
+  @extend .cursor-pointer
+  &:not(.main-label, .main-sidebar-item)
+    @extend .text-color-unset
   &:hover
     .link
       @extend .text-color-base
@@ -482,18 +480,14 @@ p
     height: 20px
 
 .main-settings-options-block
-  @extend .relative
-  margin-bottom: 1em
-  & > .divider
-    &.horizontal
-      margin: 1.5em 0
+  padding: 1em !important
   .option
     @extend .d-flex, .align-items-center
     &:not(:first-child)
       margin-top: 1.5em
     .option-header
       @extend .flex-full
-      margin-right: 1em !important
+      margin-right: 1.5em !important
       .option-button
         max-width: 200px
     .option-text
@@ -546,7 +540,9 @@ p
       @extend .no-margin
 
 .main-tabs-container
-  @extend .flex-full, .d-flex, .flex-column
+  @extend .flex-full, .d-flex
+  &:not(.vertical)
+    @extend .flex-column
 
 .main-tab-container
   @extend .flex-full, .d-flex, .flex-column, .relative
@@ -566,10 +562,17 @@ p
     height: 0px !important
 
 .main-label
-  &.basic
-    &.inverted
+  &:not(.clickable)
+    @extend .cursor-default
+    &.basic
+      &.inverted
+        &:hover
+          color: $colorWhiteInverted !important
+  &.clickable
+    @extend .cursor-pointer
+    &:not(.primary)
       &:hover
-        color: $colorWhiteInverted !important
+        @extend .text-color-base
 
 .main-extra-title
   @extend .d-inline
@@ -588,7 +591,7 @@ p
   @extend .d-flex, .align-items-center, .flex-full
 
 .main-source-select
-  width: 220px
+  width: 210px
 
 .main-source-select-type-select
   width: 150px
@@ -599,7 +602,6 @@ p
   margin-left: 1em !important
 
 .main-form
-  position: unset !important
   & > .submit-button-container
     @extend .d-flex, .justify-content-flex-end
     margin-top: 1em
@@ -610,34 +612,36 @@ p
       &:before
         @extend .background-black-transparent
 
-.main-app-title
-  @extend .text-color-white, .text-medium-light
-  font-size: 3.5em !important
-  z-index: 1
-
 .main-sidebar-item
   @extend .no-padding, .d-flex
+  &.top-item
+    @extend .align-items-center
+    height: $navbarHeight
+    border-bottom: $border
+    &.inverted
+      border-bottom: $borderInverted
+    .image
+      width: 25px
+      height: 25px
   &:before
     background: none !important
   &:hover
-    .main-sidebar-item-icon-container
-      & > .icon
+    .icon-container
+      .icon
         color: $colorBase !important
-
-.main-sidebar-item-icon-container
-  @extend .d-flex, .align-items-center, .justify-content-center
-  width: 40px
-  height: 40px
-  flex-shrink: 0
-  & > .icon
-    @extend .no-margin
-    font-size: 1.25em
-
-.main-sidebar-item-content-container
-  @extend .d-flex, .align-items-center
-  width: 200px
-  padding: 0 0.5em
-  flex-shrink: 0
+  .icon-container
+    @extend .d-flex, .align-items-center, .justify-content-center
+    width: 40px
+    height: 40px
+    flex-shrink: 0
+    .icon
+      @extend .no-margin
+      font-size: 16px
+  .content-container
+    @extend .d-flex, .align-items-center
+    width: 200px
+    flex-shrink: 0
+    font-size: 15px
 
 .main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
@@ -663,7 +667,7 @@ p
 
 .main-profile-page-left-column
   @extend .no-margin
-  width: 175px
+  width: 170px
   .main-profile-page-info
     @extend .d-flex, .flex-column, .align-items-center, .text-align-center, .word-break-break-word
   .main-profile-page-image-container
@@ -774,7 +778,7 @@ p
 .main-list
   &.divided
     & > .item
-      padding: 1em 0 !important
+      padding: 1.5em 1em !important
 
 .main-following-message-container,
 .main-joined-message-container
@@ -795,8 +799,8 @@ p
   width: 125px
 
 .main-compatibility-common-button
-  margin-right: 0.5em !important
-  margin-bottom: 0.5em !important
+  &:not(:first-child)
+    margin-left: 0.5em !important
 
 .main-scopes-dropdown
   width: 140px
@@ -832,9 +836,6 @@ p
 .main-profile-online-label
   @extend .no-margin
 
-.main-images-table-list
-  @extend .no-margin
-
 .main-transparent-segment-container
   .main-segment
     @extend .background-transparent
@@ -855,3 +856,30 @@ p
 
 .main-timezone-dropdown
   min-width: 200px !important
+
+.main-image-item
+  @extend .relative, .align-self-center
+  &:hover
+    .main-image-clear-button
+      @extend .d-block
+
+.main-image-clear-button
+  @extend .no-margin, .absolute, .d-none
+  top: 7px,
+  right: 7px
+
+.main-labels-section
+  &:not(:last-child)
+    margin-bottom: 0.25em
+
+.main-logo-title-section
+  @extend .d-flex, .align-items-center, .pointer-events-none
+  z-index: 1
+  .logo-block
+    width: 80px
+  .title-block
+    margin-left: 0.75em
+    .title
+      @extend .text-color-white, .text-medium-light
+      font-size: 3.5em !important
+      margin-bottom: 0.2em !important

@@ -8,8 +8,8 @@
 
 <script>
 import BaseBookmarkOption
-  from '*/components/dropdowns/options/bookmark/BaseBookmarkOption.vue'
-import createBookmarkTrack from '*/helpers/actions/api/bookmark/track/create'
+  from '@/components/dropdowns/options/bookmark/BaseBookmarkOption.vue'
+import createBookmarkTrack from '@/helpers/actions/api/bookmark/track/create'
 
 export default {
   name: 'AddOption',

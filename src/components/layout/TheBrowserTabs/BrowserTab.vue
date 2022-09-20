@@ -1,6 +1,6 @@
 <template>
   <BaseButtonContainer
-    class="basic browser-tab"
+    class="basic circular browser-tab"
     :class="{
       active: isActiveClass
     }"
@@ -21,13 +21,11 @@
       v-text="tabTitle"
     />
 
-    <BaseButton
-      :class="[
-        'basic mini compact circular',
-        'browser-tab-close-button'
-      ]"
-      icon="close"
-      @click.stop="handleRemoveButtonClick"
+    <BaseClearButton
+      class="browser-tab-close-button"
+      :is-red="false"
+      is-invertable
+      @click.stop="handleCloseButtonClick"
     />
   </BaseButtonContainer>
 </template>
@@ -40,16 +38,16 @@ import {
   ipcRenderer
 } from 'electron'
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {
   name: 'BrowserTab',
   components: {
     BaseButtonContainer,
     BaseIcon,
-    BaseButton
+    BaseClearButton
   },
   props: {
     tabData: {
@@ -111,7 +109,7 @@ export default {
         this.tabId
       )
     },
-    handleRemoveButtonClick () {
+    handleCloseButtonClick () {
       ipcRenderer.send(
         'remove-tab',
         this.tabId
@@ -123,24 +121,23 @@ export default {
 
 <style lang="sass" scoped>
 .browser-tab
-  @extend .d-flex, .align-items-center, .cursor-pointer
+  @extend .d-flex, .align-items-center
   padding: 0.5em
   margin-right: 0.5em !important
-  max-width: 210px
 
 .browser-tab-icon
   @extend .no-margin
-  margin-left: 0.25em !important
+  margin-left: 0.5em !important
 
 .browser-tab-name
   @extend .white-space-no-wrap, .overflow-hidden
-  width: 100%
-  margin-left: 0.5em
-  flex: 1 0
+  max-width: 150px
+  margin-left: 0.75em
   &.active
     font-weight: 700
 
 .browser-tab-close-button
-  margin-left: 0.5em !important
+  margin-left: 0.75em !important
   padding: 4px !important
+  width: unset !important
 </style>

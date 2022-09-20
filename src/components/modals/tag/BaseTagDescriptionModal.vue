@@ -15,8 +15,8 @@
 
 <script>
 import BaseTagModalContainer
-  from '*/components/containers/modals/tag/BaseTagModalContainer.vue'
-import BaseDescription from '*/components/BaseDescription.vue'
+  from '@/components/containers/modals/tag/BaseTagModalContainer.vue'
+import BaseDescription from '@/components/BaseDescription.vue'
 
 export default {
   name: 'BaseTagDescriptionModal',

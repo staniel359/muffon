@@ -1,24 +1,19 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    size="small"
   >
-    <div
-      :class="[
-        'content',
-        'main-modal-content-full-height'
-      ]"
-    >
+    <div class="content main-modal-content-full-height">
       <BaseTabsContainer
-        :tabs="tabs"
+        :tabs="tabsFormatted"
       >
         <template
-          v-for="(tabData, index) in tabs"
+          v-for="(tabData, index) in tabsFormatted"
           :key="index"
           #[index]="slotProps"
         >
           <Component
             :is="tabData.component"
-            class="settings-container"
             :class="slotProps.class"
           />
         </template>
@@ -28,10 +23,13 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 import BaseTabsContainer
-  from '*/components/containers/tabs/BaseTabsContainer.vue'
+  from '@/components/containers/tabs/BaseTabsContainer.vue'
 import AppSettings from './TheSettingsModal/AppSettings.vue'
 import ProfileSettings from './TheSettingsModal/ProfileSettings.vue'
 import ServicesSettings from './TheSettingsModal/ServicesSettings.vue'
@@ -45,31 +43,48 @@ export default {
     ProfileSettings,
     ServicesSettings
   },
-  computed: {
-    tabs () {
-      return [
+  data () {
+    return {
+      tabs: [
         {
-          name: this.$t(
-            'settings.tabs.app'
-          ),
+          nameCode: 'settings.tabs.app',
           scope: 'app',
-          component: 'AppSettings'
+          component: 'AppSettings',
+          isAnonymous: true
         },
         {
-          name: this.$t(
-            'settings.tabs.profile'
-          ),
+          nameCode: 'settings.tabs.profile',
           scope: 'profile',
-          component: 'ProfileSettings'
+          component: 'ProfileSettings',
+          isAnonymous: false
         },
         {
-          name: this.$t(
-            'settings.tabs.services'
-          ),
+          nameCode: 'settings.tabs.services',
           scope: 'services',
-          component: 'ServicesSettings'
+          component: 'ServicesSettings',
+          isAnonymous: false
         }
       ]
+    }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
+    tabsFormatted () {
+      if (this.profileId) {
+        return this.tabs
+      } else {
+        return this.anonymousTabs
+      }
+    },
+    anonymousTabs () {
+      return this.tabs.filter(
+        this.isAnonymousTab
+      )
     }
   },
   methods: {
@@ -77,13 +92,27 @@ export default {
       this.$refs
         .modal
         .show()
+    },
+    isAnonymousTab (
+      tabData
+    ) {
+      return tabData.isAnonymous
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.settings-container
-  &.active
-    @extend .d-flex, .flex-column
+::v-deep(.settings-group-tabs-container)
+  .main-tabs
+    @extend .no-margin, .overflow-y-auto
+    flex: 0.3
+    margin-right: 1em !important
+  .main-tab-container
+    flex: 0.7 !important
+
+::v-deep(.settings-group-tab)
+  @extend .d-flex, .flex-column
+  &:not(.active)
+    @extend .visibility-hidden
 </style>

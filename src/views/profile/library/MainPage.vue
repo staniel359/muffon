@@ -39,7 +39,7 @@
 
 <script>
 import BaseProfileLibraryPageContainer
-  from '*/components/containers/pages/profile/library/BaseProfileLibraryPageContainer.vue'
+  from '@/components/containers/pages/profile/library/BaseProfileLibraryPageContainer.vue'
 import StatisticsSegment from './MainPage/StatisticsSegment.vue'
 import ImportSegment from './MainPage/ImportSegment.vue'
 import ArtistsSegment from './MainPage/ArtistsSegment.vue'
@@ -48,7 +48,7 @@ import TracksSegment from './MainPage/TracksSegment.vue'
 import TagsSegment from './MainPage/TagsSegment.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'MainPage',

@@ -6,7 +6,7 @@
     is-with-country-select
   >
     <template #default="slotProps">
-      <BaseTagsList
+      <BaseTagsSimpleList
         :tags="slotProps[scope]"
       />
     </template>
@@ -15,14 +15,14 @@
 
 <script>
 import BaseTopPaginatedPageContainer
-  from '*/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
+  from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 
 export default {
   name: 'TagsPage',
   components: {
     BaseTopPaginatedPageContainer,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   data () {
     return {

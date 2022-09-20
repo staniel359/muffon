@@ -12,7 +12,7 @@ import {
 } from 'electron'
 import {
   donate as donateLink
-} from '*/helpers/data/links'
+} from '@/helpers/data/links'
 
 export default {
   name: 'DonateSection',

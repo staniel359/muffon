@@ -41,16 +41,16 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseSelfIcons from '*/components/models/self/BaseSelfIcons.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseAlbumOptionsDropdown
-  from '*/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
+  from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
 import BaseLibraryDeleteModal
-  from '*/components/modals/library/BaseLibraryDeleteModal.vue'
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
-import selfMixin from '*/mixins/selfMixin'
+} from '@/helpers/utils'
+import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'SelfSegment',

@@ -1,7 +1,7 @@
 <template>
   <div class="next-button-container">
     <BaseButton
-      class="basic compact"
+      class="basic circular compact"
       icon="forward right"
       :text="nextText"
       is-reverse
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 
 export default {
   name: 'NextButton',

@@ -1,6 +1,6 @@
 import {
   main as formatTagMainLink
-} from '*/helpers/formatters/links/tag'
+} from '@/helpers/formatters/links/tag'
 
 export default function (
   {

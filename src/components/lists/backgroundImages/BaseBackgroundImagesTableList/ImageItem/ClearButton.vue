@@ -1,6 +1,6 @@
 <template>
   <BaseClearButton
-    class="clear-button"
+    class="main-image-clear-button"
     @click="handleClick"
   />
 </template>
@@ -9,9 +9,9 @@
 import {
   ipcRenderer
 } from 'electron'
-import BaseClearButton from '*/components/buttons/BaseClearButton.vue'
+import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import deleteBackgroundImage
-  from '*/helpers/actions/api/backgroundImage/delete'
+  from '@/helpers/actions/api/backgroundImage/delete'
 
 export default {
   name: 'ClearButton',
@@ -62,9 +62,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.clear-button
-  @extend .no-margin, .absolute, .d-none
-  top: 7px,
-  right: 7px
-</style>
+<style lang="sass" scoped></style>

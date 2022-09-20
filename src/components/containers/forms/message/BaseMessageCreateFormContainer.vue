@@ -10,14 +10,14 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   messageFormOptions
-} from '*/helpers/data/plugins/semantic'
-import createMessage from '*/helpers/actions/api/message/create'
+} from '@/helpers/data/plugins/semantic'
+import createMessage from '@/helpers/actions/api/message/create'
 import {
   decryptTextWithLinks
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseMessageCreateFormContainer',

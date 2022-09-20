@@ -1,5 +1,5 @@
-import formatTrackRequestUrl from '*/helpers/formatters/request/track/url'
-import getRequest from '*/helpers/actions/api/request/get'
+import formatTrackRequestUrl from '@/helpers/formatters/request/track/url'
+import getRequest from '@/helpers/actions/api/request/get'
 
 export default function (
   {

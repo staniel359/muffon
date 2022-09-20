@@ -10,7 +10,7 @@
 import AlbumItem from './AlbumsList/AlbumItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'AlbumsList',

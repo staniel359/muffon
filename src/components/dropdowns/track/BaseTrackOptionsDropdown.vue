@@ -3,14 +3,14 @@
     v-if="isRender"
   >
     <LibraryOption
-      v-if="isWithLibraryOption"
+      v-if="isRenderLibraryOption"
       :library-id="libraryId"
       :track-data="trackData"
       @link-click="handleLinkClick"
     />
 
     <template
-      v-if="isWithPlaylistOption"
+      v-if="isRenderPlaylistOption"
     >
       <BasePlaylistOption
         @click="handlePlaylistOptionClick"
@@ -25,19 +25,19 @@
     </template>
 
     <FavoriteOption
-      v-if="isWithFavoriteOption"
+      v-if="isRenderFavoriteOption"
       :favorite-id="favoriteId"
       :track-data="trackData"
     />
 
     <BookmarkOption
-      v-if="isWithBookmarkOption"
+      v-if="isRenderBookmarkOption"
       :bookmark-id="bookmarkId"
       :track-data="trackData"
     />
 
     <ListenedOption
-      v-if="isWithListenedOption"
+      v-if="isRenderListenedOption"
       :listened-id="listenedId"
       :track-data="trackData"
     />
@@ -53,7 +53,7 @@
     />
 
     <BaseShareOption
-      v-if="isWithShareOption"
+      v-if="isRenderShareOption"
       :share-data="shareData"
     />
 
@@ -65,25 +65,28 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseOptionsDropdownContainer
-  from '*/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
+  from '@/components/containers/dropdowns/BaseOptionsDropdownContainer.vue'
 import LibraryOption from './BaseTrackOptionsDropdown/LibraryOption.vue'
 import BasePlaylistOption
-  from '*/components/dropdowns/options/BasePlaylistOption.vue'
+  from '@/components/dropdowns/options/BasePlaylistOption.vue'
 import BasePlaylistsModal
-  from '*/components/modals/playlists/BasePlaylistsModal.vue'
+  from '@/components/modals/playlists/BasePlaylistsModal.vue'
 import FavoriteOption from './BaseTrackOptionsDropdown/FavoriteOption.vue'
 import BookmarkOption from './BaseTrackOptionsDropdown/BookmarkOption.vue'
 import ListenedOption from './BaseTrackOptionsDropdown/ListenedOption.vue'
 import QueueOption from './BaseTrackOptionsDropdown/QueueOption.vue'
 import SaveOption from './BaseTrackOptionsDropdown/SaveOption.vue'
 import BaseShareOption
-  from '*/components/dropdowns/options/BaseShareOption.vue'
+  from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseDeleteOption
-  from '*/components/dropdowns/options/BaseDeleteOption.vue'
+  from '@/components/dropdowns/options/BaseDeleteOption.vue'
 import {
   track as formatTrackShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 
 export default {
   name: 'BaseTrackOptionsDropdown',
@@ -124,17 +127,53 @@ export default {
     'deleteOptionClick'
   ],
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     isRender () {
       return (
-        this.isWithLibraryOption ||
-          this.isWithPlaylistOption ||
-          this.isWithFavoriteOption ||
-          this.isWithBookmarkOption ||
-          this.isWithListenedOption ||
+        this.isRenderLibraryOption ||
+          this.isRenderPlaylistOption ||
+          this.isRenderFavoriteOption ||
+          this.isRenderBookmarkOption ||
+          this.isRenderListenedOption ||
           this.isWithQueueOption ||
-          this.isWithSaveOption ||
-          this.isWithShareOption ||
+          this.isRenderSaveOption ||
+          this.isRenderShareOption ||
           this.isWithDeleteOption
+      )
+    },
+    isRenderLibraryOption () {
+      return (
+        this.profileId &&
+          this.isWithLibraryOption
+      )
+    },
+    isRenderPlaylistOption () {
+      return (
+        this.profileId &&
+          this.isWithPlaylistOption
+      )
+    },
+    isRenderFavoriteOption () {
+      return (
+        this.profileId &&
+          this.isWithFavoriteOption
+      )
+    },
+    isRenderBookmarkOption () {
+      return (
+        this.profileId &&
+          this.isWithBookmarkOption
+      )
+    },
+    isRenderListenedOption () {
+      return (
+        this.profileId &&
+          this.isWithListenedOption
       )
     },
     isRenderSaveOption () {
@@ -145,6 +184,12 @@ export default {
     },
     isSavedTrack () {
       return !!this.trackData.audio?.local
+    },
+    isRenderShareOption () {
+      return (
+        this.profileId &&
+          this.isWithShareOption
+      )
     },
     shareData () {
       return formatTrackShareData(

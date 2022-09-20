@@ -1,11 +1,11 @@
 <template>
   <BaseImage
-    :image="image"
+    :image="logo"
   />
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 
 export default {
   name: 'ImageSection',
@@ -13,9 +13,9 @@ export default {
     BaseImage
   },
   computed: {
-    image () {
+    logo () {
       return require(
-        '*/../public/logo.png'
+        '@/../public/logo.png'
       )
     }
   }

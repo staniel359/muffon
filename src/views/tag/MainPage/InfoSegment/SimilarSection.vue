@@ -1,33 +1,29 @@
 <template>
-  <div class="ui large labels">
+  <div class="ui labels">
     <BaseLabel
-      v-if="isLoading"
-      is-loading
+      class="basic circular large"
+      :is-loading="isLoading"
+      :text="similarText"
     />
-    <template
-      v-else-if="similar?.length"
-    >
-      <BaseLabel
-        :text="similarText"
-      />
 
-      <BaseTagsList
-        :tags="similar"
-      />
-    </template>
+    <BaseTagsSimpleList
+      v-if="similar?.length"
+      class="similar-list"
+      :tags="similar"
+    />
   </div>
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
-import BaseTagsList from '*/components/lists/tags/BaseTagsList.vue'
-import getTag from '*/helpers/actions/api/tag/get'
+import BaseLabel from '@/components/BaseLabel.vue'
+import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
+import getTag from '@/helpers/actions/api/tag/get'
 
 export default {
   name: 'SimilarSection',
   components: {
     BaseLabel,
-    BaseTagsList
+    BaseTagsSimpleList
   },
   props: {
     tagName: {
@@ -72,4 +68,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.similar-list
+  @extend .d-inline
+</style>

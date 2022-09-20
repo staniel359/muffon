@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import BaseMessage from '*/components/messages/BaseMessage.vue'
+import BaseMessage from '@/components/messages/BaseMessage.vue'
 import {
   conversation as formatConversationLink
-} from '*/helpers/formatters/links/conversations'
+} from '@/helpers/formatters/links/conversations'
 
 export default {
   name: 'SuccessMessage',

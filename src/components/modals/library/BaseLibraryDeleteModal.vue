@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import BaseDeleteModal from '*/components/modals/BaseDeleteModal.vue'
-import deleteLibraryModel from '*/helpers/actions/api/library/model/delete'
+import BaseDeleteModal from '@/components/modals/BaseDeleteModal.vue'
+import deleteLibraryModel from '@/helpers/actions/api/library/model/delete'
 import {
   main as formatProfileLibraryMainLink
-} from '*/helpers/formatters/links/profile/library'
+} from '@/helpers/formatters/links/profile/library'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseLibraryDeleteModal',

@@ -14,13 +14,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatVideoChannelPageNavigation
-  from '*/helpers/formatters/navigation/videoChannel'
+  from '@/helpers/formatters/navigation/videoChannel'
 import formatVideoChannelPageTab
-  from '*/helpers/formatters/tabs/videoChannel'
-import getVideoChannel from '*/helpers/actions/api/videoChannel/get'
+  from '@/helpers/formatters/tabs/videoChannel'
+import getVideoChannel from '@/helpers/actions/api/videoChannel/get'
 
 export default {
   name: 'BaseVideoChannelPageContainer',

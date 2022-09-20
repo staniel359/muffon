@@ -10,15 +10,15 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   postFormOptions
-} from '*/helpers/data/plugins/semantic'
-import createProfilePost from '*/helpers/actions/api/profile/post/create'
-import createCommunityPost from '*/helpers/actions/api/community/post/create'
+} from '@/helpers/data/plugins/semantic'
+import createProfilePost from '@/helpers/actions/api/profile/post/create'
+import createCommunityPost from '@/helpers/actions/api/community/post/create'
 import {
   decryptTextWithLinks
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePostCreateFormContainer',

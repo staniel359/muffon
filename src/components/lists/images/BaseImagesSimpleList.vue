@@ -3,29 +3,27 @@
     <BaseImage
       v-for="imageData in imagesCollection"
       :key="imageData.uuid"
-      class="image-item"
+      class="rounded bordered image-item"
       :image="imageData.original"
     />
   </div>
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
-  name: 'BaseImagesList',
+  name: 'BaseImagesSimpleList',
   components: {
     BaseImage
   },
   props: {
     images: {
       type: Array,
-      default () {
-        return []
-      }
+      required: true
     }
   },
   computed: {

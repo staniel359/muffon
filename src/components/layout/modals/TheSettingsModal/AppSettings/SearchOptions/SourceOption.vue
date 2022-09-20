@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import SourceSelect from './SourceOption/SourceSelect.vue'
 
 export default {

@@ -16,11 +16,11 @@ import {
   mapState
 } from 'vuex'
 import BaseDropdownContainer
-  from '*/components/containers/BaseDropdownContainer.vue'
+  from '@/components/containers/BaseDropdownContainer.vue'
 import LanguageOption from './BaseLanguageDropdown/LanguageOption.vue'
 import {
   locales
-} from '*/../shared/locales'
+} from '@/../shared/locales'
 
 export default {
   name: 'BaseLanguageDropdown',

@@ -19,7 +19,7 @@
 
 <script>
 import BaseProfilePageContainer
-  from '*/components/containers/pages/profile/BaseProfilePageContainer.vue'
+  from '@/components/containers/pages/profile/BaseProfilePageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 

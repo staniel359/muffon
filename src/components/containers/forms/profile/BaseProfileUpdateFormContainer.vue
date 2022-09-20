@@ -11,20 +11,20 @@
 
 <script>
 import BaseFormContainer
-  from '*/components/containers/forms/BaseFormContainer.vue'
+  from '@/components/containers/forms/BaseFormContainer.vue'
 import {
   profileUpdateFormOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   stringToDate as formatStringToDate
-} from '*/helpers/formatters'
-import updateProfile from '*/helpers/actions/api/profile/update'
+} from '@/helpers/formatters'
+import updateProfile from '@/helpers/actions/api/profile/update'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 import {
   setToast
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseProfileUpdateFormContainer',

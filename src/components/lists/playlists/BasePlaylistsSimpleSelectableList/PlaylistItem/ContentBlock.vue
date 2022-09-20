@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import TracksCountSection from './ContentBlock/TracksCountSection.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'ContentBlock',

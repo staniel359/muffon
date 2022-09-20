@@ -30,7 +30,7 @@ import {
 import {
   collection as formatCollection,
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BaseStatistics',

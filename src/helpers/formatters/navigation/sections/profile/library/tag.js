@@ -1,6 +1,6 @@
 import {
   main as formatProfileLibraryTagMainLink
-} from '*/helpers/formatters/links/profile/library/tag'
+} from '@/helpers/formatters/links/profile/library/tag'
 
 export default function (
   {

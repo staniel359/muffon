@@ -1,5 +1,5 @@
-import store from '*/plugins/store'
-import deleteRequest from '*/helpers/actions/api/request/delete'
+import store from '@/plugins/store'
+import deleteRequest from '@/helpers/actions/api/request/delete'
 
 export default function () {
   const profileId =

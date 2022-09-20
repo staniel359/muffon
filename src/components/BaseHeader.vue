@@ -6,6 +6,11 @@
       inverted: isDarkMode
     }"
   >
+    <BaseIcon
+      v-if="icon"
+      :icon="icon"
+    />
+
     {{ text }}
   </Component>
 </template>
@@ -14,9 +19,13 @@
 import {
   mapState
 } from 'vuex'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseHeader',
+  components: {
+    BaseIcon
+  },
   props: {
     tag: {
       type: String,
@@ -25,7 +34,8 @@ export default {
     text: {
       type: String,
       required: true
-    }
+    },
+    icon: String
   },
   computed: {
     ...mapState(

@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import BaseDropdownItem from '*/components/dropdowns/BaseDropdownItem.vue'
+import BaseDropdownItem from '@/components/dropdowns/BaseDropdownItem.vue'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'TrackItem',

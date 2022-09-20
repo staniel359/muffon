@@ -23,7 +23,8 @@
 
     <BaseLabel
       v-if="isStaff"
-      class="primary role-label"
+      class="primary circular role-label"
+      :is-invertable="false"
       :text="roleText"
     />
 
@@ -35,12 +36,12 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseProfileOnlineLabel
-  from '*/components/models/profile/BaseProfileOnlineLabel.vue'
-import BaseZoomableImage from '*/components/images/BaseZoomableImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
-import BaseLabel from '*/components/BaseLabel.vue'
+  from '@/components/models/profile/BaseProfileOnlineLabel.vue'
+import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 import WasOnlineSection from './InfoSegment/WasOnlineSection.vue'
 
 export default {
@@ -83,7 +84,7 @@ export default {
 
 <style lang="sass" scoped>
 .role-label
-  margin: 0.25em 0
+  margin-top: 0.5em
 
 .online-label
   @extend .absolute

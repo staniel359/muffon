@@ -3,7 +3,7 @@
     <BaseAccordionContainer
       :title="addText"
     >
-      <div class="ui buttons">
+      <div>
         <SearchImportButton />
 
         <AccountImportButton />
@@ -16,9 +16,9 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseAccordionContainer
-  from '*/components/containers/BaseAccordionContainer.vue'
+  from '@/components/containers/BaseAccordionContainer.vue'
 import SearchImportButton from './ImportSegment/SearchImportButton.vue'
 import AccountImportButton from './ImportSegment/AccountImportButton.vue'
 import FolderImportButton from './ImportSegment/FolderImportButton.vue'
@@ -42,4 +42,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+::v-deep(.import-button)
+  &:not(:first-child)
+    margin-left: 1em !important
+</style>

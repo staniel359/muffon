@@ -37,13 +37,13 @@
 
 <script>
 import BaseRecommendationsPageContainer
-  from '*/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
+  from '@/components/containers/pages/recommendations/BaseRecommendationsPageContainer.vue'
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
 import FilterSection from './RecommendationsPage/FilterSection.vue'
 import BaseArtistsExtendedList
-  from '*/components/lists/artists/BaseArtistsExtendedList.vue'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+  from '@/components/lists/artists/BaseArtistsExtendedList.vue'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'RecommendationsPage',

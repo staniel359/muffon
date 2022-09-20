@@ -15,13 +15,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import formatAlbumPageNavigation from '*/helpers/formatters/navigation/album'
-import formatAlbumPageTab from '*/helpers/formatters/tabs/album'
-import formatRequestAlbumData from '*/helpers/formatters/request/album/data'
-import getAlbum from '*/helpers/actions/api/album/get'
-import getBandcampId from '*/helpers/actions/api/bandcampId/get'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
+import formatAlbumPageNavigation from '@/helpers/formatters/navigation/album'
+import formatAlbumPageTab from '@/helpers/formatters/tabs/album'
+import formatRequestAlbumData from '@/helpers/formatters/request/album/data'
+import getAlbum from '@/helpers/actions/api/album/get'
+import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseAlbumPageContainer',

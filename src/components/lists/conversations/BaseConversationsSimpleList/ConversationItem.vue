@@ -15,12 +15,12 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 import OtherProfileSection from './ConversationItem/OtherProfileSection.vue'
 import LastMessageSegment from './ConversationItem/LastMessageSegment.vue'
 import {
   conversation as formatConversationLink
-} from '*/helpers/formatters/links/conversations'
+} from '@/helpers/formatters/links/conversations'
 
 export default {
   name: 'ConversationItem',

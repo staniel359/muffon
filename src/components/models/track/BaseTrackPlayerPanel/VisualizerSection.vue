@@ -11,7 +11,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseAudioVisualiser from '*/components/BaseAudioVisualiser.vue'
+import BaseAudioVisualiser from '@/components/BaseAudioVisualiser.vue'
 
 export default {
   name: 'VisualizerSection',

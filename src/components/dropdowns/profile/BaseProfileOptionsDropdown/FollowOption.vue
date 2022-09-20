@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import BaseOption from '*/components/dropdowns/options/BaseOption.vue'
-import createFollower from '*/helpers/actions/api/follower/create'
-import deleteFollower from '*/helpers/actions/api/follower/delete'
+import BaseOption from '@/components/dropdowns/options/BaseOption.vue'
+import createFollower from '@/helpers/actions/api/follower/create'
+import deleteFollower from '@/helpers/actions/api/follower/delete'
 
 export default {
   name: 'FollowOption',

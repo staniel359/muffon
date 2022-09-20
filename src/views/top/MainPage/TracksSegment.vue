@@ -23,12 +23,12 @@
 
 <script>
 import BaseTopPaginatedSegmentContainer
-  from '*/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/top/BaseTopPaginatedSegmentContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 import {
   tracks as formatTopTracksLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default {
   name: 'TracksSegment',

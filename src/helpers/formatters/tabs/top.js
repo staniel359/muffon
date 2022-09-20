@@ -1,11 +1,11 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatTopMainLink,
   artists as formatTopArtistsLink,
   albums as formatTopAlbumsLink,
   tracks as formatTopTracksLink,
   tags as formatTopTagsLink
-} from '*/helpers/formatters/links/top'
+} from '@/helpers/formatters/links/top'
 
 export default function (
   {

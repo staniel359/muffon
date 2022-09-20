@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseEditOption',

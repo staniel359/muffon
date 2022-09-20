@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import BaseProgress from '*/components/BaseProgress.vue'
+import BaseProgress from '@/components/BaseProgress.vue'
 import BaseSaveCompleteSection from '../BaseSaveCompleteSection.vue'
-import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
-import collectionMixin from '*/mixins/collectionMixin'
+import createPlaylistTrack from '@/helpers/actions/api/playlist/track/create'
+import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'BasePlaylistSaveSection',

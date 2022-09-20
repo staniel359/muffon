@@ -1,15 +1,13 @@
 <template>
   <div class="list-end-label-container">
     <BaseLabel
-      class="mini empty list-end-label"
-      :is-basic="false"
-      is-circular
+      class="mini empty circular list-end-label"
     />
   </div>
 </template>
 
 <script>
-import BaseLabel from '*/components/BaseLabel.vue'
+import BaseLabel from '@/components/BaseLabel.vue'
 
 export default {
   name: 'ListEndLabel',

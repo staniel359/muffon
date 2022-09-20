@@ -23,9 +23,9 @@
 
 <script>
 import BaseProfileLibraryCommonModalContainer
-  from '*/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
+  from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
 import BaseTracksSimpleList
-  from '*/components/lists/tracks/BaseTracksSimpleList.vue'
+  from '@/components/lists/tracks/BaseTracksSimpleList.vue'
 
 export default {
   name: 'BaseCommonTracksModal',

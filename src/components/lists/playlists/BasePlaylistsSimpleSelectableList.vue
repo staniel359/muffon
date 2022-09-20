@@ -11,11 +11,11 @@
 
 <script>
 import BaseListContainer
-  from '*/components/containers/lists/BaseListContainer.vue'
+  from '@/components/containers/lists/BaseListContainer.vue'
 import PlaylistItem from './BasePlaylistsSimpleSelectableList/PlaylistItem.vue'
 import {
   collection as formatCollection
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'BasePlaylistsSimpleSelectableList',

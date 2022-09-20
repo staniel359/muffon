@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BaseDarkModeToggle from '*/components/toggles/BaseDarkModeToggle.vue'
+import BaseDarkModeToggle from '@/components/toggles/BaseDarkModeToggle.vue'
 
 export default {
   name: 'DarkModeBlock',

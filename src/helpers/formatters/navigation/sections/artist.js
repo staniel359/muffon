@@ -1,6 +1,6 @@
 import {
   main as formatArtistMainLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default function (
   {

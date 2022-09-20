@@ -37,5 +37,5 @@ export default {
   flex: 0.4
   .button
     &:not(:last-child)
-      margin-right: 0.25em !important
+      margin-right: 0.5em !important
 </style>

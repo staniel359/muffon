@@ -11,7 +11,7 @@
 
 <script>
 import BaseModalContainer
-  from '*/components/containers/modals/BaseModalContainer.vue'
+  from '@/components/containers/modals/BaseModalContainer.vue'
 
 export default {
   name: 'BaseImageModalContainer',

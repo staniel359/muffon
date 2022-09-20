@@ -13,10 +13,10 @@ import {
 import {
   setVideo,
   resetVideo
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   mainVideoOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseVideo',

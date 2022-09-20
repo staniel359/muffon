@@ -17,7 +17,7 @@
 
 <script>
 import BaseVideoChannelPageContainer
-  from '*/components/containers/pages/video/BaseVideoChannelPageContainer.vue'
+  from '@/components/containers/pages/video/BaseVideoChannelPageContainer.vue'
 import InfoSegment from './MainPage/InfoSegment.vue'
 import VideosSegment from './MainPage/VideosSegment.vue'
 

@@ -29,14 +29,14 @@ import {
   mapState
 } from 'vuex'
 import BaseButtonContainer
-  from '*/components/containers/buttons/BaseButtonContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+  from '@/components/containers/buttons/BaseButtonContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import {
   setDropdown
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   mainDropdownOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseOptionsDropdownContainer',

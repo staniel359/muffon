@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import BaseProgress from '*/components/BaseProgress.vue'
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import createPlaylistTrack from '*/helpers/actions/api/playlist/track/create'
-import collectionMixin from '*/mixins/collectionMixin'
+import BaseProgress from '@/components/BaseProgress.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import createPlaylistTrack from '@/helpers/actions/api/playlist/track/create'
+import collectionMixin from '@/mixins/collectionMixin'
 
 export default {
   name: 'BaseCreatePlaylistTracksContainer',

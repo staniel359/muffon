@@ -21,9 +21,9 @@
 
 <script>
 import BaseBookmarksPaginatedPageContainer
-  from '*/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
+  from '@/components/containers/pages/bookmarks/BaseBookmarksPaginatedPageContainer.vue'
 import BaseAlbumsSimpleList
-  from '*/components/lists/albums/BaseAlbumsSimpleList.vue'
+  from '@/components/lists/albums/BaseAlbumsSimpleList.vue'
 
 export default {
   name: 'AlbumsPage',

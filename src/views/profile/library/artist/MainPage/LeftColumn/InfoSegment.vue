@@ -25,14 +25,14 @@
 
 <script>
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
-import BaseArtistImage from '*/components/models/artist/BaseArtistImage.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
+import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatArtistMainLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'InfoSegment',

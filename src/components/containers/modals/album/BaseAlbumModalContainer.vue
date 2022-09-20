@@ -18,14 +18,14 @@
 
 <script>
 import BasePaginatedSegmentModalContainer
-  from '*/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
+  from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
 import BaseSegmentModalContainer
-  from '*/components/containers/modals/BaseSegmentModalContainer.vue'
-import getAlbum from '*/helpers/actions/api/album/get'
+  from '@/components/containers/modals/BaseSegmentModalContainer.vue'
+import getAlbum from '@/helpers/actions/api/album/get'
 import {
   generateKey
-} from '*/helpers/utils'
-import modalMixin from '*/mixins/modalMixin'
+} from '@/helpers/utils'
+import modalMixin from '@/mixins/modalMixin'
 
 export default {
   name: 'BaseAlbumModalContainer',

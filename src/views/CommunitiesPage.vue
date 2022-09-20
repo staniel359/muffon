@@ -11,7 +11,9 @@
           'main-page-segment-container'
         ]"
       >
-        <BaseSegmentContainer>
+        <BaseSegmentContainer
+          v-if="profileId"
+        >
           <BaseCommunityCreateButton />
         </BaseSegmentContainer>
 
@@ -39,17 +41,20 @@
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseCommunitiesPageContainer
-  from '*/components/containers/pages/communities/BaseCommunitiesPageContainer.vue'
+  from '@/components/containers/pages/communities/BaseCommunitiesPageContainer.vue'
 import BaseSegmentContainer
-  from '*/components/containers/segments/BaseSegmentContainer.vue'
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseCommunityCreateButton
-  from '*/components/buttons/community/BaseCommunityCreateButton.vue'
+  from '@/components/buttons/community/BaseCommunityCreateButton.vue'
 import BasePaginatedSegmentContainer
-  from '*/components/containers/segments/BasePaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/BasePaginatedSegmentContainer.vue'
 import BaseCommunitiesSimpleList
-  from '*/components/lists/communities/BaseCommunitiesSimpleList.vue'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+  from '@/components/lists/communities/BaseCommunitiesSimpleList.vue'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'CommunitiesPage',
@@ -68,6 +73,14 @@ export default {
       limit: 50,
       scope: 'communities'
     }
+  },
+  computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    )
   }
 }
 </script>

@@ -1,7 +1,7 @@
-import store from '*/plugins/store'
+import store from '@/plugins/store'
 import {
   generateKey
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 import moment from 'moment-timezone'
 
 export function collection (
@@ -54,10 +54,18 @@ export function number (
 export function seconds (
   value
 ) {
-  return moment(
+  const isWithHours = (
+    value >= 3600
+  )
+
+  const format = isWithHours
+    ? 'H:mm:ss'
+    : 'mm:ss'
+
+  return moment.utc(
     value * 1000
   ).format(
-    'mm:ss'
+    format
   )
 }
 

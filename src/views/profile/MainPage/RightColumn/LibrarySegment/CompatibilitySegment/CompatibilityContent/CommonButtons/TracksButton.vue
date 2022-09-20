@@ -1,7 +1,7 @@
 <template>
   <BaseButton
     :class="[
-      'basic compact',
+      'basic circular compact',
       'main-compatibility-common-button',
       {
         disabled: isDisabled
@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import BaseButton from '*/components/buttons/BaseButton.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
 import BaseCommonTracksModal
-  from '*/components/modals/profile/library/compatibility/BaseCommonTracksModal.vue'
+  from '@/components/modals/profile/library/compatibility/BaseCommonTracksModal.vue'
 import {
   number as formatNumber
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'TracksButton',

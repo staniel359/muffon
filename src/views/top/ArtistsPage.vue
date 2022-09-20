@@ -24,9 +24,9 @@
 
 <script>
 import BaseTopPaginatedPageContainer
-  from '*/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
-import BaseArtistsList from '*/components/lists/artists/BaseArtistsList.vue'
-import viewChangeMixin from '*/mixins/viewChangeMixin'
+  from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
+import BaseArtistsList from '@/components/lists/artists/BaseArtistsList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'ArtistsPage',

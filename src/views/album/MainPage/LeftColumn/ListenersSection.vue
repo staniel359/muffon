@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import BaseListenersCountSection
-  from '*/components/BaseListenersCountSection.vue'
+  from '@/components/BaseListenersCountSection.vue'
 import BaseAlbumListenersModal
-  from '*/components/modals/album/BaseAlbumListenersModal.vue'
+  from '@/components/modals/album/BaseAlbumListenersModal.vue'
 
 export default {
   name: 'ListenersSection',

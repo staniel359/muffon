@@ -14,8 +14,8 @@
 
 <script>
 import BaseHeaderSegmentsContainer
-  from '*/components/containers/segments/BaseHeaderSegmentsContainer.vue'
-import getProfile from '*/helpers/actions/api/profile/get'
+  from '@/components/containers/segments/BaseHeaderSegmentsContainer.vue'
+import getProfile from '@/helpers/actions/api/profile/get'
 
 export default {
   name: 'BaseProfileSegmentContainer',

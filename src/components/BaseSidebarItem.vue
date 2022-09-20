@@ -5,16 +5,15 @@
     :link="link"
     @click="handleClick"
   >
-    <div class="main-sidebar-item-icon-container">
+    <div class="icon-container">
       <BaseIcon
         :icon="`grey ${icon}`"
       />
     </div>
 
-    <div class="main-sidebar-item-content-container">
-      <BaseHeader
-        tag="h4"
-        :text="text"
+    <div class="content-container">
+      <span
+        v-text="text"
       />
     </div>
   </Component>
@@ -22,16 +21,14 @@
 
 <script>
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseSidebarItem',
   components: {
     BaseLinkContainer,
-    BaseIcon,
-    BaseHeader
+    BaseIcon
   },
   props: {
     icon: {

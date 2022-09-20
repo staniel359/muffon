@@ -22,9 +22,9 @@
 
 <script>
 import BaseReleasesPaginatedPageContainer
-  from '*/components/containers/pages/releases/BaseReleasesPaginatedPageContainer.vue'
+  from '@/components/containers/pages/releases/BaseReleasesPaginatedPageContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 
 export default {
   name: 'UpcomingPage',

@@ -13,13 +13,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatConversationPageNavigation
-  from '*/helpers/formatters/navigation/conversation'
+  from '@/helpers/formatters/navigation/conversation'
 import formatConversationsPageTab
-  from '*/helpers/formatters/tabs/conversations'
-import getConversation from '*/helpers/actions/api/conversation/get'
+  from '@/helpers/formatters/tabs/conversations'
+import getConversation from '@/helpers/actions/api/conversation/get'
 
 export default {
   name: 'BaseConversationPageContainer',

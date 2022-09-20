@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import BaseLink from '*/components/links/BaseLink.vue'
+import BaseLink from '@/components/links/BaseLink.vue'
 import {
   main as formatArtistMainLink
-} from '*/helpers/formatters/links/artist'
+} from '@/helpers/formatters/links/artist'
 
 export default {
   name: 'ArtistLink',

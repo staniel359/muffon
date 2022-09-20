@@ -10,7 +10,7 @@
 import {
   mapGetters
 } from 'vuex'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseTrackAudioIcon',

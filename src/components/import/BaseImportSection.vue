@@ -3,6 +3,7 @@
     <Component
       :is="component"
       :[scope]="collection"
+      :is-link-to-library="isLinkToLibrary"
     />
   </div>
 
@@ -15,7 +16,7 @@
 import ArtistsList from './BaseImportSection/ArtistsList.vue'
 import AlbumsList from './BaseImportSection/AlbumsList.vue'
 import TracksList from './BaseImportSection/TracksList.vue'
-import BaseSaveButton from '*/components/buttons/BaseSaveButton.vue'
+import BaseSaveButton from '@/components/buttons/BaseSaveButton.vue'
 
 export default {
   name: 'BaseImportSection',
@@ -33,7 +34,8 @@ export default {
       type: String,
       required: true
     },
-    collection: Array
+    collection: Array,
+    isLinkToLibrary: Boolean
   },
   data () {
     return {

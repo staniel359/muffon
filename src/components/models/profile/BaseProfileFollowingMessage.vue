@@ -1,6 +1,7 @@
 <template>
-  <div
-    v-if="isFollowing || isFollowed"
+  <Component
+    :is="component"
+    v-if="isRender"
     class="main-following-message-container"
   >
     <div
@@ -28,11 +29,11 @@
         v-text="followedText"
       />
     </div>
-  </div>
+  </Component>
 </template>
 
 <script>
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 
 export default {
   name: 'BaseProfileFollowingMessage',
@@ -43,9 +44,23 @@ export default {
     otherProfileData: {
       type: Object,
       required: true
-    }
+    },
+    isSmall: Boolean
   },
   computed: {
+    component () {
+      if (this.isSmall) {
+        return 'small'
+      } else {
+        return 'div'
+      }
+    },
+    isRender () {
+      return (
+        this.isFollowing ||
+          this.isFollowed
+      )
+    },
     isFollowing () {
       return this.otherProfileData.follower_of_profile
     },

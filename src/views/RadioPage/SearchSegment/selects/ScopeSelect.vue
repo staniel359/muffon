@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseScopesDropdown from '*/components/dropdowns/BaseScopesDropdown.vue'
+import BaseScopesDropdown from '@/components/dropdowns/BaseScopesDropdown.vue'
 
 export default {
   name: 'ScopeSelect',

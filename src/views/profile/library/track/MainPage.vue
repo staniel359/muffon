@@ -22,7 +22,7 @@
 
 <script>
 import BaseProfileLibraryTrackPageContainer
-  from '*/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPageContainer.vue'
+  from '@/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPageContainer.vue'
 import LeftColumn from './MainPage/LeftColumn.vue'
 import RightColumn from './MainPage/RightColumn.vue'
 

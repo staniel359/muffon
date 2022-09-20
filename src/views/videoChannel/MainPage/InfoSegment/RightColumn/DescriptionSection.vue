@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import BaseDivider from '*/components/BaseDivider.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import BaseVideoChannelDescription
-  from '*/components/models/videoChannel/BaseVideoChannelDescription.vue'
+  from '@/components/models/videoChannel/BaseVideoChannelDescription.vue'
 
 export default {
   name: 'DescriptionSection',

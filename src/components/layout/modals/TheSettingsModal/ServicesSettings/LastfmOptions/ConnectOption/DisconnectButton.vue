@@ -8,13 +8,14 @@
   <div class="option">
     <div class="option-header">
       <BaseButton
-        class="basic red option-button"
+        class="basic circular red option-button"
         icon="lastfm"
         :class="{
           loading: isLoading,
           disabled: isLoading
         }"
         :text="disconnectText"
+        :is-invertable="false"
         @click="handleClick"
       />
     </div>
@@ -32,14 +33,14 @@
 </template>
 
 <script>
-import BaseErrorMessage from '*/components/messages/BaseErrorMessage.vue'
-import BaseButton from '*/components/buttons/BaseButton.vue'
-import BaseIcon from '*/components/BaseIcon.vue'
+import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseIcon from '@/components/BaseIcon.vue'
 import deleteLastfmSession
-  from '*/helpers/actions/api/lastfm/connect/session/delete'
+  from '@/helpers/actions/api/lastfm/connect/session/delete'
 import {
   updateGlobal as updateGlobalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'DisconnectButton',

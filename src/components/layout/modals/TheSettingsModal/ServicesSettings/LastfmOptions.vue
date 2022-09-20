@@ -1,31 +1,24 @@
 <template>
   <div class="main-settings-options-block">
-    <BaseDivider
-      text="Last.FM"
-      is-horizontal
+    <ConnectOption
+      :is-connected="isConnected"
+      :lastfm-nickname="lastfmNickname"
     />
 
-    <div>
-      <ConnectOption
-        :is-connected="isConnected"
-        :lastfm-nickname="lastfmNickname"
-      />
+    <ScrobbleOption
+      :is-connected="isConnected"
+      :is-player-with-scrobbling="isPlayerWithScrobbling"
+    />
 
-      <ScrobbleOption
-        :is-connected="isConnected"
-        :is-player-with-scrobbling="isPlayerWithScrobbling"
-      />
+    <ScrobbleNotificationsOption
+      :is-connected="isConnected"
+      :is-player-with-scrobbling="isPlayerWithScrobbling"
+    />
 
-      <ScrobbleNotificationsOption
-        :is-connected="isConnected"
-        :is-player-with-scrobbling="isPlayerWithScrobbling"
-      />
-
-      <ScrobblePercentOption
-        :is-connected="isConnected"
-        :is-player-with-scrobbling="isPlayerWithScrobbling"
-      />
-    </div>
+    <ScrobblePercentOption
+      :is-connected="isConnected"
+      :is-player-with-scrobbling="isPlayerWithScrobbling"
+    />
   </div>
 </template>
 
@@ -33,7 +26,6 @@
 import {
   mapState
 } from 'vuex'
-import BaseDivider from '*/components/BaseDivider.vue'
 import ConnectOption from './LastfmOptions/ConnectOption.vue'
 import ScrobbleOption from './LastfmOptions/ScrobbleOption.vue'
 import ScrobbleNotificationsOption
@@ -43,7 +35,6 @@ import ScrobblePercentOption from './LastfmOptions/ScrobblePercentOption.vue'
 export default {
   name: 'LastfmOptions',
   components: {
-    BaseDivider,
     ConnectOption,
     ScrobbleOption,
     ScrobbleNotificationsOption,

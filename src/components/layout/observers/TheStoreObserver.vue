@@ -10,7 +10,7 @@ import {
 } from 'electron'
 import {
   updateLocal as updateLocalStore
-} from '*/helpers/actions/store'
+} from '@/helpers/actions/store'
 
 export default {
   name: 'TheStoreObserver',

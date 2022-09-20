@@ -30,8 +30,8 @@
 <script>
 import BaseTagPageContainer from './BaseTagPageContainer.vue'
 import BasePaginatedPageContainer
-  from '*/components/containers/pages/BasePaginatedPageContainer.vue'
-import paginatedPageMixin from '*/mixins/paginatedPageMixin'
+  from '@/components/containers/pages/BasePaginatedPageContainer.vue'
+import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
   name: 'BaseTagPaginatedPageContainer',

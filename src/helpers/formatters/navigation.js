@@ -1,27 +1,27 @@
 import formatLoadingSection
-  from '*/helpers/formatters/navigation/sections/loading'
+  from '@/helpers/formatters/navigation/sections/loading'
 import formatErrorSection
-  from '*/helpers/formatters/navigation/sections/error'
+  from '@/helpers/formatters/navigation/sections/error'
 import formatHomeSection
-  from '*/helpers/formatters/navigation/sections/home'
+  from '@/helpers/formatters/navigation/sections/home'
 import formatFeedSection
-  from '*/helpers/formatters/navigation/sections/feed'
+  from '@/helpers/formatters/navigation/sections/feed'
 import formatProfilesSection
-  from '*/helpers/formatters/navigation/sections/profiles'
+  from '@/helpers/formatters/navigation/sections/profiles'
 import formatRecomendationsSection
-  from '*/helpers/formatters/navigation/sections/recommendations'
+  from '@/helpers/formatters/navigation/sections/recommendations'
 import formatSavedTracksSection
-  from '*/helpers/formatters/navigation/sections/savedTracks'
+  from '@/helpers/formatters/navigation/sections/savedTracks'
 import formatRadioSection
-  from '*/helpers/formatters/navigation/sections/radio'
+  from '@/helpers/formatters/navigation/sections/radio'
 import formatPlaylistsSection
-  from '*/helpers/formatters/navigation/sections/playlists'
+  from '@/helpers/formatters/navigation/sections/playlists'
 import formatConversationsSection
-  from '*/helpers/formatters/navigation/sections/conversations'
+  from '@/helpers/formatters/navigation/sections/conversations'
 import formatCommunitiesSection
-  from '*/helpers/formatters/navigation/sections/communities'
+  from '@/helpers/formatters/navigation/sections/communities'
 import formatMultitagSection
-  from '*/helpers/formatters/navigation/sections/multitag'
+  from '@/helpers/formatters/navigation/sections/multitag'
 
 export function loading () {
   return [

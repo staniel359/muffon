@@ -18,9 +18,9 @@
 
 <script>
 import BaseProfileLibraryCommonModalContainer
-  from '*/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
+  from '@/components/containers/modals/profile/library/BaseProfileLibraryCommonModalContainer.vue'
 import BaseArtistsSimpleList
-  from '*/components/lists/artists/BaseArtistsSimpleList.vue'
+  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
 
 export default {
   name: 'BaseCommonArtistsModal',

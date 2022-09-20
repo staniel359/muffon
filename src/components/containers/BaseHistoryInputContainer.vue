@@ -16,15 +16,15 @@ import {
 } from 'vuex'
 import {
   mainHistoryInputOptions
-} from '*/helpers/data/plugins/semantic'
+} from '@/helpers/data/plugins/semantic'
 import {
   setSearch,
   setSearchSource
-} from '*/helpers/actions/plugins/semantic'
+} from '@/helpers/actions/plugins/semantic'
 import {
   get as getElectronStoreHistory,
   update as updateElectronStoreHistory
-} from '*/helpers/actions/plugins/electronStore/history'
+} from '@/helpers/actions/plugins/electronStore/history'
 
 export default {
   name: 'BaseHistoryInputContainer',

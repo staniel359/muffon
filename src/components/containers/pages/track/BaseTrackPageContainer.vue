@@ -15,13 +15,13 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
-import formatTrackPageNavigation from '*/helpers/formatters/navigation/track'
-import formatTrackPageTab from '*/helpers/formatters/tabs/track'
-import formatRequestTrackData from '*/helpers/formatters/request/track/data'
-import getTrack from '*/helpers/actions/api/track/get'
-import getBandcampId from '*/helpers/actions/api/bandcampId/get'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
+import formatTrackPageNavigation from '@/helpers/formatters/navigation/track'
+import formatTrackPageTab from '@/helpers/formatters/tabs/track'
+import formatRequestTrackData from '@/helpers/formatters/request/track/data'
+import getTrack from '@/helpers/actions/api/track/get'
+import getBandcampId from '@/helpers/actions/api/bandcampId/get'
 
 export default {
   name: 'BaseTrackPageContainer',

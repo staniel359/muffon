@@ -1,16 +1,14 @@
 <template>
   <div class="add-buttons-container">
-    <div class="ui buttons">
-      <MusicButton
-        :artists="artists"
-        :albums="albums"
-        :tracks="tracks"
-      />
+    <MusicButton
+      :artists="artists"
+      :albums="albums"
+      :tracks="tracks"
+    />
 
-      <ImagesButton />
+    <ImagesButton />
 
-      <EmojiButton />
-    </div>
+    <EmojiButton />
   </div>
 </template>
 
@@ -35,4 +33,8 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+::v-deep(.add-button)
+  &:not(:first-child)
+    margin-left: 0.5em !important
+</style>

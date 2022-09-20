@@ -26,15 +26,15 @@
 
 <script>
 import BaseProfileLibraryTrackPaginatedSegmentContainer
-  from '*/components/containers/segments/profile/library/track/BaseProfileLibraryTrackPaginatedSegmentContainer.vue'
+  from '@/components/containers/segments/profile/library/track/BaseProfileLibraryTrackPaginatedSegmentContainer.vue'
 import BaseAlbumsTableList
-  from '*/components/lists/albums/BaseAlbumsTableList.vue'
+  from '@/components/lists/albums/BaseAlbumsTableList.vue'
 import {
   albums as formatProfileLibraryTrackAlbumsLink
-} from '*/helpers/formatters/links/profile/library/track'
+} from '@/helpers/formatters/links/profile/library/track'
 import {
   isCurrentProfile
-} from '*/helpers/utils'
+} from '@/helpers/utils'
 
 export default {
   name: 'AlbumsSegment',

@@ -1,8 +1,8 @@
-import i18n from '*/plugins/i18n'
+import i18n from '@/plugins/i18n'
 import {
   main as formatCommunityMainLink,
   posts as formatCommunityPostsLink
-} from '*/helpers/formatters/links/community'
+} from '@/helpers/formatters/links/community'
 
 export default function (
   {

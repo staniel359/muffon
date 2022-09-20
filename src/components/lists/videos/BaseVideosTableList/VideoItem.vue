@@ -37,22 +37,22 @@
 
 <script>
 import BaseSimpleCardContainer
-  from '*/components/containers/cards/BaseSimpleCardContainer.vue'
+  from '@/components/containers/cards/BaseSimpleCardContainer.vue'
 import BaseLinkContainer
-  from '*/components/containers/links/BaseLinkContainer.vue'
+  from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseVideoOptionsDropdown
-  from '*/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
-import BaseImage from '*/components/images/BaseImage.vue'
-import BaseHeader from '*/components/BaseHeader.vue'
+  from '@/components/dropdowns/video/BaseVideoOptionsDropdown.vue'
+import BaseImage from '@/components/images/BaseImage.vue'
+import BaseHeader from '@/components/BaseHeader.vue'
 import {
   main as formatVideoMainLink
-} from '*/helpers/formatters/links/video'
+} from '@/helpers/formatters/links/video'
 import {
   video as formatVideoShareData
-} from '*/helpers/formatters/share'
+} from '@/helpers/formatters/share'
 import {
   date as formatDate
-} from '*/helpers/formatters'
+} from '@/helpers/formatters'
 
 export default {
   name: 'VideoItem',

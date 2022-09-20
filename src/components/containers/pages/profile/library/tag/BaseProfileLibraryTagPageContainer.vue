@@ -16,14 +16,14 @@
 
 <script>
 import BasePageContainer
-  from '*/components/containers/pages/BasePageContainer.vue'
-import navigationMixin from '*/mixins/navigationMixin'
+  from '@/components/containers/pages/BasePageContainer.vue'
+import navigationMixin from '@/mixins/navigationMixin'
 import formatProfileLibraryTagPageNavigation
-  from '*/helpers/formatters/navigation/profile/library/tag'
+  from '@/helpers/formatters/navigation/profile/library/tag'
 import formatProfileLibraryTagPageTab
-  from '*/helpers/formatters/tabs/profile/library/tag'
+  from '@/helpers/formatters/tabs/profile/library/tag'
 import getProfileLibraryTag
-  from '*/helpers/actions/api/profile/library/tag/get'
+  from '@/helpers/actions/api/profile/library/tag/get'
 
 export default {
   name: 'BaseProfileLibraryTagPageContainer',

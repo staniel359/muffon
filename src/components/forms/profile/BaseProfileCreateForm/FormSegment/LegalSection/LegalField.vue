@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import BaseCheckbox from '*/components/BaseCheckbox.vue'
+import BaseCheckbox from '@/components/BaseCheckbox.vue'
 import PrivacyPolicyText from './LegalField/PrivacyPolicyText.vue'
 import TermsAndConditionsText from './LegalField/TermsAndConditionsText.vue'
 

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import BaseSearchInput from '*/components/inputs/BaseSearchInput.vue'
+import BaseSearchInput from '@/components/inputs/BaseSearchInput.vue'
 
 export default {
   name: 'TracksInput',
@@ -34,7 +34,7 @@ export default {
   computed: {
     url () {
       return (
-        '/lastfm/search/tracks' +
+        'lastfm/search/tracks' +
         '?query={query}&limit=5' +
         `&profile_id=${this.profileId}`
       )
