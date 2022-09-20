@@ -21,12 +21,23 @@
       :text="nickname"
     />
 
-    <BaseLabel
+    <div
+      v-if="isPrivate"
+      class="private-icon-container"
+    >
+      <BasePrivateIcon />
+    </div>
+
+    <div
       v-if="isStaff"
-      class="primary circular role-label"
-      :is-invertable="false"
-      :text="roleText"
-    />
+      class="role-label-container"
+    >
+      <BaseLabel
+        class="primary circular"
+        :is-invertable="false"
+        :text="roleText"
+      />
+    </div>
 
     <WasOnlineSection
       :profile-data="profileData"
@@ -41,6 +52,7 @@ import BaseProfileOnlineLabel
   from '@/components/models/profile/BaseProfileOnlineLabel.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import BaseLabel from '@/components/BaseLabel.vue'
 import WasOnlineSection from './InfoSegment/WasOnlineSection.vue'
 
@@ -51,6 +63,7 @@ export default {
     BaseProfileOnlineLabel,
     BaseZoomableImage,
     BaseHeader,
+    BasePrivateIcon,
     BaseLabel,
     WasOnlineSection
   },
@@ -77,14 +90,21 @@ export default {
       return this.$t(
         `roles.${this.role}`
       )
+    },
+    isPrivate () {
+      return this.profileData.private
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.role-label
-  margin-top: 0.5em
+.private-icon-container
+  .icon
+    @extend .no-margin
+
+.role-label-container
+  margin-top: 0.25em
 
 .online-label
   @extend .absolute

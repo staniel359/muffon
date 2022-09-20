@@ -19,19 +19,19 @@
       />
 
       <div class="content">
-        <BaseHeader
-          tag="h4"
-          :class="{
-            link: isMainLinkActive
-          }"
-          :text="playlistTitle"
-        />
+        <div class="title-container">
+          <BaseHeader
+            tag="h4"
+            :class="{
+              link: isMainLinkActive
+            }"
+            :text="playlistTitle"
+          />
 
-        <BasePrivateSection
-          v-if="isPrivate"
-          class="description"
-          model="playlist"
-        />
+          <BasePrivateIcon
+            v-if="isPrivate"
+          />
+        </div>
 
         <span
           v-if="isWithProfileNickname"
@@ -43,6 +43,10 @@
             :text="profileNickname"
             :link="profileMainLink"
             @click="handleLinkClick"
+          />
+
+          <BasePrivateIcon
+            v-if="isProfilePrivate"
           />
         </span>
 
@@ -79,7 +83,7 @@ import BaseLinkContainer
 import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BasePrivateSection from '@/components/BasePrivateSection.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -107,7 +111,7 @@ export default {
     BaseDeletedBlock,
     BaseImage,
     BaseHeader,
-    BasePrivateSection,
+    BasePrivateIcon,
     BaseLink,
     BasePlaylistOptionsDropdown,
     BaseClearButton,
@@ -223,6 +227,9 @@ export default {
     },
     isPrivate () {
       return this.playlistData.private
+    },
+    isProfilePrivate () {
+      return this.profileData.private
     }
   },
   methods: {
@@ -267,4 +274,7 @@ export default {
     & > .description
       &.profile-nickname
         @extend .width-fit-content
+
+.title-container
+  @extend .d-flex, .align-items-center
 </style>

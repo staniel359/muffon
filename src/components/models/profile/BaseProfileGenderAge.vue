@@ -73,7 +73,7 @@ export default {
 
 .gender-age-separator
   @extend .d-inline-block
-  width: 0.25em
+  width: 0.4em
 
 .age-block
   @extend .d-inline-block

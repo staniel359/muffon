@@ -18,7 +18,12 @@
           :text="nickname"
         />
 
+        <BasePrivateIcon
+          v-if="isPrivate"
+        />
+
         <BaseProfileOnlineLabel
+          v-if="!isPrivate"
           class="online-label"
           :profile-data="profileData"
         />
@@ -31,7 +36,10 @@
         />
       </div>
 
-      <div class="description">
+      <div
+        v-if="!isPrivate"
+        class="description"
+      >
         <small>
           <BaseProfileGenderAge
             :profile-data="profileData"
@@ -70,6 +78,7 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import BaseProfileOnlineLabel
   from '@/components/models/profile/BaseProfileOnlineLabel.vue'
 import BaseLabel from '@/components/BaseLabel.vue'
@@ -96,6 +105,7 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
+    BasePrivateIcon,
     BaseProfileOnlineLabel,
     BaseLabel,
     BaseProfileGenderAge,
@@ -169,6 +179,9 @@ export default {
     },
     uuid () {
       return this.profileData.uuid
+    },
+    isPrivate () {
+      return this.profileData.private
     }
   },
   methods: {

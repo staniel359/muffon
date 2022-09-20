@@ -1,5 +1,6 @@
 <template>
-  <RouterLink
+  <Component
+    :is="component"
     class="ui main-link"
     :to="link"
     @mouseenter="handleMouseEnter"
@@ -11,7 +12,7 @@
     <span
       v-html="text"
     />
-  </RouterLink>
+  </Component>
 </template>
 
 <script>
@@ -28,16 +29,11 @@ import {
 export default {
   name: 'BaseLink',
   props: {
-    link: {
-      type: Object,
-      default () {
-        return {}
-      }
-    },
     text: {
       type: String,
       required: true
-    }
+    },
+    link: Object
   },
   emits: [
     'click',
@@ -49,7 +45,14 @@ export default {
       [
         'isSwitchToNewTab'
       ]
-    )
+    ),
+    component () {
+      if (this.link) {
+        return 'RouterLink'
+      } else {
+        return 'a'
+      }
+    }
   },
   methods: {
     handleMouseEnter () {

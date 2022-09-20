@@ -64,5 +64,5 @@ export default {
 
 <style lang="sass" scoped>
 .was-online-section
-  margin-top: 0.5em
+  margin-top: 0.25em
 </style>

@@ -11,7 +11,9 @@
       :icon="icon"
     />
 
-    {{ text }}
+    <span
+      v-text="text"
+    />
   </Component>
 </template>
 

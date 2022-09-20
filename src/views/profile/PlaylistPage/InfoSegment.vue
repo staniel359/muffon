@@ -16,16 +16,16 @@
         </div>
 
         <div class="content">
-          <BaseHeader
-            tag="h3"
-            :text="playlistTitle"
-          />
+          <div class="title-container">
+            <BaseHeader
+              tag="h3"
+              :text="playlistTitle"
+            />
 
-          <BasePrivateSection
-            v-if="isPrivate"
-            class="description"
-            model="playlist"
-          />
+            <BasePrivateIcon
+              v-if="isPrivate"
+            />
+          </div>
 
           <div
             class="description"
@@ -71,7 +71,7 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BasePrivateSection from '@/components/BasePrivateSection.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -96,7 +96,7 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
-    BasePrivateSection,
+    BasePrivateIcon,
     BaseTimestamp,
     BasePlaylistOptionsDropdown,
     BasePlaylistUpdateModal,
@@ -181,6 +181,9 @@ export default {
 .playlist-image-container
   width: 60px
   height: 60px
+
+.title-container
+  @extend .d-flex, .align-items-center
 
 .playlist-options
   @extend .visibility-visible
