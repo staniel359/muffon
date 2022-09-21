@@ -6,7 +6,7 @@
       red: isRed
     }"
     :is-invertable="isInvertable"
-    @click.prevent="handleClick"
+    @click.prevent.stop="handleClick"
   />
 </template>
 
