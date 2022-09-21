@@ -48,10 +48,7 @@ export default {
         return []
       }
     },
-    isPointing: {
-      type: Boolean,
-      default: true
-    },
+    isPointing: Boolean,
     isFluid: Boolean,
     isVertical: Boolean
   },

@@ -2,7 +2,6 @@
   <BaseTabsContainer
     class="settings-group-tabs-container"
     :tabs="tabs"
-    :is-pointing="false"
     is-vertical
   >
     <template
