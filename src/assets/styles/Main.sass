@@ -28,10 +28,6 @@ p
 @media only screen and (min-width: 768px)
   .main-container
     width: 670px !important
-  .ui.search
-    &.main-history-input
-      & > .results
-        max-height: 250px
 
 .pushable
   @extend .background-transparent
@@ -165,6 +161,7 @@ p
     .results
       @extend .background-black
       border: $borderInverted
+      max-height: 200px
       .result
         border-bottom: $borderInverted
         .title
