@@ -21,11 +21,12 @@ export default function (
 
   const params = {
     title: trackTitle,
-    artist_name: artistName,
-    album_title: albumTitle,
-    image,
-    image_url: imageUrl,
-    created_at: created
+    artist: artistName,
+    album: albumTitle,
+    image: (
+      image || imageUrl
+    ),
+    created
   }
 
   const handleSuccess = (

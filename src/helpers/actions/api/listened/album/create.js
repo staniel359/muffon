@@ -4,8 +4,7 @@ import postRequest from '@/helpers/actions/api/request/post'
 export default function (
   {
     albumTitle,
-    artistName,
-    imageUrl
+    artistName
   }
 ) {
   this.listenedId = null
@@ -18,8 +17,7 @@ export default function (
 
   const params = {
     title: albumTitle,
-    artist_name: artistName,
-    image_url: imageUrl
+    artist: artistName
   }
 
   const handleSuccess = (

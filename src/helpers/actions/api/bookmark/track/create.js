@@ -22,12 +22,12 @@ export default function (
 
   const params = {
     title: trackTitle,
-    artist_name: artistName,
-    album_title: albumTitle,
-    image_url: imageUrl,
-    source_data: sourceData,
-    audio_data: audioData,
-    album_source_data: albumSourceData
+    artist: artistName,
+    album: albumTitle,
+    image: imageUrl,
+    source: sourceData,
+    audio: audioData,
+    album_source: albumSourceData
   }
 
   const handleSuccess = (
