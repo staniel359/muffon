@@ -118,6 +118,8 @@ export default {
   &:hover
     .clear-button
       @extend .d-block
+  .image
+    @extend .w-100, .h-100
 
 .clear-button
   @extend .absolute, .no-margin, .d-none
