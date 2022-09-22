@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item main-video-item"
+    class="item main-simple-list-item"
     :link="videoMainLink"
     @click="handleLinkClick"
   >
