@@ -1,6 +1,6 @@
 <template>
   <BaseLinkContainer
-    class="item main-simple-list-item main-profile-item"
+    class="item main-simple-list-item"
     :link="profileMainLink"
     @click="handleLinkClick"
   >
@@ -214,7 +214,7 @@ export default {
   margin-left: 0.5em !important
 
 .role-label
-  margin-left: 1em
+  margin-left: 0.5em
 
 .follow-counters
   @extend .d-flex
