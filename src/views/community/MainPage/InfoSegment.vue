@@ -6,12 +6,7 @@
     ]"
   >
     <BaseListContainer>
-      <div
-        :class="[
-          'item main-simple-list-item',
-          'main-community-info-item'
-        ]"
-      >
+      <div class="item main-simple-list-item">
         <div class="community-image-container">
           <BaseZoomableImage
             model="community"
@@ -154,6 +149,9 @@ export default {
 .community-image-container
   width: 75px
   height: 75px
+
+.content
+  margin-left: 0.75em
 
 .community-options
   @extend .visibility-visible
