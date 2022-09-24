@@ -131,6 +131,8 @@ export default {
         this.$refs.dropdown,
         value
       )
+
+      this.value = value
     },
     handleSelect (
       value

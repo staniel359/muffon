@@ -68,7 +68,7 @@ import BaseVideosSimpleList
 import getSearch from '@/helpers/actions/api/search/get'
 
 export default {
-  name: 'SearchSection',
+  name: 'ResultsSection',
   components: {
     BasePaginatedSegmentContainer,
     BaseArtistsSimpleList,

@@ -202,7 +202,9 @@ export function setDropdownValue (
     element
   ).dropdown(
     'set selected',
-    value
+    value,
+    null,
+    true
   )
 }
 
