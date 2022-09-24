@@ -12,10 +12,10 @@ export function mainModalOptions (
   return {
     autofocus: false,
     allowMultiple: isMultiple,
-    duration: 100,
+    duration: 150,
     transition: 'fade',
     dimmerSettings: {
-      duration: 100
+      duration: 150
     },
     onShow,
     onVisible

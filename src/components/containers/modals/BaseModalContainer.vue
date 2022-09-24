@@ -29,6 +29,8 @@ export default {
   name: 'BaseModalContainer',
   props: {
     isImageModal: Boolean,
+    isSettingsModal: Boolean,
+    isSearchModal: Boolean,
     isMultiple: Boolean,
     size: {
       type: String,
@@ -54,7 +56,9 @@ export default {
     isRender () {
       return (
         this.isCalled ||
-          this.isImageModal
+          this.isImageModal ||
+          this.isSettingsModal ||
+          this.isSearchModal
       )
     },
     modalOptions () {
