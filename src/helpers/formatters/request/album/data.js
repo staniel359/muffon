@@ -63,7 +63,10 @@ export default function (
       case 'discogs':
         return {
           albumId: albumData.source.id,
-          albumType: albumData.source.model
+          albumType: (
+            albumData.source.model ||
+              albumData.source.album_type
+          )
         }
       case 'spotify':
         return {
