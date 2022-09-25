@@ -1,6 +1,7 @@
 <template>
   <BaseModalContainer
     ref="modal"
+    :is-multiple="isMultiple"
     @show.once="handleCall"
   >
     <BasePaginatedSegmentContainer
@@ -19,7 +20,15 @@
       :limit="limit"
       @focus="handleFocus"
     >
-      <template #default="slotProps">
+      <template #top>
+        <slot
+          name="top"
+        />
+      </template>
+
+      <template
+        #default="slotProps"
+      >
         <slot
           :[scope]="slotProps[scope]"
         />
@@ -45,7 +54,8 @@ export default {
     isLoading: Boolean,
     error: Error,
     scope: String,
-    limit: Number
+    limit: Number,
+    isMultiple: Boolean
   },
   emits: [
     'call'
@@ -73,6 +83,11 @@ export default {
       this.$refs
         .modal
         .hide()
+    },
+    reset () {
+      this.$refs
+        .segment
+        .reset()
     }
   }
 }

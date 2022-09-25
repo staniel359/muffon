@@ -19,6 +19,7 @@
           <div>
             <BasePlaylistCreateButton
               v-if="isSelf"
+              is-with-redirect
             />
           </div>
 
