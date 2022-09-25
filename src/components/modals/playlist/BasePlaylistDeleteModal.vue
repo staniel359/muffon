@@ -30,7 +30,7 @@ export default {
       type: Object,
       required: true
     },
-    isDeleteWithRedirect: Boolean
+    isWithRedirect: Boolean
   },
   emits: [
     'success'
@@ -93,7 +93,7 @@ export default {
       if (value) {
         this.hide()
 
-        if (this.isDeleteWithRedirect) {
+        if (this.isWithRedirect) {
           this.redirect()
 
           this.notify()

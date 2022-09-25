@@ -36,27 +36,16 @@
 
         <BasePlaylistOptionsDropdown
           class="playlist-options"
+          :playlist-data="playlistData"
           :share-data="shareData"
           :is-with-edit-option="isSelf"
           :is-with-delete-option="isSelf"
           is-with-share-option
-          @edit-option-click="handleEditOptionClick"
-          @delete-option-click="handleDeleteOptionClick"
+          is-delete-with-redirect
         />
       </div>
     </BaseListContainer>
   </BaseSegmentContainer>
-
-  <BasePlaylistUpdateModal
-    ref="editModal"
-    :playlist-data="playlistData"
-  />
-
-  <BasePlaylistDeleteModal
-    ref="deleteModal"
-    :playlist-data="playlistData"
-    is-delete-with-redirect
-  />
 </template>
 
 <script>
@@ -70,10 +59,6 @@ import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
-import BasePlaylistUpdateModal
-  from '@/components/modals/playlist/BasePlaylistUpdateModal.vue'
-import BasePlaylistDeleteModal
-  from '@/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   number as formatNumber
 } from '@/helpers/formatters'
@@ -93,9 +78,7 @@ export default {
     BaseHeader,
     BasePrivateIcon,
     BaseTimestamp,
-    BasePlaylistOptionsDropdown,
-    BasePlaylistUpdateModal,
-    BasePlaylistDeleteModal
+    BasePlaylistOptionsDropdown
   },
   props: {
     playlistData: {
@@ -149,24 +132,6 @@ export default {
     },
     isPrivate () {
       return this.playlistData.private
-    }
-  },
-  methods: {
-    handleEditOptionClick () {
-      this.showEditModal()
-    },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
-    showEditModal () {
-      this.$refs
-        .editModal
-        .show()
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

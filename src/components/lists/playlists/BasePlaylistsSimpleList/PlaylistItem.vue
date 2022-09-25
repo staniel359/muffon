@@ -57,10 +57,11 @@
       </div>
 
       <BasePlaylistOptionsDropdown
+        :playlist-data="playlistData"
         :share-data="shareData"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption && isSelf"
-        @delete-option-click="handleDeleteOptionClick"
+        @deleted="handleDeleted"
       />
 
       <BaseClearButton
@@ -69,12 +70,6 @@
       />
     </template>
   </BaseLinkContainer>
-
-  <BasePlaylistDeleteModal
-    ref="deleteModal"
-    :playlist-data="playlistData"
-    @success="handleDeleted"
-  />
 </template>
 
 <script>
@@ -88,8 +83,6 @@ import BaseLink from '@/components/links/BaseLink.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import BasePlaylistDeleteModal
-  from '@/components/modals/playlist/BasePlaylistDeleteModal.vue'
 import {
   main as formatProfileMainLink,
   playlist as formatProfilePlaylistLink
@@ -114,8 +107,7 @@ export default {
     BasePrivateIcon,
     BaseLink,
     BasePlaylistOptionsDropdown,
-    BaseClearButton,
-    BasePlaylistDeleteModal
+    BaseClearButton
   },
   inject: {
     findPaginationItem: {
@@ -238,9 +230,6 @@ export default {
         'linkClick'
       )
     },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
     handleClearButtonClick () {
       this.$emit(
         'clearButtonClick',
@@ -250,19 +239,13 @@ export default {
       )
     },
     handleDeleted () {
-      this.paginationItem
-        .isDeleted = true
+      this.paginationItem.isDeleted = true
     },
     handleProfileNicknameMouseEnter () {
       this.isMainLinkActive = false
     },
     handleProfileNicknameMouseLeave () {
       this.isMainLinkActive = true
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }
