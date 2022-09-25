@@ -6,11 +6,17 @@
   />
 
   <div class="content">
-    <BaseHeader
-      class="link"
-      tag="h4"
-      :text="playlistTitle"
-    />
+    <div class="title-section">
+      <BaseHeader
+        class="link"
+        tag="h4"
+        :text="playlistTitle"
+      />
+
+      <BasePrivateIcon
+        v-if="isPrivate"
+      />
+    </div>
 
     <TracksCountSection
       :tracks-count="tracksCount"
@@ -23,21 +29,43 @@
       :icon="icon"
     />
   </div>
+
+  <BasePlaylistOptionsDropdown
+    :playlist-data="playlistData"
+    is-with-edit-option
+    is-with-delete-option
+    @deleted="handleDeleted"
+  />
 </template>
 
 <script>
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import TracksCountSection from './ContentBlock/TracksCountSection.vue'
 import BaseIcon from '@/components/BaseIcon.vue'
+import BasePlaylistOptionsDropdown
+  from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 
 export default {
   name: 'ContentBlock',
   components: {
     BaseImage,
     BaseHeader,
+    BasePrivateIcon,
     TracksCountSection,
-    BaseIcon
+    BaseIcon,
+    BasePlaylistOptionsDropdown
+  },
+  provide () {
+    return {
+      setPlaylistData: this.setPlaylistData
+    }
+  },
+  inject: {
+    findPaginationItem: {
+      default: () => false
+    }
   },
   props: {
     playlistData: {
@@ -66,12 +94,41 @@ export default {
       } else {
         return null
       }
+    },
+    isPrivate () {
+      return this.playlistData.private
+    },
+    paginationItem () {
+      return this.findPaginationItem(
+        {
+          uuid: this.uuid
+        }
+      )
+    },
+    uuid () {
+      return this.playlistData.uuid
+    }
+  },
+  methods: {
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
+    },
+    setPlaylistData (
+      value
+    ) {
+      Object.assign(
+        this.paginationItem,
+        value
+      )
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+.title-section
+  @extend .d-flex, .align-items-center
+
 .icon-container
   @extend .d-flex, .align-items-center, .justify-content-center
   width: 20px

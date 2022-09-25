@@ -6,6 +6,7 @@
     :is-loading="isLoading"
     :error="error"
     is-with-also-text
+    is-multiple
     @delete-button-click="handleDeleteButtonClick"
   />
 </template>
