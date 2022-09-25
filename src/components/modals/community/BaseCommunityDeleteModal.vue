@@ -29,12 +29,8 @@ export default {
     communityData: {
       type: Object,
       required: true
-    },
-    isDeleteWithRedirect: Boolean
+    }
   },
-  emits: [
-    'deleted'
-  ],
   data () {
     return {
       error: null,
@@ -86,15 +82,9 @@ export default {
       if (value) {
         this.hide()
 
-        if (this.isDeleteWithRedirect) {
-          this.redirect()
+        this.redirect()
 
-          this.notify()
-        } else {
-          this.$emit(
-            'deleted'
-          )
-        }
+        this.notify()
       }
     },
     redirect () {

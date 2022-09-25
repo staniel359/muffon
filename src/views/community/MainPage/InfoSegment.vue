@@ -42,24 +42,7 @@
           :is-with-delete-option="isCommunityCreator"
           is-with-join-option
           is-with-share-option
-          @edit-option-click="handleEditOptionClick"
-          @delete-option-click="handleDeleteOptionClick"
         />
-
-        <template
-          v-if="isCommunityCreator"
-        >
-          <BaseCommunityUpdateModal
-            ref="editModal"
-            :community-data="communityData"
-          />
-
-          <BaseCommunityDeleteModal
-            ref="deleteModal"
-            :community-data="communityData"
-            is-delete-with-redirect
-          />
-        </template>
       </div>
     </BaseListContainer>
   </BaseSegmentContainer>
@@ -75,10 +58,6 @@ import BaseHeader from '@/components/BaseHeader.vue'
 import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BaseCommunityOptionsDropdown
   from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
-import BaseCommunityUpdateModal
-  from '@/components/modals/community/BaseCommunityUpdateModal.vue'
-import BaseCommunityDeleteModal
-  from '@/components/modals/community/BaseCommunityDeleteModal.vue'
 import {
   community as formatCommunityShareData
 } from '@/helpers/formatters/share'
@@ -91,9 +70,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BaseTimestamp,
-    BaseCommunityOptionsDropdown,
-    BaseCommunityUpdateModal,
-    BaseCommunityDeleteModal
+    BaseCommunityOptionsDropdown
   },
   props: {
     communityData: {
@@ -119,24 +96,6 @@ export default {
     },
     created () {
       return this.communityData.created
-    }
-  },
-  methods: {
-    handleEditOptionClick () {
-      this.showEditModal()
-    },
-    handleDeleteOptionClick () {
-      this.showDeleteModal()
-    },
-    showEditModal () {
-      this.$refs
-        .editModal
-        .show()
-    },
-    showDeleteModal () {
-      this.$refs
-        .deleteModal
-        .show()
     }
   }
 }

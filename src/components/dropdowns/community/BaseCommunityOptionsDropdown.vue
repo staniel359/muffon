@@ -12,15 +12,31 @@
       :share-data="shareData"
     />
 
-    <BaseEditOption
+    <template
       v-if="isWithEditOption"
-      @click="handleEditOptionClick"
-    />
+    >
+      <BaseEditOption
+        @click="handleEditOptionClick"
+      />
 
-    <BaseDeleteOption
+      <BaseCommunityUpdateModal
+        ref="editModal"
+        :community-data="communityData"
+      />
+    </template>
+
+    <template
       v-if="isWithDeleteOption"
-      @click="handleDeleteOptionClick"
-    />
+    >
+      <BaseDeleteOption
+        @click="handleDeleteOptionClick"
+      />
+
+      <BaseCommunityDeleteModal
+        ref="deleteModal"
+        :community-data="communityData"
+      />
+    </template>
   </BaseOptionsDropdownContainer>
 </template>
 
@@ -35,8 +51,12 @@ import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseEditOption
   from '@/components/dropdowns/options/BaseEditOption.vue'
+import BaseCommunityUpdateModal
+  from '@/components/modals/community/BaseCommunityUpdateModal.vue'
 import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
+import BaseCommunityDeleteModal
+  from '@/components/modals/community/BaseCommunityDeleteModal.vue'
 
 export default {
   name: 'BaseCommunityOptionsDropdown',
@@ -45,7 +65,9 @@ export default {
     JoinOption,
     BaseShareOption,
     BaseEditOption,
-    BaseDeleteOption
+    BaseCommunityUpdateModal,
+    BaseDeleteOption,
+    BaseCommunityDeleteModal
   },
   props: {
     communityData: Object,
@@ -55,10 +77,6 @@ export default {
     isWithEditOption: Boolean,
     isWithDeleteOption: Boolean
   },
-  emits: [
-    'editOptionClick',
-    'deleteOptionClick'
-  ],
   computed: {
     ...mapGetters(
       'profile',
@@ -83,14 +101,20 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
-      this.$emit(
-        'editOptionClick'
-      )
+      this.showEditModal()
     },
     handleDeleteOptionClick () {
-      this.$emit(
-        'deleteOptionClick'
-      )
+      this.showDeleteModal()
+    },
+    showEditModal () {
+      this.$refs
+        .editModal
+        .show()
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }
