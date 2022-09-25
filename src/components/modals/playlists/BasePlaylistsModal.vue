@@ -9,7 +9,7 @@
     @call="handleCall"
   >
     <template #default="slotProps">
-      <BasePlaylistsSimpleSelectableList
+      <BasePlaylistsSelectableList
         :playlists="slotProps[scope]"
         :tracks="tracks"
       />
@@ -23,8 +23,8 @@ import {
 } from 'vuex'
 import BasePaginatedSegmentModalContainer
   from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
-import BasePlaylistsSimpleSelectableList
-  from '@/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
+import BasePlaylistsSelectableList
+  from '@/components/lists/playlists/BasePlaylistsSelectableList.vue'
 import getProfilePlaylists from '@/helpers/actions/api/profile/get'
 import modalMixin from '@/mixins/modalMixin'
 
@@ -32,7 +32,7 @@ export default {
   name: 'BasePlaylistsModal',
   components: {
     BasePaginatedSegmentModalContainer,
-    BasePlaylistsSimpleSelectableList
+    BasePlaylistsSelectableList
   },
   mixins: [
     modalMixin

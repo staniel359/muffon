@@ -1,6 +1,9 @@
 <template>
   <Component
     :is="component"
+    :class="{
+      disabled: isDeleted
+    }"
     :playlist-id="playlistId"
     :tracks="tracks"
     :playlist-track-ids="playlistTrackIds"
@@ -11,7 +14,12 @@
     <template
       #default="slotProps"
     >
+      <BaseDeletedBlock
+        v-if="isDeleted"
+        model="playlist"
+      />
       <ContentBlock
+        v-else
         :playlist-data="playlistData"
         :is-loading="slotProps.isLoading"
         :is-success="isSuccess"
@@ -26,6 +34,7 @@ import BaseCreatePlaylistTracksContainer
   from '@/components/containers/playlist/tracks/BaseCreatePlaylistTracksContainer.vue'
 import BaseDeletePlaylistTracksContainer
   from '@/components/containers/playlist/tracks/BaseDeletePlaylistTracksContainer.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
 import ContentBlock from './PlaylistItem/ContentBlock.vue'
 
 export default {
@@ -33,6 +42,7 @@ export default {
   components: {
     BaseCreatePlaylistTracksContainer,
     BaseDeletePlaylistTracksContainer,
+    BaseDeletedBlock,
     ContentBlock
   },
   inject: {
@@ -56,11 +66,17 @@ export default {
   },
   computed: {
     component () {
-      if (this.playlistTrackIds.length) {
+      if (this.isRenderDeleteContainer) {
         return 'BaseDeletePlaylistTracksContainer'
       } else {
         return 'BaseCreatePlaylistTracksContainer'
       }
+    },
+    isRenderDeleteContainer () {
+      return (
+        !this.isDeleted &&
+          this.playlistTrackIds.length
+      )
     },
     playlistId () {
       return this.playlistData.id.toString()
@@ -74,6 +90,9 @@ export default {
     },
     uuid () {
       return this.playlistData.uuid
+    },
+    isDeleted () {
+      return !!this.playlistData.isDeleted
     }
   },
   mounted () {

@@ -12,13 +12,13 @@
 <script>
 import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
-import PlaylistItem from './BasePlaylistsSimpleSelectableList/PlaylistItem.vue'
+import PlaylistItem from './BasePlaylistsSelectableList/PlaylistItem.vue'
 import {
   collection as formatCollection
 } from '@/helpers/formatters'
 
 export default {
-  name: 'BasePlaylistsSimpleSelectableList',
+  name: 'BasePlaylistsSelectableList',
   components: {
     BaseListContainer,
     PlaylistItem
