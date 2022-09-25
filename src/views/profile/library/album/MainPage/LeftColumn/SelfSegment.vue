@@ -33,7 +33,7 @@
         :profile-id="profileId"
         :model-id="libraryAlbumId"
         :model-name="albumFullTitle"
-        is-delete-with-redirect
+        is-with-redirect
       />
     </div>
   </BaseSegmentContainer>
