@@ -4,11 +4,17 @@ const {
   'electron'
 )
 const {
+  handleCreateBackgroundImage,
   handleChangeBackgroundImage,
   handleResetBackgroundImage,
   handleDeleteBackgroundImage
 } = require(
   '../../handlers/ipc/backgroundImage'
+)
+
+ipcMain.on(
+  'create-background-image',
+  handleCreateBackgroundImage
 )
 
 ipcMain.on(

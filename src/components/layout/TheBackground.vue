@@ -11,13 +11,22 @@
 </template>
 
 <script>
-import fs from 'fs'
 import {
   mapState
 } from 'vuex'
+import {
+  getLink as getFileLink
+} from '@/helpers/actions/file'
 
 export default {
   name: 'TheBackground',
+  data () {
+    return {
+      defaultImagePath: require(
+        '@/assets/images/Background.jpg'
+      )
+    }
+  },
   computed: {
     ...mapState(
       'layout',
@@ -31,30 +40,14 @@ export default {
     },
     backgroundImage () {
       if (this.backgroundImagePath) {
-        return this.customBackgroundImage
+        return this.customImageLink
       } else {
-        return this.defaultBackgroundImage
+        return this.defaultImagePath
       }
     },
-    customBackgroundImage () {
-      const file =
-        fs.readFileSync(
-          this.backgroundImagePath
-        )
-
-      const blob = new Blob(
-        [
-          file
-        ]
-      )
-
-      return URL.createObjectURL(
-        blob
-      )
-    },
-    defaultBackgroundImage () {
-      return require(
-        '@/assets/images/Background.jpg'
+    customImageLink () {
+      return getFileLink(
+        this.backgroundImagePath
       )
     }
   }

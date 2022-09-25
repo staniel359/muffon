@@ -10,8 +10,6 @@ import {
   ipcRenderer
 } from 'electron'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
-import deleteBackgroundImage
-  from '@/helpers/actions/api/backgroundImage/delete'
 
 export default {
   name: 'ClearButton',
@@ -20,13 +18,8 @@ export default {
   },
   props: {
     imageId: {
-      type: Number,
+      type: String,
       required: true
-    }
-  },
-  data () {
-    return {
-      isSuccess: false
     }
   },
   computed: {
@@ -36,27 +29,12 @@ export default {
       }
     }
   },
-  watch: {
-    isSuccess: 'handleIsSuccessChange'
-  },
   methods: {
-    deleteBackgroundImage,
     handleClick () {
-      this.deleteBackgroundImage(
+      ipcRenderer.send(
+        'delete-background-image',
         this.deleteArgs
       )
-    },
-    handleIsSuccessChange (
-      value
-    ) {
-      if (value) {
-        ipcRenderer.send(
-          'delete-background-image',
-          {
-            imageId: this.imageId
-          }
-        )
-      }
     }
   }
 }
