@@ -42,6 +42,7 @@
             <BasePlaylistsSimpleList
               :playlists="slotProps[scope]"
               is-with-share-option
+              is-with-edit-option
               is-with-delete-option
             />
           </template>

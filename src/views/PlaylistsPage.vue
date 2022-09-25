@@ -16,6 +16,7 @@
             :playlists="slotProps[scope]"
             is-with-profile-nickname
             is-with-share-option
+            is-with-edit-option
             is-with-delete-option
           />
         </template>

@@ -6,6 +6,7 @@
       :playlist-data="playlistData"
       :is-with-profile-nickname="isWithProfileNickname"
       :is-with-share-option="isWithShareOption"
+      :is-with-edit-option="isWithEditOption"
       :is-with-delete-option="isWithDeleteOption"
       :is-with-clear-button="isWithClearButton"
       @link-click="handleLinkClick"
@@ -37,6 +38,7 @@ export default {
     },
     isWithProfileNickname: Boolean,
     isWithShareOption: Boolean,
+    isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean
   },

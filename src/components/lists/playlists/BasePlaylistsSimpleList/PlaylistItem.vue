@@ -60,6 +60,7 @@
         :playlist-data="playlistData"
         :share-data="shareData"
         :is-with-share-option="isWithShareOption"
+        :is-with-edit-option="isWithEditOption && isSelf"
         :is-with-delete-option="isWithDeleteOption && isSelf"
         @deleted="handleDeleted"
       />
@@ -109,6 +110,11 @@ export default {
     BasePlaylistOptionsDropdown,
     BaseClearButton
   },
+  provide () {
+    return {
+      setPlaylistData: this.setPlaylistData
+    }
+  },
   inject: {
     findPaginationItem: {
       default: () => false
@@ -121,6 +127,7 @@ export default {
     },
     isWithProfileNickname: Boolean,
     isWithShareOption: Boolean,
+    isWithEditOption: Boolean,
     isWithDeleteOption: Boolean,
     isWithClearButton: Boolean
   },
@@ -246,6 +253,14 @@ export default {
     },
     handleProfileNicknameMouseLeave () {
       this.isMainLinkActive = true
+    },
+    setPlaylistData (
+      value
+    ) {
+      Object.assign(
+        this.paginationItem,
+        value
+      )
     }
   }
 }
