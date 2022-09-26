@@ -1,14 +1,27 @@
 <template>
   <div class="main-deleted-container">
-    <span
-      v-text="deletedText"
-    />
+    <div>
+      <BaseIcon
+        class="deleted-icon"
+        icon="trash alternate outline"
+      />
+
+      <span
+        class="deleted-text"
+        v-text="deletedText"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import BaseIcon from '@/components/BaseIcon.vue'
+
 export default {
   name: 'BaseDeletedBlock',
+  components: {
+    BaseIcon
+  },
   props: {
     model: {
       type: String,

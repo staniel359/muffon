@@ -329,7 +329,7 @@ p
     font-size: 16px
 
 .main-simple-card
-  @extend .no-shadow, .text-align-center, .text-color-unset, .background-transparent
+  @extend .no-shadow, .text-align-center, .text-color-unset, .background-transparent, .h-100
   .main-options-dropdown-container
     @extend .absolute, .no-margin, .visibility-hidden
     z-index: 10
@@ -695,7 +695,12 @@ p
   @extend .w-100, .no-margin
 
 .main-deleted-container
-  @extend .d-flex, .justify-content-center, .flex-full
+  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full
+  .deleted-icon
+    @extend .d-inline
+    margin-right: 0.5em !important
+  .deleted-text
+    @extend .d-inline
 
 .main-options-dropdown-button
   padding: 0.5em !important
