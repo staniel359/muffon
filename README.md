@@ -1,5 +1,6 @@
 # muffon
 [![main](https://github.com/staniel359/muffon/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/staniel359/muffon/actions/workflows/main.yml)
+[![Discord](https://img.shields.io/discord/1023883455504850974?logo=discord&label=Discord&logoColor=white)](https://discord.gg/kpWsA5NBmJ)
 
 ![muffon](https://i.ibb.co/b2fLF6V/2022-05-20-23-12-01.png)
 
