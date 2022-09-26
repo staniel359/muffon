@@ -4,7 +4,9 @@
     :artist-name="artistName"
     :scope="scope"
     :limit="limit"
+    :view-index="viewIndex"
     is-with-top-segment
+    is-with-view-change
   >
     <template #top="topSlotProps">
       <BaseArtistSourceSelect
@@ -13,10 +15,10 @@
     </template>
 
     <template #default="slotProps">
-      <BaseAlbumsTableList
+      <BaseAlbumsList
         :albums="slotProps[scope]"
         :artist-name="slotProps.artistName"
-        :items-in-row="itemsInRow"
+        :view-index="viewIndex"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option
@@ -34,23 +36,24 @@ import BaseArtistPaginatedPageContainer
   from '@/components/containers/pages/artist/BaseArtistPaginatedPageContainer.vue'
 import BaseArtistSourceSelect
   from '@/components/models/artist/BaseArtistSourceSelect.vue'
-import BaseAlbumsTableList
-  from '@/components/lists/albums/BaseAlbumsTableList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'AlbumsPage',
   components: {
     BaseArtistPaginatedPageContainer,
     BaseArtistSourceSelect,
-    BaseAlbumsTableList
+    BaseAlbumsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   props: {
     artistName: String
   },
   data () {
     return {
-      limit: 20,
-      itemsInRow: 4,
       scope: 'albums'
     }
   }

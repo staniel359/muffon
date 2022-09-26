@@ -4,12 +4,16 @@
     :library-track-id="libraryTrackId"
     :scope="scope"
     :limit="limit"
+    :view-index="viewIndex"
+    is-with-top-segment
+    is-with-view-change
   >
     <template #default="slotProps">
-      <BaseAlbumsTableList
+      <BaseAlbumsList
         :albums="slotProps[scope]"
         :profile-id="profileId"
-        :items-in-row="itemsInRow"
+        :top-tracks-count="slotProps.topTracksCount"
+        :view-index="viewIndex"
         :is-with-library-option="!isSelf"
         is-with-artist-name
         is-with-library
@@ -26,18 +30,21 @@
 <script>
 import BaseProfileLibraryTrackPaginatedPageContainer
   from '@/components/containers/pages/profile/library/track/BaseProfileLibraryTrackPaginatedPageContainer.vue'
-import BaseAlbumsTableList
-  from '@/components/lists/albums/BaseAlbumsTableList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
 import {
   isCurrentProfile
 } from '@/helpers/utils'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'AlbumsPage',
   components: {
     BaseProfileLibraryTrackPaginatedPageContainer,
-    BaseAlbumsTableList
+    BaseAlbumsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   props: {
     profileId: {
       type: String,
@@ -47,8 +54,6 @@ export default {
   },
   data () {
     return {
-      limit: 20,
-      itemsInRow: 4,
       scope: 'albums'
     }
   },

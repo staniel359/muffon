@@ -59,10 +59,9 @@
           :profile-id="profileId"
         />
 
-        <small
-          v-if="releaseDate"
+        <BaseAlbumReleaseDateSection
           class="description"
-          v-text="releaseDateFormatted"
+          :album-data="albumData"
         />
 
         <BaseAlbumListenersCount
@@ -117,6 +116,8 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
   from '@/components/models/album/BaseAlbumArtistsSection.vue'
+import BaseAlbumReleaseDateSection
+  from '@/components/models/album/BaseAlbumReleaseDateSection.vue'
 import BaseAlbumListenersCount
   from '@/components/models/album/BaseAlbumListenersCount.vue'
 import TracksSection from './AlbumItem/TracksSection.vue'
@@ -124,9 +125,6 @@ import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseLibraryDeleteModal
   from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
-import {
-  date as formatDate
-} from '@/helpers/formatters'
 
 export default {
   name: 'AlbumItem',
@@ -138,6 +136,7 @@ export default {
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,
+    BaseAlbumReleaseDateSection,
     BaseAlbumListenersCount,
     TracksSection,
     BaseSelfIcons,
@@ -187,14 +186,6 @@ export default {
     },
     imageData () {
       return this.albumData.image
-    },
-    releaseDateFormatted () {
-      return formatDate(
-        this.releaseDate
-      )
-    },
-    releaseDate () {
-      return this.albumData.release_date
     },
     listenersCount () {
       return this.albumData.listeners_count

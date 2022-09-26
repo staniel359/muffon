@@ -3,11 +3,15 @@
     :tag-name="tagName"
     :scope="scope"
     :limit="limit"
+    :response-page-limit="responsePageLimit"
+    :view-index="viewIndex"
+    is-with-top-segment
+    is-with-view-change
   >
     <template #default="slotProps">
-      <BaseAlbumsTableList
+      <BaseAlbumsList
         :albums="slotProps[scope]"
-        :items-in-row="itemsInRow"
+        :view-index="viewIndex"
         is-with-artist-name
         is-with-listeners-count
         is-with-library-option
@@ -23,22 +27,24 @@
 <script>
 import BaseTagPaginatedPageContainer
   from '@/components/containers/pages/tag/BaseTagPaginatedPageContainer.vue'
-import BaseAlbumsTableList
-  from '@/components/lists/albums/BaseAlbumsTableList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'AlbumsPage',
   components: {
     BaseTagPaginatedPageContainer,
-    BaseAlbumsTableList
+    BaseAlbumsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   props: {
     tagName: String
   },
   data () {
     return {
-      limit: 20,
-      itemsInRow: 4,
+      responsePageLimit: 20,
       scope: 'albums'
     }
   }

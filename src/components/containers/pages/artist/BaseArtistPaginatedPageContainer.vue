@@ -18,6 +18,7 @@
         :view-index="viewIndex"
         :scope="scope"
         :limit="limit"
+        :response-page-limit="pageSlotProps.responsePageLimit"
       >
         <template #top>
           <slot

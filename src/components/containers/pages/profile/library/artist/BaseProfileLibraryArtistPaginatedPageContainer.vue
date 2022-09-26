@@ -13,11 +13,15 @@
         :error="pageSlotProps.error"
         :scope="scope"
         :limit="limit"
+        :is-with-top-segment="isWithTopSegment"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
       >
         <template #default="slotProps">
           <slot
             :[scope]="slotProps[scope]"
             :artist-name="pageSlotProps.artistName"
+            :top-tracks-count="pageSlotProps.topTracksCount"
           />
         </template>
       </BasePaginatedPageContainer>
@@ -45,7 +49,10 @@ export default {
     profileId: String,
     libraryArtistId: String,
     scope: String,
-    limit: Number
+    limit: Number,
+    isWithTopSegment: Boolean,
+    isWithViewChange: Boolean,
+    viewIndex: Number
   }
 }
 </script>

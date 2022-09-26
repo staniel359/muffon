@@ -1,11 +1,12 @@
 <template>
   <Component
     :is="listComponent"
-    :artists="artists"
+    :albums="albums"
+    :artist-name="artistName"
     :items-in-row="itemsInRow"
     :is-with-listeners-count="isWithListenersCount"
     :top-tracks-count="topTracksCount"
-    :top-albums-count="topAlbumsCount"
+    :is-with-artist-name="isWithArtistName"
     :is-with-library="isWithLibrary"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
@@ -19,26 +20,25 @@
 </template>
 
 <script>
-import BaseArtistsSimpleList from './BaseArtistsSimpleList.vue'
-import BaseArtistsTableList from './BaseArtistsTableList.vue'
-import BaseArtistsExtendedList from './BaseArtistsExtendedList.vue'
+import BaseAlbumsSimpleList from './BaseAlbumsSimpleList.vue'
+import BaseAlbumsTableList from './BaseAlbumsTableList.vue'
 
 export default {
-  name: 'BaseArtistsList',
+  name: 'BaseAlbumsList',
   components: {
-    BaseArtistsSimpleList,
-    BaseArtistsTableList,
-    BaseArtistsExtendedList
+    BaseAlbumsSimpleList,
+    BaseAlbumsTableList
   },
   props: {
     viewIndex: {
       type: Number,
       required: true
     },
-    artists: Array,
+    albums: Array,
+    artistName: String,
     isWithListenersCount: Boolean,
     topTracksCount: Number,
-    topAlbumsCount: Number,
+    isWithArtistName: Boolean,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -51,11 +51,10 @@ export default {
   },
   data () {
     return {
-      itemsInRow: 5,
+      itemsInRow: 4,
       listComponents: [
-        'BaseArtistsSimpleList',
-        'BaseArtistsTableList',
-        'BaseArtistsExtendedList'
+        'BaseAlbumsSimpleList',
+        'BaseAlbumsTableList'
       ]
     }
   },

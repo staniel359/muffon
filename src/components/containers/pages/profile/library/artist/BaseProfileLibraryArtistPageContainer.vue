@@ -7,6 +7,7 @@
     <slot
       :artist-data="artistData"
       :artist-name="artistName"
+      :top-tracks-count="topTracksCount"
       :is-loading="isLoading"
       :error="error"
     />
@@ -78,7 +79,10 @@ export default {
       return this.artistData?.name
     },
     artistData () {
-      return this.profileData?.library?.artist
+      return this.libraryData?.artist
+    },
+    libraryData () {
+      return this.profileData?.library
     },
     profileLibraryArtistArgs () {
       return {
@@ -87,6 +91,9 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    topTracksCount () {
+      return this.libraryData?.top_tracks_count
     }
   },
   watch: {

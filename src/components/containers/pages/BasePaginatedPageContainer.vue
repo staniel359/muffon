@@ -16,6 +16,7 @@
 
       <BaseViewChangeButtons
         v-if="isWithViewChange"
+        :scope="scope"
         :view-index="viewIndex"
         @view-button-click="handleViewButtonClick"
       />

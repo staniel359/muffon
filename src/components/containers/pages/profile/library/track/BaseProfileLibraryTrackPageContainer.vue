@@ -6,6 +6,9 @@
   >
     <slot
       :track-data="trackData"
+      :top-tracks-count="topTracksCount"
+      :is-loading="isLoading"
+      :error="error"
     />
   </BasePageContainer>
 </template>
@@ -77,7 +80,10 @@ export default {
       return this.trackData?.library?.artist?.id
     },
     trackData () {
-      return this.profileData?.library?.track
+      return this.libraryData?.track
+    },
+    libraryData () {
+      return this.profileData?.library
     },
     artistName () {
       return this.trackData?.artist?.name
@@ -92,6 +98,9 @@ export default {
         scope: this.scope,
         limit: this.limit
       }
+    },
+    topTracksCount () {
+      return this.libraryData?.top_tracks_count
     }
   },
   watch: {

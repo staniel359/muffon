@@ -3,11 +3,14 @@
     :scope="scope"
     :list-scope="listScope"
     :limit="limit"
+    :view-index="viewIndex"
+    is-with-top-segment
+    is-with-view-change
   >
     <template #default="slotProps">
-      <BaseAlbumsTableList
+      <BaseAlbumsList
         :albums="slotProps[listScope]"
-        :items-in-row="itemsInRow"
+        :view-index="viewIndex"
         is-with-artist-name
         is-with-listeners-count
         is-with-library-option
@@ -23,19 +26,21 @@
 <script>
 import BaseReleasesPaginatedPageContainer
   from '@/components/containers/pages/releases/BaseReleasesPaginatedPageContainer.vue'
-import BaseAlbumsTableList
-  from '@/components/lists/albums/BaseAlbumsTableList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'UpcomingPage',
   components: {
     BaseReleasesPaginatedPageContainer,
-    BaseAlbumsTableList
+    BaseAlbumsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   data () {
     return {
-      limit: 20,
-      itemsInRow: 4,
+      responsePageLimit: 20,
       scope: 'upcoming',
       listScope: 'albums'
     }
