@@ -16,7 +16,7 @@ export default {
     BaseDropdownItem
   },
   inject: [
-    'setSelectedTypeId'
+    'setSelectedTypeData'
   ],
   props: {
     typeId: {
@@ -38,8 +38,10 @@ export default {
   },
   methods: {
     handleClick () {
-      this.setSelectedTypeId(
-        this.typeId
+      this.setSelectedTypeData(
+        {
+          id: this.typeId
+        }
       )
     }
   }
