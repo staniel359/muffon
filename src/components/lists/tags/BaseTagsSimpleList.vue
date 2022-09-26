@@ -84,5 +84,5 @@ export default {
 
 <style lang="sass" scoped>
 .tags-icon
-  margin-right: 0.75em
+  margin-right: 0.5em
 </style>
