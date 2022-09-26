@@ -8,8 +8,8 @@
     <template #default="slotProps">
       <BasePlaylistsSimpleList
         :playlists="slotProps[scope]"
-        :is-with-delete-option="isSelf"
         is-with-share-option
+        is-with-delete-option
       />
     </template>
   </BaseProfileLibraryArtistPaginatedPageContainer>
@@ -20,9 +20,6 @@ import BaseProfileLibraryArtistPaginatedPageContainer
   from '@/components/containers/pages/profile/library/artist/BaseProfileLibraryArtistPaginatedPageContainer.vue'
 import BasePlaylistsSimpleList
   from '@/components/lists/playlists/BasePlaylistsSimpleList.vue'
-import {
-  isCurrentProfile
-} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistsPage',
@@ -31,23 +28,13 @@ export default {
     BasePlaylistsSimpleList
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
+    profileId: String,
     libraryArtistId: String
   },
   data () {
     return {
       limit: 50,
       scope: 'playlists'
-    }
-  },
-  computed: {
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
-      )
     }
   }
 }
