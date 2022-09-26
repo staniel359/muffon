@@ -48,7 +48,7 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'ArtistsSection',
+  name: 'RecommendationArtistsSection',
   components: {
     BaseDivider,
     BaseHeader,

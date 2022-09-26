@@ -1,73 +1,97 @@
 <template>
-  <BaseSimpleCardContainer>
-    <BaseArtistLinkContainer
-      class="card-link"
-      :artist-data="artistData"
-      :is-link-to-library="isLinkToLibrary"
-      :profile-id="profileId"
+  <BaseSimpleCardContainer
+    :class="{
+      disabled: isDeleted
+    }"
+  >
+    <BaseDeletedBlock
+      v-if="isDeleted"
+      model="artist"
+    />
+    <template
+      v-else
     >
-      <BaseArtistOptionsDropdown
+      <BaseArtistLinkContainer
+        class="card-link"
         :artist-data="artistData"
-        :library-id="libraryId"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :listened-id="listenedId"
-        :is-with-library-option="isWithLibraryOption"
-        :is-with-favorite-option="isWithFavoriteOption"
-        :is-with-bookmark-option="isWithBookmarkOption"
-        :is-with-listened-option="isWithListenedOption"
-        :is-with-share-option="isWithShareOption"
-        :is-with-delete-option="isWithDeleteOption"
-      />
+        :is-link-to-library="isLinkToLibrary"
+        :profile-id="profileId"
+      >
+        <BaseArtistOptionsDropdown
+          :artist-data="artistData"
+          :library-id="libraryId"
+          :favorite-id="favoriteId"
+          :bookmark-id="bookmarkId"
+          :listened-id="listenedId"
+          :is-with-library-option="isWithLibraryOption"
+          :is-with-favorite-option="isWithFavoriteOption"
+          :is-with-bookmark-option="isWithBookmarkOption"
+          :is-with-listened-option="isWithListenedOption"
+          :is-with-share-option="isWithShareOption"
+          :is-with-delete-option="isWithDeleteOption"
+          @delete-option-click="handleDeleteOptionClick"
+        />
 
-      <div class="main-simple-card-image-container">
-        <BaseArtistImage
-          size="small"
-          :image-data="imageData"
+        <div class="main-simple-card-image-container">
+          <BaseArtistImage
+            size="small"
+            :image-data="imageData"
+            :artist-name="artistName"
+            @load-end="handleImageLoadEnd"
+          />
+        </div>
+
+        <BaseHeader
+          class="link"
+          tag="h4"
+          :text="artistName"
+        />
+      </BaseArtistLinkContainer>
+
+      <div class="content">
+        <BaseArtistListenersCount
+          v-if="isWithListenersCount"
+          class="description"
           :artist-name="artistName"
-          @load-end="handleImageLoadEnd"
+          :listeners-count="listenersCount"
+          @load-end="handleListenersCountLoadEnd"
+        />
+
+        <LibraryCountersSection
+          v-if="isWithLibrary"
+          :artist-data="artistData"
+          :profile-id="profileId"
+        />
+
+        <BaseSelfIcons
+          v-if="isWithSelfIcons"
+          :library-id="libraryId"
+          :favorite-id="favoriteId"
+          :bookmark-id="bookmarkId"
+          :listened-id="listenedId"
+          :is-with-library-icon="isWithLibraryIcon"
+          :is-with-favorite-icon="isWithFavoriteIcon"
+          :is-with-bookmark-icon="isWithBookmarkIcon"
         />
       </div>
 
-      <BaseHeader
-        class="link"
-        tag="h4"
-        :text="artistName"
-      />
-    </BaseArtistLinkContainer>
-
-    <div class="content">
-      <BaseArtistListenersCount
-        v-if="isWithListenersCount"
-        class="description"
-        :artist-name="artistName"
-        :listeners-count="listenersCount"
-        @load-end="handleListenersCountLoadEnd"
-      />
-
-      <LibraryCountersSection
-        v-if="isWithLibrary"
-        :artist-data="artistData"
+      <BaseLibraryDeleteModal
+        v-if="isLinkToLibrary && isSelf"
+        ref="deleteModal"
+        model="artist"
         :profile-id="profileId"
+        :model-id="libraryArtistId"
+        :model-name="artistName"
+        @success="handleDeleted"
       />
-
-      <BaseSelfIcons
-        v-if="isWithSelfIcons"
-        :library-id="libraryId"
-        :favorite-id="favoriteId"
-        :bookmark-id="bookmarkId"
-        :listened-id="listenedId"
-        :is-with-library-icon="isWithLibraryIcon"
-        :is-with-favorite-icon="isWithFavoriteIcon"
-        :is-with-bookmark-icon="isWithBookmarkIcon"
-      />
-    </div>
+    </template>
   </BaseSimpleCardContainer>
 </template>
 
 <script>
 import BaseSimpleCardContainer
   from '@/components/containers/cards/BaseSimpleCardContainer.vue'
+import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseArtistOptionsDropdown
@@ -78,19 +102,23 @@ import BaseArtistListenersCount
   from '@/components/models/artist/BaseArtistListenersCount.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',
   components: {
     BaseSimpleCardContainer,
+    BaseDeletedBlock,
     BaseArtistLinkContainer,
     BaseArtistOptionsDropdown,
     BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,
     LibraryCountersSection,
-    BaseSelfIcons
+    BaseSelfIcons,
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
@@ -141,6 +169,12 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
+    },
+    isDeleted () {
+      return !!this.artistData.isDeleted
+    },
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
     }
   },
   methods: {
@@ -155,6 +189,17 @@ export default {
     ) {
       this.paginationItem
         .listeners_count = value
+    },
+    handleDeleteOptionClick () {
+      this.showDeleteModal()
+    },
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

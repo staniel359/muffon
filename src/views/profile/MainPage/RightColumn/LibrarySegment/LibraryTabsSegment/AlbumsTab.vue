@@ -14,6 +14,7 @@
         :items-in-row="itemsInRow"
         :profile-id="profileId"
         :is-with-library-option="!isSelf"
+        :is-with-delete-option="isSelf"
         is-with-image
         is-with-artist-name
         is-with-library

@@ -16,6 +16,7 @@
         :top-albums-count="slotProps.topAlbumsCount"
         :view-index="viewIndex"
         :is-with-library-option="!isSelf"
+        :is-with-delete-option="isSelf"
         is-with-library
         is-link-to-library
         is-with-favorite-option

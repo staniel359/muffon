@@ -94,10 +94,19 @@
         @success="handleDeleted"
       />
       <BaseFavoriteDeleteModal
-        v-else-if="isFavorite"
+        v-else-if="isFavorite && isSelf"
         ref="deleteModal"
         model="album"
         :model-data="albumData"
+        @success="handleDeleted"
+      />
+      <BaseLibraryDeleteModal
+        v-else-if="isLinkToLibrary && isSelf"
+        ref="deleteModal"
+        model="album"
+        :profile-id="profileId"
+        :model-id="libraryAlbumId"
+        :model-name="albumFullTitle"
         @success="handleDeleted"
       />
     </template>
@@ -123,6 +132,8 @@ import BaseBookmarkDeleteModal
   from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -139,7 +150,8 @@ export default {
     BaseAlbumOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal
+    BaseFavoriteDeleteModal,
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
@@ -225,6 +237,17 @@ export default {
     },
     sourceData () {
       return this.albumData.source
+    },
+    libraryAlbumId () {
+      return this.albumData.library.id.toString()
+    },
+    albumFullTitle () {
+      return [
+        this.artistName,
+        this.albumTitle
+      ].join(
+        ' - '
+      )
     }
   },
   methods: {

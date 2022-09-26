@@ -91,10 +91,19 @@
         @success="handleDeleted"
       />
       <BaseFavoriteDeleteModal
-        v-else-if="isFavorite"
+        v-else-if="isFavorite && isSelf"
         ref="deleteModal"
         model="artist"
         :model-data="artistData"
+        @success="handleDeleted"
+      />
+      <BaseLibraryDeleteModal
+        v-else-if="isLinkToLibrary && isSelf"
+        ref="deleteModal"
+        model="artist"
+        :profile-id="profileId"
+        :model-id="libraryArtistId"
+        :model-name="artistName"
         @success="handleDeleted"
       />
     </template>
@@ -118,6 +127,8 @@ import BaseBookmarkDeleteModal
   from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -133,7 +144,8 @@ export default {
     BaseArtistOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal
+    BaseFavoriteDeleteModal,
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
@@ -221,6 +233,9 @@ export default {
           uuid: this.uuid
         }
       )
+    },
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
     }
   },
   methods: {
