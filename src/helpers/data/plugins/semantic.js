@@ -101,6 +101,28 @@ export function mainTransparencySeekerOptions (
   }
 }
 
+export function mainScrobblePercentSeekerOptions (
+  {
+    start
+  } = {}
+) {
+  const step = 25
+
+  return {
+    min: 25,
+    max: 75,
+    step,
+    start,
+    smooth: true,
+    autoAdjustLabels: false,
+    interpretLabel: (
+      value
+    ) => {
+      return `${(value + 1) * step}%`
+    }
+  }
+}
+
 export function mainPopupOptions () {
   return {
     duration: 0,
