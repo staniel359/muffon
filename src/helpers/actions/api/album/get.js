@@ -9,7 +9,9 @@ export default function (
     artistId,
     albumId,
     albumType = 'album',
-    paramsData,
+    model,
+    ownerId,
+    accessKey,
     scope = '',
     page,
     limit
@@ -27,6 +29,18 @@ export default function (
         scope
       }
     )
+
+  const params = {
+    ...(model && {
+      album_type: model
+    }),
+    ...(ownerId && {
+      owner_id: ownerId
+    }),
+    ...(accessKey && {
+      access_key: accessKey
+    })
+  }
 
   const isWithSelfLanguage = (
     !scope ||
@@ -55,7 +69,7 @@ export default function (
   )(
     {
       url,
-      params: paramsData,
+      params,
       isWithSelfId: true,
       isWithSelfLanguage,
       page,

@@ -73,8 +73,7 @@ export default {
       return {
         source: this.sourceData,
         artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        paramsData: this.paramsData
+        albumTitle: this.albumTitle
       }
     },
     sourceData () {
@@ -88,14 +87,11 @@ export default {
         artist_id: query.artist_id,
         slug: query.slug,
         artist_slug: query.artist_slug,
+        album_type: query.album_type,
         model: query.model,
-        album_type: query.album_type
+        owner_id: query.owner_id,
+        access_key: query.access_key
       }
-    },
-    paramsData () {
-      return JSON.parse(
-        this.$route.query.params_data || '{}'
-      )
     }
   },
   methods: {

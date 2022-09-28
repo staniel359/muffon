@@ -26,12 +26,10 @@ export default function (
       case 'vk':
         return {
           albumId: albumData.source.id,
-          paramsData: {
-            owner_id:
-              albumData.source.owner_id,
-            access_key:
-              albumData.source.access_key
-          }
+          ownerId:
+            albumData.source.owner_id,
+          accessKey:
+            albumData.source.access_key
         }
       case 'odnoklassniki':
         return {
@@ -51,10 +49,7 @@ export default function (
           artistId: albumData.source.artist_id,
           slug: albumData.source.slug,
           artistSlug: albumData.source.artist_slug,
-          model: albumData.source.model,
-          paramsData: {
-            album_type: albumData.source.model
-          }
+          model: albumData.source.model
         }
       case 'soundcloud':
         return {
