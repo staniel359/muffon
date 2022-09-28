@@ -9,7 +9,7 @@
 
   <div class="transparency-seeker-container">
     <BaseSeeker
-      class="bottom aligned labeled with-thumb"
+      class="bottom aligned labeled ticked with-thumb"
       :options="seekerOptions"
       @init="handleInit"
       @mouse-up="handleMouseUp"

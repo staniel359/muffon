@@ -94,10 +94,24 @@ export function mainTransparencySeekerOptions (
     start
   } = {}
 ) {
+  const step = 10
+
+  function interpretLabel (
+    value
+  ) {
+    if (value % 2 === 0) {
+      return `${value * step}%`
+    } else {
+      return ' '
+    }
+  }
+
   return {
     max: 100,
-    step: 10,
-    start
+    step,
+    start,
+    smooth: true,
+    interpretLabel
   }
 }
 
