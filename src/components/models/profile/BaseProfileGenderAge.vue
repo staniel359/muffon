@@ -14,6 +14,7 @@
     />
 
     <div
+      v-if="age"
       class="age-block"
       v-text="age"
     />
