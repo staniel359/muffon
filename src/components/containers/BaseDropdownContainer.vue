@@ -115,7 +115,9 @@ export default {
       handler: 'handleSelectedChange'
     }
   },
-  mounted () {
+  async mounted () {
+    await this.$nextTick()
+
     setDropdown(
       this.$refs.dropdown,
       this.dropdownOptions
