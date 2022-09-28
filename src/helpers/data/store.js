@@ -37,12 +37,6 @@ export default {
     'player/setIsWithBitrate',
   'player.isWithScrobbling':
     'player/setIsWithScrobbling',
-  'player.isScrobbling':
-    'player/setIsScrobbling',
-  'player.isToScrobble':
-    'player/setIsToScrobble',
-  'player.isScrobbled':
-    'player/setIsScrobbled',
   'player.isWithScrobbleNotifications':
     'player/setIsWithScrobbleNotifications',
   'player.scrobblePercent':

@@ -14,6 +14,8 @@
     </div>
 
     <div class="audio-bottom-section">
+      <ScrobblePoint />
+
       <SeekerPanel
         @audio-end="handleAudioEnd"
       />
@@ -30,6 +32,7 @@ import AudioElement from './AudioPanel/AudioElement.vue'
 import TimerPanel from './AudioPanel/TimerPanel.vue'
 import MainControlsPanel from './AudioPanel/MainControlsPanel.vue'
 import ExtraControlsPanel from './AudioPanel/ExtraControlsPanel.vue'
+import ScrobblePoint from './AudioPanel/ScrobblePoint.vue'
 import SeekerPanel from './AudioPanel/SeekerPanel.vue'
 import getQueueTrack from '@/helpers/actions/queue/track/get'
 import {
@@ -43,6 +46,7 @@ export default {
     TimerPanel,
     MainControlsPanel,
     ExtraControlsPanel,
+    ScrobblePoint,
     SeekerPanel
   },
   data () {
@@ -127,6 +131,6 @@ export default {
   @extend .d-flex, .align-items-center, .w-100
 
 .audio-bottom-section
-  @extend .w-100
+  @extend .w-100, .relative
   margin-top: 0.5em
 </style>

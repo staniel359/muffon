@@ -49,7 +49,6 @@ export default {
     isChecked () {
       return (
         this.isConnected &&
-          this.isPlayerWithScrobbling &&
           this.isPlayerWithScrobbleNotifications
       )
     },

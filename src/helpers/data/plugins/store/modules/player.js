@@ -7,9 +7,6 @@ export default {
     source: null,
     isWithBitrate: false,
     isWithScrobbling: false,
-    isScrobbling: false,
-    isToScrobble: false,
-    isScrobbled: false,
     isWithScrobbleNotifications: false,
     scrobblePercent: 50,
     variants: [],
@@ -60,18 +57,6 @@ export default {
     ) {
       state.isWithScrobbling = value
     },
-    SET_IS_TO_SCROBBLE (
-      state,
-      value
-    ) {
-      state.isToScrobble = value
-    },
-    SET_IS_SCROBBLED (
-      state,
-      value
-    ) {
-      state.isScrobbled = value
-    },
     SET_IS_WITH_SCROBBLE_NOTIFICATIONS (
       state,
       value
@@ -83,12 +68,6 @@ export default {
       value
     ) {
       state.scrobblePercent = value
-    },
-    SET_IS_SCROBBLING (
-      state,
-      value
-    ) {
-      state.isScrobbling = value
     },
     SET_IS_WITH_BITRATE (
       state,
@@ -176,28 +155,6 @@ export default {
         value
       )
     },
-    setIsToScrobble (
-      {
-        commit
-      },
-      value
-    ) {
-      commit(
-        'SET_IS_TO_SCROBBLE',
-        value
-      )
-    },
-    setIsScrobbled (
-      {
-        commit
-      },
-      value
-    ) {
-      commit(
-        'SET_IS_SCROBBLED',
-        value
-      )
-    },
     setIsWithScrobbleNotifications (
       {
         commit
@@ -217,17 +174,6 @@ export default {
     ) {
       commit(
         'SET_SCROBBLE_PERCENT',
-        value
-      )
-    },
-    setIsScrobbling (
-      {
-        commit
-      },
-      value
-    ) {
-      commit(
-        'SET_IS_SCROBBLING',
         value
       )
     },

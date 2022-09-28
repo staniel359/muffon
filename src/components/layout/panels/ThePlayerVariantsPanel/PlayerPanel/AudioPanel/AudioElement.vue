@@ -14,7 +14,6 @@
     @pause="handlePause"
     @volumechange="handleVolumeChange"
     @emptied="handleEmptied"
-    @seeking="handleSeeking"
   />
 </template>
 
@@ -25,54 +24,24 @@ import {
   mapActions
 } from 'vuex'
 import {
-  updateGlobal as updateGlobalStore
-} from '@/helpers/actions/store'
-import {
   decrypt as decryptFile
 } from '@/helpers/actions/file'
 
 export default {
   name: 'AudioElement',
-  data () {
-    return {
-      currentPercent: 0,
-      scrobblePercent: null,
-      isScrobbled: false
-    }
-  },
   computed: {
     ...mapState(
       'audio',
       {
-        audioElement: 'element',
-        audioStatus: 'status',
-        isAudioAutoplay: 'isAutoplay',
-        audioDuration: 'duration',
-        audioCurrentTime: 'currentTime'
+        isAudioAutoplay: 'isAutoplay'
       }
     ),
     ...mapState(
       'player',
       {
-        isPlayerWithScrobbling: 'isWithScrobbling',
-        playerPlaying: 'playing',
-        playerScrobblePercent: 'scrobblePercent'
+        playerPlaying: 'playing'
       }
     ),
-    isToScrobble () {
-      return (
-        this.playerPlaying &&
-          this.isPlayerWithScrobbling &&
-          !this.isScrobbled &&
-          this.isPastScrobblePercent
-      )
-    },
-    isPastScrobblePercent () {
-      return (
-        this.currentPercent >=
-          this.scrobblePercent
-      )
-    },
     audioLink () {
       const {
         local,
@@ -121,19 +90,6 @@ export default {
     playerPlaying: {
       immediate: true,
       handler: 'handlePlayerPlayingChange'
-    },
-    playerScrobblePercent: {
-      immediate: true,
-      handler: 'handlePlayerScrobblePercentChange'
-    },
-    isToScrobble: 'handleIsToScrobbleChange',
-    isScrobbled: {
-      immediate: true,
-      handler: 'handleIsScrobbledChange'
-    },
-    isPlayerWithScrobbling: {
-      immediate: true,
-      handler: 'handleIsPlayerWithScrobblingChange'
     }
   },
   mounted () {
@@ -148,6 +104,7 @@ export default {
         setAudioElement: 'setElement',
         setAudioDuration: 'setDuration',
         setAudioProgress: 'setProgress',
+        setIsAudioLoop: 'setIsLoop',
         setIsAudioPlayable: 'setIsPlayable',
         setAudioStatus: 'setStatus',
         setAudioCurrentTime: 'setCurrentTime',
@@ -164,6 +121,10 @@ export default {
       } else {
         this.stopAudio()
       }
+
+      this.setIsAudioLoop(
+        false
+      )
     },
     handleLoadStart () {
       this.setIsAudioPlayable(
@@ -209,19 +170,8 @@ export default {
       this.setAudioStatus(
         'play'
       )
-
-      if (this.isPlayerWithScrobbling) {
-        updateGlobalStore(
-          {
-            'player.isScrobbling': true
-          },
-          {
-            isSave: false
-          }
-        )
-      }
     },
-    async handleTimeUpdate (
+    handleTimeUpdate (
       event
     ) {
       const {
@@ -231,23 +181,6 @@ export default {
       this.setAudioCurrentTime(
         currentTime
       )
-
-      if (currentTime === 0) {
-        this.isScrobbled = false
-
-        updateGlobalStore(
-          {
-            'player.isScrobbled': false,
-            'player.isScrobbling': false
-          },
-          {
-            isSave: false
-          }
-        )
-      }
-
-      this.currentPercent =
-        await this.getCurrentPercent()
     },
     handlePause () {
       this.setAudioStatus(
@@ -270,95 +203,27 @@ export default {
         false
       )
     },
-    handleSeeking () {
-      this.updateScrobblePercent()
-    },
-    handlePlayerScrobblePercentChange () {
-      this.updateScrobblePercent()
-    },
-    handleIsToScrobbleChange (
-      value
-    ) {
-      if (value) {
-        this.isScrobbled = true
-      }
-    },
-    handleIsScrobbledChange (
-      value
-    ) {
-      updateGlobalStore(
-        {
-          'player.isToScrobble': value
-        },
-        {
-          isSave: false
-        }
-      )
-    },
-    handleIsPlayerWithScrobblingChange (
-      value
-    ) {
-      if (!value) {
-        updateGlobalStore(
-          {
-            'player.isScrobbling': false
-          },
-          {
-            isSave: false
-          }
-        )
-      }
-    },
     loadAudio () {
       this.setAudioStatus(
         'pause'
       )
 
-      this.audioElement.src = this.audioLink
+      this.$refs
+        .audio
+        .src = this.audioLink
 
-      this.audioElement.load()
+      this.$refs
+        .audio
+        .load()
     },
     stopAudio () {
       this.setAudioStatus(
         'stop'
       )
 
-      this.audioElement.src = ''
-
-      updateGlobalStore(
-        {
-          'player.isScrobbling': false
-        },
-        {
-          isSave: false
-        }
-      )
-    },
-    async updateScrobblePercent () {
-      const currentPercent =
-        await this.getCurrentPercent()
-
-      this.scrobblePercent =
-        this.playerScrobblePercent +
-          currentPercent
-
-      this.currentPercent = currentPercent
-    },
-    async getCurrentPercent () {
-      await this.$nextTick()
-
-      if (this.audioDuration === 0) {
-        return 0
-      } else {
-        const {
-          currentTime
-        } = this.$refs.audio
-
-        return (
-          currentTime * 100 /
-          this.audioDuration
-        )
-      }
+      this.$refs
+        .audio
+        .src = ''
     },
     setProgress (
       event
