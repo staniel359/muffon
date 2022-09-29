@@ -49,5 +49,5 @@ export default {
 <style lang="sass" scoped>
 .playing-album-title
   @extend .text-medium-light
-  margin-top: 0.2em !important
+  margin-top: 0.3em !important
 </style>

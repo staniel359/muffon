@@ -14,6 +14,8 @@
       @model-scope-change="handleModelScopeChange"
     />
 
+    <PlayingSegment />
+
     <PlayerSegment
       v-if="scope"
       :key="key"
@@ -26,6 +28,7 @@
 
 <script>
 import SearchSegment from './RadioPage/SearchSegment.vue'
+import PlayingSegment from './RadioPage/PlayingSegment.vue'
 import PlayerSegment from './RadioPage/PlayerSegment.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import {
@@ -40,6 +43,7 @@ export default {
   name: 'RadioPage',
   components: {
     SearchSegment,
+    PlayingSegment,
     PlayerSegment
   },
   mixins: [

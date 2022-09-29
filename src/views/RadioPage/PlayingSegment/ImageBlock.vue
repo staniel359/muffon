@@ -1,7 +1,7 @@
 <template>
   <div class="playing-image-block">
     <BaseImage
-      class="rounded bordered inverted"
+      class="playing-image"
       model="track"
       :image="imageData?.large"
     />
@@ -32,9 +32,12 @@ export default {
 
 <style lang="sass" scoped>
 .playing-image-block
-  @extend .d-flex, .justify-content-center, .h-100
+  @extend .d-flex, .justify-content-center
   background: black
-  & > .image
-    height: 350px
-    width: 350px
+
+.playing-image
+  border-left: $borderInverted
+  border-right: $borderInverted
+  height: 325px
+  min-width: 325px
 </style>
