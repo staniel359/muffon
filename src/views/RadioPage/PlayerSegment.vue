@@ -6,25 +6,21 @@
     :error="error"
     @refresh="handleRefresh"
   >
-    <template v-if="isGetData">
-      <BaseErrorMessage
-        v-if="error"
-        :error="error"
+    <BaseErrorMessage
+      v-if="error"
+      :error="error"
+    />
+    <template
+      v-else-if="trackData"
+    >
+      <TrackSection
+        :key="key"
+        :track-data="trackData"
       />
 
-      <template
-        v-if="trackData"
-      >
-        <TrackSection
-          :key="key"
-          ref="track"
-          :track-data="trackData"
-        />
-
-        <NextButton
-          @click="handleNextButtonClick"
-        />
-      </template>
+      <NextButton
+        @click="handleNextButtonClick"
+      />
     </template>
   </BaseSegmentContainer>
 </template>
@@ -76,7 +72,7 @@ export default {
       }
     },
     isGetData () {
-      if (this.scope === 'top') {
+      if (this.isTopScope) {
         return !!this.modelScope
       } else {
         return !!(
@@ -84,6 +80,9 @@ export default {
             this.modelScope
         )
       }
+    },
+    isTopScope () {
+      return this.scope === 'top'
     }
   },
   watch: {
@@ -102,26 +101,17 @@ export default {
     handleRefresh () {
       this.getData()
     },
-    async handleTrackDataChange (
+    handleTrackDataChange (
       value
     ) {
       if (value) {
         this.key = generateKey()
-
-        await this.$nextTick()
-
-        this.getAudio()
       }
     },
     getData () {
       this.getRadio(
         this.radioArgs
       )
-    },
-    getAudio () {
-      this.$refs
-        .track
-        .getAudio()
     }
   }
 }

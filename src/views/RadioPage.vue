@@ -62,6 +62,9 @@ export default {
     },
     tabData () {
       return formatRadioPageTab()
+    },
+    isTopScope () {
+      return this.scope === 'top'
     }
   },
   mounted () {
@@ -73,7 +76,7 @@ export default {
     ) {
       this.scope = value
 
-      if (this.scope === 'top') {
+      if (this.isTopScope) {
         this.modelScope = null
       }
     },
@@ -82,14 +85,23 @@ export default {
     ) {
       this.modelName = value
 
-      this.key = generateKey()
+      if (value) {
+        this.key = generateKey()
+      }
     },
     handleModelScopeChange (
       value
     ) {
       this.modelScope = value
 
-      this.key = generateKey()
+      const isRefresh = (
+        this.isTopScope ||
+          this.modelName
+      )
+
+      if (isRefresh) {
+        this.key = generateKey()
+      }
     }
   }
 }
