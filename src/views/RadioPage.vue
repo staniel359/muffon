@@ -69,6 +69,8 @@ export default {
   },
   mounted () {
     this.setNavigation()
+
+    this.isRefreshNavigation = true
   },
   methods: {
     handleScopeChange (
