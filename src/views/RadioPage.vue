@@ -17,7 +17,6 @@
     <PlayingSegment />
 
     <PlayerSegment
-      v-if="scope"
       :key="key"
       :scope="scope"
       :model-name="modelName"
@@ -52,9 +51,9 @@ export default {
   data () {
     return {
       key: null,
-      scope: null,
       modelName: null,
-      modelScope: null
+      modelScope: null,
+      scope: 'top'
     }
   },
   computed: {

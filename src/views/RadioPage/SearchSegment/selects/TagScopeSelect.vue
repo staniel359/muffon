@@ -1,7 +1,7 @@
 <template>
   <BaseScopesDropdown
     :scopes="scopes"
-    :selected="selectedScope"
+    :selected="selected"
     @select="handleSelect"
   />
 </template>
@@ -26,12 +26,24 @@ export default {
     }
   },
   computed: {
-    selectedScope () {
+    selected () {
       return this.scopes[0]
     }
   },
+  mounted () {
+    this.select(
+      this.selected
+    )
+  },
   methods: {
     handleSelect (
+      value
+    ) {
+      this.select(
+        value
+      )
+    },
+    select (
       value
     ) {
       this.$emit(

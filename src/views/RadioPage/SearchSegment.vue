@@ -2,13 +2,14 @@
   <BaseSegmentContainer>
     <div class="scope-select-container">
       <ScopeSelect
+        :scope="scope"
         @select="handleScopeSelect"
       />
 
       <template v-if="scope">
         <Component
           :is="searchComponent"
-          v-if="scope !== 'top'"
+          v-if="!isTopScope"
           ref="input"
           class="search-container"
           @select="handleSearchSelect"
@@ -84,6 +85,9 @@ export default {
       return this.modelScopeSelectComponents[
         this.scope
       ]
+    },
+    isTopScope () {
+      return this.scope === 'top'
     }
   },
   methods: {
