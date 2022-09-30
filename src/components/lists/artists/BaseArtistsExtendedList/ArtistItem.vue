@@ -5,7 +5,8 @@
     :request-artist-data="artistData"
   >
     <template #default="slotProps">
-      <BaseArtistHorizontalCardContainer
+      <BaseSegmentContainer
+        class="raised main-segment-container artist-segment"
         :class="{
           disabled: isDeleted
         }"
@@ -115,7 +116,7 @@
             </div>
           </template>
         </template>
-      </BaseArtistHorizontalCardContainer>
+      </BaseSegmentContainer>
     </template>
   </BaseArtistContainer>
 </template>
@@ -123,8 +124,8 @@
 <script>
 import BaseArtistContainer
   from '@/components/containers/artist/BaseArtistContainer.vue'
-import BaseArtistHorizontalCardContainer
-  from '@/components/containers/artist/BaseArtistHorizontalCardContainer.vue'
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
@@ -149,7 +150,7 @@ export default {
   name: 'ArtistItem',
   components: {
     BaseArtistContainer,
-    BaseArtistHorizontalCardContainer,
+    BaseSegmentContainer,
     BaseDeletedBlock,
     BaseArtistImage,
     LibraryCountersSection,
@@ -282,6 +283,11 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.artist-segment
+  @extend .d-flex
+  &.inverted
+    border: $borderInverted !important
+
 .artist-left-column
   margin-right: 1em
 

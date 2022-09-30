@@ -1,5 +1,5 @@
 <template>
-  <div class="ui horizontal cards">
+  <div>
     <ArtistItem
       v-for="artistData in artistsCollection"
       :key="artistData.uuid"
