@@ -153,9 +153,6 @@ export default {
   inject: {
     findPaginationItem: {
       default: () => false
-    },
-    findListItem: {
-      default: () => false
     }
   },
   props: {
@@ -210,13 +207,6 @@ export default {
     isDeleted () {
       return !!this.artistData.isDeleted
     },
-    item () {
-      if (this.isPaginated) {
-        return this.paginationItem
-      } else {
-        return this.listItem
-      }
-    },
     paginationItem () {
       return this.findPaginationItem(
         {
@@ -226,13 +216,6 @@ export default {
     },
     uuid () {
       return this.artistData.uuid
-    },
-    listItem () {
-      return this.findListItem(
-        {
-          uuid: this.uuid
-        }
-      )
     },
     libraryArtistId () {
       return this.artistData.library.id.toString()
@@ -247,12 +230,16 @@ export default {
     handleImageLoadEnd (
       value
     ) {
-      this.item.image = value
+      if (this.isPaginated) {
+        this.paginationItem.image = value
+      }
     },
     handleListenersCountLoadEnd (
       value
     ) {
-      this.item.listeners_count = value
+      if (this.isPaginated) {
+        this.paginationItem.listeners_count = value
+      }
     },
     handleCounterLinkActiveChange (
       value
@@ -271,7 +258,9 @@ export default {
       )
     },
     handleDeleted () {
-      this.item.isDeleted = true
+      if (this.isPaginated) {
+        this.paginationItem.isDeleted = true
+      }
     },
     showDeleteModal () {
       this.$refs

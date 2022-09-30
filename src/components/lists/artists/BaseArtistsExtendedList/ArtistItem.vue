@@ -180,7 +180,6 @@ export default {
       type: Object,
       required: true
     },
-    responseData: Object,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -201,6 +200,9 @@ export default {
     },
     artistName () {
       return this.responseData.name
+    },
+    responseData () {
+      return this.artistData.responseData
     },
     imageData () {
       return this.artistData.image
