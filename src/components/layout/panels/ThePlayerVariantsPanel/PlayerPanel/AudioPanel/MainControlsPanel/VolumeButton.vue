@@ -6,7 +6,7 @@
     @click="handleClick"
   />
 
-  <VolumePopup />
+  <BaseVolumePopup />
 </template>
 
 <script>
@@ -15,7 +15,7 @@ import {
   mapActions
 } from 'vuex'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import VolumePopup from './VolumeButton/VolumePopup.vue'
+import BaseVolumePopup from '@/components/popups/BaseVolumePopup.vue'
 import {
   setPopup
 } from '@/helpers/actions/plugins/semantic'
@@ -27,7 +27,7 @@ export default {
   name: 'VolumeButton',
   components: {
     BaseButton,
-    VolumePopup
+    BaseVolumePopup
   },
   data () {
     return {
@@ -43,6 +43,9 @@ export default {
         audioElement: 'element'
       }
     ),
+    popupOptions () {
+      return mainPopupOptions()
+    },
     icon () {
       return `volume ${this.volumeIcon}`
     },
@@ -67,7 +70,7 @@ export default {
   mounted () {
     setPopup(
       this.button,
-      mainPopupOptions()
+      this.popupOptions
     )
   },
   methods: {

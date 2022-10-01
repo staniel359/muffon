@@ -32,5 +32,5 @@ export default {
 
 <style lang="sass" scoped>
 .source-icon-block
-  margin-left: 0.5em !important
+  margin-left: 0.5em
 </style>

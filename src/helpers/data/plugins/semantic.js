@@ -139,39 +139,19 @@ export function mainScrobblePercentSeekerOptions (
 
 export function mainPopupOptions () {
   return {
-    duration: 0,
     position: 'top center',
+    transition: 'fade up',
     variation: 'basic',
     closable: false,
-    hoverable: true,
-    inline: true
+    hoverable: true
   }
 }
 
-export function sourcePopupOptions (
-  {
-    isDarkMode
-  }
-) {
-  const variation = [
-    'basic small',
-    (
-      isDarkMode &&
-        'inverted'
-    )
-  ].filter(
-    e => e
-  ).join(
-    ' '
-  )
-
+export function sourcePopupOptions () {
   return {
-    duration: 0,
     position: 'top center',
-    variation,
-    className: {
-      popup: 'ui popup main-popup'
-    }
+    transition: 'fade up',
+    variation: 'basic small'
   }
 }
 

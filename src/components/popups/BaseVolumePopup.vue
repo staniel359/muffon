@@ -37,7 +37,7 @@ import {
 } from '@/helpers/actions/plugins/semantic'
 
 export default {
-  name: 'VolumePopup',
+  name: 'BaseVolumePopup',
   components: {
     BasePopupContainer,
     BaseHeader,

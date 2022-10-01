@@ -79,5 +79,5 @@ export default {
   @extend .flex-full
 
 .source-icon-block
-  margin-left: 0.5em !important
+  margin-left: 0.5em
 </style>
