@@ -19,6 +19,8 @@ export default {
     'layout/setIsMaximizeOnStart',
   'layout.isSwitchToNewTab':
     'layout/setIsSwitchToNewTab',
+  'layout.isWithArtistPopup':
+    'layout/setIsWithArtistPopup',
   'layout.isWithInfiniteScroll':
     'layout/setIsWithInfiniteScroll',
   'layout.isWithSystemTheme':

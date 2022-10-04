@@ -4,6 +4,7 @@
     :key="artistData.uuid"
     :artist-data="artistData"
     :index="index"
+    :is-with-popup="isWithPopup"
     @link-active-change="handleLinkActiveChange"
     @link-click="handleLinkClick"
   />
@@ -21,6 +22,10 @@ export default {
     ArtistLink
   },
   props: {
+    isWithPopup: {
+      type: Boolean,
+      default: true
+    },
     artists: Array
   },
   emits: [

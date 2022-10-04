@@ -1,6 +1,7 @@
 <template>
   <BaseLabel
-    class="basic circular large"
+    class="basic circular"
+    :class="size"
     :icon="iconFormatted"
     :text="countFormatted"
   />
@@ -21,6 +22,10 @@ export default {
     counterData: {
       type: Object,
       required: true
+    },
+    size: {
+      type: String,
+      default: 'large'
     }
   },
   data () {

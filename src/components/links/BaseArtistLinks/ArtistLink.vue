@@ -2,10 +2,20 @@
   <span v-if="index">, </span>
 
   <BaseLink
+    ref="link"
     :link="link"
     :text="artistName"
     @active-change="handleLinkActiveChange"
     @click="handleLinkClick"
+  />
+
+  <BaseArtistPopup
+    v-if="isWithPopup"
+    ref="popup"
+    :is-called="isCalled"
+    :artist-name="artistName"
+    @artist-data-change="handleArtistDataChange"
+    @link-click="handlePopupLinkClick"
   />
 </template>
 
@@ -14,12 +24,16 @@ import BaseLink from '@/components/links/BaseLink.vue'
 import {
   main as formatArtistMainLink
 } from '@/helpers/formatters/links/artist'
+import artistPopupMixin from '@/mixins/artistPopupMixin'
 
 export default {
   name: 'ArtistLink',
   components: {
     BaseLink
   },
+  mixins: [
+    artistPopupMixin
+  ],
   props: {
     artistData: {
       type: Object,
