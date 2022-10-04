@@ -161,7 +161,6 @@ p
     .results
       @extend .background-black
       border: $borderInverted
-      max-height: 200px
       .result
         border-bottom: $borderInverted
         .title
@@ -173,6 +172,9 @@ p
       .message
         .header, .description
           @extend .text-color-white
+  &.scrolling
+    & > .results
+      max-height: 200px
 
 .ui.label
   &.circular
