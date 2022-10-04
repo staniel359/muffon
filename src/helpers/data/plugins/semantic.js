@@ -155,6 +155,30 @@ export function sourcePopupOptions () {
   }
 }
 
+export function artistPopupOptions (
+  {
+    html,
+    onShow
+  }
+) {
+  return {
+    position: 'top center',
+    transition: 'fade up',
+    variation: 'basic',
+    hoverable: true,
+    lastResort: true,
+    className: {
+      popup: 'ui popup main-artist-popup'
+    },
+    delay: {
+      show: 750,
+      hide: 150
+    },
+    html,
+    onShow
+  }
+}
+
 export function mainDropdownOptions (
   {
     onChange,
@@ -165,16 +189,12 @@ export function mainDropdownOptions (
     visibleContext
   } = store.state.layout
 
-  const context = (
-    visibleContext || 'body'
-  )
-
   return {
     forceSelection: false,
     on: 'hover',
     fullTextSearch: 'exact',
     duration: 150,
-    context,
+    context: visibleContext,
     delay: {
       show: 0,
       hide: 150

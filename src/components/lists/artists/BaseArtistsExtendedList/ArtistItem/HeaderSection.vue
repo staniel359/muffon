@@ -7,6 +7,7 @@
       :artist-data="artistData"
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"
+      :is-with-popup="false"
     >
       {{ artistName }}
     </BaseArtistLinkContainer>

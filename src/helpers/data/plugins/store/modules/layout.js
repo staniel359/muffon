@@ -19,7 +19,8 @@ export default {
     isMaximizeOnStart: false,
     isExitOnClose: false,
     isCloseTabsOnExit: false,
-    isWithSystemTheme: false
+    isWithSystemTheme: false,
+    isWithArtistPopup: true
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -135,6 +136,12 @@ export default {
       value
     ) {
       state.isWithSystemTheme = value
+    },
+    SET_IS_WITH_ARTIST_POPUP (
+      state,
+      value
+    ) {
+      state.isWithArtistPopup = value
     }
   },
   actions: {
@@ -344,6 +351,17 @@ export default {
     ) {
       commit(
         'SET_IS_WITH_SYSTEM_THEME',
+        value
+      )
+    },
+    setIsWithArtistPopup (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_WITH_ARTIST_POPUP',
         value
       )
     }

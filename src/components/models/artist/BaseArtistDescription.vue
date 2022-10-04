@@ -1,12 +1,13 @@
 <template>
   <BaseDescription
     :description="description"
-    :is-more="isMore"
+    :is-more="isRenderMore"
+    :is-small="isSmall"
     @more-click="handleMoreClick"
   />
 
   <BaseArtistDescriptionModal
-    v-if="isMore"
+    v-if="isRenderMore"
     ref="modal"
     :artist-name="artistName"
   />
@@ -27,11 +28,22 @@ export default {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    isWithMore: {
+      type: Boolean,
+      default: true
+    },
+    isSmall: Boolean
   },
   computed: {
     description () {
       return this.artistData.description
+    },
+    isRenderMore () {
+      return (
+        this.isMore &&
+          this.isWithMore
+      )
     },
     isMore () {
       return this.artistData.with_more?.description

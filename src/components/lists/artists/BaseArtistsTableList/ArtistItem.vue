@@ -11,27 +11,27 @@
     <template
       v-else
     >
+      <BaseArtistOptionsDropdown
+        :artist-data="artistData"
+        :library-id="libraryId"
+        :favorite-id="favoriteId"
+        :bookmark-id="bookmarkId"
+        :listened-id="listenedId"
+        :is-with-library-option="isWithLibraryOption"
+        :is-with-favorite-option="isWithFavoriteOption"
+        :is-with-bookmark-option="isWithBookmarkOption"
+        :is-with-listened-option="isWithListenedOption"
+        :is-with-share-option="isWithShareOption"
+        :is-with-delete-option="isWithDeleteOption"
+        @delete-option-click="handleDeleteOptionClick"
+      />
+
       <BaseArtistLinkContainer
         class="card-link"
         :artist-data="artistData"
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
       >
-        <BaseArtistOptionsDropdown
-          :artist-data="artistData"
-          :library-id="libraryId"
-          :favorite-id="favoriteId"
-          :bookmark-id="bookmarkId"
-          :listened-id="listenedId"
-          :is-with-library-option="isWithLibraryOption"
-          :is-with-favorite-option="isWithFavoriteOption"
-          :is-with-bookmark-option="isWithBookmarkOption"
-          :is-with-listened-option="isWithListenedOption"
-          :is-with-share-option="isWithShareOption"
-          :is-with-delete-option="isWithDeleteOption"
-          @delete-option-click="handleDeleteOptionClick"
-        />
-
         <div class="main-simple-card-image-container">
           <BaseArtistImage
             size="small"

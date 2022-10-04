@@ -1,11 +1,22 @@
 <template>
   <BaseLinkContainer
+    ref="link"
+    v-bind="$attrs"
     :link="link"
     @active-change="handleLinkActiveChange"
     @click="handleLinkClick"
   >
     <slot />
   </BaseLinkContainer>
+
+  <BaseArtistPopup
+    v-if="isWithPopup"
+    ref="popup"
+    :is-called="isCalled"
+    :artist-name="artistName"
+    @artist-data-change="handleArtistDataChange"
+    @link-click="handlePopupLinkClick"
+  />
 </template>
 
 <script>
@@ -17,12 +28,16 @@ import {
 import {
   main as formatArtistMainLink
 } from '@/helpers/formatters/links/artist'
+import artistPopupMixin from '@/mixins/artistPopupMixin'
 
 export default {
   name: 'BaseArtistLinkContainer',
   components: {
     BaseLinkContainer
   },
+  mixins: [
+    artistPopupMixin
+  ],
   props: {
     artistData: {
       type: Object,

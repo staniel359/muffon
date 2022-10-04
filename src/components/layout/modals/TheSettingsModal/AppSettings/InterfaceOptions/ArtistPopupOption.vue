@@ -1,0 +1,45 @@
+<template>
+  <div class="option">
+    <BaseHeader
+      class="option-header"
+      tag="h4"
+      :text="artistPopupText"
+    />
+
+    <BaseToggle
+      store-key="layout.isWithArtistPopup"
+      :is-checked="isWithArtistPopup"
+    />
+  </div>
+</template>
+
+<script>
+import {
+  mapState
+} from 'vuex'
+import BaseHeader from '@/components/BaseHeader.vue'
+import BaseToggle from '@/components/BaseToggle.vue'
+
+export default {
+  name: 'ArtistPopupOption',
+  components: {
+    BaseHeader,
+    BaseToggle
+  },
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'isWithArtistPopup'
+      ]
+    ),
+    artistPopupText () {
+      return this.$t(
+        'settings.options.app.interface.artistPopup'
+      )
+    }
+  }
+}
+</script>
+
+<style lang="sass" scoped></style>

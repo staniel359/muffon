@@ -7,6 +7,7 @@
     :artist-data="artistData"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
+    :is-link-active="isLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -74,6 +75,7 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
+        @active-change="handleOptionsActiveChange"
         @link-click="handleLinkClick"
         @delete-option-click="handleDeleteOptionClick"
       />
@@ -81,6 +83,7 @@
       <BaseClearButton
         v-if="isWithClearButton"
         @click="handleClearButtonClick"
+        @active-change="handleClearButtonActiveChange"
       />
 
       <BaseBookmarkDeleteModal
@@ -185,7 +188,9 @@ export default {
   ],
   data () {
     return {
-      isCounterLinkActive: false
+      isCounterLinkActive: false,
+      isOptionsActive: false,
+      isClearButtonActive: false
     }
   },
   computed: {
@@ -219,6 +224,13 @@ export default {
     },
     libraryArtistId () {
       return this.artistData.library.id.toString()
+    },
+    isLinkActive () {
+      return !(
+        this.isCounterLinkActive ||
+          this.isOptionsActive ||
+          this.isClearButtonActive
+      )
     }
   },
   methods: {
@@ -261,6 +273,16 @@ export default {
       if (this.isPaginated) {
         this.paginationItem.isDeleted = true
       }
+    },
+    handleOptionsActiveChange (
+      value
+    ) {
+      this.isOptionsActive = value
+    },
+    handleClearButtonActiveChange (
+      value
+    ) {
+      this.isClearButtonActive = value
     },
     showDeleteModal () {
       this.$refs

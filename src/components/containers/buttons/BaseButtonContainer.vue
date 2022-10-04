@@ -7,6 +7,8 @@
       icon: !!icon && !text
     }"
     @click="handleClick"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <BaseIcon
       v-if="icon"
@@ -39,6 +41,7 @@ export default {
   },
   emits: [
     'init',
+    'activeChange',
     'click'
   ],
   computed: {
@@ -62,6 +65,18 @@ export default {
       this.$emit(
         'click',
         event
+      )
+    },
+    handleMouseEnter () {
+      this.$emit(
+        'activeChange',
+        true
+      )
+    },
+    handleMouseLeave () {
+      this.$emit(
+        'activeChange',
+        false
       )
     }
   }

@@ -343,6 +343,9 @@ p
         background: $colorWhite
       &.black
         background: $colorBlack
+  &:hover
+    .main-options-dropdown-container
+      @extend .visibility-visible
   & > .content
     @extend .no-padding, .no-border
     & > .extra
@@ -353,10 +356,6 @@ p
       margin-top: 0.2em !important
     & > .main-self-icons
       margin-top: 0.25em
-  & > .card-link
-    &:hover
-      .main-options-dropdown-container
-        @extend .visibility-visible
 
 .main-simple-card-image-container
   @extend .main-image-container
@@ -884,3 +883,9 @@ p
 .main-private-icon
   @extend .no-margin
   margin-left: 0.25em !important
+
+.main-artist-popup
+  @extend .overflow-hidden
+  min-height: 100px
+  max-width: unset !important
+  width: 400px

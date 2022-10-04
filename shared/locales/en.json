@@ -404,7 +404,8 @@
         "interface": {
           "language": "Language",
           "timezone": "Time zone",
-          "infiniteScroll": "Infinite scroll"
+          "infiniteScroll": "Infinite scroll",
+          "artistPopup": "Show artist info on link hover"
         },
         "theme": {
           "dark": "Dark mode",
