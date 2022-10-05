@@ -3,17 +3,27 @@
   "copyright": "Copyright © 2020-2022 Aleksey Shpakovsky",
   "win": {
     "icon": "build/icons/icon.ico",
+    "target": [
+      "nsis",
+      "portable"
+    ],
     "verifyUpdateCodeSignature": false
   },
   "mac": {
     "category": "public.app-category.music",
     "icon": "build/icons/icon.icns",
-    "target": "pkg"
+    "target": [
+      "dmg",
+      "pkg"
+    ]
   },
   "linux": {
     "category": "Audio",
     "icon": "build/icons/icon.icns",
-    "target": "deb"
+    "target": [
+      "AppImage",
+      "deb"
+    ]
   },
   "artifactName": "${productName} ${version}.${ext}",
   "compression": "store",
