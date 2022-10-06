@@ -35,12 +35,23 @@ export default {
     trackData: {
       type: Object,
       required: true
-    },
-    requestTrackData: Object
+    }
   },
   computed: {
     listenersCount () {
       return this.trackData.profiles_count
+    },
+    requestTrackData () {
+      return {
+        artistName: this.artistName,
+        trackTitle: this.trackTitle
+      }
+    },
+    artistName () {
+      return this.trackData.artist.name
+    },
+    trackTitle () {
+      return this.trackData.title
     }
   },
   methods: {

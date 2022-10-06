@@ -9,10 +9,6 @@
 
   <ThePlayingObserver />
 
-  <TheScrobblingObserver
-    v-if="isPlayerWithScrobbling"
-  />
-
   <TheExitObserver />
 
   <TheElectronStoreSaver />
@@ -40,8 +36,6 @@ import TheMediaKeysObserver
   from '@/components/layout/observers/TheMediaKeysObserver.vue'
 import ThePlayingObserver
   from '@/components/layout/observers/ThePlayingObserver.vue'
-import TheScrobblingObserver
-  from '@/components/layout/observers/TheScrobblingObserver.vue'
 import TheExitObserver
   from '@/components/layout/observers/TheExitObserver.vue'
 import TheElectronStoreSaver
@@ -57,7 +51,6 @@ export default {
     TheBackgroundObserver,
     TheMediaKeysObserver,
     ThePlayingObserver,
-    TheScrobblingObserver,
     TheExitObserver,
     TheElectronStoreSaver,
     TheBrowserTabs,
@@ -68,12 +61,6 @@ export default {
       'profile',
       {
         profileId: 'id'
-      }
-    ),
-    ...mapState(
-      'player',
-      {
-        isPlayerWithScrobbling: 'isWithScrobbling'
       }
     ),
     ...mapState(

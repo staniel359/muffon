@@ -139,7 +139,7 @@ export default {
     },
     isResponsePageable () {
       return (
-        this.responseTotalPages > 1 ||
+        this.clientTotalPagesCount > 1 ||
           this.responseNextPage ||
             this.responsePrevPage
       )

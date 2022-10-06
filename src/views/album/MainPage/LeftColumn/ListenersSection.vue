@@ -35,12 +35,23 @@ export default {
     albumData: {
       type: Object,
       required: true
-    },
-    requestAlbumData: Object
+    }
   },
   computed: {
     listenersCount () {
       return this.albumData.profiles_count
+    },
+    requestAlbumData () {
+      return {
+        artistName: this.artistName,
+        albumTitle: this.albumTitle
+      }
+    },
+    artistName () {
+      return this.albumData.artist.name
+    },
+    albumTitle () {
+      return this.albumData.title
     }
   },
   methods: {

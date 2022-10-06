@@ -12,10 +12,10 @@ export function mainModalOptions (
   return {
     autofocus: false,
     allowMultiple: isMultiple,
-    duration: 100,
+    duration: 150,
     transition: 'fade',
     dimmerSettings: {
-      duration: 100
+      duration: 150
     },
     onShow,
     onVisible
@@ -94,48 +94,88 @@ export function mainTransparencySeekerOptions (
     start
   } = {}
 ) {
+  const step = 10
+
+  function interpretLabel (
+    value
+  ) {
+    if (value % 2 === 0) {
+      return `${value * step}%`
+    } else {
+      return ' '
+    }
+  }
+
   return {
     max: 100,
-    step: 10,
+    step,
+    start,
+    smooth: true,
+    interpretLabel
+  }
+}
+
+export function mainScrobblePercentSeekerOptions (
+  {
     start
+  } = {}
+) {
+  const step = 25
+
+  return {
+    min: 25,
+    max: 75,
+    step,
+    start,
+    smooth: true,
+    autoAdjustLabels: false,
+    interpretLabel: (
+      value
+    ) => {
+      return `${(value + 1) * step}%`
+    }
   }
 }
 
 export function mainPopupOptions () {
   return {
-    duration: 0,
     position: 'top center',
+    transition: 'fade up',
     variation: 'basic',
     closable: false,
-    hoverable: true,
-    inline: true
+    hoverable: true
   }
 }
 
-export function sourcePopupOptions (
+export function sourcePopupOptions () {
+  return {
+    position: 'top center',
+    transition: 'fade up',
+    variation: 'basic small'
+  }
+}
+
+export function artistPopupOptions (
   {
-    isDarkMode
+    html,
+    onShow
   }
 ) {
-  const variation = [
-    'basic small',
-    (
-      isDarkMode &&
-        'inverted'
-    )
-  ].filter(
-    e => e
-  ).join(
-    ' '
-  )
-
   return {
-    duration: 0,
     position: 'top center',
-    variation,
+    transition: 'fade up',
+    variation: 'basic',
+    hoverable: true,
+    lastResort: true,
     className: {
-      popup: 'ui popup main-popup'
-    }
+      popup: 'ui popup main-artist-popup'
+    },
+    delay: {
+      show: 750,
+      hide: 150
+    },
+    html,
+    onShow
   }
 }
 
@@ -149,16 +189,12 @@ export function mainDropdownOptions (
     visibleContext
   } = store.state.layout
 
-  const context = (
-    visibleContext || 'body'
-  )
-
   return {
     forceSelection: false,
     on: 'hover',
     fullTextSearch: 'exact',
     duration: 150,
-    context,
+    context: visibleContext,
     delay: {
       show: 0,
       hide: 150

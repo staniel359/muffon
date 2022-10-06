@@ -96,3 +96,22 @@ export function decrypt (
     blob
   )
 }
+
+export function getLink (
+  filePath
+) {
+  const file =
+    fs.readFileSync(
+      filePath
+    )
+
+  const blob = new Blob(
+    [
+      file
+    ]
+  )
+
+  return URL.createObjectURL(
+    blob
+  )
+}

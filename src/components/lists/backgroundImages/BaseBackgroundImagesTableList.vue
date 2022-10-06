@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import ImageItem from './BaseBackgroundImagesTableList/ImageItem.vue'
 
 export default {
@@ -16,10 +19,31 @@ export default {
   components: {
     ImageItem
   },
-  props: {
-    images: {
-      type: Array,
-      required: true
+  data () {
+    return {
+      defaultImagePath: require(
+        '@/assets/images/Background.jpg'
+      )
+    }
+  },
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'backgroundImages'
+      ]
+    ),
+    images () {
+      return [
+        this.defaultImageData,
+        ...this.backgroundImages
+      ]
+    },
+    defaultImageData () {
+      return {
+        id: 0,
+        path: this.defaultImagePath
+      }
     }
   }
 }

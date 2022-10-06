@@ -17,7 +17,7 @@ export default function (
 
   const params = {
     title: trackTitle,
-    artist_name: artistName
+    artist: artistName
   }
 
   const handleSuccess = (

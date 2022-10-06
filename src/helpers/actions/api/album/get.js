@@ -9,7 +9,9 @@ export default function (
     artistId,
     albumId,
     albumType = 'album',
-    paramsData,
+    model,
+    ownerId,
+    accessKey,
     scope = '',
     page,
     limit
@@ -28,18 +30,33 @@ export default function (
       }
     )
 
-  function formatAlbumType () {
-    if (albumType === 'albumVarious') {
-      return 'album'
-    } else {
-      return albumType
-    }
+  const params = {
+    ...(model && {
+      album_type: model
+    }),
+    ...(ownerId && {
+      owner_id: ownerId
+    }),
+    ...(accessKey && {
+      access_key: accessKey
+    })
   }
+
+  const isWithSelfLanguage = (
+    !scope ||
+      scope === 'description'
+  )
 
   const handleSuccess = (
     response
   ) => {
-    const scope = formatAlbumType()
+    const isAlbumVarious = (
+      albumType === 'albumVarious'
+    )
+
+    const scope = isAlbumVarious
+      ? 'album'
+      : albumType
 
     this.albumData =
       response.data[
@@ -52,9 +69,9 @@ export default function (
   )(
     {
       url,
-      params: paramsData,
+      params,
       isWithSelfId: true,
-      isWithSelfLanguage: true,
+      isWithSelfLanguage,
       page,
       limit,
       onSuccess: handleSuccess

@@ -15,13 +15,15 @@
       :tag-data="tagData"
       :is-link-to-library="isLinkToLibrary"
       :profile-id="profileId"
+      :size="size"
       @click="handleClick"
     />
 
     <BaseLabel
       v-if="isMore"
-      class="basic circular large"
+      class="basic circular"
       icon="ellipsis horizontal"
+      :class="size"
       is-clickable
       @click="handleMoreClick"
     />
@@ -49,6 +51,10 @@ export default {
       default () {
         return []
       }
+    },
+    size: {
+      type: String,
+      default: 'large'
     },
     isWithIcon: Boolean,
     isMore: Boolean,
@@ -84,5 +90,5 @@ export default {
 
 <style lang="sass" scoped>
 .tags-icon
-  margin-right: 0.75em
+  margin-right: 0.5em
 </style>

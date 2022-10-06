@@ -102,6 +102,8 @@ export default {
   },
   mounted () {
     this.setNavigation()
+
+    this.isRefreshNavigation = true
   },
   methods: {
     getMultitag,

@@ -47,6 +47,9 @@ export default {
       )
     }
   },
+  mounted () {
+    this.getAudio()
+  },
   methods: {
     getAudio () {
       this.$refs

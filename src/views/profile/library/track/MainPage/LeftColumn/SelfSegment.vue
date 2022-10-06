@@ -35,7 +35,7 @@
         :profile-id="profileId"
         :model-id="libraryTrackId"
         :model-name="trackFullTitle"
-        is-delete-with-redirect
+        is-with-redirect
       />
     </div>
   </BaseSegmentContainer>

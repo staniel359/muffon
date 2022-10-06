@@ -2,13 +2,15 @@
   <BaseTopPaginatedPageContainer
     :scope="scope"
     :limit="limit"
+    :view-index="viewIndex"
     is-with-top-segment
     is-with-country-select
+    is-with-view-change
   >
     <template #default="slotProps">
-      <BaseAlbumsTableList
+      <BaseAlbumsList
         :albums="slotProps[scope]"
-        :items-in-row="itemsInRow"
+        :view-index="viewIndex"
         is-with-artist-name
         is-with-listeners-count
         is-with-library-option
@@ -24,19 +26,20 @@
 <script>
 import BaseTopPaginatedPageContainer
   from '@/components/containers/pages/top/BaseTopPaginatedPageContainer.vue'
-import BaseAlbumsTableList
-  from '@/components/lists/albums/BaseAlbumsTableList.vue'
+import BaseAlbumsList from '@/components/lists/albums/BaseAlbumsList.vue'
+import viewChangeMixin from '@/mixins/viewChangeMixin'
 
 export default {
   name: 'AlbumsPage',
   components: {
     BaseTopPaginatedPageContainer,
-    BaseAlbumsTableList
+    BaseAlbumsList
   },
+  mixins: [
+    viewChangeMixin
+  ],
   data () {
     return {
-      limit: 20,
-      itemsInRow: 4,
       scope: 'albums'
     }
   }

@@ -6,7 +6,8 @@
       red: isRed
     }"
     :is-invertable="isInvertable"
-    @click.prevent="handleClick"
+    @click.prevent.stop="handleClick"
+    @active-change="handleActiveChange"
   />
 </template>
 
@@ -26,7 +27,8 @@ export default {
     isInvertable: Boolean
   },
   emits: [
-    'click'
+    'click',
+    'activeChange'
   ],
   methods: {
     handleClick (
@@ -35,6 +37,14 @@ export default {
       this.$emit(
         'click',
         event
+      )
+    },
+    handleActiveChange (
+      value
+    ) {
+      this.$emit(
+        'activeChange',
+        value
       )
     }
   }

@@ -33,7 +33,7 @@
         :profile-id="profileId"
         :model-id="libraryArtistId"
         :model-name="artistName"
-        is-delete-with-redirect
+        is-with-redirect
       />
     </div>
   </BaseSegmentContainer>

@@ -1,6 +1,7 @@
 <template>
   <BaseLabel
-    class="primary circular large"
+    class="primary circular"
+    :class="size"
     :text="tagName"
     :counter="tagCount"
     :link="link"
@@ -26,6 +27,10 @@ export default {
     tagData: {
       type: Object,
       required: true
+    },
+    size: {
+      type: String,
+      default: 'large'
     },
     isLinkToLibrary: Boolean,
     profileId: String

@@ -1,6 +1,7 @@
 <template>
   <BaseOptionsDropdownContainer
     v-if="isRender"
+    @active-change="handleActiveChange"
   >
     <LibraryOption
       v-if="isWithLibraryOption"
@@ -85,6 +86,7 @@ export default {
     isWithDeleteOption: Boolean
   },
   emits: [
+    'activeChange',
     'linkClick',
     'deleteOptionClick'
   ],
@@ -126,6 +128,14 @@ export default {
     handleDeleteOptionClick () {
       this.$emit(
         'deleteOptionClick'
+      )
+    },
+    handleActiveChange (
+      value
+    ) {
+      this.$emit(
+        'activeChange',
+        value
       )
     }
   }

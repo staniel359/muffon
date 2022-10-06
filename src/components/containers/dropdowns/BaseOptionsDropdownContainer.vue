@@ -3,6 +3,8 @@
     class="main-options-dropdown-container"
     :class="dropdownClass"
     @click.prevent.stop
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
   >
     <BaseButtonContainer
       :class="[
@@ -44,6 +46,9 @@ export default {
     BaseButtonContainer,
     BaseIcon
   },
+  emits: [
+    'activeChange'
+  ],
   data () {
     return {
       dropdown: null
@@ -71,7 +76,9 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
+    await this.$nextTick()
+
     setDropdown(
       this.dropdown,
       this.dropdownOptions
@@ -82,6 +89,18 @@ export default {
       element
     ) {
       this.dropdown = element
+    },
+    handleMouseEnter () {
+      this.$emit(
+        'activeChange',
+        true
+      )
+    },
+    handleMouseLeave () {
+      this.$emit(
+        'activeChange',
+        false
+      )
     }
   }
 }

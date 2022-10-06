@@ -16,6 +16,11 @@ export default function (
   const url =
     `/lastfm/tags/${tagNameEncoded}/${scope}`
 
+  const isWithSelfLanguage = (
+    !scope ||
+      scope === 'description'
+  )
+
   const handleSuccess = (
     response
   ) => {
@@ -29,7 +34,7 @@ export default function (
     {
       url,
       isWithSelfId: true,
-      isWithSelfLanguage: true,
+      isWithSelfLanguage,
       page,
       limit,
       onSuccess: handleSuccess

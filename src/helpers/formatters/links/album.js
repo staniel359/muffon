@@ -21,24 +21,11 @@ export function main (
     artistId,
     slug,
     artistSlug,
-    model,
     albumType,
-    paramsData
+    model,
+    ownerId,
+    accessKey
   } = sourceParams
-
-  function formatParamsDataString () {
-    const isParamsData = Object.keys(
-      paramsData || {}
-    ).length
-
-    if (isParamsData) {
-      return JSON.stringify(
-        paramsData
-      )
-    } else {
-      return null
-    }
-  }
 
   const query = {
     source,
@@ -46,9 +33,10 @@ export function main (
     artist_id: artistId,
     slug,
     artist_slug: artistSlug,
-    model,
     album_type: albumType,
-    params_data: formatParamsDataString()
+    model,
+    owner_id: ownerId,
+    access_key: accessKey
   }
 
   const queryFiltered =
@@ -65,16 +53,18 @@ export function main (
       queryFiltered
     ).toString()
 
+  const path =
+    `artists/${artistNameEncoded}` +
+    `/albums/${albumTitleEncoded}` +
+    `?${queryString}`
+
   return {
     name: 'AlbumMainPage',
     params: {
       artistName,
       albumTitle
     },
-    path:
-      `artists/${artistNameEncoded}` +
-      `/albums/${albumTitleEncoded}` +
-      `?${queryString}`,
+    path,
     query: queryFiltered
   }
 }

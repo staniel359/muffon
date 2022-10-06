@@ -12,10 +12,13 @@
       />
 
       <ScopeSelect
+        :scope="scope"
+        :source="source"
         @select="handleScopeSelect"
       />
 
       <SourceSelect
+        :source="source"
         :scope="scope"
         @select="handleSourceSelect"
       />
@@ -23,9 +26,8 @@
 
     <BaseDivider />
 
-    <SearchSection
-      v-if="query && scope"
-      :key="key"
+    <ResultsSection
+      v-if="isRenderResultsSection"
       :query="query"
       :source="source"
       :scope="scope"
@@ -34,14 +36,14 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import SearchInput from './SearchContent/SearchInput.vue'
 import ScopeSelect from './SearchContent/ScopeSelect.vue'
 import SourceSelect from './SearchContent/SourceSelect.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
-import SearchSection from './SearchContent/SearchSection.vue'
-import {
-  generateKey
-} from '@/helpers/utils'
+import ResultsSection from './SearchContent/ResultsSection.vue'
 
 export default {
   name: 'SearchContent',
@@ -50,39 +52,98 @@ export default {
     ScopeSelect,
     SourceSelect,
     BaseDivider,
-    SearchSection
+    ResultsSection
   },
   data () {
     return {
-      key: null,
-      source: null,
-      scope: null,
+      isGetData: false,
+      source: '',
+      scope: '',
       query: ''
     }
   },
   computed: {
+    ...mapState(
+      'search',
+      {
+        searchSource: 'source'
+      }
+    ),
     isWithClearButton () {
       return !!this.query.length
+    },
+    isRenderResultsSection () {
+      return (
+        this.isGetData &&
+          this.query &&
+          this.source &&
+          this.scope
+      )
+    }
+  },
+  watch: {
+    searchSource: {
+      immediate: true,
+      handler: 'handleSearchSourceChange'
     }
   },
   methods: {
-    handleScopeSelect (
-      value
-    ) {
-      this.scope = value
-      this.key = generateKey()
-    },
-    handleSourceSelect (
+    handleSearchSourceChange (
       value
     ) {
       this.source = value
-      this.key = generateKey()
     },
-    handleSubmit (
+    async handleScopeSelect (
       value
     ) {
+      this.isGetData = false
+      this.scope = value
+
+      const sourceOldValue = this.source
+
+      await this.$nextTick()
+
+      const sourceNewValue = this.source
+
+      const isSourceChanged = (
+        sourceOldValue !==
+          sourceNewValue
+      )
+
+      if (!isSourceChanged) {
+        this.isGetData = true
+      }
+    },
+    async handleSourceSelect (
+      value
+    ) {
+      this.isGetData = false
+      this.source = value
+
+      const scopeOldValue = this.scope
+
+      await this.$nextTick()
+
+      const scopeNewValue = this.scope
+
+      const isScopeChanged = (
+        scopeOldValue !==
+          scopeNewValue
+      )
+
+      if (!isScopeChanged) {
+        this.isGetData = true
+      }
+    },
+    async handleSubmit (
+      value
+    ) {
+      this.isGetData = false
       this.query = value
-      this.key = generateKey()
+
+      await this.$nextTick()
+
+      this.isGetData = true
     },
     handleClearButtonClick () {
       this.query = ''

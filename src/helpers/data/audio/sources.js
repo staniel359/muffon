@@ -161,8 +161,7 @@ export default [
     searchScopes: [
       'artists',
       'albums',
-      'albumGroups',
-      'tracks'
+      'albumGroups'
     ]
   },
   {

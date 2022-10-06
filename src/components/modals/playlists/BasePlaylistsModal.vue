@@ -6,10 +6,24 @@
     :error="error"
     :scope="scope"
     :limit="limit"
+    is-multiple
     @call="handleCall"
   >
-    <template #default="slotProps">
-      <BasePlaylistsSimpleSelectableList
+    <template #top>
+      <div>
+        <BasePlaylistCreateButton
+          :key="key"
+          @success="handlePlaylistCreate"
+        />
+      </div>
+
+      <BaseDivider />
+    </template>
+
+    <template
+      #default="slotProps"
+    >
+      <BasePlaylistsSelectableList
         :playlists="slotProps[scope]"
         :tracks="tracks"
       />
@@ -23,16 +37,24 @@ import {
 } from 'vuex'
 import BasePaginatedSegmentModalContainer
   from '@/components/containers/modals/BasePaginatedSegmentModalContainer.vue'
-import BasePlaylistsSimpleSelectableList
-  from '@/components/lists/playlists/BasePlaylistsSimpleSelectableList.vue'
+import BasePlaylistCreateButton
+  from '@/components/buttons/playlist/BasePlaylistCreateButton.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
+import BasePlaylistsSelectableList
+  from '@/components/lists/playlists/BasePlaylistsSelectableList.vue'
 import getProfilePlaylists from '@/helpers/actions/api/profile/get'
 import modalMixin from '@/mixins/modalMixin'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BasePlaylistsModal',
   components: {
     BasePaginatedSegmentModalContainer,
-    BasePlaylistsSimpleSelectableList
+    BasePlaylistCreateButton,
+    BaseDivider,
+    BasePlaylistsSelectableList
   },
   mixins: [
     modalMixin
@@ -44,6 +66,7 @@ export default {
   },
   data () {
     return {
+      key: null,
       profileData: null,
       error: null,
       isLoading: false,
@@ -97,6 +120,13 @@ export default {
   },
   methods: {
     getProfilePlaylists,
+    handlePlaylistCreate () {
+      this.resetForm()
+
+      this.resetPagination()
+
+      this.getData()
+    },
     getData (
       {
         page
@@ -108,6 +138,14 @@ export default {
           page
         }
       )
+    },
+    resetForm () {
+      this.key = generateKey()
+    },
+    resetPagination () {
+      this.$refs
+        .modal
+        .reset()
     }
   }
 }

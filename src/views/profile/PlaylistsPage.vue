@@ -19,6 +19,7 @@
           <div>
             <BasePlaylistCreateButton
               v-if="isSelf"
+              is-with-redirect
             />
           </div>
 
@@ -42,6 +43,7 @@
             <BasePlaylistsSimpleList
               :playlists="slotProps[scope]"
               is-with-share-option
+              is-with-edit-option
               is-with-delete-option
             />
           </template>

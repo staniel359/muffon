@@ -2,7 +2,7 @@
   <div class="view-change-buttons-container">
     <div class="ui buttons">
       <BaseViewChangeButton
-        v-for="(button, index) in buttons"
+        v-for="(button, index) in buttonsFormatted"
         :key="index"
         :button="button"
         :index="index"
@@ -23,21 +23,37 @@ export default {
     BaseViewChangeButton
   },
   props: {
-    buttons: {
-      type: Array,
-      default () {
-        return [
-          'ul list',
-          'th',
-          'th list'
-        ]
-      }
+    scope: {
+      type: String,
+      required: true
     },
     viewIndex: Number
   },
   emits: [
     'viewButtonClick'
   ],
+  data () {
+    return {
+      buttons: {
+        artists: [
+          'ul list',
+          'th',
+          'th list'
+        ],
+        albums: [
+          'ul list',
+          'th'
+        ]
+      }
+    }
+  },
+  computed: {
+    buttonsFormatted () {
+      return this.buttons[
+        this.scope
+      ]
+    }
+  },
   methods: {
     handleViewButtonClick (
       index

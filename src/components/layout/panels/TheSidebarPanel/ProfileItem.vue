@@ -15,7 +15,7 @@
     </div>
 
     <div class="content-container">
-      <span
+      <strong
         v-text="nickname"
       />
     </div>

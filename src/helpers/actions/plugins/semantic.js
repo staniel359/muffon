@@ -181,6 +181,36 @@ export function setPopup (
   )
 }
 
+export function repositionPopup (
+  element
+) {
+  $(
+    element
+  ).popup(
+    'reposition'
+  )
+}
+
+export function hidePopup (
+  element
+) {
+  $(
+    element
+  ).popup(
+    'hide'
+  )
+}
+
+export function destroyPopup (
+  element
+) {
+  $(
+    element
+  ).popup(
+    'destroy'
+  )
+}
+
 // Dropdown
 
 export function setDropdown (
@@ -202,7 +232,9 @@ export function setDropdownValue (
     element
   ).dropdown(
     'set selected',
-    value
+    value,
+    null,
+    true
   )
 }
 

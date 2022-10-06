@@ -14,16 +14,14 @@
     :is-with-bookmark-option="isWithBookmarkOption"
     :is-with-favorite-option="isWithFavoriteOption"
     :is-with-share-option="isWithShareOption"
+    :is-with-delete-option="isWithDeleteOption"
   />
 </template>
 
 <script>
-import BaseArtistsSimpleList
-  from '@/components/lists/artists/BaseArtistsSimpleList.vue'
-import BaseArtistsTableList
-  from '@/components/lists/artists/BaseArtistsTableList.vue'
-import BaseArtistsExtendedList
-  from '@/components/lists/artists/BaseArtistsExtendedList.vue'
+import BaseArtistsSimpleList from './BaseArtistsSimpleList.vue'
+import BaseArtistsTableList from './BaseArtistsTableList.vue'
+import BaseArtistsExtendedList from './BaseArtistsExtendedList.vue'
 
 export default {
   name: 'BaseArtistsList',
@@ -37,12 +35,7 @@ export default {
       type: Number,
       required: true
     },
-    artists: {
-      type: Array,
-      default () {
-        return []
-      }
-    },
+    artists: Array,
     isWithListenersCount: Boolean,
     topTracksCount: Number,
     topAlbumsCount: Number,
@@ -53,7 +46,8 @@ export default {
     isWithListenedOption: Boolean,
     isWithBookmarkOption: Boolean,
     isWithFavoriteOption: Boolean,
-    isWithShareOption: Boolean
+    isWithShareOption: Boolean,
+    isWithDeleteOption: Boolean
   },
   data () {
     return {

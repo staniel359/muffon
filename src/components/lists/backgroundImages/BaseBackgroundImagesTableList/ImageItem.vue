@@ -7,7 +7,7 @@
   >
     <BaseImage
       class="rounded bordered"
-      :image="imageData.original"
+      :image="image"
       @click="handleClick"
     />
 
@@ -27,6 +27,9 @@ import {
 } from 'electron'
 import BaseImage from '@/components/images/BaseImage.vue'
 import ClearButton from './ImageItem/ClearButton.vue'
+import {
+  getLink as getFileLink
+} from '@/helpers/actions/file'
 
 export default {
   name: 'ImageItem',
@@ -56,8 +59,26 @@ export default {
     imageId () {
       return this.imageData.id
     },
-    imageUrl () {
-      return this.imageData.original
+    image () {
+      if (this.imageId) {
+        return this.imageLink
+      } else {
+        return this.imagePath
+      }
+    },
+    imageLink () {
+      return getFileLink(
+        this.imagePath
+      )
+    },
+    imagePath () {
+      return this.imageData.path
+    },
+    changeArgs () {
+      return {
+        imageId: this.imageId,
+        imagePath: this.imagePath
+      }
     }
   },
   methods: {
@@ -71,10 +92,7 @@ export default {
     setBackgroundImage () {
       ipcRenderer.send(
         'change-background-image',
-        {
-          imageId: this.imageId,
-          imageUrl: this.imageUrl
-        }
+        this.changeArgs
       )
     },
     setDefaultBackgroundImage () {

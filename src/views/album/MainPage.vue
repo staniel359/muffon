@@ -27,7 +27,6 @@
           <LeftColumn
             v-if="scrollable"
             :album-data="pageSlotProps.albumData"
-            :request-album-data="pageSlotProps.requestAlbumData"
             :scrollable="scrollable"
           />
 
@@ -73,9 +72,7 @@ export default {
       return {
         source: this.sourceData,
         artistName: this.artistName,
-        albumTitle: this.albumTitle,
-        albumType: this.albumType,
-        paramsData: this.paramsData
+        albumTitle: this.albumTitle
       }
     },
     sourceData () {
@@ -89,16 +86,11 @@ export default {
         artist_id: query.artist_id,
         slug: query.slug,
         artist_slug: query.artist_slug,
-        model: query.model
+        album_type: query.album_type,
+        model: query.model,
+        owner_id: query.owner_id,
+        access_key: query.access_key
       }
-    },
-    albumType () {
-      return this.$route.query.album_type
-    },
-    paramsData () {
-      return JSON.parse(
-        this.$route.query.params_data || '{}'
-      )
     }
   },
   methods: {

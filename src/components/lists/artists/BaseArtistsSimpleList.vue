@@ -42,11 +42,6 @@ export default {
     BaseListContainer,
     ArtistItem
   },
-  provide () {
-    return {
-      findListItem: this.findListItem
-    }
-  },
   props: {
     artists: {
       type: Array,
@@ -106,21 +101,6 @@ export default {
         {
           uuid
         }
-      )
-    },
-    findListItem (
-      {
-        uuid
-      }
-    ) {
-      function isMatchedItem (
-        itemData
-      ) {
-        return itemData.uuid === uuid
-      }
-
-      return this.artistsCollection.find(
-        isMatchedItem
       )
     }
   }

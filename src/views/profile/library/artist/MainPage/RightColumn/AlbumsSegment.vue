@@ -13,6 +13,7 @@
         :artist-name="slotProps.artistName"
         :items-in-row="itemsInRow"
         :is-with-library-option="!isSelf"
+        :is-with-delete-option="isSelf"
         is-with-library
         is-link-to-library
         is-with-favorite-option

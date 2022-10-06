@@ -19,9 +19,9 @@ export default function (
 
   const params = {
     title: albumTitle,
-    artist_name: artistName,
-    image_url: imageUrl,
-    source_data: sourceData
+    artist: artistName,
+    image: imageUrl,
+    source: sourceData
   }
 
   const handleSuccess = (

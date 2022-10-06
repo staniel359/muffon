@@ -17,8 +17,8 @@ export default function (
 
   const params = {
     title,
-    artist_name: artistName,
-    album_title: albumTitle,
+    artist: artistName,
+    album: albumTitle,
     duration
   }
 

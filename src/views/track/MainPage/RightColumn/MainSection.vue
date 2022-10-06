@@ -1,7 +1,5 @@
 <template>
-  <BaseHorizontalCardContainer
-    class="track-card"
-  >
+  <BaseHorizontalCardContainer>
     <InfoSection
       :track-data="trackData"
     />
@@ -33,9 +31,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.track-card
-  @extend .overflow-hidden
-
 ::v-deep(.content)
   @extend .no-padding, .flex-column
 </style>

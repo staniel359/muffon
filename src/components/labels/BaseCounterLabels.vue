@@ -4,6 +4,7 @@
       v-for="(counterData, index) in counters"
       :key="index"
       :counter-data="counterData"
+      :size="size"
     />
   </div>
 </template>
@@ -22,7 +23,8 @@ export default {
       default () {
         return []
       }
-    }
+    },
+    size: String
   }
 }
 </script>

@@ -28,10 +28,6 @@ p
 @media only screen and (min-width: 768px)
   .main-container
     width: 670px !important
-  .ui.search
-    &.main-history-input
-      & > .results
-        max-height: 250px
 
 .pushable
   @extend .background-transparent
@@ -176,6 +172,9 @@ p
       .message
         .header, .description
           @extend .text-color-white
+  &.scrolling
+    & > .results
+      max-height: 200px
 
 .ui.label
   &.circular
@@ -214,6 +213,14 @@ p
   &.inverted
     & > input
       border: $borderInverted
+
+.ui.menu
+  &.secondary
+    &:not(.pointing)
+      &.main-tabs
+        .item
+          padding: 0.8em 1.5em
+          border-radius: 10em !important
 
 .main-input
   &:focus
@@ -324,7 +331,7 @@ p
     font-size: 16px
 
 .main-simple-card
-  @extend .no-shadow, .text-align-center, .text-color-unset, .background-transparent
+  @extend .no-shadow, .text-align-center, .text-color-unset, .background-transparent, .h-100
   .main-options-dropdown-container
     @extend .absolute, .no-margin, .visibility-hidden
     z-index: 10
@@ -336,6 +343,9 @@ p
         background: $colorWhite
       &.black
         background: $colorBlack
+  &:hover
+    .main-options-dropdown-container
+      @extend .visibility-visible
   & > .content
     @extend .no-padding, .no-border
     & > .extra
@@ -346,10 +356,6 @@ p
       margin-top: 0.2em !important
     & > .main-self-icons
       margin-top: 0.25em
-  & > .card-link
-    &:hover
-      .main-options-dropdown-container
-        @extend .visibility-visible
 
 .main-simple-card-image-container
   @extend .main-image-container
@@ -389,22 +395,8 @@ p
     & > .main-options-dropdown-container
       @extend .visibility-visible
   &.main-post-item,
-  &.main-message-item,
-  &.main-profile-item,
-  &.main-video-item,
-  &.main-community-info-item,
-  &.main-playlist-info-item
+  &.main-message-item
     @extend .align-items-start
-  &.main-profile-item,
-  &.main-video-item,
-  &.main-community-info-item,
-  &.main-playlist-info-item
-    & > .main-options-dropdown-container
-      @extend .align-self-center
-  &.main-community-info-item,
-  &.main-playlist-info-item
-    & > .content
-      margin-left: 0.75em !important
 
 .main-message
   @extend .no-shadow, .no-margin
@@ -413,7 +405,7 @@ p
     border: $borderInverted !important
 
 .main-popup
-  @extend .no-border
+  @extend .no-border, .white-space-no-wrap
   &.inverted
     border: $borderInverted !important
 
@@ -641,7 +633,6 @@ p
     @extend .d-flex, .align-items-center
     width: 200px
     flex-shrink: 0
-    font-size: 15px
 
 .main-paginated-list-container
   @extend .flex-full, .w-100, .d-flex, .flex-column
@@ -705,7 +696,12 @@ p
   @extend .w-100, .no-margin
 
 .main-deleted-container
-  @extend .d-flex, .justify-content-center, .flex-full
+  @extend .d-flex, .align-items-center, .justify-content-center, .flex-full
+  .deleted-icon
+    @extend .d-inline
+    margin-right: 0.5em !important
+  .deleted-text
+    @extend .d-inline
 
 .main-options-dropdown-button
   padding: 0.5em !important
@@ -883,3 +879,13 @@ p
       @extend .text-color-white, .text-medium-light
       font-size: 3.5em !important
       margin-bottom: 0.2em !important
+
+.main-private-icon
+  @extend .no-margin
+  margin-left: 0.25em !important
+
+.main-artist-popup
+  @extend .overflow-hidden
+  min-height: 100px
+  max-width: unset !important
+  width: 400px

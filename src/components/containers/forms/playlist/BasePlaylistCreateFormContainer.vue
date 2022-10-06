@@ -29,7 +29,8 @@ export default {
     BaseFormContainer
   },
   props: {
-    image: Object
+    image: Object,
+    isWithRedirect: Boolean
   },
   emits: [
     'success'
@@ -72,6 +73,7 @@ export default {
     playlistId: 'handlePlaylistIdChange'
   },
   methods: {
+    createPlaylist,
     handleInit (
       element
     ) {
@@ -93,13 +95,14 @@ export default {
       )
     },
     handlePlaylistIdChange () {
-      this.redirect()
+      if (this.isWithRedirect) {
+        this.redirect()
+      }
 
       this.$emit(
         'success'
       )
     },
-    createPlaylist,
     redirect () {
       this.$router.push(
         this.playlistUrl

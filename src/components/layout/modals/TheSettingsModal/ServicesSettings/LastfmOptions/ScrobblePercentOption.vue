@@ -6,32 +6,16 @@
       :text="percentText"
     />
 
-    <div
-      ref="dropdown"
-      class="ui compact selection dropdown"
-      :class="{
-        inverted: isDarkMode,
-        disabled: isDisabled
-      }"
-    >
-      <div
-        class="default text"
+    <div class="seeker-container">
+      <BaseSeeker
+        class="bottom aligned labeled ticked with-thumb"
+        :class="{
+          disabled: isDisabled
+        }"
+        :options="seekerOptions"
+        @init="handleSeekerInit"
+        @mouse-up="handleMouseUp"
       />
-
-      <BaseIcon
-        icon="dropdown"
-      />
-
-      <div class="menu">
-        <div
-          v-for="scrobblePercentValue in scrobblePercentValuesCollection"
-          :key="scrobblePercentValue.key"
-          class="item"
-          :data-value="scrobblePercentValue.name"
-          @click="handleScrobblePercentSelect(scrobblePercentValue.name)"
-          v-text="`${scrobblePercentValue.name}%`"
-        />
-      </div>
     </div>
   </div>
 </template>
@@ -41,26 +25,22 @@ import {
   mapState
 } from 'vuex'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseSeeker from '@/components/BaseSeeker.vue'
+import {
+  mainScrobblePercentSeekerOptions
+} from '@/helpers/data/plugins/semantic'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
 import {
-  setDropdown,
-  setDropdownValue
+  setSeekerValue
 } from '@/helpers/actions/plugins/semantic'
-import {
-  mainDropdownOptions
-} from '@/helpers/data/plugins/semantic'
-import {
-  collection as formatCollection
-} from '@/helpers/formatters'
 
 export default {
   name: 'ScrobblePercentOption',
   components: {
     BaseHeader,
-    BaseIcon
+    BaseSeeker
   },
   props: {
     isConnected: Boolean,
@@ -68,20 +48,10 @@ export default {
   },
   data () {
     return {
-      scrobblePercentValues: [
-        25,
-        50,
-        75
-      ]
+      seeker: null
     }
   },
   computed: {
-    ...mapState(
-      'layout',
-      [
-        'isDarkMode'
-      ]
-    ),
     ...mapState(
       'player',
       {
@@ -93,9 +63,11 @@ export default {
         'settings.options.services.lastfm.scrobblePercent'
       )
     },
-    scrobblePercentValuesCollection () {
-      return formatCollection(
-        this.scrobblePercentValues
+    seekerOptions () {
+      return mainScrobblePercentSeekerOptions(
+        {
+          start: this.playerScrobblePercent
+        }
       )
     },
     isDisabled () {
@@ -106,25 +78,16 @@ export default {
     }
   },
   watch: {
-    playerScrobblePercent: 'handleScrobblePercentChange'
-  },
-  async mounted () {
-    await this.$nextTick()
-
-    setDropdown(
-      this.$refs.dropdown,
-      mainDropdownOptions()
-    )
-
-    await this.$nextTick()
-
-    setDropdownValue(
-      this.$refs.dropdown,
-      this.playerScrobblePercent
-    )
+    playerScrobblePercent:
+      'handlePlayerScrobblePercentChange'
   },
   methods: {
-    handleScrobblePercentSelect (
+    handleSeekerInit (
+      element
+    ) {
+      this.seeker = element
+    },
+    handleMouseUp (
       value
     ) {
       updateGlobalStore(
@@ -133,11 +96,11 @@ export default {
         }
       )
     },
-    handleScrobblePercentChange (
+    handlePlayerScrobblePercentChange (
       value
     ) {
-      setDropdownValue(
-        this.$refs.dropdown,
+      setSeekerValue(
+        this.seeker,
         value
       )
     }
@@ -145,4 +108,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.seeker-container
+  width: 120px
+</style>

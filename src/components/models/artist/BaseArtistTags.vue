@@ -4,13 +4,15 @@
   >
     <BaseTagsSimpleList
       :tags="tags"
-      :is-more="isMore"
+      :is-more="isRenderMore"
+      :size="size"
       is-with-icon
       @more-click="handleMoreClick"
+      @link-click="handleLinkClick"
     />
 
     <BaseArtistTagsModal
-      v-if="isMore"
+      v-if="isRenderMore"
       ref="modal"
       :artist-name="artistName"
     />
@@ -32,11 +34,22 @@ export default {
     artistData: {
       type: Object,
       required: true
-    }
+    },
+    size: String,
+    isWithMore: Boolean
   },
+  emits: [
+    'linkClick'
+  ],
   computed: {
     tags () {
       return this.artistData.tags
+    },
+    isRenderMore () {
+      return (
+        this.isMore &&
+          this.isWithMore
+      )
     },
     isMore () {
       return this.artistData.with_more?.tags
@@ -48,6 +61,11 @@ export default {
   methods: {
     handleMoreClick () {
       this.showModal()
+    },
+    handleLinkClick () {
+      this.$emit(
+        'linkClick'
+      )
     },
     showModal () {
       this.$refs

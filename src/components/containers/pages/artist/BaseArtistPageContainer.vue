@@ -11,6 +11,7 @@
       :top-track-count="topTrackCount"
       :is-loading="isLoading"
       :error="error"
+      :response-page-limit="responsePageLimit"
     />
   </BasePageContainer>
 </template>
@@ -86,10 +87,10 @@ export default {
       return {
         ...this.requestArtistData,
         scope: this.scope,
-        limit: this.artistLimit
+        limit: this.limit
       }
     },
-    artistLimit () {
+    responsePageLimit () {
       if (this.isDiscogsSource) {
         return 25
       } else {
@@ -98,7 +99,7 @@ export default {
     },
     isDiscogsSource () {
       return (
-        this.requestArtistData.source?.name ===
+        this.requestArtistData.source ===
           'discogs'
       )
     },

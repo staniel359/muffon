@@ -22,11 +22,18 @@
           v-if="isByCommunity"
           :community-data="communityData"
         />
-
-        <BaseProfileNickname
+        <div
           v-else
-          :profile-data="profileData"
-        />
+          class="profile-nickname-container"
+        >
+          <BaseProfileNickname
+            :profile-data="profileData"
+          />
+
+          <BasePrivateIcon
+            v-if="isPrivate"
+          />
+        </div>
 
         <BaseTimestamp
           class="description"
@@ -74,6 +81,7 @@ import BaseCommunityTitle
   from '@/components/models/community/BaseCommunityTitle.vue'
 import BaseProfileNickname
   from '@/components/models/profile/BaseProfileNickname.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import BaseTimestamp from '@/components/BaseTimestamp.vue'
 import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
@@ -97,6 +105,7 @@ export default {
     BaseImage,
     BaseCommunityTitle,
     BaseProfileNickname,
+    BasePrivateIcon,
     BaseTimestamp,
     BaseSendableContentSection,
     BasePostOptionsDropdown,
@@ -212,6 +221,9 @@ export default {
       } else {
         return 'profile'
       }
+    },
+    isPrivate () {
+      return this.profileData.private
     }
   },
   methods: {
@@ -269,4 +281,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.profile-nickname-container
+  @extend .d-flex, .align-items-center
+</style>

@@ -12,6 +12,9 @@
         :scope="listScope"
         :limit="limit"
         :response-page-limit="responsePageLimit"
+        :is-with-top-segment="isWithTopSegment"
+        :is-with-view-change="isWithViewChange"
+        :view-index="viewIndex"
       >
         <template #default="slotProps">
           <slot
@@ -45,7 +48,10 @@ export default {
     },
     scope: String,
     limit: Number,
-    responsePageLimit: Number
+    responsePageLimit: Number,
+    isWithTopSegment: Boolean,
+    isWithViewChange: Boolean,
+    viewIndex: Number
   }
 }
 </script>

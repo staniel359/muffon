@@ -4,18 +4,13 @@
 
     <SystemThemeOption />
 
-    <BackgroundOption
-      v-if="profileId"
-    />
+    <BackgroundOption />
 
     <TransparencyOption />
   </div>
 </template>
 
 <script>
-import {
-  mapGetters
-} from 'vuex'
 import DarkModeOption from './ThemeOptions/DarkModeOption.vue'
 import SystemThemeOption from './ThemeOptions/SystemThemeOption.vue'
 import BackgroundOption from './ThemeOptions/BackgroundOption.vue'
@@ -28,14 +23,6 @@ export default {
     SystemThemeOption,
     BackgroundOption,
     TransparencyOption
-  },
-  computed: {
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    )
   }
 }
 </script>

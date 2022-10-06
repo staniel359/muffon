@@ -38,6 +38,11 @@
           @link-click="handleLinkClick"
         />
 
+        <BaseAlbumReleaseDateSection
+          class="description"
+          :album-data="albumData"
+        />
+
         <BaseAlbumListenersCount
           v-if="isWithListenersCount"
           class="description"
@@ -45,6 +50,14 @@
           :artist-name="artistName"
           :listeners-count="listenersCount"
           @load-end="handleListenersCountLoadEnd"
+        />
+
+        <LibraryCountersSection
+          v-if="isWithLibrary"
+          :album-data="albumData"
+          :profile-id="profileId"
+          :top-tracks-count="topTracksCount"
+          @link-active-change="handleCounterLinkActiveChange"
         />
       </div>
 
@@ -94,10 +107,19 @@
         @success="handleDeleted"
       />
       <BaseFavoriteDeleteModal
-        v-else-if="isFavorite"
+        v-else-if="isFavorite && isSelf"
         ref="deleteModal"
         model="album"
         :model-data="albumData"
+        @success="handleDeleted"
+      />
+      <BaseLibraryDeleteModal
+        v-else-if="isLinkToLibrary && isSelf"
+        ref="deleteModal"
+        model="album"
+        :profile-id="profileId"
+        :model-id="libraryAlbumId"
+        :model-name="albumFullTitle"
         @success="handleDeleted"
       />
     </template>
@@ -112,8 +134,11 @@ import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
   from '@/components/models/album/BaseAlbumArtistsSection.vue'
+import BaseAlbumReleaseDateSection
+  from '@/components/models/album/BaseAlbumReleaseDateSection.vue'
 import BaseAlbumListenersCount
   from '@/components/models/album/BaseAlbumListenersCount.vue'
+import LibraryCountersSection from './AlbumItem/LibraryCountersSection.vue'
 import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseAlbumOptionsDropdown
@@ -123,6 +148,8 @@ import BaseBookmarkDeleteModal
   from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -133,13 +160,16 @@ export default {
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,
+    BaseAlbumReleaseDateSection,
     BaseAlbumListenersCount,
+    LibraryCountersSection,
     BaseSourceIcon,
     BaseSelfIcons,
     BaseAlbumOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal
+    BaseFavoriteDeleteModal,
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
@@ -157,6 +187,8 @@ export default {
     isWithArtistName: Boolean,
     isWithListenersCount: Boolean,
     isLinkToLibrary: Boolean,
+    isWithLibrary: Boolean,
+    topTracksCount: Number,
     isWithSelfIcons: Boolean,
     isWithLibraryOption: Boolean,
     isWithFavoriteOption: Boolean,
@@ -176,7 +208,8 @@ export default {
   ],
   data () {
     return {
-      isArtistLinkActive: false
+      isArtistLinkActive: false,
+      isCounterLinkActive: false
     }
   },
   computed: {
@@ -212,7 +245,10 @@ export default {
       return !!this.albumData.isDeleted
     },
     isMainLinkActive () {
-      return !this.isArtistLinkActive
+      return !(
+        this.isArtistLinkActive ||
+          this.isCounterLinkActive
+      )
     },
     isRenderSource () {
       return (
@@ -225,6 +261,17 @@ export default {
     },
     sourceData () {
       return this.albumData.source
+    },
+    libraryAlbumId () {
+      return this.albumData.library.id.toString()
+    },
+    albumFullTitle () {
+      return [
+        this.artistName,
+        this.albumTitle
+      ].join(
+        ' - '
+      )
     }
   },
   methods: {
@@ -260,6 +307,11 @@ export default {
       value
     ) {
       this.isArtistLinkActive = value
+    },
+    handleCounterLinkActiveChange (
+      value
+    ) {
+      this.isCounterLinkActive = value
     },
     showDeleteModal () {
       this.$refs

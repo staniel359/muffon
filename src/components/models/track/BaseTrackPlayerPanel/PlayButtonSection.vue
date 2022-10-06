@@ -60,6 +60,7 @@ export default {
 .track-play-button
   @extend .h-100
   width: $trackPagePlayerPanelHeight
+  background: transparent !important
   .icon
     @extend .no-margin
 </style>

@@ -5,7 +5,8 @@
     :request-artist-data="artistData"
   >
     <template #default="slotProps">
-      <BaseArtistHorizontalCardContainer
+      <BaseSegmentContainer
+        class="raised main-segment-container artist-segment"
         :class="{
           disabled: isDeleted
         }"
@@ -92,15 +93,30 @@
                 />
               </template>
 
-              <RecommendationSection
+              <RecommendationArtistsSection
                 v-if="isRecommendation"
-                ref="recommendation"
-                :artist-data="artistData"
+                :recommendation-data="artistData"
+              />
+
+              <BaseRecommendationDeleteModal
+                v-if="isRecommendation"
+                ref="deleteModal"
+                :recommendation-data="artistData"
+                @success="handleDeleted"
+              />
+              <BaseLibraryDeleteModal
+                v-else-if="isLinkToLibrary && isSelf"
+                ref="deleteModal"
+                model="artist"
+                :profile-id="profileId"
+                :model-id="libraryArtistId"
+                :model-name="artistName"
+                @success="handleDeleted"
               />
             </div>
           </template>
         </template>
-      </BaseArtistHorizontalCardContainer>
+      </BaseSegmentContainer>
     </template>
   </BaseArtistContainer>
 </template>
@@ -108,8 +124,8 @@
 <script>
 import BaseArtistContainer
   from '@/components/containers/artist/BaseArtistContainer.vue'
-import BaseArtistHorizontalCardContainer
-  from '@/components/containers/artist/BaseArtistHorizontalCardContainer.vue'
+import BaseSegmentContainer
+  from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
@@ -122,14 +138,19 @@ import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
   from '@/components/models/artist/BaseArtistDescription.vue'
-import RecommendationSection from './ArtistItem/RecommendationSection.vue'
+import RecommendationArtistsSection
+  from './ArtistItem/RecommendationArtistsSection.vue'
+import BaseRecommendationDeleteModal
+  from '@/components/modals/recommendation/BaseRecommendationDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
   name: 'ArtistItem',
   components: {
     BaseArtistContainer,
-    BaseArtistHorizontalCardContainer,
+    BaseSegmentContainer,
     BaseDeletedBlock,
     BaseArtistImage,
     LibraryCountersSection,
@@ -140,7 +161,9 @@ export default {
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
-    RecommendationSection
+    RecommendationArtistsSection,
+    BaseRecommendationDeleteModal,
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
@@ -158,7 +181,6 @@ export default {
       type: Object,
       required: true
     },
-    responseData: Object,
     isWithLibrary: Boolean,
     isLinkToLibrary: Boolean,
     profileId: String,
@@ -179,6 +201,9 @@ export default {
     },
     artistName () {
       return this.responseData.name
+    },
+    responseData () {
+      return this.artistData.responseData
     },
     imageData () {
       return this.artistData.image
@@ -216,6 +241,9 @@ export default {
     },
     description () {
       return this.responseData.description
+    },
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
     }
   },
   watch: {
@@ -233,7 +261,7 @@ export default {
       this.paginationItem.image = value
     },
     handleDeleteOptionClick () {
-      this.showRecommendationDeleteModal()
+      this.showDeleteModal()
     },
     handleResponseDataChange (
       value
@@ -242,16 +270,24 @@ export default {
         this.resetInfiniteScrollObserver()
       }
     },
-    showRecommendationDeleteModal () {
+    handleDeleted () {
+      this.paginationItem.isDeleted = true
+    },
+    showDeleteModal () {
       this.$refs
-        .recommendation
-        .showDeleteModal()
+        .deleteModal
+        .show()
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+.artist-segment
+  @extend .d-flex
+  &.inverted
+    border: $borderInverted !important
+
 .artist-left-column
   margin-right: 1em
 

@@ -8,6 +8,8 @@
 
   <BasePlaylistCreateModal
     ref="modal"
+    :is-with-redirect="isWithRedirect"
+    @success="handleSuccess"
   />
 </template>
 
@@ -22,6 +24,12 @@ export default {
     BaseButton,
     BasePlaylistCreateModal
   },
+  props: {
+    isWithRedirect: Boolean
+  },
+  emits: [
+    'success'
+  ],
   computed: {
     createText () {
       return this.$t(
@@ -32,6 +40,11 @@ export default {
   methods: {
     handleButtonClick () {
       this.showModal()
+    },
+    handleSuccess () {
+      this.$emit(
+        'success'
+      )
     },
     showModal () {
       this.$refs

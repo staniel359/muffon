@@ -22,7 +22,6 @@
 
     <ListenersSection
       :album-data="albumData"
-      :request-album-data="requestAlbumData"
     />
   </div>
 </template>
@@ -53,7 +52,6 @@ export default {
       type: Object,
       required: true
     },
-    requestAlbumData: Object,
     scrollable: HTMLDivElement
   },
   computed: {

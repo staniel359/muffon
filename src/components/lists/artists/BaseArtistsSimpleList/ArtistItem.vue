@@ -7,6 +7,7 @@
     :artist-data="artistData"
     :is-link-to-library="isLinkToLibrary"
     :profile-id="profileId"
+    :is-link-active="isLinkActive"
     @link-click="handleLinkClick"
   >
     <BaseDeletedBlock
@@ -74,6 +75,7 @@
         :is-with-listened-option="isWithListenedOption"
         :is-with-share-option="isWithShareOption"
         :is-with-delete-option="isWithDeleteOption"
+        @active-change="handleOptionsActiveChange"
         @link-click="handleLinkClick"
         @delete-option-click="handleDeleteOptionClick"
       />
@@ -81,6 +83,7 @@
       <BaseClearButton
         v-if="isWithClearButton"
         @click="handleClearButtonClick"
+        @active-change="handleClearButtonActiveChange"
       />
 
       <BaseBookmarkDeleteModal
@@ -91,10 +94,19 @@
         @success="handleDeleted"
       />
       <BaseFavoriteDeleteModal
-        v-else-if="isFavorite"
+        v-else-if="isFavorite && isSelf"
         ref="deleteModal"
         model="artist"
         :model-data="artistData"
+        @success="handleDeleted"
+      />
+      <BaseLibraryDeleteModal
+        v-else-if="isLinkToLibrary && isSelf"
+        ref="deleteModal"
+        model="artist"
+        :profile-id="profileId"
+        :model-id="libraryArtistId"
+        :model-name="artistName"
         @success="handleDeleted"
       />
     </template>
@@ -118,6 +130,8 @@ import BaseBookmarkDeleteModal
   from '@/components/modals/bookmark/BaseBookmarkDeleteModal.vue'
 import BaseFavoriteDeleteModal
   from '@/components/modals/favorite/BaseFavoriteDeleteModal.vue'
+import BaseLibraryDeleteModal
+  from '@/components/modals/library/BaseLibraryDeleteModal.vue'
 import selfMixin from '@/mixins/selfMixin'
 
 export default {
@@ -133,16 +147,14 @@ export default {
     BaseArtistOptionsDropdown,
     BaseClearButton,
     BaseBookmarkDeleteModal,
-    BaseFavoriteDeleteModal
+    BaseFavoriteDeleteModal,
+    BaseLibraryDeleteModal
   },
   mixins: [
     selfMixin
   ],
   inject: {
     findPaginationItem: {
-      default: () => false
-    },
-    findListItem: {
       default: () => false
     }
   },
@@ -176,7 +188,9 @@ export default {
   ],
   data () {
     return {
-      isCounterLinkActive: false
+      isCounterLinkActive: false,
+      isOptionsActive: false,
+      isClearButtonActive: false
     }
   },
   computed: {
@@ -198,13 +212,6 @@ export default {
     isDeleted () {
       return !!this.artistData.isDeleted
     },
-    item () {
-      if (this.isPaginated) {
-        return this.paginationItem
-      } else {
-        return this.listItem
-      }
-    },
     paginationItem () {
       return this.findPaginationItem(
         {
@@ -215,11 +222,14 @@ export default {
     uuid () {
       return this.artistData.uuid
     },
-    listItem () {
-      return this.findListItem(
-        {
-          uuid: this.uuid
-        }
+    libraryArtistId () {
+      return this.artistData.library.id.toString()
+    },
+    isLinkActive () {
+      return !(
+        this.isCounterLinkActive ||
+          this.isOptionsActive ||
+          this.isClearButtonActive
       )
     }
   },
@@ -232,12 +242,16 @@ export default {
     handleImageLoadEnd (
       value
     ) {
-      this.item.image = value
+      if (this.isPaginated) {
+        this.paginationItem.image = value
+      }
     },
     handleListenersCountLoadEnd (
       value
     ) {
-      this.item.listeners_count = value
+      if (this.isPaginated) {
+        this.paginationItem.listeners_count = value
+      }
     },
     handleCounterLinkActiveChange (
       value
@@ -256,7 +270,19 @@ export default {
       )
     },
     handleDeleted () {
-      this.item.isDeleted = true
+      if (this.isPaginated) {
+        this.paginationItem.isDeleted = true
+      }
+    },
+    handleOptionsActiveChange (
+      value
+    ) {
+      this.isOptionsActive = value
+    },
+    handleClearButtonActiveChange (
+      value
+    ) {
+      this.isClearButtonActive = value
     },
     showDeleteModal () {
       this.$refs

@@ -14,8 +14,6 @@ import {
 } from 'electron'
 import BaseImageUploadButton
   from '@/components/buttons/BaseImageUploadButton.vue'
-import createBackgroundImage
-  from '@/helpers/actions/api/backgroundImage/create'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
@@ -25,48 +23,55 @@ export default {
   components: {
     BaseImageUploadButton
   },
-  data () {
-    return {
-      backgroundImage: null,
-      error: null,
-      isLoading: false
-    }
-  },
   computed: {
     ...mapState(
       'layout',
       [
-        'backgroundImages'
+        'backgroundImages',
+        'tabId'
       ]
     )
   },
-  watch: {
-    backgroundImage: 'handleBackgroundImageChange'
+  mounted () {
+    ipcRenderer.on(
+      'create-background-image',
+      this.handleCreateBackgroundImage
+    )
   },
   methods: {
-    createBackgroundImage,
     handleUploadChange (
-      value
+      {
+        data
+      }
     ) {
-      this.createBackgroundImage(
-        {
-          image: value.data
-        }
+      const createArgs = {
+        tabId: this.tabId,
+        data
+      }
+
+      ipcRenderer.send(
+        'create-background-image',
+        createArgs
       )
     },
-    handleBackgroundImageChange (
-      value
+    handleCreateBackgroundImage (
+      _,
+      imageData
     ) {
-      if (value) {
-        this.addToBackgroundImages()
+      this.addToBackgroundImages(
+        imageData
+      )
 
-        this.setCurrentBackgroundImage()
-      }
+      this.setCurrentBackgroundImage(
+        imageData
+      )
     },
-    addToBackgroundImages () {
+    addToBackgroundImages (
+      imageData
+    ) {
       const images = [
         ...this.backgroundImages,
-        this.backgroundImage
+        imageData
       ]
 
       updateGlobalStore(
@@ -75,14 +80,14 @@ export default {
         }
       )
     },
-    setCurrentBackgroundImage () {
+    setCurrentBackgroundImage (
+      imageData
+    ) {
       ipcRenderer.send(
         'change-background-image',
         {
-          imageId:
-            this.backgroundImage.id,
-          imageUrl:
-            this.backgroundImage.original
+          imageId: imageData.id,
+          imagePath: imageData.path
         }
       )
     }

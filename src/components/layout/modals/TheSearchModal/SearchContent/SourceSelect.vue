@@ -3,7 +3,7 @@
     class="floating scrolling scope-select-container"
     menu-direction="left"
     :options="sources"
-    :selected="selected"
+    :selected="source"
     :is-selection="false"
     is-only-icon
     @select="handleSelect"
@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
 import BaseDropdown from '@/components/dropdowns/BaseDropdown.vue'
 import audioSources from '@/helpers/data/audio/sources'
 
@@ -23,57 +20,65 @@ export default {
     BaseDropdown
   },
   props: {
-    scope: String
+    source: {
+      type: String,
+      required: true
+    },
+    scope: {
+      type: String,
+      required: true
+    }
   },
   emits: [
     'select'
   ],
-  data () {
-    return {
-      selected: null
-    }
-  },
   computed: {
-    ...mapState(
-      'search',
-      {
-        searchSource: 'source'
-      }
-    ),
-    sources () {
-      if (this.scope) {
-        return audioSources.filter(
-          this.isMatchedSource
-        )
-      } else {
-        return audioSources
-      }
+    isSourceHasScope () {
+      return this.sourceScopes.includes(
+        this.scope
+      )
     },
-    firstSource () {
-      return this.sources[0].id
+    sourceScopes () {
+      return this.sourceData.searchScopes
+    },
+    sourceData () {
+      return this.sources.find(
+        this.isMatchedSource
+      )
+    },
+    sources () {
+      return audioSources
+    },
+    firstSourceWithScope () {
+      return this.sourcesWithScope[0].id
+    },
+    sourcesWithScope () {
+      return this.sources.filter(
+        this.isSourceWithScope
+      )
     }
   },
   watch: {
-    searchSource: {
-      immediate: true,
-      handler: 'handleSearchSourceChange'
-    },
     scope: 'handleScopeChange'
   },
   methods: {
-    handleSearchSourceChange (
-      value
-    ) {
-      this.selected = value
-    },
     handleScopeChange () {
-      this.selected = this.firstSource
+      if (!this.isSourceHasScope) {
+        this.select(
+          this.firstSourceWithScope
+        )
+      }
     },
     handleSelect (
       value
     ) {
-      this.selected = value
-
+      this.select(
+        value
+      )
+    },
+    select (
+      value
+    ) {
       this.$emit(
         'select',
         value
@@ -82,9 +87,19 @@ export default {
     isMatchedSource (
       sourceData
     ) {
-      return sourceData.searchScopes.includes(
-        this.scope
+      return (
+        sourceData.id ===
+          this.source
       )
+    },
+    isSourceWithScope (
+      sourceData
+    ) {
+      return sourceData
+        .searchScopes
+        .includes(
+          this.scope
+        )
     }
   }
 }

@@ -14,8 +14,9 @@
       @model-scope-change="handleModelScopeChange"
     />
 
+    <PlayingSegment />
+
     <PlayerSegment
-      v-if="scope"
       :key="key"
       :scope="scope"
       :model-name="modelName"
@@ -26,6 +27,7 @@
 
 <script>
 import SearchSegment from './RadioPage/SearchSegment.vue'
+import PlayingSegment from './RadioPage/PlayingSegment.vue'
 import PlayerSegment from './RadioPage/PlayerSegment.vue'
 import navigationMixin from '@/mixins/navigationMixin'
 import {
@@ -40,6 +42,7 @@ export default {
   name: 'RadioPage',
   components: {
     SearchSegment,
+    PlayingSegment,
     PlayerSegment
   },
   mixins: [
@@ -48,9 +51,9 @@ export default {
   data () {
     return {
       key: null,
-      scope: null,
       modelName: null,
-      modelScope: null
+      modelScope: null,
+      scope: 'top'
     }
   },
   computed: {
@@ -59,10 +62,15 @@ export default {
     },
     tabData () {
       return formatRadioPageTab()
+    },
+    isTopScope () {
+      return this.scope === 'top'
     }
   },
   mounted () {
     this.setNavigation()
+
+    this.isRefreshNavigation = true
   },
   methods: {
     handleScopeChange (
@@ -70,7 +78,7 @@ export default {
     ) {
       this.scope = value
 
-      if (this.scope === 'top') {
+      if (this.isTopScope) {
         this.modelScope = null
       }
     },
@@ -79,14 +87,23 @@ export default {
     ) {
       this.modelName = value
 
-      this.key = generateKey()
+      if (value) {
+        this.key = generateKey()
+      }
     },
     handleModelScopeChange (
       value
     ) {
       this.modelScope = value
 
-      this.key = generateKey()
+      const isRefresh = (
+        this.isTopScope ||
+          this.modelName
+      )
+
+      if (isRefresh) {
+        this.key = generateKey()
+      }
     }
   }
 }

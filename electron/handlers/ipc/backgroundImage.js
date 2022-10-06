@@ -1,3 +1,6 @@
+const createBackgroundImage = require(
+  '../../actions/backgroundImage/create'
+)
 const changeBackgroundImage = require(
   '../../actions/backgroundImage/change'
 )
@@ -8,17 +11,32 @@ const removeBackgroundImage = require(
   '../../actions/backgroundImage/remove'
 )
 
+function handleCreateBackgroundImage (
+  _,
+  {
+    tabId,
+    data
+  }
+) {
+  createBackgroundImage(
+    {
+      tabId,
+      data
+    }
+  )
+}
+
 function handleChangeBackgroundImage (
   _,
   {
     imageId,
-    imageUrl
+    imagePath
   }
 ) {
   changeBackgroundImage(
     {
       imageId,
-      imageUrl
+      imagePath
     }
   )
 }
@@ -41,6 +59,7 @@ function handleDeleteBackgroundImage (
 }
 
 module.exports = {
+  handleCreateBackgroundImage,
   handleChangeBackgroundImage,
   handleResetBackgroundImage,
   handleDeleteBackgroundImage

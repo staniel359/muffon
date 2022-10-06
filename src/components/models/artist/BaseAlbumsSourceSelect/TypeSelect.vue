@@ -21,14 +21,16 @@ export default {
     TypesList
   },
   inject: [
-    'setSelectedTypeId'
+    'setSelectedTypeData'
   ],
   props: {
     types: Array
   },
   mounted () {
-    this.setSelectedTypeId(
-      'album'
+    this.setSelectedTypeData(
+      {
+        id: 'album'
+      }
     )
   }
 }

@@ -16,18 +16,10 @@
           class="link"
           :text="nickname"
         />
-      </div>
 
-      <div class="description">
-        <small>
-          <BaseProfileGenderAge
-            :profile-data="profileData"
-          />
-
-          <BaseProfileCityCountry
-            :profile-data="profileData"
-          />
-        </small>
+        <BasePrivateIcon
+          v-if="isPrivate"
+        />
       </div>
     </div>
   </BaseLinkContainer>
@@ -38,10 +30,7 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseProfileGenderAge
-  from '@/components/models/profile/BaseProfileGenderAge.vue'
-import BaseProfileCityCountry
-  from '@/components/models/profile/BaseProfileCityCountry.vue'
+import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
 import {
   main as formatProfileMainLink
 } from '@/helpers/formatters/links/profile'
@@ -52,8 +41,7 @@ export default {
     BaseLinkContainer,
     BaseImage,
     BaseHeader,
-    BaseProfileGenderAge,
-    BaseProfileCityCountry
+    BasePrivateIcon
   },
   props: {
     profileData: {
@@ -77,6 +65,9 @@ export default {
     },
     nickname () {
       return this.profileData.nickname
+    },
+    isPrivate () {
+      return this.profileData.private
     }
   }
 }

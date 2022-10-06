@@ -6,27 +6,21 @@
     :error="error"
     @refresh="handleRefresh"
   >
-    <template v-if="isGetData">
-      <BaseErrorMessage
-        v-if="error"
-        :error="error"
+    <BaseErrorMessage
+      v-if="error"
+      :error="error"
+    />
+    <template
+      v-else-if="trackData"
+    >
+      <TrackSection
+        :key="key"
+        :track-data="trackData"
       />
 
-      <PlayingSection />
-
-      <template
-        v-if="trackData"
-      >
-        <TrackSection
-          :key="key"
-          ref="track"
-          :track-data="trackData"
-        />
-
-        <NextButton
-          @click="handleNextButtonClick"
-        />
-      </template>
+      <NextButton
+        @click="handleNextButtonClick"
+      />
     </template>
   </BaseSegmentContainer>
 </template>
@@ -35,7 +29,6 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
-import PlayingSection from './PlayerSegment/PlayingSection.vue'
 import TrackSection from './PlayerSegment/TrackSection.vue'
 import NextButton from './PlayerSegment/NextButton.vue'
 import getRadio from '@/helpers/actions/api/radio/get'
@@ -48,7 +41,6 @@ export default {
   components: {
     BaseSegmentContainer,
     BaseErrorMessage,
-    PlayingSection,
     TrackSection,
     NextButton
   },
@@ -80,7 +72,7 @@ export default {
       }
     },
     isGetData () {
-      if (this.scope === 'top') {
+      if (this.isTopScope) {
         return !!this.modelScope
       } else {
         return !!(
@@ -88,6 +80,9 @@ export default {
             this.modelScope
         )
       }
+    },
+    isTopScope () {
+      return this.scope === 'top'
     }
   },
   watch: {
@@ -106,26 +101,17 @@ export default {
     handleRefresh () {
       this.getData()
     },
-    async handleTrackDataChange (
+    handleTrackDataChange (
       value
     ) {
       if (value) {
         this.key = generateKey()
-
-        await this.$nextTick()
-
-        this.getAudio()
       }
     },
     getData () {
       this.getRadio(
         this.radioArgs
       )
-    },
-    getAudio () {
-      this.$refs
-        .track
-        .getAudio()
     }
   }
 }

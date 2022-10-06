@@ -10,8 +10,8 @@
   >
     <template #default="slotProps">
       <BaseArtistsList
-        :view-index="viewIndex"
         :artists="slotProps[scope]"
+        :view-index="viewIndex"
         is-with-listeners-count
         is-with-library-option
         is-with-favorite-option

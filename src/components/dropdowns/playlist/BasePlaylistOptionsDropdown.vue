@@ -7,15 +7,33 @@
       :share-data="shareData"
     />
 
-    <BaseEditOption
+    <template
       v-if="isWithEditOption"
-      @click="handleEditOptionClick"
-    />
+    >
+      <BaseEditOption
+        @click="handleEditOptionClick"
+      />
 
-    <BaseDeleteOption
+      <BasePlaylistUpdateModal
+        ref="editModal"
+        :playlist-data="playlistData"
+      />
+    </template>
+
+    <template
       v-if="isWithDeleteOption"
-      @click="handleDeleteOptionClick"
-    />
+    >
+      <BaseDeleteOption
+        @click="handleDeleteOptionClick"
+      />
+
+      <BasePlaylistDeleteModal
+        ref="deleteModal"
+        :playlist-data="playlistData"
+        :is-with-redirect="isDeleteWithRedirect"
+        @success="handleDeleted"
+      />
+    </template>
   </BaseOptionsDropdownContainer>
 </template>
 
@@ -29,8 +47,12 @@ import BaseShareOption
   from '@/components/dropdowns/options/BaseShareOption.vue'
 import BaseEditOption
   from '@/components/dropdowns/options/BaseEditOption.vue'
+import BasePlaylistUpdateModal
+  from '@/components/modals/playlist/BasePlaylistUpdateModal.vue'
 import BaseDeleteOption
   from '@/components/dropdowns/options/BaseDeleteOption.vue'
+import BasePlaylistDeleteModal
+  from '@/components/modals/playlist/BasePlaylistDeleteModal.vue'
 
 export default {
   name: 'BasePlaylistOptionsDropdown',
@@ -38,17 +60,20 @@ export default {
     BaseOptionsDropdownContainer,
     BaseShareOption,
     BaseEditOption,
-    BaseDeleteOption
+    BasePlaylistUpdateModal,
+    BaseDeleteOption,
+    BasePlaylistDeleteModal
   },
   props: {
+    playlistData: Object,
     shareData: Object,
     isWithShareOption: Boolean,
     isWithEditOption: Boolean,
-    isWithDeleteOption: Boolean
+    isWithDeleteOption: Boolean,
+    isDeleteWithRedirect: Boolean
   },
   emits: [
-    'editOptionClick',
-    'deleteOptionClick'
+    'deleted'
   ],
   computed: {
     ...mapGetters(
@@ -73,14 +98,25 @@ export default {
   },
   methods: {
     handleEditOptionClick () {
-      this.$emit(
-        'editOptionClick'
-      )
+      this.showEditModal()
     },
     handleDeleteOptionClick () {
+      this.showDeleteModal()
+    },
+    handleDeleted () {
       this.$emit(
-        'deleteOptionClick'
+        'deleted'
       )
+    },
+    showEditModal () {
+      this.$refs
+        .editModal
+        .show()
+    },
+    showDeleteModal () {
+      this.$refs
+        .deleteModal
+        .show()
     }
   }
 }

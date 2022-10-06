@@ -9,8 +9,8 @@
     <template #default="slotProps">
       <BasePlaylistsSimpleList
         :playlists="slotProps[scope]"
-        :is-with-delete-option="isSelf"
         is-with-share-option
+        is-with-delete-option
       />
     </template>
   </BaseProfileLibraryTrackPaginatedSegmentContainer>
@@ -24,9 +24,6 @@ import BasePlaylistsSimpleList
 import {
   playlists as formatProfileLibraryTrackPlaylistsLink
 } from '@/helpers/formatters/links/profile/library/track'
-import {
-  isCurrentProfile
-} from '@/helpers/utils'
 
 export default {
   name: 'PlaylistsSegment',
@@ -57,11 +54,6 @@ export default {
           profileId: this.profileId,
           libraryTrackId: this.libraryTrackId
         }
-      )
-    },
-    isSelf () {
-      return isCurrentProfile(
-        this.profileId
       )
     }
   }

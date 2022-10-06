@@ -8,6 +8,10 @@
     :is-change-transparency="isChangeTransparency"
     @refresh="handleRefresh"
   >
+    <slot
+      name="top"
+    />
+
     <BasePaginatedListContainer
       ref="pagination"
       :response-data="responseData"

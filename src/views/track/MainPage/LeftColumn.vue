@@ -21,7 +21,6 @@
 
     <ListenersSection
       :track-data="trackData"
-      :request-track-data="requestTrackData"
     />
   </div>
 </template>
@@ -49,7 +48,6 @@ export default {
       type: Object,
       required: true
     },
-    requestTrackData: Object,
     scrollable: HTMLDivElement
   },
   computed: {

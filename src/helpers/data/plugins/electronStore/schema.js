@@ -49,6 +49,10 @@ export default {
     type: 'boolean',
     default: true
   },
+  'layout.isWithArtistPopup': {
+    type: 'boolean',
+    default: true
+  },
   'layout.isWithInfiniteScroll': {
     type: 'boolean',
     default: false

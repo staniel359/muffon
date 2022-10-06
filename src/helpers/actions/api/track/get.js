@@ -25,6 +25,11 @@ export default function (
       }
     )
 
+  const isWithSelfLanguage = (
+    !scope ||
+      scope === 'description'
+  )
+
   const handleSuccess = (
     response
   ) => {
@@ -38,7 +43,7 @@ export default function (
     {
       url,
       isWithSelfId: true,
-      isWithSelfLanguage: true,
+      isWithSelfLanguage,
       page,
       limit,
       onSuccess: handleSuccess

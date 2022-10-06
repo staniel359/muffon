@@ -50,8 +50,8 @@ export default {
         this.setSelectedSourceData,
       setSelectedArtistData:
         this.setSelectedArtistData,
-      setSelectedTypeId:
-        this.setSelectedTypeId
+      setSelectedTypeData:
+        this.setSelectedTypeData
     }
   },
   inject: [
@@ -69,7 +69,7 @@ export default {
       artistSelectKey: null,
       selectedArtistData: null,
       selectedSourceData: null,
-      selectedTypeId: null,
+      selectedTypeData: null,
       typeSelectKey: null
     }
   },
@@ -83,8 +83,8 @@ export default {
       'handleSelectedSourceDataChange',
     selectedArtistData:
       'handleSelectedArtistDataChange',
-    selectedTypeId:
-      'handleSelectedTypeIdChange'
+    selectedTypeData:
+      'handleSelectedTypeDataChange'
   },
   methods: {
     handleSelectedSourceDataChange () {
@@ -92,7 +92,7 @@ export default {
       this.typeSelectKey = generateKey()
 
       this.selectedArtistData = null
-      this.selectedTypeId = null
+      this.selectedTypeData = null
     },
     handleSelectedArtistDataChange (
       value
@@ -103,13 +103,13 @@ export default {
         )
       }
     },
-    handleSelectedTypeIdChange (
+    handleSelectedTypeDataChange (
       value
     ) {
       if (this.selectedArtistData) {
         this.selectedArtistData = {
           ...this.selectedArtistData,
-          albumType: value
+          albumType: value.id
         }
       }
     },
@@ -128,15 +128,18 @@ export default {
     setSelectedArtistData (
       value
     ) {
+      const albumType =
+        this.selectedTypeData?.id
+
       this.selectedArtistData = {
         ...value,
-        albumType: this.selectedTypeId
+        albumType
       }
     },
-    setSelectedTypeId (
+    setSelectedTypeData (
       value
     ) {
-      this.selectedTypeId = value
+      this.selectedTypeData = value
     },
     resetSelect () {
       this.$refs

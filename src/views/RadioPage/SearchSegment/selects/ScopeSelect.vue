@@ -1,7 +1,7 @@
 <template>
   <BaseScopesDropdown
     :scopes="scopes"
-    :selected="selectedScope"
+    :selected="scope"
     @select="handleSelect"
   />
 </template>
@@ -14,6 +14,9 @@ export default {
   components: {
     BaseScopesDropdown
   },
+  props: {
+    scope: String
+  },
   emits: [
     'select'
   ],
@@ -24,11 +27,6 @@ export default {
         'tag',
         'artist'
       ]
-    }
-  },
-  computed: {
-    selectedScope () {
-      return this.scopes[0]
     }
   },
   methods: {

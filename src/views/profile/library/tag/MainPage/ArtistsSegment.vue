@@ -12,6 +12,7 @@
         :profile-id="profileId"
         :items-in-row="itemsInRow"
         :is-with-library-option="!isSelf"
+        :is-with-delete-option="isSelf"
         is-link-to-library
         is-with-library
         is-with-favorite-option

@@ -25,7 +25,7 @@
 
       <TheQueuePanel />
 
-      <ThePlayerPanel />
+      <ThePlayerVariantsPanel />
 
       <TheVisibleArea />
 
@@ -58,7 +58,7 @@ import TheView from '@/components/layout/TheView.vue'
 import TheNavbarPanel from '@/components/layout/panels/TheNavbarPanel.vue'
 import TheSidebarPanel from '@/components/layout/panels/TheSidebarPanel.vue'
 import TheQueuePanel from '@/components/layout/panels/TheQueuePanel.vue'
-import ThePlayerPanel from '@/components/layout/panels/ThePlayerPanel.vue'
+import ThePlayerVariantsPanel from '@/components/layout/panels/ThePlayerVariantsPanel.vue'
 import TheVisibleArea from '@/components/layout/TheVisibleArea.vue'
 import TheSearchModal from '@/components/layout/modals/TheSearchModal.vue'
 import TheScrollToTopButton from '@/components/layout/TheScrollToTopButton.vue'
@@ -76,7 +76,7 @@ export default {
     TheNavbarPanel,
     TheSidebarPanel,
     TheQueuePanel,
-    ThePlayerPanel,
+    ThePlayerVariantsPanel,
     TheVisibleArea,
     TheSearchModal,
     TheScrollToTopButton,

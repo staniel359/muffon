@@ -135,14 +135,14 @@
       @success="handleDeleted"
     />
     <BaseFavoriteDeleteModal
-      v-else-if="isFavorite"
+      v-else-if="isFavorite && isSelf"
       ref="deleteModal"
       model="track"
       :model-data="trackData"
       @success="handleDeleted"
     />
     <BasePlaylistTrackDeleteModal
-      v-else-if="isPlaylistTrack"
+      v-else-if="isPlaylistTrack && isSelf"
       ref="deleteModal"
       :playlist-track-data="trackData"
       :playlist-id="playlistId"
@@ -156,7 +156,7 @@
       @success="handleDeleted"
     />
     <BaseLibraryDeleteModal
-      v-else-if="isLinkToLibrary"
+      v-else-if="isLinkToLibrary && isSelf"
       ref="deleteModal"
       model="track"
       :profile-id="profileId"
