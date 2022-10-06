@@ -21,6 +21,7 @@
     </div>
 
     <BaseSourceIcon
+      v-if="isRenderSource"
       class="source-icon-block"
       :source="source"
     />
@@ -59,6 +60,9 @@ export default {
     ),
     albumData () {
       return this.trackData.album
+    },
+    isRenderSource () {
+      return this.source !== 'lastfm'
     },
     source () {
       return this.trackData.source.name

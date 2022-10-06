@@ -253,7 +253,9 @@ export default {
     isRenderSource () {
       return (
         this.isWithSource &&
+          this.source && (
           this.source !== 'lastfm'
+        )
       )
     },
     source () {
