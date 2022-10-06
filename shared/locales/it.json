@@ -404,7 +404,8 @@
         "interface": {
           "language": "Lingua",
           "timezone": "Fuso orario",
-          "infiniteScroll": "Scroll infinito"
+          "infiniteScroll": "Scroll infinito",
+          "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse"
         },
         "theme": {
           "dark": "Modalità scura",
