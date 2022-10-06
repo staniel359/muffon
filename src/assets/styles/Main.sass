@@ -615,9 +615,14 @@ p
     .image
       width: 25px
       height: 25px
+  &.router-link-active
+    background: $colorGrey !important
+    font-weight: 700 !important
+    &.inverted
+      background: $colorGreyInverted !important
   &:before
     background: none !important
-  &:hover
+  &:hover, &.router-link-active
     .icon-container
       .icon
         color: $colorBase !important

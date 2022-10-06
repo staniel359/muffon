@@ -2,6 +2,9 @@
   <Component
     :is="component"
     class="item main-sidebar-item"
+    :class="{
+      inverted: isDarkMode
+    }"
     :link="link"
     @click="handleClick"
   >
@@ -20,9 +23,12 @@
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
   name: 'BaseSidebarItem',
@@ -45,6 +51,12 @@ export default {
     'click'
   ],
   computed: {
+    ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
     component () {
       if (this.link) {
         return 'BaseLinkContainer'
