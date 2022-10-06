@@ -1,5 +1,6 @@
 <template>
   <BaseCounterLabelsSection
+    class="main-labels-section"
     :counters="counters"
   />
 </template>

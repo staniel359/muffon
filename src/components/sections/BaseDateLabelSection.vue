@@ -1,10 +1,14 @@
 <template>
-  <div class="ui labels">
-    <BaseLabel
-      class="basic circular large"
-      icon="calendar outline"
-      :text="dateFormatted"
-    />
+  <div
+    v-if="date"
+  >
+    <div class="ui labels">
+      <BaseLabel
+        class="basic circular large"
+        icon="calendar outline"
+        :text="dateFormatted"
+      />
+    </div>
   </div>
 </template>
 
@@ -20,10 +24,7 @@ export default {
     BaseLabel
   },
   props: {
-    date: {
-      type: String,
-      required: true
-    }
+    date: String
   },
   computed: {
     dateFormatted () {

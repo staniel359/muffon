@@ -1,19 +1,14 @@
 <template>
   <div>
-    <div class="main-labels-section">
-      <BaseCounterLabelsSection
-        :counters="counters"
-      />
-    </div>
-
-    <div
-      v-if="releaseDate"
+    <BaseCounterLabelsSection
       class="main-labels-section"
-    >
-      <BaseDateLabelSection
-        :date="releaseDate"
-      />
-    </div>
+      :counters="counters"
+    />
+
+    <BaseDateLabelSection
+      class="main-labels-section"
+      :date="releaseDate"
+    />
 
     <BaseAlbumLabels
       class="main-labels-section"

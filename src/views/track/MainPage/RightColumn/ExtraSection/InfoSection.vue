@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div class="main-labels-section">
-      <BaseCounterLabelsSection
-        :counters="counters"
-      />
-    </div>
+    <BaseCounterLabelsSection
+      class="main-labels-section"
+      :counters="counters"
+    />
 
     <BaseTrackTags
       class="main-labels-section"

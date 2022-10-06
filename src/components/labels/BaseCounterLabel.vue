@@ -1,5 +1,6 @@
 <template>
   <BaseLabel
+    v-if="count"
     class="basic circular"
     :class="size"
     :icon="iconFormatted"

@@ -1,9 +1,8 @@
 <template>
-  <div class="main-labels-section">
-    <BaseCounterLabelsSection
-      :counters="counters"
-    />
-  </div>
+  <BaseCounterLabelsSection
+    class="main-labels-section"
+    :counters="counters"
+  />
 </template>
 
 <script>

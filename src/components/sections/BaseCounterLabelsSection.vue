@@ -1,11 +1,15 @@
 <template>
-  <div class="ui labels">
-    <BaseCounterLabel
-      v-for="(counterData, index) in counters"
-      :key="index"
-      :counter-data="counterData"
-      :size="size"
-    />
+  <div
+    v-if="isRender"
+  >
+    <div class="ui labels">
+      <BaseCounterLabel
+        v-for="(counterData, index) in counters"
+        :key="index"
+        :counter-data="counterData"
+        :size="size"
+      />
+    </div>
   </div>
 </template>
 
@@ -25,6 +29,22 @@ export default {
       }
     },
     size: String
+  },
+  computed: {
+    isRender () {
+      return this.counters.map(
+        this.formatCounterData
+      ).some(
+        count => count
+      )
+    }
+  },
+  methods: {
+    formatCounterData (
+      counterData
+    ) {
+      return counterData.count
+    }
   }
 }
 </script>

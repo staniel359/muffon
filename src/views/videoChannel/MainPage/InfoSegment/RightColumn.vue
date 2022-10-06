@@ -10,11 +10,10 @@
       :channel-data="channelData"
     />
 
-    <div class="main-labels-section">
-      <BaseDateLabelSection
-        :date="created"
-      />
-    </div>
+    <BaseDateLabelSection
+      class="main-labels-section"
+      :date="created"
+    />
 
     <DescriptionSection
       :channel-data="channelData"

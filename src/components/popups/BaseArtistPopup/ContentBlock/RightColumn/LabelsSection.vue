@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div class="main-labels-section">
-      <BaseCounterLabelsSection
-        :counters="counters"
-        size=""
-      />
-    </div>
+    <BaseCounterLabelsSection
+      class="main-labels-section"
+      :counters="counters"
+      size=""
+    />
 
     <BaseArtistTags
       class="main-labels-section"
