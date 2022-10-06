@@ -1,6 +1,6 @@
 <template>
   <div class="ui labels">
-    <CounterLabel
+    <BaseCounterLabel
       v-for="(counterData, index) in counters"
       :key="index"
       :counter-data="counterData"
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import CounterLabel from './BaseCounterLabels/CounterLabel.vue'
+import BaseCounterLabel from '@/components/labels/BaseCounterLabel.vue'
 
 export default {
-  name: 'BaseCounterLabels',
+  name: 'BaseCounterLabelsSection',
   components: {
-    CounterLabel
+    BaseCounterLabel
   },
   props: {
     counters: {

@@ -1,5 +1,5 @@
 <template>
-  <BaseDescription
+  <BaseDescriptionSection
     class="white tag-description"
     :description="description"
     :is-more="isMore"
@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import BaseTagDescriptionModal
   from '@/components/modals/tag/BaseTagDescriptionModal.vue'
 
 export default {
   name: 'BaseTagDescription',
   components: {
-    BaseDescription,
+    BaseDescriptionSection,
     BaseTagDescriptionModal
   },
   props: {

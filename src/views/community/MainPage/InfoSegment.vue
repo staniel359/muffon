@@ -27,7 +27,7 @@
             v-text="description"
           />
 
-          <BaseTimestamp
+          <BaseTimestampSection
             class="description"
             :created="created"
             is-only-date
@@ -55,7 +55,8 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseTimestamp from '@/components/BaseTimestamp.vue'
+import BaseTimestampSection
+  from '@/components/sections/BaseTimestampSection.vue'
 import BaseCommunityOptionsDropdown
   from '@/components/dropdowns/community/BaseCommunityOptionsDropdown.vue'
 import {
@@ -69,7 +70,7 @@ export default {
     BaseListContainer,
     BaseZoomableImage,
     BaseHeader,
-    BaseTimestamp,
+    BaseTimestampSection,
     BaseCommunityOptionsDropdown
   },
   props: {

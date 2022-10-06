@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-labels-section">
-      <BaseCounterLabels
+      <BaseCounterLabelsSection
         :counters="counters"
         size=""
       />
@@ -18,13 +18,14 @@
 </template>
 
 <script>
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
 
 export default {
   name: 'LabelsSection',
   components: {
-    BaseCounterLabels,
+    BaseCounterLabelsSection,
     BaseArtistTags
   },
   props: {

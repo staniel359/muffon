@@ -4,7 +4,7 @@
   >
     <BaseDivider />
 
-    <BaseDescription
+    <BaseDescriptionSection
       :description="description"
       :is-more="isMore"
       @more-click="handleMoreClick"
@@ -20,7 +20,8 @@
 
 <script>
 import BaseDivider from '@/components/BaseDivider.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import BaseAlbumDescriptionModal
   from '@/components/modals/album/BaseAlbumDescriptionModal.vue'
 
@@ -28,7 +29,7 @@ export default {
   name: 'BaseAlbumDescription',
   components: {
     BaseDivider,
-    BaseDescription,
+    BaseDescriptionSection,
     BaseAlbumDescriptionModal
   },
   props: {

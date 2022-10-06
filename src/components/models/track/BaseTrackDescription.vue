@@ -4,7 +4,7 @@
   >
     <BaseDivider />
 
-    <BaseDescription
+    <BaseDescriptionSection
       :description="description"
       :is-more="isMore"
       @more-click="handleMoreClick"
@@ -20,7 +20,8 @@
 
 <script>
 import BaseDivider from '@/components/BaseDivider.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import BaseTrackDescriptionModal
   from '@/components/modals/track/BaseTrackDescriptionModal.vue'
 
@@ -28,7 +29,7 @@ export default {
   name: 'BaseTrackDescription',
   components: {
     BaseDivider,
-    BaseDescription,
+    BaseDescriptionSection,
     BaseTrackDescriptionModal
   },
   props: {

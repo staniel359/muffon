@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
   name: 'EmptyPageItem',

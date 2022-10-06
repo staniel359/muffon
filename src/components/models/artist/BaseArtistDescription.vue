@@ -1,5 +1,5 @@
 <template>
-  <BaseDescription
+  <BaseDescriptionSection
     :description="description"
     :is-more="isRenderMore"
     :is-small="isSmall"
@@ -14,14 +14,15 @@
 </template>
 
 <script>
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import BaseArtistDescriptionModal
   from '@/components/modals/artist/BaseArtistDescriptionModal.vue'
 
 export default {
   name: 'BaseArtistDescription',
   components: {
-    BaseDescription,
+    BaseDescriptionSection,
     BaseArtistDescriptionModal
   },
   props: {

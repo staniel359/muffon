@@ -2,7 +2,7 @@
   <template v-if="description">
     <BaseDivider />
 
-    <BaseDescription
+    <BaseDescriptionSection
       :description="description"
       :is-more="isMore"
       @more-click="handleMoreClick"
@@ -18,7 +18,8 @@
 
 <script>
 import BaseDivider from '@/components/BaseDivider.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import BaseVideoDescriptionModal
   from '@/components/modals/video/BaseVideoDescriptionModal.vue'
 
@@ -26,7 +27,7 @@ export default {
   name: 'DescriptionSection',
   components: {
     BaseDivider,
-    BaseDescription,
+    BaseDescriptionSection,
     BaseVideoDescriptionModal
   },
   props: {

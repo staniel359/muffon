@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import {
   updateGlobal as updateGlobalStore

@@ -5,7 +5,7 @@
     :request-track-data="requestTrackData"
   >
     <template #default="slotProps">
-      <BaseDescription
+      <BaseDescriptionSection
         :description="slotProps[scope]"
         is-modal
       />
@@ -16,13 +16,14 @@
 <script>
 import BaseTrackModalContainer
   from '@/components/containers/modals/track/BaseTrackModalContainer.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 
 export default {
   name: 'BaseTrackDescriptionModal',
   components: {
     BaseTrackModalContainer,
-    BaseDescription
+    BaseDescriptionSection
   },
   props: {
     requestTrackData: Object

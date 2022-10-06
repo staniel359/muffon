@@ -78,10 +78,10 @@ import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
+import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseProfileOnlineLabel
   from '@/components/models/profile/BaseProfileOnlineLabel.vue'
-import BaseLabel from '@/components/BaseLabel.vue'
+import BaseLabel from '@/components/labels/BaseLabel.vue'
 import BaseProfileGenderAge
   from '@/components/models/profile/BaseProfileGenderAge.vue'
 import BaseProfileCityCountry

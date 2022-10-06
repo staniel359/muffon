@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseDropdownContainer
   from '@/components/containers/BaseDropdownContainer.vue'
 import TracksList from './LyricsSelect/TracksList.vue'

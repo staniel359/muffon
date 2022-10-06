@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BaseLabel from '@/components/BaseLabel.vue'
+import BaseLabel from '@/components/labels/BaseLabel.vue'
 import BaseTagsSimpleList from '@/components/lists/tags/BaseTagsSimpleList.vue'
 import getTag from '@/helpers/actions/api/tag/get'
 

@@ -9,7 +9,7 @@
     :profile-id="profileId"
     @link-click="handleLinkClick"
   >
-    <BaseDeletedBlock
+    <BaseDeletedSection
       v-if="isDeleted"
       model="album"
     />
@@ -129,7 +129,7 @@
 <script>
 import BaseAlbumLinkContainer
   from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseAlbumArtistsSection
@@ -139,7 +139,7 @@ import BaseAlbumReleaseDateSection
 import BaseAlbumListenersCount
   from '@/components/models/album/BaseAlbumListenersCount.vue'
 import LibraryCountersSection from './AlbumItem/LibraryCountersSection.vue'
-import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseAlbumOptionsDropdown
   from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
@@ -156,7 +156,7 @@ export default {
   name: 'AlbumItem',
   components: {
     BaseAlbumLinkContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseImage,
     BaseHeader,
     BaseAlbumArtistsSection,

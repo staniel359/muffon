@@ -17,7 +17,7 @@
 <script>
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'

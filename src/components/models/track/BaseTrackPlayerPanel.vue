@@ -13,7 +13,7 @@
       :track-id="trackId"
     />
 
-    <BaseDurationBlock
+    <BaseDurationSection
       v-if="duration"
       class="track-section track-duration"
       :duration="duration"
@@ -31,7 +31,7 @@ import {
 } from 'vuex'
 import PlayButtonSection from './BaseTrackPlayerPanel/PlayButtonSection.vue'
 import VisualizerSection from './BaseTrackPlayerPanel/VisualizerSection.vue'
-import BaseDurationBlock from '@/components/BaseDurationBlock.vue'
+import BaseDurationSection from '@/components/sections/BaseDurationSection.vue'
 import AudioIconSection from './BaseTrackPlayerPanel/AudioIconSection.vue'
 
 export default {
@@ -39,7 +39,7 @@ export default {
   components: {
     PlayButtonSection,
     VisualizerSection,
-    BaseDurationBlock,
+    BaseDurationSection,
     AudioIconSection
   },
   props: {

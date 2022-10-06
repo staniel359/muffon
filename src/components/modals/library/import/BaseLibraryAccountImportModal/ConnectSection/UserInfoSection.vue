@@ -36,7 +36,7 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   number as formatNumber
 } from '@/helpers/formatters'

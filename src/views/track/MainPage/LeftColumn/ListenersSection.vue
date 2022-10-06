@@ -20,7 +20,7 @@
 <script>
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseListenersCountSection
-  from '@/components/BaseListenersCountSection.vue'
+  from '@/components/sections/BaseListenersCountSection.vue'
 import BaseTrackListenersModal
   from '@/components/modals/track/BaseTrackListenersModal.vue'
 

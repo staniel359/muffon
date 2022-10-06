@@ -32,7 +32,7 @@
 <script>
 import electronStore from '@/plugins/electronStore'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 
 export default {
   name: 'ClearSearchHistoryOption',

@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
-import BaseLabel from '@/components/BaseLabel.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseLabel from '@/components/labels/BaseLabel.vue'
 
 export default {
   name: 'BaseAlbumLabels',

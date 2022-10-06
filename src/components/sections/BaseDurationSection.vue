@@ -10,7 +10,7 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'BaseDurationBlock',
+  name: 'BaseDurationSection',
   props: {
     duration: {
       type: Number,

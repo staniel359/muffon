@@ -35,7 +35,7 @@ import {
 import TitleSection from './InfoSection/TitleSection.vue'
 import ArtistsSection from './InfoSection/ArtistsSection.vue'
 import AlbumSection from './InfoSection/AlbumSection.vue'
-import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 
 export default {
   name: 'InfoSection',

@@ -19,7 +19,7 @@
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseListenersCountSection
-  from '@/components/BaseListenersCountSection.vue'
+  from '@/components/sections/BaseListenersCountSection.vue'
 import BaseArtistListenersModal
   from '@/components/modals/artist/BaseArtistListenersModal.vue'
 

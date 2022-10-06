@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import BaseLogoTitleSection from '@/components/BaseLogoTitleSection.vue'
+import BaseLogoTitleSection
+  from '@/components/sections/BaseLogoTitleSection.vue'
 import BaseProfileLoginForm
   from '@/components/forms/profile/BaseProfileLoginForm.vue'
 import BaseProfilePasswordResetForm

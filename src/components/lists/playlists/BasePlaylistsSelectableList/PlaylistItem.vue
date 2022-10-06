@@ -14,7 +14,7 @@
     <template
       #default="slotProps"
     >
-      <BaseDeletedBlock
+      <BaseDeletedSection
         v-if="isDeleted"
         model="playlist"
       />
@@ -34,7 +34,7 @@ import BaseCreatePlaylistTracksContainer
   from '@/components/containers/playlist/tracks/BaseCreatePlaylistTracksContainer.vue'
 import BaseDeletePlaylistTracksContainer
   from '@/components/containers/playlist/tracks/BaseDeletePlaylistTracksContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import ContentBlock from './PlaylistItem/ContentBlock.vue'
 
 export default {
@@ -42,7 +42,7 @@ export default {
   components: {
     BaseCreatePlaylistTracksContainer,
     BaseDeletePlaylistTracksContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     ContentBlock
   },
   inject: {

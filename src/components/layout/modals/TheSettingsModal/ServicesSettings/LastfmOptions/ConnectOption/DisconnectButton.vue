@@ -35,7 +35,7 @@
 <script>
 import BaseErrorMessage from '@/components/messages/BaseErrorMessage.vue'
 import BaseButton from '@/components/buttons/BaseButton.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import deleteLastfmSession
   from '@/helpers/actions/api/lastfm/connect/session/delete'
 import {

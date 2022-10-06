@@ -1,16 +1,17 @@
 <template>
-  <BaseCounterLabels
+  <BaseCounterLabelsSection
     :counters="counters"
   />
 </template>
 
 <script>
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 
 export default {
   name: 'CountersSection',
   components: {
-    BaseCounterLabels
+    BaseCounterLabelsSection
   },
   props: {
     tagData: {

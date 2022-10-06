@@ -5,7 +5,7 @@
       disabled: isDeleted
     }"
   >
-    <BaseDeletedBlock
+    <BaseDeletedSection
       v-if="isDeleted"
       model="post"
     />
@@ -35,7 +35,7 @@
           />
         </div>
 
-        <BaseTimestamp
+        <BaseTimestampSection
           class="description"
           :created="created"
         />
@@ -75,14 +75,15 @@ import {
   mapGetters,
   mapState
 } from 'vuex'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseCommunityTitle
   from '@/components/models/community/BaseCommunityTitle.vue'
 import BaseProfileNickname
   from '@/components/models/profile/BaseProfileNickname.vue'
-import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
-import BaseTimestamp from '@/components/BaseTimestamp.vue'
+import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
+import BaseTimestampSection
+  from '@/components/sections/BaseTimestampSection.vue'
 import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
 import BasePostOptionsDropdown
@@ -101,12 +102,12 @@ import {
 export default {
   name: 'PostItem',
   components: {
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseImage,
     BaseCommunityTitle,
     BaseProfileNickname,
     BasePrivateIcon,
-    BaseTimestamp,
+    BaseTimestampSection,
     BaseSendableContentSection,
     BasePostOptionsDropdown,
     BasePostUpdateModal,

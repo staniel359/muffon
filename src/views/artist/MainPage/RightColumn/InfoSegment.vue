@@ -10,7 +10,7 @@
 
     <div>
       <div class="main-labels-section">
-        <BaseCounterLabels
+        <BaseCounterLabelsSection
           :counters="counters"
         />
       </div>
@@ -36,7 +36,8 @@ import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
   from '@/components/models/artist/BaseArtistDescription.vue'
@@ -47,7 +48,7 @@ export default {
     BaseSegmentContainer,
     BaseHeader,
     BaseArtistTags,
-    BaseCounterLabels,
+    BaseCounterLabelsSection,
     BaseDivider,
     BaseArtistDescription
   },

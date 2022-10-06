@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import BaseToggle from '@/components/BaseToggle.vue'
+import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'GlobalToggle',

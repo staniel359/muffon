@@ -11,7 +11,7 @@
     />
 
     <div class="main-labels-section">
-      <BaseDateLabel
+      <BaseDateLabelSection
         :date="created"
       />
     </div>
@@ -25,7 +25,8 @@
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
 import CountersSection from './RightColumn/CountersSection.vue'
-import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
+import BaseDateLabelSection
+  from '@/components/sections/BaseDateLabelSection.vue'
 import DescriptionSection from './RightColumn/DescriptionSection.vue'
 
 export default {
@@ -33,7 +34,7 @@ export default {
   components: {
     BaseHeader,
     CountersSection,
-    BaseDateLabel,
+    BaseDateLabelSection,
     DescriptionSection
   },
   props: {

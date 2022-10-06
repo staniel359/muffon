@@ -5,7 +5,7 @@
     :request-album-data="requestAlbumData"
   >
     <template #default="slotProps">
-      <BaseDescription
+      <BaseDescriptionSection
         :description="slotProps[scope]"
         is-modal
       />
@@ -16,13 +16,14 @@
 <script>
 import BaseAlbumModalContainer
   from '@/components/containers/modals/album/BaseAlbumModalContainer.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 
 export default {
   name: 'BaseAlbumDescriptionModal',
   components: {
     BaseAlbumModalContainer,
-    BaseDescription
+    BaseDescriptionSection
   },
   props: {
     requestAlbumData: Object

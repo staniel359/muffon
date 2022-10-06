@@ -13,7 +13,7 @@ import {
 } from '@/helpers/formatters'
 
 export default {
-  name: 'BaseTimestamp',
+  name: 'BaseTimestampSection',
   props: {
     created: {
       type: String,

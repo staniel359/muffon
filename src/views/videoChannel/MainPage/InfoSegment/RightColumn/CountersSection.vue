@@ -1,18 +1,19 @@
 <template>
   <div class="main-labels-section">
-    <BaseCounterLabels
+    <BaseCounterLabelsSection
       :counters="counters"
     />
   </div>
 </template>
 
 <script>
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 
 export default {
   name: 'CountersSection',
   components: {
-    BaseCounterLabels
+    BaseCounterLabelsSection
   },
   props: {
     channelData: {

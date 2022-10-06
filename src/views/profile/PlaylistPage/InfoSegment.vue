@@ -27,7 +27,7 @@
             v-html="tracksCountText"
           />
 
-          <BaseTimestamp
+          <BaseTimestampSection
             class="description"
             :created="created"
             is-only-date
@@ -55,8 +55,9 @@ import BaseListContainer
   from '@/components/containers/lists/BaseListContainer.vue'
 import BaseZoomableImage from '@/components/images/BaseZoomableImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
-import BaseTimestamp from '@/components/BaseTimestamp.vue'
+import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
+import BaseTimestampSection
+  from '@/components/sections/BaseTimestampSection.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
 import {
@@ -77,7 +78,7 @@ export default {
     BaseZoomableImage,
     BaseHeader,
     BasePrivateIcon,
-    BaseTimestamp,
+    BaseTimestampSection,
     BasePlaylistOptionsDropdown
   },
   props: {

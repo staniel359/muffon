@@ -56,7 +56,7 @@ import {
   mapState
 } from 'vuex'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   mainDropdownOptions
 } from '@/helpers/data/plugins/semantic'

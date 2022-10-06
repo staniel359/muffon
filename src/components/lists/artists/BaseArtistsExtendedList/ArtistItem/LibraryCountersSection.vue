@@ -34,7 +34,7 @@
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   tracks as formatProfileLibraryArtistTracksLink,
   albums as formatProfileLibraryArtistAlbumsLink

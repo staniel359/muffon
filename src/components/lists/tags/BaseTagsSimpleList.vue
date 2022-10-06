@@ -34,9 +34,9 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import TagItem from './BaseTagsSimpleList/TagItem.vue'
-import BaseLabel from '@/components/BaseLabel.vue'
+import BaseLabel from '@/components/labels/BaseLabel.vue'
 
 export default {
   name: 'BaseTagsSimpleList',

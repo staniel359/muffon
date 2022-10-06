@@ -18,7 +18,7 @@
 
 <script>
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseToggle from '@/components/BaseToggle.vue'
+import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'ScrobbleOption',

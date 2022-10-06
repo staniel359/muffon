@@ -17,7 +17,7 @@
           :profile-data="profileData"
         />
 
-        <BaseTimestamp
+        <BaseTimestampSection
           class="description"
           :created="created"
         />
@@ -36,7 +36,8 @@ import BaseSegmentContainer
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseProfileNickname
   from '@/components/models/profile/BaseProfileNickname.vue'
-import BaseTimestamp from '@/components/BaseTimestamp.vue'
+import BaseTimestampSection
+  from '@/components/sections/BaseTimestampSection.vue'
 import BaseSendableContentSection
   from '@/components/models/sendable/BaseSendableContentSection.vue'
 
@@ -46,7 +47,7 @@ export default {
     BaseSegmentContainer,
     BaseImage,
     BaseProfileNickname,
-    BaseTimestamp,
+    BaseTimestampSection,
     BaseSendableContentSection
   },
   props: {

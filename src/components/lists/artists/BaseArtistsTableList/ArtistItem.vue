@@ -4,7 +4,7 @@
       disabled: isDeleted
     }"
   >
-    <BaseDeletedBlock
+    <BaseDeletedSection
       v-if="isDeleted"
       model="artist"
     />
@@ -91,7 +91,7 @@
 <script>
 import BaseSimpleCardContainer
   from '@/components/containers/cards/BaseSimpleCardContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
 import BaseArtistOptionsDropdown
@@ -110,7 +110,7 @@ export default {
   name: 'ArtistItem',
   components: {
     BaseSimpleCardContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseArtistLinkContainer,
     BaseArtistOptionsDropdown,
     BaseArtistImage,

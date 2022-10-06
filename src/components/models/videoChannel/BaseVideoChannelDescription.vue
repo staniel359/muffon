@@ -1,5 +1,5 @@
 <template>
-  <BaseDescription
+  <BaseDescriptionSection
     :description="description"
     :is-more="isMore"
     @more-click="handleMoreClick"
@@ -13,14 +13,15 @@
 </template>
 
 <script>
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 import BaseVideoChannelDescriptionModal
   from '@/components/modals/videoChannel/BaseVideoChannelDescriptionModal.vue'
 
 export default {
   name: 'BaseVideoChannelDescription',
   components: {
-    BaseDescription,
+    BaseDescriptionSection,
     BaseVideoChannelDescriptionModal
   },
   props: {

@@ -4,7 +4,7 @@
       disabled: isDeleted
     }"
   >
-    <BaseDeletedBlock
+    <BaseDeletedSection
       v-if="isDeleted"
       model="album"
     />
@@ -107,7 +107,7 @@
 <script>
 import BaseSimpleCardContainer
   from '@/components/containers/cards/BaseSimpleCardContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseAlbumLinkContainer
   from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 import BaseAlbumOptionsDropdown
@@ -130,7 +130,7 @@ export default {
   name: 'AlbumItem',
   components: {
     BaseSimpleCardContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseAlbumLinkContainer,
     BaseAlbumOptionsDropdown,
     BaseImage,

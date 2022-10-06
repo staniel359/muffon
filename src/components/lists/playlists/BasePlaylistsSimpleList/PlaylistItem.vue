@@ -7,7 +7,7 @@
     :link="link"
     @click="handleLinkClick"
   >
-    <BaseDeletedBlock
+    <BaseDeletedSection
       v-if="isDeleted"
       model="playlist"
     />
@@ -76,10 +76,10 @@
 <script>
 import BaseLinkContainer
   from '@/components/containers/links/BaseLinkContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BasePrivateIcon from '@/components/BasePrivateIcon.vue'
+import BasePrivateIcon from '@/components/icons/BasePrivateIcon.vue'
 import BaseLink from '@/components/links/BaseLink.vue'
 import BasePlaylistOptionsDropdown
   from '@/components/dropdowns/playlist/BasePlaylistOptionsDropdown.vue'
@@ -102,7 +102,7 @@ export default {
   name: 'PlaylistItem',
   components: {
     BaseLinkContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseImage,
     BaseHeader,
     BasePrivateIcon,

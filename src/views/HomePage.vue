@@ -19,7 +19,8 @@
 import {
   mapState
 } from 'vuex'
-import BaseLogoTitleSection from '@/components/BaseLogoTitleSection.vue'
+import BaseLogoTitleSection
+  from '@/components/sections/BaseLogoTitleSection.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import {
   home as formatHomePageNavigation

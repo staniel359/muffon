@@ -39,7 +39,7 @@ import {
 } from 'electron'
 import BaseButtonContainer
   from '@/components/containers/buttons/BaseButtonContainer.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 
 export default {

@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'BaseDescription',
+  name: 'BaseDescriptionSection',
   props: {
     description: {
       type: String,

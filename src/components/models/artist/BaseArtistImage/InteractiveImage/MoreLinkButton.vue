@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import BaseLabel from '@/components/BaseLabel.vue'
+import BaseLabel from '@/components/labels/BaseLabel.vue'
 import {
   images as formatArtistImagesLink
 } from '@/helpers/formatters/links/artist'

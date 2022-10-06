@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
 import ContentBlock from './BaseDropdownItem/ContentBlock.vue'
 

@@ -1,5 +1,5 @@
 <template>
-  <BaseDeletedBlock
+  <BaseDeletedSection
     v-if="isDeleted"
     model="track"
   />
@@ -81,7 +81,7 @@
       :is-with-bookmark-icon="isWithBookmarkIcon"
     />
 
-    <BaseDurationBlock
+    <BaseDurationSection
       v-if="isRenderDuration"
       class="description track-duration"
       :duration="duration"
@@ -168,7 +168,7 @@
 </template>
 
 <script>
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseTrackAudioIcon
   from '@/components/models/track/BaseTrackAudioIcon.vue'
 import BaseImage from '@/components/images/BaseImage.vue'
@@ -179,9 +179,9 @@ import ArtistsSection from './BaseTrackContent/ArtistsSection.vue'
 import AlbumSection from './BaseTrackContent/AlbumSection.vue'
 import ListenersCountSection
   from './BaseTrackContent/ListenersCountSection.vue'
-import BaseDurationBlock from '@/components/BaseDurationBlock.vue'
-import BaseIcon from '@/components/BaseIcon.vue'
-import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseDurationSection from '@/components/sections/BaseDurationSection.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import CreatedBlock from './BaseTrackContent/CreatedBlock.vue'
 import BaseTrackOptionsDropdown
@@ -202,7 +202,7 @@ import selfMixin from '@/mixins/selfMixin'
 export default {
   name: 'BaseTrackContent',
   components: {
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseTrackAudioIcon,
     BaseImage,
     BaseArtistImage,
@@ -211,7 +211,7 @@ export default {
     ArtistsSection,
     AlbumSection,
     ListenersCountSection,
-    BaseDurationBlock,
+    BaseDurationSection,
     BaseIcon,
     BaseSourceIcon,
     BaseSelfIcons,

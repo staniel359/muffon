@@ -26,7 +26,7 @@ import {
   mapState
 } from 'vuex'
 import axios from 'axios'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   setSearch
 } from '@/helpers/actions/plugins/semantic'

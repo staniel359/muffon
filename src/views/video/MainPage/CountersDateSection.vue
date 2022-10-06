@@ -1,26 +1,28 @@
 <template>
   <div class="main-labels-section">
-    <BaseCounterLabels
+    <BaseCounterLabelsSection
       :counters="counters"
     />
   </div>
 
   <div class="main-labels-section">
-    <BaseDateLabel
+    <BaseDateLabelSection
       :date="publishDate"
     />
   </div>
 </template>
 
 <script>
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
-import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
+import BaseDateLabelSection
+  from '@/components/sections/BaseDateLabelSection.vue'
 
 export default {
   name: 'CountersDateSection',
   components: {
-    BaseCounterLabels,
-    BaseDateLabel
+    BaseCounterLabelsSection,
+    BaseDateLabelSection
   },
   props: {
     videoData: {

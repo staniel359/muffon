@@ -19,7 +19,7 @@
 
 <script>
 import HeaderBlock from './InfoSection/HeaderBlock.vue'
-import BaseSourceIcon from '@/components/BaseSourceIcon.vue'
+import BaseSourceIcon from '@/components/icons/BaseSourceIcon.vue'
 import SecondarySection from './InfoSection/SecondarySection.vue'
 
 export default {

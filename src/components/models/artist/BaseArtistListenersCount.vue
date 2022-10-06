@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import getArtist from '@/helpers/actions/api/artist/get'
 import {
   number as formatNumber

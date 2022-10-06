@@ -31,7 +31,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   setAccordion
 } from '@/helpers/actions/plugins/semantic'

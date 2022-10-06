@@ -5,7 +5,7 @@
     :scope="scope"
   >
     <template #default="slotProps">
-      <BaseDescription
+      <BaseDescriptionSection
         :description="slotProps[scope]"
         is-modal
       />
@@ -16,13 +16,14 @@
 <script>
 import BaseVideoModalContainer
   from '@/components/containers/modals/video/BaseVideoModalContainer.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 
 export default {
   name: 'BaseVideoDescriptionModal',
   components: {
     BaseVideoModalContainer,
-    BaseDescription
+    BaseDescriptionSection
   },
   props: {
     videoId: String

@@ -17,7 +17,7 @@ import {
   mapGetters,
   mapState
 } from 'vuex'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import createScrobblerPlay
   from '@/helpers/actions/api/lastfm/scrobbler/play/create'
 import createScrobblerSave

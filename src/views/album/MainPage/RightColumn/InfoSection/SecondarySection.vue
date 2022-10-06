@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-labels-section">
-      <BaseCounterLabels
+      <BaseCounterLabelsSection
         :counters="counters"
       />
     </div>
@@ -10,7 +10,7 @@
       v-if="releaseDate"
       class="main-labels-section"
     >
-      <BaseDateLabel
+      <BaseDateLabelSection
         :date="releaseDate"
       />
     </div>
@@ -34,8 +34,10 @@
 </template>
 
 <script>
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
-import BaseDateLabel from '@/components/labels/BaseDateLabel.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
+import BaseDateLabelSection
+  from '@/components/sections/BaseDateLabelSection.vue'
 import BaseAlbumLabels from '@/components/models/album/BaseAlbumLabels.vue'
 import BaseAlbumTags from '@/components/models/album/BaseAlbumTags.vue'
 import BaseAlbumDescription
@@ -44,8 +46,8 @@ import BaseAlbumDescription
 export default {
   name: 'SecondarySection',
   components: {
-    BaseCounterLabels,
-    BaseDateLabel,
+    BaseCounterLabelsSection,
+    BaseDateLabelSection,
     BaseAlbumLabels,
     BaseAlbumTags,
     BaseAlbumDescription

@@ -10,7 +10,7 @@
     :is-link-active="isLinkActive"
     @link-click="handleLinkClick"
   >
-    <BaseDeletedBlock
+    <BaseDeletedSection
       v-if="isDeleted"
       model="artist"
     />
@@ -116,7 +116,7 @@
 <script>
 import BaseArtistLinkContainer
   from '@/components/containers/links/artist/BaseArtistLinkContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistListenersCount
@@ -138,7 +138,7 @@ export default {
   name: 'ArtistItem',
   components: {
     BaseArtistLinkContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseArtistImage,
     BaseHeader,
     BaseArtistListenersCount,

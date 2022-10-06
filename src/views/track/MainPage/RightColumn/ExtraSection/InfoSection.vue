@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-labels-section">
-      <BaseCounterLabels
+      <BaseCounterLabelsSection
         :counters="counters"
       />
     </div>
@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseTrackTags from '@/components/models/track/BaseTrackTags.vue'
 import BaseTrackDescription
   from '@/components/models/track/BaseTrackDescription.vue'
@@ -28,7 +29,7 @@ import BaseTrackDescription
 export default {
   name: 'InfoSection',
   components: {
-    BaseCounterLabels,
+    BaseCounterLabelsSection,
     BaseTrackTags,
     BaseTrackDescription
   },

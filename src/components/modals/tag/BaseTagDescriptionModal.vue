@@ -5,7 +5,7 @@
     :scope="scope"
   >
     <template #default="slotProps">
-      <BaseDescription
+      <BaseDescriptionSection
         :description="slotProps[scope]"
         is-modal
       />
@@ -16,13 +16,14 @@
 <script>
 import BaseTagModalContainer
   from '@/components/containers/modals/tag/BaseTagModalContainer.vue'
-import BaseDescription from '@/components/BaseDescription.vue'
+import BaseDescriptionSection
+  from '@/components/sections/BaseDescriptionSection.vue'
 
 export default {
   name: 'BaseTagDescriptionModal',
   components: {
     BaseTagModalContainer,
-    BaseDescription
+    BaseDescriptionSection
   },
   props: {
     tagName: String

@@ -21,9 +21,9 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '@/components/BaseIcon.vue'
+import BaseIcon from '@/components/icons/BaseIcon.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
-import BaseToggle from '@/components/BaseToggle.vue'
+import BaseToggle from '@/components/toggles/BaseToggle.vue'
 
 export default {
   name: 'RadioOption',

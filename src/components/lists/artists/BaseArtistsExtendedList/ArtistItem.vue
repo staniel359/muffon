@@ -15,7 +15,7 @@
         @refresh="handleRefresh"
       >
         <template v-if="responseData">
-          <BaseDeletedBlock
+          <BaseDeletedSection
             v-if="isDeleted"
             model="recommendation"
           />
@@ -74,7 +74,7 @@
 
               <div>
                 <div class="main-labels-section">
-                  <BaseCounterLabels
+                  <BaseCounterLabelsSection
                     :counters="counters"
                   />
                 </div>
@@ -126,14 +126,15 @@ import BaseArtistContainer
   from '@/components/containers/artist/BaseArtistContainer.vue'
 import BaseSegmentContainer
   from '@/components/containers/segments/BaseSegmentContainer.vue'
-import BaseDeletedBlock from '@/components/BaseDeletedBlock.vue'
+import BaseDeletedSection from '@/components/sections/BaseDeletedSection.vue'
 import BaseArtistImage from '@/components/models/artist/BaseArtistImage.vue'
 import LibraryCountersSection from './ArtistItem/LibraryCountersSection.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseArtistOptionsDropdown
   from '@/components/dropdowns/artist/BaseArtistOptionsDropdown.vue'
 import HeaderSection from './ArtistItem/HeaderSection.vue'
-import BaseCounterLabels from '@/components/labels/BaseCounterLabels.vue'
+import BaseCounterLabelsSection
+  from '@/components/sections/BaseCounterLabelsSection.vue'
 import BaseArtistTags from '@/components/models/artist/BaseArtistTags.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseArtistDescription
@@ -151,13 +152,13 @@ export default {
   components: {
     BaseArtistContainer,
     BaseSegmentContainer,
-    BaseDeletedBlock,
+    BaseDeletedSection,
     BaseArtistImage,
     LibraryCountersSection,
     BaseSelfIcons,
     BaseArtistOptionsDropdown,
     HeaderSection,
-    BaseCounterLabels,
+    BaseCounterLabelsSection,
     BaseArtistTags,
     BaseDivider,
     BaseArtistDescription,
