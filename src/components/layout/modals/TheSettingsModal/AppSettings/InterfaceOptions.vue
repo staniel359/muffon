@@ -7,6 +7,8 @@
     <InfiniteScrollOption />
 
     <ArtistPopupOption />
+
+    <CachePagesOption />
   </div>
 </template>
 
@@ -15,6 +17,7 @@ import LanguageOption from './InterfaceOptions/LanguageOption.vue'
 import TimezoneOption from './InterfaceOptions/TimezoneOption.vue'
 import InfiniteScrollOption from './InterfaceOptions/InfiniteScrollOption.vue'
 import ArtistPopupOption from './InterfaceOptions/ArtistPopupOption.vue'
+import CachePagesOption from './InterfaceOptions/CachePagesOption.vue'
 
 export default {
   name: 'InterfaceOptions',
@@ -22,7 +25,8 @@ export default {
     LanguageOption,
     TimezoneOption,
     InfiniteScrollOption,
-    ArtistPopupOption
+    ArtistPopupOption,
+    CachePagesOption
   }
 }
 </script>

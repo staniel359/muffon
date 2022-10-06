@@ -25,6 +25,10 @@ export default {
     ],
     default: null
   },
+  'layout.isCachePages': {
+    type: 'boolean',
+    default: true
+  },
   'layout.isCloseTabsOnExit': {
     type: 'boolean',
     default: false

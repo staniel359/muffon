@@ -5,17 +5,27 @@
         Component
       }"
     >
-      <KeepAlive>
+      <KeepAlive
+        v-if="isKeepAlive"
+      >
         <Component
           :is="Component"
           :key="key"
         />
       </KeepAlive>
+      <Component
+        :is="Component"
+        v-else
+        :key="key"
+      />
     </RouterView>
   </div>
 </template>
 
 <script>
+import {
+  mapState
+} from 'vuex'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -25,6 +35,32 @@ export default {
   data () {
     return {
       key: null
+    }
+  },
+  computed: {
+    ...mapState(
+      'layout',
+      [
+        'isCachePages'
+      ]
+    ),
+    isKeepAlive () {
+      return (
+        !this.isBasePage &&
+          this.isCachePages
+      )
+    },
+    isBasePage () {
+      return (
+        this.isRootPage ||
+          this.isAboutPage
+      )
+    },
+    isRootPage () {
+      return this.$route.path === '/'
+    },
+    isAboutPage () {
+      return this.$route.path === '/about'
     }
   },
   watch: {

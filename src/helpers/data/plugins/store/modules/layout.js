@@ -20,7 +20,8 @@ export default {
     isExitOnClose: false,
     isCloseTabsOnExit: false,
     isWithSystemTheme: false,
-    isWithArtistPopup: true
+    isWithArtistPopup: true,
+    isCachePages: true
   },
   mutations: {
     SET_LOADER_DIMMER (
@@ -142,6 +143,12 @@ export default {
       value
     ) {
       state.isWithArtistPopup = value
+    },
+    SET_IS_CACHE_PAGES (
+      state,
+      value
+    ) {
+      state.isCachePages = value
     }
   },
   actions: {
@@ -362,6 +369,17 @@ export default {
     ) {
       commit(
         'SET_IS_WITH_ARTIST_POPUP',
+        value
+      )
+    },
+    setIsCachePages (
+      {
+        commit
+      },
+      value
+    ) {
+      commit(
+        'SET_IS_CACHE_PAGES',
         value
       )
     }

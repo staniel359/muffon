@@ -9,6 +9,8 @@ export default {
     'layout/setBackgroundImageId',
   'layout.backgroundImagePath':
     'layout/setBackgroundImagePath',
+  'layout.isCachePages':
+    'layout/setIsCachePages',
   'layout.isCloseTabsOnExit':
     'layout/setIsCloseTabsOnExit',
   'layout.isDarkMode':
