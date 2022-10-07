@@ -405,7 +405,8 @@
           "language": "Lingua",
           "timezone": "Fuso orario",
           "infiniteScroll": "Scroll infinito",
-          "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse"
+          "artistPopup": "Mostra informazioni sull’artista al passaggio del mouse",
+          "cachePages": "Salva le pagine nella cache"
         },
         "theme": {
           "dark": "Modalità scura",
