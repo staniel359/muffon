@@ -1,3 +1,5 @@
+import formatQuery from '@/helpers/formatters/query'
+
 export function main (
   {
     trackTitle,
@@ -31,19 +33,17 @@ export function main (
     artist_slug: artistSlug
   }
 
-  const queryFiltered =
-    Object.fromEntries(
-      Object.entries(
+  const queryFormatted =
+    formatQuery(
+      {
         query
-      ).filter(
-        a => a[1]
-      )
+      }
     )
 
-  const queryString =
-    new URLSearchParams(
-      queryFiltered
-    ).toString()
+  const path =
+    `artists/${artistNameEncoded}` +
+    `/tracks/${trackTitleEncoded}` +
+    `?${queryFormatted.string}`
 
   return {
     name: 'TrackMainPage',
@@ -51,11 +51,8 @@ export function main (
       artistName,
       trackTitle
     },
-    path:
-      `artists/${artistNameEncoded}` +
-      `/tracks/${trackTitleEncoded}` +
-      `?${queryString}`,
-    query: queryFiltered
+    path,
+    query: queryFormatted.data
   }
 }
 

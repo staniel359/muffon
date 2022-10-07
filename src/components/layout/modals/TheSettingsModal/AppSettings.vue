@@ -34,6 +34,7 @@ import PlayerOptions from './AppSettings/PlayerOptions.vue'
 import QueueOptions from './AppSettings/QueueOptions.vue'
 import VideoOptions from './AppSettings/VideoOptions.vue'
 import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
+import TopOptions from './AppSettings/TopOptions.vue'
 import DataOptions from './AppSettings/DataOptions.vue'
 
 export default {
@@ -50,6 +51,7 @@ export default {
     QueueOptions,
     VideoOptions,
     RecommendationsOptions,
+    TopOptions,
     DataOptions
   },
   data () {
@@ -124,6 +126,12 @@ export default {
           scope: 'recommendations',
           component: 'RecommendationsOptions',
           isAnonymous: false
+        },
+        {
+          nameCode: 'settings.sections.app.top',
+          scope: 'top',
+          component: 'TopOptions',
+          isAnonymous: true
         },
         {
           nameCode:

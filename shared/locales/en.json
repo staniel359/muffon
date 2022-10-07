@@ -393,6 +393,7 @@
         "queue": "Queue",
         "video": "Video",
         "recommendations": "Recommendations",
+        "top": "Top",
         "data": "Data"
       },
       "profile": {
@@ -441,6 +442,9 @@
         "recommendations": {
           "hideLibraryArtists": "Hide library artists",
           "tracksCount": "with tracks count"
+        },
+        "top": {
+          "country": "Default country"
         },
         "data": {
           "cache": {

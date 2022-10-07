@@ -263,6 +263,13 @@ export default {
     type: 'boolean',
     default: true
   },
+  'top.country': {
+    type: [
+      'null',
+      'string'
+    ],
+    default: null
+  },
   'video.isAutoplay': {
     type: 'boolean',
     default: false

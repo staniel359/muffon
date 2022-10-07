@@ -2,6 +2,7 @@
   <BaseTopPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
+    :country="country"
     :header-link="headerLink"
   >
     <template #default="slotProps">
@@ -35,6 +36,9 @@ export default {
     BaseTopPaginatedSegmentContainer,
     BaseAlbumsTableList
   },
+  props: {
+    country: String
+  },
   data () {
     return {
       limit: 4,
@@ -44,7 +48,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatTopAlbumsLink()
+      return formatTopAlbumsLink(
+        {
+          country: this.country
+        }
+      )
     }
   }
 }

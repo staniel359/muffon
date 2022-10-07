@@ -11,7 +11,9 @@ export default function (
   const url = `/lastfm/top/${scope}`
 
   const params = {
-    country
+    ...(country && {
+      country
+    })
   }
 
   const handleSuccess = (

@@ -2,6 +2,7 @@
   <BaseTopPaginatedSegmentContainer
     :scope="scope"
     :limit="limit"
+    :country="country"
     :header-link="headerLink"
   >
     <template #default="slotProps">
@@ -36,6 +37,9 @@ export default {
     BaseTopPaginatedSegmentContainer,
     BaseTracksSimpleList
   },
+  props: {
+    country: String
+  },
   data () {
     return {
       limit: 10,
@@ -44,7 +48,11 @@ export default {
   },
   computed: {
     headerLink () {
-      return formatTopTracksLink()
+      return formatTopTracksLink(
+        {
+          country: this.country
+        }
+      )
     }
   }
 }
