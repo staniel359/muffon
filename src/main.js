@@ -12,23 +12,17 @@ import i18n from '@/plugins/i18n'
 import setupAxios from '@/plugins/axios'
 import setupI18nCountries from '@/plugins/i18nCountries'
 
-const app = createApp(
+createApp(
   App
+).use(
+  router
+).use(
+  store
+).use(
+  i18n
+).mount(
+  '#app'
 )
-
-app
-  .use(
-    router
-  )
-  .use(
-    store
-  )
-  .use(
-    i18n
-  )
-  .mount(
-    '#app'
-  )
 
 setupAxios()
 
