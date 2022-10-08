@@ -393,6 +393,7 @@
         "queue": "Чарга",
         "video": "Відэа",
         "recommendations": "Рэкамендацыі",
+        "top": "Папулярнае",
         "data": "Дадзеныя"
       },
       "profile": {
@@ -441,6 +442,9 @@
         "recommendations": {
           "hideLibraryArtists": "Схоўваць выканаўцаў з бібліятэкі",
           "tracksCount": "з колькасцю кампазіцый"
+        },
+        "top": {
+          "country": "Краіна па змоўчванні"
         },
         "data": {
           "cache": {

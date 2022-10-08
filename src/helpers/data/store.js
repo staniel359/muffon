@@ -109,6 +109,8 @@ export default {
     'sidebar/setIsWithMultitagItem',
   'sidebar.isWithCommunitiesItem':
     'sidebar/setIsWithCommunitiesItem',
+  'top.country':
+    'top/setCountry',
   'video.isAutoplay':
     'video/setIsAutoplay'
 }

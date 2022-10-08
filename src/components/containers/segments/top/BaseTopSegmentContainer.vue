@@ -27,6 +27,7 @@ export default {
       type: String,
       required: true
     },
+    country: String,
     limit: Number,
     headerLink: Object
   },
@@ -41,6 +42,7 @@ export default {
     topArgs () {
       return {
         scope: this.scope,
+        country: this.country,
         limit: this.limit
       }
     }

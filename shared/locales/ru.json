@@ -393,6 +393,7 @@
         "queue": "Очередь",
         "video": "Видео",
         "recommendations": "Рекомендации",
+        "top": "Популярное",
         "data": "Данные"
       },
       "profile": {
@@ -441,6 +442,9 @@
         "recommendations": {
           "hideLibraryArtists": "Скрывать исполнителей из библиотеки",
           "tracksCount": "с количеством композиций"
+        },
+        "top": {
+          "country": "Страна по умолчанию"
         },
         "data": {
           "cache": {

@@ -2,6 +2,7 @@
   <BaseTopSegmentContainer
     ref="segment"
     :scope="scope"
+    :country="country"
     :limit="limit"
     :header-link="headerLink"
   >
@@ -41,6 +42,7 @@ export default {
   ],
   props: {
     scope: String,
+    country: String,
     limit: Number,
     headerLink: Object
   }

@@ -8,17 +8,14 @@ export function main (
       tagName
     )
 
+  const path = `tags/${tagNameEncoded}`
+
   return {
     name: 'TagMainPage',
     params: {
       tagName
     },
-    path: [
-      'tags',
-      tagNameEncoded
-    ].join(
-      '/'
-    )
+    path
   }
 }
 
@@ -32,18 +29,15 @@ export function artists (
       tagName
     )
 
+  const path =
+    `tags/${tagNameEncoded}/artists`
+
   return {
     name: 'TagArtistsPage',
     params: {
       tagName
     },
-    path: [
-      'tags',
-      tagNameEncoded,
-      'artists'
-    ].join(
-      '/'
-    )
+    path
   }
 }
 
@@ -57,18 +51,15 @@ export function albums (
       tagName
     )
 
+  const path =
+    `tags/${tagNameEncoded}/albums`
+
   return {
     name: 'TagAlbumsPage',
     params: {
       tagName
     },
-    path: [
-      'tags',
-      tagNameEncoded,
-      'albums'
-    ].join(
-      '/'
-    )
+    path
   }
 }
 
@@ -82,17 +73,14 @@ export function tracks (
       tagName
     )
 
+  const path =
+    `tags/${tagNameEncoded}/tracks`
+
   return {
     name: 'TagTracksPage',
     params: {
       tagName
     },
-    path: [
-      'tags',
-      tagNameEncoded,
-      'tracks'
-    ].join(
-      '/'
-    )
+    path
   }
 }

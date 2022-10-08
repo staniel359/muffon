@@ -21,10 +21,9 @@
           v-if="isWithCountrySelect"
           #top
         >
-          <CountrySelectBlock
+          <BaseCountrySelectSection
             :country="country"
             @select="handleCountrySelect"
-            @clear-button-click="handleCountryClearButtonClick"
           />
         </template>
 
@@ -42,8 +41,8 @@
 import BaseTopPageContainer from './BaseTopPageContainer.vue'
 import BasePaginatedPageContainer
   from '@/components/containers/pages/BasePaginatedPageContainer.vue'
-import CountrySelectBlock
-  from './BaseTopPaginatedPageContainer/CountrySelectBlock.vue'
+import BaseCountrySelectSection
+  from '@/components/sections/BaseCountrySelectSection.vue'
 import paginatedPageMixin from '@/mixins/paginatedPageMixin'
 
 export default {
@@ -51,7 +50,7 @@ export default {
   components: {
     BaseTopPageContainer,
     BasePaginatedPageContainer,
-    CountrySelectBlock
+    BaseCountrySelectSection
   },
   mixins: [
     paginatedPageMixin
@@ -66,7 +65,7 @@ export default {
   },
   data () {
     return {
-      country: null
+      country: this.$route.query?.country
     }
   },
   watch: {
@@ -77,9 +76,6 @@ export default {
       value
     ) {
       this.country = value
-    },
-    handleCountryClearButtonClick () {
-      this.country = null
     },
     handleCountryChange () {
       this.$refs

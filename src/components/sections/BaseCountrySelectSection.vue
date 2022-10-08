@@ -1,8 +1,9 @@
 <template>
-  <div class="country-select-block">
+  <div class="main-country-select-section">
     <BaseCountriesDropdown
-      ref="dropdown"
+      :key="key"
       class="country-select"
+      :selected="country"
       @select="handleCountrySelect"
     />
 
@@ -17,9 +18,12 @@
 import BaseCountriesDropdown
   from '@/components/dropdowns/BaseCountriesDropdown.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
-  name: 'CountrySelectBlock',
+  name: 'BaseCountrySelectSection',
   components: {
     BaseCountriesDropdown,
     BaseClearButton
@@ -28,25 +32,42 @@ export default {
     country: String
   },
   emits: [
-    'select',
-    'clearButtonClick'
+    'select'
   ],
+  data () {
+    return {
+      key: null
+    }
+  },
+  watch: {
+    country: 'handleCountryChange'
+  },
   methods: {
     handleCountrySelect (
+      value
+    ) {
+      this.select(
+        value
+      )
+    },
+    handleClearButtonClick () {
+      this.select(
+        null
+      )
+    },
+    handleCountryChange (
+      value
+    ) {
+      if (!value) {
+        this.key = generateKey()
+      }
+    },
+    select (
       value
     ) {
       this.$emit(
         'select',
         value
-      )
-    },
-    handleClearButtonClick () {
-      this.$refs
-        .dropdown
-        .reset()
-
-      this.$emit(
-        'clearButtonClick'
       )
     }
   }
@@ -54,9 +75,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.country-select-block
-  @extend .d-flex, .align-items-center
-
 .country-select
   width: 220px
 </style>

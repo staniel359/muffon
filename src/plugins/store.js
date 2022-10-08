@@ -10,6 +10,7 @@ import recommendations
   from '@/helpers/data/plugins/store/modules/recommendations'
 import search from '@/helpers/data/plugins/store/modules/search'
 import sidebar from '@/helpers/data/plugins/store/modules/sidebar'
+import top from '@/helpers/data/plugins/store/modules/top'
 import video from '@/helpers/data/plugins/store/modules/video'
 
 export default createStore(
@@ -23,6 +24,7 @@ export default createStore(
       recommendations,
       search,
       sidebar,
+      top,
       video
     }
   }
