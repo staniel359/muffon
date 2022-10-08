@@ -5,7 +5,7 @@
 ![muffon](https://i.ibb.co/b2fLF6V/2022-05-20-23-12-01.png)
 
 ## Description
-**muffon** is a desktop music streaming browser.
+**muffon** is a music streaming browser for desktop.
 
 It retrieves metadata, audio, and video from various Internet sources, such as:
 
@@ -88,8 +88,11 @@ It has **no ads** and is **absolutely free** to use.
 
 ## Support
 
-#### Have a question / suggestion / bug report?
-Create an issue [here](https://github.com/staniel359/muffon/issues)
+#### Have a question?
+[Join Discord chat](https://discord.gg/kpWsA5NBmJ)
+
+#### Have a suggestion / bug report?
+[Create an issue](https://github.com/staniel359/muffon/issues/new)
 
 ## Contribute
 - Translators wanted for localization
