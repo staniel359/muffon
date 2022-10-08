@@ -393,6 +393,7 @@
         "queue": "Coda",
         "video": "Video",
         "recommendations": "Suggerimenti",
+        "top": "Top",
         "data": "Dati"
       },
       "profile": {
@@ -441,6 +442,9 @@
         "recommendations": {
           "hideLibraryArtists": "Nascondi artisti della libreria",
           "tracksCount": "con conteggio brani"
+        },
+        "top": {
+          "country": "Paese predefinito"
         },
         "data": {
           "cache": {
