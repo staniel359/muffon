@@ -17,10 +17,6 @@ export default {
     BaseSearchInput
   },
   props: {
-    profileId: {
-      type: String,
-      required: true
-    },
     artists: {
       type: Array,
       default () {
@@ -35,8 +31,7 @@ export default {
     url () {
       return (
         'lastfm/search/artists' +
-        '?query={query}&limit=5' +
-        `&profile_id=${this.profileId}`
+        '?query={query}&limit=5'
       )
     },
     fields () {
@@ -51,33 +46,10 @@ export default {
     handleSelect (
       artist
     ) {
-      function isArtistPresent (
-        artistData
-      ) {
-        return (
-          artist.name ===
-            artistData.name
-        )
-      }
-
-      const isPresent =
-        this.artists.find(
-          isArtistPresent
-        )
-
-      const isInLibrary =
-        !!artist.library_id
-
-      const isAddArtist = !(
-        isPresent || isInLibrary
+      this.$emit(
+        'select',
+        artist
       )
-
-      if (isAddArtist) {
-        this.$emit(
-          'select',
-          artist
-        )
-      }
 
       this.clear()
     },

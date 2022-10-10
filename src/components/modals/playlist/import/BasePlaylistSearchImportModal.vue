@@ -13,7 +13,6 @@
         <SearchInput
           ref="input"
           :tracks="collection"
-          :playlist-id="playlistId"
           :source="source"
           :is-save="isSave"
         />

@@ -3,16 +3,12 @@
     :is="component"
     ref="input"
     class="search-input"
-    :profile-id="profileId"
     :[scope]="collection"
     @select="handleSelect"
   />
 </template>
 
 <script>
-import {
-  mapGetters
-} from 'vuex'
 import ArtistsInput from './SearchInput/ArtistsInput.vue'
 import AlbumsInput from './SearchInput/AlbumsInput.vue'
 import TracksInput from './SearchInput/TracksInput.vue'
@@ -46,12 +42,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(
-      'profile',
-      {
-        profileId: 'id'
-      }
-    ),
     component () {
       return this.components[
         this.scope

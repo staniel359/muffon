@@ -26,10 +26,6 @@ export default {
     'reset'
   ],
   props: {
-    playlistId: {
-      type: String,
-      required: true
-    },
     tracks: {
       type: Array,
       default () {
@@ -56,7 +52,6 @@ export default {
         `profiles/${this.profileId}` +
         '/library/search/tracks' +
         '?query={query}&limit=5' +
-        `&playlist_id=${this.playlistId}` +
         `&token=${this.profileToken}`
       )
     },
@@ -73,49 +68,16 @@ export default {
     handleSelect (
       track
     ) {
-      function isTrackPresent (
-        trackData
-      ) {
-        const isSameTitle = (
-          track.title ===
-            trackData.title
-        )
-
-        const isSameArtistName = (
-          track.artist.name ===
-            trackData.artist.name
-        )
-
-        return (
-          isSameTitle &&
-            isSameArtistName
-        )
+      if (this.isSave) {
+        this.reset()
       }
 
-      const isPresent =
-        this.tracks.find(
-          isTrackPresent
-        )
-
-      const isInPlaylist =
-        !!track.playlist_track_id
-
-      const isAddTrack = !(
-        isPresent || isInPlaylist
-      )
-
-      if (isAddTrack) {
-        if (this.isSave) {
-          this.reset()
+      this.addCollectionItem(
+        {
+          collection: 'collection',
+          item: track
         }
-
-        this.addCollectionItem(
-          {
-            collection: 'collection',
-            item: track
-          }
-        )
-      }
+      )
 
       this.clear()
     },
