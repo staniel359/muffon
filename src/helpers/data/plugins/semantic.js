@@ -1,6 +1,7 @@
 import store from '@/plugins/store'
 import i18n from '@/plugins/i18n'
 import moment from 'moment-timezone'
+import axios from 'axios'
 
 export function mainModalOptions (
   {
@@ -699,5 +700,58 @@ export function mainAccordionOptions (
     duration: 0,
     onOpen,
     onClose
+  }
+}
+
+export function mainSearchOptions (
+  {
+    onResponse,
+    url,
+    fields,
+    onSelect
+  }
+) {
+  const {
+    baseURL
+  } = axios.defaults
+
+  const apiSettings = {
+    base: baseURL,
+    onResponse,
+    url
+  }
+
+  const noResultsHeader =
+    i18n.global.t(
+      'errors.notFound.header'
+    )
+
+  const noResults =
+    i18n.global.t(
+      'errors.notFound.content'
+    )
+
+  const serverError =
+    i18n.global.t(
+      'errors.internalServer.header'
+    )
+
+  const error = {
+    noResultsHeader,
+    noResults,
+    serverError
+  }
+
+  return {
+    cache: false,
+    searchOnFocus: false,
+    showNoResults: true,
+    maxResults: 5,
+    minCharacters: 1,
+    searchDelay: 500,
+    apiSettings,
+    error,
+    fields,
+    onSelect
   }
 }

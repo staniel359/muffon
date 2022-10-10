@@ -25,11 +25,13 @@
 import {
   mapState
 } from 'vuex'
-import axios from 'axios'
 import BaseIcon from '@/components/icons/BaseIcon.vue'
 import {
   setSearch
 } from '@/helpers/actions/plugins/semantic'
+import {
+  mainSearchOptions
+} from '@/helpers/data/plugins/semantic'
 
 export default {
   name: 'BaseSearchInput',
@@ -53,11 +55,6 @@ export default {
   emits: [
     'select'
   ],
-  data () {
-    return {
-      baseUrl: axios.defaults.baseURL
-    }
-  },
   computed: {
     ...mapState(
       'layout',
@@ -71,43 +68,31 @@ export default {
       )
     },
     searchOptions () {
-      return {
-        apiSettings: {
-          base: this.baseUrl,
+      return mainSearchOptions(
+        {
           onResponse: this.formatResponse,
-          url: this.url
-        },
-        cache: false,
-        error: this.errorData,
-        fields: this.fields,
-        maxResults: 5,
-        minCharacters: 1,
-        onSelect: this.handleSelect,
-        searchDelay: 500,
-        searchOnFocus: false
-      }
-    },
-    errorData () {
-      return {
-        noResultsHeader: this.$t(
-          'errors.notFound.header'
-        ),
-        noResults: this.$t(
-          'errors.notFound.content'
-        ),
-        serverError: this.$t(
-          'errors.internalServer.header'
-        )
-      }
+          url: this.url,
+          fields: this.fields,
+          onSelect: this.handleSelect
+        }
+      )
     }
   },
-  mounted () {
-    setSearch(
-      this.$refs.search,
-      this.searchOptions
-    )
+  watch: {
+    url: {
+      immediate: true,
+      handler: 'handleUrlChange'
+    }
   },
   methods: {
+    async handleUrlChange () {
+      await this.$nextTick()
+
+      setSearch(
+        this.$refs.search,
+        this.searchOptions
+      )
+    },
     handleSelect (
       value
     ) {
