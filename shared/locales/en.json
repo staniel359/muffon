@@ -582,6 +582,7 @@
     "header": {
       "artists": "No artists",
       "albums": "No albums",
+      "groups": "No album groups",
       "tracks": "No tracks",
       "similar": "No similar",
       "tags": "No tags",
