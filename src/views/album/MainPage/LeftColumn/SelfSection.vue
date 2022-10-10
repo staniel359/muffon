@@ -1,7 +1,5 @@
 <template>
-  <BaseDivider />
-
-  <div class="main-self-container">
+  <div class="main-self-container self-section">
     <BaseSelfIcons
       :library-id="libraryId"
       :favorite-id="favoriteId"
@@ -26,7 +24,6 @@
 </template>
 
 <script>
-import BaseDivider from '@/components/BaseDivider.vue'
 import BaseSelfIcons from '@/components/models/self/BaseSelfIcons.vue'
 import BaseAlbumOptionsDropdown
   from '@/components/dropdowns/album/BaseAlbumOptionsDropdown.vue'
@@ -34,7 +31,6 @@ import BaseAlbumOptionsDropdown
 export default {
   name: 'SelfSection',
   components: {
-    BaseDivider,
     BaseSelfIcons,
     BaseAlbumOptionsDropdown
   },
@@ -48,4 +44,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.self-section
+  margin-top: 1em
+</style>

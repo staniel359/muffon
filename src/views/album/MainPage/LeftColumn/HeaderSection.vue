@@ -11,6 +11,8 @@
       <BaseArtistLinks
         :artists="artists"
       />
+
+      <BaseDivider />
     </div>
   </BaseTransitionContainer>
 </template>
@@ -20,6 +22,7 @@ import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
 import BaseArtistLinks from '@/components/links/BaseArtistLinks.vue'
+import BaseDivider from '@/components/BaseDivider.vue'
 import {
   main as formatArtistMainLink
 } from '@/helpers/formatters/links/artist'
@@ -29,7 +32,8 @@ export default {
   components: {
     BaseTransitionContainer,
     BaseHeader,
-    BaseArtistLinks
+    BaseArtistLinks,
+    BaseDivider
   },
   props: {
     albumData: {
