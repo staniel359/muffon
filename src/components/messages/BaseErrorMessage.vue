@@ -90,7 +90,7 @@ export default {
       }
     },
     errorCode () {
-      return this.error.response.status
+      return this.error.response?.status || 0
     },
     isServerError () {
       return this.error.isAxiosError
