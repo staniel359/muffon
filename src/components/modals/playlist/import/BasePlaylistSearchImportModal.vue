@@ -14,7 +14,13 @@
           ref="input"
           :tracks="collection"
           :playlist-id="playlistId"
+          :source="source"
           :is-save="isSave"
+        />
+
+        <SourceSelect
+          :source="source"
+          @select="handleSourceSelect"
         />
 
         <BaseClearButton
@@ -43,6 +49,7 @@
 import BaseModalContainer
   from '@/components/containers/modals/BaseModalContainer.vue'
 import SearchInput from './BasePlaylistSearchImportModal/SearchInput.vue'
+import SourceSelect from './BasePlaylistSearchImportModal/SourceSelect.vue'
 import BaseClearButton from '@/components/buttons/BaseClearButton.vue'
 import BaseDivider from '@/components/BaseDivider.vue'
 import BaseImportSection from '@/components/import/BaseImportSection.vue'
@@ -55,6 +62,7 @@ export default {
   components: {
     BaseModalContainer,
     SearchInput,
+    SourceSelect,
     BaseClearButton,
     BaseDivider,
     BaseImportSection,
@@ -77,6 +85,7 @@ export default {
   data () {
     return {
       collection: [],
+      source: 'lastfm',
       status: 'import'
     }
   },
@@ -101,6 +110,13 @@ export default {
       this.reset()
 
       this.clearInput()
+
+      this.focusInput()
+    },
+    handleSourceSelect (
+      value
+    ) {
+      this.source = value
 
       this.focusInput()
     },

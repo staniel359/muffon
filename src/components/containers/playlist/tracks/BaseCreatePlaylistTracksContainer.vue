@@ -178,13 +178,13 @@ export default {
           trackData.album?.title,
         imageUrl:
           trackData.image?.large,
-        sourceData:
-          trackData.source,
-        audioData:
+        sourceData: trackData.source,
+        audioData: (
           trackData.audio && {
             present:
               trackData.audio.present
-          },
+          }
+        ),
         albumSourceData:
           trackData.album?.source,
         isSelectable: true

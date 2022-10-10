@@ -1,6 +1,6 @@
 <template>
   <BaseDropdown
-    class="floating scrolling scope-select-container"
+    class="floating scrolling source-select-container"
     menu-direction="left"
     :options="sources"
     :selected="source"
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.scope-select-container
+.source-select-container
   @extend .no-padding
   margin-left: 1em
 </style>

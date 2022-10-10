@@ -142,14 +142,26 @@ export default {
       )
     },
     formatTrack (
-      track
+      trackData
     ) {
       return {
         playlistId: this.playlistId,
-        trackTitle: track.title,
-        artistName: track.artist.name,
-        albumTitle: track.album?.title,
-        imageUrl: track.image?.large
+        trackTitle: trackData.title,
+        artistName:
+          trackData.artist.name,
+        albumTitle:
+          trackData.album?.title,
+        imageUrl:
+          trackData.image?.large,
+        sourceData: trackData.source,
+        audioData: (
+          trackData.audio && {
+            present:
+              trackData.audio.present
+          }
+        ),
+        albumSourceData:
+          trackData.album?.source
       }
     },
     setProgressTotalCount () {
