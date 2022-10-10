@@ -394,6 +394,7 @@
         "video": "Video",
         "recommendations": "Suggerimenti",
         "top": "Top",
+        "lyrics": "Testi",
         "data": "Dati"
       },
       "profile": {
@@ -445,6 +446,9 @@
         },
         "top": {
           "country": "Paese predefinito"
+        },
+        "lyrics": {
+          "annotations": "Mostra annotazioni"
         },
         "data": {
           "cache": {
