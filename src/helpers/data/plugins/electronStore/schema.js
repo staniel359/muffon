@@ -73,6 +73,10 @@ export default {
     type: 'number',
     default: 0
   },
+  'lyrics.isWithAnnotations': {
+    type: 'boolean',
+    default: true
+  },
   'history.librarySearch': {
     type: 'array',
     default: []

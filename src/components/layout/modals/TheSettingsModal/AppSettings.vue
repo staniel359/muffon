@@ -35,6 +35,7 @@ import QueueOptions from './AppSettings/QueueOptions.vue'
 import VideoOptions from './AppSettings/VideoOptions.vue'
 import RecommendationsOptions from './AppSettings/RecommendationsOptions.vue'
 import TopOptions from './AppSettings/TopOptions.vue'
+import LyricsOptions from './AppSettings/LyricsOptions.vue'
 import DataOptions from './AppSettings/DataOptions.vue'
 
 export default {
@@ -52,6 +53,7 @@ export default {
     VideoOptions,
     RecommendationsOptions,
     TopOptions,
+    LyricsOptions,
     DataOptions
   },
   data () {
@@ -131,6 +133,12 @@ export default {
           nameCode: 'settings.sections.app.top',
           scope: 'top',
           component: 'TopOptions',
+          isAnonymous: true
+        },
+        {
+          nameCode: 'settings.sections.app.lyrics',
+          scope: 'lyrics',
+          component: 'LyricsOptions',
           isAnonymous: true
         },
         {

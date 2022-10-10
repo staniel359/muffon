@@ -187,6 +187,37 @@ export function artistPopupOptions (
   }
 }
 
+export function annotationPopupOptions (
+  {
+    html,
+    onShow
+  }
+) {
+  const {
+    isDarkMode
+  } = store.state.layout
+
+  const variation = isDarkMode
+    ? 'basic inverted'
+    : 'basic'
+
+  return {
+    position: 'top center',
+    transition: 'fade up',
+    variation,
+    hoverable: true,
+    lastResort: true,
+    className: {
+      popup: 'ui popup main-annotation-popup'
+    },
+    delay: {
+      show: 500
+    },
+    html,
+    onShow
+  }
+}
+
 export function mainDropdownOptions (
   {
     onChange,

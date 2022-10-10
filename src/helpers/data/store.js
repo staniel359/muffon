@@ -29,6 +29,8 @@ export default {
     'layout/setIsWithSystemTheme',
   'layout.transparency':
     'layout/setTransparency',
+  'lyrics.isWithAnnotations':
+    'lyrics/setIsWithAnnotations',
   'player.currentTrackId':
     'player/setCurrentTrackId',
   'player.currentVariantId':

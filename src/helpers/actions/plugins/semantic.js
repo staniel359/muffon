@@ -184,11 +184,15 @@ export function setPopup (
 export function repositionPopup (
   element
 ) {
-  $(
-    element
-  ).popup(
-    'reposition'
-  )
+  try {
+    $(
+      element
+    ).popup(
+      'reposition'
+    )
+  } catch {
+    return false
+  }
 }
 
 export function hidePopup (

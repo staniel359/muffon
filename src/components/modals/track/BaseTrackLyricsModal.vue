@@ -5,12 +5,9 @@
     :request-track-data="requestTrackData"
   >
     <template #default="slotProps">
-      <div class="main-lyrics-container">
-        <p
-          class="lyrics"
-          v-text="slotProps[scope]"
-        />
-      </div>
+      <ContentSection
+        :lyrics="slotProps[scope]"
+      />
     </template>
   </BaseTrackModalContainer>
 </template>
@@ -18,11 +15,13 @@
 <script>
 import BaseTrackModalContainer
   from '@/components/containers/modals/track/BaseTrackModalContainer.vue'
+import ContentSection from './BaseTrackLyricsModal/ContentSection.vue'
 
 export default {
   name: 'BaseTrackLyricsModal',
   components: {
-    BaseTrackModalContainer
+    BaseTrackModalContainer,
+    ContentSection
   },
   props: {
     trackId: Number
