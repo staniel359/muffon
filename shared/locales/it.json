@@ -582,6 +582,7 @@
     "header": {
       "artists": "Nessun artista",
       "albums": "Nessun album",
+      "groups": "Nessun gruppo album",
       "tracks": "Nessun brano",
       "similar": "Nessun simile",
       "tags": "Nessun tag",
