@@ -18,7 +18,7 @@
       class="text main-dropdown-item"
       :class="{
         inverted: isDarkMode,
-        default: isFormField
+        default: isFormField && !value
       }"
     >
       <template v-if="header">
