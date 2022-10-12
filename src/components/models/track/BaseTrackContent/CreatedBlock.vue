@@ -1,18 +1,15 @@
 <template>
   <div
     v-if="created"
-    :class="[
-      'main-small-container',
-      'created-block'
-    ]"
+    class="created-block"
   >
-    <div>
+    <div class="created">
       <small
         v-text="createdDateFormatted"
       />
     </div>
 
-    <div>
+    <div class="created">
       <small
         v-text="createdTimeFormatted"
       />
@@ -56,4 +53,7 @@ export default {
 .created-block
   margin-left: 0.5em !important
   text-align: right
+
+.created
+  line-height: 0.9em
 </style>

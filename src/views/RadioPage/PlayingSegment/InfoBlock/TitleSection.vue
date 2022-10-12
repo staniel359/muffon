@@ -50,4 +50,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.playing-header
+  line-height: 1.3em !important
+</style>

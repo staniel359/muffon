@@ -28,7 +28,7 @@
         @mouseleave="handleChannelLinkMouseLeave"
       />
 
-      <div class="description main-small-container">
+      <div class="description">
         <small
           v-text="publishDateFormatted"
         />

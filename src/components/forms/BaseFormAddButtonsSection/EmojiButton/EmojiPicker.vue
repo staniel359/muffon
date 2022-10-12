@@ -119,7 +119,7 @@ export default {
   ::v-deep(em-emoji-picker)
     max-height: 300px
     border: $border
-    --font-family: Lato, LatoDefault
+    --font-family: inherit
   &.inverted
     ::v-deep(em-emoji-picker)
       border: $borderInverted

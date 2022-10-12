@@ -35,7 +35,7 @@
           @delete-option-click="handleDeleteOptionClick"
         />
 
-        <div class="main-simple-card-image-container">
+        <div class="main-image-container">
           <BaseImage
             class="rounded bordered"
             model="album"
@@ -44,13 +44,13 @@
         </div>
 
         <BaseHeader
-          class="link"
+          class="center aligned link"
           tag="h4"
           :text="albumTitle"
         />
       </BaseAlbumLinkContainer>
 
-      <div class="content">
+      <div class="center aligned content">
         <BaseAlbumArtistsSection
           v-if="isRenderArtistName"
           class="extra"
@@ -252,7 +252,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.content
-  @extend .d-flex, .flex-column, .align-items-center
-</style>
+<style lang="sass" scoped></style>

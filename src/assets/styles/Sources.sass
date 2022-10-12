@@ -3,20 +3,22 @@ $deezerIconUrl: url('@/assets/images/deezer.png')
 $discogsIconUrl: url('@/assets/images/discogs.png')
 $geniusIconUrl: url('@/assets/images/genius.png')
 
-.icon.colored.lastfm
-  color: $colorLastfm !important
-.icon.colored.vk
-  color: $colorVk !important
-.icon.colored.odnoklassniki
-  color: $colorOdnoklassniki !important
-.icon.colored.bandcamp
-  color: $colorBandcamp !important
-.icon.colored.soundcloud
-  color: $colorSoundCloud !important
-.icon.colored.spotify
-  color: $colorSpotify !important
-.icon.colored.youtube
-  color: $colorYouTube !important
+.icon
+  &.colored
+    &.lastfm
+      color: $colorLastfm !important
+    &.vk
+      color: $colorVk !important
+    &.odnoklassniki
+      color: $colorOdnoklassniki !important
+    &.bandcamp
+      color: $colorBandcamp !important
+    &.soundcloud
+      color: $colorSoundCloud !important
+    &.spotify
+      color: $colorSpotify !important
+    &.youtube
+      color: $colorYouTube !important
 
 .icon.yandexmusic
   &:before
@@ -26,7 +28,7 @@ $geniusIconUrl: url('@/assets/images/genius.png')
 
 .icon.deezer
   &:before
-    content: $deezerIconUrl
+    content: $deezerIconUrl !important
   &:not(.colored):before
     filter: grayscale(1)
 

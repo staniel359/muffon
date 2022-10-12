@@ -1,6 +1,6 @@
 <template>
   <BaseHeaderContainer
-    class="playing-header playing-artist-name"
+    class="playing-header"
     tag="h4"
   >
     <BaseArtistLinks
@@ -35,6 +35,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.playing-artist-name
+.playing-header
   @extend .text-medium-light
+  line-height: 1.3em !important
 </style>

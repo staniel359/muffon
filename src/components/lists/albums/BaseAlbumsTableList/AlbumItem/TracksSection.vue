@@ -1,5 +1,5 @@
 <template>
-  <span class="description main-small-container">
+  <div class="description">
     <BaseLinkContainer
       class="main-link"
       :link="link"
@@ -14,7 +14,7 @@
         />
       </small>
     </BaseLinkContainer>
-  </span>
+  </div>
 </template>
 
 <script>

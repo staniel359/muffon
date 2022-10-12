@@ -1,5 +1,5 @@
 <template>
-  <div class="main-small-container">
+  <div>
     <small
       v-text="createdText"
     />

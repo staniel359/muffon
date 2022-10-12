@@ -4,7 +4,8 @@
     :data-value="code"
   >
     <i
-      :class="icon"
+      class="flag"
+      :class="code"
     />
 
     {{ name }}
@@ -23,9 +24,6 @@ export default {
   computed: {
     code () {
       return this.countryData[0].toLowerCase()
-    },
-    icon () {
-      return `${this.code} flag`
     },
     name () {
       return this.countryData[1]

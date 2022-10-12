@@ -230,9 +230,7 @@ export function mainDropdownOptions (
   } = store.state.layout
 
   return {
-    forceSelection: false,
     on: 'hover',
-    fullTextSearch: 'exact',
     duration: 150,
     context: visibleContext,
     delay: {

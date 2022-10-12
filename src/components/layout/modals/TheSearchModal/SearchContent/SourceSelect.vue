@@ -109,4 +109,7 @@ export default {
 .source-select-container
   @extend .no-padding
   margin-left: 1em
+  &.ui.dropdown
+    ::v-deep(.menu)
+      width: 175px !important
 </style>

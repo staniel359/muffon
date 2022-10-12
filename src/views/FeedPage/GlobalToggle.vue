@@ -54,5 +54,5 @@ export default {
   @extend .d-flex, .align-items-center
 
 .global-text
-  margin-right: 0.5em
+  margin-right: 0.75em
 </style>

@@ -21,14 +21,12 @@ export default function (
     response
   ) => {
     const {
-      token
+      token,
+      id
     } = response.data.profile
 
-    const profileId =
-      response.data.profile.id
-
     this.token = token
-    this.profileId = profileId
+    this.profileId = id
     this.isRemember = isRemember
   }
 

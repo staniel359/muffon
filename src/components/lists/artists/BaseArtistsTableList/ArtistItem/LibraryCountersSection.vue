@@ -1,10 +1,5 @@
 <template>
-  <div
-    :class="[
-      'description main-small-container',
-      'library-counters-section'
-    ]"
-  >
+  <div class="description">
     <TracksCounter
       class="tracks-link"
       :artist-data="artistData"
@@ -36,9 +31,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.library-counters-section
-  @extend .d-flex, .justify-content-center
-
 .tracks-link
   margin-right: 0.5em
 </style>

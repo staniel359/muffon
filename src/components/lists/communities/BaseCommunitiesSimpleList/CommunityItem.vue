@@ -17,10 +17,11 @@
         :text="communityTitle"
       />
 
-      <small
-        class="description"
-        v-html="membersCountText"
-      />
+      <div class="description">
+        <small
+          v-html="membersCountText"
+        />
+      </div>
     </div>
 
     <BaseCommunityJoinedMessage

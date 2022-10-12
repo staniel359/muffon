@@ -10,7 +10,7 @@
         :is-with-share-option="isWithShareOption"
       />
 
-      <div class="main-simple-card-image-container">
+      <div class="main-image-container">
         <BaseImage
           class="rounded bordered"
           model="video"
@@ -19,14 +19,14 @@
       </div>
 
       <BaseHeader
-        class="link"
+        class="center aligned link"
         tag="h4"
         :text="videoTitle"
       />
     </BaseLinkContainer>
 
-    <div class="content">
-      <div class="description main-small-container">
+    <div class="center aligned content">
+      <div class="description">
         <small
           v-text="publishDateFormatted"
         />
@@ -115,6 +115,6 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.main-simple-card-image-container
+.main-image-container
   padding-bottom: 75px
 </style>

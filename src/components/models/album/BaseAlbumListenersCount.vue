@@ -5,7 +5,6 @@
   />
   <div
     v-else
-    class="main-small-container"
   >
     <small>
       <BaseIcon
@@ -77,7 +76,8 @@ export default {
     }
   },
   watch: {
-    responseListenersCount: 'handleResponseListenersCountChange'
+    responseListenersCount:
+      'handleResponseListenersCountChange'
   },
   mounted () {
     if (!this.listenersCount) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="item playing-block">
+  <div class="item main-simple-list-item playing-block">
     <ImageBlock />
 
     <InfoBlock

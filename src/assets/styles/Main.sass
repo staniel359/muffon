@@ -1,12 +1,5 @@
-@font-face
-  font-family: LatoDefault
-  src: $fontPath format('truetype')
-
 html
   @extend .scroll-smooth
-
-*:not(i)
-  font-family: Lato, LatoDefault, Helvetica Neue, Arial, Helvetica, sans-serif !important
 
 a
   outline: none
@@ -71,7 +64,8 @@ p
         & ~ label
           &:after
             left: calc(#{$mainCheckboxWidth} - #{$mainCheckboxThumbHeight})
-      &:checked, &:focus:checked
+      &:checked,
+      &:focus:checked
         & ~ label
           &:before
             @extend .background-base
@@ -89,11 +83,14 @@ p
     &.inverted
       & > input
         & ~ label
-          &:before, &:hover:before
+          &:before,
+          &:hover:before
             @extend .background-grey-inverted
-        &:checked, &:focus:checked
+        &:checked,
+        &:focus:checked
           & ~ label
-            &:before, &:hover:before
+            &:before,
+            &:hover:before
               @extend .background-base
 
 .ui.toast-container
@@ -199,12 +196,15 @@ p
 .ui.calendar
   &:before
     box-shadow: 1px 1px 0 0 $colorGrey !important
+    z-index: -1
   &.inverted
     .ui.input
       .icon
         @extend .text-color-white
     table
       border: $borderInverted
+      .disabled
+        color: #e1e1e14d !important
     &:before
       background: #333 !important
       box-shadow: 1px 1px 0 0 $colorGreyInverted !important
@@ -331,14 +331,14 @@ p
     font-size: 16px
 
 .main-simple-card
-  @extend .no-shadow, .text-align-center, .text-color-unset, .background-transparent, .h-100
+  @extend .h-100, .background-transparent
   .main-options-dropdown-container
     @extend .absolute, .no-margin, .visibility-hidden
     z-index: 10
     top: 10px
     right: 10px
     &.background
-      border-radius: 50%
+      border-radius: 50% !important
       &.white
         background: $colorWhite
       &.black
@@ -346,22 +346,20 @@ p
   &:hover
     .main-options-dropdown-container
       @extend .visibility-visible
-  & > .content
+  .content
     @extend .no-padding, .no-border
-    & > .extra
+    .extra
+      line-height: 1.2em
+      margin-top: 0.1em
+    .description
       line-height: 1.2em
       margin-top: 0.2em
-    & > .description
-      line-height: 1.2em
-      margin-top: 0.2em !important
-    & > .main-self-icons
-      margin-top: 0.25em
-
-.main-simple-card-image-container
-  @extend .main-image-container
-  margin-bottom: 0.25em
-  & > .placeholder
-    left: 0
+    .main-self-icons
+      margin-top: 0.2em
+  .main-image-container
+    margin-bottom: 0.5em
+    & > .placeholder
+      left: 0
 
 .main-horizontal-card
   @extend .w-100, .background-transparent
@@ -375,13 +373,13 @@ p
     &.small
       width: 35px
       height: 35px
-  & > .content
+  .content
     @extend .flex-full, .no-padding
     .text
       font-size: 18px
       line-height: 1.2em
-    & > .description
-      margin-top: 0.15em !important
+    .description
+      line-height: 1em
   & > .main-options-dropdown-container
     @extend .visibility-hidden
     margin-left: 0.5em
@@ -411,7 +409,7 @@ p
 
 .main-header
   @extend .no-margin
-  line-height: 1.2 !important
+  line-height: 1.2em !important
 
 .main-artist-name
   margin-bottom: 0.4em !important
@@ -496,8 +494,8 @@ p
       transition: width 0.3s
     & > .thumb
       @extend .d-none, .no-shadow, .background-base
-      width: 12px !important
-      height: 12px !important
+      width: 13px !important
+      height: 13px !important
   &:not(.disabled)
     &:hover, &:active
       & > .inner
@@ -852,6 +850,7 @@ p
           @extend .text-color-base
 
 .main-video
+  border-radius: 0.5em
   .video.play.icon
     @extend .no-margin
 
@@ -883,7 +882,6 @@ p
     .title
       @extend .text-color-white, .text-medium-light
       font-size: 3.5em !important
-      margin-bottom: 0.2em !important
 
 .main-private-icon
   @extend .no-margin
@@ -893,7 +891,7 @@ p
 .main-annotation-popup
   @extend .overflow-hidden
   max-width: unset !important
-  width: 400px
+  width: 420px
   &.inverted
     border: $borderInverted !important
 

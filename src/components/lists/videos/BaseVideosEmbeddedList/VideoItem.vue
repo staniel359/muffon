@@ -62,5 +62,5 @@ export default {
     margin-top: 0.75em
 
 .video-title
-  margin-top: 0.35em !important
+  margin-top: 0.5em !important
 </style>

@@ -32,7 +32,7 @@
         :is-link-to-library="isLinkToLibrary"
         :profile-id="profileId"
       >
-        <div class="main-simple-card-image-container">
+        <div class="main-image-container">
           <BaseArtistImage
             size="small"
             :image-data="imageData"
@@ -42,13 +42,13 @@
         </div>
 
         <BaseHeader
-          class="link"
+          class="center aligned link"
           tag="h4"
           :text="artistName"
         />
       </BaseArtistLinkContainer>
 
-      <div class="content">
+      <div class="center aligned content">
         <BaseArtistListenersCount
           v-if="isWithListenersCount"
           class="description"

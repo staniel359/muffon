@@ -2,8 +2,8 @@
   <div v-if="city || country">
     <i
       v-if="country"
-      class="profile-country-flag"
-      :class="`${country} flag`"
+      class="flag"
+      :class="country"
     />
 
     {{ cityWithCountryFormatted }}
@@ -57,7 +57,4 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
-.profile-country-flag
-  margin-right: 0.25em !important
-</style>
+<style lang="sass" scoped></style>

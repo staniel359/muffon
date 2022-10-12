@@ -1,29 +1,27 @@
 <template>
-  <BaseHeaderContainer
-    v-if="albumData && albumTitle"
-    class="playing-header playing-album-title"
-    tag="h6"
+  <div
+    v-if="albumTitle"
+    class="playing-header"
   >
-    <BaseAlbumLinkContainer
-      class="main-link"
-      :album-data="albumData"
-      :artist-name="artistName"
-    >
-      {{ albumTitle }}
-    </BaseAlbumLinkContainer>
-  </BaseHeaderContainer>
+    <small>
+      <BaseAlbumLinkContainer
+        class="main-link"
+        :album-data="albumData"
+        :artist-name="artistName"
+      >
+        {{ albumTitle }}
+      </BaseAlbumLinkContainer>
+    </small>
+  </div>
 </template>
 
 <script>
-import BaseHeaderContainer
-  from '@/components/containers/BaseHeaderContainer.vue'
 import BaseAlbumLinkContainer
   from '@/components/containers/links/album/BaseAlbumLinkContainer.vue'
 
 export default {
   name: 'AlbumSection',
   components: {
-    BaseHeaderContainer,
     BaseAlbumLinkContainer
   },
   props: {
@@ -33,21 +31,20 @@ export default {
     }
   },
   computed: {
+    albumTitle () {
+      return this.albumData?.title
+    },
     albumData () {
       return this.trackData.album
     },
     artistName () {
       return this.trackData.artist.name
-    },
-    albumTitle () {
-      return this.albumData.title
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
-.playing-album-title
-  @extend .text-medium-light
-  margin-top: 0.3em !important
+.playing-header
+  line-height: 1em
 </style>

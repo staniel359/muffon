@@ -1,8 +1,9 @@
 <template>
-  <small
-    class="description"
-    v-html="tracksCountText"
-  />
+  <div class="description">
+    <small
+      v-html="tracksCountText"
+    />
+  </div>
 </template>
 
 <script>

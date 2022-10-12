@@ -1,12 +1,10 @@
 <template>
   <div
-    class="ui card main-simple-card"
+    class="ui basic card main-simple-card"
     :class="{
       inverted: isDarkMode
     }"
   >
-    <div />
-
     <slot />
   </div>
 </template>

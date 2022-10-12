@@ -4,16 +4,16 @@
   >
     <div class="item">
       <div class="content">
-        <small class="description">
+        <div class="description">
           <div
             v-if="isLoading"
             class="ui mini active inline loader"
           />
-          <div
+          <small
             v-else-if="bitrate"
             v-text="bitrateText"
           />
-        </small>
+        </div>
       </div>
     </div>
   </BaseListContainer>

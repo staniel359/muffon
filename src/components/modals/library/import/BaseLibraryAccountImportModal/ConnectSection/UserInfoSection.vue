@@ -15,7 +15,7 @@
           :text="nickname"
         />
 
-        <div class="description main-small-container">
+        <div class="description">
           <small>
             <BaseIcon
               icon="play"
