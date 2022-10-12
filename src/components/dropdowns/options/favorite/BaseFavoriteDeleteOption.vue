@@ -2,6 +2,7 @@
   <BaseFavoriteOption
     action="delete"
     :is-loading="isLoading"
+    :is-error="isError"
     @click="handleClick"
   />
 </template>
@@ -31,6 +32,7 @@ export default {
   data () {
     return {
       isLoading: false,
+      isError: false,
       isSuccess: false
     }
   },

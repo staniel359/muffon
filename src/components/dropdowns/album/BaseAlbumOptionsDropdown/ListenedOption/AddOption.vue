@@ -2,6 +2,7 @@
   <BaseListenedOption
     action="add"
     :is-loading="isLoading"
+    :is-error="isError"
     @click="handleClick"
   />
 </template>
@@ -29,6 +30,7 @@ export default {
     return {
       listenedId: null,
       isLoading: false,
+      isError: false,
       isSuccess: false
     }
   },

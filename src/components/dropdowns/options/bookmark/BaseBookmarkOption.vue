@@ -3,6 +3,7 @@
     icon="bookmark"
     :text="actionText"
     :is-loading="isLoading"
+    :is-error="isError"
     @click="handleClick"
   />
 </template>
@@ -20,7 +21,8 @@ export default {
       type: String,
       required: true
     },
-    isLoading: Boolean
+    isLoading: Boolean,
+    isError: Boolean
   },
   emits: [
     'click'

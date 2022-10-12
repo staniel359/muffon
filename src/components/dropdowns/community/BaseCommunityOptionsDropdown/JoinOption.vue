@@ -3,6 +3,7 @@
     :icon="icon"
     :text="membershipText"
     :is-loading="isLoading"
+    :is-error="isError"
     @click="handleClick"
   />
 </template>
@@ -34,7 +35,8 @@ export default {
     return {
       membersCount: null,
       isMember: false,
-      isLoading: false
+      isLoading: false,
+      isError: false
     }
   },
   computed: {
