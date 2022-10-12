@@ -107,14 +107,7 @@ export default {
     },
     selectedScope () {
       if (this.selectedTypeId) {
-        if (
-          this.selectedTypeId ===
-            'albumVarious'
-        ) {
-          return 'albums_various'
-        } else {
-          return `${this.selectedTypeId}s`
-        }
+        return `${this.selectedTypeId}s`
       } else {
         return null
       }

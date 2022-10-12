@@ -18,23 +18,34 @@ export default {
     'setSelectedTypeId'
   ],
   props: {
-    typeId: {
+    type: {
       type: String,
       required: true
     },
-    isDisabled: Boolean
+    albumsData: {
+      type: Object,
+      required: true
+    }
   },
   computed: {
     headerText () {
       return this.$t(
-        `sources.albumTypes.${this.typeId}`
+        `sources.albumTypes.${this.type}`
       )
+    },
+    isDisabled () {
+      return !this.albumsData[
+        this.scope
+      ]
+    },
+    scope () {
+      return `${this.type}s`
     }
   },
   methods: {
     handleClick () {
       this.setSelectedTypeId(
-        this.typeId
+        this.type
       )
     }
   }

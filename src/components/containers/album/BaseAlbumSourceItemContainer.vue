@@ -31,31 +31,38 @@ export default {
     return {
       searchData: null,
       error: null,
-      loadedCollectionsCount: 0,
-      errorCollectionsCount: 0,
-      albumsData: {}
+      albumsData: null,
+      successCount: 0,
+      emptyCount: 0,
+      errorCount: 0
     }
   },
   computed: {
     isAllLoaded () {
       return (
         this.collectionsCount ===
-          this.typesCount
+          this.scopesCount
       )
     },
     collectionsCount () {
       return (
-        this.loadedCollectionsCount +
-          this.errorCollectionsCount
+        this.successCount +
+          this.emptyCount +
+          this.errorCount
       )
     },
-    typesCount () {
-      return this.types.length
+    scopesCount () {
+      return this.scopes.length
+    },
+    scopes () {
+      return this.types.map(
+        this.formatType
+      )
     },
     isAllErrors () {
       return (
-        this.errorCollectionsCount ===
-          this.typesCount
+        this.errorCount ===
+          this.scopesCount
       )
     },
     searchArgs () {
@@ -66,14 +73,11 @@ export default {
     }
   },
   watch: {
-    searchData: {
-      immediate: true,
-      handler: 'handleSearchDataChange'
-    },
+    searchData: 'handleSearchDataChange',
     error: 'handleError'
   },
   mounted () {
-    this.getTypesData()
+    this.getScopesData()
   },
   methods: {
     getSearch,
@@ -81,29 +85,29 @@ export default {
       value
     ) {
       if (value) {
-        this.formatTypesData()
+        this.formatScopesData()
       }
     },
     handleError (
       value
     ) {
       if (value) {
-        this.errorCollectionsCount++
+        this.errorCount++
       }
     },
-    getTypesData () {
-      this.types.map(
-        this.getTypeData
-      )
-    },
-    getTypeData (
+    formatType (
       type
     ) {
-      const scope =
-        this.formatScope(
-          type
-        )
-
+      return `${type}s`
+    },
+    getScopesData () {
+      this.scopes.forEach(
+        this.getScopeData
+      )
+    },
+    getScopeData (
+      scope
+    ) {
       this.getSearch(
         {
           ...this.searchArgs,
@@ -111,33 +115,28 @@ export default {
         }
       )
     },
-    formatScope (
-      type
-    ) {
-      if (type === 'albumVarious') {
-        return 'albums_various'
-      } else {
-        return `${type}s`
-      }
-    },
-    formatTypesData () {
-      this.types.map(
-        this.formatTypeData
+    formatScopesData () {
+      this.scopes.forEach(
+        this.formatScopeData
       )
     },
-    formatTypeData (
-      type
+    formatScopeData (
+      scope
     ) {
-      const scope =
-        this.formatScope(
-          type
-        )
+      const collection =
+        this.searchData[scope]
 
-      if (this.searchData[scope]) {
-        this.albumsData[scope] =
-          this.searchData[scope]
+      if (collection) {
+        if (collection.length) {
+          this.albumsData = {
+            ...this.albumsData,
+            [scope]: collection
+          }
 
-        this.loadedCollectionsCount++
+          this.successCount++
+        } else {
+          this.emptyCount++
+        }
       }
     }
   }

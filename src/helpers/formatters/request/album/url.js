@@ -18,15 +18,7 @@ export default function (
       albumTitle
     )
 
-  function formatScope () {
-    if (albumType === 'albumVarious') {
-      return 'albums'
-    } else {
-      return `${albumType}s`
-    }
-  }
-
-  const albumScope = formatScope()
+  const albumScope = `${albumType}s`
 
   function formatUrlData () {
     switch (source) {

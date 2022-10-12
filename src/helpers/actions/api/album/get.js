@@ -50,17 +50,9 @@ export default function (
   const handleSuccess = (
     response
   ) => {
-    const isAlbumVarious = (
-      albumType === 'albumVarious'
-    )
-
-    const scope = isAlbumVarious
-      ? 'album'
-      : albumType
-
     this.albumData =
       response.data[
-        scope
+        albumType
       ]
   }
 
