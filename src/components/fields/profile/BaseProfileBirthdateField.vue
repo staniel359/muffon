@@ -2,6 +2,7 @@
   <div class="field">
     <div
       ref="calendar"
+      :key="key"
       class="ui calendar"
       :class="{
         inverted: isDarkMode
@@ -33,6 +34,9 @@ import {
 import {
   birthdateCalendarOptions
 } from '@/helpers/data/plugins/semantic'
+import {
+  generateKey
+} from '@/helpers/utils'
 
 export default {
   name: 'BaseProfileBirthdateField',
@@ -41,6 +45,11 @@ export default {
   },
   props: {
     value: String
+  },
+  data () {
+    return {
+      key: null
+    }
   },
   computed: {
     ...mapState(
@@ -72,10 +81,19 @@ export default {
     profileLanguage: {
       immediate: true,
       handler: 'handleProfileLanguageChange'
-    }
+    },
+    isDarkMode: 'handleIsDarkModeChange'
   },
   methods: {
-    async handleProfileLanguageChange () {
+    handleProfileLanguageChange () {
+      this.initialize()
+    },
+    handleIsDarkModeChange () {
+      this.key = generateKey()
+
+      this.initialize()
+    },
+    async initialize () {
       await this.$nextTick()
 
       setCalendar(
