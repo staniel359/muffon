@@ -16,17 +16,18 @@ export default {
   components: {
     BaseArtistPopup
   },
-  data () {
-    return {
-      isCalled: false
-    }
-  },
   props: {
     isWithPopup: {
       type: Boolean,
       default: true
     },
     isLinkActive: Boolean
+  },
+  data () {
+    return {
+      isCalled: false,
+      isVisible: false
+    }
   },
   computed: {
     ...mapState(
@@ -49,7 +50,8 @@ export default {
       return artistPopupOptions(
         {
           html: this.popup,
-          onShow: this.handleShow
+          onShow: this.handleShow,
+          onHide: this.handleHide
         }
       )
     },
@@ -92,6 +94,10 @@ export default {
     },
     handleShow () {
       this.isCalled = true
+      this.isVisible = true
+    },
+    handleHide () {
+      this.isVisible = false
     },
     async handleArtistDataChange () {
       await this.$nextTick()

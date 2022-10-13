@@ -159,7 +159,8 @@ export function sourcePopupOptions () {
 export function artistPopupOptions (
   {
     html,
-    onShow
+    onShow,
+    onHide
   }
 ) {
   const {
@@ -184,7 +185,8 @@ export function artistPopupOptions (
       hide: 150
     },
     html,
-    onShow
+    onShow,
+    onHide
   }
 }
 
