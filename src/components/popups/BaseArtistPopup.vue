@@ -31,6 +31,12 @@ export default {
     BaseSegmentContainer,
     ContentBlock
   },
+  provide () {
+    return {
+      updateArtistImage:
+        this.updateArtistImage
+    }
+  },
   props: {
     artistName: {
       type: String,
@@ -98,6 +104,11 @@ export default {
       this.getArtist(
         this.artistArgs
       )
+    },
+    updateArtistImage (
+      value
+    ) {
+      this.artistData.image = value
     }
   }
 }

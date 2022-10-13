@@ -5,6 +5,7 @@
       size="medium"
       :image-data="imageData"
       :artist-name="artistName"
+      @load-end="handleImageLoadEnd"
     />
 
     <SelfSection
@@ -23,6 +24,9 @@ export default {
     BaseArtistImage,
     SelfSection
   },
+  inject: [
+    'updateArtistImage'
+  ],
   props: {
     artistData: {
       type: Object,
@@ -35,6 +39,15 @@ export default {
     },
     artistName () {
       return this.artistData.name
+    }
+  },
+  methods: {
+    handleImageLoadEnd (
+      value
+    ) {
+      this.updateArtistImage(
+        value
+      )
     }
   }
 }
