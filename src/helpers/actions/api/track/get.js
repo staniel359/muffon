@@ -25,10 +25,35 @@ export default function (
       }
     )
 
-  const isWithSelfLanguage = (
-    !scope ||
-      scope === 'description'
-  )
+  const scopes = {
+    id: [
+      '',
+      'similar'
+    ],
+    language: [
+      '',
+      'description'
+    ]
+  }
+
+  function isMatchedScope (
+    selfScope
+  ) {
+    return (
+      selfScope ===
+        scope.toString()
+    )
+  }
+
+  const isWithSelfId =
+    scopes.id.some(
+      isMatchedScope
+    )
+
+  const isWithSelfLanguage =
+    scopes.language.some(
+      isMatchedScope
+    )
 
   const handleSuccess = (
     response
@@ -42,7 +67,7 @@ export default function (
   )(
     {
       url,
-      isWithSelfId: true,
+      isWithSelfId,
       isWithSelfLanguage,
       page,
       limit,
