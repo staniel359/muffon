@@ -61,7 +61,7 @@ export default {
     playerPanelOptions () {
       return mainSidebarOptions(
         {
-          onShow: this.handleShow,
+          onVisible: this.handleVisible,
           onHide: this.handleHide
         }
       )
@@ -102,7 +102,7 @@ export default {
 
       this.toggleInvertedClass()
     },
-    handleShow () {
+    handleVisible () {
       this.$emit(
         'visibilityChange',
         true
