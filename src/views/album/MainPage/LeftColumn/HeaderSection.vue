@@ -12,12 +12,17 @@
         :artists="artists"
       />
 
-      <BaseDivider />
+      <BaseDivider
+        v-if="profileId"
+      />
     </div>
   </BaseTransitionContainer>
 </template>
 
 <script>
+import {
+  mapGetters
+} from 'vuex'
 import BaseTransitionContainer
   from '@/components/containers/BaseTransitionContainer.vue'
 import BaseHeader from '@/components/BaseHeader.vue'
@@ -43,6 +48,12 @@ export default {
     scrollable: HTMLDivElement
   },
   computed: {
+    ...mapGetters(
+      'profile',
+      {
+        profileId: 'id'
+      }
+    ),
     albumTitle () {
       return this.albumData.title
     },
