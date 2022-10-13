@@ -188,6 +188,15 @@ export function artistPopupOptions (
   }
 }
 
+export function emojiPopupOptions () {
+  return {
+    position: 'right center',
+    transition: 'fade up',
+    variation: 'basic',
+    hoverable: true
+  }
+}
+
 export function annotationPopupOptions (
   {
     html,

@@ -1,45 +1,52 @@
 <template>
-  <BaseButtonContainer
+  <BaseButton
+    ref="button"
     class="small basic circular add-button"
     icon="smile outline"
-    @click.stop="handleClick"
-  >
-    <EmojiPicker
-      ref="picker"
-      @select="handleSelect"
-    />
-  </BaseButtonContainer>
+  />
+
+  <BaseEmojiPopup
+    @select="handleSelect"
+  />
 </template>
 
 <script>
-import BaseButtonContainer
-  from '@/components/containers/buttons/BaseButtonContainer.vue'
-import EmojiPicker from './EmojiButton/EmojiPicker.vue'
+import BaseButton from '@/components/buttons/BaseButton.vue'
+import BaseEmojiPopup from '@/components/popups/BaseEmojiPopup.vue'
+import {
+  setPopup
+} from '@/helpers/actions/plugins/semantic'
+import {
+  emojiPopupOptions
+} from '@/helpers/data/plugins/semantic'
 
 export default {
   name: 'EmojiButton',
   components: {
-    BaseButtonContainer,
-    EmojiPicker
+    BaseButton,
+    BaseEmojiPopup
   },
   inject: [
     'addEmoji'
   ],
+  computed: {
+    popupOptions () {
+      return emojiPopupOptions()
+    }
+  },
+  mounted () {
+    setPopup(
+      this.$refs.button.$el,
+      this.popupOptions
+    )
+  },
   methods: {
-    handleClick () {
-      this.togglePicker()
-    },
     handleSelect (
       value
     ) {
       this.addEmoji(
         value.native
       )
-    },
-    togglePicker () {
-      this.$refs
-        .picker
-        .toggle()
     }
   }
 }
