@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="button"
     class="ui button main-simple-button"
     :class="[
       buttonColorClass,
@@ -47,7 +46,6 @@ export default {
     isPlain: Boolean
   },
   emits: [
-    'init',
     'click'
   ],
   computed: {
@@ -86,12 +84,6 @@ export default {
         return null
       }
     }
-  },
-  mounted () {
-    this.$emit(
-      'init',
-      this.$refs.button
-    )
   },
   methods: {
     handleClick (

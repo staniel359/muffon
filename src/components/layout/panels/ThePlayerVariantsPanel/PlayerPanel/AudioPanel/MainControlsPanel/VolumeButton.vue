@@ -1,8 +1,8 @@
 <template>
   <BaseButton
+    ref="button"
     class="tiny basic circular compact"
     :icon="icon"
-    @init="handleButtonInit"
     @click="handleClick"
   />
 
@@ -28,11 +28,6 @@ export default {
   components: {
     BaseButton,
     BaseVolumePopup
-  },
-  data () {
-    return {
-      button: null
-    }
   },
   computed: {
     ...mapState(
@@ -69,7 +64,7 @@ export default {
   },
   mounted () {
     setPopup(
-      this.button,
+      this.$refs.button.$el,
       this.popupOptions
     )
   },
@@ -80,11 +75,6 @@ export default {
         setIsAudioMuted: 'setIsMuted'
       }
     ),
-    handleButtonInit (
-      element
-    ) {
-      this.button = element
-    },
     handleClick () {
       const value = !this.isAudioMuted
 

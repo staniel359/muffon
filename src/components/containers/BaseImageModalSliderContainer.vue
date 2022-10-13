@@ -39,9 +39,6 @@ export default {
       }
     }
   },
-  emits: [
-    'init'
-  ],
   watch: {
     images: 'handleImagesChange',
     options: 'handleOptionsChange'
@@ -50,11 +47,6 @@ export default {
     setSlider(
       this.$refs.slider,
       this.options
-    )
-
-    this.$emit(
-      'init',
-      this.$refs.slider
     )
   },
   methods: {

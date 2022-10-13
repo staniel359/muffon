@@ -17,6 +17,7 @@
       <ScrobblePoint />
 
       <SeekerPanel
+        :key="key"
         @audio-end="handleAudioEnd"
       />
     </div>

@@ -15,16 +15,18 @@ export function handleError (
     fields
   }
 ) {
-  const isBadRequest =
+  const isForbidden =
     error.response?.status === 403
 
   const isNotFound =
     error.response?.status === 404
 
-  if (isBadRequest) {
+  const form = this.$refs.form.$el
+
+  if (isForbidden) {
     addErrors(
       {
-        form: this.form,
+        form,
         fields: this.fields,
         error
       }
@@ -39,7 +41,7 @@ export function handleError (
         )
 
       addFormFieldError(
-        this.form,
+        form,
         field,
         notFoundError
       )

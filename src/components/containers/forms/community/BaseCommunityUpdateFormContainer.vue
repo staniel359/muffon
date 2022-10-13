@@ -1,9 +1,9 @@
 <template>
   <BaseFormContainer
+    ref="form"
     :options="options"
     :is-loading="isLoading"
     :error="error"
-    @init="handleInit"
   >
     <slot />
   </BaseFormContainer>
@@ -40,7 +40,6 @@ export default {
   ],
   data () {
     return {
-      form: null,
       communityData: null,
       error: null,
       isLoading: false,
@@ -79,11 +78,6 @@ export default {
   },
   methods: {
     updateCommunity,
-    handleInit (
-      element
-    ) {
-      this.form = element
-    },
     handleSuccess (
       event,
       fields

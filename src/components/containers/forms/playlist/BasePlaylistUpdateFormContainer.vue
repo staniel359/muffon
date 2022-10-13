@@ -1,9 +1,9 @@
 <template>
   <BaseFormContainer
+    ref="form"
     :options="options"
     :is-loading="isLoading"
     :error="error"
-    @init="handleInit"
   >
     <slot />
   </BaseFormContainer>
@@ -40,7 +40,6 @@ export default {
   ],
   data () {
     return {
-      form: null,
       playlistData: null,
       error: null,
       isLoading: false,
@@ -78,11 +77,6 @@ export default {
   },
   methods: {
     updatePlaylist,
-    handleInit (
-      element
-    ) {
-      this.form = element
-    },
     handleSuccess (
       event,
       fields

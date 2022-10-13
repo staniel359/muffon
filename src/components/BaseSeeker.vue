@@ -15,7 +15,8 @@ import {
   mapState
 } from 'vuex'
 import {
-  setSeeker
+  setSeeker,
+  setSeekerValue
 } from '@/helpers/actions/plugins/semantic'
 
 export default {
@@ -30,7 +31,6 @@ export default {
     isDisabled: Boolean
   },
   emits: [
-    'init',
     'mouseDown',
     'mouseUp',
     'move',
@@ -61,12 +61,7 @@ export default {
     isMouseUp: 'handleIsMouseUpChange'
   },
   mounted () {
-    this.setSeekerData()
-
-    this.$emit(
-      'init',
-      this.$refs.seeker
-    )
+    this.initialize()
   },
   methods: {
     async handleIsDisabledChange (
@@ -75,7 +70,7 @@ export default {
       if (!value) {
         await this.$nextTick()
 
-        this.setSeekerData()
+        this.initialize()
       }
     },
     handleMouseDown () {
@@ -126,10 +121,18 @@ export default {
         )
       }
     },
-    setSeekerData () {
+    initialize () {
       setSeeker(
         this.$refs.seeker,
         this.seekerOptions
+      )
+    },
+    setValue (
+      value
+    ) {
+      setSeekerValue(
+        this.$refs.seeker,
+        value
       )
     }
   }

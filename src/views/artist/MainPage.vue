@@ -1,13 +1,13 @@
 <template>
   <BaseArtistPageContainer
+    ref="page"
     class="page-container"
     :artist-name="artistName"
-    @init="handleContainerInit"
   >
     <template #default="slotProps">
       <LeftColumn
         :artist-data="slotProps.artistData"
-        :scrollable="container"
+        :scrollable="scrollable"
       />
 
       <RightColumn
@@ -35,15 +35,12 @@ export default {
   },
   data () {
     return {
-      container: null
+      scrollable: null
     }
   },
-  methods: {
-    handleContainerInit (
-      element
-    ) {
-      this.container = element
-    }
+  mounted () {
+    this.scrollable =
+      this.$refs.page.$el
   }
 }
 </script>

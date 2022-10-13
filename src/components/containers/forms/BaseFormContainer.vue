@@ -44,9 +44,6 @@ export default {
     },
     error: Error
   },
-  emits: [
-    'init'
-  ],
   computed: {
     ...mapState(
       'layout',
@@ -59,11 +56,6 @@ export default {
     setForm(
       this.$refs.form,
       this.options
-    )
-
-    this.$emit(
-      'init',
-      this.$refs.form
     )
   }
 }

@@ -3,7 +3,6 @@
     :response-data="communityData"
     :is-loading="isLoading"
     :error="error"
-    @init="handleInit"
   >
     <slot
       :community-data="communityData"
@@ -49,9 +48,6 @@ export default {
     scope: String,
     limit: Number
   },
-  emits: [
-    'init'
-  ],
   data () {
     return {
       communityData: null,
@@ -111,14 +107,6 @@ export default {
   },
   methods: {
     getCommunity,
-    handleInit (
-      element
-    ) {
-      this.$emit(
-        'init',
-        element
-      )
-    },
     getData (
       {
         page

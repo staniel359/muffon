@@ -1,9 +1,9 @@
 <template>
   <BaseFormContainer
+    ref="form"
     :options="options"
     :is-loading="isLoading"
     :error="error"
-    @init="handleInit"
   >
     <slot />
   </BaseFormContainer>
@@ -31,7 +31,6 @@ export default {
   },
   data () {
     return {
-      form: null,
       token: null,
       profileId: null,
       profileData: null,
@@ -72,11 +71,6 @@ export default {
   methods: {
     createSession,
     getProfile,
-    handleInit (
-      element
-    ) {
-      this.form = element
-    },
     handleSuccess (
       event,
       fields

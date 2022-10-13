@@ -9,9 +9,9 @@
 
   <div class="transparency-seeker-container">
     <BaseSeeker
+      ref="seeker"
       class="bottom aligned labeled ticked with-thumb"
       :options="seekerOptions"
-      @init="handleInit"
       @mouse-up="handleMouseUp"
     />
   </div>
@@ -29,20 +29,12 @@ import {
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
-import {
-  setSeekerValue
-} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'TransparencyOption',
   components: {
     BaseHeader,
     BaseSeeker
-  },
-  data () {
-    return {
-      seeker: null
-    }
   },
   computed: {
     ...mapState(
@@ -68,11 +60,6 @@ export default {
     transparency: 'handleTransparencyChange'
   },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.seeker = element
-    },
     handleMouseUp (
       value
     ) {
@@ -85,10 +72,18 @@ export default {
     handleTransparencyChange (
       value
     ) {
-      setSeekerValue(
-        this.seeker,
+      this.setSeekerValue(
         value
       )
+    },
+    setSeekerValue (
+      value
+    ) {
+      this.$refs
+        .seeker
+        .setValue(
+          value
+        )
     }
   }
 }

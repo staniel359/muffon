@@ -1,9 +1,9 @@
 <template>
   <BaseFormContainer
+    ref="form"
     :options="options"
     :is-loading="isLoading"
     :error="error"
-    @init="handleInit"
   >
     <slot />
   </BaseFormContainer>
@@ -27,7 +27,6 @@ export default {
   ],
   data () {
     return {
-      form: null,
       error: null,
       isLoading: false,
       fields: [
@@ -46,11 +45,6 @@ export default {
   },
   methods: {
     resetPassword,
-    handleInit (
-      element
-    ) {
-      this.form = element
-    },
     handleSuccess (
       event,
       fields

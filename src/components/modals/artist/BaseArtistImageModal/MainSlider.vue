@@ -3,7 +3,6 @@
     size="original"
     :images="images"
     :options="sliderOptions"
-    @init="handleInit"
   >
     <template #default="slotProps">
       <div class="image-container">
@@ -35,25 +34,12 @@ export default {
     images: Array,
     syncSlider: HTMLDivElement
   },
-  emits: [
-    'init'
-  ],
   computed: {
     sliderOptions () {
       return artistImagesModalMainSliderOptions(
         {
           syncSlider: this.syncSlider
         }
-      )
-    }
-  },
-  methods: {
-    handleInit (
-      el
-    ) {
-      this.$emit(
-        'init',
-        el
       )
     }
   }

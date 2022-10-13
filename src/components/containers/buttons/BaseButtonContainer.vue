@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="button"
     class="ui button main-simple-button"
     :class="{
       inverted: isDarkMode,
@@ -40,7 +39,6 @@ export default {
     text: String
   },
   emits: [
-    'init',
     'activeChange',
     'click'
   ],
@@ -50,12 +48,6 @@ export default {
       [
         'isDarkMode'
       ]
-    )
-  },
-  mounted () {
-    this.$emit(
-      'init',
-      this.$refs.button
     )
   },
   methods: {

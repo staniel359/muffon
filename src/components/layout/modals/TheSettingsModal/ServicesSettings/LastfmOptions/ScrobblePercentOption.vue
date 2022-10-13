@@ -8,12 +8,12 @@
 
     <div class="seeker-container">
       <BaseSeeker
+        ref="seeker"
         class="bottom aligned labeled ticked with-thumb"
         :class="{
           disabled: isDisabled
         }"
         :options="seekerOptions"
-        @init="handleSeekerInit"
         @mouse-up="handleMouseUp"
       />
     </div>
@@ -32,9 +32,6 @@ import {
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
-import {
-  setSeekerValue
-} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'ScrobblePercentOption',
@@ -45,11 +42,6 @@ export default {
   props: {
     isConnected: Boolean,
     isPlayerWithScrobbling: Boolean
-  },
-  data () {
-    return {
-      seeker: null
-    }
   },
   computed: {
     ...mapState(
@@ -82,11 +74,6 @@ export default {
       'handlePlayerScrobblePercentChange'
   },
   methods: {
-    handleSeekerInit (
-      element
-    ) {
-      this.seeker = element
-    },
     handleMouseUp (
       value
     ) {
@@ -99,10 +86,18 @@ export default {
     handlePlayerScrobblePercentChange (
       value
     ) {
-      setSeekerValue(
-        this.seeker,
+      this.setSeekerValue(
         value
       )
+    },
+    setSeekerValue (
+      value
+    ) {
+      this.$refs
+        .seeker
+        .setValue(
+          value
+        )
     }
   }
 }

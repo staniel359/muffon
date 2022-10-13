@@ -3,7 +3,6 @@
     :response-data="artistData"
     :is-loading="isLoading"
     :error="error"
-    @init="handleInit"
   >
     <slot
       :artist-data="artistData"
@@ -51,7 +50,6 @@ export default {
     limit: Number
   },
   emits: [
-    'init',
     'requestArtistDataChange'
   ],
   data () {
@@ -121,14 +119,6 @@ export default {
   methods: {
     getArtist,
     getBandcampId,
-    handleInit (
-      element
-    ) {
-      this.$emit(
-        'init',
-        element
-      )
-    },
     handleRequestArtistDataChange () {
       this.$emit(
         'requestArtistDataChange'

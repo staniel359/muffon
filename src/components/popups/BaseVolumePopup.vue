@@ -10,9 +10,9 @@
     </div>
 
     <BaseSeeker
+      ref="seeker"
       class="vertical reversed volume-seeker"
       :options="seekerOptions"
-      @init="handleInit"
       @move="handleMove"
       @mouse-up="handleMouseUp"
     />
@@ -32,9 +32,6 @@ import {
 import {
   updateGlobal as updateGlobalStore
 } from '@/helpers/actions/store'
-import {
-  setSeekerValue
-} from '@/helpers/actions/plugins/semantic'
 
 export default {
   name: 'BaseVolumePopup',
@@ -42,11 +39,6 @@ export default {
     BasePopupContainer,
     BaseHeader,
     BaseSeeker
-  },
-  data () {
-    return {
-      seeker: null
-    }
   },
   computed: {
     ...mapState(
@@ -76,11 +68,6 @@ export default {
     }
   },
   methods: {
-    handleInit (
-      element
-    ) {
-      this.seeker = element
-    },
     handleMove (
       value
     ) {
@@ -97,24 +84,32 @@ export default {
         }
       )
     },
-    handleAudioVolumeChange (
-      value
-    ) {
-      setSeekerValue(
-        this.seeker,
-        value
-      )
-
-      this.setAudioVolume(
-        value
-      )
-    },
-    async setAudioVolume (
+    async handleAudioVolumeChange (
       value
     ) {
       await this.$nextTick()
 
+      this.setAudioVolume(
+        value
+      )
+
+      this.setSeekerValue(
+        value
+      )
+    },
+    setAudioVolume (
+      value
+    ) {
       this.audioElement.volume = value
+    },
+    setSeekerValue (
+      value
+    ) {
+      this.$refs
+        .seeker
+        .setValue(
+          value
+        )
     }
   }
 }

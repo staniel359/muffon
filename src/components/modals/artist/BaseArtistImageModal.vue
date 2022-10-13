@@ -12,15 +12,15 @@
     >
       <div :key="key">
         <MainSlider
+          ref="mainSlider"
           :images="imagesCollection"
           :sync-slider="thumbsSlider"
-          @init="handleMainSliderInit"
         />
 
         <ThumbsSlider
+          ref="thumbsSlider"
           :images="imagesCollection"
           :sync-slider="mainSlider"
-          @init="handleThumbsSliderInit"
         />
       </div>
     </div>
@@ -76,6 +76,13 @@ export default {
   watch: {
     images: 'handleImagesChange'
   },
+  mounted () {
+    this.mainSlider =
+      this.$refs.mainSlider.$el
+
+    this.thumbsSlider =
+      this.$refs.thumbsSlider.$el
+  },
   methods: {
     async handleShow () {
       await this.$nextTick()
@@ -93,16 +100,6 @@ export default {
       setSliderPosition(
         this.thumbsSlider
       )
-    },
-    handleMainSliderInit (
-      element
-    ) {
-      this.mainSlider = element
-    },
-    handleThumbsSliderInit (
-      element
-    ) {
-      this.thumbsSlider = element
     },
     handleImagesChange () {
       this.key = generateKey()

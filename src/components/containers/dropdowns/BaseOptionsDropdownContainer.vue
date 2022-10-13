@@ -7,12 +7,12 @@
     @mouseleave="handleMouseLeave"
   >
     <BaseButtonContainer
+      ref="dropdown"
       :class="[
         'compact basic circular icon',
         'top right floating scrolling',
         'dropdown main-options-dropdown-button'
       ]"
-      @init="handleDropdownInit"
     >
       <BaseIcon
         icon="ellipsis vertical"
@@ -48,11 +48,6 @@ export default {
   emits: [
     'activeChange'
   ],
-  data () {
-    return {
-      dropdown: null
-    }
-  },
   computed: {
     ...mapState(
       'layout',
@@ -71,20 +66,13 @@ export default {
       }
     }
   },
-  async mounted () {
-    await this.$nextTick()
-
+  mounted () {
     setDropdown(
-      this.dropdown,
+      this.$refs.dropdown.$el,
       this.dropdownOptions
     )
   },
   methods: {
-    handleDropdownInit (
-      element
-    ) {
-      this.dropdown = element
-    },
     handleMouseEnter () {
       this.$emit(
         'activeChange',

@@ -1,7 +1,7 @@
 <template>
   <BaseCommunityPageContainer
+    ref="page"
     :community-id="communityId"
-    @init="handleContainerInit"
   >
     <template #default="slotProps">
       <InfoSegment
@@ -12,7 +12,7 @@
       <div class="columns-container">
         <LeftColumn
           :community-data="slotProps.communityData"
-          :scrollable="container"
+          :scrollable="scrollable"
         />
 
         <RightColumn
@@ -44,15 +44,12 @@ export default {
   },
   data () {
     return {
-      container: null
+      scrollable: null
     }
   },
-  methods: {
-    handleContainerInit (
-      element
-    ) {
-      this.container = element
-    }
+  mounted () {
+    this.scrollable =
+      this.$refs.page.$el
   }
 }
 </script>

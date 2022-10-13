@@ -1,9 +1,8 @@
 <template>
   <BaseSeeker
-    :key="key"
+    ref="seeker"
     :options="seekerOptions"
     :is-disabled="!isAudioPlayable"
-    @init="handleSeekerInit"
     @mouse-down="handleMouseDown"
     @change="handleChange"
     @move="handleMove"
@@ -16,9 +15,6 @@ import {
 } from 'vuex'
 import BaseSeeker from '@/components/BaseSeeker.vue'
 import {
-  setSeekerValue
-} from '@/helpers/actions/plugins/semantic'
-import {
   mainSeekerOptions
 } from '@/helpers/data/plugins/semantic'
 import {
@@ -27,9 +23,6 @@ import {
   setPercentWidth as setElementPercentWidth,
   insertAfter as insertElementAfter
 } from '@/helpers/actions/plugins/jquery'
-import {
-  generateKey
-} from '@/helpers/utils'
 
 export default {
   name: 'SeekerPanel',
@@ -41,10 +34,8 @@ export default {
   ],
   data () {
     return {
-      seeker: null,
       progressBar: null,
       seekingAudioStatus: null,
-      key: null,
       isSeeking: false
     }
   },
@@ -58,12 +49,6 @@ export default {
         audioDuration: 'duration',
         isAudioPlayable: 'isPlayable',
         audioElement: 'element'
-      }
-    ),
-    ...mapState(
-      'player',
-      {
-        playerPlaying: 'playing'
       }
     ),
     seekerOptions () {
@@ -83,7 +68,11 @@ export default {
       return this.audioTimePercent === 100
     },
     seekerMainTrack () {
-      return this.seeker.firstChild.firstChild
+      return this.$refs
+        .seeker
+        .$el
+        .firstChild
+        .firstChild
     }
   },
   watch: {
@@ -98,17 +87,12 @@ export default {
     isAudioEnded: {
       immediate: true,
       handler: 'handleAudioEnd'
-    },
-    playerPlaying: 'handlePlayerPlayingChange'
+    }
+  },
+  mounted () {
+    this.setProgressBar()
   },
   methods: {
-    handleSeekerInit (
-      element
-    ) {
-      this.seeker = element
-
-      this.setProgressBar()
-    },
     handleMouseDown (
       event
     ) {
@@ -168,12 +152,13 @@ export default {
         )
       }
     },
-    handleAudioTimePercentChange (
+    async handleAudioTimePercentChange (
       value
     ) {
+      await this.$nextTick()
+
       if (!this.isSeeking) {
-        setSeekerValue(
-          this.seeker,
+        this.setSeekerValue(
           value
         )
       }
@@ -184,9 +169,6 @@ export default {
       if (value && !this.isSeeking) {
         this.endAudio()
       }
-    },
-    handlePlayerPlayingChange () {
-      this.key = generateKey()
     },
     endAudio () {
       this.$emit(
@@ -243,6 +225,15 @@ export default {
       value
     ) {
       this.audioElement.currentTime = value
+    },
+    setSeekerValue (
+      value
+    ) {
+      this.$refs
+        .seeker
+        .setValue(
+          value
+        )
     }
   }
 }
