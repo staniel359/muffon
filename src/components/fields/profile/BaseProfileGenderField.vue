@@ -1,26 +1,19 @@
 <template>
   <div class="field">
     <BaseDropdownContainer
+      input-type="hidden"
+      input-name="gender"
       :header="genderText"
       :selected="value"
       is-form-field
     >
-      <template #input>
-        <input
-          type="hidden"
-          name="gender"
-        >
-      </template>
-
-      <template #default>
-        <div
-          v-for="option in options"
-          :key="option"
-          class="item"
-          :data-value="option"
-          v-text="formatOptionText(option)"
-        />
-      </template>
+      <div
+        v-for="(option, index) in options"
+        :key="index"
+        class="item"
+        :data-value="option"
+        v-text="formatOptionText(option)"
+      />
     </BaseDropdownContainer>
   </div>
 </template>

@@ -2,24 +2,14 @@
   <BaseDropdownContainer
     ref="dropdown"
     class="search"
+    input-type="hidden"
+    input-name="country"
     :selected="selected"
     :header="countryText"
     :is-form-field="isFormField"
     @select="handleSelect"
   >
-    <template
-      v-if="isFormField"
-      #input
-    >
-      <input
-        type="hidden"
-        name="country"
-      >
-    </template>
-
-    <template #default>
-      <CountriesList />
-    </template>
+    <CountriesList />
   </BaseDropdownContainer>
 </template>
 

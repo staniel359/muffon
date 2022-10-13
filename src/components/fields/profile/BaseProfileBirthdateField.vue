@@ -1,25 +1,12 @@
 <template>
   <div class="field">
-    <div
-      ref="calendar"
+    <BaseCalendar
       :key="key"
-      class="ui calendar"
-      :class="{
-        inverted: isDarkMode
-      }"
-    >
-      <div class="ui input left icon">
-        <BaseIcon
-          icon="calendar"
-        />
-
-        <input
-          type="text"
-          name="birthdate"
-          :placeholder="birthdateText"
-        >
-      </div>
-    </div>
+      input-name="birthdate"
+      :date="value"
+      :input-text="birthdateText"
+      is-form-field
+    />
   </div>
 </template>
 
@@ -27,13 +14,7 @@
 import {
   mapState
 } from 'vuex'
-import BaseIcon from '@/components/icons/BaseIcon.vue'
-import {
-  setCalendar
-} from '@/helpers/actions/plugins/semantic'
-import {
-  birthdateCalendarOptions
-} from '@/helpers/data/plugins/semantic'
+import BaseCalendar from '@/components/BaseCalendar.vue'
 import {
   generateKey
 } from '@/helpers/utils'
@@ -41,7 +22,7 @@ import {
 export default {
   name: 'BaseProfileBirthdateField',
   components: {
-    BaseIcon
+    BaseCalendar
   },
   props: {
     value: String
@@ -68,38 +49,19 @@ export default {
       return this.$t(
         'forms.fields.birthdate'
       )
-    },
-    calendarOptions () {
-      return birthdateCalendarOptions(
-        {
-          startDate: this.value
-        }
-      )
     }
   },
   watch: {
-    profileLanguage: {
-      immediate: true,
-      handler: 'handleProfileLanguageChange'
-    },
+    profileLanguage:
+      'handleProfileLanguageChange',
     isDarkMode: 'handleIsDarkModeChange'
   },
   methods: {
     handleProfileLanguageChange () {
-      this.initialize()
+      this.key = generateKey()
     },
     handleIsDarkModeChange () {
       this.key = generateKey()
-
-      this.initialize()
-    },
-    async initialize () {
-      await this.$nextTick()
-
-      setCalendar(
-        this.$refs.calendar,
-        this.calendarOptions
-      )
     }
   }
 }

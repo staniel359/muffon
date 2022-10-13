@@ -40,7 +40,11 @@
       :is-error="isError"
     />
 
-    <slot name="input" />
+    <input
+      v-if="isFormField"
+      :type="inputType"
+      :name="inputName"
+    >
 
     <div
       class="menu"
@@ -84,7 +88,9 @@ export default {
     isLoading: Boolean,
     isError: Boolean,
     menuDirection: String,
-    isFormField: Boolean
+    isFormField: Boolean,
+    inputType: String,
+    inputName: String
   },
   emits: [
     'select'
