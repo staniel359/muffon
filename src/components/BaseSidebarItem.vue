@@ -3,7 +3,8 @@
     :is="component"
     class="item main-sidebar-item"
     :class="{
-      inverted: isDarkMode
+      inverted: isDarkMode,
+      'router-link-active': isMatchedPath
     }"
     :link="link"
     @click="handleClick"
@@ -63,6 +64,17 @@ export default {
       } else {
         return 'a'
       }
+    },
+    isMatchedPath () {
+      return this.currentPath.includes(
+        this.path
+      )
+    },
+    currentPath () {
+      return this.$route.path
+    },
+    path () {
+      return this.link?.path
     }
   },
   methods: {
