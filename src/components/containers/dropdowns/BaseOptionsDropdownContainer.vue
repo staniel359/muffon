@@ -8,10 +8,9 @@
   >
     <BaseButtonContainer
       :class="[
-        'compact basic circular',
-        'top right pointing',
-        'floating dropdown icon',
-        'main-options-dropdown-button'
+        'compact basic circular icon',
+        'top right floating scrolling',
+        'dropdown main-options-dropdown-button'
       ]"
       @init="handleDropdownInit"
     >
@@ -37,7 +36,7 @@ import {
   setDropdown
 } from '@/helpers/actions/plugins/semantic'
 import {
-  mainDropdownOptions
+  optionsDropdownOptions
 } from '@/helpers/data/plugins/semantic'
 
 export default {
@@ -62,11 +61,7 @@ export default {
       ]
     ),
     dropdownOptions () {
-      return mainDropdownOptions(
-        {
-          action: 'nothing'
-        }
-      )
+      return optionsDropdownOptions()
     },
     dropdownClass () {
       if (this.isDarkMode) {

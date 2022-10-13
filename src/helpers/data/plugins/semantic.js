@@ -223,8 +223,7 @@ export function annotationPopupOptions (
 
 export function mainDropdownOptions (
   {
-    onChange,
-    action
+    onChange
   } = {}
 ) {
   const {
@@ -233,14 +232,28 @@ export function mainDropdownOptions (
 
   return {
     on: 'hover',
-    duration: 150,
+    delay: 0,
+    context: (
+      visibleContext || 'body'
+    ),
+    onChange
+  }
+}
+
+export function optionsDropdownOptions () {
+  const {
+    visibleContext
+  } = store.state.layout
+
+  return {
+    action: 'nothing',
+    on: 'hover',
+    transition: 'fade up',
     context: visibleContext,
     delay: {
       show: 0,
       hide: 150
-    },
-    onChange,
-    action
+    }
   }
 }
 
