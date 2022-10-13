@@ -848,7 +848,11 @@ p
           @extend .text-color-base
 
 .main-video
+  @extend .overflow-hidden
   border-radius: 0.5em
+  border: $border
+  &.inverted
+    border: $borderInverted
   .video.play.icon
     @extend .no-margin
 

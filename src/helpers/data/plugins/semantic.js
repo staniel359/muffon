@@ -285,11 +285,16 @@ export function mainVideoOptions (
   const url =
     `https://www.youtube.com/embed/${videoId}`
 
+  const {
+    language
+  } = store.state.profile
+
   return {
     url,
     placeholder,
     parameters: {
-      fs: 0
+      fs: 0,
+      hl: language
     }
   }
 }

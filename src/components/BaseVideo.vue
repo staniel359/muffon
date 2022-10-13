@@ -1,9 +1,16 @@
 <template>
   <div
-    ref="video"
-    class="ui embed main-video"
+    class="main-video"
+    :class="{
+      inverted: isDarkMode
+    }"
     @click="handleClick"
-  />
+  >
+    <div
+      ref="video"
+      class="ui embed"
+    />
+  </div>
 </template>
 
 <script>
@@ -37,6 +44,12 @@ export default {
   },
   computed: {
     ...mapState(
+      'layout',
+      [
+        'isDarkMode'
+      ]
+    ),
+    ...mapState(
       'video',
       {
         isVideoAutoplay: 'isAutoplay'
@@ -67,7 +80,8 @@ export default {
     }
   },
   watch: {
-    isVideoAutoplay: 'handleIsVideoAutoplayChange'
+    isVideoAutoplay:
+      'handleIsVideoAutoplayChange'
   },
   mounted () {
     setVideo(
